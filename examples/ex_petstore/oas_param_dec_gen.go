@@ -66,7 +66,7 @@ var (
 
 func decodeListPetsParams(r *http.Request) (ListPetsParams, error) {
 	var params ListPetsParams
-	// Decode param "limit" located in "Query".
+	// Decode query: limit.
 	{
 		values, ok := r.URL.Query()["limit"]
 		if ok {
@@ -97,7 +97,7 @@ func decodeListPetsParams(r *http.Request) (ListPetsParams, error) {
 				params.Limit.SetTo(ParamsLimitValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter limit located in query`)
+				return params, errors.Wrap(err, `query: limit: parse`)
 			}
 		}
 	}
@@ -106,7 +106,7 @@ func decodeListPetsParams(r *http.Request) (ListPetsParams, error) {
 
 func decodeShowPetByIdParams(r *http.Request) (ShowPetByIdParams, error) {
 	var params ShowPetByIdParams
-	// Decode param "petId" located in "Path".
+	// Decode path: petId.
 	{
 		param := chi.URLParam(r, "petId")
 		if len(param) > 0 {
@@ -134,7 +134,7 @@ func decodeShowPetByIdParams(r *http.Request) (ShowPetByIdParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter petId not specified`)
+			return params, errors.New(`path: petId: not specified`)
 		}
 	}
 	return params, nil

@@ -66,7 +66,7 @@ var (
 
 func decodeCachingParams(r *http.Request) (CachingParams, error) {
 	var params CachingParams
-	// Decode param "count" located in "Query".
+	// Decode query: count.
 	{
 		values, ok := r.URL.Query()["count"]
 		if ok {
@@ -90,10 +90,10 @@ func decodeCachingParams(r *http.Request) (CachingParams, error) {
 				params.Count = c
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter count located in query`)
+				return params, errors.Wrap(err, `query: count: parse`)
 			}
 		} else {
-			return params, errors.New(`query parameter count not specified`)
+			return params, errors.New(`query: count: not specified`)
 		}
 	}
 	return params, nil
@@ -101,7 +101,7 @@ func decodeCachingParams(r *http.Request) (CachingParams, error) {
 
 func decodeQueriesParams(r *http.Request) (QueriesParams, error) {
 	var params QueriesParams
-	// Decode param "queries" located in "Query".
+	// Decode query: queries.
 	{
 		values, ok := r.URL.Query()["queries"]
 		if ok {
@@ -125,10 +125,10 @@ func decodeQueriesParams(r *http.Request) (QueriesParams, error) {
 				params.Queries = c
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter queries located in query`)
+				return params, errors.Wrap(err, `query: queries: parse`)
 			}
 		} else {
-			return params, errors.New(`query parameter queries not specified`)
+			return params, errors.New(`query: queries: not specified`)
 		}
 	}
 	return params, nil
@@ -136,7 +136,7 @@ func decodeQueriesParams(r *http.Request) (QueriesParams, error) {
 
 func decodeUpdatesParams(r *http.Request) (UpdatesParams, error) {
 	var params UpdatesParams
-	// Decode param "queries" located in "Query".
+	// Decode query: queries.
 	{
 		values, ok := r.URL.Query()["queries"]
 		if ok {
@@ -160,10 +160,10 @@ func decodeUpdatesParams(r *http.Request) (UpdatesParams, error) {
 				params.Queries = c
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter queries located in query`)
+				return params, errors.Wrap(err, `query: queries: parse`)
 			}
 		} else {
-			return params, errors.New(`query parameter queries not specified`)
+			return params, errors.New(`query: queries: not specified`)
 		}
 	}
 	return params, nil

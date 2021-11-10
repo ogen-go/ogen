@@ -66,7 +66,7 @@ var (
 
 func decodeActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams(r *http.Request) (ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams, error) {
 	var params ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -94,10 +94,10 @@ func decodeActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams(r *http.Reques
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "runner_group_id" located in "Path".
+	// Decode path: runner_group_id.
 	{
 		param := chi.URLParam(r, "runner_group_id")
 		if len(param) > 0 {
@@ -125,10 +125,10 @@ func decodeActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams(r *http.Reques
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter runner_group_id not specified`)
+			return params, errors.New(`path: runner_group_id: not specified`)
 		}
 	}
-	// Decode param "repository_id" located in "Path".
+	// Decode path: repository_id.
 	{
 		param := chi.URLParam(r, "repository_id")
 		if len(param) > 0 {
@@ -156,7 +156,7 @@ func decodeActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams(r *http.Reques
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repository_id not specified`)
+			return params, errors.New(`path: repository_id: not specified`)
 		}
 	}
 	return params, nil
@@ -164,7 +164,7 @@ func decodeActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams(r *http.Reques
 
 func decodeActionsAddSelectedRepoToOrgSecretParams(r *http.Request) (ActionsAddSelectedRepoToOrgSecretParams, error) {
 	var params ActionsAddSelectedRepoToOrgSecretParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -192,10 +192,10 @@ func decodeActionsAddSelectedRepoToOrgSecretParams(r *http.Request) (ActionsAddS
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "secret_name" located in "Path".
+	// Decode path: secret_name.
 	{
 		param := chi.URLParam(r, "secret_name")
 		if len(param) > 0 {
@@ -223,10 +223,10 @@ func decodeActionsAddSelectedRepoToOrgSecretParams(r *http.Request) (ActionsAddS
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter secret_name not specified`)
+			return params, errors.New(`path: secret_name: not specified`)
 		}
 	}
-	// Decode param "repository_id" located in "Path".
+	// Decode path: repository_id.
 	{
 		param := chi.URLParam(r, "repository_id")
 		if len(param) > 0 {
@@ -254,7 +254,7 @@ func decodeActionsAddSelectedRepoToOrgSecretParams(r *http.Request) (ActionsAddS
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repository_id not specified`)
+			return params, errors.New(`path: repository_id: not specified`)
 		}
 	}
 	return params, nil
@@ -262,7 +262,7 @@ func decodeActionsAddSelectedRepoToOrgSecretParams(r *http.Request) (ActionsAddS
 
 func decodeActionsAddSelfHostedRunnerToGroupForOrgParams(r *http.Request) (ActionsAddSelfHostedRunnerToGroupForOrgParams, error) {
 	var params ActionsAddSelfHostedRunnerToGroupForOrgParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -290,10 +290,10 @@ func decodeActionsAddSelfHostedRunnerToGroupForOrgParams(r *http.Request) (Actio
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "runner_group_id" located in "Path".
+	// Decode path: runner_group_id.
 	{
 		param := chi.URLParam(r, "runner_group_id")
 		if len(param) > 0 {
@@ -321,10 +321,10 @@ func decodeActionsAddSelfHostedRunnerToGroupForOrgParams(r *http.Request) (Actio
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter runner_group_id not specified`)
+			return params, errors.New(`path: runner_group_id: not specified`)
 		}
 	}
-	// Decode param "runner_id" located in "Path".
+	// Decode path: runner_id.
 	{
 		param := chi.URLParam(r, "runner_id")
 		if len(param) > 0 {
@@ -352,7 +352,7 @@ func decodeActionsAddSelfHostedRunnerToGroupForOrgParams(r *http.Request) (Actio
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter runner_id not specified`)
+			return params, errors.New(`path: runner_id: not specified`)
 		}
 	}
 	return params, nil
@@ -360,7 +360,7 @@ func decodeActionsAddSelfHostedRunnerToGroupForOrgParams(r *http.Request) (Actio
 
 func decodeActionsApproveWorkflowRunParams(r *http.Request) (ActionsApproveWorkflowRunParams, error) {
 	var params ActionsApproveWorkflowRunParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -388,10 +388,10 @@ func decodeActionsApproveWorkflowRunParams(r *http.Request) (ActionsApproveWorkf
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -419,10 +419,10 @@ func decodeActionsApproveWorkflowRunParams(r *http.Request) (ActionsApproveWorkf
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "run_id" located in "Path".
+	// Decode path: run_id.
 	{
 		param := chi.URLParam(r, "run_id")
 		if len(param) > 0 {
@@ -450,7 +450,7 @@ func decodeActionsApproveWorkflowRunParams(r *http.Request) (ActionsApproveWorkf
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter run_id not specified`)
+			return params, errors.New(`path: run_id: not specified`)
 		}
 	}
 	return params, nil
@@ -458,7 +458,7 @@ func decodeActionsApproveWorkflowRunParams(r *http.Request) (ActionsApproveWorkf
 
 func decodeActionsCancelWorkflowRunParams(r *http.Request) (ActionsCancelWorkflowRunParams, error) {
 	var params ActionsCancelWorkflowRunParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -486,10 +486,10 @@ func decodeActionsCancelWorkflowRunParams(r *http.Request) (ActionsCancelWorkflo
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -517,10 +517,10 @@ func decodeActionsCancelWorkflowRunParams(r *http.Request) (ActionsCancelWorkflo
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "run_id" located in "Path".
+	// Decode path: run_id.
 	{
 		param := chi.URLParam(r, "run_id")
 		if len(param) > 0 {
@@ -548,7 +548,7 @@ func decodeActionsCancelWorkflowRunParams(r *http.Request) (ActionsCancelWorkflo
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter run_id not specified`)
+			return params, errors.New(`path: run_id: not specified`)
 		}
 	}
 	return params, nil
@@ -556,7 +556,7 @@ func decodeActionsCancelWorkflowRunParams(r *http.Request) (ActionsCancelWorkflo
 
 func decodeActionsCreateOrUpdateEnvironmentSecretParams(r *http.Request) (ActionsCreateOrUpdateEnvironmentSecretParams, error) {
 	var params ActionsCreateOrUpdateEnvironmentSecretParams
-	// Decode param "repository_id" located in "Path".
+	// Decode path: repository_id.
 	{
 		param := chi.URLParam(r, "repository_id")
 		if len(param) > 0 {
@@ -584,10 +584,10 @@ func decodeActionsCreateOrUpdateEnvironmentSecretParams(r *http.Request) (Action
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repository_id not specified`)
+			return params, errors.New(`path: repository_id: not specified`)
 		}
 	}
-	// Decode param "environment_name" located in "Path".
+	// Decode path: environment_name.
 	{
 		param := chi.URLParam(r, "environment_name")
 		if len(param) > 0 {
@@ -615,10 +615,10 @@ func decodeActionsCreateOrUpdateEnvironmentSecretParams(r *http.Request) (Action
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter environment_name not specified`)
+			return params, errors.New(`path: environment_name: not specified`)
 		}
 	}
-	// Decode param "secret_name" located in "Path".
+	// Decode path: secret_name.
 	{
 		param := chi.URLParam(r, "secret_name")
 		if len(param) > 0 {
@@ -646,7 +646,7 @@ func decodeActionsCreateOrUpdateEnvironmentSecretParams(r *http.Request) (Action
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter secret_name not specified`)
+			return params, errors.New(`path: secret_name: not specified`)
 		}
 	}
 	return params, nil
@@ -654,7 +654,7 @@ func decodeActionsCreateOrUpdateEnvironmentSecretParams(r *http.Request) (Action
 
 func decodeActionsCreateOrUpdateOrgSecretParams(r *http.Request) (ActionsCreateOrUpdateOrgSecretParams, error) {
 	var params ActionsCreateOrUpdateOrgSecretParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -682,10 +682,10 @@ func decodeActionsCreateOrUpdateOrgSecretParams(r *http.Request) (ActionsCreateO
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "secret_name" located in "Path".
+	// Decode path: secret_name.
 	{
 		param := chi.URLParam(r, "secret_name")
 		if len(param) > 0 {
@@ -713,7 +713,7 @@ func decodeActionsCreateOrUpdateOrgSecretParams(r *http.Request) (ActionsCreateO
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter secret_name not specified`)
+			return params, errors.New(`path: secret_name: not specified`)
 		}
 	}
 	return params, nil
@@ -721,7 +721,7 @@ func decodeActionsCreateOrUpdateOrgSecretParams(r *http.Request) (ActionsCreateO
 
 func decodeActionsCreateOrUpdateRepoSecretParams(r *http.Request) (ActionsCreateOrUpdateRepoSecretParams, error) {
 	var params ActionsCreateOrUpdateRepoSecretParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -749,10 +749,10 @@ func decodeActionsCreateOrUpdateRepoSecretParams(r *http.Request) (ActionsCreate
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -780,10 +780,10 @@ func decodeActionsCreateOrUpdateRepoSecretParams(r *http.Request) (ActionsCreate
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "secret_name" located in "Path".
+	// Decode path: secret_name.
 	{
 		param := chi.URLParam(r, "secret_name")
 		if len(param) > 0 {
@@ -811,7 +811,7 @@ func decodeActionsCreateOrUpdateRepoSecretParams(r *http.Request) (ActionsCreate
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter secret_name not specified`)
+			return params, errors.New(`path: secret_name: not specified`)
 		}
 	}
 	return params, nil
@@ -819,7 +819,7 @@ func decodeActionsCreateOrUpdateRepoSecretParams(r *http.Request) (ActionsCreate
 
 func decodeActionsCreateRegistrationTokenForOrgParams(r *http.Request) (ActionsCreateRegistrationTokenForOrgParams, error) {
 	var params ActionsCreateRegistrationTokenForOrgParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -847,7 +847,7 @@ func decodeActionsCreateRegistrationTokenForOrgParams(r *http.Request) (ActionsC
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
 	return params, nil
@@ -855,7 +855,7 @@ func decodeActionsCreateRegistrationTokenForOrgParams(r *http.Request) (ActionsC
 
 func decodeActionsCreateRegistrationTokenForRepoParams(r *http.Request) (ActionsCreateRegistrationTokenForRepoParams, error) {
 	var params ActionsCreateRegistrationTokenForRepoParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -883,10 +883,10 @@ func decodeActionsCreateRegistrationTokenForRepoParams(r *http.Request) (Actions
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -914,7 +914,7 @@ func decodeActionsCreateRegistrationTokenForRepoParams(r *http.Request) (Actions
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
 	return params, nil
@@ -922,7 +922,7 @@ func decodeActionsCreateRegistrationTokenForRepoParams(r *http.Request) (Actions
 
 func decodeActionsCreateRemoveTokenForOrgParams(r *http.Request) (ActionsCreateRemoveTokenForOrgParams, error) {
 	var params ActionsCreateRemoveTokenForOrgParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -950,7 +950,7 @@ func decodeActionsCreateRemoveTokenForOrgParams(r *http.Request) (ActionsCreateR
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
 	return params, nil
@@ -958,7 +958,7 @@ func decodeActionsCreateRemoveTokenForOrgParams(r *http.Request) (ActionsCreateR
 
 func decodeActionsCreateRemoveTokenForRepoParams(r *http.Request) (ActionsCreateRemoveTokenForRepoParams, error) {
 	var params ActionsCreateRemoveTokenForRepoParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -986,10 +986,10 @@ func decodeActionsCreateRemoveTokenForRepoParams(r *http.Request) (ActionsCreate
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -1017,7 +1017,7 @@ func decodeActionsCreateRemoveTokenForRepoParams(r *http.Request) (ActionsCreate
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
 	return params, nil
@@ -1025,7 +1025,7 @@ func decodeActionsCreateRemoveTokenForRepoParams(r *http.Request) (ActionsCreate
 
 func decodeActionsCreateSelfHostedRunnerGroupForOrgParams(r *http.Request) (ActionsCreateSelfHostedRunnerGroupForOrgParams, error) {
 	var params ActionsCreateSelfHostedRunnerGroupForOrgParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -1053,7 +1053,7 @@ func decodeActionsCreateSelfHostedRunnerGroupForOrgParams(r *http.Request) (Acti
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
 	return params, nil
@@ -1061,7 +1061,7 @@ func decodeActionsCreateSelfHostedRunnerGroupForOrgParams(r *http.Request) (Acti
 
 func decodeActionsDeleteArtifactParams(r *http.Request) (ActionsDeleteArtifactParams, error) {
 	var params ActionsDeleteArtifactParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -1089,10 +1089,10 @@ func decodeActionsDeleteArtifactParams(r *http.Request) (ActionsDeleteArtifactPa
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -1120,10 +1120,10 @@ func decodeActionsDeleteArtifactParams(r *http.Request) (ActionsDeleteArtifactPa
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "artifact_id" located in "Path".
+	// Decode path: artifact_id.
 	{
 		param := chi.URLParam(r, "artifact_id")
 		if len(param) > 0 {
@@ -1151,7 +1151,7 @@ func decodeActionsDeleteArtifactParams(r *http.Request) (ActionsDeleteArtifactPa
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter artifact_id not specified`)
+			return params, errors.New(`path: artifact_id: not specified`)
 		}
 	}
 	return params, nil
@@ -1159,7 +1159,7 @@ func decodeActionsDeleteArtifactParams(r *http.Request) (ActionsDeleteArtifactPa
 
 func decodeActionsDeleteEnvironmentSecretParams(r *http.Request) (ActionsDeleteEnvironmentSecretParams, error) {
 	var params ActionsDeleteEnvironmentSecretParams
-	// Decode param "repository_id" located in "Path".
+	// Decode path: repository_id.
 	{
 		param := chi.URLParam(r, "repository_id")
 		if len(param) > 0 {
@@ -1187,10 +1187,10 @@ func decodeActionsDeleteEnvironmentSecretParams(r *http.Request) (ActionsDeleteE
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repository_id not specified`)
+			return params, errors.New(`path: repository_id: not specified`)
 		}
 	}
-	// Decode param "environment_name" located in "Path".
+	// Decode path: environment_name.
 	{
 		param := chi.URLParam(r, "environment_name")
 		if len(param) > 0 {
@@ -1218,10 +1218,10 @@ func decodeActionsDeleteEnvironmentSecretParams(r *http.Request) (ActionsDeleteE
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter environment_name not specified`)
+			return params, errors.New(`path: environment_name: not specified`)
 		}
 	}
-	// Decode param "secret_name" located in "Path".
+	// Decode path: secret_name.
 	{
 		param := chi.URLParam(r, "secret_name")
 		if len(param) > 0 {
@@ -1249,7 +1249,7 @@ func decodeActionsDeleteEnvironmentSecretParams(r *http.Request) (ActionsDeleteE
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter secret_name not specified`)
+			return params, errors.New(`path: secret_name: not specified`)
 		}
 	}
 	return params, nil
@@ -1257,7 +1257,7 @@ func decodeActionsDeleteEnvironmentSecretParams(r *http.Request) (ActionsDeleteE
 
 func decodeActionsDeleteOrgSecretParams(r *http.Request) (ActionsDeleteOrgSecretParams, error) {
 	var params ActionsDeleteOrgSecretParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -1285,10 +1285,10 @@ func decodeActionsDeleteOrgSecretParams(r *http.Request) (ActionsDeleteOrgSecret
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "secret_name" located in "Path".
+	// Decode path: secret_name.
 	{
 		param := chi.URLParam(r, "secret_name")
 		if len(param) > 0 {
@@ -1316,7 +1316,7 @@ func decodeActionsDeleteOrgSecretParams(r *http.Request) (ActionsDeleteOrgSecret
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter secret_name not specified`)
+			return params, errors.New(`path: secret_name: not specified`)
 		}
 	}
 	return params, nil
@@ -1324,7 +1324,7 @@ func decodeActionsDeleteOrgSecretParams(r *http.Request) (ActionsDeleteOrgSecret
 
 func decodeActionsDeleteRepoSecretParams(r *http.Request) (ActionsDeleteRepoSecretParams, error) {
 	var params ActionsDeleteRepoSecretParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -1352,10 +1352,10 @@ func decodeActionsDeleteRepoSecretParams(r *http.Request) (ActionsDeleteRepoSecr
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -1383,10 +1383,10 @@ func decodeActionsDeleteRepoSecretParams(r *http.Request) (ActionsDeleteRepoSecr
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "secret_name" located in "Path".
+	// Decode path: secret_name.
 	{
 		param := chi.URLParam(r, "secret_name")
 		if len(param) > 0 {
@@ -1414,7 +1414,7 @@ func decodeActionsDeleteRepoSecretParams(r *http.Request) (ActionsDeleteRepoSecr
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter secret_name not specified`)
+			return params, errors.New(`path: secret_name: not specified`)
 		}
 	}
 	return params, nil
@@ -1422,7 +1422,7 @@ func decodeActionsDeleteRepoSecretParams(r *http.Request) (ActionsDeleteRepoSecr
 
 func decodeActionsDeleteSelfHostedRunnerFromOrgParams(r *http.Request) (ActionsDeleteSelfHostedRunnerFromOrgParams, error) {
 	var params ActionsDeleteSelfHostedRunnerFromOrgParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -1450,10 +1450,10 @@ func decodeActionsDeleteSelfHostedRunnerFromOrgParams(r *http.Request) (ActionsD
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "runner_id" located in "Path".
+	// Decode path: runner_id.
 	{
 		param := chi.URLParam(r, "runner_id")
 		if len(param) > 0 {
@@ -1481,7 +1481,7 @@ func decodeActionsDeleteSelfHostedRunnerFromOrgParams(r *http.Request) (ActionsD
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter runner_id not specified`)
+			return params, errors.New(`path: runner_id: not specified`)
 		}
 	}
 	return params, nil
@@ -1489,7 +1489,7 @@ func decodeActionsDeleteSelfHostedRunnerFromOrgParams(r *http.Request) (ActionsD
 
 func decodeActionsDeleteSelfHostedRunnerFromRepoParams(r *http.Request) (ActionsDeleteSelfHostedRunnerFromRepoParams, error) {
 	var params ActionsDeleteSelfHostedRunnerFromRepoParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -1517,10 +1517,10 @@ func decodeActionsDeleteSelfHostedRunnerFromRepoParams(r *http.Request) (Actions
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -1548,10 +1548,10 @@ func decodeActionsDeleteSelfHostedRunnerFromRepoParams(r *http.Request) (Actions
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "runner_id" located in "Path".
+	// Decode path: runner_id.
 	{
 		param := chi.URLParam(r, "runner_id")
 		if len(param) > 0 {
@@ -1579,7 +1579,7 @@ func decodeActionsDeleteSelfHostedRunnerFromRepoParams(r *http.Request) (Actions
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter runner_id not specified`)
+			return params, errors.New(`path: runner_id: not specified`)
 		}
 	}
 	return params, nil
@@ -1587,7 +1587,7 @@ func decodeActionsDeleteSelfHostedRunnerFromRepoParams(r *http.Request) (Actions
 
 func decodeActionsDeleteSelfHostedRunnerGroupFromOrgParams(r *http.Request) (ActionsDeleteSelfHostedRunnerGroupFromOrgParams, error) {
 	var params ActionsDeleteSelfHostedRunnerGroupFromOrgParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -1615,10 +1615,10 @@ func decodeActionsDeleteSelfHostedRunnerGroupFromOrgParams(r *http.Request) (Act
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "runner_group_id" located in "Path".
+	// Decode path: runner_group_id.
 	{
 		param := chi.URLParam(r, "runner_group_id")
 		if len(param) > 0 {
@@ -1646,7 +1646,7 @@ func decodeActionsDeleteSelfHostedRunnerGroupFromOrgParams(r *http.Request) (Act
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter runner_group_id not specified`)
+			return params, errors.New(`path: runner_group_id: not specified`)
 		}
 	}
 	return params, nil
@@ -1654,7 +1654,7 @@ func decodeActionsDeleteSelfHostedRunnerGroupFromOrgParams(r *http.Request) (Act
 
 func decodeActionsDeleteWorkflowRunParams(r *http.Request) (ActionsDeleteWorkflowRunParams, error) {
 	var params ActionsDeleteWorkflowRunParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -1682,10 +1682,10 @@ func decodeActionsDeleteWorkflowRunParams(r *http.Request) (ActionsDeleteWorkflo
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -1713,10 +1713,10 @@ func decodeActionsDeleteWorkflowRunParams(r *http.Request) (ActionsDeleteWorkflo
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "run_id" located in "Path".
+	// Decode path: run_id.
 	{
 		param := chi.URLParam(r, "run_id")
 		if len(param) > 0 {
@@ -1744,7 +1744,7 @@ func decodeActionsDeleteWorkflowRunParams(r *http.Request) (ActionsDeleteWorkflo
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter run_id not specified`)
+			return params, errors.New(`path: run_id: not specified`)
 		}
 	}
 	return params, nil
@@ -1752,7 +1752,7 @@ func decodeActionsDeleteWorkflowRunParams(r *http.Request) (ActionsDeleteWorkflo
 
 func decodeActionsDeleteWorkflowRunLogsParams(r *http.Request) (ActionsDeleteWorkflowRunLogsParams, error) {
 	var params ActionsDeleteWorkflowRunLogsParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -1780,10 +1780,10 @@ func decodeActionsDeleteWorkflowRunLogsParams(r *http.Request) (ActionsDeleteWor
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -1811,10 +1811,10 @@ func decodeActionsDeleteWorkflowRunLogsParams(r *http.Request) (ActionsDeleteWor
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "run_id" located in "Path".
+	// Decode path: run_id.
 	{
 		param := chi.URLParam(r, "run_id")
 		if len(param) > 0 {
@@ -1842,7 +1842,7 @@ func decodeActionsDeleteWorkflowRunLogsParams(r *http.Request) (ActionsDeleteWor
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter run_id not specified`)
+			return params, errors.New(`path: run_id: not specified`)
 		}
 	}
 	return params, nil
@@ -1850,7 +1850,7 @@ func decodeActionsDeleteWorkflowRunLogsParams(r *http.Request) (ActionsDeleteWor
 
 func decodeActionsDisableSelectedRepositoryGithubActionsOrganizationParams(r *http.Request) (ActionsDisableSelectedRepositoryGithubActionsOrganizationParams, error) {
 	var params ActionsDisableSelectedRepositoryGithubActionsOrganizationParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -1878,10 +1878,10 @@ func decodeActionsDisableSelectedRepositoryGithubActionsOrganizationParams(r *ht
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "repository_id" located in "Path".
+	// Decode path: repository_id.
 	{
 		param := chi.URLParam(r, "repository_id")
 		if len(param) > 0 {
@@ -1909,7 +1909,7 @@ func decodeActionsDisableSelectedRepositoryGithubActionsOrganizationParams(r *ht
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repository_id not specified`)
+			return params, errors.New(`path: repository_id: not specified`)
 		}
 	}
 	return params, nil
@@ -1917,7 +1917,7 @@ func decodeActionsDisableSelectedRepositoryGithubActionsOrganizationParams(r *ht
 
 func decodeActionsDownloadArtifactParams(r *http.Request) (ActionsDownloadArtifactParams, error) {
 	var params ActionsDownloadArtifactParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -1945,10 +1945,10 @@ func decodeActionsDownloadArtifactParams(r *http.Request) (ActionsDownloadArtifa
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -1976,10 +1976,10 @@ func decodeActionsDownloadArtifactParams(r *http.Request) (ActionsDownloadArtifa
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "artifact_id" located in "Path".
+	// Decode path: artifact_id.
 	{
 		param := chi.URLParam(r, "artifact_id")
 		if len(param) > 0 {
@@ -2007,10 +2007,10 @@ func decodeActionsDownloadArtifactParams(r *http.Request) (ActionsDownloadArtifa
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter artifact_id not specified`)
+			return params, errors.New(`path: artifact_id: not specified`)
 		}
 	}
-	// Decode param "archive_format" located in "Path".
+	// Decode path: archive_format.
 	{
 		param := chi.URLParam(r, "archive_format")
 		if len(param) > 0 {
@@ -2038,7 +2038,7 @@ func decodeActionsDownloadArtifactParams(r *http.Request) (ActionsDownloadArtifa
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter archive_format not specified`)
+			return params, errors.New(`path: archive_format: not specified`)
 		}
 	}
 	return params, nil
@@ -2046,7 +2046,7 @@ func decodeActionsDownloadArtifactParams(r *http.Request) (ActionsDownloadArtifa
 
 func decodeActionsDownloadJobLogsForWorkflowRunParams(r *http.Request) (ActionsDownloadJobLogsForWorkflowRunParams, error) {
 	var params ActionsDownloadJobLogsForWorkflowRunParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -2074,10 +2074,10 @@ func decodeActionsDownloadJobLogsForWorkflowRunParams(r *http.Request) (ActionsD
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -2105,10 +2105,10 @@ func decodeActionsDownloadJobLogsForWorkflowRunParams(r *http.Request) (ActionsD
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "job_id" located in "Path".
+	// Decode path: job_id.
 	{
 		param := chi.URLParam(r, "job_id")
 		if len(param) > 0 {
@@ -2136,7 +2136,7 @@ func decodeActionsDownloadJobLogsForWorkflowRunParams(r *http.Request) (ActionsD
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter job_id not specified`)
+			return params, errors.New(`path: job_id: not specified`)
 		}
 	}
 	return params, nil
@@ -2144,7 +2144,7 @@ func decodeActionsDownloadJobLogsForWorkflowRunParams(r *http.Request) (ActionsD
 
 func decodeActionsDownloadWorkflowRunLogsParams(r *http.Request) (ActionsDownloadWorkflowRunLogsParams, error) {
 	var params ActionsDownloadWorkflowRunLogsParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -2172,10 +2172,10 @@ func decodeActionsDownloadWorkflowRunLogsParams(r *http.Request) (ActionsDownloa
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -2203,10 +2203,10 @@ func decodeActionsDownloadWorkflowRunLogsParams(r *http.Request) (ActionsDownloa
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "run_id" located in "Path".
+	// Decode path: run_id.
 	{
 		param := chi.URLParam(r, "run_id")
 		if len(param) > 0 {
@@ -2234,7 +2234,7 @@ func decodeActionsDownloadWorkflowRunLogsParams(r *http.Request) (ActionsDownloa
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter run_id not specified`)
+			return params, errors.New(`path: run_id: not specified`)
 		}
 	}
 	return params, nil
@@ -2242,7 +2242,7 @@ func decodeActionsDownloadWorkflowRunLogsParams(r *http.Request) (ActionsDownloa
 
 func decodeActionsEnableSelectedRepositoryGithubActionsOrganizationParams(r *http.Request) (ActionsEnableSelectedRepositoryGithubActionsOrganizationParams, error) {
 	var params ActionsEnableSelectedRepositoryGithubActionsOrganizationParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -2270,10 +2270,10 @@ func decodeActionsEnableSelectedRepositoryGithubActionsOrganizationParams(r *htt
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "repository_id" located in "Path".
+	// Decode path: repository_id.
 	{
 		param := chi.URLParam(r, "repository_id")
 		if len(param) > 0 {
@@ -2301,7 +2301,7 @@ func decodeActionsEnableSelectedRepositoryGithubActionsOrganizationParams(r *htt
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repository_id not specified`)
+			return params, errors.New(`path: repository_id: not specified`)
 		}
 	}
 	return params, nil
@@ -2309,7 +2309,7 @@ func decodeActionsEnableSelectedRepositoryGithubActionsOrganizationParams(r *htt
 
 func decodeActionsGetAllowedActionsOrganizationParams(r *http.Request) (ActionsGetAllowedActionsOrganizationParams, error) {
 	var params ActionsGetAllowedActionsOrganizationParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -2337,7 +2337,7 @@ func decodeActionsGetAllowedActionsOrganizationParams(r *http.Request) (ActionsG
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
 	return params, nil
@@ -2345,7 +2345,7 @@ func decodeActionsGetAllowedActionsOrganizationParams(r *http.Request) (ActionsG
 
 func decodeActionsGetAllowedActionsRepositoryParams(r *http.Request) (ActionsGetAllowedActionsRepositoryParams, error) {
 	var params ActionsGetAllowedActionsRepositoryParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -2373,10 +2373,10 @@ func decodeActionsGetAllowedActionsRepositoryParams(r *http.Request) (ActionsGet
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -2404,7 +2404,7 @@ func decodeActionsGetAllowedActionsRepositoryParams(r *http.Request) (ActionsGet
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
 	return params, nil
@@ -2412,7 +2412,7 @@ func decodeActionsGetAllowedActionsRepositoryParams(r *http.Request) (ActionsGet
 
 func decodeActionsGetArtifactParams(r *http.Request) (ActionsGetArtifactParams, error) {
 	var params ActionsGetArtifactParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -2440,10 +2440,10 @@ func decodeActionsGetArtifactParams(r *http.Request) (ActionsGetArtifactParams, 
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -2471,10 +2471,10 @@ func decodeActionsGetArtifactParams(r *http.Request) (ActionsGetArtifactParams, 
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "artifact_id" located in "Path".
+	// Decode path: artifact_id.
 	{
 		param := chi.URLParam(r, "artifact_id")
 		if len(param) > 0 {
@@ -2502,7 +2502,7 @@ func decodeActionsGetArtifactParams(r *http.Request) (ActionsGetArtifactParams, 
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter artifact_id not specified`)
+			return params, errors.New(`path: artifact_id: not specified`)
 		}
 	}
 	return params, nil
@@ -2510,7 +2510,7 @@ func decodeActionsGetArtifactParams(r *http.Request) (ActionsGetArtifactParams, 
 
 func decodeActionsGetEnvironmentPublicKeyParams(r *http.Request) (ActionsGetEnvironmentPublicKeyParams, error) {
 	var params ActionsGetEnvironmentPublicKeyParams
-	// Decode param "repository_id" located in "Path".
+	// Decode path: repository_id.
 	{
 		param := chi.URLParam(r, "repository_id")
 		if len(param) > 0 {
@@ -2538,10 +2538,10 @@ func decodeActionsGetEnvironmentPublicKeyParams(r *http.Request) (ActionsGetEnvi
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repository_id not specified`)
+			return params, errors.New(`path: repository_id: not specified`)
 		}
 	}
-	// Decode param "environment_name" located in "Path".
+	// Decode path: environment_name.
 	{
 		param := chi.URLParam(r, "environment_name")
 		if len(param) > 0 {
@@ -2569,7 +2569,7 @@ func decodeActionsGetEnvironmentPublicKeyParams(r *http.Request) (ActionsGetEnvi
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter environment_name not specified`)
+			return params, errors.New(`path: environment_name: not specified`)
 		}
 	}
 	return params, nil
@@ -2577,7 +2577,7 @@ func decodeActionsGetEnvironmentPublicKeyParams(r *http.Request) (ActionsGetEnvi
 
 func decodeActionsGetEnvironmentSecretParams(r *http.Request) (ActionsGetEnvironmentSecretParams, error) {
 	var params ActionsGetEnvironmentSecretParams
-	// Decode param "repository_id" located in "Path".
+	// Decode path: repository_id.
 	{
 		param := chi.URLParam(r, "repository_id")
 		if len(param) > 0 {
@@ -2605,10 +2605,10 @@ func decodeActionsGetEnvironmentSecretParams(r *http.Request) (ActionsGetEnviron
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repository_id not specified`)
+			return params, errors.New(`path: repository_id: not specified`)
 		}
 	}
-	// Decode param "environment_name" located in "Path".
+	// Decode path: environment_name.
 	{
 		param := chi.URLParam(r, "environment_name")
 		if len(param) > 0 {
@@ -2636,10 +2636,10 @@ func decodeActionsGetEnvironmentSecretParams(r *http.Request) (ActionsGetEnviron
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter environment_name not specified`)
+			return params, errors.New(`path: environment_name: not specified`)
 		}
 	}
-	// Decode param "secret_name" located in "Path".
+	// Decode path: secret_name.
 	{
 		param := chi.URLParam(r, "secret_name")
 		if len(param) > 0 {
@@ -2667,7 +2667,7 @@ func decodeActionsGetEnvironmentSecretParams(r *http.Request) (ActionsGetEnviron
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter secret_name not specified`)
+			return params, errors.New(`path: secret_name: not specified`)
 		}
 	}
 	return params, nil
@@ -2675,7 +2675,7 @@ func decodeActionsGetEnvironmentSecretParams(r *http.Request) (ActionsGetEnviron
 
 func decodeActionsGetGithubActionsPermissionsOrganizationParams(r *http.Request) (ActionsGetGithubActionsPermissionsOrganizationParams, error) {
 	var params ActionsGetGithubActionsPermissionsOrganizationParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -2703,7 +2703,7 @@ func decodeActionsGetGithubActionsPermissionsOrganizationParams(r *http.Request)
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
 	return params, nil
@@ -2711,7 +2711,7 @@ func decodeActionsGetGithubActionsPermissionsOrganizationParams(r *http.Request)
 
 func decodeActionsGetGithubActionsPermissionsRepositoryParams(r *http.Request) (ActionsGetGithubActionsPermissionsRepositoryParams, error) {
 	var params ActionsGetGithubActionsPermissionsRepositoryParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -2739,10 +2739,10 @@ func decodeActionsGetGithubActionsPermissionsRepositoryParams(r *http.Request) (
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -2770,7 +2770,7 @@ func decodeActionsGetGithubActionsPermissionsRepositoryParams(r *http.Request) (
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
 	return params, nil
@@ -2778,7 +2778,7 @@ func decodeActionsGetGithubActionsPermissionsRepositoryParams(r *http.Request) (
 
 func decodeActionsGetJobForWorkflowRunParams(r *http.Request) (ActionsGetJobForWorkflowRunParams, error) {
 	var params ActionsGetJobForWorkflowRunParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -2806,10 +2806,10 @@ func decodeActionsGetJobForWorkflowRunParams(r *http.Request) (ActionsGetJobForW
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -2837,10 +2837,10 @@ func decodeActionsGetJobForWorkflowRunParams(r *http.Request) (ActionsGetJobForW
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "job_id" located in "Path".
+	// Decode path: job_id.
 	{
 		param := chi.URLParam(r, "job_id")
 		if len(param) > 0 {
@@ -2868,7 +2868,7 @@ func decodeActionsGetJobForWorkflowRunParams(r *http.Request) (ActionsGetJobForW
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter job_id not specified`)
+			return params, errors.New(`path: job_id: not specified`)
 		}
 	}
 	return params, nil
@@ -2876,7 +2876,7 @@ func decodeActionsGetJobForWorkflowRunParams(r *http.Request) (ActionsGetJobForW
 
 func decodeActionsGetOrgPublicKeyParams(r *http.Request) (ActionsGetOrgPublicKeyParams, error) {
 	var params ActionsGetOrgPublicKeyParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -2904,7 +2904,7 @@ func decodeActionsGetOrgPublicKeyParams(r *http.Request) (ActionsGetOrgPublicKey
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
 	return params, nil
@@ -2912,7 +2912,7 @@ func decodeActionsGetOrgPublicKeyParams(r *http.Request) (ActionsGetOrgPublicKey
 
 func decodeActionsGetOrgSecretParams(r *http.Request) (ActionsGetOrgSecretParams, error) {
 	var params ActionsGetOrgSecretParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -2940,10 +2940,10 @@ func decodeActionsGetOrgSecretParams(r *http.Request) (ActionsGetOrgSecretParams
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "secret_name" located in "Path".
+	// Decode path: secret_name.
 	{
 		param := chi.URLParam(r, "secret_name")
 		if len(param) > 0 {
@@ -2971,7 +2971,7 @@ func decodeActionsGetOrgSecretParams(r *http.Request) (ActionsGetOrgSecretParams
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter secret_name not specified`)
+			return params, errors.New(`path: secret_name: not specified`)
 		}
 	}
 	return params, nil
@@ -2979,7 +2979,7 @@ func decodeActionsGetOrgSecretParams(r *http.Request) (ActionsGetOrgSecretParams
 
 func decodeActionsGetRepoPublicKeyParams(r *http.Request) (ActionsGetRepoPublicKeyParams, error) {
 	var params ActionsGetRepoPublicKeyParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -3007,10 +3007,10 @@ func decodeActionsGetRepoPublicKeyParams(r *http.Request) (ActionsGetRepoPublicK
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -3038,7 +3038,7 @@ func decodeActionsGetRepoPublicKeyParams(r *http.Request) (ActionsGetRepoPublicK
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
 	return params, nil
@@ -3046,7 +3046,7 @@ func decodeActionsGetRepoPublicKeyParams(r *http.Request) (ActionsGetRepoPublicK
 
 func decodeActionsGetRepoSecretParams(r *http.Request) (ActionsGetRepoSecretParams, error) {
 	var params ActionsGetRepoSecretParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -3074,10 +3074,10 @@ func decodeActionsGetRepoSecretParams(r *http.Request) (ActionsGetRepoSecretPara
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -3105,10 +3105,10 @@ func decodeActionsGetRepoSecretParams(r *http.Request) (ActionsGetRepoSecretPara
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "secret_name" located in "Path".
+	// Decode path: secret_name.
 	{
 		param := chi.URLParam(r, "secret_name")
 		if len(param) > 0 {
@@ -3136,7 +3136,7 @@ func decodeActionsGetRepoSecretParams(r *http.Request) (ActionsGetRepoSecretPara
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter secret_name not specified`)
+			return params, errors.New(`path: secret_name: not specified`)
 		}
 	}
 	return params, nil
@@ -3144,7 +3144,7 @@ func decodeActionsGetRepoSecretParams(r *http.Request) (ActionsGetRepoSecretPara
 
 func decodeActionsGetReviewsForRunParams(r *http.Request) (ActionsGetReviewsForRunParams, error) {
 	var params ActionsGetReviewsForRunParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -3172,10 +3172,10 @@ func decodeActionsGetReviewsForRunParams(r *http.Request) (ActionsGetReviewsForR
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -3203,10 +3203,10 @@ func decodeActionsGetReviewsForRunParams(r *http.Request) (ActionsGetReviewsForR
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "run_id" located in "Path".
+	// Decode path: run_id.
 	{
 		param := chi.URLParam(r, "run_id")
 		if len(param) > 0 {
@@ -3234,7 +3234,7 @@ func decodeActionsGetReviewsForRunParams(r *http.Request) (ActionsGetReviewsForR
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter run_id not specified`)
+			return params, errors.New(`path: run_id: not specified`)
 		}
 	}
 	return params, nil
@@ -3242,7 +3242,7 @@ func decodeActionsGetReviewsForRunParams(r *http.Request) (ActionsGetReviewsForR
 
 func decodeActionsGetSelfHostedRunnerForOrgParams(r *http.Request) (ActionsGetSelfHostedRunnerForOrgParams, error) {
 	var params ActionsGetSelfHostedRunnerForOrgParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -3270,10 +3270,10 @@ func decodeActionsGetSelfHostedRunnerForOrgParams(r *http.Request) (ActionsGetSe
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "runner_id" located in "Path".
+	// Decode path: runner_id.
 	{
 		param := chi.URLParam(r, "runner_id")
 		if len(param) > 0 {
@@ -3301,7 +3301,7 @@ func decodeActionsGetSelfHostedRunnerForOrgParams(r *http.Request) (ActionsGetSe
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter runner_id not specified`)
+			return params, errors.New(`path: runner_id: not specified`)
 		}
 	}
 	return params, nil
@@ -3309,7 +3309,7 @@ func decodeActionsGetSelfHostedRunnerForOrgParams(r *http.Request) (ActionsGetSe
 
 func decodeActionsGetSelfHostedRunnerForRepoParams(r *http.Request) (ActionsGetSelfHostedRunnerForRepoParams, error) {
 	var params ActionsGetSelfHostedRunnerForRepoParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -3337,10 +3337,10 @@ func decodeActionsGetSelfHostedRunnerForRepoParams(r *http.Request) (ActionsGetS
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -3368,10 +3368,10 @@ func decodeActionsGetSelfHostedRunnerForRepoParams(r *http.Request) (ActionsGetS
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "runner_id" located in "Path".
+	// Decode path: runner_id.
 	{
 		param := chi.URLParam(r, "runner_id")
 		if len(param) > 0 {
@@ -3399,7 +3399,7 @@ func decodeActionsGetSelfHostedRunnerForRepoParams(r *http.Request) (ActionsGetS
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter runner_id not specified`)
+			return params, errors.New(`path: runner_id: not specified`)
 		}
 	}
 	return params, nil
@@ -3407,7 +3407,7 @@ func decodeActionsGetSelfHostedRunnerForRepoParams(r *http.Request) (ActionsGetS
 
 func decodeActionsGetSelfHostedRunnerGroupForOrgParams(r *http.Request) (ActionsGetSelfHostedRunnerGroupForOrgParams, error) {
 	var params ActionsGetSelfHostedRunnerGroupForOrgParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -3435,10 +3435,10 @@ func decodeActionsGetSelfHostedRunnerGroupForOrgParams(r *http.Request) (Actions
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "runner_group_id" located in "Path".
+	// Decode path: runner_group_id.
 	{
 		param := chi.URLParam(r, "runner_group_id")
 		if len(param) > 0 {
@@ -3466,7 +3466,7 @@ func decodeActionsGetSelfHostedRunnerGroupForOrgParams(r *http.Request) (Actions
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter runner_group_id not specified`)
+			return params, errors.New(`path: runner_group_id: not specified`)
 		}
 	}
 	return params, nil
@@ -3474,7 +3474,7 @@ func decodeActionsGetSelfHostedRunnerGroupForOrgParams(r *http.Request) (Actions
 
 func decodeActionsGetWorkflowRunParams(r *http.Request) (ActionsGetWorkflowRunParams, error) {
 	var params ActionsGetWorkflowRunParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -3502,10 +3502,10 @@ func decodeActionsGetWorkflowRunParams(r *http.Request) (ActionsGetWorkflowRunPa
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -3533,10 +3533,10 @@ func decodeActionsGetWorkflowRunParams(r *http.Request) (ActionsGetWorkflowRunPa
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "run_id" located in "Path".
+	// Decode path: run_id.
 	{
 		param := chi.URLParam(r, "run_id")
 		if len(param) > 0 {
@@ -3564,7 +3564,7 @@ func decodeActionsGetWorkflowRunParams(r *http.Request) (ActionsGetWorkflowRunPa
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter run_id not specified`)
+			return params, errors.New(`path: run_id: not specified`)
 		}
 	}
 	return params, nil
@@ -3572,7 +3572,7 @@ func decodeActionsGetWorkflowRunParams(r *http.Request) (ActionsGetWorkflowRunPa
 
 func decodeActionsGetWorkflowRunUsageParams(r *http.Request) (ActionsGetWorkflowRunUsageParams, error) {
 	var params ActionsGetWorkflowRunUsageParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -3600,10 +3600,10 @@ func decodeActionsGetWorkflowRunUsageParams(r *http.Request) (ActionsGetWorkflow
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -3631,10 +3631,10 @@ func decodeActionsGetWorkflowRunUsageParams(r *http.Request) (ActionsGetWorkflow
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "run_id" located in "Path".
+	// Decode path: run_id.
 	{
 		param := chi.URLParam(r, "run_id")
 		if len(param) > 0 {
@@ -3662,7 +3662,7 @@ func decodeActionsGetWorkflowRunUsageParams(r *http.Request) (ActionsGetWorkflow
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter run_id not specified`)
+			return params, errors.New(`path: run_id: not specified`)
 		}
 	}
 	return params, nil
@@ -3670,7 +3670,7 @@ func decodeActionsGetWorkflowRunUsageParams(r *http.Request) (ActionsGetWorkflow
 
 func decodeActionsListArtifactsForRepoParams(r *http.Request) (ActionsListArtifactsForRepoParams, error) {
 	var params ActionsListArtifactsForRepoParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -3698,10 +3698,10 @@ func decodeActionsListArtifactsForRepoParams(r *http.Request) (ActionsListArtifa
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -3729,10 +3729,10 @@ func decodeActionsListArtifactsForRepoParams(r *http.Request) (ActionsListArtifa
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -3763,11 +3763,11 @@ func decodeActionsListArtifactsForRepoParams(r *http.Request) (ActionsListArtifa
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -3798,7 +3798,7 @@ func decodeActionsListArtifactsForRepoParams(r *http.Request) (ActionsListArtifa
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -3807,7 +3807,7 @@ func decodeActionsListArtifactsForRepoParams(r *http.Request) (ActionsListArtifa
 
 func decodeActionsListEnvironmentSecretsParams(r *http.Request) (ActionsListEnvironmentSecretsParams, error) {
 	var params ActionsListEnvironmentSecretsParams
-	// Decode param "repository_id" located in "Path".
+	// Decode path: repository_id.
 	{
 		param := chi.URLParam(r, "repository_id")
 		if len(param) > 0 {
@@ -3835,10 +3835,10 @@ func decodeActionsListEnvironmentSecretsParams(r *http.Request) (ActionsListEnvi
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repository_id not specified`)
+			return params, errors.New(`path: repository_id: not specified`)
 		}
 	}
-	// Decode param "environment_name" located in "Path".
+	// Decode path: environment_name.
 	{
 		param := chi.URLParam(r, "environment_name")
 		if len(param) > 0 {
@@ -3866,10 +3866,10 @@ func decodeActionsListEnvironmentSecretsParams(r *http.Request) (ActionsListEnvi
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter environment_name not specified`)
+			return params, errors.New(`path: environment_name: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -3900,11 +3900,11 @@ func decodeActionsListEnvironmentSecretsParams(r *http.Request) (ActionsListEnvi
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -3935,7 +3935,7 @@ func decodeActionsListEnvironmentSecretsParams(r *http.Request) (ActionsListEnvi
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -3944,7 +3944,7 @@ func decodeActionsListEnvironmentSecretsParams(r *http.Request) (ActionsListEnvi
 
 func decodeActionsListJobsForWorkflowRunParams(r *http.Request) (ActionsListJobsForWorkflowRunParams, error) {
 	var params ActionsListJobsForWorkflowRunParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -3972,10 +3972,10 @@ func decodeActionsListJobsForWorkflowRunParams(r *http.Request) (ActionsListJobs
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -4003,10 +4003,10 @@ func decodeActionsListJobsForWorkflowRunParams(r *http.Request) (ActionsListJobs
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "run_id" located in "Path".
+	// Decode path: run_id.
 	{
 		param := chi.URLParam(r, "run_id")
 		if len(param) > 0 {
@@ -4034,10 +4034,10 @@ func decodeActionsListJobsForWorkflowRunParams(r *http.Request) (ActionsListJobs
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter run_id not specified`)
+			return params, errors.New(`path: run_id: not specified`)
 		}
 	}
-	// Decode param "filter" located in "Query".
+	// Decode query: filter.
 	{
 		values, ok := r.URL.Query()["filter"]
 		if ok {
@@ -4068,7 +4068,7 @@ func decodeActionsListJobsForWorkflowRunParams(r *http.Request) (ActionsListJobs
 				params.Filter.SetTo(ParamsFilterValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter filter located in query`)
+				return params, errors.Wrap(err, `query: filter: parse`)
 			}
 			if err := func() error {
 
@@ -4087,11 +4087,11 @@ func decodeActionsListJobsForWorkflowRunParams(r *http.Request) (ActionsListJobs
 
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `invalid parameter filter (query`)
+				return params, errors.Wrap(err, `query: filter: invalid`)
 			}
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -4122,11 +4122,11 @@ func decodeActionsListJobsForWorkflowRunParams(r *http.Request) (ActionsListJobs
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -4157,7 +4157,7 @@ func decodeActionsListJobsForWorkflowRunParams(r *http.Request) (ActionsListJobs
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -4166,7 +4166,7 @@ func decodeActionsListJobsForWorkflowRunParams(r *http.Request) (ActionsListJobs
 
 func decodeActionsListOrgSecretsParams(r *http.Request) (ActionsListOrgSecretsParams, error) {
 	var params ActionsListOrgSecretsParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -4194,10 +4194,10 @@ func decodeActionsListOrgSecretsParams(r *http.Request) (ActionsListOrgSecretsPa
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -4228,11 +4228,11 @@ func decodeActionsListOrgSecretsParams(r *http.Request) (ActionsListOrgSecretsPa
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -4263,7 +4263,7 @@ func decodeActionsListOrgSecretsParams(r *http.Request) (ActionsListOrgSecretsPa
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -4272,7 +4272,7 @@ func decodeActionsListOrgSecretsParams(r *http.Request) (ActionsListOrgSecretsPa
 
 func decodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams(r *http.Request) (ActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams, error) {
 	var params ActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -4300,10 +4300,10 @@ func decodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams(r *http.Reque
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "runner_group_id" located in "Path".
+	// Decode path: runner_group_id.
 	{
 		param := chi.URLParam(r, "runner_group_id")
 		if len(param) > 0 {
@@ -4331,10 +4331,10 @@ func decodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams(r *http.Reque
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter runner_group_id not specified`)
+			return params, errors.New(`path: runner_group_id: not specified`)
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -4365,11 +4365,11 @@ func decodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams(r *http.Reque
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -4400,7 +4400,7 @@ func decodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams(r *http.Reque
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
@@ -4409,7 +4409,7 @@ func decodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams(r *http.Reque
 
 func decodeActionsListRepoSecretsParams(r *http.Request) (ActionsListRepoSecretsParams, error) {
 	var params ActionsListRepoSecretsParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -4437,10 +4437,10 @@ func decodeActionsListRepoSecretsParams(r *http.Request) (ActionsListRepoSecrets
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -4468,10 +4468,10 @@ func decodeActionsListRepoSecretsParams(r *http.Request) (ActionsListRepoSecrets
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -4502,11 +4502,11 @@ func decodeActionsListRepoSecretsParams(r *http.Request) (ActionsListRepoSecrets
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -4537,7 +4537,7 @@ func decodeActionsListRepoSecretsParams(r *http.Request) (ActionsListRepoSecrets
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -4546,7 +4546,7 @@ func decodeActionsListRepoSecretsParams(r *http.Request) (ActionsListRepoSecrets
 
 func decodeActionsListRepoWorkflowsParams(r *http.Request) (ActionsListRepoWorkflowsParams, error) {
 	var params ActionsListRepoWorkflowsParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -4574,10 +4574,10 @@ func decodeActionsListRepoWorkflowsParams(r *http.Request) (ActionsListRepoWorkf
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -4605,10 +4605,10 @@ func decodeActionsListRepoWorkflowsParams(r *http.Request) (ActionsListRepoWorkf
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -4639,11 +4639,11 @@ func decodeActionsListRepoWorkflowsParams(r *http.Request) (ActionsListRepoWorkf
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -4674,7 +4674,7 @@ func decodeActionsListRepoWorkflowsParams(r *http.Request) (ActionsListRepoWorkf
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -4683,7 +4683,7 @@ func decodeActionsListRepoWorkflowsParams(r *http.Request) (ActionsListRepoWorkf
 
 func decodeActionsListRunnerApplicationsForOrgParams(r *http.Request) (ActionsListRunnerApplicationsForOrgParams, error) {
 	var params ActionsListRunnerApplicationsForOrgParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -4711,7 +4711,7 @@ func decodeActionsListRunnerApplicationsForOrgParams(r *http.Request) (ActionsLi
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
 	return params, nil
@@ -4719,7 +4719,7 @@ func decodeActionsListRunnerApplicationsForOrgParams(r *http.Request) (ActionsLi
 
 func decodeActionsListRunnerApplicationsForRepoParams(r *http.Request) (ActionsListRunnerApplicationsForRepoParams, error) {
 	var params ActionsListRunnerApplicationsForRepoParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -4747,10 +4747,10 @@ func decodeActionsListRunnerApplicationsForRepoParams(r *http.Request) (ActionsL
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -4778,7 +4778,7 @@ func decodeActionsListRunnerApplicationsForRepoParams(r *http.Request) (ActionsL
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
 	return params, nil
@@ -4786,7 +4786,7 @@ func decodeActionsListRunnerApplicationsForRepoParams(r *http.Request) (ActionsL
 
 func decodeActionsListSelectedReposForOrgSecretParams(r *http.Request) (ActionsListSelectedReposForOrgSecretParams, error) {
 	var params ActionsListSelectedReposForOrgSecretParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -4814,10 +4814,10 @@ func decodeActionsListSelectedReposForOrgSecretParams(r *http.Request) (ActionsL
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "secret_name" located in "Path".
+	// Decode path: secret_name.
 	{
 		param := chi.URLParam(r, "secret_name")
 		if len(param) > 0 {
@@ -4845,10 +4845,10 @@ func decodeActionsListSelectedReposForOrgSecretParams(r *http.Request) (ActionsL
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter secret_name not specified`)
+			return params, errors.New(`path: secret_name: not specified`)
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -4879,11 +4879,11 @@ func decodeActionsListSelectedReposForOrgSecretParams(r *http.Request) (ActionsL
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -4914,7 +4914,7 @@ func decodeActionsListSelectedReposForOrgSecretParams(r *http.Request) (ActionsL
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
@@ -4923,7 +4923,7 @@ func decodeActionsListSelectedReposForOrgSecretParams(r *http.Request) (ActionsL
 
 func decodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams(r *http.Request) (ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams, error) {
 	var params ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -4951,10 +4951,10 @@ func decodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -4985,11 +4985,11 @@ func decodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -5020,7 +5020,7 @@ func decodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -5029,7 +5029,7 @@ func decodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams
 
 func decodeActionsListSelfHostedRunnerGroupsForOrgParams(r *http.Request) (ActionsListSelfHostedRunnerGroupsForOrgParams, error) {
 	var params ActionsListSelfHostedRunnerGroupsForOrgParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -5057,10 +5057,10 @@ func decodeActionsListSelfHostedRunnerGroupsForOrgParams(r *http.Request) (Actio
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -5091,11 +5091,11 @@ func decodeActionsListSelfHostedRunnerGroupsForOrgParams(r *http.Request) (Actio
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -5126,7 +5126,7 @@ func decodeActionsListSelfHostedRunnerGroupsForOrgParams(r *http.Request) (Actio
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -5135,7 +5135,7 @@ func decodeActionsListSelfHostedRunnerGroupsForOrgParams(r *http.Request) (Actio
 
 func decodeActionsListSelfHostedRunnersForOrgParams(r *http.Request) (ActionsListSelfHostedRunnersForOrgParams, error) {
 	var params ActionsListSelfHostedRunnersForOrgParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -5163,10 +5163,10 @@ func decodeActionsListSelfHostedRunnersForOrgParams(r *http.Request) (ActionsLis
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -5197,11 +5197,11 @@ func decodeActionsListSelfHostedRunnersForOrgParams(r *http.Request) (ActionsLis
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -5232,7 +5232,7 @@ func decodeActionsListSelfHostedRunnersForOrgParams(r *http.Request) (ActionsLis
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -5241,7 +5241,7 @@ func decodeActionsListSelfHostedRunnersForOrgParams(r *http.Request) (ActionsLis
 
 func decodeActionsListSelfHostedRunnersForRepoParams(r *http.Request) (ActionsListSelfHostedRunnersForRepoParams, error) {
 	var params ActionsListSelfHostedRunnersForRepoParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -5269,10 +5269,10 @@ func decodeActionsListSelfHostedRunnersForRepoParams(r *http.Request) (ActionsLi
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -5300,10 +5300,10 @@ func decodeActionsListSelfHostedRunnersForRepoParams(r *http.Request) (ActionsLi
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -5334,11 +5334,11 @@ func decodeActionsListSelfHostedRunnersForRepoParams(r *http.Request) (ActionsLi
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -5369,7 +5369,7 @@ func decodeActionsListSelfHostedRunnersForRepoParams(r *http.Request) (ActionsLi
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -5378,7 +5378,7 @@ func decodeActionsListSelfHostedRunnersForRepoParams(r *http.Request) (ActionsLi
 
 func decodeActionsListSelfHostedRunnersInGroupForOrgParams(r *http.Request) (ActionsListSelfHostedRunnersInGroupForOrgParams, error) {
 	var params ActionsListSelfHostedRunnersInGroupForOrgParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -5406,10 +5406,10 @@ func decodeActionsListSelfHostedRunnersInGroupForOrgParams(r *http.Request) (Act
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "runner_group_id" located in "Path".
+	// Decode path: runner_group_id.
 	{
 		param := chi.URLParam(r, "runner_group_id")
 		if len(param) > 0 {
@@ -5437,10 +5437,10 @@ func decodeActionsListSelfHostedRunnersInGroupForOrgParams(r *http.Request) (Act
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter runner_group_id not specified`)
+			return params, errors.New(`path: runner_group_id: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -5471,11 +5471,11 @@ func decodeActionsListSelfHostedRunnersInGroupForOrgParams(r *http.Request) (Act
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -5506,7 +5506,7 @@ func decodeActionsListSelfHostedRunnersInGroupForOrgParams(r *http.Request) (Act
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -5515,7 +5515,7 @@ func decodeActionsListSelfHostedRunnersInGroupForOrgParams(r *http.Request) (Act
 
 func decodeActionsListWorkflowRunArtifactsParams(r *http.Request) (ActionsListWorkflowRunArtifactsParams, error) {
 	var params ActionsListWorkflowRunArtifactsParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -5543,10 +5543,10 @@ func decodeActionsListWorkflowRunArtifactsParams(r *http.Request) (ActionsListWo
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -5574,10 +5574,10 @@ func decodeActionsListWorkflowRunArtifactsParams(r *http.Request) (ActionsListWo
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "run_id" located in "Path".
+	// Decode path: run_id.
 	{
 		param := chi.URLParam(r, "run_id")
 		if len(param) > 0 {
@@ -5605,10 +5605,10 @@ func decodeActionsListWorkflowRunArtifactsParams(r *http.Request) (ActionsListWo
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter run_id not specified`)
+			return params, errors.New(`path: run_id: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -5639,11 +5639,11 @@ func decodeActionsListWorkflowRunArtifactsParams(r *http.Request) (ActionsListWo
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -5674,7 +5674,7 @@ func decodeActionsListWorkflowRunArtifactsParams(r *http.Request) (ActionsListWo
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -5683,7 +5683,7 @@ func decodeActionsListWorkflowRunArtifactsParams(r *http.Request) (ActionsListWo
 
 func decodeActionsListWorkflowRunsForRepoParams(r *http.Request) (ActionsListWorkflowRunsForRepoParams, error) {
 	var params ActionsListWorkflowRunsForRepoParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -5711,10 +5711,10 @@ func decodeActionsListWorkflowRunsForRepoParams(r *http.Request) (ActionsListWor
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -5742,10 +5742,10 @@ func decodeActionsListWorkflowRunsForRepoParams(r *http.Request) (ActionsListWor
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "actor" located in "Query".
+	// Decode query: actor.
 	{
 		values, ok := r.URL.Query()["actor"]
 		if ok {
@@ -5776,11 +5776,11 @@ func decodeActionsListWorkflowRunsForRepoParams(r *http.Request) (ActionsListWor
 				params.Actor.SetTo(ParamsActorValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter actor located in query`)
+				return params, errors.Wrap(err, `query: actor: parse`)
 			}
 		}
 	}
-	// Decode param "branch" located in "Query".
+	// Decode query: branch.
 	{
 		values, ok := r.URL.Query()["branch"]
 		if ok {
@@ -5811,11 +5811,11 @@ func decodeActionsListWorkflowRunsForRepoParams(r *http.Request) (ActionsListWor
 				params.Branch.SetTo(ParamsBranchValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter branch located in query`)
+				return params, errors.Wrap(err, `query: branch: parse`)
 			}
 		}
 	}
-	// Decode param "event" located in "Query".
+	// Decode query: event.
 	{
 		values, ok := r.URL.Query()["event"]
 		if ok {
@@ -5846,11 +5846,11 @@ func decodeActionsListWorkflowRunsForRepoParams(r *http.Request) (ActionsListWor
 				params.Event.SetTo(ParamsEventValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter event located in query`)
+				return params, errors.Wrap(err, `query: event: parse`)
 			}
 		}
 	}
-	// Decode param "status" located in "Query".
+	// Decode query: status.
 	{
 		values, ok := r.URL.Query()["status"]
 		if ok {
@@ -5881,7 +5881,7 @@ func decodeActionsListWorkflowRunsForRepoParams(r *http.Request) (ActionsListWor
 				params.Status.SetTo(ParamsStatusValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter status located in query`)
+				return params, errors.Wrap(err, `query: status: parse`)
 			}
 			if err := func() error {
 
@@ -5900,11 +5900,11 @@ func decodeActionsListWorkflowRunsForRepoParams(r *http.Request) (ActionsListWor
 
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `invalid parameter status (query`)
+				return params, errors.Wrap(err, `query: status: invalid`)
 			}
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -5935,11 +5935,11 @@ func decodeActionsListWorkflowRunsForRepoParams(r *http.Request) (ActionsListWor
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -5970,11 +5970,11 @@ func decodeActionsListWorkflowRunsForRepoParams(r *http.Request) (ActionsListWor
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
-	// Decode param "created" located in "Query".
+	// Decode query: created.
 	{
 		values, ok := r.URL.Query()["created"]
 		if ok {
@@ -6005,7 +6005,7 @@ func decodeActionsListWorkflowRunsForRepoParams(r *http.Request) (ActionsListWor
 				params.Created.SetTo(ParamsCreatedValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter created located in query`)
+				return params, errors.Wrap(err, `query: created: parse`)
 			}
 		}
 	}
@@ -6014,7 +6014,7 @@ func decodeActionsListWorkflowRunsForRepoParams(r *http.Request) (ActionsListWor
 
 func decodeActionsReRunWorkflowParams(r *http.Request) (ActionsReRunWorkflowParams, error) {
 	var params ActionsReRunWorkflowParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -6042,10 +6042,10 @@ func decodeActionsReRunWorkflowParams(r *http.Request) (ActionsReRunWorkflowPara
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -6073,10 +6073,10 @@ func decodeActionsReRunWorkflowParams(r *http.Request) (ActionsReRunWorkflowPara
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "run_id" located in "Path".
+	// Decode path: run_id.
 	{
 		param := chi.URLParam(r, "run_id")
 		if len(param) > 0 {
@@ -6104,7 +6104,7 @@ func decodeActionsReRunWorkflowParams(r *http.Request) (ActionsReRunWorkflowPara
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter run_id not specified`)
+			return params, errors.New(`path: run_id: not specified`)
 		}
 	}
 	return params, nil
@@ -6112,7 +6112,7 @@ func decodeActionsReRunWorkflowParams(r *http.Request) (ActionsReRunWorkflowPara
 
 func decodeActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams(r *http.Request) (ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams, error) {
 	var params ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -6140,10 +6140,10 @@ func decodeActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams(r *http.Req
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "runner_group_id" located in "Path".
+	// Decode path: runner_group_id.
 	{
 		param := chi.URLParam(r, "runner_group_id")
 		if len(param) > 0 {
@@ -6171,10 +6171,10 @@ func decodeActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams(r *http.Req
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter runner_group_id not specified`)
+			return params, errors.New(`path: runner_group_id: not specified`)
 		}
 	}
-	// Decode param "repository_id" located in "Path".
+	// Decode path: repository_id.
 	{
 		param := chi.URLParam(r, "repository_id")
 		if len(param) > 0 {
@@ -6202,7 +6202,7 @@ func decodeActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams(r *http.Req
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repository_id not specified`)
+			return params, errors.New(`path: repository_id: not specified`)
 		}
 	}
 	return params, nil
@@ -6210,7 +6210,7 @@ func decodeActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams(r *http.Req
 
 func decodeActionsRemoveSelectedRepoFromOrgSecretParams(r *http.Request) (ActionsRemoveSelectedRepoFromOrgSecretParams, error) {
 	var params ActionsRemoveSelectedRepoFromOrgSecretParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -6238,10 +6238,10 @@ func decodeActionsRemoveSelectedRepoFromOrgSecretParams(r *http.Request) (Action
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "secret_name" located in "Path".
+	// Decode path: secret_name.
 	{
 		param := chi.URLParam(r, "secret_name")
 		if len(param) > 0 {
@@ -6269,10 +6269,10 @@ func decodeActionsRemoveSelectedRepoFromOrgSecretParams(r *http.Request) (Action
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter secret_name not specified`)
+			return params, errors.New(`path: secret_name: not specified`)
 		}
 	}
-	// Decode param "repository_id" located in "Path".
+	// Decode path: repository_id.
 	{
 		param := chi.URLParam(r, "repository_id")
 		if len(param) > 0 {
@@ -6300,7 +6300,7 @@ func decodeActionsRemoveSelectedRepoFromOrgSecretParams(r *http.Request) (Action
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repository_id not specified`)
+			return params, errors.New(`path: repository_id: not specified`)
 		}
 	}
 	return params, nil
@@ -6308,7 +6308,7 @@ func decodeActionsRemoveSelectedRepoFromOrgSecretParams(r *http.Request) (Action
 
 func decodeActionsRemoveSelfHostedRunnerFromGroupForOrgParams(r *http.Request) (ActionsRemoveSelfHostedRunnerFromGroupForOrgParams, error) {
 	var params ActionsRemoveSelfHostedRunnerFromGroupForOrgParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -6336,10 +6336,10 @@ func decodeActionsRemoveSelfHostedRunnerFromGroupForOrgParams(r *http.Request) (
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "runner_group_id" located in "Path".
+	// Decode path: runner_group_id.
 	{
 		param := chi.URLParam(r, "runner_group_id")
 		if len(param) > 0 {
@@ -6367,10 +6367,10 @@ func decodeActionsRemoveSelfHostedRunnerFromGroupForOrgParams(r *http.Request) (
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter runner_group_id not specified`)
+			return params, errors.New(`path: runner_group_id: not specified`)
 		}
 	}
-	// Decode param "runner_id" located in "Path".
+	// Decode path: runner_id.
 	{
 		param := chi.URLParam(r, "runner_id")
 		if len(param) > 0 {
@@ -6398,7 +6398,7 @@ func decodeActionsRemoveSelfHostedRunnerFromGroupForOrgParams(r *http.Request) (
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter runner_id not specified`)
+			return params, errors.New(`path: runner_id: not specified`)
 		}
 	}
 	return params, nil
@@ -6406,7 +6406,7 @@ func decodeActionsRemoveSelfHostedRunnerFromGroupForOrgParams(r *http.Request) (
 
 func decodeActionsRetryWorkflowParams(r *http.Request) (ActionsRetryWorkflowParams, error) {
 	var params ActionsRetryWorkflowParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -6434,10 +6434,10 @@ func decodeActionsRetryWorkflowParams(r *http.Request) (ActionsRetryWorkflowPara
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -6465,10 +6465,10 @@ func decodeActionsRetryWorkflowParams(r *http.Request) (ActionsRetryWorkflowPara
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "run_id" located in "Path".
+	// Decode path: run_id.
 	{
 		param := chi.URLParam(r, "run_id")
 		if len(param) > 0 {
@@ -6496,7 +6496,7 @@ func decodeActionsRetryWorkflowParams(r *http.Request) (ActionsRetryWorkflowPara
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter run_id not specified`)
+			return params, errors.New(`path: run_id: not specified`)
 		}
 	}
 	return params, nil
@@ -6504,7 +6504,7 @@ func decodeActionsRetryWorkflowParams(r *http.Request) (ActionsRetryWorkflowPara
 
 func decodeActionsSetAllowedActionsOrganizationParams(r *http.Request) (ActionsSetAllowedActionsOrganizationParams, error) {
 	var params ActionsSetAllowedActionsOrganizationParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -6532,7 +6532,7 @@ func decodeActionsSetAllowedActionsOrganizationParams(r *http.Request) (ActionsS
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
 	return params, nil
@@ -6540,7 +6540,7 @@ func decodeActionsSetAllowedActionsOrganizationParams(r *http.Request) (ActionsS
 
 func decodeActionsSetAllowedActionsRepositoryParams(r *http.Request) (ActionsSetAllowedActionsRepositoryParams, error) {
 	var params ActionsSetAllowedActionsRepositoryParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -6568,10 +6568,10 @@ func decodeActionsSetAllowedActionsRepositoryParams(r *http.Request) (ActionsSet
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -6599,7 +6599,7 @@ func decodeActionsSetAllowedActionsRepositoryParams(r *http.Request) (ActionsSet
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
 	return params, nil
@@ -6607,7 +6607,7 @@ func decodeActionsSetAllowedActionsRepositoryParams(r *http.Request) (ActionsSet
 
 func decodeActionsSetGithubActionsPermissionsOrganizationParams(r *http.Request) (ActionsSetGithubActionsPermissionsOrganizationParams, error) {
 	var params ActionsSetGithubActionsPermissionsOrganizationParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -6635,7 +6635,7 @@ func decodeActionsSetGithubActionsPermissionsOrganizationParams(r *http.Request)
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
 	return params, nil
@@ -6643,7 +6643,7 @@ func decodeActionsSetGithubActionsPermissionsOrganizationParams(r *http.Request)
 
 func decodeActionsSetGithubActionsPermissionsRepositoryParams(r *http.Request) (ActionsSetGithubActionsPermissionsRepositoryParams, error) {
 	var params ActionsSetGithubActionsPermissionsRepositoryParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -6671,10 +6671,10 @@ func decodeActionsSetGithubActionsPermissionsRepositoryParams(r *http.Request) (
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -6702,7 +6702,7 @@ func decodeActionsSetGithubActionsPermissionsRepositoryParams(r *http.Request) (
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
 	return params, nil
@@ -6710,7 +6710,7 @@ func decodeActionsSetGithubActionsPermissionsRepositoryParams(r *http.Request) (
 
 func decodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams(r *http.Request) (ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams, error) {
 	var params ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -6738,10 +6738,10 @@ func decodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams(r *http.Reques
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "runner_group_id" located in "Path".
+	// Decode path: runner_group_id.
 	{
 		param := chi.URLParam(r, "runner_group_id")
 		if len(param) > 0 {
@@ -6769,7 +6769,7 @@ func decodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams(r *http.Reques
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter runner_group_id not specified`)
+			return params, errors.New(`path: runner_group_id: not specified`)
 		}
 	}
 	return params, nil
@@ -6777,7 +6777,7 @@ func decodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams(r *http.Reques
 
 func decodeActionsSetSelectedReposForOrgSecretParams(r *http.Request) (ActionsSetSelectedReposForOrgSecretParams, error) {
 	var params ActionsSetSelectedReposForOrgSecretParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -6805,10 +6805,10 @@ func decodeActionsSetSelectedReposForOrgSecretParams(r *http.Request) (ActionsSe
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "secret_name" located in "Path".
+	// Decode path: secret_name.
 	{
 		param := chi.URLParam(r, "secret_name")
 		if len(param) > 0 {
@@ -6836,7 +6836,7 @@ func decodeActionsSetSelectedReposForOrgSecretParams(r *http.Request) (ActionsSe
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter secret_name not specified`)
+			return params, errors.New(`path: secret_name: not specified`)
 		}
 	}
 	return params, nil
@@ -6844,7 +6844,7 @@ func decodeActionsSetSelectedReposForOrgSecretParams(r *http.Request) (ActionsSe
 
 func decodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams(r *http.Request) (ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams, error) {
 	var params ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -6872,7 +6872,7 @@ func decodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams(
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
 	return params, nil
@@ -6880,7 +6880,7 @@ func decodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams(
 
 func decodeActionsSetSelfHostedRunnersInGroupForOrgParams(r *http.Request) (ActionsSetSelfHostedRunnersInGroupForOrgParams, error) {
 	var params ActionsSetSelfHostedRunnersInGroupForOrgParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -6908,10 +6908,10 @@ func decodeActionsSetSelfHostedRunnersInGroupForOrgParams(r *http.Request) (Acti
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "runner_group_id" located in "Path".
+	// Decode path: runner_group_id.
 	{
 		param := chi.URLParam(r, "runner_group_id")
 		if len(param) > 0 {
@@ -6939,7 +6939,7 @@ func decodeActionsSetSelfHostedRunnersInGroupForOrgParams(r *http.Request) (Acti
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter runner_group_id not specified`)
+			return params, errors.New(`path: runner_group_id: not specified`)
 		}
 	}
 	return params, nil
@@ -6947,7 +6947,7 @@ func decodeActionsSetSelfHostedRunnersInGroupForOrgParams(r *http.Request) (Acti
 
 func decodeActionsUpdateSelfHostedRunnerGroupForOrgParams(r *http.Request) (ActionsUpdateSelfHostedRunnerGroupForOrgParams, error) {
 	var params ActionsUpdateSelfHostedRunnerGroupForOrgParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -6975,10 +6975,10 @@ func decodeActionsUpdateSelfHostedRunnerGroupForOrgParams(r *http.Request) (Acti
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "runner_group_id" located in "Path".
+	// Decode path: runner_group_id.
 	{
 		param := chi.URLParam(r, "runner_group_id")
 		if len(param) > 0 {
@@ -7006,7 +7006,7 @@ func decodeActionsUpdateSelfHostedRunnerGroupForOrgParams(r *http.Request) (Acti
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter runner_group_id not specified`)
+			return params, errors.New(`path: runner_group_id: not specified`)
 		}
 	}
 	return params, nil
@@ -7014,7 +7014,7 @@ func decodeActionsUpdateSelfHostedRunnerGroupForOrgParams(r *http.Request) (Acti
 
 func decodeActivityCheckRepoIsStarredByAuthenticatedUserParams(r *http.Request) (ActivityCheckRepoIsStarredByAuthenticatedUserParams, error) {
 	var params ActivityCheckRepoIsStarredByAuthenticatedUserParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -7042,10 +7042,10 @@ func decodeActivityCheckRepoIsStarredByAuthenticatedUserParams(r *http.Request) 
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -7073,7 +7073,7 @@ func decodeActivityCheckRepoIsStarredByAuthenticatedUserParams(r *http.Request) 
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
 	return params, nil
@@ -7081,7 +7081,7 @@ func decodeActivityCheckRepoIsStarredByAuthenticatedUserParams(r *http.Request) 
 
 func decodeActivityDeleteRepoSubscriptionParams(r *http.Request) (ActivityDeleteRepoSubscriptionParams, error) {
 	var params ActivityDeleteRepoSubscriptionParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -7109,10 +7109,10 @@ func decodeActivityDeleteRepoSubscriptionParams(r *http.Request) (ActivityDelete
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -7140,7 +7140,7 @@ func decodeActivityDeleteRepoSubscriptionParams(r *http.Request) (ActivityDelete
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
 	return params, nil
@@ -7148,7 +7148,7 @@ func decodeActivityDeleteRepoSubscriptionParams(r *http.Request) (ActivityDelete
 
 func decodeActivityDeleteThreadSubscriptionParams(r *http.Request) (ActivityDeleteThreadSubscriptionParams, error) {
 	var params ActivityDeleteThreadSubscriptionParams
-	// Decode param "thread_id" located in "Path".
+	// Decode path: thread_id.
 	{
 		param := chi.URLParam(r, "thread_id")
 		if len(param) > 0 {
@@ -7176,7 +7176,7 @@ func decodeActivityDeleteThreadSubscriptionParams(r *http.Request) (ActivityDele
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter thread_id not specified`)
+			return params, errors.New(`path: thread_id: not specified`)
 		}
 	}
 	return params, nil
@@ -7184,7 +7184,7 @@ func decodeActivityDeleteThreadSubscriptionParams(r *http.Request) (ActivityDele
 
 func decodeActivityGetRepoSubscriptionParams(r *http.Request) (ActivityGetRepoSubscriptionParams, error) {
 	var params ActivityGetRepoSubscriptionParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -7212,10 +7212,10 @@ func decodeActivityGetRepoSubscriptionParams(r *http.Request) (ActivityGetRepoSu
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -7243,7 +7243,7 @@ func decodeActivityGetRepoSubscriptionParams(r *http.Request) (ActivityGetRepoSu
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
 	return params, nil
@@ -7251,7 +7251,7 @@ func decodeActivityGetRepoSubscriptionParams(r *http.Request) (ActivityGetRepoSu
 
 func decodeActivityGetThreadParams(r *http.Request) (ActivityGetThreadParams, error) {
 	var params ActivityGetThreadParams
-	// Decode param "thread_id" located in "Path".
+	// Decode path: thread_id.
 	{
 		param := chi.URLParam(r, "thread_id")
 		if len(param) > 0 {
@@ -7279,7 +7279,7 @@ func decodeActivityGetThreadParams(r *http.Request) (ActivityGetThreadParams, er
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter thread_id not specified`)
+			return params, errors.New(`path: thread_id: not specified`)
 		}
 	}
 	return params, nil
@@ -7287,7 +7287,7 @@ func decodeActivityGetThreadParams(r *http.Request) (ActivityGetThreadParams, er
 
 func decodeActivityGetThreadSubscriptionForAuthenticatedUserParams(r *http.Request) (ActivityGetThreadSubscriptionForAuthenticatedUserParams, error) {
 	var params ActivityGetThreadSubscriptionForAuthenticatedUserParams
-	// Decode param "thread_id" located in "Path".
+	// Decode path: thread_id.
 	{
 		param := chi.URLParam(r, "thread_id")
 		if len(param) > 0 {
@@ -7315,7 +7315,7 @@ func decodeActivityGetThreadSubscriptionForAuthenticatedUserParams(r *http.Reque
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter thread_id not specified`)
+			return params, errors.New(`path: thread_id: not specified`)
 		}
 	}
 	return params, nil
@@ -7323,7 +7323,7 @@ func decodeActivityGetThreadSubscriptionForAuthenticatedUserParams(r *http.Reque
 
 func decodeActivityListEventsForAuthenticatedUserParams(r *http.Request) (ActivityListEventsForAuthenticatedUserParams, error) {
 	var params ActivityListEventsForAuthenticatedUserParams
-	// Decode param "username" located in "Path".
+	// Decode path: username.
 	{
 		param := chi.URLParam(r, "username")
 		if len(param) > 0 {
@@ -7351,10 +7351,10 @@ func decodeActivityListEventsForAuthenticatedUserParams(r *http.Request) (Activi
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter username not specified`)
+			return params, errors.New(`path: username: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -7385,11 +7385,11 @@ func decodeActivityListEventsForAuthenticatedUserParams(r *http.Request) (Activi
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -7420,7 +7420,7 @@ func decodeActivityListEventsForAuthenticatedUserParams(r *http.Request) (Activi
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -7429,7 +7429,7 @@ func decodeActivityListEventsForAuthenticatedUserParams(r *http.Request) (Activi
 
 func decodeActivityListOrgEventsForAuthenticatedUserParams(r *http.Request) (ActivityListOrgEventsForAuthenticatedUserParams, error) {
 	var params ActivityListOrgEventsForAuthenticatedUserParams
-	// Decode param "username" located in "Path".
+	// Decode path: username.
 	{
 		param := chi.URLParam(r, "username")
 		if len(param) > 0 {
@@ -7457,10 +7457,10 @@ func decodeActivityListOrgEventsForAuthenticatedUserParams(r *http.Request) (Act
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter username not specified`)
+			return params, errors.New(`path: username: not specified`)
 		}
 	}
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -7488,10 +7488,10 @@ func decodeActivityListOrgEventsForAuthenticatedUserParams(r *http.Request) (Act
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -7522,11 +7522,11 @@ func decodeActivityListOrgEventsForAuthenticatedUserParams(r *http.Request) (Act
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -7557,7 +7557,7 @@ func decodeActivityListOrgEventsForAuthenticatedUserParams(r *http.Request) (Act
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -7566,7 +7566,7 @@ func decodeActivityListOrgEventsForAuthenticatedUserParams(r *http.Request) (Act
 
 func decodeActivityListPublicEventsParams(r *http.Request) (ActivityListPublicEventsParams, error) {
 	var params ActivityListPublicEventsParams
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -7597,11 +7597,11 @@ func decodeActivityListPublicEventsParams(r *http.Request) (ActivityListPublicEv
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -7632,7 +7632,7 @@ func decodeActivityListPublicEventsParams(r *http.Request) (ActivityListPublicEv
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -7641,7 +7641,7 @@ func decodeActivityListPublicEventsParams(r *http.Request) (ActivityListPublicEv
 
 func decodeActivityListPublicEventsForRepoNetworkParams(r *http.Request) (ActivityListPublicEventsForRepoNetworkParams, error) {
 	var params ActivityListPublicEventsForRepoNetworkParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -7669,10 +7669,10 @@ func decodeActivityListPublicEventsForRepoNetworkParams(r *http.Request) (Activi
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -7700,10 +7700,10 @@ func decodeActivityListPublicEventsForRepoNetworkParams(r *http.Request) (Activi
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -7734,11 +7734,11 @@ func decodeActivityListPublicEventsForRepoNetworkParams(r *http.Request) (Activi
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -7769,7 +7769,7 @@ func decodeActivityListPublicEventsForRepoNetworkParams(r *http.Request) (Activi
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -7778,7 +7778,7 @@ func decodeActivityListPublicEventsForRepoNetworkParams(r *http.Request) (Activi
 
 func decodeActivityListPublicEventsForUserParams(r *http.Request) (ActivityListPublicEventsForUserParams, error) {
 	var params ActivityListPublicEventsForUserParams
-	// Decode param "username" located in "Path".
+	// Decode path: username.
 	{
 		param := chi.URLParam(r, "username")
 		if len(param) > 0 {
@@ -7806,10 +7806,10 @@ func decodeActivityListPublicEventsForUserParams(r *http.Request) (ActivityListP
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter username not specified`)
+			return params, errors.New(`path: username: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -7840,11 +7840,11 @@ func decodeActivityListPublicEventsForUserParams(r *http.Request) (ActivityListP
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -7875,7 +7875,7 @@ func decodeActivityListPublicEventsForUserParams(r *http.Request) (ActivityListP
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -7884,7 +7884,7 @@ func decodeActivityListPublicEventsForUserParams(r *http.Request) (ActivityListP
 
 func decodeActivityListPublicOrgEventsParams(r *http.Request) (ActivityListPublicOrgEventsParams, error) {
 	var params ActivityListPublicOrgEventsParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -7912,10 +7912,10 @@ func decodeActivityListPublicOrgEventsParams(r *http.Request) (ActivityListPubli
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -7946,11 +7946,11 @@ func decodeActivityListPublicOrgEventsParams(r *http.Request) (ActivityListPubli
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -7981,7 +7981,7 @@ func decodeActivityListPublicOrgEventsParams(r *http.Request) (ActivityListPubli
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -7990,7 +7990,7 @@ func decodeActivityListPublicOrgEventsParams(r *http.Request) (ActivityListPubli
 
 func decodeActivityListReceivedEventsForUserParams(r *http.Request) (ActivityListReceivedEventsForUserParams, error) {
 	var params ActivityListReceivedEventsForUserParams
-	// Decode param "username" located in "Path".
+	// Decode path: username.
 	{
 		param := chi.URLParam(r, "username")
 		if len(param) > 0 {
@@ -8018,10 +8018,10 @@ func decodeActivityListReceivedEventsForUserParams(r *http.Request) (ActivityLis
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter username not specified`)
+			return params, errors.New(`path: username: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -8052,11 +8052,11 @@ func decodeActivityListReceivedEventsForUserParams(r *http.Request) (ActivityLis
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -8087,7 +8087,7 @@ func decodeActivityListReceivedEventsForUserParams(r *http.Request) (ActivityLis
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -8096,7 +8096,7 @@ func decodeActivityListReceivedEventsForUserParams(r *http.Request) (ActivityLis
 
 func decodeActivityListReceivedPublicEventsForUserParams(r *http.Request) (ActivityListReceivedPublicEventsForUserParams, error) {
 	var params ActivityListReceivedPublicEventsForUserParams
-	// Decode param "username" located in "Path".
+	// Decode path: username.
 	{
 		param := chi.URLParam(r, "username")
 		if len(param) > 0 {
@@ -8124,10 +8124,10 @@ func decodeActivityListReceivedPublicEventsForUserParams(r *http.Request) (Activ
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter username not specified`)
+			return params, errors.New(`path: username: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -8158,11 +8158,11 @@ func decodeActivityListReceivedPublicEventsForUserParams(r *http.Request) (Activ
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -8193,7 +8193,7 @@ func decodeActivityListReceivedPublicEventsForUserParams(r *http.Request) (Activ
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -8202,7 +8202,7 @@ func decodeActivityListReceivedPublicEventsForUserParams(r *http.Request) (Activ
 
 func decodeActivityListRepoEventsParams(r *http.Request) (ActivityListRepoEventsParams, error) {
 	var params ActivityListRepoEventsParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -8230,10 +8230,10 @@ func decodeActivityListRepoEventsParams(r *http.Request) (ActivityListRepoEvents
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -8261,10 +8261,10 @@ func decodeActivityListRepoEventsParams(r *http.Request) (ActivityListRepoEvents
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -8295,11 +8295,11 @@ func decodeActivityListRepoEventsParams(r *http.Request) (ActivityListRepoEvents
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -8330,7 +8330,7 @@ func decodeActivityListRepoEventsParams(r *http.Request) (ActivityListRepoEvents
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -8339,7 +8339,7 @@ func decodeActivityListRepoEventsParams(r *http.Request) (ActivityListRepoEvents
 
 func decodeActivityListRepoNotificationsForAuthenticatedUserParams(r *http.Request) (ActivityListRepoNotificationsForAuthenticatedUserParams, error) {
 	var params ActivityListRepoNotificationsForAuthenticatedUserParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -8367,10 +8367,10 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(r *http.Reque
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -8398,10 +8398,10 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(r *http.Reque
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "all" located in "Query".
+	// Decode query: all.
 	{
 		values, ok := r.URL.Query()["all"]
 		if ok {
@@ -8432,11 +8432,11 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(r *http.Reque
 				params.All.SetTo(ParamsAllValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter all located in query`)
+				return params, errors.Wrap(err, `query: all: parse`)
 			}
 		}
 	}
-	// Decode param "participating" located in "Query".
+	// Decode query: participating.
 	{
 		values, ok := r.URL.Query()["participating"]
 		if ok {
@@ -8467,11 +8467,11 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(r *http.Reque
 				params.Participating.SetTo(ParamsParticipatingValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter participating located in query`)
+				return params, errors.Wrap(err, `query: participating: parse`)
 			}
 		}
 	}
-	// Decode param "since" located in "Query".
+	// Decode query: since.
 	{
 		values, ok := r.URL.Query()["since"]
 		if ok {
@@ -8502,11 +8502,11 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(r *http.Reque
 				params.Since.SetTo(ParamsSinceValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter since located in query`)
+				return params, errors.Wrap(err, `query: since: parse`)
 			}
 		}
 	}
-	// Decode param "before" located in "Query".
+	// Decode query: before.
 	{
 		values, ok := r.URL.Query()["before"]
 		if ok {
@@ -8537,11 +8537,11 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(r *http.Reque
 				params.Before.SetTo(ParamsBeforeValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter before located in query`)
+				return params, errors.Wrap(err, `query: before: parse`)
 			}
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -8572,11 +8572,11 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(r *http.Reque
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -8607,7 +8607,7 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(r *http.Reque
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -8616,7 +8616,7 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(r *http.Reque
 
 func decodeActivityListReposStarredByAuthenticatedUserParams(r *http.Request) (ActivityListReposStarredByAuthenticatedUserParams, error) {
 	var params ActivityListReposStarredByAuthenticatedUserParams
-	// Decode param "sort" located in "Query".
+	// Decode query: sort.
 	{
 		values, ok := r.URL.Query()["sort"]
 		if ok {
@@ -8647,7 +8647,7 @@ func decodeActivityListReposStarredByAuthenticatedUserParams(r *http.Request) (A
 				params.Sort.SetTo(ParamsSortValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter sort located in query`)
+				return params, errors.Wrap(err, `query: sort: parse`)
 			}
 			if err := func() error {
 
@@ -8666,11 +8666,11 @@ func decodeActivityListReposStarredByAuthenticatedUserParams(r *http.Request) (A
 
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `invalid parameter sort (query`)
+				return params, errors.Wrap(err, `query: sort: invalid`)
 			}
 		}
 	}
-	// Decode param "direction" located in "Query".
+	// Decode query: direction.
 	{
 		values, ok := r.URL.Query()["direction"]
 		if ok {
@@ -8701,7 +8701,7 @@ func decodeActivityListReposStarredByAuthenticatedUserParams(r *http.Request) (A
 				params.Direction.SetTo(ParamsDirectionValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter direction located in query`)
+				return params, errors.Wrap(err, `query: direction: parse`)
 			}
 			if err := func() error {
 
@@ -8720,11 +8720,11 @@ func decodeActivityListReposStarredByAuthenticatedUserParams(r *http.Request) (A
 
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `invalid parameter direction (query`)
+				return params, errors.Wrap(err, `query: direction: invalid`)
 			}
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -8755,11 +8755,11 @@ func decodeActivityListReposStarredByAuthenticatedUserParams(r *http.Request) (A
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -8790,7 +8790,7 @@ func decodeActivityListReposStarredByAuthenticatedUserParams(r *http.Request) (A
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -8799,7 +8799,7 @@ func decodeActivityListReposStarredByAuthenticatedUserParams(r *http.Request) (A
 
 func decodeActivityListReposWatchedByUserParams(r *http.Request) (ActivityListReposWatchedByUserParams, error) {
 	var params ActivityListReposWatchedByUserParams
-	// Decode param "username" located in "Path".
+	// Decode path: username.
 	{
 		param := chi.URLParam(r, "username")
 		if len(param) > 0 {
@@ -8827,10 +8827,10 @@ func decodeActivityListReposWatchedByUserParams(r *http.Request) (ActivityListRe
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter username not specified`)
+			return params, errors.New(`path: username: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -8861,11 +8861,11 @@ func decodeActivityListReposWatchedByUserParams(r *http.Request) (ActivityListRe
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -8896,7 +8896,7 @@ func decodeActivityListReposWatchedByUserParams(r *http.Request) (ActivityListRe
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -8905,7 +8905,7 @@ func decodeActivityListReposWatchedByUserParams(r *http.Request) (ActivityListRe
 
 func decodeActivityListWatchedReposForAuthenticatedUserParams(r *http.Request) (ActivityListWatchedReposForAuthenticatedUserParams, error) {
 	var params ActivityListWatchedReposForAuthenticatedUserParams
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -8936,11 +8936,11 @@ func decodeActivityListWatchedReposForAuthenticatedUserParams(r *http.Request) (
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -8971,7 +8971,7 @@ func decodeActivityListWatchedReposForAuthenticatedUserParams(r *http.Request) (
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -8980,7 +8980,7 @@ func decodeActivityListWatchedReposForAuthenticatedUserParams(r *http.Request) (
 
 func decodeActivityListWatchersForRepoParams(r *http.Request) (ActivityListWatchersForRepoParams, error) {
 	var params ActivityListWatchersForRepoParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -9008,10 +9008,10 @@ func decodeActivityListWatchersForRepoParams(r *http.Request) (ActivityListWatch
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -9039,10 +9039,10 @@ func decodeActivityListWatchersForRepoParams(r *http.Request) (ActivityListWatch
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -9073,11 +9073,11 @@ func decodeActivityListWatchersForRepoParams(r *http.Request) (ActivityListWatch
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -9108,7 +9108,7 @@ func decodeActivityListWatchersForRepoParams(r *http.Request) (ActivityListWatch
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -9117,7 +9117,7 @@ func decodeActivityListWatchersForRepoParams(r *http.Request) (ActivityListWatch
 
 func decodeActivityMarkRepoNotificationsAsReadParams(r *http.Request) (ActivityMarkRepoNotificationsAsReadParams, error) {
 	var params ActivityMarkRepoNotificationsAsReadParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -9145,10 +9145,10 @@ func decodeActivityMarkRepoNotificationsAsReadParams(r *http.Request) (ActivityM
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -9176,7 +9176,7 @@ func decodeActivityMarkRepoNotificationsAsReadParams(r *http.Request) (ActivityM
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
 	return params, nil
@@ -9184,7 +9184,7 @@ func decodeActivityMarkRepoNotificationsAsReadParams(r *http.Request) (ActivityM
 
 func decodeActivityMarkThreadAsReadParams(r *http.Request) (ActivityMarkThreadAsReadParams, error) {
 	var params ActivityMarkThreadAsReadParams
-	// Decode param "thread_id" located in "Path".
+	// Decode path: thread_id.
 	{
 		param := chi.URLParam(r, "thread_id")
 		if len(param) > 0 {
@@ -9212,7 +9212,7 @@ func decodeActivityMarkThreadAsReadParams(r *http.Request) (ActivityMarkThreadAs
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter thread_id not specified`)
+			return params, errors.New(`path: thread_id: not specified`)
 		}
 	}
 	return params, nil
@@ -9220,7 +9220,7 @@ func decodeActivityMarkThreadAsReadParams(r *http.Request) (ActivityMarkThreadAs
 
 func decodeActivitySetRepoSubscriptionParams(r *http.Request) (ActivitySetRepoSubscriptionParams, error) {
 	var params ActivitySetRepoSubscriptionParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -9248,10 +9248,10 @@ func decodeActivitySetRepoSubscriptionParams(r *http.Request) (ActivitySetRepoSu
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -9279,7 +9279,7 @@ func decodeActivitySetRepoSubscriptionParams(r *http.Request) (ActivitySetRepoSu
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
 	return params, nil
@@ -9287,7 +9287,7 @@ func decodeActivitySetRepoSubscriptionParams(r *http.Request) (ActivitySetRepoSu
 
 func decodeActivitySetThreadSubscriptionParams(r *http.Request) (ActivitySetThreadSubscriptionParams, error) {
 	var params ActivitySetThreadSubscriptionParams
-	// Decode param "thread_id" located in "Path".
+	// Decode path: thread_id.
 	{
 		param := chi.URLParam(r, "thread_id")
 		if len(param) > 0 {
@@ -9315,7 +9315,7 @@ func decodeActivitySetThreadSubscriptionParams(r *http.Request) (ActivitySetThre
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter thread_id not specified`)
+			return params, errors.New(`path: thread_id: not specified`)
 		}
 	}
 	return params, nil
@@ -9323,7 +9323,7 @@ func decodeActivitySetThreadSubscriptionParams(r *http.Request) (ActivitySetThre
 
 func decodeActivityStarRepoForAuthenticatedUserParams(r *http.Request) (ActivityStarRepoForAuthenticatedUserParams, error) {
 	var params ActivityStarRepoForAuthenticatedUserParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -9351,10 +9351,10 @@ func decodeActivityStarRepoForAuthenticatedUserParams(r *http.Request) (Activity
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -9382,7 +9382,7 @@ func decodeActivityStarRepoForAuthenticatedUserParams(r *http.Request) (Activity
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
 	return params, nil
@@ -9390,7 +9390,7 @@ func decodeActivityStarRepoForAuthenticatedUserParams(r *http.Request) (Activity
 
 func decodeActivityUnstarRepoForAuthenticatedUserParams(r *http.Request) (ActivityUnstarRepoForAuthenticatedUserParams, error) {
 	var params ActivityUnstarRepoForAuthenticatedUserParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -9418,10 +9418,10 @@ func decodeActivityUnstarRepoForAuthenticatedUserParams(r *http.Request) (Activi
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -9449,7 +9449,7 @@ func decodeActivityUnstarRepoForAuthenticatedUserParams(r *http.Request) (Activi
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
 	return params, nil
@@ -9457,7 +9457,7 @@ func decodeActivityUnstarRepoForAuthenticatedUserParams(r *http.Request) (Activi
 
 func decodeAppsAddRepoToInstallationParams(r *http.Request) (AppsAddRepoToInstallationParams, error) {
 	var params AppsAddRepoToInstallationParams
-	// Decode param "installation_id" located in "Path".
+	// Decode path: installation_id.
 	{
 		param := chi.URLParam(r, "installation_id")
 		if len(param) > 0 {
@@ -9485,10 +9485,10 @@ func decodeAppsAddRepoToInstallationParams(r *http.Request) (AppsAddRepoToInstal
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter installation_id not specified`)
+			return params, errors.New(`path: installation_id: not specified`)
 		}
 	}
-	// Decode param "repository_id" located in "Path".
+	// Decode path: repository_id.
 	{
 		param := chi.URLParam(r, "repository_id")
 		if len(param) > 0 {
@@ -9516,7 +9516,7 @@ func decodeAppsAddRepoToInstallationParams(r *http.Request) (AppsAddRepoToInstal
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repository_id not specified`)
+			return params, errors.New(`path: repository_id: not specified`)
 		}
 	}
 	return params, nil
@@ -9524,7 +9524,7 @@ func decodeAppsAddRepoToInstallationParams(r *http.Request) (AppsAddRepoToInstal
 
 func decodeAppsDeleteInstallationParams(r *http.Request) (AppsDeleteInstallationParams, error) {
 	var params AppsDeleteInstallationParams
-	// Decode param "installation_id" located in "Path".
+	// Decode path: installation_id.
 	{
 		param := chi.URLParam(r, "installation_id")
 		if len(param) > 0 {
@@ -9552,7 +9552,7 @@ func decodeAppsDeleteInstallationParams(r *http.Request) (AppsDeleteInstallation
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter installation_id not specified`)
+			return params, errors.New(`path: installation_id: not specified`)
 		}
 	}
 	return params, nil
@@ -9560,7 +9560,7 @@ func decodeAppsDeleteInstallationParams(r *http.Request) (AppsDeleteInstallation
 
 func decodeAppsGetBySlugParams(r *http.Request) (AppsGetBySlugParams, error) {
 	var params AppsGetBySlugParams
-	// Decode param "app_slug" located in "Path".
+	// Decode path: app_slug.
 	{
 		param := chi.URLParam(r, "app_slug")
 		if len(param) > 0 {
@@ -9588,7 +9588,7 @@ func decodeAppsGetBySlugParams(r *http.Request) (AppsGetBySlugParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter app_slug not specified`)
+			return params, errors.New(`path: app_slug: not specified`)
 		}
 	}
 	return params, nil
@@ -9596,7 +9596,7 @@ func decodeAppsGetBySlugParams(r *http.Request) (AppsGetBySlugParams, error) {
 
 func decodeAppsGetSubscriptionPlanForAccountParams(r *http.Request) (AppsGetSubscriptionPlanForAccountParams, error) {
 	var params AppsGetSubscriptionPlanForAccountParams
-	// Decode param "account_id" located in "Path".
+	// Decode path: account_id.
 	{
 		param := chi.URLParam(r, "account_id")
 		if len(param) > 0 {
@@ -9624,7 +9624,7 @@ func decodeAppsGetSubscriptionPlanForAccountParams(r *http.Request) (AppsGetSubs
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter account_id not specified`)
+			return params, errors.New(`path: account_id: not specified`)
 		}
 	}
 	return params, nil
@@ -9632,7 +9632,7 @@ func decodeAppsGetSubscriptionPlanForAccountParams(r *http.Request) (AppsGetSubs
 
 func decodeAppsGetSubscriptionPlanForAccountStubbedParams(r *http.Request) (AppsGetSubscriptionPlanForAccountStubbedParams, error) {
 	var params AppsGetSubscriptionPlanForAccountStubbedParams
-	// Decode param "account_id" located in "Path".
+	// Decode path: account_id.
 	{
 		param := chi.URLParam(r, "account_id")
 		if len(param) > 0 {
@@ -9660,7 +9660,7 @@ func decodeAppsGetSubscriptionPlanForAccountStubbedParams(r *http.Request) (Apps
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter account_id not specified`)
+			return params, errors.New(`path: account_id: not specified`)
 		}
 	}
 	return params, nil
@@ -9668,7 +9668,7 @@ func decodeAppsGetSubscriptionPlanForAccountStubbedParams(r *http.Request) (Apps
 
 func decodeAppsListAccountsForPlanStubbedParams(r *http.Request) (AppsListAccountsForPlanStubbedParams, error) {
 	var params AppsListAccountsForPlanStubbedParams
-	// Decode param "plan_id" located in "Path".
+	// Decode path: plan_id.
 	{
 		param := chi.URLParam(r, "plan_id")
 		if len(param) > 0 {
@@ -9696,10 +9696,10 @@ func decodeAppsListAccountsForPlanStubbedParams(r *http.Request) (AppsListAccoun
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter plan_id not specified`)
+			return params, errors.New(`path: plan_id: not specified`)
 		}
 	}
-	// Decode param "sort" located in "Query".
+	// Decode query: sort.
 	{
 		values, ok := r.URL.Query()["sort"]
 		if ok {
@@ -9730,7 +9730,7 @@ func decodeAppsListAccountsForPlanStubbedParams(r *http.Request) (AppsListAccoun
 				params.Sort.SetTo(ParamsSortValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter sort located in query`)
+				return params, errors.Wrap(err, `query: sort: parse`)
 			}
 			if err := func() error {
 
@@ -9749,11 +9749,11 @@ func decodeAppsListAccountsForPlanStubbedParams(r *http.Request) (AppsListAccoun
 
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `invalid parameter sort (query`)
+				return params, errors.Wrap(err, `query: sort: invalid`)
 			}
 		}
 	}
-	// Decode param "direction" located in "Query".
+	// Decode query: direction.
 	{
 		values, ok := r.URL.Query()["direction"]
 		if ok {
@@ -9784,7 +9784,7 @@ func decodeAppsListAccountsForPlanStubbedParams(r *http.Request) (AppsListAccoun
 				params.Direction.SetTo(ParamsDirectionValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter direction located in query`)
+				return params, errors.Wrap(err, `query: direction: parse`)
 			}
 			if err := func() error {
 
@@ -9803,11 +9803,11 @@ func decodeAppsListAccountsForPlanStubbedParams(r *http.Request) (AppsListAccoun
 
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `invalid parameter direction (query`)
+				return params, errors.Wrap(err, `query: direction: invalid`)
 			}
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -9838,11 +9838,11 @@ func decodeAppsListAccountsForPlanStubbedParams(r *http.Request) (AppsListAccoun
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -9873,7 +9873,7 @@ func decodeAppsListAccountsForPlanStubbedParams(r *http.Request) (AppsListAccoun
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -9882,7 +9882,7 @@ func decodeAppsListAccountsForPlanStubbedParams(r *http.Request) (AppsListAccoun
 
 func decodeAppsListInstallationReposForAuthenticatedUserParams(r *http.Request) (AppsListInstallationReposForAuthenticatedUserParams, error) {
 	var params AppsListInstallationReposForAuthenticatedUserParams
-	// Decode param "installation_id" located in "Path".
+	// Decode path: installation_id.
 	{
 		param := chi.URLParam(r, "installation_id")
 		if len(param) > 0 {
@@ -9910,10 +9910,10 @@ func decodeAppsListInstallationReposForAuthenticatedUserParams(r *http.Request) 
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter installation_id not specified`)
+			return params, errors.New(`path: installation_id: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -9944,11 +9944,11 @@ func decodeAppsListInstallationReposForAuthenticatedUserParams(r *http.Request) 
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -9979,7 +9979,7 @@ func decodeAppsListInstallationReposForAuthenticatedUserParams(r *http.Request) 
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -9988,7 +9988,7 @@ func decodeAppsListInstallationReposForAuthenticatedUserParams(r *http.Request) 
 
 func decodeAppsListPlansParams(r *http.Request) (AppsListPlansParams, error) {
 	var params AppsListPlansParams
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -10019,11 +10019,11 @@ func decodeAppsListPlansParams(r *http.Request) (AppsListPlansParams, error) {
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -10054,7 +10054,7 @@ func decodeAppsListPlansParams(r *http.Request) (AppsListPlansParams, error) {
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -10063,7 +10063,7 @@ func decodeAppsListPlansParams(r *http.Request) (AppsListPlansParams, error) {
 
 func decodeAppsListPlansStubbedParams(r *http.Request) (AppsListPlansStubbedParams, error) {
 	var params AppsListPlansStubbedParams
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -10094,11 +10094,11 @@ func decodeAppsListPlansStubbedParams(r *http.Request) (AppsListPlansStubbedPara
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -10129,7 +10129,7 @@ func decodeAppsListPlansStubbedParams(r *http.Request) (AppsListPlansStubbedPara
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -10138,7 +10138,7 @@ func decodeAppsListPlansStubbedParams(r *http.Request) (AppsListPlansStubbedPara
 
 func decodeAppsListReposAccessibleToInstallationParams(r *http.Request) (AppsListReposAccessibleToInstallationParams, error) {
 	var params AppsListReposAccessibleToInstallationParams
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -10169,11 +10169,11 @@ func decodeAppsListReposAccessibleToInstallationParams(r *http.Request) (AppsLis
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -10204,7 +10204,7 @@ func decodeAppsListReposAccessibleToInstallationParams(r *http.Request) (AppsLis
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -10213,7 +10213,7 @@ func decodeAppsListReposAccessibleToInstallationParams(r *http.Request) (AppsLis
 
 func decodeAppsListSubscriptionsForAuthenticatedUserParams(r *http.Request) (AppsListSubscriptionsForAuthenticatedUserParams, error) {
 	var params AppsListSubscriptionsForAuthenticatedUserParams
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -10244,11 +10244,11 @@ func decodeAppsListSubscriptionsForAuthenticatedUserParams(r *http.Request) (App
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -10279,7 +10279,7 @@ func decodeAppsListSubscriptionsForAuthenticatedUserParams(r *http.Request) (App
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -10288,7 +10288,7 @@ func decodeAppsListSubscriptionsForAuthenticatedUserParams(r *http.Request) (App
 
 func decodeAppsListSubscriptionsForAuthenticatedUserStubbedParams(r *http.Request) (AppsListSubscriptionsForAuthenticatedUserStubbedParams, error) {
 	var params AppsListSubscriptionsForAuthenticatedUserStubbedParams
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -10319,11 +10319,11 @@ func decodeAppsListSubscriptionsForAuthenticatedUserStubbedParams(r *http.Reques
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -10354,7 +10354,7 @@ func decodeAppsListSubscriptionsForAuthenticatedUserStubbedParams(r *http.Reques
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -10363,7 +10363,7 @@ func decodeAppsListSubscriptionsForAuthenticatedUserStubbedParams(r *http.Reques
 
 func decodeAppsRemoveRepoFromInstallationParams(r *http.Request) (AppsRemoveRepoFromInstallationParams, error) {
 	var params AppsRemoveRepoFromInstallationParams
-	// Decode param "installation_id" located in "Path".
+	// Decode path: installation_id.
 	{
 		param := chi.URLParam(r, "installation_id")
 		if len(param) > 0 {
@@ -10391,10 +10391,10 @@ func decodeAppsRemoveRepoFromInstallationParams(r *http.Request) (AppsRemoveRepo
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter installation_id not specified`)
+			return params, errors.New(`path: installation_id: not specified`)
 		}
 	}
-	// Decode param "repository_id" located in "Path".
+	// Decode path: repository_id.
 	{
 		param := chi.URLParam(r, "repository_id")
 		if len(param) > 0 {
@@ -10422,7 +10422,7 @@ func decodeAppsRemoveRepoFromInstallationParams(r *http.Request) (AppsRemoveRepo
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repository_id not specified`)
+			return params, errors.New(`path: repository_id: not specified`)
 		}
 	}
 	return params, nil
@@ -10430,7 +10430,7 @@ func decodeAppsRemoveRepoFromInstallationParams(r *http.Request) (AppsRemoveRepo
 
 func decodeAppsSuspendInstallationParams(r *http.Request) (AppsSuspendInstallationParams, error) {
 	var params AppsSuspendInstallationParams
-	// Decode param "installation_id" located in "Path".
+	// Decode path: installation_id.
 	{
 		param := chi.URLParam(r, "installation_id")
 		if len(param) > 0 {
@@ -10458,7 +10458,7 @@ func decodeAppsSuspendInstallationParams(r *http.Request) (AppsSuspendInstallati
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter installation_id not specified`)
+			return params, errors.New(`path: installation_id: not specified`)
 		}
 	}
 	return params, nil
@@ -10466,7 +10466,7 @@ func decodeAppsSuspendInstallationParams(r *http.Request) (AppsSuspendInstallati
 
 func decodeAppsUnsuspendInstallationParams(r *http.Request) (AppsUnsuspendInstallationParams, error) {
 	var params AppsUnsuspendInstallationParams
-	// Decode param "installation_id" located in "Path".
+	// Decode path: installation_id.
 	{
 		param := chi.URLParam(r, "installation_id")
 		if len(param) > 0 {
@@ -10494,7 +10494,7 @@ func decodeAppsUnsuspendInstallationParams(r *http.Request) (AppsUnsuspendInstal
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter installation_id not specified`)
+			return params, errors.New(`path: installation_id: not specified`)
 		}
 	}
 	return params, nil
@@ -10502,7 +10502,7 @@ func decodeAppsUnsuspendInstallationParams(r *http.Request) (AppsUnsuspendInstal
 
 func decodeBillingGetGithubActionsBillingGheParams(r *http.Request) (BillingGetGithubActionsBillingGheParams, error) {
 	var params BillingGetGithubActionsBillingGheParams
-	// Decode param "enterprise" located in "Path".
+	// Decode path: enterprise.
 	{
 		param := chi.URLParam(r, "enterprise")
 		if len(param) > 0 {
@@ -10530,7 +10530,7 @@ func decodeBillingGetGithubActionsBillingGheParams(r *http.Request) (BillingGetG
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter enterprise not specified`)
+			return params, errors.New(`path: enterprise: not specified`)
 		}
 	}
 	return params, nil
@@ -10538,7 +10538,7 @@ func decodeBillingGetGithubActionsBillingGheParams(r *http.Request) (BillingGetG
 
 func decodeBillingGetGithubActionsBillingOrgParams(r *http.Request) (BillingGetGithubActionsBillingOrgParams, error) {
 	var params BillingGetGithubActionsBillingOrgParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -10566,7 +10566,7 @@ func decodeBillingGetGithubActionsBillingOrgParams(r *http.Request) (BillingGetG
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
 	return params, nil
@@ -10574,7 +10574,7 @@ func decodeBillingGetGithubActionsBillingOrgParams(r *http.Request) (BillingGetG
 
 func decodeBillingGetGithubActionsBillingUserParams(r *http.Request) (BillingGetGithubActionsBillingUserParams, error) {
 	var params BillingGetGithubActionsBillingUserParams
-	// Decode param "username" located in "Path".
+	// Decode path: username.
 	{
 		param := chi.URLParam(r, "username")
 		if len(param) > 0 {
@@ -10602,7 +10602,7 @@ func decodeBillingGetGithubActionsBillingUserParams(r *http.Request) (BillingGet
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter username not specified`)
+			return params, errors.New(`path: username: not specified`)
 		}
 	}
 	return params, nil
@@ -10610,7 +10610,7 @@ func decodeBillingGetGithubActionsBillingUserParams(r *http.Request) (BillingGet
 
 func decodeBillingGetGithubPackagesBillingGheParams(r *http.Request) (BillingGetGithubPackagesBillingGheParams, error) {
 	var params BillingGetGithubPackagesBillingGheParams
-	// Decode param "enterprise" located in "Path".
+	// Decode path: enterprise.
 	{
 		param := chi.URLParam(r, "enterprise")
 		if len(param) > 0 {
@@ -10638,7 +10638,7 @@ func decodeBillingGetGithubPackagesBillingGheParams(r *http.Request) (BillingGet
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter enterprise not specified`)
+			return params, errors.New(`path: enterprise: not specified`)
 		}
 	}
 	return params, nil
@@ -10646,7 +10646,7 @@ func decodeBillingGetGithubPackagesBillingGheParams(r *http.Request) (BillingGet
 
 func decodeBillingGetGithubPackagesBillingOrgParams(r *http.Request) (BillingGetGithubPackagesBillingOrgParams, error) {
 	var params BillingGetGithubPackagesBillingOrgParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -10674,7 +10674,7 @@ func decodeBillingGetGithubPackagesBillingOrgParams(r *http.Request) (BillingGet
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
 	return params, nil
@@ -10682,7 +10682,7 @@ func decodeBillingGetGithubPackagesBillingOrgParams(r *http.Request) (BillingGet
 
 func decodeBillingGetGithubPackagesBillingUserParams(r *http.Request) (BillingGetGithubPackagesBillingUserParams, error) {
 	var params BillingGetGithubPackagesBillingUserParams
-	// Decode param "username" located in "Path".
+	// Decode path: username.
 	{
 		param := chi.URLParam(r, "username")
 		if len(param) > 0 {
@@ -10710,7 +10710,7 @@ func decodeBillingGetGithubPackagesBillingUserParams(r *http.Request) (BillingGe
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter username not specified`)
+			return params, errors.New(`path: username: not specified`)
 		}
 	}
 	return params, nil
@@ -10718,7 +10718,7 @@ func decodeBillingGetGithubPackagesBillingUserParams(r *http.Request) (BillingGe
 
 func decodeBillingGetSharedStorageBillingGheParams(r *http.Request) (BillingGetSharedStorageBillingGheParams, error) {
 	var params BillingGetSharedStorageBillingGheParams
-	// Decode param "enterprise" located in "Path".
+	// Decode path: enterprise.
 	{
 		param := chi.URLParam(r, "enterprise")
 		if len(param) > 0 {
@@ -10746,7 +10746,7 @@ func decodeBillingGetSharedStorageBillingGheParams(r *http.Request) (BillingGetS
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter enterprise not specified`)
+			return params, errors.New(`path: enterprise: not specified`)
 		}
 	}
 	return params, nil
@@ -10754,7 +10754,7 @@ func decodeBillingGetSharedStorageBillingGheParams(r *http.Request) (BillingGetS
 
 func decodeBillingGetSharedStorageBillingOrgParams(r *http.Request) (BillingGetSharedStorageBillingOrgParams, error) {
 	var params BillingGetSharedStorageBillingOrgParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -10782,7 +10782,7 @@ func decodeBillingGetSharedStorageBillingOrgParams(r *http.Request) (BillingGetS
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
 	return params, nil
@@ -10790,7 +10790,7 @@ func decodeBillingGetSharedStorageBillingOrgParams(r *http.Request) (BillingGetS
 
 func decodeBillingGetSharedStorageBillingUserParams(r *http.Request) (BillingGetSharedStorageBillingUserParams, error) {
 	var params BillingGetSharedStorageBillingUserParams
-	// Decode param "username" located in "Path".
+	// Decode path: username.
 	{
 		param := chi.URLParam(r, "username")
 		if len(param) > 0 {
@@ -10818,7 +10818,7 @@ func decodeBillingGetSharedStorageBillingUserParams(r *http.Request) (BillingGet
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter username not specified`)
+			return params, errors.New(`path: username: not specified`)
 		}
 	}
 	return params, nil
@@ -10826,7 +10826,7 @@ func decodeBillingGetSharedStorageBillingUserParams(r *http.Request) (BillingGet
 
 func decodeChecksCreateSuiteParams(r *http.Request) (ChecksCreateSuiteParams, error) {
 	var params ChecksCreateSuiteParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -10854,10 +10854,10 @@ func decodeChecksCreateSuiteParams(r *http.Request) (ChecksCreateSuiteParams, er
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -10885,7 +10885,7 @@ func decodeChecksCreateSuiteParams(r *http.Request) (ChecksCreateSuiteParams, er
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
 	return params, nil
@@ -10893,7 +10893,7 @@ func decodeChecksCreateSuiteParams(r *http.Request) (ChecksCreateSuiteParams, er
 
 func decodeChecksGetParams(r *http.Request) (ChecksGetParams, error) {
 	var params ChecksGetParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -10921,10 +10921,10 @@ func decodeChecksGetParams(r *http.Request) (ChecksGetParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -10952,10 +10952,10 @@ func decodeChecksGetParams(r *http.Request) (ChecksGetParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "check_run_id" located in "Path".
+	// Decode path: check_run_id.
 	{
 		param := chi.URLParam(r, "check_run_id")
 		if len(param) > 0 {
@@ -10983,7 +10983,7 @@ func decodeChecksGetParams(r *http.Request) (ChecksGetParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter check_run_id not specified`)
+			return params, errors.New(`path: check_run_id: not specified`)
 		}
 	}
 	return params, nil
@@ -10991,7 +10991,7 @@ func decodeChecksGetParams(r *http.Request) (ChecksGetParams, error) {
 
 func decodeChecksGetSuiteParams(r *http.Request) (ChecksGetSuiteParams, error) {
 	var params ChecksGetSuiteParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -11019,10 +11019,10 @@ func decodeChecksGetSuiteParams(r *http.Request) (ChecksGetSuiteParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -11050,10 +11050,10 @@ func decodeChecksGetSuiteParams(r *http.Request) (ChecksGetSuiteParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "check_suite_id" located in "Path".
+	// Decode path: check_suite_id.
 	{
 		param := chi.URLParam(r, "check_suite_id")
 		if len(param) > 0 {
@@ -11081,7 +11081,7 @@ func decodeChecksGetSuiteParams(r *http.Request) (ChecksGetSuiteParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter check_suite_id not specified`)
+			return params, errors.New(`path: check_suite_id: not specified`)
 		}
 	}
 	return params, nil
@@ -11089,7 +11089,7 @@ func decodeChecksGetSuiteParams(r *http.Request) (ChecksGetSuiteParams, error) {
 
 func decodeChecksListAnnotationsParams(r *http.Request) (ChecksListAnnotationsParams, error) {
 	var params ChecksListAnnotationsParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -11117,10 +11117,10 @@ func decodeChecksListAnnotationsParams(r *http.Request) (ChecksListAnnotationsPa
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -11148,10 +11148,10 @@ func decodeChecksListAnnotationsParams(r *http.Request) (ChecksListAnnotationsPa
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "check_run_id" located in "Path".
+	// Decode path: check_run_id.
 	{
 		param := chi.URLParam(r, "check_run_id")
 		if len(param) > 0 {
@@ -11179,10 +11179,10 @@ func decodeChecksListAnnotationsParams(r *http.Request) (ChecksListAnnotationsPa
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter check_run_id not specified`)
+			return params, errors.New(`path: check_run_id: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -11213,11 +11213,11 @@ func decodeChecksListAnnotationsParams(r *http.Request) (ChecksListAnnotationsPa
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -11248,7 +11248,7 @@ func decodeChecksListAnnotationsParams(r *http.Request) (ChecksListAnnotationsPa
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -11257,7 +11257,7 @@ func decodeChecksListAnnotationsParams(r *http.Request) (ChecksListAnnotationsPa
 
 func decodeChecksListForRefParams(r *http.Request) (ChecksListForRefParams, error) {
 	var params ChecksListForRefParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -11285,10 +11285,10 @@ func decodeChecksListForRefParams(r *http.Request) (ChecksListForRefParams, erro
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -11316,10 +11316,10 @@ func decodeChecksListForRefParams(r *http.Request) (ChecksListForRefParams, erro
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "ref" located in "Path".
+	// Decode path: ref.
 	{
 		param := chi.URLParam(r, "ref")
 		if len(param) > 0 {
@@ -11347,10 +11347,10 @@ func decodeChecksListForRefParams(r *http.Request) (ChecksListForRefParams, erro
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter ref not specified`)
+			return params, errors.New(`path: ref: not specified`)
 		}
 	}
-	// Decode param "check_name" located in "Query".
+	// Decode query: check_name.
 	{
 		values, ok := r.URL.Query()["check_name"]
 		if ok {
@@ -11381,11 +11381,11 @@ func decodeChecksListForRefParams(r *http.Request) (ChecksListForRefParams, erro
 				params.CheckName.SetTo(ParamsCheckNameValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter check_name located in query`)
+				return params, errors.Wrap(err, `query: check_name: parse`)
 			}
 		}
 	}
-	// Decode param "status" located in "Query".
+	// Decode query: status.
 	{
 		values, ok := r.URL.Query()["status"]
 		if ok {
@@ -11416,7 +11416,7 @@ func decodeChecksListForRefParams(r *http.Request) (ChecksListForRefParams, erro
 				params.Status.SetTo(ParamsStatusValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter status located in query`)
+				return params, errors.Wrap(err, `query: status: parse`)
 			}
 			if err := func() error {
 
@@ -11435,11 +11435,11 @@ func decodeChecksListForRefParams(r *http.Request) (ChecksListForRefParams, erro
 
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `invalid parameter status (query`)
+				return params, errors.Wrap(err, `query: status: invalid`)
 			}
 		}
 	}
-	// Decode param "filter" located in "Query".
+	// Decode query: filter.
 	{
 		values, ok := r.URL.Query()["filter"]
 		if ok {
@@ -11470,7 +11470,7 @@ func decodeChecksListForRefParams(r *http.Request) (ChecksListForRefParams, erro
 				params.Filter.SetTo(ParamsFilterValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter filter located in query`)
+				return params, errors.Wrap(err, `query: filter: parse`)
 			}
 			if err := func() error {
 
@@ -11489,11 +11489,11 @@ func decodeChecksListForRefParams(r *http.Request) (ChecksListForRefParams, erro
 
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `invalid parameter filter (query`)
+				return params, errors.Wrap(err, `query: filter: invalid`)
 			}
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -11524,11 +11524,11 @@ func decodeChecksListForRefParams(r *http.Request) (ChecksListForRefParams, erro
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -11559,11 +11559,11 @@ func decodeChecksListForRefParams(r *http.Request) (ChecksListForRefParams, erro
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
-	// Decode param "app_id" located in "Query".
+	// Decode query: app_id.
 	{
 		values, ok := r.URL.Query()["app_id"]
 		if ok {
@@ -11594,7 +11594,7 @@ func decodeChecksListForRefParams(r *http.Request) (ChecksListForRefParams, erro
 				params.AppID.SetTo(ParamsAppIDValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter app_id located in query`)
+				return params, errors.Wrap(err, `query: app_id: parse`)
 			}
 		}
 	}
@@ -11603,7 +11603,7 @@ func decodeChecksListForRefParams(r *http.Request) (ChecksListForRefParams, erro
 
 func decodeChecksListForSuiteParams(r *http.Request) (ChecksListForSuiteParams, error) {
 	var params ChecksListForSuiteParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -11631,10 +11631,10 @@ func decodeChecksListForSuiteParams(r *http.Request) (ChecksListForSuiteParams, 
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -11662,10 +11662,10 @@ func decodeChecksListForSuiteParams(r *http.Request) (ChecksListForSuiteParams, 
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "check_suite_id" located in "Path".
+	// Decode path: check_suite_id.
 	{
 		param := chi.URLParam(r, "check_suite_id")
 		if len(param) > 0 {
@@ -11693,10 +11693,10 @@ func decodeChecksListForSuiteParams(r *http.Request) (ChecksListForSuiteParams, 
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter check_suite_id not specified`)
+			return params, errors.New(`path: check_suite_id: not specified`)
 		}
 	}
-	// Decode param "check_name" located in "Query".
+	// Decode query: check_name.
 	{
 		values, ok := r.URL.Query()["check_name"]
 		if ok {
@@ -11727,11 +11727,11 @@ func decodeChecksListForSuiteParams(r *http.Request) (ChecksListForSuiteParams, 
 				params.CheckName.SetTo(ParamsCheckNameValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter check_name located in query`)
+				return params, errors.Wrap(err, `query: check_name: parse`)
 			}
 		}
 	}
-	// Decode param "status" located in "Query".
+	// Decode query: status.
 	{
 		values, ok := r.URL.Query()["status"]
 		if ok {
@@ -11762,7 +11762,7 @@ func decodeChecksListForSuiteParams(r *http.Request) (ChecksListForSuiteParams, 
 				params.Status.SetTo(ParamsStatusValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter status located in query`)
+				return params, errors.Wrap(err, `query: status: parse`)
 			}
 			if err := func() error {
 
@@ -11781,11 +11781,11 @@ func decodeChecksListForSuiteParams(r *http.Request) (ChecksListForSuiteParams, 
 
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `invalid parameter status (query`)
+				return params, errors.Wrap(err, `query: status: invalid`)
 			}
 		}
 	}
-	// Decode param "filter" located in "Query".
+	// Decode query: filter.
 	{
 		values, ok := r.URL.Query()["filter"]
 		if ok {
@@ -11816,7 +11816,7 @@ func decodeChecksListForSuiteParams(r *http.Request) (ChecksListForSuiteParams, 
 				params.Filter.SetTo(ParamsFilterValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter filter located in query`)
+				return params, errors.Wrap(err, `query: filter: parse`)
 			}
 			if err := func() error {
 
@@ -11835,11 +11835,11 @@ func decodeChecksListForSuiteParams(r *http.Request) (ChecksListForSuiteParams, 
 
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `invalid parameter filter (query`)
+				return params, errors.Wrap(err, `query: filter: invalid`)
 			}
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -11870,11 +11870,11 @@ func decodeChecksListForSuiteParams(r *http.Request) (ChecksListForSuiteParams, 
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -11905,7 +11905,7 @@ func decodeChecksListForSuiteParams(r *http.Request) (ChecksListForSuiteParams, 
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -11914,7 +11914,7 @@ func decodeChecksListForSuiteParams(r *http.Request) (ChecksListForSuiteParams, 
 
 func decodeChecksListSuitesForRefParams(r *http.Request) (ChecksListSuitesForRefParams, error) {
 	var params ChecksListSuitesForRefParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -11942,10 +11942,10 @@ func decodeChecksListSuitesForRefParams(r *http.Request) (ChecksListSuitesForRef
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -11973,10 +11973,10 @@ func decodeChecksListSuitesForRefParams(r *http.Request) (ChecksListSuitesForRef
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "ref" located in "Path".
+	// Decode path: ref.
 	{
 		param := chi.URLParam(r, "ref")
 		if len(param) > 0 {
@@ -12004,10 +12004,10 @@ func decodeChecksListSuitesForRefParams(r *http.Request) (ChecksListSuitesForRef
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter ref not specified`)
+			return params, errors.New(`path: ref: not specified`)
 		}
 	}
-	// Decode param "app_id" located in "Query".
+	// Decode query: app_id.
 	{
 		values, ok := r.URL.Query()["app_id"]
 		if ok {
@@ -12038,11 +12038,11 @@ func decodeChecksListSuitesForRefParams(r *http.Request) (ChecksListSuitesForRef
 				params.AppID.SetTo(ParamsAppIDValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter app_id located in query`)
+				return params, errors.Wrap(err, `query: app_id: parse`)
 			}
 		}
 	}
-	// Decode param "check_name" located in "Query".
+	// Decode query: check_name.
 	{
 		values, ok := r.URL.Query()["check_name"]
 		if ok {
@@ -12073,11 +12073,11 @@ func decodeChecksListSuitesForRefParams(r *http.Request) (ChecksListSuitesForRef
 				params.CheckName.SetTo(ParamsCheckNameValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter check_name located in query`)
+				return params, errors.Wrap(err, `query: check_name: parse`)
 			}
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -12108,11 +12108,11 @@ func decodeChecksListSuitesForRefParams(r *http.Request) (ChecksListSuitesForRef
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -12143,7 +12143,7 @@ func decodeChecksListSuitesForRefParams(r *http.Request) (ChecksListSuitesForRef
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -12152,7 +12152,7 @@ func decodeChecksListSuitesForRefParams(r *http.Request) (ChecksListSuitesForRef
 
 func decodeChecksRerequestSuiteParams(r *http.Request) (ChecksRerequestSuiteParams, error) {
 	var params ChecksRerequestSuiteParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -12180,10 +12180,10 @@ func decodeChecksRerequestSuiteParams(r *http.Request) (ChecksRerequestSuitePara
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -12211,10 +12211,10 @@ func decodeChecksRerequestSuiteParams(r *http.Request) (ChecksRerequestSuitePara
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "check_suite_id" located in "Path".
+	// Decode path: check_suite_id.
 	{
 		param := chi.URLParam(r, "check_suite_id")
 		if len(param) > 0 {
@@ -12242,7 +12242,7 @@ func decodeChecksRerequestSuiteParams(r *http.Request) (ChecksRerequestSuitePara
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter check_suite_id not specified`)
+			return params, errors.New(`path: check_suite_id: not specified`)
 		}
 	}
 	return params, nil
@@ -12250,7 +12250,7 @@ func decodeChecksRerequestSuiteParams(r *http.Request) (ChecksRerequestSuitePara
 
 func decodeChecksSetSuitesPreferencesParams(r *http.Request) (ChecksSetSuitesPreferencesParams, error) {
 	var params ChecksSetSuitesPreferencesParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -12278,10 +12278,10 @@ func decodeChecksSetSuitesPreferencesParams(r *http.Request) (ChecksSetSuitesPre
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -12309,7 +12309,7 @@ func decodeChecksSetSuitesPreferencesParams(r *http.Request) (ChecksSetSuitesPre
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
 	return params, nil
@@ -12317,7 +12317,7 @@ func decodeChecksSetSuitesPreferencesParams(r *http.Request) (ChecksSetSuitesPre
 
 func decodeCodeScanningDeleteAnalysisParams(r *http.Request) (CodeScanningDeleteAnalysisParams, error) {
 	var params CodeScanningDeleteAnalysisParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -12345,10 +12345,10 @@ func decodeCodeScanningDeleteAnalysisParams(r *http.Request) (CodeScanningDelete
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -12376,10 +12376,10 @@ func decodeCodeScanningDeleteAnalysisParams(r *http.Request) (CodeScanningDelete
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "analysis_id" located in "Path".
+	// Decode path: analysis_id.
 	{
 		param := chi.URLParam(r, "analysis_id")
 		if len(param) > 0 {
@@ -12407,10 +12407,10 @@ func decodeCodeScanningDeleteAnalysisParams(r *http.Request) (CodeScanningDelete
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter analysis_id not specified`)
+			return params, errors.New(`path: analysis_id: not specified`)
 		}
 	}
-	// Decode param "confirm_delete" located in "Query".
+	// Decode query: confirm_delete.
 	{
 		values, ok := r.URL.Query()["confirm_delete"]
 		if ok {
@@ -12441,7 +12441,7 @@ func decodeCodeScanningDeleteAnalysisParams(r *http.Request) (CodeScanningDelete
 				params.ConfirmDelete.SetTo(ParamsConfirmDeleteValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter confirm_delete located in query`)
+				return params, errors.Wrap(err, `query: confirm_delete: parse`)
 			}
 		}
 	}
@@ -12450,7 +12450,7 @@ func decodeCodeScanningDeleteAnalysisParams(r *http.Request) (CodeScanningDelete
 
 func decodeCodeScanningGetAlertParams(r *http.Request) (CodeScanningGetAlertParams, error) {
 	var params CodeScanningGetAlertParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -12478,10 +12478,10 @@ func decodeCodeScanningGetAlertParams(r *http.Request) (CodeScanningGetAlertPara
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -12509,10 +12509,10 @@ func decodeCodeScanningGetAlertParams(r *http.Request) (CodeScanningGetAlertPara
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "alert_number" located in "Path".
+	// Decode path: alert_number.
 	{
 		param := chi.URLParam(r, "alert_number")
 		if len(param) > 0 {
@@ -12547,7 +12547,7 @@ func decodeCodeScanningGetAlertParams(r *http.Request) (CodeScanningGetAlertPara
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter alert_number not specified`)
+			return params, errors.New(`path: alert_number: not specified`)
 		}
 	}
 	return params, nil
@@ -12555,7 +12555,7 @@ func decodeCodeScanningGetAlertParams(r *http.Request) (CodeScanningGetAlertPara
 
 func decodeCodeScanningGetAnalysisParams(r *http.Request) (CodeScanningGetAnalysisParams, error) {
 	var params CodeScanningGetAnalysisParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -12583,10 +12583,10 @@ func decodeCodeScanningGetAnalysisParams(r *http.Request) (CodeScanningGetAnalys
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -12614,10 +12614,10 @@ func decodeCodeScanningGetAnalysisParams(r *http.Request) (CodeScanningGetAnalys
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "analysis_id" located in "Path".
+	// Decode path: analysis_id.
 	{
 		param := chi.URLParam(r, "analysis_id")
 		if len(param) > 0 {
@@ -12645,7 +12645,7 @@ func decodeCodeScanningGetAnalysisParams(r *http.Request) (CodeScanningGetAnalys
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter analysis_id not specified`)
+			return params, errors.New(`path: analysis_id: not specified`)
 		}
 	}
 	return params, nil
@@ -12653,7 +12653,7 @@ func decodeCodeScanningGetAnalysisParams(r *http.Request) (CodeScanningGetAnalys
 
 func decodeCodeScanningGetSarifParams(r *http.Request) (CodeScanningGetSarifParams, error) {
 	var params CodeScanningGetSarifParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -12681,10 +12681,10 @@ func decodeCodeScanningGetSarifParams(r *http.Request) (CodeScanningGetSarifPara
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -12712,10 +12712,10 @@ func decodeCodeScanningGetSarifParams(r *http.Request) (CodeScanningGetSarifPara
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "sarif_id" located in "Path".
+	// Decode path: sarif_id.
 	{
 		param := chi.URLParam(r, "sarif_id")
 		if len(param) > 0 {
@@ -12743,7 +12743,7 @@ func decodeCodeScanningGetSarifParams(r *http.Request) (CodeScanningGetSarifPara
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter sarif_id not specified`)
+			return params, errors.New(`path: sarif_id: not specified`)
 		}
 	}
 	return params, nil
@@ -12751,7 +12751,7 @@ func decodeCodeScanningGetSarifParams(r *http.Request) (CodeScanningGetSarifPara
 
 func decodeCodeScanningListAlertInstancesParams(r *http.Request) (CodeScanningListAlertInstancesParams, error) {
 	var params CodeScanningListAlertInstancesParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -12779,10 +12779,10 @@ func decodeCodeScanningListAlertInstancesParams(r *http.Request) (CodeScanningLi
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -12810,10 +12810,10 @@ func decodeCodeScanningListAlertInstancesParams(r *http.Request) (CodeScanningLi
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "alert_number" located in "Path".
+	// Decode path: alert_number.
 	{
 		param := chi.URLParam(r, "alert_number")
 		if len(param) > 0 {
@@ -12848,10 +12848,10 @@ func decodeCodeScanningListAlertInstancesParams(r *http.Request) (CodeScanningLi
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter alert_number not specified`)
+			return params, errors.New(`path: alert_number: not specified`)
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -12882,11 +12882,11 @@ func decodeCodeScanningListAlertInstancesParams(r *http.Request) (CodeScanningLi
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -12917,11 +12917,11 @@ func decodeCodeScanningListAlertInstancesParams(r *http.Request) (CodeScanningLi
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "ref" located in "Query".
+	// Decode query: ref.
 	{
 		values, ok := r.URL.Query()["ref"]
 		if ok {
@@ -12959,7 +12959,7 @@ func decodeCodeScanningListAlertInstancesParams(r *http.Request) (CodeScanningLi
 				params.Ref.SetTo(ParamsRefValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter ref located in query`)
+				return params, errors.Wrap(err, `query: ref: parse`)
 			}
 		}
 	}
@@ -12968,7 +12968,7 @@ func decodeCodeScanningListAlertInstancesParams(r *http.Request) (CodeScanningLi
 
 func decodeCodeScanningListAlertsForRepoParams(r *http.Request) (CodeScanningListAlertsForRepoParams, error) {
 	var params CodeScanningListAlertsForRepoParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -12996,10 +12996,10 @@ func decodeCodeScanningListAlertsForRepoParams(r *http.Request) (CodeScanningLis
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -13027,10 +13027,10 @@ func decodeCodeScanningListAlertsForRepoParams(r *http.Request) (CodeScanningLis
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "tool_name" located in "Query".
+	// Decode query: tool_name.
 	{
 		values, ok := r.URL.Query()["tool_name"]
 		if ok {
@@ -13068,11 +13068,11 @@ func decodeCodeScanningListAlertsForRepoParams(r *http.Request) (CodeScanningLis
 				params.ToolName.SetTo(ParamsToolNameValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter tool_name located in query`)
+				return params, errors.Wrap(err, `query: tool_name: parse`)
 			}
 		}
 	}
-	// Decode param "tool_guid" located in "Query".
+	// Decode query: tool_guid.
 	{
 		values, ok := r.URL.Query()["tool_guid"]
 		if ok {
@@ -13110,11 +13110,11 @@ func decodeCodeScanningListAlertsForRepoParams(r *http.Request) (CodeScanningLis
 				params.ToolGUID.SetTo(ParamsToolGUIDValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter tool_guid located in query`)
+				return params, errors.Wrap(err, `query: tool_guid: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -13145,11 +13145,11 @@ func decodeCodeScanningListAlertsForRepoParams(r *http.Request) (CodeScanningLis
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -13180,11 +13180,11 @@ func decodeCodeScanningListAlertsForRepoParams(r *http.Request) (CodeScanningLis
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "ref" located in "Query".
+	// Decode query: ref.
 	{
 		values, ok := r.URL.Query()["ref"]
 		if ok {
@@ -13222,11 +13222,11 @@ func decodeCodeScanningListAlertsForRepoParams(r *http.Request) (CodeScanningLis
 				params.Ref.SetTo(ParamsRefValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter ref located in query`)
+				return params, errors.Wrap(err, `query: ref: parse`)
 			}
 		}
 	}
-	// Decode param "state" located in "Query".
+	// Decode query: state.
 	{
 		values, ok := r.URL.Query()["state"]
 		if ok {
@@ -13257,7 +13257,7 @@ func decodeCodeScanningListAlertsForRepoParams(r *http.Request) (CodeScanningLis
 				params.State.SetTo(ParamsStateValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter state located in query`)
+				return params, errors.Wrap(err, `query: state: parse`)
 			}
 			if err := func() error {
 
@@ -13276,7 +13276,7 @@ func decodeCodeScanningListAlertsForRepoParams(r *http.Request) (CodeScanningLis
 
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `invalid parameter state (query`)
+				return params, errors.Wrap(err, `query: state: invalid`)
 			}
 		}
 	}
@@ -13285,7 +13285,7 @@ func decodeCodeScanningListAlertsForRepoParams(r *http.Request) (CodeScanningLis
 
 func decodeCodeScanningListRecentAnalysesParams(r *http.Request) (CodeScanningListRecentAnalysesParams, error) {
 	var params CodeScanningListRecentAnalysesParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -13313,10 +13313,10 @@ func decodeCodeScanningListRecentAnalysesParams(r *http.Request) (CodeScanningLi
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -13344,10 +13344,10 @@ func decodeCodeScanningListRecentAnalysesParams(r *http.Request) (CodeScanningLi
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "tool_name" located in "Query".
+	// Decode query: tool_name.
 	{
 		values, ok := r.URL.Query()["tool_name"]
 		if ok {
@@ -13385,11 +13385,11 @@ func decodeCodeScanningListRecentAnalysesParams(r *http.Request) (CodeScanningLi
 				params.ToolName.SetTo(ParamsToolNameValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter tool_name located in query`)
+				return params, errors.Wrap(err, `query: tool_name: parse`)
 			}
 		}
 	}
-	// Decode param "tool_guid" located in "Query".
+	// Decode query: tool_guid.
 	{
 		values, ok := r.URL.Query()["tool_guid"]
 		if ok {
@@ -13427,11 +13427,11 @@ func decodeCodeScanningListRecentAnalysesParams(r *http.Request) (CodeScanningLi
 				params.ToolGUID.SetTo(ParamsToolGUIDValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter tool_guid located in query`)
+				return params, errors.Wrap(err, `query: tool_guid: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -13462,11 +13462,11 @@ func decodeCodeScanningListRecentAnalysesParams(r *http.Request) (CodeScanningLi
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -13497,11 +13497,11 @@ func decodeCodeScanningListRecentAnalysesParams(r *http.Request) (CodeScanningLi
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "ref" located in "Query".
+	// Decode query: ref.
 	{
 		values, ok := r.URL.Query()["ref"]
 		if ok {
@@ -13539,11 +13539,11 @@ func decodeCodeScanningListRecentAnalysesParams(r *http.Request) (CodeScanningLi
 				params.Ref.SetTo(ParamsRefValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter ref located in query`)
+				return params, errors.Wrap(err, `query: ref: parse`)
 			}
 		}
 	}
-	// Decode param "sarif_id" located in "Query".
+	// Decode query: sarif_id.
 	{
 		values, ok := r.URL.Query()["sarif_id"]
 		if ok {
@@ -13581,7 +13581,7 @@ func decodeCodeScanningListRecentAnalysesParams(r *http.Request) (CodeScanningLi
 				params.SarifID.SetTo(ParamsSarifIDValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter sarif_id located in query`)
+				return params, errors.Wrap(err, `query: sarif_id: parse`)
 			}
 		}
 	}
@@ -13590,7 +13590,7 @@ func decodeCodeScanningListRecentAnalysesParams(r *http.Request) (CodeScanningLi
 
 func decodeCodeScanningUpdateAlertParams(r *http.Request) (CodeScanningUpdateAlertParams, error) {
 	var params CodeScanningUpdateAlertParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -13618,10 +13618,10 @@ func decodeCodeScanningUpdateAlertParams(r *http.Request) (CodeScanningUpdateAle
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -13649,10 +13649,10 @@ func decodeCodeScanningUpdateAlertParams(r *http.Request) (CodeScanningUpdateAle
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "alert_number" located in "Path".
+	// Decode path: alert_number.
 	{
 		param := chi.URLParam(r, "alert_number")
 		if len(param) > 0 {
@@ -13687,7 +13687,7 @@ func decodeCodeScanningUpdateAlertParams(r *http.Request) (CodeScanningUpdateAle
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter alert_number not specified`)
+			return params, errors.New(`path: alert_number: not specified`)
 		}
 	}
 	return params, nil
@@ -13695,7 +13695,7 @@ func decodeCodeScanningUpdateAlertParams(r *http.Request) (CodeScanningUpdateAle
 
 func decodeCodeScanningUploadSarifParams(r *http.Request) (CodeScanningUploadSarifParams, error) {
 	var params CodeScanningUploadSarifParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -13723,10 +13723,10 @@ func decodeCodeScanningUploadSarifParams(r *http.Request) (CodeScanningUploadSar
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -13754,7 +13754,7 @@ func decodeCodeScanningUploadSarifParams(r *http.Request) (CodeScanningUploadSar
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
 	return params, nil
@@ -13762,7 +13762,7 @@ func decodeCodeScanningUploadSarifParams(r *http.Request) (CodeScanningUploadSar
 
 func decodeCodesOfConductGetConductCodeParams(r *http.Request) (CodesOfConductGetConductCodeParams, error) {
 	var params CodesOfConductGetConductCodeParams
-	// Decode param "key" located in "Path".
+	// Decode path: key.
 	{
 		param := chi.URLParam(r, "key")
 		if len(param) > 0 {
@@ -13790,7 +13790,7 @@ func decodeCodesOfConductGetConductCodeParams(r *http.Request) (CodesOfConductGe
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter key not specified`)
+			return params, errors.New(`path: key: not specified`)
 		}
 	}
 	return params, nil
@@ -13798,7 +13798,7 @@ func decodeCodesOfConductGetConductCodeParams(r *http.Request) (CodesOfConductGe
 
 func decodeEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(r *http.Request) (EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams, error) {
 	var params EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams
-	// Decode param "enterprise" located in "Path".
+	// Decode path: enterprise.
 	{
 		param := chi.URLParam(r, "enterprise")
 		if len(param) > 0 {
@@ -13826,10 +13826,10 @@ func decodeEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter enterprise not specified`)
+			return params, errors.New(`path: enterprise: not specified`)
 		}
 	}
-	// Decode param "runner_group_id" located in "Path".
+	// Decode path: runner_group_id.
 	{
 		param := chi.URLParam(r, "runner_group_id")
 		if len(param) > 0 {
@@ -13857,10 +13857,10 @@ func decodeEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter runner_group_id not specified`)
+			return params, errors.New(`path: runner_group_id: not specified`)
 		}
 	}
-	// Decode param "org_id" located in "Path".
+	// Decode path: org_id.
 	{
 		param := chi.URLParam(r, "org_id")
 		if len(param) > 0 {
@@ -13888,7 +13888,7 @@ func decodeEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org_id not specified`)
+			return params, errors.New(`path: org_id: not specified`)
 		}
 	}
 	return params, nil
@@ -13896,7 +13896,7 @@ func decodeEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(
 
 func decodeEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams(r *http.Request) (EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams, error) {
 	var params EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams
-	// Decode param "enterprise" located in "Path".
+	// Decode path: enterprise.
 	{
 		param := chi.URLParam(r, "enterprise")
 		if len(param) > 0 {
@@ -13924,10 +13924,10 @@ func decodeEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams(r *http.
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter enterprise not specified`)
+			return params, errors.New(`path: enterprise: not specified`)
 		}
 	}
-	// Decode param "runner_group_id" located in "Path".
+	// Decode path: runner_group_id.
 	{
 		param := chi.URLParam(r, "runner_group_id")
 		if len(param) > 0 {
@@ -13955,10 +13955,10 @@ func decodeEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams(r *http.
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter runner_group_id not specified`)
+			return params, errors.New(`path: runner_group_id: not specified`)
 		}
 	}
-	// Decode param "runner_id" located in "Path".
+	// Decode path: runner_id.
 	{
 		param := chi.URLParam(r, "runner_id")
 		if len(param) > 0 {
@@ -13986,7 +13986,7 @@ func decodeEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams(r *http.
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter runner_id not specified`)
+			return params, errors.New(`path: runner_id: not specified`)
 		}
 	}
 	return params, nil
@@ -13994,7 +13994,7 @@ func decodeEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams(r *http.
 
 func decodeEnterpriseAdminCreateRegistrationTokenForEnterpriseParams(r *http.Request) (EnterpriseAdminCreateRegistrationTokenForEnterpriseParams, error) {
 	var params EnterpriseAdminCreateRegistrationTokenForEnterpriseParams
-	// Decode param "enterprise" located in "Path".
+	// Decode path: enterprise.
 	{
 		param := chi.URLParam(r, "enterprise")
 		if len(param) > 0 {
@@ -14022,7 +14022,7 @@ func decodeEnterpriseAdminCreateRegistrationTokenForEnterpriseParams(r *http.Req
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter enterprise not specified`)
+			return params, errors.New(`path: enterprise: not specified`)
 		}
 	}
 	return params, nil
@@ -14030,7 +14030,7 @@ func decodeEnterpriseAdminCreateRegistrationTokenForEnterpriseParams(r *http.Req
 
 func decodeEnterpriseAdminCreateRemoveTokenForEnterpriseParams(r *http.Request) (EnterpriseAdminCreateRemoveTokenForEnterpriseParams, error) {
 	var params EnterpriseAdminCreateRemoveTokenForEnterpriseParams
-	// Decode param "enterprise" located in "Path".
+	// Decode path: enterprise.
 	{
 		param := chi.URLParam(r, "enterprise")
 		if len(param) > 0 {
@@ -14058,7 +14058,7 @@ func decodeEnterpriseAdminCreateRemoveTokenForEnterpriseParams(r *http.Request) 
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter enterprise not specified`)
+			return params, errors.New(`path: enterprise: not specified`)
 		}
 	}
 	return params, nil
@@ -14066,7 +14066,7 @@ func decodeEnterpriseAdminCreateRemoveTokenForEnterpriseParams(r *http.Request) 
 
 func decodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams(r *http.Request) (EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams, error) {
 	var params EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams
-	// Decode param "enterprise" located in "Path".
+	// Decode path: enterprise.
 	{
 		param := chi.URLParam(r, "enterprise")
 		if len(param) > 0 {
@@ -14094,7 +14094,7 @@ func decodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams(r *http
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter enterprise not specified`)
+			return params, errors.New(`path: enterprise: not specified`)
 		}
 	}
 	return params, nil
@@ -14102,7 +14102,7 @@ func decodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams(r *http
 
 func decodeEnterpriseAdminDeleteScimGroupFromEnterpriseParams(r *http.Request) (EnterpriseAdminDeleteScimGroupFromEnterpriseParams, error) {
 	var params EnterpriseAdminDeleteScimGroupFromEnterpriseParams
-	// Decode param "enterprise" located in "Path".
+	// Decode path: enterprise.
 	{
 		param := chi.URLParam(r, "enterprise")
 		if len(param) > 0 {
@@ -14130,10 +14130,10 @@ func decodeEnterpriseAdminDeleteScimGroupFromEnterpriseParams(r *http.Request) (
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter enterprise not specified`)
+			return params, errors.New(`path: enterprise: not specified`)
 		}
 	}
-	// Decode param "scim_group_id" located in "Path".
+	// Decode path: scim_group_id.
 	{
 		param := chi.URLParam(r, "scim_group_id")
 		if len(param) > 0 {
@@ -14161,7 +14161,7 @@ func decodeEnterpriseAdminDeleteScimGroupFromEnterpriseParams(r *http.Request) (
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter scim_group_id not specified`)
+			return params, errors.New(`path: scim_group_id: not specified`)
 		}
 	}
 	return params, nil
@@ -14169,7 +14169,7 @@ func decodeEnterpriseAdminDeleteScimGroupFromEnterpriseParams(r *http.Request) (
 
 func decodeEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams(r *http.Request) (EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams, error) {
 	var params EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams
-	// Decode param "enterprise" located in "Path".
+	// Decode path: enterprise.
 	{
 		param := chi.URLParam(r, "enterprise")
 		if len(param) > 0 {
@@ -14197,10 +14197,10 @@ func decodeEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams(r *http.Req
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter enterprise not specified`)
+			return params, errors.New(`path: enterprise: not specified`)
 		}
 	}
-	// Decode param "runner_id" located in "Path".
+	// Decode path: runner_id.
 	{
 		param := chi.URLParam(r, "runner_id")
 		if len(param) > 0 {
@@ -14228,7 +14228,7 @@ func decodeEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams(r *http.Req
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter runner_id not specified`)
+			return params, errors.New(`path: runner_id: not specified`)
 		}
 	}
 	return params, nil
@@ -14236,7 +14236,7 @@ func decodeEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams(r *http.Req
 
 func decodeEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams(r *http.Request) (EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams, error) {
 	var params EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams
-	// Decode param "enterprise" located in "Path".
+	// Decode path: enterprise.
 	{
 		param := chi.URLParam(r, "enterprise")
 		if len(param) > 0 {
@@ -14264,10 +14264,10 @@ func decodeEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams(r *htt
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter enterprise not specified`)
+			return params, errors.New(`path: enterprise: not specified`)
 		}
 	}
-	// Decode param "runner_group_id" located in "Path".
+	// Decode path: runner_group_id.
 	{
 		param := chi.URLParam(r, "runner_group_id")
 		if len(param) > 0 {
@@ -14295,7 +14295,7 @@ func decodeEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams(r *htt
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter runner_group_id not specified`)
+			return params, errors.New(`path: runner_group_id: not specified`)
 		}
 	}
 	return params, nil
@@ -14303,7 +14303,7 @@ func decodeEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams(r *htt
 
 func decodeEnterpriseAdminDeleteUserFromEnterpriseParams(r *http.Request) (EnterpriseAdminDeleteUserFromEnterpriseParams, error) {
 	var params EnterpriseAdminDeleteUserFromEnterpriseParams
-	// Decode param "enterprise" located in "Path".
+	// Decode path: enterprise.
 	{
 		param := chi.URLParam(r, "enterprise")
 		if len(param) > 0 {
@@ -14331,10 +14331,10 @@ func decodeEnterpriseAdminDeleteUserFromEnterpriseParams(r *http.Request) (Enter
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter enterprise not specified`)
+			return params, errors.New(`path: enterprise: not specified`)
 		}
 	}
-	// Decode param "scim_user_id" located in "Path".
+	// Decode path: scim_user_id.
 	{
 		param := chi.URLParam(r, "scim_user_id")
 		if len(param) > 0 {
@@ -14362,7 +14362,7 @@ func decodeEnterpriseAdminDeleteUserFromEnterpriseParams(r *http.Request) (Enter
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter scim_user_id not specified`)
+			return params, errors.New(`path: scim_user_id: not specified`)
 		}
 	}
 	return params, nil
@@ -14370,7 +14370,7 @@ func decodeEnterpriseAdminDeleteUserFromEnterpriseParams(r *http.Request) (Enter
 
 func decodeEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseParams(r *http.Request) (EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseParams, error) {
 	var params EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseParams
-	// Decode param "enterprise" located in "Path".
+	// Decode path: enterprise.
 	{
 		param := chi.URLParam(r, "enterprise")
 		if len(param) > 0 {
@@ -14398,10 +14398,10 @@ func decodeEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprisePara
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter enterprise not specified`)
+			return params, errors.New(`path: enterprise: not specified`)
 		}
 	}
-	// Decode param "org_id" located in "Path".
+	// Decode path: org_id.
 	{
 		param := chi.URLParam(r, "org_id")
 		if len(param) > 0 {
@@ -14429,7 +14429,7 @@ func decodeEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprisePara
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org_id not specified`)
+			return params, errors.New(`path: org_id: not specified`)
 		}
 	}
 	return params, nil
@@ -14437,7 +14437,7 @@ func decodeEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprisePara
 
 func decodeEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParams(r *http.Request) (EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParams, error) {
 	var params EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParams
-	// Decode param "enterprise" located in "Path".
+	// Decode path: enterprise.
 	{
 		param := chi.URLParam(r, "enterprise")
 		if len(param) > 0 {
@@ -14465,10 +14465,10 @@ func decodeEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParam
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter enterprise not specified`)
+			return params, errors.New(`path: enterprise: not specified`)
 		}
 	}
-	// Decode param "org_id" located in "Path".
+	// Decode path: org_id.
 	{
 		param := chi.URLParam(r, "org_id")
 		if len(param) > 0 {
@@ -14496,7 +14496,7 @@ func decodeEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParam
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org_id not specified`)
+			return params, errors.New(`path: org_id: not specified`)
 		}
 	}
 	return params, nil
@@ -14504,7 +14504,7 @@ func decodeEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParam
 
 func decodeEnterpriseAdminGetAllowedActionsEnterpriseParams(r *http.Request) (EnterpriseAdminGetAllowedActionsEnterpriseParams, error) {
 	var params EnterpriseAdminGetAllowedActionsEnterpriseParams
-	// Decode param "enterprise" located in "Path".
+	// Decode path: enterprise.
 	{
 		param := chi.URLParam(r, "enterprise")
 		if len(param) > 0 {
@@ -14532,7 +14532,7 @@ func decodeEnterpriseAdminGetAllowedActionsEnterpriseParams(r *http.Request) (En
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter enterprise not specified`)
+			return params, errors.New(`path: enterprise: not specified`)
 		}
 	}
 	return params, nil
@@ -14540,7 +14540,7 @@ func decodeEnterpriseAdminGetAllowedActionsEnterpriseParams(r *http.Request) (En
 
 func decodeEnterpriseAdminGetAuditLogParams(r *http.Request) (EnterpriseAdminGetAuditLogParams, error) {
 	var params EnterpriseAdminGetAuditLogParams
-	// Decode param "enterprise" located in "Path".
+	// Decode path: enterprise.
 	{
 		param := chi.URLParam(r, "enterprise")
 		if len(param) > 0 {
@@ -14568,10 +14568,10 @@ func decodeEnterpriseAdminGetAuditLogParams(r *http.Request) (EnterpriseAdminGet
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter enterprise not specified`)
+			return params, errors.New(`path: enterprise: not specified`)
 		}
 	}
-	// Decode param "phrase" located in "Query".
+	// Decode query: phrase.
 	{
 		values, ok := r.URL.Query()["phrase"]
 		if ok {
@@ -14602,11 +14602,11 @@ func decodeEnterpriseAdminGetAuditLogParams(r *http.Request) (EnterpriseAdminGet
 				params.Phrase.SetTo(ParamsPhraseValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter phrase located in query`)
+				return params, errors.Wrap(err, `query: phrase: parse`)
 			}
 		}
 	}
-	// Decode param "include" located in "Query".
+	// Decode query: include.
 	{
 		values, ok := r.URL.Query()["include"]
 		if ok {
@@ -14637,7 +14637,7 @@ func decodeEnterpriseAdminGetAuditLogParams(r *http.Request) (EnterpriseAdminGet
 				params.Include.SetTo(ParamsIncludeValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter include located in query`)
+				return params, errors.Wrap(err, `query: include: parse`)
 			}
 			if err := func() error {
 
@@ -14656,11 +14656,11 @@ func decodeEnterpriseAdminGetAuditLogParams(r *http.Request) (EnterpriseAdminGet
 
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `invalid parameter include (query`)
+				return params, errors.Wrap(err, `query: include: invalid`)
 			}
 		}
 	}
-	// Decode param "after" located in "Query".
+	// Decode query: after.
 	{
 		values, ok := r.URL.Query()["after"]
 		if ok {
@@ -14691,11 +14691,11 @@ func decodeEnterpriseAdminGetAuditLogParams(r *http.Request) (EnterpriseAdminGet
 				params.After.SetTo(ParamsAfterValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter after located in query`)
+				return params, errors.Wrap(err, `query: after: parse`)
 			}
 		}
 	}
-	// Decode param "before" located in "Query".
+	// Decode query: before.
 	{
 		values, ok := r.URL.Query()["before"]
 		if ok {
@@ -14726,11 +14726,11 @@ func decodeEnterpriseAdminGetAuditLogParams(r *http.Request) (EnterpriseAdminGet
 				params.Before.SetTo(ParamsBeforeValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter before located in query`)
+				return params, errors.Wrap(err, `query: before: parse`)
 			}
 		}
 	}
-	// Decode param "order" located in "Query".
+	// Decode query: order.
 	{
 		values, ok := r.URL.Query()["order"]
 		if ok {
@@ -14761,7 +14761,7 @@ func decodeEnterpriseAdminGetAuditLogParams(r *http.Request) (EnterpriseAdminGet
 				params.Order.SetTo(ParamsOrderValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter order located in query`)
+				return params, errors.Wrap(err, `query: order: parse`)
 			}
 			if err := func() error {
 
@@ -14780,11 +14780,11 @@ func decodeEnterpriseAdminGetAuditLogParams(r *http.Request) (EnterpriseAdminGet
 
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `invalid parameter order (query`)
+				return params, errors.Wrap(err, `query: order: invalid`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -14815,11 +14815,11 @@ func decodeEnterpriseAdminGetAuditLogParams(r *http.Request) (EnterpriseAdminGet
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -14850,7 +14850,7 @@ func decodeEnterpriseAdminGetAuditLogParams(r *http.Request) (EnterpriseAdminGet
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
@@ -14859,7 +14859,7 @@ func decodeEnterpriseAdminGetAuditLogParams(r *http.Request) (EnterpriseAdminGet
 
 func decodeEnterpriseAdminGetGithubActionsPermissionsEnterpriseParams(r *http.Request) (EnterpriseAdminGetGithubActionsPermissionsEnterpriseParams, error) {
 	var params EnterpriseAdminGetGithubActionsPermissionsEnterpriseParams
-	// Decode param "enterprise" located in "Path".
+	// Decode path: enterprise.
 	{
 		param := chi.URLParam(r, "enterprise")
 		if len(param) > 0 {
@@ -14887,7 +14887,7 @@ func decodeEnterpriseAdminGetGithubActionsPermissionsEnterpriseParams(r *http.Re
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter enterprise not specified`)
+			return params, errors.New(`path: enterprise: not specified`)
 		}
 	}
 	return params, nil
@@ -14895,7 +14895,7 @@ func decodeEnterpriseAdminGetGithubActionsPermissionsEnterpriseParams(r *http.Re
 
 func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams(r *http.Request) (EnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams, error) {
 	var params EnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams
-	// Decode param "enterprise" located in "Path".
+	// Decode path: enterprise.
 	{
 		param := chi.URLParam(r, "enterprise")
 		if len(param) > 0 {
@@ -14923,10 +14923,10 @@ func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams(r *
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter enterprise not specified`)
+			return params, errors.New(`path: enterprise: not specified`)
 		}
 	}
-	// Decode param "scim_group_id" located in "Path".
+	// Decode path: scim_group_id.
 	{
 		param := chi.URLParam(r, "scim_group_id")
 		if len(param) > 0 {
@@ -14954,10 +14954,10 @@ func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams(r *
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter scim_group_id not specified`)
+			return params, errors.New(`path: scim_group_id: not specified`)
 		}
 	}
-	// Decode param "excludedAttributes" located in "Query".
+	// Decode query: excludedAttributes.
 	{
 		values, ok := r.URL.Query()["excludedAttributes"]
 		if ok {
@@ -14988,7 +14988,7 @@ func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams(r *
 				params.ExcludedAttributes.SetTo(ParamsExcludedAttributesValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter excludedAttributes located in query`)
+				return params, errors.Wrap(err, `query: excludedAttributes: parse`)
 			}
 		}
 	}
@@ -14997,7 +14997,7 @@ func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams(r *
 
 func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseUserParams(r *http.Request) (EnterpriseAdminGetProvisioningInformationForEnterpriseUserParams, error) {
 	var params EnterpriseAdminGetProvisioningInformationForEnterpriseUserParams
-	// Decode param "enterprise" located in "Path".
+	// Decode path: enterprise.
 	{
 		param := chi.URLParam(r, "enterprise")
 		if len(param) > 0 {
@@ -15025,10 +15025,10 @@ func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseUserParams(r *h
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter enterprise not specified`)
+			return params, errors.New(`path: enterprise: not specified`)
 		}
 	}
-	// Decode param "scim_user_id" located in "Path".
+	// Decode path: scim_user_id.
 	{
 		param := chi.URLParam(r, "scim_user_id")
 		if len(param) > 0 {
@@ -15056,7 +15056,7 @@ func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseUserParams(r *h
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter scim_user_id not specified`)
+			return params, errors.New(`path: scim_user_id: not specified`)
 		}
 	}
 	return params, nil
@@ -15064,7 +15064,7 @@ func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseUserParams(r *h
 
 func decodeEnterpriseAdminGetSelfHostedRunnerForEnterpriseParams(r *http.Request) (EnterpriseAdminGetSelfHostedRunnerForEnterpriseParams, error) {
 	var params EnterpriseAdminGetSelfHostedRunnerForEnterpriseParams
-	// Decode param "enterprise" located in "Path".
+	// Decode path: enterprise.
 	{
 		param := chi.URLParam(r, "enterprise")
 		if len(param) > 0 {
@@ -15092,10 +15092,10 @@ func decodeEnterpriseAdminGetSelfHostedRunnerForEnterpriseParams(r *http.Request
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter enterprise not specified`)
+			return params, errors.New(`path: enterprise: not specified`)
 		}
 	}
-	// Decode param "runner_id" located in "Path".
+	// Decode path: runner_id.
 	{
 		param := chi.URLParam(r, "runner_id")
 		if len(param) > 0 {
@@ -15123,7 +15123,7 @@ func decodeEnterpriseAdminGetSelfHostedRunnerForEnterpriseParams(r *http.Request
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter runner_id not specified`)
+			return params, errors.New(`path: runner_id: not specified`)
 		}
 	}
 	return params, nil
@@ -15131,7 +15131,7 @@ func decodeEnterpriseAdminGetSelfHostedRunnerForEnterpriseParams(r *http.Request
 
 func decodeEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams(r *http.Request) (EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams, error) {
 	var params EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams
-	// Decode param "enterprise" located in "Path".
+	// Decode path: enterprise.
 	{
 		param := chi.URLParam(r, "enterprise")
 		if len(param) > 0 {
@@ -15159,10 +15159,10 @@ func decodeEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams(r *http.Re
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter enterprise not specified`)
+			return params, errors.New(`path: enterprise: not specified`)
 		}
 	}
-	// Decode param "runner_group_id" located in "Path".
+	// Decode path: runner_group_id.
 	{
 		param := chi.URLParam(r, "runner_group_id")
 		if len(param) > 0 {
@@ -15190,7 +15190,7 @@ func decodeEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams(r *http.Re
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter runner_group_id not specified`)
+			return params, errors.New(`path: runner_group_id: not specified`)
 		}
 	}
 	return params, nil
@@ -15198,7 +15198,7 @@ func decodeEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams(r *http.Re
 
 func decodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(r *http.Request) (EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams, error) {
 	var params EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams
-	// Decode param "enterprise" located in "Path".
+	// Decode path: enterprise.
 	{
 		param := chi.URLParam(r, "enterprise")
 		if len(param) > 0 {
@@ -15226,10 +15226,10 @@ func decodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter enterprise not specified`)
+			return params, errors.New(`path: enterprise: not specified`)
 		}
 	}
-	// Decode param "runner_group_id" located in "Path".
+	// Decode path: runner_group_id.
 	{
 		param := chi.URLParam(r, "runner_group_id")
 		if len(param) > 0 {
@@ -15257,10 +15257,10 @@ func decodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter runner_group_id not specified`)
+			return params, errors.New(`path: runner_group_id: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -15291,11 +15291,11 @@ func decodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -15326,7 +15326,7 @@ func decodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -15335,7 +15335,7 @@ func decodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams
 
 func decodeEnterpriseAdminListProvisionedGroupsEnterpriseParams(r *http.Request) (EnterpriseAdminListProvisionedGroupsEnterpriseParams, error) {
 	var params EnterpriseAdminListProvisionedGroupsEnterpriseParams
-	// Decode param "enterprise" located in "Path".
+	// Decode path: enterprise.
 	{
 		param := chi.URLParam(r, "enterprise")
 		if len(param) > 0 {
@@ -15363,10 +15363,10 @@ func decodeEnterpriseAdminListProvisionedGroupsEnterpriseParams(r *http.Request)
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter enterprise not specified`)
+			return params, errors.New(`path: enterprise: not specified`)
 		}
 	}
-	// Decode param "startIndex" located in "Query".
+	// Decode query: startIndex.
 	{
 		values, ok := r.URL.Query()["startIndex"]
 		if ok {
@@ -15397,11 +15397,11 @@ func decodeEnterpriseAdminListProvisionedGroupsEnterpriseParams(r *http.Request)
 				params.StartIndex.SetTo(ParamsStartIndexValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter startIndex located in query`)
+				return params, errors.Wrap(err, `query: startIndex: parse`)
 			}
 		}
 	}
-	// Decode param "count" located in "Query".
+	// Decode query: count.
 	{
 		values, ok := r.URL.Query()["count"]
 		if ok {
@@ -15432,11 +15432,11 @@ func decodeEnterpriseAdminListProvisionedGroupsEnterpriseParams(r *http.Request)
 				params.Count.SetTo(ParamsCountValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter count located in query`)
+				return params, errors.Wrap(err, `query: count: parse`)
 			}
 		}
 	}
-	// Decode param "filter" located in "Query".
+	// Decode query: filter.
 	{
 		values, ok := r.URL.Query()["filter"]
 		if ok {
@@ -15467,11 +15467,11 @@ func decodeEnterpriseAdminListProvisionedGroupsEnterpriseParams(r *http.Request)
 				params.Filter.SetTo(ParamsFilterValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter filter located in query`)
+				return params, errors.Wrap(err, `query: filter: parse`)
 			}
 		}
 	}
-	// Decode param "excludedAttributes" located in "Query".
+	// Decode query: excludedAttributes.
 	{
 		values, ok := r.URL.Query()["excludedAttributes"]
 		if ok {
@@ -15502,7 +15502,7 @@ func decodeEnterpriseAdminListProvisionedGroupsEnterpriseParams(r *http.Request)
 				params.ExcludedAttributes.SetTo(ParamsExcludedAttributesValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter excludedAttributes located in query`)
+				return params, errors.Wrap(err, `query: excludedAttributes: parse`)
 			}
 		}
 	}
@@ -15511,7 +15511,7 @@ func decodeEnterpriseAdminListProvisionedGroupsEnterpriseParams(r *http.Request)
 
 func decodeEnterpriseAdminListProvisionedIdentitiesEnterpriseParams(r *http.Request) (EnterpriseAdminListProvisionedIdentitiesEnterpriseParams, error) {
 	var params EnterpriseAdminListProvisionedIdentitiesEnterpriseParams
-	// Decode param "enterprise" located in "Path".
+	// Decode path: enterprise.
 	{
 		param := chi.URLParam(r, "enterprise")
 		if len(param) > 0 {
@@ -15539,10 +15539,10 @@ func decodeEnterpriseAdminListProvisionedIdentitiesEnterpriseParams(r *http.Requ
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter enterprise not specified`)
+			return params, errors.New(`path: enterprise: not specified`)
 		}
 	}
-	// Decode param "startIndex" located in "Query".
+	// Decode query: startIndex.
 	{
 		values, ok := r.URL.Query()["startIndex"]
 		if ok {
@@ -15573,11 +15573,11 @@ func decodeEnterpriseAdminListProvisionedIdentitiesEnterpriseParams(r *http.Requ
 				params.StartIndex.SetTo(ParamsStartIndexValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter startIndex located in query`)
+				return params, errors.Wrap(err, `query: startIndex: parse`)
 			}
 		}
 	}
-	// Decode param "count" located in "Query".
+	// Decode query: count.
 	{
 		values, ok := r.URL.Query()["count"]
 		if ok {
@@ -15608,11 +15608,11 @@ func decodeEnterpriseAdminListProvisionedIdentitiesEnterpriseParams(r *http.Requ
 				params.Count.SetTo(ParamsCountValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter count located in query`)
+				return params, errors.Wrap(err, `query: count: parse`)
 			}
 		}
 	}
-	// Decode param "filter" located in "Query".
+	// Decode query: filter.
 	{
 		values, ok := r.URL.Query()["filter"]
 		if ok {
@@ -15643,7 +15643,7 @@ func decodeEnterpriseAdminListProvisionedIdentitiesEnterpriseParams(r *http.Requ
 				params.Filter.SetTo(ParamsFilterValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter filter located in query`)
+				return params, errors.Wrap(err, `query: filter: parse`)
 			}
 		}
 	}
@@ -15652,7 +15652,7 @@ func decodeEnterpriseAdminListProvisionedIdentitiesEnterpriseParams(r *http.Requ
 
 func decodeEnterpriseAdminListRunnerApplicationsForEnterpriseParams(r *http.Request) (EnterpriseAdminListRunnerApplicationsForEnterpriseParams, error) {
 	var params EnterpriseAdminListRunnerApplicationsForEnterpriseParams
-	// Decode param "enterprise" located in "Path".
+	// Decode path: enterprise.
 	{
 		param := chi.URLParam(r, "enterprise")
 		if len(param) > 0 {
@@ -15680,7 +15680,7 @@ func decodeEnterpriseAdminListRunnerApplicationsForEnterpriseParams(r *http.Requ
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter enterprise not specified`)
+			return params, errors.New(`path: enterprise: not specified`)
 		}
 	}
 	return params, nil
@@ -15688,7 +15688,7 @@ func decodeEnterpriseAdminListRunnerApplicationsForEnterpriseParams(r *http.Requ
 
 func decodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseParams(r *http.Request) (EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseParams, error) {
 	var params EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseParams
-	// Decode param "enterprise" located in "Path".
+	// Decode path: enterprise.
 	{
 		param := chi.URLParam(r, "enterprise")
 		if len(param) > 0 {
@@ -15716,10 +15716,10 @@ func decodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpris
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter enterprise not specified`)
+			return params, errors.New(`path: enterprise: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -15750,11 +15750,11 @@ func decodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpris
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -15785,7 +15785,7 @@ func decodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpris
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -15794,7 +15794,7 @@ func decodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpris
 
 func decodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams(r *http.Request) (EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams, error) {
 	var params EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams
-	// Decode param "enterprise" located in "Path".
+	// Decode path: enterprise.
 	{
 		param := chi.URLParam(r, "enterprise")
 		if len(param) > 0 {
@@ -15822,10 +15822,10 @@ func decodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams(r *http.
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter enterprise not specified`)
+			return params, errors.New(`path: enterprise: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -15856,11 +15856,11 @@ func decodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams(r *http.
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -15891,7 +15891,7 @@ func decodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams(r *http.
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -15900,7 +15900,7 @@ func decodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams(r *http.
 
 func decodeEnterpriseAdminListSelfHostedRunnersForEnterpriseParams(r *http.Request) (EnterpriseAdminListSelfHostedRunnersForEnterpriseParams, error) {
 	var params EnterpriseAdminListSelfHostedRunnersForEnterpriseParams
-	// Decode param "enterprise" located in "Path".
+	// Decode path: enterprise.
 	{
 		param := chi.URLParam(r, "enterprise")
 		if len(param) > 0 {
@@ -15928,10 +15928,10 @@ func decodeEnterpriseAdminListSelfHostedRunnersForEnterpriseParams(r *http.Reque
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter enterprise not specified`)
+			return params, errors.New(`path: enterprise: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -15962,11 +15962,11 @@ func decodeEnterpriseAdminListSelfHostedRunnersForEnterpriseParams(r *http.Reque
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -15997,7 +15997,7 @@ func decodeEnterpriseAdminListSelfHostedRunnersForEnterpriseParams(r *http.Reque
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -16006,7 +16006,7 @@ func decodeEnterpriseAdminListSelfHostedRunnersForEnterpriseParams(r *http.Reque
 
 func decodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams(r *http.Request) (EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams, error) {
 	var params EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams
-	// Decode param "enterprise" located in "Path".
+	// Decode path: enterprise.
 	{
 		param := chi.URLParam(r, "enterprise")
 		if len(param) > 0 {
@@ -16034,10 +16034,10 @@ func decodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams(r *htt
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter enterprise not specified`)
+			return params, errors.New(`path: enterprise: not specified`)
 		}
 	}
-	// Decode param "runner_group_id" located in "Path".
+	// Decode path: runner_group_id.
 	{
 		param := chi.URLParam(r, "runner_group_id")
 		if len(param) > 0 {
@@ -16065,10 +16065,10 @@ func decodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams(r *htt
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter runner_group_id not specified`)
+			return params, errors.New(`path: runner_group_id: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -16099,11 +16099,11 @@ func decodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams(r *htt
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -16134,7 +16134,7 @@ func decodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams(r *htt
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -16143,7 +16143,7 @@ func decodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams(r *htt
 
 func decodeEnterpriseAdminProvisionAndInviteEnterpriseGroupParams(r *http.Request) (EnterpriseAdminProvisionAndInviteEnterpriseGroupParams, error) {
 	var params EnterpriseAdminProvisionAndInviteEnterpriseGroupParams
-	// Decode param "enterprise" located in "Path".
+	// Decode path: enterprise.
 	{
 		param := chi.URLParam(r, "enterprise")
 		if len(param) > 0 {
@@ -16171,7 +16171,7 @@ func decodeEnterpriseAdminProvisionAndInviteEnterpriseGroupParams(r *http.Reques
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter enterprise not specified`)
+			return params, errors.New(`path: enterprise: not specified`)
 		}
 	}
 	return params, nil
@@ -16179,7 +16179,7 @@ func decodeEnterpriseAdminProvisionAndInviteEnterpriseGroupParams(r *http.Reques
 
 func decodeEnterpriseAdminProvisionAndInviteEnterpriseUserParams(r *http.Request) (EnterpriseAdminProvisionAndInviteEnterpriseUserParams, error) {
 	var params EnterpriseAdminProvisionAndInviteEnterpriseUserParams
-	// Decode param "enterprise" located in "Path".
+	// Decode path: enterprise.
 	{
 		param := chi.URLParam(r, "enterprise")
 		if len(param) > 0 {
@@ -16207,7 +16207,7 @@ func decodeEnterpriseAdminProvisionAndInviteEnterpriseUserParams(r *http.Request
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter enterprise not specified`)
+			return params, errors.New(`path: enterprise: not specified`)
 		}
 	}
 	return params, nil
@@ -16215,7 +16215,7 @@ func decodeEnterpriseAdminProvisionAndInviteEnterpriseUserParams(r *http.Request
 
 func decodeEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(r *http.Request) (EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseParams, error) {
 	var params EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseParams
-	// Decode param "enterprise" located in "Path".
+	// Decode path: enterprise.
 	{
 		param := chi.URLParam(r, "enterprise")
 		if len(param) > 0 {
@@ -16243,10 +16243,10 @@ func decodeEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprisePara
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter enterprise not specified`)
+			return params, errors.New(`path: enterprise: not specified`)
 		}
 	}
-	// Decode param "runner_group_id" located in "Path".
+	// Decode path: runner_group_id.
 	{
 		param := chi.URLParam(r, "runner_group_id")
 		if len(param) > 0 {
@@ -16274,10 +16274,10 @@ func decodeEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprisePara
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter runner_group_id not specified`)
+			return params, errors.New(`path: runner_group_id: not specified`)
 		}
 	}
-	// Decode param "org_id" located in "Path".
+	// Decode path: org_id.
 	{
 		param := chi.URLParam(r, "org_id")
 		if len(param) > 0 {
@@ -16305,7 +16305,7 @@ func decodeEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprisePara
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org_id not specified`)
+			return params, errors.New(`path: org_id: not specified`)
 		}
 	}
 	return params, nil
@@ -16313,7 +16313,7 @@ func decodeEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprisePara
 
 func decodeEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams(r *http.Request) (EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams, error) {
 	var params EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams
-	// Decode param "enterprise" located in "Path".
+	// Decode path: enterprise.
 	{
 		param := chi.URLParam(r, "enterprise")
 		if len(param) > 0 {
@@ -16341,10 +16341,10 @@ func decodeEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams(r *
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter enterprise not specified`)
+			return params, errors.New(`path: enterprise: not specified`)
 		}
 	}
-	// Decode param "runner_group_id" located in "Path".
+	// Decode path: runner_group_id.
 	{
 		param := chi.URLParam(r, "runner_group_id")
 		if len(param) > 0 {
@@ -16372,10 +16372,10 @@ func decodeEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams(r *
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter runner_group_id not specified`)
+			return params, errors.New(`path: runner_group_id: not specified`)
 		}
 	}
-	// Decode param "runner_id" located in "Path".
+	// Decode path: runner_id.
 	{
 		param := chi.URLParam(r, "runner_id")
 		if len(param) > 0 {
@@ -16403,7 +16403,7 @@ func decodeEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams(r *
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter runner_id not specified`)
+			return params, errors.New(`path: runner_id: not specified`)
 		}
 	}
 	return params, nil
@@ -16411,7 +16411,7 @@ func decodeEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams(r *
 
 func decodeEnterpriseAdminSetAllowedActionsEnterpriseParams(r *http.Request) (EnterpriseAdminSetAllowedActionsEnterpriseParams, error) {
 	var params EnterpriseAdminSetAllowedActionsEnterpriseParams
-	// Decode param "enterprise" located in "Path".
+	// Decode path: enterprise.
 	{
 		param := chi.URLParam(r, "enterprise")
 		if len(param) > 0 {
@@ -16439,7 +16439,7 @@ func decodeEnterpriseAdminSetAllowedActionsEnterpriseParams(r *http.Request) (En
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter enterprise not specified`)
+			return params, errors.New(`path: enterprise: not specified`)
 		}
 	}
 	return params, nil
@@ -16447,7 +16447,7 @@ func decodeEnterpriseAdminSetAllowedActionsEnterpriseParams(r *http.Request) (En
 
 func decodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseParams(r *http.Request) (EnterpriseAdminSetGithubActionsPermissionsEnterpriseParams, error) {
 	var params EnterpriseAdminSetGithubActionsPermissionsEnterpriseParams
-	// Decode param "enterprise" located in "Path".
+	// Decode path: enterprise.
 	{
 		param := chi.URLParam(r, "enterprise")
 		if len(param) > 0 {
@@ -16475,7 +16475,7 @@ func decodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseParams(r *http.Re
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter enterprise not specified`)
+			return params, errors.New(`path: enterprise: not specified`)
 		}
 	}
 	return params, nil
@@ -16483,7 +16483,7 @@ func decodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseParams(r *http.Re
 
 func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams(r *http.Request) (EnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams, error) {
 	var params EnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams
-	// Decode param "enterprise" located in "Path".
+	// Decode path: enterprise.
 	{
 		param := chi.URLParam(r, "enterprise")
 		if len(param) > 0 {
@@ -16511,10 +16511,10 @@ func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams(r *h
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter enterprise not specified`)
+			return params, errors.New(`path: enterprise: not specified`)
 		}
 	}
-	// Decode param "scim_group_id" located in "Path".
+	// Decode path: scim_group_id.
 	{
 		param := chi.URLParam(r, "scim_group_id")
 		if len(param) > 0 {
@@ -16542,7 +16542,7 @@ func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams(r *h
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter scim_group_id not specified`)
+			return params, errors.New(`path: scim_group_id: not specified`)
 		}
 	}
 	return params, nil
@@ -16550,7 +16550,7 @@ func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams(r *h
 
 func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserParams(r *http.Request) (EnterpriseAdminSetInformationForProvisionedEnterpriseUserParams, error) {
 	var params EnterpriseAdminSetInformationForProvisionedEnterpriseUserParams
-	// Decode param "enterprise" located in "Path".
+	// Decode path: enterprise.
 	{
 		param := chi.URLParam(r, "enterprise")
 		if len(param) > 0 {
@@ -16578,10 +16578,10 @@ func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserParams(r *ht
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter enterprise not specified`)
+			return params, errors.New(`path: enterprise: not specified`)
 		}
 	}
-	// Decode param "scim_user_id" located in "Path".
+	// Decode path: scim_user_id.
 	{
 		param := chi.URLParam(r, "scim_user_id")
 		if len(param) > 0 {
@@ -16609,7 +16609,7 @@ func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserParams(r *ht
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter scim_user_id not specified`)
+			return params, errors.New(`path: scim_user_id: not specified`)
 		}
 	}
 	return params, nil
@@ -16617,7 +16617,7 @@ func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserParams(r *ht
 
 func decodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(r *http.Request) (EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams, error) {
 	var params EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams
-	// Decode param "enterprise" located in "Path".
+	// Decode path: enterprise.
 	{
 		param := chi.URLParam(r, "enterprise")
 		if len(param) > 0 {
@@ -16645,10 +16645,10 @@ func decodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter enterprise not specified`)
+			return params, errors.New(`path: enterprise: not specified`)
 		}
 	}
-	// Decode param "runner_group_id" located in "Path".
+	// Decode path: runner_group_id.
 	{
 		param := chi.URLParam(r, "runner_group_id")
 		if len(param) > 0 {
@@ -16676,7 +16676,7 @@ func decodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter runner_group_id not specified`)
+			return params, errors.New(`path: runner_group_id: not specified`)
 		}
 	}
 	return params, nil
@@ -16684,7 +16684,7 @@ func decodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(
 
 func decodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseParams(r *http.Request) (EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseParams, error) {
 	var params EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseParams
-	// Decode param "enterprise" located in "Path".
+	// Decode path: enterprise.
 	{
 		param := chi.URLParam(r, "enterprise")
 		if len(param) > 0 {
@@ -16712,7 +16712,7 @@ func decodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter enterprise not specified`)
+			return params, errors.New(`path: enterprise: not specified`)
 		}
 	}
 	return params, nil
@@ -16720,7 +16720,7 @@ func decodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise
 
 func decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams(r *http.Request) (EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams, error) {
 	var params EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams
-	// Decode param "enterprise" located in "Path".
+	// Decode path: enterprise.
 	{
 		param := chi.URLParam(r, "enterprise")
 		if len(param) > 0 {
@@ -16748,10 +16748,10 @@ func decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams(r *http
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter enterprise not specified`)
+			return params, errors.New(`path: enterprise: not specified`)
 		}
 	}
-	// Decode param "runner_group_id" located in "Path".
+	// Decode path: runner_group_id.
 	{
 		param := chi.URLParam(r, "runner_group_id")
 		if len(param) > 0 {
@@ -16779,7 +16779,7 @@ func decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams(r *http
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter runner_group_id not specified`)
+			return params, errors.New(`path: runner_group_id: not specified`)
 		}
 	}
 	return params, nil
@@ -16787,7 +16787,7 @@ func decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams(r *http
 
 func decodeEnterpriseAdminUpdateAttributeForEnterpriseUserParams(r *http.Request) (EnterpriseAdminUpdateAttributeForEnterpriseUserParams, error) {
 	var params EnterpriseAdminUpdateAttributeForEnterpriseUserParams
-	// Decode param "enterprise" located in "Path".
+	// Decode path: enterprise.
 	{
 		param := chi.URLParam(r, "enterprise")
 		if len(param) > 0 {
@@ -16815,10 +16815,10 @@ func decodeEnterpriseAdminUpdateAttributeForEnterpriseUserParams(r *http.Request
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter enterprise not specified`)
+			return params, errors.New(`path: enterprise: not specified`)
 		}
 	}
-	// Decode param "scim_user_id" located in "Path".
+	// Decode path: scim_user_id.
 	{
 		param := chi.URLParam(r, "scim_user_id")
 		if len(param) > 0 {
@@ -16846,7 +16846,7 @@ func decodeEnterpriseAdminUpdateAttributeForEnterpriseUserParams(r *http.Request
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter scim_user_id not specified`)
+			return params, errors.New(`path: scim_user_id: not specified`)
 		}
 	}
 	return params, nil
@@ -16854,7 +16854,7 @@ func decodeEnterpriseAdminUpdateAttributeForEnterpriseUserParams(r *http.Request
 
 func decodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams(r *http.Request) (EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams, error) {
 	var params EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams
-	// Decode param "enterprise" located in "Path".
+	// Decode path: enterprise.
 	{
 		param := chi.URLParam(r, "enterprise")
 		if len(param) > 0 {
@@ -16882,10 +16882,10 @@ func decodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams(r *http
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter enterprise not specified`)
+			return params, errors.New(`path: enterprise: not specified`)
 		}
 	}
-	// Decode param "runner_group_id" located in "Path".
+	// Decode path: runner_group_id.
 	{
 		param := chi.URLParam(r, "runner_group_id")
 		if len(param) > 0 {
@@ -16913,7 +16913,7 @@ func decodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams(r *http
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter runner_group_id not specified`)
+			return params, errors.New(`path: runner_group_id: not specified`)
 		}
 	}
 	return params, nil
@@ -16921,7 +16921,7 @@ func decodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams(r *http
 
 func decodeGistsCheckIsStarredParams(r *http.Request) (GistsCheckIsStarredParams, error) {
 	var params GistsCheckIsStarredParams
-	// Decode param "gist_id" located in "Path".
+	// Decode path: gist_id.
 	{
 		param := chi.URLParam(r, "gist_id")
 		if len(param) > 0 {
@@ -16949,7 +16949,7 @@ func decodeGistsCheckIsStarredParams(r *http.Request) (GistsCheckIsStarredParams
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter gist_id not specified`)
+			return params, errors.New(`path: gist_id: not specified`)
 		}
 	}
 	return params, nil
@@ -16957,7 +16957,7 @@ func decodeGistsCheckIsStarredParams(r *http.Request) (GistsCheckIsStarredParams
 
 func decodeGistsCreateCommentParams(r *http.Request) (GistsCreateCommentParams, error) {
 	var params GistsCreateCommentParams
-	// Decode param "gist_id" located in "Path".
+	// Decode path: gist_id.
 	{
 		param := chi.URLParam(r, "gist_id")
 		if len(param) > 0 {
@@ -16985,7 +16985,7 @@ func decodeGistsCreateCommentParams(r *http.Request) (GistsCreateCommentParams, 
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter gist_id not specified`)
+			return params, errors.New(`path: gist_id: not specified`)
 		}
 	}
 	return params, nil
@@ -16993,7 +16993,7 @@ func decodeGistsCreateCommentParams(r *http.Request) (GistsCreateCommentParams, 
 
 func decodeGistsDeleteParams(r *http.Request) (GistsDeleteParams, error) {
 	var params GistsDeleteParams
-	// Decode param "gist_id" located in "Path".
+	// Decode path: gist_id.
 	{
 		param := chi.URLParam(r, "gist_id")
 		if len(param) > 0 {
@@ -17021,7 +17021,7 @@ func decodeGistsDeleteParams(r *http.Request) (GistsDeleteParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter gist_id not specified`)
+			return params, errors.New(`path: gist_id: not specified`)
 		}
 	}
 	return params, nil
@@ -17029,7 +17029,7 @@ func decodeGistsDeleteParams(r *http.Request) (GistsDeleteParams, error) {
 
 func decodeGistsDeleteCommentParams(r *http.Request) (GistsDeleteCommentParams, error) {
 	var params GistsDeleteCommentParams
-	// Decode param "gist_id" located in "Path".
+	// Decode path: gist_id.
 	{
 		param := chi.URLParam(r, "gist_id")
 		if len(param) > 0 {
@@ -17057,10 +17057,10 @@ func decodeGistsDeleteCommentParams(r *http.Request) (GistsDeleteCommentParams, 
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter gist_id not specified`)
+			return params, errors.New(`path: gist_id: not specified`)
 		}
 	}
-	// Decode param "comment_id" located in "Path".
+	// Decode path: comment_id.
 	{
 		param := chi.URLParam(r, "comment_id")
 		if len(param) > 0 {
@@ -17088,7 +17088,7 @@ func decodeGistsDeleteCommentParams(r *http.Request) (GistsDeleteCommentParams, 
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter comment_id not specified`)
+			return params, errors.New(`path: comment_id: not specified`)
 		}
 	}
 	return params, nil
@@ -17096,7 +17096,7 @@ func decodeGistsDeleteCommentParams(r *http.Request) (GistsDeleteCommentParams, 
 
 func decodeGistsGetParams(r *http.Request) (GistsGetParams, error) {
 	var params GistsGetParams
-	// Decode param "gist_id" located in "Path".
+	// Decode path: gist_id.
 	{
 		param := chi.URLParam(r, "gist_id")
 		if len(param) > 0 {
@@ -17124,7 +17124,7 @@ func decodeGistsGetParams(r *http.Request) (GistsGetParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter gist_id not specified`)
+			return params, errors.New(`path: gist_id: not specified`)
 		}
 	}
 	return params, nil
@@ -17132,7 +17132,7 @@ func decodeGistsGetParams(r *http.Request) (GistsGetParams, error) {
 
 func decodeGistsGetCommentParams(r *http.Request) (GistsGetCommentParams, error) {
 	var params GistsGetCommentParams
-	// Decode param "gist_id" located in "Path".
+	// Decode path: gist_id.
 	{
 		param := chi.URLParam(r, "gist_id")
 		if len(param) > 0 {
@@ -17160,10 +17160,10 @@ func decodeGistsGetCommentParams(r *http.Request) (GistsGetCommentParams, error)
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter gist_id not specified`)
+			return params, errors.New(`path: gist_id: not specified`)
 		}
 	}
-	// Decode param "comment_id" located in "Path".
+	// Decode path: comment_id.
 	{
 		param := chi.URLParam(r, "comment_id")
 		if len(param) > 0 {
@@ -17191,7 +17191,7 @@ func decodeGistsGetCommentParams(r *http.Request) (GistsGetCommentParams, error)
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter comment_id not specified`)
+			return params, errors.New(`path: comment_id: not specified`)
 		}
 	}
 	return params, nil
@@ -17199,7 +17199,7 @@ func decodeGistsGetCommentParams(r *http.Request) (GistsGetCommentParams, error)
 
 func decodeGistsListParams(r *http.Request) (GistsListParams, error) {
 	var params GistsListParams
-	// Decode param "since" located in "Query".
+	// Decode query: since.
 	{
 		values, ok := r.URL.Query()["since"]
 		if ok {
@@ -17230,11 +17230,11 @@ func decodeGistsListParams(r *http.Request) (GistsListParams, error) {
 				params.Since.SetTo(ParamsSinceValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter since located in query`)
+				return params, errors.Wrap(err, `query: since: parse`)
 			}
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -17265,11 +17265,11 @@ func decodeGistsListParams(r *http.Request) (GistsListParams, error) {
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -17300,7 +17300,7 @@ func decodeGistsListParams(r *http.Request) (GistsListParams, error) {
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -17309,7 +17309,7 @@ func decodeGistsListParams(r *http.Request) (GistsListParams, error) {
 
 func decodeGistsListCommentsParams(r *http.Request) (GistsListCommentsParams, error) {
 	var params GistsListCommentsParams
-	// Decode param "gist_id" located in "Path".
+	// Decode path: gist_id.
 	{
 		param := chi.URLParam(r, "gist_id")
 		if len(param) > 0 {
@@ -17337,10 +17337,10 @@ func decodeGistsListCommentsParams(r *http.Request) (GistsListCommentsParams, er
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter gist_id not specified`)
+			return params, errors.New(`path: gist_id: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -17371,11 +17371,11 @@ func decodeGistsListCommentsParams(r *http.Request) (GistsListCommentsParams, er
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -17406,7 +17406,7 @@ func decodeGistsListCommentsParams(r *http.Request) (GistsListCommentsParams, er
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -17415,7 +17415,7 @@ func decodeGistsListCommentsParams(r *http.Request) (GistsListCommentsParams, er
 
 func decodeGistsListCommitsParams(r *http.Request) (GistsListCommitsParams, error) {
 	var params GistsListCommitsParams
-	// Decode param "gist_id" located in "Path".
+	// Decode path: gist_id.
 	{
 		param := chi.URLParam(r, "gist_id")
 		if len(param) > 0 {
@@ -17443,10 +17443,10 @@ func decodeGistsListCommitsParams(r *http.Request) (GistsListCommitsParams, erro
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter gist_id not specified`)
+			return params, errors.New(`path: gist_id: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -17477,11 +17477,11 @@ func decodeGistsListCommitsParams(r *http.Request) (GistsListCommitsParams, erro
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -17512,7 +17512,7 @@ func decodeGistsListCommitsParams(r *http.Request) (GistsListCommitsParams, erro
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -17521,7 +17521,7 @@ func decodeGistsListCommitsParams(r *http.Request) (GistsListCommitsParams, erro
 
 func decodeGistsListForksParams(r *http.Request) (GistsListForksParams, error) {
 	var params GistsListForksParams
-	// Decode param "gist_id" located in "Path".
+	// Decode path: gist_id.
 	{
 		param := chi.URLParam(r, "gist_id")
 		if len(param) > 0 {
@@ -17549,10 +17549,10 @@ func decodeGistsListForksParams(r *http.Request) (GistsListForksParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter gist_id not specified`)
+			return params, errors.New(`path: gist_id: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -17583,11 +17583,11 @@ func decodeGistsListForksParams(r *http.Request) (GistsListForksParams, error) {
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -17618,7 +17618,7 @@ func decodeGistsListForksParams(r *http.Request) (GistsListForksParams, error) {
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -17627,7 +17627,7 @@ func decodeGistsListForksParams(r *http.Request) (GistsListForksParams, error) {
 
 func decodeGistsListStarredParams(r *http.Request) (GistsListStarredParams, error) {
 	var params GistsListStarredParams
-	// Decode param "since" located in "Query".
+	// Decode query: since.
 	{
 		values, ok := r.URL.Query()["since"]
 		if ok {
@@ -17658,11 +17658,11 @@ func decodeGistsListStarredParams(r *http.Request) (GistsListStarredParams, erro
 				params.Since.SetTo(ParamsSinceValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter since located in query`)
+				return params, errors.Wrap(err, `query: since: parse`)
 			}
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -17693,11 +17693,11 @@ func decodeGistsListStarredParams(r *http.Request) (GistsListStarredParams, erro
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -17728,7 +17728,7 @@ func decodeGistsListStarredParams(r *http.Request) (GistsListStarredParams, erro
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -17737,7 +17737,7 @@ func decodeGistsListStarredParams(r *http.Request) (GistsListStarredParams, erro
 
 func decodeGistsStarParams(r *http.Request) (GistsStarParams, error) {
 	var params GistsStarParams
-	// Decode param "gist_id" located in "Path".
+	// Decode path: gist_id.
 	{
 		param := chi.URLParam(r, "gist_id")
 		if len(param) > 0 {
@@ -17765,7 +17765,7 @@ func decodeGistsStarParams(r *http.Request) (GistsStarParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter gist_id not specified`)
+			return params, errors.New(`path: gist_id: not specified`)
 		}
 	}
 	return params, nil
@@ -17773,7 +17773,7 @@ func decodeGistsStarParams(r *http.Request) (GistsStarParams, error) {
 
 func decodeGistsUnstarParams(r *http.Request) (GistsUnstarParams, error) {
 	var params GistsUnstarParams
-	// Decode param "gist_id" located in "Path".
+	// Decode path: gist_id.
 	{
 		param := chi.URLParam(r, "gist_id")
 		if len(param) > 0 {
@@ -17801,7 +17801,7 @@ func decodeGistsUnstarParams(r *http.Request) (GistsUnstarParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter gist_id not specified`)
+			return params, errors.New(`path: gist_id: not specified`)
 		}
 	}
 	return params, nil
@@ -17809,7 +17809,7 @@ func decodeGistsUnstarParams(r *http.Request) (GistsUnstarParams, error) {
 
 func decodeGistsUpdateCommentParams(r *http.Request) (GistsUpdateCommentParams, error) {
 	var params GistsUpdateCommentParams
-	// Decode param "gist_id" located in "Path".
+	// Decode path: gist_id.
 	{
 		param := chi.URLParam(r, "gist_id")
 		if len(param) > 0 {
@@ -17837,10 +17837,10 @@ func decodeGistsUpdateCommentParams(r *http.Request) (GistsUpdateCommentParams, 
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter gist_id not specified`)
+			return params, errors.New(`path: gist_id: not specified`)
 		}
 	}
-	// Decode param "comment_id" located in "Path".
+	// Decode path: comment_id.
 	{
 		param := chi.URLParam(r, "comment_id")
 		if len(param) > 0 {
@@ -17868,7 +17868,7 @@ func decodeGistsUpdateCommentParams(r *http.Request) (GistsUpdateCommentParams, 
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter comment_id not specified`)
+			return params, errors.New(`path: comment_id: not specified`)
 		}
 	}
 	return params, nil
@@ -17876,7 +17876,7 @@ func decodeGistsUpdateCommentParams(r *http.Request) (GistsUpdateCommentParams, 
 
 func decodeGitGetCommitParams(r *http.Request) (GitGetCommitParams, error) {
 	var params GitGetCommitParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -17904,10 +17904,10 @@ func decodeGitGetCommitParams(r *http.Request) (GitGetCommitParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -17935,10 +17935,10 @@ func decodeGitGetCommitParams(r *http.Request) (GitGetCommitParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "commit_sha" located in "Path".
+	// Decode path: commit_sha.
 	{
 		param := chi.URLParam(r, "commit_sha")
 		if len(param) > 0 {
@@ -17966,7 +17966,7 @@ func decodeGitGetCommitParams(r *http.Request) (GitGetCommitParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter commit_sha not specified`)
+			return params, errors.New(`path: commit_sha: not specified`)
 		}
 	}
 	return params, nil
@@ -17974,7 +17974,7 @@ func decodeGitGetCommitParams(r *http.Request) (GitGetCommitParams, error) {
 
 func decodeGitGetRefParams(r *http.Request) (GitGetRefParams, error) {
 	var params GitGetRefParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -18002,10 +18002,10 @@ func decodeGitGetRefParams(r *http.Request) (GitGetRefParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -18033,10 +18033,10 @@ func decodeGitGetRefParams(r *http.Request) (GitGetRefParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "ref" located in "Path".
+	// Decode path: ref.
 	{
 		param := chi.URLParam(r, "ref")
 		if len(param) > 0 {
@@ -18064,7 +18064,7 @@ func decodeGitGetRefParams(r *http.Request) (GitGetRefParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter ref not specified`)
+			return params, errors.New(`path: ref: not specified`)
 		}
 	}
 	return params, nil
@@ -18072,7 +18072,7 @@ func decodeGitGetRefParams(r *http.Request) (GitGetRefParams, error) {
 
 func decodeGitGetTagParams(r *http.Request) (GitGetTagParams, error) {
 	var params GitGetTagParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -18100,10 +18100,10 @@ func decodeGitGetTagParams(r *http.Request) (GitGetTagParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -18131,10 +18131,10 @@ func decodeGitGetTagParams(r *http.Request) (GitGetTagParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "tag_sha" located in "Path".
+	// Decode path: tag_sha.
 	{
 		param := chi.URLParam(r, "tag_sha")
 		if len(param) > 0 {
@@ -18162,7 +18162,7 @@ func decodeGitGetTagParams(r *http.Request) (GitGetTagParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter tag_sha not specified`)
+			return params, errors.New(`path: tag_sha: not specified`)
 		}
 	}
 	return params, nil
@@ -18170,7 +18170,7 @@ func decodeGitGetTagParams(r *http.Request) (GitGetTagParams, error) {
 
 func decodeGitListMatchingRefsParams(r *http.Request) (GitListMatchingRefsParams, error) {
 	var params GitListMatchingRefsParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -18198,10 +18198,10 @@ func decodeGitListMatchingRefsParams(r *http.Request) (GitListMatchingRefsParams
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -18229,10 +18229,10 @@ func decodeGitListMatchingRefsParams(r *http.Request) (GitListMatchingRefsParams
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "ref" located in "Path".
+	// Decode path: ref.
 	{
 		param := chi.URLParam(r, "ref")
 		if len(param) > 0 {
@@ -18260,10 +18260,10 @@ func decodeGitListMatchingRefsParams(r *http.Request) (GitListMatchingRefsParams
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter ref not specified`)
+			return params, errors.New(`path: ref: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -18294,11 +18294,11 @@ func decodeGitListMatchingRefsParams(r *http.Request) (GitListMatchingRefsParams
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -18329,7 +18329,7 @@ func decodeGitListMatchingRefsParams(r *http.Request) (GitListMatchingRefsParams
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -18338,7 +18338,7 @@ func decodeGitListMatchingRefsParams(r *http.Request) (GitListMatchingRefsParams
 
 func decodeGitignoreGetTemplateParams(r *http.Request) (GitignoreGetTemplateParams, error) {
 	var params GitignoreGetTemplateParams
-	// Decode param "name" located in "Path".
+	// Decode path: name.
 	{
 		param := chi.URLParam(r, "name")
 		if len(param) > 0 {
@@ -18366,7 +18366,7 @@ func decodeGitignoreGetTemplateParams(r *http.Request) (GitignoreGetTemplatePara
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter name not specified`)
+			return params, errors.New(`path: name: not specified`)
 		}
 	}
 	return params, nil
@@ -18374,7 +18374,7 @@ func decodeGitignoreGetTemplateParams(r *http.Request) (GitignoreGetTemplatePara
 
 func decodeInteractionsRemoveRestrictionsForOrgParams(r *http.Request) (InteractionsRemoveRestrictionsForOrgParams, error) {
 	var params InteractionsRemoveRestrictionsForOrgParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -18402,7 +18402,7 @@ func decodeInteractionsRemoveRestrictionsForOrgParams(r *http.Request) (Interact
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
 	return params, nil
@@ -18410,7 +18410,7 @@ func decodeInteractionsRemoveRestrictionsForOrgParams(r *http.Request) (Interact
 
 func decodeInteractionsRemoveRestrictionsForRepoParams(r *http.Request) (InteractionsRemoveRestrictionsForRepoParams, error) {
 	var params InteractionsRemoveRestrictionsForRepoParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -18438,10 +18438,10 @@ func decodeInteractionsRemoveRestrictionsForRepoParams(r *http.Request) (Interac
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -18469,7 +18469,7 @@ func decodeInteractionsRemoveRestrictionsForRepoParams(r *http.Request) (Interac
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
 	return params, nil
@@ -18477,7 +18477,7 @@ func decodeInteractionsRemoveRestrictionsForRepoParams(r *http.Request) (Interac
 
 func decodeInteractionsSetRestrictionsForRepoParams(r *http.Request) (InteractionsSetRestrictionsForRepoParams, error) {
 	var params InteractionsSetRestrictionsForRepoParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -18505,10 +18505,10 @@ func decodeInteractionsSetRestrictionsForRepoParams(r *http.Request) (Interactio
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -18536,7 +18536,7 @@ func decodeInteractionsSetRestrictionsForRepoParams(r *http.Request) (Interactio
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
 	return params, nil
@@ -18544,7 +18544,7 @@ func decodeInteractionsSetRestrictionsForRepoParams(r *http.Request) (Interactio
 
 func decodeIssuesAddAssigneesParams(r *http.Request) (IssuesAddAssigneesParams, error) {
 	var params IssuesAddAssigneesParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -18572,10 +18572,10 @@ func decodeIssuesAddAssigneesParams(r *http.Request) (IssuesAddAssigneesParams, 
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -18603,10 +18603,10 @@ func decodeIssuesAddAssigneesParams(r *http.Request) (IssuesAddAssigneesParams, 
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "issue_number" located in "Path".
+	// Decode path: issue_number.
 	{
 		param := chi.URLParam(r, "issue_number")
 		if len(param) > 0 {
@@ -18634,7 +18634,7 @@ func decodeIssuesAddAssigneesParams(r *http.Request) (IssuesAddAssigneesParams, 
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter issue_number not specified`)
+			return params, errors.New(`path: issue_number: not specified`)
 		}
 	}
 	return params, nil
@@ -18642,7 +18642,7 @@ func decodeIssuesAddAssigneesParams(r *http.Request) (IssuesAddAssigneesParams, 
 
 func decodeIssuesCheckUserCanBeAssignedParams(r *http.Request) (IssuesCheckUserCanBeAssignedParams, error) {
 	var params IssuesCheckUserCanBeAssignedParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -18670,10 +18670,10 @@ func decodeIssuesCheckUserCanBeAssignedParams(r *http.Request) (IssuesCheckUserC
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -18701,10 +18701,10 @@ func decodeIssuesCheckUserCanBeAssignedParams(r *http.Request) (IssuesCheckUserC
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "assignee" located in "Path".
+	// Decode path: assignee.
 	{
 		param := chi.URLParam(r, "assignee")
 		if len(param) > 0 {
@@ -18732,7 +18732,7 @@ func decodeIssuesCheckUserCanBeAssignedParams(r *http.Request) (IssuesCheckUserC
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter assignee not specified`)
+			return params, errors.New(`path: assignee: not specified`)
 		}
 	}
 	return params, nil
@@ -18740,7 +18740,7 @@ func decodeIssuesCheckUserCanBeAssignedParams(r *http.Request) (IssuesCheckUserC
 
 func decodeIssuesDeleteCommentParams(r *http.Request) (IssuesDeleteCommentParams, error) {
 	var params IssuesDeleteCommentParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -18768,10 +18768,10 @@ func decodeIssuesDeleteCommentParams(r *http.Request) (IssuesDeleteCommentParams
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -18799,10 +18799,10 @@ func decodeIssuesDeleteCommentParams(r *http.Request) (IssuesDeleteCommentParams
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "comment_id" located in "Path".
+	// Decode path: comment_id.
 	{
 		param := chi.URLParam(r, "comment_id")
 		if len(param) > 0 {
@@ -18830,7 +18830,7 @@ func decodeIssuesDeleteCommentParams(r *http.Request) (IssuesDeleteCommentParams
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter comment_id not specified`)
+			return params, errors.New(`path: comment_id: not specified`)
 		}
 	}
 	return params, nil
@@ -18838,7 +18838,7 @@ func decodeIssuesDeleteCommentParams(r *http.Request) (IssuesDeleteCommentParams
 
 func decodeIssuesDeleteLabelParams(r *http.Request) (IssuesDeleteLabelParams, error) {
 	var params IssuesDeleteLabelParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -18866,10 +18866,10 @@ func decodeIssuesDeleteLabelParams(r *http.Request) (IssuesDeleteLabelParams, er
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -18897,10 +18897,10 @@ func decodeIssuesDeleteLabelParams(r *http.Request) (IssuesDeleteLabelParams, er
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "name" located in "Path".
+	// Decode path: name.
 	{
 		param := chi.URLParam(r, "name")
 		if len(param) > 0 {
@@ -18928,7 +18928,7 @@ func decodeIssuesDeleteLabelParams(r *http.Request) (IssuesDeleteLabelParams, er
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter name not specified`)
+			return params, errors.New(`path: name: not specified`)
 		}
 	}
 	return params, nil
@@ -18936,7 +18936,7 @@ func decodeIssuesDeleteLabelParams(r *http.Request) (IssuesDeleteLabelParams, er
 
 func decodeIssuesDeleteMilestoneParams(r *http.Request) (IssuesDeleteMilestoneParams, error) {
 	var params IssuesDeleteMilestoneParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -18964,10 +18964,10 @@ func decodeIssuesDeleteMilestoneParams(r *http.Request) (IssuesDeleteMilestonePa
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -18995,10 +18995,10 @@ func decodeIssuesDeleteMilestoneParams(r *http.Request) (IssuesDeleteMilestonePa
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "milestone_number" located in "Path".
+	// Decode path: milestone_number.
 	{
 		param := chi.URLParam(r, "milestone_number")
 		if len(param) > 0 {
@@ -19026,7 +19026,7 @@ func decodeIssuesDeleteMilestoneParams(r *http.Request) (IssuesDeleteMilestonePa
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter milestone_number not specified`)
+			return params, errors.New(`path: milestone_number: not specified`)
 		}
 	}
 	return params, nil
@@ -19034,7 +19034,7 @@ func decodeIssuesDeleteMilestoneParams(r *http.Request) (IssuesDeleteMilestonePa
 
 func decodeIssuesGetCommentParams(r *http.Request) (IssuesGetCommentParams, error) {
 	var params IssuesGetCommentParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -19062,10 +19062,10 @@ func decodeIssuesGetCommentParams(r *http.Request) (IssuesGetCommentParams, erro
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -19093,10 +19093,10 @@ func decodeIssuesGetCommentParams(r *http.Request) (IssuesGetCommentParams, erro
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "comment_id" located in "Path".
+	// Decode path: comment_id.
 	{
 		param := chi.URLParam(r, "comment_id")
 		if len(param) > 0 {
@@ -19124,7 +19124,7 @@ func decodeIssuesGetCommentParams(r *http.Request) (IssuesGetCommentParams, erro
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter comment_id not specified`)
+			return params, errors.New(`path: comment_id: not specified`)
 		}
 	}
 	return params, nil
@@ -19132,7 +19132,7 @@ func decodeIssuesGetCommentParams(r *http.Request) (IssuesGetCommentParams, erro
 
 func decodeIssuesGetEventParams(r *http.Request) (IssuesGetEventParams, error) {
 	var params IssuesGetEventParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -19160,10 +19160,10 @@ func decodeIssuesGetEventParams(r *http.Request) (IssuesGetEventParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -19191,10 +19191,10 @@ func decodeIssuesGetEventParams(r *http.Request) (IssuesGetEventParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "event_id" located in "Path".
+	// Decode path: event_id.
 	{
 		param := chi.URLParam(r, "event_id")
 		if len(param) > 0 {
@@ -19222,7 +19222,7 @@ func decodeIssuesGetEventParams(r *http.Request) (IssuesGetEventParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter event_id not specified`)
+			return params, errors.New(`path: event_id: not specified`)
 		}
 	}
 	return params, nil
@@ -19230,7 +19230,7 @@ func decodeIssuesGetEventParams(r *http.Request) (IssuesGetEventParams, error) {
 
 func decodeIssuesGetLabelParams(r *http.Request) (IssuesGetLabelParams, error) {
 	var params IssuesGetLabelParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -19258,10 +19258,10 @@ func decodeIssuesGetLabelParams(r *http.Request) (IssuesGetLabelParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -19289,10 +19289,10 @@ func decodeIssuesGetLabelParams(r *http.Request) (IssuesGetLabelParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "name" located in "Path".
+	// Decode path: name.
 	{
 		param := chi.URLParam(r, "name")
 		if len(param) > 0 {
@@ -19320,7 +19320,7 @@ func decodeIssuesGetLabelParams(r *http.Request) (IssuesGetLabelParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter name not specified`)
+			return params, errors.New(`path: name: not specified`)
 		}
 	}
 	return params, nil
@@ -19328,7 +19328,7 @@ func decodeIssuesGetLabelParams(r *http.Request) (IssuesGetLabelParams, error) {
 
 func decodeIssuesGetMilestoneParams(r *http.Request) (IssuesGetMilestoneParams, error) {
 	var params IssuesGetMilestoneParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -19356,10 +19356,10 @@ func decodeIssuesGetMilestoneParams(r *http.Request) (IssuesGetMilestoneParams, 
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -19387,10 +19387,10 @@ func decodeIssuesGetMilestoneParams(r *http.Request) (IssuesGetMilestoneParams, 
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "milestone_number" located in "Path".
+	// Decode path: milestone_number.
 	{
 		param := chi.URLParam(r, "milestone_number")
 		if len(param) > 0 {
@@ -19418,7 +19418,7 @@ func decodeIssuesGetMilestoneParams(r *http.Request) (IssuesGetMilestoneParams, 
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter milestone_number not specified`)
+			return params, errors.New(`path: milestone_number: not specified`)
 		}
 	}
 	return params, nil
@@ -19426,7 +19426,7 @@ func decodeIssuesGetMilestoneParams(r *http.Request) (IssuesGetMilestoneParams, 
 
 func decodeIssuesListAssigneesParams(r *http.Request) (IssuesListAssigneesParams, error) {
 	var params IssuesListAssigneesParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -19454,10 +19454,10 @@ func decodeIssuesListAssigneesParams(r *http.Request) (IssuesListAssigneesParams
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -19485,10 +19485,10 @@ func decodeIssuesListAssigneesParams(r *http.Request) (IssuesListAssigneesParams
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -19519,11 +19519,11 @@ func decodeIssuesListAssigneesParams(r *http.Request) (IssuesListAssigneesParams
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -19554,7 +19554,7 @@ func decodeIssuesListAssigneesParams(r *http.Request) (IssuesListAssigneesParams
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -19563,7 +19563,7 @@ func decodeIssuesListAssigneesParams(r *http.Request) (IssuesListAssigneesParams
 
 func decodeIssuesListCommentsParams(r *http.Request) (IssuesListCommentsParams, error) {
 	var params IssuesListCommentsParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -19591,10 +19591,10 @@ func decodeIssuesListCommentsParams(r *http.Request) (IssuesListCommentsParams, 
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -19622,10 +19622,10 @@ func decodeIssuesListCommentsParams(r *http.Request) (IssuesListCommentsParams, 
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "issue_number" located in "Path".
+	// Decode path: issue_number.
 	{
 		param := chi.URLParam(r, "issue_number")
 		if len(param) > 0 {
@@ -19653,10 +19653,10 @@ func decodeIssuesListCommentsParams(r *http.Request) (IssuesListCommentsParams, 
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter issue_number not specified`)
+			return params, errors.New(`path: issue_number: not specified`)
 		}
 	}
-	// Decode param "since" located in "Query".
+	// Decode query: since.
 	{
 		values, ok := r.URL.Query()["since"]
 		if ok {
@@ -19687,11 +19687,11 @@ func decodeIssuesListCommentsParams(r *http.Request) (IssuesListCommentsParams, 
 				params.Since.SetTo(ParamsSinceValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter since located in query`)
+				return params, errors.Wrap(err, `query: since: parse`)
 			}
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -19722,11 +19722,11 @@ func decodeIssuesListCommentsParams(r *http.Request) (IssuesListCommentsParams, 
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -19757,7 +19757,7 @@ func decodeIssuesListCommentsParams(r *http.Request) (IssuesListCommentsParams, 
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -19766,7 +19766,7 @@ func decodeIssuesListCommentsParams(r *http.Request) (IssuesListCommentsParams, 
 
 func decodeIssuesListLabelsForMilestoneParams(r *http.Request) (IssuesListLabelsForMilestoneParams, error) {
 	var params IssuesListLabelsForMilestoneParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -19794,10 +19794,10 @@ func decodeIssuesListLabelsForMilestoneParams(r *http.Request) (IssuesListLabels
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -19825,10 +19825,10 @@ func decodeIssuesListLabelsForMilestoneParams(r *http.Request) (IssuesListLabels
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "milestone_number" located in "Path".
+	// Decode path: milestone_number.
 	{
 		param := chi.URLParam(r, "milestone_number")
 		if len(param) > 0 {
@@ -19856,10 +19856,10 @@ func decodeIssuesListLabelsForMilestoneParams(r *http.Request) (IssuesListLabels
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter milestone_number not specified`)
+			return params, errors.New(`path: milestone_number: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -19890,11 +19890,11 @@ func decodeIssuesListLabelsForMilestoneParams(r *http.Request) (IssuesListLabels
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -19925,7 +19925,7 @@ func decodeIssuesListLabelsForMilestoneParams(r *http.Request) (IssuesListLabels
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -19934,7 +19934,7 @@ func decodeIssuesListLabelsForMilestoneParams(r *http.Request) (IssuesListLabels
 
 func decodeIssuesListLabelsForRepoParams(r *http.Request) (IssuesListLabelsForRepoParams, error) {
 	var params IssuesListLabelsForRepoParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -19962,10 +19962,10 @@ func decodeIssuesListLabelsForRepoParams(r *http.Request) (IssuesListLabelsForRe
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -19993,10 +19993,10 @@ func decodeIssuesListLabelsForRepoParams(r *http.Request) (IssuesListLabelsForRe
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -20027,11 +20027,11 @@ func decodeIssuesListLabelsForRepoParams(r *http.Request) (IssuesListLabelsForRe
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -20062,7 +20062,7 @@ func decodeIssuesListLabelsForRepoParams(r *http.Request) (IssuesListLabelsForRe
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -20071,7 +20071,7 @@ func decodeIssuesListLabelsForRepoParams(r *http.Request) (IssuesListLabelsForRe
 
 func decodeIssuesListLabelsOnIssueParams(r *http.Request) (IssuesListLabelsOnIssueParams, error) {
 	var params IssuesListLabelsOnIssueParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -20099,10 +20099,10 @@ func decodeIssuesListLabelsOnIssueParams(r *http.Request) (IssuesListLabelsOnIss
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -20130,10 +20130,10 @@ func decodeIssuesListLabelsOnIssueParams(r *http.Request) (IssuesListLabelsOnIss
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "issue_number" located in "Path".
+	// Decode path: issue_number.
 	{
 		param := chi.URLParam(r, "issue_number")
 		if len(param) > 0 {
@@ -20161,10 +20161,10 @@ func decodeIssuesListLabelsOnIssueParams(r *http.Request) (IssuesListLabelsOnIss
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter issue_number not specified`)
+			return params, errors.New(`path: issue_number: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -20195,11 +20195,11 @@ func decodeIssuesListLabelsOnIssueParams(r *http.Request) (IssuesListLabelsOnIss
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -20230,7 +20230,7 @@ func decodeIssuesListLabelsOnIssueParams(r *http.Request) (IssuesListLabelsOnIss
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -20239,7 +20239,7 @@ func decodeIssuesListLabelsOnIssueParams(r *http.Request) (IssuesListLabelsOnIss
 
 func decodeIssuesListMilestonesParams(r *http.Request) (IssuesListMilestonesParams, error) {
 	var params IssuesListMilestonesParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -20267,10 +20267,10 @@ func decodeIssuesListMilestonesParams(r *http.Request) (IssuesListMilestonesPara
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -20298,10 +20298,10 @@ func decodeIssuesListMilestonesParams(r *http.Request) (IssuesListMilestonesPara
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "state" located in "Query".
+	// Decode query: state.
 	{
 		values, ok := r.URL.Query()["state"]
 		if ok {
@@ -20332,7 +20332,7 @@ func decodeIssuesListMilestonesParams(r *http.Request) (IssuesListMilestonesPara
 				params.State.SetTo(ParamsStateValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter state located in query`)
+				return params, errors.Wrap(err, `query: state: parse`)
 			}
 			if err := func() error {
 
@@ -20351,11 +20351,11 @@ func decodeIssuesListMilestonesParams(r *http.Request) (IssuesListMilestonesPara
 
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `invalid parameter state (query`)
+				return params, errors.Wrap(err, `query: state: invalid`)
 			}
 		}
 	}
-	// Decode param "sort" located in "Query".
+	// Decode query: sort.
 	{
 		values, ok := r.URL.Query()["sort"]
 		if ok {
@@ -20386,7 +20386,7 @@ func decodeIssuesListMilestonesParams(r *http.Request) (IssuesListMilestonesPara
 				params.Sort.SetTo(ParamsSortValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter sort located in query`)
+				return params, errors.Wrap(err, `query: sort: parse`)
 			}
 			if err := func() error {
 
@@ -20405,11 +20405,11 @@ func decodeIssuesListMilestonesParams(r *http.Request) (IssuesListMilestonesPara
 
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `invalid parameter sort (query`)
+				return params, errors.Wrap(err, `query: sort: invalid`)
 			}
 		}
 	}
-	// Decode param "direction" located in "Query".
+	// Decode query: direction.
 	{
 		values, ok := r.URL.Query()["direction"]
 		if ok {
@@ -20440,7 +20440,7 @@ func decodeIssuesListMilestonesParams(r *http.Request) (IssuesListMilestonesPara
 				params.Direction.SetTo(ParamsDirectionValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter direction located in query`)
+				return params, errors.Wrap(err, `query: direction: parse`)
 			}
 			if err := func() error {
 
@@ -20459,11 +20459,11 @@ func decodeIssuesListMilestonesParams(r *http.Request) (IssuesListMilestonesPara
 
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `invalid parameter direction (query`)
+				return params, errors.Wrap(err, `query: direction: invalid`)
 			}
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -20494,11 +20494,11 @@ func decodeIssuesListMilestonesParams(r *http.Request) (IssuesListMilestonesPara
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -20529,7 +20529,7 @@ func decodeIssuesListMilestonesParams(r *http.Request) (IssuesListMilestonesPara
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -20538,7 +20538,7 @@ func decodeIssuesListMilestonesParams(r *http.Request) (IssuesListMilestonesPara
 
 func decodeIssuesRemoveAllLabelsParams(r *http.Request) (IssuesRemoveAllLabelsParams, error) {
 	var params IssuesRemoveAllLabelsParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -20566,10 +20566,10 @@ func decodeIssuesRemoveAllLabelsParams(r *http.Request) (IssuesRemoveAllLabelsPa
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -20597,10 +20597,10 @@ func decodeIssuesRemoveAllLabelsParams(r *http.Request) (IssuesRemoveAllLabelsPa
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "issue_number" located in "Path".
+	// Decode path: issue_number.
 	{
 		param := chi.URLParam(r, "issue_number")
 		if len(param) > 0 {
@@ -20628,7 +20628,7 @@ func decodeIssuesRemoveAllLabelsParams(r *http.Request) (IssuesRemoveAllLabelsPa
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter issue_number not specified`)
+			return params, errors.New(`path: issue_number: not specified`)
 		}
 	}
 	return params, nil
@@ -20636,7 +20636,7 @@ func decodeIssuesRemoveAllLabelsParams(r *http.Request) (IssuesRemoveAllLabelsPa
 
 func decodeIssuesRemoveAssigneesParams(r *http.Request) (IssuesRemoveAssigneesParams, error) {
 	var params IssuesRemoveAssigneesParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -20664,10 +20664,10 @@ func decodeIssuesRemoveAssigneesParams(r *http.Request) (IssuesRemoveAssigneesPa
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -20695,10 +20695,10 @@ func decodeIssuesRemoveAssigneesParams(r *http.Request) (IssuesRemoveAssigneesPa
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "issue_number" located in "Path".
+	// Decode path: issue_number.
 	{
 		param := chi.URLParam(r, "issue_number")
 		if len(param) > 0 {
@@ -20726,7 +20726,7 @@ func decodeIssuesRemoveAssigneesParams(r *http.Request) (IssuesRemoveAssigneesPa
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter issue_number not specified`)
+			return params, errors.New(`path: issue_number: not specified`)
 		}
 	}
 	return params, nil
@@ -20734,7 +20734,7 @@ func decodeIssuesRemoveAssigneesParams(r *http.Request) (IssuesRemoveAssigneesPa
 
 func decodeIssuesRemoveLabelParams(r *http.Request) (IssuesRemoveLabelParams, error) {
 	var params IssuesRemoveLabelParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -20762,10 +20762,10 @@ func decodeIssuesRemoveLabelParams(r *http.Request) (IssuesRemoveLabelParams, er
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -20793,10 +20793,10 @@ func decodeIssuesRemoveLabelParams(r *http.Request) (IssuesRemoveLabelParams, er
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "issue_number" located in "Path".
+	// Decode path: issue_number.
 	{
 		param := chi.URLParam(r, "issue_number")
 		if len(param) > 0 {
@@ -20824,10 +20824,10 @@ func decodeIssuesRemoveLabelParams(r *http.Request) (IssuesRemoveLabelParams, er
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter issue_number not specified`)
+			return params, errors.New(`path: issue_number: not specified`)
 		}
 	}
-	// Decode param "name" located in "Path".
+	// Decode path: name.
 	{
 		param := chi.URLParam(r, "name")
 		if len(param) > 0 {
@@ -20855,7 +20855,7 @@ func decodeIssuesRemoveLabelParams(r *http.Request) (IssuesRemoveLabelParams, er
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter name not specified`)
+			return params, errors.New(`path: name: not specified`)
 		}
 	}
 	return params, nil
@@ -20863,7 +20863,7 @@ func decodeIssuesRemoveLabelParams(r *http.Request) (IssuesRemoveLabelParams, er
 
 func decodeIssuesUnlockParams(r *http.Request) (IssuesUnlockParams, error) {
 	var params IssuesUnlockParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -20891,10 +20891,10 @@ func decodeIssuesUnlockParams(r *http.Request) (IssuesUnlockParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -20922,10 +20922,10 @@ func decodeIssuesUnlockParams(r *http.Request) (IssuesUnlockParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "issue_number" located in "Path".
+	// Decode path: issue_number.
 	{
 		param := chi.URLParam(r, "issue_number")
 		if len(param) > 0 {
@@ -20953,7 +20953,7 @@ func decodeIssuesUnlockParams(r *http.Request) (IssuesUnlockParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter issue_number not specified`)
+			return params, errors.New(`path: issue_number: not specified`)
 		}
 	}
 	return params, nil
@@ -20961,7 +20961,7 @@ func decodeIssuesUnlockParams(r *http.Request) (IssuesUnlockParams, error) {
 
 func decodeIssuesUpdateLabelParams(r *http.Request) (IssuesUpdateLabelParams, error) {
 	var params IssuesUpdateLabelParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -20989,10 +20989,10 @@ func decodeIssuesUpdateLabelParams(r *http.Request) (IssuesUpdateLabelParams, er
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -21020,10 +21020,10 @@ func decodeIssuesUpdateLabelParams(r *http.Request) (IssuesUpdateLabelParams, er
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "name" located in "Path".
+	// Decode path: name.
 	{
 		param := chi.URLParam(r, "name")
 		if len(param) > 0 {
@@ -21051,7 +21051,7 @@ func decodeIssuesUpdateLabelParams(r *http.Request) (IssuesUpdateLabelParams, er
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter name not specified`)
+			return params, errors.New(`path: name: not specified`)
 		}
 	}
 	return params, nil
@@ -21059,7 +21059,7 @@ func decodeIssuesUpdateLabelParams(r *http.Request) (IssuesUpdateLabelParams, er
 
 func decodeIssuesUpdateMilestoneParams(r *http.Request) (IssuesUpdateMilestoneParams, error) {
 	var params IssuesUpdateMilestoneParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -21087,10 +21087,10 @@ func decodeIssuesUpdateMilestoneParams(r *http.Request) (IssuesUpdateMilestonePa
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -21118,10 +21118,10 @@ func decodeIssuesUpdateMilestoneParams(r *http.Request) (IssuesUpdateMilestonePa
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "milestone_number" located in "Path".
+	// Decode path: milestone_number.
 	{
 		param := chi.URLParam(r, "milestone_number")
 		if len(param) > 0 {
@@ -21149,7 +21149,7 @@ func decodeIssuesUpdateMilestoneParams(r *http.Request) (IssuesUpdateMilestonePa
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter milestone_number not specified`)
+			return params, errors.New(`path: milestone_number: not specified`)
 		}
 	}
 	return params, nil
@@ -21157,7 +21157,7 @@ func decodeIssuesUpdateMilestoneParams(r *http.Request) (IssuesUpdateMilestonePa
 
 func decodeLicensesGetParams(r *http.Request) (LicensesGetParams, error) {
 	var params LicensesGetParams
-	// Decode param "license" located in "Path".
+	// Decode path: license.
 	{
 		param := chi.URLParam(r, "license")
 		if len(param) > 0 {
@@ -21185,7 +21185,7 @@ func decodeLicensesGetParams(r *http.Request) (LicensesGetParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter license not specified`)
+			return params, errors.New(`path: license: not specified`)
 		}
 	}
 	return params, nil
@@ -21193,7 +21193,7 @@ func decodeLicensesGetParams(r *http.Request) (LicensesGetParams, error) {
 
 func decodeLicensesGetAllCommonlyUsedParams(r *http.Request) (LicensesGetAllCommonlyUsedParams, error) {
 	var params LicensesGetAllCommonlyUsedParams
-	// Decode param "featured" located in "Query".
+	// Decode query: featured.
 	{
 		values, ok := r.URL.Query()["featured"]
 		if ok {
@@ -21224,11 +21224,11 @@ func decodeLicensesGetAllCommonlyUsedParams(r *http.Request) (LicensesGetAllComm
 				params.Featured.SetTo(ParamsFeaturedValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter featured located in query`)
+				return params, errors.Wrap(err, `query: featured: parse`)
 			}
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -21259,11 +21259,11 @@ func decodeLicensesGetAllCommonlyUsedParams(r *http.Request) (LicensesGetAllComm
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -21294,7 +21294,7 @@ func decodeLicensesGetAllCommonlyUsedParams(r *http.Request) (LicensesGetAllComm
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -21303,7 +21303,7 @@ func decodeLicensesGetAllCommonlyUsedParams(r *http.Request) (LicensesGetAllComm
 
 func decodeLicensesGetForRepoParams(r *http.Request) (LicensesGetForRepoParams, error) {
 	var params LicensesGetForRepoParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -21331,10 +21331,10 @@ func decodeLicensesGetForRepoParams(r *http.Request) (LicensesGetForRepoParams, 
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -21362,7 +21362,7 @@ func decodeLicensesGetForRepoParams(r *http.Request) (LicensesGetForRepoParams, 
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
 	return params, nil
@@ -21370,7 +21370,7 @@ func decodeLicensesGetForRepoParams(r *http.Request) (LicensesGetForRepoParams, 
 
 func decodeMigrationsCancelImportParams(r *http.Request) (MigrationsCancelImportParams, error) {
 	var params MigrationsCancelImportParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -21398,10 +21398,10 @@ func decodeMigrationsCancelImportParams(r *http.Request) (MigrationsCancelImport
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -21429,7 +21429,7 @@ func decodeMigrationsCancelImportParams(r *http.Request) (MigrationsCancelImport
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
 	return params, nil
@@ -21437,7 +21437,7 @@ func decodeMigrationsCancelImportParams(r *http.Request) (MigrationsCancelImport
 
 func decodeMigrationsDeleteArchiveForAuthenticatedUserParams(r *http.Request) (MigrationsDeleteArchiveForAuthenticatedUserParams, error) {
 	var params MigrationsDeleteArchiveForAuthenticatedUserParams
-	// Decode param "migration_id" located in "Path".
+	// Decode path: migration_id.
 	{
 		param := chi.URLParam(r, "migration_id")
 		if len(param) > 0 {
@@ -21465,7 +21465,7 @@ func decodeMigrationsDeleteArchiveForAuthenticatedUserParams(r *http.Request) (M
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter migration_id not specified`)
+			return params, errors.New(`path: migration_id: not specified`)
 		}
 	}
 	return params, nil
@@ -21473,7 +21473,7 @@ func decodeMigrationsDeleteArchiveForAuthenticatedUserParams(r *http.Request) (M
 
 func decodeMigrationsDeleteArchiveForOrgParams(r *http.Request) (MigrationsDeleteArchiveForOrgParams, error) {
 	var params MigrationsDeleteArchiveForOrgParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -21501,10 +21501,10 @@ func decodeMigrationsDeleteArchiveForOrgParams(r *http.Request) (MigrationsDelet
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "migration_id" located in "Path".
+	// Decode path: migration_id.
 	{
 		param := chi.URLParam(r, "migration_id")
 		if len(param) > 0 {
@@ -21532,7 +21532,7 @@ func decodeMigrationsDeleteArchiveForOrgParams(r *http.Request) (MigrationsDelet
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter migration_id not specified`)
+			return params, errors.New(`path: migration_id: not specified`)
 		}
 	}
 	return params, nil
@@ -21540,7 +21540,7 @@ func decodeMigrationsDeleteArchiveForOrgParams(r *http.Request) (MigrationsDelet
 
 func decodeMigrationsDownloadArchiveForOrgParams(r *http.Request) (MigrationsDownloadArchiveForOrgParams, error) {
 	var params MigrationsDownloadArchiveForOrgParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -21568,10 +21568,10 @@ func decodeMigrationsDownloadArchiveForOrgParams(r *http.Request) (MigrationsDow
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "migration_id" located in "Path".
+	// Decode path: migration_id.
 	{
 		param := chi.URLParam(r, "migration_id")
 		if len(param) > 0 {
@@ -21599,7 +21599,7 @@ func decodeMigrationsDownloadArchiveForOrgParams(r *http.Request) (MigrationsDow
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter migration_id not specified`)
+			return params, errors.New(`path: migration_id: not specified`)
 		}
 	}
 	return params, nil
@@ -21607,7 +21607,7 @@ func decodeMigrationsDownloadArchiveForOrgParams(r *http.Request) (MigrationsDow
 
 func decodeMigrationsGetArchiveForAuthenticatedUserParams(r *http.Request) (MigrationsGetArchiveForAuthenticatedUserParams, error) {
 	var params MigrationsGetArchiveForAuthenticatedUserParams
-	// Decode param "migration_id" located in "Path".
+	// Decode path: migration_id.
 	{
 		param := chi.URLParam(r, "migration_id")
 		if len(param) > 0 {
@@ -21635,7 +21635,7 @@ func decodeMigrationsGetArchiveForAuthenticatedUserParams(r *http.Request) (Migr
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter migration_id not specified`)
+			return params, errors.New(`path: migration_id: not specified`)
 		}
 	}
 	return params, nil
@@ -21643,7 +21643,7 @@ func decodeMigrationsGetArchiveForAuthenticatedUserParams(r *http.Request) (Migr
 
 func decodeMigrationsGetCommitAuthorsParams(r *http.Request) (MigrationsGetCommitAuthorsParams, error) {
 	var params MigrationsGetCommitAuthorsParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -21671,10 +21671,10 @@ func decodeMigrationsGetCommitAuthorsParams(r *http.Request) (MigrationsGetCommi
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -21702,10 +21702,10 @@ func decodeMigrationsGetCommitAuthorsParams(r *http.Request) (MigrationsGetCommi
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "since" located in "Query".
+	// Decode query: since.
 	{
 		values, ok := r.URL.Query()["since"]
 		if ok {
@@ -21736,7 +21736,7 @@ func decodeMigrationsGetCommitAuthorsParams(r *http.Request) (MigrationsGetCommi
 				params.Since.SetTo(ParamsSinceValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter since located in query`)
+				return params, errors.Wrap(err, `query: since: parse`)
 			}
 		}
 	}
@@ -21745,7 +21745,7 @@ func decodeMigrationsGetCommitAuthorsParams(r *http.Request) (MigrationsGetCommi
 
 func decodeMigrationsGetImportStatusParams(r *http.Request) (MigrationsGetImportStatusParams, error) {
 	var params MigrationsGetImportStatusParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -21773,10 +21773,10 @@ func decodeMigrationsGetImportStatusParams(r *http.Request) (MigrationsGetImport
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -21804,7 +21804,7 @@ func decodeMigrationsGetImportStatusParams(r *http.Request) (MigrationsGetImport
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
 	return params, nil
@@ -21812,7 +21812,7 @@ func decodeMigrationsGetImportStatusParams(r *http.Request) (MigrationsGetImport
 
 func decodeMigrationsGetLargeFilesParams(r *http.Request) (MigrationsGetLargeFilesParams, error) {
 	var params MigrationsGetLargeFilesParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -21840,10 +21840,10 @@ func decodeMigrationsGetLargeFilesParams(r *http.Request) (MigrationsGetLargeFil
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -21871,7 +21871,7 @@ func decodeMigrationsGetLargeFilesParams(r *http.Request) (MigrationsGetLargeFil
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
 	return params, nil
@@ -21879,7 +21879,7 @@ func decodeMigrationsGetLargeFilesParams(r *http.Request) (MigrationsGetLargeFil
 
 func decodeMigrationsGetStatusForAuthenticatedUserParams(r *http.Request) (MigrationsGetStatusForAuthenticatedUserParams, error) {
 	var params MigrationsGetStatusForAuthenticatedUserParams
-	// Decode param "migration_id" located in "Path".
+	// Decode path: migration_id.
 	{
 		param := chi.URLParam(r, "migration_id")
 		if len(param) > 0 {
@@ -21907,10 +21907,10 @@ func decodeMigrationsGetStatusForAuthenticatedUserParams(r *http.Request) (Migra
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter migration_id not specified`)
+			return params, errors.New(`path: migration_id: not specified`)
 		}
 	}
-	// Decode param "exclude" located in "Query".
+	// Decode query: exclude.
 	{
 		values, ok := r.URL.Query()["exclude"]
 		if ok {
@@ -21943,7 +21943,7 @@ func decodeMigrationsGetStatusForAuthenticatedUserParams(r *http.Request) (Migra
 					return nil
 				})
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter exclude located in query`)
+				return params, errors.Wrap(err, `query: exclude: parse`)
 			}
 		}
 	}
@@ -21952,7 +21952,7 @@ func decodeMigrationsGetStatusForAuthenticatedUserParams(r *http.Request) (Migra
 
 func decodeMigrationsGetStatusForOrgParams(r *http.Request) (MigrationsGetStatusForOrgParams, error) {
 	var params MigrationsGetStatusForOrgParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -21980,10 +21980,10 @@ func decodeMigrationsGetStatusForOrgParams(r *http.Request) (MigrationsGetStatus
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "migration_id" located in "Path".
+	// Decode path: migration_id.
 	{
 		param := chi.URLParam(r, "migration_id")
 		if len(param) > 0 {
@@ -22011,10 +22011,10 @@ func decodeMigrationsGetStatusForOrgParams(r *http.Request) (MigrationsGetStatus
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter migration_id not specified`)
+			return params, errors.New(`path: migration_id: not specified`)
 		}
 	}
-	// Decode param "exclude" located in "Query".
+	// Decode query: exclude.
 	{
 		values, ok := r.URL.Query()["exclude"]
 		if ok {
@@ -22047,7 +22047,7 @@ func decodeMigrationsGetStatusForOrgParams(r *http.Request) (MigrationsGetStatus
 					return nil
 				})
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter exclude located in query`)
+				return params, errors.Wrap(err, `query: exclude: parse`)
 			}
 			if err := func() error {
 
@@ -22071,7 +22071,7 @@ func decodeMigrationsGetStatusForOrgParams(r *http.Request) (MigrationsGetStatus
 				}
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `invalid parameter exclude (query`)
+				return params, errors.Wrap(err, `query: exclude: invalid`)
 			}
 		}
 	}
@@ -22080,7 +22080,7 @@ func decodeMigrationsGetStatusForOrgParams(r *http.Request) (MigrationsGetStatus
 
 func decodeMigrationsListForAuthenticatedUserParams(r *http.Request) (MigrationsListForAuthenticatedUserParams, error) {
 	var params MigrationsListForAuthenticatedUserParams
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -22111,11 +22111,11 @@ func decodeMigrationsListForAuthenticatedUserParams(r *http.Request) (Migrations
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -22146,7 +22146,7 @@ func decodeMigrationsListForAuthenticatedUserParams(r *http.Request) (Migrations
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -22155,7 +22155,7 @@ func decodeMigrationsListForAuthenticatedUserParams(r *http.Request) (Migrations
 
 func decodeMigrationsListForOrgParams(r *http.Request) (MigrationsListForOrgParams, error) {
 	var params MigrationsListForOrgParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -22183,10 +22183,10 @@ func decodeMigrationsListForOrgParams(r *http.Request) (MigrationsListForOrgPara
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -22217,11 +22217,11 @@ func decodeMigrationsListForOrgParams(r *http.Request) (MigrationsListForOrgPara
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -22252,11 +22252,11 @@ func decodeMigrationsListForOrgParams(r *http.Request) (MigrationsListForOrgPara
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
-	// Decode param "exclude" located in "Query".
+	// Decode query: exclude.
 	{
 		values, ok := r.URL.Query()["exclude"]
 		if ok {
@@ -22289,7 +22289,7 @@ func decodeMigrationsListForOrgParams(r *http.Request) (MigrationsListForOrgPara
 					return nil
 				})
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter exclude located in query`)
+				return params, errors.Wrap(err, `query: exclude: parse`)
 			}
 			if err := func() error {
 
@@ -22313,7 +22313,7 @@ func decodeMigrationsListForOrgParams(r *http.Request) (MigrationsListForOrgPara
 				}
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `invalid parameter exclude (query`)
+				return params, errors.Wrap(err, `query: exclude: invalid`)
 			}
 		}
 	}
@@ -22322,7 +22322,7 @@ func decodeMigrationsListForOrgParams(r *http.Request) (MigrationsListForOrgPara
 
 func decodeMigrationsListReposForOrgParams(r *http.Request) (MigrationsListReposForOrgParams, error) {
 	var params MigrationsListReposForOrgParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -22350,10 +22350,10 @@ func decodeMigrationsListReposForOrgParams(r *http.Request) (MigrationsListRepos
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "migration_id" located in "Path".
+	// Decode path: migration_id.
 	{
 		param := chi.URLParam(r, "migration_id")
 		if len(param) > 0 {
@@ -22381,10 +22381,10 @@ func decodeMigrationsListReposForOrgParams(r *http.Request) (MigrationsListRepos
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter migration_id not specified`)
+			return params, errors.New(`path: migration_id: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -22415,11 +22415,11 @@ func decodeMigrationsListReposForOrgParams(r *http.Request) (MigrationsListRepos
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -22450,7 +22450,7 @@ func decodeMigrationsListReposForOrgParams(r *http.Request) (MigrationsListRepos
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -22459,7 +22459,7 @@ func decodeMigrationsListReposForOrgParams(r *http.Request) (MigrationsListRepos
 
 func decodeMigrationsListReposForUserParams(r *http.Request) (MigrationsListReposForUserParams, error) {
 	var params MigrationsListReposForUserParams
-	// Decode param "migration_id" located in "Path".
+	// Decode path: migration_id.
 	{
 		param := chi.URLParam(r, "migration_id")
 		if len(param) > 0 {
@@ -22487,10 +22487,10 @@ func decodeMigrationsListReposForUserParams(r *http.Request) (MigrationsListRepo
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter migration_id not specified`)
+			return params, errors.New(`path: migration_id: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -22521,11 +22521,11 @@ func decodeMigrationsListReposForUserParams(r *http.Request) (MigrationsListRepo
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -22556,7 +22556,7 @@ func decodeMigrationsListReposForUserParams(r *http.Request) (MigrationsListRepo
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -22565,7 +22565,7 @@ func decodeMigrationsListReposForUserParams(r *http.Request) (MigrationsListRepo
 
 func decodeMigrationsUnlockRepoForAuthenticatedUserParams(r *http.Request) (MigrationsUnlockRepoForAuthenticatedUserParams, error) {
 	var params MigrationsUnlockRepoForAuthenticatedUserParams
-	// Decode param "migration_id" located in "Path".
+	// Decode path: migration_id.
 	{
 		param := chi.URLParam(r, "migration_id")
 		if len(param) > 0 {
@@ -22593,10 +22593,10 @@ func decodeMigrationsUnlockRepoForAuthenticatedUserParams(r *http.Request) (Migr
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter migration_id not specified`)
+			return params, errors.New(`path: migration_id: not specified`)
 		}
 	}
-	// Decode param "repo_name" located in "Path".
+	// Decode path: repo_name.
 	{
 		param := chi.URLParam(r, "repo_name")
 		if len(param) > 0 {
@@ -22624,7 +22624,7 @@ func decodeMigrationsUnlockRepoForAuthenticatedUserParams(r *http.Request) (Migr
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo_name not specified`)
+			return params, errors.New(`path: repo_name: not specified`)
 		}
 	}
 	return params, nil
@@ -22632,7 +22632,7 @@ func decodeMigrationsUnlockRepoForAuthenticatedUserParams(r *http.Request) (Migr
 
 func decodeMigrationsUnlockRepoForOrgParams(r *http.Request) (MigrationsUnlockRepoForOrgParams, error) {
 	var params MigrationsUnlockRepoForOrgParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -22660,10 +22660,10 @@ func decodeMigrationsUnlockRepoForOrgParams(r *http.Request) (MigrationsUnlockRe
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "migration_id" located in "Path".
+	// Decode path: migration_id.
 	{
 		param := chi.URLParam(r, "migration_id")
 		if len(param) > 0 {
@@ -22691,10 +22691,10 @@ func decodeMigrationsUnlockRepoForOrgParams(r *http.Request) (MigrationsUnlockRe
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter migration_id not specified`)
+			return params, errors.New(`path: migration_id: not specified`)
 		}
 	}
-	// Decode param "repo_name" located in "Path".
+	// Decode path: repo_name.
 	{
 		param := chi.URLParam(r, "repo_name")
 		if len(param) > 0 {
@@ -22722,7 +22722,7 @@ func decodeMigrationsUnlockRepoForOrgParams(r *http.Request) (MigrationsUnlockRe
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo_name not specified`)
+			return params, errors.New(`path: repo_name: not specified`)
 		}
 	}
 	return params, nil
@@ -22730,7 +22730,7 @@ func decodeMigrationsUnlockRepoForOrgParams(r *http.Request) (MigrationsUnlockRe
 
 func decodeMigrationsUpdateImportParams(r *http.Request) (MigrationsUpdateImportParams, error) {
 	var params MigrationsUpdateImportParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -22758,10 +22758,10 @@ func decodeMigrationsUpdateImportParams(r *http.Request) (MigrationsUpdateImport
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -22789,7 +22789,7 @@ func decodeMigrationsUpdateImportParams(r *http.Request) (MigrationsUpdateImport
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
 	return params, nil
@@ -22797,7 +22797,7 @@ func decodeMigrationsUpdateImportParams(r *http.Request) (MigrationsUpdateImport
 
 func decodeOAuthAuthorizationsDeleteAuthorizationParams(r *http.Request) (OAuthAuthorizationsDeleteAuthorizationParams, error) {
 	var params OAuthAuthorizationsDeleteAuthorizationParams
-	// Decode param "authorization_id" located in "Path".
+	// Decode path: authorization_id.
 	{
 		param := chi.URLParam(r, "authorization_id")
 		if len(param) > 0 {
@@ -22825,7 +22825,7 @@ func decodeOAuthAuthorizationsDeleteAuthorizationParams(r *http.Request) (OAuthA
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter authorization_id not specified`)
+			return params, errors.New(`path: authorization_id: not specified`)
 		}
 	}
 	return params, nil
@@ -22833,7 +22833,7 @@ func decodeOAuthAuthorizationsDeleteAuthorizationParams(r *http.Request) (OAuthA
 
 func decodeOAuthAuthorizationsDeleteGrantParams(r *http.Request) (OAuthAuthorizationsDeleteGrantParams, error) {
 	var params OAuthAuthorizationsDeleteGrantParams
-	// Decode param "grant_id" located in "Path".
+	// Decode path: grant_id.
 	{
 		param := chi.URLParam(r, "grant_id")
 		if len(param) > 0 {
@@ -22861,7 +22861,7 @@ func decodeOAuthAuthorizationsDeleteGrantParams(r *http.Request) (OAuthAuthoriza
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter grant_id not specified`)
+			return params, errors.New(`path: grant_id: not specified`)
 		}
 	}
 	return params, nil
@@ -22869,7 +22869,7 @@ func decodeOAuthAuthorizationsDeleteGrantParams(r *http.Request) (OAuthAuthoriza
 
 func decodeOAuthAuthorizationsGetAuthorizationParams(r *http.Request) (OAuthAuthorizationsGetAuthorizationParams, error) {
 	var params OAuthAuthorizationsGetAuthorizationParams
-	// Decode param "authorization_id" located in "Path".
+	// Decode path: authorization_id.
 	{
 		param := chi.URLParam(r, "authorization_id")
 		if len(param) > 0 {
@@ -22897,7 +22897,7 @@ func decodeOAuthAuthorizationsGetAuthorizationParams(r *http.Request) (OAuthAuth
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter authorization_id not specified`)
+			return params, errors.New(`path: authorization_id: not specified`)
 		}
 	}
 	return params, nil
@@ -22905,7 +22905,7 @@ func decodeOAuthAuthorizationsGetAuthorizationParams(r *http.Request) (OAuthAuth
 
 func decodeOAuthAuthorizationsGetGrantParams(r *http.Request) (OAuthAuthorizationsGetGrantParams, error) {
 	var params OAuthAuthorizationsGetGrantParams
-	// Decode param "grant_id" located in "Path".
+	// Decode path: grant_id.
 	{
 		param := chi.URLParam(r, "grant_id")
 		if len(param) > 0 {
@@ -22933,7 +22933,7 @@ func decodeOAuthAuthorizationsGetGrantParams(r *http.Request) (OAuthAuthorizatio
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter grant_id not specified`)
+			return params, errors.New(`path: grant_id: not specified`)
 		}
 	}
 	return params, nil
@@ -22941,7 +22941,7 @@ func decodeOAuthAuthorizationsGetGrantParams(r *http.Request) (OAuthAuthorizatio
 
 func decodeOAuthAuthorizationsListAuthorizationsParams(r *http.Request) (OAuthAuthorizationsListAuthorizationsParams, error) {
 	var params OAuthAuthorizationsListAuthorizationsParams
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -22972,11 +22972,11 @@ func decodeOAuthAuthorizationsListAuthorizationsParams(r *http.Request) (OAuthAu
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -23007,11 +23007,11 @@ func decodeOAuthAuthorizationsListAuthorizationsParams(r *http.Request) (OAuthAu
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
-	// Decode param "client_id" located in "Query".
+	// Decode query: client_id.
 	{
 		values, ok := r.URL.Query()["client_id"]
 		if ok {
@@ -23042,7 +23042,7 @@ func decodeOAuthAuthorizationsListAuthorizationsParams(r *http.Request) (OAuthAu
 				params.ClientID.SetTo(ParamsClientIDValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter client_id located in query`)
+				return params, errors.Wrap(err, `query: client_id: parse`)
 			}
 		}
 	}
@@ -23051,7 +23051,7 @@ func decodeOAuthAuthorizationsListAuthorizationsParams(r *http.Request) (OAuthAu
 
 func decodeOAuthAuthorizationsListGrantsParams(r *http.Request) (OAuthAuthorizationsListGrantsParams, error) {
 	var params OAuthAuthorizationsListGrantsParams
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -23082,11 +23082,11 @@ func decodeOAuthAuthorizationsListGrantsParams(r *http.Request) (OAuthAuthorizat
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -23117,11 +23117,11 @@ func decodeOAuthAuthorizationsListGrantsParams(r *http.Request) (OAuthAuthorizat
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
-	// Decode param "client_id" located in "Query".
+	// Decode query: client_id.
 	{
 		values, ok := r.URL.Query()["client_id"]
 		if ok {
@@ -23152,7 +23152,7 @@ func decodeOAuthAuthorizationsListGrantsParams(r *http.Request) (OAuthAuthorizat
 				params.ClientID.SetTo(ParamsClientIDValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter client_id located in query`)
+				return params, errors.Wrap(err, `query: client_id: parse`)
 			}
 		}
 	}
@@ -23161,7 +23161,7 @@ func decodeOAuthAuthorizationsListGrantsParams(r *http.Request) (OAuthAuthorizat
 
 func decodeOrgsCheckBlockedUserParams(r *http.Request) (OrgsCheckBlockedUserParams, error) {
 	var params OrgsCheckBlockedUserParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -23189,10 +23189,10 @@ func decodeOrgsCheckBlockedUserParams(r *http.Request) (OrgsCheckBlockedUserPara
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "username" located in "Path".
+	// Decode path: username.
 	{
 		param := chi.URLParam(r, "username")
 		if len(param) > 0 {
@@ -23220,7 +23220,7 @@ func decodeOrgsCheckBlockedUserParams(r *http.Request) (OrgsCheckBlockedUserPara
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter username not specified`)
+			return params, errors.New(`path: username: not specified`)
 		}
 	}
 	return params, nil
@@ -23228,7 +23228,7 @@ func decodeOrgsCheckBlockedUserParams(r *http.Request) (OrgsCheckBlockedUserPara
 
 func decodeOrgsCheckMembershipForUserParams(r *http.Request) (OrgsCheckMembershipForUserParams, error) {
 	var params OrgsCheckMembershipForUserParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -23256,10 +23256,10 @@ func decodeOrgsCheckMembershipForUserParams(r *http.Request) (OrgsCheckMembershi
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "username" located in "Path".
+	// Decode path: username.
 	{
 		param := chi.URLParam(r, "username")
 		if len(param) > 0 {
@@ -23287,7 +23287,7 @@ func decodeOrgsCheckMembershipForUserParams(r *http.Request) (OrgsCheckMembershi
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter username not specified`)
+			return params, errors.New(`path: username: not specified`)
 		}
 	}
 	return params, nil
@@ -23295,7 +23295,7 @@ func decodeOrgsCheckMembershipForUserParams(r *http.Request) (OrgsCheckMembershi
 
 func decodeOrgsCheckPublicMembershipForUserParams(r *http.Request) (OrgsCheckPublicMembershipForUserParams, error) {
 	var params OrgsCheckPublicMembershipForUserParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -23323,10 +23323,10 @@ func decodeOrgsCheckPublicMembershipForUserParams(r *http.Request) (OrgsCheckPub
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "username" located in "Path".
+	// Decode path: username.
 	{
 		param := chi.URLParam(r, "username")
 		if len(param) > 0 {
@@ -23354,7 +23354,7 @@ func decodeOrgsCheckPublicMembershipForUserParams(r *http.Request) (OrgsCheckPub
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter username not specified`)
+			return params, errors.New(`path: username: not specified`)
 		}
 	}
 	return params, nil
@@ -23362,7 +23362,7 @@ func decodeOrgsCheckPublicMembershipForUserParams(r *http.Request) (OrgsCheckPub
 
 func decodeOrgsConvertMemberToOutsideCollaboratorParams(r *http.Request) (OrgsConvertMemberToOutsideCollaboratorParams, error) {
 	var params OrgsConvertMemberToOutsideCollaboratorParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -23390,10 +23390,10 @@ func decodeOrgsConvertMemberToOutsideCollaboratorParams(r *http.Request) (OrgsCo
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "username" located in "Path".
+	// Decode path: username.
 	{
 		param := chi.URLParam(r, "username")
 		if len(param) > 0 {
@@ -23421,7 +23421,7 @@ func decodeOrgsConvertMemberToOutsideCollaboratorParams(r *http.Request) (OrgsCo
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter username not specified`)
+			return params, errors.New(`path: username: not specified`)
 		}
 	}
 	return params, nil
@@ -23429,7 +23429,7 @@ func decodeOrgsConvertMemberToOutsideCollaboratorParams(r *http.Request) (OrgsCo
 
 func decodeOrgsDeleteWebhookParams(r *http.Request) (OrgsDeleteWebhookParams, error) {
 	var params OrgsDeleteWebhookParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -23457,10 +23457,10 @@ func decodeOrgsDeleteWebhookParams(r *http.Request) (OrgsDeleteWebhookParams, er
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "hook_id" located in "Path".
+	// Decode path: hook_id.
 	{
 		param := chi.URLParam(r, "hook_id")
 		if len(param) > 0 {
@@ -23488,7 +23488,7 @@ func decodeOrgsDeleteWebhookParams(r *http.Request) (OrgsDeleteWebhookParams, er
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter hook_id not specified`)
+			return params, errors.New(`path: hook_id: not specified`)
 		}
 	}
 	return params, nil
@@ -23496,7 +23496,7 @@ func decodeOrgsDeleteWebhookParams(r *http.Request) (OrgsDeleteWebhookParams, er
 
 func decodeOrgsGetParams(r *http.Request) (OrgsGetParams, error) {
 	var params OrgsGetParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -23524,7 +23524,7 @@ func decodeOrgsGetParams(r *http.Request) (OrgsGetParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
 	return params, nil
@@ -23532,7 +23532,7 @@ func decodeOrgsGetParams(r *http.Request) (OrgsGetParams, error) {
 
 func decodeOrgsGetAuditLogParams(r *http.Request) (OrgsGetAuditLogParams, error) {
 	var params OrgsGetAuditLogParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -23560,10 +23560,10 @@ func decodeOrgsGetAuditLogParams(r *http.Request) (OrgsGetAuditLogParams, error)
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "phrase" located in "Query".
+	// Decode query: phrase.
 	{
 		values, ok := r.URL.Query()["phrase"]
 		if ok {
@@ -23594,11 +23594,11 @@ func decodeOrgsGetAuditLogParams(r *http.Request) (OrgsGetAuditLogParams, error)
 				params.Phrase.SetTo(ParamsPhraseValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter phrase located in query`)
+				return params, errors.Wrap(err, `query: phrase: parse`)
 			}
 		}
 	}
-	// Decode param "include" located in "Query".
+	// Decode query: include.
 	{
 		values, ok := r.URL.Query()["include"]
 		if ok {
@@ -23629,7 +23629,7 @@ func decodeOrgsGetAuditLogParams(r *http.Request) (OrgsGetAuditLogParams, error)
 				params.Include.SetTo(ParamsIncludeValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter include located in query`)
+				return params, errors.Wrap(err, `query: include: parse`)
 			}
 			if err := func() error {
 
@@ -23648,11 +23648,11 @@ func decodeOrgsGetAuditLogParams(r *http.Request) (OrgsGetAuditLogParams, error)
 
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `invalid parameter include (query`)
+				return params, errors.Wrap(err, `query: include: invalid`)
 			}
 		}
 	}
-	// Decode param "after" located in "Query".
+	// Decode query: after.
 	{
 		values, ok := r.URL.Query()["after"]
 		if ok {
@@ -23683,11 +23683,11 @@ func decodeOrgsGetAuditLogParams(r *http.Request) (OrgsGetAuditLogParams, error)
 				params.After.SetTo(ParamsAfterValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter after located in query`)
+				return params, errors.Wrap(err, `query: after: parse`)
 			}
 		}
 	}
-	// Decode param "before" located in "Query".
+	// Decode query: before.
 	{
 		values, ok := r.URL.Query()["before"]
 		if ok {
@@ -23718,11 +23718,11 @@ func decodeOrgsGetAuditLogParams(r *http.Request) (OrgsGetAuditLogParams, error)
 				params.Before.SetTo(ParamsBeforeValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter before located in query`)
+				return params, errors.Wrap(err, `query: before: parse`)
 			}
 		}
 	}
-	// Decode param "order" located in "Query".
+	// Decode query: order.
 	{
 		values, ok := r.URL.Query()["order"]
 		if ok {
@@ -23753,7 +23753,7 @@ func decodeOrgsGetAuditLogParams(r *http.Request) (OrgsGetAuditLogParams, error)
 				params.Order.SetTo(ParamsOrderValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter order located in query`)
+				return params, errors.Wrap(err, `query: order: parse`)
 			}
 			if err := func() error {
 
@@ -23772,11 +23772,11 @@ func decodeOrgsGetAuditLogParams(r *http.Request) (OrgsGetAuditLogParams, error)
 
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `invalid parameter order (query`)
+				return params, errors.Wrap(err, `query: order: invalid`)
 			}
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -23807,11 +23807,11 @@ func decodeOrgsGetAuditLogParams(r *http.Request) (OrgsGetAuditLogParams, error)
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -23842,7 +23842,7 @@ func decodeOrgsGetAuditLogParams(r *http.Request) (OrgsGetAuditLogParams, error)
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -23851,7 +23851,7 @@ func decodeOrgsGetAuditLogParams(r *http.Request) (OrgsGetAuditLogParams, error)
 
 func decodeOrgsGetMembershipForAuthenticatedUserParams(r *http.Request) (OrgsGetMembershipForAuthenticatedUserParams, error) {
 	var params OrgsGetMembershipForAuthenticatedUserParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -23879,7 +23879,7 @@ func decodeOrgsGetMembershipForAuthenticatedUserParams(r *http.Request) (OrgsGet
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
 	return params, nil
@@ -23887,7 +23887,7 @@ func decodeOrgsGetMembershipForAuthenticatedUserParams(r *http.Request) (OrgsGet
 
 func decodeOrgsGetMembershipForUserParams(r *http.Request) (OrgsGetMembershipForUserParams, error) {
 	var params OrgsGetMembershipForUserParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -23915,10 +23915,10 @@ func decodeOrgsGetMembershipForUserParams(r *http.Request) (OrgsGetMembershipFor
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "username" located in "Path".
+	// Decode path: username.
 	{
 		param := chi.URLParam(r, "username")
 		if len(param) > 0 {
@@ -23946,7 +23946,7 @@ func decodeOrgsGetMembershipForUserParams(r *http.Request) (OrgsGetMembershipFor
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter username not specified`)
+			return params, errors.New(`path: username: not specified`)
 		}
 	}
 	return params, nil
@@ -23954,7 +23954,7 @@ func decodeOrgsGetMembershipForUserParams(r *http.Request) (OrgsGetMembershipFor
 
 func decodeOrgsGetWebhookParams(r *http.Request) (OrgsGetWebhookParams, error) {
 	var params OrgsGetWebhookParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -23982,10 +23982,10 @@ func decodeOrgsGetWebhookParams(r *http.Request) (OrgsGetWebhookParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "hook_id" located in "Path".
+	// Decode path: hook_id.
 	{
 		param := chi.URLParam(r, "hook_id")
 		if len(param) > 0 {
@@ -24013,7 +24013,7 @@ func decodeOrgsGetWebhookParams(r *http.Request) (OrgsGetWebhookParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter hook_id not specified`)
+			return params, errors.New(`path: hook_id: not specified`)
 		}
 	}
 	return params, nil
@@ -24021,7 +24021,7 @@ func decodeOrgsGetWebhookParams(r *http.Request) (OrgsGetWebhookParams, error) {
 
 func decodeOrgsGetWebhookConfigForOrgParams(r *http.Request) (OrgsGetWebhookConfigForOrgParams, error) {
 	var params OrgsGetWebhookConfigForOrgParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -24049,10 +24049,10 @@ func decodeOrgsGetWebhookConfigForOrgParams(r *http.Request) (OrgsGetWebhookConf
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "hook_id" located in "Path".
+	// Decode path: hook_id.
 	{
 		param := chi.URLParam(r, "hook_id")
 		if len(param) > 0 {
@@ -24080,7 +24080,7 @@ func decodeOrgsGetWebhookConfigForOrgParams(r *http.Request) (OrgsGetWebhookConf
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter hook_id not specified`)
+			return params, errors.New(`path: hook_id: not specified`)
 		}
 	}
 	return params, nil
@@ -24088,7 +24088,7 @@ func decodeOrgsGetWebhookConfigForOrgParams(r *http.Request) (OrgsGetWebhookConf
 
 func decodeOrgsListParams(r *http.Request) (OrgsListParams, error) {
 	var params OrgsListParams
-	// Decode param "since" located in "Query".
+	// Decode query: since.
 	{
 		values, ok := r.URL.Query()["since"]
 		if ok {
@@ -24119,11 +24119,11 @@ func decodeOrgsListParams(r *http.Request) (OrgsListParams, error) {
 				params.Since.SetTo(ParamsSinceValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter since located in query`)
+				return params, errors.Wrap(err, `query: since: parse`)
 			}
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -24154,7 +24154,7 @@ func decodeOrgsListParams(r *http.Request) (OrgsListParams, error) {
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
@@ -24163,7 +24163,7 @@ func decodeOrgsListParams(r *http.Request) (OrgsListParams, error) {
 
 func decodeOrgsListBlockedUsersParams(r *http.Request) (OrgsListBlockedUsersParams, error) {
 	var params OrgsListBlockedUsersParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -24191,7 +24191,7 @@ func decodeOrgsListBlockedUsersParams(r *http.Request) (OrgsListBlockedUsersPara
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
 	return params, nil
@@ -24199,7 +24199,7 @@ func decodeOrgsListBlockedUsersParams(r *http.Request) (OrgsListBlockedUsersPara
 
 func decodeOrgsListFailedInvitationsParams(r *http.Request) (OrgsListFailedInvitationsParams, error) {
 	var params OrgsListFailedInvitationsParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -24227,10 +24227,10 @@ func decodeOrgsListFailedInvitationsParams(r *http.Request) (OrgsListFailedInvit
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -24261,11 +24261,11 @@ func decodeOrgsListFailedInvitationsParams(r *http.Request) (OrgsListFailedInvit
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -24296,7 +24296,7 @@ func decodeOrgsListFailedInvitationsParams(r *http.Request) (OrgsListFailedInvit
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -24305,7 +24305,7 @@ func decodeOrgsListFailedInvitationsParams(r *http.Request) (OrgsListFailedInvit
 
 func decodeOrgsListForAuthenticatedUserParams(r *http.Request) (OrgsListForAuthenticatedUserParams, error) {
 	var params OrgsListForAuthenticatedUserParams
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -24336,11 +24336,11 @@ func decodeOrgsListForAuthenticatedUserParams(r *http.Request) (OrgsListForAuthe
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -24371,7 +24371,7 @@ func decodeOrgsListForAuthenticatedUserParams(r *http.Request) (OrgsListForAuthe
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -24380,7 +24380,7 @@ func decodeOrgsListForAuthenticatedUserParams(r *http.Request) (OrgsListForAuthe
 
 func decodeOrgsListForUserParams(r *http.Request) (OrgsListForUserParams, error) {
 	var params OrgsListForUserParams
-	// Decode param "username" located in "Path".
+	// Decode path: username.
 	{
 		param := chi.URLParam(r, "username")
 		if len(param) > 0 {
@@ -24408,10 +24408,10 @@ func decodeOrgsListForUserParams(r *http.Request) (OrgsListForUserParams, error)
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter username not specified`)
+			return params, errors.New(`path: username: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -24442,11 +24442,11 @@ func decodeOrgsListForUserParams(r *http.Request) (OrgsListForUserParams, error)
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -24477,7 +24477,7 @@ func decodeOrgsListForUserParams(r *http.Request) (OrgsListForUserParams, error)
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -24486,7 +24486,7 @@ func decodeOrgsListForUserParams(r *http.Request) (OrgsListForUserParams, error)
 
 func decodeOrgsListInvitationTeamsParams(r *http.Request) (OrgsListInvitationTeamsParams, error) {
 	var params OrgsListInvitationTeamsParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -24514,10 +24514,10 @@ func decodeOrgsListInvitationTeamsParams(r *http.Request) (OrgsListInvitationTea
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "invitation_id" located in "Path".
+	// Decode path: invitation_id.
 	{
 		param := chi.URLParam(r, "invitation_id")
 		if len(param) > 0 {
@@ -24545,10 +24545,10 @@ func decodeOrgsListInvitationTeamsParams(r *http.Request) (OrgsListInvitationTea
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter invitation_id not specified`)
+			return params, errors.New(`path: invitation_id: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -24579,11 +24579,11 @@ func decodeOrgsListInvitationTeamsParams(r *http.Request) (OrgsListInvitationTea
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -24614,7 +24614,7 @@ func decodeOrgsListInvitationTeamsParams(r *http.Request) (OrgsListInvitationTea
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -24623,7 +24623,7 @@ func decodeOrgsListInvitationTeamsParams(r *http.Request) (OrgsListInvitationTea
 
 func decodeOrgsListOutsideCollaboratorsParams(r *http.Request) (OrgsListOutsideCollaboratorsParams, error) {
 	var params OrgsListOutsideCollaboratorsParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -24651,10 +24651,10 @@ func decodeOrgsListOutsideCollaboratorsParams(r *http.Request) (OrgsListOutsideC
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "filter" located in "Query".
+	// Decode query: filter.
 	{
 		values, ok := r.URL.Query()["filter"]
 		if ok {
@@ -24685,7 +24685,7 @@ func decodeOrgsListOutsideCollaboratorsParams(r *http.Request) (OrgsListOutsideC
 				params.Filter.SetTo(ParamsFilterValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter filter located in query`)
+				return params, errors.Wrap(err, `query: filter: parse`)
 			}
 			if err := func() error {
 
@@ -24704,11 +24704,11 @@ func decodeOrgsListOutsideCollaboratorsParams(r *http.Request) (OrgsListOutsideC
 
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `invalid parameter filter (query`)
+				return params, errors.Wrap(err, `query: filter: invalid`)
 			}
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -24739,11 +24739,11 @@ func decodeOrgsListOutsideCollaboratorsParams(r *http.Request) (OrgsListOutsideC
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -24774,7 +24774,7 @@ func decodeOrgsListOutsideCollaboratorsParams(r *http.Request) (OrgsListOutsideC
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -24783,7 +24783,7 @@ func decodeOrgsListOutsideCollaboratorsParams(r *http.Request) (OrgsListOutsideC
 
 func decodeOrgsListPendingInvitationsParams(r *http.Request) (OrgsListPendingInvitationsParams, error) {
 	var params OrgsListPendingInvitationsParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -24811,10 +24811,10 @@ func decodeOrgsListPendingInvitationsParams(r *http.Request) (OrgsListPendingInv
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -24845,11 +24845,11 @@ func decodeOrgsListPendingInvitationsParams(r *http.Request) (OrgsListPendingInv
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -24880,7 +24880,7 @@ func decodeOrgsListPendingInvitationsParams(r *http.Request) (OrgsListPendingInv
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -24889,7 +24889,7 @@ func decodeOrgsListPendingInvitationsParams(r *http.Request) (OrgsListPendingInv
 
 func decodeOrgsListPublicMembersParams(r *http.Request) (OrgsListPublicMembersParams, error) {
 	var params OrgsListPublicMembersParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -24917,10 +24917,10 @@ func decodeOrgsListPublicMembersParams(r *http.Request) (OrgsListPublicMembersPa
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -24951,11 +24951,11 @@ func decodeOrgsListPublicMembersParams(r *http.Request) (OrgsListPublicMembersPa
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -24986,7 +24986,7 @@ func decodeOrgsListPublicMembersParams(r *http.Request) (OrgsListPublicMembersPa
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -24995,7 +24995,7 @@ func decodeOrgsListPublicMembersParams(r *http.Request) (OrgsListPublicMembersPa
 
 func decodeOrgsListSamlSSOAuthorizationsParams(r *http.Request) (OrgsListSamlSSOAuthorizationsParams, error) {
 	var params OrgsListSamlSSOAuthorizationsParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -25023,7 +25023,7 @@ func decodeOrgsListSamlSSOAuthorizationsParams(r *http.Request) (OrgsListSamlSSO
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
 	return params, nil
@@ -25031,7 +25031,7 @@ func decodeOrgsListSamlSSOAuthorizationsParams(r *http.Request) (OrgsListSamlSSO
 
 func decodeOrgsListWebhooksParams(r *http.Request) (OrgsListWebhooksParams, error) {
 	var params OrgsListWebhooksParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -25059,10 +25059,10 @@ func decodeOrgsListWebhooksParams(r *http.Request) (OrgsListWebhooksParams, erro
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -25093,11 +25093,11 @@ func decodeOrgsListWebhooksParams(r *http.Request) (OrgsListWebhooksParams, erro
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -25128,7 +25128,7 @@ func decodeOrgsListWebhooksParams(r *http.Request) (OrgsListWebhooksParams, erro
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -25137,7 +25137,7 @@ func decodeOrgsListWebhooksParams(r *http.Request) (OrgsListWebhooksParams, erro
 
 func decodeOrgsPingWebhookParams(r *http.Request) (OrgsPingWebhookParams, error) {
 	var params OrgsPingWebhookParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -25165,10 +25165,10 @@ func decodeOrgsPingWebhookParams(r *http.Request) (OrgsPingWebhookParams, error)
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "hook_id" located in "Path".
+	// Decode path: hook_id.
 	{
 		param := chi.URLParam(r, "hook_id")
 		if len(param) > 0 {
@@ -25196,7 +25196,7 @@ func decodeOrgsPingWebhookParams(r *http.Request) (OrgsPingWebhookParams, error)
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter hook_id not specified`)
+			return params, errors.New(`path: hook_id: not specified`)
 		}
 	}
 	return params, nil
@@ -25204,7 +25204,7 @@ func decodeOrgsPingWebhookParams(r *http.Request) (OrgsPingWebhookParams, error)
 
 func decodeOrgsRemoveMemberParams(r *http.Request) (OrgsRemoveMemberParams, error) {
 	var params OrgsRemoveMemberParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -25232,10 +25232,10 @@ func decodeOrgsRemoveMemberParams(r *http.Request) (OrgsRemoveMemberParams, erro
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "username" located in "Path".
+	// Decode path: username.
 	{
 		param := chi.URLParam(r, "username")
 		if len(param) > 0 {
@@ -25263,7 +25263,7 @@ func decodeOrgsRemoveMemberParams(r *http.Request) (OrgsRemoveMemberParams, erro
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter username not specified`)
+			return params, errors.New(`path: username: not specified`)
 		}
 	}
 	return params, nil
@@ -25271,7 +25271,7 @@ func decodeOrgsRemoveMemberParams(r *http.Request) (OrgsRemoveMemberParams, erro
 
 func decodeOrgsRemoveMembershipForUserParams(r *http.Request) (OrgsRemoveMembershipForUserParams, error) {
 	var params OrgsRemoveMembershipForUserParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -25299,10 +25299,10 @@ func decodeOrgsRemoveMembershipForUserParams(r *http.Request) (OrgsRemoveMembers
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "username" located in "Path".
+	// Decode path: username.
 	{
 		param := chi.URLParam(r, "username")
 		if len(param) > 0 {
@@ -25330,7 +25330,7 @@ func decodeOrgsRemoveMembershipForUserParams(r *http.Request) (OrgsRemoveMembers
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter username not specified`)
+			return params, errors.New(`path: username: not specified`)
 		}
 	}
 	return params, nil
@@ -25338,7 +25338,7 @@ func decodeOrgsRemoveMembershipForUserParams(r *http.Request) (OrgsRemoveMembers
 
 func decodeOrgsRemoveOutsideCollaboratorParams(r *http.Request) (OrgsRemoveOutsideCollaboratorParams, error) {
 	var params OrgsRemoveOutsideCollaboratorParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -25366,10 +25366,10 @@ func decodeOrgsRemoveOutsideCollaboratorParams(r *http.Request) (OrgsRemoveOutsi
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "username" located in "Path".
+	// Decode path: username.
 	{
 		param := chi.URLParam(r, "username")
 		if len(param) > 0 {
@@ -25397,7 +25397,7 @@ func decodeOrgsRemoveOutsideCollaboratorParams(r *http.Request) (OrgsRemoveOutsi
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter username not specified`)
+			return params, errors.New(`path: username: not specified`)
 		}
 	}
 	return params, nil
@@ -25405,7 +25405,7 @@ func decodeOrgsRemoveOutsideCollaboratorParams(r *http.Request) (OrgsRemoveOutsi
 
 func decodeOrgsRemovePublicMembershipForAuthenticatedUserParams(r *http.Request) (OrgsRemovePublicMembershipForAuthenticatedUserParams, error) {
 	var params OrgsRemovePublicMembershipForAuthenticatedUserParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -25433,10 +25433,10 @@ func decodeOrgsRemovePublicMembershipForAuthenticatedUserParams(r *http.Request)
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "username" located in "Path".
+	// Decode path: username.
 	{
 		param := chi.URLParam(r, "username")
 		if len(param) > 0 {
@@ -25464,7 +25464,7 @@ func decodeOrgsRemovePublicMembershipForAuthenticatedUserParams(r *http.Request)
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter username not specified`)
+			return params, errors.New(`path: username: not specified`)
 		}
 	}
 	return params, nil
@@ -25472,7 +25472,7 @@ func decodeOrgsRemovePublicMembershipForAuthenticatedUserParams(r *http.Request)
 
 func decodeOrgsRemoveSamlSSOAuthorizationParams(r *http.Request) (OrgsRemoveSamlSSOAuthorizationParams, error) {
 	var params OrgsRemoveSamlSSOAuthorizationParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -25500,10 +25500,10 @@ func decodeOrgsRemoveSamlSSOAuthorizationParams(r *http.Request) (OrgsRemoveSaml
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "credential_id" located in "Path".
+	// Decode path: credential_id.
 	{
 		param := chi.URLParam(r, "credential_id")
 		if len(param) > 0 {
@@ -25531,7 +25531,7 @@ func decodeOrgsRemoveSamlSSOAuthorizationParams(r *http.Request) (OrgsRemoveSaml
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter credential_id not specified`)
+			return params, errors.New(`path: credential_id: not specified`)
 		}
 	}
 	return params, nil
@@ -25539,7 +25539,7 @@ func decodeOrgsRemoveSamlSSOAuthorizationParams(r *http.Request) (OrgsRemoveSaml
 
 func decodeOrgsSetPublicMembershipForAuthenticatedUserParams(r *http.Request) (OrgsSetPublicMembershipForAuthenticatedUserParams, error) {
 	var params OrgsSetPublicMembershipForAuthenticatedUserParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -25567,10 +25567,10 @@ func decodeOrgsSetPublicMembershipForAuthenticatedUserParams(r *http.Request) (O
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "username" located in "Path".
+	// Decode path: username.
 	{
 		param := chi.URLParam(r, "username")
 		if len(param) > 0 {
@@ -25598,7 +25598,7 @@ func decodeOrgsSetPublicMembershipForAuthenticatedUserParams(r *http.Request) (O
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter username not specified`)
+			return params, errors.New(`path: username: not specified`)
 		}
 	}
 	return params, nil
@@ -25606,7 +25606,7 @@ func decodeOrgsSetPublicMembershipForAuthenticatedUserParams(r *http.Request) (O
 
 func decodeOrgsUnblockUserParams(r *http.Request) (OrgsUnblockUserParams, error) {
 	var params OrgsUnblockUserParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -25634,10 +25634,10 @@ func decodeOrgsUnblockUserParams(r *http.Request) (OrgsUnblockUserParams, error)
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "username" located in "Path".
+	// Decode path: username.
 	{
 		param := chi.URLParam(r, "username")
 		if len(param) > 0 {
@@ -25665,7 +25665,7 @@ func decodeOrgsUnblockUserParams(r *http.Request) (OrgsUnblockUserParams, error)
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter username not specified`)
+			return params, errors.New(`path: username: not specified`)
 		}
 	}
 	return params, nil
@@ -25673,7 +25673,7 @@ func decodeOrgsUnblockUserParams(r *http.Request) (OrgsUnblockUserParams, error)
 
 func decodeOrgsUpdateWebhookConfigForOrgParams(r *http.Request) (OrgsUpdateWebhookConfigForOrgParams, error) {
 	var params OrgsUpdateWebhookConfigForOrgParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -25701,10 +25701,10 @@ func decodeOrgsUpdateWebhookConfigForOrgParams(r *http.Request) (OrgsUpdateWebho
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "hook_id" located in "Path".
+	// Decode path: hook_id.
 	{
 		param := chi.URLParam(r, "hook_id")
 		if len(param) > 0 {
@@ -25732,7 +25732,7 @@ func decodeOrgsUpdateWebhookConfigForOrgParams(r *http.Request) (OrgsUpdateWebho
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter hook_id not specified`)
+			return params, errors.New(`path: hook_id: not specified`)
 		}
 	}
 	return params, nil
@@ -25740,7 +25740,7 @@ func decodeOrgsUpdateWebhookConfigForOrgParams(r *http.Request) (OrgsUpdateWebho
 
 func decodePackagesDeletePackageForAuthenticatedUserParams(r *http.Request) (PackagesDeletePackageForAuthenticatedUserParams, error) {
 	var params PackagesDeletePackageForAuthenticatedUserParams
-	// Decode param "package_type" located in "Path".
+	// Decode path: package_type.
 	{
 		param := chi.URLParam(r, "package_type")
 		if len(param) > 0 {
@@ -25768,10 +25768,10 @@ func decodePackagesDeletePackageForAuthenticatedUserParams(r *http.Request) (Pac
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter package_type not specified`)
+			return params, errors.New(`path: package_type: not specified`)
 		}
 	}
-	// Decode param "package_name" located in "Path".
+	// Decode path: package_name.
 	{
 		param := chi.URLParam(r, "package_name")
 		if len(param) > 0 {
@@ -25799,7 +25799,7 @@ func decodePackagesDeletePackageForAuthenticatedUserParams(r *http.Request) (Pac
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter package_name not specified`)
+			return params, errors.New(`path: package_name: not specified`)
 		}
 	}
 	return params, nil
@@ -25807,7 +25807,7 @@ func decodePackagesDeletePackageForAuthenticatedUserParams(r *http.Request) (Pac
 
 func decodePackagesDeletePackageForOrgParams(r *http.Request) (PackagesDeletePackageForOrgParams, error) {
 	var params PackagesDeletePackageForOrgParams
-	// Decode param "package_type" located in "Path".
+	// Decode path: package_type.
 	{
 		param := chi.URLParam(r, "package_type")
 		if len(param) > 0 {
@@ -25835,10 +25835,10 @@ func decodePackagesDeletePackageForOrgParams(r *http.Request) (PackagesDeletePac
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter package_type not specified`)
+			return params, errors.New(`path: package_type: not specified`)
 		}
 	}
-	// Decode param "package_name" located in "Path".
+	// Decode path: package_name.
 	{
 		param := chi.URLParam(r, "package_name")
 		if len(param) > 0 {
@@ -25866,10 +25866,10 @@ func decodePackagesDeletePackageForOrgParams(r *http.Request) (PackagesDeletePac
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter package_name not specified`)
+			return params, errors.New(`path: package_name: not specified`)
 		}
 	}
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -25897,7 +25897,7 @@ func decodePackagesDeletePackageForOrgParams(r *http.Request) (PackagesDeletePac
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
 	return params, nil
@@ -25905,7 +25905,7 @@ func decodePackagesDeletePackageForOrgParams(r *http.Request) (PackagesDeletePac
 
 func decodePackagesDeletePackageForUserParams(r *http.Request) (PackagesDeletePackageForUserParams, error) {
 	var params PackagesDeletePackageForUserParams
-	// Decode param "package_type" located in "Path".
+	// Decode path: package_type.
 	{
 		param := chi.URLParam(r, "package_type")
 		if len(param) > 0 {
@@ -25933,10 +25933,10 @@ func decodePackagesDeletePackageForUserParams(r *http.Request) (PackagesDeletePa
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter package_type not specified`)
+			return params, errors.New(`path: package_type: not specified`)
 		}
 	}
-	// Decode param "package_name" located in "Path".
+	// Decode path: package_name.
 	{
 		param := chi.URLParam(r, "package_name")
 		if len(param) > 0 {
@@ -25964,10 +25964,10 @@ func decodePackagesDeletePackageForUserParams(r *http.Request) (PackagesDeletePa
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter package_name not specified`)
+			return params, errors.New(`path: package_name: not specified`)
 		}
 	}
-	// Decode param "username" located in "Path".
+	// Decode path: username.
 	{
 		param := chi.URLParam(r, "username")
 		if len(param) > 0 {
@@ -25995,7 +25995,7 @@ func decodePackagesDeletePackageForUserParams(r *http.Request) (PackagesDeletePa
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter username not specified`)
+			return params, errors.New(`path: username: not specified`)
 		}
 	}
 	return params, nil
@@ -26003,7 +26003,7 @@ func decodePackagesDeletePackageForUserParams(r *http.Request) (PackagesDeletePa
 
 func decodePackagesDeletePackageVersionForAuthenticatedUserParams(r *http.Request) (PackagesDeletePackageVersionForAuthenticatedUserParams, error) {
 	var params PackagesDeletePackageVersionForAuthenticatedUserParams
-	// Decode param "package_type" located in "Path".
+	// Decode path: package_type.
 	{
 		param := chi.URLParam(r, "package_type")
 		if len(param) > 0 {
@@ -26031,10 +26031,10 @@ func decodePackagesDeletePackageVersionForAuthenticatedUserParams(r *http.Reques
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter package_type not specified`)
+			return params, errors.New(`path: package_type: not specified`)
 		}
 	}
-	// Decode param "package_name" located in "Path".
+	// Decode path: package_name.
 	{
 		param := chi.URLParam(r, "package_name")
 		if len(param) > 0 {
@@ -26062,10 +26062,10 @@ func decodePackagesDeletePackageVersionForAuthenticatedUserParams(r *http.Reques
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter package_name not specified`)
+			return params, errors.New(`path: package_name: not specified`)
 		}
 	}
-	// Decode param "package_version_id" located in "Path".
+	// Decode path: package_version_id.
 	{
 		param := chi.URLParam(r, "package_version_id")
 		if len(param) > 0 {
@@ -26093,7 +26093,7 @@ func decodePackagesDeletePackageVersionForAuthenticatedUserParams(r *http.Reques
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter package_version_id not specified`)
+			return params, errors.New(`path: package_version_id: not specified`)
 		}
 	}
 	return params, nil
@@ -26101,7 +26101,7 @@ func decodePackagesDeletePackageVersionForAuthenticatedUserParams(r *http.Reques
 
 func decodePackagesDeletePackageVersionForOrgParams(r *http.Request) (PackagesDeletePackageVersionForOrgParams, error) {
 	var params PackagesDeletePackageVersionForOrgParams
-	// Decode param "package_type" located in "Path".
+	// Decode path: package_type.
 	{
 		param := chi.URLParam(r, "package_type")
 		if len(param) > 0 {
@@ -26129,10 +26129,10 @@ func decodePackagesDeletePackageVersionForOrgParams(r *http.Request) (PackagesDe
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter package_type not specified`)
+			return params, errors.New(`path: package_type: not specified`)
 		}
 	}
-	// Decode param "package_name" located in "Path".
+	// Decode path: package_name.
 	{
 		param := chi.URLParam(r, "package_name")
 		if len(param) > 0 {
@@ -26160,10 +26160,10 @@ func decodePackagesDeletePackageVersionForOrgParams(r *http.Request) (PackagesDe
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter package_name not specified`)
+			return params, errors.New(`path: package_name: not specified`)
 		}
 	}
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -26191,10 +26191,10 @@ func decodePackagesDeletePackageVersionForOrgParams(r *http.Request) (PackagesDe
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "package_version_id" located in "Path".
+	// Decode path: package_version_id.
 	{
 		param := chi.URLParam(r, "package_version_id")
 		if len(param) > 0 {
@@ -26222,7 +26222,7 @@ func decodePackagesDeletePackageVersionForOrgParams(r *http.Request) (PackagesDe
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter package_version_id not specified`)
+			return params, errors.New(`path: package_version_id: not specified`)
 		}
 	}
 	return params, nil
@@ -26230,7 +26230,7 @@ func decodePackagesDeletePackageVersionForOrgParams(r *http.Request) (PackagesDe
 
 func decodePackagesDeletePackageVersionForUserParams(r *http.Request) (PackagesDeletePackageVersionForUserParams, error) {
 	var params PackagesDeletePackageVersionForUserParams
-	// Decode param "package_type" located in "Path".
+	// Decode path: package_type.
 	{
 		param := chi.URLParam(r, "package_type")
 		if len(param) > 0 {
@@ -26258,10 +26258,10 @@ func decodePackagesDeletePackageVersionForUserParams(r *http.Request) (PackagesD
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter package_type not specified`)
+			return params, errors.New(`path: package_type: not specified`)
 		}
 	}
-	// Decode param "package_name" located in "Path".
+	// Decode path: package_name.
 	{
 		param := chi.URLParam(r, "package_name")
 		if len(param) > 0 {
@@ -26289,10 +26289,10 @@ func decodePackagesDeletePackageVersionForUserParams(r *http.Request) (PackagesD
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter package_name not specified`)
+			return params, errors.New(`path: package_name: not specified`)
 		}
 	}
-	// Decode param "username" located in "Path".
+	// Decode path: username.
 	{
 		param := chi.URLParam(r, "username")
 		if len(param) > 0 {
@@ -26320,10 +26320,10 @@ func decodePackagesDeletePackageVersionForUserParams(r *http.Request) (PackagesD
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter username not specified`)
+			return params, errors.New(`path: username: not specified`)
 		}
 	}
-	// Decode param "package_version_id" located in "Path".
+	// Decode path: package_version_id.
 	{
 		param := chi.URLParam(r, "package_version_id")
 		if len(param) > 0 {
@@ -26351,7 +26351,7 @@ func decodePackagesDeletePackageVersionForUserParams(r *http.Request) (PackagesD
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter package_version_id not specified`)
+			return params, errors.New(`path: package_version_id: not specified`)
 		}
 	}
 	return params, nil
@@ -26359,7 +26359,7 @@ func decodePackagesDeletePackageVersionForUserParams(r *http.Request) (PackagesD
 
 func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams(r *http.Request) (PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams, error) {
 	var params PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams
-	// Decode param "package_type" located in "Path".
+	// Decode path: package_type.
 	{
 		param := chi.URLParam(r, "package_type")
 		if len(param) > 0 {
@@ -26387,10 +26387,10 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter package_type not specified`)
+			return params, errors.New(`path: package_type: not specified`)
 		}
 	}
-	// Decode param "package_name" located in "Path".
+	// Decode path: package_name.
 	{
 		param := chi.URLParam(r, "package_name")
 		if len(param) > 0 {
@@ -26418,10 +26418,10 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter package_name not specified`)
+			return params, errors.New(`path: package_name: not specified`)
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -26452,11 +26452,11 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -26487,11 +26487,11 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "state" located in "Query".
+	// Decode query: state.
 	{
 		values, ok := r.URL.Query()["state"]
 		if ok {
@@ -26522,7 +26522,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams
 				params.State.SetTo(ParamsStateValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter state located in query`)
+				return params, errors.Wrap(err, `query: state: parse`)
 			}
 			if err := func() error {
 
@@ -26541,7 +26541,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams
 
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `invalid parameter state (query`)
+				return params, errors.Wrap(err, `query: state: invalid`)
 			}
 		}
 	}
@@ -26550,7 +26550,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams
 
 func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(r *http.Request) (PackagesGetAllPackageVersionsForPackageOwnedByOrgParams, error) {
 	var params PackagesGetAllPackageVersionsForPackageOwnedByOrgParams
-	// Decode param "package_type" located in "Path".
+	// Decode path: package_type.
 	{
 		param := chi.URLParam(r, "package_type")
 		if len(param) > 0 {
@@ -26578,10 +26578,10 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(r *http.Reque
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter package_type not specified`)
+			return params, errors.New(`path: package_type: not specified`)
 		}
 	}
-	// Decode param "package_name" located in "Path".
+	// Decode path: package_name.
 	{
 		param := chi.URLParam(r, "package_name")
 		if len(param) > 0 {
@@ -26609,10 +26609,10 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(r *http.Reque
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter package_name not specified`)
+			return params, errors.New(`path: package_name: not specified`)
 		}
 	}
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -26640,10 +26640,10 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(r *http.Reque
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -26674,11 +26674,11 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(r *http.Reque
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -26709,11 +26709,11 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(r *http.Reque
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "state" located in "Query".
+	// Decode query: state.
 	{
 		values, ok := r.URL.Query()["state"]
 		if ok {
@@ -26744,7 +26744,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(r *http.Reque
 				params.State.SetTo(ParamsStateValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter state located in query`)
+				return params, errors.Wrap(err, `query: state: parse`)
 			}
 			if err := func() error {
 
@@ -26763,7 +26763,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(r *http.Reque
 
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `invalid parameter state (query`)
+				return params, errors.Wrap(err, `query: state: invalid`)
 			}
 		}
 	}
@@ -26772,7 +26772,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(r *http.Reque
 
 func decodePackagesGetAllPackageVersionsForPackageOwnedByUserParams(r *http.Request) (PackagesGetAllPackageVersionsForPackageOwnedByUserParams, error) {
 	var params PackagesGetAllPackageVersionsForPackageOwnedByUserParams
-	// Decode param "package_type" located in "Path".
+	// Decode path: package_type.
 	{
 		param := chi.URLParam(r, "package_type")
 		if len(param) > 0 {
@@ -26800,10 +26800,10 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByUserParams(r *http.Requ
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter package_type not specified`)
+			return params, errors.New(`path: package_type: not specified`)
 		}
 	}
-	// Decode param "package_name" located in "Path".
+	// Decode path: package_name.
 	{
 		param := chi.URLParam(r, "package_name")
 		if len(param) > 0 {
@@ -26831,10 +26831,10 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByUserParams(r *http.Requ
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter package_name not specified`)
+			return params, errors.New(`path: package_name: not specified`)
 		}
 	}
-	// Decode param "username" located in "Path".
+	// Decode path: username.
 	{
 		param := chi.URLParam(r, "username")
 		if len(param) > 0 {
@@ -26862,7 +26862,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByUserParams(r *http.Requ
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter username not specified`)
+			return params, errors.New(`path: username: not specified`)
 		}
 	}
 	return params, nil
@@ -26870,7 +26870,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByUserParams(r *http.Requ
 
 func decodePackagesGetPackageForAuthenticatedUserParams(r *http.Request) (PackagesGetPackageForAuthenticatedUserParams, error) {
 	var params PackagesGetPackageForAuthenticatedUserParams
-	// Decode param "package_type" located in "Path".
+	// Decode path: package_type.
 	{
 		param := chi.URLParam(r, "package_type")
 		if len(param) > 0 {
@@ -26898,10 +26898,10 @@ func decodePackagesGetPackageForAuthenticatedUserParams(r *http.Request) (Packag
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter package_type not specified`)
+			return params, errors.New(`path: package_type: not specified`)
 		}
 	}
-	// Decode param "package_name" located in "Path".
+	// Decode path: package_name.
 	{
 		param := chi.URLParam(r, "package_name")
 		if len(param) > 0 {
@@ -26929,7 +26929,7 @@ func decodePackagesGetPackageForAuthenticatedUserParams(r *http.Request) (Packag
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter package_name not specified`)
+			return params, errors.New(`path: package_name: not specified`)
 		}
 	}
 	return params, nil
@@ -26937,7 +26937,7 @@ func decodePackagesGetPackageForAuthenticatedUserParams(r *http.Request) (Packag
 
 func decodePackagesGetPackageForOrganizationParams(r *http.Request) (PackagesGetPackageForOrganizationParams, error) {
 	var params PackagesGetPackageForOrganizationParams
-	// Decode param "package_type" located in "Path".
+	// Decode path: package_type.
 	{
 		param := chi.URLParam(r, "package_type")
 		if len(param) > 0 {
@@ -26965,10 +26965,10 @@ func decodePackagesGetPackageForOrganizationParams(r *http.Request) (PackagesGet
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter package_type not specified`)
+			return params, errors.New(`path: package_type: not specified`)
 		}
 	}
-	// Decode param "package_name" located in "Path".
+	// Decode path: package_name.
 	{
 		param := chi.URLParam(r, "package_name")
 		if len(param) > 0 {
@@ -26996,10 +26996,10 @@ func decodePackagesGetPackageForOrganizationParams(r *http.Request) (PackagesGet
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter package_name not specified`)
+			return params, errors.New(`path: package_name: not specified`)
 		}
 	}
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -27027,7 +27027,7 @@ func decodePackagesGetPackageForOrganizationParams(r *http.Request) (PackagesGet
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
 	return params, nil
@@ -27035,7 +27035,7 @@ func decodePackagesGetPackageForOrganizationParams(r *http.Request) (PackagesGet
 
 func decodePackagesGetPackageForUserParams(r *http.Request) (PackagesGetPackageForUserParams, error) {
 	var params PackagesGetPackageForUserParams
-	// Decode param "package_type" located in "Path".
+	// Decode path: package_type.
 	{
 		param := chi.URLParam(r, "package_type")
 		if len(param) > 0 {
@@ -27063,10 +27063,10 @@ func decodePackagesGetPackageForUserParams(r *http.Request) (PackagesGetPackageF
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter package_type not specified`)
+			return params, errors.New(`path: package_type: not specified`)
 		}
 	}
-	// Decode param "package_name" located in "Path".
+	// Decode path: package_name.
 	{
 		param := chi.URLParam(r, "package_name")
 		if len(param) > 0 {
@@ -27094,10 +27094,10 @@ func decodePackagesGetPackageForUserParams(r *http.Request) (PackagesGetPackageF
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter package_name not specified`)
+			return params, errors.New(`path: package_name: not specified`)
 		}
 	}
-	// Decode param "username" located in "Path".
+	// Decode path: username.
 	{
 		param := chi.URLParam(r, "username")
 		if len(param) > 0 {
@@ -27125,7 +27125,7 @@ func decodePackagesGetPackageForUserParams(r *http.Request) (PackagesGetPackageF
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter username not specified`)
+			return params, errors.New(`path: username: not specified`)
 		}
 	}
 	return params, nil
@@ -27133,7 +27133,7 @@ func decodePackagesGetPackageForUserParams(r *http.Request) (PackagesGetPackageF
 
 func decodePackagesGetPackageVersionForAuthenticatedUserParams(r *http.Request) (PackagesGetPackageVersionForAuthenticatedUserParams, error) {
 	var params PackagesGetPackageVersionForAuthenticatedUserParams
-	// Decode param "package_type" located in "Path".
+	// Decode path: package_type.
 	{
 		param := chi.URLParam(r, "package_type")
 		if len(param) > 0 {
@@ -27161,10 +27161,10 @@ func decodePackagesGetPackageVersionForAuthenticatedUserParams(r *http.Request) 
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter package_type not specified`)
+			return params, errors.New(`path: package_type: not specified`)
 		}
 	}
-	// Decode param "package_name" located in "Path".
+	// Decode path: package_name.
 	{
 		param := chi.URLParam(r, "package_name")
 		if len(param) > 0 {
@@ -27192,10 +27192,10 @@ func decodePackagesGetPackageVersionForAuthenticatedUserParams(r *http.Request) 
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter package_name not specified`)
+			return params, errors.New(`path: package_name: not specified`)
 		}
 	}
-	// Decode param "package_version_id" located in "Path".
+	// Decode path: package_version_id.
 	{
 		param := chi.URLParam(r, "package_version_id")
 		if len(param) > 0 {
@@ -27223,7 +27223,7 @@ func decodePackagesGetPackageVersionForAuthenticatedUserParams(r *http.Request) 
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter package_version_id not specified`)
+			return params, errors.New(`path: package_version_id: not specified`)
 		}
 	}
 	return params, nil
@@ -27231,7 +27231,7 @@ func decodePackagesGetPackageVersionForAuthenticatedUserParams(r *http.Request) 
 
 func decodePackagesGetPackageVersionForOrganizationParams(r *http.Request) (PackagesGetPackageVersionForOrganizationParams, error) {
 	var params PackagesGetPackageVersionForOrganizationParams
-	// Decode param "package_type" located in "Path".
+	// Decode path: package_type.
 	{
 		param := chi.URLParam(r, "package_type")
 		if len(param) > 0 {
@@ -27259,10 +27259,10 @@ func decodePackagesGetPackageVersionForOrganizationParams(r *http.Request) (Pack
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter package_type not specified`)
+			return params, errors.New(`path: package_type: not specified`)
 		}
 	}
-	// Decode param "package_name" located in "Path".
+	// Decode path: package_name.
 	{
 		param := chi.URLParam(r, "package_name")
 		if len(param) > 0 {
@@ -27290,10 +27290,10 @@ func decodePackagesGetPackageVersionForOrganizationParams(r *http.Request) (Pack
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter package_name not specified`)
+			return params, errors.New(`path: package_name: not specified`)
 		}
 	}
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -27321,10 +27321,10 @@ func decodePackagesGetPackageVersionForOrganizationParams(r *http.Request) (Pack
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "package_version_id" located in "Path".
+	// Decode path: package_version_id.
 	{
 		param := chi.URLParam(r, "package_version_id")
 		if len(param) > 0 {
@@ -27352,7 +27352,7 @@ func decodePackagesGetPackageVersionForOrganizationParams(r *http.Request) (Pack
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter package_version_id not specified`)
+			return params, errors.New(`path: package_version_id: not specified`)
 		}
 	}
 	return params, nil
@@ -27360,7 +27360,7 @@ func decodePackagesGetPackageVersionForOrganizationParams(r *http.Request) (Pack
 
 func decodePackagesGetPackageVersionForUserParams(r *http.Request) (PackagesGetPackageVersionForUserParams, error) {
 	var params PackagesGetPackageVersionForUserParams
-	// Decode param "package_type" located in "Path".
+	// Decode path: package_type.
 	{
 		param := chi.URLParam(r, "package_type")
 		if len(param) > 0 {
@@ -27388,10 +27388,10 @@ func decodePackagesGetPackageVersionForUserParams(r *http.Request) (PackagesGetP
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter package_type not specified`)
+			return params, errors.New(`path: package_type: not specified`)
 		}
 	}
-	// Decode param "package_name" located in "Path".
+	// Decode path: package_name.
 	{
 		param := chi.URLParam(r, "package_name")
 		if len(param) > 0 {
@@ -27419,10 +27419,10 @@ func decodePackagesGetPackageVersionForUserParams(r *http.Request) (PackagesGetP
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter package_name not specified`)
+			return params, errors.New(`path: package_name: not specified`)
 		}
 	}
-	// Decode param "package_version_id" located in "Path".
+	// Decode path: package_version_id.
 	{
 		param := chi.URLParam(r, "package_version_id")
 		if len(param) > 0 {
@@ -27450,10 +27450,10 @@ func decodePackagesGetPackageVersionForUserParams(r *http.Request) (PackagesGetP
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter package_version_id not specified`)
+			return params, errors.New(`path: package_version_id: not specified`)
 		}
 	}
-	// Decode param "username" located in "Path".
+	// Decode path: username.
 	{
 		param := chi.URLParam(r, "username")
 		if len(param) > 0 {
@@ -27481,7 +27481,7 @@ func decodePackagesGetPackageVersionForUserParams(r *http.Request) (PackagesGetP
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter username not specified`)
+			return params, errors.New(`path: username: not specified`)
 		}
 	}
 	return params, nil
@@ -27489,7 +27489,7 @@ func decodePackagesGetPackageVersionForUserParams(r *http.Request) (PackagesGetP
 
 func decodePackagesListPackagesForAuthenticatedUserParams(r *http.Request) (PackagesListPackagesForAuthenticatedUserParams, error) {
 	var params PackagesListPackagesForAuthenticatedUserParams
-	// Decode param "package_type" located in "Query".
+	// Decode query: package_type.
 	{
 		values, ok := r.URL.Query()["package_type"]
 		if ok {
@@ -27513,7 +27513,7 @@ func decodePackagesListPackagesForAuthenticatedUserParams(r *http.Request) (Pack
 				params.PackageType = PackagesListPackagesForAuthenticatedUserPackageType(c)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter package_type located in query`)
+				return params, errors.Wrap(err, `query: package_type: parse`)
 			}
 			if err := func() error {
 
@@ -27522,13 +27522,13 @@ func decodePackagesListPackagesForAuthenticatedUserParams(r *http.Request) (Pack
 				}
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `invalid parameter package_type (query`)
+				return params, errors.Wrap(err, `query: package_type: invalid`)
 			}
 		} else {
-			return params, errors.New(`query parameter package_type not specified`)
+			return params, errors.New(`query: package_type: not specified`)
 		}
 	}
-	// Decode param "visibility" located in "Query".
+	// Decode query: visibility.
 	{
 		values, ok := r.URL.Query()["visibility"]
 		if ok {
@@ -27559,7 +27559,7 @@ func decodePackagesListPackagesForAuthenticatedUserParams(r *http.Request) (Pack
 				params.Visibility.SetTo(ParamsVisibilityValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter visibility located in query`)
+				return params, errors.Wrap(err, `query: visibility: parse`)
 			}
 			if err := func() error {
 
@@ -27578,7 +27578,7 @@ func decodePackagesListPackagesForAuthenticatedUserParams(r *http.Request) (Pack
 
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `invalid parameter visibility (query`)
+				return params, errors.Wrap(err, `query: visibility: invalid`)
 			}
 		}
 	}
@@ -27587,7 +27587,7 @@ func decodePackagesListPackagesForAuthenticatedUserParams(r *http.Request) (Pack
 
 func decodePackagesListPackagesForOrganizationParams(r *http.Request) (PackagesListPackagesForOrganizationParams, error) {
 	var params PackagesListPackagesForOrganizationParams
-	// Decode param "package_type" located in "Query".
+	// Decode query: package_type.
 	{
 		values, ok := r.URL.Query()["package_type"]
 		if ok {
@@ -27611,7 +27611,7 @@ func decodePackagesListPackagesForOrganizationParams(r *http.Request) (PackagesL
 				params.PackageType = PackagesListPackagesForOrganizationPackageType(c)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter package_type located in query`)
+				return params, errors.Wrap(err, `query: package_type: parse`)
 			}
 			if err := func() error {
 
@@ -27620,13 +27620,13 @@ func decodePackagesListPackagesForOrganizationParams(r *http.Request) (PackagesL
 				}
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `invalid parameter package_type (query`)
+				return params, errors.Wrap(err, `query: package_type: invalid`)
 			}
 		} else {
-			return params, errors.New(`query parameter package_type not specified`)
+			return params, errors.New(`query: package_type: not specified`)
 		}
 	}
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -27654,10 +27654,10 @@ func decodePackagesListPackagesForOrganizationParams(r *http.Request) (PackagesL
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "visibility" located in "Query".
+	// Decode query: visibility.
 	{
 		values, ok := r.URL.Query()["visibility"]
 		if ok {
@@ -27688,7 +27688,7 @@ func decodePackagesListPackagesForOrganizationParams(r *http.Request) (PackagesL
 				params.Visibility.SetTo(ParamsVisibilityValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter visibility located in query`)
+				return params, errors.Wrap(err, `query: visibility: parse`)
 			}
 			if err := func() error {
 
@@ -27707,7 +27707,7 @@ func decodePackagesListPackagesForOrganizationParams(r *http.Request) (PackagesL
 
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `invalid parameter visibility (query`)
+				return params, errors.Wrap(err, `query: visibility: invalid`)
 			}
 		}
 	}
@@ -27716,7 +27716,7 @@ func decodePackagesListPackagesForOrganizationParams(r *http.Request) (PackagesL
 
 func decodePackagesListPackagesForUserParams(r *http.Request) (PackagesListPackagesForUserParams, error) {
 	var params PackagesListPackagesForUserParams
-	// Decode param "package_type" located in "Query".
+	// Decode query: package_type.
 	{
 		values, ok := r.URL.Query()["package_type"]
 		if ok {
@@ -27740,7 +27740,7 @@ func decodePackagesListPackagesForUserParams(r *http.Request) (PackagesListPacka
 				params.PackageType = PackagesListPackagesForUserPackageType(c)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter package_type located in query`)
+				return params, errors.Wrap(err, `query: package_type: parse`)
 			}
 			if err := func() error {
 
@@ -27749,13 +27749,13 @@ func decodePackagesListPackagesForUserParams(r *http.Request) (PackagesListPacka
 				}
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `invalid parameter package_type (query`)
+				return params, errors.Wrap(err, `query: package_type: invalid`)
 			}
 		} else {
-			return params, errors.New(`query parameter package_type not specified`)
+			return params, errors.New(`query: package_type: not specified`)
 		}
 	}
-	// Decode param "visibility" located in "Query".
+	// Decode query: visibility.
 	{
 		values, ok := r.URL.Query()["visibility"]
 		if ok {
@@ -27786,7 +27786,7 @@ func decodePackagesListPackagesForUserParams(r *http.Request) (PackagesListPacka
 				params.Visibility.SetTo(ParamsVisibilityValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter visibility located in query`)
+				return params, errors.Wrap(err, `query: visibility: parse`)
 			}
 			if err := func() error {
 
@@ -27805,11 +27805,11 @@ func decodePackagesListPackagesForUserParams(r *http.Request) (PackagesListPacka
 
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `invalid parameter visibility (query`)
+				return params, errors.Wrap(err, `query: visibility: invalid`)
 			}
 		}
 	}
-	// Decode param "username" located in "Path".
+	// Decode path: username.
 	{
 		param := chi.URLParam(r, "username")
 		if len(param) > 0 {
@@ -27837,7 +27837,7 @@ func decodePackagesListPackagesForUserParams(r *http.Request) (PackagesListPacka
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter username not specified`)
+			return params, errors.New(`path: username: not specified`)
 		}
 	}
 	return params, nil
@@ -27845,7 +27845,7 @@ func decodePackagesListPackagesForUserParams(r *http.Request) (PackagesListPacka
 
 func decodePackagesRestorePackageForAuthenticatedUserParams(r *http.Request) (PackagesRestorePackageForAuthenticatedUserParams, error) {
 	var params PackagesRestorePackageForAuthenticatedUserParams
-	// Decode param "package_type" located in "Path".
+	// Decode path: package_type.
 	{
 		param := chi.URLParam(r, "package_type")
 		if len(param) > 0 {
@@ -27873,10 +27873,10 @@ func decodePackagesRestorePackageForAuthenticatedUserParams(r *http.Request) (Pa
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter package_type not specified`)
+			return params, errors.New(`path: package_type: not specified`)
 		}
 	}
-	// Decode param "package_name" located in "Path".
+	// Decode path: package_name.
 	{
 		param := chi.URLParam(r, "package_name")
 		if len(param) > 0 {
@@ -27904,10 +27904,10 @@ func decodePackagesRestorePackageForAuthenticatedUserParams(r *http.Request) (Pa
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter package_name not specified`)
+			return params, errors.New(`path: package_name: not specified`)
 		}
 	}
-	// Decode param "token" located in "Query".
+	// Decode query: token.
 	{
 		values, ok := r.URL.Query()["token"]
 		if ok {
@@ -27938,7 +27938,7 @@ func decodePackagesRestorePackageForAuthenticatedUserParams(r *http.Request) (Pa
 				params.Token.SetTo(ParamsTokenValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter token located in query`)
+				return params, errors.Wrap(err, `query: token: parse`)
 			}
 		}
 	}
@@ -27947,7 +27947,7 @@ func decodePackagesRestorePackageForAuthenticatedUserParams(r *http.Request) (Pa
 
 func decodePackagesRestorePackageForOrgParams(r *http.Request) (PackagesRestorePackageForOrgParams, error) {
 	var params PackagesRestorePackageForOrgParams
-	// Decode param "package_type" located in "Path".
+	// Decode path: package_type.
 	{
 		param := chi.URLParam(r, "package_type")
 		if len(param) > 0 {
@@ -27975,10 +27975,10 @@ func decodePackagesRestorePackageForOrgParams(r *http.Request) (PackagesRestoreP
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter package_type not specified`)
+			return params, errors.New(`path: package_type: not specified`)
 		}
 	}
-	// Decode param "package_name" located in "Path".
+	// Decode path: package_name.
 	{
 		param := chi.URLParam(r, "package_name")
 		if len(param) > 0 {
@@ -28006,10 +28006,10 @@ func decodePackagesRestorePackageForOrgParams(r *http.Request) (PackagesRestoreP
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter package_name not specified`)
+			return params, errors.New(`path: package_name: not specified`)
 		}
 	}
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -28037,10 +28037,10 @@ func decodePackagesRestorePackageForOrgParams(r *http.Request) (PackagesRestoreP
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "token" located in "Query".
+	// Decode query: token.
 	{
 		values, ok := r.URL.Query()["token"]
 		if ok {
@@ -28071,7 +28071,7 @@ func decodePackagesRestorePackageForOrgParams(r *http.Request) (PackagesRestoreP
 				params.Token.SetTo(ParamsTokenValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter token located in query`)
+				return params, errors.Wrap(err, `query: token: parse`)
 			}
 		}
 	}
@@ -28080,7 +28080,7 @@ func decodePackagesRestorePackageForOrgParams(r *http.Request) (PackagesRestoreP
 
 func decodePackagesRestorePackageForUserParams(r *http.Request) (PackagesRestorePackageForUserParams, error) {
 	var params PackagesRestorePackageForUserParams
-	// Decode param "package_type" located in "Path".
+	// Decode path: package_type.
 	{
 		param := chi.URLParam(r, "package_type")
 		if len(param) > 0 {
@@ -28108,10 +28108,10 @@ func decodePackagesRestorePackageForUserParams(r *http.Request) (PackagesRestore
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter package_type not specified`)
+			return params, errors.New(`path: package_type: not specified`)
 		}
 	}
-	// Decode param "package_name" located in "Path".
+	// Decode path: package_name.
 	{
 		param := chi.URLParam(r, "package_name")
 		if len(param) > 0 {
@@ -28139,10 +28139,10 @@ func decodePackagesRestorePackageForUserParams(r *http.Request) (PackagesRestore
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter package_name not specified`)
+			return params, errors.New(`path: package_name: not specified`)
 		}
 	}
-	// Decode param "username" located in "Path".
+	// Decode path: username.
 	{
 		param := chi.URLParam(r, "username")
 		if len(param) > 0 {
@@ -28170,10 +28170,10 @@ func decodePackagesRestorePackageForUserParams(r *http.Request) (PackagesRestore
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter username not specified`)
+			return params, errors.New(`path: username: not specified`)
 		}
 	}
-	// Decode param "token" located in "Query".
+	// Decode query: token.
 	{
 		values, ok := r.URL.Query()["token"]
 		if ok {
@@ -28204,7 +28204,7 @@ func decodePackagesRestorePackageForUserParams(r *http.Request) (PackagesRestore
 				params.Token.SetTo(ParamsTokenValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter token located in query`)
+				return params, errors.Wrap(err, `query: token: parse`)
 			}
 		}
 	}
@@ -28213,7 +28213,7 @@ func decodePackagesRestorePackageForUserParams(r *http.Request) (PackagesRestore
 
 func decodePackagesRestorePackageVersionForAuthenticatedUserParams(r *http.Request) (PackagesRestorePackageVersionForAuthenticatedUserParams, error) {
 	var params PackagesRestorePackageVersionForAuthenticatedUserParams
-	// Decode param "package_type" located in "Path".
+	// Decode path: package_type.
 	{
 		param := chi.URLParam(r, "package_type")
 		if len(param) > 0 {
@@ -28241,10 +28241,10 @@ func decodePackagesRestorePackageVersionForAuthenticatedUserParams(r *http.Reque
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter package_type not specified`)
+			return params, errors.New(`path: package_type: not specified`)
 		}
 	}
-	// Decode param "package_name" located in "Path".
+	// Decode path: package_name.
 	{
 		param := chi.URLParam(r, "package_name")
 		if len(param) > 0 {
@@ -28272,10 +28272,10 @@ func decodePackagesRestorePackageVersionForAuthenticatedUserParams(r *http.Reque
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter package_name not specified`)
+			return params, errors.New(`path: package_name: not specified`)
 		}
 	}
-	// Decode param "package_version_id" located in "Path".
+	// Decode path: package_version_id.
 	{
 		param := chi.URLParam(r, "package_version_id")
 		if len(param) > 0 {
@@ -28303,7 +28303,7 @@ func decodePackagesRestorePackageVersionForAuthenticatedUserParams(r *http.Reque
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter package_version_id not specified`)
+			return params, errors.New(`path: package_version_id: not specified`)
 		}
 	}
 	return params, nil
@@ -28311,7 +28311,7 @@ func decodePackagesRestorePackageVersionForAuthenticatedUserParams(r *http.Reque
 
 func decodePackagesRestorePackageVersionForOrgParams(r *http.Request) (PackagesRestorePackageVersionForOrgParams, error) {
 	var params PackagesRestorePackageVersionForOrgParams
-	// Decode param "package_type" located in "Path".
+	// Decode path: package_type.
 	{
 		param := chi.URLParam(r, "package_type")
 		if len(param) > 0 {
@@ -28339,10 +28339,10 @@ func decodePackagesRestorePackageVersionForOrgParams(r *http.Request) (PackagesR
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter package_type not specified`)
+			return params, errors.New(`path: package_type: not specified`)
 		}
 	}
-	// Decode param "package_name" located in "Path".
+	// Decode path: package_name.
 	{
 		param := chi.URLParam(r, "package_name")
 		if len(param) > 0 {
@@ -28370,10 +28370,10 @@ func decodePackagesRestorePackageVersionForOrgParams(r *http.Request) (PackagesR
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter package_name not specified`)
+			return params, errors.New(`path: package_name: not specified`)
 		}
 	}
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -28401,10 +28401,10 @@ func decodePackagesRestorePackageVersionForOrgParams(r *http.Request) (PackagesR
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "package_version_id" located in "Path".
+	// Decode path: package_version_id.
 	{
 		param := chi.URLParam(r, "package_version_id")
 		if len(param) > 0 {
@@ -28432,7 +28432,7 @@ func decodePackagesRestorePackageVersionForOrgParams(r *http.Request) (PackagesR
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter package_version_id not specified`)
+			return params, errors.New(`path: package_version_id: not specified`)
 		}
 	}
 	return params, nil
@@ -28440,7 +28440,7 @@ func decodePackagesRestorePackageVersionForOrgParams(r *http.Request) (PackagesR
 
 func decodePackagesRestorePackageVersionForUserParams(r *http.Request) (PackagesRestorePackageVersionForUserParams, error) {
 	var params PackagesRestorePackageVersionForUserParams
-	// Decode param "package_type" located in "Path".
+	// Decode path: package_type.
 	{
 		param := chi.URLParam(r, "package_type")
 		if len(param) > 0 {
@@ -28468,10 +28468,10 @@ func decodePackagesRestorePackageVersionForUserParams(r *http.Request) (Packages
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter package_type not specified`)
+			return params, errors.New(`path: package_type: not specified`)
 		}
 	}
-	// Decode param "package_name" located in "Path".
+	// Decode path: package_name.
 	{
 		param := chi.URLParam(r, "package_name")
 		if len(param) > 0 {
@@ -28499,10 +28499,10 @@ func decodePackagesRestorePackageVersionForUserParams(r *http.Request) (Packages
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter package_name not specified`)
+			return params, errors.New(`path: package_name: not specified`)
 		}
 	}
-	// Decode param "username" located in "Path".
+	// Decode path: username.
 	{
 		param := chi.URLParam(r, "username")
 		if len(param) > 0 {
@@ -28530,10 +28530,10 @@ func decodePackagesRestorePackageVersionForUserParams(r *http.Request) (Packages
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter username not specified`)
+			return params, errors.New(`path: username: not specified`)
 		}
 	}
-	// Decode param "package_version_id" located in "Path".
+	// Decode path: package_version_id.
 	{
 		param := chi.URLParam(r, "package_version_id")
 		if len(param) > 0 {
@@ -28561,7 +28561,7 @@ func decodePackagesRestorePackageVersionForUserParams(r *http.Request) (Packages
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter package_version_id not specified`)
+			return params, errors.New(`path: package_version_id: not specified`)
 		}
 	}
 	return params, nil
@@ -28569,7 +28569,7 @@ func decodePackagesRestorePackageVersionForUserParams(r *http.Request) (Packages
 
 func decodeProjectsCreateColumnParams(r *http.Request) (ProjectsCreateColumnParams, error) {
 	var params ProjectsCreateColumnParams
-	// Decode param "project_id" located in "Path".
+	// Decode path: project_id.
 	{
 		param := chi.URLParam(r, "project_id")
 		if len(param) > 0 {
@@ -28597,7 +28597,7 @@ func decodeProjectsCreateColumnParams(r *http.Request) (ProjectsCreateColumnPara
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter project_id not specified`)
+			return params, errors.New(`path: project_id: not specified`)
 		}
 	}
 	return params, nil
@@ -28605,7 +28605,7 @@ func decodeProjectsCreateColumnParams(r *http.Request) (ProjectsCreateColumnPara
 
 func decodeProjectsCreateForOrgParams(r *http.Request) (ProjectsCreateForOrgParams, error) {
 	var params ProjectsCreateForOrgParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -28633,7 +28633,7 @@ func decodeProjectsCreateForOrgParams(r *http.Request) (ProjectsCreateForOrgPara
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
 	return params, nil
@@ -28641,7 +28641,7 @@ func decodeProjectsCreateForOrgParams(r *http.Request) (ProjectsCreateForOrgPara
 
 func decodeProjectsCreateForRepoParams(r *http.Request) (ProjectsCreateForRepoParams, error) {
 	var params ProjectsCreateForRepoParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -28669,10 +28669,10 @@ func decodeProjectsCreateForRepoParams(r *http.Request) (ProjectsCreateForRepoPa
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -28700,7 +28700,7 @@ func decodeProjectsCreateForRepoParams(r *http.Request) (ProjectsCreateForRepoPa
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
 	return params, nil
@@ -28708,7 +28708,7 @@ func decodeProjectsCreateForRepoParams(r *http.Request) (ProjectsCreateForRepoPa
 
 func decodeProjectsDeleteParams(r *http.Request) (ProjectsDeleteParams, error) {
 	var params ProjectsDeleteParams
-	// Decode param "project_id" located in "Path".
+	// Decode path: project_id.
 	{
 		param := chi.URLParam(r, "project_id")
 		if len(param) > 0 {
@@ -28736,7 +28736,7 @@ func decodeProjectsDeleteParams(r *http.Request) (ProjectsDeleteParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter project_id not specified`)
+			return params, errors.New(`path: project_id: not specified`)
 		}
 	}
 	return params, nil
@@ -28744,7 +28744,7 @@ func decodeProjectsDeleteParams(r *http.Request) (ProjectsDeleteParams, error) {
 
 func decodeProjectsDeleteCardParams(r *http.Request) (ProjectsDeleteCardParams, error) {
 	var params ProjectsDeleteCardParams
-	// Decode param "card_id" located in "Path".
+	// Decode path: card_id.
 	{
 		param := chi.URLParam(r, "card_id")
 		if len(param) > 0 {
@@ -28772,7 +28772,7 @@ func decodeProjectsDeleteCardParams(r *http.Request) (ProjectsDeleteCardParams, 
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter card_id not specified`)
+			return params, errors.New(`path: card_id: not specified`)
 		}
 	}
 	return params, nil
@@ -28780,7 +28780,7 @@ func decodeProjectsDeleteCardParams(r *http.Request) (ProjectsDeleteCardParams, 
 
 func decodeProjectsDeleteColumnParams(r *http.Request) (ProjectsDeleteColumnParams, error) {
 	var params ProjectsDeleteColumnParams
-	// Decode param "column_id" located in "Path".
+	// Decode path: column_id.
 	{
 		param := chi.URLParam(r, "column_id")
 		if len(param) > 0 {
@@ -28808,7 +28808,7 @@ func decodeProjectsDeleteColumnParams(r *http.Request) (ProjectsDeleteColumnPara
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter column_id not specified`)
+			return params, errors.New(`path: column_id: not specified`)
 		}
 	}
 	return params, nil
@@ -28816,7 +28816,7 @@ func decodeProjectsDeleteColumnParams(r *http.Request) (ProjectsDeleteColumnPara
 
 func decodeProjectsGetParams(r *http.Request) (ProjectsGetParams, error) {
 	var params ProjectsGetParams
-	// Decode param "project_id" located in "Path".
+	// Decode path: project_id.
 	{
 		param := chi.URLParam(r, "project_id")
 		if len(param) > 0 {
@@ -28844,7 +28844,7 @@ func decodeProjectsGetParams(r *http.Request) (ProjectsGetParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter project_id not specified`)
+			return params, errors.New(`path: project_id: not specified`)
 		}
 	}
 	return params, nil
@@ -28852,7 +28852,7 @@ func decodeProjectsGetParams(r *http.Request) (ProjectsGetParams, error) {
 
 func decodeProjectsGetCardParams(r *http.Request) (ProjectsGetCardParams, error) {
 	var params ProjectsGetCardParams
-	// Decode param "card_id" located in "Path".
+	// Decode path: card_id.
 	{
 		param := chi.URLParam(r, "card_id")
 		if len(param) > 0 {
@@ -28880,7 +28880,7 @@ func decodeProjectsGetCardParams(r *http.Request) (ProjectsGetCardParams, error)
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter card_id not specified`)
+			return params, errors.New(`path: card_id: not specified`)
 		}
 	}
 	return params, nil
@@ -28888,7 +28888,7 @@ func decodeProjectsGetCardParams(r *http.Request) (ProjectsGetCardParams, error)
 
 func decodeProjectsGetColumnParams(r *http.Request) (ProjectsGetColumnParams, error) {
 	var params ProjectsGetColumnParams
-	// Decode param "column_id" located in "Path".
+	// Decode path: column_id.
 	{
 		param := chi.URLParam(r, "column_id")
 		if len(param) > 0 {
@@ -28916,7 +28916,7 @@ func decodeProjectsGetColumnParams(r *http.Request) (ProjectsGetColumnParams, er
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter column_id not specified`)
+			return params, errors.New(`path: column_id: not specified`)
 		}
 	}
 	return params, nil
@@ -28924,7 +28924,7 @@ func decodeProjectsGetColumnParams(r *http.Request) (ProjectsGetColumnParams, er
 
 func decodeProjectsListCardsParams(r *http.Request) (ProjectsListCardsParams, error) {
 	var params ProjectsListCardsParams
-	// Decode param "column_id" located in "Path".
+	// Decode path: column_id.
 	{
 		param := chi.URLParam(r, "column_id")
 		if len(param) > 0 {
@@ -28952,10 +28952,10 @@ func decodeProjectsListCardsParams(r *http.Request) (ProjectsListCardsParams, er
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter column_id not specified`)
+			return params, errors.New(`path: column_id: not specified`)
 		}
 	}
-	// Decode param "archived_state" located in "Query".
+	// Decode query: archived_state.
 	{
 		values, ok := r.URL.Query()["archived_state"]
 		if ok {
@@ -28986,7 +28986,7 @@ func decodeProjectsListCardsParams(r *http.Request) (ProjectsListCardsParams, er
 				params.ArchivedState.SetTo(ParamsArchivedStateValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter archived_state located in query`)
+				return params, errors.Wrap(err, `query: archived_state: parse`)
 			}
 			if err := func() error {
 
@@ -29005,11 +29005,11 @@ func decodeProjectsListCardsParams(r *http.Request) (ProjectsListCardsParams, er
 
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `invalid parameter archived_state (query`)
+				return params, errors.Wrap(err, `query: archived_state: invalid`)
 			}
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -29040,11 +29040,11 @@ func decodeProjectsListCardsParams(r *http.Request) (ProjectsListCardsParams, er
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -29075,7 +29075,7 @@ func decodeProjectsListCardsParams(r *http.Request) (ProjectsListCardsParams, er
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -29084,7 +29084,7 @@ func decodeProjectsListCardsParams(r *http.Request) (ProjectsListCardsParams, er
 
 func decodeProjectsListColumnsParams(r *http.Request) (ProjectsListColumnsParams, error) {
 	var params ProjectsListColumnsParams
-	// Decode param "project_id" located in "Path".
+	// Decode path: project_id.
 	{
 		param := chi.URLParam(r, "project_id")
 		if len(param) > 0 {
@@ -29112,10 +29112,10 @@ func decodeProjectsListColumnsParams(r *http.Request) (ProjectsListColumnsParams
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter project_id not specified`)
+			return params, errors.New(`path: project_id: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -29146,11 +29146,11 @@ func decodeProjectsListColumnsParams(r *http.Request) (ProjectsListColumnsParams
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -29181,7 +29181,7 @@ func decodeProjectsListColumnsParams(r *http.Request) (ProjectsListColumnsParams
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -29190,7 +29190,7 @@ func decodeProjectsListColumnsParams(r *http.Request) (ProjectsListColumnsParams
 
 func decodeProjectsListForOrgParams(r *http.Request) (ProjectsListForOrgParams, error) {
 	var params ProjectsListForOrgParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -29218,10 +29218,10 @@ func decodeProjectsListForOrgParams(r *http.Request) (ProjectsListForOrgParams, 
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "state" located in "Query".
+	// Decode query: state.
 	{
 		values, ok := r.URL.Query()["state"]
 		if ok {
@@ -29252,7 +29252,7 @@ func decodeProjectsListForOrgParams(r *http.Request) (ProjectsListForOrgParams, 
 				params.State.SetTo(ParamsStateValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter state located in query`)
+				return params, errors.Wrap(err, `query: state: parse`)
 			}
 			if err := func() error {
 
@@ -29271,11 +29271,11 @@ func decodeProjectsListForOrgParams(r *http.Request) (ProjectsListForOrgParams, 
 
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `invalid parameter state (query`)
+				return params, errors.Wrap(err, `query: state: invalid`)
 			}
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -29306,11 +29306,11 @@ func decodeProjectsListForOrgParams(r *http.Request) (ProjectsListForOrgParams, 
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -29341,7 +29341,7 @@ func decodeProjectsListForOrgParams(r *http.Request) (ProjectsListForOrgParams, 
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -29350,7 +29350,7 @@ func decodeProjectsListForOrgParams(r *http.Request) (ProjectsListForOrgParams, 
 
 func decodeProjectsListForRepoParams(r *http.Request) (ProjectsListForRepoParams, error) {
 	var params ProjectsListForRepoParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -29378,10 +29378,10 @@ func decodeProjectsListForRepoParams(r *http.Request) (ProjectsListForRepoParams
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -29409,10 +29409,10 @@ func decodeProjectsListForRepoParams(r *http.Request) (ProjectsListForRepoParams
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "state" located in "Query".
+	// Decode query: state.
 	{
 		values, ok := r.URL.Query()["state"]
 		if ok {
@@ -29443,7 +29443,7 @@ func decodeProjectsListForRepoParams(r *http.Request) (ProjectsListForRepoParams
 				params.State.SetTo(ParamsStateValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter state located in query`)
+				return params, errors.Wrap(err, `query: state: parse`)
 			}
 			if err := func() error {
 
@@ -29462,11 +29462,11 @@ func decodeProjectsListForRepoParams(r *http.Request) (ProjectsListForRepoParams
 
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `invalid parameter state (query`)
+				return params, errors.Wrap(err, `query: state: invalid`)
 			}
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -29497,11 +29497,11 @@ func decodeProjectsListForRepoParams(r *http.Request) (ProjectsListForRepoParams
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -29532,7 +29532,7 @@ func decodeProjectsListForRepoParams(r *http.Request) (ProjectsListForRepoParams
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -29541,7 +29541,7 @@ func decodeProjectsListForRepoParams(r *http.Request) (ProjectsListForRepoParams
 
 func decodeProjectsMoveColumnParams(r *http.Request) (ProjectsMoveColumnParams, error) {
 	var params ProjectsMoveColumnParams
-	// Decode param "column_id" located in "Path".
+	// Decode path: column_id.
 	{
 		param := chi.URLParam(r, "column_id")
 		if len(param) > 0 {
@@ -29569,7 +29569,7 @@ func decodeProjectsMoveColumnParams(r *http.Request) (ProjectsMoveColumnParams, 
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter column_id not specified`)
+			return params, errors.New(`path: column_id: not specified`)
 		}
 	}
 	return params, nil
@@ -29577,7 +29577,7 @@ func decodeProjectsMoveColumnParams(r *http.Request) (ProjectsMoveColumnParams, 
 
 func decodeProjectsUpdateParams(r *http.Request) (ProjectsUpdateParams, error) {
 	var params ProjectsUpdateParams
-	// Decode param "project_id" located in "Path".
+	// Decode path: project_id.
 	{
 		param := chi.URLParam(r, "project_id")
 		if len(param) > 0 {
@@ -29605,7 +29605,7 @@ func decodeProjectsUpdateParams(r *http.Request) (ProjectsUpdateParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter project_id not specified`)
+			return params, errors.New(`path: project_id: not specified`)
 		}
 	}
 	return params, nil
@@ -29613,7 +29613,7 @@ func decodeProjectsUpdateParams(r *http.Request) (ProjectsUpdateParams, error) {
 
 func decodeProjectsUpdateCardParams(r *http.Request) (ProjectsUpdateCardParams, error) {
 	var params ProjectsUpdateCardParams
-	// Decode param "card_id" located in "Path".
+	// Decode path: card_id.
 	{
 		param := chi.URLParam(r, "card_id")
 		if len(param) > 0 {
@@ -29641,7 +29641,7 @@ func decodeProjectsUpdateCardParams(r *http.Request) (ProjectsUpdateCardParams, 
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter card_id not specified`)
+			return params, errors.New(`path: card_id: not specified`)
 		}
 	}
 	return params, nil
@@ -29649,7 +29649,7 @@ func decodeProjectsUpdateCardParams(r *http.Request) (ProjectsUpdateCardParams, 
 
 func decodeProjectsUpdateColumnParams(r *http.Request) (ProjectsUpdateColumnParams, error) {
 	var params ProjectsUpdateColumnParams
-	// Decode param "column_id" located in "Path".
+	// Decode path: column_id.
 	{
 		param := chi.URLParam(r, "column_id")
 		if len(param) > 0 {
@@ -29677,7 +29677,7 @@ func decodeProjectsUpdateColumnParams(r *http.Request) (ProjectsUpdateColumnPara
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter column_id not specified`)
+			return params, errors.New(`path: column_id: not specified`)
 		}
 	}
 	return params, nil
@@ -29685,7 +29685,7 @@ func decodeProjectsUpdateColumnParams(r *http.Request) (ProjectsUpdateColumnPara
 
 func decodePullsCheckIfMergedParams(r *http.Request) (PullsCheckIfMergedParams, error) {
 	var params PullsCheckIfMergedParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -29713,10 +29713,10 @@ func decodePullsCheckIfMergedParams(r *http.Request) (PullsCheckIfMergedParams, 
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -29744,10 +29744,10 @@ func decodePullsCheckIfMergedParams(r *http.Request) (PullsCheckIfMergedParams, 
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "pull_number" located in "Path".
+	// Decode path: pull_number.
 	{
 		param := chi.URLParam(r, "pull_number")
 		if len(param) > 0 {
@@ -29775,7 +29775,7 @@ func decodePullsCheckIfMergedParams(r *http.Request) (PullsCheckIfMergedParams, 
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter pull_number not specified`)
+			return params, errors.New(`path: pull_number: not specified`)
 		}
 	}
 	return params, nil
@@ -29783,7 +29783,7 @@ func decodePullsCheckIfMergedParams(r *http.Request) (PullsCheckIfMergedParams, 
 
 func decodePullsCreateReplyForReviewCommentParams(r *http.Request) (PullsCreateReplyForReviewCommentParams, error) {
 	var params PullsCreateReplyForReviewCommentParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -29811,10 +29811,10 @@ func decodePullsCreateReplyForReviewCommentParams(r *http.Request) (PullsCreateR
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -29842,10 +29842,10 @@ func decodePullsCreateReplyForReviewCommentParams(r *http.Request) (PullsCreateR
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "pull_number" located in "Path".
+	// Decode path: pull_number.
 	{
 		param := chi.URLParam(r, "pull_number")
 		if len(param) > 0 {
@@ -29873,10 +29873,10 @@ func decodePullsCreateReplyForReviewCommentParams(r *http.Request) (PullsCreateR
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter pull_number not specified`)
+			return params, errors.New(`path: pull_number: not specified`)
 		}
 	}
-	// Decode param "comment_id" located in "Path".
+	// Decode path: comment_id.
 	{
 		param := chi.URLParam(r, "comment_id")
 		if len(param) > 0 {
@@ -29904,7 +29904,7 @@ func decodePullsCreateReplyForReviewCommentParams(r *http.Request) (PullsCreateR
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter comment_id not specified`)
+			return params, errors.New(`path: comment_id: not specified`)
 		}
 	}
 	return params, nil
@@ -29912,7 +29912,7 @@ func decodePullsCreateReplyForReviewCommentParams(r *http.Request) (PullsCreateR
 
 func decodePullsCreateReviewParams(r *http.Request) (PullsCreateReviewParams, error) {
 	var params PullsCreateReviewParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -29940,10 +29940,10 @@ func decodePullsCreateReviewParams(r *http.Request) (PullsCreateReviewParams, er
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -29971,10 +29971,10 @@ func decodePullsCreateReviewParams(r *http.Request) (PullsCreateReviewParams, er
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "pull_number" located in "Path".
+	// Decode path: pull_number.
 	{
 		param := chi.URLParam(r, "pull_number")
 		if len(param) > 0 {
@@ -30002,7 +30002,7 @@ func decodePullsCreateReviewParams(r *http.Request) (PullsCreateReviewParams, er
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter pull_number not specified`)
+			return params, errors.New(`path: pull_number: not specified`)
 		}
 	}
 	return params, nil
@@ -30010,7 +30010,7 @@ func decodePullsCreateReviewParams(r *http.Request) (PullsCreateReviewParams, er
 
 func decodePullsDeletePendingReviewParams(r *http.Request) (PullsDeletePendingReviewParams, error) {
 	var params PullsDeletePendingReviewParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -30038,10 +30038,10 @@ func decodePullsDeletePendingReviewParams(r *http.Request) (PullsDeletePendingRe
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -30069,10 +30069,10 @@ func decodePullsDeletePendingReviewParams(r *http.Request) (PullsDeletePendingRe
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "pull_number" located in "Path".
+	// Decode path: pull_number.
 	{
 		param := chi.URLParam(r, "pull_number")
 		if len(param) > 0 {
@@ -30100,10 +30100,10 @@ func decodePullsDeletePendingReviewParams(r *http.Request) (PullsDeletePendingRe
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter pull_number not specified`)
+			return params, errors.New(`path: pull_number: not specified`)
 		}
 	}
-	// Decode param "review_id" located in "Path".
+	// Decode path: review_id.
 	{
 		param := chi.URLParam(r, "review_id")
 		if len(param) > 0 {
@@ -30131,7 +30131,7 @@ func decodePullsDeletePendingReviewParams(r *http.Request) (PullsDeletePendingRe
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter review_id not specified`)
+			return params, errors.New(`path: review_id: not specified`)
 		}
 	}
 	return params, nil
@@ -30139,7 +30139,7 @@ func decodePullsDeletePendingReviewParams(r *http.Request) (PullsDeletePendingRe
 
 func decodePullsDeleteReviewCommentParams(r *http.Request) (PullsDeleteReviewCommentParams, error) {
 	var params PullsDeleteReviewCommentParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -30167,10 +30167,10 @@ func decodePullsDeleteReviewCommentParams(r *http.Request) (PullsDeleteReviewCom
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -30198,10 +30198,10 @@ func decodePullsDeleteReviewCommentParams(r *http.Request) (PullsDeleteReviewCom
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "comment_id" located in "Path".
+	// Decode path: comment_id.
 	{
 		param := chi.URLParam(r, "comment_id")
 		if len(param) > 0 {
@@ -30229,7 +30229,7 @@ func decodePullsDeleteReviewCommentParams(r *http.Request) (PullsDeleteReviewCom
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter comment_id not specified`)
+			return params, errors.New(`path: comment_id: not specified`)
 		}
 	}
 	return params, nil
@@ -30237,7 +30237,7 @@ func decodePullsDeleteReviewCommentParams(r *http.Request) (PullsDeleteReviewCom
 
 func decodePullsDismissReviewParams(r *http.Request) (PullsDismissReviewParams, error) {
 	var params PullsDismissReviewParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -30265,10 +30265,10 @@ func decodePullsDismissReviewParams(r *http.Request) (PullsDismissReviewParams, 
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -30296,10 +30296,10 @@ func decodePullsDismissReviewParams(r *http.Request) (PullsDismissReviewParams, 
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "pull_number" located in "Path".
+	// Decode path: pull_number.
 	{
 		param := chi.URLParam(r, "pull_number")
 		if len(param) > 0 {
@@ -30327,10 +30327,10 @@ func decodePullsDismissReviewParams(r *http.Request) (PullsDismissReviewParams, 
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter pull_number not specified`)
+			return params, errors.New(`path: pull_number: not specified`)
 		}
 	}
-	// Decode param "review_id" located in "Path".
+	// Decode path: review_id.
 	{
 		param := chi.URLParam(r, "review_id")
 		if len(param) > 0 {
@@ -30358,7 +30358,7 @@ func decodePullsDismissReviewParams(r *http.Request) (PullsDismissReviewParams, 
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter review_id not specified`)
+			return params, errors.New(`path: review_id: not specified`)
 		}
 	}
 	return params, nil
@@ -30366,7 +30366,7 @@ func decodePullsDismissReviewParams(r *http.Request) (PullsDismissReviewParams, 
 
 func decodePullsGetParams(r *http.Request) (PullsGetParams, error) {
 	var params PullsGetParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -30394,10 +30394,10 @@ func decodePullsGetParams(r *http.Request) (PullsGetParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -30425,10 +30425,10 @@ func decodePullsGetParams(r *http.Request) (PullsGetParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "pull_number" located in "Path".
+	// Decode path: pull_number.
 	{
 		param := chi.URLParam(r, "pull_number")
 		if len(param) > 0 {
@@ -30456,7 +30456,7 @@ func decodePullsGetParams(r *http.Request) (PullsGetParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter pull_number not specified`)
+			return params, errors.New(`path: pull_number: not specified`)
 		}
 	}
 	return params, nil
@@ -30464,7 +30464,7 @@ func decodePullsGetParams(r *http.Request) (PullsGetParams, error) {
 
 func decodePullsGetReviewParams(r *http.Request) (PullsGetReviewParams, error) {
 	var params PullsGetReviewParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -30492,10 +30492,10 @@ func decodePullsGetReviewParams(r *http.Request) (PullsGetReviewParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -30523,10 +30523,10 @@ func decodePullsGetReviewParams(r *http.Request) (PullsGetReviewParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "pull_number" located in "Path".
+	// Decode path: pull_number.
 	{
 		param := chi.URLParam(r, "pull_number")
 		if len(param) > 0 {
@@ -30554,10 +30554,10 @@ func decodePullsGetReviewParams(r *http.Request) (PullsGetReviewParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter pull_number not specified`)
+			return params, errors.New(`path: pull_number: not specified`)
 		}
 	}
-	// Decode param "review_id" located in "Path".
+	// Decode path: review_id.
 	{
 		param := chi.URLParam(r, "review_id")
 		if len(param) > 0 {
@@ -30585,7 +30585,7 @@ func decodePullsGetReviewParams(r *http.Request) (PullsGetReviewParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter review_id not specified`)
+			return params, errors.New(`path: review_id: not specified`)
 		}
 	}
 	return params, nil
@@ -30593,7 +30593,7 @@ func decodePullsGetReviewParams(r *http.Request) (PullsGetReviewParams, error) {
 
 func decodePullsGetReviewCommentParams(r *http.Request) (PullsGetReviewCommentParams, error) {
 	var params PullsGetReviewCommentParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -30621,10 +30621,10 @@ func decodePullsGetReviewCommentParams(r *http.Request) (PullsGetReviewCommentPa
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -30652,10 +30652,10 @@ func decodePullsGetReviewCommentParams(r *http.Request) (PullsGetReviewCommentPa
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "comment_id" located in "Path".
+	// Decode path: comment_id.
 	{
 		param := chi.URLParam(r, "comment_id")
 		if len(param) > 0 {
@@ -30683,7 +30683,7 @@ func decodePullsGetReviewCommentParams(r *http.Request) (PullsGetReviewCommentPa
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter comment_id not specified`)
+			return params, errors.New(`path: comment_id: not specified`)
 		}
 	}
 	return params, nil
@@ -30691,7 +30691,7 @@ func decodePullsGetReviewCommentParams(r *http.Request) (PullsGetReviewCommentPa
 
 func decodePullsListCommentsForReviewParams(r *http.Request) (PullsListCommentsForReviewParams, error) {
 	var params PullsListCommentsForReviewParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -30719,10 +30719,10 @@ func decodePullsListCommentsForReviewParams(r *http.Request) (PullsListCommentsF
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -30750,10 +30750,10 @@ func decodePullsListCommentsForReviewParams(r *http.Request) (PullsListCommentsF
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "pull_number" located in "Path".
+	// Decode path: pull_number.
 	{
 		param := chi.URLParam(r, "pull_number")
 		if len(param) > 0 {
@@ -30781,10 +30781,10 @@ func decodePullsListCommentsForReviewParams(r *http.Request) (PullsListCommentsF
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter pull_number not specified`)
+			return params, errors.New(`path: pull_number: not specified`)
 		}
 	}
-	// Decode param "review_id" located in "Path".
+	// Decode path: review_id.
 	{
 		param := chi.URLParam(r, "review_id")
 		if len(param) > 0 {
@@ -30812,10 +30812,10 @@ func decodePullsListCommentsForReviewParams(r *http.Request) (PullsListCommentsF
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter review_id not specified`)
+			return params, errors.New(`path: review_id: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -30846,11 +30846,11 @@ func decodePullsListCommentsForReviewParams(r *http.Request) (PullsListCommentsF
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -30881,7 +30881,7 @@ func decodePullsListCommentsForReviewParams(r *http.Request) (PullsListCommentsF
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -30890,7 +30890,7 @@ func decodePullsListCommentsForReviewParams(r *http.Request) (PullsListCommentsF
 
 func decodePullsListCommitsParams(r *http.Request) (PullsListCommitsParams, error) {
 	var params PullsListCommitsParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -30918,10 +30918,10 @@ func decodePullsListCommitsParams(r *http.Request) (PullsListCommitsParams, erro
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -30949,10 +30949,10 @@ func decodePullsListCommitsParams(r *http.Request) (PullsListCommitsParams, erro
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "pull_number" located in "Path".
+	// Decode path: pull_number.
 	{
 		param := chi.URLParam(r, "pull_number")
 		if len(param) > 0 {
@@ -30980,10 +30980,10 @@ func decodePullsListCommitsParams(r *http.Request) (PullsListCommitsParams, erro
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter pull_number not specified`)
+			return params, errors.New(`path: pull_number: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -31014,11 +31014,11 @@ func decodePullsListCommitsParams(r *http.Request) (PullsListCommitsParams, erro
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -31049,7 +31049,7 @@ func decodePullsListCommitsParams(r *http.Request) (PullsListCommitsParams, erro
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -31058,7 +31058,7 @@ func decodePullsListCommitsParams(r *http.Request) (PullsListCommitsParams, erro
 
 func decodePullsListRequestedReviewersParams(r *http.Request) (PullsListRequestedReviewersParams, error) {
 	var params PullsListRequestedReviewersParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -31086,10 +31086,10 @@ func decodePullsListRequestedReviewersParams(r *http.Request) (PullsListRequeste
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -31117,10 +31117,10 @@ func decodePullsListRequestedReviewersParams(r *http.Request) (PullsListRequeste
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "pull_number" located in "Path".
+	// Decode path: pull_number.
 	{
 		param := chi.URLParam(r, "pull_number")
 		if len(param) > 0 {
@@ -31148,10 +31148,10 @@ func decodePullsListRequestedReviewersParams(r *http.Request) (PullsListRequeste
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter pull_number not specified`)
+			return params, errors.New(`path: pull_number: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -31182,11 +31182,11 @@ func decodePullsListRequestedReviewersParams(r *http.Request) (PullsListRequeste
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -31217,7 +31217,7 @@ func decodePullsListRequestedReviewersParams(r *http.Request) (PullsListRequeste
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -31226,7 +31226,7 @@ func decodePullsListRequestedReviewersParams(r *http.Request) (PullsListRequeste
 
 func decodePullsListReviewCommentsParams(r *http.Request) (PullsListReviewCommentsParams, error) {
 	var params PullsListReviewCommentsParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -31254,10 +31254,10 @@ func decodePullsListReviewCommentsParams(r *http.Request) (PullsListReviewCommen
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -31285,10 +31285,10 @@ func decodePullsListReviewCommentsParams(r *http.Request) (PullsListReviewCommen
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "pull_number" located in "Path".
+	// Decode path: pull_number.
 	{
 		param := chi.URLParam(r, "pull_number")
 		if len(param) > 0 {
@@ -31316,10 +31316,10 @@ func decodePullsListReviewCommentsParams(r *http.Request) (PullsListReviewCommen
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter pull_number not specified`)
+			return params, errors.New(`path: pull_number: not specified`)
 		}
 	}
-	// Decode param "sort" located in "Query".
+	// Decode query: sort.
 	{
 		values, ok := r.URL.Query()["sort"]
 		if ok {
@@ -31350,7 +31350,7 @@ func decodePullsListReviewCommentsParams(r *http.Request) (PullsListReviewCommen
 				params.Sort.SetTo(ParamsSortValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter sort located in query`)
+				return params, errors.Wrap(err, `query: sort: parse`)
 			}
 			if err := func() error {
 
@@ -31369,11 +31369,11 @@ func decodePullsListReviewCommentsParams(r *http.Request) (PullsListReviewCommen
 
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `invalid parameter sort (query`)
+				return params, errors.Wrap(err, `query: sort: invalid`)
 			}
 		}
 	}
-	// Decode param "direction" located in "Query".
+	// Decode query: direction.
 	{
 		values, ok := r.URL.Query()["direction"]
 		if ok {
@@ -31404,7 +31404,7 @@ func decodePullsListReviewCommentsParams(r *http.Request) (PullsListReviewCommen
 				params.Direction.SetTo(ParamsDirectionValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter direction located in query`)
+				return params, errors.Wrap(err, `query: direction: parse`)
 			}
 			if err := func() error {
 
@@ -31423,11 +31423,11 @@ func decodePullsListReviewCommentsParams(r *http.Request) (PullsListReviewCommen
 
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `invalid parameter direction (query`)
+				return params, errors.Wrap(err, `query: direction: invalid`)
 			}
 		}
 	}
-	// Decode param "since" located in "Query".
+	// Decode query: since.
 	{
 		values, ok := r.URL.Query()["since"]
 		if ok {
@@ -31458,11 +31458,11 @@ func decodePullsListReviewCommentsParams(r *http.Request) (PullsListReviewCommen
 				params.Since.SetTo(ParamsSinceValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter since located in query`)
+				return params, errors.Wrap(err, `query: since: parse`)
 			}
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -31493,11 +31493,11 @@ func decodePullsListReviewCommentsParams(r *http.Request) (PullsListReviewCommen
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -31528,7 +31528,7 @@ func decodePullsListReviewCommentsParams(r *http.Request) (PullsListReviewCommen
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -31537,7 +31537,7 @@ func decodePullsListReviewCommentsParams(r *http.Request) (PullsListReviewCommen
 
 func decodePullsListReviewCommentsForRepoParams(r *http.Request) (PullsListReviewCommentsForRepoParams, error) {
 	var params PullsListReviewCommentsForRepoParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -31565,10 +31565,10 @@ func decodePullsListReviewCommentsForRepoParams(r *http.Request) (PullsListRevie
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -31596,10 +31596,10 @@ func decodePullsListReviewCommentsForRepoParams(r *http.Request) (PullsListRevie
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "sort" located in "Query".
+	// Decode query: sort.
 	{
 		values, ok := r.URL.Query()["sort"]
 		if ok {
@@ -31630,7 +31630,7 @@ func decodePullsListReviewCommentsForRepoParams(r *http.Request) (PullsListRevie
 				params.Sort.SetTo(ParamsSortValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter sort located in query`)
+				return params, errors.Wrap(err, `query: sort: parse`)
 			}
 			if err := func() error {
 
@@ -31649,11 +31649,11 @@ func decodePullsListReviewCommentsForRepoParams(r *http.Request) (PullsListRevie
 
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `invalid parameter sort (query`)
+				return params, errors.Wrap(err, `query: sort: invalid`)
 			}
 		}
 	}
-	// Decode param "direction" located in "Query".
+	// Decode query: direction.
 	{
 		values, ok := r.URL.Query()["direction"]
 		if ok {
@@ -31684,7 +31684,7 @@ func decodePullsListReviewCommentsForRepoParams(r *http.Request) (PullsListRevie
 				params.Direction.SetTo(ParamsDirectionValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter direction located in query`)
+				return params, errors.Wrap(err, `query: direction: parse`)
 			}
 			if err := func() error {
 
@@ -31703,11 +31703,11 @@ func decodePullsListReviewCommentsForRepoParams(r *http.Request) (PullsListRevie
 
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `invalid parameter direction (query`)
+				return params, errors.Wrap(err, `query: direction: invalid`)
 			}
 		}
 	}
-	// Decode param "since" located in "Query".
+	// Decode query: since.
 	{
 		values, ok := r.URL.Query()["since"]
 		if ok {
@@ -31738,11 +31738,11 @@ func decodePullsListReviewCommentsForRepoParams(r *http.Request) (PullsListRevie
 				params.Since.SetTo(ParamsSinceValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter since located in query`)
+				return params, errors.Wrap(err, `query: since: parse`)
 			}
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -31773,11 +31773,11 @@ func decodePullsListReviewCommentsForRepoParams(r *http.Request) (PullsListRevie
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -31808,7 +31808,7 @@ func decodePullsListReviewCommentsForRepoParams(r *http.Request) (PullsListRevie
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -31817,7 +31817,7 @@ func decodePullsListReviewCommentsForRepoParams(r *http.Request) (PullsListRevie
 
 func decodePullsListReviewsParams(r *http.Request) (PullsListReviewsParams, error) {
 	var params PullsListReviewsParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -31845,10 +31845,10 @@ func decodePullsListReviewsParams(r *http.Request) (PullsListReviewsParams, erro
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -31876,10 +31876,10 @@ func decodePullsListReviewsParams(r *http.Request) (PullsListReviewsParams, erro
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "pull_number" located in "Path".
+	// Decode path: pull_number.
 	{
 		param := chi.URLParam(r, "pull_number")
 		if len(param) > 0 {
@@ -31907,10 +31907,10 @@ func decodePullsListReviewsParams(r *http.Request) (PullsListReviewsParams, erro
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter pull_number not specified`)
+			return params, errors.New(`path: pull_number: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -31941,11 +31941,11 @@ func decodePullsListReviewsParams(r *http.Request) (PullsListReviewsParams, erro
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -31976,7 +31976,7 @@ func decodePullsListReviewsParams(r *http.Request) (PullsListReviewsParams, erro
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -31985,7 +31985,7 @@ func decodePullsListReviewsParams(r *http.Request) (PullsListReviewsParams, erro
 
 func decodePullsSubmitReviewParams(r *http.Request) (PullsSubmitReviewParams, error) {
 	var params PullsSubmitReviewParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -32013,10 +32013,10 @@ func decodePullsSubmitReviewParams(r *http.Request) (PullsSubmitReviewParams, er
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -32044,10 +32044,10 @@ func decodePullsSubmitReviewParams(r *http.Request) (PullsSubmitReviewParams, er
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "pull_number" located in "Path".
+	// Decode path: pull_number.
 	{
 		param := chi.URLParam(r, "pull_number")
 		if len(param) > 0 {
@@ -32075,10 +32075,10 @@ func decodePullsSubmitReviewParams(r *http.Request) (PullsSubmitReviewParams, er
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter pull_number not specified`)
+			return params, errors.New(`path: pull_number: not specified`)
 		}
 	}
-	// Decode param "review_id" located in "Path".
+	// Decode path: review_id.
 	{
 		param := chi.URLParam(r, "review_id")
 		if len(param) > 0 {
@@ -32106,7 +32106,7 @@ func decodePullsSubmitReviewParams(r *http.Request) (PullsSubmitReviewParams, er
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter review_id not specified`)
+			return params, errors.New(`path: review_id: not specified`)
 		}
 	}
 	return params, nil
@@ -32114,7 +32114,7 @@ func decodePullsSubmitReviewParams(r *http.Request) (PullsSubmitReviewParams, er
 
 func decodePullsUpdateReviewParams(r *http.Request) (PullsUpdateReviewParams, error) {
 	var params PullsUpdateReviewParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -32142,10 +32142,10 @@ func decodePullsUpdateReviewParams(r *http.Request) (PullsUpdateReviewParams, er
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -32173,10 +32173,10 @@ func decodePullsUpdateReviewParams(r *http.Request) (PullsUpdateReviewParams, er
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "pull_number" located in "Path".
+	// Decode path: pull_number.
 	{
 		param := chi.URLParam(r, "pull_number")
 		if len(param) > 0 {
@@ -32204,10 +32204,10 @@ func decodePullsUpdateReviewParams(r *http.Request) (PullsUpdateReviewParams, er
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter pull_number not specified`)
+			return params, errors.New(`path: pull_number: not specified`)
 		}
 	}
-	// Decode param "review_id" located in "Path".
+	// Decode path: review_id.
 	{
 		param := chi.URLParam(r, "review_id")
 		if len(param) > 0 {
@@ -32235,7 +32235,7 @@ func decodePullsUpdateReviewParams(r *http.Request) (PullsUpdateReviewParams, er
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter review_id not specified`)
+			return params, errors.New(`path: review_id: not specified`)
 		}
 	}
 	return params, nil
@@ -32243,7 +32243,7 @@ func decodePullsUpdateReviewParams(r *http.Request) (PullsUpdateReviewParams, er
 
 func decodePullsUpdateReviewCommentParams(r *http.Request) (PullsUpdateReviewCommentParams, error) {
 	var params PullsUpdateReviewCommentParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -32271,10 +32271,10 @@ func decodePullsUpdateReviewCommentParams(r *http.Request) (PullsUpdateReviewCom
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -32302,10 +32302,10 @@ func decodePullsUpdateReviewCommentParams(r *http.Request) (PullsUpdateReviewCom
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "comment_id" located in "Path".
+	// Decode path: comment_id.
 	{
 		param := chi.URLParam(r, "comment_id")
 		if len(param) > 0 {
@@ -32333,7 +32333,7 @@ func decodePullsUpdateReviewCommentParams(r *http.Request) (PullsUpdateReviewCom
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter comment_id not specified`)
+			return params, errors.New(`path: comment_id: not specified`)
 		}
 	}
 	return params, nil
@@ -32341,7 +32341,7 @@ func decodePullsUpdateReviewCommentParams(r *http.Request) (PullsUpdateReviewCom
 
 func decodeReactionsCreateForTeamDiscussionCommentInOrgParams(r *http.Request) (ReactionsCreateForTeamDiscussionCommentInOrgParams, error) {
 	var params ReactionsCreateForTeamDiscussionCommentInOrgParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -32369,10 +32369,10 @@ func decodeReactionsCreateForTeamDiscussionCommentInOrgParams(r *http.Request) (
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "team_slug" located in "Path".
+	// Decode path: team_slug.
 	{
 		param := chi.URLParam(r, "team_slug")
 		if len(param) > 0 {
@@ -32400,10 +32400,10 @@ func decodeReactionsCreateForTeamDiscussionCommentInOrgParams(r *http.Request) (
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter team_slug not specified`)
+			return params, errors.New(`path: team_slug: not specified`)
 		}
 	}
-	// Decode param "discussion_number" located in "Path".
+	// Decode path: discussion_number.
 	{
 		param := chi.URLParam(r, "discussion_number")
 		if len(param) > 0 {
@@ -32431,10 +32431,10 @@ func decodeReactionsCreateForTeamDiscussionCommentInOrgParams(r *http.Request) (
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter discussion_number not specified`)
+			return params, errors.New(`path: discussion_number: not specified`)
 		}
 	}
-	// Decode param "comment_number" located in "Path".
+	// Decode path: comment_number.
 	{
 		param := chi.URLParam(r, "comment_number")
 		if len(param) > 0 {
@@ -32462,7 +32462,7 @@ func decodeReactionsCreateForTeamDiscussionCommentInOrgParams(r *http.Request) (
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter comment_number not specified`)
+			return params, errors.New(`path: comment_number: not specified`)
 		}
 	}
 	return params, nil
@@ -32470,7 +32470,7 @@ func decodeReactionsCreateForTeamDiscussionCommentInOrgParams(r *http.Request) (
 
 func decodeReactionsCreateForTeamDiscussionCommentLegacyParams(r *http.Request) (ReactionsCreateForTeamDiscussionCommentLegacyParams, error) {
 	var params ReactionsCreateForTeamDiscussionCommentLegacyParams
-	// Decode param "team_id" located in "Path".
+	// Decode path: team_id.
 	{
 		param := chi.URLParam(r, "team_id")
 		if len(param) > 0 {
@@ -32498,10 +32498,10 @@ func decodeReactionsCreateForTeamDiscussionCommentLegacyParams(r *http.Request) 
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter team_id not specified`)
+			return params, errors.New(`path: team_id: not specified`)
 		}
 	}
-	// Decode param "discussion_number" located in "Path".
+	// Decode path: discussion_number.
 	{
 		param := chi.URLParam(r, "discussion_number")
 		if len(param) > 0 {
@@ -32529,10 +32529,10 @@ func decodeReactionsCreateForTeamDiscussionCommentLegacyParams(r *http.Request) 
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter discussion_number not specified`)
+			return params, errors.New(`path: discussion_number: not specified`)
 		}
 	}
-	// Decode param "comment_number" located in "Path".
+	// Decode path: comment_number.
 	{
 		param := chi.URLParam(r, "comment_number")
 		if len(param) > 0 {
@@ -32560,7 +32560,7 @@ func decodeReactionsCreateForTeamDiscussionCommentLegacyParams(r *http.Request) 
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter comment_number not specified`)
+			return params, errors.New(`path: comment_number: not specified`)
 		}
 	}
 	return params, nil
@@ -32568,7 +32568,7 @@ func decodeReactionsCreateForTeamDiscussionCommentLegacyParams(r *http.Request) 
 
 func decodeReactionsCreateForTeamDiscussionInOrgParams(r *http.Request) (ReactionsCreateForTeamDiscussionInOrgParams, error) {
 	var params ReactionsCreateForTeamDiscussionInOrgParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -32596,10 +32596,10 @@ func decodeReactionsCreateForTeamDiscussionInOrgParams(r *http.Request) (Reactio
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "team_slug" located in "Path".
+	// Decode path: team_slug.
 	{
 		param := chi.URLParam(r, "team_slug")
 		if len(param) > 0 {
@@ -32627,10 +32627,10 @@ func decodeReactionsCreateForTeamDiscussionInOrgParams(r *http.Request) (Reactio
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter team_slug not specified`)
+			return params, errors.New(`path: team_slug: not specified`)
 		}
 	}
-	// Decode param "discussion_number" located in "Path".
+	// Decode path: discussion_number.
 	{
 		param := chi.URLParam(r, "discussion_number")
 		if len(param) > 0 {
@@ -32658,7 +32658,7 @@ func decodeReactionsCreateForTeamDiscussionInOrgParams(r *http.Request) (Reactio
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter discussion_number not specified`)
+			return params, errors.New(`path: discussion_number: not specified`)
 		}
 	}
 	return params, nil
@@ -32666,7 +32666,7 @@ func decodeReactionsCreateForTeamDiscussionInOrgParams(r *http.Request) (Reactio
 
 func decodeReactionsCreateForTeamDiscussionLegacyParams(r *http.Request) (ReactionsCreateForTeamDiscussionLegacyParams, error) {
 	var params ReactionsCreateForTeamDiscussionLegacyParams
-	// Decode param "team_id" located in "Path".
+	// Decode path: team_id.
 	{
 		param := chi.URLParam(r, "team_id")
 		if len(param) > 0 {
@@ -32694,10 +32694,10 @@ func decodeReactionsCreateForTeamDiscussionLegacyParams(r *http.Request) (Reacti
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter team_id not specified`)
+			return params, errors.New(`path: team_id: not specified`)
 		}
 	}
-	// Decode param "discussion_number" located in "Path".
+	// Decode path: discussion_number.
 	{
 		param := chi.URLParam(r, "discussion_number")
 		if len(param) > 0 {
@@ -32725,7 +32725,7 @@ func decodeReactionsCreateForTeamDiscussionLegacyParams(r *http.Request) (Reacti
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter discussion_number not specified`)
+			return params, errors.New(`path: discussion_number: not specified`)
 		}
 	}
 	return params, nil
@@ -32733,7 +32733,7 @@ func decodeReactionsCreateForTeamDiscussionLegacyParams(r *http.Request) (Reacti
 
 func decodeReactionsDeleteForCommitCommentParams(r *http.Request) (ReactionsDeleteForCommitCommentParams, error) {
 	var params ReactionsDeleteForCommitCommentParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -32761,10 +32761,10 @@ func decodeReactionsDeleteForCommitCommentParams(r *http.Request) (ReactionsDele
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -32792,10 +32792,10 @@ func decodeReactionsDeleteForCommitCommentParams(r *http.Request) (ReactionsDele
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "comment_id" located in "Path".
+	// Decode path: comment_id.
 	{
 		param := chi.URLParam(r, "comment_id")
 		if len(param) > 0 {
@@ -32823,10 +32823,10 @@ func decodeReactionsDeleteForCommitCommentParams(r *http.Request) (ReactionsDele
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter comment_id not specified`)
+			return params, errors.New(`path: comment_id: not specified`)
 		}
 	}
-	// Decode param "reaction_id" located in "Path".
+	// Decode path: reaction_id.
 	{
 		param := chi.URLParam(r, "reaction_id")
 		if len(param) > 0 {
@@ -32854,7 +32854,7 @@ func decodeReactionsDeleteForCommitCommentParams(r *http.Request) (ReactionsDele
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter reaction_id not specified`)
+			return params, errors.New(`path: reaction_id: not specified`)
 		}
 	}
 	return params, nil
@@ -32862,7 +32862,7 @@ func decodeReactionsDeleteForCommitCommentParams(r *http.Request) (ReactionsDele
 
 func decodeReactionsDeleteForIssueParams(r *http.Request) (ReactionsDeleteForIssueParams, error) {
 	var params ReactionsDeleteForIssueParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -32890,10 +32890,10 @@ func decodeReactionsDeleteForIssueParams(r *http.Request) (ReactionsDeleteForIss
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -32921,10 +32921,10 @@ func decodeReactionsDeleteForIssueParams(r *http.Request) (ReactionsDeleteForIss
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "issue_number" located in "Path".
+	// Decode path: issue_number.
 	{
 		param := chi.URLParam(r, "issue_number")
 		if len(param) > 0 {
@@ -32952,10 +32952,10 @@ func decodeReactionsDeleteForIssueParams(r *http.Request) (ReactionsDeleteForIss
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter issue_number not specified`)
+			return params, errors.New(`path: issue_number: not specified`)
 		}
 	}
-	// Decode param "reaction_id" located in "Path".
+	// Decode path: reaction_id.
 	{
 		param := chi.URLParam(r, "reaction_id")
 		if len(param) > 0 {
@@ -32983,7 +32983,7 @@ func decodeReactionsDeleteForIssueParams(r *http.Request) (ReactionsDeleteForIss
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter reaction_id not specified`)
+			return params, errors.New(`path: reaction_id: not specified`)
 		}
 	}
 	return params, nil
@@ -32991,7 +32991,7 @@ func decodeReactionsDeleteForIssueParams(r *http.Request) (ReactionsDeleteForIss
 
 func decodeReactionsDeleteForIssueCommentParams(r *http.Request) (ReactionsDeleteForIssueCommentParams, error) {
 	var params ReactionsDeleteForIssueCommentParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -33019,10 +33019,10 @@ func decodeReactionsDeleteForIssueCommentParams(r *http.Request) (ReactionsDelet
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -33050,10 +33050,10 @@ func decodeReactionsDeleteForIssueCommentParams(r *http.Request) (ReactionsDelet
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "comment_id" located in "Path".
+	// Decode path: comment_id.
 	{
 		param := chi.URLParam(r, "comment_id")
 		if len(param) > 0 {
@@ -33081,10 +33081,10 @@ func decodeReactionsDeleteForIssueCommentParams(r *http.Request) (ReactionsDelet
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter comment_id not specified`)
+			return params, errors.New(`path: comment_id: not specified`)
 		}
 	}
-	// Decode param "reaction_id" located in "Path".
+	// Decode path: reaction_id.
 	{
 		param := chi.URLParam(r, "reaction_id")
 		if len(param) > 0 {
@@ -33112,7 +33112,7 @@ func decodeReactionsDeleteForIssueCommentParams(r *http.Request) (ReactionsDelet
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter reaction_id not specified`)
+			return params, errors.New(`path: reaction_id: not specified`)
 		}
 	}
 	return params, nil
@@ -33120,7 +33120,7 @@ func decodeReactionsDeleteForIssueCommentParams(r *http.Request) (ReactionsDelet
 
 func decodeReactionsDeleteForPullRequestCommentParams(r *http.Request) (ReactionsDeleteForPullRequestCommentParams, error) {
 	var params ReactionsDeleteForPullRequestCommentParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -33148,10 +33148,10 @@ func decodeReactionsDeleteForPullRequestCommentParams(r *http.Request) (Reaction
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -33179,10 +33179,10 @@ func decodeReactionsDeleteForPullRequestCommentParams(r *http.Request) (Reaction
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "comment_id" located in "Path".
+	// Decode path: comment_id.
 	{
 		param := chi.URLParam(r, "comment_id")
 		if len(param) > 0 {
@@ -33210,10 +33210,10 @@ func decodeReactionsDeleteForPullRequestCommentParams(r *http.Request) (Reaction
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter comment_id not specified`)
+			return params, errors.New(`path: comment_id: not specified`)
 		}
 	}
-	// Decode param "reaction_id" located in "Path".
+	// Decode path: reaction_id.
 	{
 		param := chi.URLParam(r, "reaction_id")
 		if len(param) > 0 {
@@ -33241,7 +33241,7 @@ func decodeReactionsDeleteForPullRequestCommentParams(r *http.Request) (Reaction
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter reaction_id not specified`)
+			return params, errors.New(`path: reaction_id: not specified`)
 		}
 	}
 	return params, nil
@@ -33249,7 +33249,7 @@ func decodeReactionsDeleteForPullRequestCommentParams(r *http.Request) (Reaction
 
 func decodeReactionsDeleteForTeamDiscussionParams(r *http.Request) (ReactionsDeleteForTeamDiscussionParams, error) {
 	var params ReactionsDeleteForTeamDiscussionParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -33277,10 +33277,10 @@ func decodeReactionsDeleteForTeamDiscussionParams(r *http.Request) (ReactionsDel
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "team_slug" located in "Path".
+	// Decode path: team_slug.
 	{
 		param := chi.URLParam(r, "team_slug")
 		if len(param) > 0 {
@@ -33308,10 +33308,10 @@ func decodeReactionsDeleteForTeamDiscussionParams(r *http.Request) (ReactionsDel
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter team_slug not specified`)
+			return params, errors.New(`path: team_slug: not specified`)
 		}
 	}
-	// Decode param "discussion_number" located in "Path".
+	// Decode path: discussion_number.
 	{
 		param := chi.URLParam(r, "discussion_number")
 		if len(param) > 0 {
@@ -33339,10 +33339,10 @@ func decodeReactionsDeleteForTeamDiscussionParams(r *http.Request) (ReactionsDel
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter discussion_number not specified`)
+			return params, errors.New(`path: discussion_number: not specified`)
 		}
 	}
-	// Decode param "reaction_id" located in "Path".
+	// Decode path: reaction_id.
 	{
 		param := chi.URLParam(r, "reaction_id")
 		if len(param) > 0 {
@@ -33370,7 +33370,7 @@ func decodeReactionsDeleteForTeamDiscussionParams(r *http.Request) (ReactionsDel
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter reaction_id not specified`)
+			return params, errors.New(`path: reaction_id: not specified`)
 		}
 	}
 	return params, nil
@@ -33378,7 +33378,7 @@ func decodeReactionsDeleteForTeamDiscussionParams(r *http.Request) (ReactionsDel
 
 func decodeReactionsDeleteForTeamDiscussionCommentParams(r *http.Request) (ReactionsDeleteForTeamDiscussionCommentParams, error) {
 	var params ReactionsDeleteForTeamDiscussionCommentParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -33406,10 +33406,10 @@ func decodeReactionsDeleteForTeamDiscussionCommentParams(r *http.Request) (React
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "team_slug" located in "Path".
+	// Decode path: team_slug.
 	{
 		param := chi.URLParam(r, "team_slug")
 		if len(param) > 0 {
@@ -33437,10 +33437,10 @@ func decodeReactionsDeleteForTeamDiscussionCommentParams(r *http.Request) (React
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter team_slug not specified`)
+			return params, errors.New(`path: team_slug: not specified`)
 		}
 	}
-	// Decode param "discussion_number" located in "Path".
+	// Decode path: discussion_number.
 	{
 		param := chi.URLParam(r, "discussion_number")
 		if len(param) > 0 {
@@ -33468,10 +33468,10 @@ func decodeReactionsDeleteForTeamDiscussionCommentParams(r *http.Request) (React
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter discussion_number not specified`)
+			return params, errors.New(`path: discussion_number: not specified`)
 		}
 	}
-	// Decode param "comment_number" located in "Path".
+	// Decode path: comment_number.
 	{
 		param := chi.URLParam(r, "comment_number")
 		if len(param) > 0 {
@@ -33499,10 +33499,10 @@ func decodeReactionsDeleteForTeamDiscussionCommentParams(r *http.Request) (React
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter comment_number not specified`)
+			return params, errors.New(`path: comment_number: not specified`)
 		}
 	}
-	// Decode param "reaction_id" located in "Path".
+	// Decode path: reaction_id.
 	{
 		param := chi.URLParam(r, "reaction_id")
 		if len(param) > 0 {
@@ -33530,7 +33530,7 @@ func decodeReactionsDeleteForTeamDiscussionCommentParams(r *http.Request) (React
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter reaction_id not specified`)
+			return params, errors.New(`path: reaction_id: not specified`)
 		}
 	}
 	return params, nil
@@ -33538,7 +33538,7 @@ func decodeReactionsDeleteForTeamDiscussionCommentParams(r *http.Request) (React
 
 func decodeReactionsDeleteLegacyParams(r *http.Request) (ReactionsDeleteLegacyParams, error) {
 	var params ReactionsDeleteLegacyParams
-	// Decode param "reaction_id" located in "Path".
+	// Decode path: reaction_id.
 	{
 		param := chi.URLParam(r, "reaction_id")
 		if len(param) > 0 {
@@ -33566,7 +33566,7 @@ func decodeReactionsDeleteLegacyParams(r *http.Request) (ReactionsDeleteLegacyPa
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter reaction_id not specified`)
+			return params, errors.New(`path: reaction_id: not specified`)
 		}
 	}
 	return params, nil
@@ -33574,7 +33574,7 @@ func decodeReactionsDeleteLegacyParams(r *http.Request) (ReactionsDeleteLegacyPa
 
 func decodeReactionsListForCommitCommentParams(r *http.Request) (ReactionsListForCommitCommentParams, error) {
 	var params ReactionsListForCommitCommentParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -33602,10 +33602,10 @@ func decodeReactionsListForCommitCommentParams(r *http.Request) (ReactionsListFo
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -33633,10 +33633,10 @@ func decodeReactionsListForCommitCommentParams(r *http.Request) (ReactionsListFo
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "comment_id" located in "Path".
+	// Decode path: comment_id.
 	{
 		param := chi.URLParam(r, "comment_id")
 		if len(param) > 0 {
@@ -33664,10 +33664,10 @@ func decodeReactionsListForCommitCommentParams(r *http.Request) (ReactionsListFo
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter comment_id not specified`)
+			return params, errors.New(`path: comment_id: not specified`)
 		}
 	}
-	// Decode param "content" located in "Query".
+	// Decode query: content.
 	{
 		values, ok := r.URL.Query()["content"]
 		if ok {
@@ -33698,7 +33698,7 @@ func decodeReactionsListForCommitCommentParams(r *http.Request) (ReactionsListFo
 				params.Content.SetTo(ParamsContentValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter content located in query`)
+				return params, errors.Wrap(err, `query: content: parse`)
 			}
 			if err := func() error {
 
@@ -33717,11 +33717,11 @@ func decodeReactionsListForCommitCommentParams(r *http.Request) (ReactionsListFo
 
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `invalid parameter content (query`)
+				return params, errors.Wrap(err, `query: content: invalid`)
 			}
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -33752,11 +33752,11 @@ func decodeReactionsListForCommitCommentParams(r *http.Request) (ReactionsListFo
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -33787,7 +33787,7 @@ func decodeReactionsListForCommitCommentParams(r *http.Request) (ReactionsListFo
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -33796,7 +33796,7 @@ func decodeReactionsListForCommitCommentParams(r *http.Request) (ReactionsListFo
 
 func decodeReactionsListForIssueParams(r *http.Request) (ReactionsListForIssueParams, error) {
 	var params ReactionsListForIssueParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -33824,10 +33824,10 @@ func decodeReactionsListForIssueParams(r *http.Request) (ReactionsListForIssuePa
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -33855,10 +33855,10 @@ func decodeReactionsListForIssueParams(r *http.Request) (ReactionsListForIssuePa
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "issue_number" located in "Path".
+	// Decode path: issue_number.
 	{
 		param := chi.URLParam(r, "issue_number")
 		if len(param) > 0 {
@@ -33886,10 +33886,10 @@ func decodeReactionsListForIssueParams(r *http.Request) (ReactionsListForIssuePa
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter issue_number not specified`)
+			return params, errors.New(`path: issue_number: not specified`)
 		}
 	}
-	// Decode param "content" located in "Query".
+	// Decode query: content.
 	{
 		values, ok := r.URL.Query()["content"]
 		if ok {
@@ -33920,7 +33920,7 @@ func decodeReactionsListForIssueParams(r *http.Request) (ReactionsListForIssuePa
 				params.Content.SetTo(ParamsContentValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter content located in query`)
+				return params, errors.Wrap(err, `query: content: parse`)
 			}
 			if err := func() error {
 
@@ -33939,11 +33939,11 @@ func decodeReactionsListForIssueParams(r *http.Request) (ReactionsListForIssuePa
 
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `invalid parameter content (query`)
+				return params, errors.Wrap(err, `query: content: invalid`)
 			}
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -33974,11 +33974,11 @@ func decodeReactionsListForIssueParams(r *http.Request) (ReactionsListForIssuePa
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -34009,7 +34009,7 @@ func decodeReactionsListForIssueParams(r *http.Request) (ReactionsListForIssuePa
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -34018,7 +34018,7 @@ func decodeReactionsListForIssueParams(r *http.Request) (ReactionsListForIssuePa
 
 func decodeReactionsListForIssueCommentParams(r *http.Request) (ReactionsListForIssueCommentParams, error) {
 	var params ReactionsListForIssueCommentParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -34046,10 +34046,10 @@ func decodeReactionsListForIssueCommentParams(r *http.Request) (ReactionsListFor
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -34077,10 +34077,10 @@ func decodeReactionsListForIssueCommentParams(r *http.Request) (ReactionsListFor
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "comment_id" located in "Path".
+	// Decode path: comment_id.
 	{
 		param := chi.URLParam(r, "comment_id")
 		if len(param) > 0 {
@@ -34108,10 +34108,10 @@ func decodeReactionsListForIssueCommentParams(r *http.Request) (ReactionsListFor
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter comment_id not specified`)
+			return params, errors.New(`path: comment_id: not specified`)
 		}
 	}
-	// Decode param "content" located in "Query".
+	// Decode query: content.
 	{
 		values, ok := r.URL.Query()["content"]
 		if ok {
@@ -34142,7 +34142,7 @@ func decodeReactionsListForIssueCommentParams(r *http.Request) (ReactionsListFor
 				params.Content.SetTo(ParamsContentValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter content located in query`)
+				return params, errors.Wrap(err, `query: content: parse`)
 			}
 			if err := func() error {
 
@@ -34161,11 +34161,11 @@ func decodeReactionsListForIssueCommentParams(r *http.Request) (ReactionsListFor
 
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `invalid parameter content (query`)
+				return params, errors.Wrap(err, `query: content: invalid`)
 			}
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -34196,11 +34196,11 @@ func decodeReactionsListForIssueCommentParams(r *http.Request) (ReactionsListFor
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -34231,7 +34231,7 @@ func decodeReactionsListForIssueCommentParams(r *http.Request) (ReactionsListFor
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -34240,7 +34240,7 @@ func decodeReactionsListForIssueCommentParams(r *http.Request) (ReactionsListFor
 
 func decodeReactionsListForPullRequestReviewCommentParams(r *http.Request) (ReactionsListForPullRequestReviewCommentParams, error) {
 	var params ReactionsListForPullRequestReviewCommentParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -34268,10 +34268,10 @@ func decodeReactionsListForPullRequestReviewCommentParams(r *http.Request) (Reac
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -34299,10 +34299,10 @@ func decodeReactionsListForPullRequestReviewCommentParams(r *http.Request) (Reac
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "comment_id" located in "Path".
+	// Decode path: comment_id.
 	{
 		param := chi.URLParam(r, "comment_id")
 		if len(param) > 0 {
@@ -34330,10 +34330,10 @@ func decodeReactionsListForPullRequestReviewCommentParams(r *http.Request) (Reac
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter comment_id not specified`)
+			return params, errors.New(`path: comment_id: not specified`)
 		}
 	}
-	// Decode param "content" located in "Query".
+	// Decode query: content.
 	{
 		values, ok := r.URL.Query()["content"]
 		if ok {
@@ -34364,7 +34364,7 @@ func decodeReactionsListForPullRequestReviewCommentParams(r *http.Request) (Reac
 				params.Content.SetTo(ParamsContentValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter content located in query`)
+				return params, errors.Wrap(err, `query: content: parse`)
 			}
 			if err := func() error {
 
@@ -34383,11 +34383,11 @@ func decodeReactionsListForPullRequestReviewCommentParams(r *http.Request) (Reac
 
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `invalid parameter content (query`)
+				return params, errors.Wrap(err, `query: content: invalid`)
 			}
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -34418,11 +34418,11 @@ func decodeReactionsListForPullRequestReviewCommentParams(r *http.Request) (Reac
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -34453,7 +34453,7 @@ func decodeReactionsListForPullRequestReviewCommentParams(r *http.Request) (Reac
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -34462,7 +34462,7 @@ func decodeReactionsListForPullRequestReviewCommentParams(r *http.Request) (Reac
 
 func decodeReactionsListForTeamDiscussionCommentInOrgParams(r *http.Request) (ReactionsListForTeamDiscussionCommentInOrgParams, error) {
 	var params ReactionsListForTeamDiscussionCommentInOrgParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -34490,10 +34490,10 @@ func decodeReactionsListForTeamDiscussionCommentInOrgParams(r *http.Request) (Re
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "team_slug" located in "Path".
+	// Decode path: team_slug.
 	{
 		param := chi.URLParam(r, "team_slug")
 		if len(param) > 0 {
@@ -34521,10 +34521,10 @@ func decodeReactionsListForTeamDiscussionCommentInOrgParams(r *http.Request) (Re
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter team_slug not specified`)
+			return params, errors.New(`path: team_slug: not specified`)
 		}
 	}
-	// Decode param "discussion_number" located in "Path".
+	// Decode path: discussion_number.
 	{
 		param := chi.URLParam(r, "discussion_number")
 		if len(param) > 0 {
@@ -34552,10 +34552,10 @@ func decodeReactionsListForTeamDiscussionCommentInOrgParams(r *http.Request) (Re
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter discussion_number not specified`)
+			return params, errors.New(`path: discussion_number: not specified`)
 		}
 	}
-	// Decode param "comment_number" located in "Path".
+	// Decode path: comment_number.
 	{
 		param := chi.URLParam(r, "comment_number")
 		if len(param) > 0 {
@@ -34583,10 +34583,10 @@ func decodeReactionsListForTeamDiscussionCommentInOrgParams(r *http.Request) (Re
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter comment_number not specified`)
+			return params, errors.New(`path: comment_number: not specified`)
 		}
 	}
-	// Decode param "content" located in "Query".
+	// Decode query: content.
 	{
 		values, ok := r.URL.Query()["content"]
 		if ok {
@@ -34617,7 +34617,7 @@ func decodeReactionsListForTeamDiscussionCommentInOrgParams(r *http.Request) (Re
 				params.Content.SetTo(ParamsContentValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter content located in query`)
+				return params, errors.Wrap(err, `query: content: parse`)
 			}
 			if err := func() error {
 
@@ -34636,11 +34636,11 @@ func decodeReactionsListForTeamDiscussionCommentInOrgParams(r *http.Request) (Re
 
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `invalid parameter content (query`)
+				return params, errors.Wrap(err, `query: content: invalid`)
 			}
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -34671,11 +34671,11 @@ func decodeReactionsListForTeamDiscussionCommentInOrgParams(r *http.Request) (Re
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -34706,7 +34706,7 @@ func decodeReactionsListForTeamDiscussionCommentInOrgParams(r *http.Request) (Re
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -34715,7 +34715,7 @@ func decodeReactionsListForTeamDiscussionCommentInOrgParams(r *http.Request) (Re
 
 func decodeReactionsListForTeamDiscussionCommentLegacyParams(r *http.Request) (ReactionsListForTeamDiscussionCommentLegacyParams, error) {
 	var params ReactionsListForTeamDiscussionCommentLegacyParams
-	// Decode param "team_id" located in "Path".
+	// Decode path: team_id.
 	{
 		param := chi.URLParam(r, "team_id")
 		if len(param) > 0 {
@@ -34743,10 +34743,10 @@ func decodeReactionsListForTeamDiscussionCommentLegacyParams(r *http.Request) (R
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter team_id not specified`)
+			return params, errors.New(`path: team_id: not specified`)
 		}
 	}
-	// Decode param "discussion_number" located in "Path".
+	// Decode path: discussion_number.
 	{
 		param := chi.URLParam(r, "discussion_number")
 		if len(param) > 0 {
@@ -34774,10 +34774,10 @@ func decodeReactionsListForTeamDiscussionCommentLegacyParams(r *http.Request) (R
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter discussion_number not specified`)
+			return params, errors.New(`path: discussion_number: not specified`)
 		}
 	}
-	// Decode param "comment_number" located in "Path".
+	// Decode path: comment_number.
 	{
 		param := chi.URLParam(r, "comment_number")
 		if len(param) > 0 {
@@ -34805,10 +34805,10 @@ func decodeReactionsListForTeamDiscussionCommentLegacyParams(r *http.Request) (R
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter comment_number not specified`)
+			return params, errors.New(`path: comment_number: not specified`)
 		}
 	}
-	// Decode param "content" located in "Query".
+	// Decode query: content.
 	{
 		values, ok := r.URL.Query()["content"]
 		if ok {
@@ -34839,7 +34839,7 @@ func decodeReactionsListForTeamDiscussionCommentLegacyParams(r *http.Request) (R
 				params.Content.SetTo(ParamsContentValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter content located in query`)
+				return params, errors.Wrap(err, `query: content: parse`)
 			}
 			if err := func() error {
 
@@ -34858,11 +34858,11 @@ func decodeReactionsListForTeamDiscussionCommentLegacyParams(r *http.Request) (R
 
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `invalid parameter content (query`)
+				return params, errors.Wrap(err, `query: content: invalid`)
 			}
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -34893,11 +34893,11 @@ func decodeReactionsListForTeamDiscussionCommentLegacyParams(r *http.Request) (R
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -34928,7 +34928,7 @@ func decodeReactionsListForTeamDiscussionCommentLegacyParams(r *http.Request) (R
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -34937,7 +34937,7 @@ func decodeReactionsListForTeamDiscussionCommentLegacyParams(r *http.Request) (R
 
 func decodeReactionsListForTeamDiscussionInOrgParams(r *http.Request) (ReactionsListForTeamDiscussionInOrgParams, error) {
 	var params ReactionsListForTeamDiscussionInOrgParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -34965,10 +34965,10 @@ func decodeReactionsListForTeamDiscussionInOrgParams(r *http.Request) (Reactions
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "team_slug" located in "Path".
+	// Decode path: team_slug.
 	{
 		param := chi.URLParam(r, "team_slug")
 		if len(param) > 0 {
@@ -34996,10 +34996,10 @@ func decodeReactionsListForTeamDiscussionInOrgParams(r *http.Request) (Reactions
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter team_slug not specified`)
+			return params, errors.New(`path: team_slug: not specified`)
 		}
 	}
-	// Decode param "discussion_number" located in "Path".
+	// Decode path: discussion_number.
 	{
 		param := chi.URLParam(r, "discussion_number")
 		if len(param) > 0 {
@@ -35027,10 +35027,10 @@ func decodeReactionsListForTeamDiscussionInOrgParams(r *http.Request) (Reactions
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter discussion_number not specified`)
+			return params, errors.New(`path: discussion_number: not specified`)
 		}
 	}
-	// Decode param "content" located in "Query".
+	// Decode query: content.
 	{
 		values, ok := r.URL.Query()["content"]
 		if ok {
@@ -35061,7 +35061,7 @@ func decodeReactionsListForTeamDiscussionInOrgParams(r *http.Request) (Reactions
 				params.Content.SetTo(ParamsContentValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter content located in query`)
+				return params, errors.Wrap(err, `query: content: parse`)
 			}
 			if err := func() error {
 
@@ -35080,11 +35080,11 @@ func decodeReactionsListForTeamDiscussionInOrgParams(r *http.Request) (Reactions
 
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `invalid parameter content (query`)
+				return params, errors.Wrap(err, `query: content: invalid`)
 			}
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -35115,11 +35115,11 @@ func decodeReactionsListForTeamDiscussionInOrgParams(r *http.Request) (Reactions
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -35150,7 +35150,7 @@ func decodeReactionsListForTeamDiscussionInOrgParams(r *http.Request) (Reactions
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -35159,7 +35159,7 @@ func decodeReactionsListForTeamDiscussionInOrgParams(r *http.Request) (Reactions
 
 func decodeReactionsListForTeamDiscussionLegacyParams(r *http.Request) (ReactionsListForTeamDiscussionLegacyParams, error) {
 	var params ReactionsListForTeamDiscussionLegacyParams
-	// Decode param "team_id" located in "Path".
+	// Decode path: team_id.
 	{
 		param := chi.URLParam(r, "team_id")
 		if len(param) > 0 {
@@ -35187,10 +35187,10 @@ func decodeReactionsListForTeamDiscussionLegacyParams(r *http.Request) (Reaction
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter team_id not specified`)
+			return params, errors.New(`path: team_id: not specified`)
 		}
 	}
-	// Decode param "discussion_number" located in "Path".
+	// Decode path: discussion_number.
 	{
 		param := chi.URLParam(r, "discussion_number")
 		if len(param) > 0 {
@@ -35218,10 +35218,10 @@ func decodeReactionsListForTeamDiscussionLegacyParams(r *http.Request) (Reaction
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter discussion_number not specified`)
+			return params, errors.New(`path: discussion_number: not specified`)
 		}
 	}
-	// Decode param "content" located in "Query".
+	// Decode query: content.
 	{
 		values, ok := r.URL.Query()["content"]
 		if ok {
@@ -35252,7 +35252,7 @@ func decodeReactionsListForTeamDiscussionLegacyParams(r *http.Request) (Reaction
 				params.Content.SetTo(ParamsContentValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter content located in query`)
+				return params, errors.Wrap(err, `query: content: parse`)
 			}
 			if err := func() error {
 
@@ -35271,11 +35271,11 @@ func decodeReactionsListForTeamDiscussionLegacyParams(r *http.Request) (Reaction
 
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `invalid parameter content (query`)
+				return params, errors.Wrap(err, `query: content: invalid`)
 			}
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -35306,11 +35306,11 @@ func decodeReactionsListForTeamDiscussionLegacyParams(r *http.Request) (Reaction
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -35341,7 +35341,7 @@ func decodeReactionsListForTeamDiscussionLegacyParams(r *http.Request) (Reaction
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -35350,7 +35350,7 @@ func decodeReactionsListForTeamDiscussionLegacyParams(r *http.Request) (Reaction
 
 func decodeReposAcceptInvitationParams(r *http.Request) (ReposAcceptInvitationParams, error) {
 	var params ReposAcceptInvitationParams
-	// Decode param "invitation_id" located in "Path".
+	// Decode path: invitation_id.
 	{
 		param := chi.URLParam(r, "invitation_id")
 		if len(param) > 0 {
@@ -35378,7 +35378,7 @@ func decodeReposAcceptInvitationParams(r *http.Request) (ReposAcceptInvitationPa
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter invitation_id not specified`)
+			return params, errors.New(`path: invitation_id: not specified`)
 		}
 	}
 	return params, nil
@@ -35386,7 +35386,7 @@ func decodeReposAcceptInvitationParams(r *http.Request) (ReposAcceptInvitationPa
 
 func decodeReposCheckCollaboratorParams(r *http.Request) (ReposCheckCollaboratorParams, error) {
 	var params ReposCheckCollaboratorParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -35414,10 +35414,10 @@ func decodeReposCheckCollaboratorParams(r *http.Request) (ReposCheckCollaborator
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -35445,10 +35445,10 @@ func decodeReposCheckCollaboratorParams(r *http.Request) (ReposCheckCollaborator
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "username" located in "Path".
+	// Decode path: username.
 	{
 		param := chi.URLParam(r, "username")
 		if len(param) > 0 {
@@ -35476,7 +35476,7 @@ func decodeReposCheckCollaboratorParams(r *http.Request) (ReposCheckCollaborator
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter username not specified`)
+			return params, errors.New(`path: username: not specified`)
 		}
 	}
 	return params, nil
@@ -35484,7 +35484,7 @@ func decodeReposCheckCollaboratorParams(r *http.Request) (ReposCheckCollaborator
 
 func decodeReposCheckVulnerabilityAlertsParams(r *http.Request) (ReposCheckVulnerabilityAlertsParams, error) {
 	var params ReposCheckVulnerabilityAlertsParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -35512,10 +35512,10 @@ func decodeReposCheckVulnerabilityAlertsParams(r *http.Request) (ReposCheckVulne
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -35543,7 +35543,7 @@ func decodeReposCheckVulnerabilityAlertsParams(r *http.Request) (ReposCheckVulne
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
 	return params, nil
@@ -35551,7 +35551,7 @@ func decodeReposCheckVulnerabilityAlertsParams(r *http.Request) (ReposCheckVulne
 
 func decodeReposCompareCommitsParams(r *http.Request) (ReposCompareCommitsParams, error) {
 	var params ReposCompareCommitsParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -35579,10 +35579,10 @@ func decodeReposCompareCommitsParams(r *http.Request) (ReposCompareCommitsParams
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -35610,10 +35610,10 @@ func decodeReposCompareCommitsParams(r *http.Request) (ReposCompareCommitsParams
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -35644,11 +35644,11 @@ func decodeReposCompareCommitsParams(r *http.Request) (ReposCompareCommitsParams
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -35679,11 +35679,11 @@ func decodeReposCompareCommitsParams(r *http.Request) (ReposCompareCommitsParams
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "basehead" located in "Path".
+	// Decode path: basehead.
 	{
 		param := chi.URLParam(r, "basehead")
 		if len(param) > 0 {
@@ -35711,7 +35711,7 @@ func decodeReposCompareCommitsParams(r *http.Request) (ReposCompareCommitsParams
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter basehead not specified`)
+			return params, errors.New(`path: basehead: not specified`)
 		}
 	}
 	return params, nil
@@ -35719,7 +35719,7 @@ func decodeReposCompareCommitsParams(r *http.Request) (ReposCompareCommitsParams
 
 func decodeReposCreateCommitSignatureProtectionParams(r *http.Request) (ReposCreateCommitSignatureProtectionParams, error) {
 	var params ReposCreateCommitSignatureProtectionParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -35747,10 +35747,10 @@ func decodeReposCreateCommitSignatureProtectionParams(r *http.Request) (ReposCre
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -35778,10 +35778,10 @@ func decodeReposCreateCommitSignatureProtectionParams(r *http.Request) (ReposCre
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "branch" located in "Path".
+	// Decode path: branch.
 	{
 		param := chi.URLParam(r, "branch")
 		if len(param) > 0 {
@@ -35809,7 +35809,7 @@ func decodeReposCreateCommitSignatureProtectionParams(r *http.Request) (ReposCre
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter branch not specified`)
+			return params, errors.New(`path: branch: not specified`)
 		}
 	}
 	return params, nil
@@ -35817,7 +35817,7 @@ func decodeReposCreateCommitSignatureProtectionParams(r *http.Request) (ReposCre
 
 func decodeReposCreateCommitStatusParams(r *http.Request) (ReposCreateCommitStatusParams, error) {
 	var params ReposCreateCommitStatusParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -35845,10 +35845,10 @@ func decodeReposCreateCommitStatusParams(r *http.Request) (ReposCreateCommitStat
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -35876,10 +35876,10 @@ func decodeReposCreateCommitStatusParams(r *http.Request) (ReposCreateCommitStat
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "sha" located in "Path".
+	// Decode path: sha.
 	{
 		param := chi.URLParam(r, "sha")
 		if len(param) > 0 {
@@ -35907,7 +35907,7 @@ func decodeReposCreateCommitStatusParams(r *http.Request) (ReposCreateCommitStat
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter sha not specified`)
+			return params, errors.New(`path: sha: not specified`)
 		}
 	}
 	return params, nil
@@ -35915,7 +35915,7 @@ func decodeReposCreateCommitStatusParams(r *http.Request) (ReposCreateCommitStat
 
 func decodeReposCreateUsingTemplateParams(r *http.Request) (ReposCreateUsingTemplateParams, error) {
 	var params ReposCreateUsingTemplateParams
-	// Decode param "template_owner" located in "Path".
+	// Decode path: template_owner.
 	{
 		param := chi.URLParam(r, "template_owner")
 		if len(param) > 0 {
@@ -35943,10 +35943,10 @@ func decodeReposCreateUsingTemplateParams(r *http.Request) (ReposCreateUsingTemp
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter template_owner not specified`)
+			return params, errors.New(`path: template_owner: not specified`)
 		}
 	}
-	// Decode param "template_repo" located in "Path".
+	// Decode path: template_repo.
 	{
 		param := chi.URLParam(r, "template_repo")
 		if len(param) > 0 {
@@ -35974,7 +35974,7 @@ func decodeReposCreateUsingTemplateParams(r *http.Request) (ReposCreateUsingTemp
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter template_repo not specified`)
+			return params, errors.New(`path: template_repo: not specified`)
 		}
 	}
 	return params, nil
@@ -35982,7 +35982,7 @@ func decodeReposCreateUsingTemplateParams(r *http.Request) (ReposCreateUsingTemp
 
 func decodeReposDeclineInvitationParams(r *http.Request) (ReposDeclineInvitationParams, error) {
 	var params ReposDeclineInvitationParams
-	// Decode param "invitation_id" located in "Path".
+	// Decode path: invitation_id.
 	{
 		param := chi.URLParam(r, "invitation_id")
 		if len(param) > 0 {
@@ -36010,7 +36010,7 @@ func decodeReposDeclineInvitationParams(r *http.Request) (ReposDeclineInvitation
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter invitation_id not specified`)
+			return params, errors.New(`path: invitation_id: not specified`)
 		}
 	}
 	return params, nil
@@ -36018,7 +36018,7 @@ func decodeReposDeclineInvitationParams(r *http.Request) (ReposDeclineInvitation
 
 func decodeReposDeleteParams(r *http.Request) (ReposDeleteParams, error) {
 	var params ReposDeleteParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -36046,10 +36046,10 @@ func decodeReposDeleteParams(r *http.Request) (ReposDeleteParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -36077,7 +36077,7 @@ func decodeReposDeleteParams(r *http.Request) (ReposDeleteParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
 	return params, nil
@@ -36085,7 +36085,7 @@ func decodeReposDeleteParams(r *http.Request) (ReposDeleteParams, error) {
 
 func decodeReposDeleteAccessRestrictionsParams(r *http.Request) (ReposDeleteAccessRestrictionsParams, error) {
 	var params ReposDeleteAccessRestrictionsParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -36113,10 +36113,10 @@ func decodeReposDeleteAccessRestrictionsParams(r *http.Request) (ReposDeleteAcce
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -36144,10 +36144,10 @@ func decodeReposDeleteAccessRestrictionsParams(r *http.Request) (ReposDeleteAcce
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "branch" located in "Path".
+	// Decode path: branch.
 	{
 		param := chi.URLParam(r, "branch")
 		if len(param) > 0 {
@@ -36175,7 +36175,7 @@ func decodeReposDeleteAccessRestrictionsParams(r *http.Request) (ReposDeleteAcce
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter branch not specified`)
+			return params, errors.New(`path: branch: not specified`)
 		}
 	}
 	return params, nil
@@ -36183,7 +36183,7 @@ func decodeReposDeleteAccessRestrictionsParams(r *http.Request) (ReposDeleteAcce
 
 func decodeReposDeleteAdminBranchProtectionParams(r *http.Request) (ReposDeleteAdminBranchProtectionParams, error) {
 	var params ReposDeleteAdminBranchProtectionParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -36211,10 +36211,10 @@ func decodeReposDeleteAdminBranchProtectionParams(r *http.Request) (ReposDeleteA
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -36242,10 +36242,10 @@ func decodeReposDeleteAdminBranchProtectionParams(r *http.Request) (ReposDeleteA
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "branch" located in "Path".
+	// Decode path: branch.
 	{
 		param := chi.URLParam(r, "branch")
 		if len(param) > 0 {
@@ -36273,7 +36273,7 @@ func decodeReposDeleteAdminBranchProtectionParams(r *http.Request) (ReposDeleteA
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter branch not specified`)
+			return params, errors.New(`path: branch: not specified`)
 		}
 	}
 	return params, nil
@@ -36281,7 +36281,7 @@ func decodeReposDeleteAdminBranchProtectionParams(r *http.Request) (ReposDeleteA
 
 func decodeReposDeleteAnEnvironmentParams(r *http.Request) (ReposDeleteAnEnvironmentParams, error) {
 	var params ReposDeleteAnEnvironmentParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -36309,10 +36309,10 @@ func decodeReposDeleteAnEnvironmentParams(r *http.Request) (ReposDeleteAnEnviron
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -36340,10 +36340,10 @@ func decodeReposDeleteAnEnvironmentParams(r *http.Request) (ReposDeleteAnEnviron
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "environment_name" located in "Path".
+	// Decode path: environment_name.
 	{
 		param := chi.URLParam(r, "environment_name")
 		if len(param) > 0 {
@@ -36371,7 +36371,7 @@ func decodeReposDeleteAnEnvironmentParams(r *http.Request) (ReposDeleteAnEnviron
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter environment_name not specified`)
+			return params, errors.New(`path: environment_name: not specified`)
 		}
 	}
 	return params, nil
@@ -36379,7 +36379,7 @@ func decodeReposDeleteAnEnvironmentParams(r *http.Request) (ReposDeleteAnEnviron
 
 func decodeReposDeleteAutolinkParams(r *http.Request) (ReposDeleteAutolinkParams, error) {
 	var params ReposDeleteAutolinkParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -36407,10 +36407,10 @@ func decodeReposDeleteAutolinkParams(r *http.Request) (ReposDeleteAutolinkParams
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -36438,10 +36438,10 @@ func decodeReposDeleteAutolinkParams(r *http.Request) (ReposDeleteAutolinkParams
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "autolink_id" located in "Path".
+	// Decode path: autolink_id.
 	{
 		param := chi.URLParam(r, "autolink_id")
 		if len(param) > 0 {
@@ -36469,7 +36469,7 @@ func decodeReposDeleteAutolinkParams(r *http.Request) (ReposDeleteAutolinkParams
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter autolink_id not specified`)
+			return params, errors.New(`path: autolink_id: not specified`)
 		}
 	}
 	return params, nil
@@ -36477,7 +36477,7 @@ func decodeReposDeleteAutolinkParams(r *http.Request) (ReposDeleteAutolinkParams
 
 func decodeReposDeleteBranchProtectionParams(r *http.Request) (ReposDeleteBranchProtectionParams, error) {
 	var params ReposDeleteBranchProtectionParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -36505,10 +36505,10 @@ func decodeReposDeleteBranchProtectionParams(r *http.Request) (ReposDeleteBranch
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -36536,10 +36536,10 @@ func decodeReposDeleteBranchProtectionParams(r *http.Request) (ReposDeleteBranch
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "branch" located in "Path".
+	// Decode path: branch.
 	{
 		param := chi.URLParam(r, "branch")
 		if len(param) > 0 {
@@ -36567,7 +36567,7 @@ func decodeReposDeleteBranchProtectionParams(r *http.Request) (ReposDeleteBranch
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter branch not specified`)
+			return params, errors.New(`path: branch: not specified`)
 		}
 	}
 	return params, nil
@@ -36575,7 +36575,7 @@ func decodeReposDeleteBranchProtectionParams(r *http.Request) (ReposDeleteBranch
 
 func decodeReposDeleteCommitCommentParams(r *http.Request) (ReposDeleteCommitCommentParams, error) {
 	var params ReposDeleteCommitCommentParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -36603,10 +36603,10 @@ func decodeReposDeleteCommitCommentParams(r *http.Request) (ReposDeleteCommitCom
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -36634,10 +36634,10 @@ func decodeReposDeleteCommitCommentParams(r *http.Request) (ReposDeleteCommitCom
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "comment_id" located in "Path".
+	// Decode path: comment_id.
 	{
 		param := chi.URLParam(r, "comment_id")
 		if len(param) > 0 {
@@ -36665,7 +36665,7 @@ func decodeReposDeleteCommitCommentParams(r *http.Request) (ReposDeleteCommitCom
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter comment_id not specified`)
+			return params, errors.New(`path: comment_id: not specified`)
 		}
 	}
 	return params, nil
@@ -36673,7 +36673,7 @@ func decodeReposDeleteCommitCommentParams(r *http.Request) (ReposDeleteCommitCom
 
 func decodeReposDeleteCommitSignatureProtectionParams(r *http.Request) (ReposDeleteCommitSignatureProtectionParams, error) {
 	var params ReposDeleteCommitSignatureProtectionParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -36701,10 +36701,10 @@ func decodeReposDeleteCommitSignatureProtectionParams(r *http.Request) (ReposDel
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -36732,10 +36732,10 @@ func decodeReposDeleteCommitSignatureProtectionParams(r *http.Request) (ReposDel
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "branch" located in "Path".
+	// Decode path: branch.
 	{
 		param := chi.URLParam(r, "branch")
 		if len(param) > 0 {
@@ -36763,7 +36763,7 @@ func decodeReposDeleteCommitSignatureProtectionParams(r *http.Request) (ReposDel
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter branch not specified`)
+			return params, errors.New(`path: branch: not specified`)
 		}
 	}
 	return params, nil
@@ -36771,7 +36771,7 @@ func decodeReposDeleteCommitSignatureProtectionParams(r *http.Request) (ReposDel
 
 func decodeReposDeleteDeployKeyParams(r *http.Request) (ReposDeleteDeployKeyParams, error) {
 	var params ReposDeleteDeployKeyParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -36799,10 +36799,10 @@ func decodeReposDeleteDeployKeyParams(r *http.Request) (ReposDeleteDeployKeyPara
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -36830,10 +36830,10 @@ func decodeReposDeleteDeployKeyParams(r *http.Request) (ReposDeleteDeployKeyPara
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "key_id" located in "Path".
+	// Decode path: key_id.
 	{
 		param := chi.URLParam(r, "key_id")
 		if len(param) > 0 {
@@ -36861,7 +36861,7 @@ func decodeReposDeleteDeployKeyParams(r *http.Request) (ReposDeleteDeployKeyPara
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter key_id not specified`)
+			return params, errors.New(`path: key_id: not specified`)
 		}
 	}
 	return params, nil
@@ -36869,7 +36869,7 @@ func decodeReposDeleteDeployKeyParams(r *http.Request) (ReposDeleteDeployKeyPara
 
 func decodeReposDeleteDeploymentParams(r *http.Request) (ReposDeleteDeploymentParams, error) {
 	var params ReposDeleteDeploymentParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -36897,10 +36897,10 @@ func decodeReposDeleteDeploymentParams(r *http.Request) (ReposDeleteDeploymentPa
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -36928,10 +36928,10 @@ func decodeReposDeleteDeploymentParams(r *http.Request) (ReposDeleteDeploymentPa
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "deployment_id" located in "Path".
+	// Decode path: deployment_id.
 	{
 		param := chi.URLParam(r, "deployment_id")
 		if len(param) > 0 {
@@ -36959,7 +36959,7 @@ func decodeReposDeleteDeploymentParams(r *http.Request) (ReposDeleteDeploymentPa
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter deployment_id not specified`)
+			return params, errors.New(`path: deployment_id: not specified`)
 		}
 	}
 	return params, nil
@@ -36967,7 +36967,7 @@ func decodeReposDeleteDeploymentParams(r *http.Request) (ReposDeleteDeploymentPa
 
 func decodeReposDeleteInvitationParams(r *http.Request) (ReposDeleteInvitationParams, error) {
 	var params ReposDeleteInvitationParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -36995,10 +36995,10 @@ func decodeReposDeleteInvitationParams(r *http.Request) (ReposDeleteInvitationPa
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -37026,10 +37026,10 @@ func decodeReposDeleteInvitationParams(r *http.Request) (ReposDeleteInvitationPa
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "invitation_id" located in "Path".
+	// Decode path: invitation_id.
 	{
 		param := chi.URLParam(r, "invitation_id")
 		if len(param) > 0 {
@@ -37057,7 +37057,7 @@ func decodeReposDeleteInvitationParams(r *http.Request) (ReposDeleteInvitationPa
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter invitation_id not specified`)
+			return params, errors.New(`path: invitation_id: not specified`)
 		}
 	}
 	return params, nil
@@ -37065,7 +37065,7 @@ func decodeReposDeleteInvitationParams(r *http.Request) (ReposDeleteInvitationPa
 
 func decodeReposDeletePullRequestReviewProtectionParams(r *http.Request) (ReposDeletePullRequestReviewProtectionParams, error) {
 	var params ReposDeletePullRequestReviewProtectionParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -37093,10 +37093,10 @@ func decodeReposDeletePullRequestReviewProtectionParams(r *http.Request) (ReposD
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -37124,10 +37124,10 @@ func decodeReposDeletePullRequestReviewProtectionParams(r *http.Request) (ReposD
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "branch" located in "Path".
+	// Decode path: branch.
 	{
 		param := chi.URLParam(r, "branch")
 		if len(param) > 0 {
@@ -37155,7 +37155,7 @@ func decodeReposDeletePullRequestReviewProtectionParams(r *http.Request) (ReposD
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter branch not specified`)
+			return params, errors.New(`path: branch: not specified`)
 		}
 	}
 	return params, nil
@@ -37163,7 +37163,7 @@ func decodeReposDeletePullRequestReviewProtectionParams(r *http.Request) (ReposD
 
 func decodeReposDeleteReleaseParams(r *http.Request) (ReposDeleteReleaseParams, error) {
 	var params ReposDeleteReleaseParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -37191,10 +37191,10 @@ func decodeReposDeleteReleaseParams(r *http.Request) (ReposDeleteReleaseParams, 
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -37222,10 +37222,10 @@ func decodeReposDeleteReleaseParams(r *http.Request) (ReposDeleteReleaseParams, 
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "release_id" located in "Path".
+	// Decode path: release_id.
 	{
 		param := chi.URLParam(r, "release_id")
 		if len(param) > 0 {
@@ -37253,7 +37253,7 @@ func decodeReposDeleteReleaseParams(r *http.Request) (ReposDeleteReleaseParams, 
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter release_id not specified`)
+			return params, errors.New(`path: release_id: not specified`)
 		}
 	}
 	return params, nil
@@ -37261,7 +37261,7 @@ func decodeReposDeleteReleaseParams(r *http.Request) (ReposDeleteReleaseParams, 
 
 func decodeReposDeleteReleaseAssetParams(r *http.Request) (ReposDeleteReleaseAssetParams, error) {
 	var params ReposDeleteReleaseAssetParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -37289,10 +37289,10 @@ func decodeReposDeleteReleaseAssetParams(r *http.Request) (ReposDeleteReleaseAss
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -37320,10 +37320,10 @@ func decodeReposDeleteReleaseAssetParams(r *http.Request) (ReposDeleteReleaseAss
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "asset_id" located in "Path".
+	// Decode path: asset_id.
 	{
 		param := chi.URLParam(r, "asset_id")
 		if len(param) > 0 {
@@ -37351,7 +37351,7 @@ func decodeReposDeleteReleaseAssetParams(r *http.Request) (ReposDeleteReleaseAss
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter asset_id not specified`)
+			return params, errors.New(`path: asset_id: not specified`)
 		}
 	}
 	return params, nil
@@ -37359,7 +37359,7 @@ func decodeReposDeleteReleaseAssetParams(r *http.Request) (ReposDeleteReleaseAss
 
 func decodeReposDeleteWebhookParams(r *http.Request) (ReposDeleteWebhookParams, error) {
 	var params ReposDeleteWebhookParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -37387,10 +37387,10 @@ func decodeReposDeleteWebhookParams(r *http.Request) (ReposDeleteWebhookParams, 
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -37418,10 +37418,10 @@ func decodeReposDeleteWebhookParams(r *http.Request) (ReposDeleteWebhookParams, 
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "hook_id" located in "Path".
+	// Decode path: hook_id.
 	{
 		param := chi.URLParam(r, "hook_id")
 		if len(param) > 0 {
@@ -37449,7 +37449,7 @@ func decodeReposDeleteWebhookParams(r *http.Request) (ReposDeleteWebhookParams, 
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter hook_id not specified`)
+			return params, errors.New(`path: hook_id: not specified`)
 		}
 	}
 	return params, nil
@@ -37457,7 +37457,7 @@ func decodeReposDeleteWebhookParams(r *http.Request) (ReposDeleteWebhookParams, 
 
 func decodeReposDisableAutomatedSecurityFixesParams(r *http.Request) (ReposDisableAutomatedSecurityFixesParams, error) {
 	var params ReposDisableAutomatedSecurityFixesParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -37485,10 +37485,10 @@ func decodeReposDisableAutomatedSecurityFixesParams(r *http.Request) (ReposDisab
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -37516,7 +37516,7 @@ func decodeReposDisableAutomatedSecurityFixesParams(r *http.Request) (ReposDisab
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
 	return params, nil
@@ -37524,7 +37524,7 @@ func decodeReposDisableAutomatedSecurityFixesParams(r *http.Request) (ReposDisab
 
 func decodeReposDisableLfsForRepoParams(r *http.Request) (ReposDisableLfsForRepoParams, error) {
 	var params ReposDisableLfsForRepoParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -37552,10 +37552,10 @@ func decodeReposDisableLfsForRepoParams(r *http.Request) (ReposDisableLfsForRepo
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -37583,7 +37583,7 @@ func decodeReposDisableLfsForRepoParams(r *http.Request) (ReposDisableLfsForRepo
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
 	return params, nil
@@ -37591,7 +37591,7 @@ func decodeReposDisableLfsForRepoParams(r *http.Request) (ReposDisableLfsForRepo
 
 func decodeReposDisableVulnerabilityAlertsParams(r *http.Request) (ReposDisableVulnerabilityAlertsParams, error) {
 	var params ReposDisableVulnerabilityAlertsParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -37619,10 +37619,10 @@ func decodeReposDisableVulnerabilityAlertsParams(r *http.Request) (ReposDisableV
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -37650,7 +37650,7 @@ func decodeReposDisableVulnerabilityAlertsParams(r *http.Request) (ReposDisableV
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
 	return params, nil
@@ -37658,7 +37658,7 @@ func decodeReposDisableVulnerabilityAlertsParams(r *http.Request) (ReposDisableV
 
 func decodeReposDownloadTarballArchiveParams(r *http.Request) (ReposDownloadTarballArchiveParams, error) {
 	var params ReposDownloadTarballArchiveParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -37686,10 +37686,10 @@ func decodeReposDownloadTarballArchiveParams(r *http.Request) (ReposDownloadTarb
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -37717,10 +37717,10 @@ func decodeReposDownloadTarballArchiveParams(r *http.Request) (ReposDownloadTarb
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "ref" located in "Path".
+	// Decode path: ref.
 	{
 		param := chi.URLParam(r, "ref")
 		if len(param) > 0 {
@@ -37748,7 +37748,7 @@ func decodeReposDownloadTarballArchiveParams(r *http.Request) (ReposDownloadTarb
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter ref not specified`)
+			return params, errors.New(`path: ref: not specified`)
 		}
 	}
 	return params, nil
@@ -37756,7 +37756,7 @@ func decodeReposDownloadTarballArchiveParams(r *http.Request) (ReposDownloadTarb
 
 func decodeReposDownloadZipballArchiveParams(r *http.Request) (ReposDownloadZipballArchiveParams, error) {
 	var params ReposDownloadZipballArchiveParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -37784,10 +37784,10 @@ func decodeReposDownloadZipballArchiveParams(r *http.Request) (ReposDownloadZipb
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -37815,10 +37815,10 @@ func decodeReposDownloadZipballArchiveParams(r *http.Request) (ReposDownloadZipb
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "ref" located in "Path".
+	// Decode path: ref.
 	{
 		param := chi.URLParam(r, "ref")
 		if len(param) > 0 {
@@ -37846,7 +37846,7 @@ func decodeReposDownloadZipballArchiveParams(r *http.Request) (ReposDownloadZipb
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter ref not specified`)
+			return params, errors.New(`path: ref: not specified`)
 		}
 	}
 	return params, nil
@@ -37854,7 +37854,7 @@ func decodeReposDownloadZipballArchiveParams(r *http.Request) (ReposDownloadZipb
 
 func decodeReposEnableAutomatedSecurityFixesParams(r *http.Request) (ReposEnableAutomatedSecurityFixesParams, error) {
 	var params ReposEnableAutomatedSecurityFixesParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -37882,10 +37882,10 @@ func decodeReposEnableAutomatedSecurityFixesParams(r *http.Request) (ReposEnable
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -37913,7 +37913,7 @@ func decodeReposEnableAutomatedSecurityFixesParams(r *http.Request) (ReposEnable
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
 	return params, nil
@@ -37921,7 +37921,7 @@ func decodeReposEnableAutomatedSecurityFixesParams(r *http.Request) (ReposEnable
 
 func decodeReposEnableLfsForRepoParams(r *http.Request) (ReposEnableLfsForRepoParams, error) {
 	var params ReposEnableLfsForRepoParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -37949,10 +37949,10 @@ func decodeReposEnableLfsForRepoParams(r *http.Request) (ReposEnableLfsForRepoPa
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -37980,7 +37980,7 @@ func decodeReposEnableLfsForRepoParams(r *http.Request) (ReposEnableLfsForRepoPa
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
 	return params, nil
@@ -37988,7 +37988,7 @@ func decodeReposEnableLfsForRepoParams(r *http.Request) (ReposEnableLfsForRepoPa
 
 func decodeReposEnableVulnerabilityAlertsParams(r *http.Request) (ReposEnableVulnerabilityAlertsParams, error) {
 	var params ReposEnableVulnerabilityAlertsParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -38016,10 +38016,10 @@ func decodeReposEnableVulnerabilityAlertsParams(r *http.Request) (ReposEnableVul
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -38047,7 +38047,7 @@ func decodeReposEnableVulnerabilityAlertsParams(r *http.Request) (ReposEnableVul
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
 	return params, nil
@@ -38055,7 +38055,7 @@ func decodeReposEnableVulnerabilityAlertsParams(r *http.Request) (ReposEnableVul
 
 func decodeReposGetParams(r *http.Request) (ReposGetParams, error) {
 	var params ReposGetParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -38083,10 +38083,10 @@ func decodeReposGetParams(r *http.Request) (ReposGetParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -38114,7 +38114,7 @@ func decodeReposGetParams(r *http.Request) (ReposGetParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
 	return params, nil
@@ -38122,7 +38122,7 @@ func decodeReposGetParams(r *http.Request) (ReposGetParams, error) {
 
 func decodeReposGetAccessRestrictionsParams(r *http.Request) (ReposGetAccessRestrictionsParams, error) {
 	var params ReposGetAccessRestrictionsParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -38150,10 +38150,10 @@ func decodeReposGetAccessRestrictionsParams(r *http.Request) (ReposGetAccessRest
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -38181,10 +38181,10 @@ func decodeReposGetAccessRestrictionsParams(r *http.Request) (ReposGetAccessRest
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "branch" located in "Path".
+	// Decode path: branch.
 	{
 		param := chi.URLParam(r, "branch")
 		if len(param) > 0 {
@@ -38212,7 +38212,7 @@ func decodeReposGetAccessRestrictionsParams(r *http.Request) (ReposGetAccessRest
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter branch not specified`)
+			return params, errors.New(`path: branch: not specified`)
 		}
 	}
 	return params, nil
@@ -38220,7 +38220,7 @@ func decodeReposGetAccessRestrictionsParams(r *http.Request) (ReposGetAccessRest
 
 func decodeReposGetAdminBranchProtectionParams(r *http.Request) (ReposGetAdminBranchProtectionParams, error) {
 	var params ReposGetAdminBranchProtectionParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -38248,10 +38248,10 @@ func decodeReposGetAdminBranchProtectionParams(r *http.Request) (ReposGetAdminBr
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -38279,10 +38279,10 @@ func decodeReposGetAdminBranchProtectionParams(r *http.Request) (ReposGetAdminBr
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "branch" located in "Path".
+	// Decode path: branch.
 	{
 		param := chi.URLParam(r, "branch")
 		if len(param) > 0 {
@@ -38310,7 +38310,7 @@ func decodeReposGetAdminBranchProtectionParams(r *http.Request) (ReposGetAdminBr
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter branch not specified`)
+			return params, errors.New(`path: branch: not specified`)
 		}
 	}
 	return params, nil
@@ -38318,7 +38318,7 @@ func decodeReposGetAdminBranchProtectionParams(r *http.Request) (ReposGetAdminBr
 
 func decodeReposGetAllStatusCheckContextsParams(r *http.Request) (ReposGetAllStatusCheckContextsParams, error) {
 	var params ReposGetAllStatusCheckContextsParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -38346,10 +38346,10 @@ func decodeReposGetAllStatusCheckContextsParams(r *http.Request) (ReposGetAllSta
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -38377,10 +38377,10 @@ func decodeReposGetAllStatusCheckContextsParams(r *http.Request) (ReposGetAllSta
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "branch" located in "Path".
+	// Decode path: branch.
 	{
 		param := chi.URLParam(r, "branch")
 		if len(param) > 0 {
@@ -38408,7 +38408,7 @@ func decodeReposGetAllStatusCheckContextsParams(r *http.Request) (ReposGetAllSta
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter branch not specified`)
+			return params, errors.New(`path: branch: not specified`)
 		}
 	}
 	return params, nil
@@ -38416,7 +38416,7 @@ func decodeReposGetAllStatusCheckContextsParams(r *http.Request) (ReposGetAllSta
 
 func decodeReposGetAllTopicsParams(r *http.Request) (ReposGetAllTopicsParams, error) {
 	var params ReposGetAllTopicsParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -38444,10 +38444,10 @@ func decodeReposGetAllTopicsParams(r *http.Request) (ReposGetAllTopicsParams, er
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -38475,10 +38475,10 @@ func decodeReposGetAllTopicsParams(r *http.Request) (ReposGetAllTopicsParams, er
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -38509,11 +38509,11 @@ func decodeReposGetAllTopicsParams(r *http.Request) (ReposGetAllTopicsParams, er
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -38544,7 +38544,7 @@ func decodeReposGetAllTopicsParams(r *http.Request) (ReposGetAllTopicsParams, er
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
@@ -38553,7 +38553,7 @@ func decodeReposGetAllTopicsParams(r *http.Request) (ReposGetAllTopicsParams, er
 
 func decodeReposGetAppsWithAccessToProtectedBranchParams(r *http.Request) (ReposGetAppsWithAccessToProtectedBranchParams, error) {
 	var params ReposGetAppsWithAccessToProtectedBranchParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -38581,10 +38581,10 @@ func decodeReposGetAppsWithAccessToProtectedBranchParams(r *http.Request) (Repos
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -38612,10 +38612,10 @@ func decodeReposGetAppsWithAccessToProtectedBranchParams(r *http.Request) (Repos
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "branch" located in "Path".
+	// Decode path: branch.
 	{
 		param := chi.URLParam(r, "branch")
 		if len(param) > 0 {
@@ -38643,7 +38643,7 @@ func decodeReposGetAppsWithAccessToProtectedBranchParams(r *http.Request) (Repos
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter branch not specified`)
+			return params, errors.New(`path: branch: not specified`)
 		}
 	}
 	return params, nil
@@ -38651,7 +38651,7 @@ func decodeReposGetAppsWithAccessToProtectedBranchParams(r *http.Request) (Repos
 
 func decodeReposGetAutolinkParams(r *http.Request) (ReposGetAutolinkParams, error) {
 	var params ReposGetAutolinkParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -38679,10 +38679,10 @@ func decodeReposGetAutolinkParams(r *http.Request) (ReposGetAutolinkParams, erro
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -38710,10 +38710,10 @@ func decodeReposGetAutolinkParams(r *http.Request) (ReposGetAutolinkParams, erro
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "autolink_id" located in "Path".
+	// Decode path: autolink_id.
 	{
 		param := chi.URLParam(r, "autolink_id")
 		if len(param) > 0 {
@@ -38741,7 +38741,7 @@ func decodeReposGetAutolinkParams(r *http.Request) (ReposGetAutolinkParams, erro
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter autolink_id not specified`)
+			return params, errors.New(`path: autolink_id: not specified`)
 		}
 	}
 	return params, nil
@@ -38749,7 +38749,7 @@ func decodeReposGetAutolinkParams(r *http.Request) (ReposGetAutolinkParams, erro
 
 func decodeReposGetBranchParams(r *http.Request) (ReposGetBranchParams, error) {
 	var params ReposGetBranchParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -38777,10 +38777,10 @@ func decodeReposGetBranchParams(r *http.Request) (ReposGetBranchParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -38808,10 +38808,10 @@ func decodeReposGetBranchParams(r *http.Request) (ReposGetBranchParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "branch" located in "Path".
+	// Decode path: branch.
 	{
 		param := chi.URLParam(r, "branch")
 		if len(param) > 0 {
@@ -38839,7 +38839,7 @@ func decodeReposGetBranchParams(r *http.Request) (ReposGetBranchParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter branch not specified`)
+			return params, errors.New(`path: branch: not specified`)
 		}
 	}
 	return params, nil
@@ -38847,7 +38847,7 @@ func decodeReposGetBranchParams(r *http.Request) (ReposGetBranchParams, error) {
 
 func decodeReposGetBranchProtectionParams(r *http.Request) (ReposGetBranchProtectionParams, error) {
 	var params ReposGetBranchProtectionParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -38875,10 +38875,10 @@ func decodeReposGetBranchProtectionParams(r *http.Request) (ReposGetBranchProtec
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -38906,10 +38906,10 @@ func decodeReposGetBranchProtectionParams(r *http.Request) (ReposGetBranchProtec
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "branch" located in "Path".
+	// Decode path: branch.
 	{
 		param := chi.URLParam(r, "branch")
 		if len(param) > 0 {
@@ -38937,7 +38937,7 @@ func decodeReposGetBranchProtectionParams(r *http.Request) (ReposGetBranchProtec
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter branch not specified`)
+			return params, errors.New(`path: branch: not specified`)
 		}
 	}
 	return params, nil
@@ -38945,7 +38945,7 @@ func decodeReposGetBranchProtectionParams(r *http.Request) (ReposGetBranchProtec
 
 func decodeReposGetClonesParams(r *http.Request) (ReposGetClonesParams, error) {
 	var params ReposGetClonesParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -38973,10 +38973,10 @@ func decodeReposGetClonesParams(r *http.Request) (ReposGetClonesParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -39004,10 +39004,10 @@ func decodeReposGetClonesParams(r *http.Request) (ReposGetClonesParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "per" located in "Query".
+	// Decode query: per.
 	{
 		values, ok := r.URL.Query()["per"]
 		if ok {
@@ -39038,7 +39038,7 @@ func decodeReposGetClonesParams(r *http.Request) (ReposGetClonesParams, error) {
 				params.Per.SetTo(ParamsPerValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per located in query`)
+				return params, errors.Wrap(err, `query: per: parse`)
 			}
 			if err := func() error {
 
@@ -39057,7 +39057,7 @@ func decodeReposGetClonesParams(r *http.Request) (ReposGetClonesParams, error) {
 
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `invalid parameter per (query`)
+				return params, errors.Wrap(err, `query: per: invalid`)
 			}
 		}
 	}
@@ -39066,7 +39066,7 @@ func decodeReposGetClonesParams(r *http.Request) (ReposGetClonesParams, error) {
 
 func decodeReposGetCodeFrequencyStatsParams(r *http.Request) (ReposGetCodeFrequencyStatsParams, error) {
 	var params ReposGetCodeFrequencyStatsParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -39094,10 +39094,10 @@ func decodeReposGetCodeFrequencyStatsParams(r *http.Request) (ReposGetCodeFreque
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -39125,7 +39125,7 @@ func decodeReposGetCodeFrequencyStatsParams(r *http.Request) (ReposGetCodeFreque
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
 	return params, nil
@@ -39133,7 +39133,7 @@ func decodeReposGetCodeFrequencyStatsParams(r *http.Request) (ReposGetCodeFreque
 
 func decodeReposGetCollaboratorPermissionLevelParams(r *http.Request) (ReposGetCollaboratorPermissionLevelParams, error) {
 	var params ReposGetCollaboratorPermissionLevelParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -39161,10 +39161,10 @@ func decodeReposGetCollaboratorPermissionLevelParams(r *http.Request) (ReposGetC
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -39192,10 +39192,10 @@ func decodeReposGetCollaboratorPermissionLevelParams(r *http.Request) (ReposGetC
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "username" located in "Path".
+	// Decode path: username.
 	{
 		param := chi.URLParam(r, "username")
 		if len(param) > 0 {
@@ -39223,7 +39223,7 @@ func decodeReposGetCollaboratorPermissionLevelParams(r *http.Request) (ReposGetC
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter username not specified`)
+			return params, errors.New(`path: username: not specified`)
 		}
 	}
 	return params, nil
@@ -39231,7 +39231,7 @@ func decodeReposGetCollaboratorPermissionLevelParams(r *http.Request) (ReposGetC
 
 func decodeReposGetCombinedStatusForRefParams(r *http.Request) (ReposGetCombinedStatusForRefParams, error) {
 	var params ReposGetCombinedStatusForRefParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -39259,10 +39259,10 @@ func decodeReposGetCombinedStatusForRefParams(r *http.Request) (ReposGetCombined
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -39290,10 +39290,10 @@ func decodeReposGetCombinedStatusForRefParams(r *http.Request) (ReposGetCombined
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "ref" located in "Path".
+	// Decode path: ref.
 	{
 		param := chi.URLParam(r, "ref")
 		if len(param) > 0 {
@@ -39321,10 +39321,10 @@ func decodeReposGetCombinedStatusForRefParams(r *http.Request) (ReposGetCombined
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter ref not specified`)
+			return params, errors.New(`path: ref: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -39355,11 +39355,11 @@ func decodeReposGetCombinedStatusForRefParams(r *http.Request) (ReposGetCombined
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -39390,7 +39390,7 @@ func decodeReposGetCombinedStatusForRefParams(r *http.Request) (ReposGetCombined
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -39399,7 +39399,7 @@ func decodeReposGetCombinedStatusForRefParams(r *http.Request) (ReposGetCombined
 
 func decodeReposGetCommitActivityStatsParams(r *http.Request) (ReposGetCommitActivityStatsParams, error) {
 	var params ReposGetCommitActivityStatsParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -39427,10 +39427,10 @@ func decodeReposGetCommitActivityStatsParams(r *http.Request) (ReposGetCommitAct
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -39458,7 +39458,7 @@ func decodeReposGetCommitActivityStatsParams(r *http.Request) (ReposGetCommitAct
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
 	return params, nil
@@ -39466,7 +39466,7 @@ func decodeReposGetCommitActivityStatsParams(r *http.Request) (ReposGetCommitAct
 
 func decodeReposGetCommitCommentParams(r *http.Request) (ReposGetCommitCommentParams, error) {
 	var params ReposGetCommitCommentParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -39494,10 +39494,10 @@ func decodeReposGetCommitCommentParams(r *http.Request) (ReposGetCommitCommentPa
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -39525,10 +39525,10 @@ func decodeReposGetCommitCommentParams(r *http.Request) (ReposGetCommitCommentPa
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "comment_id" located in "Path".
+	// Decode path: comment_id.
 	{
 		param := chi.URLParam(r, "comment_id")
 		if len(param) > 0 {
@@ -39556,7 +39556,7 @@ func decodeReposGetCommitCommentParams(r *http.Request) (ReposGetCommitCommentPa
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter comment_id not specified`)
+			return params, errors.New(`path: comment_id: not specified`)
 		}
 	}
 	return params, nil
@@ -39564,7 +39564,7 @@ func decodeReposGetCommitCommentParams(r *http.Request) (ReposGetCommitCommentPa
 
 func decodeReposGetCommitSignatureProtectionParams(r *http.Request) (ReposGetCommitSignatureProtectionParams, error) {
 	var params ReposGetCommitSignatureProtectionParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -39592,10 +39592,10 @@ func decodeReposGetCommitSignatureProtectionParams(r *http.Request) (ReposGetCom
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -39623,10 +39623,10 @@ func decodeReposGetCommitSignatureProtectionParams(r *http.Request) (ReposGetCom
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "branch" located in "Path".
+	// Decode path: branch.
 	{
 		param := chi.URLParam(r, "branch")
 		if len(param) > 0 {
@@ -39654,7 +39654,7 @@ func decodeReposGetCommitSignatureProtectionParams(r *http.Request) (ReposGetCom
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter branch not specified`)
+			return params, errors.New(`path: branch: not specified`)
 		}
 	}
 	return params, nil
@@ -39662,7 +39662,7 @@ func decodeReposGetCommitSignatureProtectionParams(r *http.Request) (ReposGetCom
 
 func decodeReposGetCommunityProfileMetricsParams(r *http.Request) (ReposGetCommunityProfileMetricsParams, error) {
 	var params ReposGetCommunityProfileMetricsParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -39690,10 +39690,10 @@ func decodeReposGetCommunityProfileMetricsParams(r *http.Request) (ReposGetCommu
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -39721,7 +39721,7 @@ func decodeReposGetCommunityProfileMetricsParams(r *http.Request) (ReposGetCommu
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
 	return params, nil
@@ -39729,7 +39729,7 @@ func decodeReposGetCommunityProfileMetricsParams(r *http.Request) (ReposGetCommu
 
 func decodeReposGetContributorsStatsParams(r *http.Request) (ReposGetContributorsStatsParams, error) {
 	var params ReposGetContributorsStatsParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -39757,10 +39757,10 @@ func decodeReposGetContributorsStatsParams(r *http.Request) (ReposGetContributor
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -39788,7 +39788,7 @@ func decodeReposGetContributorsStatsParams(r *http.Request) (ReposGetContributor
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
 	return params, nil
@@ -39796,7 +39796,7 @@ func decodeReposGetContributorsStatsParams(r *http.Request) (ReposGetContributor
 
 func decodeReposGetDeployKeyParams(r *http.Request) (ReposGetDeployKeyParams, error) {
 	var params ReposGetDeployKeyParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -39824,10 +39824,10 @@ func decodeReposGetDeployKeyParams(r *http.Request) (ReposGetDeployKeyParams, er
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -39855,10 +39855,10 @@ func decodeReposGetDeployKeyParams(r *http.Request) (ReposGetDeployKeyParams, er
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "key_id" located in "Path".
+	// Decode path: key_id.
 	{
 		param := chi.URLParam(r, "key_id")
 		if len(param) > 0 {
@@ -39886,7 +39886,7 @@ func decodeReposGetDeployKeyParams(r *http.Request) (ReposGetDeployKeyParams, er
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter key_id not specified`)
+			return params, errors.New(`path: key_id: not specified`)
 		}
 	}
 	return params, nil
@@ -39894,7 +39894,7 @@ func decodeReposGetDeployKeyParams(r *http.Request) (ReposGetDeployKeyParams, er
 
 func decodeReposGetDeploymentStatusParams(r *http.Request) (ReposGetDeploymentStatusParams, error) {
 	var params ReposGetDeploymentStatusParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -39922,10 +39922,10 @@ func decodeReposGetDeploymentStatusParams(r *http.Request) (ReposGetDeploymentSt
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -39953,10 +39953,10 @@ func decodeReposGetDeploymentStatusParams(r *http.Request) (ReposGetDeploymentSt
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "deployment_id" located in "Path".
+	// Decode path: deployment_id.
 	{
 		param := chi.URLParam(r, "deployment_id")
 		if len(param) > 0 {
@@ -39984,10 +39984,10 @@ func decodeReposGetDeploymentStatusParams(r *http.Request) (ReposGetDeploymentSt
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter deployment_id not specified`)
+			return params, errors.New(`path: deployment_id: not specified`)
 		}
 	}
-	// Decode param "status_id" located in "Path".
+	// Decode path: status_id.
 	{
 		param := chi.URLParam(r, "status_id")
 		if len(param) > 0 {
@@ -40015,7 +40015,7 @@ func decodeReposGetDeploymentStatusParams(r *http.Request) (ReposGetDeploymentSt
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter status_id not specified`)
+			return params, errors.New(`path: status_id: not specified`)
 		}
 	}
 	return params, nil
@@ -40023,7 +40023,7 @@ func decodeReposGetDeploymentStatusParams(r *http.Request) (ReposGetDeploymentSt
 
 func decodeReposGetLatestPagesBuildParams(r *http.Request) (ReposGetLatestPagesBuildParams, error) {
 	var params ReposGetLatestPagesBuildParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -40051,10 +40051,10 @@ func decodeReposGetLatestPagesBuildParams(r *http.Request) (ReposGetLatestPagesB
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -40082,7 +40082,7 @@ func decodeReposGetLatestPagesBuildParams(r *http.Request) (ReposGetLatestPagesB
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
 	return params, nil
@@ -40090,7 +40090,7 @@ func decodeReposGetLatestPagesBuildParams(r *http.Request) (ReposGetLatestPagesB
 
 func decodeReposGetLatestReleaseParams(r *http.Request) (ReposGetLatestReleaseParams, error) {
 	var params ReposGetLatestReleaseParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -40118,10 +40118,10 @@ func decodeReposGetLatestReleaseParams(r *http.Request) (ReposGetLatestReleasePa
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -40149,7 +40149,7 @@ func decodeReposGetLatestReleaseParams(r *http.Request) (ReposGetLatestReleasePa
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
 	return params, nil
@@ -40157,7 +40157,7 @@ func decodeReposGetLatestReleaseParams(r *http.Request) (ReposGetLatestReleasePa
 
 func decodeReposGetPagesParams(r *http.Request) (ReposGetPagesParams, error) {
 	var params ReposGetPagesParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -40185,10 +40185,10 @@ func decodeReposGetPagesParams(r *http.Request) (ReposGetPagesParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -40216,7 +40216,7 @@ func decodeReposGetPagesParams(r *http.Request) (ReposGetPagesParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
 	return params, nil
@@ -40224,7 +40224,7 @@ func decodeReposGetPagesParams(r *http.Request) (ReposGetPagesParams, error) {
 
 func decodeReposGetPagesBuildParams(r *http.Request) (ReposGetPagesBuildParams, error) {
 	var params ReposGetPagesBuildParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -40252,10 +40252,10 @@ func decodeReposGetPagesBuildParams(r *http.Request) (ReposGetPagesBuildParams, 
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -40283,10 +40283,10 @@ func decodeReposGetPagesBuildParams(r *http.Request) (ReposGetPagesBuildParams, 
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "build_id" located in "Path".
+	// Decode path: build_id.
 	{
 		param := chi.URLParam(r, "build_id")
 		if len(param) > 0 {
@@ -40314,7 +40314,7 @@ func decodeReposGetPagesBuildParams(r *http.Request) (ReposGetPagesBuildParams, 
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter build_id not specified`)
+			return params, errors.New(`path: build_id: not specified`)
 		}
 	}
 	return params, nil
@@ -40322,7 +40322,7 @@ func decodeReposGetPagesBuildParams(r *http.Request) (ReposGetPagesBuildParams, 
 
 func decodeReposGetPagesHealthCheckParams(r *http.Request) (ReposGetPagesHealthCheckParams, error) {
 	var params ReposGetPagesHealthCheckParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -40350,10 +40350,10 @@ func decodeReposGetPagesHealthCheckParams(r *http.Request) (ReposGetPagesHealthC
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -40381,7 +40381,7 @@ func decodeReposGetPagesHealthCheckParams(r *http.Request) (ReposGetPagesHealthC
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
 	return params, nil
@@ -40389,7 +40389,7 @@ func decodeReposGetPagesHealthCheckParams(r *http.Request) (ReposGetPagesHealthC
 
 func decodeReposGetParticipationStatsParams(r *http.Request) (ReposGetParticipationStatsParams, error) {
 	var params ReposGetParticipationStatsParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -40417,10 +40417,10 @@ func decodeReposGetParticipationStatsParams(r *http.Request) (ReposGetParticipat
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -40448,7 +40448,7 @@ func decodeReposGetParticipationStatsParams(r *http.Request) (ReposGetParticipat
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
 	return params, nil
@@ -40456,7 +40456,7 @@ func decodeReposGetParticipationStatsParams(r *http.Request) (ReposGetParticipat
 
 func decodeReposGetPullRequestReviewProtectionParams(r *http.Request) (ReposGetPullRequestReviewProtectionParams, error) {
 	var params ReposGetPullRequestReviewProtectionParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -40484,10 +40484,10 @@ func decodeReposGetPullRequestReviewProtectionParams(r *http.Request) (ReposGetP
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -40515,10 +40515,10 @@ func decodeReposGetPullRequestReviewProtectionParams(r *http.Request) (ReposGetP
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "branch" located in "Path".
+	// Decode path: branch.
 	{
 		param := chi.URLParam(r, "branch")
 		if len(param) > 0 {
@@ -40546,7 +40546,7 @@ func decodeReposGetPullRequestReviewProtectionParams(r *http.Request) (ReposGetP
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter branch not specified`)
+			return params, errors.New(`path: branch: not specified`)
 		}
 	}
 	return params, nil
@@ -40554,7 +40554,7 @@ func decodeReposGetPullRequestReviewProtectionParams(r *http.Request) (ReposGetP
 
 func decodeReposGetPunchCardStatsParams(r *http.Request) (ReposGetPunchCardStatsParams, error) {
 	var params ReposGetPunchCardStatsParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -40582,10 +40582,10 @@ func decodeReposGetPunchCardStatsParams(r *http.Request) (ReposGetPunchCardStats
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -40613,7 +40613,7 @@ func decodeReposGetPunchCardStatsParams(r *http.Request) (ReposGetPunchCardStats
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
 	return params, nil
@@ -40621,7 +40621,7 @@ func decodeReposGetPunchCardStatsParams(r *http.Request) (ReposGetPunchCardStats
 
 func decodeReposGetReleaseParams(r *http.Request) (ReposGetReleaseParams, error) {
 	var params ReposGetReleaseParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -40649,10 +40649,10 @@ func decodeReposGetReleaseParams(r *http.Request) (ReposGetReleaseParams, error)
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -40680,10 +40680,10 @@ func decodeReposGetReleaseParams(r *http.Request) (ReposGetReleaseParams, error)
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "release_id" located in "Path".
+	// Decode path: release_id.
 	{
 		param := chi.URLParam(r, "release_id")
 		if len(param) > 0 {
@@ -40711,7 +40711,7 @@ func decodeReposGetReleaseParams(r *http.Request) (ReposGetReleaseParams, error)
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter release_id not specified`)
+			return params, errors.New(`path: release_id: not specified`)
 		}
 	}
 	return params, nil
@@ -40719,7 +40719,7 @@ func decodeReposGetReleaseParams(r *http.Request) (ReposGetReleaseParams, error)
 
 func decodeReposGetReleaseAssetParams(r *http.Request) (ReposGetReleaseAssetParams, error) {
 	var params ReposGetReleaseAssetParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -40747,10 +40747,10 @@ func decodeReposGetReleaseAssetParams(r *http.Request) (ReposGetReleaseAssetPara
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -40778,10 +40778,10 @@ func decodeReposGetReleaseAssetParams(r *http.Request) (ReposGetReleaseAssetPara
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "asset_id" located in "Path".
+	// Decode path: asset_id.
 	{
 		param := chi.URLParam(r, "asset_id")
 		if len(param) > 0 {
@@ -40809,7 +40809,7 @@ func decodeReposGetReleaseAssetParams(r *http.Request) (ReposGetReleaseAssetPara
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter asset_id not specified`)
+			return params, errors.New(`path: asset_id: not specified`)
 		}
 	}
 	return params, nil
@@ -40817,7 +40817,7 @@ func decodeReposGetReleaseAssetParams(r *http.Request) (ReposGetReleaseAssetPara
 
 func decodeReposGetReleaseByTagParams(r *http.Request) (ReposGetReleaseByTagParams, error) {
 	var params ReposGetReleaseByTagParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -40845,10 +40845,10 @@ func decodeReposGetReleaseByTagParams(r *http.Request) (ReposGetReleaseByTagPara
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -40876,10 +40876,10 @@ func decodeReposGetReleaseByTagParams(r *http.Request) (ReposGetReleaseByTagPara
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "tag" located in "Path".
+	// Decode path: tag.
 	{
 		param := chi.URLParam(r, "tag")
 		if len(param) > 0 {
@@ -40907,7 +40907,7 @@ func decodeReposGetReleaseByTagParams(r *http.Request) (ReposGetReleaseByTagPara
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter tag not specified`)
+			return params, errors.New(`path: tag: not specified`)
 		}
 	}
 	return params, nil
@@ -40915,7 +40915,7 @@ func decodeReposGetReleaseByTagParams(r *http.Request) (ReposGetReleaseByTagPara
 
 func decodeReposGetStatusChecksProtectionParams(r *http.Request) (ReposGetStatusChecksProtectionParams, error) {
 	var params ReposGetStatusChecksProtectionParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -40943,10 +40943,10 @@ func decodeReposGetStatusChecksProtectionParams(r *http.Request) (ReposGetStatus
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -40974,10 +40974,10 @@ func decodeReposGetStatusChecksProtectionParams(r *http.Request) (ReposGetStatus
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "branch" located in "Path".
+	// Decode path: branch.
 	{
 		param := chi.URLParam(r, "branch")
 		if len(param) > 0 {
@@ -41005,7 +41005,7 @@ func decodeReposGetStatusChecksProtectionParams(r *http.Request) (ReposGetStatus
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter branch not specified`)
+			return params, errors.New(`path: branch: not specified`)
 		}
 	}
 	return params, nil
@@ -41013,7 +41013,7 @@ func decodeReposGetStatusChecksProtectionParams(r *http.Request) (ReposGetStatus
 
 func decodeReposGetTeamsWithAccessToProtectedBranchParams(r *http.Request) (ReposGetTeamsWithAccessToProtectedBranchParams, error) {
 	var params ReposGetTeamsWithAccessToProtectedBranchParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -41041,10 +41041,10 @@ func decodeReposGetTeamsWithAccessToProtectedBranchParams(r *http.Request) (Repo
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -41072,10 +41072,10 @@ func decodeReposGetTeamsWithAccessToProtectedBranchParams(r *http.Request) (Repo
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "branch" located in "Path".
+	// Decode path: branch.
 	{
 		param := chi.URLParam(r, "branch")
 		if len(param) > 0 {
@@ -41103,7 +41103,7 @@ func decodeReposGetTeamsWithAccessToProtectedBranchParams(r *http.Request) (Repo
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter branch not specified`)
+			return params, errors.New(`path: branch: not specified`)
 		}
 	}
 	return params, nil
@@ -41111,7 +41111,7 @@ func decodeReposGetTeamsWithAccessToProtectedBranchParams(r *http.Request) (Repo
 
 func decodeReposGetTopPathsParams(r *http.Request) (ReposGetTopPathsParams, error) {
 	var params ReposGetTopPathsParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -41139,10 +41139,10 @@ func decodeReposGetTopPathsParams(r *http.Request) (ReposGetTopPathsParams, erro
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -41170,7 +41170,7 @@ func decodeReposGetTopPathsParams(r *http.Request) (ReposGetTopPathsParams, erro
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
 	return params, nil
@@ -41178,7 +41178,7 @@ func decodeReposGetTopPathsParams(r *http.Request) (ReposGetTopPathsParams, erro
 
 func decodeReposGetTopReferrersParams(r *http.Request) (ReposGetTopReferrersParams, error) {
 	var params ReposGetTopReferrersParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -41206,10 +41206,10 @@ func decodeReposGetTopReferrersParams(r *http.Request) (ReposGetTopReferrersPara
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -41237,7 +41237,7 @@ func decodeReposGetTopReferrersParams(r *http.Request) (ReposGetTopReferrersPara
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
 	return params, nil
@@ -41245,7 +41245,7 @@ func decodeReposGetTopReferrersParams(r *http.Request) (ReposGetTopReferrersPara
 
 func decodeReposGetUsersWithAccessToProtectedBranchParams(r *http.Request) (ReposGetUsersWithAccessToProtectedBranchParams, error) {
 	var params ReposGetUsersWithAccessToProtectedBranchParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -41273,10 +41273,10 @@ func decodeReposGetUsersWithAccessToProtectedBranchParams(r *http.Request) (Repo
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -41304,10 +41304,10 @@ func decodeReposGetUsersWithAccessToProtectedBranchParams(r *http.Request) (Repo
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "branch" located in "Path".
+	// Decode path: branch.
 	{
 		param := chi.URLParam(r, "branch")
 		if len(param) > 0 {
@@ -41335,7 +41335,7 @@ func decodeReposGetUsersWithAccessToProtectedBranchParams(r *http.Request) (Repo
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter branch not specified`)
+			return params, errors.New(`path: branch: not specified`)
 		}
 	}
 	return params, nil
@@ -41343,7 +41343,7 @@ func decodeReposGetUsersWithAccessToProtectedBranchParams(r *http.Request) (Repo
 
 func decodeReposGetViewsParams(r *http.Request) (ReposGetViewsParams, error) {
 	var params ReposGetViewsParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -41371,10 +41371,10 @@ func decodeReposGetViewsParams(r *http.Request) (ReposGetViewsParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -41402,10 +41402,10 @@ func decodeReposGetViewsParams(r *http.Request) (ReposGetViewsParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "per" located in "Query".
+	// Decode query: per.
 	{
 		values, ok := r.URL.Query()["per"]
 		if ok {
@@ -41436,7 +41436,7 @@ func decodeReposGetViewsParams(r *http.Request) (ReposGetViewsParams, error) {
 				params.Per.SetTo(ParamsPerValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per located in query`)
+				return params, errors.Wrap(err, `query: per: parse`)
 			}
 			if err := func() error {
 
@@ -41455,7 +41455,7 @@ func decodeReposGetViewsParams(r *http.Request) (ReposGetViewsParams, error) {
 
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `invalid parameter per (query`)
+				return params, errors.Wrap(err, `query: per: invalid`)
 			}
 		}
 	}
@@ -41464,7 +41464,7 @@ func decodeReposGetViewsParams(r *http.Request) (ReposGetViewsParams, error) {
 
 func decodeReposGetWebhookParams(r *http.Request) (ReposGetWebhookParams, error) {
 	var params ReposGetWebhookParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -41492,10 +41492,10 @@ func decodeReposGetWebhookParams(r *http.Request) (ReposGetWebhookParams, error)
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -41523,10 +41523,10 @@ func decodeReposGetWebhookParams(r *http.Request) (ReposGetWebhookParams, error)
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "hook_id" located in "Path".
+	// Decode path: hook_id.
 	{
 		param := chi.URLParam(r, "hook_id")
 		if len(param) > 0 {
@@ -41554,7 +41554,7 @@ func decodeReposGetWebhookParams(r *http.Request) (ReposGetWebhookParams, error)
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter hook_id not specified`)
+			return params, errors.New(`path: hook_id: not specified`)
 		}
 	}
 	return params, nil
@@ -41562,7 +41562,7 @@ func decodeReposGetWebhookParams(r *http.Request) (ReposGetWebhookParams, error)
 
 func decodeReposGetWebhookConfigForRepoParams(r *http.Request) (ReposGetWebhookConfigForRepoParams, error) {
 	var params ReposGetWebhookConfigForRepoParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -41590,10 +41590,10 @@ func decodeReposGetWebhookConfigForRepoParams(r *http.Request) (ReposGetWebhookC
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -41621,10 +41621,10 @@ func decodeReposGetWebhookConfigForRepoParams(r *http.Request) (ReposGetWebhookC
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "hook_id" located in "Path".
+	// Decode path: hook_id.
 	{
 		param := chi.URLParam(r, "hook_id")
 		if len(param) > 0 {
@@ -41652,7 +41652,7 @@ func decodeReposGetWebhookConfigForRepoParams(r *http.Request) (ReposGetWebhookC
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter hook_id not specified`)
+			return params, errors.New(`path: hook_id: not specified`)
 		}
 	}
 	return params, nil
@@ -41660,7 +41660,7 @@ func decodeReposGetWebhookConfigForRepoParams(r *http.Request) (ReposGetWebhookC
 
 func decodeReposListAutolinksParams(r *http.Request) (ReposListAutolinksParams, error) {
 	var params ReposListAutolinksParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -41688,10 +41688,10 @@ func decodeReposListAutolinksParams(r *http.Request) (ReposListAutolinksParams, 
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -41719,10 +41719,10 @@ func decodeReposListAutolinksParams(r *http.Request) (ReposListAutolinksParams, 
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -41753,7 +41753,7 @@ func decodeReposListAutolinksParams(r *http.Request) (ReposListAutolinksParams, 
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -41762,7 +41762,7 @@ func decodeReposListAutolinksParams(r *http.Request) (ReposListAutolinksParams, 
 
 func decodeReposListBranchesParams(r *http.Request) (ReposListBranchesParams, error) {
 	var params ReposListBranchesParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -41790,10 +41790,10 @@ func decodeReposListBranchesParams(r *http.Request) (ReposListBranchesParams, er
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -41821,10 +41821,10 @@ func decodeReposListBranchesParams(r *http.Request) (ReposListBranchesParams, er
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "protected" located in "Query".
+	// Decode query: protected.
 	{
 		values, ok := r.URL.Query()["protected"]
 		if ok {
@@ -41855,11 +41855,11 @@ func decodeReposListBranchesParams(r *http.Request) (ReposListBranchesParams, er
 				params.Protected.SetTo(ParamsProtectedValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter protected located in query`)
+				return params, errors.Wrap(err, `query: protected: parse`)
 			}
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -41890,11 +41890,11 @@ func decodeReposListBranchesParams(r *http.Request) (ReposListBranchesParams, er
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -41925,7 +41925,7 @@ func decodeReposListBranchesParams(r *http.Request) (ReposListBranchesParams, er
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -41934,7 +41934,7 @@ func decodeReposListBranchesParams(r *http.Request) (ReposListBranchesParams, er
 
 func decodeReposListCollaboratorsParams(r *http.Request) (ReposListCollaboratorsParams, error) {
 	var params ReposListCollaboratorsParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -41962,10 +41962,10 @@ func decodeReposListCollaboratorsParams(r *http.Request) (ReposListCollaborators
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -41993,10 +41993,10 @@ func decodeReposListCollaboratorsParams(r *http.Request) (ReposListCollaborators
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "affiliation" located in "Query".
+	// Decode query: affiliation.
 	{
 		values, ok := r.URL.Query()["affiliation"]
 		if ok {
@@ -42027,7 +42027,7 @@ func decodeReposListCollaboratorsParams(r *http.Request) (ReposListCollaborators
 				params.Affiliation.SetTo(ParamsAffiliationValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter affiliation located in query`)
+				return params, errors.Wrap(err, `query: affiliation: parse`)
 			}
 			if err := func() error {
 
@@ -42046,11 +42046,11 @@ func decodeReposListCollaboratorsParams(r *http.Request) (ReposListCollaborators
 
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `invalid parameter affiliation (query`)
+				return params, errors.Wrap(err, `query: affiliation: invalid`)
 			}
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -42081,11 +42081,11 @@ func decodeReposListCollaboratorsParams(r *http.Request) (ReposListCollaborators
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -42116,7 +42116,7 @@ func decodeReposListCollaboratorsParams(r *http.Request) (ReposListCollaborators
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -42125,7 +42125,7 @@ func decodeReposListCollaboratorsParams(r *http.Request) (ReposListCollaborators
 
 func decodeReposListCommentsForCommitParams(r *http.Request) (ReposListCommentsForCommitParams, error) {
 	var params ReposListCommentsForCommitParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -42153,10 +42153,10 @@ func decodeReposListCommentsForCommitParams(r *http.Request) (ReposListCommentsF
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -42184,10 +42184,10 @@ func decodeReposListCommentsForCommitParams(r *http.Request) (ReposListCommentsF
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "commit_sha" located in "Path".
+	// Decode path: commit_sha.
 	{
 		param := chi.URLParam(r, "commit_sha")
 		if len(param) > 0 {
@@ -42215,10 +42215,10 @@ func decodeReposListCommentsForCommitParams(r *http.Request) (ReposListCommentsF
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter commit_sha not specified`)
+			return params, errors.New(`path: commit_sha: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -42249,11 +42249,11 @@ func decodeReposListCommentsForCommitParams(r *http.Request) (ReposListCommentsF
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -42284,7 +42284,7 @@ func decodeReposListCommentsForCommitParams(r *http.Request) (ReposListCommentsF
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -42293,7 +42293,7 @@ func decodeReposListCommentsForCommitParams(r *http.Request) (ReposListCommentsF
 
 func decodeReposListCommitCommentsForRepoParams(r *http.Request) (ReposListCommitCommentsForRepoParams, error) {
 	var params ReposListCommitCommentsForRepoParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -42321,10 +42321,10 @@ func decodeReposListCommitCommentsForRepoParams(r *http.Request) (ReposListCommi
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -42352,10 +42352,10 @@ func decodeReposListCommitCommentsForRepoParams(r *http.Request) (ReposListCommi
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -42386,11 +42386,11 @@ func decodeReposListCommitCommentsForRepoParams(r *http.Request) (ReposListCommi
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -42421,7 +42421,7 @@ func decodeReposListCommitCommentsForRepoParams(r *http.Request) (ReposListCommi
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -42430,7 +42430,7 @@ func decodeReposListCommitCommentsForRepoParams(r *http.Request) (ReposListCommi
 
 func decodeReposListCommitStatusesForRefParams(r *http.Request) (ReposListCommitStatusesForRefParams, error) {
 	var params ReposListCommitStatusesForRefParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -42458,10 +42458,10 @@ func decodeReposListCommitStatusesForRefParams(r *http.Request) (ReposListCommit
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -42489,10 +42489,10 @@ func decodeReposListCommitStatusesForRefParams(r *http.Request) (ReposListCommit
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "ref" located in "Path".
+	// Decode path: ref.
 	{
 		param := chi.URLParam(r, "ref")
 		if len(param) > 0 {
@@ -42520,10 +42520,10 @@ func decodeReposListCommitStatusesForRefParams(r *http.Request) (ReposListCommit
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter ref not specified`)
+			return params, errors.New(`path: ref: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -42554,11 +42554,11 @@ func decodeReposListCommitStatusesForRefParams(r *http.Request) (ReposListCommit
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -42589,7 +42589,7 @@ func decodeReposListCommitStatusesForRefParams(r *http.Request) (ReposListCommit
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -42598,7 +42598,7 @@ func decodeReposListCommitStatusesForRefParams(r *http.Request) (ReposListCommit
 
 func decodeReposListCommitsParams(r *http.Request) (ReposListCommitsParams, error) {
 	var params ReposListCommitsParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -42626,10 +42626,10 @@ func decodeReposListCommitsParams(r *http.Request) (ReposListCommitsParams, erro
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -42657,10 +42657,10 @@ func decodeReposListCommitsParams(r *http.Request) (ReposListCommitsParams, erro
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "sha" located in "Query".
+	// Decode query: sha.
 	{
 		values, ok := r.URL.Query()["sha"]
 		if ok {
@@ -42691,11 +42691,11 @@ func decodeReposListCommitsParams(r *http.Request) (ReposListCommitsParams, erro
 				params.Sha.SetTo(ParamsShaValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter sha located in query`)
+				return params, errors.Wrap(err, `query: sha: parse`)
 			}
 		}
 	}
-	// Decode param "path" located in "Query".
+	// Decode query: path.
 	{
 		values, ok := r.URL.Query()["path"]
 		if ok {
@@ -42726,11 +42726,11 @@ func decodeReposListCommitsParams(r *http.Request) (ReposListCommitsParams, erro
 				params.Path.SetTo(ParamsPathValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter path located in query`)
+				return params, errors.Wrap(err, `query: path: parse`)
 			}
 		}
 	}
-	// Decode param "author" located in "Query".
+	// Decode query: author.
 	{
 		values, ok := r.URL.Query()["author"]
 		if ok {
@@ -42761,11 +42761,11 @@ func decodeReposListCommitsParams(r *http.Request) (ReposListCommitsParams, erro
 				params.Author.SetTo(ParamsAuthorValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter author located in query`)
+				return params, errors.Wrap(err, `query: author: parse`)
 			}
 		}
 	}
-	// Decode param "since" located in "Query".
+	// Decode query: since.
 	{
 		values, ok := r.URL.Query()["since"]
 		if ok {
@@ -42796,11 +42796,11 @@ func decodeReposListCommitsParams(r *http.Request) (ReposListCommitsParams, erro
 				params.Since.SetTo(ParamsSinceValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter since located in query`)
+				return params, errors.Wrap(err, `query: since: parse`)
 			}
 		}
 	}
-	// Decode param "until" located in "Query".
+	// Decode query: until.
 	{
 		values, ok := r.URL.Query()["until"]
 		if ok {
@@ -42831,11 +42831,11 @@ func decodeReposListCommitsParams(r *http.Request) (ReposListCommitsParams, erro
 				params.Until.SetTo(ParamsUntilValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter until located in query`)
+				return params, errors.Wrap(err, `query: until: parse`)
 			}
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -42866,11 +42866,11 @@ func decodeReposListCommitsParams(r *http.Request) (ReposListCommitsParams, erro
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -42901,7 +42901,7 @@ func decodeReposListCommitsParams(r *http.Request) (ReposListCommitsParams, erro
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -42910,7 +42910,7 @@ func decodeReposListCommitsParams(r *http.Request) (ReposListCommitsParams, erro
 
 func decodeReposListContributorsParams(r *http.Request) (ReposListContributorsParams, error) {
 	var params ReposListContributorsParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -42938,10 +42938,10 @@ func decodeReposListContributorsParams(r *http.Request) (ReposListContributorsPa
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -42969,10 +42969,10 @@ func decodeReposListContributorsParams(r *http.Request) (ReposListContributorsPa
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "anon" located in "Query".
+	// Decode query: anon.
 	{
 		values, ok := r.URL.Query()["anon"]
 		if ok {
@@ -43003,11 +43003,11 @@ func decodeReposListContributorsParams(r *http.Request) (ReposListContributorsPa
 				params.Anon.SetTo(ParamsAnonValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter anon located in query`)
+				return params, errors.Wrap(err, `query: anon: parse`)
 			}
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -43038,11 +43038,11 @@ func decodeReposListContributorsParams(r *http.Request) (ReposListContributorsPa
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -43073,7 +43073,7 @@ func decodeReposListContributorsParams(r *http.Request) (ReposListContributorsPa
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -43082,7 +43082,7 @@ func decodeReposListContributorsParams(r *http.Request) (ReposListContributorsPa
 
 func decodeReposListDeployKeysParams(r *http.Request) (ReposListDeployKeysParams, error) {
 	var params ReposListDeployKeysParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -43110,10 +43110,10 @@ func decodeReposListDeployKeysParams(r *http.Request) (ReposListDeployKeysParams
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -43141,10 +43141,10 @@ func decodeReposListDeployKeysParams(r *http.Request) (ReposListDeployKeysParams
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -43175,11 +43175,11 @@ func decodeReposListDeployKeysParams(r *http.Request) (ReposListDeployKeysParams
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -43210,7 +43210,7 @@ func decodeReposListDeployKeysParams(r *http.Request) (ReposListDeployKeysParams
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -43219,7 +43219,7 @@ func decodeReposListDeployKeysParams(r *http.Request) (ReposListDeployKeysParams
 
 func decodeReposListDeploymentStatusesParams(r *http.Request) (ReposListDeploymentStatusesParams, error) {
 	var params ReposListDeploymentStatusesParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -43247,10 +43247,10 @@ func decodeReposListDeploymentStatusesParams(r *http.Request) (ReposListDeployme
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -43278,10 +43278,10 @@ func decodeReposListDeploymentStatusesParams(r *http.Request) (ReposListDeployme
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "deployment_id" located in "Path".
+	// Decode path: deployment_id.
 	{
 		param := chi.URLParam(r, "deployment_id")
 		if len(param) > 0 {
@@ -43309,10 +43309,10 @@ func decodeReposListDeploymentStatusesParams(r *http.Request) (ReposListDeployme
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter deployment_id not specified`)
+			return params, errors.New(`path: deployment_id: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -43343,11 +43343,11 @@ func decodeReposListDeploymentStatusesParams(r *http.Request) (ReposListDeployme
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -43378,7 +43378,7 @@ func decodeReposListDeploymentStatusesParams(r *http.Request) (ReposListDeployme
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -43387,7 +43387,7 @@ func decodeReposListDeploymentStatusesParams(r *http.Request) (ReposListDeployme
 
 func decodeReposListForOrgParams(r *http.Request) (ReposListForOrgParams, error) {
 	var params ReposListForOrgParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -43415,10 +43415,10 @@ func decodeReposListForOrgParams(r *http.Request) (ReposListForOrgParams, error)
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "type" located in "Query".
+	// Decode query: type.
 	{
 		values, ok := r.URL.Query()["type"]
 		if ok {
@@ -43449,7 +43449,7 @@ func decodeReposListForOrgParams(r *http.Request) (ReposListForOrgParams, error)
 				params.Type.SetTo(ParamsTypeValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter type located in query`)
+				return params, errors.Wrap(err, `query: type: parse`)
 			}
 			if err := func() error {
 
@@ -43468,11 +43468,11 @@ func decodeReposListForOrgParams(r *http.Request) (ReposListForOrgParams, error)
 
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `invalid parameter type (query`)
+				return params, errors.Wrap(err, `query: type: invalid`)
 			}
 		}
 	}
-	// Decode param "sort" located in "Query".
+	// Decode query: sort.
 	{
 		values, ok := r.URL.Query()["sort"]
 		if ok {
@@ -43503,7 +43503,7 @@ func decodeReposListForOrgParams(r *http.Request) (ReposListForOrgParams, error)
 				params.Sort.SetTo(ParamsSortValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter sort located in query`)
+				return params, errors.Wrap(err, `query: sort: parse`)
 			}
 			if err := func() error {
 
@@ -43522,11 +43522,11 @@ func decodeReposListForOrgParams(r *http.Request) (ReposListForOrgParams, error)
 
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `invalid parameter sort (query`)
+				return params, errors.Wrap(err, `query: sort: invalid`)
 			}
 		}
 	}
-	// Decode param "direction" located in "Query".
+	// Decode query: direction.
 	{
 		values, ok := r.URL.Query()["direction"]
 		if ok {
@@ -43557,7 +43557,7 @@ func decodeReposListForOrgParams(r *http.Request) (ReposListForOrgParams, error)
 				params.Direction.SetTo(ParamsDirectionValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter direction located in query`)
+				return params, errors.Wrap(err, `query: direction: parse`)
 			}
 			if err := func() error {
 
@@ -43576,11 +43576,11 @@ func decodeReposListForOrgParams(r *http.Request) (ReposListForOrgParams, error)
 
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `invalid parameter direction (query`)
+				return params, errors.Wrap(err, `query: direction: invalid`)
 			}
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -43611,11 +43611,11 @@ func decodeReposListForOrgParams(r *http.Request) (ReposListForOrgParams, error)
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -43646,7 +43646,7 @@ func decodeReposListForOrgParams(r *http.Request) (ReposListForOrgParams, error)
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -43655,7 +43655,7 @@ func decodeReposListForOrgParams(r *http.Request) (ReposListForOrgParams, error)
 
 func decodeReposListForUserParams(r *http.Request) (ReposListForUserParams, error) {
 	var params ReposListForUserParams
-	// Decode param "username" located in "Path".
+	// Decode path: username.
 	{
 		param := chi.URLParam(r, "username")
 		if len(param) > 0 {
@@ -43683,10 +43683,10 @@ func decodeReposListForUserParams(r *http.Request) (ReposListForUserParams, erro
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter username not specified`)
+			return params, errors.New(`path: username: not specified`)
 		}
 	}
-	// Decode param "type" located in "Query".
+	// Decode query: type.
 	{
 		values, ok := r.URL.Query()["type"]
 		if ok {
@@ -43717,7 +43717,7 @@ func decodeReposListForUserParams(r *http.Request) (ReposListForUserParams, erro
 				params.Type.SetTo(ParamsTypeValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter type located in query`)
+				return params, errors.Wrap(err, `query: type: parse`)
 			}
 			if err := func() error {
 
@@ -43736,11 +43736,11 @@ func decodeReposListForUserParams(r *http.Request) (ReposListForUserParams, erro
 
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `invalid parameter type (query`)
+				return params, errors.Wrap(err, `query: type: invalid`)
 			}
 		}
 	}
-	// Decode param "sort" located in "Query".
+	// Decode query: sort.
 	{
 		values, ok := r.URL.Query()["sort"]
 		if ok {
@@ -43771,7 +43771,7 @@ func decodeReposListForUserParams(r *http.Request) (ReposListForUserParams, erro
 				params.Sort.SetTo(ParamsSortValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter sort located in query`)
+				return params, errors.Wrap(err, `query: sort: parse`)
 			}
 			if err := func() error {
 
@@ -43790,11 +43790,11 @@ func decodeReposListForUserParams(r *http.Request) (ReposListForUserParams, erro
 
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `invalid parameter sort (query`)
+				return params, errors.Wrap(err, `query: sort: invalid`)
 			}
 		}
 	}
-	// Decode param "direction" located in "Query".
+	// Decode query: direction.
 	{
 		values, ok := r.URL.Query()["direction"]
 		if ok {
@@ -43825,7 +43825,7 @@ func decodeReposListForUserParams(r *http.Request) (ReposListForUserParams, erro
 				params.Direction.SetTo(ParamsDirectionValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter direction located in query`)
+				return params, errors.Wrap(err, `query: direction: parse`)
 			}
 			if err := func() error {
 
@@ -43844,11 +43844,11 @@ func decodeReposListForUserParams(r *http.Request) (ReposListForUserParams, erro
 
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `invalid parameter direction (query`)
+				return params, errors.Wrap(err, `query: direction: invalid`)
 			}
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -43879,11 +43879,11 @@ func decodeReposListForUserParams(r *http.Request) (ReposListForUserParams, erro
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -43914,7 +43914,7 @@ func decodeReposListForUserParams(r *http.Request) (ReposListForUserParams, erro
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -43923,7 +43923,7 @@ func decodeReposListForUserParams(r *http.Request) (ReposListForUserParams, erro
 
 func decodeReposListForksParams(r *http.Request) (ReposListForksParams, error) {
 	var params ReposListForksParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -43951,10 +43951,10 @@ func decodeReposListForksParams(r *http.Request) (ReposListForksParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -43982,10 +43982,10 @@ func decodeReposListForksParams(r *http.Request) (ReposListForksParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "sort" located in "Query".
+	// Decode query: sort.
 	{
 		values, ok := r.URL.Query()["sort"]
 		if ok {
@@ -44016,7 +44016,7 @@ func decodeReposListForksParams(r *http.Request) (ReposListForksParams, error) {
 				params.Sort.SetTo(ParamsSortValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter sort located in query`)
+				return params, errors.Wrap(err, `query: sort: parse`)
 			}
 			if err := func() error {
 
@@ -44035,11 +44035,11 @@ func decodeReposListForksParams(r *http.Request) (ReposListForksParams, error) {
 
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `invalid parameter sort (query`)
+				return params, errors.Wrap(err, `query: sort: invalid`)
 			}
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -44070,11 +44070,11 @@ func decodeReposListForksParams(r *http.Request) (ReposListForksParams, error) {
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -44105,7 +44105,7 @@ func decodeReposListForksParams(r *http.Request) (ReposListForksParams, error) {
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -44114,7 +44114,7 @@ func decodeReposListForksParams(r *http.Request) (ReposListForksParams, error) {
 
 func decodeReposListInvitationsParams(r *http.Request) (ReposListInvitationsParams, error) {
 	var params ReposListInvitationsParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -44142,10 +44142,10 @@ func decodeReposListInvitationsParams(r *http.Request) (ReposListInvitationsPara
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -44173,10 +44173,10 @@ func decodeReposListInvitationsParams(r *http.Request) (ReposListInvitationsPara
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -44207,11 +44207,11 @@ func decodeReposListInvitationsParams(r *http.Request) (ReposListInvitationsPara
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -44242,7 +44242,7 @@ func decodeReposListInvitationsParams(r *http.Request) (ReposListInvitationsPara
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -44251,7 +44251,7 @@ func decodeReposListInvitationsParams(r *http.Request) (ReposListInvitationsPara
 
 func decodeReposListInvitationsForAuthenticatedUserParams(r *http.Request) (ReposListInvitationsForAuthenticatedUserParams, error) {
 	var params ReposListInvitationsForAuthenticatedUserParams
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -44282,11 +44282,11 @@ func decodeReposListInvitationsForAuthenticatedUserParams(r *http.Request) (Repo
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -44317,7 +44317,7 @@ func decodeReposListInvitationsForAuthenticatedUserParams(r *http.Request) (Repo
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -44326,7 +44326,7 @@ func decodeReposListInvitationsForAuthenticatedUserParams(r *http.Request) (Repo
 
 func decodeReposListLanguagesParams(r *http.Request) (ReposListLanguagesParams, error) {
 	var params ReposListLanguagesParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -44354,10 +44354,10 @@ func decodeReposListLanguagesParams(r *http.Request) (ReposListLanguagesParams, 
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -44385,7 +44385,7 @@ func decodeReposListLanguagesParams(r *http.Request) (ReposListLanguagesParams, 
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
 	return params, nil
@@ -44393,7 +44393,7 @@ func decodeReposListLanguagesParams(r *http.Request) (ReposListLanguagesParams, 
 
 func decodeReposListPagesBuildsParams(r *http.Request) (ReposListPagesBuildsParams, error) {
 	var params ReposListPagesBuildsParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -44421,10 +44421,10 @@ func decodeReposListPagesBuildsParams(r *http.Request) (ReposListPagesBuildsPara
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -44452,10 +44452,10 @@ func decodeReposListPagesBuildsParams(r *http.Request) (ReposListPagesBuildsPara
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -44486,11 +44486,11 @@ func decodeReposListPagesBuildsParams(r *http.Request) (ReposListPagesBuildsPara
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -44521,7 +44521,7 @@ func decodeReposListPagesBuildsParams(r *http.Request) (ReposListPagesBuildsPara
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -44530,7 +44530,7 @@ func decodeReposListPagesBuildsParams(r *http.Request) (ReposListPagesBuildsPara
 
 func decodeReposListPullRequestsAssociatedWithCommitParams(r *http.Request) (ReposListPullRequestsAssociatedWithCommitParams, error) {
 	var params ReposListPullRequestsAssociatedWithCommitParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -44558,10 +44558,10 @@ func decodeReposListPullRequestsAssociatedWithCommitParams(r *http.Request) (Rep
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -44589,10 +44589,10 @@ func decodeReposListPullRequestsAssociatedWithCommitParams(r *http.Request) (Rep
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "commit_sha" located in "Path".
+	// Decode path: commit_sha.
 	{
 		param := chi.URLParam(r, "commit_sha")
 		if len(param) > 0 {
@@ -44620,10 +44620,10 @@ func decodeReposListPullRequestsAssociatedWithCommitParams(r *http.Request) (Rep
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter commit_sha not specified`)
+			return params, errors.New(`path: commit_sha: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -44654,11 +44654,11 @@ func decodeReposListPullRequestsAssociatedWithCommitParams(r *http.Request) (Rep
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -44689,7 +44689,7 @@ func decodeReposListPullRequestsAssociatedWithCommitParams(r *http.Request) (Rep
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -44698,7 +44698,7 @@ func decodeReposListPullRequestsAssociatedWithCommitParams(r *http.Request) (Rep
 
 func decodeReposListReleaseAssetsParams(r *http.Request) (ReposListReleaseAssetsParams, error) {
 	var params ReposListReleaseAssetsParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -44726,10 +44726,10 @@ func decodeReposListReleaseAssetsParams(r *http.Request) (ReposListReleaseAssets
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -44757,10 +44757,10 @@ func decodeReposListReleaseAssetsParams(r *http.Request) (ReposListReleaseAssets
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "release_id" located in "Path".
+	// Decode path: release_id.
 	{
 		param := chi.URLParam(r, "release_id")
 		if len(param) > 0 {
@@ -44788,10 +44788,10 @@ func decodeReposListReleaseAssetsParams(r *http.Request) (ReposListReleaseAssets
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter release_id not specified`)
+			return params, errors.New(`path: release_id: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -44822,11 +44822,11 @@ func decodeReposListReleaseAssetsParams(r *http.Request) (ReposListReleaseAssets
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -44857,7 +44857,7 @@ func decodeReposListReleaseAssetsParams(r *http.Request) (ReposListReleaseAssets
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -44866,7 +44866,7 @@ func decodeReposListReleaseAssetsParams(r *http.Request) (ReposListReleaseAssets
 
 func decodeReposListReleasesParams(r *http.Request) (ReposListReleasesParams, error) {
 	var params ReposListReleasesParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -44894,10 +44894,10 @@ func decodeReposListReleasesParams(r *http.Request) (ReposListReleasesParams, er
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -44925,10 +44925,10 @@ func decodeReposListReleasesParams(r *http.Request) (ReposListReleasesParams, er
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -44959,11 +44959,11 @@ func decodeReposListReleasesParams(r *http.Request) (ReposListReleasesParams, er
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -44994,7 +44994,7 @@ func decodeReposListReleasesParams(r *http.Request) (ReposListReleasesParams, er
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -45003,7 +45003,7 @@ func decodeReposListReleasesParams(r *http.Request) (ReposListReleasesParams, er
 
 func decodeReposListTagsParams(r *http.Request) (ReposListTagsParams, error) {
 	var params ReposListTagsParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -45031,10 +45031,10 @@ func decodeReposListTagsParams(r *http.Request) (ReposListTagsParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -45062,10 +45062,10 @@ func decodeReposListTagsParams(r *http.Request) (ReposListTagsParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -45096,11 +45096,11 @@ func decodeReposListTagsParams(r *http.Request) (ReposListTagsParams, error) {
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -45131,7 +45131,7 @@ func decodeReposListTagsParams(r *http.Request) (ReposListTagsParams, error) {
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -45140,7 +45140,7 @@ func decodeReposListTagsParams(r *http.Request) (ReposListTagsParams, error) {
 
 func decodeReposListTeamsParams(r *http.Request) (ReposListTeamsParams, error) {
 	var params ReposListTeamsParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -45168,10 +45168,10 @@ func decodeReposListTeamsParams(r *http.Request) (ReposListTeamsParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -45199,10 +45199,10 @@ func decodeReposListTeamsParams(r *http.Request) (ReposListTeamsParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -45233,11 +45233,11 @@ func decodeReposListTeamsParams(r *http.Request) (ReposListTeamsParams, error) {
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -45268,7 +45268,7 @@ func decodeReposListTeamsParams(r *http.Request) (ReposListTeamsParams, error) {
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -45277,7 +45277,7 @@ func decodeReposListTeamsParams(r *http.Request) (ReposListTeamsParams, error) {
 
 func decodeReposListWebhooksParams(r *http.Request) (ReposListWebhooksParams, error) {
 	var params ReposListWebhooksParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -45305,10 +45305,10 @@ func decodeReposListWebhooksParams(r *http.Request) (ReposListWebhooksParams, er
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -45336,10 +45336,10 @@ func decodeReposListWebhooksParams(r *http.Request) (ReposListWebhooksParams, er
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -45370,11 +45370,11 @@ func decodeReposListWebhooksParams(r *http.Request) (ReposListWebhooksParams, er
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -45405,7 +45405,7 @@ func decodeReposListWebhooksParams(r *http.Request) (ReposListWebhooksParams, er
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -45414,7 +45414,7 @@ func decodeReposListWebhooksParams(r *http.Request) (ReposListWebhooksParams, er
 
 func decodeReposMergeUpstreamParams(r *http.Request) (ReposMergeUpstreamParams, error) {
 	var params ReposMergeUpstreamParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -45442,10 +45442,10 @@ func decodeReposMergeUpstreamParams(r *http.Request) (ReposMergeUpstreamParams, 
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -45473,7 +45473,7 @@ func decodeReposMergeUpstreamParams(r *http.Request) (ReposMergeUpstreamParams, 
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
 	return params, nil
@@ -45481,7 +45481,7 @@ func decodeReposMergeUpstreamParams(r *http.Request) (ReposMergeUpstreamParams, 
 
 func decodeReposPingWebhookParams(r *http.Request) (ReposPingWebhookParams, error) {
 	var params ReposPingWebhookParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -45509,10 +45509,10 @@ func decodeReposPingWebhookParams(r *http.Request) (ReposPingWebhookParams, erro
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -45540,10 +45540,10 @@ func decodeReposPingWebhookParams(r *http.Request) (ReposPingWebhookParams, erro
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "hook_id" located in "Path".
+	// Decode path: hook_id.
 	{
 		param := chi.URLParam(r, "hook_id")
 		if len(param) > 0 {
@@ -45571,7 +45571,7 @@ func decodeReposPingWebhookParams(r *http.Request) (ReposPingWebhookParams, erro
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter hook_id not specified`)
+			return params, errors.New(`path: hook_id: not specified`)
 		}
 	}
 	return params, nil
@@ -45579,7 +45579,7 @@ func decodeReposPingWebhookParams(r *http.Request) (ReposPingWebhookParams, erro
 
 func decodeReposRemoveCollaboratorParams(r *http.Request) (ReposRemoveCollaboratorParams, error) {
 	var params ReposRemoveCollaboratorParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -45607,10 +45607,10 @@ func decodeReposRemoveCollaboratorParams(r *http.Request) (ReposRemoveCollaborat
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -45638,10 +45638,10 @@ func decodeReposRemoveCollaboratorParams(r *http.Request) (ReposRemoveCollaborat
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "username" located in "Path".
+	// Decode path: username.
 	{
 		param := chi.URLParam(r, "username")
 		if len(param) > 0 {
@@ -45669,7 +45669,7 @@ func decodeReposRemoveCollaboratorParams(r *http.Request) (ReposRemoveCollaborat
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter username not specified`)
+			return params, errors.New(`path: username: not specified`)
 		}
 	}
 	return params, nil
@@ -45677,7 +45677,7 @@ func decodeReposRemoveCollaboratorParams(r *http.Request) (ReposRemoveCollaborat
 
 func decodeReposRemoveStatusCheckProtectionParams(r *http.Request) (ReposRemoveStatusCheckProtectionParams, error) {
 	var params ReposRemoveStatusCheckProtectionParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -45705,10 +45705,10 @@ func decodeReposRemoveStatusCheckProtectionParams(r *http.Request) (ReposRemoveS
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -45736,10 +45736,10 @@ func decodeReposRemoveStatusCheckProtectionParams(r *http.Request) (ReposRemoveS
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "branch" located in "Path".
+	// Decode path: branch.
 	{
 		param := chi.URLParam(r, "branch")
 		if len(param) > 0 {
@@ -45767,7 +45767,7 @@ func decodeReposRemoveStatusCheckProtectionParams(r *http.Request) (ReposRemoveS
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter branch not specified`)
+			return params, errors.New(`path: branch: not specified`)
 		}
 	}
 	return params, nil
@@ -45775,7 +45775,7 @@ func decodeReposRemoveStatusCheckProtectionParams(r *http.Request) (ReposRemoveS
 
 func decodeReposReplaceAllTopicsParams(r *http.Request) (ReposReplaceAllTopicsParams, error) {
 	var params ReposReplaceAllTopicsParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -45803,10 +45803,10 @@ func decodeReposReplaceAllTopicsParams(r *http.Request) (ReposReplaceAllTopicsPa
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -45834,7 +45834,7 @@ func decodeReposReplaceAllTopicsParams(r *http.Request) (ReposReplaceAllTopicsPa
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
 	return params, nil
@@ -45842,7 +45842,7 @@ func decodeReposReplaceAllTopicsParams(r *http.Request) (ReposReplaceAllTopicsPa
 
 func decodeReposRequestPagesBuildParams(r *http.Request) (ReposRequestPagesBuildParams, error) {
 	var params ReposRequestPagesBuildParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -45870,10 +45870,10 @@ func decodeReposRequestPagesBuildParams(r *http.Request) (ReposRequestPagesBuild
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -45901,7 +45901,7 @@ func decodeReposRequestPagesBuildParams(r *http.Request) (ReposRequestPagesBuild
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
 	return params, nil
@@ -45909,7 +45909,7 @@ func decodeReposRequestPagesBuildParams(r *http.Request) (ReposRequestPagesBuild
 
 func decodeReposSetAdminBranchProtectionParams(r *http.Request) (ReposSetAdminBranchProtectionParams, error) {
 	var params ReposSetAdminBranchProtectionParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -45937,10 +45937,10 @@ func decodeReposSetAdminBranchProtectionParams(r *http.Request) (ReposSetAdminBr
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -45968,10 +45968,10 @@ func decodeReposSetAdminBranchProtectionParams(r *http.Request) (ReposSetAdminBr
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "branch" located in "Path".
+	// Decode path: branch.
 	{
 		param := chi.URLParam(r, "branch")
 		if len(param) > 0 {
@@ -45999,7 +45999,7 @@ func decodeReposSetAdminBranchProtectionParams(r *http.Request) (ReposSetAdminBr
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter branch not specified`)
+			return params, errors.New(`path: branch: not specified`)
 		}
 	}
 	return params, nil
@@ -46007,7 +46007,7 @@ func decodeReposSetAdminBranchProtectionParams(r *http.Request) (ReposSetAdminBr
 
 func decodeReposTestPushWebhookParams(r *http.Request) (ReposTestPushWebhookParams, error) {
 	var params ReposTestPushWebhookParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -46035,10 +46035,10 @@ func decodeReposTestPushWebhookParams(r *http.Request) (ReposTestPushWebhookPara
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -46066,10 +46066,10 @@ func decodeReposTestPushWebhookParams(r *http.Request) (ReposTestPushWebhookPara
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "hook_id" located in "Path".
+	// Decode path: hook_id.
 	{
 		param := chi.URLParam(r, "hook_id")
 		if len(param) > 0 {
@@ -46097,7 +46097,7 @@ func decodeReposTestPushWebhookParams(r *http.Request) (ReposTestPushWebhookPara
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter hook_id not specified`)
+			return params, errors.New(`path: hook_id: not specified`)
 		}
 	}
 	return params, nil
@@ -46105,7 +46105,7 @@ func decodeReposTestPushWebhookParams(r *http.Request) (ReposTestPushWebhookPara
 
 func decodeReposTransferParams(r *http.Request) (ReposTransferParams, error) {
 	var params ReposTransferParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -46133,10 +46133,10 @@ func decodeReposTransferParams(r *http.Request) (ReposTransferParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -46164,7 +46164,7 @@ func decodeReposTransferParams(r *http.Request) (ReposTransferParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
 	return params, nil
@@ -46172,7 +46172,7 @@ func decodeReposTransferParams(r *http.Request) (ReposTransferParams, error) {
 
 func decodeReposUpdateBranchProtectionParams(r *http.Request) (ReposUpdateBranchProtectionParams, error) {
 	var params ReposUpdateBranchProtectionParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -46200,10 +46200,10 @@ func decodeReposUpdateBranchProtectionParams(r *http.Request) (ReposUpdateBranch
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -46231,10 +46231,10 @@ func decodeReposUpdateBranchProtectionParams(r *http.Request) (ReposUpdateBranch
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "branch" located in "Path".
+	// Decode path: branch.
 	{
 		param := chi.URLParam(r, "branch")
 		if len(param) > 0 {
@@ -46262,7 +46262,7 @@ func decodeReposUpdateBranchProtectionParams(r *http.Request) (ReposUpdateBranch
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter branch not specified`)
+			return params, errors.New(`path: branch: not specified`)
 		}
 	}
 	return params, nil
@@ -46270,7 +46270,7 @@ func decodeReposUpdateBranchProtectionParams(r *http.Request) (ReposUpdateBranch
 
 func decodeReposUpdateCommitCommentParams(r *http.Request) (ReposUpdateCommitCommentParams, error) {
 	var params ReposUpdateCommitCommentParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -46298,10 +46298,10 @@ func decodeReposUpdateCommitCommentParams(r *http.Request) (ReposUpdateCommitCom
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -46329,10 +46329,10 @@ func decodeReposUpdateCommitCommentParams(r *http.Request) (ReposUpdateCommitCom
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "comment_id" located in "Path".
+	// Decode path: comment_id.
 	{
 		param := chi.URLParam(r, "comment_id")
 		if len(param) > 0 {
@@ -46360,7 +46360,7 @@ func decodeReposUpdateCommitCommentParams(r *http.Request) (ReposUpdateCommitCom
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter comment_id not specified`)
+			return params, errors.New(`path: comment_id: not specified`)
 		}
 	}
 	return params, nil
@@ -46368,7 +46368,7 @@ func decodeReposUpdateCommitCommentParams(r *http.Request) (ReposUpdateCommitCom
 
 func decodeReposUpdateInvitationParams(r *http.Request) (ReposUpdateInvitationParams, error) {
 	var params ReposUpdateInvitationParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -46396,10 +46396,10 @@ func decodeReposUpdateInvitationParams(r *http.Request) (ReposUpdateInvitationPa
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -46427,10 +46427,10 @@ func decodeReposUpdateInvitationParams(r *http.Request) (ReposUpdateInvitationPa
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "invitation_id" located in "Path".
+	// Decode path: invitation_id.
 	{
 		param := chi.URLParam(r, "invitation_id")
 		if len(param) > 0 {
@@ -46458,7 +46458,7 @@ func decodeReposUpdateInvitationParams(r *http.Request) (ReposUpdateInvitationPa
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter invitation_id not specified`)
+			return params, errors.New(`path: invitation_id: not specified`)
 		}
 	}
 	return params, nil
@@ -46466,7 +46466,7 @@ func decodeReposUpdateInvitationParams(r *http.Request) (ReposUpdateInvitationPa
 
 func decodeReposUpdateReleaseParams(r *http.Request) (ReposUpdateReleaseParams, error) {
 	var params ReposUpdateReleaseParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -46494,10 +46494,10 @@ func decodeReposUpdateReleaseParams(r *http.Request) (ReposUpdateReleaseParams, 
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -46525,10 +46525,10 @@ func decodeReposUpdateReleaseParams(r *http.Request) (ReposUpdateReleaseParams, 
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "release_id" located in "Path".
+	// Decode path: release_id.
 	{
 		param := chi.URLParam(r, "release_id")
 		if len(param) > 0 {
@@ -46556,7 +46556,7 @@ func decodeReposUpdateReleaseParams(r *http.Request) (ReposUpdateReleaseParams, 
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter release_id not specified`)
+			return params, errors.New(`path: release_id: not specified`)
 		}
 	}
 	return params, nil
@@ -46564,7 +46564,7 @@ func decodeReposUpdateReleaseParams(r *http.Request) (ReposUpdateReleaseParams, 
 
 func decodeReposUpdateReleaseAssetParams(r *http.Request) (ReposUpdateReleaseAssetParams, error) {
 	var params ReposUpdateReleaseAssetParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -46592,10 +46592,10 @@ func decodeReposUpdateReleaseAssetParams(r *http.Request) (ReposUpdateReleaseAss
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -46623,10 +46623,10 @@ func decodeReposUpdateReleaseAssetParams(r *http.Request) (ReposUpdateReleaseAss
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "asset_id" located in "Path".
+	// Decode path: asset_id.
 	{
 		param := chi.URLParam(r, "asset_id")
 		if len(param) > 0 {
@@ -46654,7 +46654,7 @@ func decodeReposUpdateReleaseAssetParams(r *http.Request) (ReposUpdateReleaseAss
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter asset_id not specified`)
+			return params, errors.New(`path: asset_id: not specified`)
 		}
 	}
 	return params, nil
@@ -46662,7 +46662,7 @@ func decodeReposUpdateReleaseAssetParams(r *http.Request) (ReposUpdateReleaseAss
 
 func decodeReposUpdateWebhookConfigForRepoParams(r *http.Request) (ReposUpdateWebhookConfigForRepoParams, error) {
 	var params ReposUpdateWebhookConfigForRepoParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -46690,10 +46690,10 @@ func decodeReposUpdateWebhookConfigForRepoParams(r *http.Request) (ReposUpdateWe
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -46721,10 +46721,10 @@ func decodeReposUpdateWebhookConfigForRepoParams(r *http.Request) (ReposUpdateWe
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "hook_id" located in "Path".
+	// Decode path: hook_id.
 	{
 		param := chi.URLParam(r, "hook_id")
 		if len(param) > 0 {
@@ -46752,7 +46752,7 @@ func decodeReposUpdateWebhookConfigForRepoParams(r *http.Request) (ReposUpdateWe
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter hook_id not specified`)
+			return params, errors.New(`path: hook_id: not specified`)
 		}
 	}
 	return params, nil
@@ -46760,7 +46760,7 @@ func decodeReposUpdateWebhookConfigForRepoParams(r *http.Request) (ReposUpdateWe
 
 func decodeScimDeleteUserFromOrgParams(r *http.Request) (ScimDeleteUserFromOrgParams, error) {
 	var params ScimDeleteUserFromOrgParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -46788,10 +46788,10 @@ func decodeScimDeleteUserFromOrgParams(r *http.Request) (ScimDeleteUserFromOrgPa
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "scim_user_id" located in "Path".
+	// Decode path: scim_user_id.
 	{
 		param := chi.URLParam(r, "scim_user_id")
 		if len(param) > 0 {
@@ -46819,7 +46819,7 @@ func decodeScimDeleteUserFromOrgParams(r *http.Request) (ScimDeleteUserFromOrgPa
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter scim_user_id not specified`)
+			return params, errors.New(`path: scim_user_id: not specified`)
 		}
 	}
 	return params, nil
@@ -46827,7 +46827,7 @@ func decodeScimDeleteUserFromOrgParams(r *http.Request) (ScimDeleteUserFromOrgPa
 
 func decodeSearchCommitsParams(r *http.Request) (SearchCommitsParams, error) {
 	var params SearchCommitsParams
-	// Decode param "q" located in "Query".
+	// Decode query: q.
 	{
 		values, ok := r.URL.Query()["q"]
 		if ok {
@@ -46851,13 +46851,13 @@ func decodeSearchCommitsParams(r *http.Request) (SearchCommitsParams, error) {
 				params.Q = c
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter q located in query`)
+				return params, errors.Wrap(err, `query: q: parse`)
 			}
 		} else {
-			return params, errors.New(`query parameter q not specified`)
+			return params, errors.New(`query: q: not specified`)
 		}
 	}
-	// Decode param "sort" located in "Query".
+	// Decode query: sort.
 	{
 		values, ok := r.URL.Query()["sort"]
 		if ok {
@@ -46888,7 +46888,7 @@ func decodeSearchCommitsParams(r *http.Request) (SearchCommitsParams, error) {
 				params.Sort.SetTo(ParamsSortValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter sort located in query`)
+				return params, errors.Wrap(err, `query: sort: parse`)
 			}
 			if err := func() error {
 
@@ -46907,11 +46907,11 @@ func decodeSearchCommitsParams(r *http.Request) (SearchCommitsParams, error) {
 
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `invalid parameter sort (query`)
+				return params, errors.Wrap(err, `query: sort: invalid`)
 			}
 		}
 	}
-	// Decode param "order" located in "Query".
+	// Decode query: order.
 	{
 		values, ok := r.URL.Query()["order"]
 		if ok {
@@ -46942,7 +46942,7 @@ func decodeSearchCommitsParams(r *http.Request) (SearchCommitsParams, error) {
 				params.Order.SetTo(ParamsOrderValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter order located in query`)
+				return params, errors.Wrap(err, `query: order: parse`)
 			}
 			if err := func() error {
 
@@ -46961,11 +46961,11 @@ func decodeSearchCommitsParams(r *http.Request) (SearchCommitsParams, error) {
 
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `invalid parameter order (query`)
+				return params, errors.Wrap(err, `query: order: invalid`)
 			}
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -46996,11 +46996,11 @@ func decodeSearchCommitsParams(r *http.Request) (SearchCommitsParams, error) {
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -47031,7 +47031,7 @@ func decodeSearchCommitsParams(r *http.Request) (SearchCommitsParams, error) {
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -47040,7 +47040,7 @@ func decodeSearchCommitsParams(r *http.Request) (SearchCommitsParams, error) {
 
 func decodeSearchTopicsParams(r *http.Request) (SearchTopicsParams, error) {
 	var params SearchTopicsParams
-	// Decode param "q" located in "Query".
+	// Decode query: q.
 	{
 		values, ok := r.URL.Query()["q"]
 		if ok {
@@ -47064,13 +47064,13 @@ func decodeSearchTopicsParams(r *http.Request) (SearchTopicsParams, error) {
 				params.Q = c
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter q located in query`)
+				return params, errors.Wrap(err, `query: q: parse`)
 			}
 		} else {
-			return params, errors.New(`query parameter q not specified`)
+			return params, errors.New(`query: q: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -47101,11 +47101,11 @@ func decodeSearchTopicsParams(r *http.Request) (SearchTopicsParams, error) {
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -47136,7 +47136,7 @@ func decodeSearchTopicsParams(r *http.Request) (SearchTopicsParams, error) {
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -47145,7 +47145,7 @@ func decodeSearchTopicsParams(r *http.Request) (SearchTopicsParams, error) {
 
 func decodeSecretScanningGetAlertParams(r *http.Request) (SecretScanningGetAlertParams, error) {
 	var params SecretScanningGetAlertParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -47173,10 +47173,10 @@ func decodeSecretScanningGetAlertParams(r *http.Request) (SecretScanningGetAlert
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -47204,10 +47204,10 @@ func decodeSecretScanningGetAlertParams(r *http.Request) (SecretScanningGetAlert
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "alert_number" located in "Path".
+	// Decode path: alert_number.
 	{
 		param := chi.URLParam(r, "alert_number")
 		if len(param) > 0 {
@@ -47242,7 +47242,7 @@ func decodeSecretScanningGetAlertParams(r *http.Request) (SecretScanningGetAlert
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter alert_number not specified`)
+			return params, errors.New(`path: alert_number: not specified`)
 		}
 	}
 	return params, nil
@@ -47250,7 +47250,7 @@ func decodeSecretScanningGetAlertParams(r *http.Request) (SecretScanningGetAlert
 
 func decodeSecretScanningListAlertsForOrgParams(r *http.Request) (SecretScanningListAlertsForOrgParams, error) {
 	var params SecretScanningListAlertsForOrgParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -47278,10 +47278,10 @@ func decodeSecretScanningListAlertsForOrgParams(r *http.Request) (SecretScanning
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "state" located in "Query".
+	// Decode query: state.
 	{
 		values, ok := r.URL.Query()["state"]
 		if ok {
@@ -47312,7 +47312,7 @@ func decodeSecretScanningListAlertsForOrgParams(r *http.Request) (SecretScanning
 				params.State.SetTo(ParamsStateValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter state located in query`)
+				return params, errors.Wrap(err, `query: state: parse`)
 			}
 			if err := func() error {
 
@@ -47331,11 +47331,11 @@ func decodeSecretScanningListAlertsForOrgParams(r *http.Request) (SecretScanning
 
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `invalid parameter state (query`)
+				return params, errors.Wrap(err, `query: state: invalid`)
 			}
 		}
 	}
-	// Decode param "secret_type" located in "Query".
+	// Decode query: secret_type.
 	{
 		values, ok := r.URL.Query()["secret_type"]
 		if ok {
@@ -47366,11 +47366,11 @@ func decodeSecretScanningListAlertsForOrgParams(r *http.Request) (SecretScanning
 				params.SecretType.SetTo(ParamsSecretTypeValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter secret_type located in query`)
+				return params, errors.Wrap(err, `query: secret_type: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -47401,11 +47401,11 @@ func decodeSecretScanningListAlertsForOrgParams(r *http.Request) (SecretScanning
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -47436,7 +47436,7 @@ func decodeSecretScanningListAlertsForOrgParams(r *http.Request) (SecretScanning
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
@@ -47445,7 +47445,7 @@ func decodeSecretScanningListAlertsForOrgParams(r *http.Request) (SecretScanning
 
 func decodeSecretScanningListAlertsForRepoParams(r *http.Request) (SecretScanningListAlertsForRepoParams, error) {
 	var params SecretScanningListAlertsForRepoParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -47473,10 +47473,10 @@ func decodeSecretScanningListAlertsForRepoParams(r *http.Request) (SecretScannin
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -47504,10 +47504,10 @@ func decodeSecretScanningListAlertsForRepoParams(r *http.Request) (SecretScannin
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "state" located in "Query".
+	// Decode query: state.
 	{
 		values, ok := r.URL.Query()["state"]
 		if ok {
@@ -47538,7 +47538,7 @@ func decodeSecretScanningListAlertsForRepoParams(r *http.Request) (SecretScannin
 				params.State.SetTo(ParamsStateValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter state located in query`)
+				return params, errors.Wrap(err, `query: state: parse`)
 			}
 			if err := func() error {
 
@@ -47557,11 +47557,11 @@ func decodeSecretScanningListAlertsForRepoParams(r *http.Request) (SecretScannin
 
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `invalid parameter state (query`)
+				return params, errors.Wrap(err, `query: state: invalid`)
 			}
 		}
 	}
-	// Decode param "secret_type" located in "Query".
+	// Decode query: secret_type.
 	{
 		values, ok := r.URL.Query()["secret_type"]
 		if ok {
@@ -47592,11 +47592,11 @@ func decodeSecretScanningListAlertsForRepoParams(r *http.Request) (SecretScannin
 				params.SecretType.SetTo(ParamsSecretTypeValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter secret_type located in query`)
+				return params, errors.Wrap(err, `query: secret_type: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -47627,11 +47627,11 @@ func decodeSecretScanningListAlertsForRepoParams(r *http.Request) (SecretScannin
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -47662,7 +47662,7 @@ func decodeSecretScanningListAlertsForRepoParams(r *http.Request) (SecretScannin
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
@@ -47671,7 +47671,7 @@ func decodeSecretScanningListAlertsForRepoParams(r *http.Request) (SecretScannin
 
 func decodeSecretScanningUpdateAlertParams(r *http.Request) (SecretScanningUpdateAlertParams, error) {
 	var params SecretScanningUpdateAlertParams
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -47699,10 +47699,10 @@ func decodeSecretScanningUpdateAlertParams(r *http.Request) (SecretScanningUpdat
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -47730,10 +47730,10 @@ func decodeSecretScanningUpdateAlertParams(r *http.Request) (SecretScanningUpdat
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
-	// Decode param "alert_number" located in "Path".
+	// Decode path: alert_number.
 	{
 		param := chi.URLParam(r, "alert_number")
 		if len(param) > 0 {
@@ -47768,7 +47768,7 @@ func decodeSecretScanningUpdateAlertParams(r *http.Request) (SecretScanningUpdat
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter alert_number not specified`)
+			return params, errors.New(`path: alert_number: not specified`)
 		}
 	}
 	return params, nil
@@ -47776,7 +47776,7 @@ func decodeSecretScanningUpdateAlertParams(r *http.Request) (SecretScanningUpdat
 
 func decodeTeamsAddMemberLegacyParams(r *http.Request) (TeamsAddMemberLegacyParams, error) {
 	var params TeamsAddMemberLegacyParams
-	// Decode param "team_id" located in "Path".
+	// Decode path: team_id.
 	{
 		param := chi.URLParam(r, "team_id")
 		if len(param) > 0 {
@@ -47804,10 +47804,10 @@ func decodeTeamsAddMemberLegacyParams(r *http.Request) (TeamsAddMemberLegacyPara
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter team_id not specified`)
+			return params, errors.New(`path: team_id: not specified`)
 		}
 	}
-	// Decode param "username" located in "Path".
+	// Decode path: username.
 	{
 		param := chi.URLParam(r, "username")
 		if len(param) > 0 {
@@ -47835,7 +47835,7 @@ func decodeTeamsAddMemberLegacyParams(r *http.Request) (TeamsAddMemberLegacyPara
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter username not specified`)
+			return params, errors.New(`path: username: not specified`)
 		}
 	}
 	return params, nil
@@ -47843,7 +47843,7 @@ func decodeTeamsAddMemberLegacyParams(r *http.Request) (TeamsAddMemberLegacyPara
 
 func decodeTeamsAddOrUpdateMembershipForUserInOrgParams(r *http.Request) (TeamsAddOrUpdateMembershipForUserInOrgParams, error) {
 	var params TeamsAddOrUpdateMembershipForUserInOrgParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -47871,10 +47871,10 @@ func decodeTeamsAddOrUpdateMembershipForUserInOrgParams(r *http.Request) (TeamsA
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "team_slug" located in "Path".
+	// Decode path: team_slug.
 	{
 		param := chi.URLParam(r, "team_slug")
 		if len(param) > 0 {
@@ -47902,10 +47902,10 @@ func decodeTeamsAddOrUpdateMembershipForUserInOrgParams(r *http.Request) (TeamsA
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter team_slug not specified`)
+			return params, errors.New(`path: team_slug: not specified`)
 		}
 	}
-	// Decode param "username" located in "Path".
+	// Decode path: username.
 	{
 		param := chi.URLParam(r, "username")
 		if len(param) > 0 {
@@ -47933,7 +47933,7 @@ func decodeTeamsAddOrUpdateMembershipForUserInOrgParams(r *http.Request) (TeamsA
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter username not specified`)
+			return params, errors.New(`path: username: not specified`)
 		}
 	}
 	return params, nil
@@ -47941,7 +47941,7 @@ func decodeTeamsAddOrUpdateMembershipForUserInOrgParams(r *http.Request) (TeamsA
 
 func decodeTeamsAddOrUpdateMembershipForUserLegacyParams(r *http.Request) (TeamsAddOrUpdateMembershipForUserLegacyParams, error) {
 	var params TeamsAddOrUpdateMembershipForUserLegacyParams
-	// Decode param "team_id" located in "Path".
+	// Decode path: team_id.
 	{
 		param := chi.URLParam(r, "team_id")
 		if len(param) > 0 {
@@ -47969,10 +47969,10 @@ func decodeTeamsAddOrUpdateMembershipForUserLegacyParams(r *http.Request) (Teams
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter team_id not specified`)
+			return params, errors.New(`path: team_id: not specified`)
 		}
 	}
-	// Decode param "username" located in "Path".
+	// Decode path: username.
 	{
 		param := chi.URLParam(r, "username")
 		if len(param) > 0 {
@@ -48000,7 +48000,7 @@ func decodeTeamsAddOrUpdateMembershipForUserLegacyParams(r *http.Request) (Teams
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter username not specified`)
+			return params, errors.New(`path: username: not specified`)
 		}
 	}
 	return params, nil
@@ -48008,7 +48008,7 @@ func decodeTeamsAddOrUpdateMembershipForUserLegacyParams(r *http.Request) (Teams
 
 func decodeTeamsAddOrUpdateProjectPermissionsInOrgParams(r *http.Request) (TeamsAddOrUpdateProjectPermissionsInOrgParams, error) {
 	var params TeamsAddOrUpdateProjectPermissionsInOrgParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -48036,10 +48036,10 @@ func decodeTeamsAddOrUpdateProjectPermissionsInOrgParams(r *http.Request) (Teams
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "team_slug" located in "Path".
+	// Decode path: team_slug.
 	{
 		param := chi.URLParam(r, "team_slug")
 		if len(param) > 0 {
@@ -48067,10 +48067,10 @@ func decodeTeamsAddOrUpdateProjectPermissionsInOrgParams(r *http.Request) (Teams
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter team_slug not specified`)
+			return params, errors.New(`path: team_slug: not specified`)
 		}
 	}
-	// Decode param "project_id" located in "Path".
+	// Decode path: project_id.
 	{
 		param := chi.URLParam(r, "project_id")
 		if len(param) > 0 {
@@ -48098,7 +48098,7 @@ func decodeTeamsAddOrUpdateProjectPermissionsInOrgParams(r *http.Request) (Teams
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter project_id not specified`)
+			return params, errors.New(`path: project_id: not specified`)
 		}
 	}
 	return params, nil
@@ -48106,7 +48106,7 @@ func decodeTeamsAddOrUpdateProjectPermissionsInOrgParams(r *http.Request) (Teams
 
 func decodeTeamsAddOrUpdateRepoPermissionsInOrgParams(r *http.Request) (TeamsAddOrUpdateRepoPermissionsInOrgParams, error) {
 	var params TeamsAddOrUpdateRepoPermissionsInOrgParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -48134,10 +48134,10 @@ func decodeTeamsAddOrUpdateRepoPermissionsInOrgParams(r *http.Request) (TeamsAdd
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "team_slug" located in "Path".
+	// Decode path: team_slug.
 	{
 		param := chi.URLParam(r, "team_slug")
 		if len(param) > 0 {
@@ -48165,10 +48165,10 @@ func decodeTeamsAddOrUpdateRepoPermissionsInOrgParams(r *http.Request) (TeamsAdd
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter team_slug not specified`)
+			return params, errors.New(`path: team_slug: not specified`)
 		}
 	}
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -48196,10 +48196,10 @@ func decodeTeamsAddOrUpdateRepoPermissionsInOrgParams(r *http.Request) (TeamsAdd
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -48227,7 +48227,7 @@ func decodeTeamsAddOrUpdateRepoPermissionsInOrgParams(r *http.Request) (TeamsAdd
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
 	return params, nil
@@ -48235,7 +48235,7 @@ func decodeTeamsAddOrUpdateRepoPermissionsInOrgParams(r *http.Request) (TeamsAdd
 
 func decodeTeamsCheckPermissionsForProjectInOrgParams(r *http.Request) (TeamsCheckPermissionsForProjectInOrgParams, error) {
 	var params TeamsCheckPermissionsForProjectInOrgParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -48263,10 +48263,10 @@ func decodeTeamsCheckPermissionsForProjectInOrgParams(r *http.Request) (TeamsChe
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "team_slug" located in "Path".
+	// Decode path: team_slug.
 	{
 		param := chi.URLParam(r, "team_slug")
 		if len(param) > 0 {
@@ -48294,10 +48294,10 @@ func decodeTeamsCheckPermissionsForProjectInOrgParams(r *http.Request) (TeamsChe
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter team_slug not specified`)
+			return params, errors.New(`path: team_slug: not specified`)
 		}
 	}
-	// Decode param "project_id" located in "Path".
+	// Decode path: project_id.
 	{
 		param := chi.URLParam(r, "project_id")
 		if len(param) > 0 {
@@ -48325,7 +48325,7 @@ func decodeTeamsCheckPermissionsForProjectInOrgParams(r *http.Request) (TeamsChe
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter project_id not specified`)
+			return params, errors.New(`path: project_id: not specified`)
 		}
 	}
 	return params, nil
@@ -48333,7 +48333,7 @@ func decodeTeamsCheckPermissionsForProjectInOrgParams(r *http.Request) (TeamsChe
 
 func decodeTeamsCheckPermissionsForProjectLegacyParams(r *http.Request) (TeamsCheckPermissionsForProjectLegacyParams, error) {
 	var params TeamsCheckPermissionsForProjectLegacyParams
-	// Decode param "team_id" located in "Path".
+	// Decode path: team_id.
 	{
 		param := chi.URLParam(r, "team_id")
 		if len(param) > 0 {
@@ -48361,10 +48361,10 @@ func decodeTeamsCheckPermissionsForProjectLegacyParams(r *http.Request) (TeamsCh
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter team_id not specified`)
+			return params, errors.New(`path: team_id: not specified`)
 		}
 	}
-	// Decode param "project_id" located in "Path".
+	// Decode path: project_id.
 	{
 		param := chi.URLParam(r, "project_id")
 		if len(param) > 0 {
@@ -48392,7 +48392,7 @@ func decodeTeamsCheckPermissionsForProjectLegacyParams(r *http.Request) (TeamsCh
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter project_id not specified`)
+			return params, errors.New(`path: project_id: not specified`)
 		}
 	}
 	return params, nil
@@ -48400,7 +48400,7 @@ func decodeTeamsCheckPermissionsForProjectLegacyParams(r *http.Request) (TeamsCh
 
 func decodeTeamsCheckPermissionsForRepoInOrgParams(r *http.Request) (TeamsCheckPermissionsForRepoInOrgParams, error) {
 	var params TeamsCheckPermissionsForRepoInOrgParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -48428,10 +48428,10 @@ func decodeTeamsCheckPermissionsForRepoInOrgParams(r *http.Request) (TeamsCheckP
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "team_slug" located in "Path".
+	// Decode path: team_slug.
 	{
 		param := chi.URLParam(r, "team_slug")
 		if len(param) > 0 {
@@ -48459,10 +48459,10 @@ func decodeTeamsCheckPermissionsForRepoInOrgParams(r *http.Request) (TeamsCheckP
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter team_slug not specified`)
+			return params, errors.New(`path: team_slug: not specified`)
 		}
 	}
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -48490,10 +48490,10 @@ func decodeTeamsCheckPermissionsForRepoInOrgParams(r *http.Request) (TeamsCheckP
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -48521,7 +48521,7 @@ func decodeTeamsCheckPermissionsForRepoInOrgParams(r *http.Request) (TeamsCheckP
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
 	return params, nil
@@ -48529,7 +48529,7 @@ func decodeTeamsCheckPermissionsForRepoInOrgParams(r *http.Request) (TeamsCheckP
 
 func decodeTeamsCheckPermissionsForRepoLegacyParams(r *http.Request) (TeamsCheckPermissionsForRepoLegacyParams, error) {
 	var params TeamsCheckPermissionsForRepoLegacyParams
-	// Decode param "team_id" located in "Path".
+	// Decode path: team_id.
 	{
 		param := chi.URLParam(r, "team_id")
 		if len(param) > 0 {
@@ -48557,10 +48557,10 @@ func decodeTeamsCheckPermissionsForRepoLegacyParams(r *http.Request) (TeamsCheck
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter team_id not specified`)
+			return params, errors.New(`path: team_id: not specified`)
 		}
 	}
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -48588,10 +48588,10 @@ func decodeTeamsCheckPermissionsForRepoLegacyParams(r *http.Request) (TeamsCheck
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -48619,7 +48619,7 @@ func decodeTeamsCheckPermissionsForRepoLegacyParams(r *http.Request) (TeamsCheck
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
 	return params, nil
@@ -48627,7 +48627,7 @@ func decodeTeamsCheckPermissionsForRepoLegacyParams(r *http.Request) (TeamsCheck
 
 func decodeTeamsCreateDiscussionCommentInOrgParams(r *http.Request) (TeamsCreateDiscussionCommentInOrgParams, error) {
 	var params TeamsCreateDiscussionCommentInOrgParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -48655,10 +48655,10 @@ func decodeTeamsCreateDiscussionCommentInOrgParams(r *http.Request) (TeamsCreate
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "team_slug" located in "Path".
+	// Decode path: team_slug.
 	{
 		param := chi.URLParam(r, "team_slug")
 		if len(param) > 0 {
@@ -48686,10 +48686,10 @@ func decodeTeamsCreateDiscussionCommentInOrgParams(r *http.Request) (TeamsCreate
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter team_slug not specified`)
+			return params, errors.New(`path: team_slug: not specified`)
 		}
 	}
-	// Decode param "discussion_number" located in "Path".
+	// Decode path: discussion_number.
 	{
 		param := chi.URLParam(r, "discussion_number")
 		if len(param) > 0 {
@@ -48717,7 +48717,7 @@ func decodeTeamsCreateDiscussionCommentInOrgParams(r *http.Request) (TeamsCreate
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter discussion_number not specified`)
+			return params, errors.New(`path: discussion_number: not specified`)
 		}
 	}
 	return params, nil
@@ -48725,7 +48725,7 @@ func decodeTeamsCreateDiscussionCommentInOrgParams(r *http.Request) (TeamsCreate
 
 func decodeTeamsCreateDiscussionCommentLegacyParams(r *http.Request) (TeamsCreateDiscussionCommentLegacyParams, error) {
 	var params TeamsCreateDiscussionCommentLegacyParams
-	// Decode param "team_id" located in "Path".
+	// Decode path: team_id.
 	{
 		param := chi.URLParam(r, "team_id")
 		if len(param) > 0 {
@@ -48753,10 +48753,10 @@ func decodeTeamsCreateDiscussionCommentLegacyParams(r *http.Request) (TeamsCreat
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter team_id not specified`)
+			return params, errors.New(`path: team_id: not specified`)
 		}
 	}
-	// Decode param "discussion_number" located in "Path".
+	// Decode path: discussion_number.
 	{
 		param := chi.URLParam(r, "discussion_number")
 		if len(param) > 0 {
@@ -48784,7 +48784,7 @@ func decodeTeamsCreateDiscussionCommentLegacyParams(r *http.Request) (TeamsCreat
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter discussion_number not specified`)
+			return params, errors.New(`path: discussion_number: not specified`)
 		}
 	}
 	return params, nil
@@ -48792,7 +48792,7 @@ func decodeTeamsCreateDiscussionCommentLegacyParams(r *http.Request) (TeamsCreat
 
 func decodeTeamsCreateDiscussionInOrgParams(r *http.Request) (TeamsCreateDiscussionInOrgParams, error) {
 	var params TeamsCreateDiscussionInOrgParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -48820,10 +48820,10 @@ func decodeTeamsCreateDiscussionInOrgParams(r *http.Request) (TeamsCreateDiscuss
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "team_slug" located in "Path".
+	// Decode path: team_slug.
 	{
 		param := chi.URLParam(r, "team_slug")
 		if len(param) > 0 {
@@ -48851,7 +48851,7 @@ func decodeTeamsCreateDiscussionInOrgParams(r *http.Request) (TeamsCreateDiscuss
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter team_slug not specified`)
+			return params, errors.New(`path: team_slug: not specified`)
 		}
 	}
 	return params, nil
@@ -48859,7 +48859,7 @@ func decodeTeamsCreateDiscussionInOrgParams(r *http.Request) (TeamsCreateDiscuss
 
 func decodeTeamsCreateDiscussionLegacyParams(r *http.Request) (TeamsCreateDiscussionLegacyParams, error) {
 	var params TeamsCreateDiscussionLegacyParams
-	// Decode param "team_id" located in "Path".
+	// Decode path: team_id.
 	{
 		param := chi.URLParam(r, "team_id")
 		if len(param) > 0 {
@@ -48887,7 +48887,7 @@ func decodeTeamsCreateDiscussionLegacyParams(r *http.Request) (TeamsCreateDiscus
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter team_id not specified`)
+			return params, errors.New(`path: team_id: not specified`)
 		}
 	}
 	return params, nil
@@ -48895,7 +48895,7 @@ func decodeTeamsCreateDiscussionLegacyParams(r *http.Request) (TeamsCreateDiscus
 
 func decodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgParams(r *http.Request) (TeamsCreateOrUpdateIdpGroupConnectionsInOrgParams, error) {
 	var params TeamsCreateOrUpdateIdpGroupConnectionsInOrgParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -48923,10 +48923,10 @@ func decodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgParams(r *http.Request) (T
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "team_slug" located in "Path".
+	// Decode path: team_slug.
 	{
 		param := chi.URLParam(r, "team_slug")
 		if len(param) > 0 {
@@ -48954,7 +48954,7 @@ func decodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgParams(r *http.Request) (T
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter team_slug not specified`)
+			return params, errors.New(`path: team_slug: not specified`)
 		}
 	}
 	return params, nil
@@ -48962,7 +48962,7 @@ func decodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgParams(r *http.Request) (T
 
 func decodeTeamsDeleteDiscussionCommentInOrgParams(r *http.Request) (TeamsDeleteDiscussionCommentInOrgParams, error) {
 	var params TeamsDeleteDiscussionCommentInOrgParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -48990,10 +48990,10 @@ func decodeTeamsDeleteDiscussionCommentInOrgParams(r *http.Request) (TeamsDelete
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "team_slug" located in "Path".
+	// Decode path: team_slug.
 	{
 		param := chi.URLParam(r, "team_slug")
 		if len(param) > 0 {
@@ -49021,10 +49021,10 @@ func decodeTeamsDeleteDiscussionCommentInOrgParams(r *http.Request) (TeamsDelete
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter team_slug not specified`)
+			return params, errors.New(`path: team_slug: not specified`)
 		}
 	}
-	// Decode param "discussion_number" located in "Path".
+	// Decode path: discussion_number.
 	{
 		param := chi.URLParam(r, "discussion_number")
 		if len(param) > 0 {
@@ -49052,10 +49052,10 @@ func decodeTeamsDeleteDiscussionCommentInOrgParams(r *http.Request) (TeamsDelete
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter discussion_number not specified`)
+			return params, errors.New(`path: discussion_number: not specified`)
 		}
 	}
-	// Decode param "comment_number" located in "Path".
+	// Decode path: comment_number.
 	{
 		param := chi.URLParam(r, "comment_number")
 		if len(param) > 0 {
@@ -49083,7 +49083,7 @@ func decodeTeamsDeleteDiscussionCommentInOrgParams(r *http.Request) (TeamsDelete
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter comment_number not specified`)
+			return params, errors.New(`path: comment_number: not specified`)
 		}
 	}
 	return params, nil
@@ -49091,7 +49091,7 @@ func decodeTeamsDeleteDiscussionCommentInOrgParams(r *http.Request) (TeamsDelete
 
 func decodeTeamsDeleteDiscussionCommentLegacyParams(r *http.Request) (TeamsDeleteDiscussionCommentLegacyParams, error) {
 	var params TeamsDeleteDiscussionCommentLegacyParams
-	// Decode param "team_id" located in "Path".
+	// Decode path: team_id.
 	{
 		param := chi.URLParam(r, "team_id")
 		if len(param) > 0 {
@@ -49119,10 +49119,10 @@ func decodeTeamsDeleteDiscussionCommentLegacyParams(r *http.Request) (TeamsDelet
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter team_id not specified`)
+			return params, errors.New(`path: team_id: not specified`)
 		}
 	}
-	// Decode param "discussion_number" located in "Path".
+	// Decode path: discussion_number.
 	{
 		param := chi.URLParam(r, "discussion_number")
 		if len(param) > 0 {
@@ -49150,10 +49150,10 @@ func decodeTeamsDeleteDiscussionCommentLegacyParams(r *http.Request) (TeamsDelet
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter discussion_number not specified`)
+			return params, errors.New(`path: discussion_number: not specified`)
 		}
 	}
-	// Decode param "comment_number" located in "Path".
+	// Decode path: comment_number.
 	{
 		param := chi.URLParam(r, "comment_number")
 		if len(param) > 0 {
@@ -49181,7 +49181,7 @@ func decodeTeamsDeleteDiscussionCommentLegacyParams(r *http.Request) (TeamsDelet
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter comment_number not specified`)
+			return params, errors.New(`path: comment_number: not specified`)
 		}
 	}
 	return params, nil
@@ -49189,7 +49189,7 @@ func decodeTeamsDeleteDiscussionCommentLegacyParams(r *http.Request) (TeamsDelet
 
 func decodeTeamsDeleteDiscussionInOrgParams(r *http.Request) (TeamsDeleteDiscussionInOrgParams, error) {
 	var params TeamsDeleteDiscussionInOrgParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -49217,10 +49217,10 @@ func decodeTeamsDeleteDiscussionInOrgParams(r *http.Request) (TeamsDeleteDiscuss
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "team_slug" located in "Path".
+	// Decode path: team_slug.
 	{
 		param := chi.URLParam(r, "team_slug")
 		if len(param) > 0 {
@@ -49248,10 +49248,10 @@ func decodeTeamsDeleteDiscussionInOrgParams(r *http.Request) (TeamsDeleteDiscuss
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter team_slug not specified`)
+			return params, errors.New(`path: team_slug: not specified`)
 		}
 	}
-	// Decode param "discussion_number" located in "Path".
+	// Decode path: discussion_number.
 	{
 		param := chi.URLParam(r, "discussion_number")
 		if len(param) > 0 {
@@ -49279,7 +49279,7 @@ func decodeTeamsDeleteDiscussionInOrgParams(r *http.Request) (TeamsDeleteDiscuss
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter discussion_number not specified`)
+			return params, errors.New(`path: discussion_number: not specified`)
 		}
 	}
 	return params, nil
@@ -49287,7 +49287,7 @@ func decodeTeamsDeleteDiscussionInOrgParams(r *http.Request) (TeamsDeleteDiscuss
 
 func decodeTeamsDeleteDiscussionLegacyParams(r *http.Request) (TeamsDeleteDiscussionLegacyParams, error) {
 	var params TeamsDeleteDiscussionLegacyParams
-	// Decode param "team_id" located in "Path".
+	// Decode path: team_id.
 	{
 		param := chi.URLParam(r, "team_id")
 		if len(param) > 0 {
@@ -49315,10 +49315,10 @@ func decodeTeamsDeleteDiscussionLegacyParams(r *http.Request) (TeamsDeleteDiscus
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter team_id not specified`)
+			return params, errors.New(`path: team_id: not specified`)
 		}
 	}
-	// Decode param "discussion_number" located in "Path".
+	// Decode path: discussion_number.
 	{
 		param := chi.URLParam(r, "discussion_number")
 		if len(param) > 0 {
@@ -49346,7 +49346,7 @@ func decodeTeamsDeleteDiscussionLegacyParams(r *http.Request) (TeamsDeleteDiscus
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter discussion_number not specified`)
+			return params, errors.New(`path: discussion_number: not specified`)
 		}
 	}
 	return params, nil
@@ -49354,7 +49354,7 @@ func decodeTeamsDeleteDiscussionLegacyParams(r *http.Request) (TeamsDeleteDiscus
 
 func decodeTeamsDeleteInOrgParams(r *http.Request) (TeamsDeleteInOrgParams, error) {
 	var params TeamsDeleteInOrgParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -49382,10 +49382,10 @@ func decodeTeamsDeleteInOrgParams(r *http.Request) (TeamsDeleteInOrgParams, erro
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "team_slug" located in "Path".
+	// Decode path: team_slug.
 	{
 		param := chi.URLParam(r, "team_slug")
 		if len(param) > 0 {
@@ -49413,7 +49413,7 @@ func decodeTeamsDeleteInOrgParams(r *http.Request) (TeamsDeleteInOrgParams, erro
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter team_slug not specified`)
+			return params, errors.New(`path: team_slug: not specified`)
 		}
 	}
 	return params, nil
@@ -49421,7 +49421,7 @@ func decodeTeamsDeleteInOrgParams(r *http.Request) (TeamsDeleteInOrgParams, erro
 
 func decodeTeamsGetByNameParams(r *http.Request) (TeamsGetByNameParams, error) {
 	var params TeamsGetByNameParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -49449,10 +49449,10 @@ func decodeTeamsGetByNameParams(r *http.Request) (TeamsGetByNameParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "team_slug" located in "Path".
+	// Decode path: team_slug.
 	{
 		param := chi.URLParam(r, "team_slug")
 		if len(param) > 0 {
@@ -49480,7 +49480,7 @@ func decodeTeamsGetByNameParams(r *http.Request) (TeamsGetByNameParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter team_slug not specified`)
+			return params, errors.New(`path: team_slug: not specified`)
 		}
 	}
 	return params, nil
@@ -49488,7 +49488,7 @@ func decodeTeamsGetByNameParams(r *http.Request) (TeamsGetByNameParams, error) {
 
 func decodeTeamsGetDiscussionCommentInOrgParams(r *http.Request) (TeamsGetDiscussionCommentInOrgParams, error) {
 	var params TeamsGetDiscussionCommentInOrgParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -49516,10 +49516,10 @@ func decodeTeamsGetDiscussionCommentInOrgParams(r *http.Request) (TeamsGetDiscus
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "team_slug" located in "Path".
+	// Decode path: team_slug.
 	{
 		param := chi.URLParam(r, "team_slug")
 		if len(param) > 0 {
@@ -49547,10 +49547,10 @@ func decodeTeamsGetDiscussionCommentInOrgParams(r *http.Request) (TeamsGetDiscus
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter team_slug not specified`)
+			return params, errors.New(`path: team_slug: not specified`)
 		}
 	}
-	// Decode param "discussion_number" located in "Path".
+	// Decode path: discussion_number.
 	{
 		param := chi.URLParam(r, "discussion_number")
 		if len(param) > 0 {
@@ -49578,10 +49578,10 @@ func decodeTeamsGetDiscussionCommentInOrgParams(r *http.Request) (TeamsGetDiscus
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter discussion_number not specified`)
+			return params, errors.New(`path: discussion_number: not specified`)
 		}
 	}
-	// Decode param "comment_number" located in "Path".
+	// Decode path: comment_number.
 	{
 		param := chi.URLParam(r, "comment_number")
 		if len(param) > 0 {
@@ -49609,7 +49609,7 @@ func decodeTeamsGetDiscussionCommentInOrgParams(r *http.Request) (TeamsGetDiscus
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter comment_number not specified`)
+			return params, errors.New(`path: comment_number: not specified`)
 		}
 	}
 	return params, nil
@@ -49617,7 +49617,7 @@ func decodeTeamsGetDiscussionCommentInOrgParams(r *http.Request) (TeamsGetDiscus
 
 func decodeTeamsGetDiscussionCommentLegacyParams(r *http.Request) (TeamsGetDiscussionCommentLegacyParams, error) {
 	var params TeamsGetDiscussionCommentLegacyParams
-	// Decode param "team_id" located in "Path".
+	// Decode path: team_id.
 	{
 		param := chi.URLParam(r, "team_id")
 		if len(param) > 0 {
@@ -49645,10 +49645,10 @@ func decodeTeamsGetDiscussionCommentLegacyParams(r *http.Request) (TeamsGetDiscu
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter team_id not specified`)
+			return params, errors.New(`path: team_id: not specified`)
 		}
 	}
-	// Decode param "discussion_number" located in "Path".
+	// Decode path: discussion_number.
 	{
 		param := chi.URLParam(r, "discussion_number")
 		if len(param) > 0 {
@@ -49676,10 +49676,10 @@ func decodeTeamsGetDiscussionCommentLegacyParams(r *http.Request) (TeamsGetDiscu
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter discussion_number not specified`)
+			return params, errors.New(`path: discussion_number: not specified`)
 		}
 	}
-	// Decode param "comment_number" located in "Path".
+	// Decode path: comment_number.
 	{
 		param := chi.URLParam(r, "comment_number")
 		if len(param) > 0 {
@@ -49707,7 +49707,7 @@ func decodeTeamsGetDiscussionCommentLegacyParams(r *http.Request) (TeamsGetDiscu
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter comment_number not specified`)
+			return params, errors.New(`path: comment_number: not specified`)
 		}
 	}
 	return params, nil
@@ -49715,7 +49715,7 @@ func decodeTeamsGetDiscussionCommentLegacyParams(r *http.Request) (TeamsGetDiscu
 
 func decodeTeamsGetDiscussionInOrgParams(r *http.Request) (TeamsGetDiscussionInOrgParams, error) {
 	var params TeamsGetDiscussionInOrgParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -49743,10 +49743,10 @@ func decodeTeamsGetDiscussionInOrgParams(r *http.Request) (TeamsGetDiscussionInO
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "team_slug" located in "Path".
+	// Decode path: team_slug.
 	{
 		param := chi.URLParam(r, "team_slug")
 		if len(param) > 0 {
@@ -49774,10 +49774,10 @@ func decodeTeamsGetDiscussionInOrgParams(r *http.Request) (TeamsGetDiscussionInO
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter team_slug not specified`)
+			return params, errors.New(`path: team_slug: not specified`)
 		}
 	}
-	// Decode param "discussion_number" located in "Path".
+	// Decode path: discussion_number.
 	{
 		param := chi.URLParam(r, "discussion_number")
 		if len(param) > 0 {
@@ -49805,7 +49805,7 @@ func decodeTeamsGetDiscussionInOrgParams(r *http.Request) (TeamsGetDiscussionInO
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter discussion_number not specified`)
+			return params, errors.New(`path: discussion_number: not specified`)
 		}
 	}
 	return params, nil
@@ -49813,7 +49813,7 @@ func decodeTeamsGetDiscussionInOrgParams(r *http.Request) (TeamsGetDiscussionInO
 
 func decodeTeamsGetDiscussionLegacyParams(r *http.Request) (TeamsGetDiscussionLegacyParams, error) {
 	var params TeamsGetDiscussionLegacyParams
-	// Decode param "team_id" located in "Path".
+	// Decode path: team_id.
 	{
 		param := chi.URLParam(r, "team_id")
 		if len(param) > 0 {
@@ -49841,10 +49841,10 @@ func decodeTeamsGetDiscussionLegacyParams(r *http.Request) (TeamsGetDiscussionLe
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter team_id not specified`)
+			return params, errors.New(`path: team_id: not specified`)
 		}
 	}
-	// Decode param "discussion_number" located in "Path".
+	// Decode path: discussion_number.
 	{
 		param := chi.URLParam(r, "discussion_number")
 		if len(param) > 0 {
@@ -49872,7 +49872,7 @@ func decodeTeamsGetDiscussionLegacyParams(r *http.Request) (TeamsGetDiscussionLe
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter discussion_number not specified`)
+			return params, errors.New(`path: discussion_number: not specified`)
 		}
 	}
 	return params, nil
@@ -49880,7 +49880,7 @@ func decodeTeamsGetDiscussionLegacyParams(r *http.Request) (TeamsGetDiscussionLe
 
 func decodeTeamsGetLegacyParams(r *http.Request) (TeamsGetLegacyParams, error) {
 	var params TeamsGetLegacyParams
-	// Decode param "team_id" located in "Path".
+	// Decode path: team_id.
 	{
 		param := chi.URLParam(r, "team_id")
 		if len(param) > 0 {
@@ -49908,7 +49908,7 @@ func decodeTeamsGetLegacyParams(r *http.Request) (TeamsGetLegacyParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter team_id not specified`)
+			return params, errors.New(`path: team_id: not specified`)
 		}
 	}
 	return params, nil
@@ -49916,7 +49916,7 @@ func decodeTeamsGetLegacyParams(r *http.Request) (TeamsGetLegacyParams, error) {
 
 func decodeTeamsGetMemberLegacyParams(r *http.Request) (TeamsGetMemberLegacyParams, error) {
 	var params TeamsGetMemberLegacyParams
-	// Decode param "team_id" located in "Path".
+	// Decode path: team_id.
 	{
 		param := chi.URLParam(r, "team_id")
 		if len(param) > 0 {
@@ -49944,10 +49944,10 @@ func decodeTeamsGetMemberLegacyParams(r *http.Request) (TeamsGetMemberLegacyPara
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter team_id not specified`)
+			return params, errors.New(`path: team_id: not specified`)
 		}
 	}
-	// Decode param "username" located in "Path".
+	// Decode path: username.
 	{
 		param := chi.URLParam(r, "username")
 		if len(param) > 0 {
@@ -49975,7 +49975,7 @@ func decodeTeamsGetMemberLegacyParams(r *http.Request) (TeamsGetMemberLegacyPara
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter username not specified`)
+			return params, errors.New(`path: username: not specified`)
 		}
 	}
 	return params, nil
@@ -49983,7 +49983,7 @@ func decodeTeamsGetMemberLegacyParams(r *http.Request) (TeamsGetMemberLegacyPara
 
 func decodeTeamsGetMembershipForUserInOrgParams(r *http.Request) (TeamsGetMembershipForUserInOrgParams, error) {
 	var params TeamsGetMembershipForUserInOrgParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -50011,10 +50011,10 @@ func decodeTeamsGetMembershipForUserInOrgParams(r *http.Request) (TeamsGetMember
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "team_slug" located in "Path".
+	// Decode path: team_slug.
 	{
 		param := chi.URLParam(r, "team_slug")
 		if len(param) > 0 {
@@ -50042,10 +50042,10 @@ func decodeTeamsGetMembershipForUserInOrgParams(r *http.Request) (TeamsGetMember
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter team_slug not specified`)
+			return params, errors.New(`path: team_slug: not specified`)
 		}
 	}
-	// Decode param "username" located in "Path".
+	// Decode path: username.
 	{
 		param := chi.URLParam(r, "username")
 		if len(param) > 0 {
@@ -50073,7 +50073,7 @@ func decodeTeamsGetMembershipForUserInOrgParams(r *http.Request) (TeamsGetMember
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter username not specified`)
+			return params, errors.New(`path: username: not specified`)
 		}
 	}
 	return params, nil
@@ -50081,7 +50081,7 @@ func decodeTeamsGetMembershipForUserInOrgParams(r *http.Request) (TeamsGetMember
 
 func decodeTeamsGetMembershipForUserLegacyParams(r *http.Request) (TeamsGetMembershipForUserLegacyParams, error) {
 	var params TeamsGetMembershipForUserLegacyParams
-	// Decode param "team_id" located in "Path".
+	// Decode path: team_id.
 	{
 		param := chi.URLParam(r, "team_id")
 		if len(param) > 0 {
@@ -50109,10 +50109,10 @@ func decodeTeamsGetMembershipForUserLegacyParams(r *http.Request) (TeamsGetMembe
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter team_id not specified`)
+			return params, errors.New(`path: team_id: not specified`)
 		}
 	}
-	// Decode param "username" located in "Path".
+	// Decode path: username.
 	{
 		param := chi.URLParam(r, "username")
 		if len(param) > 0 {
@@ -50140,7 +50140,7 @@ func decodeTeamsGetMembershipForUserLegacyParams(r *http.Request) (TeamsGetMembe
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter username not specified`)
+			return params, errors.New(`path: username: not specified`)
 		}
 	}
 	return params, nil
@@ -50148,7 +50148,7 @@ func decodeTeamsGetMembershipForUserLegacyParams(r *http.Request) (TeamsGetMembe
 
 func decodeTeamsListParams(r *http.Request) (TeamsListParams, error) {
 	var params TeamsListParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -50176,10 +50176,10 @@ func decodeTeamsListParams(r *http.Request) (TeamsListParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -50210,11 +50210,11 @@ func decodeTeamsListParams(r *http.Request) (TeamsListParams, error) {
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -50245,7 +50245,7 @@ func decodeTeamsListParams(r *http.Request) (TeamsListParams, error) {
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -50254,7 +50254,7 @@ func decodeTeamsListParams(r *http.Request) (TeamsListParams, error) {
 
 func decodeTeamsListChildInOrgParams(r *http.Request) (TeamsListChildInOrgParams, error) {
 	var params TeamsListChildInOrgParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -50282,10 +50282,10 @@ func decodeTeamsListChildInOrgParams(r *http.Request) (TeamsListChildInOrgParams
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "team_slug" located in "Path".
+	// Decode path: team_slug.
 	{
 		param := chi.URLParam(r, "team_slug")
 		if len(param) > 0 {
@@ -50313,10 +50313,10 @@ func decodeTeamsListChildInOrgParams(r *http.Request) (TeamsListChildInOrgParams
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter team_slug not specified`)
+			return params, errors.New(`path: team_slug: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -50347,11 +50347,11 @@ func decodeTeamsListChildInOrgParams(r *http.Request) (TeamsListChildInOrgParams
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -50382,7 +50382,7 @@ func decodeTeamsListChildInOrgParams(r *http.Request) (TeamsListChildInOrgParams
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -50391,7 +50391,7 @@ func decodeTeamsListChildInOrgParams(r *http.Request) (TeamsListChildInOrgParams
 
 func decodeTeamsListDiscussionCommentsInOrgParams(r *http.Request) (TeamsListDiscussionCommentsInOrgParams, error) {
 	var params TeamsListDiscussionCommentsInOrgParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -50419,10 +50419,10 @@ func decodeTeamsListDiscussionCommentsInOrgParams(r *http.Request) (TeamsListDis
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "team_slug" located in "Path".
+	// Decode path: team_slug.
 	{
 		param := chi.URLParam(r, "team_slug")
 		if len(param) > 0 {
@@ -50450,10 +50450,10 @@ func decodeTeamsListDiscussionCommentsInOrgParams(r *http.Request) (TeamsListDis
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter team_slug not specified`)
+			return params, errors.New(`path: team_slug: not specified`)
 		}
 	}
-	// Decode param "discussion_number" located in "Path".
+	// Decode path: discussion_number.
 	{
 		param := chi.URLParam(r, "discussion_number")
 		if len(param) > 0 {
@@ -50481,10 +50481,10 @@ func decodeTeamsListDiscussionCommentsInOrgParams(r *http.Request) (TeamsListDis
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter discussion_number not specified`)
+			return params, errors.New(`path: discussion_number: not specified`)
 		}
 	}
-	// Decode param "direction" located in "Query".
+	// Decode query: direction.
 	{
 		values, ok := r.URL.Query()["direction"]
 		if ok {
@@ -50515,7 +50515,7 @@ func decodeTeamsListDiscussionCommentsInOrgParams(r *http.Request) (TeamsListDis
 				params.Direction.SetTo(ParamsDirectionValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter direction located in query`)
+				return params, errors.Wrap(err, `query: direction: parse`)
 			}
 			if err := func() error {
 
@@ -50534,11 +50534,11 @@ func decodeTeamsListDiscussionCommentsInOrgParams(r *http.Request) (TeamsListDis
 
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `invalid parameter direction (query`)
+				return params, errors.Wrap(err, `query: direction: invalid`)
 			}
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -50569,11 +50569,11 @@ func decodeTeamsListDiscussionCommentsInOrgParams(r *http.Request) (TeamsListDis
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -50604,7 +50604,7 @@ func decodeTeamsListDiscussionCommentsInOrgParams(r *http.Request) (TeamsListDis
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -50613,7 +50613,7 @@ func decodeTeamsListDiscussionCommentsInOrgParams(r *http.Request) (TeamsListDis
 
 func decodeTeamsListDiscussionCommentsLegacyParams(r *http.Request) (TeamsListDiscussionCommentsLegacyParams, error) {
 	var params TeamsListDiscussionCommentsLegacyParams
-	// Decode param "team_id" located in "Path".
+	// Decode path: team_id.
 	{
 		param := chi.URLParam(r, "team_id")
 		if len(param) > 0 {
@@ -50641,10 +50641,10 @@ func decodeTeamsListDiscussionCommentsLegacyParams(r *http.Request) (TeamsListDi
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter team_id not specified`)
+			return params, errors.New(`path: team_id: not specified`)
 		}
 	}
-	// Decode param "discussion_number" located in "Path".
+	// Decode path: discussion_number.
 	{
 		param := chi.URLParam(r, "discussion_number")
 		if len(param) > 0 {
@@ -50672,10 +50672,10 @@ func decodeTeamsListDiscussionCommentsLegacyParams(r *http.Request) (TeamsListDi
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter discussion_number not specified`)
+			return params, errors.New(`path: discussion_number: not specified`)
 		}
 	}
-	// Decode param "direction" located in "Query".
+	// Decode query: direction.
 	{
 		values, ok := r.URL.Query()["direction"]
 		if ok {
@@ -50706,7 +50706,7 @@ func decodeTeamsListDiscussionCommentsLegacyParams(r *http.Request) (TeamsListDi
 				params.Direction.SetTo(ParamsDirectionValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter direction located in query`)
+				return params, errors.Wrap(err, `query: direction: parse`)
 			}
 			if err := func() error {
 
@@ -50725,11 +50725,11 @@ func decodeTeamsListDiscussionCommentsLegacyParams(r *http.Request) (TeamsListDi
 
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `invalid parameter direction (query`)
+				return params, errors.Wrap(err, `query: direction: invalid`)
 			}
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -50760,11 +50760,11 @@ func decodeTeamsListDiscussionCommentsLegacyParams(r *http.Request) (TeamsListDi
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -50795,7 +50795,7 @@ func decodeTeamsListDiscussionCommentsLegacyParams(r *http.Request) (TeamsListDi
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -50804,7 +50804,7 @@ func decodeTeamsListDiscussionCommentsLegacyParams(r *http.Request) (TeamsListDi
 
 func decodeTeamsListDiscussionsInOrgParams(r *http.Request) (TeamsListDiscussionsInOrgParams, error) {
 	var params TeamsListDiscussionsInOrgParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -50832,10 +50832,10 @@ func decodeTeamsListDiscussionsInOrgParams(r *http.Request) (TeamsListDiscussion
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "team_slug" located in "Path".
+	// Decode path: team_slug.
 	{
 		param := chi.URLParam(r, "team_slug")
 		if len(param) > 0 {
@@ -50863,10 +50863,10 @@ func decodeTeamsListDiscussionsInOrgParams(r *http.Request) (TeamsListDiscussion
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter team_slug not specified`)
+			return params, errors.New(`path: team_slug: not specified`)
 		}
 	}
-	// Decode param "direction" located in "Query".
+	// Decode query: direction.
 	{
 		values, ok := r.URL.Query()["direction"]
 		if ok {
@@ -50897,7 +50897,7 @@ func decodeTeamsListDiscussionsInOrgParams(r *http.Request) (TeamsListDiscussion
 				params.Direction.SetTo(ParamsDirectionValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter direction located in query`)
+				return params, errors.Wrap(err, `query: direction: parse`)
 			}
 			if err := func() error {
 
@@ -50916,11 +50916,11 @@ func decodeTeamsListDiscussionsInOrgParams(r *http.Request) (TeamsListDiscussion
 
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `invalid parameter direction (query`)
+				return params, errors.Wrap(err, `query: direction: invalid`)
 			}
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -50951,11 +50951,11 @@ func decodeTeamsListDiscussionsInOrgParams(r *http.Request) (TeamsListDiscussion
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -50986,11 +50986,11 @@ func decodeTeamsListDiscussionsInOrgParams(r *http.Request) (TeamsListDiscussion
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
-	// Decode param "pinned" located in "Query".
+	// Decode query: pinned.
 	{
 		values, ok := r.URL.Query()["pinned"]
 		if ok {
@@ -51021,7 +51021,7 @@ func decodeTeamsListDiscussionsInOrgParams(r *http.Request) (TeamsListDiscussion
 				params.Pinned.SetTo(ParamsPinnedValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter pinned located in query`)
+				return params, errors.Wrap(err, `query: pinned: parse`)
 			}
 		}
 	}
@@ -51030,7 +51030,7 @@ func decodeTeamsListDiscussionsInOrgParams(r *http.Request) (TeamsListDiscussion
 
 func decodeTeamsListDiscussionsLegacyParams(r *http.Request) (TeamsListDiscussionsLegacyParams, error) {
 	var params TeamsListDiscussionsLegacyParams
-	// Decode param "team_id" located in "Path".
+	// Decode path: team_id.
 	{
 		param := chi.URLParam(r, "team_id")
 		if len(param) > 0 {
@@ -51058,10 +51058,10 @@ func decodeTeamsListDiscussionsLegacyParams(r *http.Request) (TeamsListDiscussio
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter team_id not specified`)
+			return params, errors.New(`path: team_id: not specified`)
 		}
 	}
-	// Decode param "direction" located in "Query".
+	// Decode query: direction.
 	{
 		values, ok := r.URL.Query()["direction"]
 		if ok {
@@ -51092,7 +51092,7 @@ func decodeTeamsListDiscussionsLegacyParams(r *http.Request) (TeamsListDiscussio
 				params.Direction.SetTo(ParamsDirectionValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter direction located in query`)
+				return params, errors.Wrap(err, `query: direction: parse`)
 			}
 			if err := func() error {
 
@@ -51111,11 +51111,11 @@ func decodeTeamsListDiscussionsLegacyParams(r *http.Request) (TeamsListDiscussio
 
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `invalid parameter direction (query`)
+				return params, errors.Wrap(err, `query: direction: invalid`)
 			}
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -51146,11 +51146,11 @@ func decodeTeamsListDiscussionsLegacyParams(r *http.Request) (TeamsListDiscussio
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -51181,7 +51181,7 @@ func decodeTeamsListDiscussionsLegacyParams(r *http.Request) (TeamsListDiscussio
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -51190,7 +51190,7 @@ func decodeTeamsListDiscussionsLegacyParams(r *http.Request) (TeamsListDiscussio
 
 func decodeTeamsListForAuthenticatedUserParams(r *http.Request) (TeamsListForAuthenticatedUserParams, error) {
 	var params TeamsListForAuthenticatedUserParams
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -51221,11 +51221,11 @@ func decodeTeamsListForAuthenticatedUserParams(r *http.Request) (TeamsListForAut
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -51256,7 +51256,7 @@ func decodeTeamsListForAuthenticatedUserParams(r *http.Request) (TeamsListForAut
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -51265,7 +51265,7 @@ func decodeTeamsListForAuthenticatedUserParams(r *http.Request) (TeamsListForAut
 
 func decodeTeamsListIdpGroupsForLegacyParams(r *http.Request) (TeamsListIdpGroupsForLegacyParams, error) {
 	var params TeamsListIdpGroupsForLegacyParams
-	// Decode param "team_id" located in "Path".
+	// Decode path: team_id.
 	{
 		param := chi.URLParam(r, "team_id")
 		if len(param) > 0 {
@@ -51293,7 +51293,7 @@ func decodeTeamsListIdpGroupsForLegacyParams(r *http.Request) (TeamsListIdpGroup
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter team_id not specified`)
+			return params, errors.New(`path: team_id: not specified`)
 		}
 	}
 	return params, nil
@@ -51301,7 +51301,7 @@ func decodeTeamsListIdpGroupsForLegacyParams(r *http.Request) (TeamsListIdpGroup
 
 func decodeTeamsListIdpGroupsForOrgParams(r *http.Request) (TeamsListIdpGroupsForOrgParams, error) {
 	var params TeamsListIdpGroupsForOrgParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -51329,10 +51329,10 @@ func decodeTeamsListIdpGroupsForOrgParams(r *http.Request) (TeamsListIdpGroupsFo
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -51363,11 +51363,11 @@ func decodeTeamsListIdpGroupsForOrgParams(r *http.Request) (TeamsListIdpGroupsFo
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -51398,7 +51398,7 @@ func decodeTeamsListIdpGroupsForOrgParams(r *http.Request) (TeamsListIdpGroupsFo
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -51407,7 +51407,7 @@ func decodeTeamsListIdpGroupsForOrgParams(r *http.Request) (TeamsListIdpGroupsFo
 
 func decodeTeamsListIdpGroupsInOrgParams(r *http.Request) (TeamsListIdpGroupsInOrgParams, error) {
 	var params TeamsListIdpGroupsInOrgParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -51435,10 +51435,10 @@ func decodeTeamsListIdpGroupsInOrgParams(r *http.Request) (TeamsListIdpGroupsInO
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "team_slug" located in "Path".
+	// Decode path: team_slug.
 	{
 		param := chi.URLParam(r, "team_slug")
 		if len(param) > 0 {
@@ -51466,7 +51466,7 @@ func decodeTeamsListIdpGroupsInOrgParams(r *http.Request) (TeamsListIdpGroupsInO
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter team_slug not specified`)
+			return params, errors.New(`path: team_slug: not specified`)
 		}
 	}
 	return params, nil
@@ -51474,7 +51474,7 @@ func decodeTeamsListIdpGroupsInOrgParams(r *http.Request) (TeamsListIdpGroupsInO
 
 func decodeTeamsListMembersInOrgParams(r *http.Request) (TeamsListMembersInOrgParams, error) {
 	var params TeamsListMembersInOrgParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -51502,10 +51502,10 @@ func decodeTeamsListMembersInOrgParams(r *http.Request) (TeamsListMembersInOrgPa
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "team_slug" located in "Path".
+	// Decode path: team_slug.
 	{
 		param := chi.URLParam(r, "team_slug")
 		if len(param) > 0 {
@@ -51533,10 +51533,10 @@ func decodeTeamsListMembersInOrgParams(r *http.Request) (TeamsListMembersInOrgPa
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter team_slug not specified`)
+			return params, errors.New(`path: team_slug: not specified`)
 		}
 	}
-	// Decode param "role" located in "Query".
+	// Decode query: role.
 	{
 		values, ok := r.URL.Query()["role"]
 		if ok {
@@ -51567,7 +51567,7 @@ func decodeTeamsListMembersInOrgParams(r *http.Request) (TeamsListMembersInOrgPa
 				params.Role.SetTo(ParamsRoleValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter role located in query`)
+				return params, errors.Wrap(err, `query: role: parse`)
 			}
 			if err := func() error {
 
@@ -51586,11 +51586,11 @@ func decodeTeamsListMembersInOrgParams(r *http.Request) (TeamsListMembersInOrgPa
 
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `invalid parameter role (query`)
+				return params, errors.Wrap(err, `query: role: invalid`)
 			}
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -51621,11 +51621,11 @@ func decodeTeamsListMembersInOrgParams(r *http.Request) (TeamsListMembersInOrgPa
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -51656,7 +51656,7 @@ func decodeTeamsListMembersInOrgParams(r *http.Request) (TeamsListMembersInOrgPa
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -51665,7 +51665,7 @@ func decodeTeamsListMembersInOrgParams(r *http.Request) (TeamsListMembersInOrgPa
 
 func decodeTeamsListMembersLegacyParams(r *http.Request) (TeamsListMembersLegacyParams, error) {
 	var params TeamsListMembersLegacyParams
-	// Decode param "team_id" located in "Path".
+	// Decode path: team_id.
 	{
 		param := chi.URLParam(r, "team_id")
 		if len(param) > 0 {
@@ -51693,10 +51693,10 @@ func decodeTeamsListMembersLegacyParams(r *http.Request) (TeamsListMembersLegacy
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter team_id not specified`)
+			return params, errors.New(`path: team_id: not specified`)
 		}
 	}
-	// Decode param "role" located in "Query".
+	// Decode query: role.
 	{
 		values, ok := r.URL.Query()["role"]
 		if ok {
@@ -51727,7 +51727,7 @@ func decodeTeamsListMembersLegacyParams(r *http.Request) (TeamsListMembersLegacy
 				params.Role.SetTo(ParamsRoleValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter role located in query`)
+				return params, errors.Wrap(err, `query: role: parse`)
 			}
 			if err := func() error {
 
@@ -51746,11 +51746,11 @@ func decodeTeamsListMembersLegacyParams(r *http.Request) (TeamsListMembersLegacy
 
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `invalid parameter role (query`)
+				return params, errors.Wrap(err, `query: role: invalid`)
 			}
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -51781,11 +51781,11 @@ func decodeTeamsListMembersLegacyParams(r *http.Request) (TeamsListMembersLegacy
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -51816,7 +51816,7 @@ func decodeTeamsListMembersLegacyParams(r *http.Request) (TeamsListMembersLegacy
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -51825,7 +51825,7 @@ func decodeTeamsListMembersLegacyParams(r *http.Request) (TeamsListMembersLegacy
 
 func decodeTeamsListPendingInvitationsInOrgParams(r *http.Request) (TeamsListPendingInvitationsInOrgParams, error) {
 	var params TeamsListPendingInvitationsInOrgParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -51853,10 +51853,10 @@ func decodeTeamsListPendingInvitationsInOrgParams(r *http.Request) (TeamsListPen
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "team_slug" located in "Path".
+	// Decode path: team_slug.
 	{
 		param := chi.URLParam(r, "team_slug")
 		if len(param) > 0 {
@@ -51884,10 +51884,10 @@ func decodeTeamsListPendingInvitationsInOrgParams(r *http.Request) (TeamsListPen
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter team_slug not specified`)
+			return params, errors.New(`path: team_slug: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -51918,11 +51918,11 @@ func decodeTeamsListPendingInvitationsInOrgParams(r *http.Request) (TeamsListPen
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -51953,7 +51953,7 @@ func decodeTeamsListPendingInvitationsInOrgParams(r *http.Request) (TeamsListPen
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -51962,7 +51962,7 @@ func decodeTeamsListPendingInvitationsInOrgParams(r *http.Request) (TeamsListPen
 
 func decodeTeamsListPendingInvitationsLegacyParams(r *http.Request) (TeamsListPendingInvitationsLegacyParams, error) {
 	var params TeamsListPendingInvitationsLegacyParams
-	// Decode param "team_id" located in "Path".
+	// Decode path: team_id.
 	{
 		param := chi.URLParam(r, "team_id")
 		if len(param) > 0 {
@@ -51990,10 +51990,10 @@ func decodeTeamsListPendingInvitationsLegacyParams(r *http.Request) (TeamsListPe
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter team_id not specified`)
+			return params, errors.New(`path: team_id: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -52024,11 +52024,11 @@ func decodeTeamsListPendingInvitationsLegacyParams(r *http.Request) (TeamsListPe
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -52059,7 +52059,7 @@ func decodeTeamsListPendingInvitationsLegacyParams(r *http.Request) (TeamsListPe
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -52068,7 +52068,7 @@ func decodeTeamsListPendingInvitationsLegacyParams(r *http.Request) (TeamsListPe
 
 func decodeTeamsListProjectsInOrgParams(r *http.Request) (TeamsListProjectsInOrgParams, error) {
 	var params TeamsListProjectsInOrgParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -52096,10 +52096,10 @@ func decodeTeamsListProjectsInOrgParams(r *http.Request) (TeamsListProjectsInOrg
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "team_slug" located in "Path".
+	// Decode path: team_slug.
 	{
 		param := chi.URLParam(r, "team_slug")
 		if len(param) > 0 {
@@ -52127,10 +52127,10 @@ func decodeTeamsListProjectsInOrgParams(r *http.Request) (TeamsListProjectsInOrg
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter team_slug not specified`)
+			return params, errors.New(`path: team_slug: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -52161,11 +52161,11 @@ func decodeTeamsListProjectsInOrgParams(r *http.Request) (TeamsListProjectsInOrg
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -52196,7 +52196,7 @@ func decodeTeamsListProjectsInOrgParams(r *http.Request) (TeamsListProjectsInOrg
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -52205,7 +52205,7 @@ func decodeTeamsListProjectsInOrgParams(r *http.Request) (TeamsListProjectsInOrg
 
 func decodeTeamsListProjectsLegacyParams(r *http.Request) (TeamsListProjectsLegacyParams, error) {
 	var params TeamsListProjectsLegacyParams
-	// Decode param "team_id" located in "Path".
+	// Decode path: team_id.
 	{
 		param := chi.URLParam(r, "team_id")
 		if len(param) > 0 {
@@ -52233,10 +52233,10 @@ func decodeTeamsListProjectsLegacyParams(r *http.Request) (TeamsListProjectsLega
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter team_id not specified`)
+			return params, errors.New(`path: team_id: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -52267,11 +52267,11 @@ func decodeTeamsListProjectsLegacyParams(r *http.Request) (TeamsListProjectsLega
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -52302,7 +52302,7 @@ func decodeTeamsListProjectsLegacyParams(r *http.Request) (TeamsListProjectsLega
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -52311,7 +52311,7 @@ func decodeTeamsListProjectsLegacyParams(r *http.Request) (TeamsListProjectsLega
 
 func decodeTeamsListReposInOrgParams(r *http.Request) (TeamsListReposInOrgParams, error) {
 	var params TeamsListReposInOrgParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -52339,10 +52339,10 @@ func decodeTeamsListReposInOrgParams(r *http.Request) (TeamsListReposInOrgParams
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "team_slug" located in "Path".
+	// Decode path: team_slug.
 	{
 		param := chi.URLParam(r, "team_slug")
 		if len(param) > 0 {
@@ -52370,10 +52370,10 @@ func decodeTeamsListReposInOrgParams(r *http.Request) (TeamsListReposInOrgParams
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter team_slug not specified`)
+			return params, errors.New(`path: team_slug: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -52404,11 +52404,11 @@ func decodeTeamsListReposInOrgParams(r *http.Request) (TeamsListReposInOrgParams
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -52439,7 +52439,7 @@ func decodeTeamsListReposInOrgParams(r *http.Request) (TeamsListReposInOrgParams
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -52448,7 +52448,7 @@ func decodeTeamsListReposInOrgParams(r *http.Request) (TeamsListReposInOrgParams
 
 func decodeTeamsListReposLegacyParams(r *http.Request) (TeamsListReposLegacyParams, error) {
 	var params TeamsListReposLegacyParams
-	// Decode param "team_id" located in "Path".
+	// Decode path: team_id.
 	{
 		param := chi.URLParam(r, "team_id")
 		if len(param) > 0 {
@@ -52476,10 +52476,10 @@ func decodeTeamsListReposLegacyParams(r *http.Request) (TeamsListReposLegacyPara
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter team_id not specified`)
+			return params, errors.New(`path: team_id: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -52510,11 +52510,11 @@ func decodeTeamsListReposLegacyParams(r *http.Request) (TeamsListReposLegacyPara
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -52545,7 +52545,7 @@ func decodeTeamsListReposLegacyParams(r *http.Request) (TeamsListReposLegacyPara
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -52554,7 +52554,7 @@ func decodeTeamsListReposLegacyParams(r *http.Request) (TeamsListReposLegacyPara
 
 func decodeTeamsRemoveMemberLegacyParams(r *http.Request) (TeamsRemoveMemberLegacyParams, error) {
 	var params TeamsRemoveMemberLegacyParams
-	// Decode param "team_id" located in "Path".
+	// Decode path: team_id.
 	{
 		param := chi.URLParam(r, "team_id")
 		if len(param) > 0 {
@@ -52582,10 +52582,10 @@ func decodeTeamsRemoveMemberLegacyParams(r *http.Request) (TeamsRemoveMemberLega
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter team_id not specified`)
+			return params, errors.New(`path: team_id: not specified`)
 		}
 	}
-	// Decode param "username" located in "Path".
+	// Decode path: username.
 	{
 		param := chi.URLParam(r, "username")
 		if len(param) > 0 {
@@ -52613,7 +52613,7 @@ func decodeTeamsRemoveMemberLegacyParams(r *http.Request) (TeamsRemoveMemberLega
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter username not specified`)
+			return params, errors.New(`path: username: not specified`)
 		}
 	}
 	return params, nil
@@ -52621,7 +52621,7 @@ func decodeTeamsRemoveMemberLegacyParams(r *http.Request) (TeamsRemoveMemberLega
 
 func decodeTeamsRemoveMembershipForUserInOrgParams(r *http.Request) (TeamsRemoveMembershipForUserInOrgParams, error) {
 	var params TeamsRemoveMembershipForUserInOrgParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -52649,10 +52649,10 @@ func decodeTeamsRemoveMembershipForUserInOrgParams(r *http.Request) (TeamsRemove
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "team_slug" located in "Path".
+	// Decode path: team_slug.
 	{
 		param := chi.URLParam(r, "team_slug")
 		if len(param) > 0 {
@@ -52680,10 +52680,10 @@ func decodeTeamsRemoveMembershipForUserInOrgParams(r *http.Request) (TeamsRemove
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter team_slug not specified`)
+			return params, errors.New(`path: team_slug: not specified`)
 		}
 	}
-	// Decode param "username" located in "Path".
+	// Decode path: username.
 	{
 		param := chi.URLParam(r, "username")
 		if len(param) > 0 {
@@ -52711,7 +52711,7 @@ func decodeTeamsRemoveMembershipForUserInOrgParams(r *http.Request) (TeamsRemove
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter username not specified`)
+			return params, errors.New(`path: username: not specified`)
 		}
 	}
 	return params, nil
@@ -52719,7 +52719,7 @@ func decodeTeamsRemoveMembershipForUserInOrgParams(r *http.Request) (TeamsRemove
 
 func decodeTeamsRemoveMembershipForUserLegacyParams(r *http.Request) (TeamsRemoveMembershipForUserLegacyParams, error) {
 	var params TeamsRemoveMembershipForUserLegacyParams
-	// Decode param "team_id" located in "Path".
+	// Decode path: team_id.
 	{
 		param := chi.URLParam(r, "team_id")
 		if len(param) > 0 {
@@ -52747,10 +52747,10 @@ func decodeTeamsRemoveMembershipForUserLegacyParams(r *http.Request) (TeamsRemov
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter team_id not specified`)
+			return params, errors.New(`path: team_id: not specified`)
 		}
 	}
-	// Decode param "username" located in "Path".
+	// Decode path: username.
 	{
 		param := chi.URLParam(r, "username")
 		if len(param) > 0 {
@@ -52778,7 +52778,7 @@ func decodeTeamsRemoveMembershipForUserLegacyParams(r *http.Request) (TeamsRemov
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter username not specified`)
+			return params, errors.New(`path: username: not specified`)
 		}
 	}
 	return params, nil
@@ -52786,7 +52786,7 @@ func decodeTeamsRemoveMembershipForUserLegacyParams(r *http.Request) (TeamsRemov
 
 func decodeTeamsRemoveProjectInOrgParams(r *http.Request) (TeamsRemoveProjectInOrgParams, error) {
 	var params TeamsRemoveProjectInOrgParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -52814,10 +52814,10 @@ func decodeTeamsRemoveProjectInOrgParams(r *http.Request) (TeamsRemoveProjectInO
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "team_slug" located in "Path".
+	// Decode path: team_slug.
 	{
 		param := chi.URLParam(r, "team_slug")
 		if len(param) > 0 {
@@ -52845,10 +52845,10 @@ func decodeTeamsRemoveProjectInOrgParams(r *http.Request) (TeamsRemoveProjectInO
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter team_slug not specified`)
+			return params, errors.New(`path: team_slug: not specified`)
 		}
 	}
-	// Decode param "project_id" located in "Path".
+	// Decode path: project_id.
 	{
 		param := chi.URLParam(r, "project_id")
 		if len(param) > 0 {
@@ -52876,7 +52876,7 @@ func decodeTeamsRemoveProjectInOrgParams(r *http.Request) (TeamsRemoveProjectInO
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter project_id not specified`)
+			return params, errors.New(`path: project_id: not specified`)
 		}
 	}
 	return params, nil
@@ -52884,7 +52884,7 @@ func decodeTeamsRemoveProjectInOrgParams(r *http.Request) (TeamsRemoveProjectInO
 
 func decodeTeamsRemoveRepoInOrgParams(r *http.Request) (TeamsRemoveRepoInOrgParams, error) {
 	var params TeamsRemoveRepoInOrgParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -52912,10 +52912,10 @@ func decodeTeamsRemoveRepoInOrgParams(r *http.Request) (TeamsRemoveRepoInOrgPara
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "team_slug" located in "Path".
+	// Decode path: team_slug.
 	{
 		param := chi.URLParam(r, "team_slug")
 		if len(param) > 0 {
@@ -52943,10 +52943,10 @@ func decodeTeamsRemoveRepoInOrgParams(r *http.Request) (TeamsRemoveRepoInOrgPara
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter team_slug not specified`)
+			return params, errors.New(`path: team_slug: not specified`)
 		}
 	}
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -52974,10 +52974,10 @@ func decodeTeamsRemoveRepoInOrgParams(r *http.Request) (TeamsRemoveRepoInOrgPara
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -53005,7 +53005,7 @@ func decodeTeamsRemoveRepoInOrgParams(r *http.Request) (TeamsRemoveRepoInOrgPara
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
 	return params, nil
@@ -53013,7 +53013,7 @@ func decodeTeamsRemoveRepoInOrgParams(r *http.Request) (TeamsRemoveRepoInOrgPara
 
 func decodeTeamsRemoveRepoLegacyParams(r *http.Request) (TeamsRemoveRepoLegacyParams, error) {
 	var params TeamsRemoveRepoLegacyParams
-	// Decode param "team_id" located in "Path".
+	// Decode path: team_id.
 	{
 		param := chi.URLParam(r, "team_id")
 		if len(param) > 0 {
@@ -53041,10 +53041,10 @@ func decodeTeamsRemoveRepoLegacyParams(r *http.Request) (TeamsRemoveRepoLegacyPa
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter team_id not specified`)
+			return params, errors.New(`path: team_id: not specified`)
 		}
 	}
-	// Decode param "owner" located in "Path".
+	// Decode path: owner.
 	{
 		param := chi.URLParam(r, "owner")
 		if len(param) > 0 {
@@ -53072,10 +53072,10 @@ func decodeTeamsRemoveRepoLegacyParams(r *http.Request) (TeamsRemoveRepoLegacyPa
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter owner not specified`)
+			return params, errors.New(`path: owner: not specified`)
 		}
 	}
-	// Decode param "repo" located in "Path".
+	// Decode path: repo.
 	{
 		param := chi.URLParam(r, "repo")
 		if len(param) > 0 {
@@ -53103,7 +53103,7 @@ func decodeTeamsRemoveRepoLegacyParams(r *http.Request) (TeamsRemoveRepoLegacyPa
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter repo not specified`)
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
 	return params, nil
@@ -53111,7 +53111,7 @@ func decodeTeamsRemoveRepoLegacyParams(r *http.Request) (TeamsRemoveRepoLegacyPa
 
 func decodeTeamsUpdateDiscussionCommentInOrgParams(r *http.Request) (TeamsUpdateDiscussionCommentInOrgParams, error) {
 	var params TeamsUpdateDiscussionCommentInOrgParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -53139,10 +53139,10 @@ func decodeTeamsUpdateDiscussionCommentInOrgParams(r *http.Request) (TeamsUpdate
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "team_slug" located in "Path".
+	// Decode path: team_slug.
 	{
 		param := chi.URLParam(r, "team_slug")
 		if len(param) > 0 {
@@ -53170,10 +53170,10 @@ func decodeTeamsUpdateDiscussionCommentInOrgParams(r *http.Request) (TeamsUpdate
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter team_slug not specified`)
+			return params, errors.New(`path: team_slug: not specified`)
 		}
 	}
-	// Decode param "discussion_number" located in "Path".
+	// Decode path: discussion_number.
 	{
 		param := chi.URLParam(r, "discussion_number")
 		if len(param) > 0 {
@@ -53201,10 +53201,10 @@ func decodeTeamsUpdateDiscussionCommentInOrgParams(r *http.Request) (TeamsUpdate
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter discussion_number not specified`)
+			return params, errors.New(`path: discussion_number: not specified`)
 		}
 	}
-	// Decode param "comment_number" located in "Path".
+	// Decode path: comment_number.
 	{
 		param := chi.URLParam(r, "comment_number")
 		if len(param) > 0 {
@@ -53232,7 +53232,7 @@ func decodeTeamsUpdateDiscussionCommentInOrgParams(r *http.Request) (TeamsUpdate
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter comment_number not specified`)
+			return params, errors.New(`path: comment_number: not specified`)
 		}
 	}
 	return params, nil
@@ -53240,7 +53240,7 @@ func decodeTeamsUpdateDiscussionCommentInOrgParams(r *http.Request) (TeamsUpdate
 
 func decodeTeamsUpdateDiscussionCommentLegacyParams(r *http.Request) (TeamsUpdateDiscussionCommentLegacyParams, error) {
 	var params TeamsUpdateDiscussionCommentLegacyParams
-	// Decode param "team_id" located in "Path".
+	// Decode path: team_id.
 	{
 		param := chi.URLParam(r, "team_id")
 		if len(param) > 0 {
@@ -53268,10 +53268,10 @@ func decodeTeamsUpdateDiscussionCommentLegacyParams(r *http.Request) (TeamsUpdat
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter team_id not specified`)
+			return params, errors.New(`path: team_id: not specified`)
 		}
 	}
-	// Decode param "discussion_number" located in "Path".
+	// Decode path: discussion_number.
 	{
 		param := chi.URLParam(r, "discussion_number")
 		if len(param) > 0 {
@@ -53299,10 +53299,10 @@ func decodeTeamsUpdateDiscussionCommentLegacyParams(r *http.Request) (TeamsUpdat
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter discussion_number not specified`)
+			return params, errors.New(`path: discussion_number: not specified`)
 		}
 	}
-	// Decode param "comment_number" located in "Path".
+	// Decode path: comment_number.
 	{
 		param := chi.URLParam(r, "comment_number")
 		if len(param) > 0 {
@@ -53330,7 +53330,7 @@ func decodeTeamsUpdateDiscussionCommentLegacyParams(r *http.Request) (TeamsUpdat
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter comment_number not specified`)
+			return params, errors.New(`path: comment_number: not specified`)
 		}
 	}
 	return params, nil
@@ -53338,7 +53338,7 @@ func decodeTeamsUpdateDiscussionCommentLegacyParams(r *http.Request) (TeamsUpdat
 
 func decodeTeamsUpdateDiscussionInOrgParams(r *http.Request) (TeamsUpdateDiscussionInOrgParams, error) {
 	var params TeamsUpdateDiscussionInOrgParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -53366,10 +53366,10 @@ func decodeTeamsUpdateDiscussionInOrgParams(r *http.Request) (TeamsUpdateDiscuss
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "team_slug" located in "Path".
+	// Decode path: team_slug.
 	{
 		param := chi.URLParam(r, "team_slug")
 		if len(param) > 0 {
@@ -53397,10 +53397,10 @@ func decodeTeamsUpdateDiscussionInOrgParams(r *http.Request) (TeamsUpdateDiscuss
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter team_slug not specified`)
+			return params, errors.New(`path: team_slug: not specified`)
 		}
 	}
-	// Decode param "discussion_number" located in "Path".
+	// Decode path: discussion_number.
 	{
 		param := chi.URLParam(r, "discussion_number")
 		if len(param) > 0 {
@@ -53428,7 +53428,7 @@ func decodeTeamsUpdateDiscussionInOrgParams(r *http.Request) (TeamsUpdateDiscuss
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter discussion_number not specified`)
+			return params, errors.New(`path: discussion_number: not specified`)
 		}
 	}
 	return params, nil
@@ -53436,7 +53436,7 @@ func decodeTeamsUpdateDiscussionInOrgParams(r *http.Request) (TeamsUpdateDiscuss
 
 func decodeTeamsUpdateDiscussionLegacyParams(r *http.Request) (TeamsUpdateDiscussionLegacyParams, error) {
 	var params TeamsUpdateDiscussionLegacyParams
-	// Decode param "team_id" located in "Path".
+	// Decode path: team_id.
 	{
 		param := chi.URLParam(r, "team_id")
 		if len(param) > 0 {
@@ -53464,10 +53464,10 @@ func decodeTeamsUpdateDiscussionLegacyParams(r *http.Request) (TeamsUpdateDiscus
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter team_id not specified`)
+			return params, errors.New(`path: team_id: not specified`)
 		}
 	}
-	// Decode param "discussion_number" located in "Path".
+	// Decode path: discussion_number.
 	{
 		param := chi.URLParam(r, "discussion_number")
 		if len(param) > 0 {
@@ -53495,7 +53495,7 @@ func decodeTeamsUpdateDiscussionLegacyParams(r *http.Request) (TeamsUpdateDiscus
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter discussion_number not specified`)
+			return params, errors.New(`path: discussion_number: not specified`)
 		}
 	}
 	return params, nil
@@ -53503,7 +53503,7 @@ func decodeTeamsUpdateDiscussionLegacyParams(r *http.Request) (TeamsUpdateDiscus
 
 func decodeTeamsUpdateInOrgParams(r *http.Request) (TeamsUpdateInOrgParams, error) {
 	var params TeamsUpdateInOrgParams
-	// Decode param "org" located in "Path".
+	// Decode path: org.
 	{
 		param := chi.URLParam(r, "org")
 		if len(param) > 0 {
@@ -53531,10 +53531,10 @@ func decodeTeamsUpdateInOrgParams(r *http.Request) (TeamsUpdateInOrgParams, erro
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter org not specified`)
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
-	// Decode param "team_slug" located in "Path".
+	// Decode path: team_slug.
 	{
 		param := chi.URLParam(r, "team_slug")
 		if len(param) > 0 {
@@ -53562,7 +53562,7 @@ func decodeTeamsUpdateInOrgParams(r *http.Request) (TeamsUpdateInOrgParams, erro
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter team_slug not specified`)
+			return params, errors.New(`path: team_slug: not specified`)
 		}
 	}
 	return params, nil
@@ -53570,7 +53570,7 @@ func decodeTeamsUpdateInOrgParams(r *http.Request) (TeamsUpdateInOrgParams, erro
 
 func decodeUsersCheckBlockedParams(r *http.Request) (UsersCheckBlockedParams, error) {
 	var params UsersCheckBlockedParams
-	// Decode param "username" located in "Path".
+	// Decode path: username.
 	{
 		param := chi.URLParam(r, "username")
 		if len(param) > 0 {
@@ -53598,7 +53598,7 @@ func decodeUsersCheckBlockedParams(r *http.Request) (UsersCheckBlockedParams, er
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter username not specified`)
+			return params, errors.New(`path: username: not specified`)
 		}
 	}
 	return params, nil
@@ -53606,7 +53606,7 @@ func decodeUsersCheckBlockedParams(r *http.Request) (UsersCheckBlockedParams, er
 
 func decodeUsersCheckFollowingForUserParams(r *http.Request) (UsersCheckFollowingForUserParams, error) {
 	var params UsersCheckFollowingForUserParams
-	// Decode param "username" located in "Path".
+	// Decode path: username.
 	{
 		param := chi.URLParam(r, "username")
 		if len(param) > 0 {
@@ -53634,10 +53634,10 @@ func decodeUsersCheckFollowingForUserParams(r *http.Request) (UsersCheckFollowin
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter username not specified`)
+			return params, errors.New(`path: username: not specified`)
 		}
 	}
-	// Decode param "target_user" located in "Path".
+	// Decode path: target_user.
 	{
 		param := chi.URLParam(r, "target_user")
 		if len(param) > 0 {
@@ -53665,7 +53665,7 @@ func decodeUsersCheckFollowingForUserParams(r *http.Request) (UsersCheckFollowin
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter target_user not specified`)
+			return params, errors.New(`path: target_user: not specified`)
 		}
 	}
 	return params, nil
@@ -53673,7 +53673,7 @@ func decodeUsersCheckFollowingForUserParams(r *http.Request) (UsersCheckFollowin
 
 func decodeUsersCheckPersonIsFollowedByAuthenticatedParams(r *http.Request) (UsersCheckPersonIsFollowedByAuthenticatedParams, error) {
 	var params UsersCheckPersonIsFollowedByAuthenticatedParams
-	// Decode param "username" located in "Path".
+	// Decode path: username.
 	{
 		param := chi.URLParam(r, "username")
 		if len(param) > 0 {
@@ -53701,7 +53701,7 @@ func decodeUsersCheckPersonIsFollowedByAuthenticatedParams(r *http.Request) (Use
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter username not specified`)
+			return params, errors.New(`path: username: not specified`)
 		}
 	}
 	return params, nil
@@ -53709,7 +53709,7 @@ func decodeUsersCheckPersonIsFollowedByAuthenticatedParams(r *http.Request) (Use
 
 func decodeUsersDeletePublicSSHKeyForAuthenticatedParams(r *http.Request) (UsersDeletePublicSSHKeyForAuthenticatedParams, error) {
 	var params UsersDeletePublicSSHKeyForAuthenticatedParams
-	// Decode param "key_id" located in "Path".
+	// Decode path: key_id.
 	{
 		param := chi.URLParam(r, "key_id")
 		if len(param) > 0 {
@@ -53737,7 +53737,7 @@ func decodeUsersDeletePublicSSHKeyForAuthenticatedParams(r *http.Request) (Users
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter key_id not specified`)
+			return params, errors.New(`path: key_id: not specified`)
 		}
 	}
 	return params, nil
@@ -53745,7 +53745,7 @@ func decodeUsersDeletePublicSSHKeyForAuthenticatedParams(r *http.Request) (Users
 
 func decodeUsersFollowParams(r *http.Request) (UsersFollowParams, error) {
 	var params UsersFollowParams
-	// Decode param "username" located in "Path".
+	// Decode path: username.
 	{
 		param := chi.URLParam(r, "username")
 		if len(param) > 0 {
@@ -53773,7 +53773,7 @@ func decodeUsersFollowParams(r *http.Request) (UsersFollowParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter username not specified`)
+			return params, errors.New(`path: username: not specified`)
 		}
 	}
 	return params, nil
@@ -53781,7 +53781,7 @@ func decodeUsersFollowParams(r *http.Request) (UsersFollowParams, error) {
 
 func decodeUsersGetByUsernameParams(r *http.Request) (UsersGetByUsernameParams, error) {
 	var params UsersGetByUsernameParams
-	// Decode param "username" located in "Path".
+	// Decode path: username.
 	{
 		param := chi.URLParam(r, "username")
 		if len(param) > 0 {
@@ -53809,7 +53809,7 @@ func decodeUsersGetByUsernameParams(r *http.Request) (UsersGetByUsernameParams, 
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter username not specified`)
+			return params, errors.New(`path: username: not specified`)
 		}
 	}
 	return params, nil
@@ -53817,7 +53817,7 @@ func decodeUsersGetByUsernameParams(r *http.Request) (UsersGetByUsernameParams, 
 
 func decodeUsersGetGpgKeyForAuthenticatedParams(r *http.Request) (UsersGetGpgKeyForAuthenticatedParams, error) {
 	var params UsersGetGpgKeyForAuthenticatedParams
-	// Decode param "gpg_key_id" located in "Path".
+	// Decode path: gpg_key_id.
 	{
 		param := chi.URLParam(r, "gpg_key_id")
 		if len(param) > 0 {
@@ -53845,7 +53845,7 @@ func decodeUsersGetGpgKeyForAuthenticatedParams(r *http.Request) (UsersGetGpgKey
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter gpg_key_id not specified`)
+			return params, errors.New(`path: gpg_key_id: not specified`)
 		}
 	}
 	return params, nil
@@ -53853,7 +53853,7 @@ func decodeUsersGetGpgKeyForAuthenticatedParams(r *http.Request) (UsersGetGpgKey
 
 func decodeUsersGetPublicSSHKeyForAuthenticatedParams(r *http.Request) (UsersGetPublicSSHKeyForAuthenticatedParams, error) {
 	var params UsersGetPublicSSHKeyForAuthenticatedParams
-	// Decode param "key_id" located in "Path".
+	// Decode path: key_id.
 	{
 		param := chi.URLParam(r, "key_id")
 		if len(param) > 0 {
@@ -53881,7 +53881,7 @@ func decodeUsersGetPublicSSHKeyForAuthenticatedParams(r *http.Request) (UsersGet
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter key_id not specified`)
+			return params, errors.New(`path: key_id: not specified`)
 		}
 	}
 	return params, nil
@@ -53889,7 +53889,7 @@ func decodeUsersGetPublicSSHKeyForAuthenticatedParams(r *http.Request) (UsersGet
 
 func decodeUsersListParams(r *http.Request) (UsersListParams, error) {
 	var params UsersListParams
-	// Decode param "since" located in "Query".
+	// Decode query: since.
 	{
 		values, ok := r.URL.Query()["since"]
 		if ok {
@@ -53920,11 +53920,11 @@ func decodeUsersListParams(r *http.Request) (UsersListParams, error) {
 				params.Since.SetTo(ParamsSinceValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter since located in query`)
+				return params, errors.Wrap(err, `query: since: parse`)
 			}
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -53955,7 +53955,7 @@ func decodeUsersListParams(r *http.Request) (UsersListParams, error) {
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
@@ -53964,7 +53964,7 @@ func decodeUsersListParams(r *http.Request) (UsersListParams, error) {
 
 func decodeUsersListEmailsForAuthenticatedParams(r *http.Request) (UsersListEmailsForAuthenticatedParams, error) {
 	var params UsersListEmailsForAuthenticatedParams
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -53995,11 +53995,11 @@ func decodeUsersListEmailsForAuthenticatedParams(r *http.Request) (UsersListEmai
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -54030,7 +54030,7 @@ func decodeUsersListEmailsForAuthenticatedParams(r *http.Request) (UsersListEmai
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -54039,7 +54039,7 @@ func decodeUsersListEmailsForAuthenticatedParams(r *http.Request) (UsersListEmai
 
 func decodeUsersListFollowedByAuthenticatedParams(r *http.Request) (UsersListFollowedByAuthenticatedParams, error) {
 	var params UsersListFollowedByAuthenticatedParams
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -54070,11 +54070,11 @@ func decodeUsersListFollowedByAuthenticatedParams(r *http.Request) (UsersListFol
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -54105,7 +54105,7 @@ func decodeUsersListFollowedByAuthenticatedParams(r *http.Request) (UsersListFol
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -54114,7 +54114,7 @@ func decodeUsersListFollowedByAuthenticatedParams(r *http.Request) (UsersListFol
 
 func decodeUsersListFollowersForAuthenticatedUserParams(r *http.Request) (UsersListFollowersForAuthenticatedUserParams, error) {
 	var params UsersListFollowersForAuthenticatedUserParams
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -54145,11 +54145,11 @@ func decodeUsersListFollowersForAuthenticatedUserParams(r *http.Request) (UsersL
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -54180,7 +54180,7 @@ func decodeUsersListFollowersForAuthenticatedUserParams(r *http.Request) (UsersL
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -54189,7 +54189,7 @@ func decodeUsersListFollowersForAuthenticatedUserParams(r *http.Request) (UsersL
 
 func decodeUsersListFollowersForUserParams(r *http.Request) (UsersListFollowersForUserParams, error) {
 	var params UsersListFollowersForUserParams
-	// Decode param "username" located in "Path".
+	// Decode path: username.
 	{
 		param := chi.URLParam(r, "username")
 		if len(param) > 0 {
@@ -54217,10 +54217,10 @@ func decodeUsersListFollowersForUserParams(r *http.Request) (UsersListFollowersF
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter username not specified`)
+			return params, errors.New(`path: username: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -54251,11 +54251,11 @@ func decodeUsersListFollowersForUserParams(r *http.Request) (UsersListFollowersF
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -54286,7 +54286,7 @@ func decodeUsersListFollowersForUserParams(r *http.Request) (UsersListFollowersF
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -54295,7 +54295,7 @@ func decodeUsersListFollowersForUserParams(r *http.Request) (UsersListFollowersF
 
 func decodeUsersListFollowingForUserParams(r *http.Request) (UsersListFollowingForUserParams, error) {
 	var params UsersListFollowingForUserParams
-	// Decode param "username" located in "Path".
+	// Decode path: username.
 	{
 		param := chi.URLParam(r, "username")
 		if len(param) > 0 {
@@ -54323,10 +54323,10 @@ func decodeUsersListFollowingForUserParams(r *http.Request) (UsersListFollowingF
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter username not specified`)
+			return params, errors.New(`path: username: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -54357,11 +54357,11 @@ func decodeUsersListFollowingForUserParams(r *http.Request) (UsersListFollowingF
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -54392,7 +54392,7 @@ func decodeUsersListFollowingForUserParams(r *http.Request) (UsersListFollowingF
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -54401,7 +54401,7 @@ func decodeUsersListFollowingForUserParams(r *http.Request) (UsersListFollowingF
 
 func decodeUsersListGpgKeysForAuthenticatedParams(r *http.Request) (UsersListGpgKeysForAuthenticatedParams, error) {
 	var params UsersListGpgKeysForAuthenticatedParams
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -54432,11 +54432,11 @@ func decodeUsersListGpgKeysForAuthenticatedParams(r *http.Request) (UsersListGpg
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -54467,7 +54467,7 @@ func decodeUsersListGpgKeysForAuthenticatedParams(r *http.Request) (UsersListGpg
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -54476,7 +54476,7 @@ func decodeUsersListGpgKeysForAuthenticatedParams(r *http.Request) (UsersListGpg
 
 func decodeUsersListGpgKeysForUserParams(r *http.Request) (UsersListGpgKeysForUserParams, error) {
 	var params UsersListGpgKeysForUserParams
-	// Decode param "username" located in "Path".
+	// Decode path: username.
 	{
 		param := chi.URLParam(r, "username")
 		if len(param) > 0 {
@@ -54504,10 +54504,10 @@ func decodeUsersListGpgKeysForUserParams(r *http.Request) (UsersListGpgKeysForUs
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter username not specified`)
+			return params, errors.New(`path: username: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -54538,11 +54538,11 @@ func decodeUsersListGpgKeysForUserParams(r *http.Request) (UsersListGpgKeysForUs
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -54573,7 +54573,7 @@ func decodeUsersListGpgKeysForUserParams(r *http.Request) (UsersListGpgKeysForUs
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -54582,7 +54582,7 @@ func decodeUsersListGpgKeysForUserParams(r *http.Request) (UsersListGpgKeysForUs
 
 func decodeUsersListPublicEmailsForAuthenticatedParams(r *http.Request) (UsersListPublicEmailsForAuthenticatedParams, error) {
 	var params UsersListPublicEmailsForAuthenticatedParams
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -54613,11 +54613,11 @@ func decodeUsersListPublicEmailsForAuthenticatedParams(r *http.Request) (UsersLi
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -54648,7 +54648,7 @@ func decodeUsersListPublicEmailsForAuthenticatedParams(r *http.Request) (UsersLi
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -54657,7 +54657,7 @@ func decodeUsersListPublicEmailsForAuthenticatedParams(r *http.Request) (UsersLi
 
 func decodeUsersListPublicKeysForUserParams(r *http.Request) (UsersListPublicKeysForUserParams, error) {
 	var params UsersListPublicKeysForUserParams
-	// Decode param "username" located in "Path".
+	// Decode path: username.
 	{
 		param := chi.URLParam(r, "username")
 		if len(param) > 0 {
@@ -54685,10 +54685,10 @@ func decodeUsersListPublicKeysForUserParams(r *http.Request) (UsersListPublicKey
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter username not specified`)
+			return params, errors.New(`path: username: not specified`)
 		}
 	}
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -54719,11 +54719,11 @@ func decodeUsersListPublicKeysForUserParams(r *http.Request) (UsersListPublicKey
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -54754,7 +54754,7 @@ func decodeUsersListPublicKeysForUserParams(r *http.Request) (UsersListPublicKey
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -54763,7 +54763,7 @@ func decodeUsersListPublicKeysForUserParams(r *http.Request) (UsersListPublicKey
 
 func decodeUsersListPublicSSHKeysForAuthenticatedParams(r *http.Request) (UsersListPublicSSHKeysForAuthenticatedParams, error) {
 	var params UsersListPublicSSHKeysForAuthenticatedParams
-	// Decode param "per_page" located in "Query".
+	// Decode query: per_page.
 	{
 		values, ok := r.URL.Query()["per_page"]
 		if ok {
@@ -54794,11 +54794,11 @@ func decodeUsersListPublicSSHKeysForAuthenticatedParams(r *http.Request) (UsersL
 				params.PerPage.SetTo(ParamsPerPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter per_page located in query`)
+				return params, errors.Wrap(err, `query: per_page: parse`)
 			}
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -54829,7 +54829,7 @@ func decodeUsersListPublicSSHKeysForAuthenticatedParams(r *http.Request) (UsersL
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -54838,7 +54838,7 @@ func decodeUsersListPublicSSHKeysForAuthenticatedParams(r *http.Request) (UsersL
 
 func decodeUsersUnblockParams(r *http.Request) (UsersUnblockParams, error) {
 	var params UsersUnblockParams
-	// Decode param "username" located in "Path".
+	// Decode path: username.
 	{
 		param := chi.URLParam(r, "username")
 		if len(param) > 0 {
@@ -54866,7 +54866,7 @@ func decodeUsersUnblockParams(r *http.Request) (UsersUnblockParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter username not specified`)
+			return params, errors.New(`path: username: not specified`)
 		}
 	}
 	return params, nil
@@ -54874,7 +54874,7 @@ func decodeUsersUnblockParams(r *http.Request) (UsersUnblockParams, error) {
 
 func decodeUsersUnfollowParams(r *http.Request) (UsersUnfollowParams, error) {
 	var params UsersUnfollowParams
-	// Decode param "username" located in "Path".
+	// Decode path: username.
 	{
 		param := chi.URLParam(r, "username")
 		if len(param) > 0 {
@@ -54902,7 +54902,7 @@ func decodeUsersUnfollowParams(r *http.Request) (UsersUnfollowParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter username not specified`)
+			return params, errors.New(`path: username: not specified`)
 		}
 	}
 	return params, nil

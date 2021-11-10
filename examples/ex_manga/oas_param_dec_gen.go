@@ -66,7 +66,7 @@ var (
 
 func decodeGetBookParams(r *http.Request) (GetBookParams, error) {
 	var params GetBookParams
-	// Decode param "book_id" located in "Path".
+	// Decode path: book_id.
 	{
 		param := chi.URLParam(r, "book_id")
 		if len(param) > 0 {
@@ -94,7 +94,7 @@ func decodeGetBookParams(r *http.Request) (GetBookParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter book_id not specified`)
+			return params, errors.New(`path: book_id: not specified`)
 		}
 	}
 	return params, nil
@@ -102,7 +102,7 @@ func decodeGetBookParams(r *http.Request) (GetBookParams, error) {
 
 func decodeGetPageCoverImageParams(r *http.Request) (GetPageCoverImageParams, error) {
 	var params GetPageCoverImageParams
-	// Decode param "media_id" located in "Path".
+	// Decode path: media_id.
 	{
 		param := chi.URLParam(r, "media_id")
 		if len(param) > 0 {
@@ -130,10 +130,10 @@ func decodeGetPageCoverImageParams(r *http.Request) (GetPageCoverImageParams, er
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter media_id not specified`)
+			return params, errors.New(`path: media_id: not specified`)
 		}
 	}
-	// Decode param "format" located in "Path".
+	// Decode path: format.
 	{
 		param := chi.URLParam(r, "format")
 		if len(param) > 0 {
@@ -161,7 +161,7 @@ func decodeGetPageCoverImageParams(r *http.Request) (GetPageCoverImageParams, er
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter format not specified`)
+			return params, errors.New(`path: format: not specified`)
 		}
 	}
 	return params, nil
@@ -169,7 +169,7 @@ func decodeGetPageCoverImageParams(r *http.Request) (GetPageCoverImageParams, er
 
 func decodeGetPageImageParams(r *http.Request) (GetPageImageParams, error) {
 	var params GetPageImageParams
-	// Decode param "media_id" located in "Path".
+	// Decode path: media_id.
 	{
 		param := chi.URLParam(r, "media_id")
 		if len(param) > 0 {
@@ -197,10 +197,10 @@ func decodeGetPageImageParams(r *http.Request) (GetPageImageParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter media_id not specified`)
+			return params, errors.New(`path: media_id: not specified`)
 		}
 	}
-	// Decode param "page" located in "Path".
+	// Decode path: page.
 	{
 		param := chi.URLParam(r, "page")
 		if len(param) > 0 {
@@ -228,10 +228,10 @@ func decodeGetPageImageParams(r *http.Request) (GetPageImageParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter page not specified`)
+			return params, errors.New(`path: page: not specified`)
 		}
 	}
-	// Decode param "format" located in "Path".
+	// Decode path: format.
 	{
 		param := chi.URLParam(r, "format")
 		if len(param) > 0 {
@@ -259,7 +259,7 @@ func decodeGetPageImageParams(r *http.Request) (GetPageImageParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter format not specified`)
+			return params, errors.New(`path: format: not specified`)
 		}
 	}
 	return params, nil
@@ -267,7 +267,7 @@ func decodeGetPageImageParams(r *http.Request) (GetPageImageParams, error) {
 
 func decodeGetPageThumbnailImageParams(r *http.Request) (GetPageThumbnailImageParams, error) {
 	var params GetPageThumbnailImageParams
-	// Decode param "media_id" located in "Path".
+	// Decode path: media_id.
 	{
 		param := chi.URLParam(r, "media_id")
 		if len(param) > 0 {
@@ -295,10 +295,10 @@ func decodeGetPageThumbnailImageParams(r *http.Request) (GetPageThumbnailImagePa
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter media_id not specified`)
+			return params, errors.New(`path: media_id: not specified`)
 		}
 	}
-	// Decode param "page" located in "Path".
+	// Decode path: page.
 	{
 		param := chi.URLParam(r, "page")
 		if len(param) > 0 {
@@ -326,10 +326,10 @@ func decodeGetPageThumbnailImageParams(r *http.Request) (GetPageThumbnailImagePa
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter page not specified`)
+			return params, errors.New(`path: page: not specified`)
 		}
 	}
-	// Decode param "format" located in "Path".
+	// Decode path: format.
 	{
 		param := chi.URLParam(r, "format")
 		if len(param) > 0 {
@@ -357,7 +357,7 @@ func decodeGetPageThumbnailImageParams(r *http.Request) (GetPageThumbnailImagePa
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter format not specified`)
+			return params, errors.New(`path: format: not specified`)
 		}
 	}
 	return params, nil
@@ -365,7 +365,7 @@ func decodeGetPageThumbnailImageParams(r *http.Request) (GetPageThumbnailImagePa
 
 func decodeSearchParams(r *http.Request) (SearchParams, error) {
 	var params SearchParams
-	// Decode param "query" located in "Query".
+	// Decode query: query.
 	{
 		values, ok := r.URL.Query()["query"]
 		if ok {
@@ -389,13 +389,13 @@ func decodeSearchParams(r *http.Request) (SearchParams, error) {
 				params.Query = c
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter query located in query`)
+				return params, errors.Wrap(err, `query: query: parse`)
 			}
 		} else {
-			return params, errors.New(`query parameter query not specified`)
+			return params, errors.New(`query: query: not specified`)
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -426,7 +426,7 @@ func decodeSearchParams(r *http.Request) (SearchParams, error) {
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
@@ -435,7 +435,7 @@ func decodeSearchParams(r *http.Request) (SearchParams, error) {
 
 func decodeSearchByTagIDParams(r *http.Request) (SearchByTagIDParams, error) {
 	var params SearchByTagIDParams
-	// Decode param "tag_id" located in "Query".
+	// Decode query: tag_id.
 	{
 		values, ok := r.URL.Query()["tag_id"]
 		if ok {
@@ -459,13 +459,13 @@ func decodeSearchByTagIDParams(r *http.Request) (SearchByTagIDParams, error) {
 				params.TagID = c
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter tag_id located in query`)
+				return params, errors.Wrap(err, `query: tag_id: parse`)
 			}
 		} else {
-			return params, errors.New(`query parameter tag_id not specified`)
+			return params, errors.New(`query: tag_id: not specified`)
 		}
 	}
-	// Decode param "page" located in "Query".
+	// Decode query: page.
 	{
 		values, ok := r.URL.Query()["page"]
 		if ok {
@@ -496,7 +496,7 @@ func decodeSearchByTagIDParams(r *http.Request) (SearchByTagIDParams, error) {
 				params.Page.SetTo(ParamsPageValue)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter page located in query`)
+				return params, errors.Wrap(err, `query: page: parse`)
 			}
 		}
 	}
