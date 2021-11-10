@@ -21,6 +21,10 @@ type AnswerShippingQueryRes interface {
 	answerShippingQueryRes()
 }
 
+type ApproveChatJoinRequestRes interface {
+	approveChatJoinRequestRes()
+}
+
 type BanChatMemberRes interface {
 	banChatMemberRes()
 }
@@ -35,6 +39,10 @@ type CreateChatInviteLinkRes interface {
 
 type CreateNewStickerSetRes interface {
 	createNewStickerSetRes()
+}
+
+type DeclineChatJoinRequestRes interface {
+	declineChatJoinRequestRes()
 }
 
 type DeleteChatPhotoRes interface {

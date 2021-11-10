@@ -209,6 +209,35 @@ func (s *Server) HandleAnswerShippingQueryRequest(w http.ResponseWriter, r *http
 	}
 }
 
+// HandleApproveChatJoinRequestRequest handles approveChatJoinRequest operation.
+//
+// POST /approveChatJoinRequest
+func (s *Server) HandleApproveChatJoinRequestRequest(w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `ApproveChatJoinRequest`,
+		trace.WithAttributes(otelogen.OperationID(`approveChatJoinRequest`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeApproveChatJoinRequestRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.ApproveChatJoinRequest(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeApproveChatJoinRequestResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
 // HandleBanChatMemberRequest handles banChatMember operation.
 //
 // POST /banChatMember
@@ -320,6 +349,35 @@ func (s *Server) HandleCreateNewStickerSetRequest(w http.ResponseWriter, r *http
 	}
 
 	if err := encodeCreateNewStickerSetResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleDeclineChatJoinRequestRequest handles declineChatJoinRequest operation.
+//
+// POST /declineChatJoinRequest
+func (s *Server) HandleDeclineChatJoinRequestRequest(w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `DeclineChatJoinRequest`,
+		trace.WithAttributes(otelogen.OperationID(`declineChatJoinRequest`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeDeclineChatJoinRequestRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.DeclineChatJoinRequest(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeDeclineChatJoinRequestResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		return
 	}

@@ -221,6 +221,32 @@ func decodeAnswerShippingQueryRequest(r *http.Request, span trace.Span) (req Ans
 	}
 }
 
+func decodeApproveChatJoinRequestRequest(r *http.Request, span trace.Span) (req ApproveChatJoinRequest, err error) {
+	switch r.Header.Get("Content-Type") {
+	case "application/json":
+		var request ApproveChatJoinRequest
+		buf := getBuf()
+		defer putBuf(buf)
+		if _, err := io.Copy(buf, r.Body); err != nil {
+			return req, err
+		}
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.Decode(d); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, err
+		}
+		return request, nil
+	default:
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+	}
+}
+
 func decodeBanChatMemberRequest(r *http.Request, span trace.Span) (req BanChatMember, err error) {
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
@@ -302,6 +328,15 @@ func decodeCreateChatInviteLinkRequest(r *http.Request, span trace.Span) (req Cr
 		}(); err != nil {
 			return req, err
 		}
+		if err := func() error {
+
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate")
+		}
 		return request, nil
 	default:
 		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -336,6 +371,32 @@ func decodeCreateNewStickerSetRequest(r *http.Request, span trace.Span) (req Cre
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate")
+		}
+		return request, nil
+	default:
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+	}
+}
+
+func decodeDeclineChatJoinRequestRequest(r *http.Request, span trace.Span) (req DeclineChatJoinRequest, err error) {
+	switch r.Header.Get("Content-Type") {
+	case "application/json":
+		var request DeclineChatJoinRequest
+		buf := getBuf()
+		defer putBuf(buf)
+		if _, err := io.Copy(buf, r.Body); err != nil {
+			return req, err
+		}
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.Decode(d); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, err
 		}
 		return request, nil
 	default:
@@ -518,6 +579,15 @@ func decodeEditChatInviteLinkRequest(r *http.Request, span trace.Span) (req Edit
 			return nil
 		}(); err != nil {
 			return req, err
+		}
+		if err := func() error {
+
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:

@@ -392,6 +392,60 @@ func (c *Client) AnswerShippingQuery(ctx context.Context, request AnswerShipping
 	return result, nil
 }
 
+// ApproveChatJoinRequest invokes approveChatJoinRequest operation.
+//
+// POST /approveChatJoinRequest
+func (c *Client) ApproveChatJoinRequest(ctx context.Context, request ApproveChatJoinRequest) (res ApproveChatJoinRequestRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `ApproveChatJoinRequest`,
+		trace.WithAttributes(otelogen.OperationID(`approveChatJoinRequest`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeApproveChatJoinRequestRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/approveChatJoinRequest"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeApproveChatJoinRequestResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // BanChatMember invokes banChatMember operation.
 //
 // POST /banChatMember
@@ -513,6 +567,15 @@ func (c *Client) CopyMessage(ctx context.Context, request CopyMessage) (res Copy
 //
 // POST /createChatInviteLink
 func (c *Client) CreateChatInviteLink(ctx context.Context, request CreateChatInviteLink) (res CreateChatInviteLinkRes, err error) {
+	if err := func() error {
+
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateChatInviteLink`,
 		trace.WithAttributes(otelogen.OperationID(`createChatInviteLink`)),
@@ -619,6 +682,60 @@ func (c *Client) CreateNewStickerSet(ctx context.Context, request CreateNewStick
 	defer resp.Body.Close()
 
 	result, err := decodeCreateNewStickerSetResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// DeclineChatJoinRequest invokes declineChatJoinRequest operation.
+//
+// POST /declineChatJoinRequest
+func (c *Client) DeclineChatJoinRequest(ctx context.Context, request DeclineChatJoinRequest) (res DeclineChatJoinRequestRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `DeclineChatJoinRequest`,
+		trace.WithAttributes(otelogen.OperationID(`declineChatJoinRequest`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeDeclineChatJoinRequestRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/declineChatJoinRequest"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeDeclineChatJoinRequestResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -954,6 +1071,15 @@ func (c *Client) DeleteWebhook(ctx context.Context, request DeleteWebhook) (res 
 //
 // POST /editChatInviteLink
 func (c *Client) EditChatInviteLink(ctx context.Context, request EditChatInviteLink) (res EditChatInviteLinkRes, err error) {
+	if err := func() error {
+
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EditChatInviteLink`,
 		trace.WithAttributes(otelogen.OperationID(`editChatInviteLink`)),

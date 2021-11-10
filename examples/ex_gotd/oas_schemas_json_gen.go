@@ -68,12 +68,8 @@ var (
 func (s AddStickerToSet) Encode(e *jx.Encoder) {
 	e.ObjStart()
 
-	e.FieldStart("emojis")
-	e.Str(s.Emojis)
-	if s.MaskPosition.Set {
-		e.FieldStart("mask_position")
-		s.MaskPosition.Encode(e)
-	}
+	e.FieldStart("user_id")
+	e.Int(s.UserID)
 
 	e.FieldStart("name")
 	e.Str(s.Name)
@@ -86,8 +82,12 @@ func (s AddStickerToSet) Encode(e *jx.Encoder) {
 		s.TgsSticker.Encode(e)
 	}
 
-	e.FieldStart("user_id")
-	e.Int(s.UserID)
+	e.FieldStart("emojis")
+	e.Str(s.Emojis)
+	if s.MaskPosition.Set {
+		e.FieldStart("mask_position")
+		s.MaskPosition.Encode(e)
+	}
 	e.ObjEnd()
 }
 
@@ -98,15 +98,10 @@ func (s *AddStickerToSet) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "emojis":
-			v, err := d.Str()
-			s.Emojis = string(v)
+		case "user_id":
+			v, err := d.Int()
+			s.UserID = int(v)
 			if err != nil {
-				return err
-			}
-		case "mask_position":
-			s.MaskPosition.Reset()
-			if err := s.MaskPosition.Decode(d); err != nil {
 				return err
 			}
 		case "name":
@@ -125,10 +120,15 @@ func (s *AddStickerToSet) Decode(d *jx.Decoder) error {
 			if err := s.TgsSticker.Decode(d); err != nil {
 				return err
 			}
-		case "user_id":
-			v, err := d.Int()
-			s.UserID = int(v)
+		case "emojis":
+			v, err := d.Str()
+			s.Emojis = string(v)
 			if err != nil {
+				return err
+			}
+		case "mask_position":
+			s.MaskPosition.Reset()
+			if err := s.MaskPosition.Decode(d); err != nil {
 				return err
 			}
 		default:
@@ -142,36 +142,36 @@ func (s *AddStickerToSet) Decode(d *jx.Decoder) error {
 func (s Animation) Encode(e *jx.Encoder) {
 	e.ObjStart()
 
-	e.FieldStart("duration")
-	e.Int(s.Duration)
-
 	e.FieldStart("file_id")
 	e.Str(s.FileID)
+
+	e.FieldStart("file_unique_id")
+	e.Str(s.FileUniqueID)
+
+	e.FieldStart("width")
+	e.Int(s.Width)
+
+	e.FieldStart("height")
+	e.Int(s.Height)
+
+	e.FieldStart("duration")
+	e.Int(s.Duration)
+	if s.Thumb.Set {
+		e.FieldStart("thumb")
+		s.Thumb.Encode(e)
+	}
 	if s.FileName.Set {
 		e.FieldStart("file_name")
 		s.FileName.Encode(e)
+	}
+	if s.MimeType.Set {
+		e.FieldStart("mime_type")
+		s.MimeType.Encode(e)
 	}
 	if s.FileSize.Set {
 		e.FieldStart("file_size")
 		s.FileSize.Encode(e)
 	}
-
-	e.FieldStart("file_unique_id")
-	e.Str(s.FileUniqueID)
-
-	e.FieldStart("height")
-	e.Int(s.Height)
-	if s.MimeType.Set {
-		e.FieldStart("mime_type")
-		s.MimeType.Encode(e)
-	}
-	if s.Thumb.Set {
-		e.FieldStart("thumb")
-		s.Thumb.Encode(e)
-	}
-
-	e.FieldStart("width")
-	e.Int(s.Width)
 	e.ObjEnd()
 }
 
@@ -182,31 +182,21 @@ func (s *Animation) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "duration":
-			v, err := d.Int()
-			s.Duration = int(v)
-			if err != nil {
-				return err
-			}
 		case "file_id":
 			v, err := d.Str()
 			s.FileID = string(v)
 			if err != nil {
 				return err
 			}
-		case "file_name":
-			s.FileName.Reset()
-			if err := s.FileName.Decode(d); err != nil {
-				return err
-			}
-		case "file_size":
-			s.FileSize.Reset()
-			if err := s.FileSize.Decode(d); err != nil {
-				return err
-			}
 		case "file_unique_id":
 			v, err := d.Str()
 			s.FileUniqueID = string(v)
+			if err != nil {
+				return err
+			}
+		case "width":
+			v, err := d.Int()
+			s.Width = int(v)
 			if err != nil {
 				return err
 			}
@@ -216,9 +206,10 @@ func (s *Animation) Decode(d *jx.Decoder) error {
 			if err != nil {
 				return err
 			}
-		case "mime_type":
-			s.MimeType.Reset()
-			if err := s.MimeType.Decode(d); err != nil {
+		case "duration":
+			v, err := d.Int()
+			s.Duration = int(v)
+			if err != nil {
 				return err
 			}
 		case "thumb":
@@ -226,10 +217,19 @@ func (s *Animation) Decode(d *jx.Decoder) error {
 			if err := s.Thumb.Decode(d); err != nil {
 				return err
 			}
-		case "width":
-			v, err := d.Int()
-			s.Width = int(v)
-			if err != nil {
+		case "file_name":
+			s.FileName.Reset()
+			if err := s.FileName.Decode(d); err != nil {
+				return err
+			}
+		case "mime_type":
+			s.MimeType.Reset()
+			if err := s.MimeType.Decode(d); err != nil {
+				return err
+			}
+		case "file_size":
+			s.FileSize.Reset()
+			if err := s.FileSize.Decode(d); err != nil {
 				return err
 			}
 		default:
@@ -242,24 +242,24 @@ func (s *Animation) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s AnswerCallbackQuery) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	if s.CacheTime.Set {
-		e.FieldStart("cache_time")
-		s.CacheTime.Encode(e)
-	}
 
 	e.FieldStart("callback_query_id")
 	e.Str(s.CallbackQueryID)
-	if s.ShowAlert.Set {
-		e.FieldStart("show_alert")
-		s.ShowAlert.Encode(e)
-	}
 	if s.Text.Set {
 		e.FieldStart("text")
 		s.Text.Encode(e)
 	}
+	if s.ShowAlert.Set {
+		e.FieldStart("show_alert")
+		s.ShowAlert.Encode(e)
+	}
 	if s.URL.Set {
 		e.FieldStart("url")
 		s.URL.Encode(e)
+	}
+	if s.CacheTime.Set {
+		e.FieldStart("cache_time")
+		s.CacheTime.Encode(e)
 	}
 	e.ObjEnd()
 }
@@ -271,20 +271,10 @@ func (s *AnswerCallbackQuery) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "cache_time":
-			s.CacheTime.Reset()
-			if err := s.CacheTime.Decode(d); err != nil {
-				return err
-			}
 		case "callback_query_id":
 			v, err := d.Str()
 			s.CallbackQueryID = string(v)
 			if err != nil {
-				return err
-			}
-		case "show_alert":
-			s.ShowAlert.Reset()
-			if err := s.ShowAlert.Decode(d); err != nil {
 				return err
 			}
 		case "text":
@@ -292,9 +282,19 @@ func (s *AnswerCallbackQuery) Decode(d *jx.Decoder) error {
 			if err := s.Text.Decode(d); err != nil {
 				return err
 			}
+		case "show_alert":
+			s.ShowAlert.Reset()
+			if err := s.ShowAlert.Decode(d); err != nil {
+				return err
+			}
 		case "url":
 			s.URL.Reset()
 			if err := s.URL.Decode(d); err != nil {
+				return err
+			}
+		case "cache_time":
+			s.CacheTime.Reset()
+			if err := s.CacheTime.Decode(d); err != nil {
 				return err
 			}
 		default:
@@ -307,13 +307,20 @@ func (s *AnswerCallbackQuery) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s AnswerInlineQuery) Encode(e *jx.Encoder) {
 	e.ObjStart()
+
+	e.FieldStart("inline_query_id")
+	e.Str(s.InlineQueryID)
+
+	e.FieldStart("results")
+	e.ArrStart()
+	for _, elem := range s.Results {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
 	if s.CacheTime.Set {
 		e.FieldStart("cache_time")
 		s.CacheTime.Encode(e)
 	}
-
-	e.FieldStart("inline_query_id")
-	e.Str(s.InlineQueryID)
 	if s.IsPersonal.Set {
 		e.FieldStart("is_personal")
 		s.IsPersonal.Encode(e)
@@ -322,20 +329,13 @@ func (s AnswerInlineQuery) Encode(e *jx.Encoder) {
 		e.FieldStart("next_offset")
 		s.NextOffset.Encode(e)
 	}
-
-	e.FieldStart("results")
-	e.ArrStart()
-	for _, elem := range s.Results {
-		elem.Encode(e)
-	}
-	e.ArrEnd()
-	if s.SwitchPmParameter.Set {
-		e.FieldStart("switch_pm_parameter")
-		s.SwitchPmParameter.Encode(e)
-	}
 	if s.SwitchPmText.Set {
 		e.FieldStart("switch_pm_text")
 		s.SwitchPmText.Encode(e)
+	}
+	if s.SwitchPmParameter.Set {
+		e.FieldStart("switch_pm_parameter")
+		s.SwitchPmParameter.Encode(e)
 	}
 	e.ObjEnd()
 }
@@ -347,25 +347,10 @@ func (s *AnswerInlineQuery) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "cache_time":
-			s.CacheTime.Reset()
-			if err := s.CacheTime.Decode(d); err != nil {
-				return err
-			}
 		case "inline_query_id":
 			v, err := d.Str()
 			s.InlineQueryID = string(v)
 			if err != nil {
-				return err
-			}
-		case "is_personal":
-			s.IsPersonal.Reset()
-			if err := s.IsPersonal.Decode(d); err != nil {
-				return err
-			}
-		case "next_offset":
-			s.NextOffset.Reset()
-			if err := s.NextOffset.Decode(d); err != nil {
 				return err
 			}
 		case "results":
@@ -386,14 +371,29 @@ func (s *AnswerInlineQuery) Decode(d *jx.Decoder) error {
 			}); err != nil {
 				return err
 			}
-		case "switch_pm_parameter":
-			s.SwitchPmParameter.Reset()
-			if err := s.SwitchPmParameter.Decode(d); err != nil {
+		case "cache_time":
+			s.CacheTime.Reset()
+			if err := s.CacheTime.Decode(d); err != nil {
+				return err
+			}
+		case "is_personal":
+			s.IsPersonal.Reset()
+			if err := s.IsPersonal.Decode(d); err != nil {
+				return err
+			}
+		case "next_offset":
+			s.NextOffset.Reset()
+			if err := s.NextOffset.Decode(d); err != nil {
 				return err
 			}
 		case "switch_pm_text":
 			s.SwitchPmText.Reset()
 			if err := s.SwitchPmText.Decode(d); err != nil {
+				return err
+			}
+		case "switch_pm_parameter":
+			s.SwitchPmParameter.Reset()
+			if err := s.SwitchPmParameter.Decode(d); err != nil {
 				return err
 			}
 		default:
@@ -406,16 +406,16 @@ func (s *AnswerInlineQuery) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s AnswerPreCheckoutQuery) Encode(e *jx.Encoder) {
 	e.ObjStart()
+
+	e.FieldStart("pre_checkout_query_id")
+	e.Str(s.PreCheckoutQueryID)
+
+	e.FieldStart("ok")
+	e.Bool(s.Ok)
 	if s.ErrorMessage.Set {
 		e.FieldStart("error_message")
 		s.ErrorMessage.Encode(e)
 	}
-
-	e.FieldStart("ok")
-	e.Bool(s.Ok)
-
-	e.FieldStart("pre_checkout_query_id")
-	e.Str(s.PreCheckoutQueryID)
 	e.ObjEnd()
 }
 
@@ -426,9 +426,10 @@ func (s *AnswerPreCheckoutQuery) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "error_message":
-			s.ErrorMessage.Reset()
-			if err := s.ErrorMessage.Decode(d); err != nil {
+		case "pre_checkout_query_id":
+			v, err := d.Str()
+			s.PreCheckoutQueryID = string(v)
+			if err != nil {
 				return err
 			}
 		case "ok":
@@ -437,10 +438,9 @@ func (s *AnswerPreCheckoutQuery) Decode(d *jx.Decoder) error {
 			if err != nil {
 				return err
 			}
-		case "pre_checkout_query_id":
-			v, err := d.Str()
-			s.PreCheckoutQueryID = string(v)
-			if err != nil {
+		case "error_message":
+			s.ErrorMessage.Reset()
+			if err := s.ErrorMessage.Decode(d); err != nil {
 				return err
 			}
 		default:
@@ -453,10 +453,9 @@ func (s *AnswerPreCheckoutQuery) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s AnswerShippingQuery) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	if s.ErrorMessage.Set {
-		e.FieldStart("error_message")
-		s.ErrorMessage.Encode(e)
-	}
+
+	e.FieldStart("shipping_query_id")
+	e.Str(s.ShippingQueryID)
 
 	e.FieldStart("ok")
 	e.Bool(s.Ok)
@@ -468,9 +467,10 @@ func (s AnswerShippingQuery) Encode(e *jx.Encoder) {
 		}
 		e.ArrEnd()
 	}
-
-	e.FieldStart("shipping_query_id")
-	e.Str(s.ShippingQueryID)
+	if s.ErrorMessage.Set {
+		e.FieldStart("error_message")
+		s.ErrorMessage.Encode(e)
+	}
 	e.ObjEnd()
 }
 
@@ -481,9 +481,10 @@ func (s *AnswerShippingQuery) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "error_message":
-			s.ErrorMessage.Reset()
-			if err := s.ErrorMessage.Decode(d); err != nil {
+		case "shipping_query_id":
+			v, err := d.Str()
+			s.ShippingQueryID = string(v)
+			if err != nil {
 				return err
 			}
 		case "ok":
@@ -504,9 +505,44 @@ func (s *AnswerShippingQuery) Decode(d *jx.Decoder) error {
 			}); err != nil {
 				return err
 			}
-		case "shipping_query_id":
-			v, err := d.Str()
-			s.ShippingQueryID = string(v)
+		case "error_message":
+			s.ErrorMessage.Reset()
+			if err := s.ErrorMessage.Decode(d); err != nil {
+				return err
+			}
+		default:
+			return d.Skip()
+		}
+		return nil
+	})
+}
+
+// Encode implements json.Marshaler.
+func (s ApproveChatJoinRequest) Encode(e *jx.Encoder) {
+	e.ObjStart()
+
+	e.FieldStart("chat_id")
+	s.ChatID.Encode(e)
+
+	e.FieldStart("user_id")
+	e.Int(s.UserID)
+	e.ObjEnd()
+}
+
+// Decode decodes ApproveChatJoinRequest from json.
+func (s *ApproveChatJoinRequest) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ApproveChatJoinRequest to nil`)
+	}
+	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		case "chat_id":
+			if err := s.ChatID.Decode(d); err != nil {
+				return err
+			}
+		case "user_id":
+			v, err := d.Int()
+			s.UserID = int(v)
 			if err != nil {
 				return err
 			}
@@ -521,37 +557,37 @@ func (s *AnswerShippingQuery) Decode(d *jx.Decoder) error {
 func (s Audio) Encode(e *jx.Encoder) {
 	e.ObjStart()
 
-	e.FieldStart("duration")
-	e.Int(s.Duration)
-
 	e.FieldStart("file_id")
 	e.Str(s.FileID)
+
+	e.FieldStart("file_unique_id")
+	e.Str(s.FileUniqueID)
+
+	e.FieldStart("duration")
+	e.Int(s.Duration)
+	if s.Performer.Set {
+		e.FieldStart("performer")
+		s.Performer.Encode(e)
+	}
+	if s.Title.Set {
+		e.FieldStart("title")
+		s.Title.Encode(e)
+	}
 	if s.FileName.Set {
 		e.FieldStart("file_name")
 		s.FileName.Encode(e)
+	}
+	if s.MimeType.Set {
+		e.FieldStart("mime_type")
+		s.MimeType.Encode(e)
 	}
 	if s.FileSize.Set {
 		e.FieldStart("file_size")
 		s.FileSize.Encode(e)
 	}
-
-	e.FieldStart("file_unique_id")
-	e.Str(s.FileUniqueID)
-	if s.MimeType.Set {
-		e.FieldStart("mime_type")
-		s.MimeType.Encode(e)
-	}
-	if s.Performer.Set {
-		e.FieldStart("performer")
-		s.Performer.Encode(e)
-	}
 	if s.Thumb.Set {
 		e.FieldStart("thumb")
 		s.Thumb.Encode(e)
-	}
-	if s.Title.Set {
-		e.FieldStart("title")
-		s.Title.Encode(e)
 	}
 	e.ObjEnd()
 }
@@ -563,26 +599,10 @@ func (s *Audio) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "duration":
-			v, err := d.Int()
-			s.Duration = int(v)
-			if err != nil {
-				return err
-			}
 		case "file_id":
 			v, err := d.Str()
 			s.FileID = string(v)
 			if err != nil {
-				return err
-			}
-		case "file_name":
-			s.FileName.Reset()
-			if err := s.FileName.Decode(d); err != nil {
-				return err
-			}
-		case "file_size":
-			s.FileSize.Reset()
-			if err := s.FileSize.Decode(d); err != nil {
 				return err
 			}
 		case "file_unique_id":
@@ -591,9 +611,10 @@ func (s *Audio) Decode(d *jx.Decoder) error {
 			if err != nil {
 				return err
 			}
-		case "mime_type":
-			s.MimeType.Reset()
-			if err := s.MimeType.Decode(d); err != nil {
+		case "duration":
+			v, err := d.Int()
+			s.Duration = int(v)
+			if err != nil {
 				return err
 			}
 		case "performer":
@@ -601,14 +622,29 @@ func (s *Audio) Decode(d *jx.Decoder) error {
 			if err := s.Performer.Decode(d); err != nil {
 				return err
 			}
-		case "thumb":
-			s.Thumb.Reset()
-			if err := s.Thumb.Decode(d); err != nil {
-				return err
-			}
 		case "title":
 			s.Title.Reset()
 			if err := s.Title.Decode(d); err != nil {
+				return err
+			}
+		case "file_name":
+			s.FileName.Reset()
+			if err := s.FileName.Decode(d); err != nil {
+				return err
+			}
+		case "mime_type":
+			s.MimeType.Reset()
+			if err := s.MimeType.Decode(d); err != nil {
+				return err
+			}
+		case "file_size":
+			s.FileSize.Reset()
+			if err := s.FileSize.Decode(d); err != nil {
+				return err
+			}
+		case "thumb":
+			s.Thumb.Reset()
+			if err := s.Thumb.Decode(d); err != nil {
 				return err
 			}
 		default:
@@ -624,17 +660,17 @@ func (s BanChatMember) Encode(e *jx.Encoder) {
 
 	e.FieldStart("chat_id")
 	s.ChatID.Encode(e)
-	if s.RevokeMessages.Set {
-		e.FieldStart("revoke_messages")
-		s.RevokeMessages.Encode(e)
-	}
+
+	e.FieldStart("user_id")
+	e.Int(s.UserID)
 	if s.UntilDate.Set {
 		e.FieldStart("until_date")
 		s.UntilDate.Encode(e)
 	}
-
-	e.FieldStart("user_id")
-	e.Int(s.UserID)
+	if s.RevokeMessages.Set {
+		e.FieldStart("revoke_messages")
+		s.RevokeMessages.Encode(e)
+	}
 	e.ObjEnd()
 }
 
@@ -649,9 +685,10 @@ func (s *BanChatMember) Decode(d *jx.Decoder) error {
 			if err := s.ChatID.Decode(d); err != nil {
 				return err
 			}
-		case "revoke_messages":
-			s.RevokeMessages.Reset()
-			if err := s.RevokeMessages.Decode(d); err != nil {
+		case "user_id":
+			v, err := d.Int()
+			s.UserID = int(v)
+			if err != nil {
 				return err
 			}
 		case "until_date":
@@ -659,10 +696,9 @@ func (s *BanChatMember) Decode(d *jx.Decoder) error {
 			if err := s.UntilDate.Decode(d); err != nil {
 				return err
 			}
-		case "user_id":
-			v, err := d.Int()
-			s.UserID = int(v)
-			if err != nil {
+		case "revoke_messages":
+			s.RevokeMessages.Reset()
+			if err := s.RevokeMessages.Decode(d); err != nil {
 				return err
 			}
 		default:
@@ -912,11 +948,11 @@ func (s *BotCommandScopeAllPrivateChats) Decode(d *jx.Decoder) error {
 func (s BotCommandScopeChat) Encode(e *jx.Encoder) {
 	e.ObjStart()
 
-	e.FieldStart("chat_id")
-	s.ChatID.Encode(e)
-
 	e.FieldStart("type")
 	e.Str(s.Type)
+
+	e.FieldStart("chat_id")
+	s.ChatID.Encode(e)
 	e.ObjEnd()
 }
 
@@ -927,14 +963,14 @@ func (s *BotCommandScopeChat) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "chat_id":
-			if err := s.ChatID.Decode(d); err != nil {
-				return err
-			}
 		case "type":
 			v, err := d.Str()
 			s.Type = string(v)
 			if err != nil {
+				return err
+			}
+		case "chat_id":
+			if err := s.ChatID.Decode(d); err != nil {
 				return err
 			}
 		default:
@@ -948,11 +984,11 @@ func (s *BotCommandScopeChat) Decode(d *jx.Decoder) error {
 func (s BotCommandScopeChatAdministrators) Encode(e *jx.Encoder) {
 	e.ObjStart()
 
-	e.FieldStart("chat_id")
-	s.ChatID.Encode(e)
-
 	e.FieldStart("type")
 	e.Str(s.Type)
+
+	e.FieldStart("chat_id")
+	s.ChatID.Encode(e)
 	e.ObjEnd()
 }
 
@@ -963,14 +999,14 @@ func (s *BotCommandScopeChatAdministrators) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "chat_id":
-			if err := s.ChatID.Decode(d); err != nil {
-				return err
-			}
 		case "type":
 			v, err := d.Str()
 			s.Type = string(v)
 			if err != nil {
+				return err
+			}
+		case "chat_id":
+			if err := s.ChatID.Decode(d); err != nil {
 				return err
 			}
 		default:
@@ -984,11 +1020,11 @@ func (s *BotCommandScopeChatAdministrators) Decode(d *jx.Decoder) error {
 func (s BotCommandScopeChatMember) Encode(e *jx.Encoder) {
 	e.ObjStart()
 
-	e.FieldStart("chat_id")
-	s.ChatID.Encode(e)
-
 	e.FieldStart("type")
 	e.Str(s.Type)
+
+	e.FieldStart("chat_id")
+	s.ChatID.Encode(e)
 
 	e.FieldStart("user_id")
 	e.Int(s.UserID)
@@ -1002,14 +1038,14 @@ func (s *BotCommandScopeChatMember) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "chat_id":
-			if err := s.ChatID.Decode(d); err != nil {
-				return err
-			}
 		case "type":
 			v, err := d.Str()
 			s.Type = string(v)
 			if err != nil {
+				return err
+			}
+		case "chat_id":
+			if err := s.ChatID.Decode(d); err != nil {
 				return err
 			}
 		case "user_id":
@@ -1077,32 +1113,67 @@ func (s *CallbackGame) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Chat) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	if s.Bio.Set {
-		e.FieldStart("bio")
-		s.Bio.Encode(e)
+
+	e.FieldStart("id")
+	e.Int(s.ID)
+
+	e.FieldStart("type")
+	e.Str(s.Type)
+	if s.Title.Set {
+		e.FieldStart("title")
+		s.Title.Encode(e)
 	}
-	if s.CanSetStickerSet.Set {
-		e.FieldStart("can_set_sticker_set")
-		s.CanSetStickerSet.Encode(e)
-	}
-	if s.Description.Set {
-		e.FieldStart("description")
-		s.Description.Encode(e)
+	if s.Username.Set {
+		e.FieldStart("username")
+		s.Username.Encode(e)
 	}
 	if s.FirstName.Set {
 		e.FieldStart("first_name")
 		s.FirstName.Encode(e)
 	}
-
-	e.FieldStart("id")
-	e.Int(s.ID)
+	if s.LastName.Set {
+		e.FieldStart("last_name")
+		s.LastName.Encode(e)
+	}
+	if s.Photo.Set {
+		e.FieldStart("photo")
+		s.Photo.Encode(e)
+	}
+	if s.Bio.Set {
+		e.FieldStart("bio")
+		s.Bio.Encode(e)
+	}
+	if s.Description.Set {
+		e.FieldStart("description")
+		s.Description.Encode(e)
+	}
 	if s.InviteLink.Set {
 		e.FieldStart("invite_link")
 		s.InviteLink.Encode(e)
 	}
-	if s.LastName.Set {
-		e.FieldStart("last_name")
-		s.LastName.Encode(e)
+	if s.PinnedMessage != nil {
+		e.FieldStart("pinned_message")
+		s.PinnedMessage.Encode(e)
+	}
+	if s.Permissions.Set {
+		e.FieldStart("permissions")
+		s.Permissions.Encode(e)
+	}
+	if s.SlowModeDelay.Set {
+		e.FieldStart("slow_mode_delay")
+		s.SlowModeDelay.Encode(e)
+	}
+	if s.MessageAutoDeleteTime.Set {
+		e.FieldStart("message_auto_delete_time")
+		s.MessageAutoDeleteTime.Encode(e)
+	}
+	if s.StickerSetName.Set {
+		e.FieldStart("sticker_set_name")
+		s.StickerSetName.Encode(e)
+	}
+	if s.CanSetStickerSet.Set {
+		e.FieldStart("can_set_sticker_set")
+		s.CanSetStickerSet.Encode(e)
 	}
 	if s.LinkedChatID.Set {
 		e.FieldStart("linked_chat_id")
@@ -1111,41 +1182,6 @@ func (s Chat) Encode(e *jx.Encoder) {
 	if s.Location.Set {
 		e.FieldStart("location")
 		s.Location.Encode(e)
-	}
-	if s.MessageAutoDeleteTime.Set {
-		e.FieldStart("message_auto_delete_time")
-		s.MessageAutoDeleteTime.Encode(e)
-	}
-	if s.Permissions.Set {
-		e.FieldStart("permissions")
-		s.Permissions.Encode(e)
-	}
-	if s.Photo.Set {
-		e.FieldStart("photo")
-		s.Photo.Encode(e)
-	}
-	if s.PinnedMessage != nil {
-		e.FieldStart("pinned_message")
-		s.PinnedMessage.Encode(e)
-	}
-	if s.SlowModeDelay.Set {
-		e.FieldStart("slow_mode_delay")
-		s.SlowModeDelay.Encode(e)
-	}
-	if s.StickerSetName.Set {
-		e.FieldStart("sticker_set_name")
-		s.StickerSetName.Encode(e)
-	}
-	if s.Title.Set {
-		e.FieldStart("title")
-		s.Title.Encode(e)
-	}
-
-	e.FieldStart("type")
-	e.Str(s.Type)
-	if s.Username.Set {
-		e.FieldStart("username")
-		s.Username.Encode(e)
 	}
 	e.ObjEnd()
 }
@@ -1157,19 +1193,26 @@ func (s *Chat) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "bio":
-			s.Bio.Reset()
-			if err := s.Bio.Decode(d); err != nil {
+		case "id":
+			v, err := d.Int()
+			s.ID = int(v)
+			if err != nil {
 				return err
 			}
-		case "can_set_sticker_set":
-			s.CanSetStickerSet.Reset()
-			if err := s.CanSetStickerSet.Decode(d); err != nil {
+		case "type":
+			v, err := d.Str()
+			s.Type = string(v)
+			if err != nil {
 				return err
 			}
-		case "description":
-			s.Description.Reset()
-			if err := s.Description.Decode(d); err != nil {
+		case "title":
+			s.Title.Reset()
+			if err := s.Title.Decode(d); err != nil {
+				return err
+			}
+		case "username":
+			s.Username.Reset()
+			if err := s.Username.Decode(d); err != nil {
 				return err
 			}
 		case "first_name":
@@ -1177,10 +1220,24 @@ func (s *Chat) Decode(d *jx.Decoder) error {
 			if err := s.FirstName.Decode(d); err != nil {
 				return err
 			}
-		case "id":
-			v, err := d.Int()
-			s.ID = int(v)
-			if err != nil {
+		case "last_name":
+			s.LastName.Reset()
+			if err := s.LastName.Decode(d); err != nil {
+				return err
+			}
+		case "photo":
+			s.Photo.Reset()
+			if err := s.Photo.Decode(d); err != nil {
+				return err
+			}
+		case "bio":
+			s.Bio.Reset()
+			if err := s.Bio.Decode(d); err != nil {
+				return err
+			}
+		case "description":
+			s.Description.Reset()
+			if err := s.Description.Decode(d); err != nil {
 				return err
 			}
 		case "invite_link":
@@ -1188,9 +1245,36 @@ func (s *Chat) Decode(d *jx.Decoder) error {
 			if err := s.InviteLink.Decode(d); err != nil {
 				return err
 			}
-		case "last_name":
-			s.LastName.Reset()
-			if err := s.LastName.Decode(d); err != nil {
+		case "pinned_message":
+			s.PinnedMessage = nil
+			var elem Message
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			s.PinnedMessage = &elem
+		case "permissions":
+			s.Permissions.Reset()
+			if err := s.Permissions.Decode(d); err != nil {
+				return err
+			}
+		case "slow_mode_delay":
+			s.SlowModeDelay.Reset()
+			if err := s.SlowModeDelay.Decode(d); err != nil {
+				return err
+			}
+		case "message_auto_delete_time":
+			s.MessageAutoDeleteTime.Reset()
+			if err := s.MessageAutoDeleteTime.Decode(d); err != nil {
+				return err
+			}
+		case "sticker_set_name":
+			s.StickerSetName.Reset()
+			if err := s.StickerSetName.Decode(d); err != nil {
+				return err
+			}
+		case "can_set_sticker_set":
+			s.CanSetStickerSet.Reset()
+			if err := s.CanSetStickerSet.Decode(d); err != nil {
 				return err
 			}
 		case "linked_chat_id":
@@ -1201,54 +1285,6 @@ func (s *Chat) Decode(d *jx.Decoder) error {
 		case "location":
 			s.Location.Reset()
 			if err := s.Location.Decode(d); err != nil {
-				return err
-			}
-		case "message_auto_delete_time":
-			s.MessageAutoDeleteTime.Reset()
-			if err := s.MessageAutoDeleteTime.Decode(d); err != nil {
-				return err
-			}
-		case "permissions":
-			s.Permissions.Reset()
-			if err := s.Permissions.Decode(d); err != nil {
-				return err
-			}
-		case "photo":
-			s.Photo.Reset()
-			if err := s.Photo.Decode(d); err != nil {
-				return err
-			}
-		case "pinned_message":
-			s.PinnedMessage = nil
-			var elem Message
-			if err := elem.Decode(d); err != nil {
-				return err
-			}
-			s.PinnedMessage = &elem
-		case "slow_mode_delay":
-			s.SlowModeDelay.Reset()
-			if err := s.SlowModeDelay.Decode(d); err != nil {
-				return err
-			}
-		case "sticker_set_name":
-			s.StickerSetName.Reset()
-			if err := s.StickerSetName.Decode(d); err != nil {
-				return err
-			}
-		case "title":
-			s.Title.Reset()
-			if err := s.Title.Decode(d); err != nil {
-				return err
-			}
-		case "type":
-			v, err := d.Str()
-			s.Type = string(v)
-			if err != nil {
-				return err
-			}
-		case "username":
-			s.Username.Reset()
-			if err := s.Username.Decode(d); err != nil {
 				return err
 			}
 		default:
@@ -1262,11 +1298,11 @@ func (s *Chat) Decode(d *jx.Decoder) error {
 func (s ChatLocation) Encode(e *jx.Encoder) {
 	e.ObjStart()
 
-	e.FieldStart("address")
-	e.Str(s.Address)
-
 	e.FieldStart("location")
 	s.Location.Encode(e)
+
+	e.FieldStart("address")
+	e.Str(s.Address)
 	e.ObjEnd()
 }
 
@@ -1277,14 +1313,14 @@ func (s *ChatLocation) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
+		case "location":
+			if err := s.Location.Decode(d); err != nil {
+				return err
+			}
 		case "address":
 			v, err := d.Str()
 			s.Address = string(v)
 			if err != nil {
-				return err
-			}
-		case "location":
-			if err := s.Location.Decode(d); err != nil {
 				return err
 			}
 		default:
@@ -1297,6 +1333,22 @@ func (s *ChatLocation) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ChatPermissions) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	if s.CanSendMessages.Set {
+		e.FieldStart("can_send_messages")
+		s.CanSendMessages.Encode(e)
+	}
+	if s.CanSendMediaMessages.Set {
+		e.FieldStart("can_send_media_messages")
+		s.CanSendMediaMessages.Encode(e)
+	}
+	if s.CanSendPolls.Set {
+		e.FieldStart("can_send_polls")
+		s.CanSendPolls.Encode(e)
+	}
+	if s.CanSendOtherMessages.Set {
+		e.FieldStart("can_send_other_messages")
+		s.CanSendOtherMessages.Encode(e)
+	}
 	if s.CanAddWebPagePreviews.Set {
 		e.FieldStart("can_add_web_page_previews")
 		s.CanAddWebPagePreviews.Encode(e)
@@ -1313,22 +1365,6 @@ func (s ChatPermissions) Encode(e *jx.Encoder) {
 		e.FieldStart("can_pin_messages")
 		s.CanPinMessages.Encode(e)
 	}
-	if s.CanSendMediaMessages.Set {
-		e.FieldStart("can_send_media_messages")
-		s.CanSendMediaMessages.Encode(e)
-	}
-	if s.CanSendMessages.Set {
-		e.FieldStart("can_send_messages")
-		s.CanSendMessages.Encode(e)
-	}
-	if s.CanSendOtherMessages.Set {
-		e.FieldStart("can_send_other_messages")
-		s.CanSendOtherMessages.Encode(e)
-	}
-	if s.CanSendPolls.Set {
-		e.FieldStart("can_send_polls")
-		s.CanSendPolls.Encode(e)
-	}
 	e.ObjEnd()
 }
 
@@ -1339,6 +1375,26 @@ func (s *ChatPermissions) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
+		case "can_send_messages":
+			s.CanSendMessages.Reset()
+			if err := s.CanSendMessages.Decode(d); err != nil {
+				return err
+			}
+		case "can_send_media_messages":
+			s.CanSendMediaMessages.Reset()
+			if err := s.CanSendMediaMessages.Decode(d); err != nil {
+				return err
+			}
+		case "can_send_polls":
+			s.CanSendPolls.Reset()
+			if err := s.CanSendPolls.Decode(d); err != nil {
+				return err
+			}
+		case "can_send_other_messages":
+			s.CanSendOtherMessages.Reset()
+			if err := s.CanSendOtherMessages.Decode(d); err != nil {
+				return err
+			}
 		case "can_add_web_page_previews":
 			s.CanAddWebPagePreviews.Reset()
 			if err := s.CanAddWebPagePreviews.Decode(d); err != nil {
@@ -1359,26 +1415,6 @@ func (s *ChatPermissions) Decode(d *jx.Decoder) error {
 			if err := s.CanPinMessages.Decode(d); err != nil {
 				return err
 			}
-		case "can_send_media_messages":
-			s.CanSendMediaMessages.Reset()
-			if err := s.CanSendMediaMessages.Decode(d); err != nil {
-				return err
-			}
-		case "can_send_messages":
-			s.CanSendMessages.Reset()
-			if err := s.CanSendMessages.Decode(d); err != nil {
-				return err
-			}
-		case "can_send_other_messages":
-			s.CanSendOtherMessages.Reset()
-			if err := s.CanSendOtherMessages.Decode(d); err != nil {
-				return err
-			}
-		case "can_send_polls":
-			s.CanSendPolls.Reset()
-			if err := s.CanSendPolls.Decode(d); err != nil {
-				return err
-			}
 		default:
 			return d.Skip()
 		}
@@ -1390,17 +1426,17 @@ func (s *ChatPermissions) Decode(d *jx.Decoder) error {
 func (s ChatPhoto) Encode(e *jx.Encoder) {
 	e.ObjStart()
 
-	e.FieldStart("big_file_id")
-	e.Str(s.BigFileID)
-
-	e.FieldStart("big_file_unique_id")
-	e.Str(s.BigFileUniqueID)
-
 	e.FieldStart("small_file_id")
 	e.Str(s.SmallFileID)
 
 	e.FieldStart("small_file_unique_id")
 	e.Str(s.SmallFileUniqueID)
+
+	e.FieldStart("big_file_id")
+	e.Str(s.BigFileID)
+
+	e.FieldStart("big_file_unique_id")
+	e.Str(s.BigFileUniqueID)
 	e.ObjEnd()
 }
 
@@ -1411,18 +1447,6 @@ func (s *ChatPhoto) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "big_file_id":
-			v, err := d.Str()
-			s.BigFileID = string(v)
-			if err != nil {
-				return err
-			}
-		case "big_file_unique_id":
-			v, err := d.Str()
-			s.BigFileUniqueID = string(v)
-			if err != nil {
-				return err
-			}
 		case "small_file_id":
 			v, err := d.Str()
 			s.SmallFileID = string(v)
@@ -1432,6 +1456,18 @@ func (s *ChatPhoto) Decode(d *jx.Decoder) error {
 		case "small_file_unique_id":
 			v, err := d.Str()
 			s.SmallFileUniqueID = string(v)
+			if err != nil {
+				return err
+			}
+		case "big_file_id":
+			v, err := d.Str()
+			s.BigFileID = string(v)
+			if err != nil {
+				return err
+			}
+		case "big_file_unique_id":
+			v, err := d.Str()
+			s.BigFileUniqueID = string(v)
 			if err != nil {
 				return err
 			}
@@ -1446,15 +1482,15 @@ func (s *ChatPhoto) Decode(d *jx.Decoder) error {
 func (s Contact) Encode(e *jx.Encoder) {
 	e.ObjStart()
 
+	e.FieldStart("phone_number")
+	e.Str(s.PhoneNumber)
+
 	e.FieldStart("first_name")
 	e.Str(s.FirstName)
 	if s.LastName.Set {
 		e.FieldStart("last_name")
 		s.LastName.Encode(e)
 	}
-
-	e.FieldStart("phone_number")
-	e.Str(s.PhoneNumber)
 	if s.UserID.Set {
 		e.FieldStart("user_id")
 		s.UserID.Encode(e)
@@ -1473,6 +1509,12 @@ func (s *Contact) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
+		case "phone_number":
+			v, err := d.Str()
+			s.PhoneNumber = string(v)
+			if err != nil {
+				return err
+			}
 		case "first_name":
 			v, err := d.Str()
 			s.FirstName = string(v)
@@ -1482,12 +1524,6 @@ func (s *Contact) Decode(d *jx.Decoder) error {
 		case "last_name":
 			s.LastName.Reset()
 			if err := s.LastName.Decode(d); err != nil {
-				return err
-			}
-		case "phone_number":
-			v, err := d.Str()
-			s.PhoneNumber = string(v)
-			if err != nil {
 				return err
 			}
 		case "user_id":
@@ -1510,13 +1546,22 @@ func (s *Contact) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s CopyMessage) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	if s.AllowSendingWithoutReply.Set {
-		e.FieldStart("allow_sending_without_reply")
-		s.AllowSendingWithoutReply.Encode(e)
-	}
+
+	e.FieldStart("chat_id")
+	s.ChatID.Encode(e)
+
+	e.FieldStart("from_chat_id")
+	s.FromChatID.Encode(e)
+
+	e.FieldStart("message_id")
+	e.Int(s.MessageID)
 	if s.Caption.Set {
 		e.FieldStart("caption")
 		s.Caption.Encode(e)
+	}
+	if s.ParseMode.Set {
+		e.FieldStart("parse_mode")
+		s.ParseMode.Encode(e)
 	}
 	if s.CaptionEntities != nil {
 		e.FieldStart("caption_entities")
@@ -1526,30 +1571,21 @@ func (s CopyMessage) Encode(e *jx.Encoder) {
 		}
 		e.ArrEnd()
 	}
-
-	e.FieldStart("chat_id")
-	s.ChatID.Encode(e)
 	if s.DisableNotification.Set {
 		e.FieldStart("disable_notification")
 		s.DisableNotification.Encode(e)
 	}
-
-	e.FieldStart("from_chat_id")
-	s.FromChatID.Encode(e)
-
-	e.FieldStart("message_id")
-	e.Int(s.MessageID)
-	if s.ParseMode.Set {
-		e.FieldStart("parse_mode")
-		s.ParseMode.Encode(e)
+	if s.ReplyToMessageID.Set {
+		e.FieldStart("reply_to_message_id")
+		s.ReplyToMessageID.Encode(e)
+	}
+	if s.AllowSendingWithoutReply.Set {
+		e.FieldStart("allow_sending_without_reply")
+		s.AllowSendingWithoutReply.Encode(e)
 	}
 	if s.ReplyMarkup != nil {
 		e.FieldStart("reply_markup")
 		s.ReplyMarkup.Encode(e)
-	}
-	if s.ReplyToMessageID.Set {
-		e.FieldStart("reply_to_message_id")
-		s.ReplyToMessageID.Encode(e)
 	}
 	e.ObjEnd()
 }
@@ -1561,14 +1597,28 @@ func (s *CopyMessage) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "allow_sending_without_reply":
-			s.AllowSendingWithoutReply.Reset()
-			if err := s.AllowSendingWithoutReply.Decode(d); err != nil {
+		case "chat_id":
+			if err := s.ChatID.Decode(d); err != nil {
+				return err
+			}
+		case "from_chat_id":
+			if err := s.FromChatID.Decode(d); err != nil {
+				return err
+			}
+		case "message_id":
+			v, err := d.Int()
+			s.MessageID = int(v)
+			if err != nil {
 				return err
 			}
 		case "caption":
 			s.Caption.Reset()
 			if err := s.Caption.Decode(d); err != nil {
+				return err
+			}
+		case "parse_mode":
+			s.ParseMode.Reset()
+			if err := s.ParseMode.Decode(d); err != nil {
 				return err
 			}
 		case "caption_entities":
@@ -1583,28 +1633,19 @@ func (s *CopyMessage) Decode(d *jx.Decoder) error {
 			}); err != nil {
 				return err
 			}
-		case "chat_id":
-			if err := s.ChatID.Decode(d); err != nil {
-				return err
-			}
 		case "disable_notification":
 			s.DisableNotification.Reset()
 			if err := s.DisableNotification.Decode(d); err != nil {
 				return err
 			}
-		case "from_chat_id":
-			if err := s.FromChatID.Decode(d); err != nil {
+		case "reply_to_message_id":
+			s.ReplyToMessageID.Reset()
+			if err := s.ReplyToMessageID.Decode(d); err != nil {
 				return err
 			}
-		case "message_id":
-			v, err := d.Int()
-			s.MessageID = int(v)
-			if err != nil {
-				return err
-			}
-		case "parse_mode":
-			s.ParseMode.Reset()
-			if err := s.ParseMode.Decode(d); err != nil {
+		case "allow_sending_without_reply":
+			s.AllowSendingWithoutReply.Reset()
+			if err := s.AllowSendingWithoutReply.Decode(d); err != nil {
 				return err
 			}
 		case "reply_markup":
@@ -1614,11 +1655,6 @@ func (s *CopyMessage) Decode(d *jx.Decoder) error {
 				return err
 			}
 			s.ReplyMarkup = &elem
-		case "reply_to_message_id":
-			s.ReplyToMessageID.Reset()
-			if err := s.ReplyToMessageID.Decode(d); err != nil {
-				return err
-			}
 		default:
 			return d.Skip()
 		}
@@ -1662,10 +1698,10 @@ func (s *CopyMessageReplyMarkup) Decode(d *jx.Decoder) error {
 			case "keyboard":
 				found = true
 				s.Type = ReplyKeyboardMarkupCopyMessageReplyMarkup
-			case "one_time_keyboard":
+			case "resize_keyboard":
 				found = true
 				s.Type = ReplyKeyboardMarkupCopyMessageReplyMarkup
-			case "resize_keyboard":
+			case "one_time_keyboard":
 				found = true
 				s.Type = ReplyKeyboardMarkupCopyMessageReplyMarkup
 			case "remove_keyboard":
@@ -1718,6 +1754,10 @@ func (s CreateChatInviteLink) Encode(e *jx.Encoder) {
 
 	e.FieldStart("chat_id")
 	s.ChatID.Encode(e)
+	if s.Name.Set {
+		e.FieldStart("name")
+		s.Name.Encode(e)
+	}
 	if s.ExpireDate.Set {
 		e.FieldStart("expire_date")
 		s.ExpireDate.Encode(e)
@@ -1725,6 +1765,10 @@ func (s CreateChatInviteLink) Encode(e *jx.Encoder) {
 	if s.MemberLimit.Set {
 		e.FieldStart("member_limit")
 		s.MemberLimit.Encode(e)
+	}
+	if s.CreatesJoinRequest.Set {
+		e.FieldStart("creates_join_request")
+		s.CreatesJoinRequest.Encode(e)
 	}
 	e.ObjEnd()
 }
@@ -1740,6 +1784,11 @@ func (s *CreateChatInviteLink) Decode(d *jx.Decoder) error {
 			if err := s.ChatID.Decode(d); err != nil {
 				return err
 			}
+		case "name":
+			s.Name.Reset()
+			if err := s.Name.Decode(d); err != nil {
+				return err
+			}
 		case "expire_date":
 			s.ExpireDate.Reset()
 			if err := s.ExpireDate.Decode(d); err != nil {
@@ -1748,6 +1797,11 @@ func (s *CreateChatInviteLink) Decode(d *jx.Decoder) error {
 		case "member_limit":
 			s.MemberLimit.Reset()
 			if err := s.MemberLimit.Decode(d); err != nil {
+				return err
+			}
+		case "creates_join_request":
+			s.CreatesJoinRequest.Reset()
+			if err := s.CreatesJoinRequest.Decode(d); err != nil {
 				return err
 			}
 		default:
@@ -1760,20 +1814,15 @@ func (s *CreateChatInviteLink) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s CreateNewStickerSet) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	if s.ContainsMasks.Set {
-		e.FieldStart("contains_masks")
-		s.ContainsMasks.Encode(e)
-	}
 
-	e.FieldStart("emojis")
-	e.Str(s.Emojis)
-	if s.MaskPosition.Set {
-		e.FieldStart("mask_position")
-		s.MaskPosition.Encode(e)
-	}
+	e.FieldStart("user_id")
+	e.Int(s.UserID)
 
 	e.FieldStart("name")
 	e.Str(s.Name)
+
+	e.FieldStart("title")
+	e.Str(s.Title)
 	if s.PNGSticker.Set {
 		e.FieldStart("png_sticker")
 		s.PNGSticker.Encode(e)
@@ -1783,11 +1832,16 @@ func (s CreateNewStickerSet) Encode(e *jx.Encoder) {
 		s.TgsSticker.Encode(e)
 	}
 
-	e.FieldStart("title")
-	e.Str(s.Title)
-
-	e.FieldStart("user_id")
-	e.Int(s.UserID)
+	e.FieldStart("emojis")
+	e.Str(s.Emojis)
+	if s.ContainsMasks.Set {
+		e.FieldStart("contains_masks")
+		s.ContainsMasks.Encode(e)
+	}
+	if s.MaskPosition.Set {
+		e.FieldStart("mask_position")
+		s.MaskPosition.Encode(e)
+	}
 	e.ObjEnd()
 }
 
@@ -1798,25 +1852,21 @@ func (s *CreateNewStickerSet) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "contains_masks":
-			s.ContainsMasks.Reset()
-			if err := s.ContainsMasks.Decode(d); err != nil {
-				return err
-			}
-		case "emojis":
-			v, err := d.Str()
-			s.Emojis = string(v)
+		case "user_id":
+			v, err := d.Int()
+			s.UserID = int(v)
 			if err != nil {
-				return err
-			}
-		case "mask_position":
-			s.MaskPosition.Reset()
-			if err := s.MaskPosition.Decode(d); err != nil {
 				return err
 			}
 		case "name":
 			v, err := d.Str()
 			s.Name = string(v)
+			if err != nil {
+				return err
+			}
+		case "title":
+			v, err := d.Str()
+			s.Title = string(v)
 			if err != nil {
 				return err
 			}
@@ -1830,10 +1880,50 @@ func (s *CreateNewStickerSet) Decode(d *jx.Decoder) error {
 			if err := s.TgsSticker.Decode(d); err != nil {
 				return err
 			}
-		case "title":
+		case "emojis":
 			v, err := d.Str()
-			s.Title = string(v)
+			s.Emojis = string(v)
 			if err != nil {
+				return err
+			}
+		case "contains_masks":
+			s.ContainsMasks.Reset()
+			if err := s.ContainsMasks.Decode(d); err != nil {
+				return err
+			}
+		case "mask_position":
+			s.MaskPosition.Reset()
+			if err := s.MaskPosition.Decode(d); err != nil {
+				return err
+			}
+		default:
+			return d.Skip()
+		}
+		return nil
+	})
+}
+
+// Encode implements json.Marshaler.
+func (s DeclineChatJoinRequest) Encode(e *jx.Encoder) {
+	e.ObjStart()
+
+	e.FieldStart("chat_id")
+	s.ChatID.Encode(e)
+
+	e.FieldStart("user_id")
+	e.Int(s.UserID)
+	e.ObjEnd()
+}
+
+// Decode decodes DeclineChatJoinRequest from json.
+func (s *DeclineChatJoinRequest) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode DeclineChatJoinRequest to nil`)
+	}
+	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		case "chat_id":
+			if err := s.ChatID.Decode(d); err != nil {
 				return err
 			}
 		case "user_id":
@@ -1942,13 +2032,13 @@ func (s *DeleteMessage) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s DeleteMyCommands) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	if s.LanguageCode.Set {
-		e.FieldStart("language_code")
-		s.LanguageCode.Encode(e)
-	}
 	if s.Scope != nil {
 		e.FieldStart("scope")
 		s.Scope.Encode(e)
+	}
+	if s.LanguageCode.Set {
+		e.FieldStart("language_code")
+		s.LanguageCode.Encode(e)
 	}
 	e.ObjEnd()
 }
@@ -1960,11 +2050,6 @@ func (s *DeleteMyCommands) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "language_code":
-			s.LanguageCode.Reset()
-			if err := s.LanguageCode.Decode(d); err != nil {
-				return err
-			}
 		case "scope":
 			s.Scope = nil
 			var elem BotCommandScope
@@ -1972,6 +2057,11 @@ func (s *DeleteMyCommands) Decode(d *jx.Decoder) error {
 				return err
 			}
 			s.Scope = &elem
+		case "language_code":
+			s.LanguageCode.Reset()
+			if err := s.LanguageCode.Decode(d); err != nil {
+				return err
+			}
 		default:
 			return d.Skip()
 		}
@@ -2081,24 +2171,24 @@ func (s Document) Encode(e *jx.Encoder) {
 
 	e.FieldStart("file_id")
 	e.Str(s.FileID)
+
+	e.FieldStart("file_unique_id")
+	e.Str(s.FileUniqueID)
+	if s.Thumb.Set {
+		e.FieldStart("thumb")
+		s.Thumb.Encode(e)
+	}
 	if s.FileName.Set {
 		e.FieldStart("file_name")
 		s.FileName.Encode(e)
 	}
-	if s.FileSize.Set {
-		e.FieldStart("file_size")
-		s.FileSize.Encode(e)
-	}
-
-	e.FieldStart("file_unique_id")
-	e.Str(s.FileUniqueID)
 	if s.MimeType.Set {
 		e.FieldStart("mime_type")
 		s.MimeType.Encode(e)
 	}
-	if s.Thumb.Set {
-		e.FieldStart("thumb")
-		s.Thumb.Encode(e)
+	if s.FileSize.Set {
+		e.FieldStart("file_size")
+		s.FileSize.Encode(e)
 	}
 	e.ObjEnd()
 }
@@ -2116,20 +2206,20 @@ func (s *Document) Decode(d *jx.Decoder) error {
 			if err != nil {
 				return err
 			}
-		case "file_name":
-			s.FileName.Reset()
-			if err := s.FileName.Decode(d); err != nil {
-				return err
-			}
-		case "file_size":
-			s.FileSize.Reset()
-			if err := s.FileSize.Decode(d); err != nil {
-				return err
-			}
 		case "file_unique_id":
 			v, err := d.Str()
 			s.FileUniqueID = string(v)
 			if err != nil {
+				return err
+			}
+		case "thumb":
+			s.Thumb.Reset()
+			if err := s.Thumb.Decode(d); err != nil {
+				return err
+			}
+		case "file_name":
+			s.FileName.Reset()
+			if err := s.FileName.Decode(d); err != nil {
 				return err
 			}
 		case "mime_type":
@@ -2137,9 +2227,9 @@ func (s *Document) Decode(d *jx.Decoder) error {
 			if err := s.MimeType.Decode(d); err != nil {
 				return err
 			}
-		case "thumb":
-			s.Thumb.Reset()
-			if err := s.Thumb.Decode(d); err != nil {
+		case "file_size":
+			s.FileSize.Reset()
+			if err := s.FileSize.Decode(d); err != nil {
 				return err
 			}
 		default:
@@ -2155,16 +2245,24 @@ func (s EditChatInviteLink) Encode(e *jx.Encoder) {
 
 	e.FieldStart("chat_id")
 	s.ChatID.Encode(e)
+
+	e.FieldStart("invite_link")
+	e.Str(s.InviteLink)
+	if s.Name.Set {
+		e.FieldStart("name")
+		s.Name.Encode(e)
+	}
 	if s.ExpireDate.Set {
 		e.FieldStart("expire_date")
 		s.ExpireDate.Encode(e)
 	}
-
-	e.FieldStart("invite_link")
-	e.Str(s.InviteLink)
 	if s.MemberLimit.Set {
 		e.FieldStart("member_limit")
 		s.MemberLimit.Encode(e)
+	}
+	if s.CreatesJoinRequest.Set {
+		e.FieldStart("creates_join_request")
+		s.CreatesJoinRequest.Encode(e)
 	}
 	e.ObjEnd()
 }
@@ -2180,20 +2278,30 @@ func (s *EditChatInviteLink) Decode(d *jx.Decoder) error {
 			if err := s.ChatID.Decode(d); err != nil {
 				return err
 			}
-		case "expire_date":
-			s.ExpireDate.Reset()
-			if err := s.ExpireDate.Decode(d); err != nil {
-				return err
-			}
 		case "invite_link":
 			v, err := d.Str()
 			s.InviteLink = string(v)
 			if err != nil {
 				return err
 			}
+		case "name":
+			s.Name.Reset()
+			if err := s.Name.Decode(d); err != nil {
+				return err
+			}
+		case "expire_date":
+			s.ExpireDate.Reset()
+			if err := s.ExpireDate.Decode(d); err != nil {
+				return err
+			}
 		case "member_limit":
 			s.MemberLimit.Reset()
 			if err := s.MemberLimit.Decode(d); err != nil {
+				return err
+			}
+		case "creates_join_request":
+			s.CreatesJoinRequest.Reset()
+			if err := s.CreatesJoinRequest.Decode(d); err != nil {
 				return err
 			}
 		default:
@@ -2206,9 +2314,25 @@ func (s *EditChatInviteLink) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s EditMessageCaption) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	if s.ChatID != nil {
+		e.FieldStart("chat_id")
+		s.ChatID.Encode(e)
+	}
+	if s.MessageID.Set {
+		e.FieldStart("message_id")
+		s.MessageID.Encode(e)
+	}
+	if s.InlineMessageID.Set {
+		e.FieldStart("inline_message_id")
+		s.InlineMessageID.Encode(e)
+	}
 	if s.Caption.Set {
 		e.FieldStart("caption")
 		s.Caption.Encode(e)
+	}
+	if s.ParseMode.Set {
+		e.FieldStart("parse_mode")
+		s.ParseMode.Encode(e)
 	}
 	if s.CaptionEntities != nil {
 		e.FieldStart("caption_entities")
@@ -2217,22 +2341,6 @@ func (s EditMessageCaption) Encode(e *jx.Encoder) {
 			elem.Encode(e)
 		}
 		e.ArrEnd()
-	}
-	if s.ChatID != nil {
-		e.FieldStart("chat_id")
-		s.ChatID.Encode(e)
-	}
-	if s.InlineMessageID.Set {
-		e.FieldStart("inline_message_id")
-		s.InlineMessageID.Encode(e)
-	}
-	if s.MessageID.Set {
-		e.FieldStart("message_id")
-		s.MessageID.Encode(e)
-	}
-	if s.ParseMode.Set {
-		e.FieldStart("parse_mode")
-		s.ParseMode.Encode(e)
 	}
 	if s.ReplyMarkup.Set {
 		e.FieldStart("reply_markup")
@@ -2248,9 +2356,31 @@ func (s *EditMessageCaption) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
+		case "chat_id":
+			s.ChatID = nil
+			var elem ID
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			s.ChatID = &elem
+		case "message_id":
+			s.MessageID.Reset()
+			if err := s.MessageID.Decode(d); err != nil {
+				return err
+			}
+		case "inline_message_id":
+			s.InlineMessageID.Reset()
+			if err := s.InlineMessageID.Decode(d); err != nil {
+				return err
+			}
 		case "caption":
 			s.Caption.Reset()
 			if err := s.Caption.Decode(d); err != nil {
+				return err
+			}
+		case "parse_mode":
+			s.ParseMode.Reset()
+			if err := s.ParseMode.Decode(d); err != nil {
 				return err
 			}
 		case "caption_entities":
@@ -2263,28 +2393,6 @@ func (s *EditMessageCaption) Decode(d *jx.Decoder) error {
 				s.CaptionEntities = append(s.CaptionEntities, elem)
 				return nil
 			}); err != nil {
-				return err
-			}
-		case "chat_id":
-			s.ChatID = nil
-			var elem ID
-			if err := elem.Decode(d); err != nil {
-				return err
-			}
-			s.ChatID = &elem
-		case "inline_message_id":
-			s.InlineMessageID.Reset()
-			if err := s.InlineMessageID.Decode(d); err != nil {
-				return err
-			}
-		case "message_id":
-			s.MessageID.Reset()
-			if err := s.MessageID.Decode(d); err != nil {
-				return err
-			}
-		case "parse_mode":
-			s.ParseMode.Reset()
-			if err := s.ParseMode.Decode(d); err != nil {
 				return err
 			}
 		case "reply_markup":
@@ -2306,13 +2414,9 @@ func (s EditMessageLiveLocation) Encode(e *jx.Encoder) {
 		e.FieldStart("chat_id")
 		s.ChatID.Encode(e)
 	}
-	if s.Heading.Set {
-		e.FieldStart("heading")
-		s.Heading.Encode(e)
-	}
-	if s.HorizontalAccuracy.Set {
-		e.FieldStart("horizontal_accuracy")
-		s.HorizontalAccuracy.Encode(e)
+	if s.MessageID.Set {
+		e.FieldStart("message_id")
+		s.MessageID.Encode(e)
 	}
 	if s.InlineMessageID.Set {
 		e.FieldStart("inline_message_id")
@@ -2324,9 +2428,13 @@ func (s EditMessageLiveLocation) Encode(e *jx.Encoder) {
 
 	e.FieldStart("longitude")
 	e.Float64(s.Longitude)
-	if s.MessageID.Set {
-		e.FieldStart("message_id")
-		s.MessageID.Encode(e)
+	if s.HorizontalAccuracy.Set {
+		e.FieldStart("horizontal_accuracy")
+		s.HorizontalAccuracy.Encode(e)
+	}
+	if s.Heading.Set {
+		e.FieldStart("heading")
+		s.Heading.Encode(e)
 	}
 	if s.ProximityAlertRadius.Set {
 		e.FieldStart("proximity_alert_radius")
@@ -2353,14 +2461,9 @@ func (s *EditMessageLiveLocation) Decode(d *jx.Decoder) error {
 				return err
 			}
 			s.ChatID = &elem
-		case "heading":
-			s.Heading.Reset()
-			if err := s.Heading.Decode(d); err != nil {
-				return err
-			}
-		case "horizontal_accuracy":
-			s.HorizontalAccuracy.Reset()
-			if err := s.HorizontalAccuracy.Decode(d); err != nil {
+		case "message_id":
+			s.MessageID.Reset()
+			if err := s.MessageID.Decode(d); err != nil {
 				return err
 			}
 		case "inline_message_id":
@@ -2380,9 +2483,14 @@ func (s *EditMessageLiveLocation) Decode(d *jx.Decoder) error {
 			if err != nil {
 				return err
 			}
-		case "message_id":
-			s.MessageID.Reset()
-			if err := s.MessageID.Decode(d); err != nil {
+		case "horizontal_accuracy":
+			s.HorizontalAccuracy.Reset()
+			if err := s.HorizontalAccuracy.Decode(d); err != nil {
+				return err
+			}
+		case "heading":
+			s.Heading.Reset()
+			if err := s.Heading.Decode(d); err != nil {
 				return err
 			}
 		case "proximity_alert_radius":
@@ -2409,6 +2517,10 @@ func (s EditMessageMedia) Encode(e *jx.Encoder) {
 		e.FieldStart("chat_id")
 		s.ChatID.Encode(e)
 	}
+	if s.MessageID.Set {
+		e.FieldStart("message_id")
+		s.MessageID.Encode(e)
+	}
 	if s.InlineMessageID.Set {
 		e.FieldStart("inline_message_id")
 		s.InlineMessageID.Encode(e)
@@ -2416,10 +2528,6 @@ func (s EditMessageMedia) Encode(e *jx.Encoder) {
 
 	e.FieldStart("media")
 	s.Media.Encode(e)
-	if s.MessageID.Set {
-		e.FieldStart("message_id")
-		s.MessageID.Encode(e)
-	}
 	if s.ReplyMarkup.Set {
 		e.FieldStart("reply_markup")
 		s.ReplyMarkup.Encode(e)
@@ -2441,6 +2549,11 @@ func (s *EditMessageMedia) Decode(d *jx.Decoder) error {
 				return err
 			}
 			s.ChatID = &elem
+		case "message_id":
+			s.MessageID.Reset()
+			if err := s.MessageID.Decode(d); err != nil {
+				return err
+			}
 		case "inline_message_id":
 			s.InlineMessageID.Reset()
 			if err := s.InlineMessageID.Decode(d); err != nil {
@@ -2448,11 +2561,6 @@ func (s *EditMessageMedia) Decode(d *jx.Decoder) error {
 			}
 		case "media":
 			if err := s.Media.Decode(d); err != nil {
-				return err
-			}
-		case "message_id":
-			s.MessageID.Reset()
-			if err := s.MessageID.Decode(d); err != nil {
 				return err
 			}
 		case "reply_markup":
@@ -2474,13 +2582,13 @@ func (s EditMessageReplyMarkup) Encode(e *jx.Encoder) {
 		e.FieldStart("chat_id")
 		s.ChatID.Encode(e)
 	}
-	if s.InlineMessageID.Set {
-		e.FieldStart("inline_message_id")
-		s.InlineMessageID.Encode(e)
-	}
 	if s.MessageID.Set {
 		e.FieldStart("message_id")
 		s.MessageID.Encode(e)
+	}
+	if s.InlineMessageID.Set {
+		e.FieldStart("inline_message_id")
+		s.InlineMessageID.Encode(e)
 	}
 	if s.ReplyMarkup.Set {
 		e.FieldStart("reply_markup")
@@ -2503,14 +2611,14 @@ func (s *EditMessageReplyMarkup) Decode(d *jx.Decoder) error {
 				return err
 			}
 			s.ChatID = &elem
-		case "inline_message_id":
-			s.InlineMessageID.Reset()
-			if err := s.InlineMessageID.Decode(d); err != nil {
-				return err
-			}
 		case "message_id":
 			s.MessageID.Reset()
 			if err := s.MessageID.Decode(d); err != nil {
+				return err
+			}
+		case "inline_message_id":
+			s.InlineMessageID.Reset()
+			if err := s.InlineMessageID.Decode(d); err != nil {
 				return err
 			}
 		case "reply_markup":
@@ -2532,9 +2640,20 @@ func (s EditMessageText) Encode(e *jx.Encoder) {
 		e.FieldStart("chat_id")
 		s.ChatID.Encode(e)
 	}
-	if s.DisableWebPagePreview.Set {
-		e.FieldStart("disable_web_page_preview")
-		s.DisableWebPagePreview.Encode(e)
+	if s.MessageID.Set {
+		e.FieldStart("message_id")
+		s.MessageID.Encode(e)
+	}
+	if s.InlineMessageID.Set {
+		e.FieldStart("inline_message_id")
+		s.InlineMessageID.Encode(e)
+	}
+
+	e.FieldStart("text")
+	e.Str(s.Text)
+	if s.ParseMode.Set {
+		e.FieldStart("parse_mode")
+		s.ParseMode.Encode(e)
 	}
 	if s.Entities != nil {
 		e.FieldStart("entities")
@@ -2544,25 +2663,14 @@ func (s EditMessageText) Encode(e *jx.Encoder) {
 		}
 		e.ArrEnd()
 	}
-	if s.InlineMessageID.Set {
-		e.FieldStart("inline_message_id")
-		s.InlineMessageID.Encode(e)
-	}
-	if s.MessageID.Set {
-		e.FieldStart("message_id")
-		s.MessageID.Encode(e)
-	}
-	if s.ParseMode.Set {
-		e.FieldStart("parse_mode")
-		s.ParseMode.Encode(e)
+	if s.DisableWebPagePreview.Set {
+		e.FieldStart("disable_web_page_preview")
+		s.DisableWebPagePreview.Encode(e)
 	}
 	if s.ReplyMarkup.Set {
 		e.FieldStart("reply_markup")
 		s.ReplyMarkup.Encode(e)
 	}
-
-	e.FieldStart("text")
-	e.Str(s.Text)
 	e.ObjEnd()
 }
 
@@ -2580,9 +2688,25 @@ func (s *EditMessageText) Decode(d *jx.Decoder) error {
 				return err
 			}
 			s.ChatID = &elem
-		case "disable_web_page_preview":
-			s.DisableWebPagePreview.Reset()
-			if err := s.DisableWebPagePreview.Decode(d); err != nil {
+		case "message_id":
+			s.MessageID.Reset()
+			if err := s.MessageID.Decode(d); err != nil {
+				return err
+			}
+		case "inline_message_id":
+			s.InlineMessageID.Reset()
+			if err := s.InlineMessageID.Decode(d); err != nil {
+				return err
+			}
+		case "text":
+			v, err := d.Str()
+			s.Text = string(v)
+			if err != nil {
+				return err
+			}
+		case "parse_mode":
+			s.ParseMode.Reset()
+			if err := s.ParseMode.Decode(d); err != nil {
 				return err
 			}
 		case "entities":
@@ -2597,30 +2721,14 @@ func (s *EditMessageText) Decode(d *jx.Decoder) error {
 			}); err != nil {
 				return err
 			}
-		case "inline_message_id":
-			s.InlineMessageID.Reset()
-			if err := s.InlineMessageID.Decode(d); err != nil {
-				return err
-			}
-		case "message_id":
-			s.MessageID.Reset()
-			if err := s.MessageID.Decode(d); err != nil {
-				return err
-			}
-		case "parse_mode":
-			s.ParseMode.Reset()
-			if err := s.ParseMode.Decode(d); err != nil {
+		case "disable_web_page_preview":
+			s.DisableWebPagePreview.Reset()
+			if err := s.DisableWebPagePreview.Decode(d); err != nil {
 				return err
 			}
 		case "reply_markup":
 			s.ReplyMarkup.Reset()
 			if err := s.ReplyMarkup.Decode(d); err != nil {
-				return err
-			}
-		case "text":
-			v, err := d.Str()
-			s.Text = string(v)
-			if err != nil {
 				return err
 			}
 		default:
@@ -2680,9 +2788,16 @@ func (s *EncryptedCredentials) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s EncryptedPassportElement) Encode(e *jx.Encoder) {
 	e.ObjStart()
+
+	e.FieldStart("type")
+	e.Str(s.Type)
 	if s.Data.Set {
 		e.FieldStart("data")
 		s.Data.Encode(e)
+	}
+	if s.PhoneNumber.Set {
+		e.FieldStart("phone_number")
+		s.PhoneNumber.Encode(e)
 	}
 	if s.Email.Set {
 		e.FieldStart("email")
@@ -2699,13 +2814,6 @@ func (s EncryptedPassportElement) Encode(e *jx.Encoder) {
 	if s.FrontSide.Set {
 		e.FieldStart("front_side")
 		s.FrontSide.Encode(e)
-	}
-
-	e.FieldStart("hash")
-	e.Str(s.Hash)
-	if s.PhoneNumber.Set {
-		e.FieldStart("phone_number")
-		s.PhoneNumber.Encode(e)
 	}
 	if s.ReverseSide.Set {
 		e.FieldStart("reverse_side")
@@ -2724,8 +2832,8 @@ func (s EncryptedPassportElement) Encode(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 
-	e.FieldStart("type")
-	e.Str(s.Type)
+	e.FieldStart("hash")
+	e.Str(s.Hash)
 	e.ObjEnd()
 }
 
@@ -2736,9 +2844,20 @@ func (s *EncryptedPassportElement) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
+		case "type":
+			v, err := d.Str()
+			s.Type = string(v)
+			if err != nil {
+				return err
+			}
 		case "data":
 			s.Data.Reset()
 			if err := s.Data.Decode(d); err != nil {
+				return err
+			}
+		case "phone_number":
+			s.PhoneNumber.Reset()
+			if err := s.PhoneNumber.Decode(d); err != nil {
 				return err
 			}
 		case "email":
@@ -2763,17 +2882,6 @@ func (s *EncryptedPassportElement) Decode(d *jx.Decoder) error {
 			if err := s.FrontSide.Decode(d); err != nil {
 				return err
 			}
-		case "hash":
-			v, err := d.Str()
-			s.Hash = string(v)
-			if err != nil {
-				return err
-			}
-		case "phone_number":
-			s.PhoneNumber.Reset()
-			if err := s.PhoneNumber.Decode(d); err != nil {
-				return err
-			}
 		case "reverse_side":
 			s.ReverseSide.Reset()
 			if err := s.ReverseSide.Decode(d); err != nil {
@@ -2796,9 +2904,9 @@ func (s *EncryptedPassportElement) Decode(d *jx.Decoder) error {
 			}); err != nil {
 				return err
 			}
-		case "type":
+		case "hash":
 			v, err := d.Str()
-			s.Type = string(v)
+			s.Hash = string(v)
 			if err != nil {
 				return err
 			}
@@ -2813,14 +2921,14 @@ func (s *EncryptedPassportElement) Decode(d *jx.Decoder) error {
 func (s Error) Encode(e *jx.Encoder) {
 	e.ObjStart()
 
-	e.FieldStart("description")
-	e.Str(s.Description)
+	e.FieldStart("ok")
+	e.Bool(s.Ok)
 
 	e.FieldStart("error_code")
 	e.Int(s.ErrorCode)
 
-	e.FieldStart("ok")
-	e.Bool(s.Ok)
+	e.FieldStart("description")
+	e.Str(s.Description)
 	if s.Parameters.Set {
 		e.FieldStart("parameters")
 		s.Parameters.Encode(e)
@@ -2835,9 +2943,9 @@ func (s *Error) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "description":
-			v, err := d.Str()
-			s.Description = string(v)
+		case "ok":
+			v, err := d.Bool()
+			s.Ok = bool(v)
 			if err != nil {
 				return err
 			}
@@ -2847,9 +2955,9 @@ func (s *Error) Decode(d *jx.Decoder) error {
 			if err != nil {
 				return err
 			}
-		case "ok":
-			v, err := d.Bool()
-			s.Ok = bool(v)
+		case "description":
+			v, err := d.Str()
+			s.Description = string(v)
 			if err != nil {
 				return err
 			}
@@ -2965,13 +3073,13 @@ func (s ForwardMessage) Encode(e *jx.Encoder) {
 
 	e.FieldStart("chat_id")
 	s.ChatID.Encode(e)
+
+	e.FieldStart("from_chat_id")
+	s.FromChatID.Encode(e)
 	if s.DisableNotification.Set {
 		e.FieldStart("disable_notification")
 		s.DisableNotification.Encode(e)
 	}
-
-	e.FieldStart("from_chat_id")
-	s.FromChatID.Encode(e)
 
 	e.FieldStart("message_id")
 	e.Int(s.MessageID)
@@ -2989,13 +3097,13 @@ func (s *ForwardMessage) Decode(d *jx.Decoder) error {
 			if err := s.ChatID.Decode(d); err != nil {
 				return err
 			}
+		case "from_chat_id":
+			if err := s.FromChatID.Decode(d); err != nil {
+				return err
+			}
 		case "disable_notification":
 			s.DisableNotification.Reset()
 			if err := s.DisableNotification.Decode(d); err != nil {
-				return err
-			}
-		case "from_chat_id":
-			if err := s.FromChatID.Decode(d); err != nil {
 				return err
 			}
 		case "message_id":
@@ -3014,10 +3122,9 @@ func (s *ForwardMessage) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Game) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	if s.Animation.Set {
-		e.FieldStart("animation")
-		s.Animation.Encode(e)
-	}
+
+	e.FieldStart("title")
+	e.Str(s.Title)
 
 	e.FieldStart("description")
 	e.Str(s.Description)
@@ -3040,9 +3147,10 @@ func (s Game) Encode(e *jx.Encoder) {
 		}
 		e.ArrEnd()
 	}
-
-	e.FieldStart("title")
-	e.Str(s.Title)
+	if s.Animation.Set {
+		e.FieldStart("animation")
+		s.Animation.Encode(e)
+	}
 	e.ObjEnd()
 }
 
@@ -3053,9 +3161,10 @@ func (s *Game) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "animation":
-			s.Animation.Reset()
-			if err := s.Animation.Decode(d); err != nil {
+		case "title":
+			v, err := d.Str()
+			s.Title = string(v)
+			if err != nil {
 				return err
 			}
 		case "description":
@@ -3093,10 +3202,9 @@ func (s *Game) Decode(d *jx.Decoder) error {
 			}); err != nil {
 				return err
 			}
-		case "title":
-			v, err := d.Str()
-			s.Title = string(v)
-			if err != nil {
+		case "animation":
+			s.Animation.Reset()
+			if err := s.Animation.Decode(d); err != nil {
 				return err
 			}
 		default:
@@ -3255,21 +3363,21 @@ func (s *GetFile) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GetGameHighScores) Encode(e *jx.Encoder) {
 	e.ObjStart()
+
+	e.FieldStart("user_id")
+	e.Int(s.UserID)
 	if s.ChatID.Set {
 		e.FieldStart("chat_id")
 		s.ChatID.Encode(e)
-	}
-	if s.InlineMessageID.Set {
-		e.FieldStart("inline_message_id")
-		s.InlineMessageID.Encode(e)
 	}
 	if s.MessageID.Set {
 		e.FieldStart("message_id")
 		s.MessageID.Encode(e)
 	}
-
-	e.FieldStart("user_id")
-	e.Int(s.UserID)
+	if s.InlineMessageID.Set {
+		e.FieldStart("inline_message_id")
+		s.InlineMessageID.Encode(e)
+	}
 	e.ObjEnd()
 }
 
@@ -3280,14 +3388,15 @@ func (s *GetGameHighScores) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
+		case "user_id":
+			v, err := d.Int()
+			s.UserID = int(v)
+			if err != nil {
+				return err
+			}
 		case "chat_id":
 			s.ChatID.Reset()
 			if err := s.ChatID.Decode(d); err != nil {
-				return err
-			}
-		case "inline_message_id":
-			s.InlineMessageID.Reset()
-			if err := s.InlineMessageID.Decode(d); err != nil {
 				return err
 			}
 		case "message_id":
@@ -3295,10 +3404,9 @@ func (s *GetGameHighScores) Decode(d *jx.Decoder) error {
 			if err := s.MessageID.Decode(d); err != nil {
 				return err
 			}
-		case "user_id":
-			v, err := d.Int()
-			s.UserID = int(v)
-			if err != nil {
+		case "inline_message_id":
+			s.InlineMessageID.Reset()
+			if err := s.InlineMessageID.Decode(d); err != nil {
 				return err
 			}
 		default:
@@ -3311,13 +3419,13 @@ func (s *GetGameHighScores) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GetMyCommands) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	if s.LanguageCode.Set {
-		e.FieldStart("language_code")
-		s.LanguageCode.Encode(e)
-	}
 	if s.Scope != nil {
 		e.FieldStart("scope")
 		s.Scope.Encode(e)
+	}
+	if s.LanguageCode.Set {
+		e.FieldStart("language_code")
+		s.LanguageCode.Encode(e)
 	}
 	e.ObjEnd()
 }
@@ -3329,11 +3437,6 @@ func (s *GetMyCommands) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "language_code":
-			s.LanguageCode.Reset()
-			if err := s.LanguageCode.Decode(d); err != nil {
-				return err
-			}
 		case "scope":
 			s.Scope = nil
 			var elem BotCommandScope
@@ -3341,6 +3444,11 @@ func (s *GetMyCommands) Decode(d *jx.Decoder) error {
 				return err
 			}
 			s.Scope = &elem
+		case "language_code":
+			s.LanguageCode.Reset()
+			if err := s.LanguageCode.Decode(d); err != nil {
+				return err
+			}
 		default:
 			return d.Skip()
 		}
@@ -3380,6 +3488,18 @@ func (s *GetStickerSet) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GetUpdates) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	if s.Offset.Set {
+		e.FieldStart("offset")
+		s.Offset.Encode(e)
+	}
+	if s.Limit.Set {
+		e.FieldStart("limit")
+		s.Limit.Encode(e)
+	}
+	if s.Timeout.Set {
+		e.FieldStart("timeout")
+		s.Timeout.Encode(e)
+	}
 	if s.AllowedUpdates != nil {
 		e.FieldStart("allowed_updates")
 		e.ArrStart()
@@ -3387,18 +3507,6 @@ func (s GetUpdates) Encode(e *jx.Encoder) {
 			e.Str(elem)
 		}
 		e.ArrEnd()
-	}
-	if s.Limit.Set {
-		e.FieldStart("limit")
-		s.Limit.Encode(e)
-	}
-	if s.Offset.Set {
-		e.FieldStart("offset")
-		s.Offset.Encode(e)
-	}
-	if s.Timeout.Set {
-		e.FieldStart("timeout")
-		s.Timeout.Encode(e)
 	}
 	e.ObjEnd()
 }
@@ -3410,6 +3518,21 @@ func (s *GetUpdates) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
+		case "offset":
+			s.Offset.Reset()
+			if err := s.Offset.Decode(d); err != nil {
+				return err
+			}
+		case "limit":
+			s.Limit.Reset()
+			if err := s.Limit.Decode(d); err != nil {
+				return err
+			}
+		case "timeout":
+			s.Timeout.Reset()
+			if err := s.Timeout.Decode(d); err != nil {
+				return err
+			}
 		case "allowed_updates":
 			s.AllowedUpdates = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -3424,21 +3547,6 @@ func (s *GetUpdates) Decode(d *jx.Decoder) error {
 			}); err != nil {
 				return err
 			}
-		case "limit":
-			s.Limit.Reset()
-			if err := s.Limit.Decode(d); err != nil {
-				return err
-			}
-		case "offset":
-			s.Offset.Reset()
-			if err := s.Offset.Decode(d); err != nil {
-				return err
-			}
-		case "timeout":
-			s.Timeout.Reset()
-			if err := s.Timeout.Decode(d); err != nil {
-				return err
-			}
 		default:
 			return d.Skip()
 		}
@@ -3449,17 +3557,17 @@ func (s *GetUpdates) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GetUserProfilePhotos) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	if s.Limit.Set {
-		e.FieldStart("limit")
-		s.Limit.Encode(e)
-	}
+
+	e.FieldStart("user_id")
+	e.Int(s.UserID)
 	if s.Offset.Set {
 		e.FieldStart("offset")
 		s.Offset.Encode(e)
 	}
-
-	e.FieldStart("user_id")
-	e.Int(s.UserID)
+	if s.Limit.Set {
+		e.FieldStart("limit")
+		s.Limit.Encode(e)
+	}
 	e.ObjEnd()
 }
 
@@ -3470,9 +3578,10 @@ func (s *GetUserProfilePhotos) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "limit":
-			s.Limit.Reset()
-			if err := s.Limit.Decode(d); err != nil {
+		case "user_id":
+			v, err := d.Int()
+			s.UserID = int(v)
+			if err != nil {
 				return err
 			}
 		case "offset":
@@ -3480,10 +3589,9 @@ func (s *GetUserProfilePhotos) Decode(d *jx.Decoder) error {
 			if err := s.Offset.Decode(d); err != nil {
 				return err
 			}
-		case "user_id":
-			v, err := d.Int()
-			s.UserID = int(v)
-			if err != nil {
+		case "limit":
+			s.Limit.Reset()
+			if err := s.Limit.Decode(d); err != nil {
 				return err
 			}
 		default:
@@ -3533,21 +3641,20 @@ func (s *ID) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s InlineKeyboardButton) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	if s.CallbackData.Set {
-		e.FieldStart("callback_data")
-		s.CallbackData.Encode(e)
-	}
-	if s.CallbackGame != nil {
-		e.FieldStart("callback_game")
-		s.CallbackGame.Encode(e)
+
+	e.FieldStart("text")
+	e.Str(s.Text)
+	if s.URL.Set {
+		e.FieldStart("url")
+		s.URL.Encode(e)
 	}
 	if s.LoginURL.Set {
 		e.FieldStart("login_url")
 		s.LoginURL.Encode(e)
 	}
-	if s.Pay.Set {
-		e.FieldStart("pay")
-		s.Pay.Encode(e)
+	if s.CallbackData.Set {
+		e.FieldStart("callback_data")
+		s.CallbackData.Encode(e)
 	}
 	if s.SwitchInlineQuery.Set {
 		e.FieldStart("switch_inline_query")
@@ -3557,12 +3664,13 @@ func (s InlineKeyboardButton) Encode(e *jx.Encoder) {
 		e.FieldStart("switch_inline_query_current_chat")
 		s.SwitchInlineQueryCurrentChat.Encode(e)
 	}
-
-	e.FieldStart("text")
-	e.Str(s.Text)
-	if s.URL.Set {
-		e.FieldStart("url")
-		s.URL.Encode(e)
+	if s.CallbackGame != nil {
+		e.FieldStart("callback_game")
+		s.CallbackGame.Encode(e)
+	}
+	if s.Pay.Set {
+		e.FieldStart("pay")
+		s.Pay.Encode(e)
 	}
 	e.ObjEnd()
 }
@@ -3574,26 +3682,25 @@ func (s *InlineKeyboardButton) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "callback_data":
-			s.CallbackData.Reset()
-			if err := s.CallbackData.Decode(d); err != nil {
+		case "text":
+			v, err := d.Str()
+			s.Text = string(v)
+			if err != nil {
 				return err
 			}
-		case "callback_game":
-			s.CallbackGame = nil
-			var elem CallbackGame
-			if err := elem.Decode(d); err != nil {
+		case "url":
+			s.URL.Reset()
+			if err := s.URL.Decode(d); err != nil {
 				return err
 			}
-			s.CallbackGame = &elem
 		case "login_url":
 			s.LoginURL.Reset()
 			if err := s.LoginURL.Decode(d); err != nil {
 				return err
 			}
-		case "pay":
-			s.Pay.Reset()
-			if err := s.Pay.Decode(d); err != nil {
+		case "callback_data":
+			s.CallbackData.Reset()
+			if err := s.CallbackData.Decode(d); err != nil {
 				return err
 			}
 		case "switch_inline_query":
@@ -3606,15 +3713,16 @@ func (s *InlineKeyboardButton) Decode(d *jx.Decoder) error {
 			if err := s.SwitchInlineQueryCurrentChat.Decode(d); err != nil {
 				return err
 			}
-		case "text":
-			v, err := d.Str()
-			s.Text = string(v)
-			if err != nil {
+		case "callback_game":
+			s.CallbackGame = nil
+			var elem CallbackGame
+			if err := elem.Decode(d); err != nil {
 				return err
 			}
-		case "url":
-			s.URL.Reset()
-			if err := s.URL.Decode(d); err != nil {
+			s.CallbackGame = &elem
+		case "pay":
+			s.Pay.Reset()
+			if err := s.Pay.Decode(d); err != nil {
 				return err
 			}
 		default:
@@ -3797,9 +3905,23 @@ func (s *InputMedia) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s InputMediaAnimation) Encode(e *jx.Encoder) {
 	e.ObjStart()
+
+	e.FieldStart("type")
+	e.Str(s.Type)
+
+	e.FieldStart("media")
+	e.Str(s.Media)
+	if s.Thumb.Set {
+		e.FieldStart("thumb")
+		s.Thumb.Encode(e)
+	}
 	if s.Caption.Set {
 		e.FieldStart("caption")
 		s.Caption.Encode(e)
+	}
+	if s.ParseMode.Set {
+		e.FieldStart("parse_mode")
+		s.ParseMode.Encode(e)
 	}
 	if s.CaptionEntities != nil {
 		e.FieldStart("caption_entities")
@@ -3809,31 +3931,17 @@ func (s InputMediaAnimation) Encode(e *jx.Encoder) {
 		}
 		e.ArrEnd()
 	}
-	if s.Duration.Set {
-		e.FieldStart("duration")
-		s.Duration.Encode(e)
+	if s.Width.Set {
+		e.FieldStart("width")
+		s.Width.Encode(e)
 	}
 	if s.Height.Set {
 		e.FieldStart("height")
 		s.Height.Encode(e)
 	}
-
-	e.FieldStart("media")
-	e.Str(s.Media)
-	if s.ParseMode.Set {
-		e.FieldStart("parse_mode")
-		s.ParseMode.Encode(e)
-	}
-	if s.Thumb.Set {
-		e.FieldStart("thumb")
-		s.Thumb.Encode(e)
-	}
-
-	e.FieldStart("type")
-	e.Str(s.Type)
-	if s.Width.Set {
-		e.FieldStart("width")
-		s.Width.Encode(e)
+	if s.Duration.Set {
+		e.FieldStart("duration")
+		s.Duration.Encode(e)
 	}
 	e.ObjEnd()
 }
@@ -3845,9 +3953,31 @@ func (s *InputMediaAnimation) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
+		case "type":
+			v, err := d.Str()
+			s.Type = string(v)
+			if err != nil {
+				return err
+			}
+		case "media":
+			v, err := d.Str()
+			s.Media = string(v)
+			if err != nil {
+				return err
+			}
+		case "thumb":
+			s.Thumb.Reset()
+			if err := s.Thumb.Decode(d); err != nil {
+				return err
+			}
 		case "caption":
 			s.Caption.Reset()
 			if err := s.Caption.Decode(d); err != nil {
+				return err
+			}
+		case "parse_mode":
+			s.ParseMode.Reset()
+			if err := s.ParseMode.Decode(d); err != nil {
 				return err
 			}
 		case "caption_entities":
@@ -3862,9 +3992,9 @@ func (s *InputMediaAnimation) Decode(d *jx.Decoder) error {
 			}); err != nil {
 				return err
 			}
-		case "duration":
-			s.Duration.Reset()
-			if err := s.Duration.Decode(d); err != nil {
+		case "width":
+			s.Width.Reset()
+			if err := s.Width.Decode(d); err != nil {
 				return err
 			}
 		case "height":
@@ -3872,31 +4002,9 @@ func (s *InputMediaAnimation) Decode(d *jx.Decoder) error {
 			if err := s.Height.Decode(d); err != nil {
 				return err
 			}
-		case "media":
-			v, err := d.Str()
-			s.Media = string(v)
-			if err != nil {
-				return err
-			}
-		case "parse_mode":
-			s.ParseMode.Reset()
-			if err := s.ParseMode.Decode(d); err != nil {
-				return err
-			}
-		case "thumb":
-			s.Thumb.Reset()
-			if err := s.Thumb.Decode(d); err != nil {
-				return err
-			}
-		case "type":
-			v, err := d.Str()
-			s.Type = string(v)
-			if err != nil {
-				return err
-			}
-		case "width":
-			s.Width.Reset()
-			if err := s.Width.Decode(d); err != nil {
+		case "duration":
+			s.Duration.Reset()
+			if err := s.Duration.Decode(d); err != nil {
 				return err
 			}
 		default:
@@ -3909,9 +4017,23 @@ func (s *InputMediaAnimation) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s InputMediaAudio) Encode(e *jx.Encoder) {
 	e.ObjStart()
+
+	e.FieldStart("type")
+	e.Str(s.Type)
+
+	e.FieldStart("media")
+	e.Str(s.Media)
+	if s.Thumb.Set {
+		e.FieldStart("thumb")
+		s.Thumb.Encode(e)
+	}
 	if s.Caption.Set {
 		e.FieldStart("caption")
 		s.Caption.Encode(e)
+	}
+	if s.ParseMode.Set {
+		e.FieldStart("parse_mode")
+		s.ParseMode.Encode(e)
 	}
 	if s.CaptionEntities != nil {
 		e.FieldStart("caption_entities")
@@ -3925,28 +4047,14 @@ func (s InputMediaAudio) Encode(e *jx.Encoder) {
 		e.FieldStart("duration")
 		s.Duration.Encode(e)
 	}
-
-	e.FieldStart("media")
-	e.Str(s.Media)
-	if s.ParseMode.Set {
-		e.FieldStart("parse_mode")
-		s.ParseMode.Encode(e)
-	}
 	if s.Performer.Set {
 		e.FieldStart("performer")
 		s.Performer.Encode(e)
-	}
-	if s.Thumb.Set {
-		e.FieldStart("thumb")
-		s.Thumb.Encode(e)
 	}
 	if s.Title.Set {
 		e.FieldStart("title")
 		s.Title.Encode(e)
 	}
-
-	e.FieldStart("type")
-	e.Str(s.Type)
 	e.ObjEnd()
 }
 
@@ -3957,9 +4065,31 @@ func (s *InputMediaAudio) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
+		case "type":
+			v, err := d.Str()
+			s.Type = string(v)
+			if err != nil {
+				return err
+			}
+		case "media":
+			v, err := d.Str()
+			s.Media = string(v)
+			if err != nil {
+				return err
+			}
+		case "thumb":
+			s.Thumb.Reset()
+			if err := s.Thumb.Decode(d); err != nil {
+				return err
+			}
 		case "caption":
 			s.Caption.Reset()
 			if err := s.Caption.Decode(d); err != nil {
+				return err
+			}
+		case "parse_mode":
+			s.ParseMode.Reset()
+			if err := s.ParseMode.Decode(d); err != nil {
 				return err
 			}
 		case "caption_entities":
@@ -3979,36 +4109,14 @@ func (s *InputMediaAudio) Decode(d *jx.Decoder) error {
 			if err := s.Duration.Decode(d); err != nil {
 				return err
 			}
-		case "media":
-			v, err := d.Str()
-			s.Media = string(v)
-			if err != nil {
-				return err
-			}
-		case "parse_mode":
-			s.ParseMode.Reset()
-			if err := s.ParseMode.Decode(d); err != nil {
-				return err
-			}
 		case "performer":
 			s.Performer.Reset()
 			if err := s.Performer.Decode(d); err != nil {
 				return err
 			}
-		case "thumb":
-			s.Thumb.Reset()
-			if err := s.Thumb.Decode(d); err != nil {
-				return err
-			}
 		case "title":
 			s.Title.Reset()
 			if err := s.Title.Decode(d); err != nil {
-				return err
-			}
-		case "type":
-			v, err := d.Str()
-			s.Type = string(v)
-			if err != nil {
 				return err
 			}
 		default:
@@ -4021,9 +4129,23 @@ func (s *InputMediaAudio) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s InputMediaDocument) Encode(e *jx.Encoder) {
 	e.ObjStart()
+
+	e.FieldStart("type")
+	e.Str(s.Type)
+
+	e.FieldStart("media")
+	e.Str(s.Media)
+	if s.Thumb.Set {
+		e.FieldStart("thumb")
+		s.Thumb.Encode(e)
+	}
 	if s.Caption.Set {
 		e.FieldStart("caption")
 		s.Caption.Encode(e)
+	}
+	if s.ParseMode.Set {
+		e.FieldStart("parse_mode")
+		s.ParseMode.Encode(e)
 	}
 	if s.CaptionEntities != nil {
 		e.FieldStart("caption_entities")
@@ -4037,20 +4159,6 @@ func (s InputMediaDocument) Encode(e *jx.Encoder) {
 		e.FieldStart("disable_content_type_detection")
 		s.DisableContentTypeDetection.Encode(e)
 	}
-
-	e.FieldStart("media")
-	e.Str(s.Media)
-	if s.ParseMode.Set {
-		e.FieldStart("parse_mode")
-		s.ParseMode.Encode(e)
-	}
-	if s.Thumb.Set {
-		e.FieldStart("thumb")
-		s.Thumb.Encode(e)
-	}
-
-	e.FieldStart("type")
-	e.Str(s.Type)
 	e.ObjEnd()
 }
 
@@ -4061,9 +4169,31 @@ func (s *InputMediaDocument) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
+		case "type":
+			v, err := d.Str()
+			s.Type = string(v)
+			if err != nil {
+				return err
+			}
+		case "media":
+			v, err := d.Str()
+			s.Media = string(v)
+			if err != nil {
+				return err
+			}
+		case "thumb":
+			s.Thumb.Reset()
+			if err := s.Thumb.Decode(d); err != nil {
+				return err
+			}
 		case "caption":
 			s.Caption.Reset()
 			if err := s.Caption.Decode(d); err != nil {
+				return err
+			}
+		case "parse_mode":
+			s.ParseMode.Reset()
+			if err := s.ParseMode.Decode(d); err != nil {
 				return err
 			}
 		case "caption_entities":
@@ -4083,28 +4213,6 @@ func (s *InputMediaDocument) Decode(d *jx.Decoder) error {
 			if err := s.DisableContentTypeDetection.Decode(d); err != nil {
 				return err
 			}
-		case "media":
-			v, err := d.Str()
-			s.Media = string(v)
-			if err != nil {
-				return err
-			}
-		case "parse_mode":
-			s.ParseMode.Reset()
-			if err := s.ParseMode.Decode(d); err != nil {
-				return err
-			}
-		case "thumb":
-			s.Thumb.Reset()
-			if err := s.Thumb.Decode(d); err != nil {
-				return err
-			}
-		case "type":
-			v, err := d.Str()
-			s.Type = string(v)
-			if err != nil {
-				return err
-			}
 		default:
 			return d.Skip()
 		}
@@ -4115,9 +4223,19 @@ func (s *InputMediaDocument) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s InputMediaPhoto) Encode(e *jx.Encoder) {
 	e.ObjStart()
+
+	e.FieldStart("type")
+	e.Str(s.Type)
+
+	e.FieldStart("media")
+	e.Str(s.Media)
 	if s.Caption.Set {
 		e.FieldStart("caption")
 		s.Caption.Encode(e)
+	}
+	if s.ParseMode.Set {
+		e.FieldStart("parse_mode")
+		s.ParseMode.Encode(e)
 	}
 	if s.CaptionEntities != nil {
 		e.FieldStart("caption_entities")
@@ -4127,16 +4245,6 @@ func (s InputMediaPhoto) Encode(e *jx.Encoder) {
 		}
 		e.ArrEnd()
 	}
-
-	e.FieldStart("media")
-	e.Str(s.Media)
-	if s.ParseMode.Set {
-		e.FieldStart("parse_mode")
-		s.ParseMode.Encode(e)
-	}
-
-	e.FieldStart("type")
-	e.Str(s.Type)
 	e.ObjEnd()
 }
 
@@ -4147,9 +4255,26 @@ func (s *InputMediaPhoto) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
+		case "type":
+			v, err := d.Str()
+			s.Type = string(v)
+			if err != nil {
+				return err
+			}
+		case "media":
+			v, err := d.Str()
+			s.Media = string(v)
+			if err != nil {
+				return err
+			}
 		case "caption":
 			s.Caption.Reset()
 			if err := s.Caption.Decode(d); err != nil {
+				return err
+			}
+		case "parse_mode":
+			s.ParseMode.Reset()
+			if err := s.ParseMode.Decode(d); err != nil {
 				return err
 			}
 		case "caption_entities":
@@ -4162,23 +4287,6 @@ func (s *InputMediaPhoto) Decode(d *jx.Decoder) error {
 				s.CaptionEntities = append(s.CaptionEntities, elem)
 				return nil
 			}); err != nil {
-				return err
-			}
-		case "media":
-			v, err := d.Str()
-			s.Media = string(v)
-			if err != nil {
-				return err
-			}
-		case "parse_mode":
-			s.ParseMode.Reset()
-			if err := s.ParseMode.Decode(d); err != nil {
-				return err
-			}
-		case "type":
-			v, err := d.Str()
-			s.Type = string(v)
-			if err != nil {
 				return err
 			}
 		default:
@@ -4191,9 +4299,23 @@ func (s *InputMediaPhoto) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s InputMediaVideo) Encode(e *jx.Encoder) {
 	e.ObjStart()
+
+	e.FieldStart("type")
+	e.Str(s.Type)
+
+	e.FieldStart("media")
+	e.Str(s.Media)
+	if s.Thumb.Set {
+		e.FieldStart("thumb")
+		s.Thumb.Encode(e)
+	}
 	if s.Caption.Set {
 		e.FieldStart("caption")
 		s.Caption.Encode(e)
+	}
+	if s.ParseMode.Set {
+		e.FieldStart("parse_mode")
+		s.ParseMode.Encode(e)
 	}
 	if s.CaptionEntities != nil {
 		e.FieldStart("caption_entities")
@@ -4203,35 +4325,21 @@ func (s InputMediaVideo) Encode(e *jx.Encoder) {
 		}
 		e.ArrEnd()
 	}
-	if s.Duration.Set {
-		e.FieldStart("duration")
-		s.Duration.Encode(e)
+	if s.Width.Set {
+		e.FieldStart("width")
+		s.Width.Encode(e)
 	}
 	if s.Height.Set {
 		e.FieldStart("height")
 		s.Height.Encode(e)
 	}
-
-	e.FieldStart("media")
-	e.Str(s.Media)
-	if s.ParseMode.Set {
-		e.FieldStart("parse_mode")
-		s.ParseMode.Encode(e)
+	if s.Duration.Set {
+		e.FieldStart("duration")
+		s.Duration.Encode(e)
 	}
 	if s.SupportsStreaming.Set {
 		e.FieldStart("supports_streaming")
 		s.SupportsStreaming.Encode(e)
-	}
-	if s.Thumb.Set {
-		e.FieldStart("thumb")
-		s.Thumb.Encode(e)
-	}
-
-	e.FieldStart("type")
-	e.Str(s.Type)
-	if s.Width.Set {
-		e.FieldStart("width")
-		s.Width.Encode(e)
 	}
 	e.ObjEnd()
 }
@@ -4243,9 +4351,31 @@ func (s *InputMediaVideo) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
+		case "type":
+			v, err := d.Str()
+			s.Type = string(v)
+			if err != nil {
+				return err
+			}
+		case "media":
+			v, err := d.Str()
+			s.Media = string(v)
+			if err != nil {
+				return err
+			}
+		case "thumb":
+			s.Thumb.Reset()
+			if err := s.Thumb.Decode(d); err != nil {
+				return err
+			}
 		case "caption":
 			s.Caption.Reset()
 			if err := s.Caption.Decode(d); err != nil {
+				return err
+			}
+		case "parse_mode":
+			s.ParseMode.Reset()
+			if err := s.ParseMode.Decode(d); err != nil {
 				return err
 			}
 		case "caption_entities":
@@ -4260,9 +4390,9 @@ func (s *InputMediaVideo) Decode(d *jx.Decoder) error {
 			}); err != nil {
 				return err
 			}
-		case "duration":
-			s.Duration.Reset()
-			if err := s.Duration.Decode(d); err != nil {
+		case "width":
+			s.Width.Reset()
+			if err := s.Width.Decode(d); err != nil {
 				return err
 			}
 		case "height":
@@ -4270,36 +4400,14 @@ func (s *InputMediaVideo) Decode(d *jx.Decoder) error {
 			if err := s.Height.Decode(d); err != nil {
 				return err
 			}
-		case "media":
-			v, err := d.Str()
-			s.Media = string(v)
-			if err != nil {
-				return err
-			}
-		case "parse_mode":
-			s.ParseMode.Reset()
-			if err := s.ParseMode.Decode(d); err != nil {
+		case "duration":
+			s.Duration.Reset()
+			if err := s.Duration.Decode(d); err != nil {
 				return err
 			}
 		case "supports_streaming":
 			s.SupportsStreaming.Reset()
 			if err := s.SupportsStreaming.Decode(d); err != nil {
-				return err
-			}
-		case "thumb":
-			s.Thumb.Reset()
-			if err := s.Thumb.Decode(d); err != nil {
-				return err
-			}
-		case "type":
-			v, err := d.Str()
-			s.Type = string(v)
-			if err != nil {
-				return err
-			}
-		case "width":
-			s.Width.Reset()
-			if err := s.Width.Decode(d); err != nil {
 				return err
 			}
 		default:
@@ -4313,8 +4421,8 @@ func (s *InputMediaVideo) Decode(d *jx.Decoder) error {
 func (s Invoice) Encode(e *jx.Encoder) {
 	e.ObjStart()
 
-	e.FieldStart("currency")
-	e.Str(s.Currency)
+	e.FieldStart("title")
+	e.Str(s.Title)
 
 	e.FieldStart("description")
 	e.Str(s.Description)
@@ -4322,8 +4430,8 @@ func (s Invoice) Encode(e *jx.Encoder) {
 	e.FieldStart("start_parameter")
 	e.Str(s.StartParameter)
 
-	e.FieldStart("title")
-	e.Str(s.Title)
+	e.FieldStart("currency")
+	e.Str(s.Currency)
 
 	e.FieldStart("total_amount")
 	e.Int(s.TotalAmount)
@@ -4337,9 +4445,9 @@ func (s *Invoice) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "currency":
+		case "title":
 			v, err := d.Str()
-			s.Currency = string(v)
+			s.Title = string(v)
 			if err != nil {
 				return err
 			}
@@ -4355,9 +4463,9 @@ func (s *Invoice) Decode(d *jx.Decoder) error {
 			if err != nil {
 				return err
 			}
-		case "title":
+		case "currency":
 			v, err := d.Str()
-			s.Title = string(v)
+			s.Currency = string(v)
 			if err != nil {
 				return err
 			}
@@ -4377,6 +4485,9 @@ func (s *Invoice) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s KeyboardButton) Encode(e *jx.Encoder) {
 	e.ObjStart()
+
+	e.FieldStart("text")
+	e.Str(s.Text)
 	if s.RequestContact.Set {
 		e.FieldStart("request_contact")
 		s.RequestContact.Encode(e)
@@ -4389,9 +4500,6 @@ func (s KeyboardButton) Encode(e *jx.Encoder) {
 		e.FieldStart("request_poll")
 		s.RequestPoll.Encode(e)
 	}
-
-	e.FieldStart("text")
-	e.Str(s.Text)
 	e.ObjEnd()
 }
 
@@ -4402,6 +4510,12 @@ func (s *KeyboardButton) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
+		case "text":
+			v, err := d.Str()
+			s.Text = string(v)
+			if err != nil {
+				return err
+			}
 		case "request_contact":
 			s.RequestContact.Reset()
 			if err := s.RequestContact.Decode(d); err != nil {
@@ -4415,12 +4529,6 @@ func (s *KeyboardButton) Decode(d *jx.Decoder) error {
 		case "request_poll":
 			s.RequestPoll.Reset()
 			if err := s.RequestPoll.Decode(d); err != nil {
-				return err
-			}
-		case "text":
-			v, err := d.Str()
-			s.Text = string(v)
-			if err != nil {
 				return err
 			}
 		default:
@@ -4463,11 +4571,11 @@ func (s *KeyboardButtonPollType) Decode(d *jx.Decoder) error {
 func (s LabeledPrice) Encode(e *jx.Encoder) {
 	e.ObjStart()
 
-	e.FieldStart("amount")
-	e.Int(s.Amount)
-
 	e.FieldStart("label")
 	e.Str(s.Label)
+
+	e.FieldStart("amount")
+	e.Int(s.Amount)
 	e.ObjEnd()
 }
 
@@ -4478,15 +4586,15 @@ func (s *LabeledPrice) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "amount":
-			v, err := d.Int()
-			s.Amount = int(v)
-			if err != nil {
-				return err
-			}
 		case "label":
 			v, err := d.Str()
 			s.Label = string(v)
+			if err != nil {
+				return err
+			}
+		case "amount":
+			v, err := d.Int()
+			s.Amount = int(v)
 			if err != nil {
 				return err
 			}
@@ -4527,24 +4635,24 @@ func (s *LeaveChat) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Location) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	if s.Heading.Set {
-		e.FieldStart("heading")
-		s.Heading.Encode(e)
-	}
+
+	e.FieldStart("longitude")
+	e.Float64(s.Longitude)
+
+	e.FieldStart("latitude")
+	e.Float64(s.Latitude)
 	if s.HorizontalAccuracy.Set {
 		e.FieldStart("horizontal_accuracy")
 		s.HorizontalAccuracy.Encode(e)
 	}
-
-	e.FieldStart("latitude")
-	e.Float64(s.Latitude)
 	if s.LivePeriod.Set {
 		e.FieldStart("live_period")
 		s.LivePeriod.Encode(e)
 	}
-
-	e.FieldStart("longitude")
-	e.Float64(s.Longitude)
+	if s.Heading.Set {
+		e.FieldStart("heading")
+		s.Heading.Encode(e)
+	}
 	if s.ProximityAlertRadius.Set {
 		e.FieldStart("proximity_alert_radius")
 		s.ProximityAlertRadius.Encode(e)
@@ -4559,14 +4667,10 @@ func (s *Location) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "heading":
-			s.Heading.Reset()
-			if err := s.Heading.Decode(d); err != nil {
-				return err
-			}
-		case "horizontal_accuracy":
-			s.HorizontalAccuracy.Reset()
-			if err := s.HorizontalAccuracy.Decode(d); err != nil {
+		case "longitude":
+			v, err := d.Float64()
+			s.Longitude = float64(v)
+			if err != nil {
 				return err
 			}
 		case "latitude":
@@ -4575,15 +4679,19 @@ func (s *Location) Decode(d *jx.Decoder) error {
 			if err != nil {
 				return err
 			}
+		case "horizontal_accuracy":
+			s.HorizontalAccuracy.Reset()
+			if err := s.HorizontalAccuracy.Decode(d); err != nil {
+				return err
+			}
 		case "live_period":
 			s.LivePeriod.Reset()
 			if err := s.LivePeriod.Decode(d); err != nil {
 				return err
 			}
-		case "longitude":
-			v, err := d.Float64()
-			s.Longitude = float64(v)
-			if err != nil {
+		case "heading":
+			s.Heading.Reset()
+			if err := s.Heading.Decode(d); err != nil {
 				return err
 			}
 		case "proximity_alert_radius":
@@ -4601,21 +4709,21 @@ func (s *Location) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s LoginUrl) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	if s.BotUsername.Set {
-		e.FieldStart("bot_username")
-		s.BotUsername.Encode(e)
-	}
+
+	e.FieldStart("url")
+	json.EncodeURI(e, s.URL)
 	if s.ForwardText.Set {
 		e.FieldStart("forward_text")
 		s.ForwardText.Encode(e)
+	}
+	if s.BotUsername.Set {
+		e.FieldStart("bot_username")
+		s.BotUsername.Encode(e)
 	}
 	if s.RequestWriteAccess.Set {
 		e.FieldStart("request_write_access")
 		s.RequestWriteAccess.Encode(e)
 	}
-
-	e.FieldStart("url")
-	json.EncodeURI(e, s.URL)
 	e.ObjEnd()
 }
 
@@ -4626,9 +4734,10 @@ func (s *LoginUrl) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "bot_username":
-			s.BotUsername.Reset()
-			if err := s.BotUsername.Decode(d); err != nil {
+		case "url":
+			v, err := json.DecodeURI(d)
+			s.URL = v
+			if err != nil {
 				return err
 			}
 		case "forward_text":
@@ -4636,15 +4745,14 @@ func (s *LoginUrl) Decode(d *jx.Decoder) error {
 			if err := s.ForwardText.Decode(d); err != nil {
 				return err
 			}
+		case "bot_username":
+			s.BotUsername.Reset()
+			if err := s.BotUsername.Decode(d); err != nil {
+				return err
+			}
 		case "request_write_access":
 			s.RequestWriteAccess.Reset()
 			if err := s.RequestWriteAccess.Decode(d); err != nil {
-				return err
-			}
-		case "url":
-			v, err := json.DecodeURI(d)
-			s.URL = v
-			if err != nil {
 				return err
 			}
 		default:
@@ -4661,14 +4769,14 @@ func (s MaskPosition) Encode(e *jx.Encoder) {
 	e.FieldStart("point")
 	e.Str(s.Point)
 
-	e.FieldStart("scale")
-	e.Float64(s.Scale)
-
 	e.FieldStart("x_shift")
 	e.Float64(s.XShift)
 
 	e.FieldStart("y_shift")
 	e.Float64(s.YShift)
+
+	e.FieldStart("scale")
+	e.Float64(s.Scale)
 	e.ObjEnd()
 }
 
@@ -4685,12 +4793,6 @@ func (s *MaskPosition) Decode(d *jx.Decoder) error {
 			if err != nil {
 				return err
 			}
-		case "scale":
-			v, err := d.Float64()
-			s.Scale = float64(v)
-			if err != nil {
-				return err
-			}
 		case "x_shift":
 			v, err := d.Float64()
 			s.XShift = float64(v)
@@ -4700,6 +4802,12 @@ func (s *MaskPosition) Decode(d *jx.Decoder) error {
 		case "y_shift":
 			v, err := d.Float64()
 			s.YShift = float64(v)
+			if err != nil {
+				return err
+			}
+		case "scale":
+			v, err := d.Float64()
+			s.Scale = float64(v)
 			if err != nil {
 				return err
 			}
@@ -4713,76 +4821,23 @@ func (s *MaskPosition) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Message) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	if s.Animation.Set {
-		e.FieldStart("animation")
-		s.Animation.Encode(e)
-	}
-	if s.Audio.Set {
-		e.FieldStart("audio")
-		s.Audio.Encode(e)
-	}
-	if s.AuthorSignature.Set {
-		e.FieldStart("author_signature")
-		s.AuthorSignature.Encode(e)
-	}
-	if s.Caption.Set {
-		e.FieldStart("caption")
-		s.Caption.Encode(e)
-	}
-	if s.CaptionEntities != nil {
-		e.FieldStart("caption_entities")
-		e.ArrStart()
-		for _, elem := range s.CaptionEntities {
-			elem.Encode(e)
-		}
-		e.ArrEnd()
-	}
-	if s.ChannelChatCreated.Set {
-		e.FieldStart("channel_chat_created")
-		s.ChannelChatCreated.Encode(e)
-	}
 
-	e.FieldStart("chat")
-	s.Chat.Encode(e)
-	if s.ConnectedWebsite.Set {
-		e.FieldStart("connected_website")
-		s.ConnectedWebsite.Encode(e)
+	e.FieldStart("message_id")
+	e.Int(s.MessageID)
+	if s.From.Set {
+		e.FieldStart("from")
+		s.From.Encode(e)
 	}
-	if s.Contact.Set {
-		e.FieldStart("contact")
-		s.Contact.Encode(e)
+	if s.SenderChat.Set {
+		e.FieldStart("sender_chat")
+		s.SenderChat.Encode(e)
 	}
 
 	e.FieldStart("date")
 	e.Int(s.Date)
-	if s.DeleteChatPhoto.Set {
-		e.FieldStart("delete_chat_photo")
-		s.DeleteChatPhoto.Encode(e)
-	}
-	if s.Dice.Set {
-		e.FieldStart("dice")
-		s.Dice.Encode(e)
-	}
-	if s.Document.Set {
-		e.FieldStart("document")
-		s.Document.Encode(e)
-	}
-	if s.EditDate.Set {
-		e.FieldStart("edit_date")
-		s.EditDate.Encode(e)
-	}
-	if s.Entities != nil {
-		e.FieldStart("entities")
-		e.ArrStart()
-		for _, elem := range s.Entities {
-			elem.Encode(e)
-		}
-		e.ArrEnd()
-	}
-	if s.ForwardDate.Set {
-		e.FieldStart("forward_date")
-		s.ForwardDate.Encode(e)
-	}
+
+	e.FieldStart("chat")
+	s.Chat.Encode(e)
 	if s.ForwardFrom.Set {
 		e.FieldStart("forward_from")
 		s.ForwardFrom.Encode(e)
@@ -4795,80 +4850,61 @@ func (s Message) Encode(e *jx.Encoder) {
 		e.FieldStart("forward_from_message_id")
 		s.ForwardFromMessageID.Encode(e)
 	}
-	if s.ForwardSenderName.Set {
-		e.FieldStart("forward_sender_name")
-		s.ForwardSenderName.Encode(e)
-	}
 	if s.ForwardSignature.Set {
 		e.FieldStart("forward_signature")
 		s.ForwardSignature.Encode(e)
 	}
-	if s.From.Set {
-		e.FieldStart("from")
-		s.From.Encode(e)
+	if s.ForwardSenderName.Set {
+		e.FieldStart("forward_sender_name")
+		s.ForwardSenderName.Encode(e)
 	}
-	if s.Game.Set {
-		e.FieldStart("game")
-		s.Game.Encode(e)
+	if s.ForwardDate.Set {
+		e.FieldStart("forward_date")
+		s.ForwardDate.Encode(e)
 	}
-	if s.GroupChatCreated.Set {
-		e.FieldStart("group_chat_created")
-		s.GroupChatCreated.Encode(e)
+	if s.ReplyToMessage != nil {
+		e.FieldStart("reply_to_message")
+		s.ReplyToMessage.Encode(e)
 	}
-	if s.Invoice.Set {
-		e.FieldStart("invoice")
-		s.Invoice.Encode(e)
+	if s.ViaBot.Set {
+		e.FieldStart("via_bot")
+		s.ViaBot.Encode(e)
 	}
-	if s.LeftChatMember.Set {
-		e.FieldStart("left_chat_member")
-		s.LeftChatMember.Encode(e)
-	}
-	if s.Location.Set {
-		e.FieldStart("location")
-		s.Location.Encode(e)
+	if s.EditDate.Set {
+		e.FieldStart("edit_date")
+		s.EditDate.Encode(e)
 	}
 	if s.MediaGroupID.Set {
 		e.FieldStart("media_group_id")
 		s.MediaGroupID.Encode(e)
 	}
-	if s.MessageAutoDeleteTimerChanged.Set {
-		e.FieldStart("message_auto_delete_timer_changed")
-		s.MessageAutoDeleteTimerChanged.Encode(e)
+	if s.AuthorSignature.Set {
+		e.FieldStart("author_signature")
+		s.AuthorSignature.Encode(e)
 	}
-
-	e.FieldStart("message_id")
-	e.Int(s.MessageID)
-	if s.MigrateFromChatID.Set {
-		e.FieldStart("migrate_from_chat_id")
-		s.MigrateFromChatID.Encode(e)
+	if s.Text.Set {
+		e.FieldStart("text")
+		s.Text.Encode(e)
 	}
-	if s.MigrateToChatID.Set {
-		e.FieldStart("migrate_to_chat_id")
-		s.MigrateToChatID.Encode(e)
-	}
-	if s.NewChatMembers != nil {
-		e.FieldStart("new_chat_members")
+	if s.Entities != nil {
+		e.FieldStart("entities")
 		e.ArrStart()
-		for _, elem := range s.NewChatMembers {
+		for _, elem := range s.Entities {
 			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
-	if s.NewChatPhoto != nil {
-		e.FieldStart("new_chat_photo")
-		e.ArrStart()
-		for _, elem := range s.NewChatPhoto {
-			elem.Encode(e)
-		}
-		e.ArrEnd()
+	if s.Animation.Set {
+		e.FieldStart("animation")
+		s.Animation.Encode(e)
 	}
-	if s.NewChatTitle.Set {
-		e.FieldStart("new_chat_title")
-		s.NewChatTitle.Encode(e)
+	if s.Audio.Set {
+		e.FieldStart("audio")
+		s.Audio.Encode(e)
 	}
-	if s.PassportData.Set {
-		e.FieldStart("passport_data")
-		s.PassportData.Encode(e)
+	if s.Document.Set {
+		e.FieldStart("document")
+		s.Document.Encode(e)
 	}
 	if s.Photo != nil {
 		e.FieldStart("photo")
@@ -4878,53 +4914,9 @@ func (s Message) Encode(e *jx.Encoder) {
 		}
 		e.ArrEnd()
 	}
-	if s.PinnedMessage != nil {
-		e.FieldStart("pinned_message")
-		s.PinnedMessage.Encode(e)
-	}
-	if s.Poll.Set {
-		e.FieldStart("poll")
-		s.Poll.Encode(e)
-	}
-	if s.ProximityAlertTriggered.Set {
-		e.FieldStart("proximity_alert_triggered")
-		s.ProximityAlertTriggered.Encode(e)
-	}
-	if s.ReplyMarkup.Set {
-		e.FieldStart("reply_markup")
-		s.ReplyMarkup.Encode(e)
-	}
-	if s.ReplyToMessage != nil {
-		e.FieldStart("reply_to_message")
-		s.ReplyToMessage.Encode(e)
-	}
-	if s.SenderChat.Set {
-		e.FieldStart("sender_chat")
-		s.SenderChat.Encode(e)
-	}
 	if s.Sticker.Set {
 		e.FieldStart("sticker")
 		s.Sticker.Encode(e)
-	}
-	if s.SuccessfulPayment.Set {
-		e.FieldStart("successful_payment")
-		s.SuccessfulPayment.Encode(e)
-	}
-	if s.SupergroupChatCreated.Set {
-		e.FieldStart("supergroup_chat_created")
-		s.SupergroupChatCreated.Encode(e)
-	}
-	if s.Text.Set {
-		e.FieldStart("text")
-		s.Text.Encode(e)
-	}
-	if s.Venue.Set {
-		e.FieldStart("venue")
-		s.Venue.Encode(e)
-	}
-	if s.ViaBot.Set {
-		e.FieldStart("via_bot")
-		s.ViaBot.Encode(e)
 	}
 	if s.Video.Set {
 		e.FieldStart("video")
@@ -4938,13 +4930,117 @@ func (s Message) Encode(e *jx.Encoder) {
 		e.FieldStart("voice")
 		s.Voice.Encode(e)
 	}
-	if s.VoiceChatEnded.Set {
-		e.FieldStart("voice_chat_ended")
-		s.VoiceChatEnded.Encode(e)
+	if s.Caption.Set {
+		e.FieldStart("caption")
+		s.Caption.Encode(e)
 	}
-	if s.VoiceChatParticipantsInvited.Set {
-		e.FieldStart("voice_chat_participants_invited")
-		s.VoiceChatParticipantsInvited.Encode(e)
+	if s.CaptionEntities != nil {
+		e.FieldStart("caption_entities")
+		e.ArrStart()
+		for _, elem := range s.CaptionEntities {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
+	}
+	if s.Contact.Set {
+		e.FieldStart("contact")
+		s.Contact.Encode(e)
+	}
+	if s.Dice.Set {
+		e.FieldStart("dice")
+		s.Dice.Encode(e)
+	}
+	if s.Game.Set {
+		e.FieldStart("game")
+		s.Game.Encode(e)
+	}
+	if s.Poll.Set {
+		e.FieldStart("poll")
+		s.Poll.Encode(e)
+	}
+	if s.Venue.Set {
+		e.FieldStart("venue")
+		s.Venue.Encode(e)
+	}
+	if s.Location.Set {
+		e.FieldStart("location")
+		s.Location.Encode(e)
+	}
+	if s.NewChatMembers != nil {
+		e.FieldStart("new_chat_members")
+		e.ArrStart()
+		for _, elem := range s.NewChatMembers {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
+	}
+	if s.LeftChatMember.Set {
+		e.FieldStart("left_chat_member")
+		s.LeftChatMember.Encode(e)
+	}
+	if s.NewChatTitle.Set {
+		e.FieldStart("new_chat_title")
+		s.NewChatTitle.Encode(e)
+	}
+	if s.NewChatPhoto != nil {
+		e.FieldStart("new_chat_photo")
+		e.ArrStart()
+		for _, elem := range s.NewChatPhoto {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
+	}
+	if s.DeleteChatPhoto.Set {
+		e.FieldStart("delete_chat_photo")
+		s.DeleteChatPhoto.Encode(e)
+	}
+	if s.GroupChatCreated.Set {
+		e.FieldStart("group_chat_created")
+		s.GroupChatCreated.Encode(e)
+	}
+	if s.SupergroupChatCreated.Set {
+		e.FieldStart("supergroup_chat_created")
+		s.SupergroupChatCreated.Encode(e)
+	}
+	if s.ChannelChatCreated.Set {
+		e.FieldStart("channel_chat_created")
+		s.ChannelChatCreated.Encode(e)
+	}
+	if s.MessageAutoDeleteTimerChanged.Set {
+		e.FieldStart("message_auto_delete_timer_changed")
+		s.MessageAutoDeleteTimerChanged.Encode(e)
+	}
+	if s.MigrateToChatID.Set {
+		e.FieldStart("migrate_to_chat_id")
+		s.MigrateToChatID.Encode(e)
+	}
+	if s.MigrateFromChatID.Set {
+		e.FieldStart("migrate_from_chat_id")
+		s.MigrateFromChatID.Encode(e)
+	}
+	if s.PinnedMessage != nil {
+		e.FieldStart("pinned_message")
+		s.PinnedMessage.Encode(e)
+	}
+	if s.Invoice.Set {
+		e.FieldStart("invoice")
+		s.Invoice.Encode(e)
+	}
+	if s.SuccessfulPayment.Set {
+		e.FieldStart("successful_payment")
+		s.SuccessfulPayment.Encode(e)
+	}
+	if s.ConnectedWebsite.Set {
+		e.FieldStart("connected_website")
+		s.ConnectedWebsite.Encode(e)
+	}
+	if s.PassportData.Set {
+		e.FieldStart("passport_data")
+		s.PassportData.Encode(e)
+	}
+	if s.ProximityAlertTriggered.Set {
+		e.FieldStart("proximity_alert_triggered")
+		s.ProximityAlertTriggered.Encode(e)
 	}
 	if s.VoiceChatScheduled.Set {
 		e.FieldStart("voice_chat_scheduled")
@@ -4953,6 +5049,18 @@ func (s Message) Encode(e *jx.Encoder) {
 	if s.VoiceChatStarted != nil {
 		e.FieldStart("voice_chat_started")
 		s.VoiceChatStarted.Encode(e)
+	}
+	if s.VoiceChatEnded.Set {
+		e.FieldStart("voice_chat_ended")
+		s.VoiceChatEnded.Encode(e)
+	}
+	if s.VoiceChatParticipantsInvited.Set {
+		e.FieldStart("voice_chat_participants_invited")
+		s.VoiceChatParticipantsInvited.Encode(e)
+	}
+	if s.ReplyMarkup.Set {
+		e.FieldStart("reply_markup")
+		s.ReplyMarkup.Encode(e)
 	}
 	e.ObjEnd()
 }
@@ -4964,6 +5072,106 @@ func (s *Message) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
+		case "message_id":
+			v, err := d.Int()
+			s.MessageID = int(v)
+			if err != nil {
+				return err
+			}
+		case "from":
+			s.From.Reset()
+			if err := s.From.Decode(d); err != nil {
+				return err
+			}
+		case "sender_chat":
+			s.SenderChat.Reset()
+			if err := s.SenderChat.Decode(d); err != nil {
+				return err
+			}
+		case "date":
+			v, err := d.Int()
+			s.Date = int(v)
+			if err != nil {
+				return err
+			}
+		case "chat":
+			if err := s.Chat.Decode(d); err != nil {
+				return err
+			}
+		case "forward_from":
+			s.ForwardFrom.Reset()
+			if err := s.ForwardFrom.Decode(d); err != nil {
+				return err
+			}
+		case "forward_from_chat":
+			s.ForwardFromChat.Reset()
+			if err := s.ForwardFromChat.Decode(d); err != nil {
+				return err
+			}
+		case "forward_from_message_id":
+			s.ForwardFromMessageID.Reset()
+			if err := s.ForwardFromMessageID.Decode(d); err != nil {
+				return err
+			}
+		case "forward_signature":
+			s.ForwardSignature.Reset()
+			if err := s.ForwardSignature.Decode(d); err != nil {
+				return err
+			}
+		case "forward_sender_name":
+			s.ForwardSenderName.Reset()
+			if err := s.ForwardSenderName.Decode(d); err != nil {
+				return err
+			}
+		case "forward_date":
+			s.ForwardDate.Reset()
+			if err := s.ForwardDate.Decode(d); err != nil {
+				return err
+			}
+		case "reply_to_message":
+			s.ReplyToMessage = nil
+			var elem Message
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			s.ReplyToMessage = &elem
+		case "via_bot":
+			s.ViaBot.Reset()
+			if err := s.ViaBot.Decode(d); err != nil {
+				return err
+			}
+		case "edit_date":
+			s.EditDate.Reset()
+			if err := s.EditDate.Decode(d); err != nil {
+				return err
+			}
+		case "media_group_id":
+			s.MediaGroupID.Reset()
+			if err := s.MediaGroupID.Decode(d); err != nil {
+				return err
+			}
+		case "author_signature":
+			s.AuthorSignature.Reset()
+			if err := s.AuthorSignature.Decode(d); err != nil {
+				return err
+			}
+		case "text":
+			s.Text.Reset()
+			if err := s.Text.Decode(d); err != nil {
+				return err
+			}
+		case "entities":
+			s.Entities = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem MessageEntity
+				if err := elem.Decode(d); err != nil {
+					return err
+				}
+				s.Entities = append(s.Entities, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
 		case "animation":
 			s.Animation.Reset()
 			if err := s.Animation.Decode(d); err != nil {
@@ -4974,9 +5182,41 @@ func (s *Message) Decode(d *jx.Decoder) error {
 			if err := s.Audio.Decode(d); err != nil {
 				return err
 			}
-		case "author_signature":
-			s.AuthorSignature.Reset()
-			if err := s.AuthorSignature.Decode(d); err != nil {
+		case "document":
+			s.Document.Reset()
+			if err := s.Document.Decode(d); err != nil {
+				return err
+			}
+		case "photo":
+			s.Photo = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem PhotoSize
+				if err := elem.Decode(d); err != nil {
+					return err
+				}
+				s.Photo = append(s.Photo, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+		case "sticker":
+			s.Sticker.Reset()
+			if err := s.Sticker.Decode(d); err != nil {
+				return err
+			}
+		case "video":
+			s.Video.Reset()
+			if err := s.Video.Decode(d); err != nil {
+				return err
+			}
+		case "video_note":
+			s.VideoNote.Reset()
+			if err := s.VideoNote.Decode(d); err != nil {
+				return err
+			}
+		case "voice":
+			s.Voice.Reset()
+			if err := s.Voice.Decode(d); err != nil {
 				return err
 			}
 		case "caption":
@@ -4996,34 +5236,9 @@ func (s *Message) Decode(d *jx.Decoder) error {
 			}); err != nil {
 				return err
 			}
-		case "channel_chat_created":
-			s.ChannelChatCreated.Reset()
-			if err := s.ChannelChatCreated.Decode(d); err != nil {
-				return err
-			}
-		case "chat":
-			if err := s.Chat.Decode(d); err != nil {
-				return err
-			}
-		case "connected_website":
-			s.ConnectedWebsite.Reset()
-			if err := s.ConnectedWebsite.Decode(d); err != nil {
-				return err
-			}
 		case "contact":
 			s.Contact.Reset()
 			if err := s.Contact.Decode(d); err != nil {
-				return err
-			}
-		case "date":
-			v, err := d.Int()
-			s.Date = int(v)
-			if err != nil {
-				return err
-			}
-		case "delete_chat_photo":
-			s.DeleteChatPhoto.Reset()
-			if err := s.DeleteChatPhoto.Decode(d); err != nil {
 				return err
 			}
 		case "dice":
@@ -5031,112 +5246,24 @@ func (s *Message) Decode(d *jx.Decoder) error {
 			if err := s.Dice.Decode(d); err != nil {
 				return err
 			}
-		case "document":
-			s.Document.Reset()
-			if err := s.Document.Decode(d); err != nil {
-				return err
-			}
-		case "edit_date":
-			s.EditDate.Reset()
-			if err := s.EditDate.Decode(d); err != nil {
-				return err
-			}
-		case "entities":
-			s.Entities = nil
-			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem MessageEntity
-				if err := elem.Decode(d); err != nil {
-					return err
-				}
-				s.Entities = append(s.Entities, elem)
-				return nil
-			}); err != nil {
-				return err
-			}
-		case "forward_date":
-			s.ForwardDate.Reset()
-			if err := s.ForwardDate.Decode(d); err != nil {
-				return err
-			}
-		case "forward_from":
-			s.ForwardFrom.Reset()
-			if err := s.ForwardFrom.Decode(d); err != nil {
-				return err
-			}
-		case "forward_from_chat":
-			s.ForwardFromChat.Reset()
-			if err := s.ForwardFromChat.Decode(d); err != nil {
-				return err
-			}
-		case "forward_from_message_id":
-			s.ForwardFromMessageID.Reset()
-			if err := s.ForwardFromMessageID.Decode(d); err != nil {
-				return err
-			}
-		case "forward_sender_name":
-			s.ForwardSenderName.Reset()
-			if err := s.ForwardSenderName.Decode(d); err != nil {
-				return err
-			}
-		case "forward_signature":
-			s.ForwardSignature.Reset()
-			if err := s.ForwardSignature.Decode(d); err != nil {
-				return err
-			}
-		case "from":
-			s.From.Reset()
-			if err := s.From.Decode(d); err != nil {
-				return err
-			}
 		case "game":
 			s.Game.Reset()
 			if err := s.Game.Decode(d); err != nil {
 				return err
 			}
-		case "group_chat_created":
-			s.GroupChatCreated.Reset()
-			if err := s.GroupChatCreated.Decode(d); err != nil {
+		case "poll":
+			s.Poll.Reset()
+			if err := s.Poll.Decode(d); err != nil {
 				return err
 			}
-		case "invoice":
-			s.Invoice.Reset()
-			if err := s.Invoice.Decode(d); err != nil {
-				return err
-			}
-		case "left_chat_member":
-			s.LeftChatMember.Reset()
-			if err := s.LeftChatMember.Decode(d); err != nil {
+		case "venue":
+			s.Venue.Reset()
+			if err := s.Venue.Decode(d); err != nil {
 				return err
 			}
 		case "location":
 			s.Location.Reset()
 			if err := s.Location.Decode(d); err != nil {
-				return err
-			}
-		case "media_group_id":
-			s.MediaGroupID.Reset()
-			if err := s.MediaGroupID.Decode(d); err != nil {
-				return err
-			}
-		case "message_auto_delete_timer_changed":
-			s.MessageAutoDeleteTimerChanged.Reset()
-			if err := s.MessageAutoDeleteTimerChanged.Decode(d); err != nil {
-				return err
-			}
-		case "message_id":
-			v, err := d.Int()
-			s.MessageID = int(v)
-			if err != nil {
-				return err
-			}
-		case "migrate_from_chat_id":
-			s.MigrateFromChatID.Reset()
-			if err := s.MigrateFromChatID.Decode(d); err != nil {
-				return err
-			}
-		case "migrate_to_chat_id":
-			s.MigrateToChatID.Reset()
-			if err := s.MigrateToChatID.Decode(d); err != nil {
 				return err
 			}
 		case "new_chat_members":
@@ -5151,6 +5278,16 @@ func (s *Message) Decode(d *jx.Decoder) error {
 			}); err != nil {
 				return err
 			}
+		case "left_chat_member":
+			s.LeftChatMember.Reset()
+			if err := s.LeftChatMember.Decode(d); err != nil {
+				return err
+			}
+		case "new_chat_title":
+			s.NewChatTitle.Reset()
+			if err := s.NewChatTitle.Decode(d); err != nil {
+				return err
+			}
 		case "new_chat_photo":
 			s.NewChatPhoto = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -5163,26 +5300,39 @@ func (s *Message) Decode(d *jx.Decoder) error {
 			}); err != nil {
 				return err
 			}
-		case "new_chat_title":
-			s.NewChatTitle.Reset()
-			if err := s.NewChatTitle.Decode(d); err != nil {
+		case "delete_chat_photo":
+			s.DeleteChatPhoto.Reset()
+			if err := s.DeleteChatPhoto.Decode(d); err != nil {
 				return err
 			}
-		case "passport_data":
-			s.PassportData.Reset()
-			if err := s.PassportData.Decode(d); err != nil {
+		case "group_chat_created":
+			s.GroupChatCreated.Reset()
+			if err := s.GroupChatCreated.Decode(d); err != nil {
 				return err
 			}
-		case "photo":
-			s.Photo = nil
-			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem PhotoSize
-				if err := elem.Decode(d); err != nil {
-					return err
-				}
-				s.Photo = append(s.Photo, elem)
-				return nil
-			}); err != nil {
+		case "supergroup_chat_created":
+			s.SupergroupChatCreated.Reset()
+			if err := s.SupergroupChatCreated.Decode(d); err != nil {
+				return err
+			}
+		case "channel_chat_created":
+			s.ChannelChatCreated.Reset()
+			if err := s.ChannelChatCreated.Decode(d); err != nil {
+				return err
+			}
+		case "message_auto_delete_timer_changed":
+			s.MessageAutoDeleteTimerChanged.Reset()
+			if err := s.MessageAutoDeleteTimerChanged.Decode(d); err != nil {
+				return err
+			}
+		case "migrate_to_chat_id":
+			s.MigrateToChatID.Reset()
+			if err := s.MigrateToChatID.Decode(d); err != nil {
+				return err
+			}
+		case "migrate_from_chat_id":
+			s.MigrateFromChatID.Reset()
+			if err := s.MigrateFromChatID.Decode(d); err != nil {
 				return err
 			}
 		case "pinned_message":
@@ -5192,36 +5342,9 @@ func (s *Message) Decode(d *jx.Decoder) error {
 				return err
 			}
 			s.PinnedMessage = &elem
-		case "poll":
-			s.Poll.Reset()
-			if err := s.Poll.Decode(d); err != nil {
-				return err
-			}
-		case "proximity_alert_triggered":
-			s.ProximityAlertTriggered.Reset()
-			if err := s.ProximityAlertTriggered.Decode(d); err != nil {
-				return err
-			}
-		case "reply_markup":
-			s.ReplyMarkup.Reset()
-			if err := s.ReplyMarkup.Decode(d); err != nil {
-				return err
-			}
-		case "reply_to_message":
-			s.ReplyToMessage = nil
-			var elem Message
-			if err := elem.Decode(d); err != nil {
-				return err
-			}
-			s.ReplyToMessage = &elem
-		case "sender_chat":
-			s.SenderChat.Reset()
-			if err := s.SenderChat.Decode(d); err != nil {
-				return err
-			}
-		case "sticker":
-			s.Sticker.Reset()
-			if err := s.Sticker.Decode(d); err != nil {
+		case "invoice":
+			s.Invoice.Reset()
+			if err := s.Invoice.Decode(d); err != nil {
 				return err
 			}
 		case "successful_payment":
@@ -5229,49 +5352,19 @@ func (s *Message) Decode(d *jx.Decoder) error {
 			if err := s.SuccessfulPayment.Decode(d); err != nil {
 				return err
 			}
-		case "supergroup_chat_created":
-			s.SupergroupChatCreated.Reset()
-			if err := s.SupergroupChatCreated.Decode(d); err != nil {
+		case "connected_website":
+			s.ConnectedWebsite.Reset()
+			if err := s.ConnectedWebsite.Decode(d); err != nil {
 				return err
 			}
-		case "text":
-			s.Text.Reset()
-			if err := s.Text.Decode(d); err != nil {
+		case "passport_data":
+			s.PassportData.Reset()
+			if err := s.PassportData.Decode(d); err != nil {
 				return err
 			}
-		case "venue":
-			s.Venue.Reset()
-			if err := s.Venue.Decode(d); err != nil {
-				return err
-			}
-		case "via_bot":
-			s.ViaBot.Reset()
-			if err := s.ViaBot.Decode(d); err != nil {
-				return err
-			}
-		case "video":
-			s.Video.Reset()
-			if err := s.Video.Decode(d); err != nil {
-				return err
-			}
-		case "video_note":
-			s.VideoNote.Reset()
-			if err := s.VideoNote.Decode(d); err != nil {
-				return err
-			}
-		case "voice":
-			s.Voice.Reset()
-			if err := s.Voice.Decode(d); err != nil {
-				return err
-			}
-		case "voice_chat_ended":
-			s.VoiceChatEnded.Reset()
-			if err := s.VoiceChatEnded.Decode(d); err != nil {
-				return err
-			}
-		case "voice_chat_participants_invited":
-			s.VoiceChatParticipantsInvited.Reset()
-			if err := s.VoiceChatParticipantsInvited.Decode(d); err != nil {
+		case "proximity_alert_triggered":
+			s.ProximityAlertTriggered.Reset()
+			if err := s.ProximityAlertTriggered.Decode(d); err != nil {
 				return err
 			}
 		case "voice_chat_scheduled":
@@ -5286,6 +5379,21 @@ func (s *Message) Decode(d *jx.Decoder) error {
 				return err
 			}
 			s.VoiceChatStarted = &elem
+		case "voice_chat_ended":
+			s.VoiceChatEnded.Reset()
+			if err := s.VoiceChatEnded.Decode(d); err != nil {
+				return err
+			}
+		case "voice_chat_participants_invited":
+			s.VoiceChatParticipantsInvited.Reset()
+			if err := s.VoiceChatParticipantsInvited.Decode(d); err != nil {
+				return err
+			}
+		case "reply_markup":
+			s.ReplyMarkup.Reset()
+			if err := s.ReplyMarkup.Decode(d); err != nil {
+				return err
+			}
 		default:
 			return d.Skip()
 		}
@@ -5325,19 +5433,15 @@ func (s *MessageAutoDeleteTimerChanged) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s MessageEntity) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	if s.Language.Set {
-		e.FieldStart("language")
-		s.Language.Encode(e)
-	}
 
-	e.FieldStart("length")
-	e.Int(s.Length)
+	e.FieldStart("type")
+	e.Str(s.Type)
 
 	e.FieldStart("offset")
 	e.Int(s.Offset)
 
-	e.FieldStart("type")
-	e.Str(s.Type)
+	e.FieldStart("length")
+	e.Int(s.Length)
 	if s.URL.Set {
 		e.FieldStart("url")
 		s.URL.Encode(e)
@@ -5345,6 +5449,10 @@ func (s MessageEntity) Encode(e *jx.Encoder) {
 	if s.User.Set {
 		e.FieldStart("user")
 		s.User.Encode(e)
+	}
+	if s.Language.Set {
+		e.FieldStart("language")
+		s.Language.Encode(e)
 	}
 	e.ObjEnd()
 }
@@ -5356,14 +5464,9 @@ func (s *MessageEntity) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "language":
-			s.Language.Reset()
-			if err := s.Language.Decode(d); err != nil {
-				return err
-			}
-		case "length":
-			v, err := d.Int()
-			s.Length = int(v)
+		case "type":
+			v, err := d.Str()
+			s.Type = string(v)
 			if err != nil {
 				return err
 			}
@@ -5373,9 +5476,9 @@ func (s *MessageEntity) Decode(d *jx.Decoder) error {
 			if err != nil {
 				return err
 			}
-		case "type":
-			v, err := d.Str()
-			s.Type = string(v)
+		case "length":
+			v, err := d.Int()
+			s.Length = int(v)
 			if err != nil {
 				return err
 			}
@@ -5387,6 +5490,11 @@ func (s *MessageEntity) Decode(d *jx.Decoder) error {
 		case "user":
 			s.User.Reset()
 			if err := s.User.Decode(d); err != nil {
+				return err
+			}
+		case "language":
+			s.Language.Reset()
+			if err := s.Language.Decode(d); err != nil {
 				return err
 			}
 		default:
@@ -6335,10 +6443,6 @@ func (o *OptVoiceChatScheduled) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s OrderInfo) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	if s.Email.Set {
-		e.FieldStart("email")
-		s.Email.Encode(e)
-	}
 	if s.Name.Set {
 		e.FieldStart("name")
 		s.Name.Encode(e)
@@ -6346,6 +6450,10 @@ func (s OrderInfo) Encode(e *jx.Encoder) {
 	if s.PhoneNumber.Set {
 		e.FieldStart("phone_number")
 		s.PhoneNumber.Encode(e)
+	}
+	if s.Email.Set {
+		e.FieldStart("email")
+		s.Email.Encode(e)
 	}
 	if s.ShippingAddress.Set {
 		e.FieldStart("shipping_address")
@@ -6361,11 +6469,6 @@ func (s *OrderInfo) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "email":
-			s.Email.Reset()
-			if err := s.Email.Decode(d); err != nil {
-				return err
-			}
 		case "name":
 			s.Name.Reset()
 			if err := s.Name.Decode(d); err != nil {
@@ -6374,6 +6477,11 @@ func (s *OrderInfo) Decode(d *jx.Decoder) error {
 		case "phone_number":
 			s.PhoneNumber.Reset()
 			if err := s.PhoneNumber.Decode(d); err != nil {
+				return err
+			}
+		case "email":
+			s.Email.Reset()
+			if err := s.Email.Decode(d); err != nil {
 				return err
 			}
 		case "shipping_address":
@@ -6392,15 +6500,15 @@ func (s *OrderInfo) Decode(d *jx.Decoder) error {
 func (s PassportData) Encode(e *jx.Encoder) {
 	e.ObjStart()
 
-	e.FieldStart("credentials")
-	s.Credentials.Encode(e)
-
 	e.FieldStart("data")
 	e.ArrStart()
 	for _, elem := range s.Data {
 		elem.Encode(e)
 	}
 	e.ArrEnd()
+
+	e.FieldStart("credentials")
+	s.Credentials.Encode(e)
 	e.ObjEnd()
 }
 
@@ -6411,10 +6519,6 @@ func (s *PassportData) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "credentials":
-			if err := s.Credentials.Decode(d); err != nil {
-				return err
-			}
 		case "data":
 			s.Data = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -6425,6 +6529,10 @@ func (s *PassportData) Decode(d *jx.Decoder) error {
 				s.Data = append(s.Data, elem)
 				return nil
 			}); err != nil {
+				return err
+			}
+		case "credentials":
+			if err := s.Credentials.Decode(d); err != nil {
 				return err
 			}
 		default:
@@ -6567,20 +6675,20 @@ func (s *PassportElementError) Decode(d *jx.Decoder) error {
 func (s PassportElementErrorDataField) Encode(e *jx.Encoder) {
 	e.ObjStart()
 
-	e.FieldStart("data_hash")
-	e.Str(s.DataHash)
-
-	e.FieldStart("field_name")
-	e.Str(s.FieldName)
-
-	e.FieldStart("message")
-	e.Str(s.Message)
-
 	e.FieldStart("source")
 	e.Str(s.Source)
 
 	e.FieldStart("type")
 	e.Str(s.Type)
+
+	e.FieldStart("field_name")
+	e.Str(s.FieldName)
+
+	e.FieldStart("data_hash")
+	e.Str(s.DataHash)
+
+	e.FieldStart("message")
+	e.Str(s.Message)
 	e.ObjEnd()
 }
 
@@ -6591,24 +6699,6 @@ func (s *PassportElementErrorDataField) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "data_hash":
-			v, err := d.Str()
-			s.DataHash = string(v)
-			if err != nil {
-				return err
-			}
-		case "field_name":
-			v, err := d.Str()
-			s.FieldName = string(v)
-			if err != nil {
-				return err
-			}
-		case "message":
-			v, err := d.Str()
-			s.Message = string(v)
-			if err != nil {
-				return err
-			}
 		case "source":
 			v, err := d.Str()
 			s.Source = string(v)
@@ -6618,6 +6708,24 @@ func (s *PassportElementErrorDataField) Decode(d *jx.Decoder) error {
 		case "type":
 			v, err := d.Str()
 			s.Type = string(v)
+			if err != nil {
+				return err
+			}
+		case "field_name":
+			v, err := d.Str()
+			s.FieldName = string(v)
+			if err != nil {
+				return err
+			}
+		case "data_hash":
+			v, err := d.Str()
+			s.DataHash = string(v)
+			if err != nil {
+				return err
+			}
+		case "message":
+			v, err := d.Str()
+			s.Message = string(v)
 			if err != nil {
 				return err
 			}
@@ -6632,17 +6740,17 @@ func (s *PassportElementErrorDataField) Decode(d *jx.Decoder) error {
 func (s PassportElementErrorFile) Encode(e *jx.Encoder) {
 	e.ObjStart()
 
-	e.FieldStart("file_hash")
-	e.Str(s.FileHash)
-
-	e.FieldStart("message")
-	e.Str(s.Message)
-
 	e.FieldStart("source")
 	e.Str(s.Source)
 
 	e.FieldStart("type")
 	e.Str(s.Type)
+
+	e.FieldStart("file_hash")
+	e.Str(s.FileHash)
+
+	e.FieldStart("message")
+	e.Str(s.Message)
 	e.ObjEnd()
 }
 
@@ -6653,18 +6761,6 @@ func (s *PassportElementErrorFile) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "file_hash":
-			v, err := d.Str()
-			s.FileHash = string(v)
-			if err != nil {
-				return err
-			}
-		case "message":
-			v, err := d.Str()
-			s.Message = string(v)
-			if err != nil {
-				return err
-			}
 		case "source":
 			v, err := d.Str()
 			s.Source = string(v)
@@ -6674,6 +6770,18 @@ func (s *PassportElementErrorFile) Decode(d *jx.Decoder) error {
 		case "type":
 			v, err := d.Str()
 			s.Type = string(v)
+			if err != nil {
+				return err
+			}
+		case "file_hash":
+			v, err := d.Str()
+			s.FileHash = string(v)
+			if err != nil {
+				return err
+			}
+		case "message":
+			v, err := d.Str()
+			s.Message = string(v)
 			if err != nil {
 				return err
 			}
@@ -6688,6 +6796,12 @@ func (s *PassportElementErrorFile) Decode(d *jx.Decoder) error {
 func (s PassportElementErrorFiles) Encode(e *jx.Encoder) {
 	e.ObjStart()
 
+	e.FieldStart("source")
+	e.Str(s.Source)
+
+	e.FieldStart("type")
+	e.Str(s.Type)
+
 	e.FieldStart("file_hashes")
 	e.ArrStart()
 	for _, elem := range s.FileHashes {
@@ -6697,12 +6811,6 @@ func (s PassportElementErrorFiles) Encode(e *jx.Encoder) {
 
 	e.FieldStart("message")
 	e.Str(s.Message)
-
-	e.FieldStart("source")
-	e.Str(s.Source)
-
-	e.FieldStart("type")
-	e.Str(s.Type)
 	e.ObjEnd()
 }
 
@@ -6713,6 +6821,18 @@ func (s *PassportElementErrorFiles) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
+		case "source":
+			v, err := d.Str()
+			s.Source = string(v)
+			if err != nil {
+				return err
+			}
+		case "type":
+			v, err := d.Str()
+			s.Type = string(v)
+			if err != nil {
+				return err
+			}
 		case "file_hashes":
 			s.FileHashes = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -6730,18 +6850,6 @@ func (s *PassportElementErrorFiles) Decode(d *jx.Decoder) error {
 		case "message":
 			v, err := d.Str()
 			s.Message = string(v)
-			if err != nil {
-				return err
-			}
-		case "source":
-			v, err := d.Str()
-			s.Source = string(v)
-			if err != nil {
-				return err
-			}
-		case "type":
-			v, err := d.Str()
-			s.Type = string(v)
 			if err != nil {
 				return err
 			}
@@ -6756,17 +6864,17 @@ func (s *PassportElementErrorFiles) Decode(d *jx.Decoder) error {
 func (s PassportElementErrorFrontSide) Encode(e *jx.Encoder) {
 	e.ObjStart()
 
-	e.FieldStart("file_hash")
-	e.Str(s.FileHash)
-
-	e.FieldStart("message")
-	e.Str(s.Message)
-
 	e.FieldStart("source")
 	e.Str(s.Source)
 
 	e.FieldStart("type")
 	e.Str(s.Type)
+
+	e.FieldStart("file_hash")
+	e.Str(s.FileHash)
+
+	e.FieldStart("message")
+	e.Str(s.Message)
 	e.ObjEnd()
 }
 
@@ -6777,18 +6885,6 @@ func (s *PassportElementErrorFrontSide) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "file_hash":
-			v, err := d.Str()
-			s.FileHash = string(v)
-			if err != nil {
-				return err
-			}
-		case "message":
-			v, err := d.Str()
-			s.Message = string(v)
-			if err != nil {
-				return err
-			}
 		case "source":
 			v, err := d.Str()
 			s.Source = string(v)
@@ -6798,6 +6894,18 @@ func (s *PassportElementErrorFrontSide) Decode(d *jx.Decoder) error {
 		case "type":
 			v, err := d.Str()
 			s.Type = string(v)
+			if err != nil {
+				return err
+			}
+		case "file_hash":
+			v, err := d.Str()
+			s.FileHash = string(v)
+			if err != nil {
+				return err
+			}
+		case "message":
+			v, err := d.Str()
+			s.Message = string(v)
 			if err != nil {
 				return err
 			}
@@ -6812,17 +6920,17 @@ func (s *PassportElementErrorFrontSide) Decode(d *jx.Decoder) error {
 func (s PassportElementErrorReverseSide) Encode(e *jx.Encoder) {
 	e.ObjStart()
 
-	e.FieldStart("file_hash")
-	e.Str(s.FileHash)
-
-	e.FieldStart("message")
-	e.Str(s.Message)
-
 	e.FieldStart("source")
 	e.Str(s.Source)
 
 	e.FieldStart("type")
 	e.Str(s.Type)
+
+	e.FieldStart("file_hash")
+	e.Str(s.FileHash)
+
+	e.FieldStart("message")
+	e.Str(s.Message)
 	e.ObjEnd()
 }
 
@@ -6833,18 +6941,6 @@ func (s *PassportElementErrorReverseSide) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "file_hash":
-			v, err := d.Str()
-			s.FileHash = string(v)
-			if err != nil {
-				return err
-			}
-		case "message":
-			v, err := d.Str()
-			s.Message = string(v)
-			if err != nil {
-				return err
-			}
 		case "source":
 			v, err := d.Str()
 			s.Source = string(v)
@@ -6854,6 +6950,18 @@ func (s *PassportElementErrorReverseSide) Decode(d *jx.Decoder) error {
 		case "type":
 			v, err := d.Str()
 			s.Type = string(v)
+			if err != nil {
+				return err
+			}
+		case "file_hash":
+			v, err := d.Str()
+			s.FileHash = string(v)
+			if err != nil {
+				return err
+			}
+		case "message":
+			v, err := d.Str()
+			s.Message = string(v)
 			if err != nil {
 				return err
 			}
@@ -6868,17 +6976,17 @@ func (s *PassportElementErrorReverseSide) Decode(d *jx.Decoder) error {
 func (s PassportElementErrorSelfie) Encode(e *jx.Encoder) {
 	e.ObjStart()
 
-	e.FieldStart("file_hash")
-	e.Str(s.FileHash)
-
-	e.FieldStart("message")
-	e.Str(s.Message)
-
 	e.FieldStart("source")
 	e.Str(s.Source)
 
 	e.FieldStart("type")
 	e.Str(s.Type)
+
+	e.FieldStart("file_hash")
+	e.Str(s.FileHash)
+
+	e.FieldStart("message")
+	e.Str(s.Message)
 	e.ObjEnd()
 }
 
@@ -6889,18 +6997,6 @@ func (s *PassportElementErrorSelfie) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "file_hash":
-			v, err := d.Str()
-			s.FileHash = string(v)
-			if err != nil {
-				return err
-			}
-		case "message":
-			v, err := d.Str()
-			s.Message = string(v)
-			if err != nil {
-				return err
-			}
 		case "source":
 			v, err := d.Str()
 			s.Source = string(v)
@@ -6910,6 +7006,18 @@ func (s *PassportElementErrorSelfie) Decode(d *jx.Decoder) error {
 		case "type":
 			v, err := d.Str()
 			s.Type = string(v)
+			if err != nil {
+				return err
+			}
+		case "file_hash":
+			v, err := d.Str()
+			s.FileHash = string(v)
+			if err != nil {
+				return err
+			}
+		case "message":
+			v, err := d.Str()
+			s.Message = string(v)
 			if err != nil {
 				return err
 			}
@@ -6924,17 +7032,17 @@ func (s *PassportElementErrorSelfie) Decode(d *jx.Decoder) error {
 func (s PassportElementErrorTranslationFile) Encode(e *jx.Encoder) {
 	e.ObjStart()
 
-	e.FieldStart("file_hash")
-	e.Str(s.FileHash)
-
-	e.FieldStart("message")
-	e.Str(s.Message)
-
 	e.FieldStart("source")
 	e.Str(s.Source)
 
 	e.FieldStart("type")
 	e.Str(s.Type)
+
+	e.FieldStart("file_hash")
+	e.Str(s.FileHash)
+
+	e.FieldStart("message")
+	e.Str(s.Message)
 	e.ObjEnd()
 }
 
@@ -6945,18 +7053,6 @@ func (s *PassportElementErrorTranslationFile) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "file_hash":
-			v, err := d.Str()
-			s.FileHash = string(v)
-			if err != nil {
-				return err
-			}
-		case "message":
-			v, err := d.Str()
-			s.Message = string(v)
-			if err != nil {
-				return err
-			}
 		case "source":
 			v, err := d.Str()
 			s.Source = string(v)
@@ -6966,6 +7062,18 @@ func (s *PassportElementErrorTranslationFile) Decode(d *jx.Decoder) error {
 		case "type":
 			v, err := d.Str()
 			s.Type = string(v)
+			if err != nil {
+				return err
+			}
+		case "file_hash":
+			v, err := d.Str()
+			s.FileHash = string(v)
+			if err != nil {
+				return err
+			}
+		case "message":
+			v, err := d.Str()
+			s.Message = string(v)
 			if err != nil {
 				return err
 			}
@@ -6980,6 +7088,12 @@ func (s *PassportElementErrorTranslationFile) Decode(d *jx.Decoder) error {
 func (s PassportElementErrorTranslationFiles) Encode(e *jx.Encoder) {
 	e.ObjStart()
 
+	e.FieldStart("source")
+	e.Str(s.Source)
+
+	e.FieldStart("type")
+	e.Str(s.Type)
+
 	e.FieldStart("file_hashes")
 	e.ArrStart()
 	for _, elem := range s.FileHashes {
@@ -6989,12 +7103,6 @@ func (s PassportElementErrorTranslationFiles) Encode(e *jx.Encoder) {
 
 	e.FieldStart("message")
 	e.Str(s.Message)
-
-	e.FieldStart("source")
-	e.Str(s.Source)
-
-	e.FieldStart("type")
-	e.Str(s.Type)
 	e.ObjEnd()
 }
 
@@ -7005,6 +7113,18 @@ func (s *PassportElementErrorTranslationFiles) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
+		case "source":
+			v, err := d.Str()
+			s.Source = string(v)
+			if err != nil {
+				return err
+			}
+		case "type":
+			v, err := d.Str()
+			s.Type = string(v)
+			if err != nil {
+				return err
+			}
 		case "file_hashes":
 			s.FileHashes = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -7025,18 +7145,6 @@ func (s *PassportElementErrorTranslationFiles) Decode(d *jx.Decoder) error {
 			if err != nil {
 				return err
 			}
-		case "source":
-			v, err := d.Str()
-			s.Source = string(v)
-			if err != nil {
-				return err
-			}
-		case "type":
-			v, err := d.Str()
-			s.Type = string(v)
-			if err != nil {
-				return err
-			}
 		default:
 			return d.Skip()
 		}
@@ -7048,17 +7156,17 @@ func (s *PassportElementErrorTranslationFiles) Decode(d *jx.Decoder) error {
 func (s PassportElementErrorUnspecified) Encode(e *jx.Encoder) {
 	e.ObjStart()
 
-	e.FieldStart("element_hash")
-	e.Str(s.ElementHash)
-
-	e.FieldStart("message")
-	e.Str(s.Message)
-
 	e.FieldStart("source")
 	e.Str(s.Source)
 
 	e.FieldStart("type")
 	e.Str(s.Type)
+
+	e.FieldStart("element_hash")
+	e.Str(s.ElementHash)
+
+	e.FieldStart("message")
+	e.Str(s.Message)
 	e.ObjEnd()
 }
 
@@ -7069,18 +7177,6 @@ func (s *PassportElementErrorUnspecified) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "element_hash":
-			v, err := d.Str()
-			s.ElementHash = string(v)
-			if err != nil {
-				return err
-			}
-		case "message":
-			v, err := d.Str()
-			s.Message = string(v)
-			if err != nil {
-				return err
-			}
 		case "source":
 			v, err := d.Str()
 			s.Source = string(v)
@@ -7090,6 +7186,18 @@ func (s *PassportElementErrorUnspecified) Decode(d *jx.Decoder) error {
 		case "type":
 			v, err := d.Str()
 			s.Type = string(v)
+			if err != nil {
+				return err
+			}
+		case "element_hash":
+			v, err := d.Str()
+			s.ElementHash = string(v)
+			if err != nil {
+				return err
+			}
+		case "message":
+			v, err := d.Str()
+			s.Message = string(v)
 			if err != nil {
 				return err
 			}
@@ -7104,17 +7212,17 @@ func (s *PassportElementErrorUnspecified) Decode(d *jx.Decoder) error {
 func (s PassportFile) Encode(e *jx.Encoder) {
 	e.ObjStart()
 
-	e.FieldStart("file_date")
-	e.Int(s.FileDate)
-
 	e.FieldStart("file_id")
 	e.Str(s.FileID)
+
+	e.FieldStart("file_unique_id")
+	e.Str(s.FileUniqueID)
 
 	e.FieldStart("file_size")
 	e.Int(s.FileSize)
 
-	e.FieldStart("file_unique_id")
-	e.Str(s.FileUniqueID)
+	e.FieldStart("file_date")
+	e.Int(s.FileDate)
 	e.ObjEnd()
 }
 
@@ -7125,15 +7233,15 @@ func (s *PassportFile) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "file_date":
-			v, err := d.Int()
-			s.FileDate = int(v)
-			if err != nil {
-				return err
-			}
 		case "file_id":
 			v, err := d.Str()
 			s.FileID = string(v)
+			if err != nil {
+				return err
+			}
+		case "file_unique_id":
+			v, err := d.Str()
+			s.FileUniqueID = string(v)
 			if err != nil {
 				return err
 			}
@@ -7143,9 +7251,9 @@ func (s *PassportFile) Decode(d *jx.Decoder) error {
 			if err != nil {
 				return err
 			}
-		case "file_unique_id":
-			v, err := d.Str()
-			s.FileUniqueID = string(v)
+		case "file_date":
+			v, err := d.Int()
+			s.FileDate = int(v)
 			if err != nil {
 				return err
 			}
@@ -7162,19 +7270,19 @@ func (s PhotoSize) Encode(e *jx.Encoder) {
 
 	e.FieldStart("file_id")
 	e.Str(s.FileID)
-	if s.FileSize.Set {
-		e.FieldStart("file_size")
-		s.FileSize.Encode(e)
-	}
 
 	e.FieldStart("file_unique_id")
 	e.Str(s.FileUniqueID)
 
-	e.FieldStart("height")
-	e.Int(s.Height)
-
 	e.FieldStart("width")
 	e.Int(s.Width)
+
+	e.FieldStart("height")
+	e.Int(s.Height)
+	if s.FileSize.Set {
+		e.FieldStart("file_size")
+		s.FileSize.Encode(e)
+	}
 	e.ObjEnd()
 }
 
@@ -7191,14 +7299,15 @@ func (s *PhotoSize) Decode(d *jx.Decoder) error {
 			if err != nil {
 				return err
 			}
-		case "file_size":
-			s.FileSize.Reset()
-			if err := s.FileSize.Decode(d); err != nil {
-				return err
-			}
 		case "file_unique_id":
 			v, err := d.Str()
 			s.FileUniqueID = string(v)
+			if err != nil {
+				return err
+			}
+		case "width":
+			v, err := d.Int()
+			s.Width = int(v)
 			if err != nil {
 				return err
 			}
@@ -7208,10 +7317,9 @@ func (s *PhotoSize) Decode(d *jx.Decoder) error {
 			if err != nil {
 				return err
 			}
-		case "width":
-			v, err := d.Int()
-			s.Width = int(v)
-			if err != nil {
+		case "file_size":
+			s.FileSize.Reset()
+			if err := s.FileSize.Decode(d); err != nil {
 				return err
 			}
 		default:
@@ -7227,13 +7335,13 @@ func (s PinChatMessage) Encode(e *jx.Encoder) {
 
 	e.FieldStart("chat_id")
 	s.ChatID.Encode(e)
+
+	e.FieldStart("message_id")
+	e.Int(s.MessageID)
 	if s.DisableNotification.Set {
 		e.FieldStart("disable_notification")
 		s.DisableNotification.Encode(e)
 	}
-
-	e.FieldStart("message_id")
-	e.Int(s.MessageID)
 	e.ObjEnd()
 }
 
@@ -7248,15 +7356,15 @@ func (s *PinChatMessage) Decode(d *jx.Decoder) error {
 			if err := s.ChatID.Decode(d); err != nil {
 				return err
 			}
-		case "disable_notification":
-			s.DisableNotification.Reset()
-			if err := s.DisableNotification.Decode(d); err != nil {
-				return err
-			}
 		case "message_id":
 			v, err := d.Int()
 			s.MessageID = int(v)
 			if err != nil {
+				return err
+			}
+		case "disable_notification":
+			s.DisableNotification.Reset()
+			if err := s.DisableNotification.Decode(d); err != nil {
 				return err
 			}
 		default:
@@ -7270,12 +7378,33 @@ func (s *PinChatMessage) Decode(d *jx.Decoder) error {
 func (s Poll) Encode(e *jx.Encoder) {
 	e.ObjStart()
 
+	e.FieldStart("id")
+	e.Str(s.ID)
+
+	e.FieldStart("question")
+	e.Str(s.Question)
+
+	e.FieldStart("options")
+	e.ArrStart()
+	for _, elem := range s.Options {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+
+	e.FieldStart("total_voter_count")
+	e.Int(s.TotalVoterCount)
+
+	e.FieldStart("is_closed")
+	e.Bool(s.IsClosed)
+
+	e.FieldStart("is_anonymous")
+	e.Bool(s.IsAnonymous)
+
+	e.FieldStart("type")
+	e.Str(s.Type)
+
 	e.FieldStart("allows_multiple_answers")
 	e.Bool(s.AllowsMultipleAnswers)
-	if s.CloseDate.Set {
-		e.FieldStart("close_date")
-		s.CloseDate.Encode(e)
-	}
 	if s.CorrectOptionID.Set {
 		e.FieldStart("correct_option_id")
 		s.CorrectOptionID.Encode(e)
@@ -7292,35 +7421,14 @@ func (s Poll) Encode(e *jx.Encoder) {
 		}
 		e.ArrEnd()
 	}
-
-	e.FieldStart("id")
-	e.Str(s.ID)
-
-	e.FieldStart("is_anonymous")
-	e.Bool(s.IsAnonymous)
-
-	e.FieldStart("is_closed")
-	e.Bool(s.IsClosed)
 	if s.OpenPeriod.Set {
 		e.FieldStart("open_period")
 		s.OpenPeriod.Encode(e)
 	}
-
-	e.FieldStart("options")
-	e.ArrStart()
-	for _, elem := range s.Options {
-		elem.Encode(e)
+	if s.CloseDate.Set {
+		e.FieldStart("close_date")
+		s.CloseDate.Encode(e)
 	}
-	e.ArrEnd()
-
-	e.FieldStart("question")
-	e.Str(s.Question)
-
-	e.FieldStart("total_voter_count")
-	e.Int(s.TotalVoterCount)
-
-	e.FieldStart("type")
-	e.Str(s.Type)
 	e.ObjEnd()
 }
 
@@ -7331,15 +7439,58 @@ func (s *Poll) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
+		case "id":
+			v, err := d.Str()
+			s.ID = string(v)
+			if err != nil {
+				return err
+			}
+		case "question":
+			v, err := d.Str()
+			s.Question = string(v)
+			if err != nil {
+				return err
+			}
+		case "options":
+			s.Options = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem PollOption
+				if err := elem.Decode(d); err != nil {
+					return err
+				}
+				s.Options = append(s.Options, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+		case "total_voter_count":
+			v, err := d.Int()
+			s.TotalVoterCount = int(v)
+			if err != nil {
+				return err
+			}
+		case "is_closed":
+			v, err := d.Bool()
+			s.IsClosed = bool(v)
+			if err != nil {
+				return err
+			}
+		case "is_anonymous":
+			v, err := d.Bool()
+			s.IsAnonymous = bool(v)
+			if err != nil {
+				return err
+			}
+		case "type":
+			v, err := d.Str()
+			s.Type = string(v)
+			if err != nil {
+				return err
+			}
 		case "allows_multiple_answers":
 			v, err := d.Bool()
 			s.AllowsMultipleAnswers = bool(v)
 			if err != nil {
-				return err
-			}
-		case "close_date":
-			s.CloseDate.Reset()
-			if err := s.CloseDate.Decode(d); err != nil {
 				return err
 			}
 		case "correct_option_id":
@@ -7364,57 +7515,14 @@ func (s *Poll) Decode(d *jx.Decoder) error {
 			}); err != nil {
 				return err
 			}
-		case "id":
-			v, err := d.Str()
-			s.ID = string(v)
-			if err != nil {
-				return err
-			}
-		case "is_anonymous":
-			v, err := d.Bool()
-			s.IsAnonymous = bool(v)
-			if err != nil {
-				return err
-			}
-		case "is_closed":
-			v, err := d.Bool()
-			s.IsClosed = bool(v)
-			if err != nil {
-				return err
-			}
 		case "open_period":
 			s.OpenPeriod.Reset()
 			if err := s.OpenPeriod.Decode(d); err != nil {
 				return err
 			}
-		case "options":
-			s.Options = nil
-			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem PollOption
-				if err := elem.Decode(d); err != nil {
-					return err
-				}
-				s.Options = append(s.Options, elem)
-				return nil
-			}); err != nil {
-				return err
-			}
-		case "question":
-			v, err := d.Str()
-			s.Question = string(v)
-			if err != nil {
-				return err
-			}
-		case "total_voter_count":
-			v, err := d.Int()
-			s.TotalVoterCount = int(v)
-			if err != nil {
-				return err
-			}
-		case "type":
-			v, err := d.Str()
-			s.Type = string(v)
-			if err != nil {
+		case "close_date":
+			s.CloseDate.Reset()
+			if err := s.CloseDate.Decode(d); err != nil {
 				return err
 			}
 		default:
@@ -7465,56 +7573,56 @@ func (s *PollOption) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PromoteChatMember) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	if s.CanChangeInfo.Set {
-		e.FieldStart("can_change_info")
-		s.CanChangeInfo.Encode(e)
-	}
-	if s.CanDeleteMessages.Set {
-		e.FieldStart("can_delete_messages")
-		s.CanDeleteMessages.Encode(e)
-	}
-	if s.CanEditMessages.Set {
-		e.FieldStart("can_edit_messages")
-		s.CanEditMessages.Encode(e)
-	}
-	if s.CanInviteUsers.Set {
-		e.FieldStart("can_invite_users")
-		s.CanInviteUsers.Encode(e)
+
+	e.FieldStart("chat_id")
+	s.ChatID.Encode(e)
+
+	e.FieldStart("user_id")
+	e.Int(s.UserID)
+	if s.IsAnonymous.Set {
+		e.FieldStart("is_anonymous")
+		s.IsAnonymous.Encode(e)
 	}
 	if s.CanManageChat.Set {
 		e.FieldStart("can_manage_chat")
 		s.CanManageChat.Encode(e)
 	}
-	if s.CanManageVoiceChats.Set {
-		e.FieldStart("can_manage_voice_chats")
-		s.CanManageVoiceChats.Encode(e)
-	}
-	if s.CanPinMessages.Set {
-		e.FieldStart("can_pin_messages")
-		s.CanPinMessages.Encode(e)
-	}
 	if s.CanPostMessages.Set {
 		e.FieldStart("can_post_messages")
 		s.CanPostMessages.Encode(e)
 	}
-	if s.CanPromoteMembers.Set {
-		e.FieldStart("can_promote_members")
-		s.CanPromoteMembers.Encode(e)
+	if s.CanEditMessages.Set {
+		e.FieldStart("can_edit_messages")
+		s.CanEditMessages.Encode(e)
+	}
+	if s.CanDeleteMessages.Set {
+		e.FieldStart("can_delete_messages")
+		s.CanDeleteMessages.Encode(e)
+	}
+	if s.CanManageVoiceChats.Set {
+		e.FieldStart("can_manage_voice_chats")
+		s.CanManageVoiceChats.Encode(e)
 	}
 	if s.CanRestrictMembers.Set {
 		e.FieldStart("can_restrict_members")
 		s.CanRestrictMembers.Encode(e)
 	}
-
-	e.FieldStart("chat_id")
-	s.ChatID.Encode(e)
-	if s.IsAnonymous.Set {
-		e.FieldStart("is_anonymous")
-		s.IsAnonymous.Encode(e)
+	if s.CanPromoteMembers.Set {
+		e.FieldStart("can_promote_members")
+		s.CanPromoteMembers.Encode(e)
 	}
-
-	e.FieldStart("user_id")
-	e.Int(s.UserID)
+	if s.CanChangeInfo.Set {
+		e.FieldStart("can_change_info")
+		s.CanChangeInfo.Encode(e)
+	}
+	if s.CanInviteUsers.Set {
+		e.FieldStart("can_invite_users")
+		s.CanInviteUsers.Encode(e)
+	}
+	if s.CanPinMessages.Set {
+		e.FieldStart("can_pin_messages")
+		s.CanPinMessages.Encode(e)
+	}
 	e.ObjEnd()
 }
 
@@ -7525,58 +7633,14 @@ func (s *PromoteChatMember) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "can_change_info":
-			s.CanChangeInfo.Reset()
-			if err := s.CanChangeInfo.Decode(d); err != nil {
-				return err
-			}
-		case "can_delete_messages":
-			s.CanDeleteMessages.Reset()
-			if err := s.CanDeleteMessages.Decode(d); err != nil {
-				return err
-			}
-		case "can_edit_messages":
-			s.CanEditMessages.Reset()
-			if err := s.CanEditMessages.Decode(d); err != nil {
-				return err
-			}
-		case "can_invite_users":
-			s.CanInviteUsers.Reset()
-			if err := s.CanInviteUsers.Decode(d); err != nil {
-				return err
-			}
-		case "can_manage_chat":
-			s.CanManageChat.Reset()
-			if err := s.CanManageChat.Decode(d); err != nil {
-				return err
-			}
-		case "can_manage_voice_chats":
-			s.CanManageVoiceChats.Reset()
-			if err := s.CanManageVoiceChats.Decode(d); err != nil {
-				return err
-			}
-		case "can_pin_messages":
-			s.CanPinMessages.Reset()
-			if err := s.CanPinMessages.Decode(d); err != nil {
-				return err
-			}
-		case "can_post_messages":
-			s.CanPostMessages.Reset()
-			if err := s.CanPostMessages.Decode(d); err != nil {
-				return err
-			}
-		case "can_promote_members":
-			s.CanPromoteMembers.Reset()
-			if err := s.CanPromoteMembers.Decode(d); err != nil {
-				return err
-			}
-		case "can_restrict_members":
-			s.CanRestrictMembers.Reset()
-			if err := s.CanRestrictMembers.Decode(d); err != nil {
-				return err
-			}
 		case "chat_id":
 			if err := s.ChatID.Decode(d); err != nil {
+				return err
+			}
+		case "user_id":
+			v, err := d.Int()
+			s.UserID = int(v)
+			if err != nil {
 				return err
 			}
 		case "is_anonymous":
@@ -7584,10 +7648,54 @@ func (s *PromoteChatMember) Decode(d *jx.Decoder) error {
 			if err := s.IsAnonymous.Decode(d); err != nil {
 				return err
 			}
-		case "user_id":
-			v, err := d.Int()
-			s.UserID = int(v)
-			if err != nil {
+		case "can_manage_chat":
+			s.CanManageChat.Reset()
+			if err := s.CanManageChat.Decode(d); err != nil {
+				return err
+			}
+		case "can_post_messages":
+			s.CanPostMessages.Reset()
+			if err := s.CanPostMessages.Decode(d); err != nil {
+				return err
+			}
+		case "can_edit_messages":
+			s.CanEditMessages.Reset()
+			if err := s.CanEditMessages.Decode(d); err != nil {
+				return err
+			}
+		case "can_delete_messages":
+			s.CanDeleteMessages.Reset()
+			if err := s.CanDeleteMessages.Decode(d); err != nil {
+				return err
+			}
+		case "can_manage_voice_chats":
+			s.CanManageVoiceChats.Reset()
+			if err := s.CanManageVoiceChats.Decode(d); err != nil {
+				return err
+			}
+		case "can_restrict_members":
+			s.CanRestrictMembers.Reset()
+			if err := s.CanRestrictMembers.Decode(d); err != nil {
+				return err
+			}
+		case "can_promote_members":
+			s.CanPromoteMembers.Reset()
+			if err := s.CanPromoteMembers.Decode(d); err != nil {
+				return err
+			}
+		case "can_change_info":
+			s.CanChangeInfo.Reset()
+			if err := s.CanChangeInfo.Decode(d); err != nil {
+				return err
+			}
+		case "can_invite_users":
+			s.CanInviteUsers.Reset()
+			if err := s.CanInviteUsers.Decode(d); err != nil {
+				return err
+			}
+		case "can_pin_messages":
+			s.CanPinMessages.Reset()
+			if err := s.CanPinMessages.Decode(d); err != nil {
 				return err
 			}
 		default:
@@ -7601,14 +7709,14 @@ func (s *PromoteChatMember) Decode(d *jx.Decoder) error {
 func (s ProximityAlertTriggered) Encode(e *jx.Encoder) {
 	e.ObjStart()
 
-	e.FieldStart("distance")
-	e.Int(s.Distance)
-
 	e.FieldStart("traveler")
 	s.Traveler.Encode(e)
 
 	e.FieldStart("watcher")
 	s.Watcher.Encode(e)
+
+	e.FieldStart("distance")
+	e.Int(s.Distance)
 	e.ObjEnd()
 }
 
@@ -7619,18 +7727,18 @@ func (s *ProximityAlertTriggered) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "distance":
-			v, err := d.Int()
-			s.Distance = int(v)
-			if err != nil {
-				return err
-			}
 		case "traveler":
 			if err := s.Traveler.Decode(d); err != nil {
 				return err
 			}
 		case "watcher":
 			if err := s.Watcher.Decode(d); err != nil {
+				return err
+			}
+		case "distance":
+			v, err := d.Int()
+			s.Distance = int(v)
+			if err != nil {
 				return err
 			}
 		default:
@@ -7643,10 +7751,6 @@ func (s *ProximityAlertTriggered) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReplyKeyboardMarkup) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	if s.InputFieldPlaceholder.Set {
-		e.FieldStart("input_field_placeholder")
-		s.InputFieldPlaceholder.Encode(e)
-	}
 
 	e.FieldStart("keyboard")
 	e.ArrStart()
@@ -7658,13 +7762,17 @@ func (s ReplyKeyboardMarkup) Encode(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 	e.ArrEnd()
+	if s.ResizeKeyboard.Set {
+		e.FieldStart("resize_keyboard")
+		s.ResizeKeyboard.Encode(e)
+	}
 	if s.OneTimeKeyboard.Set {
 		e.FieldStart("one_time_keyboard")
 		s.OneTimeKeyboard.Encode(e)
 	}
-	if s.ResizeKeyboard.Set {
-		e.FieldStart("resize_keyboard")
-		s.ResizeKeyboard.Encode(e)
+	if s.InputFieldPlaceholder.Set {
+		e.FieldStart("input_field_placeholder")
+		s.InputFieldPlaceholder.Encode(e)
 	}
 	if s.Selective.Set {
 		e.FieldStart("selective")
@@ -7680,11 +7788,6 @@ func (s *ReplyKeyboardMarkup) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "input_field_placeholder":
-			s.InputFieldPlaceholder.Reset()
-			if err := s.InputFieldPlaceholder.Decode(d); err != nil {
-				return err
-			}
 		case "keyboard":
 			s.Keyboard = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -7705,14 +7808,19 @@ func (s *ReplyKeyboardMarkup) Decode(d *jx.Decoder) error {
 			}); err != nil {
 				return err
 			}
+		case "resize_keyboard":
+			s.ResizeKeyboard.Reset()
+			if err := s.ResizeKeyboard.Decode(d); err != nil {
+				return err
+			}
 		case "one_time_keyboard":
 			s.OneTimeKeyboard.Reset()
 			if err := s.OneTimeKeyboard.Decode(d); err != nil {
 				return err
 			}
-		case "resize_keyboard":
-			s.ResizeKeyboard.Reset()
-			if err := s.ResizeKeyboard.Decode(d); err != nil {
+		case "input_field_placeholder":
+			s.InputFieldPlaceholder.Reset()
+			if err := s.InputFieldPlaceholder.Decode(d); err != nil {
 				return err
 			}
 		case "selective":
@@ -7810,15 +7918,15 @@ func (s RestrictChatMember) Encode(e *jx.Encoder) {
 	e.FieldStart("chat_id")
 	s.ChatID.Encode(e)
 
+	e.FieldStart("user_id")
+	e.Int(s.UserID)
+
 	e.FieldStart("permissions")
 	s.Permissions.Encode(e)
 	if s.UntilDate.Set {
 		e.FieldStart("until_date")
 		s.UntilDate.Encode(e)
 	}
-
-	e.FieldStart("user_id")
-	e.Int(s.UserID)
 	e.ObjEnd()
 }
 
@@ -7833,6 +7941,12 @@ func (s *RestrictChatMember) Decode(d *jx.Decoder) error {
 			if err := s.ChatID.Decode(d); err != nil {
 				return err
 			}
+		case "user_id":
+			v, err := d.Int()
+			s.UserID = int(v)
+			if err != nil {
+				return err
+			}
 		case "permissions":
 			if err := s.Permissions.Decode(d); err != nil {
 				return err
@@ -7840,12 +7954,6 @@ func (s *RestrictChatMember) Decode(d *jx.Decoder) error {
 		case "until_date":
 			s.UntilDate.Reset()
 			if err := s.UntilDate.Decode(d); err != nil {
-				return err
-			}
-		case "user_id":
-			v, err := d.Int()
-			s.UserID = int(v)
-			if err != nil {
 				return err
 			}
 		default:
@@ -7858,13 +7966,13 @@ func (s *RestrictChatMember) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Result) Encode(e *jx.Encoder) {
 	e.ObjStart()
-
-	e.FieldStart("ok")
-	e.Bool(s.Ok)
 	if s.Result.Set {
 		e.FieldStart("result")
 		s.Result.Encode(e)
 	}
+
+	e.FieldStart("ok")
+	e.Bool(s.Ok)
 	e.ObjEnd()
 }
 
@@ -7875,15 +7983,15 @@ func (s *Result) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
+		case "result":
+			s.Result.Reset()
+			if err := s.Result.Decode(d); err != nil {
+				return err
+			}
 		case "ok":
 			v, err := d.Bool()
 			s.Ok = bool(v)
 			if err != nil {
-				return err
-			}
-		case "result":
-			s.Result.Reset()
-			if err := s.Result.Decode(d); err != nil {
 				return err
 			}
 		default:
@@ -7896,13 +8004,13 @@ func (s *Result) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ResultMsg) Encode(e *jx.Encoder) {
 	e.ObjStart()
-
-	e.FieldStart("ok")
-	e.Bool(s.Ok)
 	if s.Result.Set {
 		e.FieldStart("result")
 		s.Result.Encode(e)
 	}
+
+	e.FieldStart("ok")
+	e.Bool(s.Ok)
 	e.ObjEnd()
 }
 
@@ -7913,15 +8021,15 @@ func (s *ResultMsg) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
+		case "result":
+			s.Result.Reset()
+			if err := s.Result.Decode(d); err != nil {
+				return err
+			}
 		case "ok":
 			v, err := d.Bool()
 			s.Ok = bool(v)
 			if err != nil {
-				return err
-			}
-		case "result":
-			s.Result.Reset()
-			if err := s.Result.Decode(d); err != nil {
 				return err
 			}
 		default:
@@ -7934,13 +8042,13 @@ func (s *ResultMsg) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ResultUsr) Encode(e *jx.Encoder) {
 	e.ObjStart()
-
-	e.FieldStart("ok")
-	e.Bool(s.Ok)
 	if s.Result.Set {
 		e.FieldStart("result")
 		s.Result.Encode(e)
 	}
+
+	e.FieldStart("ok")
+	e.Bool(s.Ok)
 	e.ObjEnd()
 }
 
@@ -7951,15 +8059,15 @@ func (s *ResultUsr) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
+		case "result":
+			s.Result.Reset()
+			if err := s.Result.Decode(d); err != nil {
+				return err
+			}
 		case "ok":
 			v, err := d.Bool()
 			s.Ok = bool(v)
 			if err != nil {
-				return err
-			}
-		case "result":
-			s.Result.Reset()
-			if err := s.Result.Decode(d); err != nil {
 				return err
 			}
 		default:
@@ -8008,16 +8116,35 @@ func (s *RevokeChatInviteLink) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SendAnimation) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	if s.AllowSendingWithoutReply.Set {
-		e.FieldStart("allow_sending_without_reply")
-		s.AllowSendingWithoutReply.Encode(e)
-	}
+
+	e.FieldStart("chat_id")
+	s.ChatID.Encode(e)
 
 	e.FieldStart("animation")
 	e.Str(s.Animation)
+	if s.Duration.Set {
+		e.FieldStart("duration")
+		s.Duration.Encode(e)
+	}
+	if s.Width.Set {
+		e.FieldStart("width")
+		s.Width.Encode(e)
+	}
+	if s.Height.Set {
+		e.FieldStart("height")
+		s.Height.Encode(e)
+	}
+	if s.Thumb.Set {
+		e.FieldStart("thumb")
+		s.Thumb.Encode(e)
+	}
 	if s.Caption.Set {
 		e.FieldStart("caption")
 		s.Caption.Encode(e)
+	}
+	if s.ParseMode.Set {
+		e.FieldStart("parse_mode")
+		s.ParseMode.Encode(e)
 	}
 	if s.CaptionEntities != nil {
 		e.FieldStart("caption_entities")
@@ -8027,40 +8154,21 @@ func (s SendAnimation) Encode(e *jx.Encoder) {
 		}
 		e.ArrEnd()
 	}
-
-	e.FieldStart("chat_id")
-	s.ChatID.Encode(e)
 	if s.DisableNotification.Set {
 		e.FieldStart("disable_notification")
 		s.DisableNotification.Encode(e)
-	}
-	if s.Duration.Set {
-		e.FieldStart("duration")
-		s.Duration.Encode(e)
-	}
-	if s.Height.Set {
-		e.FieldStart("height")
-		s.Height.Encode(e)
-	}
-	if s.ParseMode.Set {
-		e.FieldStart("parse_mode")
-		s.ParseMode.Encode(e)
-	}
-	if s.ReplyMarkup != nil {
-		e.FieldStart("reply_markup")
-		s.ReplyMarkup.Encode(e)
 	}
 	if s.ReplyToMessageID.Set {
 		e.FieldStart("reply_to_message_id")
 		s.ReplyToMessageID.Encode(e)
 	}
-	if s.Thumb.Set {
-		e.FieldStart("thumb")
-		s.Thumb.Encode(e)
+	if s.AllowSendingWithoutReply.Set {
+		e.FieldStart("allow_sending_without_reply")
+		s.AllowSendingWithoutReply.Encode(e)
 	}
-	if s.Width.Set {
-		e.FieldStart("width")
-		s.Width.Encode(e)
+	if s.ReplyMarkup != nil {
+		e.FieldStart("reply_markup")
+		s.ReplyMarkup.Encode(e)
 	}
 	e.ObjEnd()
 }
@@ -8072,9 +8180,8 @@ func (s *SendAnimation) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "allow_sending_without_reply":
-			s.AllowSendingWithoutReply.Reset()
-			if err := s.AllowSendingWithoutReply.Decode(d); err != nil {
+		case "chat_id":
+			if err := s.ChatID.Decode(d); err != nil {
 				return err
 			}
 		case "animation":
@@ -8083,9 +8190,34 @@ func (s *SendAnimation) Decode(d *jx.Decoder) error {
 			if err != nil {
 				return err
 			}
+		case "duration":
+			s.Duration.Reset()
+			if err := s.Duration.Decode(d); err != nil {
+				return err
+			}
+		case "width":
+			s.Width.Reset()
+			if err := s.Width.Decode(d); err != nil {
+				return err
+			}
+		case "height":
+			s.Height.Reset()
+			if err := s.Height.Decode(d); err != nil {
+				return err
+			}
+		case "thumb":
+			s.Thumb.Reset()
+			if err := s.Thumb.Decode(d); err != nil {
+				return err
+			}
 		case "caption":
 			s.Caption.Reset()
 			if err := s.Caption.Decode(d); err != nil {
+				return err
+			}
+		case "parse_mode":
+			s.ParseMode.Reset()
+			if err := s.ParseMode.Decode(d); err != nil {
 				return err
 			}
 		case "caption_entities":
@@ -8100,28 +8232,19 @@ func (s *SendAnimation) Decode(d *jx.Decoder) error {
 			}); err != nil {
 				return err
 			}
-		case "chat_id":
-			if err := s.ChatID.Decode(d); err != nil {
-				return err
-			}
 		case "disable_notification":
 			s.DisableNotification.Reset()
 			if err := s.DisableNotification.Decode(d); err != nil {
 				return err
 			}
-		case "duration":
-			s.Duration.Reset()
-			if err := s.Duration.Decode(d); err != nil {
+		case "reply_to_message_id":
+			s.ReplyToMessageID.Reset()
+			if err := s.ReplyToMessageID.Decode(d); err != nil {
 				return err
 			}
-		case "height":
-			s.Height.Reset()
-			if err := s.Height.Decode(d); err != nil {
-				return err
-			}
-		case "parse_mode":
-			s.ParseMode.Reset()
-			if err := s.ParseMode.Decode(d); err != nil {
+		case "allow_sending_without_reply":
+			s.AllowSendingWithoutReply.Reset()
+			if err := s.AllowSendingWithoutReply.Decode(d); err != nil {
 				return err
 			}
 		case "reply_markup":
@@ -8131,21 +8254,6 @@ func (s *SendAnimation) Decode(d *jx.Decoder) error {
 				return err
 			}
 			s.ReplyMarkup = &elem
-		case "reply_to_message_id":
-			s.ReplyToMessageID.Reset()
-			if err := s.ReplyToMessageID.Decode(d); err != nil {
-				return err
-			}
-		case "thumb":
-			s.Thumb.Reset()
-			if err := s.Thumb.Decode(d); err != nil {
-				return err
-			}
-		case "width":
-			s.Width.Reset()
-			if err := s.Width.Decode(d); err != nil {
-				return err
-			}
 		default:
 			return d.Skip()
 		}
@@ -8189,10 +8297,10 @@ func (s *SendAnimationReplyMarkup) Decode(d *jx.Decoder) error {
 			case "keyboard":
 				found = true
 				s.Type = ReplyKeyboardMarkupSendAnimationReplyMarkup
-			case "one_time_keyboard":
+			case "resize_keyboard":
 				found = true
 				s.Type = ReplyKeyboardMarkupSendAnimationReplyMarkup
-			case "resize_keyboard":
+			case "one_time_keyboard":
 				found = true
 				s.Type = ReplyKeyboardMarkupSendAnimationReplyMarkup
 			case "remove_keyboard":
@@ -8242,16 +8350,19 @@ func (s *SendAnimationReplyMarkup) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SendAudio) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	if s.AllowSendingWithoutReply.Set {
-		e.FieldStart("allow_sending_without_reply")
-		s.AllowSendingWithoutReply.Encode(e)
-	}
+
+	e.FieldStart("chat_id")
+	s.ChatID.Encode(e)
 
 	e.FieldStart("audio")
 	e.Str(s.Audio)
 	if s.Caption.Set {
 		e.FieldStart("caption")
 		s.Caption.Encode(e)
+	}
+	if s.ParseMode.Set {
+		e.FieldStart("parse_mode")
+		s.ParseMode.Encode(e)
 	}
 	if s.CaptionEntities != nil {
 		e.FieldStart("caption_entities")
@@ -8261,40 +8372,37 @@ func (s SendAudio) Encode(e *jx.Encoder) {
 		}
 		e.ArrEnd()
 	}
-
-	e.FieldStart("chat_id")
-	s.ChatID.Encode(e)
-	if s.DisableNotification.Set {
-		e.FieldStart("disable_notification")
-		s.DisableNotification.Encode(e)
-	}
 	if s.Duration.Set {
 		e.FieldStart("duration")
 		s.Duration.Encode(e)
-	}
-	if s.ParseMode.Set {
-		e.FieldStart("parse_mode")
-		s.ParseMode.Encode(e)
 	}
 	if s.Performer.Set {
 		e.FieldStart("performer")
 		s.Performer.Encode(e)
 	}
-	if s.ReplyMarkup != nil {
-		e.FieldStart("reply_markup")
-		s.ReplyMarkup.Encode(e)
-	}
-	if s.ReplyToMessageID.Set {
-		e.FieldStart("reply_to_message_id")
-		s.ReplyToMessageID.Encode(e)
+	if s.Title.Set {
+		e.FieldStart("title")
+		s.Title.Encode(e)
 	}
 	if s.Thumb.Set {
 		e.FieldStart("thumb")
 		s.Thumb.Encode(e)
 	}
-	if s.Title.Set {
-		e.FieldStart("title")
-		s.Title.Encode(e)
+	if s.DisableNotification.Set {
+		e.FieldStart("disable_notification")
+		s.DisableNotification.Encode(e)
+	}
+	if s.ReplyToMessageID.Set {
+		e.FieldStart("reply_to_message_id")
+		s.ReplyToMessageID.Encode(e)
+	}
+	if s.AllowSendingWithoutReply.Set {
+		e.FieldStart("allow_sending_without_reply")
+		s.AllowSendingWithoutReply.Encode(e)
+	}
+	if s.ReplyMarkup != nil {
+		e.FieldStart("reply_markup")
+		s.ReplyMarkup.Encode(e)
 	}
 	e.ObjEnd()
 }
@@ -8306,9 +8414,8 @@ func (s *SendAudio) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "allow_sending_without_reply":
-			s.AllowSendingWithoutReply.Reset()
-			if err := s.AllowSendingWithoutReply.Decode(d); err != nil {
+		case "chat_id":
+			if err := s.ChatID.Decode(d); err != nil {
 				return err
 			}
 		case "audio":
@@ -8320,6 +8427,11 @@ func (s *SendAudio) Decode(d *jx.Decoder) error {
 		case "caption":
 			s.Caption.Reset()
 			if err := s.Caption.Decode(d); err != nil {
+				return err
+			}
+		case "parse_mode":
+			s.ParseMode.Reset()
+			if err := s.ParseMode.Decode(d); err != nil {
 				return err
 			}
 		case "caption_entities":
@@ -8334,8 +8446,24 @@ func (s *SendAudio) Decode(d *jx.Decoder) error {
 			}); err != nil {
 				return err
 			}
-		case "chat_id":
-			if err := s.ChatID.Decode(d); err != nil {
+		case "duration":
+			s.Duration.Reset()
+			if err := s.Duration.Decode(d); err != nil {
+				return err
+			}
+		case "performer":
+			s.Performer.Reset()
+			if err := s.Performer.Decode(d); err != nil {
+				return err
+			}
+		case "title":
+			s.Title.Reset()
+			if err := s.Title.Decode(d); err != nil {
+				return err
+			}
+		case "thumb":
+			s.Thumb.Reset()
+			if err := s.Thumb.Decode(d); err != nil {
 				return err
 			}
 		case "disable_notification":
@@ -8343,19 +8471,14 @@ func (s *SendAudio) Decode(d *jx.Decoder) error {
 			if err := s.DisableNotification.Decode(d); err != nil {
 				return err
 			}
-		case "duration":
-			s.Duration.Reset()
-			if err := s.Duration.Decode(d); err != nil {
+		case "reply_to_message_id":
+			s.ReplyToMessageID.Reset()
+			if err := s.ReplyToMessageID.Decode(d); err != nil {
 				return err
 			}
-		case "parse_mode":
-			s.ParseMode.Reset()
-			if err := s.ParseMode.Decode(d); err != nil {
-				return err
-			}
-		case "performer":
-			s.Performer.Reset()
-			if err := s.Performer.Decode(d); err != nil {
+		case "allow_sending_without_reply":
+			s.AllowSendingWithoutReply.Reset()
+			if err := s.AllowSendingWithoutReply.Decode(d); err != nil {
 				return err
 			}
 		case "reply_markup":
@@ -8365,21 +8488,6 @@ func (s *SendAudio) Decode(d *jx.Decoder) error {
 				return err
 			}
 			s.ReplyMarkup = &elem
-		case "reply_to_message_id":
-			s.ReplyToMessageID.Reset()
-			if err := s.ReplyToMessageID.Decode(d); err != nil {
-				return err
-			}
-		case "thumb":
-			s.Thumb.Reset()
-			if err := s.Thumb.Decode(d); err != nil {
-				return err
-			}
-		case "title":
-			s.Title.Reset()
-			if err := s.Title.Decode(d); err != nil {
-				return err
-			}
 		default:
 			return d.Skip()
 		}
@@ -8423,10 +8531,10 @@ func (s *SendAudioReplyMarkup) Decode(d *jx.Decoder) error {
 			case "keyboard":
 				found = true
 				s.Type = ReplyKeyboardMarkupSendAudioReplyMarkup
-			case "one_time_keyboard":
+			case "resize_keyboard":
 				found = true
 				s.Type = ReplyKeyboardMarkupSendAudioReplyMarkup
-			case "resize_keyboard":
+			case "one_time_keyboard":
 				found = true
 				s.Type = ReplyKeyboardMarkupSendAudioReplyMarkup
 			case "remove_keyboard":
@@ -8477,11 +8585,11 @@ func (s *SendAudioReplyMarkup) Decode(d *jx.Decoder) error {
 func (s SendChatAction) Encode(e *jx.Encoder) {
 	e.ObjStart()
 
-	e.FieldStart("action")
-	e.Str(s.Action)
-
 	e.FieldStart("chat_id")
 	s.ChatID.Encode(e)
+
+	e.FieldStart("action")
+	e.Str(s.Action)
 	e.ObjEnd()
 }
 
@@ -8492,14 +8600,14 @@ func (s *SendChatAction) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
+		case "chat_id":
+			if err := s.ChatID.Decode(d); err != nil {
+				return err
+			}
 		case "action":
 			v, err := d.Str()
 			s.Action = string(v)
 			if err != nil {
-				return err
-			}
-		case "chat_id":
-			if err := s.ChatID.Decode(d); err != nil {
 				return err
 			}
 		default:
@@ -8512,17 +8620,12 @@ func (s *SendChatAction) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SendContact) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	if s.AllowSendingWithoutReply.Set {
-		e.FieldStart("allow_sending_without_reply")
-		s.AllowSendingWithoutReply.Encode(e)
-	}
 
 	e.FieldStart("chat_id")
 	s.ChatID.Encode(e)
-	if s.DisableNotification.Set {
-		e.FieldStart("disable_notification")
-		s.DisableNotification.Encode(e)
-	}
+
+	e.FieldStart("phone_number")
+	e.Str(s.PhoneNumber)
 
 	e.FieldStart("first_name")
 	e.Str(s.FirstName)
@@ -8530,20 +8633,25 @@ func (s SendContact) Encode(e *jx.Encoder) {
 		e.FieldStart("last_name")
 		s.LastName.Encode(e)
 	}
-
-	e.FieldStart("phone_number")
-	e.Str(s.PhoneNumber)
-	if s.ReplyMarkup != nil {
-		e.FieldStart("reply_markup")
-		s.ReplyMarkup.Encode(e)
+	if s.Vcard.Set {
+		e.FieldStart("vcard")
+		s.Vcard.Encode(e)
+	}
+	if s.DisableNotification.Set {
+		e.FieldStart("disable_notification")
+		s.DisableNotification.Encode(e)
 	}
 	if s.ReplyToMessageID.Set {
 		e.FieldStart("reply_to_message_id")
 		s.ReplyToMessageID.Encode(e)
 	}
-	if s.Vcard.Set {
-		e.FieldStart("vcard")
-		s.Vcard.Encode(e)
+	if s.AllowSendingWithoutReply.Set {
+		e.FieldStart("allow_sending_without_reply")
+		s.AllowSendingWithoutReply.Encode(e)
+	}
+	if s.ReplyMarkup != nil {
+		e.FieldStart("reply_markup")
+		s.ReplyMarkup.Encode(e)
 	}
 	e.ObjEnd()
 }
@@ -8555,18 +8663,14 @@ func (s *SendContact) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "allow_sending_without_reply":
-			s.AllowSendingWithoutReply.Reset()
-			if err := s.AllowSendingWithoutReply.Decode(d); err != nil {
-				return err
-			}
 		case "chat_id":
 			if err := s.ChatID.Decode(d); err != nil {
 				return err
 			}
-		case "disable_notification":
-			s.DisableNotification.Reset()
-			if err := s.DisableNotification.Decode(d); err != nil {
+		case "phone_number":
+			v, err := d.Str()
+			s.PhoneNumber = string(v)
+			if err != nil {
 				return err
 			}
 		case "first_name":
@@ -8580,10 +8684,24 @@ func (s *SendContact) Decode(d *jx.Decoder) error {
 			if err := s.LastName.Decode(d); err != nil {
 				return err
 			}
-		case "phone_number":
-			v, err := d.Str()
-			s.PhoneNumber = string(v)
-			if err != nil {
+		case "vcard":
+			s.Vcard.Reset()
+			if err := s.Vcard.Decode(d); err != nil {
+				return err
+			}
+		case "disable_notification":
+			s.DisableNotification.Reset()
+			if err := s.DisableNotification.Decode(d); err != nil {
+				return err
+			}
+		case "reply_to_message_id":
+			s.ReplyToMessageID.Reset()
+			if err := s.ReplyToMessageID.Decode(d); err != nil {
+				return err
+			}
+		case "allow_sending_without_reply":
+			s.AllowSendingWithoutReply.Reset()
+			if err := s.AllowSendingWithoutReply.Decode(d); err != nil {
 				return err
 			}
 		case "reply_markup":
@@ -8593,16 +8711,6 @@ func (s *SendContact) Decode(d *jx.Decoder) error {
 				return err
 			}
 			s.ReplyMarkup = &elem
-		case "reply_to_message_id":
-			s.ReplyToMessageID.Reset()
-			if err := s.ReplyToMessageID.Decode(d); err != nil {
-				return err
-			}
-		case "vcard":
-			s.Vcard.Reset()
-			if err := s.Vcard.Decode(d); err != nil {
-				return err
-			}
 		default:
 			return d.Skip()
 		}
@@ -8646,10 +8754,10 @@ func (s *SendContactReplyMarkup) Decode(d *jx.Decoder) error {
 			case "keyboard":
 				found = true
 				s.Type = ReplyKeyboardMarkupSendContactReplyMarkup
-			case "one_time_keyboard":
+			case "resize_keyboard":
 				found = true
 				s.Type = ReplyKeyboardMarkupSendContactReplyMarkup
-			case "resize_keyboard":
+			case "one_time_keyboard":
 				found = true
 				s.Type = ReplyKeyboardMarkupSendContactReplyMarkup
 			case "remove_keyboard":
@@ -8699,28 +8807,28 @@ func (s *SendContactReplyMarkup) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SendDice) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	if s.AllowSendingWithoutReply.Set {
-		e.FieldStart("allow_sending_without_reply")
-		s.AllowSendingWithoutReply.Encode(e)
-	}
 
 	e.FieldStart("chat_id")
 	s.ChatID.Encode(e)
-	if s.DisableNotification.Set {
-		e.FieldStart("disable_notification")
-		s.DisableNotification.Encode(e)
-	}
 	if s.Emoji.Set {
 		e.FieldStart("emoji")
 		s.Emoji.Encode(e)
 	}
-	if s.ReplyMarkup != nil {
-		e.FieldStart("reply_markup")
-		s.ReplyMarkup.Encode(e)
+	if s.DisableNotification.Set {
+		e.FieldStart("disable_notification")
+		s.DisableNotification.Encode(e)
 	}
 	if s.ReplyToMessageID.Set {
 		e.FieldStart("reply_to_message_id")
 		s.ReplyToMessageID.Encode(e)
+	}
+	if s.AllowSendingWithoutReply.Set {
+		e.FieldStart("allow_sending_without_reply")
+		s.AllowSendingWithoutReply.Encode(e)
+	}
+	if s.ReplyMarkup != nil {
+		e.FieldStart("reply_markup")
+		s.ReplyMarkup.Encode(e)
 	}
 	e.ObjEnd()
 }
@@ -8732,13 +8840,13 @@ func (s *SendDice) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "allow_sending_without_reply":
-			s.AllowSendingWithoutReply.Reset()
-			if err := s.AllowSendingWithoutReply.Decode(d); err != nil {
-				return err
-			}
 		case "chat_id":
 			if err := s.ChatID.Decode(d); err != nil {
+				return err
+			}
+		case "emoji":
+			s.Emoji.Reset()
+			if err := s.Emoji.Decode(d); err != nil {
 				return err
 			}
 		case "disable_notification":
@@ -8746,9 +8854,14 @@ func (s *SendDice) Decode(d *jx.Decoder) error {
 			if err := s.DisableNotification.Decode(d); err != nil {
 				return err
 			}
-		case "emoji":
-			s.Emoji.Reset()
-			if err := s.Emoji.Decode(d); err != nil {
+		case "reply_to_message_id":
+			s.ReplyToMessageID.Reset()
+			if err := s.ReplyToMessageID.Decode(d); err != nil {
+				return err
+			}
+		case "allow_sending_without_reply":
+			s.AllowSendingWithoutReply.Reset()
+			if err := s.AllowSendingWithoutReply.Decode(d); err != nil {
 				return err
 			}
 		case "reply_markup":
@@ -8758,11 +8871,6 @@ func (s *SendDice) Decode(d *jx.Decoder) error {
 				return err
 			}
 			s.ReplyMarkup = &elem
-		case "reply_to_message_id":
-			s.ReplyToMessageID.Reset()
-			if err := s.ReplyToMessageID.Decode(d); err != nil {
-				return err
-			}
 		default:
 			return d.Skip()
 		}
@@ -8806,10 +8914,10 @@ func (s *SendDiceReplyMarkup) Decode(d *jx.Decoder) error {
 			case "keyboard":
 				found = true
 				s.Type = ReplyKeyboardMarkupSendDiceReplyMarkup
-			case "one_time_keyboard":
+			case "resize_keyboard":
 				found = true
 				s.Type = ReplyKeyboardMarkupSendDiceReplyMarkup
-			case "resize_keyboard":
+			case "one_time_keyboard":
 				found = true
 				s.Type = ReplyKeyboardMarkupSendDiceReplyMarkup
 			case "remove_keyboard":
@@ -8859,13 +8967,23 @@ func (s *SendDiceReplyMarkup) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SendDocument) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	if s.AllowSendingWithoutReply.Set {
-		e.FieldStart("allow_sending_without_reply")
-		s.AllowSendingWithoutReply.Encode(e)
+
+	e.FieldStart("chat_id")
+	s.ChatID.Encode(e)
+
+	e.FieldStart("document")
+	e.Str(s.Document)
+	if s.Thumb.Set {
+		e.FieldStart("thumb")
+		s.Thumb.Encode(e)
 	}
 	if s.Caption.Set {
 		e.FieldStart("caption")
 		s.Caption.Encode(e)
+	}
+	if s.ParseMode.Set {
+		e.FieldStart("parse_mode")
+		s.ParseMode.Encode(e)
 	}
 	if s.CaptionEntities != nil {
 		e.FieldStart("caption_entities")
@@ -8875,9 +8993,6 @@ func (s SendDocument) Encode(e *jx.Encoder) {
 		}
 		e.ArrEnd()
 	}
-
-	e.FieldStart("chat_id")
-	s.ChatID.Encode(e)
 	if s.DisableContentTypeDetection.Set {
 		e.FieldStart("disable_content_type_detection")
 		s.DisableContentTypeDetection.Encode(e)
@@ -8886,24 +9001,17 @@ func (s SendDocument) Encode(e *jx.Encoder) {
 		e.FieldStart("disable_notification")
 		s.DisableNotification.Encode(e)
 	}
-
-	e.FieldStart("document")
-	e.Str(s.Document)
-	if s.ParseMode.Set {
-		e.FieldStart("parse_mode")
-		s.ParseMode.Encode(e)
-	}
-	if s.ReplyMarkup != nil {
-		e.FieldStart("reply_markup")
-		s.ReplyMarkup.Encode(e)
-	}
 	if s.ReplyToMessageID.Set {
 		e.FieldStart("reply_to_message_id")
 		s.ReplyToMessageID.Encode(e)
 	}
-	if s.Thumb.Set {
-		e.FieldStart("thumb")
-		s.Thumb.Encode(e)
+	if s.AllowSendingWithoutReply.Set {
+		e.FieldStart("allow_sending_without_reply")
+		s.AllowSendingWithoutReply.Encode(e)
+	}
+	if s.ReplyMarkup != nil {
+		e.FieldStart("reply_markup")
+		s.ReplyMarkup.Encode(e)
 	}
 	e.ObjEnd()
 }
@@ -8915,14 +9023,29 @@ func (s *SendDocument) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "allow_sending_without_reply":
-			s.AllowSendingWithoutReply.Reset()
-			if err := s.AllowSendingWithoutReply.Decode(d); err != nil {
+		case "chat_id":
+			if err := s.ChatID.Decode(d); err != nil {
+				return err
+			}
+		case "document":
+			v, err := d.Str()
+			s.Document = string(v)
+			if err != nil {
+				return err
+			}
+		case "thumb":
+			s.Thumb.Reset()
+			if err := s.Thumb.Decode(d); err != nil {
 				return err
 			}
 		case "caption":
 			s.Caption.Reset()
 			if err := s.Caption.Decode(d); err != nil {
+				return err
+			}
+		case "parse_mode":
+			s.ParseMode.Reset()
+			if err := s.ParseMode.Decode(d); err != nil {
 				return err
 			}
 		case "caption_entities":
@@ -8937,10 +9060,6 @@ func (s *SendDocument) Decode(d *jx.Decoder) error {
 			}); err != nil {
 				return err
 			}
-		case "chat_id":
-			if err := s.ChatID.Decode(d); err != nil {
-				return err
-			}
 		case "disable_content_type_detection":
 			s.DisableContentTypeDetection.Reset()
 			if err := s.DisableContentTypeDetection.Decode(d); err != nil {
@@ -8951,15 +9070,14 @@ func (s *SendDocument) Decode(d *jx.Decoder) error {
 			if err := s.DisableNotification.Decode(d); err != nil {
 				return err
 			}
-		case "document":
-			v, err := d.Str()
-			s.Document = string(v)
-			if err != nil {
+		case "reply_to_message_id":
+			s.ReplyToMessageID.Reset()
+			if err := s.ReplyToMessageID.Decode(d); err != nil {
 				return err
 			}
-		case "parse_mode":
-			s.ParseMode.Reset()
-			if err := s.ParseMode.Decode(d); err != nil {
+		case "allow_sending_without_reply":
+			s.AllowSendingWithoutReply.Reset()
+			if err := s.AllowSendingWithoutReply.Decode(d); err != nil {
 				return err
 			}
 		case "reply_markup":
@@ -8969,16 +9087,6 @@ func (s *SendDocument) Decode(d *jx.Decoder) error {
 				return err
 			}
 			s.ReplyMarkup = &elem
-		case "reply_to_message_id":
-			s.ReplyToMessageID.Reset()
-			if err := s.ReplyToMessageID.Decode(d); err != nil {
-				return err
-			}
-		case "thumb":
-			s.Thumb.Reset()
-			if err := s.Thumb.Decode(d); err != nil {
-				return err
-			}
 		default:
 			return d.Skip()
 		}
@@ -9022,10 +9130,10 @@ func (s *SendDocumentReplyMarkup) Decode(d *jx.Decoder) error {
 			case "keyboard":
 				found = true
 				s.Type = ReplyKeyboardMarkupSendDocumentReplyMarkup
-			case "one_time_keyboard":
+			case "resize_keyboard":
 				found = true
 				s.Type = ReplyKeyboardMarkupSendDocumentReplyMarkup
-			case "resize_keyboard":
+			case "one_time_keyboard":
 				found = true
 				s.Type = ReplyKeyboardMarkupSendDocumentReplyMarkup
 			case "remove_keyboard":
@@ -9075,27 +9183,27 @@ func (s *SendDocumentReplyMarkup) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SendGame) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	if s.AllowSendingWithoutReply.Set {
-		e.FieldStart("allow_sending_without_reply")
-		s.AllowSendingWithoutReply.Encode(e)
-	}
 
 	e.FieldStart("chat_id")
 	e.Int(s.ChatID)
+
+	e.FieldStart("game_short_name")
+	e.Str(s.GameShortName)
 	if s.DisableNotification.Set {
 		e.FieldStart("disable_notification")
 		s.DisableNotification.Encode(e)
 	}
-
-	e.FieldStart("game_short_name")
-	e.Str(s.GameShortName)
-	if s.ReplyMarkup.Set {
-		e.FieldStart("reply_markup")
-		s.ReplyMarkup.Encode(e)
-	}
 	if s.ReplyToMessageID.Set {
 		e.FieldStart("reply_to_message_id")
 		s.ReplyToMessageID.Encode(e)
+	}
+	if s.AllowSendingWithoutReply.Set {
+		e.FieldStart("allow_sending_without_reply")
+		s.AllowSendingWithoutReply.Encode(e)
+	}
+	if s.ReplyMarkup.Set {
+		e.FieldStart("reply_markup")
+		s.ReplyMarkup.Encode(e)
 	}
 	e.ObjEnd()
 }
@@ -9107,20 +9215,10 @@ func (s *SendGame) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "allow_sending_without_reply":
-			s.AllowSendingWithoutReply.Reset()
-			if err := s.AllowSendingWithoutReply.Decode(d); err != nil {
-				return err
-			}
 		case "chat_id":
 			v, err := d.Int()
 			s.ChatID = int(v)
 			if err != nil {
-				return err
-			}
-		case "disable_notification":
-			s.DisableNotification.Reset()
-			if err := s.DisableNotification.Decode(d); err != nil {
 				return err
 			}
 		case "game_short_name":
@@ -9129,14 +9227,24 @@ func (s *SendGame) Decode(d *jx.Decoder) error {
 			if err != nil {
 				return err
 			}
-		case "reply_markup":
-			s.ReplyMarkup.Reset()
-			if err := s.ReplyMarkup.Decode(d); err != nil {
+		case "disable_notification":
+			s.DisableNotification.Reset()
+			if err := s.DisableNotification.Decode(d); err != nil {
 				return err
 			}
 		case "reply_to_message_id":
 			s.ReplyToMessageID.Reset()
 			if err := s.ReplyToMessageID.Decode(d); err != nil {
+				return err
+			}
+		case "allow_sending_without_reply":
+			s.AllowSendingWithoutReply.Reset()
+			if err := s.AllowSendingWithoutReply.Decode(d); err != nil {
+				return err
+			}
+		case "reply_markup":
+			s.ReplyMarkup.Reset()
+			if err := s.ReplyMarkup.Decode(d); err != nil {
 				return err
 			}
 		default:
@@ -9149,66 +9257,24 @@ func (s *SendGame) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SendInvoice) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	if s.AllowSendingWithoutReply.Set {
-		e.FieldStart("allow_sending_without_reply")
-		s.AllowSendingWithoutReply.Encode(e)
-	}
 
 	e.FieldStart("chat_id")
 	s.ChatID.Encode(e)
 
-	e.FieldStart("currency")
-	e.Str(s.Currency)
+	e.FieldStart("title")
+	e.Str(s.Title)
 
 	e.FieldStart("description")
 	e.Str(s.Description)
-	if s.DisableNotification.Set {
-		e.FieldStart("disable_notification")
-		s.DisableNotification.Encode(e)
-	}
-	if s.IsFlexible.Set {
-		e.FieldStart("is_flexible")
-		s.IsFlexible.Encode(e)
-	}
-	if s.MaxTipAmount.Set {
-		e.FieldStart("max_tip_amount")
-		s.MaxTipAmount.Encode(e)
-	}
-	if s.NeedEmail.Set {
-		e.FieldStart("need_email")
-		s.NeedEmail.Encode(e)
-	}
-	if s.NeedName.Set {
-		e.FieldStart("need_name")
-		s.NeedName.Encode(e)
-	}
-	if s.NeedPhoneNumber.Set {
-		e.FieldStart("need_phone_number")
-		s.NeedPhoneNumber.Encode(e)
-	}
-	if s.NeedShippingAddress.Set {
-		e.FieldStart("need_shipping_address")
-		s.NeedShippingAddress.Encode(e)
-	}
 
 	e.FieldStart("payload")
 	e.Str(s.Payload)
-	if s.PhotoHeight.Set {
-		e.FieldStart("photo_height")
-		s.PhotoHeight.Encode(e)
-	}
-	if s.PhotoSize.Set {
-		e.FieldStart("photo_size")
-		s.PhotoSize.Encode(e)
-	}
-	if s.PhotoURL.Set {
-		e.FieldStart("photo_url")
-		s.PhotoURL.Encode(e)
-	}
-	if s.PhotoWidth.Set {
-		e.FieldStart("photo_width")
-		s.PhotoWidth.Encode(e)
-	}
+
+	e.FieldStart("provider_token")
+	e.Str(s.ProviderToken)
+
+	e.FieldStart("currency")
+	e.Str(s.Currency)
 
 	e.FieldStart("prices")
 	e.ArrStart()
@@ -9216,32 +9282,9 @@ func (s SendInvoice) Encode(e *jx.Encoder) {
 		elem.Encode(e)
 	}
 	e.ArrEnd()
-	if s.ProviderData.Set {
-		e.FieldStart("provider_data")
-		s.ProviderData.Encode(e)
-	}
-
-	e.FieldStart("provider_token")
-	e.Str(s.ProviderToken)
-	if s.ReplyMarkup.Set {
-		e.FieldStart("reply_markup")
-		s.ReplyMarkup.Encode(e)
-	}
-	if s.ReplyToMessageID.Set {
-		e.FieldStart("reply_to_message_id")
-		s.ReplyToMessageID.Encode(e)
-	}
-	if s.SendEmailToProvider.Set {
-		e.FieldStart("send_email_to_provider")
-		s.SendEmailToProvider.Encode(e)
-	}
-	if s.SendPhoneNumberToProvider.Set {
-		e.FieldStart("send_phone_number_to_provider")
-		s.SendPhoneNumberToProvider.Encode(e)
-	}
-	if s.StartParameter.Set {
-		e.FieldStart("start_parameter")
-		s.StartParameter.Encode(e)
+	if s.MaxTipAmount.Set {
+		e.FieldStart("max_tip_amount")
+		s.MaxTipAmount.Encode(e)
 	}
 	if s.SuggestedTipAmounts != nil {
 		e.FieldStart("suggested_tip_amounts")
@@ -9251,9 +9294,74 @@ func (s SendInvoice) Encode(e *jx.Encoder) {
 		}
 		e.ArrEnd()
 	}
-
-	e.FieldStart("title")
-	e.Str(s.Title)
+	if s.StartParameter.Set {
+		e.FieldStart("start_parameter")
+		s.StartParameter.Encode(e)
+	}
+	if s.ProviderData.Set {
+		e.FieldStart("provider_data")
+		s.ProviderData.Encode(e)
+	}
+	if s.PhotoURL.Set {
+		e.FieldStart("photo_url")
+		s.PhotoURL.Encode(e)
+	}
+	if s.PhotoSize.Set {
+		e.FieldStart("photo_size")
+		s.PhotoSize.Encode(e)
+	}
+	if s.PhotoWidth.Set {
+		e.FieldStart("photo_width")
+		s.PhotoWidth.Encode(e)
+	}
+	if s.PhotoHeight.Set {
+		e.FieldStart("photo_height")
+		s.PhotoHeight.Encode(e)
+	}
+	if s.NeedName.Set {
+		e.FieldStart("need_name")
+		s.NeedName.Encode(e)
+	}
+	if s.NeedPhoneNumber.Set {
+		e.FieldStart("need_phone_number")
+		s.NeedPhoneNumber.Encode(e)
+	}
+	if s.NeedEmail.Set {
+		e.FieldStart("need_email")
+		s.NeedEmail.Encode(e)
+	}
+	if s.NeedShippingAddress.Set {
+		e.FieldStart("need_shipping_address")
+		s.NeedShippingAddress.Encode(e)
+	}
+	if s.SendPhoneNumberToProvider.Set {
+		e.FieldStart("send_phone_number_to_provider")
+		s.SendPhoneNumberToProvider.Encode(e)
+	}
+	if s.SendEmailToProvider.Set {
+		e.FieldStart("send_email_to_provider")
+		s.SendEmailToProvider.Encode(e)
+	}
+	if s.IsFlexible.Set {
+		e.FieldStart("is_flexible")
+		s.IsFlexible.Encode(e)
+	}
+	if s.DisableNotification.Set {
+		e.FieldStart("disable_notification")
+		s.DisableNotification.Encode(e)
+	}
+	if s.ReplyToMessageID.Set {
+		e.FieldStart("reply_to_message_id")
+		s.ReplyToMessageID.Encode(e)
+	}
+	if s.AllowSendingWithoutReply.Set {
+		e.FieldStart("allow_sending_without_reply")
+		s.AllowSendingWithoutReply.Encode(e)
+	}
+	if s.ReplyMarkup.Set {
+		e.FieldStart("reply_markup")
+		s.ReplyMarkup.Encode(e)
+	}
 	e.ObjEnd()
 }
 
@@ -9264,18 +9372,13 @@ func (s *SendInvoice) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "allow_sending_without_reply":
-			s.AllowSendingWithoutReply.Reset()
-			if err := s.AllowSendingWithoutReply.Decode(d); err != nil {
-				return err
-			}
 		case "chat_id":
 			if err := s.ChatID.Decode(d); err != nil {
 				return err
 			}
-		case "currency":
+		case "title":
 			v, err := d.Str()
-			s.Currency = string(v)
+			s.Title = string(v)
 			if err != nil {
 				return err
 			}
@@ -9285,65 +9388,22 @@ func (s *SendInvoice) Decode(d *jx.Decoder) error {
 			if err != nil {
 				return err
 			}
-		case "disable_notification":
-			s.DisableNotification.Reset()
-			if err := s.DisableNotification.Decode(d); err != nil {
-				return err
-			}
-		case "is_flexible":
-			s.IsFlexible.Reset()
-			if err := s.IsFlexible.Decode(d); err != nil {
-				return err
-			}
-		case "max_tip_amount":
-			s.MaxTipAmount.Reset()
-			if err := s.MaxTipAmount.Decode(d); err != nil {
-				return err
-			}
-		case "need_email":
-			s.NeedEmail.Reset()
-			if err := s.NeedEmail.Decode(d); err != nil {
-				return err
-			}
-		case "need_name":
-			s.NeedName.Reset()
-			if err := s.NeedName.Decode(d); err != nil {
-				return err
-			}
-		case "need_phone_number":
-			s.NeedPhoneNumber.Reset()
-			if err := s.NeedPhoneNumber.Decode(d); err != nil {
-				return err
-			}
-		case "need_shipping_address":
-			s.NeedShippingAddress.Reset()
-			if err := s.NeedShippingAddress.Decode(d); err != nil {
-				return err
-			}
 		case "payload":
 			v, err := d.Str()
 			s.Payload = string(v)
 			if err != nil {
 				return err
 			}
-		case "photo_height":
-			s.PhotoHeight.Reset()
-			if err := s.PhotoHeight.Decode(d); err != nil {
+		case "provider_token":
+			v, err := d.Str()
+			s.ProviderToken = string(v)
+			if err != nil {
 				return err
 			}
-		case "photo_size":
-			s.PhotoSize.Reset()
-			if err := s.PhotoSize.Decode(d); err != nil {
-				return err
-			}
-		case "photo_url":
-			s.PhotoURL.Reset()
-			if err := s.PhotoURL.Decode(d); err != nil {
-				return err
-			}
-		case "photo_width":
-			s.PhotoWidth.Reset()
-			if err := s.PhotoWidth.Decode(d); err != nil {
+		case "currency":
+			v, err := d.Str()
+			s.Currency = string(v)
+			if err != nil {
 				return err
 			}
 		case "prices":
@@ -9358,40 +9418,9 @@ func (s *SendInvoice) Decode(d *jx.Decoder) error {
 			}); err != nil {
 				return err
 			}
-		case "provider_data":
-			s.ProviderData.Reset()
-			if err := s.ProviderData.Decode(d); err != nil {
-				return err
-			}
-		case "provider_token":
-			v, err := d.Str()
-			s.ProviderToken = string(v)
-			if err != nil {
-				return err
-			}
-		case "reply_markup":
-			s.ReplyMarkup.Reset()
-			if err := s.ReplyMarkup.Decode(d); err != nil {
-				return err
-			}
-		case "reply_to_message_id":
-			s.ReplyToMessageID.Reset()
-			if err := s.ReplyToMessageID.Decode(d); err != nil {
-				return err
-			}
-		case "send_email_to_provider":
-			s.SendEmailToProvider.Reset()
-			if err := s.SendEmailToProvider.Decode(d); err != nil {
-				return err
-			}
-		case "send_phone_number_to_provider":
-			s.SendPhoneNumberToProvider.Reset()
-			if err := s.SendPhoneNumberToProvider.Decode(d); err != nil {
-				return err
-			}
-		case "start_parameter":
-			s.StartParameter.Reset()
-			if err := s.StartParameter.Decode(d); err != nil {
+		case "max_tip_amount":
+			s.MaxTipAmount.Reset()
+			if err := s.MaxTipAmount.Decode(d); err != nil {
 				return err
 			}
 		case "suggested_tip_amounts":
@@ -9408,10 +9437,89 @@ func (s *SendInvoice) Decode(d *jx.Decoder) error {
 			}); err != nil {
 				return err
 			}
-		case "title":
-			v, err := d.Str()
-			s.Title = string(v)
-			if err != nil {
+		case "start_parameter":
+			s.StartParameter.Reset()
+			if err := s.StartParameter.Decode(d); err != nil {
+				return err
+			}
+		case "provider_data":
+			s.ProviderData.Reset()
+			if err := s.ProviderData.Decode(d); err != nil {
+				return err
+			}
+		case "photo_url":
+			s.PhotoURL.Reset()
+			if err := s.PhotoURL.Decode(d); err != nil {
+				return err
+			}
+		case "photo_size":
+			s.PhotoSize.Reset()
+			if err := s.PhotoSize.Decode(d); err != nil {
+				return err
+			}
+		case "photo_width":
+			s.PhotoWidth.Reset()
+			if err := s.PhotoWidth.Decode(d); err != nil {
+				return err
+			}
+		case "photo_height":
+			s.PhotoHeight.Reset()
+			if err := s.PhotoHeight.Decode(d); err != nil {
+				return err
+			}
+		case "need_name":
+			s.NeedName.Reset()
+			if err := s.NeedName.Decode(d); err != nil {
+				return err
+			}
+		case "need_phone_number":
+			s.NeedPhoneNumber.Reset()
+			if err := s.NeedPhoneNumber.Decode(d); err != nil {
+				return err
+			}
+		case "need_email":
+			s.NeedEmail.Reset()
+			if err := s.NeedEmail.Decode(d); err != nil {
+				return err
+			}
+		case "need_shipping_address":
+			s.NeedShippingAddress.Reset()
+			if err := s.NeedShippingAddress.Decode(d); err != nil {
+				return err
+			}
+		case "send_phone_number_to_provider":
+			s.SendPhoneNumberToProvider.Reset()
+			if err := s.SendPhoneNumberToProvider.Decode(d); err != nil {
+				return err
+			}
+		case "send_email_to_provider":
+			s.SendEmailToProvider.Reset()
+			if err := s.SendEmailToProvider.Decode(d); err != nil {
+				return err
+			}
+		case "is_flexible":
+			s.IsFlexible.Reset()
+			if err := s.IsFlexible.Decode(d); err != nil {
+				return err
+			}
+		case "disable_notification":
+			s.DisableNotification.Reset()
+			if err := s.DisableNotification.Decode(d); err != nil {
+				return err
+			}
+		case "reply_to_message_id":
+			s.ReplyToMessageID.Reset()
+			if err := s.ReplyToMessageID.Decode(d); err != nil {
+				return err
+			}
+		case "allow_sending_without_reply":
+			s.AllowSendingWithoutReply.Reset()
+			if err := s.AllowSendingWithoutReply.Decode(d); err != nil {
+				return err
+			}
+		case "reply_markup":
+			s.ReplyMarkup.Reset()
+			if err := s.ReplyMarkup.Decode(d); err != nil {
 				return err
 			}
 		default:
@@ -9424,46 +9532,46 @@ func (s *SendInvoice) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SendLocation) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	if s.AllowSendingWithoutReply.Set {
-		e.FieldStart("allow_sending_without_reply")
-		s.AllowSendingWithoutReply.Encode(e)
-	}
 
 	e.FieldStart("chat_id")
 	s.ChatID.Encode(e)
-	if s.DisableNotification.Set {
-		e.FieldStart("disable_notification")
-		s.DisableNotification.Encode(e)
+
+	e.FieldStart("latitude")
+	e.Float64(s.Latitude)
+
+	e.FieldStart("longitude")
+	e.Float64(s.Longitude)
+	if s.HorizontalAccuracy.Set {
+		e.FieldStart("horizontal_accuracy")
+		s.HorizontalAccuracy.Encode(e)
+	}
+	if s.LivePeriod.Set {
+		e.FieldStart("live_period")
+		s.LivePeriod.Encode(e)
 	}
 	if s.Heading.Set {
 		e.FieldStart("heading")
 		s.Heading.Encode(e)
 	}
-	if s.HorizontalAccuracy.Set {
-		e.FieldStart("horizontal_accuracy")
-		s.HorizontalAccuracy.Encode(e)
-	}
-
-	e.FieldStart("latitude")
-	e.Float64(s.Latitude)
-	if s.LivePeriod.Set {
-		e.FieldStart("live_period")
-		s.LivePeriod.Encode(e)
-	}
-
-	e.FieldStart("longitude")
-	e.Float64(s.Longitude)
 	if s.ProximityAlertRadius.Set {
 		e.FieldStart("proximity_alert_radius")
 		s.ProximityAlertRadius.Encode(e)
 	}
-	if s.ReplyMarkup != nil {
-		e.FieldStart("reply_markup")
-		s.ReplyMarkup.Encode(e)
+	if s.DisableNotification.Set {
+		e.FieldStart("disable_notification")
+		s.DisableNotification.Encode(e)
 	}
 	if s.ReplyToMessageID.Set {
 		e.FieldStart("reply_to_message_id")
 		s.ReplyToMessageID.Encode(e)
+	}
+	if s.AllowSendingWithoutReply.Set {
+		e.FieldStart("allow_sending_without_reply")
+		s.AllowSendingWithoutReply.Encode(e)
+	}
+	if s.ReplyMarkup != nil {
+		e.FieldStart("reply_markup")
+		s.ReplyMarkup.Encode(e)
 	}
 	e.ObjEnd()
 }
@@ -9475,28 +9583,8 @@ func (s *SendLocation) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "allow_sending_without_reply":
-			s.AllowSendingWithoutReply.Reset()
-			if err := s.AllowSendingWithoutReply.Decode(d); err != nil {
-				return err
-			}
 		case "chat_id":
 			if err := s.ChatID.Decode(d); err != nil {
-				return err
-			}
-		case "disable_notification":
-			s.DisableNotification.Reset()
-			if err := s.DisableNotification.Decode(d); err != nil {
-				return err
-			}
-		case "heading":
-			s.Heading.Reset()
-			if err := s.Heading.Decode(d); err != nil {
-				return err
-			}
-		case "horizontal_accuracy":
-			s.HorizontalAccuracy.Reset()
-			if err := s.HorizontalAccuracy.Decode(d); err != nil {
 				return err
 			}
 		case "latitude":
@@ -9505,20 +9593,45 @@ func (s *SendLocation) Decode(d *jx.Decoder) error {
 			if err != nil {
 				return err
 			}
-		case "live_period":
-			s.LivePeriod.Reset()
-			if err := s.LivePeriod.Decode(d); err != nil {
-				return err
-			}
 		case "longitude":
 			v, err := d.Float64()
 			s.Longitude = float64(v)
 			if err != nil {
 				return err
 			}
+		case "horizontal_accuracy":
+			s.HorizontalAccuracy.Reset()
+			if err := s.HorizontalAccuracy.Decode(d); err != nil {
+				return err
+			}
+		case "live_period":
+			s.LivePeriod.Reset()
+			if err := s.LivePeriod.Decode(d); err != nil {
+				return err
+			}
+		case "heading":
+			s.Heading.Reset()
+			if err := s.Heading.Decode(d); err != nil {
+				return err
+			}
 		case "proximity_alert_radius":
 			s.ProximityAlertRadius.Reset()
 			if err := s.ProximityAlertRadius.Decode(d); err != nil {
+				return err
+			}
+		case "disable_notification":
+			s.DisableNotification.Reset()
+			if err := s.DisableNotification.Decode(d); err != nil {
+				return err
+			}
+		case "reply_to_message_id":
+			s.ReplyToMessageID.Reset()
+			if err := s.ReplyToMessageID.Decode(d); err != nil {
+				return err
+			}
+		case "allow_sending_without_reply":
+			s.AllowSendingWithoutReply.Reset()
+			if err := s.AllowSendingWithoutReply.Decode(d); err != nil {
 				return err
 			}
 		case "reply_markup":
@@ -9528,11 +9641,6 @@ func (s *SendLocation) Decode(d *jx.Decoder) error {
 				return err
 			}
 			s.ReplyMarkup = &elem
-		case "reply_to_message_id":
-			s.ReplyToMessageID.Reset()
-			if err := s.ReplyToMessageID.Decode(d); err != nil {
-				return err
-			}
 		default:
 			return d.Skip()
 		}
@@ -9576,10 +9684,10 @@ func (s *SendLocationReplyMarkup) Decode(d *jx.Decoder) error {
 			case "keyboard":
 				found = true
 				s.Type = ReplyKeyboardMarkupSendLocationReplyMarkup
-			case "one_time_keyboard":
+			case "resize_keyboard":
 				found = true
 				s.Type = ReplyKeyboardMarkupSendLocationReplyMarkup
-			case "resize_keyboard":
+			case "one_time_keyboard":
 				found = true
 				s.Type = ReplyKeyboardMarkupSendLocationReplyMarkup
 			case "remove_keyboard":
@@ -9629,17 +9737,9 @@ func (s *SendLocationReplyMarkup) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SendMediaGroup) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	if s.AllowSendingWithoutReply.Set {
-		e.FieldStart("allow_sending_without_reply")
-		s.AllowSendingWithoutReply.Encode(e)
-	}
 
 	e.FieldStart("chat_id")
 	s.ChatID.Encode(e)
-	if s.DisableNotification.Set {
-		e.FieldStart("disable_notification")
-		s.DisableNotification.Encode(e)
-	}
 
 	e.FieldStart("media")
 	e.ArrStart()
@@ -9647,9 +9747,17 @@ func (s SendMediaGroup) Encode(e *jx.Encoder) {
 		elem.Encode(e)
 	}
 	e.ArrEnd()
+	if s.DisableNotification.Set {
+		e.FieldStart("disable_notification")
+		s.DisableNotification.Encode(e)
+	}
 	if s.ReplyToMessageID.Set {
 		e.FieldStart("reply_to_message_id")
 		s.ReplyToMessageID.Encode(e)
+	}
+	if s.AllowSendingWithoutReply.Set {
+		e.FieldStart("allow_sending_without_reply")
+		s.AllowSendingWithoutReply.Encode(e)
 	}
 	e.ObjEnd()
 }
@@ -9661,18 +9769,8 @@ func (s *SendMediaGroup) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "allow_sending_without_reply":
-			s.AllowSendingWithoutReply.Reset()
-			if err := s.AllowSendingWithoutReply.Decode(d); err != nil {
-				return err
-			}
 		case "chat_id":
 			if err := s.ChatID.Decode(d); err != nil {
-				return err
-			}
-		case "disable_notification":
-			s.DisableNotification.Reset()
-			if err := s.DisableNotification.Decode(d); err != nil {
 				return err
 			}
 		case "media":
@@ -9687,9 +9785,19 @@ func (s *SendMediaGroup) Decode(d *jx.Decoder) error {
 			}); err != nil {
 				return err
 			}
+		case "disable_notification":
+			s.DisableNotification.Reset()
+			if err := s.DisableNotification.Decode(d); err != nil {
+				return err
+			}
 		case "reply_to_message_id":
 			s.ReplyToMessageID.Reset()
 			if err := s.ReplyToMessageID.Decode(d); err != nil {
+				return err
+			}
+		case "allow_sending_without_reply":
+			s.AllowSendingWithoutReply.Reset()
+			if err := s.AllowSendingWithoutReply.Decode(d); err != nil {
 				return err
 			}
 		default:
@@ -9786,20 +9894,15 @@ func (s *SendMediaGroupMediaItem) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SendMessage) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	if s.AllowSendingWithoutReply.Set {
-		e.FieldStart("allow_sending_without_reply")
-		s.AllowSendingWithoutReply.Encode(e)
-	}
 
 	e.FieldStart("chat_id")
 	s.ChatID.Encode(e)
-	if s.DisableNotification.Set {
-		e.FieldStart("disable_notification")
-		s.DisableNotification.Encode(e)
-	}
-	if s.DisableWebPagePreview.Set {
-		e.FieldStart("disable_web_page_preview")
-		s.DisableWebPagePreview.Encode(e)
+
+	e.FieldStart("text")
+	e.Str(s.Text)
+	if s.ParseMode.Set {
+		e.FieldStart("parse_mode")
+		s.ParseMode.Encode(e)
 	}
 	if s.Entities != nil {
 		e.FieldStart("entities")
@@ -9809,21 +9912,26 @@ func (s SendMessage) Encode(e *jx.Encoder) {
 		}
 		e.ArrEnd()
 	}
-	if s.ParseMode.Set {
-		e.FieldStart("parse_mode")
-		s.ParseMode.Encode(e)
+	if s.DisableWebPagePreview.Set {
+		e.FieldStart("disable_web_page_preview")
+		s.DisableWebPagePreview.Encode(e)
 	}
-	if s.ReplyMarkup != nil {
-		e.FieldStart("reply_markup")
-		s.ReplyMarkup.Encode(e)
+	if s.DisableNotification.Set {
+		e.FieldStart("disable_notification")
+		s.DisableNotification.Encode(e)
 	}
 	if s.ReplyToMessageID.Set {
 		e.FieldStart("reply_to_message_id")
 		s.ReplyToMessageID.Encode(e)
 	}
-
-	e.FieldStart("text")
-	e.Str(s.Text)
+	if s.AllowSendingWithoutReply.Set {
+		e.FieldStart("allow_sending_without_reply")
+		s.AllowSendingWithoutReply.Encode(e)
+	}
+	if s.ReplyMarkup != nil {
+		e.FieldStart("reply_markup")
+		s.ReplyMarkup.Encode(e)
+	}
 	e.ObjEnd()
 }
 
@@ -9834,23 +9942,19 @@ func (s *SendMessage) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "allow_sending_without_reply":
-			s.AllowSendingWithoutReply.Reset()
-			if err := s.AllowSendingWithoutReply.Decode(d); err != nil {
-				return err
-			}
 		case "chat_id":
 			if err := s.ChatID.Decode(d); err != nil {
 				return err
 			}
-		case "disable_notification":
-			s.DisableNotification.Reset()
-			if err := s.DisableNotification.Decode(d); err != nil {
+		case "text":
+			v, err := d.Str()
+			s.Text = string(v)
+			if err != nil {
 				return err
 			}
-		case "disable_web_page_preview":
-			s.DisableWebPagePreview.Reset()
-			if err := s.DisableWebPagePreview.Decode(d); err != nil {
+		case "parse_mode":
+			s.ParseMode.Reset()
+			if err := s.ParseMode.Decode(d); err != nil {
 				return err
 			}
 		case "entities":
@@ -9865,9 +9969,24 @@ func (s *SendMessage) Decode(d *jx.Decoder) error {
 			}); err != nil {
 				return err
 			}
-		case "parse_mode":
-			s.ParseMode.Reset()
-			if err := s.ParseMode.Decode(d); err != nil {
+		case "disable_web_page_preview":
+			s.DisableWebPagePreview.Reset()
+			if err := s.DisableWebPagePreview.Decode(d); err != nil {
+				return err
+			}
+		case "disable_notification":
+			s.DisableNotification.Reset()
+			if err := s.DisableNotification.Decode(d); err != nil {
+				return err
+			}
+		case "reply_to_message_id":
+			s.ReplyToMessageID.Reset()
+			if err := s.ReplyToMessageID.Decode(d); err != nil {
+				return err
+			}
+		case "allow_sending_without_reply":
+			s.AllowSendingWithoutReply.Reset()
+			if err := s.AllowSendingWithoutReply.Decode(d); err != nil {
 				return err
 			}
 		case "reply_markup":
@@ -9877,17 +9996,6 @@ func (s *SendMessage) Decode(d *jx.Decoder) error {
 				return err
 			}
 			s.ReplyMarkup = &elem
-		case "reply_to_message_id":
-			s.ReplyToMessageID.Reset()
-			if err := s.ReplyToMessageID.Decode(d); err != nil {
-				return err
-			}
-		case "text":
-			v, err := d.Str()
-			s.Text = string(v)
-			if err != nil {
-				return err
-			}
 		default:
 			return d.Skip()
 		}
@@ -9931,10 +10039,10 @@ func (s *SendMessageReplyMarkup) Decode(d *jx.Decoder) error {
 			case "keyboard":
 				found = true
 				s.Type = ReplyKeyboardMarkupSendMessageReplyMarkup
-			case "one_time_keyboard":
+			case "resize_keyboard":
 				found = true
 				s.Type = ReplyKeyboardMarkupSendMessageReplyMarkup
-			case "resize_keyboard":
+			case "one_time_keyboard":
 				found = true
 				s.Type = ReplyKeyboardMarkupSendMessageReplyMarkup
 			case "remove_keyboard":
@@ -9984,13 +10092,19 @@ func (s *SendMessageReplyMarkup) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SendPhoto) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	if s.AllowSendingWithoutReply.Set {
-		e.FieldStart("allow_sending_without_reply")
-		s.AllowSendingWithoutReply.Encode(e)
-	}
+
+	e.FieldStart("chat_id")
+	s.ChatID.Encode(e)
+
+	e.FieldStart("photo")
+	e.Str(s.Photo)
 	if s.Caption.Set {
 		e.FieldStart("caption")
 		s.Caption.Encode(e)
+	}
+	if s.ParseMode.Set {
+		e.FieldStart("parse_mode")
+		s.ParseMode.Encode(e)
 	}
 	if s.CaptionEntities != nil {
 		e.FieldStart("caption_entities")
@@ -10000,27 +10114,21 @@ func (s SendPhoto) Encode(e *jx.Encoder) {
 		}
 		e.ArrEnd()
 	}
-
-	e.FieldStart("chat_id")
-	s.ChatID.Encode(e)
 	if s.DisableNotification.Set {
 		e.FieldStart("disable_notification")
 		s.DisableNotification.Encode(e)
 	}
-	if s.ParseMode.Set {
-		e.FieldStart("parse_mode")
-		s.ParseMode.Encode(e)
-	}
-
-	e.FieldStart("photo")
-	e.Str(s.Photo)
-	if s.ReplyMarkup != nil {
-		e.FieldStart("reply_markup")
-		s.ReplyMarkup.Encode(e)
-	}
 	if s.ReplyToMessageID.Set {
 		e.FieldStart("reply_to_message_id")
 		s.ReplyToMessageID.Encode(e)
+	}
+	if s.AllowSendingWithoutReply.Set {
+		e.FieldStart("allow_sending_without_reply")
+		s.AllowSendingWithoutReply.Encode(e)
+	}
+	if s.ReplyMarkup != nil {
+		e.FieldStart("reply_markup")
+		s.ReplyMarkup.Encode(e)
 	}
 	e.ObjEnd()
 }
@@ -10032,14 +10140,24 @@ func (s *SendPhoto) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "allow_sending_without_reply":
-			s.AllowSendingWithoutReply.Reset()
-			if err := s.AllowSendingWithoutReply.Decode(d); err != nil {
+		case "chat_id":
+			if err := s.ChatID.Decode(d); err != nil {
+				return err
+			}
+		case "photo":
+			v, err := d.Str()
+			s.Photo = string(v)
+			if err != nil {
 				return err
 			}
 		case "caption":
 			s.Caption.Reset()
 			if err := s.Caption.Decode(d); err != nil {
+				return err
+			}
+		case "parse_mode":
+			s.ParseMode.Reset()
+			if err := s.ParseMode.Decode(d); err != nil {
 				return err
 			}
 		case "caption_entities":
@@ -10054,24 +10172,19 @@ func (s *SendPhoto) Decode(d *jx.Decoder) error {
 			}); err != nil {
 				return err
 			}
-		case "chat_id":
-			if err := s.ChatID.Decode(d); err != nil {
-				return err
-			}
 		case "disable_notification":
 			s.DisableNotification.Reset()
 			if err := s.DisableNotification.Decode(d); err != nil {
 				return err
 			}
-		case "parse_mode":
-			s.ParseMode.Reset()
-			if err := s.ParseMode.Decode(d); err != nil {
+		case "reply_to_message_id":
+			s.ReplyToMessageID.Reset()
+			if err := s.ReplyToMessageID.Decode(d); err != nil {
 				return err
 			}
-		case "photo":
-			v, err := d.Str()
-			s.Photo = string(v)
-			if err != nil {
+		case "allow_sending_without_reply":
+			s.AllowSendingWithoutReply.Reset()
+			if err := s.AllowSendingWithoutReply.Decode(d); err != nil {
 				return err
 			}
 		case "reply_markup":
@@ -10081,11 +10194,6 @@ func (s *SendPhoto) Decode(d *jx.Decoder) error {
 				return err
 			}
 			s.ReplyMarkup = &elem
-		case "reply_to_message_id":
-			s.ReplyToMessageID.Reset()
-			if err := s.ReplyToMessageID.Decode(d); err != nil {
-				return err
-			}
 		default:
 			return d.Skip()
 		}
@@ -10129,10 +10237,10 @@ func (s *SendPhotoReplyMarkup) Decode(d *jx.Decoder) error {
 			case "keyboard":
 				found = true
 				s.Type = ReplyKeyboardMarkupSendPhotoReplyMarkup
-			case "one_time_keyboard":
+			case "resize_keyboard":
 				found = true
 				s.Type = ReplyKeyboardMarkupSendPhotoReplyMarkup
-			case "resize_keyboard":
+			case "one_time_keyboard":
 				found = true
 				s.Type = ReplyKeyboardMarkupSendPhotoReplyMarkup
 			case "remove_keyboard":
@@ -10182,32 +10290,42 @@ func (s *SendPhotoReplyMarkup) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SendPoll) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	if s.AllowSendingWithoutReply.Set {
-		e.FieldStart("allow_sending_without_reply")
-		s.AllowSendingWithoutReply.Encode(e)
+
+	e.FieldStart("chat_id")
+	s.ChatID.Encode(e)
+
+	e.FieldStart("question")
+	e.Str(s.Question)
+
+	e.FieldStart("options")
+	e.ArrStart()
+	for _, elem := range s.Options {
+		e.Str(elem)
+	}
+	e.ArrEnd()
+	if s.IsAnonymous.Set {
+		e.FieldStart("is_anonymous")
+		s.IsAnonymous.Encode(e)
+	}
+	if s.Type.Set {
+		e.FieldStart("type")
+		s.Type.Encode(e)
 	}
 	if s.AllowsMultipleAnswers.Set {
 		e.FieldStart("allows_multiple_answers")
 		s.AllowsMultipleAnswers.Encode(e)
 	}
-
-	e.FieldStart("chat_id")
-	s.ChatID.Encode(e)
-	if s.CloseDate.Set {
-		e.FieldStart("close_date")
-		s.CloseDate.Encode(e)
-	}
 	if s.CorrectOptionID.Set {
 		e.FieldStart("correct_option_id")
 		s.CorrectOptionID.Encode(e)
 	}
-	if s.DisableNotification.Set {
-		e.FieldStart("disable_notification")
-		s.DisableNotification.Encode(e)
-	}
 	if s.Explanation.Set {
 		e.FieldStart("explanation")
 		s.Explanation.Encode(e)
+	}
+	if s.ExplanationParseMode.Set {
+		e.FieldStart("explanation_parse_mode")
+		s.ExplanationParseMode.Encode(e)
 	}
 	if s.ExplanationEntities != nil {
 		e.FieldStart("explanation_entities")
@@ -10217,43 +10335,33 @@ func (s SendPoll) Encode(e *jx.Encoder) {
 		}
 		e.ArrEnd()
 	}
-	if s.ExplanationParseMode.Set {
-		e.FieldStart("explanation_parse_mode")
-		s.ExplanationParseMode.Encode(e)
+	if s.OpenPeriod.Set {
+		e.FieldStart("open_period")
+		s.OpenPeriod.Encode(e)
 	}
-	if s.IsAnonymous.Set {
-		e.FieldStart("is_anonymous")
-		s.IsAnonymous.Encode(e)
+	if s.CloseDate.Set {
+		e.FieldStart("close_date")
+		s.CloseDate.Encode(e)
 	}
 	if s.IsClosed.Set {
 		e.FieldStart("is_closed")
 		s.IsClosed.Encode(e)
 	}
-	if s.OpenPeriod.Set {
-		e.FieldStart("open_period")
-		s.OpenPeriod.Encode(e)
-	}
-
-	e.FieldStart("options")
-	e.ArrStart()
-	for _, elem := range s.Options {
-		e.Str(elem)
-	}
-	e.ArrEnd()
-
-	e.FieldStart("question")
-	e.Str(s.Question)
-	if s.ReplyMarkup != nil {
-		e.FieldStart("reply_markup")
-		s.ReplyMarkup.Encode(e)
+	if s.DisableNotification.Set {
+		e.FieldStart("disable_notification")
+		s.DisableNotification.Encode(e)
 	}
 	if s.ReplyToMessageID.Set {
 		e.FieldStart("reply_to_message_id")
 		s.ReplyToMessageID.Encode(e)
 	}
-	if s.Type.Set {
-		e.FieldStart("type")
-		s.Type.Encode(e)
+	if s.AllowSendingWithoutReply.Set {
+		e.FieldStart("allow_sending_without_reply")
+		s.AllowSendingWithoutReply.Encode(e)
+	}
+	if s.ReplyMarkup != nil {
+		e.FieldStart("reply_markup")
+		s.ReplyMarkup.Encode(e)
 	}
 	e.ObjEnd()
 }
@@ -10265,70 +10373,14 @@ func (s *SendPoll) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "allow_sending_without_reply":
-			s.AllowSendingWithoutReply.Reset()
-			if err := s.AllowSendingWithoutReply.Decode(d); err != nil {
-				return err
-			}
-		case "allows_multiple_answers":
-			s.AllowsMultipleAnswers.Reset()
-			if err := s.AllowsMultipleAnswers.Decode(d); err != nil {
-				return err
-			}
 		case "chat_id":
 			if err := s.ChatID.Decode(d); err != nil {
 				return err
 			}
-		case "close_date":
-			s.CloseDate.Reset()
-			if err := s.CloseDate.Decode(d); err != nil {
-				return err
-			}
-		case "correct_option_id":
-			s.CorrectOptionID.Reset()
-			if err := s.CorrectOptionID.Decode(d); err != nil {
-				return err
-			}
-		case "disable_notification":
-			s.DisableNotification.Reset()
-			if err := s.DisableNotification.Decode(d); err != nil {
-				return err
-			}
-		case "explanation":
-			s.Explanation.Reset()
-			if err := s.Explanation.Decode(d); err != nil {
-				return err
-			}
-		case "explanation_entities":
-			s.ExplanationEntities = nil
-			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem MessageEntity
-				if err := elem.Decode(d); err != nil {
-					return err
-				}
-				s.ExplanationEntities = append(s.ExplanationEntities, elem)
-				return nil
-			}); err != nil {
-				return err
-			}
-		case "explanation_parse_mode":
-			s.ExplanationParseMode.Reset()
-			if err := s.ExplanationParseMode.Decode(d); err != nil {
-				return err
-			}
-		case "is_anonymous":
-			s.IsAnonymous.Reset()
-			if err := s.IsAnonymous.Decode(d); err != nil {
-				return err
-			}
-		case "is_closed":
-			s.IsClosed.Reset()
-			if err := s.IsClosed.Decode(d); err != nil {
-				return err
-			}
-		case "open_period":
-			s.OpenPeriod.Reset()
-			if err := s.OpenPeriod.Decode(d); err != nil {
+		case "question":
+			v, err := d.Str()
+			s.Question = string(v)
+			if err != nil {
 				return err
 			}
 		case "options":
@@ -10345,10 +10397,76 @@ func (s *SendPoll) Decode(d *jx.Decoder) error {
 			}); err != nil {
 				return err
 			}
-		case "question":
-			v, err := d.Str()
-			s.Question = string(v)
-			if err != nil {
+		case "is_anonymous":
+			s.IsAnonymous.Reset()
+			if err := s.IsAnonymous.Decode(d); err != nil {
+				return err
+			}
+		case "type":
+			s.Type.Reset()
+			if err := s.Type.Decode(d); err != nil {
+				return err
+			}
+		case "allows_multiple_answers":
+			s.AllowsMultipleAnswers.Reset()
+			if err := s.AllowsMultipleAnswers.Decode(d); err != nil {
+				return err
+			}
+		case "correct_option_id":
+			s.CorrectOptionID.Reset()
+			if err := s.CorrectOptionID.Decode(d); err != nil {
+				return err
+			}
+		case "explanation":
+			s.Explanation.Reset()
+			if err := s.Explanation.Decode(d); err != nil {
+				return err
+			}
+		case "explanation_parse_mode":
+			s.ExplanationParseMode.Reset()
+			if err := s.ExplanationParseMode.Decode(d); err != nil {
+				return err
+			}
+		case "explanation_entities":
+			s.ExplanationEntities = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem MessageEntity
+				if err := elem.Decode(d); err != nil {
+					return err
+				}
+				s.ExplanationEntities = append(s.ExplanationEntities, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+		case "open_period":
+			s.OpenPeriod.Reset()
+			if err := s.OpenPeriod.Decode(d); err != nil {
+				return err
+			}
+		case "close_date":
+			s.CloseDate.Reset()
+			if err := s.CloseDate.Decode(d); err != nil {
+				return err
+			}
+		case "is_closed":
+			s.IsClosed.Reset()
+			if err := s.IsClosed.Decode(d); err != nil {
+				return err
+			}
+		case "disable_notification":
+			s.DisableNotification.Reset()
+			if err := s.DisableNotification.Decode(d); err != nil {
+				return err
+			}
+		case "reply_to_message_id":
+			s.ReplyToMessageID.Reset()
+			if err := s.ReplyToMessageID.Decode(d); err != nil {
+				return err
+			}
+		case "allow_sending_without_reply":
+			s.AllowSendingWithoutReply.Reset()
+			if err := s.AllowSendingWithoutReply.Decode(d); err != nil {
 				return err
 			}
 		case "reply_markup":
@@ -10358,16 +10476,6 @@ func (s *SendPoll) Decode(d *jx.Decoder) error {
 				return err
 			}
 			s.ReplyMarkup = &elem
-		case "reply_to_message_id":
-			s.ReplyToMessageID.Reset()
-			if err := s.ReplyToMessageID.Decode(d); err != nil {
-				return err
-			}
-		case "type":
-			s.Type.Reset()
-			if err := s.Type.Decode(d); err != nil {
-				return err
-			}
 		default:
 			return d.Skip()
 		}
@@ -10411,10 +10519,10 @@ func (s *SendPollReplyMarkup) Decode(d *jx.Decoder) error {
 			case "keyboard":
 				found = true
 				s.Type = ReplyKeyboardMarkupSendPollReplyMarkup
-			case "one_time_keyboard":
+			case "resize_keyboard":
 				found = true
 				s.Type = ReplyKeyboardMarkupSendPollReplyMarkup
-			case "resize_keyboard":
+			case "one_time_keyboard":
 				found = true
 				s.Type = ReplyKeyboardMarkupSendPollReplyMarkup
 			case "remove_keyboard":
@@ -10464,28 +10572,28 @@ func (s *SendPollReplyMarkup) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SendSticker) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	if s.AllowSendingWithoutReply.Set {
-		e.FieldStart("allow_sending_without_reply")
-		s.AllowSendingWithoutReply.Encode(e)
-	}
 
 	e.FieldStart("chat_id")
 	s.ChatID.Encode(e)
+
+	e.FieldStart("sticker")
+	e.Str(s.Sticker)
 	if s.DisableNotification.Set {
 		e.FieldStart("disable_notification")
 		s.DisableNotification.Encode(e)
-	}
-	if s.ReplyMarkup != nil {
-		e.FieldStart("reply_markup")
-		s.ReplyMarkup.Encode(e)
 	}
 	if s.ReplyToMessageID.Set {
 		e.FieldStart("reply_to_message_id")
 		s.ReplyToMessageID.Encode(e)
 	}
-
-	e.FieldStart("sticker")
-	e.Str(s.Sticker)
+	if s.AllowSendingWithoutReply.Set {
+		e.FieldStart("allow_sending_without_reply")
+		s.AllowSendingWithoutReply.Encode(e)
+	}
+	if s.ReplyMarkup != nil {
+		e.FieldStart("reply_markup")
+		s.ReplyMarkup.Encode(e)
+	}
 	e.ObjEnd()
 }
 
@@ -10496,18 +10604,29 @@ func (s *SendSticker) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "allow_sending_without_reply":
-			s.AllowSendingWithoutReply.Reset()
-			if err := s.AllowSendingWithoutReply.Decode(d); err != nil {
-				return err
-			}
 		case "chat_id":
 			if err := s.ChatID.Decode(d); err != nil {
+				return err
+			}
+		case "sticker":
+			v, err := d.Str()
+			s.Sticker = string(v)
+			if err != nil {
 				return err
 			}
 		case "disable_notification":
 			s.DisableNotification.Reset()
 			if err := s.DisableNotification.Decode(d); err != nil {
+				return err
+			}
+		case "reply_to_message_id":
+			s.ReplyToMessageID.Reset()
+			if err := s.ReplyToMessageID.Decode(d); err != nil {
+				return err
+			}
+		case "allow_sending_without_reply":
+			s.AllowSendingWithoutReply.Reset()
+			if err := s.AllowSendingWithoutReply.Decode(d); err != nil {
 				return err
 			}
 		case "reply_markup":
@@ -10517,17 +10636,6 @@ func (s *SendSticker) Decode(d *jx.Decoder) error {
 				return err
 			}
 			s.ReplyMarkup = &elem
-		case "reply_to_message_id":
-			s.ReplyToMessageID.Reset()
-			if err := s.ReplyToMessageID.Decode(d); err != nil {
-				return err
-			}
-		case "sticker":
-			v, err := d.Str()
-			s.Sticker = string(v)
-			if err != nil {
-				return err
-			}
 		default:
 			return d.Skip()
 		}
@@ -10571,10 +10679,10 @@ func (s *SendStickerReplyMarkup) Decode(d *jx.Decoder) error {
 			case "keyboard":
 				found = true
 				s.Type = ReplyKeyboardMarkupSendStickerReplyMarkup
-			case "one_time_keyboard":
+			case "resize_keyboard":
 				found = true
 				s.Type = ReplyKeyboardMarkupSendStickerReplyMarkup
-			case "resize_keyboard":
+			case "one_time_keyboard":
 				found = true
 				s.Type = ReplyKeyboardMarkupSendStickerReplyMarkup
 			case "remove_keyboard":
@@ -10625,19 +10733,20 @@ func (s *SendStickerReplyMarkup) Decode(d *jx.Decoder) error {
 func (s SendVenue) Encode(e *jx.Encoder) {
 	e.ObjStart()
 
-	e.FieldStart("address")
-	e.Str(s.Address)
-	if s.AllowSendingWithoutReply.Set {
-		e.FieldStart("allow_sending_without_reply")
-		s.AllowSendingWithoutReply.Encode(e)
-	}
-
 	e.FieldStart("chat_id")
 	s.ChatID.Encode(e)
-	if s.DisableNotification.Set {
-		e.FieldStart("disable_notification")
-		s.DisableNotification.Encode(e)
-	}
+
+	e.FieldStart("latitude")
+	e.Float64(s.Latitude)
+
+	e.FieldStart("longitude")
+	e.Float64(s.Longitude)
+
+	e.FieldStart("title")
+	e.Str(s.Title)
+
+	e.FieldStart("address")
+	e.Str(s.Address)
 	if s.FoursquareID.Set {
 		e.FieldStart("foursquare_id")
 		s.FoursquareID.Encode(e)
@@ -10654,23 +10763,22 @@ func (s SendVenue) Encode(e *jx.Encoder) {
 		e.FieldStart("google_place_type")
 		s.GooglePlaceType.Encode(e)
 	}
-
-	e.FieldStart("latitude")
-	e.Float64(s.Latitude)
-
-	e.FieldStart("longitude")
-	e.Float64(s.Longitude)
-	if s.ReplyMarkup != nil {
-		e.FieldStart("reply_markup")
-		s.ReplyMarkup.Encode(e)
+	if s.DisableNotification.Set {
+		e.FieldStart("disable_notification")
+		s.DisableNotification.Encode(e)
 	}
 	if s.ReplyToMessageID.Set {
 		e.FieldStart("reply_to_message_id")
 		s.ReplyToMessageID.Encode(e)
 	}
-
-	e.FieldStart("title")
-	e.Str(s.Title)
+	if s.AllowSendingWithoutReply.Set {
+		e.FieldStart("allow_sending_without_reply")
+		s.AllowSendingWithoutReply.Encode(e)
+	}
+	if s.ReplyMarkup != nil {
+		e.FieldStart("reply_markup")
+		s.ReplyMarkup.Encode(e)
+	}
 	e.ObjEnd()
 }
 
@@ -10681,24 +10789,32 @@ func (s *SendVenue) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "address":
-			v, err := d.Str()
-			s.Address = string(v)
-			if err != nil {
-				return err
-			}
-		case "allow_sending_without_reply":
-			s.AllowSendingWithoutReply.Reset()
-			if err := s.AllowSendingWithoutReply.Decode(d); err != nil {
-				return err
-			}
 		case "chat_id":
 			if err := s.ChatID.Decode(d); err != nil {
 				return err
 			}
-		case "disable_notification":
-			s.DisableNotification.Reset()
-			if err := s.DisableNotification.Decode(d); err != nil {
+		case "latitude":
+			v, err := d.Float64()
+			s.Latitude = float64(v)
+			if err != nil {
+				return err
+			}
+		case "longitude":
+			v, err := d.Float64()
+			s.Longitude = float64(v)
+			if err != nil {
+				return err
+			}
+		case "title":
+			v, err := d.Str()
+			s.Title = string(v)
+			if err != nil {
+				return err
+			}
+		case "address":
+			v, err := d.Str()
+			s.Address = string(v)
+			if err != nil {
 				return err
 			}
 		case "foursquare_id":
@@ -10721,16 +10837,19 @@ func (s *SendVenue) Decode(d *jx.Decoder) error {
 			if err := s.GooglePlaceType.Decode(d); err != nil {
 				return err
 			}
-		case "latitude":
-			v, err := d.Float64()
-			s.Latitude = float64(v)
-			if err != nil {
+		case "disable_notification":
+			s.DisableNotification.Reset()
+			if err := s.DisableNotification.Decode(d); err != nil {
 				return err
 			}
-		case "longitude":
-			v, err := d.Float64()
-			s.Longitude = float64(v)
-			if err != nil {
+		case "reply_to_message_id":
+			s.ReplyToMessageID.Reset()
+			if err := s.ReplyToMessageID.Decode(d); err != nil {
+				return err
+			}
+		case "allow_sending_without_reply":
+			s.AllowSendingWithoutReply.Reset()
+			if err := s.AllowSendingWithoutReply.Decode(d); err != nil {
 				return err
 			}
 		case "reply_markup":
@@ -10740,17 +10859,6 @@ func (s *SendVenue) Decode(d *jx.Decoder) error {
 				return err
 			}
 			s.ReplyMarkup = &elem
-		case "reply_to_message_id":
-			s.ReplyToMessageID.Reset()
-			if err := s.ReplyToMessageID.Decode(d); err != nil {
-				return err
-			}
-		case "title":
-			v, err := d.Str()
-			s.Title = string(v)
-			if err != nil {
-				return err
-			}
 		default:
 			return d.Skip()
 		}
@@ -10794,10 +10902,10 @@ func (s *SendVenueReplyMarkup) Decode(d *jx.Decoder) error {
 			case "keyboard":
 				found = true
 				s.Type = ReplyKeyboardMarkupSendVenueReplyMarkup
-			case "one_time_keyboard":
+			case "resize_keyboard":
 				found = true
 				s.Type = ReplyKeyboardMarkupSendVenueReplyMarkup
-			case "resize_keyboard":
+			case "one_time_keyboard":
 				found = true
 				s.Type = ReplyKeyboardMarkupSendVenueReplyMarkup
 			case "remove_keyboard":
@@ -10847,13 +10955,35 @@ func (s *SendVenueReplyMarkup) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SendVideo) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	if s.AllowSendingWithoutReply.Set {
-		e.FieldStart("allow_sending_without_reply")
-		s.AllowSendingWithoutReply.Encode(e)
+
+	e.FieldStart("chat_id")
+	s.ChatID.Encode(e)
+
+	e.FieldStart("video")
+	e.Str(s.Video)
+	if s.Duration.Set {
+		e.FieldStart("duration")
+		s.Duration.Encode(e)
+	}
+	if s.Width.Set {
+		e.FieldStart("width")
+		s.Width.Encode(e)
+	}
+	if s.Height.Set {
+		e.FieldStart("height")
+		s.Height.Encode(e)
+	}
+	if s.Thumb.Set {
+		e.FieldStart("thumb")
+		s.Thumb.Encode(e)
 	}
 	if s.Caption.Set {
 		e.FieldStart("caption")
 		s.Caption.Encode(e)
+	}
+	if s.ParseMode.Set {
+		e.FieldStart("parse_mode")
+		s.ParseMode.Encode(e)
 	}
 	if s.CaptionEntities != nil {
 		e.FieldStart("caption_entities")
@@ -10863,47 +10993,25 @@ func (s SendVideo) Encode(e *jx.Encoder) {
 		}
 		e.ArrEnd()
 	}
-
-	e.FieldStart("chat_id")
-	s.ChatID.Encode(e)
+	if s.SupportsStreaming.Set {
+		e.FieldStart("supports_streaming")
+		s.SupportsStreaming.Encode(e)
+	}
 	if s.DisableNotification.Set {
 		e.FieldStart("disable_notification")
 		s.DisableNotification.Encode(e)
-	}
-	if s.Duration.Set {
-		e.FieldStart("duration")
-		s.Duration.Encode(e)
-	}
-	if s.Height.Set {
-		e.FieldStart("height")
-		s.Height.Encode(e)
-	}
-	if s.ParseMode.Set {
-		e.FieldStart("parse_mode")
-		s.ParseMode.Encode(e)
-	}
-	if s.ReplyMarkup != nil {
-		e.FieldStart("reply_markup")
-		s.ReplyMarkup.Encode(e)
 	}
 	if s.ReplyToMessageID.Set {
 		e.FieldStart("reply_to_message_id")
 		s.ReplyToMessageID.Encode(e)
 	}
-	if s.SupportsStreaming.Set {
-		e.FieldStart("supports_streaming")
-		s.SupportsStreaming.Encode(e)
+	if s.AllowSendingWithoutReply.Set {
+		e.FieldStart("allow_sending_without_reply")
+		s.AllowSendingWithoutReply.Encode(e)
 	}
-	if s.Thumb.Set {
-		e.FieldStart("thumb")
-		s.Thumb.Encode(e)
-	}
-
-	e.FieldStart("video")
-	e.Str(s.Video)
-	if s.Width.Set {
-		e.FieldStart("width")
-		s.Width.Encode(e)
+	if s.ReplyMarkup != nil {
+		e.FieldStart("reply_markup")
+		s.ReplyMarkup.Encode(e)
 	}
 	e.ObjEnd()
 }
@@ -10915,14 +11023,44 @@ func (s *SendVideo) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "allow_sending_without_reply":
-			s.AllowSendingWithoutReply.Reset()
-			if err := s.AllowSendingWithoutReply.Decode(d); err != nil {
+		case "chat_id":
+			if err := s.ChatID.Decode(d); err != nil {
+				return err
+			}
+		case "video":
+			v, err := d.Str()
+			s.Video = string(v)
+			if err != nil {
+				return err
+			}
+		case "duration":
+			s.Duration.Reset()
+			if err := s.Duration.Decode(d); err != nil {
+				return err
+			}
+		case "width":
+			s.Width.Reset()
+			if err := s.Width.Decode(d); err != nil {
+				return err
+			}
+		case "height":
+			s.Height.Reset()
+			if err := s.Height.Decode(d); err != nil {
+				return err
+			}
+		case "thumb":
+			s.Thumb.Reset()
+			if err := s.Thumb.Decode(d); err != nil {
 				return err
 			}
 		case "caption":
 			s.Caption.Reset()
 			if err := s.Caption.Decode(d); err != nil {
+				return err
+			}
+		case "parse_mode":
+			s.ParseMode.Reset()
+			if err := s.ParseMode.Decode(d); err != nil {
 				return err
 			}
 		case "caption_entities":
@@ -10937,8 +11075,9 @@ func (s *SendVideo) Decode(d *jx.Decoder) error {
 			}); err != nil {
 				return err
 			}
-		case "chat_id":
-			if err := s.ChatID.Decode(d); err != nil {
+		case "supports_streaming":
+			s.SupportsStreaming.Reset()
+			if err := s.SupportsStreaming.Decode(d); err != nil {
 				return err
 			}
 		case "disable_notification":
@@ -10946,19 +11085,14 @@ func (s *SendVideo) Decode(d *jx.Decoder) error {
 			if err := s.DisableNotification.Decode(d); err != nil {
 				return err
 			}
-		case "duration":
-			s.Duration.Reset()
-			if err := s.Duration.Decode(d); err != nil {
+		case "reply_to_message_id":
+			s.ReplyToMessageID.Reset()
+			if err := s.ReplyToMessageID.Decode(d); err != nil {
 				return err
 			}
-		case "height":
-			s.Height.Reset()
-			if err := s.Height.Decode(d); err != nil {
-				return err
-			}
-		case "parse_mode":
-			s.ParseMode.Reset()
-			if err := s.ParseMode.Decode(d); err != nil {
+		case "allow_sending_without_reply":
+			s.AllowSendingWithoutReply.Reset()
+			if err := s.AllowSendingWithoutReply.Decode(d); err != nil {
 				return err
 			}
 		case "reply_markup":
@@ -10968,32 +11102,6 @@ func (s *SendVideo) Decode(d *jx.Decoder) error {
 				return err
 			}
 			s.ReplyMarkup = &elem
-		case "reply_to_message_id":
-			s.ReplyToMessageID.Reset()
-			if err := s.ReplyToMessageID.Decode(d); err != nil {
-				return err
-			}
-		case "supports_streaming":
-			s.SupportsStreaming.Reset()
-			if err := s.SupportsStreaming.Decode(d); err != nil {
-				return err
-			}
-		case "thumb":
-			s.Thumb.Reset()
-			if err := s.Thumb.Decode(d); err != nil {
-				return err
-			}
-		case "video":
-			v, err := d.Str()
-			s.Video = string(v)
-			if err != nil {
-				return err
-			}
-		case "width":
-			s.Width.Reset()
-			if err := s.Width.Decode(d); err != nil {
-				return err
-			}
 		default:
 			return d.Skip()
 		}
@@ -11004,17 +11112,12 @@ func (s *SendVideo) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SendVideoNote) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	if s.AllowSendingWithoutReply.Set {
-		e.FieldStart("allow_sending_without_reply")
-		s.AllowSendingWithoutReply.Encode(e)
-	}
 
 	e.FieldStart("chat_id")
 	s.ChatID.Encode(e)
-	if s.DisableNotification.Set {
-		e.FieldStart("disable_notification")
-		s.DisableNotification.Encode(e)
-	}
+
+	e.FieldStart("video_note")
+	e.Str(s.VideoNote)
 	if s.Duration.Set {
 		e.FieldStart("duration")
 		s.Duration.Encode(e)
@@ -11023,21 +11126,26 @@ func (s SendVideoNote) Encode(e *jx.Encoder) {
 		e.FieldStart("length")
 		s.Length.Encode(e)
 	}
-	if s.ReplyMarkup != nil {
-		e.FieldStart("reply_markup")
-		s.ReplyMarkup.Encode(e)
+	if s.Thumb.Set {
+		e.FieldStart("thumb")
+		s.Thumb.Encode(e)
+	}
+	if s.DisableNotification.Set {
+		e.FieldStart("disable_notification")
+		s.DisableNotification.Encode(e)
 	}
 	if s.ReplyToMessageID.Set {
 		e.FieldStart("reply_to_message_id")
 		s.ReplyToMessageID.Encode(e)
 	}
-	if s.Thumb.Set {
-		e.FieldStart("thumb")
-		s.Thumb.Encode(e)
+	if s.AllowSendingWithoutReply.Set {
+		e.FieldStart("allow_sending_without_reply")
+		s.AllowSendingWithoutReply.Encode(e)
 	}
-
-	e.FieldStart("video_note")
-	e.Str(s.VideoNote)
+	if s.ReplyMarkup != nil {
+		e.FieldStart("reply_markup")
+		s.ReplyMarkup.Encode(e)
+	}
 	e.ObjEnd()
 }
 
@@ -11048,18 +11156,14 @@ func (s *SendVideoNote) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "allow_sending_without_reply":
-			s.AllowSendingWithoutReply.Reset()
-			if err := s.AllowSendingWithoutReply.Decode(d); err != nil {
-				return err
-			}
 		case "chat_id":
 			if err := s.ChatID.Decode(d); err != nil {
 				return err
 			}
-		case "disable_notification":
-			s.DisableNotification.Reset()
-			if err := s.DisableNotification.Decode(d); err != nil {
+		case "video_note":
+			v, err := d.Str()
+			s.VideoNote = string(v)
+			if err != nil {
 				return err
 			}
 		case "duration":
@@ -11072,6 +11176,26 @@ func (s *SendVideoNote) Decode(d *jx.Decoder) error {
 			if err := s.Length.Decode(d); err != nil {
 				return err
 			}
+		case "thumb":
+			s.Thumb.Reset()
+			if err := s.Thumb.Decode(d); err != nil {
+				return err
+			}
+		case "disable_notification":
+			s.DisableNotification.Reset()
+			if err := s.DisableNotification.Decode(d); err != nil {
+				return err
+			}
+		case "reply_to_message_id":
+			s.ReplyToMessageID.Reset()
+			if err := s.ReplyToMessageID.Decode(d); err != nil {
+				return err
+			}
+		case "allow_sending_without_reply":
+			s.AllowSendingWithoutReply.Reset()
+			if err := s.AllowSendingWithoutReply.Decode(d); err != nil {
+				return err
+			}
 		case "reply_markup":
 			s.ReplyMarkup = nil
 			var elem SendVideoNoteReplyMarkup
@@ -11079,22 +11203,6 @@ func (s *SendVideoNote) Decode(d *jx.Decoder) error {
 				return err
 			}
 			s.ReplyMarkup = &elem
-		case "reply_to_message_id":
-			s.ReplyToMessageID.Reset()
-			if err := s.ReplyToMessageID.Decode(d); err != nil {
-				return err
-			}
-		case "thumb":
-			s.Thumb.Reset()
-			if err := s.Thumb.Decode(d); err != nil {
-				return err
-			}
-		case "video_note":
-			v, err := d.Str()
-			s.VideoNote = string(v)
-			if err != nil {
-				return err
-			}
 		default:
 			return d.Skip()
 		}
@@ -11138,10 +11246,10 @@ func (s *SendVideoNoteReplyMarkup) Decode(d *jx.Decoder) error {
 			case "keyboard":
 				found = true
 				s.Type = ReplyKeyboardMarkupSendVideoNoteReplyMarkup
-			case "one_time_keyboard":
+			case "resize_keyboard":
 				found = true
 				s.Type = ReplyKeyboardMarkupSendVideoNoteReplyMarkup
-			case "resize_keyboard":
+			case "one_time_keyboard":
 				found = true
 				s.Type = ReplyKeyboardMarkupSendVideoNoteReplyMarkup
 			case "remove_keyboard":
@@ -11224,10 +11332,10 @@ func (s *SendVideoReplyMarkup) Decode(d *jx.Decoder) error {
 			case "keyboard":
 				found = true
 				s.Type = ReplyKeyboardMarkupSendVideoReplyMarkup
-			case "one_time_keyboard":
+			case "resize_keyboard":
 				found = true
 				s.Type = ReplyKeyboardMarkupSendVideoReplyMarkup
-			case "resize_keyboard":
+			case "one_time_keyboard":
 				found = true
 				s.Type = ReplyKeyboardMarkupSendVideoReplyMarkup
 			case "remove_keyboard":
@@ -11277,13 +11385,19 @@ func (s *SendVideoReplyMarkup) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SendVoice) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	if s.AllowSendingWithoutReply.Set {
-		e.FieldStart("allow_sending_without_reply")
-		s.AllowSendingWithoutReply.Encode(e)
-	}
+
+	e.FieldStart("chat_id")
+	s.ChatID.Encode(e)
+
+	e.FieldStart("voice")
+	e.Str(s.Voice)
 	if s.Caption.Set {
 		e.FieldStart("caption")
 		s.Caption.Encode(e)
+	}
+	if s.ParseMode.Set {
+		e.FieldStart("parse_mode")
+		s.ParseMode.Encode(e)
 	}
 	if s.CaptionEntities != nil {
 		e.FieldStart("caption_entities")
@@ -11293,32 +11407,26 @@ func (s SendVoice) Encode(e *jx.Encoder) {
 		}
 		e.ArrEnd()
 	}
-
-	e.FieldStart("chat_id")
-	s.ChatID.Encode(e)
-	if s.DisableNotification.Set {
-		e.FieldStart("disable_notification")
-		s.DisableNotification.Encode(e)
-	}
 	if s.Duration.Set {
 		e.FieldStart("duration")
 		s.Duration.Encode(e)
 	}
-	if s.ParseMode.Set {
-		e.FieldStart("parse_mode")
-		s.ParseMode.Encode(e)
-	}
-	if s.ReplyMarkup != nil {
-		e.FieldStart("reply_markup")
-		s.ReplyMarkup.Encode(e)
+	if s.DisableNotification.Set {
+		e.FieldStart("disable_notification")
+		s.DisableNotification.Encode(e)
 	}
 	if s.ReplyToMessageID.Set {
 		e.FieldStart("reply_to_message_id")
 		s.ReplyToMessageID.Encode(e)
 	}
-
-	e.FieldStart("voice")
-	e.Str(s.Voice)
+	if s.AllowSendingWithoutReply.Set {
+		e.FieldStart("allow_sending_without_reply")
+		s.AllowSendingWithoutReply.Encode(e)
+	}
+	if s.ReplyMarkup != nil {
+		e.FieldStart("reply_markup")
+		s.ReplyMarkup.Encode(e)
+	}
 	e.ObjEnd()
 }
 
@@ -11329,14 +11437,24 @@ func (s *SendVoice) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "allow_sending_without_reply":
-			s.AllowSendingWithoutReply.Reset()
-			if err := s.AllowSendingWithoutReply.Decode(d); err != nil {
+		case "chat_id":
+			if err := s.ChatID.Decode(d); err != nil {
+				return err
+			}
+		case "voice":
+			v, err := d.Str()
+			s.Voice = string(v)
+			if err != nil {
 				return err
 			}
 		case "caption":
 			s.Caption.Reset()
 			if err := s.Caption.Decode(d); err != nil {
+				return err
+			}
+		case "parse_mode":
+			s.ParseMode.Reset()
+			if err := s.ParseMode.Decode(d); err != nil {
 				return err
 			}
 		case "caption_entities":
@@ -11351,8 +11469,9 @@ func (s *SendVoice) Decode(d *jx.Decoder) error {
 			}); err != nil {
 				return err
 			}
-		case "chat_id":
-			if err := s.ChatID.Decode(d); err != nil {
+		case "duration":
+			s.Duration.Reset()
+			if err := s.Duration.Decode(d); err != nil {
 				return err
 			}
 		case "disable_notification":
@@ -11360,14 +11479,14 @@ func (s *SendVoice) Decode(d *jx.Decoder) error {
 			if err := s.DisableNotification.Decode(d); err != nil {
 				return err
 			}
-		case "duration":
-			s.Duration.Reset()
-			if err := s.Duration.Decode(d); err != nil {
+		case "reply_to_message_id":
+			s.ReplyToMessageID.Reset()
+			if err := s.ReplyToMessageID.Decode(d); err != nil {
 				return err
 			}
-		case "parse_mode":
-			s.ParseMode.Reset()
-			if err := s.ParseMode.Decode(d); err != nil {
+		case "allow_sending_without_reply":
+			s.AllowSendingWithoutReply.Reset()
+			if err := s.AllowSendingWithoutReply.Decode(d); err != nil {
 				return err
 			}
 		case "reply_markup":
@@ -11377,17 +11496,6 @@ func (s *SendVoice) Decode(d *jx.Decoder) error {
 				return err
 			}
 			s.ReplyMarkup = &elem
-		case "reply_to_message_id":
-			s.ReplyToMessageID.Reset()
-			if err := s.ReplyToMessageID.Decode(d); err != nil {
-				return err
-			}
-		case "voice":
-			v, err := d.Str()
-			s.Voice = string(v)
-			if err != nil {
-				return err
-			}
 		default:
 			return d.Skip()
 		}
@@ -11431,10 +11539,10 @@ func (s *SendVoiceReplyMarkup) Decode(d *jx.Decoder) error {
 			case "keyboard":
 				found = true
 				s.Type = ReplyKeyboardMarkupSendVoiceReplyMarkup
-			case "one_time_keyboard":
+			case "resize_keyboard":
 				found = true
 				s.Type = ReplyKeyboardMarkupSendVoiceReplyMarkup
-			case "resize_keyboard":
+			case "one_time_keyboard":
 				found = true
 				s.Type = ReplyKeyboardMarkupSendVoiceReplyMarkup
 			case "remove_keyboard":
@@ -11488,11 +11596,11 @@ func (s SetChatAdministratorCustomTitle) Encode(e *jx.Encoder) {
 	e.FieldStart("chat_id")
 	s.ChatID.Encode(e)
 
-	e.FieldStart("custom_title")
-	e.Str(s.CustomTitle)
-
 	e.FieldStart("user_id")
 	e.Int(s.UserID)
+
+	e.FieldStart("custom_title")
+	e.Str(s.CustomTitle)
 	e.ObjEnd()
 }
 
@@ -11507,15 +11615,15 @@ func (s *SetChatAdministratorCustomTitle) Decode(d *jx.Decoder) error {
 			if err := s.ChatID.Decode(d); err != nil {
 				return err
 			}
-		case "custom_title":
-			v, err := d.Str()
-			s.CustomTitle = string(v)
-			if err != nil {
-				return err
-			}
 		case "user_id":
 			v, err := d.Int()
 			s.UserID = int(v)
+			if err != nil {
+				return err
+			}
+		case "custom_title":
+			v, err := d.Str()
+			s.CustomTitle = string(v)
 			if err != nil {
 				return err
 			}
@@ -11707,32 +11815,32 @@ func (s *SetChatTitle) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SetGameScore) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	if s.ChatID.Set {
-		e.FieldStart("chat_id")
-		s.ChatID.Encode(e)
+
+	e.FieldStart("user_id")
+	e.Int(s.UserID)
+
+	e.FieldStart("score")
+	e.Int(s.Score)
+	if s.Force.Set {
+		e.FieldStart("force")
+		s.Force.Encode(e)
 	}
 	if s.DisableEditMessage.Set {
 		e.FieldStart("disable_edit_message")
 		s.DisableEditMessage.Encode(e)
 	}
-	if s.Force.Set {
-		e.FieldStart("force")
-		s.Force.Encode(e)
-	}
-	if s.InlineMessageID.Set {
-		e.FieldStart("inline_message_id")
-		s.InlineMessageID.Encode(e)
+	if s.ChatID.Set {
+		e.FieldStart("chat_id")
+		s.ChatID.Encode(e)
 	}
 	if s.MessageID.Set {
 		e.FieldStart("message_id")
 		s.MessageID.Encode(e)
 	}
-
-	e.FieldStart("score")
-	e.Int(s.Score)
-
-	e.FieldStart("user_id")
-	e.Int(s.UserID)
+	if s.InlineMessageID.Set {
+		e.FieldStart("inline_message_id")
+		s.InlineMessageID.Encode(e)
+	}
 	e.ObjEnd()
 }
 
@@ -11743,29 +11851,10 @@ func (s *SetGameScore) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "chat_id":
-			s.ChatID.Reset()
-			if err := s.ChatID.Decode(d); err != nil {
-				return err
-			}
-		case "disable_edit_message":
-			s.DisableEditMessage.Reset()
-			if err := s.DisableEditMessage.Decode(d); err != nil {
-				return err
-			}
-		case "force":
-			s.Force.Reset()
-			if err := s.Force.Decode(d); err != nil {
-				return err
-			}
-		case "inline_message_id":
-			s.InlineMessageID.Reset()
-			if err := s.InlineMessageID.Decode(d); err != nil {
-				return err
-			}
-		case "message_id":
-			s.MessageID.Reset()
-			if err := s.MessageID.Decode(d); err != nil {
+		case "user_id":
+			v, err := d.Int()
+			s.UserID = int(v)
+			if err != nil {
 				return err
 			}
 		case "score":
@@ -11774,10 +11863,29 @@ func (s *SetGameScore) Decode(d *jx.Decoder) error {
 			if err != nil {
 				return err
 			}
-		case "user_id":
-			v, err := d.Int()
-			s.UserID = int(v)
-			if err != nil {
+		case "force":
+			s.Force.Reset()
+			if err := s.Force.Decode(d); err != nil {
+				return err
+			}
+		case "disable_edit_message":
+			s.DisableEditMessage.Reset()
+			if err := s.DisableEditMessage.Decode(d); err != nil {
+				return err
+			}
+		case "chat_id":
+			s.ChatID.Reset()
+			if err := s.ChatID.Decode(d); err != nil {
+				return err
+			}
+		case "message_id":
+			s.MessageID.Reset()
+			if err := s.MessageID.Decode(d); err != nil {
+				return err
+			}
+		case "inline_message_id":
+			s.InlineMessageID.Reset()
+			if err := s.InlineMessageID.Decode(d); err != nil {
 				return err
 			}
 		default:
@@ -11797,13 +11905,13 @@ func (s SetMyCommands) Encode(e *jx.Encoder) {
 		elem.Encode(e)
 	}
 	e.ArrEnd()
-	if s.LanguageCode.Set {
-		e.FieldStart("language_code")
-		s.LanguageCode.Encode(e)
-	}
 	if s.Scope != nil {
 		e.FieldStart("scope")
 		s.Scope.Encode(e)
+	}
+	if s.LanguageCode.Set {
+		e.FieldStart("language_code")
+		s.LanguageCode.Encode(e)
 	}
 	e.ObjEnd()
 }
@@ -11827,11 +11935,6 @@ func (s *SetMyCommands) Decode(d *jx.Decoder) error {
 			}); err != nil {
 				return err
 			}
-		case "language_code":
-			s.LanguageCode.Reset()
-			if err := s.LanguageCode.Decode(d); err != nil {
-				return err
-			}
 		case "scope":
 			s.Scope = nil
 			var elem BotCommandScope
@@ -11839,6 +11942,11 @@ func (s *SetMyCommands) Decode(d *jx.Decoder) error {
 				return err
 			}
 			s.Scope = &elem
+		case "language_code":
+			s.LanguageCode.Reset()
+			if err := s.LanguageCode.Decode(d); err != nil {
+				return err
+			}
 		default:
 			return d.Skip()
 		}
@@ -11850,15 +11958,15 @@ func (s *SetMyCommands) Decode(d *jx.Decoder) error {
 func (s SetPassportDataErrors) Encode(e *jx.Encoder) {
 	e.ObjStart()
 
+	e.FieldStart("user_id")
+	e.Int(s.UserID)
+
 	e.FieldStart("errors")
 	e.ArrStart()
 	for _, elem := range s.Errors {
 		elem.Encode(e)
 	}
 	e.ArrEnd()
-
-	e.FieldStart("user_id")
-	e.Int(s.UserID)
 	e.ObjEnd()
 }
 
@@ -11869,6 +11977,12 @@ func (s *SetPassportDataErrors) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
+		case "user_id":
+			v, err := d.Int()
+			s.UserID = int(v)
+			if err != nil {
+				return err
+			}
 		case "errors":
 			s.Errors = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -11879,12 +11993,6 @@ func (s *SetPassportDataErrors) Decode(d *jx.Decoder) error {
 				s.Errors = append(s.Errors, elem)
 				return nil
 			}); err != nil {
-				return err
-			}
-		case "user_id":
-			v, err := d.Int()
-			s.UserID = int(v)
-			if err != nil {
 				return err
 			}
 		default:
@@ -11898,11 +12006,11 @@ func (s *SetPassportDataErrors) Decode(d *jx.Decoder) error {
 func (s SetStickerPositionInSet) Encode(e *jx.Encoder) {
 	e.ObjStart()
 
-	e.FieldStart("position")
-	e.Int(s.Position)
-
 	e.FieldStart("sticker")
 	e.Str(s.Sticker)
+
+	e.FieldStart("position")
+	e.Int(s.Position)
 	e.ObjEnd()
 }
 
@@ -11913,15 +12021,15 @@ func (s *SetStickerPositionInSet) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "position":
-			v, err := d.Int()
-			s.Position = int(v)
-			if err != nil {
-				return err
-			}
 		case "sticker":
 			v, err := d.Str()
 			s.Sticker = string(v)
+			if err != nil {
+				return err
+			}
+		case "position":
+			v, err := d.Int()
+			s.Position = int(v)
 			if err != nil {
 				return err
 			}
@@ -11938,13 +12046,13 @@ func (s SetStickerSetThumb) Encode(e *jx.Encoder) {
 
 	e.FieldStart("name")
 	e.Str(s.Name)
+
+	e.FieldStart("user_id")
+	e.Int(s.UserID)
 	if s.Thumb.Set {
 		e.FieldStart("thumb")
 		s.Thumb.Encode(e)
 	}
-
-	e.FieldStart("user_id")
-	e.Int(s.UserID)
 	e.ObjEnd()
 }
 
@@ -11961,15 +12069,15 @@ func (s *SetStickerSetThumb) Decode(d *jx.Decoder) error {
 			if err != nil {
 				return err
 			}
-		case "thumb":
-			s.Thumb.Reset()
-			if err := s.Thumb.Decode(d); err != nil {
-				return err
-			}
 		case "user_id":
 			v, err := d.Int()
 			s.UserID = int(v)
 			if err != nil {
+				return err
+			}
+		case "thumb":
+			s.Thumb.Reset()
+			if err := s.Thumb.Decode(d); err != nil {
 				return err
 			}
 		default:
@@ -11982,21 +12090,12 @@ func (s *SetStickerSetThumb) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SetWebhook) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	if s.AllowedUpdates != nil {
-		e.FieldStart("allowed_updates")
-		e.ArrStart()
-		for _, elem := range s.AllowedUpdates {
-			e.Str(elem)
-		}
-		e.ArrEnd()
-	}
+
+	e.FieldStart("url")
+	json.EncodeURI(e, s.URL)
 	if s.Certificate.Set {
 		e.FieldStart("certificate")
 		s.Certificate.Encode(e)
-	}
-	if s.DropPendingUpdates.Set {
-		e.FieldStart("drop_pending_updates")
-		s.DropPendingUpdates.Encode(e)
 	}
 	if s.IPAddress.Set {
 		e.FieldStart("ip_address")
@@ -12006,9 +12105,18 @@ func (s SetWebhook) Encode(e *jx.Encoder) {
 		e.FieldStart("max_connections")
 		s.MaxConnections.Encode(e)
 	}
-
-	e.FieldStart("url")
-	json.EncodeURI(e, s.URL)
+	if s.AllowedUpdates != nil {
+		e.FieldStart("allowed_updates")
+		e.ArrStart()
+		for _, elem := range s.AllowedUpdates {
+			e.Str(elem)
+		}
+		e.ArrEnd()
+	}
+	if s.DropPendingUpdates.Set {
+		e.FieldStart("drop_pending_updates")
+		s.DropPendingUpdates.Encode(e)
+	}
 	e.ObjEnd()
 }
 
@@ -12019,6 +12127,27 @@ func (s *SetWebhook) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
+		case "url":
+			v, err := json.DecodeURI(d)
+			s.URL = v
+			if err != nil {
+				return err
+			}
+		case "certificate":
+			s.Certificate.Reset()
+			if err := s.Certificate.Decode(d); err != nil {
+				return err
+			}
+		case "ip_address":
+			s.IPAddress.Reset()
+			if err := s.IPAddress.Decode(d); err != nil {
+				return err
+			}
+		case "max_connections":
+			s.MaxConnections.Reset()
+			if err := s.MaxConnections.Decode(d); err != nil {
+				return err
+			}
 		case "allowed_updates":
 			s.AllowedUpdates = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -12033,30 +12162,9 @@ func (s *SetWebhook) Decode(d *jx.Decoder) error {
 			}); err != nil {
 				return err
 			}
-		case "certificate":
-			s.Certificate.Reset()
-			if err := s.Certificate.Decode(d); err != nil {
-				return err
-			}
 		case "drop_pending_updates":
 			s.DropPendingUpdates.Reset()
 			if err := s.DropPendingUpdates.Decode(d); err != nil {
-				return err
-			}
-		case "ip_address":
-			s.IPAddress.Reset()
-			if err := s.IPAddress.Decode(d); err != nil {
-				return err
-			}
-		case "max_connections":
-			s.MaxConnections.Reset()
-			if err := s.MaxConnections.Decode(d); err != nil {
-				return err
-			}
-		case "url":
-			v, err := json.DecodeURI(d)
-			s.URL = v
-			if err != nil {
 				return err
 			}
 		default:
@@ -12070,23 +12178,23 @@ func (s *SetWebhook) Decode(d *jx.Decoder) error {
 func (s ShippingAddress) Encode(e *jx.Encoder) {
 	e.ObjStart()
 
-	e.FieldStart("city")
-	e.Str(s.City)
-
 	e.FieldStart("country_code")
 	e.Str(s.CountryCode)
 
-	e.FieldStart("post_code")
-	e.Str(s.PostCode)
-
 	e.FieldStart("state")
 	e.Str(s.State)
+
+	e.FieldStart("city")
+	e.Str(s.City)
 
 	e.FieldStart("street_line1")
 	e.Str(s.StreetLine1)
 
 	e.FieldStart("street_line2")
 	e.Str(s.StreetLine2)
+
+	e.FieldStart("post_code")
+	e.Str(s.PostCode)
 	e.ObjEnd()
 }
 
@@ -12097,27 +12205,21 @@ func (s *ShippingAddress) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "city":
-			v, err := d.Str()
-			s.City = string(v)
-			if err != nil {
-				return err
-			}
 		case "country_code":
 			v, err := d.Str()
 			s.CountryCode = string(v)
 			if err != nil {
 				return err
 			}
-		case "post_code":
-			v, err := d.Str()
-			s.PostCode = string(v)
-			if err != nil {
-				return err
-			}
 		case "state":
 			v, err := d.Str()
 			s.State = string(v)
+			if err != nil {
+				return err
+			}
+		case "city":
+			v, err := d.Str()
+			s.City = string(v)
 			if err != nil {
 				return err
 			}
@@ -12130,6 +12232,12 @@ func (s *ShippingAddress) Decode(d *jx.Decoder) error {
 		case "street_line2":
 			v, err := d.Str()
 			s.StreetLine2 = string(v)
+			if err != nil {
+				return err
+			}
+		case "post_code":
+			v, err := d.Str()
+			s.PostCode = string(v)
 			if err != nil {
 				return err
 			}
@@ -12147,15 +12255,15 @@ func (s ShippingOption) Encode(e *jx.Encoder) {
 	e.FieldStart("id")
 	e.Str(s.ID)
 
+	e.FieldStart("title")
+	e.Str(s.Title)
+
 	e.FieldStart("prices")
 	e.ArrStart()
 	for _, elem := range s.Prices {
 		elem.Encode(e)
 	}
 	e.ArrEnd()
-
-	e.FieldStart("title")
-	e.Str(s.Title)
 	e.ObjEnd()
 }
 
@@ -12172,6 +12280,12 @@ func (s *ShippingOption) Decode(d *jx.Decoder) error {
 			if err != nil {
 				return err
 			}
+		case "title":
+			v, err := d.Str()
+			s.Title = string(v)
+			if err != nil {
+				return err
+			}
 		case "prices":
 			s.Prices = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -12184,12 +12298,6 @@ func (s *ShippingOption) Decode(d *jx.Decoder) error {
 			}); err != nil {
 				return err
 			}
-		case "title":
-			v, err := d.Str()
-			s.Title = string(v)
-			if err != nil {
-				return err
-			}
 		default:
 			return d.Skip()
 		}
@@ -12200,41 +12308,41 @@ func (s *ShippingOption) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Sticker) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	if s.Emoji.Set {
-		e.FieldStart("emoji")
-		s.Emoji.Encode(e)
-	}
 
 	e.FieldStart("file_id")
 	e.Str(s.FileID)
-	if s.FileSize.Set {
-		e.FieldStart("file_size")
-		s.FileSize.Encode(e)
-	}
 
 	e.FieldStart("file_unique_id")
 	e.Str(s.FileUniqueID)
+
+	e.FieldStart("width")
+	e.Int(s.Width)
 
 	e.FieldStart("height")
 	e.Int(s.Height)
 
 	e.FieldStart("is_animated")
 	e.Bool(s.IsAnimated)
-	if s.MaskPosition.Set {
-		e.FieldStart("mask_position")
-		s.MaskPosition.Encode(e)
+	if s.Thumb.Set {
+		e.FieldStart("thumb")
+		s.Thumb.Encode(e)
+	}
+	if s.Emoji.Set {
+		e.FieldStart("emoji")
+		s.Emoji.Encode(e)
 	}
 	if s.SetName.Set {
 		e.FieldStart("set_name")
 		s.SetName.Encode(e)
 	}
-	if s.Thumb.Set {
-		e.FieldStart("thumb")
-		s.Thumb.Encode(e)
+	if s.MaskPosition.Set {
+		e.FieldStart("mask_position")
+		s.MaskPosition.Encode(e)
 	}
-
-	e.FieldStart("width")
-	e.Int(s.Width)
+	if s.FileSize.Set {
+		e.FieldStart("file_size")
+		s.FileSize.Encode(e)
+	}
 	e.ObjEnd()
 }
 
@@ -12245,25 +12353,21 @@ func (s *Sticker) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "emoji":
-			s.Emoji.Reset()
-			if err := s.Emoji.Decode(d); err != nil {
-				return err
-			}
 		case "file_id":
 			v, err := d.Str()
 			s.FileID = string(v)
 			if err != nil {
 				return err
 			}
-		case "file_size":
-			s.FileSize.Reset()
-			if err := s.FileSize.Decode(d); err != nil {
-				return err
-			}
 		case "file_unique_id":
 			v, err := d.Str()
 			s.FileUniqueID = string(v)
+			if err != nil {
+				return err
+			}
+		case "width":
+			v, err := d.Int()
+			s.Width = int(v)
 			if err != nil {
 				return err
 			}
@@ -12279,9 +12383,14 @@ func (s *Sticker) Decode(d *jx.Decoder) error {
 			if err != nil {
 				return err
 			}
-		case "mask_position":
-			s.MaskPosition.Reset()
-			if err := s.MaskPosition.Decode(d); err != nil {
+		case "thumb":
+			s.Thumb.Reset()
+			if err := s.Thumb.Decode(d); err != nil {
+				return err
+			}
+		case "emoji":
+			s.Emoji.Reset()
+			if err := s.Emoji.Decode(d); err != nil {
 				return err
 			}
 		case "set_name":
@@ -12289,15 +12398,14 @@ func (s *Sticker) Decode(d *jx.Decoder) error {
 			if err := s.SetName.Decode(d); err != nil {
 				return err
 			}
-		case "thumb":
-			s.Thumb.Reset()
-			if err := s.Thumb.Decode(d); err != nil {
+		case "mask_position":
+			s.MaskPosition.Reset()
+			if err := s.MaskPosition.Decode(d); err != nil {
 				return err
 			}
-		case "width":
-			v, err := d.Int()
-			s.Width = int(v)
-			if err != nil {
+		case "file_size":
+			s.FileSize.Reset()
+			if err := s.FileSize.Decode(d); err != nil {
 				return err
 			}
 		default:
@@ -12314,13 +12422,13 @@ func (s StopMessageLiveLocation) Encode(e *jx.Encoder) {
 		e.FieldStart("chat_id")
 		s.ChatID.Encode(e)
 	}
-	if s.InlineMessageID.Set {
-		e.FieldStart("inline_message_id")
-		s.InlineMessageID.Encode(e)
-	}
 	if s.MessageID.Set {
 		e.FieldStart("message_id")
 		s.MessageID.Encode(e)
+	}
+	if s.InlineMessageID.Set {
+		e.FieldStart("inline_message_id")
+		s.InlineMessageID.Encode(e)
 	}
 	if s.ReplyMarkup.Set {
 		e.FieldStart("reply_markup")
@@ -12343,14 +12451,14 @@ func (s *StopMessageLiveLocation) Decode(d *jx.Decoder) error {
 				return err
 			}
 			s.ChatID = &elem
-		case "inline_message_id":
-			s.InlineMessageID.Reset()
-			if err := s.InlineMessageID.Decode(d); err != nil {
-				return err
-			}
 		case "message_id":
 			s.MessageID.Reset()
 			if err := s.MessageID.Decode(d); err != nil {
+				return err
+			}
+		case "inline_message_id":
+			s.InlineMessageID.Reset()
+			if err := s.InlineMessageID.Decode(d); err != nil {
 				return err
 			}
 		case "reply_markup":
@@ -12417,25 +12525,25 @@ func (s SuccessfulPayment) Encode(e *jx.Encoder) {
 	e.FieldStart("currency")
 	e.Str(s.Currency)
 
+	e.FieldStart("total_amount")
+	e.Int(s.TotalAmount)
+
 	e.FieldStart("invoice_payload")
 	e.Str(s.InvoicePayload)
+	if s.ShippingOptionID.Set {
+		e.FieldStart("shipping_option_id")
+		s.ShippingOptionID.Encode(e)
+	}
 	if s.OrderInfo.Set {
 		e.FieldStart("order_info")
 		s.OrderInfo.Encode(e)
 	}
 
-	e.FieldStart("provider_payment_charge_id")
-	e.Str(s.ProviderPaymentChargeID)
-	if s.ShippingOptionID.Set {
-		e.FieldStart("shipping_option_id")
-		s.ShippingOptionID.Encode(e)
-	}
-
 	e.FieldStart("telegram_payment_charge_id")
 	e.Str(s.TelegramPaymentChargeID)
 
-	e.FieldStart("total_amount")
-	e.Int(s.TotalAmount)
+	e.FieldStart("provider_payment_charge_id")
+	e.Str(s.ProviderPaymentChargeID)
 	e.ObjEnd()
 }
 
@@ -12452,20 +12560,15 @@ func (s *SuccessfulPayment) Decode(d *jx.Decoder) error {
 			if err != nil {
 				return err
 			}
-		case "invoice_payload":
-			v, err := d.Str()
-			s.InvoicePayload = string(v)
+		case "total_amount":
+			v, err := d.Int()
+			s.TotalAmount = int(v)
 			if err != nil {
 				return err
 			}
-		case "order_info":
-			s.OrderInfo.Reset()
-			if err := s.OrderInfo.Decode(d); err != nil {
-				return err
-			}
-		case "provider_payment_charge_id":
+		case "invoice_payload":
 			v, err := d.Str()
-			s.ProviderPaymentChargeID = string(v)
+			s.InvoicePayload = string(v)
 			if err != nil {
 				return err
 			}
@@ -12474,15 +12577,20 @@ func (s *SuccessfulPayment) Decode(d *jx.Decoder) error {
 			if err := s.ShippingOptionID.Decode(d); err != nil {
 				return err
 			}
+		case "order_info":
+			s.OrderInfo.Reset()
+			if err := s.OrderInfo.Decode(d); err != nil {
+				return err
+			}
 		case "telegram_payment_charge_id":
 			v, err := d.Str()
 			s.TelegramPaymentChargeID = string(v)
 			if err != nil {
 				return err
 			}
-		case "total_amount":
-			v, err := d.Int()
-			s.TotalAmount = int(v)
+		case "provider_payment_charge_id":
+			v, err := d.Str()
+			s.ProviderPaymentChargeID = string(v)
 			if err != nil {
 				return err
 			}
@@ -12499,13 +12607,13 @@ func (s UnbanChatMember) Encode(e *jx.Encoder) {
 
 	e.FieldStart("chat_id")
 	s.ChatID.Encode(e)
+
+	e.FieldStart("user_id")
+	e.Int(s.UserID)
 	if s.OnlyIfBanned.Set {
 		e.FieldStart("only_if_banned")
 		s.OnlyIfBanned.Encode(e)
 	}
-
-	e.FieldStart("user_id")
-	e.Int(s.UserID)
 	e.ObjEnd()
 }
 
@@ -12520,15 +12628,15 @@ func (s *UnbanChatMember) Decode(d *jx.Decoder) error {
 			if err := s.ChatID.Decode(d); err != nil {
 				return err
 			}
-		case "only_if_banned":
-			s.OnlyIfBanned.Reset()
-			if err := s.OnlyIfBanned.Decode(d); err != nil {
-				return err
-			}
 		case "user_id":
 			v, err := d.Int()
 			s.UserID = int(v)
 			if err != nil {
+				return err
+			}
+		case "only_if_banned":
+			s.OnlyIfBanned.Reset()
+			if err := s.OnlyIfBanned.Decode(d); err != nil {
 				return err
 			}
 		default:
@@ -12605,11 +12713,11 @@ func (s *UnpinChatMessage) Decode(d *jx.Decoder) error {
 func (s UploadStickerFile) Encode(e *jx.Encoder) {
 	e.ObjStart()
 
-	e.FieldStart("png_sticker")
-	e.Str(s.PNGSticker)
-
 	e.FieldStart("user_id")
 	e.Int(s.UserID)
+
+	e.FieldStart("png_sticker")
+	e.Str(s.PNGSticker)
 	e.ObjEnd()
 }
 
@@ -12620,15 +12728,15 @@ func (s *UploadStickerFile) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "png_sticker":
-			v, err := d.Str()
-			s.PNGSticker = string(v)
-			if err != nil {
-				return err
-			}
 		case "user_id":
 			v, err := d.Int()
 			s.UserID = int(v)
+			if err != nil {
+				return err
+			}
+		case "png_sticker":
+			v, err := d.Str()
+			s.PNGSticker = string(v)
 			if err != nil {
 				return err
 			}
@@ -12642,6 +12750,27 @@ func (s *UploadStickerFile) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s User) Encode(e *jx.Encoder) {
 	e.ObjStart()
+
+	e.FieldStart("id")
+	e.Int(s.ID)
+
+	e.FieldStart("is_bot")
+	e.Bool(s.IsBot)
+
+	e.FieldStart("first_name")
+	e.Str(s.FirstName)
+	if s.LastName.Set {
+		e.FieldStart("last_name")
+		s.LastName.Encode(e)
+	}
+	if s.Username.Set {
+		e.FieldStart("username")
+		s.Username.Encode(e)
+	}
+	if s.LanguageCode.Set {
+		e.FieldStart("language_code")
+		s.LanguageCode.Encode(e)
+	}
 	if s.CanJoinGroups.Set {
 		e.FieldStart("can_join_groups")
 		s.CanJoinGroups.Encode(e)
@@ -12650,30 +12779,9 @@ func (s User) Encode(e *jx.Encoder) {
 		e.FieldStart("can_read_all_group_messages")
 		s.CanReadAllGroupMessages.Encode(e)
 	}
-
-	e.FieldStart("first_name")
-	e.Str(s.FirstName)
-
-	e.FieldStart("id")
-	e.Int(s.ID)
-
-	e.FieldStart("is_bot")
-	e.Bool(s.IsBot)
-	if s.LanguageCode.Set {
-		e.FieldStart("language_code")
-		s.LanguageCode.Encode(e)
-	}
-	if s.LastName.Set {
-		e.FieldStart("last_name")
-		s.LastName.Encode(e)
-	}
 	if s.SupportsInlineQueries.Set {
 		e.FieldStart("supports_inline_queries")
 		s.SupportsInlineQueries.Encode(e)
-	}
-	if s.Username.Set {
-		e.FieldStart("username")
-		s.Username.Encode(e)
 	}
 	e.ObjEnd()
 }
@@ -12685,22 +12793,6 @@ func (s *User) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "can_join_groups":
-			s.CanJoinGroups.Reset()
-			if err := s.CanJoinGroups.Decode(d); err != nil {
-				return err
-			}
-		case "can_read_all_group_messages":
-			s.CanReadAllGroupMessages.Reset()
-			if err := s.CanReadAllGroupMessages.Decode(d); err != nil {
-				return err
-			}
-		case "first_name":
-			v, err := d.Str()
-			s.FirstName = string(v)
-			if err != nil {
-				return err
-			}
 		case "id":
 			v, err := d.Int()
 			s.ID = int(v)
@@ -12713,9 +12805,10 @@ func (s *User) Decode(d *jx.Decoder) error {
 			if err != nil {
 				return err
 			}
-		case "language_code":
-			s.LanguageCode.Reset()
-			if err := s.LanguageCode.Decode(d); err != nil {
+		case "first_name":
+			v, err := d.Str()
+			s.FirstName = string(v)
+			if err != nil {
 				return err
 			}
 		case "last_name":
@@ -12723,14 +12816,29 @@ func (s *User) Decode(d *jx.Decoder) error {
 			if err := s.LastName.Decode(d); err != nil {
 				return err
 			}
-		case "supports_inline_queries":
-			s.SupportsInlineQueries.Reset()
-			if err := s.SupportsInlineQueries.Decode(d); err != nil {
-				return err
-			}
 		case "username":
 			s.Username.Reset()
 			if err := s.Username.Decode(d); err != nil {
+				return err
+			}
+		case "language_code":
+			s.LanguageCode.Reset()
+			if err := s.LanguageCode.Decode(d); err != nil {
+				return err
+			}
+		case "can_join_groups":
+			s.CanJoinGroups.Reset()
+			if err := s.CanJoinGroups.Decode(d); err != nil {
+				return err
+			}
+		case "can_read_all_group_messages":
+			s.CanReadAllGroupMessages.Reset()
+			if err := s.CanReadAllGroupMessages.Decode(d); err != nil {
+				return err
+			}
+		case "supports_inline_queries":
+			s.SupportsInlineQueries.Reset()
+			if err := s.SupportsInlineQueries.Decode(d); err != nil {
 				return err
 			}
 		default:
@@ -12743,6 +12851,12 @@ func (s *User) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Venue) Encode(e *jx.Encoder) {
 	e.ObjStart()
+
+	e.FieldStart("location")
+	s.Location.Encode(e)
+
+	e.FieldStart("title")
+	e.Str(s.Title)
 
 	e.FieldStart("address")
 	e.Str(s.Address)
@@ -12762,12 +12876,6 @@ func (s Venue) Encode(e *jx.Encoder) {
 		e.FieldStart("google_place_type")
 		s.GooglePlaceType.Encode(e)
 	}
-
-	e.FieldStart("location")
-	s.Location.Encode(e)
-
-	e.FieldStart("title")
-	e.Str(s.Title)
 	e.ObjEnd()
 }
 
@@ -12778,6 +12886,16 @@ func (s *Venue) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
+		case "location":
+			if err := s.Location.Decode(d); err != nil {
+				return err
+			}
+		case "title":
+			v, err := d.Str()
+			s.Title = string(v)
+			if err != nil {
+				return err
+			}
 		case "address":
 			v, err := d.Str()
 			s.Address = string(v)
@@ -12804,16 +12922,6 @@ func (s *Venue) Decode(d *jx.Decoder) error {
 			if err := s.GooglePlaceType.Decode(d); err != nil {
 				return err
 			}
-		case "location":
-			if err := s.Location.Decode(d); err != nil {
-				return err
-			}
-		case "title":
-			v, err := d.Str()
-			s.Title = string(v)
-			if err != nil {
-				return err
-			}
 		default:
 			return d.Skip()
 		}
@@ -12825,36 +12933,36 @@ func (s *Venue) Decode(d *jx.Decoder) error {
 func (s Video) Encode(e *jx.Encoder) {
 	e.ObjStart()
 
-	e.FieldStart("duration")
-	e.Int(s.Duration)
-
 	e.FieldStart("file_id")
 	e.Str(s.FileID)
+
+	e.FieldStart("file_unique_id")
+	e.Str(s.FileUniqueID)
+
+	e.FieldStart("width")
+	e.Int(s.Width)
+
+	e.FieldStart("height")
+	e.Int(s.Height)
+
+	e.FieldStart("duration")
+	e.Int(s.Duration)
+	if s.Thumb.Set {
+		e.FieldStart("thumb")
+		s.Thumb.Encode(e)
+	}
 	if s.FileName.Set {
 		e.FieldStart("file_name")
 		s.FileName.Encode(e)
+	}
+	if s.MimeType.Set {
+		e.FieldStart("mime_type")
+		s.MimeType.Encode(e)
 	}
 	if s.FileSize.Set {
 		e.FieldStart("file_size")
 		s.FileSize.Encode(e)
 	}
-
-	e.FieldStart("file_unique_id")
-	e.Str(s.FileUniqueID)
-
-	e.FieldStart("height")
-	e.Int(s.Height)
-	if s.MimeType.Set {
-		e.FieldStart("mime_type")
-		s.MimeType.Encode(e)
-	}
-	if s.Thumb.Set {
-		e.FieldStart("thumb")
-		s.Thumb.Encode(e)
-	}
-
-	e.FieldStart("width")
-	e.Int(s.Width)
 	e.ObjEnd()
 }
 
@@ -12865,31 +12973,21 @@ func (s *Video) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "duration":
-			v, err := d.Int()
-			s.Duration = int(v)
-			if err != nil {
-				return err
-			}
 		case "file_id":
 			v, err := d.Str()
 			s.FileID = string(v)
 			if err != nil {
 				return err
 			}
-		case "file_name":
-			s.FileName.Reset()
-			if err := s.FileName.Decode(d); err != nil {
-				return err
-			}
-		case "file_size":
-			s.FileSize.Reset()
-			if err := s.FileSize.Decode(d); err != nil {
-				return err
-			}
 		case "file_unique_id":
 			v, err := d.Str()
 			s.FileUniqueID = string(v)
+			if err != nil {
+				return err
+			}
+		case "width":
+			v, err := d.Int()
+			s.Width = int(v)
 			if err != nil {
 				return err
 			}
@@ -12899,9 +12997,10 @@ func (s *Video) Decode(d *jx.Decoder) error {
 			if err != nil {
 				return err
 			}
-		case "mime_type":
-			s.MimeType.Reset()
-			if err := s.MimeType.Decode(d); err != nil {
+		case "duration":
+			v, err := d.Int()
+			s.Duration = int(v)
+			if err != nil {
 				return err
 			}
 		case "thumb":
@@ -12909,10 +13008,19 @@ func (s *Video) Decode(d *jx.Decoder) error {
 			if err := s.Thumb.Decode(d); err != nil {
 				return err
 			}
-		case "width":
-			v, err := d.Int()
-			s.Width = int(v)
-			if err != nil {
+		case "file_name":
+			s.FileName.Reset()
+			if err := s.FileName.Decode(d); err != nil {
+				return err
+			}
+		case "mime_type":
+			s.MimeType.Reset()
+			if err := s.MimeType.Decode(d); err != nil {
+				return err
+			}
+		case "file_size":
+			s.FileSize.Reset()
+			if err := s.FileSize.Decode(d); err != nil {
 				return err
 			}
 		default:
@@ -12926,24 +13034,24 @@ func (s *Video) Decode(d *jx.Decoder) error {
 func (s VideoNote) Encode(e *jx.Encoder) {
 	e.ObjStart()
 
-	e.FieldStart("duration")
-	e.Int(s.Duration)
-
 	e.FieldStart("file_id")
 	e.Str(s.FileID)
-	if s.FileSize.Set {
-		e.FieldStart("file_size")
-		s.FileSize.Encode(e)
-	}
 
 	e.FieldStart("file_unique_id")
 	e.Str(s.FileUniqueID)
 
 	e.FieldStart("length")
 	e.Int(s.Length)
+
+	e.FieldStart("duration")
+	e.Int(s.Duration)
 	if s.Thumb.Set {
 		e.FieldStart("thumb")
 		s.Thumb.Encode(e)
+	}
+	if s.FileSize.Set {
+		e.FieldStart("file_size")
+		s.FileSize.Encode(e)
 	}
 	e.ObjEnd()
 }
@@ -12955,21 +13063,10 @@ func (s *VideoNote) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "duration":
-			v, err := d.Int()
-			s.Duration = int(v)
-			if err != nil {
-				return err
-			}
 		case "file_id":
 			v, err := d.Str()
 			s.FileID = string(v)
 			if err != nil {
-				return err
-			}
-		case "file_size":
-			s.FileSize.Reset()
-			if err := s.FileSize.Decode(d); err != nil {
 				return err
 			}
 		case "file_unique_id":
@@ -12984,9 +13081,20 @@ func (s *VideoNote) Decode(d *jx.Decoder) error {
 			if err != nil {
 				return err
 			}
+		case "duration":
+			v, err := d.Int()
+			s.Duration = int(v)
+			if err != nil {
+				return err
+			}
 		case "thumb":
 			s.Thumb.Reset()
 			if err := s.Thumb.Decode(d); err != nil {
+				return err
+			}
+		case "file_size":
+			s.FileSize.Reset()
+			if err := s.FileSize.Decode(d); err != nil {
 				return err
 			}
 		default:
@@ -13000,21 +13108,21 @@ func (s *VideoNote) Decode(d *jx.Decoder) error {
 func (s Voice) Encode(e *jx.Encoder) {
 	e.ObjStart()
 
-	e.FieldStart("duration")
-	e.Int(s.Duration)
-
 	e.FieldStart("file_id")
 	e.Str(s.FileID)
-	if s.FileSize.Set {
-		e.FieldStart("file_size")
-		s.FileSize.Encode(e)
-	}
 
 	e.FieldStart("file_unique_id")
 	e.Str(s.FileUniqueID)
+
+	e.FieldStart("duration")
+	e.Int(s.Duration)
 	if s.MimeType.Set {
 		e.FieldStart("mime_type")
 		s.MimeType.Encode(e)
+	}
+	if s.FileSize.Set {
+		e.FieldStart("file_size")
+		s.FileSize.Encode(e)
 	}
 	e.ObjEnd()
 }
@@ -13026,21 +13134,10 @@ func (s *Voice) Decode(d *jx.Decoder) error {
 	}
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "duration":
-			v, err := d.Int()
-			s.Duration = int(v)
-			if err != nil {
-				return err
-			}
 		case "file_id":
 			v, err := d.Str()
 			s.FileID = string(v)
 			if err != nil {
-				return err
-			}
-		case "file_size":
-			s.FileSize.Reset()
-			if err := s.FileSize.Decode(d); err != nil {
 				return err
 			}
 		case "file_unique_id":
@@ -13049,9 +13146,20 @@ func (s *Voice) Decode(d *jx.Decoder) error {
 			if err != nil {
 				return err
 			}
+		case "duration":
+			v, err := d.Int()
+			s.Duration = int(v)
+			if err != nil {
+				return err
+			}
 		case "mime_type":
 			s.MimeType.Reset()
 			if err := s.MimeType.Decode(d); err != nil {
+				return err
+			}
+		case "file_size":
+			s.FileSize.Reset()
+			if err := s.FileSize.Decode(d); err != nil {
 				return err
 			}
 		default:

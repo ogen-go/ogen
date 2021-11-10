@@ -86,6 +86,10 @@ type Handler interface {
 	//
 	// POST /answerShippingQuery
 	AnswerShippingQuery(ctx context.Context, req AnswerShippingQuery) (AnswerShippingQueryRes, error)
+	// ApproveChatJoinRequest implements approveChatJoinRequest operation.
+	//
+	// POST /approveChatJoinRequest
+	ApproveChatJoinRequest(ctx context.Context, req ApproveChatJoinRequest) (ApproveChatJoinRequestRes, error)
 	// BanChatMember implements banChatMember operation.
 	//
 	// POST /banChatMember
@@ -102,6 +106,10 @@ type Handler interface {
 	//
 	// POST /createNewStickerSet
 	CreateNewStickerSet(ctx context.Context, req CreateNewStickerSet) (CreateNewStickerSetRes, error)
+	// DeclineChatJoinRequest implements declineChatJoinRequest operation.
+	//
+	// POST /declineChatJoinRequest
+	DeclineChatJoinRequest(ctx context.Context, req DeclineChatJoinRequest) (DeclineChatJoinRequestRes, error)
 	// DeleteChatPhoto implements deleteChatPhoto operation.
 	//
 	// POST /deleteChatPhoto
@@ -390,10 +398,12 @@ func (s *Server) Register(r chi.Router) {
 	r.MethodFunc("POST", "/answerInlineQuery", s.HandleAnswerInlineQueryRequest)
 	r.MethodFunc("POST", "/answerPreCheckoutQuery", s.HandleAnswerPreCheckoutQueryRequest)
 	r.MethodFunc("POST", "/answerShippingQuery", s.HandleAnswerShippingQueryRequest)
+	r.MethodFunc("POST", "/approveChatJoinRequest", s.HandleApproveChatJoinRequestRequest)
 	r.MethodFunc("POST", "/banChatMember", s.HandleBanChatMemberRequest)
 	r.MethodFunc("POST", "/copyMessage", s.HandleCopyMessageRequest)
 	r.MethodFunc("POST", "/createChatInviteLink", s.HandleCreateChatInviteLinkRequest)
 	r.MethodFunc("POST", "/createNewStickerSet", s.HandleCreateNewStickerSetRequest)
+	r.MethodFunc("POST", "/declineChatJoinRequest", s.HandleDeclineChatJoinRequestRequest)
 	r.MethodFunc("POST", "/deleteChatPhoto", s.HandleDeleteChatPhotoRequest)
 	r.MethodFunc("POST", "/deleteChatStickerSet", s.HandleDeleteChatStickerSetRequest)
 	r.MethodFunc("POST", "/deleteMessage", s.HandleDeleteMessageRequest)
