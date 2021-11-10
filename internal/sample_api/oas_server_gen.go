@@ -135,18 +135,26 @@ func NewServer(h Handler, opts ...Option) *Server {
 	return srv
 }
 
-func (s *Server) Register(mux chi.Mux) {
-	mux.MethodFunc("GET", "/error", s.HandleErrorGetRequest)
-	mux.MethodFunc("GET", "/foobar", s.HandleFoobarGetRequest)
-	mux.MethodFunc("POST", "/foobar", s.HandleFoobarPostRequest)
-	mux.MethodFunc("PUT", "/foobar", s.HandleFoobarPutRequest)
-	mux.MethodFunc("POST", "/pet", s.HandlePetCreateRequest)
-	mux.MethodFunc("GET", "/pet/friendNames/{id}", s.HandlePetFriendsNamesByIDRequest)
-	mux.MethodFunc("GET", "/pet", s.HandlePetGetRequest)
-	mux.MethodFunc("GET", "/pet/avatar", s.HandlePetGetAvatarByIDRequest)
-	mux.MethodFunc("GET", "/pet/{name}", s.HandlePetGetByNameRequest)
-	mux.MethodFunc("GET", "/pet/name/{id}", s.HandlePetNameByIDRequest)
-	mux.MethodFunc("POST", "/pet/updateNameAlias", s.HandlePetUpdateNameAliasPostRequest)
-	mux.MethodFunc("POST", "/pet/updateName", s.HandlePetUpdateNamePostRequest)
-	mux.MethodFunc("POST", "/pet/avatar", s.HandlePetUploadAvatarByIDRequest)
+// Register request handlers in router.
+func (s *Server) Register(r chi.Router) {
+	r.MethodFunc("GET", "/error", s.HandleErrorGetRequest)
+	r.MethodFunc("GET", "/foobar", s.HandleFoobarGetRequest)
+	r.MethodFunc("POST", "/foobar", s.HandleFoobarPostRequest)
+	r.MethodFunc("PUT", "/foobar", s.HandleFoobarPutRequest)
+	r.MethodFunc("POST", "/pet", s.HandlePetCreateRequest)
+	r.MethodFunc("GET", "/pet/friendNames/{id}", s.HandlePetFriendsNamesByIDRequest)
+	r.MethodFunc("GET", "/pet", s.HandlePetGetRequest)
+	r.MethodFunc("GET", "/pet/avatar", s.HandlePetGetAvatarByIDRequest)
+	r.MethodFunc("GET", "/pet/{name}", s.HandlePetGetByNameRequest)
+	r.MethodFunc("GET", "/pet/name/{id}", s.HandlePetNameByIDRequest)
+	r.MethodFunc("POST", "/pet/updateNameAlias", s.HandlePetUpdateNameAliasPostRequest)
+	r.MethodFunc("POST", "/pet/updateName", s.HandlePetUpdateNamePostRequest)
+	r.MethodFunc("POST", "/pet/avatar", s.HandlePetUploadAvatarByIDRequest)
+}
+
+// DefaultMux returns new *chi.Mux with called Register method on it.
+func (s *Server) DefaultMux() *chi.Mux {
+	mux := chi.NewMux()
+	s.Register(mux)
+	return mux
 }

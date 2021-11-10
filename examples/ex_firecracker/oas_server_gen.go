@@ -187,31 +187,39 @@ func NewServer(h Handler, opts ...Option) *Server {
 	return srv
 }
 
-func (s *Server) Register(mux chi.Mux) {
-	mux.MethodFunc("PUT", "/snapshot/create", s.HandleCreateSnapshotRequest)
-	mux.MethodFunc("PUT", "/actions", s.HandleCreateSyncActionRequest)
-	mux.MethodFunc("GET", "/balloon", s.HandleDescribeBalloonConfigRequest)
-	mux.MethodFunc("GET", "/balloon/statistics", s.HandleDescribeBalloonStatsRequest)
-	mux.MethodFunc("GET", "/", s.HandleDescribeInstanceRequest)
-	mux.MethodFunc("GET", "/vm/config", s.HandleGetExportVmConfigRequest)
-	mux.MethodFunc("GET", "/machine-config", s.HandleGetMachineConfigurationRequest)
-	mux.MethodFunc("PUT", "/snapshot/load", s.HandleLoadSnapshotRequest)
-	mux.MethodFunc("PUT", "/mmds/config", s.HandleMmdsConfigPutRequest)
-	mux.MethodFunc("GET", "/mmds", s.HandleMmdsGetRequest)
-	mux.MethodFunc("PATCH", "/mmds", s.HandleMmdsPatchRequest)
-	mux.MethodFunc("PUT", "/mmds", s.HandleMmdsPutRequest)
-	mux.MethodFunc("PATCH", "/balloon", s.HandlePatchBalloonRequest)
-	mux.MethodFunc("PATCH", "/balloon/statistics", s.HandlePatchBalloonStatsIntervalRequest)
-	mux.MethodFunc("PATCH", "/drives/{drive_id}", s.HandlePatchGuestDriveByIDRequest)
-	mux.MethodFunc("PATCH", "/network-interfaces/{iface_id}", s.HandlePatchGuestNetworkInterfaceByIDRequest)
-	mux.MethodFunc("PATCH", "/machine-config", s.HandlePatchMachineConfigurationRequest)
-	mux.MethodFunc("PATCH", "/vm", s.HandlePatchVmRequest)
-	mux.MethodFunc("PUT", "/balloon", s.HandlePutBalloonRequest)
-	mux.MethodFunc("PUT", "/boot-source", s.HandlePutGuestBootSourceRequest)
-	mux.MethodFunc("PUT", "/drives/{drive_id}", s.HandlePutGuestDriveByIDRequest)
-	mux.MethodFunc("PUT", "/network-interfaces/{iface_id}", s.HandlePutGuestNetworkInterfaceByIDRequest)
-	mux.MethodFunc("PUT", "/vsock", s.HandlePutGuestVsockRequest)
-	mux.MethodFunc("PUT", "/logger", s.HandlePutLoggerRequest)
-	mux.MethodFunc("PUT", "/machine-config", s.HandlePutMachineConfigurationRequest)
-	mux.MethodFunc("PUT", "/metrics", s.HandlePutMetricsRequest)
+// Register request handlers in router.
+func (s *Server) Register(r chi.Router) {
+	r.MethodFunc("PUT", "/snapshot/create", s.HandleCreateSnapshotRequest)
+	r.MethodFunc("PUT", "/actions", s.HandleCreateSyncActionRequest)
+	r.MethodFunc("GET", "/balloon", s.HandleDescribeBalloonConfigRequest)
+	r.MethodFunc("GET", "/balloon/statistics", s.HandleDescribeBalloonStatsRequest)
+	r.MethodFunc("GET", "/", s.HandleDescribeInstanceRequest)
+	r.MethodFunc("GET", "/vm/config", s.HandleGetExportVmConfigRequest)
+	r.MethodFunc("GET", "/machine-config", s.HandleGetMachineConfigurationRequest)
+	r.MethodFunc("PUT", "/snapshot/load", s.HandleLoadSnapshotRequest)
+	r.MethodFunc("PUT", "/mmds/config", s.HandleMmdsConfigPutRequest)
+	r.MethodFunc("GET", "/mmds", s.HandleMmdsGetRequest)
+	r.MethodFunc("PATCH", "/mmds", s.HandleMmdsPatchRequest)
+	r.MethodFunc("PUT", "/mmds", s.HandleMmdsPutRequest)
+	r.MethodFunc("PATCH", "/balloon", s.HandlePatchBalloonRequest)
+	r.MethodFunc("PATCH", "/balloon/statistics", s.HandlePatchBalloonStatsIntervalRequest)
+	r.MethodFunc("PATCH", "/drives/{drive_id}", s.HandlePatchGuestDriveByIDRequest)
+	r.MethodFunc("PATCH", "/network-interfaces/{iface_id}", s.HandlePatchGuestNetworkInterfaceByIDRequest)
+	r.MethodFunc("PATCH", "/machine-config", s.HandlePatchMachineConfigurationRequest)
+	r.MethodFunc("PATCH", "/vm", s.HandlePatchVmRequest)
+	r.MethodFunc("PUT", "/balloon", s.HandlePutBalloonRequest)
+	r.MethodFunc("PUT", "/boot-source", s.HandlePutGuestBootSourceRequest)
+	r.MethodFunc("PUT", "/drives/{drive_id}", s.HandlePutGuestDriveByIDRequest)
+	r.MethodFunc("PUT", "/network-interfaces/{iface_id}", s.HandlePutGuestNetworkInterfaceByIDRequest)
+	r.MethodFunc("PUT", "/vsock", s.HandlePutGuestVsockRequest)
+	r.MethodFunc("PUT", "/logger", s.HandlePutLoggerRequest)
+	r.MethodFunc("PUT", "/machine-config", s.HandlePutMachineConfigurationRequest)
+	r.MethodFunc("PUT", "/metrics", s.HandlePutMetricsRequest)
+}
+
+// DefaultMux returns new *chi.Mux with called Register method on it.
+func (s *Server) DefaultMux() *chi.Mux {
+	mux := chi.NewMux()
+	s.Register(mux)
+	return mux
 }

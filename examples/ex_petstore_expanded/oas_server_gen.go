@@ -87,6 +87,14 @@ func NewServer(h Handler, opts ...Option) *Server {
 	return srv
 }
 
-func (s *Server) Register(mux chi.Mux) {
-	mux.MethodFunc("DELETE", "/pets/{id}", s.HandleDeletePetRequest)
+// Register request handlers in router.
+func (s *Server) Register(r chi.Router) {
+	r.MethodFunc("DELETE", "/pets/{id}", s.HandleDeletePetRequest)
+}
+
+// DefaultMux returns new *chi.Mux with called Register method on it.
+func (s *Server) DefaultMux() *chi.Mux {
+	mux := chi.NewMux()
+	s.Register(mux)
+	return mux
 }
