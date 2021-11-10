@@ -1084,8 +1084,29 @@ func (s *GetSchedulingV1APIResourcesUnauthorized) Decode(d *jx.Decoder) error {
 	})
 }
 
-func (GetServiceAccountIssuerOpenIDConfigurationOKApplicationJSON) Encode(e *jx.Encoder) {}
-func (GetServiceAccountIssuerOpenIDConfigurationOKApplicationJSON) Decode(d *jx.Decoder) error {
+// Encode encodes GetServiceAccountIssuerOpenIDConfigurationOKApplicationJSON as json.
+func (s GetServiceAccountIssuerOpenIDConfigurationOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := string(s)
+	e.Str(unwrapped)
+}
+
+// Decode decodes GetServiceAccountIssuerOpenIDConfigurationOKApplicationJSON from json.
+func (s *GetServiceAccountIssuerOpenIDConfigurationOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode GetServiceAccountIssuerOpenIDConfigurationOKApplicationJSON to nil`)
+	}
+	var unwrapped string
+	if err := func() error {
+		v, err := d.Str()
+		unwrapped = string(v)
+		if err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = GetServiceAccountIssuerOpenIDConfigurationOKApplicationJSON(unwrapped)
 	return nil
 }
 
@@ -1902,14 +1923,9 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList) Deco
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAdmissionregistrationV1WebhookClientConfig) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	if s.CaBundle != nil {
-		e.FieldStart("caBundle")
-		e.ArrStart()
-		for _, elem := range s.CaBundle {
-			_ = elem // Unsupported kind "primitive".
-		}
-		e.ArrEnd()
-	}
+
+	e.FieldStart("caBundle")
+	e.Base64(s.CaBundle)
 	if s.Service.Set {
 		e.FieldStart("service")
 		s.Service.Encode(e)
@@ -1929,13 +1945,9 @@ func (s *IoK8sAPIAdmissionregistrationV1WebhookClientConfig) Decode(d *jx.Decode
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "caBundle":
-			s.CaBundle = nil
-			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem byte
-				return errors.New(`decoding of "byte" (primitive) is not implemented`)
-				s.CaBundle = append(s.CaBundle, elem)
-				return nil
-			}); err != nil {
+			v, err := d.Base64()
+			s.CaBundle = []byte(v)
+			if err != nil {
 				return err
 			}
 		case "service":
@@ -4686,7 +4698,9 @@ func (s IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) Encode(e *jx.En
 		e.FieldStart("currentAverageUtilization")
 		s.CurrentAverageUtilization.Encode(e)
 	}
-	// Unsupported kind "alias".
+
+	e.FieldStart("currentAverageValue")
+	s.CurrentAverageValue.Encode(e)
 
 	e.FieldStart("name")
 	e.Str(s.Name)
@@ -4712,7 +4726,15 @@ func (s *IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) Decode(d *jx.D
 				return err
 			}
 		case "currentAverageValue":
-			return errors.New(`decoding of "IoK8sApimachineryPkgAPIResourceQuantity" (alias) is not implemented`)
+			{
+				var unwrapped string
+				v, err := d.Str()
+				unwrapped = string(v)
+				if err != nil {
+					return err
+				}
+				s.CurrentAverageValue = IoK8sApimachineryPkgAPIResourceQuantity(unwrapped)
+			}
 		case "name":
 			v, err := d.Str()
 			s.Name = string(v)
@@ -4836,7 +4858,9 @@ func (s IoK8sAPIAutoscalingV2beta1ExternalMetricStatus) Encode(e *jx.Encoder) {
 		e.FieldStart("currentAverageValue")
 		s.CurrentAverageValue.Encode(e)
 	}
-	// Unsupported kind "alias".
+
+	e.FieldStart("currentValue")
+	s.CurrentValue.Encode(e)
 
 	e.FieldStart("metricName")
 	e.Str(s.MetricName)
@@ -4860,7 +4884,15 @@ func (s *IoK8sAPIAutoscalingV2beta1ExternalMetricStatus) Decode(d *jx.Decoder) e
 				return err
 			}
 		case "currentValue":
-			return errors.New(`decoding of "IoK8sApimachineryPkgAPIResourceQuantity" (alias) is not implemented`)
+			{
+				var unwrapped string
+				v, err := d.Str()
+				unwrapped = string(v)
+				if err != nil {
+					return err
+				}
+				s.CurrentValue = IoK8sApimachineryPkgAPIResourceQuantity(unwrapped)
+			}
 		case "metricName":
 			v, err := d.Str()
 			s.MetricName = string(v)
@@ -5400,7 +5432,9 @@ func (s IoK8sAPIAutoscalingV2beta1ObjectMetricSource) Encode(e *jx.Encoder) {
 
 	e.FieldStart("target")
 	s.Target.Encode(e)
-	// Unsupported kind "alias".
+
+	e.FieldStart("targetValue")
+	s.TargetValue.Encode(e)
 	e.ObjEnd()
 }
 
@@ -5432,7 +5466,15 @@ func (s *IoK8sAPIAutoscalingV2beta1ObjectMetricSource) Decode(d *jx.Decoder) err
 				return err
 			}
 		case "targetValue":
-			return errors.New(`decoding of "IoK8sApimachineryPkgAPIResourceQuantity" (alias) is not implemented`)
+			{
+				var unwrapped string
+				v, err := d.Str()
+				unwrapped = string(v)
+				if err != nil {
+					return err
+				}
+				s.TargetValue = IoK8sApimachineryPkgAPIResourceQuantity(unwrapped)
+			}
 		default:
 			return d.Skip()
 		}
@@ -5447,7 +5489,9 @@ func (s IoK8sAPIAutoscalingV2beta1ObjectMetricStatus) Encode(e *jx.Encoder) {
 		e.FieldStart("averageValue")
 		s.AverageValue.Encode(e)
 	}
-	// Unsupported kind "alias".
+
+	e.FieldStart("currentValue")
+	s.CurrentValue.Encode(e)
 
 	e.FieldStart("metricName")
 	e.Str(s.MetricName)
@@ -5474,7 +5518,15 @@ func (s *IoK8sAPIAutoscalingV2beta1ObjectMetricStatus) Decode(d *jx.Decoder) err
 				return err
 			}
 		case "currentValue":
-			return errors.New(`decoding of "IoK8sApimachineryPkgAPIResourceQuantity" (alias) is not implemented`)
+			{
+				var unwrapped string
+				v, err := d.Str()
+				unwrapped = string(v)
+				if err != nil {
+					return err
+				}
+				s.CurrentValue = IoK8sApimachineryPkgAPIResourceQuantity(unwrapped)
+			}
 		case "metricName":
 			v, err := d.Str()
 			s.MetricName = string(v)
@@ -5507,7 +5559,9 @@ func (s IoK8sAPIAutoscalingV2beta1PodsMetricSource) Encode(e *jx.Encoder) {
 		e.FieldStart("selector")
 		s.Selector.Encode(e)
 	}
-	// Unsupported kind "alias".
+
+	e.FieldStart("targetAverageValue")
+	s.TargetAverageValue.Encode(e)
 	e.ObjEnd()
 }
 
@@ -5530,7 +5584,15 @@ func (s *IoK8sAPIAutoscalingV2beta1PodsMetricSource) Decode(d *jx.Decoder) error
 				return err
 			}
 		case "targetAverageValue":
-			return errors.New(`decoding of "IoK8sApimachineryPkgAPIResourceQuantity" (alias) is not implemented`)
+			{
+				var unwrapped string
+				v, err := d.Str()
+				unwrapped = string(v)
+				if err != nil {
+					return err
+				}
+				s.TargetAverageValue = IoK8sApimachineryPkgAPIResourceQuantity(unwrapped)
+			}
 		default:
 			return d.Skip()
 		}
@@ -5541,7 +5603,9 @@ func (s *IoK8sAPIAutoscalingV2beta1PodsMetricSource) Decode(d *jx.Decoder) error
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1PodsMetricStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	// Unsupported kind "alias".
+
+	e.FieldStart("currentAverageValue")
+	s.CurrentAverageValue.Encode(e)
 
 	e.FieldStart("metricName")
 	e.Str(s.MetricName)
@@ -5560,7 +5624,15 @@ func (s *IoK8sAPIAutoscalingV2beta1PodsMetricStatus) Decode(d *jx.Decoder) error
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "currentAverageValue":
-			return errors.New(`decoding of "IoK8sApimachineryPkgAPIResourceQuantity" (alias) is not implemented`)
+			{
+				var unwrapped string
+				v, err := d.Str()
+				unwrapped = string(v)
+				if err != nil {
+					return err
+				}
+				s.CurrentAverageValue = IoK8sApimachineryPkgAPIResourceQuantity(unwrapped)
+			}
 		case "metricName":
 			v, err := d.Str()
 			s.MetricName = string(v)
@@ -5633,7 +5705,9 @@ func (s IoK8sAPIAutoscalingV2beta1ResourceMetricStatus) Encode(e *jx.Encoder) {
 		e.FieldStart("currentAverageUtilization")
 		s.CurrentAverageUtilization.Encode(e)
 	}
-	// Unsupported kind "alias".
+
+	e.FieldStart("currentAverageValue")
+	s.CurrentAverageValue.Encode(e)
 
 	e.FieldStart("name")
 	e.Str(s.Name)
@@ -5653,7 +5727,15 @@ func (s *IoK8sAPIAutoscalingV2beta1ResourceMetricStatus) Decode(d *jx.Decoder) e
 				return err
 			}
 		case "currentAverageValue":
-			return errors.New(`decoding of "IoK8sApimachineryPkgAPIResourceQuantity" (alias) is not implemented`)
+			{
+				var unwrapped string
+				v, err := d.Str()
+				unwrapped = string(v)
+				if err != nil {
+					return err
+				}
+				s.CurrentAverageValue = IoK8sApimachineryPkgAPIResourceQuantity(unwrapped)
+			}
 		case "name":
 			v, err := d.Str()
 			s.Name = string(v)
@@ -8211,11 +8293,7 @@ func (s IoK8sAPICertificatesV1CertificateSigningRequestSpec) Encode(e *jx.Encode
 	}
 
 	e.FieldStart("request")
-	e.ArrStart()
-	for _, elem := range s.Request {
-		_ = elem // Unsupported kind "primitive".
-	}
-	e.ArrEnd()
+	e.Base64(s.Request)
 
 	e.FieldStart("signerName")
 	e.Str(s.SignerName)
@@ -8272,13 +8350,9 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpec) Decode(d *jx.Decod
 				return err
 			}
 		case "request":
-			s.Request = nil
-			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem byte
-				return errors.New(`decoding of "byte" (primitive) is not implemented`)
-				s.Request = append(s.Request, elem)
-				return nil
-			}); err != nil {
+			v, err := d.Base64()
+			s.Request = []byte(v)
+			if err != nil {
 				return err
 			}
 		case "signerName":
@@ -8341,14 +8415,9 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra) Decode(d *jx.
 // Encode implements json.Marshaler.
 func (s IoK8sAPICertificatesV1CertificateSigningRequestStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	if s.Certificate != nil {
-		e.FieldStart("certificate")
-		e.ArrStart()
-		for _, elem := range s.Certificate {
-			_ = elem // Unsupported kind "primitive".
-		}
-		e.ArrEnd()
-	}
+
+	e.FieldStart("certificate")
+	e.Base64(s.Certificate)
 	if s.Conditions != nil {
 		e.FieldStart("conditions")
 		e.ArrStart()
@@ -8368,13 +8437,9 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestStatus) Decode(d *jx.Dec
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "certificate":
-			s.Certificate = nil
-			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem byte
-				return errors.New(`decoding of "byte" (primitive) is not implemented`)
-				s.Certificate = append(s.Certificate, elem)
-				return nil
-			}); err != nil {
+			v, err := d.Base64()
+			s.Certificate = []byte(v)
+			if err != nil {
 				return err
 			}
 		case "conditions":
@@ -12754,7 +12819,9 @@ func (s IoK8sAPICoreV1HTTPGetAction) Encode(e *jx.Encoder) {
 		e.FieldStart("path")
 		s.Path.Encode(e)
 	}
-	// Unsupported kind "alias".
+
+	e.FieldStart("port")
+	s.Port.Encode(e)
 	if s.Scheme.Set {
 		e.FieldStart("scheme")
 		s.Scheme.Encode(e)
@@ -12792,7 +12859,15 @@ func (s *IoK8sAPICoreV1HTTPGetAction) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "port":
-			return errors.New(`decoding of "IoK8sApimachineryPkgUtilIntstrIntOrString" (alias) is not implemented`)
+			{
+				var unwrapped string
+				v, err := d.Str()
+				unwrapped = string(v)
+				if err != nil {
+					return err
+				}
+				s.Port = IoK8sApimachineryPkgUtilIntstrIntOrString(unwrapped)
+			}
 		case "scheme":
 			s.Scheme.Reset()
 			if err := s.Scheme.Decode(d); err != nil {
@@ -21130,7 +21205,9 @@ func (s IoK8sAPICoreV1TCPSocketAction) Encode(e *jx.Encoder) {
 		e.FieldStart("host")
 		s.Host.Encode(e)
 	}
-	// Unsupported kind "alias".
+
+	e.FieldStart("port")
+	s.Port.Encode(e)
 	e.ObjEnd()
 }
 
@@ -21147,7 +21224,15 @@ func (s *IoK8sAPICoreV1TCPSocketAction) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "port":
-			return errors.New(`decoding of "IoK8sApimachineryPkgUtilIntstrIntOrString" (alias) is not implemented`)
+			{
+				var unwrapped string
+				v, err := d.Str()
+				unwrapped = string(v)
+				if err != nil {
+					return err
+				}
+				s.Port = IoK8sApimachineryPkgUtilIntstrIntOrString(unwrapped)
+			}
 		default:
 			return d.Skip()
 		}
@@ -23040,7 +23125,9 @@ func (s IoK8sAPIEventsV1Event) Encode(e *jx.Encoder) {
 		e.FieldStart("deprecatedSource")
 		s.DeprecatedSource.Encode(e)
 	}
-	// Unsupported kind "alias".
+
+	e.FieldStart("eventTime")
+	s.EventTime.Encode(e)
 	if s.Kind.Set {
 		e.FieldStart("kind")
 		s.Kind.Encode(e)
@@ -23122,7 +23209,15 @@ func (s *IoK8sAPIEventsV1Event) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "eventTime":
-			return errors.New(`decoding of "IoK8sApimachineryPkgApisMetaV1MicroTime" (alias) is not implemented`)
+			{
+				var unwrapped time.Time
+				v, err := json.DecodeDateTime(d)
+				unwrapped = v
+				if err != nil {
+					return err
+				}
+				s.EventTime = IoK8sApimachineryPkgApisMetaV1MicroTime(unwrapped)
+			}
 		case "kind":
 			s.Kind.Reset()
 			if err := s.Kind.Decode(d); err != nil {
@@ -23252,7 +23347,9 @@ func (s IoK8sAPIEventsV1EventSeries) Encode(e *jx.Encoder) {
 
 	e.FieldStart("count")
 	e.Int32(s.Count)
-	// Unsupported kind "alias".
+
+	e.FieldStart("lastObservedTime")
+	s.LastObservedTime.Encode(e)
 	e.ObjEnd()
 }
 
@@ -23270,7 +23367,15 @@ func (s *IoK8sAPIEventsV1EventSeries) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "lastObservedTime":
-			return errors.New(`decoding of "IoK8sApimachineryPkgApisMetaV1MicroTime" (alias) is not implemented`)
+			{
+				var unwrapped time.Time
+				v, err := json.DecodeDateTime(d)
+				unwrapped = v
+				if err != nil {
+					return err
+				}
+				s.LastObservedTime = IoK8sApimachineryPkgApisMetaV1MicroTime(unwrapped)
+			}
 		default:
 			return d.Skip()
 		}
@@ -23305,7 +23410,9 @@ func (s IoK8sAPIEventsV1beta1Event) Encode(e *jx.Encoder) {
 		e.FieldStart("deprecatedSource")
 		s.DeprecatedSource.Encode(e)
 	}
-	// Unsupported kind "alias".
+
+	e.FieldStart("eventTime")
+	s.EventTime.Encode(e)
 	if s.Kind.Set {
 		e.FieldStart("kind")
 		s.Kind.Encode(e)
@@ -23387,7 +23494,15 @@ func (s *IoK8sAPIEventsV1beta1Event) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "eventTime":
-			return errors.New(`decoding of "IoK8sApimachineryPkgApisMetaV1MicroTime" (alias) is not implemented`)
+			{
+				var unwrapped time.Time
+				v, err := json.DecodeDateTime(d)
+				unwrapped = v
+				if err != nil {
+					return err
+				}
+				s.EventTime = IoK8sApimachineryPkgApisMetaV1MicroTime(unwrapped)
+			}
 		case "kind":
 			s.Kind.Reset()
 			if err := s.Kind.Decode(d); err != nil {
@@ -23517,7 +23632,9 @@ func (s IoK8sAPIEventsV1beta1EventSeries) Encode(e *jx.Encoder) {
 
 	e.FieldStart("count")
 	e.Int32(s.Count)
-	// Unsupported kind "alias".
+
+	e.FieldStart("lastObservedTime")
+	s.LastObservedTime.Encode(e)
 	e.ObjEnd()
 }
 
@@ -23535,7 +23652,15 @@ func (s *IoK8sAPIEventsV1beta1EventSeries) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "lastObservedTime":
-			return errors.New(`decoding of "IoK8sApimachineryPkgApisMetaV1MicroTime" (alias) is not implemented`)
+			{
+				var unwrapped time.Time
+				v, err := json.DecodeDateTime(d)
+				unwrapped = v
+				if err != nil {
+					return err
+				}
+				s.LastObservedTime = IoK8sApimachineryPkgApisMetaV1MicroTime(unwrapped)
+			}
 		default:
 			return d.Skip()
 		}
@@ -33315,14 +33440,9 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) Deco
 // Encode implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	if s.CaBundle != nil {
-		e.FieldStart("caBundle")
-		e.ArrStart()
-		for _, elem := range s.CaBundle {
-			_ = elem // Unsupported kind "primitive".
-		}
-		e.ArrEnd()
-	}
+
+	e.FieldStart("caBundle")
+	e.Base64(s.CaBundle)
 	if s.Service.Set {
 		e.FieldStart("service")
 		s.Service.Encode(e)
@@ -33342,13 +33462,9 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) D
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "caBundle":
-			s.CaBundle = nil
-			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem byte
-				return errors.New(`decoding of "byte" (primitive) is not implemented`)
-				s.CaBundle = append(s.CaBundle, elem)
-				return nil
-			}); err != nil {
+			v, err := d.Base64()
+			s.CaBundle = []byte(v)
+			if err != nil {
 				return err
 			}
 		case "service":
@@ -33418,8 +33534,31 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) Dec
 	})
 }
 
-func (IoK8sApimachineryPkgAPIResourceQuantity) Encode(e *jx.Encoder)       {}
-func (IoK8sApimachineryPkgAPIResourceQuantity) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes IoK8sApimachineryPkgAPIResourceQuantity as json.
+func (s IoK8sApimachineryPkgAPIResourceQuantity) Encode(e *jx.Encoder) {
+	unwrapped := string(s)
+	e.Str(unwrapped)
+}
+
+// Decode decodes IoK8sApimachineryPkgAPIResourceQuantity from json.
+func (s *IoK8sApimachineryPkgAPIResourceQuantity) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode IoK8sApimachineryPkgAPIResourceQuantity to nil`)
+	}
+	var unwrapped string
+	if err := func() error {
+		v, err := d.Str()
+		unwrapped = string(v)
+		if err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = IoK8sApimachineryPkgAPIResourceQuantity(unwrapped)
+	return nil
+}
 
 // Encode implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1APIGroup) Encode(e *jx.Encoder) {
@@ -33868,7 +34007,9 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIVersions) Decode(d *jx.Decoder) error 
 // Encode implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1Condition) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	// Unsupported kind "alias".
+
+	e.FieldStart("lastTransitionTime")
+	s.LastTransitionTime.Encode(e)
 
 	e.FieldStart("message")
 	e.Str(s.Message)
@@ -33896,7 +34037,15 @@ func (s *IoK8sApimachineryPkgApisMetaV1Condition) Decode(d *jx.Decoder) error {
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "lastTransitionTime":
-			return errors.New(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
+			{
+				var unwrapped time.Time
+				v, err := json.DecodeDateTime(d)
+				unwrapped = v
+				if err != nil {
+					return err
+				}
+				s.LastTransitionTime = IoK8sApimachineryPkgApisMetaV1Time(unwrapped)
+			}
 		case "message":
 			v, err := d.Str()
 			s.Message = string(v)
@@ -34263,8 +34412,31 @@ func (s *IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) Decode(d *jx.Decoder)
 	})
 }
 
-func (IoK8sApimachineryPkgApisMetaV1MicroTime) Encode(e *jx.Encoder)       {}
-func (IoK8sApimachineryPkgApisMetaV1MicroTime) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes IoK8sApimachineryPkgApisMetaV1MicroTime as json.
+func (s IoK8sApimachineryPkgApisMetaV1MicroTime) Encode(e *jx.Encoder) {
+	unwrapped := time.Time(s)
+	json.EncodeDateTime(e, unwrapped)
+}
+
+// Decode decodes IoK8sApimachineryPkgApisMetaV1MicroTime from json.
+func (s *IoK8sApimachineryPkgApisMetaV1MicroTime) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode IoK8sApimachineryPkgApisMetaV1MicroTime to nil`)
+	}
+	var unwrapped time.Time
+	if err := func() error {
+		v, err := json.DecodeDateTime(d)
+		unwrapped = v
+		if err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = IoK8sApimachineryPkgApisMetaV1MicroTime(unwrapped)
+	return nil
+}
 
 // Encode implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1ObjectMeta) Encode(e *jx.Encoder) {
@@ -34621,8 +34793,31 @@ func (s *IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR) Decode(d *jx.D
 	})
 }
 
-func (IoK8sApimachineryPkgApisMetaV1Time) Encode(e *jx.Encoder)       {}
-func (IoK8sApimachineryPkgApisMetaV1Time) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes IoK8sApimachineryPkgApisMetaV1Time as json.
+func (s IoK8sApimachineryPkgApisMetaV1Time) Encode(e *jx.Encoder) {
+	unwrapped := time.Time(s)
+	json.EncodeDateTime(e, unwrapped)
+}
+
+// Decode decodes IoK8sApimachineryPkgApisMetaV1Time from json.
+func (s *IoK8sApimachineryPkgApisMetaV1Time) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode IoK8sApimachineryPkgApisMetaV1Time to nil`)
+	}
+	var unwrapped time.Time
+	if err := func() error {
+		v, err := json.DecodeDateTime(d)
+		unwrapped = v
+		if err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = IoK8sApimachineryPkgApisMetaV1Time(unwrapped)
+	return nil
+}
 
 // Encode implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1WatchEvent) Encode(e *jx.Encoder) {
@@ -34680,8 +34875,31 @@ func (s *IoK8sApimachineryPkgRuntimeRawExtension) Decode(d *jx.Decoder) error {
 	})
 }
 
-func (IoK8sApimachineryPkgUtilIntstrIntOrString) Encode(e *jx.Encoder)       {}
-func (IoK8sApimachineryPkgUtilIntstrIntOrString) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes IoK8sApimachineryPkgUtilIntstrIntOrString as json.
+func (s IoK8sApimachineryPkgUtilIntstrIntOrString) Encode(e *jx.Encoder) {
+	unwrapped := string(s)
+	e.Str(unwrapped)
+}
+
+// Decode decodes IoK8sApimachineryPkgUtilIntstrIntOrString from json.
+func (s *IoK8sApimachineryPkgUtilIntstrIntOrString) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode IoK8sApimachineryPkgUtilIntstrIntOrString to nil`)
+	}
+	var unwrapped string
+	if err := func() error {
+		v, err := d.Str()
+		unwrapped = string(v)
+		if err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = IoK8sApimachineryPkgUtilIntstrIntOrString(unwrapped)
+	return nil
+}
 
 // Encode implements json.Marshaler.
 func (s IoK8sApimachineryPkgVersionInfo) Encode(e *jx.Encoder) {
@@ -34983,14 +35201,9 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList) Decode(d *jx
 // Encode implements json.Marshaler.
 func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	if s.CaBundle != nil {
-		e.FieldStart("caBundle")
-		e.ArrStart()
-		for _, elem := range s.CaBundle {
-			_ = elem // Unsupported kind "primitive".
-		}
-		e.ArrEnd()
-	}
+
+	e.FieldStart("caBundle")
+	e.Base64(s.CaBundle)
 	if s.Group.Set {
 		e.FieldStart("group")
 		s.Group.Encode(e)
@@ -35024,13 +35237,9 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) Decode(d *jx
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "caBundle":
-			s.CaBundle = nil
-			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem byte
-				return errors.New(`decoding of "byte" (primitive) is not implemented`)
-				s.CaBundle = append(s.CaBundle, elem)
-				return nil
-			}); err != nil {
+			v, err := d.Base64()
+			s.CaBundle = []byte(v)
+			if err != nil {
 				return err
 			}
 		case "group":
@@ -43469,8 +43678,31 @@ func (s *ReadCoreV1NamespacedPodEphemeralcontainersUnauthorized) Decode(d *jx.De
 	})
 }
 
-func (ReadCoreV1NamespacedPodLogOKApplicationJSON) Encode(e *jx.Encoder)       {}
-func (ReadCoreV1NamespacedPodLogOKApplicationJSON) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes ReadCoreV1NamespacedPodLogOKApplicationJSON as json.
+func (s ReadCoreV1NamespacedPodLogOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := string(s)
+	e.Str(unwrapped)
+}
+
+// Decode decodes ReadCoreV1NamespacedPodLogOKApplicationJSON from json.
+func (s *ReadCoreV1NamespacedPodLogOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ReadCoreV1NamespacedPodLogOKApplicationJSON to nil`)
+	}
+	var unwrapped string
+	if err := func() error {
+		v, err := d.Str()
+		unwrapped = string(v)
+		if err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ReadCoreV1NamespacedPodLogOKApplicationJSON(unwrapped)
+	return nil
+}
 
 // Encode implements json.Marshaler.
 func (s ReadCoreV1NamespacedPodLogUnauthorized) Encode(e *jx.Encoder) {

@@ -64,10 +64,33 @@ var (
 	_ = sync.Pool{}
 )
 
+func (s CpuTemplate) Validate() error {
+	switch s {
+	case "C3":
+		return nil
+	case "T2":
+		return nil
+	default:
+		return errors.Errorf("invalid value: %v", s)
+	}
+}
 func (s Drive) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.RateLimiter // validation expected, but not supported
+
+		if s.RateLimiter.Set {
+			if err := func() error {
+
+				if err := s.RateLimiter.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -83,9 +106,11 @@ func (s Drive) Validate() error {
 func (s FullVmConfiguration) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
+
 		var failures []validate.FieldError
 		for i, elem := range s.BlockDevices {
 			if err := func() error {
+
 				if err := elem.Validate(); err != nil {
 					return err
 				}
@@ -108,7 +133,20 @@ func (s FullVmConfiguration) Validate() error {
 		})
 	}
 	if err := func() error {
-		_ = s.Logger // validation expected, but not supported
+
+		if s.Logger.Set {
+			if err := func() error {
+
+				if err := s.Logger.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -117,7 +155,20 @@ func (s FullVmConfiguration) Validate() error {
 		})
 	}
 	if err := func() error {
-		_ = s.MachineConfig // validation expected, but not supported
+
+		if s.MachineConfig.Set {
+			if err := func() error {
+
+				if err := s.MachineConfig.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -126,9 +177,11 @@ func (s FullVmConfiguration) Validate() error {
 		})
 	}
 	if err := func() error {
+
 		var failures []validate.FieldError
 		for i, elem := range s.NetDevices {
 			if err := func() error {
+
 				if err := elem.Validate(); err != nil {
 					return err
 				}
@@ -151,7 +204,20 @@ func (s FullVmConfiguration) Validate() error {
 		})
 	}
 	if err := func() error {
-		_ = s.VsockDevice // validation expected, but not supported
+
+		if s.VsockDevice.Set {
+			if err := func() error {
+
+				if err := s.VsockDevice.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -167,7 +233,10 @@ func (s FullVmConfiguration) Validate() error {
 func (s InstanceActionInfo) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.ActionType // validation expected, but not supported
+
+		if err := s.ActionType.Validate(); err != nil {
+			return err
+		}
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -180,10 +249,25 @@ func (s InstanceActionInfo) Validate() error {
 	}
 	return nil
 }
+func (s InstanceActionInfoActionType) Validate() error {
+	switch s {
+	case "FlushMetrics":
+		return nil
+	case "InstanceStart":
+		return nil
+	case "SendCtrlAltDel":
+		return nil
+	default:
+		return errors.Errorf("invalid value: %v", s)
+	}
+}
 func (s InstanceInfo) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.State // validation expected, but not supported
+
+		if err := s.State.Validate(); err != nil {
+			return err
+		}
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -196,10 +280,35 @@ func (s InstanceInfo) Validate() error {
 	}
 	return nil
 }
+func (s InstanceInfoState) Validate() error {
+	switch s {
+	case "Not started":
+		return nil
+	case "Running":
+		return nil
+	case "Paused":
+		return nil
+	default:
+		return errors.Errorf("invalid value: %v", s)
+	}
+}
 func (s Logger) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.Level // validation expected, but not supported
+
+		if s.Level.Set {
+			if err := func() error {
+
+				if err := s.Level.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -212,10 +321,37 @@ func (s Logger) Validate() error {
 	}
 	return nil
 }
+func (s LoggerLevel) Validate() error {
+	switch s {
+	case "Error":
+		return nil
+	case "Warning":
+		return nil
+	case "Info":
+		return nil
+	case "Debug":
+		return nil
+	default:
+		return errors.Errorf("invalid value: %v", s)
+	}
+}
 func (s MachineConfiguration) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.CPUTemplate // validation expected, but not supported
+
+		if s.CPUTemplate.Set {
+			if err := func() error {
+
+				if err := s.CPUTemplate.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -224,6 +360,7 @@ func (s MachineConfiguration) Validate() error {
 		})
 	}
 	if err := func() error {
+
 		if err := (validate.Int{
 			MinSet:       true,
 			Min:          1,
@@ -232,7 +369,7 @@ func (s MachineConfiguration) Validate() error {
 			MinExclusive: false,
 			MaxExclusive: false,
 		}).Validate(int64(s.VcpuCount)); err != nil {
-			return err
+			return errors.Wrap(err, "int")
 		}
 		return nil
 	}(); err != nil {
@@ -249,7 +386,20 @@ func (s MachineConfiguration) Validate() error {
 func (s NetworkInterface) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.RxRateLimiter // validation expected, but not supported
+
+		if s.RxRateLimiter.Set {
+			if err := func() error {
+
+				if err := s.RxRateLimiter.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -258,7 +408,20 @@ func (s NetworkInterface) Validate() error {
 		})
 	}
 	if err := func() error {
-		_ = s.TxRateLimiter // validation expected, but not supported
+
+		if s.TxRateLimiter.Set {
+			if err := func() error {
+
+				if err := s.TxRateLimiter.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -271,10 +434,112 @@ func (s NetworkInterface) Validate() error {
 	}
 	return nil
 }
+
+func (s OptCpuTemplate) Validate() error {
+	if s.Set {
+
+		if err := s.Value.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}
+	return nil
+}
+
+func (s OptLogger) Validate() error {
+	if s.Set {
+
+		if err := s.Value.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}
+	return nil
+}
+
+func (s OptLoggerLevel) Validate() error {
+	if s.Set {
+
+		if err := s.Value.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}
+	return nil
+}
+
+func (s OptMachineConfiguration) Validate() error {
+	if s.Set {
+
+		if err := s.Value.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}
+	return nil
+}
+
+func (s OptRateLimiter) Validate() error {
+	if s.Set {
+
+		if err := s.Value.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}
+	return nil
+}
+
+func (s OptSnapshotCreateParamsSnapshotType) Validate() error {
+	if s.Set {
+
+		if err := s.Value.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}
+	return nil
+}
+
+func (s OptTokenBucket) Validate() error {
+	if s.Set {
+
+		if err := s.Value.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}
+	return nil
+}
+
+func (s OptVsock) Validate() error {
+	if s.Set {
+
+		if err := s.Value.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}
+	return nil
+}
+
 func (s PartialDrive) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.RateLimiter // validation expected, but not supported
+
+		if s.RateLimiter.Set {
+			if err := func() error {
+
+				if err := s.RateLimiter.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -290,7 +555,20 @@ func (s PartialDrive) Validate() error {
 func (s PartialNetworkInterface) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.RxRateLimiter // validation expected, but not supported
+
+		if s.RxRateLimiter.Set {
+			if err := func() error {
+
+				if err := s.RxRateLimiter.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -299,7 +577,20 @@ func (s PartialNetworkInterface) Validate() error {
 		})
 	}
 	if err := func() error {
-		_ = s.TxRateLimiter // validation expected, but not supported
+
+		if s.TxRateLimiter.Set {
+			if err := func() error {
+
+				if err := s.TxRateLimiter.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -315,7 +606,20 @@ func (s PartialNetworkInterface) Validate() error {
 func (s RateLimiter) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.Bandwidth // validation expected, but not supported
+
+		if s.Bandwidth.Set {
+			if err := func() error {
+
+				if err := s.Bandwidth.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -324,7 +628,20 @@ func (s RateLimiter) Validate() error {
 		})
 	}
 	if err := func() error {
-		_ = s.Ops // validation expected, but not supported
+
+		if s.Ops.Set {
+			if err := func() error {
+
+				if err := s.Ops.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -340,7 +657,20 @@ func (s RateLimiter) Validate() error {
 func (s SnapshotCreateParams) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.SnapshotType // validation expected, but not supported
+
+		if s.SnapshotType.Set {
+			if err := func() error {
+
+				if err := s.SnapshotType.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -353,10 +683,40 @@ func (s SnapshotCreateParams) Validate() error {
 	}
 	return nil
 }
+func (s SnapshotCreateParamsSnapshotType) Validate() error {
+	switch s {
+	case "Full":
+		return nil
+	case "Diff":
+		return nil
+	default:
+		return errors.Errorf("invalid value: %v", s)
+	}
+}
 func (s TokenBucket) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.OneTimeBurst // validation expected, but not supported
+
+		if s.OneTimeBurst.Set {
+			if err := func() error {
+
+				if err := (validate.Int{
+					MinSet:       true,
+					Min:          0,
+					MaxSet:       false,
+					Max:          0,
+					MinExclusive: false,
+					MaxExclusive: false,
+				}).Validate(int64(s.OneTimeBurst.Value)); err != nil {
+					return errors.Wrap(err, "int")
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -365,6 +725,7 @@ func (s TokenBucket) Validate() error {
 		})
 	}
 	if err := func() error {
+
 		if err := (validate.Int{
 			MinSet:       true,
 			Min:          0,
@@ -373,7 +734,7 @@ func (s TokenBucket) Validate() error {
 			MinExclusive: false,
 			MaxExclusive: false,
 		}).Validate(int64(s.RefillTime)); err != nil {
-			return err
+			return errors.Wrap(err, "int")
 		}
 		return nil
 	}(); err != nil {
@@ -383,6 +744,7 @@ func (s TokenBucket) Validate() error {
 		})
 	}
 	if err := func() error {
+
 		if err := (validate.Int{
 			MinSet:       true,
 			Min:          0,
@@ -391,7 +753,7 @@ func (s TokenBucket) Validate() error {
 			MinExclusive: false,
 			MaxExclusive: false,
 		}).Validate(int64(s.Size)); err != nil {
-			return err
+			return errors.Wrap(err, "int")
 		}
 		return nil
 	}(); err != nil {
@@ -408,7 +770,10 @@ func (s TokenBucket) Validate() error {
 func (s VM) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.State // validation expected, but not supported
+
+		if err := s.State.Validate(); err != nil {
+			return err
+		}
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -421,9 +786,20 @@ func (s VM) Validate() error {
 	}
 	return nil
 }
+func (s VMState) Validate() error {
+	switch s {
+	case "Paused":
+		return nil
+	case "Resumed":
+		return nil
+	default:
+		return errors.Errorf("invalid value: %v", s)
+	}
+}
 func (s Vsock) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
+
 		if err := (validate.Int{
 			MinSet:       true,
 			Min:          3,
@@ -432,7 +808,7 @@ func (s Vsock) Validate() error {
 			MinExclusive: false,
 			MaxExclusive: false,
 		}).Validate(int64(s.GuestCid)); err != nil {
-			return err
+			return errors.Wrap(err, "int")
 		}
 		return nil
 	}(); err != nil {

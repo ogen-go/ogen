@@ -197,6 +197,7 @@ func (c *Client) AnswerPreCheckoutQueryPost(ctx context.Context, request AnswerP
 
 func (c *Client) AnswerShippingQueryPost(ctx context.Context, request AnswerShippingQueryPostReqApplicationJSON) (res AnswerShippingQueryPostRes, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -613,6 +614,7 @@ func (c *Client) GetStickerSetPost(ctx context.Context, request GetStickerSetPos
 
 func (c *Client) GetUpdatesPost(ctx context.Context, request GetUpdatesPostReqApplicationJSON) (res GetUpdatesPostRes, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -671,6 +673,7 @@ func (c *Client) GetUpdatesPost(ctx context.Context, request GetUpdatesPostReqAp
 
 func (c *Client) GetUserProfilePhotosPost(ctx context.Context, request GetUserProfilePhotosPostReqApplicationJSON) (res GetUserProfilePhotosPostRes, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -801,6 +804,7 @@ func (c *Client) LogOutPost(ctx context.Context) (res LogOutPostRes, err error) 
 
 func (c *Client) SendGamePost(ctx context.Context, request SendGamePostReqApplicationJSON) (res SendGamePostRes, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -859,6 +863,7 @@ func (c *Client) SendGamePost(ctx context.Context, request SendGamePostReqApplic
 
 func (c *Client) SendInvoicePost(ctx context.Context, request SendInvoicePostReqApplicationJSON) (res SendInvoicePostRes, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -917,6 +922,7 @@ func (c *Client) SendInvoicePost(ctx context.Context, request SendInvoicePostReq
 
 func (c *Client) SetMyCommandsPost(ctx context.Context, request SetMyCommandsPostReqApplicationJSON) (res SetMyCommandsPostRes, err error) {
 	if err := func() error {
+
 		if err := request.Validate(); err != nil {
 			return err
 		}

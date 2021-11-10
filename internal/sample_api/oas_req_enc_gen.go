@@ -96,7 +96,8 @@ func encodePetUpdateNameAliasPostRequestJSON(req PetName, span trace.Span) (data
 	buf := getBuf()
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
-	// Unsupported kind "alias".
+
+	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
 		putBuf(buf)
 		return nil, err

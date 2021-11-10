@@ -597,8 +597,31 @@ func (s *BotCommand) Decode(d *jx.Decoder) error {
 	})
 }
 
-func (CallbackGame) Encode(e *jx.Encoder)       {}
-func (CallbackGame) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes CallbackGame as json.
+func (s CallbackGame) Encode(e *jx.Encoder) {
+	unwrapped := string(s)
+	e.Str(unwrapped)
+}
+
+// Decode decodes CallbackGame from json.
+func (s *CallbackGame) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode CallbackGame to nil`)
+	}
+	var unwrapped string
+	if err := func() error {
+		v, err := d.Str()
+		unwrapped = string(v)
+		if err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = CallbackGame(unwrapped)
+	return nil
+}
 
 // Encode implements json.Marshaler.
 func (s CallbackQuery) Encode(e *jx.Encoder) {

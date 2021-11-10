@@ -456,11 +456,53 @@ func (s *ActionsAddSelfHostedRunnerToGroupForOrgNoContent) Decode(d *jx.Decoder)
 	})
 }
 
-func (ActionsApproveWorkflowRunApplicationJSONForbidden) Encode(e *jx.Encoder)       {}
-func (ActionsApproveWorkflowRunApplicationJSONForbidden) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes ActionsApproveWorkflowRunApplicationJSONForbidden as json.
+func (s ActionsApproveWorkflowRunApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (ActionsApproveWorkflowRunApplicationJSONNotFound) Encode(e *jx.Encoder)       {}
-func (ActionsApproveWorkflowRunApplicationJSONNotFound) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes ActionsApproveWorkflowRunApplicationJSONForbidden from json.
+func (s *ActionsApproveWorkflowRunApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ActionsApproveWorkflowRunApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ActionsApproveWorkflowRunApplicationJSONForbidden(unwrapped)
+	return nil
+}
+
+// Encode encodes ActionsApproveWorkflowRunApplicationJSONNotFound as json.
+func (s ActionsApproveWorkflowRunApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes ActionsApproveWorkflowRunApplicationJSONNotFound from json.
+func (s *ActionsApproveWorkflowRunApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ActionsApproveWorkflowRunApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ActionsApproveWorkflowRunApplicationJSONNotFound(unwrapped)
+	return nil
+}
 
 // Encode implements json.Marshaler.
 func (s ActionsBillingUsage) Encode(e *jx.Encoder) {
@@ -1315,8 +1357,31 @@ func (s *ActionsEnableWorkflowWorkflowID) Decode(d *jx.Decoder) error {
 	return nil
 }
 
-func (ActionsEnabled) Encode(e *jx.Encoder)       {}
-func (ActionsEnabled) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes ActionsEnabled as json.
+func (s ActionsEnabled) Encode(e *jx.Encoder) {
+	unwrapped := bool(s)
+	e.Bool(unwrapped)
+}
+
+// Decode decodes ActionsEnabled from json.
+func (s *ActionsEnabled) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ActionsEnabled to nil`)
+	}
+	var unwrapped bool
+	if err := func() error {
+		v, err := d.Bool()
+		unwrapped = bool(v)
+		if err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ActionsEnabled(unwrapped)
+	return nil
+}
 
 // Encode implements json.Marshaler.
 func (s ActionsEnterprisePermissions) Encode(e *jx.Encoder) {
@@ -2470,7 +2535,9 @@ func (s *ActionsRemoveSelfHostedRunnerFromGroupForOrgNoContent) Decode(d *jx.Dec
 // Encode implements json.Marshaler.
 func (s ActionsRepositoryPermissions) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	// Unsupported kind "alias".
+
+	e.FieldStart("enabled")
+	s.Enabled.Encode(e)
 	if s.AllowedActions.Set {
 		e.FieldStart("allowed_actions")
 		s.AllowedActions.Encode(e)
@@ -2490,7 +2557,15 @@ func (s *ActionsRepositoryPermissions) Decode(d *jx.Decoder) error {
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "enabled":
-			return errors.New(`decoding of "ActionsEnabled" (alias) is not implemented`)
+			{
+				var unwrapped bool
+				v, err := d.Bool()
+				unwrapped = bool(v)
+				if err != nil {
+					return err
+				}
+				s.Enabled = ActionsEnabled(unwrapped)
+			}
 		case "allowed_actions":
 			s.AllowedActions.Reset()
 			if err := s.AllowedActions.Decode(d); err != nil {
@@ -2769,7 +2844,9 @@ func (s *ActionsSetGithubActionsPermissionsRepositoryNoContent) Decode(d *jx.Dec
 // Encode implements json.Marshaler.
 func (s ActionsSetGithubActionsPermissionsRepositoryReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	// Unsupported kind "alias".
+
+	e.FieldStart("enabled")
+	s.Enabled.Encode(e)
 	if s.AllowedActions.Set {
 		e.FieldStart("allowed_actions")
 		s.AllowedActions.Encode(e)
@@ -2785,7 +2862,15 @@ func (s *ActionsSetGithubActionsPermissionsRepositoryReq) Decode(d *jx.Decoder) 
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "enabled":
-			return errors.New(`decoding of "ActionsEnabled" (alias) is not implemented`)
+			{
+				var unwrapped bool
+				v, err := d.Bool()
+				unwrapped = bool(v)
+				if err != nil {
+					return err
+				}
+				s.Enabled = ActionsEnabled(unwrapped)
+			}
 		case "allowed_actions":
 			s.AllowedActions.Reset()
 			if err := s.AllowedActions.Decode(d); err != nil {
@@ -3098,19 +3183,75 @@ func (s *ActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility) Decode(d *jx.Dec
 	return nil
 }
 
-func (ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {}
-func (ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+// Encode encodes ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONForbidden as json.
+func (s ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONForbidden from json.
+func (s *ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONForbidden(unwrapped)
 	return nil
 }
 
-func (ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONNotFound) Encode(e *jx.Encoder) {}
-func (ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+// Encode encodes ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONNotFound as json.
+func (s ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONNotFound from json.
+func (s *ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONNotFound(unwrapped)
 	return nil
 }
 
-func (ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+// Encode encodes ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONUnauthorized as json.
+func (s ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
 }
-func (ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+
+// Decode decodes ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONUnauthorized from json.
+func (s *ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
 	return nil
 }
 
@@ -3154,13 +3295,51 @@ func (s *ActivityDeleteRepoSubscriptionNoContent) Decode(d *jx.Decoder) error {
 	})
 }
 
-func (ActivityDeleteThreadSubscriptionApplicationJSONForbidden) Encode(e *jx.Encoder) {}
-func (ActivityDeleteThreadSubscriptionApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+// Encode encodes ActivityDeleteThreadSubscriptionApplicationJSONForbidden as json.
+func (s ActivityDeleteThreadSubscriptionApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes ActivityDeleteThreadSubscriptionApplicationJSONForbidden from json.
+func (s *ActivityDeleteThreadSubscriptionApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ActivityDeleteThreadSubscriptionApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ActivityDeleteThreadSubscriptionApplicationJSONForbidden(unwrapped)
 	return nil
 }
 
-func (ActivityDeleteThreadSubscriptionApplicationJSONUnauthorized) Encode(e *jx.Encoder) {}
-func (ActivityDeleteThreadSubscriptionApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+// Encode encodes ActivityDeleteThreadSubscriptionApplicationJSONUnauthorized as json.
+func (s ActivityDeleteThreadSubscriptionApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes ActivityDeleteThreadSubscriptionApplicationJSONUnauthorized from json.
+func (s *ActivityDeleteThreadSubscriptionApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ActivityDeleteThreadSubscriptionApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ActivityDeleteThreadSubscriptionApplicationJSONUnauthorized(unwrapped)
 	return nil
 }
 
@@ -3204,54 +3383,291 @@ func (s *ActivityGetRepoSubscriptionNotFound) Decode(d *jx.Decoder) error {
 	})
 }
 
-func (ActivityGetThreadApplicationJSONForbidden) Encode(e *jx.Encoder)       {}
-func (ActivityGetThreadApplicationJSONForbidden) Decode(d *jx.Decoder) error { return nil }
-
-func (ActivityGetThreadApplicationJSONUnauthorized) Encode(e *jx.Encoder)       {}
-func (ActivityGetThreadApplicationJSONUnauthorized) Decode(d *jx.Decoder) error { return nil }
-
-func (ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
+// Encode encodes ActivityGetThreadApplicationJSONForbidden as json.
+func (s ActivityGetThreadApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
 }
-func (ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+
+// Decode decodes ActivityGetThreadApplicationJSONForbidden from json.
+func (s *ActivityGetThreadApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ActivityGetThreadApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ActivityGetThreadApplicationJSONForbidden(unwrapped)
 	return nil
 }
 
-func (ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+// Encode encodes ActivityGetThreadApplicationJSONUnauthorized as json.
+func (s ActivityGetThreadApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
 }
-func (ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+
+// Decode decodes ActivityGetThreadApplicationJSONUnauthorized from json.
+func (s *ActivityGetThreadApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ActivityGetThreadApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ActivityGetThreadApplicationJSONUnauthorized(unwrapped)
 	return nil
 }
 
-func (ActivityListPublicEventsForRepoNetworkApplicationJSONForbidden) Encode(e *jx.Encoder) {}
-func (ActivityListPublicEventsForRepoNetworkApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+// Encode encodes ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONForbidden as json.
+func (s ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONForbidden from json.
+func (s *ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONForbidden(unwrapped)
 	return nil
 }
 
-func (ActivityListPublicEventsForRepoNetworkApplicationJSONMovedPermanently) Encode(e *jx.Encoder) {}
-func (ActivityListPublicEventsForRepoNetworkApplicationJSONMovedPermanently) Decode(d *jx.Decoder) error {
+// Encode encodes ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONUnauthorized as json.
+func (s ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONUnauthorized from json.
+func (s *ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
 	return nil
 }
 
-func (ActivityListPublicEventsForRepoNetworkApplicationJSONNotFound) Encode(e *jx.Encoder) {}
-func (ActivityListPublicEventsForRepoNetworkApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+// Encode encodes ActivityListPublicEventsForRepoNetworkApplicationJSONForbidden as json.
+func (s ActivityListPublicEventsForRepoNetworkApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes ActivityListPublicEventsForRepoNetworkApplicationJSONForbidden from json.
+func (s *ActivityListPublicEventsForRepoNetworkApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ActivityListPublicEventsForRepoNetworkApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ActivityListPublicEventsForRepoNetworkApplicationJSONForbidden(unwrapped)
 	return nil
 }
 
-func (ActivityListPublicEventsForRepoNetworkOKApplicationJSON) Encode(e *jx.Encoder) {}
-func (ActivityListPublicEventsForRepoNetworkOKApplicationJSON) Decode(d *jx.Decoder) error {
+// Encode encodes ActivityListPublicEventsForRepoNetworkApplicationJSONMovedPermanently as json.
+func (s ActivityListPublicEventsForRepoNetworkApplicationJSONMovedPermanently) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes ActivityListPublicEventsForRepoNetworkApplicationJSONMovedPermanently from json.
+func (s *ActivityListPublicEventsForRepoNetworkApplicationJSONMovedPermanently) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ActivityListPublicEventsForRepoNetworkApplicationJSONMovedPermanently to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ActivityListPublicEventsForRepoNetworkApplicationJSONMovedPermanently(unwrapped)
 	return nil
 }
 
-func (ActivityListPublicEventsOKApplicationJSON) Encode(e *jx.Encoder)       {}
-func (ActivityListPublicEventsOKApplicationJSON) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes ActivityListPublicEventsForRepoNetworkApplicationJSONNotFound as json.
+func (s ActivityListPublicEventsForRepoNetworkApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (ActivityListReposStarredByAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {}
-func (ActivityListReposStarredByAuthenticatedUserApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+// Decode decodes ActivityListPublicEventsForRepoNetworkApplicationJSONNotFound from json.
+func (s *ActivityListPublicEventsForRepoNetworkApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ActivityListPublicEventsForRepoNetworkApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ActivityListPublicEventsForRepoNetworkApplicationJSONNotFound(unwrapped)
 	return nil
 }
 
-func (ActivityListReposStarredByAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {}
-func (ActivityListReposStarredByAuthenticatedUserApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+// Encode encodes ActivityListPublicEventsForRepoNetworkOKApplicationJSON as json.
+func (s ActivityListPublicEventsForRepoNetworkOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []Event(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes ActivityListPublicEventsForRepoNetworkOKApplicationJSON from json.
+func (s *ActivityListPublicEventsForRepoNetworkOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ActivityListPublicEventsForRepoNetworkOKApplicationJSON to nil`)
+	}
+	var unwrapped []Event
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem Event
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ActivityListPublicEventsForRepoNetworkOKApplicationJSON(unwrapped)
+	return nil
+}
+
+// Encode encodes ActivityListPublicEventsOKApplicationJSON as json.
+func (s ActivityListPublicEventsOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []Event(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes ActivityListPublicEventsOKApplicationJSON from json.
+func (s *ActivityListPublicEventsOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ActivityListPublicEventsOKApplicationJSON to nil`)
+	}
+	var unwrapped []Event
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem Event
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ActivityListPublicEventsOKApplicationJSON(unwrapped)
+	return nil
+}
+
+// Encode encodes ActivityListReposStarredByAuthenticatedUserApplicationJSONForbidden as json.
+func (s ActivityListReposStarredByAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes ActivityListReposStarredByAuthenticatedUserApplicationJSONForbidden from json.
+func (s *ActivityListReposStarredByAuthenticatedUserApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ActivityListReposStarredByAuthenticatedUserApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ActivityListReposStarredByAuthenticatedUserApplicationJSONForbidden(unwrapped)
+	return nil
+}
+
+// Encode encodes ActivityListReposStarredByAuthenticatedUserApplicationJSONUnauthorized as json.
+func (s ActivityListReposStarredByAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes ActivityListReposStarredByAuthenticatedUserApplicationJSONUnauthorized from json.
+func (s *ActivityListReposStarredByAuthenticatedUserApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ActivityListReposStarredByAuthenticatedUserApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ActivityListReposStarredByAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
 	return nil
 }
 
@@ -3273,8 +3689,39 @@ func (s *ActivityListReposStarredByAuthenticatedUserDirection) Decode(d *jx.Deco
 	return nil
 }
 
-func (ActivityListReposStarredByAuthenticatedUserOKApplicationJSON) Encode(e *jx.Encoder) {}
-func (ActivityListReposStarredByAuthenticatedUserOKApplicationJSON) Decode(d *jx.Decoder) error {
+// Encode encodes ActivityListReposStarredByAuthenticatedUserOKApplicationJSON as json.
+func (s ActivityListReposStarredByAuthenticatedUserOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []Repository(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes ActivityListReposStarredByAuthenticatedUserOKApplicationJSON from json.
+func (s *ActivityListReposStarredByAuthenticatedUserOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ActivityListReposStarredByAuthenticatedUserOKApplicationJSON to nil`)
+	}
+	var unwrapped []Repository
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem Repository
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ActivityListReposStarredByAuthenticatedUserOKApplicationJSON(unwrapped)
 	return nil
 }
 
@@ -3332,19 +3779,87 @@ func (s *ActivityListReposStarredByUserSort) Decode(d *jx.Decoder) error {
 	return nil
 }
 
-func (ActivityListWatchedReposForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {}
-func (ActivityListWatchedReposForAuthenticatedUserApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+// Encode encodes ActivityListWatchedReposForAuthenticatedUserApplicationJSONForbidden as json.
+func (s ActivityListWatchedReposForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes ActivityListWatchedReposForAuthenticatedUserApplicationJSONForbidden from json.
+func (s *ActivityListWatchedReposForAuthenticatedUserApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ActivityListWatchedReposForAuthenticatedUserApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ActivityListWatchedReposForAuthenticatedUserApplicationJSONForbidden(unwrapped)
 	return nil
 }
 
-func (ActivityListWatchedReposForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+// Encode encodes ActivityListWatchedReposForAuthenticatedUserApplicationJSONUnauthorized as json.
+func (s ActivityListWatchedReposForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
 }
-func (ActivityListWatchedReposForAuthenticatedUserApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+
+// Decode decodes ActivityListWatchedReposForAuthenticatedUserApplicationJSONUnauthorized from json.
+func (s *ActivityListWatchedReposForAuthenticatedUserApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ActivityListWatchedReposForAuthenticatedUserApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ActivityListWatchedReposForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
 	return nil
 }
 
-func (ActivityListWatchedReposForAuthenticatedUserOKApplicationJSON) Encode(e *jx.Encoder) {}
-func (ActivityListWatchedReposForAuthenticatedUserOKApplicationJSON) Decode(d *jx.Decoder) error {
+// Encode encodes ActivityListWatchedReposForAuthenticatedUserOKApplicationJSON as json.
+func (s ActivityListWatchedReposForAuthenticatedUserOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []MinimalRepository(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes ActivityListWatchedReposForAuthenticatedUserOKApplicationJSON from json.
+func (s *ActivityListWatchedReposForAuthenticatedUserOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ActivityListWatchedReposForAuthenticatedUserOKApplicationJSON to nil`)
+	}
+	var unwrapped []MinimalRepository
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem MinimalRepository
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ActivityListWatchedReposForAuthenticatedUserOKApplicationJSON(unwrapped)
 	return nil
 }
 
@@ -3377,13 +3892,51 @@ func (s *ActivityMarkNotificationsAsReadAccepted) Decode(d *jx.Decoder) error {
 	})
 }
 
-func (ActivityMarkNotificationsAsReadApplicationJSONForbidden) Encode(e *jx.Encoder) {}
-func (ActivityMarkNotificationsAsReadApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+// Encode encodes ActivityMarkNotificationsAsReadApplicationJSONForbidden as json.
+func (s ActivityMarkNotificationsAsReadApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes ActivityMarkNotificationsAsReadApplicationJSONForbidden from json.
+func (s *ActivityMarkNotificationsAsReadApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ActivityMarkNotificationsAsReadApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ActivityMarkNotificationsAsReadApplicationJSONForbidden(unwrapped)
 	return nil
 }
 
-func (ActivityMarkNotificationsAsReadApplicationJSONUnauthorized) Encode(e *jx.Encoder) {}
-func (ActivityMarkNotificationsAsReadApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+// Encode encodes ActivityMarkNotificationsAsReadApplicationJSONUnauthorized as json.
+func (s ActivityMarkNotificationsAsReadApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes ActivityMarkNotificationsAsReadApplicationJSONUnauthorized from json.
+func (s *ActivityMarkNotificationsAsReadApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ActivityMarkNotificationsAsReadApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ActivityMarkNotificationsAsReadApplicationJSONUnauthorized(unwrapped)
 	return nil
 }
 
@@ -3590,11 +4143,51 @@ func (s *ActivitySetRepoSubscriptionReq) Decode(d *jx.Decoder) error {
 	})
 }
 
-func (ActivitySetThreadSubscriptionApplicationJSONForbidden) Encode(e *jx.Encoder)       {}
-func (ActivitySetThreadSubscriptionApplicationJSONForbidden) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes ActivitySetThreadSubscriptionApplicationJSONForbidden as json.
+func (s ActivitySetThreadSubscriptionApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (ActivitySetThreadSubscriptionApplicationJSONUnauthorized) Encode(e *jx.Encoder) {}
-func (ActivitySetThreadSubscriptionApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+// Decode decodes ActivitySetThreadSubscriptionApplicationJSONForbidden from json.
+func (s *ActivitySetThreadSubscriptionApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ActivitySetThreadSubscriptionApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ActivitySetThreadSubscriptionApplicationJSONForbidden(unwrapped)
+	return nil
+}
+
+// Encode encodes ActivitySetThreadSubscriptionApplicationJSONUnauthorized as json.
+func (s ActivitySetThreadSubscriptionApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes ActivitySetThreadSubscriptionApplicationJSONUnauthorized from json.
+func (s *ActivitySetThreadSubscriptionApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ActivitySetThreadSubscriptionApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ActivitySetThreadSubscriptionApplicationJSONUnauthorized(unwrapped)
 	return nil
 }
 
@@ -3627,18 +4220,75 @@ func (s *ActivitySetThreadSubscriptionReq) Decode(d *jx.Decoder) error {
 	})
 }
 
-func (ActivityStarRepoForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {}
-func (ActivityStarRepoForAuthenticatedUserApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+// Encode encodes ActivityStarRepoForAuthenticatedUserApplicationJSONForbidden as json.
+func (s ActivityStarRepoForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes ActivityStarRepoForAuthenticatedUserApplicationJSONForbidden from json.
+func (s *ActivityStarRepoForAuthenticatedUserApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ActivityStarRepoForAuthenticatedUserApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ActivityStarRepoForAuthenticatedUserApplicationJSONForbidden(unwrapped)
 	return nil
 }
 
-func (ActivityStarRepoForAuthenticatedUserApplicationJSONNotFound) Encode(e *jx.Encoder) {}
-func (ActivityStarRepoForAuthenticatedUserApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+// Encode encodes ActivityStarRepoForAuthenticatedUserApplicationJSONNotFound as json.
+func (s ActivityStarRepoForAuthenticatedUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes ActivityStarRepoForAuthenticatedUserApplicationJSONNotFound from json.
+func (s *ActivityStarRepoForAuthenticatedUserApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ActivityStarRepoForAuthenticatedUserApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ActivityStarRepoForAuthenticatedUserApplicationJSONNotFound(unwrapped)
 	return nil
 }
 
-func (ActivityStarRepoForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {}
-func (ActivityStarRepoForAuthenticatedUserApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+// Encode encodes ActivityStarRepoForAuthenticatedUserApplicationJSONUnauthorized as json.
+func (s ActivityStarRepoForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes ActivityStarRepoForAuthenticatedUserApplicationJSONUnauthorized from json.
+func (s *ActivityStarRepoForAuthenticatedUserApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ActivityStarRepoForAuthenticatedUserApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ActivityStarRepoForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
 	return nil
 }
 
@@ -3662,18 +4312,75 @@ func (s *ActivityStarRepoForAuthenticatedUserNoContent) Decode(d *jx.Decoder) er
 	})
 }
 
-func (ActivityUnstarRepoForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {}
-func (ActivityUnstarRepoForAuthenticatedUserApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+// Encode encodes ActivityUnstarRepoForAuthenticatedUserApplicationJSONForbidden as json.
+func (s ActivityUnstarRepoForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes ActivityUnstarRepoForAuthenticatedUserApplicationJSONForbidden from json.
+func (s *ActivityUnstarRepoForAuthenticatedUserApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ActivityUnstarRepoForAuthenticatedUserApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ActivityUnstarRepoForAuthenticatedUserApplicationJSONForbidden(unwrapped)
 	return nil
 }
 
-func (ActivityUnstarRepoForAuthenticatedUserApplicationJSONNotFound) Encode(e *jx.Encoder) {}
-func (ActivityUnstarRepoForAuthenticatedUserApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+// Encode encodes ActivityUnstarRepoForAuthenticatedUserApplicationJSONNotFound as json.
+func (s ActivityUnstarRepoForAuthenticatedUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes ActivityUnstarRepoForAuthenticatedUserApplicationJSONNotFound from json.
+func (s *ActivityUnstarRepoForAuthenticatedUserApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ActivityUnstarRepoForAuthenticatedUserApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ActivityUnstarRepoForAuthenticatedUserApplicationJSONNotFound(unwrapped)
 	return nil
 }
 
-func (ActivityUnstarRepoForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {}
-func (ActivityUnstarRepoForAuthenticatedUserApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+// Encode encodes ActivityUnstarRepoForAuthenticatedUserApplicationJSONUnauthorized as json.
+func (s ActivityUnstarRepoForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes ActivityUnstarRepoForAuthenticatedUserApplicationJSONUnauthorized from json.
+func (s *ActivityUnstarRepoForAuthenticatedUserApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ActivityUnstarRepoForAuthenticatedUserApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ActivityUnstarRepoForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
 	return nil
 }
 
@@ -3769,20 +4476,135 @@ func (s *Actor) Decode(d *jx.Decoder) error {
 	})
 }
 
-func (AlertCreatedAt) Encode(e *jx.Encoder)       {}
-func (AlertCreatedAt) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes AlertCreatedAt as json.
+func (s AlertCreatedAt) Encode(e *jx.Encoder) {
+	unwrapped := time.Time(s)
+	json.EncodeDateTime(e, unwrapped)
+}
 
-func (AlertHTMLURL) Encode(e *jx.Encoder)       {}
-func (AlertHTMLURL) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes AlertCreatedAt from json.
+func (s *AlertCreatedAt) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode AlertCreatedAt to nil`)
+	}
+	var unwrapped time.Time
+	if err := func() error {
+		v, err := json.DecodeDateTime(d)
+		unwrapped = v
+		if err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = AlertCreatedAt(unwrapped)
+	return nil
+}
 
-func (AlertInstancesURL) Encode(e *jx.Encoder)       {}
-func (AlertInstancesURL) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes AlertHTMLURL as json.
+func (s AlertHTMLURL) Encode(e *jx.Encoder) {
+	unwrapped := url.URL(s)
+	json.EncodeURI(e, unwrapped)
+}
 
-func (AlertNumber) Encode(e *jx.Encoder)       {}
-func (AlertNumber) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes AlertHTMLURL from json.
+func (s *AlertHTMLURL) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode AlertHTMLURL to nil`)
+	}
+	var unwrapped url.URL
+	if err := func() error {
+		v, err := json.DecodeURI(d)
+		unwrapped = v
+		if err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = AlertHTMLURL(unwrapped)
+	return nil
+}
 
-func (AlertURL) Encode(e *jx.Encoder)       {}
-func (AlertURL) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes AlertInstancesURL as json.
+func (s AlertInstancesURL) Encode(e *jx.Encoder) {
+	unwrapped := url.URL(s)
+	json.EncodeURI(e, unwrapped)
+}
+
+// Decode decodes AlertInstancesURL from json.
+func (s *AlertInstancesURL) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode AlertInstancesURL to nil`)
+	}
+	var unwrapped url.URL
+	if err := func() error {
+		v, err := json.DecodeURI(d)
+		unwrapped = v
+		if err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = AlertInstancesURL(unwrapped)
+	return nil
+}
+
+// Encode encodes AlertNumber as json.
+func (s AlertNumber) Encode(e *jx.Encoder) {
+	unwrapped := int(s)
+	e.Int(unwrapped)
+}
+
+// Decode decodes AlertNumber from json.
+func (s *AlertNumber) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode AlertNumber to nil`)
+	}
+	var unwrapped int
+	if err := func() error {
+		v, err := d.Int()
+		unwrapped = int(v)
+		if err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = AlertNumber(unwrapped)
+	return nil
+}
+
+// Encode encodes AlertURL as json.
+func (s AlertURL) Encode(e *jx.Encoder) {
+	unwrapped := url.URL(s)
+	json.EncodeURI(e, unwrapped)
+}
+
+// Decode decodes AlertURL from json.
+func (s *AlertURL) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode AlertURL to nil`)
+	}
+	var unwrapped url.URL
+	if err := func() error {
+		v, err := json.DecodeURI(d)
+		unwrapped = v
+		if err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = AlertURL(unwrapped)
+	return nil
+}
 
 // Encode encodes AllowedActions as json.
 func (s AllowedActions) Encode(e *jx.Encoder) {
@@ -4799,11 +5621,53 @@ func (s *ApplicationGrantApp) Decode(d *jx.Decoder) error {
 	})
 }
 
-func (AppsAddRepoToInstallationApplicationJSONForbidden) Encode(e *jx.Encoder)       {}
-func (AppsAddRepoToInstallationApplicationJSONForbidden) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes AppsAddRepoToInstallationApplicationJSONForbidden as json.
+func (s AppsAddRepoToInstallationApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (AppsAddRepoToInstallationApplicationJSONNotFound) Encode(e *jx.Encoder)       {}
-func (AppsAddRepoToInstallationApplicationJSONNotFound) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes AppsAddRepoToInstallationApplicationJSONForbidden from json.
+func (s *AppsAddRepoToInstallationApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode AppsAddRepoToInstallationApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = AppsAddRepoToInstallationApplicationJSONForbidden(unwrapped)
+	return nil
+}
+
+// Encode encodes AppsAddRepoToInstallationApplicationJSONNotFound as json.
+func (s AppsAddRepoToInstallationApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes AppsAddRepoToInstallationApplicationJSONNotFound from json.
+func (s *AppsAddRepoToInstallationApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode AppsAddRepoToInstallationApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = AppsAddRepoToInstallationApplicationJSONNotFound(unwrapped)
+	return nil
+}
 
 // Encode implements json.Marshaler.
 func (s AppsAddRepoToInstallationNoContent) Encode(e *jx.Encoder) {
@@ -5103,19 +5967,99 @@ func (s *AppsDeleteTokenReq) Decode(d *jx.Decoder) error {
 	})
 }
 
-func (AppsGetBySlugApplicationJSONForbidden) Encode(e *jx.Encoder)       {}
-func (AppsGetBySlugApplicationJSONForbidden) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes AppsGetBySlugApplicationJSONForbidden as json.
+func (s AppsGetBySlugApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (AppsGetBySlugApplicationJSONNotFound) Encode(e *jx.Encoder)       {}
-func (AppsGetBySlugApplicationJSONNotFound) Decode(d *jx.Decoder) error { return nil }
-
-func (AppsGetSubscriptionPlanForAccountApplicationJSONNotFound) Encode(e *jx.Encoder) {}
-func (AppsGetSubscriptionPlanForAccountApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+// Decode decodes AppsGetBySlugApplicationJSONForbidden from json.
+func (s *AppsGetBySlugApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode AppsGetBySlugApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = AppsGetBySlugApplicationJSONForbidden(unwrapped)
 	return nil
 }
 
-func (AppsGetSubscriptionPlanForAccountApplicationJSONUnauthorized) Encode(e *jx.Encoder) {}
-func (AppsGetSubscriptionPlanForAccountApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+// Encode encodes AppsGetBySlugApplicationJSONNotFound as json.
+func (s AppsGetBySlugApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes AppsGetBySlugApplicationJSONNotFound from json.
+func (s *AppsGetBySlugApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode AppsGetBySlugApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = AppsGetBySlugApplicationJSONNotFound(unwrapped)
+	return nil
+}
+
+// Encode encodes AppsGetSubscriptionPlanForAccountApplicationJSONNotFound as json.
+func (s AppsGetSubscriptionPlanForAccountApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes AppsGetSubscriptionPlanForAccountApplicationJSONNotFound from json.
+func (s *AppsGetSubscriptionPlanForAccountApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode AppsGetSubscriptionPlanForAccountApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = AppsGetSubscriptionPlanForAccountApplicationJSONNotFound(unwrapped)
+	return nil
+}
+
+// Encode encodes AppsGetSubscriptionPlanForAccountApplicationJSONUnauthorized as json.
+func (s AppsGetSubscriptionPlanForAccountApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes AppsGetSubscriptionPlanForAccountApplicationJSONUnauthorized from json.
+func (s *AppsGetSubscriptionPlanForAccountApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode AppsGetSubscriptionPlanForAccountApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = AppsGetSubscriptionPlanForAccountApplicationJSONUnauthorized(unwrapped)
 	return nil
 }
 
@@ -5193,8 +6137,41 @@ func (s *AppsListAccountsForPlanStubbedDirection) Decode(d *jx.Decoder) error {
 	return nil
 }
 
-func (AppsListAccountsForPlanStubbedOKApplicationJSON) Encode(e *jx.Encoder)       {}
-func (AppsListAccountsForPlanStubbedOKApplicationJSON) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes AppsListAccountsForPlanStubbedOKApplicationJSON as json.
+func (s AppsListAccountsForPlanStubbedOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []MarketplacePurchase(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes AppsListAccountsForPlanStubbedOKApplicationJSON from json.
+func (s *AppsListAccountsForPlanStubbedOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode AppsListAccountsForPlanStubbedOKApplicationJSON to nil`)
+	}
+	var unwrapped []MarketplacePurchase
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem MarketplacePurchase
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = AppsListAccountsForPlanStubbedOKApplicationJSON(unwrapped)
+	return nil
+}
 
 // Encode encodes AppsListAccountsForPlanStubbedSort as json.
 func (s AppsListAccountsForPlanStubbedSort) Encode(e *jx.Encoder) {
@@ -5214,13 +6191,51 @@ func (s *AppsListAccountsForPlanStubbedSort) Decode(d *jx.Decoder) error {
 	return nil
 }
 
-func (AppsListInstallationReposForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {}
-func (AppsListInstallationReposForAuthenticatedUserApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+// Encode encodes AppsListInstallationReposForAuthenticatedUserApplicationJSONForbidden as json.
+func (s AppsListInstallationReposForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes AppsListInstallationReposForAuthenticatedUserApplicationJSONForbidden from json.
+func (s *AppsListInstallationReposForAuthenticatedUserApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode AppsListInstallationReposForAuthenticatedUserApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = AppsListInstallationReposForAuthenticatedUserApplicationJSONForbidden(unwrapped)
 	return nil
 }
 
-func (AppsListInstallationReposForAuthenticatedUserApplicationJSONNotFound) Encode(e *jx.Encoder) {}
-func (AppsListInstallationReposForAuthenticatedUserApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+// Encode encodes AppsListInstallationReposForAuthenticatedUserApplicationJSONNotFound as json.
+func (s AppsListInstallationReposForAuthenticatedUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes AppsListInstallationReposForAuthenticatedUserApplicationJSONNotFound from json.
+func (s *AppsListInstallationReposForAuthenticatedUserApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode AppsListInstallationReposForAuthenticatedUserApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = AppsListInstallationReposForAuthenticatedUserApplicationJSONNotFound(unwrapped)
 	return nil
 }
 
@@ -5281,25 +6296,171 @@ func (s *AppsListInstallationReposForAuthenticatedUserOK) Decode(d *jx.Decoder) 
 	})
 }
 
-func (AppsListPlansApplicationJSONNotFound) Encode(e *jx.Encoder)       {}
-func (AppsListPlansApplicationJSONNotFound) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes AppsListPlansApplicationJSONNotFound as json.
+func (s AppsListPlansApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (AppsListPlansApplicationJSONUnauthorized) Encode(e *jx.Encoder)       {}
-func (AppsListPlansApplicationJSONUnauthorized) Decode(d *jx.Decoder) error { return nil }
-
-func (AppsListPlansOKApplicationJSON) Encode(e *jx.Encoder)       {}
-func (AppsListPlansOKApplicationJSON) Decode(d *jx.Decoder) error { return nil }
-
-func (AppsListPlansStubbedOKApplicationJSON) Encode(e *jx.Encoder)       {}
-func (AppsListPlansStubbedOKApplicationJSON) Decode(d *jx.Decoder) error { return nil }
-
-func (AppsListReposAccessibleToInstallationApplicationJSONForbidden) Encode(e *jx.Encoder) {}
-func (AppsListReposAccessibleToInstallationApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+// Decode decodes AppsListPlansApplicationJSONNotFound from json.
+func (s *AppsListPlansApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode AppsListPlansApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = AppsListPlansApplicationJSONNotFound(unwrapped)
 	return nil
 }
 
-func (AppsListReposAccessibleToInstallationApplicationJSONUnauthorized) Encode(e *jx.Encoder) {}
-func (AppsListReposAccessibleToInstallationApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+// Encode encodes AppsListPlansApplicationJSONUnauthorized as json.
+func (s AppsListPlansApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes AppsListPlansApplicationJSONUnauthorized from json.
+func (s *AppsListPlansApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode AppsListPlansApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = AppsListPlansApplicationJSONUnauthorized(unwrapped)
+	return nil
+}
+
+// Encode encodes AppsListPlansOKApplicationJSON as json.
+func (s AppsListPlansOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []MarketplaceListingPlan(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes AppsListPlansOKApplicationJSON from json.
+func (s *AppsListPlansOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode AppsListPlansOKApplicationJSON to nil`)
+	}
+	var unwrapped []MarketplaceListingPlan
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem MarketplaceListingPlan
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = AppsListPlansOKApplicationJSON(unwrapped)
+	return nil
+}
+
+// Encode encodes AppsListPlansStubbedOKApplicationJSON as json.
+func (s AppsListPlansStubbedOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []MarketplaceListingPlan(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes AppsListPlansStubbedOKApplicationJSON from json.
+func (s *AppsListPlansStubbedOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode AppsListPlansStubbedOKApplicationJSON to nil`)
+	}
+	var unwrapped []MarketplaceListingPlan
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem MarketplaceListingPlan
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = AppsListPlansStubbedOKApplicationJSON(unwrapped)
+	return nil
+}
+
+// Encode encodes AppsListReposAccessibleToInstallationApplicationJSONForbidden as json.
+func (s AppsListReposAccessibleToInstallationApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes AppsListReposAccessibleToInstallationApplicationJSONForbidden from json.
+func (s *AppsListReposAccessibleToInstallationApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode AppsListReposAccessibleToInstallationApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = AppsListReposAccessibleToInstallationApplicationJSONForbidden(unwrapped)
+	return nil
+}
+
+// Encode encodes AppsListReposAccessibleToInstallationApplicationJSONUnauthorized as json.
+func (s AppsListReposAccessibleToInstallationApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes AppsListReposAccessibleToInstallationApplicationJSONUnauthorized from json.
+func (s *AppsListReposAccessibleToInstallationApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode AppsListReposAccessibleToInstallationApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = AppsListReposAccessibleToInstallationApplicationJSONUnauthorized(unwrapped)
 	return nil
 }
 
@@ -5360,31 +6521,173 @@ func (s *AppsListReposAccessibleToInstallationOK) Decode(d *jx.Decoder) error {
 	})
 }
 
-func (AppsListSubscriptionsForAuthenticatedUserApplicationJSONNotFound) Encode(e *jx.Encoder) {}
-func (AppsListSubscriptionsForAuthenticatedUserApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+// Encode encodes AppsListSubscriptionsForAuthenticatedUserApplicationJSONNotFound as json.
+func (s AppsListSubscriptionsForAuthenticatedUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes AppsListSubscriptionsForAuthenticatedUserApplicationJSONNotFound from json.
+func (s *AppsListSubscriptionsForAuthenticatedUserApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode AppsListSubscriptionsForAuthenticatedUserApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = AppsListSubscriptionsForAuthenticatedUserApplicationJSONNotFound(unwrapped)
 	return nil
 }
 
-func (AppsListSubscriptionsForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {}
-func (AppsListSubscriptionsForAuthenticatedUserApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+// Encode encodes AppsListSubscriptionsForAuthenticatedUserApplicationJSONUnauthorized as json.
+func (s AppsListSubscriptionsForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes AppsListSubscriptionsForAuthenticatedUserApplicationJSONUnauthorized from json.
+func (s *AppsListSubscriptionsForAuthenticatedUserApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode AppsListSubscriptionsForAuthenticatedUserApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = AppsListSubscriptionsForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
 	return nil
 }
 
-func (AppsListSubscriptionsForAuthenticatedUserOKApplicationJSON) Encode(e *jx.Encoder) {}
-func (AppsListSubscriptionsForAuthenticatedUserOKApplicationJSON) Decode(d *jx.Decoder) error {
+// Encode encodes AppsListSubscriptionsForAuthenticatedUserOKApplicationJSON as json.
+func (s AppsListSubscriptionsForAuthenticatedUserOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []UserMarketplacePurchase(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes AppsListSubscriptionsForAuthenticatedUserOKApplicationJSON from json.
+func (s *AppsListSubscriptionsForAuthenticatedUserOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode AppsListSubscriptionsForAuthenticatedUserOKApplicationJSON to nil`)
+	}
+	var unwrapped []UserMarketplacePurchase
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem UserMarketplacePurchase
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = AppsListSubscriptionsForAuthenticatedUserOKApplicationJSON(unwrapped)
 	return nil
 }
 
-func (AppsListSubscriptionsForAuthenticatedUserStubbedOKApplicationJSON) Encode(e *jx.Encoder) {}
-func (AppsListSubscriptionsForAuthenticatedUserStubbedOKApplicationJSON) Decode(d *jx.Decoder) error {
+// Encode encodes AppsListSubscriptionsForAuthenticatedUserStubbedOKApplicationJSON as json.
+func (s AppsListSubscriptionsForAuthenticatedUserStubbedOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []UserMarketplacePurchase(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes AppsListSubscriptionsForAuthenticatedUserStubbedOKApplicationJSON from json.
+func (s *AppsListSubscriptionsForAuthenticatedUserStubbedOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode AppsListSubscriptionsForAuthenticatedUserStubbedOKApplicationJSON to nil`)
+	}
+	var unwrapped []UserMarketplacePurchase
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem UserMarketplacePurchase
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = AppsListSubscriptionsForAuthenticatedUserStubbedOKApplicationJSON(unwrapped)
 	return nil
 }
 
-func (AppsRemoveRepoFromInstallationApplicationJSONForbidden) Encode(e *jx.Encoder)       {}
-func (AppsRemoveRepoFromInstallationApplicationJSONForbidden) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes AppsRemoveRepoFromInstallationApplicationJSONForbidden as json.
+func (s AppsRemoveRepoFromInstallationApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (AppsRemoveRepoFromInstallationApplicationJSONNotFound) Encode(e *jx.Encoder)       {}
-func (AppsRemoveRepoFromInstallationApplicationJSONNotFound) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes AppsRemoveRepoFromInstallationApplicationJSONForbidden from json.
+func (s *AppsRemoveRepoFromInstallationApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode AppsRemoveRepoFromInstallationApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = AppsRemoveRepoFromInstallationApplicationJSONForbidden(unwrapped)
+	return nil
+}
+
+// Encode encodes AppsRemoveRepoFromInstallationApplicationJSONNotFound as json.
+func (s AppsRemoveRepoFromInstallationApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes AppsRemoveRepoFromInstallationApplicationJSONNotFound from json.
+func (s *AppsRemoveRepoFromInstallationApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode AppsRemoveRepoFromInstallationApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = AppsRemoveRepoFromInstallationApplicationJSONNotFound(unwrapped)
+	return nil
+}
 
 // Encode implements json.Marshaler.
 func (s AppsRemoveRepoFromInstallationNoContent) Encode(e *jx.Encoder) {
@@ -9191,11 +10494,53 @@ func (s *CheckSuiteStatus) Decode(d *jx.Decoder) error {
 	return nil
 }
 
-func (ChecksCreateSuiteApplicationJSONCreated) Encode(e *jx.Encoder)       {}
-func (ChecksCreateSuiteApplicationJSONCreated) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes ChecksCreateSuiteApplicationJSONCreated as json.
+func (s ChecksCreateSuiteApplicationJSONCreated) Encode(e *jx.Encoder) {
+	unwrapped := CheckSuite(s)
+	unwrapped.Encode(e)
+}
 
-func (ChecksCreateSuiteApplicationJSONOK) Encode(e *jx.Encoder)       {}
-func (ChecksCreateSuiteApplicationJSONOK) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes ChecksCreateSuiteApplicationJSONCreated from json.
+func (s *ChecksCreateSuiteApplicationJSONCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ChecksCreateSuiteApplicationJSONCreated to nil`)
+	}
+	var unwrapped CheckSuite
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ChecksCreateSuiteApplicationJSONCreated(unwrapped)
+	return nil
+}
+
+// Encode encodes ChecksCreateSuiteApplicationJSONOK as json.
+func (s ChecksCreateSuiteApplicationJSONOK) Encode(e *jx.Encoder) {
+	unwrapped := CheckSuite(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes ChecksCreateSuiteApplicationJSONOK from json.
+func (s *ChecksCreateSuiteApplicationJSONOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ChecksCreateSuiteApplicationJSONOK to nil`)
+	}
+	var unwrapped CheckSuite
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ChecksCreateSuiteApplicationJSONOK(unwrapped)
+	return nil
+}
 
 // Encode implements json.Marshaler.
 func (s ChecksCreateSuiteReq) Encode(e *jx.Encoder) {
@@ -9597,8 +10942,43 @@ func (s *CloneTraffic) Decode(d *jx.Decoder) error {
 	})
 }
 
-func (CodeFrequencyStat) Encode(e *jx.Encoder)       {}
-func (CodeFrequencyStat) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes CodeFrequencyStat as json.
+func (s CodeFrequencyStat) Encode(e *jx.Encoder) {
+	unwrapped := []int(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		e.Int(elem)
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes CodeFrequencyStat from json.
+func (s *CodeFrequencyStat) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode CodeFrequencyStat to nil`)
+	}
+	var unwrapped []int
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem int
+			v, err := d.Int()
+			elem = int(v)
+			if err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = CodeFrequencyStat(unwrapped)
+	return nil
+}
 
 // Encode implements json.Marshaler.
 func (s CodeOfConduct) Encode(e *jx.Encoder) {
@@ -9720,15 +11100,25 @@ func (s *CodeOfConductSimple) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s CodeScanningAlert) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	// Unsupported kind "alias".
-	// Unsupported kind "alias".
-	// Unsupported kind "alias".
-	// Unsupported kind "alias".
+
+	e.FieldStart("number")
+	s.Number.Encode(e)
+
+	e.FieldStart("created_at")
+	s.CreatedAt.Encode(e)
+
+	e.FieldStart("url")
+	s.URL.Encode(e)
+
+	e.FieldStart("html_url")
+	s.HTMLURL.Encode(e)
 	if s.Instances.Set {
 		e.FieldStart("instances")
 		s.Instances.Encode(e)
 	}
-	// Unsupported kind "alias".
+
+	e.FieldStart("instances_url")
+	s.InstancesURL.Encode(e)
 
 	e.FieldStart("state")
 	s.State.Encode(e)
@@ -9761,20 +11151,60 @@ func (s *CodeScanningAlert) Decode(d *jx.Decoder) error {
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "number":
-			return errors.New(`decoding of "AlertNumber" (alias) is not implemented`)
+			{
+				var unwrapped int
+				v, err := d.Int()
+				unwrapped = int(v)
+				if err != nil {
+					return err
+				}
+				s.Number = AlertNumber(unwrapped)
+			}
 		case "created_at":
-			return errors.New(`decoding of "AlertCreatedAt" (alias) is not implemented`)
+			{
+				var unwrapped time.Time
+				v, err := json.DecodeDateTime(d)
+				unwrapped = v
+				if err != nil {
+					return err
+				}
+				s.CreatedAt = AlertCreatedAt(unwrapped)
+			}
 		case "url":
-			return errors.New(`decoding of "AlertURL" (alias) is not implemented`)
+			{
+				var unwrapped url.URL
+				v, err := json.DecodeURI(d)
+				unwrapped = v
+				if err != nil {
+					return err
+				}
+				s.URL = AlertURL(unwrapped)
+			}
 		case "html_url":
-			return errors.New(`decoding of "AlertHTMLURL" (alias) is not implemented`)
+			{
+				var unwrapped url.URL
+				v, err := json.DecodeURI(d)
+				unwrapped = v
+				if err != nil {
+					return err
+				}
+				s.HTMLURL = AlertHTMLURL(unwrapped)
+			}
 		case "instances":
 			s.Instances.Reset()
 			if err := s.Instances.Decode(d); err != nil {
 				return err
 			}
 		case "instances_url":
-			return errors.New(`decoding of "AlertInstancesURL" (alias) is not implemented`)
+			{
+				var unwrapped url.URL
+				v, err := json.DecodeURI(d)
+				unwrapped = v
+				if err != nil {
+					return err
+				}
+				s.InstancesURL = AlertInstancesURL(unwrapped)
+			}
 		case "state":
 			if err := s.State.Decode(d); err != nil {
 				return err
@@ -9828,8 +11258,31 @@ func (s *CodeScanningAlertClassification) Decode(d *jx.Decoder) error {
 	return nil
 }
 
-func (CodeScanningAlertDismissedAt) Encode(e *jx.Encoder)       {}
-func (CodeScanningAlertDismissedAt) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes CodeScanningAlertDismissedAt as json.
+func (s CodeScanningAlertDismissedAt) Encode(e *jx.Encoder) {
+	unwrapped := time.Time(s)
+	json.EncodeDateTime(e, unwrapped)
+}
+
+// Decode decodes CodeScanningAlertDismissedAt from json.
+func (s *CodeScanningAlertDismissedAt) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode CodeScanningAlertDismissedAt to nil`)
+	}
+	var unwrapped time.Time
+	if err := func() error {
+		v, err := json.DecodeDateTime(d)
+		unwrapped = v
+		if err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = CodeScanningAlertDismissedAt(unwrapped)
+	return nil
+}
 
 // Encode encodes CodeScanningAlertDismissedReason as json.
 func (s CodeScanningAlertDismissedReason) Encode(e *jx.Encoder) {
@@ -9849,8 +11302,31 @@ func (s *CodeScanningAlertDismissedReason) Decode(d *jx.Decoder) error {
 	return nil
 }
 
-func (CodeScanningAlertEnvironment) Encode(e *jx.Encoder)       {}
-func (CodeScanningAlertEnvironment) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes CodeScanningAlertEnvironment as json.
+func (s CodeScanningAlertEnvironment) Encode(e *jx.Encoder) {
+	unwrapped := string(s)
+	e.Str(unwrapped)
+}
+
+// Decode decodes CodeScanningAlertEnvironment from json.
+func (s *CodeScanningAlertEnvironment) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode CodeScanningAlertEnvironment to nil`)
+	}
+	var unwrapped string
+	if err := func() error {
+		v, err := d.Str()
+		unwrapped = string(v)
+		if err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = CodeScanningAlertEnvironment(unwrapped)
+	return nil
+}
 
 // Encode implements json.Marshaler.
 func (s CodeScanningAlertInstance) Encode(e *jx.Encoder) {
@@ -10005,11 +11481,21 @@ func (s *CodeScanningAlertInstanceMessage) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s CodeScanningAlertItems) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	// Unsupported kind "alias".
-	// Unsupported kind "alias".
-	// Unsupported kind "alias".
-	// Unsupported kind "alias".
-	// Unsupported kind "alias".
+
+	e.FieldStart("number")
+	s.Number.Encode(e)
+
+	e.FieldStart("created_at")
+	s.CreatedAt.Encode(e)
+
+	e.FieldStart("url")
+	s.URL.Encode(e)
+
+	e.FieldStart("html_url")
+	s.HTMLURL.Encode(e)
+
+	e.FieldStart("instances_url")
+	s.InstancesURL.Encode(e)
 
 	e.FieldStart("state")
 	s.State.Encode(e)
@@ -10042,15 +11528,55 @@ func (s *CodeScanningAlertItems) Decode(d *jx.Decoder) error {
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "number":
-			return errors.New(`decoding of "AlertNumber" (alias) is not implemented`)
+			{
+				var unwrapped int
+				v, err := d.Int()
+				unwrapped = int(v)
+				if err != nil {
+					return err
+				}
+				s.Number = AlertNumber(unwrapped)
+			}
 		case "created_at":
-			return errors.New(`decoding of "AlertCreatedAt" (alias) is not implemented`)
+			{
+				var unwrapped time.Time
+				v, err := json.DecodeDateTime(d)
+				unwrapped = v
+				if err != nil {
+					return err
+				}
+				s.CreatedAt = AlertCreatedAt(unwrapped)
+			}
 		case "url":
-			return errors.New(`decoding of "AlertURL" (alias) is not implemented`)
+			{
+				var unwrapped url.URL
+				v, err := json.DecodeURI(d)
+				unwrapped = v
+				if err != nil {
+					return err
+				}
+				s.URL = AlertURL(unwrapped)
+			}
 		case "html_url":
-			return errors.New(`decoding of "AlertHTMLURL" (alias) is not implemented`)
+			{
+				var unwrapped url.URL
+				v, err := json.DecodeURI(d)
+				unwrapped = v
+				if err != nil {
+					return err
+				}
+				s.HTMLURL = AlertHTMLURL(unwrapped)
+			}
 		case "instances_url":
-			return errors.New(`decoding of "AlertInstancesURL" (alias) is not implemented`)
+			{
+				var unwrapped url.URL
+				v, err := json.DecodeURI(d)
+				unwrapped = v
+				if err != nil {
+					return err
+				}
+				s.InstancesURL = AlertInstancesURL(unwrapped)
+			}
 		case "state":
 			if err := s.State.Decode(d); err != nil {
 				return err
@@ -10392,10 +11918,18 @@ func (s *CodeScanningAlertState) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s CodeScanningAnalysis) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	// Unsupported kind "alias".
-	// Unsupported kind "alias".
-	// Unsupported kind "alias".
-	// Unsupported kind "alias".
+
+	e.FieldStart("ref")
+	s.Ref.Encode(e)
+
+	e.FieldStart("commit_sha")
+	s.CommitSha.Encode(e)
+
+	e.FieldStart("analysis_key")
+	s.AnalysisKey.Encode(e)
+
+	e.FieldStart("environment")
+	s.Environment.Encode(e)
 	if s.Category.Set {
 		e.FieldStart("category")
 		s.Category.Encode(e)
@@ -10403,7 +11937,9 @@ func (s CodeScanningAnalysis) Encode(e *jx.Encoder) {
 
 	e.FieldStart("error")
 	e.Str(s.Error)
-	// Unsupported kind "alias".
+
+	e.FieldStart("created_at")
+	s.CreatedAt.Encode(e)
 
 	e.FieldStart("results_count")
 	e.Int(s.ResultsCount)
@@ -10413,8 +11949,12 @@ func (s CodeScanningAnalysis) Encode(e *jx.Encoder) {
 
 	e.FieldStart("id")
 	e.Int(s.ID)
-	// Unsupported kind "alias".
-	// Unsupported kind "alias".
+
+	e.FieldStart("url")
+	s.URL.Encode(e)
+
+	e.FieldStart("sarif_id")
+	s.SarifID.Encode(e)
 
 	e.FieldStart("tool")
 	s.Tool.Encode(e)
@@ -10439,13 +11979,45 @@ func (s *CodeScanningAnalysis) Decode(d *jx.Decoder) error {
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "ref":
-			return errors.New(`decoding of "CodeScanningRef" (alias) is not implemented`)
+			{
+				var unwrapped string
+				v, err := d.Str()
+				unwrapped = string(v)
+				if err != nil {
+					return err
+				}
+				s.Ref = CodeScanningRef(unwrapped)
+			}
 		case "commit_sha":
-			return errors.New(`decoding of "CodeScanningAnalysisCommitSha" (alias) is not implemented`)
+			{
+				var unwrapped string
+				v, err := d.Str()
+				unwrapped = string(v)
+				if err != nil {
+					return err
+				}
+				s.CommitSha = CodeScanningAnalysisCommitSha(unwrapped)
+			}
 		case "analysis_key":
-			return errors.New(`decoding of "CodeScanningAnalysisAnalysisKey" (alias) is not implemented`)
+			{
+				var unwrapped string
+				v, err := d.Str()
+				unwrapped = string(v)
+				if err != nil {
+					return err
+				}
+				s.AnalysisKey = CodeScanningAnalysisAnalysisKey(unwrapped)
+			}
 		case "environment":
-			return errors.New(`decoding of "CodeScanningAnalysisEnvironment" (alias) is not implemented`)
+			{
+				var unwrapped string
+				v, err := d.Str()
+				unwrapped = string(v)
+				if err != nil {
+					return err
+				}
+				s.Environment = CodeScanningAnalysisEnvironment(unwrapped)
+			}
 		case "category":
 			s.Category.Reset()
 			if err := s.Category.Decode(d); err != nil {
@@ -10458,7 +12030,15 @@ func (s *CodeScanningAnalysis) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "created_at":
-			return errors.New(`decoding of "CodeScanningAnalysisCreatedAt" (alias) is not implemented`)
+			{
+				var unwrapped time.Time
+				v, err := json.DecodeDateTime(d)
+				unwrapped = v
+				if err != nil {
+					return err
+				}
+				s.CreatedAt = CodeScanningAnalysisCreatedAt(unwrapped)
+			}
 		case "results_count":
 			v, err := d.Int()
 			s.ResultsCount = int(v)
@@ -10478,9 +12058,25 @@ func (s *CodeScanningAnalysis) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "url":
-			return errors.New(`decoding of "CodeScanningAnalysisURL" (alias) is not implemented`)
+			{
+				var unwrapped url.URL
+				v, err := json.DecodeURI(d)
+				unwrapped = v
+				if err != nil {
+					return err
+				}
+				s.URL = CodeScanningAnalysisURL(unwrapped)
+			}
 		case "sarif_id":
-			return errors.New(`decoding of "CodeScanningAnalysisSarifID" (alias) is not implemented`)
+			{
+				var unwrapped string
+				v, err := d.Str()
+				unwrapped = string(v)
+				if err != nil {
+					return err
+				}
+				s.SarifID = CodeScanningAnalysisSarifID(unwrapped)
+			}
 		case "tool":
 			if err := s.Tool.Decode(d); err != nil {
 				return err
@@ -10509,17 +12105,109 @@ func (s *CodeScanningAnalysis) Decode(d *jx.Decoder) error {
 	})
 }
 
-func (CodeScanningAnalysisAnalysisKey) Encode(e *jx.Encoder)       {}
-func (CodeScanningAnalysisAnalysisKey) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes CodeScanningAnalysisAnalysisKey as json.
+func (s CodeScanningAnalysisAnalysisKey) Encode(e *jx.Encoder) {
+	unwrapped := string(s)
+	e.Str(unwrapped)
+}
 
-func (CodeScanningAnalysisCategory) Encode(e *jx.Encoder)       {}
-func (CodeScanningAnalysisCategory) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes CodeScanningAnalysisAnalysisKey from json.
+func (s *CodeScanningAnalysisAnalysisKey) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode CodeScanningAnalysisAnalysisKey to nil`)
+	}
+	var unwrapped string
+	if err := func() error {
+		v, err := d.Str()
+		unwrapped = string(v)
+		if err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = CodeScanningAnalysisAnalysisKey(unwrapped)
+	return nil
+}
 
-func (CodeScanningAnalysisCommitSha) Encode(e *jx.Encoder)       {}
-func (CodeScanningAnalysisCommitSha) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes CodeScanningAnalysisCategory as json.
+func (s CodeScanningAnalysisCategory) Encode(e *jx.Encoder) {
+	unwrapped := string(s)
+	e.Str(unwrapped)
+}
 
-func (CodeScanningAnalysisCreatedAt) Encode(e *jx.Encoder)       {}
-func (CodeScanningAnalysisCreatedAt) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes CodeScanningAnalysisCategory from json.
+func (s *CodeScanningAnalysisCategory) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode CodeScanningAnalysisCategory to nil`)
+	}
+	var unwrapped string
+	if err := func() error {
+		v, err := d.Str()
+		unwrapped = string(v)
+		if err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = CodeScanningAnalysisCategory(unwrapped)
+	return nil
+}
+
+// Encode encodes CodeScanningAnalysisCommitSha as json.
+func (s CodeScanningAnalysisCommitSha) Encode(e *jx.Encoder) {
+	unwrapped := string(s)
+	e.Str(unwrapped)
+}
+
+// Decode decodes CodeScanningAnalysisCommitSha from json.
+func (s *CodeScanningAnalysisCommitSha) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode CodeScanningAnalysisCommitSha to nil`)
+	}
+	var unwrapped string
+	if err := func() error {
+		v, err := d.Str()
+		unwrapped = string(v)
+		if err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = CodeScanningAnalysisCommitSha(unwrapped)
+	return nil
+}
+
+// Encode encodes CodeScanningAnalysisCreatedAt as json.
+func (s CodeScanningAnalysisCreatedAt) Encode(e *jx.Encoder) {
+	unwrapped := time.Time(s)
+	json.EncodeDateTime(e, unwrapped)
+}
+
+// Decode decodes CodeScanningAnalysisCreatedAt from json.
+func (s *CodeScanningAnalysisCreatedAt) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode CodeScanningAnalysisCreatedAt to nil`)
+	}
+	var unwrapped time.Time
+	if err := func() error {
+		v, err := json.DecodeDateTime(d)
+		unwrapped = v
+		if err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = CodeScanningAnalysisCreatedAt(unwrapped)
+	return nil
+}
 
 // Encode implements json.Marshaler.
 func (s CodeScanningAnalysisDeletion) Encode(e *jx.Encoder) {
@@ -10555,14 +12243,83 @@ func (s *CodeScanningAnalysisDeletion) Decode(d *jx.Decoder) error {
 	})
 }
 
-func (CodeScanningAnalysisEnvironment) Encode(e *jx.Encoder)       {}
-func (CodeScanningAnalysisEnvironment) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes CodeScanningAnalysisEnvironment as json.
+func (s CodeScanningAnalysisEnvironment) Encode(e *jx.Encoder) {
+	unwrapped := string(s)
+	e.Str(unwrapped)
+}
 
-func (CodeScanningAnalysisSarifFile) Encode(e *jx.Encoder)       {}
-func (CodeScanningAnalysisSarifFile) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes CodeScanningAnalysisEnvironment from json.
+func (s *CodeScanningAnalysisEnvironment) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode CodeScanningAnalysisEnvironment to nil`)
+	}
+	var unwrapped string
+	if err := func() error {
+		v, err := d.Str()
+		unwrapped = string(v)
+		if err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = CodeScanningAnalysisEnvironment(unwrapped)
+	return nil
+}
 
-func (CodeScanningAnalysisSarifID) Encode(e *jx.Encoder)       {}
-func (CodeScanningAnalysisSarifID) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes CodeScanningAnalysisSarifFile as json.
+func (s CodeScanningAnalysisSarifFile) Encode(e *jx.Encoder) {
+	unwrapped := string(s)
+	e.Str(unwrapped)
+}
+
+// Decode decodes CodeScanningAnalysisSarifFile from json.
+func (s *CodeScanningAnalysisSarifFile) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode CodeScanningAnalysisSarifFile to nil`)
+	}
+	var unwrapped string
+	if err := func() error {
+		v, err := d.Str()
+		unwrapped = string(v)
+		if err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = CodeScanningAnalysisSarifFile(unwrapped)
+	return nil
+}
+
+// Encode encodes CodeScanningAnalysisSarifID as json.
+func (s CodeScanningAnalysisSarifID) Encode(e *jx.Encoder) {
+	unwrapped := string(s)
+	e.Str(unwrapped)
+}
+
+// Decode decodes CodeScanningAnalysisSarifID from json.
+func (s *CodeScanningAnalysisSarifID) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode CodeScanningAnalysisSarifID to nil`)
+	}
+	var unwrapped string
+	if err := func() error {
+		v, err := d.Str()
+		unwrapped = string(v)
+		if err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = CodeScanningAnalysisSarifID(unwrapped)
+	return nil
+}
 
 // Encode implements json.Marshaler.
 func (s CodeScanningAnalysisTool) Encode(e *jx.Encoder) {
@@ -10611,38 +12368,277 @@ func (s *CodeScanningAnalysisTool) Decode(d *jx.Decoder) error {
 	})
 }
 
-func (CodeScanningAnalysisToolGUID) Encode(e *jx.Encoder)       {}
-func (CodeScanningAnalysisToolGUID) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes CodeScanningAnalysisToolGUID as json.
+func (s CodeScanningAnalysisToolGUID) Encode(e *jx.Encoder) {
+	unwrapped := string(s)
+	e.Str(unwrapped)
+}
 
-func (CodeScanningAnalysisToolName) Encode(e *jx.Encoder)       {}
-func (CodeScanningAnalysisToolName) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes CodeScanningAnalysisToolGUID from json.
+func (s *CodeScanningAnalysisToolGUID) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode CodeScanningAnalysisToolGUID to nil`)
+	}
+	var unwrapped string
+	if err := func() error {
+		v, err := d.Str()
+		unwrapped = string(v)
+		if err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = CodeScanningAnalysisToolGUID(unwrapped)
+	return nil
+}
 
-func (CodeScanningAnalysisToolVersion) Encode(e *jx.Encoder)       {}
-func (CodeScanningAnalysisToolVersion) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes CodeScanningAnalysisToolName as json.
+func (s CodeScanningAnalysisToolName) Encode(e *jx.Encoder) {
+	unwrapped := string(s)
+	e.Str(unwrapped)
+}
 
-func (CodeScanningAnalysisURL) Encode(e *jx.Encoder)       {}
-func (CodeScanningAnalysisURL) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes CodeScanningAnalysisToolName from json.
+func (s *CodeScanningAnalysisToolName) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode CodeScanningAnalysisToolName to nil`)
+	}
+	var unwrapped string
+	if err := func() error {
+		v, err := d.Str()
+		unwrapped = string(v)
+		if err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = CodeScanningAnalysisToolName(unwrapped)
+	return nil
+}
 
-func (CodeScanningDeleteAnalysisApplicationJSONBadRequest) Encode(e *jx.Encoder)       {}
-func (CodeScanningDeleteAnalysisApplicationJSONBadRequest) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes CodeScanningAnalysisToolVersion as json.
+func (s CodeScanningAnalysisToolVersion) Encode(e *jx.Encoder) {
+	unwrapped := string(s)
+	e.Str(unwrapped)
+}
 
-func (CodeScanningDeleteAnalysisApplicationJSONForbidden) Encode(e *jx.Encoder)       {}
-func (CodeScanningDeleteAnalysisApplicationJSONForbidden) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes CodeScanningAnalysisToolVersion from json.
+func (s *CodeScanningAnalysisToolVersion) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode CodeScanningAnalysisToolVersion to nil`)
+	}
+	var unwrapped string
+	if err := func() error {
+		v, err := d.Str()
+		unwrapped = string(v)
+		if err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = CodeScanningAnalysisToolVersion(unwrapped)
+	return nil
+}
 
-func (CodeScanningDeleteAnalysisApplicationJSONNotFound) Encode(e *jx.Encoder)       {}
-func (CodeScanningDeleteAnalysisApplicationJSONNotFound) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes CodeScanningAnalysisURL as json.
+func (s CodeScanningAnalysisURL) Encode(e *jx.Encoder) {
+	unwrapped := url.URL(s)
+	json.EncodeURI(e, unwrapped)
+}
 
-func (CodeScanningGetAlertApplicationJSONForbidden) Encode(e *jx.Encoder)       {}
-func (CodeScanningGetAlertApplicationJSONForbidden) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes CodeScanningAnalysisURL from json.
+func (s *CodeScanningAnalysisURL) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode CodeScanningAnalysisURL to nil`)
+	}
+	var unwrapped url.URL
+	if err := func() error {
+		v, err := json.DecodeURI(d)
+		unwrapped = v
+		if err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = CodeScanningAnalysisURL(unwrapped)
+	return nil
+}
 
-func (CodeScanningGetAlertApplicationJSONNotFound) Encode(e *jx.Encoder)       {}
-func (CodeScanningGetAlertApplicationJSONNotFound) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes CodeScanningDeleteAnalysisApplicationJSONBadRequest as json.
+func (s CodeScanningDeleteAnalysisApplicationJSONBadRequest) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (CodeScanningGetAnalysisApplicationJSONForbidden) Encode(e *jx.Encoder)       {}
-func (CodeScanningGetAnalysisApplicationJSONForbidden) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes CodeScanningDeleteAnalysisApplicationJSONBadRequest from json.
+func (s *CodeScanningDeleteAnalysisApplicationJSONBadRequest) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode CodeScanningDeleteAnalysisApplicationJSONBadRequest to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = CodeScanningDeleteAnalysisApplicationJSONBadRequest(unwrapped)
+	return nil
+}
 
-func (CodeScanningGetAnalysisApplicationJSONNotFound) Encode(e *jx.Encoder)       {}
-func (CodeScanningGetAnalysisApplicationJSONNotFound) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes CodeScanningDeleteAnalysisApplicationJSONForbidden as json.
+func (s CodeScanningDeleteAnalysisApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes CodeScanningDeleteAnalysisApplicationJSONForbidden from json.
+func (s *CodeScanningDeleteAnalysisApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode CodeScanningDeleteAnalysisApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = CodeScanningDeleteAnalysisApplicationJSONForbidden(unwrapped)
+	return nil
+}
+
+// Encode encodes CodeScanningDeleteAnalysisApplicationJSONNotFound as json.
+func (s CodeScanningDeleteAnalysisApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes CodeScanningDeleteAnalysisApplicationJSONNotFound from json.
+func (s *CodeScanningDeleteAnalysisApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode CodeScanningDeleteAnalysisApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = CodeScanningDeleteAnalysisApplicationJSONNotFound(unwrapped)
+	return nil
+}
+
+// Encode encodes CodeScanningGetAlertApplicationJSONForbidden as json.
+func (s CodeScanningGetAlertApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes CodeScanningGetAlertApplicationJSONForbidden from json.
+func (s *CodeScanningGetAlertApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode CodeScanningGetAlertApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = CodeScanningGetAlertApplicationJSONForbidden(unwrapped)
+	return nil
+}
+
+// Encode encodes CodeScanningGetAlertApplicationJSONNotFound as json.
+func (s CodeScanningGetAlertApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes CodeScanningGetAlertApplicationJSONNotFound from json.
+func (s *CodeScanningGetAlertApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode CodeScanningGetAlertApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = CodeScanningGetAlertApplicationJSONNotFound(unwrapped)
+	return nil
+}
+
+// Encode encodes CodeScanningGetAnalysisApplicationJSONForbidden as json.
+func (s CodeScanningGetAnalysisApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes CodeScanningGetAnalysisApplicationJSONForbidden from json.
+func (s *CodeScanningGetAnalysisApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode CodeScanningGetAnalysisApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = CodeScanningGetAnalysisApplicationJSONForbidden(unwrapped)
+	return nil
+}
+
+// Encode encodes CodeScanningGetAnalysisApplicationJSONNotFound as json.
+func (s CodeScanningGetAnalysisApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes CodeScanningGetAnalysisApplicationJSONNotFound from json.
+func (s *CodeScanningGetAnalysisApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode CodeScanningGetAnalysisApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = CodeScanningGetAnalysisApplicationJSONNotFound(unwrapped)
+	return nil
+}
 
 // Encode implements json.Marshaler.
 func (s CodeScanningGetSarifNotFound) Encode(e *jx.Encoder) {
@@ -10664,35 +12660,283 @@ func (s *CodeScanningGetSarifNotFound) Decode(d *jx.Decoder) error {
 	})
 }
 
-func (CodeScanningListAlertInstancesApplicationJSONForbidden) Encode(e *jx.Encoder)       {}
-func (CodeScanningListAlertInstancesApplicationJSONForbidden) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes CodeScanningListAlertInstancesApplicationJSONForbidden as json.
+func (s CodeScanningListAlertInstancesApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (CodeScanningListAlertInstancesApplicationJSONNotFound) Encode(e *jx.Encoder)       {}
-func (CodeScanningListAlertInstancesApplicationJSONNotFound) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes CodeScanningListAlertInstancesApplicationJSONForbidden from json.
+func (s *CodeScanningListAlertInstancesApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode CodeScanningListAlertInstancesApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = CodeScanningListAlertInstancesApplicationJSONForbidden(unwrapped)
+	return nil
+}
 
-func (CodeScanningListAlertInstancesOKApplicationJSON) Encode(e *jx.Encoder)       {}
-func (CodeScanningListAlertInstancesOKApplicationJSON) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes CodeScanningListAlertInstancesApplicationJSONNotFound as json.
+func (s CodeScanningListAlertInstancesApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (CodeScanningListAlertsForRepoApplicationJSONForbidden) Encode(e *jx.Encoder)       {}
-func (CodeScanningListAlertsForRepoApplicationJSONForbidden) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes CodeScanningListAlertInstancesApplicationJSONNotFound from json.
+func (s *CodeScanningListAlertInstancesApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode CodeScanningListAlertInstancesApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = CodeScanningListAlertInstancesApplicationJSONNotFound(unwrapped)
+	return nil
+}
 
-func (CodeScanningListAlertsForRepoApplicationJSONNotFound) Encode(e *jx.Encoder)       {}
-func (CodeScanningListAlertsForRepoApplicationJSONNotFound) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes CodeScanningListAlertInstancesOKApplicationJSON as json.
+func (s CodeScanningListAlertInstancesOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []CodeScanningAlertInstance(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
 
-func (CodeScanningListAlertsForRepoOKApplicationJSON) Encode(e *jx.Encoder)       {}
-func (CodeScanningListAlertsForRepoOKApplicationJSON) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes CodeScanningListAlertInstancesOKApplicationJSON from json.
+func (s *CodeScanningListAlertInstancesOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode CodeScanningListAlertInstancesOKApplicationJSON to nil`)
+	}
+	var unwrapped []CodeScanningAlertInstance
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem CodeScanningAlertInstance
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = CodeScanningListAlertInstancesOKApplicationJSON(unwrapped)
+	return nil
+}
 
-func (CodeScanningListRecentAnalysesApplicationJSONForbidden) Encode(e *jx.Encoder)       {}
-func (CodeScanningListRecentAnalysesApplicationJSONForbidden) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes CodeScanningListAlertsForRepoApplicationJSONForbidden as json.
+func (s CodeScanningListAlertsForRepoApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (CodeScanningListRecentAnalysesApplicationJSONNotFound) Encode(e *jx.Encoder)       {}
-func (CodeScanningListRecentAnalysesApplicationJSONNotFound) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes CodeScanningListAlertsForRepoApplicationJSONForbidden from json.
+func (s *CodeScanningListAlertsForRepoApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode CodeScanningListAlertsForRepoApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = CodeScanningListAlertsForRepoApplicationJSONForbidden(unwrapped)
+	return nil
+}
 
-func (CodeScanningListRecentAnalysesOKApplicationJSON) Encode(e *jx.Encoder)       {}
-func (CodeScanningListRecentAnalysesOKApplicationJSON) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes CodeScanningListAlertsForRepoApplicationJSONNotFound as json.
+func (s CodeScanningListAlertsForRepoApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (CodeScanningRef) Encode(e *jx.Encoder)       {}
-func (CodeScanningRef) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes CodeScanningListAlertsForRepoApplicationJSONNotFound from json.
+func (s *CodeScanningListAlertsForRepoApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode CodeScanningListAlertsForRepoApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = CodeScanningListAlertsForRepoApplicationJSONNotFound(unwrapped)
+	return nil
+}
+
+// Encode encodes CodeScanningListAlertsForRepoOKApplicationJSON as json.
+func (s CodeScanningListAlertsForRepoOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []CodeScanningAlertItems(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes CodeScanningListAlertsForRepoOKApplicationJSON from json.
+func (s *CodeScanningListAlertsForRepoOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode CodeScanningListAlertsForRepoOKApplicationJSON to nil`)
+	}
+	var unwrapped []CodeScanningAlertItems
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem CodeScanningAlertItems
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = CodeScanningListAlertsForRepoOKApplicationJSON(unwrapped)
+	return nil
+}
+
+// Encode encodes CodeScanningListRecentAnalysesApplicationJSONForbidden as json.
+func (s CodeScanningListRecentAnalysesApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes CodeScanningListRecentAnalysesApplicationJSONForbidden from json.
+func (s *CodeScanningListRecentAnalysesApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode CodeScanningListRecentAnalysesApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = CodeScanningListRecentAnalysesApplicationJSONForbidden(unwrapped)
+	return nil
+}
+
+// Encode encodes CodeScanningListRecentAnalysesApplicationJSONNotFound as json.
+func (s CodeScanningListRecentAnalysesApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes CodeScanningListRecentAnalysesApplicationJSONNotFound from json.
+func (s *CodeScanningListRecentAnalysesApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode CodeScanningListRecentAnalysesApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = CodeScanningListRecentAnalysesApplicationJSONNotFound(unwrapped)
+	return nil
+}
+
+// Encode encodes CodeScanningListRecentAnalysesOKApplicationJSON as json.
+func (s CodeScanningListRecentAnalysesOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []CodeScanningAnalysis(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes CodeScanningListRecentAnalysesOKApplicationJSON from json.
+func (s *CodeScanningListRecentAnalysesOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode CodeScanningListRecentAnalysesOKApplicationJSON to nil`)
+	}
+	var unwrapped []CodeScanningAnalysis
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem CodeScanningAnalysis
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = CodeScanningListRecentAnalysesOKApplicationJSON(unwrapped)
+	return nil
+}
+
+// Encode encodes CodeScanningRef as json.
+func (s CodeScanningRef) Encode(e *jx.Encoder) {
+	unwrapped := string(s)
+	e.Str(unwrapped)
+}
+
+// Decode decodes CodeScanningRef from json.
+func (s *CodeScanningRef) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode CodeScanningRef to nil`)
+	}
+	var unwrapped string
+	if err := func() error {
+		v, err := d.Str()
+		unwrapped = string(v)
+		if err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = CodeScanningRef(unwrapped)
+	return nil
+}
 
 // Encode implements json.Marshaler.
 func (s CodeScanningSarifsReceipt) Encode(e *jx.Encoder) {
@@ -10788,11 +13032,53 @@ func (s *CodeScanningSarifsStatusProcessingStatus) Decode(d *jx.Decoder) error {
 	return nil
 }
 
-func (CodeScanningUpdateAlertApplicationJSONForbidden) Encode(e *jx.Encoder)       {}
-func (CodeScanningUpdateAlertApplicationJSONForbidden) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes CodeScanningUpdateAlertApplicationJSONForbidden as json.
+func (s CodeScanningUpdateAlertApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (CodeScanningUpdateAlertApplicationJSONNotFound) Encode(e *jx.Encoder)       {}
-func (CodeScanningUpdateAlertApplicationJSONNotFound) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes CodeScanningUpdateAlertApplicationJSONForbidden from json.
+func (s *CodeScanningUpdateAlertApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode CodeScanningUpdateAlertApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = CodeScanningUpdateAlertApplicationJSONForbidden(unwrapped)
+	return nil
+}
+
+// Encode encodes CodeScanningUpdateAlertApplicationJSONNotFound as json.
+func (s CodeScanningUpdateAlertApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes CodeScanningUpdateAlertApplicationJSONNotFound from json.
+func (s *CodeScanningUpdateAlertApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode CodeScanningUpdateAlertApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = CodeScanningUpdateAlertApplicationJSONNotFound(unwrapped)
+	return nil
+}
 
 // Encode implements json.Marshaler.
 func (s CodeScanningUpdateAlertReq) Encode(e *jx.Encoder) {
@@ -10830,11 +13116,53 @@ func (s *CodeScanningUpdateAlertReq) Decode(d *jx.Decoder) error {
 	})
 }
 
-func (CodeScanningUploadSarifApplicationJSONForbidden) Encode(e *jx.Encoder)       {}
-func (CodeScanningUploadSarifApplicationJSONForbidden) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes CodeScanningUploadSarifApplicationJSONForbidden as json.
+func (s CodeScanningUploadSarifApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (CodeScanningUploadSarifApplicationJSONNotFound) Encode(e *jx.Encoder)       {}
-func (CodeScanningUploadSarifApplicationJSONNotFound) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes CodeScanningUploadSarifApplicationJSONForbidden from json.
+func (s *CodeScanningUploadSarifApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode CodeScanningUploadSarifApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = CodeScanningUploadSarifApplicationJSONForbidden(unwrapped)
+	return nil
+}
+
+// Encode encodes CodeScanningUploadSarifApplicationJSONNotFound as json.
+func (s CodeScanningUploadSarifApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes CodeScanningUploadSarifApplicationJSONNotFound from json.
+func (s *CodeScanningUploadSarifApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode CodeScanningUploadSarifApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = CodeScanningUploadSarifApplicationJSONNotFound(unwrapped)
+	return nil
+}
 
 // Encode implements json.Marshaler.
 func (s CodeScanningUploadSarifBadRequest) Encode(e *jx.Encoder) {
@@ -10859,9 +13187,15 @@ func (s *CodeScanningUploadSarifBadRequest) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s CodeScanningUploadSarifReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	// Unsupported kind "alias".
-	// Unsupported kind "alias".
-	// Unsupported kind "alias".
+
+	e.FieldStart("commit_sha")
+	s.CommitSha.Encode(e)
+
+	e.FieldStart("ref")
+	s.Ref.Encode(e)
+
+	e.FieldStart("sarif")
+	s.Sarif.Encode(e)
 	if s.CheckoutURI.Set {
 		e.FieldStart("checkout_uri")
 		s.CheckoutURI.Encode(e)
@@ -10885,11 +13219,35 @@ func (s *CodeScanningUploadSarifReq) Decode(d *jx.Decoder) error {
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "commit_sha":
-			return errors.New(`decoding of "CodeScanningAnalysisCommitSha" (alias) is not implemented`)
+			{
+				var unwrapped string
+				v, err := d.Str()
+				unwrapped = string(v)
+				if err != nil {
+					return err
+				}
+				s.CommitSha = CodeScanningAnalysisCommitSha(unwrapped)
+			}
 		case "ref":
-			return errors.New(`decoding of "CodeScanningRef" (alias) is not implemented`)
+			{
+				var unwrapped string
+				v, err := d.Str()
+				unwrapped = string(v)
+				if err != nil {
+					return err
+				}
+				s.Ref = CodeScanningRef(unwrapped)
+			}
 		case "sarif":
-			return errors.New(`decoding of "CodeScanningAnalysisSarifFile" (alias) is not implemented`)
+			{
+				var unwrapped string
+				v, err := d.Str()
+				unwrapped = string(v)
+				if err != nil {
+					return err
+				}
+				s.Sarif = CodeScanningAnalysisSarifFile(unwrapped)
+			}
 		case "checkout_uri":
 			s.CheckoutURI.Reset()
 			if err := s.CheckoutURI.Decode(d); err != nil {
@@ -11071,7 +13429,21 @@ func (s *CodeSearchResultItem) Decode(d *jx.Decoder) error {
 		case "text_matches":
 			s.TextMatches = nil
 			var elem SearchResultTextMatches
-			return errors.New(`decoding of "SearchResultTextMatches" (alias) is not implemented`)
+			{
+				var unwrapped []SearchResultTextMatchesItem
+				unwrapped = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem SearchResultTextMatchesItem
+					if err := elem.Decode(d); err != nil {
+						return err
+					}
+					unwrapped = append(unwrapped, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				elem = SearchResultTextMatches(unwrapped)
+			}
 			s.TextMatches = &elem
 		default:
 			return d.Skip()
@@ -11080,8 +13452,41 @@ func (s *CodeSearchResultItem) Decode(d *jx.Decoder) error {
 	})
 }
 
-func (CodesOfConductGetAllCodesOfConductOKApplicationJSON) Encode(e *jx.Encoder)       {}
-func (CodesOfConductGetAllCodesOfConductOKApplicationJSON) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes CodesOfConductGetAllCodesOfConductOKApplicationJSON as json.
+func (s CodesOfConductGetAllCodesOfConductOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []CodeOfConduct(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes CodesOfConductGetAllCodesOfConductOKApplicationJSON from json.
+func (s *CodesOfConductGetAllCodesOfConductOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode CodesOfConductGetAllCodesOfConductOKApplicationJSON to nil`)
+	}
+	var unwrapped []CodeOfConduct
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem CodeOfConduct
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = CodesOfConductGetAllCodesOfConductOKApplicationJSON(unwrapped)
+	return nil
+}
 
 // Encode implements json.Marshaler.
 func (s Collaborator) Encode(e *jx.Encoder) {
@@ -12394,7 +14799,21 @@ func (s *CommitSearchResultItem) Decode(d *jx.Decoder) error {
 		case "text_matches":
 			s.TextMatches = nil
 			var elem SearchResultTextMatches
-			return errors.New(`decoding of "SearchResultTextMatches" (alias) is not implemented`)
+			{
+				var unwrapped []SearchResultTextMatchesItem
+				unwrapped = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem SearchResultTextMatchesItem
+					if err := elem.Decode(d); err != nil {
+						return err
+					}
+					unwrapped = append(unwrapped, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				elem = SearchResultTextMatches(unwrapped)
+			}
 			s.TextMatches = &elem
 		default:
 			return d.Skip()
@@ -19099,11 +21518,53 @@ func (s *GistsCheckIsStarredNotFound) Decode(d *jx.Decoder) error {
 	})
 }
 
-func (GistsCreateCommentApplicationJSONForbidden) Encode(e *jx.Encoder)       {}
-func (GistsCreateCommentApplicationJSONForbidden) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes GistsCreateCommentApplicationJSONForbidden as json.
+func (s GistsCreateCommentApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (GistsCreateCommentApplicationJSONNotFound) Encode(e *jx.Encoder)       {}
-func (GistsCreateCommentApplicationJSONNotFound) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes GistsCreateCommentApplicationJSONForbidden from json.
+func (s *GistsCreateCommentApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode GistsCreateCommentApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = GistsCreateCommentApplicationJSONForbidden(unwrapped)
+	return nil
+}
+
+// Encode encodes GistsCreateCommentApplicationJSONNotFound as json.
+func (s GistsCreateCommentApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes GistsCreateCommentApplicationJSONNotFound from json.
+func (s *GistsCreateCommentApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode GistsCreateCommentApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = GistsCreateCommentApplicationJSONNotFound(unwrapped)
+	return nil
+}
 
 // Encode implements json.Marshaler.
 func (s GistsCreateCommentReq) Encode(e *jx.Encoder) {
@@ -19134,17 +21595,101 @@ func (s *GistsCreateCommentReq) Decode(d *jx.Decoder) error {
 	})
 }
 
-func (GistsDeleteApplicationJSONForbidden) Encode(e *jx.Encoder)       {}
-func (GistsDeleteApplicationJSONForbidden) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes GistsDeleteApplicationJSONForbidden as json.
+func (s GistsDeleteApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (GistsDeleteApplicationJSONNotFound) Encode(e *jx.Encoder)       {}
-func (GistsDeleteApplicationJSONNotFound) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes GistsDeleteApplicationJSONForbidden from json.
+func (s *GistsDeleteApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode GistsDeleteApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = GistsDeleteApplicationJSONForbidden(unwrapped)
+	return nil
+}
 
-func (GistsDeleteCommentApplicationJSONForbidden) Encode(e *jx.Encoder)       {}
-func (GistsDeleteCommentApplicationJSONForbidden) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes GistsDeleteApplicationJSONNotFound as json.
+func (s GistsDeleteApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (GistsDeleteCommentApplicationJSONNotFound) Encode(e *jx.Encoder)       {}
-func (GistsDeleteCommentApplicationJSONNotFound) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes GistsDeleteApplicationJSONNotFound from json.
+func (s *GistsDeleteApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode GistsDeleteApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = GistsDeleteApplicationJSONNotFound(unwrapped)
+	return nil
+}
+
+// Encode encodes GistsDeleteCommentApplicationJSONForbidden as json.
+func (s GistsDeleteCommentApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes GistsDeleteCommentApplicationJSONForbidden from json.
+func (s *GistsDeleteCommentApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode GistsDeleteCommentApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = GistsDeleteCommentApplicationJSONForbidden(unwrapped)
+	return nil
+}
+
+// Encode encodes GistsDeleteCommentApplicationJSONNotFound as json.
+func (s GistsDeleteCommentApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes GistsDeleteCommentApplicationJSONNotFound from json.
+func (s *GistsDeleteCommentApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode GistsDeleteCommentApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = GistsDeleteCommentApplicationJSONNotFound(unwrapped)
+	return nil
+}
 
 // Encode implements json.Marshaler.
 func (s GistsDeleteCommentNoContent) Encode(e *jx.Encoder) {
@@ -19186,50 +21731,425 @@ func (s *GistsDeleteNoContent) Decode(d *jx.Decoder) error {
 	})
 }
 
-func (GistsListCommentsApplicationJSONForbidden) Encode(e *jx.Encoder)       {}
-func (GistsListCommentsApplicationJSONForbidden) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes GistsListCommentsApplicationJSONForbidden as json.
+func (s GistsListCommentsApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (GistsListCommentsApplicationJSONNotFound) Encode(e *jx.Encoder)       {}
-func (GistsListCommentsApplicationJSONNotFound) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes GistsListCommentsApplicationJSONForbidden from json.
+func (s *GistsListCommentsApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode GistsListCommentsApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = GistsListCommentsApplicationJSONForbidden(unwrapped)
+	return nil
+}
 
-func (GistsListCommentsOKApplicationJSON) Encode(e *jx.Encoder)       {}
-func (GistsListCommentsOKApplicationJSON) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes GistsListCommentsApplicationJSONNotFound as json.
+func (s GistsListCommentsApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (GistsListCommitsApplicationJSONForbidden) Encode(e *jx.Encoder)       {}
-func (GistsListCommitsApplicationJSONForbidden) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes GistsListCommentsApplicationJSONNotFound from json.
+func (s *GistsListCommentsApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode GistsListCommentsApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = GistsListCommentsApplicationJSONNotFound(unwrapped)
+	return nil
+}
 
-func (GistsListCommitsApplicationJSONNotFound) Encode(e *jx.Encoder)       {}
-func (GistsListCommitsApplicationJSONNotFound) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes GistsListCommentsOKApplicationJSON as json.
+func (s GistsListCommentsOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []GistComment(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
 
-func (GistsListCommitsOKApplicationJSON) Encode(e *jx.Encoder)       {}
-func (GistsListCommitsOKApplicationJSON) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes GistsListCommentsOKApplicationJSON from json.
+func (s *GistsListCommentsOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode GistsListCommentsOKApplicationJSON to nil`)
+	}
+	var unwrapped []GistComment
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem GistComment
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = GistsListCommentsOKApplicationJSON(unwrapped)
+	return nil
+}
 
-func (GistsListForksApplicationJSONForbidden) Encode(e *jx.Encoder)       {}
-func (GistsListForksApplicationJSONForbidden) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes GistsListCommitsApplicationJSONForbidden as json.
+func (s GistsListCommitsApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (GistsListForksApplicationJSONNotFound) Encode(e *jx.Encoder)       {}
-func (GistsListForksApplicationJSONNotFound) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes GistsListCommitsApplicationJSONForbidden from json.
+func (s *GistsListCommitsApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode GistsListCommitsApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = GistsListCommitsApplicationJSONForbidden(unwrapped)
+	return nil
+}
 
-func (GistsListForksOKApplicationJSON) Encode(e *jx.Encoder)       {}
-func (GistsListForksOKApplicationJSON) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes GistsListCommitsApplicationJSONNotFound as json.
+func (s GistsListCommitsApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (GistsListOKApplicationJSON) Encode(e *jx.Encoder)       {}
-func (GistsListOKApplicationJSON) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes GistsListCommitsApplicationJSONNotFound from json.
+func (s *GistsListCommitsApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode GistsListCommitsApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = GistsListCommitsApplicationJSONNotFound(unwrapped)
+	return nil
+}
 
-func (GistsListStarredApplicationJSONForbidden) Encode(e *jx.Encoder)       {}
-func (GistsListStarredApplicationJSONForbidden) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes GistsListCommitsOKApplicationJSON as json.
+func (s GistsListCommitsOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []GistCommit(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
 
-func (GistsListStarredApplicationJSONUnauthorized) Encode(e *jx.Encoder)       {}
-func (GistsListStarredApplicationJSONUnauthorized) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes GistsListCommitsOKApplicationJSON from json.
+func (s *GistsListCommitsOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode GistsListCommitsOKApplicationJSON to nil`)
+	}
+	var unwrapped []GistCommit
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem GistCommit
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = GistsListCommitsOKApplicationJSON(unwrapped)
+	return nil
+}
 
-func (GistsListStarredOKApplicationJSON) Encode(e *jx.Encoder)       {}
-func (GistsListStarredOKApplicationJSON) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes GistsListForksApplicationJSONForbidden as json.
+func (s GistsListForksApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (GistsStarApplicationJSONForbidden) Encode(e *jx.Encoder)       {}
-func (GistsStarApplicationJSONForbidden) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes GistsListForksApplicationJSONForbidden from json.
+func (s *GistsListForksApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode GistsListForksApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = GistsListForksApplicationJSONForbidden(unwrapped)
+	return nil
+}
 
-func (GistsStarApplicationJSONNotFound) Encode(e *jx.Encoder)       {}
-func (GistsStarApplicationJSONNotFound) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes GistsListForksApplicationJSONNotFound as json.
+func (s GistsListForksApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes GistsListForksApplicationJSONNotFound from json.
+func (s *GistsListForksApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode GistsListForksApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = GistsListForksApplicationJSONNotFound(unwrapped)
+	return nil
+}
+
+// Encode encodes GistsListForksOKApplicationJSON as json.
+func (s GistsListForksOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []GistSimple(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes GistsListForksOKApplicationJSON from json.
+func (s *GistsListForksOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode GistsListForksOKApplicationJSON to nil`)
+	}
+	var unwrapped []GistSimple
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem GistSimple
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = GistsListForksOKApplicationJSON(unwrapped)
+	return nil
+}
+
+// Encode encodes GistsListOKApplicationJSON as json.
+func (s GistsListOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []BaseGist(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes GistsListOKApplicationJSON from json.
+func (s *GistsListOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode GistsListOKApplicationJSON to nil`)
+	}
+	var unwrapped []BaseGist
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem BaseGist
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = GistsListOKApplicationJSON(unwrapped)
+	return nil
+}
+
+// Encode encodes GistsListStarredApplicationJSONForbidden as json.
+func (s GistsListStarredApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes GistsListStarredApplicationJSONForbidden from json.
+func (s *GistsListStarredApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode GistsListStarredApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = GistsListStarredApplicationJSONForbidden(unwrapped)
+	return nil
+}
+
+// Encode encodes GistsListStarredApplicationJSONUnauthorized as json.
+func (s GistsListStarredApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes GistsListStarredApplicationJSONUnauthorized from json.
+func (s *GistsListStarredApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode GistsListStarredApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = GistsListStarredApplicationJSONUnauthorized(unwrapped)
+	return nil
+}
+
+// Encode encodes GistsListStarredOKApplicationJSON as json.
+func (s GistsListStarredOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []BaseGist(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes GistsListStarredOKApplicationJSON from json.
+func (s *GistsListStarredOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode GistsListStarredOKApplicationJSON to nil`)
+	}
+	var unwrapped []BaseGist
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem BaseGist
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = GistsListStarredOKApplicationJSON(unwrapped)
+	return nil
+}
+
+// Encode encodes GistsStarApplicationJSONForbidden as json.
+func (s GistsStarApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes GistsStarApplicationJSONForbidden from json.
+func (s *GistsStarApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode GistsStarApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = GistsStarApplicationJSONForbidden(unwrapped)
+	return nil
+}
+
+// Encode encodes GistsStarApplicationJSONNotFound as json.
+func (s GistsStarApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes GistsStarApplicationJSONNotFound from json.
+func (s *GistsStarApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode GistsStarApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = GistsStarApplicationJSONNotFound(unwrapped)
+	return nil
+}
 
 // Encode implements json.Marshaler.
 func (s GistsStarNoContent) Encode(e *jx.Encoder) {
@@ -19251,11 +22171,53 @@ func (s *GistsStarNoContent) Decode(d *jx.Decoder) error {
 	})
 }
 
-func (GistsUnstarApplicationJSONForbidden) Encode(e *jx.Encoder)       {}
-func (GistsUnstarApplicationJSONForbidden) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes GistsUnstarApplicationJSONForbidden as json.
+func (s GistsUnstarApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (GistsUnstarApplicationJSONNotFound) Encode(e *jx.Encoder)       {}
-func (GistsUnstarApplicationJSONNotFound) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes GistsUnstarApplicationJSONForbidden from json.
+func (s *GistsUnstarApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode GistsUnstarApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = GistsUnstarApplicationJSONForbidden(unwrapped)
+	return nil
+}
+
+// Encode encodes GistsUnstarApplicationJSONNotFound as json.
+func (s GistsUnstarApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes GistsUnstarApplicationJSONNotFound from json.
+func (s *GistsUnstarApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode GistsUnstarApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = GistsUnstarApplicationJSONNotFound(unwrapped)
+	return nil
+}
 
 // Encode implements json.Marshaler.
 func (s GistsUnstarNoContent) Encode(e *jx.Encoder) {
@@ -20673,8 +23635,43 @@ func (s *GitUpdateRefReq) Decode(d *jx.Decoder) error {
 	})
 }
 
-func (GitignoreGetAllTemplatesOKApplicationJSON) Encode(e *jx.Encoder)       {}
-func (GitignoreGetAllTemplatesOKApplicationJSON) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes GitignoreGetAllTemplatesOKApplicationJSON as json.
+func (s GitignoreGetAllTemplatesOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []string(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		e.Str(elem)
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes GitignoreGetAllTemplatesOKApplicationJSON from json.
+func (s *GitignoreGetAllTemplatesOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode GitignoreGetAllTemplatesOKApplicationJSON to nil`)
+	}
+	var unwrapped []string
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem string
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = GitignoreGetAllTemplatesOKApplicationJSON(unwrapped)
+	return nil
+}
 
 // Encode implements json.Marshaler.
 func (s GitignoreTemplate) Encode(e *jx.Encoder) {
@@ -23679,7 +26676,21 @@ func (s *IssueSearchResultItem) Decode(d *jx.Decoder) error {
 		case "text_matches":
 			s.TextMatches = nil
 			var elem SearchResultTextMatches
-			return errors.New(`decoding of "SearchResultTextMatches" (alias) is not implemented`)
+			{
+				var unwrapped []SearchResultTextMatchesItem
+				unwrapped = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem SearchResultTextMatchesItem
+					if err := elem.Decode(d); err != nil {
+						return err
+					}
+					unwrapped = append(unwrapped, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				elem = SearchResultTextMatches(unwrapped)
+			}
 			s.TextMatches = &elem
 		case "pull_request":
 			s.PullRequest.Reset()
@@ -24497,23 +27508,161 @@ func (s *IssuesDeleteMilestoneNoContent) Decode(d *jx.Decoder) error {
 	})
 }
 
-func (IssuesGetEventApplicationJSONForbidden) Encode(e *jx.Encoder)       {}
-func (IssuesGetEventApplicationJSONForbidden) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes IssuesGetEventApplicationJSONForbidden as json.
+func (s IssuesGetEventApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (IssuesGetEventApplicationJSONGone) Encode(e *jx.Encoder)       {}
-func (IssuesGetEventApplicationJSONGone) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes IssuesGetEventApplicationJSONForbidden from json.
+func (s *IssuesGetEventApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode IssuesGetEventApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = IssuesGetEventApplicationJSONForbidden(unwrapped)
+	return nil
+}
 
-func (IssuesGetEventApplicationJSONNotFound) Encode(e *jx.Encoder)       {}
-func (IssuesGetEventApplicationJSONNotFound) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes IssuesGetEventApplicationJSONGone as json.
+func (s IssuesGetEventApplicationJSONGone) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (IssuesListAssigneesOKApplicationJSON) Encode(e *jx.Encoder)       {}
-func (IssuesListAssigneesOKApplicationJSON) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes IssuesGetEventApplicationJSONGone from json.
+func (s *IssuesGetEventApplicationJSONGone) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode IssuesGetEventApplicationJSONGone to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = IssuesGetEventApplicationJSONGone(unwrapped)
+	return nil
+}
 
-func (IssuesListCommentsApplicationJSONGone) Encode(e *jx.Encoder)       {}
-func (IssuesListCommentsApplicationJSONGone) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes IssuesGetEventApplicationJSONNotFound as json.
+func (s IssuesGetEventApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (IssuesListCommentsApplicationJSONNotFound) Encode(e *jx.Encoder)       {}
-func (IssuesListCommentsApplicationJSONNotFound) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes IssuesGetEventApplicationJSONNotFound from json.
+func (s *IssuesGetEventApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode IssuesGetEventApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = IssuesGetEventApplicationJSONNotFound(unwrapped)
+	return nil
+}
+
+// Encode encodes IssuesListAssigneesOKApplicationJSON as json.
+func (s IssuesListAssigneesOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []SimpleUser(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes IssuesListAssigneesOKApplicationJSON from json.
+func (s *IssuesListAssigneesOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode IssuesListAssigneesOKApplicationJSON to nil`)
+	}
+	var unwrapped []SimpleUser
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem SimpleUser
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = IssuesListAssigneesOKApplicationJSON(unwrapped)
+	return nil
+}
+
+// Encode encodes IssuesListCommentsApplicationJSONGone as json.
+func (s IssuesListCommentsApplicationJSONGone) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes IssuesListCommentsApplicationJSONGone from json.
+func (s *IssuesListCommentsApplicationJSONGone) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode IssuesListCommentsApplicationJSONGone to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = IssuesListCommentsApplicationJSONGone(unwrapped)
+	return nil
+}
+
+// Encode encodes IssuesListCommentsApplicationJSONNotFound as json.
+func (s IssuesListCommentsApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes IssuesListCommentsApplicationJSONNotFound from json.
+func (s *IssuesListCommentsApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode IssuesListCommentsApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = IssuesListCommentsApplicationJSONNotFound(unwrapped)
+	return nil
+}
 
 // Encode encodes IssuesListCommentsForRepoDirection as json.
 func (s IssuesListCommentsForRepoDirection) Encode(e *jx.Encoder) {
@@ -24551,8 +27700,41 @@ func (s *IssuesListCommentsForRepoSort) Decode(d *jx.Decoder) error {
 	return nil
 }
 
-func (IssuesListCommentsOKApplicationJSON) Encode(e *jx.Encoder)       {}
-func (IssuesListCommentsOKApplicationJSON) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes IssuesListCommentsOKApplicationJSON as json.
+func (s IssuesListCommentsOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []IssueComment(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes IssuesListCommentsOKApplicationJSON from json.
+func (s *IssuesListCommentsOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode IssuesListCommentsOKApplicationJSON to nil`)
+	}
+	var unwrapped []IssueComment
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem IssueComment
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = IssuesListCommentsOKApplicationJSON(unwrapped)
+	return nil
+}
 
 // Encode encodes IssuesListDirection as json.
 func (s IssuesListDirection) Encode(e *jx.Encoder) {
@@ -24788,11 +27970,77 @@ func (s *IssuesListForRepoState) Decode(d *jx.Decoder) error {
 	return nil
 }
 
-func (IssuesListLabelsForRepoOKApplicationJSON) Encode(e *jx.Encoder)       {}
-func (IssuesListLabelsForRepoOKApplicationJSON) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes IssuesListLabelsForRepoOKApplicationJSON as json.
+func (s IssuesListLabelsForRepoOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []Label(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
 
-func (IssuesListLabelsOnIssueOKApplicationJSON) Encode(e *jx.Encoder)       {}
-func (IssuesListLabelsOnIssueOKApplicationJSON) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes IssuesListLabelsForRepoOKApplicationJSON from json.
+func (s *IssuesListLabelsForRepoOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode IssuesListLabelsForRepoOKApplicationJSON to nil`)
+	}
+	var unwrapped []Label
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem Label
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = IssuesListLabelsForRepoOKApplicationJSON(unwrapped)
+	return nil
+}
+
+// Encode encodes IssuesListLabelsOnIssueOKApplicationJSON as json.
+func (s IssuesListLabelsOnIssueOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []Label(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes IssuesListLabelsOnIssueOKApplicationJSON from json.
+func (s *IssuesListLabelsOnIssueOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode IssuesListLabelsOnIssueOKApplicationJSON to nil`)
+	}
+	var unwrapped []Label
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem Label
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = IssuesListLabelsOnIssueOKApplicationJSON(unwrapped)
+	return nil
+}
 
 // Encode encodes IssuesListMilestonesDirection as json.
 func (s IssuesListMilestonesDirection) Encode(e *jx.Encoder) {
@@ -24812,8 +28060,41 @@ func (s *IssuesListMilestonesDirection) Decode(d *jx.Decoder) error {
 	return nil
 }
 
-func (IssuesListMilestonesOKApplicationJSON) Encode(e *jx.Encoder)       {}
-func (IssuesListMilestonesOKApplicationJSON) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes IssuesListMilestonesOKApplicationJSON as json.
+func (s IssuesListMilestonesOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []Milestone(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes IssuesListMilestonesOKApplicationJSON from json.
+func (s *IssuesListMilestonesOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode IssuesListMilestonesOKApplicationJSON to nil`)
+	}
+	var unwrapped []Milestone
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem Milestone
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = IssuesListMilestonesOKApplicationJSON(unwrapped)
+	return nil
+}
 
 // Encode encodes IssuesListMilestonesSort as json.
 func (s IssuesListMilestonesSort) Encode(e *jx.Encoder) {
@@ -25016,20 +28297,137 @@ func (s *IssuesRemoveAssigneesReq) Decode(d *jx.Decoder) error {
 	})
 }
 
-func (IssuesRemoveLabelApplicationJSONGone) Encode(e *jx.Encoder)       {}
-func (IssuesRemoveLabelApplicationJSONGone) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes IssuesRemoveLabelApplicationJSONGone as json.
+func (s IssuesRemoveLabelApplicationJSONGone) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (IssuesRemoveLabelApplicationJSONNotFound) Encode(e *jx.Encoder)       {}
-func (IssuesRemoveLabelApplicationJSONNotFound) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes IssuesRemoveLabelApplicationJSONGone from json.
+func (s *IssuesRemoveLabelApplicationJSONGone) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode IssuesRemoveLabelApplicationJSONGone to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = IssuesRemoveLabelApplicationJSONGone(unwrapped)
+	return nil
+}
 
-func (IssuesRemoveLabelOKApplicationJSON) Encode(e *jx.Encoder)       {}
-func (IssuesRemoveLabelOKApplicationJSON) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes IssuesRemoveLabelApplicationJSONNotFound as json.
+func (s IssuesRemoveLabelApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (IssuesUnlockApplicationJSONForbidden) Encode(e *jx.Encoder)       {}
-func (IssuesUnlockApplicationJSONForbidden) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes IssuesRemoveLabelApplicationJSONNotFound from json.
+func (s *IssuesRemoveLabelApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode IssuesRemoveLabelApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = IssuesRemoveLabelApplicationJSONNotFound(unwrapped)
+	return nil
+}
 
-func (IssuesUnlockApplicationJSONNotFound) Encode(e *jx.Encoder)       {}
-func (IssuesUnlockApplicationJSONNotFound) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes IssuesRemoveLabelOKApplicationJSON as json.
+func (s IssuesRemoveLabelOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []Label(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes IssuesRemoveLabelOKApplicationJSON from json.
+func (s *IssuesRemoveLabelOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode IssuesRemoveLabelOKApplicationJSON to nil`)
+	}
+	var unwrapped []Label
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem Label
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = IssuesRemoveLabelOKApplicationJSON(unwrapped)
+	return nil
+}
+
+// Encode encodes IssuesUnlockApplicationJSONForbidden as json.
+func (s IssuesUnlockApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes IssuesUnlockApplicationJSONForbidden from json.
+func (s *IssuesUnlockApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode IssuesUnlockApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = IssuesUnlockApplicationJSONForbidden(unwrapped)
+	return nil
+}
+
+// Encode encodes IssuesUnlockApplicationJSONNotFound as json.
+func (s IssuesUnlockApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes IssuesUnlockApplicationJSONNotFound from json.
+func (s *IssuesUnlockApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode IssuesUnlockApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = IssuesUnlockApplicationJSONNotFound(unwrapped)
+	return nil
+}
 
 // Encode implements json.Marshaler.
 func (s IssuesUnlockNoContent) Encode(e *jx.Encoder) {
@@ -25748,7 +29146,21 @@ func (s *LabelSearchResultItem) Decode(d *jx.Decoder) error {
 		case "text_matches":
 			s.TextMatches = nil
 			var elem SearchResultTextMatches
-			return errors.New(`decoding of "SearchResultTextMatches" (alias) is not implemented`)
+			{
+				var unwrapped []SearchResultTextMatchesItem
+				unwrapped = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem SearchResultTextMatchesItem
+					if err := elem.Decode(d); err != nil {
+						return err
+					}
+					unwrapped = append(unwrapped, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				elem = SearchResultTextMatches(unwrapped)
+			}
 			s.TextMatches = &elem
 		default:
 			return d.Skip()
@@ -26186,14 +29598,89 @@ func (s *LicenseSimple) Decode(d *jx.Decoder) error {
 	})
 }
 
-func (LicensesGetAllCommonlyUsedOKApplicationJSON) Encode(e *jx.Encoder)       {}
-func (LicensesGetAllCommonlyUsedOKApplicationJSON) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes LicensesGetAllCommonlyUsedOKApplicationJSON as json.
+func (s LicensesGetAllCommonlyUsedOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []LicenseSimple(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
 
-func (LicensesGetApplicationJSONForbidden) Encode(e *jx.Encoder)       {}
-func (LicensesGetApplicationJSONForbidden) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes LicensesGetAllCommonlyUsedOKApplicationJSON from json.
+func (s *LicensesGetAllCommonlyUsedOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode LicensesGetAllCommonlyUsedOKApplicationJSON to nil`)
+	}
+	var unwrapped []LicenseSimple
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem LicenseSimple
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = LicensesGetAllCommonlyUsedOKApplicationJSON(unwrapped)
+	return nil
+}
 
-func (LicensesGetApplicationJSONNotFound) Encode(e *jx.Encoder)       {}
-func (LicensesGetApplicationJSONNotFound) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes LicensesGetApplicationJSONForbidden as json.
+func (s LicensesGetApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes LicensesGetApplicationJSONForbidden from json.
+func (s *LicensesGetApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode LicensesGetApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = LicensesGetApplicationJSONForbidden(unwrapped)
+	return nil
+}
+
+// Encode encodes LicensesGetApplicationJSONNotFound as json.
+func (s LicensesGetApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes LicensesGetApplicationJSONNotFound from json.
+func (s *LicensesGetApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode LicensesGetApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = LicensesGetApplicationJSONNotFound(unwrapped)
+	return nil
+}
 
 // Encode implements json.Marshaler.
 func (s Link) Encode(e *jx.Encoder) {
@@ -27400,18 +30887,75 @@ func (s *MigrationsCancelImportNoContent) Decode(d *jx.Decoder) error {
 	})
 }
 
-func (MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {}
-func (MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+// Encode encodes MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONForbidden as json.
+func (s MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONForbidden from json.
+func (s *MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONForbidden(unwrapped)
 	return nil
 }
 
-func (MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONNotFound) Encode(e *jx.Encoder) {}
-func (MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+// Encode encodes MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONNotFound as json.
+func (s MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONNotFound from json.
+func (s *MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONNotFound(unwrapped)
 	return nil
 }
 
-func (MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {}
-func (MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+// Encode encodes MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONUnauthorized as json.
+func (s MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONUnauthorized from json.
+func (s *MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
 	return nil
 }
 
@@ -27475,13 +31019,51 @@ func (s *MigrationsDownloadArchiveForOrgFound) Decode(d *jx.Decoder) error {
 	})
 }
 
-func (MigrationsGetArchiveForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {}
-func (MigrationsGetArchiveForAuthenticatedUserApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+// Encode encodes MigrationsGetArchiveForAuthenticatedUserApplicationJSONForbidden as json.
+func (s MigrationsGetArchiveForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes MigrationsGetArchiveForAuthenticatedUserApplicationJSONForbidden from json.
+func (s *MigrationsGetArchiveForAuthenticatedUserApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode MigrationsGetArchiveForAuthenticatedUserApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = MigrationsGetArchiveForAuthenticatedUserApplicationJSONForbidden(unwrapped)
 	return nil
 }
 
-func (MigrationsGetArchiveForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {}
-func (MigrationsGetArchiveForAuthenticatedUserApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+// Encode encodes MigrationsGetArchiveForAuthenticatedUserApplicationJSONUnauthorized as json.
+func (s MigrationsGetArchiveForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes MigrationsGetArchiveForAuthenticatedUserApplicationJSONUnauthorized from json.
+func (s *MigrationsGetArchiveForAuthenticatedUserApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode MigrationsGetArchiveForAuthenticatedUserApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = MigrationsGetArchiveForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
 	return nil
 }
 
@@ -27505,21 +31087,111 @@ func (s *MigrationsGetArchiveForAuthenticatedUserFound) Decode(d *jx.Decoder) er
 	})
 }
 
-func (MigrationsGetCommitAuthorsOKApplicationJSON) Encode(e *jx.Encoder)       {}
-func (MigrationsGetCommitAuthorsOKApplicationJSON) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes MigrationsGetCommitAuthorsOKApplicationJSON as json.
+func (s MigrationsGetCommitAuthorsOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []PorterAuthor(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
 
-func (MigrationsGetStatusForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {}
-func (MigrationsGetStatusForAuthenticatedUserApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+// Decode decodes MigrationsGetCommitAuthorsOKApplicationJSON from json.
+func (s *MigrationsGetCommitAuthorsOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode MigrationsGetCommitAuthorsOKApplicationJSON to nil`)
+	}
+	var unwrapped []PorterAuthor
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem PorterAuthor
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = MigrationsGetCommitAuthorsOKApplicationJSON(unwrapped)
 	return nil
 }
 
-func (MigrationsGetStatusForAuthenticatedUserApplicationJSONNotFound) Encode(e *jx.Encoder) {}
-func (MigrationsGetStatusForAuthenticatedUserApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+// Encode encodes MigrationsGetStatusForAuthenticatedUserApplicationJSONForbidden as json.
+func (s MigrationsGetStatusForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes MigrationsGetStatusForAuthenticatedUserApplicationJSONForbidden from json.
+func (s *MigrationsGetStatusForAuthenticatedUserApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode MigrationsGetStatusForAuthenticatedUserApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = MigrationsGetStatusForAuthenticatedUserApplicationJSONForbidden(unwrapped)
 	return nil
 }
 
-func (MigrationsGetStatusForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {}
-func (MigrationsGetStatusForAuthenticatedUserApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+// Encode encodes MigrationsGetStatusForAuthenticatedUserApplicationJSONNotFound as json.
+func (s MigrationsGetStatusForAuthenticatedUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes MigrationsGetStatusForAuthenticatedUserApplicationJSONNotFound from json.
+func (s *MigrationsGetStatusForAuthenticatedUserApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode MigrationsGetStatusForAuthenticatedUserApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = MigrationsGetStatusForAuthenticatedUserApplicationJSONNotFound(unwrapped)
+	return nil
+}
+
+// Encode encodes MigrationsGetStatusForAuthenticatedUserApplicationJSONUnauthorized as json.
+func (s MigrationsGetStatusForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes MigrationsGetStatusForAuthenticatedUserApplicationJSONUnauthorized from json.
+func (s *MigrationsGetStatusForAuthenticatedUserApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode MigrationsGetStatusForAuthenticatedUserApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = MigrationsGetStatusForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
 	return nil
 }
 
@@ -27541,18 +31213,89 @@ func (s *MigrationsGetStatusForOrgExcludeItem) Decode(d *jx.Decoder) error {
 	return nil
 }
 
-func (MigrationsListForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {}
-func (MigrationsListForAuthenticatedUserApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+// Encode encodes MigrationsListForAuthenticatedUserApplicationJSONForbidden as json.
+func (s MigrationsListForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes MigrationsListForAuthenticatedUserApplicationJSONForbidden from json.
+func (s *MigrationsListForAuthenticatedUserApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode MigrationsListForAuthenticatedUserApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = MigrationsListForAuthenticatedUserApplicationJSONForbidden(unwrapped)
 	return nil
 }
 
-func (MigrationsListForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {}
-func (MigrationsListForAuthenticatedUserApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+// Encode encodes MigrationsListForAuthenticatedUserApplicationJSONUnauthorized as json.
+func (s MigrationsListForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes MigrationsListForAuthenticatedUserApplicationJSONUnauthorized from json.
+func (s *MigrationsListForAuthenticatedUserApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode MigrationsListForAuthenticatedUserApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = MigrationsListForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
 	return nil
 }
 
-func (MigrationsListForAuthenticatedUserOKApplicationJSON) Encode(e *jx.Encoder)       {}
-func (MigrationsListForAuthenticatedUserOKApplicationJSON) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes MigrationsListForAuthenticatedUserOKApplicationJSON as json.
+func (s MigrationsListForAuthenticatedUserOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []Migration(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes MigrationsListForAuthenticatedUserOKApplicationJSON from json.
+func (s *MigrationsListForAuthenticatedUserOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode MigrationsListForAuthenticatedUserOKApplicationJSON to nil`)
+	}
+	var unwrapped []Migration
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem Migration
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = MigrationsListForAuthenticatedUserOKApplicationJSON(unwrapped)
+	return nil
+}
 
 // Encode encodes MigrationsListForOrgExcludeItem as json.
 func (s MigrationsListForOrgExcludeItem) Encode(e *jx.Encoder) {
@@ -27572,11 +31315,77 @@ func (s *MigrationsListForOrgExcludeItem) Decode(d *jx.Decoder) error {
 	return nil
 }
 
-func (MigrationsListReposForOrgOKApplicationJSON) Encode(e *jx.Encoder)       {}
-func (MigrationsListReposForOrgOKApplicationJSON) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes MigrationsListReposForOrgOKApplicationJSON as json.
+func (s MigrationsListReposForOrgOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []MinimalRepository(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
 
-func (MigrationsListReposForUserOKApplicationJSON) Encode(e *jx.Encoder)       {}
-func (MigrationsListReposForUserOKApplicationJSON) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes MigrationsListReposForOrgOKApplicationJSON from json.
+func (s *MigrationsListReposForOrgOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode MigrationsListReposForOrgOKApplicationJSON to nil`)
+	}
+	var unwrapped []MinimalRepository
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem MinimalRepository
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = MigrationsListReposForOrgOKApplicationJSON(unwrapped)
+	return nil
+}
+
+// Encode encodes MigrationsListReposForUserOKApplicationJSON as json.
+func (s MigrationsListReposForUserOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []MinimalRepository(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes MigrationsListReposForUserOKApplicationJSON from json.
+func (s *MigrationsListReposForUserOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode MigrationsListReposForUserOKApplicationJSON to nil`)
+	}
+	var unwrapped []MinimalRepository
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem MinimalRepository
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = MigrationsListReposForUserOKApplicationJSON(unwrapped)
+	return nil
+}
 
 // Encode implements json.Marshaler.
 func (s MigrationsMapCommitAuthorReq) Encode(e *jx.Encoder) {
@@ -27974,18 +31783,75 @@ func (s *MigrationsStartImportReqVcs) Decode(d *jx.Decoder) error {
 	return nil
 }
 
-func (MigrationsUnlockRepoForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {}
-func (MigrationsUnlockRepoForAuthenticatedUserApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+// Encode encodes MigrationsUnlockRepoForAuthenticatedUserApplicationJSONForbidden as json.
+func (s MigrationsUnlockRepoForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes MigrationsUnlockRepoForAuthenticatedUserApplicationJSONForbidden from json.
+func (s *MigrationsUnlockRepoForAuthenticatedUserApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode MigrationsUnlockRepoForAuthenticatedUserApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = MigrationsUnlockRepoForAuthenticatedUserApplicationJSONForbidden(unwrapped)
 	return nil
 }
 
-func (MigrationsUnlockRepoForAuthenticatedUserApplicationJSONNotFound) Encode(e *jx.Encoder) {}
-func (MigrationsUnlockRepoForAuthenticatedUserApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+// Encode encodes MigrationsUnlockRepoForAuthenticatedUserApplicationJSONNotFound as json.
+func (s MigrationsUnlockRepoForAuthenticatedUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes MigrationsUnlockRepoForAuthenticatedUserApplicationJSONNotFound from json.
+func (s *MigrationsUnlockRepoForAuthenticatedUserApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode MigrationsUnlockRepoForAuthenticatedUserApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = MigrationsUnlockRepoForAuthenticatedUserApplicationJSONNotFound(unwrapped)
 	return nil
 }
 
-func (MigrationsUnlockRepoForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {}
-func (MigrationsUnlockRepoForAuthenticatedUserApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+// Encode encodes MigrationsUnlockRepoForAuthenticatedUserApplicationJSONUnauthorized as json.
+func (s MigrationsUnlockRepoForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes MigrationsUnlockRepoForAuthenticatedUserApplicationJSONUnauthorized from json.
+func (s *MigrationsUnlockRepoForAuthenticatedUserApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode MigrationsUnlockRepoForAuthenticatedUserApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = MigrationsUnlockRepoForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
 	return nil
 }
 
@@ -34414,13 +38280,51 @@ func (s *OAuthAuthorizationsCreateAuthorizationReq) Decode(d *jx.Decoder) error 
 	})
 }
 
-func (OAuthAuthorizationsDeleteAuthorizationApplicationJSONForbidden) Encode(e *jx.Encoder) {}
-func (OAuthAuthorizationsDeleteAuthorizationApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+// Encode encodes OAuthAuthorizationsDeleteAuthorizationApplicationJSONForbidden as json.
+func (s OAuthAuthorizationsDeleteAuthorizationApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes OAuthAuthorizationsDeleteAuthorizationApplicationJSONForbidden from json.
+func (s *OAuthAuthorizationsDeleteAuthorizationApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode OAuthAuthorizationsDeleteAuthorizationApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = OAuthAuthorizationsDeleteAuthorizationApplicationJSONForbidden(unwrapped)
 	return nil
 }
 
-func (OAuthAuthorizationsDeleteAuthorizationApplicationJSONUnauthorized) Encode(e *jx.Encoder) {}
-func (OAuthAuthorizationsDeleteAuthorizationApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+// Encode encodes OAuthAuthorizationsDeleteAuthorizationApplicationJSONUnauthorized as json.
+func (s OAuthAuthorizationsDeleteAuthorizationApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes OAuthAuthorizationsDeleteAuthorizationApplicationJSONUnauthorized from json.
+func (s *OAuthAuthorizationsDeleteAuthorizationApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode OAuthAuthorizationsDeleteAuthorizationApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = OAuthAuthorizationsDeleteAuthorizationApplicationJSONUnauthorized(unwrapped)
 	return nil
 }
 
@@ -34444,11 +38348,51 @@ func (s *OAuthAuthorizationsDeleteAuthorizationNoContent) Decode(d *jx.Decoder) 
 	})
 }
 
-func (OAuthAuthorizationsDeleteGrantApplicationJSONForbidden) Encode(e *jx.Encoder)       {}
-func (OAuthAuthorizationsDeleteGrantApplicationJSONForbidden) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes OAuthAuthorizationsDeleteGrantApplicationJSONForbidden as json.
+func (s OAuthAuthorizationsDeleteGrantApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (OAuthAuthorizationsDeleteGrantApplicationJSONUnauthorized) Encode(e *jx.Encoder) {}
-func (OAuthAuthorizationsDeleteGrantApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+// Decode decodes OAuthAuthorizationsDeleteGrantApplicationJSONForbidden from json.
+func (s *OAuthAuthorizationsDeleteGrantApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode OAuthAuthorizationsDeleteGrantApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = OAuthAuthorizationsDeleteGrantApplicationJSONForbidden(unwrapped)
+	return nil
+}
+
+// Encode encodes OAuthAuthorizationsDeleteGrantApplicationJSONUnauthorized as json.
+func (s OAuthAuthorizationsDeleteGrantApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes OAuthAuthorizationsDeleteGrantApplicationJSONUnauthorized from json.
+func (s *OAuthAuthorizationsDeleteGrantApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode OAuthAuthorizationsDeleteGrantApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = OAuthAuthorizationsDeleteGrantApplicationJSONUnauthorized(unwrapped)
 	return nil
 }
 
@@ -34472,21 +38416,101 @@ func (s *OAuthAuthorizationsDeleteGrantNoContent) Decode(d *jx.Decoder) error {
 	})
 }
 
-func (OAuthAuthorizationsGetAuthorizationApplicationJSONForbidden) Encode(e *jx.Encoder) {}
-func (OAuthAuthorizationsGetAuthorizationApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+// Encode encodes OAuthAuthorizationsGetAuthorizationApplicationJSONForbidden as json.
+func (s OAuthAuthorizationsGetAuthorizationApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes OAuthAuthorizationsGetAuthorizationApplicationJSONForbidden from json.
+func (s *OAuthAuthorizationsGetAuthorizationApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode OAuthAuthorizationsGetAuthorizationApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = OAuthAuthorizationsGetAuthorizationApplicationJSONForbidden(unwrapped)
 	return nil
 }
 
-func (OAuthAuthorizationsGetAuthorizationApplicationJSONUnauthorized) Encode(e *jx.Encoder) {}
-func (OAuthAuthorizationsGetAuthorizationApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+// Encode encodes OAuthAuthorizationsGetAuthorizationApplicationJSONUnauthorized as json.
+func (s OAuthAuthorizationsGetAuthorizationApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes OAuthAuthorizationsGetAuthorizationApplicationJSONUnauthorized from json.
+func (s *OAuthAuthorizationsGetAuthorizationApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode OAuthAuthorizationsGetAuthorizationApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = OAuthAuthorizationsGetAuthorizationApplicationJSONUnauthorized(unwrapped)
 	return nil
 }
 
-func (OAuthAuthorizationsGetGrantApplicationJSONForbidden) Encode(e *jx.Encoder)       {}
-func (OAuthAuthorizationsGetGrantApplicationJSONForbidden) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes OAuthAuthorizationsGetGrantApplicationJSONForbidden as json.
+func (s OAuthAuthorizationsGetGrantApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (OAuthAuthorizationsGetGrantApplicationJSONUnauthorized) Encode(e *jx.Encoder)       {}
-func (OAuthAuthorizationsGetGrantApplicationJSONUnauthorized) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes OAuthAuthorizationsGetGrantApplicationJSONForbidden from json.
+func (s *OAuthAuthorizationsGetGrantApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode OAuthAuthorizationsGetGrantApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = OAuthAuthorizationsGetGrantApplicationJSONForbidden(unwrapped)
+	return nil
+}
+
+// Encode encodes OAuthAuthorizationsGetGrantApplicationJSONUnauthorized as json.
+func (s OAuthAuthorizationsGetGrantApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes OAuthAuthorizationsGetGrantApplicationJSONUnauthorized from json.
+func (s *OAuthAuthorizationsGetGrantApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode OAuthAuthorizationsGetGrantApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = OAuthAuthorizationsGetGrantApplicationJSONUnauthorized(unwrapped)
+	return nil
+}
 
 // Encode implements json.Marshaler.
 func (s OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq) Encode(e *jx.Encoder) {
@@ -34609,37 +38633,221 @@ func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppReq) Decode(d *jx.Deco
 	})
 }
 
-func (OAuthAuthorizationsListAuthorizationsApplicationJSONForbidden) Encode(e *jx.Encoder) {}
-func (OAuthAuthorizationsListAuthorizationsApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+// Encode encodes OAuthAuthorizationsListAuthorizationsApplicationJSONForbidden as json.
+func (s OAuthAuthorizationsListAuthorizationsApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes OAuthAuthorizationsListAuthorizationsApplicationJSONForbidden from json.
+func (s *OAuthAuthorizationsListAuthorizationsApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode OAuthAuthorizationsListAuthorizationsApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = OAuthAuthorizationsListAuthorizationsApplicationJSONForbidden(unwrapped)
 	return nil
 }
 
-func (OAuthAuthorizationsListAuthorizationsApplicationJSONNotFound) Encode(e *jx.Encoder) {}
-func (OAuthAuthorizationsListAuthorizationsApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+// Encode encodes OAuthAuthorizationsListAuthorizationsApplicationJSONNotFound as json.
+func (s OAuthAuthorizationsListAuthorizationsApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes OAuthAuthorizationsListAuthorizationsApplicationJSONNotFound from json.
+func (s *OAuthAuthorizationsListAuthorizationsApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode OAuthAuthorizationsListAuthorizationsApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = OAuthAuthorizationsListAuthorizationsApplicationJSONNotFound(unwrapped)
 	return nil
 }
 
-func (OAuthAuthorizationsListAuthorizationsApplicationJSONUnauthorized) Encode(e *jx.Encoder) {}
-func (OAuthAuthorizationsListAuthorizationsApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+// Encode encodes OAuthAuthorizationsListAuthorizationsApplicationJSONUnauthorized as json.
+func (s OAuthAuthorizationsListAuthorizationsApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes OAuthAuthorizationsListAuthorizationsApplicationJSONUnauthorized from json.
+func (s *OAuthAuthorizationsListAuthorizationsApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode OAuthAuthorizationsListAuthorizationsApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = OAuthAuthorizationsListAuthorizationsApplicationJSONUnauthorized(unwrapped)
 	return nil
 }
 
-func (OAuthAuthorizationsListAuthorizationsOKApplicationJSON) Encode(e *jx.Encoder)       {}
-func (OAuthAuthorizationsListAuthorizationsOKApplicationJSON) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes OAuthAuthorizationsListAuthorizationsOKApplicationJSON as json.
+func (s OAuthAuthorizationsListAuthorizationsOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []Authorization(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
 
-func (OAuthAuthorizationsListGrantsApplicationJSONForbidden) Encode(e *jx.Encoder)       {}
-func (OAuthAuthorizationsListGrantsApplicationJSONForbidden) Decode(d *jx.Decoder) error { return nil }
-
-func (OAuthAuthorizationsListGrantsApplicationJSONNotFound) Encode(e *jx.Encoder)       {}
-func (OAuthAuthorizationsListGrantsApplicationJSONNotFound) Decode(d *jx.Decoder) error { return nil }
-
-func (OAuthAuthorizationsListGrantsApplicationJSONUnauthorized) Encode(e *jx.Encoder) {}
-func (OAuthAuthorizationsListGrantsApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+// Decode decodes OAuthAuthorizationsListAuthorizationsOKApplicationJSON from json.
+func (s *OAuthAuthorizationsListAuthorizationsOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode OAuthAuthorizationsListAuthorizationsOKApplicationJSON to nil`)
+	}
+	var unwrapped []Authorization
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem Authorization
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = OAuthAuthorizationsListAuthorizationsOKApplicationJSON(unwrapped)
 	return nil
 }
 
-func (OAuthAuthorizationsListGrantsOKApplicationJSON) Encode(e *jx.Encoder)       {}
-func (OAuthAuthorizationsListGrantsOKApplicationJSON) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes OAuthAuthorizationsListGrantsApplicationJSONForbidden as json.
+func (s OAuthAuthorizationsListGrantsApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes OAuthAuthorizationsListGrantsApplicationJSONForbidden from json.
+func (s *OAuthAuthorizationsListGrantsApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode OAuthAuthorizationsListGrantsApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = OAuthAuthorizationsListGrantsApplicationJSONForbidden(unwrapped)
+	return nil
+}
+
+// Encode encodes OAuthAuthorizationsListGrantsApplicationJSONNotFound as json.
+func (s OAuthAuthorizationsListGrantsApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes OAuthAuthorizationsListGrantsApplicationJSONNotFound from json.
+func (s *OAuthAuthorizationsListGrantsApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode OAuthAuthorizationsListGrantsApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = OAuthAuthorizationsListGrantsApplicationJSONNotFound(unwrapped)
+	return nil
+}
+
+// Encode encodes OAuthAuthorizationsListGrantsApplicationJSONUnauthorized as json.
+func (s OAuthAuthorizationsListGrantsApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes OAuthAuthorizationsListGrantsApplicationJSONUnauthorized from json.
+func (s *OAuthAuthorizationsListGrantsApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode OAuthAuthorizationsListGrantsApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = OAuthAuthorizationsListGrantsApplicationJSONUnauthorized(unwrapped)
+	return nil
+}
+
+// Encode encodes OAuthAuthorizationsListGrantsOKApplicationJSON as json.
+func (s OAuthAuthorizationsListGrantsOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []ApplicationGrant(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes OAuthAuthorizationsListGrantsOKApplicationJSON from json.
+func (s *OAuthAuthorizationsListGrantsOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode OAuthAuthorizationsListGrantsOKApplicationJSON to nil`)
+	}
+	var unwrapped []ApplicationGrant
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem ApplicationGrant
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = OAuthAuthorizationsListGrantsOKApplicationJSON(unwrapped)
+	return nil
+}
 
 // Encode implements json.Marshaler.
 func (s OAuthAuthorizationsUpdateAuthorizationReq) Encode(e *jx.Encoder) {
@@ -44172,7 +48380,9 @@ func (s *OrgsCreateWebhookReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s OrgsCreateWebhookReqConfig) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	// Unsupported kind "alias".
+
+	e.FieldStart("url")
+	s.URL.Encode(e)
 	if s.ContentType.Set {
 		e.FieldStart("content_type")
 		s.ContentType.Encode(e)
@@ -44204,7 +48414,15 @@ func (s *OrgsCreateWebhookReqConfig) Decode(d *jx.Decoder) error {
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "url":
-			return errors.New(`decoding of "WebhookConfigURL" (alias) is not implemented`)
+			{
+				var unwrapped url.URL
+				v, err := json.DecodeURI(d)
+				unwrapped = v
+				if err != nil {
+					return err
+				}
+				s.URL = WebhookConfigURL(unwrapped)
+			}
 		case "content_type":
 			s.ContentType.Reset()
 			if err := s.ContentType.Decode(d); err != nil {
@@ -44295,41 +48513,293 @@ func (s *OrgsGetAuditLogOrder) Decode(d *jx.Decoder) error {
 	return nil
 }
 
-func (OrgsGetMembershipForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {}
-func (OrgsGetMembershipForAuthenticatedUserApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+// Encode encodes OrgsGetMembershipForAuthenticatedUserApplicationJSONForbidden as json.
+func (s OrgsGetMembershipForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes OrgsGetMembershipForAuthenticatedUserApplicationJSONForbidden from json.
+func (s *OrgsGetMembershipForAuthenticatedUserApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode OrgsGetMembershipForAuthenticatedUserApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = OrgsGetMembershipForAuthenticatedUserApplicationJSONForbidden(unwrapped)
 	return nil
 }
 
-func (OrgsGetMembershipForAuthenticatedUserApplicationJSONNotFound) Encode(e *jx.Encoder) {}
-func (OrgsGetMembershipForAuthenticatedUserApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+// Encode encodes OrgsGetMembershipForAuthenticatedUserApplicationJSONNotFound as json.
+func (s OrgsGetMembershipForAuthenticatedUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes OrgsGetMembershipForAuthenticatedUserApplicationJSONNotFound from json.
+func (s *OrgsGetMembershipForAuthenticatedUserApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode OrgsGetMembershipForAuthenticatedUserApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = OrgsGetMembershipForAuthenticatedUserApplicationJSONNotFound(unwrapped)
 	return nil
 }
 
-func (OrgsGetMembershipForUserApplicationJSONForbidden) Encode(e *jx.Encoder)       {}
-func (OrgsGetMembershipForUserApplicationJSONForbidden) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes OrgsGetMembershipForUserApplicationJSONForbidden as json.
+func (s OrgsGetMembershipForUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (OrgsGetMembershipForUserApplicationJSONNotFound) Encode(e *jx.Encoder)       {}
-func (OrgsGetMembershipForUserApplicationJSONNotFound) Decode(d *jx.Decoder) error { return nil }
-
-func (OrgsListBlockedUsersOKApplicationJSON) Encode(e *jx.Encoder)       {}
-func (OrgsListBlockedUsersOKApplicationJSON) Decode(d *jx.Decoder) error { return nil }
-
-func (OrgsListFailedInvitationsOKApplicationJSON) Encode(e *jx.Encoder)       {}
-func (OrgsListFailedInvitationsOKApplicationJSON) Decode(d *jx.Decoder) error { return nil }
-
-func (OrgsListForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder)       {}
-func (OrgsListForAuthenticatedUserApplicationJSONForbidden) Decode(d *jx.Decoder) error { return nil }
-
-func (OrgsListForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {}
-func (OrgsListForAuthenticatedUserApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+// Decode decodes OrgsGetMembershipForUserApplicationJSONForbidden from json.
+func (s *OrgsGetMembershipForUserApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode OrgsGetMembershipForUserApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = OrgsGetMembershipForUserApplicationJSONForbidden(unwrapped)
 	return nil
 }
 
-func (OrgsListForAuthenticatedUserOKApplicationJSON) Encode(e *jx.Encoder)       {}
-func (OrgsListForAuthenticatedUserOKApplicationJSON) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes OrgsGetMembershipForUserApplicationJSONNotFound as json.
+func (s OrgsGetMembershipForUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (OrgsListInvitationTeamsOKApplicationJSON) Encode(e *jx.Encoder)       {}
-func (OrgsListInvitationTeamsOKApplicationJSON) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes OrgsGetMembershipForUserApplicationJSONNotFound from json.
+func (s *OrgsGetMembershipForUserApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode OrgsGetMembershipForUserApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = OrgsGetMembershipForUserApplicationJSONNotFound(unwrapped)
+	return nil
+}
+
+// Encode encodes OrgsListBlockedUsersOKApplicationJSON as json.
+func (s OrgsListBlockedUsersOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []SimpleUser(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes OrgsListBlockedUsersOKApplicationJSON from json.
+func (s *OrgsListBlockedUsersOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode OrgsListBlockedUsersOKApplicationJSON to nil`)
+	}
+	var unwrapped []SimpleUser
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem SimpleUser
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = OrgsListBlockedUsersOKApplicationJSON(unwrapped)
+	return nil
+}
+
+// Encode encodes OrgsListFailedInvitationsOKApplicationJSON as json.
+func (s OrgsListFailedInvitationsOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []OrganizationInvitation(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes OrgsListFailedInvitationsOKApplicationJSON from json.
+func (s *OrgsListFailedInvitationsOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode OrgsListFailedInvitationsOKApplicationJSON to nil`)
+	}
+	var unwrapped []OrganizationInvitation
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem OrganizationInvitation
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = OrgsListFailedInvitationsOKApplicationJSON(unwrapped)
+	return nil
+}
+
+// Encode encodes OrgsListForAuthenticatedUserApplicationJSONForbidden as json.
+func (s OrgsListForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes OrgsListForAuthenticatedUserApplicationJSONForbidden from json.
+func (s *OrgsListForAuthenticatedUserApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode OrgsListForAuthenticatedUserApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = OrgsListForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+	return nil
+}
+
+// Encode encodes OrgsListForAuthenticatedUserApplicationJSONUnauthorized as json.
+func (s OrgsListForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes OrgsListForAuthenticatedUserApplicationJSONUnauthorized from json.
+func (s *OrgsListForAuthenticatedUserApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode OrgsListForAuthenticatedUserApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = OrgsListForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+	return nil
+}
+
+// Encode encodes OrgsListForAuthenticatedUserOKApplicationJSON as json.
+func (s OrgsListForAuthenticatedUserOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []OrganizationSimple(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes OrgsListForAuthenticatedUserOKApplicationJSON from json.
+func (s *OrgsListForAuthenticatedUserOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode OrgsListForAuthenticatedUserOKApplicationJSON to nil`)
+	}
+	var unwrapped []OrganizationSimple
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem OrganizationSimple
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = OrgsListForAuthenticatedUserOKApplicationJSON(unwrapped)
+	return nil
+}
+
+// Encode encodes OrgsListInvitationTeamsOKApplicationJSON as json.
+func (s OrgsListInvitationTeamsOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []Team(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes OrgsListInvitationTeamsOKApplicationJSON from json.
+func (s *OrgsListInvitationTeamsOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode OrgsListInvitationTeamsOKApplicationJSON to nil`)
+	}
+	var unwrapped []Team
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem Team
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = OrgsListInvitationTeamsOKApplicationJSON(unwrapped)
+	return nil
+}
 
 // Encode encodes OrgsListMembersFilter as json.
 func (s OrgsListMembersFilter) Encode(e *jx.Encoder) {
@@ -44405,8 +48875,41 @@ func (s *OrgsListMembershipsForAuthenticatedUserState) Decode(d *jx.Decoder) err
 	return nil
 }
 
-func (OrgsListOKApplicationJSON) Encode(e *jx.Encoder)       {}
-func (OrgsListOKApplicationJSON) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes OrgsListOKApplicationJSON as json.
+func (s OrgsListOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []OrganizationSimple(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes OrgsListOKApplicationJSON from json.
+func (s *OrgsListOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode OrgsListOKApplicationJSON to nil`)
+	}
+	var unwrapped []OrganizationSimple
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem OrganizationSimple
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = OrgsListOKApplicationJSON(unwrapped)
+	return nil
+}
 
 // Encode encodes OrgsListOutsideCollaboratorsFilter as json.
 func (s OrgsListOutsideCollaboratorsFilter) Encode(e *jx.Encoder) {
@@ -44426,11 +48929,77 @@ func (s *OrgsListOutsideCollaboratorsFilter) Decode(d *jx.Decoder) error {
 	return nil
 }
 
-func (OrgsListPendingInvitationsOKApplicationJSON) Encode(e *jx.Encoder)       {}
-func (OrgsListPendingInvitationsOKApplicationJSON) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes OrgsListPendingInvitationsOKApplicationJSON as json.
+func (s OrgsListPendingInvitationsOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []OrganizationInvitation(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
 
-func (OrgsListWebhooksOKApplicationJSON) Encode(e *jx.Encoder)       {}
-func (OrgsListWebhooksOKApplicationJSON) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes OrgsListPendingInvitationsOKApplicationJSON from json.
+func (s *OrgsListPendingInvitationsOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode OrgsListPendingInvitationsOKApplicationJSON to nil`)
+	}
+	var unwrapped []OrganizationInvitation
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem OrganizationInvitation
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = OrgsListPendingInvitationsOKApplicationJSON(unwrapped)
+	return nil
+}
+
+// Encode encodes OrgsListWebhooksOKApplicationJSON as json.
+func (s OrgsListWebhooksOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []OrgHook(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes OrgsListWebhooksOKApplicationJSON from json.
+func (s *OrgsListWebhooksOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode OrgsListWebhooksOKApplicationJSON to nil`)
+	}
+	var unwrapped []OrgHook
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem OrgHook
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = OrgsListWebhooksOKApplicationJSON(unwrapped)
+	return nil
+}
 
 // Encode implements json.Marshaler.
 func (s OrgsPingWebhookNoContent) Encode(e *jx.Encoder) {
@@ -44472,11 +49041,53 @@ func (s *OrgsRemoveMemberNoContent) Decode(d *jx.Decoder) error {
 	})
 }
 
-func (OrgsRemoveMembershipForUserApplicationJSONForbidden) Encode(e *jx.Encoder)       {}
-func (OrgsRemoveMembershipForUserApplicationJSONForbidden) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes OrgsRemoveMembershipForUserApplicationJSONForbidden as json.
+func (s OrgsRemoveMembershipForUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (OrgsRemoveMembershipForUserApplicationJSONNotFound) Encode(e *jx.Encoder)       {}
-func (OrgsRemoveMembershipForUserApplicationJSONNotFound) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes OrgsRemoveMembershipForUserApplicationJSONForbidden from json.
+func (s *OrgsRemoveMembershipForUserApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode OrgsRemoveMembershipForUserApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = OrgsRemoveMembershipForUserApplicationJSONForbidden(unwrapped)
+	return nil
+}
+
+// Encode encodes OrgsRemoveMembershipForUserApplicationJSONNotFound as json.
+func (s OrgsRemoveMembershipForUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes OrgsRemoveMembershipForUserApplicationJSONNotFound from json.
+func (s *OrgsRemoveMembershipForUserApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode OrgsRemoveMembershipForUserApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = OrgsRemoveMembershipForUserApplicationJSONNotFound(unwrapped)
+	return nil
+}
 
 // Encode implements json.Marshaler.
 func (s OrgsRemoveMembershipForUserNoContent) Encode(e *jx.Encoder) {
@@ -45085,7 +49696,9 @@ func (s *OrgsUpdateWebhookReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s OrgsUpdateWebhookReqConfig) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	// Unsupported kind "alias".
+
+	e.FieldStart("url")
+	s.URL.Encode(e)
 	if s.ContentType.Set {
 		e.FieldStart("content_type")
 		s.ContentType.Encode(e)
@@ -45109,7 +49722,15 @@ func (s *OrgsUpdateWebhookReqConfig) Decode(d *jx.Decoder) error {
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "url":
-			return errors.New(`decoding of "WebhookConfigURL" (alias) is not implemented`)
+			{
+				var unwrapped url.URL
+				v, err := json.DecodeURI(d)
+				unwrapped = v
+				if err != nil {
+					return err
+				}
+				s.URL = WebhookConfigURL(unwrapped)
+			}
 		case "content_type":
 			s.ContentType.Reset()
 			if err := s.ContentType.Decode(d); err != nil {
@@ -45597,18 +50218,75 @@ func (s *PackagesBillingUsage) Decode(d *jx.Decoder) error {
 	})
 }
 
-func (PackagesDeletePackageForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {}
-func (PackagesDeletePackageForAuthenticatedUserApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+// Encode encodes PackagesDeletePackageForAuthenticatedUserApplicationJSONForbidden as json.
+func (s PackagesDeletePackageForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PackagesDeletePackageForAuthenticatedUserApplicationJSONForbidden from json.
+func (s *PackagesDeletePackageForAuthenticatedUserApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode PackagesDeletePackageForAuthenticatedUserApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PackagesDeletePackageForAuthenticatedUserApplicationJSONForbidden(unwrapped)
 	return nil
 }
 
-func (PackagesDeletePackageForAuthenticatedUserApplicationJSONNotFound) Encode(e *jx.Encoder) {}
-func (PackagesDeletePackageForAuthenticatedUserApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+// Encode encodes PackagesDeletePackageForAuthenticatedUserApplicationJSONNotFound as json.
+func (s PackagesDeletePackageForAuthenticatedUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PackagesDeletePackageForAuthenticatedUserApplicationJSONNotFound from json.
+func (s *PackagesDeletePackageForAuthenticatedUserApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode PackagesDeletePackageForAuthenticatedUserApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PackagesDeletePackageForAuthenticatedUserApplicationJSONNotFound(unwrapped)
 	return nil
 }
 
-func (PackagesDeletePackageForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {}
-func (PackagesDeletePackageForAuthenticatedUserApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+// Encode encodes PackagesDeletePackageForAuthenticatedUserApplicationJSONUnauthorized as json.
+func (s PackagesDeletePackageForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PackagesDeletePackageForAuthenticatedUserApplicationJSONUnauthorized from json.
+func (s *PackagesDeletePackageForAuthenticatedUserApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode PackagesDeletePackageForAuthenticatedUserApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PackagesDeletePackageForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
 	return nil
 }
 
@@ -45650,14 +50328,77 @@ func (s *PackagesDeletePackageForAuthenticatedUserPackageType) Decode(d *jx.Deco
 	return nil
 }
 
-func (PackagesDeletePackageForOrgApplicationJSONForbidden) Encode(e *jx.Encoder)       {}
-func (PackagesDeletePackageForOrgApplicationJSONForbidden) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes PackagesDeletePackageForOrgApplicationJSONForbidden as json.
+func (s PackagesDeletePackageForOrgApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (PackagesDeletePackageForOrgApplicationJSONNotFound) Encode(e *jx.Encoder)       {}
-func (PackagesDeletePackageForOrgApplicationJSONNotFound) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes PackagesDeletePackageForOrgApplicationJSONForbidden from json.
+func (s *PackagesDeletePackageForOrgApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode PackagesDeletePackageForOrgApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PackagesDeletePackageForOrgApplicationJSONForbidden(unwrapped)
+	return nil
+}
 
-func (PackagesDeletePackageForOrgApplicationJSONUnauthorized) Encode(e *jx.Encoder)       {}
-func (PackagesDeletePackageForOrgApplicationJSONUnauthorized) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes PackagesDeletePackageForOrgApplicationJSONNotFound as json.
+func (s PackagesDeletePackageForOrgApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PackagesDeletePackageForOrgApplicationJSONNotFound from json.
+func (s *PackagesDeletePackageForOrgApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode PackagesDeletePackageForOrgApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PackagesDeletePackageForOrgApplicationJSONNotFound(unwrapped)
+	return nil
+}
+
+// Encode encodes PackagesDeletePackageForOrgApplicationJSONUnauthorized as json.
+func (s PackagesDeletePackageForOrgApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PackagesDeletePackageForOrgApplicationJSONUnauthorized from json.
+func (s *PackagesDeletePackageForOrgApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode PackagesDeletePackageForOrgApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PackagesDeletePackageForOrgApplicationJSONUnauthorized(unwrapped)
+	return nil
+}
 
 // Encode implements json.Marshaler.
 func (s PackagesDeletePackageForOrgNoContent) Encode(e *jx.Encoder) {
@@ -45697,14 +50438,75 @@ func (s *PackagesDeletePackageForOrgPackageType) Decode(d *jx.Decoder) error {
 	return nil
 }
 
-func (PackagesDeletePackageForUserApplicationJSONForbidden) Encode(e *jx.Encoder)       {}
-func (PackagesDeletePackageForUserApplicationJSONForbidden) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes PackagesDeletePackageForUserApplicationJSONForbidden as json.
+func (s PackagesDeletePackageForUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (PackagesDeletePackageForUserApplicationJSONNotFound) Encode(e *jx.Encoder)       {}
-func (PackagesDeletePackageForUserApplicationJSONNotFound) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes PackagesDeletePackageForUserApplicationJSONForbidden from json.
+func (s *PackagesDeletePackageForUserApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode PackagesDeletePackageForUserApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PackagesDeletePackageForUserApplicationJSONForbidden(unwrapped)
+	return nil
+}
 
-func (PackagesDeletePackageForUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {}
-func (PackagesDeletePackageForUserApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+// Encode encodes PackagesDeletePackageForUserApplicationJSONNotFound as json.
+func (s PackagesDeletePackageForUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PackagesDeletePackageForUserApplicationJSONNotFound from json.
+func (s *PackagesDeletePackageForUserApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode PackagesDeletePackageForUserApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PackagesDeletePackageForUserApplicationJSONNotFound(unwrapped)
+	return nil
+}
+
+// Encode encodes PackagesDeletePackageForUserApplicationJSONUnauthorized as json.
+func (s PackagesDeletePackageForUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PackagesDeletePackageForUserApplicationJSONUnauthorized from json.
+func (s *PackagesDeletePackageForUserApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode PackagesDeletePackageForUserApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PackagesDeletePackageForUserApplicationJSONUnauthorized(unwrapped)
 	return nil
 }
 
@@ -45746,21 +50548,75 @@ func (s *PackagesDeletePackageForUserPackageType) Decode(d *jx.Decoder) error {
 	return nil
 }
 
-func (PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
+// Encode encodes PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONForbidden as json.
+func (s PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
 }
-func (PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+
+// Decode decodes PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONForbidden from json.
+func (s *PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONForbidden(unwrapped)
 	return nil
 }
 
-func (PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
+// Encode encodes PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONNotFound as json.
+func (s PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
 }
-func (PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+
+// Decode decodes PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONNotFound from json.
+func (s *PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONNotFound(unwrapped)
 	return nil
 }
 
-func (PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+// Encode encodes PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONUnauthorized as json.
+func (s PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
 }
-func (PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+
+// Decode decodes PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONUnauthorized from json.
+func (s *PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
 	return nil
 }
 
@@ -45802,18 +50658,75 @@ func (s *PackagesDeletePackageVersionForAuthenticatedUserPackageType) Decode(d *
 	return nil
 }
 
-func (PackagesDeletePackageVersionForOrgApplicationJSONForbidden) Encode(e *jx.Encoder) {}
-func (PackagesDeletePackageVersionForOrgApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+// Encode encodes PackagesDeletePackageVersionForOrgApplicationJSONForbidden as json.
+func (s PackagesDeletePackageVersionForOrgApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PackagesDeletePackageVersionForOrgApplicationJSONForbidden from json.
+func (s *PackagesDeletePackageVersionForOrgApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode PackagesDeletePackageVersionForOrgApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PackagesDeletePackageVersionForOrgApplicationJSONForbidden(unwrapped)
 	return nil
 }
 
-func (PackagesDeletePackageVersionForOrgApplicationJSONNotFound) Encode(e *jx.Encoder) {}
-func (PackagesDeletePackageVersionForOrgApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+// Encode encodes PackagesDeletePackageVersionForOrgApplicationJSONNotFound as json.
+func (s PackagesDeletePackageVersionForOrgApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PackagesDeletePackageVersionForOrgApplicationJSONNotFound from json.
+func (s *PackagesDeletePackageVersionForOrgApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode PackagesDeletePackageVersionForOrgApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PackagesDeletePackageVersionForOrgApplicationJSONNotFound(unwrapped)
 	return nil
 }
 
-func (PackagesDeletePackageVersionForOrgApplicationJSONUnauthorized) Encode(e *jx.Encoder) {}
-func (PackagesDeletePackageVersionForOrgApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+// Encode encodes PackagesDeletePackageVersionForOrgApplicationJSONUnauthorized as json.
+func (s PackagesDeletePackageVersionForOrgApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PackagesDeletePackageVersionForOrgApplicationJSONUnauthorized from json.
+func (s *PackagesDeletePackageVersionForOrgApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode PackagesDeletePackageVersionForOrgApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PackagesDeletePackageVersionForOrgApplicationJSONUnauthorized(unwrapped)
 	return nil
 }
 
@@ -45855,18 +50768,75 @@ func (s *PackagesDeletePackageVersionForOrgPackageType) Decode(d *jx.Decoder) er
 	return nil
 }
 
-func (PackagesDeletePackageVersionForUserApplicationJSONForbidden) Encode(e *jx.Encoder) {}
-func (PackagesDeletePackageVersionForUserApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+// Encode encodes PackagesDeletePackageVersionForUserApplicationJSONForbidden as json.
+func (s PackagesDeletePackageVersionForUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PackagesDeletePackageVersionForUserApplicationJSONForbidden from json.
+func (s *PackagesDeletePackageVersionForUserApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode PackagesDeletePackageVersionForUserApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PackagesDeletePackageVersionForUserApplicationJSONForbidden(unwrapped)
 	return nil
 }
 
-func (PackagesDeletePackageVersionForUserApplicationJSONNotFound) Encode(e *jx.Encoder) {}
-func (PackagesDeletePackageVersionForUserApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+// Encode encodes PackagesDeletePackageVersionForUserApplicationJSONNotFound as json.
+func (s PackagesDeletePackageVersionForUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PackagesDeletePackageVersionForUserApplicationJSONNotFound from json.
+func (s *PackagesDeletePackageVersionForUserApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode PackagesDeletePackageVersionForUserApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PackagesDeletePackageVersionForUserApplicationJSONNotFound(unwrapped)
 	return nil
 }
 
-func (PackagesDeletePackageVersionForUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {}
-func (PackagesDeletePackageVersionForUserApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+// Encode encodes PackagesDeletePackageVersionForUserApplicationJSONUnauthorized as json.
+func (s PackagesDeletePackageVersionForUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PackagesDeletePackageVersionForUserApplicationJSONUnauthorized from json.
+func (s *PackagesDeletePackageVersionForUserApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode PackagesDeletePackageVersionForUserApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PackagesDeletePackageVersionForUserApplicationJSONUnauthorized(unwrapped)
 	return nil
 }
 
@@ -45908,27 +50878,111 @@ func (s *PackagesDeletePackageVersionForUserPackageType) Decode(d *jx.Decoder) e
 	return nil
 }
 
-func (PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
+// Encode encodes PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONForbidden as json.
+func (s PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
 }
-func (PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+
+// Decode decodes PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONForbidden from json.
+func (s *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONForbidden(unwrapped)
 	return nil
 }
 
-func (PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
+// Encode encodes PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONNotFound as json.
+func (s PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
 }
-func (PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+
+// Decode decodes PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONNotFound from json.
+func (s *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONNotFound(unwrapped)
 	return nil
 }
 
-func (PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+// Encode encodes PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONUnauthorized as json.
+func (s PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
 }
-func (PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+
+// Decode decodes PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONUnauthorized from json.
+func (s *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
 	return nil
 }
 
-func (PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserOKApplicationJSON) Encode(e *jx.Encoder) {
+// Encode encodes PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserOKApplicationJSON as json.
+func (s PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []PackageVersion(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
 }
-func (PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserOKApplicationJSON) Decode(d *jx.Decoder) error {
+
+// Decode decodes PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserOKApplicationJSON from json.
+func (s *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserOKApplicationJSON to nil`)
+	}
+	var unwrapped []PackageVersion
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem PackageVersion
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserOKApplicationJSON(unwrapped)
 	return nil
 }
 
@@ -45968,26 +51022,111 @@ func (s *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState) D
 	return nil
 }
 
-func (PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONForbidden) Encode(e *jx.Encoder) {
+// Encode encodes PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONForbidden as json.
+func (s PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
 }
-func (PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+
+// Decode decodes PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONForbidden from json.
+func (s *PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONForbidden(unwrapped)
 	return nil
 }
 
-func (PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONNotFound) Encode(e *jx.Encoder) {
+// Encode encodes PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONNotFound as json.
+func (s PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
 }
-func (PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+
+// Decode decodes PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONNotFound from json.
+func (s *PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONNotFound(unwrapped)
 	return nil
 }
 
-func (PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+// Encode encodes PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONUnauthorized as json.
+func (s PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
 }
-func (PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+
+// Decode decodes PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONUnauthorized from json.
+func (s *PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONUnauthorized(unwrapped)
 	return nil
 }
 
-func (PackagesGetAllPackageVersionsForPackageOwnedByOrgOKApplicationJSON) Encode(e *jx.Encoder) {}
-func (PackagesGetAllPackageVersionsForPackageOwnedByOrgOKApplicationJSON) Decode(d *jx.Decoder) error {
+// Encode encodes PackagesGetAllPackageVersionsForPackageOwnedByOrgOKApplicationJSON as json.
+func (s PackagesGetAllPackageVersionsForPackageOwnedByOrgOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []PackageVersion(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes PackagesGetAllPackageVersionsForPackageOwnedByOrgOKApplicationJSON from json.
+func (s *PackagesGetAllPackageVersionsForPackageOwnedByOrgOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode PackagesGetAllPackageVersionsForPackageOwnedByOrgOKApplicationJSON to nil`)
+	}
+	var unwrapped []PackageVersion
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem PackageVersion
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PackagesGetAllPackageVersionsForPackageOwnedByOrgOKApplicationJSON(unwrapped)
 	return nil
 }
 
@@ -46027,26 +51166,111 @@ func (s *PackagesGetAllPackageVersionsForPackageOwnedByOrgState) Decode(d *jx.De
 	return nil
 }
 
-func (PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
+// Encode encodes PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONForbidden as json.
+func (s PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
 }
-func (PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+
+// Decode decodes PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONForbidden from json.
+func (s *PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONForbidden(unwrapped)
 	return nil
 }
 
-func (PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
+// Encode encodes PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONNotFound as json.
+func (s PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
 }
-func (PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+
+// Decode decodes PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONNotFound from json.
+func (s *PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONNotFound(unwrapped)
 	return nil
 }
 
-func (PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+// Encode encodes PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONUnauthorized as json.
+func (s PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
 }
-func (PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+
+// Decode decodes PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONUnauthorized from json.
+func (s *PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONUnauthorized(unwrapped)
 	return nil
 }
 
-func (PackagesGetAllPackageVersionsForPackageOwnedByUserOKApplicationJSON) Encode(e *jx.Encoder) {}
-func (PackagesGetAllPackageVersionsForPackageOwnedByUserOKApplicationJSON) Decode(d *jx.Decoder) error {
+// Encode encodes PackagesGetAllPackageVersionsForPackageOwnedByUserOKApplicationJSON as json.
+func (s PackagesGetAllPackageVersionsForPackageOwnedByUserOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []PackageVersion(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes PackagesGetAllPackageVersionsForPackageOwnedByUserOKApplicationJSON from json.
+func (s *PackagesGetAllPackageVersionsForPackageOwnedByUserOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode PackagesGetAllPackageVersionsForPackageOwnedByUserOKApplicationJSON to nil`)
+	}
+	var unwrapped []PackageVersion
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem PackageVersion
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PackagesGetAllPackageVersionsForPackageOwnedByUserOKApplicationJSON(unwrapped)
 	return nil
 }
 
@@ -46212,18 +51436,89 @@ func (s *PackagesListPackagesForAuthenticatedUserVisibility) Decode(d *jx.Decode
 	return nil
 }
 
-func (PackagesListPackagesForOrganizationApplicationJSONForbidden) Encode(e *jx.Encoder) {}
-func (PackagesListPackagesForOrganizationApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+// Encode encodes PackagesListPackagesForOrganizationApplicationJSONForbidden as json.
+func (s PackagesListPackagesForOrganizationApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PackagesListPackagesForOrganizationApplicationJSONForbidden from json.
+func (s *PackagesListPackagesForOrganizationApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode PackagesListPackagesForOrganizationApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PackagesListPackagesForOrganizationApplicationJSONForbidden(unwrapped)
 	return nil
 }
 
-func (PackagesListPackagesForOrganizationApplicationJSONUnauthorized) Encode(e *jx.Encoder) {}
-func (PackagesListPackagesForOrganizationApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+// Encode encodes PackagesListPackagesForOrganizationApplicationJSONUnauthorized as json.
+func (s PackagesListPackagesForOrganizationApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PackagesListPackagesForOrganizationApplicationJSONUnauthorized from json.
+func (s *PackagesListPackagesForOrganizationApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode PackagesListPackagesForOrganizationApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PackagesListPackagesForOrganizationApplicationJSONUnauthorized(unwrapped)
 	return nil
 }
 
-func (PackagesListPackagesForOrganizationOKApplicationJSON) Encode(e *jx.Encoder)       {}
-func (PackagesListPackagesForOrganizationOKApplicationJSON) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes PackagesListPackagesForOrganizationOKApplicationJSON as json.
+func (s PackagesListPackagesForOrganizationOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []Package(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes PackagesListPackagesForOrganizationOKApplicationJSON from json.
+func (s *PackagesListPackagesForOrganizationOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode PackagesListPackagesForOrganizationOKApplicationJSON to nil`)
+	}
+	var unwrapped []Package
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem Package
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PackagesListPackagesForOrganizationOKApplicationJSON(unwrapped)
+	return nil
+}
 
 // Encode encodes PackagesListPackagesForOrganizationPackageType as json.
 func (s PackagesListPackagesForOrganizationPackageType) Encode(e *jx.Encoder) {
@@ -46261,14 +51556,89 @@ func (s *PackagesListPackagesForOrganizationVisibility) Decode(d *jx.Decoder) er
 	return nil
 }
 
-func (PackagesListPackagesForUserApplicationJSONForbidden) Encode(e *jx.Encoder)       {}
-func (PackagesListPackagesForUserApplicationJSONForbidden) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes PackagesListPackagesForUserApplicationJSONForbidden as json.
+func (s PackagesListPackagesForUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (PackagesListPackagesForUserApplicationJSONUnauthorized) Encode(e *jx.Encoder)       {}
-func (PackagesListPackagesForUserApplicationJSONUnauthorized) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes PackagesListPackagesForUserApplicationJSONForbidden from json.
+func (s *PackagesListPackagesForUserApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode PackagesListPackagesForUserApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PackagesListPackagesForUserApplicationJSONForbidden(unwrapped)
+	return nil
+}
 
-func (PackagesListPackagesForUserOKApplicationJSON) Encode(e *jx.Encoder)       {}
-func (PackagesListPackagesForUserOKApplicationJSON) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes PackagesListPackagesForUserApplicationJSONUnauthorized as json.
+func (s PackagesListPackagesForUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PackagesListPackagesForUserApplicationJSONUnauthorized from json.
+func (s *PackagesListPackagesForUserApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode PackagesListPackagesForUserApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PackagesListPackagesForUserApplicationJSONUnauthorized(unwrapped)
+	return nil
+}
+
+// Encode encodes PackagesListPackagesForUserOKApplicationJSON as json.
+func (s PackagesListPackagesForUserOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []Package(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes PackagesListPackagesForUserOKApplicationJSON from json.
+func (s *PackagesListPackagesForUserOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode PackagesListPackagesForUserOKApplicationJSON to nil`)
+	}
+	var unwrapped []Package
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem Package
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PackagesListPackagesForUserOKApplicationJSON(unwrapped)
+	return nil
+}
 
 // Encode encodes PackagesListPackagesForUserPackageType as json.
 func (s PackagesListPackagesForUserPackageType) Encode(e *jx.Encoder) {
@@ -46306,18 +51676,75 @@ func (s *PackagesListPackagesForUserVisibility) Decode(d *jx.Decoder) error {
 	return nil
 }
 
-func (PackagesRestorePackageForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {}
-func (PackagesRestorePackageForAuthenticatedUserApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+// Encode encodes PackagesRestorePackageForAuthenticatedUserApplicationJSONForbidden as json.
+func (s PackagesRestorePackageForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PackagesRestorePackageForAuthenticatedUserApplicationJSONForbidden from json.
+func (s *PackagesRestorePackageForAuthenticatedUserApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode PackagesRestorePackageForAuthenticatedUserApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PackagesRestorePackageForAuthenticatedUserApplicationJSONForbidden(unwrapped)
 	return nil
 }
 
-func (PackagesRestorePackageForAuthenticatedUserApplicationJSONNotFound) Encode(e *jx.Encoder) {}
-func (PackagesRestorePackageForAuthenticatedUserApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+// Encode encodes PackagesRestorePackageForAuthenticatedUserApplicationJSONNotFound as json.
+func (s PackagesRestorePackageForAuthenticatedUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PackagesRestorePackageForAuthenticatedUserApplicationJSONNotFound from json.
+func (s *PackagesRestorePackageForAuthenticatedUserApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode PackagesRestorePackageForAuthenticatedUserApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PackagesRestorePackageForAuthenticatedUserApplicationJSONNotFound(unwrapped)
 	return nil
 }
 
-func (PackagesRestorePackageForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {}
-func (PackagesRestorePackageForAuthenticatedUserApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+// Encode encodes PackagesRestorePackageForAuthenticatedUserApplicationJSONUnauthorized as json.
+func (s PackagesRestorePackageForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PackagesRestorePackageForAuthenticatedUserApplicationJSONUnauthorized from json.
+func (s *PackagesRestorePackageForAuthenticatedUserApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode PackagesRestorePackageForAuthenticatedUserApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PackagesRestorePackageForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
 	return nil
 }
 
@@ -46359,14 +51786,75 @@ func (s *PackagesRestorePackageForAuthenticatedUserPackageType) Decode(d *jx.Dec
 	return nil
 }
 
-func (PackagesRestorePackageForOrgApplicationJSONForbidden) Encode(e *jx.Encoder)       {}
-func (PackagesRestorePackageForOrgApplicationJSONForbidden) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes PackagesRestorePackageForOrgApplicationJSONForbidden as json.
+func (s PackagesRestorePackageForOrgApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (PackagesRestorePackageForOrgApplicationJSONNotFound) Encode(e *jx.Encoder)       {}
-func (PackagesRestorePackageForOrgApplicationJSONNotFound) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes PackagesRestorePackageForOrgApplicationJSONForbidden from json.
+func (s *PackagesRestorePackageForOrgApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode PackagesRestorePackageForOrgApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PackagesRestorePackageForOrgApplicationJSONForbidden(unwrapped)
+	return nil
+}
 
-func (PackagesRestorePackageForOrgApplicationJSONUnauthorized) Encode(e *jx.Encoder) {}
-func (PackagesRestorePackageForOrgApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+// Encode encodes PackagesRestorePackageForOrgApplicationJSONNotFound as json.
+func (s PackagesRestorePackageForOrgApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PackagesRestorePackageForOrgApplicationJSONNotFound from json.
+func (s *PackagesRestorePackageForOrgApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode PackagesRestorePackageForOrgApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PackagesRestorePackageForOrgApplicationJSONNotFound(unwrapped)
+	return nil
+}
+
+// Encode encodes PackagesRestorePackageForOrgApplicationJSONUnauthorized as json.
+func (s PackagesRestorePackageForOrgApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PackagesRestorePackageForOrgApplicationJSONUnauthorized from json.
+func (s *PackagesRestorePackageForOrgApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode PackagesRestorePackageForOrgApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PackagesRestorePackageForOrgApplicationJSONUnauthorized(unwrapped)
 	return nil
 }
 
@@ -46408,14 +51896,75 @@ func (s *PackagesRestorePackageForOrgPackageType) Decode(d *jx.Decoder) error {
 	return nil
 }
 
-func (PackagesRestorePackageForUserApplicationJSONForbidden) Encode(e *jx.Encoder)       {}
-func (PackagesRestorePackageForUserApplicationJSONForbidden) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes PackagesRestorePackageForUserApplicationJSONForbidden as json.
+func (s PackagesRestorePackageForUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (PackagesRestorePackageForUserApplicationJSONNotFound) Encode(e *jx.Encoder)       {}
-func (PackagesRestorePackageForUserApplicationJSONNotFound) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes PackagesRestorePackageForUserApplicationJSONForbidden from json.
+func (s *PackagesRestorePackageForUserApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode PackagesRestorePackageForUserApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PackagesRestorePackageForUserApplicationJSONForbidden(unwrapped)
+	return nil
+}
 
-func (PackagesRestorePackageForUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {}
-func (PackagesRestorePackageForUserApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+// Encode encodes PackagesRestorePackageForUserApplicationJSONNotFound as json.
+func (s PackagesRestorePackageForUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PackagesRestorePackageForUserApplicationJSONNotFound from json.
+func (s *PackagesRestorePackageForUserApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode PackagesRestorePackageForUserApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PackagesRestorePackageForUserApplicationJSONNotFound(unwrapped)
+	return nil
+}
+
+// Encode encodes PackagesRestorePackageForUserApplicationJSONUnauthorized as json.
+func (s PackagesRestorePackageForUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PackagesRestorePackageForUserApplicationJSONUnauthorized from json.
+func (s *PackagesRestorePackageForUserApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode PackagesRestorePackageForUserApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PackagesRestorePackageForUserApplicationJSONUnauthorized(unwrapped)
 	return nil
 }
 
@@ -46457,21 +52006,75 @@ func (s *PackagesRestorePackageForUserPackageType) Decode(d *jx.Decoder) error {
 	return nil
 }
 
-func (PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
+// Encode encodes PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONForbidden as json.
+func (s PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
 }
-func (PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+
+// Decode decodes PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONForbidden from json.
+func (s *PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONForbidden(unwrapped)
 	return nil
 }
 
-func (PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
+// Encode encodes PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONNotFound as json.
+func (s PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
 }
-func (PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+
+// Decode decodes PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONNotFound from json.
+func (s *PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONNotFound(unwrapped)
 	return nil
 }
 
-func (PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+// Encode encodes PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONUnauthorized as json.
+func (s PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
 }
-func (PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+
+// Decode decodes PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONUnauthorized from json.
+func (s *PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
 	return nil
 }
 
@@ -46513,18 +52116,75 @@ func (s *PackagesRestorePackageVersionForAuthenticatedUserPackageType) Decode(d 
 	return nil
 }
 
-func (PackagesRestorePackageVersionForOrgApplicationJSONForbidden) Encode(e *jx.Encoder) {}
-func (PackagesRestorePackageVersionForOrgApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+// Encode encodes PackagesRestorePackageVersionForOrgApplicationJSONForbidden as json.
+func (s PackagesRestorePackageVersionForOrgApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PackagesRestorePackageVersionForOrgApplicationJSONForbidden from json.
+func (s *PackagesRestorePackageVersionForOrgApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode PackagesRestorePackageVersionForOrgApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PackagesRestorePackageVersionForOrgApplicationJSONForbidden(unwrapped)
 	return nil
 }
 
-func (PackagesRestorePackageVersionForOrgApplicationJSONNotFound) Encode(e *jx.Encoder) {}
-func (PackagesRestorePackageVersionForOrgApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+// Encode encodes PackagesRestorePackageVersionForOrgApplicationJSONNotFound as json.
+func (s PackagesRestorePackageVersionForOrgApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PackagesRestorePackageVersionForOrgApplicationJSONNotFound from json.
+func (s *PackagesRestorePackageVersionForOrgApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode PackagesRestorePackageVersionForOrgApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PackagesRestorePackageVersionForOrgApplicationJSONNotFound(unwrapped)
 	return nil
 }
 
-func (PackagesRestorePackageVersionForOrgApplicationJSONUnauthorized) Encode(e *jx.Encoder) {}
-func (PackagesRestorePackageVersionForOrgApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+// Encode encodes PackagesRestorePackageVersionForOrgApplicationJSONUnauthorized as json.
+func (s PackagesRestorePackageVersionForOrgApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PackagesRestorePackageVersionForOrgApplicationJSONUnauthorized from json.
+func (s *PackagesRestorePackageVersionForOrgApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode PackagesRestorePackageVersionForOrgApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PackagesRestorePackageVersionForOrgApplicationJSONUnauthorized(unwrapped)
 	return nil
 }
 
@@ -46566,18 +52226,75 @@ func (s *PackagesRestorePackageVersionForOrgPackageType) Decode(d *jx.Decoder) e
 	return nil
 }
 
-func (PackagesRestorePackageVersionForUserApplicationJSONForbidden) Encode(e *jx.Encoder) {}
-func (PackagesRestorePackageVersionForUserApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+// Encode encodes PackagesRestorePackageVersionForUserApplicationJSONForbidden as json.
+func (s PackagesRestorePackageVersionForUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PackagesRestorePackageVersionForUserApplicationJSONForbidden from json.
+func (s *PackagesRestorePackageVersionForUserApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode PackagesRestorePackageVersionForUserApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PackagesRestorePackageVersionForUserApplicationJSONForbidden(unwrapped)
 	return nil
 }
 
-func (PackagesRestorePackageVersionForUserApplicationJSONNotFound) Encode(e *jx.Encoder) {}
-func (PackagesRestorePackageVersionForUserApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+// Encode encodes PackagesRestorePackageVersionForUserApplicationJSONNotFound as json.
+func (s PackagesRestorePackageVersionForUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PackagesRestorePackageVersionForUserApplicationJSONNotFound from json.
+func (s *PackagesRestorePackageVersionForUserApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode PackagesRestorePackageVersionForUserApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PackagesRestorePackageVersionForUserApplicationJSONNotFound(unwrapped)
 	return nil
 }
 
-func (PackagesRestorePackageVersionForUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {}
-func (PackagesRestorePackageVersionForUserApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+// Encode encodes PackagesRestorePackageVersionForUserApplicationJSONUnauthorized as json.
+func (s PackagesRestorePackageVersionForUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PackagesRestorePackageVersionForUserApplicationJSONUnauthorized from json.
+func (s *PackagesRestorePackageVersionForUserApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode PackagesRestorePackageVersionForUserApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PackagesRestorePackageVersionForUserApplicationJSONUnauthorized(unwrapped)
 	return nil
 }
 
@@ -48889,11 +54606,53 @@ func (s *ProjectsCreateCardReq1) Decode(d *jx.Decoder) error {
 	})
 }
 
-func (ProjectsCreateColumnApplicationJSONForbidden) Encode(e *jx.Encoder)       {}
-func (ProjectsCreateColumnApplicationJSONForbidden) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes ProjectsCreateColumnApplicationJSONForbidden as json.
+func (s ProjectsCreateColumnApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (ProjectsCreateColumnApplicationJSONUnauthorized) Encode(e *jx.Encoder)       {}
-func (ProjectsCreateColumnApplicationJSONUnauthorized) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes ProjectsCreateColumnApplicationJSONForbidden from json.
+func (s *ProjectsCreateColumnApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ProjectsCreateColumnApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ProjectsCreateColumnApplicationJSONForbidden(unwrapped)
+	return nil
+}
+
+// Encode encodes ProjectsCreateColumnApplicationJSONUnauthorized as json.
+func (s ProjectsCreateColumnApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes ProjectsCreateColumnApplicationJSONUnauthorized from json.
+func (s *ProjectsCreateColumnApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ProjectsCreateColumnApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ProjectsCreateColumnApplicationJSONUnauthorized(unwrapped)
+	return nil
+}
 
 // Encode implements json.Marshaler.
 func (s ProjectsCreateColumnReq) Encode(e *jx.Encoder) {
@@ -48924,13 +54683,51 @@ func (s *ProjectsCreateColumnReq) Decode(d *jx.Decoder) error {
 	})
 }
 
-func (ProjectsCreateForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {}
-func (ProjectsCreateForAuthenticatedUserApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+// Encode encodes ProjectsCreateForAuthenticatedUserApplicationJSONForbidden as json.
+func (s ProjectsCreateForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes ProjectsCreateForAuthenticatedUserApplicationJSONForbidden from json.
+func (s *ProjectsCreateForAuthenticatedUserApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ProjectsCreateForAuthenticatedUserApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ProjectsCreateForAuthenticatedUserApplicationJSONForbidden(unwrapped)
 	return nil
 }
 
-func (ProjectsCreateForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {}
-func (ProjectsCreateForAuthenticatedUserApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+// Encode encodes ProjectsCreateForAuthenticatedUserApplicationJSONUnauthorized as json.
+func (s ProjectsCreateForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes ProjectsCreateForAuthenticatedUserApplicationJSONUnauthorized from json.
+func (s *ProjectsCreateForAuthenticatedUserApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ProjectsCreateForAuthenticatedUserApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ProjectsCreateForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
 	return nil
 }
 
@@ -48972,17 +54769,101 @@ func (s *ProjectsCreateForAuthenticatedUserReq) Decode(d *jx.Decoder) error {
 	})
 }
 
-func (ProjectsCreateForOrgApplicationJSONForbidden) Encode(e *jx.Encoder)       {}
-func (ProjectsCreateForOrgApplicationJSONForbidden) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes ProjectsCreateForOrgApplicationJSONForbidden as json.
+func (s ProjectsCreateForOrgApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (ProjectsCreateForOrgApplicationJSONGone) Encode(e *jx.Encoder)       {}
-func (ProjectsCreateForOrgApplicationJSONGone) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes ProjectsCreateForOrgApplicationJSONForbidden from json.
+func (s *ProjectsCreateForOrgApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ProjectsCreateForOrgApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ProjectsCreateForOrgApplicationJSONForbidden(unwrapped)
+	return nil
+}
 
-func (ProjectsCreateForOrgApplicationJSONNotFound) Encode(e *jx.Encoder)       {}
-func (ProjectsCreateForOrgApplicationJSONNotFound) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes ProjectsCreateForOrgApplicationJSONGone as json.
+func (s ProjectsCreateForOrgApplicationJSONGone) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (ProjectsCreateForOrgApplicationJSONUnauthorized) Encode(e *jx.Encoder)       {}
-func (ProjectsCreateForOrgApplicationJSONUnauthorized) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes ProjectsCreateForOrgApplicationJSONGone from json.
+func (s *ProjectsCreateForOrgApplicationJSONGone) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ProjectsCreateForOrgApplicationJSONGone to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ProjectsCreateForOrgApplicationJSONGone(unwrapped)
+	return nil
+}
+
+// Encode encodes ProjectsCreateForOrgApplicationJSONNotFound as json.
+func (s ProjectsCreateForOrgApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes ProjectsCreateForOrgApplicationJSONNotFound from json.
+func (s *ProjectsCreateForOrgApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ProjectsCreateForOrgApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ProjectsCreateForOrgApplicationJSONNotFound(unwrapped)
+	return nil
+}
+
+// Encode encodes ProjectsCreateForOrgApplicationJSONUnauthorized as json.
+func (s ProjectsCreateForOrgApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes ProjectsCreateForOrgApplicationJSONUnauthorized from json.
+func (s *ProjectsCreateForOrgApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ProjectsCreateForOrgApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ProjectsCreateForOrgApplicationJSONUnauthorized(unwrapped)
+	return nil
+}
 
 // Encode implements json.Marshaler.
 func (s ProjectsCreateForOrgReq) Encode(e *jx.Encoder) {
@@ -49022,17 +54903,101 @@ func (s *ProjectsCreateForOrgReq) Decode(d *jx.Decoder) error {
 	})
 }
 
-func (ProjectsCreateForRepoApplicationJSONForbidden) Encode(e *jx.Encoder)       {}
-func (ProjectsCreateForRepoApplicationJSONForbidden) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes ProjectsCreateForRepoApplicationJSONForbidden as json.
+func (s ProjectsCreateForRepoApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (ProjectsCreateForRepoApplicationJSONGone) Encode(e *jx.Encoder)       {}
-func (ProjectsCreateForRepoApplicationJSONGone) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes ProjectsCreateForRepoApplicationJSONForbidden from json.
+func (s *ProjectsCreateForRepoApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ProjectsCreateForRepoApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ProjectsCreateForRepoApplicationJSONForbidden(unwrapped)
+	return nil
+}
 
-func (ProjectsCreateForRepoApplicationJSONNotFound) Encode(e *jx.Encoder)       {}
-func (ProjectsCreateForRepoApplicationJSONNotFound) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes ProjectsCreateForRepoApplicationJSONGone as json.
+func (s ProjectsCreateForRepoApplicationJSONGone) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (ProjectsCreateForRepoApplicationJSONUnauthorized) Encode(e *jx.Encoder)       {}
-func (ProjectsCreateForRepoApplicationJSONUnauthorized) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes ProjectsCreateForRepoApplicationJSONGone from json.
+func (s *ProjectsCreateForRepoApplicationJSONGone) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ProjectsCreateForRepoApplicationJSONGone to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ProjectsCreateForRepoApplicationJSONGone(unwrapped)
+	return nil
+}
+
+// Encode encodes ProjectsCreateForRepoApplicationJSONNotFound as json.
+func (s ProjectsCreateForRepoApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes ProjectsCreateForRepoApplicationJSONNotFound from json.
+func (s *ProjectsCreateForRepoApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ProjectsCreateForRepoApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ProjectsCreateForRepoApplicationJSONNotFound(unwrapped)
+	return nil
+}
+
+// Encode encodes ProjectsCreateForRepoApplicationJSONUnauthorized as json.
+func (s ProjectsCreateForRepoApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes ProjectsCreateForRepoApplicationJSONUnauthorized from json.
+func (s *ProjectsCreateForRepoApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ProjectsCreateForRepoApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ProjectsCreateForRepoApplicationJSONUnauthorized(unwrapped)
+	return nil
+}
 
 // Encode implements json.Marshaler.
 func (s ProjectsCreateForRepoReq) Encode(e *jx.Encoder) {
@@ -49072,20 +55037,125 @@ func (s *ProjectsCreateForRepoReq) Decode(d *jx.Decoder) error {
 	})
 }
 
-func (ProjectsDeleteApplicationJSONGone) Encode(e *jx.Encoder)       {}
-func (ProjectsDeleteApplicationJSONGone) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes ProjectsDeleteApplicationJSONGone as json.
+func (s ProjectsDeleteApplicationJSONGone) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (ProjectsDeleteApplicationJSONNotFound) Encode(e *jx.Encoder)       {}
-func (ProjectsDeleteApplicationJSONNotFound) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes ProjectsDeleteApplicationJSONGone from json.
+func (s *ProjectsDeleteApplicationJSONGone) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ProjectsDeleteApplicationJSONGone to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ProjectsDeleteApplicationJSONGone(unwrapped)
+	return nil
+}
 
-func (ProjectsDeleteApplicationJSONUnauthorized) Encode(e *jx.Encoder)       {}
-func (ProjectsDeleteApplicationJSONUnauthorized) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes ProjectsDeleteApplicationJSONNotFound as json.
+func (s ProjectsDeleteApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (ProjectsDeleteCardApplicationJSONNotFound) Encode(e *jx.Encoder)       {}
-func (ProjectsDeleteCardApplicationJSONNotFound) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes ProjectsDeleteApplicationJSONNotFound from json.
+func (s *ProjectsDeleteApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ProjectsDeleteApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ProjectsDeleteApplicationJSONNotFound(unwrapped)
+	return nil
+}
 
-func (ProjectsDeleteCardApplicationJSONUnauthorized) Encode(e *jx.Encoder)       {}
-func (ProjectsDeleteCardApplicationJSONUnauthorized) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes ProjectsDeleteApplicationJSONUnauthorized as json.
+func (s ProjectsDeleteApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes ProjectsDeleteApplicationJSONUnauthorized from json.
+func (s *ProjectsDeleteApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ProjectsDeleteApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ProjectsDeleteApplicationJSONUnauthorized(unwrapped)
+	return nil
+}
+
+// Encode encodes ProjectsDeleteCardApplicationJSONNotFound as json.
+func (s ProjectsDeleteCardApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes ProjectsDeleteCardApplicationJSONNotFound from json.
+func (s *ProjectsDeleteCardApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ProjectsDeleteCardApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ProjectsDeleteCardApplicationJSONNotFound(unwrapped)
+	return nil
+}
+
+// Encode encodes ProjectsDeleteCardApplicationJSONUnauthorized as json.
+func (s ProjectsDeleteCardApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes ProjectsDeleteCardApplicationJSONUnauthorized from json.
+func (s *ProjectsDeleteCardApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ProjectsDeleteCardApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ProjectsDeleteCardApplicationJSONUnauthorized(unwrapped)
+	return nil
+}
 
 // Encode implements json.Marshaler.
 func (s ProjectsDeleteCardForbidden) Encode(e *jx.Encoder) {
@@ -49167,11 +55237,53 @@ func (s *ProjectsDeleteCardNoContent) Decode(d *jx.Decoder) error {
 	})
 }
 
-func (ProjectsDeleteColumnApplicationJSONForbidden) Encode(e *jx.Encoder)       {}
-func (ProjectsDeleteColumnApplicationJSONForbidden) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes ProjectsDeleteColumnApplicationJSONForbidden as json.
+func (s ProjectsDeleteColumnApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (ProjectsDeleteColumnApplicationJSONUnauthorized) Encode(e *jx.Encoder)       {}
-func (ProjectsDeleteColumnApplicationJSONUnauthorized) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes ProjectsDeleteColumnApplicationJSONForbidden from json.
+func (s *ProjectsDeleteColumnApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ProjectsDeleteColumnApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ProjectsDeleteColumnApplicationJSONForbidden(unwrapped)
+	return nil
+}
+
+// Encode encodes ProjectsDeleteColumnApplicationJSONUnauthorized as json.
+func (s ProjectsDeleteColumnApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes ProjectsDeleteColumnApplicationJSONUnauthorized from json.
+func (s *ProjectsDeleteColumnApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ProjectsDeleteColumnApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ProjectsDeleteColumnApplicationJSONUnauthorized(unwrapped)
+	return nil
+}
 
 // Encode implements json.Marshaler.
 func (s ProjectsDeleteColumnNoContent) Encode(e *jx.Encoder) {
@@ -49273,35 +55385,245 @@ func (s *ProjectsDeleteNoContent) Decode(d *jx.Decoder) error {
 	})
 }
 
-func (ProjectsGetApplicationJSONForbidden) Encode(e *jx.Encoder)       {}
-func (ProjectsGetApplicationJSONForbidden) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes ProjectsGetApplicationJSONForbidden as json.
+func (s ProjectsGetApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (ProjectsGetApplicationJSONUnauthorized) Encode(e *jx.Encoder)       {}
-func (ProjectsGetApplicationJSONUnauthorized) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes ProjectsGetApplicationJSONForbidden from json.
+func (s *ProjectsGetApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ProjectsGetApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ProjectsGetApplicationJSONForbidden(unwrapped)
+	return nil
+}
 
-func (ProjectsGetCardApplicationJSONForbidden) Encode(e *jx.Encoder)       {}
-func (ProjectsGetCardApplicationJSONForbidden) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes ProjectsGetApplicationJSONUnauthorized as json.
+func (s ProjectsGetApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (ProjectsGetCardApplicationJSONNotFound) Encode(e *jx.Encoder)       {}
-func (ProjectsGetCardApplicationJSONNotFound) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes ProjectsGetApplicationJSONUnauthorized from json.
+func (s *ProjectsGetApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ProjectsGetApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ProjectsGetApplicationJSONUnauthorized(unwrapped)
+	return nil
+}
 
-func (ProjectsGetCardApplicationJSONUnauthorized) Encode(e *jx.Encoder)       {}
-func (ProjectsGetCardApplicationJSONUnauthorized) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes ProjectsGetCardApplicationJSONForbidden as json.
+func (s ProjectsGetCardApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (ProjectsGetColumnApplicationJSONForbidden) Encode(e *jx.Encoder)       {}
-func (ProjectsGetColumnApplicationJSONForbidden) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes ProjectsGetCardApplicationJSONForbidden from json.
+func (s *ProjectsGetCardApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ProjectsGetCardApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ProjectsGetCardApplicationJSONForbidden(unwrapped)
+	return nil
+}
 
-func (ProjectsGetColumnApplicationJSONNotFound) Encode(e *jx.Encoder)       {}
-func (ProjectsGetColumnApplicationJSONNotFound) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes ProjectsGetCardApplicationJSONNotFound as json.
+func (s ProjectsGetCardApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (ProjectsGetColumnApplicationJSONUnauthorized) Encode(e *jx.Encoder)       {}
-func (ProjectsGetColumnApplicationJSONUnauthorized) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes ProjectsGetCardApplicationJSONNotFound from json.
+func (s *ProjectsGetCardApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ProjectsGetCardApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ProjectsGetCardApplicationJSONNotFound(unwrapped)
+	return nil
+}
 
-func (ProjectsListCardsApplicationJSONForbidden) Encode(e *jx.Encoder)       {}
-func (ProjectsListCardsApplicationJSONForbidden) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes ProjectsGetCardApplicationJSONUnauthorized as json.
+func (s ProjectsGetCardApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (ProjectsListCardsApplicationJSONUnauthorized) Encode(e *jx.Encoder)       {}
-func (ProjectsListCardsApplicationJSONUnauthorized) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes ProjectsGetCardApplicationJSONUnauthorized from json.
+func (s *ProjectsGetCardApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ProjectsGetCardApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ProjectsGetCardApplicationJSONUnauthorized(unwrapped)
+	return nil
+}
+
+// Encode encodes ProjectsGetColumnApplicationJSONForbidden as json.
+func (s ProjectsGetColumnApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes ProjectsGetColumnApplicationJSONForbidden from json.
+func (s *ProjectsGetColumnApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ProjectsGetColumnApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ProjectsGetColumnApplicationJSONForbidden(unwrapped)
+	return nil
+}
+
+// Encode encodes ProjectsGetColumnApplicationJSONNotFound as json.
+func (s ProjectsGetColumnApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes ProjectsGetColumnApplicationJSONNotFound from json.
+func (s *ProjectsGetColumnApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ProjectsGetColumnApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ProjectsGetColumnApplicationJSONNotFound(unwrapped)
+	return nil
+}
+
+// Encode encodes ProjectsGetColumnApplicationJSONUnauthorized as json.
+func (s ProjectsGetColumnApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes ProjectsGetColumnApplicationJSONUnauthorized from json.
+func (s *ProjectsGetColumnApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ProjectsGetColumnApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ProjectsGetColumnApplicationJSONUnauthorized(unwrapped)
+	return nil
+}
+
+// Encode encodes ProjectsListCardsApplicationJSONForbidden as json.
+func (s ProjectsListCardsApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes ProjectsListCardsApplicationJSONForbidden from json.
+func (s *ProjectsListCardsApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ProjectsListCardsApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ProjectsListCardsApplicationJSONForbidden(unwrapped)
+	return nil
+}
+
+// Encode encodes ProjectsListCardsApplicationJSONUnauthorized as json.
+func (s ProjectsListCardsApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes ProjectsListCardsApplicationJSONUnauthorized from json.
+func (s *ProjectsListCardsApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ProjectsListCardsApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ProjectsListCardsApplicationJSONUnauthorized(unwrapped)
+	return nil
+}
 
 // Encode encodes ProjectsListCardsArchivedState as json.
 func (s ProjectsListCardsArchivedState) Encode(e *jx.Encoder) {
@@ -49321,8 +55643,41 @@ func (s *ProjectsListCardsArchivedState) Decode(d *jx.Decoder) error {
 	return nil
 }
 
-func (ProjectsListCardsOKApplicationJSON) Encode(e *jx.Encoder)       {}
-func (ProjectsListCardsOKApplicationJSON) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes ProjectsListCardsOKApplicationJSON as json.
+func (s ProjectsListCardsOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []ProjectCard(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes ProjectsListCardsOKApplicationJSON from json.
+func (s *ProjectsListCardsOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ProjectsListCardsOKApplicationJSON to nil`)
+	}
+	var unwrapped []ProjectCard
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem ProjectCard
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ProjectsListCardsOKApplicationJSON(unwrapped)
+	return nil
+}
 
 // Encode encodes ProjectsListCollaboratorsAffiliation as json.
 func (s ProjectsListCollaboratorsAffiliation) Encode(e *jx.Encoder) {
@@ -49342,17 +55697,125 @@ func (s *ProjectsListCollaboratorsAffiliation) Decode(d *jx.Decoder) error {
 	return nil
 }
 
-func (ProjectsListColumnsApplicationJSONForbidden) Encode(e *jx.Encoder)       {}
-func (ProjectsListColumnsApplicationJSONForbidden) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes ProjectsListColumnsApplicationJSONForbidden as json.
+func (s ProjectsListColumnsApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (ProjectsListColumnsApplicationJSONUnauthorized) Encode(e *jx.Encoder)       {}
-func (ProjectsListColumnsApplicationJSONUnauthorized) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes ProjectsListColumnsApplicationJSONForbidden from json.
+func (s *ProjectsListColumnsApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ProjectsListColumnsApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ProjectsListColumnsApplicationJSONForbidden(unwrapped)
+	return nil
+}
 
-func (ProjectsListColumnsOKApplicationJSON) Encode(e *jx.Encoder)       {}
-func (ProjectsListColumnsOKApplicationJSON) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes ProjectsListColumnsApplicationJSONUnauthorized as json.
+func (s ProjectsListColumnsApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (ProjectsListForOrgOKApplicationJSON) Encode(e *jx.Encoder)       {}
-func (ProjectsListForOrgOKApplicationJSON) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes ProjectsListColumnsApplicationJSONUnauthorized from json.
+func (s *ProjectsListColumnsApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ProjectsListColumnsApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ProjectsListColumnsApplicationJSONUnauthorized(unwrapped)
+	return nil
+}
+
+// Encode encodes ProjectsListColumnsOKApplicationJSON as json.
+func (s ProjectsListColumnsOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []ProjectColumn(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes ProjectsListColumnsOKApplicationJSON from json.
+func (s *ProjectsListColumnsOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ProjectsListColumnsOKApplicationJSON to nil`)
+	}
+	var unwrapped []ProjectColumn
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem ProjectColumn
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ProjectsListColumnsOKApplicationJSON(unwrapped)
+	return nil
+}
+
+// Encode encodes ProjectsListForOrgOKApplicationJSON as json.
+func (s ProjectsListForOrgOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []Project(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes ProjectsListForOrgOKApplicationJSON from json.
+func (s *ProjectsListForOrgOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ProjectsListForOrgOKApplicationJSON to nil`)
+	}
+	var unwrapped []Project
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem Project
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ProjectsListForOrgOKApplicationJSON(unwrapped)
+	return nil
+}
 
 // Encode encodes ProjectsListForOrgState as json.
 func (s ProjectsListForOrgState) Encode(e *jx.Encoder) {
@@ -49372,20 +55835,137 @@ func (s *ProjectsListForOrgState) Decode(d *jx.Decoder) error {
 	return nil
 }
 
-func (ProjectsListForRepoApplicationJSONForbidden) Encode(e *jx.Encoder)       {}
-func (ProjectsListForRepoApplicationJSONForbidden) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes ProjectsListForRepoApplicationJSONForbidden as json.
+func (s ProjectsListForRepoApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (ProjectsListForRepoApplicationJSONGone) Encode(e *jx.Encoder)       {}
-func (ProjectsListForRepoApplicationJSONGone) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes ProjectsListForRepoApplicationJSONForbidden from json.
+func (s *ProjectsListForRepoApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ProjectsListForRepoApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ProjectsListForRepoApplicationJSONForbidden(unwrapped)
+	return nil
+}
 
-func (ProjectsListForRepoApplicationJSONNotFound) Encode(e *jx.Encoder)       {}
-func (ProjectsListForRepoApplicationJSONNotFound) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes ProjectsListForRepoApplicationJSONGone as json.
+func (s ProjectsListForRepoApplicationJSONGone) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (ProjectsListForRepoApplicationJSONUnauthorized) Encode(e *jx.Encoder)       {}
-func (ProjectsListForRepoApplicationJSONUnauthorized) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes ProjectsListForRepoApplicationJSONGone from json.
+func (s *ProjectsListForRepoApplicationJSONGone) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ProjectsListForRepoApplicationJSONGone to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ProjectsListForRepoApplicationJSONGone(unwrapped)
+	return nil
+}
 
-func (ProjectsListForRepoOKApplicationJSON) Encode(e *jx.Encoder)       {}
-func (ProjectsListForRepoOKApplicationJSON) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes ProjectsListForRepoApplicationJSONNotFound as json.
+func (s ProjectsListForRepoApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes ProjectsListForRepoApplicationJSONNotFound from json.
+func (s *ProjectsListForRepoApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ProjectsListForRepoApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ProjectsListForRepoApplicationJSONNotFound(unwrapped)
+	return nil
+}
+
+// Encode encodes ProjectsListForRepoApplicationJSONUnauthorized as json.
+func (s ProjectsListForRepoApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes ProjectsListForRepoApplicationJSONUnauthorized from json.
+func (s *ProjectsListForRepoApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ProjectsListForRepoApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ProjectsListForRepoApplicationJSONUnauthorized(unwrapped)
+	return nil
+}
+
+// Encode encodes ProjectsListForRepoOKApplicationJSON as json.
+func (s ProjectsListForRepoOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []Project(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes ProjectsListForRepoOKApplicationJSON from json.
+func (s *ProjectsListForRepoOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ProjectsListForRepoOKApplicationJSON to nil`)
+	}
+	var unwrapped []Project
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem Project
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ProjectsListForRepoOKApplicationJSON(unwrapped)
+	return nil
+}
 
 // Encode encodes ProjectsListForRepoState as json.
 func (s ProjectsListForRepoState) Encode(e *jx.Encoder) {
@@ -49595,11 +56175,53 @@ func (s *ProjectsMoveCardReq) Decode(d *jx.Decoder) error {
 	})
 }
 
-func (ProjectsMoveColumnApplicationJSONForbidden) Encode(e *jx.Encoder)       {}
-func (ProjectsMoveColumnApplicationJSONForbidden) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes ProjectsMoveColumnApplicationJSONForbidden as json.
+func (s ProjectsMoveColumnApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (ProjectsMoveColumnApplicationJSONUnauthorized) Encode(e *jx.Encoder)       {}
-func (ProjectsMoveColumnApplicationJSONUnauthorized) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes ProjectsMoveColumnApplicationJSONForbidden from json.
+func (s *ProjectsMoveColumnApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ProjectsMoveColumnApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ProjectsMoveColumnApplicationJSONForbidden(unwrapped)
+	return nil
+}
+
+// Encode encodes ProjectsMoveColumnApplicationJSONUnauthorized as json.
+func (s ProjectsMoveColumnApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes ProjectsMoveColumnApplicationJSONUnauthorized from json.
+func (s *ProjectsMoveColumnApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ProjectsMoveColumnApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ProjectsMoveColumnApplicationJSONUnauthorized(unwrapped)
+	return nil
+}
 
 // Encode implements json.Marshaler.
 func (s ProjectsMoveColumnCreated) Encode(e *jx.Encoder) {
@@ -49670,20 +56292,125 @@ func (s *ProjectsRemoveCollaboratorNoContent) Decode(d *jx.Decoder) error {
 	})
 }
 
-func (ProjectsUpdateApplicationJSONGone) Encode(e *jx.Encoder)       {}
-func (ProjectsUpdateApplicationJSONGone) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes ProjectsUpdateApplicationJSONGone as json.
+func (s ProjectsUpdateApplicationJSONGone) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (ProjectsUpdateApplicationJSONUnauthorized) Encode(e *jx.Encoder)       {}
-func (ProjectsUpdateApplicationJSONUnauthorized) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes ProjectsUpdateApplicationJSONGone from json.
+func (s *ProjectsUpdateApplicationJSONGone) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ProjectsUpdateApplicationJSONGone to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ProjectsUpdateApplicationJSONGone(unwrapped)
+	return nil
+}
 
-func (ProjectsUpdateCardApplicationJSONForbidden) Encode(e *jx.Encoder)       {}
-func (ProjectsUpdateCardApplicationJSONForbidden) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes ProjectsUpdateApplicationJSONUnauthorized as json.
+func (s ProjectsUpdateApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (ProjectsUpdateCardApplicationJSONNotFound) Encode(e *jx.Encoder)       {}
-func (ProjectsUpdateCardApplicationJSONNotFound) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes ProjectsUpdateApplicationJSONUnauthorized from json.
+func (s *ProjectsUpdateApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ProjectsUpdateApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ProjectsUpdateApplicationJSONUnauthorized(unwrapped)
+	return nil
+}
 
-func (ProjectsUpdateCardApplicationJSONUnauthorized) Encode(e *jx.Encoder)       {}
-func (ProjectsUpdateCardApplicationJSONUnauthorized) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes ProjectsUpdateCardApplicationJSONForbidden as json.
+func (s ProjectsUpdateCardApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes ProjectsUpdateCardApplicationJSONForbidden from json.
+func (s *ProjectsUpdateCardApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ProjectsUpdateCardApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ProjectsUpdateCardApplicationJSONForbidden(unwrapped)
+	return nil
+}
+
+// Encode encodes ProjectsUpdateCardApplicationJSONNotFound as json.
+func (s ProjectsUpdateCardApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes ProjectsUpdateCardApplicationJSONNotFound from json.
+func (s *ProjectsUpdateCardApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ProjectsUpdateCardApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ProjectsUpdateCardApplicationJSONNotFound(unwrapped)
+	return nil
+}
+
+// Encode encodes ProjectsUpdateCardApplicationJSONUnauthorized as json.
+func (s ProjectsUpdateCardApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes ProjectsUpdateCardApplicationJSONUnauthorized from json.
+func (s *ProjectsUpdateCardApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ProjectsUpdateCardApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ProjectsUpdateCardApplicationJSONUnauthorized(unwrapped)
+	return nil
+}
 
 // Encode implements json.Marshaler.
 func (s ProjectsUpdateCardReq) Encode(e *jx.Encoder) {
@@ -49723,11 +56450,53 @@ func (s *ProjectsUpdateCardReq) Decode(d *jx.Decoder) error {
 	})
 }
 
-func (ProjectsUpdateColumnApplicationJSONForbidden) Encode(e *jx.Encoder)       {}
-func (ProjectsUpdateColumnApplicationJSONForbidden) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes ProjectsUpdateColumnApplicationJSONForbidden as json.
+func (s ProjectsUpdateColumnApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (ProjectsUpdateColumnApplicationJSONUnauthorized) Encode(e *jx.Encoder)       {}
-func (ProjectsUpdateColumnApplicationJSONUnauthorized) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes ProjectsUpdateColumnApplicationJSONForbidden from json.
+func (s *ProjectsUpdateColumnApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ProjectsUpdateColumnApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ProjectsUpdateColumnApplicationJSONForbidden(unwrapped)
+	return nil
+}
+
+// Encode encodes ProjectsUpdateColumnApplicationJSONUnauthorized as json.
+func (s ProjectsUpdateColumnApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes ProjectsUpdateColumnApplicationJSONUnauthorized from json.
+func (s *ProjectsUpdateColumnApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ProjectsUpdateColumnApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ProjectsUpdateColumnApplicationJSONUnauthorized(unwrapped)
+	return nil
+}
 
 // Encode implements json.Marshaler.
 func (s ProjectsUpdateColumnReq) Encode(e *jx.Encoder) {
@@ -56243,14 +63012,89 @@ func (s *PullsDismissReviewReq) Decode(d *jx.Decoder) error {
 	})
 }
 
-func (PullsGetApplicationJSONInternalServerError) Encode(e *jx.Encoder)       {}
-func (PullsGetApplicationJSONInternalServerError) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes PullsGetApplicationJSONInternalServerError as json.
+func (s PullsGetApplicationJSONInternalServerError) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (PullsGetApplicationJSONNotFound) Encode(e *jx.Encoder)       {}
-func (PullsGetApplicationJSONNotFound) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes PullsGetApplicationJSONInternalServerError from json.
+func (s *PullsGetApplicationJSONInternalServerError) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode PullsGetApplicationJSONInternalServerError to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PullsGetApplicationJSONInternalServerError(unwrapped)
+	return nil
+}
 
-func (PullsListCommentsForReviewOKApplicationJSON) Encode(e *jx.Encoder)       {}
-func (PullsListCommentsForReviewOKApplicationJSON) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes PullsGetApplicationJSONNotFound as json.
+func (s PullsGetApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PullsGetApplicationJSONNotFound from json.
+func (s *PullsGetApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode PullsGetApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PullsGetApplicationJSONNotFound(unwrapped)
+	return nil
+}
+
+// Encode encodes PullsListCommentsForReviewOKApplicationJSON as json.
+func (s PullsListCommentsForReviewOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []ReviewComment(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes PullsListCommentsForReviewOKApplicationJSON from json.
+func (s *PullsListCommentsForReviewOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode PullsListCommentsForReviewOKApplicationJSON to nil`)
+	}
+	var unwrapped []ReviewComment
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem ReviewComment
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PullsListCommentsForReviewOKApplicationJSON(unwrapped)
+	return nil
+}
 
 // Encode encodes PullsListDirection as json.
 func (s PullsListDirection) Encode(e *jx.Encoder) {
@@ -56591,11 +63435,53 @@ func (s *PullsRemoveRequestedReviewersReq) Decode(d *jx.Decoder) error {
 	})
 }
 
-func (PullsSubmitReviewApplicationJSONForbidden) Encode(e *jx.Encoder)       {}
-func (PullsSubmitReviewApplicationJSONForbidden) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes PullsSubmitReviewApplicationJSONForbidden as json.
+func (s PullsSubmitReviewApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (PullsSubmitReviewApplicationJSONNotFound) Encode(e *jx.Encoder)       {}
-func (PullsSubmitReviewApplicationJSONNotFound) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes PullsSubmitReviewApplicationJSONForbidden from json.
+func (s *PullsSubmitReviewApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode PullsSubmitReviewApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PullsSubmitReviewApplicationJSONForbidden(unwrapped)
+	return nil
+}
+
+// Encode encodes PullsSubmitReviewApplicationJSONNotFound as json.
+func (s PullsSubmitReviewApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PullsSubmitReviewApplicationJSONNotFound from json.
+func (s *PullsSubmitReviewApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode PullsSubmitReviewApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PullsSubmitReviewApplicationJSONNotFound(unwrapped)
+	return nil
+}
 
 // Encode implements json.Marshaler.
 func (s PullsSubmitReviewReq) Encode(e *jx.Encoder) {
@@ -57442,13 +64328,51 @@ func (s *ReactionsCreateForReleaseReqContent) Decode(d *jx.Decoder) error {
 	return nil
 }
 
-func (ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONCreated) Encode(e *jx.Encoder) {}
-func (ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONCreated) Decode(d *jx.Decoder) error {
+// Encode encodes ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONCreated as json.
+func (s ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONCreated) Encode(e *jx.Encoder) {
+	unwrapped := Reaction(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONCreated from json.
+func (s *ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONCreated to nil`)
+	}
+	var unwrapped Reaction
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONCreated(unwrapped)
 	return nil
 }
 
-func (ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONOK) Encode(e *jx.Encoder) {}
-func (ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONOK) Decode(d *jx.Decoder) error {
+// Encode encodes ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONOK as json.
+func (s ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONOK) Encode(e *jx.Encoder) {
+	unwrapped := Reaction(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONOK from json.
+func (s *ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONOK to nil`)
+	}
+	var unwrapped Reaction
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONOK(unwrapped)
 	return nil
 }
 
@@ -57542,13 +64466,53 @@ func (s *ReactionsCreateForTeamDiscussionCommentLegacyReqContent) Decode(d *jx.D
 	return nil
 }
 
-func (ReactionsCreateForTeamDiscussionInOrgApplicationJSONCreated) Encode(e *jx.Encoder) {}
-func (ReactionsCreateForTeamDiscussionInOrgApplicationJSONCreated) Decode(d *jx.Decoder) error {
+// Encode encodes ReactionsCreateForTeamDiscussionInOrgApplicationJSONCreated as json.
+func (s ReactionsCreateForTeamDiscussionInOrgApplicationJSONCreated) Encode(e *jx.Encoder) {
+	unwrapped := Reaction(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes ReactionsCreateForTeamDiscussionInOrgApplicationJSONCreated from json.
+func (s *ReactionsCreateForTeamDiscussionInOrgApplicationJSONCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ReactionsCreateForTeamDiscussionInOrgApplicationJSONCreated to nil`)
+	}
+	var unwrapped Reaction
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ReactionsCreateForTeamDiscussionInOrgApplicationJSONCreated(unwrapped)
 	return nil
 }
 
-func (ReactionsCreateForTeamDiscussionInOrgApplicationJSONOK) Encode(e *jx.Encoder)       {}
-func (ReactionsCreateForTeamDiscussionInOrgApplicationJSONOK) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes ReactionsCreateForTeamDiscussionInOrgApplicationJSONOK as json.
+func (s ReactionsCreateForTeamDiscussionInOrgApplicationJSONOK) Encode(e *jx.Encoder) {
+	unwrapped := Reaction(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes ReactionsCreateForTeamDiscussionInOrgApplicationJSONOK from json.
+func (s *ReactionsCreateForTeamDiscussionInOrgApplicationJSONOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ReactionsCreateForTeamDiscussionInOrgApplicationJSONOK to nil`)
+	}
+	var unwrapped Reaction
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ReactionsCreateForTeamDiscussionInOrgApplicationJSONOK(unwrapped)
+	return nil
+}
 
 // Encode implements json.Marshaler.
 func (s ReactionsCreateForTeamDiscussionInOrgReq) Encode(e *jx.Encoder) {
@@ -57760,14 +64724,77 @@ func (s *ReactionsDeleteForTeamDiscussionNoContent) Decode(d *jx.Decoder) error 
 	})
 }
 
-func (ReactionsDeleteLegacyApplicationJSONForbidden) Encode(e *jx.Encoder)       {}
-func (ReactionsDeleteLegacyApplicationJSONForbidden) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes ReactionsDeleteLegacyApplicationJSONForbidden as json.
+func (s ReactionsDeleteLegacyApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (ReactionsDeleteLegacyApplicationJSONGone) Encode(e *jx.Encoder)       {}
-func (ReactionsDeleteLegacyApplicationJSONGone) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes ReactionsDeleteLegacyApplicationJSONForbidden from json.
+func (s *ReactionsDeleteLegacyApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ReactionsDeleteLegacyApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ReactionsDeleteLegacyApplicationJSONForbidden(unwrapped)
+	return nil
+}
 
-func (ReactionsDeleteLegacyApplicationJSONUnauthorized) Encode(e *jx.Encoder)       {}
-func (ReactionsDeleteLegacyApplicationJSONUnauthorized) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes ReactionsDeleteLegacyApplicationJSONGone as json.
+func (s ReactionsDeleteLegacyApplicationJSONGone) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes ReactionsDeleteLegacyApplicationJSONGone from json.
+func (s *ReactionsDeleteLegacyApplicationJSONGone) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ReactionsDeleteLegacyApplicationJSONGone to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ReactionsDeleteLegacyApplicationJSONGone(unwrapped)
+	return nil
+}
+
+// Encode encodes ReactionsDeleteLegacyApplicationJSONUnauthorized as json.
+func (s ReactionsDeleteLegacyApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes ReactionsDeleteLegacyApplicationJSONUnauthorized from json.
+func (s *ReactionsDeleteLegacyApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ReactionsDeleteLegacyApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ReactionsDeleteLegacyApplicationJSONUnauthorized(unwrapped)
+	return nil
+}
 
 // Encode implements json.Marshaler.
 func (s ReactionsDeleteLegacyNoContent) Encode(e *jx.Encoder) {
@@ -57807,14 +64834,89 @@ func (s *ReactionsListForCommitCommentContent) Decode(d *jx.Decoder) error {
 	return nil
 }
 
-func (ReactionsListForCommitCommentOKApplicationJSON) Encode(e *jx.Encoder)       {}
-func (ReactionsListForCommitCommentOKApplicationJSON) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes ReactionsListForCommitCommentOKApplicationJSON as json.
+func (s ReactionsListForCommitCommentOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []Reaction(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
 
-func (ReactionsListForIssueApplicationJSONGone) Encode(e *jx.Encoder)       {}
-func (ReactionsListForIssueApplicationJSONGone) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes ReactionsListForCommitCommentOKApplicationJSON from json.
+func (s *ReactionsListForCommitCommentOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ReactionsListForCommitCommentOKApplicationJSON to nil`)
+	}
+	var unwrapped []Reaction
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem Reaction
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ReactionsListForCommitCommentOKApplicationJSON(unwrapped)
+	return nil
+}
 
-func (ReactionsListForIssueApplicationJSONNotFound) Encode(e *jx.Encoder)       {}
-func (ReactionsListForIssueApplicationJSONNotFound) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes ReactionsListForIssueApplicationJSONGone as json.
+func (s ReactionsListForIssueApplicationJSONGone) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes ReactionsListForIssueApplicationJSONGone from json.
+func (s *ReactionsListForIssueApplicationJSONGone) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ReactionsListForIssueApplicationJSONGone to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ReactionsListForIssueApplicationJSONGone(unwrapped)
+	return nil
+}
+
+// Encode encodes ReactionsListForIssueApplicationJSONNotFound as json.
+func (s ReactionsListForIssueApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes ReactionsListForIssueApplicationJSONNotFound from json.
+func (s *ReactionsListForIssueApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ReactionsListForIssueApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ReactionsListForIssueApplicationJSONNotFound(unwrapped)
+	return nil
+}
 
 // Encode encodes ReactionsListForIssueCommentContent as json.
 func (s ReactionsListForIssueCommentContent) Encode(e *jx.Encoder) {
@@ -57834,8 +64936,41 @@ func (s *ReactionsListForIssueCommentContent) Decode(d *jx.Decoder) error {
 	return nil
 }
 
-func (ReactionsListForIssueCommentOKApplicationJSON) Encode(e *jx.Encoder)       {}
-func (ReactionsListForIssueCommentOKApplicationJSON) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes ReactionsListForIssueCommentOKApplicationJSON as json.
+func (s ReactionsListForIssueCommentOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []Reaction(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes ReactionsListForIssueCommentOKApplicationJSON from json.
+func (s *ReactionsListForIssueCommentOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ReactionsListForIssueCommentOKApplicationJSON to nil`)
+	}
+	var unwrapped []Reaction
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem Reaction
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ReactionsListForIssueCommentOKApplicationJSON(unwrapped)
+	return nil
+}
 
 // Encode encodes ReactionsListForIssueContent as json.
 func (s ReactionsListForIssueContent) Encode(e *jx.Encoder) {
@@ -57855,8 +64990,41 @@ func (s *ReactionsListForIssueContent) Decode(d *jx.Decoder) error {
 	return nil
 }
 
-func (ReactionsListForIssueOKApplicationJSON) Encode(e *jx.Encoder)       {}
-func (ReactionsListForIssueOKApplicationJSON) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes ReactionsListForIssueOKApplicationJSON as json.
+func (s ReactionsListForIssueOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []Reaction(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes ReactionsListForIssueOKApplicationJSON from json.
+func (s *ReactionsListForIssueOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ReactionsListForIssueOKApplicationJSON to nil`)
+	}
+	var unwrapped []Reaction
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem Reaction
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ReactionsListForIssueOKApplicationJSON(unwrapped)
+	return nil
+}
 
 // Encode encodes ReactionsListForPullRequestReviewCommentContent as json.
 func (s ReactionsListForPullRequestReviewCommentContent) Encode(e *jx.Encoder) {
@@ -57876,8 +65044,39 @@ func (s *ReactionsListForPullRequestReviewCommentContent) Decode(d *jx.Decoder) 
 	return nil
 }
 
-func (ReactionsListForPullRequestReviewCommentOKApplicationJSON) Encode(e *jx.Encoder) {}
-func (ReactionsListForPullRequestReviewCommentOKApplicationJSON) Decode(d *jx.Decoder) error {
+// Encode encodes ReactionsListForPullRequestReviewCommentOKApplicationJSON as json.
+func (s ReactionsListForPullRequestReviewCommentOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []Reaction(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes ReactionsListForPullRequestReviewCommentOKApplicationJSON from json.
+func (s *ReactionsListForPullRequestReviewCommentOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ReactionsListForPullRequestReviewCommentOKApplicationJSON to nil`)
+	}
+	var unwrapped []Reaction
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem Reaction
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ReactionsListForPullRequestReviewCommentOKApplicationJSON(unwrapped)
 	return nil
 }
 
@@ -59118,7 +66317,21 @@ func (s *RepoSearchResultItem) Decode(d *jx.Decoder) error {
 		case "text_matches":
 			s.TextMatches = nil
 			var elem SearchResultTextMatches
-			return errors.New(`decoding of "SearchResultTextMatches" (alias) is not implemented`)
+			{
+				var unwrapped []SearchResultTextMatchesItem
+				unwrapped = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem SearchResultTextMatchesItem
+					if err := elem.Decode(d); err != nil {
+						return err
+					}
+					unwrapped = append(unwrapped, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				elem = SearchResultTextMatches(unwrapped)
+			}
 			s.TextMatches = &elem
 		case "temp_clone_token":
 			s.TempCloneToken.Reset()
@@ -59227,14 +66440,77 @@ func (s *RepoSearchResultItemPermissions) Decode(d *jx.Decoder) error {
 	})
 }
 
-func (ReposAcceptInvitationApplicationJSONConflict) Encode(e *jx.Encoder)       {}
-func (ReposAcceptInvitationApplicationJSONConflict) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes ReposAcceptInvitationApplicationJSONConflict as json.
+func (s ReposAcceptInvitationApplicationJSONConflict) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (ReposAcceptInvitationApplicationJSONForbidden) Encode(e *jx.Encoder)       {}
-func (ReposAcceptInvitationApplicationJSONForbidden) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes ReposAcceptInvitationApplicationJSONConflict from json.
+func (s *ReposAcceptInvitationApplicationJSONConflict) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ReposAcceptInvitationApplicationJSONConflict to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ReposAcceptInvitationApplicationJSONConflict(unwrapped)
+	return nil
+}
 
-func (ReposAcceptInvitationApplicationJSONNotFound) Encode(e *jx.Encoder)       {}
-func (ReposAcceptInvitationApplicationJSONNotFound) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes ReposAcceptInvitationApplicationJSONForbidden as json.
+func (s ReposAcceptInvitationApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes ReposAcceptInvitationApplicationJSONForbidden from json.
+func (s *ReposAcceptInvitationApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ReposAcceptInvitationApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ReposAcceptInvitationApplicationJSONForbidden(unwrapped)
+	return nil
+}
+
+// Encode encodes ReposAcceptInvitationApplicationJSONNotFound as json.
+func (s ReposAcceptInvitationApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes ReposAcceptInvitationApplicationJSONNotFound from json.
+func (s *ReposAcceptInvitationApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ReposAcceptInvitationApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ReposAcceptInvitationApplicationJSONNotFound(unwrapped)
+	return nil
+}
 
 // Encode implements json.Marshaler.
 func (s ReposAcceptInvitationNoContent) Encode(e *jx.Encoder) {
@@ -59412,11 +66688,53 @@ func (s *ReposCheckVulnerabilityAlertsNotFound) Decode(d *jx.Decoder) error {
 	})
 }
 
-func (ReposCompareCommitsApplicationJSONInternalServerError) Encode(e *jx.Encoder)       {}
-func (ReposCompareCommitsApplicationJSONInternalServerError) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes ReposCompareCommitsApplicationJSONInternalServerError as json.
+func (s ReposCompareCommitsApplicationJSONInternalServerError) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (ReposCompareCommitsApplicationJSONNotFound) Encode(e *jx.Encoder)       {}
-func (ReposCompareCommitsApplicationJSONNotFound) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes ReposCompareCommitsApplicationJSONInternalServerError from json.
+func (s *ReposCompareCommitsApplicationJSONInternalServerError) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ReposCompareCommitsApplicationJSONInternalServerError to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ReposCompareCommitsApplicationJSONInternalServerError(unwrapped)
+	return nil
+}
+
+// Encode encodes ReposCompareCommitsApplicationJSONNotFound as json.
+func (s ReposCompareCommitsApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes ReposCompareCommitsApplicationJSONNotFound from json.
+func (s *ReposCompareCommitsApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ReposCompareCommitsApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ReposCompareCommitsApplicationJSONNotFound(unwrapped)
+	return nil
+}
 
 // Encode implements json.Marshaler.
 func (s ReposCreateAutolinkReq) Encode(e *jx.Encoder) {
@@ -60868,14 +68186,77 @@ func (s *ReposCreateWebhookReqConfig) Decode(d *jx.Decoder) error {
 	})
 }
 
-func (ReposDeclineInvitationApplicationJSONConflict) Encode(e *jx.Encoder)       {}
-func (ReposDeclineInvitationApplicationJSONConflict) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes ReposDeclineInvitationApplicationJSONConflict as json.
+func (s ReposDeclineInvitationApplicationJSONConflict) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (ReposDeclineInvitationApplicationJSONForbidden) Encode(e *jx.Encoder)       {}
-func (ReposDeclineInvitationApplicationJSONForbidden) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes ReposDeclineInvitationApplicationJSONConflict from json.
+func (s *ReposDeclineInvitationApplicationJSONConflict) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ReposDeclineInvitationApplicationJSONConflict to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ReposDeclineInvitationApplicationJSONConflict(unwrapped)
+	return nil
+}
 
-func (ReposDeclineInvitationApplicationJSONNotFound) Encode(e *jx.Encoder)       {}
-func (ReposDeclineInvitationApplicationJSONNotFound) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes ReposDeclineInvitationApplicationJSONForbidden as json.
+func (s ReposDeclineInvitationApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes ReposDeclineInvitationApplicationJSONForbidden from json.
+func (s *ReposDeclineInvitationApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ReposDeclineInvitationApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ReposDeclineInvitationApplicationJSONForbidden(unwrapped)
+	return nil
+}
+
+// Encode encodes ReposDeclineInvitationApplicationJSONNotFound as json.
+func (s ReposDeclineInvitationApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes ReposDeclineInvitationApplicationJSONNotFound from json.
+func (s *ReposDeclineInvitationApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ReposDeclineInvitationApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ReposDeclineInvitationApplicationJSONNotFound(unwrapped)
+	return nil
+}
 
 // Encode implements json.Marshaler.
 func (s ReposDeclineInvitationNoContent) Encode(e *jx.Encoder) {
@@ -60957,11 +68338,53 @@ func (s *ReposDeleteAnEnvironmentNoContent) Decode(d *jx.Decoder) error {
 	})
 }
 
-func (ReposDeleteApplicationJSONNotFound) Encode(e *jx.Encoder)       {}
-func (ReposDeleteApplicationJSONNotFound) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes ReposDeleteApplicationJSONNotFound as json.
+func (s ReposDeleteApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (ReposDeleteApplicationJSONTemporaryRedirect) Encode(e *jx.Encoder)       {}
-func (ReposDeleteApplicationJSONTemporaryRedirect) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes ReposDeleteApplicationJSONNotFound from json.
+func (s *ReposDeleteApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ReposDeleteApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ReposDeleteApplicationJSONNotFound(unwrapped)
+	return nil
+}
+
+// Encode encodes ReposDeleteApplicationJSONTemporaryRedirect as json.
+func (s ReposDeleteApplicationJSONTemporaryRedirect) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes ReposDeleteApplicationJSONTemporaryRedirect from json.
+func (s *ReposDeleteApplicationJSONTemporaryRedirect) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ReposDeleteApplicationJSONTemporaryRedirect to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ReposDeleteApplicationJSONTemporaryRedirect(unwrapped)
+	return nil
+}
 
 // Encode implements json.Marshaler.
 func (s ReposDeleteAutolinkNoContent) Encode(e *jx.Encoder) {
@@ -61562,28 +68985,199 @@ func (s *ReposEnableVulnerabilityAlertsNoContent) Decode(d *jx.Decoder) error {
 	})
 }
 
-func (ReposGetAllStatusCheckContextsOKApplicationJSON) Encode(e *jx.Encoder)       {}
-func (ReposGetAllStatusCheckContextsOKApplicationJSON) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes ReposGetAllStatusCheckContextsOKApplicationJSON as json.
+func (s ReposGetAllStatusCheckContextsOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []string(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		e.Str(elem)
+	}
+	e.ArrEnd()
+}
 
-func (ReposGetApplicationJSONForbidden) Encode(e *jx.Encoder)       {}
-func (ReposGetApplicationJSONForbidden) Decode(d *jx.Decoder) error { return nil }
-
-func (ReposGetApplicationJSONMovedPermanently) Encode(e *jx.Encoder)       {}
-func (ReposGetApplicationJSONMovedPermanently) Decode(d *jx.Decoder) error { return nil }
-
-func (ReposGetApplicationJSONNotFound) Encode(e *jx.Encoder)       {}
-func (ReposGetApplicationJSONNotFound) Decode(d *jx.Decoder) error { return nil }
-
-func (ReposGetAppsWithAccessToProtectedBranchOKApplicationJSON) Encode(e *jx.Encoder) {}
-func (ReposGetAppsWithAccessToProtectedBranchOKApplicationJSON) Decode(d *jx.Decoder) error {
+// Decode decodes ReposGetAllStatusCheckContextsOKApplicationJSON from json.
+func (s *ReposGetAllStatusCheckContextsOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ReposGetAllStatusCheckContextsOKApplicationJSON to nil`)
+	}
+	var unwrapped []string
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem string
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ReposGetAllStatusCheckContextsOKApplicationJSON(unwrapped)
 	return nil
 }
 
-func (ReposGetBranchApplicationJSONMovedPermanently) Encode(e *jx.Encoder)       {}
-func (ReposGetBranchApplicationJSONMovedPermanently) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes ReposGetApplicationJSONForbidden as json.
+func (s ReposGetApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (ReposGetBranchApplicationJSONNotFound) Encode(e *jx.Encoder)       {}
-func (ReposGetBranchApplicationJSONNotFound) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes ReposGetApplicationJSONForbidden from json.
+func (s *ReposGetApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ReposGetApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ReposGetApplicationJSONForbidden(unwrapped)
+	return nil
+}
+
+// Encode encodes ReposGetApplicationJSONMovedPermanently as json.
+func (s ReposGetApplicationJSONMovedPermanently) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes ReposGetApplicationJSONMovedPermanently from json.
+func (s *ReposGetApplicationJSONMovedPermanently) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ReposGetApplicationJSONMovedPermanently to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ReposGetApplicationJSONMovedPermanently(unwrapped)
+	return nil
+}
+
+// Encode encodes ReposGetApplicationJSONNotFound as json.
+func (s ReposGetApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes ReposGetApplicationJSONNotFound from json.
+func (s *ReposGetApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ReposGetApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ReposGetApplicationJSONNotFound(unwrapped)
+	return nil
+}
+
+// Encode encodes ReposGetAppsWithAccessToProtectedBranchOKApplicationJSON as json.
+func (s ReposGetAppsWithAccessToProtectedBranchOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []Integration(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes ReposGetAppsWithAccessToProtectedBranchOKApplicationJSON from json.
+func (s *ReposGetAppsWithAccessToProtectedBranchOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ReposGetAppsWithAccessToProtectedBranchOKApplicationJSON to nil`)
+	}
+	var unwrapped []Integration
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem Integration
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ReposGetAppsWithAccessToProtectedBranchOKApplicationJSON(unwrapped)
+	return nil
+}
+
+// Encode encodes ReposGetBranchApplicationJSONMovedPermanently as json.
+func (s ReposGetBranchApplicationJSONMovedPermanently) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes ReposGetBranchApplicationJSONMovedPermanently from json.
+func (s *ReposGetBranchApplicationJSONMovedPermanently) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ReposGetBranchApplicationJSONMovedPermanently to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ReposGetBranchApplicationJSONMovedPermanently(unwrapped)
+	return nil
+}
+
+// Encode encodes ReposGetBranchApplicationJSONNotFound as json.
+func (s ReposGetBranchApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes ReposGetBranchApplicationJSONNotFound from json.
+func (s *ReposGetBranchApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ReposGetBranchApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ReposGetBranchApplicationJSONNotFound(unwrapped)
+	return nil
+}
 
 // Encode encodes ReposGetClonesPer as json.
 func (s ReposGetClonesPer) Encode(e *jx.Encoder) {
@@ -61603,14 +69197,127 @@ func (s *ReposGetClonesPer) Decode(d *jx.Decoder) error {
 	return nil
 }
 
-func (ReposGetCodeFrequencyStatsOKApplicationJSON) Encode(e *jx.Encoder)       {}
-func (ReposGetCodeFrequencyStatsOKApplicationJSON) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes ReposGetCodeFrequencyStatsOKApplicationJSON as json.
+func (s ReposGetCodeFrequencyStatsOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []CodeFrequencyStat(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
 
-func (ReposGetCommitActivityStatsOKApplicationJSON) Encode(e *jx.Encoder)       {}
-func (ReposGetCommitActivityStatsOKApplicationJSON) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes ReposGetCodeFrequencyStatsOKApplicationJSON from json.
+func (s *ReposGetCodeFrequencyStatsOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ReposGetCodeFrequencyStatsOKApplicationJSON to nil`)
+	}
+	var unwrapped []CodeFrequencyStat
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem CodeFrequencyStat
+			{
+				var unwrapped []int
+				unwrapped = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem int
+					v, err := d.Int()
+					elem = int(v)
+					if err != nil {
+						return err
+					}
+					unwrapped = append(unwrapped, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				elem = CodeFrequencyStat(unwrapped)
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ReposGetCodeFrequencyStatsOKApplicationJSON(unwrapped)
+	return nil
+}
 
-func (ReposGetContributorsStatsOKApplicationJSON) Encode(e *jx.Encoder)       {}
-func (ReposGetContributorsStatsOKApplicationJSON) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes ReposGetCommitActivityStatsOKApplicationJSON as json.
+func (s ReposGetCommitActivityStatsOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []CommitActivity(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes ReposGetCommitActivityStatsOKApplicationJSON from json.
+func (s *ReposGetCommitActivityStatsOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ReposGetCommitActivityStatsOKApplicationJSON to nil`)
+	}
+	var unwrapped []CommitActivity
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem CommitActivity
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ReposGetCommitActivityStatsOKApplicationJSON(unwrapped)
+	return nil
+}
+
+// Encode encodes ReposGetContributorsStatsOKApplicationJSON as json.
+func (s ReposGetContributorsStatsOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []ContributorActivity(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes ReposGetContributorsStatsOKApplicationJSON from json.
+func (s *ReposGetContributorsStatsOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ReposGetContributorsStatsOKApplicationJSON to nil`)
+	}
+	var unwrapped []ContributorActivity
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem ContributorActivity
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ReposGetContributorsStatsOKApplicationJSON(unwrapped)
+	return nil
+}
 
 // Encode implements json.Marshaler.
 func (s ReposGetPagesHealthCheckBadRequest) Encode(e *jx.Encoder) {
@@ -61652,22 +69359,197 @@ func (s *ReposGetPagesHealthCheckUnprocessableEntity) Decode(d *jx.Decoder) erro
 	})
 }
 
-func (ReposGetPunchCardStatsOKApplicationJSON) Encode(e *jx.Encoder)       {}
-func (ReposGetPunchCardStatsOKApplicationJSON) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes ReposGetPunchCardStatsOKApplicationJSON as json.
+func (s ReposGetPunchCardStatsOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []CodeFrequencyStat(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
 
-func (ReposGetTeamsWithAccessToProtectedBranchOKApplicationJSON) Encode(e *jx.Encoder) {}
-func (ReposGetTeamsWithAccessToProtectedBranchOKApplicationJSON) Decode(d *jx.Decoder) error {
+// Decode decodes ReposGetPunchCardStatsOKApplicationJSON from json.
+func (s *ReposGetPunchCardStatsOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ReposGetPunchCardStatsOKApplicationJSON to nil`)
+	}
+	var unwrapped []CodeFrequencyStat
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem CodeFrequencyStat
+			{
+				var unwrapped []int
+				unwrapped = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem int
+					v, err := d.Int()
+					elem = int(v)
+					if err != nil {
+						return err
+					}
+					unwrapped = append(unwrapped, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				elem = CodeFrequencyStat(unwrapped)
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ReposGetPunchCardStatsOKApplicationJSON(unwrapped)
 	return nil
 }
 
-func (ReposGetTopPathsOKApplicationJSON) Encode(e *jx.Encoder)       {}
-func (ReposGetTopPathsOKApplicationJSON) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes ReposGetTeamsWithAccessToProtectedBranchOKApplicationJSON as json.
+func (s ReposGetTeamsWithAccessToProtectedBranchOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []Team(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
 
-func (ReposGetTopReferrersOKApplicationJSON) Encode(e *jx.Encoder)       {}
-func (ReposGetTopReferrersOKApplicationJSON) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes ReposGetTeamsWithAccessToProtectedBranchOKApplicationJSON from json.
+func (s *ReposGetTeamsWithAccessToProtectedBranchOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ReposGetTeamsWithAccessToProtectedBranchOKApplicationJSON to nil`)
+	}
+	var unwrapped []Team
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem Team
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ReposGetTeamsWithAccessToProtectedBranchOKApplicationJSON(unwrapped)
+	return nil
+}
 
-func (ReposGetUsersWithAccessToProtectedBranchOKApplicationJSON) Encode(e *jx.Encoder) {}
-func (ReposGetUsersWithAccessToProtectedBranchOKApplicationJSON) Decode(d *jx.Decoder) error {
+// Encode encodes ReposGetTopPathsOKApplicationJSON as json.
+func (s ReposGetTopPathsOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []ContentTraffic(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes ReposGetTopPathsOKApplicationJSON from json.
+func (s *ReposGetTopPathsOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ReposGetTopPathsOKApplicationJSON to nil`)
+	}
+	var unwrapped []ContentTraffic
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem ContentTraffic
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ReposGetTopPathsOKApplicationJSON(unwrapped)
+	return nil
+}
+
+// Encode encodes ReposGetTopReferrersOKApplicationJSON as json.
+func (s ReposGetTopReferrersOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []ReferrerTraffic(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes ReposGetTopReferrersOKApplicationJSON from json.
+func (s *ReposGetTopReferrersOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ReposGetTopReferrersOKApplicationJSON to nil`)
+	}
+	var unwrapped []ReferrerTraffic
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem ReferrerTraffic
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ReposGetTopReferrersOKApplicationJSON(unwrapped)
+	return nil
+}
+
+// Encode encodes ReposGetUsersWithAccessToProtectedBranchOKApplicationJSON as json.
+func (s ReposGetUsersWithAccessToProtectedBranchOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []SimpleUser(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes ReposGetUsersWithAccessToProtectedBranchOKApplicationJSON from json.
+func (s *ReposGetUsersWithAccessToProtectedBranchOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ReposGetUsersWithAccessToProtectedBranchOKApplicationJSON to nil`)
+	}
+	var unwrapped []SimpleUser
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem SimpleUser
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ReposGetUsersWithAccessToProtectedBranchOKApplicationJSON(unwrapped)
 	return nil
 }
 
@@ -61689,8 +69571,41 @@ func (s *ReposGetViewsPer) Decode(d *jx.Decoder) error {
 	return nil
 }
 
-func (ReposListBranchesOKApplicationJSON) Encode(e *jx.Encoder)       {}
-func (ReposListBranchesOKApplicationJSON) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes ReposListBranchesOKApplicationJSON as json.
+func (s ReposListBranchesOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []ShortBranch(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes ReposListBranchesOKApplicationJSON from json.
+func (s *ReposListBranchesOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ReposListBranchesOKApplicationJSON to nil`)
+	}
+	var unwrapped []ShortBranch
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem ShortBranch
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ReposListBranchesOKApplicationJSON(unwrapped)
+	return nil
+}
 
 // Encode encodes ReposListCollaboratorsAffiliation as json.
 func (s ReposListCollaboratorsAffiliation) Encode(e *jx.Encoder) {
@@ -61710,32 +69625,257 @@ func (s *ReposListCollaboratorsAffiliation) Decode(d *jx.Decoder) error {
 	return nil
 }
 
-func (ReposListCollaboratorsOKApplicationJSON) Encode(e *jx.Encoder)       {}
-func (ReposListCollaboratorsOKApplicationJSON) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes ReposListCollaboratorsOKApplicationJSON as json.
+func (s ReposListCollaboratorsOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []Collaborator(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
 
-func (ReposListCommitStatusesForRefOKApplicationJSON) Encode(e *jx.Encoder)       {}
-func (ReposListCommitStatusesForRefOKApplicationJSON) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes ReposListCollaboratorsOKApplicationJSON from json.
+func (s *ReposListCollaboratorsOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ReposListCollaboratorsOKApplicationJSON to nil`)
+	}
+	var unwrapped []Collaborator
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem Collaborator
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ReposListCollaboratorsOKApplicationJSON(unwrapped)
+	return nil
+}
 
-func (ReposListCommitsApplicationJSONBadRequest) Encode(e *jx.Encoder)       {}
-func (ReposListCommitsApplicationJSONBadRequest) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes ReposListCommitStatusesForRefOKApplicationJSON as json.
+func (s ReposListCommitStatusesForRefOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []Status(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
 
-func (ReposListCommitsApplicationJSONConflict) Encode(e *jx.Encoder)       {}
-func (ReposListCommitsApplicationJSONConflict) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes ReposListCommitStatusesForRefOKApplicationJSON from json.
+func (s *ReposListCommitStatusesForRefOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ReposListCommitStatusesForRefOKApplicationJSON to nil`)
+	}
+	var unwrapped []Status
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem Status
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ReposListCommitStatusesForRefOKApplicationJSON(unwrapped)
+	return nil
+}
 
-func (ReposListCommitsApplicationJSONInternalServerError) Encode(e *jx.Encoder)       {}
-func (ReposListCommitsApplicationJSONInternalServerError) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes ReposListCommitsApplicationJSONBadRequest as json.
+func (s ReposListCommitsApplicationJSONBadRequest) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (ReposListCommitsApplicationJSONNotFound) Encode(e *jx.Encoder)       {}
-func (ReposListCommitsApplicationJSONNotFound) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes ReposListCommitsApplicationJSONBadRequest from json.
+func (s *ReposListCommitsApplicationJSONBadRequest) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ReposListCommitsApplicationJSONBadRequest to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ReposListCommitsApplicationJSONBadRequest(unwrapped)
+	return nil
+}
 
-func (ReposListCommitsOKApplicationJSON) Encode(e *jx.Encoder)       {}
-func (ReposListCommitsOKApplicationJSON) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes ReposListCommitsApplicationJSONConflict as json.
+func (s ReposListCommitsApplicationJSONConflict) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (ReposListContributorsApplicationJSONForbidden) Encode(e *jx.Encoder)       {}
-func (ReposListContributorsApplicationJSONForbidden) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes ReposListCommitsApplicationJSONConflict from json.
+func (s *ReposListCommitsApplicationJSONConflict) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ReposListCommitsApplicationJSONConflict to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ReposListCommitsApplicationJSONConflict(unwrapped)
+	return nil
+}
 
-func (ReposListContributorsApplicationJSONNotFound) Encode(e *jx.Encoder)       {}
-func (ReposListContributorsApplicationJSONNotFound) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes ReposListCommitsApplicationJSONInternalServerError as json.
+func (s ReposListCommitsApplicationJSONInternalServerError) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes ReposListCommitsApplicationJSONInternalServerError from json.
+func (s *ReposListCommitsApplicationJSONInternalServerError) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ReposListCommitsApplicationJSONInternalServerError to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ReposListCommitsApplicationJSONInternalServerError(unwrapped)
+	return nil
+}
+
+// Encode encodes ReposListCommitsApplicationJSONNotFound as json.
+func (s ReposListCommitsApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes ReposListCommitsApplicationJSONNotFound from json.
+func (s *ReposListCommitsApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ReposListCommitsApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ReposListCommitsApplicationJSONNotFound(unwrapped)
+	return nil
+}
+
+// Encode encodes ReposListCommitsOKApplicationJSON as json.
+func (s ReposListCommitsOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []Commit(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes ReposListCommitsOKApplicationJSON from json.
+func (s *ReposListCommitsOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ReposListCommitsOKApplicationJSON to nil`)
+	}
+	var unwrapped []Commit
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem Commit
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ReposListCommitsOKApplicationJSON(unwrapped)
+	return nil
+}
+
+// Encode encodes ReposListContributorsApplicationJSONForbidden as json.
+func (s ReposListContributorsApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes ReposListContributorsApplicationJSONForbidden from json.
+func (s *ReposListContributorsApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ReposListContributorsApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ReposListContributorsApplicationJSONForbidden(unwrapped)
+	return nil
+}
+
+// Encode encodes ReposListContributorsApplicationJSONNotFound as json.
+func (s ReposListContributorsApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes ReposListContributorsApplicationJSONNotFound from json.
+func (s *ReposListContributorsApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ReposListContributorsApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ReposListContributorsApplicationJSONNotFound(unwrapped)
+	return nil
+}
 
 // Encode implements json.Marshaler.
 func (s ReposListContributorsNoContent) Encode(e *jx.Encoder) {
@@ -61757,11 +69897,77 @@ func (s *ReposListContributorsNoContent) Decode(d *jx.Decoder) error {
 	})
 }
 
-func (ReposListContributorsOKApplicationJSON) Encode(e *jx.Encoder)       {}
-func (ReposListContributorsOKApplicationJSON) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes ReposListContributorsOKApplicationJSON as json.
+func (s ReposListContributorsOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []Contributor(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
 
-func (ReposListDeploymentStatusesOKApplicationJSON) Encode(e *jx.Encoder)       {}
-func (ReposListDeploymentStatusesOKApplicationJSON) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes ReposListContributorsOKApplicationJSON from json.
+func (s *ReposListContributorsOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ReposListContributorsOKApplicationJSON to nil`)
+	}
+	var unwrapped []Contributor
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem Contributor
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ReposListContributorsOKApplicationJSON(unwrapped)
+	return nil
+}
+
+// Encode encodes ReposListDeploymentStatusesOKApplicationJSON as json.
+func (s ReposListDeploymentStatusesOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []DeploymentStatus(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes ReposListDeploymentStatusesOKApplicationJSON from json.
+func (s *ReposListDeploymentStatusesOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ReposListDeploymentStatusesOKApplicationJSON to nil`)
+	}
+	var unwrapped []DeploymentStatus
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem DeploymentStatus
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ReposListDeploymentStatusesOKApplicationJSON(unwrapped)
+	return nil
+}
 
 // Encode encodes ReposListForAuthenticatedUserDirection as json.
 func (s ReposListForAuthenticatedUserDirection) Encode(e *jx.Encoder) {
@@ -61943,8 +70149,41 @@ func (s *ReposListForUserType) Decode(d *jx.Decoder) error {
 	return nil
 }
 
-func (ReposListForksOKApplicationJSON) Encode(e *jx.Encoder)       {}
-func (ReposListForksOKApplicationJSON) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes ReposListForksOKApplicationJSON as json.
+func (s ReposListForksOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []MinimalRepository(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes ReposListForksOKApplicationJSON from json.
+func (s *ReposListForksOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ReposListForksOKApplicationJSON to nil`)
+	}
+	var unwrapped []MinimalRepository
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem MinimalRepository
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ReposListForksOKApplicationJSON(unwrapped)
+	return nil
+}
 
 // Encode encodes ReposListForksSort as json.
 func (s ReposListForksSort) Encode(e *jx.Encoder) {
@@ -61964,31 +70203,185 @@ func (s *ReposListForksSort) Decode(d *jx.Decoder) error {
 	return nil
 }
 
-func (ReposListInvitationsForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {}
-func (ReposListInvitationsForAuthenticatedUserApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+// Encode encodes ReposListInvitationsForAuthenticatedUserApplicationJSONForbidden as json.
+func (s ReposListInvitationsForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes ReposListInvitationsForAuthenticatedUserApplicationJSONForbidden from json.
+func (s *ReposListInvitationsForAuthenticatedUserApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ReposListInvitationsForAuthenticatedUserApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ReposListInvitationsForAuthenticatedUserApplicationJSONForbidden(unwrapped)
 	return nil
 }
 
-func (ReposListInvitationsForAuthenticatedUserApplicationJSONNotFound) Encode(e *jx.Encoder) {}
-func (ReposListInvitationsForAuthenticatedUserApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+// Encode encodes ReposListInvitationsForAuthenticatedUserApplicationJSONNotFound as json.
+func (s ReposListInvitationsForAuthenticatedUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes ReposListInvitationsForAuthenticatedUserApplicationJSONNotFound from json.
+func (s *ReposListInvitationsForAuthenticatedUserApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ReposListInvitationsForAuthenticatedUserApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ReposListInvitationsForAuthenticatedUserApplicationJSONNotFound(unwrapped)
 	return nil
 }
 
-func (ReposListInvitationsForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {}
-func (ReposListInvitationsForAuthenticatedUserApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+// Encode encodes ReposListInvitationsForAuthenticatedUserApplicationJSONUnauthorized as json.
+func (s ReposListInvitationsForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes ReposListInvitationsForAuthenticatedUserApplicationJSONUnauthorized from json.
+func (s *ReposListInvitationsForAuthenticatedUserApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ReposListInvitationsForAuthenticatedUserApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ReposListInvitationsForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
 	return nil
 }
 
-func (ReposListInvitationsForAuthenticatedUserOKApplicationJSON) Encode(e *jx.Encoder) {}
-func (ReposListInvitationsForAuthenticatedUserOKApplicationJSON) Decode(d *jx.Decoder) error {
+// Encode encodes ReposListInvitationsForAuthenticatedUserOKApplicationJSON as json.
+func (s ReposListInvitationsForAuthenticatedUserOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []RepositoryInvitation(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes ReposListInvitationsForAuthenticatedUserOKApplicationJSON from json.
+func (s *ReposListInvitationsForAuthenticatedUserOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ReposListInvitationsForAuthenticatedUserOKApplicationJSON to nil`)
+	}
+	var unwrapped []RepositoryInvitation
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem RepositoryInvitation
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ReposListInvitationsForAuthenticatedUserOKApplicationJSON(unwrapped)
 	return nil
 }
 
-func (ReposListReleasesOKApplicationJSON) Encode(e *jx.Encoder)       {}
-func (ReposListReleasesOKApplicationJSON) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes ReposListReleasesOKApplicationJSON as json.
+func (s ReposListReleasesOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []Release(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
 
-func (ReposListWebhooksOKApplicationJSON) Encode(e *jx.Encoder)       {}
-func (ReposListWebhooksOKApplicationJSON) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes ReposListReleasesOKApplicationJSON from json.
+func (s *ReposListReleasesOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ReposListReleasesOKApplicationJSON to nil`)
+	}
+	var unwrapped []Release
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem Release
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ReposListReleasesOKApplicationJSON(unwrapped)
+	return nil
+}
+
+// Encode encodes ReposListWebhooksOKApplicationJSON as json.
+func (s ReposListWebhooksOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []Hook(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes ReposListWebhooksOKApplicationJSON from json.
+func (s *ReposListWebhooksOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ReposListWebhooksOKApplicationJSON to nil`)
+	}
+	var unwrapped []Hook
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem Hook
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ReposListWebhooksOKApplicationJSON(unwrapped)
+	return nil
+}
 
 // Encode implements json.Marshaler.
 func (s ReposMergeConflict) Encode(e *jx.Encoder) {
@@ -62367,11 +70760,53 @@ func (s *ReposTransferReq) Decode(d *jx.Decoder) error {
 	})
 }
 
-func (ReposUpdateBranchProtectionApplicationJSONForbidden) Encode(e *jx.Encoder)       {}
-func (ReposUpdateBranchProtectionApplicationJSONForbidden) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes ReposUpdateBranchProtectionApplicationJSONForbidden as json.
+func (s ReposUpdateBranchProtectionApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (ReposUpdateBranchProtectionApplicationJSONNotFound) Encode(e *jx.Encoder)       {}
-func (ReposUpdateBranchProtectionApplicationJSONNotFound) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes ReposUpdateBranchProtectionApplicationJSONForbidden from json.
+func (s *ReposUpdateBranchProtectionApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ReposUpdateBranchProtectionApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ReposUpdateBranchProtectionApplicationJSONForbidden(unwrapped)
+	return nil
+}
+
+// Encode encodes ReposUpdateBranchProtectionApplicationJSONNotFound as json.
+func (s ReposUpdateBranchProtectionApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes ReposUpdateBranchProtectionApplicationJSONNotFound from json.
+func (s *ReposUpdateBranchProtectionApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ReposUpdateBranchProtectionApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ReposUpdateBranchProtectionApplicationJSONNotFound(unwrapped)
+	return nil
+}
 
 // Encode implements json.Marshaler.
 func (s ReposUpdateBranchProtectionReq) Encode(e *jx.Encoder) {
@@ -63549,7 +71984,9 @@ func (s *ReposUpdateWebhookReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposUpdateWebhookReqConfig) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	// Unsupported kind "alias".
+
+	e.FieldStart("url")
+	s.URL.Encode(e)
 	if s.ContentType.Set {
 		e.FieldStart("content_type")
 		s.ContentType.Encode(e)
@@ -63581,7 +72018,15 @@ func (s *ReposUpdateWebhookReqConfig) Decode(d *jx.Decoder) error {
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "url":
-			return errors.New(`decoding of "WebhookConfigURL" (alias) is not implemented`)
+			{
+				var unwrapped url.URL
+				v, err := json.DecodeURI(d)
+				unwrapped = v
+				if err != nil {
+					return err
+				}
+				s.URL = WebhookConfigURL(unwrapped)
+			}
 		case "content_type":
 			s.ContentType.Reset()
 			if err := s.ContentType.Decode(d); err != nil {
@@ -66489,11 +74934,53 @@ func (s *RunnerLabelsItemType) Decode(d *jx.Decoder) error {
 	return nil
 }
 
-func (ScimDeleteUserFromOrgApplicationJSONForbidden) Encode(e *jx.Encoder)       {}
-func (ScimDeleteUserFromOrgApplicationJSONForbidden) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes ScimDeleteUserFromOrgApplicationJSONForbidden as json.
+func (s ScimDeleteUserFromOrgApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := ScimError(s)
+	unwrapped.Encode(e)
+}
 
-func (ScimDeleteUserFromOrgApplicationJSONNotFound) Encode(e *jx.Encoder)       {}
-func (ScimDeleteUserFromOrgApplicationJSONNotFound) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes ScimDeleteUserFromOrgApplicationJSONForbidden from json.
+func (s *ScimDeleteUserFromOrgApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ScimDeleteUserFromOrgApplicationJSONForbidden to nil`)
+	}
+	var unwrapped ScimError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ScimDeleteUserFromOrgApplicationJSONForbidden(unwrapped)
+	return nil
+}
+
+// Encode encodes ScimDeleteUserFromOrgApplicationJSONNotFound as json.
+func (s ScimDeleteUserFromOrgApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := ScimError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes ScimDeleteUserFromOrgApplicationJSONNotFound from json.
+func (s *ScimDeleteUserFromOrgApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ScimDeleteUserFromOrgApplicationJSONNotFound to nil`)
+	}
+	var unwrapped ScimError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ScimDeleteUserFromOrgApplicationJSONNotFound(unwrapped)
+	return nil
+}
 
 // Encode implements json.Marshaler.
 func (s ScimDeleteUserFromOrgNoContent) Encode(e *jx.Encoder) {
@@ -68691,8 +77178,41 @@ func (s *SearchReposSort) Decode(d *jx.Decoder) error {
 	return nil
 }
 
-func (SearchResultTextMatches) Encode(e *jx.Encoder)       {}
-func (SearchResultTextMatches) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes SearchResultTextMatches as json.
+func (s SearchResultTextMatches) Encode(e *jx.Encoder) {
+	unwrapped := []SearchResultTextMatchesItem(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes SearchResultTextMatches from json.
+func (s *SearchResultTextMatches) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode SearchResultTextMatches to nil`)
+	}
+	var unwrapped []SearchResultTextMatchesItem
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem SearchResultTextMatchesItem
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = SearchResultTextMatches(unwrapped)
+	return nil
+}
 
 // Encode implements json.Marshaler.
 func (s SearchResultTextMatchesItem) Encode(e *jx.Encoder) {
@@ -69146,8 +77666,41 @@ func (s *SecretScanningGetAlertNotFound) Decode(d *jx.Decoder) error {
 	})
 }
 
-func (SecretScanningListAlertsForOrgOKApplicationJSON) Encode(e *jx.Encoder)       {}
-func (SecretScanningListAlertsForOrgOKApplicationJSON) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes SecretScanningListAlertsForOrgOKApplicationJSON as json.
+func (s SecretScanningListAlertsForOrgOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []OrganizationSecretScanningAlert(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes SecretScanningListAlertsForOrgOKApplicationJSON from json.
+func (s *SecretScanningListAlertsForOrgOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode SecretScanningListAlertsForOrgOKApplicationJSON to nil`)
+	}
+	var unwrapped []OrganizationSecretScanningAlert
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem OrganizationSecretScanningAlert
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = SecretScanningListAlertsForOrgOKApplicationJSON(unwrapped)
+	return nil
+}
 
 // Encode encodes SecretScanningListAlertsForOrgState as json.
 func (s SecretScanningListAlertsForOrgState) Encode(e *jx.Encoder) {
@@ -69187,8 +77740,41 @@ func (s *SecretScanningListAlertsForRepoNotFound) Decode(d *jx.Decoder) error {
 	})
 }
 
-func (SecretScanningListAlertsForRepoOKApplicationJSON) Encode(e *jx.Encoder)       {}
-func (SecretScanningListAlertsForRepoOKApplicationJSON) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes SecretScanningListAlertsForRepoOKApplicationJSON as json.
+func (s SecretScanningListAlertsForRepoOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []SecretScanningAlert(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes SecretScanningListAlertsForRepoOKApplicationJSON from json.
+func (s *SecretScanningListAlertsForRepoOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode SecretScanningListAlertsForRepoOKApplicationJSON to nil`)
+	}
+	var unwrapped []SecretScanningAlert
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem SecretScanningAlert
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = SecretScanningListAlertsForRepoOKApplicationJSON(unwrapped)
+	return nil
+}
 
 // Encode encodes SecretScanningListAlertsForRepoState as json.
 func (s SecretScanningListAlertsForRepoState) Encode(e *jx.Encoder) {
@@ -69344,8 +77930,31 @@ func (s *SelectedActions) Decode(d *jx.Decoder) error {
 	})
 }
 
-func (SelectedActionsURL) Encode(e *jx.Encoder)       {}
-func (SelectedActionsURL) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes SelectedActionsURL as json.
+func (s SelectedActionsURL) Encode(e *jx.Encoder) {
+	unwrapped := string(s)
+	e.Str(unwrapped)
+}
+
+// Decode decodes SelectedActionsURL from json.
+func (s *SelectedActionsURL) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode SelectedActionsURL to nil`)
+	}
+	var unwrapped string
+	if err := func() error {
+		v, err := d.Str()
+		unwrapped = string(v)
+		if err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = SelectedActionsURL(unwrapped)
+	return nil
+}
 
 // Encode implements json.Marshaler.
 func (s ServiceUnavailable) Encode(e *jx.Encoder) {
@@ -73728,20 +82337,137 @@ func (s *TeamsListDiscussionsLegacyDirection) Decode(d *jx.Decoder) error {
 	return nil
 }
 
-func (TeamsListForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder)       {}
-func (TeamsListForAuthenticatedUserApplicationJSONForbidden) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes TeamsListForAuthenticatedUserApplicationJSONForbidden as json.
+func (s TeamsListForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (TeamsListForAuthenticatedUserApplicationJSONNotFound) Encode(e *jx.Encoder)       {}
-func (TeamsListForAuthenticatedUserApplicationJSONNotFound) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes TeamsListForAuthenticatedUserApplicationJSONForbidden from json.
+func (s *TeamsListForAuthenticatedUserApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode TeamsListForAuthenticatedUserApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = TeamsListForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+	return nil
+}
 
-func (TeamsListForAuthenticatedUserOKApplicationJSON) Encode(e *jx.Encoder)       {}
-func (TeamsListForAuthenticatedUserOKApplicationJSON) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes TeamsListForAuthenticatedUserApplicationJSONNotFound as json.
+func (s TeamsListForAuthenticatedUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (TeamsListIdpGroupsForLegacyApplicationJSONForbidden) Encode(e *jx.Encoder)       {}
-func (TeamsListIdpGroupsForLegacyApplicationJSONForbidden) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes TeamsListForAuthenticatedUserApplicationJSONNotFound from json.
+func (s *TeamsListForAuthenticatedUserApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode TeamsListForAuthenticatedUserApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = TeamsListForAuthenticatedUserApplicationJSONNotFound(unwrapped)
+	return nil
+}
 
-func (TeamsListIdpGroupsForLegacyApplicationJSONNotFound) Encode(e *jx.Encoder)       {}
-func (TeamsListIdpGroupsForLegacyApplicationJSONNotFound) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes TeamsListForAuthenticatedUserOKApplicationJSON as json.
+func (s TeamsListForAuthenticatedUserOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []TeamFull(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes TeamsListForAuthenticatedUserOKApplicationJSON from json.
+func (s *TeamsListForAuthenticatedUserOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode TeamsListForAuthenticatedUserOKApplicationJSON to nil`)
+	}
+	var unwrapped []TeamFull
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem TeamFull
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = TeamsListForAuthenticatedUserOKApplicationJSON(unwrapped)
+	return nil
+}
+
+// Encode encodes TeamsListIdpGroupsForLegacyApplicationJSONForbidden as json.
+func (s TeamsListIdpGroupsForLegacyApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes TeamsListIdpGroupsForLegacyApplicationJSONForbidden from json.
+func (s *TeamsListIdpGroupsForLegacyApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode TeamsListIdpGroupsForLegacyApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = TeamsListIdpGroupsForLegacyApplicationJSONForbidden(unwrapped)
+	return nil
+}
+
+// Encode encodes TeamsListIdpGroupsForLegacyApplicationJSONNotFound as json.
+func (s TeamsListIdpGroupsForLegacyApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes TeamsListIdpGroupsForLegacyApplicationJSONNotFound from json.
+func (s *TeamsListIdpGroupsForLegacyApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode TeamsListIdpGroupsForLegacyApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = TeamsListIdpGroupsForLegacyApplicationJSONNotFound(unwrapped)
+	return nil
+}
 
 // Encode encodes TeamsListMembersInOrgRole as json.
 func (s TeamsListMembersInOrgRole) Encode(e *jx.Encoder) {
@@ -73761,8 +82487,41 @@ func (s *TeamsListMembersInOrgRole) Decode(d *jx.Decoder) error {
 	return nil
 }
 
-func (TeamsListMembersLegacyOKApplicationJSON) Encode(e *jx.Encoder)       {}
-func (TeamsListMembersLegacyOKApplicationJSON) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes TeamsListMembersLegacyOKApplicationJSON as json.
+func (s TeamsListMembersLegacyOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []SimpleUser(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes TeamsListMembersLegacyOKApplicationJSON from json.
+func (s *TeamsListMembersLegacyOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode TeamsListMembersLegacyOKApplicationJSON to nil`)
+	}
+	var unwrapped []SimpleUser
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem SimpleUser
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = TeamsListMembersLegacyOKApplicationJSON(unwrapped)
+	return nil
+}
 
 // Encode encodes TeamsListMembersLegacyRole as json.
 func (s TeamsListMembersLegacyRole) Encode(e *jx.Encoder) {
@@ -73782,14 +82541,113 @@ func (s *TeamsListMembersLegacyRole) Decode(d *jx.Decoder) error {
 	return nil
 }
 
-func (TeamsListOKApplicationJSON) Encode(e *jx.Encoder)       {}
-func (TeamsListOKApplicationJSON) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes TeamsListOKApplicationJSON as json.
+func (s TeamsListOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []Team(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
 
-func (TeamsListProjectsLegacyOKApplicationJSON) Encode(e *jx.Encoder)       {}
-func (TeamsListProjectsLegacyOKApplicationJSON) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes TeamsListOKApplicationJSON from json.
+func (s *TeamsListOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode TeamsListOKApplicationJSON to nil`)
+	}
+	var unwrapped []Team
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem Team
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = TeamsListOKApplicationJSON(unwrapped)
+	return nil
+}
 
-func (TeamsListReposLegacyOKApplicationJSON) Encode(e *jx.Encoder)       {}
-func (TeamsListReposLegacyOKApplicationJSON) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes TeamsListProjectsLegacyOKApplicationJSON as json.
+func (s TeamsListProjectsLegacyOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []TeamProject(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes TeamsListProjectsLegacyOKApplicationJSON from json.
+func (s *TeamsListProjectsLegacyOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode TeamsListProjectsLegacyOKApplicationJSON to nil`)
+	}
+	var unwrapped []TeamProject
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem TeamProject
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = TeamsListProjectsLegacyOKApplicationJSON(unwrapped)
+	return nil
+}
+
+// Encode encodes TeamsListReposLegacyOKApplicationJSON as json.
+func (s TeamsListReposLegacyOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []MinimalRepository(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes TeamsListReposLegacyOKApplicationJSON from json.
+func (s *TeamsListReposLegacyOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode TeamsListReposLegacyOKApplicationJSON to nil`)
+	}
+	var unwrapped []MinimalRepository
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem MinimalRepository
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = TeamsListReposLegacyOKApplicationJSON(unwrapped)
+	return nil
+}
 
 // Encode implements json.Marshaler.
 func (s TeamsRemoveMemberLegacyNoContent) Encode(e *jx.Encoder) {
@@ -74733,7 +83591,21 @@ func (s *TopicSearchResultItem) Decode(d *jx.Decoder) error {
 		case "text_matches":
 			s.TextMatches = nil
 			var elem SearchResultTextMatches
-			return errors.New(`decoding of "SearchResultTextMatches" (alias) is not implemented`)
+			{
+				var unwrapped []SearchResultTextMatchesItem
+				unwrapped = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem SearchResultTextMatchesItem
+					if err := elem.Decode(d); err != nil {
+						return err
+					}
+					unwrapped = append(unwrapped, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				elem = SearchResultTextMatches(unwrapped)
+			}
 			s.TextMatches = &elem
 		case "related":
 			s.Related.Reset()
@@ -75349,7 +84221,21 @@ func (s *UserSearchResultItem) Decode(d *jx.Decoder) error {
 		case "text_matches":
 			s.TextMatches = nil
 			var elem SearchResultTextMatches
-			return errors.New(`decoding of "SearchResultTextMatches" (alias) is not implemented`)
+			{
+				var unwrapped []SearchResultTextMatchesItem
+				unwrapped = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem SearchResultTextMatchesItem
+					if err := elem.Decode(d); err != nil {
+						return err
+					}
+					unwrapped = append(unwrapped, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				elem = SearchResultTextMatches(unwrapped)
+			}
 			s.TextMatches = &elem
 		case "blog":
 			s.Blog.Reset()
@@ -75393,14 +84279,77 @@ func (s *UsersBlockNoContent) Decode(d *jx.Decoder) error {
 	})
 }
 
-func (UsersCheckBlockedApplicationJSONForbidden) Encode(e *jx.Encoder)       {}
-func (UsersCheckBlockedApplicationJSONForbidden) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes UsersCheckBlockedApplicationJSONForbidden as json.
+func (s UsersCheckBlockedApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (UsersCheckBlockedApplicationJSONNotFound) Encode(e *jx.Encoder)       {}
-func (UsersCheckBlockedApplicationJSONNotFound) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes UsersCheckBlockedApplicationJSONForbidden from json.
+func (s *UsersCheckBlockedApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode UsersCheckBlockedApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = UsersCheckBlockedApplicationJSONForbidden(unwrapped)
+	return nil
+}
 
-func (UsersCheckBlockedApplicationJSONUnauthorized) Encode(e *jx.Encoder)       {}
-func (UsersCheckBlockedApplicationJSONUnauthorized) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes UsersCheckBlockedApplicationJSONNotFound as json.
+func (s UsersCheckBlockedApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes UsersCheckBlockedApplicationJSONNotFound from json.
+func (s *UsersCheckBlockedApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode UsersCheckBlockedApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = UsersCheckBlockedApplicationJSONNotFound(unwrapped)
+	return nil
+}
+
+// Encode encodes UsersCheckBlockedApplicationJSONUnauthorized as json.
+func (s UsersCheckBlockedApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes UsersCheckBlockedApplicationJSONUnauthorized from json.
+func (s *UsersCheckBlockedApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode UsersCheckBlockedApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = UsersCheckBlockedApplicationJSONUnauthorized(unwrapped)
+	return nil
+}
 
 // Encode implements json.Marshaler.
 func (s UsersCheckBlockedNoContent) Encode(e *jx.Encoder) {
@@ -75462,18 +84411,75 @@ func (s *UsersCheckFollowingForUserNotFound) Decode(d *jx.Decoder) error {
 	})
 }
 
-func (UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONForbidden) Encode(e *jx.Encoder) {}
-func (UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+// Encode encodes UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONForbidden as json.
+func (s UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONForbidden from json.
+func (s *UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONForbidden(unwrapped)
 	return nil
 }
 
-func (UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONNotFound) Encode(e *jx.Encoder) {}
-func (UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+// Encode encodes UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONNotFound as json.
+func (s UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONNotFound from json.
+func (s *UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONNotFound(unwrapped)
 	return nil
 }
 
-func (UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONUnauthorized) Encode(e *jx.Encoder) {}
-func (UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+// Encode encodes UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONUnauthorized as json.
+func (s UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONUnauthorized from json.
+func (s *UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONUnauthorized(unwrapped)
 	return nil
 }
 
@@ -75584,18 +84590,75 @@ func (s *UsersDeleteGpgKeyForAuthenticatedNoContent) Decode(d *jx.Decoder) error
 	})
 }
 
-func (UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONForbidden) Encode(e *jx.Encoder) {}
-func (UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+// Encode encodes UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONForbidden as json.
+func (s UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONForbidden from json.
+func (s *UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONForbidden(unwrapped)
 	return nil
 }
 
-func (UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONNotFound) Encode(e *jx.Encoder) {}
-func (UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+// Encode encodes UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONNotFound as json.
+func (s UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONNotFound from json.
+func (s *UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONNotFound(unwrapped)
 	return nil
 }
 
-func (UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized) Encode(e *jx.Encoder) {}
-func (UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+// Encode encodes UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized as json.
+func (s UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized from json.
+func (s *UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized(unwrapped)
 	return nil
 }
 
@@ -75619,14 +84682,77 @@ func (s *UsersDeletePublicSSHKeyForAuthenticatedNoContent) Decode(d *jx.Decoder)
 	})
 }
 
-func (UsersFollowApplicationJSONForbidden) Encode(e *jx.Encoder)       {}
-func (UsersFollowApplicationJSONForbidden) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes UsersFollowApplicationJSONForbidden as json.
+func (s UsersFollowApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (UsersFollowApplicationJSONNotFound) Encode(e *jx.Encoder)       {}
-func (UsersFollowApplicationJSONNotFound) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes UsersFollowApplicationJSONForbidden from json.
+func (s *UsersFollowApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode UsersFollowApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = UsersFollowApplicationJSONForbidden(unwrapped)
+	return nil
+}
 
-func (UsersFollowApplicationJSONUnauthorized) Encode(e *jx.Encoder)       {}
-func (UsersFollowApplicationJSONUnauthorized) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes UsersFollowApplicationJSONNotFound as json.
+func (s UsersFollowApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes UsersFollowApplicationJSONNotFound from json.
+func (s *UsersFollowApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode UsersFollowApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = UsersFollowApplicationJSONNotFound(unwrapped)
+	return nil
+}
+
+// Encode encodes UsersFollowApplicationJSONUnauthorized as json.
+func (s UsersFollowApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes UsersFollowApplicationJSONUnauthorized from json.
+func (s *UsersFollowApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode UsersFollowApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = UsersFollowApplicationJSONUnauthorized(unwrapped)
+	return nil
+}
 
 // Encode implements json.Marshaler.
 func (s UsersFollowNoContent) Encode(e *jx.Encoder) {
@@ -75648,11 +84774,53 @@ func (s *UsersFollowNoContent) Decode(d *jx.Decoder) error {
 	})
 }
 
-func (UsersGetAuthenticatedApplicationJSONForbidden) Encode(e *jx.Encoder)       {}
-func (UsersGetAuthenticatedApplicationJSONForbidden) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes UsersGetAuthenticatedApplicationJSONForbidden as json.
+func (s UsersGetAuthenticatedApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (UsersGetAuthenticatedApplicationJSONUnauthorized) Encode(e *jx.Encoder)       {}
-func (UsersGetAuthenticatedApplicationJSONUnauthorized) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes UsersGetAuthenticatedApplicationJSONForbidden from json.
+func (s *UsersGetAuthenticatedApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode UsersGetAuthenticatedApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = UsersGetAuthenticatedApplicationJSONForbidden(unwrapped)
+	return nil
+}
+
+// Encode encodes UsersGetAuthenticatedApplicationJSONUnauthorized as json.
+func (s UsersGetAuthenticatedApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes UsersGetAuthenticatedApplicationJSONUnauthorized from json.
+func (s *UsersGetAuthenticatedApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode UsersGetAuthenticatedApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = UsersGetAuthenticatedApplicationJSONUnauthorized(unwrapped)
+	return nil
+}
 
 // Encode encodes UsersGetAuthenticatedOK as json.
 func (s UsersGetAuthenticatedOK) Encode(e *jx.Encoder) {
@@ -76024,148 +85192,891 @@ func (s *UsersGetContextForUserSubjectType) Decode(d *jx.Decoder) error {
 	return nil
 }
 
-func (UsersGetGpgKeyForAuthenticatedApplicationJSONForbidden) Encode(e *jx.Encoder)       {}
-func (UsersGetGpgKeyForAuthenticatedApplicationJSONForbidden) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes UsersGetGpgKeyForAuthenticatedApplicationJSONForbidden as json.
+func (s UsersGetGpgKeyForAuthenticatedApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (UsersGetGpgKeyForAuthenticatedApplicationJSONNotFound) Encode(e *jx.Encoder)       {}
-func (UsersGetGpgKeyForAuthenticatedApplicationJSONNotFound) Decode(d *jx.Decoder) error { return nil }
-
-func (UsersGetGpgKeyForAuthenticatedApplicationJSONUnauthorized) Encode(e *jx.Encoder) {}
-func (UsersGetGpgKeyForAuthenticatedApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+// Decode decodes UsersGetGpgKeyForAuthenticatedApplicationJSONForbidden from json.
+func (s *UsersGetGpgKeyForAuthenticatedApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode UsersGetGpgKeyForAuthenticatedApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = UsersGetGpgKeyForAuthenticatedApplicationJSONForbidden(unwrapped)
 	return nil
 }
 
-func (UsersGetPublicSSHKeyForAuthenticatedApplicationJSONForbidden) Encode(e *jx.Encoder) {}
-func (UsersGetPublicSSHKeyForAuthenticatedApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+// Encode encodes UsersGetGpgKeyForAuthenticatedApplicationJSONNotFound as json.
+func (s UsersGetGpgKeyForAuthenticatedApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes UsersGetGpgKeyForAuthenticatedApplicationJSONNotFound from json.
+func (s *UsersGetGpgKeyForAuthenticatedApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode UsersGetGpgKeyForAuthenticatedApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = UsersGetGpgKeyForAuthenticatedApplicationJSONNotFound(unwrapped)
 	return nil
 }
 
-func (UsersGetPublicSSHKeyForAuthenticatedApplicationJSONNotFound) Encode(e *jx.Encoder) {}
-func (UsersGetPublicSSHKeyForAuthenticatedApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+// Encode encodes UsersGetGpgKeyForAuthenticatedApplicationJSONUnauthorized as json.
+func (s UsersGetGpgKeyForAuthenticatedApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes UsersGetGpgKeyForAuthenticatedApplicationJSONUnauthorized from json.
+func (s *UsersGetGpgKeyForAuthenticatedApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode UsersGetGpgKeyForAuthenticatedApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = UsersGetGpgKeyForAuthenticatedApplicationJSONUnauthorized(unwrapped)
 	return nil
 }
 
-func (UsersGetPublicSSHKeyForAuthenticatedApplicationJSONUnauthorized) Encode(e *jx.Encoder) {}
-func (UsersGetPublicSSHKeyForAuthenticatedApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+// Encode encodes UsersGetPublicSSHKeyForAuthenticatedApplicationJSONForbidden as json.
+func (s UsersGetPublicSSHKeyForAuthenticatedApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes UsersGetPublicSSHKeyForAuthenticatedApplicationJSONForbidden from json.
+func (s *UsersGetPublicSSHKeyForAuthenticatedApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode UsersGetPublicSSHKeyForAuthenticatedApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = UsersGetPublicSSHKeyForAuthenticatedApplicationJSONForbidden(unwrapped)
 	return nil
 }
 
-func (UsersListBlockedByAuthenticatedApplicationJSONForbidden) Encode(e *jx.Encoder) {}
-func (UsersListBlockedByAuthenticatedApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+// Encode encodes UsersGetPublicSSHKeyForAuthenticatedApplicationJSONNotFound as json.
+func (s UsersGetPublicSSHKeyForAuthenticatedApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes UsersGetPublicSSHKeyForAuthenticatedApplicationJSONNotFound from json.
+func (s *UsersGetPublicSSHKeyForAuthenticatedApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode UsersGetPublicSSHKeyForAuthenticatedApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = UsersGetPublicSSHKeyForAuthenticatedApplicationJSONNotFound(unwrapped)
 	return nil
 }
 
-func (UsersListBlockedByAuthenticatedApplicationJSONNotFound) Encode(e *jx.Encoder)       {}
-func (UsersListBlockedByAuthenticatedApplicationJSONNotFound) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes UsersGetPublicSSHKeyForAuthenticatedApplicationJSONUnauthorized as json.
+func (s UsersGetPublicSSHKeyForAuthenticatedApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (UsersListBlockedByAuthenticatedApplicationJSONUnauthorized) Encode(e *jx.Encoder) {}
-func (UsersListBlockedByAuthenticatedApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+// Decode decodes UsersGetPublicSSHKeyForAuthenticatedApplicationJSONUnauthorized from json.
+func (s *UsersGetPublicSSHKeyForAuthenticatedApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode UsersGetPublicSSHKeyForAuthenticatedApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = UsersGetPublicSSHKeyForAuthenticatedApplicationJSONUnauthorized(unwrapped)
 	return nil
 }
 
-func (UsersListBlockedByAuthenticatedOKApplicationJSON) Encode(e *jx.Encoder)       {}
-func (UsersListBlockedByAuthenticatedOKApplicationJSON) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes UsersListBlockedByAuthenticatedApplicationJSONForbidden as json.
+func (s UsersListBlockedByAuthenticatedApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (UsersListEmailsForAuthenticatedApplicationJSONForbidden) Encode(e *jx.Encoder) {}
-func (UsersListEmailsForAuthenticatedApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+// Decode decodes UsersListBlockedByAuthenticatedApplicationJSONForbidden from json.
+func (s *UsersListBlockedByAuthenticatedApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode UsersListBlockedByAuthenticatedApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = UsersListBlockedByAuthenticatedApplicationJSONForbidden(unwrapped)
 	return nil
 }
 
-func (UsersListEmailsForAuthenticatedApplicationJSONNotFound) Encode(e *jx.Encoder)       {}
-func (UsersListEmailsForAuthenticatedApplicationJSONNotFound) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes UsersListBlockedByAuthenticatedApplicationJSONNotFound as json.
+func (s UsersListBlockedByAuthenticatedApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (UsersListEmailsForAuthenticatedApplicationJSONUnauthorized) Encode(e *jx.Encoder) {}
-func (UsersListEmailsForAuthenticatedApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+// Decode decodes UsersListBlockedByAuthenticatedApplicationJSONNotFound from json.
+func (s *UsersListBlockedByAuthenticatedApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode UsersListBlockedByAuthenticatedApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = UsersListBlockedByAuthenticatedApplicationJSONNotFound(unwrapped)
 	return nil
 }
 
-func (UsersListEmailsForAuthenticatedOKApplicationJSON) Encode(e *jx.Encoder)       {}
-func (UsersListEmailsForAuthenticatedOKApplicationJSON) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes UsersListBlockedByAuthenticatedApplicationJSONUnauthorized as json.
+func (s UsersListBlockedByAuthenticatedApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (UsersListFollowedByAuthenticatedApplicationJSONForbidden) Encode(e *jx.Encoder) {}
-func (UsersListFollowedByAuthenticatedApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+// Decode decodes UsersListBlockedByAuthenticatedApplicationJSONUnauthorized from json.
+func (s *UsersListBlockedByAuthenticatedApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode UsersListBlockedByAuthenticatedApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = UsersListBlockedByAuthenticatedApplicationJSONUnauthorized(unwrapped)
 	return nil
 }
 
-func (UsersListFollowedByAuthenticatedApplicationJSONUnauthorized) Encode(e *jx.Encoder) {}
-func (UsersListFollowedByAuthenticatedApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+// Encode encodes UsersListBlockedByAuthenticatedOKApplicationJSON as json.
+func (s UsersListBlockedByAuthenticatedOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []SimpleUser(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes UsersListBlockedByAuthenticatedOKApplicationJSON from json.
+func (s *UsersListBlockedByAuthenticatedOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode UsersListBlockedByAuthenticatedOKApplicationJSON to nil`)
+	}
+	var unwrapped []SimpleUser
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem SimpleUser
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = UsersListBlockedByAuthenticatedOKApplicationJSON(unwrapped)
 	return nil
 }
 
-func (UsersListFollowedByAuthenticatedOKApplicationJSON) Encode(e *jx.Encoder)       {}
-func (UsersListFollowedByAuthenticatedOKApplicationJSON) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes UsersListEmailsForAuthenticatedApplicationJSONForbidden as json.
+func (s UsersListEmailsForAuthenticatedApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (UsersListFollowersForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {}
-func (UsersListFollowersForAuthenticatedUserApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+// Decode decodes UsersListEmailsForAuthenticatedApplicationJSONForbidden from json.
+func (s *UsersListEmailsForAuthenticatedApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode UsersListEmailsForAuthenticatedApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = UsersListEmailsForAuthenticatedApplicationJSONForbidden(unwrapped)
 	return nil
 }
 
-func (UsersListFollowersForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {}
-func (UsersListFollowersForAuthenticatedUserApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+// Encode encodes UsersListEmailsForAuthenticatedApplicationJSONNotFound as json.
+func (s UsersListEmailsForAuthenticatedApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes UsersListEmailsForAuthenticatedApplicationJSONNotFound from json.
+func (s *UsersListEmailsForAuthenticatedApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode UsersListEmailsForAuthenticatedApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = UsersListEmailsForAuthenticatedApplicationJSONNotFound(unwrapped)
 	return nil
 }
 
-func (UsersListFollowersForAuthenticatedUserOKApplicationJSON) Encode(e *jx.Encoder) {}
-func (UsersListFollowersForAuthenticatedUserOKApplicationJSON) Decode(d *jx.Decoder) error {
+// Encode encodes UsersListEmailsForAuthenticatedApplicationJSONUnauthorized as json.
+func (s UsersListEmailsForAuthenticatedApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes UsersListEmailsForAuthenticatedApplicationJSONUnauthorized from json.
+func (s *UsersListEmailsForAuthenticatedApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode UsersListEmailsForAuthenticatedApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = UsersListEmailsForAuthenticatedApplicationJSONUnauthorized(unwrapped)
 	return nil
 }
 
-func (UsersListGpgKeysForAuthenticatedApplicationJSONForbidden) Encode(e *jx.Encoder) {}
-func (UsersListGpgKeysForAuthenticatedApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+// Encode encodes UsersListEmailsForAuthenticatedOKApplicationJSON as json.
+func (s UsersListEmailsForAuthenticatedOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []Email(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes UsersListEmailsForAuthenticatedOKApplicationJSON from json.
+func (s *UsersListEmailsForAuthenticatedOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode UsersListEmailsForAuthenticatedOKApplicationJSON to nil`)
+	}
+	var unwrapped []Email
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem Email
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = UsersListEmailsForAuthenticatedOKApplicationJSON(unwrapped)
 	return nil
 }
 
-func (UsersListGpgKeysForAuthenticatedApplicationJSONNotFound) Encode(e *jx.Encoder) {}
-func (UsersListGpgKeysForAuthenticatedApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+// Encode encodes UsersListFollowedByAuthenticatedApplicationJSONForbidden as json.
+func (s UsersListFollowedByAuthenticatedApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes UsersListFollowedByAuthenticatedApplicationJSONForbidden from json.
+func (s *UsersListFollowedByAuthenticatedApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode UsersListFollowedByAuthenticatedApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = UsersListFollowedByAuthenticatedApplicationJSONForbidden(unwrapped)
 	return nil
 }
 
-func (UsersListGpgKeysForAuthenticatedApplicationJSONUnauthorized) Encode(e *jx.Encoder) {}
-func (UsersListGpgKeysForAuthenticatedApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+// Encode encodes UsersListFollowedByAuthenticatedApplicationJSONUnauthorized as json.
+func (s UsersListFollowedByAuthenticatedApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes UsersListFollowedByAuthenticatedApplicationJSONUnauthorized from json.
+func (s *UsersListFollowedByAuthenticatedApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode UsersListFollowedByAuthenticatedApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = UsersListFollowedByAuthenticatedApplicationJSONUnauthorized(unwrapped)
 	return nil
 }
 
-func (UsersListGpgKeysForAuthenticatedOKApplicationJSON) Encode(e *jx.Encoder)       {}
-func (UsersListGpgKeysForAuthenticatedOKApplicationJSON) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes UsersListFollowedByAuthenticatedOKApplicationJSON as json.
+func (s UsersListFollowedByAuthenticatedOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []SimpleUser(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
 
-func (UsersListOKApplicationJSON) Encode(e *jx.Encoder)       {}
-func (UsersListOKApplicationJSON) Decode(d *jx.Decoder) error { return nil }
-
-func (UsersListPublicEmailsForAuthenticatedApplicationJSONForbidden) Encode(e *jx.Encoder) {}
-func (UsersListPublicEmailsForAuthenticatedApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+// Decode decodes UsersListFollowedByAuthenticatedOKApplicationJSON from json.
+func (s *UsersListFollowedByAuthenticatedOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode UsersListFollowedByAuthenticatedOKApplicationJSON to nil`)
+	}
+	var unwrapped []SimpleUser
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem SimpleUser
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = UsersListFollowedByAuthenticatedOKApplicationJSON(unwrapped)
 	return nil
 }
 
-func (UsersListPublicEmailsForAuthenticatedApplicationJSONNotFound) Encode(e *jx.Encoder) {}
-func (UsersListPublicEmailsForAuthenticatedApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+// Encode encodes UsersListFollowersForAuthenticatedUserApplicationJSONForbidden as json.
+func (s UsersListFollowersForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes UsersListFollowersForAuthenticatedUserApplicationJSONForbidden from json.
+func (s *UsersListFollowersForAuthenticatedUserApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode UsersListFollowersForAuthenticatedUserApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = UsersListFollowersForAuthenticatedUserApplicationJSONForbidden(unwrapped)
 	return nil
 }
 
-func (UsersListPublicEmailsForAuthenticatedApplicationJSONUnauthorized) Encode(e *jx.Encoder) {}
-func (UsersListPublicEmailsForAuthenticatedApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+// Encode encodes UsersListFollowersForAuthenticatedUserApplicationJSONUnauthorized as json.
+func (s UsersListFollowersForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes UsersListFollowersForAuthenticatedUserApplicationJSONUnauthorized from json.
+func (s *UsersListFollowersForAuthenticatedUserApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode UsersListFollowersForAuthenticatedUserApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = UsersListFollowersForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
 	return nil
 }
 
-func (UsersListPublicEmailsForAuthenticatedOKApplicationJSON) Encode(e *jx.Encoder)       {}
-func (UsersListPublicEmailsForAuthenticatedOKApplicationJSON) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes UsersListFollowersForAuthenticatedUserOKApplicationJSON as json.
+func (s UsersListFollowersForAuthenticatedUserOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []SimpleUser(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
 
-func (UsersListPublicSSHKeysForAuthenticatedApplicationJSONForbidden) Encode(e *jx.Encoder) {}
-func (UsersListPublicSSHKeysForAuthenticatedApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+// Decode decodes UsersListFollowersForAuthenticatedUserOKApplicationJSON from json.
+func (s *UsersListFollowersForAuthenticatedUserOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode UsersListFollowersForAuthenticatedUserOKApplicationJSON to nil`)
+	}
+	var unwrapped []SimpleUser
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem SimpleUser
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = UsersListFollowersForAuthenticatedUserOKApplicationJSON(unwrapped)
 	return nil
 }
 
-func (UsersListPublicSSHKeysForAuthenticatedApplicationJSONNotFound) Encode(e *jx.Encoder) {}
-func (UsersListPublicSSHKeysForAuthenticatedApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+// Encode encodes UsersListGpgKeysForAuthenticatedApplicationJSONForbidden as json.
+func (s UsersListGpgKeysForAuthenticatedApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes UsersListGpgKeysForAuthenticatedApplicationJSONForbidden from json.
+func (s *UsersListGpgKeysForAuthenticatedApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode UsersListGpgKeysForAuthenticatedApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = UsersListGpgKeysForAuthenticatedApplicationJSONForbidden(unwrapped)
 	return nil
 }
 
-func (UsersListPublicSSHKeysForAuthenticatedApplicationJSONUnauthorized) Encode(e *jx.Encoder) {}
-func (UsersListPublicSSHKeysForAuthenticatedApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+// Encode encodes UsersListGpgKeysForAuthenticatedApplicationJSONNotFound as json.
+func (s UsersListGpgKeysForAuthenticatedApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes UsersListGpgKeysForAuthenticatedApplicationJSONNotFound from json.
+func (s *UsersListGpgKeysForAuthenticatedApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode UsersListGpgKeysForAuthenticatedApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = UsersListGpgKeysForAuthenticatedApplicationJSONNotFound(unwrapped)
 	return nil
 }
 
-func (UsersListPublicSSHKeysForAuthenticatedOKApplicationJSON) Encode(e *jx.Encoder) {}
-func (UsersListPublicSSHKeysForAuthenticatedOKApplicationJSON) Decode(d *jx.Decoder) error {
+// Encode encodes UsersListGpgKeysForAuthenticatedApplicationJSONUnauthorized as json.
+func (s UsersListGpgKeysForAuthenticatedApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes UsersListGpgKeysForAuthenticatedApplicationJSONUnauthorized from json.
+func (s *UsersListGpgKeysForAuthenticatedApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode UsersListGpgKeysForAuthenticatedApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = UsersListGpgKeysForAuthenticatedApplicationJSONUnauthorized(unwrapped)
+	return nil
+}
+
+// Encode encodes UsersListGpgKeysForAuthenticatedOKApplicationJSON as json.
+func (s UsersListGpgKeysForAuthenticatedOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []GpgKey(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes UsersListGpgKeysForAuthenticatedOKApplicationJSON from json.
+func (s *UsersListGpgKeysForAuthenticatedOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode UsersListGpgKeysForAuthenticatedOKApplicationJSON to nil`)
+	}
+	var unwrapped []GpgKey
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem GpgKey
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = UsersListGpgKeysForAuthenticatedOKApplicationJSON(unwrapped)
+	return nil
+}
+
+// Encode encodes UsersListOKApplicationJSON as json.
+func (s UsersListOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []SimpleUser(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes UsersListOKApplicationJSON from json.
+func (s *UsersListOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode UsersListOKApplicationJSON to nil`)
+	}
+	var unwrapped []SimpleUser
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem SimpleUser
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = UsersListOKApplicationJSON(unwrapped)
+	return nil
+}
+
+// Encode encodes UsersListPublicEmailsForAuthenticatedApplicationJSONForbidden as json.
+func (s UsersListPublicEmailsForAuthenticatedApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes UsersListPublicEmailsForAuthenticatedApplicationJSONForbidden from json.
+func (s *UsersListPublicEmailsForAuthenticatedApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode UsersListPublicEmailsForAuthenticatedApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = UsersListPublicEmailsForAuthenticatedApplicationJSONForbidden(unwrapped)
+	return nil
+}
+
+// Encode encodes UsersListPublicEmailsForAuthenticatedApplicationJSONNotFound as json.
+func (s UsersListPublicEmailsForAuthenticatedApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes UsersListPublicEmailsForAuthenticatedApplicationJSONNotFound from json.
+func (s *UsersListPublicEmailsForAuthenticatedApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode UsersListPublicEmailsForAuthenticatedApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = UsersListPublicEmailsForAuthenticatedApplicationJSONNotFound(unwrapped)
+	return nil
+}
+
+// Encode encodes UsersListPublicEmailsForAuthenticatedApplicationJSONUnauthorized as json.
+func (s UsersListPublicEmailsForAuthenticatedApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes UsersListPublicEmailsForAuthenticatedApplicationJSONUnauthorized from json.
+func (s *UsersListPublicEmailsForAuthenticatedApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode UsersListPublicEmailsForAuthenticatedApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = UsersListPublicEmailsForAuthenticatedApplicationJSONUnauthorized(unwrapped)
+	return nil
+}
+
+// Encode encodes UsersListPublicEmailsForAuthenticatedOKApplicationJSON as json.
+func (s UsersListPublicEmailsForAuthenticatedOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []Email(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes UsersListPublicEmailsForAuthenticatedOKApplicationJSON from json.
+func (s *UsersListPublicEmailsForAuthenticatedOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode UsersListPublicEmailsForAuthenticatedOKApplicationJSON to nil`)
+	}
+	var unwrapped []Email
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem Email
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = UsersListPublicEmailsForAuthenticatedOKApplicationJSON(unwrapped)
+	return nil
+}
+
+// Encode encodes UsersListPublicSSHKeysForAuthenticatedApplicationJSONForbidden as json.
+func (s UsersListPublicSSHKeysForAuthenticatedApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes UsersListPublicSSHKeysForAuthenticatedApplicationJSONForbidden from json.
+func (s *UsersListPublicSSHKeysForAuthenticatedApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode UsersListPublicSSHKeysForAuthenticatedApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = UsersListPublicSSHKeysForAuthenticatedApplicationJSONForbidden(unwrapped)
+	return nil
+}
+
+// Encode encodes UsersListPublicSSHKeysForAuthenticatedApplicationJSONNotFound as json.
+func (s UsersListPublicSSHKeysForAuthenticatedApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes UsersListPublicSSHKeysForAuthenticatedApplicationJSONNotFound from json.
+func (s *UsersListPublicSSHKeysForAuthenticatedApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode UsersListPublicSSHKeysForAuthenticatedApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = UsersListPublicSSHKeysForAuthenticatedApplicationJSONNotFound(unwrapped)
+	return nil
+}
+
+// Encode encodes UsersListPublicSSHKeysForAuthenticatedApplicationJSONUnauthorized as json.
+func (s UsersListPublicSSHKeysForAuthenticatedApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes UsersListPublicSSHKeysForAuthenticatedApplicationJSONUnauthorized from json.
+func (s *UsersListPublicSSHKeysForAuthenticatedApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode UsersListPublicSSHKeysForAuthenticatedApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = UsersListPublicSSHKeysForAuthenticatedApplicationJSONUnauthorized(unwrapped)
+	return nil
+}
+
+// Encode encodes UsersListPublicSSHKeysForAuthenticatedOKApplicationJSON as json.
+func (s UsersListPublicSSHKeysForAuthenticatedOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []Key(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes UsersListPublicSSHKeysForAuthenticatedOKApplicationJSON from json.
+func (s *UsersListPublicSSHKeysForAuthenticatedOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode UsersListPublicSSHKeysForAuthenticatedOKApplicationJSON to nil`)
+	}
+	var unwrapped []Key
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem Key
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = UsersListPublicSSHKeysForAuthenticatedOKApplicationJSON(unwrapped)
 	return nil
 }
 
@@ -76214,14 +86125,77 @@ func (s *UsersSetPrimaryEmailVisibilityForAuthenticatedReqVisibility) Decode(d *
 	return nil
 }
 
-func (UsersUnblockApplicationJSONForbidden) Encode(e *jx.Encoder)       {}
-func (UsersUnblockApplicationJSONForbidden) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes UsersUnblockApplicationJSONForbidden as json.
+func (s UsersUnblockApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (UsersUnblockApplicationJSONNotFound) Encode(e *jx.Encoder)       {}
-func (UsersUnblockApplicationJSONNotFound) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes UsersUnblockApplicationJSONForbidden from json.
+func (s *UsersUnblockApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode UsersUnblockApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = UsersUnblockApplicationJSONForbidden(unwrapped)
+	return nil
+}
 
-func (UsersUnblockApplicationJSONUnauthorized) Encode(e *jx.Encoder)       {}
-func (UsersUnblockApplicationJSONUnauthorized) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes UsersUnblockApplicationJSONNotFound as json.
+func (s UsersUnblockApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes UsersUnblockApplicationJSONNotFound from json.
+func (s *UsersUnblockApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode UsersUnblockApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = UsersUnblockApplicationJSONNotFound(unwrapped)
+	return nil
+}
+
+// Encode encodes UsersUnblockApplicationJSONUnauthorized as json.
+func (s UsersUnblockApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes UsersUnblockApplicationJSONUnauthorized from json.
+func (s *UsersUnblockApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode UsersUnblockApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = UsersUnblockApplicationJSONUnauthorized(unwrapped)
+	return nil
+}
 
 // Encode implements json.Marshaler.
 func (s UsersUnblockNoContent) Encode(e *jx.Encoder) {
@@ -76243,14 +86217,77 @@ func (s *UsersUnblockNoContent) Decode(d *jx.Decoder) error {
 	})
 }
 
-func (UsersUnfollowApplicationJSONForbidden) Encode(e *jx.Encoder)       {}
-func (UsersUnfollowApplicationJSONForbidden) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes UsersUnfollowApplicationJSONForbidden as json.
+func (s UsersUnfollowApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
 
-func (UsersUnfollowApplicationJSONNotFound) Encode(e *jx.Encoder)       {}
-func (UsersUnfollowApplicationJSONNotFound) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes UsersUnfollowApplicationJSONForbidden from json.
+func (s *UsersUnfollowApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode UsersUnfollowApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = UsersUnfollowApplicationJSONForbidden(unwrapped)
+	return nil
+}
 
-func (UsersUnfollowApplicationJSONUnauthorized) Encode(e *jx.Encoder)       {}
-func (UsersUnfollowApplicationJSONUnauthorized) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes UsersUnfollowApplicationJSONNotFound as json.
+func (s UsersUnfollowApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes UsersUnfollowApplicationJSONNotFound from json.
+func (s *UsersUnfollowApplicationJSONNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode UsersUnfollowApplicationJSONNotFound to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = UsersUnfollowApplicationJSONNotFound(unwrapped)
+	return nil
+}
+
+// Encode encodes UsersUnfollowApplicationJSONUnauthorized as json.
+func (s UsersUnfollowApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes UsersUnfollowApplicationJSONUnauthorized from json.
+func (s *UsersUnfollowApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode UsersUnfollowApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = UsersUnfollowApplicationJSONUnauthorized(unwrapped)
+	return nil
+}
 
 // Encode implements json.Marshaler.
 func (s UsersUnfollowNoContent) Encode(e *jx.Encoder) {
@@ -76533,8 +86570,31 @@ func (s *ViewTraffic) Decode(d *jx.Decoder) error {
 	})
 }
 
-func (WaitTimer) Encode(e *jx.Encoder)       {}
-func (WaitTimer) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes WaitTimer as json.
+func (s WaitTimer) Encode(e *jx.Encoder) {
+	unwrapped := int(s)
+	e.Int(unwrapped)
+}
+
+// Decode decodes WaitTimer from json.
+func (s *WaitTimer) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode WaitTimer to nil`)
+	}
+	var unwrapped int
+	if err := func() error {
+		v, err := d.Int()
+		unwrapped = int(v)
+		if err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = WaitTimer(unwrapped)
+	return nil
+}
 
 // Encode implements json.Marshaler.
 func (s WebhookConfig) Encode(e *jx.Encoder) {
@@ -76594,8 +86654,31 @@ func (s *WebhookConfig) Decode(d *jx.Decoder) error {
 	})
 }
 
-func (WebhookConfigContentType) Encode(e *jx.Encoder)       {}
-func (WebhookConfigContentType) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes WebhookConfigContentType as json.
+func (s WebhookConfigContentType) Encode(e *jx.Encoder) {
+	unwrapped := string(s)
+	e.Str(unwrapped)
+}
+
+// Decode decodes WebhookConfigContentType from json.
+func (s *WebhookConfigContentType) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode WebhookConfigContentType to nil`)
+	}
+	var unwrapped string
+	if err := func() error {
+		v, err := d.Str()
+		unwrapped = string(v)
+		if err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = WebhookConfigContentType(unwrapped)
+	return nil
+}
 
 // Encode encodes WebhookConfigInsecureSsl as json.
 func (s WebhookConfigInsecureSsl) Encode(e *jx.Encoder) {
@@ -76634,11 +86717,57 @@ func (s *WebhookConfigInsecureSsl) Decode(d *jx.Decoder) error {
 	return nil
 }
 
-func (WebhookConfigSecret) Encode(e *jx.Encoder)       {}
-func (WebhookConfigSecret) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes WebhookConfigSecret as json.
+func (s WebhookConfigSecret) Encode(e *jx.Encoder) {
+	unwrapped := string(s)
+	e.Str(unwrapped)
+}
 
-func (WebhookConfigURL) Encode(e *jx.Encoder)       {}
-func (WebhookConfigURL) Decode(d *jx.Decoder) error { return nil }
+// Decode decodes WebhookConfigSecret from json.
+func (s *WebhookConfigSecret) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode WebhookConfigSecret to nil`)
+	}
+	var unwrapped string
+	if err := func() error {
+		v, err := d.Str()
+		unwrapped = string(v)
+		if err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = WebhookConfigSecret(unwrapped)
+	return nil
+}
+
+// Encode encodes WebhookConfigURL as json.
+func (s WebhookConfigURL) Encode(e *jx.Encoder) {
+	unwrapped := url.URL(s)
+	json.EncodeURI(e, unwrapped)
+}
+
+// Decode decodes WebhookConfigURL from json.
+func (s *WebhookConfigURL) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode WebhookConfigURL to nil`)
+	}
+	var unwrapped url.URL
+	if err := func() error {
+		v, err := json.DecodeURI(d)
+		unwrapped = v
+		if err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = WebhookConfigURL(unwrapped)
+	return nil
+}
 
 // Encode implements json.Marshaler.
 func (s Workflow) Encode(e *jx.Encoder) {

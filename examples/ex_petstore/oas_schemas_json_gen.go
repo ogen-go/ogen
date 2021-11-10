@@ -237,5 +237,38 @@ func (s *Pet) Decode(d *jx.Decoder) error {
 	})
 }
 
-func (Pets) Encode(e *jx.Encoder)       {}
-func (Pets) Decode(d *jx.Decoder) error { return nil }
+// Encode encodes Pets as json.
+func (s Pets) Encode(e *jx.Encoder) {
+	unwrapped := []Pet(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes Pets from json.
+func (s *Pets) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode Pets to nil`)
+	}
+	var unwrapped []Pet
+	if err := func() error {
+		unwrapped = nil
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem Pet
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = Pets(unwrapped)
+	return nil
+}

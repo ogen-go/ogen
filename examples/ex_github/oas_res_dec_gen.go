@@ -137,7 +137,13 @@ func decodeActionsApproveWorkflowRunResponse(resp *http.Response, span trace.Spa
 
 			var response ActionsApproveWorkflowRunApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "ActionsApproveWorkflowRunApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ActionsApproveWorkflowRunApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -162,7 +168,13 @@ func decodeActionsApproveWorkflowRunResponse(resp *http.Response, span trace.Spa
 
 			var response ActionsApproveWorkflowRunApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "ActionsApproveWorkflowRunApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ActionsApproveWorkflowRunApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -2053,7 +2065,13 @@ func decodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(resp *http.Resp
 
 			var response ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -2078,7 +2096,13 @@ func decodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(resp *http.Resp
 
 			var response ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -2103,7 +2127,13 @@ func decodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(resp *http.Resp
 
 			var response ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -2148,7 +2178,13 @@ func decodeActivityDeleteThreadSubscriptionResponse(resp *http.Response, span tr
 
 			var response ActivityDeleteThreadSubscriptionApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "ActivityDeleteThreadSubscriptionApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ActivityDeleteThreadSubscriptionApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -2173,7 +2209,13 @@ func decodeActivityDeleteThreadSubscriptionResponse(resp *http.Response, span tr
 
 			var response ActivityDeleteThreadSubscriptionApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "ActivityDeleteThreadSubscriptionApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ActivityDeleteThreadSubscriptionApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -2331,7 +2373,13 @@ func decodeActivityGetThreadResponse(resp *http.Response, span trace.Span) (res 
 
 			var response ActivityGetThreadApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "ActivityGetThreadApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ActivityGetThreadApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -2356,7 +2404,13 @@ func decodeActivityGetThreadResponse(resp *http.Response, span trace.Span) (res 
 
 			var response ActivityGetThreadApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "ActivityGetThreadApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ActivityGetThreadApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -2417,7 +2471,13 @@ func decodeActivityGetThreadSubscriptionForAuthenticatedUserResponse(resp *http.
 
 			var response ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -2442,7 +2502,13 @@ func decodeActivityGetThreadSubscriptionForAuthenticatedUserResponse(resp *http.
 
 			var response ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -2558,7 +2624,21 @@ func decodeActivityListPublicEventsResponse(resp *http.Response, span trace.Span
 
 			var response ActivityListPublicEventsOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "ActivityListPublicEventsOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []Event
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem Event
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = ActivityListPublicEventsOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -2646,7 +2726,21 @@ func decodeActivityListPublicEventsForRepoNetworkResponse(resp *http.Response, s
 
 			var response ActivityListPublicEventsForRepoNetworkOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "ActivityListPublicEventsForRepoNetworkOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []Event
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem Event
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = ActivityListPublicEventsForRepoNetworkOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -2671,7 +2765,13 @@ func decodeActivityListPublicEventsForRepoNetworkResponse(resp *http.Response, s
 
 			var response ActivityListPublicEventsForRepoNetworkApplicationJSONMovedPermanently
 			if err := func() error {
-				return errors.New(`decoding of "ActivityListPublicEventsForRepoNetworkApplicationJSONMovedPermanently" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ActivityListPublicEventsForRepoNetworkApplicationJSONMovedPermanently(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -2698,7 +2798,13 @@ func decodeActivityListPublicEventsForRepoNetworkResponse(resp *http.Response, s
 
 			var response ActivityListPublicEventsForRepoNetworkApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "ActivityListPublicEventsForRepoNetworkApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ActivityListPublicEventsForRepoNetworkApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -2723,7 +2829,13 @@ func decodeActivityListPublicEventsForRepoNetworkResponse(resp *http.Response, s
 
 			var response ActivityListPublicEventsForRepoNetworkApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "ActivityListPublicEventsForRepoNetworkApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ActivityListPublicEventsForRepoNetworkApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -3007,7 +3119,21 @@ func decodeActivityListReposStarredByAuthenticatedUserResponse(resp *http.Respon
 
 			var response ActivityListReposStarredByAuthenticatedUserOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "ActivityListReposStarredByAuthenticatedUserOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []Repository
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem Repository
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = ActivityListReposStarredByAuthenticatedUserOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -3034,7 +3160,13 @@ func decodeActivityListReposStarredByAuthenticatedUserResponse(resp *http.Respon
 
 			var response ActivityListReposStarredByAuthenticatedUserApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "ActivityListReposStarredByAuthenticatedUserApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ActivityListReposStarredByAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -3059,7 +3191,13 @@ func decodeActivityListReposStarredByAuthenticatedUserResponse(resp *http.Respon
 
 			var response ActivityListReposStarredByAuthenticatedUserApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "ActivityListReposStarredByAuthenticatedUserApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ActivityListReposStarredByAuthenticatedUserApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -3133,7 +3271,21 @@ func decodeActivityListWatchedReposForAuthenticatedUserResponse(resp *http.Respo
 
 			var response ActivityListWatchedReposForAuthenticatedUserOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "ActivityListWatchedReposForAuthenticatedUserOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []MinimalRepository
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem MinimalRepository
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = ActivityListWatchedReposForAuthenticatedUserOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -3160,7 +3312,13 @@ func decodeActivityListWatchedReposForAuthenticatedUserResponse(resp *http.Respo
 
 			var response ActivityListWatchedReposForAuthenticatedUserApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "ActivityListWatchedReposForAuthenticatedUserApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ActivityListWatchedReposForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -3185,7 +3343,13 @@ func decodeActivityListWatchedReposForAuthenticatedUserResponse(resp *http.Respo
 
 			var response ActivityListWatchedReposForAuthenticatedUserApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "ActivityListWatchedReposForAuthenticatedUserApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ActivityListWatchedReposForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -3290,7 +3454,13 @@ func decodeActivityMarkNotificationsAsReadResponse(resp *http.Response, span tra
 
 			var response ActivityMarkNotificationsAsReadApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "ActivityMarkNotificationsAsReadApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ActivityMarkNotificationsAsReadApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -3315,7 +3485,13 @@ func decodeActivityMarkNotificationsAsReadResponse(resp *http.Response, span tra
 
 			var response ActivityMarkNotificationsAsReadApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "ActivityMarkNotificationsAsReadApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ActivityMarkNotificationsAsReadApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -3484,7 +3660,13 @@ func decodeActivitySetThreadSubscriptionResponse(resp *http.Response, span trace
 
 			var response ActivitySetThreadSubscriptionApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "ActivitySetThreadSubscriptionApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ActivitySetThreadSubscriptionApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -3509,7 +3691,13 @@ func decodeActivitySetThreadSubscriptionResponse(resp *http.Response, span trace
 
 			var response ActivitySetThreadSubscriptionApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "ActivitySetThreadSubscriptionApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ActivitySetThreadSubscriptionApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -3545,7 +3733,13 @@ func decodeActivityStarRepoForAuthenticatedUserResponse(resp *http.Response, spa
 
 			var response ActivityStarRepoForAuthenticatedUserApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "ActivityStarRepoForAuthenticatedUserApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ActivityStarRepoForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -3570,7 +3764,13 @@ func decodeActivityStarRepoForAuthenticatedUserResponse(resp *http.Response, spa
 
 			var response ActivityStarRepoForAuthenticatedUserApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "ActivityStarRepoForAuthenticatedUserApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ActivityStarRepoForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -3595,7 +3795,13 @@ func decodeActivityStarRepoForAuthenticatedUserResponse(resp *http.Response, spa
 
 			var response ActivityStarRepoForAuthenticatedUserApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "ActivityStarRepoForAuthenticatedUserApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ActivityStarRepoForAuthenticatedUserApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -3631,7 +3837,13 @@ func decodeActivityUnstarRepoForAuthenticatedUserResponse(resp *http.Response, s
 
 			var response ActivityUnstarRepoForAuthenticatedUserApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "ActivityUnstarRepoForAuthenticatedUserApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ActivityUnstarRepoForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -3656,7 +3868,13 @@ func decodeActivityUnstarRepoForAuthenticatedUserResponse(resp *http.Response, s
 
 			var response ActivityUnstarRepoForAuthenticatedUserApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "ActivityUnstarRepoForAuthenticatedUserApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ActivityUnstarRepoForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -3681,7 +3899,13 @@ func decodeActivityUnstarRepoForAuthenticatedUserResponse(resp *http.Response, s
 
 			var response ActivityUnstarRepoForAuthenticatedUserApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "ActivityUnstarRepoForAuthenticatedUserApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ActivityUnstarRepoForAuthenticatedUserApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -3717,7 +3941,13 @@ func decodeAppsAddRepoToInstallationResponse(resp *http.Response, span trace.Spa
 
 			var response AppsAddRepoToInstallationApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "AppsAddRepoToInstallationApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = AppsAddRepoToInstallationApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -3742,7 +3972,13 @@ func decodeAppsAddRepoToInstallationResponse(resp *http.Response, span trace.Spa
 
 			var response AppsAddRepoToInstallationApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "AppsAddRepoToInstallationApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = AppsAddRepoToInstallationApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -3871,7 +4107,13 @@ func decodeAppsGetBySlugResponse(resp *http.Response, span trace.Span) (res Apps
 
 			var response AppsGetBySlugApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "AppsGetBySlugApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = AppsGetBySlugApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -3896,7 +4138,13 @@ func decodeAppsGetBySlugResponse(resp *http.Response, span trace.Span) (res Apps
 
 			var response AppsGetBySlugApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "AppsGetBySlugApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = AppsGetBySlugApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -3982,7 +4230,13 @@ func decodeAppsGetSubscriptionPlanForAccountResponse(resp *http.Response, span t
 
 			var response AppsGetSubscriptionPlanForAccountApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "AppsGetSubscriptionPlanForAccountApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = AppsGetSubscriptionPlanForAccountApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -4007,7 +4261,13 @@ func decodeAppsGetSubscriptionPlanForAccountResponse(resp *http.Response, span t
 
 			var response AppsGetSubscriptionPlanForAccountApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "AppsGetSubscriptionPlanForAccountApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = AppsGetSubscriptionPlanForAccountApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -4136,7 +4396,21 @@ func decodeAppsListAccountsForPlanStubbedResponse(resp *http.Response, span trac
 
 			var response AppsListAccountsForPlanStubbedOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "AppsListAccountsForPlanStubbedOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []MarketplacePurchase
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem MarketplacePurchase
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = AppsListAccountsForPlanStubbedOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -4224,7 +4498,13 @@ func decodeAppsListInstallationReposForAuthenticatedUserResponse(resp *http.Resp
 
 			var response AppsListInstallationReposForAuthenticatedUserApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "AppsListInstallationReposForAuthenticatedUserApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = AppsListInstallationReposForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -4249,7 +4529,13 @@ func decodeAppsListInstallationReposForAuthenticatedUserResponse(resp *http.Resp
 
 			var response AppsListInstallationReposForAuthenticatedUserApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "AppsListInstallationReposForAuthenticatedUserApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = AppsListInstallationReposForAuthenticatedUserApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -4281,7 +4567,21 @@ func decodeAppsListPlansResponse(resp *http.Response, span trace.Span) (res Apps
 
 			var response AppsListPlansOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "AppsListPlansOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []MarketplaceListingPlan
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem MarketplaceListingPlan
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = AppsListPlansOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -4306,7 +4606,13 @@ func decodeAppsListPlansResponse(resp *http.Response, span trace.Span) (res Apps
 
 			var response AppsListPlansApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "AppsListPlansApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = AppsListPlansApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -4331,7 +4637,13 @@ func decodeAppsListPlansResponse(resp *http.Response, span trace.Span) (res Apps
 
 			var response AppsListPlansApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "AppsListPlansApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = AppsListPlansApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -4363,7 +4675,21 @@ func decodeAppsListPlansStubbedResponse(resp *http.Response, span trace.Span) (r
 
 			var response AppsListPlansStubbedOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "AppsListPlansStubbedOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []MarketplaceListingPlan
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem MarketplaceListingPlan
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = AppsListPlansStubbedOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -4451,7 +4777,13 @@ func decodeAppsListReposAccessibleToInstallationResponse(resp *http.Response, sp
 
 			var response AppsListReposAccessibleToInstallationApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "AppsListReposAccessibleToInstallationApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = AppsListReposAccessibleToInstallationApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -4476,7 +4808,13 @@ func decodeAppsListReposAccessibleToInstallationResponse(resp *http.Response, sp
 
 			var response AppsListReposAccessibleToInstallationApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "AppsListReposAccessibleToInstallationApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = AppsListReposAccessibleToInstallationApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -4508,7 +4846,21 @@ func decodeAppsListSubscriptionsForAuthenticatedUserResponse(resp *http.Response
 
 			var response AppsListSubscriptionsForAuthenticatedUserOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "AppsListSubscriptionsForAuthenticatedUserOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []UserMarketplacePurchase
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem UserMarketplacePurchase
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = AppsListSubscriptionsForAuthenticatedUserOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -4535,7 +4887,13 @@ func decodeAppsListSubscriptionsForAuthenticatedUserResponse(resp *http.Response
 
 			var response AppsListSubscriptionsForAuthenticatedUserApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "AppsListSubscriptionsForAuthenticatedUserApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = AppsListSubscriptionsForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -4560,7 +4918,13 @@ func decodeAppsListSubscriptionsForAuthenticatedUserResponse(resp *http.Response
 
 			var response AppsListSubscriptionsForAuthenticatedUserApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "AppsListSubscriptionsForAuthenticatedUserApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = AppsListSubscriptionsForAuthenticatedUserApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -4592,7 +4956,21 @@ func decodeAppsListSubscriptionsForAuthenticatedUserStubbedResponse(resp *http.R
 
 			var response AppsListSubscriptionsForAuthenticatedUserStubbedOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "AppsListSubscriptionsForAuthenticatedUserStubbedOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []UserMarketplacePurchase
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem UserMarketplacePurchase
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = AppsListSubscriptionsForAuthenticatedUserStubbedOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -4657,7 +5035,13 @@ func decodeAppsRemoveRepoFromInstallationResponse(resp *http.Response, span trac
 
 			var response AppsRemoveRepoFromInstallationApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "AppsRemoveRepoFromInstallationApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = AppsRemoveRepoFromInstallationApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -4682,7 +5066,13 @@ func decodeAppsRemoveRepoFromInstallationResponse(resp *http.Response, span trac
 
 			var response AppsRemoveRepoFromInstallationApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "AppsRemoveRepoFromInstallationApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = AppsRemoveRepoFromInstallationApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -5135,7 +5525,13 @@ func decodeChecksCreateSuiteResponse(resp *http.Response, span trace.Span) (res 
 
 			var response ChecksCreateSuiteApplicationJSONOK
 			if err := func() error {
-				return errors.New(`decoding of "ChecksCreateSuiteApplicationJSONOK" (alias) is not implemented`)
+				{
+					var unwrapped CheckSuite
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ChecksCreateSuiteApplicationJSONOK(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -5160,7 +5556,13 @@ func decodeChecksCreateSuiteResponse(resp *http.Response, span trace.Span) (res 
 
 			var response ChecksCreateSuiteApplicationJSONCreated
 			if err := func() error {
-				return errors.New(`decoding of "ChecksCreateSuiteApplicationJSONCreated" (alias) is not implemented`)
+				{
+					var unwrapped CheckSuite
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ChecksCreateSuiteApplicationJSONCreated(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -5499,7 +5901,13 @@ func decodeCodeScanningDeleteAnalysisResponse(resp *http.Response, span trace.Sp
 
 			var response CodeScanningDeleteAnalysisApplicationJSONBadRequest
 			if err := func() error {
-				return errors.New(`decoding of "CodeScanningDeleteAnalysisApplicationJSONBadRequest" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = CodeScanningDeleteAnalysisApplicationJSONBadRequest(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -5524,7 +5932,13 @@ func decodeCodeScanningDeleteAnalysisResponse(resp *http.Response, span trace.Sp
 
 			var response CodeScanningDeleteAnalysisApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "CodeScanningDeleteAnalysisApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = CodeScanningDeleteAnalysisApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -5549,7 +5963,13 @@ func decodeCodeScanningDeleteAnalysisResponse(resp *http.Response, span trace.Sp
 
 			var response CodeScanningDeleteAnalysisApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "CodeScanningDeleteAnalysisApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = CodeScanningDeleteAnalysisApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -5635,7 +6055,13 @@ func decodeCodeScanningGetAlertResponse(resp *http.Response, span trace.Span) (r
 
 			var response CodeScanningGetAlertApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "CodeScanningGetAlertApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = CodeScanningGetAlertApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -5660,7 +6086,13 @@ func decodeCodeScanningGetAlertResponse(resp *http.Response, span trace.Span) (r
 
 			var response CodeScanningGetAlertApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "CodeScanningGetAlertApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = CodeScanningGetAlertApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -5746,7 +6178,13 @@ func decodeCodeScanningGetAnalysisResponse(resp *http.Response, span trace.Span)
 
 			var response CodeScanningGetAnalysisApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "CodeScanningGetAnalysisApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = CodeScanningGetAnalysisApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -5771,7 +6209,13 @@ func decodeCodeScanningGetAnalysisResponse(resp *http.Response, span trace.Span)
 
 			var response CodeScanningGetAnalysisApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "CodeScanningGetAnalysisApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = CodeScanningGetAnalysisApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -5920,7 +6364,21 @@ func decodeCodeScanningListAlertInstancesResponse(resp *http.Response, span trac
 
 			var response CodeScanningListAlertInstancesOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "CodeScanningListAlertInstancesOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []CodeScanningAlertInstance
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem CodeScanningAlertInstance
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = CodeScanningListAlertInstancesOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -5945,7 +6403,13 @@ func decodeCodeScanningListAlertInstancesResponse(resp *http.Response, span trac
 
 			var response CodeScanningListAlertInstancesApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "CodeScanningListAlertInstancesApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = CodeScanningListAlertInstancesApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -5970,7 +6434,13 @@ func decodeCodeScanningListAlertInstancesResponse(resp *http.Response, span trac
 
 			var response CodeScanningListAlertInstancesApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "CodeScanningListAlertInstancesApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = CodeScanningListAlertInstancesApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -6029,7 +6499,21 @@ func decodeCodeScanningListAlertsForRepoResponse(resp *http.Response, span trace
 
 			var response CodeScanningListAlertsForRepoOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "CodeScanningListAlertsForRepoOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []CodeScanningAlertItems
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem CodeScanningAlertItems
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = CodeScanningListAlertsForRepoOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -6054,7 +6538,13 @@ func decodeCodeScanningListAlertsForRepoResponse(resp *http.Response, span trace
 
 			var response CodeScanningListAlertsForRepoApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "CodeScanningListAlertsForRepoApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = CodeScanningListAlertsForRepoApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -6079,7 +6569,13 @@ func decodeCodeScanningListAlertsForRepoResponse(resp *http.Response, span trace
 
 			var response CodeScanningListAlertsForRepoApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "CodeScanningListAlertsForRepoApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = CodeScanningListAlertsForRepoApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -6138,7 +6634,21 @@ func decodeCodeScanningListRecentAnalysesResponse(resp *http.Response, span trac
 
 			var response CodeScanningListRecentAnalysesOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "CodeScanningListRecentAnalysesOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []CodeScanningAnalysis
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem CodeScanningAnalysis
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = CodeScanningListRecentAnalysesOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -6163,7 +6673,13 @@ func decodeCodeScanningListRecentAnalysesResponse(resp *http.Response, span trac
 
 			var response CodeScanningListRecentAnalysesApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "CodeScanningListRecentAnalysesApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = CodeScanningListRecentAnalysesApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -6188,7 +6704,13 @@ func decodeCodeScanningListRecentAnalysesResponse(resp *http.Response, span trac
 
 			var response CodeScanningListRecentAnalysesApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "CodeScanningListRecentAnalysesApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = CodeScanningListRecentAnalysesApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -6274,7 +6796,13 @@ func decodeCodeScanningUpdateAlertResponse(resp *http.Response, span trace.Span)
 
 			var response CodeScanningUpdateAlertApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "CodeScanningUpdateAlertApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = CodeScanningUpdateAlertApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -6299,7 +6827,13 @@ func decodeCodeScanningUpdateAlertResponse(resp *http.Response, span trace.Span)
 
 			var response CodeScanningUpdateAlertApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "CodeScanningUpdateAlertApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = CodeScanningUpdateAlertApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -6387,7 +6921,13 @@ func decodeCodeScanningUploadSarifResponse(resp *http.Response, span trace.Span)
 
 			var response CodeScanningUploadSarifApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "CodeScanningUploadSarifApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = CodeScanningUploadSarifApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -6412,7 +6952,13 @@ func decodeCodeScanningUploadSarifResponse(resp *http.Response, span trace.Span)
 
 			var response CodeScanningUploadSarifApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "CodeScanningUploadSarifApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = CodeScanningUploadSarifApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -6473,7 +7019,21 @@ func decodeCodesOfConductGetAllCodesOfConductResponse(resp *http.Response, span 
 
 			var response CodesOfConductGetAllCodesOfConductOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "CodesOfConductGetAllCodesOfConductOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []CodeOfConduct
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem CodeOfConduct
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = CodesOfConductGetAllCodesOfConductOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -7667,7 +8227,13 @@ func decodeGistsCreateCommentResponse(resp *http.Response, span trace.Span) (res
 
 			var response GistsCreateCommentApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "GistsCreateCommentApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = GistsCreateCommentApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -7692,7 +8258,13 @@ func decodeGistsCreateCommentResponse(resp *http.Response, span trace.Span) (res
 
 			var response GistsCreateCommentApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "GistsCreateCommentApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = GistsCreateCommentApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -7728,7 +8300,13 @@ func decodeGistsDeleteResponse(resp *http.Response, span trace.Span) (res GistsD
 
 			var response GistsDeleteApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "GistsDeleteApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = GistsDeleteApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -7753,7 +8331,13 @@ func decodeGistsDeleteResponse(resp *http.Response, span trace.Span) (res GistsD
 
 			var response GistsDeleteApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "GistsDeleteApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = GistsDeleteApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -7789,7 +8373,13 @@ func decodeGistsDeleteCommentResponse(resp *http.Response, span trace.Span) (res
 
 			var response GistsDeleteCommentApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "GistsDeleteCommentApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = GistsDeleteCommentApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -7814,7 +8404,13 @@ func decodeGistsDeleteCommentResponse(resp *http.Response, span trace.Span) (res
 
 			var response GistsDeleteCommentApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "GistsDeleteCommentApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = GistsDeleteCommentApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -8026,7 +8622,21 @@ func decodeGistsListResponse(resp *http.Response, span trace.Span) (res GistsLis
 
 			var response GistsListOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "GistsListOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []BaseGist
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem BaseGist
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = GistsListOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -8087,7 +8697,21 @@ func decodeGistsListCommentsResponse(resp *http.Response, span trace.Span) (res 
 
 			var response GistsListCommentsOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "GistsListCommentsOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []GistComment
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem GistComment
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = GistsListCommentsOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -8114,7 +8738,13 @@ func decodeGistsListCommentsResponse(resp *http.Response, span trace.Span) (res 
 
 			var response GistsListCommentsApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "GistsListCommentsApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = GistsListCommentsApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -8139,7 +8769,13 @@ func decodeGistsListCommentsResponse(resp *http.Response, span trace.Span) (res 
 
 			var response GistsListCommentsApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "GistsListCommentsApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = GistsListCommentsApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -8171,7 +8807,21 @@ func decodeGistsListCommitsResponse(resp *http.Response, span trace.Span) (res G
 
 			var response GistsListCommitsOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "GistsListCommitsOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []GistCommit
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem GistCommit
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = GistsListCommitsOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -8198,7 +8848,13 @@ func decodeGistsListCommitsResponse(resp *http.Response, span trace.Span) (res G
 
 			var response GistsListCommitsApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "GistsListCommitsApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = GistsListCommitsApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -8223,7 +8879,13 @@ func decodeGistsListCommitsResponse(resp *http.Response, span trace.Span) (res G
 
 			var response GistsListCommitsApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "GistsListCommitsApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = GistsListCommitsApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -8255,7 +8917,21 @@ func decodeGistsListForksResponse(resp *http.Response, span trace.Span) (res Gis
 
 			var response GistsListForksOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "GistsListForksOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []GistSimple
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem GistSimple
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = GistsListForksOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -8282,7 +8958,13 @@ func decodeGistsListForksResponse(resp *http.Response, span trace.Span) (res Gis
 
 			var response GistsListForksApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "GistsListForksApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = GistsListForksApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -8307,7 +8989,13 @@ func decodeGistsListForksResponse(resp *http.Response, span trace.Span) (res Gis
 
 			var response GistsListForksApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "GistsListForksApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = GistsListForksApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -8339,7 +9027,21 @@ func decodeGistsListStarredResponse(resp *http.Response, span trace.Span) (res G
 
 			var response GistsListStarredOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "GistsListStarredOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []BaseGist
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem BaseGist
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = GistsListStarredOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -8366,7 +9068,13 @@ func decodeGistsListStarredResponse(resp *http.Response, span trace.Span) (res G
 
 			var response GistsListStarredApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "GistsListStarredApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = GistsListStarredApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -8391,7 +9099,13 @@ func decodeGistsListStarredResponse(resp *http.Response, span trace.Span) (res G
 
 			var response GistsListStarredApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "GistsListStarredApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = GistsListStarredApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -8427,7 +9141,13 @@ func decodeGistsStarResponse(resp *http.Response, span trace.Span) (res GistsSta
 
 			var response GistsStarApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "GistsStarApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = GistsStarApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -8452,7 +9172,13 @@ func decodeGistsStarResponse(resp *http.Response, span trace.Span) (res GistsSta
 
 			var response GistsStarApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "GistsStarApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = GistsStarApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -8488,7 +9214,13 @@ func decodeGistsUnstarResponse(resp *http.Response, span trace.Span) (res GistsU
 
 			var response GistsUnstarApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "GistsUnstarApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = GistsUnstarApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -8513,7 +9245,13 @@ func decodeGistsUnstarResponse(resp *http.Response, span trace.Span) (res GistsU
 
 			var response GistsUnstarApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "GistsUnstarApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = GistsUnstarApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -8831,7 +9569,23 @@ func decodeGitignoreGetAllTemplatesResponse(resp *http.Response, span trace.Span
 
 			var response GitignoreGetAllTemplatesOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "GitignoreGetAllTemplatesOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []string
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem string
+						v, err := d.Str()
+						elem = string(v)
+						if err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = GitignoreGetAllTemplatesOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -9178,7 +9932,13 @@ func decodeIssuesGetEventResponse(resp *http.Response, span trace.Span) (res Iss
 
 			var response IssuesGetEventApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "IssuesGetEventApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = IssuesGetEventApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -9203,7 +9963,13 @@ func decodeIssuesGetEventResponse(resp *http.Response, span trace.Span) (res Iss
 
 			var response IssuesGetEventApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "IssuesGetEventApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = IssuesGetEventApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -9228,7 +9994,13 @@ func decodeIssuesGetEventResponse(resp *http.Response, span trace.Span) (res Iss
 
 			var response IssuesGetEventApplicationJSONGone
 			if err := func() error {
-				return errors.New(`decoding of "IssuesGetEventApplicationJSONGone" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = IssuesGetEventApplicationJSONGone(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -9382,7 +10154,21 @@ func decodeIssuesListAssigneesResponse(resp *http.Response, span trace.Span) (re
 
 			var response IssuesListAssigneesOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "IssuesListAssigneesOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []SimpleUser
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem SimpleUser
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = IssuesListAssigneesOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -9441,7 +10227,21 @@ func decodeIssuesListCommentsResponse(resp *http.Response, span trace.Span) (res
 
 			var response IssuesListCommentsOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "IssuesListCommentsOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []IssueComment
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem IssueComment
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = IssuesListCommentsOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -9466,7 +10266,13 @@ func decodeIssuesListCommentsResponse(resp *http.Response, span trace.Span) (res
 
 			var response IssuesListCommentsApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "IssuesListCommentsApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = IssuesListCommentsApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -9491,7 +10297,13 @@ func decodeIssuesListCommentsResponse(resp *http.Response, span trace.Span) (res
 
 			var response IssuesListCommentsApplicationJSONGone
 			if err := func() error {
-				return errors.New(`decoding of "IssuesListCommentsApplicationJSONGone" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = IssuesListCommentsApplicationJSONGone(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -9565,7 +10377,21 @@ func decodeIssuesListLabelsForRepoResponse(resp *http.Response, span trace.Span)
 
 			var response IssuesListLabelsForRepoOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "IssuesListLabelsForRepoOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []Label
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem Label
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = IssuesListLabelsForRepoOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -9624,7 +10450,21 @@ func decodeIssuesListLabelsOnIssueResponse(resp *http.Response, span trace.Span)
 
 			var response IssuesListLabelsOnIssueOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "IssuesListLabelsOnIssueOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []Label
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem Label
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = IssuesListLabelsOnIssueOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -9683,7 +10523,21 @@ func decodeIssuesListMilestonesResponse(resp *http.Response, span trace.Span) (r
 
 			var response IssuesListMilestonesOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "IssuesListMilestonesOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []Milestone
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem Milestone
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = IssuesListMilestonesOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -9812,7 +10666,21 @@ func decodeIssuesRemoveLabelResponse(resp *http.Response, span trace.Span) (res 
 
 			var response IssuesRemoveLabelOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "IssuesRemoveLabelOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []Label
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem Label
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = IssuesRemoveLabelOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -9837,7 +10705,13 @@ func decodeIssuesRemoveLabelResponse(resp *http.Response, span trace.Span) (res 
 
 			var response IssuesRemoveLabelApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "IssuesRemoveLabelApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = IssuesRemoveLabelApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -9862,7 +10736,13 @@ func decodeIssuesRemoveLabelResponse(resp *http.Response, span trace.Span) (res 
 
 			var response IssuesRemoveLabelApplicationJSONGone
 			if err := func() error {
-				return errors.New(`decoding of "IssuesRemoveLabelApplicationJSONGone" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = IssuesRemoveLabelApplicationJSONGone(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -9896,7 +10776,13 @@ func decodeIssuesUnlockResponse(resp *http.Response, span trace.Span) (res Issue
 
 			var response IssuesUnlockApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "IssuesUnlockApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = IssuesUnlockApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -9921,7 +10807,13 @@ func decodeIssuesUnlockResponse(resp *http.Response, span trace.Span) (res Issue
 
 			var response IssuesUnlockApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "IssuesUnlockApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = IssuesUnlockApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -10050,7 +10942,13 @@ func decodeLicensesGetResponse(resp *http.Response, span trace.Span) (res Licens
 
 			var response LicensesGetApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "LicensesGetApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = LicensesGetApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -10075,7 +10973,13 @@ func decodeLicensesGetResponse(resp *http.Response, span trace.Span) (res Licens
 
 			var response LicensesGetApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "LicensesGetApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = LicensesGetApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -10107,7 +11011,21 @@ func decodeLicensesGetAllCommonlyUsedResponse(resp *http.Response, span trace.Sp
 
 			var response LicensesGetAllCommonlyUsedOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "LicensesGetAllCommonlyUsedOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []LicenseSimple
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem LicenseSimple
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = LicensesGetAllCommonlyUsedOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -10258,7 +11176,13 @@ func decodeMigrationsDeleteArchiveForAuthenticatedUserResponse(resp *http.Respon
 
 			var response MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -10283,7 +11207,13 @@ func decodeMigrationsDeleteArchiveForAuthenticatedUserResponse(resp *http.Respon
 
 			var response MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -10308,7 +11238,13 @@ func decodeMigrationsDeleteArchiveForAuthenticatedUserResponse(resp *http.Respon
 
 			var response MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -10416,7 +11352,13 @@ func decodeMigrationsGetArchiveForAuthenticatedUserResponse(resp *http.Response,
 
 			var response MigrationsGetArchiveForAuthenticatedUserApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "MigrationsGetArchiveForAuthenticatedUserApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = MigrationsGetArchiveForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -10441,7 +11383,13 @@ func decodeMigrationsGetArchiveForAuthenticatedUserResponse(resp *http.Response,
 
 			var response MigrationsGetArchiveForAuthenticatedUserApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "MigrationsGetArchiveForAuthenticatedUserApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = MigrationsGetArchiveForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -10473,7 +11421,21 @@ func decodeMigrationsGetCommitAuthorsResponse(resp *http.Response, span trace.Sp
 
 			var response MigrationsGetCommitAuthorsOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "MigrationsGetCommitAuthorsOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []PorterAuthor
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem PorterAuthor
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = MigrationsGetCommitAuthorsOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -10664,7 +11626,13 @@ func decodeMigrationsGetStatusForAuthenticatedUserResponse(resp *http.Response, 
 
 			var response MigrationsGetStatusForAuthenticatedUserApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "MigrationsGetStatusForAuthenticatedUserApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = MigrationsGetStatusForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -10689,7 +11657,13 @@ func decodeMigrationsGetStatusForAuthenticatedUserResponse(resp *http.Response, 
 
 			var response MigrationsGetStatusForAuthenticatedUserApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "MigrationsGetStatusForAuthenticatedUserApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = MigrationsGetStatusForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -10714,7 +11688,13 @@ func decodeMigrationsGetStatusForAuthenticatedUserResponse(resp *http.Response, 
 
 			var response MigrationsGetStatusForAuthenticatedUserApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "MigrationsGetStatusForAuthenticatedUserApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = MigrationsGetStatusForAuthenticatedUserApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -10807,7 +11787,21 @@ func decodeMigrationsListForAuthenticatedUserResponse(resp *http.Response, span 
 
 			var response MigrationsListForAuthenticatedUserOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "MigrationsListForAuthenticatedUserOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []Migration
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem Migration
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = MigrationsListForAuthenticatedUserOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -10834,7 +11828,13 @@ func decodeMigrationsListForAuthenticatedUserResponse(resp *http.Response, span 
 
 			var response MigrationsListForAuthenticatedUserApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "MigrationsListForAuthenticatedUserApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = MigrationsListForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -10859,7 +11859,13 @@ func decodeMigrationsListForAuthenticatedUserResponse(resp *http.Response, span 
 
 			var response MigrationsListForAuthenticatedUserApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "MigrationsListForAuthenticatedUserApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = MigrationsListForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -10933,7 +11939,21 @@ func decodeMigrationsListReposForOrgResponse(resp *http.Response, span trace.Spa
 
 			var response MigrationsListReposForOrgOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "MigrationsListReposForOrgOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []MinimalRepository
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem MinimalRepository
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = MigrationsListReposForOrgOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -10992,7 +12012,21 @@ func decodeMigrationsListReposForUserResponse(resp *http.Response, span trace.Sp
 
 			var response MigrationsListReposForUserOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "MigrationsListReposForUserOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []MinimalRepository
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem MinimalRepository
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = MigrationsListReposForUserOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -11055,7 +12089,13 @@ func decodeMigrationsUnlockRepoForAuthenticatedUserResponse(resp *http.Response,
 
 			var response MigrationsUnlockRepoForAuthenticatedUserApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "MigrationsUnlockRepoForAuthenticatedUserApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = MigrationsUnlockRepoForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -11080,7 +12120,13 @@ func decodeMigrationsUnlockRepoForAuthenticatedUserResponse(resp *http.Response,
 
 			var response MigrationsUnlockRepoForAuthenticatedUserApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "MigrationsUnlockRepoForAuthenticatedUserApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = MigrationsUnlockRepoForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -11105,7 +12151,13 @@ func decodeMigrationsUnlockRepoForAuthenticatedUserResponse(resp *http.Response,
 
 			var response MigrationsUnlockRepoForAuthenticatedUserApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "MigrationsUnlockRepoForAuthenticatedUserApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = MigrationsUnlockRepoForAuthenticatedUserApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -11211,7 +12263,13 @@ func decodeOAuthAuthorizationsDeleteAuthorizationResponse(resp *http.Response, s
 
 			var response OAuthAuthorizationsDeleteAuthorizationApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "OAuthAuthorizationsDeleteAuthorizationApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = OAuthAuthorizationsDeleteAuthorizationApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -11236,7 +12294,13 @@ func decodeOAuthAuthorizationsDeleteAuthorizationResponse(resp *http.Response, s
 
 			var response OAuthAuthorizationsDeleteAuthorizationApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "OAuthAuthorizationsDeleteAuthorizationApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = OAuthAuthorizationsDeleteAuthorizationApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -11272,7 +12336,13 @@ func decodeOAuthAuthorizationsDeleteGrantResponse(resp *http.Response, span trac
 
 			var response OAuthAuthorizationsDeleteGrantApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "OAuthAuthorizationsDeleteGrantApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = OAuthAuthorizationsDeleteGrantApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -11297,7 +12367,13 @@ func decodeOAuthAuthorizationsDeleteGrantResponse(resp *http.Response, span trac
 
 			var response OAuthAuthorizationsDeleteGrantApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "OAuthAuthorizationsDeleteGrantApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = OAuthAuthorizationsDeleteGrantApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -11358,7 +12434,13 @@ func decodeOAuthAuthorizationsGetAuthorizationResponse(resp *http.Response, span
 
 			var response OAuthAuthorizationsGetAuthorizationApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "OAuthAuthorizationsGetAuthorizationApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = OAuthAuthorizationsGetAuthorizationApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -11383,7 +12465,13 @@ func decodeOAuthAuthorizationsGetAuthorizationResponse(resp *http.Response, span
 
 			var response OAuthAuthorizationsGetAuthorizationApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "OAuthAuthorizationsGetAuthorizationApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = OAuthAuthorizationsGetAuthorizationApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -11444,7 +12532,13 @@ func decodeOAuthAuthorizationsGetGrantResponse(resp *http.Response, span trace.S
 
 			var response OAuthAuthorizationsGetGrantApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "OAuthAuthorizationsGetGrantApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = OAuthAuthorizationsGetGrantApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -11469,7 +12563,13 @@ func decodeOAuthAuthorizationsGetGrantResponse(resp *http.Response, span trace.S
 
 			var response OAuthAuthorizationsGetGrantApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "OAuthAuthorizationsGetGrantApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = OAuthAuthorizationsGetGrantApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -11501,7 +12601,21 @@ func decodeOAuthAuthorizationsListAuthorizationsResponse(resp *http.Response, sp
 
 			var response OAuthAuthorizationsListAuthorizationsOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "OAuthAuthorizationsListAuthorizationsOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []Authorization
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem Authorization
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = OAuthAuthorizationsListAuthorizationsOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -11528,7 +12642,13 @@ func decodeOAuthAuthorizationsListAuthorizationsResponse(resp *http.Response, sp
 
 			var response OAuthAuthorizationsListAuthorizationsApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "OAuthAuthorizationsListAuthorizationsApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = OAuthAuthorizationsListAuthorizationsApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -11553,7 +12673,13 @@ func decodeOAuthAuthorizationsListAuthorizationsResponse(resp *http.Response, sp
 
 			var response OAuthAuthorizationsListAuthorizationsApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "OAuthAuthorizationsListAuthorizationsApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = OAuthAuthorizationsListAuthorizationsApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -11578,7 +12704,13 @@ func decodeOAuthAuthorizationsListAuthorizationsResponse(resp *http.Response, sp
 
 			var response OAuthAuthorizationsListAuthorizationsApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "OAuthAuthorizationsListAuthorizationsApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = OAuthAuthorizationsListAuthorizationsApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -11610,7 +12742,21 @@ func decodeOAuthAuthorizationsListGrantsResponse(resp *http.Response, span trace
 
 			var response OAuthAuthorizationsListGrantsOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "OAuthAuthorizationsListGrantsOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []ApplicationGrant
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem ApplicationGrant
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = OAuthAuthorizationsListGrantsOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -11637,7 +12783,13 @@ func decodeOAuthAuthorizationsListGrantsResponse(resp *http.Response, span trace
 
 			var response OAuthAuthorizationsListGrantsApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "OAuthAuthorizationsListGrantsApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = OAuthAuthorizationsListGrantsApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -11662,7 +12814,13 @@ func decodeOAuthAuthorizationsListGrantsResponse(resp *http.Response, span trace
 
 			var response OAuthAuthorizationsListGrantsApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "OAuthAuthorizationsListGrantsApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = OAuthAuthorizationsListGrantsApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -11687,7 +12845,13 @@ func decodeOAuthAuthorizationsListGrantsResponse(resp *http.Response, span trace
 
 			var response OAuthAuthorizationsListGrantsApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "OAuthAuthorizationsListGrantsApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = OAuthAuthorizationsListGrantsApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -12010,7 +13174,13 @@ func decodeOrgsGetMembershipForAuthenticatedUserResponse(resp *http.Response, sp
 
 			var response OrgsGetMembershipForAuthenticatedUserApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "OrgsGetMembershipForAuthenticatedUserApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = OrgsGetMembershipForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -12035,7 +13205,13 @@ func decodeOrgsGetMembershipForAuthenticatedUserResponse(resp *http.Response, sp
 
 			var response OrgsGetMembershipForAuthenticatedUserApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "OrgsGetMembershipForAuthenticatedUserApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = OrgsGetMembershipForAuthenticatedUserApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -12094,7 +13270,13 @@ func decodeOrgsGetMembershipForUserResponse(resp *http.Response, span trace.Span
 
 			var response OrgsGetMembershipForUserApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "OrgsGetMembershipForUserApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = OrgsGetMembershipForUserApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -12119,7 +13301,13 @@ func decodeOrgsGetMembershipForUserResponse(resp *http.Response, span trace.Span
 
 			var response OrgsGetMembershipForUserApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "OrgsGetMembershipForUserApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = OrgsGetMembershipForUserApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -12246,7 +13434,21 @@ func decodeOrgsListResponse(resp *http.Response, span trace.Span) (res OrgsListR
 
 			var response OrgsListOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "OrgsListOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []OrganizationSimple
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem OrganizationSimple
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = OrgsListOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -12280,7 +13482,21 @@ func decodeOrgsListBlockedUsersResponse(resp *http.Response, span trace.Span) (r
 
 			var response OrgsListBlockedUsersOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "OrgsListBlockedUsersOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []SimpleUser
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem SimpleUser
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = OrgsListBlockedUsersOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -12339,7 +13555,21 @@ func decodeOrgsListFailedInvitationsResponse(resp *http.Response, span trace.Spa
 
 			var response OrgsListFailedInvitationsOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "OrgsListFailedInvitationsOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []OrganizationInvitation
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem OrganizationInvitation
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = OrgsListFailedInvitationsOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -12398,7 +13628,21 @@ func decodeOrgsListForAuthenticatedUserResponse(resp *http.Response, span trace.
 
 			var response OrgsListForAuthenticatedUserOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "OrgsListForAuthenticatedUserOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []OrganizationSimple
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem OrganizationSimple
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = OrgsListForAuthenticatedUserOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -12425,7 +13669,13 @@ func decodeOrgsListForAuthenticatedUserResponse(resp *http.Response, span trace.
 
 			var response OrgsListForAuthenticatedUserApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "OrgsListForAuthenticatedUserApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = OrgsListForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -12450,7 +13700,13 @@ func decodeOrgsListForAuthenticatedUserResponse(resp *http.Response, span trace.
 
 			var response OrgsListForAuthenticatedUserApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "OrgsListForAuthenticatedUserApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = OrgsListForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -12524,7 +13780,21 @@ func decodeOrgsListInvitationTeamsResponse(resp *http.Response, span trace.Span)
 
 			var response OrgsListInvitationTeamsOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "OrgsListInvitationTeamsOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []Team
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem Team
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = OrgsListInvitationTeamsOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -12625,7 +13895,21 @@ func decodeOrgsListPendingInvitationsResponse(resp *http.Response, span trace.Sp
 
 			var response OrgsListPendingInvitationsOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "OrgsListPendingInvitationsOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []OrganizationInvitation
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem OrganizationInvitation
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = OrgsListPendingInvitationsOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -12768,7 +14052,21 @@ func decodeOrgsListWebhooksResponse(resp *http.Response, span trace.Span) (res O
 
 			var response OrgsListWebhooksOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "OrgsListWebhooksOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []OrgHook
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem OrgHook
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = OrgsListWebhooksOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -12901,7 +14199,13 @@ func decodeOrgsRemoveMembershipForUserResponse(resp *http.Response, span trace.S
 
 			var response OrgsRemoveMembershipForUserApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "OrgsRemoveMembershipForUserApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = OrgsRemoveMembershipForUserApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -12926,7 +14230,13 @@ func decodeOrgsRemoveMembershipForUserResponse(resp *http.Response, span trace.S
 
 			var response OrgsRemoveMembershipForUserApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "OrgsRemoveMembershipForUserApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = OrgsRemoveMembershipForUserApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -13120,7 +14430,13 @@ func decodePackagesDeletePackageForAuthenticatedUserResponse(resp *http.Response
 
 			var response PackagesDeletePackageForAuthenticatedUserApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "PackagesDeletePackageForAuthenticatedUserApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = PackagesDeletePackageForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -13145,7 +14461,13 @@ func decodePackagesDeletePackageForAuthenticatedUserResponse(resp *http.Response
 
 			var response PackagesDeletePackageForAuthenticatedUserApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "PackagesDeletePackageForAuthenticatedUserApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = PackagesDeletePackageForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -13170,7 +14492,13 @@ func decodePackagesDeletePackageForAuthenticatedUserResponse(resp *http.Response
 
 			var response PackagesDeletePackageForAuthenticatedUserApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "PackagesDeletePackageForAuthenticatedUserApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = PackagesDeletePackageForAuthenticatedUserApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -13204,7 +14532,13 @@ func decodePackagesDeletePackageForOrgResponse(resp *http.Response, span trace.S
 
 			var response PackagesDeletePackageForOrgApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "PackagesDeletePackageForOrgApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = PackagesDeletePackageForOrgApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -13229,7 +14563,13 @@ func decodePackagesDeletePackageForOrgResponse(resp *http.Response, span trace.S
 
 			var response PackagesDeletePackageForOrgApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "PackagesDeletePackageForOrgApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = PackagesDeletePackageForOrgApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -13254,7 +14594,13 @@ func decodePackagesDeletePackageForOrgResponse(resp *http.Response, span trace.S
 
 			var response PackagesDeletePackageForOrgApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "PackagesDeletePackageForOrgApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = PackagesDeletePackageForOrgApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -13288,7 +14634,13 @@ func decodePackagesDeletePackageForUserResponse(resp *http.Response, span trace.
 
 			var response PackagesDeletePackageForUserApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "PackagesDeletePackageForUserApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = PackagesDeletePackageForUserApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -13313,7 +14665,13 @@ func decodePackagesDeletePackageForUserResponse(resp *http.Response, span trace.
 
 			var response PackagesDeletePackageForUserApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "PackagesDeletePackageForUserApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = PackagesDeletePackageForUserApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -13338,7 +14696,13 @@ func decodePackagesDeletePackageForUserResponse(resp *http.Response, span trace.
 
 			var response PackagesDeletePackageForUserApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "PackagesDeletePackageForUserApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = PackagesDeletePackageForUserApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -13372,7 +14736,13 @@ func decodePackagesDeletePackageVersionForAuthenticatedUserResponse(resp *http.R
 
 			var response PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -13397,7 +14767,13 @@ func decodePackagesDeletePackageVersionForAuthenticatedUserResponse(resp *http.R
 
 			var response PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -13422,7 +14798,13 @@ func decodePackagesDeletePackageVersionForAuthenticatedUserResponse(resp *http.R
 
 			var response PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -13456,7 +14838,13 @@ func decodePackagesDeletePackageVersionForOrgResponse(resp *http.Response, span 
 
 			var response PackagesDeletePackageVersionForOrgApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "PackagesDeletePackageVersionForOrgApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = PackagesDeletePackageVersionForOrgApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -13481,7 +14869,13 @@ func decodePackagesDeletePackageVersionForOrgResponse(resp *http.Response, span 
 
 			var response PackagesDeletePackageVersionForOrgApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "PackagesDeletePackageVersionForOrgApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = PackagesDeletePackageVersionForOrgApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -13506,7 +14900,13 @@ func decodePackagesDeletePackageVersionForOrgResponse(resp *http.Response, span 
 
 			var response PackagesDeletePackageVersionForOrgApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "PackagesDeletePackageVersionForOrgApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = PackagesDeletePackageVersionForOrgApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -13540,7 +14940,13 @@ func decodePackagesDeletePackageVersionForUserResponse(resp *http.Response, span
 
 			var response PackagesDeletePackageVersionForUserApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "PackagesDeletePackageVersionForUserApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = PackagesDeletePackageVersionForUserApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -13565,7 +14971,13 @@ func decodePackagesDeletePackageVersionForUserResponse(resp *http.Response, span
 
 			var response PackagesDeletePackageVersionForUserApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "PackagesDeletePackageVersionForUserApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = PackagesDeletePackageVersionForUserApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -13590,7 +15002,13 @@ func decodePackagesDeletePackageVersionForUserResponse(resp *http.Response, span
 
 			var response PackagesDeletePackageVersionForUserApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "PackagesDeletePackageVersionForUserApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = PackagesDeletePackageVersionForUserApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -13622,7 +15040,21 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRespon
 
 			var response PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []PackageVersion
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem PackageVersion
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -13647,7 +15079,13 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRespon
 
 			var response PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -13672,7 +15110,13 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRespon
 
 			var response PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -13697,7 +15141,13 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRespon
 
 			var response PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -13729,7 +15179,21 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgResponse(resp *http.
 
 			var response PackagesGetAllPackageVersionsForPackageOwnedByOrgOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "PackagesGetAllPackageVersionsForPackageOwnedByOrgOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []PackageVersion
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem PackageVersion
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = PackagesGetAllPackageVersionsForPackageOwnedByOrgOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -13754,7 +15218,13 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgResponse(resp *http.
 
 			var response PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -13779,7 +15249,13 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgResponse(resp *http.
 
 			var response PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -13804,7 +15280,13 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgResponse(resp *http.
 
 			var response PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -13836,7 +15318,21 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByUserResponse(resp *http
 
 			var response PackagesGetAllPackageVersionsForPackageOwnedByUserOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "PackagesGetAllPackageVersionsForPackageOwnedByUserOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []PackageVersion
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem PackageVersion
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = PackagesGetAllPackageVersionsForPackageOwnedByUserOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -13861,7 +15357,13 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByUserResponse(resp *http
 
 			var response PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -13886,7 +15388,13 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByUserResponse(resp *http
 
 			var response PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -13911,7 +15419,13 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByUserResponse(resp *http
 
 			var response PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -14189,7 +15703,21 @@ func decodePackagesListPackagesForOrganizationResponse(resp *http.Response, span
 
 			var response PackagesListPackagesForOrganizationOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "PackagesListPackagesForOrganizationOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []Package
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem Package
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = PackagesListPackagesForOrganizationOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -14214,7 +15742,13 @@ func decodePackagesListPackagesForOrganizationResponse(resp *http.Response, span
 
 			var response PackagesListPackagesForOrganizationApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "PackagesListPackagesForOrganizationApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = PackagesListPackagesForOrganizationApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -14239,7 +15773,13 @@ func decodePackagesListPackagesForOrganizationResponse(resp *http.Response, span
 
 			var response PackagesListPackagesForOrganizationApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "PackagesListPackagesForOrganizationApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = PackagesListPackagesForOrganizationApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -14271,7 +15811,21 @@ func decodePackagesListPackagesForUserResponse(resp *http.Response, span trace.S
 
 			var response PackagesListPackagesForUserOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "PackagesListPackagesForUserOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []Package
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem Package
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = PackagesListPackagesForUserOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -14296,7 +15850,13 @@ func decodePackagesListPackagesForUserResponse(resp *http.Response, span trace.S
 
 			var response PackagesListPackagesForUserApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "PackagesListPackagesForUserApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = PackagesListPackagesForUserApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -14321,7 +15881,13 @@ func decodePackagesListPackagesForUserResponse(resp *http.Response, span trace.S
 
 			var response PackagesListPackagesForUserApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "PackagesListPackagesForUserApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = PackagesListPackagesForUserApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -14355,7 +15921,13 @@ func decodePackagesRestorePackageForAuthenticatedUserResponse(resp *http.Respons
 
 			var response PackagesRestorePackageForAuthenticatedUserApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "PackagesRestorePackageForAuthenticatedUserApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = PackagesRestorePackageForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -14380,7 +15952,13 @@ func decodePackagesRestorePackageForAuthenticatedUserResponse(resp *http.Respons
 
 			var response PackagesRestorePackageForAuthenticatedUserApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "PackagesRestorePackageForAuthenticatedUserApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = PackagesRestorePackageForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -14405,7 +15983,13 @@ func decodePackagesRestorePackageForAuthenticatedUserResponse(resp *http.Respons
 
 			var response PackagesRestorePackageForAuthenticatedUserApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "PackagesRestorePackageForAuthenticatedUserApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = PackagesRestorePackageForAuthenticatedUserApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -14439,7 +16023,13 @@ func decodePackagesRestorePackageForOrgResponse(resp *http.Response, span trace.
 
 			var response PackagesRestorePackageForOrgApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "PackagesRestorePackageForOrgApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = PackagesRestorePackageForOrgApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -14464,7 +16054,13 @@ func decodePackagesRestorePackageForOrgResponse(resp *http.Response, span trace.
 
 			var response PackagesRestorePackageForOrgApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "PackagesRestorePackageForOrgApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = PackagesRestorePackageForOrgApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -14489,7 +16085,13 @@ func decodePackagesRestorePackageForOrgResponse(resp *http.Response, span trace.
 
 			var response PackagesRestorePackageForOrgApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "PackagesRestorePackageForOrgApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = PackagesRestorePackageForOrgApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -14523,7 +16125,13 @@ func decodePackagesRestorePackageForUserResponse(resp *http.Response, span trace
 
 			var response PackagesRestorePackageForUserApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "PackagesRestorePackageForUserApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = PackagesRestorePackageForUserApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -14548,7 +16156,13 @@ func decodePackagesRestorePackageForUserResponse(resp *http.Response, span trace
 
 			var response PackagesRestorePackageForUserApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "PackagesRestorePackageForUserApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = PackagesRestorePackageForUserApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -14573,7 +16187,13 @@ func decodePackagesRestorePackageForUserResponse(resp *http.Response, span trace
 
 			var response PackagesRestorePackageForUserApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "PackagesRestorePackageForUserApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = PackagesRestorePackageForUserApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -14607,7 +16227,13 @@ func decodePackagesRestorePackageVersionForAuthenticatedUserResponse(resp *http.
 
 			var response PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -14632,7 +16258,13 @@ func decodePackagesRestorePackageVersionForAuthenticatedUserResponse(resp *http.
 
 			var response PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -14657,7 +16289,13 @@ func decodePackagesRestorePackageVersionForAuthenticatedUserResponse(resp *http.
 
 			var response PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -14691,7 +16329,13 @@ func decodePackagesRestorePackageVersionForOrgResponse(resp *http.Response, span
 
 			var response PackagesRestorePackageVersionForOrgApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "PackagesRestorePackageVersionForOrgApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = PackagesRestorePackageVersionForOrgApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -14716,7 +16360,13 @@ func decodePackagesRestorePackageVersionForOrgResponse(resp *http.Response, span
 
 			var response PackagesRestorePackageVersionForOrgApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "PackagesRestorePackageVersionForOrgApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = PackagesRestorePackageVersionForOrgApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -14741,7 +16391,13 @@ func decodePackagesRestorePackageVersionForOrgResponse(resp *http.Response, span
 
 			var response PackagesRestorePackageVersionForOrgApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "PackagesRestorePackageVersionForOrgApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = PackagesRestorePackageVersionForOrgApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -14775,7 +16431,13 @@ func decodePackagesRestorePackageVersionForUserResponse(resp *http.Response, spa
 
 			var response PackagesRestorePackageVersionForUserApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "PackagesRestorePackageVersionForUserApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = PackagesRestorePackageVersionForUserApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -14800,7 +16462,13 @@ func decodePackagesRestorePackageVersionForUserResponse(resp *http.Response, spa
 
 			var response PackagesRestorePackageVersionForUserApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "PackagesRestorePackageVersionForUserApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = PackagesRestorePackageVersionForUserApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -14825,7 +16493,13 @@ func decodePackagesRestorePackageVersionForUserResponse(resp *http.Response, spa
 
 			var response PackagesRestorePackageVersionForUserApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "PackagesRestorePackageVersionForUserApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = PackagesRestorePackageVersionForUserApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -14886,7 +16560,13 @@ func decodeProjectsCreateColumnResponse(resp *http.Response, span trace.Span) (r
 
 			var response ProjectsCreateColumnApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "ProjectsCreateColumnApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ProjectsCreateColumnApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -14911,7 +16591,13 @@ func decodeProjectsCreateColumnResponse(resp *http.Response, span trace.Span) (r
 
 			var response ProjectsCreateColumnApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "ProjectsCreateColumnApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ProjectsCreateColumnApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -14999,7 +16685,13 @@ func decodeProjectsCreateForAuthenticatedUserResponse(resp *http.Response, span 
 
 			var response ProjectsCreateForAuthenticatedUserApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "ProjectsCreateForAuthenticatedUserApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ProjectsCreateForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -15024,7 +16716,13 @@ func decodeProjectsCreateForAuthenticatedUserResponse(resp *http.Response, span 
 
 			var response ProjectsCreateForAuthenticatedUserApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "ProjectsCreateForAuthenticatedUserApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ProjectsCreateForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -15137,7 +16835,13 @@ func decodeProjectsCreateForOrgResponse(resp *http.Response, span trace.Span) (r
 
 			var response ProjectsCreateForOrgApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "ProjectsCreateForOrgApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ProjectsCreateForOrgApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -15162,7 +16866,13 @@ func decodeProjectsCreateForOrgResponse(resp *http.Response, span trace.Span) (r
 
 			var response ProjectsCreateForOrgApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "ProjectsCreateForOrgApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ProjectsCreateForOrgApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -15187,7 +16897,13 @@ func decodeProjectsCreateForOrgResponse(resp *http.Response, span trace.Span) (r
 
 			var response ProjectsCreateForOrgApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "ProjectsCreateForOrgApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ProjectsCreateForOrgApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -15212,7 +16928,13 @@ func decodeProjectsCreateForOrgResponse(resp *http.Response, span trace.Span) (r
 
 			var response ProjectsCreateForOrgApplicationJSONGone
 			if err := func() error {
-				return errors.New(`decoding of "ProjectsCreateForOrgApplicationJSONGone" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ProjectsCreateForOrgApplicationJSONGone(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -15298,7 +17020,13 @@ func decodeProjectsCreateForRepoResponse(resp *http.Response, span trace.Span) (
 
 			var response ProjectsCreateForRepoApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "ProjectsCreateForRepoApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ProjectsCreateForRepoApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -15323,7 +17051,13 @@ func decodeProjectsCreateForRepoResponse(resp *http.Response, span trace.Span) (
 
 			var response ProjectsCreateForRepoApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "ProjectsCreateForRepoApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ProjectsCreateForRepoApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -15348,7 +17082,13 @@ func decodeProjectsCreateForRepoResponse(resp *http.Response, span trace.Span) (
 
 			var response ProjectsCreateForRepoApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "ProjectsCreateForRepoApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ProjectsCreateForRepoApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -15373,7 +17113,13 @@ func decodeProjectsCreateForRepoResponse(resp *http.Response, span trace.Span) (
 
 			var response ProjectsCreateForRepoApplicationJSONGone
 			if err := func() error {
-				return errors.New(`decoding of "ProjectsCreateForRepoApplicationJSONGone" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ProjectsCreateForRepoApplicationJSONGone(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -15436,7 +17182,13 @@ func decodeProjectsDeleteResponse(resp *http.Response, span trace.Span) (res Pro
 
 			var response ProjectsDeleteApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "ProjectsDeleteApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ProjectsDeleteApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -15488,7 +17240,13 @@ func decodeProjectsDeleteResponse(resp *http.Response, span trace.Span) (res Pro
 
 			var response ProjectsDeleteApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "ProjectsDeleteApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ProjectsDeleteApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -15513,7 +17271,13 @@ func decodeProjectsDeleteResponse(resp *http.Response, span trace.Span) (res Pro
 
 			var response ProjectsDeleteApplicationJSONGone
 			if err := func() error {
-				return errors.New(`decoding of "ProjectsDeleteApplicationJSONGone" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ProjectsDeleteApplicationJSONGone(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -15549,7 +17313,13 @@ func decodeProjectsDeleteCardResponse(resp *http.Response, span trace.Span) (res
 
 			var response ProjectsDeleteCardApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "ProjectsDeleteCardApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ProjectsDeleteCardApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -15601,7 +17371,13 @@ func decodeProjectsDeleteCardResponse(resp *http.Response, span trace.Span) (res
 
 			var response ProjectsDeleteCardApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "ProjectsDeleteCardApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ProjectsDeleteCardApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -15637,7 +17413,13 @@ func decodeProjectsDeleteColumnResponse(resp *http.Response, span trace.Span) (r
 
 			var response ProjectsDeleteColumnApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "ProjectsDeleteColumnApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ProjectsDeleteColumnApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -15662,7 +17444,13 @@ func decodeProjectsDeleteColumnResponse(resp *http.Response, span trace.Span) (r
 
 			var response ProjectsDeleteColumnApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "ProjectsDeleteColumnApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ProjectsDeleteColumnApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -15723,7 +17511,13 @@ func decodeProjectsGetResponse(resp *http.Response, span trace.Span) (res Projec
 
 			var response ProjectsGetApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "ProjectsGetApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ProjectsGetApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -15748,7 +17542,13 @@ func decodeProjectsGetResponse(resp *http.Response, span trace.Span) (res Projec
 
 			var response ProjectsGetApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "ProjectsGetApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ProjectsGetApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -15809,7 +17609,13 @@ func decodeProjectsGetCardResponse(resp *http.Response, span trace.Span) (res Pr
 
 			var response ProjectsGetCardApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "ProjectsGetCardApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ProjectsGetCardApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -15834,7 +17640,13 @@ func decodeProjectsGetCardResponse(resp *http.Response, span trace.Span) (res Pr
 
 			var response ProjectsGetCardApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "ProjectsGetCardApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ProjectsGetCardApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -15859,7 +17671,13 @@ func decodeProjectsGetCardResponse(resp *http.Response, span trace.Span) (res Pr
 
 			var response ProjectsGetCardApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "ProjectsGetCardApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ProjectsGetCardApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -15920,7 +17738,13 @@ func decodeProjectsGetColumnResponse(resp *http.Response, span trace.Span) (res 
 
 			var response ProjectsGetColumnApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "ProjectsGetColumnApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ProjectsGetColumnApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -15945,7 +17769,13 @@ func decodeProjectsGetColumnResponse(resp *http.Response, span trace.Span) (res 
 
 			var response ProjectsGetColumnApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "ProjectsGetColumnApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ProjectsGetColumnApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -15970,7 +17800,13 @@ func decodeProjectsGetColumnResponse(resp *http.Response, span trace.Span) (res 
 
 			var response ProjectsGetColumnApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "ProjectsGetColumnApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ProjectsGetColumnApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -16002,7 +17838,21 @@ func decodeProjectsListCardsResponse(resp *http.Response, span trace.Span) (res 
 
 			var response ProjectsListCardsOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "ProjectsListCardsOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []ProjectCard
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem ProjectCard
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = ProjectsListCardsOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -16029,7 +17879,13 @@ func decodeProjectsListCardsResponse(resp *http.Response, span trace.Span) (res 
 
 			var response ProjectsListCardsApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "ProjectsListCardsApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ProjectsListCardsApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -16054,7 +17910,13 @@ func decodeProjectsListCardsResponse(resp *http.Response, span trace.Span) (res 
 
 			var response ProjectsListCardsApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "ProjectsListCardsApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ProjectsListCardsApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -16086,7 +17948,21 @@ func decodeProjectsListColumnsResponse(resp *http.Response, span trace.Span) (re
 
 			var response ProjectsListColumnsOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "ProjectsListColumnsOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []ProjectColumn
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem ProjectColumn
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = ProjectsListColumnsOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -16113,7 +17989,13 @@ func decodeProjectsListColumnsResponse(resp *http.Response, span trace.Span) (re
 
 			var response ProjectsListColumnsApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "ProjectsListColumnsApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ProjectsListColumnsApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -16138,7 +18020,13 @@ func decodeProjectsListColumnsResponse(resp *http.Response, span trace.Span) (re
 
 			var response ProjectsListColumnsApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "ProjectsListColumnsApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ProjectsListColumnsApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -16170,7 +18058,21 @@ func decodeProjectsListForOrgResponse(resp *http.Response, span trace.Span) (res
 
 			var response ProjectsListForOrgOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "ProjectsListForOrgOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []Project
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem Project
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = ProjectsListForOrgOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -16229,7 +18131,21 @@ func decodeProjectsListForRepoResponse(resp *http.Response, span trace.Span) (re
 
 			var response ProjectsListForRepoOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "ProjectsListForRepoOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []Project
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem Project
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = ProjectsListForRepoOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -16254,7 +18170,13 @@ func decodeProjectsListForRepoResponse(resp *http.Response, span trace.Span) (re
 
 			var response ProjectsListForRepoApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "ProjectsListForRepoApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ProjectsListForRepoApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -16279,7 +18201,13 @@ func decodeProjectsListForRepoResponse(resp *http.Response, span trace.Span) (re
 
 			var response ProjectsListForRepoApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "ProjectsListForRepoApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ProjectsListForRepoApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -16304,7 +18232,13 @@ func decodeProjectsListForRepoResponse(resp *http.Response, span trace.Span) (re
 
 			var response ProjectsListForRepoApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "ProjectsListForRepoApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ProjectsListForRepoApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -16329,7 +18263,13 @@ func decodeProjectsListForRepoResponse(resp *http.Response, span trace.Span) (re
 
 			var response ProjectsListForRepoApplicationJSONGone
 			if err := func() error {
-				return errors.New(`decoding of "ProjectsListForRepoApplicationJSONGone" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ProjectsListForRepoApplicationJSONGone(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -16417,7 +18357,13 @@ func decodeProjectsMoveColumnResponse(resp *http.Response, span trace.Span) (res
 
 			var response ProjectsMoveColumnApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "ProjectsMoveColumnApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ProjectsMoveColumnApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -16442,7 +18388,13 @@ func decodeProjectsMoveColumnResponse(resp *http.Response, span trace.Span) (res
 
 			var response ProjectsMoveColumnApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "ProjectsMoveColumnApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ProjectsMoveColumnApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -16530,7 +18482,13 @@ func decodeProjectsUpdateResponse(resp *http.Response, span trace.Span) (res Pro
 
 			var response ProjectsUpdateApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "ProjectsUpdateApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ProjectsUpdateApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -16584,7 +18542,13 @@ func decodeProjectsUpdateResponse(resp *http.Response, span trace.Span) (res Pro
 
 			var response ProjectsUpdateApplicationJSONGone
 			if err := func() error {
-				return errors.New(`decoding of "ProjectsUpdateApplicationJSONGone" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ProjectsUpdateApplicationJSONGone(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -16672,7 +18636,13 @@ func decodeProjectsUpdateCardResponse(resp *http.Response, span trace.Span) (res
 
 			var response ProjectsUpdateCardApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "ProjectsUpdateCardApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ProjectsUpdateCardApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -16697,7 +18667,13 @@ func decodeProjectsUpdateCardResponse(resp *http.Response, span trace.Span) (res
 
 			var response ProjectsUpdateCardApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "ProjectsUpdateCardApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ProjectsUpdateCardApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -16722,7 +18698,13 @@ func decodeProjectsUpdateCardResponse(resp *http.Response, span trace.Span) (res
 
 			var response ProjectsUpdateCardApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "ProjectsUpdateCardApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ProjectsUpdateCardApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -16810,7 +18792,13 @@ func decodeProjectsUpdateColumnResponse(resp *http.Response, span trace.Span) (r
 
 			var response ProjectsUpdateColumnApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "ProjectsUpdateColumnApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ProjectsUpdateColumnApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -16835,7 +18823,13 @@ func decodeProjectsUpdateColumnResponse(resp *http.Response, span trace.Span) (r
 
 			var response ProjectsUpdateColumnApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "ProjectsUpdateColumnApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ProjectsUpdateColumnApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -17268,7 +19262,13 @@ func decodePullsGetResponse(resp *http.Response, span trace.Span) (res PullsGetR
 
 			var response PullsGetApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "PullsGetApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = PullsGetApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -17293,7 +19293,13 @@ func decodePullsGetResponse(resp *http.Response, span trace.Span) (res PullsGetR
 
 			var response PullsGetApplicationJSONInternalServerError
 			if err := func() error {
-				return errors.New(`decoding of "PullsGetApplicationJSONInternalServerError" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = PullsGetApplicationJSONInternalServerError(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -17447,7 +19453,21 @@ func decodePullsListCommentsForReviewResponse(resp *http.Response, span trace.Sp
 
 			var response PullsListCommentsForReviewOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "PullsListCommentsForReviewOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []ReviewComment
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem ReviewComment
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = PullsListCommentsForReviewOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -17735,7 +19755,13 @@ func decodePullsSubmitReviewResponse(resp *http.Response, span trace.Span) (res 
 
 			var response PullsSubmitReviewApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "PullsSubmitReviewApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = PullsSubmitReviewApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -17760,7 +19786,13 @@ func decodePullsSubmitReviewResponse(resp *http.Response, span trace.Span) (res 
 
 			var response PullsSubmitReviewApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "PullsSubmitReviewApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = PullsSubmitReviewApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -17977,7 +20009,13 @@ func decodeReactionsCreateForTeamDiscussionCommentInOrgResponse(resp *http.Respo
 
 			var response ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONOK
 			if err := func() error {
-				return errors.New(`decoding of "ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONOK" (alias) is not implemented`)
+				{
+					var unwrapped Reaction
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONOK(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -18002,7 +20040,13 @@ func decodeReactionsCreateForTeamDiscussionCommentInOrgResponse(resp *http.Respo
 
 			var response ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONCreated
 			if err := func() error {
-				return errors.New(`decoding of "ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONCreated" (alias) is not implemented`)
+				{
+					var unwrapped Reaction
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONCreated(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -18068,7 +20112,13 @@ func decodeReactionsCreateForTeamDiscussionInOrgResponse(resp *http.Response, sp
 
 			var response ReactionsCreateForTeamDiscussionInOrgApplicationJSONOK
 			if err := func() error {
-				return errors.New(`decoding of "ReactionsCreateForTeamDiscussionInOrgApplicationJSONOK" (alias) is not implemented`)
+				{
+					var unwrapped Reaction
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ReactionsCreateForTeamDiscussionInOrgApplicationJSONOK(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -18093,7 +20143,13 @@ func decodeReactionsCreateForTeamDiscussionInOrgResponse(resp *http.Response, sp
 
 			var response ReactionsCreateForTeamDiscussionInOrgApplicationJSONCreated
 			if err := func() error {
-				return errors.New(`decoding of "ReactionsCreateForTeamDiscussionInOrgApplicationJSONCreated" (alias) is not implemented`)
+				{
+					var unwrapped Reaction
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ReactionsCreateForTeamDiscussionInOrgApplicationJSONCreated(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -18217,7 +20273,13 @@ func decodeReactionsDeleteLegacyResponse(resp *http.Response, span trace.Span) (
 
 			var response ReactionsDeleteLegacyApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "ReactionsDeleteLegacyApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ReactionsDeleteLegacyApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -18242,7 +20304,13 @@ func decodeReactionsDeleteLegacyResponse(resp *http.Response, span trace.Span) (
 
 			var response ReactionsDeleteLegacyApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "ReactionsDeleteLegacyApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ReactionsDeleteLegacyApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -18267,7 +20335,13 @@ func decodeReactionsDeleteLegacyResponse(resp *http.Response, span trace.Span) (
 
 			var response ReactionsDeleteLegacyApplicationJSONGone
 			if err := func() error {
-				return errors.New(`decoding of "ReactionsDeleteLegacyApplicationJSONGone" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ReactionsDeleteLegacyApplicationJSONGone(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -18326,7 +20400,21 @@ func decodeReactionsListForCommitCommentResponse(resp *http.Response, span trace
 
 			var response ReactionsListForCommitCommentOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "ReactionsListForCommitCommentOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []Reaction
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem Reaction
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = ReactionsListForCommitCommentOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -18412,7 +20500,21 @@ func decodeReactionsListForIssueResponse(resp *http.Response, span trace.Span) (
 
 			var response ReactionsListForIssueOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "ReactionsListForIssueOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []Reaction
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem Reaction
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = ReactionsListForIssueOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -18437,7 +20539,13 @@ func decodeReactionsListForIssueResponse(resp *http.Response, span trace.Span) (
 
 			var response ReactionsListForIssueApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "ReactionsListForIssueApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ReactionsListForIssueApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -18462,7 +20570,13 @@ func decodeReactionsListForIssueResponse(resp *http.Response, span trace.Span) (
 
 			var response ReactionsListForIssueApplicationJSONGone
 			if err := func() error {
-				return errors.New(`decoding of "ReactionsListForIssueApplicationJSONGone" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ReactionsListForIssueApplicationJSONGone(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -18521,7 +20635,21 @@ func decodeReactionsListForIssueCommentResponse(resp *http.Response, span trace.
 
 			var response ReactionsListForIssueCommentOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "ReactionsListForIssueCommentOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []Reaction
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem Reaction
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = ReactionsListForIssueCommentOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -18607,7 +20735,21 @@ func decodeReactionsListForPullRequestReviewCommentResponse(resp *http.Response,
 
 			var response ReactionsListForPullRequestReviewCommentOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "ReactionsListForPullRequestReviewCommentOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []Reaction
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem Reaction
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = ReactionsListForPullRequestReviewCommentOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -18865,7 +21007,13 @@ func decodeReposAcceptInvitationResponse(resp *http.Response, span trace.Span) (
 
 			var response ReposAcceptInvitationApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "ReposAcceptInvitationApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ReposAcceptInvitationApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -18890,7 +21038,13 @@ func decodeReposAcceptInvitationResponse(resp *http.Response, span trace.Span) (
 
 			var response ReposAcceptInvitationApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "ReposAcceptInvitationApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ReposAcceptInvitationApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -18915,7 +21069,13 @@ func decodeReposAcceptInvitationResponse(resp *http.Response, span trace.Span) (
 
 			var response ReposAcceptInvitationApplicationJSONConflict
 			if err := func() error {
-				return errors.New(`decoding of "ReposAcceptInvitationApplicationJSONConflict" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ReposAcceptInvitationApplicationJSONConflict(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -18996,7 +21156,13 @@ func decodeReposCompareCommitsResponse(resp *http.Response, span trace.Span) (re
 
 			var response ReposCompareCommitsApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "ReposCompareCommitsApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ReposCompareCommitsApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -19021,7 +21187,13 @@ func decodeReposCompareCommitsResponse(resp *http.Response, span trace.Span) (re
 
 			var response ReposCompareCommitsApplicationJSONInternalServerError
 			if err := func() error {
-				return errors.New(`decoding of "ReposCompareCommitsApplicationJSONInternalServerError" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ReposCompareCommitsApplicationJSONInternalServerError(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -19186,7 +21358,13 @@ func decodeReposDeclineInvitationResponse(resp *http.Response, span trace.Span) 
 
 			var response ReposDeclineInvitationApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "ReposDeclineInvitationApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ReposDeclineInvitationApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -19211,7 +21389,13 @@ func decodeReposDeclineInvitationResponse(resp *http.Response, span trace.Span) 
 
 			var response ReposDeclineInvitationApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "ReposDeclineInvitationApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ReposDeclineInvitationApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -19236,7 +21420,13 @@ func decodeReposDeclineInvitationResponse(resp *http.Response, span trace.Span) 
 
 			var response ReposDeclineInvitationApplicationJSONConflict
 			if err := func() error {
-				return errors.New(`decoding of "ReposDeclineInvitationApplicationJSONConflict" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ReposDeclineInvitationApplicationJSONConflict(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -19270,7 +21460,13 @@ func decodeReposDeleteResponse(resp *http.Response, span trace.Span) (res ReposD
 
 			var response ReposDeleteApplicationJSONTemporaryRedirect
 			if err := func() error {
-				return errors.New(`decoding of "ReposDeleteApplicationJSONTemporaryRedirect" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ReposDeleteApplicationJSONTemporaryRedirect(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -19322,7 +21518,13 @@ func decodeReposDeleteResponse(resp *http.Response, span trace.Span) (res ReposD
 
 			var response ReposDeleteApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "ReposDeleteApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ReposDeleteApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -19849,7 +22051,13 @@ func decodeReposGetResponse(resp *http.Response, span trace.Span) (res ReposGetR
 
 			var response ReposGetApplicationJSONMovedPermanently
 			if err := func() error {
-				return errors.New(`decoding of "ReposGetApplicationJSONMovedPermanently" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ReposGetApplicationJSONMovedPermanently(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -19874,7 +22082,13 @@ func decodeReposGetResponse(resp *http.Response, span trace.Span) (res ReposGetR
 
 			var response ReposGetApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "ReposGetApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ReposGetApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -19899,7 +22113,13 @@ func decodeReposGetResponse(resp *http.Response, span trace.Span) (res ReposGetR
 
 			var response ReposGetApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "ReposGetApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ReposGetApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -20026,7 +22246,23 @@ func decodeReposGetAllStatusCheckContextsResponse(resp *http.Response, span trac
 
 			var response ReposGetAllStatusCheckContextsOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "ReposGetAllStatusCheckContextsOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []string
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem string
+						v, err := d.Str()
+						elem = string(v)
+						if err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = ReposGetAllStatusCheckContextsOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -20173,7 +22409,21 @@ func decodeReposGetAppsWithAccessToProtectedBranchResponse(resp *http.Response, 
 
 			var response ReposGetAppsWithAccessToProtectedBranchOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "ReposGetAppsWithAccessToProtectedBranchOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []Integration
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem Integration
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = ReposGetAppsWithAccessToProtectedBranchOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -20320,7 +22570,13 @@ func decodeReposGetBranchResponse(resp *http.Response, span trace.Span) (res Rep
 
 			var response ReposGetBranchApplicationJSONMovedPermanently
 			if err := func() error {
-				return errors.New(`decoding of "ReposGetBranchApplicationJSONMovedPermanently" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ReposGetBranchApplicationJSONMovedPermanently(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -20345,7 +22601,13 @@ func decodeReposGetBranchResponse(resp *http.Response, span trace.Span) (res Rep
 
 			var response ReposGetBranchApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "ReposGetBranchApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ReposGetBranchApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -20526,7 +22788,35 @@ func decodeReposGetCodeFrequencyStatsResponse(resp *http.Response, span trace.Sp
 
 			var response ReposGetCodeFrequencyStatsOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "ReposGetCodeFrequencyStatsOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []CodeFrequencyStat
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem CodeFrequencyStat
+						{
+							var unwrapped []int
+							unwrapped = nil
+							if err := d.Arr(func(d *jx.Decoder) error {
+								var elem int
+								v, err := d.Int()
+								elem = int(v)
+								if err != nil {
+									return err
+								}
+								unwrapped = append(unwrapped, elem)
+								return nil
+							}); err != nil {
+								return err
+							}
+							elem = CodeFrequencyStat(unwrapped)
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = ReposGetCodeFrequencyStatsOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -20709,7 +22999,21 @@ func decodeReposGetCommitActivityStatsResponse(resp *http.Response, span trace.S
 
 			var response ReposGetCommitActivityStatsOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "ReposGetCommitActivityStatsOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []CommitActivity
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem CommitActivity
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = ReposGetCommitActivityStatsOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -20926,7 +23230,21 @@ func decodeReposGetContributorsStatsResponse(resp *http.Response, span trace.Spa
 
 			var response ReposGetContributorsStatsOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "ReposGetContributorsStatsOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []ContributorActivity
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem ContributorActivity
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = ReposGetContributorsStatsOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -21486,7 +23804,35 @@ func decodeReposGetPunchCardStatsResponse(resp *http.Response, span trace.Span) 
 
 			var response ReposGetPunchCardStatsOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "ReposGetPunchCardStatsOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []CodeFrequencyStat
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem CodeFrequencyStat
+						{
+							var unwrapped []int
+							unwrapped = nil
+							if err := d.Arr(func(d *jx.Decoder) error {
+								var elem int
+								v, err := d.Int()
+								elem = int(v)
+								if err != nil {
+									return err
+								}
+								unwrapped = append(unwrapped, elem)
+								return nil
+							}); err != nil {
+								return err
+							}
+							elem = CodeFrequencyStat(unwrapped)
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = ReposGetPunchCardStatsOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -21793,7 +24139,21 @@ func decodeReposGetTeamsWithAccessToProtectedBranchResponse(resp *http.Response,
 
 			var response ReposGetTeamsWithAccessToProtectedBranchOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "ReposGetTeamsWithAccessToProtectedBranchOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []Team
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem Team
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = ReposGetTeamsWithAccessToProtectedBranchOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -21852,7 +24212,21 @@ func decodeReposGetTopPathsResponse(resp *http.Response, span trace.Span) (res R
 
 			var response ReposGetTopPathsOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "ReposGetTopPathsOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []ContentTraffic
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem ContentTraffic
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = ReposGetTopPathsOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -21911,7 +24285,21 @@ func decodeReposGetTopReferrersResponse(resp *http.Response, span trace.Span) (r
 
 			var response ReposGetTopReferrersOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "ReposGetTopReferrersOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []ReferrerTraffic
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem ReferrerTraffic
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = ReposGetTopReferrersOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -21970,7 +24358,21 @@ func decodeReposGetUsersWithAccessToProtectedBranchResponse(resp *http.Response,
 
 			var response ReposGetUsersWithAccessToProtectedBranchOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "ReposGetUsersWithAccessToProtectedBranchOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []SimpleUser
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem SimpleUser
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = ReposGetUsersWithAccessToProtectedBranchOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -22227,7 +24629,21 @@ func decodeReposListBranchesResponse(resp *http.Response, span trace.Span) (res 
 
 			var response ReposListBranchesOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "ReposListBranchesOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []ShortBranch
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem ShortBranch
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = ReposListBranchesOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -22286,7 +24702,21 @@ func decodeReposListCollaboratorsResponse(resp *http.Response, span trace.Span) 
 
 			var response ReposListCollaboratorsOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "ReposListCollaboratorsOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []Collaborator
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem Collaborator
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = ReposListCollaboratorsOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -22429,7 +24859,21 @@ func decodeReposListCommitStatusesForRefResponse(resp *http.Response, span trace
 
 			var response ReposListCommitStatusesForRefOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "ReposListCommitStatusesForRefOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []Status
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem Status
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = ReposListCommitStatusesForRefOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -22488,7 +24932,21 @@ func decodeReposListCommitsResponse(resp *http.Response, span trace.Span) (res R
 
 			var response ReposListCommitsOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "ReposListCommitsOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []Commit
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem Commit
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = ReposListCommitsOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -22513,7 +24971,13 @@ func decodeReposListCommitsResponse(resp *http.Response, span trace.Span) (res R
 
 			var response ReposListCommitsApplicationJSONBadRequest
 			if err := func() error {
-				return errors.New(`decoding of "ReposListCommitsApplicationJSONBadRequest" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ReposListCommitsApplicationJSONBadRequest(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -22538,7 +25002,13 @@ func decodeReposListCommitsResponse(resp *http.Response, span trace.Span) (res R
 
 			var response ReposListCommitsApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "ReposListCommitsApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ReposListCommitsApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -22563,7 +25033,13 @@ func decodeReposListCommitsResponse(resp *http.Response, span trace.Span) (res R
 
 			var response ReposListCommitsApplicationJSONConflict
 			if err := func() error {
-				return errors.New(`decoding of "ReposListCommitsApplicationJSONConflict" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ReposListCommitsApplicationJSONConflict(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -22588,7 +25064,13 @@ func decodeReposListCommitsResponse(resp *http.Response, span trace.Span) (res R
 
 			var response ReposListCommitsApplicationJSONInternalServerError
 			if err := func() error {
-				return errors.New(`decoding of "ReposListCommitsApplicationJSONInternalServerError" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ReposListCommitsApplicationJSONInternalServerError(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -22620,7 +25102,21 @@ func decodeReposListContributorsResponse(resp *http.Response, span trace.Span) (
 
 			var response ReposListContributorsOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "ReposListContributorsOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []Contributor
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem Contributor
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = ReposListContributorsOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -22647,7 +25143,13 @@ func decodeReposListContributorsResponse(resp *http.Response, span trace.Span) (
 
 			var response ReposListContributorsApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "ReposListContributorsApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ReposListContributorsApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -22672,7 +25174,13 @@ func decodeReposListContributorsResponse(resp *http.Response, span trace.Span) (
 
 			var response ReposListContributorsApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "ReposListContributorsApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ReposListContributorsApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -22746,7 +25254,21 @@ func decodeReposListDeploymentStatusesResponse(resp *http.Response, span trace.S
 
 			var response ReposListDeploymentStatusesOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "ReposListDeploymentStatusesOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []DeploymentStatus
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem DeploymentStatus
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = ReposListDeploymentStatusesOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -22889,7 +25411,21 @@ func decodeReposListForksResponse(resp *http.Response, span trace.Span) (res Rep
 
 			var response ReposListForksOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "ReposListForksOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []MinimalRepository
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem MinimalRepository
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = ReposListForksOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -22990,7 +25526,21 @@ func decodeReposListInvitationsForAuthenticatedUserResponse(resp *http.Response,
 
 			var response ReposListInvitationsForAuthenticatedUserOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "ReposListInvitationsForAuthenticatedUserOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []RepositoryInvitation
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem RepositoryInvitation
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = ReposListInvitationsForAuthenticatedUserOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -23017,7 +25567,13 @@ func decodeReposListInvitationsForAuthenticatedUserResponse(resp *http.Response,
 
 			var response ReposListInvitationsForAuthenticatedUserApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "ReposListInvitationsForAuthenticatedUserApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ReposListInvitationsForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -23042,7 +25598,13 @@ func decodeReposListInvitationsForAuthenticatedUserResponse(resp *http.Response,
 
 			var response ReposListInvitationsForAuthenticatedUserApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "ReposListInvitationsForAuthenticatedUserApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ReposListInvitationsForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -23067,7 +25629,13 @@ func decodeReposListInvitationsForAuthenticatedUserResponse(resp *http.Response,
 
 			var response ReposListInvitationsForAuthenticatedUserApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "ReposListInvitationsForAuthenticatedUserApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ReposListInvitationsForAuthenticatedUserApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -23259,7 +25827,21 @@ func decodeReposListReleasesResponse(resp *http.Response, span trace.Span) (res 
 
 			var response ReposListReleasesOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "ReposListReleasesOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []Release
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem Release
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = ReposListReleasesOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -23402,7 +25984,21 @@ func decodeReposListWebhooksResponse(resp *http.Response, span trace.Span) (res 
 
 			var response ReposListWebhooksOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "ReposListWebhooksOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []Hook
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem Hook
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = ReposListWebhooksOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -23833,7 +26429,13 @@ func decodeReposUpdateBranchProtectionResponse(resp *http.Response, span trace.S
 
 			var response ReposUpdateBranchProtectionApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "ReposUpdateBranchProtectionApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ReposUpdateBranchProtectionApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -23858,7 +26460,13 @@ func decodeReposUpdateBranchProtectionResponse(resp *http.Response, span trace.S
 
 			var response ReposUpdateBranchProtectionApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "ReposUpdateBranchProtectionApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ReposUpdateBranchProtectionApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -24145,7 +26753,13 @@ func decodeScimDeleteUserFromOrgResponse(resp *http.Response, span trace.Span) (
 
 			var response ScimDeleteUserFromOrgApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "ScimDeleteUserFromOrgApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped ScimError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ScimDeleteUserFromOrgApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -24170,7 +26784,13 @@ func decodeScimDeleteUserFromOrgResponse(resp *http.Response, span trace.Span) (
 
 			var response ScimDeleteUserFromOrgApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "ScimDeleteUserFromOrgApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped ScimError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ScimDeleteUserFromOrgApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -24391,7 +27011,21 @@ func decodeSecretScanningListAlertsForOrgResponse(resp *http.Response, span trac
 
 			var response SecretScanningListAlertsForOrgOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "SecretScanningListAlertsForOrgOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []OrganizationSecretScanningAlert
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem OrganizationSecretScanningAlert
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = SecretScanningListAlertsForOrgOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -24477,7 +27111,21 @@ func decodeSecretScanningListAlertsForRepoResponse(resp *http.Response, span tra
 
 			var response SecretScanningListAlertsForRepoOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "SecretScanningListAlertsForRepoOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []SecretScanningAlert
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem SecretScanningAlert
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = SecretScanningListAlertsForRepoOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -25520,7 +28168,21 @@ func decodeTeamsListResponse(resp *http.Response, span trace.Span) (res TeamsLis
 
 			var response TeamsListOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "TeamsListOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []Team
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem Team
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = TeamsListOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -25789,7 +28451,21 @@ func decodeTeamsListForAuthenticatedUserResponse(resp *http.Response, span trace
 
 			var response TeamsListForAuthenticatedUserOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "TeamsListForAuthenticatedUserOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []TeamFull
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem TeamFull
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = TeamsListForAuthenticatedUserOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -25816,7 +28492,13 @@ func decodeTeamsListForAuthenticatedUserResponse(resp *http.Response, span trace
 
 			var response TeamsListForAuthenticatedUserApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "TeamsListForAuthenticatedUserApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = TeamsListForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -25841,7 +28523,13 @@ func decodeTeamsListForAuthenticatedUserResponse(resp *http.Response, span trace
 
 			var response TeamsListForAuthenticatedUserApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "TeamsListForAuthenticatedUserApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = TeamsListForAuthenticatedUserApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -25900,7 +28588,13 @@ func decodeTeamsListIdpGroupsForLegacyResponse(resp *http.Response, span trace.S
 
 			var response TeamsListIdpGroupsForLegacyApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "TeamsListIdpGroupsForLegacyApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = TeamsListIdpGroupsForLegacyApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -25925,7 +28619,13 @@ func decodeTeamsListIdpGroupsForLegacyResponse(resp *http.Response, span trace.S
 
 			var response TeamsListIdpGroupsForLegacyApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "TeamsListIdpGroupsForLegacyApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = TeamsListIdpGroupsForLegacyApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -26067,7 +28767,21 @@ func decodeTeamsListMembersLegacyResponse(resp *http.Response, span trace.Span) 
 
 			var response TeamsListMembersLegacyOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "TeamsListMembersLegacyOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []SimpleUser
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem SimpleUser
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = TeamsListMembersLegacyOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -26252,7 +28966,21 @@ func decodeTeamsListProjectsLegacyResponse(resp *http.Response, span trace.Span)
 
 			var response TeamsListProjectsLegacyOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "TeamsListProjectsLegacyOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []TeamProject
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem TeamProject
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = TeamsListProjectsLegacyOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -26353,7 +29081,21 @@ func decodeTeamsListReposLegacyResponse(resp *http.Response, span trace.Span) (r
 
 			var response TeamsListReposLegacyOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "TeamsListReposLegacyOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []MinimalRepository
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem MinimalRepository
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = TeamsListReposLegacyOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -26646,7 +29388,13 @@ func decodeUsersCheckBlockedResponse(resp *http.Response, span trace.Span) (res 
 
 			var response UsersCheckBlockedApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "UsersCheckBlockedApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = UsersCheckBlockedApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -26671,7 +29419,13 @@ func decodeUsersCheckBlockedResponse(resp *http.Response, span trace.Span) (res 
 
 			var response UsersCheckBlockedApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "UsersCheckBlockedApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = UsersCheckBlockedApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -26696,7 +29450,13 @@ func decodeUsersCheckBlockedResponse(resp *http.Response, span trace.Span) (res 
 
 			var response UsersCheckBlockedApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "UsersCheckBlockedApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = UsersCheckBlockedApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -26743,7 +29503,13 @@ func decodeUsersCheckPersonIsFollowedByAuthenticatedResponse(resp *http.Response
 
 			var response UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -26768,7 +29534,13 @@ func decodeUsersCheckPersonIsFollowedByAuthenticatedResponse(resp *http.Response
 
 			var response UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -26793,7 +29565,13 @@ func decodeUsersCheckPersonIsFollowedByAuthenticatedResponse(resp *http.Response
 
 			var response UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -26829,7 +29607,13 @@ func decodeUsersDeletePublicSSHKeyForAuthenticatedResponse(resp *http.Response, 
 
 			var response UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -26854,7 +29638,13 @@ func decodeUsersDeletePublicSSHKeyForAuthenticatedResponse(resp *http.Response, 
 
 			var response UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -26879,7 +29669,13 @@ func decodeUsersDeletePublicSSHKeyForAuthenticatedResponse(resp *http.Response, 
 
 			var response UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -26915,7 +29711,13 @@ func decodeUsersFollowResponse(resp *http.Response, span trace.Span) (res UsersF
 
 			var response UsersFollowApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "UsersFollowApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = UsersFollowApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -26940,7 +29742,13 @@ func decodeUsersFollowResponse(resp *http.Response, span trace.Span) (res UsersF
 
 			var response UsersFollowApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "UsersFollowApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = UsersFollowApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -26965,7 +29773,13 @@ func decodeUsersFollowResponse(resp *http.Response, span trace.Span) (res UsersF
 
 			var response UsersFollowApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "UsersFollowApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = UsersFollowApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -27026,7 +29840,13 @@ func decodeUsersGetAuthenticatedResponse(resp *http.Response, span trace.Span) (
 
 			var response UsersGetAuthenticatedApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "UsersGetAuthenticatedApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = UsersGetAuthenticatedApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -27051,7 +29871,13 @@ func decodeUsersGetAuthenticatedResponse(resp *http.Response, span trace.Span) (
 
 			var response UsersGetAuthenticatedApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "UsersGetAuthenticatedApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = UsersGetAuthenticatedApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -27200,7 +30026,13 @@ func decodeUsersGetGpgKeyForAuthenticatedResponse(resp *http.Response, span trac
 
 			var response UsersGetGpgKeyForAuthenticatedApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "UsersGetGpgKeyForAuthenticatedApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = UsersGetGpgKeyForAuthenticatedApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -27225,7 +30057,13 @@ func decodeUsersGetGpgKeyForAuthenticatedResponse(resp *http.Response, span trac
 
 			var response UsersGetGpgKeyForAuthenticatedApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "UsersGetGpgKeyForAuthenticatedApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = UsersGetGpgKeyForAuthenticatedApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -27250,7 +30088,13 @@ func decodeUsersGetGpgKeyForAuthenticatedResponse(resp *http.Response, span trac
 
 			var response UsersGetGpgKeyForAuthenticatedApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "UsersGetGpgKeyForAuthenticatedApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = UsersGetGpgKeyForAuthenticatedApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -27311,7 +30155,13 @@ func decodeUsersGetPublicSSHKeyForAuthenticatedResponse(resp *http.Response, spa
 
 			var response UsersGetPublicSSHKeyForAuthenticatedApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "UsersGetPublicSSHKeyForAuthenticatedApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = UsersGetPublicSSHKeyForAuthenticatedApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -27336,7 +30186,13 @@ func decodeUsersGetPublicSSHKeyForAuthenticatedResponse(resp *http.Response, spa
 
 			var response UsersGetPublicSSHKeyForAuthenticatedApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "UsersGetPublicSSHKeyForAuthenticatedApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = UsersGetPublicSSHKeyForAuthenticatedApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -27361,7 +30217,13 @@ func decodeUsersGetPublicSSHKeyForAuthenticatedResponse(resp *http.Response, spa
 
 			var response UsersGetPublicSSHKeyForAuthenticatedApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "UsersGetPublicSSHKeyForAuthenticatedApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = UsersGetPublicSSHKeyForAuthenticatedApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -27393,7 +30255,21 @@ func decodeUsersListResponse(resp *http.Response, span trace.Span) (res UsersLis
 
 			var response UsersListOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "UsersListOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []SimpleUser
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem SimpleUser
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = UsersListOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -27427,7 +30303,21 @@ func decodeUsersListBlockedByAuthenticatedResponse(resp *http.Response, span tra
 
 			var response UsersListBlockedByAuthenticatedOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "UsersListBlockedByAuthenticatedOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []SimpleUser
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem SimpleUser
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = UsersListBlockedByAuthenticatedOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -27454,7 +30344,13 @@ func decodeUsersListBlockedByAuthenticatedResponse(resp *http.Response, span tra
 
 			var response UsersListBlockedByAuthenticatedApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "UsersListBlockedByAuthenticatedApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = UsersListBlockedByAuthenticatedApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -27479,7 +30375,13 @@ func decodeUsersListBlockedByAuthenticatedResponse(resp *http.Response, span tra
 
 			var response UsersListBlockedByAuthenticatedApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "UsersListBlockedByAuthenticatedApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = UsersListBlockedByAuthenticatedApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -27504,7 +30406,13 @@ func decodeUsersListBlockedByAuthenticatedResponse(resp *http.Response, span tra
 
 			var response UsersListBlockedByAuthenticatedApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "UsersListBlockedByAuthenticatedApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = UsersListBlockedByAuthenticatedApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -27563,7 +30471,21 @@ func decodeUsersListEmailsForAuthenticatedResponse(resp *http.Response, span tra
 
 			var response UsersListEmailsForAuthenticatedOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "UsersListEmailsForAuthenticatedOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []Email
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem Email
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = UsersListEmailsForAuthenticatedOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -27590,7 +30512,13 @@ func decodeUsersListEmailsForAuthenticatedResponse(resp *http.Response, span tra
 
 			var response UsersListEmailsForAuthenticatedApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "UsersListEmailsForAuthenticatedApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = UsersListEmailsForAuthenticatedApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -27615,7 +30543,13 @@ func decodeUsersListEmailsForAuthenticatedResponse(resp *http.Response, span tra
 
 			var response UsersListEmailsForAuthenticatedApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "UsersListEmailsForAuthenticatedApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = UsersListEmailsForAuthenticatedApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -27640,7 +30574,13 @@ func decodeUsersListEmailsForAuthenticatedResponse(resp *http.Response, span tra
 
 			var response UsersListEmailsForAuthenticatedApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "UsersListEmailsForAuthenticatedApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = UsersListEmailsForAuthenticatedApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -27672,7 +30612,21 @@ func decodeUsersListFollowedByAuthenticatedResponse(resp *http.Response, span tr
 
 			var response UsersListFollowedByAuthenticatedOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "UsersListFollowedByAuthenticatedOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []SimpleUser
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem SimpleUser
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = UsersListFollowedByAuthenticatedOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -27699,7 +30653,13 @@ func decodeUsersListFollowedByAuthenticatedResponse(resp *http.Response, span tr
 
 			var response UsersListFollowedByAuthenticatedApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "UsersListFollowedByAuthenticatedApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = UsersListFollowedByAuthenticatedApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -27724,7 +30684,13 @@ func decodeUsersListFollowedByAuthenticatedResponse(resp *http.Response, span tr
 
 			var response UsersListFollowedByAuthenticatedApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "UsersListFollowedByAuthenticatedApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = UsersListFollowedByAuthenticatedApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -27756,7 +30722,21 @@ func decodeUsersListFollowersForAuthenticatedUserResponse(resp *http.Response, s
 
 			var response UsersListFollowersForAuthenticatedUserOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "UsersListFollowersForAuthenticatedUserOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []SimpleUser
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem SimpleUser
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = UsersListFollowersForAuthenticatedUserOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -27783,7 +30763,13 @@ func decodeUsersListFollowersForAuthenticatedUserResponse(resp *http.Response, s
 
 			var response UsersListFollowersForAuthenticatedUserApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "UsersListFollowersForAuthenticatedUserApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = UsersListFollowersForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -27808,7 +30794,13 @@ func decodeUsersListFollowersForAuthenticatedUserResponse(resp *http.Response, s
 
 			var response UsersListFollowersForAuthenticatedUserApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "UsersListFollowersForAuthenticatedUserApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = UsersListFollowersForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -27924,7 +30916,21 @@ func decodeUsersListGpgKeysForAuthenticatedResponse(resp *http.Response, span tr
 
 			var response UsersListGpgKeysForAuthenticatedOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "UsersListGpgKeysForAuthenticatedOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []GpgKey
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem GpgKey
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = UsersListGpgKeysForAuthenticatedOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -27951,7 +30957,13 @@ func decodeUsersListGpgKeysForAuthenticatedResponse(resp *http.Response, span tr
 
 			var response UsersListGpgKeysForAuthenticatedApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "UsersListGpgKeysForAuthenticatedApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = UsersListGpgKeysForAuthenticatedApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -27976,7 +30988,13 @@ func decodeUsersListGpgKeysForAuthenticatedResponse(resp *http.Response, span tr
 
 			var response UsersListGpgKeysForAuthenticatedApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "UsersListGpgKeysForAuthenticatedApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = UsersListGpgKeysForAuthenticatedApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -28001,7 +31019,13 @@ func decodeUsersListGpgKeysForAuthenticatedResponse(resp *http.Response, span tr
 
 			var response UsersListGpgKeysForAuthenticatedApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "UsersListGpgKeysForAuthenticatedApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = UsersListGpgKeysForAuthenticatedApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -28075,7 +31099,21 @@ func decodeUsersListPublicEmailsForAuthenticatedResponse(resp *http.Response, sp
 
 			var response UsersListPublicEmailsForAuthenticatedOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "UsersListPublicEmailsForAuthenticatedOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []Email
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem Email
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = UsersListPublicEmailsForAuthenticatedOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -28102,7 +31140,13 @@ func decodeUsersListPublicEmailsForAuthenticatedResponse(resp *http.Response, sp
 
 			var response UsersListPublicEmailsForAuthenticatedApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "UsersListPublicEmailsForAuthenticatedApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = UsersListPublicEmailsForAuthenticatedApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -28127,7 +31171,13 @@ func decodeUsersListPublicEmailsForAuthenticatedResponse(resp *http.Response, sp
 
 			var response UsersListPublicEmailsForAuthenticatedApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "UsersListPublicEmailsForAuthenticatedApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = UsersListPublicEmailsForAuthenticatedApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -28152,7 +31202,13 @@ func decodeUsersListPublicEmailsForAuthenticatedResponse(resp *http.Response, sp
 
 			var response UsersListPublicEmailsForAuthenticatedApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "UsersListPublicEmailsForAuthenticatedApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = UsersListPublicEmailsForAuthenticatedApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -28226,7 +31282,21 @@ func decodeUsersListPublicSSHKeysForAuthenticatedResponse(resp *http.Response, s
 
 			var response UsersListPublicSSHKeysForAuthenticatedOKApplicationJSON
 			if err := func() error {
-				return errors.New(`decoding of "UsersListPublicSSHKeysForAuthenticatedOKApplicationJSON" (alias) is not implemented`)
+				{
+					var unwrapped []Key
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem Key
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = UsersListPublicSSHKeysForAuthenticatedOKApplicationJSON(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -28253,7 +31323,13 @@ func decodeUsersListPublicSSHKeysForAuthenticatedResponse(resp *http.Response, s
 
 			var response UsersListPublicSSHKeysForAuthenticatedApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "UsersListPublicSSHKeysForAuthenticatedApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = UsersListPublicSSHKeysForAuthenticatedApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -28278,7 +31354,13 @@ func decodeUsersListPublicSSHKeysForAuthenticatedResponse(resp *http.Response, s
 
 			var response UsersListPublicSSHKeysForAuthenticatedApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "UsersListPublicSSHKeysForAuthenticatedApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = UsersListPublicSSHKeysForAuthenticatedApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -28303,7 +31385,13 @@ func decodeUsersListPublicSSHKeysForAuthenticatedResponse(resp *http.Response, s
 
 			var response UsersListPublicSSHKeysForAuthenticatedApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "UsersListPublicSSHKeysForAuthenticatedApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = UsersListPublicSSHKeysForAuthenticatedApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -28339,7 +31427,13 @@ func decodeUsersUnblockResponse(resp *http.Response, span trace.Span) (res Users
 
 			var response UsersUnblockApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "UsersUnblockApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = UsersUnblockApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -28364,7 +31458,13 @@ func decodeUsersUnblockResponse(resp *http.Response, span trace.Span) (res Users
 
 			var response UsersUnblockApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "UsersUnblockApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = UsersUnblockApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -28389,7 +31489,13 @@ func decodeUsersUnblockResponse(resp *http.Response, span trace.Span) (res Users
 
 			var response UsersUnblockApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "UsersUnblockApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = UsersUnblockApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -28425,7 +31531,13 @@ func decodeUsersUnfollowResponse(resp *http.Response, span trace.Span) (res User
 
 			var response UsersUnfollowApplicationJSONUnauthorized
 			if err := func() error {
-				return errors.New(`decoding of "UsersUnfollowApplicationJSONUnauthorized" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = UsersUnfollowApplicationJSONUnauthorized(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -28450,7 +31562,13 @@ func decodeUsersUnfollowResponse(resp *http.Response, span trace.Span) (res User
 
 			var response UsersUnfollowApplicationJSONForbidden
 			if err := func() error {
-				return errors.New(`decoding of "UsersUnfollowApplicationJSONForbidden" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = UsersUnfollowApplicationJSONForbidden(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err
@@ -28475,7 +31593,13 @@ func decodeUsersUnfollowResponse(resp *http.Response, span trace.Span) (res User
 
 			var response UsersUnfollowApplicationJSONNotFound
 			if err := func() error {
-				return errors.New(`decoding of "UsersUnfollowApplicationJSONNotFound" (alias) is not implemented`)
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = UsersUnfollowApplicationJSONNotFound(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err

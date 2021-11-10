@@ -4071,7 +4071,20 @@ func decodeActionsListJobsForWorkflowRunParams(r *http.Request) (ActionsListJobs
 				return params, errors.Wrap(err, `parse parameter filter located in query`)
 			}
 			if err := func() error {
-				_ = params.Filter // validation expected, but not supported
+
+				if params.Filter.Set {
+					if err := func() error {
+
+						if err := params.Filter.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `invalid parameter filter (query`)
@@ -5871,7 +5884,20 @@ func decodeActionsListWorkflowRunsForRepoParams(r *http.Request) (ActionsListWor
 				return params, errors.Wrap(err, `parse parameter status located in query`)
 			}
 			if err := func() error {
-				_ = params.Status // validation expected, but not supported
+
+				if params.Status.Set {
+					if err := func() error {
+
+						if err := params.Status.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `invalid parameter status (query`)
@@ -8624,7 +8650,20 @@ func decodeActivityListReposStarredByAuthenticatedUserParams(r *http.Request) (A
 				return params, errors.Wrap(err, `parse parameter sort located in query`)
 			}
 			if err := func() error {
-				_ = params.Sort // validation expected, but not supported
+
+				if params.Sort.Set {
+					if err := func() error {
+
+						if err := params.Sort.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `invalid parameter sort (query`)
@@ -8665,7 +8704,20 @@ func decodeActivityListReposStarredByAuthenticatedUserParams(r *http.Request) (A
 				return params, errors.Wrap(err, `parse parameter direction located in query`)
 			}
 			if err := func() error {
-				_ = params.Direction // validation expected, but not supported
+
+				if params.Direction.Set {
+					if err := func() error {
+
+						if err := params.Direction.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `invalid parameter direction (query`)
@@ -9681,7 +9733,20 @@ func decodeAppsListAccountsForPlanStubbedParams(r *http.Request) (AppsListAccoun
 				return params, errors.Wrap(err, `parse parameter sort located in query`)
 			}
 			if err := func() error {
-				_ = params.Sort // validation expected, but not supported
+
+				if params.Sort.Set {
+					if err := func() error {
+
+						if err := params.Sort.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `invalid parameter sort (query`)
@@ -9722,7 +9787,20 @@ func decodeAppsListAccountsForPlanStubbedParams(r *http.Request) (AppsListAccoun
 				return params, errors.Wrap(err, `parse parameter direction located in query`)
 			}
 			if err := func() error {
-				_ = params.Direction // validation expected, but not supported
+
+				if params.Direction.Set {
+					if err := func() error {
+
+						if err := params.Direction.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `invalid parameter direction (query`)
@@ -11341,7 +11419,20 @@ func decodeChecksListForRefParams(r *http.Request) (ChecksListForRefParams, erro
 				return params, errors.Wrap(err, `parse parameter status located in query`)
 			}
 			if err := func() error {
-				_ = params.Status // validation expected, but not supported
+
+				if params.Status.Set {
+					if err := func() error {
+
+						if err := params.Status.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `invalid parameter status (query`)
@@ -11382,7 +11473,20 @@ func decodeChecksListForRefParams(r *http.Request) (ChecksListForRefParams, erro
 				return params, errors.Wrap(err, `parse parameter filter located in query`)
 			}
 			if err := func() error {
-				_ = params.Filter // validation expected, but not supported
+
+				if params.Filter.Set {
+					if err := func() error {
+
+						if err := params.Filter.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `invalid parameter filter (query`)
@@ -11661,7 +11765,20 @@ func decodeChecksListForSuiteParams(r *http.Request) (ChecksListForSuiteParams, 
 				return params, errors.Wrap(err, `parse parameter status located in query`)
 			}
 			if err := func() error {
-				_ = params.Status // validation expected, but not supported
+
+				if params.Status.Set {
+					if err := func() error {
+
+						if err := params.Status.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `invalid parameter status (query`)
@@ -11702,7 +11819,20 @@ func decodeChecksListForSuiteParams(r *http.Request) (ChecksListForSuiteParams, 
 				return params, errors.Wrap(err, `parse parameter filter located in query`)
 			}
 			if err := func() error {
-				_ = params.Filter // validation expected, but not supported
+
+				if params.Filter.Set {
+					if err := func() error {
+
+						if err := params.Filter.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `invalid parameter filter (query`)
@@ -13130,7 +13260,20 @@ func decodeCodeScanningListAlertsForRepoParams(r *http.Request) (CodeScanningLis
 				return params, errors.Wrap(err, `parse parameter state located in query`)
 			}
 			if err := func() error {
-				_ = params.State // validation expected, but not supported
+
+				if params.State.Set {
+					if err := func() error {
+
+						if err := params.State.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `invalid parameter state (query`)
@@ -14497,7 +14640,20 @@ func decodeEnterpriseAdminGetAuditLogParams(r *http.Request) (EnterpriseAdminGet
 				return params, errors.Wrap(err, `parse parameter include located in query`)
 			}
 			if err := func() error {
-				_ = params.Include // validation expected, but not supported
+
+				if params.Include.Set {
+					if err := func() error {
+
+						if err := params.Include.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `invalid parameter include (query`)
@@ -14608,7 +14764,20 @@ func decodeEnterpriseAdminGetAuditLogParams(r *http.Request) (EnterpriseAdminGet
 				return params, errors.Wrap(err, `parse parameter order located in query`)
 			}
 			if err := func() error {
-				_ = params.Order // validation expected, but not supported
+
+				if params.Order.Set {
+					if err := func() error {
+
+						if err := params.Order.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `invalid parameter order (query`)
@@ -20166,7 +20335,20 @@ func decodeIssuesListMilestonesParams(r *http.Request) (IssuesListMilestonesPara
 				return params, errors.Wrap(err, `parse parameter state located in query`)
 			}
 			if err := func() error {
-				_ = params.State // validation expected, but not supported
+
+				if params.State.Set {
+					if err := func() error {
+
+						if err := params.State.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `invalid parameter state (query`)
@@ -20207,7 +20389,20 @@ func decodeIssuesListMilestonesParams(r *http.Request) (IssuesListMilestonesPara
 				return params, errors.Wrap(err, `parse parameter sort located in query`)
 			}
 			if err := func() error {
-				_ = params.Sort // validation expected, but not supported
+
+				if params.Sort.Set {
+					if err := func() error {
+
+						if err := params.Sort.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `invalid parameter sort (query`)
@@ -20248,7 +20443,20 @@ func decodeIssuesListMilestonesParams(r *http.Request) (IssuesListMilestonesPara
 				return params, errors.Wrap(err, `parse parameter direction located in query`)
 			}
 			if err := func() error {
-				_ = params.Direction // validation expected, but not supported
+
+				if params.Direction.Set {
+					if err := func() error {
+
+						if err := params.Direction.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `invalid parameter direction (query`)
@@ -21842,10 +22050,14 @@ func decodeMigrationsGetStatusForOrgParams(r *http.Request) (MigrationsGetStatus
 				return params, errors.Wrap(err, `parse parameter exclude located in query`)
 			}
 			if err := func() error {
+
 				var failures []validate.FieldError
 				for i, elem := range params.Exclude {
 					if err := func() error {
-						_ = elem // validation expected, but not supported
+
+						if err := elem.Validate(); err != nil {
+							return err
+						}
 						return nil
 					}(); err != nil {
 						failures = append(failures, validate.FieldError{
@@ -22080,10 +22292,14 @@ func decodeMigrationsListForOrgParams(r *http.Request) (MigrationsListForOrgPara
 				return params, errors.Wrap(err, `parse parameter exclude located in query`)
 			}
 			if err := func() error {
+
 				var failures []validate.FieldError
 				for i, elem := range params.Exclude {
 					if err := func() error {
-						_ = elem // validation expected, but not supported
+
+						if err := elem.Validate(); err != nil {
+							return err
+						}
 						return nil
 					}(); err != nil {
 						failures = append(failures, validate.FieldError{
@@ -23416,7 +23632,20 @@ func decodeOrgsGetAuditLogParams(r *http.Request) (OrgsGetAuditLogParams, error)
 				return params, errors.Wrap(err, `parse parameter include located in query`)
 			}
 			if err := func() error {
-				_ = params.Include // validation expected, but not supported
+
+				if params.Include.Set {
+					if err := func() error {
+
+						if err := params.Include.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `invalid parameter include (query`)
@@ -23527,7 +23756,20 @@ func decodeOrgsGetAuditLogParams(r *http.Request) (OrgsGetAuditLogParams, error)
 				return params, errors.Wrap(err, `parse parameter order located in query`)
 			}
 			if err := func() error {
-				_ = params.Order // validation expected, but not supported
+
+				if params.Order.Set {
+					if err := func() error {
+
+						if err := params.Order.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `invalid parameter order (query`)
@@ -24446,7 +24688,20 @@ func decodeOrgsListOutsideCollaboratorsParams(r *http.Request) (OrgsListOutsideC
 				return params, errors.Wrap(err, `parse parameter filter located in query`)
 			}
 			if err := func() error {
-				_ = params.Filter // validation expected, but not supported
+
+				if params.Filter.Set {
+					if err := func() error {
+
+						if err := params.Filter.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `invalid parameter filter (query`)
@@ -26270,7 +26525,20 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams
 				return params, errors.Wrap(err, `parse parameter state located in query`)
 			}
 			if err := func() error {
-				_ = params.State // validation expected, but not supported
+
+				if params.State.Set {
+					if err := func() error {
+
+						if err := params.State.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `invalid parameter state (query`)
@@ -26479,7 +26747,20 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(r *http.Reque
 				return params, errors.Wrap(err, `parse parameter state located in query`)
 			}
 			if err := func() error {
-				_ = params.State // validation expected, but not supported
+
+				if params.State.Set {
+					if err := func() error {
+
+						if err := params.State.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `invalid parameter state (query`)
@@ -27235,7 +27516,10 @@ func decodePackagesListPackagesForAuthenticatedUserParams(r *http.Request) (Pack
 				return params, errors.Wrap(err, `parse parameter package_type located in query`)
 			}
 			if err := func() error {
-				_ = params.PackageType // validation expected, but not supported
+
+				if err := params.PackageType.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `invalid parameter package_type (query`)
@@ -27278,7 +27562,20 @@ func decodePackagesListPackagesForAuthenticatedUserParams(r *http.Request) (Pack
 				return params, errors.Wrap(err, `parse parameter visibility located in query`)
 			}
 			if err := func() error {
-				_ = params.Visibility // validation expected, but not supported
+
+				if params.Visibility.Set {
+					if err := func() error {
+
+						if err := params.Visibility.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `invalid parameter visibility (query`)
@@ -27317,7 +27614,10 @@ func decodePackagesListPackagesForOrganizationParams(r *http.Request) (PackagesL
 				return params, errors.Wrap(err, `parse parameter package_type located in query`)
 			}
 			if err := func() error {
-				_ = params.PackageType // validation expected, but not supported
+
+				if err := params.PackageType.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `invalid parameter package_type (query`)
@@ -27391,7 +27691,20 @@ func decodePackagesListPackagesForOrganizationParams(r *http.Request) (PackagesL
 				return params, errors.Wrap(err, `parse parameter visibility located in query`)
 			}
 			if err := func() error {
-				_ = params.Visibility // validation expected, but not supported
+
+				if params.Visibility.Set {
+					if err := func() error {
+
+						if err := params.Visibility.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `invalid parameter visibility (query`)
@@ -27430,7 +27743,10 @@ func decodePackagesListPackagesForUserParams(r *http.Request) (PackagesListPacka
 				return params, errors.Wrap(err, `parse parameter package_type located in query`)
 			}
 			if err := func() error {
-				_ = params.PackageType // validation expected, but not supported
+
+				if err := params.PackageType.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `invalid parameter package_type (query`)
@@ -27473,7 +27789,20 @@ func decodePackagesListPackagesForUserParams(r *http.Request) (PackagesListPacka
 				return params, errors.Wrap(err, `parse parameter visibility located in query`)
 			}
 			if err := func() error {
-				_ = params.Visibility // validation expected, but not supported
+
+				if params.Visibility.Set {
+					if err := func() error {
+
+						if err := params.Visibility.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `invalid parameter visibility (query`)
@@ -28660,7 +28989,20 @@ func decodeProjectsListCardsParams(r *http.Request) (ProjectsListCardsParams, er
 				return params, errors.Wrap(err, `parse parameter archived_state located in query`)
 			}
 			if err := func() error {
-				_ = params.ArchivedState // validation expected, but not supported
+
+				if params.ArchivedState.Set {
+					if err := func() error {
+
+						if err := params.ArchivedState.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `invalid parameter archived_state (query`)
@@ -28913,7 +29255,20 @@ func decodeProjectsListForOrgParams(r *http.Request) (ProjectsListForOrgParams, 
 				return params, errors.Wrap(err, `parse parameter state located in query`)
 			}
 			if err := func() error {
-				_ = params.State // validation expected, but not supported
+
+				if params.State.Set {
+					if err := func() error {
+
+						if err := params.State.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `invalid parameter state (query`)
@@ -29091,7 +29446,20 @@ func decodeProjectsListForRepoParams(r *http.Request) (ProjectsListForRepoParams
 				return params, errors.Wrap(err, `parse parameter state located in query`)
 			}
 			if err := func() error {
-				_ = params.State // validation expected, but not supported
+
+				if params.State.Set {
+					if err := func() error {
+
+						if err := params.State.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `invalid parameter state (query`)
@@ -30985,7 +31353,20 @@ func decodePullsListReviewCommentsParams(r *http.Request) (PullsListReviewCommen
 				return params, errors.Wrap(err, `parse parameter sort located in query`)
 			}
 			if err := func() error {
-				_ = params.Sort // validation expected, but not supported
+
+				if params.Sort.Set {
+					if err := func() error {
+
+						if err := params.Sort.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `invalid parameter sort (query`)
@@ -31026,7 +31407,20 @@ func decodePullsListReviewCommentsParams(r *http.Request) (PullsListReviewCommen
 				return params, errors.Wrap(err, `parse parameter direction located in query`)
 			}
 			if err := func() error {
-				_ = params.Direction // validation expected, but not supported
+
+				if params.Direction.Set {
+					if err := func() error {
+
+						if err := params.Direction.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `invalid parameter direction (query`)
@@ -31239,7 +31633,20 @@ func decodePullsListReviewCommentsForRepoParams(r *http.Request) (PullsListRevie
 				return params, errors.Wrap(err, `parse parameter sort located in query`)
 			}
 			if err := func() error {
-				_ = params.Sort // validation expected, but not supported
+
+				if params.Sort.Set {
+					if err := func() error {
+
+						if err := params.Sort.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `invalid parameter sort (query`)
@@ -31280,7 +31687,20 @@ func decodePullsListReviewCommentsForRepoParams(r *http.Request) (PullsListRevie
 				return params, errors.Wrap(err, `parse parameter direction located in query`)
 			}
 			if err := func() error {
-				_ = params.Direction // validation expected, but not supported
+
+				if params.Direction.Set {
+					if err := func() error {
+
+						if err := params.Direction.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `invalid parameter direction (query`)
@@ -33281,7 +33701,20 @@ func decodeReactionsListForCommitCommentParams(r *http.Request) (ReactionsListFo
 				return params, errors.Wrap(err, `parse parameter content located in query`)
 			}
 			if err := func() error {
-				_ = params.Content // validation expected, but not supported
+
+				if params.Content.Set {
+					if err := func() error {
+
+						if err := params.Content.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `invalid parameter content (query`)
@@ -33490,7 +33923,20 @@ func decodeReactionsListForIssueParams(r *http.Request) (ReactionsListForIssuePa
 				return params, errors.Wrap(err, `parse parameter content located in query`)
 			}
 			if err := func() error {
-				_ = params.Content // validation expected, but not supported
+
+				if params.Content.Set {
+					if err := func() error {
+
+						if err := params.Content.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `invalid parameter content (query`)
@@ -33699,7 +34145,20 @@ func decodeReactionsListForIssueCommentParams(r *http.Request) (ReactionsListFor
 				return params, errors.Wrap(err, `parse parameter content located in query`)
 			}
 			if err := func() error {
-				_ = params.Content // validation expected, but not supported
+
+				if params.Content.Set {
+					if err := func() error {
+
+						if err := params.Content.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `invalid parameter content (query`)
@@ -33908,7 +34367,20 @@ func decodeReactionsListForPullRequestReviewCommentParams(r *http.Request) (Reac
 				return params, errors.Wrap(err, `parse parameter content located in query`)
 			}
 			if err := func() error {
-				_ = params.Content // validation expected, but not supported
+
+				if params.Content.Set {
+					if err := func() error {
+
+						if err := params.Content.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `invalid parameter content (query`)
@@ -34148,7 +34620,20 @@ func decodeReactionsListForTeamDiscussionCommentInOrgParams(r *http.Request) (Re
 				return params, errors.Wrap(err, `parse parameter content located in query`)
 			}
 			if err := func() error {
-				_ = params.Content // validation expected, but not supported
+
+				if params.Content.Set {
+					if err := func() error {
+
+						if err := params.Content.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `invalid parameter content (query`)
@@ -34357,7 +34842,20 @@ func decodeReactionsListForTeamDiscussionCommentLegacyParams(r *http.Request) (R
 				return params, errors.Wrap(err, `parse parameter content located in query`)
 			}
 			if err := func() error {
-				_ = params.Content // validation expected, but not supported
+
+				if params.Content.Set {
+					if err := func() error {
+
+						if err := params.Content.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `invalid parameter content (query`)
@@ -34566,7 +35064,20 @@ func decodeReactionsListForTeamDiscussionInOrgParams(r *http.Request) (Reactions
 				return params, errors.Wrap(err, `parse parameter content located in query`)
 			}
 			if err := func() error {
-				_ = params.Content // validation expected, but not supported
+
+				if params.Content.Set {
+					if err := func() error {
+
+						if err := params.Content.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `invalid parameter content (query`)
@@ -34744,7 +35255,20 @@ func decodeReactionsListForTeamDiscussionLegacyParams(r *http.Request) (Reaction
 				return params, errors.Wrap(err, `parse parameter content located in query`)
 			}
 			if err := func() error {
-				_ = params.Content // validation expected, but not supported
+
+				if params.Content.Set {
+					if err := func() error {
+
+						if err := params.Content.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `invalid parameter content (query`)
@@ -38517,7 +39041,20 @@ func decodeReposGetClonesParams(r *http.Request) (ReposGetClonesParams, error) {
 				return params, errors.Wrap(err, `parse parameter per located in query`)
 			}
 			if err := func() error {
-				_ = params.Per // validation expected, but not supported
+
+				if params.Per.Set {
+					if err := func() error {
+
+						if err := params.Per.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `invalid parameter per (query`)
@@ -40902,7 +41439,20 @@ func decodeReposGetViewsParams(r *http.Request) (ReposGetViewsParams, error) {
 				return params, errors.Wrap(err, `parse parameter per located in query`)
 			}
 			if err := func() error {
-				_ = params.Per // validation expected, but not supported
+
+				if params.Per.Set {
+					if err := func() error {
+
+						if err := params.Per.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `invalid parameter per (query`)
@@ -41480,7 +42030,20 @@ func decodeReposListCollaboratorsParams(r *http.Request) (ReposListCollaborators
 				return params, errors.Wrap(err, `parse parameter affiliation located in query`)
 			}
 			if err := func() error {
-				_ = params.Affiliation // validation expected, but not supported
+
+				if params.Affiliation.Set {
+					if err := func() error {
+
+						if err := params.Affiliation.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `invalid parameter affiliation (query`)
@@ -42889,7 +43452,20 @@ func decodeReposListForOrgParams(r *http.Request) (ReposListForOrgParams, error)
 				return params, errors.Wrap(err, `parse parameter type located in query`)
 			}
 			if err := func() error {
-				_ = params.Type // validation expected, but not supported
+
+				if params.Type.Set {
+					if err := func() error {
+
+						if err := params.Type.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `invalid parameter type (query`)
@@ -42930,7 +43506,20 @@ func decodeReposListForOrgParams(r *http.Request) (ReposListForOrgParams, error)
 				return params, errors.Wrap(err, `parse parameter sort located in query`)
 			}
 			if err := func() error {
-				_ = params.Sort // validation expected, but not supported
+
+				if params.Sort.Set {
+					if err := func() error {
+
+						if err := params.Sort.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `invalid parameter sort (query`)
@@ -42971,7 +43560,20 @@ func decodeReposListForOrgParams(r *http.Request) (ReposListForOrgParams, error)
 				return params, errors.Wrap(err, `parse parameter direction located in query`)
 			}
 			if err := func() error {
-				_ = params.Direction // validation expected, but not supported
+
+				if params.Direction.Set {
+					if err := func() error {
+
+						if err := params.Direction.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `invalid parameter direction (query`)
@@ -43118,7 +43720,20 @@ func decodeReposListForUserParams(r *http.Request) (ReposListForUserParams, erro
 				return params, errors.Wrap(err, `parse parameter type located in query`)
 			}
 			if err := func() error {
-				_ = params.Type // validation expected, but not supported
+
+				if params.Type.Set {
+					if err := func() error {
+
+						if err := params.Type.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `invalid parameter type (query`)
@@ -43159,7 +43774,20 @@ func decodeReposListForUserParams(r *http.Request) (ReposListForUserParams, erro
 				return params, errors.Wrap(err, `parse parameter sort located in query`)
 			}
 			if err := func() error {
-				_ = params.Sort // validation expected, but not supported
+
+				if params.Sort.Set {
+					if err := func() error {
+
+						if err := params.Sort.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `invalid parameter sort (query`)
@@ -43200,7 +43828,20 @@ func decodeReposListForUserParams(r *http.Request) (ReposListForUserParams, erro
 				return params, errors.Wrap(err, `parse parameter direction located in query`)
 			}
 			if err := func() error {
-				_ = params.Direction // validation expected, but not supported
+
+				if params.Direction.Set {
+					if err := func() error {
+
+						if err := params.Direction.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `invalid parameter direction (query`)
@@ -43378,7 +44019,20 @@ func decodeReposListForksParams(r *http.Request) (ReposListForksParams, error) {
 				return params, errors.Wrap(err, `parse parameter sort located in query`)
 			}
 			if err := func() error {
-				_ = params.Sort // validation expected, but not supported
+
+				if params.Sort.Set {
+					if err := func() error {
+
+						if err := params.Sort.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `invalid parameter sort (query`)
@@ -46237,7 +46891,20 @@ func decodeSearchCommitsParams(r *http.Request) (SearchCommitsParams, error) {
 				return params, errors.Wrap(err, `parse parameter sort located in query`)
 			}
 			if err := func() error {
-				_ = params.Sort // validation expected, but not supported
+
+				if params.Sort.Set {
+					if err := func() error {
+
+						if err := params.Sort.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `invalid parameter sort (query`)
@@ -46278,7 +46945,20 @@ func decodeSearchCommitsParams(r *http.Request) (SearchCommitsParams, error) {
 				return params, errors.Wrap(err, `parse parameter order located in query`)
 			}
 			if err := func() error {
-				_ = params.Order // validation expected, but not supported
+
+				if params.Order.Set {
+					if err := func() error {
+
+						if err := params.Order.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `invalid parameter order (query`)
@@ -46635,7 +47315,20 @@ func decodeSecretScanningListAlertsForOrgParams(r *http.Request) (SecretScanning
 				return params, errors.Wrap(err, `parse parameter state located in query`)
 			}
 			if err := func() error {
-				_ = params.State // validation expected, but not supported
+
+				if params.State.Set {
+					if err := func() error {
+
+						if err := params.State.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `invalid parameter state (query`)
@@ -46848,7 +47541,20 @@ func decodeSecretScanningListAlertsForRepoParams(r *http.Request) (SecretScannin
 				return params, errors.Wrap(err, `parse parameter state located in query`)
 			}
 			if err := func() error {
-				_ = params.State // validation expected, but not supported
+
+				if params.State.Set {
+					if err := func() error {
+
+						if err := params.State.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `invalid parameter state (query`)
@@ -49812,7 +50518,20 @@ func decodeTeamsListDiscussionCommentsInOrgParams(r *http.Request) (TeamsListDis
 				return params, errors.Wrap(err, `parse parameter direction located in query`)
 			}
 			if err := func() error {
-				_ = params.Direction // validation expected, but not supported
+
+				if params.Direction.Set {
+					if err := func() error {
+
+						if err := params.Direction.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `invalid parameter direction (query`)
@@ -49990,7 +50709,20 @@ func decodeTeamsListDiscussionCommentsLegacyParams(r *http.Request) (TeamsListDi
 				return params, errors.Wrap(err, `parse parameter direction located in query`)
 			}
 			if err := func() error {
-				_ = params.Direction // validation expected, but not supported
+
+				if params.Direction.Set {
+					if err := func() error {
+
+						if err := params.Direction.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `invalid parameter direction (query`)
@@ -50168,7 +50900,20 @@ func decodeTeamsListDiscussionsInOrgParams(r *http.Request) (TeamsListDiscussion
 				return params, errors.Wrap(err, `parse parameter direction located in query`)
 			}
 			if err := func() error {
-				_ = params.Direction // validation expected, but not supported
+
+				if params.Direction.Set {
+					if err := func() error {
+
+						if err := params.Direction.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `invalid parameter direction (query`)
@@ -50350,7 +51095,20 @@ func decodeTeamsListDiscussionsLegacyParams(r *http.Request) (TeamsListDiscussio
 				return params, errors.Wrap(err, `parse parameter direction located in query`)
 			}
 			if err := func() error {
-				_ = params.Direction // validation expected, but not supported
+
+				if params.Direction.Set {
+					if err := func() error {
+
+						if err := params.Direction.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `invalid parameter direction (query`)
@@ -50812,7 +51570,20 @@ func decodeTeamsListMembersInOrgParams(r *http.Request) (TeamsListMembersInOrgPa
 				return params, errors.Wrap(err, `parse parameter role located in query`)
 			}
 			if err := func() error {
-				_ = params.Role // validation expected, but not supported
+
+				if params.Role.Set {
+					if err := func() error {
+
+						if err := params.Role.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `invalid parameter role (query`)
@@ -50959,7 +51730,20 @@ func decodeTeamsListMembersLegacyParams(r *http.Request) (TeamsListMembersLegacy
 				return params, errors.Wrap(err, `parse parameter role located in query`)
 			}
 			if err := func() error {
-				_ = params.Role // validation expected, but not supported
+
+				if params.Role.Set {
+					if err := func() error {
+
+						if err := params.Role.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `invalid parameter role (query`)

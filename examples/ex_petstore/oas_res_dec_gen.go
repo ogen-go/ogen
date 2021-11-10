@@ -118,7 +118,21 @@ func decodeListPetsResponse(resp *http.Response, span trace.Span) (res ListPetsR
 
 			var response Pets
 			if err := func() error {
-				return errors.New(`decoding of "Pets" (alias) is not implemented`)
+				{
+					var unwrapped []Pet
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem Pet
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = Pets(unwrapped)
+				}
 				return nil
 			}(); err != nil {
 				return res, err

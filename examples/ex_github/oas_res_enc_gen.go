@@ -106,7 +106,8 @@ func encodeActionsApproveWorkflowRunResponse(response ActionsApproveWorkflowRunR
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -117,7 +118,8 @@ func encodeActionsApproveWorkflowRunResponse(response ActionsApproveWorkflowRunR
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -968,7 +970,8 @@ func encodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(response Activi
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -979,7 +982,8 @@ func encodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(response Activi
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -990,7 +994,8 @@ func encodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(response Activi
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1019,7 +1024,8 @@ func encodeActivityDeleteThreadSubscriptionResponse(response ActivityDeleteThrea
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1030,7 +1036,8 @@ func encodeActivityDeleteThreadSubscriptionResponse(response ActivityDeleteThrea
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1111,7 +1118,8 @@ func encodeActivityGetThreadResponse(response ActivityGetThreadRes, w http.Respo
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1122,7 +1130,8 @@ func encodeActivityGetThreadResponse(response ActivityGetThreadRes, w http.Respo
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1155,7 +1164,8 @@ func encodeActivityGetThreadSubscriptionForAuthenticatedUserResponse(response Ac
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1166,7 +1176,8 @@ func encodeActivityGetThreadSubscriptionForAuthenticatedUserResponse(response Ac
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1220,7 +1231,8 @@ func encodeActivityListPublicEventsResponse(response ActivityListPublicEventsRes
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1265,7 +1277,8 @@ func encodeActivityListPublicEventsForRepoNetworkResponse(response ActivityListP
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1276,7 +1289,8 @@ func encodeActivityListPublicEventsForRepoNetworkResponse(response ActivityListP
 		w.WriteHeader(301)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1290,7 +1304,8 @@ func encodeActivityListPublicEventsForRepoNetworkResponse(response ActivityListP
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1301,7 +1316,8 @@ func encodeActivityListPublicEventsForRepoNetworkResponse(response ActivityListP
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1427,7 +1443,8 @@ func encodeActivityListReposStarredByAuthenticatedUserResponse(response Activity
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1441,7 +1458,8 @@ func encodeActivityListReposStarredByAuthenticatedUserResponse(response Activity
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1452,7 +1470,8 @@ func encodeActivityListReposStarredByAuthenticatedUserResponse(response Activity
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1488,7 +1507,8 @@ func encodeActivityListWatchedReposForAuthenticatedUserResponse(response Activit
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1502,7 +1522,8 @@ func encodeActivityListWatchedReposForAuthenticatedUserResponse(response Activit
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1513,7 +1534,8 @@ func encodeActivityListWatchedReposForAuthenticatedUserResponse(response Activit
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1567,7 +1589,8 @@ func encodeActivityMarkNotificationsAsReadResponse(response ActivityMarkNotifica
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1578,7 +1601,8 @@ func encodeActivityMarkNotificationsAsReadResponse(response ActivityMarkNotifica
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1672,7 +1696,8 @@ func encodeActivitySetThreadSubscriptionResponse(response ActivitySetThreadSubsc
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1683,7 +1708,8 @@ func encodeActivitySetThreadSubscriptionResponse(response ActivitySetThreadSubsc
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1707,7 +1733,8 @@ func encodeActivityStarRepoForAuthenticatedUserResponse(response ActivityStarRep
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1718,7 +1745,8 @@ func encodeActivityStarRepoForAuthenticatedUserResponse(response ActivityStarRep
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1729,7 +1757,8 @@ func encodeActivityStarRepoForAuthenticatedUserResponse(response ActivityStarRep
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1753,7 +1782,8 @@ func encodeActivityUnstarRepoForAuthenticatedUserResponse(response ActivityUnsta
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1764,7 +1794,8 @@ func encodeActivityUnstarRepoForAuthenticatedUserResponse(response ActivityUnsta
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1775,7 +1806,8 @@ func encodeActivityUnstarRepoForAuthenticatedUserResponse(response ActivityUnsta
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1799,7 +1831,8 @@ func encodeAppsAddRepoToInstallationResponse(response AppsAddRepoToInstallationR
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1810,7 +1843,8 @@ func encodeAppsAddRepoToInstallationResponse(response AppsAddRepoToInstallationR
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1876,7 +1910,8 @@ func encodeAppsGetBySlugResponse(response AppsGetBySlugRes, w http.ResponseWrite
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1887,7 +1922,8 @@ func encodeAppsGetBySlugResponse(response AppsGetBySlugRes, w http.ResponseWrite
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1929,7 +1965,8 @@ func encodeAppsGetSubscriptionPlanForAccountResponse(response AppsGetSubscriptio
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1940,7 +1977,8 @@ func encodeAppsGetSubscriptionPlanForAccountResponse(response AppsGetSubscriptio
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -2006,7 +2044,8 @@ func encodeAppsListAccountsForPlanStubbedResponse(response AppsListAccountsForPl
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -2051,7 +2090,8 @@ func encodeAppsListInstallationReposForAuthenticatedUserResponse(response AppsLi
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -2062,7 +2102,8 @@ func encodeAppsListInstallationReposForAuthenticatedUserResponse(response AppsLi
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -2080,7 +2121,8 @@ func encodeAppsListPlansResponse(response AppsListPlansRes, w http.ResponseWrite
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -2091,7 +2133,8 @@ func encodeAppsListPlansResponse(response AppsListPlansRes, w http.ResponseWrite
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -2102,7 +2145,8 @@ func encodeAppsListPlansResponse(response AppsListPlansRes, w http.ResponseWrite
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -2120,7 +2164,8 @@ func encodeAppsListPlansStubbedResponse(response AppsListPlansStubbedRes, w http
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -2165,7 +2210,8 @@ func encodeAppsListReposAccessibleToInstallationResponse(response AppsListReposA
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -2176,7 +2222,8 @@ func encodeAppsListReposAccessibleToInstallationResponse(response AppsListReposA
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -2194,7 +2241,8 @@ func encodeAppsListSubscriptionsForAuthenticatedUserResponse(response AppsListSu
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -2208,7 +2256,8 @@ func encodeAppsListSubscriptionsForAuthenticatedUserResponse(response AppsListSu
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -2219,7 +2268,8 @@ func encodeAppsListSubscriptionsForAuthenticatedUserResponse(response AppsListSu
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -2237,7 +2287,8 @@ func encodeAppsListSubscriptionsForAuthenticatedUserStubbedResponse(response App
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -2276,7 +2327,8 @@ func encodeAppsRemoveRepoFromInstallationResponse(response AppsRemoveRepoFromIns
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -2287,7 +2339,8 @@ func encodeAppsRemoveRepoFromInstallationResponse(response AppsRemoveRepoFromIns
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -2494,7 +2547,8 @@ func encodeChecksCreateSuiteResponse(response ChecksCreateSuiteRes, w http.Respo
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -2505,7 +2559,8 @@ func encodeChecksCreateSuiteResponse(response ChecksCreateSuiteRes, w http.Respo
 		w.WriteHeader(201)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -2651,7 +2706,8 @@ func encodeCodeScanningDeleteAnalysisResponse(response CodeScanningDeleteAnalysi
 		w.WriteHeader(400)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -2662,7 +2718,8 @@ func encodeCodeScanningDeleteAnalysisResponse(response CodeScanningDeleteAnalysi
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -2673,7 +2730,8 @@ func encodeCodeScanningDeleteAnalysisResponse(response CodeScanningDeleteAnalysi
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -2715,7 +2773,8 @@ func encodeCodeScanningGetAlertResponse(response CodeScanningGetAlertRes, w http
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -2726,7 +2785,8 @@ func encodeCodeScanningGetAlertResponse(response CodeScanningGetAlertRes, w http
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -2768,7 +2828,8 @@ func encodeCodeScanningGetAnalysisResponse(response CodeScanningGetAnalysisRes, 
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -2779,7 +2840,8 @@ func encodeCodeScanningGetAnalysisResponse(response CodeScanningGetAnalysisRes, 
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -2855,7 +2917,8 @@ func encodeCodeScanningListAlertInstancesResponse(response CodeScanningListAlert
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -2866,7 +2929,8 @@ func encodeCodeScanningListAlertInstancesResponse(response CodeScanningListAlert
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -2877,7 +2941,8 @@ func encodeCodeScanningListAlertInstancesResponse(response CodeScanningListAlert
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -2907,7 +2972,8 @@ func encodeCodeScanningListAlertsForRepoResponse(response CodeScanningListAlerts
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -2918,7 +2984,8 @@ func encodeCodeScanningListAlertsForRepoResponse(response CodeScanningListAlerts
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -2929,7 +2996,8 @@ func encodeCodeScanningListAlertsForRepoResponse(response CodeScanningListAlerts
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -2959,7 +3027,8 @@ func encodeCodeScanningListRecentAnalysesResponse(response CodeScanningListRecen
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -2970,7 +3039,8 @@ func encodeCodeScanningListRecentAnalysesResponse(response CodeScanningListRecen
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -2981,7 +3051,8 @@ func encodeCodeScanningListRecentAnalysesResponse(response CodeScanningListRecen
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -3023,7 +3094,8 @@ func encodeCodeScanningUpdateAlertResponse(response CodeScanningUpdateAlertRes, 
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -3034,7 +3106,8 @@ func encodeCodeScanningUpdateAlertResponse(response CodeScanningUpdateAlertRes, 
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -3079,7 +3152,8 @@ func encodeCodeScanningUploadSarifResponse(response CodeScanningUploadSarifRes, 
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -3090,7 +3164,8 @@ func encodeCodeScanningUploadSarifResponse(response CodeScanningUploadSarifRes, 
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -3123,7 +3198,8 @@ func encodeCodesOfConductGetAllCodesOfConductResponse(response CodesOfConductGet
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -3671,7 +3747,8 @@ func encodeGistsCreateCommentResponse(response GistsCreateCommentRes, w http.Res
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -3682,7 +3759,8 @@ func encodeGistsCreateCommentResponse(response GistsCreateCommentRes, w http.Res
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -3706,7 +3784,8 @@ func encodeGistsDeleteResponse(response GistsDeleteRes, w http.ResponseWriter, s
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -3717,7 +3796,8 @@ func encodeGistsDeleteResponse(response GistsDeleteRes, w http.ResponseWriter, s
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -3741,7 +3821,8 @@ func encodeGistsDeleteCommentResponse(response GistsDeleteCommentRes, w http.Res
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -3752,7 +3833,8 @@ func encodeGistsDeleteCommentResponse(response GistsDeleteCommentRes, w http.Res
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -3862,7 +3944,8 @@ func encodeGistsListResponse(response GistsListRes, w http.ResponseWriter, span 
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -3895,7 +3978,8 @@ func encodeGistsListCommentsResponse(response GistsListCommentsRes, w http.Respo
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -3909,7 +3993,8 @@ func encodeGistsListCommentsResponse(response GistsListCommentsRes, w http.Respo
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -3920,7 +4005,8 @@ func encodeGistsListCommentsResponse(response GistsListCommentsRes, w http.Respo
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -3938,7 +4024,8 @@ func encodeGistsListCommitsResponse(response GistsListCommitsRes, w http.Respons
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -3952,7 +4039,8 @@ func encodeGistsListCommitsResponse(response GistsListCommitsRes, w http.Respons
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -3963,7 +4051,8 @@ func encodeGistsListCommitsResponse(response GistsListCommitsRes, w http.Respons
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -3981,7 +4070,8 @@ func encodeGistsListForksResponse(response GistsListForksRes, w http.ResponseWri
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -3995,7 +4085,8 @@ func encodeGistsListForksResponse(response GistsListForksRes, w http.ResponseWri
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -4006,7 +4097,8 @@ func encodeGistsListForksResponse(response GistsListForksRes, w http.ResponseWri
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -4024,7 +4116,8 @@ func encodeGistsListStarredResponse(response GistsListStarredRes, w http.Respons
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -4038,7 +4131,8 @@ func encodeGistsListStarredResponse(response GistsListStarredRes, w http.Respons
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -4049,7 +4143,8 @@ func encodeGistsListStarredResponse(response GistsListStarredRes, w http.Respons
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -4073,7 +4168,8 @@ func encodeGistsStarResponse(response GistsStarRes, w http.ResponseWriter, span 
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -4084,7 +4180,8 @@ func encodeGistsStarResponse(response GistsStarRes, w http.ResponseWriter, span 
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -4108,7 +4205,8 @@ func encodeGistsUnstarResponse(response GistsUnstarRes, w http.ResponseWriter, s
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -4119,7 +4217,8 @@ func encodeGistsUnstarResponse(response GistsUnstarRes, w http.ResponseWriter, s
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -4279,7 +4378,8 @@ func encodeGitignoreGetAllTemplatesResponse(response GitignoreGetAllTemplatesRes
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -4478,7 +4578,8 @@ func encodeIssuesGetEventResponse(response IssuesGetEventRes, w http.ResponseWri
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -4489,7 +4590,8 @@ func encodeIssuesGetEventResponse(response IssuesGetEventRes, w http.ResponseWri
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -4500,7 +4602,8 @@ func encodeIssuesGetEventResponse(response IssuesGetEventRes, w http.ResponseWri
 		w.WriteHeader(410)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -4580,7 +4683,8 @@ func encodeIssuesListAssigneesResponse(response IssuesListAssigneesRes, w http.R
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -4610,7 +4714,8 @@ func encodeIssuesListCommentsResponse(response IssuesListCommentsRes, w http.Res
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -4621,7 +4726,8 @@ func encodeIssuesListCommentsResponse(response IssuesListCommentsRes, w http.Res
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -4632,7 +4738,8 @@ func encodeIssuesListCommentsResponse(response IssuesListCommentsRes, w http.Res
 		w.WriteHeader(410)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -4668,7 +4775,8 @@ func encodeIssuesListLabelsForRepoResponse(response IssuesListLabelsForRepoRes, 
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -4698,7 +4806,8 @@ func encodeIssuesListLabelsOnIssueResponse(response IssuesListLabelsOnIssueRes, 
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -4728,7 +4837,8 @@ func encodeIssuesListMilestonesResponse(response IssuesListMilestonesRes, w http
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -4794,7 +4904,8 @@ func encodeIssuesRemoveLabelResponse(response IssuesRemoveLabelRes, w http.Respo
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -4805,7 +4916,8 @@ func encodeIssuesRemoveLabelResponse(response IssuesRemoveLabelRes, w http.Respo
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -4816,7 +4928,8 @@ func encodeIssuesRemoveLabelResponse(response IssuesRemoveLabelRes, w http.Respo
 		w.WriteHeader(410)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -4837,7 +4950,8 @@ func encodeIssuesUnlockResponse(response IssuesUnlockRes, w http.ResponseWriter,
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -4848,7 +4962,8 @@ func encodeIssuesUnlockResponse(response IssuesUnlockRes, w http.ResponseWriter,
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -4909,7 +5024,8 @@ func encodeLicensesGetResponse(response LicensesGetRes, w http.ResponseWriter, s
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -4920,7 +5036,8 @@ func encodeLicensesGetResponse(response LicensesGetRes, w http.ResponseWriter, s
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -4938,7 +5055,8 @@ func encodeLicensesGetAllCommonlyUsedResponse(response LicensesGetAllCommonlyUse
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -5020,7 +5138,8 @@ func encodeMigrationsDeleteArchiveForAuthenticatedUserResponse(response Migratio
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -5031,7 +5150,8 @@ func encodeMigrationsDeleteArchiveForAuthenticatedUserResponse(response Migratio
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -5042,7 +5162,8 @@ func encodeMigrationsDeleteArchiveForAuthenticatedUserResponse(response Migratio
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -5110,7 +5231,8 @@ func encodeMigrationsGetArchiveForAuthenticatedUserResponse(response MigrationsG
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -5121,7 +5243,8 @@ func encodeMigrationsGetArchiveForAuthenticatedUserResponse(response MigrationsG
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -5139,7 +5262,8 @@ func encodeMigrationsGetCommitAuthorsResponse(response MigrationsGetCommitAuthor
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -5233,7 +5357,8 @@ func encodeMigrationsGetStatusForAuthenticatedUserResponse(response MigrationsGe
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -5244,7 +5369,8 @@ func encodeMigrationsGetStatusForAuthenticatedUserResponse(response MigrationsGe
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -5255,7 +5381,8 @@ func encodeMigrationsGetStatusForAuthenticatedUserResponse(response MigrationsGe
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -5304,7 +5431,8 @@ func encodeMigrationsListForAuthenticatedUserResponse(response MigrationsListFor
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -5318,7 +5446,8 @@ func encodeMigrationsListForAuthenticatedUserResponse(response MigrationsListFor
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -5329,7 +5458,8 @@ func encodeMigrationsListForAuthenticatedUserResponse(response MigrationsListFor
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -5365,7 +5495,8 @@ func encodeMigrationsListReposForOrgResponse(response MigrationsListReposForOrgR
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -5395,7 +5526,8 @@ func encodeMigrationsListReposForUserResponse(response MigrationsListReposForUse
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -5431,7 +5563,8 @@ func encodeMigrationsUnlockRepoForAuthenticatedUserResponse(response MigrationsU
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -5442,7 +5575,8 @@ func encodeMigrationsUnlockRepoForAuthenticatedUserResponse(response MigrationsU
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -5453,7 +5587,8 @@ func encodeMigrationsUnlockRepoForAuthenticatedUserResponse(response MigrationsU
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -5513,7 +5648,8 @@ func encodeOAuthAuthorizationsDeleteAuthorizationResponse(response OAuthAuthoriz
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -5524,7 +5660,8 @@ func encodeOAuthAuthorizationsDeleteAuthorizationResponse(response OAuthAuthoriz
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -5548,7 +5685,8 @@ func encodeOAuthAuthorizationsDeleteGrantResponse(response OAuthAuthorizationsDe
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -5559,7 +5697,8 @@ func encodeOAuthAuthorizationsDeleteGrantResponse(response OAuthAuthorizationsDe
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -5592,7 +5731,8 @@ func encodeOAuthAuthorizationsGetAuthorizationResponse(response OAuthAuthorizati
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -5603,7 +5743,8 @@ func encodeOAuthAuthorizationsGetAuthorizationResponse(response OAuthAuthorizati
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -5636,7 +5777,8 @@ func encodeOAuthAuthorizationsGetGrantResponse(response OAuthAuthorizationsGetGr
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -5647,7 +5789,8 @@ func encodeOAuthAuthorizationsGetGrantResponse(response OAuthAuthorizationsGetGr
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -5665,7 +5808,8 @@ func encodeOAuthAuthorizationsListAuthorizationsResponse(response OAuthAuthoriza
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -5679,7 +5823,8 @@ func encodeOAuthAuthorizationsListAuthorizationsResponse(response OAuthAuthoriza
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -5690,7 +5835,8 @@ func encodeOAuthAuthorizationsListAuthorizationsResponse(response OAuthAuthoriza
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -5701,7 +5847,8 @@ func encodeOAuthAuthorizationsListAuthorizationsResponse(response OAuthAuthoriza
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -5719,7 +5866,8 @@ func encodeOAuthAuthorizationsListGrantsResponse(response OAuthAuthorizationsLis
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -5733,7 +5881,8 @@ func encodeOAuthAuthorizationsListGrantsResponse(response OAuthAuthorizationsLis
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -5744,7 +5893,8 @@ func encodeOAuthAuthorizationsListGrantsResponse(response OAuthAuthorizationsLis
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -5755,7 +5905,8 @@ func encodeOAuthAuthorizationsListGrantsResponse(response OAuthAuthorizationsLis
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -5944,7 +6095,8 @@ func encodeOrgsGetMembershipForAuthenticatedUserResponse(response OrgsGetMembers
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -5955,7 +6107,8 @@ func encodeOrgsGetMembershipForAuthenticatedUserResponse(response OrgsGetMembers
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -5985,7 +6138,8 @@ func encodeOrgsGetMembershipForUserResponse(response OrgsGetMembershipForUserRes
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -5996,7 +6150,8 @@ func encodeOrgsGetMembershipForUserResponse(response OrgsGetMembershipForUserRes
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -6059,7 +6214,8 @@ func encodeOrgsListResponse(response OrgsListRes, w http.ResponseWriter, span tr
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -6080,7 +6236,8 @@ func encodeOrgsListBlockedUsersResponse(response OrgsListBlockedUsersRes, w http
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -6110,7 +6267,8 @@ func encodeOrgsListFailedInvitationsResponse(response OrgsListFailedInvitationsR
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -6140,7 +6298,8 @@ func encodeOrgsListForAuthenticatedUserResponse(response OrgsListForAuthenticate
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -6154,7 +6313,8 @@ func encodeOrgsListForAuthenticatedUserResponse(response OrgsListForAuthenticate
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -6165,7 +6325,8 @@ func encodeOrgsListForAuthenticatedUserResponse(response OrgsListForAuthenticate
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -6201,7 +6362,8 @@ func encodeOrgsListInvitationTeamsResponse(response OrgsListInvitationTeamsRes, 
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -6249,7 +6411,8 @@ func encodeOrgsListPendingInvitationsResponse(response OrgsListPendingInvitation
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -6315,7 +6478,8 @@ func encodeOrgsListWebhooksResponse(response OrgsListWebhooksRes, w http.Respons
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -6392,7 +6556,8 @@ func encodeOrgsRemoveMembershipForUserResponse(response OrgsRemoveMembershipForU
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -6403,7 +6568,8 @@ func encodeOrgsRemoveMembershipForUserResponse(response OrgsRemoveMembershipForU
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -6514,7 +6680,8 @@ func encodePackagesDeletePackageForAuthenticatedUserResponse(response PackagesDe
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -6525,7 +6692,8 @@ func encodePackagesDeletePackageForAuthenticatedUserResponse(response PackagesDe
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -6536,7 +6704,8 @@ func encodePackagesDeletePackageForAuthenticatedUserResponse(response PackagesDe
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -6557,7 +6726,8 @@ func encodePackagesDeletePackageForOrgResponse(response PackagesDeletePackageFor
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -6568,7 +6738,8 @@ func encodePackagesDeletePackageForOrgResponse(response PackagesDeletePackageFor
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -6579,7 +6750,8 @@ func encodePackagesDeletePackageForOrgResponse(response PackagesDeletePackageFor
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -6600,7 +6772,8 @@ func encodePackagesDeletePackageForUserResponse(response PackagesDeletePackageFo
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -6611,7 +6784,8 @@ func encodePackagesDeletePackageForUserResponse(response PackagesDeletePackageFo
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -6622,7 +6796,8 @@ func encodePackagesDeletePackageForUserResponse(response PackagesDeletePackageFo
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -6643,7 +6818,8 @@ func encodePackagesDeletePackageVersionForAuthenticatedUserResponse(response Pac
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -6654,7 +6830,8 @@ func encodePackagesDeletePackageVersionForAuthenticatedUserResponse(response Pac
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -6665,7 +6842,8 @@ func encodePackagesDeletePackageVersionForAuthenticatedUserResponse(response Pac
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -6686,7 +6864,8 @@ func encodePackagesDeletePackageVersionForOrgResponse(response PackagesDeletePac
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -6697,7 +6876,8 @@ func encodePackagesDeletePackageVersionForOrgResponse(response PackagesDeletePac
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -6708,7 +6888,8 @@ func encodePackagesDeletePackageVersionForOrgResponse(response PackagesDeletePac
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -6729,7 +6910,8 @@ func encodePackagesDeletePackageVersionForUserResponse(response PackagesDeletePa
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -6740,7 +6922,8 @@ func encodePackagesDeletePackageVersionForUserResponse(response PackagesDeletePa
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -6751,7 +6934,8 @@ func encodePackagesDeletePackageVersionForUserResponse(response PackagesDeletePa
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -6769,7 +6953,8 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRespon
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -6780,7 +6965,8 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRespon
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -6791,7 +6977,8 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRespon
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -6802,7 +6989,8 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRespon
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -6820,7 +7008,8 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByOrgResponse(response Pa
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -6831,7 +7020,8 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByOrgResponse(response Pa
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -6842,7 +7032,8 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByOrgResponse(response Pa
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -6853,7 +7044,8 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByOrgResponse(response Pa
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -6871,7 +7063,8 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByUserResponse(response P
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -6882,7 +7075,8 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByUserResponse(response P
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -6893,7 +7087,8 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByUserResponse(response P
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -6904,7 +7099,8 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByUserResponse(response P
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7024,7 +7220,8 @@ func encodePackagesListPackagesForOrganizationResponse(response PackagesListPack
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7035,7 +7232,8 @@ func encodePackagesListPackagesForOrganizationResponse(response PackagesListPack
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7046,7 +7244,8 @@ func encodePackagesListPackagesForOrganizationResponse(response PackagesListPack
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7064,7 +7263,8 @@ func encodePackagesListPackagesForUserResponse(response PackagesListPackagesForU
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7075,7 +7275,8 @@ func encodePackagesListPackagesForUserResponse(response PackagesListPackagesForU
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7086,7 +7287,8 @@ func encodePackagesListPackagesForUserResponse(response PackagesListPackagesForU
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7107,7 +7309,8 @@ func encodePackagesRestorePackageForAuthenticatedUserResponse(response PackagesR
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7118,7 +7321,8 @@ func encodePackagesRestorePackageForAuthenticatedUserResponse(response PackagesR
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7129,7 +7333,8 @@ func encodePackagesRestorePackageForAuthenticatedUserResponse(response PackagesR
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7150,7 +7355,8 @@ func encodePackagesRestorePackageForOrgResponse(response PackagesRestorePackageF
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7161,7 +7367,8 @@ func encodePackagesRestorePackageForOrgResponse(response PackagesRestorePackageF
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7172,7 +7379,8 @@ func encodePackagesRestorePackageForOrgResponse(response PackagesRestorePackageF
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7193,7 +7401,8 @@ func encodePackagesRestorePackageForUserResponse(response PackagesRestorePackage
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7204,7 +7413,8 @@ func encodePackagesRestorePackageForUserResponse(response PackagesRestorePackage
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7215,7 +7425,8 @@ func encodePackagesRestorePackageForUserResponse(response PackagesRestorePackage
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7236,7 +7447,8 @@ func encodePackagesRestorePackageVersionForAuthenticatedUserResponse(response Pa
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7247,7 +7459,8 @@ func encodePackagesRestorePackageVersionForAuthenticatedUserResponse(response Pa
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7258,7 +7471,8 @@ func encodePackagesRestorePackageVersionForAuthenticatedUserResponse(response Pa
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7279,7 +7493,8 @@ func encodePackagesRestorePackageVersionForOrgResponse(response PackagesRestoreP
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7290,7 +7505,8 @@ func encodePackagesRestorePackageVersionForOrgResponse(response PackagesRestoreP
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7301,7 +7517,8 @@ func encodePackagesRestorePackageVersionForOrgResponse(response PackagesRestoreP
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7322,7 +7539,8 @@ func encodePackagesRestorePackageVersionForUserResponse(response PackagesRestore
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7333,7 +7551,8 @@ func encodePackagesRestorePackageVersionForUserResponse(response PackagesRestore
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7344,7 +7563,8 @@ func encodePackagesRestorePackageVersionForUserResponse(response PackagesRestore
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7377,7 +7597,8 @@ func encodeProjectsCreateColumnResponse(response ProjectsCreateColumnRes, w http
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7388,7 +7609,8 @@ func encodeProjectsCreateColumnResponse(response ProjectsCreateColumnRes, w http
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7433,7 +7655,8 @@ func encodeProjectsCreateForAuthenticatedUserResponse(response ProjectsCreateFor
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7444,7 +7667,8 @@ func encodeProjectsCreateForAuthenticatedUserResponse(response ProjectsCreateFor
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7498,7 +7722,8 @@ func encodeProjectsCreateForOrgResponse(response ProjectsCreateForOrgRes, w http
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7509,7 +7734,8 @@ func encodeProjectsCreateForOrgResponse(response ProjectsCreateForOrgRes, w http
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7520,7 +7746,8 @@ func encodeProjectsCreateForOrgResponse(response ProjectsCreateForOrgRes, w http
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7531,7 +7758,8 @@ func encodeProjectsCreateForOrgResponse(response ProjectsCreateForOrgRes, w http
 		w.WriteHeader(410)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7573,7 +7801,8 @@ func encodeProjectsCreateForRepoResponse(response ProjectsCreateForRepoRes, w ht
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7584,7 +7813,8 @@ func encodeProjectsCreateForRepoResponse(response ProjectsCreateForRepoRes, w ht
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7595,7 +7825,8 @@ func encodeProjectsCreateForRepoResponse(response ProjectsCreateForRepoRes, w ht
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7606,7 +7837,8 @@ func encodeProjectsCreateForRepoResponse(response ProjectsCreateForRepoRes, w ht
 		w.WriteHeader(410)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7642,7 +7874,8 @@ func encodeProjectsDeleteResponse(response ProjectsDeleteRes, w http.ResponseWri
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7665,7 +7898,8 @@ func encodeProjectsDeleteResponse(response ProjectsDeleteRes, w http.ResponseWri
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7676,7 +7910,8 @@ func encodeProjectsDeleteResponse(response ProjectsDeleteRes, w http.ResponseWri
 		w.WriteHeader(410)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7700,7 +7935,8 @@ func encodeProjectsDeleteCardResponse(response ProjectsDeleteCardRes, w http.Res
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7723,7 +7959,8 @@ func encodeProjectsDeleteCardResponse(response ProjectsDeleteCardRes, w http.Res
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7747,7 +7984,8 @@ func encodeProjectsDeleteColumnResponse(response ProjectsDeleteColumnRes, w http
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7758,7 +7996,8 @@ func encodeProjectsDeleteColumnResponse(response ProjectsDeleteColumnRes, w http
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7791,7 +8030,8 @@ func encodeProjectsGetResponse(response ProjectsGetRes, w http.ResponseWriter, s
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7802,7 +8042,8 @@ func encodeProjectsGetResponse(response ProjectsGetRes, w http.ResponseWriter, s
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7835,7 +8076,8 @@ func encodeProjectsGetCardResponse(response ProjectsGetCardRes, w http.ResponseW
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7846,7 +8088,8 @@ func encodeProjectsGetCardResponse(response ProjectsGetCardRes, w http.ResponseW
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7857,7 +8100,8 @@ func encodeProjectsGetCardResponse(response ProjectsGetCardRes, w http.ResponseW
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7890,7 +8134,8 @@ func encodeProjectsGetColumnResponse(response ProjectsGetColumnRes, w http.Respo
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7901,7 +8146,8 @@ func encodeProjectsGetColumnResponse(response ProjectsGetColumnRes, w http.Respo
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7912,7 +8158,8 @@ func encodeProjectsGetColumnResponse(response ProjectsGetColumnRes, w http.Respo
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7930,7 +8177,8 @@ func encodeProjectsListCardsResponse(response ProjectsListCardsRes, w http.Respo
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7944,7 +8192,8 @@ func encodeProjectsListCardsResponse(response ProjectsListCardsRes, w http.Respo
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7955,7 +8204,8 @@ func encodeProjectsListCardsResponse(response ProjectsListCardsRes, w http.Respo
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7973,7 +8223,8 @@ func encodeProjectsListColumnsResponse(response ProjectsListColumnsRes, w http.R
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7987,7 +8238,8 @@ func encodeProjectsListColumnsResponse(response ProjectsListColumnsRes, w http.R
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7998,7 +8250,8 @@ func encodeProjectsListColumnsResponse(response ProjectsListColumnsRes, w http.R
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -8016,7 +8269,8 @@ func encodeProjectsListForOrgResponse(response ProjectsListForOrgRes, w http.Res
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -8046,7 +8300,8 @@ func encodeProjectsListForRepoResponse(response ProjectsListForRepoRes, w http.R
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -8057,7 +8312,8 @@ func encodeProjectsListForRepoResponse(response ProjectsListForRepoRes, w http.R
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -8068,7 +8324,8 @@ func encodeProjectsListForRepoResponse(response ProjectsListForRepoRes, w http.R
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -8079,7 +8336,8 @@ func encodeProjectsListForRepoResponse(response ProjectsListForRepoRes, w http.R
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -8090,7 +8348,8 @@ func encodeProjectsListForRepoResponse(response ProjectsListForRepoRes, w http.R
 		w.WriteHeader(410)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -8135,7 +8394,8 @@ func encodeProjectsMoveColumnResponse(response ProjectsMoveColumnRes, w http.Res
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -8146,7 +8406,8 @@ func encodeProjectsMoveColumnResponse(response ProjectsMoveColumnRes, w http.Res
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -8191,7 +8452,8 @@ func encodeProjectsUpdateResponse(response ProjectsUpdateRes, w http.ResponseWri
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -8217,7 +8479,8 @@ func encodeProjectsUpdateResponse(response ProjectsUpdateRes, w http.ResponseWri
 		w.WriteHeader(410)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -8262,7 +8525,8 @@ func encodeProjectsUpdateCardResponse(response ProjectsUpdateCardRes, w http.Res
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -8273,7 +8537,8 @@ func encodeProjectsUpdateCardResponse(response ProjectsUpdateCardRes, w http.Res
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -8284,7 +8549,8 @@ func encodeProjectsUpdateCardResponse(response ProjectsUpdateCardRes, w http.Res
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -8329,7 +8595,8 @@ func encodeProjectsUpdateColumnResponse(response ProjectsUpdateColumnRes, w http
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -8340,7 +8607,8 @@ func encodeProjectsUpdateColumnResponse(response ProjectsUpdateColumnRes, w http
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -8568,7 +8836,8 @@ func encodePullsGetResponse(response PullsGetRes, w http.ResponseWriter, span tr
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -8579,7 +8848,8 @@ func encodePullsGetResponse(response PullsGetRes, w http.ResponseWriter, span tr
 		w.WriteHeader(500)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -8659,7 +8929,8 @@ func encodePullsListCommentsForReviewResponse(response PullsListCommentsForRevie
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -8787,7 +9058,8 @@ func encodePullsSubmitReviewResponse(response PullsSubmitReviewRes, w http.Respo
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -8798,7 +9070,8 @@ func encodePullsSubmitReviewResponse(response PullsSubmitReviewRes, w http.Respo
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -8907,7 +9180,8 @@ func encodeReactionsCreateForTeamDiscussionCommentInOrgResponse(response Reactio
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -8918,7 +9192,8 @@ func encodeReactionsCreateForTeamDiscussionCommentInOrgResponse(response Reactio
 		w.WriteHeader(201)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -8950,7 +9225,8 @@ func encodeReactionsCreateForTeamDiscussionInOrgResponse(response ReactionsCreat
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -8961,7 +9237,8 @@ func encodeReactionsCreateForTeamDiscussionInOrgResponse(response ReactionsCreat
 		w.WriteHeader(201)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -9029,7 +9306,8 @@ func encodeReactionsDeleteLegacyResponse(response ReactionsDeleteLegacyRes, w ht
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -9040,7 +9318,8 @@ func encodeReactionsDeleteLegacyResponse(response ReactionsDeleteLegacyRes, w ht
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -9051,7 +9330,8 @@ func encodeReactionsDeleteLegacyResponse(response ReactionsDeleteLegacyRes, w ht
 		w.WriteHeader(410)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -9081,7 +9361,8 @@ func encodeReactionsListForCommitCommentResponse(response ReactionsListForCommit
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -9123,7 +9404,8 @@ func encodeReactionsListForIssueResponse(response ReactionsListForIssueRes, w ht
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -9134,7 +9416,8 @@ func encodeReactionsListForIssueResponse(response ReactionsListForIssueRes, w ht
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -9145,7 +9428,8 @@ func encodeReactionsListForIssueResponse(response ReactionsListForIssueRes, w ht
 		w.WriteHeader(410)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -9175,7 +9459,8 @@ func encodeReactionsListForIssueCommentResponse(response ReactionsListForIssueCo
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -9217,7 +9502,8 @@ func encodeReactionsListForPullRequestReviewCommentResponse(response ReactionsLi
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -9337,7 +9623,8 @@ func encodeReposAcceptInvitationResponse(response ReposAcceptInvitationRes, w ht
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -9348,7 +9635,8 @@ func encodeReposAcceptInvitationResponse(response ReposAcceptInvitationRes, w ht
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -9359,7 +9647,8 @@ func encodeReposAcceptInvitationResponse(response ReposAcceptInvitationRes, w ht
 		w.WriteHeader(409)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -9415,7 +9704,8 @@ func encodeReposCompareCommitsResponse(response ReposCompareCommitsRes, w http.R
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -9426,7 +9716,8 @@ func encodeReposCompareCommitsResponse(response ReposCompareCommitsRes, w http.R
 		w.WriteHeader(500)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -9509,7 +9800,8 @@ func encodeReposDeclineInvitationResponse(response ReposDeclineInvitationRes, w 
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -9520,7 +9812,8 @@ func encodeReposDeclineInvitationResponse(response ReposDeclineInvitationRes, w 
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -9531,7 +9824,8 @@ func encodeReposDeclineInvitationResponse(response ReposDeclineInvitationRes, w 
 		w.WriteHeader(409)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -9552,7 +9846,8 @@ func encodeReposDeleteResponse(response ReposDeleteRes, w http.ResponseWriter, s
 		w.WriteHeader(307)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -9575,7 +9870,8 @@ func encodeReposDeleteResponse(response ReposDeleteRes, w http.ResponseWriter, s
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -9880,7 +10176,8 @@ func encodeReposGetResponse(response ReposGetRes, w http.ResponseWriter, span tr
 		w.WriteHeader(301)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -9891,7 +10188,8 @@ func encodeReposGetResponse(response ReposGetRes, w http.ResponseWriter, span tr
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -9902,7 +10200,8 @@ func encodeReposGetResponse(response ReposGetRes, w http.ResponseWriter, span tr
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -9965,7 +10264,8 @@ func encodeReposGetAllStatusCheckContextsResponse(response ReposGetAllStatusChec
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -10038,7 +10338,8 @@ func encodeReposGetAppsWithAccessToProtectedBranchResponse(response ReposGetApps
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -10111,7 +10412,8 @@ func encodeReposGetBranchResponse(response ReposGetBranchRes, w http.ResponseWri
 		w.WriteHeader(301)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -10122,7 +10424,8 @@ func encodeReposGetBranchResponse(response ReposGetBranchRes, w http.ResponseWri
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -10214,7 +10517,8 @@ func encodeReposGetCodeFrequencyStatsResponse(response ReposGetCodeFrequencyStat
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -10309,7 +10613,8 @@ func encodeReposGetCommitActivityStatsResponse(response ReposGetCommitActivitySt
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -10418,7 +10723,8 @@ func encodeReposGetContributorsStatsResponse(response ReposGetContributorsStatsR
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -10692,7 +10998,8 @@ func encodeReposGetPunchCardStatsResponse(response ReposGetPunchCardStatsRes, w 
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -10852,7 +11159,8 @@ func encodeReposGetTeamsWithAccessToProtectedBranchResponse(response ReposGetTea
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -10882,7 +11190,8 @@ func encodeReposGetTopPathsResponse(response ReposGetTopPathsRes, w http.Respons
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -10912,7 +11221,8 @@ func encodeReposGetTopReferrersResponse(response ReposGetTopReferrersRes, w http
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -10942,7 +11252,8 @@ func encodeReposGetUsersWithAccessToProtectedBranchResponse(response ReposGetUse
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -11066,7 +11377,8 @@ func encodeReposListBranchesResponse(response ReposListBranchesRes, w http.Respo
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -11096,7 +11408,8 @@ func encodeReposListCollaboratorsResponse(response ReposListCollaboratorsRes, w 
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -11162,7 +11475,8 @@ func encodeReposListCommitStatusesForRefResponse(response ReposListCommitStatuse
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -11192,7 +11506,8 @@ func encodeReposListCommitsResponse(response ReposListCommitsRes, w http.Respons
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -11203,7 +11518,8 @@ func encodeReposListCommitsResponse(response ReposListCommitsRes, w http.Respons
 		w.WriteHeader(400)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -11214,7 +11530,8 @@ func encodeReposListCommitsResponse(response ReposListCommitsRes, w http.Respons
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -11225,7 +11542,8 @@ func encodeReposListCommitsResponse(response ReposListCommitsRes, w http.Respons
 		w.WriteHeader(409)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -11236,7 +11554,8 @@ func encodeReposListCommitsResponse(response ReposListCommitsRes, w http.Respons
 		w.WriteHeader(500)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -11254,7 +11573,8 @@ func encodeReposListContributorsResponse(response ReposListContributorsRes, w ht
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -11268,7 +11588,8 @@ func encodeReposListContributorsResponse(response ReposListContributorsRes, w ht
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -11279,7 +11600,8 @@ func encodeReposListContributorsResponse(response ReposListContributorsRes, w ht
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -11315,7 +11637,8 @@ func encodeReposListDeploymentStatusesResponse(response ReposListDeploymentStatu
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -11381,7 +11704,8 @@ func encodeReposListForksResponse(response ReposListForksRes, w http.ResponseWri
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -11429,7 +11753,8 @@ func encodeReposListInvitationsForAuthenticatedUserResponse(response ReposListIn
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -11443,7 +11768,8 @@ func encodeReposListInvitationsForAuthenticatedUserResponse(response ReposListIn
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -11454,7 +11780,8 @@ func encodeReposListInvitationsForAuthenticatedUserResponse(response ReposListIn
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -11465,7 +11792,8 @@ func encodeReposListInvitationsForAuthenticatedUserResponse(response ReposListIn
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -11551,7 +11879,8 @@ func encodeReposListReleasesResponse(response ReposListReleasesRes, w http.Respo
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -11617,7 +11946,8 @@ func encodeReposListWebhooksResponse(response ReposListWebhooksRes, w http.Respo
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -11835,7 +12165,8 @@ func encodeReposUpdateBranchProtectionResponse(response ReposUpdateBranchProtect
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -11846,7 +12177,8 @@ func encodeReposUpdateBranchProtectionResponse(response ReposUpdateBranchProtect
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -11986,7 +12318,8 @@ func encodeScimDeleteUserFromOrgResponse(response ScimDeleteUserFromOrgRes, w ht
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -11997,7 +12330,8 @@ func encodeScimDeleteUserFromOrgResponse(response ScimDeleteUserFromOrgRes, w ht
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -12117,7 +12451,8 @@ func encodeSecretScanningListAlertsForOrgResponse(response SecretScanningListAle
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -12159,7 +12494,8 @@ func encodeSecretScanningListAlertsForRepoResponse(response SecretScanningListAl
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -12719,7 +13055,8 @@ func encodeTeamsListResponse(response TeamsListRes, w http.ResponseWriter, span 
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -12839,7 +13176,8 @@ func encodeTeamsListForAuthenticatedUserResponse(response TeamsListForAuthentica
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -12853,7 +13191,8 @@ func encodeTeamsListForAuthenticatedUserResponse(response TeamsListForAuthentica
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -12864,7 +13203,8 @@ func encodeTeamsListForAuthenticatedUserResponse(response TeamsListForAuthentica
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -12894,7 +13234,8 @@ func encodeTeamsListIdpGroupsForLegacyResponse(response TeamsListIdpGroupsForLeg
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -12905,7 +13246,8 @@ func encodeTeamsListIdpGroupsForLegacyResponse(response TeamsListIdpGroupsForLeg
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -12969,7 +13311,8 @@ func encodeTeamsListMembersLegacyResponse(response TeamsListMembersLegacyRes, w 
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -13053,7 +13396,8 @@ func encodeTeamsListProjectsLegacyResponse(response TeamsListProjectsLegacyRes, 
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -13101,7 +13445,8 @@ func encodeTeamsListReposLegacyResponse(response TeamsListReposLegacyRes, w http
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -13261,7 +13606,8 @@ func encodeUsersCheckBlockedResponse(response UsersCheckBlockedRes, w http.Respo
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -13272,7 +13618,8 @@ func encodeUsersCheckBlockedResponse(response UsersCheckBlockedRes, w http.Respo
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -13283,7 +13630,8 @@ func encodeUsersCheckBlockedResponse(response UsersCheckBlockedRes, w http.Respo
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -13320,7 +13668,8 @@ func encodeUsersCheckPersonIsFollowedByAuthenticatedResponse(response UsersCheck
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -13331,7 +13680,8 @@ func encodeUsersCheckPersonIsFollowedByAuthenticatedResponse(response UsersCheck
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -13342,7 +13692,8 @@ func encodeUsersCheckPersonIsFollowedByAuthenticatedResponse(response UsersCheck
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -13366,7 +13717,8 @@ func encodeUsersDeletePublicSSHKeyForAuthenticatedResponse(response UsersDeleteP
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -13377,7 +13729,8 @@ func encodeUsersDeletePublicSSHKeyForAuthenticatedResponse(response UsersDeleteP
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -13388,7 +13741,8 @@ func encodeUsersDeletePublicSSHKeyForAuthenticatedResponse(response UsersDeleteP
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -13412,7 +13766,8 @@ func encodeUsersFollowResponse(response UsersFollowRes, w http.ResponseWriter, s
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -13423,7 +13778,8 @@ func encodeUsersFollowResponse(response UsersFollowRes, w http.ResponseWriter, s
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -13434,7 +13790,8 @@ func encodeUsersFollowResponse(response UsersFollowRes, w http.ResponseWriter, s
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -13467,7 +13824,8 @@ func encodeUsersGetAuthenticatedResponse(response UsersGetAuthenticatedRes, w ht
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -13478,7 +13836,8 @@ func encodeUsersGetAuthenticatedResponse(response UsersGetAuthenticatedRes, w ht
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -13554,7 +13913,8 @@ func encodeUsersGetGpgKeyForAuthenticatedResponse(response UsersGetGpgKeyForAuth
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -13565,7 +13925,8 @@ func encodeUsersGetGpgKeyForAuthenticatedResponse(response UsersGetGpgKeyForAuth
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -13576,7 +13937,8 @@ func encodeUsersGetGpgKeyForAuthenticatedResponse(response UsersGetGpgKeyForAuth
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -13609,7 +13971,8 @@ func encodeUsersGetPublicSSHKeyForAuthenticatedResponse(response UsersGetPublicS
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -13620,7 +13983,8 @@ func encodeUsersGetPublicSSHKeyForAuthenticatedResponse(response UsersGetPublicS
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -13631,7 +13995,8 @@ func encodeUsersGetPublicSSHKeyForAuthenticatedResponse(response UsersGetPublicS
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -13649,7 +14014,8 @@ func encodeUsersListResponse(response UsersListRes, w http.ResponseWriter, span 
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -13670,7 +14036,8 @@ func encodeUsersListBlockedByAuthenticatedResponse(response UsersListBlockedByAu
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -13684,7 +14051,8 @@ func encodeUsersListBlockedByAuthenticatedResponse(response UsersListBlockedByAu
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -13695,7 +14063,8 @@ func encodeUsersListBlockedByAuthenticatedResponse(response UsersListBlockedByAu
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -13706,7 +14075,8 @@ func encodeUsersListBlockedByAuthenticatedResponse(response UsersListBlockedByAu
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -13736,7 +14106,8 @@ func encodeUsersListEmailsForAuthenticatedResponse(response UsersListEmailsForAu
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -13750,7 +14121,8 @@ func encodeUsersListEmailsForAuthenticatedResponse(response UsersListEmailsForAu
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -13761,7 +14133,8 @@ func encodeUsersListEmailsForAuthenticatedResponse(response UsersListEmailsForAu
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -13772,7 +14145,8 @@ func encodeUsersListEmailsForAuthenticatedResponse(response UsersListEmailsForAu
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -13790,7 +14164,8 @@ func encodeUsersListFollowedByAuthenticatedResponse(response UsersListFollowedBy
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -13804,7 +14179,8 @@ func encodeUsersListFollowedByAuthenticatedResponse(response UsersListFollowedBy
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -13815,7 +14191,8 @@ func encodeUsersListFollowedByAuthenticatedResponse(response UsersListFollowedBy
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -13833,7 +14210,8 @@ func encodeUsersListFollowersForAuthenticatedUserResponse(response UsersListFoll
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -13847,7 +14225,8 @@ func encodeUsersListFollowersForAuthenticatedUserResponse(response UsersListFoll
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -13858,7 +14237,8 @@ func encodeUsersListFollowersForAuthenticatedUserResponse(response UsersListFoll
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -13912,7 +14292,8 @@ func encodeUsersListGpgKeysForAuthenticatedResponse(response UsersListGpgKeysFor
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -13926,7 +14307,8 @@ func encodeUsersListGpgKeysForAuthenticatedResponse(response UsersListGpgKeysFor
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -13937,7 +14319,8 @@ func encodeUsersListGpgKeysForAuthenticatedResponse(response UsersListGpgKeysFor
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -13948,7 +14331,8 @@ func encodeUsersListGpgKeysForAuthenticatedResponse(response UsersListGpgKeysFor
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -13984,7 +14368,8 @@ func encodeUsersListPublicEmailsForAuthenticatedResponse(response UsersListPubli
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -13998,7 +14383,8 @@ func encodeUsersListPublicEmailsForAuthenticatedResponse(response UsersListPubli
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -14009,7 +14395,8 @@ func encodeUsersListPublicEmailsForAuthenticatedResponse(response UsersListPubli
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -14020,7 +14407,8 @@ func encodeUsersListPublicEmailsForAuthenticatedResponse(response UsersListPubli
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -14056,7 +14444,8 @@ func encodeUsersListPublicSSHKeysForAuthenticatedResponse(response UsersListPubl
 		w.WriteHeader(200)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -14070,7 +14459,8 @@ func encodeUsersListPublicSSHKeysForAuthenticatedResponse(response UsersListPubl
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -14081,7 +14471,8 @@ func encodeUsersListPublicSSHKeysForAuthenticatedResponse(response UsersListPubl
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -14092,7 +14483,8 @@ func encodeUsersListPublicSSHKeysForAuthenticatedResponse(response UsersListPubl
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -14116,7 +14508,8 @@ func encodeUsersUnblockResponse(response UsersUnblockRes, w http.ResponseWriter,
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -14127,7 +14520,8 @@ func encodeUsersUnblockResponse(response UsersUnblockRes, w http.ResponseWriter,
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -14138,7 +14532,8 @@ func encodeUsersUnblockResponse(response UsersUnblockRes, w http.ResponseWriter,
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -14162,7 +14557,8 @@ func encodeUsersUnfollowResponse(response UsersUnfollowRes, w http.ResponseWrite
 		w.WriteHeader(401)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -14173,7 +14569,8 @@ func encodeUsersUnfollowResponse(response UsersUnfollowRes, w http.ResponseWrite
 		w.WriteHeader(403)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -14184,7 +14581,8 @@ func encodeUsersUnfollowResponse(response UsersUnfollowRes, w http.ResponseWrite
 		w.WriteHeader(404)
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
-		// Unsupported kind "alias".
+
+		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
