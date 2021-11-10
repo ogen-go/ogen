@@ -33,4 +33,5 @@ tidy_examples:
 clean: tidy generate tidy_examples examples
 
 commit_gen:
-	git commit -m "chore(gen): update" ./examples ./internal/techempower ./internal/sample_api
+	git add ./examples ./internal/techempower/ ./internal/sample_api/ ./internal/sample_err/
+	git commit -m "chore(gen): update"
