@@ -5,6 +5,9 @@
 {{ template "header" $ }}
 
 {{- range $op := $.Operations }}
+// Handle{{ $op.Name }}Request handles {{ $op.Spec.OperationID }} operation.
+//
+// {{ $op.Spec.HTTPMethod }} {{ $op.Spec.Path }}
 func (s *Server) Handle{{ $op.Name }}Request(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `{{ $op.Name }}`,
 		{{- if $op.Spec.OperationID }}
