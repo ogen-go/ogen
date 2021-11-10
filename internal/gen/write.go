@@ -63,13 +63,13 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 		Package:    pkgName,
 		Operations: g.operations,
 		Types:      g.types,
-		URITypes:   g.uritypes,
+		URITypes:   g.uriTypes,
 		Interfaces: g.interfaces,
 	}
 	for _, name := range []string{
 		"schemas",
-		"uri_decoders",
-		"uri_encoders",
+		"uri_dec",
+		"uri_enc",
 		"schemas_json",
 		"interfaces",
 		"params",
@@ -84,8 +84,8 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 		"client",
 		"cfg",
 	} {
-		// hack
-		if (name == "uri_encoders" || name == "uri_decoders") && len(g.uritypes) == 0 {
+		// Skip uri encode/decode if no types for that.
+		if (name == "uri_enc" || name == "uri_dec") && len(g.uriTypes) == 0 {
 			continue
 		}
 

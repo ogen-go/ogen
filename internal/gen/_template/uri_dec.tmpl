@@ -1,5 +1,5 @@
 {{- /*gotype: github.com/ogen-go/ogen/internal/gen.TemplateConfig*/ -}}
-{{- define "uri_decoders" }}
+{{- define "uri_dec" }}
 {{- template "header" $ }}
 
 {{- range $t, $_ := $.URITypes }}
@@ -13,7 +13,7 @@ func (v *{{ $t.Go }}) decodeURI(d uri.Decoder) error {
 		{{- range $f := $t.Fields }}
 		{{- if $f.Spec }}
 		case "{{ $f.Spec.Name }}":
-			{{- template "decode_uri" elem $f.Type (printf "v.%s" $f.Name) }}
+			{{- template "dec_uri" elem $f.Type (printf "v.%s" $f.Name) }}
 		{{- end }}
 		{{- end }}
 		default:
@@ -27,7 +27,7 @@ func (v *{{ $t.Go }}) decodeURI(d uri.Decoder) error {
 
 {{- end }}
 
-{{- define "decode_uri" }}
+{{- define "dec_uri" }}
 {{- /*gotype: github.com/ogen-go/ogen/internal/gen.Elem*/ -}}
 {{- $t := $.Type }}
 {{- $var := $.Var }}
@@ -62,7 +62,7 @@ func (v *{{ $t.Go }}) decodeURI(d uri.Decoder) error {
 	return d.DecodeArray(func(d uri.Decoder) error {
 		var {{ $tmpVar }} {{ $t.Item.Go }}
 		if err := func() error {
-			{{- template "decode_uri" elem $t.Item $tmpVar }}
+			{{- template "dec_uri" elem $t.Item $tmpVar }}
 		}(); err != nil {
 			return err
 		}
@@ -72,7 +72,7 @@ func (v *{{ $t.Go }}) decodeURI(d uri.Decoder) error {
 {{- else if $t.IsAlias }}
 	var {{ $tmpVar }} {{ $t.AliasTo.Go }}
 	if err := func() error {
-		{{- template "decode_uri" elem $t.AliasTo $tmpVar }}
+		{{- template "dec_uri" elem $t.AliasTo $tmpVar }}
 	}(); err != nil {
 		return err
 	}
@@ -81,7 +81,7 @@ func (v *{{ $t.Go }}) decodeURI(d uri.Decoder) error {
 {{- else if $t.IsGeneric }}
 	var {{ $tmpVar }} {{ $t.GenericOf.Go }}
 	if err := func() error {
-		{{- template "decode_uri" elem $t.GenericOf $tmpVar }}
+		{{- template "dec_uri" elem $t.GenericOf $tmpVar }}
 	}(); err != nil {
 		return err
 	}
@@ -90,7 +90,7 @@ func (v *{{ $t.Go }}) decodeURI(d uri.Decoder) error {
 {{- else if $t.IsPointer }}
 	var {{ $tmpVar }} {{ $t.PointerTo.Go }}
 	if err := func() error {
-		{{- template "decode_uri" elem $t.PointerTo $tmpVar }}
+		{{- template "dec_uri" elem $t.PointerTo $tmpVar }}
 	}(); err != nil {
 		return err
 	}

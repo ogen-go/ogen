@@ -1,5 +1,5 @@
 {{- /*gotype: github.com/ogen-go/ogen/internal/gen.TemplateConfig*/ -}}
-{{- define "uri_encoders" }}
+{{- define "uri_enc" }}
 {{- template "header" $ }}
 
 {{- range $t, $_ := $.URITypes }}
@@ -8,7 +8,7 @@ func (v {{ $t.Go }}) encodeURI(e uri.Encoder) error {
 	{{- range $f := $t.Fields }}
 	{{- if $f.Spec }}
 		if err := e.EncodeField("{{ $f.Spec.Name }}", func(e uri.Encoder) error {
-			{{- template "encode_uri" elem $f.Type (printf "v.%s" $f.Name) }}
+			{{- template "enc_uri" elem $f.Type (printf "v.%s" $f.Name) }}
 		}); err != nil {
 			return errors.Wrap(err, `field {{ $f.Spec.Name }}`)
 		}
@@ -21,7 +21,7 @@ func (v {{ $t.Go }}) encodeURI(e uri.Encoder) error {
 {{- end }}
 {{- end }}
 
-{{- define "encode_uri" }}
+{{- define "enc_uri" }}
 {{- /*gotype: github.com/ogen-go/ogen/internal/gen.Elem*/ -}}
 {{- $t := $.Type }}
 {{- $var := $.Var }}
@@ -33,7 +33,7 @@ func (v {{ $t.Go }}) encodeURI(e uri.Encoder) error {
 	return e.EncodeArray(func(e uri.Encoder) error {
 		for i, item := range {{ $var }} {
 			if err := func() error {
-				{{- template "encode_uri" elem $t.Item "item" }}
+				{{- template "enc_uri" elem $t.Item "item" }}
 			}(); err != nil {
 				return errors.Wrapf(err, "[%d]", i)
 			}
@@ -42,17 +42,17 @@ func (v {{ $t.Go }}) encodeURI(e uri.Encoder) error {
 	})
 {{- else if $t.IsAlias }}
 	if unwrapped := {{ $t.AliasTo.Go }}({{ $var }}); true {
-		{{- template "encode_uri" elem $t.AliasTo "unwrapped" }}
+		{{- template "enc_uri" elem $t.AliasTo "unwrapped" }}
 	}
 	return nil
 {{- else if $t.IsGeneric }}
 	if val, ok := {{ $var }}.Get(); ok {
-		{{- template "encode_uri" elem $t.GenericOf "val" }}
+		{{- template "enc_uri" elem $t.GenericOf "val" }}
 	}
 	return nil
 {{- else if $t.IsPointer }}
 	if v := {{ $var }}; v != nil {
-		{{- template "encode_uri" elem $t.PointerTo "(*v)" }}
+		{{- template "enc_uri" elem $t.PointerTo "(*v)" }}
 	}
 	return nil
 {{- else if $t.IsStruct }}
@@ -61,7 +61,7 @@ func (v {{ $t.Go }}) encodeURI(e uri.Encoder) error {
 	switch t := {{ $var }}.Type; t {
 	{{- range $of := $t.SumOf }}
 	case {{ $of.Name }}{{ $t.Name }}:
-		{{- template "encode_uri" elem $of (printf "%s.%s" $var $of.Name) }}
+		{{- template "enc_uri" elem $of (printf "%s.%s" $var $of.Name) }}
 	{{- end }}
 	default:
 		panic(fmt.Sprintf("unexpected type: %T", t))
