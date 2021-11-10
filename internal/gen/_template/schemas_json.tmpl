@@ -212,6 +212,28 @@ func (s *{{ $t.Name }}) Decode(d *jx.Decoder) error {
 	{{- end }}
 	return nil
 }
+{{- else if $t.IsAlias }}
+// Encode encodes {{ $t.Name }} as json.
+func (s {{ $t.Name }}) Encode(e *jx.Encoder) {
+	unwrapped := {{ $t.AliasTo.Go }}(s)
+	{{- template "enc_json" elem $t.AliasTo "unwrapped" -}}
+}
+
+// Decode decodes {{ $t.Name }} from json.
+func (s *{{ $t.Name }}) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode {{ $t.Name }} to nil`)
+	}
+	var unwrapped {{ $t.AliasTo.Go }}
+	if err := func() error {
+		{{- template "dec_json" elem $t.AliasTo "unwrapped" }}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = {{ $t.Go }}(unwrapped)
+	return nil
+}
 {{- end }}
 
 {{- end }}

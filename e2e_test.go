@@ -180,13 +180,14 @@ func TestIntegration(t *testing.T) {
 			badPet := api.Pet{
 				Name: "k",
 				ID:   -1,
+				Kind: api.PetKindSmol,
 			}
 			err := badPet.Validate()
 			require.Error(t, err)
 			var validateErr *validate.Error
 			require.ErrorAs(t, err, &validateErr)
 			require.Len(t, validateErr.Fields, 2)
-			require.Equal(t, "invalid: id (value -1 less than 0), name (len 1 less than minimum 4)", validateErr.Error())
+			require.Equal(t, "invalid: id (int: value -1 less than 0), name (string: len 1 less than minimum 4)", validateErr.Error())
 		})
 
 		s := httptest.NewServer(api.NewServer(&sampleAPIServer{}))
@@ -224,7 +225,7 @@ func TestIntegration(t *testing.T) {
 			TestDate:     api.NewOptTime(conv.Date(date)),
 			TestDateTime: api.NewOptTime(conv.DateTime(date)),
 			TestDuration: api.NewOptDuration(time.Minute),
-			TestFloat1:   api.NewOptFloat64(1.0),
+			TestFloat1:   api.NewOptFloat64(20.0),
 			TestInteger1: api.NewOptInt(10),
 			TestTime:     api.NewOptTime(conv.Time(date)),
 			UniqueID:     uuid.MustParse("f76e18ae-e5ed-4342-922d-762ed1dfe593"),

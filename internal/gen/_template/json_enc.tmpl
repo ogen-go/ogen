@@ -80,13 +80,8 @@ e.FieldStart("{{ $.Tag.JSON }}")
 {{- define "enc_json" -}}
 	{{- $t := $.Type }}
 	{{- $j := $t.JSON }}
-	{{- if or ($t.IsStruct) ($t.IsEnum) ($t.IsPointer) ($t.IsSum) -}}
+	{{- if or ($t.IsStruct) ($t.IsEnum) ($t.IsPointer) ($t.IsSum) ($t.IsAlias) -}}
 		{{- template "enc_json_value" $ }}
-	{{- else if $t.IsAlias -}}
-		{
-			unwrapped := {{ $t.AliasTo.Go }}({{ $.Var }})
-        	{{- template "enc_json" elem $t.AliasTo "unwrapped" }}
-		}
 	{{- else if $t.IsGeneric -}}
 		{{- template "enc_json_generic" $ }}
 	{{- else if $t.IsArray -}}

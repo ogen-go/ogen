@@ -4,12 +4,38 @@
 	{{- $va := $t.Validators }}
 	{{- $validated := false }}
 	{{- if $t.NilSemantic.Invalid }}
+        {{- $validated = true }}
 		if {{ $.Var }} == nil {
-			{{- /*TODO: continue validation instead return*/ -}}
-			return errors.New("required, can't be nil")
+			return errors.New("nil is invalid value")
 		}
 	{{- end }}
-	{{- if or ($t.IsStruct) ($t.IsAlias) }}
+	{{ if and ($t.IsGeneric) ($t.GenericOf.NeedValidation) }}
+        {{- $validated = true }}
+        {{- if $t.GenericVariant.Optional }}
+			if {{ $.Var }}.Set {
+				if err := func() error {
+            		{{- template "validate" elem $t.GenericOf (printf "%s.Value" $.Var) }}
+				}(); err != nil {
+					return err
+				}
+			}
+			return nil
+        {{- else }}
+            {{- template "validate" elem $t.GenericOf (printf "%s.Value" $.Var) }}
+        {{- end }}
+	{{ end }}
+	{{- if and ($t.IsPointer) ($t.PointerTo.NeedValidation) -}}
+        {{- $validated = true }}
+		if {{ $.Var }} == nil {
+			return nil // {{ $t.NilSemantic }}
+		}
+		if err := func() error {
+        	{{- template "validate" elem $t.PointerTo $.Var }}
+		}(); err != nil {
+			return errors.Wrap(err, "pointer")
+		}
+	{{- end -}}
+	{{- if or ($t.IsStruct) ($t.IsAlias) ($t.IsEnum) ($t.IsSum) }}
 	{{- $validated = true }}
 	if err := {{ $.Var }}.Validate(); err != nil {
 		return err
@@ -24,7 +50,7 @@
 			MaxLength:	{{ $v.MaxLength }},
 			MaxLengthSet: {{ $v.MaxLengthSet }},
 		}).ValidateLength(len({{ $.Var }})); err != nil {
-			return err
+			return errors.Wrap(err, "array")
 		}
 	{{- end }}
 	{{- if $t.Item.NeedValidation }}
@@ -44,42 +70,43 @@
 		return &validate.Error{Fields: failures}
 	}
 	{{- end }}
-	{{- end }}
+	{{- else }}
 	{{- if $va.String.Set }}
 	{{- $validated = true }}
 		{{- $v := $va.String }}
 		if err := (validate.String{
-			MinLength:	{{ $v.MinLength }},
-			MinLengthSet: {{ $v.MinLengthSet }},
-			MaxLength:	{{ $v.MaxLength }},
-			MaxLengthSet: {{ $v.MaxLengthSet }},
-			Email:		{{ $v.Email }},
-			Hostname:	 {{ $v.Hostname }},
+			MinLength:      {{ $v.MinLength }},
+			MinLengthSet:   {{ $v.MinLengthSet }},
+			MaxLength:      {{ $v.MaxLength }},
+			MaxLengthSet:   {{ $v.MaxLengthSet }},
+			Email:          {{ $v.Email }},
+			Hostname:       {{ $v.Hostname }},
 			{{- if $v.Regex }}
-			Regex:		regexp.MustCompile(`{{ $v.Regex }}`),
+			Regex:          regexp.MustCompile(`{{ $v.Regex }}`),
 			{{- else }}
-			Regex: nil,
+			Regex:          nil,
 			{{- end }}
 		}).Validate(string({{ $.Var }})); err != nil {
-			return err
+			return errors.Wrap(err, "string")
 		}
 	{{- end }}
 	{{- if $va.Int.Set }}
 	{{- $validated = true }}
 		{{- $v := $va.Int }}
 		if err := (validate.Int{
-			MinSet:		 {{ $v.MinSet }},
-			Min:			{{ $v.Min }},
-			MaxSet:		 {{ $v.MaxSet }},
-			Max:			{{ $v.Max }},
-			MinExclusive:   {{ $v.MinExclusive }},
-			MaxExclusive:   {{ $v.MaxExclusive }},
+			MinSet:       {{ $v.MinSet }},
+			Min:          {{ $v.Min }},
+			MaxSet:       {{ $v.MaxSet }},
+			Max:          {{ $v.Max }},
+			MinExclusive: {{ $v.MinExclusive }},
+			MaxExclusive: {{ $v.MaxExclusive }},
 		}).Validate(int64({{ $.Var }})); err != nil {
-			return err
+			return errors.Wrap(err, "int")
 		}
 	{{- end }}
+    {{- end }}
 	{{- if not $validated }}
-	_ = {{ $.Var }} // validation expected, but not supported
+	{{ errorf "validation expected %s" $t }}
 	{{- end }}
 	return nil
 {{- end }}
@@ -114,8 +141,48 @@ func (s {{ $t.Name }}) Validate() error {
 }
 {{- else if $t.IsAlias }}
 func (s {{ $t.Name }}) Validate() error {
-	return nil
+	{{- template "validate" elem $t.AliasTo "s" }}
 }
+{{- else if $t.IsSum }}
+func (s {{ $t.Name }}) Validate() error {
+	switch s.Type {
+	{{- range $s := $t.SumOf }}
+		case {{ $s.Name }}{{ $t.Name }}:
+		{{- if $s.NeedValidation }}
+		{{- template "validate" elem $s (printf "s.%s" $s.Name) -}}
+		{{- else }}
+		return nil // no validation needed
+		{{- end }}
+	{{- end }}
+	default:
+		return errors.Errorf("invalid type %q", s.Type)
+	}
+}
+{{ else if $t.IsGeneric }}
+{{ $g := $t.GenericOf }}
+{{ $v := $t.GenericVariant }}
+func (s {{ $t.Name }}) Validate() error {
+{{- if $v.Optional }}
+	if s.Set {
+    	{{- template "validate" elem $g "s.Value" }}
+	}
+	return nil
+{{- else }}
+    {{- template "validate" elem $g "s.Value" }}
+{{- end }}
+}
+{{ else if $t.IsEnum }}
+func (s {{ $t.Name }}) Validate() error {
+switch s {
+{{- range $v := $t.EnumVariants }}
+	case {{ $v.ValueGo }}: return nil
+{{- end }}
+	default:
+		return errors.Errorf("invalid value: %v", s)
+	}
+}
+{{- else }}
+{{ errorf "expected Validate() error implementation for %s" $t }}
 {{- end }}
 {{- end }}
 {{- end }}{{/*Range schemas*/}}
