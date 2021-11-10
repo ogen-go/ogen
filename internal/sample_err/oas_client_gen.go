@@ -95,13 +95,67 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 	return c, nil
 }
 
-// DeletePet invokes deletePet operation.
+// DataCreate invokes dataCreate operation.
 //
-// DELETE /pets/{id}
-func (c *Client) DeletePet(ctx context.Context, params DeletePetParams) (res DeletePetRes, err error) {
+// POST /data
+func (c *Client) DataCreate(ctx context.Context, request Data) (res DataCreateRes, err error) {
 	startTime := time.Now()
-	ctx, span := c.cfg.Tracer.Start(ctx, `DeletePet`,
-		trace.WithAttributes(otelogen.OperationID(`deletePet`)),
+	ctx, span := c.cfg.Tracer.Start(ctx, `DataCreate`,
+		trace.WithAttributes(otelogen.OperationID(`dataCreate`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeDataCreateRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/data"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeDataCreateResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// DataGet invokes dataGet operation.
+//
+// GET /data
+func (c *Client) DataGet(ctx context.Context) (res DataGetRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `DataGet`,
+		trace.WithAttributes(otelogen.OperationID(`dataGet`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
@@ -116,23 +170,9 @@ func (c *Client) DeletePet(ctx context.Context, params DeletePetParams) (res Del
 	}()
 	c.requests.Add(ctx, 1)
 	u := uri.Clone(c.serverURL)
-	u.Path += "/pets/"
-	{
-		// Encode "id" parameter.
-		e := uri.NewPathEncoder(uri.PathEncoderConfig{
-			Param:   "id",
-			Style:   uri.PathStyleSimple,
-			Explode: false,
-		})
-		if err := func() error {
-			return e.EncodeValue(conv.Int64ToString(params.ID))
-		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
-		}
-		u.Path += e.Result()
-	}
+	u.Path += "/data"
 
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
@@ -141,7 +181,7 @@ func (c *Client) DeletePet(ctx context.Context, params DeletePetParams) (res Del
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeDeletePetResponse(resp, span)
+	result, err := decodeDataGetResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}

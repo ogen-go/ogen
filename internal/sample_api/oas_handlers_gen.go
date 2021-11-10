@@ -64,6 +64,9 @@ var (
 	_ = sync.Pool{}
 )
 
+// HandleErrorGetRequest handles errorGet operation.
+//
+// GET /error
 func (s *Server) HandleErrorGetRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ErrorGet`,
 		trace.WithAttributes(otelogen.OperationID(`errorGet`)),
@@ -84,6 +87,9 @@ func (s *Server) HandleErrorGetRequest(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+// HandleFoobarGetRequest handles foobarGet operation.
+//
+// GET /foobar
 func (s *Server) HandleFoobarGetRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `FoobarGet`,
 		trace.WithAttributes(otelogen.OperationID(`foobarGet`)),
@@ -110,6 +116,9 @@ func (s *Server) HandleFoobarGetRequest(w http.ResponseWriter, r *http.Request) 
 	}
 }
 
+// HandleFoobarPostRequest handles foobarPost operation.
+//
+// POST /foobar
 func (s *Server) HandleFoobarPostRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `FoobarPost`,
 		trace.WithAttributes(otelogen.OperationID(`foobarPost`)),
@@ -136,6 +145,9 @@ func (s *Server) HandleFoobarPostRequest(w http.ResponseWriter, r *http.Request)
 	}
 }
 
+// HandleFoobarPutRequest handles  operation.
+//
+// PUT /foobar
 func (s *Server) HandleFoobarPutRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `FoobarPut`,
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -155,6 +167,9 @@ func (s *Server) HandleFoobarPutRequest(w http.ResponseWriter, r *http.Request) 
 	}
 }
 
+// HandlePetCreateRequest handles petCreate operation.
+//
+// POST /pet
 func (s *Server) HandlePetCreateRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PetCreate`,
 		trace.WithAttributes(otelogen.OperationID(`petCreate`)),
@@ -181,6 +196,9 @@ func (s *Server) HandlePetCreateRequest(w http.ResponseWriter, r *http.Request) 
 	}
 }
 
+// HandlePetFriendsNamesByIDRequest handles petFriendsNamesByID operation.
+//
+// GET /pet/friendNames/{id}
 func (s *Server) HandlePetFriendsNamesByIDRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PetFriendsNamesByID`,
 		trace.WithAttributes(otelogen.OperationID(`petFriendsNamesByID`)),
@@ -207,6 +225,9 @@ func (s *Server) HandlePetFriendsNamesByIDRequest(w http.ResponseWriter, r *http
 	}
 }
 
+// HandlePetGetRequest handles petGet operation.
+//
+// GET /pet
 func (s *Server) HandlePetGetRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PetGet`,
 		trace.WithAttributes(otelogen.OperationID(`petGet`)),
@@ -233,6 +254,9 @@ func (s *Server) HandlePetGetRequest(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+// HandlePetGetAvatarByIDRequest handles petGetAvatarByID operation.
+//
+// GET /pet/avatar
 func (s *Server) HandlePetGetAvatarByIDRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PetGetAvatarByID`,
 		trace.WithAttributes(otelogen.OperationID(`petGetAvatarByID`)),
@@ -259,6 +283,9 @@ func (s *Server) HandlePetGetAvatarByIDRequest(w http.ResponseWriter, r *http.Re
 	}
 }
 
+// HandlePetGetByNameRequest handles petGetByName operation.
+//
+// GET /pet/{name}
 func (s *Server) HandlePetGetByNameRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PetGetByName`,
 		trace.WithAttributes(otelogen.OperationID(`petGetByName`)),
@@ -285,6 +312,9 @@ func (s *Server) HandlePetGetByNameRequest(w http.ResponseWriter, r *http.Reques
 	}
 }
 
+// HandlePetNameByIDRequest handles petNameByID operation.
+//
+// GET /pet/name/{id}
 func (s *Server) HandlePetNameByIDRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PetNameByID`,
 		trace.WithAttributes(otelogen.OperationID(`petNameByID`)),
@@ -311,6 +341,9 @@ func (s *Server) HandlePetNameByIDRequest(w http.ResponseWriter, r *http.Request
 	}
 }
 
+// HandlePetUpdateNameAliasPostRequest handles  operation.
+//
+// POST /pet/updateNameAlias
 func (s *Server) HandlePetUpdateNameAliasPostRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PetUpdateNameAliasPost`,
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -336,6 +369,9 @@ func (s *Server) HandlePetUpdateNameAliasPostRequest(w http.ResponseWriter, r *h
 	}
 }
 
+// HandlePetUpdateNamePostRequest handles  operation.
+//
+// POST /pet/updateName
 func (s *Server) HandlePetUpdateNamePostRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PetUpdateNamePost`,
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -361,6 +397,9 @@ func (s *Server) HandlePetUpdateNamePostRequest(w http.ResponseWriter, r *http.R
 	}
 }
 
+// HandlePetUploadAvatarByIDRequest handles petUploadAvatarByID operation.
+//
+// POST /pet/avatar
 func (s *Server) HandlePetUploadAvatarByIDRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PetUploadAvatarByID`,
 		trace.WithAttributes(otelogen.OperationID(`petUploadAvatarByID`)),

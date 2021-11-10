@@ -64,82 +64,53 @@ var (
 	_ = sync.Pool{}
 )
 
-// HandleCreatePetsRequest handles createPets operation.
+// HandleDataCreateRequest handles dataCreate operation.
 //
-// POST /pets
-func (s *Server) HandleCreatePetsRequest(w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `CreatePets`,
-		trace.WithAttributes(otelogen.OperationID(`createPets`)),
+// POST /data
+func (s *Server) HandleDataCreateRequest(w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `DataCreate`,
+		trace.WithAttributes(otelogen.OperationID(`dataCreate`)),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
-
-	response, err := s.h.CreatePets(ctx)
-	if err != nil {
-		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
-		return
-	}
-
-	if err := encodeCreatePetsResponse(response, w, span); err != nil {
-		span.RecordError(err)
-		return
-	}
-}
-
-// HandleListPetsRequest handles listPets operation.
-//
-// GET /pets
-func (s *Server) HandleListPetsRequest(w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListPets`,
-		trace.WithAttributes(otelogen.OperationID(`listPets`)),
-		trace.WithSpanKind(trace.SpanKindServer),
-	)
-	defer span.End()
-	params, err := decodeListPetsParams(r)
+	request, err := decodeDataCreateRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 
-	response, err := s.h.ListPets(ctx, params)
+	response, err := s.h.DataCreate(ctx, request)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
-	if err := encodeListPetsResponse(response, w, span); err != nil {
+	if err := encodeDataCreateResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		return
 	}
 }
 
-// HandleShowPetByIdRequest handles showPetById operation.
+// HandleDataGetRequest handles dataGet operation.
 //
-// GET /pets/{petId}
-func (s *Server) HandleShowPetByIdRequest(w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `ShowPetById`,
-		trace.WithAttributes(otelogen.OperationID(`showPetById`)),
+// GET /data
+func (s *Server) HandleDataGetRequest(w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `DataGet`,
+		trace.WithAttributes(otelogen.OperationID(`dataGet`)),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
-	params, err := decodeShowPetByIdParams(r)
-	if err != nil {
-		span.RecordError(err)
-		respondError(w, http.StatusBadRequest, err)
-		return
-	}
 
-	response, err := s.h.ShowPetById(ctx, params)
+	response, err := s.h.DataGet(ctx)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
-	if err := encodeShowPetByIdResponse(response, w, span); err != nil {
+	if err := encodeDataGetResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		return
 	}

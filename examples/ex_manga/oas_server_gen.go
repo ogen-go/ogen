@@ -67,16 +67,28 @@ var (
 // Handler handles operations described by OpenAPI v3 specification.
 type Handler interface {
 	// GetBook implements getBook operation.
+	//
+	// GET /api/gallery/{book_id}
 	GetBook(ctx context.Context, params GetBookParams) (GetBookRes, error)
 	// GetPageCoverImage implements getPageCoverImage operation.
+	//
+	// GET /galleries/{media_id}/cover.{format}
 	GetPageCoverImage(ctx context.Context, params GetPageCoverImageParams) (GetPageCoverImageRes, error)
 	// GetPageImage implements getPageImage operation.
+	//
+	// GET /galleries/{media_id}/{page}.{format}
 	GetPageImage(ctx context.Context, params GetPageImageParams) (GetPageImageRes, error)
 	// GetPageThumbnailImage implements getPageThumbnailImage operation.
+	//
+	// GET /galleries/{media_id}/{page}t.{format}
 	GetPageThumbnailImage(ctx context.Context, params GetPageThumbnailImageParams) (GetPageThumbnailImageRes, error)
 	// Search implements search operation.
+	//
+	// GET /api/galleries/search
 	Search(ctx context.Context, params SearchParams) (SearchRes, error)
 	// SearchByTagID implements searchByTagID operation.
+	//
+	// GET /api/galleries/tagged
 	SearchByTagID(ctx context.Context, params SearchByTagIDParams) (SearchByTagIDRes, error)
 }
 
@@ -84,29 +96,30 @@ type Handler interface {
 // calls Handler to handle requests.
 type Server struct {
 	h   Handler
-	mux *chi.Mux
 	cfg config
 }
 
 func NewServer(h Handler, opts ...Option) *Server {
 	srv := &Server{
 		h:   h,
-		mux: chi.NewMux(),
 		cfg: newConfig(opts...),
 	}
-	srv.setupRoutes()
 	return srv
 }
 
-func (s *Server) setupRoutes() {
-	s.mux.MethodFunc("GET", "/api/gallery/{book_id}", s.HandleGetBookRequest)
-	s.mux.MethodFunc("GET", "/galleries/{media_id}/cover.{format}", s.HandleGetPageCoverImageRequest)
-	s.mux.MethodFunc("GET", "/galleries/{media_id}/{page}.{format}", s.HandleGetPageImageRequest)
-	s.mux.MethodFunc("GET", "/galleries/{media_id}/{page}t.{format}", s.HandleGetPageThumbnailImageRequest)
-	s.mux.MethodFunc("GET", "/api/galleries/search", s.HandleSearchRequest)
-	s.mux.MethodFunc("GET", "/api/galleries/tagged", s.HandleSearchByTagIDRequest)
+// Register request handlers in router.
+func (s *Server) Register(r chi.Router) {
+	r.MethodFunc("GET", "/api/gallery/{book_id}", s.HandleGetBookRequest)
+	r.MethodFunc("GET", "/galleries/{media_id}/cover.{format}", s.HandleGetPageCoverImageRequest)
+	r.MethodFunc("GET", "/galleries/{media_id}/{page}.{format}", s.HandleGetPageImageRequest)
+	r.MethodFunc("GET", "/galleries/{media_id}/{page}t.{format}", s.HandleGetPageThumbnailImageRequest)
+	r.MethodFunc("GET", "/api/galleries/search", s.HandleSearchRequest)
+	r.MethodFunc("GET", "/api/galleries/tagged", s.HandleSearchByTagIDRequest)
 }
 
-func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	s.mux.ServeHTTP(w, r)
+// DefaultMux returns new *chi.Mux with called Register method on it.
+func (s *Server) DefaultMux() *chi.Mux {
+	mux := chi.NewMux()
+	s.Register(mux)
+	return mux
 }

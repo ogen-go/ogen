@@ -64,37 +64,25 @@ var (
 	_ = sync.Pool{}
 )
 
-// Handler handles operations described by OpenAPI v3 specification.
-type Handler interface {
-	// DeletePet implements deletePet operation.
-	//
-	// DELETE /pets/{id}
-	DeletePet(ctx context.Context, params DeletePetParams) (DeletePetRes, error)
+// Ref: #/components/schemas/Data
+type Data struct {
+	Name string `json:"name"`
 }
 
-// Server implements http server based on OpenAPI v3 specification and
-// calls Handler to handle requests.
-type Server struct {
-	h   Handler
-	cfg config
+func (*Data) dataCreateRes() {}
+func (*Data) dataGetRes()    {}
+
+// Ref: #/components/schemas/Error
+type Error struct {
+	Code    int64  `json:"code"`
+	Message string `json:"message"`
 }
 
-func NewServer(h Handler, opts ...Option) *Server {
-	srv := &Server{
-		h:   h,
-		cfg: newConfig(opts...),
-	}
-	return srv
+// ErrorStatusCode wraps Error with StatusCode.
+type ErrorStatusCode struct {
+	StatusCode int
+	Response   Error
 }
 
-// Register request handlers in router.
-func (s *Server) Register(r chi.Router) {
-	r.MethodFunc("DELETE", "/pets/{id}", s.HandleDeletePetRequest)
-}
-
-// DefaultMux returns new *chi.Mux with called Register method on it.
-func (s *Server) DefaultMux() *chi.Mux {
-	mux := chi.NewMux()
-	s.Register(mux)
-	return mux
-}
+func (*ErrorStatusCode) dataCreateRes() {}
+func (*ErrorStatusCode) dataGetRes()    {}

@@ -67,10 +67,16 @@ var (
 // Handler handles operations described by OpenAPI v3 specification.
 type Handler interface {
 	// CreatePets implements createPets operation.
+	//
+	// POST /pets
 	CreatePets(ctx context.Context) (CreatePetsRes, error)
 	// ListPets implements listPets operation.
+	//
+	// GET /pets
 	ListPets(ctx context.Context, params ListPetsParams) (ListPetsRes, error)
 	// ShowPetById implements showPetById operation.
+	//
+	// GET /pets/{petId}
 	ShowPetById(ctx context.Context, params ShowPetByIdParams) (ShowPetByIdRes, error)
 }
 
@@ -78,26 +84,27 @@ type Handler interface {
 // calls Handler to handle requests.
 type Server struct {
 	h   Handler
-	mux *chi.Mux
 	cfg config
 }
 
 func NewServer(h Handler, opts ...Option) *Server {
 	srv := &Server{
 		h:   h,
-		mux: chi.NewMux(),
 		cfg: newConfig(opts...),
 	}
-	srv.setupRoutes()
 	return srv
 }
 
-func (s *Server) setupRoutes() {
-	s.mux.MethodFunc("POST", "/pets", s.HandleCreatePetsRequest)
-	s.mux.MethodFunc("GET", "/pets", s.HandleListPetsRequest)
-	s.mux.MethodFunc("GET", "/pets/{petId}", s.HandleShowPetByIdRequest)
+// Register request handlers in router.
+func (s *Server) Register(r chi.Router) {
+	r.MethodFunc("POST", "/pets", s.HandleCreatePetsRequest)
+	r.MethodFunc("GET", "/pets", s.HandleListPetsRequest)
+	r.MethodFunc("GET", "/pets/{petId}", s.HandleShowPetByIdRequest)
 }
 
-func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	s.mux.ServeHTTP(w, r)
+// DefaultMux returns new *chi.Mux with called Register method on it.
+func (s *Server) DefaultMux() *chi.Mux {
+	mux := chi.NewMux()
+	s.Register(mux)
+	return mux
 }

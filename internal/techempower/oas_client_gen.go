@@ -95,7 +95,9 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 	return c, nil
 }
 
-// Caching implements Caching operation.
+// Caching invokes Caching operation.
+//
+// GET /cached-worlds
 func (c *Client) Caching(ctx context.Context, params CachingParams) (res WorldObjects, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `Caching`,
@@ -149,7 +151,9 @@ func (c *Client) Caching(ctx context.Context, params CachingParams) (res WorldOb
 	return result, nil
 }
 
-// DB implements DB operation.
+// DB invokes DB operation.
+//
+// GET /db
 func (c *Client) DB(ctx context.Context) (res WorldObject, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DB`,
@@ -187,7 +191,9 @@ func (c *Client) DB(ctx context.Context) (res WorldObject, err error) {
 	return result, nil
 }
 
-// JSON implements json operation.
+// JSON invokes json operation.
+//
+// GET /json
 func (c *Client) JSON(ctx context.Context) (res HelloWorld, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `JSON`,
@@ -225,7 +231,9 @@ func (c *Client) JSON(ctx context.Context) (res HelloWorld, err error) {
 	return result, nil
 }
 
-// Queries implements Queries operation.
+// Queries invokes Queries operation.
+//
+// GET /queries
 func (c *Client) Queries(ctx context.Context, params QueriesParams) (res WorldObjects, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `Queries`,
@@ -279,7 +287,9 @@ func (c *Client) Queries(ctx context.Context, params QueriesParams) (res WorldOb
 	return result, nil
 }
 
-// Updates implements Updates operation.
+// Updates invokes Updates operation.
+//
+// GET /updates
 func (c *Client) Updates(ctx context.Context, params UpdatesParams) (res WorldObjects, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `Updates`,

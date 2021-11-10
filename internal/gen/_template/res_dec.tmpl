@@ -45,6 +45,7 @@ func decode{{ $op.Name }}Response(resp *http.Response, span trace.Span) (res {{ 
 {{ end }}
 
 {{- define "dec_res" }}
+{{- /*gotype: github.com/ogen-go/ogen/internal/gen.ResponseElem*/ -}}
 {{- $response := $.Response }}
 {{- $ptr := $.Ptr }}
 {{- if $response.NoContent }}{{/* Decode NoContent response */}}

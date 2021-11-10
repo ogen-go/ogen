@@ -64,6 +64,9 @@ var (
 	_ = sync.Pool{}
 )
 
+// HandleCachingRequest handles Caching operation.
+//
+// GET /cached-worlds
 func (s *Server) HandleCachingRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `Caching`,
 		trace.WithAttributes(otelogen.OperationID(`Caching`)),
@@ -90,6 +93,9 @@ func (s *Server) HandleCachingRequest(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+// HandleDBRequest handles DB operation.
+//
+// GET /db
 func (s *Server) HandleDBRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `DB`,
 		trace.WithAttributes(otelogen.OperationID(`DB`)),
@@ -110,6 +116,9 @@ func (s *Server) HandleDBRequest(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+// HandleJSONRequest handles json operation.
+//
+// GET /json
 func (s *Server) HandleJSONRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `JSON`,
 		trace.WithAttributes(otelogen.OperationID(`json`)),
@@ -130,6 +139,9 @@ func (s *Server) HandleJSONRequest(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+// HandleQueriesRequest handles Queries operation.
+//
+// GET /queries
 func (s *Server) HandleQueriesRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `Queries`,
 		trace.WithAttributes(otelogen.OperationID(`Queries`)),
@@ -156,6 +168,9 @@ func (s *Server) HandleQueriesRequest(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+// HandleUpdatesRequest handles Updates operation.
+//
+// GET /updates
 func (s *Server) HandleUpdatesRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `Updates`,
 		trace.WithAttributes(otelogen.OperationID(`Updates`)),

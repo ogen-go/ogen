@@ -67,30 +67,56 @@ var (
 // Handler handles operations described by OpenAPI v3 specification.
 type Handler interface {
 	// ErrorGet implements errorGet operation.
+	//
+	// GET /error
 	ErrorGet(ctx context.Context) (ErrorStatusCode, error)
 	// FoobarGet implements foobarGet operation.
+	//
+	// GET /foobar
 	FoobarGet(ctx context.Context, params FoobarGetParams) (FoobarGetRes, error)
 	// FoobarPost implements foobarPost operation.
+	//
+	// POST /foobar
 	FoobarPost(ctx context.Context, req Pet) (FoobarPostRes, error)
 	// FoobarPut implements  operation.
+	//
+	// PUT /foobar
 	FoobarPut(ctx context.Context) (FoobarPutDefStatusCode, error)
 	// PetCreate implements petCreate operation.
+	//
+	// POST /pet
 	PetCreate(ctx context.Context, req Pet) (Pet, error)
 	// PetFriendsNamesByID implements petFriendsNamesByID operation.
+	//
+	// GET /pet/friendNames/{id}
 	PetFriendsNamesByID(ctx context.Context, params PetFriendsNamesByIDParams) ([]string, error)
 	// PetGet implements petGet operation.
+	//
+	// GET /pet
 	PetGet(ctx context.Context, params PetGetParams) (PetGetRes, error)
 	// PetGetAvatarByID implements petGetAvatarByID operation.
+	//
+	// GET /pet/avatar
 	PetGetAvatarByID(ctx context.Context, params PetGetAvatarByIDParams) (PetGetAvatarByIDRes, error)
 	// PetGetByName implements petGetByName operation.
+	//
+	// GET /pet/{name}
 	PetGetByName(ctx context.Context, params PetGetByNameParams) (Pet, error)
 	// PetNameByID implements petNameByID operation.
+	//
+	// GET /pet/name/{id}
 	PetNameByID(ctx context.Context, params PetNameByIDParams) (string, error)
 	// PetUpdateNameAliasPost implements  operation.
+	//
+	// POST /pet/updateNameAlias
 	PetUpdateNameAliasPost(ctx context.Context, req PetName) (PetUpdateNameAliasPostDefStatusCode, error)
 	// PetUpdateNamePost implements  operation.
+	//
+	// POST /pet/updateName
 	PetUpdateNamePost(ctx context.Context, req string) (PetUpdateNamePostDefStatusCode, error)
 	// PetUploadAvatarByID implements petUploadAvatarByID operation.
+	//
+	// POST /pet/avatar
 	PetUploadAvatarByID(ctx context.Context, req Stream, params PetUploadAvatarByIDParams) (PetUploadAvatarByIDRes, error)
 }
 
@@ -98,36 +124,37 @@ type Handler interface {
 // calls Handler to handle requests.
 type Server struct {
 	h   Handler
-	mux *chi.Mux
 	cfg config
 }
 
 func NewServer(h Handler, opts ...Option) *Server {
 	srv := &Server{
 		h:   h,
-		mux: chi.NewMux(),
 		cfg: newConfig(opts...),
 	}
-	srv.setupRoutes()
 	return srv
 }
 
-func (s *Server) setupRoutes() {
-	s.mux.MethodFunc("GET", "/error", s.HandleErrorGetRequest)
-	s.mux.MethodFunc("GET", "/foobar", s.HandleFoobarGetRequest)
-	s.mux.MethodFunc("POST", "/foobar", s.HandleFoobarPostRequest)
-	s.mux.MethodFunc("PUT", "/foobar", s.HandleFoobarPutRequest)
-	s.mux.MethodFunc("POST", "/pet", s.HandlePetCreateRequest)
-	s.mux.MethodFunc("GET", "/pet/friendNames/{id}", s.HandlePetFriendsNamesByIDRequest)
-	s.mux.MethodFunc("GET", "/pet", s.HandlePetGetRequest)
-	s.mux.MethodFunc("GET", "/pet/avatar", s.HandlePetGetAvatarByIDRequest)
-	s.mux.MethodFunc("GET", "/pet/{name}", s.HandlePetGetByNameRequest)
-	s.mux.MethodFunc("GET", "/pet/name/{id}", s.HandlePetNameByIDRequest)
-	s.mux.MethodFunc("POST", "/pet/updateNameAlias", s.HandlePetUpdateNameAliasPostRequest)
-	s.mux.MethodFunc("POST", "/pet/updateName", s.HandlePetUpdateNamePostRequest)
-	s.mux.MethodFunc("POST", "/pet/avatar", s.HandlePetUploadAvatarByIDRequest)
+// Register request handlers in router.
+func (s *Server) Register(r chi.Router) {
+	r.MethodFunc("GET", "/error", s.HandleErrorGetRequest)
+	r.MethodFunc("GET", "/foobar", s.HandleFoobarGetRequest)
+	r.MethodFunc("POST", "/foobar", s.HandleFoobarPostRequest)
+	r.MethodFunc("PUT", "/foobar", s.HandleFoobarPutRequest)
+	r.MethodFunc("POST", "/pet", s.HandlePetCreateRequest)
+	r.MethodFunc("GET", "/pet/friendNames/{id}", s.HandlePetFriendsNamesByIDRequest)
+	r.MethodFunc("GET", "/pet", s.HandlePetGetRequest)
+	r.MethodFunc("GET", "/pet/avatar", s.HandlePetGetAvatarByIDRequest)
+	r.MethodFunc("GET", "/pet/{name}", s.HandlePetGetByNameRequest)
+	r.MethodFunc("GET", "/pet/name/{id}", s.HandlePetNameByIDRequest)
+	r.MethodFunc("POST", "/pet/updateNameAlias", s.HandlePetUpdateNameAliasPostRequest)
+	r.MethodFunc("POST", "/pet/updateName", s.HandlePetUpdateNamePostRequest)
+	r.MethodFunc("POST", "/pet/avatar", s.HandlePetUploadAvatarByIDRequest)
 }
 
-func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	s.mux.ServeHTTP(w, r)
+// DefaultMux returns new *chi.Mux with called Register method on it.
+func (s *Server) DefaultMux() *chi.Mux {
+	mux := chi.NewMux()
+	s.Register(mux)
+	return mux
 }

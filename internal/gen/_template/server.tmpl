@@ -8,6 +8,8 @@
 type Handler interface {
 {{- range $op := $.Operations }}
 	// {{ $op.Name }} implements {{ $op.Spec.OperationID }} operation.
+	//
+	// {{ $op.Spec.HTTPMethod }} {{ $op.Spec.Path }}
 	{{ $op.Name }}(ctx context.Context {{ if $op.Request }}, req {{ $op.Request.Type.Go }}{{ end }}{{ if $op.Params }}, params {{ $op.Name }}Params {{ end }}) ({{ $op.Response.Type.Go }}, error)
 {{- end }}
 }
@@ -16,27 +18,28 @@ type Handler interface {
 // calls Handler to handle requests.
 type Server struct {
 	h   Handler
-	mux *chi.Mux
 	cfg config
 }
 
 func NewServer(h Handler, opts ...Option) *Server {
 	srv := &Server{
 		h:   h,
-		mux: chi.NewMux(),
 		cfg: newConfig(opts...),
 	}
-	srv.setupRoutes()
 	return srv
 }
 
-func (s *Server) setupRoutes() {
+// Register request handlers in router.
+func (s *Server) Register(r chi.Router) {
 	{{- range $op := $.Operations }}
-	s.mux.MethodFunc("{{ $op.Spec.HTTPMethod }}", "{{ $op.Spec.Path }}", s.Handle{{ $op.Name }}Request)
+	r.MethodFunc("{{ $op.Spec.HTTPMethod }}", "{{ $op.Spec.Path }}", s.Handle{{ $op.Name }}Request)
 	{{- end }}
 }
 
-func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	s.mux.ServeHTTP(w, r)
+// DefaultMux returns new *chi.Mux with called Register method on it.
+func (s *Server) DefaultMux() *chi.Mux {
+	mux := chi.NewMux()
+	s.Register(mux)
+	return mux
 }
 {{ end }}
