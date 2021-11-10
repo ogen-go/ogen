@@ -77,7 +77,7 @@ func decodeListPetsParams(r *http.Request) (ListPetsParams, error) {
 			})
 
 			if err := func() error {
-				var ParamsLimitValue int32
+				var paramsLimitVal int32
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -89,12 +89,12 @@ func decodeListPetsParams(r *http.Request) (ListPetsParams, error) {
 						return err
 					}
 
-					ParamsLimitValue = c
+					paramsLimitVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Limit.SetTo(ParamsLimitValue)
+				params.Limit.SetTo(paramsLimitVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `query: limit: parse`)
