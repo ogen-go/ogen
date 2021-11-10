@@ -25,41 +25,41 @@ func (t *Type) needValidation(path *walkpath) (result bool) {
 
 	switch t.Kind {
 	case KindPrimitive:
-		if t.IsNumeric() && t.Validators.Int.Set() {
+		if t.IsNumeric() && t.Primitive.IntValidation.Set() {
 			return true
 		}
-		if t.Validators.String.Set() {
+		if t.Primitive.StringValidation.Set() {
 			return true
 		}
 		return false
 	case KindEnum:
 		return true
 	case KindSum:
-		for _, s := range t.SumOf {
+		for _, s := range t.Sum.SumOf {
 			if s.needValidation(path) {
 				return true
 			}
 		}
 		return false
 	case KindAlias:
-		return t.AliasTo.needValidation(path)
+		return t.Alias.To.needValidation(path)
 	case KindPointer:
-		if t.NilSemantic == NilInvalid {
+		if t.Pointer.Semantic == NilInvalid {
 			return true
 		}
-		return t.PointerTo.needValidation(path)
+		return t.Pointer.To.needValidation(path)
 	case KindGeneric:
-		return t.GenericOf.needValidation(path)
+		return t.Generic.Of.needValidation(path)
 	case KindArray:
-		if t.NilSemantic == NilInvalid {
+		if t.Array.Semantic == NilInvalid {
 			return true
 		}
-		if t.Validators.Array.Set() {
+		if t.Array.Validation.Set() {
 			return true
 		}
-		return t.Item.needValidation(path)
+		return t.Array.Item.needValidation(path)
 	case KindStruct:
-		for _, f := range t.Fields {
+		for _, f := range t.Struct.Fields {
 			if f.Type.needValidation(path) {
 				return true
 			}

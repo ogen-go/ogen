@@ -47,7 +47,7 @@ func (c *Client) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, reques
 			case *{{ $type.Go }}:
 				{{- if $type.NeedValidation }}
 					if err := func() error {
-						{{- template "validate" req_dec_elem $type }}
+						{{- template "validate" elem $type "request" }}
 					}(); err != nil {
 						return res, errors.Wrap(err, "validate")
 					}
@@ -61,7 +61,7 @@ func (c *Client) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, reques
 		{{- else }}
 			{{- if $op.Request.Type.NeedValidation }}
 				if err := func() error {
-					{{- template "validate" req_dec_elem $op.Request.Type }}
+					{{- template "validate" elem $op.Request.Type "request" }}
 				}(); err != nil {
 					return res, errors.Wrap(err, "validate")
 				}

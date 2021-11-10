@@ -75,6 +75,7 @@ func TestGenerate(t *testing.T) {
 	))
 	t.Run("Kubernetes", g("k8s.json",
 		"unsupported content types",
+		"byte array",
 	))
 	t.Run("GitHub", g("api.github.com.json",
 		"complex parameter types",

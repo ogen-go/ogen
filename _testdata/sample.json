@@ -460,7 +460,7 @@
           },
           "format": {
             "type": "string",
-            "pattern": "$\\d-\\d^"
+            "pattern": "p([a-z]+)ch"
           }
         }
       },

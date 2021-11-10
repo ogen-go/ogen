@@ -178,15 +178,20 @@ func TestIntegration(t *testing.T) {
 
 		t.Run("Validate", func(t *testing.T) {
 			badPet := api.Pet{
-				Name: "k",
-				ID:   -1,
+				Name:       "k",
+				ID:         -1,
+				TestFloat1: api.NewOptFloat64(10),
+				Next: api.NewOptData(api.Data{
+					Email: "foo@example.com",
+					Format: "abc",
+				}),
 			}
 			err := badPet.Validate()
 			require.Error(t, err)
 			var validateErr *validate.Error
 			require.ErrorAs(t, err, &validateErr)
-			require.Len(t, validateErr.Fields, 2)
-			require.Equal(t, "invalid: id (value -1 less than 0), name (len 1 less than minimum 4)", validateErr.Error())
+			require.Len(t, validateErr.Fields, 5)
+			require.Equal(t, "invalid: id (value -1 less than 0), name (len 1 less than minimum 4), kind (invalid enum value: ), next (invalid: hostname (blank), format (no regex match)), testFloat1 (value 10 less than 15)", validateErr.Error())
 		})
 
 		s := httptest.NewServer(api.NewServer(&sampleAPIServer{}))
@@ -224,7 +229,7 @@ func TestIntegration(t *testing.T) {
 			TestDate:     api.NewOptTime(conv.Date(date)),
 			TestDateTime: api.NewOptTime(conv.DateTime(date)),
 			TestDuration: api.NewOptDuration(time.Minute),
-			TestFloat1:   api.NewOptFloat64(1.0),
+			TestFloat1:   api.NewOptFloat64(20.0),
 			TestInteger1: api.NewOptInt(10),
 			TestTime:     api.NewOptTime(conv.Time(date)),
 			UniqueID:     uuid.MustParse("f76e18ae-e5ed-4342-922d-762ed1dfe593"),
@@ -245,7 +250,7 @@ func TestIntegration(t *testing.T) {
 				}),
 				ID:       api.NewIntID(10),
 				Email:    "foo@example.com",
-				Format:   "1-2",
+				Format:   "peach",
 				Hostname: "example.org",
 			}),
 		}

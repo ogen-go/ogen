@@ -10,29 +10,23 @@ import (
 	"github.com/ogen-go/ogen/internal/oas"
 )
 
-// Elem variable helper for recursive array or object encoding or decoding.
+// Elem is a template helper.
+// Used to pass type info and variable name through recursive templates
+// (json encoding/decoding, uri encoding/decoding, validation).
 type Elem struct {
-	Sub  bool // true if Elem has parent Elem
 	Type *ir.Type
 	Var  string
-	Tag  ir.Tag
-	More bool
-}
-
-// NextVar returns name of variable for decoding recursive call.
-//
-// Needed to make variable names unique.
-func (e Elem) NextVar() string {
-	if !e.Sub {
-		// No recursion, returning default name.
-		return "elem"
-	}
-	return e.Var + "Elem"
 }
 
 type ResponseElem struct {
 	Response *ir.StatusResponse
 	Ptr      bool
+}
+
+// JXElem is a wrapper around Elem.
+type JXElem struct {
+	Field string // Optional JSON field name.
+	Elem
 }
 
 // templateFunctions returns functions which used in templates.
@@ -62,56 +56,16 @@ func templateFunctions() template.FuncMap {
 				Var:  v,
 			}
 		},
-		"pointer_elem": func(parent Elem) Elem {
-			return Elem{
-				Type: parent.Type.PointerTo,
-				Sub:  true,
-				Var:  parent.NextVar(),
-				More: true,
+		"jx_elem": func(t *ir.Type, v, f string) JXElem {
+			return JXElem{
+				Field: f,
+				Elem: Elem{
+					Type: t,
+					Var:  v,
+				},
 			}
 		},
-		// Recursive array element (e.g. array of arrays).
-		"sub_array_elem": func(parent Elem, t *ir.Type) Elem {
-			return Elem{
-				Type: t,
-				Sub:  true,
-				Var:  parent.NextVar(),
-				More: true,
-			}
-		},
-		// Initial array element.
-		"array_elem": func(t *ir.Type) Elem {
-			return Elem{
-				Type: t,
-				Sub:  true,
-				Var:  "elem",
-				More: true,
-			}
-		},
-		"req_elem":     func(t *ir.Type) Elem { return Elem{Type: t, Var: "response", More: true} },
-		"req_dec_elem": func(t *ir.Type) Elem { return Elem{Type: t, Var: "request", More: true} },
-		"req_enc_elem": func(t *ir.Type) Elem { return Elem{Type: t, Var: "req", More: true} },
-		"res_elem": func(i *ir.ResponseInfo) Elem {
-			v := "response"
-			if i.Default {
-				v = v + ".Response"
-			}
-			return Elem{
-				Type: i.Type,
-				Var:  v,
-				More: true,
-			}
-		},
-		// Field of structure.
-		"field_elem": func(f *ir.Field) Elem {
-			return Elem{
-				Type: f.Type,
-				Var:  fmt.Sprintf("s.%s", f.Name),
-				Tag:  f.Tag,
-				More: true,
-			}
-		},
-		"xresp_elem": func(r *ir.StatusResponse, ptr bool) ResponseElem {
+		"resp_elem": func(r *ir.StatusResponse, ptr bool) ResponseElem {
 			return ResponseElem{
 				Response: r,
 				Ptr:      ptr,

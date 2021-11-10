@@ -27,7 +27,7 @@
     },
     "id": 10,
     "email": "foo@example.com",
-    "format": "1-2",
+    "format": "peach",
     "hostname": "example.org"
   },
   "nickname": "Nick",
@@ -59,7 +59,7 @@
   "testDate": "2011-10-10",
   "testDateTime": "2011-10-10T07:12:34Z",
   "testDuration": "1m0s",
-  "testFloat1": 1,
+  "testFloat1": 20,
   "testInteger1": 10,
   "testTime": "07:12:34",
   "type": "fofa",

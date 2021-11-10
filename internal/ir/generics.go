@@ -40,10 +40,12 @@ func Generic(name string, of *Type, v GenericVariant) *Type {
 		name = name + "Array"
 	}
 	return &Type{
-		Name:           name,
-		Kind:           KindGeneric,
-		GenericOf:      of,
-		GenericVariant: v,
+		Kind: KindGeneric,
+		Generic: &TypeGeneric{
+			Name:    name,
+			Of:      of,
+			Variant: v,
+		},
 	}
 }
 
@@ -51,15 +53,17 @@ func Generic(name string, of *Type, v GenericVariant) *Type {
 func (t Type) CanGeneric() bool {
 	switch t.Kind {
 	case KindStruct:
-		if len(t.Fields) == 0 {
+		if len(t.Struct.Fields) == 0 {
 			return false
 		}
 	case KindArray:
-		if t.Item.Primitive == Byte {
-			return false
+		if t.Array.Item.Kind == KindPrimitive {
+			if t.Array.Item.Primitive.Type == Byte {
+				return false
+			}
 		}
 	case KindAlias:
-		return t.AliasTo.CanGeneric()
+		return t.Alias.To.CanGeneric()
 	}
 	return t.Is(KindPrimitive, KindEnum, KindStruct)
 }

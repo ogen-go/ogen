@@ -59,9 +59,9 @@ func (v *{{ $t.Go }}) decodeURI(d uri.Decoder) error {
 {{- else if eq $t.Kind "array" }}
 	return d.DecodeArray(func(d uri.Decoder) error {
 		{{- $tmpVar := pascalMP (printf "%sItem" $var ) }}
-		var {{ $tmpVar }} {{ $t.Item.Go }}
+		var {{ $tmpVar }} {{ $t.Array.Item.Go }}
 		if err := func() error {
-			{{- template "decode_uri" elem $t.Item $tmpVar }}
+			{{- template "decode_uri" elem $t.Array.Item $tmpVar }}
 		}(); err != nil {
 			return err
 		}
@@ -70,9 +70,9 @@ func (v *{{ $t.Go }}) decodeURI(d uri.Decoder) error {
 	})
 {{- else if eq $t.Kind "alias" }}
 	{{- $tmpVar := pascalMP (printf "%sUnderlying" $var ) }}
-	var {{ $tmpVar }} {{ $t.AliasTo.Go }}
+	var {{ $tmpVar }} {{ $t.Alias.To.Go }}
 	if err := func() error {
-		{{- template "decode_uri" elem $t.AliasTo $tmpVar }}
+		{{- template "decode_uri" elem $t.Alias.To $tmpVar }}
 	}(); err != nil {
 		return err
 	}
@@ -80,9 +80,9 @@ func (v *{{ $t.Go }}) decodeURI(d uri.Decoder) error {
 	return nil
 {{- else if eq $t.Kind "generic" }}
 	{{- $tmpVar := pascalMP (printf "%sValue" $var ) }}
-	var {{ $tmpVar }} {{ $t.GenericOf.Go }}
+	var {{ $tmpVar }} {{ $t.Generic.Of.Go }}
 	if err := func() error {
-		{{- template "decode_uri" elem $t.GenericOf $tmpVar }}
+		{{- template "decode_uri" elem $t.Generic.Of $tmpVar }}
 	}(); err != nil {
 		return err
 	}
@@ -90,9 +90,9 @@ func (v *{{ $t.Go }}) decodeURI(d uri.Decoder) error {
 	return nil
 {{- else if eq $t.Kind "pointer" }}
 	{{- $tmpVar := pascalMP (printf "%sValue" $var ) }}
-	var {{ $tmpVar }} {{ $t.PointerTo.Go }}
+	var {{ $tmpVar }} {{ $t.Pointer.To.Go }}
 	if err := func() error {
-		{{- template "decode_uri" elem $t.PointerTo $tmpVar }}
+		{{- template "decode_uri" elem $t.Pointer.To $tmpVar }}
 	}(); err != nil {
 		return err
 	}

@@ -1,0 +1,142 @@
+{{- define "json_encoders" }}
+{{- template "header" $ }}
+
+{{- range $t := $.Types }}
+{{- if eq $t.Kind "struct" }}
+func (s {{ $t.Struct.Name }}) Encode(e *jx.Encoder) {
+    e.ObjStart()
+	{{- range $f := $t.Struct.Fields }}
+    {{- if $f.Spec }}
+        {{- template "encode_json" jx_elem $f.Type (printf "s.%s" $f.Name) $f.Spec.Name }}     
+	{{- else }}
+		// Field '{{ $f.Name }}' is not defined in schema.
+	{{- end }}
+    {{- end }}
+    e.ObjEnd()
+}
+
+func (s {{ $t.Struct.Name }}) MarshalJSON() ([]byte, error) {
+	var e jx.Encoder
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+{{- else if eq $t.Kind "sum" }}
+func (s {{ $t.Sum.Name }}) Encode(e *jx.Encoder) {
+	switch s.Type {
+	{{- range $of := $t.Sum.SumOf }}
+	case {{ $of.MustName }}{{ $t.Sum.Name }}:
+		{{- template "encode_json" jx_elem $of (printf "s.%s" $of.MustName) "" }}
+	{{- end }}
+	default:
+		panic(fmt.Sprintf("unexpected type: %T", s.Type))
+	}
+}
+
+func (s {{ $t.Sum.Name }}) MarshalJSON() ([]byte, error) {
+	var e jx.Encoder
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+{{- end }}
+{{- end }}
+{{- end }}
+
+{{- define "encode_json" }}
+{{- /*gotype: github.com/ogen-go/ogen/internal/gen.JXElem*/ -}}
+{{- $t := $.Type }}
+{{- $var := $.Var }}
+{{- $field := $.Field }}
+{{- $j := $t.JSON }}
+{{- if $j.Format -}}
+	{{- if $field }}
+		e.FieldStart("{{ $field }}")
+	{{- end }}
+	json.Encode{{ $j.Format }}(e, {{ $var }})
+{{- else if eq $t.Kind "primitive" }}
+	{{- if $field }}
+		e.FieldStart("{{ $field }}")
+	{{- end }}
+	{{- if not $t.Primitive.Type.IsBuiltin }}
+		e.Str(conv.{{ $t.ToString }}({{ $var }}))
+	{{- else if eq $t.Primitive.Type.String "string" }}
+		e.Str({{ $var }})
+    {{- else }}
+		e.{{ pascalMP $t.Primitive.Type.String }}({{ $var }})
+	{{- end }}
+{{- else if eq $t.Kind "enum" }}
+	{{- if $field }}
+		e.FieldStart("{{ $field }}")
+	{{- end }}
+	{{- if not $t.Enum.Type.IsBuiltin }}
+		e.Str(conv.{{ $t.ToString }}({{ $t.Enum.Type.String }}({{ $var }})))
+	{{- else if eq $t.Enum.Type.String "string" }}
+		e.Str({{ $t.Enum.Type.String }}({{ $var }}))
+    {{- else }}
+		e.{{ pascalMP $t.Enum.Type.String }}({{ $t.Enum.Type.String }}({{ $var }}))
+	{{- end }}
+{{- else if eq $t.Kind "array" }}
+	if {{ $var }} != nil {
+		{{- if $field }}
+			e.FieldStart("{{ $field }}")
+		{{- end }}
+		e.ArrStart()
+		for _, item := range {{ $var }} {
+			{{- template "encode_json" jx_elem $t.Array.Item "item" "" }}
+		}
+		e.ArrEnd()
+	} {{ if not (eq $t.Array.Semantic "optional") }} else {
+		{{- if eq $t.Array.Semantic "null" }}
+			{{- if $field }}
+				e.FieldStart("{{ $field }}")
+			{{- end }}
+			e.Null()
+		{{- else if eq $t.Array.Semantic "invalid" }}
+			panic("value must not be nil")
+		{{- else }}
+			unexpected nil semantic: {{ $t.Array.Semantic }} 
+		{{- end }}
+	} {{- end }}
+{{- else if eq $t.Kind "alias" }}
+	if unwrapped := {{ $var }}.unwrap(); true {
+		{{- template "encode_json" jx_elem $t.Alias.To "unwrapped" $field }}
+	}
+{{- else if eq $t.Kind "generic" }}
+	if val, ok := {{ $var }}.Get(); ok {
+		{{- template "encode_json" jx_elem $t.Generic.Of "val" $field }}
+	} {{ if $t.Generic.Variant.Nullable }} else if {{ $var }}.Null {
+		{{- if $field }}
+			e.FieldStart("{{ $field }}")
+		{{- end }}
+		e.Null()
+	} {{- end }}
+{{- else if eq $t.Kind "pointer" }}
+	if v := {{ $var }}; v != nil {
+		{{- template "encode_json" jx_elem $t.Pointer.To "(*v)" $field }}
+	} {{ if not (eq $t.Pointer.Semantic "optional") }} else {
+		{{- if eq $t.Pointer.Semantic "null" }}
+			{{- if $field }}
+				e.FieldStart("{{ $field }}")
+			{{- end }}
+			e.Null()
+		{{- else if eq $t.Pointer.Semantic "invalid" }}
+			panic("value must not be nil")
+		{{- else }}
+			unexpected nil semantic: {{ $t.Pointer.Semantic }} 
+		{{- end }}
+	} {{- end }}
+{{- else if eq $t.Kind "struct" }}
+	{{- if $field }}
+		e.FieldStart("{{ $field }}")
+	{{- end }}
+	{{ $var }}.Encode(e)
+{{- else if eq $t.Kind "sum" }}
+	{{- if $field }}
+		e.FieldStart("{{ $field }}")
+	{{- end }}
+	{{ $var }}.Encode(e)
+{{- else }}
+Unexpected kind {{ $t.Kind }}
+{{- end }}
+{{- end }}

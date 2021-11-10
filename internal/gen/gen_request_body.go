@@ -74,7 +74,7 @@ func (g *Generator) generateRequest(opName string, body *oas.RequestBody) (*ir.R
 			types[contentType] = typ
 			g.saveType(typ)
 		case ir.KindStream:
-			typ.Name = pascal(name, string(contentType))
+			typ.Stream.Name = pascal(name, string(contentType))
 			g.saveType(typ)
 		default:
 		}

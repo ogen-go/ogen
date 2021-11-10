@@ -6,6 +6,9 @@ import (
 
 // JSON returns json encoding/decoding rules for t.
 func (t *Type) JSON() JSON {
+	if t == nil {
+		panic("t is nil")
+	}
 	return JSON{
 		t: t,
 	}
@@ -18,7 +21,10 @@ type JSON struct {
 
 // Fields return all fields of Type that should be encoded via json.
 func (j JSON) Fields() (fields []*Field) {
-	for _, f := range j.t.Fields {
+	if !j.t.Is(KindStruct) {
+		return nil
+	}
+	for _, f := range j.t.Struct.Fields {
 		if f.Tag.JSON == "" {
 			continue
 		}
@@ -32,27 +38,26 @@ func (j JSON) Fields() (fields []*Field) {
 // Mostly used for encoding or decoding of string formats, like `json.EncodeUUID`,
 // where UUID is Format.
 func (j JSON) Format() string {
-	if j.t.Schema == nil {
-		return ""
+	if j.t.Is(KindPrimitive) {
+		switch j.t.Primitive.Schema.Format {
+		case oas.FormatUUID:
+			return "UUID"
+		case oas.FormatDate:
+			return "Date"
+		case oas.FormatTime:
+			return "Time"
+		case oas.FormatDateTime:
+			return "DateTime"
+		case oas.FormatDuration:
+			return "Duration"
+		case oas.FormatIP, oas.FormatIPv4, oas.FormatIPv6:
+			return "IP"
+		case oas.FormatURI:
+			return "URI"
+		}
 	}
-	switch j.t.Schema.Format {
-	case oas.FormatUUID:
-		return "UUID"
-	case oas.FormatDate:
-		return "Date"
-	case oas.FormatTime:
-		return "Time"
-	case oas.FormatDateTime:
-		return "DateTime"
-	case oas.FormatDuration:
-		return "Duration"
-	case oas.FormatIP, oas.FormatIPv4, oas.FormatIPv6:
-		return "IP"
-	case oas.FormatURI:
-		return "URI"
-	default:
-		return ""
-	}
+
+	return ""
 }
 
 // Type returns json value type that can represent Type.
@@ -70,14 +75,15 @@ func (j JSON) Type() string {
 	if j.t.Is(KindStruct) {
 		return "Object"
 	}
-	switch j.t.Primitive {
-	case Bool:
-		return "Bool"
-	case String, Time, Duration, UUID, IP, URL:
-		return "String"
-	default:
-		return ""
+	if j.t.Is(KindPrimitive) {
+		switch j.t.Primitive.Type {
+		case Bool:
+			return "Bool"
+		case String, Time, Duration, UUID, IP, URL:
+			return "String"
+		}
 	}
+	return ""
 }
 
 // raw denotes whether Type can be encoded or decoded using simple
@@ -92,12 +98,18 @@ func (j JSON) raw() bool {
 	if j.t.IsNumeric() {
 		return true
 	}
-	switch j.t.Primitive {
-	case Bool, String:
-		return true
-	default:
-		return false
+
+	if j.t.Is(KindPrimitive) {
+		return j.t.Primitive.Type == Bool ||
+			j.t.Primitive.Type == String
 	}
+
+	if j.t.Is(KindEnum) {
+		return j.t.Primitive.Type == Bool ||
+			j.t.Primitive.Type == String
+	}
+
+	return false
 }
 
 // Fn returns jx.Encoder or jx.Decoder method name.
@@ -107,21 +119,40 @@ func (j JSON) Fn() string {
 	if !j.raw() {
 		return ""
 	}
-	if j.t.Primitive == String {
-		return "Str"
+
+	if j.t.Is(KindPrimitive) {
+		if j.t.Primitive.Type == String {
+			return "Str"
+		}
+		return capitalize(j.t.Primitive.Type.String())
 	}
-	return capitalize(j.t.Primitive.String())
+
+	// if j.t.Is(KindEnum) {
+	// 	if j.t.Primitive.Type == String {
+	// 		return "Str"
+	// 	}
+	// }
+
+	return ""
 }
 
 // Sum returns specification for parsing value as sum type.
 func (j JSON) Sum() SumJSON {
-	if j.t.SumSpec.Discriminator != "" {
+	if !j.t.Is(KindSum) {
+		panic("unreachable")
+	}
+
+	if j.t.Sum.SumSpec.Discriminator != "" {
 		return SumJSON{
 			Type: SumJSONDiscriminator,
 		}
 	}
-	for _, s := range j.t.SumOf {
-		if len(s.SumSpec.Unique) > 0 {
+	for _, s := range j.t.Sum.SumOf {
+		// TODO(hack): Fixme.
+		if s.Sum == nil {
+			continue
+		}
+		if len(s.Sum.SumSpec.Unique) > 0 {
 			return SumJSON{
 				Type: SumJSONFields,
 			}

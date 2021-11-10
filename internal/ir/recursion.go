@@ -27,11 +27,11 @@ func (t *Type) recursive(target *Type, path *walkpath) bool {
 
 	switch target.Kind {
 	case KindAlias:
-		return t.recursive(target.AliasTo, path)
+		return t.recursive(target.Alias.To, path)
 	case KindGeneric:
-		return t.recursive(target.GenericOf, path)
+		return t.recursive(target.Generic.Of, path)
 	case KindStruct:
-		for _, f := range target.Fields {
+		for _, f := range target.Struct.Fields {
 			if !f.Spec.Required {
 				continue
 			}
@@ -41,7 +41,7 @@ func (t *Type) recursive(target *Type, path *walkpath) bool {
 		}
 		return false
 	case KindSum:
-		for _, of := range target.SumOf {
+		for _, of := range target.Sum.SumOf {
 			if t.recursive(of, path) {
 				return true
 			}

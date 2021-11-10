@@ -1,0 +1,244 @@
+{{- define "json_decoders" }}
+{{- template "header" $ }}
+
+{{- range $t := $.Types }}
+{{- if eq $t.Kind "struct" }}
+func (s *{{ $t.Struct.Name }}) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`unable to decode {{ $t.Struct.Go }} to nil`)
+	}
+	return d.ObjBytes(func(d *jx.Decoder, key []byte) error {
+        switch string(key) {
+        {{- range $f := $t.Struct.Fields }}
+        {{- if $f.Spec }}
+        case "{{ $f.Spec.Name }}":
+            {{- template "decode_json" jx_elem $f.Type (printf "s.%s" $f.Name) "" }}
+		{{- else }}
+			// Field '{{ $f.Name }}' is not defined in schema.
+        {{- end }}
+        {{- end }}
+        default:
+            d.Skip()
+            return nil
+        }
+    })
+}
+
+func (s *{{ $t.Struct.Name }}) UnmarshalJSON(data []byte) error {
+	var d jx.Decoder
+	d.ResetBytes(data)
+	return s.Decode(&d)
+}
+
+{{- else if eq $t.Kind "sum" }}
+{{- $d := $t.JSON.Sum }}
+func (s *{{ $t.Sum.Name }}) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode {{ $t.Sum.Name }} to nil`)
+	}
+	// Sum type {{ $d }}.
+	{{- if $d.Primitive }}
+	switch t := d.Next(); t {
+	{{- range $s := $t.Sum.SumOf }}
+	case jx.{{ $s.JSON.Type }}:
+		if err := func() error {
+			{{- template "decode_json" jx_elem $s (printf "s.%s" $s.MustName) "" }}
+		}(); err != nil {
+			return err
+		}
+		s.Type = {{ $s.MustName }}{{ $t.Sum.Name }}
+	{{- end }}
+	default:
+		return errors.Errorf("unexpected json type %q", t)
+	}
+	{{- else if or ($d.Fields) ($d.Discriminator) }}
+	if d.Next() != jx.Object {
+		return errors.Errorf("unexpected json type %q", d.Next())
+	}
+	var found bool
+	if err := d.Capture(func(d *jx.Decoder) error {
+		return d.ObjBytes(func(d *jx.Decoder, key []byte) error {
+			if found {
+				return d.Skip()
+			}
+			switch string(key) {
+			{{- if $d.Discriminator -}}
+			case "{{ $t.Sum.SumSpec.Discriminator }}":
+				typ, err := d.Str()
+				if err != nil {
+					return err
+				}
+				switch typ {
+				{{- range $m:= $t.Sum.SumSpec.Mapping }}
+				case "{{ $m.Key }}":
+					s.Type = {{ $m.Type }}{{ $t.Sum.Name }}
+					found = true
+				{{- end }}
+				default:
+					return errors.Errorf("unknown type %s", typ)
+				}
+				return nil
+			{{- else }}
+			{{- range $s := $t.Sum.SumOf }}
+			{{- range $f := $s.Sum.SumSpec.Unique }}
+			case "{{ $f.Tag.JSON }}":
+				found = true
+				s.Type = {{ $s.MustName }}{{ $t.Sum.Name }}
+			{{- end }}
+			{{- end }}
+			{{- end }}
+			}
+			return d.Skip()
+		})
+	}); err != nil {
+		return errors.Wrap(err, "capture")
+	}
+	if !found {
+		return errors.New("unable to detect sum type variant")
+	}
+	switch s.Type {
+	{{- range $s := $t.Sum.SumOf }}
+	case {{ $s.MustName }}{{ $t.Sum.Name }}:
+		{{- template "decode_json" jx_elem $s (printf "s.%s" $s.MustName) "" }}
+	{{- end}}
+	default:
+		return errors.Errorf("inferred invalid type: %s", s.Type)
+	}
+	{{- else if $d.Discriminator  }}
+
+	{{- end }}
+	return nil
+}
+
+func (s *{{ $t.Sum.Name }}) UnmarshalJSON(data []byte) error {
+	var d jx.Decoder
+	d.ResetBytes(data)
+	return s.Decode(&d)
+}
+{{- end }}
+{{- end }}
+
+{{- end }}
+
+{{- define "decode_json" }}
+{{- /*gotype: github.com/ogen-go/ogen/internal/gen.JXElem*/ -}}
+{{- $t := $.Type }}
+{{- $var := $.Var }}
+{{- $tmp1 := pascalMP $var "Tmp1"  }}
+{{- $tmp2 := pascalMP $var "Tmp2" }}
+{{- if $t.JSON.Format }}
+	{{ $tmp1 }}, err := json.Decode{{ $t.JSON.Format }}(d)
+	if err != nil {
+		return err
+	}
+
+	{{ $var }} = {{ $tmp1 }}
+	return nil
+{{- else if eq $t.Kind "primitive" }}
+	{{- if not $t.Primitive.Type.IsBuiltin }}
+        {{ $tmp1 }}, err := d.Str()
+        if err != nil {
+            return err
+        }
+
+        {{ $tmp2 }}, err := conv.{{ $t.FromString }}({{ $tmp1 }})
+        if err != nil {
+            return err
+        }
+
+        {{ $var }} = {{ $tmp2 }}
+        return nil
+	{{- else if eq $t.Primitive.Type.String "string" }}
+		{{ $tmp1 }}, err := d.Str()
+        if err != nil {
+            return err
+        }
+
+        {{ $var }} =  {{ $tmp1 }}
+        return nil
+    {{- else }}
+		{{ $tmp1 }}, err := d.{{ pascalMP $t.Primitive.Type.String }}()
+        if err != nil {
+            return err
+        }
+
+        {{ $var }} = {{ $tmp1 }}
+        return nil
+	{{- end }}
+{{- else if eq $t.Kind "enum" }}
+	{{- if not $t.Enum.Type.IsBuiltin }}
+        {{ $tmp1 }}, err := d.Str()
+        if err != nil {
+            return err
+        }
+
+        {{ $tmp2 }}, err := conv.{{ $t.FromString }}({{ $tmp1 }})
+        if err != nil {
+            return err
+        }
+
+        {{ $var }} = {{ $t.Go }}({{ $tmp2 }})
+        return nil
+	{{- else if eq $t.Enum.Type.String "string" }}
+		{{ $tmp1 }}, err := d.Str()
+        if err != nil {
+            return err
+        }
+
+        {{ $var }} = {{ $t.Go }}({{ $tmp1 }})
+        return nil
+    {{- else }}
+		{{ $tmp1 }}, err := d.{{ pascalMP $t.Enum.Type.String }}()
+        if err != nil {
+            return err
+        }
+
+        {{ $var }} = {{ $t.Go }}({{ $tmp1 }})
+        return nil
+	{{- end }}
+{{- else if eq $t.Kind "array" }}
+    return d.Arr(func(d *jx.Decoder) error {
+		var {{ $tmp1 }} {{ $t.Array.Item.Go }}
+        if err := func() error {
+			{{- template "decode_json" jx_elem $t.Array.Item $tmp1 "" }}
+		}(); err != nil {
+			return err
+		}
+		{{ $var }} = append({{ $var }}, {{ $tmp1 }})
+		return nil
+    })
+{{- else if eq $t.Kind "alias" }}
+	var {{ $tmp1 }} {{ $t.Alias.To.Go }}
+	if err := func() error {
+		{{- template "decode_json" jx_elem $t.Alias.To $tmp1 "" }}
+	}(); err != nil {
+		return err
+	}
+	{{ $var }}.wrap(({{ $tmp1 }}))
+	return nil
+{{- else if eq $t.Kind "generic" }}
+	var {{ $tmp1 }} {{ $t.Generic.Of.Go }}
+	if err := func() error {
+		{{- template "decode_json" jx_elem $t.Generic.Of $tmp1 "" }}
+	}(); err != nil {
+		return err
+	}
+	{{ $var }}.SetTo({{ $tmp1 }})
+	return nil
+{{- else if eq $t.Kind "pointer" }}
+	var {{ $tmp1 }} {{ $t.Pointer.To.Go }}
+	if err := func() error {
+		{{- template "decode_json" jx_elem $t.Pointer.To $tmp1 "" }}
+	}(); err != nil {
+		return err
+	}
+	{{ $var }} = &{{ $tmp1 }}
+	return nil
+{{- else if eq $t.Kind "struct" }}
+	return {{ $var }}.Decode(d)
+{{- else if eq $t.Kind "sum" }}
+	return {{ $var }}.Decode(d)
+{{- else }}
+Unexpected kind {{ $t.Kind }}
+{{- end }}
+{{- end }}

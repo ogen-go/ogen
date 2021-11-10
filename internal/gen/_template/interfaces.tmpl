@@ -6,7 +6,7 @@ package {{ $.Package }}
 
 {{- range $_, $i := $.Interfaces }}
 type {{ $i.Name }} interface {
-	{{- range $method, $_ := $i.InterfaceMethods }} {{ $method }}() {{- end }}
+	{{- range $method, $_ := $i.Methods }} {{ $method }}() {{- end }}
 }
 {{ end }}
 

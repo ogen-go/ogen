@@ -16,7 +16,7 @@ type TemplateConfig struct {
 	Operations []*ir.Operation
 	Types      map[string]*ir.Type
 	URITypes   map[*ir.Type]struct{}
-	Interfaces map[string]*ir.Type
+	Interfaces map[string]*ir.TypeInterface
 }
 
 // FileSystem represents a directory of generated package.
@@ -70,7 +70,8 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 		"schemas",
 		"uri_decoders",
 		"uri_encoders",
-		"schemas_json",
+		"json_encoders",
+		"json_decoders",
 		"interfaces",
 		"params",
 		"param_dec",
@@ -79,7 +80,7 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 		"req_dec",
 		"res_enc",
 		"res_dec",
-		"validators",
+		"validation",
 		"server",
 		"client",
 		"cfg",
