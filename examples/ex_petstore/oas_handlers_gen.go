@@ -64,6 +64,9 @@ var (
 	_ = sync.Pool{}
 )
 
+// HandleCreatePetsRequest handles createPets operation.
+//
+// POST /pets
 func (s *Server) HandleCreatePetsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `CreatePets`,
 		trace.WithAttributes(otelogen.OperationID(`createPets`)),
@@ -84,6 +87,9 @@ func (s *Server) HandleCreatePetsRequest(w http.ResponseWriter, r *http.Request)
 	}
 }
 
+// HandleListPetsRequest handles listPets operation.
+//
+// GET /pets
 func (s *Server) HandleListPetsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListPets`,
 		trace.WithAttributes(otelogen.OperationID(`listPets`)),
@@ -110,6 +116,9 @@ func (s *Server) HandleListPetsRequest(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+// HandleShowPetByIdRequest handles showPetById operation.
+//
+// GET /pets/{petId}
 func (s *Server) HandleShowPetByIdRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ShowPetById`,
 		trace.WithAttributes(otelogen.OperationID(`showPetById`)),

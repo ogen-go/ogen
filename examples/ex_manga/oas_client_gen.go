@@ -95,7 +95,9 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 	return c, nil
 }
 
-// GetBook implements getBook operation.
+// GetBook invokes getBook operation.
+//
+// GET /api/gallery/{book_id}
 func (c *Client) GetBook(ctx context.Context, params GetBookParams) (res GetBookRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetBook`,
@@ -147,7 +149,9 @@ func (c *Client) GetBook(ctx context.Context, params GetBookParams) (res GetBook
 	return result, nil
 }
 
-// GetPageCoverImage implements getPageCoverImage operation.
+// GetPageCoverImage invokes getPageCoverImage operation.
+//
+// GET /galleries/{media_id}/cover.{format}
 func (c *Client) GetPageCoverImage(ctx context.Context, params GetPageCoverImageParams) (res GetPageCoverImageRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetPageCoverImage`,
@@ -214,7 +218,9 @@ func (c *Client) GetPageCoverImage(ctx context.Context, params GetPageCoverImage
 	return result, nil
 }
 
-// GetPageImage implements getPageImage operation.
+// GetPageImage invokes getPageImage operation.
+//
+// GET /galleries/{media_id}/{page}.{format}
 func (c *Client) GetPageImage(ctx context.Context, params GetPageImageParams) (res GetPageImageRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetPageImage`,
@@ -296,7 +302,9 @@ func (c *Client) GetPageImage(ctx context.Context, params GetPageImageParams) (r
 	return result, nil
 }
 
-// GetPageThumbnailImage implements getPageThumbnailImage operation.
+// GetPageThumbnailImage invokes getPageThumbnailImage operation.
+//
+// GET /galleries/{media_id}/{page}t.{format}
 func (c *Client) GetPageThumbnailImage(ctx context.Context, params GetPageThumbnailImageParams) (res GetPageThumbnailImageRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetPageThumbnailImage`,
@@ -378,7 +386,9 @@ func (c *Client) GetPageThumbnailImage(ctx context.Context, params GetPageThumbn
 	return result, nil
 }
 
-// Search implements search operation.
+// Search invokes search operation.
+//
+// GET /api/galleries/search
 func (c *Client) Search(ctx context.Context, params SearchParams) (res SearchRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `Search`,
@@ -448,7 +458,9 @@ func (c *Client) Search(ctx context.Context, params SearchParams) (res SearchRes
 	return result, nil
 }
 
-// SearchByTagID implements searchByTagID operation.
+// SearchByTagID invokes searchByTagID operation.
+//
+// GET /api/galleries/tagged
 func (c *Client) SearchByTagID(ctx context.Context, params SearchByTagIDParams) (res SearchByTagIDRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SearchByTagID`,

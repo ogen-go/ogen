@@ -67,1146 +67,2288 @@ var (
 // Handler handles operations described by OpenAPI v3 specification.
 type Handler interface {
 	// ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg implements actions/add-repo-access-to-self-hosted-runner-group-in-org operation.
+	//
+	// PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories/{repository_id}
 	ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, params ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams) (ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgNoContent, error)
 	// ActionsAddSelectedRepoToOrgSecret implements actions/add-selected-repo-to-org-secret operation.
+	//
+	// PUT /orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}
 	ActionsAddSelectedRepoToOrgSecret(ctx context.Context, params ActionsAddSelectedRepoToOrgSecretParams) (ActionsAddSelectedRepoToOrgSecretRes, error)
 	// ActionsAddSelfHostedRunnerToGroupForOrg implements actions/add-self-hosted-runner-to-group-for-org operation.
+	//
+	// PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
 	ActionsAddSelfHostedRunnerToGroupForOrg(ctx context.Context, params ActionsAddSelfHostedRunnerToGroupForOrgParams) (ActionsAddSelfHostedRunnerToGroupForOrgNoContent, error)
 	// ActionsApproveWorkflowRun implements actions/approve-workflow-run operation.
+	//
+	// POST /repos/{owner}/{repo}/actions/runs/{run_id}/approve
 	ActionsApproveWorkflowRun(ctx context.Context, params ActionsApproveWorkflowRunParams) (ActionsApproveWorkflowRunRes, error)
 	// ActionsCancelWorkflowRun implements actions/cancel-workflow-run operation.
+	//
+	// POST /repos/{owner}/{repo}/actions/runs/{run_id}/cancel
 	ActionsCancelWorkflowRun(ctx context.Context, params ActionsCancelWorkflowRunParams) (ActionsCancelWorkflowRunAccepted, error)
 	// ActionsCreateOrUpdateEnvironmentSecret implements actions/create-or-update-environment-secret operation.
+	//
+	// PUT /repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}
 	ActionsCreateOrUpdateEnvironmentSecret(ctx context.Context, req ActionsCreateOrUpdateEnvironmentSecretReq, params ActionsCreateOrUpdateEnvironmentSecretParams) (ActionsCreateOrUpdateEnvironmentSecretRes, error)
 	// ActionsCreateOrUpdateOrgSecret implements actions/create-or-update-org-secret operation.
+	//
+	// PUT /orgs/{org}/actions/secrets/{secret_name}
 	ActionsCreateOrUpdateOrgSecret(ctx context.Context, req ActionsCreateOrUpdateOrgSecretReq, params ActionsCreateOrUpdateOrgSecretParams) (ActionsCreateOrUpdateOrgSecretRes, error)
 	// ActionsCreateOrUpdateRepoSecret implements actions/create-or-update-repo-secret operation.
+	//
+	// PUT /repos/{owner}/{repo}/actions/secrets/{secret_name}
 	ActionsCreateOrUpdateRepoSecret(ctx context.Context, req ActionsCreateOrUpdateRepoSecretReq, params ActionsCreateOrUpdateRepoSecretParams) (ActionsCreateOrUpdateRepoSecretRes, error)
 	// ActionsCreateRegistrationTokenForOrg implements actions/create-registration-token-for-org operation.
+	//
+	// POST /orgs/{org}/actions/runners/registration-token
 	ActionsCreateRegistrationTokenForOrg(ctx context.Context, params ActionsCreateRegistrationTokenForOrgParams) (AuthenticationToken, error)
 	// ActionsCreateRegistrationTokenForRepo implements actions/create-registration-token-for-repo operation.
+	//
+	// POST /repos/{owner}/{repo}/actions/runners/registration-token
 	ActionsCreateRegistrationTokenForRepo(ctx context.Context, params ActionsCreateRegistrationTokenForRepoParams) (AuthenticationToken, error)
 	// ActionsCreateRemoveTokenForOrg implements actions/create-remove-token-for-org operation.
+	//
+	// POST /orgs/{org}/actions/runners/remove-token
 	ActionsCreateRemoveTokenForOrg(ctx context.Context, params ActionsCreateRemoveTokenForOrgParams) (AuthenticationToken, error)
 	// ActionsCreateRemoveTokenForRepo implements actions/create-remove-token-for-repo operation.
+	//
+	// POST /repos/{owner}/{repo}/actions/runners/remove-token
 	ActionsCreateRemoveTokenForRepo(ctx context.Context, params ActionsCreateRemoveTokenForRepoParams) (AuthenticationToken, error)
 	// ActionsCreateSelfHostedRunnerGroupForOrg implements actions/create-self-hosted-runner-group-for-org operation.
+	//
+	// POST /orgs/{org}/actions/runner-groups
 	ActionsCreateSelfHostedRunnerGroupForOrg(ctx context.Context, req ActionsCreateSelfHostedRunnerGroupForOrgReq, params ActionsCreateSelfHostedRunnerGroupForOrgParams) (RunnerGroupsOrg, error)
 	// ActionsDeleteArtifact implements actions/delete-artifact operation.
+	//
+	// DELETE /repos/{owner}/{repo}/actions/artifacts/{artifact_id}
 	ActionsDeleteArtifact(ctx context.Context, params ActionsDeleteArtifactParams) (ActionsDeleteArtifactNoContent, error)
 	// ActionsDeleteEnvironmentSecret implements actions/delete-environment-secret operation.
+	//
+	// DELETE /repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}
 	ActionsDeleteEnvironmentSecret(ctx context.Context, params ActionsDeleteEnvironmentSecretParams) (ActionsDeleteEnvironmentSecretNoContent, error)
 	// ActionsDeleteOrgSecret implements actions/delete-org-secret operation.
+	//
+	// DELETE /orgs/{org}/actions/secrets/{secret_name}
 	ActionsDeleteOrgSecret(ctx context.Context, params ActionsDeleteOrgSecretParams) (ActionsDeleteOrgSecretNoContent, error)
 	// ActionsDeleteRepoSecret implements actions/delete-repo-secret operation.
+	//
+	// DELETE /repos/{owner}/{repo}/actions/secrets/{secret_name}
 	ActionsDeleteRepoSecret(ctx context.Context, params ActionsDeleteRepoSecretParams) (ActionsDeleteRepoSecretNoContent, error)
 	// ActionsDeleteSelfHostedRunnerFromOrg implements actions/delete-self-hosted-runner-from-org operation.
+	//
+	// DELETE /orgs/{org}/actions/runners/{runner_id}
 	ActionsDeleteSelfHostedRunnerFromOrg(ctx context.Context, params ActionsDeleteSelfHostedRunnerFromOrgParams) (ActionsDeleteSelfHostedRunnerFromOrgNoContent, error)
 	// ActionsDeleteSelfHostedRunnerFromRepo implements actions/delete-self-hosted-runner-from-repo operation.
+	//
+	// DELETE /repos/{owner}/{repo}/actions/runners/{runner_id}
 	ActionsDeleteSelfHostedRunnerFromRepo(ctx context.Context, params ActionsDeleteSelfHostedRunnerFromRepoParams) (ActionsDeleteSelfHostedRunnerFromRepoNoContent, error)
 	// ActionsDeleteSelfHostedRunnerGroupFromOrg implements actions/delete-self-hosted-runner-group-from-org operation.
+	//
+	// DELETE /orgs/{org}/actions/runner-groups/{runner_group_id}
 	ActionsDeleteSelfHostedRunnerGroupFromOrg(ctx context.Context, params ActionsDeleteSelfHostedRunnerGroupFromOrgParams) (ActionsDeleteSelfHostedRunnerGroupFromOrgNoContent, error)
 	// ActionsDeleteWorkflowRun implements actions/delete-workflow-run operation.
+	//
+	// DELETE /repos/{owner}/{repo}/actions/runs/{run_id}
 	ActionsDeleteWorkflowRun(ctx context.Context, params ActionsDeleteWorkflowRunParams) (ActionsDeleteWorkflowRunNoContent, error)
 	// ActionsDeleteWorkflowRunLogs implements actions/delete-workflow-run-logs operation.
+	//
+	// DELETE /repos/{owner}/{repo}/actions/runs/{run_id}/logs
 	ActionsDeleteWorkflowRunLogs(ctx context.Context, params ActionsDeleteWorkflowRunLogsParams) (ActionsDeleteWorkflowRunLogsNoContent, error)
 	// ActionsDisableSelectedRepositoryGithubActionsOrganization implements actions/disable-selected-repository-github-actions-organization operation.
+	//
+	// DELETE /orgs/{org}/actions/permissions/repositories/{repository_id}
 	ActionsDisableSelectedRepositoryGithubActionsOrganization(ctx context.Context, params ActionsDisableSelectedRepositoryGithubActionsOrganizationParams) (ActionsDisableSelectedRepositoryGithubActionsOrganizationNoContent, error)
 	// ActionsDownloadArtifact implements actions/download-artifact operation.
+	//
+	// GET /repos/{owner}/{repo}/actions/artifacts/{artifact_id}/{archive_format}
 	ActionsDownloadArtifact(ctx context.Context, params ActionsDownloadArtifactParams) (ActionsDownloadArtifactFound, error)
 	// ActionsDownloadJobLogsForWorkflowRun implements actions/download-job-logs-for-workflow-run operation.
+	//
+	// GET /repos/{owner}/{repo}/actions/jobs/{job_id}/logs
 	ActionsDownloadJobLogsForWorkflowRun(ctx context.Context, params ActionsDownloadJobLogsForWorkflowRunParams) (ActionsDownloadJobLogsForWorkflowRunFound, error)
 	// ActionsDownloadWorkflowRunLogs implements actions/download-workflow-run-logs operation.
+	//
+	// GET /repos/{owner}/{repo}/actions/runs/{run_id}/logs
 	ActionsDownloadWorkflowRunLogs(ctx context.Context, params ActionsDownloadWorkflowRunLogsParams) (ActionsDownloadWorkflowRunLogsFound, error)
 	// ActionsEnableSelectedRepositoryGithubActionsOrganization implements actions/enable-selected-repository-github-actions-organization operation.
+	//
+	// PUT /orgs/{org}/actions/permissions/repositories/{repository_id}
 	ActionsEnableSelectedRepositoryGithubActionsOrganization(ctx context.Context, params ActionsEnableSelectedRepositoryGithubActionsOrganizationParams) (ActionsEnableSelectedRepositoryGithubActionsOrganizationNoContent, error)
 	// ActionsGetAllowedActionsOrganization implements actions/get-allowed-actions-organization operation.
+	//
+	// GET /orgs/{org}/actions/permissions/selected-actions
 	ActionsGetAllowedActionsOrganization(ctx context.Context, params ActionsGetAllowedActionsOrganizationParams) (SelectedActions, error)
 	// ActionsGetAllowedActionsRepository implements actions/get-allowed-actions-repository operation.
+	//
+	// GET /repos/{owner}/{repo}/actions/permissions/selected-actions
 	ActionsGetAllowedActionsRepository(ctx context.Context, params ActionsGetAllowedActionsRepositoryParams) (SelectedActions, error)
 	// ActionsGetArtifact implements actions/get-artifact operation.
+	//
+	// GET /repos/{owner}/{repo}/actions/artifacts/{artifact_id}
 	ActionsGetArtifact(ctx context.Context, params ActionsGetArtifactParams) (Artifact, error)
 	// ActionsGetEnvironmentPublicKey implements actions/get-environment-public-key operation.
+	//
+	// GET /repositories/{repository_id}/environments/{environment_name}/secrets/public-key
 	ActionsGetEnvironmentPublicKey(ctx context.Context, params ActionsGetEnvironmentPublicKeyParams) (ActionsPublicKey, error)
 	// ActionsGetEnvironmentSecret implements actions/get-environment-secret operation.
+	//
+	// GET /repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}
 	ActionsGetEnvironmentSecret(ctx context.Context, params ActionsGetEnvironmentSecretParams) (ActionsSecret, error)
 	// ActionsGetGithubActionsPermissionsOrganization implements actions/get-github-actions-permissions-organization operation.
+	//
+	// GET /orgs/{org}/actions/permissions
 	ActionsGetGithubActionsPermissionsOrganization(ctx context.Context, params ActionsGetGithubActionsPermissionsOrganizationParams) (ActionsOrganizationPermissions, error)
 	// ActionsGetGithubActionsPermissionsRepository implements actions/get-github-actions-permissions-repository operation.
+	//
+	// GET /repos/{owner}/{repo}/actions/permissions
 	ActionsGetGithubActionsPermissionsRepository(ctx context.Context, params ActionsGetGithubActionsPermissionsRepositoryParams) (ActionsRepositoryPermissions, error)
 	// ActionsGetJobForWorkflowRun implements actions/get-job-for-workflow-run operation.
+	//
+	// GET /repos/{owner}/{repo}/actions/jobs/{job_id}
 	ActionsGetJobForWorkflowRun(ctx context.Context, params ActionsGetJobForWorkflowRunParams) (Job, error)
 	// ActionsGetOrgPublicKey implements actions/get-org-public-key operation.
+	//
+	// GET /orgs/{org}/actions/secrets/public-key
 	ActionsGetOrgPublicKey(ctx context.Context, params ActionsGetOrgPublicKeyParams) (ActionsPublicKey, error)
 	// ActionsGetOrgSecret implements actions/get-org-secret operation.
+	//
+	// GET /orgs/{org}/actions/secrets/{secret_name}
 	ActionsGetOrgSecret(ctx context.Context, params ActionsGetOrgSecretParams) (OrganizationActionsSecret, error)
 	// ActionsGetRepoPublicKey implements actions/get-repo-public-key operation.
+	//
+	// GET /repos/{owner}/{repo}/actions/secrets/public-key
 	ActionsGetRepoPublicKey(ctx context.Context, params ActionsGetRepoPublicKeyParams) (ActionsPublicKey, error)
 	// ActionsGetRepoSecret implements actions/get-repo-secret operation.
+	//
+	// GET /repos/{owner}/{repo}/actions/secrets/{secret_name}
 	ActionsGetRepoSecret(ctx context.Context, params ActionsGetRepoSecretParams) (ActionsSecret, error)
 	// ActionsGetReviewsForRun implements actions/get-reviews-for-run operation.
+	//
+	// GET /repos/{owner}/{repo}/actions/runs/{run_id}/approvals
 	ActionsGetReviewsForRun(ctx context.Context, params ActionsGetReviewsForRunParams) ([]EnvironmentApprovals, error)
 	// ActionsGetSelfHostedRunnerForOrg implements actions/get-self-hosted-runner-for-org operation.
+	//
+	// GET /orgs/{org}/actions/runners/{runner_id}
 	ActionsGetSelfHostedRunnerForOrg(ctx context.Context, params ActionsGetSelfHostedRunnerForOrgParams) (Runner, error)
 	// ActionsGetSelfHostedRunnerForRepo implements actions/get-self-hosted-runner-for-repo operation.
+	//
+	// GET /repos/{owner}/{repo}/actions/runners/{runner_id}
 	ActionsGetSelfHostedRunnerForRepo(ctx context.Context, params ActionsGetSelfHostedRunnerForRepoParams) (Runner, error)
 	// ActionsGetSelfHostedRunnerGroupForOrg implements actions/get-self-hosted-runner-group-for-org operation.
+	//
+	// GET /orgs/{org}/actions/runner-groups/{runner_group_id}
 	ActionsGetSelfHostedRunnerGroupForOrg(ctx context.Context, params ActionsGetSelfHostedRunnerGroupForOrgParams) (RunnerGroupsOrg, error)
 	// ActionsGetWorkflowRun implements actions/get-workflow-run operation.
+	//
+	// GET /repos/{owner}/{repo}/actions/runs/{run_id}
 	ActionsGetWorkflowRun(ctx context.Context, params ActionsGetWorkflowRunParams) (WorkflowRun, error)
 	// ActionsGetWorkflowRunUsage implements actions/get-workflow-run-usage operation.
+	//
+	// GET /repos/{owner}/{repo}/actions/runs/{run_id}/timing
 	ActionsGetWorkflowRunUsage(ctx context.Context, params ActionsGetWorkflowRunUsageParams) (WorkflowRunUsage, error)
 	// ActionsListArtifactsForRepo implements actions/list-artifacts-for-repo operation.
+	//
+	// GET /repos/{owner}/{repo}/actions/artifacts
 	ActionsListArtifactsForRepo(ctx context.Context, params ActionsListArtifactsForRepoParams) (ActionsListArtifactsForRepoOK, error)
 	// ActionsListEnvironmentSecrets implements actions/list-environment-secrets operation.
+	//
+	// GET /repositories/{repository_id}/environments/{environment_name}/secrets
 	ActionsListEnvironmentSecrets(ctx context.Context, params ActionsListEnvironmentSecretsParams) (ActionsListEnvironmentSecretsOK, error)
 	// ActionsListJobsForWorkflowRun implements actions/list-jobs-for-workflow-run operation.
+	//
+	// GET /repos/{owner}/{repo}/actions/runs/{run_id}/jobs
 	ActionsListJobsForWorkflowRun(ctx context.Context, params ActionsListJobsForWorkflowRunParams) (ActionsListJobsForWorkflowRunOK, error)
 	// ActionsListOrgSecrets implements actions/list-org-secrets operation.
+	//
+	// GET /orgs/{org}/actions/secrets
 	ActionsListOrgSecrets(ctx context.Context, params ActionsListOrgSecretsParams) (ActionsListOrgSecretsOK, error)
 	// ActionsListRepoAccessToSelfHostedRunnerGroupInOrg implements actions/list-repo-access-to-self-hosted-runner-group-in-org operation.
+	//
+	// GET /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories
 	ActionsListRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, params ActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams) (ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK, error)
 	// ActionsListRepoSecrets implements actions/list-repo-secrets operation.
+	//
+	// GET /repos/{owner}/{repo}/actions/secrets
 	ActionsListRepoSecrets(ctx context.Context, params ActionsListRepoSecretsParams) (ActionsListRepoSecretsOK, error)
 	// ActionsListRepoWorkflows implements actions/list-repo-workflows operation.
+	//
+	// GET /repos/{owner}/{repo}/actions/workflows
 	ActionsListRepoWorkflows(ctx context.Context, params ActionsListRepoWorkflowsParams) (ActionsListRepoWorkflowsOK, error)
 	// ActionsListRunnerApplicationsForOrg implements actions/list-runner-applications-for-org operation.
+	//
+	// GET /orgs/{org}/actions/runners/downloads
 	ActionsListRunnerApplicationsForOrg(ctx context.Context, params ActionsListRunnerApplicationsForOrgParams) ([]RunnerApplication, error)
 	// ActionsListRunnerApplicationsForRepo implements actions/list-runner-applications-for-repo operation.
+	//
+	// GET /repos/{owner}/{repo}/actions/runners/downloads
 	ActionsListRunnerApplicationsForRepo(ctx context.Context, params ActionsListRunnerApplicationsForRepoParams) ([]RunnerApplication, error)
 	// ActionsListSelectedReposForOrgSecret implements actions/list-selected-repos-for-org-secret operation.
+	//
+	// GET /orgs/{org}/actions/secrets/{secret_name}/repositories
 	ActionsListSelectedReposForOrgSecret(ctx context.Context, params ActionsListSelectedReposForOrgSecretParams) (ActionsListSelectedReposForOrgSecretOK, error)
 	// ActionsListSelectedRepositoriesEnabledGithubActionsOrganization implements actions/list-selected-repositories-enabled-github-actions-organization operation.
+	//
+	// GET /orgs/{org}/actions/permissions/repositories
 	ActionsListSelectedRepositoriesEnabledGithubActionsOrganization(ctx context.Context, params ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams) (ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK, error)
 	// ActionsListSelfHostedRunnerGroupsForOrg implements actions/list-self-hosted-runner-groups-for-org operation.
+	//
+	// GET /orgs/{org}/actions/runner-groups
 	ActionsListSelfHostedRunnerGroupsForOrg(ctx context.Context, params ActionsListSelfHostedRunnerGroupsForOrgParams) (ActionsListSelfHostedRunnerGroupsForOrgOK, error)
 	// ActionsListSelfHostedRunnersForOrg implements actions/list-self-hosted-runners-for-org operation.
+	//
+	// GET /orgs/{org}/actions/runners
 	ActionsListSelfHostedRunnersForOrg(ctx context.Context, params ActionsListSelfHostedRunnersForOrgParams) (ActionsListSelfHostedRunnersForOrgOK, error)
 	// ActionsListSelfHostedRunnersForRepo implements actions/list-self-hosted-runners-for-repo operation.
+	//
+	// GET /repos/{owner}/{repo}/actions/runners
 	ActionsListSelfHostedRunnersForRepo(ctx context.Context, params ActionsListSelfHostedRunnersForRepoParams) (ActionsListSelfHostedRunnersForRepoOK, error)
 	// ActionsListSelfHostedRunnersInGroupForOrg implements actions/list-self-hosted-runners-in-group-for-org operation.
+	//
+	// GET /orgs/{org}/actions/runner-groups/{runner_group_id}/runners
 	ActionsListSelfHostedRunnersInGroupForOrg(ctx context.Context, params ActionsListSelfHostedRunnersInGroupForOrgParams) (ActionsListSelfHostedRunnersInGroupForOrgOK, error)
 	// ActionsListWorkflowRunArtifacts implements actions/list-workflow-run-artifacts operation.
+	//
+	// GET /repos/{owner}/{repo}/actions/runs/{run_id}/artifacts
 	ActionsListWorkflowRunArtifacts(ctx context.Context, params ActionsListWorkflowRunArtifactsParams) (ActionsListWorkflowRunArtifactsOK, error)
 	// ActionsListWorkflowRunsForRepo implements actions/list-workflow-runs-for-repo operation.
+	//
+	// GET /repos/{owner}/{repo}/actions/runs
 	ActionsListWorkflowRunsForRepo(ctx context.Context, params ActionsListWorkflowRunsForRepoParams) (ActionsListWorkflowRunsForRepoOK, error)
 	// ActionsReRunWorkflow implements actions/re-run-workflow operation.
+	//
+	// POST /repos/{owner}/{repo}/actions/runs/{run_id}/rerun
 	ActionsReRunWorkflow(ctx context.Context, params ActionsReRunWorkflowParams) (ActionsReRunWorkflowCreated, error)
 	// ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg implements actions/remove-repo-access-to-self-hosted-runner-group-in-org operation.
+	//
+	// DELETE /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories/{repository_id}
 	ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, params ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams) (ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgNoContent, error)
 	// ActionsRemoveSelectedRepoFromOrgSecret implements actions/remove-selected-repo-from-org-secret operation.
+	//
+	// DELETE /orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}
 	ActionsRemoveSelectedRepoFromOrgSecret(ctx context.Context, params ActionsRemoveSelectedRepoFromOrgSecretParams) (ActionsRemoveSelectedRepoFromOrgSecretRes, error)
 	// ActionsRemoveSelfHostedRunnerFromGroupForOrg implements actions/remove-self-hosted-runner-from-group-for-org operation.
+	//
+	// DELETE /orgs/{org}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
 	ActionsRemoveSelfHostedRunnerFromGroupForOrg(ctx context.Context, params ActionsRemoveSelfHostedRunnerFromGroupForOrgParams) (ActionsRemoveSelfHostedRunnerFromGroupForOrgNoContent, error)
 	// ActionsRetryWorkflow implements actions/retry-workflow operation.
+	//
+	// POST /repos/{owner}/{repo}/actions/runs/{run_id}/retry
 	ActionsRetryWorkflow(ctx context.Context, params ActionsRetryWorkflowParams) (ActionsRetryWorkflowCreated, error)
 	// ActionsSetAllowedActionsOrganization implements actions/set-allowed-actions-organization operation.
+	//
+	// PUT /orgs/{org}/actions/permissions/selected-actions
 	ActionsSetAllowedActionsOrganization(ctx context.Context, req SelectedActions, params ActionsSetAllowedActionsOrganizationParams) (ActionsSetAllowedActionsOrganizationNoContent, error)
 	// ActionsSetAllowedActionsRepository implements actions/set-allowed-actions-repository operation.
+	//
+	// PUT /repos/{owner}/{repo}/actions/permissions/selected-actions
 	ActionsSetAllowedActionsRepository(ctx context.Context, req SelectedActions, params ActionsSetAllowedActionsRepositoryParams) (ActionsSetAllowedActionsRepositoryNoContent, error)
 	// ActionsSetGithubActionsPermissionsOrganization implements actions/set-github-actions-permissions-organization operation.
+	//
+	// PUT /orgs/{org}/actions/permissions
 	ActionsSetGithubActionsPermissionsOrganization(ctx context.Context, req ActionsSetGithubActionsPermissionsOrganizationReq, params ActionsSetGithubActionsPermissionsOrganizationParams) (ActionsSetGithubActionsPermissionsOrganizationNoContent, error)
 	// ActionsSetGithubActionsPermissionsRepository implements actions/set-github-actions-permissions-repository operation.
+	//
+	// PUT /repos/{owner}/{repo}/actions/permissions
 	ActionsSetGithubActionsPermissionsRepository(ctx context.Context, req ActionsSetGithubActionsPermissionsRepositoryReq, params ActionsSetGithubActionsPermissionsRepositoryParams) (ActionsSetGithubActionsPermissionsRepositoryNoContent, error)
 	// ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg implements actions/set-repo-access-to-self-hosted-runner-group-in-org operation.
+	//
+	// PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories
 	ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, req ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq, params ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams) (ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgNoContent, error)
 	// ActionsSetSelectedReposForOrgSecret implements actions/set-selected-repos-for-org-secret operation.
+	//
+	// PUT /orgs/{org}/actions/secrets/{secret_name}/repositories
 	ActionsSetSelectedReposForOrgSecret(ctx context.Context, req ActionsSetSelectedReposForOrgSecretReq, params ActionsSetSelectedReposForOrgSecretParams) (ActionsSetSelectedReposForOrgSecretNoContent, error)
 	// ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization implements actions/set-selected-repositories-enabled-github-actions-organization operation.
+	//
+	// PUT /orgs/{org}/actions/permissions/repositories
 	ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization(ctx context.Context, req ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq, params ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams) (ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationNoContent, error)
 	// ActionsSetSelfHostedRunnersInGroupForOrg implements actions/set-self-hosted-runners-in-group-for-org operation.
+	//
+	// PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/runners
 	ActionsSetSelfHostedRunnersInGroupForOrg(ctx context.Context, req ActionsSetSelfHostedRunnersInGroupForOrgReq, params ActionsSetSelfHostedRunnersInGroupForOrgParams) (ActionsSetSelfHostedRunnersInGroupForOrgNoContent, error)
 	// ActionsUpdateSelfHostedRunnerGroupForOrg implements actions/update-self-hosted-runner-group-for-org operation.
+	//
+	// PATCH /orgs/{org}/actions/runner-groups/{runner_group_id}
 	ActionsUpdateSelfHostedRunnerGroupForOrg(ctx context.Context, req ActionsUpdateSelfHostedRunnerGroupForOrgReq, params ActionsUpdateSelfHostedRunnerGroupForOrgParams) (RunnerGroupsOrg, error)
 	// ActivityCheckRepoIsStarredByAuthenticatedUser implements activity/check-repo-is-starred-by-authenticated-user operation.
+	//
+	// GET /user/starred/{owner}/{repo}
 	ActivityCheckRepoIsStarredByAuthenticatedUser(ctx context.Context, params ActivityCheckRepoIsStarredByAuthenticatedUserParams) (ActivityCheckRepoIsStarredByAuthenticatedUserRes, error)
 	// ActivityDeleteRepoSubscription implements activity/delete-repo-subscription operation.
+	//
+	// DELETE /repos/{owner}/{repo}/subscription
 	ActivityDeleteRepoSubscription(ctx context.Context, params ActivityDeleteRepoSubscriptionParams) (ActivityDeleteRepoSubscriptionNoContent, error)
 	// ActivityDeleteThreadSubscription implements activity/delete-thread-subscription operation.
+	//
+	// DELETE /notifications/threads/{thread_id}/subscription
 	ActivityDeleteThreadSubscription(ctx context.Context, params ActivityDeleteThreadSubscriptionParams) (ActivityDeleteThreadSubscriptionRes, error)
 	// ActivityGetFeeds implements activity/get-feeds operation.
+	//
+	// GET /feeds
 	ActivityGetFeeds(ctx context.Context) (Feed, error)
 	// ActivityGetRepoSubscription implements activity/get-repo-subscription operation.
+	//
+	// GET /repos/{owner}/{repo}/subscription
 	ActivityGetRepoSubscription(ctx context.Context, params ActivityGetRepoSubscriptionParams) (ActivityGetRepoSubscriptionRes, error)
 	// ActivityGetThread implements activity/get-thread operation.
+	//
+	// GET /notifications/threads/{thread_id}
 	ActivityGetThread(ctx context.Context, params ActivityGetThreadParams) (ActivityGetThreadRes, error)
 	// ActivityGetThreadSubscriptionForAuthenticatedUser implements activity/get-thread-subscription-for-authenticated-user operation.
+	//
+	// GET /notifications/threads/{thread_id}/subscription
 	ActivityGetThreadSubscriptionForAuthenticatedUser(ctx context.Context, params ActivityGetThreadSubscriptionForAuthenticatedUserParams) (ActivityGetThreadSubscriptionForAuthenticatedUserRes, error)
 	// ActivityListEventsForAuthenticatedUser implements activity/list-events-for-authenticated-user operation.
+	//
+	// GET /users/{username}/events
 	ActivityListEventsForAuthenticatedUser(ctx context.Context, params ActivityListEventsForAuthenticatedUserParams) ([]Event, error)
 	// ActivityListOrgEventsForAuthenticatedUser implements activity/list-org-events-for-authenticated-user operation.
+	//
+	// GET /users/{username}/events/orgs/{org}
 	ActivityListOrgEventsForAuthenticatedUser(ctx context.Context, params ActivityListOrgEventsForAuthenticatedUserParams) ([]Event, error)
 	// ActivityListPublicEvents implements activity/list-public-events operation.
+	//
+	// GET /events
 	ActivityListPublicEvents(ctx context.Context, params ActivityListPublicEventsParams) (ActivityListPublicEventsRes, error)
 	// ActivityListPublicEventsForRepoNetwork implements activity/list-public-events-for-repo-network operation.
+	//
+	// GET /networks/{owner}/{repo}/events
 	ActivityListPublicEventsForRepoNetwork(ctx context.Context, params ActivityListPublicEventsForRepoNetworkParams) (ActivityListPublicEventsForRepoNetworkRes, error)
 	// ActivityListPublicEventsForUser implements activity/list-public-events-for-user operation.
+	//
+	// GET /users/{username}/events/public
 	ActivityListPublicEventsForUser(ctx context.Context, params ActivityListPublicEventsForUserParams) ([]Event, error)
 	// ActivityListPublicOrgEvents implements activity/list-public-org-events operation.
+	//
+	// GET /orgs/{org}/events
 	ActivityListPublicOrgEvents(ctx context.Context, params ActivityListPublicOrgEventsParams) ([]Event, error)
 	// ActivityListReceivedEventsForUser implements activity/list-received-events-for-user operation.
+	//
+	// GET /users/{username}/received_events
 	ActivityListReceivedEventsForUser(ctx context.Context, params ActivityListReceivedEventsForUserParams) ([]Event, error)
 	// ActivityListReceivedPublicEventsForUser implements activity/list-received-public-events-for-user operation.
+	//
+	// GET /users/{username}/received_events/public
 	ActivityListReceivedPublicEventsForUser(ctx context.Context, params ActivityListReceivedPublicEventsForUserParams) ([]Event, error)
 	// ActivityListRepoEvents implements activity/list-repo-events operation.
+	//
+	// GET /repos/{owner}/{repo}/events
 	ActivityListRepoEvents(ctx context.Context, params ActivityListRepoEventsParams) ([]Event, error)
 	// ActivityListRepoNotificationsForAuthenticatedUser implements activity/list-repo-notifications-for-authenticated-user operation.
+	//
+	// GET /repos/{owner}/{repo}/notifications
 	ActivityListRepoNotificationsForAuthenticatedUser(ctx context.Context, params ActivityListRepoNotificationsForAuthenticatedUserParams) ([]Thread, error)
 	// ActivityListReposStarredByAuthenticatedUser implements activity/list-repos-starred-by-authenticated-user operation.
+	//
+	// GET /user/starred
 	ActivityListReposStarredByAuthenticatedUser(ctx context.Context, params ActivityListReposStarredByAuthenticatedUserParams) (ActivityListReposStarredByAuthenticatedUserRes, error)
 	// ActivityListReposWatchedByUser implements activity/list-repos-watched-by-user operation.
+	//
+	// GET /users/{username}/subscriptions
 	ActivityListReposWatchedByUser(ctx context.Context, params ActivityListReposWatchedByUserParams) ([]MinimalRepository, error)
 	// ActivityListWatchedReposForAuthenticatedUser implements activity/list-watched-repos-for-authenticated-user operation.
+	//
+	// GET /user/subscriptions
 	ActivityListWatchedReposForAuthenticatedUser(ctx context.Context, params ActivityListWatchedReposForAuthenticatedUserParams) (ActivityListWatchedReposForAuthenticatedUserRes, error)
 	// ActivityListWatchersForRepo implements activity/list-watchers-for-repo operation.
+	//
+	// GET /repos/{owner}/{repo}/subscribers
 	ActivityListWatchersForRepo(ctx context.Context, params ActivityListWatchersForRepoParams) ([]SimpleUser, error)
 	// ActivityMarkNotificationsAsRead implements activity/mark-notifications-as-read operation.
+	//
+	// PUT /notifications
 	ActivityMarkNotificationsAsRead(ctx context.Context, req ActivityMarkNotificationsAsReadReq) (ActivityMarkNotificationsAsReadRes, error)
 	// ActivityMarkRepoNotificationsAsRead implements activity/mark-repo-notifications-as-read operation.
+	//
+	// PUT /repos/{owner}/{repo}/notifications
 	ActivityMarkRepoNotificationsAsRead(ctx context.Context, req ActivityMarkRepoNotificationsAsReadReq, params ActivityMarkRepoNotificationsAsReadParams) (ActivityMarkRepoNotificationsAsReadRes, error)
 	// ActivityMarkThreadAsRead implements activity/mark-thread-as-read operation.
+	//
+	// PATCH /notifications/threads/{thread_id}
 	ActivityMarkThreadAsRead(ctx context.Context, params ActivityMarkThreadAsReadParams) (ActivityMarkThreadAsReadRes, error)
 	// ActivitySetRepoSubscription implements activity/set-repo-subscription operation.
+	//
+	// PUT /repos/{owner}/{repo}/subscription
 	ActivitySetRepoSubscription(ctx context.Context, req ActivitySetRepoSubscriptionReq, params ActivitySetRepoSubscriptionParams) (RepositorySubscription, error)
 	// ActivitySetThreadSubscription implements activity/set-thread-subscription operation.
+	//
+	// PUT /notifications/threads/{thread_id}/subscription
 	ActivitySetThreadSubscription(ctx context.Context, req ActivitySetThreadSubscriptionReq, params ActivitySetThreadSubscriptionParams) (ActivitySetThreadSubscriptionRes, error)
 	// ActivityStarRepoForAuthenticatedUser implements activity/star-repo-for-authenticated-user operation.
+	//
+	// PUT /user/starred/{owner}/{repo}
 	ActivityStarRepoForAuthenticatedUser(ctx context.Context, params ActivityStarRepoForAuthenticatedUserParams) (ActivityStarRepoForAuthenticatedUserRes, error)
 	// ActivityUnstarRepoForAuthenticatedUser implements activity/unstar-repo-for-authenticated-user operation.
+	//
+	// DELETE /user/starred/{owner}/{repo}
 	ActivityUnstarRepoForAuthenticatedUser(ctx context.Context, params ActivityUnstarRepoForAuthenticatedUserParams) (ActivityUnstarRepoForAuthenticatedUserRes, error)
 	// AppsAddRepoToInstallation implements apps/add-repo-to-installation operation.
+	//
+	// PUT /user/installations/{installation_id}/repositories/{repository_id}
 	AppsAddRepoToInstallation(ctx context.Context, params AppsAddRepoToInstallationParams) (AppsAddRepoToInstallationRes, error)
 	// AppsDeleteInstallation implements apps/delete-installation operation.
+	//
+	// DELETE /app/installations/{installation_id}
 	AppsDeleteInstallation(ctx context.Context, params AppsDeleteInstallationParams) (AppsDeleteInstallationRes, error)
 	// AppsGetAuthenticated implements apps/get-authenticated operation.
+	//
+	// GET /app
 	AppsGetAuthenticated(ctx context.Context) (Integration, error)
 	// AppsGetBySlug implements apps/get-by-slug operation.
+	//
+	// GET /apps/{app_slug}
 	AppsGetBySlug(ctx context.Context, params AppsGetBySlugParams) (AppsGetBySlugRes, error)
 	// AppsGetSubscriptionPlanForAccount implements apps/get-subscription-plan-for-account operation.
+	//
+	// GET /marketplace_listing/accounts/{account_id}
 	AppsGetSubscriptionPlanForAccount(ctx context.Context, params AppsGetSubscriptionPlanForAccountParams) (AppsGetSubscriptionPlanForAccountRes, error)
 	// AppsGetSubscriptionPlanForAccountStubbed implements apps/get-subscription-plan-for-account-stubbed operation.
+	//
+	// GET /marketplace_listing/stubbed/accounts/{account_id}
 	AppsGetSubscriptionPlanForAccountStubbed(ctx context.Context, params AppsGetSubscriptionPlanForAccountStubbedParams) (AppsGetSubscriptionPlanForAccountStubbedRes, error)
 	// AppsGetWebhookConfigForApp implements apps/get-webhook-config-for-app operation.
+	//
+	// GET /app/hook/config
 	AppsGetWebhookConfigForApp(ctx context.Context) (WebhookConfig, error)
 	// AppsListAccountsForPlanStubbed implements apps/list-accounts-for-plan-stubbed operation.
+	//
+	// GET /marketplace_listing/stubbed/plans/{plan_id}/accounts
 	AppsListAccountsForPlanStubbed(ctx context.Context, params AppsListAccountsForPlanStubbedParams) (AppsListAccountsForPlanStubbedRes, error)
 	// AppsListInstallationReposForAuthenticatedUser implements apps/list-installation-repos-for-authenticated-user operation.
+	//
+	// GET /user/installations/{installation_id}/repositories
 	AppsListInstallationReposForAuthenticatedUser(ctx context.Context, params AppsListInstallationReposForAuthenticatedUserParams) (AppsListInstallationReposForAuthenticatedUserRes, error)
 	// AppsListPlans implements apps/list-plans operation.
+	//
+	// GET /marketplace_listing/plans
 	AppsListPlans(ctx context.Context, params AppsListPlansParams) (AppsListPlansRes, error)
 	// AppsListPlansStubbed implements apps/list-plans-stubbed operation.
+	//
+	// GET /marketplace_listing/stubbed/plans
 	AppsListPlansStubbed(ctx context.Context, params AppsListPlansStubbedParams) (AppsListPlansStubbedRes, error)
 	// AppsListReposAccessibleToInstallation implements apps/list-repos-accessible-to-installation operation.
+	//
+	// GET /installation/repositories
 	AppsListReposAccessibleToInstallation(ctx context.Context, params AppsListReposAccessibleToInstallationParams) (AppsListReposAccessibleToInstallationRes, error)
 	// AppsListSubscriptionsForAuthenticatedUser implements apps/list-subscriptions-for-authenticated-user operation.
+	//
+	// GET /user/marketplace_purchases
 	AppsListSubscriptionsForAuthenticatedUser(ctx context.Context, params AppsListSubscriptionsForAuthenticatedUserParams) (AppsListSubscriptionsForAuthenticatedUserRes, error)
 	// AppsListSubscriptionsForAuthenticatedUserStubbed implements apps/list-subscriptions-for-authenticated-user-stubbed operation.
+	//
+	// GET /user/marketplace_purchases/stubbed
 	AppsListSubscriptionsForAuthenticatedUserStubbed(ctx context.Context, params AppsListSubscriptionsForAuthenticatedUserStubbedParams) (AppsListSubscriptionsForAuthenticatedUserStubbedRes, error)
 	// AppsRemoveRepoFromInstallation implements apps/remove-repo-from-installation operation.
+	//
+	// DELETE /user/installations/{installation_id}/repositories/{repository_id}
 	AppsRemoveRepoFromInstallation(ctx context.Context, params AppsRemoveRepoFromInstallationParams) (AppsRemoveRepoFromInstallationRes, error)
 	// AppsRevokeInstallationAccessToken implements apps/revoke-installation-access-token operation.
+	//
+	// DELETE /installation/token
 	AppsRevokeInstallationAccessToken(ctx context.Context) (AppsRevokeInstallationAccessTokenNoContent, error)
 	// AppsSuspendInstallation implements apps/suspend-installation operation.
+	//
+	// PUT /app/installations/{installation_id}/suspended
 	AppsSuspendInstallation(ctx context.Context, params AppsSuspendInstallationParams) (AppsSuspendInstallationRes, error)
 	// AppsUnsuspendInstallation implements apps/unsuspend-installation operation.
+	//
+	// DELETE /app/installations/{installation_id}/suspended
 	AppsUnsuspendInstallation(ctx context.Context, params AppsUnsuspendInstallationParams) (AppsUnsuspendInstallationRes, error)
 	// AppsUpdateWebhookConfigForApp implements apps/update-webhook-config-for-app operation.
+	//
+	// PATCH /app/hook/config
 	AppsUpdateWebhookConfigForApp(ctx context.Context, req AppsUpdateWebhookConfigForAppReq) (WebhookConfig, error)
 	// BillingGetGithubActionsBillingGhe implements billing/get-github-actions-billing-ghe operation.
+	//
+	// GET /enterprises/{enterprise}/settings/billing/actions
 	BillingGetGithubActionsBillingGhe(ctx context.Context, params BillingGetGithubActionsBillingGheParams) (ActionsBillingUsage, error)
 	// BillingGetGithubActionsBillingOrg implements billing/get-github-actions-billing-org operation.
+	//
+	// GET /orgs/{org}/settings/billing/actions
 	BillingGetGithubActionsBillingOrg(ctx context.Context, params BillingGetGithubActionsBillingOrgParams) (ActionsBillingUsage, error)
 	// BillingGetGithubActionsBillingUser implements billing/get-github-actions-billing-user operation.
+	//
+	// GET /users/{username}/settings/billing/actions
 	BillingGetGithubActionsBillingUser(ctx context.Context, params BillingGetGithubActionsBillingUserParams) (ActionsBillingUsage, error)
 	// BillingGetGithubPackagesBillingGhe implements billing/get-github-packages-billing-ghe operation.
+	//
+	// GET /enterprises/{enterprise}/settings/billing/packages
 	BillingGetGithubPackagesBillingGhe(ctx context.Context, params BillingGetGithubPackagesBillingGheParams) (PackagesBillingUsage, error)
 	// BillingGetGithubPackagesBillingOrg implements billing/get-github-packages-billing-org operation.
+	//
+	// GET /orgs/{org}/settings/billing/packages
 	BillingGetGithubPackagesBillingOrg(ctx context.Context, params BillingGetGithubPackagesBillingOrgParams) (PackagesBillingUsage, error)
 	// BillingGetGithubPackagesBillingUser implements billing/get-github-packages-billing-user operation.
+	//
+	// GET /users/{username}/settings/billing/packages
 	BillingGetGithubPackagesBillingUser(ctx context.Context, params BillingGetGithubPackagesBillingUserParams) (PackagesBillingUsage, error)
 	// BillingGetSharedStorageBillingGhe implements billing/get-shared-storage-billing-ghe operation.
+	//
+	// GET /enterprises/{enterprise}/settings/billing/shared-storage
 	BillingGetSharedStorageBillingGhe(ctx context.Context, params BillingGetSharedStorageBillingGheParams) (CombinedBillingUsage, error)
 	// BillingGetSharedStorageBillingOrg implements billing/get-shared-storage-billing-org operation.
+	//
+	// GET /orgs/{org}/settings/billing/shared-storage
 	BillingGetSharedStorageBillingOrg(ctx context.Context, params BillingGetSharedStorageBillingOrgParams) (CombinedBillingUsage, error)
 	// BillingGetSharedStorageBillingUser implements billing/get-shared-storage-billing-user operation.
+	//
+	// GET /users/{username}/settings/billing/shared-storage
 	BillingGetSharedStorageBillingUser(ctx context.Context, params BillingGetSharedStorageBillingUserParams) (CombinedBillingUsage, error)
 	// ChecksCreateSuite implements checks/create-suite operation.
+	//
+	// POST /repos/{owner}/{repo}/check-suites
 	ChecksCreateSuite(ctx context.Context, req ChecksCreateSuiteReq, params ChecksCreateSuiteParams) (ChecksCreateSuiteRes, error)
 	// ChecksGet implements checks/get operation.
+	//
+	// GET /repos/{owner}/{repo}/check-runs/{check_run_id}
 	ChecksGet(ctx context.Context, params ChecksGetParams) (CheckRun, error)
 	// ChecksGetSuite implements checks/get-suite operation.
+	//
+	// GET /repos/{owner}/{repo}/check-suites/{check_suite_id}
 	ChecksGetSuite(ctx context.Context, params ChecksGetSuiteParams) (CheckSuite, error)
 	// ChecksListAnnotations implements checks/list-annotations operation.
+	//
+	// GET /repos/{owner}/{repo}/check-runs/{check_run_id}/annotations
 	ChecksListAnnotations(ctx context.Context, params ChecksListAnnotationsParams) ([]CheckAnnotation, error)
 	// ChecksListForRef implements checks/list-for-ref operation.
+	//
+	// GET /repos/{owner}/{repo}/commits/{ref}/check-runs
 	ChecksListForRef(ctx context.Context, params ChecksListForRefParams) (ChecksListForRefOK, error)
 	// ChecksListForSuite implements checks/list-for-suite operation.
+	//
+	// GET /repos/{owner}/{repo}/check-suites/{check_suite_id}/check-runs
 	ChecksListForSuite(ctx context.Context, params ChecksListForSuiteParams) (ChecksListForSuiteOK, error)
 	// ChecksListSuitesForRef implements checks/list-suites-for-ref operation.
+	//
+	// GET /repos/{owner}/{repo}/commits/{ref}/check-suites
 	ChecksListSuitesForRef(ctx context.Context, params ChecksListSuitesForRefParams) (ChecksListSuitesForRefOK, error)
 	// ChecksRerequestSuite implements checks/rerequest-suite operation.
+	//
+	// POST /repos/{owner}/{repo}/check-suites/{check_suite_id}/rerequest
 	ChecksRerequestSuite(ctx context.Context, params ChecksRerequestSuiteParams) (ChecksRerequestSuiteCreated, error)
 	// ChecksSetSuitesPreferences implements checks/set-suites-preferences operation.
+	//
+	// PATCH /repos/{owner}/{repo}/check-suites/preferences
 	ChecksSetSuitesPreferences(ctx context.Context, req ChecksSetSuitesPreferencesReq, params ChecksSetSuitesPreferencesParams) (CheckSuitePreference, error)
 	// CodeScanningDeleteAnalysis implements code-scanning/delete-analysis operation.
+	//
+	// DELETE /repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}
 	CodeScanningDeleteAnalysis(ctx context.Context, params CodeScanningDeleteAnalysisParams) (CodeScanningDeleteAnalysisRes, error)
 	// CodeScanningGetAlert implements code-scanning/get-alert operation.
+	//
+	// GET /repos/{owner}/{repo}/code-scanning/alerts/{alert_number}
 	CodeScanningGetAlert(ctx context.Context, params CodeScanningGetAlertParams) (CodeScanningGetAlertRes, error)
 	// CodeScanningGetAnalysis implements code-scanning/get-analysis operation.
+	//
+	// GET /repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}
 	CodeScanningGetAnalysis(ctx context.Context, params CodeScanningGetAnalysisParams) (CodeScanningGetAnalysisRes, error)
 	// CodeScanningGetSarif implements code-scanning/get-sarif operation.
+	//
+	// GET /repos/{owner}/{repo}/code-scanning/sarifs/{sarif_id}
 	CodeScanningGetSarif(ctx context.Context, params CodeScanningGetSarifParams) (CodeScanningGetSarifRes, error)
 	// CodeScanningListAlertInstances implements code-scanning/list-alert-instances operation.
+	//
+	// GET /repos/{owner}/{repo}/code-scanning/alerts/{alert_number}/instances
 	CodeScanningListAlertInstances(ctx context.Context, params CodeScanningListAlertInstancesParams) (CodeScanningListAlertInstancesRes, error)
 	// CodeScanningListAlertsForRepo implements code-scanning/list-alerts-for-repo operation.
+	//
+	// GET /repos/{owner}/{repo}/code-scanning/alerts
 	CodeScanningListAlertsForRepo(ctx context.Context, params CodeScanningListAlertsForRepoParams) (CodeScanningListAlertsForRepoRes, error)
 	// CodeScanningListRecentAnalyses implements code-scanning/list-recent-analyses operation.
+	//
+	// GET /repos/{owner}/{repo}/code-scanning/analyses
 	CodeScanningListRecentAnalyses(ctx context.Context, params CodeScanningListRecentAnalysesParams) (CodeScanningListRecentAnalysesRes, error)
 	// CodeScanningUpdateAlert implements code-scanning/update-alert operation.
+	//
+	// PATCH /repos/{owner}/{repo}/code-scanning/alerts/{alert_number}
 	CodeScanningUpdateAlert(ctx context.Context, req CodeScanningUpdateAlertReq, params CodeScanningUpdateAlertParams) (CodeScanningUpdateAlertRes, error)
 	// CodeScanningUploadSarif implements code-scanning/upload-sarif operation.
+	//
+	// POST /repos/{owner}/{repo}/code-scanning/sarifs
 	CodeScanningUploadSarif(ctx context.Context, req CodeScanningUploadSarifReq, params CodeScanningUploadSarifParams) (CodeScanningUploadSarifRes, error)
 	// CodesOfConductGetAllCodesOfConduct implements codes-of-conduct/get-all-codes-of-conduct operation.
+	//
+	// GET /codes_of_conduct
 	CodesOfConductGetAllCodesOfConduct(ctx context.Context) (CodesOfConductGetAllCodesOfConductRes, error)
 	// CodesOfConductGetConductCode implements codes-of-conduct/get-conduct-code operation.
+	//
+	// GET /codes_of_conduct/{key}
 	CodesOfConductGetConductCode(ctx context.Context, params CodesOfConductGetConductCodeParams) (CodesOfConductGetConductCodeRes, error)
 	// EmojisGet implements emojis/get operation.
+	//
+	// GET /emojis
 	EmojisGet(ctx context.Context) (EmojisGetRes, error)
 	// EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise implements enterprise-admin/add-org-access-to-self-hosted-runner-group-in-enterprise operation.
+	//
+	// PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations/{org_id}
 	EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, params EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) (EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, error)
 	// EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise implements enterprise-admin/add-self-hosted-runner-to-group-for-enterprise operation.
+	//
+	// PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
 	EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise(ctx context.Context, params EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams) (EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseNoContent, error)
 	// EnterpriseAdminCreateRegistrationTokenForEnterprise implements enterprise-admin/create-registration-token-for-enterprise operation.
+	//
+	// POST /enterprises/{enterprise}/actions/runners/registration-token
 	EnterpriseAdminCreateRegistrationTokenForEnterprise(ctx context.Context, params EnterpriseAdminCreateRegistrationTokenForEnterpriseParams) (AuthenticationToken, error)
 	// EnterpriseAdminCreateRemoveTokenForEnterprise implements enterprise-admin/create-remove-token-for-enterprise operation.
+	//
+	// POST /enterprises/{enterprise}/actions/runners/remove-token
 	EnterpriseAdminCreateRemoveTokenForEnterprise(ctx context.Context, params EnterpriseAdminCreateRemoveTokenForEnterpriseParams) (AuthenticationToken, error)
 	// EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise implements enterprise-admin/create-self-hosted-runner-group-for-enterprise operation.
+	//
+	// POST /enterprises/{enterprise}/actions/runner-groups
 	EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise(ctx context.Context, req EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq, params EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams) (RunnerGroupsEnterprise, error)
 	// EnterpriseAdminDeleteScimGroupFromEnterprise implements enterprise-admin/delete-scim-group-from-enterprise operation.
+	//
+	// DELETE /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
 	EnterpriseAdminDeleteScimGroupFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteScimGroupFromEnterpriseParams) (EnterpriseAdminDeleteScimGroupFromEnterpriseNoContent, error)
 	// EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise implements enterprise-admin/delete-self-hosted-runner-from-enterprise operation.
+	//
+	// DELETE /enterprises/{enterprise}/actions/runners/{runner_id}
 	EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams) (EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseNoContent, error)
 	// EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise implements enterprise-admin/delete-self-hosted-runner-group-from-enterprise operation.
+	//
+	// DELETE /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}
 	EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams) (EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseNoContent, error)
 	// EnterpriseAdminDeleteUserFromEnterprise implements enterprise-admin/delete-user-from-enterprise operation.
+	//
+	// DELETE /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
 	EnterpriseAdminDeleteUserFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteUserFromEnterpriseParams) (EnterpriseAdminDeleteUserFromEnterpriseNoContent, error)
 	// EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise implements enterprise-admin/disable-selected-organization-github-actions-enterprise operation.
+	//
+	// DELETE /enterprises/{enterprise}/actions/permissions/organizations/{org_id}
 	EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise(ctx context.Context, params EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseParams) (EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseNoContent, error)
 	// EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise implements enterprise-admin/enable-selected-organization-github-actions-enterprise operation.
+	//
+	// PUT /enterprises/{enterprise}/actions/permissions/organizations/{org_id}
 	EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise(ctx context.Context, params EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParams) (EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseNoContent, error)
 	// EnterpriseAdminGetAllowedActionsEnterprise implements enterprise-admin/get-allowed-actions-enterprise operation.
+	//
+	// GET /enterprises/{enterprise}/actions/permissions/selected-actions
 	EnterpriseAdminGetAllowedActionsEnterprise(ctx context.Context, params EnterpriseAdminGetAllowedActionsEnterpriseParams) (SelectedActions, error)
 	// EnterpriseAdminGetAuditLog implements enterprise-admin/get-audit-log operation.
+	//
+	// GET /enterprises/{enterprise}/audit-log
 	EnterpriseAdminGetAuditLog(ctx context.Context, params EnterpriseAdminGetAuditLogParams) ([]AuditLogEvent, error)
 	// EnterpriseAdminGetGithubActionsPermissionsEnterprise implements enterprise-admin/get-github-actions-permissions-enterprise operation.
+	//
+	// GET /enterprises/{enterprise}/actions/permissions
 	EnterpriseAdminGetGithubActionsPermissionsEnterprise(ctx context.Context, params EnterpriseAdminGetGithubActionsPermissionsEnterpriseParams) (ActionsEnterprisePermissions, error)
 	// EnterpriseAdminGetProvisioningInformationForEnterpriseGroup implements enterprise-admin/get-provisioning-information-for-enterprise-group operation.
+	//
+	// GET /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
 	EnterpriseAdminGetProvisioningInformationForEnterpriseGroup(ctx context.Context, params EnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams) (ScimEnterpriseGroup, error)
 	// EnterpriseAdminGetProvisioningInformationForEnterpriseUser implements enterprise-admin/get-provisioning-information-for-enterprise-user operation.
+	//
+	// GET /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
 	EnterpriseAdminGetProvisioningInformationForEnterpriseUser(ctx context.Context, params EnterpriseAdminGetProvisioningInformationForEnterpriseUserParams) (ScimEnterpriseUser, error)
 	// EnterpriseAdminGetSelfHostedRunnerForEnterprise implements enterprise-admin/get-self-hosted-runner-for-enterprise operation.
+	//
+	// GET /enterprises/{enterprise}/actions/runners/{runner_id}
 	EnterpriseAdminGetSelfHostedRunnerForEnterprise(ctx context.Context, params EnterpriseAdminGetSelfHostedRunnerForEnterpriseParams) (Runner, error)
 	// EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise implements enterprise-admin/get-self-hosted-runner-group-for-enterprise operation.
+	//
+	// GET /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}
 	EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise(ctx context.Context, params EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams) (RunnerGroupsEnterprise, error)
 	// EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise implements enterprise-admin/list-org-access-to-self-hosted-runner-group-in-enterprise operation.
+	//
+	// GET /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations
 	EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, params EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) (EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK, error)
 	// EnterpriseAdminListProvisionedGroupsEnterprise implements enterprise-admin/list-provisioned-groups-enterprise operation.
+	//
+	// GET /scim/v2/enterprises/{enterprise}/Groups
 	EnterpriseAdminListProvisionedGroupsEnterprise(ctx context.Context, params EnterpriseAdminListProvisionedGroupsEnterpriseParams) (ScimGroupListEnterprise, error)
 	// EnterpriseAdminListProvisionedIdentitiesEnterprise implements enterprise-admin/list-provisioned-identities-enterprise operation.
+	//
+	// GET /scim/v2/enterprises/{enterprise}/Users
 	EnterpriseAdminListProvisionedIdentitiesEnterprise(ctx context.Context, params EnterpriseAdminListProvisionedIdentitiesEnterpriseParams) (ScimUserListEnterprise, error)
 	// EnterpriseAdminListRunnerApplicationsForEnterprise implements enterprise-admin/list-runner-applications-for-enterprise operation.
+	//
+	// GET /enterprises/{enterprise}/actions/runners/downloads
 	EnterpriseAdminListRunnerApplicationsForEnterprise(ctx context.Context, params EnterpriseAdminListRunnerApplicationsForEnterpriseParams) ([]RunnerApplication, error)
 	// EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise implements enterprise-admin/list-selected-organizations-enabled-github-actions-enterprise operation.
+	//
+	// GET /enterprises/{enterprise}/actions/permissions/organizations
 	EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise(ctx context.Context, params EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseParams) (EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOK, error)
 	// EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise implements enterprise-admin/list-self-hosted-runner-groups-for-enterprise operation.
+	//
+	// GET /enterprises/{enterprise}/actions/runner-groups
 	EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise(ctx context.Context, params EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams) (EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK, error)
 	// EnterpriseAdminListSelfHostedRunnersForEnterprise implements enterprise-admin/list-self-hosted-runners-for-enterprise operation.
+	//
+	// GET /enterprises/{enterprise}/actions/runners
 	EnterpriseAdminListSelfHostedRunnersForEnterprise(ctx context.Context, params EnterpriseAdminListSelfHostedRunnersForEnterpriseParams) (EnterpriseAdminListSelfHostedRunnersForEnterpriseOK, error)
 	// EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise implements enterprise-admin/list-self-hosted-runners-in-group-for-enterprise operation.
+	//
+	// GET /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners
 	EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise(ctx context.Context, params EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams) (EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOK, error)
 	// EnterpriseAdminProvisionAndInviteEnterpriseGroup implements enterprise-admin/provision-and-invite-enterprise-group operation.
+	//
+	// POST /scim/v2/enterprises/{enterprise}/Groups
 	EnterpriseAdminProvisionAndInviteEnterpriseGroup(ctx context.Context, req EnterpriseAdminProvisionAndInviteEnterpriseGroupReq, params EnterpriseAdminProvisionAndInviteEnterpriseGroupParams) (ScimEnterpriseGroup, error)
 	// EnterpriseAdminProvisionAndInviteEnterpriseUser implements enterprise-admin/provision-and-invite-enterprise-user operation.
+	//
+	// POST /scim/v2/enterprises/{enterprise}/Users
 	EnterpriseAdminProvisionAndInviteEnterpriseUser(ctx context.Context, req EnterpriseAdminProvisionAndInviteEnterpriseUserReq, params EnterpriseAdminProvisionAndInviteEnterpriseUserParams) (ScimEnterpriseUser, error)
 	// EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise implements enterprise-admin/remove-org-access-to-self-hosted-runner-group-in-enterprise operation.
+	//
+	// DELETE /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations/{org_id}
 	EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, params EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) (EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, error)
 	// EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise implements enterprise-admin/remove-self-hosted-runner-from-group-for-enterprise operation.
+	//
+	// DELETE /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
 	EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise(ctx context.Context, params EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams) (EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseNoContent, error)
 	// EnterpriseAdminSetAllowedActionsEnterprise implements enterprise-admin/set-allowed-actions-enterprise operation.
+	//
+	// PUT /enterprises/{enterprise}/actions/permissions/selected-actions
 	EnterpriseAdminSetAllowedActionsEnterprise(ctx context.Context, req SelectedActions, params EnterpriseAdminSetAllowedActionsEnterpriseParams) (EnterpriseAdminSetAllowedActionsEnterpriseNoContent, error)
 	// EnterpriseAdminSetGithubActionsPermissionsEnterprise implements enterprise-admin/set-github-actions-permissions-enterprise operation.
+	//
+	// PUT /enterprises/{enterprise}/actions/permissions
 	EnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx context.Context, req EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq, params EnterpriseAdminSetGithubActionsPermissionsEnterpriseParams) (EnterpriseAdminSetGithubActionsPermissionsEnterpriseNoContent, error)
 	// EnterpriseAdminSetInformationForProvisionedEnterpriseGroup implements enterprise-admin/set-information-for-provisioned-enterprise-group operation.
+	//
+	// PUT /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
 	EnterpriseAdminSetInformationForProvisionedEnterpriseGroup(ctx context.Context, req EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq, params EnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams) (ScimEnterpriseGroup, error)
 	// EnterpriseAdminSetInformationForProvisionedEnterpriseUser implements enterprise-admin/set-information-for-provisioned-enterprise-user operation.
+	//
+	// PUT /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
 	EnterpriseAdminSetInformationForProvisionedEnterpriseUser(ctx context.Context, req EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq, params EnterpriseAdminSetInformationForProvisionedEnterpriseUserParams) (ScimEnterpriseUser, error)
 	// EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise implements enterprise-admin/set-org-access-to-self-hosted-runner-group-in-enterprise operation.
+	//
+	// PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations
 	EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, req EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq, params EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) (EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, error)
 	// EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise implements enterprise-admin/set-selected-organizations-enabled-github-actions-enterprise operation.
+	//
+	// PUT /enterprises/{enterprise}/actions/permissions/organizations
 	EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise(ctx context.Context, req EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseReq, params EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseParams) (EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseNoContent, error)
 	// EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise implements enterprise-admin/set-self-hosted-runners-in-group-for-enterprise operation.
+	//
+	// PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners
 	EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx context.Context, req EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq, params EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams) (EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseNoContent, error)
 	// EnterpriseAdminUpdateAttributeForEnterpriseUser implements enterprise-admin/update-attribute-for-enterprise-user operation.
+	//
+	// PATCH /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
 	EnterpriseAdminUpdateAttributeForEnterpriseUser(ctx context.Context, req EnterpriseAdminUpdateAttributeForEnterpriseUserReq, params EnterpriseAdminUpdateAttributeForEnterpriseUserParams) (ScimEnterpriseUser, error)
 	// EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise implements enterprise-admin/update-self-hosted-runner-group-for-enterprise operation.
+	//
+	// PATCH /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}
 	EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise(ctx context.Context, req EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq, params EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams) (RunnerGroupsEnterprise, error)
 	// GistsCheckIsStarred implements gists/check-is-starred operation.
+	//
+	// GET /gists/{gist_id}/star
 	GistsCheckIsStarred(ctx context.Context, params GistsCheckIsStarredParams) (GistsCheckIsStarredRes, error)
 	// GistsCreateComment implements gists/create-comment operation.
+	//
+	// POST /gists/{gist_id}/comments
 	GistsCreateComment(ctx context.Context, req GistsCreateCommentReq, params GistsCreateCommentParams) (GistsCreateCommentRes, error)
 	// GistsDelete implements gists/delete operation.
+	//
+	// DELETE /gists/{gist_id}
 	GistsDelete(ctx context.Context, params GistsDeleteParams) (GistsDeleteRes, error)
 	// GistsDeleteComment implements gists/delete-comment operation.
+	//
+	// DELETE /gists/{gist_id}/comments/{comment_id}
 	GistsDeleteComment(ctx context.Context, params GistsDeleteCommentParams) (GistsDeleteCommentRes, error)
 	// GistsGet implements gists/get operation.
+	//
+	// GET /gists/{gist_id}
 	GistsGet(ctx context.Context, params GistsGetParams) (GistsGetRes, error)
 	// GistsGetComment implements gists/get-comment operation.
+	//
+	// GET /gists/{gist_id}/comments/{comment_id}
 	GistsGetComment(ctx context.Context, params GistsGetCommentParams) (GistsGetCommentRes, error)
 	// GistsList implements gists/list operation.
+	//
+	// GET /gists
 	GistsList(ctx context.Context, params GistsListParams) (GistsListRes, error)
 	// GistsListComments implements gists/list-comments operation.
+	//
+	// GET /gists/{gist_id}/comments
 	GistsListComments(ctx context.Context, params GistsListCommentsParams) (GistsListCommentsRes, error)
 	// GistsListCommits implements gists/list-commits operation.
+	//
+	// GET /gists/{gist_id}/commits
 	GistsListCommits(ctx context.Context, params GistsListCommitsParams) (GistsListCommitsRes, error)
 	// GistsListForks implements gists/list-forks operation.
+	//
+	// GET /gists/{gist_id}/forks
 	GistsListForks(ctx context.Context, params GistsListForksParams) (GistsListForksRes, error)
 	// GistsListStarred implements gists/list-starred operation.
+	//
+	// GET /gists/starred
 	GistsListStarred(ctx context.Context, params GistsListStarredParams) (GistsListStarredRes, error)
 	// GistsStar implements gists/star operation.
+	//
+	// PUT /gists/{gist_id}/star
 	GistsStar(ctx context.Context, params GistsStarParams) (GistsStarRes, error)
 	// GistsUnstar implements gists/unstar operation.
+	//
+	// DELETE /gists/{gist_id}/star
 	GistsUnstar(ctx context.Context, params GistsUnstarParams) (GistsUnstarRes, error)
 	// GistsUpdateComment implements gists/update-comment operation.
+	//
+	// PATCH /gists/{gist_id}/comments/{comment_id}
 	GistsUpdateComment(ctx context.Context, req GistsUpdateCommentReq, params GistsUpdateCommentParams) (GistsUpdateCommentRes, error)
 	// GitGetCommit implements git/get-commit operation.
+	//
+	// GET /repos/{owner}/{repo}/git/commits/{commit_sha}
 	GitGetCommit(ctx context.Context, params GitGetCommitParams) (GitGetCommitRes, error)
 	// GitGetRef implements git/get-ref operation.
+	//
+	// GET /repos/{owner}/{repo}/git/ref/{ref}
 	GitGetRef(ctx context.Context, params GitGetRefParams) (GitGetRefRes, error)
 	// GitGetTag implements git/get-tag operation.
+	//
+	// GET /repos/{owner}/{repo}/git/tags/{tag_sha}
 	GitGetTag(ctx context.Context, params GitGetTagParams) (GitGetTagRes, error)
 	// GitListMatchingRefs implements git/list-matching-refs operation.
+	//
+	// GET /repos/{owner}/{repo}/git/matching-refs/{ref}
 	GitListMatchingRefs(ctx context.Context, params GitListMatchingRefsParams) ([]GitRef, error)
 	// GitignoreGetAllTemplates implements gitignore/get-all-templates operation.
+	//
+	// GET /gitignore/templates
 	GitignoreGetAllTemplates(ctx context.Context) (GitignoreGetAllTemplatesRes, error)
 	// GitignoreGetTemplate implements gitignore/get-template operation.
+	//
+	// GET /gitignore/templates/{name}
 	GitignoreGetTemplate(ctx context.Context, params GitignoreGetTemplateParams) (GitignoreGetTemplateRes, error)
 	// InteractionsRemoveRestrictionsForAuthenticatedUser implements interactions/remove-restrictions-for-authenticated-user operation.
+	//
+	// DELETE /user/interaction-limits
 	InteractionsRemoveRestrictionsForAuthenticatedUser(ctx context.Context) (InteractionsRemoveRestrictionsForAuthenticatedUserNoContent, error)
 	// InteractionsRemoveRestrictionsForOrg implements interactions/remove-restrictions-for-org operation.
+	//
+	// DELETE /orgs/{org}/interaction-limits
 	InteractionsRemoveRestrictionsForOrg(ctx context.Context, params InteractionsRemoveRestrictionsForOrgParams) (InteractionsRemoveRestrictionsForOrgNoContent, error)
 	// InteractionsRemoveRestrictionsForRepo implements interactions/remove-restrictions-for-repo operation.
+	//
+	// DELETE /repos/{owner}/{repo}/interaction-limits
 	InteractionsRemoveRestrictionsForRepo(ctx context.Context, params InteractionsRemoveRestrictionsForRepoParams) (InteractionsRemoveRestrictionsForRepoRes, error)
 	// InteractionsSetRestrictionsForRepo implements interactions/set-restrictions-for-repo operation.
+	//
+	// PUT /repos/{owner}/{repo}/interaction-limits
 	InteractionsSetRestrictionsForRepo(ctx context.Context, req InteractionLimit, params InteractionsSetRestrictionsForRepoParams) (InteractionsSetRestrictionsForRepoRes, error)
 	// IssuesAddAssignees implements issues/add-assignees operation.
+	//
+	// POST /repos/{owner}/{repo}/issues/{issue_number}/assignees
 	IssuesAddAssignees(ctx context.Context, req IssuesAddAssigneesReq, params IssuesAddAssigneesParams) (IssueSimple, error)
 	// IssuesCheckUserCanBeAssigned implements issues/check-user-can-be-assigned operation.
+	//
+	// GET /repos/{owner}/{repo}/assignees/{assignee}
 	IssuesCheckUserCanBeAssigned(ctx context.Context, params IssuesCheckUserCanBeAssignedParams) (IssuesCheckUserCanBeAssignedRes, error)
 	// IssuesDeleteComment implements issues/delete-comment operation.
+	//
+	// DELETE /repos/{owner}/{repo}/issues/comments/{comment_id}
 	IssuesDeleteComment(ctx context.Context, params IssuesDeleteCommentParams) (IssuesDeleteCommentNoContent, error)
 	// IssuesDeleteLabel implements issues/delete-label operation.
+	//
+	// DELETE /repos/{owner}/{repo}/labels/{name}
 	IssuesDeleteLabel(ctx context.Context, params IssuesDeleteLabelParams) (IssuesDeleteLabelNoContent, error)
 	// IssuesDeleteMilestone implements issues/delete-milestone operation.
+	//
+	// DELETE /repos/{owner}/{repo}/milestones/{milestone_number}
 	IssuesDeleteMilestone(ctx context.Context, params IssuesDeleteMilestoneParams) (IssuesDeleteMilestoneRes, error)
 	// IssuesGetComment implements issues/get-comment operation.
+	//
+	// GET /repos/{owner}/{repo}/issues/comments/{comment_id}
 	IssuesGetComment(ctx context.Context, params IssuesGetCommentParams) (IssuesGetCommentRes, error)
 	// IssuesGetEvent implements issues/get-event operation.
+	//
+	// GET /repos/{owner}/{repo}/issues/events/{event_id}
 	IssuesGetEvent(ctx context.Context, params IssuesGetEventParams) (IssuesGetEventRes, error)
 	// IssuesGetLabel implements issues/get-label operation.
+	//
+	// GET /repos/{owner}/{repo}/labels/{name}
 	IssuesGetLabel(ctx context.Context, params IssuesGetLabelParams) (IssuesGetLabelRes, error)
 	// IssuesGetMilestone implements issues/get-milestone operation.
+	//
+	// GET /repos/{owner}/{repo}/milestones/{milestone_number}
 	IssuesGetMilestone(ctx context.Context, params IssuesGetMilestoneParams) (IssuesGetMilestoneRes, error)
 	// IssuesListAssignees implements issues/list-assignees operation.
+	//
+	// GET /repos/{owner}/{repo}/assignees
 	IssuesListAssignees(ctx context.Context, params IssuesListAssigneesParams) (IssuesListAssigneesRes, error)
 	// IssuesListComments implements issues/list-comments operation.
+	//
+	// GET /repos/{owner}/{repo}/issues/{issue_number}/comments
 	IssuesListComments(ctx context.Context, params IssuesListCommentsParams) (IssuesListCommentsRes, error)
 	// IssuesListLabelsForMilestone implements issues/list-labels-for-milestone operation.
+	//
+	// GET /repos/{owner}/{repo}/milestones/{milestone_number}/labels
 	IssuesListLabelsForMilestone(ctx context.Context, params IssuesListLabelsForMilestoneParams) ([]Label, error)
 	// IssuesListLabelsForRepo implements issues/list-labels-for-repo operation.
+	//
+	// GET /repos/{owner}/{repo}/labels
 	IssuesListLabelsForRepo(ctx context.Context, params IssuesListLabelsForRepoParams) (IssuesListLabelsForRepoRes, error)
 	// IssuesListLabelsOnIssue implements issues/list-labels-on-issue operation.
+	//
+	// GET /repos/{owner}/{repo}/issues/{issue_number}/labels
 	IssuesListLabelsOnIssue(ctx context.Context, params IssuesListLabelsOnIssueParams) (IssuesListLabelsOnIssueRes, error)
 	// IssuesListMilestones implements issues/list-milestones operation.
+	//
+	// GET /repos/{owner}/{repo}/milestones
 	IssuesListMilestones(ctx context.Context, params IssuesListMilestonesParams) (IssuesListMilestonesRes, error)
 	// IssuesRemoveAllLabels implements issues/remove-all-labels operation.
+	//
+	// DELETE /repos/{owner}/{repo}/issues/{issue_number}/labels
 	IssuesRemoveAllLabels(ctx context.Context, params IssuesRemoveAllLabelsParams) (IssuesRemoveAllLabelsRes, error)
 	// IssuesRemoveAssignees implements issues/remove-assignees operation.
+	//
+	// DELETE /repos/{owner}/{repo}/issues/{issue_number}/assignees
 	IssuesRemoveAssignees(ctx context.Context, req IssuesRemoveAssigneesReq, params IssuesRemoveAssigneesParams) (IssueSimple, error)
 	// IssuesRemoveLabel implements issues/remove-label operation.
+	//
+	// DELETE /repos/{owner}/{repo}/issues/{issue_number}/labels/{name}
 	IssuesRemoveLabel(ctx context.Context, params IssuesRemoveLabelParams) (IssuesRemoveLabelRes, error)
 	// IssuesUnlock implements issues/unlock operation.
+	//
+	// DELETE /repos/{owner}/{repo}/issues/{issue_number}/lock
 	IssuesUnlock(ctx context.Context, params IssuesUnlockParams) (IssuesUnlockRes, error)
 	// IssuesUpdateLabel implements issues/update-label operation.
+	//
+	// PATCH /repos/{owner}/{repo}/labels/{name}
 	IssuesUpdateLabel(ctx context.Context, req IssuesUpdateLabelReq, params IssuesUpdateLabelParams) (Label, error)
 	// IssuesUpdateMilestone implements issues/update-milestone operation.
+	//
+	// PATCH /repos/{owner}/{repo}/milestones/{milestone_number}
 	IssuesUpdateMilestone(ctx context.Context, req IssuesUpdateMilestoneReq, params IssuesUpdateMilestoneParams) (Milestone, error)
 	// LicensesGet implements licenses/get operation.
+	//
+	// GET /licenses/{license}
 	LicensesGet(ctx context.Context, params LicensesGetParams) (LicensesGetRes, error)
 	// LicensesGetAllCommonlyUsed implements licenses/get-all-commonly-used operation.
+	//
+	// GET /licenses
 	LicensesGetAllCommonlyUsed(ctx context.Context, params LicensesGetAllCommonlyUsedParams) (LicensesGetAllCommonlyUsedRes, error)
 	// LicensesGetForRepo implements licenses/get-for-repo operation.
+	//
+	// GET /repos/{owner}/{repo}/license
 	LicensesGetForRepo(ctx context.Context, params LicensesGetForRepoParams) (LicenseContent, error)
 	// MetaGet implements meta/get operation.
+	//
+	// GET /meta
 	MetaGet(ctx context.Context) (MetaGetRes, error)
 	// MetaRoot implements meta/root operation.
+	//
+	// GET /
 	MetaRoot(ctx context.Context) (MetaRootOK, error)
 	// MigrationsCancelImport implements migrations/cancel-import operation.
+	//
+	// DELETE /repos/{owner}/{repo}/import
 	MigrationsCancelImport(ctx context.Context, params MigrationsCancelImportParams) (MigrationsCancelImportNoContent, error)
 	// MigrationsDeleteArchiveForAuthenticatedUser implements migrations/delete-archive-for-authenticated-user operation.
+	//
+	// DELETE /user/migrations/{migration_id}/archive
 	MigrationsDeleteArchiveForAuthenticatedUser(ctx context.Context, params MigrationsDeleteArchiveForAuthenticatedUserParams) (MigrationsDeleteArchiveForAuthenticatedUserRes, error)
 	// MigrationsDeleteArchiveForOrg implements migrations/delete-archive-for-org operation.
+	//
+	// DELETE /orgs/{org}/migrations/{migration_id}/archive
 	MigrationsDeleteArchiveForOrg(ctx context.Context, params MigrationsDeleteArchiveForOrgParams) (MigrationsDeleteArchiveForOrgRes, error)
 	// MigrationsDownloadArchiveForOrg implements migrations/download-archive-for-org operation.
+	//
+	// GET /orgs/{org}/migrations/{migration_id}/archive
 	MigrationsDownloadArchiveForOrg(ctx context.Context, params MigrationsDownloadArchiveForOrgParams) (MigrationsDownloadArchiveForOrgRes, error)
 	// MigrationsGetArchiveForAuthenticatedUser implements migrations/get-archive-for-authenticated-user operation.
+	//
+	// GET /user/migrations/{migration_id}/archive
 	MigrationsGetArchiveForAuthenticatedUser(ctx context.Context, params MigrationsGetArchiveForAuthenticatedUserParams) (MigrationsGetArchiveForAuthenticatedUserRes, error)
 	// MigrationsGetCommitAuthors implements migrations/get-commit-authors operation.
+	//
+	// GET /repos/{owner}/{repo}/import/authors
 	MigrationsGetCommitAuthors(ctx context.Context, params MigrationsGetCommitAuthorsParams) (MigrationsGetCommitAuthorsRes, error)
 	// MigrationsGetImportStatus implements migrations/get-import-status operation.
+	//
+	// GET /repos/{owner}/{repo}/import
 	MigrationsGetImportStatus(ctx context.Context, params MigrationsGetImportStatusParams) (MigrationsGetImportStatusRes, error)
 	// MigrationsGetLargeFiles implements migrations/get-large-files operation.
+	//
+	// GET /repos/{owner}/{repo}/import/large_files
 	MigrationsGetLargeFiles(ctx context.Context, params MigrationsGetLargeFilesParams) ([]PorterLargeFile, error)
 	// MigrationsGetStatusForAuthenticatedUser implements migrations/get-status-for-authenticated-user operation.
+	//
+	// GET /user/migrations/{migration_id}
 	MigrationsGetStatusForAuthenticatedUser(ctx context.Context, params MigrationsGetStatusForAuthenticatedUserParams) (MigrationsGetStatusForAuthenticatedUserRes, error)
 	// MigrationsGetStatusForOrg implements migrations/get-status-for-org operation.
+	//
+	// GET /orgs/{org}/migrations/{migration_id}
 	MigrationsGetStatusForOrg(ctx context.Context, params MigrationsGetStatusForOrgParams) (MigrationsGetStatusForOrgRes, error)
 	// MigrationsListForAuthenticatedUser implements migrations/list-for-authenticated-user operation.
+	//
+	// GET /user/migrations
 	MigrationsListForAuthenticatedUser(ctx context.Context, params MigrationsListForAuthenticatedUserParams) (MigrationsListForAuthenticatedUserRes, error)
 	// MigrationsListForOrg implements migrations/list-for-org operation.
+	//
+	// GET /orgs/{org}/migrations
 	MigrationsListForOrg(ctx context.Context, params MigrationsListForOrgParams) ([]Migration, error)
 	// MigrationsListReposForOrg implements migrations/list-repos-for-org operation.
+	//
+	// GET /orgs/{org}/migrations/{migration_id}/repositories
 	MigrationsListReposForOrg(ctx context.Context, params MigrationsListReposForOrgParams) (MigrationsListReposForOrgRes, error)
 	// MigrationsListReposForUser implements migrations/list-repos-for-user operation.
+	//
+	// GET /user/migrations/{migration_id}/repositories
 	MigrationsListReposForUser(ctx context.Context, params MigrationsListReposForUserParams) (MigrationsListReposForUserRes, error)
 	// MigrationsUnlockRepoForAuthenticatedUser implements migrations/unlock-repo-for-authenticated-user operation.
+	//
+	// DELETE /user/migrations/{migration_id}/repos/{repo_name}/lock
 	MigrationsUnlockRepoForAuthenticatedUser(ctx context.Context, params MigrationsUnlockRepoForAuthenticatedUserParams) (MigrationsUnlockRepoForAuthenticatedUserRes, error)
 	// MigrationsUnlockRepoForOrg implements migrations/unlock-repo-for-org operation.
+	//
+	// DELETE /orgs/{org}/migrations/{migration_id}/repos/{repo_name}/lock
 	MigrationsUnlockRepoForOrg(ctx context.Context, params MigrationsUnlockRepoForOrgParams) (MigrationsUnlockRepoForOrgRes, error)
 	// MigrationsUpdateImport implements migrations/update-import operation.
+	//
+	// PATCH /repos/{owner}/{repo}/import
 	MigrationsUpdateImport(ctx context.Context, req MigrationsUpdateImportReq, params MigrationsUpdateImportParams) (Import, error)
 	// OAuthAuthorizationsDeleteAuthorization implements oauth-authorizations/delete-authorization operation.
+	//
+	// DELETE /authorizations/{authorization_id}
 	OAuthAuthorizationsDeleteAuthorization(ctx context.Context, params OAuthAuthorizationsDeleteAuthorizationParams) (OAuthAuthorizationsDeleteAuthorizationRes, error)
 	// OAuthAuthorizationsDeleteGrant implements oauth-authorizations/delete-grant operation.
+	//
+	// DELETE /applications/grants/{grant_id}
 	OAuthAuthorizationsDeleteGrant(ctx context.Context, params OAuthAuthorizationsDeleteGrantParams) (OAuthAuthorizationsDeleteGrantRes, error)
 	// OAuthAuthorizationsGetAuthorization implements oauth-authorizations/get-authorization operation.
+	//
+	// GET /authorizations/{authorization_id}
 	OAuthAuthorizationsGetAuthorization(ctx context.Context, params OAuthAuthorizationsGetAuthorizationParams) (OAuthAuthorizationsGetAuthorizationRes, error)
 	// OAuthAuthorizationsGetGrant implements oauth-authorizations/get-grant operation.
+	//
+	// GET /applications/grants/{grant_id}
 	OAuthAuthorizationsGetGrant(ctx context.Context, params OAuthAuthorizationsGetGrantParams) (OAuthAuthorizationsGetGrantRes, error)
 	// OAuthAuthorizationsListAuthorizations implements oauth-authorizations/list-authorizations operation.
+	//
+	// GET /authorizations
 	OAuthAuthorizationsListAuthorizations(ctx context.Context, params OAuthAuthorizationsListAuthorizationsParams) (OAuthAuthorizationsListAuthorizationsRes, error)
 	// OAuthAuthorizationsListGrants implements oauth-authorizations/list-grants operation.
+	//
+	// GET /applications/grants
 	OAuthAuthorizationsListGrants(ctx context.Context, params OAuthAuthorizationsListGrantsParams) (OAuthAuthorizationsListGrantsRes, error)
 	// OrgsCheckBlockedUser implements orgs/check-blocked-user operation.
+	//
+	// GET /orgs/{org}/blocks/{username}
 	OrgsCheckBlockedUser(ctx context.Context, params OrgsCheckBlockedUserParams) (OrgsCheckBlockedUserRes, error)
 	// OrgsCheckMembershipForUser implements orgs/check-membership-for-user operation.
+	//
+	// GET /orgs/{org}/members/{username}
 	OrgsCheckMembershipForUser(ctx context.Context, params OrgsCheckMembershipForUserParams) (OrgsCheckMembershipForUserRes, error)
 	// OrgsCheckPublicMembershipForUser implements orgs/check-public-membership-for-user operation.
+	//
+	// GET /orgs/{org}/public_members/{username}
 	OrgsCheckPublicMembershipForUser(ctx context.Context, params OrgsCheckPublicMembershipForUserParams) (OrgsCheckPublicMembershipForUserRes, error)
 	// OrgsConvertMemberToOutsideCollaborator implements orgs/convert-member-to-outside-collaborator operation.
+	//
+	// PUT /orgs/{org}/outside_collaborators/{username}
 	OrgsConvertMemberToOutsideCollaborator(ctx context.Context, params OrgsConvertMemberToOutsideCollaboratorParams) (OrgsConvertMemberToOutsideCollaboratorRes, error)
 	// OrgsDeleteWebhook implements orgs/delete-webhook operation.
+	//
+	// DELETE /orgs/{org}/hooks/{hook_id}
 	OrgsDeleteWebhook(ctx context.Context, params OrgsDeleteWebhookParams) (OrgsDeleteWebhookRes, error)
 	// OrgsGet implements orgs/get operation.
+	//
+	// GET /orgs/{org}
 	OrgsGet(ctx context.Context, params OrgsGetParams) (OrgsGetRes, error)
 	// OrgsGetAuditLog implements orgs/get-audit-log operation.
+	//
+	// GET /orgs/{org}/audit-log
 	OrgsGetAuditLog(ctx context.Context, params OrgsGetAuditLogParams) ([]AuditLogEvent, error)
 	// OrgsGetMembershipForAuthenticatedUser implements orgs/get-membership-for-authenticated-user operation.
+	//
+	// GET /user/memberships/orgs/{org}
 	OrgsGetMembershipForAuthenticatedUser(ctx context.Context, params OrgsGetMembershipForAuthenticatedUserParams) (OrgsGetMembershipForAuthenticatedUserRes, error)
 	// OrgsGetMembershipForUser implements orgs/get-membership-for-user operation.
+	//
+	// GET /orgs/{org}/memberships/{username}
 	OrgsGetMembershipForUser(ctx context.Context, params OrgsGetMembershipForUserParams) (OrgsGetMembershipForUserRes, error)
 	// OrgsGetWebhook implements orgs/get-webhook operation.
+	//
+	// GET /orgs/{org}/hooks/{hook_id}
 	OrgsGetWebhook(ctx context.Context, params OrgsGetWebhookParams) (OrgsGetWebhookRes, error)
 	// OrgsGetWebhookConfigForOrg implements orgs/get-webhook-config-for-org operation.
+	//
+	// GET /orgs/{org}/hooks/{hook_id}/config
 	OrgsGetWebhookConfigForOrg(ctx context.Context, params OrgsGetWebhookConfigForOrgParams) (WebhookConfig, error)
 	// OrgsList implements orgs/list operation.
+	//
+	// GET /organizations
 	OrgsList(ctx context.Context, params OrgsListParams) (OrgsListRes, error)
 	// OrgsListBlockedUsers implements orgs/list-blocked-users operation.
+	//
+	// GET /orgs/{org}/blocks
 	OrgsListBlockedUsers(ctx context.Context, params OrgsListBlockedUsersParams) (OrgsListBlockedUsersRes, error)
 	// OrgsListFailedInvitations implements orgs/list-failed-invitations operation.
+	//
+	// GET /orgs/{org}/failed_invitations
 	OrgsListFailedInvitations(ctx context.Context, params OrgsListFailedInvitationsParams) (OrgsListFailedInvitationsRes, error)
 	// OrgsListForAuthenticatedUser implements orgs/list-for-authenticated-user operation.
+	//
+	// GET /user/orgs
 	OrgsListForAuthenticatedUser(ctx context.Context, params OrgsListForAuthenticatedUserParams) (OrgsListForAuthenticatedUserRes, error)
 	// OrgsListForUser implements orgs/list-for-user operation.
+	//
+	// GET /users/{username}/orgs
 	OrgsListForUser(ctx context.Context, params OrgsListForUserParams) ([]OrganizationSimple, error)
 	// OrgsListInvitationTeams implements orgs/list-invitation-teams operation.
+	//
+	// GET /orgs/{org}/invitations/{invitation_id}/teams
 	OrgsListInvitationTeams(ctx context.Context, params OrgsListInvitationTeamsParams) (OrgsListInvitationTeamsRes, error)
 	// OrgsListOutsideCollaborators implements orgs/list-outside-collaborators operation.
+	//
+	// GET /orgs/{org}/outside_collaborators
 	OrgsListOutsideCollaborators(ctx context.Context, params OrgsListOutsideCollaboratorsParams) ([]SimpleUser, error)
 	// OrgsListPendingInvitations implements orgs/list-pending-invitations operation.
+	//
+	// GET /orgs/{org}/invitations
 	OrgsListPendingInvitations(ctx context.Context, params OrgsListPendingInvitationsParams) (OrgsListPendingInvitationsRes, error)
 	// OrgsListPublicMembers implements orgs/list-public-members operation.
+	//
+	// GET /orgs/{org}/public_members
 	OrgsListPublicMembers(ctx context.Context, params OrgsListPublicMembersParams) ([]SimpleUser, error)
 	// OrgsListSamlSSOAuthorizations implements orgs/list-saml-sso-authorizations operation.
+	//
+	// GET /orgs/{org}/credential-authorizations
 	OrgsListSamlSSOAuthorizations(ctx context.Context, params OrgsListSamlSSOAuthorizationsParams) ([]CredentialAuthorization, error)
 	// OrgsListWebhooks implements orgs/list-webhooks operation.
+	//
+	// GET /orgs/{org}/hooks
 	OrgsListWebhooks(ctx context.Context, params OrgsListWebhooksParams) (OrgsListWebhooksRes, error)
 	// OrgsPingWebhook implements orgs/ping-webhook operation.
+	//
+	// POST /orgs/{org}/hooks/{hook_id}/pings
 	OrgsPingWebhook(ctx context.Context, params OrgsPingWebhookParams) (OrgsPingWebhookRes, error)
 	// OrgsRemoveMember implements orgs/remove-member operation.
+	//
+	// DELETE /orgs/{org}/members/{username}
 	OrgsRemoveMember(ctx context.Context, params OrgsRemoveMemberParams) (OrgsRemoveMemberRes, error)
 	// OrgsRemoveMembershipForUser implements orgs/remove-membership-for-user operation.
+	//
+	// DELETE /orgs/{org}/memberships/{username}
 	OrgsRemoveMembershipForUser(ctx context.Context, params OrgsRemoveMembershipForUserParams) (OrgsRemoveMembershipForUserRes, error)
 	// OrgsRemoveOutsideCollaborator implements orgs/remove-outside-collaborator operation.
+	//
+	// DELETE /orgs/{org}/outside_collaborators/{username}
 	OrgsRemoveOutsideCollaborator(ctx context.Context, params OrgsRemoveOutsideCollaboratorParams) (OrgsRemoveOutsideCollaboratorRes, error)
 	// OrgsRemovePublicMembershipForAuthenticatedUser implements orgs/remove-public-membership-for-authenticated-user operation.
+	//
+	// DELETE /orgs/{org}/public_members/{username}
 	OrgsRemovePublicMembershipForAuthenticatedUser(ctx context.Context, params OrgsRemovePublicMembershipForAuthenticatedUserParams) (OrgsRemovePublicMembershipForAuthenticatedUserNoContent, error)
 	// OrgsRemoveSamlSSOAuthorization implements orgs/remove-saml-sso-authorization operation.
+	//
+	// DELETE /orgs/{org}/credential-authorizations/{credential_id}
 	OrgsRemoveSamlSSOAuthorization(ctx context.Context, params OrgsRemoveSamlSSOAuthorizationParams) (OrgsRemoveSamlSSOAuthorizationRes, error)
 	// OrgsSetPublicMembershipForAuthenticatedUser implements orgs/set-public-membership-for-authenticated-user operation.
+	//
+	// PUT /orgs/{org}/public_members/{username}
 	OrgsSetPublicMembershipForAuthenticatedUser(ctx context.Context, params OrgsSetPublicMembershipForAuthenticatedUserParams) (OrgsSetPublicMembershipForAuthenticatedUserRes, error)
 	// OrgsUnblockUser implements orgs/unblock-user operation.
+	//
+	// DELETE /orgs/{org}/blocks/{username}
 	OrgsUnblockUser(ctx context.Context, params OrgsUnblockUserParams) (OrgsUnblockUserNoContent, error)
 	// OrgsUpdateWebhookConfigForOrg implements orgs/update-webhook-config-for-org operation.
+	//
+	// PATCH /orgs/{org}/hooks/{hook_id}/config
 	OrgsUpdateWebhookConfigForOrg(ctx context.Context, req OrgsUpdateWebhookConfigForOrgReq, params OrgsUpdateWebhookConfigForOrgParams) (WebhookConfig, error)
 	// PackagesDeletePackageForAuthenticatedUser implements packages/delete-package-for-authenticated-user operation.
+	//
+	// DELETE /user/packages/{package_type}/{package_name}
 	PackagesDeletePackageForAuthenticatedUser(ctx context.Context, params PackagesDeletePackageForAuthenticatedUserParams) (PackagesDeletePackageForAuthenticatedUserRes, error)
 	// PackagesDeletePackageForOrg implements packages/delete-package-for-org operation.
+	//
+	// DELETE /orgs/{org}/packages/{package_type}/{package_name}
 	PackagesDeletePackageForOrg(ctx context.Context, params PackagesDeletePackageForOrgParams) (PackagesDeletePackageForOrgRes, error)
 	// PackagesDeletePackageForUser implements packages/delete-package-for-user operation.
+	//
+	// DELETE /users/{username}/packages/{package_type}/{package_name}
 	PackagesDeletePackageForUser(ctx context.Context, params PackagesDeletePackageForUserParams) (PackagesDeletePackageForUserRes, error)
 	// PackagesDeletePackageVersionForAuthenticatedUser implements packages/delete-package-version-for-authenticated-user operation.
+	//
+	// DELETE /user/packages/{package_type}/{package_name}/versions/{package_version_id}
 	PackagesDeletePackageVersionForAuthenticatedUser(ctx context.Context, params PackagesDeletePackageVersionForAuthenticatedUserParams) (PackagesDeletePackageVersionForAuthenticatedUserRes, error)
 	// PackagesDeletePackageVersionForOrg implements packages/delete-package-version-for-org operation.
+	//
+	// DELETE /orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}
 	PackagesDeletePackageVersionForOrg(ctx context.Context, params PackagesDeletePackageVersionForOrgParams) (PackagesDeletePackageVersionForOrgRes, error)
 	// PackagesDeletePackageVersionForUser implements packages/delete-package-version-for-user operation.
+	//
+	// DELETE /users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}
 	PackagesDeletePackageVersionForUser(ctx context.Context, params PackagesDeletePackageVersionForUserParams) (PackagesDeletePackageVersionForUserRes, error)
 	// PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser implements packages/get-all-package-versions-for-package-owned-by-authenticated-user operation.
+	//
+	// GET /user/packages/{package_type}/{package_name}/versions
 	PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser(ctx context.Context, params PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams) (PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRes, error)
 	// PackagesGetAllPackageVersionsForPackageOwnedByOrg implements packages/get-all-package-versions-for-package-owned-by-org operation.
+	//
+	// GET /orgs/{org}/packages/{package_type}/{package_name}/versions
 	PackagesGetAllPackageVersionsForPackageOwnedByOrg(ctx context.Context, params PackagesGetAllPackageVersionsForPackageOwnedByOrgParams) (PackagesGetAllPackageVersionsForPackageOwnedByOrgRes, error)
 	// PackagesGetAllPackageVersionsForPackageOwnedByUser implements packages/get-all-package-versions-for-package-owned-by-user operation.
+	//
+	// GET /users/{username}/packages/{package_type}/{package_name}/versions
 	PackagesGetAllPackageVersionsForPackageOwnedByUser(ctx context.Context, params PackagesGetAllPackageVersionsForPackageOwnedByUserParams) (PackagesGetAllPackageVersionsForPackageOwnedByUserRes, error)
 	// PackagesGetPackageForAuthenticatedUser implements packages/get-package-for-authenticated-user operation.
+	//
+	// GET /user/packages/{package_type}/{package_name}
 	PackagesGetPackageForAuthenticatedUser(ctx context.Context, params PackagesGetPackageForAuthenticatedUserParams) (Package, error)
 	// PackagesGetPackageForOrganization implements packages/get-package-for-organization operation.
+	//
+	// GET /orgs/{org}/packages/{package_type}/{package_name}
 	PackagesGetPackageForOrganization(ctx context.Context, params PackagesGetPackageForOrganizationParams) (Package, error)
 	// PackagesGetPackageForUser implements packages/get-package-for-user operation.
+	//
+	// GET /users/{username}/packages/{package_type}/{package_name}
 	PackagesGetPackageForUser(ctx context.Context, params PackagesGetPackageForUserParams) (Package, error)
 	// PackagesGetPackageVersionForAuthenticatedUser implements packages/get-package-version-for-authenticated-user operation.
+	//
+	// GET /user/packages/{package_type}/{package_name}/versions/{package_version_id}
 	PackagesGetPackageVersionForAuthenticatedUser(ctx context.Context, params PackagesGetPackageVersionForAuthenticatedUserParams) (PackageVersion, error)
 	// PackagesGetPackageVersionForOrganization implements packages/get-package-version-for-organization operation.
+	//
+	// GET /orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}
 	PackagesGetPackageVersionForOrganization(ctx context.Context, params PackagesGetPackageVersionForOrganizationParams) (PackageVersion, error)
 	// PackagesGetPackageVersionForUser implements packages/get-package-version-for-user operation.
+	//
+	// GET /users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}
 	PackagesGetPackageVersionForUser(ctx context.Context, params PackagesGetPackageVersionForUserParams) (PackageVersion, error)
 	// PackagesListPackagesForAuthenticatedUser implements packages/list-packages-for-authenticated-user operation.
+	//
+	// GET /user/packages
 	PackagesListPackagesForAuthenticatedUser(ctx context.Context, params PackagesListPackagesForAuthenticatedUserParams) ([]Package, error)
 	// PackagesListPackagesForOrganization implements packages/list-packages-for-organization operation.
+	//
+	// GET /orgs/{org}/packages
 	PackagesListPackagesForOrganization(ctx context.Context, params PackagesListPackagesForOrganizationParams) (PackagesListPackagesForOrganizationRes, error)
 	// PackagesListPackagesForUser implements packages/list-packages-for-user operation.
+	//
+	// GET /users/{username}/packages
 	PackagesListPackagesForUser(ctx context.Context, params PackagesListPackagesForUserParams) (PackagesListPackagesForUserRes, error)
 	// PackagesRestorePackageForAuthenticatedUser implements packages/restore-package-for-authenticated-user operation.
+	//
+	// POST /user/packages/{package_type}/{package_name}/restore
 	PackagesRestorePackageForAuthenticatedUser(ctx context.Context, params PackagesRestorePackageForAuthenticatedUserParams) (PackagesRestorePackageForAuthenticatedUserRes, error)
 	// PackagesRestorePackageForOrg implements packages/restore-package-for-org operation.
+	//
+	// POST /orgs/{org}/packages/{package_type}/{package_name}/restore
 	PackagesRestorePackageForOrg(ctx context.Context, params PackagesRestorePackageForOrgParams) (PackagesRestorePackageForOrgRes, error)
 	// PackagesRestorePackageForUser implements packages/restore-package-for-user operation.
+	//
+	// POST /users/{username}/packages/{package_type}/{package_name}/restore
 	PackagesRestorePackageForUser(ctx context.Context, params PackagesRestorePackageForUserParams) (PackagesRestorePackageForUserRes, error)
 	// PackagesRestorePackageVersionForAuthenticatedUser implements packages/restore-package-version-for-authenticated-user operation.
+	//
+	// POST /user/packages/{package_type}/{package_name}/versions/{package_version_id}/restore
 	PackagesRestorePackageVersionForAuthenticatedUser(ctx context.Context, params PackagesRestorePackageVersionForAuthenticatedUserParams) (PackagesRestorePackageVersionForAuthenticatedUserRes, error)
 	// PackagesRestorePackageVersionForOrg implements packages/restore-package-version-for-org operation.
+	//
+	// POST /orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore
 	PackagesRestorePackageVersionForOrg(ctx context.Context, params PackagesRestorePackageVersionForOrgParams) (PackagesRestorePackageVersionForOrgRes, error)
 	// PackagesRestorePackageVersionForUser implements packages/restore-package-version-for-user operation.
+	//
+	// POST /users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore
 	PackagesRestorePackageVersionForUser(ctx context.Context, params PackagesRestorePackageVersionForUserParams) (PackagesRestorePackageVersionForUserRes, error)
 	// ProjectsCreateColumn implements projects/create-column operation.
+	//
+	// POST /projects/{project_id}/columns
 	ProjectsCreateColumn(ctx context.Context, req ProjectsCreateColumnReq, params ProjectsCreateColumnParams) (ProjectsCreateColumnRes, error)
 	// ProjectsCreateForAuthenticatedUser implements projects/create-for-authenticated-user operation.
+	//
+	// POST /user/projects
 	ProjectsCreateForAuthenticatedUser(ctx context.Context, req ProjectsCreateForAuthenticatedUserReq) (ProjectsCreateForAuthenticatedUserRes, error)
 	// ProjectsCreateForOrg implements projects/create-for-org operation.
+	//
+	// POST /orgs/{org}/projects
 	ProjectsCreateForOrg(ctx context.Context, req ProjectsCreateForOrgReq, params ProjectsCreateForOrgParams) (ProjectsCreateForOrgRes, error)
 	// ProjectsCreateForRepo implements projects/create-for-repo operation.
+	//
+	// POST /repos/{owner}/{repo}/projects
 	ProjectsCreateForRepo(ctx context.Context, req ProjectsCreateForRepoReq, params ProjectsCreateForRepoParams) (ProjectsCreateForRepoRes, error)
 	// ProjectsDelete implements projects/delete operation.
+	//
+	// DELETE /projects/{project_id}
 	ProjectsDelete(ctx context.Context, params ProjectsDeleteParams) (ProjectsDeleteRes, error)
 	// ProjectsDeleteCard implements projects/delete-card operation.
+	//
+	// DELETE /projects/columns/cards/{card_id}
 	ProjectsDeleteCard(ctx context.Context, params ProjectsDeleteCardParams) (ProjectsDeleteCardRes, error)
 	// ProjectsDeleteColumn implements projects/delete-column operation.
+	//
+	// DELETE /projects/columns/{column_id}
 	ProjectsDeleteColumn(ctx context.Context, params ProjectsDeleteColumnParams) (ProjectsDeleteColumnRes, error)
 	// ProjectsGet implements projects/get operation.
+	//
+	// GET /projects/{project_id}
 	ProjectsGet(ctx context.Context, params ProjectsGetParams) (ProjectsGetRes, error)
 	// ProjectsGetCard implements projects/get-card operation.
+	//
+	// GET /projects/columns/cards/{card_id}
 	ProjectsGetCard(ctx context.Context, params ProjectsGetCardParams) (ProjectsGetCardRes, error)
 	// ProjectsGetColumn implements projects/get-column operation.
+	//
+	// GET /projects/columns/{column_id}
 	ProjectsGetColumn(ctx context.Context, params ProjectsGetColumnParams) (ProjectsGetColumnRes, error)
 	// ProjectsListCards implements projects/list-cards operation.
+	//
+	// GET /projects/columns/{column_id}/cards
 	ProjectsListCards(ctx context.Context, params ProjectsListCardsParams) (ProjectsListCardsRes, error)
 	// ProjectsListColumns implements projects/list-columns operation.
+	//
+	// GET /projects/{project_id}/columns
 	ProjectsListColumns(ctx context.Context, params ProjectsListColumnsParams) (ProjectsListColumnsRes, error)
 	// ProjectsListForOrg implements projects/list-for-org operation.
+	//
+	// GET /orgs/{org}/projects
 	ProjectsListForOrg(ctx context.Context, params ProjectsListForOrgParams) (ProjectsListForOrgRes, error)
 	// ProjectsListForRepo implements projects/list-for-repo operation.
+	//
+	// GET /repos/{owner}/{repo}/projects
 	ProjectsListForRepo(ctx context.Context, params ProjectsListForRepoParams) (ProjectsListForRepoRes, error)
 	// ProjectsMoveColumn implements projects/move-column operation.
+	//
+	// POST /projects/columns/{column_id}/moves
 	ProjectsMoveColumn(ctx context.Context, req ProjectsMoveColumnReq, params ProjectsMoveColumnParams) (ProjectsMoveColumnRes, error)
 	// ProjectsUpdate implements projects/update operation.
+	//
+	// PATCH /projects/{project_id}
 	ProjectsUpdate(ctx context.Context, req ProjectsUpdateReq, params ProjectsUpdateParams) (ProjectsUpdateRes, error)
 	// ProjectsUpdateCard implements projects/update-card operation.
+	//
+	// PATCH /projects/columns/cards/{card_id}
 	ProjectsUpdateCard(ctx context.Context, req ProjectsUpdateCardReq, params ProjectsUpdateCardParams) (ProjectsUpdateCardRes, error)
 	// ProjectsUpdateColumn implements projects/update-column operation.
+	//
+	// PATCH /projects/columns/{column_id}
 	ProjectsUpdateColumn(ctx context.Context, req ProjectsUpdateColumnReq, params ProjectsUpdateColumnParams) (ProjectsUpdateColumnRes, error)
 	// PullsCheckIfMerged implements pulls/check-if-merged operation.
+	//
+	// GET /repos/{owner}/{repo}/pulls/{pull_number}/merge
 	PullsCheckIfMerged(ctx context.Context, params PullsCheckIfMergedParams) (PullsCheckIfMergedRes, error)
 	// PullsCreateReplyForReviewComment implements pulls/create-reply-for-review-comment operation.
+	//
+	// POST /repos/{owner}/{repo}/pulls/{pull_number}/comments/{comment_id}/replies
 	PullsCreateReplyForReviewComment(ctx context.Context, req PullsCreateReplyForReviewCommentReq, params PullsCreateReplyForReviewCommentParams) (PullsCreateReplyForReviewCommentRes, error)
 	// PullsCreateReview implements pulls/create-review operation.
+	//
+	// POST /repos/{owner}/{repo}/pulls/{pull_number}/reviews
 	PullsCreateReview(ctx context.Context, req PullsCreateReviewReq, params PullsCreateReviewParams) (PullsCreateReviewRes, error)
 	// PullsDeletePendingReview implements pulls/delete-pending-review operation.
+	//
+	// DELETE /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}
 	PullsDeletePendingReview(ctx context.Context, params PullsDeletePendingReviewParams) (PullsDeletePendingReviewRes, error)
 	// PullsDeleteReviewComment implements pulls/delete-review-comment operation.
+	//
+	// DELETE /repos/{owner}/{repo}/pulls/comments/{comment_id}
 	PullsDeleteReviewComment(ctx context.Context, params PullsDeleteReviewCommentParams) (PullsDeleteReviewCommentRes, error)
 	// PullsDismissReview implements pulls/dismiss-review operation.
+	//
+	// PUT /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/dismissals
 	PullsDismissReview(ctx context.Context, req PullsDismissReviewReq, params PullsDismissReviewParams) (PullsDismissReviewRes, error)
 	// PullsGet implements pulls/get operation.
+	//
+	// GET /repos/{owner}/{repo}/pulls/{pull_number}
 	PullsGet(ctx context.Context, params PullsGetParams) (PullsGetRes, error)
 	// PullsGetReview implements pulls/get-review operation.
+	//
+	// GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}
 	PullsGetReview(ctx context.Context, params PullsGetReviewParams) (PullsGetReviewRes, error)
 	// PullsGetReviewComment implements pulls/get-review-comment operation.
+	//
+	// GET /repos/{owner}/{repo}/pulls/comments/{comment_id}
 	PullsGetReviewComment(ctx context.Context, params PullsGetReviewCommentParams) (PullsGetReviewCommentRes, error)
 	// PullsListCommentsForReview implements pulls/list-comments-for-review operation.
+	//
+	// GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/comments
 	PullsListCommentsForReview(ctx context.Context, params PullsListCommentsForReviewParams) (PullsListCommentsForReviewRes, error)
 	// PullsListCommits implements pulls/list-commits operation.
+	//
+	// GET /repos/{owner}/{repo}/pulls/{pull_number}/commits
 	PullsListCommits(ctx context.Context, params PullsListCommitsParams) ([]Commit, error)
 	// PullsListRequestedReviewers implements pulls/list-requested-reviewers operation.
+	//
+	// GET /repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers
 	PullsListRequestedReviewers(ctx context.Context, params PullsListRequestedReviewersParams) (PullRequestReviewRequest, error)
 	// PullsListReviewComments implements pulls/list-review-comments operation.
+	//
+	// GET /repos/{owner}/{repo}/pulls/{pull_number}/comments
 	PullsListReviewComments(ctx context.Context, params PullsListReviewCommentsParams) ([]PullRequestReviewComment, error)
 	// PullsListReviewCommentsForRepo implements pulls/list-review-comments-for-repo operation.
+	//
+	// GET /repos/{owner}/{repo}/pulls/comments
 	PullsListReviewCommentsForRepo(ctx context.Context, params PullsListReviewCommentsForRepoParams) ([]PullRequestReviewComment, error)
 	// PullsListReviews implements pulls/list-reviews operation.
+	//
+	// GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews
 	PullsListReviews(ctx context.Context, params PullsListReviewsParams) ([]PullRequestReview, error)
 	// PullsSubmitReview implements pulls/submit-review operation.
+	//
+	// POST /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/events
 	PullsSubmitReview(ctx context.Context, req PullsSubmitReviewReq, params PullsSubmitReviewParams) (PullsSubmitReviewRes, error)
 	// PullsUpdateReview implements pulls/update-review operation.
+	//
+	// PUT /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}
 	PullsUpdateReview(ctx context.Context, req PullsUpdateReviewReq, params PullsUpdateReviewParams) (PullsUpdateReviewRes, error)
 	// PullsUpdateReviewComment implements pulls/update-review-comment operation.
+	//
+	// PATCH /repos/{owner}/{repo}/pulls/comments/{comment_id}
 	PullsUpdateReviewComment(ctx context.Context, req PullsUpdateReviewCommentReq, params PullsUpdateReviewCommentParams) (PullRequestReviewComment, error)
 	// RateLimitGet implements rate-limit/get operation.
+	//
+	// GET /rate_limit
 	RateLimitGet(ctx context.Context) (RateLimitGetRes, error)
 	// ReactionsCreateForTeamDiscussionCommentInOrg implements reactions/create-for-team-discussion-comment-in-org operation.
+	//
+	// POST /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions
 	ReactionsCreateForTeamDiscussionCommentInOrg(ctx context.Context, req ReactionsCreateForTeamDiscussionCommentInOrgReq, params ReactionsCreateForTeamDiscussionCommentInOrgParams) (ReactionsCreateForTeamDiscussionCommentInOrgRes, error)
 	// ReactionsCreateForTeamDiscussionCommentLegacy implements reactions/create-for-team-discussion-comment-legacy operation.
+	//
+	// POST /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions
 	ReactionsCreateForTeamDiscussionCommentLegacy(ctx context.Context, req ReactionsCreateForTeamDiscussionCommentLegacyReq, params ReactionsCreateForTeamDiscussionCommentLegacyParams) (Reaction, error)
 	// ReactionsCreateForTeamDiscussionInOrg implements reactions/create-for-team-discussion-in-org operation.
+	//
+	// POST /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions
 	ReactionsCreateForTeamDiscussionInOrg(ctx context.Context, req ReactionsCreateForTeamDiscussionInOrgReq, params ReactionsCreateForTeamDiscussionInOrgParams) (ReactionsCreateForTeamDiscussionInOrgRes, error)
 	// ReactionsCreateForTeamDiscussionLegacy implements reactions/create-for-team-discussion-legacy operation.
+	//
+	// POST /teams/{team_id}/discussions/{discussion_number}/reactions
 	ReactionsCreateForTeamDiscussionLegacy(ctx context.Context, req ReactionsCreateForTeamDiscussionLegacyReq, params ReactionsCreateForTeamDiscussionLegacyParams) (Reaction, error)
 	// ReactionsDeleteForCommitComment implements reactions/delete-for-commit-comment operation.
+	//
+	// DELETE /repos/{owner}/{repo}/comments/{comment_id}/reactions/{reaction_id}
 	ReactionsDeleteForCommitComment(ctx context.Context, params ReactionsDeleteForCommitCommentParams) (ReactionsDeleteForCommitCommentNoContent, error)
 	// ReactionsDeleteForIssue implements reactions/delete-for-issue operation.
+	//
+	// DELETE /repos/{owner}/{repo}/issues/{issue_number}/reactions/{reaction_id}
 	ReactionsDeleteForIssue(ctx context.Context, params ReactionsDeleteForIssueParams) (ReactionsDeleteForIssueNoContent, error)
 	// ReactionsDeleteForIssueComment implements reactions/delete-for-issue-comment operation.
+	//
+	// DELETE /repos/{owner}/{repo}/issues/comments/{comment_id}/reactions/{reaction_id}
 	ReactionsDeleteForIssueComment(ctx context.Context, params ReactionsDeleteForIssueCommentParams) (ReactionsDeleteForIssueCommentNoContent, error)
 	// ReactionsDeleteForPullRequestComment implements reactions/delete-for-pull-request-comment operation.
+	//
+	// DELETE /repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions/{reaction_id}
 	ReactionsDeleteForPullRequestComment(ctx context.Context, params ReactionsDeleteForPullRequestCommentParams) (ReactionsDeleteForPullRequestCommentNoContent, error)
 	// ReactionsDeleteForTeamDiscussion implements reactions/delete-for-team-discussion operation.
+	//
+	// DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions/{reaction_id}
 	ReactionsDeleteForTeamDiscussion(ctx context.Context, params ReactionsDeleteForTeamDiscussionParams) (ReactionsDeleteForTeamDiscussionNoContent, error)
 	// ReactionsDeleteForTeamDiscussionComment implements reactions/delete-for-team-discussion-comment operation.
+	//
+	// DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions/{reaction_id}
 	ReactionsDeleteForTeamDiscussionComment(ctx context.Context, params ReactionsDeleteForTeamDiscussionCommentParams) (ReactionsDeleteForTeamDiscussionCommentNoContent, error)
 	// ReactionsDeleteLegacy implements reactions/delete-legacy operation.
+	//
+	// DELETE /reactions/{reaction_id}
 	ReactionsDeleteLegacy(ctx context.Context, params ReactionsDeleteLegacyParams) (ReactionsDeleteLegacyRes, error)
 	// ReactionsListForCommitComment implements reactions/list-for-commit-comment operation.
+	//
+	// GET /repos/{owner}/{repo}/comments/{comment_id}/reactions
 	ReactionsListForCommitComment(ctx context.Context, params ReactionsListForCommitCommentParams) (ReactionsListForCommitCommentRes, error)
 	// ReactionsListForIssue implements reactions/list-for-issue operation.
+	//
+	// GET /repos/{owner}/{repo}/issues/{issue_number}/reactions
 	ReactionsListForIssue(ctx context.Context, params ReactionsListForIssueParams) (ReactionsListForIssueRes, error)
 	// ReactionsListForIssueComment implements reactions/list-for-issue-comment operation.
+	//
+	// GET /repos/{owner}/{repo}/issues/comments/{comment_id}/reactions
 	ReactionsListForIssueComment(ctx context.Context, params ReactionsListForIssueCommentParams) (ReactionsListForIssueCommentRes, error)
 	// ReactionsListForPullRequestReviewComment implements reactions/list-for-pull-request-review-comment operation.
+	//
+	// GET /repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions
 	ReactionsListForPullRequestReviewComment(ctx context.Context, params ReactionsListForPullRequestReviewCommentParams) (ReactionsListForPullRequestReviewCommentRes, error)
 	// ReactionsListForTeamDiscussionCommentInOrg implements reactions/list-for-team-discussion-comment-in-org operation.
+	//
+	// GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions
 	ReactionsListForTeamDiscussionCommentInOrg(ctx context.Context, params ReactionsListForTeamDiscussionCommentInOrgParams) ([]Reaction, error)
 	// ReactionsListForTeamDiscussionCommentLegacy implements reactions/list-for-team-discussion-comment-legacy operation.
+	//
+	// GET /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions
 	ReactionsListForTeamDiscussionCommentLegacy(ctx context.Context, params ReactionsListForTeamDiscussionCommentLegacyParams) ([]Reaction, error)
 	// ReactionsListForTeamDiscussionInOrg implements reactions/list-for-team-discussion-in-org operation.
+	//
+	// GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions
 	ReactionsListForTeamDiscussionInOrg(ctx context.Context, params ReactionsListForTeamDiscussionInOrgParams) ([]Reaction, error)
 	// ReactionsListForTeamDiscussionLegacy implements reactions/list-for-team-discussion-legacy operation.
+	//
+	// GET /teams/{team_id}/discussions/{discussion_number}/reactions
 	ReactionsListForTeamDiscussionLegacy(ctx context.Context, params ReactionsListForTeamDiscussionLegacyParams) ([]Reaction, error)
 	// ReposAcceptInvitation implements repos/accept-invitation operation.
+	//
+	// PATCH /user/repository_invitations/{invitation_id}
 	ReposAcceptInvitation(ctx context.Context, params ReposAcceptInvitationParams) (ReposAcceptInvitationRes, error)
 	// ReposCheckCollaborator implements repos/check-collaborator operation.
+	//
+	// GET /repos/{owner}/{repo}/collaborators/{username}
 	ReposCheckCollaborator(ctx context.Context, params ReposCheckCollaboratorParams) (ReposCheckCollaboratorRes, error)
 	// ReposCheckVulnerabilityAlerts implements repos/check-vulnerability-alerts operation.
+	//
+	// GET /repos/{owner}/{repo}/vulnerability-alerts
 	ReposCheckVulnerabilityAlerts(ctx context.Context, params ReposCheckVulnerabilityAlertsParams) (ReposCheckVulnerabilityAlertsRes, error)
 	// ReposCompareCommits implements repos/compare-commits operation.
+	//
+	// GET /repos/{owner}/{repo}/compare/{basehead}
 	ReposCompareCommits(ctx context.Context, params ReposCompareCommitsParams) (ReposCompareCommitsRes, error)
 	// ReposCreateCommitSignatureProtection implements repos/create-commit-signature-protection operation.
+	//
+	// POST /repos/{owner}/{repo}/branches/{branch}/protection/required_signatures
 	ReposCreateCommitSignatureProtection(ctx context.Context, params ReposCreateCommitSignatureProtectionParams) (ReposCreateCommitSignatureProtectionRes, error)
 	// ReposCreateCommitStatus implements repos/create-commit-status operation.
+	//
+	// POST /repos/{owner}/{repo}/statuses/{sha}
 	ReposCreateCommitStatus(ctx context.Context, req ReposCreateCommitStatusReq, params ReposCreateCommitStatusParams) (Status, error)
 	// ReposCreateUsingTemplate implements repos/create-using-template operation.
+	//
+	// POST /repos/{template_owner}/{template_repo}/generate
 	ReposCreateUsingTemplate(ctx context.Context, req ReposCreateUsingTemplateReq, params ReposCreateUsingTemplateParams) (Repository, error)
 	// ReposDeclineInvitation implements repos/decline-invitation operation.
+	//
+	// DELETE /user/repository_invitations/{invitation_id}
 	ReposDeclineInvitation(ctx context.Context, params ReposDeclineInvitationParams) (ReposDeclineInvitationRes, error)
 	// ReposDelete implements repos/delete operation.
+	//
+	// DELETE /repos/{owner}/{repo}
 	ReposDelete(ctx context.Context, params ReposDeleteParams) (ReposDeleteRes, error)
 	// ReposDeleteAccessRestrictions implements repos/delete-access-restrictions operation.
+	//
+	// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions
 	ReposDeleteAccessRestrictions(ctx context.Context, params ReposDeleteAccessRestrictionsParams) (ReposDeleteAccessRestrictionsNoContent, error)
 	// ReposDeleteAdminBranchProtection implements repos/delete-admin-branch-protection operation.
+	//
+	// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins
 	ReposDeleteAdminBranchProtection(ctx context.Context, params ReposDeleteAdminBranchProtectionParams) (ReposDeleteAdminBranchProtectionRes, error)
 	// ReposDeleteAnEnvironment implements repos/delete-an-environment operation.
+	//
+	// DELETE /repos/{owner}/{repo}/environments/{environment_name}
 	ReposDeleteAnEnvironment(ctx context.Context, params ReposDeleteAnEnvironmentParams) (ReposDeleteAnEnvironmentNoContent, error)
 	// ReposDeleteAutolink implements repos/delete-autolink operation.
+	//
+	// DELETE /repos/{owner}/{repo}/autolinks/{autolink_id}
 	ReposDeleteAutolink(ctx context.Context, params ReposDeleteAutolinkParams) (ReposDeleteAutolinkRes, error)
 	// ReposDeleteBranchProtection implements repos/delete-branch-protection operation.
+	//
+	// DELETE /repos/{owner}/{repo}/branches/{branch}/protection
 	ReposDeleteBranchProtection(ctx context.Context, params ReposDeleteBranchProtectionParams) (ReposDeleteBranchProtectionRes, error)
 	// ReposDeleteCommitComment implements repos/delete-commit-comment operation.
+	//
+	// DELETE /repos/{owner}/{repo}/comments/{comment_id}
 	ReposDeleteCommitComment(ctx context.Context, params ReposDeleteCommitCommentParams) (ReposDeleteCommitCommentRes, error)
 	// ReposDeleteCommitSignatureProtection implements repos/delete-commit-signature-protection operation.
+	//
+	// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_signatures
 	ReposDeleteCommitSignatureProtection(ctx context.Context, params ReposDeleteCommitSignatureProtectionParams) (ReposDeleteCommitSignatureProtectionRes, error)
 	// ReposDeleteDeployKey implements repos/delete-deploy-key operation.
+	//
+	// DELETE /repos/{owner}/{repo}/keys/{key_id}
 	ReposDeleteDeployKey(ctx context.Context, params ReposDeleteDeployKeyParams) (ReposDeleteDeployKeyNoContent, error)
 	// ReposDeleteDeployment implements repos/delete-deployment operation.
+	//
+	// DELETE /repos/{owner}/{repo}/deployments/{deployment_id}
 	ReposDeleteDeployment(ctx context.Context, params ReposDeleteDeploymentParams) (ReposDeleteDeploymentRes, error)
 	// ReposDeleteInvitation implements repos/delete-invitation operation.
+	//
+	// DELETE /repos/{owner}/{repo}/invitations/{invitation_id}
 	ReposDeleteInvitation(ctx context.Context, params ReposDeleteInvitationParams) (ReposDeleteInvitationNoContent, error)
 	// ReposDeletePullRequestReviewProtection implements repos/delete-pull-request-review-protection operation.
+	//
+	// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews
 	ReposDeletePullRequestReviewProtection(ctx context.Context, params ReposDeletePullRequestReviewProtectionParams) (ReposDeletePullRequestReviewProtectionRes, error)
 	// ReposDeleteRelease implements repos/delete-release operation.
+	//
+	// DELETE /repos/{owner}/{repo}/releases/{release_id}
 	ReposDeleteRelease(ctx context.Context, params ReposDeleteReleaseParams) (ReposDeleteReleaseNoContent, error)
 	// ReposDeleteReleaseAsset implements repos/delete-release-asset operation.
+	//
+	// DELETE /repos/{owner}/{repo}/releases/assets/{asset_id}
 	ReposDeleteReleaseAsset(ctx context.Context, params ReposDeleteReleaseAssetParams) (ReposDeleteReleaseAssetNoContent, error)
 	// ReposDeleteWebhook implements repos/delete-webhook operation.
+	//
+	// DELETE /repos/{owner}/{repo}/hooks/{hook_id}
 	ReposDeleteWebhook(ctx context.Context, params ReposDeleteWebhookParams) (ReposDeleteWebhookRes, error)
 	// ReposDisableAutomatedSecurityFixes implements repos/disable-automated-security-fixes operation.
+	//
+	// DELETE /repos/{owner}/{repo}/automated-security-fixes
 	ReposDisableAutomatedSecurityFixes(ctx context.Context, params ReposDisableAutomatedSecurityFixesParams) (ReposDisableAutomatedSecurityFixesNoContent, error)
 	// ReposDisableLfsForRepo implements repos/disable-lfs-for-repo operation.
+	//
+	// DELETE /repos/{owner}/{repo}/lfs
 	ReposDisableLfsForRepo(ctx context.Context, params ReposDisableLfsForRepoParams) (ReposDisableLfsForRepoNoContent, error)
 	// ReposDisableVulnerabilityAlerts implements repos/disable-vulnerability-alerts operation.
+	//
+	// DELETE /repos/{owner}/{repo}/vulnerability-alerts
 	ReposDisableVulnerabilityAlerts(ctx context.Context, params ReposDisableVulnerabilityAlertsParams) (ReposDisableVulnerabilityAlertsNoContent, error)
 	// ReposDownloadTarballArchive implements repos/download-tarball-archive operation.
+	//
+	// GET /repos/{owner}/{repo}/tarball/{ref}
 	ReposDownloadTarballArchive(ctx context.Context, params ReposDownloadTarballArchiveParams) (ReposDownloadTarballArchiveFound, error)
 	// ReposDownloadZipballArchive implements repos/download-zipball-archive operation.
+	//
+	// GET /repos/{owner}/{repo}/zipball/{ref}
 	ReposDownloadZipballArchive(ctx context.Context, params ReposDownloadZipballArchiveParams) (ReposDownloadZipballArchiveFound, error)
 	// ReposEnableAutomatedSecurityFixes implements repos/enable-automated-security-fixes operation.
+	//
+	// PUT /repos/{owner}/{repo}/automated-security-fixes
 	ReposEnableAutomatedSecurityFixes(ctx context.Context, params ReposEnableAutomatedSecurityFixesParams) (ReposEnableAutomatedSecurityFixesNoContent, error)
 	// ReposEnableLfsForRepo implements repos/enable-lfs-for-repo operation.
+	//
+	// PUT /repos/{owner}/{repo}/lfs
 	ReposEnableLfsForRepo(ctx context.Context, params ReposEnableLfsForRepoParams) (ReposEnableLfsForRepoRes, error)
 	// ReposEnableVulnerabilityAlerts implements repos/enable-vulnerability-alerts operation.
+	//
+	// PUT /repos/{owner}/{repo}/vulnerability-alerts
 	ReposEnableVulnerabilityAlerts(ctx context.Context, params ReposEnableVulnerabilityAlertsParams) (ReposEnableVulnerabilityAlertsNoContent, error)
 	// ReposGet implements repos/get operation.
+	//
+	// GET /repos/{owner}/{repo}
 	ReposGet(ctx context.Context, params ReposGetParams) (ReposGetRes, error)
 	// ReposGetAccessRestrictions implements repos/get-access-restrictions operation.
+	//
+	// GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions
 	ReposGetAccessRestrictions(ctx context.Context, params ReposGetAccessRestrictionsParams) (ReposGetAccessRestrictionsRes, error)
 	// ReposGetAdminBranchProtection implements repos/get-admin-branch-protection operation.
+	//
+	// GET /repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins
 	ReposGetAdminBranchProtection(ctx context.Context, params ReposGetAdminBranchProtectionParams) (ProtectedBranchAdminEnforced, error)
 	// ReposGetAllStatusCheckContexts implements repos/get-all-status-check-contexts operation.
+	//
+	// GET /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts
 	ReposGetAllStatusCheckContexts(ctx context.Context, params ReposGetAllStatusCheckContextsParams) (ReposGetAllStatusCheckContextsRes, error)
 	// ReposGetAllTopics implements repos/get-all-topics operation.
+	//
+	// GET /repos/{owner}/{repo}/topics
 	ReposGetAllTopics(ctx context.Context, params ReposGetAllTopicsParams) (ReposGetAllTopicsRes, error)
 	// ReposGetAppsWithAccessToProtectedBranch implements repos/get-apps-with-access-to-protected-branch operation.
+	//
+	// GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps
 	ReposGetAppsWithAccessToProtectedBranch(ctx context.Context, params ReposGetAppsWithAccessToProtectedBranchParams) (ReposGetAppsWithAccessToProtectedBranchRes, error)
 	// ReposGetAutolink implements repos/get-autolink operation.
+	//
+	// GET /repos/{owner}/{repo}/autolinks/{autolink_id}
 	ReposGetAutolink(ctx context.Context, params ReposGetAutolinkParams) (ReposGetAutolinkRes, error)
 	// ReposGetBranch implements repos/get-branch operation.
+	//
+	// GET /repos/{owner}/{repo}/branches/{branch}
 	ReposGetBranch(ctx context.Context, params ReposGetBranchParams) (ReposGetBranchRes, error)
 	// ReposGetBranchProtection implements repos/get-branch-protection operation.
+	//
+	// GET /repos/{owner}/{repo}/branches/{branch}/protection
 	ReposGetBranchProtection(ctx context.Context, params ReposGetBranchProtectionParams) (ReposGetBranchProtectionRes, error)
 	// ReposGetClones implements repos/get-clones operation.
+	//
+	// GET /repos/{owner}/{repo}/traffic/clones
 	ReposGetClones(ctx context.Context, params ReposGetClonesParams) (ReposGetClonesRes, error)
 	// ReposGetCodeFrequencyStats implements repos/get-code-frequency-stats operation.
+	//
+	// GET /repos/{owner}/{repo}/stats/code_frequency
 	ReposGetCodeFrequencyStats(ctx context.Context, params ReposGetCodeFrequencyStatsParams) (ReposGetCodeFrequencyStatsRes, error)
 	// ReposGetCollaboratorPermissionLevel implements repos/get-collaborator-permission-level operation.
+	//
+	// GET /repos/{owner}/{repo}/collaborators/{username}/permission
 	ReposGetCollaboratorPermissionLevel(ctx context.Context, params ReposGetCollaboratorPermissionLevelParams) (ReposGetCollaboratorPermissionLevelRes, error)
 	// ReposGetCombinedStatusForRef implements repos/get-combined-status-for-ref operation.
+	//
+	// GET /repos/{owner}/{repo}/commits/{ref}/status
 	ReposGetCombinedStatusForRef(ctx context.Context, params ReposGetCombinedStatusForRefParams) (ReposGetCombinedStatusForRefRes, error)
 	// ReposGetCommitActivityStats implements repos/get-commit-activity-stats operation.
+	//
+	// GET /repos/{owner}/{repo}/stats/commit_activity
 	ReposGetCommitActivityStats(ctx context.Context, params ReposGetCommitActivityStatsParams) (ReposGetCommitActivityStatsRes, error)
 	// ReposGetCommitComment implements repos/get-commit-comment operation.
+	//
+	// GET /repos/{owner}/{repo}/comments/{comment_id}
 	ReposGetCommitComment(ctx context.Context, params ReposGetCommitCommentParams) (ReposGetCommitCommentRes, error)
 	// ReposGetCommitSignatureProtection implements repos/get-commit-signature-protection operation.
+	//
+	// GET /repos/{owner}/{repo}/branches/{branch}/protection/required_signatures
 	ReposGetCommitSignatureProtection(ctx context.Context, params ReposGetCommitSignatureProtectionParams) (ReposGetCommitSignatureProtectionRes, error)
 	// ReposGetCommunityProfileMetrics implements repos/get-community-profile-metrics operation.
+	//
+	// GET /repos/{owner}/{repo}/community/profile
 	ReposGetCommunityProfileMetrics(ctx context.Context, params ReposGetCommunityProfileMetricsParams) (CommunityProfile, error)
 	// ReposGetContributorsStats implements repos/get-contributors-stats operation.
+	//
+	// GET /repos/{owner}/{repo}/stats/contributors
 	ReposGetContributorsStats(ctx context.Context, params ReposGetContributorsStatsParams) (ReposGetContributorsStatsRes, error)
 	// ReposGetDeployKey implements repos/get-deploy-key operation.
+	//
+	// GET /repos/{owner}/{repo}/keys/{key_id}
 	ReposGetDeployKey(ctx context.Context, params ReposGetDeployKeyParams) (ReposGetDeployKeyRes, error)
 	// ReposGetDeploymentStatus implements repos/get-deployment-status operation.
+	//
+	// GET /repos/{owner}/{repo}/deployments/{deployment_id}/statuses/{status_id}
 	ReposGetDeploymentStatus(ctx context.Context, params ReposGetDeploymentStatusParams) (ReposGetDeploymentStatusRes, error)
 	// ReposGetLatestPagesBuild implements repos/get-latest-pages-build operation.
+	//
+	// GET /repos/{owner}/{repo}/pages/builds/latest
 	ReposGetLatestPagesBuild(ctx context.Context, params ReposGetLatestPagesBuildParams) (PageBuild, error)
 	// ReposGetLatestRelease implements repos/get-latest-release operation.
+	//
+	// GET /repos/{owner}/{repo}/releases/latest
 	ReposGetLatestRelease(ctx context.Context, params ReposGetLatestReleaseParams) (Release, error)
 	// ReposGetPages implements repos/get-pages operation.
+	//
+	// GET /repos/{owner}/{repo}/pages
 	ReposGetPages(ctx context.Context, params ReposGetPagesParams) (ReposGetPagesRes, error)
 	// ReposGetPagesBuild implements repos/get-pages-build operation.
+	//
+	// GET /repos/{owner}/{repo}/pages/builds/{build_id}
 	ReposGetPagesBuild(ctx context.Context, params ReposGetPagesBuildParams) (PageBuild, error)
 	// ReposGetPagesHealthCheck implements repos/get-pages-health-check operation.
+	//
+	// GET /repos/{owner}/{repo}/pages/health
 	ReposGetPagesHealthCheck(ctx context.Context, params ReposGetPagesHealthCheckParams) (ReposGetPagesHealthCheckRes, error)
 	// ReposGetParticipationStats implements repos/get-participation-stats operation.
+	//
+	// GET /repos/{owner}/{repo}/stats/participation
 	ReposGetParticipationStats(ctx context.Context, params ReposGetParticipationStatsParams) (ReposGetParticipationStatsRes, error)
 	// ReposGetPullRequestReviewProtection implements repos/get-pull-request-review-protection operation.
+	//
+	// GET /repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews
 	ReposGetPullRequestReviewProtection(ctx context.Context, params ReposGetPullRequestReviewProtectionParams) (ProtectedBranchPullRequestReview, error)
 	// ReposGetPunchCardStats implements repos/get-punch-card-stats operation.
+	//
+	// GET /repos/{owner}/{repo}/stats/punch_card
 	ReposGetPunchCardStats(ctx context.Context, params ReposGetPunchCardStatsParams) (ReposGetPunchCardStatsRes, error)
 	// ReposGetRelease implements repos/get-release operation.
+	//
+	// GET /repos/{owner}/{repo}/releases/{release_id}
 	ReposGetRelease(ctx context.Context, params ReposGetReleaseParams) (ReposGetReleaseRes, error)
 	// ReposGetReleaseAsset implements repos/get-release-asset operation.
+	//
+	// GET /repos/{owner}/{repo}/releases/assets/{asset_id}
 	ReposGetReleaseAsset(ctx context.Context, params ReposGetReleaseAssetParams) (ReposGetReleaseAssetRes, error)
 	// ReposGetReleaseByTag implements repos/get-release-by-tag operation.
+	//
+	// GET /repos/{owner}/{repo}/releases/tags/{tag}
 	ReposGetReleaseByTag(ctx context.Context, params ReposGetReleaseByTagParams) (ReposGetReleaseByTagRes, error)
 	// ReposGetStatusChecksProtection implements repos/get-status-checks-protection operation.
+	//
+	// GET /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks
 	ReposGetStatusChecksProtection(ctx context.Context, params ReposGetStatusChecksProtectionParams) (ReposGetStatusChecksProtectionRes, error)
 	// ReposGetTeamsWithAccessToProtectedBranch implements repos/get-teams-with-access-to-protected-branch operation.
+	//
+	// GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams
 	ReposGetTeamsWithAccessToProtectedBranch(ctx context.Context, params ReposGetTeamsWithAccessToProtectedBranchParams) (ReposGetTeamsWithAccessToProtectedBranchRes, error)
 	// ReposGetTopPaths implements repos/get-top-paths operation.
+	//
+	// GET /repos/{owner}/{repo}/traffic/popular/paths
 	ReposGetTopPaths(ctx context.Context, params ReposGetTopPathsParams) (ReposGetTopPathsRes, error)
 	// ReposGetTopReferrers implements repos/get-top-referrers operation.
+	//
+	// GET /repos/{owner}/{repo}/traffic/popular/referrers
 	ReposGetTopReferrers(ctx context.Context, params ReposGetTopReferrersParams) (ReposGetTopReferrersRes, error)
 	// ReposGetUsersWithAccessToProtectedBranch implements repos/get-users-with-access-to-protected-branch operation.
+	//
+	// GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users
 	ReposGetUsersWithAccessToProtectedBranch(ctx context.Context, params ReposGetUsersWithAccessToProtectedBranchParams) (ReposGetUsersWithAccessToProtectedBranchRes, error)
 	// ReposGetViews implements repos/get-views operation.
+	//
+	// GET /repos/{owner}/{repo}/traffic/views
 	ReposGetViews(ctx context.Context, params ReposGetViewsParams) (ReposGetViewsRes, error)
 	// ReposGetWebhook implements repos/get-webhook operation.
+	//
+	// GET /repos/{owner}/{repo}/hooks/{hook_id}
 	ReposGetWebhook(ctx context.Context, params ReposGetWebhookParams) (ReposGetWebhookRes, error)
 	// ReposGetWebhookConfigForRepo implements repos/get-webhook-config-for-repo operation.
+	//
+	// GET /repos/{owner}/{repo}/hooks/{hook_id}/config
 	ReposGetWebhookConfigForRepo(ctx context.Context, params ReposGetWebhookConfigForRepoParams) (WebhookConfig, error)
 	// ReposListAutolinks implements repos/list-autolinks operation.
+	//
+	// GET /repos/{owner}/{repo}/autolinks
 	ReposListAutolinks(ctx context.Context, params ReposListAutolinksParams) ([]Autolink, error)
 	// ReposListBranches implements repos/list-branches operation.
+	//
+	// GET /repos/{owner}/{repo}/branches
 	ReposListBranches(ctx context.Context, params ReposListBranchesParams) (ReposListBranchesRes, error)
 	// ReposListCollaborators implements repos/list-collaborators operation.
+	//
+	// GET /repos/{owner}/{repo}/collaborators
 	ReposListCollaborators(ctx context.Context, params ReposListCollaboratorsParams) (ReposListCollaboratorsRes, error)
 	// ReposListCommentsForCommit implements repos/list-comments-for-commit operation.
+	//
+	// GET /repos/{owner}/{repo}/commits/{commit_sha}/comments
 	ReposListCommentsForCommit(ctx context.Context, params ReposListCommentsForCommitParams) ([]CommitComment, error)
 	// ReposListCommitCommentsForRepo implements repos/list-commit-comments-for-repo operation.
+	//
+	// GET /repos/{owner}/{repo}/comments
 	ReposListCommitCommentsForRepo(ctx context.Context, params ReposListCommitCommentsForRepoParams) ([]CommitComment, error)
 	// ReposListCommitStatusesForRef implements repos/list-commit-statuses-for-ref operation.
+	//
+	// GET /repos/{owner}/{repo}/commits/{ref}/statuses
 	ReposListCommitStatusesForRef(ctx context.Context, params ReposListCommitStatusesForRefParams) (ReposListCommitStatusesForRefRes, error)
 	// ReposListCommits implements repos/list-commits operation.
+	//
+	// GET /repos/{owner}/{repo}/commits
 	ReposListCommits(ctx context.Context, params ReposListCommitsParams) (ReposListCommitsRes, error)
 	// ReposListContributors implements repos/list-contributors operation.
+	//
+	// GET /repos/{owner}/{repo}/contributors
 	ReposListContributors(ctx context.Context, params ReposListContributorsParams) (ReposListContributorsRes, error)
 	// ReposListDeployKeys implements repos/list-deploy-keys operation.
+	//
+	// GET /repos/{owner}/{repo}/keys
 	ReposListDeployKeys(ctx context.Context, params ReposListDeployKeysParams) ([]DeployKey, error)
 	// ReposListDeploymentStatuses implements repos/list-deployment-statuses operation.
+	//
+	// GET /repos/{owner}/{repo}/deployments/{deployment_id}/statuses
 	ReposListDeploymentStatuses(ctx context.Context, params ReposListDeploymentStatusesParams) (ReposListDeploymentStatusesRes, error)
 	// ReposListForOrg implements repos/list-for-org operation.
+	//
+	// GET /orgs/{org}/repos
 	ReposListForOrg(ctx context.Context, params ReposListForOrgParams) ([]MinimalRepository, error)
 	// ReposListForUser implements repos/list-for-user operation.
+	//
+	// GET /users/{username}/repos
 	ReposListForUser(ctx context.Context, params ReposListForUserParams) ([]MinimalRepository, error)
 	// ReposListForks implements repos/list-forks operation.
+	//
+	// GET /repos/{owner}/{repo}/forks
 	ReposListForks(ctx context.Context, params ReposListForksParams) (ReposListForksRes, error)
 	// ReposListInvitations implements repos/list-invitations operation.
+	//
+	// GET /repos/{owner}/{repo}/invitations
 	ReposListInvitations(ctx context.Context, params ReposListInvitationsParams) ([]RepositoryInvitation, error)
 	// ReposListInvitationsForAuthenticatedUser implements repos/list-invitations-for-authenticated-user operation.
+	//
+	// GET /user/repository_invitations
 	ReposListInvitationsForAuthenticatedUser(ctx context.Context, params ReposListInvitationsForAuthenticatedUserParams) (ReposListInvitationsForAuthenticatedUserRes, error)
 	// ReposListLanguages implements repos/list-languages operation.
+	//
+	// GET /repos/{owner}/{repo}/languages
 	ReposListLanguages(ctx context.Context, params ReposListLanguagesParams) (Language, error)
 	// ReposListPagesBuilds implements repos/list-pages-builds operation.
+	//
+	// GET /repos/{owner}/{repo}/pages/builds
 	ReposListPagesBuilds(ctx context.Context, params ReposListPagesBuildsParams) ([]PageBuild, error)
 	// ReposListPullRequestsAssociatedWithCommit implements repos/list-pull-requests-associated-with-commit operation.
+	//
+	// GET /repos/{owner}/{repo}/commits/{commit_sha}/pulls
 	ReposListPullRequestsAssociatedWithCommit(ctx context.Context, params ReposListPullRequestsAssociatedWithCommitParams) ([]PullRequestSimple, error)
 	// ReposListReleaseAssets implements repos/list-release-assets operation.
+	//
+	// GET /repos/{owner}/{repo}/releases/{release_id}/assets
 	ReposListReleaseAssets(ctx context.Context, params ReposListReleaseAssetsParams) ([]ReleaseAsset, error)
 	// ReposListReleases implements repos/list-releases operation.
+	//
+	// GET /repos/{owner}/{repo}/releases
 	ReposListReleases(ctx context.Context, params ReposListReleasesParams) (ReposListReleasesRes, error)
 	// ReposListTags implements repos/list-tags operation.
+	//
+	// GET /repos/{owner}/{repo}/tags
 	ReposListTags(ctx context.Context, params ReposListTagsParams) ([]Tag, error)
 	// ReposListTeams implements repos/list-teams operation.
+	//
+	// GET /repos/{owner}/{repo}/teams
 	ReposListTeams(ctx context.Context, params ReposListTeamsParams) ([]Team, error)
 	// ReposListWebhooks implements repos/list-webhooks operation.
+	//
+	// GET /repos/{owner}/{repo}/hooks
 	ReposListWebhooks(ctx context.Context, params ReposListWebhooksParams) (ReposListWebhooksRes, error)
 	// ReposMergeUpstream implements repos/merge-upstream operation.
+	//
+	// POST /repos/{owner}/{repo}/merge-upstream
 	ReposMergeUpstream(ctx context.Context, req ReposMergeUpstreamReq, params ReposMergeUpstreamParams) (ReposMergeUpstreamRes, error)
 	// ReposPingWebhook implements repos/ping-webhook operation.
+	//
+	// POST /repos/{owner}/{repo}/hooks/{hook_id}/pings
 	ReposPingWebhook(ctx context.Context, params ReposPingWebhookParams) (ReposPingWebhookRes, error)
 	// ReposRemoveCollaborator implements repos/remove-collaborator operation.
+	//
+	// DELETE /repos/{owner}/{repo}/collaborators/{username}
 	ReposRemoveCollaborator(ctx context.Context, params ReposRemoveCollaboratorParams) (ReposRemoveCollaboratorNoContent, error)
 	// ReposRemoveStatusCheckProtection implements repos/remove-status-check-protection operation.
+	//
+	// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks
 	ReposRemoveStatusCheckProtection(ctx context.Context, params ReposRemoveStatusCheckProtectionParams) (ReposRemoveStatusCheckProtectionNoContent, error)
 	// ReposReplaceAllTopics implements repos/replace-all-topics operation.
+	//
+	// PUT /repos/{owner}/{repo}/topics
 	ReposReplaceAllTopics(ctx context.Context, req ReposReplaceAllTopicsReq, params ReposReplaceAllTopicsParams) (ReposReplaceAllTopicsRes, error)
 	// ReposRequestPagesBuild implements repos/request-pages-build operation.
+	//
+	// POST /repos/{owner}/{repo}/pages/builds
 	ReposRequestPagesBuild(ctx context.Context, params ReposRequestPagesBuildParams) (PageBuildStatus, error)
 	// ReposSetAdminBranchProtection implements repos/set-admin-branch-protection operation.
+	//
+	// POST /repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins
 	ReposSetAdminBranchProtection(ctx context.Context, params ReposSetAdminBranchProtectionParams) (ProtectedBranchAdminEnforced, error)
 	// ReposTestPushWebhook implements repos/test-push-webhook operation.
+	//
+	// POST /repos/{owner}/{repo}/hooks/{hook_id}/tests
 	ReposTestPushWebhook(ctx context.Context, params ReposTestPushWebhookParams) (ReposTestPushWebhookRes, error)
 	// ReposTransfer implements repos/transfer operation.
+	//
+	// POST /repos/{owner}/{repo}/transfer
 	ReposTransfer(ctx context.Context, req ReposTransferReq, params ReposTransferParams) (MinimalRepository, error)
 	// ReposUpdateBranchProtection implements repos/update-branch-protection operation.
+	//
+	// PUT /repos/{owner}/{repo}/branches/{branch}/protection
 	ReposUpdateBranchProtection(ctx context.Context, req ReposUpdateBranchProtectionReq, params ReposUpdateBranchProtectionParams) (ReposUpdateBranchProtectionRes, error)
 	// ReposUpdateCommitComment implements repos/update-commit-comment operation.
+	//
+	// PATCH /repos/{owner}/{repo}/comments/{comment_id}
 	ReposUpdateCommitComment(ctx context.Context, req ReposUpdateCommitCommentReq, params ReposUpdateCommitCommentParams) (ReposUpdateCommitCommentRes, error)
 	// ReposUpdateInvitation implements repos/update-invitation operation.
+	//
+	// PATCH /repos/{owner}/{repo}/invitations/{invitation_id}
 	ReposUpdateInvitation(ctx context.Context, req ReposUpdateInvitationReq, params ReposUpdateInvitationParams) (RepositoryInvitation, error)
 	// ReposUpdateRelease implements repos/update-release operation.
+	//
+	// PATCH /repos/{owner}/{repo}/releases/{release_id}
 	ReposUpdateRelease(ctx context.Context, req ReposUpdateReleaseReq, params ReposUpdateReleaseParams) (ReposUpdateReleaseRes, error)
 	// ReposUpdateReleaseAsset implements repos/update-release-asset operation.
+	//
+	// PATCH /repos/{owner}/{repo}/releases/assets/{asset_id}
 	ReposUpdateReleaseAsset(ctx context.Context, req ReposUpdateReleaseAssetReq, params ReposUpdateReleaseAssetParams) (ReleaseAsset, error)
 	// ReposUpdateWebhookConfigForRepo implements repos/update-webhook-config-for-repo operation.
+	//
+	// PATCH /repos/{owner}/{repo}/hooks/{hook_id}/config
 	ReposUpdateWebhookConfigForRepo(ctx context.Context, req ReposUpdateWebhookConfigForRepoReq, params ReposUpdateWebhookConfigForRepoParams) (WebhookConfig, error)
 	// ScimDeleteUserFromOrg implements scim/delete-user-from-org operation.
+	//
+	// DELETE /scim/v2/organizations/{org}/Users/{scim_user_id}
 	ScimDeleteUserFromOrg(ctx context.Context, params ScimDeleteUserFromOrgParams) (ScimDeleteUserFromOrgRes, error)
 	// SearchCommits implements search/commits operation.
+	//
+	// GET /search/commits
 	SearchCommits(ctx context.Context, params SearchCommitsParams) (SearchCommitsRes, error)
 	// SearchTopics implements search/topics operation.
+	//
+	// GET /search/topics
 	SearchTopics(ctx context.Context, params SearchTopicsParams) (SearchTopicsRes, error)
 	// SecretScanningGetAlert implements secret-scanning/get-alert operation.
+	//
+	// GET /repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}
 	SecretScanningGetAlert(ctx context.Context, params SecretScanningGetAlertParams) (SecretScanningGetAlertRes, error)
 	// SecretScanningListAlertsForOrg implements secret-scanning/list-alerts-for-org operation.
+	//
+	// GET /orgs/{org}/secret-scanning/alerts
 	SecretScanningListAlertsForOrg(ctx context.Context, params SecretScanningListAlertsForOrgParams) (SecretScanningListAlertsForOrgRes, error)
 	// SecretScanningListAlertsForRepo implements secret-scanning/list-alerts-for-repo operation.
+	//
+	// GET /repos/{owner}/{repo}/secret-scanning/alerts
 	SecretScanningListAlertsForRepo(ctx context.Context, params SecretScanningListAlertsForRepoParams) (SecretScanningListAlertsForRepoRes, error)
 	// SecretScanningUpdateAlert implements secret-scanning/update-alert operation.
+	//
+	// PATCH /repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}
 	SecretScanningUpdateAlert(ctx context.Context, req SecretScanningUpdateAlertReq, params SecretScanningUpdateAlertParams) (SecretScanningUpdateAlertRes, error)
 	// TeamsAddMemberLegacy implements teams/add-member-legacy operation.
+	//
+	// PUT /teams/{team_id}/members/{username}
 	TeamsAddMemberLegacy(ctx context.Context, params TeamsAddMemberLegacyParams) (TeamsAddMemberLegacyRes, error)
 	// TeamsAddOrUpdateMembershipForUserInOrg implements teams/add-or-update-membership-for-user-in-org operation.
+	//
+	// PUT /orgs/{org}/teams/{team_slug}/memberships/{username}
 	TeamsAddOrUpdateMembershipForUserInOrg(ctx context.Context, req TeamsAddOrUpdateMembershipForUserInOrgReq, params TeamsAddOrUpdateMembershipForUserInOrgParams) (TeamsAddOrUpdateMembershipForUserInOrgRes, error)
 	// TeamsAddOrUpdateMembershipForUserLegacy implements teams/add-or-update-membership-for-user-legacy operation.
+	//
+	// PUT /teams/{team_id}/memberships/{username}
 	TeamsAddOrUpdateMembershipForUserLegacy(ctx context.Context, req TeamsAddOrUpdateMembershipForUserLegacyReq, params TeamsAddOrUpdateMembershipForUserLegacyParams) (TeamsAddOrUpdateMembershipForUserLegacyRes, error)
 	// TeamsAddOrUpdateProjectPermissionsInOrg implements teams/add-or-update-project-permissions-in-org operation.
+	//
+	// PUT /orgs/{org}/teams/{team_slug}/projects/{project_id}
 	TeamsAddOrUpdateProjectPermissionsInOrg(ctx context.Context, req TeamsAddOrUpdateProjectPermissionsInOrgReq, params TeamsAddOrUpdateProjectPermissionsInOrgParams) (TeamsAddOrUpdateProjectPermissionsInOrgRes, error)
 	// TeamsAddOrUpdateRepoPermissionsInOrg implements teams/add-or-update-repo-permissions-in-org operation.
+	//
+	// PUT /orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}
 	TeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, req TeamsAddOrUpdateRepoPermissionsInOrgReq, params TeamsAddOrUpdateRepoPermissionsInOrgParams) (TeamsAddOrUpdateRepoPermissionsInOrgNoContent, error)
 	// TeamsCheckPermissionsForProjectInOrg implements teams/check-permissions-for-project-in-org operation.
+	//
+	// GET /orgs/{org}/teams/{team_slug}/projects/{project_id}
 	TeamsCheckPermissionsForProjectInOrg(ctx context.Context, params TeamsCheckPermissionsForProjectInOrgParams) (TeamsCheckPermissionsForProjectInOrgRes, error)
 	// TeamsCheckPermissionsForProjectLegacy implements teams/check-permissions-for-project-legacy operation.
+	//
+	// GET /teams/{team_id}/projects/{project_id}
 	TeamsCheckPermissionsForProjectLegacy(ctx context.Context, params TeamsCheckPermissionsForProjectLegacyParams) (TeamsCheckPermissionsForProjectLegacyRes, error)
 	// TeamsCheckPermissionsForRepoInOrg implements teams/check-permissions-for-repo-in-org operation.
+	//
+	// GET /orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}
 	TeamsCheckPermissionsForRepoInOrg(ctx context.Context, params TeamsCheckPermissionsForRepoInOrgParams) (TeamsCheckPermissionsForRepoInOrgRes, error)
 	// TeamsCheckPermissionsForRepoLegacy implements teams/check-permissions-for-repo-legacy operation.
+	//
+	// GET /teams/{team_id}/repos/{owner}/{repo}
 	TeamsCheckPermissionsForRepoLegacy(ctx context.Context, params TeamsCheckPermissionsForRepoLegacyParams) (TeamsCheckPermissionsForRepoLegacyRes, error)
 	// TeamsCreateDiscussionCommentInOrg implements teams/create-discussion-comment-in-org operation.
+	//
+	// POST /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments
 	TeamsCreateDiscussionCommentInOrg(ctx context.Context, req TeamsCreateDiscussionCommentInOrgReq, params TeamsCreateDiscussionCommentInOrgParams) (TeamDiscussionComment, error)
 	// TeamsCreateDiscussionCommentLegacy implements teams/create-discussion-comment-legacy operation.
+	//
+	// POST /teams/{team_id}/discussions/{discussion_number}/comments
 	TeamsCreateDiscussionCommentLegacy(ctx context.Context, req TeamsCreateDiscussionCommentLegacyReq, params TeamsCreateDiscussionCommentLegacyParams) (TeamDiscussionComment, error)
 	// TeamsCreateDiscussionInOrg implements teams/create-discussion-in-org operation.
+	//
+	// POST /orgs/{org}/teams/{team_slug}/discussions
 	TeamsCreateDiscussionInOrg(ctx context.Context, req TeamsCreateDiscussionInOrgReq, params TeamsCreateDiscussionInOrgParams) (TeamDiscussion, error)
 	// TeamsCreateDiscussionLegacy implements teams/create-discussion-legacy operation.
+	//
+	// POST /teams/{team_id}/discussions
 	TeamsCreateDiscussionLegacy(ctx context.Context, req TeamsCreateDiscussionLegacyReq, params TeamsCreateDiscussionLegacyParams) (TeamDiscussion, error)
 	// TeamsCreateOrUpdateIdpGroupConnectionsInOrg implements teams/create-or-update-idp-group-connections-in-org operation.
+	//
+	// PATCH /orgs/{org}/teams/{team_slug}/team-sync/group-mappings
 	TeamsCreateOrUpdateIdpGroupConnectionsInOrg(ctx context.Context, req TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq, params TeamsCreateOrUpdateIdpGroupConnectionsInOrgParams) (GroupMapping, error)
 	// TeamsDeleteDiscussionCommentInOrg implements teams/delete-discussion-comment-in-org operation.
+	//
+	// DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}
 	TeamsDeleteDiscussionCommentInOrg(ctx context.Context, params TeamsDeleteDiscussionCommentInOrgParams) (TeamsDeleteDiscussionCommentInOrgNoContent, error)
 	// TeamsDeleteDiscussionCommentLegacy implements teams/delete-discussion-comment-legacy operation.
+	//
+	// DELETE /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}
 	TeamsDeleteDiscussionCommentLegacy(ctx context.Context, params TeamsDeleteDiscussionCommentLegacyParams) (TeamsDeleteDiscussionCommentLegacyNoContent, error)
 	// TeamsDeleteDiscussionInOrg implements teams/delete-discussion-in-org operation.
+	//
+	// DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}
 	TeamsDeleteDiscussionInOrg(ctx context.Context, params TeamsDeleteDiscussionInOrgParams) (TeamsDeleteDiscussionInOrgNoContent, error)
 	// TeamsDeleteDiscussionLegacy implements teams/delete-discussion-legacy operation.
+	//
+	// DELETE /teams/{team_id}/discussions/{discussion_number}
 	TeamsDeleteDiscussionLegacy(ctx context.Context, params TeamsDeleteDiscussionLegacyParams) (TeamsDeleteDiscussionLegacyNoContent, error)
 	// TeamsDeleteInOrg implements teams/delete-in-org operation.
+	//
+	// DELETE /orgs/{org}/teams/{team_slug}
 	TeamsDeleteInOrg(ctx context.Context, params TeamsDeleteInOrgParams) (TeamsDeleteInOrgNoContent, error)
 	// TeamsGetByName implements teams/get-by-name operation.
+	//
+	// GET /orgs/{org}/teams/{team_slug}
 	TeamsGetByName(ctx context.Context, params TeamsGetByNameParams) (TeamsGetByNameRes, error)
 	// TeamsGetDiscussionCommentInOrg implements teams/get-discussion-comment-in-org operation.
+	//
+	// GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}
 	TeamsGetDiscussionCommentInOrg(ctx context.Context, params TeamsGetDiscussionCommentInOrgParams) (TeamDiscussionComment, error)
 	// TeamsGetDiscussionCommentLegacy implements teams/get-discussion-comment-legacy operation.
+	//
+	// GET /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}
 	TeamsGetDiscussionCommentLegacy(ctx context.Context, params TeamsGetDiscussionCommentLegacyParams) (TeamDiscussionComment, error)
 	// TeamsGetDiscussionInOrg implements teams/get-discussion-in-org operation.
+	//
+	// GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}
 	TeamsGetDiscussionInOrg(ctx context.Context, params TeamsGetDiscussionInOrgParams) (TeamDiscussion, error)
 	// TeamsGetDiscussionLegacy implements teams/get-discussion-legacy operation.
+	//
+	// GET /teams/{team_id}/discussions/{discussion_number}
 	TeamsGetDiscussionLegacy(ctx context.Context, params TeamsGetDiscussionLegacyParams) (TeamDiscussion, error)
 	// TeamsGetLegacy implements teams/get-legacy operation.
+	//
+	// GET /teams/{team_id}
 	TeamsGetLegacy(ctx context.Context, params TeamsGetLegacyParams) (TeamsGetLegacyRes, error)
 	// TeamsGetMemberLegacy implements teams/get-member-legacy operation.
+	//
+	// GET /teams/{team_id}/members/{username}
 	TeamsGetMemberLegacy(ctx context.Context, params TeamsGetMemberLegacyParams) (TeamsGetMemberLegacyRes, error)
 	// TeamsGetMembershipForUserInOrg implements teams/get-membership-for-user-in-org operation.
+	//
+	// GET /orgs/{org}/teams/{team_slug}/memberships/{username}
 	TeamsGetMembershipForUserInOrg(ctx context.Context, params TeamsGetMembershipForUserInOrgParams) (TeamsGetMembershipForUserInOrgRes, error)
 	// TeamsGetMembershipForUserLegacy implements teams/get-membership-for-user-legacy operation.
+	//
+	// GET /teams/{team_id}/memberships/{username}
 	TeamsGetMembershipForUserLegacy(ctx context.Context, params TeamsGetMembershipForUserLegacyParams) (TeamsGetMembershipForUserLegacyRes, error)
 	// TeamsList implements teams/list operation.
+	//
+	// GET /orgs/{org}/teams
 	TeamsList(ctx context.Context, params TeamsListParams) (TeamsListRes, error)
 	// TeamsListChildInOrg implements teams/list-child-in-org operation.
+	//
+	// GET /orgs/{org}/teams/{team_slug}/teams
 	TeamsListChildInOrg(ctx context.Context, params TeamsListChildInOrgParams) ([]Team, error)
 	// TeamsListDiscussionCommentsInOrg implements teams/list-discussion-comments-in-org operation.
+	//
+	// GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments
 	TeamsListDiscussionCommentsInOrg(ctx context.Context, params TeamsListDiscussionCommentsInOrgParams) ([]TeamDiscussionComment, error)
 	// TeamsListDiscussionCommentsLegacy implements teams/list-discussion-comments-legacy operation.
+	//
+	// GET /teams/{team_id}/discussions/{discussion_number}/comments
 	TeamsListDiscussionCommentsLegacy(ctx context.Context, params TeamsListDiscussionCommentsLegacyParams) ([]TeamDiscussionComment, error)
 	// TeamsListDiscussionsInOrg implements teams/list-discussions-in-org operation.
+	//
+	// GET /orgs/{org}/teams/{team_slug}/discussions
 	TeamsListDiscussionsInOrg(ctx context.Context, params TeamsListDiscussionsInOrgParams) ([]TeamDiscussion, error)
 	// TeamsListDiscussionsLegacy implements teams/list-discussions-legacy operation.
+	//
+	// GET /teams/{team_id}/discussions
 	TeamsListDiscussionsLegacy(ctx context.Context, params TeamsListDiscussionsLegacyParams) ([]TeamDiscussion, error)
 	// TeamsListForAuthenticatedUser implements teams/list-for-authenticated-user operation.
+	//
+	// GET /user/teams
 	TeamsListForAuthenticatedUser(ctx context.Context, params TeamsListForAuthenticatedUserParams) (TeamsListForAuthenticatedUserRes, error)
 	// TeamsListIdpGroupsForLegacy implements teams/list-idp-groups-for-legacy operation.
+	//
+	// GET /teams/{team_id}/team-sync/group-mappings
 	TeamsListIdpGroupsForLegacy(ctx context.Context, params TeamsListIdpGroupsForLegacyParams) (TeamsListIdpGroupsForLegacyRes, error)
 	// TeamsListIdpGroupsForOrg implements teams/list-idp-groups-for-org operation.
+	//
+	// GET /orgs/{org}/team-sync/groups
 	TeamsListIdpGroupsForOrg(ctx context.Context, params TeamsListIdpGroupsForOrgParams) (GroupMapping, error)
 	// TeamsListIdpGroupsInOrg implements teams/list-idp-groups-in-org operation.
+	//
+	// GET /orgs/{org}/teams/{team_slug}/team-sync/group-mappings
 	TeamsListIdpGroupsInOrg(ctx context.Context, params TeamsListIdpGroupsInOrgParams) (GroupMapping, error)
 	// TeamsListMembersInOrg implements teams/list-members-in-org operation.
+	//
+	// GET /orgs/{org}/teams/{team_slug}/members
 	TeamsListMembersInOrg(ctx context.Context, params TeamsListMembersInOrgParams) ([]SimpleUser, error)
 	// TeamsListMembersLegacy implements teams/list-members-legacy operation.
+	//
+	// GET /teams/{team_id}/members
 	TeamsListMembersLegacy(ctx context.Context, params TeamsListMembersLegacyParams) (TeamsListMembersLegacyRes, error)
 	// TeamsListPendingInvitationsInOrg implements teams/list-pending-invitations-in-org operation.
+	//
+	// GET /orgs/{org}/teams/{team_slug}/invitations
 	TeamsListPendingInvitationsInOrg(ctx context.Context, params TeamsListPendingInvitationsInOrgParams) ([]OrganizationInvitation, error)
 	// TeamsListPendingInvitationsLegacy implements teams/list-pending-invitations-legacy operation.
+	//
+	// GET /teams/{team_id}/invitations
 	TeamsListPendingInvitationsLegacy(ctx context.Context, params TeamsListPendingInvitationsLegacyParams) ([]OrganizationInvitation, error)
 	// TeamsListProjectsInOrg implements teams/list-projects-in-org operation.
+	//
+	// GET /orgs/{org}/teams/{team_slug}/projects
 	TeamsListProjectsInOrg(ctx context.Context, params TeamsListProjectsInOrgParams) ([]TeamProject, error)
 	// TeamsListProjectsLegacy implements teams/list-projects-legacy operation.
+	//
+	// GET /teams/{team_id}/projects
 	TeamsListProjectsLegacy(ctx context.Context, params TeamsListProjectsLegacyParams) (TeamsListProjectsLegacyRes, error)
 	// TeamsListReposInOrg implements teams/list-repos-in-org operation.
+	//
+	// GET /orgs/{org}/teams/{team_slug}/repos
 	TeamsListReposInOrg(ctx context.Context, params TeamsListReposInOrgParams) ([]MinimalRepository, error)
 	// TeamsListReposLegacy implements teams/list-repos-legacy operation.
+	//
+	// GET /teams/{team_id}/repos
 	TeamsListReposLegacy(ctx context.Context, params TeamsListReposLegacyParams) (TeamsListReposLegacyRes, error)
 	// TeamsRemoveMemberLegacy implements teams/remove-member-legacy operation.
+	//
+	// DELETE /teams/{team_id}/members/{username}
 	TeamsRemoveMemberLegacy(ctx context.Context, params TeamsRemoveMemberLegacyParams) (TeamsRemoveMemberLegacyRes, error)
 	// TeamsRemoveMembershipForUserInOrg implements teams/remove-membership-for-user-in-org operation.
+	//
+	// DELETE /orgs/{org}/teams/{team_slug}/memberships/{username}
 	TeamsRemoveMembershipForUserInOrg(ctx context.Context, params TeamsRemoveMembershipForUserInOrgParams) (TeamsRemoveMembershipForUserInOrgRes, error)
 	// TeamsRemoveMembershipForUserLegacy implements teams/remove-membership-for-user-legacy operation.
+	//
+	// DELETE /teams/{team_id}/memberships/{username}
 	TeamsRemoveMembershipForUserLegacy(ctx context.Context, params TeamsRemoveMembershipForUserLegacyParams) (TeamsRemoveMembershipForUserLegacyRes, error)
 	// TeamsRemoveProjectInOrg implements teams/remove-project-in-org operation.
+	//
+	// DELETE /orgs/{org}/teams/{team_slug}/projects/{project_id}
 	TeamsRemoveProjectInOrg(ctx context.Context, params TeamsRemoveProjectInOrgParams) (TeamsRemoveProjectInOrgNoContent, error)
 	// TeamsRemoveRepoInOrg implements teams/remove-repo-in-org operation.
+	//
+	// DELETE /orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}
 	TeamsRemoveRepoInOrg(ctx context.Context, params TeamsRemoveRepoInOrgParams) (TeamsRemoveRepoInOrgNoContent, error)
 	// TeamsRemoveRepoLegacy implements teams/remove-repo-legacy operation.
+	//
+	// DELETE /teams/{team_id}/repos/{owner}/{repo}
 	TeamsRemoveRepoLegacy(ctx context.Context, params TeamsRemoveRepoLegacyParams) (TeamsRemoveRepoLegacyNoContent, error)
 	// TeamsUpdateDiscussionCommentInOrg implements teams/update-discussion-comment-in-org operation.
+	//
+	// PATCH /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}
 	TeamsUpdateDiscussionCommentInOrg(ctx context.Context, req TeamsUpdateDiscussionCommentInOrgReq, params TeamsUpdateDiscussionCommentInOrgParams) (TeamDiscussionComment, error)
 	// TeamsUpdateDiscussionCommentLegacy implements teams/update-discussion-comment-legacy operation.
+	//
+	// PATCH /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}
 	TeamsUpdateDiscussionCommentLegacy(ctx context.Context, req TeamsUpdateDiscussionCommentLegacyReq, params TeamsUpdateDiscussionCommentLegacyParams) (TeamDiscussionComment, error)
 	// TeamsUpdateDiscussionInOrg implements teams/update-discussion-in-org operation.
+	//
+	// PATCH /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}
 	TeamsUpdateDiscussionInOrg(ctx context.Context, req TeamsUpdateDiscussionInOrgReq, params TeamsUpdateDiscussionInOrgParams) (TeamDiscussion, error)
 	// TeamsUpdateDiscussionLegacy implements teams/update-discussion-legacy operation.
+	//
+	// PATCH /teams/{team_id}/discussions/{discussion_number}
 	TeamsUpdateDiscussionLegacy(ctx context.Context, req TeamsUpdateDiscussionLegacyReq, params TeamsUpdateDiscussionLegacyParams) (TeamDiscussion, error)
 	// TeamsUpdateInOrg implements teams/update-in-org operation.
+	//
+	// PATCH /orgs/{org}/teams/{team_slug}
 	TeamsUpdateInOrg(ctx context.Context, req TeamsUpdateInOrgReq, params TeamsUpdateInOrgParams) (TeamFull, error)
 	// UsersCheckBlocked implements users/check-blocked operation.
+	//
+	// GET /user/blocks/{username}
 	UsersCheckBlocked(ctx context.Context, params UsersCheckBlockedParams) (UsersCheckBlockedRes, error)
 	// UsersCheckFollowingForUser implements users/check-following-for-user operation.
+	//
+	// GET /users/{username}/following/{target_user}
 	UsersCheckFollowingForUser(ctx context.Context, params UsersCheckFollowingForUserParams) (UsersCheckFollowingForUserRes, error)
 	// UsersCheckPersonIsFollowedByAuthenticated implements users/check-person-is-followed-by-authenticated operation.
+	//
+	// GET /user/following/{username}
 	UsersCheckPersonIsFollowedByAuthenticated(ctx context.Context, params UsersCheckPersonIsFollowedByAuthenticatedParams) (UsersCheckPersonIsFollowedByAuthenticatedRes, error)
 	// UsersDeletePublicSSHKeyForAuthenticated implements users/delete-public-ssh-key-for-authenticated operation.
+	//
+	// DELETE /user/keys/{key_id}
 	UsersDeletePublicSSHKeyForAuthenticated(ctx context.Context, params UsersDeletePublicSSHKeyForAuthenticatedParams) (UsersDeletePublicSSHKeyForAuthenticatedRes, error)
 	// UsersFollow implements users/follow operation.
+	//
+	// PUT /user/following/{username}
 	UsersFollow(ctx context.Context, params UsersFollowParams) (UsersFollowRes, error)
 	// UsersGetAuthenticated implements users/get-authenticated operation.
+	//
+	// GET /user
 	UsersGetAuthenticated(ctx context.Context) (UsersGetAuthenticatedRes, error)
 	// UsersGetByUsername implements users/get-by-username operation.
+	//
+	// GET /users/{username}
 	UsersGetByUsername(ctx context.Context, params UsersGetByUsernameParams) (UsersGetByUsernameRes, error)
 	// UsersGetGpgKeyForAuthenticated implements users/get-gpg-key-for-authenticated operation.
+	//
+	// GET /user/gpg_keys/{gpg_key_id}
 	UsersGetGpgKeyForAuthenticated(ctx context.Context, params UsersGetGpgKeyForAuthenticatedParams) (UsersGetGpgKeyForAuthenticatedRes, error)
 	// UsersGetPublicSSHKeyForAuthenticated implements users/get-public-ssh-key-for-authenticated operation.
+	//
+	// GET /user/keys/{key_id}
 	UsersGetPublicSSHKeyForAuthenticated(ctx context.Context, params UsersGetPublicSSHKeyForAuthenticatedParams) (UsersGetPublicSSHKeyForAuthenticatedRes, error)
 	// UsersList implements users/list operation.
+	//
+	// GET /users
 	UsersList(ctx context.Context, params UsersListParams) (UsersListRes, error)
 	// UsersListBlockedByAuthenticated implements users/list-blocked-by-authenticated operation.
+	//
+	// GET /user/blocks
 	UsersListBlockedByAuthenticated(ctx context.Context) (UsersListBlockedByAuthenticatedRes, error)
 	// UsersListEmailsForAuthenticated implements users/list-emails-for-authenticated operation.
+	//
+	// GET /user/emails
 	UsersListEmailsForAuthenticated(ctx context.Context, params UsersListEmailsForAuthenticatedParams) (UsersListEmailsForAuthenticatedRes, error)
 	// UsersListFollowedByAuthenticated implements users/list-followed-by-authenticated operation.
+	//
+	// GET /user/following
 	UsersListFollowedByAuthenticated(ctx context.Context, params UsersListFollowedByAuthenticatedParams) (UsersListFollowedByAuthenticatedRes, error)
 	// UsersListFollowersForAuthenticatedUser implements users/list-followers-for-authenticated-user operation.
+	//
+	// GET /user/followers
 	UsersListFollowersForAuthenticatedUser(ctx context.Context, params UsersListFollowersForAuthenticatedUserParams) (UsersListFollowersForAuthenticatedUserRes, error)
 	// UsersListFollowersForUser implements users/list-followers-for-user operation.
+	//
+	// GET /users/{username}/followers
 	UsersListFollowersForUser(ctx context.Context, params UsersListFollowersForUserParams) ([]SimpleUser, error)
 	// UsersListFollowingForUser implements users/list-following-for-user operation.
+	//
+	// GET /users/{username}/following
 	UsersListFollowingForUser(ctx context.Context, params UsersListFollowingForUserParams) ([]SimpleUser, error)
 	// UsersListGpgKeysForAuthenticated implements users/list-gpg-keys-for-authenticated operation.
+	//
+	// GET /user/gpg_keys
 	UsersListGpgKeysForAuthenticated(ctx context.Context, params UsersListGpgKeysForAuthenticatedParams) (UsersListGpgKeysForAuthenticatedRes, error)
 	// UsersListGpgKeysForUser implements users/list-gpg-keys-for-user operation.
+	//
+	// GET /users/{username}/gpg_keys
 	UsersListGpgKeysForUser(ctx context.Context, params UsersListGpgKeysForUserParams) ([]GpgKey, error)
 	// UsersListPublicEmailsForAuthenticated implements users/list-public-emails-for-authenticated operation.
+	//
+	// GET /user/public_emails
 	UsersListPublicEmailsForAuthenticated(ctx context.Context, params UsersListPublicEmailsForAuthenticatedParams) (UsersListPublicEmailsForAuthenticatedRes, error)
 	// UsersListPublicKeysForUser implements users/list-public-keys-for-user operation.
+	//
+	// GET /users/{username}/keys
 	UsersListPublicKeysForUser(ctx context.Context, params UsersListPublicKeysForUserParams) ([]KeySimple, error)
 	// UsersListPublicSSHKeysForAuthenticated implements users/list-public-ssh-keys-for-authenticated operation.
+	//
+	// GET /user/keys
 	UsersListPublicSSHKeysForAuthenticated(ctx context.Context, params UsersListPublicSSHKeysForAuthenticatedParams) (UsersListPublicSSHKeysForAuthenticatedRes, error)
 	// UsersUnblock implements users/unblock operation.
+	//
+	// DELETE /user/blocks/{username}
 	UsersUnblock(ctx context.Context, params UsersUnblockParams) (UsersUnblockRes, error)
 	// UsersUnfollow implements users/unfollow operation.
+	//
+	// DELETE /user/following/{username}
 	UsersUnfollow(ctx context.Context, params UsersUnfollowParams) (UsersUnfollowRes, error)
 }
 
@@ -1214,594 +2356,587 @@ type Handler interface {
 // calls Handler to handle requests.
 type Server struct {
 	h   Handler
-	mux *chi.Mux
 	cfg config
 }
 
 func NewServer(h Handler, opts ...Option) *Server {
 	srv := &Server{
 		h:   h,
-		mux: chi.NewMux(),
 		cfg: newConfig(opts...),
 	}
-	srv.setupRoutes()
 	return srv
 }
 
-func (s *Server) setupRoutes() {
-	s.mux.MethodFunc("PUT", "/orgs/{org}/actions/runner-groups/{runner_group_id}/repositories/{repository_id}", s.HandleActionsAddRepoAccessToSelfHostedRunnerGroupInOrgRequest)
-	s.mux.MethodFunc("PUT", "/orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}", s.HandleActionsAddSelectedRepoToOrgSecretRequest)
-	s.mux.MethodFunc("PUT", "/orgs/{org}/actions/runner-groups/{runner_group_id}/runners/{runner_id}", s.HandleActionsAddSelfHostedRunnerToGroupForOrgRequest)
-	s.mux.MethodFunc("POST", "/repos/{owner}/{repo}/actions/runs/{run_id}/approve", s.HandleActionsApproveWorkflowRunRequest)
-	s.mux.MethodFunc("POST", "/repos/{owner}/{repo}/actions/runs/{run_id}/cancel", s.HandleActionsCancelWorkflowRunRequest)
-	s.mux.MethodFunc("PUT", "/repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}", s.HandleActionsCreateOrUpdateEnvironmentSecretRequest)
-	s.mux.MethodFunc("PUT", "/orgs/{org}/actions/secrets/{secret_name}", s.HandleActionsCreateOrUpdateOrgSecretRequest)
-	s.mux.MethodFunc("PUT", "/repos/{owner}/{repo}/actions/secrets/{secret_name}", s.HandleActionsCreateOrUpdateRepoSecretRequest)
-	s.mux.MethodFunc("POST", "/orgs/{org}/actions/runners/registration-token", s.HandleActionsCreateRegistrationTokenForOrgRequest)
-	s.mux.MethodFunc("POST", "/repos/{owner}/{repo}/actions/runners/registration-token", s.HandleActionsCreateRegistrationTokenForRepoRequest)
-	s.mux.MethodFunc("POST", "/orgs/{org}/actions/runners/remove-token", s.HandleActionsCreateRemoveTokenForOrgRequest)
-	s.mux.MethodFunc("POST", "/repos/{owner}/{repo}/actions/runners/remove-token", s.HandleActionsCreateRemoveTokenForRepoRequest)
-	s.mux.MethodFunc("POST", "/orgs/{org}/actions/runner-groups", s.HandleActionsCreateSelfHostedRunnerGroupForOrgRequest)
-	s.mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/actions/artifacts/{artifact_id}", s.HandleActionsDeleteArtifactRequest)
-	s.mux.MethodFunc("DELETE", "/repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}", s.HandleActionsDeleteEnvironmentSecretRequest)
-	s.mux.MethodFunc("DELETE", "/orgs/{org}/actions/secrets/{secret_name}", s.HandleActionsDeleteOrgSecretRequest)
-	s.mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/actions/secrets/{secret_name}", s.HandleActionsDeleteRepoSecretRequest)
-	s.mux.MethodFunc("DELETE", "/orgs/{org}/actions/runners/{runner_id}", s.HandleActionsDeleteSelfHostedRunnerFromOrgRequest)
-	s.mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/actions/runners/{runner_id}", s.HandleActionsDeleteSelfHostedRunnerFromRepoRequest)
-	s.mux.MethodFunc("DELETE", "/orgs/{org}/actions/runner-groups/{runner_group_id}", s.HandleActionsDeleteSelfHostedRunnerGroupFromOrgRequest)
-	s.mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/actions/runs/{run_id}", s.HandleActionsDeleteWorkflowRunRequest)
-	s.mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/actions/runs/{run_id}/logs", s.HandleActionsDeleteWorkflowRunLogsRequest)
-	s.mux.MethodFunc("DELETE", "/orgs/{org}/actions/permissions/repositories/{repository_id}", s.HandleActionsDisableSelectedRepositoryGithubActionsOrganizationRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/actions/artifacts/{artifact_id}/{archive_format}", s.HandleActionsDownloadArtifactRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/actions/jobs/{job_id}/logs", s.HandleActionsDownloadJobLogsForWorkflowRunRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/actions/runs/{run_id}/logs", s.HandleActionsDownloadWorkflowRunLogsRequest)
-	s.mux.MethodFunc("PUT", "/orgs/{org}/actions/permissions/repositories/{repository_id}", s.HandleActionsEnableSelectedRepositoryGithubActionsOrganizationRequest)
-	s.mux.MethodFunc("GET", "/orgs/{org}/actions/permissions/selected-actions", s.HandleActionsGetAllowedActionsOrganizationRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/actions/permissions/selected-actions", s.HandleActionsGetAllowedActionsRepositoryRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/actions/artifacts/{artifact_id}", s.HandleActionsGetArtifactRequest)
-	s.mux.MethodFunc("GET", "/repositories/{repository_id}/environments/{environment_name}/secrets/public-key", s.HandleActionsGetEnvironmentPublicKeyRequest)
-	s.mux.MethodFunc("GET", "/repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}", s.HandleActionsGetEnvironmentSecretRequest)
-	s.mux.MethodFunc("GET", "/orgs/{org}/actions/permissions", s.HandleActionsGetGithubActionsPermissionsOrganizationRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/actions/permissions", s.HandleActionsGetGithubActionsPermissionsRepositoryRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/actions/jobs/{job_id}", s.HandleActionsGetJobForWorkflowRunRequest)
-	s.mux.MethodFunc("GET", "/orgs/{org}/actions/secrets/public-key", s.HandleActionsGetOrgPublicKeyRequest)
-	s.mux.MethodFunc("GET", "/orgs/{org}/actions/secrets/{secret_name}", s.HandleActionsGetOrgSecretRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/actions/secrets/public-key", s.HandleActionsGetRepoPublicKeyRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/actions/secrets/{secret_name}", s.HandleActionsGetRepoSecretRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/actions/runs/{run_id}/approvals", s.HandleActionsGetReviewsForRunRequest)
-	s.mux.MethodFunc("GET", "/orgs/{org}/actions/runners/{runner_id}", s.HandleActionsGetSelfHostedRunnerForOrgRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/actions/runners/{runner_id}", s.HandleActionsGetSelfHostedRunnerForRepoRequest)
-	s.mux.MethodFunc("GET", "/orgs/{org}/actions/runner-groups/{runner_group_id}", s.HandleActionsGetSelfHostedRunnerGroupForOrgRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/actions/runs/{run_id}", s.HandleActionsGetWorkflowRunRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/actions/runs/{run_id}/timing", s.HandleActionsGetWorkflowRunUsageRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/actions/artifacts", s.HandleActionsListArtifactsForRepoRequest)
-	s.mux.MethodFunc("GET", "/repositories/{repository_id}/environments/{environment_name}/secrets", s.HandleActionsListEnvironmentSecretsRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/actions/runs/{run_id}/jobs", s.HandleActionsListJobsForWorkflowRunRequest)
-	s.mux.MethodFunc("GET", "/orgs/{org}/actions/secrets", s.HandleActionsListOrgSecretsRequest)
-	s.mux.MethodFunc("GET", "/orgs/{org}/actions/runner-groups/{runner_group_id}/repositories", s.HandleActionsListRepoAccessToSelfHostedRunnerGroupInOrgRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/actions/secrets", s.HandleActionsListRepoSecretsRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/actions/workflows", s.HandleActionsListRepoWorkflowsRequest)
-	s.mux.MethodFunc("GET", "/orgs/{org}/actions/runners/downloads", s.HandleActionsListRunnerApplicationsForOrgRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/actions/runners/downloads", s.HandleActionsListRunnerApplicationsForRepoRequest)
-	s.mux.MethodFunc("GET", "/orgs/{org}/actions/secrets/{secret_name}/repositories", s.HandleActionsListSelectedReposForOrgSecretRequest)
-	s.mux.MethodFunc("GET", "/orgs/{org}/actions/permissions/repositories", s.HandleActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRequest)
-	s.mux.MethodFunc("GET", "/orgs/{org}/actions/runner-groups", s.HandleActionsListSelfHostedRunnerGroupsForOrgRequest)
-	s.mux.MethodFunc("GET", "/orgs/{org}/actions/runners", s.HandleActionsListSelfHostedRunnersForOrgRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/actions/runners", s.HandleActionsListSelfHostedRunnersForRepoRequest)
-	s.mux.MethodFunc("GET", "/orgs/{org}/actions/runner-groups/{runner_group_id}/runners", s.HandleActionsListSelfHostedRunnersInGroupForOrgRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/actions/runs/{run_id}/artifacts", s.HandleActionsListWorkflowRunArtifactsRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/actions/runs", s.HandleActionsListWorkflowRunsForRepoRequest)
-	s.mux.MethodFunc("POST", "/repos/{owner}/{repo}/actions/runs/{run_id}/rerun", s.HandleActionsReRunWorkflowRequest)
-	s.mux.MethodFunc("DELETE", "/orgs/{org}/actions/runner-groups/{runner_group_id}/repositories/{repository_id}", s.HandleActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgRequest)
-	s.mux.MethodFunc("DELETE", "/orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}", s.HandleActionsRemoveSelectedRepoFromOrgSecretRequest)
-	s.mux.MethodFunc("DELETE", "/orgs/{org}/actions/runner-groups/{runner_group_id}/runners/{runner_id}", s.HandleActionsRemoveSelfHostedRunnerFromGroupForOrgRequest)
-	s.mux.MethodFunc("POST", "/repos/{owner}/{repo}/actions/runs/{run_id}/retry", s.HandleActionsRetryWorkflowRequest)
-	s.mux.MethodFunc("PUT", "/orgs/{org}/actions/permissions/selected-actions", s.HandleActionsSetAllowedActionsOrganizationRequest)
-	s.mux.MethodFunc("PUT", "/repos/{owner}/{repo}/actions/permissions/selected-actions", s.HandleActionsSetAllowedActionsRepositoryRequest)
-	s.mux.MethodFunc("PUT", "/orgs/{org}/actions/permissions", s.HandleActionsSetGithubActionsPermissionsOrganizationRequest)
-	s.mux.MethodFunc("PUT", "/repos/{owner}/{repo}/actions/permissions", s.HandleActionsSetGithubActionsPermissionsRepositoryRequest)
-	s.mux.MethodFunc("PUT", "/orgs/{org}/actions/runner-groups/{runner_group_id}/repositories", s.HandleActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest)
-	s.mux.MethodFunc("PUT", "/orgs/{org}/actions/secrets/{secret_name}/repositories", s.HandleActionsSetSelectedReposForOrgSecretRequest)
-	s.mux.MethodFunc("PUT", "/orgs/{org}/actions/permissions/repositories", s.HandleActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequest)
-	s.mux.MethodFunc("PUT", "/orgs/{org}/actions/runner-groups/{runner_group_id}/runners", s.HandleActionsSetSelfHostedRunnersInGroupForOrgRequest)
-	s.mux.MethodFunc("PATCH", "/orgs/{org}/actions/runner-groups/{runner_group_id}", s.HandleActionsUpdateSelfHostedRunnerGroupForOrgRequest)
-	s.mux.MethodFunc("GET", "/user/starred/{owner}/{repo}", s.HandleActivityCheckRepoIsStarredByAuthenticatedUserRequest)
-	s.mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/subscription", s.HandleActivityDeleteRepoSubscriptionRequest)
-	s.mux.MethodFunc("DELETE", "/notifications/threads/{thread_id}/subscription", s.HandleActivityDeleteThreadSubscriptionRequest)
-	s.mux.MethodFunc("GET", "/feeds", s.HandleActivityGetFeedsRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/subscription", s.HandleActivityGetRepoSubscriptionRequest)
-	s.mux.MethodFunc("GET", "/notifications/threads/{thread_id}", s.HandleActivityGetThreadRequest)
-	s.mux.MethodFunc("GET", "/notifications/threads/{thread_id}/subscription", s.HandleActivityGetThreadSubscriptionForAuthenticatedUserRequest)
-	s.mux.MethodFunc("GET", "/users/{username}/events", s.HandleActivityListEventsForAuthenticatedUserRequest)
-	s.mux.MethodFunc("GET", "/users/{username}/events/orgs/{org}", s.HandleActivityListOrgEventsForAuthenticatedUserRequest)
-	s.mux.MethodFunc("GET", "/events", s.HandleActivityListPublicEventsRequest)
-	s.mux.MethodFunc("GET", "/networks/{owner}/{repo}/events", s.HandleActivityListPublicEventsForRepoNetworkRequest)
-	s.mux.MethodFunc("GET", "/users/{username}/events/public", s.HandleActivityListPublicEventsForUserRequest)
-	s.mux.MethodFunc("GET", "/orgs/{org}/events", s.HandleActivityListPublicOrgEventsRequest)
-	s.mux.MethodFunc("GET", "/users/{username}/received_events", s.HandleActivityListReceivedEventsForUserRequest)
-	s.mux.MethodFunc("GET", "/users/{username}/received_events/public", s.HandleActivityListReceivedPublicEventsForUserRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/events", s.HandleActivityListRepoEventsRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/notifications", s.HandleActivityListRepoNotificationsForAuthenticatedUserRequest)
-	s.mux.MethodFunc("GET", "/user/starred", s.HandleActivityListReposStarredByAuthenticatedUserRequest)
-	s.mux.MethodFunc("GET", "/users/{username}/subscriptions", s.HandleActivityListReposWatchedByUserRequest)
-	s.mux.MethodFunc("GET", "/user/subscriptions", s.HandleActivityListWatchedReposForAuthenticatedUserRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/subscribers", s.HandleActivityListWatchersForRepoRequest)
-	s.mux.MethodFunc("PUT", "/notifications", s.HandleActivityMarkNotificationsAsReadRequest)
-	s.mux.MethodFunc("PUT", "/repos/{owner}/{repo}/notifications", s.HandleActivityMarkRepoNotificationsAsReadRequest)
-	s.mux.MethodFunc("PATCH", "/notifications/threads/{thread_id}", s.HandleActivityMarkThreadAsReadRequest)
-	s.mux.MethodFunc("PUT", "/repos/{owner}/{repo}/subscription", s.HandleActivitySetRepoSubscriptionRequest)
-	s.mux.MethodFunc("PUT", "/notifications/threads/{thread_id}/subscription", s.HandleActivitySetThreadSubscriptionRequest)
-	s.mux.MethodFunc("PUT", "/user/starred/{owner}/{repo}", s.HandleActivityStarRepoForAuthenticatedUserRequest)
-	s.mux.MethodFunc("DELETE", "/user/starred/{owner}/{repo}", s.HandleActivityUnstarRepoForAuthenticatedUserRequest)
-	s.mux.MethodFunc("PUT", "/user/installations/{installation_id}/repositories/{repository_id}", s.HandleAppsAddRepoToInstallationRequest)
-	s.mux.MethodFunc("DELETE", "/app/installations/{installation_id}", s.HandleAppsDeleteInstallationRequest)
-	s.mux.MethodFunc("GET", "/app", s.HandleAppsGetAuthenticatedRequest)
-	s.mux.MethodFunc("GET", "/apps/{app_slug}", s.HandleAppsGetBySlugRequest)
-	s.mux.MethodFunc("GET", "/marketplace_listing/accounts/{account_id}", s.HandleAppsGetSubscriptionPlanForAccountRequest)
-	s.mux.MethodFunc("GET", "/marketplace_listing/stubbed/accounts/{account_id}", s.HandleAppsGetSubscriptionPlanForAccountStubbedRequest)
-	s.mux.MethodFunc("GET", "/app/hook/config", s.HandleAppsGetWebhookConfigForAppRequest)
-	s.mux.MethodFunc("GET", "/marketplace_listing/stubbed/plans/{plan_id}/accounts", s.HandleAppsListAccountsForPlanStubbedRequest)
-	s.mux.MethodFunc("GET", "/user/installations/{installation_id}/repositories", s.HandleAppsListInstallationReposForAuthenticatedUserRequest)
-	s.mux.MethodFunc("GET", "/marketplace_listing/plans", s.HandleAppsListPlansRequest)
-	s.mux.MethodFunc("GET", "/marketplace_listing/stubbed/plans", s.HandleAppsListPlansStubbedRequest)
-	s.mux.MethodFunc("GET", "/installation/repositories", s.HandleAppsListReposAccessibleToInstallationRequest)
-	s.mux.MethodFunc("GET", "/user/marketplace_purchases", s.HandleAppsListSubscriptionsForAuthenticatedUserRequest)
-	s.mux.MethodFunc("GET", "/user/marketplace_purchases/stubbed", s.HandleAppsListSubscriptionsForAuthenticatedUserStubbedRequest)
-	s.mux.MethodFunc("DELETE", "/user/installations/{installation_id}/repositories/{repository_id}", s.HandleAppsRemoveRepoFromInstallationRequest)
-	s.mux.MethodFunc("DELETE", "/installation/token", s.HandleAppsRevokeInstallationAccessTokenRequest)
-	s.mux.MethodFunc("PUT", "/app/installations/{installation_id}/suspended", s.HandleAppsSuspendInstallationRequest)
-	s.mux.MethodFunc("DELETE", "/app/installations/{installation_id}/suspended", s.HandleAppsUnsuspendInstallationRequest)
-	s.mux.MethodFunc("PATCH", "/app/hook/config", s.HandleAppsUpdateWebhookConfigForAppRequest)
-	s.mux.MethodFunc("GET", "/enterprises/{enterprise}/settings/billing/actions", s.HandleBillingGetGithubActionsBillingGheRequest)
-	s.mux.MethodFunc("GET", "/orgs/{org}/settings/billing/actions", s.HandleBillingGetGithubActionsBillingOrgRequest)
-	s.mux.MethodFunc("GET", "/users/{username}/settings/billing/actions", s.HandleBillingGetGithubActionsBillingUserRequest)
-	s.mux.MethodFunc("GET", "/enterprises/{enterprise}/settings/billing/packages", s.HandleBillingGetGithubPackagesBillingGheRequest)
-	s.mux.MethodFunc("GET", "/orgs/{org}/settings/billing/packages", s.HandleBillingGetGithubPackagesBillingOrgRequest)
-	s.mux.MethodFunc("GET", "/users/{username}/settings/billing/packages", s.HandleBillingGetGithubPackagesBillingUserRequest)
-	s.mux.MethodFunc("GET", "/enterprises/{enterprise}/settings/billing/shared-storage", s.HandleBillingGetSharedStorageBillingGheRequest)
-	s.mux.MethodFunc("GET", "/orgs/{org}/settings/billing/shared-storage", s.HandleBillingGetSharedStorageBillingOrgRequest)
-	s.mux.MethodFunc("GET", "/users/{username}/settings/billing/shared-storage", s.HandleBillingGetSharedStorageBillingUserRequest)
-	s.mux.MethodFunc("POST", "/repos/{owner}/{repo}/check-suites", s.HandleChecksCreateSuiteRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/check-runs/{check_run_id}", s.HandleChecksGetRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/check-suites/{check_suite_id}", s.HandleChecksGetSuiteRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/check-runs/{check_run_id}/annotations", s.HandleChecksListAnnotationsRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/commits/{ref}/check-runs", s.HandleChecksListForRefRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/check-suites/{check_suite_id}/check-runs", s.HandleChecksListForSuiteRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/commits/{ref}/check-suites", s.HandleChecksListSuitesForRefRequest)
-	s.mux.MethodFunc("POST", "/repos/{owner}/{repo}/check-suites/{check_suite_id}/rerequest", s.HandleChecksRerequestSuiteRequest)
-	s.mux.MethodFunc("PATCH", "/repos/{owner}/{repo}/check-suites/preferences", s.HandleChecksSetSuitesPreferencesRequest)
-	s.mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}", s.HandleCodeScanningDeleteAnalysisRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}", s.HandleCodeScanningGetAlertRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}", s.HandleCodeScanningGetAnalysisRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/code-scanning/sarifs/{sarif_id}", s.HandleCodeScanningGetSarifRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}/instances", s.HandleCodeScanningListAlertInstancesRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/code-scanning/alerts", s.HandleCodeScanningListAlertsForRepoRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/code-scanning/analyses", s.HandleCodeScanningListRecentAnalysesRequest)
-	s.mux.MethodFunc("PATCH", "/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}", s.HandleCodeScanningUpdateAlertRequest)
-	s.mux.MethodFunc("POST", "/repos/{owner}/{repo}/code-scanning/sarifs", s.HandleCodeScanningUploadSarifRequest)
-	s.mux.MethodFunc("GET", "/codes_of_conduct", s.HandleCodesOfConductGetAllCodesOfConductRequest)
-	s.mux.MethodFunc("GET", "/codes_of_conduct/{key}", s.HandleCodesOfConductGetConductCodeRequest)
-	s.mux.MethodFunc("GET", "/emojis", s.HandleEmojisGetRequest)
-	s.mux.MethodFunc("PUT", "/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations/{org_id}", s.HandleEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest)
-	s.mux.MethodFunc("PUT", "/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners/{runner_id}", s.HandleEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseRequest)
-	s.mux.MethodFunc("POST", "/enterprises/{enterprise}/actions/runners/registration-token", s.HandleEnterpriseAdminCreateRegistrationTokenForEnterpriseRequest)
-	s.mux.MethodFunc("POST", "/enterprises/{enterprise}/actions/runners/remove-token", s.HandleEnterpriseAdminCreateRemoveTokenForEnterpriseRequest)
-	s.mux.MethodFunc("POST", "/enterprises/{enterprise}/actions/runner-groups", s.HandleEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequest)
-	s.mux.MethodFunc("DELETE", "/scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}", s.HandleEnterpriseAdminDeleteScimGroupFromEnterpriseRequest)
-	s.mux.MethodFunc("DELETE", "/enterprises/{enterprise}/actions/runners/{runner_id}", s.HandleEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseRequest)
-	s.mux.MethodFunc("DELETE", "/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}", s.HandleEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseRequest)
-	s.mux.MethodFunc("DELETE", "/scim/v2/enterprises/{enterprise}/Users/{scim_user_id}", s.HandleEnterpriseAdminDeleteUserFromEnterpriseRequest)
-	s.mux.MethodFunc("DELETE", "/enterprises/{enterprise}/actions/permissions/organizations/{org_id}", s.HandleEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseRequest)
-	s.mux.MethodFunc("PUT", "/enterprises/{enterprise}/actions/permissions/organizations/{org_id}", s.HandleEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseRequest)
-	s.mux.MethodFunc("GET", "/enterprises/{enterprise}/actions/permissions/selected-actions", s.HandleEnterpriseAdminGetAllowedActionsEnterpriseRequest)
-	s.mux.MethodFunc("GET", "/enterprises/{enterprise}/audit-log", s.HandleEnterpriseAdminGetAuditLogRequest)
-	s.mux.MethodFunc("GET", "/enterprises/{enterprise}/actions/permissions", s.HandleEnterpriseAdminGetGithubActionsPermissionsEnterpriseRequest)
-	s.mux.MethodFunc("GET", "/scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}", s.HandleEnterpriseAdminGetProvisioningInformationForEnterpriseGroupRequest)
-	s.mux.MethodFunc("GET", "/scim/v2/enterprises/{enterprise}/Users/{scim_user_id}", s.HandleEnterpriseAdminGetProvisioningInformationForEnterpriseUserRequest)
-	s.mux.MethodFunc("GET", "/enterprises/{enterprise}/actions/runners/{runner_id}", s.HandleEnterpriseAdminGetSelfHostedRunnerForEnterpriseRequest)
-	s.mux.MethodFunc("GET", "/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}", s.HandleEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseRequest)
-	s.mux.MethodFunc("GET", "/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations", s.HandleEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest)
-	s.mux.MethodFunc("GET", "/scim/v2/enterprises/{enterprise}/Groups", s.HandleEnterpriseAdminListProvisionedGroupsEnterpriseRequest)
-	s.mux.MethodFunc("GET", "/scim/v2/enterprises/{enterprise}/Users", s.HandleEnterpriseAdminListProvisionedIdentitiesEnterpriseRequest)
-	s.mux.MethodFunc("GET", "/enterprises/{enterprise}/actions/runners/downloads", s.HandleEnterpriseAdminListRunnerApplicationsForEnterpriseRequest)
-	s.mux.MethodFunc("GET", "/enterprises/{enterprise}/actions/permissions/organizations", s.HandleEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseRequest)
-	s.mux.MethodFunc("GET", "/enterprises/{enterprise}/actions/runner-groups", s.HandleEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseRequest)
-	s.mux.MethodFunc("GET", "/enterprises/{enterprise}/actions/runners", s.HandleEnterpriseAdminListSelfHostedRunnersForEnterpriseRequest)
-	s.mux.MethodFunc("GET", "/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners", s.HandleEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseRequest)
-	s.mux.MethodFunc("POST", "/scim/v2/enterprises/{enterprise}/Groups", s.HandleEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest)
-	s.mux.MethodFunc("POST", "/scim/v2/enterprises/{enterprise}/Users", s.HandleEnterpriseAdminProvisionAndInviteEnterpriseUserRequest)
-	s.mux.MethodFunc("DELETE", "/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations/{org_id}", s.HandleEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest)
-	s.mux.MethodFunc("DELETE", "/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners/{runner_id}", s.HandleEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseRequest)
-	s.mux.MethodFunc("PUT", "/enterprises/{enterprise}/actions/permissions/selected-actions", s.HandleEnterpriseAdminSetAllowedActionsEnterpriseRequest)
-	s.mux.MethodFunc("PUT", "/enterprises/{enterprise}/actions/permissions", s.HandleEnterpriseAdminSetGithubActionsPermissionsEnterpriseRequest)
-	s.mux.MethodFunc("PUT", "/scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}", s.HandleEnterpriseAdminSetInformationForProvisionedEnterpriseGroupRequest)
-	s.mux.MethodFunc("PUT", "/scim/v2/enterprises/{enterprise}/Users/{scim_user_id}", s.HandleEnterpriseAdminSetInformationForProvisionedEnterpriseUserRequest)
-	s.mux.MethodFunc("PUT", "/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations", s.HandleEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest)
-	s.mux.MethodFunc("PUT", "/enterprises/{enterprise}/actions/permissions/organizations", s.HandleEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequest)
-	s.mux.MethodFunc("PUT", "/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners", s.HandleEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequest)
-	s.mux.MethodFunc("PATCH", "/scim/v2/enterprises/{enterprise}/Users/{scim_user_id}", s.HandleEnterpriseAdminUpdateAttributeForEnterpriseUserRequest)
-	s.mux.MethodFunc("PATCH", "/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}", s.HandleEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequest)
-	s.mux.MethodFunc("GET", "/gists/{gist_id}/star", s.HandleGistsCheckIsStarredRequest)
-	s.mux.MethodFunc("POST", "/gists/{gist_id}/comments", s.HandleGistsCreateCommentRequest)
-	s.mux.MethodFunc("DELETE", "/gists/{gist_id}", s.HandleGistsDeleteRequest)
-	s.mux.MethodFunc("DELETE", "/gists/{gist_id}/comments/{comment_id}", s.HandleGistsDeleteCommentRequest)
-	s.mux.MethodFunc("GET", "/gists/{gist_id}", s.HandleGistsGetRequest)
-	s.mux.MethodFunc("GET", "/gists/{gist_id}/comments/{comment_id}", s.HandleGistsGetCommentRequest)
-	s.mux.MethodFunc("GET", "/gists", s.HandleGistsListRequest)
-	s.mux.MethodFunc("GET", "/gists/{gist_id}/comments", s.HandleGistsListCommentsRequest)
-	s.mux.MethodFunc("GET", "/gists/{gist_id}/commits", s.HandleGistsListCommitsRequest)
-	s.mux.MethodFunc("GET", "/gists/{gist_id}/forks", s.HandleGistsListForksRequest)
-	s.mux.MethodFunc("GET", "/gists/starred", s.HandleGistsListStarredRequest)
-	s.mux.MethodFunc("PUT", "/gists/{gist_id}/star", s.HandleGistsStarRequest)
-	s.mux.MethodFunc("DELETE", "/gists/{gist_id}/star", s.HandleGistsUnstarRequest)
-	s.mux.MethodFunc("PATCH", "/gists/{gist_id}/comments/{comment_id}", s.HandleGistsUpdateCommentRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/git/commits/{commit_sha}", s.HandleGitGetCommitRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/git/ref/{ref}", s.HandleGitGetRefRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/git/tags/{tag_sha}", s.HandleGitGetTagRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/git/matching-refs/{ref}", s.HandleGitListMatchingRefsRequest)
-	s.mux.MethodFunc("GET", "/gitignore/templates", s.HandleGitignoreGetAllTemplatesRequest)
-	s.mux.MethodFunc("GET", "/gitignore/templates/{name}", s.HandleGitignoreGetTemplateRequest)
-	s.mux.MethodFunc("DELETE", "/user/interaction-limits", s.HandleInteractionsRemoveRestrictionsForAuthenticatedUserRequest)
-	s.mux.MethodFunc("DELETE", "/orgs/{org}/interaction-limits", s.HandleInteractionsRemoveRestrictionsForOrgRequest)
-	s.mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/interaction-limits", s.HandleInteractionsRemoveRestrictionsForRepoRequest)
-	s.mux.MethodFunc("PUT", "/repos/{owner}/{repo}/interaction-limits", s.HandleInteractionsSetRestrictionsForRepoRequest)
-	s.mux.MethodFunc("POST", "/repos/{owner}/{repo}/issues/{issue_number}/assignees", s.HandleIssuesAddAssigneesRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/assignees/{assignee}", s.HandleIssuesCheckUserCanBeAssignedRequest)
-	s.mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/issues/comments/{comment_id}", s.HandleIssuesDeleteCommentRequest)
-	s.mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/labels/{name}", s.HandleIssuesDeleteLabelRequest)
-	s.mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/milestones/{milestone_number}", s.HandleIssuesDeleteMilestoneRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/issues/comments/{comment_id}", s.HandleIssuesGetCommentRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/issues/events/{event_id}", s.HandleIssuesGetEventRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/labels/{name}", s.HandleIssuesGetLabelRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/milestones/{milestone_number}", s.HandleIssuesGetMilestoneRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/assignees", s.HandleIssuesListAssigneesRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/issues/{issue_number}/comments", s.HandleIssuesListCommentsRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/milestones/{milestone_number}/labels", s.HandleIssuesListLabelsForMilestoneRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/labels", s.HandleIssuesListLabelsForRepoRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/issues/{issue_number}/labels", s.HandleIssuesListLabelsOnIssueRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/milestones", s.HandleIssuesListMilestonesRequest)
-	s.mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/issues/{issue_number}/labels", s.HandleIssuesRemoveAllLabelsRequest)
-	s.mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/issues/{issue_number}/assignees", s.HandleIssuesRemoveAssigneesRequest)
-	s.mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/issues/{issue_number}/labels/{name}", s.HandleIssuesRemoveLabelRequest)
-	s.mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/issues/{issue_number}/lock", s.HandleIssuesUnlockRequest)
-	s.mux.MethodFunc("PATCH", "/repos/{owner}/{repo}/labels/{name}", s.HandleIssuesUpdateLabelRequest)
-	s.mux.MethodFunc("PATCH", "/repos/{owner}/{repo}/milestones/{milestone_number}", s.HandleIssuesUpdateMilestoneRequest)
-	s.mux.MethodFunc("GET", "/licenses/{license}", s.HandleLicensesGetRequest)
-	s.mux.MethodFunc("GET", "/licenses", s.HandleLicensesGetAllCommonlyUsedRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/license", s.HandleLicensesGetForRepoRequest)
-	s.mux.MethodFunc("GET", "/meta", s.HandleMetaGetRequest)
-	s.mux.MethodFunc("GET", "/", s.HandleMetaRootRequest)
-	s.mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/import", s.HandleMigrationsCancelImportRequest)
-	s.mux.MethodFunc("DELETE", "/user/migrations/{migration_id}/archive", s.HandleMigrationsDeleteArchiveForAuthenticatedUserRequest)
-	s.mux.MethodFunc("DELETE", "/orgs/{org}/migrations/{migration_id}/archive", s.HandleMigrationsDeleteArchiveForOrgRequest)
-	s.mux.MethodFunc("GET", "/orgs/{org}/migrations/{migration_id}/archive", s.HandleMigrationsDownloadArchiveForOrgRequest)
-	s.mux.MethodFunc("GET", "/user/migrations/{migration_id}/archive", s.HandleMigrationsGetArchiveForAuthenticatedUserRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/import/authors", s.HandleMigrationsGetCommitAuthorsRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/import", s.HandleMigrationsGetImportStatusRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/import/large_files", s.HandleMigrationsGetLargeFilesRequest)
-	s.mux.MethodFunc("GET", "/user/migrations/{migration_id}", s.HandleMigrationsGetStatusForAuthenticatedUserRequest)
-	s.mux.MethodFunc("GET", "/orgs/{org}/migrations/{migration_id}", s.HandleMigrationsGetStatusForOrgRequest)
-	s.mux.MethodFunc("GET", "/user/migrations", s.HandleMigrationsListForAuthenticatedUserRequest)
-	s.mux.MethodFunc("GET", "/orgs/{org}/migrations", s.HandleMigrationsListForOrgRequest)
-	s.mux.MethodFunc("GET", "/orgs/{org}/migrations/{migration_id}/repositories", s.HandleMigrationsListReposForOrgRequest)
-	s.mux.MethodFunc("GET", "/user/migrations/{migration_id}/repositories", s.HandleMigrationsListReposForUserRequest)
-	s.mux.MethodFunc("DELETE", "/user/migrations/{migration_id}/repos/{repo_name}/lock", s.HandleMigrationsUnlockRepoForAuthenticatedUserRequest)
-	s.mux.MethodFunc("DELETE", "/orgs/{org}/migrations/{migration_id}/repos/{repo_name}/lock", s.HandleMigrationsUnlockRepoForOrgRequest)
-	s.mux.MethodFunc("PATCH", "/repos/{owner}/{repo}/import", s.HandleMigrationsUpdateImportRequest)
-	s.mux.MethodFunc("DELETE", "/authorizations/{authorization_id}", s.HandleOAuthAuthorizationsDeleteAuthorizationRequest)
-	s.mux.MethodFunc("DELETE", "/applications/grants/{grant_id}", s.HandleOAuthAuthorizationsDeleteGrantRequest)
-	s.mux.MethodFunc("GET", "/authorizations/{authorization_id}", s.HandleOAuthAuthorizationsGetAuthorizationRequest)
-	s.mux.MethodFunc("GET", "/applications/grants/{grant_id}", s.HandleOAuthAuthorizationsGetGrantRequest)
-	s.mux.MethodFunc("GET", "/authorizations", s.HandleOAuthAuthorizationsListAuthorizationsRequest)
-	s.mux.MethodFunc("GET", "/applications/grants", s.HandleOAuthAuthorizationsListGrantsRequest)
-	s.mux.MethodFunc("GET", "/orgs/{org}/blocks/{username}", s.HandleOrgsCheckBlockedUserRequest)
-	s.mux.MethodFunc("GET", "/orgs/{org}/members/{username}", s.HandleOrgsCheckMembershipForUserRequest)
-	s.mux.MethodFunc("GET", "/orgs/{org}/public_members/{username}", s.HandleOrgsCheckPublicMembershipForUserRequest)
-	s.mux.MethodFunc("PUT", "/orgs/{org}/outside_collaborators/{username}", s.HandleOrgsConvertMemberToOutsideCollaboratorRequest)
-	s.mux.MethodFunc("DELETE", "/orgs/{org}/hooks/{hook_id}", s.HandleOrgsDeleteWebhookRequest)
-	s.mux.MethodFunc("GET", "/orgs/{org}", s.HandleOrgsGetRequest)
-	s.mux.MethodFunc("GET", "/orgs/{org}/audit-log", s.HandleOrgsGetAuditLogRequest)
-	s.mux.MethodFunc("GET", "/user/memberships/orgs/{org}", s.HandleOrgsGetMembershipForAuthenticatedUserRequest)
-	s.mux.MethodFunc("GET", "/orgs/{org}/memberships/{username}", s.HandleOrgsGetMembershipForUserRequest)
-	s.mux.MethodFunc("GET", "/orgs/{org}/hooks/{hook_id}", s.HandleOrgsGetWebhookRequest)
-	s.mux.MethodFunc("GET", "/orgs/{org}/hooks/{hook_id}/config", s.HandleOrgsGetWebhookConfigForOrgRequest)
-	s.mux.MethodFunc("GET", "/organizations", s.HandleOrgsListRequest)
-	s.mux.MethodFunc("GET", "/orgs/{org}/blocks", s.HandleOrgsListBlockedUsersRequest)
-	s.mux.MethodFunc("GET", "/orgs/{org}/failed_invitations", s.HandleOrgsListFailedInvitationsRequest)
-	s.mux.MethodFunc("GET", "/user/orgs", s.HandleOrgsListForAuthenticatedUserRequest)
-	s.mux.MethodFunc("GET", "/users/{username}/orgs", s.HandleOrgsListForUserRequest)
-	s.mux.MethodFunc("GET", "/orgs/{org}/invitations/{invitation_id}/teams", s.HandleOrgsListInvitationTeamsRequest)
-	s.mux.MethodFunc("GET", "/orgs/{org}/outside_collaborators", s.HandleOrgsListOutsideCollaboratorsRequest)
-	s.mux.MethodFunc("GET", "/orgs/{org}/invitations", s.HandleOrgsListPendingInvitationsRequest)
-	s.mux.MethodFunc("GET", "/orgs/{org}/public_members", s.HandleOrgsListPublicMembersRequest)
-	s.mux.MethodFunc("GET", "/orgs/{org}/credential-authorizations", s.HandleOrgsListSamlSSOAuthorizationsRequest)
-	s.mux.MethodFunc("GET", "/orgs/{org}/hooks", s.HandleOrgsListWebhooksRequest)
-	s.mux.MethodFunc("POST", "/orgs/{org}/hooks/{hook_id}/pings", s.HandleOrgsPingWebhookRequest)
-	s.mux.MethodFunc("DELETE", "/orgs/{org}/members/{username}", s.HandleOrgsRemoveMemberRequest)
-	s.mux.MethodFunc("DELETE", "/orgs/{org}/memberships/{username}", s.HandleOrgsRemoveMembershipForUserRequest)
-	s.mux.MethodFunc("DELETE", "/orgs/{org}/outside_collaborators/{username}", s.HandleOrgsRemoveOutsideCollaboratorRequest)
-	s.mux.MethodFunc("DELETE", "/orgs/{org}/public_members/{username}", s.HandleOrgsRemovePublicMembershipForAuthenticatedUserRequest)
-	s.mux.MethodFunc("DELETE", "/orgs/{org}/credential-authorizations/{credential_id}", s.HandleOrgsRemoveSamlSSOAuthorizationRequest)
-	s.mux.MethodFunc("PUT", "/orgs/{org}/public_members/{username}", s.HandleOrgsSetPublicMembershipForAuthenticatedUserRequest)
-	s.mux.MethodFunc("DELETE", "/orgs/{org}/blocks/{username}", s.HandleOrgsUnblockUserRequest)
-	s.mux.MethodFunc("PATCH", "/orgs/{org}/hooks/{hook_id}/config", s.HandleOrgsUpdateWebhookConfigForOrgRequest)
-	s.mux.MethodFunc("DELETE", "/user/packages/{package_type}/{package_name}", s.HandlePackagesDeletePackageForAuthenticatedUserRequest)
-	s.mux.MethodFunc("DELETE", "/orgs/{org}/packages/{package_type}/{package_name}", s.HandlePackagesDeletePackageForOrgRequest)
-	s.mux.MethodFunc("DELETE", "/users/{username}/packages/{package_type}/{package_name}", s.HandlePackagesDeletePackageForUserRequest)
-	s.mux.MethodFunc("DELETE", "/user/packages/{package_type}/{package_name}/versions/{package_version_id}", s.HandlePackagesDeletePackageVersionForAuthenticatedUserRequest)
-	s.mux.MethodFunc("DELETE", "/orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}", s.HandlePackagesDeletePackageVersionForOrgRequest)
-	s.mux.MethodFunc("DELETE", "/users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}", s.HandlePackagesDeletePackageVersionForUserRequest)
-	s.mux.MethodFunc("GET", "/user/packages/{package_type}/{package_name}/versions", s.HandlePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequest)
-	s.mux.MethodFunc("GET", "/orgs/{org}/packages/{package_type}/{package_name}/versions", s.HandlePackagesGetAllPackageVersionsForPackageOwnedByOrgRequest)
-	s.mux.MethodFunc("GET", "/users/{username}/packages/{package_type}/{package_name}/versions", s.HandlePackagesGetAllPackageVersionsForPackageOwnedByUserRequest)
-	s.mux.MethodFunc("GET", "/user/packages/{package_type}/{package_name}", s.HandlePackagesGetPackageForAuthenticatedUserRequest)
-	s.mux.MethodFunc("GET", "/orgs/{org}/packages/{package_type}/{package_name}", s.HandlePackagesGetPackageForOrganizationRequest)
-	s.mux.MethodFunc("GET", "/users/{username}/packages/{package_type}/{package_name}", s.HandlePackagesGetPackageForUserRequest)
-	s.mux.MethodFunc("GET", "/user/packages/{package_type}/{package_name}/versions/{package_version_id}", s.HandlePackagesGetPackageVersionForAuthenticatedUserRequest)
-	s.mux.MethodFunc("GET", "/orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}", s.HandlePackagesGetPackageVersionForOrganizationRequest)
-	s.mux.MethodFunc("GET", "/users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}", s.HandlePackagesGetPackageVersionForUserRequest)
-	s.mux.MethodFunc("GET", "/user/packages", s.HandlePackagesListPackagesForAuthenticatedUserRequest)
-	s.mux.MethodFunc("GET", "/orgs/{org}/packages", s.HandlePackagesListPackagesForOrganizationRequest)
-	s.mux.MethodFunc("GET", "/users/{username}/packages", s.HandlePackagesListPackagesForUserRequest)
-	s.mux.MethodFunc("POST", "/user/packages/{package_type}/{package_name}/restore", s.HandlePackagesRestorePackageForAuthenticatedUserRequest)
-	s.mux.MethodFunc("POST", "/orgs/{org}/packages/{package_type}/{package_name}/restore", s.HandlePackagesRestorePackageForOrgRequest)
-	s.mux.MethodFunc("POST", "/users/{username}/packages/{package_type}/{package_name}/restore", s.HandlePackagesRestorePackageForUserRequest)
-	s.mux.MethodFunc("POST", "/user/packages/{package_type}/{package_name}/versions/{package_version_id}/restore", s.HandlePackagesRestorePackageVersionForAuthenticatedUserRequest)
-	s.mux.MethodFunc("POST", "/orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore", s.HandlePackagesRestorePackageVersionForOrgRequest)
-	s.mux.MethodFunc("POST", "/users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore", s.HandlePackagesRestorePackageVersionForUserRequest)
-	s.mux.MethodFunc("POST", "/projects/{project_id}/columns", s.HandleProjectsCreateColumnRequest)
-	s.mux.MethodFunc("POST", "/user/projects", s.HandleProjectsCreateForAuthenticatedUserRequest)
-	s.mux.MethodFunc("POST", "/orgs/{org}/projects", s.HandleProjectsCreateForOrgRequest)
-	s.mux.MethodFunc("POST", "/repos/{owner}/{repo}/projects", s.HandleProjectsCreateForRepoRequest)
-	s.mux.MethodFunc("DELETE", "/projects/{project_id}", s.HandleProjectsDeleteRequest)
-	s.mux.MethodFunc("DELETE", "/projects/columns/cards/{card_id}", s.HandleProjectsDeleteCardRequest)
-	s.mux.MethodFunc("DELETE", "/projects/columns/{column_id}", s.HandleProjectsDeleteColumnRequest)
-	s.mux.MethodFunc("GET", "/projects/{project_id}", s.HandleProjectsGetRequest)
-	s.mux.MethodFunc("GET", "/projects/columns/cards/{card_id}", s.HandleProjectsGetCardRequest)
-	s.mux.MethodFunc("GET", "/projects/columns/{column_id}", s.HandleProjectsGetColumnRequest)
-	s.mux.MethodFunc("GET", "/projects/columns/{column_id}/cards", s.HandleProjectsListCardsRequest)
-	s.mux.MethodFunc("GET", "/projects/{project_id}/columns", s.HandleProjectsListColumnsRequest)
-	s.mux.MethodFunc("GET", "/orgs/{org}/projects", s.HandleProjectsListForOrgRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/projects", s.HandleProjectsListForRepoRequest)
-	s.mux.MethodFunc("POST", "/projects/columns/{column_id}/moves", s.HandleProjectsMoveColumnRequest)
-	s.mux.MethodFunc("PATCH", "/projects/{project_id}", s.HandleProjectsUpdateRequest)
-	s.mux.MethodFunc("PATCH", "/projects/columns/cards/{card_id}", s.HandleProjectsUpdateCardRequest)
-	s.mux.MethodFunc("PATCH", "/projects/columns/{column_id}", s.HandleProjectsUpdateColumnRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/pulls/{pull_number}/merge", s.HandlePullsCheckIfMergedRequest)
-	s.mux.MethodFunc("POST", "/repos/{owner}/{repo}/pulls/{pull_number}/comments/{comment_id}/replies", s.HandlePullsCreateReplyForReviewCommentRequest)
-	s.mux.MethodFunc("POST", "/repos/{owner}/{repo}/pulls/{pull_number}/reviews", s.HandlePullsCreateReviewRequest)
-	s.mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}", s.HandlePullsDeletePendingReviewRequest)
-	s.mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/pulls/comments/{comment_id}", s.HandlePullsDeleteReviewCommentRequest)
-	s.mux.MethodFunc("PUT", "/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/dismissals", s.HandlePullsDismissReviewRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/pulls/{pull_number}", s.HandlePullsGetRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}", s.HandlePullsGetReviewRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/pulls/comments/{comment_id}", s.HandlePullsGetReviewCommentRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/comments", s.HandlePullsListCommentsForReviewRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/pulls/{pull_number}/commits", s.HandlePullsListCommitsRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers", s.HandlePullsListRequestedReviewersRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/pulls/{pull_number}/comments", s.HandlePullsListReviewCommentsRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/pulls/comments", s.HandlePullsListReviewCommentsForRepoRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/pulls/{pull_number}/reviews", s.HandlePullsListReviewsRequest)
-	s.mux.MethodFunc("POST", "/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/events", s.HandlePullsSubmitReviewRequest)
-	s.mux.MethodFunc("PUT", "/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}", s.HandlePullsUpdateReviewRequest)
-	s.mux.MethodFunc("PATCH", "/repos/{owner}/{repo}/pulls/comments/{comment_id}", s.HandlePullsUpdateReviewCommentRequest)
-	s.mux.MethodFunc("GET", "/rate_limit", s.HandleRateLimitGetRequest)
-	s.mux.MethodFunc("POST", "/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions", s.HandleReactionsCreateForTeamDiscussionCommentInOrgRequest)
-	s.mux.MethodFunc("POST", "/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions", s.HandleReactionsCreateForTeamDiscussionCommentLegacyRequest)
-	s.mux.MethodFunc("POST", "/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions", s.HandleReactionsCreateForTeamDiscussionInOrgRequest)
-	s.mux.MethodFunc("POST", "/teams/{team_id}/discussions/{discussion_number}/reactions", s.HandleReactionsCreateForTeamDiscussionLegacyRequest)
-	s.mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/comments/{comment_id}/reactions/{reaction_id}", s.HandleReactionsDeleteForCommitCommentRequest)
-	s.mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/issues/{issue_number}/reactions/{reaction_id}", s.HandleReactionsDeleteForIssueRequest)
-	s.mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/issues/comments/{comment_id}/reactions/{reaction_id}", s.HandleReactionsDeleteForIssueCommentRequest)
-	s.mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions/{reaction_id}", s.HandleReactionsDeleteForPullRequestCommentRequest)
-	s.mux.MethodFunc("DELETE", "/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions/{reaction_id}", s.HandleReactionsDeleteForTeamDiscussionRequest)
-	s.mux.MethodFunc("DELETE", "/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions/{reaction_id}", s.HandleReactionsDeleteForTeamDiscussionCommentRequest)
-	s.mux.MethodFunc("DELETE", "/reactions/{reaction_id}", s.HandleReactionsDeleteLegacyRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/comments/{comment_id}/reactions", s.HandleReactionsListForCommitCommentRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/issues/{issue_number}/reactions", s.HandleReactionsListForIssueRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/issues/comments/{comment_id}/reactions", s.HandleReactionsListForIssueCommentRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions", s.HandleReactionsListForPullRequestReviewCommentRequest)
-	s.mux.MethodFunc("GET", "/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions", s.HandleReactionsListForTeamDiscussionCommentInOrgRequest)
-	s.mux.MethodFunc("GET", "/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions", s.HandleReactionsListForTeamDiscussionCommentLegacyRequest)
-	s.mux.MethodFunc("GET", "/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions", s.HandleReactionsListForTeamDiscussionInOrgRequest)
-	s.mux.MethodFunc("GET", "/teams/{team_id}/discussions/{discussion_number}/reactions", s.HandleReactionsListForTeamDiscussionLegacyRequest)
-	s.mux.MethodFunc("PATCH", "/user/repository_invitations/{invitation_id}", s.HandleReposAcceptInvitationRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/collaborators/{username}", s.HandleReposCheckCollaboratorRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/vulnerability-alerts", s.HandleReposCheckVulnerabilityAlertsRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/compare/{basehead}", s.HandleReposCompareCommitsRequest)
-	s.mux.MethodFunc("POST", "/repos/{owner}/{repo}/branches/{branch}/protection/required_signatures", s.HandleReposCreateCommitSignatureProtectionRequest)
-	s.mux.MethodFunc("POST", "/repos/{owner}/{repo}/statuses/{sha}", s.HandleReposCreateCommitStatusRequest)
-	s.mux.MethodFunc("POST", "/repos/{template_owner}/{template_repo}/generate", s.HandleReposCreateUsingTemplateRequest)
-	s.mux.MethodFunc("DELETE", "/user/repository_invitations/{invitation_id}", s.HandleReposDeclineInvitationRequest)
-	s.mux.MethodFunc("DELETE", "/repos/{owner}/{repo}", s.HandleReposDeleteRequest)
-	s.mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/branches/{branch}/protection/restrictions", s.HandleReposDeleteAccessRestrictionsRequest)
-	s.mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins", s.HandleReposDeleteAdminBranchProtectionRequest)
-	s.mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/environments/{environment_name}", s.HandleReposDeleteAnEnvironmentRequest)
-	s.mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/autolinks/{autolink_id}", s.HandleReposDeleteAutolinkRequest)
-	s.mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/branches/{branch}/protection", s.HandleReposDeleteBranchProtectionRequest)
-	s.mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/comments/{comment_id}", s.HandleReposDeleteCommitCommentRequest)
-	s.mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/branches/{branch}/protection/required_signatures", s.HandleReposDeleteCommitSignatureProtectionRequest)
-	s.mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/keys/{key_id}", s.HandleReposDeleteDeployKeyRequest)
-	s.mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/deployments/{deployment_id}", s.HandleReposDeleteDeploymentRequest)
-	s.mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/invitations/{invitation_id}", s.HandleReposDeleteInvitationRequest)
-	s.mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews", s.HandleReposDeletePullRequestReviewProtectionRequest)
-	s.mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/releases/{release_id}", s.HandleReposDeleteReleaseRequest)
-	s.mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/releases/assets/{asset_id}", s.HandleReposDeleteReleaseAssetRequest)
-	s.mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/hooks/{hook_id}", s.HandleReposDeleteWebhookRequest)
-	s.mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/automated-security-fixes", s.HandleReposDisableAutomatedSecurityFixesRequest)
-	s.mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/lfs", s.HandleReposDisableLfsForRepoRequest)
-	s.mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/vulnerability-alerts", s.HandleReposDisableVulnerabilityAlertsRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/tarball/{ref}", s.HandleReposDownloadTarballArchiveRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/zipball/{ref}", s.HandleReposDownloadZipballArchiveRequest)
-	s.mux.MethodFunc("PUT", "/repos/{owner}/{repo}/automated-security-fixes", s.HandleReposEnableAutomatedSecurityFixesRequest)
-	s.mux.MethodFunc("PUT", "/repos/{owner}/{repo}/lfs", s.HandleReposEnableLfsForRepoRequest)
-	s.mux.MethodFunc("PUT", "/repos/{owner}/{repo}/vulnerability-alerts", s.HandleReposEnableVulnerabilityAlertsRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}", s.HandleReposGetRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/branches/{branch}/protection/restrictions", s.HandleReposGetAccessRestrictionsRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins", s.HandleReposGetAdminBranchProtectionRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts", s.HandleReposGetAllStatusCheckContextsRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/topics", s.HandleReposGetAllTopicsRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps", s.HandleReposGetAppsWithAccessToProtectedBranchRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/autolinks/{autolink_id}", s.HandleReposGetAutolinkRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/branches/{branch}", s.HandleReposGetBranchRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/branches/{branch}/protection", s.HandleReposGetBranchProtectionRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/traffic/clones", s.HandleReposGetClonesRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/stats/code_frequency", s.HandleReposGetCodeFrequencyStatsRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/collaborators/{username}/permission", s.HandleReposGetCollaboratorPermissionLevelRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/commits/{ref}/status", s.HandleReposGetCombinedStatusForRefRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/stats/commit_activity", s.HandleReposGetCommitActivityStatsRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/comments/{comment_id}", s.HandleReposGetCommitCommentRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/branches/{branch}/protection/required_signatures", s.HandleReposGetCommitSignatureProtectionRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/community/profile", s.HandleReposGetCommunityProfileMetricsRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/stats/contributors", s.HandleReposGetContributorsStatsRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/keys/{key_id}", s.HandleReposGetDeployKeyRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/deployments/{deployment_id}/statuses/{status_id}", s.HandleReposGetDeploymentStatusRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/pages/builds/latest", s.HandleReposGetLatestPagesBuildRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/releases/latest", s.HandleReposGetLatestReleaseRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/pages", s.HandleReposGetPagesRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/pages/builds/{build_id}", s.HandleReposGetPagesBuildRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/pages/health", s.HandleReposGetPagesHealthCheckRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/stats/participation", s.HandleReposGetParticipationStatsRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews", s.HandleReposGetPullRequestReviewProtectionRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/stats/punch_card", s.HandleReposGetPunchCardStatsRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/releases/{release_id}", s.HandleReposGetReleaseRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/releases/assets/{asset_id}", s.HandleReposGetReleaseAssetRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/releases/tags/{tag}", s.HandleReposGetReleaseByTagRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks", s.HandleReposGetStatusChecksProtectionRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams", s.HandleReposGetTeamsWithAccessToProtectedBranchRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/traffic/popular/paths", s.HandleReposGetTopPathsRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/traffic/popular/referrers", s.HandleReposGetTopReferrersRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users", s.HandleReposGetUsersWithAccessToProtectedBranchRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/traffic/views", s.HandleReposGetViewsRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/hooks/{hook_id}", s.HandleReposGetWebhookRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/hooks/{hook_id}/config", s.HandleReposGetWebhookConfigForRepoRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/autolinks", s.HandleReposListAutolinksRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/branches", s.HandleReposListBranchesRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/collaborators", s.HandleReposListCollaboratorsRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/commits/{commit_sha}/comments", s.HandleReposListCommentsForCommitRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/comments", s.HandleReposListCommitCommentsForRepoRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/commits/{ref}/statuses", s.HandleReposListCommitStatusesForRefRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/commits", s.HandleReposListCommitsRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/contributors", s.HandleReposListContributorsRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/keys", s.HandleReposListDeployKeysRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/deployments/{deployment_id}/statuses", s.HandleReposListDeploymentStatusesRequest)
-	s.mux.MethodFunc("GET", "/orgs/{org}/repos", s.HandleReposListForOrgRequest)
-	s.mux.MethodFunc("GET", "/users/{username}/repos", s.HandleReposListForUserRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/forks", s.HandleReposListForksRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/invitations", s.HandleReposListInvitationsRequest)
-	s.mux.MethodFunc("GET", "/user/repository_invitations", s.HandleReposListInvitationsForAuthenticatedUserRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/languages", s.HandleReposListLanguagesRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/pages/builds", s.HandleReposListPagesBuildsRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/commits/{commit_sha}/pulls", s.HandleReposListPullRequestsAssociatedWithCommitRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/releases/{release_id}/assets", s.HandleReposListReleaseAssetsRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/releases", s.HandleReposListReleasesRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/tags", s.HandleReposListTagsRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/teams", s.HandleReposListTeamsRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/hooks", s.HandleReposListWebhooksRequest)
-	s.mux.MethodFunc("POST", "/repos/{owner}/{repo}/merge-upstream", s.HandleReposMergeUpstreamRequest)
-	s.mux.MethodFunc("POST", "/repos/{owner}/{repo}/hooks/{hook_id}/pings", s.HandleReposPingWebhookRequest)
-	s.mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/collaborators/{username}", s.HandleReposRemoveCollaboratorRequest)
-	s.mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks", s.HandleReposRemoveStatusCheckProtectionRequest)
-	s.mux.MethodFunc("PUT", "/repos/{owner}/{repo}/topics", s.HandleReposReplaceAllTopicsRequest)
-	s.mux.MethodFunc("POST", "/repos/{owner}/{repo}/pages/builds", s.HandleReposRequestPagesBuildRequest)
-	s.mux.MethodFunc("POST", "/repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins", s.HandleReposSetAdminBranchProtectionRequest)
-	s.mux.MethodFunc("POST", "/repos/{owner}/{repo}/hooks/{hook_id}/tests", s.HandleReposTestPushWebhookRequest)
-	s.mux.MethodFunc("POST", "/repos/{owner}/{repo}/transfer", s.HandleReposTransferRequest)
-	s.mux.MethodFunc("PUT", "/repos/{owner}/{repo}/branches/{branch}/protection", s.HandleReposUpdateBranchProtectionRequest)
-	s.mux.MethodFunc("PATCH", "/repos/{owner}/{repo}/comments/{comment_id}", s.HandleReposUpdateCommitCommentRequest)
-	s.mux.MethodFunc("PATCH", "/repos/{owner}/{repo}/invitations/{invitation_id}", s.HandleReposUpdateInvitationRequest)
-	s.mux.MethodFunc("PATCH", "/repos/{owner}/{repo}/releases/{release_id}", s.HandleReposUpdateReleaseRequest)
-	s.mux.MethodFunc("PATCH", "/repos/{owner}/{repo}/releases/assets/{asset_id}", s.HandleReposUpdateReleaseAssetRequest)
-	s.mux.MethodFunc("PATCH", "/repos/{owner}/{repo}/hooks/{hook_id}/config", s.HandleReposUpdateWebhookConfigForRepoRequest)
-	s.mux.MethodFunc("DELETE", "/scim/v2/organizations/{org}/Users/{scim_user_id}", s.HandleScimDeleteUserFromOrgRequest)
-	s.mux.MethodFunc("GET", "/search/commits", s.HandleSearchCommitsRequest)
-	s.mux.MethodFunc("GET", "/search/topics", s.HandleSearchTopicsRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}", s.HandleSecretScanningGetAlertRequest)
-	s.mux.MethodFunc("GET", "/orgs/{org}/secret-scanning/alerts", s.HandleSecretScanningListAlertsForOrgRequest)
-	s.mux.MethodFunc("GET", "/repos/{owner}/{repo}/secret-scanning/alerts", s.HandleSecretScanningListAlertsForRepoRequest)
-	s.mux.MethodFunc("PATCH", "/repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}", s.HandleSecretScanningUpdateAlertRequest)
-	s.mux.MethodFunc("PUT", "/teams/{team_id}/members/{username}", s.HandleTeamsAddMemberLegacyRequest)
-	s.mux.MethodFunc("PUT", "/orgs/{org}/teams/{team_slug}/memberships/{username}", s.HandleTeamsAddOrUpdateMembershipForUserInOrgRequest)
-	s.mux.MethodFunc("PUT", "/teams/{team_id}/memberships/{username}", s.HandleTeamsAddOrUpdateMembershipForUserLegacyRequest)
-	s.mux.MethodFunc("PUT", "/orgs/{org}/teams/{team_slug}/projects/{project_id}", s.HandleTeamsAddOrUpdateProjectPermissionsInOrgRequest)
-	s.mux.MethodFunc("PUT", "/orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}", s.HandleTeamsAddOrUpdateRepoPermissionsInOrgRequest)
-	s.mux.MethodFunc("GET", "/orgs/{org}/teams/{team_slug}/projects/{project_id}", s.HandleTeamsCheckPermissionsForProjectInOrgRequest)
-	s.mux.MethodFunc("GET", "/teams/{team_id}/projects/{project_id}", s.HandleTeamsCheckPermissionsForProjectLegacyRequest)
-	s.mux.MethodFunc("GET", "/orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}", s.HandleTeamsCheckPermissionsForRepoInOrgRequest)
-	s.mux.MethodFunc("GET", "/teams/{team_id}/repos/{owner}/{repo}", s.HandleTeamsCheckPermissionsForRepoLegacyRequest)
-	s.mux.MethodFunc("POST", "/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments", s.HandleTeamsCreateDiscussionCommentInOrgRequest)
-	s.mux.MethodFunc("POST", "/teams/{team_id}/discussions/{discussion_number}/comments", s.HandleTeamsCreateDiscussionCommentLegacyRequest)
-	s.mux.MethodFunc("POST", "/orgs/{org}/teams/{team_slug}/discussions", s.HandleTeamsCreateDiscussionInOrgRequest)
-	s.mux.MethodFunc("POST", "/teams/{team_id}/discussions", s.HandleTeamsCreateDiscussionLegacyRequest)
-	s.mux.MethodFunc("PATCH", "/orgs/{org}/teams/{team_slug}/team-sync/group-mappings", s.HandleTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest)
-	s.mux.MethodFunc("DELETE", "/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}", s.HandleTeamsDeleteDiscussionCommentInOrgRequest)
-	s.mux.MethodFunc("DELETE", "/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}", s.HandleTeamsDeleteDiscussionCommentLegacyRequest)
-	s.mux.MethodFunc("DELETE", "/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}", s.HandleTeamsDeleteDiscussionInOrgRequest)
-	s.mux.MethodFunc("DELETE", "/teams/{team_id}/discussions/{discussion_number}", s.HandleTeamsDeleteDiscussionLegacyRequest)
-	s.mux.MethodFunc("DELETE", "/orgs/{org}/teams/{team_slug}", s.HandleTeamsDeleteInOrgRequest)
-	s.mux.MethodFunc("GET", "/orgs/{org}/teams/{team_slug}", s.HandleTeamsGetByNameRequest)
-	s.mux.MethodFunc("GET", "/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}", s.HandleTeamsGetDiscussionCommentInOrgRequest)
-	s.mux.MethodFunc("GET", "/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}", s.HandleTeamsGetDiscussionCommentLegacyRequest)
-	s.mux.MethodFunc("GET", "/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}", s.HandleTeamsGetDiscussionInOrgRequest)
-	s.mux.MethodFunc("GET", "/teams/{team_id}/discussions/{discussion_number}", s.HandleTeamsGetDiscussionLegacyRequest)
-	s.mux.MethodFunc("GET", "/teams/{team_id}", s.HandleTeamsGetLegacyRequest)
-	s.mux.MethodFunc("GET", "/teams/{team_id}/members/{username}", s.HandleTeamsGetMemberLegacyRequest)
-	s.mux.MethodFunc("GET", "/orgs/{org}/teams/{team_slug}/memberships/{username}", s.HandleTeamsGetMembershipForUserInOrgRequest)
-	s.mux.MethodFunc("GET", "/teams/{team_id}/memberships/{username}", s.HandleTeamsGetMembershipForUserLegacyRequest)
-	s.mux.MethodFunc("GET", "/orgs/{org}/teams", s.HandleTeamsListRequest)
-	s.mux.MethodFunc("GET", "/orgs/{org}/teams/{team_slug}/teams", s.HandleTeamsListChildInOrgRequest)
-	s.mux.MethodFunc("GET", "/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments", s.HandleTeamsListDiscussionCommentsInOrgRequest)
-	s.mux.MethodFunc("GET", "/teams/{team_id}/discussions/{discussion_number}/comments", s.HandleTeamsListDiscussionCommentsLegacyRequest)
-	s.mux.MethodFunc("GET", "/orgs/{org}/teams/{team_slug}/discussions", s.HandleTeamsListDiscussionsInOrgRequest)
-	s.mux.MethodFunc("GET", "/teams/{team_id}/discussions", s.HandleTeamsListDiscussionsLegacyRequest)
-	s.mux.MethodFunc("GET", "/user/teams", s.HandleTeamsListForAuthenticatedUserRequest)
-	s.mux.MethodFunc("GET", "/teams/{team_id}/team-sync/group-mappings", s.HandleTeamsListIdpGroupsForLegacyRequest)
-	s.mux.MethodFunc("GET", "/orgs/{org}/team-sync/groups", s.HandleTeamsListIdpGroupsForOrgRequest)
-	s.mux.MethodFunc("GET", "/orgs/{org}/teams/{team_slug}/team-sync/group-mappings", s.HandleTeamsListIdpGroupsInOrgRequest)
-	s.mux.MethodFunc("GET", "/orgs/{org}/teams/{team_slug}/members", s.HandleTeamsListMembersInOrgRequest)
-	s.mux.MethodFunc("GET", "/teams/{team_id}/members", s.HandleTeamsListMembersLegacyRequest)
-	s.mux.MethodFunc("GET", "/orgs/{org}/teams/{team_slug}/invitations", s.HandleTeamsListPendingInvitationsInOrgRequest)
-	s.mux.MethodFunc("GET", "/teams/{team_id}/invitations", s.HandleTeamsListPendingInvitationsLegacyRequest)
-	s.mux.MethodFunc("GET", "/orgs/{org}/teams/{team_slug}/projects", s.HandleTeamsListProjectsInOrgRequest)
-	s.mux.MethodFunc("GET", "/teams/{team_id}/projects", s.HandleTeamsListProjectsLegacyRequest)
-	s.mux.MethodFunc("GET", "/orgs/{org}/teams/{team_slug}/repos", s.HandleTeamsListReposInOrgRequest)
-	s.mux.MethodFunc("GET", "/teams/{team_id}/repos", s.HandleTeamsListReposLegacyRequest)
-	s.mux.MethodFunc("DELETE", "/teams/{team_id}/members/{username}", s.HandleTeamsRemoveMemberLegacyRequest)
-	s.mux.MethodFunc("DELETE", "/orgs/{org}/teams/{team_slug}/memberships/{username}", s.HandleTeamsRemoveMembershipForUserInOrgRequest)
-	s.mux.MethodFunc("DELETE", "/teams/{team_id}/memberships/{username}", s.HandleTeamsRemoveMembershipForUserLegacyRequest)
-	s.mux.MethodFunc("DELETE", "/orgs/{org}/teams/{team_slug}/projects/{project_id}", s.HandleTeamsRemoveProjectInOrgRequest)
-	s.mux.MethodFunc("DELETE", "/orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}", s.HandleTeamsRemoveRepoInOrgRequest)
-	s.mux.MethodFunc("DELETE", "/teams/{team_id}/repos/{owner}/{repo}", s.HandleTeamsRemoveRepoLegacyRequest)
-	s.mux.MethodFunc("PATCH", "/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}", s.HandleTeamsUpdateDiscussionCommentInOrgRequest)
-	s.mux.MethodFunc("PATCH", "/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}", s.HandleTeamsUpdateDiscussionCommentLegacyRequest)
-	s.mux.MethodFunc("PATCH", "/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}", s.HandleTeamsUpdateDiscussionInOrgRequest)
-	s.mux.MethodFunc("PATCH", "/teams/{team_id}/discussions/{discussion_number}", s.HandleTeamsUpdateDiscussionLegacyRequest)
-	s.mux.MethodFunc("PATCH", "/orgs/{org}/teams/{team_slug}", s.HandleTeamsUpdateInOrgRequest)
-	s.mux.MethodFunc("GET", "/user/blocks/{username}", s.HandleUsersCheckBlockedRequest)
-	s.mux.MethodFunc("GET", "/users/{username}/following/{target_user}", s.HandleUsersCheckFollowingForUserRequest)
-	s.mux.MethodFunc("GET", "/user/following/{username}", s.HandleUsersCheckPersonIsFollowedByAuthenticatedRequest)
-	s.mux.MethodFunc("DELETE", "/user/keys/{key_id}", s.HandleUsersDeletePublicSSHKeyForAuthenticatedRequest)
-	s.mux.MethodFunc("PUT", "/user/following/{username}", s.HandleUsersFollowRequest)
-	s.mux.MethodFunc("GET", "/user", s.HandleUsersGetAuthenticatedRequest)
-	s.mux.MethodFunc("GET", "/users/{username}", s.HandleUsersGetByUsernameRequest)
-	s.mux.MethodFunc("GET", "/user/gpg_keys/{gpg_key_id}", s.HandleUsersGetGpgKeyForAuthenticatedRequest)
-	s.mux.MethodFunc("GET", "/user/keys/{key_id}", s.HandleUsersGetPublicSSHKeyForAuthenticatedRequest)
-	s.mux.MethodFunc("GET", "/users", s.HandleUsersListRequest)
-	s.mux.MethodFunc("GET", "/user/blocks", s.HandleUsersListBlockedByAuthenticatedRequest)
-	s.mux.MethodFunc("GET", "/user/emails", s.HandleUsersListEmailsForAuthenticatedRequest)
-	s.mux.MethodFunc("GET", "/user/following", s.HandleUsersListFollowedByAuthenticatedRequest)
-	s.mux.MethodFunc("GET", "/user/followers", s.HandleUsersListFollowersForAuthenticatedUserRequest)
-	s.mux.MethodFunc("GET", "/users/{username}/followers", s.HandleUsersListFollowersForUserRequest)
-	s.mux.MethodFunc("GET", "/users/{username}/following", s.HandleUsersListFollowingForUserRequest)
-	s.mux.MethodFunc("GET", "/user/gpg_keys", s.HandleUsersListGpgKeysForAuthenticatedRequest)
-	s.mux.MethodFunc("GET", "/users/{username}/gpg_keys", s.HandleUsersListGpgKeysForUserRequest)
-	s.mux.MethodFunc("GET", "/user/public_emails", s.HandleUsersListPublicEmailsForAuthenticatedRequest)
-	s.mux.MethodFunc("GET", "/users/{username}/keys", s.HandleUsersListPublicKeysForUserRequest)
-	s.mux.MethodFunc("GET", "/user/keys", s.HandleUsersListPublicSSHKeysForAuthenticatedRequest)
-	s.mux.MethodFunc("DELETE", "/user/blocks/{username}", s.HandleUsersUnblockRequest)
-	s.mux.MethodFunc("DELETE", "/user/following/{username}", s.HandleUsersUnfollowRequest)
-}
-
-func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	s.mux.ServeHTTP(w, r)
+func (s *Server) Register(mux chi.Mux) {
+	mux.MethodFunc("PUT", "/orgs/{org}/actions/runner-groups/{runner_group_id}/repositories/{repository_id}", s.HandleActionsAddRepoAccessToSelfHostedRunnerGroupInOrgRequest)
+	mux.MethodFunc("PUT", "/orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}", s.HandleActionsAddSelectedRepoToOrgSecretRequest)
+	mux.MethodFunc("PUT", "/orgs/{org}/actions/runner-groups/{runner_group_id}/runners/{runner_id}", s.HandleActionsAddSelfHostedRunnerToGroupForOrgRequest)
+	mux.MethodFunc("POST", "/repos/{owner}/{repo}/actions/runs/{run_id}/approve", s.HandleActionsApproveWorkflowRunRequest)
+	mux.MethodFunc("POST", "/repos/{owner}/{repo}/actions/runs/{run_id}/cancel", s.HandleActionsCancelWorkflowRunRequest)
+	mux.MethodFunc("PUT", "/repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}", s.HandleActionsCreateOrUpdateEnvironmentSecretRequest)
+	mux.MethodFunc("PUT", "/orgs/{org}/actions/secrets/{secret_name}", s.HandleActionsCreateOrUpdateOrgSecretRequest)
+	mux.MethodFunc("PUT", "/repos/{owner}/{repo}/actions/secrets/{secret_name}", s.HandleActionsCreateOrUpdateRepoSecretRequest)
+	mux.MethodFunc("POST", "/orgs/{org}/actions/runners/registration-token", s.HandleActionsCreateRegistrationTokenForOrgRequest)
+	mux.MethodFunc("POST", "/repos/{owner}/{repo}/actions/runners/registration-token", s.HandleActionsCreateRegistrationTokenForRepoRequest)
+	mux.MethodFunc("POST", "/orgs/{org}/actions/runners/remove-token", s.HandleActionsCreateRemoveTokenForOrgRequest)
+	mux.MethodFunc("POST", "/repos/{owner}/{repo}/actions/runners/remove-token", s.HandleActionsCreateRemoveTokenForRepoRequest)
+	mux.MethodFunc("POST", "/orgs/{org}/actions/runner-groups", s.HandleActionsCreateSelfHostedRunnerGroupForOrgRequest)
+	mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/actions/artifacts/{artifact_id}", s.HandleActionsDeleteArtifactRequest)
+	mux.MethodFunc("DELETE", "/repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}", s.HandleActionsDeleteEnvironmentSecretRequest)
+	mux.MethodFunc("DELETE", "/orgs/{org}/actions/secrets/{secret_name}", s.HandleActionsDeleteOrgSecretRequest)
+	mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/actions/secrets/{secret_name}", s.HandleActionsDeleteRepoSecretRequest)
+	mux.MethodFunc("DELETE", "/orgs/{org}/actions/runners/{runner_id}", s.HandleActionsDeleteSelfHostedRunnerFromOrgRequest)
+	mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/actions/runners/{runner_id}", s.HandleActionsDeleteSelfHostedRunnerFromRepoRequest)
+	mux.MethodFunc("DELETE", "/orgs/{org}/actions/runner-groups/{runner_group_id}", s.HandleActionsDeleteSelfHostedRunnerGroupFromOrgRequest)
+	mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/actions/runs/{run_id}", s.HandleActionsDeleteWorkflowRunRequest)
+	mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/actions/runs/{run_id}/logs", s.HandleActionsDeleteWorkflowRunLogsRequest)
+	mux.MethodFunc("DELETE", "/orgs/{org}/actions/permissions/repositories/{repository_id}", s.HandleActionsDisableSelectedRepositoryGithubActionsOrganizationRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/actions/artifacts/{artifact_id}/{archive_format}", s.HandleActionsDownloadArtifactRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/actions/jobs/{job_id}/logs", s.HandleActionsDownloadJobLogsForWorkflowRunRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/actions/runs/{run_id}/logs", s.HandleActionsDownloadWorkflowRunLogsRequest)
+	mux.MethodFunc("PUT", "/orgs/{org}/actions/permissions/repositories/{repository_id}", s.HandleActionsEnableSelectedRepositoryGithubActionsOrganizationRequest)
+	mux.MethodFunc("GET", "/orgs/{org}/actions/permissions/selected-actions", s.HandleActionsGetAllowedActionsOrganizationRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/actions/permissions/selected-actions", s.HandleActionsGetAllowedActionsRepositoryRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/actions/artifacts/{artifact_id}", s.HandleActionsGetArtifactRequest)
+	mux.MethodFunc("GET", "/repositories/{repository_id}/environments/{environment_name}/secrets/public-key", s.HandleActionsGetEnvironmentPublicKeyRequest)
+	mux.MethodFunc("GET", "/repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}", s.HandleActionsGetEnvironmentSecretRequest)
+	mux.MethodFunc("GET", "/orgs/{org}/actions/permissions", s.HandleActionsGetGithubActionsPermissionsOrganizationRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/actions/permissions", s.HandleActionsGetGithubActionsPermissionsRepositoryRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/actions/jobs/{job_id}", s.HandleActionsGetJobForWorkflowRunRequest)
+	mux.MethodFunc("GET", "/orgs/{org}/actions/secrets/public-key", s.HandleActionsGetOrgPublicKeyRequest)
+	mux.MethodFunc("GET", "/orgs/{org}/actions/secrets/{secret_name}", s.HandleActionsGetOrgSecretRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/actions/secrets/public-key", s.HandleActionsGetRepoPublicKeyRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/actions/secrets/{secret_name}", s.HandleActionsGetRepoSecretRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/actions/runs/{run_id}/approvals", s.HandleActionsGetReviewsForRunRequest)
+	mux.MethodFunc("GET", "/orgs/{org}/actions/runners/{runner_id}", s.HandleActionsGetSelfHostedRunnerForOrgRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/actions/runners/{runner_id}", s.HandleActionsGetSelfHostedRunnerForRepoRequest)
+	mux.MethodFunc("GET", "/orgs/{org}/actions/runner-groups/{runner_group_id}", s.HandleActionsGetSelfHostedRunnerGroupForOrgRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/actions/runs/{run_id}", s.HandleActionsGetWorkflowRunRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/actions/runs/{run_id}/timing", s.HandleActionsGetWorkflowRunUsageRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/actions/artifacts", s.HandleActionsListArtifactsForRepoRequest)
+	mux.MethodFunc("GET", "/repositories/{repository_id}/environments/{environment_name}/secrets", s.HandleActionsListEnvironmentSecretsRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/actions/runs/{run_id}/jobs", s.HandleActionsListJobsForWorkflowRunRequest)
+	mux.MethodFunc("GET", "/orgs/{org}/actions/secrets", s.HandleActionsListOrgSecretsRequest)
+	mux.MethodFunc("GET", "/orgs/{org}/actions/runner-groups/{runner_group_id}/repositories", s.HandleActionsListRepoAccessToSelfHostedRunnerGroupInOrgRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/actions/secrets", s.HandleActionsListRepoSecretsRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/actions/workflows", s.HandleActionsListRepoWorkflowsRequest)
+	mux.MethodFunc("GET", "/orgs/{org}/actions/runners/downloads", s.HandleActionsListRunnerApplicationsForOrgRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/actions/runners/downloads", s.HandleActionsListRunnerApplicationsForRepoRequest)
+	mux.MethodFunc("GET", "/orgs/{org}/actions/secrets/{secret_name}/repositories", s.HandleActionsListSelectedReposForOrgSecretRequest)
+	mux.MethodFunc("GET", "/orgs/{org}/actions/permissions/repositories", s.HandleActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRequest)
+	mux.MethodFunc("GET", "/orgs/{org}/actions/runner-groups", s.HandleActionsListSelfHostedRunnerGroupsForOrgRequest)
+	mux.MethodFunc("GET", "/orgs/{org}/actions/runners", s.HandleActionsListSelfHostedRunnersForOrgRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/actions/runners", s.HandleActionsListSelfHostedRunnersForRepoRequest)
+	mux.MethodFunc("GET", "/orgs/{org}/actions/runner-groups/{runner_group_id}/runners", s.HandleActionsListSelfHostedRunnersInGroupForOrgRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/actions/runs/{run_id}/artifacts", s.HandleActionsListWorkflowRunArtifactsRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/actions/runs", s.HandleActionsListWorkflowRunsForRepoRequest)
+	mux.MethodFunc("POST", "/repos/{owner}/{repo}/actions/runs/{run_id}/rerun", s.HandleActionsReRunWorkflowRequest)
+	mux.MethodFunc("DELETE", "/orgs/{org}/actions/runner-groups/{runner_group_id}/repositories/{repository_id}", s.HandleActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgRequest)
+	mux.MethodFunc("DELETE", "/orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}", s.HandleActionsRemoveSelectedRepoFromOrgSecretRequest)
+	mux.MethodFunc("DELETE", "/orgs/{org}/actions/runner-groups/{runner_group_id}/runners/{runner_id}", s.HandleActionsRemoveSelfHostedRunnerFromGroupForOrgRequest)
+	mux.MethodFunc("POST", "/repos/{owner}/{repo}/actions/runs/{run_id}/retry", s.HandleActionsRetryWorkflowRequest)
+	mux.MethodFunc("PUT", "/orgs/{org}/actions/permissions/selected-actions", s.HandleActionsSetAllowedActionsOrganizationRequest)
+	mux.MethodFunc("PUT", "/repos/{owner}/{repo}/actions/permissions/selected-actions", s.HandleActionsSetAllowedActionsRepositoryRequest)
+	mux.MethodFunc("PUT", "/orgs/{org}/actions/permissions", s.HandleActionsSetGithubActionsPermissionsOrganizationRequest)
+	mux.MethodFunc("PUT", "/repos/{owner}/{repo}/actions/permissions", s.HandleActionsSetGithubActionsPermissionsRepositoryRequest)
+	mux.MethodFunc("PUT", "/orgs/{org}/actions/runner-groups/{runner_group_id}/repositories", s.HandleActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest)
+	mux.MethodFunc("PUT", "/orgs/{org}/actions/secrets/{secret_name}/repositories", s.HandleActionsSetSelectedReposForOrgSecretRequest)
+	mux.MethodFunc("PUT", "/orgs/{org}/actions/permissions/repositories", s.HandleActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequest)
+	mux.MethodFunc("PUT", "/orgs/{org}/actions/runner-groups/{runner_group_id}/runners", s.HandleActionsSetSelfHostedRunnersInGroupForOrgRequest)
+	mux.MethodFunc("PATCH", "/orgs/{org}/actions/runner-groups/{runner_group_id}", s.HandleActionsUpdateSelfHostedRunnerGroupForOrgRequest)
+	mux.MethodFunc("GET", "/user/starred/{owner}/{repo}", s.HandleActivityCheckRepoIsStarredByAuthenticatedUserRequest)
+	mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/subscription", s.HandleActivityDeleteRepoSubscriptionRequest)
+	mux.MethodFunc("DELETE", "/notifications/threads/{thread_id}/subscription", s.HandleActivityDeleteThreadSubscriptionRequest)
+	mux.MethodFunc("GET", "/feeds", s.HandleActivityGetFeedsRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/subscription", s.HandleActivityGetRepoSubscriptionRequest)
+	mux.MethodFunc("GET", "/notifications/threads/{thread_id}", s.HandleActivityGetThreadRequest)
+	mux.MethodFunc("GET", "/notifications/threads/{thread_id}/subscription", s.HandleActivityGetThreadSubscriptionForAuthenticatedUserRequest)
+	mux.MethodFunc("GET", "/users/{username}/events", s.HandleActivityListEventsForAuthenticatedUserRequest)
+	mux.MethodFunc("GET", "/users/{username}/events/orgs/{org}", s.HandleActivityListOrgEventsForAuthenticatedUserRequest)
+	mux.MethodFunc("GET", "/events", s.HandleActivityListPublicEventsRequest)
+	mux.MethodFunc("GET", "/networks/{owner}/{repo}/events", s.HandleActivityListPublicEventsForRepoNetworkRequest)
+	mux.MethodFunc("GET", "/users/{username}/events/public", s.HandleActivityListPublicEventsForUserRequest)
+	mux.MethodFunc("GET", "/orgs/{org}/events", s.HandleActivityListPublicOrgEventsRequest)
+	mux.MethodFunc("GET", "/users/{username}/received_events", s.HandleActivityListReceivedEventsForUserRequest)
+	mux.MethodFunc("GET", "/users/{username}/received_events/public", s.HandleActivityListReceivedPublicEventsForUserRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/events", s.HandleActivityListRepoEventsRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/notifications", s.HandleActivityListRepoNotificationsForAuthenticatedUserRequest)
+	mux.MethodFunc("GET", "/user/starred", s.HandleActivityListReposStarredByAuthenticatedUserRequest)
+	mux.MethodFunc("GET", "/users/{username}/subscriptions", s.HandleActivityListReposWatchedByUserRequest)
+	mux.MethodFunc("GET", "/user/subscriptions", s.HandleActivityListWatchedReposForAuthenticatedUserRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/subscribers", s.HandleActivityListWatchersForRepoRequest)
+	mux.MethodFunc("PUT", "/notifications", s.HandleActivityMarkNotificationsAsReadRequest)
+	mux.MethodFunc("PUT", "/repos/{owner}/{repo}/notifications", s.HandleActivityMarkRepoNotificationsAsReadRequest)
+	mux.MethodFunc("PATCH", "/notifications/threads/{thread_id}", s.HandleActivityMarkThreadAsReadRequest)
+	mux.MethodFunc("PUT", "/repos/{owner}/{repo}/subscription", s.HandleActivitySetRepoSubscriptionRequest)
+	mux.MethodFunc("PUT", "/notifications/threads/{thread_id}/subscription", s.HandleActivitySetThreadSubscriptionRequest)
+	mux.MethodFunc("PUT", "/user/starred/{owner}/{repo}", s.HandleActivityStarRepoForAuthenticatedUserRequest)
+	mux.MethodFunc("DELETE", "/user/starred/{owner}/{repo}", s.HandleActivityUnstarRepoForAuthenticatedUserRequest)
+	mux.MethodFunc("PUT", "/user/installations/{installation_id}/repositories/{repository_id}", s.HandleAppsAddRepoToInstallationRequest)
+	mux.MethodFunc("DELETE", "/app/installations/{installation_id}", s.HandleAppsDeleteInstallationRequest)
+	mux.MethodFunc("GET", "/app", s.HandleAppsGetAuthenticatedRequest)
+	mux.MethodFunc("GET", "/apps/{app_slug}", s.HandleAppsGetBySlugRequest)
+	mux.MethodFunc("GET", "/marketplace_listing/accounts/{account_id}", s.HandleAppsGetSubscriptionPlanForAccountRequest)
+	mux.MethodFunc("GET", "/marketplace_listing/stubbed/accounts/{account_id}", s.HandleAppsGetSubscriptionPlanForAccountStubbedRequest)
+	mux.MethodFunc("GET", "/app/hook/config", s.HandleAppsGetWebhookConfigForAppRequest)
+	mux.MethodFunc("GET", "/marketplace_listing/stubbed/plans/{plan_id}/accounts", s.HandleAppsListAccountsForPlanStubbedRequest)
+	mux.MethodFunc("GET", "/user/installations/{installation_id}/repositories", s.HandleAppsListInstallationReposForAuthenticatedUserRequest)
+	mux.MethodFunc("GET", "/marketplace_listing/plans", s.HandleAppsListPlansRequest)
+	mux.MethodFunc("GET", "/marketplace_listing/stubbed/plans", s.HandleAppsListPlansStubbedRequest)
+	mux.MethodFunc("GET", "/installation/repositories", s.HandleAppsListReposAccessibleToInstallationRequest)
+	mux.MethodFunc("GET", "/user/marketplace_purchases", s.HandleAppsListSubscriptionsForAuthenticatedUserRequest)
+	mux.MethodFunc("GET", "/user/marketplace_purchases/stubbed", s.HandleAppsListSubscriptionsForAuthenticatedUserStubbedRequest)
+	mux.MethodFunc("DELETE", "/user/installations/{installation_id}/repositories/{repository_id}", s.HandleAppsRemoveRepoFromInstallationRequest)
+	mux.MethodFunc("DELETE", "/installation/token", s.HandleAppsRevokeInstallationAccessTokenRequest)
+	mux.MethodFunc("PUT", "/app/installations/{installation_id}/suspended", s.HandleAppsSuspendInstallationRequest)
+	mux.MethodFunc("DELETE", "/app/installations/{installation_id}/suspended", s.HandleAppsUnsuspendInstallationRequest)
+	mux.MethodFunc("PATCH", "/app/hook/config", s.HandleAppsUpdateWebhookConfigForAppRequest)
+	mux.MethodFunc("GET", "/enterprises/{enterprise}/settings/billing/actions", s.HandleBillingGetGithubActionsBillingGheRequest)
+	mux.MethodFunc("GET", "/orgs/{org}/settings/billing/actions", s.HandleBillingGetGithubActionsBillingOrgRequest)
+	mux.MethodFunc("GET", "/users/{username}/settings/billing/actions", s.HandleBillingGetGithubActionsBillingUserRequest)
+	mux.MethodFunc("GET", "/enterprises/{enterprise}/settings/billing/packages", s.HandleBillingGetGithubPackagesBillingGheRequest)
+	mux.MethodFunc("GET", "/orgs/{org}/settings/billing/packages", s.HandleBillingGetGithubPackagesBillingOrgRequest)
+	mux.MethodFunc("GET", "/users/{username}/settings/billing/packages", s.HandleBillingGetGithubPackagesBillingUserRequest)
+	mux.MethodFunc("GET", "/enterprises/{enterprise}/settings/billing/shared-storage", s.HandleBillingGetSharedStorageBillingGheRequest)
+	mux.MethodFunc("GET", "/orgs/{org}/settings/billing/shared-storage", s.HandleBillingGetSharedStorageBillingOrgRequest)
+	mux.MethodFunc("GET", "/users/{username}/settings/billing/shared-storage", s.HandleBillingGetSharedStorageBillingUserRequest)
+	mux.MethodFunc("POST", "/repos/{owner}/{repo}/check-suites", s.HandleChecksCreateSuiteRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/check-runs/{check_run_id}", s.HandleChecksGetRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/check-suites/{check_suite_id}", s.HandleChecksGetSuiteRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/check-runs/{check_run_id}/annotations", s.HandleChecksListAnnotationsRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/commits/{ref}/check-runs", s.HandleChecksListForRefRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/check-suites/{check_suite_id}/check-runs", s.HandleChecksListForSuiteRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/commits/{ref}/check-suites", s.HandleChecksListSuitesForRefRequest)
+	mux.MethodFunc("POST", "/repos/{owner}/{repo}/check-suites/{check_suite_id}/rerequest", s.HandleChecksRerequestSuiteRequest)
+	mux.MethodFunc("PATCH", "/repos/{owner}/{repo}/check-suites/preferences", s.HandleChecksSetSuitesPreferencesRequest)
+	mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}", s.HandleCodeScanningDeleteAnalysisRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}", s.HandleCodeScanningGetAlertRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}", s.HandleCodeScanningGetAnalysisRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/code-scanning/sarifs/{sarif_id}", s.HandleCodeScanningGetSarifRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}/instances", s.HandleCodeScanningListAlertInstancesRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/code-scanning/alerts", s.HandleCodeScanningListAlertsForRepoRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/code-scanning/analyses", s.HandleCodeScanningListRecentAnalysesRequest)
+	mux.MethodFunc("PATCH", "/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}", s.HandleCodeScanningUpdateAlertRequest)
+	mux.MethodFunc("POST", "/repos/{owner}/{repo}/code-scanning/sarifs", s.HandleCodeScanningUploadSarifRequest)
+	mux.MethodFunc("GET", "/codes_of_conduct", s.HandleCodesOfConductGetAllCodesOfConductRequest)
+	mux.MethodFunc("GET", "/codes_of_conduct/{key}", s.HandleCodesOfConductGetConductCodeRequest)
+	mux.MethodFunc("GET", "/emojis", s.HandleEmojisGetRequest)
+	mux.MethodFunc("PUT", "/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations/{org_id}", s.HandleEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest)
+	mux.MethodFunc("PUT", "/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners/{runner_id}", s.HandleEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseRequest)
+	mux.MethodFunc("POST", "/enterprises/{enterprise}/actions/runners/registration-token", s.HandleEnterpriseAdminCreateRegistrationTokenForEnterpriseRequest)
+	mux.MethodFunc("POST", "/enterprises/{enterprise}/actions/runners/remove-token", s.HandleEnterpriseAdminCreateRemoveTokenForEnterpriseRequest)
+	mux.MethodFunc("POST", "/enterprises/{enterprise}/actions/runner-groups", s.HandleEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequest)
+	mux.MethodFunc("DELETE", "/scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}", s.HandleEnterpriseAdminDeleteScimGroupFromEnterpriseRequest)
+	mux.MethodFunc("DELETE", "/enterprises/{enterprise}/actions/runners/{runner_id}", s.HandleEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseRequest)
+	mux.MethodFunc("DELETE", "/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}", s.HandleEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseRequest)
+	mux.MethodFunc("DELETE", "/scim/v2/enterprises/{enterprise}/Users/{scim_user_id}", s.HandleEnterpriseAdminDeleteUserFromEnterpriseRequest)
+	mux.MethodFunc("DELETE", "/enterprises/{enterprise}/actions/permissions/organizations/{org_id}", s.HandleEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseRequest)
+	mux.MethodFunc("PUT", "/enterprises/{enterprise}/actions/permissions/organizations/{org_id}", s.HandleEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseRequest)
+	mux.MethodFunc("GET", "/enterprises/{enterprise}/actions/permissions/selected-actions", s.HandleEnterpriseAdminGetAllowedActionsEnterpriseRequest)
+	mux.MethodFunc("GET", "/enterprises/{enterprise}/audit-log", s.HandleEnterpriseAdminGetAuditLogRequest)
+	mux.MethodFunc("GET", "/enterprises/{enterprise}/actions/permissions", s.HandleEnterpriseAdminGetGithubActionsPermissionsEnterpriseRequest)
+	mux.MethodFunc("GET", "/scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}", s.HandleEnterpriseAdminGetProvisioningInformationForEnterpriseGroupRequest)
+	mux.MethodFunc("GET", "/scim/v2/enterprises/{enterprise}/Users/{scim_user_id}", s.HandleEnterpriseAdminGetProvisioningInformationForEnterpriseUserRequest)
+	mux.MethodFunc("GET", "/enterprises/{enterprise}/actions/runners/{runner_id}", s.HandleEnterpriseAdminGetSelfHostedRunnerForEnterpriseRequest)
+	mux.MethodFunc("GET", "/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}", s.HandleEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseRequest)
+	mux.MethodFunc("GET", "/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations", s.HandleEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest)
+	mux.MethodFunc("GET", "/scim/v2/enterprises/{enterprise}/Groups", s.HandleEnterpriseAdminListProvisionedGroupsEnterpriseRequest)
+	mux.MethodFunc("GET", "/scim/v2/enterprises/{enterprise}/Users", s.HandleEnterpriseAdminListProvisionedIdentitiesEnterpriseRequest)
+	mux.MethodFunc("GET", "/enterprises/{enterprise}/actions/runners/downloads", s.HandleEnterpriseAdminListRunnerApplicationsForEnterpriseRequest)
+	mux.MethodFunc("GET", "/enterprises/{enterprise}/actions/permissions/organizations", s.HandleEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseRequest)
+	mux.MethodFunc("GET", "/enterprises/{enterprise}/actions/runner-groups", s.HandleEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseRequest)
+	mux.MethodFunc("GET", "/enterprises/{enterprise}/actions/runners", s.HandleEnterpriseAdminListSelfHostedRunnersForEnterpriseRequest)
+	mux.MethodFunc("GET", "/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners", s.HandleEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseRequest)
+	mux.MethodFunc("POST", "/scim/v2/enterprises/{enterprise}/Groups", s.HandleEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest)
+	mux.MethodFunc("POST", "/scim/v2/enterprises/{enterprise}/Users", s.HandleEnterpriseAdminProvisionAndInviteEnterpriseUserRequest)
+	mux.MethodFunc("DELETE", "/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations/{org_id}", s.HandleEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest)
+	mux.MethodFunc("DELETE", "/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners/{runner_id}", s.HandleEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseRequest)
+	mux.MethodFunc("PUT", "/enterprises/{enterprise}/actions/permissions/selected-actions", s.HandleEnterpriseAdminSetAllowedActionsEnterpriseRequest)
+	mux.MethodFunc("PUT", "/enterprises/{enterprise}/actions/permissions", s.HandleEnterpriseAdminSetGithubActionsPermissionsEnterpriseRequest)
+	mux.MethodFunc("PUT", "/scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}", s.HandleEnterpriseAdminSetInformationForProvisionedEnterpriseGroupRequest)
+	mux.MethodFunc("PUT", "/scim/v2/enterprises/{enterprise}/Users/{scim_user_id}", s.HandleEnterpriseAdminSetInformationForProvisionedEnterpriseUserRequest)
+	mux.MethodFunc("PUT", "/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations", s.HandleEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest)
+	mux.MethodFunc("PUT", "/enterprises/{enterprise}/actions/permissions/organizations", s.HandleEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequest)
+	mux.MethodFunc("PUT", "/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners", s.HandleEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequest)
+	mux.MethodFunc("PATCH", "/scim/v2/enterprises/{enterprise}/Users/{scim_user_id}", s.HandleEnterpriseAdminUpdateAttributeForEnterpriseUserRequest)
+	mux.MethodFunc("PATCH", "/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}", s.HandleEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequest)
+	mux.MethodFunc("GET", "/gists/{gist_id}/star", s.HandleGistsCheckIsStarredRequest)
+	mux.MethodFunc("POST", "/gists/{gist_id}/comments", s.HandleGistsCreateCommentRequest)
+	mux.MethodFunc("DELETE", "/gists/{gist_id}", s.HandleGistsDeleteRequest)
+	mux.MethodFunc("DELETE", "/gists/{gist_id}/comments/{comment_id}", s.HandleGistsDeleteCommentRequest)
+	mux.MethodFunc("GET", "/gists/{gist_id}", s.HandleGistsGetRequest)
+	mux.MethodFunc("GET", "/gists/{gist_id}/comments/{comment_id}", s.HandleGistsGetCommentRequest)
+	mux.MethodFunc("GET", "/gists", s.HandleGistsListRequest)
+	mux.MethodFunc("GET", "/gists/{gist_id}/comments", s.HandleGistsListCommentsRequest)
+	mux.MethodFunc("GET", "/gists/{gist_id}/commits", s.HandleGistsListCommitsRequest)
+	mux.MethodFunc("GET", "/gists/{gist_id}/forks", s.HandleGistsListForksRequest)
+	mux.MethodFunc("GET", "/gists/starred", s.HandleGistsListStarredRequest)
+	mux.MethodFunc("PUT", "/gists/{gist_id}/star", s.HandleGistsStarRequest)
+	mux.MethodFunc("DELETE", "/gists/{gist_id}/star", s.HandleGistsUnstarRequest)
+	mux.MethodFunc("PATCH", "/gists/{gist_id}/comments/{comment_id}", s.HandleGistsUpdateCommentRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/git/commits/{commit_sha}", s.HandleGitGetCommitRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/git/ref/{ref}", s.HandleGitGetRefRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/git/tags/{tag_sha}", s.HandleGitGetTagRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/git/matching-refs/{ref}", s.HandleGitListMatchingRefsRequest)
+	mux.MethodFunc("GET", "/gitignore/templates", s.HandleGitignoreGetAllTemplatesRequest)
+	mux.MethodFunc("GET", "/gitignore/templates/{name}", s.HandleGitignoreGetTemplateRequest)
+	mux.MethodFunc("DELETE", "/user/interaction-limits", s.HandleInteractionsRemoveRestrictionsForAuthenticatedUserRequest)
+	mux.MethodFunc("DELETE", "/orgs/{org}/interaction-limits", s.HandleInteractionsRemoveRestrictionsForOrgRequest)
+	mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/interaction-limits", s.HandleInteractionsRemoveRestrictionsForRepoRequest)
+	mux.MethodFunc("PUT", "/repos/{owner}/{repo}/interaction-limits", s.HandleInteractionsSetRestrictionsForRepoRequest)
+	mux.MethodFunc("POST", "/repos/{owner}/{repo}/issues/{issue_number}/assignees", s.HandleIssuesAddAssigneesRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/assignees/{assignee}", s.HandleIssuesCheckUserCanBeAssignedRequest)
+	mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/issues/comments/{comment_id}", s.HandleIssuesDeleteCommentRequest)
+	mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/labels/{name}", s.HandleIssuesDeleteLabelRequest)
+	mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/milestones/{milestone_number}", s.HandleIssuesDeleteMilestoneRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/issues/comments/{comment_id}", s.HandleIssuesGetCommentRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/issues/events/{event_id}", s.HandleIssuesGetEventRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/labels/{name}", s.HandleIssuesGetLabelRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/milestones/{milestone_number}", s.HandleIssuesGetMilestoneRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/assignees", s.HandleIssuesListAssigneesRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/issues/{issue_number}/comments", s.HandleIssuesListCommentsRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/milestones/{milestone_number}/labels", s.HandleIssuesListLabelsForMilestoneRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/labels", s.HandleIssuesListLabelsForRepoRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/issues/{issue_number}/labels", s.HandleIssuesListLabelsOnIssueRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/milestones", s.HandleIssuesListMilestonesRequest)
+	mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/issues/{issue_number}/labels", s.HandleIssuesRemoveAllLabelsRequest)
+	mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/issues/{issue_number}/assignees", s.HandleIssuesRemoveAssigneesRequest)
+	mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/issues/{issue_number}/labels/{name}", s.HandleIssuesRemoveLabelRequest)
+	mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/issues/{issue_number}/lock", s.HandleIssuesUnlockRequest)
+	mux.MethodFunc("PATCH", "/repos/{owner}/{repo}/labels/{name}", s.HandleIssuesUpdateLabelRequest)
+	mux.MethodFunc("PATCH", "/repos/{owner}/{repo}/milestones/{milestone_number}", s.HandleIssuesUpdateMilestoneRequest)
+	mux.MethodFunc("GET", "/licenses/{license}", s.HandleLicensesGetRequest)
+	mux.MethodFunc("GET", "/licenses", s.HandleLicensesGetAllCommonlyUsedRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/license", s.HandleLicensesGetForRepoRequest)
+	mux.MethodFunc("GET", "/meta", s.HandleMetaGetRequest)
+	mux.MethodFunc("GET", "/", s.HandleMetaRootRequest)
+	mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/import", s.HandleMigrationsCancelImportRequest)
+	mux.MethodFunc("DELETE", "/user/migrations/{migration_id}/archive", s.HandleMigrationsDeleteArchiveForAuthenticatedUserRequest)
+	mux.MethodFunc("DELETE", "/orgs/{org}/migrations/{migration_id}/archive", s.HandleMigrationsDeleteArchiveForOrgRequest)
+	mux.MethodFunc("GET", "/orgs/{org}/migrations/{migration_id}/archive", s.HandleMigrationsDownloadArchiveForOrgRequest)
+	mux.MethodFunc("GET", "/user/migrations/{migration_id}/archive", s.HandleMigrationsGetArchiveForAuthenticatedUserRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/import/authors", s.HandleMigrationsGetCommitAuthorsRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/import", s.HandleMigrationsGetImportStatusRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/import/large_files", s.HandleMigrationsGetLargeFilesRequest)
+	mux.MethodFunc("GET", "/user/migrations/{migration_id}", s.HandleMigrationsGetStatusForAuthenticatedUserRequest)
+	mux.MethodFunc("GET", "/orgs/{org}/migrations/{migration_id}", s.HandleMigrationsGetStatusForOrgRequest)
+	mux.MethodFunc("GET", "/user/migrations", s.HandleMigrationsListForAuthenticatedUserRequest)
+	mux.MethodFunc("GET", "/orgs/{org}/migrations", s.HandleMigrationsListForOrgRequest)
+	mux.MethodFunc("GET", "/orgs/{org}/migrations/{migration_id}/repositories", s.HandleMigrationsListReposForOrgRequest)
+	mux.MethodFunc("GET", "/user/migrations/{migration_id}/repositories", s.HandleMigrationsListReposForUserRequest)
+	mux.MethodFunc("DELETE", "/user/migrations/{migration_id}/repos/{repo_name}/lock", s.HandleMigrationsUnlockRepoForAuthenticatedUserRequest)
+	mux.MethodFunc("DELETE", "/orgs/{org}/migrations/{migration_id}/repos/{repo_name}/lock", s.HandleMigrationsUnlockRepoForOrgRequest)
+	mux.MethodFunc("PATCH", "/repos/{owner}/{repo}/import", s.HandleMigrationsUpdateImportRequest)
+	mux.MethodFunc("DELETE", "/authorizations/{authorization_id}", s.HandleOAuthAuthorizationsDeleteAuthorizationRequest)
+	mux.MethodFunc("DELETE", "/applications/grants/{grant_id}", s.HandleOAuthAuthorizationsDeleteGrantRequest)
+	mux.MethodFunc("GET", "/authorizations/{authorization_id}", s.HandleOAuthAuthorizationsGetAuthorizationRequest)
+	mux.MethodFunc("GET", "/applications/grants/{grant_id}", s.HandleOAuthAuthorizationsGetGrantRequest)
+	mux.MethodFunc("GET", "/authorizations", s.HandleOAuthAuthorizationsListAuthorizationsRequest)
+	mux.MethodFunc("GET", "/applications/grants", s.HandleOAuthAuthorizationsListGrantsRequest)
+	mux.MethodFunc("GET", "/orgs/{org}/blocks/{username}", s.HandleOrgsCheckBlockedUserRequest)
+	mux.MethodFunc("GET", "/orgs/{org}/members/{username}", s.HandleOrgsCheckMembershipForUserRequest)
+	mux.MethodFunc("GET", "/orgs/{org}/public_members/{username}", s.HandleOrgsCheckPublicMembershipForUserRequest)
+	mux.MethodFunc("PUT", "/orgs/{org}/outside_collaborators/{username}", s.HandleOrgsConvertMemberToOutsideCollaboratorRequest)
+	mux.MethodFunc("DELETE", "/orgs/{org}/hooks/{hook_id}", s.HandleOrgsDeleteWebhookRequest)
+	mux.MethodFunc("GET", "/orgs/{org}", s.HandleOrgsGetRequest)
+	mux.MethodFunc("GET", "/orgs/{org}/audit-log", s.HandleOrgsGetAuditLogRequest)
+	mux.MethodFunc("GET", "/user/memberships/orgs/{org}", s.HandleOrgsGetMembershipForAuthenticatedUserRequest)
+	mux.MethodFunc("GET", "/orgs/{org}/memberships/{username}", s.HandleOrgsGetMembershipForUserRequest)
+	mux.MethodFunc("GET", "/orgs/{org}/hooks/{hook_id}", s.HandleOrgsGetWebhookRequest)
+	mux.MethodFunc("GET", "/orgs/{org}/hooks/{hook_id}/config", s.HandleOrgsGetWebhookConfigForOrgRequest)
+	mux.MethodFunc("GET", "/organizations", s.HandleOrgsListRequest)
+	mux.MethodFunc("GET", "/orgs/{org}/blocks", s.HandleOrgsListBlockedUsersRequest)
+	mux.MethodFunc("GET", "/orgs/{org}/failed_invitations", s.HandleOrgsListFailedInvitationsRequest)
+	mux.MethodFunc("GET", "/user/orgs", s.HandleOrgsListForAuthenticatedUserRequest)
+	mux.MethodFunc("GET", "/users/{username}/orgs", s.HandleOrgsListForUserRequest)
+	mux.MethodFunc("GET", "/orgs/{org}/invitations/{invitation_id}/teams", s.HandleOrgsListInvitationTeamsRequest)
+	mux.MethodFunc("GET", "/orgs/{org}/outside_collaborators", s.HandleOrgsListOutsideCollaboratorsRequest)
+	mux.MethodFunc("GET", "/orgs/{org}/invitations", s.HandleOrgsListPendingInvitationsRequest)
+	mux.MethodFunc("GET", "/orgs/{org}/public_members", s.HandleOrgsListPublicMembersRequest)
+	mux.MethodFunc("GET", "/orgs/{org}/credential-authorizations", s.HandleOrgsListSamlSSOAuthorizationsRequest)
+	mux.MethodFunc("GET", "/orgs/{org}/hooks", s.HandleOrgsListWebhooksRequest)
+	mux.MethodFunc("POST", "/orgs/{org}/hooks/{hook_id}/pings", s.HandleOrgsPingWebhookRequest)
+	mux.MethodFunc("DELETE", "/orgs/{org}/members/{username}", s.HandleOrgsRemoveMemberRequest)
+	mux.MethodFunc("DELETE", "/orgs/{org}/memberships/{username}", s.HandleOrgsRemoveMembershipForUserRequest)
+	mux.MethodFunc("DELETE", "/orgs/{org}/outside_collaborators/{username}", s.HandleOrgsRemoveOutsideCollaboratorRequest)
+	mux.MethodFunc("DELETE", "/orgs/{org}/public_members/{username}", s.HandleOrgsRemovePublicMembershipForAuthenticatedUserRequest)
+	mux.MethodFunc("DELETE", "/orgs/{org}/credential-authorizations/{credential_id}", s.HandleOrgsRemoveSamlSSOAuthorizationRequest)
+	mux.MethodFunc("PUT", "/orgs/{org}/public_members/{username}", s.HandleOrgsSetPublicMembershipForAuthenticatedUserRequest)
+	mux.MethodFunc("DELETE", "/orgs/{org}/blocks/{username}", s.HandleOrgsUnblockUserRequest)
+	mux.MethodFunc("PATCH", "/orgs/{org}/hooks/{hook_id}/config", s.HandleOrgsUpdateWebhookConfigForOrgRequest)
+	mux.MethodFunc("DELETE", "/user/packages/{package_type}/{package_name}", s.HandlePackagesDeletePackageForAuthenticatedUserRequest)
+	mux.MethodFunc("DELETE", "/orgs/{org}/packages/{package_type}/{package_name}", s.HandlePackagesDeletePackageForOrgRequest)
+	mux.MethodFunc("DELETE", "/users/{username}/packages/{package_type}/{package_name}", s.HandlePackagesDeletePackageForUserRequest)
+	mux.MethodFunc("DELETE", "/user/packages/{package_type}/{package_name}/versions/{package_version_id}", s.HandlePackagesDeletePackageVersionForAuthenticatedUserRequest)
+	mux.MethodFunc("DELETE", "/orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}", s.HandlePackagesDeletePackageVersionForOrgRequest)
+	mux.MethodFunc("DELETE", "/users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}", s.HandlePackagesDeletePackageVersionForUserRequest)
+	mux.MethodFunc("GET", "/user/packages/{package_type}/{package_name}/versions", s.HandlePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequest)
+	mux.MethodFunc("GET", "/orgs/{org}/packages/{package_type}/{package_name}/versions", s.HandlePackagesGetAllPackageVersionsForPackageOwnedByOrgRequest)
+	mux.MethodFunc("GET", "/users/{username}/packages/{package_type}/{package_name}/versions", s.HandlePackagesGetAllPackageVersionsForPackageOwnedByUserRequest)
+	mux.MethodFunc("GET", "/user/packages/{package_type}/{package_name}", s.HandlePackagesGetPackageForAuthenticatedUserRequest)
+	mux.MethodFunc("GET", "/orgs/{org}/packages/{package_type}/{package_name}", s.HandlePackagesGetPackageForOrganizationRequest)
+	mux.MethodFunc("GET", "/users/{username}/packages/{package_type}/{package_name}", s.HandlePackagesGetPackageForUserRequest)
+	mux.MethodFunc("GET", "/user/packages/{package_type}/{package_name}/versions/{package_version_id}", s.HandlePackagesGetPackageVersionForAuthenticatedUserRequest)
+	mux.MethodFunc("GET", "/orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}", s.HandlePackagesGetPackageVersionForOrganizationRequest)
+	mux.MethodFunc("GET", "/users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}", s.HandlePackagesGetPackageVersionForUserRequest)
+	mux.MethodFunc("GET", "/user/packages", s.HandlePackagesListPackagesForAuthenticatedUserRequest)
+	mux.MethodFunc("GET", "/orgs/{org}/packages", s.HandlePackagesListPackagesForOrganizationRequest)
+	mux.MethodFunc("GET", "/users/{username}/packages", s.HandlePackagesListPackagesForUserRequest)
+	mux.MethodFunc("POST", "/user/packages/{package_type}/{package_name}/restore", s.HandlePackagesRestorePackageForAuthenticatedUserRequest)
+	mux.MethodFunc("POST", "/orgs/{org}/packages/{package_type}/{package_name}/restore", s.HandlePackagesRestorePackageForOrgRequest)
+	mux.MethodFunc("POST", "/users/{username}/packages/{package_type}/{package_name}/restore", s.HandlePackagesRestorePackageForUserRequest)
+	mux.MethodFunc("POST", "/user/packages/{package_type}/{package_name}/versions/{package_version_id}/restore", s.HandlePackagesRestorePackageVersionForAuthenticatedUserRequest)
+	mux.MethodFunc("POST", "/orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore", s.HandlePackagesRestorePackageVersionForOrgRequest)
+	mux.MethodFunc("POST", "/users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore", s.HandlePackagesRestorePackageVersionForUserRequest)
+	mux.MethodFunc("POST", "/projects/{project_id}/columns", s.HandleProjectsCreateColumnRequest)
+	mux.MethodFunc("POST", "/user/projects", s.HandleProjectsCreateForAuthenticatedUserRequest)
+	mux.MethodFunc("POST", "/orgs/{org}/projects", s.HandleProjectsCreateForOrgRequest)
+	mux.MethodFunc("POST", "/repos/{owner}/{repo}/projects", s.HandleProjectsCreateForRepoRequest)
+	mux.MethodFunc("DELETE", "/projects/{project_id}", s.HandleProjectsDeleteRequest)
+	mux.MethodFunc("DELETE", "/projects/columns/cards/{card_id}", s.HandleProjectsDeleteCardRequest)
+	mux.MethodFunc("DELETE", "/projects/columns/{column_id}", s.HandleProjectsDeleteColumnRequest)
+	mux.MethodFunc("GET", "/projects/{project_id}", s.HandleProjectsGetRequest)
+	mux.MethodFunc("GET", "/projects/columns/cards/{card_id}", s.HandleProjectsGetCardRequest)
+	mux.MethodFunc("GET", "/projects/columns/{column_id}", s.HandleProjectsGetColumnRequest)
+	mux.MethodFunc("GET", "/projects/columns/{column_id}/cards", s.HandleProjectsListCardsRequest)
+	mux.MethodFunc("GET", "/projects/{project_id}/columns", s.HandleProjectsListColumnsRequest)
+	mux.MethodFunc("GET", "/orgs/{org}/projects", s.HandleProjectsListForOrgRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/projects", s.HandleProjectsListForRepoRequest)
+	mux.MethodFunc("POST", "/projects/columns/{column_id}/moves", s.HandleProjectsMoveColumnRequest)
+	mux.MethodFunc("PATCH", "/projects/{project_id}", s.HandleProjectsUpdateRequest)
+	mux.MethodFunc("PATCH", "/projects/columns/cards/{card_id}", s.HandleProjectsUpdateCardRequest)
+	mux.MethodFunc("PATCH", "/projects/columns/{column_id}", s.HandleProjectsUpdateColumnRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/pulls/{pull_number}/merge", s.HandlePullsCheckIfMergedRequest)
+	mux.MethodFunc("POST", "/repos/{owner}/{repo}/pulls/{pull_number}/comments/{comment_id}/replies", s.HandlePullsCreateReplyForReviewCommentRequest)
+	mux.MethodFunc("POST", "/repos/{owner}/{repo}/pulls/{pull_number}/reviews", s.HandlePullsCreateReviewRequest)
+	mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}", s.HandlePullsDeletePendingReviewRequest)
+	mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/pulls/comments/{comment_id}", s.HandlePullsDeleteReviewCommentRequest)
+	mux.MethodFunc("PUT", "/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/dismissals", s.HandlePullsDismissReviewRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/pulls/{pull_number}", s.HandlePullsGetRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}", s.HandlePullsGetReviewRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/pulls/comments/{comment_id}", s.HandlePullsGetReviewCommentRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/comments", s.HandlePullsListCommentsForReviewRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/pulls/{pull_number}/commits", s.HandlePullsListCommitsRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers", s.HandlePullsListRequestedReviewersRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/pulls/{pull_number}/comments", s.HandlePullsListReviewCommentsRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/pulls/comments", s.HandlePullsListReviewCommentsForRepoRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/pulls/{pull_number}/reviews", s.HandlePullsListReviewsRequest)
+	mux.MethodFunc("POST", "/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/events", s.HandlePullsSubmitReviewRequest)
+	mux.MethodFunc("PUT", "/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}", s.HandlePullsUpdateReviewRequest)
+	mux.MethodFunc("PATCH", "/repos/{owner}/{repo}/pulls/comments/{comment_id}", s.HandlePullsUpdateReviewCommentRequest)
+	mux.MethodFunc("GET", "/rate_limit", s.HandleRateLimitGetRequest)
+	mux.MethodFunc("POST", "/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions", s.HandleReactionsCreateForTeamDiscussionCommentInOrgRequest)
+	mux.MethodFunc("POST", "/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions", s.HandleReactionsCreateForTeamDiscussionCommentLegacyRequest)
+	mux.MethodFunc("POST", "/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions", s.HandleReactionsCreateForTeamDiscussionInOrgRequest)
+	mux.MethodFunc("POST", "/teams/{team_id}/discussions/{discussion_number}/reactions", s.HandleReactionsCreateForTeamDiscussionLegacyRequest)
+	mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/comments/{comment_id}/reactions/{reaction_id}", s.HandleReactionsDeleteForCommitCommentRequest)
+	mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/issues/{issue_number}/reactions/{reaction_id}", s.HandleReactionsDeleteForIssueRequest)
+	mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/issues/comments/{comment_id}/reactions/{reaction_id}", s.HandleReactionsDeleteForIssueCommentRequest)
+	mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions/{reaction_id}", s.HandleReactionsDeleteForPullRequestCommentRequest)
+	mux.MethodFunc("DELETE", "/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions/{reaction_id}", s.HandleReactionsDeleteForTeamDiscussionRequest)
+	mux.MethodFunc("DELETE", "/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions/{reaction_id}", s.HandleReactionsDeleteForTeamDiscussionCommentRequest)
+	mux.MethodFunc("DELETE", "/reactions/{reaction_id}", s.HandleReactionsDeleteLegacyRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/comments/{comment_id}/reactions", s.HandleReactionsListForCommitCommentRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/issues/{issue_number}/reactions", s.HandleReactionsListForIssueRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/issues/comments/{comment_id}/reactions", s.HandleReactionsListForIssueCommentRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions", s.HandleReactionsListForPullRequestReviewCommentRequest)
+	mux.MethodFunc("GET", "/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions", s.HandleReactionsListForTeamDiscussionCommentInOrgRequest)
+	mux.MethodFunc("GET", "/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions", s.HandleReactionsListForTeamDiscussionCommentLegacyRequest)
+	mux.MethodFunc("GET", "/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions", s.HandleReactionsListForTeamDiscussionInOrgRequest)
+	mux.MethodFunc("GET", "/teams/{team_id}/discussions/{discussion_number}/reactions", s.HandleReactionsListForTeamDiscussionLegacyRequest)
+	mux.MethodFunc("PATCH", "/user/repository_invitations/{invitation_id}", s.HandleReposAcceptInvitationRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/collaborators/{username}", s.HandleReposCheckCollaboratorRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/vulnerability-alerts", s.HandleReposCheckVulnerabilityAlertsRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/compare/{basehead}", s.HandleReposCompareCommitsRequest)
+	mux.MethodFunc("POST", "/repos/{owner}/{repo}/branches/{branch}/protection/required_signatures", s.HandleReposCreateCommitSignatureProtectionRequest)
+	mux.MethodFunc("POST", "/repos/{owner}/{repo}/statuses/{sha}", s.HandleReposCreateCommitStatusRequest)
+	mux.MethodFunc("POST", "/repos/{template_owner}/{template_repo}/generate", s.HandleReposCreateUsingTemplateRequest)
+	mux.MethodFunc("DELETE", "/user/repository_invitations/{invitation_id}", s.HandleReposDeclineInvitationRequest)
+	mux.MethodFunc("DELETE", "/repos/{owner}/{repo}", s.HandleReposDeleteRequest)
+	mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/branches/{branch}/protection/restrictions", s.HandleReposDeleteAccessRestrictionsRequest)
+	mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins", s.HandleReposDeleteAdminBranchProtectionRequest)
+	mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/environments/{environment_name}", s.HandleReposDeleteAnEnvironmentRequest)
+	mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/autolinks/{autolink_id}", s.HandleReposDeleteAutolinkRequest)
+	mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/branches/{branch}/protection", s.HandleReposDeleteBranchProtectionRequest)
+	mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/comments/{comment_id}", s.HandleReposDeleteCommitCommentRequest)
+	mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/branches/{branch}/protection/required_signatures", s.HandleReposDeleteCommitSignatureProtectionRequest)
+	mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/keys/{key_id}", s.HandleReposDeleteDeployKeyRequest)
+	mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/deployments/{deployment_id}", s.HandleReposDeleteDeploymentRequest)
+	mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/invitations/{invitation_id}", s.HandleReposDeleteInvitationRequest)
+	mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews", s.HandleReposDeletePullRequestReviewProtectionRequest)
+	mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/releases/{release_id}", s.HandleReposDeleteReleaseRequest)
+	mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/releases/assets/{asset_id}", s.HandleReposDeleteReleaseAssetRequest)
+	mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/hooks/{hook_id}", s.HandleReposDeleteWebhookRequest)
+	mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/automated-security-fixes", s.HandleReposDisableAutomatedSecurityFixesRequest)
+	mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/lfs", s.HandleReposDisableLfsForRepoRequest)
+	mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/vulnerability-alerts", s.HandleReposDisableVulnerabilityAlertsRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/tarball/{ref}", s.HandleReposDownloadTarballArchiveRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/zipball/{ref}", s.HandleReposDownloadZipballArchiveRequest)
+	mux.MethodFunc("PUT", "/repos/{owner}/{repo}/automated-security-fixes", s.HandleReposEnableAutomatedSecurityFixesRequest)
+	mux.MethodFunc("PUT", "/repos/{owner}/{repo}/lfs", s.HandleReposEnableLfsForRepoRequest)
+	mux.MethodFunc("PUT", "/repos/{owner}/{repo}/vulnerability-alerts", s.HandleReposEnableVulnerabilityAlertsRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}", s.HandleReposGetRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/branches/{branch}/protection/restrictions", s.HandleReposGetAccessRestrictionsRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins", s.HandleReposGetAdminBranchProtectionRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts", s.HandleReposGetAllStatusCheckContextsRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/topics", s.HandleReposGetAllTopicsRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps", s.HandleReposGetAppsWithAccessToProtectedBranchRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/autolinks/{autolink_id}", s.HandleReposGetAutolinkRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/branches/{branch}", s.HandleReposGetBranchRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/branches/{branch}/protection", s.HandleReposGetBranchProtectionRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/traffic/clones", s.HandleReposGetClonesRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/stats/code_frequency", s.HandleReposGetCodeFrequencyStatsRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/collaborators/{username}/permission", s.HandleReposGetCollaboratorPermissionLevelRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/commits/{ref}/status", s.HandleReposGetCombinedStatusForRefRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/stats/commit_activity", s.HandleReposGetCommitActivityStatsRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/comments/{comment_id}", s.HandleReposGetCommitCommentRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/branches/{branch}/protection/required_signatures", s.HandleReposGetCommitSignatureProtectionRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/community/profile", s.HandleReposGetCommunityProfileMetricsRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/stats/contributors", s.HandleReposGetContributorsStatsRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/keys/{key_id}", s.HandleReposGetDeployKeyRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/deployments/{deployment_id}/statuses/{status_id}", s.HandleReposGetDeploymentStatusRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/pages/builds/latest", s.HandleReposGetLatestPagesBuildRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/releases/latest", s.HandleReposGetLatestReleaseRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/pages", s.HandleReposGetPagesRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/pages/builds/{build_id}", s.HandleReposGetPagesBuildRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/pages/health", s.HandleReposGetPagesHealthCheckRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/stats/participation", s.HandleReposGetParticipationStatsRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews", s.HandleReposGetPullRequestReviewProtectionRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/stats/punch_card", s.HandleReposGetPunchCardStatsRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/releases/{release_id}", s.HandleReposGetReleaseRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/releases/assets/{asset_id}", s.HandleReposGetReleaseAssetRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/releases/tags/{tag}", s.HandleReposGetReleaseByTagRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks", s.HandleReposGetStatusChecksProtectionRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams", s.HandleReposGetTeamsWithAccessToProtectedBranchRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/traffic/popular/paths", s.HandleReposGetTopPathsRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/traffic/popular/referrers", s.HandleReposGetTopReferrersRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users", s.HandleReposGetUsersWithAccessToProtectedBranchRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/traffic/views", s.HandleReposGetViewsRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/hooks/{hook_id}", s.HandleReposGetWebhookRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/hooks/{hook_id}/config", s.HandleReposGetWebhookConfigForRepoRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/autolinks", s.HandleReposListAutolinksRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/branches", s.HandleReposListBranchesRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/collaborators", s.HandleReposListCollaboratorsRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/commits/{commit_sha}/comments", s.HandleReposListCommentsForCommitRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/comments", s.HandleReposListCommitCommentsForRepoRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/commits/{ref}/statuses", s.HandleReposListCommitStatusesForRefRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/commits", s.HandleReposListCommitsRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/contributors", s.HandleReposListContributorsRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/keys", s.HandleReposListDeployKeysRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/deployments/{deployment_id}/statuses", s.HandleReposListDeploymentStatusesRequest)
+	mux.MethodFunc("GET", "/orgs/{org}/repos", s.HandleReposListForOrgRequest)
+	mux.MethodFunc("GET", "/users/{username}/repos", s.HandleReposListForUserRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/forks", s.HandleReposListForksRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/invitations", s.HandleReposListInvitationsRequest)
+	mux.MethodFunc("GET", "/user/repository_invitations", s.HandleReposListInvitationsForAuthenticatedUserRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/languages", s.HandleReposListLanguagesRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/pages/builds", s.HandleReposListPagesBuildsRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/commits/{commit_sha}/pulls", s.HandleReposListPullRequestsAssociatedWithCommitRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/releases/{release_id}/assets", s.HandleReposListReleaseAssetsRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/releases", s.HandleReposListReleasesRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/tags", s.HandleReposListTagsRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/teams", s.HandleReposListTeamsRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/hooks", s.HandleReposListWebhooksRequest)
+	mux.MethodFunc("POST", "/repos/{owner}/{repo}/merge-upstream", s.HandleReposMergeUpstreamRequest)
+	mux.MethodFunc("POST", "/repos/{owner}/{repo}/hooks/{hook_id}/pings", s.HandleReposPingWebhookRequest)
+	mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/collaborators/{username}", s.HandleReposRemoveCollaboratorRequest)
+	mux.MethodFunc("DELETE", "/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks", s.HandleReposRemoveStatusCheckProtectionRequest)
+	mux.MethodFunc("PUT", "/repos/{owner}/{repo}/topics", s.HandleReposReplaceAllTopicsRequest)
+	mux.MethodFunc("POST", "/repos/{owner}/{repo}/pages/builds", s.HandleReposRequestPagesBuildRequest)
+	mux.MethodFunc("POST", "/repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins", s.HandleReposSetAdminBranchProtectionRequest)
+	mux.MethodFunc("POST", "/repos/{owner}/{repo}/hooks/{hook_id}/tests", s.HandleReposTestPushWebhookRequest)
+	mux.MethodFunc("POST", "/repos/{owner}/{repo}/transfer", s.HandleReposTransferRequest)
+	mux.MethodFunc("PUT", "/repos/{owner}/{repo}/branches/{branch}/protection", s.HandleReposUpdateBranchProtectionRequest)
+	mux.MethodFunc("PATCH", "/repos/{owner}/{repo}/comments/{comment_id}", s.HandleReposUpdateCommitCommentRequest)
+	mux.MethodFunc("PATCH", "/repos/{owner}/{repo}/invitations/{invitation_id}", s.HandleReposUpdateInvitationRequest)
+	mux.MethodFunc("PATCH", "/repos/{owner}/{repo}/releases/{release_id}", s.HandleReposUpdateReleaseRequest)
+	mux.MethodFunc("PATCH", "/repos/{owner}/{repo}/releases/assets/{asset_id}", s.HandleReposUpdateReleaseAssetRequest)
+	mux.MethodFunc("PATCH", "/repos/{owner}/{repo}/hooks/{hook_id}/config", s.HandleReposUpdateWebhookConfigForRepoRequest)
+	mux.MethodFunc("DELETE", "/scim/v2/organizations/{org}/Users/{scim_user_id}", s.HandleScimDeleteUserFromOrgRequest)
+	mux.MethodFunc("GET", "/search/commits", s.HandleSearchCommitsRequest)
+	mux.MethodFunc("GET", "/search/topics", s.HandleSearchTopicsRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}", s.HandleSecretScanningGetAlertRequest)
+	mux.MethodFunc("GET", "/orgs/{org}/secret-scanning/alerts", s.HandleSecretScanningListAlertsForOrgRequest)
+	mux.MethodFunc("GET", "/repos/{owner}/{repo}/secret-scanning/alerts", s.HandleSecretScanningListAlertsForRepoRequest)
+	mux.MethodFunc("PATCH", "/repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}", s.HandleSecretScanningUpdateAlertRequest)
+	mux.MethodFunc("PUT", "/teams/{team_id}/members/{username}", s.HandleTeamsAddMemberLegacyRequest)
+	mux.MethodFunc("PUT", "/orgs/{org}/teams/{team_slug}/memberships/{username}", s.HandleTeamsAddOrUpdateMembershipForUserInOrgRequest)
+	mux.MethodFunc("PUT", "/teams/{team_id}/memberships/{username}", s.HandleTeamsAddOrUpdateMembershipForUserLegacyRequest)
+	mux.MethodFunc("PUT", "/orgs/{org}/teams/{team_slug}/projects/{project_id}", s.HandleTeamsAddOrUpdateProjectPermissionsInOrgRequest)
+	mux.MethodFunc("PUT", "/orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}", s.HandleTeamsAddOrUpdateRepoPermissionsInOrgRequest)
+	mux.MethodFunc("GET", "/orgs/{org}/teams/{team_slug}/projects/{project_id}", s.HandleTeamsCheckPermissionsForProjectInOrgRequest)
+	mux.MethodFunc("GET", "/teams/{team_id}/projects/{project_id}", s.HandleTeamsCheckPermissionsForProjectLegacyRequest)
+	mux.MethodFunc("GET", "/orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}", s.HandleTeamsCheckPermissionsForRepoInOrgRequest)
+	mux.MethodFunc("GET", "/teams/{team_id}/repos/{owner}/{repo}", s.HandleTeamsCheckPermissionsForRepoLegacyRequest)
+	mux.MethodFunc("POST", "/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments", s.HandleTeamsCreateDiscussionCommentInOrgRequest)
+	mux.MethodFunc("POST", "/teams/{team_id}/discussions/{discussion_number}/comments", s.HandleTeamsCreateDiscussionCommentLegacyRequest)
+	mux.MethodFunc("POST", "/orgs/{org}/teams/{team_slug}/discussions", s.HandleTeamsCreateDiscussionInOrgRequest)
+	mux.MethodFunc("POST", "/teams/{team_id}/discussions", s.HandleTeamsCreateDiscussionLegacyRequest)
+	mux.MethodFunc("PATCH", "/orgs/{org}/teams/{team_slug}/team-sync/group-mappings", s.HandleTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest)
+	mux.MethodFunc("DELETE", "/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}", s.HandleTeamsDeleteDiscussionCommentInOrgRequest)
+	mux.MethodFunc("DELETE", "/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}", s.HandleTeamsDeleteDiscussionCommentLegacyRequest)
+	mux.MethodFunc("DELETE", "/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}", s.HandleTeamsDeleteDiscussionInOrgRequest)
+	mux.MethodFunc("DELETE", "/teams/{team_id}/discussions/{discussion_number}", s.HandleTeamsDeleteDiscussionLegacyRequest)
+	mux.MethodFunc("DELETE", "/orgs/{org}/teams/{team_slug}", s.HandleTeamsDeleteInOrgRequest)
+	mux.MethodFunc("GET", "/orgs/{org}/teams/{team_slug}", s.HandleTeamsGetByNameRequest)
+	mux.MethodFunc("GET", "/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}", s.HandleTeamsGetDiscussionCommentInOrgRequest)
+	mux.MethodFunc("GET", "/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}", s.HandleTeamsGetDiscussionCommentLegacyRequest)
+	mux.MethodFunc("GET", "/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}", s.HandleTeamsGetDiscussionInOrgRequest)
+	mux.MethodFunc("GET", "/teams/{team_id}/discussions/{discussion_number}", s.HandleTeamsGetDiscussionLegacyRequest)
+	mux.MethodFunc("GET", "/teams/{team_id}", s.HandleTeamsGetLegacyRequest)
+	mux.MethodFunc("GET", "/teams/{team_id}/members/{username}", s.HandleTeamsGetMemberLegacyRequest)
+	mux.MethodFunc("GET", "/orgs/{org}/teams/{team_slug}/memberships/{username}", s.HandleTeamsGetMembershipForUserInOrgRequest)
+	mux.MethodFunc("GET", "/teams/{team_id}/memberships/{username}", s.HandleTeamsGetMembershipForUserLegacyRequest)
+	mux.MethodFunc("GET", "/orgs/{org}/teams", s.HandleTeamsListRequest)
+	mux.MethodFunc("GET", "/orgs/{org}/teams/{team_slug}/teams", s.HandleTeamsListChildInOrgRequest)
+	mux.MethodFunc("GET", "/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments", s.HandleTeamsListDiscussionCommentsInOrgRequest)
+	mux.MethodFunc("GET", "/teams/{team_id}/discussions/{discussion_number}/comments", s.HandleTeamsListDiscussionCommentsLegacyRequest)
+	mux.MethodFunc("GET", "/orgs/{org}/teams/{team_slug}/discussions", s.HandleTeamsListDiscussionsInOrgRequest)
+	mux.MethodFunc("GET", "/teams/{team_id}/discussions", s.HandleTeamsListDiscussionsLegacyRequest)
+	mux.MethodFunc("GET", "/user/teams", s.HandleTeamsListForAuthenticatedUserRequest)
+	mux.MethodFunc("GET", "/teams/{team_id}/team-sync/group-mappings", s.HandleTeamsListIdpGroupsForLegacyRequest)
+	mux.MethodFunc("GET", "/orgs/{org}/team-sync/groups", s.HandleTeamsListIdpGroupsForOrgRequest)
+	mux.MethodFunc("GET", "/orgs/{org}/teams/{team_slug}/team-sync/group-mappings", s.HandleTeamsListIdpGroupsInOrgRequest)
+	mux.MethodFunc("GET", "/orgs/{org}/teams/{team_slug}/members", s.HandleTeamsListMembersInOrgRequest)
+	mux.MethodFunc("GET", "/teams/{team_id}/members", s.HandleTeamsListMembersLegacyRequest)
+	mux.MethodFunc("GET", "/orgs/{org}/teams/{team_slug}/invitations", s.HandleTeamsListPendingInvitationsInOrgRequest)
+	mux.MethodFunc("GET", "/teams/{team_id}/invitations", s.HandleTeamsListPendingInvitationsLegacyRequest)
+	mux.MethodFunc("GET", "/orgs/{org}/teams/{team_slug}/projects", s.HandleTeamsListProjectsInOrgRequest)
+	mux.MethodFunc("GET", "/teams/{team_id}/projects", s.HandleTeamsListProjectsLegacyRequest)
+	mux.MethodFunc("GET", "/orgs/{org}/teams/{team_slug}/repos", s.HandleTeamsListReposInOrgRequest)
+	mux.MethodFunc("GET", "/teams/{team_id}/repos", s.HandleTeamsListReposLegacyRequest)
+	mux.MethodFunc("DELETE", "/teams/{team_id}/members/{username}", s.HandleTeamsRemoveMemberLegacyRequest)
+	mux.MethodFunc("DELETE", "/orgs/{org}/teams/{team_slug}/memberships/{username}", s.HandleTeamsRemoveMembershipForUserInOrgRequest)
+	mux.MethodFunc("DELETE", "/teams/{team_id}/memberships/{username}", s.HandleTeamsRemoveMembershipForUserLegacyRequest)
+	mux.MethodFunc("DELETE", "/orgs/{org}/teams/{team_slug}/projects/{project_id}", s.HandleTeamsRemoveProjectInOrgRequest)
+	mux.MethodFunc("DELETE", "/orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}", s.HandleTeamsRemoveRepoInOrgRequest)
+	mux.MethodFunc("DELETE", "/teams/{team_id}/repos/{owner}/{repo}", s.HandleTeamsRemoveRepoLegacyRequest)
+	mux.MethodFunc("PATCH", "/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}", s.HandleTeamsUpdateDiscussionCommentInOrgRequest)
+	mux.MethodFunc("PATCH", "/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}", s.HandleTeamsUpdateDiscussionCommentLegacyRequest)
+	mux.MethodFunc("PATCH", "/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}", s.HandleTeamsUpdateDiscussionInOrgRequest)
+	mux.MethodFunc("PATCH", "/teams/{team_id}/discussions/{discussion_number}", s.HandleTeamsUpdateDiscussionLegacyRequest)
+	mux.MethodFunc("PATCH", "/orgs/{org}/teams/{team_slug}", s.HandleTeamsUpdateInOrgRequest)
+	mux.MethodFunc("GET", "/user/blocks/{username}", s.HandleUsersCheckBlockedRequest)
+	mux.MethodFunc("GET", "/users/{username}/following/{target_user}", s.HandleUsersCheckFollowingForUserRequest)
+	mux.MethodFunc("GET", "/user/following/{username}", s.HandleUsersCheckPersonIsFollowedByAuthenticatedRequest)
+	mux.MethodFunc("DELETE", "/user/keys/{key_id}", s.HandleUsersDeletePublicSSHKeyForAuthenticatedRequest)
+	mux.MethodFunc("PUT", "/user/following/{username}", s.HandleUsersFollowRequest)
+	mux.MethodFunc("GET", "/user", s.HandleUsersGetAuthenticatedRequest)
+	mux.MethodFunc("GET", "/users/{username}", s.HandleUsersGetByUsernameRequest)
+	mux.MethodFunc("GET", "/user/gpg_keys/{gpg_key_id}", s.HandleUsersGetGpgKeyForAuthenticatedRequest)
+	mux.MethodFunc("GET", "/user/keys/{key_id}", s.HandleUsersGetPublicSSHKeyForAuthenticatedRequest)
+	mux.MethodFunc("GET", "/users", s.HandleUsersListRequest)
+	mux.MethodFunc("GET", "/user/blocks", s.HandleUsersListBlockedByAuthenticatedRequest)
+	mux.MethodFunc("GET", "/user/emails", s.HandleUsersListEmailsForAuthenticatedRequest)
+	mux.MethodFunc("GET", "/user/following", s.HandleUsersListFollowedByAuthenticatedRequest)
+	mux.MethodFunc("GET", "/user/followers", s.HandleUsersListFollowersForAuthenticatedUserRequest)
+	mux.MethodFunc("GET", "/users/{username}/followers", s.HandleUsersListFollowersForUserRequest)
+	mux.MethodFunc("GET", "/users/{username}/following", s.HandleUsersListFollowingForUserRequest)
+	mux.MethodFunc("GET", "/user/gpg_keys", s.HandleUsersListGpgKeysForAuthenticatedRequest)
+	mux.MethodFunc("GET", "/users/{username}/gpg_keys", s.HandleUsersListGpgKeysForUserRequest)
+	mux.MethodFunc("GET", "/user/public_emails", s.HandleUsersListPublicEmailsForAuthenticatedRequest)
+	mux.MethodFunc("GET", "/users/{username}/keys", s.HandleUsersListPublicKeysForUserRequest)
+	mux.MethodFunc("GET", "/user/keys", s.HandleUsersListPublicSSHKeysForAuthenticatedRequest)
+	mux.MethodFunc("DELETE", "/user/blocks/{username}", s.HandleUsersUnblockRequest)
+	mux.MethodFunc("DELETE", "/user/following/{username}", s.HandleUsersUnfollowRequest)
 }

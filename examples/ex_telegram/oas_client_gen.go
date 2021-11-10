@@ -95,6 +95,9 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 	return c, nil
 }
 
+// AnswerCallbackQueryPost invokes  operation.
+//
+// POST /answerCallbackQuery
 func (c *Client) AnswerCallbackQueryPost(ctx context.Context, request AnswerCallbackQueryPostReqApplicationJSON) (res AnswerCallbackQueryPostRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `AnswerCallbackQueryPost`,
@@ -145,6 +148,9 @@ func (c *Client) AnswerCallbackQueryPost(ctx context.Context, request AnswerCall
 	return result, nil
 }
 
+// AnswerPreCheckoutQueryPost invokes  operation.
+//
+// POST /answerPreCheckoutQuery
 func (c *Client) AnswerPreCheckoutQueryPost(ctx context.Context, request AnswerPreCheckoutQueryPostReqApplicationJSON) (res AnswerPreCheckoutQueryPostRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `AnswerPreCheckoutQueryPost`,
@@ -195,6 +201,9 @@ func (c *Client) AnswerPreCheckoutQueryPost(ctx context.Context, request AnswerP
 	return result, nil
 }
 
+// AnswerShippingQueryPost invokes  operation.
+//
+// POST /answerShippingQuery
 func (c *Client) AnswerShippingQueryPost(ctx context.Context, request AnswerShippingQueryPostReqApplicationJSON) (res AnswerShippingQueryPostRes, err error) {
 	if err := func() error {
 
@@ -254,6 +263,9 @@ func (c *Client) AnswerShippingQueryPost(ctx context.Context, request AnswerShip
 	return result, nil
 }
 
+// ClosePost invokes  operation.
+//
+// POST /close
 func (c *Client) ClosePost(ctx context.Context) (res ClosePostRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ClosePost`,
@@ -290,6 +302,9 @@ func (c *Client) ClosePost(ctx context.Context) (res ClosePostRes, err error) {
 	return result, nil
 }
 
+// DeleteStickerFromSetPost invokes  operation.
+//
+// POST /deleteStickerFromSet
 func (c *Client) DeleteStickerFromSetPost(ctx context.Context, request DeleteStickerFromSetPostReqApplicationJSON) (res DeleteStickerFromSetPostRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteStickerFromSetPost`,
@@ -340,6 +355,9 @@ func (c *Client) DeleteStickerFromSetPost(ctx context.Context, request DeleteSti
 	return result, nil
 }
 
+// DeleteWebhookPost invokes  operation.
+//
+// POST /deleteWebhook
 func (c *Client) DeleteWebhookPost(ctx context.Context, request DeleteWebhookPostReqApplicationJSON) (res DeleteWebhookPostRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteWebhookPost`,
@@ -390,6 +408,9 @@ func (c *Client) DeleteWebhookPost(ctx context.Context, request DeleteWebhookPos
 	return result, nil
 }
 
+// GetFilePost invokes  operation.
+//
+// POST /getFile
 func (c *Client) GetFilePost(ctx context.Context, request GetFilePostReqApplicationJSON) (res GetFilePostRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetFilePost`,
@@ -440,6 +461,9 @@ func (c *Client) GetFilePost(ctx context.Context, request GetFilePostReqApplicat
 	return result, nil
 }
 
+// GetGameHighScoresPost invokes  operation.
+//
+// POST /getGameHighScores
 func (c *Client) GetGameHighScoresPost(ctx context.Context, request GetGameHighScoresPostReqApplicationJSON) (res GetGameHighScoresPostRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetGameHighScoresPost`,
@@ -490,6 +514,9 @@ func (c *Client) GetGameHighScoresPost(ctx context.Context, request GetGameHighS
 	return result, nil
 }
 
+// GetMePost invokes  operation.
+//
+// POST /getMe
 func (c *Client) GetMePost(ctx context.Context) (res GetMePostRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetMePost`,
@@ -526,6 +553,9 @@ func (c *Client) GetMePost(ctx context.Context) (res GetMePostRes, err error) {
 	return result, nil
 }
 
+// GetMyCommandsPost invokes  operation.
+//
+// POST /getMyCommands
 func (c *Client) GetMyCommandsPost(ctx context.Context) (res GetMyCommandsPostRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetMyCommandsPost`,
@@ -562,6 +592,9 @@ func (c *Client) GetMyCommandsPost(ctx context.Context) (res GetMyCommandsPostRe
 	return result, nil
 }
 
+// GetStickerSetPost invokes  operation.
+//
+// POST /getStickerSet
 func (c *Client) GetStickerSetPost(ctx context.Context, request GetStickerSetPostReqApplicationJSON) (res GetStickerSetPostRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetStickerSetPost`,
@@ -612,6 +645,9 @@ func (c *Client) GetStickerSetPost(ctx context.Context, request GetStickerSetPos
 	return result, nil
 }
 
+// GetUpdatesPost invokes  operation.
+//
+// POST /getUpdates
 func (c *Client) GetUpdatesPost(ctx context.Context, request GetUpdatesPostReqApplicationJSON) (res GetUpdatesPostRes, err error) {
 	if err := func() error {
 
@@ -671,6 +707,9 @@ func (c *Client) GetUpdatesPost(ctx context.Context, request GetUpdatesPostReqAp
 	return result, nil
 }
 
+// GetUserProfilePhotosPost invokes  operation.
+//
+// POST /getUserProfilePhotos
 func (c *Client) GetUserProfilePhotosPost(ctx context.Context, request GetUserProfilePhotosPostReqApplicationJSON) (res GetUserProfilePhotosPostRes, err error) {
 	if err := func() error {
 
@@ -730,6 +769,9 @@ func (c *Client) GetUserProfilePhotosPost(ctx context.Context, request GetUserPr
 	return result, nil
 }
 
+// GetWebhookInfoPost invokes  operation.
+//
+// POST /getWebhookInfo
 func (c *Client) GetWebhookInfoPost(ctx context.Context) (res GetWebhookInfoPostRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetWebhookInfoPost`,
@@ -766,6 +808,9 @@ func (c *Client) GetWebhookInfoPost(ctx context.Context) (res GetWebhookInfoPost
 	return result, nil
 }
 
+// LogOutPost invokes  operation.
+//
+// POST /logOut
 func (c *Client) LogOutPost(ctx context.Context) (res LogOutPostRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `LogOutPost`,
@@ -802,6 +847,9 @@ func (c *Client) LogOutPost(ctx context.Context) (res LogOutPostRes, err error) 
 	return result, nil
 }
 
+// SendGamePost invokes  operation.
+//
+// POST /sendGame
 func (c *Client) SendGamePost(ctx context.Context, request SendGamePostReqApplicationJSON) (res SendGamePostRes, err error) {
 	if err := func() error {
 
@@ -861,6 +909,9 @@ func (c *Client) SendGamePost(ctx context.Context, request SendGamePostReqApplic
 	return result, nil
 }
 
+// SendInvoicePost invokes  operation.
+//
+// POST /sendInvoice
 func (c *Client) SendInvoicePost(ctx context.Context, request SendInvoicePostReqApplicationJSON) (res SendInvoicePostRes, err error) {
 	if err := func() error {
 
@@ -920,6 +971,9 @@ func (c *Client) SendInvoicePost(ctx context.Context, request SendInvoicePostReq
 	return result, nil
 }
 
+// SetMyCommandsPost invokes  operation.
+//
+// POST /setMyCommands
 func (c *Client) SetMyCommandsPost(ctx context.Context, request SetMyCommandsPostReqApplicationJSON) (res SetMyCommandsPostRes, err error) {
 	if err := func() error {
 
@@ -979,6 +1033,9 @@ func (c *Client) SetMyCommandsPost(ctx context.Context, request SetMyCommandsPos
 	return result, nil
 }
 
+// SetStickerPositionInSetPost invokes  operation.
+//
+// POST /setStickerPositionInSet
 func (c *Client) SetStickerPositionInSetPost(ctx context.Context, request SetStickerPositionInSetPostReqApplicationJSON) (res SetStickerPositionInSetPostRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SetStickerPositionInSetPost`,

@@ -67,6 +67,8 @@ var (
 // Handler handles operations described by OpenAPI v3 specification.
 type Handler interface {
 	// DeletePet implements deletePet operation.
+	//
+	// DELETE /pets/{id}
 	DeletePet(ctx context.Context, params DeletePetParams) (DeletePetRes, error)
 }
 
@@ -74,24 +76,17 @@ type Handler interface {
 // calls Handler to handle requests.
 type Server struct {
 	h   Handler
-	mux *chi.Mux
 	cfg config
 }
 
 func NewServer(h Handler, opts ...Option) *Server {
 	srv := &Server{
 		h:   h,
-		mux: chi.NewMux(),
 		cfg: newConfig(opts...),
 	}
-	srv.setupRoutes()
 	return srv
 }
 
-func (s *Server) setupRoutes() {
-	s.mux.MethodFunc("DELETE", "/pets/{id}", s.HandleDeletePetRequest)
-}
-
-func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	s.mux.ServeHTTP(w, r)
+func (s *Server) Register(mux chi.Mux) {
+	mux.MethodFunc("DELETE", "/pets/{id}", s.HandleDeletePetRequest)
 }

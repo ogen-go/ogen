@@ -67,14 +67,24 @@ var (
 // Handler handles operations described by OpenAPI v3 specification.
 type Handler interface {
 	// Caching implements Caching operation.
+	//
+	// GET /cached-worlds
 	Caching(ctx context.Context, params CachingParams) (WorldObjects, error)
 	// DB implements DB operation.
+	//
+	// GET /db
 	DB(ctx context.Context) (WorldObject, error)
 	// JSON implements json operation.
+	//
+	// GET /json
 	JSON(ctx context.Context) (HelloWorld, error)
 	// Queries implements Queries operation.
+	//
+	// GET /queries
 	Queries(ctx context.Context, params QueriesParams) (WorldObjects, error)
 	// Updates implements Updates operation.
+	//
+	// GET /updates
 	Updates(ctx context.Context, params UpdatesParams) (WorldObjects, error)
 }
 
@@ -82,28 +92,21 @@ type Handler interface {
 // calls Handler to handle requests.
 type Server struct {
 	h   Handler
-	mux *chi.Mux
 	cfg config
 }
 
 func NewServer(h Handler, opts ...Option) *Server {
 	srv := &Server{
 		h:   h,
-		mux: chi.NewMux(),
 		cfg: newConfig(opts...),
 	}
-	srv.setupRoutes()
 	return srv
 }
 
-func (s *Server) setupRoutes() {
-	s.mux.MethodFunc("GET", "/cached-worlds", s.HandleCachingRequest)
-	s.mux.MethodFunc("GET", "/db", s.HandleDBRequest)
-	s.mux.MethodFunc("GET", "/json", s.HandleJSONRequest)
-	s.mux.MethodFunc("GET", "/queries", s.HandleQueriesRequest)
-	s.mux.MethodFunc("GET", "/updates", s.HandleUpdatesRequest)
-}
-
-func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	s.mux.ServeHTTP(w, r)
+func (s *Server) Register(mux chi.Mux) {
+	mux.MethodFunc("GET", "/cached-worlds", s.HandleCachingRequest)
+	mux.MethodFunc("GET", "/db", s.HandleDBRequest)
+	mux.MethodFunc("GET", "/json", s.HandleJSONRequest)
+	mux.MethodFunc("GET", "/queries", s.HandleQueriesRequest)
+	mux.MethodFunc("GET", "/updates", s.HandleUpdatesRequest)
 }

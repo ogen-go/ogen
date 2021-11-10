@@ -95,7 +95,9 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 	return c, nil
 }
 
-// GetAPIVersions implements getAPIVersions operation.
+// GetAPIVersions invokes getAPIVersions operation.
+//
+// GET /apis/
 func (c *Client) GetAPIVersions(ctx context.Context) (res GetAPIVersionsRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetAPIVersions`,
@@ -133,7 +135,9 @@ func (c *Client) GetAPIVersions(ctx context.Context) (res GetAPIVersionsRes, err
 	return result, nil
 }
 
-// GetAdmissionregistrationAPIGroup implements getAdmissionregistrationAPIGroup operation.
+// GetAdmissionregistrationAPIGroup invokes getAdmissionregistrationAPIGroup operation.
+//
+// GET /apis/admissionregistration.k8s.io/
 func (c *Client) GetAdmissionregistrationAPIGroup(ctx context.Context) (res GetAdmissionregistrationAPIGroupRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetAdmissionregistrationAPIGroup`,
@@ -171,7 +175,9 @@ func (c *Client) GetAdmissionregistrationAPIGroup(ctx context.Context) (res GetA
 	return result, nil
 }
 
-// GetAdmissionregistrationV1APIResources implements getAdmissionregistrationV1APIResources operation.
+// GetAdmissionregistrationV1APIResources invokes getAdmissionregistrationV1APIResources operation.
+//
+// GET /apis/admissionregistration.k8s.io/v1/
 func (c *Client) GetAdmissionregistrationV1APIResources(ctx context.Context) (res GetAdmissionregistrationV1APIResourcesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetAdmissionregistrationV1APIResources`,
@@ -209,7 +215,9 @@ func (c *Client) GetAdmissionregistrationV1APIResources(ctx context.Context) (re
 	return result, nil
 }
 
-// GetApiextensionsAPIGroup implements getApiextensionsAPIGroup operation.
+// GetApiextensionsAPIGroup invokes getApiextensionsAPIGroup operation.
+//
+// GET /apis/apiextensions.k8s.io/
 func (c *Client) GetApiextensionsAPIGroup(ctx context.Context) (res GetApiextensionsAPIGroupRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetApiextensionsAPIGroup`,
@@ -247,7 +255,9 @@ func (c *Client) GetApiextensionsAPIGroup(ctx context.Context) (res GetApiextens
 	return result, nil
 }
 
-// GetApiextensionsV1APIResources implements getApiextensionsV1APIResources operation.
+// GetApiextensionsV1APIResources invokes getApiextensionsV1APIResources operation.
+//
+// GET /apis/apiextensions.k8s.io/v1/
 func (c *Client) GetApiextensionsV1APIResources(ctx context.Context) (res GetApiextensionsV1APIResourcesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetApiextensionsV1APIResources`,
@@ -285,7 +295,9 @@ func (c *Client) GetApiextensionsV1APIResources(ctx context.Context) (res GetApi
 	return result, nil
 }
 
-// GetApiregistrationAPIGroup implements getApiregistrationAPIGroup operation.
+// GetApiregistrationAPIGroup invokes getApiregistrationAPIGroup operation.
+//
+// GET /apis/apiregistration.k8s.io/
 func (c *Client) GetApiregistrationAPIGroup(ctx context.Context) (res GetApiregistrationAPIGroupRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetApiregistrationAPIGroup`,
@@ -323,7 +335,9 @@ func (c *Client) GetApiregistrationAPIGroup(ctx context.Context) (res GetApiregi
 	return result, nil
 }
 
-// GetApiregistrationV1APIResources implements getApiregistrationV1APIResources operation.
+// GetApiregistrationV1APIResources invokes getApiregistrationV1APIResources operation.
+//
+// GET /apis/apiregistration.k8s.io/v1/
 func (c *Client) GetApiregistrationV1APIResources(ctx context.Context) (res GetApiregistrationV1APIResourcesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetApiregistrationV1APIResources`,
@@ -361,7 +375,9 @@ func (c *Client) GetApiregistrationV1APIResources(ctx context.Context) (res GetA
 	return result, nil
 }
 
-// GetAppsAPIGroup implements getAppsAPIGroup operation.
+// GetAppsAPIGroup invokes getAppsAPIGroup operation.
+//
+// GET /apis/apps/
 func (c *Client) GetAppsAPIGroup(ctx context.Context) (res GetAppsAPIGroupRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetAppsAPIGroup`,
@@ -399,7 +415,9 @@ func (c *Client) GetAppsAPIGroup(ctx context.Context) (res GetAppsAPIGroupRes, e
 	return result, nil
 }
 
-// GetAppsV1APIResources implements getAppsV1APIResources operation.
+// GetAppsV1APIResources invokes getAppsV1APIResources operation.
+//
+// GET /apis/apps/v1/
 func (c *Client) GetAppsV1APIResources(ctx context.Context) (res GetAppsV1APIResourcesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetAppsV1APIResources`,
@@ -437,7 +455,9 @@ func (c *Client) GetAppsV1APIResources(ctx context.Context) (res GetAppsV1APIRes
 	return result, nil
 }
 
-// GetAuthenticationAPIGroup implements getAuthenticationAPIGroup operation.
+// GetAuthenticationAPIGroup invokes getAuthenticationAPIGroup operation.
+//
+// GET /apis/authentication.k8s.io/
 func (c *Client) GetAuthenticationAPIGroup(ctx context.Context) (res GetAuthenticationAPIGroupRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetAuthenticationAPIGroup`,
@@ -475,7 +495,9 @@ func (c *Client) GetAuthenticationAPIGroup(ctx context.Context) (res GetAuthenti
 	return result, nil
 }
 
-// GetAuthenticationV1APIResources implements getAuthenticationV1APIResources operation.
+// GetAuthenticationV1APIResources invokes getAuthenticationV1APIResources operation.
+//
+// GET /apis/authentication.k8s.io/v1/
 func (c *Client) GetAuthenticationV1APIResources(ctx context.Context) (res GetAuthenticationV1APIResourcesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetAuthenticationV1APIResources`,
@@ -513,7 +535,9 @@ func (c *Client) GetAuthenticationV1APIResources(ctx context.Context) (res GetAu
 	return result, nil
 }
 
-// GetAuthorizationAPIGroup implements getAuthorizationAPIGroup operation.
+// GetAuthorizationAPIGroup invokes getAuthorizationAPIGroup operation.
+//
+// GET /apis/authorization.k8s.io/
 func (c *Client) GetAuthorizationAPIGroup(ctx context.Context) (res GetAuthorizationAPIGroupRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetAuthorizationAPIGroup`,
@@ -551,7 +575,9 @@ func (c *Client) GetAuthorizationAPIGroup(ctx context.Context) (res GetAuthoriza
 	return result, nil
 }
 
-// GetAuthorizationV1APIResources implements getAuthorizationV1APIResources operation.
+// GetAuthorizationV1APIResources invokes getAuthorizationV1APIResources operation.
+//
+// GET /apis/authorization.k8s.io/v1/
 func (c *Client) GetAuthorizationV1APIResources(ctx context.Context) (res GetAuthorizationV1APIResourcesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetAuthorizationV1APIResources`,
@@ -589,7 +615,9 @@ func (c *Client) GetAuthorizationV1APIResources(ctx context.Context) (res GetAut
 	return result, nil
 }
 
-// GetAutoscalingAPIGroup implements getAutoscalingAPIGroup operation.
+// GetAutoscalingAPIGroup invokes getAutoscalingAPIGroup operation.
+//
+// GET /apis/autoscaling/
 func (c *Client) GetAutoscalingAPIGroup(ctx context.Context) (res GetAutoscalingAPIGroupRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetAutoscalingAPIGroup`,
@@ -627,7 +655,9 @@ func (c *Client) GetAutoscalingAPIGroup(ctx context.Context) (res GetAutoscaling
 	return result, nil
 }
 
-// GetAutoscalingV1APIResources implements getAutoscalingV1APIResources operation.
+// GetAutoscalingV1APIResources invokes getAutoscalingV1APIResources operation.
+//
+// GET /apis/autoscaling/v1/
 func (c *Client) GetAutoscalingV1APIResources(ctx context.Context) (res GetAutoscalingV1APIResourcesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetAutoscalingV1APIResources`,
@@ -665,7 +695,9 @@ func (c *Client) GetAutoscalingV1APIResources(ctx context.Context) (res GetAutos
 	return result, nil
 }
 
-// GetAutoscalingV2beta1APIResources implements getAutoscalingV2beta1APIResources operation.
+// GetAutoscalingV2beta1APIResources invokes getAutoscalingV2beta1APIResources operation.
+//
+// GET /apis/autoscaling/v2beta1/
 func (c *Client) GetAutoscalingV2beta1APIResources(ctx context.Context) (res GetAutoscalingV2beta1APIResourcesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetAutoscalingV2beta1APIResources`,
@@ -703,7 +735,9 @@ func (c *Client) GetAutoscalingV2beta1APIResources(ctx context.Context) (res Get
 	return result, nil
 }
 
-// GetAutoscalingV2beta2APIResources implements getAutoscalingV2beta2APIResources operation.
+// GetAutoscalingV2beta2APIResources invokes getAutoscalingV2beta2APIResources operation.
+//
+// GET /apis/autoscaling/v2beta2/
 func (c *Client) GetAutoscalingV2beta2APIResources(ctx context.Context) (res GetAutoscalingV2beta2APIResourcesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetAutoscalingV2beta2APIResources`,
@@ -741,7 +775,9 @@ func (c *Client) GetAutoscalingV2beta2APIResources(ctx context.Context) (res Get
 	return result, nil
 }
 
-// GetBatchAPIGroup implements getBatchAPIGroup operation.
+// GetBatchAPIGroup invokes getBatchAPIGroup operation.
+//
+// GET /apis/batch/
 func (c *Client) GetBatchAPIGroup(ctx context.Context) (res GetBatchAPIGroupRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetBatchAPIGroup`,
@@ -779,7 +815,9 @@ func (c *Client) GetBatchAPIGroup(ctx context.Context) (res GetBatchAPIGroupRes,
 	return result, nil
 }
 
-// GetBatchV1APIResources implements getBatchV1APIResources operation.
+// GetBatchV1APIResources invokes getBatchV1APIResources operation.
+//
+// GET /apis/batch/v1/
 func (c *Client) GetBatchV1APIResources(ctx context.Context) (res GetBatchV1APIResourcesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetBatchV1APIResources`,
@@ -817,7 +855,9 @@ func (c *Client) GetBatchV1APIResources(ctx context.Context) (res GetBatchV1APIR
 	return result, nil
 }
 
-// GetBatchV1beta1APIResources implements getBatchV1beta1APIResources operation.
+// GetBatchV1beta1APIResources invokes getBatchV1beta1APIResources operation.
+//
+// GET /apis/batch/v1beta1/
 func (c *Client) GetBatchV1beta1APIResources(ctx context.Context) (res GetBatchV1beta1APIResourcesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetBatchV1beta1APIResources`,
@@ -855,7 +895,9 @@ func (c *Client) GetBatchV1beta1APIResources(ctx context.Context) (res GetBatchV
 	return result, nil
 }
 
-// GetCertificatesAPIGroup implements getCertificatesAPIGroup operation.
+// GetCertificatesAPIGroup invokes getCertificatesAPIGroup operation.
+//
+// GET /apis/certificates.k8s.io/
 func (c *Client) GetCertificatesAPIGroup(ctx context.Context) (res GetCertificatesAPIGroupRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetCertificatesAPIGroup`,
@@ -893,7 +935,9 @@ func (c *Client) GetCertificatesAPIGroup(ctx context.Context) (res GetCertificat
 	return result, nil
 }
 
-// GetCertificatesV1APIResources implements getCertificatesV1APIResources operation.
+// GetCertificatesV1APIResources invokes getCertificatesV1APIResources operation.
+//
+// GET /apis/certificates.k8s.io/v1/
 func (c *Client) GetCertificatesV1APIResources(ctx context.Context) (res GetCertificatesV1APIResourcesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetCertificatesV1APIResources`,
@@ -931,7 +975,9 @@ func (c *Client) GetCertificatesV1APIResources(ctx context.Context) (res GetCert
 	return result, nil
 }
 
-// GetCodeVersion implements getCodeVersion operation.
+// GetCodeVersion invokes getCodeVersion operation.
+//
+// GET /version/
 func (c *Client) GetCodeVersion(ctx context.Context) (res GetCodeVersionRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetCodeVersion`,
@@ -969,7 +1015,9 @@ func (c *Client) GetCodeVersion(ctx context.Context) (res GetCodeVersionRes, err
 	return result, nil
 }
 
-// GetCoordinationAPIGroup implements getCoordinationAPIGroup operation.
+// GetCoordinationAPIGroup invokes getCoordinationAPIGroup operation.
+//
+// GET /apis/coordination.k8s.io/
 func (c *Client) GetCoordinationAPIGroup(ctx context.Context) (res GetCoordinationAPIGroupRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetCoordinationAPIGroup`,
@@ -1007,7 +1055,9 @@ func (c *Client) GetCoordinationAPIGroup(ctx context.Context) (res GetCoordinati
 	return result, nil
 }
 
-// GetCoordinationV1APIResources implements getCoordinationV1APIResources operation.
+// GetCoordinationV1APIResources invokes getCoordinationV1APIResources operation.
+//
+// GET /apis/coordination.k8s.io/v1/
 func (c *Client) GetCoordinationV1APIResources(ctx context.Context) (res GetCoordinationV1APIResourcesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetCoordinationV1APIResources`,
@@ -1045,7 +1095,9 @@ func (c *Client) GetCoordinationV1APIResources(ctx context.Context) (res GetCoor
 	return result, nil
 }
 
-// GetCoreAPIVersions implements getCoreAPIVersions operation.
+// GetCoreAPIVersions invokes getCoreAPIVersions operation.
+//
+// GET /api/
 func (c *Client) GetCoreAPIVersions(ctx context.Context) (res GetCoreAPIVersionsRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetCoreAPIVersions`,
@@ -1083,7 +1135,9 @@ func (c *Client) GetCoreAPIVersions(ctx context.Context) (res GetCoreAPIVersions
 	return result, nil
 }
 
-// GetCoreV1APIResources implements getCoreV1APIResources operation.
+// GetCoreV1APIResources invokes getCoreV1APIResources operation.
+//
+// GET /api/v1/
 func (c *Client) GetCoreV1APIResources(ctx context.Context) (res GetCoreV1APIResourcesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetCoreV1APIResources`,
@@ -1121,7 +1175,9 @@ func (c *Client) GetCoreV1APIResources(ctx context.Context) (res GetCoreV1APIRes
 	return result, nil
 }
 
-// GetDiscoveryAPIGroup implements getDiscoveryAPIGroup operation.
+// GetDiscoveryAPIGroup invokes getDiscoveryAPIGroup operation.
+//
+// GET /apis/discovery.k8s.io/
 func (c *Client) GetDiscoveryAPIGroup(ctx context.Context) (res GetDiscoveryAPIGroupRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetDiscoveryAPIGroup`,
@@ -1159,7 +1215,9 @@ func (c *Client) GetDiscoveryAPIGroup(ctx context.Context) (res GetDiscoveryAPIG
 	return result, nil
 }
 
-// GetDiscoveryV1APIResources implements getDiscoveryV1APIResources operation.
+// GetDiscoveryV1APIResources invokes getDiscoveryV1APIResources operation.
+//
+// GET /apis/discovery.k8s.io/v1/
 func (c *Client) GetDiscoveryV1APIResources(ctx context.Context) (res GetDiscoveryV1APIResourcesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetDiscoveryV1APIResources`,
@@ -1197,7 +1255,9 @@ func (c *Client) GetDiscoveryV1APIResources(ctx context.Context) (res GetDiscove
 	return result, nil
 }
 
-// GetDiscoveryV1beta1APIResources implements getDiscoveryV1beta1APIResources operation.
+// GetDiscoveryV1beta1APIResources invokes getDiscoveryV1beta1APIResources operation.
+//
+// GET /apis/discovery.k8s.io/v1beta1/
 func (c *Client) GetDiscoveryV1beta1APIResources(ctx context.Context) (res GetDiscoveryV1beta1APIResourcesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetDiscoveryV1beta1APIResources`,
@@ -1235,7 +1295,9 @@ func (c *Client) GetDiscoveryV1beta1APIResources(ctx context.Context) (res GetDi
 	return result, nil
 }
 
-// GetEventsAPIGroup implements getEventsAPIGroup operation.
+// GetEventsAPIGroup invokes getEventsAPIGroup operation.
+//
+// GET /apis/events.k8s.io/
 func (c *Client) GetEventsAPIGroup(ctx context.Context) (res GetEventsAPIGroupRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetEventsAPIGroup`,
@@ -1273,7 +1335,9 @@ func (c *Client) GetEventsAPIGroup(ctx context.Context) (res GetEventsAPIGroupRe
 	return result, nil
 }
 
-// GetEventsV1APIResources implements getEventsV1APIResources operation.
+// GetEventsV1APIResources invokes getEventsV1APIResources operation.
+//
+// GET /apis/events.k8s.io/v1/
 func (c *Client) GetEventsV1APIResources(ctx context.Context) (res GetEventsV1APIResourcesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetEventsV1APIResources`,
@@ -1311,7 +1375,9 @@ func (c *Client) GetEventsV1APIResources(ctx context.Context) (res GetEventsV1AP
 	return result, nil
 }
 
-// GetEventsV1beta1APIResources implements getEventsV1beta1APIResources operation.
+// GetEventsV1beta1APIResources invokes getEventsV1beta1APIResources operation.
+//
+// GET /apis/events.k8s.io/v1beta1/
 func (c *Client) GetEventsV1beta1APIResources(ctx context.Context) (res GetEventsV1beta1APIResourcesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetEventsV1beta1APIResources`,
@@ -1349,7 +1415,9 @@ func (c *Client) GetEventsV1beta1APIResources(ctx context.Context) (res GetEvent
 	return result, nil
 }
 
-// GetFlowcontrolApiserverAPIGroup implements getFlowcontrolApiserverAPIGroup operation.
+// GetFlowcontrolApiserverAPIGroup invokes getFlowcontrolApiserverAPIGroup operation.
+//
+// GET /apis/flowcontrol.apiserver.k8s.io/
 func (c *Client) GetFlowcontrolApiserverAPIGroup(ctx context.Context) (res GetFlowcontrolApiserverAPIGroupRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetFlowcontrolApiserverAPIGroup`,
@@ -1387,7 +1455,9 @@ func (c *Client) GetFlowcontrolApiserverAPIGroup(ctx context.Context) (res GetFl
 	return result, nil
 }
 
-// GetFlowcontrolApiserverV1beta1APIResources implements getFlowcontrolApiserverV1beta1APIResources operation.
+// GetFlowcontrolApiserverV1beta1APIResources invokes getFlowcontrolApiserverV1beta1APIResources operation.
+//
+// GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/
 func (c *Client) GetFlowcontrolApiserverV1beta1APIResources(ctx context.Context) (res GetFlowcontrolApiserverV1beta1APIResourcesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetFlowcontrolApiserverV1beta1APIResources`,
@@ -1425,7 +1495,9 @@ func (c *Client) GetFlowcontrolApiserverV1beta1APIResources(ctx context.Context)
 	return result, nil
 }
 
-// GetFlowcontrolApiserverV1beta2APIResources implements getFlowcontrolApiserverV1beta2APIResources operation.
+// GetFlowcontrolApiserverV1beta2APIResources invokes getFlowcontrolApiserverV1beta2APIResources operation.
+//
+// GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/
 func (c *Client) GetFlowcontrolApiserverV1beta2APIResources(ctx context.Context) (res GetFlowcontrolApiserverV1beta2APIResourcesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetFlowcontrolApiserverV1beta2APIResources`,
@@ -1463,7 +1535,9 @@ func (c *Client) GetFlowcontrolApiserverV1beta2APIResources(ctx context.Context)
 	return result, nil
 }
 
-// GetInternalApiserverAPIGroup implements getInternalApiserverAPIGroup operation.
+// GetInternalApiserverAPIGroup invokes getInternalApiserverAPIGroup operation.
+//
+// GET /apis/internal.apiserver.k8s.io/
 func (c *Client) GetInternalApiserverAPIGroup(ctx context.Context) (res GetInternalApiserverAPIGroupRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetInternalApiserverAPIGroup`,
@@ -1501,7 +1575,9 @@ func (c *Client) GetInternalApiserverAPIGroup(ctx context.Context) (res GetInter
 	return result, nil
 }
 
-// GetInternalApiserverV1alpha1APIResources implements getInternalApiserverV1alpha1APIResources operation.
+// GetInternalApiserverV1alpha1APIResources invokes getInternalApiserverV1alpha1APIResources operation.
+//
+// GET /apis/internal.apiserver.k8s.io/v1alpha1/
 func (c *Client) GetInternalApiserverV1alpha1APIResources(ctx context.Context) (res GetInternalApiserverV1alpha1APIResourcesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetInternalApiserverV1alpha1APIResources`,
@@ -1539,7 +1615,9 @@ func (c *Client) GetInternalApiserverV1alpha1APIResources(ctx context.Context) (
 	return result, nil
 }
 
-// GetNetworkingAPIGroup implements getNetworkingAPIGroup operation.
+// GetNetworkingAPIGroup invokes getNetworkingAPIGroup operation.
+//
+// GET /apis/networking.k8s.io/
 func (c *Client) GetNetworkingAPIGroup(ctx context.Context) (res GetNetworkingAPIGroupRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetNetworkingAPIGroup`,
@@ -1577,7 +1655,9 @@ func (c *Client) GetNetworkingAPIGroup(ctx context.Context) (res GetNetworkingAP
 	return result, nil
 }
 
-// GetNetworkingV1APIResources implements getNetworkingV1APIResources operation.
+// GetNetworkingV1APIResources invokes getNetworkingV1APIResources operation.
+//
+// GET /apis/networking.k8s.io/v1/
 func (c *Client) GetNetworkingV1APIResources(ctx context.Context) (res GetNetworkingV1APIResourcesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetNetworkingV1APIResources`,
@@ -1615,7 +1695,9 @@ func (c *Client) GetNetworkingV1APIResources(ctx context.Context) (res GetNetwor
 	return result, nil
 }
 
-// GetNodeAPIGroup implements getNodeAPIGroup operation.
+// GetNodeAPIGroup invokes getNodeAPIGroup operation.
+//
+// GET /apis/node.k8s.io/
 func (c *Client) GetNodeAPIGroup(ctx context.Context) (res GetNodeAPIGroupRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetNodeAPIGroup`,
@@ -1653,7 +1735,9 @@ func (c *Client) GetNodeAPIGroup(ctx context.Context) (res GetNodeAPIGroupRes, e
 	return result, nil
 }
 
-// GetNodeV1APIResources implements getNodeV1APIResources operation.
+// GetNodeV1APIResources invokes getNodeV1APIResources operation.
+//
+// GET /apis/node.k8s.io/v1/
 func (c *Client) GetNodeV1APIResources(ctx context.Context) (res GetNodeV1APIResourcesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetNodeV1APIResources`,
@@ -1691,7 +1775,9 @@ func (c *Client) GetNodeV1APIResources(ctx context.Context) (res GetNodeV1APIRes
 	return result, nil
 }
 
-// GetNodeV1alpha1APIResources implements getNodeV1alpha1APIResources operation.
+// GetNodeV1alpha1APIResources invokes getNodeV1alpha1APIResources operation.
+//
+// GET /apis/node.k8s.io/v1alpha1/
 func (c *Client) GetNodeV1alpha1APIResources(ctx context.Context) (res GetNodeV1alpha1APIResourcesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetNodeV1alpha1APIResources`,
@@ -1729,7 +1815,9 @@ func (c *Client) GetNodeV1alpha1APIResources(ctx context.Context) (res GetNodeV1
 	return result, nil
 }
 
-// GetNodeV1beta1APIResources implements getNodeV1beta1APIResources operation.
+// GetNodeV1beta1APIResources invokes getNodeV1beta1APIResources operation.
+//
+// GET /apis/node.k8s.io/v1beta1/
 func (c *Client) GetNodeV1beta1APIResources(ctx context.Context) (res GetNodeV1beta1APIResourcesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetNodeV1beta1APIResources`,
@@ -1767,7 +1855,9 @@ func (c *Client) GetNodeV1beta1APIResources(ctx context.Context) (res GetNodeV1b
 	return result, nil
 }
 
-// GetPolicyAPIGroup implements getPolicyAPIGroup operation.
+// GetPolicyAPIGroup invokes getPolicyAPIGroup operation.
+//
+// GET /apis/policy/
 func (c *Client) GetPolicyAPIGroup(ctx context.Context) (res GetPolicyAPIGroupRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetPolicyAPIGroup`,
@@ -1805,7 +1895,9 @@ func (c *Client) GetPolicyAPIGroup(ctx context.Context) (res GetPolicyAPIGroupRe
 	return result, nil
 }
 
-// GetPolicyV1APIResources implements getPolicyV1APIResources operation.
+// GetPolicyV1APIResources invokes getPolicyV1APIResources operation.
+//
+// GET /apis/policy/v1/
 func (c *Client) GetPolicyV1APIResources(ctx context.Context) (res GetPolicyV1APIResourcesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetPolicyV1APIResources`,
@@ -1843,7 +1935,9 @@ func (c *Client) GetPolicyV1APIResources(ctx context.Context) (res GetPolicyV1AP
 	return result, nil
 }
 
-// GetPolicyV1beta1APIResources implements getPolicyV1beta1APIResources operation.
+// GetPolicyV1beta1APIResources invokes getPolicyV1beta1APIResources operation.
+//
+// GET /apis/policy/v1beta1/
 func (c *Client) GetPolicyV1beta1APIResources(ctx context.Context) (res GetPolicyV1beta1APIResourcesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetPolicyV1beta1APIResources`,
@@ -1881,7 +1975,9 @@ func (c *Client) GetPolicyV1beta1APIResources(ctx context.Context) (res GetPolic
 	return result, nil
 }
 
-// GetRbacAuthorizationAPIGroup implements getRbacAuthorizationAPIGroup operation.
+// GetRbacAuthorizationAPIGroup invokes getRbacAuthorizationAPIGroup operation.
+//
+// GET /apis/rbac.authorization.k8s.io/
 func (c *Client) GetRbacAuthorizationAPIGroup(ctx context.Context) (res GetRbacAuthorizationAPIGroupRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetRbacAuthorizationAPIGroup`,
@@ -1919,7 +2015,9 @@ func (c *Client) GetRbacAuthorizationAPIGroup(ctx context.Context) (res GetRbacA
 	return result, nil
 }
 
-// GetRbacAuthorizationV1APIResources implements getRbacAuthorizationV1APIResources operation.
+// GetRbacAuthorizationV1APIResources invokes getRbacAuthorizationV1APIResources operation.
+//
+// GET /apis/rbac.authorization.k8s.io/v1/
 func (c *Client) GetRbacAuthorizationV1APIResources(ctx context.Context) (res GetRbacAuthorizationV1APIResourcesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetRbacAuthorizationV1APIResources`,
@@ -1957,7 +2055,9 @@ func (c *Client) GetRbacAuthorizationV1APIResources(ctx context.Context) (res Ge
 	return result, nil
 }
 
-// GetSchedulingAPIGroup implements getSchedulingAPIGroup operation.
+// GetSchedulingAPIGroup invokes getSchedulingAPIGroup operation.
+//
+// GET /apis/scheduling.k8s.io/
 func (c *Client) GetSchedulingAPIGroup(ctx context.Context) (res GetSchedulingAPIGroupRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetSchedulingAPIGroup`,
@@ -1995,7 +2095,9 @@ func (c *Client) GetSchedulingAPIGroup(ctx context.Context) (res GetSchedulingAP
 	return result, nil
 }
 
-// GetSchedulingV1APIResources implements getSchedulingV1APIResources operation.
+// GetSchedulingV1APIResources invokes getSchedulingV1APIResources operation.
+//
+// GET /apis/scheduling.k8s.io/v1/
 func (c *Client) GetSchedulingV1APIResources(ctx context.Context) (res GetSchedulingV1APIResourcesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetSchedulingV1APIResources`,
@@ -2033,7 +2135,9 @@ func (c *Client) GetSchedulingV1APIResources(ctx context.Context) (res GetSchedu
 	return result, nil
 }
 
-// GetServiceAccountIssuerOpenIDConfiguration implements getServiceAccountIssuerOpenIDConfiguration operation.
+// GetServiceAccountIssuerOpenIDConfiguration invokes getServiceAccountIssuerOpenIDConfiguration operation.
+//
+// GET /.well-known/openid-configuration/
 func (c *Client) GetServiceAccountIssuerOpenIDConfiguration(ctx context.Context) (res GetServiceAccountIssuerOpenIDConfigurationRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetServiceAccountIssuerOpenIDConfiguration`,
@@ -2071,7 +2175,9 @@ func (c *Client) GetServiceAccountIssuerOpenIDConfiguration(ctx context.Context)
 	return result, nil
 }
 
-// GetStorageAPIGroup implements getStorageAPIGroup operation.
+// GetStorageAPIGroup invokes getStorageAPIGroup operation.
+//
+// GET /apis/storage.k8s.io/
 func (c *Client) GetStorageAPIGroup(ctx context.Context) (res GetStorageAPIGroupRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetStorageAPIGroup`,
@@ -2109,7 +2215,9 @@ func (c *Client) GetStorageAPIGroup(ctx context.Context) (res GetStorageAPIGroup
 	return result, nil
 }
 
-// GetStorageV1APIResources implements getStorageV1APIResources operation.
+// GetStorageV1APIResources invokes getStorageV1APIResources operation.
+//
+// GET /apis/storage.k8s.io/v1/
 func (c *Client) GetStorageV1APIResources(ctx context.Context) (res GetStorageV1APIResourcesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetStorageV1APIResources`,
@@ -2147,7 +2255,9 @@ func (c *Client) GetStorageV1APIResources(ctx context.Context) (res GetStorageV1
 	return result, nil
 }
 
-// GetStorageV1alpha1APIResources implements getStorageV1alpha1APIResources operation.
+// GetStorageV1alpha1APIResources invokes getStorageV1alpha1APIResources operation.
+//
+// GET /apis/storage.k8s.io/v1alpha1/
 func (c *Client) GetStorageV1alpha1APIResources(ctx context.Context) (res GetStorageV1alpha1APIResourcesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetStorageV1alpha1APIResources`,
@@ -2185,7 +2295,9 @@ func (c *Client) GetStorageV1alpha1APIResources(ctx context.Context) (res GetSto
 	return result, nil
 }
 
-// GetStorageV1beta1APIResources implements getStorageV1beta1APIResources operation.
+// GetStorageV1beta1APIResources invokes getStorageV1beta1APIResources operation.
+//
+// GET /apis/storage.k8s.io/v1beta1/
 func (c *Client) GetStorageV1beta1APIResources(ctx context.Context) (res GetStorageV1beta1APIResourcesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetStorageV1beta1APIResources`,
@@ -2223,7 +2335,9 @@ func (c *Client) GetStorageV1beta1APIResources(ctx context.Context) (res GetStor
 	return result, nil
 }
 
-// ListAdmissionregistrationV1MutatingWebhookConfiguration implements listAdmissionregistrationV1MutatingWebhookConfiguration operation.
+// ListAdmissionregistrationV1MutatingWebhookConfiguration invokes listAdmissionregistrationV1MutatingWebhookConfiguration operation.
+//
+// GET /apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations
 func (c *Client) ListAdmissionregistrationV1MutatingWebhookConfiguration(ctx context.Context, params ListAdmissionregistrationV1MutatingWebhookConfigurationParams) (res ListAdmissionregistrationV1MutatingWebhookConfigurationRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListAdmissionregistrationV1MutatingWebhookConfiguration`,
@@ -2424,7 +2538,9 @@ func (c *Client) ListAdmissionregistrationV1MutatingWebhookConfiguration(ctx con
 	return result, nil
 }
 
-// ListAdmissionregistrationV1ValidatingWebhookConfiguration implements listAdmissionregistrationV1ValidatingWebhookConfiguration operation.
+// ListAdmissionregistrationV1ValidatingWebhookConfiguration invokes listAdmissionregistrationV1ValidatingWebhookConfiguration operation.
+//
+// GET /apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations
 func (c *Client) ListAdmissionregistrationV1ValidatingWebhookConfiguration(ctx context.Context, params ListAdmissionregistrationV1ValidatingWebhookConfigurationParams) (res ListAdmissionregistrationV1ValidatingWebhookConfigurationRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListAdmissionregistrationV1ValidatingWebhookConfiguration`,
@@ -2625,7 +2741,9 @@ func (c *Client) ListAdmissionregistrationV1ValidatingWebhookConfiguration(ctx c
 	return result, nil
 }
 
-// ListApiextensionsV1CustomResourceDefinition implements listApiextensionsV1CustomResourceDefinition operation.
+// ListApiextensionsV1CustomResourceDefinition invokes listApiextensionsV1CustomResourceDefinition operation.
+//
+// GET /apis/apiextensions.k8s.io/v1/customresourcedefinitions
 func (c *Client) ListApiextensionsV1CustomResourceDefinition(ctx context.Context, params ListApiextensionsV1CustomResourceDefinitionParams) (res ListApiextensionsV1CustomResourceDefinitionRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListApiextensionsV1CustomResourceDefinition`,
@@ -2826,7 +2944,9 @@ func (c *Client) ListApiextensionsV1CustomResourceDefinition(ctx context.Context
 	return result, nil
 }
 
-// ListApiregistrationV1APIService implements listApiregistrationV1APIService operation.
+// ListApiregistrationV1APIService invokes listApiregistrationV1APIService operation.
+//
+// GET /apis/apiregistration.k8s.io/v1/apiservices
 func (c *Client) ListApiregistrationV1APIService(ctx context.Context, params ListApiregistrationV1APIServiceParams) (res ListApiregistrationV1APIServiceRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListApiregistrationV1APIService`,
@@ -3027,7 +3147,9 @@ func (c *Client) ListApiregistrationV1APIService(ctx context.Context, params Lis
 	return result, nil
 }
 
-// ListAppsV1ControllerRevisionForAllNamespaces implements listAppsV1ControllerRevisionForAllNamespaces operation.
+// ListAppsV1ControllerRevisionForAllNamespaces invokes listAppsV1ControllerRevisionForAllNamespaces operation.
+//
+// GET /apis/apps/v1/controllerrevisions
 func (c *Client) ListAppsV1ControllerRevisionForAllNamespaces(ctx context.Context, params ListAppsV1ControllerRevisionForAllNamespacesParams) (res ListAppsV1ControllerRevisionForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListAppsV1ControllerRevisionForAllNamespaces`,
@@ -3228,7 +3350,9 @@ func (c *Client) ListAppsV1ControllerRevisionForAllNamespaces(ctx context.Contex
 	return result, nil
 }
 
-// ListAppsV1DaemonSetForAllNamespaces implements listAppsV1DaemonSetForAllNamespaces operation.
+// ListAppsV1DaemonSetForAllNamespaces invokes listAppsV1DaemonSetForAllNamespaces operation.
+//
+// GET /apis/apps/v1/daemonsets
 func (c *Client) ListAppsV1DaemonSetForAllNamespaces(ctx context.Context, params ListAppsV1DaemonSetForAllNamespacesParams) (res ListAppsV1DaemonSetForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListAppsV1DaemonSetForAllNamespaces`,
@@ -3429,7 +3553,9 @@ func (c *Client) ListAppsV1DaemonSetForAllNamespaces(ctx context.Context, params
 	return result, nil
 }
 
-// ListAppsV1DeploymentForAllNamespaces implements listAppsV1DeploymentForAllNamespaces operation.
+// ListAppsV1DeploymentForAllNamespaces invokes listAppsV1DeploymentForAllNamespaces operation.
+//
+// GET /apis/apps/v1/deployments
 func (c *Client) ListAppsV1DeploymentForAllNamespaces(ctx context.Context, params ListAppsV1DeploymentForAllNamespacesParams) (res ListAppsV1DeploymentForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListAppsV1DeploymentForAllNamespaces`,
@@ -3630,7 +3756,9 @@ func (c *Client) ListAppsV1DeploymentForAllNamespaces(ctx context.Context, param
 	return result, nil
 }
 
-// ListAppsV1NamespacedControllerRevision implements listAppsV1NamespacedControllerRevision operation.
+// ListAppsV1NamespacedControllerRevision invokes listAppsV1NamespacedControllerRevision operation.
+//
+// GET /apis/apps/v1/namespaces/{namespace}/controllerrevisions
 func (c *Client) ListAppsV1NamespacedControllerRevision(ctx context.Context, params ListAppsV1NamespacedControllerRevisionParams) (res ListAppsV1NamespacedControllerRevisionRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListAppsV1NamespacedControllerRevision`,
@@ -3846,7 +3974,9 @@ func (c *Client) ListAppsV1NamespacedControllerRevision(ctx context.Context, par
 	return result, nil
 }
 
-// ListAppsV1NamespacedDaemonSet implements listAppsV1NamespacedDaemonSet operation.
+// ListAppsV1NamespacedDaemonSet invokes listAppsV1NamespacedDaemonSet operation.
+//
+// GET /apis/apps/v1/namespaces/{namespace}/daemonsets
 func (c *Client) ListAppsV1NamespacedDaemonSet(ctx context.Context, params ListAppsV1NamespacedDaemonSetParams) (res ListAppsV1NamespacedDaemonSetRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListAppsV1NamespacedDaemonSet`,
@@ -4062,7 +4192,9 @@ func (c *Client) ListAppsV1NamespacedDaemonSet(ctx context.Context, params ListA
 	return result, nil
 }
 
-// ListAppsV1NamespacedDeployment implements listAppsV1NamespacedDeployment operation.
+// ListAppsV1NamespacedDeployment invokes listAppsV1NamespacedDeployment operation.
+//
+// GET /apis/apps/v1/namespaces/{namespace}/deployments
 func (c *Client) ListAppsV1NamespacedDeployment(ctx context.Context, params ListAppsV1NamespacedDeploymentParams) (res ListAppsV1NamespacedDeploymentRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListAppsV1NamespacedDeployment`,
@@ -4278,7 +4410,9 @@ func (c *Client) ListAppsV1NamespacedDeployment(ctx context.Context, params List
 	return result, nil
 }
 
-// ListAppsV1NamespacedReplicaSet implements listAppsV1NamespacedReplicaSet operation.
+// ListAppsV1NamespacedReplicaSet invokes listAppsV1NamespacedReplicaSet operation.
+//
+// GET /apis/apps/v1/namespaces/{namespace}/replicasets
 func (c *Client) ListAppsV1NamespacedReplicaSet(ctx context.Context, params ListAppsV1NamespacedReplicaSetParams) (res ListAppsV1NamespacedReplicaSetRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListAppsV1NamespacedReplicaSet`,
@@ -4494,7 +4628,9 @@ func (c *Client) ListAppsV1NamespacedReplicaSet(ctx context.Context, params List
 	return result, nil
 }
 
-// ListAppsV1NamespacedStatefulSet implements listAppsV1NamespacedStatefulSet operation.
+// ListAppsV1NamespacedStatefulSet invokes listAppsV1NamespacedStatefulSet operation.
+//
+// GET /apis/apps/v1/namespaces/{namespace}/statefulsets
 func (c *Client) ListAppsV1NamespacedStatefulSet(ctx context.Context, params ListAppsV1NamespacedStatefulSetParams) (res ListAppsV1NamespacedStatefulSetRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListAppsV1NamespacedStatefulSet`,
@@ -4710,7 +4846,9 @@ func (c *Client) ListAppsV1NamespacedStatefulSet(ctx context.Context, params Lis
 	return result, nil
 }
 
-// ListAppsV1ReplicaSetForAllNamespaces implements listAppsV1ReplicaSetForAllNamespaces operation.
+// ListAppsV1ReplicaSetForAllNamespaces invokes listAppsV1ReplicaSetForAllNamespaces operation.
+//
+// GET /apis/apps/v1/replicasets
 func (c *Client) ListAppsV1ReplicaSetForAllNamespaces(ctx context.Context, params ListAppsV1ReplicaSetForAllNamespacesParams) (res ListAppsV1ReplicaSetForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListAppsV1ReplicaSetForAllNamespaces`,
@@ -4911,7 +5049,9 @@ func (c *Client) ListAppsV1ReplicaSetForAllNamespaces(ctx context.Context, param
 	return result, nil
 }
 
-// ListAppsV1StatefulSetForAllNamespaces implements listAppsV1StatefulSetForAllNamespaces operation.
+// ListAppsV1StatefulSetForAllNamespaces invokes listAppsV1StatefulSetForAllNamespaces operation.
+//
+// GET /apis/apps/v1/statefulsets
 func (c *Client) ListAppsV1StatefulSetForAllNamespaces(ctx context.Context, params ListAppsV1StatefulSetForAllNamespacesParams) (res ListAppsV1StatefulSetForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListAppsV1StatefulSetForAllNamespaces`,
@@ -5112,7 +5252,9 @@ func (c *Client) ListAppsV1StatefulSetForAllNamespaces(ctx context.Context, para
 	return result, nil
 }
 
-// ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces implements listAutoscalingV1HorizontalPodAutoscalerForAllNamespaces operation.
+// ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces invokes listAutoscalingV1HorizontalPodAutoscalerForAllNamespaces operation.
+//
+// GET /apis/autoscaling/v1/horizontalpodautoscalers
 func (c *Client) ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces(ctx context.Context, params ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesParams) (res ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces`,
@@ -5313,7 +5455,9 @@ func (c *Client) ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces(ctx co
 	return result, nil
 }
 
-// ListAutoscalingV1NamespacedHorizontalPodAutoscaler implements listAutoscalingV1NamespacedHorizontalPodAutoscaler operation.
+// ListAutoscalingV1NamespacedHorizontalPodAutoscaler invokes listAutoscalingV1NamespacedHorizontalPodAutoscaler operation.
+//
+// GET /apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers
 func (c *Client) ListAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx context.Context, params ListAutoscalingV1NamespacedHorizontalPodAutoscalerParams) (res ListAutoscalingV1NamespacedHorizontalPodAutoscalerRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListAutoscalingV1NamespacedHorizontalPodAutoscaler`,
@@ -5529,7 +5673,9 @@ func (c *Client) ListAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx context.
 	return result, nil
 }
 
-// ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces implements listAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces operation.
+// ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces invokes listAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces operation.
+//
+// GET /apis/autoscaling/v2beta1/horizontalpodautoscalers
 func (c *Client) ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces(ctx context.Context, params ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesParams) (res ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces`,
@@ -5730,7 +5876,9 @@ func (c *Client) ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces(c
 	return result, nil
 }
 
-// ListAutoscalingV2beta1NamespacedHorizontalPodAutoscaler implements listAutoscalingV2beta1NamespacedHorizontalPodAutoscaler operation.
+// ListAutoscalingV2beta1NamespacedHorizontalPodAutoscaler invokes listAutoscalingV2beta1NamespacedHorizontalPodAutoscaler operation.
+//
+// GET /apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers
 func (c *Client) ListAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx context.Context, params ListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams) (res ListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListAutoscalingV2beta1NamespacedHorizontalPodAutoscaler`,
@@ -5946,7 +6094,9 @@ func (c *Client) ListAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx con
 	return result, nil
 }
 
-// ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces implements listAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces operation.
+// ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces invokes listAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces operation.
+//
+// GET /apis/autoscaling/v2beta2/horizontalpodautoscalers
 func (c *Client) ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces(ctx context.Context, params ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesParams) (res ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces`,
@@ -6147,7 +6297,9 @@ func (c *Client) ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces(c
 	return result, nil
 }
 
-// ListAutoscalingV2beta2NamespacedHorizontalPodAutoscaler implements listAutoscalingV2beta2NamespacedHorizontalPodAutoscaler operation.
+// ListAutoscalingV2beta2NamespacedHorizontalPodAutoscaler invokes listAutoscalingV2beta2NamespacedHorizontalPodAutoscaler operation.
+//
+// GET /apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers
 func (c *Client) ListAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx context.Context, params ListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams) (res ListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListAutoscalingV2beta2NamespacedHorizontalPodAutoscaler`,
@@ -6363,7 +6515,9 @@ func (c *Client) ListAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx con
 	return result, nil
 }
 
-// ListBatchV1CronJobForAllNamespaces implements listBatchV1CronJobForAllNamespaces operation.
+// ListBatchV1CronJobForAllNamespaces invokes listBatchV1CronJobForAllNamespaces operation.
+//
+// GET /apis/batch/v1/cronjobs
 func (c *Client) ListBatchV1CronJobForAllNamespaces(ctx context.Context, params ListBatchV1CronJobForAllNamespacesParams) (res ListBatchV1CronJobForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListBatchV1CronJobForAllNamespaces`,
@@ -6564,7 +6718,9 @@ func (c *Client) ListBatchV1CronJobForAllNamespaces(ctx context.Context, params 
 	return result, nil
 }
 
-// ListBatchV1JobForAllNamespaces implements listBatchV1JobForAllNamespaces operation.
+// ListBatchV1JobForAllNamespaces invokes listBatchV1JobForAllNamespaces operation.
+//
+// GET /apis/batch/v1/jobs
 func (c *Client) ListBatchV1JobForAllNamespaces(ctx context.Context, params ListBatchV1JobForAllNamespacesParams) (res ListBatchV1JobForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListBatchV1JobForAllNamespaces`,
@@ -6765,7 +6921,9 @@ func (c *Client) ListBatchV1JobForAllNamespaces(ctx context.Context, params List
 	return result, nil
 }
 
-// ListBatchV1NamespacedCronJob implements listBatchV1NamespacedCronJob operation.
+// ListBatchV1NamespacedCronJob invokes listBatchV1NamespacedCronJob operation.
+//
+// GET /apis/batch/v1/namespaces/{namespace}/cronjobs
 func (c *Client) ListBatchV1NamespacedCronJob(ctx context.Context, params ListBatchV1NamespacedCronJobParams) (res ListBatchV1NamespacedCronJobRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListBatchV1NamespacedCronJob`,
@@ -6981,7 +7139,9 @@ func (c *Client) ListBatchV1NamespacedCronJob(ctx context.Context, params ListBa
 	return result, nil
 }
 
-// ListBatchV1NamespacedJob implements listBatchV1NamespacedJob operation.
+// ListBatchV1NamespacedJob invokes listBatchV1NamespacedJob operation.
+//
+// GET /apis/batch/v1/namespaces/{namespace}/jobs
 func (c *Client) ListBatchV1NamespacedJob(ctx context.Context, params ListBatchV1NamespacedJobParams) (res ListBatchV1NamespacedJobRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListBatchV1NamespacedJob`,
@@ -7197,7 +7357,9 @@ func (c *Client) ListBatchV1NamespacedJob(ctx context.Context, params ListBatchV
 	return result, nil
 }
 
-// ListBatchV1beta1CronJobForAllNamespaces implements listBatchV1beta1CronJobForAllNamespaces operation.
+// ListBatchV1beta1CronJobForAllNamespaces invokes listBatchV1beta1CronJobForAllNamespaces operation.
+//
+// GET /apis/batch/v1beta1/cronjobs
 func (c *Client) ListBatchV1beta1CronJobForAllNamespaces(ctx context.Context, params ListBatchV1beta1CronJobForAllNamespacesParams) (res ListBatchV1beta1CronJobForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListBatchV1beta1CronJobForAllNamespaces`,
@@ -7398,7 +7560,9 @@ func (c *Client) ListBatchV1beta1CronJobForAllNamespaces(ctx context.Context, pa
 	return result, nil
 }
 
-// ListBatchV1beta1NamespacedCronJob implements listBatchV1beta1NamespacedCronJob operation.
+// ListBatchV1beta1NamespacedCronJob invokes listBatchV1beta1NamespacedCronJob operation.
+//
+// GET /apis/batch/v1beta1/namespaces/{namespace}/cronjobs
 func (c *Client) ListBatchV1beta1NamespacedCronJob(ctx context.Context, params ListBatchV1beta1NamespacedCronJobParams) (res ListBatchV1beta1NamespacedCronJobRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListBatchV1beta1NamespacedCronJob`,
@@ -7614,7 +7778,9 @@ func (c *Client) ListBatchV1beta1NamespacedCronJob(ctx context.Context, params L
 	return result, nil
 }
 
-// ListCertificatesV1CertificateSigningRequest implements listCertificatesV1CertificateSigningRequest operation.
+// ListCertificatesV1CertificateSigningRequest invokes listCertificatesV1CertificateSigningRequest operation.
+//
+// GET /apis/certificates.k8s.io/v1/certificatesigningrequests
 func (c *Client) ListCertificatesV1CertificateSigningRequest(ctx context.Context, params ListCertificatesV1CertificateSigningRequestParams) (res ListCertificatesV1CertificateSigningRequestRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListCertificatesV1CertificateSigningRequest`,
@@ -7815,7 +7981,9 @@ func (c *Client) ListCertificatesV1CertificateSigningRequest(ctx context.Context
 	return result, nil
 }
 
-// ListCoordinationV1LeaseForAllNamespaces implements listCoordinationV1LeaseForAllNamespaces operation.
+// ListCoordinationV1LeaseForAllNamespaces invokes listCoordinationV1LeaseForAllNamespaces operation.
+//
+// GET /apis/coordination.k8s.io/v1/leases
 func (c *Client) ListCoordinationV1LeaseForAllNamespaces(ctx context.Context, params ListCoordinationV1LeaseForAllNamespacesParams) (res ListCoordinationV1LeaseForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListCoordinationV1LeaseForAllNamespaces`,
@@ -8016,7 +8184,9 @@ func (c *Client) ListCoordinationV1LeaseForAllNamespaces(ctx context.Context, pa
 	return result, nil
 }
 
-// ListCoordinationV1NamespacedLease implements listCoordinationV1NamespacedLease operation.
+// ListCoordinationV1NamespacedLease invokes listCoordinationV1NamespacedLease operation.
+//
+// GET /apis/coordination.k8s.io/v1/namespaces/{namespace}/leases
 func (c *Client) ListCoordinationV1NamespacedLease(ctx context.Context, params ListCoordinationV1NamespacedLeaseParams) (res ListCoordinationV1NamespacedLeaseRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListCoordinationV1NamespacedLease`,
@@ -8232,7 +8402,9 @@ func (c *Client) ListCoordinationV1NamespacedLease(ctx context.Context, params L
 	return result, nil
 }
 
-// ListCoreV1ComponentStatus implements listCoreV1ComponentStatus operation.
+// ListCoreV1ComponentStatus invokes listCoreV1ComponentStatus operation.
+//
+// GET /api/v1/componentstatuses
 func (c *Client) ListCoreV1ComponentStatus(ctx context.Context, params ListCoreV1ComponentStatusParams) (res ListCoreV1ComponentStatusRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListCoreV1ComponentStatus`,
@@ -8433,7 +8605,9 @@ func (c *Client) ListCoreV1ComponentStatus(ctx context.Context, params ListCoreV
 	return result, nil
 }
 
-// ListCoreV1ConfigMapForAllNamespaces implements listCoreV1ConfigMapForAllNamespaces operation.
+// ListCoreV1ConfigMapForAllNamespaces invokes listCoreV1ConfigMapForAllNamespaces operation.
+//
+// GET /api/v1/configmaps
 func (c *Client) ListCoreV1ConfigMapForAllNamespaces(ctx context.Context, params ListCoreV1ConfigMapForAllNamespacesParams) (res ListCoreV1ConfigMapForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListCoreV1ConfigMapForAllNamespaces`,
@@ -8634,7 +8808,9 @@ func (c *Client) ListCoreV1ConfigMapForAllNamespaces(ctx context.Context, params
 	return result, nil
 }
 
-// ListCoreV1EndpointsForAllNamespaces implements listCoreV1EndpointsForAllNamespaces operation.
+// ListCoreV1EndpointsForAllNamespaces invokes listCoreV1EndpointsForAllNamespaces operation.
+//
+// GET /api/v1/endpoints
 func (c *Client) ListCoreV1EndpointsForAllNamespaces(ctx context.Context, params ListCoreV1EndpointsForAllNamespacesParams) (res ListCoreV1EndpointsForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListCoreV1EndpointsForAllNamespaces`,
@@ -8835,7 +9011,9 @@ func (c *Client) ListCoreV1EndpointsForAllNamespaces(ctx context.Context, params
 	return result, nil
 }
 
-// ListCoreV1EventForAllNamespaces implements listCoreV1EventForAllNamespaces operation.
+// ListCoreV1EventForAllNamespaces invokes listCoreV1EventForAllNamespaces operation.
+//
+// GET /api/v1/events
 func (c *Client) ListCoreV1EventForAllNamespaces(ctx context.Context, params ListCoreV1EventForAllNamespacesParams) (res ListCoreV1EventForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListCoreV1EventForAllNamespaces`,
@@ -9036,7 +9214,9 @@ func (c *Client) ListCoreV1EventForAllNamespaces(ctx context.Context, params Lis
 	return result, nil
 }
 
-// ListCoreV1LimitRangeForAllNamespaces implements listCoreV1LimitRangeForAllNamespaces operation.
+// ListCoreV1LimitRangeForAllNamespaces invokes listCoreV1LimitRangeForAllNamespaces operation.
+//
+// GET /api/v1/limitranges
 func (c *Client) ListCoreV1LimitRangeForAllNamespaces(ctx context.Context, params ListCoreV1LimitRangeForAllNamespacesParams) (res ListCoreV1LimitRangeForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListCoreV1LimitRangeForAllNamespaces`,
@@ -9237,7 +9417,9 @@ func (c *Client) ListCoreV1LimitRangeForAllNamespaces(ctx context.Context, param
 	return result, nil
 }
 
-// ListCoreV1Namespace implements listCoreV1Namespace operation.
+// ListCoreV1Namespace invokes listCoreV1Namespace operation.
+//
+// GET /api/v1/namespaces
 func (c *Client) ListCoreV1Namespace(ctx context.Context, params ListCoreV1NamespaceParams) (res ListCoreV1NamespaceRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListCoreV1Namespace`,
@@ -9438,7 +9620,9 @@ func (c *Client) ListCoreV1Namespace(ctx context.Context, params ListCoreV1Names
 	return result, nil
 }
 
-// ListCoreV1NamespacedConfigMap implements listCoreV1NamespacedConfigMap operation.
+// ListCoreV1NamespacedConfigMap invokes listCoreV1NamespacedConfigMap operation.
+//
+// GET /api/v1/namespaces/{namespace}/configmaps
 func (c *Client) ListCoreV1NamespacedConfigMap(ctx context.Context, params ListCoreV1NamespacedConfigMapParams) (res ListCoreV1NamespacedConfigMapRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListCoreV1NamespacedConfigMap`,
@@ -9654,7 +9838,9 @@ func (c *Client) ListCoreV1NamespacedConfigMap(ctx context.Context, params ListC
 	return result, nil
 }
 
-// ListCoreV1NamespacedEndpoints implements listCoreV1NamespacedEndpoints operation.
+// ListCoreV1NamespacedEndpoints invokes listCoreV1NamespacedEndpoints operation.
+//
+// GET /api/v1/namespaces/{namespace}/endpoints
 func (c *Client) ListCoreV1NamespacedEndpoints(ctx context.Context, params ListCoreV1NamespacedEndpointsParams) (res ListCoreV1NamespacedEndpointsRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListCoreV1NamespacedEndpoints`,
@@ -9870,7 +10056,9 @@ func (c *Client) ListCoreV1NamespacedEndpoints(ctx context.Context, params ListC
 	return result, nil
 }
 
-// ListCoreV1NamespacedEvent implements listCoreV1NamespacedEvent operation.
+// ListCoreV1NamespacedEvent invokes listCoreV1NamespacedEvent operation.
+//
+// GET /api/v1/namespaces/{namespace}/events
 func (c *Client) ListCoreV1NamespacedEvent(ctx context.Context, params ListCoreV1NamespacedEventParams) (res ListCoreV1NamespacedEventRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListCoreV1NamespacedEvent`,
@@ -10086,7 +10274,9 @@ func (c *Client) ListCoreV1NamespacedEvent(ctx context.Context, params ListCoreV
 	return result, nil
 }
 
-// ListCoreV1NamespacedLimitRange implements listCoreV1NamespacedLimitRange operation.
+// ListCoreV1NamespacedLimitRange invokes listCoreV1NamespacedLimitRange operation.
+//
+// GET /api/v1/namespaces/{namespace}/limitranges
 func (c *Client) ListCoreV1NamespacedLimitRange(ctx context.Context, params ListCoreV1NamespacedLimitRangeParams) (res ListCoreV1NamespacedLimitRangeRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListCoreV1NamespacedLimitRange`,
@@ -10302,7 +10492,9 @@ func (c *Client) ListCoreV1NamespacedLimitRange(ctx context.Context, params List
 	return result, nil
 }
 
-// ListCoreV1NamespacedPersistentVolumeClaim implements listCoreV1NamespacedPersistentVolumeClaim operation.
+// ListCoreV1NamespacedPersistentVolumeClaim invokes listCoreV1NamespacedPersistentVolumeClaim operation.
+//
+// GET /api/v1/namespaces/{namespace}/persistentvolumeclaims
 func (c *Client) ListCoreV1NamespacedPersistentVolumeClaim(ctx context.Context, params ListCoreV1NamespacedPersistentVolumeClaimParams) (res ListCoreV1NamespacedPersistentVolumeClaimRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListCoreV1NamespacedPersistentVolumeClaim`,
@@ -10518,7 +10710,9 @@ func (c *Client) ListCoreV1NamespacedPersistentVolumeClaim(ctx context.Context, 
 	return result, nil
 }
 
-// ListCoreV1NamespacedPod implements listCoreV1NamespacedPod operation.
+// ListCoreV1NamespacedPod invokes listCoreV1NamespacedPod operation.
+//
+// GET /api/v1/namespaces/{namespace}/pods
 func (c *Client) ListCoreV1NamespacedPod(ctx context.Context, params ListCoreV1NamespacedPodParams) (res ListCoreV1NamespacedPodRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListCoreV1NamespacedPod`,
@@ -10734,7 +10928,9 @@ func (c *Client) ListCoreV1NamespacedPod(ctx context.Context, params ListCoreV1N
 	return result, nil
 }
 
-// ListCoreV1NamespacedPodTemplate implements listCoreV1NamespacedPodTemplate operation.
+// ListCoreV1NamespacedPodTemplate invokes listCoreV1NamespacedPodTemplate operation.
+//
+// GET /api/v1/namespaces/{namespace}/podtemplates
 func (c *Client) ListCoreV1NamespacedPodTemplate(ctx context.Context, params ListCoreV1NamespacedPodTemplateParams) (res ListCoreV1NamespacedPodTemplateRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListCoreV1NamespacedPodTemplate`,
@@ -10950,7 +11146,9 @@ func (c *Client) ListCoreV1NamespacedPodTemplate(ctx context.Context, params Lis
 	return result, nil
 }
 
-// ListCoreV1NamespacedReplicationController implements listCoreV1NamespacedReplicationController operation.
+// ListCoreV1NamespacedReplicationController invokes listCoreV1NamespacedReplicationController operation.
+//
+// GET /api/v1/namespaces/{namespace}/replicationcontrollers
 func (c *Client) ListCoreV1NamespacedReplicationController(ctx context.Context, params ListCoreV1NamespacedReplicationControllerParams) (res ListCoreV1NamespacedReplicationControllerRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListCoreV1NamespacedReplicationController`,
@@ -11166,7 +11364,9 @@ func (c *Client) ListCoreV1NamespacedReplicationController(ctx context.Context, 
 	return result, nil
 }
 
-// ListCoreV1NamespacedResourceQuota implements listCoreV1NamespacedResourceQuota operation.
+// ListCoreV1NamespacedResourceQuota invokes listCoreV1NamespacedResourceQuota operation.
+//
+// GET /api/v1/namespaces/{namespace}/resourcequotas
 func (c *Client) ListCoreV1NamespacedResourceQuota(ctx context.Context, params ListCoreV1NamespacedResourceQuotaParams) (res ListCoreV1NamespacedResourceQuotaRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListCoreV1NamespacedResourceQuota`,
@@ -11382,7 +11582,9 @@ func (c *Client) ListCoreV1NamespacedResourceQuota(ctx context.Context, params L
 	return result, nil
 }
 
-// ListCoreV1NamespacedSecret implements listCoreV1NamespacedSecret operation.
+// ListCoreV1NamespacedSecret invokes listCoreV1NamespacedSecret operation.
+//
+// GET /api/v1/namespaces/{namespace}/secrets
 func (c *Client) ListCoreV1NamespacedSecret(ctx context.Context, params ListCoreV1NamespacedSecretParams) (res ListCoreV1NamespacedSecretRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListCoreV1NamespacedSecret`,
@@ -11598,7 +11800,9 @@ func (c *Client) ListCoreV1NamespacedSecret(ctx context.Context, params ListCore
 	return result, nil
 }
 
-// ListCoreV1NamespacedService implements listCoreV1NamespacedService operation.
+// ListCoreV1NamespacedService invokes listCoreV1NamespacedService operation.
+//
+// GET /api/v1/namespaces/{namespace}/services
 func (c *Client) ListCoreV1NamespacedService(ctx context.Context, params ListCoreV1NamespacedServiceParams) (res ListCoreV1NamespacedServiceRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListCoreV1NamespacedService`,
@@ -11814,7 +12018,9 @@ func (c *Client) ListCoreV1NamespacedService(ctx context.Context, params ListCor
 	return result, nil
 }
 
-// ListCoreV1NamespacedServiceAccount implements listCoreV1NamespacedServiceAccount operation.
+// ListCoreV1NamespacedServiceAccount invokes listCoreV1NamespacedServiceAccount operation.
+//
+// GET /api/v1/namespaces/{namespace}/serviceaccounts
 func (c *Client) ListCoreV1NamespacedServiceAccount(ctx context.Context, params ListCoreV1NamespacedServiceAccountParams) (res ListCoreV1NamespacedServiceAccountRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListCoreV1NamespacedServiceAccount`,
@@ -12030,7 +12236,9 @@ func (c *Client) ListCoreV1NamespacedServiceAccount(ctx context.Context, params 
 	return result, nil
 }
 
-// ListCoreV1Node implements listCoreV1Node operation.
+// ListCoreV1Node invokes listCoreV1Node operation.
+//
+// GET /api/v1/nodes
 func (c *Client) ListCoreV1Node(ctx context.Context, params ListCoreV1NodeParams) (res ListCoreV1NodeRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListCoreV1Node`,
@@ -12231,7 +12439,9 @@ func (c *Client) ListCoreV1Node(ctx context.Context, params ListCoreV1NodeParams
 	return result, nil
 }
 
-// ListCoreV1PersistentVolume implements listCoreV1PersistentVolume operation.
+// ListCoreV1PersistentVolume invokes listCoreV1PersistentVolume operation.
+//
+// GET /api/v1/persistentvolumes
 func (c *Client) ListCoreV1PersistentVolume(ctx context.Context, params ListCoreV1PersistentVolumeParams) (res ListCoreV1PersistentVolumeRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListCoreV1PersistentVolume`,
@@ -12432,7 +12642,9 @@ func (c *Client) ListCoreV1PersistentVolume(ctx context.Context, params ListCore
 	return result, nil
 }
 
-// ListCoreV1PersistentVolumeClaimForAllNamespaces implements listCoreV1PersistentVolumeClaimForAllNamespaces operation.
+// ListCoreV1PersistentVolumeClaimForAllNamespaces invokes listCoreV1PersistentVolumeClaimForAllNamespaces operation.
+//
+// GET /api/v1/persistentvolumeclaims
 func (c *Client) ListCoreV1PersistentVolumeClaimForAllNamespaces(ctx context.Context, params ListCoreV1PersistentVolumeClaimForAllNamespacesParams) (res ListCoreV1PersistentVolumeClaimForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListCoreV1PersistentVolumeClaimForAllNamespaces`,
@@ -12633,7 +12845,9 @@ func (c *Client) ListCoreV1PersistentVolumeClaimForAllNamespaces(ctx context.Con
 	return result, nil
 }
 
-// ListCoreV1PodForAllNamespaces implements listCoreV1PodForAllNamespaces operation.
+// ListCoreV1PodForAllNamespaces invokes listCoreV1PodForAllNamespaces operation.
+//
+// GET /api/v1/pods
 func (c *Client) ListCoreV1PodForAllNamespaces(ctx context.Context, params ListCoreV1PodForAllNamespacesParams) (res ListCoreV1PodForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListCoreV1PodForAllNamespaces`,
@@ -12834,7 +13048,9 @@ func (c *Client) ListCoreV1PodForAllNamespaces(ctx context.Context, params ListC
 	return result, nil
 }
 
-// ListCoreV1PodTemplateForAllNamespaces implements listCoreV1PodTemplateForAllNamespaces operation.
+// ListCoreV1PodTemplateForAllNamespaces invokes listCoreV1PodTemplateForAllNamespaces operation.
+//
+// GET /api/v1/podtemplates
 func (c *Client) ListCoreV1PodTemplateForAllNamespaces(ctx context.Context, params ListCoreV1PodTemplateForAllNamespacesParams) (res ListCoreV1PodTemplateForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListCoreV1PodTemplateForAllNamespaces`,
@@ -13035,7 +13251,9 @@ func (c *Client) ListCoreV1PodTemplateForAllNamespaces(ctx context.Context, para
 	return result, nil
 }
 
-// ListCoreV1ReplicationControllerForAllNamespaces implements listCoreV1ReplicationControllerForAllNamespaces operation.
+// ListCoreV1ReplicationControllerForAllNamespaces invokes listCoreV1ReplicationControllerForAllNamespaces operation.
+//
+// GET /api/v1/replicationcontrollers
 func (c *Client) ListCoreV1ReplicationControllerForAllNamespaces(ctx context.Context, params ListCoreV1ReplicationControllerForAllNamespacesParams) (res ListCoreV1ReplicationControllerForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListCoreV1ReplicationControllerForAllNamespaces`,
@@ -13236,7 +13454,9 @@ func (c *Client) ListCoreV1ReplicationControllerForAllNamespaces(ctx context.Con
 	return result, nil
 }
 
-// ListCoreV1ResourceQuotaForAllNamespaces implements listCoreV1ResourceQuotaForAllNamespaces operation.
+// ListCoreV1ResourceQuotaForAllNamespaces invokes listCoreV1ResourceQuotaForAllNamespaces operation.
+//
+// GET /api/v1/resourcequotas
 func (c *Client) ListCoreV1ResourceQuotaForAllNamespaces(ctx context.Context, params ListCoreV1ResourceQuotaForAllNamespacesParams) (res ListCoreV1ResourceQuotaForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListCoreV1ResourceQuotaForAllNamespaces`,
@@ -13437,7 +13657,9 @@ func (c *Client) ListCoreV1ResourceQuotaForAllNamespaces(ctx context.Context, pa
 	return result, nil
 }
 
-// ListCoreV1SecretForAllNamespaces implements listCoreV1SecretForAllNamespaces operation.
+// ListCoreV1SecretForAllNamespaces invokes listCoreV1SecretForAllNamespaces operation.
+//
+// GET /api/v1/secrets
 func (c *Client) ListCoreV1SecretForAllNamespaces(ctx context.Context, params ListCoreV1SecretForAllNamespacesParams) (res ListCoreV1SecretForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListCoreV1SecretForAllNamespaces`,
@@ -13638,7 +13860,9 @@ func (c *Client) ListCoreV1SecretForAllNamespaces(ctx context.Context, params Li
 	return result, nil
 }
 
-// ListCoreV1ServiceAccountForAllNamespaces implements listCoreV1ServiceAccountForAllNamespaces operation.
+// ListCoreV1ServiceAccountForAllNamespaces invokes listCoreV1ServiceAccountForAllNamespaces operation.
+//
+// GET /api/v1/serviceaccounts
 func (c *Client) ListCoreV1ServiceAccountForAllNamespaces(ctx context.Context, params ListCoreV1ServiceAccountForAllNamespacesParams) (res ListCoreV1ServiceAccountForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListCoreV1ServiceAccountForAllNamespaces`,
@@ -13839,7 +14063,9 @@ func (c *Client) ListCoreV1ServiceAccountForAllNamespaces(ctx context.Context, p
 	return result, nil
 }
 
-// ListCoreV1ServiceForAllNamespaces implements listCoreV1ServiceForAllNamespaces operation.
+// ListCoreV1ServiceForAllNamespaces invokes listCoreV1ServiceForAllNamespaces operation.
+//
+// GET /api/v1/services
 func (c *Client) ListCoreV1ServiceForAllNamespaces(ctx context.Context, params ListCoreV1ServiceForAllNamespacesParams) (res ListCoreV1ServiceForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListCoreV1ServiceForAllNamespaces`,
@@ -14040,7 +14266,9 @@ func (c *Client) ListCoreV1ServiceForAllNamespaces(ctx context.Context, params L
 	return result, nil
 }
 
-// ListDiscoveryV1EndpointSliceForAllNamespaces implements listDiscoveryV1EndpointSliceForAllNamespaces operation.
+// ListDiscoveryV1EndpointSliceForAllNamespaces invokes listDiscoveryV1EndpointSliceForAllNamespaces operation.
+//
+// GET /apis/discovery.k8s.io/v1/endpointslices
 func (c *Client) ListDiscoveryV1EndpointSliceForAllNamespaces(ctx context.Context, params ListDiscoveryV1EndpointSliceForAllNamespacesParams) (res ListDiscoveryV1EndpointSliceForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListDiscoveryV1EndpointSliceForAllNamespaces`,
@@ -14241,7 +14469,9 @@ func (c *Client) ListDiscoveryV1EndpointSliceForAllNamespaces(ctx context.Contex
 	return result, nil
 }
 
-// ListDiscoveryV1NamespacedEndpointSlice implements listDiscoveryV1NamespacedEndpointSlice operation.
+// ListDiscoveryV1NamespacedEndpointSlice invokes listDiscoveryV1NamespacedEndpointSlice operation.
+//
+// GET /apis/discovery.k8s.io/v1/namespaces/{namespace}/endpointslices
 func (c *Client) ListDiscoveryV1NamespacedEndpointSlice(ctx context.Context, params ListDiscoveryV1NamespacedEndpointSliceParams) (res ListDiscoveryV1NamespacedEndpointSliceRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListDiscoveryV1NamespacedEndpointSlice`,
@@ -14457,7 +14687,9 @@ func (c *Client) ListDiscoveryV1NamespacedEndpointSlice(ctx context.Context, par
 	return result, nil
 }
 
-// ListDiscoveryV1beta1EndpointSliceForAllNamespaces implements listDiscoveryV1beta1EndpointSliceForAllNamespaces operation.
+// ListDiscoveryV1beta1EndpointSliceForAllNamespaces invokes listDiscoveryV1beta1EndpointSliceForAllNamespaces operation.
+//
+// GET /apis/discovery.k8s.io/v1beta1/endpointslices
 func (c *Client) ListDiscoveryV1beta1EndpointSliceForAllNamespaces(ctx context.Context, params ListDiscoveryV1beta1EndpointSliceForAllNamespacesParams) (res ListDiscoveryV1beta1EndpointSliceForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListDiscoveryV1beta1EndpointSliceForAllNamespaces`,
@@ -14658,7 +14890,9 @@ func (c *Client) ListDiscoveryV1beta1EndpointSliceForAllNamespaces(ctx context.C
 	return result, nil
 }
 
-// ListDiscoveryV1beta1NamespacedEndpointSlice implements listDiscoveryV1beta1NamespacedEndpointSlice operation.
+// ListDiscoveryV1beta1NamespacedEndpointSlice invokes listDiscoveryV1beta1NamespacedEndpointSlice operation.
+//
+// GET /apis/discovery.k8s.io/v1beta1/namespaces/{namespace}/endpointslices
 func (c *Client) ListDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Context, params ListDiscoveryV1beta1NamespacedEndpointSliceParams) (res ListDiscoveryV1beta1NamespacedEndpointSliceRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListDiscoveryV1beta1NamespacedEndpointSlice`,
@@ -14874,7 +15108,9 @@ func (c *Client) ListDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Context
 	return result, nil
 }
 
-// ListEventsV1EventForAllNamespaces implements listEventsV1EventForAllNamespaces operation.
+// ListEventsV1EventForAllNamespaces invokes listEventsV1EventForAllNamespaces operation.
+//
+// GET /apis/events.k8s.io/v1/events
 func (c *Client) ListEventsV1EventForAllNamespaces(ctx context.Context, params ListEventsV1EventForAllNamespacesParams) (res ListEventsV1EventForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListEventsV1EventForAllNamespaces`,
@@ -15075,7 +15311,9 @@ func (c *Client) ListEventsV1EventForAllNamespaces(ctx context.Context, params L
 	return result, nil
 }
 
-// ListEventsV1NamespacedEvent implements listEventsV1NamespacedEvent operation.
+// ListEventsV1NamespacedEvent invokes listEventsV1NamespacedEvent operation.
+//
+// GET /apis/events.k8s.io/v1/namespaces/{namespace}/events
 func (c *Client) ListEventsV1NamespacedEvent(ctx context.Context, params ListEventsV1NamespacedEventParams) (res ListEventsV1NamespacedEventRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListEventsV1NamespacedEvent`,
@@ -15291,7 +15529,9 @@ func (c *Client) ListEventsV1NamespacedEvent(ctx context.Context, params ListEve
 	return result, nil
 }
 
-// ListEventsV1beta1EventForAllNamespaces implements listEventsV1beta1EventForAllNamespaces operation.
+// ListEventsV1beta1EventForAllNamespaces invokes listEventsV1beta1EventForAllNamespaces operation.
+//
+// GET /apis/events.k8s.io/v1beta1/events
 func (c *Client) ListEventsV1beta1EventForAllNamespaces(ctx context.Context, params ListEventsV1beta1EventForAllNamespacesParams) (res ListEventsV1beta1EventForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListEventsV1beta1EventForAllNamespaces`,
@@ -15492,7 +15732,9 @@ func (c *Client) ListEventsV1beta1EventForAllNamespaces(ctx context.Context, par
 	return result, nil
 }
 
-// ListEventsV1beta1NamespacedEvent implements listEventsV1beta1NamespacedEvent operation.
+// ListEventsV1beta1NamespacedEvent invokes listEventsV1beta1NamespacedEvent operation.
+//
+// GET /apis/events.k8s.io/v1beta1/namespaces/{namespace}/events
 func (c *Client) ListEventsV1beta1NamespacedEvent(ctx context.Context, params ListEventsV1beta1NamespacedEventParams) (res ListEventsV1beta1NamespacedEventRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListEventsV1beta1NamespacedEvent`,
@@ -15708,7 +15950,9 @@ func (c *Client) ListEventsV1beta1NamespacedEvent(ctx context.Context, params Li
 	return result, nil
 }
 
-// ListFlowcontrolApiserverV1beta1FlowSchema implements listFlowcontrolApiserverV1beta1FlowSchema operation.
+// ListFlowcontrolApiserverV1beta1FlowSchema invokes listFlowcontrolApiserverV1beta1FlowSchema operation.
+//
+// GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas
 func (c *Client) ListFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, params ListFlowcontrolApiserverV1beta1FlowSchemaParams) (res ListFlowcontrolApiserverV1beta1FlowSchemaRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListFlowcontrolApiserverV1beta1FlowSchema`,
@@ -15909,7 +16153,9 @@ func (c *Client) ListFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, 
 	return result, nil
 }
 
-// ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration implements listFlowcontrolApiserverV1beta1PriorityLevelConfiguration operation.
+// ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration invokes listFlowcontrolApiserverV1beta1PriorityLevelConfiguration operation.
+//
+// GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations
 func (c *Client) ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx context.Context, params ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams) (res ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration`,
@@ -16110,7 +16356,9 @@ func (c *Client) ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx c
 	return result, nil
 }
 
-// ListFlowcontrolApiserverV1beta2FlowSchema implements listFlowcontrolApiserverV1beta2FlowSchema operation.
+// ListFlowcontrolApiserverV1beta2FlowSchema invokes listFlowcontrolApiserverV1beta2FlowSchema operation.
+//
+// GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas
 func (c *Client) ListFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, params ListFlowcontrolApiserverV1beta2FlowSchemaParams) (res ListFlowcontrolApiserverV1beta2FlowSchemaRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListFlowcontrolApiserverV1beta2FlowSchema`,
@@ -16311,7 +16559,9 @@ func (c *Client) ListFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, 
 	return result, nil
 }
 
-// ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration implements listFlowcontrolApiserverV1beta2PriorityLevelConfiguration operation.
+// ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration invokes listFlowcontrolApiserverV1beta2PriorityLevelConfiguration operation.
+//
+// GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations
 func (c *Client) ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx context.Context, params ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams) (res ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration`,
@@ -16512,7 +16762,9 @@ func (c *Client) ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx c
 	return result, nil
 }
 
-// ListInternalApiserverV1alpha1StorageVersion implements listInternalApiserverV1alpha1StorageVersion operation.
+// ListInternalApiserverV1alpha1StorageVersion invokes listInternalApiserverV1alpha1StorageVersion operation.
+//
+// GET /apis/internal.apiserver.k8s.io/v1alpha1/storageversions
 func (c *Client) ListInternalApiserverV1alpha1StorageVersion(ctx context.Context, params ListInternalApiserverV1alpha1StorageVersionParams) (res ListInternalApiserverV1alpha1StorageVersionRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListInternalApiserverV1alpha1StorageVersion`,
@@ -16713,7 +16965,9 @@ func (c *Client) ListInternalApiserverV1alpha1StorageVersion(ctx context.Context
 	return result, nil
 }
 
-// ListNetworkingV1IngressClass implements listNetworkingV1IngressClass operation.
+// ListNetworkingV1IngressClass invokes listNetworkingV1IngressClass operation.
+//
+// GET /apis/networking.k8s.io/v1/ingressclasses
 func (c *Client) ListNetworkingV1IngressClass(ctx context.Context, params ListNetworkingV1IngressClassParams) (res ListNetworkingV1IngressClassRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListNetworkingV1IngressClass`,
@@ -16914,7 +17168,9 @@ func (c *Client) ListNetworkingV1IngressClass(ctx context.Context, params ListNe
 	return result, nil
 }
 
-// ListNetworkingV1IngressForAllNamespaces implements listNetworkingV1IngressForAllNamespaces operation.
+// ListNetworkingV1IngressForAllNamespaces invokes listNetworkingV1IngressForAllNamespaces operation.
+//
+// GET /apis/networking.k8s.io/v1/ingresses
 func (c *Client) ListNetworkingV1IngressForAllNamespaces(ctx context.Context, params ListNetworkingV1IngressForAllNamespacesParams) (res ListNetworkingV1IngressForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListNetworkingV1IngressForAllNamespaces`,
@@ -17115,7 +17371,9 @@ func (c *Client) ListNetworkingV1IngressForAllNamespaces(ctx context.Context, pa
 	return result, nil
 }
 
-// ListNetworkingV1NamespacedIngress implements listNetworkingV1NamespacedIngress operation.
+// ListNetworkingV1NamespacedIngress invokes listNetworkingV1NamespacedIngress operation.
+//
+// GET /apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses
 func (c *Client) ListNetworkingV1NamespacedIngress(ctx context.Context, params ListNetworkingV1NamespacedIngressParams) (res ListNetworkingV1NamespacedIngressRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListNetworkingV1NamespacedIngress`,
@@ -17331,7 +17589,9 @@ func (c *Client) ListNetworkingV1NamespacedIngress(ctx context.Context, params L
 	return result, nil
 }
 
-// ListNetworkingV1NamespacedNetworkPolicy implements listNetworkingV1NamespacedNetworkPolicy operation.
+// ListNetworkingV1NamespacedNetworkPolicy invokes listNetworkingV1NamespacedNetworkPolicy operation.
+//
+// GET /apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies
 func (c *Client) ListNetworkingV1NamespacedNetworkPolicy(ctx context.Context, params ListNetworkingV1NamespacedNetworkPolicyParams) (res ListNetworkingV1NamespacedNetworkPolicyRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListNetworkingV1NamespacedNetworkPolicy`,
@@ -17547,7 +17807,9 @@ func (c *Client) ListNetworkingV1NamespacedNetworkPolicy(ctx context.Context, pa
 	return result, nil
 }
 
-// ListNetworkingV1NetworkPolicyForAllNamespaces implements listNetworkingV1NetworkPolicyForAllNamespaces operation.
+// ListNetworkingV1NetworkPolicyForAllNamespaces invokes listNetworkingV1NetworkPolicyForAllNamespaces operation.
+//
+// GET /apis/networking.k8s.io/v1/networkpolicies
 func (c *Client) ListNetworkingV1NetworkPolicyForAllNamespaces(ctx context.Context, params ListNetworkingV1NetworkPolicyForAllNamespacesParams) (res ListNetworkingV1NetworkPolicyForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListNetworkingV1NetworkPolicyForAllNamespaces`,
@@ -17748,7 +18010,9 @@ func (c *Client) ListNetworkingV1NetworkPolicyForAllNamespaces(ctx context.Conte
 	return result, nil
 }
 
-// ListNodeV1RuntimeClass implements listNodeV1RuntimeClass operation.
+// ListNodeV1RuntimeClass invokes listNodeV1RuntimeClass operation.
+//
+// GET /apis/node.k8s.io/v1/runtimeclasses
 func (c *Client) ListNodeV1RuntimeClass(ctx context.Context, params ListNodeV1RuntimeClassParams) (res ListNodeV1RuntimeClassRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListNodeV1RuntimeClass`,
@@ -17949,7 +18213,9 @@ func (c *Client) ListNodeV1RuntimeClass(ctx context.Context, params ListNodeV1Ru
 	return result, nil
 }
 
-// ListNodeV1alpha1RuntimeClass implements listNodeV1alpha1RuntimeClass operation.
+// ListNodeV1alpha1RuntimeClass invokes listNodeV1alpha1RuntimeClass operation.
+//
+// GET /apis/node.k8s.io/v1alpha1/runtimeclasses
 func (c *Client) ListNodeV1alpha1RuntimeClass(ctx context.Context, params ListNodeV1alpha1RuntimeClassParams) (res ListNodeV1alpha1RuntimeClassRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListNodeV1alpha1RuntimeClass`,
@@ -18150,7 +18416,9 @@ func (c *Client) ListNodeV1alpha1RuntimeClass(ctx context.Context, params ListNo
 	return result, nil
 }
 
-// ListNodeV1beta1RuntimeClass implements listNodeV1beta1RuntimeClass operation.
+// ListNodeV1beta1RuntimeClass invokes listNodeV1beta1RuntimeClass operation.
+//
+// GET /apis/node.k8s.io/v1beta1/runtimeclasses
 func (c *Client) ListNodeV1beta1RuntimeClass(ctx context.Context, params ListNodeV1beta1RuntimeClassParams) (res ListNodeV1beta1RuntimeClassRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListNodeV1beta1RuntimeClass`,
@@ -18351,7 +18619,9 @@ func (c *Client) ListNodeV1beta1RuntimeClass(ctx context.Context, params ListNod
 	return result, nil
 }
 
-// ListPolicyV1NamespacedPodDisruptionBudget implements listPolicyV1NamespacedPodDisruptionBudget operation.
+// ListPolicyV1NamespacedPodDisruptionBudget invokes listPolicyV1NamespacedPodDisruptionBudget operation.
+//
+// GET /apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets
 func (c *Client) ListPolicyV1NamespacedPodDisruptionBudget(ctx context.Context, params ListPolicyV1NamespacedPodDisruptionBudgetParams) (res ListPolicyV1NamespacedPodDisruptionBudgetRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListPolicyV1NamespacedPodDisruptionBudget`,
@@ -18567,7 +18837,9 @@ func (c *Client) ListPolicyV1NamespacedPodDisruptionBudget(ctx context.Context, 
 	return result, nil
 }
 
-// ListPolicyV1PodDisruptionBudgetForAllNamespaces implements listPolicyV1PodDisruptionBudgetForAllNamespaces operation.
+// ListPolicyV1PodDisruptionBudgetForAllNamespaces invokes listPolicyV1PodDisruptionBudgetForAllNamespaces operation.
+//
+// GET /apis/policy/v1/poddisruptionbudgets
 func (c *Client) ListPolicyV1PodDisruptionBudgetForAllNamespaces(ctx context.Context, params ListPolicyV1PodDisruptionBudgetForAllNamespacesParams) (res ListPolicyV1PodDisruptionBudgetForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListPolicyV1PodDisruptionBudgetForAllNamespaces`,
@@ -18768,7 +19040,9 @@ func (c *Client) ListPolicyV1PodDisruptionBudgetForAllNamespaces(ctx context.Con
 	return result, nil
 }
 
-// ListPolicyV1beta1NamespacedPodDisruptionBudget implements listPolicyV1beta1NamespacedPodDisruptionBudget operation.
+// ListPolicyV1beta1NamespacedPodDisruptionBudget invokes listPolicyV1beta1NamespacedPodDisruptionBudget operation.
+//
+// GET /apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets
 func (c *Client) ListPolicyV1beta1NamespacedPodDisruptionBudget(ctx context.Context, params ListPolicyV1beta1NamespacedPodDisruptionBudgetParams) (res ListPolicyV1beta1NamespacedPodDisruptionBudgetRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListPolicyV1beta1NamespacedPodDisruptionBudget`,
@@ -18984,7 +19258,9 @@ func (c *Client) ListPolicyV1beta1NamespacedPodDisruptionBudget(ctx context.Cont
 	return result, nil
 }
 
-// ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces implements listPolicyV1beta1PodDisruptionBudgetForAllNamespaces operation.
+// ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces invokes listPolicyV1beta1PodDisruptionBudgetForAllNamespaces operation.
+//
+// GET /apis/policy/v1beta1/poddisruptionbudgets
 func (c *Client) ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces(ctx context.Context, params ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesParams) (res ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces`,
@@ -19185,7 +19461,9 @@ func (c *Client) ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces(ctx contex
 	return result, nil
 }
 
-// ListPolicyV1beta1PodSecurityPolicy implements listPolicyV1beta1PodSecurityPolicy operation.
+// ListPolicyV1beta1PodSecurityPolicy invokes listPolicyV1beta1PodSecurityPolicy operation.
+//
+// GET /apis/policy/v1beta1/podsecuritypolicies
 func (c *Client) ListPolicyV1beta1PodSecurityPolicy(ctx context.Context, params ListPolicyV1beta1PodSecurityPolicyParams) (res ListPolicyV1beta1PodSecurityPolicyRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListPolicyV1beta1PodSecurityPolicy`,
@@ -19386,7 +19664,9 @@ func (c *Client) ListPolicyV1beta1PodSecurityPolicy(ctx context.Context, params 
 	return result, nil
 }
 
-// ListRbacAuthorizationV1ClusterRole implements listRbacAuthorizationV1ClusterRole operation.
+// ListRbacAuthorizationV1ClusterRole invokes listRbacAuthorizationV1ClusterRole operation.
+//
+// GET /apis/rbac.authorization.k8s.io/v1/clusterroles
 func (c *Client) ListRbacAuthorizationV1ClusterRole(ctx context.Context, params ListRbacAuthorizationV1ClusterRoleParams) (res ListRbacAuthorizationV1ClusterRoleRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListRbacAuthorizationV1ClusterRole`,
@@ -19587,7 +19867,9 @@ func (c *Client) ListRbacAuthorizationV1ClusterRole(ctx context.Context, params 
 	return result, nil
 }
 
-// ListRbacAuthorizationV1ClusterRoleBinding implements listRbacAuthorizationV1ClusterRoleBinding operation.
+// ListRbacAuthorizationV1ClusterRoleBinding invokes listRbacAuthorizationV1ClusterRoleBinding operation.
+//
+// GET /apis/rbac.authorization.k8s.io/v1/clusterrolebindings
 func (c *Client) ListRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, params ListRbacAuthorizationV1ClusterRoleBindingParams) (res ListRbacAuthorizationV1ClusterRoleBindingRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListRbacAuthorizationV1ClusterRoleBinding`,
@@ -19788,7 +20070,9 @@ func (c *Client) ListRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, 
 	return result, nil
 }
 
-// ListRbacAuthorizationV1NamespacedRole implements listRbacAuthorizationV1NamespacedRole operation.
+// ListRbacAuthorizationV1NamespacedRole invokes listRbacAuthorizationV1NamespacedRole operation.
+//
+// GET /apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles
 func (c *Client) ListRbacAuthorizationV1NamespacedRole(ctx context.Context, params ListRbacAuthorizationV1NamespacedRoleParams) (res ListRbacAuthorizationV1NamespacedRoleRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListRbacAuthorizationV1NamespacedRole`,
@@ -20004,7 +20288,9 @@ func (c *Client) ListRbacAuthorizationV1NamespacedRole(ctx context.Context, para
 	return result, nil
 }
 
-// ListRbacAuthorizationV1NamespacedRoleBinding implements listRbacAuthorizationV1NamespacedRoleBinding operation.
+// ListRbacAuthorizationV1NamespacedRoleBinding invokes listRbacAuthorizationV1NamespacedRoleBinding operation.
+//
+// GET /apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings
 func (c *Client) ListRbacAuthorizationV1NamespacedRoleBinding(ctx context.Context, params ListRbacAuthorizationV1NamespacedRoleBindingParams) (res ListRbacAuthorizationV1NamespacedRoleBindingRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListRbacAuthorizationV1NamespacedRoleBinding`,
@@ -20220,7 +20506,9 @@ func (c *Client) ListRbacAuthorizationV1NamespacedRoleBinding(ctx context.Contex
 	return result, nil
 }
 
-// ListRbacAuthorizationV1RoleBindingForAllNamespaces implements listRbacAuthorizationV1RoleBindingForAllNamespaces operation.
+// ListRbacAuthorizationV1RoleBindingForAllNamespaces invokes listRbacAuthorizationV1RoleBindingForAllNamespaces operation.
+//
+// GET /apis/rbac.authorization.k8s.io/v1/rolebindings
 func (c *Client) ListRbacAuthorizationV1RoleBindingForAllNamespaces(ctx context.Context, params ListRbacAuthorizationV1RoleBindingForAllNamespacesParams) (res ListRbacAuthorizationV1RoleBindingForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListRbacAuthorizationV1RoleBindingForAllNamespaces`,
@@ -20421,7 +20709,9 @@ func (c *Client) ListRbacAuthorizationV1RoleBindingForAllNamespaces(ctx context.
 	return result, nil
 }
 
-// ListRbacAuthorizationV1RoleForAllNamespaces implements listRbacAuthorizationV1RoleForAllNamespaces operation.
+// ListRbacAuthorizationV1RoleForAllNamespaces invokes listRbacAuthorizationV1RoleForAllNamespaces operation.
+//
+// GET /apis/rbac.authorization.k8s.io/v1/roles
 func (c *Client) ListRbacAuthorizationV1RoleForAllNamespaces(ctx context.Context, params ListRbacAuthorizationV1RoleForAllNamespacesParams) (res ListRbacAuthorizationV1RoleForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListRbacAuthorizationV1RoleForAllNamespaces`,
@@ -20622,7 +20912,9 @@ func (c *Client) ListRbacAuthorizationV1RoleForAllNamespaces(ctx context.Context
 	return result, nil
 }
 
-// ListSchedulingV1PriorityClass implements listSchedulingV1PriorityClass operation.
+// ListSchedulingV1PriorityClass invokes listSchedulingV1PriorityClass operation.
+//
+// GET /apis/scheduling.k8s.io/v1/priorityclasses
 func (c *Client) ListSchedulingV1PriorityClass(ctx context.Context, params ListSchedulingV1PriorityClassParams) (res ListSchedulingV1PriorityClassRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListSchedulingV1PriorityClass`,
@@ -20823,7 +21115,9 @@ func (c *Client) ListSchedulingV1PriorityClass(ctx context.Context, params ListS
 	return result, nil
 }
 
-// ListStorageV1CSIDriver implements listStorageV1CSIDriver operation.
+// ListStorageV1CSIDriver invokes listStorageV1CSIDriver operation.
+//
+// GET /apis/storage.k8s.io/v1/csidrivers
 func (c *Client) ListStorageV1CSIDriver(ctx context.Context, params ListStorageV1CSIDriverParams) (res ListStorageV1CSIDriverRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListStorageV1CSIDriver`,
@@ -21024,7 +21318,9 @@ func (c *Client) ListStorageV1CSIDriver(ctx context.Context, params ListStorageV
 	return result, nil
 }
 
-// ListStorageV1CSINode implements listStorageV1CSINode operation.
+// ListStorageV1CSINode invokes listStorageV1CSINode operation.
+//
+// GET /apis/storage.k8s.io/v1/csinodes
 func (c *Client) ListStorageV1CSINode(ctx context.Context, params ListStorageV1CSINodeParams) (res ListStorageV1CSINodeRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListStorageV1CSINode`,
@@ -21225,7 +21521,9 @@ func (c *Client) ListStorageV1CSINode(ctx context.Context, params ListStorageV1C
 	return result, nil
 }
 
-// ListStorageV1StorageClass implements listStorageV1StorageClass operation.
+// ListStorageV1StorageClass invokes listStorageV1StorageClass operation.
+//
+// GET /apis/storage.k8s.io/v1/storageclasses
 func (c *Client) ListStorageV1StorageClass(ctx context.Context, params ListStorageV1StorageClassParams) (res ListStorageV1StorageClassRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListStorageV1StorageClass`,
@@ -21426,7 +21724,9 @@ func (c *Client) ListStorageV1StorageClass(ctx context.Context, params ListStora
 	return result, nil
 }
 
-// ListStorageV1VolumeAttachment implements listStorageV1VolumeAttachment operation.
+// ListStorageV1VolumeAttachment invokes listStorageV1VolumeAttachment operation.
+//
+// GET /apis/storage.k8s.io/v1/volumeattachments
 func (c *Client) ListStorageV1VolumeAttachment(ctx context.Context, params ListStorageV1VolumeAttachmentParams) (res ListStorageV1VolumeAttachmentRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListStorageV1VolumeAttachment`,
@@ -21627,7 +21927,9 @@ func (c *Client) ListStorageV1VolumeAttachment(ctx context.Context, params ListS
 	return result, nil
 }
 
-// ListStorageV1alpha1CSIStorageCapacityForAllNamespaces implements listStorageV1alpha1CSIStorageCapacityForAllNamespaces operation.
+// ListStorageV1alpha1CSIStorageCapacityForAllNamespaces invokes listStorageV1alpha1CSIStorageCapacityForAllNamespaces operation.
+//
+// GET /apis/storage.k8s.io/v1alpha1/csistoragecapacities
 func (c *Client) ListStorageV1alpha1CSIStorageCapacityForAllNamespaces(ctx context.Context, params ListStorageV1alpha1CSIStorageCapacityForAllNamespacesParams) (res ListStorageV1alpha1CSIStorageCapacityForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListStorageV1alpha1CSIStorageCapacityForAllNamespaces`,
@@ -21828,7 +22130,9 @@ func (c *Client) ListStorageV1alpha1CSIStorageCapacityForAllNamespaces(ctx conte
 	return result, nil
 }
 
-// ListStorageV1alpha1NamespacedCSIStorageCapacity implements listStorageV1alpha1NamespacedCSIStorageCapacity operation.
+// ListStorageV1alpha1NamespacedCSIStorageCapacity invokes listStorageV1alpha1NamespacedCSIStorageCapacity operation.
+//
+// GET /apis/storage.k8s.io/v1alpha1/namespaces/{namespace}/csistoragecapacities
 func (c *Client) ListStorageV1alpha1NamespacedCSIStorageCapacity(ctx context.Context, params ListStorageV1alpha1NamespacedCSIStorageCapacityParams) (res ListStorageV1alpha1NamespacedCSIStorageCapacityRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListStorageV1alpha1NamespacedCSIStorageCapacity`,
@@ -22044,7 +22348,9 @@ func (c *Client) ListStorageV1alpha1NamespacedCSIStorageCapacity(ctx context.Con
 	return result, nil
 }
 
-// ListStorageV1beta1CSIStorageCapacityForAllNamespaces implements listStorageV1beta1CSIStorageCapacityForAllNamespaces operation.
+// ListStorageV1beta1CSIStorageCapacityForAllNamespaces invokes listStorageV1beta1CSIStorageCapacityForAllNamespaces operation.
+//
+// GET /apis/storage.k8s.io/v1beta1/csistoragecapacities
 func (c *Client) ListStorageV1beta1CSIStorageCapacityForAllNamespaces(ctx context.Context, params ListStorageV1beta1CSIStorageCapacityForAllNamespacesParams) (res ListStorageV1beta1CSIStorageCapacityForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListStorageV1beta1CSIStorageCapacityForAllNamespaces`,
@@ -22245,7 +22551,9 @@ func (c *Client) ListStorageV1beta1CSIStorageCapacityForAllNamespaces(ctx contex
 	return result, nil
 }
 
-// ListStorageV1beta1NamespacedCSIStorageCapacity implements listStorageV1beta1NamespacedCSIStorageCapacity operation.
+// ListStorageV1beta1NamespacedCSIStorageCapacity invokes listStorageV1beta1NamespacedCSIStorageCapacity operation.
+//
+// GET /apis/storage.k8s.io/v1beta1/namespaces/{namespace}/csistoragecapacities
 func (c *Client) ListStorageV1beta1NamespacedCSIStorageCapacity(ctx context.Context, params ListStorageV1beta1NamespacedCSIStorageCapacityParams) (res ListStorageV1beta1NamespacedCSIStorageCapacityRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListStorageV1beta1NamespacedCSIStorageCapacity`,
@@ -22461,7 +22769,9 @@ func (c *Client) ListStorageV1beta1NamespacedCSIStorageCapacity(ctx context.Cont
 	return result, nil
 }
 
-// LogFileHandler implements logFileHandler operation.
+// LogFileHandler invokes logFileHandler operation.
+//
+// GET /logs/{logpath}
 func (c *Client) LogFileHandler(ctx context.Context, params LogFileHandlerParams) (res LogFileHandlerUnauthorized, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `LogFileHandler`,
@@ -22513,7 +22823,9 @@ func (c *Client) LogFileHandler(ctx context.Context, params LogFileHandlerParams
 	return result, nil
 }
 
-// LogFileListHandler implements logFileListHandler operation.
+// LogFileListHandler invokes logFileListHandler operation.
+//
+// GET /logs/
 func (c *Client) LogFileListHandler(ctx context.Context) (res LogFileListHandlerUnauthorized, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `LogFileListHandler`,
@@ -22551,7 +22863,9 @@ func (c *Client) LogFileListHandler(ctx context.Context) (res LogFileListHandler
 	return result, nil
 }
 
-// ReadAdmissionregistrationV1MutatingWebhookConfiguration implements readAdmissionregistrationV1MutatingWebhookConfiguration operation.
+// ReadAdmissionregistrationV1MutatingWebhookConfiguration invokes readAdmissionregistrationV1MutatingWebhookConfiguration operation.
+//
+// GET /apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations/{name}
 func (c *Client) ReadAdmissionregistrationV1MutatingWebhookConfiguration(ctx context.Context, params ReadAdmissionregistrationV1MutatingWebhookConfigurationParams) (res ReadAdmissionregistrationV1MutatingWebhookConfigurationRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadAdmissionregistrationV1MutatingWebhookConfiguration`,
@@ -22622,7 +22936,9 @@ func (c *Client) ReadAdmissionregistrationV1MutatingWebhookConfiguration(ctx con
 	return result, nil
 }
 
-// ReadAdmissionregistrationV1ValidatingWebhookConfiguration implements readAdmissionregistrationV1ValidatingWebhookConfiguration operation.
+// ReadAdmissionregistrationV1ValidatingWebhookConfiguration invokes readAdmissionregistrationV1ValidatingWebhookConfiguration operation.
+//
+// GET /apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations/{name}
 func (c *Client) ReadAdmissionregistrationV1ValidatingWebhookConfiguration(ctx context.Context, params ReadAdmissionregistrationV1ValidatingWebhookConfigurationParams) (res ReadAdmissionregistrationV1ValidatingWebhookConfigurationRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadAdmissionregistrationV1ValidatingWebhookConfiguration`,
@@ -22693,7 +23009,9 @@ func (c *Client) ReadAdmissionregistrationV1ValidatingWebhookConfiguration(ctx c
 	return result, nil
 }
 
-// ReadApiextensionsV1CustomResourceDefinition implements readApiextensionsV1CustomResourceDefinition operation.
+// ReadApiextensionsV1CustomResourceDefinition invokes readApiextensionsV1CustomResourceDefinition operation.
+//
+// GET /apis/apiextensions.k8s.io/v1/customresourcedefinitions/{name}
 func (c *Client) ReadApiextensionsV1CustomResourceDefinition(ctx context.Context, params ReadApiextensionsV1CustomResourceDefinitionParams) (res ReadApiextensionsV1CustomResourceDefinitionRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadApiextensionsV1CustomResourceDefinition`,
@@ -22764,7 +23082,9 @@ func (c *Client) ReadApiextensionsV1CustomResourceDefinition(ctx context.Context
 	return result, nil
 }
 
-// ReadApiextensionsV1CustomResourceDefinitionStatus implements readApiextensionsV1CustomResourceDefinitionStatus operation.
+// ReadApiextensionsV1CustomResourceDefinitionStatus invokes readApiextensionsV1CustomResourceDefinitionStatus operation.
+//
+// GET /apis/apiextensions.k8s.io/v1/customresourcedefinitions/{name}/status
 func (c *Client) ReadApiextensionsV1CustomResourceDefinitionStatus(ctx context.Context, params ReadApiextensionsV1CustomResourceDefinitionStatusParams) (res ReadApiextensionsV1CustomResourceDefinitionStatusRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadApiextensionsV1CustomResourceDefinitionStatus`,
@@ -22836,7 +23156,9 @@ func (c *Client) ReadApiextensionsV1CustomResourceDefinitionStatus(ctx context.C
 	return result, nil
 }
 
-// ReadApiregistrationV1APIService implements readApiregistrationV1APIService operation.
+// ReadApiregistrationV1APIService invokes readApiregistrationV1APIService operation.
+//
+// GET /apis/apiregistration.k8s.io/v1/apiservices/{name}
 func (c *Client) ReadApiregistrationV1APIService(ctx context.Context, params ReadApiregistrationV1APIServiceParams) (res ReadApiregistrationV1APIServiceRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadApiregistrationV1APIService`,
@@ -22907,7 +23229,9 @@ func (c *Client) ReadApiregistrationV1APIService(ctx context.Context, params Rea
 	return result, nil
 }
 
-// ReadApiregistrationV1APIServiceStatus implements readApiregistrationV1APIServiceStatus operation.
+// ReadApiregistrationV1APIServiceStatus invokes readApiregistrationV1APIServiceStatus operation.
+//
+// GET /apis/apiregistration.k8s.io/v1/apiservices/{name}/status
 func (c *Client) ReadApiregistrationV1APIServiceStatus(ctx context.Context, params ReadApiregistrationV1APIServiceStatusParams) (res ReadApiregistrationV1APIServiceStatusRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadApiregistrationV1APIServiceStatus`,
@@ -22979,7 +23303,9 @@ func (c *Client) ReadApiregistrationV1APIServiceStatus(ctx context.Context, para
 	return result, nil
 }
 
-// ReadAppsV1NamespacedControllerRevision implements readAppsV1NamespacedControllerRevision operation.
+// ReadAppsV1NamespacedControllerRevision invokes readAppsV1NamespacedControllerRevision operation.
+//
+// GET /apis/apps/v1/namespaces/{namespace}/controllerrevisions/{name}
 func (c *Client) ReadAppsV1NamespacedControllerRevision(ctx context.Context, params ReadAppsV1NamespacedControllerRevisionParams) (res ReadAppsV1NamespacedControllerRevisionRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadAppsV1NamespacedControllerRevision`,
@@ -23065,7 +23391,9 @@ func (c *Client) ReadAppsV1NamespacedControllerRevision(ctx context.Context, par
 	return result, nil
 }
 
-// ReadAppsV1NamespacedDaemonSet implements readAppsV1NamespacedDaemonSet operation.
+// ReadAppsV1NamespacedDaemonSet invokes readAppsV1NamespacedDaemonSet operation.
+//
+// GET /apis/apps/v1/namespaces/{namespace}/daemonsets/{name}
 func (c *Client) ReadAppsV1NamespacedDaemonSet(ctx context.Context, params ReadAppsV1NamespacedDaemonSetParams) (res ReadAppsV1NamespacedDaemonSetRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadAppsV1NamespacedDaemonSet`,
@@ -23151,7 +23479,9 @@ func (c *Client) ReadAppsV1NamespacedDaemonSet(ctx context.Context, params ReadA
 	return result, nil
 }
 
-// ReadAppsV1NamespacedDaemonSetStatus implements readAppsV1NamespacedDaemonSetStatus operation.
+// ReadAppsV1NamespacedDaemonSetStatus invokes readAppsV1NamespacedDaemonSetStatus operation.
+//
+// GET /apis/apps/v1/namespaces/{namespace}/daemonsets/{name}/status
 func (c *Client) ReadAppsV1NamespacedDaemonSetStatus(ctx context.Context, params ReadAppsV1NamespacedDaemonSetStatusParams) (res ReadAppsV1NamespacedDaemonSetStatusRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadAppsV1NamespacedDaemonSetStatus`,
@@ -23238,7 +23568,9 @@ func (c *Client) ReadAppsV1NamespacedDaemonSetStatus(ctx context.Context, params
 	return result, nil
 }
 
-// ReadAppsV1NamespacedDeployment implements readAppsV1NamespacedDeployment operation.
+// ReadAppsV1NamespacedDeployment invokes readAppsV1NamespacedDeployment operation.
+//
+// GET /apis/apps/v1/namespaces/{namespace}/deployments/{name}
 func (c *Client) ReadAppsV1NamespacedDeployment(ctx context.Context, params ReadAppsV1NamespacedDeploymentParams) (res ReadAppsV1NamespacedDeploymentRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadAppsV1NamespacedDeployment`,
@@ -23324,7 +23656,9 @@ func (c *Client) ReadAppsV1NamespacedDeployment(ctx context.Context, params Read
 	return result, nil
 }
 
-// ReadAppsV1NamespacedDeploymentScale implements readAppsV1NamespacedDeploymentScale operation.
+// ReadAppsV1NamespacedDeploymentScale invokes readAppsV1NamespacedDeploymentScale operation.
+//
+// GET /apis/apps/v1/namespaces/{namespace}/deployments/{name}/scale
 func (c *Client) ReadAppsV1NamespacedDeploymentScale(ctx context.Context, params ReadAppsV1NamespacedDeploymentScaleParams) (res ReadAppsV1NamespacedDeploymentScaleRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadAppsV1NamespacedDeploymentScale`,
@@ -23411,7 +23745,9 @@ func (c *Client) ReadAppsV1NamespacedDeploymentScale(ctx context.Context, params
 	return result, nil
 }
 
-// ReadAppsV1NamespacedDeploymentStatus implements readAppsV1NamespacedDeploymentStatus operation.
+// ReadAppsV1NamespacedDeploymentStatus invokes readAppsV1NamespacedDeploymentStatus operation.
+//
+// GET /apis/apps/v1/namespaces/{namespace}/deployments/{name}/status
 func (c *Client) ReadAppsV1NamespacedDeploymentStatus(ctx context.Context, params ReadAppsV1NamespacedDeploymentStatusParams) (res ReadAppsV1NamespacedDeploymentStatusRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadAppsV1NamespacedDeploymentStatus`,
@@ -23498,7 +23834,9 @@ func (c *Client) ReadAppsV1NamespacedDeploymentStatus(ctx context.Context, param
 	return result, nil
 }
 
-// ReadAppsV1NamespacedReplicaSet implements readAppsV1NamespacedReplicaSet operation.
+// ReadAppsV1NamespacedReplicaSet invokes readAppsV1NamespacedReplicaSet operation.
+//
+// GET /apis/apps/v1/namespaces/{namespace}/replicasets/{name}
 func (c *Client) ReadAppsV1NamespacedReplicaSet(ctx context.Context, params ReadAppsV1NamespacedReplicaSetParams) (res ReadAppsV1NamespacedReplicaSetRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadAppsV1NamespacedReplicaSet`,
@@ -23584,7 +23922,9 @@ func (c *Client) ReadAppsV1NamespacedReplicaSet(ctx context.Context, params Read
 	return result, nil
 }
 
-// ReadAppsV1NamespacedReplicaSetScale implements readAppsV1NamespacedReplicaSetScale operation.
+// ReadAppsV1NamespacedReplicaSetScale invokes readAppsV1NamespacedReplicaSetScale operation.
+//
+// GET /apis/apps/v1/namespaces/{namespace}/replicasets/{name}/scale
 func (c *Client) ReadAppsV1NamespacedReplicaSetScale(ctx context.Context, params ReadAppsV1NamespacedReplicaSetScaleParams) (res ReadAppsV1NamespacedReplicaSetScaleRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadAppsV1NamespacedReplicaSetScale`,
@@ -23671,7 +24011,9 @@ func (c *Client) ReadAppsV1NamespacedReplicaSetScale(ctx context.Context, params
 	return result, nil
 }
 
-// ReadAppsV1NamespacedReplicaSetStatus implements readAppsV1NamespacedReplicaSetStatus operation.
+// ReadAppsV1NamespacedReplicaSetStatus invokes readAppsV1NamespacedReplicaSetStatus operation.
+//
+// GET /apis/apps/v1/namespaces/{namespace}/replicasets/{name}/status
 func (c *Client) ReadAppsV1NamespacedReplicaSetStatus(ctx context.Context, params ReadAppsV1NamespacedReplicaSetStatusParams) (res ReadAppsV1NamespacedReplicaSetStatusRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadAppsV1NamespacedReplicaSetStatus`,
@@ -23758,7 +24100,9 @@ func (c *Client) ReadAppsV1NamespacedReplicaSetStatus(ctx context.Context, param
 	return result, nil
 }
 
-// ReadAppsV1NamespacedStatefulSet implements readAppsV1NamespacedStatefulSet operation.
+// ReadAppsV1NamespacedStatefulSet invokes readAppsV1NamespacedStatefulSet operation.
+//
+// GET /apis/apps/v1/namespaces/{namespace}/statefulsets/{name}
 func (c *Client) ReadAppsV1NamespacedStatefulSet(ctx context.Context, params ReadAppsV1NamespacedStatefulSetParams) (res ReadAppsV1NamespacedStatefulSetRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadAppsV1NamespacedStatefulSet`,
@@ -23844,7 +24188,9 @@ func (c *Client) ReadAppsV1NamespacedStatefulSet(ctx context.Context, params Rea
 	return result, nil
 }
 
-// ReadAppsV1NamespacedStatefulSetScale implements readAppsV1NamespacedStatefulSetScale operation.
+// ReadAppsV1NamespacedStatefulSetScale invokes readAppsV1NamespacedStatefulSetScale operation.
+//
+// GET /apis/apps/v1/namespaces/{namespace}/statefulsets/{name}/scale
 func (c *Client) ReadAppsV1NamespacedStatefulSetScale(ctx context.Context, params ReadAppsV1NamespacedStatefulSetScaleParams) (res ReadAppsV1NamespacedStatefulSetScaleRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadAppsV1NamespacedStatefulSetScale`,
@@ -23931,7 +24277,9 @@ func (c *Client) ReadAppsV1NamespacedStatefulSetScale(ctx context.Context, param
 	return result, nil
 }
 
-// ReadAppsV1NamespacedStatefulSetStatus implements readAppsV1NamespacedStatefulSetStatus operation.
+// ReadAppsV1NamespacedStatefulSetStatus invokes readAppsV1NamespacedStatefulSetStatus operation.
+//
+// GET /apis/apps/v1/namespaces/{namespace}/statefulsets/{name}/status
 func (c *Client) ReadAppsV1NamespacedStatefulSetStatus(ctx context.Context, params ReadAppsV1NamespacedStatefulSetStatusParams) (res ReadAppsV1NamespacedStatefulSetStatusRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadAppsV1NamespacedStatefulSetStatus`,
@@ -24018,7 +24366,9 @@ func (c *Client) ReadAppsV1NamespacedStatefulSetStatus(ctx context.Context, para
 	return result, nil
 }
 
-// ReadAutoscalingV1NamespacedHorizontalPodAutoscaler implements readAutoscalingV1NamespacedHorizontalPodAutoscaler operation.
+// ReadAutoscalingV1NamespacedHorizontalPodAutoscaler invokes readAutoscalingV1NamespacedHorizontalPodAutoscaler operation.
+//
+// GET /apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}
 func (c *Client) ReadAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx context.Context, params ReadAutoscalingV1NamespacedHorizontalPodAutoscalerParams) (res ReadAutoscalingV1NamespacedHorizontalPodAutoscalerRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadAutoscalingV1NamespacedHorizontalPodAutoscaler`,
@@ -24104,7 +24454,9 @@ func (c *Client) ReadAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx context.
 	return result, nil
 }
 
-// ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus implements readAutoscalingV1NamespacedHorizontalPodAutoscalerStatus operation.
+// ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus invokes readAutoscalingV1NamespacedHorizontalPodAutoscalerStatus operation.
+//
+// GET /apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status
 func (c *Client) ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus(ctx context.Context, params ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusParams) (res ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus`,
@@ -24191,7 +24543,9 @@ func (c *Client) ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus(ctx co
 	return result, nil
 }
 
-// ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscaler implements readAutoscalingV2beta1NamespacedHorizontalPodAutoscaler operation.
+// ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscaler invokes readAutoscalingV2beta1NamespacedHorizontalPodAutoscaler operation.
+//
+// GET /apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}
 func (c *Client) ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx context.Context, params ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams) (res ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscaler`,
@@ -24277,7 +24631,9 @@ func (c *Client) ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx con
 	return result, nil
 }
 
-// ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus implements readAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus operation.
+// ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus invokes readAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus operation.
+//
+// GET /apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status
 func (c *Client) ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus(ctx context.Context, params ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusParams) (res ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus`,
@@ -24364,7 +24720,9 @@ func (c *Client) ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus(c
 	return result, nil
 }
 
-// ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscaler implements readAutoscalingV2beta2NamespacedHorizontalPodAutoscaler operation.
+// ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscaler invokes readAutoscalingV2beta2NamespacedHorizontalPodAutoscaler operation.
+//
+// GET /apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers/{name}
 func (c *Client) ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx context.Context, params ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams) (res ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscaler`,
@@ -24450,7 +24808,9 @@ func (c *Client) ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx con
 	return result, nil
 }
 
-// ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus implements readAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus operation.
+// ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus invokes readAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus operation.
+//
+// GET /apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers/{name}/status
 func (c *Client) ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus(ctx context.Context, params ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusParams) (res ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus`,
@@ -24537,7 +24897,9 @@ func (c *Client) ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus(c
 	return result, nil
 }
 
-// ReadBatchV1NamespacedCronJob implements readBatchV1NamespacedCronJob operation.
+// ReadBatchV1NamespacedCronJob invokes readBatchV1NamespacedCronJob operation.
+//
+// GET /apis/batch/v1/namespaces/{namespace}/cronjobs/{name}
 func (c *Client) ReadBatchV1NamespacedCronJob(ctx context.Context, params ReadBatchV1NamespacedCronJobParams) (res ReadBatchV1NamespacedCronJobRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadBatchV1NamespacedCronJob`,
@@ -24623,7 +24985,9 @@ func (c *Client) ReadBatchV1NamespacedCronJob(ctx context.Context, params ReadBa
 	return result, nil
 }
 
-// ReadBatchV1NamespacedCronJobStatus implements readBatchV1NamespacedCronJobStatus operation.
+// ReadBatchV1NamespacedCronJobStatus invokes readBatchV1NamespacedCronJobStatus operation.
+//
+// GET /apis/batch/v1/namespaces/{namespace}/cronjobs/{name}/status
 func (c *Client) ReadBatchV1NamespacedCronJobStatus(ctx context.Context, params ReadBatchV1NamespacedCronJobStatusParams) (res ReadBatchV1NamespacedCronJobStatusRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadBatchV1NamespacedCronJobStatus`,
@@ -24710,7 +25074,9 @@ func (c *Client) ReadBatchV1NamespacedCronJobStatus(ctx context.Context, params 
 	return result, nil
 }
 
-// ReadBatchV1NamespacedJob implements readBatchV1NamespacedJob operation.
+// ReadBatchV1NamespacedJob invokes readBatchV1NamespacedJob operation.
+//
+// GET /apis/batch/v1/namespaces/{namespace}/jobs/{name}
 func (c *Client) ReadBatchV1NamespacedJob(ctx context.Context, params ReadBatchV1NamespacedJobParams) (res ReadBatchV1NamespacedJobRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadBatchV1NamespacedJob`,
@@ -24796,7 +25162,9 @@ func (c *Client) ReadBatchV1NamespacedJob(ctx context.Context, params ReadBatchV
 	return result, nil
 }
 
-// ReadBatchV1NamespacedJobStatus implements readBatchV1NamespacedJobStatus operation.
+// ReadBatchV1NamespacedJobStatus invokes readBatchV1NamespacedJobStatus operation.
+//
+// GET /apis/batch/v1/namespaces/{namespace}/jobs/{name}/status
 func (c *Client) ReadBatchV1NamespacedJobStatus(ctx context.Context, params ReadBatchV1NamespacedJobStatusParams) (res ReadBatchV1NamespacedJobStatusRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadBatchV1NamespacedJobStatus`,
@@ -24883,7 +25251,9 @@ func (c *Client) ReadBatchV1NamespacedJobStatus(ctx context.Context, params Read
 	return result, nil
 }
 
-// ReadBatchV1beta1NamespacedCronJob implements readBatchV1beta1NamespacedCronJob operation.
+// ReadBatchV1beta1NamespacedCronJob invokes readBatchV1beta1NamespacedCronJob operation.
+//
+// GET /apis/batch/v1beta1/namespaces/{namespace}/cronjobs/{name}
 func (c *Client) ReadBatchV1beta1NamespacedCronJob(ctx context.Context, params ReadBatchV1beta1NamespacedCronJobParams) (res ReadBatchV1beta1NamespacedCronJobRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadBatchV1beta1NamespacedCronJob`,
@@ -24969,7 +25339,9 @@ func (c *Client) ReadBatchV1beta1NamespacedCronJob(ctx context.Context, params R
 	return result, nil
 }
 
-// ReadBatchV1beta1NamespacedCronJobStatus implements readBatchV1beta1NamespacedCronJobStatus operation.
+// ReadBatchV1beta1NamespacedCronJobStatus invokes readBatchV1beta1NamespacedCronJobStatus operation.
+//
+// GET /apis/batch/v1beta1/namespaces/{namespace}/cronjobs/{name}/status
 func (c *Client) ReadBatchV1beta1NamespacedCronJobStatus(ctx context.Context, params ReadBatchV1beta1NamespacedCronJobStatusParams) (res ReadBatchV1beta1NamespacedCronJobStatusRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadBatchV1beta1NamespacedCronJobStatus`,
@@ -25056,7 +25428,9 @@ func (c *Client) ReadBatchV1beta1NamespacedCronJobStatus(ctx context.Context, pa
 	return result, nil
 }
 
-// ReadCertificatesV1CertificateSigningRequest implements readCertificatesV1CertificateSigningRequest operation.
+// ReadCertificatesV1CertificateSigningRequest invokes readCertificatesV1CertificateSigningRequest operation.
+//
+// GET /apis/certificates.k8s.io/v1/certificatesigningrequests/{name}
 func (c *Client) ReadCertificatesV1CertificateSigningRequest(ctx context.Context, params ReadCertificatesV1CertificateSigningRequestParams) (res ReadCertificatesV1CertificateSigningRequestRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadCertificatesV1CertificateSigningRequest`,
@@ -25127,7 +25501,9 @@ func (c *Client) ReadCertificatesV1CertificateSigningRequest(ctx context.Context
 	return result, nil
 }
 
-// ReadCertificatesV1CertificateSigningRequestApproval implements readCertificatesV1CertificateSigningRequestApproval operation.
+// ReadCertificatesV1CertificateSigningRequestApproval invokes readCertificatesV1CertificateSigningRequestApproval operation.
+//
+// GET /apis/certificates.k8s.io/v1/certificatesigningrequests/{name}/approval
 func (c *Client) ReadCertificatesV1CertificateSigningRequestApproval(ctx context.Context, params ReadCertificatesV1CertificateSigningRequestApprovalParams) (res ReadCertificatesV1CertificateSigningRequestApprovalRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadCertificatesV1CertificateSigningRequestApproval`,
@@ -25199,7 +25575,9 @@ func (c *Client) ReadCertificatesV1CertificateSigningRequestApproval(ctx context
 	return result, nil
 }
 
-// ReadCertificatesV1CertificateSigningRequestStatus implements readCertificatesV1CertificateSigningRequestStatus operation.
+// ReadCertificatesV1CertificateSigningRequestStatus invokes readCertificatesV1CertificateSigningRequestStatus operation.
+//
+// GET /apis/certificates.k8s.io/v1/certificatesigningrequests/{name}/status
 func (c *Client) ReadCertificatesV1CertificateSigningRequestStatus(ctx context.Context, params ReadCertificatesV1CertificateSigningRequestStatusParams) (res ReadCertificatesV1CertificateSigningRequestStatusRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadCertificatesV1CertificateSigningRequestStatus`,
@@ -25271,7 +25649,9 @@ func (c *Client) ReadCertificatesV1CertificateSigningRequestStatus(ctx context.C
 	return result, nil
 }
 
-// ReadCoordinationV1NamespacedLease implements readCoordinationV1NamespacedLease operation.
+// ReadCoordinationV1NamespacedLease invokes readCoordinationV1NamespacedLease operation.
+//
+// GET /apis/coordination.k8s.io/v1/namespaces/{namespace}/leases/{name}
 func (c *Client) ReadCoordinationV1NamespacedLease(ctx context.Context, params ReadCoordinationV1NamespacedLeaseParams) (res ReadCoordinationV1NamespacedLeaseRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadCoordinationV1NamespacedLease`,
@@ -25357,7 +25737,9 @@ func (c *Client) ReadCoordinationV1NamespacedLease(ctx context.Context, params R
 	return result, nil
 }
 
-// ReadCoreV1ComponentStatus implements readCoreV1ComponentStatus operation.
+// ReadCoreV1ComponentStatus invokes readCoreV1ComponentStatus operation.
+//
+// GET /api/v1/componentstatuses/{name}
 func (c *Client) ReadCoreV1ComponentStatus(ctx context.Context, params ReadCoreV1ComponentStatusParams) (res ReadCoreV1ComponentStatusRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadCoreV1ComponentStatus`,
@@ -25428,7 +25810,9 @@ func (c *Client) ReadCoreV1ComponentStatus(ctx context.Context, params ReadCoreV
 	return result, nil
 }
 
-// ReadCoreV1Namespace implements readCoreV1Namespace operation.
+// ReadCoreV1Namespace invokes readCoreV1Namespace operation.
+//
+// GET /api/v1/namespaces/{name}
 func (c *Client) ReadCoreV1Namespace(ctx context.Context, params ReadCoreV1NamespaceParams) (res ReadCoreV1NamespaceRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadCoreV1Namespace`,
@@ -25499,7 +25883,9 @@ func (c *Client) ReadCoreV1Namespace(ctx context.Context, params ReadCoreV1Names
 	return result, nil
 }
 
-// ReadCoreV1NamespaceStatus implements readCoreV1NamespaceStatus operation.
+// ReadCoreV1NamespaceStatus invokes readCoreV1NamespaceStatus operation.
+//
+// GET /api/v1/namespaces/{name}/status
 func (c *Client) ReadCoreV1NamespaceStatus(ctx context.Context, params ReadCoreV1NamespaceStatusParams) (res ReadCoreV1NamespaceStatusRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadCoreV1NamespaceStatus`,
@@ -25571,7 +25957,9 @@ func (c *Client) ReadCoreV1NamespaceStatus(ctx context.Context, params ReadCoreV
 	return result, nil
 }
 
-// ReadCoreV1NamespacedConfigMap implements readCoreV1NamespacedConfigMap operation.
+// ReadCoreV1NamespacedConfigMap invokes readCoreV1NamespacedConfigMap operation.
+//
+// GET /api/v1/namespaces/{namespace}/configmaps/{name}
 func (c *Client) ReadCoreV1NamespacedConfigMap(ctx context.Context, params ReadCoreV1NamespacedConfigMapParams) (res ReadCoreV1NamespacedConfigMapRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadCoreV1NamespacedConfigMap`,
@@ -25657,7 +26045,9 @@ func (c *Client) ReadCoreV1NamespacedConfigMap(ctx context.Context, params ReadC
 	return result, nil
 }
 
-// ReadCoreV1NamespacedEndpoints implements readCoreV1NamespacedEndpoints operation.
+// ReadCoreV1NamespacedEndpoints invokes readCoreV1NamespacedEndpoints operation.
+//
+// GET /api/v1/namespaces/{namespace}/endpoints/{name}
 func (c *Client) ReadCoreV1NamespacedEndpoints(ctx context.Context, params ReadCoreV1NamespacedEndpointsParams) (res ReadCoreV1NamespacedEndpointsRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadCoreV1NamespacedEndpoints`,
@@ -25743,7 +26133,9 @@ func (c *Client) ReadCoreV1NamespacedEndpoints(ctx context.Context, params ReadC
 	return result, nil
 }
 
-// ReadCoreV1NamespacedEvent implements readCoreV1NamespacedEvent operation.
+// ReadCoreV1NamespacedEvent invokes readCoreV1NamespacedEvent operation.
+//
+// GET /api/v1/namespaces/{namespace}/events/{name}
 func (c *Client) ReadCoreV1NamespacedEvent(ctx context.Context, params ReadCoreV1NamespacedEventParams) (res ReadCoreV1NamespacedEventRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadCoreV1NamespacedEvent`,
@@ -25829,7 +26221,9 @@ func (c *Client) ReadCoreV1NamespacedEvent(ctx context.Context, params ReadCoreV
 	return result, nil
 }
 
-// ReadCoreV1NamespacedLimitRange implements readCoreV1NamespacedLimitRange operation.
+// ReadCoreV1NamespacedLimitRange invokes readCoreV1NamespacedLimitRange operation.
+//
+// GET /api/v1/namespaces/{namespace}/limitranges/{name}
 func (c *Client) ReadCoreV1NamespacedLimitRange(ctx context.Context, params ReadCoreV1NamespacedLimitRangeParams) (res ReadCoreV1NamespacedLimitRangeRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadCoreV1NamespacedLimitRange`,
@@ -25915,7 +26309,9 @@ func (c *Client) ReadCoreV1NamespacedLimitRange(ctx context.Context, params Read
 	return result, nil
 }
 
-// ReadCoreV1NamespacedPersistentVolumeClaim implements readCoreV1NamespacedPersistentVolumeClaim operation.
+// ReadCoreV1NamespacedPersistentVolumeClaim invokes readCoreV1NamespacedPersistentVolumeClaim operation.
+//
+// GET /api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}
 func (c *Client) ReadCoreV1NamespacedPersistentVolumeClaim(ctx context.Context, params ReadCoreV1NamespacedPersistentVolumeClaimParams) (res ReadCoreV1NamespacedPersistentVolumeClaimRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadCoreV1NamespacedPersistentVolumeClaim`,
@@ -26001,7 +26397,9 @@ func (c *Client) ReadCoreV1NamespacedPersistentVolumeClaim(ctx context.Context, 
 	return result, nil
 }
 
-// ReadCoreV1NamespacedPersistentVolumeClaimStatus implements readCoreV1NamespacedPersistentVolumeClaimStatus operation.
+// ReadCoreV1NamespacedPersistentVolumeClaimStatus invokes readCoreV1NamespacedPersistentVolumeClaimStatus operation.
+//
+// GET /api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}/status
 func (c *Client) ReadCoreV1NamespacedPersistentVolumeClaimStatus(ctx context.Context, params ReadCoreV1NamespacedPersistentVolumeClaimStatusParams) (res ReadCoreV1NamespacedPersistentVolumeClaimStatusRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadCoreV1NamespacedPersistentVolumeClaimStatus`,
@@ -26088,7 +26486,9 @@ func (c *Client) ReadCoreV1NamespacedPersistentVolumeClaimStatus(ctx context.Con
 	return result, nil
 }
 
-// ReadCoreV1NamespacedPod implements readCoreV1NamespacedPod operation.
+// ReadCoreV1NamespacedPod invokes readCoreV1NamespacedPod operation.
+//
+// GET /api/v1/namespaces/{namespace}/pods/{name}
 func (c *Client) ReadCoreV1NamespacedPod(ctx context.Context, params ReadCoreV1NamespacedPodParams) (res ReadCoreV1NamespacedPodRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadCoreV1NamespacedPod`,
@@ -26174,7 +26574,9 @@ func (c *Client) ReadCoreV1NamespacedPod(ctx context.Context, params ReadCoreV1N
 	return result, nil
 }
 
-// ReadCoreV1NamespacedPodEphemeralcontainers implements readCoreV1NamespacedPodEphemeralcontainers operation.
+// ReadCoreV1NamespacedPodEphemeralcontainers invokes readCoreV1NamespacedPodEphemeralcontainers operation.
+//
+// GET /api/v1/namespaces/{namespace}/pods/{name}/ephemeralcontainers
 func (c *Client) ReadCoreV1NamespacedPodEphemeralcontainers(ctx context.Context, params ReadCoreV1NamespacedPodEphemeralcontainersParams) (res ReadCoreV1NamespacedPodEphemeralcontainersRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadCoreV1NamespacedPodEphemeralcontainers`,
@@ -26261,7 +26663,9 @@ func (c *Client) ReadCoreV1NamespacedPodEphemeralcontainers(ctx context.Context,
 	return result, nil
 }
 
-// ReadCoreV1NamespacedPodLog implements readCoreV1NamespacedPodLog operation.
+// ReadCoreV1NamespacedPodLog invokes readCoreV1NamespacedPodLog operation.
+//
+// GET /api/v1/namespaces/{namespace}/pods/{name}/log
 func (c *Client) ReadCoreV1NamespacedPodLog(ctx context.Context, params ReadCoreV1NamespacedPodLogParams) (res ReadCoreV1NamespacedPodLogRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadCoreV1NamespacedPodLog`,
@@ -26476,7 +26880,9 @@ func (c *Client) ReadCoreV1NamespacedPodLog(ctx context.Context, params ReadCore
 	return result, nil
 }
 
-// ReadCoreV1NamespacedPodStatus implements readCoreV1NamespacedPodStatus operation.
+// ReadCoreV1NamespacedPodStatus invokes readCoreV1NamespacedPodStatus operation.
+//
+// GET /api/v1/namespaces/{namespace}/pods/{name}/status
 func (c *Client) ReadCoreV1NamespacedPodStatus(ctx context.Context, params ReadCoreV1NamespacedPodStatusParams) (res ReadCoreV1NamespacedPodStatusRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadCoreV1NamespacedPodStatus`,
@@ -26563,7 +26969,9 @@ func (c *Client) ReadCoreV1NamespacedPodStatus(ctx context.Context, params ReadC
 	return result, nil
 }
 
-// ReadCoreV1NamespacedPodTemplate implements readCoreV1NamespacedPodTemplate operation.
+// ReadCoreV1NamespacedPodTemplate invokes readCoreV1NamespacedPodTemplate operation.
+//
+// GET /api/v1/namespaces/{namespace}/podtemplates/{name}
 func (c *Client) ReadCoreV1NamespacedPodTemplate(ctx context.Context, params ReadCoreV1NamespacedPodTemplateParams) (res ReadCoreV1NamespacedPodTemplateRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadCoreV1NamespacedPodTemplate`,
@@ -26649,7 +27057,9 @@ func (c *Client) ReadCoreV1NamespacedPodTemplate(ctx context.Context, params Rea
 	return result, nil
 }
 
-// ReadCoreV1NamespacedReplicationController implements readCoreV1NamespacedReplicationController operation.
+// ReadCoreV1NamespacedReplicationController invokes readCoreV1NamespacedReplicationController operation.
+//
+// GET /api/v1/namespaces/{namespace}/replicationcontrollers/{name}
 func (c *Client) ReadCoreV1NamespacedReplicationController(ctx context.Context, params ReadCoreV1NamespacedReplicationControllerParams) (res ReadCoreV1NamespacedReplicationControllerRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadCoreV1NamespacedReplicationController`,
@@ -26735,7 +27145,9 @@ func (c *Client) ReadCoreV1NamespacedReplicationController(ctx context.Context, 
 	return result, nil
 }
 
-// ReadCoreV1NamespacedReplicationControllerScale implements readCoreV1NamespacedReplicationControllerScale operation.
+// ReadCoreV1NamespacedReplicationControllerScale invokes readCoreV1NamespacedReplicationControllerScale operation.
+//
+// GET /api/v1/namespaces/{namespace}/replicationcontrollers/{name}/scale
 func (c *Client) ReadCoreV1NamespacedReplicationControllerScale(ctx context.Context, params ReadCoreV1NamespacedReplicationControllerScaleParams) (res ReadCoreV1NamespacedReplicationControllerScaleRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadCoreV1NamespacedReplicationControllerScale`,
@@ -26822,7 +27234,9 @@ func (c *Client) ReadCoreV1NamespacedReplicationControllerScale(ctx context.Cont
 	return result, nil
 }
 
-// ReadCoreV1NamespacedReplicationControllerStatus implements readCoreV1NamespacedReplicationControllerStatus operation.
+// ReadCoreV1NamespacedReplicationControllerStatus invokes readCoreV1NamespacedReplicationControllerStatus operation.
+//
+// GET /api/v1/namespaces/{namespace}/replicationcontrollers/{name}/status
 func (c *Client) ReadCoreV1NamespacedReplicationControllerStatus(ctx context.Context, params ReadCoreV1NamespacedReplicationControllerStatusParams) (res ReadCoreV1NamespacedReplicationControllerStatusRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadCoreV1NamespacedReplicationControllerStatus`,
@@ -26909,7 +27323,9 @@ func (c *Client) ReadCoreV1NamespacedReplicationControllerStatus(ctx context.Con
 	return result, nil
 }
 
-// ReadCoreV1NamespacedResourceQuota implements readCoreV1NamespacedResourceQuota operation.
+// ReadCoreV1NamespacedResourceQuota invokes readCoreV1NamespacedResourceQuota operation.
+//
+// GET /api/v1/namespaces/{namespace}/resourcequotas/{name}
 func (c *Client) ReadCoreV1NamespacedResourceQuota(ctx context.Context, params ReadCoreV1NamespacedResourceQuotaParams) (res ReadCoreV1NamespacedResourceQuotaRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadCoreV1NamespacedResourceQuota`,
@@ -26995,7 +27411,9 @@ func (c *Client) ReadCoreV1NamespacedResourceQuota(ctx context.Context, params R
 	return result, nil
 }
 
-// ReadCoreV1NamespacedResourceQuotaStatus implements readCoreV1NamespacedResourceQuotaStatus operation.
+// ReadCoreV1NamespacedResourceQuotaStatus invokes readCoreV1NamespacedResourceQuotaStatus operation.
+//
+// GET /api/v1/namespaces/{namespace}/resourcequotas/{name}/status
 func (c *Client) ReadCoreV1NamespacedResourceQuotaStatus(ctx context.Context, params ReadCoreV1NamespacedResourceQuotaStatusParams) (res ReadCoreV1NamespacedResourceQuotaStatusRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadCoreV1NamespacedResourceQuotaStatus`,
@@ -27082,7 +27500,9 @@ func (c *Client) ReadCoreV1NamespacedResourceQuotaStatus(ctx context.Context, pa
 	return result, nil
 }
 
-// ReadCoreV1NamespacedSecret implements readCoreV1NamespacedSecret operation.
+// ReadCoreV1NamespacedSecret invokes readCoreV1NamespacedSecret operation.
+//
+// GET /api/v1/namespaces/{namespace}/secrets/{name}
 func (c *Client) ReadCoreV1NamespacedSecret(ctx context.Context, params ReadCoreV1NamespacedSecretParams) (res ReadCoreV1NamespacedSecretRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadCoreV1NamespacedSecret`,
@@ -27168,7 +27588,9 @@ func (c *Client) ReadCoreV1NamespacedSecret(ctx context.Context, params ReadCore
 	return result, nil
 }
 
-// ReadCoreV1NamespacedService implements readCoreV1NamespacedService operation.
+// ReadCoreV1NamespacedService invokes readCoreV1NamespacedService operation.
+//
+// GET /api/v1/namespaces/{namespace}/services/{name}
 func (c *Client) ReadCoreV1NamespacedService(ctx context.Context, params ReadCoreV1NamespacedServiceParams) (res ReadCoreV1NamespacedServiceRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadCoreV1NamespacedService`,
@@ -27254,7 +27676,9 @@ func (c *Client) ReadCoreV1NamespacedService(ctx context.Context, params ReadCor
 	return result, nil
 }
 
-// ReadCoreV1NamespacedServiceAccount implements readCoreV1NamespacedServiceAccount operation.
+// ReadCoreV1NamespacedServiceAccount invokes readCoreV1NamespacedServiceAccount operation.
+//
+// GET /api/v1/namespaces/{namespace}/serviceaccounts/{name}
 func (c *Client) ReadCoreV1NamespacedServiceAccount(ctx context.Context, params ReadCoreV1NamespacedServiceAccountParams) (res ReadCoreV1NamespacedServiceAccountRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadCoreV1NamespacedServiceAccount`,
@@ -27340,7 +27764,9 @@ func (c *Client) ReadCoreV1NamespacedServiceAccount(ctx context.Context, params 
 	return result, nil
 }
 
-// ReadCoreV1NamespacedServiceStatus implements readCoreV1NamespacedServiceStatus operation.
+// ReadCoreV1NamespacedServiceStatus invokes readCoreV1NamespacedServiceStatus operation.
+//
+// GET /api/v1/namespaces/{namespace}/services/{name}/status
 func (c *Client) ReadCoreV1NamespacedServiceStatus(ctx context.Context, params ReadCoreV1NamespacedServiceStatusParams) (res ReadCoreV1NamespacedServiceStatusRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadCoreV1NamespacedServiceStatus`,
@@ -27427,7 +27853,9 @@ func (c *Client) ReadCoreV1NamespacedServiceStatus(ctx context.Context, params R
 	return result, nil
 }
 
-// ReadCoreV1Node implements readCoreV1Node operation.
+// ReadCoreV1Node invokes readCoreV1Node operation.
+//
+// GET /api/v1/nodes/{name}
 func (c *Client) ReadCoreV1Node(ctx context.Context, params ReadCoreV1NodeParams) (res ReadCoreV1NodeRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadCoreV1Node`,
@@ -27498,7 +27926,9 @@ func (c *Client) ReadCoreV1Node(ctx context.Context, params ReadCoreV1NodeParams
 	return result, nil
 }
 
-// ReadCoreV1NodeStatus implements readCoreV1NodeStatus operation.
+// ReadCoreV1NodeStatus invokes readCoreV1NodeStatus operation.
+//
+// GET /api/v1/nodes/{name}/status
 func (c *Client) ReadCoreV1NodeStatus(ctx context.Context, params ReadCoreV1NodeStatusParams) (res ReadCoreV1NodeStatusRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadCoreV1NodeStatus`,
@@ -27570,7 +28000,9 @@ func (c *Client) ReadCoreV1NodeStatus(ctx context.Context, params ReadCoreV1Node
 	return result, nil
 }
 
-// ReadCoreV1PersistentVolume implements readCoreV1PersistentVolume operation.
+// ReadCoreV1PersistentVolume invokes readCoreV1PersistentVolume operation.
+//
+// GET /api/v1/persistentvolumes/{name}
 func (c *Client) ReadCoreV1PersistentVolume(ctx context.Context, params ReadCoreV1PersistentVolumeParams) (res ReadCoreV1PersistentVolumeRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadCoreV1PersistentVolume`,
@@ -27641,7 +28073,9 @@ func (c *Client) ReadCoreV1PersistentVolume(ctx context.Context, params ReadCore
 	return result, nil
 }
 
-// ReadCoreV1PersistentVolumeStatus implements readCoreV1PersistentVolumeStatus operation.
+// ReadCoreV1PersistentVolumeStatus invokes readCoreV1PersistentVolumeStatus operation.
+//
+// GET /api/v1/persistentvolumes/{name}/status
 func (c *Client) ReadCoreV1PersistentVolumeStatus(ctx context.Context, params ReadCoreV1PersistentVolumeStatusParams) (res ReadCoreV1PersistentVolumeStatusRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadCoreV1PersistentVolumeStatus`,
@@ -27713,7 +28147,9 @@ func (c *Client) ReadCoreV1PersistentVolumeStatus(ctx context.Context, params Re
 	return result, nil
 }
 
-// ReadDiscoveryV1NamespacedEndpointSlice implements readDiscoveryV1NamespacedEndpointSlice operation.
+// ReadDiscoveryV1NamespacedEndpointSlice invokes readDiscoveryV1NamespacedEndpointSlice operation.
+//
+// GET /apis/discovery.k8s.io/v1/namespaces/{namespace}/endpointslices/{name}
 func (c *Client) ReadDiscoveryV1NamespacedEndpointSlice(ctx context.Context, params ReadDiscoveryV1NamespacedEndpointSliceParams) (res ReadDiscoveryV1NamespacedEndpointSliceRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadDiscoveryV1NamespacedEndpointSlice`,
@@ -27799,7 +28235,9 @@ func (c *Client) ReadDiscoveryV1NamespacedEndpointSlice(ctx context.Context, par
 	return result, nil
 }
 
-// ReadDiscoveryV1beta1NamespacedEndpointSlice implements readDiscoveryV1beta1NamespacedEndpointSlice operation.
+// ReadDiscoveryV1beta1NamespacedEndpointSlice invokes readDiscoveryV1beta1NamespacedEndpointSlice operation.
+//
+// GET /apis/discovery.k8s.io/v1beta1/namespaces/{namespace}/endpointslices/{name}
 func (c *Client) ReadDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Context, params ReadDiscoveryV1beta1NamespacedEndpointSliceParams) (res ReadDiscoveryV1beta1NamespacedEndpointSliceRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadDiscoveryV1beta1NamespacedEndpointSlice`,
@@ -27885,7 +28323,9 @@ func (c *Client) ReadDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Context
 	return result, nil
 }
 
-// ReadEventsV1NamespacedEvent implements readEventsV1NamespacedEvent operation.
+// ReadEventsV1NamespacedEvent invokes readEventsV1NamespacedEvent operation.
+//
+// GET /apis/events.k8s.io/v1/namespaces/{namespace}/events/{name}
 func (c *Client) ReadEventsV1NamespacedEvent(ctx context.Context, params ReadEventsV1NamespacedEventParams) (res ReadEventsV1NamespacedEventRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadEventsV1NamespacedEvent`,
@@ -27971,7 +28411,9 @@ func (c *Client) ReadEventsV1NamespacedEvent(ctx context.Context, params ReadEve
 	return result, nil
 }
 
-// ReadEventsV1beta1NamespacedEvent implements readEventsV1beta1NamespacedEvent operation.
+// ReadEventsV1beta1NamespacedEvent invokes readEventsV1beta1NamespacedEvent operation.
+//
+// GET /apis/events.k8s.io/v1beta1/namespaces/{namespace}/events/{name}
 func (c *Client) ReadEventsV1beta1NamespacedEvent(ctx context.Context, params ReadEventsV1beta1NamespacedEventParams) (res ReadEventsV1beta1NamespacedEventRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadEventsV1beta1NamespacedEvent`,
@@ -28057,7 +28499,9 @@ func (c *Client) ReadEventsV1beta1NamespacedEvent(ctx context.Context, params Re
 	return result, nil
 }
 
-// ReadFlowcontrolApiserverV1beta1FlowSchema implements readFlowcontrolApiserverV1beta1FlowSchema operation.
+// ReadFlowcontrolApiserverV1beta1FlowSchema invokes readFlowcontrolApiserverV1beta1FlowSchema operation.
+//
+// GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas/{name}
 func (c *Client) ReadFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, params ReadFlowcontrolApiserverV1beta1FlowSchemaParams) (res ReadFlowcontrolApiserverV1beta1FlowSchemaRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadFlowcontrolApiserverV1beta1FlowSchema`,
@@ -28128,7 +28572,9 @@ func (c *Client) ReadFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, 
 	return result, nil
 }
 
-// ReadFlowcontrolApiserverV1beta1FlowSchemaStatus implements readFlowcontrolApiserverV1beta1FlowSchemaStatus operation.
+// ReadFlowcontrolApiserverV1beta1FlowSchemaStatus invokes readFlowcontrolApiserverV1beta1FlowSchemaStatus operation.
+//
+// GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas/{name}/status
 func (c *Client) ReadFlowcontrolApiserverV1beta1FlowSchemaStatus(ctx context.Context, params ReadFlowcontrolApiserverV1beta1FlowSchemaStatusParams) (res ReadFlowcontrolApiserverV1beta1FlowSchemaStatusRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadFlowcontrolApiserverV1beta1FlowSchemaStatus`,
@@ -28200,7 +28646,9 @@ func (c *Client) ReadFlowcontrolApiserverV1beta1FlowSchemaStatus(ctx context.Con
 	return result, nil
 }
 
-// ReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration implements readFlowcontrolApiserverV1beta1PriorityLevelConfiguration operation.
+// ReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration invokes readFlowcontrolApiserverV1beta1PriorityLevelConfiguration operation.
+//
+// GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations/{name}
 func (c *Client) ReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx context.Context, params ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams) (res ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration`,
@@ -28271,7 +28719,9 @@ func (c *Client) ReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx c
 	return result, nil
 }
 
-// ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus implements readFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus operation.
+// ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus invokes readFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus operation.
+//
+// GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations/{name}/status
 func (c *Client) ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus(ctx context.Context, params ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusParams) (res ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus`,
@@ -28343,7 +28793,9 @@ func (c *Client) ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus
 	return result, nil
 }
 
-// ReadFlowcontrolApiserverV1beta2FlowSchema implements readFlowcontrolApiserverV1beta2FlowSchema operation.
+// ReadFlowcontrolApiserverV1beta2FlowSchema invokes readFlowcontrolApiserverV1beta2FlowSchema operation.
+//
+// GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas/{name}
 func (c *Client) ReadFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, params ReadFlowcontrolApiserverV1beta2FlowSchemaParams) (res ReadFlowcontrolApiserverV1beta2FlowSchemaRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadFlowcontrolApiserverV1beta2FlowSchema`,
@@ -28414,7 +28866,9 @@ func (c *Client) ReadFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, 
 	return result, nil
 }
 
-// ReadFlowcontrolApiserverV1beta2FlowSchemaStatus implements readFlowcontrolApiserverV1beta2FlowSchemaStatus operation.
+// ReadFlowcontrolApiserverV1beta2FlowSchemaStatus invokes readFlowcontrolApiserverV1beta2FlowSchemaStatus operation.
+//
+// GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas/{name}/status
 func (c *Client) ReadFlowcontrolApiserverV1beta2FlowSchemaStatus(ctx context.Context, params ReadFlowcontrolApiserverV1beta2FlowSchemaStatusParams) (res ReadFlowcontrolApiserverV1beta2FlowSchemaStatusRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadFlowcontrolApiserverV1beta2FlowSchemaStatus`,
@@ -28486,7 +28940,9 @@ func (c *Client) ReadFlowcontrolApiserverV1beta2FlowSchemaStatus(ctx context.Con
 	return result, nil
 }
 
-// ReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration implements readFlowcontrolApiserverV1beta2PriorityLevelConfiguration operation.
+// ReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration invokes readFlowcontrolApiserverV1beta2PriorityLevelConfiguration operation.
+//
+// GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations/{name}
 func (c *Client) ReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx context.Context, params ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams) (res ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration`,
@@ -28557,7 +29013,9 @@ func (c *Client) ReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx c
 	return result, nil
 }
 
-// ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus implements readFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus operation.
+// ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus invokes readFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus operation.
+//
+// GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations/{name}/status
 func (c *Client) ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus(ctx context.Context, params ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusParams) (res ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus`,
@@ -28629,7 +29087,9 @@ func (c *Client) ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus
 	return result, nil
 }
 
-// ReadInternalApiserverV1alpha1StorageVersion implements readInternalApiserverV1alpha1StorageVersion operation.
+// ReadInternalApiserverV1alpha1StorageVersion invokes readInternalApiserverV1alpha1StorageVersion operation.
+//
+// GET /apis/internal.apiserver.k8s.io/v1alpha1/storageversions/{name}
 func (c *Client) ReadInternalApiserverV1alpha1StorageVersion(ctx context.Context, params ReadInternalApiserverV1alpha1StorageVersionParams) (res ReadInternalApiserverV1alpha1StorageVersionRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadInternalApiserverV1alpha1StorageVersion`,
@@ -28700,7 +29160,9 @@ func (c *Client) ReadInternalApiserverV1alpha1StorageVersion(ctx context.Context
 	return result, nil
 }
 
-// ReadInternalApiserverV1alpha1StorageVersionStatus implements readInternalApiserverV1alpha1StorageVersionStatus operation.
+// ReadInternalApiserverV1alpha1StorageVersionStatus invokes readInternalApiserverV1alpha1StorageVersionStatus operation.
+//
+// GET /apis/internal.apiserver.k8s.io/v1alpha1/storageversions/{name}/status
 func (c *Client) ReadInternalApiserverV1alpha1StorageVersionStatus(ctx context.Context, params ReadInternalApiserverV1alpha1StorageVersionStatusParams) (res ReadInternalApiserverV1alpha1StorageVersionStatusRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadInternalApiserverV1alpha1StorageVersionStatus`,
@@ -28772,7 +29234,9 @@ func (c *Client) ReadInternalApiserverV1alpha1StorageVersionStatus(ctx context.C
 	return result, nil
 }
 
-// ReadNetworkingV1IngressClass implements readNetworkingV1IngressClass operation.
+// ReadNetworkingV1IngressClass invokes readNetworkingV1IngressClass operation.
+//
+// GET /apis/networking.k8s.io/v1/ingressclasses/{name}
 func (c *Client) ReadNetworkingV1IngressClass(ctx context.Context, params ReadNetworkingV1IngressClassParams) (res ReadNetworkingV1IngressClassRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadNetworkingV1IngressClass`,
@@ -28843,7 +29307,9 @@ func (c *Client) ReadNetworkingV1IngressClass(ctx context.Context, params ReadNe
 	return result, nil
 }
 
-// ReadNetworkingV1NamespacedIngress implements readNetworkingV1NamespacedIngress operation.
+// ReadNetworkingV1NamespacedIngress invokes readNetworkingV1NamespacedIngress operation.
+//
+// GET /apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/{name}
 func (c *Client) ReadNetworkingV1NamespacedIngress(ctx context.Context, params ReadNetworkingV1NamespacedIngressParams) (res ReadNetworkingV1NamespacedIngressRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadNetworkingV1NamespacedIngress`,
@@ -28929,7 +29395,9 @@ func (c *Client) ReadNetworkingV1NamespacedIngress(ctx context.Context, params R
 	return result, nil
 }
 
-// ReadNetworkingV1NamespacedIngressStatus implements readNetworkingV1NamespacedIngressStatus operation.
+// ReadNetworkingV1NamespacedIngressStatus invokes readNetworkingV1NamespacedIngressStatus operation.
+//
+// GET /apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/{name}/status
 func (c *Client) ReadNetworkingV1NamespacedIngressStatus(ctx context.Context, params ReadNetworkingV1NamespacedIngressStatusParams) (res ReadNetworkingV1NamespacedIngressStatusRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadNetworkingV1NamespacedIngressStatus`,
@@ -29016,7 +29484,9 @@ func (c *Client) ReadNetworkingV1NamespacedIngressStatus(ctx context.Context, pa
 	return result, nil
 }
 
-// ReadNetworkingV1NamespacedNetworkPolicy implements readNetworkingV1NamespacedNetworkPolicy operation.
+// ReadNetworkingV1NamespacedNetworkPolicy invokes readNetworkingV1NamespacedNetworkPolicy operation.
+//
+// GET /apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies/{name}
 func (c *Client) ReadNetworkingV1NamespacedNetworkPolicy(ctx context.Context, params ReadNetworkingV1NamespacedNetworkPolicyParams) (res ReadNetworkingV1NamespacedNetworkPolicyRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadNetworkingV1NamespacedNetworkPolicy`,
@@ -29102,7 +29572,9 @@ func (c *Client) ReadNetworkingV1NamespacedNetworkPolicy(ctx context.Context, pa
 	return result, nil
 }
 
-// ReadNodeV1RuntimeClass implements readNodeV1RuntimeClass operation.
+// ReadNodeV1RuntimeClass invokes readNodeV1RuntimeClass operation.
+//
+// GET /apis/node.k8s.io/v1/runtimeclasses/{name}
 func (c *Client) ReadNodeV1RuntimeClass(ctx context.Context, params ReadNodeV1RuntimeClassParams) (res ReadNodeV1RuntimeClassRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadNodeV1RuntimeClass`,
@@ -29173,7 +29645,9 @@ func (c *Client) ReadNodeV1RuntimeClass(ctx context.Context, params ReadNodeV1Ru
 	return result, nil
 }
 
-// ReadNodeV1alpha1RuntimeClass implements readNodeV1alpha1RuntimeClass operation.
+// ReadNodeV1alpha1RuntimeClass invokes readNodeV1alpha1RuntimeClass operation.
+//
+// GET /apis/node.k8s.io/v1alpha1/runtimeclasses/{name}
 func (c *Client) ReadNodeV1alpha1RuntimeClass(ctx context.Context, params ReadNodeV1alpha1RuntimeClassParams) (res ReadNodeV1alpha1RuntimeClassRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadNodeV1alpha1RuntimeClass`,
@@ -29244,7 +29718,9 @@ func (c *Client) ReadNodeV1alpha1RuntimeClass(ctx context.Context, params ReadNo
 	return result, nil
 }
 
-// ReadNodeV1beta1RuntimeClass implements readNodeV1beta1RuntimeClass operation.
+// ReadNodeV1beta1RuntimeClass invokes readNodeV1beta1RuntimeClass operation.
+//
+// GET /apis/node.k8s.io/v1beta1/runtimeclasses/{name}
 func (c *Client) ReadNodeV1beta1RuntimeClass(ctx context.Context, params ReadNodeV1beta1RuntimeClassParams) (res ReadNodeV1beta1RuntimeClassRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadNodeV1beta1RuntimeClass`,
@@ -29315,7 +29791,9 @@ func (c *Client) ReadNodeV1beta1RuntimeClass(ctx context.Context, params ReadNod
 	return result, nil
 }
 
-// ReadPolicyV1NamespacedPodDisruptionBudget implements readPolicyV1NamespacedPodDisruptionBudget operation.
+// ReadPolicyV1NamespacedPodDisruptionBudget invokes readPolicyV1NamespacedPodDisruptionBudget operation.
+//
+// GET /apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets/{name}
 func (c *Client) ReadPolicyV1NamespacedPodDisruptionBudget(ctx context.Context, params ReadPolicyV1NamespacedPodDisruptionBudgetParams) (res ReadPolicyV1NamespacedPodDisruptionBudgetRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadPolicyV1NamespacedPodDisruptionBudget`,
@@ -29401,7 +29879,9 @@ func (c *Client) ReadPolicyV1NamespacedPodDisruptionBudget(ctx context.Context, 
 	return result, nil
 }
 
-// ReadPolicyV1NamespacedPodDisruptionBudgetStatus implements readPolicyV1NamespacedPodDisruptionBudgetStatus operation.
+// ReadPolicyV1NamespacedPodDisruptionBudgetStatus invokes readPolicyV1NamespacedPodDisruptionBudgetStatus operation.
+//
+// GET /apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets/{name}/status
 func (c *Client) ReadPolicyV1NamespacedPodDisruptionBudgetStatus(ctx context.Context, params ReadPolicyV1NamespacedPodDisruptionBudgetStatusParams) (res ReadPolicyV1NamespacedPodDisruptionBudgetStatusRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadPolicyV1NamespacedPodDisruptionBudgetStatus`,
@@ -29488,7 +29968,9 @@ func (c *Client) ReadPolicyV1NamespacedPodDisruptionBudgetStatus(ctx context.Con
 	return result, nil
 }
 
-// ReadPolicyV1beta1NamespacedPodDisruptionBudget implements readPolicyV1beta1NamespacedPodDisruptionBudget operation.
+// ReadPolicyV1beta1NamespacedPodDisruptionBudget invokes readPolicyV1beta1NamespacedPodDisruptionBudget operation.
+//
+// GET /apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets/{name}
 func (c *Client) ReadPolicyV1beta1NamespacedPodDisruptionBudget(ctx context.Context, params ReadPolicyV1beta1NamespacedPodDisruptionBudgetParams) (res ReadPolicyV1beta1NamespacedPodDisruptionBudgetRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadPolicyV1beta1NamespacedPodDisruptionBudget`,
@@ -29574,7 +30056,9 @@ func (c *Client) ReadPolicyV1beta1NamespacedPodDisruptionBudget(ctx context.Cont
 	return result, nil
 }
 
-// ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus implements readPolicyV1beta1NamespacedPodDisruptionBudgetStatus operation.
+// ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus invokes readPolicyV1beta1NamespacedPodDisruptionBudgetStatus operation.
+//
+// GET /apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets/{name}/status
 func (c *Client) ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus(ctx context.Context, params ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusParams) (res ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus`,
@@ -29661,7 +30145,9 @@ func (c *Client) ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus(ctx contex
 	return result, nil
 }
 
-// ReadPolicyV1beta1PodSecurityPolicy implements readPolicyV1beta1PodSecurityPolicy operation.
+// ReadPolicyV1beta1PodSecurityPolicy invokes readPolicyV1beta1PodSecurityPolicy operation.
+//
+// GET /apis/policy/v1beta1/podsecuritypolicies/{name}
 func (c *Client) ReadPolicyV1beta1PodSecurityPolicy(ctx context.Context, params ReadPolicyV1beta1PodSecurityPolicyParams) (res ReadPolicyV1beta1PodSecurityPolicyRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadPolicyV1beta1PodSecurityPolicy`,
@@ -29732,7 +30218,9 @@ func (c *Client) ReadPolicyV1beta1PodSecurityPolicy(ctx context.Context, params 
 	return result, nil
 }
 
-// ReadRbacAuthorizationV1ClusterRole implements readRbacAuthorizationV1ClusterRole operation.
+// ReadRbacAuthorizationV1ClusterRole invokes readRbacAuthorizationV1ClusterRole operation.
+//
+// GET /apis/rbac.authorization.k8s.io/v1/clusterroles/{name}
 func (c *Client) ReadRbacAuthorizationV1ClusterRole(ctx context.Context, params ReadRbacAuthorizationV1ClusterRoleParams) (res ReadRbacAuthorizationV1ClusterRoleRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadRbacAuthorizationV1ClusterRole`,
@@ -29803,7 +30291,9 @@ func (c *Client) ReadRbacAuthorizationV1ClusterRole(ctx context.Context, params 
 	return result, nil
 }
 
-// ReadRbacAuthorizationV1ClusterRoleBinding implements readRbacAuthorizationV1ClusterRoleBinding operation.
+// ReadRbacAuthorizationV1ClusterRoleBinding invokes readRbacAuthorizationV1ClusterRoleBinding operation.
+//
+// GET /apis/rbac.authorization.k8s.io/v1/clusterrolebindings/{name}
 func (c *Client) ReadRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, params ReadRbacAuthorizationV1ClusterRoleBindingParams) (res ReadRbacAuthorizationV1ClusterRoleBindingRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadRbacAuthorizationV1ClusterRoleBinding`,
@@ -29874,7 +30364,9 @@ func (c *Client) ReadRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, 
 	return result, nil
 }
 
-// ReadRbacAuthorizationV1NamespacedRole implements readRbacAuthorizationV1NamespacedRole operation.
+// ReadRbacAuthorizationV1NamespacedRole invokes readRbacAuthorizationV1NamespacedRole operation.
+//
+// GET /apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles/{name}
 func (c *Client) ReadRbacAuthorizationV1NamespacedRole(ctx context.Context, params ReadRbacAuthorizationV1NamespacedRoleParams) (res ReadRbacAuthorizationV1NamespacedRoleRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadRbacAuthorizationV1NamespacedRole`,
@@ -29960,7 +30452,9 @@ func (c *Client) ReadRbacAuthorizationV1NamespacedRole(ctx context.Context, para
 	return result, nil
 }
 
-// ReadRbacAuthorizationV1NamespacedRoleBinding implements readRbacAuthorizationV1NamespacedRoleBinding operation.
+// ReadRbacAuthorizationV1NamespacedRoleBinding invokes readRbacAuthorizationV1NamespacedRoleBinding operation.
+//
+// GET /apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings/{name}
 func (c *Client) ReadRbacAuthorizationV1NamespacedRoleBinding(ctx context.Context, params ReadRbacAuthorizationV1NamespacedRoleBindingParams) (res ReadRbacAuthorizationV1NamespacedRoleBindingRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadRbacAuthorizationV1NamespacedRoleBinding`,
@@ -30046,7 +30540,9 @@ func (c *Client) ReadRbacAuthorizationV1NamespacedRoleBinding(ctx context.Contex
 	return result, nil
 }
 
-// ReadSchedulingV1PriorityClass implements readSchedulingV1PriorityClass operation.
+// ReadSchedulingV1PriorityClass invokes readSchedulingV1PriorityClass operation.
+//
+// GET /apis/scheduling.k8s.io/v1/priorityclasses/{name}
 func (c *Client) ReadSchedulingV1PriorityClass(ctx context.Context, params ReadSchedulingV1PriorityClassParams) (res ReadSchedulingV1PriorityClassRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadSchedulingV1PriorityClass`,
@@ -30117,7 +30613,9 @@ func (c *Client) ReadSchedulingV1PriorityClass(ctx context.Context, params ReadS
 	return result, nil
 }
 
-// ReadStorageV1CSIDriver implements readStorageV1CSIDriver operation.
+// ReadStorageV1CSIDriver invokes readStorageV1CSIDriver operation.
+//
+// GET /apis/storage.k8s.io/v1/csidrivers/{name}
 func (c *Client) ReadStorageV1CSIDriver(ctx context.Context, params ReadStorageV1CSIDriverParams) (res ReadStorageV1CSIDriverRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadStorageV1CSIDriver`,
@@ -30188,7 +30686,9 @@ func (c *Client) ReadStorageV1CSIDriver(ctx context.Context, params ReadStorageV
 	return result, nil
 }
 
-// ReadStorageV1CSINode implements readStorageV1CSINode operation.
+// ReadStorageV1CSINode invokes readStorageV1CSINode operation.
+//
+// GET /apis/storage.k8s.io/v1/csinodes/{name}
 func (c *Client) ReadStorageV1CSINode(ctx context.Context, params ReadStorageV1CSINodeParams) (res ReadStorageV1CSINodeRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadStorageV1CSINode`,
@@ -30259,7 +30759,9 @@ func (c *Client) ReadStorageV1CSINode(ctx context.Context, params ReadStorageV1C
 	return result, nil
 }
 
-// ReadStorageV1StorageClass implements readStorageV1StorageClass operation.
+// ReadStorageV1StorageClass invokes readStorageV1StorageClass operation.
+//
+// GET /apis/storage.k8s.io/v1/storageclasses/{name}
 func (c *Client) ReadStorageV1StorageClass(ctx context.Context, params ReadStorageV1StorageClassParams) (res ReadStorageV1StorageClassRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadStorageV1StorageClass`,
@@ -30330,7 +30832,9 @@ func (c *Client) ReadStorageV1StorageClass(ctx context.Context, params ReadStora
 	return result, nil
 }
 
-// ReadStorageV1VolumeAttachment implements readStorageV1VolumeAttachment operation.
+// ReadStorageV1VolumeAttachment invokes readStorageV1VolumeAttachment operation.
+//
+// GET /apis/storage.k8s.io/v1/volumeattachments/{name}
 func (c *Client) ReadStorageV1VolumeAttachment(ctx context.Context, params ReadStorageV1VolumeAttachmentParams) (res ReadStorageV1VolumeAttachmentRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadStorageV1VolumeAttachment`,
@@ -30401,7 +30905,9 @@ func (c *Client) ReadStorageV1VolumeAttachment(ctx context.Context, params ReadS
 	return result, nil
 }
 
-// ReadStorageV1VolumeAttachmentStatus implements readStorageV1VolumeAttachmentStatus operation.
+// ReadStorageV1VolumeAttachmentStatus invokes readStorageV1VolumeAttachmentStatus operation.
+//
+// GET /apis/storage.k8s.io/v1/volumeattachments/{name}/status
 func (c *Client) ReadStorageV1VolumeAttachmentStatus(ctx context.Context, params ReadStorageV1VolumeAttachmentStatusParams) (res ReadStorageV1VolumeAttachmentStatusRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadStorageV1VolumeAttachmentStatus`,
@@ -30473,7 +30979,9 @@ func (c *Client) ReadStorageV1VolumeAttachmentStatus(ctx context.Context, params
 	return result, nil
 }
 
-// ReadStorageV1alpha1NamespacedCSIStorageCapacity implements readStorageV1alpha1NamespacedCSIStorageCapacity operation.
+// ReadStorageV1alpha1NamespacedCSIStorageCapacity invokes readStorageV1alpha1NamespacedCSIStorageCapacity operation.
+//
+// GET /apis/storage.k8s.io/v1alpha1/namespaces/{namespace}/csistoragecapacities/{name}
 func (c *Client) ReadStorageV1alpha1NamespacedCSIStorageCapacity(ctx context.Context, params ReadStorageV1alpha1NamespacedCSIStorageCapacityParams) (res ReadStorageV1alpha1NamespacedCSIStorageCapacityRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadStorageV1alpha1NamespacedCSIStorageCapacity`,
@@ -30559,7 +31067,9 @@ func (c *Client) ReadStorageV1alpha1NamespacedCSIStorageCapacity(ctx context.Con
 	return result, nil
 }
 
-// ReadStorageV1beta1NamespacedCSIStorageCapacity implements readStorageV1beta1NamespacedCSIStorageCapacity operation.
+// ReadStorageV1beta1NamespacedCSIStorageCapacity invokes readStorageV1beta1NamespacedCSIStorageCapacity operation.
+//
+// GET /apis/storage.k8s.io/v1beta1/namespaces/{namespace}/csistoragecapacities/{name}
 func (c *Client) ReadStorageV1beta1NamespacedCSIStorageCapacity(ctx context.Context, params ReadStorageV1beta1NamespacedCSIStorageCapacityParams) (res ReadStorageV1beta1NamespacedCSIStorageCapacityRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReadStorageV1beta1NamespacedCSIStorageCapacity`,
@@ -30645,7 +31155,9 @@ func (c *Client) ReadStorageV1beta1NamespacedCSIStorageCapacity(ctx context.Cont
 	return result, nil
 }
 
-// WatchAdmissionregistrationV1MutatingWebhookConfiguration implements watchAdmissionregistrationV1MutatingWebhookConfiguration operation.
+// WatchAdmissionregistrationV1MutatingWebhookConfiguration invokes watchAdmissionregistrationV1MutatingWebhookConfiguration operation.
+//
+// GET /apis/admissionregistration.k8s.io/v1/watch/mutatingwebhookconfigurations/{name}
 func (c *Client) WatchAdmissionregistrationV1MutatingWebhookConfiguration(ctx context.Context, params WatchAdmissionregistrationV1MutatingWebhookConfigurationParams) (res WatchAdmissionregistrationV1MutatingWebhookConfigurationRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchAdmissionregistrationV1MutatingWebhookConfiguration`,
@@ -30860,7 +31372,9 @@ func (c *Client) WatchAdmissionregistrationV1MutatingWebhookConfiguration(ctx co
 	return result, nil
 }
 
-// WatchAdmissionregistrationV1MutatingWebhookConfigurationList implements watchAdmissionregistrationV1MutatingWebhookConfigurationList operation.
+// WatchAdmissionregistrationV1MutatingWebhookConfigurationList invokes watchAdmissionregistrationV1MutatingWebhookConfigurationList operation.
+//
+// GET /apis/admissionregistration.k8s.io/v1/watch/mutatingwebhookconfigurations
 func (c *Client) WatchAdmissionregistrationV1MutatingWebhookConfigurationList(ctx context.Context, params WatchAdmissionregistrationV1MutatingWebhookConfigurationListParams) (res WatchAdmissionregistrationV1MutatingWebhookConfigurationListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchAdmissionregistrationV1MutatingWebhookConfigurationList`,
@@ -31061,7 +31575,9 @@ func (c *Client) WatchAdmissionregistrationV1MutatingWebhookConfigurationList(ct
 	return result, nil
 }
 
-// WatchAdmissionregistrationV1ValidatingWebhookConfiguration implements watchAdmissionregistrationV1ValidatingWebhookConfiguration operation.
+// WatchAdmissionregistrationV1ValidatingWebhookConfiguration invokes watchAdmissionregistrationV1ValidatingWebhookConfiguration operation.
+//
+// GET /apis/admissionregistration.k8s.io/v1/watch/validatingwebhookconfigurations/{name}
 func (c *Client) WatchAdmissionregistrationV1ValidatingWebhookConfiguration(ctx context.Context, params WatchAdmissionregistrationV1ValidatingWebhookConfigurationParams) (res WatchAdmissionregistrationV1ValidatingWebhookConfigurationRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchAdmissionregistrationV1ValidatingWebhookConfiguration`,
@@ -31276,7 +31792,9 @@ func (c *Client) WatchAdmissionregistrationV1ValidatingWebhookConfiguration(ctx 
 	return result, nil
 }
 
-// WatchAdmissionregistrationV1ValidatingWebhookConfigurationList implements watchAdmissionregistrationV1ValidatingWebhookConfigurationList operation.
+// WatchAdmissionregistrationV1ValidatingWebhookConfigurationList invokes watchAdmissionregistrationV1ValidatingWebhookConfigurationList operation.
+//
+// GET /apis/admissionregistration.k8s.io/v1/watch/validatingwebhookconfigurations
 func (c *Client) WatchAdmissionregistrationV1ValidatingWebhookConfigurationList(ctx context.Context, params WatchAdmissionregistrationV1ValidatingWebhookConfigurationListParams) (res WatchAdmissionregistrationV1ValidatingWebhookConfigurationListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchAdmissionregistrationV1ValidatingWebhookConfigurationList`,
@@ -31477,7 +31995,9 @@ func (c *Client) WatchAdmissionregistrationV1ValidatingWebhookConfigurationList(
 	return result, nil
 }
 
-// WatchApiextensionsV1CustomResourceDefinition implements watchApiextensionsV1CustomResourceDefinition operation.
+// WatchApiextensionsV1CustomResourceDefinition invokes watchApiextensionsV1CustomResourceDefinition operation.
+//
+// GET /apis/apiextensions.k8s.io/v1/watch/customresourcedefinitions/{name}
 func (c *Client) WatchApiextensionsV1CustomResourceDefinition(ctx context.Context, params WatchApiextensionsV1CustomResourceDefinitionParams) (res WatchApiextensionsV1CustomResourceDefinitionRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchApiextensionsV1CustomResourceDefinition`,
@@ -31692,7 +32212,9 @@ func (c *Client) WatchApiextensionsV1CustomResourceDefinition(ctx context.Contex
 	return result, nil
 }
 
-// WatchApiextensionsV1CustomResourceDefinitionList implements watchApiextensionsV1CustomResourceDefinitionList operation.
+// WatchApiextensionsV1CustomResourceDefinitionList invokes watchApiextensionsV1CustomResourceDefinitionList operation.
+//
+// GET /apis/apiextensions.k8s.io/v1/watch/customresourcedefinitions
 func (c *Client) WatchApiextensionsV1CustomResourceDefinitionList(ctx context.Context, params WatchApiextensionsV1CustomResourceDefinitionListParams) (res WatchApiextensionsV1CustomResourceDefinitionListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchApiextensionsV1CustomResourceDefinitionList`,
@@ -31893,7 +32415,9 @@ func (c *Client) WatchApiextensionsV1CustomResourceDefinitionList(ctx context.Co
 	return result, nil
 }
 
-// WatchApiregistrationV1APIService implements watchApiregistrationV1APIService operation.
+// WatchApiregistrationV1APIService invokes watchApiregistrationV1APIService operation.
+//
+// GET /apis/apiregistration.k8s.io/v1/watch/apiservices/{name}
 func (c *Client) WatchApiregistrationV1APIService(ctx context.Context, params WatchApiregistrationV1APIServiceParams) (res WatchApiregistrationV1APIServiceRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchApiregistrationV1APIService`,
@@ -32108,7 +32632,9 @@ func (c *Client) WatchApiregistrationV1APIService(ctx context.Context, params Wa
 	return result, nil
 }
 
-// WatchApiregistrationV1APIServiceList implements watchApiregistrationV1APIServiceList operation.
+// WatchApiregistrationV1APIServiceList invokes watchApiregistrationV1APIServiceList operation.
+//
+// GET /apis/apiregistration.k8s.io/v1/watch/apiservices
 func (c *Client) WatchApiregistrationV1APIServiceList(ctx context.Context, params WatchApiregistrationV1APIServiceListParams) (res WatchApiregistrationV1APIServiceListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchApiregistrationV1APIServiceList`,
@@ -32309,7 +32835,9 @@ func (c *Client) WatchApiregistrationV1APIServiceList(ctx context.Context, param
 	return result, nil
 }
 
-// WatchAppsV1ControllerRevisionListForAllNamespaces implements watchAppsV1ControllerRevisionListForAllNamespaces operation.
+// WatchAppsV1ControllerRevisionListForAllNamespaces invokes watchAppsV1ControllerRevisionListForAllNamespaces operation.
+//
+// GET /apis/apps/v1/watch/controllerrevisions
 func (c *Client) WatchAppsV1ControllerRevisionListForAllNamespaces(ctx context.Context, params WatchAppsV1ControllerRevisionListForAllNamespacesParams) (res WatchAppsV1ControllerRevisionListForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchAppsV1ControllerRevisionListForAllNamespaces`,
@@ -32510,7 +33038,9 @@ func (c *Client) WatchAppsV1ControllerRevisionListForAllNamespaces(ctx context.C
 	return result, nil
 }
 
-// WatchAppsV1DaemonSetListForAllNamespaces implements watchAppsV1DaemonSetListForAllNamespaces operation.
+// WatchAppsV1DaemonSetListForAllNamespaces invokes watchAppsV1DaemonSetListForAllNamespaces operation.
+//
+// GET /apis/apps/v1/watch/daemonsets
 func (c *Client) WatchAppsV1DaemonSetListForAllNamespaces(ctx context.Context, params WatchAppsV1DaemonSetListForAllNamespacesParams) (res WatchAppsV1DaemonSetListForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchAppsV1DaemonSetListForAllNamespaces`,
@@ -32711,7 +33241,9 @@ func (c *Client) WatchAppsV1DaemonSetListForAllNamespaces(ctx context.Context, p
 	return result, nil
 }
 
-// WatchAppsV1DeploymentListForAllNamespaces implements watchAppsV1DeploymentListForAllNamespaces operation.
+// WatchAppsV1DeploymentListForAllNamespaces invokes watchAppsV1DeploymentListForAllNamespaces operation.
+//
+// GET /apis/apps/v1/watch/deployments
 func (c *Client) WatchAppsV1DeploymentListForAllNamespaces(ctx context.Context, params WatchAppsV1DeploymentListForAllNamespacesParams) (res WatchAppsV1DeploymentListForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchAppsV1DeploymentListForAllNamespaces`,
@@ -32912,7 +33444,9 @@ func (c *Client) WatchAppsV1DeploymentListForAllNamespaces(ctx context.Context, 
 	return result, nil
 }
 
-// WatchAppsV1NamespacedControllerRevision implements watchAppsV1NamespacedControllerRevision operation.
+// WatchAppsV1NamespacedControllerRevision invokes watchAppsV1NamespacedControllerRevision operation.
+//
+// GET /apis/apps/v1/watch/namespaces/{namespace}/controllerrevisions/{name}
 func (c *Client) WatchAppsV1NamespacedControllerRevision(ctx context.Context, params WatchAppsV1NamespacedControllerRevisionParams) (res WatchAppsV1NamespacedControllerRevisionRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchAppsV1NamespacedControllerRevision`,
@@ -33142,7 +33676,9 @@ func (c *Client) WatchAppsV1NamespacedControllerRevision(ctx context.Context, pa
 	return result, nil
 }
 
-// WatchAppsV1NamespacedControllerRevisionList implements watchAppsV1NamespacedControllerRevisionList operation.
+// WatchAppsV1NamespacedControllerRevisionList invokes watchAppsV1NamespacedControllerRevisionList operation.
+//
+// GET /apis/apps/v1/watch/namespaces/{namespace}/controllerrevisions
 func (c *Client) WatchAppsV1NamespacedControllerRevisionList(ctx context.Context, params WatchAppsV1NamespacedControllerRevisionListParams) (res WatchAppsV1NamespacedControllerRevisionListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchAppsV1NamespacedControllerRevisionList`,
@@ -33358,7 +33894,9 @@ func (c *Client) WatchAppsV1NamespacedControllerRevisionList(ctx context.Context
 	return result, nil
 }
 
-// WatchAppsV1NamespacedDaemonSet implements watchAppsV1NamespacedDaemonSet operation.
+// WatchAppsV1NamespacedDaemonSet invokes watchAppsV1NamespacedDaemonSet operation.
+//
+// GET /apis/apps/v1/watch/namespaces/{namespace}/daemonsets/{name}
 func (c *Client) WatchAppsV1NamespacedDaemonSet(ctx context.Context, params WatchAppsV1NamespacedDaemonSetParams) (res WatchAppsV1NamespacedDaemonSetRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchAppsV1NamespacedDaemonSet`,
@@ -33588,7 +34126,9 @@ func (c *Client) WatchAppsV1NamespacedDaemonSet(ctx context.Context, params Watc
 	return result, nil
 }
 
-// WatchAppsV1NamespacedDaemonSetList implements watchAppsV1NamespacedDaemonSetList operation.
+// WatchAppsV1NamespacedDaemonSetList invokes watchAppsV1NamespacedDaemonSetList operation.
+//
+// GET /apis/apps/v1/watch/namespaces/{namespace}/daemonsets
 func (c *Client) WatchAppsV1NamespacedDaemonSetList(ctx context.Context, params WatchAppsV1NamespacedDaemonSetListParams) (res WatchAppsV1NamespacedDaemonSetListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchAppsV1NamespacedDaemonSetList`,
@@ -33804,7 +34344,9 @@ func (c *Client) WatchAppsV1NamespacedDaemonSetList(ctx context.Context, params 
 	return result, nil
 }
 
-// WatchAppsV1NamespacedDeployment implements watchAppsV1NamespacedDeployment operation.
+// WatchAppsV1NamespacedDeployment invokes watchAppsV1NamespacedDeployment operation.
+//
+// GET /apis/apps/v1/watch/namespaces/{namespace}/deployments/{name}
 func (c *Client) WatchAppsV1NamespacedDeployment(ctx context.Context, params WatchAppsV1NamespacedDeploymentParams) (res WatchAppsV1NamespacedDeploymentRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchAppsV1NamespacedDeployment`,
@@ -34034,7 +34576,9 @@ func (c *Client) WatchAppsV1NamespacedDeployment(ctx context.Context, params Wat
 	return result, nil
 }
 
-// WatchAppsV1NamespacedDeploymentList implements watchAppsV1NamespacedDeploymentList operation.
+// WatchAppsV1NamespacedDeploymentList invokes watchAppsV1NamespacedDeploymentList operation.
+//
+// GET /apis/apps/v1/watch/namespaces/{namespace}/deployments
 func (c *Client) WatchAppsV1NamespacedDeploymentList(ctx context.Context, params WatchAppsV1NamespacedDeploymentListParams) (res WatchAppsV1NamespacedDeploymentListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchAppsV1NamespacedDeploymentList`,
@@ -34250,7 +34794,9 @@ func (c *Client) WatchAppsV1NamespacedDeploymentList(ctx context.Context, params
 	return result, nil
 }
 
-// WatchAppsV1NamespacedReplicaSet implements watchAppsV1NamespacedReplicaSet operation.
+// WatchAppsV1NamespacedReplicaSet invokes watchAppsV1NamespacedReplicaSet operation.
+//
+// GET /apis/apps/v1/watch/namespaces/{namespace}/replicasets/{name}
 func (c *Client) WatchAppsV1NamespacedReplicaSet(ctx context.Context, params WatchAppsV1NamespacedReplicaSetParams) (res WatchAppsV1NamespacedReplicaSetRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchAppsV1NamespacedReplicaSet`,
@@ -34480,7 +35026,9 @@ func (c *Client) WatchAppsV1NamespacedReplicaSet(ctx context.Context, params Wat
 	return result, nil
 }
 
-// WatchAppsV1NamespacedReplicaSetList implements watchAppsV1NamespacedReplicaSetList operation.
+// WatchAppsV1NamespacedReplicaSetList invokes watchAppsV1NamespacedReplicaSetList operation.
+//
+// GET /apis/apps/v1/watch/namespaces/{namespace}/replicasets
 func (c *Client) WatchAppsV1NamespacedReplicaSetList(ctx context.Context, params WatchAppsV1NamespacedReplicaSetListParams) (res WatchAppsV1NamespacedReplicaSetListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchAppsV1NamespacedReplicaSetList`,
@@ -34696,7 +35244,9 @@ func (c *Client) WatchAppsV1NamespacedReplicaSetList(ctx context.Context, params
 	return result, nil
 }
 
-// WatchAppsV1NamespacedStatefulSet implements watchAppsV1NamespacedStatefulSet operation.
+// WatchAppsV1NamespacedStatefulSet invokes watchAppsV1NamespacedStatefulSet operation.
+//
+// GET /apis/apps/v1/watch/namespaces/{namespace}/statefulsets/{name}
 func (c *Client) WatchAppsV1NamespacedStatefulSet(ctx context.Context, params WatchAppsV1NamespacedStatefulSetParams) (res WatchAppsV1NamespacedStatefulSetRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchAppsV1NamespacedStatefulSet`,
@@ -34926,7 +35476,9 @@ func (c *Client) WatchAppsV1NamespacedStatefulSet(ctx context.Context, params Wa
 	return result, nil
 }
 
-// WatchAppsV1NamespacedStatefulSetList implements watchAppsV1NamespacedStatefulSetList operation.
+// WatchAppsV1NamespacedStatefulSetList invokes watchAppsV1NamespacedStatefulSetList operation.
+//
+// GET /apis/apps/v1/watch/namespaces/{namespace}/statefulsets
 func (c *Client) WatchAppsV1NamespacedStatefulSetList(ctx context.Context, params WatchAppsV1NamespacedStatefulSetListParams) (res WatchAppsV1NamespacedStatefulSetListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchAppsV1NamespacedStatefulSetList`,
@@ -35142,7 +35694,9 @@ func (c *Client) WatchAppsV1NamespacedStatefulSetList(ctx context.Context, param
 	return result, nil
 }
 
-// WatchAppsV1ReplicaSetListForAllNamespaces implements watchAppsV1ReplicaSetListForAllNamespaces operation.
+// WatchAppsV1ReplicaSetListForAllNamespaces invokes watchAppsV1ReplicaSetListForAllNamespaces operation.
+//
+// GET /apis/apps/v1/watch/replicasets
 func (c *Client) WatchAppsV1ReplicaSetListForAllNamespaces(ctx context.Context, params WatchAppsV1ReplicaSetListForAllNamespacesParams) (res WatchAppsV1ReplicaSetListForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchAppsV1ReplicaSetListForAllNamespaces`,
@@ -35343,7 +35897,9 @@ func (c *Client) WatchAppsV1ReplicaSetListForAllNamespaces(ctx context.Context, 
 	return result, nil
 }
 
-// WatchAppsV1StatefulSetListForAllNamespaces implements watchAppsV1StatefulSetListForAllNamespaces operation.
+// WatchAppsV1StatefulSetListForAllNamespaces invokes watchAppsV1StatefulSetListForAllNamespaces operation.
+//
+// GET /apis/apps/v1/watch/statefulsets
 func (c *Client) WatchAppsV1StatefulSetListForAllNamespaces(ctx context.Context, params WatchAppsV1StatefulSetListForAllNamespacesParams) (res WatchAppsV1StatefulSetListForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchAppsV1StatefulSetListForAllNamespaces`,
@@ -35544,7 +36100,9 @@ func (c *Client) WatchAppsV1StatefulSetListForAllNamespaces(ctx context.Context,
 	return result, nil
 }
 
-// WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces implements watchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces operation.
+// WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces invokes watchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces operation.
+//
+// GET /apis/autoscaling/v1/watch/horizontalpodautoscalers
 func (c *Client) WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces(ctx context.Context, params WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesParams) (res WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces`,
@@ -35745,7 +36303,9 @@ func (c *Client) WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces(c
 	return result, nil
 }
 
-// WatchAutoscalingV1NamespacedHorizontalPodAutoscaler implements watchAutoscalingV1NamespacedHorizontalPodAutoscaler operation.
+// WatchAutoscalingV1NamespacedHorizontalPodAutoscaler invokes watchAutoscalingV1NamespacedHorizontalPodAutoscaler operation.
+//
+// GET /apis/autoscaling/v1/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}
 func (c *Client) WatchAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx context.Context, params WatchAutoscalingV1NamespacedHorizontalPodAutoscalerParams) (res WatchAutoscalingV1NamespacedHorizontalPodAutoscalerRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchAutoscalingV1NamespacedHorizontalPodAutoscaler`,
@@ -35975,7 +36535,9 @@ func (c *Client) WatchAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx context
 	return result, nil
 }
 
-// WatchAutoscalingV1NamespacedHorizontalPodAutoscalerList implements watchAutoscalingV1NamespacedHorizontalPodAutoscalerList operation.
+// WatchAutoscalingV1NamespacedHorizontalPodAutoscalerList invokes watchAutoscalingV1NamespacedHorizontalPodAutoscalerList operation.
+//
+// GET /apis/autoscaling/v1/watch/namespaces/{namespace}/horizontalpodautoscalers
 func (c *Client) WatchAutoscalingV1NamespacedHorizontalPodAutoscalerList(ctx context.Context, params WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListParams) (res WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchAutoscalingV1NamespacedHorizontalPodAutoscalerList`,
@@ -36191,7 +36753,9 @@ func (c *Client) WatchAutoscalingV1NamespacedHorizontalPodAutoscalerList(ctx con
 	return result, nil
 }
 
-// WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces implements watchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces operation.
+// WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces invokes watchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces operation.
+//
+// GET /apis/autoscaling/v2beta1/watch/horizontalpodautoscalers
 func (c *Client) WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces(ctx context.Context, params WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesParams) (res WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces`,
@@ -36392,7 +36956,9 @@ func (c *Client) WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespa
 	return result, nil
 }
 
-// WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler implements watchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler operation.
+// WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler invokes watchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler operation.
+//
+// GET /apis/autoscaling/v2beta1/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}
 func (c *Client) WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx context.Context, params WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams) (res WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler`,
@@ -36622,7 +37188,9 @@ func (c *Client) WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx co
 	return result, nil
 }
 
-// WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList implements watchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList operation.
+// WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList invokes watchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList operation.
+//
+// GET /apis/autoscaling/v2beta1/watch/namespaces/{namespace}/horizontalpodautoscalers
 func (c *Client) WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList(ctx context.Context, params WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListParams) (res WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList`,
@@ -36838,7 +37406,9 @@ func (c *Client) WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList(ct
 	return result, nil
 }
 
-// WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces implements watchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces operation.
+// WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces invokes watchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces operation.
+//
+// GET /apis/autoscaling/v2beta2/watch/horizontalpodautoscalers
 func (c *Client) WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces(ctx context.Context, params WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesParams) (res WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces`,
@@ -37039,7 +37609,9 @@ func (c *Client) WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespa
 	return result, nil
 }
 
-// WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler implements watchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler operation.
+// WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler invokes watchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler operation.
+//
+// GET /apis/autoscaling/v2beta2/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}
 func (c *Client) WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx context.Context, params WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams) (res WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler`,
@@ -37269,7 +37841,9 @@ func (c *Client) WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx co
 	return result, nil
 }
 
-// WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList implements watchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList operation.
+// WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList invokes watchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList operation.
+//
+// GET /apis/autoscaling/v2beta2/watch/namespaces/{namespace}/horizontalpodautoscalers
 func (c *Client) WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList(ctx context.Context, params WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListParams) (res WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList`,
@@ -37485,7 +38059,9 @@ func (c *Client) WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList(ct
 	return result, nil
 }
 
-// WatchBatchV1CronJobListForAllNamespaces implements watchBatchV1CronJobListForAllNamespaces operation.
+// WatchBatchV1CronJobListForAllNamespaces invokes watchBatchV1CronJobListForAllNamespaces operation.
+//
+// GET /apis/batch/v1/watch/cronjobs
 func (c *Client) WatchBatchV1CronJobListForAllNamespaces(ctx context.Context, params WatchBatchV1CronJobListForAllNamespacesParams) (res WatchBatchV1CronJobListForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchBatchV1CronJobListForAllNamespaces`,
@@ -37686,7 +38262,9 @@ func (c *Client) WatchBatchV1CronJobListForAllNamespaces(ctx context.Context, pa
 	return result, nil
 }
 
-// WatchBatchV1JobListForAllNamespaces implements watchBatchV1JobListForAllNamespaces operation.
+// WatchBatchV1JobListForAllNamespaces invokes watchBatchV1JobListForAllNamespaces operation.
+//
+// GET /apis/batch/v1/watch/jobs
 func (c *Client) WatchBatchV1JobListForAllNamespaces(ctx context.Context, params WatchBatchV1JobListForAllNamespacesParams) (res WatchBatchV1JobListForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchBatchV1JobListForAllNamespaces`,
@@ -37887,7 +38465,9 @@ func (c *Client) WatchBatchV1JobListForAllNamespaces(ctx context.Context, params
 	return result, nil
 }
 
-// WatchBatchV1NamespacedCronJob implements watchBatchV1NamespacedCronJob operation.
+// WatchBatchV1NamespacedCronJob invokes watchBatchV1NamespacedCronJob operation.
+//
+// GET /apis/batch/v1/watch/namespaces/{namespace}/cronjobs/{name}
 func (c *Client) WatchBatchV1NamespacedCronJob(ctx context.Context, params WatchBatchV1NamespacedCronJobParams) (res WatchBatchV1NamespacedCronJobRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchBatchV1NamespacedCronJob`,
@@ -38117,7 +38697,9 @@ func (c *Client) WatchBatchV1NamespacedCronJob(ctx context.Context, params Watch
 	return result, nil
 }
 
-// WatchBatchV1NamespacedCronJobList implements watchBatchV1NamespacedCronJobList operation.
+// WatchBatchV1NamespacedCronJobList invokes watchBatchV1NamespacedCronJobList operation.
+//
+// GET /apis/batch/v1/watch/namespaces/{namespace}/cronjobs
 func (c *Client) WatchBatchV1NamespacedCronJobList(ctx context.Context, params WatchBatchV1NamespacedCronJobListParams) (res WatchBatchV1NamespacedCronJobListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchBatchV1NamespacedCronJobList`,
@@ -38333,7 +38915,9 @@ func (c *Client) WatchBatchV1NamespacedCronJobList(ctx context.Context, params W
 	return result, nil
 }
 
-// WatchBatchV1NamespacedJob implements watchBatchV1NamespacedJob operation.
+// WatchBatchV1NamespacedJob invokes watchBatchV1NamespacedJob operation.
+//
+// GET /apis/batch/v1/watch/namespaces/{namespace}/jobs/{name}
 func (c *Client) WatchBatchV1NamespacedJob(ctx context.Context, params WatchBatchV1NamespacedJobParams) (res WatchBatchV1NamespacedJobRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchBatchV1NamespacedJob`,
@@ -38563,7 +39147,9 @@ func (c *Client) WatchBatchV1NamespacedJob(ctx context.Context, params WatchBatc
 	return result, nil
 }
 
-// WatchBatchV1NamespacedJobList implements watchBatchV1NamespacedJobList operation.
+// WatchBatchV1NamespacedJobList invokes watchBatchV1NamespacedJobList operation.
+//
+// GET /apis/batch/v1/watch/namespaces/{namespace}/jobs
 func (c *Client) WatchBatchV1NamespacedJobList(ctx context.Context, params WatchBatchV1NamespacedJobListParams) (res WatchBatchV1NamespacedJobListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchBatchV1NamespacedJobList`,
@@ -38779,7 +39365,9 @@ func (c *Client) WatchBatchV1NamespacedJobList(ctx context.Context, params Watch
 	return result, nil
 }
 
-// WatchBatchV1beta1CronJobListForAllNamespaces implements watchBatchV1beta1CronJobListForAllNamespaces operation.
+// WatchBatchV1beta1CronJobListForAllNamespaces invokes watchBatchV1beta1CronJobListForAllNamespaces operation.
+//
+// GET /apis/batch/v1beta1/watch/cronjobs
 func (c *Client) WatchBatchV1beta1CronJobListForAllNamespaces(ctx context.Context, params WatchBatchV1beta1CronJobListForAllNamespacesParams) (res WatchBatchV1beta1CronJobListForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchBatchV1beta1CronJobListForAllNamespaces`,
@@ -38980,7 +39568,9 @@ func (c *Client) WatchBatchV1beta1CronJobListForAllNamespaces(ctx context.Contex
 	return result, nil
 }
 
-// WatchBatchV1beta1NamespacedCronJob implements watchBatchV1beta1NamespacedCronJob operation.
+// WatchBatchV1beta1NamespacedCronJob invokes watchBatchV1beta1NamespacedCronJob operation.
+//
+// GET /apis/batch/v1beta1/watch/namespaces/{namespace}/cronjobs/{name}
 func (c *Client) WatchBatchV1beta1NamespacedCronJob(ctx context.Context, params WatchBatchV1beta1NamespacedCronJobParams) (res WatchBatchV1beta1NamespacedCronJobRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchBatchV1beta1NamespacedCronJob`,
@@ -39210,7 +39800,9 @@ func (c *Client) WatchBatchV1beta1NamespacedCronJob(ctx context.Context, params 
 	return result, nil
 }
 
-// WatchBatchV1beta1NamespacedCronJobList implements watchBatchV1beta1NamespacedCronJobList operation.
+// WatchBatchV1beta1NamespacedCronJobList invokes watchBatchV1beta1NamespacedCronJobList operation.
+//
+// GET /apis/batch/v1beta1/watch/namespaces/{namespace}/cronjobs
 func (c *Client) WatchBatchV1beta1NamespacedCronJobList(ctx context.Context, params WatchBatchV1beta1NamespacedCronJobListParams) (res WatchBatchV1beta1NamespacedCronJobListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchBatchV1beta1NamespacedCronJobList`,
@@ -39426,7 +40018,9 @@ func (c *Client) WatchBatchV1beta1NamespacedCronJobList(ctx context.Context, par
 	return result, nil
 }
 
-// WatchCertificatesV1CertificateSigningRequest implements watchCertificatesV1CertificateSigningRequest operation.
+// WatchCertificatesV1CertificateSigningRequest invokes watchCertificatesV1CertificateSigningRequest operation.
+//
+// GET /apis/certificates.k8s.io/v1/watch/certificatesigningrequests/{name}
 func (c *Client) WatchCertificatesV1CertificateSigningRequest(ctx context.Context, params WatchCertificatesV1CertificateSigningRequestParams) (res WatchCertificatesV1CertificateSigningRequestRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCertificatesV1CertificateSigningRequest`,
@@ -39641,7 +40235,9 @@ func (c *Client) WatchCertificatesV1CertificateSigningRequest(ctx context.Contex
 	return result, nil
 }
 
-// WatchCertificatesV1CertificateSigningRequestList implements watchCertificatesV1CertificateSigningRequestList operation.
+// WatchCertificatesV1CertificateSigningRequestList invokes watchCertificatesV1CertificateSigningRequestList operation.
+//
+// GET /apis/certificates.k8s.io/v1/watch/certificatesigningrequests
 func (c *Client) WatchCertificatesV1CertificateSigningRequestList(ctx context.Context, params WatchCertificatesV1CertificateSigningRequestListParams) (res WatchCertificatesV1CertificateSigningRequestListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCertificatesV1CertificateSigningRequestList`,
@@ -39842,7 +40438,9 @@ func (c *Client) WatchCertificatesV1CertificateSigningRequestList(ctx context.Co
 	return result, nil
 }
 
-// WatchCoordinationV1LeaseListForAllNamespaces implements watchCoordinationV1LeaseListForAllNamespaces operation.
+// WatchCoordinationV1LeaseListForAllNamespaces invokes watchCoordinationV1LeaseListForAllNamespaces operation.
+//
+// GET /apis/coordination.k8s.io/v1/watch/leases
 func (c *Client) WatchCoordinationV1LeaseListForAllNamespaces(ctx context.Context, params WatchCoordinationV1LeaseListForAllNamespacesParams) (res WatchCoordinationV1LeaseListForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCoordinationV1LeaseListForAllNamespaces`,
@@ -40043,7 +40641,9 @@ func (c *Client) WatchCoordinationV1LeaseListForAllNamespaces(ctx context.Contex
 	return result, nil
 }
 
-// WatchCoordinationV1NamespacedLease implements watchCoordinationV1NamespacedLease operation.
+// WatchCoordinationV1NamespacedLease invokes watchCoordinationV1NamespacedLease operation.
+//
+// GET /apis/coordination.k8s.io/v1/watch/namespaces/{namespace}/leases/{name}
 func (c *Client) WatchCoordinationV1NamespacedLease(ctx context.Context, params WatchCoordinationV1NamespacedLeaseParams) (res WatchCoordinationV1NamespacedLeaseRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCoordinationV1NamespacedLease`,
@@ -40273,7 +40873,9 @@ func (c *Client) WatchCoordinationV1NamespacedLease(ctx context.Context, params 
 	return result, nil
 }
 
-// WatchCoordinationV1NamespacedLeaseList implements watchCoordinationV1NamespacedLeaseList operation.
+// WatchCoordinationV1NamespacedLeaseList invokes watchCoordinationV1NamespacedLeaseList operation.
+//
+// GET /apis/coordination.k8s.io/v1/watch/namespaces/{namespace}/leases
 func (c *Client) WatchCoordinationV1NamespacedLeaseList(ctx context.Context, params WatchCoordinationV1NamespacedLeaseListParams) (res WatchCoordinationV1NamespacedLeaseListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCoordinationV1NamespacedLeaseList`,
@@ -40489,7 +41091,9 @@ func (c *Client) WatchCoordinationV1NamespacedLeaseList(ctx context.Context, par
 	return result, nil
 }
 
-// WatchCoreV1ConfigMapListForAllNamespaces implements watchCoreV1ConfigMapListForAllNamespaces operation.
+// WatchCoreV1ConfigMapListForAllNamespaces invokes watchCoreV1ConfigMapListForAllNamespaces operation.
+//
+// GET /api/v1/watch/configmaps
 func (c *Client) WatchCoreV1ConfigMapListForAllNamespaces(ctx context.Context, params WatchCoreV1ConfigMapListForAllNamespacesParams) (res WatchCoreV1ConfigMapListForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCoreV1ConfigMapListForAllNamespaces`,
@@ -40690,7 +41294,9 @@ func (c *Client) WatchCoreV1ConfigMapListForAllNamespaces(ctx context.Context, p
 	return result, nil
 }
 
-// WatchCoreV1EndpointsListForAllNamespaces implements watchCoreV1EndpointsListForAllNamespaces operation.
+// WatchCoreV1EndpointsListForAllNamespaces invokes watchCoreV1EndpointsListForAllNamespaces operation.
+//
+// GET /api/v1/watch/endpoints
 func (c *Client) WatchCoreV1EndpointsListForAllNamespaces(ctx context.Context, params WatchCoreV1EndpointsListForAllNamespacesParams) (res WatchCoreV1EndpointsListForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCoreV1EndpointsListForAllNamespaces`,
@@ -40891,7 +41497,9 @@ func (c *Client) WatchCoreV1EndpointsListForAllNamespaces(ctx context.Context, p
 	return result, nil
 }
 
-// WatchCoreV1EventListForAllNamespaces implements watchCoreV1EventListForAllNamespaces operation.
+// WatchCoreV1EventListForAllNamespaces invokes watchCoreV1EventListForAllNamespaces operation.
+//
+// GET /api/v1/watch/events
 func (c *Client) WatchCoreV1EventListForAllNamespaces(ctx context.Context, params WatchCoreV1EventListForAllNamespacesParams) (res WatchCoreV1EventListForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCoreV1EventListForAllNamespaces`,
@@ -41092,7 +41700,9 @@ func (c *Client) WatchCoreV1EventListForAllNamespaces(ctx context.Context, param
 	return result, nil
 }
 
-// WatchCoreV1LimitRangeListForAllNamespaces implements watchCoreV1LimitRangeListForAllNamespaces operation.
+// WatchCoreV1LimitRangeListForAllNamespaces invokes watchCoreV1LimitRangeListForAllNamespaces operation.
+//
+// GET /api/v1/watch/limitranges
 func (c *Client) WatchCoreV1LimitRangeListForAllNamespaces(ctx context.Context, params WatchCoreV1LimitRangeListForAllNamespacesParams) (res WatchCoreV1LimitRangeListForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCoreV1LimitRangeListForAllNamespaces`,
@@ -41293,7 +41903,9 @@ func (c *Client) WatchCoreV1LimitRangeListForAllNamespaces(ctx context.Context, 
 	return result, nil
 }
 
-// WatchCoreV1Namespace implements watchCoreV1Namespace operation.
+// WatchCoreV1Namespace invokes watchCoreV1Namespace operation.
+//
+// GET /api/v1/watch/namespaces/{name}
 func (c *Client) WatchCoreV1Namespace(ctx context.Context, params WatchCoreV1NamespaceParams) (res WatchCoreV1NamespaceRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCoreV1Namespace`,
@@ -41508,7 +42120,9 @@ func (c *Client) WatchCoreV1Namespace(ctx context.Context, params WatchCoreV1Nam
 	return result, nil
 }
 
-// WatchCoreV1NamespaceList implements watchCoreV1NamespaceList operation.
+// WatchCoreV1NamespaceList invokes watchCoreV1NamespaceList operation.
+//
+// GET /api/v1/watch/namespaces
 func (c *Client) WatchCoreV1NamespaceList(ctx context.Context, params WatchCoreV1NamespaceListParams) (res WatchCoreV1NamespaceListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCoreV1NamespaceList`,
@@ -41709,7 +42323,9 @@ func (c *Client) WatchCoreV1NamespaceList(ctx context.Context, params WatchCoreV
 	return result, nil
 }
 
-// WatchCoreV1NamespacedConfigMap implements watchCoreV1NamespacedConfigMap operation.
+// WatchCoreV1NamespacedConfigMap invokes watchCoreV1NamespacedConfigMap operation.
+//
+// GET /api/v1/watch/namespaces/{namespace}/configmaps/{name}
 func (c *Client) WatchCoreV1NamespacedConfigMap(ctx context.Context, params WatchCoreV1NamespacedConfigMapParams) (res WatchCoreV1NamespacedConfigMapRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCoreV1NamespacedConfigMap`,
@@ -41939,7 +42555,9 @@ func (c *Client) WatchCoreV1NamespacedConfigMap(ctx context.Context, params Watc
 	return result, nil
 }
 
-// WatchCoreV1NamespacedConfigMapList implements watchCoreV1NamespacedConfigMapList operation.
+// WatchCoreV1NamespacedConfigMapList invokes watchCoreV1NamespacedConfigMapList operation.
+//
+// GET /api/v1/watch/namespaces/{namespace}/configmaps
 func (c *Client) WatchCoreV1NamespacedConfigMapList(ctx context.Context, params WatchCoreV1NamespacedConfigMapListParams) (res WatchCoreV1NamespacedConfigMapListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCoreV1NamespacedConfigMapList`,
@@ -42155,7 +42773,9 @@ func (c *Client) WatchCoreV1NamespacedConfigMapList(ctx context.Context, params 
 	return result, nil
 }
 
-// WatchCoreV1NamespacedEndpoints implements watchCoreV1NamespacedEndpoints operation.
+// WatchCoreV1NamespacedEndpoints invokes watchCoreV1NamespacedEndpoints operation.
+//
+// GET /api/v1/watch/namespaces/{namespace}/endpoints/{name}
 func (c *Client) WatchCoreV1NamespacedEndpoints(ctx context.Context, params WatchCoreV1NamespacedEndpointsParams) (res WatchCoreV1NamespacedEndpointsRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCoreV1NamespacedEndpoints`,
@@ -42385,7 +43005,9 @@ func (c *Client) WatchCoreV1NamespacedEndpoints(ctx context.Context, params Watc
 	return result, nil
 }
 
-// WatchCoreV1NamespacedEndpointsList implements watchCoreV1NamespacedEndpointsList operation.
+// WatchCoreV1NamespacedEndpointsList invokes watchCoreV1NamespacedEndpointsList operation.
+//
+// GET /api/v1/watch/namespaces/{namespace}/endpoints
 func (c *Client) WatchCoreV1NamespacedEndpointsList(ctx context.Context, params WatchCoreV1NamespacedEndpointsListParams) (res WatchCoreV1NamespacedEndpointsListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCoreV1NamespacedEndpointsList`,
@@ -42601,7 +43223,9 @@ func (c *Client) WatchCoreV1NamespacedEndpointsList(ctx context.Context, params 
 	return result, nil
 }
 
-// WatchCoreV1NamespacedEvent implements watchCoreV1NamespacedEvent operation.
+// WatchCoreV1NamespacedEvent invokes watchCoreV1NamespacedEvent operation.
+//
+// GET /api/v1/watch/namespaces/{namespace}/events/{name}
 func (c *Client) WatchCoreV1NamespacedEvent(ctx context.Context, params WatchCoreV1NamespacedEventParams) (res WatchCoreV1NamespacedEventRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCoreV1NamespacedEvent`,
@@ -42831,7 +43455,9 @@ func (c *Client) WatchCoreV1NamespacedEvent(ctx context.Context, params WatchCor
 	return result, nil
 }
 
-// WatchCoreV1NamespacedEventList implements watchCoreV1NamespacedEventList operation.
+// WatchCoreV1NamespacedEventList invokes watchCoreV1NamespacedEventList operation.
+//
+// GET /api/v1/watch/namespaces/{namespace}/events
 func (c *Client) WatchCoreV1NamespacedEventList(ctx context.Context, params WatchCoreV1NamespacedEventListParams) (res WatchCoreV1NamespacedEventListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCoreV1NamespacedEventList`,
@@ -43047,7 +43673,9 @@ func (c *Client) WatchCoreV1NamespacedEventList(ctx context.Context, params Watc
 	return result, nil
 }
 
-// WatchCoreV1NamespacedLimitRange implements watchCoreV1NamespacedLimitRange operation.
+// WatchCoreV1NamespacedLimitRange invokes watchCoreV1NamespacedLimitRange operation.
+//
+// GET /api/v1/watch/namespaces/{namespace}/limitranges/{name}
 func (c *Client) WatchCoreV1NamespacedLimitRange(ctx context.Context, params WatchCoreV1NamespacedLimitRangeParams) (res WatchCoreV1NamespacedLimitRangeRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCoreV1NamespacedLimitRange`,
@@ -43277,7 +43905,9 @@ func (c *Client) WatchCoreV1NamespacedLimitRange(ctx context.Context, params Wat
 	return result, nil
 }
 
-// WatchCoreV1NamespacedLimitRangeList implements watchCoreV1NamespacedLimitRangeList operation.
+// WatchCoreV1NamespacedLimitRangeList invokes watchCoreV1NamespacedLimitRangeList operation.
+//
+// GET /api/v1/watch/namespaces/{namespace}/limitranges
 func (c *Client) WatchCoreV1NamespacedLimitRangeList(ctx context.Context, params WatchCoreV1NamespacedLimitRangeListParams) (res WatchCoreV1NamespacedLimitRangeListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCoreV1NamespacedLimitRangeList`,
@@ -43493,7 +44123,9 @@ func (c *Client) WatchCoreV1NamespacedLimitRangeList(ctx context.Context, params
 	return result, nil
 }
 
-// WatchCoreV1NamespacedPersistentVolumeClaim implements watchCoreV1NamespacedPersistentVolumeClaim operation.
+// WatchCoreV1NamespacedPersistentVolumeClaim invokes watchCoreV1NamespacedPersistentVolumeClaim operation.
+//
+// GET /api/v1/watch/namespaces/{namespace}/persistentvolumeclaims/{name}
 func (c *Client) WatchCoreV1NamespacedPersistentVolumeClaim(ctx context.Context, params WatchCoreV1NamespacedPersistentVolumeClaimParams) (res WatchCoreV1NamespacedPersistentVolumeClaimRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCoreV1NamespacedPersistentVolumeClaim`,
@@ -43723,7 +44355,9 @@ func (c *Client) WatchCoreV1NamespacedPersistentVolumeClaim(ctx context.Context,
 	return result, nil
 }
 
-// WatchCoreV1NamespacedPersistentVolumeClaimList implements watchCoreV1NamespacedPersistentVolumeClaimList operation.
+// WatchCoreV1NamespacedPersistentVolumeClaimList invokes watchCoreV1NamespacedPersistentVolumeClaimList operation.
+//
+// GET /api/v1/watch/namespaces/{namespace}/persistentvolumeclaims
 func (c *Client) WatchCoreV1NamespacedPersistentVolumeClaimList(ctx context.Context, params WatchCoreV1NamespacedPersistentVolumeClaimListParams) (res WatchCoreV1NamespacedPersistentVolumeClaimListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCoreV1NamespacedPersistentVolumeClaimList`,
@@ -43939,7 +44573,9 @@ func (c *Client) WatchCoreV1NamespacedPersistentVolumeClaimList(ctx context.Cont
 	return result, nil
 }
 
-// WatchCoreV1NamespacedPod implements watchCoreV1NamespacedPod operation.
+// WatchCoreV1NamespacedPod invokes watchCoreV1NamespacedPod operation.
+//
+// GET /api/v1/watch/namespaces/{namespace}/pods/{name}
 func (c *Client) WatchCoreV1NamespacedPod(ctx context.Context, params WatchCoreV1NamespacedPodParams) (res WatchCoreV1NamespacedPodRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCoreV1NamespacedPod`,
@@ -44169,7 +44805,9 @@ func (c *Client) WatchCoreV1NamespacedPod(ctx context.Context, params WatchCoreV
 	return result, nil
 }
 
-// WatchCoreV1NamespacedPodList implements watchCoreV1NamespacedPodList operation.
+// WatchCoreV1NamespacedPodList invokes watchCoreV1NamespacedPodList operation.
+//
+// GET /api/v1/watch/namespaces/{namespace}/pods
 func (c *Client) WatchCoreV1NamespacedPodList(ctx context.Context, params WatchCoreV1NamespacedPodListParams) (res WatchCoreV1NamespacedPodListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCoreV1NamespacedPodList`,
@@ -44385,7 +45023,9 @@ func (c *Client) WatchCoreV1NamespacedPodList(ctx context.Context, params WatchC
 	return result, nil
 }
 
-// WatchCoreV1NamespacedPodTemplate implements watchCoreV1NamespacedPodTemplate operation.
+// WatchCoreV1NamespacedPodTemplate invokes watchCoreV1NamespacedPodTemplate operation.
+//
+// GET /api/v1/watch/namespaces/{namespace}/podtemplates/{name}
 func (c *Client) WatchCoreV1NamespacedPodTemplate(ctx context.Context, params WatchCoreV1NamespacedPodTemplateParams) (res WatchCoreV1NamespacedPodTemplateRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCoreV1NamespacedPodTemplate`,
@@ -44615,7 +45255,9 @@ func (c *Client) WatchCoreV1NamespacedPodTemplate(ctx context.Context, params Wa
 	return result, nil
 }
 
-// WatchCoreV1NamespacedPodTemplateList implements watchCoreV1NamespacedPodTemplateList operation.
+// WatchCoreV1NamespacedPodTemplateList invokes watchCoreV1NamespacedPodTemplateList operation.
+//
+// GET /api/v1/watch/namespaces/{namespace}/podtemplates
 func (c *Client) WatchCoreV1NamespacedPodTemplateList(ctx context.Context, params WatchCoreV1NamespacedPodTemplateListParams) (res WatchCoreV1NamespacedPodTemplateListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCoreV1NamespacedPodTemplateList`,
@@ -44831,7 +45473,9 @@ func (c *Client) WatchCoreV1NamespacedPodTemplateList(ctx context.Context, param
 	return result, nil
 }
 
-// WatchCoreV1NamespacedReplicationController implements watchCoreV1NamespacedReplicationController operation.
+// WatchCoreV1NamespacedReplicationController invokes watchCoreV1NamespacedReplicationController operation.
+//
+// GET /api/v1/watch/namespaces/{namespace}/replicationcontrollers/{name}
 func (c *Client) WatchCoreV1NamespacedReplicationController(ctx context.Context, params WatchCoreV1NamespacedReplicationControllerParams) (res WatchCoreV1NamespacedReplicationControllerRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCoreV1NamespacedReplicationController`,
@@ -45061,7 +45705,9 @@ func (c *Client) WatchCoreV1NamespacedReplicationController(ctx context.Context,
 	return result, nil
 }
 
-// WatchCoreV1NamespacedReplicationControllerList implements watchCoreV1NamespacedReplicationControllerList operation.
+// WatchCoreV1NamespacedReplicationControllerList invokes watchCoreV1NamespacedReplicationControllerList operation.
+//
+// GET /api/v1/watch/namespaces/{namespace}/replicationcontrollers
 func (c *Client) WatchCoreV1NamespacedReplicationControllerList(ctx context.Context, params WatchCoreV1NamespacedReplicationControllerListParams) (res WatchCoreV1NamespacedReplicationControllerListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCoreV1NamespacedReplicationControllerList`,
@@ -45277,7 +45923,9 @@ func (c *Client) WatchCoreV1NamespacedReplicationControllerList(ctx context.Cont
 	return result, nil
 }
 
-// WatchCoreV1NamespacedResourceQuota implements watchCoreV1NamespacedResourceQuota operation.
+// WatchCoreV1NamespacedResourceQuota invokes watchCoreV1NamespacedResourceQuota operation.
+//
+// GET /api/v1/watch/namespaces/{namespace}/resourcequotas/{name}
 func (c *Client) WatchCoreV1NamespacedResourceQuota(ctx context.Context, params WatchCoreV1NamespacedResourceQuotaParams) (res WatchCoreV1NamespacedResourceQuotaRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCoreV1NamespacedResourceQuota`,
@@ -45507,7 +46155,9 @@ func (c *Client) WatchCoreV1NamespacedResourceQuota(ctx context.Context, params 
 	return result, nil
 }
 
-// WatchCoreV1NamespacedResourceQuotaList implements watchCoreV1NamespacedResourceQuotaList operation.
+// WatchCoreV1NamespacedResourceQuotaList invokes watchCoreV1NamespacedResourceQuotaList operation.
+//
+// GET /api/v1/watch/namespaces/{namespace}/resourcequotas
 func (c *Client) WatchCoreV1NamespacedResourceQuotaList(ctx context.Context, params WatchCoreV1NamespacedResourceQuotaListParams) (res WatchCoreV1NamespacedResourceQuotaListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCoreV1NamespacedResourceQuotaList`,
@@ -45723,7 +46373,9 @@ func (c *Client) WatchCoreV1NamespacedResourceQuotaList(ctx context.Context, par
 	return result, nil
 }
 
-// WatchCoreV1NamespacedSecret implements watchCoreV1NamespacedSecret operation.
+// WatchCoreV1NamespacedSecret invokes watchCoreV1NamespacedSecret operation.
+//
+// GET /api/v1/watch/namespaces/{namespace}/secrets/{name}
 func (c *Client) WatchCoreV1NamespacedSecret(ctx context.Context, params WatchCoreV1NamespacedSecretParams) (res WatchCoreV1NamespacedSecretRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCoreV1NamespacedSecret`,
@@ -45953,7 +46605,9 @@ func (c *Client) WatchCoreV1NamespacedSecret(ctx context.Context, params WatchCo
 	return result, nil
 }
 
-// WatchCoreV1NamespacedSecretList implements watchCoreV1NamespacedSecretList operation.
+// WatchCoreV1NamespacedSecretList invokes watchCoreV1NamespacedSecretList operation.
+//
+// GET /api/v1/watch/namespaces/{namespace}/secrets
 func (c *Client) WatchCoreV1NamespacedSecretList(ctx context.Context, params WatchCoreV1NamespacedSecretListParams) (res WatchCoreV1NamespacedSecretListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCoreV1NamespacedSecretList`,
@@ -46169,7 +46823,9 @@ func (c *Client) WatchCoreV1NamespacedSecretList(ctx context.Context, params Wat
 	return result, nil
 }
 
-// WatchCoreV1NamespacedService implements watchCoreV1NamespacedService operation.
+// WatchCoreV1NamespacedService invokes watchCoreV1NamespacedService operation.
+//
+// GET /api/v1/watch/namespaces/{namespace}/services/{name}
 func (c *Client) WatchCoreV1NamespacedService(ctx context.Context, params WatchCoreV1NamespacedServiceParams) (res WatchCoreV1NamespacedServiceRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCoreV1NamespacedService`,
@@ -46399,7 +47055,9 @@ func (c *Client) WatchCoreV1NamespacedService(ctx context.Context, params WatchC
 	return result, nil
 }
 
-// WatchCoreV1NamespacedServiceAccount implements watchCoreV1NamespacedServiceAccount operation.
+// WatchCoreV1NamespacedServiceAccount invokes watchCoreV1NamespacedServiceAccount operation.
+//
+// GET /api/v1/watch/namespaces/{namespace}/serviceaccounts/{name}
 func (c *Client) WatchCoreV1NamespacedServiceAccount(ctx context.Context, params WatchCoreV1NamespacedServiceAccountParams) (res WatchCoreV1NamespacedServiceAccountRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCoreV1NamespacedServiceAccount`,
@@ -46629,7 +47287,9 @@ func (c *Client) WatchCoreV1NamespacedServiceAccount(ctx context.Context, params
 	return result, nil
 }
 
-// WatchCoreV1NamespacedServiceAccountList implements watchCoreV1NamespacedServiceAccountList operation.
+// WatchCoreV1NamespacedServiceAccountList invokes watchCoreV1NamespacedServiceAccountList operation.
+//
+// GET /api/v1/watch/namespaces/{namespace}/serviceaccounts
 func (c *Client) WatchCoreV1NamespacedServiceAccountList(ctx context.Context, params WatchCoreV1NamespacedServiceAccountListParams) (res WatchCoreV1NamespacedServiceAccountListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCoreV1NamespacedServiceAccountList`,
@@ -46845,7 +47505,9 @@ func (c *Client) WatchCoreV1NamespacedServiceAccountList(ctx context.Context, pa
 	return result, nil
 }
 
-// WatchCoreV1NamespacedServiceList implements watchCoreV1NamespacedServiceList operation.
+// WatchCoreV1NamespacedServiceList invokes watchCoreV1NamespacedServiceList operation.
+//
+// GET /api/v1/watch/namespaces/{namespace}/services
 func (c *Client) WatchCoreV1NamespacedServiceList(ctx context.Context, params WatchCoreV1NamespacedServiceListParams) (res WatchCoreV1NamespacedServiceListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCoreV1NamespacedServiceList`,
@@ -47061,7 +47723,9 @@ func (c *Client) WatchCoreV1NamespacedServiceList(ctx context.Context, params Wa
 	return result, nil
 }
 
-// WatchCoreV1Node implements watchCoreV1Node operation.
+// WatchCoreV1Node invokes watchCoreV1Node operation.
+//
+// GET /api/v1/watch/nodes/{name}
 func (c *Client) WatchCoreV1Node(ctx context.Context, params WatchCoreV1NodeParams) (res WatchCoreV1NodeRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCoreV1Node`,
@@ -47276,7 +47940,9 @@ func (c *Client) WatchCoreV1Node(ctx context.Context, params WatchCoreV1NodePara
 	return result, nil
 }
 
-// WatchCoreV1NodeList implements watchCoreV1NodeList operation.
+// WatchCoreV1NodeList invokes watchCoreV1NodeList operation.
+//
+// GET /api/v1/watch/nodes
 func (c *Client) WatchCoreV1NodeList(ctx context.Context, params WatchCoreV1NodeListParams) (res WatchCoreV1NodeListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCoreV1NodeList`,
@@ -47477,7 +48143,9 @@ func (c *Client) WatchCoreV1NodeList(ctx context.Context, params WatchCoreV1Node
 	return result, nil
 }
 
-// WatchCoreV1PersistentVolume implements watchCoreV1PersistentVolume operation.
+// WatchCoreV1PersistentVolume invokes watchCoreV1PersistentVolume operation.
+//
+// GET /api/v1/watch/persistentvolumes/{name}
 func (c *Client) WatchCoreV1PersistentVolume(ctx context.Context, params WatchCoreV1PersistentVolumeParams) (res WatchCoreV1PersistentVolumeRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCoreV1PersistentVolume`,
@@ -47692,7 +48360,9 @@ func (c *Client) WatchCoreV1PersistentVolume(ctx context.Context, params WatchCo
 	return result, nil
 }
 
-// WatchCoreV1PersistentVolumeClaimListForAllNamespaces implements watchCoreV1PersistentVolumeClaimListForAllNamespaces operation.
+// WatchCoreV1PersistentVolumeClaimListForAllNamespaces invokes watchCoreV1PersistentVolumeClaimListForAllNamespaces operation.
+//
+// GET /api/v1/watch/persistentvolumeclaims
 func (c *Client) WatchCoreV1PersistentVolumeClaimListForAllNamespaces(ctx context.Context, params WatchCoreV1PersistentVolumeClaimListForAllNamespacesParams) (res WatchCoreV1PersistentVolumeClaimListForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCoreV1PersistentVolumeClaimListForAllNamespaces`,
@@ -47893,7 +48563,9 @@ func (c *Client) WatchCoreV1PersistentVolumeClaimListForAllNamespaces(ctx contex
 	return result, nil
 }
 
-// WatchCoreV1PersistentVolumeList implements watchCoreV1PersistentVolumeList operation.
+// WatchCoreV1PersistentVolumeList invokes watchCoreV1PersistentVolumeList operation.
+//
+// GET /api/v1/watch/persistentvolumes
 func (c *Client) WatchCoreV1PersistentVolumeList(ctx context.Context, params WatchCoreV1PersistentVolumeListParams) (res WatchCoreV1PersistentVolumeListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCoreV1PersistentVolumeList`,
@@ -48094,7 +48766,9 @@ func (c *Client) WatchCoreV1PersistentVolumeList(ctx context.Context, params Wat
 	return result, nil
 }
 
-// WatchCoreV1PodListForAllNamespaces implements watchCoreV1PodListForAllNamespaces operation.
+// WatchCoreV1PodListForAllNamespaces invokes watchCoreV1PodListForAllNamespaces operation.
+//
+// GET /api/v1/watch/pods
 func (c *Client) WatchCoreV1PodListForAllNamespaces(ctx context.Context, params WatchCoreV1PodListForAllNamespacesParams) (res WatchCoreV1PodListForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCoreV1PodListForAllNamespaces`,
@@ -48295,7 +48969,9 @@ func (c *Client) WatchCoreV1PodListForAllNamespaces(ctx context.Context, params 
 	return result, nil
 }
 
-// WatchCoreV1PodTemplateListForAllNamespaces implements watchCoreV1PodTemplateListForAllNamespaces operation.
+// WatchCoreV1PodTemplateListForAllNamespaces invokes watchCoreV1PodTemplateListForAllNamespaces operation.
+//
+// GET /api/v1/watch/podtemplates
 func (c *Client) WatchCoreV1PodTemplateListForAllNamespaces(ctx context.Context, params WatchCoreV1PodTemplateListForAllNamespacesParams) (res WatchCoreV1PodTemplateListForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCoreV1PodTemplateListForAllNamespaces`,
@@ -48496,7 +49172,9 @@ func (c *Client) WatchCoreV1PodTemplateListForAllNamespaces(ctx context.Context,
 	return result, nil
 }
 
-// WatchCoreV1ReplicationControllerListForAllNamespaces implements watchCoreV1ReplicationControllerListForAllNamespaces operation.
+// WatchCoreV1ReplicationControllerListForAllNamespaces invokes watchCoreV1ReplicationControllerListForAllNamespaces operation.
+//
+// GET /api/v1/watch/replicationcontrollers
 func (c *Client) WatchCoreV1ReplicationControllerListForAllNamespaces(ctx context.Context, params WatchCoreV1ReplicationControllerListForAllNamespacesParams) (res WatchCoreV1ReplicationControllerListForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCoreV1ReplicationControllerListForAllNamespaces`,
@@ -48697,7 +49375,9 @@ func (c *Client) WatchCoreV1ReplicationControllerListForAllNamespaces(ctx contex
 	return result, nil
 }
 
-// WatchCoreV1ResourceQuotaListForAllNamespaces implements watchCoreV1ResourceQuotaListForAllNamespaces operation.
+// WatchCoreV1ResourceQuotaListForAllNamespaces invokes watchCoreV1ResourceQuotaListForAllNamespaces operation.
+//
+// GET /api/v1/watch/resourcequotas
 func (c *Client) WatchCoreV1ResourceQuotaListForAllNamespaces(ctx context.Context, params WatchCoreV1ResourceQuotaListForAllNamespacesParams) (res WatchCoreV1ResourceQuotaListForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCoreV1ResourceQuotaListForAllNamespaces`,
@@ -48898,7 +49578,9 @@ func (c *Client) WatchCoreV1ResourceQuotaListForAllNamespaces(ctx context.Contex
 	return result, nil
 }
 
-// WatchCoreV1SecretListForAllNamespaces implements watchCoreV1SecretListForAllNamespaces operation.
+// WatchCoreV1SecretListForAllNamespaces invokes watchCoreV1SecretListForAllNamespaces operation.
+//
+// GET /api/v1/watch/secrets
 func (c *Client) WatchCoreV1SecretListForAllNamespaces(ctx context.Context, params WatchCoreV1SecretListForAllNamespacesParams) (res WatchCoreV1SecretListForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCoreV1SecretListForAllNamespaces`,
@@ -49099,7 +49781,9 @@ func (c *Client) WatchCoreV1SecretListForAllNamespaces(ctx context.Context, para
 	return result, nil
 }
 
-// WatchCoreV1ServiceAccountListForAllNamespaces implements watchCoreV1ServiceAccountListForAllNamespaces operation.
+// WatchCoreV1ServiceAccountListForAllNamespaces invokes watchCoreV1ServiceAccountListForAllNamespaces operation.
+//
+// GET /api/v1/watch/serviceaccounts
 func (c *Client) WatchCoreV1ServiceAccountListForAllNamespaces(ctx context.Context, params WatchCoreV1ServiceAccountListForAllNamespacesParams) (res WatchCoreV1ServiceAccountListForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCoreV1ServiceAccountListForAllNamespaces`,
@@ -49300,7 +49984,9 @@ func (c *Client) WatchCoreV1ServiceAccountListForAllNamespaces(ctx context.Conte
 	return result, nil
 }
 
-// WatchCoreV1ServiceListForAllNamespaces implements watchCoreV1ServiceListForAllNamespaces operation.
+// WatchCoreV1ServiceListForAllNamespaces invokes watchCoreV1ServiceListForAllNamespaces operation.
+//
+// GET /api/v1/watch/services
 func (c *Client) WatchCoreV1ServiceListForAllNamespaces(ctx context.Context, params WatchCoreV1ServiceListForAllNamespacesParams) (res WatchCoreV1ServiceListForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchCoreV1ServiceListForAllNamespaces`,
@@ -49501,7 +50187,9 @@ func (c *Client) WatchCoreV1ServiceListForAllNamespaces(ctx context.Context, par
 	return result, nil
 }
 
-// WatchDiscoveryV1EndpointSliceListForAllNamespaces implements watchDiscoveryV1EndpointSliceListForAllNamespaces operation.
+// WatchDiscoveryV1EndpointSliceListForAllNamespaces invokes watchDiscoveryV1EndpointSliceListForAllNamespaces operation.
+//
+// GET /apis/discovery.k8s.io/v1/watch/endpointslices
 func (c *Client) WatchDiscoveryV1EndpointSliceListForAllNamespaces(ctx context.Context, params WatchDiscoveryV1EndpointSliceListForAllNamespacesParams) (res WatchDiscoveryV1EndpointSliceListForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchDiscoveryV1EndpointSliceListForAllNamespaces`,
@@ -49702,7 +50390,9 @@ func (c *Client) WatchDiscoveryV1EndpointSliceListForAllNamespaces(ctx context.C
 	return result, nil
 }
 
-// WatchDiscoveryV1NamespacedEndpointSlice implements watchDiscoveryV1NamespacedEndpointSlice operation.
+// WatchDiscoveryV1NamespacedEndpointSlice invokes watchDiscoveryV1NamespacedEndpointSlice operation.
+//
+// GET /apis/discovery.k8s.io/v1/watch/namespaces/{namespace}/endpointslices/{name}
 func (c *Client) WatchDiscoveryV1NamespacedEndpointSlice(ctx context.Context, params WatchDiscoveryV1NamespacedEndpointSliceParams) (res WatchDiscoveryV1NamespacedEndpointSliceRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchDiscoveryV1NamespacedEndpointSlice`,
@@ -49932,7 +50622,9 @@ func (c *Client) WatchDiscoveryV1NamespacedEndpointSlice(ctx context.Context, pa
 	return result, nil
 }
 
-// WatchDiscoveryV1NamespacedEndpointSliceList implements watchDiscoveryV1NamespacedEndpointSliceList operation.
+// WatchDiscoveryV1NamespacedEndpointSliceList invokes watchDiscoveryV1NamespacedEndpointSliceList operation.
+//
+// GET /apis/discovery.k8s.io/v1/watch/namespaces/{namespace}/endpointslices
 func (c *Client) WatchDiscoveryV1NamespacedEndpointSliceList(ctx context.Context, params WatchDiscoveryV1NamespacedEndpointSliceListParams) (res WatchDiscoveryV1NamespacedEndpointSliceListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchDiscoveryV1NamespacedEndpointSliceList`,
@@ -50148,7 +50840,9 @@ func (c *Client) WatchDiscoveryV1NamespacedEndpointSliceList(ctx context.Context
 	return result, nil
 }
 
-// WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces implements watchDiscoveryV1beta1EndpointSliceListForAllNamespaces operation.
+// WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces invokes watchDiscoveryV1beta1EndpointSliceListForAllNamespaces operation.
+//
+// GET /apis/discovery.k8s.io/v1beta1/watch/endpointslices
 func (c *Client) WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces(ctx context.Context, params WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesParams) (res WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces`,
@@ -50349,7 +51043,9 @@ func (c *Client) WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces(ctx cont
 	return result, nil
 }
 
-// WatchDiscoveryV1beta1NamespacedEndpointSlice implements watchDiscoveryV1beta1NamespacedEndpointSlice operation.
+// WatchDiscoveryV1beta1NamespacedEndpointSlice invokes watchDiscoveryV1beta1NamespacedEndpointSlice operation.
+//
+// GET /apis/discovery.k8s.io/v1beta1/watch/namespaces/{namespace}/endpointslices/{name}
 func (c *Client) WatchDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Context, params WatchDiscoveryV1beta1NamespacedEndpointSliceParams) (res WatchDiscoveryV1beta1NamespacedEndpointSliceRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchDiscoveryV1beta1NamespacedEndpointSlice`,
@@ -50579,7 +51275,9 @@ func (c *Client) WatchDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Contex
 	return result, nil
 }
 
-// WatchDiscoveryV1beta1NamespacedEndpointSliceList implements watchDiscoveryV1beta1NamespacedEndpointSliceList operation.
+// WatchDiscoveryV1beta1NamespacedEndpointSliceList invokes watchDiscoveryV1beta1NamespacedEndpointSliceList operation.
+//
+// GET /apis/discovery.k8s.io/v1beta1/watch/namespaces/{namespace}/endpointslices
 func (c *Client) WatchDiscoveryV1beta1NamespacedEndpointSliceList(ctx context.Context, params WatchDiscoveryV1beta1NamespacedEndpointSliceListParams) (res WatchDiscoveryV1beta1NamespacedEndpointSliceListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchDiscoveryV1beta1NamespacedEndpointSliceList`,
@@ -50795,7 +51493,9 @@ func (c *Client) WatchDiscoveryV1beta1NamespacedEndpointSliceList(ctx context.Co
 	return result, nil
 }
 
-// WatchEventsV1EventListForAllNamespaces implements watchEventsV1EventListForAllNamespaces operation.
+// WatchEventsV1EventListForAllNamespaces invokes watchEventsV1EventListForAllNamespaces operation.
+//
+// GET /apis/events.k8s.io/v1/watch/events
 func (c *Client) WatchEventsV1EventListForAllNamespaces(ctx context.Context, params WatchEventsV1EventListForAllNamespacesParams) (res WatchEventsV1EventListForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchEventsV1EventListForAllNamespaces`,
@@ -50996,7 +51696,9 @@ func (c *Client) WatchEventsV1EventListForAllNamespaces(ctx context.Context, par
 	return result, nil
 }
 
-// WatchEventsV1NamespacedEvent implements watchEventsV1NamespacedEvent operation.
+// WatchEventsV1NamespacedEvent invokes watchEventsV1NamespacedEvent operation.
+//
+// GET /apis/events.k8s.io/v1/watch/namespaces/{namespace}/events/{name}
 func (c *Client) WatchEventsV1NamespacedEvent(ctx context.Context, params WatchEventsV1NamespacedEventParams) (res WatchEventsV1NamespacedEventRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchEventsV1NamespacedEvent`,
@@ -51226,7 +51928,9 @@ func (c *Client) WatchEventsV1NamespacedEvent(ctx context.Context, params WatchE
 	return result, nil
 }
 
-// WatchEventsV1NamespacedEventList implements watchEventsV1NamespacedEventList operation.
+// WatchEventsV1NamespacedEventList invokes watchEventsV1NamespacedEventList operation.
+//
+// GET /apis/events.k8s.io/v1/watch/namespaces/{namespace}/events
 func (c *Client) WatchEventsV1NamespacedEventList(ctx context.Context, params WatchEventsV1NamespacedEventListParams) (res WatchEventsV1NamespacedEventListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchEventsV1NamespacedEventList`,
@@ -51442,7 +52146,9 @@ func (c *Client) WatchEventsV1NamespacedEventList(ctx context.Context, params Wa
 	return result, nil
 }
 
-// WatchEventsV1beta1EventListForAllNamespaces implements watchEventsV1beta1EventListForAllNamespaces operation.
+// WatchEventsV1beta1EventListForAllNamespaces invokes watchEventsV1beta1EventListForAllNamespaces operation.
+//
+// GET /apis/events.k8s.io/v1beta1/watch/events
 func (c *Client) WatchEventsV1beta1EventListForAllNamespaces(ctx context.Context, params WatchEventsV1beta1EventListForAllNamespacesParams) (res WatchEventsV1beta1EventListForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchEventsV1beta1EventListForAllNamespaces`,
@@ -51643,7 +52349,9 @@ func (c *Client) WatchEventsV1beta1EventListForAllNamespaces(ctx context.Context
 	return result, nil
 }
 
-// WatchEventsV1beta1NamespacedEvent implements watchEventsV1beta1NamespacedEvent operation.
+// WatchEventsV1beta1NamespacedEvent invokes watchEventsV1beta1NamespacedEvent operation.
+//
+// GET /apis/events.k8s.io/v1beta1/watch/namespaces/{namespace}/events/{name}
 func (c *Client) WatchEventsV1beta1NamespacedEvent(ctx context.Context, params WatchEventsV1beta1NamespacedEventParams) (res WatchEventsV1beta1NamespacedEventRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchEventsV1beta1NamespacedEvent`,
@@ -51873,7 +52581,9 @@ func (c *Client) WatchEventsV1beta1NamespacedEvent(ctx context.Context, params W
 	return result, nil
 }
 
-// WatchEventsV1beta1NamespacedEventList implements watchEventsV1beta1NamespacedEventList operation.
+// WatchEventsV1beta1NamespacedEventList invokes watchEventsV1beta1NamespacedEventList operation.
+//
+// GET /apis/events.k8s.io/v1beta1/watch/namespaces/{namespace}/events
 func (c *Client) WatchEventsV1beta1NamespacedEventList(ctx context.Context, params WatchEventsV1beta1NamespacedEventListParams) (res WatchEventsV1beta1NamespacedEventListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchEventsV1beta1NamespacedEventList`,
@@ -52089,7 +52799,9 @@ func (c *Client) WatchEventsV1beta1NamespacedEventList(ctx context.Context, para
 	return result, nil
 }
 
-// WatchFlowcontrolApiserverV1beta1FlowSchema implements watchFlowcontrolApiserverV1beta1FlowSchema operation.
+// WatchFlowcontrolApiserverV1beta1FlowSchema invokes watchFlowcontrolApiserverV1beta1FlowSchema operation.
+//
+// GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/flowschemas/{name}
 func (c *Client) WatchFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, params WatchFlowcontrolApiserverV1beta1FlowSchemaParams) (res WatchFlowcontrolApiserverV1beta1FlowSchemaRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchFlowcontrolApiserverV1beta1FlowSchema`,
@@ -52304,7 +53016,9 @@ func (c *Client) WatchFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context,
 	return result, nil
 }
 
-// WatchFlowcontrolApiserverV1beta1FlowSchemaList implements watchFlowcontrolApiserverV1beta1FlowSchemaList operation.
+// WatchFlowcontrolApiserverV1beta1FlowSchemaList invokes watchFlowcontrolApiserverV1beta1FlowSchemaList operation.
+//
+// GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/flowschemas
 func (c *Client) WatchFlowcontrolApiserverV1beta1FlowSchemaList(ctx context.Context, params WatchFlowcontrolApiserverV1beta1FlowSchemaListParams) (res WatchFlowcontrolApiserverV1beta1FlowSchemaListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchFlowcontrolApiserverV1beta1FlowSchemaList`,
@@ -52505,7 +53219,9 @@ func (c *Client) WatchFlowcontrolApiserverV1beta1FlowSchemaList(ctx context.Cont
 	return result, nil
 }
 
-// WatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration implements watchFlowcontrolApiserverV1beta1PriorityLevelConfiguration operation.
+// WatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration invokes watchFlowcontrolApiserverV1beta1PriorityLevelConfiguration operation.
+//
+// GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/prioritylevelconfigurations/{name}
 func (c *Client) WatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx context.Context, params WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams) (res WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration`,
@@ -52720,7 +53436,9 @@ func (c *Client) WatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx 
 	return result, nil
 }
 
-// WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList implements watchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList operation.
+// WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList invokes watchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList operation.
+//
+// GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/prioritylevelconfigurations
 func (c *Client) WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList(ctx context.Context, params WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListParams) (res WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList`,
@@ -52921,7 +53639,9 @@ func (c *Client) WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList(
 	return result, nil
 }
 
-// WatchFlowcontrolApiserverV1beta2FlowSchema implements watchFlowcontrolApiserverV1beta2FlowSchema operation.
+// WatchFlowcontrolApiserverV1beta2FlowSchema invokes watchFlowcontrolApiserverV1beta2FlowSchema operation.
+//
+// GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/flowschemas/{name}
 func (c *Client) WatchFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, params WatchFlowcontrolApiserverV1beta2FlowSchemaParams) (res WatchFlowcontrolApiserverV1beta2FlowSchemaRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchFlowcontrolApiserverV1beta2FlowSchema`,
@@ -53136,7 +53856,9 @@ func (c *Client) WatchFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context,
 	return result, nil
 }
 
-// WatchFlowcontrolApiserverV1beta2FlowSchemaList implements watchFlowcontrolApiserverV1beta2FlowSchemaList operation.
+// WatchFlowcontrolApiserverV1beta2FlowSchemaList invokes watchFlowcontrolApiserverV1beta2FlowSchemaList operation.
+//
+// GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/flowschemas
 func (c *Client) WatchFlowcontrolApiserverV1beta2FlowSchemaList(ctx context.Context, params WatchFlowcontrolApiserverV1beta2FlowSchemaListParams) (res WatchFlowcontrolApiserverV1beta2FlowSchemaListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchFlowcontrolApiserverV1beta2FlowSchemaList`,
@@ -53337,7 +54059,9 @@ func (c *Client) WatchFlowcontrolApiserverV1beta2FlowSchemaList(ctx context.Cont
 	return result, nil
 }
 
-// WatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration implements watchFlowcontrolApiserverV1beta2PriorityLevelConfiguration operation.
+// WatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration invokes watchFlowcontrolApiserverV1beta2PriorityLevelConfiguration operation.
+//
+// GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/prioritylevelconfigurations/{name}
 func (c *Client) WatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx context.Context, params WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams) (res WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration`,
@@ -53552,7 +54276,9 @@ func (c *Client) WatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx 
 	return result, nil
 }
 
-// WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList implements watchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList operation.
+// WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList invokes watchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList operation.
+//
+// GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/prioritylevelconfigurations
 func (c *Client) WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList(ctx context.Context, params WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListParams) (res WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList`,
@@ -53753,7 +54479,9 @@ func (c *Client) WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList(
 	return result, nil
 }
 
-// WatchInternalApiserverV1alpha1StorageVersion implements watchInternalApiserverV1alpha1StorageVersion operation.
+// WatchInternalApiserverV1alpha1StorageVersion invokes watchInternalApiserverV1alpha1StorageVersion operation.
+//
+// GET /apis/internal.apiserver.k8s.io/v1alpha1/watch/storageversions/{name}
 func (c *Client) WatchInternalApiserverV1alpha1StorageVersion(ctx context.Context, params WatchInternalApiserverV1alpha1StorageVersionParams) (res WatchInternalApiserverV1alpha1StorageVersionRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchInternalApiserverV1alpha1StorageVersion`,
@@ -53968,7 +54696,9 @@ func (c *Client) WatchInternalApiserverV1alpha1StorageVersion(ctx context.Contex
 	return result, nil
 }
 
-// WatchInternalApiserverV1alpha1StorageVersionList implements watchInternalApiserverV1alpha1StorageVersionList operation.
+// WatchInternalApiserverV1alpha1StorageVersionList invokes watchInternalApiserverV1alpha1StorageVersionList operation.
+//
+// GET /apis/internal.apiserver.k8s.io/v1alpha1/watch/storageversions
 func (c *Client) WatchInternalApiserverV1alpha1StorageVersionList(ctx context.Context, params WatchInternalApiserverV1alpha1StorageVersionListParams) (res WatchInternalApiserverV1alpha1StorageVersionListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchInternalApiserverV1alpha1StorageVersionList`,
@@ -54169,7 +54899,9 @@ func (c *Client) WatchInternalApiserverV1alpha1StorageVersionList(ctx context.Co
 	return result, nil
 }
 
-// WatchNetworkingV1IngressClass implements watchNetworkingV1IngressClass operation.
+// WatchNetworkingV1IngressClass invokes watchNetworkingV1IngressClass operation.
+//
+// GET /apis/networking.k8s.io/v1/watch/ingressclasses/{name}
 func (c *Client) WatchNetworkingV1IngressClass(ctx context.Context, params WatchNetworkingV1IngressClassParams) (res WatchNetworkingV1IngressClassRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchNetworkingV1IngressClass`,
@@ -54384,7 +55116,9 @@ func (c *Client) WatchNetworkingV1IngressClass(ctx context.Context, params Watch
 	return result, nil
 }
 
-// WatchNetworkingV1IngressClassList implements watchNetworkingV1IngressClassList operation.
+// WatchNetworkingV1IngressClassList invokes watchNetworkingV1IngressClassList operation.
+//
+// GET /apis/networking.k8s.io/v1/watch/ingressclasses
 func (c *Client) WatchNetworkingV1IngressClassList(ctx context.Context, params WatchNetworkingV1IngressClassListParams) (res WatchNetworkingV1IngressClassListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchNetworkingV1IngressClassList`,
@@ -54585,7 +55319,9 @@ func (c *Client) WatchNetworkingV1IngressClassList(ctx context.Context, params W
 	return result, nil
 }
 
-// WatchNetworkingV1IngressListForAllNamespaces implements watchNetworkingV1IngressListForAllNamespaces operation.
+// WatchNetworkingV1IngressListForAllNamespaces invokes watchNetworkingV1IngressListForAllNamespaces operation.
+//
+// GET /apis/networking.k8s.io/v1/watch/ingresses
 func (c *Client) WatchNetworkingV1IngressListForAllNamespaces(ctx context.Context, params WatchNetworkingV1IngressListForAllNamespacesParams) (res WatchNetworkingV1IngressListForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchNetworkingV1IngressListForAllNamespaces`,
@@ -54786,7 +55522,9 @@ func (c *Client) WatchNetworkingV1IngressListForAllNamespaces(ctx context.Contex
 	return result, nil
 }
 
-// WatchNetworkingV1NamespacedIngress implements watchNetworkingV1NamespacedIngress operation.
+// WatchNetworkingV1NamespacedIngress invokes watchNetworkingV1NamespacedIngress operation.
+//
+// GET /apis/networking.k8s.io/v1/watch/namespaces/{namespace}/ingresses/{name}
 func (c *Client) WatchNetworkingV1NamespacedIngress(ctx context.Context, params WatchNetworkingV1NamespacedIngressParams) (res WatchNetworkingV1NamespacedIngressRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchNetworkingV1NamespacedIngress`,
@@ -55016,7 +55754,9 @@ func (c *Client) WatchNetworkingV1NamespacedIngress(ctx context.Context, params 
 	return result, nil
 }
 
-// WatchNetworkingV1NamespacedIngressList implements watchNetworkingV1NamespacedIngressList operation.
+// WatchNetworkingV1NamespacedIngressList invokes watchNetworkingV1NamespacedIngressList operation.
+//
+// GET /apis/networking.k8s.io/v1/watch/namespaces/{namespace}/ingresses
 func (c *Client) WatchNetworkingV1NamespacedIngressList(ctx context.Context, params WatchNetworkingV1NamespacedIngressListParams) (res WatchNetworkingV1NamespacedIngressListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchNetworkingV1NamespacedIngressList`,
@@ -55232,7 +55972,9 @@ func (c *Client) WatchNetworkingV1NamespacedIngressList(ctx context.Context, par
 	return result, nil
 }
 
-// WatchNetworkingV1NamespacedNetworkPolicy implements watchNetworkingV1NamespacedNetworkPolicy operation.
+// WatchNetworkingV1NamespacedNetworkPolicy invokes watchNetworkingV1NamespacedNetworkPolicy operation.
+//
+// GET /apis/networking.k8s.io/v1/watch/namespaces/{namespace}/networkpolicies/{name}
 func (c *Client) WatchNetworkingV1NamespacedNetworkPolicy(ctx context.Context, params WatchNetworkingV1NamespacedNetworkPolicyParams) (res WatchNetworkingV1NamespacedNetworkPolicyRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchNetworkingV1NamespacedNetworkPolicy`,
@@ -55462,7 +56204,9 @@ func (c *Client) WatchNetworkingV1NamespacedNetworkPolicy(ctx context.Context, p
 	return result, nil
 }
 
-// WatchNetworkingV1NamespacedNetworkPolicyList implements watchNetworkingV1NamespacedNetworkPolicyList operation.
+// WatchNetworkingV1NamespacedNetworkPolicyList invokes watchNetworkingV1NamespacedNetworkPolicyList operation.
+//
+// GET /apis/networking.k8s.io/v1/watch/namespaces/{namespace}/networkpolicies
 func (c *Client) WatchNetworkingV1NamespacedNetworkPolicyList(ctx context.Context, params WatchNetworkingV1NamespacedNetworkPolicyListParams) (res WatchNetworkingV1NamespacedNetworkPolicyListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchNetworkingV1NamespacedNetworkPolicyList`,
@@ -55678,7 +56422,9 @@ func (c *Client) WatchNetworkingV1NamespacedNetworkPolicyList(ctx context.Contex
 	return result, nil
 }
 
-// WatchNetworkingV1NetworkPolicyListForAllNamespaces implements watchNetworkingV1NetworkPolicyListForAllNamespaces operation.
+// WatchNetworkingV1NetworkPolicyListForAllNamespaces invokes watchNetworkingV1NetworkPolicyListForAllNamespaces operation.
+//
+// GET /apis/networking.k8s.io/v1/watch/networkpolicies
 func (c *Client) WatchNetworkingV1NetworkPolicyListForAllNamespaces(ctx context.Context, params WatchNetworkingV1NetworkPolicyListForAllNamespacesParams) (res WatchNetworkingV1NetworkPolicyListForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchNetworkingV1NetworkPolicyListForAllNamespaces`,
@@ -55879,7 +56625,9 @@ func (c *Client) WatchNetworkingV1NetworkPolicyListForAllNamespaces(ctx context.
 	return result, nil
 }
 
-// WatchNodeV1RuntimeClass implements watchNodeV1RuntimeClass operation.
+// WatchNodeV1RuntimeClass invokes watchNodeV1RuntimeClass operation.
+//
+// GET /apis/node.k8s.io/v1/watch/runtimeclasses/{name}
 func (c *Client) WatchNodeV1RuntimeClass(ctx context.Context, params WatchNodeV1RuntimeClassParams) (res WatchNodeV1RuntimeClassRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchNodeV1RuntimeClass`,
@@ -56094,7 +56842,9 @@ func (c *Client) WatchNodeV1RuntimeClass(ctx context.Context, params WatchNodeV1
 	return result, nil
 }
 
-// WatchNodeV1RuntimeClassList implements watchNodeV1RuntimeClassList operation.
+// WatchNodeV1RuntimeClassList invokes watchNodeV1RuntimeClassList operation.
+//
+// GET /apis/node.k8s.io/v1/watch/runtimeclasses
 func (c *Client) WatchNodeV1RuntimeClassList(ctx context.Context, params WatchNodeV1RuntimeClassListParams) (res WatchNodeV1RuntimeClassListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchNodeV1RuntimeClassList`,
@@ -56295,7 +57045,9 @@ func (c *Client) WatchNodeV1RuntimeClassList(ctx context.Context, params WatchNo
 	return result, nil
 }
 
-// WatchNodeV1alpha1RuntimeClass implements watchNodeV1alpha1RuntimeClass operation.
+// WatchNodeV1alpha1RuntimeClass invokes watchNodeV1alpha1RuntimeClass operation.
+//
+// GET /apis/node.k8s.io/v1alpha1/watch/runtimeclasses/{name}
 func (c *Client) WatchNodeV1alpha1RuntimeClass(ctx context.Context, params WatchNodeV1alpha1RuntimeClassParams) (res WatchNodeV1alpha1RuntimeClassRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchNodeV1alpha1RuntimeClass`,
@@ -56510,7 +57262,9 @@ func (c *Client) WatchNodeV1alpha1RuntimeClass(ctx context.Context, params Watch
 	return result, nil
 }
 
-// WatchNodeV1alpha1RuntimeClassList implements watchNodeV1alpha1RuntimeClassList operation.
+// WatchNodeV1alpha1RuntimeClassList invokes watchNodeV1alpha1RuntimeClassList operation.
+//
+// GET /apis/node.k8s.io/v1alpha1/watch/runtimeclasses
 func (c *Client) WatchNodeV1alpha1RuntimeClassList(ctx context.Context, params WatchNodeV1alpha1RuntimeClassListParams) (res WatchNodeV1alpha1RuntimeClassListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchNodeV1alpha1RuntimeClassList`,
@@ -56711,7 +57465,9 @@ func (c *Client) WatchNodeV1alpha1RuntimeClassList(ctx context.Context, params W
 	return result, nil
 }
 
-// WatchNodeV1beta1RuntimeClass implements watchNodeV1beta1RuntimeClass operation.
+// WatchNodeV1beta1RuntimeClass invokes watchNodeV1beta1RuntimeClass operation.
+//
+// GET /apis/node.k8s.io/v1beta1/watch/runtimeclasses/{name}
 func (c *Client) WatchNodeV1beta1RuntimeClass(ctx context.Context, params WatchNodeV1beta1RuntimeClassParams) (res WatchNodeV1beta1RuntimeClassRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchNodeV1beta1RuntimeClass`,
@@ -56926,7 +57682,9 @@ func (c *Client) WatchNodeV1beta1RuntimeClass(ctx context.Context, params WatchN
 	return result, nil
 }
 
-// WatchNodeV1beta1RuntimeClassList implements watchNodeV1beta1RuntimeClassList operation.
+// WatchNodeV1beta1RuntimeClassList invokes watchNodeV1beta1RuntimeClassList operation.
+//
+// GET /apis/node.k8s.io/v1beta1/watch/runtimeclasses
 func (c *Client) WatchNodeV1beta1RuntimeClassList(ctx context.Context, params WatchNodeV1beta1RuntimeClassListParams) (res WatchNodeV1beta1RuntimeClassListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchNodeV1beta1RuntimeClassList`,
@@ -57127,7 +57885,9 @@ func (c *Client) WatchNodeV1beta1RuntimeClassList(ctx context.Context, params Wa
 	return result, nil
 }
 
-// WatchPolicyV1NamespacedPodDisruptionBudget implements watchPolicyV1NamespacedPodDisruptionBudget operation.
+// WatchPolicyV1NamespacedPodDisruptionBudget invokes watchPolicyV1NamespacedPodDisruptionBudget operation.
+//
+// GET /apis/policy/v1/watch/namespaces/{namespace}/poddisruptionbudgets/{name}
 func (c *Client) WatchPolicyV1NamespacedPodDisruptionBudget(ctx context.Context, params WatchPolicyV1NamespacedPodDisruptionBudgetParams) (res WatchPolicyV1NamespacedPodDisruptionBudgetRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchPolicyV1NamespacedPodDisruptionBudget`,
@@ -57357,7 +58117,9 @@ func (c *Client) WatchPolicyV1NamespacedPodDisruptionBudget(ctx context.Context,
 	return result, nil
 }
 
-// WatchPolicyV1NamespacedPodDisruptionBudgetList implements watchPolicyV1NamespacedPodDisruptionBudgetList operation.
+// WatchPolicyV1NamespacedPodDisruptionBudgetList invokes watchPolicyV1NamespacedPodDisruptionBudgetList operation.
+//
+// GET /apis/policy/v1/watch/namespaces/{namespace}/poddisruptionbudgets
 func (c *Client) WatchPolicyV1NamespacedPodDisruptionBudgetList(ctx context.Context, params WatchPolicyV1NamespacedPodDisruptionBudgetListParams) (res WatchPolicyV1NamespacedPodDisruptionBudgetListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchPolicyV1NamespacedPodDisruptionBudgetList`,
@@ -57573,7 +58335,9 @@ func (c *Client) WatchPolicyV1NamespacedPodDisruptionBudgetList(ctx context.Cont
 	return result, nil
 }
 
-// WatchPolicyV1PodDisruptionBudgetListForAllNamespaces implements watchPolicyV1PodDisruptionBudgetListForAllNamespaces operation.
+// WatchPolicyV1PodDisruptionBudgetListForAllNamespaces invokes watchPolicyV1PodDisruptionBudgetListForAllNamespaces operation.
+//
+// GET /apis/policy/v1/watch/poddisruptionbudgets
 func (c *Client) WatchPolicyV1PodDisruptionBudgetListForAllNamespaces(ctx context.Context, params WatchPolicyV1PodDisruptionBudgetListForAllNamespacesParams) (res WatchPolicyV1PodDisruptionBudgetListForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchPolicyV1PodDisruptionBudgetListForAllNamespaces`,
@@ -57774,7 +58538,9 @@ func (c *Client) WatchPolicyV1PodDisruptionBudgetListForAllNamespaces(ctx contex
 	return result, nil
 }
 
-// WatchPolicyV1beta1NamespacedPodDisruptionBudget implements watchPolicyV1beta1NamespacedPodDisruptionBudget operation.
+// WatchPolicyV1beta1NamespacedPodDisruptionBudget invokes watchPolicyV1beta1NamespacedPodDisruptionBudget operation.
+//
+// GET /apis/policy/v1beta1/watch/namespaces/{namespace}/poddisruptionbudgets/{name}
 func (c *Client) WatchPolicyV1beta1NamespacedPodDisruptionBudget(ctx context.Context, params WatchPolicyV1beta1NamespacedPodDisruptionBudgetParams) (res WatchPolicyV1beta1NamespacedPodDisruptionBudgetRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchPolicyV1beta1NamespacedPodDisruptionBudget`,
@@ -58004,7 +58770,9 @@ func (c *Client) WatchPolicyV1beta1NamespacedPodDisruptionBudget(ctx context.Con
 	return result, nil
 }
 
-// WatchPolicyV1beta1NamespacedPodDisruptionBudgetList implements watchPolicyV1beta1NamespacedPodDisruptionBudgetList operation.
+// WatchPolicyV1beta1NamespacedPodDisruptionBudgetList invokes watchPolicyV1beta1NamespacedPodDisruptionBudgetList operation.
+//
+// GET /apis/policy/v1beta1/watch/namespaces/{namespace}/poddisruptionbudgets
 func (c *Client) WatchPolicyV1beta1NamespacedPodDisruptionBudgetList(ctx context.Context, params WatchPolicyV1beta1NamespacedPodDisruptionBudgetListParams) (res WatchPolicyV1beta1NamespacedPodDisruptionBudgetListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchPolicyV1beta1NamespacedPodDisruptionBudgetList`,
@@ -58220,7 +58988,9 @@ func (c *Client) WatchPolicyV1beta1NamespacedPodDisruptionBudgetList(ctx context
 	return result, nil
 }
 
-// WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces implements watchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces operation.
+// WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces invokes watchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces operation.
+//
+// GET /apis/policy/v1beta1/watch/poddisruptionbudgets
 func (c *Client) WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces(ctx context.Context, params WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesParams) (res WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces`,
@@ -58421,7 +59191,9 @@ func (c *Client) WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces(ctx c
 	return result, nil
 }
 
-// WatchPolicyV1beta1PodSecurityPolicy implements watchPolicyV1beta1PodSecurityPolicy operation.
+// WatchPolicyV1beta1PodSecurityPolicy invokes watchPolicyV1beta1PodSecurityPolicy operation.
+//
+// GET /apis/policy/v1beta1/watch/podsecuritypolicies/{name}
 func (c *Client) WatchPolicyV1beta1PodSecurityPolicy(ctx context.Context, params WatchPolicyV1beta1PodSecurityPolicyParams) (res WatchPolicyV1beta1PodSecurityPolicyRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchPolicyV1beta1PodSecurityPolicy`,
@@ -58636,7 +59408,9 @@ func (c *Client) WatchPolicyV1beta1PodSecurityPolicy(ctx context.Context, params
 	return result, nil
 }
 
-// WatchPolicyV1beta1PodSecurityPolicyList implements watchPolicyV1beta1PodSecurityPolicyList operation.
+// WatchPolicyV1beta1PodSecurityPolicyList invokes watchPolicyV1beta1PodSecurityPolicyList operation.
+//
+// GET /apis/policy/v1beta1/watch/podsecuritypolicies
 func (c *Client) WatchPolicyV1beta1PodSecurityPolicyList(ctx context.Context, params WatchPolicyV1beta1PodSecurityPolicyListParams) (res WatchPolicyV1beta1PodSecurityPolicyListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchPolicyV1beta1PodSecurityPolicyList`,
@@ -58837,7 +59611,9 @@ func (c *Client) WatchPolicyV1beta1PodSecurityPolicyList(ctx context.Context, pa
 	return result, nil
 }
 
-// WatchRbacAuthorizationV1ClusterRole implements watchRbacAuthorizationV1ClusterRole operation.
+// WatchRbacAuthorizationV1ClusterRole invokes watchRbacAuthorizationV1ClusterRole operation.
+//
+// GET /apis/rbac.authorization.k8s.io/v1/watch/clusterroles/{name}
 func (c *Client) WatchRbacAuthorizationV1ClusterRole(ctx context.Context, params WatchRbacAuthorizationV1ClusterRoleParams) (res WatchRbacAuthorizationV1ClusterRoleRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchRbacAuthorizationV1ClusterRole`,
@@ -59052,7 +59828,9 @@ func (c *Client) WatchRbacAuthorizationV1ClusterRole(ctx context.Context, params
 	return result, nil
 }
 
-// WatchRbacAuthorizationV1ClusterRoleBinding implements watchRbacAuthorizationV1ClusterRoleBinding operation.
+// WatchRbacAuthorizationV1ClusterRoleBinding invokes watchRbacAuthorizationV1ClusterRoleBinding operation.
+//
+// GET /apis/rbac.authorization.k8s.io/v1/watch/clusterrolebindings/{name}
 func (c *Client) WatchRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, params WatchRbacAuthorizationV1ClusterRoleBindingParams) (res WatchRbacAuthorizationV1ClusterRoleBindingRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchRbacAuthorizationV1ClusterRoleBinding`,
@@ -59267,7 +60045,9 @@ func (c *Client) WatchRbacAuthorizationV1ClusterRoleBinding(ctx context.Context,
 	return result, nil
 }
 
-// WatchRbacAuthorizationV1ClusterRoleBindingList implements watchRbacAuthorizationV1ClusterRoleBindingList operation.
+// WatchRbacAuthorizationV1ClusterRoleBindingList invokes watchRbacAuthorizationV1ClusterRoleBindingList operation.
+//
+// GET /apis/rbac.authorization.k8s.io/v1/watch/clusterrolebindings
 func (c *Client) WatchRbacAuthorizationV1ClusterRoleBindingList(ctx context.Context, params WatchRbacAuthorizationV1ClusterRoleBindingListParams) (res WatchRbacAuthorizationV1ClusterRoleBindingListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchRbacAuthorizationV1ClusterRoleBindingList`,
@@ -59468,7 +60248,9 @@ func (c *Client) WatchRbacAuthorizationV1ClusterRoleBindingList(ctx context.Cont
 	return result, nil
 }
 
-// WatchRbacAuthorizationV1ClusterRoleList implements watchRbacAuthorizationV1ClusterRoleList operation.
+// WatchRbacAuthorizationV1ClusterRoleList invokes watchRbacAuthorizationV1ClusterRoleList operation.
+//
+// GET /apis/rbac.authorization.k8s.io/v1/watch/clusterroles
 func (c *Client) WatchRbacAuthorizationV1ClusterRoleList(ctx context.Context, params WatchRbacAuthorizationV1ClusterRoleListParams) (res WatchRbacAuthorizationV1ClusterRoleListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchRbacAuthorizationV1ClusterRoleList`,
@@ -59669,7 +60451,9 @@ func (c *Client) WatchRbacAuthorizationV1ClusterRoleList(ctx context.Context, pa
 	return result, nil
 }
 
-// WatchRbacAuthorizationV1NamespacedRole implements watchRbacAuthorizationV1NamespacedRole operation.
+// WatchRbacAuthorizationV1NamespacedRole invokes watchRbacAuthorizationV1NamespacedRole operation.
+//
+// GET /apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/roles/{name}
 func (c *Client) WatchRbacAuthorizationV1NamespacedRole(ctx context.Context, params WatchRbacAuthorizationV1NamespacedRoleParams) (res WatchRbacAuthorizationV1NamespacedRoleRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchRbacAuthorizationV1NamespacedRole`,
@@ -59899,7 +60683,9 @@ func (c *Client) WatchRbacAuthorizationV1NamespacedRole(ctx context.Context, par
 	return result, nil
 }
 
-// WatchRbacAuthorizationV1NamespacedRoleBinding implements watchRbacAuthorizationV1NamespacedRoleBinding operation.
+// WatchRbacAuthorizationV1NamespacedRoleBinding invokes watchRbacAuthorizationV1NamespacedRoleBinding operation.
+//
+// GET /apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/rolebindings/{name}
 func (c *Client) WatchRbacAuthorizationV1NamespacedRoleBinding(ctx context.Context, params WatchRbacAuthorizationV1NamespacedRoleBindingParams) (res WatchRbacAuthorizationV1NamespacedRoleBindingRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchRbacAuthorizationV1NamespacedRoleBinding`,
@@ -60129,7 +60915,9 @@ func (c *Client) WatchRbacAuthorizationV1NamespacedRoleBinding(ctx context.Conte
 	return result, nil
 }
 
-// WatchRbacAuthorizationV1NamespacedRoleBindingList implements watchRbacAuthorizationV1NamespacedRoleBindingList operation.
+// WatchRbacAuthorizationV1NamespacedRoleBindingList invokes watchRbacAuthorizationV1NamespacedRoleBindingList operation.
+//
+// GET /apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/rolebindings
 func (c *Client) WatchRbacAuthorizationV1NamespacedRoleBindingList(ctx context.Context, params WatchRbacAuthorizationV1NamespacedRoleBindingListParams) (res WatchRbacAuthorizationV1NamespacedRoleBindingListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchRbacAuthorizationV1NamespacedRoleBindingList`,
@@ -60345,7 +61133,9 @@ func (c *Client) WatchRbacAuthorizationV1NamespacedRoleBindingList(ctx context.C
 	return result, nil
 }
 
-// WatchRbacAuthorizationV1NamespacedRoleList implements watchRbacAuthorizationV1NamespacedRoleList operation.
+// WatchRbacAuthorizationV1NamespacedRoleList invokes watchRbacAuthorizationV1NamespacedRoleList operation.
+//
+// GET /apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/roles
 func (c *Client) WatchRbacAuthorizationV1NamespacedRoleList(ctx context.Context, params WatchRbacAuthorizationV1NamespacedRoleListParams) (res WatchRbacAuthorizationV1NamespacedRoleListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchRbacAuthorizationV1NamespacedRoleList`,
@@ -60561,7 +61351,9 @@ func (c *Client) WatchRbacAuthorizationV1NamespacedRoleList(ctx context.Context,
 	return result, nil
 }
 
-// WatchRbacAuthorizationV1RoleBindingListForAllNamespaces implements watchRbacAuthorizationV1RoleBindingListForAllNamespaces operation.
+// WatchRbacAuthorizationV1RoleBindingListForAllNamespaces invokes watchRbacAuthorizationV1RoleBindingListForAllNamespaces operation.
+//
+// GET /apis/rbac.authorization.k8s.io/v1/watch/rolebindings
 func (c *Client) WatchRbacAuthorizationV1RoleBindingListForAllNamespaces(ctx context.Context, params WatchRbacAuthorizationV1RoleBindingListForAllNamespacesParams) (res WatchRbacAuthorizationV1RoleBindingListForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchRbacAuthorizationV1RoleBindingListForAllNamespaces`,
@@ -60762,7 +61554,9 @@ func (c *Client) WatchRbacAuthorizationV1RoleBindingListForAllNamespaces(ctx con
 	return result, nil
 }
 
-// WatchRbacAuthorizationV1RoleListForAllNamespaces implements watchRbacAuthorizationV1RoleListForAllNamespaces operation.
+// WatchRbacAuthorizationV1RoleListForAllNamespaces invokes watchRbacAuthorizationV1RoleListForAllNamespaces operation.
+//
+// GET /apis/rbac.authorization.k8s.io/v1/watch/roles
 func (c *Client) WatchRbacAuthorizationV1RoleListForAllNamespaces(ctx context.Context, params WatchRbacAuthorizationV1RoleListForAllNamespacesParams) (res WatchRbacAuthorizationV1RoleListForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchRbacAuthorizationV1RoleListForAllNamespaces`,
@@ -60963,7 +61757,9 @@ func (c *Client) WatchRbacAuthorizationV1RoleListForAllNamespaces(ctx context.Co
 	return result, nil
 }
 
-// WatchSchedulingV1PriorityClass implements watchSchedulingV1PriorityClass operation.
+// WatchSchedulingV1PriorityClass invokes watchSchedulingV1PriorityClass operation.
+//
+// GET /apis/scheduling.k8s.io/v1/watch/priorityclasses/{name}
 func (c *Client) WatchSchedulingV1PriorityClass(ctx context.Context, params WatchSchedulingV1PriorityClassParams) (res WatchSchedulingV1PriorityClassRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchSchedulingV1PriorityClass`,
@@ -61178,7 +61974,9 @@ func (c *Client) WatchSchedulingV1PriorityClass(ctx context.Context, params Watc
 	return result, nil
 }
 
-// WatchSchedulingV1PriorityClassList implements watchSchedulingV1PriorityClassList operation.
+// WatchSchedulingV1PriorityClassList invokes watchSchedulingV1PriorityClassList operation.
+//
+// GET /apis/scheduling.k8s.io/v1/watch/priorityclasses
 func (c *Client) WatchSchedulingV1PriorityClassList(ctx context.Context, params WatchSchedulingV1PriorityClassListParams) (res WatchSchedulingV1PriorityClassListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchSchedulingV1PriorityClassList`,
@@ -61379,7 +62177,9 @@ func (c *Client) WatchSchedulingV1PriorityClassList(ctx context.Context, params 
 	return result, nil
 }
 
-// WatchStorageV1CSIDriver implements watchStorageV1CSIDriver operation.
+// WatchStorageV1CSIDriver invokes watchStorageV1CSIDriver operation.
+//
+// GET /apis/storage.k8s.io/v1/watch/csidrivers/{name}
 func (c *Client) WatchStorageV1CSIDriver(ctx context.Context, params WatchStorageV1CSIDriverParams) (res WatchStorageV1CSIDriverRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchStorageV1CSIDriver`,
@@ -61594,7 +62394,9 @@ func (c *Client) WatchStorageV1CSIDriver(ctx context.Context, params WatchStorag
 	return result, nil
 }
 
-// WatchStorageV1CSIDriverList implements watchStorageV1CSIDriverList operation.
+// WatchStorageV1CSIDriverList invokes watchStorageV1CSIDriverList operation.
+//
+// GET /apis/storage.k8s.io/v1/watch/csidrivers
 func (c *Client) WatchStorageV1CSIDriverList(ctx context.Context, params WatchStorageV1CSIDriverListParams) (res WatchStorageV1CSIDriverListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchStorageV1CSIDriverList`,
@@ -61795,7 +62597,9 @@ func (c *Client) WatchStorageV1CSIDriverList(ctx context.Context, params WatchSt
 	return result, nil
 }
 
-// WatchStorageV1CSINode implements watchStorageV1CSINode operation.
+// WatchStorageV1CSINode invokes watchStorageV1CSINode operation.
+//
+// GET /apis/storage.k8s.io/v1/watch/csinodes/{name}
 func (c *Client) WatchStorageV1CSINode(ctx context.Context, params WatchStorageV1CSINodeParams) (res WatchStorageV1CSINodeRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchStorageV1CSINode`,
@@ -62010,7 +62814,9 @@ func (c *Client) WatchStorageV1CSINode(ctx context.Context, params WatchStorageV
 	return result, nil
 }
 
-// WatchStorageV1CSINodeList implements watchStorageV1CSINodeList operation.
+// WatchStorageV1CSINodeList invokes watchStorageV1CSINodeList operation.
+//
+// GET /apis/storage.k8s.io/v1/watch/csinodes
 func (c *Client) WatchStorageV1CSINodeList(ctx context.Context, params WatchStorageV1CSINodeListParams) (res WatchStorageV1CSINodeListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchStorageV1CSINodeList`,
@@ -62211,7 +63017,9 @@ func (c *Client) WatchStorageV1CSINodeList(ctx context.Context, params WatchStor
 	return result, nil
 }
 
-// WatchStorageV1StorageClass implements watchStorageV1StorageClass operation.
+// WatchStorageV1StorageClass invokes watchStorageV1StorageClass operation.
+//
+// GET /apis/storage.k8s.io/v1/watch/storageclasses/{name}
 func (c *Client) WatchStorageV1StorageClass(ctx context.Context, params WatchStorageV1StorageClassParams) (res WatchStorageV1StorageClassRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchStorageV1StorageClass`,
@@ -62426,7 +63234,9 @@ func (c *Client) WatchStorageV1StorageClass(ctx context.Context, params WatchSto
 	return result, nil
 }
 
-// WatchStorageV1StorageClassList implements watchStorageV1StorageClassList operation.
+// WatchStorageV1StorageClassList invokes watchStorageV1StorageClassList operation.
+//
+// GET /apis/storage.k8s.io/v1/watch/storageclasses
 func (c *Client) WatchStorageV1StorageClassList(ctx context.Context, params WatchStorageV1StorageClassListParams) (res WatchStorageV1StorageClassListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchStorageV1StorageClassList`,
@@ -62627,7 +63437,9 @@ func (c *Client) WatchStorageV1StorageClassList(ctx context.Context, params Watc
 	return result, nil
 }
 
-// WatchStorageV1VolumeAttachment implements watchStorageV1VolumeAttachment operation.
+// WatchStorageV1VolumeAttachment invokes watchStorageV1VolumeAttachment operation.
+//
+// GET /apis/storage.k8s.io/v1/watch/volumeattachments/{name}
 func (c *Client) WatchStorageV1VolumeAttachment(ctx context.Context, params WatchStorageV1VolumeAttachmentParams) (res WatchStorageV1VolumeAttachmentRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchStorageV1VolumeAttachment`,
@@ -62842,7 +63654,9 @@ func (c *Client) WatchStorageV1VolumeAttachment(ctx context.Context, params Watc
 	return result, nil
 }
 
-// WatchStorageV1VolumeAttachmentList implements watchStorageV1VolumeAttachmentList operation.
+// WatchStorageV1VolumeAttachmentList invokes watchStorageV1VolumeAttachmentList operation.
+//
+// GET /apis/storage.k8s.io/v1/watch/volumeattachments
 func (c *Client) WatchStorageV1VolumeAttachmentList(ctx context.Context, params WatchStorageV1VolumeAttachmentListParams) (res WatchStorageV1VolumeAttachmentListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchStorageV1VolumeAttachmentList`,
@@ -63043,7 +63857,9 @@ func (c *Client) WatchStorageV1VolumeAttachmentList(ctx context.Context, params 
 	return result, nil
 }
 
-// WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces implements watchStorageV1alpha1CSIStorageCapacityListForAllNamespaces operation.
+// WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces invokes watchStorageV1alpha1CSIStorageCapacityListForAllNamespaces operation.
+//
+// GET /apis/storage.k8s.io/v1alpha1/watch/csistoragecapacities
 func (c *Client) WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces(ctx context.Context, params WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesParams) (res WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces`,
@@ -63244,7 +64060,9 @@ func (c *Client) WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces(ctx 
 	return result, nil
 }
 
-// WatchStorageV1alpha1NamespacedCSIStorageCapacity implements watchStorageV1alpha1NamespacedCSIStorageCapacity operation.
+// WatchStorageV1alpha1NamespacedCSIStorageCapacity invokes watchStorageV1alpha1NamespacedCSIStorageCapacity operation.
+//
+// GET /apis/storage.k8s.io/v1alpha1/watch/namespaces/{namespace}/csistoragecapacities/{name}
 func (c *Client) WatchStorageV1alpha1NamespacedCSIStorageCapacity(ctx context.Context, params WatchStorageV1alpha1NamespacedCSIStorageCapacityParams) (res WatchStorageV1alpha1NamespacedCSIStorageCapacityRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchStorageV1alpha1NamespacedCSIStorageCapacity`,
@@ -63474,7 +64292,9 @@ func (c *Client) WatchStorageV1alpha1NamespacedCSIStorageCapacity(ctx context.Co
 	return result, nil
 }
 
-// WatchStorageV1alpha1NamespacedCSIStorageCapacityList implements watchStorageV1alpha1NamespacedCSIStorageCapacityList operation.
+// WatchStorageV1alpha1NamespacedCSIStorageCapacityList invokes watchStorageV1alpha1NamespacedCSIStorageCapacityList operation.
+//
+// GET /apis/storage.k8s.io/v1alpha1/watch/namespaces/{namespace}/csistoragecapacities
 func (c *Client) WatchStorageV1alpha1NamespacedCSIStorageCapacityList(ctx context.Context, params WatchStorageV1alpha1NamespacedCSIStorageCapacityListParams) (res WatchStorageV1alpha1NamespacedCSIStorageCapacityListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchStorageV1alpha1NamespacedCSIStorageCapacityList`,
@@ -63690,7 +64510,9 @@ func (c *Client) WatchStorageV1alpha1NamespacedCSIStorageCapacityList(ctx contex
 	return result, nil
 }
 
-// WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces implements watchStorageV1beta1CSIStorageCapacityListForAllNamespaces operation.
+// WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces invokes watchStorageV1beta1CSIStorageCapacityListForAllNamespaces operation.
+//
+// GET /apis/storage.k8s.io/v1beta1/watch/csistoragecapacities
 func (c *Client) WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces(ctx context.Context, params WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesParams) (res WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces`,
@@ -63891,7 +64713,9 @@ func (c *Client) WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces(ctx c
 	return result, nil
 }
 
-// WatchStorageV1beta1NamespacedCSIStorageCapacity implements watchStorageV1beta1NamespacedCSIStorageCapacity operation.
+// WatchStorageV1beta1NamespacedCSIStorageCapacity invokes watchStorageV1beta1NamespacedCSIStorageCapacity operation.
+//
+// GET /apis/storage.k8s.io/v1beta1/watch/namespaces/{namespace}/csistoragecapacities/{name}
 func (c *Client) WatchStorageV1beta1NamespacedCSIStorageCapacity(ctx context.Context, params WatchStorageV1beta1NamespacedCSIStorageCapacityParams) (res WatchStorageV1beta1NamespacedCSIStorageCapacityRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchStorageV1beta1NamespacedCSIStorageCapacity`,
@@ -64121,7 +64945,9 @@ func (c *Client) WatchStorageV1beta1NamespacedCSIStorageCapacity(ctx context.Con
 	return result, nil
 }
 
-// WatchStorageV1beta1NamespacedCSIStorageCapacityList implements watchStorageV1beta1NamespacedCSIStorageCapacityList operation.
+// WatchStorageV1beta1NamespacedCSIStorageCapacityList invokes watchStorageV1beta1NamespacedCSIStorageCapacityList operation.
+//
+// GET /apis/storage.k8s.io/v1beta1/watch/namespaces/{namespace}/csistoragecapacities
 func (c *Client) WatchStorageV1beta1NamespacedCSIStorageCapacityList(ctx context.Context, params WatchStorageV1beta1NamespacedCSIStorageCapacityListParams) (res WatchStorageV1beta1NamespacedCSIStorageCapacityListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `WatchStorageV1beta1NamespacedCSIStorageCapacityList`,

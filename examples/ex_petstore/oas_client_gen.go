@@ -95,7 +95,9 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 	return c, nil
 }
 
-// CreatePets implements createPets operation.
+// CreatePets invokes createPets operation.
+//
+// POST /pets
 func (c *Client) CreatePets(ctx context.Context) (res CreatePetsRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreatePets`,
@@ -133,7 +135,9 @@ func (c *Client) CreatePets(ctx context.Context) (res CreatePetsRes, err error) 
 	return result, nil
 }
 
-// ListPets implements listPets operation.
+// ListPets invokes listPets operation.
+//
+// GET /pets
 func (c *Client) ListPets(ctx context.Context, params ListPetsParams) (res ListPetsRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ListPets`,
@@ -190,7 +194,9 @@ func (c *Client) ListPets(ctx context.Context, params ListPetsParams) (res ListP
 	return result, nil
 }
 
-// ShowPetById implements showPetById operation.
+// ShowPetById invokes showPetById operation.
+//
+// GET /pets/{petId}
 func (c *Client) ShowPetById(ctx context.Context, params ShowPetByIdParams) (res ShowPetByIdRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ShowPetById`,

@@ -67,42 +67,80 @@ var (
 // Handler handles operations described by OpenAPI v3 specification.
 type Handler interface {
 	// AnswerCallbackQueryPost implements  operation.
+	//
+	// POST /answerCallbackQuery
 	AnswerCallbackQueryPost(ctx context.Context, req AnswerCallbackQueryPostReqApplicationJSON) (AnswerCallbackQueryPostRes, error)
 	// AnswerPreCheckoutQueryPost implements  operation.
+	//
+	// POST /answerPreCheckoutQuery
 	AnswerPreCheckoutQueryPost(ctx context.Context, req AnswerPreCheckoutQueryPostReqApplicationJSON) (AnswerPreCheckoutQueryPostRes, error)
 	// AnswerShippingQueryPost implements  operation.
+	//
+	// POST /answerShippingQuery
 	AnswerShippingQueryPost(ctx context.Context, req AnswerShippingQueryPostReqApplicationJSON) (AnswerShippingQueryPostRes, error)
 	// ClosePost implements  operation.
+	//
+	// POST /close
 	ClosePost(ctx context.Context) (ClosePostRes, error)
 	// DeleteStickerFromSetPost implements  operation.
+	//
+	// POST /deleteStickerFromSet
 	DeleteStickerFromSetPost(ctx context.Context, req DeleteStickerFromSetPostReqApplicationJSON) (DeleteStickerFromSetPostRes, error)
 	// DeleteWebhookPost implements  operation.
+	//
+	// POST /deleteWebhook
 	DeleteWebhookPost(ctx context.Context, req DeleteWebhookPostReqApplicationJSON) (DeleteWebhookPostRes, error)
 	// GetFilePost implements  operation.
+	//
+	// POST /getFile
 	GetFilePost(ctx context.Context, req GetFilePostReqApplicationJSON) (GetFilePostRes, error)
 	// GetGameHighScoresPost implements  operation.
+	//
+	// POST /getGameHighScores
 	GetGameHighScoresPost(ctx context.Context, req GetGameHighScoresPostReqApplicationJSON) (GetGameHighScoresPostRes, error)
 	// GetMePost implements  operation.
+	//
+	// POST /getMe
 	GetMePost(ctx context.Context) (GetMePostRes, error)
 	// GetMyCommandsPost implements  operation.
+	//
+	// POST /getMyCommands
 	GetMyCommandsPost(ctx context.Context) (GetMyCommandsPostRes, error)
 	// GetStickerSetPost implements  operation.
+	//
+	// POST /getStickerSet
 	GetStickerSetPost(ctx context.Context, req GetStickerSetPostReqApplicationJSON) (GetStickerSetPostRes, error)
 	// GetUpdatesPost implements  operation.
+	//
+	// POST /getUpdates
 	GetUpdatesPost(ctx context.Context, req GetUpdatesPostReqApplicationJSON) (GetUpdatesPostRes, error)
 	// GetUserProfilePhotosPost implements  operation.
+	//
+	// POST /getUserProfilePhotos
 	GetUserProfilePhotosPost(ctx context.Context, req GetUserProfilePhotosPostReqApplicationJSON) (GetUserProfilePhotosPostRes, error)
 	// GetWebhookInfoPost implements  operation.
+	//
+	// POST /getWebhookInfo
 	GetWebhookInfoPost(ctx context.Context) (GetWebhookInfoPostRes, error)
 	// LogOutPost implements  operation.
+	//
+	// POST /logOut
 	LogOutPost(ctx context.Context) (LogOutPostRes, error)
 	// SendGamePost implements  operation.
+	//
+	// POST /sendGame
 	SendGamePost(ctx context.Context, req SendGamePostReqApplicationJSON) (SendGamePostRes, error)
 	// SendInvoicePost implements  operation.
+	//
+	// POST /sendInvoice
 	SendInvoicePost(ctx context.Context, req SendInvoicePostReqApplicationJSON) (SendInvoicePostRes, error)
 	// SetMyCommandsPost implements  operation.
+	//
+	// POST /setMyCommands
 	SetMyCommandsPost(ctx context.Context, req SetMyCommandsPostReqApplicationJSON) (SetMyCommandsPostRes, error)
 	// SetStickerPositionInSetPost implements  operation.
+	//
+	// POST /setStickerPositionInSet
 	SetStickerPositionInSetPost(ctx context.Context, req SetStickerPositionInSetPostReqApplicationJSON) (SetStickerPositionInSetPostRes, error)
 }
 
@@ -110,42 +148,35 @@ type Handler interface {
 // calls Handler to handle requests.
 type Server struct {
 	h   Handler
-	mux *chi.Mux
 	cfg config
 }
 
 func NewServer(h Handler, opts ...Option) *Server {
 	srv := &Server{
 		h:   h,
-		mux: chi.NewMux(),
 		cfg: newConfig(opts...),
 	}
-	srv.setupRoutes()
 	return srv
 }
 
-func (s *Server) setupRoutes() {
-	s.mux.MethodFunc("POST", "/answerCallbackQuery", s.HandleAnswerCallbackQueryPostRequest)
-	s.mux.MethodFunc("POST", "/answerPreCheckoutQuery", s.HandleAnswerPreCheckoutQueryPostRequest)
-	s.mux.MethodFunc("POST", "/answerShippingQuery", s.HandleAnswerShippingQueryPostRequest)
-	s.mux.MethodFunc("POST", "/close", s.HandleClosePostRequest)
-	s.mux.MethodFunc("POST", "/deleteStickerFromSet", s.HandleDeleteStickerFromSetPostRequest)
-	s.mux.MethodFunc("POST", "/deleteWebhook", s.HandleDeleteWebhookPostRequest)
-	s.mux.MethodFunc("POST", "/getFile", s.HandleGetFilePostRequest)
-	s.mux.MethodFunc("POST", "/getGameHighScores", s.HandleGetGameHighScoresPostRequest)
-	s.mux.MethodFunc("POST", "/getMe", s.HandleGetMePostRequest)
-	s.mux.MethodFunc("POST", "/getMyCommands", s.HandleGetMyCommandsPostRequest)
-	s.mux.MethodFunc("POST", "/getStickerSet", s.HandleGetStickerSetPostRequest)
-	s.mux.MethodFunc("POST", "/getUpdates", s.HandleGetUpdatesPostRequest)
-	s.mux.MethodFunc("POST", "/getUserProfilePhotos", s.HandleGetUserProfilePhotosPostRequest)
-	s.mux.MethodFunc("POST", "/getWebhookInfo", s.HandleGetWebhookInfoPostRequest)
-	s.mux.MethodFunc("POST", "/logOut", s.HandleLogOutPostRequest)
-	s.mux.MethodFunc("POST", "/sendGame", s.HandleSendGamePostRequest)
-	s.mux.MethodFunc("POST", "/sendInvoice", s.HandleSendInvoicePostRequest)
-	s.mux.MethodFunc("POST", "/setMyCommands", s.HandleSetMyCommandsPostRequest)
-	s.mux.MethodFunc("POST", "/setStickerPositionInSet", s.HandleSetStickerPositionInSetPostRequest)
-}
-
-func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	s.mux.ServeHTTP(w, r)
+func (s *Server) Register(mux chi.Mux) {
+	mux.MethodFunc("POST", "/answerCallbackQuery", s.HandleAnswerCallbackQueryPostRequest)
+	mux.MethodFunc("POST", "/answerPreCheckoutQuery", s.HandleAnswerPreCheckoutQueryPostRequest)
+	mux.MethodFunc("POST", "/answerShippingQuery", s.HandleAnswerShippingQueryPostRequest)
+	mux.MethodFunc("POST", "/close", s.HandleClosePostRequest)
+	mux.MethodFunc("POST", "/deleteStickerFromSet", s.HandleDeleteStickerFromSetPostRequest)
+	mux.MethodFunc("POST", "/deleteWebhook", s.HandleDeleteWebhookPostRequest)
+	mux.MethodFunc("POST", "/getFile", s.HandleGetFilePostRequest)
+	mux.MethodFunc("POST", "/getGameHighScores", s.HandleGetGameHighScoresPostRequest)
+	mux.MethodFunc("POST", "/getMe", s.HandleGetMePostRequest)
+	mux.MethodFunc("POST", "/getMyCommands", s.HandleGetMyCommandsPostRequest)
+	mux.MethodFunc("POST", "/getStickerSet", s.HandleGetStickerSetPostRequest)
+	mux.MethodFunc("POST", "/getUpdates", s.HandleGetUpdatesPostRequest)
+	mux.MethodFunc("POST", "/getUserProfilePhotos", s.HandleGetUserProfilePhotosPostRequest)
+	mux.MethodFunc("POST", "/getWebhookInfo", s.HandleGetWebhookInfoPostRequest)
+	mux.MethodFunc("POST", "/logOut", s.HandleLogOutPostRequest)
+	mux.MethodFunc("POST", "/sendGame", s.HandleSendGamePostRequest)
+	mux.MethodFunc("POST", "/sendInvoice", s.HandleSendInvoicePostRequest)
+	mux.MethodFunc("POST", "/setMyCommands", s.HandleSetMyCommandsPostRequest)
+	mux.MethodFunc("POST", "/setStickerPositionInSet", s.HandleSetStickerPositionInSetPostRequest)
 }

@@ -95,7 +95,9 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 	return c, nil
 }
 
-// ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg implements actions/add-repo-access-to-self-hosted-runner-group-in-org operation.
+// ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg invokes actions/add-repo-access-to-self-hosted-runner-group-in-org operation.
+//
+// PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories/{repository_id}
 func (c *Client) ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, params ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams) (res ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg`,
@@ -177,7 +179,9 @@ func (c *Client) ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Co
 	return result, nil
 }
 
-// ActionsAddSelectedRepoToOrgSecret implements actions/add-selected-repo-to-org-secret operation.
+// ActionsAddSelectedRepoToOrgSecret invokes actions/add-selected-repo-to-org-secret operation.
+//
+// PUT /orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}
 func (c *Client) ActionsAddSelectedRepoToOrgSecret(ctx context.Context, params ActionsAddSelectedRepoToOrgSecretParams) (res ActionsAddSelectedRepoToOrgSecretRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsAddSelectedRepoToOrgSecret`,
@@ -259,7 +263,9 @@ func (c *Client) ActionsAddSelectedRepoToOrgSecret(ctx context.Context, params A
 	return result, nil
 }
 
-// ActionsAddSelfHostedRunnerToGroupForOrg implements actions/add-self-hosted-runner-to-group-for-org operation.
+// ActionsAddSelfHostedRunnerToGroupForOrg invokes actions/add-self-hosted-runner-to-group-for-org operation.
+//
+// PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
 func (c *Client) ActionsAddSelfHostedRunnerToGroupForOrg(ctx context.Context, params ActionsAddSelfHostedRunnerToGroupForOrgParams) (res ActionsAddSelfHostedRunnerToGroupForOrgNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsAddSelfHostedRunnerToGroupForOrg`,
@@ -341,7 +347,9 @@ func (c *Client) ActionsAddSelfHostedRunnerToGroupForOrg(ctx context.Context, pa
 	return result, nil
 }
 
-// ActionsApproveWorkflowRun implements actions/approve-workflow-run operation.
+// ActionsApproveWorkflowRun invokes actions/approve-workflow-run operation.
+//
+// POST /repos/{owner}/{repo}/actions/runs/{run_id}/approve
 func (c *Client) ActionsApproveWorkflowRun(ctx context.Context, params ActionsApproveWorkflowRunParams) (res ActionsApproveWorkflowRunRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsApproveWorkflowRun`,
@@ -424,7 +432,9 @@ func (c *Client) ActionsApproveWorkflowRun(ctx context.Context, params ActionsAp
 	return result, nil
 }
 
-// ActionsCancelWorkflowRun implements actions/cancel-workflow-run operation.
+// ActionsCancelWorkflowRun invokes actions/cancel-workflow-run operation.
+//
+// POST /repos/{owner}/{repo}/actions/runs/{run_id}/cancel
 func (c *Client) ActionsCancelWorkflowRun(ctx context.Context, params ActionsCancelWorkflowRunParams) (res ActionsCancelWorkflowRunAccepted, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsCancelWorkflowRun`,
@@ -507,7 +517,9 @@ func (c *Client) ActionsCancelWorkflowRun(ctx context.Context, params ActionsCan
 	return result, nil
 }
 
-// ActionsCreateOrUpdateEnvironmentSecret implements actions/create-or-update-environment-secret operation.
+// ActionsCreateOrUpdateEnvironmentSecret invokes actions/create-or-update-environment-secret operation.
+//
+// PUT /repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}
 func (c *Client) ActionsCreateOrUpdateEnvironmentSecret(ctx context.Context, request ActionsCreateOrUpdateEnvironmentSecretReq, params ActionsCreateOrUpdateEnvironmentSecretParams) (res ActionsCreateOrUpdateEnvironmentSecretRes, err error) {
 	if err := func() error {
 
@@ -612,7 +624,9 @@ func (c *Client) ActionsCreateOrUpdateEnvironmentSecret(ctx context.Context, req
 	return result, nil
 }
 
-// ActionsCreateOrUpdateOrgSecret implements actions/create-or-update-org-secret operation.
+// ActionsCreateOrUpdateOrgSecret invokes actions/create-or-update-org-secret operation.
+//
+// PUT /orgs/{org}/actions/secrets/{secret_name}
 func (c *Client) ActionsCreateOrUpdateOrgSecret(ctx context.Context, request ActionsCreateOrUpdateOrgSecretReq, params ActionsCreateOrUpdateOrgSecretParams) (res ActionsCreateOrUpdateOrgSecretRes, err error) {
 	if err := func() error {
 
@@ -702,7 +716,9 @@ func (c *Client) ActionsCreateOrUpdateOrgSecret(ctx context.Context, request Act
 	return result, nil
 }
 
-// ActionsCreateOrUpdateRepoSecret implements actions/create-or-update-repo-secret operation.
+// ActionsCreateOrUpdateRepoSecret invokes actions/create-or-update-repo-secret operation.
+//
+// PUT /repos/{owner}/{repo}/actions/secrets/{secret_name}
 func (c *Client) ActionsCreateOrUpdateRepoSecret(ctx context.Context, request ActionsCreateOrUpdateRepoSecretReq, params ActionsCreateOrUpdateRepoSecretParams) (res ActionsCreateOrUpdateRepoSecretRes, err error) {
 	if err := func() error {
 
@@ -807,7 +823,9 @@ func (c *Client) ActionsCreateOrUpdateRepoSecret(ctx context.Context, request Ac
 	return result, nil
 }
 
-// ActionsCreateRegistrationTokenForOrg implements actions/create-registration-token-for-org operation.
+// ActionsCreateRegistrationTokenForOrg invokes actions/create-registration-token-for-org operation.
+//
+// POST /orgs/{org}/actions/runners/registration-token
 func (c *Client) ActionsCreateRegistrationTokenForOrg(ctx context.Context, params ActionsCreateRegistrationTokenForOrgParams) (res AuthenticationToken, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsCreateRegistrationTokenForOrg`,
@@ -860,7 +878,9 @@ func (c *Client) ActionsCreateRegistrationTokenForOrg(ctx context.Context, param
 	return result, nil
 }
 
-// ActionsCreateRegistrationTokenForRepo implements actions/create-registration-token-for-repo operation.
+// ActionsCreateRegistrationTokenForRepo invokes actions/create-registration-token-for-repo operation.
+//
+// POST /repos/{owner}/{repo}/actions/runners/registration-token
 func (c *Client) ActionsCreateRegistrationTokenForRepo(ctx context.Context, params ActionsCreateRegistrationTokenForRepoParams) (res AuthenticationToken, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsCreateRegistrationTokenForRepo`,
@@ -928,7 +948,9 @@ func (c *Client) ActionsCreateRegistrationTokenForRepo(ctx context.Context, para
 	return result, nil
 }
 
-// ActionsCreateRemoveTokenForOrg implements actions/create-remove-token-for-org operation.
+// ActionsCreateRemoveTokenForOrg invokes actions/create-remove-token-for-org operation.
+//
+// POST /orgs/{org}/actions/runners/remove-token
 func (c *Client) ActionsCreateRemoveTokenForOrg(ctx context.Context, params ActionsCreateRemoveTokenForOrgParams) (res AuthenticationToken, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsCreateRemoveTokenForOrg`,
@@ -981,7 +1003,9 @@ func (c *Client) ActionsCreateRemoveTokenForOrg(ctx context.Context, params Acti
 	return result, nil
 }
 
-// ActionsCreateRemoveTokenForRepo implements actions/create-remove-token-for-repo operation.
+// ActionsCreateRemoveTokenForRepo invokes actions/create-remove-token-for-repo operation.
+//
+// POST /repos/{owner}/{repo}/actions/runners/remove-token
 func (c *Client) ActionsCreateRemoveTokenForRepo(ctx context.Context, params ActionsCreateRemoveTokenForRepoParams) (res AuthenticationToken, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsCreateRemoveTokenForRepo`,
@@ -1049,7 +1073,9 @@ func (c *Client) ActionsCreateRemoveTokenForRepo(ctx context.Context, params Act
 	return result, nil
 }
 
-// ActionsCreateSelfHostedRunnerGroupForOrg implements actions/create-self-hosted-runner-group-for-org operation.
+// ActionsCreateSelfHostedRunnerGroupForOrg invokes actions/create-self-hosted-runner-group-for-org operation.
+//
+// POST /orgs/{org}/actions/runner-groups
 func (c *Client) ActionsCreateSelfHostedRunnerGroupForOrg(ctx context.Context, request ActionsCreateSelfHostedRunnerGroupForOrgReq, params ActionsCreateSelfHostedRunnerGroupForOrgParams) (res RunnerGroupsOrg, err error) {
 	if err := func() error {
 
@@ -1125,7 +1151,9 @@ func (c *Client) ActionsCreateSelfHostedRunnerGroupForOrg(ctx context.Context, r
 	return result, nil
 }
 
-// ActionsDeleteArtifact implements actions/delete-artifact operation.
+// ActionsDeleteArtifact invokes actions/delete-artifact operation.
+//
+// DELETE /repos/{owner}/{repo}/actions/artifacts/{artifact_id}
 func (c *Client) ActionsDeleteArtifact(ctx context.Context, params ActionsDeleteArtifactParams) (res ActionsDeleteArtifactNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsDeleteArtifact`,
@@ -1207,7 +1235,9 @@ func (c *Client) ActionsDeleteArtifact(ctx context.Context, params ActionsDelete
 	return result, nil
 }
 
-// ActionsDeleteEnvironmentSecret implements actions/delete-environment-secret operation.
+// ActionsDeleteEnvironmentSecret invokes actions/delete-environment-secret operation.
+//
+// DELETE /repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}
 func (c *Client) ActionsDeleteEnvironmentSecret(ctx context.Context, params ActionsDeleteEnvironmentSecretParams) (res ActionsDeleteEnvironmentSecretNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsDeleteEnvironmentSecret`,
@@ -1289,7 +1319,9 @@ func (c *Client) ActionsDeleteEnvironmentSecret(ctx context.Context, params Acti
 	return result, nil
 }
 
-// ActionsDeleteOrgSecret implements actions/delete-org-secret operation.
+// ActionsDeleteOrgSecret invokes actions/delete-org-secret operation.
+//
+// DELETE /orgs/{org}/actions/secrets/{secret_name}
 func (c *Client) ActionsDeleteOrgSecret(ctx context.Context, params ActionsDeleteOrgSecretParams) (res ActionsDeleteOrgSecretNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsDeleteOrgSecret`,
@@ -1356,7 +1388,9 @@ func (c *Client) ActionsDeleteOrgSecret(ctx context.Context, params ActionsDelet
 	return result, nil
 }
 
-// ActionsDeleteRepoSecret implements actions/delete-repo-secret operation.
+// ActionsDeleteRepoSecret invokes actions/delete-repo-secret operation.
+//
+// DELETE /repos/{owner}/{repo}/actions/secrets/{secret_name}
 func (c *Client) ActionsDeleteRepoSecret(ctx context.Context, params ActionsDeleteRepoSecretParams) (res ActionsDeleteRepoSecretNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsDeleteRepoSecret`,
@@ -1438,7 +1472,9 @@ func (c *Client) ActionsDeleteRepoSecret(ctx context.Context, params ActionsDele
 	return result, nil
 }
 
-// ActionsDeleteSelfHostedRunnerFromOrg implements actions/delete-self-hosted-runner-from-org operation.
+// ActionsDeleteSelfHostedRunnerFromOrg invokes actions/delete-self-hosted-runner-from-org operation.
+//
+// DELETE /orgs/{org}/actions/runners/{runner_id}
 func (c *Client) ActionsDeleteSelfHostedRunnerFromOrg(ctx context.Context, params ActionsDeleteSelfHostedRunnerFromOrgParams) (res ActionsDeleteSelfHostedRunnerFromOrgNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsDeleteSelfHostedRunnerFromOrg`,
@@ -1505,7 +1541,9 @@ func (c *Client) ActionsDeleteSelfHostedRunnerFromOrg(ctx context.Context, param
 	return result, nil
 }
 
-// ActionsDeleteSelfHostedRunnerFromRepo implements actions/delete-self-hosted-runner-from-repo operation.
+// ActionsDeleteSelfHostedRunnerFromRepo invokes actions/delete-self-hosted-runner-from-repo operation.
+//
+// DELETE /repos/{owner}/{repo}/actions/runners/{runner_id}
 func (c *Client) ActionsDeleteSelfHostedRunnerFromRepo(ctx context.Context, params ActionsDeleteSelfHostedRunnerFromRepoParams) (res ActionsDeleteSelfHostedRunnerFromRepoNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsDeleteSelfHostedRunnerFromRepo`,
@@ -1587,7 +1625,9 @@ func (c *Client) ActionsDeleteSelfHostedRunnerFromRepo(ctx context.Context, para
 	return result, nil
 }
 
-// ActionsDeleteSelfHostedRunnerGroupFromOrg implements actions/delete-self-hosted-runner-group-from-org operation.
+// ActionsDeleteSelfHostedRunnerGroupFromOrg invokes actions/delete-self-hosted-runner-group-from-org operation.
+//
+// DELETE /orgs/{org}/actions/runner-groups/{runner_group_id}
 func (c *Client) ActionsDeleteSelfHostedRunnerGroupFromOrg(ctx context.Context, params ActionsDeleteSelfHostedRunnerGroupFromOrgParams) (res ActionsDeleteSelfHostedRunnerGroupFromOrgNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsDeleteSelfHostedRunnerGroupFromOrg`,
@@ -1654,7 +1694,9 @@ func (c *Client) ActionsDeleteSelfHostedRunnerGroupFromOrg(ctx context.Context, 
 	return result, nil
 }
 
-// ActionsDeleteWorkflowRun implements actions/delete-workflow-run operation.
+// ActionsDeleteWorkflowRun invokes actions/delete-workflow-run operation.
+//
+// DELETE /repos/{owner}/{repo}/actions/runs/{run_id}
 func (c *Client) ActionsDeleteWorkflowRun(ctx context.Context, params ActionsDeleteWorkflowRunParams) (res ActionsDeleteWorkflowRunNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsDeleteWorkflowRun`,
@@ -1736,7 +1778,9 @@ func (c *Client) ActionsDeleteWorkflowRun(ctx context.Context, params ActionsDel
 	return result, nil
 }
 
-// ActionsDeleteWorkflowRunLogs implements actions/delete-workflow-run-logs operation.
+// ActionsDeleteWorkflowRunLogs invokes actions/delete-workflow-run-logs operation.
+//
+// DELETE /repos/{owner}/{repo}/actions/runs/{run_id}/logs
 func (c *Client) ActionsDeleteWorkflowRunLogs(ctx context.Context, params ActionsDeleteWorkflowRunLogsParams) (res ActionsDeleteWorkflowRunLogsNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsDeleteWorkflowRunLogs`,
@@ -1819,7 +1863,9 @@ func (c *Client) ActionsDeleteWorkflowRunLogs(ctx context.Context, params Action
 	return result, nil
 }
 
-// ActionsDisableSelectedRepositoryGithubActionsOrganization implements actions/disable-selected-repository-github-actions-organization operation.
+// ActionsDisableSelectedRepositoryGithubActionsOrganization invokes actions/disable-selected-repository-github-actions-organization operation.
+//
+// DELETE /orgs/{org}/actions/permissions/repositories/{repository_id}
 func (c *Client) ActionsDisableSelectedRepositoryGithubActionsOrganization(ctx context.Context, params ActionsDisableSelectedRepositoryGithubActionsOrganizationParams) (res ActionsDisableSelectedRepositoryGithubActionsOrganizationNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsDisableSelectedRepositoryGithubActionsOrganization`,
@@ -1886,7 +1932,9 @@ func (c *Client) ActionsDisableSelectedRepositoryGithubActionsOrganization(ctx c
 	return result, nil
 }
 
-// ActionsDownloadArtifact implements actions/download-artifact operation.
+// ActionsDownloadArtifact invokes actions/download-artifact operation.
+//
+// GET /repos/{owner}/{repo}/actions/artifacts/{artifact_id}/{archive_format}
 func (c *Client) ActionsDownloadArtifact(ctx context.Context, params ActionsDownloadArtifactParams) (res ActionsDownloadArtifactFound, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsDownloadArtifact`,
@@ -1983,7 +2031,9 @@ func (c *Client) ActionsDownloadArtifact(ctx context.Context, params ActionsDown
 	return result, nil
 }
 
-// ActionsDownloadJobLogsForWorkflowRun implements actions/download-job-logs-for-workflow-run operation.
+// ActionsDownloadJobLogsForWorkflowRun invokes actions/download-job-logs-for-workflow-run operation.
+//
+// GET /repos/{owner}/{repo}/actions/jobs/{job_id}/logs
 func (c *Client) ActionsDownloadJobLogsForWorkflowRun(ctx context.Context, params ActionsDownloadJobLogsForWorkflowRunParams) (res ActionsDownloadJobLogsForWorkflowRunFound, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsDownloadJobLogsForWorkflowRun`,
@@ -2066,7 +2116,9 @@ func (c *Client) ActionsDownloadJobLogsForWorkflowRun(ctx context.Context, param
 	return result, nil
 }
 
-// ActionsDownloadWorkflowRunLogs implements actions/download-workflow-run-logs operation.
+// ActionsDownloadWorkflowRunLogs invokes actions/download-workflow-run-logs operation.
+//
+// GET /repos/{owner}/{repo}/actions/runs/{run_id}/logs
 func (c *Client) ActionsDownloadWorkflowRunLogs(ctx context.Context, params ActionsDownloadWorkflowRunLogsParams) (res ActionsDownloadWorkflowRunLogsFound, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsDownloadWorkflowRunLogs`,
@@ -2149,7 +2201,9 @@ func (c *Client) ActionsDownloadWorkflowRunLogs(ctx context.Context, params Acti
 	return result, nil
 }
 
-// ActionsEnableSelectedRepositoryGithubActionsOrganization implements actions/enable-selected-repository-github-actions-organization operation.
+// ActionsEnableSelectedRepositoryGithubActionsOrganization invokes actions/enable-selected-repository-github-actions-organization operation.
+//
+// PUT /orgs/{org}/actions/permissions/repositories/{repository_id}
 func (c *Client) ActionsEnableSelectedRepositoryGithubActionsOrganization(ctx context.Context, params ActionsEnableSelectedRepositoryGithubActionsOrganizationParams) (res ActionsEnableSelectedRepositoryGithubActionsOrganizationNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsEnableSelectedRepositoryGithubActionsOrganization`,
@@ -2216,7 +2270,9 @@ func (c *Client) ActionsEnableSelectedRepositoryGithubActionsOrganization(ctx co
 	return result, nil
 }
 
-// ActionsGetAllowedActionsOrganization implements actions/get-allowed-actions-organization operation.
+// ActionsGetAllowedActionsOrganization invokes actions/get-allowed-actions-organization operation.
+//
+// GET /orgs/{org}/actions/permissions/selected-actions
 func (c *Client) ActionsGetAllowedActionsOrganization(ctx context.Context, params ActionsGetAllowedActionsOrganizationParams) (res SelectedActions, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsGetAllowedActionsOrganization`,
@@ -2269,7 +2325,9 @@ func (c *Client) ActionsGetAllowedActionsOrganization(ctx context.Context, param
 	return result, nil
 }
 
-// ActionsGetAllowedActionsRepository implements actions/get-allowed-actions-repository operation.
+// ActionsGetAllowedActionsRepository invokes actions/get-allowed-actions-repository operation.
+//
+// GET /repos/{owner}/{repo}/actions/permissions/selected-actions
 func (c *Client) ActionsGetAllowedActionsRepository(ctx context.Context, params ActionsGetAllowedActionsRepositoryParams) (res SelectedActions, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsGetAllowedActionsRepository`,
@@ -2337,7 +2395,9 @@ func (c *Client) ActionsGetAllowedActionsRepository(ctx context.Context, params 
 	return result, nil
 }
 
-// ActionsGetArtifact implements actions/get-artifact operation.
+// ActionsGetArtifact invokes actions/get-artifact operation.
+//
+// GET /repos/{owner}/{repo}/actions/artifacts/{artifact_id}
 func (c *Client) ActionsGetArtifact(ctx context.Context, params ActionsGetArtifactParams) (res Artifact, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsGetArtifact`,
@@ -2419,7 +2479,9 @@ func (c *Client) ActionsGetArtifact(ctx context.Context, params ActionsGetArtifa
 	return result, nil
 }
 
-// ActionsGetEnvironmentPublicKey implements actions/get-environment-public-key operation.
+// ActionsGetEnvironmentPublicKey invokes actions/get-environment-public-key operation.
+//
+// GET /repositories/{repository_id}/environments/{environment_name}/secrets/public-key
 func (c *Client) ActionsGetEnvironmentPublicKey(ctx context.Context, params ActionsGetEnvironmentPublicKeyParams) (res ActionsPublicKey, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsGetEnvironmentPublicKey`,
@@ -2487,7 +2549,9 @@ func (c *Client) ActionsGetEnvironmentPublicKey(ctx context.Context, params Acti
 	return result, nil
 }
 
-// ActionsGetEnvironmentSecret implements actions/get-environment-secret operation.
+// ActionsGetEnvironmentSecret invokes actions/get-environment-secret operation.
+//
+// GET /repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}
 func (c *Client) ActionsGetEnvironmentSecret(ctx context.Context, params ActionsGetEnvironmentSecretParams) (res ActionsSecret, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsGetEnvironmentSecret`,
@@ -2569,7 +2633,9 @@ func (c *Client) ActionsGetEnvironmentSecret(ctx context.Context, params Actions
 	return result, nil
 }
 
-// ActionsGetGithubActionsPermissionsOrganization implements actions/get-github-actions-permissions-organization operation.
+// ActionsGetGithubActionsPermissionsOrganization invokes actions/get-github-actions-permissions-organization operation.
+//
+// GET /orgs/{org}/actions/permissions
 func (c *Client) ActionsGetGithubActionsPermissionsOrganization(ctx context.Context, params ActionsGetGithubActionsPermissionsOrganizationParams) (res ActionsOrganizationPermissions, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsGetGithubActionsPermissionsOrganization`,
@@ -2622,7 +2688,9 @@ func (c *Client) ActionsGetGithubActionsPermissionsOrganization(ctx context.Cont
 	return result, nil
 }
 
-// ActionsGetGithubActionsPermissionsRepository implements actions/get-github-actions-permissions-repository operation.
+// ActionsGetGithubActionsPermissionsRepository invokes actions/get-github-actions-permissions-repository operation.
+//
+// GET /repos/{owner}/{repo}/actions/permissions
 func (c *Client) ActionsGetGithubActionsPermissionsRepository(ctx context.Context, params ActionsGetGithubActionsPermissionsRepositoryParams) (res ActionsRepositoryPermissions, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsGetGithubActionsPermissionsRepository`,
@@ -2690,7 +2758,9 @@ func (c *Client) ActionsGetGithubActionsPermissionsRepository(ctx context.Contex
 	return result, nil
 }
 
-// ActionsGetJobForWorkflowRun implements actions/get-job-for-workflow-run operation.
+// ActionsGetJobForWorkflowRun invokes actions/get-job-for-workflow-run operation.
+//
+// GET /repos/{owner}/{repo}/actions/jobs/{job_id}
 func (c *Client) ActionsGetJobForWorkflowRun(ctx context.Context, params ActionsGetJobForWorkflowRunParams) (res Job, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsGetJobForWorkflowRun`,
@@ -2772,7 +2842,9 @@ func (c *Client) ActionsGetJobForWorkflowRun(ctx context.Context, params Actions
 	return result, nil
 }
 
-// ActionsGetOrgPublicKey implements actions/get-org-public-key operation.
+// ActionsGetOrgPublicKey invokes actions/get-org-public-key operation.
+//
+// GET /orgs/{org}/actions/secrets/public-key
 func (c *Client) ActionsGetOrgPublicKey(ctx context.Context, params ActionsGetOrgPublicKeyParams) (res ActionsPublicKey, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsGetOrgPublicKey`,
@@ -2825,7 +2897,9 @@ func (c *Client) ActionsGetOrgPublicKey(ctx context.Context, params ActionsGetOr
 	return result, nil
 }
 
-// ActionsGetOrgSecret implements actions/get-org-secret operation.
+// ActionsGetOrgSecret invokes actions/get-org-secret operation.
+//
+// GET /orgs/{org}/actions/secrets/{secret_name}
 func (c *Client) ActionsGetOrgSecret(ctx context.Context, params ActionsGetOrgSecretParams) (res OrganizationActionsSecret, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsGetOrgSecret`,
@@ -2892,7 +2966,9 @@ func (c *Client) ActionsGetOrgSecret(ctx context.Context, params ActionsGetOrgSe
 	return result, nil
 }
 
-// ActionsGetRepoPublicKey implements actions/get-repo-public-key operation.
+// ActionsGetRepoPublicKey invokes actions/get-repo-public-key operation.
+//
+// GET /repos/{owner}/{repo}/actions/secrets/public-key
 func (c *Client) ActionsGetRepoPublicKey(ctx context.Context, params ActionsGetRepoPublicKeyParams) (res ActionsPublicKey, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsGetRepoPublicKey`,
@@ -2960,7 +3036,9 @@ func (c *Client) ActionsGetRepoPublicKey(ctx context.Context, params ActionsGetR
 	return result, nil
 }
 
-// ActionsGetRepoSecret implements actions/get-repo-secret operation.
+// ActionsGetRepoSecret invokes actions/get-repo-secret operation.
+//
+// GET /repos/{owner}/{repo}/actions/secrets/{secret_name}
 func (c *Client) ActionsGetRepoSecret(ctx context.Context, params ActionsGetRepoSecretParams) (res ActionsSecret, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsGetRepoSecret`,
@@ -3042,7 +3120,9 @@ func (c *Client) ActionsGetRepoSecret(ctx context.Context, params ActionsGetRepo
 	return result, nil
 }
 
-// ActionsGetReviewsForRun implements actions/get-reviews-for-run operation.
+// ActionsGetReviewsForRun invokes actions/get-reviews-for-run operation.
+//
+// GET /repos/{owner}/{repo}/actions/runs/{run_id}/approvals
 func (c *Client) ActionsGetReviewsForRun(ctx context.Context, params ActionsGetReviewsForRunParams) (res []EnvironmentApprovals, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsGetReviewsForRun`,
@@ -3125,7 +3205,9 @@ func (c *Client) ActionsGetReviewsForRun(ctx context.Context, params ActionsGetR
 	return result, nil
 }
 
-// ActionsGetSelfHostedRunnerForOrg implements actions/get-self-hosted-runner-for-org operation.
+// ActionsGetSelfHostedRunnerForOrg invokes actions/get-self-hosted-runner-for-org operation.
+//
+// GET /orgs/{org}/actions/runners/{runner_id}
 func (c *Client) ActionsGetSelfHostedRunnerForOrg(ctx context.Context, params ActionsGetSelfHostedRunnerForOrgParams) (res Runner, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsGetSelfHostedRunnerForOrg`,
@@ -3192,7 +3274,9 @@ func (c *Client) ActionsGetSelfHostedRunnerForOrg(ctx context.Context, params Ac
 	return result, nil
 }
 
-// ActionsGetSelfHostedRunnerForRepo implements actions/get-self-hosted-runner-for-repo operation.
+// ActionsGetSelfHostedRunnerForRepo invokes actions/get-self-hosted-runner-for-repo operation.
+//
+// GET /repos/{owner}/{repo}/actions/runners/{runner_id}
 func (c *Client) ActionsGetSelfHostedRunnerForRepo(ctx context.Context, params ActionsGetSelfHostedRunnerForRepoParams) (res Runner, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsGetSelfHostedRunnerForRepo`,
@@ -3274,7 +3358,9 @@ func (c *Client) ActionsGetSelfHostedRunnerForRepo(ctx context.Context, params A
 	return result, nil
 }
 
-// ActionsGetSelfHostedRunnerGroupForOrg implements actions/get-self-hosted-runner-group-for-org operation.
+// ActionsGetSelfHostedRunnerGroupForOrg invokes actions/get-self-hosted-runner-group-for-org operation.
+//
+// GET /orgs/{org}/actions/runner-groups/{runner_group_id}
 func (c *Client) ActionsGetSelfHostedRunnerGroupForOrg(ctx context.Context, params ActionsGetSelfHostedRunnerGroupForOrgParams) (res RunnerGroupsOrg, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsGetSelfHostedRunnerGroupForOrg`,
@@ -3341,7 +3427,9 @@ func (c *Client) ActionsGetSelfHostedRunnerGroupForOrg(ctx context.Context, para
 	return result, nil
 }
 
-// ActionsGetWorkflowRun implements actions/get-workflow-run operation.
+// ActionsGetWorkflowRun invokes actions/get-workflow-run operation.
+//
+// GET /repos/{owner}/{repo}/actions/runs/{run_id}
 func (c *Client) ActionsGetWorkflowRun(ctx context.Context, params ActionsGetWorkflowRunParams) (res WorkflowRun, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsGetWorkflowRun`,
@@ -3423,7 +3511,9 @@ func (c *Client) ActionsGetWorkflowRun(ctx context.Context, params ActionsGetWor
 	return result, nil
 }
 
-// ActionsGetWorkflowRunUsage implements actions/get-workflow-run-usage operation.
+// ActionsGetWorkflowRunUsage invokes actions/get-workflow-run-usage operation.
+//
+// GET /repos/{owner}/{repo}/actions/runs/{run_id}/timing
 func (c *Client) ActionsGetWorkflowRunUsage(ctx context.Context, params ActionsGetWorkflowRunUsageParams) (res WorkflowRunUsage, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsGetWorkflowRunUsage`,
@@ -3506,7 +3596,9 @@ func (c *Client) ActionsGetWorkflowRunUsage(ctx context.Context, params ActionsG
 	return result, nil
 }
 
-// ActionsListArtifactsForRepo implements actions/list-artifacts-for-repo operation.
+// ActionsListArtifactsForRepo invokes actions/list-artifacts-for-repo operation.
+//
+// GET /repos/{owner}/{repo}/actions/artifacts
 func (c *Client) ActionsListArtifactsForRepo(ctx context.Context, params ActionsListArtifactsForRepoParams) (res ActionsListArtifactsForRepoOK, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsListArtifactsForRepo`,
@@ -3609,7 +3701,9 @@ func (c *Client) ActionsListArtifactsForRepo(ctx context.Context, params Actions
 	return result, nil
 }
 
-// ActionsListEnvironmentSecrets implements actions/list-environment-secrets operation.
+// ActionsListEnvironmentSecrets invokes actions/list-environment-secrets operation.
+//
+// GET /repositories/{repository_id}/environments/{environment_name}/secrets
 func (c *Client) ActionsListEnvironmentSecrets(ctx context.Context, params ActionsListEnvironmentSecretsParams) (res ActionsListEnvironmentSecretsOK, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsListEnvironmentSecrets`,
@@ -3712,7 +3806,9 @@ func (c *Client) ActionsListEnvironmentSecrets(ctx context.Context, params Actio
 	return result, nil
 }
 
-// ActionsListJobsForWorkflowRun implements actions/list-jobs-for-workflow-run operation.
+// ActionsListJobsForWorkflowRun invokes actions/list-jobs-for-workflow-run operation.
+//
+// GET /repos/{owner}/{repo}/actions/runs/{run_id}/jobs
 func (c *Client) ActionsListJobsForWorkflowRun(ctx context.Context, params ActionsListJobsForWorkflowRunParams) (res ActionsListJobsForWorkflowRunOK, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsListJobsForWorkflowRun`,
@@ -3846,7 +3942,9 @@ func (c *Client) ActionsListJobsForWorkflowRun(ctx context.Context, params Actio
 	return result, nil
 }
 
-// ActionsListOrgSecrets implements actions/list-org-secrets operation.
+// ActionsListOrgSecrets invokes actions/list-org-secrets operation.
+//
+// GET /orgs/{org}/actions/secrets
 func (c *Client) ActionsListOrgSecrets(ctx context.Context, params ActionsListOrgSecretsParams) (res ActionsListOrgSecretsOK, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsListOrgSecrets`,
@@ -3934,7 +4032,9 @@ func (c *Client) ActionsListOrgSecrets(ctx context.Context, params ActionsListOr
 	return result, nil
 }
 
-// ActionsListRepoAccessToSelfHostedRunnerGroupInOrg implements actions/list-repo-access-to-self-hosted-runner-group-in-org operation.
+// ActionsListRepoAccessToSelfHostedRunnerGroupInOrg invokes actions/list-repo-access-to-self-hosted-runner-group-in-org operation.
+//
+// GET /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories
 func (c *Client) ActionsListRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, params ActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams) (res ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsListRepoAccessToSelfHostedRunnerGroupInOrg`,
@@ -4037,7 +4137,9 @@ func (c *Client) ActionsListRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.C
 	return result, nil
 }
 
-// ActionsListRepoSecrets implements actions/list-repo-secrets operation.
+// ActionsListRepoSecrets invokes actions/list-repo-secrets operation.
+//
+// GET /repos/{owner}/{repo}/actions/secrets
 func (c *Client) ActionsListRepoSecrets(ctx context.Context, params ActionsListRepoSecretsParams) (res ActionsListRepoSecretsOK, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsListRepoSecrets`,
@@ -4140,7 +4242,9 @@ func (c *Client) ActionsListRepoSecrets(ctx context.Context, params ActionsListR
 	return result, nil
 }
 
-// ActionsListRepoWorkflows implements actions/list-repo-workflows operation.
+// ActionsListRepoWorkflows invokes actions/list-repo-workflows operation.
+//
+// GET /repos/{owner}/{repo}/actions/workflows
 func (c *Client) ActionsListRepoWorkflows(ctx context.Context, params ActionsListRepoWorkflowsParams) (res ActionsListRepoWorkflowsOK, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsListRepoWorkflows`,
@@ -4243,7 +4347,9 @@ func (c *Client) ActionsListRepoWorkflows(ctx context.Context, params ActionsLis
 	return result, nil
 }
 
-// ActionsListRunnerApplicationsForOrg implements actions/list-runner-applications-for-org operation.
+// ActionsListRunnerApplicationsForOrg invokes actions/list-runner-applications-for-org operation.
+//
+// GET /orgs/{org}/actions/runners/downloads
 func (c *Client) ActionsListRunnerApplicationsForOrg(ctx context.Context, params ActionsListRunnerApplicationsForOrgParams) (res []RunnerApplication, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsListRunnerApplicationsForOrg`,
@@ -4296,7 +4402,9 @@ func (c *Client) ActionsListRunnerApplicationsForOrg(ctx context.Context, params
 	return result, nil
 }
 
-// ActionsListRunnerApplicationsForRepo implements actions/list-runner-applications-for-repo operation.
+// ActionsListRunnerApplicationsForRepo invokes actions/list-runner-applications-for-repo operation.
+//
+// GET /repos/{owner}/{repo}/actions/runners/downloads
 func (c *Client) ActionsListRunnerApplicationsForRepo(ctx context.Context, params ActionsListRunnerApplicationsForRepoParams) (res []RunnerApplication, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsListRunnerApplicationsForRepo`,
@@ -4364,7 +4472,9 @@ func (c *Client) ActionsListRunnerApplicationsForRepo(ctx context.Context, param
 	return result, nil
 }
 
-// ActionsListSelectedReposForOrgSecret implements actions/list-selected-repos-for-org-secret operation.
+// ActionsListSelectedReposForOrgSecret invokes actions/list-selected-repos-for-org-secret operation.
+//
+// GET /orgs/{org}/actions/secrets/{secret_name}/repositories
 func (c *Client) ActionsListSelectedReposForOrgSecret(ctx context.Context, params ActionsListSelectedReposForOrgSecretParams) (res ActionsListSelectedReposForOrgSecretOK, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsListSelectedReposForOrgSecret`,
@@ -4467,7 +4577,9 @@ func (c *Client) ActionsListSelectedReposForOrgSecret(ctx context.Context, param
 	return result, nil
 }
 
-// ActionsListSelectedRepositoriesEnabledGithubActionsOrganization implements actions/list-selected-repositories-enabled-github-actions-organization operation.
+// ActionsListSelectedRepositoriesEnabledGithubActionsOrganization invokes actions/list-selected-repositories-enabled-github-actions-organization operation.
+//
+// GET /orgs/{org}/actions/permissions/repositories
 func (c *Client) ActionsListSelectedRepositoriesEnabledGithubActionsOrganization(ctx context.Context, params ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams) (res ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsListSelectedRepositoriesEnabledGithubActionsOrganization`,
@@ -4555,7 +4667,9 @@ func (c *Client) ActionsListSelectedRepositoriesEnabledGithubActionsOrganization
 	return result, nil
 }
 
-// ActionsListSelfHostedRunnerGroupsForOrg implements actions/list-self-hosted-runner-groups-for-org operation.
+// ActionsListSelfHostedRunnerGroupsForOrg invokes actions/list-self-hosted-runner-groups-for-org operation.
+//
+// GET /orgs/{org}/actions/runner-groups
 func (c *Client) ActionsListSelfHostedRunnerGroupsForOrg(ctx context.Context, params ActionsListSelfHostedRunnerGroupsForOrgParams) (res ActionsListSelfHostedRunnerGroupsForOrgOK, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsListSelfHostedRunnerGroupsForOrg`,
@@ -4643,7 +4757,9 @@ func (c *Client) ActionsListSelfHostedRunnerGroupsForOrg(ctx context.Context, pa
 	return result, nil
 }
 
-// ActionsListSelfHostedRunnersForOrg implements actions/list-self-hosted-runners-for-org operation.
+// ActionsListSelfHostedRunnersForOrg invokes actions/list-self-hosted-runners-for-org operation.
+//
+// GET /orgs/{org}/actions/runners
 func (c *Client) ActionsListSelfHostedRunnersForOrg(ctx context.Context, params ActionsListSelfHostedRunnersForOrgParams) (res ActionsListSelfHostedRunnersForOrgOK, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsListSelfHostedRunnersForOrg`,
@@ -4731,7 +4847,9 @@ func (c *Client) ActionsListSelfHostedRunnersForOrg(ctx context.Context, params 
 	return result, nil
 }
 
-// ActionsListSelfHostedRunnersForRepo implements actions/list-self-hosted-runners-for-repo operation.
+// ActionsListSelfHostedRunnersForRepo invokes actions/list-self-hosted-runners-for-repo operation.
+//
+// GET /repos/{owner}/{repo}/actions/runners
 func (c *Client) ActionsListSelfHostedRunnersForRepo(ctx context.Context, params ActionsListSelfHostedRunnersForRepoParams) (res ActionsListSelfHostedRunnersForRepoOK, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsListSelfHostedRunnersForRepo`,
@@ -4834,7 +4952,9 @@ func (c *Client) ActionsListSelfHostedRunnersForRepo(ctx context.Context, params
 	return result, nil
 }
 
-// ActionsListSelfHostedRunnersInGroupForOrg implements actions/list-self-hosted-runners-in-group-for-org operation.
+// ActionsListSelfHostedRunnersInGroupForOrg invokes actions/list-self-hosted-runners-in-group-for-org operation.
+//
+// GET /orgs/{org}/actions/runner-groups/{runner_group_id}/runners
 func (c *Client) ActionsListSelfHostedRunnersInGroupForOrg(ctx context.Context, params ActionsListSelfHostedRunnersInGroupForOrgParams) (res ActionsListSelfHostedRunnersInGroupForOrgOK, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsListSelfHostedRunnersInGroupForOrg`,
@@ -4937,7 +5057,9 @@ func (c *Client) ActionsListSelfHostedRunnersInGroupForOrg(ctx context.Context, 
 	return result, nil
 }
 
-// ActionsListWorkflowRunArtifacts implements actions/list-workflow-run-artifacts operation.
+// ActionsListWorkflowRunArtifacts invokes actions/list-workflow-run-artifacts operation.
+//
+// GET /repos/{owner}/{repo}/actions/runs/{run_id}/artifacts
 func (c *Client) ActionsListWorkflowRunArtifacts(ctx context.Context, params ActionsListWorkflowRunArtifactsParams) (res ActionsListWorkflowRunArtifactsOK, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsListWorkflowRunArtifacts`,
@@ -5055,7 +5177,9 @@ func (c *Client) ActionsListWorkflowRunArtifacts(ctx context.Context, params Act
 	return result, nil
 }
 
-// ActionsListWorkflowRunsForRepo implements actions/list-workflow-runs-for-repo operation.
+// ActionsListWorkflowRunsForRepo invokes actions/list-workflow-runs-for-repo operation.
+//
+// GET /repos/{owner}/{repo}/actions/runs
 func (c *Client) ActionsListWorkflowRunsForRepo(ctx context.Context, params ActionsListWorkflowRunsForRepoParams) (res ActionsListWorkflowRunsForRepoOK, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsListWorkflowRunsForRepo`,
@@ -5238,7 +5362,9 @@ func (c *Client) ActionsListWorkflowRunsForRepo(ctx context.Context, params Acti
 	return result, nil
 }
 
-// ActionsReRunWorkflow implements actions/re-run-workflow operation.
+// ActionsReRunWorkflow invokes actions/re-run-workflow operation.
+//
+// POST /repos/{owner}/{repo}/actions/runs/{run_id}/rerun
 func (c *Client) ActionsReRunWorkflow(ctx context.Context, params ActionsReRunWorkflowParams) (res ActionsReRunWorkflowCreated, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsReRunWorkflow`,
@@ -5321,7 +5447,9 @@ func (c *Client) ActionsReRunWorkflow(ctx context.Context, params ActionsReRunWo
 	return result, nil
 }
 
-// ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg implements actions/remove-repo-access-to-self-hosted-runner-group-in-org operation.
+// ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg invokes actions/remove-repo-access-to-self-hosted-runner-group-in-org operation.
+//
+// DELETE /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories/{repository_id}
 func (c *Client) ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, params ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams) (res ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg`,
@@ -5403,7 +5531,9 @@ func (c *Client) ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg(ctx context
 	return result, nil
 }
 
-// ActionsRemoveSelectedRepoFromOrgSecret implements actions/remove-selected-repo-from-org-secret operation.
+// ActionsRemoveSelectedRepoFromOrgSecret invokes actions/remove-selected-repo-from-org-secret operation.
+//
+// DELETE /orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}
 func (c *Client) ActionsRemoveSelectedRepoFromOrgSecret(ctx context.Context, params ActionsRemoveSelectedRepoFromOrgSecretParams) (res ActionsRemoveSelectedRepoFromOrgSecretRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsRemoveSelectedRepoFromOrgSecret`,
@@ -5485,7 +5615,9 @@ func (c *Client) ActionsRemoveSelectedRepoFromOrgSecret(ctx context.Context, par
 	return result, nil
 }
 
-// ActionsRemoveSelfHostedRunnerFromGroupForOrg implements actions/remove-self-hosted-runner-from-group-for-org operation.
+// ActionsRemoveSelfHostedRunnerFromGroupForOrg invokes actions/remove-self-hosted-runner-from-group-for-org operation.
+//
+// DELETE /orgs/{org}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
 func (c *Client) ActionsRemoveSelfHostedRunnerFromGroupForOrg(ctx context.Context, params ActionsRemoveSelfHostedRunnerFromGroupForOrgParams) (res ActionsRemoveSelfHostedRunnerFromGroupForOrgNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsRemoveSelfHostedRunnerFromGroupForOrg`,
@@ -5567,7 +5699,9 @@ func (c *Client) ActionsRemoveSelfHostedRunnerFromGroupForOrg(ctx context.Contex
 	return result, nil
 }
 
-// ActionsRetryWorkflow implements actions/retry-workflow operation.
+// ActionsRetryWorkflow invokes actions/retry-workflow operation.
+//
+// POST /repos/{owner}/{repo}/actions/runs/{run_id}/retry
 func (c *Client) ActionsRetryWorkflow(ctx context.Context, params ActionsRetryWorkflowParams) (res ActionsRetryWorkflowCreated, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsRetryWorkflow`,
@@ -5650,7 +5784,9 @@ func (c *Client) ActionsRetryWorkflow(ctx context.Context, params ActionsRetryWo
 	return result, nil
 }
 
-// ActionsSetAllowedActionsOrganization implements actions/set-allowed-actions-organization operation.
+// ActionsSetAllowedActionsOrganization invokes actions/set-allowed-actions-organization operation.
+//
+// PUT /orgs/{org}/actions/permissions/selected-actions
 func (c *Client) ActionsSetAllowedActionsOrganization(ctx context.Context, request SelectedActions, params ActionsSetAllowedActionsOrganizationParams) (res ActionsSetAllowedActionsOrganizationNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsSetAllowedActionsOrganization`,
@@ -5717,7 +5853,9 @@ func (c *Client) ActionsSetAllowedActionsOrganization(ctx context.Context, reque
 	return result, nil
 }
 
-// ActionsSetAllowedActionsRepository implements actions/set-allowed-actions-repository operation.
+// ActionsSetAllowedActionsRepository invokes actions/set-allowed-actions-repository operation.
+//
+// PUT /repos/{owner}/{repo}/actions/permissions/selected-actions
 func (c *Client) ActionsSetAllowedActionsRepository(ctx context.Context, request SelectedActions, params ActionsSetAllowedActionsRepositoryParams) (res ActionsSetAllowedActionsRepositoryNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsSetAllowedActionsRepository`,
@@ -5799,7 +5937,9 @@ func (c *Client) ActionsSetAllowedActionsRepository(ctx context.Context, request
 	return result, nil
 }
 
-// ActionsSetGithubActionsPermissionsOrganization implements actions/set-github-actions-permissions-organization operation.
+// ActionsSetGithubActionsPermissionsOrganization invokes actions/set-github-actions-permissions-organization operation.
+//
+// PUT /orgs/{org}/actions/permissions
 func (c *Client) ActionsSetGithubActionsPermissionsOrganization(ctx context.Context, request ActionsSetGithubActionsPermissionsOrganizationReq, params ActionsSetGithubActionsPermissionsOrganizationParams) (res ActionsSetGithubActionsPermissionsOrganizationNoContent, err error) {
 	if err := func() error {
 
@@ -5875,7 +6015,9 @@ func (c *Client) ActionsSetGithubActionsPermissionsOrganization(ctx context.Cont
 	return result, nil
 }
 
-// ActionsSetGithubActionsPermissionsRepository implements actions/set-github-actions-permissions-repository operation.
+// ActionsSetGithubActionsPermissionsRepository invokes actions/set-github-actions-permissions-repository operation.
+//
+// PUT /repos/{owner}/{repo}/actions/permissions
 func (c *Client) ActionsSetGithubActionsPermissionsRepository(ctx context.Context, request ActionsSetGithubActionsPermissionsRepositoryReq, params ActionsSetGithubActionsPermissionsRepositoryParams) (res ActionsSetGithubActionsPermissionsRepositoryNoContent, err error) {
 	if err := func() error {
 
@@ -5966,7 +6108,9 @@ func (c *Client) ActionsSetGithubActionsPermissionsRepository(ctx context.Contex
 	return result, nil
 }
 
-// ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg implements actions/set-repo-access-to-self-hosted-runner-group-in-org operation.
+// ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg invokes actions/set-repo-access-to-self-hosted-runner-group-in-org operation.
+//
+// PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories
 func (c *Client) ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, request ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq, params ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams) (res ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgNoContent, err error) {
 	if err := func() error {
 
@@ -6057,7 +6201,9 @@ func (c *Client) ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Co
 	return result, nil
 }
 
-// ActionsSetSelectedReposForOrgSecret implements actions/set-selected-repos-for-org-secret operation.
+// ActionsSetSelectedReposForOrgSecret invokes actions/set-selected-repos-for-org-secret operation.
+//
+// PUT /orgs/{org}/actions/secrets/{secret_name}/repositories
 func (c *Client) ActionsSetSelectedReposForOrgSecret(ctx context.Context, request ActionsSetSelectedReposForOrgSecretReq, params ActionsSetSelectedReposForOrgSecretParams) (res ActionsSetSelectedReposForOrgSecretNoContent, err error) {
 	if err := func() error {
 
@@ -6148,7 +6294,9 @@ func (c *Client) ActionsSetSelectedReposForOrgSecret(ctx context.Context, reques
 	return result, nil
 }
 
-// ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization implements actions/set-selected-repositories-enabled-github-actions-organization operation.
+// ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization invokes actions/set-selected-repositories-enabled-github-actions-organization operation.
+//
+// PUT /orgs/{org}/actions/permissions/repositories
 func (c *Client) ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization(ctx context.Context, request ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq, params ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams) (res ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationNoContent, err error) {
 	if err := func() error {
 
@@ -6224,7 +6372,9 @@ func (c *Client) ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization(
 	return result, nil
 }
 
-// ActionsSetSelfHostedRunnersInGroupForOrg implements actions/set-self-hosted-runners-in-group-for-org operation.
+// ActionsSetSelfHostedRunnersInGroupForOrg invokes actions/set-self-hosted-runners-in-group-for-org operation.
+//
+// PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/runners
 func (c *Client) ActionsSetSelfHostedRunnersInGroupForOrg(ctx context.Context, request ActionsSetSelfHostedRunnersInGroupForOrgReq, params ActionsSetSelfHostedRunnersInGroupForOrgParams) (res ActionsSetSelfHostedRunnersInGroupForOrgNoContent, err error) {
 	if err := func() error {
 
@@ -6315,7 +6465,9 @@ func (c *Client) ActionsSetSelfHostedRunnersInGroupForOrg(ctx context.Context, r
 	return result, nil
 }
 
-// ActionsUpdateSelfHostedRunnerGroupForOrg implements actions/update-self-hosted-runner-group-for-org operation.
+// ActionsUpdateSelfHostedRunnerGroupForOrg invokes actions/update-self-hosted-runner-group-for-org operation.
+//
+// PATCH /orgs/{org}/actions/runner-groups/{runner_group_id}
 func (c *Client) ActionsUpdateSelfHostedRunnerGroupForOrg(ctx context.Context, request ActionsUpdateSelfHostedRunnerGroupForOrgReq, params ActionsUpdateSelfHostedRunnerGroupForOrgParams) (res RunnerGroupsOrg, err error) {
 	if err := func() error {
 
@@ -6405,7 +6557,9 @@ func (c *Client) ActionsUpdateSelfHostedRunnerGroupForOrg(ctx context.Context, r
 	return result, nil
 }
 
-// ActivityCheckRepoIsStarredByAuthenticatedUser implements activity/check-repo-is-starred-by-authenticated-user operation.
+// ActivityCheckRepoIsStarredByAuthenticatedUser invokes activity/check-repo-is-starred-by-authenticated-user operation.
+//
+// GET /user/starred/{owner}/{repo}
 func (c *Client) ActivityCheckRepoIsStarredByAuthenticatedUser(ctx context.Context, params ActivityCheckRepoIsStarredByAuthenticatedUserParams) (res ActivityCheckRepoIsStarredByAuthenticatedUserRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActivityCheckRepoIsStarredByAuthenticatedUser`,
@@ -6472,7 +6626,9 @@ func (c *Client) ActivityCheckRepoIsStarredByAuthenticatedUser(ctx context.Conte
 	return result, nil
 }
 
-// ActivityDeleteRepoSubscription implements activity/delete-repo-subscription operation.
+// ActivityDeleteRepoSubscription invokes activity/delete-repo-subscription operation.
+//
+// DELETE /repos/{owner}/{repo}/subscription
 func (c *Client) ActivityDeleteRepoSubscription(ctx context.Context, params ActivityDeleteRepoSubscriptionParams) (res ActivityDeleteRepoSubscriptionNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActivityDeleteRepoSubscription`,
@@ -6540,7 +6696,9 @@ func (c *Client) ActivityDeleteRepoSubscription(ctx context.Context, params Acti
 	return result, nil
 }
 
-// ActivityDeleteThreadSubscription implements activity/delete-thread-subscription operation.
+// ActivityDeleteThreadSubscription invokes activity/delete-thread-subscription operation.
+//
+// DELETE /notifications/threads/{thread_id}/subscription
 func (c *Client) ActivityDeleteThreadSubscription(ctx context.Context, params ActivityDeleteThreadSubscriptionParams) (res ActivityDeleteThreadSubscriptionRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActivityDeleteThreadSubscription`,
@@ -6593,7 +6751,9 @@ func (c *Client) ActivityDeleteThreadSubscription(ctx context.Context, params Ac
 	return result, nil
 }
 
-// ActivityGetFeeds implements activity/get-feeds operation.
+// ActivityGetFeeds invokes activity/get-feeds operation.
+//
+// GET /feeds
 func (c *Client) ActivityGetFeeds(ctx context.Context) (res Feed, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActivityGetFeeds`,
@@ -6631,7 +6791,9 @@ func (c *Client) ActivityGetFeeds(ctx context.Context) (res Feed, err error) {
 	return result, nil
 }
 
-// ActivityGetRepoSubscription implements activity/get-repo-subscription operation.
+// ActivityGetRepoSubscription invokes activity/get-repo-subscription operation.
+//
+// GET /repos/{owner}/{repo}/subscription
 func (c *Client) ActivityGetRepoSubscription(ctx context.Context, params ActivityGetRepoSubscriptionParams) (res ActivityGetRepoSubscriptionRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActivityGetRepoSubscription`,
@@ -6699,7 +6861,9 @@ func (c *Client) ActivityGetRepoSubscription(ctx context.Context, params Activit
 	return result, nil
 }
 
-// ActivityGetThread implements activity/get-thread operation.
+// ActivityGetThread invokes activity/get-thread operation.
+//
+// GET /notifications/threads/{thread_id}
 func (c *Client) ActivityGetThread(ctx context.Context, params ActivityGetThreadParams) (res ActivityGetThreadRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActivityGetThread`,
@@ -6751,7 +6915,9 @@ func (c *Client) ActivityGetThread(ctx context.Context, params ActivityGetThread
 	return result, nil
 }
 
-// ActivityGetThreadSubscriptionForAuthenticatedUser implements activity/get-thread-subscription-for-authenticated-user operation.
+// ActivityGetThreadSubscriptionForAuthenticatedUser invokes activity/get-thread-subscription-for-authenticated-user operation.
+//
+// GET /notifications/threads/{thread_id}/subscription
 func (c *Client) ActivityGetThreadSubscriptionForAuthenticatedUser(ctx context.Context, params ActivityGetThreadSubscriptionForAuthenticatedUserParams) (res ActivityGetThreadSubscriptionForAuthenticatedUserRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActivityGetThreadSubscriptionForAuthenticatedUser`,
@@ -6804,7 +6970,9 @@ func (c *Client) ActivityGetThreadSubscriptionForAuthenticatedUser(ctx context.C
 	return result, nil
 }
 
-// ActivityListEventsForAuthenticatedUser implements activity/list-events-for-authenticated-user operation.
+// ActivityListEventsForAuthenticatedUser invokes activity/list-events-for-authenticated-user operation.
+//
+// GET /users/{username}/events
 func (c *Client) ActivityListEventsForAuthenticatedUser(ctx context.Context, params ActivityListEventsForAuthenticatedUserParams) (res []Event, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActivityListEventsForAuthenticatedUser`,
@@ -6892,7 +7060,9 @@ func (c *Client) ActivityListEventsForAuthenticatedUser(ctx context.Context, par
 	return result, nil
 }
 
-// ActivityListOrgEventsForAuthenticatedUser implements activity/list-org-events-for-authenticated-user operation.
+// ActivityListOrgEventsForAuthenticatedUser invokes activity/list-org-events-for-authenticated-user operation.
+//
+// GET /users/{username}/events/orgs/{org}
 func (c *Client) ActivityListOrgEventsForAuthenticatedUser(ctx context.Context, params ActivityListOrgEventsForAuthenticatedUserParams) (res []Event, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActivityListOrgEventsForAuthenticatedUser`,
@@ -6994,7 +7164,9 @@ func (c *Client) ActivityListOrgEventsForAuthenticatedUser(ctx context.Context, 
 	return result, nil
 }
 
-// ActivityListPublicEvents implements activity/list-public-events operation.
+// ActivityListPublicEvents invokes activity/list-public-events operation.
+//
+// GET /events
 func (c *Client) ActivityListPublicEvents(ctx context.Context, params ActivityListPublicEventsParams) (res ActivityListPublicEventsRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActivityListPublicEvents`,
@@ -7067,7 +7239,9 @@ func (c *Client) ActivityListPublicEvents(ctx context.Context, params ActivityLi
 	return result, nil
 }
 
-// ActivityListPublicEventsForRepoNetwork implements activity/list-public-events-for-repo-network operation.
+// ActivityListPublicEventsForRepoNetwork invokes activity/list-public-events-for-repo-network operation.
+//
+// GET /networks/{owner}/{repo}/events
 func (c *Client) ActivityListPublicEventsForRepoNetwork(ctx context.Context, params ActivityListPublicEventsForRepoNetworkParams) (res ActivityListPublicEventsForRepoNetworkRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActivityListPublicEventsForRepoNetwork`,
@@ -7170,7 +7344,9 @@ func (c *Client) ActivityListPublicEventsForRepoNetwork(ctx context.Context, par
 	return result, nil
 }
 
-// ActivityListPublicEventsForUser implements activity/list-public-events-for-user operation.
+// ActivityListPublicEventsForUser invokes activity/list-public-events-for-user operation.
+//
+// GET /users/{username}/events/public
 func (c *Client) ActivityListPublicEventsForUser(ctx context.Context, params ActivityListPublicEventsForUserParams) (res []Event, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActivityListPublicEventsForUser`,
@@ -7258,7 +7434,9 @@ func (c *Client) ActivityListPublicEventsForUser(ctx context.Context, params Act
 	return result, nil
 }
 
-// ActivityListPublicOrgEvents implements activity/list-public-org-events operation.
+// ActivityListPublicOrgEvents invokes activity/list-public-org-events operation.
+//
+// GET /orgs/{org}/events
 func (c *Client) ActivityListPublicOrgEvents(ctx context.Context, params ActivityListPublicOrgEventsParams) (res []Event, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActivityListPublicOrgEvents`,
@@ -7346,7 +7524,9 @@ func (c *Client) ActivityListPublicOrgEvents(ctx context.Context, params Activit
 	return result, nil
 }
 
-// ActivityListReceivedEventsForUser implements activity/list-received-events-for-user operation.
+// ActivityListReceivedEventsForUser invokes activity/list-received-events-for-user operation.
+//
+// GET /users/{username}/received_events
 func (c *Client) ActivityListReceivedEventsForUser(ctx context.Context, params ActivityListReceivedEventsForUserParams) (res []Event, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActivityListReceivedEventsForUser`,
@@ -7434,7 +7614,9 @@ func (c *Client) ActivityListReceivedEventsForUser(ctx context.Context, params A
 	return result, nil
 }
 
-// ActivityListReceivedPublicEventsForUser implements activity/list-received-public-events-for-user operation.
+// ActivityListReceivedPublicEventsForUser invokes activity/list-received-public-events-for-user operation.
+//
+// GET /users/{username}/received_events/public
 func (c *Client) ActivityListReceivedPublicEventsForUser(ctx context.Context, params ActivityListReceivedPublicEventsForUserParams) (res []Event, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActivityListReceivedPublicEventsForUser`,
@@ -7522,7 +7704,9 @@ func (c *Client) ActivityListReceivedPublicEventsForUser(ctx context.Context, pa
 	return result, nil
 }
 
-// ActivityListRepoEvents implements activity/list-repo-events operation.
+// ActivityListRepoEvents invokes activity/list-repo-events operation.
+//
+// GET /repos/{owner}/{repo}/events
 func (c *Client) ActivityListRepoEvents(ctx context.Context, params ActivityListRepoEventsParams) (res []Event, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActivityListRepoEvents`,
@@ -7625,7 +7809,9 @@ func (c *Client) ActivityListRepoEvents(ctx context.Context, params ActivityList
 	return result, nil
 }
 
-// ActivityListRepoNotificationsForAuthenticatedUser implements activity/list-repo-notifications-for-authenticated-user operation.
+// ActivityListRepoNotificationsForAuthenticatedUser invokes activity/list-repo-notifications-for-authenticated-user operation.
+//
+// GET /repos/{owner}/{repo}/notifications
 func (c *Client) ActivityListRepoNotificationsForAuthenticatedUser(ctx context.Context, params ActivityListRepoNotificationsForAuthenticatedUserParams) (res []Thread, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActivityListRepoNotificationsForAuthenticatedUser`,
@@ -7792,7 +7978,9 @@ func (c *Client) ActivityListRepoNotificationsForAuthenticatedUser(ctx context.C
 	return result, nil
 }
 
-// ActivityListReposStarredByAuthenticatedUser implements activity/list-repos-starred-by-authenticated-user operation.
+// ActivityListReposStarredByAuthenticatedUser invokes activity/list-repos-starred-by-authenticated-user operation.
+//
+// GET /user/starred
 func (c *Client) ActivityListReposStarredByAuthenticatedUser(ctx context.Context, params ActivityListReposStarredByAuthenticatedUserParams) (res ActivityListReposStarredByAuthenticatedUserRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActivityListReposStarredByAuthenticatedUser`,
@@ -7897,7 +8085,9 @@ func (c *Client) ActivityListReposStarredByAuthenticatedUser(ctx context.Context
 	return result, nil
 }
 
-// ActivityListReposWatchedByUser implements activity/list-repos-watched-by-user operation.
+// ActivityListReposWatchedByUser invokes activity/list-repos-watched-by-user operation.
+//
+// GET /users/{username}/subscriptions
 func (c *Client) ActivityListReposWatchedByUser(ctx context.Context, params ActivityListReposWatchedByUserParams) (res []MinimalRepository, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActivityListReposWatchedByUser`,
@@ -7985,7 +8175,9 @@ func (c *Client) ActivityListReposWatchedByUser(ctx context.Context, params Acti
 	return result, nil
 }
 
-// ActivityListWatchedReposForAuthenticatedUser implements activity/list-watched-repos-for-authenticated-user operation.
+// ActivityListWatchedReposForAuthenticatedUser invokes activity/list-watched-repos-for-authenticated-user operation.
+//
+// GET /user/subscriptions
 func (c *Client) ActivityListWatchedReposForAuthenticatedUser(ctx context.Context, params ActivityListWatchedReposForAuthenticatedUserParams) (res ActivityListWatchedReposForAuthenticatedUserRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActivityListWatchedReposForAuthenticatedUser`,
@@ -8058,7 +8250,9 @@ func (c *Client) ActivityListWatchedReposForAuthenticatedUser(ctx context.Contex
 	return result, nil
 }
 
-// ActivityListWatchersForRepo implements activity/list-watchers-for-repo operation.
+// ActivityListWatchersForRepo invokes activity/list-watchers-for-repo operation.
+//
+// GET /repos/{owner}/{repo}/subscribers
 func (c *Client) ActivityListWatchersForRepo(ctx context.Context, params ActivityListWatchersForRepoParams) (res []SimpleUser, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActivityListWatchersForRepo`,
@@ -8161,7 +8355,9 @@ func (c *Client) ActivityListWatchersForRepo(ctx context.Context, params Activit
 	return result, nil
 }
 
-// ActivityMarkNotificationsAsRead implements activity/mark-notifications-as-read operation.
+// ActivityMarkNotificationsAsRead invokes activity/mark-notifications-as-read operation.
+//
+// PUT /notifications
 func (c *Client) ActivityMarkNotificationsAsRead(ctx context.Context, request ActivityMarkNotificationsAsReadReq) (res ActivityMarkNotificationsAsReadRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActivityMarkNotificationsAsRead`,
@@ -8213,7 +8409,9 @@ func (c *Client) ActivityMarkNotificationsAsRead(ctx context.Context, request Ac
 	return result, nil
 }
 
-// ActivityMarkRepoNotificationsAsRead implements activity/mark-repo-notifications-as-read operation.
+// ActivityMarkRepoNotificationsAsRead invokes activity/mark-repo-notifications-as-read operation.
+//
+// PUT /repos/{owner}/{repo}/notifications
 func (c *Client) ActivityMarkRepoNotificationsAsRead(ctx context.Context, request ActivityMarkRepoNotificationsAsReadReq, params ActivityMarkRepoNotificationsAsReadParams) (res ActivityMarkRepoNotificationsAsReadRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActivityMarkRepoNotificationsAsRead`,
@@ -8295,7 +8493,9 @@ func (c *Client) ActivityMarkRepoNotificationsAsRead(ctx context.Context, reques
 	return result, nil
 }
 
-// ActivityMarkThreadAsRead implements activity/mark-thread-as-read operation.
+// ActivityMarkThreadAsRead invokes activity/mark-thread-as-read operation.
+//
+// PATCH /notifications/threads/{thread_id}
 func (c *Client) ActivityMarkThreadAsRead(ctx context.Context, params ActivityMarkThreadAsReadParams) (res ActivityMarkThreadAsReadRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActivityMarkThreadAsRead`,
@@ -8347,7 +8547,9 @@ func (c *Client) ActivityMarkThreadAsRead(ctx context.Context, params ActivityMa
 	return result, nil
 }
 
-// ActivitySetRepoSubscription implements activity/set-repo-subscription operation.
+// ActivitySetRepoSubscription invokes activity/set-repo-subscription operation.
+//
+// PUT /repos/{owner}/{repo}/subscription
 func (c *Client) ActivitySetRepoSubscription(ctx context.Context, request ActivitySetRepoSubscriptionReq, params ActivitySetRepoSubscriptionParams) (res RepositorySubscription, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActivitySetRepoSubscription`,
@@ -8429,7 +8631,9 @@ func (c *Client) ActivitySetRepoSubscription(ctx context.Context, request Activi
 	return result, nil
 }
 
-// ActivitySetThreadSubscription implements activity/set-thread-subscription operation.
+// ActivitySetThreadSubscription invokes activity/set-thread-subscription operation.
+//
+// PUT /notifications/threads/{thread_id}/subscription
 func (c *Client) ActivitySetThreadSubscription(ctx context.Context, request ActivitySetThreadSubscriptionReq, params ActivitySetThreadSubscriptionParams) (res ActivitySetThreadSubscriptionRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActivitySetThreadSubscription`,
@@ -8496,7 +8700,9 @@ func (c *Client) ActivitySetThreadSubscription(ctx context.Context, request Acti
 	return result, nil
 }
 
-// ActivityStarRepoForAuthenticatedUser implements activity/star-repo-for-authenticated-user operation.
+// ActivityStarRepoForAuthenticatedUser invokes activity/star-repo-for-authenticated-user operation.
+//
+// PUT /user/starred/{owner}/{repo}
 func (c *Client) ActivityStarRepoForAuthenticatedUser(ctx context.Context, params ActivityStarRepoForAuthenticatedUserParams) (res ActivityStarRepoForAuthenticatedUserRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActivityStarRepoForAuthenticatedUser`,
@@ -8563,7 +8769,9 @@ func (c *Client) ActivityStarRepoForAuthenticatedUser(ctx context.Context, param
 	return result, nil
 }
 
-// ActivityUnstarRepoForAuthenticatedUser implements activity/unstar-repo-for-authenticated-user operation.
+// ActivityUnstarRepoForAuthenticatedUser invokes activity/unstar-repo-for-authenticated-user operation.
+//
+// DELETE /user/starred/{owner}/{repo}
 func (c *Client) ActivityUnstarRepoForAuthenticatedUser(ctx context.Context, params ActivityUnstarRepoForAuthenticatedUserParams) (res ActivityUnstarRepoForAuthenticatedUserRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActivityUnstarRepoForAuthenticatedUser`,
@@ -8630,7 +8838,9 @@ func (c *Client) ActivityUnstarRepoForAuthenticatedUser(ctx context.Context, par
 	return result, nil
 }
 
-// AppsAddRepoToInstallation implements apps/add-repo-to-installation operation.
+// AppsAddRepoToInstallation invokes apps/add-repo-to-installation operation.
+//
+// PUT /user/installations/{installation_id}/repositories/{repository_id}
 func (c *Client) AppsAddRepoToInstallation(ctx context.Context, params AppsAddRepoToInstallationParams) (res AppsAddRepoToInstallationRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `AppsAddRepoToInstallation`,
@@ -8697,7 +8907,9 @@ func (c *Client) AppsAddRepoToInstallation(ctx context.Context, params AppsAddRe
 	return result, nil
 }
 
-// AppsDeleteInstallation implements apps/delete-installation operation.
+// AppsDeleteInstallation invokes apps/delete-installation operation.
+//
+// DELETE /app/installations/{installation_id}
 func (c *Client) AppsDeleteInstallation(ctx context.Context, params AppsDeleteInstallationParams) (res AppsDeleteInstallationRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `AppsDeleteInstallation`,
@@ -8749,7 +8961,9 @@ func (c *Client) AppsDeleteInstallation(ctx context.Context, params AppsDeleteIn
 	return result, nil
 }
 
-// AppsGetAuthenticated implements apps/get-authenticated operation.
+// AppsGetAuthenticated invokes apps/get-authenticated operation.
+//
+// GET /app
 func (c *Client) AppsGetAuthenticated(ctx context.Context) (res Integration, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `AppsGetAuthenticated`,
@@ -8787,7 +9001,9 @@ func (c *Client) AppsGetAuthenticated(ctx context.Context) (res Integration, err
 	return result, nil
 }
 
-// AppsGetBySlug implements apps/get-by-slug operation.
+// AppsGetBySlug invokes apps/get-by-slug operation.
+//
+// GET /apps/{app_slug}
 func (c *Client) AppsGetBySlug(ctx context.Context, params AppsGetBySlugParams) (res AppsGetBySlugRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `AppsGetBySlug`,
@@ -8839,7 +9055,9 @@ func (c *Client) AppsGetBySlug(ctx context.Context, params AppsGetBySlugParams) 
 	return result, nil
 }
 
-// AppsGetSubscriptionPlanForAccount implements apps/get-subscription-plan-for-account operation.
+// AppsGetSubscriptionPlanForAccount invokes apps/get-subscription-plan-for-account operation.
+//
+// GET /marketplace_listing/accounts/{account_id}
 func (c *Client) AppsGetSubscriptionPlanForAccount(ctx context.Context, params AppsGetSubscriptionPlanForAccountParams) (res AppsGetSubscriptionPlanForAccountRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `AppsGetSubscriptionPlanForAccount`,
@@ -8891,7 +9109,9 @@ func (c *Client) AppsGetSubscriptionPlanForAccount(ctx context.Context, params A
 	return result, nil
 }
 
-// AppsGetSubscriptionPlanForAccountStubbed implements apps/get-subscription-plan-for-account-stubbed operation.
+// AppsGetSubscriptionPlanForAccountStubbed invokes apps/get-subscription-plan-for-account-stubbed operation.
+//
+// GET /marketplace_listing/stubbed/accounts/{account_id}
 func (c *Client) AppsGetSubscriptionPlanForAccountStubbed(ctx context.Context, params AppsGetSubscriptionPlanForAccountStubbedParams) (res AppsGetSubscriptionPlanForAccountStubbedRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `AppsGetSubscriptionPlanForAccountStubbed`,
@@ -8943,7 +9163,9 @@ func (c *Client) AppsGetSubscriptionPlanForAccountStubbed(ctx context.Context, p
 	return result, nil
 }
 
-// AppsGetWebhookConfigForApp implements apps/get-webhook-config-for-app operation.
+// AppsGetWebhookConfigForApp invokes apps/get-webhook-config-for-app operation.
+//
+// GET /app/hook/config
 func (c *Client) AppsGetWebhookConfigForApp(ctx context.Context) (res WebhookConfig, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `AppsGetWebhookConfigForApp`,
@@ -8981,7 +9203,9 @@ func (c *Client) AppsGetWebhookConfigForApp(ctx context.Context) (res WebhookCon
 	return result, nil
 }
 
-// AppsListAccountsForPlanStubbed implements apps/list-accounts-for-plan-stubbed operation.
+// AppsListAccountsForPlanStubbed invokes apps/list-accounts-for-plan-stubbed operation.
+//
+// GET /marketplace_listing/stubbed/plans/{plan_id}/accounts
 func (c *Client) AppsListAccountsForPlanStubbed(ctx context.Context, params AppsListAccountsForPlanStubbedParams) (res AppsListAccountsForPlanStubbedRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `AppsListAccountsForPlanStubbed`,
@@ -9101,7 +9325,9 @@ func (c *Client) AppsListAccountsForPlanStubbed(ctx context.Context, params Apps
 	return result, nil
 }
 
-// AppsListInstallationReposForAuthenticatedUser implements apps/list-installation-repos-for-authenticated-user operation.
+// AppsListInstallationReposForAuthenticatedUser invokes apps/list-installation-repos-for-authenticated-user operation.
+//
+// GET /user/installations/{installation_id}/repositories
 func (c *Client) AppsListInstallationReposForAuthenticatedUser(ctx context.Context, params AppsListInstallationReposForAuthenticatedUserParams) (res AppsListInstallationReposForAuthenticatedUserRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `AppsListInstallationReposForAuthenticatedUser`,
@@ -9189,7 +9415,9 @@ func (c *Client) AppsListInstallationReposForAuthenticatedUser(ctx context.Conte
 	return result, nil
 }
 
-// AppsListPlans implements apps/list-plans operation.
+// AppsListPlans invokes apps/list-plans operation.
+//
+// GET /marketplace_listing/plans
 func (c *Client) AppsListPlans(ctx context.Context, params AppsListPlansParams) (res AppsListPlansRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `AppsListPlans`,
@@ -9262,7 +9490,9 @@ func (c *Client) AppsListPlans(ctx context.Context, params AppsListPlansParams) 
 	return result, nil
 }
 
-// AppsListPlansStubbed implements apps/list-plans-stubbed operation.
+// AppsListPlansStubbed invokes apps/list-plans-stubbed operation.
+//
+// GET /marketplace_listing/stubbed/plans
 func (c *Client) AppsListPlansStubbed(ctx context.Context, params AppsListPlansStubbedParams) (res AppsListPlansStubbedRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `AppsListPlansStubbed`,
@@ -9335,7 +9565,9 @@ func (c *Client) AppsListPlansStubbed(ctx context.Context, params AppsListPlansS
 	return result, nil
 }
 
-// AppsListReposAccessibleToInstallation implements apps/list-repos-accessible-to-installation operation.
+// AppsListReposAccessibleToInstallation invokes apps/list-repos-accessible-to-installation operation.
+//
+// GET /installation/repositories
 func (c *Client) AppsListReposAccessibleToInstallation(ctx context.Context, params AppsListReposAccessibleToInstallationParams) (res AppsListReposAccessibleToInstallationRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `AppsListReposAccessibleToInstallation`,
@@ -9408,7 +9640,9 @@ func (c *Client) AppsListReposAccessibleToInstallation(ctx context.Context, para
 	return result, nil
 }
 
-// AppsListSubscriptionsForAuthenticatedUser implements apps/list-subscriptions-for-authenticated-user operation.
+// AppsListSubscriptionsForAuthenticatedUser invokes apps/list-subscriptions-for-authenticated-user operation.
+//
+// GET /user/marketplace_purchases
 func (c *Client) AppsListSubscriptionsForAuthenticatedUser(ctx context.Context, params AppsListSubscriptionsForAuthenticatedUserParams) (res AppsListSubscriptionsForAuthenticatedUserRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `AppsListSubscriptionsForAuthenticatedUser`,
@@ -9481,7 +9715,9 @@ func (c *Client) AppsListSubscriptionsForAuthenticatedUser(ctx context.Context, 
 	return result, nil
 }
 
-// AppsListSubscriptionsForAuthenticatedUserStubbed implements apps/list-subscriptions-for-authenticated-user-stubbed operation.
+// AppsListSubscriptionsForAuthenticatedUserStubbed invokes apps/list-subscriptions-for-authenticated-user-stubbed operation.
+//
+// GET /user/marketplace_purchases/stubbed
 func (c *Client) AppsListSubscriptionsForAuthenticatedUserStubbed(ctx context.Context, params AppsListSubscriptionsForAuthenticatedUserStubbedParams) (res AppsListSubscriptionsForAuthenticatedUserStubbedRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `AppsListSubscriptionsForAuthenticatedUserStubbed`,
@@ -9554,7 +9790,9 @@ func (c *Client) AppsListSubscriptionsForAuthenticatedUserStubbed(ctx context.Co
 	return result, nil
 }
 
-// AppsRemoveRepoFromInstallation implements apps/remove-repo-from-installation operation.
+// AppsRemoveRepoFromInstallation invokes apps/remove-repo-from-installation operation.
+//
+// DELETE /user/installations/{installation_id}/repositories/{repository_id}
 func (c *Client) AppsRemoveRepoFromInstallation(ctx context.Context, params AppsRemoveRepoFromInstallationParams) (res AppsRemoveRepoFromInstallationRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `AppsRemoveRepoFromInstallation`,
@@ -9621,7 +9859,9 @@ func (c *Client) AppsRemoveRepoFromInstallation(ctx context.Context, params Apps
 	return result, nil
 }
 
-// AppsRevokeInstallationAccessToken implements apps/revoke-installation-access-token operation.
+// AppsRevokeInstallationAccessToken invokes apps/revoke-installation-access-token operation.
+//
+// DELETE /installation/token
 func (c *Client) AppsRevokeInstallationAccessToken(ctx context.Context) (res AppsRevokeInstallationAccessTokenNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `AppsRevokeInstallationAccessToken`,
@@ -9659,7 +9899,9 @@ func (c *Client) AppsRevokeInstallationAccessToken(ctx context.Context) (res App
 	return result, nil
 }
 
-// AppsSuspendInstallation implements apps/suspend-installation operation.
+// AppsSuspendInstallation invokes apps/suspend-installation operation.
+//
+// PUT /app/installations/{installation_id}/suspended
 func (c *Client) AppsSuspendInstallation(ctx context.Context, params AppsSuspendInstallationParams) (res AppsSuspendInstallationRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `AppsSuspendInstallation`,
@@ -9712,7 +9954,9 @@ func (c *Client) AppsSuspendInstallation(ctx context.Context, params AppsSuspend
 	return result, nil
 }
 
-// AppsUnsuspendInstallation implements apps/unsuspend-installation operation.
+// AppsUnsuspendInstallation invokes apps/unsuspend-installation operation.
+//
+// DELETE /app/installations/{installation_id}/suspended
 func (c *Client) AppsUnsuspendInstallation(ctx context.Context, params AppsUnsuspendInstallationParams) (res AppsUnsuspendInstallationRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `AppsUnsuspendInstallation`,
@@ -9765,7 +10009,9 @@ func (c *Client) AppsUnsuspendInstallation(ctx context.Context, params AppsUnsus
 	return result, nil
 }
 
-// AppsUpdateWebhookConfigForApp implements apps/update-webhook-config-for-app operation.
+// AppsUpdateWebhookConfigForApp invokes apps/update-webhook-config-for-app operation.
+//
+// PATCH /app/hook/config
 func (c *Client) AppsUpdateWebhookConfigForApp(ctx context.Context, request AppsUpdateWebhookConfigForAppReq) (res WebhookConfig, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `AppsUpdateWebhookConfigForApp`,
@@ -9817,7 +10063,9 @@ func (c *Client) AppsUpdateWebhookConfigForApp(ctx context.Context, request Apps
 	return result, nil
 }
 
-// BillingGetGithubActionsBillingGhe implements billing/get-github-actions-billing-ghe operation.
+// BillingGetGithubActionsBillingGhe invokes billing/get-github-actions-billing-ghe operation.
+//
+// GET /enterprises/{enterprise}/settings/billing/actions
 func (c *Client) BillingGetGithubActionsBillingGhe(ctx context.Context, params BillingGetGithubActionsBillingGheParams) (res ActionsBillingUsage, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `BillingGetGithubActionsBillingGhe`,
@@ -9870,7 +10118,9 @@ func (c *Client) BillingGetGithubActionsBillingGhe(ctx context.Context, params B
 	return result, nil
 }
 
-// BillingGetGithubActionsBillingOrg implements billing/get-github-actions-billing-org operation.
+// BillingGetGithubActionsBillingOrg invokes billing/get-github-actions-billing-org operation.
+//
+// GET /orgs/{org}/settings/billing/actions
 func (c *Client) BillingGetGithubActionsBillingOrg(ctx context.Context, params BillingGetGithubActionsBillingOrgParams) (res ActionsBillingUsage, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `BillingGetGithubActionsBillingOrg`,
@@ -9923,7 +10173,9 @@ func (c *Client) BillingGetGithubActionsBillingOrg(ctx context.Context, params B
 	return result, nil
 }
 
-// BillingGetGithubActionsBillingUser implements billing/get-github-actions-billing-user operation.
+// BillingGetGithubActionsBillingUser invokes billing/get-github-actions-billing-user operation.
+//
+// GET /users/{username}/settings/billing/actions
 func (c *Client) BillingGetGithubActionsBillingUser(ctx context.Context, params BillingGetGithubActionsBillingUserParams) (res ActionsBillingUsage, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `BillingGetGithubActionsBillingUser`,
@@ -9976,7 +10228,9 @@ func (c *Client) BillingGetGithubActionsBillingUser(ctx context.Context, params 
 	return result, nil
 }
 
-// BillingGetGithubPackagesBillingGhe implements billing/get-github-packages-billing-ghe operation.
+// BillingGetGithubPackagesBillingGhe invokes billing/get-github-packages-billing-ghe operation.
+//
+// GET /enterprises/{enterprise}/settings/billing/packages
 func (c *Client) BillingGetGithubPackagesBillingGhe(ctx context.Context, params BillingGetGithubPackagesBillingGheParams) (res PackagesBillingUsage, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `BillingGetGithubPackagesBillingGhe`,
@@ -10029,7 +10283,9 @@ func (c *Client) BillingGetGithubPackagesBillingGhe(ctx context.Context, params 
 	return result, nil
 }
 
-// BillingGetGithubPackagesBillingOrg implements billing/get-github-packages-billing-org operation.
+// BillingGetGithubPackagesBillingOrg invokes billing/get-github-packages-billing-org operation.
+//
+// GET /orgs/{org}/settings/billing/packages
 func (c *Client) BillingGetGithubPackagesBillingOrg(ctx context.Context, params BillingGetGithubPackagesBillingOrgParams) (res PackagesBillingUsage, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `BillingGetGithubPackagesBillingOrg`,
@@ -10082,7 +10338,9 @@ func (c *Client) BillingGetGithubPackagesBillingOrg(ctx context.Context, params 
 	return result, nil
 }
 
-// BillingGetGithubPackagesBillingUser implements billing/get-github-packages-billing-user operation.
+// BillingGetGithubPackagesBillingUser invokes billing/get-github-packages-billing-user operation.
+//
+// GET /users/{username}/settings/billing/packages
 func (c *Client) BillingGetGithubPackagesBillingUser(ctx context.Context, params BillingGetGithubPackagesBillingUserParams) (res PackagesBillingUsage, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `BillingGetGithubPackagesBillingUser`,
@@ -10135,7 +10393,9 @@ func (c *Client) BillingGetGithubPackagesBillingUser(ctx context.Context, params
 	return result, nil
 }
 
-// BillingGetSharedStorageBillingGhe implements billing/get-shared-storage-billing-ghe operation.
+// BillingGetSharedStorageBillingGhe invokes billing/get-shared-storage-billing-ghe operation.
+//
+// GET /enterprises/{enterprise}/settings/billing/shared-storage
 func (c *Client) BillingGetSharedStorageBillingGhe(ctx context.Context, params BillingGetSharedStorageBillingGheParams) (res CombinedBillingUsage, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `BillingGetSharedStorageBillingGhe`,
@@ -10188,7 +10448,9 @@ func (c *Client) BillingGetSharedStorageBillingGhe(ctx context.Context, params B
 	return result, nil
 }
 
-// BillingGetSharedStorageBillingOrg implements billing/get-shared-storage-billing-org operation.
+// BillingGetSharedStorageBillingOrg invokes billing/get-shared-storage-billing-org operation.
+//
+// GET /orgs/{org}/settings/billing/shared-storage
 func (c *Client) BillingGetSharedStorageBillingOrg(ctx context.Context, params BillingGetSharedStorageBillingOrgParams) (res CombinedBillingUsage, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `BillingGetSharedStorageBillingOrg`,
@@ -10241,7 +10503,9 @@ func (c *Client) BillingGetSharedStorageBillingOrg(ctx context.Context, params B
 	return result, nil
 }
 
-// BillingGetSharedStorageBillingUser implements billing/get-shared-storage-billing-user operation.
+// BillingGetSharedStorageBillingUser invokes billing/get-shared-storage-billing-user operation.
+//
+// GET /users/{username}/settings/billing/shared-storage
 func (c *Client) BillingGetSharedStorageBillingUser(ctx context.Context, params BillingGetSharedStorageBillingUserParams) (res CombinedBillingUsage, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `BillingGetSharedStorageBillingUser`,
@@ -10294,7 +10558,9 @@ func (c *Client) BillingGetSharedStorageBillingUser(ctx context.Context, params 
 	return result, nil
 }
 
-// ChecksCreateSuite implements checks/create-suite operation.
+// ChecksCreateSuite invokes checks/create-suite operation.
+//
+// POST /repos/{owner}/{repo}/check-suites
 func (c *Client) ChecksCreateSuite(ctx context.Context, request ChecksCreateSuiteReq, params ChecksCreateSuiteParams) (res ChecksCreateSuiteRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ChecksCreateSuite`,
@@ -10376,7 +10642,9 @@ func (c *Client) ChecksCreateSuite(ctx context.Context, request ChecksCreateSuit
 	return result, nil
 }
 
-// ChecksGet implements checks/get operation.
+// ChecksGet invokes checks/get operation.
+//
+// GET /repos/{owner}/{repo}/check-runs/{check_run_id}
 func (c *Client) ChecksGet(ctx context.Context, params ChecksGetParams) (res CheckRun, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ChecksGet`,
@@ -10458,7 +10726,9 @@ func (c *Client) ChecksGet(ctx context.Context, params ChecksGetParams) (res Che
 	return result, nil
 }
 
-// ChecksGetSuite implements checks/get-suite operation.
+// ChecksGetSuite invokes checks/get-suite operation.
+//
+// GET /repos/{owner}/{repo}/check-suites/{check_suite_id}
 func (c *Client) ChecksGetSuite(ctx context.Context, params ChecksGetSuiteParams) (res CheckSuite, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ChecksGetSuite`,
@@ -10540,7 +10810,9 @@ func (c *Client) ChecksGetSuite(ctx context.Context, params ChecksGetSuiteParams
 	return result, nil
 }
 
-// ChecksListAnnotations implements checks/list-annotations operation.
+// ChecksListAnnotations invokes checks/list-annotations operation.
+//
+// GET /repos/{owner}/{repo}/check-runs/{check_run_id}/annotations
 func (c *Client) ChecksListAnnotations(ctx context.Context, params ChecksListAnnotationsParams) (res []CheckAnnotation, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ChecksListAnnotations`,
@@ -10658,7 +10930,9 @@ func (c *Client) ChecksListAnnotations(ctx context.Context, params ChecksListAnn
 	return result, nil
 }
 
-// ChecksListForRef implements checks/list-for-ref operation.
+// ChecksListForRef invokes checks/list-for-ref operation.
+//
+// GET /repos/{owner}/{repo}/commits/{ref}/check-runs
 func (c *Client) ChecksListForRef(ctx context.Context, params ChecksListForRefParams) (res ChecksListForRefOK, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ChecksListForRef`,
@@ -10840,7 +11114,9 @@ func (c *Client) ChecksListForRef(ctx context.Context, params ChecksListForRefPa
 	return result, nil
 }
 
-// ChecksListForSuite implements checks/list-for-suite operation.
+// ChecksListForSuite invokes checks/list-for-suite operation.
+//
+// GET /repos/{owner}/{repo}/check-suites/{check_suite_id}/check-runs
 func (c *Client) ChecksListForSuite(ctx context.Context, params ChecksListForSuiteParams) (res ChecksListForSuiteOK, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ChecksListForSuite`,
@@ -11006,7 +11282,9 @@ func (c *Client) ChecksListForSuite(ctx context.Context, params ChecksListForSui
 	return result, nil
 }
 
-// ChecksListSuitesForRef implements checks/list-suites-for-ref operation.
+// ChecksListSuitesForRef invokes checks/list-suites-for-ref operation.
+//
+// GET /repos/{owner}/{repo}/commits/{ref}/check-suites
 func (c *Client) ChecksListSuitesForRef(ctx context.Context, params ChecksListSuitesForRefParams) (res ChecksListSuitesForRefOK, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ChecksListSuitesForRef`,
@@ -11156,7 +11434,9 @@ func (c *Client) ChecksListSuitesForRef(ctx context.Context, params ChecksListSu
 	return result, nil
 }
 
-// ChecksRerequestSuite implements checks/rerequest-suite operation.
+// ChecksRerequestSuite invokes checks/rerequest-suite operation.
+//
+// POST /repos/{owner}/{repo}/check-suites/{check_suite_id}/rerequest
 func (c *Client) ChecksRerequestSuite(ctx context.Context, params ChecksRerequestSuiteParams) (res ChecksRerequestSuiteCreated, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ChecksRerequestSuite`,
@@ -11239,7 +11519,9 @@ func (c *Client) ChecksRerequestSuite(ctx context.Context, params ChecksRereques
 	return result, nil
 }
 
-// ChecksSetSuitesPreferences implements checks/set-suites-preferences operation.
+// ChecksSetSuitesPreferences invokes checks/set-suites-preferences operation.
+//
+// PATCH /repos/{owner}/{repo}/check-suites/preferences
 func (c *Client) ChecksSetSuitesPreferences(ctx context.Context, request ChecksSetSuitesPreferencesReq, params ChecksSetSuitesPreferencesParams) (res CheckSuitePreference, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ChecksSetSuitesPreferences`,
@@ -11321,7 +11603,9 @@ func (c *Client) ChecksSetSuitesPreferences(ctx context.Context, request ChecksS
 	return result, nil
 }
 
-// CodeScanningDeleteAnalysis implements code-scanning/delete-analysis operation.
+// CodeScanningDeleteAnalysis invokes code-scanning/delete-analysis operation.
+//
+// DELETE /repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}
 func (c *Client) CodeScanningDeleteAnalysis(ctx context.Context, params CodeScanningDeleteAnalysisParams) (res CodeScanningDeleteAnalysisRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CodeScanningDeleteAnalysis`,
@@ -11422,7 +11706,9 @@ func (c *Client) CodeScanningDeleteAnalysis(ctx context.Context, params CodeScan
 	return result, nil
 }
 
-// CodeScanningGetAlert implements code-scanning/get-alert operation.
+// CodeScanningGetAlert invokes code-scanning/get-alert operation.
+//
+// GET /repos/{owner}/{repo}/code-scanning/alerts/{alert_number}
 func (c *Client) CodeScanningGetAlert(ctx context.Context, params CodeScanningGetAlertParams) (res CodeScanningGetAlertRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CodeScanningGetAlert`,
@@ -11507,7 +11793,9 @@ func (c *Client) CodeScanningGetAlert(ctx context.Context, params CodeScanningGe
 	return result, nil
 }
 
-// CodeScanningGetAnalysis implements code-scanning/get-analysis operation.
+// CodeScanningGetAnalysis invokes code-scanning/get-analysis operation.
+//
+// GET /repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}
 func (c *Client) CodeScanningGetAnalysis(ctx context.Context, params CodeScanningGetAnalysisParams) (res CodeScanningGetAnalysisRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CodeScanningGetAnalysis`,
@@ -11589,7 +11877,9 @@ func (c *Client) CodeScanningGetAnalysis(ctx context.Context, params CodeScannin
 	return result, nil
 }
 
-// CodeScanningGetSarif implements code-scanning/get-sarif operation.
+// CodeScanningGetSarif invokes code-scanning/get-sarif operation.
+//
+// GET /repos/{owner}/{repo}/code-scanning/sarifs/{sarif_id}
 func (c *Client) CodeScanningGetSarif(ctx context.Context, params CodeScanningGetSarifParams) (res CodeScanningGetSarifRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CodeScanningGetSarif`,
@@ -11671,7 +11961,9 @@ func (c *Client) CodeScanningGetSarif(ctx context.Context, params CodeScanningGe
 	return result, nil
 }
 
-// CodeScanningListAlertInstances implements code-scanning/list-alert-instances operation.
+// CodeScanningListAlertInstances invokes code-scanning/list-alert-instances operation.
+//
+// GET /repos/{owner}/{repo}/code-scanning/alerts/{alert_number}/instances
 func (c *Client) CodeScanningListAlertInstances(ctx context.Context, params CodeScanningListAlertInstancesParams) (res CodeScanningListAlertInstancesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CodeScanningListAlertInstances`,
@@ -11811,7 +12103,9 @@ func (c *Client) CodeScanningListAlertInstances(ctx context.Context, params Code
 	return result, nil
 }
 
-// CodeScanningListAlertsForRepo implements code-scanning/list-alerts-for-repo operation.
+// CodeScanningListAlertsForRepo invokes code-scanning/list-alerts-for-repo operation.
+//
+// GET /repos/{owner}/{repo}/code-scanning/alerts
 func (c *Client) CodeScanningListAlertsForRepo(ctx context.Context, params CodeScanningListAlertsForRepoParams) (res CodeScanningListAlertsForRepoRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CodeScanningListAlertsForRepo`,
@@ -11987,7 +12281,9 @@ func (c *Client) CodeScanningListAlertsForRepo(ctx context.Context, params CodeS
 	return result, nil
 }
 
-// CodeScanningListRecentAnalyses implements code-scanning/list-recent-analyses operation.
+// CodeScanningListRecentAnalyses invokes code-scanning/list-recent-analyses operation.
+//
+// GET /repos/{owner}/{repo}/code-scanning/analyses
 func (c *Client) CodeScanningListRecentAnalyses(ctx context.Context, params CodeScanningListRecentAnalysesParams) (res CodeScanningListRecentAnalysesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CodeScanningListRecentAnalyses`,
@@ -12166,7 +12462,9 @@ func (c *Client) CodeScanningListRecentAnalyses(ctx context.Context, params Code
 	return result, nil
 }
 
-// CodeScanningUpdateAlert implements code-scanning/update-alert operation.
+// CodeScanningUpdateAlert invokes code-scanning/update-alert operation.
+//
+// PATCH /repos/{owner}/{repo}/code-scanning/alerts/{alert_number}
 func (c *Client) CodeScanningUpdateAlert(ctx context.Context, request CodeScanningUpdateAlertReq, params CodeScanningUpdateAlertParams) (res CodeScanningUpdateAlertRes, err error) {
 	if err := func() error {
 
@@ -12274,7 +12572,9 @@ func (c *Client) CodeScanningUpdateAlert(ctx context.Context, request CodeScanni
 	return result, nil
 }
 
-// CodeScanningUploadSarif implements code-scanning/upload-sarif operation.
+// CodeScanningUploadSarif invokes code-scanning/upload-sarif operation.
+//
+// POST /repos/{owner}/{repo}/code-scanning/sarifs
 func (c *Client) CodeScanningUploadSarif(ctx context.Context, request CodeScanningUploadSarifReq, params CodeScanningUploadSarifParams) (res CodeScanningUploadSarifRes, err error) {
 	if err := func() error {
 
@@ -12365,7 +12665,9 @@ func (c *Client) CodeScanningUploadSarif(ctx context.Context, request CodeScanni
 	return result, nil
 }
 
-// CodesOfConductGetAllCodesOfConduct implements codes-of-conduct/get-all-codes-of-conduct operation.
+// CodesOfConductGetAllCodesOfConduct invokes codes-of-conduct/get-all-codes-of-conduct operation.
+//
+// GET /codes_of_conduct
 func (c *Client) CodesOfConductGetAllCodesOfConduct(ctx context.Context) (res CodesOfConductGetAllCodesOfConductRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CodesOfConductGetAllCodesOfConduct`,
@@ -12403,7 +12705,9 @@ func (c *Client) CodesOfConductGetAllCodesOfConduct(ctx context.Context) (res Co
 	return result, nil
 }
 
-// CodesOfConductGetConductCode implements codes-of-conduct/get-conduct-code operation.
+// CodesOfConductGetConductCode invokes codes-of-conduct/get-conduct-code operation.
+//
+// GET /codes_of_conduct/{key}
 func (c *Client) CodesOfConductGetConductCode(ctx context.Context, params CodesOfConductGetConductCodeParams) (res CodesOfConductGetConductCodeRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CodesOfConductGetConductCode`,
@@ -12455,7 +12759,9 @@ func (c *Client) CodesOfConductGetConductCode(ctx context.Context, params CodesO
 	return result, nil
 }
 
-// EmojisGet implements emojis/get operation.
+// EmojisGet invokes emojis/get operation.
+//
+// GET /emojis
 func (c *Client) EmojisGet(ctx context.Context) (res EmojisGetRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EmojisGet`,
@@ -12493,7 +12799,9 @@ func (c *Client) EmojisGet(ctx context.Context) (res EmojisGetRes, err error) {
 	return result, nil
 }
 
-// EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise implements enterprise-admin/add-org-access-to-self-hosted-runner-group-in-enterprise operation.
+// EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise invokes enterprise-admin/add-org-access-to-self-hosted-runner-group-in-enterprise operation.
+//
+// PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations/{org_id}
 func (c *Client) EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, params EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) (res EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise`,
@@ -12575,7 +12883,9 @@ func (c *Client) EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise(
 	return result, nil
 }
 
-// EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise implements enterprise-admin/add-self-hosted-runner-to-group-for-enterprise operation.
+// EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise invokes enterprise-admin/add-self-hosted-runner-to-group-for-enterprise operation.
+//
+// PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
 func (c *Client) EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise(ctx context.Context, params EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams) (res EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise`,
@@ -12657,7 +12967,9 @@ func (c *Client) EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise(ctx cont
 	return result, nil
 }
 
-// EnterpriseAdminCreateRegistrationTokenForEnterprise implements enterprise-admin/create-registration-token-for-enterprise operation.
+// EnterpriseAdminCreateRegistrationTokenForEnterprise invokes enterprise-admin/create-registration-token-for-enterprise operation.
+//
+// POST /enterprises/{enterprise}/actions/runners/registration-token
 func (c *Client) EnterpriseAdminCreateRegistrationTokenForEnterprise(ctx context.Context, params EnterpriseAdminCreateRegistrationTokenForEnterpriseParams) (res AuthenticationToken, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EnterpriseAdminCreateRegistrationTokenForEnterprise`,
@@ -12710,7 +13022,9 @@ func (c *Client) EnterpriseAdminCreateRegistrationTokenForEnterprise(ctx context
 	return result, nil
 }
 
-// EnterpriseAdminCreateRemoveTokenForEnterprise implements enterprise-admin/create-remove-token-for-enterprise operation.
+// EnterpriseAdminCreateRemoveTokenForEnterprise invokes enterprise-admin/create-remove-token-for-enterprise operation.
+//
+// POST /enterprises/{enterprise}/actions/runners/remove-token
 func (c *Client) EnterpriseAdminCreateRemoveTokenForEnterprise(ctx context.Context, params EnterpriseAdminCreateRemoveTokenForEnterpriseParams) (res AuthenticationToken, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EnterpriseAdminCreateRemoveTokenForEnterprise`,
@@ -12763,7 +13077,9 @@ func (c *Client) EnterpriseAdminCreateRemoveTokenForEnterprise(ctx context.Conte
 	return result, nil
 }
 
-// EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise implements enterprise-admin/create-self-hosted-runner-group-for-enterprise operation.
+// EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise invokes enterprise-admin/create-self-hosted-runner-group-for-enterprise operation.
+//
+// POST /enterprises/{enterprise}/actions/runner-groups
 func (c *Client) EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise(ctx context.Context, request EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq, params EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams) (res RunnerGroupsEnterprise, err error) {
 	if err := func() error {
 
@@ -12839,7 +13155,9 @@ func (c *Client) EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise(ctx con
 	return result, nil
 }
 
-// EnterpriseAdminDeleteScimGroupFromEnterprise implements enterprise-admin/delete-scim-group-from-enterprise operation.
+// EnterpriseAdminDeleteScimGroupFromEnterprise invokes enterprise-admin/delete-scim-group-from-enterprise operation.
+//
+// DELETE /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
 func (c *Client) EnterpriseAdminDeleteScimGroupFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteScimGroupFromEnterpriseParams) (res EnterpriseAdminDeleteScimGroupFromEnterpriseNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EnterpriseAdminDeleteScimGroupFromEnterprise`,
@@ -12906,7 +13224,9 @@ func (c *Client) EnterpriseAdminDeleteScimGroupFromEnterprise(ctx context.Contex
 	return result, nil
 }
 
-// EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise implements enterprise-admin/delete-self-hosted-runner-from-enterprise operation.
+// EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise invokes enterprise-admin/delete-self-hosted-runner-from-enterprise operation.
+//
+// DELETE /enterprises/{enterprise}/actions/runners/{runner_id}
 func (c *Client) EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams) (res EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise`,
@@ -12973,7 +13293,9 @@ func (c *Client) EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise(ctx context
 	return result, nil
 }
 
-// EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise implements enterprise-admin/delete-self-hosted-runner-group-from-enterprise operation.
+// EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise invokes enterprise-admin/delete-self-hosted-runner-group-from-enterprise operation.
+//
+// DELETE /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}
 func (c *Client) EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams) (res EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise`,
@@ -13040,7 +13362,9 @@ func (c *Client) EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise(ctx co
 	return result, nil
 }
 
-// EnterpriseAdminDeleteUserFromEnterprise implements enterprise-admin/delete-user-from-enterprise operation.
+// EnterpriseAdminDeleteUserFromEnterprise invokes enterprise-admin/delete-user-from-enterprise operation.
+//
+// DELETE /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
 func (c *Client) EnterpriseAdminDeleteUserFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteUserFromEnterpriseParams) (res EnterpriseAdminDeleteUserFromEnterpriseNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EnterpriseAdminDeleteUserFromEnterprise`,
@@ -13107,7 +13431,9 @@ func (c *Client) EnterpriseAdminDeleteUserFromEnterprise(ctx context.Context, pa
 	return result, nil
 }
 
-// EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise implements enterprise-admin/disable-selected-organization-github-actions-enterprise operation.
+// EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise invokes enterprise-admin/disable-selected-organization-github-actions-enterprise operation.
+//
+// DELETE /enterprises/{enterprise}/actions/permissions/organizations/{org_id}
 func (c *Client) EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise(ctx context.Context, params EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseParams) (res EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise`,
@@ -13174,7 +13500,9 @@ func (c *Client) EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpri
 	return result, nil
 }
 
-// EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise implements enterprise-admin/enable-selected-organization-github-actions-enterprise operation.
+// EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise invokes enterprise-admin/enable-selected-organization-github-actions-enterprise operation.
+//
+// PUT /enterprises/{enterprise}/actions/permissions/organizations/{org_id}
 func (c *Client) EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise(ctx context.Context, params EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParams) (res EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise`,
@@ -13241,7 +13569,9 @@ func (c *Client) EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpris
 	return result, nil
 }
 
-// EnterpriseAdminGetAllowedActionsEnterprise implements enterprise-admin/get-allowed-actions-enterprise operation.
+// EnterpriseAdminGetAllowedActionsEnterprise invokes enterprise-admin/get-allowed-actions-enterprise operation.
+//
+// GET /enterprises/{enterprise}/actions/permissions/selected-actions
 func (c *Client) EnterpriseAdminGetAllowedActionsEnterprise(ctx context.Context, params EnterpriseAdminGetAllowedActionsEnterpriseParams) (res SelectedActions, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EnterpriseAdminGetAllowedActionsEnterprise`,
@@ -13294,7 +13624,9 @@ func (c *Client) EnterpriseAdminGetAllowedActionsEnterprise(ctx context.Context,
 	return result, nil
 }
 
-// EnterpriseAdminGetAuditLog implements enterprise-admin/get-audit-log operation.
+// EnterpriseAdminGetAuditLog invokes enterprise-admin/get-audit-log operation.
+//
+// GET /enterprises/{enterprise}/audit-log
 func (c *Client) EnterpriseAdminGetAuditLog(ctx context.Context, params EnterpriseAdminGetAuditLogParams) (res []AuditLogEvent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EnterpriseAdminGetAuditLog`,
@@ -13462,7 +13794,9 @@ func (c *Client) EnterpriseAdminGetAuditLog(ctx context.Context, params Enterpri
 	return result, nil
 }
 
-// EnterpriseAdminGetGithubActionsPermissionsEnterprise implements enterprise-admin/get-github-actions-permissions-enterprise operation.
+// EnterpriseAdminGetGithubActionsPermissionsEnterprise invokes enterprise-admin/get-github-actions-permissions-enterprise operation.
+//
+// GET /enterprises/{enterprise}/actions/permissions
 func (c *Client) EnterpriseAdminGetGithubActionsPermissionsEnterprise(ctx context.Context, params EnterpriseAdminGetGithubActionsPermissionsEnterpriseParams) (res ActionsEnterprisePermissions, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EnterpriseAdminGetGithubActionsPermissionsEnterprise`,
@@ -13515,7 +13849,9 @@ func (c *Client) EnterpriseAdminGetGithubActionsPermissionsEnterprise(ctx contex
 	return result, nil
 }
 
-// EnterpriseAdminGetProvisioningInformationForEnterpriseGroup implements enterprise-admin/get-provisioning-information-for-enterprise-group operation.
+// EnterpriseAdminGetProvisioningInformationForEnterpriseGroup invokes enterprise-admin/get-provisioning-information-for-enterprise-group operation.
+//
+// GET /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
 func (c *Client) EnterpriseAdminGetProvisioningInformationForEnterpriseGroup(ctx context.Context, params EnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams) (res ScimEnterpriseGroup, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EnterpriseAdminGetProvisioningInformationForEnterpriseGroup`,
@@ -13601,7 +13937,9 @@ func (c *Client) EnterpriseAdminGetProvisioningInformationForEnterpriseGroup(ctx
 	return result, nil
 }
 
-// EnterpriseAdminGetProvisioningInformationForEnterpriseUser implements enterprise-admin/get-provisioning-information-for-enterprise-user operation.
+// EnterpriseAdminGetProvisioningInformationForEnterpriseUser invokes enterprise-admin/get-provisioning-information-for-enterprise-user operation.
+//
+// GET /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
 func (c *Client) EnterpriseAdminGetProvisioningInformationForEnterpriseUser(ctx context.Context, params EnterpriseAdminGetProvisioningInformationForEnterpriseUserParams) (res ScimEnterpriseUser, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EnterpriseAdminGetProvisioningInformationForEnterpriseUser`,
@@ -13668,7 +14006,9 @@ func (c *Client) EnterpriseAdminGetProvisioningInformationForEnterpriseUser(ctx 
 	return result, nil
 }
 
-// EnterpriseAdminGetSelfHostedRunnerForEnterprise implements enterprise-admin/get-self-hosted-runner-for-enterprise operation.
+// EnterpriseAdminGetSelfHostedRunnerForEnterprise invokes enterprise-admin/get-self-hosted-runner-for-enterprise operation.
+//
+// GET /enterprises/{enterprise}/actions/runners/{runner_id}
 func (c *Client) EnterpriseAdminGetSelfHostedRunnerForEnterprise(ctx context.Context, params EnterpriseAdminGetSelfHostedRunnerForEnterpriseParams) (res Runner, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EnterpriseAdminGetSelfHostedRunnerForEnterprise`,
@@ -13735,7 +14075,9 @@ func (c *Client) EnterpriseAdminGetSelfHostedRunnerForEnterprise(ctx context.Con
 	return result, nil
 }
 
-// EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise implements enterprise-admin/get-self-hosted-runner-group-for-enterprise operation.
+// EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise invokes enterprise-admin/get-self-hosted-runner-group-for-enterprise operation.
+//
+// GET /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}
 func (c *Client) EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise(ctx context.Context, params EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams) (res RunnerGroupsEnterprise, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise`,
@@ -13802,7 +14144,9 @@ func (c *Client) EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise(ctx contex
 	return result, nil
 }
 
-// EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise implements enterprise-admin/list-org-access-to-self-hosted-runner-group-in-enterprise operation.
+// EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise invokes enterprise-admin/list-org-access-to-self-hosted-runner-group-in-enterprise operation.
+//
+// GET /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations
 func (c *Client) EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, params EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) (res EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise`,
@@ -13905,7 +14249,9 @@ func (c *Client) EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise
 	return result, nil
 }
 
-// EnterpriseAdminListProvisionedGroupsEnterprise implements enterprise-admin/list-provisioned-groups-enterprise operation.
+// EnterpriseAdminListProvisionedGroupsEnterprise invokes enterprise-admin/list-provisioned-groups-enterprise operation.
+//
+// GET /scim/v2/enterprises/{enterprise}/Groups
 func (c *Client) EnterpriseAdminListProvisionedGroupsEnterprise(ctx context.Context, params EnterpriseAdminListProvisionedGroupsEnterpriseParams) (res ScimGroupListEnterprise, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EnterpriseAdminListProvisionedGroupsEnterprise`,
@@ -14025,7 +14371,9 @@ func (c *Client) EnterpriseAdminListProvisionedGroupsEnterprise(ctx context.Cont
 	return result, nil
 }
 
-// EnterpriseAdminListProvisionedIdentitiesEnterprise implements enterprise-admin/list-provisioned-identities-enterprise operation.
+// EnterpriseAdminListProvisionedIdentitiesEnterprise invokes enterprise-admin/list-provisioned-identities-enterprise operation.
+//
+// GET /scim/v2/enterprises/{enterprise}/Users
 func (c *Client) EnterpriseAdminListProvisionedIdentitiesEnterprise(ctx context.Context, params EnterpriseAdminListProvisionedIdentitiesEnterpriseParams) (res ScimUserListEnterprise, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EnterpriseAdminListProvisionedIdentitiesEnterprise`,
@@ -14129,7 +14477,9 @@ func (c *Client) EnterpriseAdminListProvisionedIdentitiesEnterprise(ctx context.
 	return result, nil
 }
 
-// EnterpriseAdminListRunnerApplicationsForEnterprise implements enterprise-admin/list-runner-applications-for-enterprise operation.
+// EnterpriseAdminListRunnerApplicationsForEnterprise invokes enterprise-admin/list-runner-applications-for-enterprise operation.
+//
+// GET /enterprises/{enterprise}/actions/runners/downloads
 func (c *Client) EnterpriseAdminListRunnerApplicationsForEnterprise(ctx context.Context, params EnterpriseAdminListRunnerApplicationsForEnterpriseParams) (res []RunnerApplication, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EnterpriseAdminListRunnerApplicationsForEnterprise`,
@@ -14182,7 +14532,9 @@ func (c *Client) EnterpriseAdminListRunnerApplicationsForEnterprise(ctx context.
 	return result, nil
 }
 
-// EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise implements enterprise-admin/list-selected-organizations-enabled-github-actions-enterprise operation.
+// EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise invokes enterprise-admin/list-selected-organizations-enabled-github-actions-enterprise operation.
+//
+// GET /enterprises/{enterprise}/actions/permissions/organizations
 func (c *Client) EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise(ctx context.Context, params EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseParams) (res EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOK, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise`,
@@ -14270,7 +14622,9 @@ func (c *Client) EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnt
 	return result, nil
 }
 
-// EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise implements enterprise-admin/list-self-hosted-runner-groups-for-enterprise operation.
+// EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise invokes enterprise-admin/list-self-hosted-runner-groups-for-enterprise operation.
+//
+// GET /enterprises/{enterprise}/actions/runner-groups
 func (c *Client) EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise(ctx context.Context, params EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams) (res EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise`,
@@ -14358,7 +14712,9 @@ func (c *Client) EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise(ctx cont
 	return result, nil
 }
 
-// EnterpriseAdminListSelfHostedRunnersForEnterprise implements enterprise-admin/list-self-hosted-runners-for-enterprise operation.
+// EnterpriseAdminListSelfHostedRunnersForEnterprise invokes enterprise-admin/list-self-hosted-runners-for-enterprise operation.
+//
+// GET /enterprises/{enterprise}/actions/runners
 func (c *Client) EnterpriseAdminListSelfHostedRunnersForEnterprise(ctx context.Context, params EnterpriseAdminListSelfHostedRunnersForEnterpriseParams) (res EnterpriseAdminListSelfHostedRunnersForEnterpriseOK, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EnterpriseAdminListSelfHostedRunnersForEnterprise`,
@@ -14446,7 +14802,9 @@ func (c *Client) EnterpriseAdminListSelfHostedRunnersForEnterprise(ctx context.C
 	return result, nil
 }
 
-// EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise implements enterprise-admin/list-self-hosted-runners-in-group-for-enterprise operation.
+// EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise invokes enterprise-admin/list-self-hosted-runners-in-group-for-enterprise operation.
+//
+// GET /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners
 func (c *Client) EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise(ctx context.Context, params EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams) (res EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOK, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise`,
@@ -14549,7 +14907,9 @@ func (c *Client) EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise(ctx co
 	return result, nil
 }
 
-// EnterpriseAdminProvisionAndInviteEnterpriseGroup implements enterprise-admin/provision-and-invite-enterprise-group operation.
+// EnterpriseAdminProvisionAndInviteEnterpriseGroup invokes enterprise-admin/provision-and-invite-enterprise-group operation.
+//
+// POST /scim/v2/enterprises/{enterprise}/Groups
 func (c *Client) EnterpriseAdminProvisionAndInviteEnterpriseGroup(ctx context.Context, request EnterpriseAdminProvisionAndInviteEnterpriseGroupReq, params EnterpriseAdminProvisionAndInviteEnterpriseGroupParams) (res ScimEnterpriseGroup, err error) {
 	if err := func() error {
 
@@ -14625,7 +14985,9 @@ func (c *Client) EnterpriseAdminProvisionAndInviteEnterpriseGroup(ctx context.Co
 	return result, nil
 }
 
-// EnterpriseAdminProvisionAndInviteEnterpriseUser implements enterprise-admin/provision-and-invite-enterprise-user operation.
+// EnterpriseAdminProvisionAndInviteEnterpriseUser invokes enterprise-admin/provision-and-invite-enterprise-user operation.
+//
+// POST /scim/v2/enterprises/{enterprise}/Users
 func (c *Client) EnterpriseAdminProvisionAndInviteEnterpriseUser(ctx context.Context, request EnterpriseAdminProvisionAndInviteEnterpriseUserReq, params EnterpriseAdminProvisionAndInviteEnterpriseUserParams) (res ScimEnterpriseUser, err error) {
 	if err := func() error {
 
@@ -14701,7 +15063,9 @@ func (c *Client) EnterpriseAdminProvisionAndInviteEnterpriseUser(ctx context.Con
 	return result, nil
 }
 
-// EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise implements enterprise-admin/remove-org-access-to-self-hosted-runner-group-in-enterprise operation.
+// EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise invokes enterprise-admin/remove-org-access-to-self-hosted-runner-group-in-enterprise operation.
+//
+// DELETE /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations/{org_id}
 func (c *Client) EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, params EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) (res EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise`,
@@ -14783,7 +15147,9 @@ func (c *Client) EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpri
 	return result, nil
 }
 
-// EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise implements enterprise-admin/remove-self-hosted-runner-from-group-for-enterprise operation.
+// EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise invokes enterprise-admin/remove-self-hosted-runner-from-group-for-enterprise operation.
+//
+// DELETE /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
 func (c *Client) EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise(ctx context.Context, params EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams) (res EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise`,
@@ -14865,7 +15231,9 @@ func (c *Client) EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise(ctx
 	return result, nil
 }
 
-// EnterpriseAdminSetAllowedActionsEnterprise implements enterprise-admin/set-allowed-actions-enterprise operation.
+// EnterpriseAdminSetAllowedActionsEnterprise invokes enterprise-admin/set-allowed-actions-enterprise operation.
+//
+// PUT /enterprises/{enterprise}/actions/permissions/selected-actions
 func (c *Client) EnterpriseAdminSetAllowedActionsEnterprise(ctx context.Context, request SelectedActions, params EnterpriseAdminSetAllowedActionsEnterpriseParams) (res EnterpriseAdminSetAllowedActionsEnterpriseNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EnterpriseAdminSetAllowedActionsEnterprise`,
@@ -14932,7 +15300,9 @@ func (c *Client) EnterpriseAdminSetAllowedActionsEnterprise(ctx context.Context,
 	return result, nil
 }
 
-// EnterpriseAdminSetGithubActionsPermissionsEnterprise implements enterprise-admin/set-github-actions-permissions-enterprise operation.
+// EnterpriseAdminSetGithubActionsPermissionsEnterprise invokes enterprise-admin/set-github-actions-permissions-enterprise operation.
+//
+// PUT /enterprises/{enterprise}/actions/permissions
 func (c *Client) EnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx context.Context, request EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq, params EnterpriseAdminSetGithubActionsPermissionsEnterpriseParams) (res EnterpriseAdminSetGithubActionsPermissionsEnterpriseNoContent, err error) {
 	if err := func() error {
 
@@ -15008,7 +15378,9 @@ func (c *Client) EnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx contex
 	return result, nil
 }
 
-// EnterpriseAdminSetInformationForProvisionedEnterpriseGroup implements enterprise-admin/set-information-for-provisioned-enterprise-group operation.
+// EnterpriseAdminSetInformationForProvisionedEnterpriseGroup invokes enterprise-admin/set-information-for-provisioned-enterprise-group operation.
+//
+// PUT /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
 func (c *Client) EnterpriseAdminSetInformationForProvisionedEnterpriseGroup(ctx context.Context, request EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq, params EnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams) (res ScimEnterpriseGroup, err error) {
 	if err := func() error {
 
@@ -15098,7 +15470,9 @@ func (c *Client) EnterpriseAdminSetInformationForProvisionedEnterpriseGroup(ctx 
 	return result, nil
 }
 
-// EnterpriseAdminSetInformationForProvisionedEnterpriseUser implements enterprise-admin/set-information-for-provisioned-enterprise-user operation.
+// EnterpriseAdminSetInformationForProvisionedEnterpriseUser invokes enterprise-admin/set-information-for-provisioned-enterprise-user operation.
+//
+// PUT /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
 func (c *Client) EnterpriseAdminSetInformationForProvisionedEnterpriseUser(ctx context.Context, request EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq, params EnterpriseAdminSetInformationForProvisionedEnterpriseUserParams) (res ScimEnterpriseUser, err error) {
 	if err := func() error {
 
@@ -15188,7 +15562,9 @@ func (c *Client) EnterpriseAdminSetInformationForProvisionedEnterpriseUser(ctx c
 	return result, nil
 }
 
-// EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise implements enterprise-admin/set-org-access-to-self-hosted-runner-group-in-enterprise operation.
+// EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise invokes enterprise-admin/set-org-access-to-self-hosted-runner-group-in-enterprise operation.
+//
+// PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations
 func (c *Client) EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, request EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq, params EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) (res EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, err error) {
 	if err := func() error {
 
@@ -15279,7 +15655,9 @@ func (c *Client) EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(
 	return result, nil
 }
 
-// EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise implements enterprise-admin/set-selected-organizations-enabled-github-actions-enterprise operation.
+// EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise invokes enterprise-admin/set-selected-organizations-enabled-github-actions-enterprise operation.
+//
+// PUT /enterprises/{enterprise}/actions/permissions/organizations
 func (c *Client) EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise(ctx context.Context, request EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseReq, params EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseParams) (res EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseNoContent, err error) {
 	if err := func() error {
 
@@ -15355,7 +15733,9 @@ func (c *Client) EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnte
 	return result, nil
 }
 
-// EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise implements enterprise-admin/set-self-hosted-runners-in-group-for-enterprise operation.
+// EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise invokes enterprise-admin/set-self-hosted-runners-in-group-for-enterprise operation.
+//
+// PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners
 func (c *Client) EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx context.Context, request EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq, params EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams) (res EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseNoContent, err error) {
 	if err := func() error {
 
@@ -15446,7 +15826,9 @@ func (c *Client) EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx con
 	return result, nil
 }
 
-// EnterpriseAdminUpdateAttributeForEnterpriseUser implements enterprise-admin/update-attribute-for-enterprise-user operation.
+// EnterpriseAdminUpdateAttributeForEnterpriseUser invokes enterprise-admin/update-attribute-for-enterprise-user operation.
+//
+// PATCH /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
 func (c *Client) EnterpriseAdminUpdateAttributeForEnterpriseUser(ctx context.Context, request EnterpriseAdminUpdateAttributeForEnterpriseUserReq, params EnterpriseAdminUpdateAttributeForEnterpriseUserParams) (res ScimEnterpriseUser, err error) {
 	if err := func() error {
 
@@ -15536,7 +15918,9 @@ func (c *Client) EnterpriseAdminUpdateAttributeForEnterpriseUser(ctx context.Con
 	return result, nil
 }
 
-// EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise implements enterprise-admin/update-self-hosted-runner-group-for-enterprise operation.
+// EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise invokes enterprise-admin/update-self-hosted-runner-group-for-enterprise operation.
+//
+// PATCH /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}
 func (c *Client) EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise(ctx context.Context, request EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq, params EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams) (res RunnerGroupsEnterprise, err error) {
 	if err := func() error {
 
@@ -15626,7 +16010,9 @@ func (c *Client) EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise(ctx con
 	return result, nil
 }
 
-// GistsCheckIsStarred implements gists/check-is-starred operation.
+// GistsCheckIsStarred invokes gists/check-is-starred operation.
+//
+// GET /gists/{gist_id}/star
 func (c *Client) GistsCheckIsStarred(ctx context.Context, params GistsCheckIsStarredParams) (res GistsCheckIsStarredRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GistsCheckIsStarred`,
@@ -15679,7 +16065,9 @@ func (c *Client) GistsCheckIsStarred(ctx context.Context, params GistsCheckIsSta
 	return result, nil
 }
 
-// GistsCreateComment implements gists/create-comment operation.
+// GistsCreateComment invokes gists/create-comment operation.
+//
+// POST /gists/{gist_id}/comments
 func (c *Client) GistsCreateComment(ctx context.Context, request GistsCreateCommentReq, params GistsCreateCommentParams) (res GistsCreateCommentRes, err error) {
 	if err := func() error {
 
@@ -15755,7 +16143,9 @@ func (c *Client) GistsCreateComment(ctx context.Context, request GistsCreateComm
 	return result, nil
 }
 
-// GistsDelete implements gists/delete operation.
+// GistsDelete invokes gists/delete operation.
+//
+// DELETE /gists/{gist_id}
 func (c *Client) GistsDelete(ctx context.Context, params GistsDeleteParams) (res GistsDeleteRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GistsDelete`,
@@ -15807,7 +16197,9 @@ func (c *Client) GistsDelete(ctx context.Context, params GistsDeleteParams) (res
 	return result, nil
 }
 
-// GistsDeleteComment implements gists/delete-comment operation.
+// GistsDeleteComment invokes gists/delete-comment operation.
+//
+// DELETE /gists/{gist_id}/comments/{comment_id}
 func (c *Client) GistsDeleteComment(ctx context.Context, params GistsDeleteCommentParams) (res GistsDeleteCommentRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GistsDeleteComment`,
@@ -15874,7 +16266,9 @@ func (c *Client) GistsDeleteComment(ctx context.Context, params GistsDeleteComme
 	return result, nil
 }
 
-// GistsGet implements gists/get operation.
+// GistsGet invokes gists/get operation.
+//
+// GET /gists/{gist_id}
 func (c *Client) GistsGet(ctx context.Context, params GistsGetParams) (res GistsGetRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GistsGet`,
@@ -15926,7 +16320,9 @@ func (c *Client) GistsGet(ctx context.Context, params GistsGetParams) (res Gists
 	return result, nil
 }
 
-// GistsGetComment implements gists/get-comment operation.
+// GistsGetComment invokes gists/get-comment operation.
+//
+// GET /gists/{gist_id}/comments/{comment_id}
 func (c *Client) GistsGetComment(ctx context.Context, params GistsGetCommentParams) (res GistsGetCommentRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GistsGetComment`,
@@ -15993,7 +16389,9 @@ func (c *Client) GistsGetComment(ctx context.Context, params GistsGetCommentPara
 	return result, nil
 }
 
-// GistsList implements gists/list operation.
+// GistsList invokes gists/list operation.
+//
+// GET /gists
 func (c *Client) GistsList(ctx context.Context, params GistsListParams) (res GistsListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GistsList`,
@@ -16082,7 +16480,9 @@ func (c *Client) GistsList(ctx context.Context, params GistsListParams) (res Gis
 	return result, nil
 }
 
-// GistsListComments implements gists/list-comments operation.
+// GistsListComments invokes gists/list-comments operation.
+//
+// GET /gists/{gist_id}/comments
 func (c *Client) GistsListComments(ctx context.Context, params GistsListCommentsParams) (res GistsListCommentsRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GistsListComments`,
@@ -16170,7 +16570,9 @@ func (c *Client) GistsListComments(ctx context.Context, params GistsListComments
 	return result, nil
 }
 
-// GistsListCommits implements gists/list-commits operation.
+// GistsListCommits invokes gists/list-commits operation.
+//
+// GET /gists/{gist_id}/commits
 func (c *Client) GistsListCommits(ctx context.Context, params GistsListCommitsParams) (res GistsListCommitsRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GistsListCommits`,
@@ -16258,7 +16660,9 @@ func (c *Client) GistsListCommits(ctx context.Context, params GistsListCommitsPa
 	return result, nil
 }
 
-// GistsListForks implements gists/list-forks operation.
+// GistsListForks invokes gists/list-forks operation.
+//
+// GET /gists/{gist_id}/forks
 func (c *Client) GistsListForks(ctx context.Context, params GistsListForksParams) (res GistsListForksRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GistsListForks`,
@@ -16346,7 +16750,9 @@ func (c *Client) GistsListForks(ctx context.Context, params GistsListForksParams
 	return result, nil
 }
 
-// GistsListStarred implements gists/list-starred operation.
+// GistsListStarred invokes gists/list-starred operation.
+//
+// GET /gists/starred
 func (c *Client) GistsListStarred(ctx context.Context, params GistsListStarredParams) (res GistsListStarredRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GistsListStarred`,
@@ -16435,7 +16841,9 @@ func (c *Client) GistsListStarred(ctx context.Context, params GistsListStarredPa
 	return result, nil
 }
 
-// GistsStar implements gists/star operation.
+// GistsStar invokes gists/star operation.
+//
+// PUT /gists/{gist_id}/star
 func (c *Client) GistsStar(ctx context.Context, params GistsStarParams) (res GistsStarRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GistsStar`,
@@ -16488,7 +16896,9 @@ func (c *Client) GistsStar(ctx context.Context, params GistsStarParams) (res Gis
 	return result, nil
 }
 
-// GistsUnstar implements gists/unstar operation.
+// GistsUnstar invokes gists/unstar operation.
+//
+// DELETE /gists/{gist_id}/star
 func (c *Client) GistsUnstar(ctx context.Context, params GistsUnstarParams) (res GistsUnstarRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GistsUnstar`,
@@ -16541,7 +16951,9 @@ func (c *Client) GistsUnstar(ctx context.Context, params GistsUnstarParams) (res
 	return result, nil
 }
 
-// GistsUpdateComment implements gists/update-comment operation.
+// GistsUpdateComment invokes gists/update-comment operation.
+//
+// PATCH /gists/{gist_id}/comments/{comment_id}
 func (c *Client) GistsUpdateComment(ctx context.Context, request GistsUpdateCommentReq, params GistsUpdateCommentParams) (res GistsUpdateCommentRes, err error) {
 	if err := func() error {
 
@@ -16631,7 +17043,9 @@ func (c *Client) GistsUpdateComment(ctx context.Context, request GistsUpdateComm
 	return result, nil
 }
 
-// GitGetCommit implements git/get-commit operation.
+// GitGetCommit invokes git/get-commit operation.
+//
+// GET /repos/{owner}/{repo}/git/commits/{commit_sha}
 func (c *Client) GitGetCommit(ctx context.Context, params GitGetCommitParams) (res GitGetCommitRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GitGetCommit`,
@@ -16713,7 +17127,9 @@ func (c *Client) GitGetCommit(ctx context.Context, params GitGetCommitParams) (r
 	return result, nil
 }
 
-// GitGetRef implements git/get-ref operation.
+// GitGetRef invokes git/get-ref operation.
+//
+// GET /repos/{owner}/{repo}/git/ref/{ref}
 func (c *Client) GitGetRef(ctx context.Context, params GitGetRefParams) (res GitGetRefRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GitGetRef`,
@@ -16795,7 +17211,9 @@ func (c *Client) GitGetRef(ctx context.Context, params GitGetRefParams) (res Git
 	return result, nil
 }
 
-// GitGetTag implements git/get-tag operation.
+// GitGetTag invokes git/get-tag operation.
+//
+// GET /repos/{owner}/{repo}/git/tags/{tag_sha}
 func (c *Client) GitGetTag(ctx context.Context, params GitGetTagParams) (res GitGetTagRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GitGetTag`,
@@ -16877,7 +17295,9 @@ func (c *Client) GitGetTag(ctx context.Context, params GitGetTagParams) (res Git
 	return result, nil
 }
 
-// GitListMatchingRefs implements git/list-matching-refs operation.
+// GitListMatchingRefs invokes git/list-matching-refs operation.
+//
+// GET /repos/{owner}/{repo}/git/matching-refs/{ref}
 func (c *Client) GitListMatchingRefs(ctx context.Context, params GitListMatchingRefsParams) (res []GitRef, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GitListMatchingRefs`,
@@ -16994,7 +17414,9 @@ func (c *Client) GitListMatchingRefs(ctx context.Context, params GitListMatching
 	return result, nil
 }
 
-// GitignoreGetAllTemplates implements gitignore/get-all-templates operation.
+// GitignoreGetAllTemplates invokes gitignore/get-all-templates operation.
+//
+// GET /gitignore/templates
 func (c *Client) GitignoreGetAllTemplates(ctx context.Context) (res GitignoreGetAllTemplatesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GitignoreGetAllTemplates`,
@@ -17032,7 +17454,9 @@ func (c *Client) GitignoreGetAllTemplates(ctx context.Context) (res GitignoreGet
 	return result, nil
 }
 
-// GitignoreGetTemplate implements gitignore/get-template operation.
+// GitignoreGetTemplate invokes gitignore/get-template operation.
+//
+// GET /gitignore/templates/{name}
 func (c *Client) GitignoreGetTemplate(ctx context.Context, params GitignoreGetTemplateParams) (res GitignoreGetTemplateRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GitignoreGetTemplate`,
@@ -17084,7 +17508,9 @@ func (c *Client) GitignoreGetTemplate(ctx context.Context, params GitignoreGetTe
 	return result, nil
 }
 
-// InteractionsRemoveRestrictionsForAuthenticatedUser implements interactions/remove-restrictions-for-authenticated-user operation.
+// InteractionsRemoveRestrictionsForAuthenticatedUser invokes interactions/remove-restrictions-for-authenticated-user operation.
+//
+// DELETE /user/interaction-limits
 func (c *Client) InteractionsRemoveRestrictionsForAuthenticatedUser(ctx context.Context) (res InteractionsRemoveRestrictionsForAuthenticatedUserNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `InteractionsRemoveRestrictionsForAuthenticatedUser`,
@@ -17122,7 +17548,9 @@ func (c *Client) InteractionsRemoveRestrictionsForAuthenticatedUser(ctx context.
 	return result, nil
 }
 
-// InteractionsRemoveRestrictionsForOrg implements interactions/remove-restrictions-for-org operation.
+// InteractionsRemoveRestrictionsForOrg invokes interactions/remove-restrictions-for-org operation.
+//
+// DELETE /orgs/{org}/interaction-limits
 func (c *Client) InteractionsRemoveRestrictionsForOrg(ctx context.Context, params InteractionsRemoveRestrictionsForOrgParams) (res InteractionsRemoveRestrictionsForOrgNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `InteractionsRemoveRestrictionsForOrg`,
@@ -17175,7 +17603,9 @@ func (c *Client) InteractionsRemoveRestrictionsForOrg(ctx context.Context, param
 	return result, nil
 }
 
-// InteractionsRemoveRestrictionsForRepo implements interactions/remove-restrictions-for-repo operation.
+// InteractionsRemoveRestrictionsForRepo invokes interactions/remove-restrictions-for-repo operation.
+//
+// DELETE /repos/{owner}/{repo}/interaction-limits
 func (c *Client) InteractionsRemoveRestrictionsForRepo(ctx context.Context, params InteractionsRemoveRestrictionsForRepoParams) (res InteractionsRemoveRestrictionsForRepoRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `InteractionsRemoveRestrictionsForRepo`,
@@ -17243,7 +17673,9 @@ func (c *Client) InteractionsRemoveRestrictionsForRepo(ctx context.Context, para
 	return result, nil
 }
 
-// InteractionsSetRestrictionsForRepo implements interactions/set-restrictions-for-repo operation.
+// InteractionsSetRestrictionsForRepo invokes interactions/set-restrictions-for-repo operation.
+//
+// PUT /repos/{owner}/{repo}/interaction-limits
 func (c *Client) InteractionsSetRestrictionsForRepo(ctx context.Context, request InteractionLimit, params InteractionsSetRestrictionsForRepoParams) (res InteractionsSetRestrictionsForRepoRes, err error) {
 	if err := func() error {
 
@@ -17334,7 +17766,9 @@ func (c *Client) InteractionsSetRestrictionsForRepo(ctx context.Context, request
 	return result, nil
 }
 
-// IssuesAddAssignees implements issues/add-assignees operation.
+// IssuesAddAssignees invokes issues/add-assignees operation.
+//
+// POST /repos/{owner}/{repo}/issues/{issue_number}/assignees
 func (c *Client) IssuesAddAssignees(ctx context.Context, request IssuesAddAssigneesReq, params IssuesAddAssigneesParams) (res IssueSimple, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `IssuesAddAssignees`,
@@ -17431,7 +17865,9 @@ func (c *Client) IssuesAddAssignees(ctx context.Context, request IssuesAddAssign
 	return result, nil
 }
 
-// IssuesCheckUserCanBeAssigned implements issues/check-user-can-be-assigned operation.
+// IssuesCheckUserCanBeAssigned invokes issues/check-user-can-be-assigned operation.
+//
+// GET /repos/{owner}/{repo}/assignees/{assignee}
 func (c *Client) IssuesCheckUserCanBeAssigned(ctx context.Context, params IssuesCheckUserCanBeAssignedParams) (res IssuesCheckUserCanBeAssignedRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `IssuesCheckUserCanBeAssigned`,
@@ -17513,7 +17949,9 @@ func (c *Client) IssuesCheckUserCanBeAssigned(ctx context.Context, params Issues
 	return result, nil
 }
 
-// IssuesDeleteComment implements issues/delete-comment operation.
+// IssuesDeleteComment invokes issues/delete-comment operation.
+//
+// DELETE /repos/{owner}/{repo}/issues/comments/{comment_id}
 func (c *Client) IssuesDeleteComment(ctx context.Context, params IssuesDeleteCommentParams) (res IssuesDeleteCommentNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `IssuesDeleteComment`,
@@ -17595,7 +18033,9 @@ func (c *Client) IssuesDeleteComment(ctx context.Context, params IssuesDeleteCom
 	return result, nil
 }
 
-// IssuesDeleteLabel implements issues/delete-label operation.
+// IssuesDeleteLabel invokes issues/delete-label operation.
+//
+// DELETE /repos/{owner}/{repo}/labels/{name}
 func (c *Client) IssuesDeleteLabel(ctx context.Context, params IssuesDeleteLabelParams) (res IssuesDeleteLabelNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `IssuesDeleteLabel`,
@@ -17677,7 +18117,9 @@ func (c *Client) IssuesDeleteLabel(ctx context.Context, params IssuesDeleteLabel
 	return result, nil
 }
 
-// IssuesDeleteMilestone implements issues/delete-milestone operation.
+// IssuesDeleteMilestone invokes issues/delete-milestone operation.
+//
+// DELETE /repos/{owner}/{repo}/milestones/{milestone_number}
 func (c *Client) IssuesDeleteMilestone(ctx context.Context, params IssuesDeleteMilestoneParams) (res IssuesDeleteMilestoneRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `IssuesDeleteMilestone`,
@@ -17759,7 +18201,9 @@ func (c *Client) IssuesDeleteMilestone(ctx context.Context, params IssuesDeleteM
 	return result, nil
 }
 
-// IssuesGetComment implements issues/get-comment operation.
+// IssuesGetComment invokes issues/get-comment operation.
+//
+// GET /repos/{owner}/{repo}/issues/comments/{comment_id}
 func (c *Client) IssuesGetComment(ctx context.Context, params IssuesGetCommentParams) (res IssuesGetCommentRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `IssuesGetComment`,
@@ -17841,7 +18285,9 @@ func (c *Client) IssuesGetComment(ctx context.Context, params IssuesGetCommentPa
 	return result, nil
 }
 
-// IssuesGetEvent implements issues/get-event operation.
+// IssuesGetEvent invokes issues/get-event operation.
+//
+// GET /repos/{owner}/{repo}/issues/events/{event_id}
 func (c *Client) IssuesGetEvent(ctx context.Context, params IssuesGetEventParams) (res IssuesGetEventRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `IssuesGetEvent`,
@@ -17923,7 +18369,9 @@ func (c *Client) IssuesGetEvent(ctx context.Context, params IssuesGetEventParams
 	return result, nil
 }
 
-// IssuesGetLabel implements issues/get-label operation.
+// IssuesGetLabel invokes issues/get-label operation.
+//
+// GET /repos/{owner}/{repo}/labels/{name}
 func (c *Client) IssuesGetLabel(ctx context.Context, params IssuesGetLabelParams) (res IssuesGetLabelRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `IssuesGetLabel`,
@@ -18005,7 +18453,9 @@ func (c *Client) IssuesGetLabel(ctx context.Context, params IssuesGetLabelParams
 	return result, nil
 }
 
-// IssuesGetMilestone implements issues/get-milestone operation.
+// IssuesGetMilestone invokes issues/get-milestone operation.
+//
+// GET /repos/{owner}/{repo}/milestones/{milestone_number}
 func (c *Client) IssuesGetMilestone(ctx context.Context, params IssuesGetMilestoneParams) (res IssuesGetMilestoneRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `IssuesGetMilestone`,
@@ -18087,7 +18537,9 @@ func (c *Client) IssuesGetMilestone(ctx context.Context, params IssuesGetMilesto
 	return result, nil
 }
 
-// IssuesListAssignees implements issues/list-assignees operation.
+// IssuesListAssignees invokes issues/list-assignees operation.
+//
+// GET /repos/{owner}/{repo}/assignees
 func (c *Client) IssuesListAssignees(ctx context.Context, params IssuesListAssigneesParams) (res IssuesListAssigneesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `IssuesListAssignees`,
@@ -18190,7 +18642,9 @@ func (c *Client) IssuesListAssignees(ctx context.Context, params IssuesListAssig
 	return result, nil
 }
 
-// IssuesListComments implements issues/list-comments operation.
+// IssuesListComments invokes issues/list-comments operation.
+//
+// GET /repos/{owner}/{repo}/issues/{issue_number}/comments
 func (c *Client) IssuesListComments(ctx context.Context, params IssuesListCommentsParams) (res IssuesListCommentsRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `IssuesListComments`,
@@ -18324,7 +18778,9 @@ func (c *Client) IssuesListComments(ctx context.Context, params IssuesListCommen
 	return result, nil
 }
 
-// IssuesListLabelsForMilestone implements issues/list-labels-for-milestone operation.
+// IssuesListLabelsForMilestone invokes issues/list-labels-for-milestone operation.
+//
+// GET /repos/{owner}/{repo}/milestones/{milestone_number}/labels
 func (c *Client) IssuesListLabelsForMilestone(ctx context.Context, params IssuesListLabelsForMilestoneParams) (res []Label, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `IssuesListLabelsForMilestone`,
@@ -18442,7 +18898,9 @@ func (c *Client) IssuesListLabelsForMilestone(ctx context.Context, params Issues
 	return result, nil
 }
 
-// IssuesListLabelsForRepo implements issues/list-labels-for-repo operation.
+// IssuesListLabelsForRepo invokes issues/list-labels-for-repo operation.
+//
+// GET /repos/{owner}/{repo}/labels
 func (c *Client) IssuesListLabelsForRepo(ctx context.Context, params IssuesListLabelsForRepoParams) (res IssuesListLabelsForRepoRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `IssuesListLabelsForRepo`,
@@ -18545,7 +19003,9 @@ func (c *Client) IssuesListLabelsForRepo(ctx context.Context, params IssuesListL
 	return result, nil
 }
 
-// IssuesListLabelsOnIssue implements issues/list-labels-on-issue operation.
+// IssuesListLabelsOnIssue invokes issues/list-labels-on-issue operation.
+//
+// GET /repos/{owner}/{repo}/issues/{issue_number}/labels
 func (c *Client) IssuesListLabelsOnIssue(ctx context.Context, params IssuesListLabelsOnIssueParams) (res IssuesListLabelsOnIssueRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `IssuesListLabelsOnIssue`,
@@ -18663,7 +19123,9 @@ func (c *Client) IssuesListLabelsOnIssue(ctx context.Context, params IssuesListL
 	return result, nil
 }
 
-// IssuesListMilestones implements issues/list-milestones operation.
+// IssuesListMilestones invokes issues/list-milestones operation.
+//
+// GET /repos/{owner}/{repo}/milestones
 func (c *Client) IssuesListMilestones(ctx context.Context, params IssuesListMilestonesParams) (res IssuesListMilestonesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `IssuesListMilestones`,
@@ -18814,7 +19276,9 @@ func (c *Client) IssuesListMilestones(ctx context.Context, params IssuesListMile
 	return result, nil
 }
 
-// IssuesRemoveAllLabels implements issues/remove-all-labels operation.
+// IssuesRemoveAllLabels invokes issues/remove-all-labels operation.
+//
+// DELETE /repos/{owner}/{repo}/issues/{issue_number}/labels
 func (c *Client) IssuesRemoveAllLabels(ctx context.Context, params IssuesRemoveAllLabelsParams) (res IssuesRemoveAllLabelsRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `IssuesRemoveAllLabels`,
@@ -18897,7 +19361,9 @@ func (c *Client) IssuesRemoveAllLabels(ctx context.Context, params IssuesRemoveA
 	return result, nil
 }
 
-// IssuesRemoveAssignees implements issues/remove-assignees operation.
+// IssuesRemoveAssignees invokes issues/remove-assignees operation.
+//
+// DELETE /repos/{owner}/{repo}/issues/{issue_number}/assignees
 func (c *Client) IssuesRemoveAssignees(ctx context.Context, request IssuesRemoveAssigneesReq, params IssuesRemoveAssigneesParams) (res IssueSimple, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `IssuesRemoveAssignees`,
@@ -18994,7 +19460,9 @@ func (c *Client) IssuesRemoveAssignees(ctx context.Context, request IssuesRemove
 	return result, nil
 }
 
-// IssuesRemoveLabel implements issues/remove-label operation.
+// IssuesRemoveLabel invokes issues/remove-label operation.
+//
+// DELETE /repos/{owner}/{repo}/issues/{issue_number}/labels/{name}
 func (c *Client) IssuesRemoveLabel(ctx context.Context, params IssuesRemoveLabelParams) (res IssuesRemoveLabelRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `IssuesRemoveLabel`,
@@ -19091,7 +19559,9 @@ func (c *Client) IssuesRemoveLabel(ctx context.Context, params IssuesRemoveLabel
 	return result, nil
 }
 
-// IssuesUnlock implements issues/unlock operation.
+// IssuesUnlock invokes issues/unlock operation.
+//
+// DELETE /repos/{owner}/{repo}/issues/{issue_number}/lock
 func (c *Client) IssuesUnlock(ctx context.Context, params IssuesUnlockParams) (res IssuesUnlockRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `IssuesUnlock`,
@@ -19174,7 +19644,9 @@ func (c *Client) IssuesUnlock(ctx context.Context, params IssuesUnlockParams) (r
 	return result, nil
 }
 
-// IssuesUpdateLabel implements issues/update-label operation.
+// IssuesUpdateLabel invokes issues/update-label operation.
+//
+// PATCH /repos/{owner}/{repo}/labels/{name}
 func (c *Client) IssuesUpdateLabel(ctx context.Context, request IssuesUpdateLabelReq, params IssuesUpdateLabelParams) (res Label, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `IssuesUpdateLabel`,
@@ -19270,7 +19742,9 @@ func (c *Client) IssuesUpdateLabel(ctx context.Context, request IssuesUpdateLabe
 	return result, nil
 }
 
-// IssuesUpdateMilestone implements issues/update-milestone operation.
+// IssuesUpdateMilestone invokes issues/update-milestone operation.
+//
+// PATCH /repos/{owner}/{repo}/milestones/{milestone_number}
 func (c *Client) IssuesUpdateMilestone(ctx context.Context, request IssuesUpdateMilestoneReq, params IssuesUpdateMilestoneParams) (res Milestone, err error) {
 	if err := func() error {
 
@@ -19375,7 +19849,9 @@ func (c *Client) IssuesUpdateMilestone(ctx context.Context, request IssuesUpdate
 	return result, nil
 }
 
-// LicensesGet implements licenses/get operation.
+// LicensesGet invokes licenses/get operation.
+//
+// GET /licenses/{license}
 func (c *Client) LicensesGet(ctx context.Context, params LicensesGetParams) (res LicensesGetRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `LicensesGet`,
@@ -19427,7 +19903,9 @@ func (c *Client) LicensesGet(ctx context.Context, params LicensesGetParams) (res
 	return result, nil
 }
 
-// LicensesGetAllCommonlyUsed implements licenses/get-all-commonly-used operation.
+// LicensesGetAllCommonlyUsed invokes licenses/get-all-commonly-used operation.
+//
+// GET /licenses
 func (c *Client) LicensesGetAllCommonlyUsed(ctx context.Context, params LicensesGetAllCommonlyUsedParams) (res LicensesGetAllCommonlyUsedRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `LicensesGetAllCommonlyUsed`,
@@ -19516,7 +19994,9 @@ func (c *Client) LicensesGetAllCommonlyUsed(ctx context.Context, params Licenses
 	return result, nil
 }
 
-// LicensesGetForRepo implements licenses/get-for-repo operation.
+// LicensesGetForRepo invokes licenses/get-for-repo operation.
+//
+// GET /repos/{owner}/{repo}/license
 func (c *Client) LicensesGetForRepo(ctx context.Context, params LicensesGetForRepoParams) (res LicenseContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `LicensesGetForRepo`,
@@ -19584,7 +20064,9 @@ func (c *Client) LicensesGetForRepo(ctx context.Context, params LicensesGetForRe
 	return result, nil
 }
 
-// MetaGet implements meta/get operation.
+// MetaGet invokes meta/get operation.
+//
+// GET /meta
 func (c *Client) MetaGet(ctx context.Context) (res MetaGetRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `MetaGet`,
@@ -19622,7 +20104,9 @@ func (c *Client) MetaGet(ctx context.Context) (res MetaGetRes, err error) {
 	return result, nil
 }
 
-// MetaRoot implements meta/root operation.
+// MetaRoot invokes meta/root operation.
+//
+// GET /
 func (c *Client) MetaRoot(ctx context.Context) (res MetaRootOK, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `MetaRoot`,
@@ -19660,7 +20144,9 @@ func (c *Client) MetaRoot(ctx context.Context) (res MetaRootOK, err error) {
 	return result, nil
 }
 
-// MigrationsCancelImport implements migrations/cancel-import operation.
+// MigrationsCancelImport invokes migrations/cancel-import operation.
+//
+// DELETE /repos/{owner}/{repo}/import
 func (c *Client) MigrationsCancelImport(ctx context.Context, params MigrationsCancelImportParams) (res MigrationsCancelImportNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `MigrationsCancelImport`,
@@ -19728,7 +20214,9 @@ func (c *Client) MigrationsCancelImport(ctx context.Context, params MigrationsCa
 	return result, nil
 }
 
-// MigrationsDeleteArchiveForAuthenticatedUser implements migrations/delete-archive-for-authenticated-user operation.
+// MigrationsDeleteArchiveForAuthenticatedUser invokes migrations/delete-archive-for-authenticated-user operation.
+//
+// DELETE /user/migrations/{migration_id}/archive
 func (c *Client) MigrationsDeleteArchiveForAuthenticatedUser(ctx context.Context, params MigrationsDeleteArchiveForAuthenticatedUserParams) (res MigrationsDeleteArchiveForAuthenticatedUserRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `MigrationsDeleteArchiveForAuthenticatedUser`,
@@ -19781,7 +20269,9 @@ func (c *Client) MigrationsDeleteArchiveForAuthenticatedUser(ctx context.Context
 	return result, nil
 }
 
-// MigrationsDeleteArchiveForOrg implements migrations/delete-archive-for-org operation.
+// MigrationsDeleteArchiveForOrg invokes migrations/delete-archive-for-org operation.
+//
+// DELETE /orgs/{org}/migrations/{migration_id}/archive
 func (c *Client) MigrationsDeleteArchiveForOrg(ctx context.Context, params MigrationsDeleteArchiveForOrgParams) (res MigrationsDeleteArchiveForOrgRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `MigrationsDeleteArchiveForOrg`,
@@ -19849,7 +20339,9 @@ func (c *Client) MigrationsDeleteArchiveForOrg(ctx context.Context, params Migra
 	return result, nil
 }
 
-// MigrationsDownloadArchiveForOrg implements migrations/download-archive-for-org operation.
+// MigrationsDownloadArchiveForOrg invokes migrations/download-archive-for-org operation.
+//
+// GET /orgs/{org}/migrations/{migration_id}/archive
 func (c *Client) MigrationsDownloadArchiveForOrg(ctx context.Context, params MigrationsDownloadArchiveForOrgParams) (res MigrationsDownloadArchiveForOrgRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `MigrationsDownloadArchiveForOrg`,
@@ -19917,7 +20409,9 @@ func (c *Client) MigrationsDownloadArchiveForOrg(ctx context.Context, params Mig
 	return result, nil
 }
 
-// MigrationsGetArchiveForAuthenticatedUser implements migrations/get-archive-for-authenticated-user operation.
+// MigrationsGetArchiveForAuthenticatedUser invokes migrations/get-archive-for-authenticated-user operation.
+//
+// GET /user/migrations/{migration_id}/archive
 func (c *Client) MigrationsGetArchiveForAuthenticatedUser(ctx context.Context, params MigrationsGetArchiveForAuthenticatedUserParams) (res MigrationsGetArchiveForAuthenticatedUserRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `MigrationsGetArchiveForAuthenticatedUser`,
@@ -19970,7 +20464,9 @@ func (c *Client) MigrationsGetArchiveForAuthenticatedUser(ctx context.Context, p
 	return result, nil
 }
 
-// MigrationsGetCommitAuthors implements migrations/get-commit-authors operation.
+// MigrationsGetCommitAuthors invokes migrations/get-commit-authors operation.
+//
+// GET /repos/{owner}/{repo}/import/authors
 func (c *Client) MigrationsGetCommitAuthors(ctx context.Context, params MigrationsGetCommitAuthorsParams) (res MigrationsGetCommitAuthorsRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `MigrationsGetCommitAuthors`,
@@ -20057,7 +20553,9 @@ func (c *Client) MigrationsGetCommitAuthors(ctx context.Context, params Migratio
 	return result, nil
 }
 
-// MigrationsGetImportStatus implements migrations/get-import-status operation.
+// MigrationsGetImportStatus invokes migrations/get-import-status operation.
+//
+// GET /repos/{owner}/{repo}/import
 func (c *Client) MigrationsGetImportStatus(ctx context.Context, params MigrationsGetImportStatusParams) (res MigrationsGetImportStatusRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `MigrationsGetImportStatus`,
@@ -20125,7 +20623,9 @@ func (c *Client) MigrationsGetImportStatus(ctx context.Context, params Migration
 	return result, nil
 }
 
-// MigrationsGetLargeFiles implements migrations/get-large-files operation.
+// MigrationsGetLargeFiles invokes migrations/get-large-files operation.
+//
+// GET /repos/{owner}/{repo}/import/large_files
 func (c *Client) MigrationsGetLargeFiles(ctx context.Context, params MigrationsGetLargeFilesParams) (res []PorterLargeFile, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `MigrationsGetLargeFiles`,
@@ -20193,7 +20693,9 @@ func (c *Client) MigrationsGetLargeFiles(ctx context.Context, params MigrationsG
 	return result, nil
 }
 
-// MigrationsGetStatusForAuthenticatedUser implements migrations/get-status-for-authenticated-user operation.
+// MigrationsGetStatusForAuthenticatedUser invokes migrations/get-status-for-authenticated-user operation.
+//
+// GET /user/migrations/{migration_id}
 func (c *Client) MigrationsGetStatusForAuthenticatedUser(ctx context.Context, params MigrationsGetStatusForAuthenticatedUserParams) (res MigrationsGetStatusForAuthenticatedUserRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `MigrationsGetStatusForAuthenticatedUser`,
@@ -20270,7 +20772,9 @@ func (c *Client) MigrationsGetStatusForAuthenticatedUser(ctx context.Context, pa
 	return result, nil
 }
 
-// MigrationsGetStatusForOrg implements migrations/get-status-for-org operation.
+// MigrationsGetStatusForOrg invokes migrations/get-status-for-org operation.
+//
+// GET /orgs/{org}/migrations/{migration_id}
 func (c *Client) MigrationsGetStatusForOrg(ctx context.Context, params MigrationsGetStatusForOrgParams) (res MigrationsGetStatusForOrgRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `MigrationsGetStatusForOrg`,
@@ -20362,7 +20866,9 @@ func (c *Client) MigrationsGetStatusForOrg(ctx context.Context, params Migration
 	return result, nil
 }
 
-// MigrationsListForAuthenticatedUser implements migrations/list-for-authenticated-user operation.
+// MigrationsListForAuthenticatedUser invokes migrations/list-for-authenticated-user operation.
+//
+// GET /user/migrations
 func (c *Client) MigrationsListForAuthenticatedUser(ctx context.Context, params MigrationsListForAuthenticatedUserParams) (res MigrationsListForAuthenticatedUserRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `MigrationsListForAuthenticatedUser`,
@@ -20435,7 +20941,9 @@ func (c *Client) MigrationsListForAuthenticatedUser(ctx context.Context, params 
 	return result, nil
 }
 
-// MigrationsListForOrg implements migrations/list-for-org operation.
+// MigrationsListForOrg invokes migrations/list-for-org operation.
+//
+// GET /orgs/{org}/migrations
 func (c *Client) MigrationsListForOrg(ctx context.Context, params MigrationsListForOrgParams) (res []Migration, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `MigrationsListForOrg`,
@@ -20545,7 +21053,9 @@ func (c *Client) MigrationsListForOrg(ctx context.Context, params MigrationsList
 	return result, nil
 }
 
-// MigrationsListReposForOrg implements migrations/list-repos-for-org operation.
+// MigrationsListReposForOrg invokes migrations/list-repos-for-org operation.
+//
+// GET /orgs/{org}/migrations/{migration_id}/repositories
 func (c *Client) MigrationsListReposForOrg(ctx context.Context, params MigrationsListReposForOrgParams) (res MigrationsListReposForOrgRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `MigrationsListReposForOrg`,
@@ -20648,7 +21158,9 @@ func (c *Client) MigrationsListReposForOrg(ctx context.Context, params Migration
 	return result, nil
 }
 
-// MigrationsListReposForUser implements migrations/list-repos-for-user operation.
+// MigrationsListReposForUser invokes migrations/list-repos-for-user operation.
+//
+// GET /user/migrations/{migration_id}/repositories
 func (c *Client) MigrationsListReposForUser(ctx context.Context, params MigrationsListReposForUserParams) (res MigrationsListReposForUserRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `MigrationsListReposForUser`,
@@ -20736,7 +21248,9 @@ func (c *Client) MigrationsListReposForUser(ctx context.Context, params Migratio
 	return result, nil
 }
 
-// MigrationsUnlockRepoForAuthenticatedUser implements migrations/unlock-repo-for-authenticated-user operation.
+// MigrationsUnlockRepoForAuthenticatedUser invokes migrations/unlock-repo-for-authenticated-user operation.
+//
+// DELETE /user/migrations/{migration_id}/repos/{repo_name}/lock
 func (c *Client) MigrationsUnlockRepoForAuthenticatedUser(ctx context.Context, params MigrationsUnlockRepoForAuthenticatedUserParams) (res MigrationsUnlockRepoForAuthenticatedUserRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `MigrationsUnlockRepoForAuthenticatedUser`,
@@ -20804,7 +21318,9 @@ func (c *Client) MigrationsUnlockRepoForAuthenticatedUser(ctx context.Context, p
 	return result, nil
 }
 
-// MigrationsUnlockRepoForOrg implements migrations/unlock-repo-for-org operation.
+// MigrationsUnlockRepoForOrg invokes migrations/unlock-repo-for-org operation.
+//
+// DELETE /orgs/{org}/migrations/{migration_id}/repos/{repo_name}/lock
 func (c *Client) MigrationsUnlockRepoForOrg(ctx context.Context, params MigrationsUnlockRepoForOrgParams) (res MigrationsUnlockRepoForOrgRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `MigrationsUnlockRepoForOrg`,
@@ -20887,7 +21403,9 @@ func (c *Client) MigrationsUnlockRepoForOrg(ctx context.Context, params Migratio
 	return result, nil
 }
 
-// MigrationsUpdateImport implements migrations/update-import operation.
+// MigrationsUpdateImport invokes migrations/update-import operation.
+//
+// PATCH /repos/{owner}/{repo}/import
 func (c *Client) MigrationsUpdateImport(ctx context.Context, request MigrationsUpdateImportReq, params MigrationsUpdateImportParams) (res Import, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `MigrationsUpdateImport`,
@@ -20969,7 +21487,9 @@ func (c *Client) MigrationsUpdateImport(ctx context.Context, request MigrationsU
 	return result, nil
 }
 
-// OAuthAuthorizationsDeleteAuthorization implements oauth-authorizations/delete-authorization operation.
+// OAuthAuthorizationsDeleteAuthorization invokes oauth-authorizations/delete-authorization operation.
+//
+// DELETE /authorizations/{authorization_id}
 func (c *Client) OAuthAuthorizationsDeleteAuthorization(ctx context.Context, params OAuthAuthorizationsDeleteAuthorizationParams) (res OAuthAuthorizationsDeleteAuthorizationRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `OAuthAuthorizationsDeleteAuthorization`,
@@ -21021,7 +21541,9 @@ func (c *Client) OAuthAuthorizationsDeleteAuthorization(ctx context.Context, par
 	return result, nil
 }
 
-// OAuthAuthorizationsDeleteGrant implements oauth-authorizations/delete-grant operation.
+// OAuthAuthorizationsDeleteGrant invokes oauth-authorizations/delete-grant operation.
+//
+// DELETE /applications/grants/{grant_id}
 func (c *Client) OAuthAuthorizationsDeleteGrant(ctx context.Context, params OAuthAuthorizationsDeleteGrantParams) (res OAuthAuthorizationsDeleteGrantRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `OAuthAuthorizationsDeleteGrant`,
@@ -21073,7 +21595,9 @@ func (c *Client) OAuthAuthorizationsDeleteGrant(ctx context.Context, params OAut
 	return result, nil
 }
 
-// OAuthAuthorizationsGetAuthorization implements oauth-authorizations/get-authorization operation.
+// OAuthAuthorizationsGetAuthorization invokes oauth-authorizations/get-authorization operation.
+//
+// GET /authorizations/{authorization_id}
 func (c *Client) OAuthAuthorizationsGetAuthorization(ctx context.Context, params OAuthAuthorizationsGetAuthorizationParams) (res OAuthAuthorizationsGetAuthorizationRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `OAuthAuthorizationsGetAuthorization`,
@@ -21125,7 +21649,9 @@ func (c *Client) OAuthAuthorizationsGetAuthorization(ctx context.Context, params
 	return result, nil
 }
 
-// OAuthAuthorizationsGetGrant implements oauth-authorizations/get-grant operation.
+// OAuthAuthorizationsGetGrant invokes oauth-authorizations/get-grant operation.
+//
+// GET /applications/grants/{grant_id}
 func (c *Client) OAuthAuthorizationsGetGrant(ctx context.Context, params OAuthAuthorizationsGetGrantParams) (res OAuthAuthorizationsGetGrantRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `OAuthAuthorizationsGetGrant`,
@@ -21177,7 +21703,9 @@ func (c *Client) OAuthAuthorizationsGetGrant(ctx context.Context, params OAuthAu
 	return result, nil
 }
 
-// OAuthAuthorizationsListAuthorizations implements oauth-authorizations/list-authorizations operation.
+// OAuthAuthorizationsListAuthorizations invokes oauth-authorizations/list-authorizations operation.
+//
+// GET /authorizations
 func (c *Client) OAuthAuthorizationsListAuthorizations(ctx context.Context, params OAuthAuthorizationsListAuthorizationsParams) (res OAuthAuthorizationsListAuthorizationsRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `OAuthAuthorizationsListAuthorizations`,
@@ -21266,7 +21794,9 @@ func (c *Client) OAuthAuthorizationsListAuthorizations(ctx context.Context, para
 	return result, nil
 }
 
-// OAuthAuthorizationsListGrants implements oauth-authorizations/list-grants operation.
+// OAuthAuthorizationsListGrants invokes oauth-authorizations/list-grants operation.
+//
+// GET /applications/grants
 func (c *Client) OAuthAuthorizationsListGrants(ctx context.Context, params OAuthAuthorizationsListGrantsParams) (res OAuthAuthorizationsListGrantsRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `OAuthAuthorizationsListGrants`,
@@ -21355,7 +21885,9 @@ func (c *Client) OAuthAuthorizationsListGrants(ctx context.Context, params OAuth
 	return result, nil
 }
 
-// OrgsCheckBlockedUser implements orgs/check-blocked-user operation.
+// OrgsCheckBlockedUser invokes orgs/check-blocked-user operation.
+//
+// GET /orgs/{org}/blocks/{username}
 func (c *Client) OrgsCheckBlockedUser(ctx context.Context, params OrgsCheckBlockedUserParams) (res OrgsCheckBlockedUserRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `OrgsCheckBlockedUser`,
@@ -21422,7 +21954,9 @@ func (c *Client) OrgsCheckBlockedUser(ctx context.Context, params OrgsCheckBlock
 	return result, nil
 }
 
-// OrgsCheckMembershipForUser implements orgs/check-membership-for-user operation.
+// OrgsCheckMembershipForUser invokes orgs/check-membership-for-user operation.
+//
+// GET /orgs/{org}/members/{username}
 func (c *Client) OrgsCheckMembershipForUser(ctx context.Context, params OrgsCheckMembershipForUserParams) (res OrgsCheckMembershipForUserRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `OrgsCheckMembershipForUser`,
@@ -21489,7 +22023,9 @@ func (c *Client) OrgsCheckMembershipForUser(ctx context.Context, params OrgsChec
 	return result, nil
 }
 
-// OrgsCheckPublicMembershipForUser implements orgs/check-public-membership-for-user operation.
+// OrgsCheckPublicMembershipForUser invokes orgs/check-public-membership-for-user operation.
+//
+// GET /orgs/{org}/public_members/{username}
 func (c *Client) OrgsCheckPublicMembershipForUser(ctx context.Context, params OrgsCheckPublicMembershipForUserParams) (res OrgsCheckPublicMembershipForUserRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `OrgsCheckPublicMembershipForUser`,
@@ -21556,7 +22092,9 @@ func (c *Client) OrgsCheckPublicMembershipForUser(ctx context.Context, params Or
 	return result, nil
 }
 
-// OrgsConvertMemberToOutsideCollaborator implements orgs/convert-member-to-outside-collaborator operation.
+// OrgsConvertMemberToOutsideCollaborator invokes orgs/convert-member-to-outside-collaborator operation.
+//
+// PUT /orgs/{org}/outside_collaborators/{username}
 func (c *Client) OrgsConvertMemberToOutsideCollaborator(ctx context.Context, params OrgsConvertMemberToOutsideCollaboratorParams) (res OrgsConvertMemberToOutsideCollaboratorRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `OrgsConvertMemberToOutsideCollaborator`,
@@ -21623,7 +22161,9 @@ func (c *Client) OrgsConvertMemberToOutsideCollaborator(ctx context.Context, par
 	return result, nil
 }
 
-// OrgsDeleteWebhook implements orgs/delete-webhook operation.
+// OrgsDeleteWebhook invokes orgs/delete-webhook operation.
+//
+// DELETE /orgs/{org}/hooks/{hook_id}
 func (c *Client) OrgsDeleteWebhook(ctx context.Context, params OrgsDeleteWebhookParams) (res OrgsDeleteWebhookRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `OrgsDeleteWebhook`,
@@ -21690,7 +22230,9 @@ func (c *Client) OrgsDeleteWebhook(ctx context.Context, params OrgsDeleteWebhook
 	return result, nil
 }
 
-// OrgsGet implements orgs/get operation.
+// OrgsGet invokes orgs/get operation.
+//
+// GET /orgs/{org}
 func (c *Client) OrgsGet(ctx context.Context, params OrgsGetParams) (res OrgsGetRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `OrgsGet`,
@@ -21742,7 +22284,9 @@ func (c *Client) OrgsGet(ctx context.Context, params OrgsGetParams) (res OrgsGet
 	return result, nil
 }
 
-// OrgsGetAuditLog implements orgs/get-audit-log operation.
+// OrgsGetAuditLog invokes orgs/get-audit-log operation.
+//
+// GET /orgs/{org}/audit-log
 func (c *Client) OrgsGetAuditLog(ctx context.Context, params OrgsGetAuditLogParams) (res []AuditLogEvent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `OrgsGetAuditLog`,
@@ -21910,7 +22454,9 @@ func (c *Client) OrgsGetAuditLog(ctx context.Context, params OrgsGetAuditLogPara
 	return result, nil
 }
 
-// OrgsGetMembershipForAuthenticatedUser implements orgs/get-membership-for-authenticated-user operation.
+// OrgsGetMembershipForAuthenticatedUser invokes orgs/get-membership-for-authenticated-user operation.
+//
+// GET /user/memberships/orgs/{org}
 func (c *Client) OrgsGetMembershipForAuthenticatedUser(ctx context.Context, params OrgsGetMembershipForAuthenticatedUserParams) (res OrgsGetMembershipForAuthenticatedUserRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `OrgsGetMembershipForAuthenticatedUser`,
@@ -21962,7 +22508,9 @@ func (c *Client) OrgsGetMembershipForAuthenticatedUser(ctx context.Context, para
 	return result, nil
 }
 
-// OrgsGetMembershipForUser implements orgs/get-membership-for-user operation.
+// OrgsGetMembershipForUser invokes orgs/get-membership-for-user operation.
+//
+// GET /orgs/{org}/memberships/{username}
 func (c *Client) OrgsGetMembershipForUser(ctx context.Context, params OrgsGetMembershipForUserParams) (res OrgsGetMembershipForUserRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `OrgsGetMembershipForUser`,
@@ -22029,7 +22577,9 @@ func (c *Client) OrgsGetMembershipForUser(ctx context.Context, params OrgsGetMem
 	return result, nil
 }
 
-// OrgsGetWebhook implements orgs/get-webhook operation.
+// OrgsGetWebhook invokes orgs/get-webhook operation.
+//
+// GET /orgs/{org}/hooks/{hook_id}
 func (c *Client) OrgsGetWebhook(ctx context.Context, params OrgsGetWebhookParams) (res OrgsGetWebhookRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `OrgsGetWebhook`,
@@ -22096,7 +22646,9 @@ func (c *Client) OrgsGetWebhook(ctx context.Context, params OrgsGetWebhookParams
 	return result, nil
 }
 
-// OrgsGetWebhookConfigForOrg implements orgs/get-webhook-config-for-org operation.
+// OrgsGetWebhookConfigForOrg invokes orgs/get-webhook-config-for-org operation.
+//
+// GET /orgs/{org}/hooks/{hook_id}/config
 func (c *Client) OrgsGetWebhookConfigForOrg(ctx context.Context, params OrgsGetWebhookConfigForOrgParams) (res WebhookConfig, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `OrgsGetWebhookConfigForOrg`,
@@ -22164,7 +22716,9 @@ func (c *Client) OrgsGetWebhookConfigForOrg(ctx context.Context, params OrgsGetW
 	return result, nil
 }
 
-// OrgsList implements orgs/list operation.
+// OrgsList invokes orgs/list operation.
+//
+// GET /organizations
 func (c *Client) OrgsList(ctx context.Context, params OrgsListParams) (res OrgsListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `OrgsList`,
@@ -22237,7 +22791,9 @@ func (c *Client) OrgsList(ctx context.Context, params OrgsListParams) (res OrgsL
 	return result, nil
 }
 
-// OrgsListBlockedUsers implements orgs/list-blocked-users operation.
+// OrgsListBlockedUsers invokes orgs/list-blocked-users operation.
+//
+// GET /orgs/{org}/blocks
 func (c *Client) OrgsListBlockedUsers(ctx context.Context, params OrgsListBlockedUsersParams) (res OrgsListBlockedUsersRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `OrgsListBlockedUsers`,
@@ -22290,7 +22846,9 @@ func (c *Client) OrgsListBlockedUsers(ctx context.Context, params OrgsListBlocke
 	return result, nil
 }
 
-// OrgsListFailedInvitations implements orgs/list-failed-invitations operation.
+// OrgsListFailedInvitations invokes orgs/list-failed-invitations operation.
+//
+// GET /orgs/{org}/failed_invitations
 func (c *Client) OrgsListFailedInvitations(ctx context.Context, params OrgsListFailedInvitationsParams) (res OrgsListFailedInvitationsRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `OrgsListFailedInvitations`,
@@ -22378,7 +22936,9 @@ func (c *Client) OrgsListFailedInvitations(ctx context.Context, params OrgsListF
 	return result, nil
 }
 
-// OrgsListForAuthenticatedUser implements orgs/list-for-authenticated-user operation.
+// OrgsListForAuthenticatedUser invokes orgs/list-for-authenticated-user operation.
+//
+// GET /user/orgs
 func (c *Client) OrgsListForAuthenticatedUser(ctx context.Context, params OrgsListForAuthenticatedUserParams) (res OrgsListForAuthenticatedUserRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `OrgsListForAuthenticatedUser`,
@@ -22451,7 +23011,9 @@ func (c *Client) OrgsListForAuthenticatedUser(ctx context.Context, params OrgsLi
 	return result, nil
 }
 
-// OrgsListForUser implements orgs/list-for-user operation.
+// OrgsListForUser invokes orgs/list-for-user operation.
+//
+// GET /users/{username}/orgs
 func (c *Client) OrgsListForUser(ctx context.Context, params OrgsListForUserParams) (res []OrganizationSimple, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `OrgsListForUser`,
@@ -22539,7 +23101,9 @@ func (c *Client) OrgsListForUser(ctx context.Context, params OrgsListForUserPara
 	return result, nil
 }
 
-// OrgsListInvitationTeams implements orgs/list-invitation-teams operation.
+// OrgsListInvitationTeams invokes orgs/list-invitation-teams operation.
+//
+// GET /orgs/{org}/invitations/{invitation_id}/teams
 func (c *Client) OrgsListInvitationTeams(ctx context.Context, params OrgsListInvitationTeamsParams) (res OrgsListInvitationTeamsRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `OrgsListInvitationTeams`,
@@ -22642,7 +23206,9 @@ func (c *Client) OrgsListInvitationTeams(ctx context.Context, params OrgsListInv
 	return result, nil
 }
 
-// OrgsListOutsideCollaborators implements orgs/list-outside-collaborators operation.
+// OrgsListOutsideCollaborators invokes orgs/list-outside-collaborators operation.
+//
+// GET /orgs/{org}/outside_collaborators
 func (c *Client) OrgsListOutsideCollaborators(ctx context.Context, params OrgsListOutsideCollaboratorsParams) (res []SimpleUser, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `OrgsListOutsideCollaborators`,
@@ -22746,7 +23312,9 @@ func (c *Client) OrgsListOutsideCollaborators(ctx context.Context, params OrgsLi
 	return result, nil
 }
 
-// OrgsListPendingInvitations implements orgs/list-pending-invitations operation.
+// OrgsListPendingInvitations invokes orgs/list-pending-invitations operation.
+//
+// GET /orgs/{org}/invitations
 func (c *Client) OrgsListPendingInvitations(ctx context.Context, params OrgsListPendingInvitationsParams) (res OrgsListPendingInvitationsRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `OrgsListPendingInvitations`,
@@ -22834,7 +23402,9 @@ func (c *Client) OrgsListPendingInvitations(ctx context.Context, params OrgsList
 	return result, nil
 }
 
-// OrgsListPublicMembers implements orgs/list-public-members operation.
+// OrgsListPublicMembers invokes orgs/list-public-members operation.
+//
+// GET /orgs/{org}/public_members
 func (c *Client) OrgsListPublicMembers(ctx context.Context, params OrgsListPublicMembersParams) (res []SimpleUser, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `OrgsListPublicMembers`,
@@ -22922,7 +23492,9 @@ func (c *Client) OrgsListPublicMembers(ctx context.Context, params OrgsListPubli
 	return result, nil
 }
 
-// OrgsListSamlSSOAuthorizations implements orgs/list-saml-sso-authorizations operation.
+// OrgsListSamlSSOAuthorizations invokes orgs/list-saml-sso-authorizations operation.
+//
+// GET /orgs/{org}/credential-authorizations
 func (c *Client) OrgsListSamlSSOAuthorizations(ctx context.Context, params OrgsListSamlSSOAuthorizationsParams) (res []CredentialAuthorization, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `OrgsListSamlSSOAuthorizations`,
@@ -22975,7 +23547,9 @@ func (c *Client) OrgsListSamlSSOAuthorizations(ctx context.Context, params OrgsL
 	return result, nil
 }
 
-// OrgsListWebhooks implements orgs/list-webhooks operation.
+// OrgsListWebhooks invokes orgs/list-webhooks operation.
+//
+// GET /orgs/{org}/hooks
 func (c *Client) OrgsListWebhooks(ctx context.Context, params OrgsListWebhooksParams) (res OrgsListWebhooksRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `OrgsListWebhooks`,
@@ -23063,7 +23637,9 @@ func (c *Client) OrgsListWebhooks(ctx context.Context, params OrgsListWebhooksPa
 	return result, nil
 }
 
-// OrgsPingWebhook implements orgs/ping-webhook operation.
+// OrgsPingWebhook invokes orgs/ping-webhook operation.
+//
+// POST /orgs/{org}/hooks/{hook_id}/pings
 func (c *Client) OrgsPingWebhook(ctx context.Context, params OrgsPingWebhookParams) (res OrgsPingWebhookRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `OrgsPingWebhook`,
@@ -23131,7 +23707,9 @@ func (c *Client) OrgsPingWebhook(ctx context.Context, params OrgsPingWebhookPara
 	return result, nil
 }
 
-// OrgsRemoveMember implements orgs/remove-member operation.
+// OrgsRemoveMember invokes orgs/remove-member operation.
+//
+// DELETE /orgs/{org}/members/{username}
 func (c *Client) OrgsRemoveMember(ctx context.Context, params OrgsRemoveMemberParams) (res OrgsRemoveMemberRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `OrgsRemoveMember`,
@@ -23198,7 +23776,9 @@ func (c *Client) OrgsRemoveMember(ctx context.Context, params OrgsRemoveMemberPa
 	return result, nil
 }
 
-// OrgsRemoveMembershipForUser implements orgs/remove-membership-for-user operation.
+// OrgsRemoveMembershipForUser invokes orgs/remove-membership-for-user operation.
+//
+// DELETE /orgs/{org}/memberships/{username}
 func (c *Client) OrgsRemoveMembershipForUser(ctx context.Context, params OrgsRemoveMembershipForUserParams) (res OrgsRemoveMembershipForUserRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `OrgsRemoveMembershipForUser`,
@@ -23265,7 +23845,9 @@ func (c *Client) OrgsRemoveMembershipForUser(ctx context.Context, params OrgsRem
 	return result, nil
 }
 
-// OrgsRemoveOutsideCollaborator implements orgs/remove-outside-collaborator operation.
+// OrgsRemoveOutsideCollaborator invokes orgs/remove-outside-collaborator operation.
+//
+// DELETE /orgs/{org}/outside_collaborators/{username}
 func (c *Client) OrgsRemoveOutsideCollaborator(ctx context.Context, params OrgsRemoveOutsideCollaboratorParams) (res OrgsRemoveOutsideCollaboratorRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `OrgsRemoveOutsideCollaborator`,
@@ -23332,7 +23914,9 @@ func (c *Client) OrgsRemoveOutsideCollaborator(ctx context.Context, params OrgsR
 	return result, nil
 }
 
-// OrgsRemovePublicMembershipForAuthenticatedUser implements orgs/remove-public-membership-for-authenticated-user operation.
+// OrgsRemovePublicMembershipForAuthenticatedUser invokes orgs/remove-public-membership-for-authenticated-user operation.
+//
+// DELETE /orgs/{org}/public_members/{username}
 func (c *Client) OrgsRemovePublicMembershipForAuthenticatedUser(ctx context.Context, params OrgsRemovePublicMembershipForAuthenticatedUserParams) (res OrgsRemovePublicMembershipForAuthenticatedUserNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `OrgsRemovePublicMembershipForAuthenticatedUser`,
@@ -23399,7 +23983,9 @@ func (c *Client) OrgsRemovePublicMembershipForAuthenticatedUser(ctx context.Cont
 	return result, nil
 }
 
-// OrgsRemoveSamlSSOAuthorization implements orgs/remove-saml-sso-authorization operation.
+// OrgsRemoveSamlSSOAuthorization invokes orgs/remove-saml-sso-authorization operation.
+//
+// DELETE /orgs/{org}/credential-authorizations/{credential_id}
 func (c *Client) OrgsRemoveSamlSSOAuthorization(ctx context.Context, params OrgsRemoveSamlSSOAuthorizationParams) (res OrgsRemoveSamlSSOAuthorizationRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `OrgsRemoveSamlSSOAuthorization`,
@@ -23466,7 +24052,9 @@ func (c *Client) OrgsRemoveSamlSSOAuthorization(ctx context.Context, params Orgs
 	return result, nil
 }
 
-// OrgsSetPublicMembershipForAuthenticatedUser implements orgs/set-public-membership-for-authenticated-user operation.
+// OrgsSetPublicMembershipForAuthenticatedUser invokes orgs/set-public-membership-for-authenticated-user operation.
+//
+// PUT /orgs/{org}/public_members/{username}
 func (c *Client) OrgsSetPublicMembershipForAuthenticatedUser(ctx context.Context, params OrgsSetPublicMembershipForAuthenticatedUserParams) (res OrgsSetPublicMembershipForAuthenticatedUserRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `OrgsSetPublicMembershipForAuthenticatedUser`,
@@ -23533,7 +24121,9 @@ func (c *Client) OrgsSetPublicMembershipForAuthenticatedUser(ctx context.Context
 	return result, nil
 }
 
-// OrgsUnblockUser implements orgs/unblock-user operation.
+// OrgsUnblockUser invokes orgs/unblock-user operation.
+//
+// DELETE /orgs/{org}/blocks/{username}
 func (c *Client) OrgsUnblockUser(ctx context.Context, params OrgsUnblockUserParams) (res OrgsUnblockUserNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `OrgsUnblockUser`,
@@ -23600,7 +24190,9 @@ func (c *Client) OrgsUnblockUser(ctx context.Context, params OrgsUnblockUserPara
 	return result, nil
 }
 
-// OrgsUpdateWebhookConfigForOrg implements orgs/update-webhook-config-for-org operation.
+// OrgsUpdateWebhookConfigForOrg invokes orgs/update-webhook-config-for-org operation.
+//
+// PATCH /orgs/{org}/hooks/{hook_id}/config
 func (c *Client) OrgsUpdateWebhookConfigForOrg(ctx context.Context, request OrgsUpdateWebhookConfigForOrgReq, params OrgsUpdateWebhookConfigForOrgParams) (res WebhookConfig, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `OrgsUpdateWebhookConfigForOrg`,
@@ -23682,7 +24274,9 @@ func (c *Client) OrgsUpdateWebhookConfigForOrg(ctx context.Context, request Orgs
 	return result, nil
 }
 
-// PackagesDeletePackageForAuthenticatedUser implements packages/delete-package-for-authenticated-user operation.
+// PackagesDeletePackageForAuthenticatedUser invokes packages/delete-package-for-authenticated-user operation.
+//
+// DELETE /user/packages/{package_type}/{package_name}
 func (c *Client) PackagesDeletePackageForAuthenticatedUser(ctx context.Context, params PackagesDeletePackageForAuthenticatedUserParams) (res PackagesDeletePackageForAuthenticatedUserRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PackagesDeletePackageForAuthenticatedUser`,
@@ -23749,7 +24343,9 @@ func (c *Client) PackagesDeletePackageForAuthenticatedUser(ctx context.Context, 
 	return result, nil
 }
 
-// PackagesDeletePackageForOrg implements packages/delete-package-for-org operation.
+// PackagesDeletePackageForOrg invokes packages/delete-package-for-org operation.
+//
+// DELETE /orgs/{org}/packages/{package_type}/{package_name}
 func (c *Client) PackagesDeletePackageForOrg(ctx context.Context, params PackagesDeletePackageForOrgParams) (res PackagesDeletePackageForOrgRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PackagesDeletePackageForOrg`,
@@ -23831,7 +24427,9 @@ func (c *Client) PackagesDeletePackageForOrg(ctx context.Context, params Package
 	return result, nil
 }
 
-// PackagesDeletePackageForUser implements packages/delete-package-for-user operation.
+// PackagesDeletePackageForUser invokes packages/delete-package-for-user operation.
+//
+// DELETE /users/{username}/packages/{package_type}/{package_name}
 func (c *Client) PackagesDeletePackageForUser(ctx context.Context, params PackagesDeletePackageForUserParams) (res PackagesDeletePackageForUserRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PackagesDeletePackageForUser`,
@@ -23913,7 +24511,9 @@ func (c *Client) PackagesDeletePackageForUser(ctx context.Context, params Packag
 	return result, nil
 }
 
-// PackagesDeletePackageVersionForAuthenticatedUser implements packages/delete-package-version-for-authenticated-user operation.
+// PackagesDeletePackageVersionForAuthenticatedUser invokes packages/delete-package-version-for-authenticated-user operation.
+//
+// DELETE /user/packages/{package_type}/{package_name}/versions/{package_version_id}
 func (c *Client) PackagesDeletePackageVersionForAuthenticatedUser(ctx context.Context, params PackagesDeletePackageVersionForAuthenticatedUserParams) (res PackagesDeletePackageVersionForAuthenticatedUserRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PackagesDeletePackageVersionForAuthenticatedUser`,
@@ -23995,7 +24595,9 @@ func (c *Client) PackagesDeletePackageVersionForAuthenticatedUser(ctx context.Co
 	return result, nil
 }
 
-// PackagesDeletePackageVersionForOrg implements packages/delete-package-version-for-org operation.
+// PackagesDeletePackageVersionForOrg invokes packages/delete-package-version-for-org operation.
+//
+// DELETE /orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}
 func (c *Client) PackagesDeletePackageVersionForOrg(ctx context.Context, params PackagesDeletePackageVersionForOrgParams) (res PackagesDeletePackageVersionForOrgRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PackagesDeletePackageVersionForOrg`,
@@ -24092,7 +24694,9 @@ func (c *Client) PackagesDeletePackageVersionForOrg(ctx context.Context, params 
 	return result, nil
 }
 
-// PackagesDeletePackageVersionForUser implements packages/delete-package-version-for-user operation.
+// PackagesDeletePackageVersionForUser invokes packages/delete-package-version-for-user operation.
+//
+// DELETE /users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}
 func (c *Client) PackagesDeletePackageVersionForUser(ctx context.Context, params PackagesDeletePackageVersionForUserParams) (res PackagesDeletePackageVersionForUserRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PackagesDeletePackageVersionForUser`,
@@ -24189,7 +24793,9 @@ func (c *Client) PackagesDeletePackageVersionForUser(ctx context.Context, params
 	return result, nil
 }
 
-// PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser implements packages/get-all-package-versions-for-package-owned-by-authenticated-user operation.
+// PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser invokes packages/get-all-package-versions-for-package-owned-by-authenticated-user operation.
+//
+// GET /user/packages/{package_type}/{package_name}/versions
 func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser(ctx context.Context, params PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams) (res PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser`,
@@ -24308,7 +24914,9 @@ func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser
 	return result, nil
 }
 
-// PackagesGetAllPackageVersionsForPackageOwnedByOrg implements packages/get-all-package-versions-for-package-owned-by-org operation.
+// PackagesGetAllPackageVersionsForPackageOwnedByOrg invokes packages/get-all-package-versions-for-package-owned-by-org operation.
+//
+// GET /orgs/{org}/packages/{package_type}/{package_name}/versions
 func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByOrg(ctx context.Context, params PackagesGetAllPackageVersionsForPackageOwnedByOrgParams) (res PackagesGetAllPackageVersionsForPackageOwnedByOrgRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PackagesGetAllPackageVersionsForPackageOwnedByOrg`,
@@ -24442,7 +25050,9 @@ func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByOrg(ctx context.C
 	return result, nil
 }
 
-// PackagesGetAllPackageVersionsForPackageOwnedByUser implements packages/get-all-package-versions-for-package-owned-by-user operation.
+// PackagesGetAllPackageVersionsForPackageOwnedByUser invokes packages/get-all-package-versions-for-package-owned-by-user operation.
+//
+// GET /users/{username}/packages/{package_type}/{package_name}/versions
 func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByUser(ctx context.Context, params PackagesGetAllPackageVersionsForPackageOwnedByUserParams) (res PackagesGetAllPackageVersionsForPackageOwnedByUserRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PackagesGetAllPackageVersionsForPackageOwnedByUser`,
@@ -24525,7 +25135,9 @@ func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByUser(ctx context.
 	return result, nil
 }
 
-// PackagesGetPackageForAuthenticatedUser implements packages/get-package-for-authenticated-user operation.
+// PackagesGetPackageForAuthenticatedUser invokes packages/get-package-for-authenticated-user operation.
+//
+// GET /user/packages/{package_type}/{package_name}
 func (c *Client) PackagesGetPackageForAuthenticatedUser(ctx context.Context, params PackagesGetPackageForAuthenticatedUserParams) (res Package, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PackagesGetPackageForAuthenticatedUser`,
@@ -24592,7 +25204,9 @@ func (c *Client) PackagesGetPackageForAuthenticatedUser(ctx context.Context, par
 	return result, nil
 }
 
-// PackagesGetPackageForOrganization implements packages/get-package-for-organization operation.
+// PackagesGetPackageForOrganization invokes packages/get-package-for-organization operation.
+//
+// GET /orgs/{org}/packages/{package_type}/{package_name}
 func (c *Client) PackagesGetPackageForOrganization(ctx context.Context, params PackagesGetPackageForOrganizationParams) (res Package, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PackagesGetPackageForOrganization`,
@@ -24674,7 +25288,9 @@ func (c *Client) PackagesGetPackageForOrganization(ctx context.Context, params P
 	return result, nil
 }
 
-// PackagesGetPackageForUser implements packages/get-package-for-user operation.
+// PackagesGetPackageForUser invokes packages/get-package-for-user operation.
+//
+// GET /users/{username}/packages/{package_type}/{package_name}
 func (c *Client) PackagesGetPackageForUser(ctx context.Context, params PackagesGetPackageForUserParams) (res Package, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PackagesGetPackageForUser`,
@@ -24756,7 +25372,9 @@ func (c *Client) PackagesGetPackageForUser(ctx context.Context, params PackagesG
 	return result, nil
 }
 
-// PackagesGetPackageVersionForAuthenticatedUser implements packages/get-package-version-for-authenticated-user operation.
+// PackagesGetPackageVersionForAuthenticatedUser invokes packages/get-package-version-for-authenticated-user operation.
+//
+// GET /user/packages/{package_type}/{package_name}/versions/{package_version_id}
 func (c *Client) PackagesGetPackageVersionForAuthenticatedUser(ctx context.Context, params PackagesGetPackageVersionForAuthenticatedUserParams) (res PackageVersion, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PackagesGetPackageVersionForAuthenticatedUser`,
@@ -24838,7 +25456,9 @@ func (c *Client) PackagesGetPackageVersionForAuthenticatedUser(ctx context.Conte
 	return result, nil
 }
 
-// PackagesGetPackageVersionForOrganization implements packages/get-package-version-for-organization operation.
+// PackagesGetPackageVersionForOrganization invokes packages/get-package-version-for-organization operation.
+//
+// GET /orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}
 func (c *Client) PackagesGetPackageVersionForOrganization(ctx context.Context, params PackagesGetPackageVersionForOrganizationParams) (res PackageVersion, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PackagesGetPackageVersionForOrganization`,
@@ -24935,7 +25555,9 @@ func (c *Client) PackagesGetPackageVersionForOrganization(ctx context.Context, p
 	return result, nil
 }
 
-// PackagesGetPackageVersionForUser implements packages/get-package-version-for-user operation.
+// PackagesGetPackageVersionForUser invokes packages/get-package-version-for-user operation.
+//
+// GET /users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}
 func (c *Client) PackagesGetPackageVersionForUser(ctx context.Context, params PackagesGetPackageVersionForUserParams) (res PackageVersion, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PackagesGetPackageVersionForUser`,
@@ -25032,7 +25654,9 @@ func (c *Client) PackagesGetPackageVersionForUser(ctx context.Context, params Pa
 	return result, nil
 }
 
-// PackagesListPackagesForAuthenticatedUser implements packages/list-packages-for-authenticated-user operation.
+// PackagesListPackagesForAuthenticatedUser invokes packages/list-packages-for-authenticated-user operation.
+//
+// GET /user/packages
 func (c *Client) PackagesListPackagesForAuthenticatedUser(ctx context.Context, params PackagesListPackagesForAuthenticatedUserParams) (res []Package, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PackagesListPackagesForAuthenticatedUser`,
@@ -25102,7 +25726,9 @@ func (c *Client) PackagesListPackagesForAuthenticatedUser(ctx context.Context, p
 	return result, nil
 }
 
-// PackagesListPackagesForOrganization implements packages/list-packages-for-organization operation.
+// PackagesListPackagesForOrganization invokes packages/list-packages-for-organization operation.
+//
+// GET /orgs/{org}/packages
 func (c *Client) PackagesListPackagesForOrganization(ctx context.Context, params PackagesListPackagesForOrganizationParams) (res PackagesListPackagesForOrganizationRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PackagesListPackagesForOrganization`,
@@ -25187,7 +25813,9 @@ func (c *Client) PackagesListPackagesForOrganization(ctx context.Context, params
 	return result, nil
 }
 
-// PackagesListPackagesForUser implements packages/list-packages-for-user operation.
+// PackagesListPackagesForUser invokes packages/list-packages-for-user operation.
+//
+// GET /users/{username}/packages
 func (c *Client) PackagesListPackagesForUser(ctx context.Context, params PackagesListPackagesForUserParams) (res PackagesListPackagesForUserRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PackagesListPackagesForUser`,
@@ -25272,7 +25900,9 @@ func (c *Client) PackagesListPackagesForUser(ctx context.Context, params Package
 	return result, nil
 }
 
-// PackagesRestorePackageForAuthenticatedUser implements packages/restore-package-for-authenticated-user operation.
+// PackagesRestorePackageForAuthenticatedUser invokes packages/restore-package-for-authenticated-user operation.
+//
+// POST /user/packages/{package_type}/{package_name}/restore
 func (c *Client) PackagesRestorePackageForAuthenticatedUser(ctx context.Context, params PackagesRestorePackageForAuthenticatedUserParams) (res PackagesRestorePackageForAuthenticatedUserRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PackagesRestorePackageForAuthenticatedUser`,
@@ -25359,7 +25989,9 @@ func (c *Client) PackagesRestorePackageForAuthenticatedUser(ctx context.Context,
 	return result, nil
 }
 
-// PackagesRestorePackageForOrg implements packages/restore-package-for-org operation.
+// PackagesRestorePackageForOrg invokes packages/restore-package-for-org operation.
+//
+// POST /orgs/{org}/packages/{package_type}/{package_name}/restore
 func (c *Client) PackagesRestorePackageForOrg(ctx context.Context, params PackagesRestorePackageForOrgParams) (res PackagesRestorePackageForOrgRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PackagesRestorePackageForOrg`,
@@ -25461,7 +26093,9 @@ func (c *Client) PackagesRestorePackageForOrg(ctx context.Context, params Packag
 	return result, nil
 }
 
-// PackagesRestorePackageForUser implements packages/restore-package-for-user operation.
+// PackagesRestorePackageForUser invokes packages/restore-package-for-user operation.
+//
+// POST /users/{username}/packages/{package_type}/{package_name}/restore
 func (c *Client) PackagesRestorePackageForUser(ctx context.Context, params PackagesRestorePackageForUserParams) (res PackagesRestorePackageForUserRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PackagesRestorePackageForUser`,
@@ -25563,7 +26197,9 @@ func (c *Client) PackagesRestorePackageForUser(ctx context.Context, params Packa
 	return result, nil
 }
 
-// PackagesRestorePackageVersionForAuthenticatedUser implements packages/restore-package-version-for-authenticated-user operation.
+// PackagesRestorePackageVersionForAuthenticatedUser invokes packages/restore-package-version-for-authenticated-user operation.
+//
+// POST /user/packages/{package_type}/{package_name}/versions/{package_version_id}/restore
 func (c *Client) PackagesRestorePackageVersionForAuthenticatedUser(ctx context.Context, params PackagesRestorePackageVersionForAuthenticatedUserParams) (res PackagesRestorePackageVersionForAuthenticatedUserRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PackagesRestorePackageVersionForAuthenticatedUser`,
@@ -25646,7 +26282,9 @@ func (c *Client) PackagesRestorePackageVersionForAuthenticatedUser(ctx context.C
 	return result, nil
 }
 
-// PackagesRestorePackageVersionForOrg implements packages/restore-package-version-for-org operation.
+// PackagesRestorePackageVersionForOrg invokes packages/restore-package-version-for-org operation.
+//
+// POST /orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore
 func (c *Client) PackagesRestorePackageVersionForOrg(ctx context.Context, params PackagesRestorePackageVersionForOrgParams) (res PackagesRestorePackageVersionForOrgRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PackagesRestorePackageVersionForOrg`,
@@ -25744,7 +26382,9 @@ func (c *Client) PackagesRestorePackageVersionForOrg(ctx context.Context, params
 	return result, nil
 }
 
-// PackagesRestorePackageVersionForUser implements packages/restore-package-version-for-user operation.
+// PackagesRestorePackageVersionForUser invokes packages/restore-package-version-for-user operation.
+//
+// POST /users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore
 func (c *Client) PackagesRestorePackageVersionForUser(ctx context.Context, params PackagesRestorePackageVersionForUserParams) (res PackagesRestorePackageVersionForUserRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PackagesRestorePackageVersionForUser`,
@@ -25842,7 +26482,9 @@ func (c *Client) PackagesRestorePackageVersionForUser(ctx context.Context, param
 	return result, nil
 }
 
-// ProjectsCreateColumn implements projects/create-column operation.
+// ProjectsCreateColumn invokes projects/create-column operation.
+//
+// POST /projects/{project_id}/columns
 func (c *Client) ProjectsCreateColumn(ctx context.Context, request ProjectsCreateColumnReq, params ProjectsCreateColumnParams) (res ProjectsCreateColumnRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ProjectsCreateColumn`,
@@ -25909,7 +26551,9 @@ func (c *Client) ProjectsCreateColumn(ctx context.Context, request ProjectsCreat
 	return result, nil
 }
 
-// ProjectsCreateForAuthenticatedUser implements projects/create-for-authenticated-user operation.
+// ProjectsCreateForAuthenticatedUser invokes projects/create-for-authenticated-user operation.
+//
+// POST /user/projects
 func (c *Client) ProjectsCreateForAuthenticatedUser(ctx context.Context, request ProjectsCreateForAuthenticatedUserReq) (res ProjectsCreateForAuthenticatedUserRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ProjectsCreateForAuthenticatedUser`,
@@ -25961,7 +26605,9 @@ func (c *Client) ProjectsCreateForAuthenticatedUser(ctx context.Context, request
 	return result, nil
 }
 
-// ProjectsCreateForOrg implements projects/create-for-org operation.
+// ProjectsCreateForOrg invokes projects/create-for-org operation.
+//
+// POST /orgs/{org}/projects
 func (c *Client) ProjectsCreateForOrg(ctx context.Context, request ProjectsCreateForOrgReq, params ProjectsCreateForOrgParams) (res ProjectsCreateForOrgRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ProjectsCreateForOrg`,
@@ -26028,7 +26674,9 @@ func (c *Client) ProjectsCreateForOrg(ctx context.Context, request ProjectsCreat
 	return result, nil
 }
 
-// ProjectsCreateForRepo implements projects/create-for-repo operation.
+// ProjectsCreateForRepo invokes projects/create-for-repo operation.
+//
+// POST /repos/{owner}/{repo}/projects
 func (c *Client) ProjectsCreateForRepo(ctx context.Context, request ProjectsCreateForRepoReq, params ProjectsCreateForRepoParams) (res ProjectsCreateForRepoRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ProjectsCreateForRepo`,
@@ -26110,7 +26758,9 @@ func (c *Client) ProjectsCreateForRepo(ctx context.Context, request ProjectsCrea
 	return result, nil
 }
 
-// ProjectsDelete implements projects/delete operation.
+// ProjectsDelete invokes projects/delete operation.
+//
+// DELETE /projects/{project_id}
 func (c *Client) ProjectsDelete(ctx context.Context, params ProjectsDeleteParams) (res ProjectsDeleteRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ProjectsDelete`,
@@ -26162,7 +26812,9 @@ func (c *Client) ProjectsDelete(ctx context.Context, params ProjectsDeleteParams
 	return result, nil
 }
 
-// ProjectsDeleteCard implements projects/delete-card operation.
+// ProjectsDeleteCard invokes projects/delete-card operation.
+//
+// DELETE /projects/columns/cards/{card_id}
 func (c *Client) ProjectsDeleteCard(ctx context.Context, params ProjectsDeleteCardParams) (res ProjectsDeleteCardRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ProjectsDeleteCard`,
@@ -26214,7 +26866,9 @@ func (c *Client) ProjectsDeleteCard(ctx context.Context, params ProjectsDeleteCa
 	return result, nil
 }
 
-// ProjectsDeleteColumn implements projects/delete-column operation.
+// ProjectsDeleteColumn invokes projects/delete-column operation.
+//
+// DELETE /projects/columns/{column_id}
 func (c *Client) ProjectsDeleteColumn(ctx context.Context, params ProjectsDeleteColumnParams) (res ProjectsDeleteColumnRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ProjectsDeleteColumn`,
@@ -26266,7 +26920,9 @@ func (c *Client) ProjectsDeleteColumn(ctx context.Context, params ProjectsDelete
 	return result, nil
 }
 
-// ProjectsGet implements projects/get operation.
+// ProjectsGet invokes projects/get operation.
+//
+// GET /projects/{project_id}
 func (c *Client) ProjectsGet(ctx context.Context, params ProjectsGetParams) (res ProjectsGetRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ProjectsGet`,
@@ -26318,7 +26974,9 @@ func (c *Client) ProjectsGet(ctx context.Context, params ProjectsGetParams) (res
 	return result, nil
 }
 
-// ProjectsGetCard implements projects/get-card operation.
+// ProjectsGetCard invokes projects/get-card operation.
+//
+// GET /projects/columns/cards/{card_id}
 func (c *Client) ProjectsGetCard(ctx context.Context, params ProjectsGetCardParams) (res ProjectsGetCardRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ProjectsGetCard`,
@@ -26370,7 +27028,9 @@ func (c *Client) ProjectsGetCard(ctx context.Context, params ProjectsGetCardPara
 	return result, nil
 }
 
-// ProjectsGetColumn implements projects/get-column operation.
+// ProjectsGetColumn invokes projects/get-column operation.
+//
+// GET /projects/columns/{column_id}
 func (c *Client) ProjectsGetColumn(ctx context.Context, params ProjectsGetColumnParams) (res ProjectsGetColumnRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ProjectsGetColumn`,
@@ -26422,7 +27082,9 @@ func (c *Client) ProjectsGetColumn(ctx context.Context, params ProjectsGetColumn
 	return result, nil
 }
 
-// ProjectsListCards implements projects/list-cards operation.
+// ProjectsListCards invokes projects/list-cards operation.
+//
+// GET /projects/columns/{column_id}/cards
 func (c *Client) ProjectsListCards(ctx context.Context, params ProjectsListCardsParams) (res ProjectsListCardsRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ProjectsListCards`,
@@ -26526,7 +27188,9 @@ func (c *Client) ProjectsListCards(ctx context.Context, params ProjectsListCards
 	return result, nil
 }
 
-// ProjectsListColumns implements projects/list-columns operation.
+// ProjectsListColumns invokes projects/list-columns operation.
+//
+// GET /projects/{project_id}/columns
 func (c *Client) ProjectsListColumns(ctx context.Context, params ProjectsListColumnsParams) (res ProjectsListColumnsRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ProjectsListColumns`,
@@ -26614,7 +27278,9 @@ func (c *Client) ProjectsListColumns(ctx context.Context, params ProjectsListCol
 	return result, nil
 }
 
-// ProjectsListForOrg implements projects/list-for-org operation.
+// ProjectsListForOrg invokes projects/list-for-org operation.
+//
+// GET /orgs/{org}/projects
 func (c *Client) ProjectsListForOrg(ctx context.Context, params ProjectsListForOrgParams) (res ProjectsListForOrgRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ProjectsListForOrg`,
@@ -26718,7 +27384,9 @@ func (c *Client) ProjectsListForOrg(ctx context.Context, params ProjectsListForO
 	return result, nil
 }
 
-// ProjectsListForRepo implements projects/list-for-repo operation.
+// ProjectsListForRepo invokes projects/list-for-repo operation.
+//
+// GET /repos/{owner}/{repo}/projects
 func (c *Client) ProjectsListForRepo(ctx context.Context, params ProjectsListForRepoParams) (res ProjectsListForRepoRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ProjectsListForRepo`,
@@ -26837,7 +27505,9 @@ func (c *Client) ProjectsListForRepo(ctx context.Context, params ProjectsListFor
 	return result, nil
 }
 
-// ProjectsMoveColumn implements projects/move-column operation.
+// ProjectsMoveColumn invokes projects/move-column operation.
+//
+// POST /projects/columns/{column_id}/moves
 func (c *Client) ProjectsMoveColumn(ctx context.Context, request ProjectsMoveColumnReq, params ProjectsMoveColumnParams) (res ProjectsMoveColumnRes, err error) {
 	if err := func() error {
 
@@ -26913,7 +27583,9 @@ func (c *Client) ProjectsMoveColumn(ctx context.Context, request ProjectsMoveCol
 	return result, nil
 }
 
-// ProjectsUpdate implements projects/update operation.
+// ProjectsUpdate invokes projects/update operation.
+//
+// PATCH /projects/{project_id}
 func (c *Client) ProjectsUpdate(ctx context.Context, request ProjectsUpdateReq, params ProjectsUpdateParams) (res ProjectsUpdateRes, err error) {
 	if err := func() error {
 
@@ -26988,7 +27660,9 @@ func (c *Client) ProjectsUpdate(ctx context.Context, request ProjectsUpdateReq, 
 	return result, nil
 }
 
-// ProjectsUpdateCard implements projects/update-card operation.
+// ProjectsUpdateCard invokes projects/update-card operation.
+//
+// PATCH /projects/columns/cards/{card_id}
 func (c *Client) ProjectsUpdateCard(ctx context.Context, request ProjectsUpdateCardReq, params ProjectsUpdateCardParams) (res ProjectsUpdateCardRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ProjectsUpdateCard`,
@@ -27054,7 +27728,9 @@ func (c *Client) ProjectsUpdateCard(ctx context.Context, request ProjectsUpdateC
 	return result, nil
 }
 
-// ProjectsUpdateColumn implements projects/update-column operation.
+// ProjectsUpdateColumn invokes projects/update-column operation.
+//
+// PATCH /projects/columns/{column_id}
 func (c *Client) ProjectsUpdateColumn(ctx context.Context, request ProjectsUpdateColumnReq, params ProjectsUpdateColumnParams) (res ProjectsUpdateColumnRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ProjectsUpdateColumn`,
@@ -27120,7 +27796,9 @@ func (c *Client) ProjectsUpdateColumn(ctx context.Context, request ProjectsUpdat
 	return result, nil
 }
 
-// PullsCheckIfMerged implements pulls/check-if-merged operation.
+// PullsCheckIfMerged invokes pulls/check-if-merged operation.
+//
+// GET /repos/{owner}/{repo}/pulls/{pull_number}/merge
 func (c *Client) PullsCheckIfMerged(ctx context.Context, params PullsCheckIfMergedParams) (res PullsCheckIfMergedRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PullsCheckIfMerged`,
@@ -27203,7 +27881,9 @@ func (c *Client) PullsCheckIfMerged(ctx context.Context, params PullsCheckIfMerg
 	return result, nil
 }
 
-// PullsCreateReplyForReviewComment implements pulls/create-reply-for-review-comment operation.
+// PullsCreateReplyForReviewComment invokes pulls/create-reply-for-review-comment operation.
+//
+// POST /repos/{owner}/{repo}/pulls/{pull_number}/comments/{comment_id}/replies
 func (c *Client) PullsCreateReplyForReviewComment(ctx context.Context, request PullsCreateReplyForReviewCommentReq, params PullsCreateReplyForReviewCommentParams) (res PullsCreateReplyForReviewCommentRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PullsCreateReplyForReviewComment`,
@@ -27315,7 +27995,9 @@ func (c *Client) PullsCreateReplyForReviewComment(ctx context.Context, request P
 	return result, nil
 }
 
-// PullsCreateReview implements pulls/create-review operation.
+// PullsCreateReview invokes pulls/create-review operation.
+//
+// POST /repos/{owner}/{repo}/pulls/{pull_number}/reviews
 func (c *Client) PullsCreateReview(ctx context.Context, request PullsCreateReviewReq, params PullsCreateReviewParams) (res PullsCreateReviewRes, err error) {
 	if err := func() error {
 
@@ -27421,7 +28103,9 @@ func (c *Client) PullsCreateReview(ctx context.Context, request PullsCreateRevie
 	return result, nil
 }
 
-// PullsDeletePendingReview implements pulls/delete-pending-review operation.
+// PullsDeletePendingReview invokes pulls/delete-pending-review operation.
+//
+// DELETE /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}
 func (c *Client) PullsDeletePendingReview(ctx context.Context, params PullsDeletePendingReviewParams) (res PullsDeletePendingReviewRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PullsDeletePendingReview`,
@@ -27518,7 +28202,9 @@ func (c *Client) PullsDeletePendingReview(ctx context.Context, params PullsDelet
 	return result, nil
 }
 
-// PullsDeleteReviewComment implements pulls/delete-review-comment operation.
+// PullsDeleteReviewComment invokes pulls/delete-review-comment operation.
+//
+// DELETE /repos/{owner}/{repo}/pulls/comments/{comment_id}
 func (c *Client) PullsDeleteReviewComment(ctx context.Context, params PullsDeleteReviewCommentParams) (res PullsDeleteReviewCommentRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PullsDeleteReviewComment`,
@@ -27600,7 +28286,9 @@ func (c *Client) PullsDeleteReviewComment(ctx context.Context, params PullsDelet
 	return result, nil
 }
 
-// PullsDismissReview implements pulls/dismiss-review operation.
+// PullsDismissReview invokes pulls/dismiss-review operation.
+//
+// PUT /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/dismissals
 func (c *Client) PullsDismissReview(ctx context.Context, request PullsDismissReviewReq, params PullsDismissReviewParams) (res PullsDismissReviewRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PullsDismissReview`,
@@ -27712,7 +28400,9 @@ func (c *Client) PullsDismissReview(ctx context.Context, request PullsDismissRev
 	return result, nil
 }
 
-// PullsGet implements pulls/get operation.
+// PullsGet invokes pulls/get operation.
+//
+// GET /repos/{owner}/{repo}/pulls/{pull_number}
 func (c *Client) PullsGet(ctx context.Context, params PullsGetParams) (res PullsGetRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PullsGet`,
@@ -27794,7 +28484,9 @@ func (c *Client) PullsGet(ctx context.Context, params PullsGetParams) (res Pulls
 	return result, nil
 }
 
-// PullsGetReview implements pulls/get-review operation.
+// PullsGetReview invokes pulls/get-review operation.
+//
+// GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}
 func (c *Client) PullsGetReview(ctx context.Context, params PullsGetReviewParams) (res PullsGetReviewRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PullsGetReview`,
@@ -27891,7 +28583,9 @@ func (c *Client) PullsGetReview(ctx context.Context, params PullsGetReviewParams
 	return result, nil
 }
 
-// PullsGetReviewComment implements pulls/get-review-comment operation.
+// PullsGetReviewComment invokes pulls/get-review-comment operation.
+//
+// GET /repos/{owner}/{repo}/pulls/comments/{comment_id}
 func (c *Client) PullsGetReviewComment(ctx context.Context, params PullsGetReviewCommentParams) (res PullsGetReviewCommentRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PullsGetReviewComment`,
@@ -27973,7 +28667,9 @@ func (c *Client) PullsGetReviewComment(ctx context.Context, params PullsGetRevie
 	return result, nil
 }
 
-// PullsListCommentsForReview implements pulls/list-comments-for-review operation.
+// PullsListCommentsForReview invokes pulls/list-comments-for-review operation.
+//
+// GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/comments
 func (c *Client) PullsListCommentsForReview(ctx context.Context, params PullsListCommentsForReviewParams) (res PullsListCommentsForReviewRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PullsListCommentsForReview`,
@@ -28106,7 +28802,9 @@ func (c *Client) PullsListCommentsForReview(ctx context.Context, params PullsLis
 	return result, nil
 }
 
-// PullsListCommits implements pulls/list-commits operation.
+// PullsListCommits invokes pulls/list-commits operation.
+//
+// GET /repos/{owner}/{repo}/pulls/{pull_number}/commits
 func (c *Client) PullsListCommits(ctx context.Context, params PullsListCommitsParams) (res []Commit, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PullsListCommits`,
@@ -28224,7 +28922,9 @@ func (c *Client) PullsListCommits(ctx context.Context, params PullsListCommitsPa
 	return result, nil
 }
 
-// PullsListRequestedReviewers implements pulls/list-requested-reviewers operation.
+// PullsListRequestedReviewers invokes pulls/list-requested-reviewers operation.
+//
+// GET /repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers
 func (c *Client) PullsListRequestedReviewers(ctx context.Context, params PullsListRequestedReviewersParams) (res PullRequestReviewRequest, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PullsListRequestedReviewers`,
@@ -28342,7 +29042,9 @@ func (c *Client) PullsListRequestedReviewers(ctx context.Context, params PullsLi
 	return result, nil
 }
 
-// PullsListReviewComments implements pulls/list-review-comments operation.
+// PullsListReviewComments invokes pulls/list-review-comments operation.
+//
+// GET /repos/{owner}/{repo}/pulls/{pull_number}/comments
 func (c *Client) PullsListReviewComments(ctx context.Context, params PullsListReviewCommentsParams) (res []PullRequestReviewComment, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PullsListReviewComments`,
@@ -28508,7 +29210,9 @@ func (c *Client) PullsListReviewComments(ctx context.Context, params PullsListRe
 	return result, nil
 }
 
-// PullsListReviewCommentsForRepo implements pulls/list-review-comments-for-repo operation.
+// PullsListReviewCommentsForRepo invokes pulls/list-review-comments-for-repo operation.
+//
+// GET /repos/{owner}/{repo}/pulls/comments
 func (c *Client) PullsListReviewCommentsForRepo(ctx context.Context, params PullsListReviewCommentsForRepoParams) (res []PullRequestReviewComment, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PullsListReviewCommentsForRepo`,
@@ -28659,7 +29363,9 @@ func (c *Client) PullsListReviewCommentsForRepo(ctx context.Context, params Pull
 	return result, nil
 }
 
-// PullsListReviews implements pulls/list-reviews operation.
+// PullsListReviews invokes pulls/list-reviews operation.
+//
+// GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews
 func (c *Client) PullsListReviews(ctx context.Context, params PullsListReviewsParams) (res []PullRequestReview, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PullsListReviews`,
@@ -28777,7 +29483,9 @@ func (c *Client) PullsListReviews(ctx context.Context, params PullsListReviewsPa
 	return result, nil
 }
 
-// PullsSubmitReview implements pulls/submit-review operation.
+// PullsSubmitReview invokes pulls/submit-review operation.
+//
+// POST /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/events
 func (c *Client) PullsSubmitReview(ctx context.Context, request PullsSubmitReviewReq, params PullsSubmitReviewParams) (res PullsSubmitReviewRes, err error) {
 	if err := func() error {
 
@@ -28898,7 +29606,9 @@ func (c *Client) PullsSubmitReview(ctx context.Context, request PullsSubmitRevie
 	return result, nil
 }
 
-// PullsUpdateReview implements pulls/update-review operation.
+// PullsUpdateReview invokes pulls/update-review operation.
+//
+// PUT /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}
 func (c *Client) PullsUpdateReview(ctx context.Context, request PullsUpdateReviewReq, params PullsUpdateReviewParams) (res PullsUpdateReviewRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PullsUpdateReview`,
@@ -29009,7 +29719,9 @@ func (c *Client) PullsUpdateReview(ctx context.Context, request PullsUpdateRevie
 	return result, nil
 }
 
-// PullsUpdateReviewComment implements pulls/update-review-comment operation.
+// PullsUpdateReviewComment invokes pulls/update-review-comment operation.
+//
+// PATCH /repos/{owner}/{repo}/pulls/comments/{comment_id}
 func (c *Client) PullsUpdateReviewComment(ctx context.Context, request PullsUpdateReviewCommentReq, params PullsUpdateReviewCommentParams) (res PullRequestReviewComment, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PullsUpdateReviewComment`,
@@ -29105,7 +29817,9 @@ func (c *Client) PullsUpdateReviewComment(ctx context.Context, request PullsUpda
 	return result, nil
 }
 
-// RateLimitGet implements rate-limit/get operation.
+// RateLimitGet invokes rate-limit/get operation.
+//
+// GET /rate_limit
 func (c *Client) RateLimitGet(ctx context.Context) (res RateLimitGetRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `RateLimitGet`,
@@ -29143,7 +29857,9 @@ func (c *Client) RateLimitGet(ctx context.Context) (res RateLimitGetRes, err err
 	return result, nil
 }
 
-// ReactionsCreateForTeamDiscussionCommentInOrg implements reactions/create-for-team-discussion-comment-in-org operation.
+// ReactionsCreateForTeamDiscussionCommentInOrg invokes reactions/create-for-team-discussion-comment-in-org operation.
+//
+// POST /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions
 func (c *Client) ReactionsCreateForTeamDiscussionCommentInOrg(ctx context.Context, request ReactionsCreateForTeamDiscussionCommentInOrgReq, params ReactionsCreateForTeamDiscussionCommentInOrgParams) (res ReactionsCreateForTeamDiscussionCommentInOrgRes, err error) {
 	if err := func() error {
 
@@ -29264,7 +29980,9 @@ func (c *Client) ReactionsCreateForTeamDiscussionCommentInOrg(ctx context.Contex
 	return result, nil
 }
 
-// ReactionsCreateForTeamDiscussionCommentLegacy implements reactions/create-for-team-discussion-comment-legacy operation.
+// ReactionsCreateForTeamDiscussionCommentLegacy invokes reactions/create-for-team-discussion-comment-legacy operation.
+//
+// POST /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions
 func (c *Client) ReactionsCreateForTeamDiscussionCommentLegacy(ctx context.Context, request ReactionsCreateForTeamDiscussionCommentLegacyReq, params ReactionsCreateForTeamDiscussionCommentLegacyParams) (res Reaction, err error) {
 	if err := func() error {
 
@@ -29370,7 +30088,9 @@ func (c *Client) ReactionsCreateForTeamDiscussionCommentLegacy(ctx context.Conte
 	return result, nil
 }
 
-// ReactionsCreateForTeamDiscussionInOrg implements reactions/create-for-team-discussion-in-org operation.
+// ReactionsCreateForTeamDiscussionInOrg invokes reactions/create-for-team-discussion-in-org operation.
+//
+// POST /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions
 func (c *Client) ReactionsCreateForTeamDiscussionInOrg(ctx context.Context, request ReactionsCreateForTeamDiscussionInOrgReq, params ReactionsCreateForTeamDiscussionInOrgParams) (res ReactionsCreateForTeamDiscussionInOrgRes, err error) {
 	if err := func() error {
 
@@ -29476,7 +30196,9 @@ func (c *Client) ReactionsCreateForTeamDiscussionInOrg(ctx context.Context, requ
 	return result, nil
 }
 
-// ReactionsCreateForTeamDiscussionLegacy implements reactions/create-for-team-discussion-legacy operation.
+// ReactionsCreateForTeamDiscussionLegacy invokes reactions/create-for-team-discussion-legacy operation.
+//
+// POST /teams/{team_id}/discussions/{discussion_number}/reactions
 func (c *Client) ReactionsCreateForTeamDiscussionLegacy(ctx context.Context, request ReactionsCreateForTeamDiscussionLegacyReq, params ReactionsCreateForTeamDiscussionLegacyParams) (res Reaction, err error) {
 	if err := func() error {
 
@@ -29567,7 +30289,9 @@ func (c *Client) ReactionsCreateForTeamDiscussionLegacy(ctx context.Context, req
 	return result, nil
 }
 
-// ReactionsDeleteForCommitComment implements reactions/delete-for-commit-comment operation.
+// ReactionsDeleteForCommitComment invokes reactions/delete-for-commit-comment operation.
+//
+// DELETE /repos/{owner}/{repo}/comments/{comment_id}/reactions/{reaction_id}
 func (c *Client) ReactionsDeleteForCommitComment(ctx context.Context, params ReactionsDeleteForCommitCommentParams) (res ReactionsDeleteForCommitCommentNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReactionsDeleteForCommitComment`,
@@ -29664,7 +30388,9 @@ func (c *Client) ReactionsDeleteForCommitComment(ctx context.Context, params Rea
 	return result, nil
 }
 
-// ReactionsDeleteForIssue implements reactions/delete-for-issue operation.
+// ReactionsDeleteForIssue invokes reactions/delete-for-issue operation.
+//
+// DELETE /repos/{owner}/{repo}/issues/{issue_number}/reactions/{reaction_id}
 func (c *Client) ReactionsDeleteForIssue(ctx context.Context, params ReactionsDeleteForIssueParams) (res ReactionsDeleteForIssueNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReactionsDeleteForIssue`,
@@ -29761,7 +30487,9 @@ func (c *Client) ReactionsDeleteForIssue(ctx context.Context, params ReactionsDe
 	return result, nil
 }
 
-// ReactionsDeleteForIssueComment implements reactions/delete-for-issue-comment operation.
+// ReactionsDeleteForIssueComment invokes reactions/delete-for-issue-comment operation.
+//
+// DELETE /repos/{owner}/{repo}/issues/comments/{comment_id}/reactions/{reaction_id}
 func (c *Client) ReactionsDeleteForIssueComment(ctx context.Context, params ReactionsDeleteForIssueCommentParams) (res ReactionsDeleteForIssueCommentNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReactionsDeleteForIssueComment`,
@@ -29858,7 +30586,9 @@ func (c *Client) ReactionsDeleteForIssueComment(ctx context.Context, params Reac
 	return result, nil
 }
 
-// ReactionsDeleteForPullRequestComment implements reactions/delete-for-pull-request-comment operation.
+// ReactionsDeleteForPullRequestComment invokes reactions/delete-for-pull-request-comment operation.
+//
+// DELETE /repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions/{reaction_id}
 func (c *Client) ReactionsDeleteForPullRequestComment(ctx context.Context, params ReactionsDeleteForPullRequestCommentParams) (res ReactionsDeleteForPullRequestCommentNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReactionsDeleteForPullRequestComment`,
@@ -29955,7 +30685,9 @@ func (c *Client) ReactionsDeleteForPullRequestComment(ctx context.Context, param
 	return result, nil
 }
 
-// ReactionsDeleteForTeamDiscussion implements reactions/delete-for-team-discussion operation.
+// ReactionsDeleteForTeamDiscussion invokes reactions/delete-for-team-discussion operation.
+//
+// DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions/{reaction_id}
 func (c *Client) ReactionsDeleteForTeamDiscussion(ctx context.Context, params ReactionsDeleteForTeamDiscussionParams) (res ReactionsDeleteForTeamDiscussionNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReactionsDeleteForTeamDiscussion`,
@@ -30052,7 +30784,9 @@ func (c *Client) ReactionsDeleteForTeamDiscussion(ctx context.Context, params Re
 	return result, nil
 }
 
-// ReactionsDeleteForTeamDiscussionComment implements reactions/delete-for-team-discussion-comment operation.
+// ReactionsDeleteForTeamDiscussionComment invokes reactions/delete-for-team-discussion-comment operation.
+//
+// DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions/{reaction_id}
 func (c *Client) ReactionsDeleteForTeamDiscussionComment(ctx context.Context, params ReactionsDeleteForTeamDiscussionCommentParams) (res ReactionsDeleteForTeamDiscussionCommentNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReactionsDeleteForTeamDiscussionComment`,
@@ -30164,7 +30898,9 @@ func (c *Client) ReactionsDeleteForTeamDiscussionComment(ctx context.Context, pa
 	return result, nil
 }
 
-// ReactionsDeleteLegacy implements reactions/delete-legacy operation.
+// ReactionsDeleteLegacy invokes reactions/delete-legacy operation.
+//
+// DELETE /reactions/{reaction_id}
 func (c *Client) ReactionsDeleteLegacy(ctx context.Context, params ReactionsDeleteLegacyParams) (res ReactionsDeleteLegacyRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReactionsDeleteLegacy`,
@@ -30216,7 +30952,9 @@ func (c *Client) ReactionsDeleteLegacy(ctx context.Context, params ReactionsDele
 	return result, nil
 }
 
-// ReactionsListForCommitComment implements reactions/list-for-commit-comment operation.
+// ReactionsListForCommitComment invokes reactions/list-for-commit-comment operation.
+//
+// GET /repos/{owner}/{repo}/comments/{comment_id}/reactions
 func (c *Client) ReactionsListForCommitComment(ctx context.Context, params ReactionsListForCommitCommentParams) (res ReactionsListForCommitCommentRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReactionsListForCommitComment`,
@@ -30350,7 +31088,9 @@ func (c *Client) ReactionsListForCommitComment(ctx context.Context, params React
 	return result, nil
 }
 
-// ReactionsListForIssue implements reactions/list-for-issue operation.
+// ReactionsListForIssue invokes reactions/list-for-issue operation.
+//
+// GET /repos/{owner}/{repo}/issues/{issue_number}/reactions
 func (c *Client) ReactionsListForIssue(ctx context.Context, params ReactionsListForIssueParams) (res ReactionsListForIssueRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReactionsListForIssue`,
@@ -30484,7 +31224,9 @@ func (c *Client) ReactionsListForIssue(ctx context.Context, params ReactionsList
 	return result, nil
 }
 
-// ReactionsListForIssueComment implements reactions/list-for-issue-comment operation.
+// ReactionsListForIssueComment invokes reactions/list-for-issue-comment operation.
+//
+// GET /repos/{owner}/{repo}/issues/comments/{comment_id}/reactions
 func (c *Client) ReactionsListForIssueComment(ctx context.Context, params ReactionsListForIssueCommentParams) (res ReactionsListForIssueCommentRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReactionsListForIssueComment`,
@@ -30618,7 +31360,9 @@ func (c *Client) ReactionsListForIssueComment(ctx context.Context, params Reacti
 	return result, nil
 }
 
-// ReactionsListForPullRequestReviewComment implements reactions/list-for-pull-request-review-comment operation.
+// ReactionsListForPullRequestReviewComment invokes reactions/list-for-pull-request-review-comment operation.
+//
+// GET /repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions
 func (c *Client) ReactionsListForPullRequestReviewComment(ctx context.Context, params ReactionsListForPullRequestReviewCommentParams) (res ReactionsListForPullRequestReviewCommentRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReactionsListForPullRequestReviewComment`,
@@ -30752,7 +31496,9 @@ func (c *Client) ReactionsListForPullRequestReviewComment(ctx context.Context, p
 	return result, nil
 }
 
-// ReactionsListForTeamDiscussionCommentInOrg implements reactions/list-for-team-discussion-comment-in-org operation.
+// ReactionsListForTeamDiscussionCommentInOrg invokes reactions/list-for-team-discussion-comment-in-org operation.
+//
+// GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions
 func (c *Client) ReactionsListForTeamDiscussionCommentInOrg(ctx context.Context, params ReactionsListForTeamDiscussionCommentInOrgParams) (res []Reaction, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReactionsListForTeamDiscussionCommentInOrg`,
@@ -30901,7 +31647,9 @@ func (c *Client) ReactionsListForTeamDiscussionCommentInOrg(ctx context.Context,
 	return result, nil
 }
 
-// ReactionsListForTeamDiscussionCommentLegacy implements reactions/list-for-team-discussion-comment-legacy operation.
+// ReactionsListForTeamDiscussionCommentLegacy invokes reactions/list-for-team-discussion-comment-legacy operation.
+//
+// GET /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions
 func (c *Client) ReactionsListForTeamDiscussionCommentLegacy(ctx context.Context, params ReactionsListForTeamDiscussionCommentLegacyParams) (res []Reaction, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReactionsListForTeamDiscussionCommentLegacy`,
@@ -31035,7 +31783,9 @@ func (c *Client) ReactionsListForTeamDiscussionCommentLegacy(ctx context.Context
 	return result, nil
 }
 
-// ReactionsListForTeamDiscussionInOrg implements reactions/list-for-team-discussion-in-org operation.
+// ReactionsListForTeamDiscussionInOrg invokes reactions/list-for-team-discussion-in-org operation.
+//
+// GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions
 func (c *Client) ReactionsListForTeamDiscussionInOrg(ctx context.Context, params ReactionsListForTeamDiscussionInOrgParams) (res []Reaction, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReactionsListForTeamDiscussionInOrg`,
@@ -31169,7 +31919,9 @@ func (c *Client) ReactionsListForTeamDiscussionInOrg(ctx context.Context, params
 	return result, nil
 }
 
-// ReactionsListForTeamDiscussionLegacy implements reactions/list-for-team-discussion-legacy operation.
+// ReactionsListForTeamDiscussionLegacy invokes reactions/list-for-team-discussion-legacy operation.
+//
+// GET /teams/{team_id}/discussions/{discussion_number}/reactions
 func (c *Client) ReactionsListForTeamDiscussionLegacy(ctx context.Context, params ReactionsListForTeamDiscussionLegacyParams) (res []Reaction, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReactionsListForTeamDiscussionLegacy`,
@@ -31288,7 +32040,9 @@ func (c *Client) ReactionsListForTeamDiscussionLegacy(ctx context.Context, param
 	return result, nil
 }
 
-// ReposAcceptInvitation implements repos/accept-invitation operation.
+// ReposAcceptInvitation invokes repos/accept-invitation operation.
+//
+// PATCH /user/repository_invitations/{invitation_id}
 func (c *Client) ReposAcceptInvitation(ctx context.Context, params ReposAcceptInvitationParams) (res ReposAcceptInvitationRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposAcceptInvitation`,
@@ -31340,7 +32094,9 @@ func (c *Client) ReposAcceptInvitation(ctx context.Context, params ReposAcceptIn
 	return result, nil
 }
 
-// ReposCheckCollaborator implements repos/check-collaborator operation.
+// ReposCheckCollaborator invokes repos/check-collaborator operation.
+//
+// GET /repos/{owner}/{repo}/collaborators/{username}
 func (c *Client) ReposCheckCollaborator(ctx context.Context, params ReposCheckCollaboratorParams) (res ReposCheckCollaboratorRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposCheckCollaborator`,
@@ -31422,7 +32178,9 @@ func (c *Client) ReposCheckCollaborator(ctx context.Context, params ReposCheckCo
 	return result, nil
 }
 
-// ReposCheckVulnerabilityAlerts implements repos/check-vulnerability-alerts operation.
+// ReposCheckVulnerabilityAlerts invokes repos/check-vulnerability-alerts operation.
+//
+// GET /repos/{owner}/{repo}/vulnerability-alerts
 func (c *Client) ReposCheckVulnerabilityAlerts(ctx context.Context, params ReposCheckVulnerabilityAlertsParams) (res ReposCheckVulnerabilityAlertsRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposCheckVulnerabilityAlerts`,
@@ -31490,7 +32248,9 @@ func (c *Client) ReposCheckVulnerabilityAlerts(ctx context.Context, params Repos
 	return result, nil
 }
 
-// ReposCompareCommits implements repos/compare-commits operation.
+// ReposCompareCommits invokes repos/compare-commits operation.
+//
+// GET /repos/{owner}/{repo}/compare/{basehead}
 func (c *Client) ReposCompareCommits(ctx context.Context, params ReposCompareCommitsParams) (res ReposCompareCommitsRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposCompareCommits`,
@@ -31607,7 +32367,9 @@ func (c *Client) ReposCompareCommits(ctx context.Context, params ReposCompareCom
 	return result, nil
 }
 
-// ReposCreateCommitSignatureProtection implements repos/create-commit-signature-protection operation.
+// ReposCreateCommitSignatureProtection invokes repos/create-commit-signature-protection operation.
+//
+// POST /repos/{owner}/{repo}/branches/{branch}/protection/required_signatures
 func (c *Client) ReposCreateCommitSignatureProtection(ctx context.Context, params ReposCreateCommitSignatureProtectionParams) (res ReposCreateCommitSignatureProtectionRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposCreateCommitSignatureProtection`,
@@ -31690,7 +32452,9 @@ func (c *Client) ReposCreateCommitSignatureProtection(ctx context.Context, param
 	return result, nil
 }
 
-// ReposCreateCommitStatus implements repos/create-commit-status operation.
+// ReposCreateCommitStatus invokes repos/create-commit-status operation.
+//
+// POST /repos/{owner}/{repo}/statuses/{sha}
 func (c *Client) ReposCreateCommitStatus(ctx context.Context, request ReposCreateCommitStatusReq, params ReposCreateCommitStatusParams) (res Status, err error) {
 	if err := func() error {
 
@@ -31795,7 +32559,9 @@ func (c *Client) ReposCreateCommitStatus(ctx context.Context, request ReposCreat
 	return result, nil
 }
 
-// ReposCreateUsingTemplate implements repos/create-using-template operation.
+// ReposCreateUsingTemplate invokes repos/create-using-template operation.
+//
+// POST /repos/{template_owner}/{template_repo}/generate
 func (c *Client) ReposCreateUsingTemplate(ctx context.Context, request ReposCreateUsingTemplateReq, params ReposCreateUsingTemplateParams) (res Repository, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposCreateUsingTemplate`,
@@ -31877,7 +32643,9 @@ func (c *Client) ReposCreateUsingTemplate(ctx context.Context, request ReposCrea
 	return result, nil
 }
 
-// ReposDeclineInvitation implements repos/decline-invitation operation.
+// ReposDeclineInvitation invokes repos/decline-invitation operation.
+//
+// DELETE /user/repository_invitations/{invitation_id}
 func (c *Client) ReposDeclineInvitation(ctx context.Context, params ReposDeclineInvitationParams) (res ReposDeclineInvitationRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposDeclineInvitation`,
@@ -31929,7 +32697,9 @@ func (c *Client) ReposDeclineInvitation(ctx context.Context, params ReposDecline
 	return result, nil
 }
 
-// ReposDelete implements repos/delete operation.
+// ReposDelete invokes repos/delete operation.
+//
+// DELETE /repos/{owner}/{repo}
 func (c *Client) ReposDelete(ctx context.Context, params ReposDeleteParams) (res ReposDeleteRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposDelete`,
@@ -31996,7 +32766,9 @@ func (c *Client) ReposDelete(ctx context.Context, params ReposDeleteParams) (res
 	return result, nil
 }
 
-// ReposDeleteAccessRestrictions implements repos/delete-access-restrictions operation.
+// ReposDeleteAccessRestrictions invokes repos/delete-access-restrictions operation.
+//
+// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions
 func (c *Client) ReposDeleteAccessRestrictions(ctx context.Context, params ReposDeleteAccessRestrictionsParams) (res ReposDeleteAccessRestrictionsNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposDeleteAccessRestrictions`,
@@ -32079,7 +32851,9 @@ func (c *Client) ReposDeleteAccessRestrictions(ctx context.Context, params Repos
 	return result, nil
 }
 
-// ReposDeleteAdminBranchProtection implements repos/delete-admin-branch-protection operation.
+// ReposDeleteAdminBranchProtection invokes repos/delete-admin-branch-protection operation.
+//
+// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins
 func (c *Client) ReposDeleteAdminBranchProtection(ctx context.Context, params ReposDeleteAdminBranchProtectionParams) (res ReposDeleteAdminBranchProtectionRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposDeleteAdminBranchProtection`,
@@ -32162,7 +32936,9 @@ func (c *Client) ReposDeleteAdminBranchProtection(ctx context.Context, params Re
 	return result, nil
 }
 
-// ReposDeleteAnEnvironment implements repos/delete-an-environment operation.
+// ReposDeleteAnEnvironment invokes repos/delete-an-environment operation.
+//
+// DELETE /repos/{owner}/{repo}/environments/{environment_name}
 func (c *Client) ReposDeleteAnEnvironment(ctx context.Context, params ReposDeleteAnEnvironmentParams) (res ReposDeleteAnEnvironmentNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposDeleteAnEnvironment`,
@@ -32244,7 +33020,9 @@ func (c *Client) ReposDeleteAnEnvironment(ctx context.Context, params ReposDelet
 	return result, nil
 }
 
-// ReposDeleteAutolink implements repos/delete-autolink operation.
+// ReposDeleteAutolink invokes repos/delete-autolink operation.
+//
+// DELETE /repos/{owner}/{repo}/autolinks/{autolink_id}
 func (c *Client) ReposDeleteAutolink(ctx context.Context, params ReposDeleteAutolinkParams) (res ReposDeleteAutolinkRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposDeleteAutolink`,
@@ -32326,7 +33104,9 @@ func (c *Client) ReposDeleteAutolink(ctx context.Context, params ReposDeleteAuto
 	return result, nil
 }
 
-// ReposDeleteBranchProtection implements repos/delete-branch-protection operation.
+// ReposDeleteBranchProtection invokes repos/delete-branch-protection operation.
+//
+// DELETE /repos/{owner}/{repo}/branches/{branch}/protection
 func (c *Client) ReposDeleteBranchProtection(ctx context.Context, params ReposDeleteBranchProtectionParams) (res ReposDeleteBranchProtectionRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposDeleteBranchProtection`,
@@ -32409,7 +33189,9 @@ func (c *Client) ReposDeleteBranchProtection(ctx context.Context, params ReposDe
 	return result, nil
 }
 
-// ReposDeleteCommitComment implements repos/delete-commit-comment operation.
+// ReposDeleteCommitComment invokes repos/delete-commit-comment operation.
+//
+// DELETE /repos/{owner}/{repo}/comments/{comment_id}
 func (c *Client) ReposDeleteCommitComment(ctx context.Context, params ReposDeleteCommitCommentParams) (res ReposDeleteCommitCommentRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposDeleteCommitComment`,
@@ -32491,7 +33273,9 @@ func (c *Client) ReposDeleteCommitComment(ctx context.Context, params ReposDelet
 	return result, nil
 }
 
-// ReposDeleteCommitSignatureProtection implements repos/delete-commit-signature-protection operation.
+// ReposDeleteCommitSignatureProtection invokes repos/delete-commit-signature-protection operation.
+//
+// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_signatures
 func (c *Client) ReposDeleteCommitSignatureProtection(ctx context.Context, params ReposDeleteCommitSignatureProtectionParams) (res ReposDeleteCommitSignatureProtectionRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposDeleteCommitSignatureProtection`,
@@ -32574,7 +33358,9 @@ func (c *Client) ReposDeleteCommitSignatureProtection(ctx context.Context, param
 	return result, nil
 }
 
-// ReposDeleteDeployKey implements repos/delete-deploy-key operation.
+// ReposDeleteDeployKey invokes repos/delete-deploy-key operation.
+//
+// DELETE /repos/{owner}/{repo}/keys/{key_id}
 func (c *Client) ReposDeleteDeployKey(ctx context.Context, params ReposDeleteDeployKeyParams) (res ReposDeleteDeployKeyNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposDeleteDeployKey`,
@@ -32656,7 +33442,9 @@ func (c *Client) ReposDeleteDeployKey(ctx context.Context, params ReposDeleteDep
 	return result, nil
 }
 
-// ReposDeleteDeployment implements repos/delete-deployment operation.
+// ReposDeleteDeployment invokes repos/delete-deployment operation.
+//
+// DELETE /repos/{owner}/{repo}/deployments/{deployment_id}
 func (c *Client) ReposDeleteDeployment(ctx context.Context, params ReposDeleteDeploymentParams) (res ReposDeleteDeploymentRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposDeleteDeployment`,
@@ -32738,7 +33526,9 @@ func (c *Client) ReposDeleteDeployment(ctx context.Context, params ReposDeleteDe
 	return result, nil
 }
 
-// ReposDeleteInvitation implements repos/delete-invitation operation.
+// ReposDeleteInvitation invokes repos/delete-invitation operation.
+//
+// DELETE /repos/{owner}/{repo}/invitations/{invitation_id}
 func (c *Client) ReposDeleteInvitation(ctx context.Context, params ReposDeleteInvitationParams) (res ReposDeleteInvitationNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposDeleteInvitation`,
@@ -32820,7 +33610,9 @@ func (c *Client) ReposDeleteInvitation(ctx context.Context, params ReposDeleteIn
 	return result, nil
 }
 
-// ReposDeletePullRequestReviewProtection implements repos/delete-pull-request-review-protection operation.
+// ReposDeletePullRequestReviewProtection invokes repos/delete-pull-request-review-protection operation.
+//
+// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews
 func (c *Client) ReposDeletePullRequestReviewProtection(ctx context.Context, params ReposDeletePullRequestReviewProtectionParams) (res ReposDeletePullRequestReviewProtectionRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposDeletePullRequestReviewProtection`,
@@ -32903,7 +33695,9 @@ func (c *Client) ReposDeletePullRequestReviewProtection(ctx context.Context, par
 	return result, nil
 }
 
-// ReposDeleteRelease implements repos/delete-release operation.
+// ReposDeleteRelease invokes repos/delete-release operation.
+//
+// DELETE /repos/{owner}/{repo}/releases/{release_id}
 func (c *Client) ReposDeleteRelease(ctx context.Context, params ReposDeleteReleaseParams) (res ReposDeleteReleaseNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposDeleteRelease`,
@@ -32985,7 +33779,9 @@ func (c *Client) ReposDeleteRelease(ctx context.Context, params ReposDeleteRelea
 	return result, nil
 }
 
-// ReposDeleteReleaseAsset implements repos/delete-release-asset operation.
+// ReposDeleteReleaseAsset invokes repos/delete-release-asset operation.
+//
+// DELETE /repos/{owner}/{repo}/releases/assets/{asset_id}
 func (c *Client) ReposDeleteReleaseAsset(ctx context.Context, params ReposDeleteReleaseAssetParams) (res ReposDeleteReleaseAssetNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposDeleteReleaseAsset`,
@@ -33067,7 +33863,9 @@ func (c *Client) ReposDeleteReleaseAsset(ctx context.Context, params ReposDelete
 	return result, nil
 }
 
-// ReposDeleteWebhook implements repos/delete-webhook operation.
+// ReposDeleteWebhook invokes repos/delete-webhook operation.
+//
+// DELETE /repos/{owner}/{repo}/hooks/{hook_id}
 func (c *Client) ReposDeleteWebhook(ctx context.Context, params ReposDeleteWebhookParams) (res ReposDeleteWebhookRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposDeleteWebhook`,
@@ -33149,7 +33947,9 @@ func (c *Client) ReposDeleteWebhook(ctx context.Context, params ReposDeleteWebho
 	return result, nil
 }
 
-// ReposDisableAutomatedSecurityFixes implements repos/disable-automated-security-fixes operation.
+// ReposDisableAutomatedSecurityFixes invokes repos/disable-automated-security-fixes operation.
+//
+// DELETE /repos/{owner}/{repo}/automated-security-fixes
 func (c *Client) ReposDisableAutomatedSecurityFixes(ctx context.Context, params ReposDisableAutomatedSecurityFixesParams) (res ReposDisableAutomatedSecurityFixesNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposDisableAutomatedSecurityFixes`,
@@ -33217,7 +34017,9 @@ func (c *Client) ReposDisableAutomatedSecurityFixes(ctx context.Context, params 
 	return result, nil
 }
 
-// ReposDisableLfsForRepo implements repos/disable-lfs-for-repo operation.
+// ReposDisableLfsForRepo invokes repos/disable-lfs-for-repo operation.
+//
+// DELETE /repos/{owner}/{repo}/lfs
 func (c *Client) ReposDisableLfsForRepo(ctx context.Context, params ReposDisableLfsForRepoParams) (res ReposDisableLfsForRepoNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposDisableLfsForRepo`,
@@ -33285,7 +34087,9 @@ func (c *Client) ReposDisableLfsForRepo(ctx context.Context, params ReposDisable
 	return result, nil
 }
 
-// ReposDisableVulnerabilityAlerts implements repos/disable-vulnerability-alerts operation.
+// ReposDisableVulnerabilityAlerts invokes repos/disable-vulnerability-alerts operation.
+//
+// DELETE /repos/{owner}/{repo}/vulnerability-alerts
 func (c *Client) ReposDisableVulnerabilityAlerts(ctx context.Context, params ReposDisableVulnerabilityAlertsParams) (res ReposDisableVulnerabilityAlertsNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposDisableVulnerabilityAlerts`,
@@ -33353,7 +34157,9 @@ func (c *Client) ReposDisableVulnerabilityAlerts(ctx context.Context, params Rep
 	return result, nil
 }
 
-// ReposDownloadTarballArchive implements repos/download-tarball-archive operation.
+// ReposDownloadTarballArchive invokes repos/download-tarball-archive operation.
+//
+// GET /repos/{owner}/{repo}/tarball/{ref}
 func (c *Client) ReposDownloadTarballArchive(ctx context.Context, params ReposDownloadTarballArchiveParams) (res ReposDownloadTarballArchiveFound, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposDownloadTarballArchive`,
@@ -33435,7 +34241,9 @@ func (c *Client) ReposDownloadTarballArchive(ctx context.Context, params ReposDo
 	return result, nil
 }
 
-// ReposDownloadZipballArchive implements repos/download-zipball-archive operation.
+// ReposDownloadZipballArchive invokes repos/download-zipball-archive operation.
+//
+// GET /repos/{owner}/{repo}/zipball/{ref}
 func (c *Client) ReposDownloadZipballArchive(ctx context.Context, params ReposDownloadZipballArchiveParams) (res ReposDownloadZipballArchiveFound, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposDownloadZipballArchive`,
@@ -33517,7 +34325,9 @@ func (c *Client) ReposDownloadZipballArchive(ctx context.Context, params ReposDo
 	return result, nil
 }
 
-// ReposEnableAutomatedSecurityFixes implements repos/enable-automated-security-fixes operation.
+// ReposEnableAutomatedSecurityFixes invokes repos/enable-automated-security-fixes operation.
+//
+// PUT /repos/{owner}/{repo}/automated-security-fixes
 func (c *Client) ReposEnableAutomatedSecurityFixes(ctx context.Context, params ReposEnableAutomatedSecurityFixesParams) (res ReposEnableAutomatedSecurityFixesNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposEnableAutomatedSecurityFixes`,
@@ -33585,7 +34395,9 @@ func (c *Client) ReposEnableAutomatedSecurityFixes(ctx context.Context, params R
 	return result, nil
 }
 
-// ReposEnableLfsForRepo implements repos/enable-lfs-for-repo operation.
+// ReposEnableLfsForRepo invokes repos/enable-lfs-for-repo operation.
+//
+// PUT /repos/{owner}/{repo}/lfs
 func (c *Client) ReposEnableLfsForRepo(ctx context.Context, params ReposEnableLfsForRepoParams) (res ReposEnableLfsForRepoRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposEnableLfsForRepo`,
@@ -33653,7 +34465,9 @@ func (c *Client) ReposEnableLfsForRepo(ctx context.Context, params ReposEnableLf
 	return result, nil
 }
 
-// ReposEnableVulnerabilityAlerts implements repos/enable-vulnerability-alerts operation.
+// ReposEnableVulnerabilityAlerts invokes repos/enable-vulnerability-alerts operation.
+//
+// PUT /repos/{owner}/{repo}/vulnerability-alerts
 func (c *Client) ReposEnableVulnerabilityAlerts(ctx context.Context, params ReposEnableVulnerabilityAlertsParams) (res ReposEnableVulnerabilityAlertsNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposEnableVulnerabilityAlerts`,
@@ -33721,7 +34535,9 @@ func (c *Client) ReposEnableVulnerabilityAlerts(ctx context.Context, params Repo
 	return result, nil
 }
 
-// ReposGet implements repos/get operation.
+// ReposGet invokes repos/get operation.
+//
+// GET /repos/{owner}/{repo}
 func (c *Client) ReposGet(ctx context.Context, params ReposGetParams) (res ReposGetRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposGet`,
@@ -33788,7 +34604,9 @@ func (c *Client) ReposGet(ctx context.Context, params ReposGetParams) (res Repos
 	return result, nil
 }
 
-// ReposGetAccessRestrictions implements repos/get-access-restrictions operation.
+// ReposGetAccessRestrictions invokes repos/get-access-restrictions operation.
+//
+// GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions
 func (c *Client) ReposGetAccessRestrictions(ctx context.Context, params ReposGetAccessRestrictionsParams) (res ReposGetAccessRestrictionsRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposGetAccessRestrictions`,
@@ -33871,7 +34689,9 @@ func (c *Client) ReposGetAccessRestrictions(ctx context.Context, params ReposGet
 	return result, nil
 }
 
-// ReposGetAdminBranchProtection implements repos/get-admin-branch-protection operation.
+// ReposGetAdminBranchProtection invokes repos/get-admin-branch-protection operation.
+//
+// GET /repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins
 func (c *Client) ReposGetAdminBranchProtection(ctx context.Context, params ReposGetAdminBranchProtectionParams) (res ProtectedBranchAdminEnforced, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposGetAdminBranchProtection`,
@@ -33954,7 +34774,9 @@ func (c *Client) ReposGetAdminBranchProtection(ctx context.Context, params Repos
 	return result, nil
 }
 
-// ReposGetAllStatusCheckContexts implements repos/get-all-status-check-contexts operation.
+// ReposGetAllStatusCheckContexts invokes repos/get-all-status-check-contexts operation.
+//
+// GET /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts
 func (c *Client) ReposGetAllStatusCheckContexts(ctx context.Context, params ReposGetAllStatusCheckContextsParams) (res ReposGetAllStatusCheckContextsRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposGetAllStatusCheckContexts`,
@@ -34037,7 +34859,9 @@ func (c *Client) ReposGetAllStatusCheckContexts(ctx context.Context, params Repo
 	return result, nil
 }
 
-// ReposGetAllTopics implements repos/get-all-topics operation.
+// ReposGetAllTopics invokes repos/get-all-topics operation.
+//
+// GET /repos/{owner}/{repo}/topics
 func (c *Client) ReposGetAllTopics(ctx context.Context, params ReposGetAllTopicsParams) (res ReposGetAllTopicsRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposGetAllTopics`,
@@ -34140,7 +34964,9 @@ func (c *Client) ReposGetAllTopics(ctx context.Context, params ReposGetAllTopics
 	return result, nil
 }
 
-// ReposGetAppsWithAccessToProtectedBranch implements repos/get-apps-with-access-to-protected-branch operation.
+// ReposGetAppsWithAccessToProtectedBranch invokes repos/get-apps-with-access-to-protected-branch operation.
+//
+// GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps
 func (c *Client) ReposGetAppsWithAccessToProtectedBranch(ctx context.Context, params ReposGetAppsWithAccessToProtectedBranchParams) (res ReposGetAppsWithAccessToProtectedBranchRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposGetAppsWithAccessToProtectedBranch`,
@@ -34223,7 +35049,9 @@ func (c *Client) ReposGetAppsWithAccessToProtectedBranch(ctx context.Context, pa
 	return result, nil
 }
 
-// ReposGetAutolink implements repos/get-autolink operation.
+// ReposGetAutolink invokes repos/get-autolink operation.
+//
+// GET /repos/{owner}/{repo}/autolinks/{autolink_id}
 func (c *Client) ReposGetAutolink(ctx context.Context, params ReposGetAutolinkParams) (res ReposGetAutolinkRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposGetAutolink`,
@@ -34305,7 +35133,9 @@ func (c *Client) ReposGetAutolink(ctx context.Context, params ReposGetAutolinkPa
 	return result, nil
 }
 
-// ReposGetBranch implements repos/get-branch operation.
+// ReposGetBranch invokes repos/get-branch operation.
+//
+// GET /repos/{owner}/{repo}/branches/{branch}
 func (c *Client) ReposGetBranch(ctx context.Context, params ReposGetBranchParams) (res ReposGetBranchRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposGetBranch`,
@@ -34387,7 +35217,9 @@ func (c *Client) ReposGetBranch(ctx context.Context, params ReposGetBranchParams
 	return result, nil
 }
 
-// ReposGetBranchProtection implements repos/get-branch-protection operation.
+// ReposGetBranchProtection invokes repos/get-branch-protection operation.
+//
+// GET /repos/{owner}/{repo}/branches/{branch}/protection
 func (c *Client) ReposGetBranchProtection(ctx context.Context, params ReposGetBranchProtectionParams) (res ReposGetBranchProtectionRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposGetBranchProtection`,
@@ -34470,7 +35302,9 @@ func (c *Client) ReposGetBranchProtection(ctx context.Context, params ReposGetBr
 	return result, nil
 }
 
-// ReposGetClones implements repos/get-clones operation.
+// ReposGetClones invokes repos/get-clones operation.
+//
+// GET /repos/{owner}/{repo}/traffic/clones
 func (c *Client) ReposGetClones(ctx context.Context, params ReposGetClonesParams) (res ReposGetClonesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposGetClones`,
@@ -34557,7 +35391,9 @@ func (c *Client) ReposGetClones(ctx context.Context, params ReposGetClonesParams
 	return result, nil
 }
 
-// ReposGetCodeFrequencyStats implements repos/get-code-frequency-stats operation.
+// ReposGetCodeFrequencyStats invokes repos/get-code-frequency-stats operation.
+//
+// GET /repos/{owner}/{repo}/stats/code_frequency
 func (c *Client) ReposGetCodeFrequencyStats(ctx context.Context, params ReposGetCodeFrequencyStatsParams) (res ReposGetCodeFrequencyStatsRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposGetCodeFrequencyStats`,
@@ -34625,7 +35461,9 @@ func (c *Client) ReposGetCodeFrequencyStats(ctx context.Context, params ReposGet
 	return result, nil
 }
 
-// ReposGetCollaboratorPermissionLevel implements repos/get-collaborator-permission-level operation.
+// ReposGetCollaboratorPermissionLevel invokes repos/get-collaborator-permission-level operation.
+//
+// GET /repos/{owner}/{repo}/collaborators/{username}/permission
 func (c *Client) ReposGetCollaboratorPermissionLevel(ctx context.Context, params ReposGetCollaboratorPermissionLevelParams) (res ReposGetCollaboratorPermissionLevelRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposGetCollaboratorPermissionLevel`,
@@ -34708,7 +35546,9 @@ func (c *Client) ReposGetCollaboratorPermissionLevel(ctx context.Context, params
 	return result, nil
 }
 
-// ReposGetCombinedStatusForRef implements repos/get-combined-status-for-ref operation.
+// ReposGetCombinedStatusForRef invokes repos/get-combined-status-for-ref operation.
+//
+// GET /repos/{owner}/{repo}/commits/{ref}/status
 func (c *Client) ReposGetCombinedStatusForRef(ctx context.Context, params ReposGetCombinedStatusForRefParams) (res ReposGetCombinedStatusForRefRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposGetCombinedStatusForRef`,
@@ -34826,7 +35666,9 @@ func (c *Client) ReposGetCombinedStatusForRef(ctx context.Context, params ReposG
 	return result, nil
 }
 
-// ReposGetCommitActivityStats implements repos/get-commit-activity-stats operation.
+// ReposGetCommitActivityStats invokes repos/get-commit-activity-stats operation.
+//
+// GET /repos/{owner}/{repo}/stats/commit_activity
 func (c *Client) ReposGetCommitActivityStats(ctx context.Context, params ReposGetCommitActivityStatsParams) (res ReposGetCommitActivityStatsRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposGetCommitActivityStats`,
@@ -34894,7 +35736,9 @@ func (c *Client) ReposGetCommitActivityStats(ctx context.Context, params ReposGe
 	return result, nil
 }
 
-// ReposGetCommitComment implements repos/get-commit-comment operation.
+// ReposGetCommitComment invokes repos/get-commit-comment operation.
+//
+// GET /repos/{owner}/{repo}/comments/{comment_id}
 func (c *Client) ReposGetCommitComment(ctx context.Context, params ReposGetCommitCommentParams) (res ReposGetCommitCommentRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposGetCommitComment`,
@@ -34976,7 +35820,9 @@ func (c *Client) ReposGetCommitComment(ctx context.Context, params ReposGetCommi
 	return result, nil
 }
 
-// ReposGetCommitSignatureProtection implements repos/get-commit-signature-protection operation.
+// ReposGetCommitSignatureProtection invokes repos/get-commit-signature-protection operation.
+//
+// GET /repos/{owner}/{repo}/branches/{branch}/protection/required_signatures
 func (c *Client) ReposGetCommitSignatureProtection(ctx context.Context, params ReposGetCommitSignatureProtectionParams) (res ReposGetCommitSignatureProtectionRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposGetCommitSignatureProtection`,
@@ -35059,7 +35905,9 @@ func (c *Client) ReposGetCommitSignatureProtection(ctx context.Context, params R
 	return result, nil
 }
 
-// ReposGetCommunityProfileMetrics implements repos/get-community-profile-metrics operation.
+// ReposGetCommunityProfileMetrics invokes repos/get-community-profile-metrics operation.
+//
+// GET /repos/{owner}/{repo}/community/profile
 func (c *Client) ReposGetCommunityProfileMetrics(ctx context.Context, params ReposGetCommunityProfileMetricsParams) (res CommunityProfile, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposGetCommunityProfileMetrics`,
@@ -35127,7 +35975,9 @@ func (c *Client) ReposGetCommunityProfileMetrics(ctx context.Context, params Rep
 	return result, nil
 }
 
-// ReposGetContributorsStats implements repos/get-contributors-stats operation.
+// ReposGetContributorsStats invokes repos/get-contributors-stats operation.
+//
+// GET /repos/{owner}/{repo}/stats/contributors
 func (c *Client) ReposGetContributorsStats(ctx context.Context, params ReposGetContributorsStatsParams) (res ReposGetContributorsStatsRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposGetContributorsStats`,
@@ -35195,7 +36045,9 @@ func (c *Client) ReposGetContributorsStats(ctx context.Context, params ReposGetC
 	return result, nil
 }
 
-// ReposGetDeployKey implements repos/get-deploy-key operation.
+// ReposGetDeployKey invokes repos/get-deploy-key operation.
+//
+// GET /repos/{owner}/{repo}/keys/{key_id}
 func (c *Client) ReposGetDeployKey(ctx context.Context, params ReposGetDeployKeyParams) (res ReposGetDeployKeyRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposGetDeployKey`,
@@ -35277,7 +36129,9 @@ func (c *Client) ReposGetDeployKey(ctx context.Context, params ReposGetDeployKey
 	return result, nil
 }
 
-// ReposGetDeploymentStatus implements repos/get-deployment-status operation.
+// ReposGetDeploymentStatus invokes repos/get-deployment-status operation.
+//
+// GET /repos/{owner}/{repo}/deployments/{deployment_id}/statuses/{status_id}
 func (c *Client) ReposGetDeploymentStatus(ctx context.Context, params ReposGetDeploymentStatusParams) (res ReposGetDeploymentStatusRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposGetDeploymentStatus`,
@@ -35374,7 +36228,9 @@ func (c *Client) ReposGetDeploymentStatus(ctx context.Context, params ReposGetDe
 	return result, nil
 }
 
-// ReposGetLatestPagesBuild implements repos/get-latest-pages-build operation.
+// ReposGetLatestPagesBuild invokes repos/get-latest-pages-build operation.
+//
+// GET /repos/{owner}/{repo}/pages/builds/latest
 func (c *Client) ReposGetLatestPagesBuild(ctx context.Context, params ReposGetLatestPagesBuildParams) (res PageBuild, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposGetLatestPagesBuild`,
@@ -35442,7 +36298,9 @@ func (c *Client) ReposGetLatestPagesBuild(ctx context.Context, params ReposGetLa
 	return result, nil
 }
 
-// ReposGetLatestRelease implements repos/get-latest-release operation.
+// ReposGetLatestRelease invokes repos/get-latest-release operation.
+//
+// GET /repos/{owner}/{repo}/releases/latest
 func (c *Client) ReposGetLatestRelease(ctx context.Context, params ReposGetLatestReleaseParams) (res Release, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposGetLatestRelease`,
@@ -35510,7 +36368,9 @@ func (c *Client) ReposGetLatestRelease(ctx context.Context, params ReposGetLates
 	return result, nil
 }
 
-// ReposGetPages implements repos/get-pages operation.
+// ReposGetPages invokes repos/get-pages operation.
+//
+// GET /repos/{owner}/{repo}/pages
 func (c *Client) ReposGetPages(ctx context.Context, params ReposGetPagesParams) (res ReposGetPagesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposGetPages`,
@@ -35578,7 +36438,9 @@ func (c *Client) ReposGetPages(ctx context.Context, params ReposGetPagesParams) 
 	return result, nil
 }
 
-// ReposGetPagesBuild implements repos/get-pages-build operation.
+// ReposGetPagesBuild invokes repos/get-pages-build operation.
+//
+// GET /repos/{owner}/{repo}/pages/builds/{build_id}
 func (c *Client) ReposGetPagesBuild(ctx context.Context, params ReposGetPagesBuildParams) (res PageBuild, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposGetPagesBuild`,
@@ -35660,7 +36522,9 @@ func (c *Client) ReposGetPagesBuild(ctx context.Context, params ReposGetPagesBui
 	return result, nil
 }
 
-// ReposGetPagesHealthCheck implements repos/get-pages-health-check operation.
+// ReposGetPagesHealthCheck invokes repos/get-pages-health-check operation.
+//
+// GET /repos/{owner}/{repo}/pages/health
 func (c *Client) ReposGetPagesHealthCheck(ctx context.Context, params ReposGetPagesHealthCheckParams) (res ReposGetPagesHealthCheckRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposGetPagesHealthCheck`,
@@ -35728,7 +36592,9 @@ func (c *Client) ReposGetPagesHealthCheck(ctx context.Context, params ReposGetPa
 	return result, nil
 }
 
-// ReposGetParticipationStats implements repos/get-participation-stats operation.
+// ReposGetParticipationStats invokes repos/get-participation-stats operation.
+//
+// GET /repos/{owner}/{repo}/stats/participation
 func (c *Client) ReposGetParticipationStats(ctx context.Context, params ReposGetParticipationStatsParams) (res ReposGetParticipationStatsRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposGetParticipationStats`,
@@ -35796,7 +36662,9 @@ func (c *Client) ReposGetParticipationStats(ctx context.Context, params ReposGet
 	return result, nil
 }
 
-// ReposGetPullRequestReviewProtection implements repos/get-pull-request-review-protection operation.
+// ReposGetPullRequestReviewProtection invokes repos/get-pull-request-review-protection operation.
+//
+// GET /repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews
 func (c *Client) ReposGetPullRequestReviewProtection(ctx context.Context, params ReposGetPullRequestReviewProtectionParams) (res ProtectedBranchPullRequestReview, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposGetPullRequestReviewProtection`,
@@ -35879,7 +36747,9 @@ func (c *Client) ReposGetPullRequestReviewProtection(ctx context.Context, params
 	return result, nil
 }
 
-// ReposGetPunchCardStats implements repos/get-punch-card-stats operation.
+// ReposGetPunchCardStats invokes repos/get-punch-card-stats operation.
+//
+// GET /repos/{owner}/{repo}/stats/punch_card
 func (c *Client) ReposGetPunchCardStats(ctx context.Context, params ReposGetPunchCardStatsParams) (res ReposGetPunchCardStatsRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposGetPunchCardStats`,
@@ -35947,7 +36817,9 @@ func (c *Client) ReposGetPunchCardStats(ctx context.Context, params ReposGetPunc
 	return result, nil
 }
 
-// ReposGetRelease implements repos/get-release operation.
+// ReposGetRelease invokes repos/get-release operation.
+//
+// GET /repos/{owner}/{repo}/releases/{release_id}
 func (c *Client) ReposGetRelease(ctx context.Context, params ReposGetReleaseParams) (res ReposGetReleaseRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposGetRelease`,
@@ -36029,7 +36901,9 @@ func (c *Client) ReposGetRelease(ctx context.Context, params ReposGetReleasePara
 	return result, nil
 }
 
-// ReposGetReleaseAsset implements repos/get-release-asset operation.
+// ReposGetReleaseAsset invokes repos/get-release-asset operation.
+//
+// GET /repos/{owner}/{repo}/releases/assets/{asset_id}
 func (c *Client) ReposGetReleaseAsset(ctx context.Context, params ReposGetReleaseAssetParams) (res ReposGetReleaseAssetRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposGetReleaseAsset`,
@@ -36111,7 +36985,9 @@ func (c *Client) ReposGetReleaseAsset(ctx context.Context, params ReposGetReleas
 	return result, nil
 }
 
-// ReposGetReleaseByTag implements repos/get-release-by-tag operation.
+// ReposGetReleaseByTag invokes repos/get-release-by-tag operation.
+//
+// GET /repos/{owner}/{repo}/releases/tags/{tag}
 func (c *Client) ReposGetReleaseByTag(ctx context.Context, params ReposGetReleaseByTagParams) (res ReposGetReleaseByTagRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposGetReleaseByTag`,
@@ -36193,7 +37069,9 @@ func (c *Client) ReposGetReleaseByTag(ctx context.Context, params ReposGetReleas
 	return result, nil
 }
 
-// ReposGetStatusChecksProtection implements repos/get-status-checks-protection operation.
+// ReposGetStatusChecksProtection invokes repos/get-status-checks-protection operation.
+//
+// GET /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks
 func (c *Client) ReposGetStatusChecksProtection(ctx context.Context, params ReposGetStatusChecksProtectionParams) (res ReposGetStatusChecksProtectionRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposGetStatusChecksProtection`,
@@ -36276,7 +37154,9 @@ func (c *Client) ReposGetStatusChecksProtection(ctx context.Context, params Repo
 	return result, nil
 }
 
-// ReposGetTeamsWithAccessToProtectedBranch implements repos/get-teams-with-access-to-protected-branch operation.
+// ReposGetTeamsWithAccessToProtectedBranch invokes repos/get-teams-with-access-to-protected-branch operation.
+//
+// GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams
 func (c *Client) ReposGetTeamsWithAccessToProtectedBranch(ctx context.Context, params ReposGetTeamsWithAccessToProtectedBranchParams) (res ReposGetTeamsWithAccessToProtectedBranchRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposGetTeamsWithAccessToProtectedBranch`,
@@ -36359,7 +37239,9 @@ func (c *Client) ReposGetTeamsWithAccessToProtectedBranch(ctx context.Context, p
 	return result, nil
 }
 
-// ReposGetTopPaths implements repos/get-top-paths operation.
+// ReposGetTopPaths invokes repos/get-top-paths operation.
+//
+// GET /repos/{owner}/{repo}/traffic/popular/paths
 func (c *Client) ReposGetTopPaths(ctx context.Context, params ReposGetTopPathsParams) (res ReposGetTopPathsRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposGetTopPaths`,
@@ -36427,7 +37309,9 @@ func (c *Client) ReposGetTopPaths(ctx context.Context, params ReposGetTopPathsPa
 	return result, nil
 }
 
-// ReposGetTopReferrers implements repos/get-top-referrers operation.
+// ReposGetTopReferrers invokes repos/get-top-referrers operation.
+//
+// GET /repos/{owner}/{repo}/traffic/popular/referrers
 func (c *Client) ReposGetTopReferrers(ctx context.Context, params ReposGetTopReferrersParams) (res ReposGetTopReferrersRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposGetTopReferrers`,
@@ -36495,7 +37379,9 @@ func (c *Client) ReposGetTopReferrers(ctx context.Context, params ReposGetTopRef
 	return result, nil
 }
 
-// ReposGetUsersWithAccessToProtectedBranch implements repos/get-users-with-access-to-protected-branch operation.
+// ReposGetUsersWithAccessToProtectedBranch invokes repos/get-users-with-access-to-protected-branch operation.
+//
+// GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users
 func (c *Client) ReposGetUsersWithAccessToProtectedBranch(ctx context.Context, params ReposGetUsersWithAccessToProtectedBranchParams) (res ReposGetUsersWithAccessToProtectedBranchRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposGetUsersWithAccessToProtectedBranch`,
@@ -36578,7 +37464,9 @@ func (c *Client) ReposGetUsersWithAccessToProtectedBranch(ctx context.Context, p
 	return result, nil
 }
 
-// ReposGetViews implements repos/get-views operation.
+// ReposGetViews invokes repos/get-views operation.
+//
+// GET /repos/{owner}/{repo}/traffic/views
 func (c *Client) ReposGetViews(ctx context.Context, params ReposGetViewsParams) (res ReposGetViewsRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposGetViews`,
@@ -36665,7 +37553,9 @@ func (c *Client) ReposGetViews(ctx context.Context, params ReposGetViewsParams) 
 	return result, nil
 }
 
-// ReposGetWebhook implements repos/get-webhook operation.
+// ReposGetWebhook invokes repos/get-webhook operation.
+//
+// GET /repos/{owner}/{repo}/hooks/{hook_id}
 func (c *Client) ReposGetWebhook(ctx context.Context, params ReposGetWebhookParams) (res ReposGetWebhookRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposGetWebhook`,
@@ -36747,7 +37637,9 @@ func (c *Client) ReposGetWebhook(ctx context.Context, params ReposGetWebhookPara
 	return result, nil
 }
 
-// ReposGetWebhookConfigForRepo implements repos/get-webhook-config-for-repo operation.
+// ReposGetWebhookConfigForRepo invokes repos/get-webhook-config-for-repo operation.
+//
+// GET /repos/{owner}/{repo}/hooks/{hook_id}/config
 func (c *Client) ReposGetWebhookConfigForRepo(ctx context.Context, params ReposGetWebhookConfigForRepoParams) (res WebhookConfig, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposGetWebhookConfigForRepo`,
@@ -36830,7 +37722,9 @@ func (c *Client) ReposGetWebhookConfigForRepo(ctx context.Context, params ReposG
 	return result, nil
 }
 
-// ReposListAutolinks implements repos/list-autolinks operation.
+// ReposListAutolinks invokes repos/list-autolinks operation.
+//
+// GET /repos/{owner}/{repo}/autolinks
 func (c *Client) ReposListAutolinks(ctx context.Context, params ReposListAutolinksParams) (res []Autolink, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposListAutolinks`,
@@ -36917,7 +37811,9 @@ func (c *Client) ReposListAutolinks(ctx context.Context, params ReposListAutolin
 	return result, nil
 }
 
-// ReposListBranches implements repos/list-branches operation.
+// ReposListBranches invokes repos/list-branches operation.
+//
+// GET /repos/{owner}/{repo}/branches
 func (c *Client) ReposListBranches(ctx context.Context, params ReposListBranchesParams) (res ReposListBranchesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposListBranches`,
@@ -37036,7 +37932,9 @@ func (c *Client) ReposListBranches(ctx context.Context, params ReposListBranches
 	return result, nil
 }
 
-// ReposListCollaborators implements repos/list-collaborators operation.
+// ReposListCollaborators invokes repos/list-collaborators operation.
+//
+// GET /repos/{owner}/{repo}/collaborators
 func (c *Client) ReposListCollaborators(ctx context.Context, params ReposListCollaboratorsParams) (res ReposListCollaboratorsRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposListCollaborators`,
@@ -37155,7 +38053,9 @@ func (c *Client) ReposListCollaborators(ctx context.Context, params ReposListCol
 	return result, nil
 }
 
-// ReposListCommentsForCommit implements repos/list-comments-for-commit operation.
+// ReposListCommentsForCommit invokes repos/list-comments-for-commit operation.
+//
+// GET /repos/{owner}/{repo}/commits/{commit_sha}/comments
 func (c *Client) ReposListCommentsForCommit(ctx context.Context, params ReposListCommentsForCommitParams) (res []CommitComment, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposListCommentsForCommit`,
@@ -37273,7 +38173,9 @@ func (c *Client) ReposListCommentsForCommit(ctx context.Context, params ReposLis
 	return result, nil
 }
 
-// ReposListCommitCommentsForRepo implements repos/list-commit-comments-for-repo operation.
+// ReposListCommitCommentsForRepo invokes repos/list-commit-comments-for-repo operation.
+//
+// GET /repos/{owner}/{repo}/comments
 func (c *Client) ReposListCommitCommentsForRepo(ctx context.Context, params ReposListCommitCommentsForRepoParams) (res []CommitComment, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposListCommitCommentsForRepo`,
@@ -37376,7 +38278,9 @@ func (c *Client) ReposListCommitCommentsForRepo(ctx context.Context, params Repo
 	return result, nil
 }
 
-// ReposListCommitStatusesForRef implements repos/list-commit-statuses-for-ref operation.
+// ReposListCommitStatusesForRef invokes repos/list-commit-statuses-for-ref operation.
+//
+// GET /repos/{owner}/{repo}/commits/{ref}/statuses
 func (c *Client) ReposListCommitStatusesForRef(ctx context.Context, params ReposListCommitStatusesForRefParams) (res ReposListCommitStatusesForRefRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposListCommitStatusesForRef`,
@@ -37494,7 +38398,9 @@ func (c *Client) ReposListCommitStatusesForRef(ctx context.Context, params Repos
 	return result, nil
 }
 
-// ReposListCommits implements repos/list-commits operation.
+// ReposListCommits invokes repos/list-commits operation.
+//
+// GET /repos/{owner}/{repo}/commits
 func (c *Client) ReposListCommits(ctx context.Context, params ReposListCommitsParams) (res ReposListCommitsRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposListCommits`,
@@ -37677,7 +38583,9 @@ func (c *Client) ReposListCommits(ctx context.Context, params ReposListCommitsPa
 	return result, nil
 }
 
-// ReposListContributors implements repos/list-contributors operation.
+// ReposListContributors invokes repos/list-contributors operation.
+//
+// GET /repos/{owner}/{repo}/contributors
 func (c *Client) ReposListContributors(ctx context.Context, params ReposListContributorsParams) (res ReposListContributorsRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposListContributors`,
@@ -37796,7 +38704,9 @@ func (c *Client) ReposListContributors(ctx context.Context, params ReposListCont
 	return result, nil
 }
 
-// ReposListDeployKeys implements repos/list-deploy-keys operation.
+// ReposListDeployKeys invokes repos/list-deploy-keys operation.
+//
+// GET /repos/{owner}/{repo}/keys
 func (c *Client) ReposListDeployKeys(ctx context.Context, params ReposListDeployKeysParams) (res []DeployKey, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposListDeployKeys`,
@@ -37899,7 +38809,9 @@ func (c *Client) ReposListDeployKeys(ctx context.Context, params ReposListDeploy
 	return result, nil
 }
 
-// ReposListDeploymentStatuses implements repos/list-deployment-statuses operation.
+// ReposListDeploymentStatuses invokes repos/list-deployment-statuses operation.
+//
+// GET /repos/{owner}/{repo}/deployments/{deployment_id}/statuses
 func (c *Client) ReposListDeploymentStatuses(ctx context.Context, params ReposListDeploymentStatusesParams) (res ReposListDeploymentStatusesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposListDeploymentStatuses`,
@@ -38017,7 +38929,9 @@ func (c *Client) ReposListDeploymentStatuses(ctx context.Context, params ReposLi
 	return result, nil
 }
 
-// ReposListForOrg implements repos/list-for-org operation.
+// ReposListForOrg invokes repos/list-for-org operation.
+//
+// GET /orgs/{org}/repos
 func (c *Client) ReposListForOrg(ctx context.Context, params ReposListForOrgParams) (res []MinimalRepository, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposListForOrg`,
@@ -38153,7 +39067,9 @@ func (c *Client) ReposListForOrg(ctx context.Context, params ReposListForOrgPara
 	return result, nil
 }
 
-// ReposListForUser implements repos/list-for-user operation.
+// ReposListForUser invokes repos/list-for-user operation.
+//
+// GET /users/{username}/repos
 func (c *Client) ReposListForUser(ctx context.Context, params ReposListForUserParams) (res []MinimalRepository, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposListForUser`,
@@ -38289,7 +39205,9 @@ func (c *Client) ReposListForUser(ctx context.Context, params ReposListForUserPa
 	return result, nil
 }
 
-// ReposListForks implements repos/list-forks operation.
+// ReposListForks invokes repos/list-forks operation.
+//
+// GET /repos/{owner}/{repo}/forks
 func (c *Client) ReposListForks(ctx context.Context, params ReposListForksParams) (res ReposListForksRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposListForks`,
@@ -38408,7 +39326,9 @@ func (c *Client) ReposListForks(ctx context.Context, params ReposListForksParams
 	return result, nil
 }
 
-// ReposListInvitations implements repos/list-invitations operation.
+// ReposListInvitations invokes repos/list-invitations operation.
+//
+// GET /repos/{owner}/{repo}/invitations
 func (c *Client) ReposListInvitations(ctx context.Context, params ReposListInvitationsParams) (res []RepositoryInvitation, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposListInvitations`,
@@ -38511,7 +39431,9 @@ func (c *Client) ReposListInvitations(ctx context.Context, params ReposListInvit
 	return result, nil
 }
 
-// ReposListInvitationsForAuthenticatedUser implements repos/list-invitations-for-authenticated-user operation.
+// ReposListInvitationsForAuthenticatedUser invokes repos/list-invitations-for-authenticated-user operation.
+//
+// GET /user/repository_invitations
 func (c *Client) ReposListInvitationsForAuthenticatedUser(ctx context.Context, params ReposListInvitationsForAuthenticatedUserParams) (res ReposListInvitationsForAuthenticatedUserRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposListInvitationsForAuthenticatedUser`,
@@ -38584,7 +39506,9 @@ func (c *Client) ReposListInvitationsForAuthenticatedUser(ctx context.Context, p
 	return result, nil
 }
 
-// ReposListLanguages implements repos/list-languages operation.
+// ReposListLanguages invokes repos/list-languages operation.
+//
+// GET /repos/{owner}/{repo}/languages
 func (c *Client) ReposListLanguages(ctx context.Context, params ReposListLanguagesParams) (res Language, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposListLanguages`,
@@ -38652,7 +39576,9 @@ func (c *Client) ReposListLanguages(ctx context.Context, params ReposListLanguag
 	return result, nil
 }
 
-// ReposListPagesBuilds implements repos/list-pages-builds operation.
+// ReposListPagesBuilds invokes repos/list-pages-builds operation.
+//
+// GET /repos/{owner}/{repo}/pages/builds
 func (c *Client) ReposListPagesBuilds(ctx context.Context, params ReposListPagesBuildsParams) (res []PageBuild, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposListPagesBuilds`,
@@ -38755,7 +39681,9 @@ func (c *Client) ReposListPagesBuilds(ctx context.Context, params ReposListPages
 	return result, nil
 }
 
-// ReposListPullRequestsAssociatedWithCommit implements repos/list-pull-requests-associated-with-commit operation.
+// ReposListPullRequestsAssociatedWithCommit invokes repos/list-pull-requests-associated-with-commit operation.
+//
+// GET /repos/{owner}/{repo}/commits/{commit_sha}/pulls
 func (c *Client) ReposListPullRequestsAssociatedWithCommit(ctx context.Context, params ReposListPullRequestsAssociatedWithCommitParams) (res []PullRequestSimple, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposListPullRequestsAssociatedWithCommit`,
@@ -38873,7 +39801,9 @@ func (c *Client) ReposListPullRequestsAssociatedWithCommit(ctx context.Context, 
 	return result, nil
 }
 
-// ReposListReleaseAssets implements repos/list-release-assets operation.
+// ReposListReleaseAssets invokes repos/list-release-assets operation.
+//
+// GET /repos/{owner}/{repo}/releases/{release_id}/assets
 func (c *Client) ReposListReleaseAssets(ctx context.Context, params ReposListReleaseAssetsParams) (res []ReleaseAsset, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposListReleaseAssets`,
@@ -38991,7 +39921,9 @@ func (c *Client) ReposListReleaseAssets(ctx context.Context, params ReposListRel
 	return result, nil
 }
 
-// ReposListReleases implements repos/list-releases operation.
+// ReposListReleases invokes repos/list-releases operation.
+//
+// GET /repos/{owner}/{repo}/releases
 func (c *Client) ReposListReleases(ctx context.Context, params ReposListReleasesParams) (res ReposListReleasesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposListReleases`,
@@ -39094,7 +40026,9 @@ func (c *Client) ReposListReleases(ctx context.Context, params ReposListReleases
 	return result, nil
 }
 
-// ReposListTags implements repos/list-tags operation.
+// ReposListTags invokes repos/list-tags operation.
+//
+// GET /repos/{owner}/{repo}/tags
 func (c *Client) ReposListTags(ctx context.Context, params ReposListTagsParams) (res []Tag, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposListTags`,
@@ -39197,7 +40131,9 @@ func (c *Client) ReposListTags(ctx context.Context, params ReposListTagsParams) 
 	return result, nil
 }
 
-// ReposListTeams implements repos/list-teams operation.
+// ReposListTeams invokes repos/list-teams operation.
+//
+// GET /repos/{owner}/{repo}/teams
 func (c *Client) ReposListTeams(ctx context.Context, params ReposListTeamsParams) (res []Team, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposListTeams`,
@@ -39300,7 +40236,9 @@ func (c *Client) ReposListTeams(ctx context.Context, params ReposListTeamsParams
 	return result, nil
 }
 
-// ReposListWebhooks implements repos/list-webhooks operation.
+// ReposListWebhooks invokes repos/list-webhooks operation.
+//
+// GET /repos/{owner}/{repo}/hooks
 func (c *Client) ReposListWebhooks(ctx context.Context, params ReposListWebhooksParams) (res ReposListWebhooksRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposListWebhooks`,
@@ -39403,7 +40341,9 @@ func (c *Client) ReposListWebhooks(ctx context.Context, params ReposListWebhooks
 	return result, nil
 }
 
-// ReposMergeUpstream implements repos/merge-upstream operation.
+// ReposMergeUpstream invokes repos/merge-upstream operation.
+//
+// POST /repos/{owner}/{repo}/merge-upstream
 func (c *Client) ReposMergeUpstream(ctx context.Context, request ReposMergeUpstreamReq, params ReposMergeUpstreamParams) (res ReposMergeUpstreamRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposMergeUpstream`,
@@ -39485,7 +40425,9 @@ func (c *Client) ReposMergeUpstream(ctx context.Context, request ReposMergeUpstr
 	return result, nil
 }
 
-// ReposPingWebhook implements repos/ping-webhook operation.
+// ReposPingWebhook invokes repos/ping-webhook operation.
+//
+// POST /repos/{owner}/{repo}/hooks/{hook_id}/pings
 func (c *Client) ReposPingWebhook(ctx context.Context, params ReposPingWebhookParams) (res ReposPingWebhookRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposPingWebhook`,
@@ -39568,7 +40510,9 @@ func (c *Client) ReposPingWebhook(ctx context.Context, params ReposPingWebhookPa
 	return result, nil
 }
 
-// ReposRemoveCollaborator implements repos/remove-collaborator operation.
+// ReposRemoveCollaborator invokes repos/remove-collaborator operation.
+//
+// DELETE /repos/{owner}/{repo}/collaborators/{username}
 func (c *Client) ReposRemoveCollaborator(ctx context.Context, params ReposRemoveCollaboratorParams) (res ReposRemoveCollaboratorNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposRemoveCollaborator`,
@@ -39650,7 +40594,9 @@ func (c *Client) ReposRemoveCollaborator(ctx context.Context, params ReposRemove
 	return result, nil
 }
 
-// ReposRemoveStatusCheckProtection implements repos/remove-status-check-protection operation.
+// ReposRemoveStatusCheckProtection invokes repos/remove-status-check-protection operation.
+//
+// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks
 func (c *Client) ReposRemoveStatusCheckProtection(ctx context.Context, params ReposRemoveStatusCheckProtectionParams) (res ReposRemoveStatusCheckProtectionNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposRemoveStatusCheckProtection`,
@@ -39733,7 +40679,9 @@ func (c *Client) ReposRemoveStatusCheckProtection(ctx context.Context, params Re
 	return result, nil
 }
 
-// ReposReplaceAllTopics implements repos/replace-all-topics operation.
+// ReposReplaceAllTopics invokes repos/replace-all-topics operation.
+//
+// PUT /repos/{owner}/{repo}/topics
 func (c *Client) ReposReplaceAllTopics(ctx context.Context, request ReposReplaceAllTopicsReq, params ReposReplaceAllTopicsParams) (res ReposReplaceAllTopicsRes, err error) {
 	if err := func() error {
 
@@ -39824,7 +40772,9 @@ func (c *Client) ReposReplaceAllTopics(ctx context.Context, request ReposReplace
 	return result, nil
 }
 
-// ReposRequestPagesBuild implements repos/request-pages-build operation.
+// ReposRequestPagesBuild invokes repos/request-pages-build operation.
+//
+// POST /repos/{owner}/{repo}/pages/builds
 func (c *Client) ReposRequestPagesBuild(ctx context.Context, params ReposRequestPagesBuildParams) (res PageBuildStatus, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposRequestPagesBuild`,
@@ -39892,7 +40842,9 @@ func (c *Client) ReposRequestPagesBuild(ctx context.Context, params ReposRequest
 	return result, nil
 }
 
-// ReposSetAdminBranchProtection implements repos/set-admin-branch-protection operation.
+// ReposSetAdminBranchProtection invokes repos/set-admin-branch-protection operation.
+//
+// POST /repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins
 func (c *Client) ReposSetAdminBranchProtection(ctx context.Context, params ReposSetAdminBranchProtectionParams) (res ProtectedBranchAdminEnforced, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposSetAdminBranchProtection`,
@@ -39975,7 +40927,9 @@ func (c *Client) ReposSetAdminBranchProtection(ctx context.Context, params Repos
 	return result, nil
 }
 
-// ReposTestPushWebhook implements repos/test-push-webhook operation.
+// ReposTestPushWebhook invokes repos/test-push-webhook operation.
+//
+// POST /repos/{owner}/{repo}/hooks/{hook_id}/tests
 func (c *Client) ReposTestPushWebhook(ctx context.Context, params ReposTestPushWebhookParams) (res ReposTestPushWebhookRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposTestPushWebhook`,
@@ -40058,7 +41012,9 @@ func (c *Client) ReposTestPushWebhook(ctx context.Context, params ReposTestPushW
 	return result, nil
 }
 
-// ReposTransfer implements repos/transfer operation.
+// ReposTransfer invokes repos/transfer operation.
+//
+// POST /repos/{owner}/{repo}/transfer
 func (c *Client) ReposTransfer(ctx context.Context, request ReposTransferReq, params ReposTransferParams) (res MinimalRepository, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposTransfer`,
@@ -40140,7 +41096,9 @@ func (c *Client) ReposTransfer(ctx context.Context, request ReposTransferReq, pa
 	return result, nil
 }
 
-// ReposUpdateBranchProtection implements repos/update-branch-protection operation.
+// ReposUpdateBranchProtection invokes repos/update-branch-protection operation.
+//
+// PUT /repos/{owner}/{repo}/branches/{branch}/protection
 func (c *Client) ReposUpdateBranchProtection(ctx context.Context, request ReposUpdateBranchProtectionReq, params ReposUpdateBranchProtectionParams) (res ReposUpdateBranchProtectionRes, err error) {
 	if err := func() error {
 
@@ -40246,7 +41204,9 @@ func (c *Client) ReposUpdateBranchProtection(ctx context.Context, request ReposU
 	return result, nil
 }
 
-// ReposUpdateCommitComment implements repos/update-commit-comment operation.
+// ReposUpdateCommitComment invokes repos/update-commit-comment operation.
+//
+// PATCH /repos/{owner}/{repo}/comments/{comment_id}
 func (c *Client) ReposUpdateCommitComment(ctx context.Context, request ReposUpdateCommitCommentReq, params ReposUpdateCommitCommentParams) (res ReposUpdateCommitCommentRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposUpdateCommitComment`,
@@ -40342,7 +41302,9 @@ func (c *Client) ReposUpdateCommitComment(ctx context.Context, request ReposUpda
 	return result, nil
 }
 
-// ReposUpdateInvitation implements repos/update-invitation operation.
+// ReposUpdateInvitation invokes repos/update-invitation operation.
+//
+// PATCH /repos/{owner}/{repo}/invitations/{invitation_id}
 func (c *Client) ReposUpdateInvitation(ctx context.Context, request ReposUpdateInvitationReq, params ReposUpdateInvitationParams) (res RepositoryInvitation, err error) {
 	if err := func() error {
 
@@ -40447,7 +41409,9 @@ func (c *Client) ReposUpdateInvitation(ctx context.Context, request ReposUpdateI
 	return result, nil
 }
 
-// ReposUpdateRelease implements repos/update-release operation.
+// ReposUpdateRelease invokes repos/update-release operation.
+//
+// PATCH /repos/{owner}/{repo}/releases/{release_id}
 func (c *Client) ReposUpdateRelease(ctx context.Context, request ReposUpdateReleaseReq, params ReposUpdateReleaseParams) (res ReposUpdateReleaseRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposUpdateRelease`,
@@ -40543,7 +41507,9 @@ func (c *Client) ReposUpdateRelease(ctx context.Context, request ReposUpdateRele
 	return result, nil
 }
 
-// ReposUpdateReleaseAsset implements repos/update-release-asset operation.
+// ReposUpdateReleaseAsset invokes repos/update-release-asset operation.
+//
+// PATCH /repos/{owner}/{repo}/releases/assets/{asset_id}
 func (c *Client) ReposUpdateReleaseAsset(ctx context.Context, request ReposUpdateReleaseAssetReq, params ReposUpdateReleaseAssetParams) (res ReleaseAsset, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposUpdateReleaseAsset`,
@@ -40639,7 +41605,9 @@ func (c *Client) ReposUpdateReleaseAsset(ctx context.Context, request ReposUpdat
 	return result, nil
 }
 
-// ReposUpdateWebhookConfigForRepo implements repos/update-webhook-config-for-repo operation.
+// ReposUpdateWebhookConfigForRepo invokes repos/update-webhook-config-for-repo operation.
+//
+// PATCH /repos/{owner}/{repo}/hooks/{hook_id}/config
 func (c *Client) ReposUpdateWebhookConfigForRepo(ctx context.Context, request ReposUpdateWebhookConfigForRepoReq, params ReposUpdateWebhookConfigForRepoParams) (res WebhookConfig, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposUpdateWebhookConfigForRepo`,
@@ -40736,7 +41704,9 @@ func (c *Client) ReposUpdateWebhookConfigForRepo(ctx context.Context, request Re
 	return result, nil
 }
 
-// ScimDeleteUserFromOrg implements scim/delete-user-from-org operation.
+// ScimDeleteUserFromOrg invokes scim/delete-user-from-org operation.
+//
+// DELETE /scim/v2/organizations/{org}/Users/{scim_user_id}
 func (c *Client) ScimDeleteUserFromOrg(ctx context.Context, params ScimDeleteUserFromOrgParams) (res ScimDeleteUserFromOrgRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ScimDeleteUserFromOrg`,
@@ -40803,7 +41773,9 @@ func (c *Client) ScimDeleteUserFromOrg(ctx context.Context, params ScimDeleteUse
 	return result, nil
 }
 
-// SearchCommits implements search/commits operation.
+// SearchCommits invokes search/commits operation.
+//
+// GET /search/commits
 func (c *Client) SearchCommits(ctx context.Context, params SearchCommitsParams) (res SearchCommitsRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SearchCommits`,
@@ -40921,7 +41893,9 @@ func (c *Client) SearchCommits(ctx context.Context, params SearchCommitsParams) 
 	return result, nil
 }
 
-// SearchTopics implements search/topics operation.
+// SearchTopics invokes search/topics operation.
+//
+// GET /search/topics
 func (c *Client) SearchTopics(ctx context.Context, params SearchTopicsParams) (res SearchTopicsRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SearchTopics`,
@@ -41007,7 +41981,9 @@ func (c *Client) SearchTopics(ctx context.Context, params SearchTopicsParams) (r
 	return result, nil
 }
 
-// SecretScanningGetAlert implements secret-scanning/get-alert operation.
+// SecretScanningGetAlert invokes secret-scanning/get-alert operation.
+//
+// GET /repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}
 func (c *Client) SecretScanningGetAlert(ctx context.Context, params SecretScanningGetAlertParams) (res SecretScanningGetAlertRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SecretScanningGetAlert`,
@@ -41092,7 +42068,9 @@ func (c *Client) SecretScanningGetAlert(ctx context.Context, params SecretScanni
 	return result, nil
 }
 
-// SecretScanningListAlertsForOrg implements secret-scanning/list-alerts-for-org operation.
+// SecretScanningListAlertsForOrg invokes secret-scanning/list-alerts-for-org operation.
+//
+// GET /orgs/{org}/secret-scanning/alerts
 func (c *Client) SecretScanningListAlertsForOrg(ctx context.Context, params SecretScanningListAlertsForOrgParams) (res SecretScanningListAlertsForOrgRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SecretScanningListAlertsForOrg`,
@@ -41212,7 +42190,9 @@ func (c *Client) SecretScanningListAlertsForOrg(ctx context.Context, params Secr
 	return result, nil
 }
 
-// SecretScanningListAlertsForRepo implements secret-scanning/list-alerts-for-repo operation.
+// SecretScanningListAlertsForRepo invokes secret-scanning/list-alerts-for-repo operation.
+//
+// GET /repos/{owner}/{repo}/secret-scanning/alerts
 func (c *Client) SecretScanningListAlertsForRepo(ctx context.Context, params SecretScanningListAlertsForRepoParams) (res SecretScanningListAlertsForRepoRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SecretScanningListAlertsForRepo`,
@@ -41347,7 +42327,9 @@ func (c *Client) SecretScanningListAlertsForRepo(ctx context.Context, params Sec
 	return result, nil
 }
 
-// SecretScanningUpdateAlert implements secret-scanning/update-alert operation.
+// SecretScanningUpdateAlert invokes secret-scanning/update-alert operation.
+//
+// PATCH /repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}
 func (c *Client) SecretScanningUpdateAlert(ctx context.Context, request SecretScanningUpdateAlertReq, params SecretScanningUpdateAlertParams) (res SecretScanningUpdateAlertRes, err error) {
 	if err := func() error {
 
@@ -41455,7 +42437,9 @@ func (c *Client) SecretScanningUpdateAlert(ctx context.Context, request SecretSc
 	return result, nil
 }
 
-// TeamsAddMemberLegacy implements teams/add-member-legacy operation.
+// TeamsAddMemberLegacy invokes teams/add-member-legacy operation.
+//
+// PUT /teams/{team_id}/members/{username}
 func (c *Client) TeamsAddMemberLegacy(ctx context.Context, params TeamsAddMemberLegacyParams) (res TeamsAddMemberLegacyRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsAddMemberLegacy`,
@@ -41522,7 +42506,9 @@ func (c *Client) TeamsAddMemberLegacy(ctx context.Context, params TeamsAddMember
 	return result, nil
 }
 
-// TeamsAddOrUpdateMembershipForUserInOrg implements teams/add-or-update-membership-for-user-in-org operation.
+// TeamsAddOrUpdateMembershipForUserInOrg invokes teams/add-or-update-membership-for-user-in-org operation.
+//
+// PUT /orgs/{org}/teams/{team_slug}/memberships/{username}
 func (c *Client) TeamsAddOrUpdateMembershipForUserInOrg(ctx context.Context, request TeamsAddOrUpdateMembershipForUserInOrgReq, params TeamsAddOrUpdateMembershipForUserInOrgParams) (res TeamsAddOrUpdateMembershipForUserInOrgRes, err error) {
 	if err := func() error {
 
@@ -41627,7 +42613,9 @@ func (c *Client) TeamsAddOrUpdateMembershipForUserInOrg(ctx context.Context, req
 	return result, nil
 }
 
-// TeamsAddOrUpdateMembershipForUserLegacy implements teams/add-or-update-membership-for-user-legacy operation.
+// TeamsAddOrUpdateMembershipForUserLegacy invokes teams/add-or-update-membership-for-user-legacy operation.
+//
+// PUT /teams/{team_id}/memberships/{username}
 func (c *Client) TeamsAddOrUpdateMembershipForUserLegacy(ctx context.Context, request TeamsAddOrUpdateMembershipForUserLegacyReq, params TeamsAddOrUpdateMembershipForUserLegacyParams) (res TeamsAddOrUpdateMembershipForUserLegacyRes, err error) {
 	if err := func() error {
 
@@ -41717,7 +42705,9 @@ func (c *Client) TeamsAddOrUpdateMembershipForUserLegacy(ctx context.Context, re
 	return result, nil
 }
 
-// TeamsAddOrUpdateProjectPermissionsInOrg implements teams/add-or-update-project-permissions-in-org operation.
+// TeamsAddOrUpdateProjectPermissionsInOrg invokes teams/add-or-update-project-permissions-in-org operation.
+//
+// PUT /orgs/{org}/teams/{team_slug}/projects/{project_id}
 func (c *Client) TeamsAddOrUpdateProjectPermissionsInOrg(ctx context.Context, request TeamsAddOrUpdateProjectPermissionsInOrgReq, params TeamsAddOrUpdateProjectPermissionsInOrgParams) (res TeamsAddOrUpdateProjectPermissionsInOrgRes, err error) {
 	if err := func() error {
 
@@ -41822,7 +42812,9 @@ func (c *Client) TeamsAddOrUpdateProjectPermissionsInOrg(ctx context.Context, re
 	return result, nil
 }
 
-// TeamsAddOrUpdateRepoPermissionsInOrg implements teams/add-or-update-repo-permissions-in-org operation.
+// TeamsAddOrUpdateRepoPermissionsInOrg invokes teams/add-or-update-repo-permissions-in-org operation.
+//
+// PUT /orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}
 func (c *Client) TeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, request TeamsAddOrUpdateRepoPermissionsInOrgReq, params TeamsAddOrUpdateRepoPermissionsInOrgParams) (res TeamsAddOrUpdateRepoPermissionsInOrgNoContent, err error) {
 	if err := func() error {
 
@@ -41942,7 +42934,9 @@ func (c *Client) TeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, reque
 	return result, nil
 }
 
-// TeamsCheckPermissionsForProjectInOrg implements teams/check-permissions-for-project-in-org operation.
+// TeamsCheckPermissionsForProjectInOrg invokes teams/check-permissions-for-project-in-org operation.
+//
+// GET /orgs/{org}/teams/{team_slug}/projects/{project_id}
 func (c *Client) TeamsCheckPermissionsForProjectInOrg(ctx context.Context, params TeamsCheckPermissionsForProjectInOrgParams) (res TeamsCheckPermissionsForProjectInOrgRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsCheckPermissionsForProjectInOrg`,
@@ -42024,7 +43018,9 @@ func (c *Client) TeamsCheckPermissionsForProjectInOrg(ctx context.Context, param
 	return result, nil
 }
 
-// TeamsCheckPermissionsForProjectLegacy implements teams/check-permissions-for-project-legacy operation.
+// TeamsCheckPermissionsForProjectLegacy invokes teams/check-permissions-for-project-legacy operation.
+//
+// GET /teams/{team_id}/projects/{project_id}
 func (c *Client) TeamsCheckPermissionsForProjectLegacy(ctx context.Context, params TeamsCheckPermissionsForProjectLegacyParams) (res TeamsCheckPermissionsForProjectLegacyRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsCheckPermissionsForProjectLegacy`,
@@ -42091,7 +43087,9 @@ func (c *Client) TeamsCheckPermissionsForProjectLegacy(ctx context.Context, para
 	return result, nil
 }
 
-// TeamsCheckPermissionsForRepoInOrg implements teams/check-permissions-for-repo-in-org operation.
+// TeamsCheckPermissionsForRepoInOrg invokes teams/check-permissions-for-repo-in-org operation.
+//
+// GET /orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}
 func (c *Client) TeamsCheckPermissionsForRepoInOrg(ctx context.Context, params TeamsCheckPermissionsForRepoInOrgParams) (res TeamsCheckPermissionsForRepoInOrgRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsCheckPermissionsForRepoInOrg`,
@@ -42188,7 +43186,9 @@ func (c *Client) TeamsCheckPermissionsForRepoInOrg(ctx context.Context, params T
 	return result, nil
 }
 
-// TeamsCheckPermissionsForRepoLegacy implements teams/check-permissions-for-repo-legacy operation.
+// TeamsCheckPermissionsForRepoLegacy invokes teams/check-permissions-for-repo-legacy operation.
+//
+// GET /teams/{team_id}/repos/{owner}/{repo}
 func (c *Client) TeamsCheckPermissionsForRepoLegacy(ctx context.Context, params TeamsCheckPermissionsForRepoLegacyParams) (res TeamsCheckPermissionsForRepoLegacyRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsCheckPermissionsForRepoLegacy`,
@@ -42270,7 +43270,9 @@ func (c *Client) TeamsCheckPermissionsForRepoLegacy(ctx context.Context, params 
 	return result, nil
 }
 
-// TeamsCreateDiscussionCommentInOrg implements teams/create-discussion-comment-in-org operation.
+// TeamsCreateDiscussionCommentInOrg invokes teams/create-discussion-comment-in-org operation.
+//
+// POST /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments
 func (c *Client) TeamsCreateDiscussionCommentInOrg(ctx context.Context, request TeamsCreateDiscussionCommentInOrgReq, params TeamsCreateDiscussionCommentInOrgParams) (res TeamDiscussionComment, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsCreateDiscussionCommentInOrg`,
@@ -42367,7 +43369,9 @@ func (c *Client) TeamsCreateDiscussionCommentInOrg(ctx context.Context, request 
 	return result, nil
 }
 
-// TeamsCreateDiscussionCommentLegacy implements teams/create-discussion-comment-legacy operation.
+// TeamsCreateDiscussionCommentLegacy invokes teams/create-discussion-comment-legacy operation.
+//
+// POST /teams/{team_id}/discussions/{discussion_number}/comments
 func (c *Client) TeamsCreateDiscussionCommentLegacy(ctx context.Context, request TeamsCreateDiscussionCommentLegacyReq, params TeamsCreateDiscussionCommentLegacyParams) (res TeamDiscussionComment, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsCreateDiscussionCommentLegacy`,
@@ -42449,7 +43453,9 @@ func (c *Client) TeamsCreateDiscussionCommentLegacy(ctx context.Context, request
 	return result, nil
 }
 
-// TeamsCreateDiscussionInOrg implements teams/create-discussion-in-org operation.
+// TeamsCreateDiscussionInOrg invokes teams/create-discussion-in-org operation.
+//
+// POST /orgs/{org}/teams/{team_slug}/discussions
 func (c *Client) TeamsCreateDiscussionInOrg(ctx context.Context, request TeamsCreateDiscussionInOrgReq, params TeamsCreateDiscussionInOrgParams) (res TeamDiscussion, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsCreateDiscussionInOrg`,
@@ -42531,7 +43537,9 @@ func (c *Client) TeamsCreateDiscussionInOrg(ctx context.Context, request TeamsCr
 	return result, nil
 }
 
-// TeamsCreateDiscussionLegacy implements teams/create-discussion-legacy operation.
+// TeamsCreateDiscussionLegacy invokes teams/create-discussion-legacy operation.
+//
+// POST /teams/{team_id}/discussions
 func (c *Client) TeamsCreateDiscussionLegacy(ctx context.Context, request TeamsCreateDiscussionLegacyReq, params TeamsCreateDiscussionLegacyParams) (res TeamDiscussion, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsCreateDiscussionLegacy`,
@@ -42598,7 +43606,9 @@ func (c *Client) TeamsCreateDiscussionLegacy(ctx context.Context, request TeamsC
 	return result, nil
 }
 
-// TeamsCreateOrUpdateIdpGroupConnectionsInOrg implements teams/create-or-update-idp-group-connections-in-org operation.
+// TeamsCreateOrUpdateIdpGroupConnectionsInOrg invokes teams/create-or-update-idp-group-connections-in-org operation.
+//
+// PATCH /orgs/{org}/teams/{team_slug}/team-sync/group-mappings
 func (c *Client) TeamsCreateOrUpdateIdpGroupConnectionsInOrg(ctx context.Context, request TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq, params TeamsCreateOrUpdateIdpGroupConnectionsInOrgParams) (res GroupMapping, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsCreateOrUpdateIdpGroupConnectionsInOrg`,
@@ -42680,7 +43690,9 @@ func (c *Client) TeamsCreateOrUpdateIdpGroupConnectionsInOrg(ctx context.Context
 	return result, nil
 }
 
-// TeamsDeleteDiscussionCommentInOrg implements teams/delete-discussion-comment-in-org operation.
+// TeamsDeleteDiscussionCommentInOrg invokes teams/delete-discussion-comment-in-org operation.
+//
+// DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}
 func (c *Client) TeamsDeleteDiscussionCommentInOrg(ctx context.Context, params TeamsDeleteDiscussionCommentInOrgParams) (res TeamsDeleteDiscussionCommentInOrgNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsDeleteDiscussionCommentInOrg`,
@@ -42777,7 +43789,9 @@ func (c *Client) TeamsDeleteDiscussionCommentInOrg(ctx context.Context, params T
 	return result, nil
 }
 
-// TeamsDeleteDiscussionCommentLegacy implements teams/delete-discussion-comment-legacy operation.
+// TeamsDeleteDiscussionCommentLegacy invokes teams/delete-discussion-comment-legacy operation.
+//
+// DELETE /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}
 func (c *Client) TeamsDeleteDiscussionCommentLegacy(ctx context.Context, params TeamsDeleteDiscussionCommentLegacyParams) (res TeamsDeleteDiscussionCommentLegacyNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsDeleteDiscussionCommentLegacy`,
@@ -42859,7 +43873,9 @@ func (c *Client) TeamsDeleteDiscussionCommentLegacy(ctx context.Context, params 
 	return result, nil
 }
 
-// TeamsDeleteDiscussionInOrg implements teams/delete-discussion-in-org operation.
+// TeamsDeleteDiscussionInOrg invokes teams/delete-discussion-in-org operation.
+//
+// DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}
 func (c *Client) TeamsDeleteDiscussionInOrg(ctx context.Context, params TeamsDeleteDiscussionInOrgParams) (res TeamsDeleteDiscussionInOrgNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsDeleteDiscussionInOrg`,
@@ -42941,7 +43957,9 @@ func (c *Client) TeamsDeleteDiscussionInOrg(ctx context.Context, params TeamsDel
 	return result, nil
 }
 
-// TeamsDeleteDiscussionLegacy implements teams/delete-discussion-legacy operation.
+// TeamsDeleteDiscussionLegacy invokes teams/delete-discussion-legacy operation.
+//
+// DELETE /teams/{team_id}/discussions/{discussion_number}
 func (c *Client) TeamsDeleteDiscussionLegacy(ctx context.Context, params TeamsDeleteDiscussionLegacyParams) (res TeamsDeleteDiscussionLegacyNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsDeleteDiscussionLegacy`,
@@ -43008,7 +44026,9 @@ func (c *Client) TeamsDeleteDiscussionLegacy(ctx context.Context, params TeamsDe
 	return result, nil
 }
 
-// TeamsDeleteInOrg implements teams/delete-in-org operation.
+// TeamsDeleteInOrg invokes teams/delete-in-org operation.
+//
+// DELETE /orgs/{org}/teams/{team_slug}
 func (c *Client) TeamsDeleteInOrg(ctx context.Context, params TeamsDeleteInOrgParams) (res TeamsDeleteInOrgNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsDeleteInOrg`,
@@ -43075,7 +44095,9 @@ func (c *Client) TeamsDeleteInOrg(ctx context.Context, params TeamsDeleteInOrgPa
 	return result, nil
 }
 
-// TeamsGetByName implements teams/get-by-name operation.
+// TeamsGetByName invokes teams/get-by-name operation.
+//
+// GET /orgs/{org}/teams/{team_slug}
 func (c *Client) TeamsGetByName(ctx context.Context, params TeamsGetByNameParams) (res TeamsGetByNameRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsGetByName`,
@@ -43142,7 +44164,9 @@ func (c *Client) TeamsGetByName(ctx context.Context, params TeamsGetByNameParams
 	return result, nil
 }
 
-// TeamsGetDiscussionCommentInOrg implements teams/get-discussion-comment-in-org operation.
+// TeamsGetDiscussionCommentInOrg invokes teams/get-discussion-comment-in-org operation.
+//
+// GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}
 func (c *Client) TeamsGetDiscussionCommentInOrg(ctx context.Context, params TeamsGetDiscussionCommentInOrgParams) (res TeamDiscussionComment, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsGetDiscussionCommentInOrg`,
@@ -43239,7 +44263,9 @@ func (c *Client) TeamsGetDiscussionCommentInOrg(ctx context.Context, params Team
 	return result, nil
 }
 
-// TeamsGetDiscussionCommentLegacy implements teams/get-discussion-comment-legacy operation.
+// TeamsGetDiscussionCommentLegacy invokes teams/get-discussion-comment-legacy operation.
+//
+// GET /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}
 func (c *Client) TeamsGetDiscussionCommentLegacy(ctx context.Context, params TeamsGetDiscussionCommentLegacyParams) (res TeamDiscussionComment, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsGetDiscussionCommentLegacy`,
@@ -43321,7 +44347,9 @@ func (c *Client) TeamsGetDiscussionCommentLegacy(ctx context.Context, params Tea
 	return result, nil
 }
 
-// TeamsGetDiscussionInOrg implements teams/get-discussion-in-org operation.
+// TeamsGetDiscussionInOrg invokes teams/get-discussion-in-org operation.
+//
+// GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}
 func (c *Client) TeamsGetDiscussionInOrg(ctx context.Context, params TeamsGetDiscussionInOrgParams) (res TeamDiscussion, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsGetDiscussionInOrg`,
@@ -43403,7 +44431,9 @@ func (c *Client) TeamsGetDiscussionInOrg(ctx context.Context, params TeamsGetDis
 	return result, nil
 }
 
-// TeamsGetDiscussionLegacy implements teams/get-discussion-legacy operation.
+// TeamsGetDiscussionLegacy invokes teams/get-discussion-legacy operation.
+//
+// GET /teams/{team_id}/discussions/{discussion_number}
 func (c *Client) TeamsGetDiscussionLegacy(ctx context.Context, params TeamsGetDiscussionLegacyParams) (res TeamDiscussion, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsGetDiscussionLegacy`,
@@ -43470,7 +44500,9 @@ func (c *Client) TeamsGetDiscussionLegacy(ctx context.Context, params TeamsGetDi
 	return result, nil
 }
 
-// TeamsGetLegacy implements teams/get-legacy operation.
+// TeamsGetLegacy invokes teams/get-legacy operation.
+//
+// GET /teams/{team_id}
 func (c *Client) TeamsGetLegacy(ctx context.Context, params TeamsGetLegacyParams) (res TeamsGetLegacyRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsGetLegacy`,
@@ -43522,7 +44554,9 @@ func (c *Client) TeamsGetLegacy(ctx context.Context, params TeamsGetLegacyParams
 	return result, nil
 }
 
-// TeamsGetMemberLegacy implements teams/get-member-legacy operation.
+// TeamsGetMemberLegacy invokes teams/get-member-legacy operation.
+//
+// GET /teams/{team_id}/members/{username}
 func (c *Client) TeamsGetMemberLegacy(ctx context.Context, params TeamsGetMemberLegacyParams) (res TeamsGetMemberLegacyRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsGetMemberLegacy`,
@@ -43589,7 +44623,9 @@ func (c *Client) TeamsGetMemberLegacy(ctx context.Context, params TeamsGetMember
 	return result, nil
 }
 
-// TeamsGetMembershipForUserInOrg implements teams/get-membership-for-user-in-org operation.
+// TeamsGetMembershipForUserInOrg invokes teams/get-membership-for-user-in-org operation.
+//
+// GET /orgs/{org}/teams/{team_slug}/memberships/{username}
 func (c *Client) TeamsGetMembershipForUserInOrg(ctx context.Context, params TeamsGetMembershipForUserInOrgParams) (res TeamsGetMembershipForUserInOrgRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsGetMembershipForUserInOrg`,
@@ -43671,7 +44707,9 @@ func (c *Client) TeamsGetMembershipForUserInOrg(ctx context.Context, params Team
 	return result, nil
 }
 
-// TeamsGetMembershipForUserLegacy implements teams/get-membership-for-user-legacy operation.
+// TeamsGetMembershipForUserLegacy invokes teams/get-membership-for-user-legacy operation.
+//
+// GET /teams/{team_id}/memberships/{username}
 func (c *Client) TeamsGetMembershipForUserLegacy(ctx context.Context, params TeamsGetMembershipForUserLegacyParams) (res TeamsGetMembershipForUserLegacyRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsGetMembershipForUserLegacy`,
@@ -43738,7 +44776,9 @@ func (c *Client) TeamsGetMembershipForUserLegacy(ctx context.Context, params Tea
 	return result, nil
 }
 
-// TeamsList implements teams/list operation.
+// TeamsList invokes teams/list operation.
+//
+// GET /orgs/{org}/teams
 func (c *Client) TeamsList(ctx context.Context, params TeamsListParams) (res TeamsListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsList`,
@@ -43826,7 +44866,9 @@ func (c *Client) TeamsList(ctx context.Context, params TeamsListParams) (res Tea
 	return result, nil
 }
 
-// TeamsListChildInOrg implements teams/list-child-in-org operation.
+// TeamsListChildInOrg invokes teams/list-child-in-org operation.
+//
+// GET /orgs/{org}/teams/{team_slug}/teams
 func (c *Client) TeamsListChildInOrg(ctx context.Context, params TeamsListChildInOrgParams) (res []Team, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsListChildInOrg`,
@@ -43929,7 +44971,9 @@ func (c *Client) TeamsListChildInOrg(ctx context.Context, params TeamsListChildI
 	return result, nil
 }
 
-// TeamsListDiscussionCommentsInOrg implements teams/list-discussion-comments-in-org operation.
+// TeamsListDiscussionCommentsInOrg invokes teams/list-discussion-comments-in-org operation.
+//
+// GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments
 func (c *Client) TeamsListDiscussionCommentsInOrg(ctx context.Context, params TeamsListDiscussionCommentsInOrgParams) (res []TeamDiscussionComment, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsListDiscussionCommentsInOrg`,
@@ -44063,7 +45107,9 @@ func (c *Client) TeamsListDiscussionCommentsInOrg(ctx context.Context, params Te
 	return result, nil
 }
 
-// TeamsListDiscussionCommentsLegacy implements teams/list-discussion-comments-legacy operation.
+// TeamsListDiscussionCommentsLegacy invokes teams/list-discussion-comments-legacy operation.
+//
+// GET /teams/{team_id}/discussions/{discussion_number}/comments
 func (c *Client) TeamsListDiscussionCommentsLegacy(ctx context.Context, params TeamsListDiscussionCommentsLegacyParams) (res []TeamDiscussionComment, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsListDiscussionCommentsLegacy`,
@@ -44182,7 +45228,9 @@ func (c *Client) TeamsListDiscussionCommentsLegacy(ctx context.Context, params T
 	return result, nil
 }
 
-// TeamsListDiscussionsInOrg implements teams/list-discussions-in-org operation.
+// TeamsListDiscussionsInOrg invokes teams/list-discussions-in-org operation.
+//
+// GET /orgs/{org}/teams/{team_slug}/discussions
 func (c *Client) TeamsListDiscussionsInOrg(ctx context.Context, params TeamsListDiscussionsInOrgParams) (res []TeamDiscussion, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsListDiscussionsInOrg`,
@@ -44317,7 +45365,9 @@ func (c *Client) TeamsListDiscussionsInOrg(ctx context.Context, params TeamsList
 	return result, nil
 }
 
-// TeamsListDiscussionsLegacy implements teams/list-discussions-legacy operation.
+// TeamsListDiscussionsLegacy invokes teams/list-discussions-legacy operation.
+//
+// GET /teams/{team_id}/discussions
 func (c *Client) TeamsListDiscussionsLegacy(ctx context.Context, params TeamsListDiscussionsLegacyParams) (res []TeamDiscussion, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsListDiscussionsLegacy`,
@@ -44421,7 +45471,9 @@ func (c *Client) TeamsListDiscussionsLegacy(ctx context.Context, params TeamsLis
 	return result, nil
 }
 
-// TeamsListForAuthenticatedUser implements teams/list-for-authenticated-user operation.
+// TeamsListForAuthenticatedUser invokes teams/list-for-authenticated-user operation.
+//
+// GET /user/teams
 func (c *Client) TeamsListForAuthenticatedUser(ctx context.Context, params TeamsListForAuthenticatedUserParams) (res TeamsListForAuthenticatedUserRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsListForAuthenticatedUser`,
@@ -44494,7 +45546,9 @@ func (c *Client) TeamsListForAuthenticatedUser(ctx context.Context, params Teams
 	return result, nil
 }
 
-// TeamsListIdpGroupsForLegacy implements teams/list-idp-groups-for-legacy operation.
+// TeamsListIdpGroupsForLegacy invokes teams/list-idp-groups-for-legacy operation.
+//
+// GET /teams/{team_id}/team-sync/group-mappings
 func (c *Client) TeamsListIdpGroupsForLegacy(ctx context.Context, params TeamsListIdpGroupsForLegacyParams) (res TeamsListIdpGroupsForLegacyRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsListIdpGroupsForLegacy`,
@@ -44547,7 +45601,9 @@ func (c *Client) TeamsListIdpGroupsForLegacy(ctx context.Context, params TeamsLi
 	return result, nil
 }
 
-// TeamsListIdpGroupsForOrg implements teams/list-idp-groups-for-org operation.
+// TeamsListIdpGroupsForOrg invokes teams/list-idp-groups-for-org operation.
+//
+// GET /orgs/{org}/team-sync/groups
 func (c *Client) TeamsListIdpGroupsForOrg(ctx context.Context, params TeamsListIdpGroupsForOrgParams) (res GroupMapping, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsListIdpGroupsForOrg`,
@@ -44635,7 +45691,9 @@ func (c *Client) TeamsListIdpGroupsForOrg(ctx context.Context, params TeamsListI
 	return result, nil
 }
 
-// TeamsListIdpGroupsInOrg implements teams/list-idp-groups-in-org operation.
+// TeamsListIdpGroupsInOrg invokes teams/list-idp-groups-in-org operation.
+//
+// GET /orgs/{org}/teams/{team_slug}/team-sync/group-mappings
 func (c *Client) TeamsListIdpGroupsInOrg(ctx context.Context, params TeamsListIdpGroupsInOrgParams) (res GroupMapping, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsListIdpGroupsInOrg`,
@@ -44703,7 +45761,9 @@ func (c *Client) TeamsListIdpGroupsInOrg(ctx context.Context, params TeamsListId
 	return result, nil
 }
 
-// TeamsListMembersInOrg implements teams/list-members-in-org operation.
+// TeamsListMembersInOrg invokes teams/list-members-in-org operation.
+//
+// GET /orgs/{org}/teams/{team_slug}/members
 func (c *Client) TeamsListMembersInOrg(ctx context.Context, params TeamsListMembersInOrgParams) (res []SimpleUser, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsListMembersInOrg`,
@@ -44822,7 +45882,9 @@ func (c *Client) TeamsListMembersInOrg(ctx context.Context, params TeamsListMemb
 	return result, nil
 }
 
-// TeamsListMembersLegacy implements teams/list-members-legacy operation.
+// TeamsListMembersLegacy invokes teams/list-members-legacy operation.
+//
+// GET /teams/{team_id}/members
 func (c *Client) TeamsListMembersLegacy(ctx context.Context, params TeamsListMembersLegacyParams) (res TeamsListMembersLegacyRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsListMembersLegacy`,
@@ -44926,7 +45988,9 @@ func (c *Client) TeamsListMembersLegacy(ctx context.Context, params TeamsListMem
 	return result, nil
 }
 
-// TeamsListPendingInvitationsInOrg implements teams/list-pending-invitations-in-org operation.
+// TeamsListPendingInvitationsInOrg invokes teams/list-pending-invitations-in-org operation.
+//
+// GET /orgs/{org}/teams/{team_slug}/invitations
 func (c *Client) TeamsListPendingInvitationsInOrg(ctx context.Context, params TeamsListPendingInvitationsInOrgParams) (res []OrganizationInvitation, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsListPendingInvitationsInOrg`,
@@ -45029,7 +46093,9 @@ func (c *Client) TeamsListPendingInvitationsInOrg(ctx context.Context, params Te
 	return result, nil
 }
 
-// TeamsListPendingInvitationsLegacy implements teams/list-pending-invitations-legacy operation.
+// TeamsListPendingInvitationsLegacy invokes teams/list-pending-invitations-legacy operation.
+//
+// GET /teams/{team_id}/invitations
 func (c *Client) TeamsListPendingInvitationsLegacy(ctx context.Context, params TeamsListPendingInvitationsLegacyParams) (res []OrganizationInvitation, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsListPendingInvitationsLegacy`,
@@ -45117,7 +46183,9 @@ func (c *Client) TeamsListPendingInvitationsLegacy(ctx context.Context, params T
 	return result, nil
 }
 
-// TeamsListProjectsInOrg implements teams/list-projects-in-org operation.
+// TeamsListProjectsInOrg invokes teams/list-projects-in-org operation.
+//
+// GET /orgs/{org}/teams/{team_slug}/projects
 func (c *Client) TeamsListProjectsInOrg(ctx context.Context, params TeamsListProjectsInOrgParams) (res []TeamProject, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsListProjectsInOrg`,
@@ -45220,7 +46288,9 @@ func (c *Client) TeamsListProjectsInOrg(ctx context.Context, params TeamsListPro
 	return result, nil
 }
 
-// TeamsListProjectsLegacy implements teams/list-projects-legacy operation.
+// TeamsListProjectsLegacy invokes teams/list-projects-legacy operation.
+//
+// GET /teams/{team_id}/projects
 func (c *Client) TeamsListProjectsLegacy(ctx context.Context, params TeamsListProjectsLegacyParams) (res TeamsListProjectsLegacyRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsListProjectsLegacy`,
@@ -45308,7 +46378,9 @@ func (c *Client) TeamsListProjectsLegacy(ctx context.Context, params TeamsListPr
 	return result, nil
 }
 
-// TeamsListReposInOrg implements teams/list-repos-in-org operation.
+// TeamsListReposInOrg invokes teams/list-repos-in-org operation.
+//
+// GET /orgs/{org}/teams/{team_slug}/repos
 func (c *Client) TeamsListReposInOrg(ctx context.Context, params TeamsListReposInOrgParams) (res []MinimalRepository, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsListReposInOrg`,
@@ -45411,7 +46483,9 @@ func (c *Client) TeamsListReposInOrg(ctx context.Context, params TeamsListReposI
 	return result, nil
 }
 
-// TeamsListReposLegacy implements teams/list-repos-legacy operation.
+// TeamsListReposLegacy invokes teams/list-repos-legacy operation.
+//
+// GET /teams/{team_id}/repos
 func (c *Client) TeamsListReposLegacy(ctx context.Context, params TeamsListReposLegacyParams) (res TeamsListReposLegacyRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsListReposLegacy`,
@@ -45499,7 +46573,9 @@ func (c *Client) TeamsListReposLegacy(ctx context.Context, params TeamsListRepos
 	return result, nil
 }
 
-// TeamsRemoveMemberLegacy implements teams/remove-member-legacy operation.
+// TeamsRemoveMemberLegacy invokes teams/remove-member-legacy operation.
+//
+// DELETE /teams/{team_id}/members/{username}
 func (c *Client) TeamsRemoveMemberLegacy(ctx context.Context, params TeamsRemoveMemberLegacyParams) (res TeamsRemoveMemberLegacyRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsRemoveMemberLegacy`,
@@ -45566,7 +46642,9 @@ func (c *Client) TeamsRemoveMemberLegacy(ctx context.Context, params TeamsRemove
 	return result, nil
 }
 
-// TeamsRemoveMembershipForUserInOrg implements teams/remove-membership-for-user-in-org operation.
+// TeamsRemoveMembershipForUserInOrg invokes teams/remove-membership-for-user-in-org operation.
+//
+// DELETE /orgs/{org}/teams/{team_slug}/memberships/{username}
 func (c *Client) TeamsRemoveMembershipForUserInOrg(ctx context.Context, params TeamsRemoveMembershipForUserInOrgParams) (res TeamsRemoveMembershipForUserInOrgRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsRemoveMembershipForUserInOrg`,
@@ -45648,7 +46726,9 @@ func (c *Client) TeamsRemoveMembershipForUserInOrg(ctx context.Context, params T
 	return result, nil
 }
 
-// TeamsRemoveMembershipForUserLegacy implements teams/remove-membership-for-user-legacy operation.
+// TeamsRemoveMembershipForUserLegacy invokes teams/remove-membership-for-user-legacy operation.
+//
+// DELETE /teams/{team_id}/memberships/{username}
 func (c *Client) TeamsRemoveMembershipForUserLegacy(ctx context.Context, params TeamsRemoveMembershipForUserLegacyParams) (res TeamsRemoveMembershipForUserLegacyRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsRemoveMembershipForUserLegacy`,
@@ -45715,7 +46795,9 @@ func (c *Client) TeamsRemoveMembershipForUserLegacy(ctx context.Context, params 
 	return result, nil
 }
 
-// TeamsRemoveProjectInOrg implements teams/remove-project-in-org operation.
+// TeamsRemoveProjectInOrg invokes teams/remove-project-in-org operation.
+//
+// DELETE /orgs/{org}/teams/{team_slug}/projects/{project_id}
 func (c *Client) TeamsRemoveProjectInOrg(ctx context.Context, params TeamsRemoveProjectInOrgParams) (res TeamsRemoveProjectInOrgNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsRemoveProjectInOrg`,
@@ -45797,7 +46879,9 @@ func (c *Client) TeamsRemoveProjectInOrg(ctx context.Context, params TeamsRemove
 	return result, nil
 }
 
-// TeamsRemoveRepoInOrg implements teams/remove-repo-in-org operation.
+// TeamsRemoveRepoInOrg invokes teams/remove-repo-in-org operation.
+//
+// DELETE /orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}
 func (c *Client) TeamsRemoveRepoInOrg(ctx context.Context, params TeamsRemoveRepoInOrgParams) (res TeamsRemoveRepoInOrgNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsRemoveRepoInOrg`,
@@ -45894,7 +46978,9 @@ func (c *Client) TeamsRemoveRepoInOrg(ctx context.Context, params TeamsRemoveRep
 	return result, nil
 }
 
-// TeamsRemoveRepoLegacy implements teams/remove-repo-legacy operation.
+// TeamsRemoveRepoLegacy invokes teams/remove-repo-legacy operation.
+//
+// DELETE /teams/{team_id}/repos/{owner}/{repo}
 func (c *Client) TeamsRemoveRepoLegacy(ctx context.Context, params TeamsRemoveRepoLegacyParams) (res TeamsRemoveRepoLegacyNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsRemoveRepoLegacy`,
@@ -45976,7 +47062,9 @@ func (c *Client) TeamsRemoveRepoLegacy(ctx context.Context, params TeamsRemoveRe
 	return result, nil
 }
 
-// TeamsUpdateDiscussionCommentInOrg implements teams/update-discussion-comment-in-org operation.
+// TeamsUpdateDiscussionCommentInOrg invokes teams/update-discussion-comment-in-org operation.
+//
+// PATCH /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}
 func (c *Client) TeamsUpdateDiscussionCommentInOrg(ctx context.Context, request TeamsUpdateDiscussionCommentInOrgReq, params TeamsUpdateDiscussionCommentInOrgParams) (res TeamDiscussionComment, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsUpdateDiscussionCommentInOrg`,
@@ -46087,7 +47175,9 @@ func (c *Client) TeamsUpdateDiscussionCommentInOrg(ctx context.Context, request 
 	return result, nil
 }
 
-// TeamsUpdateDiscussionCommentLegacy implements teams/update-discussion-comment-legacy operation.
+// TeamsUpdateDiscussionCommentLegacy invokes teams/update-discussion-comment-legacy operation.
+//
+// PATCH /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}
 func (c *Client) TeamsUpdateDiscussionCommentLegacy(ctx context.Context, request TeamsUpdateDiscussionCommentLegacyReq, params TeamsUpdateDiscussionCommentLegacyParams) (res TeamDiscussionComment, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsUpdateDiscussionCommentLegacy`,
@@ -46183,7 +47273,9 @@ func (c *Client) TeamsUpdateDiscussionCommentLegacy(ctx context.Context, request
 	return result, nil
 }
 
-// TeamsUpdateDiscussionInOrg implements teams/update-discussion-in-org operation.
+// TeamsUpdateDiscussionInOrg invokes teams/update-discussion-in-org operation.
+//
+// PATCH /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}
 func (c *Client) TeamsUpdateDiscussionInOrg(ctx context.Context, request TeamsUpdateDiscussionInOrgReq, params TeamsUpdateDiscussionInOrgParams) (res TeamDiscussion, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsUpdateDiscussionInOrg`,
@@ -46279,7 +47371,9 @@ func (c *Client) TeamsUpdateDiscussionInOrg(ctx context.Context, request TeamsUp
 	return result, nil
 }
 
-// TeamsUpdateDiscussionLegacy implements teams/update-discussion-legacy operation.
+// TeamsUpdateDiscussionLegacy invokes teams/update-discussion-legacy operation.
+//
+// PATCH /teams/{team_id}/discussions/{discussion_number}
 func (c *Client) TeamsUpdateDiscussionLegacy(ctx context.Context, request TeamsUpdateDiscussionLegacyReq, params TeamsUpdateDiscussionLegacyParams) (res TeamDiscussion, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsUpdateDiscussionLegacy`,
@@ -46360,7 +47454,9 @@ func (c *Client) TeamsUpdateDiscussionLegacy(ctx context.Context, request TeamsU
 	return result, nil
 }
 
-// TeamsUpdateInOrg implements teams/update-in-org operation.
+// TeamsUpdateInOrg invokes teams/update-in-org operation.
+//
+// PATCH /orgs/{org}/teams/{team_slug}
 func (c *Client) TeamsUpdateInOrg(ctx context.Context, request TeamsUpdateInOrgReq, params TeamsUpdateInOrgParams) (res TeamFull, err error) {
 	if err := func() error {
 
@@ -46450,7 +47546,9 @@ func (c *Client) TeamsUpdateInOrg(ctx context.Context, request TeamsUpdateInOrgR
 	return result, nil
 }
 
-// UsersCheckBlocked implements users/check-blocked operation.
+// UsersCheckBlocked invokes users/check-blocked operation.
+//
+// GET /user/blocks/{username}
 func (c *Client) UsersCheckBlocked(ctx context.Context, params UsersCheckBlockedParams) (res UsersCheckBlockedRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `UsersCheckBlocked`,
@@ -46502,7 +47600,9 @@ func (c *Client) UsersCheckBlocked(ctx context.Context, params UsersCheckBlocked
 	return result, nil
 }
 
-// UsersCheckFollowingForUser implements users/check-following-for-user operation.
+// UsersCheckFollowingForUser invokes users/check-following-for-user operation.
+//
+// GET /users/{username}/following/{target_user}
 func (c *Client) UsersCheckFollowingForUser(ctx context.Context, params UsersCheckFollowingForUserParams) (res UsersCheckFollowingForUserRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `UsersCheckFollowingForUser`,
@@ -46569,7 +47669,9 @@ func (c *Client) UsersCheckFollowingForUser(ctx context.Context, params UsersChe
 	return result, nil
 }
 
-// UsersCheckPersonIsFollowedByAuthenticated implements users/check-person-is-followed-by-authenticated operation.
+// UsersCheckPersonIsFollowedByAuthenticated invokes users/check-person-is-followed-by-authenticated operation.
+//
+// GET /user/following/{username}
 func (c *Client) UsersCheckPersonIsFollowedByAuthenticated(ctx context.Context, params UsersCheckPersonIsFollowedByAuthenticatedParams) (res UsersCheckPersonIsFollowedByAuthenticatedRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `UsersCheckPersonIsFollowedByAuthenticated`,
@@ -46621,7 +47723,9 @@ func (c *Client) UsersCheckPersonIsFollowedByAuthenticated(ctx context.Context, 
 	return result, nil
 }
 
-// UsersDeletePublicSSHKeyForAuthenticated implements users/delete-public-ssh-key-for-authenticated operation.
+// UsersDeletePublicSSHKeyForAuthenticated invokes users/delete-public-ssh-key-for-authenticated operation.
+//
+// DELETE /user/keys/{key_id}
 func (c *Client) UsersDeletePublicSSHKeyForAuthenticated(ctx context.Context, params UsersDeletePublicSSHKeyForAuthenticatedParams) (res UsersDeletePublicSSHKeyForAuthenticatedRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `UsersDeletePublicSSHKeyForAuthenticated`,
@@ -46673,7 +47777,9 @@ func (c *Client) UsersDeletePublicSSHKeyForAuthenticated(ctx context.Context, pa
 	return result, nil
 }
 
-// UsersFollow implements users/follow operation.
+// UsersFollow invokes users/follow operation.
+//
+// PUT /user/following/{username}
 func (c *Client) UsersFollow(ctx context.Context, params UsersFollowParams) (res UsersFollowRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `UsersFollow`,
@@ -46725,7 +47831,9 @@ func (c *Client) UsersFollow(ctx context.Context, params UsersFollowParams) (res
 	return result, nil
 }
 
-// UsersGetAuthenticated implements users/get-authenticated operation.
+// UsersGetAuthenticated invokes users/get-authenticated operation.
+//
+// GET /user
 func (c *Client) UsersGetAuthenticated(ctx context.Context) (res UsersGetAuthenticatedRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `UsersGetAuthenticated`,
@@ -46763,7 +47871,9 @@ func (c *Client) UsersGetAuthenticated(ctx context.Context) (res UsersGetAuthent
 	return result, nil
 }
 
-// UsersGetByUsername implements users/get-by-username operation.
+// UsersGetByUsername invokes users/get-by-username operation.
+//
+// GET /users/{username}
 func (c *Client) UsersGetByUsername(ctx context.Context, params UsersGetByUsernameParams) (res UsersGetByUsernameRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `UsersGetByUsername`,
@@ -46815,7 +47925,9 @@ func (c *Client) UsersGetByUsername(ctx context.Context, params UsersGetByUserna
 	return result, nil
 }
 
-// UsersGetGpgKeyForAuthenticated implements users/get-gpg-key-for-authenticated operation.
+// UsersGetGpgKeyForAuthenticated invokes users/get-gpg-key-for-authenticated operation.
+//
+// GET /user/gpg_keys/{gpg_key_id}
 func (c *Client) UsersGetGpgKeyForAuthenticated(ctx context.Context, params UsersGetGpgKeyForAuthenticatedParams) (res UsersGetGpgKeyForAuthenticatedRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `UsersGetGpgKeyForAuthenticated`,
@@ -46867,7 +47979,9 @@ func (c *Client) UsersGetGpgKeyForAuthenticated(ctx context.Context, params User
 	return result, nil
 }
 
-// UsersGetPublicSSHKeyForAuthenticated implements users/get-public-ssh-key-for-authenticated operation.
+// UsersGetPublicSSHKeyForAuthenticated invokes users/get-public-ssh-key-for-authenticated operation.
+//
+// GET /user/keys/{key_id}
 func (c *Client) UsersGetPublicSSHKeyForAuthenticated(ctx context.Context, params UsersGetPublicSSHKeyForAuthenticatedParams) (res UsersGetPublicSSHKeyForAuthenticatedRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `UsersGetPublicSSHKeyForAuthenticated`,
@@ -46919,7 +48033,9 @@ func (c *Client) UsersGetPublicSSHKeyForAuthenticated(ctx context.Context, param
 	return result, nil
 }
 
-// UsersList implements users/list operation.
+// UsersList invokes users/list operation.
+//
+// GET /users
 func (c *Client) UsersList(ctx context.Context, params UsersListParams) (res UsersListRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `UsersList`,
@@ -46992,7 +48108,9 @@ func (c *Client) UsersList(ctx context.Context, params UsersListParams) (res Use
 	return result, nil
 }
 
-// UsersListBlockedByAuthenticated implements users/list-blocked-by-authenticated operation.
+// UsersListBlockedByAuthenticated invokes users/list-blocked-by-authenticated operation.
+//
+// GET /user/blocks
 func (c *Client) UsersListBlockedByAuthenticated(ctx context.Context) (res UsersListBlockedByAuthenticatedRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `UsersListBlockedByAuthenticated`,
@@ -47030,7 +48148,9 @@ func (c *Client) UsersListBlockedByAuthenticated(ctx context.Context) (res Users
 	return result, nil
 }
 
-// UsersListEmailsForAuthenticated implements users/list-emails-for-authenticated operation.
+// UsersListEmailsForAuthenticated invokes users/list-emails-for-authenticated operation.
+//
+// GET /user/emails
 func (c *Client) UsersListEmailsForAuthenticated(ctx context.Context, params UsersListEmailsForAuthenticatedParams) (res UsersListEmailsForAuthenticatedRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `UsersListEmailsForAuthenticated`,
@@ -47103,7 +48223,9 @@ func (c *Client) UsersListEmailsForAuthenticated(ctx context.Context, params Use
 	return result, nil
 }
 
-// UsersListFollowedByAuthenticated implements users/list-followed-by-authenticated operation.
+// UsersListFollowedByAuthenticated invokes users/list-followed-by-authenticated operation.
+//
+// GET /user/following
 func (c *Client) UsersListFollowedByAuthenticated(ctx context.Context, params UsersListFollowedByAuthenticatedParams) (res UsersListFollowedByAuthenticatedRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `UsersListFollowedByAuthenticated`,
@@ -47176,7 +48298,9 @@ func (c *Client) UsersListFollowedByAuthenticated(ctx context.Context, params Us
 	return result, nil
 }
 
-// UsersListFollowersForAuthenticatedUser implements users/list-followers-for-authenticated-user operation.
+// UsersListFollowersForAuthenticatedUser invokes users/list-followers-for-authenticated-user operation.
+//
+// GET /user/followers
 func (c *Client) UsersListFollowersForAuthenticatedUser(ctx context.Context, params UsersListFollowersForAuthenticatedUserParams) (res UsersListFollowersForAuthenticatedUserRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `UsersListFollowersForAuthenticatedUser`,
@@ -47249,7 +48373,9 @@ func (c *Client) UsersListFollowersForAuthenticatedUser(ctx context.Context, par
 	return result, nil
 }
 
-// UsersListFollowersForUser implements users/list-followers-for-user operation.
+// UsersListFollowersForUser invokes users/list-followers-for-user operation.
+//
+// GET /users/{username}/followers
 func (c *Client) UsersListFollowersForUser(ctx context.Context, params UsersListFollowersForUserParams) (res []SimpleUser, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `UsersListFollowersForUser`,
@@ -47337,7 +48463,9 @@ func (c *Client) UsersListFollowersForUser(ctx context.Context, params UsersList
 	return result, nil
 }
 
-// UsersListFollowingForUser implements users/list-following-for-user operation.
+// UsersListFollowingForUser invokes users/list-following-for-user operation.
+//
+// GET /users/{username}/following
 func (c *Client) UsersListFollowingForUser(ctx context.Context, params UsersListFollowingForUserParams) (res []SimpleUser, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `UsersListFollowingForUser`,
@@ -47425,7 +48553,9 @@ func (c *Client) UsersListFollowingForUser(ctx context.Context, params UsersList
 	return result, nil
 }
 
-// UsersListGpgKeysForAuthenticated implements users/list-gpg-keys-for-authenticated operation.
+// UsersListGpgKeysForAuthenticated invokes users/list-gpg-keys-for-authenticated operation.
+//
+// GET /user/gpg_keys
 func (c *Client) UsersListGpgKeysForAuthenticated(ctx context.Context, params UsersListGpgKeysForAuthenticatedParams) (res UsersListGpgKeysForAuthenticatedRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `UsersListGpgKeysForAuthenticated`,
@@ -47498,7 +48628,9 @@ func (c *Client) UsersListGpgKeysForAuthenticated(ctx context.Context, params Us
 	return result, nil
 }
 
-// UsersListGpgKeysForUser implements users/list-gpg-keys-for-user operation.
+// UsersListGpgKeysForUser invokes users/list-gpg-keys-for-user operation.
+//
+// GET /users/{username}/gpg_keys
 func (c *Client) UsersListGpgKeysForUser(ctx context.Context, params UsersListGpgKeysForUserParams) (res []GpgKey, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `UsersListGpgKeysForUser`,
@@ -47586,7 +48718,9 @@ func (c *Client) UsersListGpgKeysForUser(ctx context.Context, params UsersListGp
 	return result, nil
 }
 
-// UsersListPublicEmailsForAuthenticated implements users/list-public-emails-for-authenticated operation.
+// UsersListPublicEmailsForAuthenticated invokes users/list-public-emails-for-authenticated operation.
+//
+// GET /user/public_emails
 func (c *Client) UsersListPublicEmailsForAuthenticated(ctx context.Context, params UsersListPublicEmailsForAuthenticatedParams) (res UsersListPublicEmailsForAuthenticatedRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `UsersListPublicEmailsForAuthenticated`,
@@ -47659,7 +48793,9 @@ func (c *Client) UsersListPublicEmailsForAuthenticated(ctx context.Context, para
 	return result, nil
 }
 
-// UsersListPublicKeysForUser implements users/list-public-keys-for-user operation.
+// UsersListPublicKeysForUser invokes users/list-public-keys-for-user operation.
+//
+// GET /users/{username}/keys
 func (c *Client) UsersListPublicKeysForUser(ctx context.Context, params UsersListPublicKeysForUserParams) (res []KeySimple, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `UsersListPublicKeysForUser`,
@@ -47747,7 +48883,9 @@ func (c *Client) UsersListPublicKeysForUser(ctx context.Context, params UsersLis
 	return result, nil
 }
 
-// UsersListPublicSSHKeysForAuthenticated implements users/list-public-ssh-keys-for-authenticated operation.
+// UsersListPublicSSHKeysForAuthenticated invokes users/list-public-ssh-keys-for-authenticated operation.
+//
+// GET /user/keys
 func (c *Client) UsersListPublicSSHKeysForAuthenticated(ctx context.Context, params UsersListPublicSSHKeysForAuthenticatedParams) (res UsersListPublicSSHKeysForAuthenticatedRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `UsersListPublicSSHKeysForAuthenticated`,
@@ -47820,7 +48958,9 @@ func (c *Client) UsersListPublicSSHKeysForAuthenticated(ctx context.Context, par
 	return result, nil
 }
 
-// UsersUnblock implements users/unblock operation.
+// UsersUnblock invokes users/unblock operation.
+//
+// DELETE /user/blocks/{username}
 func (c *Client) UsersUnblock(ctx context.Context, params UsersUnblockParams) (res UsersUnblockRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `UsersUnblock`,
@@ -47872,7 +49012,9 @@ func (c *Client) UsersUnblock(ctx context.Context, params UsersUnblockParams) (r
 	return result, nil
 }
 
-// UsersUnfollow implements users/unfollow operation.
+// UsersUnfollow invokes users/unfollow operation.
+//
+// DELETE /user/following/{username}
 func (c *Client) UsersUnfollow(ctx context.Context, params UsersUnfollowParams) (res UsersUnfollowRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `UsersUnfollow`,

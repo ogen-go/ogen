@@ -95,7 +95,9 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 	return c, nil
 }
 
-// DataCreate implements dataCreate operation.
+// DataCreate invokes dataCreate operation.
+//
+// POST /data
 func (c *Client) DataCreate(ctx context.Context, request Data) (res DataCreateRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DataCreate`,
@@ -147,7 +149,9 @@ func (c *Client) DataCreate(ctx context.Context, request Data) (res DataCreateRe
 	return result, nil
 }
 
-// DataGet implements dataGet operation.
+// DataGet invokes dataGet operation.
+//
+// GET /data
 func (c *Client) DataGet(ctx context.Context) (res DataGetRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DataGet`,

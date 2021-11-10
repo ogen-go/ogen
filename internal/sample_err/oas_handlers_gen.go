@@ -64,6 +64,9 @@ var (
 	_ = sync.Pool{}
 )
 
+// HandleDataCreateRequest handles dataCreate operation.
+//
+// POST /data
 func (s *Server) HandleDataCreateRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `DataCreate`,
 		trace.WithAttributes(otelogen.OperationID(`dataCreate`)),
@@ -90,6 +93,9 @@ func (s *Server) HandleDataCreateRequest(w http.ResponseWriter, r *http.Request)
 	}
 }
 
+// HandleDataGetRequest handles dataGet operation.
+//
+// GET /data
 func (s *Server) HandleDataGetRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `DataGet`,
 		trace.WithAttributes(otelogen.OperationID(`dataGet`)),

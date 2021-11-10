@@ -95,7 +95,9 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 	return c, nil
 }
 
-// AddStickerToSet implements addStickerToSet operation.
+// AddStickerToSet invokes addStickerToSet operation.
+//
+// POST /addStickerToSet
 func (c *Client) AddStickerToSet(ctx context.Context, request AddStickerToSet) (res AddStickerToSetRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `AddStickerToSet`,
@@ -147,7 +149,9 @@ func (c *Client) AddStickerToSet(ctx context.Context, request AddStickerToSet) (
 	return result, nil
 }
 
-// AnswerCallbackQuery implements answerCallbackQuery operation.
+// AnswerCallbackQuery invokes answerCallbackQuery operation.
+//
+// POST /answerCallbackQuery
 func (c *Client) AnswerCallbackQuery(ctx context.Context, request AnswerCallbackQuery) (res AnswerCallbackQueryRes, err error) {
 	if err := func() error {
 
@@ -208,7 +212,9 @@ func (c *Client) AnswerCallbackQuery(ctx context.Context, request AnswerCallback
 	return result, nil
 }
 
-// AnswerInlineQuery implements answerInlineQuery operation.
+// AnswerInlineQuery invokes answerInlineQuery operation.
+//
+// POST /answerInlineQuery
 func (c *Client) AnswerInlineQuery(ctx context.Context, request AnswerInlineQuery) (res AnswerInlineQueryRes, err error) {
 	if err := func() error {
 
@@ -269,7 +275,9 @@ func (c *Client) AnswerInlineQuery(ctx context.Context, request AnswerInlineQuer
 	return result, nil
 }
 
-// AnswerPreCheckoutQuery implements answerPreCheckoutQuery operation.
+// AnswerPreCheckoutQuery invokes answerPreCheckoutQuery operation.
+//
+// POST /answerPreCheckoutQuery
 func (c *Client) AnswerPreCheckoutQuery(ctx context.Context, request AnswerPreCheckoutQuery) (res AnswerPreCheckoutQueryRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `AnswerPreCheckoutQuery`,
@@ -321,7 +329,9 @@ func (c *Client) AnswerPreCheckoutQuery(ctx context.Context, request AnswerPreCh
 	return result, nil
 }
 
-// AnswerShippingQuery implements answerShippingQuery operation.
+// AnswerShippingQuery invokes answerShippingQuery operation.
+//
+// POST /answerShippingQuery
 func (c *Client) AnswerShippingQuery(ctx context.Context, request AnswerShippingQuery) (res AnswerShippingQueryRes, err error) {
 	if err := func() error {
 
@@ -382,7 +392,9 @@ func (c *Client) AnswerShippingQuery(ctx context.Context, request AnswerShipping
 	return result, nil
 }
 
-// BanChatMember implements banChatMember operation.
+// BanChatMember invokes banChatMember operation.
+//
+// POST /banChatMember
 func (c *Client) BanChatMember(ctx context.Context, request BanChatMember) (res BanChatMemberRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `BanChatMember`,
@@ -434,7 +446,9 @@ func (c *Client) BanChatMember(ctx context.Context, request BanChatMember) (res 
 	return result, nil
 }
 
-// CopyMessage implements copyMessage operation.
+// CopyMessage invokes copyMessage operation.
+//
+// POST /copyMessage
 func (c *Client) CopyMessage(ctx context.Context, request CopyMessage) (res CopyMessageRes, err error) {
 	if err := func() error {
 
@@ -495,7 +509,9 @@ func (c *Client) CopyMessage(ctx context.Context, request CopyMessage) (res Copy
 	return result, nil
 }
 
-// CreateChatInviteLink implements createChatInviteLink operation.
+// CreateChatInviteLink invokes createChatInviteLink operation.
+//
+// POST /createChatInviteLink
 func (c *Client) CreateChatInviteLink(ctx context.Context, request CreateChatInviteLink) (res CreateChatInviteLinkRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `CreateChatInviteLink`,
@@ -547,7 +563,9 @@ func (c *Client) CreateChatInviteLink(ctx context.Context, request CreateChatInv
 	return result, nil
 }
 
-// CreateNewStickerSet implements createNewStickerSet operation.
+// CreateNewStickerSet invokes createNewStickerSet operation.
+//
+// POST /createNewStickerSet
 func (c *Client) CreateNewStickerSet(ctx context.Context, request CreateNewStickerSet) (res CreateNewStickerSetRes, err error) {
 	if err := func() error {
 
@@ -608,7 +626,9 @@ func (c *Client) CreateNewStickerSet(ctx context.Context, request CreateNewStick
 	return result, nil
 }
 
-// DeleteChatPhoto implements deleteChatPhoto operation.
+// DeleteChatPhoto invokes deleteChatPhoto operation.
+//
+// POST /deleteChatPhoto
 func (c *Client) DeleteChatPhoto(ctx context.Context, request DeleteChatPhoto) (res DeleteChatPhotoRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteChatPhoto`,
@@ -660,7 +680,9 @@ func (c *Client) DeleteChatPhoto(ctx context.Context, request DeleteChatPhoto) (
 	return result, nil
 }
 
-// DeleteChatStickerSet implements deleteChatStickerSet operation.
+// DeleteChatStickerSet invokes deleteChatStickerSet operation.
+//
+// POST /deleteChatStickerSet
 func (c *Client) DeleteChatStickerSet(ctx context.Context, request DeleteChatStickerSet) (res DeleteChatStickerSetRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteChatStickerSet`,
@@ -712,7 +734,9 @@ func (c *Client) DeleteChatStickerSet(ctx context.Context, request DeleteChatSti
 	return result, nil
 }
 
-// DeleteMessage implements deleteMessage operation.
+// DeleteMessage invokes deleteMessage operation.
+//
+// POST /deleteMessage
 func (c *Client) DeleteMessage(ctx context.Context, request DeleteMessage) (res DeleteMessageRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteMessage`,
@@ -764,7 +788,9 @@ func (c *Client) DeleteMessage(ctx context.Context, request DeleteMessage) (res 
 	return result, nil
 }
 
-// DeleteMyCommands implements deleteMyCommands operation.
+// DeleteMyCommands invokes deleteMyCommands operation.
+//
+// POST /deleteMyCommands
 func (c *Client) DeleteMyCommands(ctx context.Context, request DeleteMyCommands) (res DeleteMyCommandsRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteMyCommands`,
@@ -816,7 +842,9 @@ func (c *Client) DeleteMyCommands(ctx context.Context, request DeleteMyCommands)
 	return result, nil
 }
 
-// DeleteStickerFromSet implements deleteStickerFromSet operation.
+// DeleteStickerFromSet invokes deleteStickerFromSet operation.
+//
+// POST /deleteStickerFromSet
 func (c *Client) DeleteStickerFromSet(ctx context.Context, request DeleteStickerFromSet) (res DeleteStickerFromSetRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteStickerFromSet`,
@@ -868,7 +896,9 @@ func (c *Client) DeleteStickerFromSet(ctx context.Context, request DeleteSticker
 	return result, nil
 }
 
-// DeleteWebhook implements deleteWebhook operation.
+// DeleteWebhook invokes deleteWebhook operation.
+//
+// POST /deleteWebhook
 func (c *Client) DeleteWebhook(ctx context.Context, request DeleteWebhook) (res DeleteWebhookRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteWebhook`,
@@ -920,7 +950,9 @@ func (c *Client) DeleteWebhook(ctx context.Context, request DeleteWebhook) (res 
 	return result, nil
 }
 
-// EditChatInviteLink implements editChatInviteLink operation.
+// EditChatInviteLink invokes editChatInviteLink operation.
+//
+// POST /editChatInviteLink
 func (c *Client) EditChatInviteLink(ctx context.Context, request EditChatInviteLink) (res EditChatInviteLinkRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `EditChatInviteLink`,
@@ -972,7 +1004,9 @@ func (c *Client) EditChatInviteLink(ctx context.Context, request EditChatInviteL
 	return result, nil
 }
 
-// EditMessageCaption implements editMessageCaption operation.
+// EditMessageCaption invokes editMessageCaption operation.
+//
+// POST /editMessageCaption
 func (c *Client) EditMessageCaption(ctx context.Context, request EditMessageCaption) (res EditMessageCaptionRes, err error) {
 	if err := func() error {
 
@@ -1033,7 +1067,9 @@ func (c *Client) EditMessageCaption(ctx context.Context, request EditMessageCapt
 	return result, nil
 }
 
-// EditMessageLiveLocation implements editMessageLiveLocation operation.
+// EditMessageLiveLocation invokes editMessageLiveLocation operation.
+//
+// POST /editMessageLiveLocation
 func (c *Client) EditMessageLiveLocation(ctx context.Context, request EditMessageLiveLocation) (res EditMessageLiveLocationRes, err error) {
 	if err := func() error {
 
@@ -1094,7 +1130,9 @@ func (c *Client) EditMessageLiveLocation(ctx context.Context, request EditMessag
 	return result, nil
 }
 
-// EditMessageMedia implements editMessageMedia operation.
+// EditMessageMedia invokes editMessageMedia operation.
+//
+// POST /editMessageMedia
 func (c *Client) EditMessageMedia(ctx context.Context, request EditMessageMedia) (res EditMessageMediaRes, err error) {
 	if err := func() error {
 
@@ -1155,7 +1193,9 @@ func (c *Client) EditMessageMedia(ctx context.Context, request EditMessageMedia)
 	return result, nil
 }
 
-// EditMessageReplyMarkup implements editMessageReplyMarkup operation.
+// EditMessageReplyMarkup invokes editMessageReplyMarkup operation.
+//
+// POST /editMessageReplyMarkup
 func (c *Client) EditMessageReplyMarkup(ctx context.Context, request EditMessageReplyMarkup) (res EditMessageReplyMarkupRes, err error) {
 	if err := func() error {
 
@@ -1216,7 +1256,9 @@ func (c *Client) EditMessageReplyMarkup(ctx context.Context, request EditMessage
 	return result, nil
 }
 
-// EditMessageText implements editMessageText operation.
+// EditMessageText invokes editMessageText operation.
+//
+// POST /editMessageText
 func (c *Client) EditMessageText(ctx context.Context, request EditMessageText) (res EditMessageTextRes, err error) {
 	if err := func() error {
 
@@ -1277,7 +1319,9 @@ func (c *Client) EditMessageText(ctx context.Context, request EditMessageText) (
 	return result, nil
 }
 
-// ExportChatInviteLink implements exportChatInviteLink operation.
+// ExportChatInviteLink invokes exportChatInviteLink operation.
+//
+// POST /exportChatInviteLink
 func (c *Client) ExportChatInviteLink(ctx context.Context, request ExportChatInviteLink) (res ExportChatInviteLinkRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ExportChatInviteLink`,
@@ -1329,7 +1373,9 @@ func (c *Client) ExportChatInviteLink(ctx context.Context, request ExportChatInv
 	return result, nil
 }
 
-// ForwardMessage implements forwardMessage operation.
+// ForwardMessage invokes forwardMessage operation.
+//
+// POST /forwardMessage
 func (c *Client) ForwardMessage(ctx context.Context, request ForwardMessage) (res ForwardMessageRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ForwardMessage`,
@@ -1381,7 +1427,9 @@ func (c *Client) ForwardMessage(ctx context.Context, request ForwardMessage) (re
 	return result, nil
 }
 
-// GetChat implements getChat operation.
+// GetChat invokes getChat operation.
+//
+// POST /getChat
 func (c *Client) GetChat(ctx context.Context, request GetChat) (res GetChatRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetChat`,
@@ -1433,7 +1481,9 @@ func (c *Client) GetChat(ctx context.Context, request GetChat) (res GetChatRes, 
 	return result, nil
 }
 
-// GetChatAdministrators implements getChatAdministrators operation.
+// GetChatAdministrators invokes getChatAdministrators operation.
+//
+// POST /getChatAdministrators
 func (c *Client) GetChatAdministrators(ctx context.Context, request GetChatAdministrators) (res GetChatAdministratorsRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetChatAdministrators`,
@@ -1485,7 +1535,9 @@ func (c *Client) GetChatAdministrators(ctx context.Context, request GetChatAdmin
 	return result, nil
 }
 
-// GetChatMember implements getChatMember operation.
+// GetChatMember invokes getChatMember operation.
+//
+// POST /getChatMember
 func (c *Client) GetChatMember(ctx context.Context, request GetChatMember) (res GetChatMemberRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetChatMember`,
@@ -1537,7 +1589,9 @@ func (c *Client) GetChatMember(ctx context.Context, request GetChatMember) (res 
 	return result, nil
 }
 
-// GetChatMemberCount implements getChatMemberCount operation.
+// GetChatMemberCount invokes getChatMemberCount operation.
+//
+// POST /getChatMemberCount
 func (c *Client) GetChatMemberCount(ctx context.Context, request GetChatMemberCount) (res GetChatMemberCountRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetChatMemberCount`,
@@ -1589,7 +1643,9 @@ func (c *Client) GetChatMemberCount(ctx context.Context, request GetChatMemberCo
 	return result, nil
 }
 
-// GetFile implements getFile operation.
+// GetFile invokes getFile operation.
+//
+// POST /getFile
 func (c *Client) GetFile(ctx context.Context, request GetFile) (res GetFileRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetFile`,
@@ -1641,7 +1697,9 @@ func (c *Client) GetFile(ctx context.Context, request GetFile) (res GetFileRes, 
 	return result, nil
 }
 
-// GetGameHighScores implements getGameHighScores operation.
+// GetGameHighScores invokes getGameHighScores operation.
+//
+// POST /getGameHighScores
 func (c *Client) GetGameHighScores(ctx context.Context, request GetGameHighScores) (res GetGameHighScoresRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetGameHighScores`,
@@ -1693,7 +1751,9 @@ func (c *Client) GetGameHighScores(ctx context.Context, request GetGameHighScore
 	return result, nil
 }
 
-// GetMe implements getMe operation.
+// GetMe invokes getMe operation.
+//
+// POST /getMe
 func (c *Client) GetMe(ctx context.Context) (res GetMeRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetMe`,
@@ -1731,7 +1791,9 @@ func (c *Client) GetMe(ctx context.Context) (res GetMeRes, err error) {
 	return result, nil
 }
 
-// GetMyCommands implements getMyCommands operation.
+// GetMyCommands invokes getMyCommands operation.
+//
+// POST /getMyCommands
 func (c *Client) GetMyCommands(ctx context.Context, request GetMyCommands) (res GetMyCommandsRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetMyCommands`,
@@ -1783,7 +1845,9 @@ func (c *Client) GetMyCommands(ctx context.Context, request GetMyCommands) (res 
 	return result, nil
 }
 
-// GetStickerSet implements getStickerSet operation.
+// GetStickerSet invokes getStickerSet operation.
+//
+// POST /getStickerSet
 func (c *Client) GetStickerSet(ctx context.Context, request GetStickerSet) (res GetStickerSetRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetStickerSet`,
@@ -1835,7 +1899,9 @@ func (c *Client) GetStickerSet(ctx context.Context, request GetStickerSet) (res 
 	return result, nil
 }
 
-// GetUpdates implements getUpdates operation.
+// GetUpdates invokes getUpdates operation.
+//
+// POST /getUpdates
 func (c *Client) GetUpdates(ctx context.Context, request GetUpdates) (res GetUpdatesRes, err error) {
 	if err := func() error {
 
@@ -1896,7 +1962,9 @@ func (c *Client) GetUpdates(ctx context.Context, request GetUpdates) (res GetUpd
 	return result, nil
 }
 
-// GetUserProfilePhotos implements getUserProfilePhotos operation.
+// GetUserProfilePhotos invokes getUserProfilePhotos operation.
+//
+// POST /getUserProfilePhotos
 func (c *Client) GetUserProfilePhotos(ctx context.Context, request GetUserProfilePhotos) (res GetUserProfilePhotosRes, err error) {
 	if err := func() error {
 
@@ -1957,7 +2025,9 @@ func (c *Client) GetUserProfilePhotos(ctx context.Context, request GetUserProfil
 	return result, nil
 }
 
-// LeaveChat implements leaveChat operation.
+// LeaveChat invokes leaveChat operation.
+//
+// POST /leaveChat
 func (c *Client) LeaveChat(ctx context.Context, request LeaveChat) (res LeaveChatRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `LeaveChat`,
@@ -2009,7 +2079,9 @@ func (c *Client) LeaveChat(ctx context.Context, request LeaveChat) (res LeaveCha
 	return result, nil
 }
 
-// PinChatMessage implements pinChatMessage operation.
+// PinChatMessage invokes pinChatMessage operation.
+//
+// POST /pinChatMessage
 func (c *Client) PinChatMessage(ctx context.Context, request PinChatMessage) (res PinChatMessageRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PinChatMessage`,
@@ -2061,7 +2133,9 @@ func (c *Client) PinChatMessage(ctx context.Context, request PinChatMessage) (re
 	return result, nil
 }
 
-// PromoteChatMember implements promoteChatMember operation.
+// PromoteChatMember invokes promoteChatMember operation.
+//
+// POST /promoteChatMember
 func (c *Client) PromoteChatMember(ctx context.Context, request PromoteChatMember) (res PromoteChatMemberRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PromoteChatMember`,
@@ -2113,7 +2187,9 @@ func (c *Client) PromoteChatMember(ctx context.Context, request PromoteChatMembe
 	return result, nil
 }
 
-// RestrictChatMember implements restrictChatMember operation.
+// RestrictChatMember invokes restrictChatMember operation.
+//
+// POST /restrictChatMember
 func (c *Client) RestrictChatMember(ctx context.Context, request RestrictChatMember) (res RestrictChatMemberRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `RestrictChatMember`,
@@ -2165,7 +2241,9 @@ func (c *Client) RestrictChatMember(ctx context.Context, request RestrictChatMem
 	return result, nil
 }
 
-// RevokeChatInviteLink implements revokeChatInviteLink operation.
+// RevokeChatInviteLink invokes revokeChatInviteLink operation.
+//
+// POST /revokeChatInviteLink
 func (c *Client) RevokeChatInviteLink(ctx context.Context, request RevokeChatInviteLink) (res RevokeChatInviteLinkRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `RevokeChatInviteLink`,
@@ -2217,7 +2295,9 @@ func (c *Client) RevokeChatInviteLink(ctx context.Context, request RevokeChatInv
 	return result, nil
 }
 
-// SendAnimation implements sendAnimation operation.
+// SendAnimation invokes sendAnimation operation.
+//
+// POST /sendAnimation
 func (c *Client) SendAnimation(ctx context.Context, request SendAnimation) (res SendAnimationRes, err error) {
 	if err := func() error {
 
@@ -2278,7 +2358,9 @@ func (c *Client) SendAnimation(ctx context.Context, request SendAnimation) (res 
 	return result, nil
 }
 
-// SendAudio implements sendAudio operation.
+// SendAudio invokes sendAudio operation.
+//
+// POST /sendAudio
 func (c *Client) SendAudio(ctx context.Context, request SendAudio) (res SendAudioRes, err error) {
 	if err := func() error {
 
@@ -2339,7 +2421,9 @@ func (c *Client) SendAudio(ctx context.Context, request SendAudio) (res SendAudi
 	return result, nil
 }
 
-// SendChatAction implements sendChatAction operation.
+// SendChatAction invokes sendChatAction operation.
+//
+// POST /sendChatAction
 func (c *Client) SendChatAction(ctx context.Context, request SendChatAction) (res SendChatActionRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SendChatAction`,
@@ -2391,7 +2475,9 @@ func (c *Client) SendChatAction(ctx context.Context, request SendChatAction) (re
 	return result, nil
 }
 
-// SendContact implements sendContact operation.
+// SendContact invokes sendContact operation.
+//
+// POST /sendContact
 func (c *Client) SendContact(ctx context.Context, request SendContact) (res SendContactRes, err error) {
 	if err := func() error {
 
@@ -2452,7 +2538,9 @@ func (c *Client) SendContact(ctx context.Context, request SendContact) (res Send
 	return result, nil
 }
 
-// SendDice implements sendDice operation.
+// SendDice invokes sendDice operation.
+//
+// POST /sendDice
 func (c *Client) SendDice(ctx context.Context, request SendDice) (res SendDiceRes, err error) {
 	if err := func() error {
 
@@ -2513,7 +2601,9 @@ func (c *Client) SendDice(ctx context.Context, request SendDice) (res SendDiceRe
 	return result, nil
 }
 
-// SendDocument implements sendDocument operation.
+// SendDocument invokes sendDocument operation.
+//
+// POST /sendDocument
 func (c *Client) SendDocument(ctx context.Context, request SendDocument) (res SendDocumentRes, err error) {
 	if err := func() error {
 
@@ -2574,7 +2664,9 @@ func (c *Client) SendDocument(ctx context.Context, request SendDocument) (res Se
 	return result, nil
 }
 
-// SendGame implements sendGame operation.
+// SendGame invokes sendGame operation.
+//
+// POST /sendGame
 func (c *Client) SendGame(ctx context.Context, request SendGame) (res SendGameRes, err error) {
 	if err := func() error {
 
@@ -2635,7 +2727,9 @@ func (c *Client) SendGame(ctx context.Context, request SendGame) (res SendGameRe
 	return result, nil
 }
 
-// SendInvoice implements sendInvoice operation.
+// SendInvoice invokes sendInvoice operation.
+//
+// POST /sendInvoice
 func (c *Client) SendInvoice(ctx context.Context, request SendInvoice) (res SendInvoiceRes, err error) {
 	if err := func() error {
 
@@ -2696,7 +2790,9 @@ func (c *Client) SendInvoice(ctx context.Context, request SendInvoice) (res Send
 	return result, nil
 }
 
-// SendLocation implements sendLocation operation.
+// SendLocation invokes sendLocation operation.
+//
+// POST /sendLocation
 func (c *Client) SendLocation(ctx context.Context, request SendLocation) (res SendLocationRes, err error) {
 	if err := func() error {
 
@@ -2757,7 +2853,9 @@ func (c *Client) SendLocation(ctx context.Context, request SendLocation) (res Se
 	return result, nil
 }
 
-// SendMediaGroup implements sendMediaGroup operation.
+// SendMediaGroup invokes sendMediaGroup operation.
+//
+// POST /sendMediaGroup
 func (c *Client) SendMediaGroup(ctx context.Context, request SendMediaGroup) (res SendMediaGroupRes, err error) {
 	if err := func() error {
 
@@ -2818,7 +2916,9 @@ func (c *Client) SendMediaGroup(ctx context.Context, request SendMediaGroup) (re
 	return result, nil
 }
 
-// SendMessage implements sendMessage operation.
+// SendMessage invokes sendMessage operation.
+//
+// POST /sendMessage
 func (c *Client) SendMessage(ctx context.Context, request SendMessage) (res SendMessageRes, err error) {
 	if err := func() error {
 
@@ -2879,7 +2979,9 @@ func (c *Client) SendMessage(ctx context.Context, request SendMessage) (res Send
 	return result, nil
 }
 
-// SendPhoto implements sendPhoto operation.
+// SendPhoto invokes sendPhoto operation.
+//
+// POST /sendPhoto
 func (c *Client) SendPhoto(ctx context.Context, request SendPhoto) (res SendPhotoRes, err error) {
 	if err := func() error {
 
@@ -2940,7 +3042,9 @@ func (c *Client) SendPhoto(ctx context.Context, request SendPhoto) (res SendPhot
 	return result, nil
 }
 
-// SendPoll implements sendPoll operation.
+// SendPoll invokes sendPoll operation.
+//
+// POST /sendPoll
 func (c *Client) SendPoll(ctx context.Context, request SendPoll) (res SendPollRes, err error) {
 	if err := func() error {
 
@@ -3001,7 +3105,9 @@ func (c *Client) SendPoll(ctx context.Context, request SendPoll) (res SendPollRe
 	return result, nil
 }
 
-// SendSticker implements sendSticker operation.
+// SendSticker invokes sendSticker operation.
+//
+// POST /sendSticker
 func (c *Client) SendSticker(ctx context.Context, request SendSticker) (res SendStickerRes, err error) {
 	if err := func() error {
 
@@ -3062,7 +3168,9 @@ func (c *Client) SendSticker(ctx context.Context, request SendSticker) (res Send
 	return result, nil
 }
 
-// SendVenue implements sendVenue operation.
+// SendVenue invokes sendVenue operation.
+//
+// POST /sendVenue
 func (c *Client) SendVenue(ctx context.Context, request SendVenue) (res SendVenueRes, err error) {
 	if err := func() error {
 
@@ -3123,7 +3231,9 @@ func (c *Client) SendVenue(ctx context.Context, request SendVenue) (res SendVenu
 	return result, nil
 }
 
-// SendVideo implements sendVideo operation.
+// SendVideo invokes sendVideo operation.
+//
+// POST /sendVideo
 func (c *Client) SendVideo(ctx context.Context, request SendVideo) (res SendVideoRes, err error) {
 	if err := func() error {
 
@@ -3184,7 +3294,9 @@ func (c *Client) SendVideo(ctx context.Context, request SendVideo) (res SendVide
 	return result, nil
 }
 
-// SendVideoNote implements sendVideoNote operation.
+// SendVideoNote invokes sendVideoNote operation.
+//
+// POST /sendVideoNote
 func (c *Client) SendVideoNote(ctx context.Context, request SendVideoNote) (res SendVideoNoteRes, err error) {
 	if err := func() error {
 
@@ -3245,7 +3357,9 @@ func (c *Client) SendVideoNote(ctx context.Context, request SendVideoNote) (res 
 	return result, nil
 }
 
-// SendVoice implements sendVoice operation.
+// SendVoice invokes sendVoice operation.
+//
+// POST /sendVoice
 func (c *Client) SendVoice(ctx context.Context, request SendVoice) (res SendVoiceRes, err error) {
 	if err := func() error {
 
@@ -3306,7 +3420,9 @@ func (c *Client) SendVoice(ctx context.Context, request SendVoice) (res SendVoic
 	return result, nil
 }
 
-// SetChatAdministratorCustomTitle implements setChatAdministratorCustomTitle operation.
+// SetChatAdministratorCustomTitle invokes setChatAdministratorCustomTitle operation.
+//
+// POST /setChatAdministratorCustomTitle
 func (c *Client) SetChatAdministratorCustomTitle(ctx context.Context, request SetChatAdministratorCustomTitle) (res SetChatAdministratorCustomTitleRes, err error) {
 	if err := func() error {
 
@@ -3367,7 +3483,9 @@ func (c *Client) SetChatAdministratorCustomTitle(ctx context.Context, request Se
 	return result, nil
 }
 
-// SetChatDescription implements setChatDescription operation.
+// SetChatDescription invokes setChatDescription operation.
+//
+// POST /setChatDescription
 func (c *Client) SetChatDescription(ctx context.Context, request SetChatDescription) (res SetChatDescriptionRes, err error) {
 	if err := func() error {
 
@@ -3428,7 +3546,9 @@ func (c *Client) SetChatDescription(ctx context.Context, request SetChatDescript
 	return result, nil
 }
 
-// SetChatPermissions implements setChatPermissions operation.
+// SetChatPermissions invokes setChatPermissions operation.
+//
+// POST /setChatPermissions
 func (c *Client) SetChatPermissions(ctx context.Context, request SetChatPermissions) (res SetChatPermissionsRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SetChatPermissions`,
@@ -3480,7 +3600,9 @@ func (c *Client) SetChatPermissions(ctx context.Context, request SetChatPermissi
 	return result, nil
 }
 
-// SetChatPhoto implements setChatPhoto operation.
+// SetChatPhoto invokes setChatPhoto operation.
+//
+// POST /setChatPhoto
 func (c *Client) SetChatPhoto(ctx context.Context, request SetChatPhoto) (res SetChatPhotoRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SetChatPhoto`,
@@ -3532,7 +3654,9 @@ func (c *Client) SetChatPhoto(ctx context.Context, request SetChatPhoto) (res Se
 	return result, nil
 }
 
-// SetChatStickerSet implements setChatStickerSet operation.
+// SetChatStickerSet invokes setChatStickerSet operation.
+//
+// POST /setChatStickerSet
 func (c *Client) SetChatStickerSet(ctx context.Context, request SetChatStickerSet) (res SetChatStickerSetRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SetChatStickerSet`,
@@ -3584,7 +3708,9 @@ func (c *Client) SetChatStickerSet(ctx context.Context, request SetChatStickerSe
 	return result, nil
 }
 
-// SetChatTitle implements setChatTitle operation.
+// SetChatTitle invokes setChatTitle operation.
+//
+// POST /setChatTitle
 func (c *Client) SetChatTitle(ctx context.Context, request SetChatTitle) (res SetChatTitleRes, err error) {
 	if err := func() error {
 
@@ -3645,7 +3771,9 @@ func (c *Client) SetChatTitle(ctx context.Context, request SetChatTitle) (res Se
 	return result, nil
 }
 
-// SetGameScore implements setGameScore operation.
+// SetGameScore invokes setGameScore operation.
+//
+// POST /setGameScore
 func (c *Client) SetGameScore(ctx context.Context, request SetGameScore) (res SetGameScoreRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SetGameScore`,
@@ -3697,7 +3825,9 @@ func (c *Client) SetGameScore(ctx context.Context, request SetGameScore) (res Se
 	return result, nil
 }
 
-// SetMyCommands implements setMyCommands operation.
+// SetMyCommands invokes setMyCommands operation.
+//
+// POST /setMyCommands
 func (c *Client) SetMyCommands(ctx context.Context, request SetMyCommands) (res SetMyCommandsRes, err error) {
 	if err := func() error {
 
@@ -3758,7 +3888,9 @@ func (c *Client) SetMyCommands(ctx context.Context, request SetMyCommands) (res 
 	return result, nil
 }
 
-// SetPassportDataErrors implements setPassportDataErrors operation.
+// SetPassportDataErrors invokes setPassportDataErrors operation.
+//
+// POST /setPassportDataErrors
 func (c *Client) SetPassportDataErrors(ctx context.Context, request SetPassportDataErrors) (res SetPassportDataErrorsRes, err error) {
 	if err := func() error {
 
@@ -3819,7 +3951,9 @@ func (c *Client) SetPassportDataErrors(ctx context.Context, request SetPassportD
 	return result, nil
 }
 
-// SetStickerPositionInSet implements setStickerPositionInSet operation.
+// SetStickerPositionInSet invokes setStickerPositionInSet operation.
+//
+// POST /setStickerPositionInSet
 func (c *Client) SetStickerPositionInSet(ctx context.Context, request SetStickerPositionInSet) (res SetStickerPositionInSetRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SetStickerPositionInSet`,
@@ -3871,7 +4005,9 @@ func (c *Client) SetStickerPositionInSet(ctx context.Context, request SetSticker
 	return result, nil
 }
 
-// SetStickerSetThumb implements setStickerSetThumb operation.
+// SetStickerSetThumb invokes setStickerSetThumb operation.
+//
+// POST /setStickerSetThumb
 func (c *Client) SetStickerSetThumb(ctx context.Context, request SetStickerSetThumb) (res SetStickerSetThumbRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SetStickerSetThumb`,
@@ -3923,7 +4059,9 @@ func (c *Client) SetStickerSetThumb(ctx context.Context, request SetStickerSetTh
 	return result, nil
 }
 
-// SetWebhook implements setWebhook operation.
+// SetWebhook invokes setWebhook operation.
+//
+// POST /setWebhook
 func (c *Client) SetWebhook(ctx context.Context, request SetWebhook) (res SetWebhookRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `SetWebhook`,
@@ -3975,7 +4113,9 @@ func (c *Client) SetWebhook(ctx context.Context, request SetWebhook) (res SetWeb
 	return result, nil
 }
 
-// StopMessageLiveLocation implements stopMessageLiveLocation operation.
+// StopMessageLiveLocation invokes stopMessageLiveLocation operation.
+//
+// POST /stopMessageLiveLocation
 func (c *Client) StopMessageLiveLocation(ctx context.Context, request StopMessageLiveLocation) (res StopMessageLiveLocationRes, err error) {
 	if err := func() error {
 
@@ -4036,7 +4176,9 @@ func (c *Client) StopMessageLiveLocation(ctx context.Context, request StopMessag
 	return result, nil
 }
 
-// StopPoll implements stopPoll operation.
+// StopPoll invokes stopPoll operation.
+//
+// POST /stopPoll
 func (c *Client) StopPoll(ctx context.Context, request StopPoll) (res StopPollRes, err error) {
 	if err := func() error {
 
@@ -4097,7 +4239,9 @@ func (c *Client) StopPoll(ctx context.Context, request StopPoll) (res StopPollRe
 	return result, nil
 }
 
-// UnbanChatMember implements unbanChatMember operation.
+// UnbanChatMember invokes unbanChatMember operation.
+//
+// POST /unbanChatMember
 func (c *Client) UnbanChatMember(ctx context.Context, request UnbanChatMember) (res UnbanChatMemberRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `UnbanChatMember`,
@@ -4149,7 +4293,9 @@ func (c *Client) UnbanChatMember(ctx context.Context, request UnbanChatMember) (
 	return result, nil
 }
 
-// UnpinAllChatMessages implements unpinAllChatMessages operation.
+// UnpinAllChatMessages invokes unpinAllChatMessages operation.
+//
+// POST /unpinAllChatMessages
 func (c *Client) UnpinAllChatMessages(ctx context.Context, request UnpinAllChatMessages) (res UnpinAllChatMessagesRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `UnpinAllChatMessages`,
@@ -4201,7 +4347,9 @@ func (c *Client) UnpinAllChatMessages(ctx context.Context, request UnpinAllChatM
 	return result, nil
 }
 
-// UnpinChatMessage implements unpinChatMessage operation.
+// UnpinChatMessage invokes unpinChatMessage operation.
+//
+// POST /unpinChatMessage
 func (c *Client) UnpinChatMessage(ctx context.Context, request UnpinChatMessage) (res UnpinChatMessageRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `UnpinChatMessage`,
@@ -4253,7 +4401,9 @@ func (c *Client) UnpinChatMessage(ctx context.Context, request UnpinChatMessage)
 	return result, nil
 }
 
-// UploadStickerFile implements uploadStickerFile operation.
+// UploadStickerFile invokes uploadStickerFile operation.
+//
+// POST /uploadStickerFile
 func (c *Client) UploadStickerFile(ctx context.Context, request UploadStickerFile) (res UploadStickerFileRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `UploadStickerFile`,

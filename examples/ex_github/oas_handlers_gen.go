@@ -64,6 +64,9 @@ var (
 	_ = sync.Pool{}
 )
 
+// HandleActionsAddRepoAccessToSelfHostedRunnerGroupInOrgRequest handles actions/add-repo-access-to-self-hosted-runner-group-in-org operation.
+//
+// PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories/{repository_id}
 func (s *Server) HandleActionsAddRepoAccessToSelfHostedRunnerGroupInOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`actions/add-repo-access-to-self-hosted-runner-group-in-org`)),
@@ -90,6 +93,9 @@ func (s *Server) HandleActionsAddRepoAccessToSelfHostedRunnerGroupInOrgRequest(w
 	}
 }
 
+// HandleActionsAddSelectedRepoToOrgSecretRequest handles actions/add-selected-repo-to-org-secret operation.
+//
+// PUT /orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}
 func (s *Server) HandleActionsAddSelectedRepoToOrgSecretRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsAddSelectedRepoToOrgSecret`,
 		trace.WithAttributes(otelogen.OperationID(`actions/add-selected-repo-to-org-secret`)),
@@ -116,6 +122,9 @@ func (s *Server) HandleActionsAddSelectedRepoToOrgSecretRequest(w http.ResponseW
 	}
 }
 
+// HandleActionsAddSelfHostedRunnerToGroupForOrgRequest handles actions/add-self-hosted-runner-to-group-for-org operation.
+//
+// PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
 func (s *Server) HandleActionsAddSelfHostedRunnerToGroupForOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsAddSelfHostedRunnerToGroupForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`actions/add-self-hosted-runner-to-group-for-org`)),
@@ -142,6 +151,9 @@ func (s *Server) HandleActionsAddSelfHostedRunnerToGroupForOrgRequest(w http.Res
 	}
 }
 
+// HandleActionsApproveWorkflowRunRequest handles actions/approve-workflow-run operation.
+//
+// POST /repos/{owner}/{repo}/actions/runs/{run_id}/approve
 func (s *Server) HandleActionsApproveWorkflowRunRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsApproveWorkflowRun`,
 		trace.WithAttributes(otelogen.OperationID(`actions/approve-workflow-run`)),
@@ -168,6 +180,9 @@ func (s *Server) HandleActionsApproveWorkflowRunRequest(w http.ResponseWriter, r
 	}
 }
 
+// HandleActionsCancelWorkflowRunRequest handles actions/cancel-workflow-run operation.
+//
+// POST /repos/{owner}/{repo}/actions/runs/{run_id}/cancel
 func (s *Server) HandleActionsCancelWorkflowRunRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsCancelWorkflowRun`,
 		trace.WithAttributes(otelogen.OperationID(`actions/cancel-workflow-run`)),
@@ -194,6 +209,9 @@ func (s *Server) HandleActionsCancelWorkflowRunRequest(w http.ResponseWriter, r 
 	}
 }
 
+// HandleActionsCreateOrUpdateEnvironmentSecretRequest handles actions/create-or-update-environment-secret operation.
+//
+// PUT /repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}
 func (s *Server) HandleActionsCreateOrUpdateEnvironmentSecretRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsCreateOrUpdateEnvironmentSecret`,
 		trace.WithAttributes(otelogen.OperationID(`actions/create-or-update-environment-secret`)),
@@ -226,6 +244,9 @@ func (s *Server) HandleActionsCreateOrUpdateEnvironmentSecretRequest(w http.Resp
 	}
 }
 
+// HandleActionsCreateOrUpdateOrgSecretRequest handles actions/create-or-update-org-secret operation.
+//
+// PUT /orgs/{org}/actions/secrets/{secret_name}
 func (s *Server) HandleActionsCreateOrUpdateOrgSecretRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsCreateOrUpdateOrgSecret`,
 		trace.WithAttributes(otelogen.OperationID(`actions/create-or-update-org-secret`)),
@@ -258,6 +279,9 @@ func (s *Server) HandleActionsCreateOrUpdateOrgSecretRequest(w http.ResponseWrit
 	}
 }
 
+// HandleActionsCreateOrUpdateRepoSecretRequest handles actions/create-or-update-repo-secret operation.
+//
+// PUT /repos/{owner}/{repo}/actions/secrets/{secret_name}
 func (s *Server) HandleActionsCreateOrUpdateRepoSecretRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsCreateOrUpdateRepoSecret`,
 		trace.WithAttributes(otelogen.OperationID(`actions/create-or-update-repo-secret`)),
@@ -290,6 +314,9 @@ func (s *Server) HandleActionsCreateOrUpdateRepoSecretRequest(w http.ResponseWri
 	}
 }
 
+// HandleActionsCreateRegistrationTokenForOrgRequest handles actions/create-registration-token-for-org operation.
+//
+// POST /orgs/{org}/actions/runners/registration-token
 func (s *Server) HandleActionsCreateRegistrationTokenForOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsCreateRegistrationTokenForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`actions/create-registration-token-for-org`)),
@@ -316,6 +343,9 @@ func (s *Server) HandleActionsCreateRegistrationTokenForOrgRequest(w http.Respon
 	}
 }
 
+// HandleActionsCreateRegistrationTokenForRepoRequest handles actions/create-registration-token-for-repo operation.
+//
+// POST /repos/{owner}/{repo}/actions/runners/registration-token
 func (s *Server) HandleActionsCreateRegistrationTokenForRepoRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsCreateRegistrationTokenForRepo`,
 		trace.WithAttributes(otelogen.OperationID(`actions/create-registration-token-for-repo`)),
@@ -342,6 +372,9 @@ func (s *Server) HandleActionsCreateRegistrationTokenForRepoRequest(w http.Respo
 	}
 }
 
+// HandleActionsCreateRemoveTokenForOrgRequest handles actions/create-remove-token-for-org operation.
+//
+// POST /orgs/{org}/actions/runners/remove-token
 func (s *Server) HandleActionsCreateRemoveTokenForOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsCreateRemoveTokenForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`actions/create-remove-token-for-org`)),
@@ -368,6 +401,9 @@ func (s *Server) HandleActionsCreateRemoveTokenForOrgRequest(w http.ResponseWrit
 	}
 }
 
+// HandleActionsCreateRemoveTokenForRepoRequest handles actions/create-remove-token-for-repo operation.
+//
+// POST /repos/{owner}/{repo}/actions/runners/remove-token
 func (s *Server) HandleActionsCreateRemoveTokenForRepoRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsCreateRemoveTokenForRepo`,
 		trace.WithAttributes(otelogen.OperationID(`actions/create-remove-token-for-repo`)),
@@ -394,6 +430,9 @@ func (s *Server) HandleActionsCreateRemoveTokenForRepoRequest(w http.ResponseWri
 	}
 }
 
+// HandleActionsCreateSelfHostedRunnerGroupForOrgRequest handles actions/create-self-hosted-runner-group-for-org operation.
+//
+// POST /orgs/{org}/actions/runner-groups
 func (s *Server) HandleActionsCreateSelfHostedRunnerGroupForOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsCreateSelfHostedRunnerGroupForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`actions/create-self-hosted-runner-group-for-org`)),
@@ -426,6 +465,9 @@ func (s *Server) HandleActionsCreateSelfHostedRunnerGroupForOrgRequest(w http.Re
 	}
 }
 
+// HandleActionsDeleteArtifactRequest handles actions/delete-artifact operation.
+//
+// DELETE /repos/{owner}/{repo}/actions/artifacts/{artifact_id}
 func (s *Server) HandleActionsDeleteArtifactRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsDeleteArtifact`,
 		trace.WithAttributes(otelogen.OperationID(`actions/delete-artifact`)),
@@ -452,6 +494,9 @@ func (s *Server) HandleActionsDeleteArtifactRequest(w http.ResponseWriter, r *ht
 	}
 }
 
+// HandleActionsDeleteEnvironmentSecretRequest handles actions/delete-environment-secret operation.
+//
+// DELETE /repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}
 func (s *Server) HandleActionsDeleteEnvironmentSecretRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsDeleteEnvironmentSecret`,
 		trace.WithAttributes(otelogen.OperationID(`actions/delete-environment-secret`)),
@@ -478,6 +523,9 @@ func (s *Server) HandleActionsDeleteEnvironmentSecretRequest(w http.ResponseWrit
 	}
 }
 
+// HandleActionsDeleteOrgSecretRequest handles actions/delete-org-secret operation.
+//
+// DELETE /orgs/{org}/actions/secrets/{secret_name}
 func (s *Server) HandleActionsDeleteOrgSecretRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsDeleteOrgSecret`,
 		trace.WithAttributes(otelogen.OperationID(`actions/delete-org-secret`)),
@@ -504,6 +552,9 @@ func (s *Server) HandleActionsDeleteOrgSecretRequest(w http.ResponseWriter, r *h
 	}
 }
 
+// HandleActionsDeleteRepoSecretRequest handles actions/delete-repo-secret operation.
+//
+// DELETE /repos/{owner}/{repo}/actions/secrets/{secret_name}
 func (s *Server) HandleActionsDeleteRepoSecretRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsDeleteRepoSecret`,
 		trace.WithAttributes(otelogen.OperationID(`actions/delete-repo-secret`)),
@@ -530,6 +581,9 @@ func (s *Server) HandleActionsDeleteRepoSecretRequest(w http.ResponseWriter, r *
 	}
 }
 
+// HandleActionsDeleteSelfHostedRunnerFromOrgRequest handles actions/delete-self-hosted-runner-from-org operation.
+//
+// DELETE /orgs/{org}/actions/runners/{runner_id}
 func (s *Server) HandleActionsDeleteSelfHostedRunnerFromOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsDeleteSelfHostedRunnerFromOrg`,
 		trace.WithAttributes(otelogen.OperationID(`actions/delete-self-hosted-runner-from-org`)),
@@ -556,6 +610,9 @@ func (s *Server) HandleActionsDeleteSelfHostedRunnerFromOrgRequest(w http.Respon
 	}
 }
 
+// HandleActionsDeleteSelfHostedRunnerFromRepoRequest handles actions/delete-self-hosted-runner-from-repo operation.
+//
+// DELETE /repos/{owner}/{repo}/actions/runners/{runner_id}
 func (s *Server) HandleActionsDeleteSelfHostedRunnerFromRepoRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsDeleteSelfHostedRunnerFromRepo`,
 		trace.WithAttributes(otelogen.OperationID(`actions/delete-self-hosted-runner-from-repo`)),
@@ -582,6 +639,9 @@ func (s *Server) HandleActionsDeleteSelfHostedRunnerFromRepoRequest(w http.Respo
 	}
 }
 
+// HandleActionsDeleteSelfHostedRunnerGroupFromOrgRequest handles actions/delete-self-hosted-runner-group-from-org operation.
+//
+// DELETE /orgs/{org}/actions/runner-groups/{runner_group_id}
 func (s *Server) HandleActionsDeleteSelfHostedRunnerGroupFromOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsDeleteSelfHostedRunnerGroupFromOrg`,
 		trace.WithAttributes(otelogen.OperationID(`actions/delete-self-hosted-runner-group-from-org`)),
@@ -608,6 +668,9 @@ func (s *Server) HandleActionsDeleteSelfHostedRunnerGroupFromOrgRequest(w http.R
 	}
 }
 
+// HandleActionsDeleteWorkflowRunRequest handles actions/delete-workflow-run operation.
+//
+// DELETE /repos/{owner}/{repo}/actions/runs/{run_id}
 func (s *Server) HandleActionsDeleteWorkflowRunRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsDeleteWorkflowRun`,
 		trace.WithAttributes(otelogen.OperationID(`actions/delete-workflow-run`)),
@@ -634,6 +697,9 @@ func (s *Server) HandleActionsDeleteWorkflowRunRequest(w http.ResponseWriter, r 
 	}
 }
 
+// HandleActionsDeleteWorkflowRunLogsRequest handles actions/delete-workflow-run-logs operation.
+//
+// DELETE /repos/{owner}/{repo}/actions/runs/{run_id}/logs
 func (s *Server) HandleActionsDeleteWorkflowRunLogsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsDeleteWorkflowRunLogs`,
 		trace.WithAttributes(otelogen.OperationID(`actions/delete-workflow-run-logs`)),
@@ -660,6 +726,9 @@ func (s *Server) HandleActionsDeleteWorkflowRunLogsRequest(w http.ResponseWriter
 	}
 }
 
+// HandleActionsDisableSelectedRepositoryGithubActionsOrganizationRequest handles actions/disable-selected-repository-github-actions-organization operation.
+//
+// DELETE /orgs/{org}/actions/permissions/repositories/{repository_id}
 func (s *Server) HandleActionsDisableSelectedRepositoryGithubActionsOrganizationRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsDisableSelectedRepositoryGithubActionsOrganization`,
 		trace.WithAttributes(otelogen.OperationID(`actions/disable-selected-repository-github-actions-organization`)),
@@ -686,6 +755,9 @@ func (s *Server) HandleActionsDisableSelectedRepositoryGithubActionsOrganization
 	}
 }
 
+// HandleActionsDownloadArtifactRequest handles actions/download-artifact operation.
+//
+// GET /repos/{owner}/{repo}/actions/artifacts/{artifact_id}/{archive_format}
 func (s *Server) HandleActionsDownloadArtifactRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsDownloadArtifact`,
 		trace.WithAttributes(otelogen.OperationID(`actions/download-artifact`)),
@@ -712,6 +784,9 @@ func (s *Server) HandleActionsDownloadArtifactRequest(w http.ResponseWriter, r *
 	}
 }
 
+// HandleActionsDownloadJobLogsForWorkflowRunRequest handles actions/download-job-logs-for-workflow-run operation.
+//
+// GET /repos/{owner}/{repo}/actions/jobs/{job_id}/logs
 func (s *Server) HandleActionsDownloadJobLogsForWorkflowRunRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsDownloadJobLogsForWorkflowRun`,
 		trace.WithAttributes(otelogen.OperationID(`actions/download-job-logs-for-workflow-run`)),
@@ -738,6 +813,9 @@ func (s *Server) HandleActionsDownloadJobLogsForWorkflowRunRequest(w http.Respon
 	}
 }
 
+// HandleActionsDownloadWorkflowRunLogsRequest handles actions/download-workflow-run-logs operation.
+//
+// GET /repos/{owner}/{repo}/actions/runs/{run_id}/logs
 func (s *Server) HandleActionsDownloadWorkflowRunLogsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsDownloadWorkflowRunLogs`,
 		trace.WithAttributes(otelogen.OperationID(`actions/download-workflow-run-logs`)),
@@ -764,6 +842,9 @@ func (s *Server) HandleActionsDownloadWorkflowRunLogsRequest(w http.ResponseWrit
 	}
 }
 
+// HandleActionsEnableSelectedRepositoryGithubActionsOrganizationRequest handles actions/enable-selected-repository-github-actions-organization operation.
+//
+// PUT /orgs/{org}/actions/permissions/repositories/{repository_id}
 func (s *Server) HandleActionsEnableSelectedRepositoryGithubActionsOrganizationRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsEnableSelectedRepositoryGithubActionsOrganization`,
 		trace.WithAttributes(otelogen.OperationID(`actions/enable-selected-repository-github-actions-organization`)),
@@ -790,6 +871,9 @@ func (s *Server) HandleActionsEnableSelectedRepositoryGithubActionsOrganizationR
 	}
 }
 
+// HandleActionsGetAllowedActionsOrganizationRequest handles actions/get-allowed-actions-organization operation.
+//
+// GET /orgs/{org}/actions/permissions/selected-actions
 func (s *Server) HandleActionsGetAllowedActionsOrganizationRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsGetAllowedActionsOrganization`,
 		trace.WithAttributes(otelogen.OperationID(`actions/get-allowed-actions-organization`)),
@@ -816,6 +900,9 @@ func (s *Server) HandleActionsGetAllowedActionsOrganizationRequest(w http.Respon
 	}
 }
 
+// HandleActionsGetAllowedActionsRepositoryRequest handles actions/get-allowed-actions-repository operation.
+//
+// GET /repos/{owner}/{repo}/actions/permissions/selected-actions
 func (s *Server) HandleActionsGetAllowedActionsRepositoryRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsGetAllowedActionsRepository`,
 		trace.WithAttributes(otelogen.OperationID(`actions/get-allowed-actions-repository`)),
@@ -842,6 +929,9 @@ func (s *Server) HandleActionsGetAllowedActionsRepositoryRequest(w http.Response
 	}
 }
 
+// HandleActionsGetArtifactRequest handles actions/get-artifact operation.
+//
+// GET /repos/{owner}/{repo}/actions/artifacts/{artifact_id}
 func (s *Server) HandleActionsGetArtifactRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsGetArtifact`,
 		trace.WithAttributes(otelogen.OperationID(`actions/get-artifact`)),
@@ -868,6 +958,9 @@ func (s *Server) HandleActionsGetArtifactRequest(w http.ResponseWriter, r *http.
 	}
 }
 
+// HandleActionsGetEnvironmentPublicKeyRequest handles actions/get-environment-public-key operation.
+//
+// GET /repositories/{repository_id}/environments/{environment_name}/secrets/public-key
 func (s *Server) HandleActionsGetEnvironmentPublicKeyRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsGetEnvironmentPublicKey`,
 		trace.WithAttributes(otelogen.OperationID(`actions/get-environment-public-key`)),
@@ -894,6 +987,9 @@ func (s *Server) HandleActionsGetEnvironmentPublicKeyRequest(w http.ResponseWrit
 	}
 }
 
+// HandleActionsGetEnvironmentSecretRequest handles actions/get-environment-secret operation.
+//
+// GET /repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}
 func (s *Server) HandleActionsGetEnvironmentSecretRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsGetEnvironmentSecret`,
 		trace.WithAttributes(otelogen.OperationID(`actions/get-environment-secret`)),
@@ -920,6 +1016,9 @@ func (s *Server) HandleActionsGetEnvironmentSecretRequest(w http.ResponseWriter,
 	}
 }
 
+// HandleActionsGetGithubActionsPermissionsOrganizationRequest handles actions/get-github-actions-permissions-organization operation.
+//
+// GET /orgs/{org}/actions/permissions
 func (s *Server) HandleActionsGetGithubActionsPermissionsOrganizationRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsGetGithubActionsPermissionsOrganization`,
 		trace.WithAttributes(otelogen.OperationID(`actions/get-github-actions-permissions-organization`)),
@@ -946,6 +1045,9 @@ func (s *Server) HandleActionsGetGithubActionsPermissionsOrganizationRequest(w h
 	}
 }
 
+// HandleActionsGetGithubActionsPermissionsRepositoryRequest handles actions/get-github-actions-permissions-repository operation.
+//
+// GET /repos/{owner}/{repo}/actions/permissions
 func (s *Server) HandleActionsGetGithubActionsPermissionsRepositoryRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsGetGithubActionsPermissionsRepository`,
 		trace.WithAttributes(otelogen.OperationID(`actions/get-github-actions-permissions-repository`)),
@@ -972,6 +1074,9 @@ func (s *Server) HandleActionsGetGithubActionsPermissionsRepositoryRequest(w htt
 	}
 }
 
+// HandleActionsGetJobForWorkflowRunRequest handles actions/get-job-for-workflow-run operation.
+//
+// GET /repos/{owner}/{repo}/actions/jobs/{job_id}
 func (s *Server) HandleActionsGetJobForWorkflowRunRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsGetJobForWorkflowRun`,
 		trace.WithAttributes(otelogen.OperationID(`actions/get-job-for-workflow-run`)),
@@ -998,6 +1103,9 @@ func (s *Server) HandleActionsGetJobForWorkflowRunRequest(w http.ResponseWriter,
 	}
 }
 
+// HandleActionsGetOrgPublicKeyRequest handles actions/get-org-public-key operation.
+//
+// GET /orgs/{org}/actions/secrets/public-key
 func (s *Server) HandleActionsGetOrgPublicKeyRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsGetOrgPublicKey`,
 		trace.WithAttributes(otelogen.OperationID(`actions/get-org-public-key`)),
@@ -1024,6 +1132,9 @@ func (s *Server) HandleActionsGetOrgPublicKeyRequest(w http.ResponseWriter, r *h
 	}
 }
 
+// HandleActionsGetOrgSecretRequest handles actions/get-org-secret operation.
+//
+// GET /orgs/{org}/actions/secrets/{secret_name}
 func (s *Server) HandleActionsGetOrgSecretRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsGetOrgSecret`,
 		trace.WithAttributes(otelogen.OperationID(`actions/get-org-secret`)),
@@ -1050,6 +1161,9 @@ func (s *Server) HandleActionsGetOrgSecretRequest(w http.ResponseWriter, r *http
 	}
 }
 
+// HandleActionsGetRepoPublicKeyRequest handles actions/get-repo-public-key operation.
+//
+// GET /repos/{owner}/{repo}/actions/secrets/public-key
 func (s *Server) HandleActionsGetRepoPublicKeyRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsGetRepoPublicKey`,
 		trace.WithAttributes(otelogen.OperationID(`actions/get-repo-public-key`)),
@@ -1076,6 +1190,9 @@ func (s *Server) HandleActionsGetRepoPublicKeyRequest(w http.ResponseWriter, r *
 	}
 }
 
+// HandleActionsGetRepoSecretRequest handles actions/get-repo-secret operation.
+//
+// GET /repos/{owner}/{repo}/actions/secrets/{secret_name}
 func (s *Server) HandleActionsGetRepoSecretRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsGetRepoSecret`,
 		trace.WithAttributes(otelogen.OperationID(`actions/get-repo-secret`)),
@@ -1102,6 +1219,9 @@ func (s *Server) HandleActionsGetRepoSecretRequest(w http.ResponseWriter, r *htt
 	}
 }
 
+// HandleActionsGetReviewsForRunRequest handles actions/get-reviews-for-run operation.
+//
+// GET /repos/{owner}/{repo}/actions/runs/{run_id}/approvals
 func (s *Server) HandleActionsGetReviewsForRunRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsGetReviewsForRun`,
 		trace.WithAttributes(otelogen.OperationID(`actions/get-reviews-for-run`)),
@@ -1128,6 +1248,9 @@ func (s *Server) HandleActionsGetReviewsForRunRequest(w http.ResponseWriter, r *
 	}
 }
 
+// HandleActionsGetSelfHostedRunnerForOrgRequest handles actions/get-self-hosted-runner-for-org operation.
+//
+// GET /orgs/{org}/actions/runners/{runner_id}
 func (s *Server) HandleActionsGetSelfHostedRunnerForOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsGetSelfHostedRunnerForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`actions/get-self-hosted-runner-for-org`)),
@@ -1154,6 +1277,9 @@ func (s *Server) HandleActionsGetSelfHostedRunnerForOrgRequest(w http.ResponseWr
 	}
 }
 
+// HandleActionsGetSelfHostedRunnerForRepoRequest handles actions/get-self-hosted-runner-for-repo operation.
+//
+// GET /repos/{owner}/{repo}/actions/runners/{runner_id}
 func (s *Server) HandleActionsGetSelfHostedRunnerForRepoRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsGetSelfHostedRunnerForRepo`,
 		trace.WithAttributes(otelogen.OperationID(`actions/get-self-hosted-runner-for-repo`)),
@@ -1180,6 +1306,9 @@ func (s *Server) HandleActionsGetSelfHostedRunnerForRepoRequest(w http.ResponseW
 	}
 }
 
+// HandleActionsGetSelfHostedRunnerGroupForOrgRequest handles actions/get-self-hosted-runner-group-for-org operation.
+//
+// GET /orgs/{org}/actions/runner-groups/{runner_group_id}
 func (s *Server) HandleActionsGetSelfHostedRunnerGroupForOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsGetSelfHostedRunnerGroupForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`actions/get-self-hosted-runner-group-for-org`)),
@@ -1206,6 +1335,9 @@ func (s *Server) HandleActionsGetSelfHostedRunnerGroupForOrgRequest(w http.Respo
 	}
 }
 
+// HandleActionsGetWorkflowRunRequest handles actions/get-workflow-run operation.
+//
+// GET /repos/{owner}/{repo}/actions/runs/{run_id}
 func (s *Server) HandleActionsGetWorkflowRunRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsGetWorkflowRun`,
 		trace.WithAttributes(otelogen.OperationID(`actions/get-workflow-run`)),
@@ -1232,6 +1364,9 @@ func (s *Server) HandleActionsGetWorkflowRunRequest(w http.ResponseWriter, r *ht
 	}
 }
 
+// HandleActionsGetWorkflowRunUsageRequest handles actions/get-workflow-run-usage operation.
+//
+// GET /repos/{owner}/{repo}/actions/runs/{run_id}/timing
 func (s *Server) HandleActionsGetWorkflowRunUsageRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsGetWorkflowRunUsage`,
 		trace.WithAttributes(otelogen.OperationID(`actions/get-workflow-run-usage`)),
@@ -1258,6 +1393,9 @@ func (s *Server) HandleActionsGetWorkflowRunUsageRequest(w http.ResponseWriter, 
 	}
 }
 
+// HandleActionsListArtifactsForRepoRequest handles actions/list-artifacts-for-repo operation.
+//
+// GET /repos/{owner}/{repo}/actions/artifacts
 func (s *Server) HandleActionsListArtifactsForRepoRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsListArtifactsForRepo`,
 		trace.WithAttributes(otelogen.OperationID(`actions/list-artifacts-for-repo`)),
@@ -1284,6 +1422,9 @@ func (s *Server) HandleActionsListArtifactsForRepoRequest(w http.ResponseWriter,
 	}
 }
 
+// HandleActionsListEnvironmentSecretsRequest handles actions/list-environment-secrets operation.
+//
+// GET /repositories/{repository_id}/environments/{environment_name}/secrets
 func (s *Server) HandleActionsListEnvironmentSecretsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsListEnvironmentSecrets`,
 		trace.WithAttributes(otelogen.OperationID(`actions/list-environment-secrets`)),
@@ -1310,6 +1451,9 @@ func (s *Server) HandleActionsListEnvironmentSecretsRequest(w http.ResponseWrite
 	}
 }
 
+// HandleActionsListJobsForWorkflowRunRequest handles actions/list-jobs-for-workflow-run operation.
+//
+// GET /repos/{owner}/{repo}/actions/runs/{run_id}/jobs
 func (s *Server) HandleActionsListJobsForWorkflowRunRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsListJobsForWorkflowRun`,
 		trace.WithAttributes(otelogen.OperationID(`actions/list-jobs-for-workflow-run`)),
@@ -1336,6 +1480,9 @@ func (s *Server) HandleActionsListJobsForWorkflowRunRequest(w http.ResponseWrite
 	}
 }
 
+// HandleActionsListOrgSecretsRequest handles actions/list-org-secrets operation.
+//
+// GET /orgs/{org}/actions/secrets
 func (s *Server) HandleActionsListOrgSecretsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsListOrgSecrets`,
 		trace.WithAttributes(otelogen.OperationID(`actions/list-org-secrets`)),
@@ -1362,6 +1509,9 @@ func (s *Server) HandleActionsListOrgSecretsRequest(w http.ResponseWriter, r *ht
 	}
 }
 
+// HandleActionsListRepoAccessToSelfHostedRunnerGroupInOrgRequest handles actions/list-repo-access-to-self-hosted-runner-group-in-org operation.
+//
+// GET /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories
 func (s *Server) HandleActionsListRepoAccessToSelfHostedRunnerGroupInOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsListRepoAccessToSelfHostedRunnerGroupInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`actions/list-repo-access-to-self-hosted-runner-group-in-org`)),
@@ -1388,6 +1538,9 @@ func (s *Server) HandleActionsListRepoAccessToSelfHostedRunnerGroupInOrgRequest(
 	}
 }
 
+// HandleActionsListRepoSecretsRequest handles actions/list-repo-secrets operation.
+//
+// GET /repos/{owner}/{repo}/actions/secrets
 func (s *Server) HandleActionsListRepoSecretsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsListRepoSecrets`,
 		trace.WithAttributes(otelogen.OperationID(`actions/list-repo-secrets`)),
@@ -1414,6 +1567,9 @@ func (s *Server) HandleActionsListRepoSecretsRequest(w http.ResponseWriter, r *h
 	}
 }
 
+// HandleActionsListRepoWorkflowsRequest handles actions/list-repo-workflows operation.
+//
+// GET /repos/{owner}/{repo}/actions/workflows
 func (s *Server) HandleActionsListRepoWorkflowsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsListRepoWorkflows`,
 		trace.WithAttributes(otelogen.OperationID(`actions/list-repo-workflows`)),
@@ -1440,6 +1596,9 @@ func (s *Server) HandleActionsListRepoWorkflowsRequest(w http.ResponseWriter, r 
 	}
 }
 
+// HandleActionsListRunnerApplicationsForOrgRequest handles actions/list-runner-applications-for-org operation.
+//
+// GET /orgs/{org}/actions/runners/downloads
 func (s *Server) HandleActionsListRunnerApplicationsForOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsListRunnerApplicationsForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`actions/list-runner-applications-for-org`)),
@@ -1466,6 +1625,9 @@ func (s *Server) HandleActionsListRunnerApplicationsForOrgRequest(w http.Respons
 	}
 }
 
+// HandleActionsListRunnerApplicationsForRepoRequest handles actions/list-runner-applications-for-repo operation.
+//
+// GET /repos/{owner}/{repo}/actions/runners/downloads
 func (s *Server) HandleActionsListRunnerApplicationsForRepoRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsListRunnerApplicationsForRepo`,
 		trace.WithAttributes(otelogen.OperationID(`actions/list-runner-applications-for-repo`)),
@@ -1492,6 +1654,9 @@ func (s *Server) HandleActionsListRunnerApplicationsForRepoRequest(w http.Respon
 	}
 }
 
+// HandleActionsListSelectedReposForOrgSecretRequest handles actions/list-selected-repos-for-org-secret operation.
+//
+// GET /orgs/{org}/actions/secrets/{secret_name}/repositories
 func (s *Server) HandleActionsListSelectedReposForOrgSecretRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsListSelectedReposForOrgSecret`,
 		trace.WithAttributes(otelogen.OperationID(`actions/list-selected-repos-for-org-secret`)),
@@ -1518,6 +1683,9 @@ func (s *Server) HandleActionsListSelectedReposForOrgSecretRequest(w http.Respon
 	}
 }
 
+// HandleActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRequest handles actions/list-selected-repositories-enabled-github-actions-organization operation.
+//
+// GET /orgs/{org}/actions/permissions/repositories
 func (s *Server) HandleActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsListSelectedRepositoriesEnabledGithubActionsOrganization`,
 		trace.WithAttributes(otelogen.OperationID(`actions/list-selected-repositories-enabled-github-actions-organization`)),
@@ -1544,6 +1712,9 @@ func (s *Server) HandleActionsListSelectedRepositoriesEnabledGithubActionsOrgani
 	}
 }
 
+// HandleActionsListSelfHostedRunnerGroupsForOrgRequest handles actions/list-self-hosted-runner-groups-for-org operation.
+//
+// GET /orgs/{org}/actions/runner-groups
 func (s *Server) HandleActionsListSelfHostedRunnerGroupsForOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsListSelfHostedRunnerGroupsForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`actions/list-self-hosted-runner-groups-for-org`)),
@@ -1570,6 +1741,9 @@ func (s *Server) HandleActionsListSelfHostedRunnerGroupsForOrgRequest(w http.Res
 	}
 }
 
+// HandleActionsListSelfHostedRunnersForOrgRequest handles actions/list-self-hosted-runners-for-org operation.
+//
+// GET /orgs/{org}/actions/runners
 func (s *Server) HandleActionsListSelfHostedRunnersForOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsListSelfHostedRunnersForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`actions/list-self-hosted-runners-for-org`)),
@@ -1596,6 +1770,9 @@ func (s *Server) HandleActionsListSelfHostedRunnersForOrgRequest(w http.Response
 	}
 }
 
+// HandleActionsListSelfHostedRunnersForRepoRequest handles actions/list-self-hosted-runners-for-repo operation.
+//
+// GET /repos/{owner}/{repo}/actions/runners
 func (s *Server) HandleActionsListSelfHostedRunnersForRepoRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsListSelfHostedRunnersForRepo`,
 		trace.WithAttributes(otelogen.OperationID(`actions/list-self-hosted-runners-for-repo`)),
@@ -1622,6 +1799,9 @@ func (s *Server) HandleActionsListSelfHostedRunnersForRepoRequest(w http.Respons
 	}
 }
 
+// HandleActionsListSelfHostedRunnersInGroupForOrgRequest handles actions/list-self-hosted-runners-in-group-for-org operation.
+//
+// GET /orgs/{org}/actions/runner-groups/{runner_group_id}/runners
 func (s *Server) HandleActionsListSelfHostedRunnersInGroupForOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsListSelfHostedRunnersInGroupForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`actions/list-self-hosted-runners-in-group-for-org`)),
@@ -1648,6 +1828,9 @@ func (s *Server) HandleActionsListSelfHostedRunnersInGroupForOrgRequest(w http.R
 	}
 }
 
+// HandleActionsListWorkflowRunArtifactsRequest handles actions/list-workflow-run-artifacts operation.
+//
+// GET /repos/{owner}/{repo}/actions/runs/{run_id}/artifacts
 func (s *Server) HandleActionsListWorkflowRunArtifactsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsListWorkflowRunArtifacts`,
 		trace.WithAttributes(otelogen.OperationID(`actions/list-workflow-run-artifacts`)),
@@ -1674,6 +1857,9 @@ func (s *Server) HandleActionsListWorkflowRunArtifactsRequest(w http.ResponseWri
 	}
 }
 
+// HandleActionsListWorkflowRunsForRepoRequest handles actions/list-workflow-runs-for-repo operation.
+//
+// GET /repos/{owner}/{repo}/actions/runs
 func (s *Server) HandleActionsListWorkflowRunsForRepoRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsListWorkflowRunsForRepo`,
 		trace.WithAttributes(otelogen.OperationID(`actions/list-workflow-runs-for-repo`)),
@@ -1700,6 +1886,9 @@ func (s *Server) HandleActionsListWorkflowRunsForRepoRequest(w http.ResponseWrit
 	}
 }
 
+// HandleActionsReRunWorkflowRequest handles actions/re-run-workflow operation.
+//
+// POST /repos/{owner}/{repo}/actions/runs/{run_id}/rerun
 func (s *Server) HandleActionsReRunWorkflowRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsReRunWorkflow`,
 		trace.WithAttributes(otelogen.OperationID(`actions/re-run-workflow`)),
@@ -1726,6 +1915,9 @@ func (s *Server) HandleActionsReRunWorkflowRequest(w http.ResponseWriter, r *htt
 	}
 }
 
+// HandleActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgRequest handles actions/remove-repo-access-to-self-hosted-runner-group-in-org operation.
+//
+// DELETE /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories/{repository_id}
 func (s *Server) HandleActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`actions/remove-repo-access-to-self-hosted-runner-group-in-org`)),
@@ -1752,6 +1944,9 @@ func (s *Server) HandleActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgReques
 	}
 }
 
+// HandleActionsRemoveSelectedRepoFromOrgSecretRequest handles actions/remove-selected-repo-from-org-secret operation.
+//
+// DELETE /orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}
 func (s *Server) HandleActionsRemoveSelectedRepoFromOrgSecretRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsRemoveSelectedRepoFromOrgSecret`,
 		trace.WithAttributes(otelogen.OperationID(`actions/remove-selected-repo-from-org-secret`)),
@@ -1778,6 +1973,9 @@ func (s *Server) HandleActionsRemoveSelectedRepoFromOrgSecretRequest(w http.Resp
 	}
 }
 
+// HandleActionsRemoveSelfHostedRunnerFromGroupForOrgRequest handles actions/remove-self-hosted-runner-from-group-for-org operation.
+//
+// DELETE /orgs/{org}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
 func (s *Server) HandleActionsRemoveSelfHostedRunnerFromGroupForOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsRemoveSelfHostedRunnerFromGroupForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`actions/remove-self-hosted-runner-from-group-for-org`)),
@@ -1804,6 +2002,9 @@ func (s *Server) HandleActionsRemoveSelfHostedRunnerFromGroupForOrgRequest(w htt
 	}
 }
 
+// HandleActionsRetryWorkflowRequest handles actions/retry-workflow operation.
+//
+// POST /repos/{owner}/{repo}/actions/runs/{run_id}/retry
 func (s *Server) HandleActionsRetryWorkflowRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsRetryWorkflow`,
 		trace.WithAttributes(otelogen.OperationID(`actions/retry-workflow`)),
@@ -1830,6 +2031,9 @@ func (s *Server) HandleActionsRetryWorkflowRequest(w http.ResponseWriter, r *htt
 	}
 }
 
+// HandleActionsSetAllowedActionsOrganizationRequest handles actions/set-allowed-actions-organization operation.
+//
+// PUT /orgs/{org}/actions/permissions/selected-actions
 func (s *Server) HandleActionsSetAllowedActionsOrganizationRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsSetAllowedActionsOrganization`,
 		trace.WithAttributes(otelogen.OperationID(`actions/set-allowed-actions-organization`)),
@@ -1862,6 +2066,9 @@ func (s *Server) HandleActionsSetAllowedActionsOrganizationRequest(w http.Respon
 	}
 }
 
+// HandleActionsSetAllowedActionsRepositoryRequest handles actions/set-allowed-actions-repository operation.
+//
+// PUT /repos/{owner}/{repo}/actions/permissions/selected-actions
 func (s *Server) HandleActionsSetAllowedActionsRepositoryRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsSetAllowedActionsRepository`,
 		trace.WithAttributes(otelogen.OperationID(`actions/set-allowed-actions-repository`)),
@@ -1894,6 +2101,9 @@ func (s *Server) HandleActionsSetAllowedActionsRepositoryRequest(w http.Response
 	}
 }
 
+// HandleActionsSetGithubActionsPermissionsOrganizationRequest handles actions/set-github-actions-permissions-organization operation.
+//
+// PUT /orgs/{org}/actions/permissions
 func (s *Server) HandleActionsSetGithubActionsPermissionsOrganizationRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsSetGithubActionsPermissionsOrganization`,
 		trace.WithAttributes(otelogen.OperationID(`actions/set-github-actions-permissions-organization`)),
@@ -1926,6 +2136,9 @@ func (s *Server) HandleActionsSetGithubActionsPermissionsOrganizationRequest(w h
 	}
 }
 
+// HandleActionsSetGithubActionsPermissionsRepositoryRequest handles actions/set-github-actions-permissions-repository operation.
+//
+// PUT /repos/{owner}/{repo}/actions/permissions
 func (s *Server) HandleActionsSetGithubActionsPermissionsRepositoryRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsSetGithubActionsPermissionsRepository`,
 		trace.WithAttributes(otelogen.OperationID(`actions/set-github-actions-permissions-repository`)),
@@ -1958,6 +2171,9 @@ func (s *Server) HandleActionsSetGithubActionsPermissionsRepositoryRequest(w htt
 	}
 }
 
+// HandleActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest handles actions/set-repo-access-to-self-hosted-runner-group-in-org operation.
+//
+// PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories
 func (s *Server) HandleActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`actions/set-repo-access-to-self-hosted-runner-group-in-org`)),
@@ -1990,6 +2206,9 @@ func (s *Server) HandleActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(w
 	}
 }
 
+// HandleActionsSetSelectedReposForOrgSecretRequest handles actions/set-selected-repos-for-org-secret operation.
+//
+// PUT /orgs/{org}/actions/secrets/{secret_name}/repositories
 func (s *Server) HandleActionsSetSelectedReposForOrgSecretRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsSetSelectedReposForOrgSecret`,
 		trace.WithAttributes(otelogen.OperationID(`actions/set-selected-repos-for-org-secret`)),
@@ -2022,6 +2241,9 @@ func (s *Server) HandleActionsSetSelectedReposForOrgSecretRequest(w http.Respons
 	}
 }
 
+// HandleActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequest handles actions/set-selected-repositories-enabled-github-actions-organization operation.
+//
+// PUT /orgs/{org}/actions/permissions/repositories
 func (s *Server) HandleActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization`,
 		trace.WithAttributes(otelogen.OperationID(`actions/set-selected-repositories-enabled-github-actions-organization`)),
@@ -2054,6 +2276,9 @@ func (s *Server) HandleActionsSetSelectedRepositoriesEnabledGithubActionsOrganiz
 	}
 }
 
+// HandleActionsSetSelfHostedRunnersInGroupForOrgRequest handles actions/set-self-hosted-runners-in-group-for-org operation.
+//
+// PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/runners
 func (s *Server) HandleActionsSetSelfHostedRunnersInGroupForOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsSetSelfHostedRunnersInGroupForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`actions/set-self-hosted-runners-in-group-for-org`)),
@@ -2086,6 +2311,9 @@ func (s *Server) HandleActionsSetSelfHostedRunnersInGroupForOrgRequest(w http.Re
 	}
 }
 
+// HandleActionsUpdateSelfHostedRunnerGroupForOrgRequest handles actions/update-self-hosted-runner-group-for-org operation.
+//
+// PATCH /orgs/{org}/actions/runner-groups/{runner_group_id}
 func (s *Server) HandleActionsUpdateSelfHostedRunnerGroupForOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsUpdateSelfHostedRunnerGroupForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`actions/update-self-hosted-runner-group-for-org`)),
@@ -2118,6 +2346,9 @@ func (s *Server) HandleActionsUpdateSelfHostedRunnerGroupForOrgRequest(w http.Re
 	}
 }
 
+// HandleActivityCheckRepoIsStarredByAuthenticatedUserRequest handles activity/check-repo-is-starred-by-authenticated-user operation.
+//
+// GET /user/starred/{owner}/{repo}
 func (s *Server) HandleActivityCheckRepoIsStarredByAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityCheckRepoIsStarredByAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`activity/check-repo-is-starred-by-authenticated-user`)),
@@ -2144,6 +2375,9 @@ func (s *Server) HandleActivityCheckRepoIsStarredByAuthenticatedUserRequest(w ht
 	}
 }
 
+// HandleActivityDeleteRepoSubscriptionRequest handles activity/delete-repo-subscription operation.
+//
+// DELETE /repos/{owner}/{repo}/subscription
 func (s *Server) HandleActivityDeleteRepoSubscriptionRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityDeleteRepoSubscription`,
 		trace.WithAttributes(otelogen.OperationID(`activity/delete-repo-subscription`)),
@@ -2170,6 +2404,9 @@ func (s *Server) HandleActivityDeleteRepoSubscriptionRequest(w http.ResponseWrit
 	}
 }
 
+// HandleActivityDeleteThreadSubscriptionRequest handles activity/delete-thread-subscription operation.
+//
+// DELETE /notifications/threads/{thread_id}/subscription
 func (s *Server) HandleActivityDeleteThreadSubscriptionRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityDeleteThreadSubscription`,
 		trace.WithAttributes(otelogen.OperationID(`activity/delete-thread-subscription`)),
@@ -2196,6 +2433,9 @@ func (s *Server) HandleActivityDeleteThreadSubscriptionRequest(w http.ResponseWr
 	}
 }
 
+// HandleActivityGetFeedsRequest handles activity/get-feeds operation.
+//
+// GET /feeds
 func (s *Server) HandleActivityGetFeedsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityGetFeeds`,
 		trace.WithAttributes(otelogen.OperationID(`activity/get-feeds`)),
@@ -2216,6 +2456,9 @@ func (s *Server) HandleActivityGetFeedsRequest(w http.ResponseWriter, r *http.Re
 	}
 }
 
+// HandleActivityGetRepoSubscriptionRequest handles activity/get-repo-subscription operation.
+//
+// GET /repos/{owner}/{repo}/subscription
 func (s *Server) HandleActivityGetRepoSubscriptionRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityGetRepoSubscription`,
 		trace.WithAttributes(otelogen.OperationID(`activity/get-repo-subscription`)),
@@ -2242,6 +2485,9 @@ func (s *Server) HandleActivityGetRepoSubscriptionRequest(w http.ResponseWriter,
 	}
 }
 
+// HandleActivityGetThreadRequest handles activity/get-thread operation.
+//
+// GET /notifications/threads/{thread_id}
 func (s *Server) HandleActivityGetThreadRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityGetThread`,
 		trace.WithAttributes(otelogen.OperationID(`activity/get-thread`)),
@@ -2268,6 +2514,9 @@ func (s *Server) HandleActivityGetThreadRequest(w http.ResponseWriter, r *http.R
 	}
 }
 
+// HandleActivityGetThreadSubscriptionForAuthenticatedUserRequest handles activity/get-thread-subscription-for-authenticated-user operation.
+//
+// GET /notifications/threads/{thread_id}/subscription
 func (s *Server) HandleActivityGetThreadSubscriptionForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityGetThreadSubscriptionForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`activity/get-thread-subscription-for-authenticated-user`)),
@@ -2294,6 +2543,9 @@ func (s *Server) HandleActivityGetThreadSubscriptionForAuthenticatedUserRequest(
 	}
 }
 
+// HandleActivityListEventsForAuthenticatedUserRequest handles activity/list-events-for-authenticated-user operation.
+//
+// GET /users/{username}/events
 func (s *Server) HandleActivityListEventsForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityListEventsForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`activity/list-events-for-authenticated-user`)),
@@ -2320,6 +2572,9 @@ func (s *Server) HandleActivityListEventsForAuthenticatedUserRequest(w http.Resp
 	}
 }
 
+// HandleActivityListOrgEventsForAuthenticatedUserRequest handles activity/list-org-events-for-authenticated-user operation.
+//
+// GET /users/{username}/events/orgs/{org}
 func (s *Server) HandleActivityListOrgEventsForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityListOrgEventsForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`activity/list-org-events-for-authenticated-user`)),
@@ -2346,6 +2601,9 @@ func (s *Server) HandleActivityListOrgEventsForAuthenticatedUserRequest(w http.R
 	}
 }
 
+// HandleActivityListPublicEventsRequest handles activity/list-public-events operation.
+//
+// GET /events
 func (s *Server) HandleActivityListPublicEventsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityListPublicEvents`,
 		trace.WithAttributes(otelogen.OperationID(`activity/list-public-events`)),
@@ -2372,6 +2630,9 @@ func (s *Server) HandleActivityListPublicEventsRequest(w http.ResponseWriter, r 
 	}
 }
 
+// HandleActivityListPublicEventsForRepoNetworkRequest handles activity/list-public-events-for-repo-network operation.
+//
+// GET /networks/{owner}/{repo}/events
 func (s *Server) HandleActivityListPublicEventsForRepoNetworkRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityListPublicEventsForRepoNetwork`,
 		trace.WithAttributes(otelogen.OperationID(`activity/list-public-events-for-repo-network`)),
@@ -2398,6 +2659,9 @@ func (s *Server) HandleActivityListPublicEventsForRepoNetworkRequest(w http.Resp
 	}
 }
 
+// HandleActivityListPublicEventsForUserRequest handles activity/list-public-events-for-user operation.
+//
+// GET /users/{username}/events/public
 func (s *Server) HandleActivityListPublicEventsForUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityListPublicEventsForUser`,
 		trace.WithAttributes(otelogen.OperationID(`activity/list-public-events-for-user`)),
@@ -2424,6 +2688,9 @@ func (s *Server) HandleActivityListPublicEventsForUserRequest(w http.ResponseWri
 	}
 }
 
+// HandleActivityListPublicOrgEventsRequest handles activity/list-public-org-events operation.
+//
+// GET /orgs/{org}/events
 func (s *Server) HandleActivityListPublicOrgEventsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityListPublicOrgEvents`,
 		trace.WithAttributes(otelogen.OperationID(`activity/list-public-org-events`)),
@@ -2450,6 +2717,9 @@ func (s *Server) HandleActivityListPublicOrgEventsRequest(w http.ResponseWriter,
 	}
 }
 
+// HandleActivityListReceivedEventsForUserRequest handles activity/list-received-events-for-user operation.
+//
+// GET /users/{username}/received_events
 func (s *Server) HandleActivityListReceivedEventsForUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityListReceivedEventsForUser`,
 		trace.WithAttributes(otelogen.OperationID(`activity/list-received-events-for-user`)),
@@ -2476,6 +2746,9 @@ func (s *Server) HandleActivityListReceivedEventsForUserRequest(w http.ResponseW
 	}
 }
 
+// HandleActivityListReceivedPublicEventsForUserRequest handles activity/list-received-public-events-for-user operation.
+//
+// GET /users/{username}/received_events/public
 func (s *Server) HandleActivityListReceivedPublicEventsForUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityListReceivedPublicEventsForUser`,
 		trace.WithAttributes(otelogen.OperationID(`activity/list-received-public-events-for-user`)),
@@ -2502,6 +2775,9 @@ func (s *Server) HandleActivityListReceivedPublicEventsForUserRequest(w http.Res
 	}
 }
 
+// HandleActivityListRepoEventsRequest handles activity/list-repo-events operation.
+//
+// GET /repos/{owner}/{repo}/events
 func (s *Server) HandleActivityListRepoEventsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityListRepoEvents`,
 		trace.WithAttributes(otelogen.OperationID(`activity/list-repo-events`)),
@@ -2528,6 +2804,9 @@ func (s *Server) HandleActivityListRepoEventsRequest(w http.ResponseWriter, r *h
 	}
 }
 
+// HandleActivityListRepoNotificationsForAuthenticatedUserRequest handles activity/list-repo-notifications-for-authenticated-user operation.
+//
+// GET /repos/{owner}/{repo}/notifications
 func (s *Server) HandleActivityListRepoNotificationsForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityListRepoNotificationsForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`activity/list-repo-notifications-for-authenticated-user`)),
@@ -2554,6 +2833,9 @@ func (s *Server) HandleActivityListRepoNotificationsForAuthenticatedUserRequest(
 	}
 }
 
+// HandleActivityListReposStarredByAuthenticatedUserRequest handles activity/list-repos-starred-by-authenticated-user operation.
+//
+// GET /user/starred
 func (s *Server) HandleActivityListReposStarredByAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityListReposStarredByAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`activity/list-repos-starred-by-authenticated-user`)),
@@ -2580,6 +2862,9 @@ func (s *Server) HandleActivityListReposStarredByAuthenticatedUserRequest(w http
 	}
 }
 
+// HandleActivityListReposWatchedByUserRequest handles activity/list-repos-watched-by-user operation.
+//
+// GET /users/{username}/subscriptions
 func (s *Server) HandleActivityListReposWatchedByUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityListReposWatchedByUser`,
 		trace.WithAttributes(otelogen.OperationID(`activity/list-repos-watched-by-user`)),
@@ -2606,6 +2891,9 @@ func (s *Server) HandleActivityListReposWatchedByUserRequest(w http.ResponseWrit
 	}
 }
 
+// HandleActivityListWatchedReposForAuthenticatedUserRequest handles activity/list-watched-repos-for-authenticated-user operation.
+//
+// GET /user/subscriptions
 func (s *Server) HandleActivityListWatchedReposForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityListWatchedReposForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`activity/list-watched-repos-for-authenticated-user`)),
@@ -2632,6 +2920,9 @@ func (s *Server) HandleActivityListWatchedReposForAuthenticatedUserRequest(w htt
 	}
 }
 
+// HandleActivityListWatchersForRepoRequest handles activity/list-watchers-for-repo operation.
+//
+// GET /repos/{owner}/{repo}/subscribers
 func (s *Server) HandleActivityListWatchersForRepoRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityListWatchersForRepo`,
 		trace.WithAttributes(otelogen.OperationID(`activity/list-watchers-for-repo`)),
@@ -2658,6 +2949,9 @@ func (s *Server) HandleActivityListWatchersForRepoRequest(w http.ResponseWriter,
 	}
 }
 
+// HandleActivityMarkNotificationsAsReadRequest handles activity/mark-notifications-as-read operation.
+//
+// PUT /notifications
 func (s *Server) HandleActivityMarkNotificationsAsReadRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityMarkNotificationsAsRead`,
 		trace.WithAttributes(otelogen.OperationID(`activity/mark-notifications-as-read`)),
@@ -2684,6 +2978,9 @@ func (s *Server) HandleActivityMarkNotificationsAsReadRequest(w http.ResponseWri
 	}
 }
 
+// HandleActivityMarkRepoNotificationsAsReadRequest handles activity/mark-repo-notifications-as-read operation.
+//
+// PUT /repos/{owner}/{repo}/notifications
 func (s *Server) HandleActivityMarkRepoNotificationsAsReadRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityMarkRepoNotificationsAsRead`,
 		trace.WithAttributes(otelogen.OperationID(`activity/mark-repo-notifications-as-read`)),
@@ -2716,6 +3013,9 @@ func (s *Server) HandleActivityMarkRepoNotificationsAsReadRequest(w http.Respons
 	}
 }
 
+// HandleActivityMarkThreadAsReadRequest handles activity/mark-thread-as-read operation.
+//
+// PATCH /notifications/threads/{thread_id}
 func (s *Server) HandleActivityMarkThreadAsReadRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityMarkThreadAsRead`,
 		trace.WithAttributes(otelogen.OperationID(`activity/mark-thread-as-read`)),
@@ -2742,6 +3042,9 @@ func (s *Server) HandleActivityMarkThreadAsReadRequest(w http.ResponseWriter, r 
 	}
 }
 
+// HandleActivitySetRepoSubscriptionRequest handles activity/set-repo-subscription operation.
+//
+// PUT /repos/{owner}/{repo}/subscription
 func (s *Server) HandleActivitySetRepoSubscriptionRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivitySetRepoSubscription`,
 		trace.WithAttributes(otelogen.OperationID(`activity/set-repo-subscription`)),
@@ -2774,6 +3077,9 @@ func (s *Server) HandleActivitySetRepoSubscriptionRequest(w http.ResponseWriter,
 	}
 }
 
+// HandleActivitySetThreadSubscriptionRequest handles activity/set-thread-subscription operation.
+//
+// PUT /notifications/threads/{thread_id}/subscription
 func (s *Server) HandleActivitySetThreadSubscriptionRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivitySetThreadSubscription`,
 		trace.WithAttributes(otelogen.OperationID(`activity/set-thread-subscription`)),
@@ -2806,6 +3112,9 @@ func (s *Server) HandleActivitySetThreadSubscriptionRequest(w http.ResponseWrite
 	}
 }
 
+// HandleActivityStarRepoForAuthenticatedUserRequest handles activity/star-repo-for-authenticated-user operation.
+//
+// PUT /user/starred/{owner}/{repo}
 func (s *Server) HandleActivityStarRepoForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityStarRepoForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`activity/star-repo-for-authenticated-user`)),
@@ -2832,6 +3141,9 @@ func (s *Server) HandleActivityStarRepoForAuthenticatedUserRequest(w http.Respon
 	}
 }
 
+// HandleActivityUnstarRepoForAuthenticatedUserRequest handles activity/unstar-repo-for-authenticated-user operation.
+//
+// DELETE /user/starred/{owner}/{repo}
 func (s *Server) HandleActivityUnstarRepoForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityUnstarRepoForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`activity/unstar-repo-for-authenticated-user`)),
@@ -2858,6 +3170,9 @@ func (s *Server) HandleActivityUnstarRepoForAuthenticatedUserRequest(w http.Resp
 	}
 }
 
+// HandleAppsAddRepoToInstallationRequest handles apps/add-repo-to-installation operation.
+//
+// PUT /user/installations/{installation_id}/repositories/{repository_id}
 func (s *Server) HandleAppsAddRepoToInstallationRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsAddRepoToInstallation`,
 		trace.WithAttributes(otelogen.OperationID(`apps/add-repo-to-installation`)),
@@ -2884,6 +3199,9 @@ func (s *Server) HandleAppsAddRepoToInstallationRequest(w http.ResponseWriter, r
 	}
 }
 
+// HandleAppsDeleteInstallationRequest handles apps/delete-installation operation.
+//
+// DELETE /app/installations/{installation_id}
 func (s *Server) HandleAppsDeleteInstallationRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsDeleteInstallation`,
 		trace.WithAttributes(otelogen.OperationID(`apps/delete-installation`)),
@@ -2910,6 +3228,9 @@ func (s *Server) HandleAppsDeleteInstallationRequest(w http.ResponseWriter, r *h
 	}
 }
 
+// HandleAppsGetAuthenticatedRequest handles apps/get-authenticated operation.
+//
+// GET /app
 func (s *Server) HandleAppsGetAuthenticatedRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsGetAuthenticated`,
 		trace.WithAttributes(otelogen.OperationID(`apps/get-authenticated`)),
@@ -2930,6 +3251,9 @@ func (s *Server) HandleAppsGetAuthenticatedRequest(w http.ResponseWriter, r *htt
 	}
 }
 
+// HandleAppsGetBySlugRequest handles apps/get-by-slug operation.
+//
+// GET /apps/{app_slug}
 func (s *Server) HandleAppsGetBySlugRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsGetBySlug`,
 		trace.WithAttributes(otelogen.OperationID(`apps/get-by-slug`)),
@@ -2956,6 +3280,9 @@ func (s *Server) HandleAppsGetBySlugRequest(w http.ResponseWriter, r *http.Reque
 	}
 }
 
+// HandleAppsGetSubscriptionPlanForAccountRequest handles apps/get-subscription-plan-for-account operation.
+//
+// GET /marketplace_listing/accounts/{account_id}
 func (s *Server) HandleAppsGetSubscriptionPlanForAccountRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsGetSubscriptionPlanForAccount`,
 		trace.WithAttributes(otelogen.OperationID(`apps/get-subscription-plan-for-account`)),
@@ -2982,6 +3309,9 @@ func (s *Server) HandleAppsGetSubscriptionPlanForAccountRequest(w http.ResponseW
 	}
 }
 
+// HandleAppsGetSubscriptionPlanForAccountStubbedRequest handles apps/get-subscription-plan-for-account-stubbed operation.
+//
+// GET /marketplace_listing/stubbed/accounts/{account_id}
 func (s *Server) HandleAppsGetSubscriptionPlanForAccountStubbedRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsGetSubscriptionPlanForAccountStubbed`,
 		trace.WithAttributes(otelogen.OperationID(`apps/get-subscription-plan-for-account-stubbed`)),
@@ -3008,6 +3338,9 @@ func (s *Server) HandleAppsGetSubscriptionPlanForAccountStubbedRequest(w http.Re
 	}
 }
 
+// HandleAppsGetWebhookConfigForAppRequest handles apps/get-webhook-config-for-app operation.
+//
+// GET /app/hook/config
 func (s *Server) HandleAppsGetWebhookConfigForAppRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsGetWebhookConfigForApp`,
 		trace.WithAttributes(otelogen.OperationID(`apps/get-webhook-config-for-app`)),
@@ -3028,6 +3361,9 @@ func (s *Server) HandleAppsGetWebhookConfigForAppRequest(w http.ResponseWriter, 
 	}
 }
 
+// HandleAppsListAccountsForPlanStubbedRequest handles apps/list-accounts-for-plan-stubbed operation.
+//
+// GET /marketplace_listing/stubbed/plans/{plan_id}/accounts
 func (s *Server) HandleAppsListAccountsForPlanStubbedRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsListAccountsForPlanStubbed`,
 		trace.WithAttributes(otelogen.OperationID(`apps/list-accounts-for-plan-stubbed`)),
@@ -3054,6 +3390,9 @@ func (s *Server) HandleAppsListAccountsForPlanStubbedRequest(w http.ResponseWrit
 	}
 }
 
+// HandleAppsListInstallationReposForAuthenticatedUserRequest handles apps/list-installation-repos-for-authenticated-user operation.
+//
+// GET /user/installations/{installation_id}/repositories
 func (s *Server) HandleAppsListInstallationReposForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsListInstallationReposForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`apps/list-installation-repos-for-authenticated-user`)),
@@ -3080,6 +3419,9 @@ func (s *Server) HandleAppsListInstallationReposForAuthenticatedUserRequest(w ht
 	}
 }
 
+// HandleAppsListPlansRequest handles apps/list-plans operation.
+//
+// GET /marketplace_listing/plans
 func (s *Server) HandleAppsListPlansRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsListPlans`,
 		trace.WithAttributes(otelogen.OperationID(`apps/list-plans`)),
@@ -3106,6 +3448,9 @@ func (s *Server) HandleAppsListPlansRequest(w http.ResponseWriter, r *http.Reque
 	}
 }
 
+// HandleAppsListPlansStubbedRequest handles apps/list-plans-stubbed operation.
+//
+// GET /marketplace_listing/stubbed/plans
 func (s *Server) HandleAppsListPlansStubbedRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsListPlansStubbed`,
 		trace.WithAttributes(otelogen.OperationID(`apps/list-plans-stubbed`)),
@@ -3132,6 +3477,9 @@ func (s *Server) HandleAppsListPlansStubbedRequest(w http.ResponseWriter, r *htt
 	}
 }
 
+// HandleAppsListReposAccessibleToInstallationRequest handles apps/list-repos-accessible-to-installation operation.
+//
+// GET /installation/repositories
 func (s *Server) HandleAppsListReposAccessibleToInstallationRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsListReposAccessibleToInstallation`,
 		trace.WithAttributes(otelogen.OperationID(`apps/list-repos-accessible-to-installation`)),
@@ -3158,6 +3506,9 @@ func (s *Server) HandleAppsListReposAccessibleToInstallationRequest(w http.Respo
 	}
 }
 
+// HandleAppsListSubscriptionsForAuthenticatedUserRequest handles apps/list-subscriptions-for-authenticated-user operation.
+//
+// GET /user/marketplace_purchases
 func (s *Server) HandleAppsListSubscriptionsForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsListSubscriptionsForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`apps/list-subscriptions-for-authenticated-user`)),
@@ -3184,6 +3535,9 @@ func (s *Server) HandleAppsListSubscriptionsForAuthenticatedUserRequest(w http.R
 	}
 }
 
+// HandleAppsListSubscriptionsForAuthenticatedUserStubbedRequest handles apps/list-subscriptions-for-authenticated-user-stubbed operation.
+//
+// GET /user/marketplace_purchases/stubbed
 func (s *Server) HandleAppsListSubscriptionsForAuthenticatedUserStubbedRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsListSubscriptionsForAuthenticatedUserStubbed`,
 		trace.WithAttributes(otelogen.OperationID(`apps/list-subscriptions-for-authenticated-user-stubbed`)),
@@ -3210,6 +3564,9 @@ func (s *Server) HandleAppsListSubscriptionsForAuthenticatedUserStubbedRequest(w
 	}
 }
 
+// HandleAppsRemoveRepoFromInstallationRequest handles apps/remove-repo-from-installation operation.
+//
+// DELETE /user/installations/{installation_id}/repositories/{repository_id}
 func (s *Server) HandleAppsRemoveRepoFromInstallationRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsRemoveRepoFromInstallation`,
 		trace.WithAttributes(otelogen.OperationID(`apps/remove-repo-from-installation`)),
@@ -3236,6 +3593,9 @@ func (s *Server) HandleAppsRemoveRepoFromInstallationRequest(w http.ResponseWrit
 	}
 }
 
+// HandleAppsRevokeInstallationAccessTokenRequest handles apps/revoke-installation-access-token operation.
+//
+// DELETE /installation/token
 func (s *Server) HandleAppsRevokeInstallationAccessTokenRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsRevokeInstallationAccessToken`,
 		trace.WithAttributes(otelogen.OperationID(`apps/revoke-installation-access-token`)),
@@ -3256,6 +3616,9 @@ func (s *Server) HandleAppsRevokeInstallationAccessTokenRequest(w http.ResponseW
 	}
 }
 
+// HandleAppsSuspendInstallationRequest handles apps/suspend-installation operation.
+//
+// PUT /app/installations/{installation_id}/suspended
 func (s *Server) HandleAppsSuspendInstallationRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsSuspendInstallation`,
 		trace.WithAttributes(otelogen.OperationID(`apps/suspend-installation`)),
@@ -3282,6 +3645,9 @@ func (s *Server) HandleAppsSuspendInstallationRequest(w http.ResponseWriter, r *
 	}
 }
 
+// HandleAppsUnsuspendInstallationRequest handles apps/unsuspend-installation operation.
+//
+// DELETE /app/installations/{installation_id}/suspended
 func (s *Server) HandleAppsUnsuspendInstallationRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsUnsuspendInstallation`,
 		trace.WithAttributes(otelogen.OperationID(`apps/unsuspend-installation`)),
@@ -3308,6 +3674,9 @@ func (s *Server) HandleAppsUnsuspendInstallationRequest(w http.ResponseWriter, r
 	}
 }
 
+// HandleAppsUpdateWebhookConfigForAppRequest handles apps/update-webhook-config-for-app operation.
+//
+// PATCH /app/hook/config
 func (s *Server) HandleAppsUpdateWebhookConfigForAppRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsUpdateWebhookConfigForApp`,
 		trace.WithAttributes(otelogen.OperationID(`apps/update-webhook-config-for-app`)),
@@ -3334,6 +3703,9 @@ func (s *Server) HandleAppsUpdateWebhookConfigForAppRequest(w http.ResponseWrite
 	}
 }
 
+// HandleBillingGetGithubActionsBillingGheRequest handles billing/get-github-actions-billing-ghe operation.
+//
+// GET /enterprises/{enterprise}/settings/billing/actions
 func (s *Server) HandleBillingGetGithubActionsBillingGheRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `BillingGetGithubActionsBillingGhe`,
 		trace.WithAttributes(otelogen.OperationID(`billing/get-github-actions-billing-ghe`)),
@@ -3360,6 +3732,9 @@ func (s *Server) HandleBillingGetGithubActionsBillingGheRequest(w http.ResponseW
 	}
 }
 
+// HandleBillingGetGithubActionsBillingOrgRequest handles billing/get-github-actions-billing-org operation.
+//
+// GET /orgs/{org}/settings/billing/actions
 func (s *Server) HandleBillingGetGithubActionsBillingOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `BillingGetGithubActionsBillingOrg`,
 		trace.WithAttributes(otelogen.OperationID(`billing/get-github-actions-billing-org`)),
@@ -3386,6 +3761,9 @@ func (s *Server) HandleBillingGetGithubActionsBillingOrgRequest(w http.ResponseW
 	}
 }
 
+// HandleBillingGetGithubActionsBillingUserRequest handles billing/get-github-actions-billing-user operation.
+//
+// GET /users/{username}/settings/billing/actions
 func (s *Server) HandleBillingGetGithubActionsBillingUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `BillingGetGithubActionsBillingUser`,
 		trace.WithAttributes(otelogen.OperationID(`billing/get-github-actions-billing-user`)),
@@ -3412,6 +3790,9 @@ func (s *Server) HandleBillingGetGithubActionsBillingUserRequest(w http.Response
 	}
 }
 
+// HandleBillingGetGithubPackagesBillingGheRequest handles billing/get-github-packages-billing-ghe operation.
+//
+// GET /enterprises/{enterprise}/settings/billing/packages
 func (s *Server) HandleBillingGetGithubPackagesBillingGheRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `BillingGetGithubPackagesBillingGhe`,
 		trace.WithAttributes(otelogen.OperationID(`billing/get-github-packages-billing-ghe`)),
@@ -3438,6 +3819,9 @@ func (s *Server) HandleBillingGetGithubPackagesBillingGheRequest(w http.Response
 	}
 }
 
+// HandleBillingGetGithubPackagesBillingOrgRequest handles billing/get-github-packages-billing-org operation.
+//
+// GET /orgs/{org}/settings/billing/packages
 func (s *Server) HandleBillingGetGithubPackagesBillingOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `BillingGetGithubPackagesBillingOrg`,
 		trace.WithAttributes(otelogen.OperationID(`billing/get-github-packages-billing-org`)),
@@ -3464,6 +3848,9 @@ func (s *Server) HandleBillingGetGithubPackagesBillingOrgRequest(w http.Response
 	}
 }
 
+// HandleBillingGetGithubPackagesBillingUserRequest handles billing/get-github-packages-billing-user operation.
+//
+// GET /users/{username}/settings/billing/packages
 func (s *Server) HandleBillingGetGithubPackagesBillingUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `BillingGetGithubPackagesBillingUser`,
 		trace.WithAttributes(otelogen.OperationID(`billing/get-github-packages-billing-user`)),
@@ -3490,6 +3877,9 @@ func (s *Server) HandleBillingGetGithubPackagesBillingUserRequest(w http.Respons
 	}
 }
 
+// HandleBillingGetSharedStorageBillingGheRequest handles billing/get-shared-storage-billing-ghe operation.
+//
+// GET /enterprises/{enterprise}/settings/billing/shared-storage
 func (s *Server) HandleBillingGetSharedStorageBillingGheRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `BillingGetSharedStorageBillingGhe`,
 		trace.WithAttributes(otelogen.OperationID(`billing/get-shared-storage-billing-ghe`)),
@@ -3516,6 +3906,9 @@ func (s *Server) HandleBillingGetSharedStorageBillingGheRequest(w http.ResponseW
 	}
 }
 
+// HandleBillingGetSharedStorageBillingOrgRequest handles billing/get-shared-storage-billing-org operation.
+//
+// GET /orgs/{org}/settings/billing/shared-storage
 func (s *Server) HandleBillingGetSharedStorageBillingOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `BillingGetSharedStorageBillingOrg`,
 		trace.WithAttributes(otelogen.OperationID(`billing/get-shared-storage-billing-org`)),
@@ -3542,6 +3935,9 @@ func (s *Server) HandleBillingGetSharedStorageBillingOrgRequest(w http.ResponseW
 	}
 }
 
+// HandleBillingGetSharedStorageBillingUserRequest handles billing/get-shared-storage-billing-user operation.
+//
+// GET /users/{username}/settings/billing/shared-storage
 func (s *Server) HandleBillingGetSharedStorageBillingUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `BillingGetSharedStorageBillingUser`,
 		trace.WithAttributes(otelogen.OperationID(`billing/get-shared-storage-billing-user`)),
@@ -3568,6 +3964,9 @@ func (s *Server) HandleBillingGetSharedStorageBillingUserRequest(w http.Response
 	}
 }
 
+// HandleChecksCreateSuiteRequest handles checks/create-suite operation.
+//
+// POST /repos/{owner}/{repo}/check-suites
 func (s *Server) HandleChecksCreateSuiteRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ChecksCreateSuite`,
 		trace.WithAttributes(otelogen.OperationID(`checks/create-suite`)),
@@ -3600,6 +3999,9 @@ func (s *Server) HandleChecksCreateSuiteRequest(w http.ResponseWriter, r *http.R
 	}
 }
 
+// HandleChecksGetRequest handles checks/get operation.
+//
+// GET /repos/{owner}/{repo}/check-runs/{check_run_id}
 func (s *Server) HandleChecksGetRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ChecksGet`,
 		trace.WithAttributes(otelogen.OperationID(`checks/get`)),
@@ -3626,6 +4028,9 @@ func (s *Server) HandleChecksGetRequest(w http.ResponseWriter, r *http.Request) 
 	}
 }
 
+// HandleChecksGetSuiteRequest handles checks/get-suite operation.
+//
+// GET /repos/{owner}/{repo}/check-suites/{check_suite_id}
 func (s *Server) HandleChecksGetSuiteRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ChecksGetSuite`,
 		trace.WithAttributes(otelogen.OperationID(`checks/get-suite`)),
@@ -3652,6 +4057,9 @@ func (s *Server) HandleChecksGetSuiteRequest(w http.ResponseWriter, r *http.Requ
 	}
 }
 
+// HandleChecksListAnnotationsRequest handles checks/list-annotations operation.
+//
+// GET /repos/{owner}/{repo}/check-runs/{check_run_id}/annotations
 func (s *Server) HandleChecksListAnnotationsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ChecksListAnnotations`,
 		trace.WithAttributes(otelogen.OperationID(`checks/list-annotations`)),
@@ -3678,6 +4086,9 @@ func (s *Server) HandleChecksListAnnotationsRequest(w http.ResponseWriter, r *ht
 	}
 }
 
+// HandleChecksListForRefRequest handles checks/list-for-ref operation.
+//
+// GET /repos/{owner}/{repo}/commits/{ref}/check-runs
 func (s *Server) HandleChecksListForRefRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ChecksListForRef`,
 		trace.WithAttributes(otelogen.OperationID(`checks/list-for-ref`)),
@@ -3704,6 +4115,9 @@ func (s *Server) HandleChecksListForRefRequest(w http.ResponseWriter, r *http.Re
 	}
 }
 
+// HandleChecksListForSuiteRequest handles checks/list-for-suite operation.
+//
+// GET /repos/{owner}/{repo}/check-suites/{check_suite_id}/check-runs
 func (s *Server) HandleChecksListForSuiteRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ChecksListForSuite`,
 		trace.WithAttributes(otelogen.OperationID(`checks/list-for-suite`)),
@@ -3730,6 +4144,9 @@ func (s *Server) HandleChecksListForSuiteRequest(w http.ResponseWriter, r *http.
 	}
 }
 
+// HandleChecksListSuitesForRefRequest handles checks/list-suites-for-ref operation.
+//
+// GET /repos/{owner}/{repo}/commits/{ref}/check-suites
 func (s *Server) HandleChecksListSuitesForRefRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ChecksListSuitesForRef`,
 		trace.WithAttributes(otelogen.OperationID(`checks/list-suites-for-ref`)),
@@ -3756,6 +4173,9 @@ func (s *Server) HandleChecksListSuitesForRefRequest(w http.ResponseWriter, r *h
 	}
 }
 
+// HandleChecksRerequestSuiteRequest handles checks/rerequest-suite operation.
+//
+// POST /repos/{owner}/{repo}/check-suites/{check_suite_id}/rerequest
 func (s *Server) HandleChecksRerequestSuiteRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ChecksRerequestSuite`,
 		trace.WithAttributes(otelogen.OperationID(`checks/rerequest-suite`)),
@@ -3782,6 +4202,9 @@ func (s *Server) HandleChecksRerequestSuiteRequest(w http.ResponseWriter, r *htt
 	}
 }
 
+// HandleChecksSetSuitesPreferencesRequest handles checks/set-suites-preferences operation.
+//
+// PATCH /repos/{owner}/{repo}/check-suites/preferences
 func (s *Server) HandleChecksSetSuitesPreferencesRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ChecksSetSuitesPreferences`,
 		trace.WithAttributes(otelogen.OperationID(`checks/set-suites-preferences`)),
@@ -3814,6 +4237,9 @@ func (s *Server) HandleChecksSetSuitesPreferencesRequest(w http.ResponseWriter, 
 	}
 }
 
+// HandleCodeScanningDeleteAnalysisRequest handles code-scanning/delete-analysis operation.
+//
+// DELETE /repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}
 func (s *Server) HandleCodeScanningDeleteAnalysisRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `CodeScanningDeleteAnalysis`,
 		trace.WithAttributes(otelogen.OperationID(`code-scanning/delete-analysis`)),
@@ -3840,6 +4266,9 @@ func (s *Server) HandleCodeScanningDeleteAnalysisRequest(w http.ResponseWriter, 
 	}
 }
 
+// HandleCodeScanningGetAlertRequest handles code-scanning/get-alert operation.
+//
+// GET /repos/{owner}/{repo}/code-scanning/alerts/{alert_number}
 func (s *Server) HandleCodeScanningGetAlertRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `CodeScanningGetAlert`,
 		trace.WithAttributes(otelogen.OperationID(`code-scanning/get-alert`)),
@@ -3866,6 +4295,9 @@ func (s *Server) HandleCodeScanningGetAlertRequest(w http.ResponseWriter, r *htt
 	}
 }
 
+// HandleCodeScanningGetAnalysisRequest handles code-scanning/get-analysis operation.
+//
+// GET /repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}
 func (s *Server) HandleCodeScanningGetAnalysisRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `CodeScanningGetAnalysis`,
 		trace.WithAttributes(otelogen.OperationID(`code-scanning/get-analysis`)),
@@ -3892,6 +4324,9 @@ func (s *Server) HandleCodeScanningGetAnalysisRequest(w http.ResponseWriter, r *
 	}
 }
 
+// HandleCodeScanningGetSarifRequest handles code-scanning/get-sarif operation.
+//
+// GET /repos/{owner}/{repo}/code-scanning/sarifs/{sarif_id}
 func (s *Server) HandleCodeScanningGetSarifRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `CodeScanningGetSarif`,
 		trace.WithAttributes(otelogen.OperationID(`code-scanning/get-sarif`)),
@@ -3918,6 +4353,9 @@ func (s *Server) HandleCodeScanningGetSarifRequest(w http.ResponseWriter, r *htt
 	}
 }
 
+// HandleCodeScanningListAlertInstancesRequest handles code-scanning/list-alert-instances operation.
+//
+// GET /repos/{owner}/{repo}/code-scanning/alerts/{alert_number}/instances
 func (s *Server) HandleCodeScanningListAlertInstancesRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `CodeScanningListAlertInstances`,
 		trace.WithAttributes(otelogen.OperationID(`code-scanning/list-alert-instances`)),
@@ -3944,6 +4382,9 @@ func (s *Server) HandleCodeScanningListAlertInstancesRequest(w http.ResponseWrit
 	}
 }
 
+// HandleCodeScanningListAlertsForRepoRequest handles code-scanning/list-alerts-for-repo operation.
+//
+// GET /repos/{owner}/{repo}/code-scanning/alerts
 func (s *Server) HandleCodeScanningListAlertsForRepoRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `CodeScanningListAlertsForRepo`,
 		trace.WithAttributes(otelogen.OperationID(`code-scanning/list-alerts-for-repo`)),
@@ -3970,6 +4411,9 @@ func (s *Server) HandleCodeScanningListAlertsForRepoRequest(w http.ResponseWrite
 	}
 }
 
+// HandleCodeScanningListRecentAnalysesRequest handles code-scanning/list-recent-analyses operation.
+//
+// GET /repos/{owner}/{repo}/code-scanning/analyses
 func (s *Server) HandleCodeScanningListRecentAnalysesRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `CodeScanningListRecentAnalyses`,
 		trace.WithAttributes(otelogen.OperationID(`code-scanning/list-recent-analyses`)),
@@ -3996,6 +4440,9 @@ func (s *Server) HandleCodeScanningListRecentAnalysesRequest(w http.ResponseWrit
 	}
 }
 
+// HandleCodeScanningUpdateAlertRequest handles code-scanning/update-alert operation.
+//
+// PATCH /repos/{owner}/{repo}/code-scanning/alerts/{alert_number}
 func (s *Server) HandleCodeScanningUpdateAlertRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `CodeScanningUpdateAlert`,
 		trace.WithAttributes(otelogen.OperationID(`code-scanning/update-alert`)),
@@ -4028,6 +4475,9 @@ func (s *Server) HandleCodeScanningUpdateAlertRequest(w http.ResponseWriter, r *
 	}
 }
 
+// HandleCodeScanningUploadSarifRequest handles code-scanning/upload-sarif operation.
+//
+// POST /repos/{owner}/{repo}/code-scanning/sarifs
 func (s *Server) HandleCodeScanningUploadSarifRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `CodeScanningUploadSarif`,
 		trace.WithAttributes(otelogen.OperationID(`code-scanning/upload-sarif`)),
@@ -4060,6 +4510,9 @@ func (s *Server) HandleCodeScanningUploadSarifRequest(w http.ResponseWriter, r *
 	}
 }
 
+// HandleCodesOfConductGetAllCodesOfConductRequest handles codes-of-conduct/get-all-codes-of-conduct operation.
+//
+// GET /codes_of_conduct
 func (s *Server) HandleCodesOfConductGetAllCodesOfConductRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `CodesOfConductGetAllCodesOfConduct`,
 		trace.WithAttributes(otelogen.OperationID(`codes-of-conduct/get-all-codes-of-conduct`)),
@@ -4080,6 +4533,9 @@ func (s *Server) HandleCodesOfConductGetAllCodesOfConductRequest(w http.Response
 	}
 }
 
+// HandleCodesOfConductGetConductCodeRequest handles codes-of-conduct/get-conduct-code operation.
+//
+// GET /codes_of_conduct/{key}
 func (s *Server) HandleCodesOfConductGetConductCodeRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `CodesOfConductGetConductCode`,
 		trace.WithAttributes(otelogen.OperationID(`codes-of-conduct/get-conduct-code`)),
@@ -4106,6 +4562,9 @@ func (s *Server) HandleCodesOfConductGetConductCodeRequest(w http.ResponseWriter
 	}
 }
 
+// HandleEmojisGetRequest handles emojis/get operation.
+//
+// GET /emojis
 func (s *Server) HandleEmojisGetRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EmojisGet`,
 		trace.WithAttributes(otelogen.OperationID(`emojis/get`)),
@@ -4126,6 +4585,9 @@ func (s *Server) HandleEmojisGetRequest(w http.ResponseWriter, r *http.Request) 
 	}
 }
 
+// HandleEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest handles enterprise-admin/add-org-access-to-self-hosted-runner-group-in-enterprise operation.
+//
+// PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations/{org_id}
 func (s *Server) HandleEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/add-org-access-to-self-hosted-runner-group-in-enterprise`)),
@@ -4152,6 +4614,9 @@ func (s *Server) HandleEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnter
 	}
 }
 
+// HandleEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseRequest handles enterprise-admin/add-self-hosted-runner-to-group-for-enterprise operation.
+//
+// PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
 func (s *Server) HandleEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/add-self-hosted-runner-to-group-for-enterprise`)),
@@ -4178,6 +4643,9 @@ func (s *Server) HandleEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseReq
 	}
 }
 
+// HandleEnterpriseAdminCreateRegistrationTokenForEnterpriseRequest handles enterprise-admin/create-registration-token-for-enterprise operation.
+//
+// POST /enterprises/{enterprise}/actions/runners/registration-token
 func (s *Server) HandleEnterpriseAdminCreateRegistrationTokenForEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminCreateRegistrationTokenForEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/create-registration-token-for-enterprise`)),
@@ -4204,6 +4672,9 @@ func (s *Server) HandleEnterpriseAdminCreateRegistrationTokenForEnterpriseReques
 	}
 }
 
+// HandleEnterpriseAdminCreateRemoveTokenForEnterpriseRequest handles enterprise-admin/create-remove-token-for-enterprise operation.
+//
+// POST /enterprises/{enterprise}/actions/runners/remove-token
 func (s *Server) HandleEnterpriseAdminCreateRemoveTokenForEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminCreateRemoveTokenForEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/create-remove-token-for-enterprise`)),
@@ -4230,6 +4701,9 @@ func (s *Server) HandleEnterpriseAdminCreateRemoveTokenForEnterpriseRequest(w ht
 	}
 }
 
+// HandleEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequest handles enterprise-admin/create-self-hosted-runner-group-for-enterprise operation.
+//
+// POST /enterprises/{enterprise}/actions/runner-groups
 func (s *Server) HandleEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/create-self-hosted-runner-group-for-enterprise`)),
@@ -4262,6 +4736,9 @@ func (s *Server) HandleEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRe
 	}
 }
 
+// HandleEnterpriseAdminDeleteScimGroupFromEnterpriseRequest handles enterprise-admin/delete-scim-group-from-enterprise operation.
+//
+// DELETE /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
 func (s *Server) HandleEnterpriseAdminDeleteScimGroupFromEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminDeleteScimGroupFromEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/delete-scim-group-from-enterprise`)),
@@ -4288,6 +4765,9 @@ func (s *Server) HandleEnterpriseAdminDeleteScimGroupFromEnterpriseRequest(w htt
 	}
 }
 
+// HandleEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseRequest handles enterprise-admin/delete-self-hosted-runner-from-enterprise operation.
+//
+// DELETE /enterprises/{enterprise}/actions/runners/{runner_id}
 func (s *Server) HandleEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/delete-self-hosted-runner-from-enterprise`)),
@@ -4314,6 +4794,9 @@ func (s *Server) HandleEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseReques
 	}
 }
 
+// HandleEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseRequest handles enterprise-admin/delete-self-hosted-runner-group-from-enterprise operation.
+//
+// DELETE /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}
 func (s *Server) HandleEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/delete-self-hosted-runner-group-from-enterprise`)),
@@ -4340,6 +4823,9 @@ func (s *Server) HandleEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseR
 	}
 }
 
+// HandleEnterpriseAdminDeleteUserFromEnterpriseRequest handles enterprise-admin/delete-user-from-enterprise operation.
+//
+// DELETE /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
 func (s *Server) HandleEnterpriseAdminDeleteUserFromEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminDeleteUserFromEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/delete-user-from-enterprise`)),
@@ -4366,6 +4852,9 @@ func (s *Server) HandleEnterpriseAdminDeleteUserFromEnterpriseRequest(w http.Res
 	}
 }
 
+// HandleEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseRequest handles enterprise-admin/disable-selected-organization-github-actions-enterprise operation.
+//
+// DELETE /enterprises/{enterprise}/actions/permissions/organizations/{org_id}
 func (s *Server) HandleEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/disable-selected-organization-github-actions-enterprise`)),
@@ -4392,6 +4881,9 @@ func (s *Server) HandleEnterpriseAdminDisableSelectedOrganizationGithubActionsEn
 	}
 }
 
+// HandleEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseRequest handles enterprise-admin/enable-selected-organization-github-actions-enterprise operation.
+//
+// PUT /enterprises/{enterprise}/actions/permissions/organizations/{org_id}
 func (s *Server) HandleEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/enable-selected-organization-github-actions-enterprise`)),
@@ -4418,6 +4910,9 @@ func (s *Server) HandleEnterpriseAdminEnableSelectedOrganizationGithubActionsEnt
 	}
 }
 
+// HandleEnterpriseAdminGetAllowedActionsEnterpriseRequest handles enterprise-admin/get-allowed-actions-enterprise operation.
+//
+// GET /enterprises/{enterprise}/actions/permissions/selected-actions
 func (s *Server) HandleEnterpriseAdminGetAllowedActionsEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminGetAllowedActionsEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/get-allowed-actions-enterprise`)),
@@ -4444,6 +4939,9 @@ func (s *Server) HandleEnterpriseAdminGetAllowedActionsEnterpriseRequest(w http.
 	}
 }
 
+// HandleEnterpriseAdminGetAuditLogRequest handles enterprise-admin/get-audit-log operation.
+//
+// GET /enterprises/{enterprise}/audit-log
 func (s *Server) HandleEnterpriseAdminGetAuditLogRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminGetAuditLog`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/get-audit-log`)),
@@ -4470,6 +4968,9 @@ func (s *Server) HandleEnterpriseAdminGetAuditLogRequest(w http.ResponseWriter, 
 	}
 }
 
+// HandleEnterpriseAdminGetGithubActionsPermissionsEnterpriseRequest handles enterprise-admin/get-github-actions-permissions-enterprise operation.
+//
+// GET /enterprises/{enterprise}/actions/permissions
 func (s *Server) HandleEnterpriseAdminGetGithubActionsPermissionsEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminGetGithubActionsPermissionsEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/get-github-actions-permissions-enterprise`)),
@@ -4496,6 +4997,9 @@ func (s *Server) HandleEnterpriseAdminGetGithubActionsPermissionsEnterpriseReque
 	}
 }
 
+// HandleEnterpriseAdminGetProvisioningInformationForEnterpriseGroupRequest handles enterprise-admin/get-provisioning-information-for-enterprise-group operation.
+//
+// GET /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
 func (s *Server) HandleEnterpriseAdminGetProvisioningInformationForEnterpriseGroupRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminGetProvisioningInformationForEnterpriseGroup`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/get-provisioning-information-for-enterprise-group`)),
@@ -4522,6 +5026,9 @@ func (s *Server) HandleEnterpriseAdminGetProvisioningInformationForEnterpriseGro
 	}
 }
 
+// HandleEnterpriseAdminGetProvisioningInformationForEnterpriseUserRequest handles enterprise-admin/get-provisioning-information-for-enterprise-user operation.
+//
+// GET /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
 func (s *Server) HandleEnterpriseAdminGetProvisioningInformationForEnterpriseUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminGetProvisioningInformationForEnterpriseUser`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/get-provisioning-information-for-enterprise-user`)),
@@ -4548,6 +5055,9 @@ func (s *Server) HandleEnterpriseAdminGetProvisioningInformationForEnterpriseUse
 	}
 }
 
+// HandleEnterpriseAdminGetSelfHostedRunnerForEnterpriseRequest handles enterprise-admin/get-self-hosted-runner-for-enterprise operation.
+//
+// GET /enterprises/{enterprise}/actions/runners/{runner_id}
 func (s *Server) HandleEnterpriseAdminGetSelfHostedRunnerForEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminGetSelfHostedRunnerForEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/get-self-hosted-runner-for-enterprise`)),
@@ -4574,6 +5084,9 @@ func (s *Server) HandleEnterpriseAdminGetSelfHostedRunnerForEnterpriseRequest(w 
 	}
 }
 
+// HandleEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseRequest handles enterprise-admin/get-self-hosted-runner-group-for-enterprise operation.
+//
+// GET /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}
 func (s *Server) HandleEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/get-self-hosted-runner-group-for-enterprise`)),
@@ -4600,6 +5113,9 @@ func (s *Server) HandleEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseReque
 	}
 }
 
+// HandleEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest handles enterprise-admin/list-org-access-to-self-hosted-runner-group-in-enterprise operation.
+//
+// GET /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations
 func (s *Server) HandleEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/list-org-access-to-self-hosted-runner-group-in-enterprise`)),
@@ -4626,6 +5142,9 @@ func (s *Server) HandleEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnte
 	}
 }
 
+// HandleEnterpriseAdminListProvisionedGroupsEnterpriseRequest handles enterprise-admin/list-provisioned-groups-enterprise operation.
+//
+// GET /scim/v2/enterprises/{enterprise}/Groups
 func (s *Server) HandleEnterpriseAdminListProvisionedGroupsEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminListProvisionedGroupsEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/list-provisioned-groups-enterprise`)),
@@ -4652,6 +5171,9 @@ func (s *Server) HandleEnterpriseAdminListProvisionedGroupsEnterpriseRequest(w h
 	}
 }
 
+// HandleEnterpriseAdminListProvisionedIdentitiesEnterpriseRequest handles enterprise-admin/list-provisioned-identities-enterprise operation.
+//
+// GET /scim/v2/enterprises/{enterprise}/Users
 func (s *Server) HandleEnterpriseAdminListProvisionedIdentitiesEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminListProvisionedIdentitiesEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/list-provisioned-identities-enterprise`)),
@@ -4678,6 +5200,9 @@ func (s *Server) HandleEnterpriseAdminListProvisionedIdentitiesEnterpriseRequest
 	}
 }
 
+// HandleEnterpriseAdminListRunnerApplicationsForEnterpriseRequest handles enterprise-admin/list-runner-applications-for-enterprise operation.
+//
+// GET /enterprises/{enterprise}/actions/runners/downloads
 func (s *Server) HandleEnterpriseAdminListRunnerApplicationsForEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminListRunnerApplicationsForEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/list-runner-applications-for-enterprise`)),
@@ -4704,6 +5229,9 @@ func (s *Server) HandleEnterpriseAdminListRunnerApplicationsForEnterpriseRequest
 	}
 }
 
+// HandleEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseRequest handles enterprise-admin/list-selected-organizations-enabled-github-actions-enterprise operation.
+//
+// GET /enterprises/{enterprise}/actions/permissions/organizations
 func (s *Server) HandleEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/list-selected-organizations-enabled-github-actions-enterprise`)),
@@ -4730,6 +5258,9 @@ func (s *Server) HandleEnterpriseAdminListSelectedOrganizationsEnabledGithubActi
 	}
 }
 
+// HandleEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseRequest handles enterprise-admin/list-self-hosted-runner-groups-for-enterprise operation.
+//
+// GET /enterprises/{enterprise}/actions/runner-groups
 func (s *Server) HandleEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/list-self-hosted-runner-groups-for-enterprise`)),
@@ -4756,6 +5287,9 @@ func (s *Server) HandleEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseReq
 	}
 }
 
+// HandleEnterpriseAdminListSelfHostedRunnersForEnterpriseRequest handles enterprise-admin/list-self-hosted-runners-for-enterprise operation.
+//
+// GET /enterprises/{enterprise}/actions/runners
 func (s *Server) HandleEnterpriseAdminListSelfHostedRunnersForEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminListSelfHostedRunnersForEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/list-self-hosted-runners-for-enterprise`)),
@@ -4782,6 +5316,9 @@ func (s *Server) HandleEnterpriseAdminListSelfHostedRunnersForEnterpriseRequest(
 	}
 }
 
+// HandleEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseRequest handles enterprise-admin/list-self-hosted-runners-in-group-for-enterprise operation.
+//
+// GET /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners
 func (s *Server) HandleEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/list-self-hosted-runners-in-group-for-enterprise`)),
@@ -4808,6 +5345,9 @@ func (s *Server) HandleEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseR
 	}
 }
 
+// HandleEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest handles enterprise-admin/provision-and-invite-enterprise-group operation.
+//
+// POST /scim/v2/enterprises/{enterprise}/Groups
 func (s *Server) HandleEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminProvisionAndInviteEnterpriseGroup`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/provision-and-invite-enterprise-group`)),
@@ -4840,6 +5380,9 @@ func (s *Server) HandleEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(w
 	}
 }
 
+// HandleEnterpriseAdminProvisionAndInviteEnterpriseUserRequest handles enterprise-admin/provision-and-invite-enterprise-user operation.
+//
+// POST /scim/v2/enterprises/{enterprise}/Users
 func (s *Server) HandleEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminProvisionAndInviteEnterpriseUser`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/provision-and-invite-enterprise-user`)),
@@ -4872,6 +5415,9 @@ func (s *Server) HandleEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(w 
 	}
 }
 
+// HandleEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest handles enterprise-admin/remove-org-access-to-self-hosted-runner-group-in-enterprise operation.
+//
+// DELETE /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations/{org_id}
 func (s *Server) HandleEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/remove-org-access-to-self-hosted-runner-group-in-enterprise`)),
@@ -4898,6 +5444,9 @@ func (s *Server) HandleEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEn
 	}
 }
 
+// HandleEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseRequest handles enterprise-admin/remove-self-hosted-runner-from-group-for-enterprise operation.
+//
+// DELETE /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
 func (s *Server) HandleEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/remove-self-hosted-runner-from-group-for-enterprise`)),
@@ -4924,6 +5473,9 @@ func (s *Server) HandleEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpri
 	}
 }
 
+// HandleEnterpriseAdminSetAllowedActionsEnterpriseRequest handles enterprise-admin/set-allowed-actions-enterprise operation.
+//
+// PUT /enterprises/{enterprise}/actions/permissions/selected-actions
 func (s *Server) HandleEnterpriseAdminSetAllowedActionsEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminSetAllowedActionsEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/set-allowed-actions-enterprise`)),
@@ -4956,6 +5508,9 @@ func (s *Server) HandleEnterpriseAdminSetAllowedActionsEnterpriseRequest(w http.
 	}
 }
 
+// HandleEnterpriseAdminSetGithubActionsPermissionsEnterpriseRequest handles enterprise-admin/set-github-actions-permissions-enterprise operation.
+//
+// PUT /enterprises/{enterprise}/actions/permissions
 func (s *Server) HandleEnterpriseAdminSetGithubActionsPermissionsEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminSetGithubActionsPermissionsEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/set-github-actions-permissions-enterprise`)),
@@ -4988,6 +5543,9 @@ func (s *Server) HandleEnterpriseAdminSetGithubActionsPermissionsEnterpriseReque
 	}
 }
 
+// HandleEnterpriseAdminSetInformationForProvisionedEnterpriseGroupRequest handles enterprise-admin/set-information-for-provisioned-enterprise-group operation.
+//
+// PUT /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
 func (s *Server) HandleEnterpriseAdminSetInformationForProvisionedEnterpriseGroupRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminSetInformationForProvisionedEnterpriseGroup`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/set-information-for-provisioned-enterprise-group`)),
@@ -5020,6 +5578,9 @@ func (s *Server) HandleEnterpriseAdminSetInformationForProvisionedEnterpriseGrou
 	}
 }
 
+// HandleEnterpriseAdminSetInformationForProvisionedEnterpriseUserRequest handles enterprise-admin/set-information-for-provisioned-enterprise-user operation.
+//
+// PUT /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
 func (s *Server) HandleEnterpriseAdminSetInformationForProvisionedEnterpriseUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminSetInformationForProvisionedEnterpriseUser`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/set-information-for-provisioned-enterprise-user`)),
@@ -5052,6 +5613,9 @@ func (s *Server) HandleEnterpriseAdminSetInformationForProvisionedEnterpriseUser
 	}
 }
 
+// HandleEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest handles enterprise-admin/set-org-access-to-self-hosted-runner-group-in-enterprise operation.
+//
+// PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations
 func (s *Server) HandleEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/set-org-access-to-self-hosted-runner-group-in-enterprise`)),
@@ -5084,6 +5648,9 @@ func (s *Server) HandleEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnter
 	}
 }
 
+// HandleEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequest handles enterprise-admin/set-selected-organizations-enabled-github-actions-enterprise operation.
+//
+// PUT /enterprises/{enterprise}/actions/permissions/organizations
 func (s *Server) HandleEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/set-selected-organizations-enabled-github-actions-enterprise`)),
@@ -5116,6 +5683,9 @@ func (s *Server) HandleEnterpriseAdminSetSelectedOrganizationsEnabledGithubActio
 	}
 }
 
+// HandleEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequest handles enterprise-admin/set-self-hosted-runners-in-group-for-enterprise operation.
+//
+// PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners
 func (s *Server) HandleEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/set-self-hosted-runners-in-group-for-enterprise`)),
@@ -5148,6 +5718,9 @@ func (s *Server) HandleEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRe
 	}
 }
 
+// HandleEnterpriseAdminUpdateAttributeForEnterpriseUserRequest handles enterprise-admin/update-attribute-for-enterprise-user operation.
+//
+// PATCH /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
 func (s *Server) HandleEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminUpdateAttributeForEnterpriseUser`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/update-attribute-for-enterprise-user`)),
@@ -5180,6 +5753,9 @@ func (s *Server) HandleEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(w 
 	}
 }
 
+// HandleEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequest handles enterprise-admin/update-self-hosted-runner-group-for-enterprise operation.
+//
+// PATCH /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}
 func (s *Server) HandleEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/update-self-hosted-runner-group-for-enterprise`)),
@@ -5212,6 +5788,9 @@ func (s *Server) HandleEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRe
 	}
 }
 
+// HandleGistsCheckIsStarredRequest handles gists/check-is-starred operation.
+//
+// GET /gists/{gist_id}/star
 func (s *Server) HandleGistsCheckIsStarredRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GistsCheckIsStarred`,
 		trace.WithAttributes(otelogen.OperationID(`gists/check-is-starred`)),
@@ -5238,6 +5817,9 @@ func (s *Server) HandleGistsCheckIsStarredRequest(w http.ResponseWriter, r *http
 	}
 }
 
+// HandleGistsCreateCommentRequest handles gists/create-comment operation.
+//
+// POST /gists/{gist_id}/comments
 func (s *Server) HandleGistsCreateCommentRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GistsCreateComment`,
 		trace.WithAttributes(otelogen.OperationID(`gists/create-comment`)),
@@ -5270,6 +5852,9 @@ func (s *Server) HandleGistsCreateCommentRequest(w http.ResponseWriter, r *http.
 	}
 }
 
+// HandleGistsDeleteRequest handles gists/delete operation.
+//
+// DELETE /gists/{gist_id}
 func (s *Server) HandleGistsDeleteRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GistsDelete`,
 		trace.WithAttributes(otelogen.OperationID(`gists/delete`)),
@@ -5296,6 +5881,9 @@ func (s *Server) HandleGistsDeleteRequest(w http.ResponseWriter, r *http.Request
 	}
 }
 
+// HandleGistsDeleteCommentRequest handles gists/delete-comment operation.
+//
+// DELETE /gists/{gist_id}/comments/{comment_id}
 func (s *Server) HandleGistsDeleteCommentRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GistsDeleteComment`,
 		trace.WithAttributes(otelogen.OperationID(`gists/delete-comment`)),
@@ -5322,6 +5910,9 @@ func (s *Server) HandleGistsDeleteCommentRequest(w http.ResponseWriter, r *http.
 	}
 }
 
+// HandleGistsGetRequest handles gists/get operation.
+//
+// GET /gists/{gist_id}
 func (s *Server) HandleGistsGetRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GistsGet`,
 		trace.WithAttributes(otelogen.OperationID(`gists/get`)),
@@ -5348,6 +5939,9 @@ func (s *Server) HandleGistsGetRequest(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+// HandleGistsGetCommentRequest handles gists/get-comment operation.
+//
+// GET /gists/{gist_id}/comments/{comment_id}
 func (s *Server) HandleGistsGetCommentRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GistsGetComment`,
 		trace.WithAttributes(otelogen.OperationID(`gists/get-comment`)),
@@ -5374,6 +5968,9 @@ func (s *Server) HandleGistsGetCommentRequest(w http.ResponseWriter, r *http.Req
 	}
 }
 
+// HandleGistsListRequest handles gists/list operation.
+//
+// GET /gists
 func (s *Server) HandleGistsListRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GistsList`,
 		trace.WithAttributes(otelogen.OperationID(`gists/list`)),
@@ -5400,6 +5997,9 @@ func (s *Server) HandleGistsListRequest(w http.ResponseWriter, r *http.Request) 
 	}
 }
 
+// HandleGistsListCommentsRequest handles gists/list-comments operation.
+//
+// GET /gists/{gist_id}/comments
 func (s *Server) HandleGistsListCommentsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GistsListComments`,
 		trace.WithAttributes(otelogen.OperationID(`gists/list-comments`)),
@@ -5426,6 +6026,9 @@ func (s *Server) HandleGistsListCommentsRequest(w http.ResponseWriter, r *http.R
 	}
 }
 
+// HandleGistsListCommitsRequest handles gists/list-commits operation.
+//
+// GET /gists/{gist_id}/commits
 func (s *Server) HandleGistsListCommitsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GistsListCommits`,
 		trace.WithAttributes(otelogen.OperationID(`gists/list-commits`)),
@@ -5452,6 +6055,9 @@ func (s *Server) HandleGistsListCommitsRequest(w http.ResponseWriter, r *http.Re
 	}
 }
 
+// HandleGistsListForksRequest handles gists/list-forks operation.
+//
+// GET /gists/{gist_id}/forks
 func (s *Server) HandleGistsListForksRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GistsListForks`,
 		trace.WithAttributes(otelogen.OperationID(`gists/list-forks`)),
@@ -5478,6 +6084,9 @@ func (s *Server) HandleGistsListForksRequest(w http.ResponseWriter, r *http.Requ
 	}
 }
 
+// HandleGistsListStarredRequest handles gists/list-starred operation.
+//
+// GET /gists/starred
 func (s *Server) HandleGistsListStarredRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GistsListStarred`,
 		trace.WithAttributes(otelogen.OperationID(`gists/list-starred`)),
@@ -5504,6 +6113,9 @@ func (s *Server) HandleGistsListStarredRequest(w http.ResponseWriter, r *http.Re
 	}
 }
 
+// HandleGistsStarRequest handles gists/star operation.
+//
+// PUT /gists/{gist_id}/star
 func (s *Server) HandleGistsStarRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GistsStar`,
 		trace.WithAttributes(otelogen.OperationID(`gists/star`)),
@@ -5530,6 +6142,9 @@ func (s *Server) HandleGistsStarRequest(w http.ResponseWriter, r *http.Request) 
 	}
 }
 
+// HandleGistsUnstarRequest handles gists/unstar operation.
+//
+// DELETE /gists/{gist_id}/star
 func (s *Server) HandleGistsUnstarRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GistsUnstar`,
 		trace.WithAttributes(otelogen.OperationID(`gists/unstar`)),
@@ -5556,6 +6171,9 @@ func (s *Server) HandleGistsUnstarRequest(w http.ResponseWriter, r *http.Request
 	}
 }
 
+// HandleGistsUpdateCommentRequest handles gists/update-comment operation.
+//
+// PATCH /gists/{gist_id}/comments/{comment_id}
 func (s *Server) HandleGistsUpdateCommentRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GistsUpdateComment`,
 		trace.WithAttributes(otelogen.OperationID(`gists/update-comment`)),
@@ -5588,6 +6206,9 @@ func (s *Server) HandleGistsUpdateCommentRequest(w http.ResponseWriter, r *http.
 	}
 }
 
+// HandleGitGetCommitRequest handles git/get-commit operation.
+//
+// GET /repos/{owner}/{repo}/git/commits/{commit_sha}
 func (s *Server) HandleGitGetCommitRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GitGetCommit`,
 		trace.WithAttributes(otelogen.OperationID(`git/get-commit`)),
@@ -5614,6 +6235,9 @@ func (s *Server) HandleGitGetCommitRequest(w http.ResponseWriter, r *http.Reques
 	}
 }
 
+// HandleGitGetRefRequest handles git/get-ref operation.
+//
+// GET /repos/{owner}/{repo}/git/ref/{ref}
 func (s *Server) HandleGitGetRefRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GitGetRef`,
 		trace.WithAttributes(otelogen.OperationID(`git/get-ref`)),
@@ -5640,6 +6264,9 @@ func (s *Server) HandleGitGetRefRequest(w http.ResponseWriter, r *http.Request) 
 	}
 }
 
+// HandleGitGetTagRequest handles git/get-tag operation.
+//
+// GET /repos/{owner}/{repo}/git/tags/{tag_sha}
 func (s *Server) HandleGitGetTagRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GitGetTag`,
 		trace.WithAttributes(otelogen.OperationID(`git/get-tag`)),
@@ -5666,6 +6293,9 @@ func (s *Server) HandleGitGetTagRequest(w http.ResponseWriter, r *http.Request) 
 	}
 }
 
+// HandleGitListMatchingRefsRequest handles git/list-matching-refs operation.
+//
+// GET /repos/{owner}/{repo}/git/matching-refs/{ref}
 func (s *Server) HandleGitListMatchingRefsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GitListMatchingRefs`,
 		trace.WithAttributes(otelogen.OperationID(`git/list-matching-refs`)),
@@ -5692,6 +6322,9 @@ func (s *Server) HandleGitListMatchingRefsRequest(w http.ResponseWriter, r *http
 	}
 }
 
+// HandleGitignoreGetAllTemplatesRequest handles gitignore/get-all-templates operation.
+//
+// GET /gitignore/templates
 func (s *Server) HandleGitignoreGetAllTemplatesRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GitignoreGetAllTemplates`,
 		trace.WithAttributes(otelogen.OperationID(`gitignore/get-all-templates`)),
@@ -5712,6 +6345,9 @@ func (s *Server) HandleGitignoreGetAllTemplatesRequest(w http.ResponseWriter, r 
 	}
 }
 
+// HandleGitignoreGetTemplateRequest handles gitignore/get-template operation.
+//
+// GET /gitignore/templates/{name}
 func (s *Server) HandleGitignoreGetTemplateRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GitignoreGetTemplate`,
 		trace.WithAttributes(otelogen.OperationID(`gitignore/get-template`)),
@@ -5738,6 +6374,9 @@ func (s *Server) HandleGitignoreGetTemplateRequest(w http.ResponseWriter, r *htt
 	}
 }
 
+// HandleInteractionsRemoveRestrictionsForAuthenticatedUserRequest handles interactions/remove-restrictions-for-authenticated-user operation.
+//
+// DELETE /user/interaction-limits
 func (s *Server) HandleInteractionsRemoveRestrictionsForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `InteractionsRemoveRestrictionsForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`interactions/remove-restrictions-for-authenticated-user`)),
@@ -5758,6 +6397,9 @@ func (s *Server) HandleInteractionsRemoveRestrictionsForAuthenticatedUserRequest
 	}
 }
 
+// HandleInteractionsRemoveRestrictionsForOrgRequest handles interactions/remove-restrictions-for-org operation.
+//
+// DELETE /orgs/{org}/interaction-limits
 func (s *Server) HandleInteractionsRemoveRestrictionsForOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `InteractionsRemoveRestrictionsForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`interactions/remove-restrictions-for-org`)),
@@ -5784,6 +6426,9 @@ func (s *Server) HandleInteractionsRemoveRestrictionsForOrgRequest(w http.Respon
 	}
 }
 
+// HandleInteractionsRemoveRestrictionsForRepoRequest handles interactions/remove-restrictions-for-repo operation.
+//
+// DELETE /repos/{owner}/{repo}/interaction-limits
 func (s *Server) HandleInteractionsRemoveRestrictionsForRepoRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `InteractionsRemoveRestrictionsForRepo`,
 		trace.WithAttributes(otelogen.OperationID(`interactions/remove-restrictions-for-repo`)),
@@ -5810,6 +6455,9 @@ func (s *Server) HandleInteractionsRemoveRestrictionsForRepoRequest(w http.Respo
 	}
 }
 
+// HandleInteractionsSetRestrictionsForRepoRequest handles interactions/set-restrictions-for-repo operation.
+//
+// PUT /repos/{owner}/{repo}/interaction-limits
 func (s *Server) HandleInteractionsSetRestrictionsForRepoRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `InteractionsSetRestrictionsForRepo`,
 		trace.WithAttributes(otelogen.OperationID(`interactions/set-restrictions-for-repo`)),
@@ -5842,6 +6490,9 @@ func (s *Server) HandleInteractionsSetRestrictionsForRepoRequest(w http.Response
 	}
 }
 
+// HandleIssuesAddAssigneesRequest handles issues/add-assignees operation.
+//
+// POST /repos/{owner}/{repo}/issues/{issue_number}/assignees
 func (s *Server) HandleIssuesAddAssigneesRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesAddAssignees`,
 		trace.WithAttributes(otelogen.OperationID(`issues/add-assignees`)),
@@ -5874,6 +6525,9 @@ func (s *Server) HandleIssuesAddAssigneesRequest(w http.ResponseWriter, r *http.
 	}
 }
 
+// HandleIssuesCheckUserCanBeAssignedRequest handles issues/check-user-can-be-assigned operation.
+//
+// GET /repos/{owner}/{repo}/assignees/{assignee}
 func (s *Server) HandleIssuesCheckUserCanBeAssignedRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesCheckUserCanBeAssigned`,
 		trace.WithAttributes(otelogen.OperationID(`issues/check-user-can-be-assigned`)),
@@ -5900,6 +6554,9 @@ func (s *Server) HandleIssuesCheckUserCanBeAssignedRequest(w http.ResponseWriter
 	}
 }
 
+// HandleIssuesDeleteCommentRequest handles issues/delete-comment operation.
+//
+// DELETE /repos/{owner}/{repo}/issues/comments/{comment_id}
 func (s *Server) HandleIssuesDeleteCommentRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesDeleteComment`,
 		trace.WithAttributes(otelogen.OperationID(`issues/delete-comment`)),
@@ -5926,6 +6583,9 @@ func (s *Server) HandleIssuesDeleteCommentRequest(w http.ResponseWriter, r *http
 	}
 }
 
+// HandleIssuesDeleteLabelRequest handles issues/delete-label operation.
+//
+// DELETE /repos/{owner}/{repo}/labels/{name}
 func (s *Server) HandleIssuesDeleteLabelRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesDeleteLabel`,
 		trace.WithAttributes(otelogen.OperationID(`issues/delete-label`)),
@@ -5952,6 +6612,9 @@ func (s *Server) HandleIssuesDeleteLabelRequest(w http.ResponseWriter, r *http.R
 	}
 }
 
+// HandleIssuesDeleteMilestoneRequest handles issues/delete-milestone operation.
+//
+// DELETE /repos/{owner}/{repo}/milestones/{milestone_number}
 func (s *Server) HandleIssuesDeleteMilestoneRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesDeleteMilestone`,
 		trace.WithAttributes(otelogen.OperationID(`issues/delete-milestone`)),
@@ -5978,6 +6641,9 @@ func (s *Server) HandleIssuesDeleteMilestoneRequest(w http.ResponseWriter, r *ht
 	}
 }
 
+// HandleIssuesGetCommentRequest handles issues/get-comment operation.
+//
+// GET /repos/{owner}/{repo}/issues/comments/{comment_id}
 func (s *Server) HandleIssuesGetCommentRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesGetComment`,
 		trace.WithAttributes(otelogen.OperationID(`issues/get-comment`)),
@@ -6004,6 +6670,9 @@ func (s *Server) HandleIssuesGetCommentRequest(w http.ResponseWriter, r *http.Re
 	}
 }
 
+// HandleIssuesGetEventRequest handles issues/get-event operation.
+//
+// GET /repos/{owner}/{repo}/issues/events/{event_id}
 func (s *Server) HandleIssuesGetEventRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesGetEvent`,
 		trace.WithAttributes(otelogen.OperationID(`issues/get-event`)),
@@ -6030,6 +6699,9 @@ func (s *Server) HandleIssuesGetEventRequest(w http.ResponseWriter, r *http.Requ
 	}
 }
 
+// HandleIssuesGetLabelRequest handles issues/get-label operation.
+//
+// GET /repos/{owner}/{repo}/labels/{name}
 func (s *Server) HandleIssuesGetLabelRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesGetLabel`,
 		trace.WithAttributes(otelogen.OperationID(`issues/get-label`)),
@@ -6056,6 +6728,9 @@ func (s *Server) HandleIssuesGetLabelRequest(w http.ResponseWriter, r *http.Requ
 	}
 }
 
+// HandleIssuesGetMilestoneRequest handles issues/get-milestone operation.
+//
+// GET /repos/{owner}/{repo}/milestones/{milestone_number}
 func (s *Server) HandleIssuesGetMilestoneRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesGetMilestone`,
 		trace.WithAttributes(otelogen.OperationID(`issues/get-milestone`)),
@@ -6082,6 +6757,9 @@ func (s *Server) HandleIssuesGetMilestoneRequest(w http.ResponseWriter, r *http.
 	}
 }
 
+// HandleIssuesListAssigneesRequest handles issues/list-assignees operation.
+//
+// GET /repos/{owner}/{repo}/assignees
 func (s *Server) HandleIssuesListAssigneesRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesListAssignees`,
 		trace.WithAttributes(otelogen.OperationID(`issues/list-assignees`)),
@@ -6108,6 +6786,9 @@ func (s *Server) HandleIssuesListAssigneesRequest(w http.ResponseWriter, r *http
 	}
 }
 
+// HandleIssuesListCommentsRequest handles issues/list-comments operation.
+//
+// GET /repos/{owner}/{repo}/issues/{issue_number}/comments
 func (s *Server) HandleIssuesListCommentsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesListComments`,
 		trace.WithAttributes(otelogen.OperationID(`issues/list-comments`)),
@@ -6134,6 +6815,9 @@ func (s *Server) HandleIssuesListCommentsRequest(w http.ResponseWriter, r *http.
 	}
 }
 
+// HandleIssuesListLabelsForMilestoneRequest handles issues/list-labels-for-milestone operation.
+//
+// GET /repos/{owner}/{repo}/milestones/{milestone_number}/labels
 func (s *Server) HandleIssuesListLabelsForMilestoneRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesListLabelsForMilestone`,
 		trace.WithAttributes(otelogen.OperationID(`issues/list-labels-for-milestone`)),
@@ -6160,6 +6844,9 @@ func (s *Server) HandleIssuesListLabelsForMilestoneRequest(w http.ResponseWriter
 	}
 }
 
+// HandleIssuesListLabelsForRepoRequest handles issues/list-labels-for-repo operation.
+//
+// GET /repos/{owner}/{repo}/labels
 func (s *Server) HandleIssuesListLabelsForRepoRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesListLabelsForRepo`,
 		trace.WithAttributes(otelogen.OperationID(`issues/list-labels-for-repo`)),
@@ -6186,6 +6873,9 @@ func (s *Server) HandleIssuesListLabelsForRepoRequest(w http.ResponseWriter, r *
 	}
 }
 
+// HandleIssuesListLabelsOnIssueRequest handles issues/list-labels-on-issue operation.
+//
+// GET /repos/{owner}/{repo}/issues/{issue_number}/labels
 func (s *Server) HandleIssuesListLabelsOnIssueRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesListLabelsOnIssue`,
 		trace.WithAttributes(otelogen.OperationID(`issues/list-labels-on-issue`)),
@@ -6212,6 +6902,9 @@ func (s *Server) HandleIssuesListLabelsOnIssueRequest(w http.ResponseWriter, r *
 	}
 }
 
+// HandleIssuesListMilestonesRequest handles issues/list-milestones operation.
+//
+// GET /repos/{owner}/{repo}/milestones
 func (s *Server) HandleIssuesListMilestonesRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesListMilestones`,
 		trace.WithAttributes(otelogen.OperationID(`issues/list-milestones`)),
@@ -6238,6 +6931,9 @@ func (s *Server) HandleIssuesListMilestonesRequest(w http.ResponseWriter, r *htt
 	}
 }
 
+// HandleIssuesRemoveAllLabelsRequest handles issues/remove-all-labels operation.
+//
+// DELETE /repos/{owner}/{repo}/issues/{issue_number}/labels
 func (s *Server) HandleIssuesRemoveAllLabelsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesRemoveAllLabels`,
 		trace.WithAttributes(otelogen.OperationID(`issues/remove-all-labels`)),
@@ -6264,6 +6960,9 @@ func (s *Server) HandleIssuesRemoveAllLabelsRequest(w http.ResponseWriter, r *ht
 	}
 }
 
+// HandleIssuesRemoveAssigneesRequest handles issues/remove-assignees operation.
+//
+// DELETE /repos/{owner}/{repo}/issues/{issue_number}/assignees
 func (s *Server) HandleIssuesRemoveAssigneesRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesRemoveAssignees`,
 		trace.WithAttributes(otelogen.OperationID(`issues/remove-assignees`)),
@@ -6296,6 +6995,9 @@ func (s *Server) HandleIssuesRemoveAssigneesRequest(w http.ResponseWriter, r *ht
 	}
 }
 
+// HandleIssuesRemoveLabelRequest handles issues/remove-label operation.
+//
+// DELETE /repos/{owner}/{repo}/issues/{issue_number}/labels/{name}
 func (s *Server) HandleIssuesRemoveLabelRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesRemoveLabel`,
 		trace.WithAttributes(otelogen.OperationID(`issues/remove-label`)),
@@ -6322,6 +7024,9 @@ func (s *Server) HandleIssuesRemoveLabelRequest(w http.ResponseWriter, r *http.R
 	}
 }
 
+// HandleIssuesUnlockRequest handles issues/unlock operation.
+//
+// DELETE /repos/{owner}/{repo}/issues/{issue_number}/lock
 func (s *Server) HandleIssuesUnlockRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesUnlock`,
 		trace.WithAttributes(otelogen.OperationID(`issues/unlock`)),
@@ -6348,6 +7053,9 @@ func (s *Server) HandleIssuesUnlockRequest(w http.ResponseWriter, r *http.Reques
 	}
 }
 
+// HandleIssuesUpdateLabelRequest handles issues/update-label operation.
+//
+// PATCH /repos/{owner}/{repo}/labels/{name}
 func (s *Server) HandleIssuesUpdateLabelRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesUpdateLabel`,
 		trace.WithAttributes(otelogen.OperationID(`issues/update-label`)),
@@ -6380,6 +7088,9 @@ func (s *Server) HandleIssuesUpdateLabelRequest(w http.ResponseWriter, r *http.R
 	}
 }
 
+// HandleIssuesUpdateMilestoneRequest handles issues/update-milestone operation.
+//
+// PATCH /repos/{owner}/{repo}/milestones/{milestone_number}
 func (s *Server) HandleIssuesUpdateMilestoneRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesUpdateMilestone`,
 		trace.WithAttributes(otelogen.OperationID(`issues/update-milestone`)),
@@ -6412,6 +7123,9 @@ func (s *Server) HandleIssuesUpdateMilestoneRequest(w http.ResponseWriter, r *ht
 	}
 }
 
+// HandleLicensesGetRequest handles licenses/get operation.
+//
+// GET /licenses/{license}
 func (s *Server) HandleLicensesGetRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `LicensesGet`,
 		trace.WithAttributes(otelogen.OperationID(`licenses/get`)),
@@ -6438,6 +7152,9 @@ func (s *Server) HandleLicensesGetRequest(w http.ResponseWriter, r *http.Request
 	}
 }
 
+// HandleLicensesGetAllCommonlyUsedRequest handles licenses/get-all-commonly-used operation.
+//
+// GET /licenses
 func (s *Server) HandleLicensesGetAllCommonlyUsedRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `LicensesGetAllCommonlyUsed`,
 		trace.WithAttributes(otelogen.OperationID(`licenses/get-all-commonly-used`)),
@@ -6464,6 +7181,9 @@ func (s *Server) HandleLicensesGetAllCommonlyUsedRequest(w http.ResponseWriter, 
 	}
 }
 
+// HandleLicensesGetForRepoRequest handles licenses/get-for-repo operation.
+//
+// GET /repos/{owner}/{repo}/license
 func (s *Server) HandleLicensesGetForRepoRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `LicensesGetForRepo`,
 		trace.WithAttributes(otelogen.OperationID(`licenses/get-for-repo`)),
@@ -6490,6 +7210,9 @@ func (s *Server) HandleLicensesGetForRepoRequest(w http.ResponseWriter, r *http.
 	}
 }
 
+// HandleMetaGetRequest handles meta/get operation.
+//
+// GET /meta
 func (s *Server) HandleMetaGetRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MetaGet`,
 		trace.WithAttributes(otelogen.OperationID(`meta/get`)),
@@ -6510,6 +7233,9 @@ func (s *Server) HandleMetaGetRequest(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+// HandleMetaRootRequest handles meta/root operation.
+//
+// GET /
 func (s *Server) HandleMetaRootRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MetaRoot`,
 		trace.WithAttributes(otelogen.OperationID(`meta/root`)),
@@ -6530,6 +7256,9 @@ func (s *Server) HandleMetaRootRequest(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+// HandleMigrationsCancelImportRequest handles migrations/cancel-import operation.
+//
+// DELETE /repos/{owner}/{repo}/import
 func (s *Server) HandleMigrationsCancelImportRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MigrationsCancelImport`,
 		trace.WithAttributes(otelogen.OperationID(`migrations/cancel-import`)),
@@ -6556,6 +7285,9 @@ func (s *Server) HandleMigrationsCancelImportRequest(w http.ResponseWriter, r *h
 	}
 }
 
+// HandleMigrationsDeleteArchiveForAuthenticatedUserRequest handles migrations/delete-archive-for-authenticated-user operation.
+//
+// DELETE /user/migrations/{migration_id}/archive
 func (s *Server) HandleMigrationsDeleteArchiveForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MigrationsDeleteArchiveForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`migrations/delete-archive-for-authenticated-user`)),
@@ -6582,6 +7314,9 @@ func (s *Server) HandleMigrationsDeleteArchiveForAuthenticatedUserRequest(w http
 	}
 }
 
+// HandleMigrationsDeleteArchiveForOrgRequest handles migrations/delete-archive-for-org operation.
+//
+// DELETE /orgs/{org}/migrations/{migration_id}/archive
 func (s *Server) HandleMigrationsDeleteArchiveForOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MigrationsDeleteArchiveForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`migrations/delete-archive-for-org`)),
@@ -6608,6 +7343,9 @@ func (s *Server) HandleMigrationsDeleteArchiveForOrgRequest(w http.ResponseWrite
 	}
 }
 
+// HandleMigrationsDownloadArchiveForOrgRequest handles migrations/download-archive-for-org operation.
+//
+// GET /orgs/{org}/migrations/{migration_id}/archive
 func (s *Server) HandleMigrationsDownloadArchiveForOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MigrationsDownloadArchiveForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`migrations/download-archive-for-org`)),
@@ -6634,6 +7372,9 @@ func (s *Server) HandleMigrationsDownloadArchiveForOrgRequest(w http.ResponseWri
 	}
 }
 
+// HandleMigrationsGetArchiveForAuthenticatedUserRequest handles migrations/get-archive-for-authenticated-user operation.
+//
+// GET /user/migrations/{migration_id}/archive
 func (s *Server) HandleMigrationsGetArchiveForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MigrationsGetArchiveForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`migrations/get-archive-for-authenticated-user`)),
@@ -6660,6 +7401,9 @@ func (s *Server) HandleMigrationsGetArchiveForAuthenticatedUserRequest(w http.Re
 	}
 }
 
+// HandleMigrationsGetCommitAuthorsRequest handles migrations/get-commit-authors operation.
+//
+// GET /repos/{owner}/{repo}/import/authors
 func (s *Server) HandleMigrationsGetCommitAuthorsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MigrationsGetCommitAuthors`,
 		trace.WithAttributes(otelogen.OperationID(`migrations/get-commit-authors`)),
@@ -6686,6 +7430,9 @@ func (s *Server) HandleMigrationsGetCommitAuthorsRequest(w http.ResponseWriter, 
 	}
 }
 
+// HandleMigrationsGetImportStatusRequest handles migrations/get-import-status operation.
+//
+// GET /repos/{owner}/{repo}/import
 func (s *Server) HandleMigrationsGetImportStatusRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MigrationsGetImportStatus`,
 		trace.WithAttributes(otelogen.OperationID(`migrations/get-import-status`)),
@@ -6712,6 +7459,9 @@ func (s *Server) HandleMigrationsGetImportStatusRequest(w http.ResponseWriter, r
 	}
 }
 
+// HandleMigrationsGetLargeFilesRequest handles migrations/get-large-files operation.
+//
+// GET /repos/{owner}/{repo}/import/large_files
 func (s *Server) HandleMigrationsGetLargeFilesRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MigrationsGetLargeFiles`,
 		trace.WithAttributes(otelogen.OperationID(`migrations/get-large-files`)),
@@ -6738,6 +7488,9 @@ func (s *Server) HandleMigrationsGetLargeFilesRequest(w http.ResponseWriter, r *
 	}
 }
 
+// HandleMigrationsGetStatusForAuthenticatedUserRequest handles migrations/get-status-for-authenticated-user operation.
+//
+// GET /user/migrations/{migration_id}
 func (s *Server) HandleMigrationsGetStatusForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MigrationsGetStatusForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`migrations/get-status-for-authenticated-user`)),
@@ -6764,6 +7517,9 @@ func (s *Server) HandleMigrationsGetStatusForAuthenticatedUserRequest(w http.Res
 	}
 }
 
+// HandleMigrationsGetStatusForOrgRequest handles migrations/get-status-for-org operation.
+//
+// GET /orgs/{org}/migrations/{migration_id}
 func (s *Server) HandleMigrationsGetStatusForOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MigrationsGetStatusForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`migrations/get-status-for-org`)),
@@ -6790,6 +7546,9 @@ func (s *Server) HandleMigrationsGetStatusForOrgRequest(w http.ResponseWriter, r
 	}
 }
 
+// HandleMigrationsListForAuthenticatedUserRequest handles migrations/list-for-authenticated-user operation.
+//
+// GET /user/migrations
 func (s *Server) HandleMigrationsListForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MigrationsListForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`migrations/list-for-authenticated-user`)),
@@ -6816,6 +7575,9 @@ func (s *Server) HandleMigrationsListForAuthenticatedUserRequest(w http.Response
 	}
 }
 
+// HandleMigrationsListForOrgRequest handles migrations/list-for-org operation.
+//
+// GET /orgs/{org}/migrations
 func (s *Server) HandleMigrationsListForOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MigrationsListForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`migrations/list-for-org`)),
@@ -6842,6 +7604,9 @@ func (s *Server) HandleMigrationsListForOrgRequest(w http.ResponseWriter, r *htt
 	}
 }
 
+// HandleMigrationsListReposForOrgRequest handles migrations/list-repos-for-org operation.
+//
+// GET /orgs/{org}/migrations/{migration_id}/repositories
 func (s *Server) HandleMigrationsListReposForOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MigrationsListReposForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`migrations/list-repos-for-org`)),
@@ -6868,6 +7633,9 @@ func (s *Server) HandleMigrationsListReposForOrgRequest(w http.ResponseWriter, r
 	}
 }
 
+// HandleMigrationsListReposForUserRequest handles migrations/list-repos-for-user operation.
+//
+// GET /user/migrations/{migration_id}/repositories
 func (s *Server) HandleMigrationsListReposForUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MigrationsListReposForUser`,
 		trace.WithAttributes(otelogen.OperationID(`migrations/list-repos-for-user`)),
@@ -6894,6 +7662,9 @@ func (s *Server) HandleMigrationsListReposForUserRequest(w http.ResponseWriter, 
 	}
 }
 
+// HandleMigrationsUnlockRepoForAuthenticatedUserRequest handles migrations/unlock-repo-for-authenticated-user operation.
+//
+// DELETE /user/migrations/{migration_id}/repos/{repo_name}/lock
 func (s *Server) HandleMigrationsUnlockRepoForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MigrationsUnlockRepoForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`migrations/unlock-repo-for-authenticated-user`)),
@@ -6920,6 +7691,9 @@ func (s *Server) HandleMigrationsUnlockRepoForAuthenticatedUserRequest(w http.Re
 	}
 }
 
+// HandleMigrationsUnlockRepoForOrgRequest handles migrations/unlock-repo-for-org operation.
+//
+// DELETE /orgs/{org}/migrations/{migration_id}/repos/{repo_name}/lock
 func (s *Server) HandleMigrationsUnlockRepoForOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MigrationsUnlockRepoForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`migrations/unlock-repo-for-org`)),
@@ -6946,6 +7720,9 @@ func (s *Server) HandleMigrationsUnlockRepoForOrgRequest(w http.ResponseWriter, 
 	}
 }
 
+// HandleMigrationsUpdateImportRequest handles migrations/update-import operation.
+//
+// PATCH /repos/{owner}/{repo}/import
 func (s *Server) HandleMigrationsUpdateImportRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MigrationsUpdateImport`,
 		trace.WithAttributes(otelogen.OperationID(`migrations/update-import`)),
@@ -6978,6 +7755,9 @@ func (s *Server) HandleMigrationsUpdateImportRequest(w http.ResponseWriter, r *h
 	}
 }
 
+// HandleOAuthAuthorizationsDeleteAuthorizationRequest handles oauth-authorizations/delete-authorization operation.
+//
+// DELETE /authorizations/{authorization_id}
 func (s *Server) HandleOAuthAuthorizationsDeleteAuthorizationRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OAuthAuthorizationsDeleteAuthorization`,
 		trace.WithAttributes(otelogen.OperationID(`oauth-authorizations/delete-authorization`)),
@@ -7004,6 +7784,9 @@ func (s *Server) HandleOAuthAuthorizationsDeleteAuthorizationRequest(w http.Resp
 	}
 }
 
+// HandleOAuthAuthorizationsDeleteGrantRequest handles oauth-authorizations/delete-grant operation.
+//
+// DELETE /applications/grants/{grant_id}
 func (s *Server) HandleOAuthAuthorizationsDeleteGrantRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OAuthAuthorizationsDeleteGrant`,
 		trace.WithAttributes(otelogen.OperationID(`oauth-authorizations/delete-grant`)),
@@ -7030,6 +7813,9 @@ func (s *Server) HandleOAuthAuthorizationsDeleteGrantRequest(w http.ResponseWrit
 	}
 }
 
+// HandleOAuthAuthorizationsGetAuthorizationRequest handles oauth-authorizations/get-authorization operation.
+//
+// GET /authorizations/{authorization_id}
 func (s *Server) HandleOAuthAuthorizationsGetAuthorizationRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OAuthAuthorizationsGetAuthorization`,
 		trace.WithAttributes(otelogen.OperationID(`oauth-authorizations/get-authorization`)),
@@ -7056,6 +7842,9 @@ func (s *Server) HandleOAuthAuthorizationsGetAuthorizationRequest(w http.Respons
 	}
 }
 
+// HandleOAuthAuthorizationsGetGrantRequest handles oauth-authorizations/get-grant operation.
+//
+// GET /applications/grants/{grant_id}
 func (s *Server) HandleOAuthAuthorizationsGetGrantRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OAuthAuthorizationsGetGrant`,
 		trace.WithAttributes(otelogen.OperationID(`oauth-authorizations/get-grant`)),
@@ -7082,6 +7871,9 @@ func (s *Server) HandleOAuthAuthorizationsGetGrantRequest(w http.ResponseWriter,
 	}
 }
 
+// HandleOAuthAuthorizationsListAuthorizationsRequest handles oauth-authorizations/list-authorizations operation.
+//
+// GET /authorizations
 func (s *Server) HandleOAuthAuthorizationsListAuthorizationsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OAuthAuthorizationsListAuthorizations`,
 		trace.WithAttributes(otelogen.OperationID(`oauth-authorizations/list-authorizations`)),
@@ -7108,6 +7900,9 @@ func (s *Server) HandleOAuthAuthorizationsListAuthorizationsRequest(w http.Respo
 	}
 }
 
+// HandleOAuthAuthorizationsListGrantsRequest handles oauth-authorizations/list-grants operation.
+//
+// GET /applications/grants
 func (s *Server) HandleOAuthAuthorizationsListGrantsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OAuthAuthorizationsListGrants`,
 		trace.WithAttributes(otelogen.OperationID(`oauth-authorizations/list-grants`)),
@@ -7134,6 +7929,9 @@ func (s *Server) HandleOAuthAuthorizationsListGrantsRequest(w http.ResponseWrite
 	}
 }
 
+// HandleOrgsCheckBlockedUserRequest handles orgs/check-blocked-user operation.
+//
+// GET /orgs/{org}/blocks/{username}
 func (s *Server) HandleOrgsCheckBlockedUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsCheckBlockedUser`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/check-blocked-user`)),
@@ -7160,6 +7958,9 @@ func (s *Server) HandleOrgsCheckBlockedUserRequest(w http.ResponseWriter, r *htt
 	}
 }
 
+// HandleOrgsCheckMembershipForUserRequest handles orgs/check-membership-for-user operation.
+//
+// GET /orgs/{org}/members/{username}
 func (s *Server) HandleOrgsCheckMembershipForUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsCheckMembershipForUser`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/check-membership-for-user`)),
@@ -7186,6 +7987,9 @@ func (s *Server) HandleOrgsCheckMembershipForUserRequest(w http.ResponseWriter, 
 	}
 }
 
+// HandleOrgsCheckPublicMembershipForUserRequest handles orgs/check-public-membership-for-user operation.
+//
+// GET /orgs/{org}/public_members/{username}
 func (s *Server) HandleOrgsCheckPublicMembershipForUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsCheckPublicMembershipForUser`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/check-public-membership-for-user`)),
@@ -7212,6 +8016,9 @@ func (s *Server) HandleOrgsCheckPublicMembershipForUserRequest(w http.ResponseWr
 	}
 }
 
+// HandleOrgsConvertMemberToOutsideCollaboratorRequest handles orgs/convert-member-to-outside-collaborator operation.
+//
+// PUT /orgs/{org}/outside_collaborators/{username}
 func (s *Server) HandleOrgsConvertMemberToOutsideCollaboratorRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsConvertMemberToOutsideCollaborator`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/convert-member-to-outside-collaborator`)),
@@ -7238,6 +8045,9 @@ func (s *Server) HandleOrgsConvertMemberToOutsideCollaboratorRequest(w http.Resp
 	}
 }
 
+// HandleOrgsDeleteWebhookRequest handles orgs/delete-webhook operation.
+//
+// DELETE /orgs/{org}/hooks/{hook_id}
 func (s *Server) HandleOrgsDeleteWebhookRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsDeleteWebhook`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/delete-webhook`)),
@@ -7264,6 +8074,9 @@ func (s *Server) HandleOrgsDeleteWebhookRequest(w http.ResponseWriter, r *http.R
 	}
 }
 
+// HandleOrgsGetRequest handles orgs/get operation.
+//
+// GET /orgs/{org}
 func (s *Server) HandleOrgsGetRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsGet`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/get`)),
@@ -7290,6 +8103,9 @@ func (s *Server) HandleOrgsGetRequest(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+// HandleOrgsGetAuditLogRequest handles orgs/get-audit-log operation.
+//
+// GET /orgs/{org}/audit-log
 func (s *Server) HandleOrgsGetAuditLogRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsGetAuditLog`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/get-audit-log`)),
@@ -7316,6 +8132,9 @@ func (s *Server) HandleOrgsGetAuditLogRequest(w http.ResponseWriter, r *http.Req
 	}
 }
 
+// HandleOrgsGetMembershipForAuthenticatedUserRequest handles orgs/get-membership-for-authenticated-user operation.
+//
+// GET /user/memberships/orgs/{org}
 func (s *Server) HandleOrgsGetMembershipForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsGetMembershipForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/get-membership-for-authenticated-user`)),
@@ -7342,6 +8161,9 @@ func (s *Server) HandleOrgsGetMembershipForAuthenticatedUserRequest(w http.Respo
 	}
 }
 
+// HandleOrgsGetMembershipForUserRequest handles orgs/get-membership-for-user operation.
+//
+// GET /orgs/{org}/memberships/{username}
 func (s *Server) HandleOrgsGetMembershipForUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsGetMembershipForUser`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/get-membership-for-user`)),
@@ -7368,6 +8190,9 @@ func (s *Server) HandleOrgsGetMembershipForUserRequest(w http.ResponseWriter, r 
 	}
 }
 
+// HandleOrgsGetWebhookRequest handles orgs/get-webhook operation.
+//
+// GET /orgs/{org}/hooks/{hook_id}
 func (s *Server) HandleOrgsGetWebhookRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsGetWebhook`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/get-webhook`)),
@@ -7394,6 +8219,9 @@ func (s *Server) HandleOrgsGetWebhookRequest(w http.ResponseWriter, r *http.Requ
 	}
 }
 
+// HandleOrgsGetWebhookConfigForOrgRequest handles orgs/get-webhook-config-for-org operation.
+//
+// GET /orgs/{org}/hooks/{hook_id}/config
 func (s *Server) HandleOrgsGetWebhookConfigForOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsGetWebhookConfigForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/get-webhook-config-for-org`)),
@@ -7420,6 +8248,9 @@ func (s *Server) HandleOrgsGetWebhookConfigForOrgRequest(w http.ResponseWriter, 
 	}
 }
 
+// HandleOrgsListRequest handles orgs/list operation.
+//
+// GET /organizations
 func (s *Server) HandleOrgsListRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsList`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/list`)),
@@ -7446,6 +8277,9 @@ func (s *Server) HandleOrgsListRequest(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+// HandleOrgsListBlockedUsersRequest handles orgs/list-blocked-users operation.
+//
+// GET /orgs/{org}/blocks
 func (s *Server) HandleOrgsListBlockedUsersRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsListBlockedUsers`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/list-blocked-users`)),
@@ -7472,6 +8306,9 @@ func (s *Server) HandleOrgsListBlockedUsersRequest(w http.ResponseWriter, r *htt
 	}
 }
 
+// HandleOrgsListFailedInvitationsRequest handles orgs/list-failed-invitations operation.
+//
+// GET /orgs/{org}/failed_invitations
 func (s *Server) HandleOrgsListFailedInvitationsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsListFailedInvitations`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/list-failed-invitations`)),
@@ -7498,6 +8335,9 @@ func (s *Server) HandleOrgsListFailedInvitationsRequest(w http.ResponseWriter, r
 	}
 }
 
+// HandleOrgsListForAuthenticatedUserRequest handles orgs/list-for-authenticated-user operation.
+//
+// GET /user/orgs
 func (s *Server) HandleOrgsListForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsListForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/list-for-authenticated-user`)),
@@ -7524,6 +8364,9 @@ func (s *Server) HandleOrgsListForAuthenticatedUserRequest(w http.ResponseWriter
 	}
 }
 
+// HandleOrgsListForUserRequest handles orgs/list-for-user operation.
+//
+// GET /users/{username}/orgs
 func (s *Server) HandleOrgsListForUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsListForUser`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/list-for-user`)),
@@ -7550,6 +8393,9 @@ func (s *Server) HandleOrgsListForUserRequest(w http.ResponseWriter, r *http.Req
 	}
 }
 
+// HandleOrgsListInvitationTeamsRequest handles orgs/list-invitation-teams operation.
+//
+// GET /orgs/{org}/invitations/{invitation_id}/teams
 func (s *Server) HandleOrgsListInvitationTeamsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsListInvitationTeams`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/list-invitation-teams`)),
@@ -7576,6 +8422,9 @@ func (s *Server) HandleOrgsListInvitationTeamsRequest(w http.ResponseWriter, r *
 	}
 }
 
+// HandleOrgsListOutsideCollaboratorsRequest handles orgs/list-outside-collaborators operation.
+//
+// GET /orgs/{org}/outside_collaborators
 func (s *Server) HandleOrgsListOutsideCollaboratorsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsListOutsideCollaborators`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/list-outside-collaborators`)),
@@ -7602,6 +8451,9 @@ func (s *Server) HandleOrgsListOutsideCollaboratorsRequest(w http.ResponseWriter
 	}
 }
 
+// HandleOrgsListPendingInvitationsRequest handles orgs/list-pending-invitations operation.
+//
+// GET /orgs/{org}/invitations
 func (s *Server) HandleOrgsListPendingInvitationsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsListPendingInvitations`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/list-pending-invitations`)),
@@ -7628,6 +8480,9 @@ func (s *Server) HandleOrgsListPendingInvitationsRequest(w http.ResponseWriter, 
 	}
 }
 
+// HandleOrgsListPublicMembersRequest handles orgs/list-public-members operation.
+//
+// GET /orgs/{org}/public_members
 func (s *Server) HandleOrgsListPublicMembersRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsListPublicMembers`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/list-public-members`)),
@@ -7654,6 +8509,9 @@ func (s *Server) HandleOrgsListPublicMembersRequest(w http.ResponseWriter, r *ht
 	}
 }
 
+// HandleOrgsListSamlSSOAuthorizationsRequest handles orgs/list-saml-sso-authorizations operation.
+//
+// GET /orgs/{org}/credential-authorizations
 func (s *Server) HandleOrgsListSamlSSOAuthorizationsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsListSamlSSOAuthorizations`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/list-saml-sso-authorizations`)),
@@ -7680,6 +8538,9 @@ func (s *Server) HandleOrgsListSamlSSOAuthorizationsRequest(w http.ResponseWrite
 	}
 }
 
+// HandleOrgsListWebhooksRequest handles orgs/list-webhooks operation.
+//
+// GET /orgs/{org}/hooks
 func (s *Server) HandleOrgsListWebhooksRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsListWebhooks`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/list-webhooks`)),
@@ -7706,6 +8567,9 @@ func (s *Server) HandleOrgsListWebhooksRequest(w http.ResponseWriter, r *http.Re
 	}
 }
 
+// HandleOrgsPingWebhookRequest handles orgs/ping-webhook operation.
+//
+// POST /orgs/{org}/hooks/{hook_id}/pings
 func (s *Server) HandleOrgsPingWebhookRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsPingWebhook`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/ping-webhook`)),
@@ -7732,6 +8596,9 @@ func (s *Server) HandleOrgsPingWebhookRequest(w http.ResponseWriter, r *http.Req
 	}
 }
 
+// HandleOrgsRemoveMemberRequest handles orgs/remove-member operation.
+//
+// DELETE /orgs/{org}/members/{username}
 func (s *Server) HandleOrgsRemoveMemberRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsRemoveMember`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/remove-member`)),
@@ -7758,6 +8625,9 @@ func (s *Server) HandleOrgsRemoveMemberRequest(w http.ResponseWriter, r *http.Re
 	}
 }
 
+// HandleOrgsRemoveMembershipForUserRequest handles orgs/remove-membership-for-user operation.
+//
+// DELETE /orgs/{org}/memberships/{username}
 func (s *Server) HandleOrgsRemoveMembershipForUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsRemoveMembershipForUser`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/remove-membership-for-user`)),
@@ -7784,6 +8654,9 @@ func (s *Server) HandleOrgsRemoveMembershipForUserRequest(w http.ResponseWriter,
 	}
 }
 
+// HandleOrgsRemoveOutsideCollaboratorRequest handles orgs/remove-outside-collaborator operation.
+//
+// DELETE /orgs/{org}/outside_collaborators/{username}
 func (s *Server) HandleOrgsRemoveOutsideCollaboratorRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsRemoveOutsideCollaborator`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/remove-outside-collaborator`)),
@@ -7810,6 +8683,9 @@ func (s *Server) HandleOrgsRemoveOutsideCollaboratorRequest(w http.ResponseWrite
 	}
 }
 
+// HandleOrgsRemovePublicMembershipForAuthenticatedUserRequest handles orgs/remove-public-membership-for-authenticated-user operation.
+//
+// DELETE /orgs/{org}/public_members/{username}
 func (s *Server) HandleOrgsRemovePublicMembershipForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsRemovePublicMembershipForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/remove-public-membership-for-authenticated-user`)),
@@ -7836,6 +8712,9 @@ func (s *Server) HandleOrgsRemovePublicMembershipForAuthenticatedUserRequest(w h
 	}
 }
 
+// HandleOrgsRemoveSamlSSOAuthorizationRequest handles orgs/remove-saml-sso-authorization operation.
+//
+// DELETE /orgs/{org}/credential-authorizations/{credential_id}
 func (s *Server) HandleOrgsRemoveSamlSSOAuthorizationRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsRemoveSamlSSOAuthorization`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/remove-saml-sso-authorization`)),
@@ -7862,6 +8741,9 @@ func (s *Server) HandleOrgsRemoveSamlSSOAuthorizationRequest(w http.ResponseWrit
 	}
 }
 
+// HandleOrgsSetPublicMembershipForAuthenticatedUserRequest handles orgs/set-public-membership-for-authenticated-user operation.
+//
+// PUT /orgs/{org}/public_members/{username}
 func (s *Server) HandleOrgsSetPublicMembershipForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsSetPublicMembershipForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/set-public-membership-for-authenticated-user`)),
@@ -7888,6 +8770,9 @@ func (s *Server) HandleOrgsSetPublicMembershipForAuthenticatedUserRequest(w http
 	}
 }
 
+// HandleOrgsUnblockUserRequest handles orgs/unblock-user operation.
+//
+// DELETE /orgs/{org}/blocks/{username}
 func (s *Server) HandleOrgsUnblockUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsUnblockUser`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/unblock-user`)),
@@ -7914,6 +8799,9 @@ func (s *Server) HandleOrgsUnblockUserRequest(w http.ResponseWriter, r *http.Req
 	}
 }
 
+// HandleOrgsUpdateWebhookConfigForOrgRequest handles orgs/update-webhook-config-for-org operation.
+//
+// PATCH /orgs/{org}/hooks/{hook_id}/config
 func (s *Server) HandleOrgsUpdateWebhookConfigForOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsUpdateWebhookConfigForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/update-webhook-config-for-org`)),
@@ -7946,6 +8834,9 @@ func (s *Server) HandleOrgsUpdateWebhookConfigForOrgRequest(w http.ResponseWrite
 	}
 }
 
+// HandlePackagesDeletePackageForAuthenticatedUserRequest handles packages/delete-package-for-authenticated-user operation.
+//
+// DELETE /user/packages/{package_type}/{package_name}
 func (s *Server) HandlePackagesDeletePackageForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesDeletePackageForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`packages/delete-package-for-authenticated-user`)),
@@ -7972,6 +8863,9 @@ func (s *Server) HandlePackagesDeletePackageForAuthenticatedUserRequest(w http.R
 	}
 }
 
+// HandlePackagesDeletePackageForOrgRequest handles packages/delete-package-for-org operation.
+//
+// DELETE /orgs/{org}/packages/{package_type}/{package_name}
 func (s *Server) HandlePackagesDeletePackageForOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesDeletePackageForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`packages/delete-package-for-org`)),
@@ -7998,6 +8892,9 @@ func (s *Server) HandlePackagesDeletePackageForOrgRequest(w http.ResponseWriter,
 	}
 }
 
+// HandlePackagesDeletePackageForUserRequest handles packages/delete-package-for-user operation.
+//
+// DELETE /users/{username}/packages/{package_type}/{package_name}
 func (s *Server) HandlePackagesDeletePackageForUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesDeletePackageForUser`,
 		trace.WithAttributes(otelogen.OperationID(`packages/delete-package-for-user`)),
@@ -8024,6 +8921,9 @@ func (s *Server) HandlePackagesDeletePackageForUserRequest(w http.ResponseWriter
 	}
 }
 
+// HandlePackagesDeletePackageVersionForAuthenticatedUserRequest handles packages/delete-package-version-for-authenticated-user operation.
+//
+// DELETE /user/packages/{package_type}/{package_name}/versions/{package_version_id}
 func (s *Server) HandlePackagesDeletePackageVersionForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesDeletePackageVersionForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`packages/delete-package-version-for-authenticated-user`)),
@@ -8050,6 +8950,9 @@ func (s *Server) HandlePackagesDeletePackageVersionForAuthenticatedUserRequest(w
 	}
 }
 
+// HandlePackagesDeletePackageVersionForOrgRequest handles packages/delete-package-version-for-org operation.
+//
+// DELETE /orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}
 func (s *Server) HandlePackagesDeletePackageVersionForOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesDeletePackageVersionForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`packages/delete-package-version-for-org`)),
@@ -8076,6 +8979,9 @@ func (s *Server) HandlePackagesDeletePackageVersionForOrgRequest(w http.Response
 	}
 }
 
+// HandlePackagesDeletePackageVersionForUserRequest handles packages/delete-package-version-for-user operation.
+//
+// DELETE /users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}
 func (s *Server) HandlePackagesDeletePackageVersionForUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesDeletePackageVersionForUser`,
 		trace.WithAttributes(otelogen.OperationID(`packages/delete-package-version-for-user`)),
@@ -8102,6 +9008,9 @@ func (s *Server) HandlePackagesDeletePackageVersionForUserRequest(w http.Respons
 	}
 }
 
+// HandlePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequest handles packages/get-all-package-versions-for-package-owned-by-authenticated-user operation.
+//
+// GET /user/packages/{package_type}/{package_name}/versions
 func (s *Server) HandlePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`packages/get-all-package-versions-for-package-owned-by-authenticated-user`)),
@@ -8128,6 +9037,9 @@ func (s *Server) HandlePackagesGetAllPackageVersionsForPackageOwnedByAuthenticat
 	}
 }
 
+// HandlePackagesGetAllPackageVersionsForPackageOwnedByOrgRequest handles packages/get-all-package-versions-for-package-owned-by-org operation.
+//
+// GET /orgs/{org}/packages/{package_type}/{package_name}/versions
 func (s *Server) HandlePackagesGetAllPackageVersionsForPackageOwnedByOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesGetAllPackageVersionsForPackageOwnedByOrg`,
 		trace.WithAttributes(otelogen.OperationID(`packages/get-all-package-versions-for-package-owned-by-org`)),
@@ -8154,6 +9066,9 @@ func (s *Server) HandlePackagesGetAllPackageVersionsForPackageOwnedByOrgRequest(
 	}
 }
 
+// HandlePackagesGetAllPackageVersionsForPackageOwnedByUserRequest handles packages/get-all-package-versions-for-package-owned-by-user operation.
+//
+// GET /users/{username}/packages/{package_type}/{package_name}/versions
 func (s *Server) HandlePackagesGetAllPackageVersionsForPackageOwnedByUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesGetAllPackageVersionsForPackageOwnedByUser`,
 		trace.WithAttributes(otelogen.OperationID(`packages/get-all-package-versions-for-package-owned-by-user`)),
@@ -8180,6 +9095,9 @@ func (s *Server) HandlePackagesGetAllPackageVersionsForPackageOwnedByUserRequest
 	}
 }
 
+// HandlePackagesGetPackageForAuthenticatedUserRequest handles packages/get-package-for-authenticated-user operation.
+//
+// GET /user/packages/{package_type}/{package_name}
 func (s *Server) HandlePackagesGetPackageForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesGetPackageForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`packages/get-package-for-authenticated-user`)),
@@ -8206,6 +9124,9 @@ func (s *Server) HandlePackagesGetPackageForAuthenticatedUserRequest(w http.Resp
 	}
 }
 
+// HandlePackagesGetPackageForOrganizationRequest handles packages/get-package-for-organization operation.
+//
+// GET /orgs/{org}/packages/{package_type}/{package_name}
 func (s *Server) HandlePackagesGetPackageForOrganizationRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesGetPackageForOrganization`,
 		trace.WithAttributes(otelogen.OperationID(`packages/get-package-for-organization`)),
@@ -8232,6 +9153,9 @@ func (s *Server) HandlePackagesGetPackageForOrganizationRequest(w http.ResponseW
 	}
 }
 
+// HandlePackagesGetPackageForUserRequest handles packages/get-package-for-user operation.
+//
+// GET /users/{username}/packages/{package_type}/{package_name}
 func (s *Server) HandlePackagesGetPackageForUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesGetPackageForUser`,
 		trace.WithAttributes(otelogen.OperationID(`packages/get-package-for-user`)),
@@ -8258,6 +9182,9 @@ func (s *Server) HandlePackagesGetPackageForUserRequest(w http.ResponseWriter, r
 	}
 }
 
+// HandlePackagesGetPackageVersionForAuthenticatedUserRequest handles packages/get-package-version-for-authenticated-user operation.
+//
+// GET /user/packages/{package_type}/{package_name}/versions/{package_version_id}
 func (s *Server) HandlePackagesGetPackageVersionForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesGetPackageVersionForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`packages/get-package-version-for-authenticated-user`)),
@@ -8284,6 +9211,9 @@ func (s *Server) HandlePackagesGetPackageVersionForAuthenticatedUserRequest(w ht
 	}
 }
 
+// HandlePackagesGetPackageVersionForOrganizationRequest handles packages/get-package-version-for-organization operation.
+//
+// GET /orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}
 func (s *Server) HandlePackagesGetPackageVersionForOrganizationRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesGetPackageVersionForOrganization`,
 		trace.WithAttributes(otelogen.OperationID(`packages/get-package-version-for-organization`)),
@@ -8310,6 +9240,9 @@ func (s *Server) HandlePackagesGetPackageVersionForOrganizationRequest(w http.Re
 	}
 }
 
+// HandlePackagesGetPackageVersionForUserRequest handles packages/get-package-version-for-user operation.
+//
+// GET /users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}
 func (s *Server) HandlePackagesGetPackageVersionForUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesGetPackageVersionForUser`,
 		trace.WithAttributes(otelogen.OperationID(`packages/get-package-version-for-user`)),
@@ -8336,6 +9269,9 @@ func (s *Server) HandlePackagesGetPackageVersionForUserRequest(w http.ResponseWr
 	}
 }
 
+// HandlePackagesListPackagesForAuthenticatedUserRequest handles packages/list-packages-for-authenticated-user operation.
+//
+// GET /user/packages
 func (s *Server) HandlePackagesListPackagesForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesListPackagesForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`packages/list-packages-for-authenticated-user`)),
@@ -8362,6 +9298,9 @@ func (s *Server) HandlePackagesListPackagesForAuthenticatedUserRequest(w http.Re
 	}
 }
 
+// HandlePackagesListPackagesForOrganizationRequest handles packages/list-packages-for-organization operation.
+//
+// GET /orgs/{org}/packages
 func (s *Server) HandlePackagesListPackagesForOrganizationRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesListPackagesForOrganization`,
 		trace.WithAttributes(otelogen.OperationID(`packages/list-packages-for-organization`)),
@@ -8388,6 +9327,9 @@ func (s *Server) HandlePackagesListPackagesForOrganizationRequest(w http.Respons
 	}
 }
 
+// HandlePackagesListPackagesForUserRequest handles packages/list-packages-for-user operation.
+//
+// GET /users/{username}/packages
 func (s *Server) HandlePackagesListPackagesForUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesListPackagesForUser`,
 		trace.WithAttributes(otelogen.OperationID(`packages/list-packages-for-user`)),
@@ -8414,6 +9356,9 @@ func (s *Server) HandlePackagesListPackagesForUserRequest(w http.ResponseWriter,
 	}
 }
 
+// HandlePackagesRestorePackageForAuthenticatedUserRequest handles packages/restore-package-for-authenticated-user operation.
+//
+// POST /user/packages/{package_type}/{package_name}/restore
 func (s *Server) HandlePackagesRestorePackageForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesRestorePackageForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`packages/restore-package-for-authenticated-user`)),
@@ -8440,6 +9385,9 @@ func (s *Server) HandlePackagesRestorePackageForAuthenticatedUserRequest(w http.
 	}
 }
 
+// HandlePackagesRestorePackageForOrgRequest handles packages/restore-package-for-org operation.
+//
+// POST /orgs/{org}/packages/{package_type}/{package_name}/restore
 func (s *Server) HandlePackagesRestorePackageForOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesRestorePackageForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`packages/restore-package-for-org`)),
@@ -8466,6 +9414,9 @@ func (s *Server) HandlePackagesRestorePackageForOrgRequest(w http.ResponseWriter
 	}
 }
 
+// HandlePackagesRestorePackageForUserRequest handles packages/restore-package-for-user operation.
+//
+// POST /users/{username}/packages/{package_type}/{package_name}/restore
 func (s *Server) HandlePackagesRestorePackageForUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesRestorePackageForUser`,
 		trace.WithAttributes(otelogen.OperationID(`packages/restore-package-for-user`)),
@@ -8492,6 +9443,9 @@ func (s *Server) HandlePackagesRestorePackageForUserRequest(w http.ResponseWrite
 	}
 }
 
+// HandlePackagesRestorePackageVersionForAuthenticatedUserRequest handles packages/restore-package-version-for-authenticated-user operation.
+//
+// POST /user/packages/{package_type}/{package_name}/versions/{package_version_id}/restore
 func (s *Server) HandlePackagesRestorePackageVersionForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesRestorePackageVersionForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`packages/restore-package-version-for-authenticated-user`)),
@@ -8518,6 +9472,9 @@ func (s *Server) HandlePackagesRestorePackageVersionForAuthenticatedUserRequest(
 	}
 }
 
+// HandlePackagesRestorePackageVersionForOrgRequest handles packages/restore-package-version-for-org operation.
+//
+// POST /orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore
 func (s *Server) HandlePackagesRestorePackageVersionForOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesRestorePackageVersionForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`packages/restore-package-version-for-org`)),
@@ -8544,6 +9501,9 @@ func (s *Server) HandlePackagesRestorePackageVersionForOrgRequest(w http.Respons
 	}
 }
 
+// HandlePackagesRestorePackageVersionForUserRequest handles packages/restore-package-version-for-user operation.
+//
+// POST /users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore
 func (s *Server) HandlePackagesRestorePackageVersionForUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesRestorePackageVersionForUser`,
 		trace.WithAttributes(otelogen.OperationID(`packages/restore-package-version-for-user`)),
@@ -8570,6 +9530,9 @@ func (s *Server) HandlePackagesRestorePackageVersionForUserRequest(w http.Respon
 	}
 }
 
+// HandleProjectsCreateColumnRequest handles projects/create-column operation.
+//
+// POST /projects/{project_id}/columns
 func (s *Server) HandleProjectsCreateColumnRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ProjectsCreateColumn`,
 		trace.WithAttributes(otelogen.OperationID(`projects/create-column`)),
@@ -8602,6 +9565,9 @@ func (s *Server) HandleProjectsCreateColumnRequest(w http.ResponseWriter, r *htt
 	}
 }
 
+// HandleProjectsCreateForAuthenticatedUserRequest handles projects/create-for-authenticated-user operation.
+//
+// POST /user/projects
 func (s *Server) HandleProjectsCreateForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ProjectsCreateForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`projects/create-for-authenticated-user`)),
@@ -8628,6 +9594,9 @@ func (s *Server) HandleProjectsCreateForAuthenticatedUserRequest(w http.Response
 	}
 }
 
+// HandleProjectsCreateForOrgRequest handles projects/create-for-org operation.
+//
+// POST /orgs/{org}/projects
 func (s *Server) HandleProjectsCreateForOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ProjectsCreateForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`projects/create-for-org`)),
@@ -8660,6 +9629,9 @@ func (s *Server) HandleProjectsCreateForOrgRequest(w http.ResponseWriter, r *htt
 	}
 }
 
+// HandleProjectsCreateForRepoRequest handles projects/create-for-repo operation.
+//
+// POST /repos/{owner}/{repo}/projects
 func (s *Server) HandleProjectsCreateForRepoRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ProjectsCreateForRepo`,
 		trace.WithAttributes(otelogen.OperationID(`projects/create-for-repo`)),
@@ -8692,6 +9664,9 @@ func (s *Server) HandleProjectsCreateForRepoRequest(w http.ResponseWriter, r *ht
 	}
 }
 
+// HandleProjectsDeleteRequest handles projects/delete operation.
+//
+// DELETE /projects/{project_id}
 func (s *Server) HandleProjectsDeleteRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ProjectsDelete`,
 		trace.WithAttributes(otelogen.OperationID(`projects/delete`)),
@@ -8718,6 +9693,9 @@ func (s *Server) HandleProjectsDeleteRequest(w http.ResponseWriter, r *http.Requ
 	}
 }
 
+// HandleProjectsDeleteCardRequest handles projects/delete-card operation.
+//
+// DELETE /projects/columns/cards/{card_id}
 func (s *Server) HandleProjectsDeleteCardRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ProjectsDeleteCard`,
 		trace.WithAttributes(otelogen.OperationID(`projects/delete-card`)),
@@ -8744,6 +9722,9 @@ func (s *Server) HandleProjectsDeleteCardRequest(w http.ResponseWriter, r *http.
 	}
 }
 
+// HandleProjectsDeleteColumnRequest handles projects/delete-column operation.
+//
+// DELETE /projects/columns/{column_id}
 func (s *Server) HandleProjectsDeleteColumnRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ProjectsDeleteColumn`,
 		trace.WithAttributes(otelogen.OperationID(`projects/delete-column`)),
@@ -8770,6 +9751,9 @@ func (s *Server) HandleProjectsDeleteColumnRequest(w http.ResponseWriter, r *htt
 	}
 }
 
+// HandleProjectsGetRequest handles projects/get operation.
+//
+// GET /projects/{project_id}
 func (s *Server) HandleProjectsGetRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ProjectsGet`,
 		trace.WithAttributes(otelogen.OperationID(`projects/get`)),
@@ -8796,6 +9780,9 @@ func (s *Server) HandleProjectsGetRequest(w http.ResponseWriter, r *http.Request
 	}
 }
 
+// HandleProjectsGetCardRequest handles projects/get-card operation.
+//
+// GET /projects/columns/cards/{card_id}
 func (s *Server) HandleProjectsGetCardRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ProjectsGetCard`,
 		trace.WithAttributes(otelogen.OperationID(`projects/get-card`)),
@@ -8822,6 +9809,9 @@ func (s *Server) HandleProjectsGetCardRequest(w http.ResponseWriter, r *http.Req
 	}
 }
 
+// HandleProjectsGetColumnRequest handles projects/get-column operation.
+//
+// GET /projects/columns/{column_id}
 func (s *Server) HandleProjectsGetColumnRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ProjectsGetColumn`,
 		trace.WithAttributes(otelogen.OperationID(`projects/get-column`)),
@@ -8848,6 +9838,9 @@ func (s *Server) HandleProjectsGetColumnRequest(w http.ResponseWriter, r *http.R
 	}
 }
 
+// HandleProjectsListCardsRequest handles projects/list-cards operation.
+//
+// GET /projects/columns/{column_id}/cards
 func (s *Server) HandleProjectsListCardsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ProjectsListCards`,
 		trace.WithAttributes(otelogen.OperationID(`projects/list-cards`)),
@@ -8874,6 +9867,9 @@ func (s *Server) HandleProjectsListCardsRequest(w http.ResponseWriter, r *http.R
 	}
 }
 
+// HandleProjectsListColumnsRequest handles projects/list-columns operation.
+//
+// GET /projects/{project_id}/columns
 func (s *Server) HandleProjectsListColumnsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ProjectsListColumns`,
 		trace.WithAttributes(otelogen.OperationID(`projects/list-columns`)),
@@ -8900,6 +9896,9 @@ func (s *Server) HandleProjectsListColumnsRequest(w http.ResponseWriter, r *http
 	}
 }
 
+// HandleProjectsListForOrgRequest handles projects/list-for-org operation.
+//
+// GET /orgs/{org}/projects
 func (s *Server) HandleProjectsListForOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ProjectsListForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`projects/list-for-org`)),
@@ -8926,6 +9925,9 @@ func (s *Server) HandleProjectsListForOrgRequest(w http.ResponseWriter, r *http.
 	}
 }
 
+// HandleProjectsListForRepoRequest handles projects/list-for-repo operation.
+//
+// GET /repos/{owner}/{repo}/projects
 func (s *Server) HandleProjectsListForRepoRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ProjectsListForRepo`,
 		trace.WithAttributes(otelogen.OperationID(`projects/list-for-repo`)),
@@ -8952,6 +9954,9 @@ func (s *Server) HandleProjectsListForRepoRequest(w http.ResponseWriter, r *http
 	}
 }
 
+// HandleProjectsMoveColumnRequest handles projects/move-column operation.
+//
+// POST /projects/columns/{column_id}/moves
 func (s *Server) HandleProjectsMoveColumnRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ProjectsMoveColumn`,
 		trace.WithAttributes(otelogen.OperationID(`projects/move-column`)),
@@ -8984,6 +9989,9 @@ func (s *Server) HandleProjectsMoveColumnRequest(w http.ResponseWriter, r *http.
 	}
 }
 
+// HandleProjectsUpdateRequest handles projects/update operation.
+//
+// PATCH /projects/{project_id}
 func (s *Server) HandleProjectsUpdateRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ProjectsUpdate`,
 		trace.WithAttributes(otelogen.OperationID(`projects/update`)),
@@ -9016,6 +10024,9 @@ func (s *Server) HandleProjectsUpdateRequest(w http.ResponseWriter, r *http.Requ
 	}
 }
 
+// HandleProjectsUpdateCardRequest handles projects/update-card operation.
+//
+// PATCH /projects/columns/cards/{card_id}
 func (s *Server) HandleProjectsUpdateCardRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ProjectsUpdateCard`,
 		trace.WithAttributes(otelogen.OperationID(`projects/update-card`)),
@@ -9048,6 +10059,9 @@ func (s *Server) HandleProjectsUpdateCardRequest(w http.ResponseWriter, r *http.
 	}
 }
 
+// HandleProjectsUpdateColumnRequest handles projects/update-column operation.
+//
+// PATCH /projects/columns/{column_id}
 func (s *Server) HandleProjectsUpdateColumnRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ProjectsUpdateColumn`,
 		trace.WithAttributes(otelogen.OperationID(`projects/update-column`)),
@@ -9080,6 +10094,9 @@ func (s *Server) HandleProjectsUpdateColumnRequest(w http.ResponseWriter, r *htt
 	}
 }
 
+// HandlePullsCheckIfMergedRequest handles pulls/check-if-merged operation.
+//
+// GET /repos/{owner}/{repo}/pulls/{pull_number}/merge
 func (s *Server) HandlePullsCheckIfMergedRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PullsCheckIfMerged`,
 		trace.WithAttributes(otelogen.OperationID(`pulls/check-if-merged`)),
@@ -9106,6 +10123,9 @@ func (s *Server) HandlePullsCheckIfMergedRequest(w http.ResponseWriter, r *http.
 	}
 }
 
+// HandlePullsCreateReplyForReviewCommentRequest handles pulls/create-reply-for-review-comment operation.
+//
+// POST /repos/{owner}/{repo}/pulls/{pull_number}/comments/{comment_id}/replies
 func (s *Server) HandlePullsCreateReplyForReviewCommentRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PullsCreateReplyForReviewComment`,
 		trace.WithAttributes(otelogen.OperationID(`pulls/create-reply-for-review-comment`)),
@@ -9138,6 +10158,9 @@ func (s *Server) HandlePullsCreateReplyForReviewCommentRequest(w http.ResponseWr
 	}
 }
 
+// HandlePullsCreateReviewRequest handles pulls/create-review operation.
+//
+// POST /repos/{owner}/{repo}/pulls/{pull_number}/reviews
 func (s *Server) HandlePullsCreateReviewRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PullsCreateReview`,
 		trace.WithAttributes(otelogen.OperationID(`pulls/create-review`)),
@@ -9170,6 +10193,9 @@ func (s *Server) HandlePullsCreateReviewRequest(w http.ResponseWriter, r *http.R
 	}
 }
 
+// HandlePullsDeletePendingReviewRequest handles pulls/delete-pending-review operation.
+//
+// DELETE /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}
 func (s *Server) HandlePullsDeletePendingReviewRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PullsDeletePendingReview`,
 		trace.WithAttributes(otelogen.OperationID(`pulls/delete-pending-review`)),
@@ -9196,6 +10222,9 @@ func (s *Server) HandlePullsDeletePendingReviewRequest(w http.ResponseWriter, r 
 	}
 }
 
+// HandlePullsDeleteReviewCommentRequest handles pulls/delete-review-comment operation.
+//
+// DELETE /repos/{owner}/{repo}/pulls/comments/{comment_id}
 func (s *Server) HandlePullsDeleteReviewCommentRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PullsDeleteReviewComment`,
 		trace.WithAttributes(otelogen.OperationID(`pulls/delete-review-comment`)),
@@ -9222,6 +10251,9 @@ func (s *Server) HandlePullsDeleteReviewCommentRequest(w http.ResponseWriter, r 
 	}
 }
 
+// HandlePullsDismissReviewRequest handles pulls/dismiss-review operation.
+//
+// PUT /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/dismissals
 func (s *Server) HandlePullsDismissReviewRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PullsDismissReview`,
 		trace.WithAttributes(otelogen.OperationID(`pulls/dismiss-review`)),
@@ -9254,6 +10286,9 @@ func (s *Server) HandlePullsDismissReviewRequest(w http.ResponseWriter, r *http.
 	}
 }
 
+// HandlePullsGetRequest handles pulls/get operation.
+//
+// GET /repos/{owner}/{repo}/pulls/{pull_number}
 func (s *Server) HandlePullsGetRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PullsGet`,
 		trace.WithAttributes(otelogen.OperationID(`pulls/get`)),
@@ -9280,6 +10315,9 @@ func (s *Server) HandlePullsGetRequest(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+// HandlePullsGetReviewRequest handles pulls/get-review operation.
+//
+// GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}
 func (s *Server) HandlePullsGetReviewRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PullsGetReview`,
 		trace.WithAttributes(otelogen.OperationID(`pulls/get-review`)),
@@ -9306,6 +10344,9 @@ func (s *Server) HandlePullsGetReviewRequest(w http.ResponseWriter, r *http.Requ
 	}
 }
 
+// HandlePullsGetReviewCommentRequest handles pulls/get-review-comment operation.
+//
+// GET /repos/{owner}/{repo}/pulls/comments/{comment_id}
 func (s *Server) HandlePullsGetReviewCommentRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PullsGetReviewComment`,
 		trace.WithAttributes(otelogen.OperationID(`pulls/get-review-comment`)),
@@ -9332,6 +10373,9 @@ func (s *Server) HandlePullsGetReviewCommentRequest(w http.ResponseWriter, r *ht
 	}
 }
 
+// HandlePullsListCommentsForReviewRequest handles pulls/list-comments-for-review operation.
+//
+// GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/comments
 func (s *Server) HandlePullsListCommentsForReviewRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PullsListCommentsForReview`,
 		trace.WithAttributes(otelogen.OperationID(`pulls/list-comments-for-review`)),
@@ -9358,6 +10402,9 @@ func (s *Server) HandlePullsListCommentsForReviewRequest(w http.ResponseWriter, 
 	}
 }
 
+// HandlePullsListCommitsRequest handles pulls/list-commits operation.
+//
+// GET /repos/{owner}/{repo}/pulls/{pull_number}/commits
 func (s *Server) HandlePullsListCommitsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PullsListCommits`,
 		trace.WithAttributes(otelogen.OperationID(`pulls/list-commits`)),
@@ -9384,6 +10431,9 @@ func (s *Server) HandlePullsListCommitsRequest(w http.ResponseWriter, r *http.Re
 	}
 }
 
+// HandlePullsListRequestedReviewersRequest handles pulls/list-requested-reviewers operation.
+//
+// GET /repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers
 func (s *Server) HandlePullsListRequestedReviewersRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PullsListRequestedReviewers`,
 		trace.WithAttributes(otelogen.OperationID(`pulls/list-requested-reviewers`)),
@@ -9410,6 +10460,9 @@ func (s *Server) HandlePullsListRequestedReviewersRequest(w http.ResponseWriter,
 	}
 }
 
+// HandlePullsListReviewCommentsRequest handles pulls/list-review-comments operation.
+//
+// GET /repos/{owner}/{repo}/pulls/{pull_number}/comments
 func (s *Server) HandlePullsListReviewCommentsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PullsListReviewComments`,
 		trace.WithAttributes(otelogen.OperationID(`pulls/list-review-comments`)),
@@ -9436,6 +10489,9 @@ func (s *Server) HandlePullsListReviewCommentsRequest(w http.ResponseWriter, r *
 	}
 }
 
+// HandlePullsListReviewCommentsForRepoRequest handles pulls/list-review-comments-for-repo operation.
+//
+// GET /repos/{owner}/{repo}/pulls/comments
 func (s *Server) HandlePullsListReviewCommentsForRepoRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PullsListReviewCommentsForRepo`,
 		trace.WithAttributes(otelogen.OperationID(`pulls/list-review-comments-for-repo`)),
@@ -9462,6 +10518,9 @@ func (s *Server) HandlePullsListReviewCommentsForRepoRequest(w http.ResponseWrit
 	}
 }
 
+// HandlePullsListReviewsRequest handles pulls/list-reviews operation.
+//
+// GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews
 func (s *Server) HandlePullsListReviewsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PullsListReviews`,
 		trace.WithAttributes(otelogen.OperationID(`pulls/list-reviews`)),
@@ -9488,6 +10547,9 @@ func (s *Server) HandlePullsListReviewsRequest(w http.ResponseWriter, r *http.Re
 	}
 }
 
+// HandlePullsSubmitReviewRequest handles pulls/submit-review operation.
+//
+// POST /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/events
 func (s *Server) HandlePullsSubmitReviewRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PullsSubmitReview`,
 		trace.WithAttributes(otelogen.OperationID(`pulls/submit-review`)),
@@ -9520,6 +10582,9 @@ func (s *Server) HandlePullsSubmitReviewRequest(w http.ResponseWriter, r *http.R
 	}
 }
 
+// HandlePullsUpdateReviewRequest handles pulls/update-review operation.
+//
+// PUT /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}
 func (s *Server) HandlePullsUpdateReviewRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PullsUpdateReview`,
 		trace.WithAttributes(otelogen.OperationID(`pulls/update-review`)),
@@ -9552,6 +10617,9 @@ func (s *Server) HandlePullsUpdateReviewRequest(w http.ResponseWriter, r *http.R
 	}
 }
 
+// HandlePullsUpdateReviewCommentRequest handles pulls/update-review-comment operation.
+//
+// PATCH /repos/{owner}/{repo}/pulls/comments/{comment_id}
 func (s *Server) HandlePullsUpdateReviewCommentRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PullsUpdateReviewComment`,
 		trace.WithAttributes(otelogen.OperationID(`pulls/update-review-comment`)),
@@ -9584,6 +10652,9 @@ func (s *Server) HandlePullsUpdateReviewCommentRequest(w http.ResponseWriter, r 
 	}
 }
 
+// HandleRateLimitGetRequest handles rate-limit/get operation.
+//
+// GET /rate_limit
 func (s *Server) HandleRateLimitGetRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `RateLimitGet`,
 		trace.WithAttributes(otelogen.OperationID(`rate-limit/get`)),
@@ -9604,6 +10675,9 @@ func (s *Server) HandleRateLimitGetRequest(w http.ResponseWriter, r *http.Reques
 	}
 }
 
+// HandleReactionsCreateForTeamDiscussionCommentInOrgRequest handles reactions/create-for-team-discussion-comment-in-org operation.
+//
+// POST /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions
 func (s *Server) HandleReactionsCreateForTeamDiscussionCommentInOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReactionsCreateForTeamDiscussionCommentInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`reactions/create-for-team-discussion-comment-in-org`)),
@@ -9636,6 +10710,9 @@ func (s *Server) HandleReactionsCreateForTeamDiscussionCommentInOrgRequest(w htt
 	}
 }
 
+// HandleReactionsCreateForTeamDiscussionCommentLegacyRequest handles reactions/create-for-team-discussion-comment-legacy operation.
+//
+// POST /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions
 func (s *Server) HandleReactionsCreateForTeamDiscussionCommentLegacyRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReactionsCreateForTeamDiscussionCommentLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`reactions/create-for-team-discussion-comment-legacy`)),
@@ -9668,6 +10745,9 @@ func (s *Server) HandleReactionsCreateForTeamDiscussionCommentLegacyRequest(w ht
 	}
 }
 
+// HandleReactionsCreateForTeamDiscussionInOrgRequest handles reactions/create-for-team-discussion-in-org operation.
+//
+// POST /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions
 func (s *Server) HandleReactionsCreateForTeamDiscussionInOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReactionsCreateForTeamDiscussionInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`reactions/create-for-team-discussion-in-org`)),
@@ -9700,6 +10780,9 @@ func (s *Server) HandleReactionsCreateForTeamDiscussionInOrgRequest(w http.Respo
 	}
 }
 
+// HandleReactionsCreateForTeamDiscussionLegacyRequest handles reactions/create-for-team-discussion-legacy operation.
+//
+// POST /teams/{team_id}/discussions/{discussion_number}/reactions
 func (s *Server) HandleReactionsCreateForTeamDiscussionLegacyRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReactionsCreateForTeamDiscussionLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`reactions/create-for-team-discussion-legacy`)),
@@ -9732,6 +10815,9 @@ func (s *Server) HandleReactionsCreateForTeamDiscussionLegacyRequest(w http.Resp
 	}
 }
 
+// HandleReactionsDeleteForCommitCommentRequest handles reactions/delete-for-commit-comment operation.
+//
+// DELETE /repos/{owner}/{repo}/comments/{comment_id}/reactions/{reaction_id}
 func (s *Server) HandleReactionsDeleteForCommitCommentRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReactionsDeleteForCommitComment`,
 		trace.WithAttributes(otelogen.OperationID(`reactions/delete-for-commit-comment`)),
@@ -9758,6 +10844,9 @@ func (s *Server) HandleReactionsDeleteForCommitCommentRequest(w http.ResponseWri
 	}
 }
 
+// HandleReactionsDeleteForIssueRequest handles reactions/delete-for-issue operation.
+//
+// DELETE /repos/{owner}/{repo}/issues/{issue_number}/reactions/{reaction_id}
 func (s *Server) HandleReactionsDeleteForIssueRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReactionsDeleteForIssue`,
 		trace.WithAttributes(otelogen.OperationID(`reactions/delete-for-issue`)),
@@ -9784,6 +10873,9 @@ func (s *Server) HandleReactionsDeleteForIssueRequest(w http.ResponseWriter, r *
 	}
 }
 
+// HandleReactionsDeleteForIssueCommentRequest handles reactions/delete-for-issue-comment operation.
+//
+// DELETE /repos/{owner}/{repo}/issues/comments/{comment_id}/reactions/{reaction_id}
 func (s *Server) HandleReactionsDeleteForIssueCommentRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReactionsDeleteForIssueComment`,
 		trace.WithAttributes(otelogen.OperationID(`reactions/delete-for-issue-comment`)),
@@ -9810,6 +10902,9 @@ func (s *Server) HandleReactionsDeleteForIssueCommentRequest(w http.ResponseWrit
 	}
 }
 
+// HandleReactionsDeleteForPullRequestCommentRequest handles reactions/delete-for-pull-request-comment operation.
+//
+// DELETE /repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions/{reaction_id}
 func (s *Server) HandleReactionsDeleteForPullRequestCommentRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReactionsDeleteForPullRequestComment`,
 		trace.WithAttributes(otelogen.OperationID(`reactions/delete-for-pull-request-comment`)),
@@ -9836,6 +10931,9 @@ func (s *Server) HandleReactionsDeleteForPullRequestCommentRequest(w http.Respon
 	}
 }
 
+// HandleReactionsDeleteForTeamDiscussionRequest handles reactions/delete-for-team-discussion operation.
+//
+// DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions/{reaction_id}
 func (s *Server) HandleReactionsDeleteForTeamDiscussionRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReactionsDeleteForTeamDiscussion`,
 		trace.WithAttributes(otelogen.OperationID(`reactions/delete-for-team-discussion`)),
@@ -9862,6 +10960,9 @@ func (s *Server) HandleReactionsDeleteForTeamDiscussionRequest(w http.ResponseWr
 	}
 }
 
+// HandleReactionsDeleteForTeamDiscussionCommentRequest handles reactions/delete-for-team-discussion-comment operation.
+//
+// DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions/{reaction_id}
 func (s *Server) HandleReactionsDeleteForTeamDiscussionCommentRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReactionsDeleteForTeamDiscussionComment`,
 		trace.WithAttributes(otelogen.OperationID(`reactions/delete-for-team-discussion-comment`)),
@@ -9888,6 +10989,9 @@ func (s *Server) HandleReactionsDeleteForTeamDiscussionCommentRequest(w http.Res
 	}
 }
 
+// HandleReactionsDeleteLegacyRequest handles reactions/delete-legacy operation.
+//
+// DELETE /reactions/{reaction_id}
 func (s *Server) HandleReactionsDeleteLegacyRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReactionsDeleteLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`reactions/delete-legacy`)),
@@ -9914,6 +11018,9 @@ func (s *Server) HandleReactionsDeleteLegacyRequest(w http.ResponseWriter, r *ht
 	}
 }
 
+// HandleReactionsListForCommitCommentRequest handles reactions/list-for-commit-comment operation.
+//
+// GET /repos/{owner}/{repo}/comments/{comment_id}/reactions
 func (s *Server) HandleReactionsListForCommitCommentRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReactionsListForCommitComment`,
 		trace.WithAttributes(otelogen.OperationID(`reactions/list-for-commit-comment`)),
@@ -9940,6 +11047,9 @@ func (s *Server) HandleReactionsListForCommitCommentRequest(w http.ResponseWrite
 	}
 }
 
+// HandleReactionsListForIssueRequest handles reactions/list-for-issue operation.
+//
+// GET /repos/{owner}/{repo}/issues/{issue_number}/reactions
 func (s *Server) HandleReactionsListForIssueRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReactionsListForIssue`,
 		trace.WithAttributes(otelogen.OperationID(`reactions/list-for-issue`)),
@@ -9966,6 +11076,9 @@ func (s *Server) HandleReactionsListForIssueRequest(w http.ResponseWriter, r *ht
 	}
 }
 
+// HandleReactionsListForIssueCommentRequest handles reactions/list-for-issue-comment operation.
+//
+// GET /repos/{owner}/{repo}/issues/comments/{comment_id}/reactions
 func (s *Server) HandleReactionsListForIssueCommentRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReactionsListForIssueComment`,
 		trace.WithAttributes(otelogen.OperationID(`reactions/list-for-issue-comment`)),
@@ -9992,6 +11105,9 @@ func (s *Server) HandleReactionsListForIssueCommentRequest(w http.ResponseWriter
 	}
 }
 
+// HandleReactionsListForPullRequestReviewCommentRequest handles reactions/list-for-pull-request-review-comment operation.
+//
+// GET /repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions
 func (s *Server) HandleReactionsListForPullRequestReviewCommentRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReactionsListForPullRequestReviewComment`,
 		trace.WithAttributes(otelogen.OperationID(`reactions/list-for-pull-request-review-comment`)),
@@ -10018,6 +11134,9 @@ func (s *Server) HandleReactionsListForPullRequestReviewCommentRequest(w http.Re
 	}
 }
 
+// HandleReactionsListForTeamDiscussionCommentInOrgRequest handles reactions/list-for-team-discussion-comment-in-org operation.
+//
+// GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions
 func (s *Server) HandleReactionsListForTeamDiscussionCommentInOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReactionsListForTeamDiscussionCommentInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`reactions/list-for-team-discussion-comment-in-org`)),
@@ -10044,6 +11163,9 @@ func (s *Server) HandleReactionsListForTeamDiscussionCommentInOrgRequest(w http.
 	}
 }
 
+// HandleReactionsListForTeamDiscussionCommentLegacyRequest handles reactions/list-for-team-discussion-comment-legacy operation.
+//
+// GET /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions
 func (s *Server) HandleReactionsListForTeamDiscussionCommentLegacyRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReactionsListForTeamDiscussionCommentLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`reactions/list-for-team-discussion-comment-legacy`)),
@@ -10070,6 +11192,9 @@ func (s *Server) HandleReactionsListForTeamDiscussionCommentLegacyRequest(w http
 	}
 }
 
+// HandleReactionsListForTeamDiscussionInOrgRequest handles reactions/list-for-team-discussion-in-org operation.
+//
+// GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions
 func (s *Server) HandleReactionsListForTeamDiscussionInOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReactionsListForTeamDiscussionInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`reactions/list-for-team-discussion-in-org`)),
@@ -10096,6 +11221,9 @@ func (s *Server) HandleReactionsListForTeamDiscussionInOrgRequest(w http.Respons
 	}
 }
 
+// HandleReactionsListForTeamDiscussionLegacyRequest handles reactions/list-for-team-discussion-legacy operation.
+//
+// GET /teams/{team_id}/discussions/{discussion_number}/reactions
 func (s *Server) HandleReactionsListForTeamDiscussionLegacyRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReactionsListForTeamDiscussionLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`reactions/list-for-team-discussion-legacy`)),
@@ -10122,6 +11250,9 @@ func (s *Server) HandleReactionsListForTeamDiscussionLegacyRequest(w http.Respon
 	}
 }
 
+// HandleReposAcceptInvitationRequest handles repos/accept-invitation operation.
+//
+// PATCH /user/repository_invitations/{invitation_id}
 func (s *Server) HandleReposAcceptInvitationRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposAcceptInvitation`,
 		trace.WithAttributes(otelogen.OperationID(`repos/accept-invitation`)),
@@ -10148,6 +11279,9 @@ func (s *Server) HandleReposAcceptInvitationRequest(w http.ResponseWriter, r *ht
 	}
 }
 
+// HandleReposCheckCollaboratorRequest handles repos/check-collaborator operation.
+//
+// GET /repos/{owner}/{repo}/collaborators/{username}
 func (s *Server) HandleReposCheckCollaboratorRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposCheckCollaborator`,
 		trace.WithAttributes(otelogen.OperationID(`repos/check-collaborator`)),
@@ -10174,6 +11308,9 @@ func (s *Server) HandleReposCheckCollaboratorRequest(w http.ResponseWriter, r *h
 	}
 }
 
+// HandleReposCheckVulnerabilityAlertsRequest handles repos/check-vulnerability-alerts operation.
+//
+// GET /repos/{owner}/{repo}/vulnerability-alerts
 func (s *Server) HandleReposCheckVulnerabilityAlertsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposCheckVulnerabilityAlerts`,
 		trace.WithAttributes(otelogen.OperationID(`repos/check-vulnerability-alerts`)),
@@ -10200,6 +11337,9 @@ func (s *Server) HandleReposCheckVulnerabilityAlertsRequest(w http.ResponseWrite
 	}
 }
 
+// HandleReposCompareCommitsRequest handles repos/compare-commits operation.
+//
+// GET /repos/{owner}/{repo}/compare/{basehead}
 func (s *Server) HandleReposCompareCommitsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposCompareCommits`,
 		trace.WithAttributes(otelogen.OperationID(`repos/compare-commits`)),
@@ -10226,6 +11366,9 @@ func (s *Server) HandleReposCompareCommitsRequest(w http.ResponseWriter, r *http
 	}
 }
 
+// HandleReposCreateCommitSignatureProtectionRequest handles repos/create-commit-signature-protection operation.
+//
+// POST /repos/{owner}/{repo}/branches/{branch}/protection/required_signatures
 func (s *Server) HandleReposCreateCommitSignatureProtectionRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposCreateCommitSignatureProtection`,
 		trace.WithAttributes(otelogen.OperationID(`repos/create-commit-signature-protection`)),
@@ -10252,6 +11395,9 @@ func (s *Server) HandleReposCreateCommitSignatureProtectionRequest(w http.Respon
 	}
 }
 
+// HandleReposCreateCommitStatusRequest handles repos/create-commit-status operation.
+//
+// POST /repos/{owner}/{repo}/statuses/{sha}
 func (s *Server) HandleReposCreateCommitStatusRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposCreateCommitStatus`,
 		trace.WithAttributes(otelogen.OperationID(`repos/create-commit-status`)),
@@ -10284,6 +11430,9 @@ func (s *Server) HandleReposCreateCommitStatusRequest(w http.ResponseWriter, r *
 	}
 }
 
+// HandleReposCreateUsingTemplateRequest handles repos/create-using-template operation.
+//
+// POST /repos/{template_owner}/{template_repo}/generate
 func (s *Server) HandleReposCreateUsingTemplateRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposCreateUsingTemplate`,
 		trace.WithAttributes(otelogen.OperationID(`repos/create-using-template`)),
@@ -10316,6 +11465,9 @@ func (s *Server) HandleReposCreateUsingTemplateRequest(w http.ResponseWriter, r 
 	}
 }
 
+// HandleReposDeclineInvitationRequest handles repos/decline-invitation operation.
+//
+// DELETE /user/repository_invitations/{invitation_id}
 func (s *Server) HandleReposDeclineInvitationRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposDeclineInvitation`,
 		trace.WithAttributes(otelogen.OperationID(`repos/decline-invitation`)),
@@ -10342,6 +11494,9 @@ func (s *Server) HandleReposDeclineInvitationRequest(w http.ResponseWriter, r *h
 	}
 }
 
+// HandleReposDeleteRequest handles repos/delete operation.
+//
+// DELETE /repos/{owner}/{repo}
 func (s *Server) HandleReposDeleteRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposDelete`,
 		trace.WithAttributes(otelogen.OperationID(`repos/delete`)),
@@ -10368,6 +11523,9 @@ func (s *Server) HandleReposDeleteRequest(w http.ResponseWriter, r *http.Request
 	}
 }
 
+// HandleReposDeleteAccessRestrictionsRequest handles repos/delete-access-restrictions operation.
+//
+// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions
 func (s *Server) HandleReposDeleteAccessRestrictionsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposDeleteAccessRestrictions`,
 		trace.WithAttributes(otelogen.OperationID(`repos/delete-access-restrictions`)),
@@ -10394,6 +11552,9 @@ func (s *Server) HandleReposDeleteAccessRestrictionsRequest(w http.ResponseWrite
 	}
 }
 
+// HandleReposDeleteAdminBranchProtectionRequest handles repos/delete-admin-branch-protection operation.
+//
+// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins
 func (s *Server) HandleReposDeleteAdminBranchProtectionRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposDeleteAdminBranchProtection`,
 		trace.WithAttributes(otelogen.OperationID(`repos/delete-admin-branch-protection`)),
@@ -10420,6 +11581,9 @@ func (s *Server) HandleReposDeleteAdminBranchProtectionRequest(w http.ResponseWr
 	}
 }
 
+// HandleReposDeleteAnEnvironmentRequest handles repos/delete-an-environment operation.
+//
+// DELETE /repos/{owner}/{repo}/environments/{environment_name}
 func (s *Server) HandleReposDeleteAnEnvironmentRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposDeleteAnEnvironment`,
 		trace.WithAttributes(otelogen.OperationID(`repos/delete-an-environment`)),
@@ -10446,6 +11610,9 @@ func (s *Server) HandleReposDeleteAnEnvironmentRequest(w http.ResponseWriter, r 
 	}
 }
 
+// HandleReposDeleteAutolinkRequest handles repos/delete-autolink operation.
+//
+// DELETE /repos/{owner}/{repo}/autolinks/{autolink_id}
 func (s *Server) HandleReposDeleteAutolinkRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposDeleteAutolink`,
 		trace.WithAttributes(otelogen.OperationID(`repos/delete-autolink`)),
@@ -10472,6 +11639,9 @@ func (s *Server) HandleReposDeleteAutolinkRequest(w http.ResponseWriter, r *http
 	}
 }
 
+// HandleReposDeleteBranchProtectionRequest handles repos/delete-branch-protection operation.
+//
+// DELETE /repos/{owner}/{repo}/branches/{branch}/protection
 func (s *Server) HandleReposDeleteBranchProtectionRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposDeleteBranchProtection`,
 		trace.WithAttributes(otelogen.OperationID(`repos/delete-branch-protection`)),
@@ -10498,6 +11668,9 @@ func (s *Server) HandleReposDeleteBranchProtectionRequest(w http.ResponseWriter,
 	}
 }
 
+// HandleReposDeleteCommitCommentRequest handles repos/delete-commit-comment operation.
+//
+// DELETE /repos/{owner}/{repo}/comments/{comment_id}
 func (s *Server) HandleReposDeleteCommitCommentRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposDeleteCommitComment`,
 		trace.WithAttributes(otelogen.OperationID(`repos/delete-commit-comment`)),
@@ -10524,6 +11697,9 @@ func (s *Server) HandleReposDeleteCommitCommentRequest(w http.ResponseWriter, r 
 	}
 }
 
+// HandleReposDeleteCommitSignatureProtectionRequest handles repos/delete-commit-signature-protection operation.
+//
+// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_signatures
 func (s *Server) HandleReposDeleteCommitSignatureProtectionRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposDeleteCommitSignatureProtection`,
 		trace.WithAttributes(otelogen.OperationID(`repos/delete-commit-signature-protection`)),
@@ -10550,6 +11726,9 @@ func (s *Server) HandleReposDeleteCommitSignatureProtectionRequest(w http.Respon
 	}
 }
 
+// HandleReposDeleteDeployKeyRequest handles repos/delete-deploy-key operation.
+//
+// DELETE /repos/{owner}/{repo}/keys/{key_id}
 func (s *Server) HandleReposDeleteDeployKeyRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposDeleteDeployKey`,
 		trace.WithAttributes(otelogen.OperationID(`repos/delete-deploy-key`)),
@@ -10576,6 +11755,9 @@ func (s *Server) HandleReposDeleteDeployKeyRequest(w http.ResponseWriter, r *htt
 	}
 }
 
+// HandleReposDeleteDeploymentRequest handles repos/delete-deployment operation.
+//
+// DELETE /repos/{owner}/{repo}/deployments/{deployment_id}
 func (s *Server) HandleReposDeleteDeploymentRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposDeleteDeployment`,
 		trace.WithAttributes(otelogen.OperationID(`repos/delete-deployment`)),
@@ -10602,6 +11784,9 @@ func (s *Server) HandleReposDeleteDeploymentRequest(w http.ResponseWriter, r *ht
 	}
 }
 
+// HandleReposDeleteInvitationRequest handles repos/delete-invitation operation.
+//
+// DELETE /repos/{owner}/{repo}/invitations/{invitation_id}
 func (s *Server) HandleReposDeleteInvitationRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposDeleteInvitation`,
 		trace.WithAttributes(otelogen.OperationID(`repos/delete-invitation`)),
@@ -10628,6 +11813,9 @@ func (s *Server) HandleReposDeleteInvitationRequest(w http.ResponseWriter, r *ht
 	}
 }
 
+// HandleReposDeletePullRequestReviewProtectionRequest handles repos/delete-pull-request-review-protection operation.
+//
+// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews
 func (s *Server) HandleReposDeletePullRequestReviewProtectionRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposDeletePullRequestReviewProtection`,
 		trace.WithAttributes(otelogen.OperationID(`repos/delete-pull-request-review-protection`)),
@@ -10654,6 +11842,9 @@ func (s *Server) HandleReposDeletePullRequestReviewProtectionRequest(w http.Resp
 	}
 }
 
+// HandleReposDeleteReleaseRequest handles repos/delete-release operation.
+//
+// DELETE /repos/{owner}/{repo}/releases/{release_id}
 func (s *Server) HandleReposDeleteReleaseRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposDeleteRelease`,
 		trace.WithAttributes(otelogen.OperationID(`repos/delete-release`)),
@@ -10680,6 +11871,9 @@ func (s *Server) HandleReposDeleteReleaseRequest(w http.ResponseWriter, r *http.
 	}
 }
 
+// HandleReposDeleteReleaseAssetRequest handles repos/delete-release-asset operation.
+//
+// DELETE /repos/{owner}/{repo}/releases/assets/{asset_id}
 func (s *Server) HandleReposDeleteReleaseAssetRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposDeleteReleaseAsset`,
 		trace.WithAttributes(otelogen.OperationID(`repos/delete-release-asset`)),
@@ -10706,6 +11900,9 @@ func (s *Server) HandleReposDeleteReleaseAssetRequest(w http.ResponseWriter, r *
 	}
 }
 
+// HandleReposDeleteWebhookRequest handles repos/delete-webhook operation.
+//
+// DELETE /repos/{owner}/{repo}/hooks/{hook_id}
 func (s *Server) HandleReposDeleteWebhookRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposDeleteWebhook`,
 		trace.WithAttributes(otelogen.OperationID(`repos/delete-webhook`)),
@@ -10732,6 +11929,9 @@ func (s *Server) HandleReposDeleteWebhookRequest(w http.ResponseWriter, r *http.
 	}
 }
 
+// HandleReposDisableAutomatedSecurityFixesRequest handles repos/disable-automated-security-fixes operation.
+//
+// DELETE /repos/{owner}/{repo}/automated-security-fixes
 func (s *Server) HandleReposDisableAutomatedSecurityFixesRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposDisableAutomatedSecurityFixes`,
 		trace.WithAttributes(otelogen.OperationID(`repos/disable-automated-security-fixes`)),
@@ -10758,6 +11958,9 @@ func (s *Server) HandleReposDisableAutomatedSecurityFixesRequest(w http.Response
 	}
 }
 
+// HandleReposDisableLfsForRepoRequest handles repos/disable-lfs-for-repo operation.
+//
+// DELETE /repos/{owner}/{repo}/lfs
 func (s *Server) HandleReposDisableLfsForRepoRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposDisableLfsForRepo`,
 		trace.WithAttributes(otelogen.OperationID(`repos/disable-lfs-for-repo`)),
@@ -10784,6 +11987,9 @@ func (s *Server) HandleReposDisableLfsForRepoRequest(w http.ResponseWriter, r *h
 	}
 }
 
+// HandleReposDisableVulnerabilityAlertsRequest handles repos/disable-vulnerability-alerts operation.
+//
+// DELETE /repos/{owner}/{repo}/vulnerability-alerts
 func (s *Server) HandleReposDisableVulnerabilityAlertsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposDisableVulnerabilityAlerts`,
 		trace.WithAttributes(otelogen.OperationID(`repos/disable-vulnerability-alerts`)),
@@ -10810,6 +12016,9 @@ func (s *Server) HandleReposDisableVulnerabilityAlertsRequest(w http.ResponseWri
 	}
 }
 
+// HandleReposDownloadTarballArchiveRequest handles repos/download-tarball-archive operation.
+//
+// GET /repos/{owner}/{repo}/tarball/{ref}
 func (s *Server) HandleReposDownloadTarballArchiveRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposDownloadTarballArchive`,
 		trace.WithAttributes(otelogen.OperationID(`repos/download-tarball-archive`)),
@@ -10836,6 +12045,9 @@ func (s *Server) HandleReposDownloadTarballArchiveRequest(w http.ResponseWriter,
 	}
 }
 
+// HandleReposDownloadZipballArchiveRequest handles repos/download-zipball-archive operation.
+//
+// GET /repos/{owner}/{repo}/zipball/{ref}
 func (s *Server) HandleReposDownloadZipballArchiveRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposDownloadZipballArchive`,
 		trace.WithAttributes(otelogen.OperationID(`repos/download-zipball-archive`)),
@@ -10862,6 +12074,9 @@ func (s *Server) HandleReposDownloadZipballArchiveRequest(w http.ResponseWriter,
 	}
 }
 
+// HandleReposEnableAutomatedSecurityFixesRequest handles repos/enable-automated-security-fixes operation.
+//
+// PUT /repos/{owner}/{repo}/automated-security-fixes
 func (s *Server) HandleReposEnableAutomatedSecurityFixesRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposEnableAutomatedSecurityFixes`,
 		trace.WithAttributes(otelogen.OperationID(`repos/enable-automated-security-fixes`)),
@@ -10888,6 +12103,9 @@ func (s *Server) HandleReposEnableAutomatedSecurityFixesRequest(w http.ResponseW
 	}
 }
 
+// HandleReposEnableLfsForRepoRequest handles repos/enable-lfs-for-repo operation.
+//
+// PUT /repos/{owner}/{repo}/lfs
 func (s *Server) HandleReposEnableLfsForRepoRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposEnableLfsForRepo`,
 		trace.WithAttributes(otelogen.OperationID(`repos/enable-lfs-for-repo`)),
@@ -10914,6 +12132,9 @@ func (s *Server) HandleReposEnableLfsForRepoRequest(w http.ResponseWriter, r *ht
 	}
 }
 
+// HandleReposEnableVulnerabilityAlertsRequest handles repos/enable-vulnerability-alerts operation.
+//
+// PUT /repos/{owner}/{repo}/vulnerability-alerts
 func (s *Server) HandleReposEnableVulnerabilityAlertsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposEnableVulnerabilityAlerts`,
 		trace.WithAttributes(otelogen.OperationID(`repos/enable-vulnerability-alerts`)),
@@ -10940,6 +12161,9 @@ func (s *Server) HandleReposEnableVulnerabilityAlertsRequest(w http.ResponseWrit
 	}
 }
 
+// HandleReposGetRequest handles repos/get operation.
+//
+// GET /repos/{owner}/{repo}
 func (s *Server) HandleReposGetRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGet`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get`)),
@@ -10966,6 +12190,9 @@ func (s *Server) HandleReposGetRequest(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+// HandleReposGetAccessRestrictionsRequest handles repos/get-access-restrictions operation.
+//
+// GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions
 func (s *Server) HandleReposGetAccessRestrictionsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetAccessRestrictions`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-access-restrictions`)),
@@ -10992,6 +12219,9 @@ func (s *Server) HandleReposGetAccessRestrictionsRequest(w http.ResponseWriter, 
 	}
 }
 
+// HandleReposGetAdminBranchProtectionRequest handles repos/get-admin-branch-protection operation.
+//
+// GET /repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins
 func (s *Server) HandleReposGetAdminBranchProtectionRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetAdminBranchProtection`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-admin-branch-protection`)),
@@ -11018,6 +12248,9 @@ func (s *Server) HandleReposGetAdminBranchProtectionRequest(w http.ResponseWrite
 	}
 }
 
+// HandleReposGetAllStatusCheckContextsRequest handles repos/get-all-status-check-contexts operation.
+//
+// GET /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts
 func (s *Server) HandleReposGetAllStatusCheckContextsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetAllStatusCheckContexts`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-all-status-check-contexts`)),
@@ -11044,6 +12277,9 @@ func (s *Server) HandleReposGetAllStatusCheckContextsRequest(w http.ResponseWrit
 	}
 }
 
+// HandleReposGetAllTopicsRequest handles repos/get-all-topics operation.
+//
+// GET /repos/{owner}/{repo}/topics
 func (s *Server) HandleReposGetAllTopicsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetAllTopics`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-all-topics`)),
@@ -11070,6 +12306,9 @@ func (s *Server) HandleReposGetAllTopicsRequest(w http.ResponseWriter, r *http.R
 	}
 }
 
+// HandleReposGetAppsWithAccessToProtectedBranchRequest handles repos/get-apps-with-access-to-protected-branch operation.
+//
+// GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps
 func (s *Server) HandleReposGetAppsWithAccessToProtectedBranchRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetAppsWithAccessToProtectedBranch`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-apps-with-access-to-protected-branch`)),
@@ -11096,6 +12335,9 @@ func (s *Server) HandleReposGetAppsWithAccessToProtectedBranchRequest(w http.Res
 	}
 }
 
+// HandleReposGetAutolinkRequest handles repos/get-autolink operation.
+//
+// GET /repos/{owner}/{repo}/autolinks/{autolink_id}
 func (s *Server) HandleReposGetAutolinkRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetAutolink`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-autolink`)),
@@ -11122,6 +12364,9 @@ func (s *Server) HandleReposGetAutolinkRequest(w http.ResponseWriter, r *http.Re
 	}
 }
 
+// HandleReposGetBranchRequest handles repos/get-branch operation.
+//
+// GET /repos/{owner}/{repo}/branches/{branch}
 func (s *Server) HandleReposGetBranchRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetBranch`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-branch`)),
@@ -11148,6 +12393,9 @@ func (s *Server) HandleReposGetBranchRequest(w http.ResponseWriter, r *http.Requ
 	}
 }
 
+// HandleReposGetBranchProtectionRequest handles repos/get-branch-protection operation.
+//
+// GET /repos/{owner}/{repo}/branches/{branch}/protection
 func (s *Server) HandleReposGetBranchProtectionRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetBranchProtection`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-branch-protection`)),
@@ -11174,6 +12422,9 @@ func (s *Server) HandleReposGetBranchProtectionRequest(w http.ResponseWriter, r 
 	}
 }
 
+// HandleReposGetClonesRequest handles repos/get-clones operation.
+//
+// GET /repos/{owner}/{repo}/traffic/clones
 func (s *Server) HandleReposGetClonesRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetClones`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-clones`)),
@@ -11200,6 +12451,9 @@ func (s *Server) HandleReposGetClonesRequest(w http.ResponseWriter, r *http.Requ
 	}
 }
 
+// HandleReposGetCodeFrequencyStatsRequest handles repos/get-code-frequency-stats operation.
+//
+// GET /repos/{owner}/{repo}/stats/code_frequency
 func (s *Server) HandleReposGetCodeFrequencyStatsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetCodeFrequencyStats`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-code-frequency-stats`)),
@@ -11226,6 +12480,9 @@ func (s *Server) HandleReposGetCodeFrequencyStatsRequest(w http.ResponseWriter, 
 	}
 }
 
+// HandleReposGetCollaboratorPermissionLevelRequest handles repos/get-collaborator-permission-level operation.
+//
+// GET /repos/{owner}/{repo}/collaborators/{username}/permission
 func (s *Server) HandleReposGetCollaboratorPermissionLevelRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetCollaboratorPermissionLevel`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-collaborator-permission-level`)),
@@ -11252,6 +12509,9 @@ func (s *Server) HandleReposGetCollaboratorPermissionLevelRequest(w http.Respons
 	}
 }
 
+// HandleReposGetCombinedStatusForRefRequest handles repos/get-combined-status-for-ref operation.
+//
+// GET /repos/{owner}/{repo}/commits/{ref}/status
 func (s *Server) HandleReposGetCombinedStatusForRefRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetCombinedStatusForRef`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-combined-status-for-ref`)),
@@ -11278,6 +12538,9 @@ func (s *Server) HandleReposGetCombinedStatusForRefRequest(w http.ResponseWriter
 	}
 }
 
+// HandleReposGetCommitActivityStatsRequest handles repos/get-commit-activity-stats operation.
+//
+// GET /repos/{owner}/{repo}/stats/commit_activity
 func (s *Server) HandleReposGetCommitActivityStatsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetCommitActivityStats`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-commit-activity-stats`)),
@@ -11304,6 +12567,9 @@ func (s *Server) HandleReposGetCommitActivityStatsRequest(w http.ResponseWriter,
 	}
 }
 
+// HandleReposGetCommitCommentRequest handles repos/get-commit-comment operation.
+//
+// GET /repos/{owner}/{repo}/comments/{comment_id}
 func (s *Server) HandleReposGetCommitCommentRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetCommitComment`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-commit-comment`)),
@@ -11330,6 +12596,9 @@ func (s *Server) HandleReposGetCommitCommentRequest(w http.ResponseWriter, r *ht
 	}
 }
 
+// HandleReposGetCommitSignatureProtectionRequest handles repos/get-commit-signature-protection operation.
+//
+// GET /repos/{owner}/{repo}/branches/{branch}/protection/required_signatures
 func (s *Server) HandleReposGetCommitSignatureProtectionRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetCommitSignatureProtection`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-commit-signature-protection`)),
@@ -11356,6 +12625,9 @@ func (s *Server) HandleReposGetCommitSignatureProtectionRequest(w http.ResponseW
 	}
 }
 
+// HandleReposGetCommunityProfileMetricsRequest handles repos/get-community-profile-metrics operation.
+//
+// GET /repos/{owner}/{repo}/community/profile
 func (s *Server) HandleReposGetCommunityProfileMetricsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetCommunityProfileMetrics`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-community-profile-metrics`)),
@@ -11382,6 +12654,9 @@ func (s *Server) HandleReposGetCommunityProfileMetricsRequest(w http.ResponseWri
 	}
 }
 
+// HandleReposGetContributorsStatsRequest handles repos/get-contributors-stats operation.
+//
+// GET /repos/{owner}/{repo}/stats/contributors
 func (s *Server) HandleReposGetContributorsStatsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetContributorsStats`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-contributors-stats`)),
@@ -11408,6 +12683,9 @@ func (s *Server) HandleReposGetContributorsStatsRequest(w http.ResponseWriter, r
 	}
 }
 
+// HandleReposGetDeployKeyRequest handles repos/get-deploy-key operation.
+//
+// GET /repos/{owner}/{repo}/keys/{key_id}
 func (s *Server) HandleReposGetDeployKeyRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetDeployKey`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-deploy-key`)),
@@ -11434,6 +12712,9 @@ func (s *Server) HandleReposGetDeployKeyRequest(w http.ResponseWriter, r *http.R
 	}
 }
 
+// HandleReposGetDeploymentStatusRequest handles repos/get-deployment-status operation.
+//
+// GET /repos/{owner}/{repo}/deployments/{deployment_id}/statuses/{status_id}
 func (s *Server) HandleReposGetDeploymentStatusRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetDeploymentStatus`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-deployment-status`)),
@@ -11460,6 +12741,9 @@ func (s *Server) HandleReposGetDeploymentStatusRequest(w http.ResponseWriter, r 
 	}
 }
 
+// HandleReposGetLatestPagesBuildRequest handles repos/get-latest-pages-build operation.
+//
+// GET /repos/{owner}/{repo}/pages/builds/latest
 func (s *Server) HandleReposGetLatestPagesBuildRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetLatestPagesBuild`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-latest-pages-build`)),
@@ -11486,6 +12770,9 @@ func (s *Server) HandleReposGetLatestPagesBuildRequest(w http.ResponseWriter, r 
 	}
 }
 
+// HandleReposGetLatestReleaseRequest handles repos/get-latest-release operation.
+//
+// GET /repos/{owner}/{repo}/releases/latest
 func (s *Server) HandleReposGetLatestReleaseRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetLatestRelease`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-latest-release`)),
@@ -11512,6 +12799,9 @@ func (s *Server) HandleReposGetLatestReleaseRequest(w http.ResponseWriter, r *ht
 	}
 }
 
+// HandleReposGetPagesRequest handles repos/get-pages operation.
+//
+// GET /repos/{owner}/{repo}/pages
 func (s *Server) HandleReposGetPagesRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetPages`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-pages`)),
@@ -11538,6 +12828,9 @@ func (s *Server) HandleReposGetPagesRequest(w http.ResponseWriter, r *http.Reque
 	}
 }
 
+// HandleReposGetPagesBuildRequest handles repos/get-pages-build operation.
+//
+// GET /repos/{owner}/{repo}/pages/builds/{build_id}
 func (s *Server) HandleReposGetPagesBuildRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetPagesBuild`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-pages-build`)),
@@ -11564,6 +12857,9 @@ func (s *Server) HandleReposGetPagesBuildRequest(w http.ResponseWriter, r *http.
 	}
 }
 
+// HandleReposGetPagesHealthCheckRequest handles repos/get-pages-health-check operation.
+//
+// GET /repos/{owner}/{repo}/pages/health
 func (s *Server) HandleReposGetPagesHealthCheckRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetPagesHealthCheck`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-pages-health-check`)),
@@ -11590,6 +12886,9 @@ func (s *Server) HandleReposGetPagesHealthCheckRequest(w http.ResponseWriter, r 
 	}
 }
 
+// HandleReposGetParticipationStatsRequest handles repos/get-participation-stats operation.
+//
+// GET /repos/{owner}/{repo}/stats/participation
 func (s *Server) HandleReposGetParticipationStatsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetParticipationStats`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-participation-stats`)),
@@ -11616,6 +12915,9 @@ func (s *Server) HandleReposGetParticipationStatsRequest(w http.ResponseWriter, 
 	}
 }
 
+// HandleReposGetPullRequestReviewProtectionRequest handles repos/get-pull-request-review-protection operation.
+//
+// GET /repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews
 func (s *Server) HandleReposGetPullRequestReviewProtectionRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetPullRequestReviewProtection`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-pull-request-review-protection`)),
@@ -11642,6 +12944,9 @@ func (s *Server) HandleReposGetPullRequestReviewProtectionRequest(w http.Respons
 	}
 }
 
+// HandleReposGetPunchCardStatsRequest handles repos/get-punch-card-stats operation.
+//
+// GET /repos/{owner}/{repo}/stats/punch_card
 func (s *Server) HandleReposGetPunchCardStatsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetPunchCardStats`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-punch-card-stats`)),
@@ -11668,6 +12973,9 @@ func (s *Server) HandleReposGetPunchCardStatsRequest(w http.ResponseWriter, r *h
 	}
 }
 
+// HandleReposGetReleaseRequest handles repos/get-release operation.
+//
+// GET /repos/{owner}/{repo}/releases/{release_id}
 func (s *Server) HandleReposGetReleaseRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetRelease`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-release`)),
@@ -11694,6 +13002,9 @@ func (s *Server) HandleReposGetReleaseRequest(w http.ResponseWriter, r *http.Req
 	}
 }
 
+// HandleReposGetReleaseAssetRequest handles repos/get-release-asset operation.
+//
+// GET /repos/{owner}/{repo}/releases/assets/{asset_id}
 func (s *Server) HandleReposGetReleaseAssetRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetReleaseAsset`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-release-asset`)),
@@ -11720,6 +13031,9 @@ func (s *Server) HandleReposGetReleaseAssetRequest(w http.ResponseWriter, r *htt
 	}
 }
 
+// HandleReposGetReleaseByTagRequest handles repos/get-release-by-tag operation.
+//
+// GET /repos/{owner}/{repo}/releases/tags/{tag}
 func (s *Server) HandleReposGetReleaseByTagRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetReleaseByTag`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-release-by-tag`)),
@@ -11746,6 +13060,9 @@ func (s *Server) HandleReposGetReleaseByTagRequest(w http.ResponseWriter, r *htt
 	}
 }
 
+// HandleReposGetStatusChecksProtectionRequest handles repos/get-status-checks-protection operation.
+//
+// GET /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks
 func (s *Server) HandleReposGetStatusChecksProtectionRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetStatusChecksProtection`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-status-checks-protection`)),
@@ -11772,6 +13089,9 @@ func (s *Server) HandleReposGetStatusChecksProtectionRequest(w http.ResponseWrit
 	}
 }
 
+// HandleReposGetTeamsWithAccessToProtectedBranchRequest handles repos/get-teams-with-access-to-protected-branch operation.
+//
+// GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams
 func (s *Server) HandleReposGetTeamsWithAccessToProtectedBranchRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetTeamsWithAccessToProtectedBranch`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-teams-with-access-to-protected-branch`)),
@@ -11798,6 +13118,9 @@ func (s *Server) HandleReposGetTeamsWithAccessToProtectedBranchRequest(w http.Re
 	}
 }
 
+// HandleReposGetTopPathsRequest handles repos/get-top-paths operation.
+//
+// GET /repos/{owner}/{repo}/traffic/popular/paths
 func (s *Server) HandleReposGetTopPathsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetTopPaths`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-top-paths`)),
@@ -11824,6 +13147,9 @@ func (s *Server) HandleReposGetTopPathsRequest(w http.ResponseWriter, r *http.Re
 	}
 }
 
+// HandleReposGetTopReferrersRequest handles repos/get-top-referrers operation.
+//
+// GET /repos/{owner}/{repo}/traffic/popular/referrers
 func (s *Server) HandleReposGetTopReferrersRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetTopReferrers`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-top-referrers`)),
@@ -11850,6 +13176,9 @@ func (s *Server) HandleReposGetTopReferrersRequest(w http.ResponseWriter, r *htt
 	}
 }
 
+// HandleReposGetUsersWithAccessToProtectedBranchRequest handles repos/get-users-with-access-to-protected-branch operation.
+//
+// GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users
 func (s *Server) HandleReposGetUsersWithAccessToProtectedBranchRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetUsersWithAccessToProtectedBranch`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-users-with-access-to-protected-branch`)),
@@ -11876,6 +13205,9 @@ func (s *Server) HandleReposGetUsersWithAccessToProtectedBranchRequest(w http.Re
 	}
 }
 
+// HandleReposGetViewsRequest handles repos/get-views operation.
+//
+// GET /repos/{owner}/{repo}/traffic/views
 func (s *Server) HandleReposGetViewsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetViews`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-views`)),
@@ -11902,6 +13234,9 @@ func (s *Server) HandleReposGetViewsRequest(w http.ResponseWriter, r *http.Reque
 	}
 }
 
+// HandleReposGetWebhookRequest handles repos/get-webhook operation.
+//
+// GET /repos/{owner}/{repo}/hooks/{hook_id}
 func (s *Server) HandleReposGetWebhookRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetWebhook`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-webhook`)),
@@ -11928,6 +13263,9 @@ func (s *Server) HandleReposGetWebhookRequest(w http.ResponseWriter, r *http.Req
 	}
 }
 
+// HandleReposGetWebhookConfigForRepoRequest handles repos/get-webhook-config-for-repo operation.
+//
+// GET /repos/{owner}/{repo}/hooks/{hook_id}/config
 func (s *Server) HandleReposGetWebhookConfigForRepoRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetWebhookConfigForRepo`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-webhook-config-for-repo`)),
@@ -11954,6 +13292,9 @@ func (s *Server) HandleReposGetWebhookConfigForRepoRequest(w http.ResponseWriter
 	}
 }
 
+// HandleReposListAutolinksRequest handles repos/list-autolinks operation.
+//
+// GET /repos/{owner}/{repo}/autolinks
 func (s *Server) HandleReposListAutolinksRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListAutolinks`,
 		trace.WithAttributes(otelogen.OperationID(`repos/list-autolinks`)),
@@ -11980,6 +13321,9 @@ func (s *Server) HandleReposListAutolinksRequest(w http.ResponseWriter, r *http.
 	}
 }
 
+// HandleReposListBranchesRequest handles repos/list-branches operation.
+//
+// GET /repos/{owner}/{repo}/branches
 func (s *Server) HandleReposListBranchesRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListBranches`,
 		trace.WithAttributes(otelogen.OperationID(`repos/list-branches`)),
@@ -12006,6 +13350,9 @@ func (s *Server) HandleReposListBranchesRequest(w http.ResponseWriter, r *http.R
 	}
 }
 
+// HandleReposListCollaboratorsRequest handles repos/list-collaborators operation.
+//
+// GET /repos/{owner}/{repo}/collaborators
 func (s *Server) HandleReposListCollaboratorsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListCollaborators`,
 		trace.WithAttributes(otelogen.OperationID(`repos/list-collaborators`)),
@@ -12032,6 +13379,9 @@ func (s *Server) HandleReposListCollaboratorsRequest(w http.ResponseWriter, r *h
 	}
 }
 
+// HandleReposListCommentsForCommitRequest handles repos/list-comments-for-commit operation.
+//
+// GET /repos/{owner}/{repo}/commits/{commit_sha}/comments
 func (s *Server) HandleReposListCommentsForCommitRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListCommentsForCommit`,
 		trace.WithAttributes(otelogen.OperationID(`repos/list-comments-for-commit`)),
@@ -12058,6 +13408,9 @@ func (s *Server) HandleReposListCommentsForCommitRequest(w http.ResponseWriter, 
 	}
 }
 
+// HandleReposListCommitCommentsForRepoRequest handles repos/list-commit-comments-for-repo operation.
+//
+// GET /repos/{owner}/{repo}/comments
 func (s *Server) HandleReposListCommitCommentsForRepoRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListCommitCommentsForRepo`,
 		trace.WithAttributes(otelogen.OperationID(`repos/list-commit-comments-for-repo`)),
@@ -12084,6 +13437,9 @@ func (s *Server) HandleReposListCommitCommentsForRepoRequest(w http.ResponseWrit
 	}
 }
 
+// HandleReposListCommitStatusesForRefRequest handles repos/list-commit-statuses-for-ref operation.
+//
+// GET /repos/{owner}/{repo}/commits/{ref}/statuses
 func (s *Server) HandleReposListCommitStatusesForRefRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListCommitStatusesForRef`,
 		trace.WithAttributes(otelogen.OperationID(`repos/list-commit-statuses-for-ref`)),
@@ -12110,6 +13466,9 @@ func (s *Server) HandleReposListCommitStatusesForRefRequest(w http.ResponseWrite
 	}
 }
 
+// HandleReposListCommitsRequest handles repos/list-commits operation.
+//
+// GET /repos/{owner}/{repo}/commits
 func (s *Server) HandleReposListCommitsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListCommits`,
 		trace.WithAttributes(otelogen.OperationID(`repos/list-commits`)),
@@ -12136,6 +13495,9 @@ func (s *Server) HandleReposListCommitsRequest(w http.ResponseWriter, r *http.Re
 	}
 }
 
+// HandleReposListContributorsRequest handles repos/list-contributors operation.
+//
+// GET /repos/{owner}/{repo}/contributors
 func (s *Server) HandleReposListContributorsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListContributors`,
 		trace.WithAttributes(otelogen.OperationID(`repos/list-contributors`)),
@@ -12162,6 +13524,9 @@ func (s *Server) HandleReposListContributorsRequest(w http.ResponseWriter, r *ht
 	}
 }
 
+// HandleReposListDeployKeysRequest handles repos/list-deploy-keys operation.
+//
+// GET /repos/{owner}/{repo}/keys
 func (s *Server) HandleReposListDeployKeysRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListDeployKeys`,
 		trace.WithAttributes(otelogen.OperationID(`repos/list-deploy-keys`)),
@@ -12188,6 +13553,9 @@ func (s *Server) HandleReposListDeployKeysRequest(w http.ResponseWriter, r *http
 	}
 }
 
+// HandleReposListDeploymentStatusesRequest handles repos/list-deployment-statuses operation.
+//
+// GET /repos/{owner}/{repo}/deployments/{deployment_id}/statuses
 func (s *Server) HandleReposListDeploymentStatusesRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListDeploymentStatuses`,
 		trace.WithAttributes(otelogen.OperationID(`repos/list-deployment-statuses`)),
@@ -12214,6 +13582,9 @@ func (s *Server) HandleReposListDeploymentStatusesRequest(w http.ResponseWriter,
 	}
 }
 
+// HandleReposListForOrgRequest handles repos/list-for-org operation.
+//
+// GET /orgs/{org}/repos
 func (s *Server) HandleReposListForOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`repos/list-for-org`)),
@@ -12240,6 +13611,9 @@ func (s *Server) HandleReposListForOrgRequest(w http.ResponseWriter, r *http.Req
 	}
 }
 
+// HandleReposListForUserRequest handles repos/list-for-user operation.
+//
+// GET /users/{username}/repos
 func (s *Server) HandleReposListForUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListForUser`,
 		trace.WithAttributes(otelogen.OperationID(`repos/list-for-user`)),
@@ -12266,6 +13640,9 @@ func (s *Server) HandleReposListForUserRequest(w http.ResponseWriter, r *http.Re
 	}
 }
 
+// HandleReposListForksRequest handles repos/list-forks operation.
+//
+// GET /repos/{owner}/{repo}/forks
 func (s *Server) HandleReposListForksRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListForks`,
 		trace.WithAttributes(otelogen.OperationID(`repos/list-forks`)),
@@ -12292,6 +13669,9 @@ func (s *Server) HandleReposListForksRequest(w http.ResponseWriter, r *http.Requ
 	}
 }
 
+// HandleReposListInvitationsRequest handles repos/list-invitations operation.
+//
+// GET /repos/{owner}/{repo}/invitations
 func (s *Server) HandleReposListInvitationsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListInvitations`,
 		trace.WithAttributes(otelogen.OperationID(`repos/list-invitations`)),
@@ -12318,6 +13698,9 @@ func (s *Server) HandleReposListInvitationsRequest(w http.ResponseWriter, r *htt
 	}
 }
 
+// HandleReposListInvitationsForAuthenticatedUserRequest handles repos/list-invitations-for-authenticated-user operation.
+//
+// GET /user/repository_invitations
 func (s *Server) HandleReposListInvitationsForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListInvitationsForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`repos/list-invitations-for-authenticated-user`)),
@@ -12344,6 +13727,9 @@ func (s *Server) HandleReposListInvitationsForAuthenticatedUserRequest(w http.Re
 	}
 }
 
+// HandleReposListLanguagesRequest handles repos/list-languages operation.
+//
+// GET /repos/{owner}/{repo}/languages
 func (s *Server) HandleReposListLanguagesRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListLanguages`,
 		trace.WithAttributes(otelogen.OperationID(`repos/list-languages`)),
@@ -12370,6 +13756,9 @@ func (s *Server) HandleReposListLanguagesRequest(w http.ResponseWriter, r *http.
 	}
 }
 
+// HandleReposListPagesBuildsRequest handles repos/list-pages-builds operation.
+//
+// GET /repos/{owner}/{repo}/pages/builds
 func (s *Server) HandleReposListPagesBuildsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListPagesBuilds`,
 		trace.WithAttributes(otelogen.OperationID(`repos/list-pages-builds`)),
@@ -12396,6 +13785,9 @@ func (s *Server) HandleReposListPagesBuildsRequest(w http.ResponseWriter, r *htt
 	}
 }
 
+// HandleReposListPullRequestsAssociatedWithCommitRequest handles repos/list-pull-requests-associated-with-commit operation.
+//
+// GET /repos/{owner}/{repo}/commits/{commit_sha}/pulls
 func (s *Server) HandleReposListPullRequestsAssociatedWithCommitRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListPullRequestsAssociatedWithCommit`,
 		trace.WithAttributes(otelogen.OperationID(`repos/list-pull-requests-associated-with-commit`)),
@@ -12422,6 +13814,9 @@ func (s *Server) HandleReposListPullRequestsAssociatedWithCommitRequest(w http.R
 	}
 }
 
+// HandleReposListReleaseAssetsRequest handles repos/list-release-assets operation.
+//
+// GET /repos/{owner}/{repo}/releases/{release_id}/assets
 func (s *Server) HandleReposListReleaseAssetsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListReleaseAssets`,
 		trace.WithAttributes(otelogen.OperationID(`repos/list-release-assets`)),
@@ -12448,6 +13843,9 @@ func (s *Server) HandleReposListReleaseAssetsRequest(w http.ResponseWriter, r *h
 	}
 }
 
+// HandleReposListReleasesRequest handles repos/list-releases operation.
+//
+// GET /repos/{owner}/{repo}/releases
 func (s *Server) HandleReposListReleasesRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListReleases`,
 		trace.WithAttributes(otelogen.OperationID(`repos/list-releases`)),
@@ -12474,6 +13872,9 @@ func (s *Server) HandleReposListReleasesRequest(w http.ResponseWriter, r *http.R
 	}
 }
 
+// HandleReposListTagsRequest handles repos/list-tags operation.
+//
+// GET /repos/{owner}/{repo}/tags
 func (s *Server) HandleReposListTagsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListTags`,
 		trace.WithAttributes(otelogen.OperationID(`repos/list-tags`)),
@@ -12500,6 +13901,9 @@ func (s *Server) HandleReposListTagsRequest(w http.ResponseWriter, r *http.Reque
 	}
 }
 
+// HandleReposListTeamsRequest handles repos/list-teams operation.
+//
+// GET /repos/{owner}/{repo}/teams
 func (s *Server) HandleReposListTeamsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListTeams`,
 		trace.WithAttributes(otelogen.OperationID(`repos/list-teams`)),
@@ -12526,6 +13930,9 @@ func (s *Server) HandleReposListTeamsRequest(w http.ResponseWriter, r *http.Requ
 	}
 }
 
+// HandleReposListWebhooksRequest handles repos/list-webhooks operation.
+//
+// GET /repos/{owner}/{repo}/hooks
 func (s *Server) HandleReposListWebhooksRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListWebhooks`,
 		trace.WithAttributes(otelogen.OperationID(`repos/list-webhooks`)),
@@ -12552,6 +13959,9 @@ func (s *Server) HandleReposListWebhooksRequest(w http.ResponseWriter, r *http.R
 	}
 }
 
+// HandleReposMergeUpstreamRequest handles repos/merge-upstream operation.
+//
+// POST /repos/{owner}/{repo}/merge-upstream
 func (s *Server) HandleReposMergeUpstreamRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposMergeUpstream`,
 		trace.WithAttributes(otelogen.OperationID(`repos/merge-upstream`)),
@@ -12584,6 +13994,9 @@ func (s *Server) HandleReposMergeUpstreamRequest(w http.ResponseWriter, r *http.
 	}
 }
 
+// HandleReposPingWebhookRequest handles repos/ping-webhook operation.
+//
+// POST /repos/{owner}/{repo}/hooks/{hook_id}/pings
 func (s *Server) HandleReposPingWebhookRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposPingWebhook`,
 		trace.WithAttributes(otelogen.OperationID(`repos/ping-webhook`)),
@@ -12610,6 +14023,9 @@ func (s *Server) HandleReposPingWebhookRequest(w http.ResponseWriter, r *http.Re
 	}
 }
 
+// HandleReposRemoveCollaboratorRequest handles repos/remove-collaborator operation.
+//
+// DELETE /repos/{owner}/{repo}/collaborators/{username}
 func (s *Server) HandleReposRemoveCollaboratorRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposRemoveCollaborator`,
 		trace.WithAttributes(otelogen.OperationID(`repos/remove-collaborator`)),
@@ -12636,6 +14052,9 @@ func (s *Server) HandleReposRemoveCollaboratorRequest(w http.ResponseWriter, r *
 	}
 }
 
+// HandleReposRemoveStatusCheckProtectionRequest handles repos/remove-status-check-protection operation.
+//
+// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks
 func (s *Server) HandleReposRemoveStatusCheckProtectionRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposRemoveStatusCheckProtection`,
 		trace.WithAttributes(otelogen.OperationID(`repos/remove-status-check-protection`)),
@@ -12662,6 +14081,9 @@ func (s *Server) HandleReposRemoveStatusCheckProtectionRequest(w http.ResponseWr
 	}
 }
 
+// HandleReposReplaceAllTopicsRequest handles repos/replace-all-topics operation.
+//
+// PUT /repos/{owner}/{repo}/topics
 func (s *Server) HandleReposReplaceAllTopicsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposReplaceAllTopics`,
 		trace.WithAttributes(otelogen.OperationID(`repos/replace-all-topics`)),
@@ -12694,6 +14116,9 @@ func (s *Server) HandleReposReplaceAllTopicsRequest(w http.ResponseWriter, r *ht
 	}
 }
 
+// HandleReposRequestPagesBuildRequest handles repos/request-pages-build operation.
+//
+// POST /repos/{owner}/{repo}/pages/builds
 func (s *Server) HandleReposRequestPagesBuildRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposRequestPagesBuild`,
 		trace.WithAttributes(otelogen.OperationID(`repos/request-pages-build`)),
@@ -12720,6 +14145,9 @@ func (s *Server) HandleReposRequestPagesBuildRequest(w http.ResponseWriter, r *h
 	}
 }
 
+// HandleReposSetAdminBranchProtectionRequest handles repos/set-admin-branch-protection operation.
+//
+// POST /repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins
 func (s *Server) HandleReposSetAdminBranchProtectionRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposSetAdminBranchProtection`,
 		trace.WithAttributes(otelogen.OperationID(`repos/set-admin-branch-protection`)),
@@ -12746,6 +14174,9 @@ func (s *Server) HandleReposSetAdminBranchProtectionRequest(w http.ResponseWrite
 	}
 }
 
+// HandleReposTestPushWebhookRequest handles repos/test-push-webhook operation.
+//
+// POST /repos/{owner}/{repo}/hooks/{hook_id}/tests
 func (s *Server) HandleReposTestPushWebhookRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposTestPushWebhook`,
 		trace.WithAttributes(otelogen.OperationID(`repos/test-push-webhook`)),
@@ -12772,6 +14203,9 @@ func (s *Server) HandleReposTestPushWebhookRequest(w http.ResponseWriter, r *htt
 	}
 }
 
+// HandleReposTransferRequest handles repos/transfer operation.
+//
+// POST /repos/{owner}/{repo}/transfer
 func (s *Server) HandleReposTransferRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposTransfer`,
 		trace.WithAttributes(otelogen.OperationID(`repos/transfer`)),
@@ -12804,6 +14238,9 @@ func (s *Server) HandleReposTransferRequest(w http.ResponseWriter, r *http.Reque
 	}
 }
 
+// HandleReposUpdateBranchProtectionRequest handles repos/update-branch-protection operation.
+//
+// PUT /repos/{owner}/{repo}/branches/{branch}/protection
 func (s *Server) HandleReposUpdateBranchProtectionRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposUpdateBranchProtection`,
 		trace.WithAttributes(otelogen.OperationID(`repos/update-branch-protection`)),
@@ -12836,6 +14273,9 @@ func (s *Server) HandleReposUpdateBranchProtectionRequest(w http.ResponseWriter,
 	}
 }
 
+// HandleReposUpdateCommitCommentRequest handles repos/update-commit-comment operation.
+//
+// PATCH /repos/{owner}/{repo}/comments/{comment_id}
 func (s *Server) HandleReposUpdateCommitCommentRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposUpdateCommitComment`,
 		trace.WithAttributes(otelogen.OperationID(`repos/update-commit-comment`)),
@@ -12868,6 +14308,9 @@ func (s *Server) HandleReposUpdateCommitCommentRequest(w http.ResponseWriter, r 
 	}
 }
 
+// HandleReposUpdateInvitationRequest handles repos/update-invitation operation.
+//
+// PATCH /repos/{owner}/{repo}/invitations/{invitation_id}
 func (s *Server) HandleReposUpdateInvitationRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposUpdateInvitation`,
 		trace.WithAttributes(otelogen.OperationID(`repos/update-invitation`)),
@@ -12900,6 +14343,9 @@ func (s *Server) HandleReposUpdateInvitationRequest(w http.ResponseWriter, r *ht
 	}
 }
 
+// HandleReposUpdateReleaseRequest handles repos/update-release operation.
+//
+// PATCH /repos/{owner}/{repo}/releases/{release_id}
 func (s *Server) HandleReposUpdateReleaseRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposUpdateRelease`,
 		trace.WithAttributes(otelogen.OperationID(`repos/update-release`)),
@@ -12932,6 +14378,9 @@ func (s *Server) HandleReposUpdateReleaseRequest(w http.ResponseWriter, r *http.
 	}
 }
 
+// HandleReposUpdateReleaseAssetRequest handles repos/update-release-asset operation.
+//
+// PATCH /repos/{owner}/{repo}/releases/assets/{asset_id}
 func (s *Server) HandleReposUpdateReleaseAssetRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposUpdateReleaseAsset`,
 		trace.WithAttributes(otelogen.OperationID(`repos/update-release-asset`)),
@@ -12964,6 +14413,9 @@ func (s *Server) HandleReposUpdateReleaseAssetRequest(w http.ResponseWriter, r *
 	}
 }
 
+// HandleReposUpdateWebhookConfigForRepoRequest handles repos/update-webhook-config-for-repo operation.
+//
+// PATCH /repos/{owner}/{repo}/hooks/{hook_id}/config
 func (s *Server) HandleReposUpdateWebhookConfigForRepoRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposUpdateWebhookConfigForRepo`,
 		trace.WithAttributes(otelogen.OperationID(`repos/update-webhook-config-for-repo`)),
@@ -12996,6 +14448,9 @@ func (s *Server) HandleReposUpdateWebhookConfigForRepoRequest(w http.ResponseWri
 	}
 }
 
+// HandleScimDeleteUserFromOrgRequest handles scim/delete-user-from-org operation.
+//
+// DELETE /scim/v2/organizations/{org}/Users/{scim_user_id}
 func (s *Server) HandleScimDeleteUserFromOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ScimDeleteUserFromOrg`,
 		trace.WithAttributes(otelogen.OperationID(`scim/delete-user-from-org`)),
@@ -13022,6 +14477,9 @@ func (s *Server) HandleScimDeleteUserFromOrgRequest(w http.ResponseWriter, r *ht
 	}
 }
 
+// HandleSearchCommitsRequest handles search/commits operation.
+//
+// GET /search/commits
 func (s *Server) HandleSearchCommitsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `SearchCommits`,
 		trace.WithAttributes(otelogen.OperationID(`search/commits`)),
@@ -13048,6 +14506,9 @@ func (s *Server) HandleSearchCommitsRequest(w http.ResponseWriter, r *http.Reque
 	}
 }
 
+// HandleSearchTopicsRequest handles search/topics operation.
+//
+// GET /search/topics
 func (s *Server) HandleSearchTopicsRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `SearchTopics`,
 		trace.WithAttributes(otelogen.OperationID(`search/topics`)),
@@ -13074,6 +14535,9 @@ func (s *Server) HandleSearchTopicsRequest(w http.ResponseWriter, r *http.Reques
 	}
 }
 
+// HandleSecretScanningGetAlertRequest handles secret-scanning/get-alert operation.
+//
+// GET /repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}
 func (s *Server) HandleSecretScanningGetAlertRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `SecretScanningGetAlert`,
 		trace.WithAttributes(otelogen.OperationID(`secret-scanning/get-alert`)),
@@ -13100,6 +14564,9 @@ func (s *Server) HandleSecretScanningGetAlertRequest(w http.ResponseWriter, r *h
 	}
 }
 
+// HandleSecretScanningListAlertsForOrgRequest handles secret-scanning/list-alerts-for-org operation.
+//
+// GET /orgs/{org}/secret-scanning/alerts
 func (s *Server) HandleSecretScanningListAlertsForOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `SecretScanningListAlertsForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`secret-scanning/list-alerts-for-org`)),
@@ -13126,6 +14593,9 @@ func (s *Server) HandleSecretScanningListAlertsForOrgRequest(w http.ResponseWrit
 	}
 }
 
+// HandleSecretScanningListAlertsForRepoRequest handles secret-scanning/list-alerts-for-repo operation.
+//
+// GET /repos/{owner}/{repo}/secret-scanning/alerts
 func (s *Server) HandleSecretScanningListAlertsForRepoRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `SecretScanningListAlertsForRepo`,
 		trace.WithAttributes(otelogen.OperationID(`secret-scanning/list-alerts-for-repo`)),
@@ -13152,6 +14622,9 @@ func (s *Server) HandleSecretScanningListAlertsForRepoRequest(w http.ResponseWri
 	}
 }
 
+// HandleSecretScanningUpdateAlertRequest handles secret-scanning/update-alert operation.
+//
+// PATCH /repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}
 func (s *Server) HandleSecretScanningUpdateAlertRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `SecretScanningUpdateAlert`,
 		trace.WithAttributes(otelogen.OperationID(`secret-scanning/update-alert`)),
@@ -13184,6 +14657,9 @@ func (s *Server) HandleSecretScanningUpdateAlertRequest(w http.ResponseWriter, r
 	}
 }
 
+// HandleTeamsAddMemberLegacyRequest handles teams/add-member-legacy operation.
+//
+// PUT /teams/{team_id}/members/{username}
 func (s *Server) HandleTeamsAddMemberLegacyRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsAddMemberLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/add-member-legacy`)),
@@ -13210,6 +14686,9 @@ func (s *Server) HandleTeamsAddMemberLegacyRequest(w http.ResponseWriter, r *htt
 	}
 }
 
+// HandleTeamsAddOrUpdateMembershipForUserInOrgRequest handles teams/add-or-update-membership-for-user-in-org operation.
+//
+// PUT /orgs/{org}/teams/{team_slug}/memberships/{username}
 func (s *Server) HandleTeamsAddOrUpdateMembershipForUserInOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsAddOrUpdateMembershipForUserInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/add-or-update-membership-for-user-in-org`)),
@@ -13242,6 +14721,9 @@ func (s *Server) HandleTeamsAddOrUpdateMembershipForUserInOrgRequest(w http.Resp
 	}
 }
 
+// HandleTeamsAddOrUpdateMembershipForUserLegacyRequest handles teams/add-or-update-membership-for-user-legacy operation.
+//
+// PUT /teams/{team_id}/memberships/{username}
 func (s *Server) HandleTeamsAddOrUpdateMembershipForUserLegacyRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsAddOrUpdateMembershipForUserLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/add-or-update-membership-for-user-legacy`)),
@@ -13274,6 +14756,9 @@ func (s *Server) HandleTeamsAddOrUpdateMembershipForUserLegacyRequest(w http.Res
 	}
 }
 
+// HandleTeamsAddOrUpdateProjectPermissionsInOrgRequest handles teams/add-or-update-project-permissions-in-org operation.
+//
+// PUT /orgs/{org}/teams/{team_slug}/projects/{project_id}
 func (s *Server) HandleTeamsAddOrUpdateProjectPermissionsInOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsAddOrUpdateProjectPermissionsInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/add-or-update-project-permissions-in-org`)),
@@ -13306,6 +14791,9 @@ func (s *Server) HandleTeamsAddOrUpdateProjectPermissionsInOrgRequest(w http.Res
 	}
 }
 
+// HandleTeamsAddOrUpdateRepoPermissionsInOrgRequest handles teams/add-or-update-repo-permissions-in-org operation.
+//
+// PUT /orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}
 func (s *Server) HandleTeamsAddOrUpdateRepoPermissionsInOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsAddOrUpdateRepoPermissionsInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/add-or-update-repo-permissions-in-org`)),
@@ -13338,6 +14826,9 @@ func (s *Server) HandleTeamsAddOrUpdateRepoPermissionsInOrgRequest(w http.Respon
 	}
 }
 
+// HandleTeamsCheckPermissionsForProjectInOrgRequest handles teams/check-permissions-for-project-in-org operation.
+//
+// GET /orgs/{org}/teams/{team_slug}/projects/{project_id}
 func (s *Server) HandleTeamsCheckPermissionsForProjectInOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsCheckPermissionsForProjectInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/check-permissions-for-project-in-org`)),
@@ -13364,6 +14855,9 @@ func (s *Server) HandleTeamsCheckPermissionsForProjectInOrgRequest(w http.Respon
 	}
 }
 
+// HandleTeamsCheckPermissionsForProjectLegacyRequest handles teams/check-permissions-for-project-legacy operation.
+//
+// GET /teams/{team_id}/projects/{project_id}
 func (s *Server) HandleTeamsCheckPermissionsForProjectLegacyRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsCheckPermissionsForProjectLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/check-permissions-for-project-legacy`)),
@@ -13390,6 +14884,9 @@ func (s *Server) HandleTeamsCheckPermissionsForProjectLegacyRequest(w http.Respo
 	}
 }
 
+// HandleTeamsCheckPermissionsForRepoInOrgRequest handles teams/check-permissions-for-repo-in-org operation.
+//
+// GET /orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}
 func (s *Server) HandleTeamsCheckPermissionsForRepoInOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsCheckPermissionsForRepoInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/check-permissions-for-repo-in-org`)),
@@ -13416,6 +14913,9 @@ func (s *Server) HandleTeamsCheckPermissionsForRepoInOrgRequest(w http.ResponseW
 	}
 }
 
+// HandleTeamsCheckPermissionsForRepoLegacyRequest handles teams/check-permissions-for-repo-legacy operation.
+//
+// GET /teams/{team_id}/repos/{owner}/{repo}
 func (s *Server) HandleTeamsCheckPermissionsForRepoLegacyRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsCheckPermissionsForRepoLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/check-permissions-for-repo-legacy`)),
@@ -13442,6 +14942,9 @@ func (s *Server) HandleTeamsCheckPermissionsForRepoLegacyRequest(w http.Response
 	}
 }
 
+// HandleTeamsCreateDiscussionCommentInOrgRequest handles teams/create-discussion-comment-in-org operation.
+//
+// POST /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments
 func (s *Server) HandleTeamsCreateDiscussionCommentInOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsCreateDiscussionCommentInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/create-discussion-comment-in-org`)),
@@ -13474,6 +14977,9 @@ func (s *Server) HandleTeamsCreateDiscussionCommentInOrgRequest(w http.ResponseW
 	}
 }
 
+// HandleTeamsCreateDiscussionCommentLegacyRequest handles teams/create-discussion-comment-legacy operation.
+//
+// POST /teams/{team_id}/discussions/{discussion_number}/comments
 func (s *Server) HandleTeamsCreateDiscussionCommentLegacyRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsCreateDiscussionCommentLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/create-discussion-comment-legacy`)),
@@ -13506,6 +15012,9 @@ func (s *Server) HandleTeamsCreateDiscussionCommentLegacyRequest(w http.Response
 	}
 }
 
+// HandleTeamsCreateDiscussionInOrgRequest handles teams/create-discussion-in-org operation.
+//
+// POST /orgs/{org}/teams/{team_slug}/discussions
 func (s *Server) HandleTeamsCreateDiscussionInOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsCreateDiscussionInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/create-discussion-in-org`)),
@@ -13538,6 +15047,9 @@ func (s *Server) HandleTeamsCreateDiscussionInOrgRequest(w http.ResponseWriter, 
 	}
 }
 
+// HandleTeamsCreateDiscussionLegacyRequest handles teams/create-discussion-legacy operation.
+//
+// POST /teams/{team_id}/discussions
 func (s *Server) HandleTeamsCreateDiscussionLegacyRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsCreateDiscussionLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/create-discussion-legacy`)),
@@ -13570,6 +15082,9 @@ func (s *Server) HandleTeamsCreateDiscussionLegacyRequest(w http.ResponseWriter,
 	}
 }
 
+// HandleTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest handles teams/create-or-update-idp-group-connections-in-org operation.
+//
+// PATCH /orgs/{org}/teams/{team_slug}/team-sync/group-mappings
 func (s *Server) HandleTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsCreateOrUpdateIdpGroupConnectionsInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/create-or-update-idp-group-connections-in-org`)),
@@ -13602,6 +15117,9 @@ func (s *Server) HandleTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(w http
 	}
 }
 
+// HandleTeamsDeleteDiscussionCommentInOrgRequest handles teams/delete-discussion-comment-in-org operation.
+//
+// DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}
 func (s *Server) HandleTeamsDeleteDiscussionCommentInOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsDeleteDiscussionCommentInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/delete-discussion-comment-in-org`)),
@@ -13628,6 +15146,9 @@ func (s *Server) HandleTeamsDeleteDiscussionCommentInOrgRequest(w http.ResponseW
 	}
 }
 
+// HandleTeamsDeleteDiscussionCommentLegacyRequest handles teams/delete-discussion-comment-legacy operation.
+//
+// DELETE /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}
 func (s *Server) HandleTeamsDeleteDiscussionCommentLegacyRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsDeleteDiscussionCommentLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/delete-discussion-comment-legacy`)),
@@ -13654,6 +15175,9 @@ func (s *Server) HandleTeamsDeleteDiscussionCommentLegacyRequest(w http.Response
 	}
 }
 
+// HandleTeamsDeleteDiscussionInOrgRequest handles teams/delete-discussion-in-org operation.
+//
+// DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}
 func (s *Server) HandleTeamsDeleteDiscussionInOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsDeleteDiscussionInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/delete-discussion-in-org`)),
@@ -13680,6 +15204,9 @@ func (s *Server) HandleTeamsDeleteDiscussionInOrgRequest(w http.ResponseWriter, 
 	}
 }
 
+// HandleTeamsDeleteDiscussionLegacyRequest handles teams/delete-discussion-legacy operation.
+//
+// DELETE /teams/{team_id}/discussions/{discussion_number}
 func (s *Server) HandleTeamsDeleteDiscussionLegacyRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsDeleteDiscussionLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/delete-discussion-legacy`)),
@@ -13706,6 +15233,9 @@ func (s *Server) HandleTeamsDeleteDiscussionLegacyRequest(w http.ResponseWriter,
 	}
 }
 
+// HandleTeamsDeleteInOrgRequest handles teams/delete-in-org operation.
+//
+// DELETE /orgs/{org}/teams/{team_slug}
 func (s *Server) HandleTeamsDeleteInOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsDeleteInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/delete-in-org`)),
@@ -13732,6 +15262,9 @@ func (s *Server) HandleTeamsDeleteInOrgRequest(w http.ResponseWriter, r *http.Re
 	}
 }
 
+// HandleTeamsGetByNameRequest handles teams/get-by-name operation.
+//
+// GET /orgs/{org}/teams/{team_slug}
 func (s *Server) HandleTeamsGetByNameRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsGetByName`,
 		trace.WithAttributes(otelogen.OperationID(`teams/get-by-name`)),
@@ -13758,6 +15291,9 @@ func (s *Server) HandleTeamsGetByNameRequest(w http.ResponseWriter, r *http.Requ
 	}
 }
 
+// HandleTeamsGetDiscussionCommentInOrgRequest handles teams/get-discussion-comment-in-org operation.
+//
+// GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}
 func (s *Server) HandleTeamsGetDiscussionCommentInOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsGetDiscussionCommentInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/get-discussion-comment-in-org`)),
@@ -13784,6 +15320,9 @@ func (s *Server) HandleTeamsGetDiscussionCommentInOrgRequest(w http.ResponseWrit
 	}
 }
 
+// HandleTeamsGetDiscussionCommentLegacyRequest handles teams/get-discussion-comment-legacy operation.
+//
+// GET /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}
 func (s *Server) HandleTeamsGetDiscussionCommentLegacyRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsGetDiscussionCommentLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/get-discussion-comment-legacy`)),
@@ -13810,6 +15349,9 @@ func (s *Server) HandleTeamsGetDiscussionCommentLegacyRequest(w http.ResponseWri
 	}
 }
 
+// HandleTeamsGetDiscussionInOrgRequest handles teams/get-discussion-in-org operation.
+//
+// GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}
 func (s *Server) HandleTeamsGetDiscussionInOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsGetDiscussionInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/get-discussion-in-org`)),
@@ -13836,6 +15378,9 @@ func (s *Server) HandleTeamsGetDiscussionInOrgRequest(w http.ResponseWriter, r *
 	}
 }
 
+// HandleTeamsGetDiscussionLegacyRequest handles teams/get-discussion-legacy operation.
+//
+// GET /teams/{team_id}/discussions/{discussion_number}
 func (s *Server) HandleTeamsGetDiscussionLegacyRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsGetDiscussionLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/get-discussion-legacy`)),
@@ -13862,6 +15407,9 @@ func (s *Server) HandleTeamsGetDiscussionLegacyRequest(w http.ResponseWriter, r 
 	}
 }
 
+// HandleTeamsGetLegacyRequest handles teams/get-legacy operation.
+//
+// GET /teams/{team_id}
 func (s *Server) HandleTeamsGetLegacyRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsGetLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/get-legacy`)),
@@ -13888,6 +15436,9 @@ func (s *Server) HandleTeamsGetLegacyRequest(w http.ResponseWriter, r *http.Requ
 	}
 }
 
+// HandleTeamsGetMemberLegacyRequest handles teams/get-member-legacy operation.
+//
+// GET /teams/{team_id}/members/{username}
 func (s *Server) HandleTeamsGetMemberLegacyRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsGetMemberLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/get-member-legacy`)),
@@ -13914,6 +15465,9 @@ func (s *Server) HandleTeamsGetMemberLegacyRequest(w http.ResponseWriter, r *htt
 	}
 }
 
+// HandleTeamsGetMembershipForUserInOrgRequest handles teams/get-membership-for-user-in-org operation.
+//
+// GET /orgs/{org}/teams/{team_slug}/memberships/{username}
 func (s *Server) HandleTeamsGetMembershipForUserInOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsGetMembershipForUserInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/get-membership-for-user-in-org`)),
@@ -13940,6 +15494,9 @@ func (s *Server) HandleTeamsGetMembershipForUserInOrgRequest(w http.ResponseWrit
 	}
 }
 
+// HandleTeamsGetMembershipForUserLegacyRequest handles teams/get-membership-for-user-legacy operation.
+//
+// GET /teams/{team_id}/memberships/{username}
 func (s *Server) HandleTeamsGetMembershipForUserLegacyRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsGetMembershipForUserLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/get-membership-for-user-legacy`)),
@@ -13966,6 +15523,9 @@ func (s *Server) HandleTeamsGetMembershipForUserLegacyRequest(w http.ResponseWri
 	}
 }
 
+// HandleTeamsListRequest handles teams/list operation.
+//
+// GET /orgs/{org}/teams
 func (s *Server) HandleTeamsListRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsList`,
 		trace.WithAttributes(otelogen.OperationID(`teams/list`)),
@@ -13992,6 +15552,9 @@ func (s *Server) HandleTeamsListRequest(w http.ResponseWriter, r *http.Request) 
 	}
 }
 
+// HandleTeamsListChildInOrgRequest handles teams/list-child-in-org operation.
+//
+// GET /orgs/{org}/teams/{team_slug}/teams
 func (s *Server) HandleTeamsListChildInOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsListChildInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/list-child-in-org`)),
@@ -14018,6 +15581,9 @@ func (s *Server) HandleTeamsListChildInOrgRequest(w http.ResponseWriter, r *http
 	}
 }
 
+// HandleTeamsListDiscussionCommentsInOrgRequest handles teams/list-discussion-comments-in-org operation.
+//
+// GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments
 func (s *Server) HandleTeamsListDiscussionCommentsInOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsListDiscussionCommentsInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/list-discussion-comments-in-org`)),
@@ -14044,6 +15610,9 @@ func (s *Server) HandleTeamsListDiscussionCommentsInOrgRequest(w http.ResponseWr
 	}
 }
 
+// HandleTeamsListDiscussionCommentsLegacyRequest handles teams/list-discussion-comments-legacy operation.
+//
+// GET /teams/{team_id}/discussions/{discussion_number}/comments
 func (s *Server) HandleTeamsListDiscussionCommentsLegacyRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsListDiscussionCommentsLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/list-discussion-comments-legacy`)),
@@ -14070,6 +15639,9 @@ func (s *Server) HandleTeamsListDiscussionCommentsLegacyRequest(w http.ResponseW
 	}
 }
 
+// HandleTeamsListDiscussionsInOrgRequest handles teams/list-discussions-in-org operation.
+//
+// GET /orgs/{org}/teams/{team_slug}/discussions
 func (s *Server) HandleTeamsListDiscussionsInOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsListDiscussionsInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/list-discussions-in-org`)),
@@ -14096,6 +15668,9 @@ func (s *Server) HandleTeamsListDiscussionsInOrgRequest(w http.ResponseWriter, r
 	}
 }
 
+// HandleTeamsListDiscussionsLegacyRequest handles teams/list-discussions-legacy operation.
+//
+// GET /teams/{team_id}/discussions
 func (s *Server) HandleTeamsListDiscussionsLegacyRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsListDiscussionsLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/list-discussions-legacy`)),
@@ -14122,6 +15697,9 @@ func (s *Server) HandleTeamsListDiscussionsLegacyRequest(w http.ResponseWriter, 
 	}
 }
 
+// HandleTeamsListForAuthenticatedUserRequest handles teams/list-for-authenticated-user operation.
+//
+// GET /user/teams
 func (s *Server) HandleTeamsListForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsListForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`teams/list-for-authenticated-user`)),
@@ -14148,6 +15726,9 @@ func (s *Server) HandleTeamsListForAuthenticatedUserRequest(w http.ResponseWrite
 	}
 }
 
+// HandleTeamsListIdpGroupsForLegacyRequest handles teams/list-idp-groups-for-legacy operation.
+//
+// GET /teams/{team_id}/team-sync/group-mappings
 func (s *Server) HandleTeamsListIdpGroupsForLegacyRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsListIdpGroupsForLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/list-idp-groups-for-legacy`)),
@@ -14174,6 +15755,9 @@ func (s *Server) HandleTeamsListIdpGroupsForLegacyRequest(w http.ResponseWriter,
 	}
 }
 
+// HandleTeamsListIdpGroupsForOrgRequest handles teams/list-idp-groups-for-org operation.
+//
+// GET /orgs/{org}/team-sync/groups
 func (s *Server) HandleTeamsListIdpGroupsForOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsListIdpGroupsForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/list-idp-groups-for-org`)),
@@ -14200,6 +15784,9 @@ func (s *Server) HandleTeamsListIdpGroupsForOrgRequest(w http.ResponseWriter, r 
 	}
 }
 
+// HandleTeamsListIdpGroupsInOrgRequest handles teams/list-idp-groups-in-org operation.
+//
+// GET /orgs/{org}/teams/{team_slug}/team-sync/group-mappings
 func (s *Server) HandleTeamsListIdpGroupsInOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsListIdpGroupsInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/list-idp-groups-in-org`)),
@@ -14226,6 +15813,9 @@ func (s *Server) HandleTeamsListIdpGroupsInOrgRequest(w http.ResponseWriter, r *
 	}
 }
 
+// HandleTeamsListMembersInOrgRequest handles teams/list-members-in-org operation.
+//
+// GET /orgs/{org}/teams/{team_slug}/members
 func (s *Server) HandleTeamsListMembersInOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsListMembersInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/list-members-in-org`)),
@@ -14252,6 +15842,9 @@ func (s *Server) HandleTeamsListMembersInOrgRequest(w http.ResponseWriter, r *ht
 	}
 }
 
+// HandleTeamsListMembersLegacyRequest handles teams/list-members-legacy operation.
+//
+// GET /teams/{team_id}/members
 func (s *Server) HandleTeamsListMembersLegacyRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsListMembersLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/list-members-legacy`)),
@@ -14278,6 +15871,9 @@ func (s *Server) HandleTeamsListMembersLegacyRequest(w http.ResponseWriter, r *h
 	}
 }
 
+// HandleTeamsListPendingInvitationsInOrgRequest handles teams/list-pending-invitations-in-org operation.
+//
+// GET /orgs/{org}/teams/{team_slug}/invitations
 func (s *Server) HandleTeamsListPendingInvitationsInOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsListPendingInvitationsInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/list-pending-invitations-in-org`)),
@@ -14304,6 +15900,9 @@ func (s *Server) HandleTeamsListPendingInvitationsInOrgRequest(w http.ResponseWr
 	}
 }
 
+// HandleTeamsListPendingInvitationsLegacyRequest handles teams/list-pending-invitations-legacy operation.
+//
+// GET /teams/{team_id}/invitations
 func (s *Server) HandleTeamsListPendingInvitationsLegacyRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsListPendingInvitationsLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/list-pending-invitations-legacy`)),
@@ -14330,6 +15929,9 @@ func (s *Server) HandleTeamsListPendingInvitationsLegacyRequest(w http.ResponseW
 	}
 }
 
+// HandleTeamsListProjectsInOrgRequest handles teams/list-projects-in-org operation.
+//
+// GET /orgs/{org}/teams/{team_slug}/projects
 func (s *Server) HandleTeamsListProjectsInOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsListProjectsInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/list-projects-in-org`)),
@@ -14356,6 +15958,9 @@ func (s *Server) HandleTeamsListProjectsInOrgRequest(w http.ResponseWriter, r *h
 	}
 }
 
+// HandleTeamsListProjectsLegacyRequest handles teams/list-projects-legacy operation.
+//
+// GET /teams/{team_id}/projects
 func (s *Server) HandleTeamsListProjectsLegacyRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsListProjectsLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/list-projects-legacy`)),
@@ -14382,6 +15987,9 @@ func (s *Server) HandleTeamsListProjectsLegacyRequest(w http.ResponseWriter, r *
 	}
 }
 
+// HandleTeamsListReposInOrgRequest handles teams/list-repos-in-org operation.
+//
+// GET /orgs/{org}/teams/{team_slug}/repos
 func (s *Server) HandleTeamsListReposInOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsListReposInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/list-repos-in-org`)),
@@ -14408,6 +16016,9 @@ func (s *Server) HandleTeamsListReposInOrgRequest(w http.ResponseWriter, r *http
 	}
 }
 
+// HandleTeamsListReposLegacyRequest handles teams/list-repos-legacy operation.
+//
+// GET /teams/{team_id}/repos
 func (s *Server) HandleTeamsListReposLegacyRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsListReposLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/list-repos-legacy`)),
@@ -14434,6 +16045,9 @@ func (s *Server) HandleTeamsListReposLegacyRequest(w http.ResponseWriter, r *htt
 	}
 }
 
+// HandleTeamsRemoveMemberLegacyRequest handles teams/remove-member-legacy operation.
+//
+// DELETE /teams/{team_id}/members/{username}
 func (s *Server) HandleTeamsRemoveMemberLegacyRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsRemoveMemberLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/remove-member-legacy`)),
@@ -14460,6 +16074,9 @@ func (s *Server) HandleTeamsRemoveMemberLegacyRequest(w http.ResponseWriter, r *
 	}
 }
 
+// HandleTeamsRemoveMembershipForUserInOrgRequest handles teams/remove-membership-for-user-in-org operation.
+//
+// DELETE /orgs/{org}/teams/{team_slug}/memberships/{username}
 func (s *Server) HandleTeamsRemoveMembershipForUserInOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsRemoveMembershipForUserInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/remove-membership-for-user-in-org`)),
@@ -14486,6 +16103,9 @@ func (s *Server) HandleTeamsRemoveMembershipForUserInOrgRequest(w http.ResponseW
 	}
 }
 
+// HandleTeamsRemoveMembershipForUserLegacyRequest handles teams/remove-membership-for-user-legacy operation.
+//
+// DELETE /teams/{team_id}/memberships/{username}
 func (s *Server) HandleTeamsRemoveMembershipForUserLegacyRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsRemoveMembershipForUserLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/remove-membership-for-user-legacy`)),
@@ -14512,6 +16132,9 @@ func (s *Server) HandleTeamsRemoveMembershipForUserLegacyRequest(w http.Response
 	}
 }
 
+// HandleTeamsRemoveProjectInOrgRequest handles teams/remove-project-in-org operation.
+//
+// DELETE /orgs/{org}/teams/{team_slug}/projects/{project_id}
 func (s *Server) HandleTeamsRemoveProjectInOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsRemoveProjectInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/remove-project-in-org`)),
@@ -14538,6 +16161,9 @@ func (s *Server) HandleTeamsRemoveProjectInOrgRequest(w http.ResponseWriter, r *
 	}
 }
 
+// HandleTeamsRemoveRepoInOrgRequest handles teams/remove-repo-in-org operation.
+//
+// DELETE /orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}
 func (s *Server) HandleTeamsRemoveRepoInOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsRemoveRepoInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/remove-repo-in-org`)),
@@ -14564,6 +16190,9 @@ func (s *Server) HandleTeamsRemoveRepoInOrgRequest(w http.ResponseWriter, r *htt
 	}
 }
 
+// HandleTeamsRemoveRepoLegacyRequest handles teams/remove-repo-legacy operation.
+//
+// DELETE /teams/{team_id}/repos/{owner}/{repo}
 func (s *Server) HandleTeamsRemoveRepoLegacyRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsRemoveRepoLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/remove-repo-legacy`)),
@@ -14590,6 +16219,9 @@ func (s *Server) HandleTeamsRemoveRepoLegacyRequest(w http.ResponseWriter, r *ht
 	}
 }
 
+// HandleTeamsUpdateDiscussionCommentInOrgRequest handles teams/update-discussion-comment-in-org operation.
+//
+// PATCH /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}
 func (s *Server) HandleTeamsUpdateDiscussionCommentInOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsUpdateDiscussionCommentInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/update-discussion-comment-in-org`)),
@@ -14622,6 +16254,9 @@ func (s *Server) HandleTeamsUpdateDiscussionCommentInOrgRequest(w http.ResponseW
 	}
 }
 
+// HandleTeamsUpdateDiscussionCommentLegacyRequest handles teams/update-discussion-comment-legacy operation.
+//
+// PATCH /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}
 func (s *Server) HandleTeamsUpdateDiscussionCommentLegacyRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsUpdateDiscussionCommentLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/update-discussion-comment-legacy`)),
@@ -14654,6 +16289,9 @@ func (s *Server) HandleTeamsUpdateDiscussionCommentLegacyRequest(w http.Response
 	}
 }
 
+// HandleTeamsUpdateDiscussionInOrgRequest handles teams/update-discussion-in-org operation.
+//
+// PATCH /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}
 func (s *Server) HandleTeamsUpdateDiscussionInOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsUpdateDiscussionInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/update-discussion-in-org`)),
@@ -14686,6 +16324,9 @@ func (s *Server) HandleTeamsUpdateDiscussionInOrgRequest(w http.ResponseWriter, 
 	}
 }
 
+// HandleTeamsUpdateDiscussionLegacyRequest handles teams/update-discussion-legacy operation.
+//
+// PATCH /teams/{team_id}/discussions/{discussion_number}
 func (s *Server) HandleTeamsUpdateDiscussionLegacyRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsUpdateDiscussionLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/update-discussion-legacy`)),
@@ -14718,6 +16359,9 @@ func (s *Server) HandleTeamsUpdateDiscussionLegacyRequest(w http.ResponseWriter,
 	}
 }
 
+// HandleTeamsUpdateInOrgRequest handles teams/update-in-org operation.
+//
+// PATCH /orgs/{org}/teams/{team_slug}
 func (s *Server) HandleTeamsUpdateInOrgRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsUpdateInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/update-in-org`)),
@@ -14750,6 +16394,9 @@ func (s *Server) HandleTeamsUpdateInOrgRequest(w http.ResponseWriter, r *http.Re
 	}
 }
 
+// HandleUsersCheckBlockedRequest handles users/check-blocked operation.
+//
+// GET /user/blocks/{username}
 func (s *Server) HandleUsersCheckBlockedRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersCheckBlocked`,
 		trace.WithAttributes(otelogen.OperationID(`users/check-blocked`)),
@@ -14776,6 +16423,9 @@ func (s *Server) HandleUsersCheckBlockedRequest(w http.ResponseWriter, r *http.R
 	}
 }
 
+// HandleUsersCheckFollowingForUserRequest handles users/check-following-for-user operation.
+//
+// GET /users/{username}/following/{target_user}
 func (s *Server) HandleUsersCheckFollowingForUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersCheckFollowingForUser`,
 		trace.WithAttributes(otelogen.OperationID(`users/check-following-for-user`)),
@@ -14802,6 +16452,9 @@ func (s *Server) HandleUsersCheckFollowingForUserRequest(w http.ResponseWriter, 
 	}
 }
 
+// HandleUsersCheckPersonIsFollowedByAuthenticatedRequest handles users/check-person-is-followed-by-authenticated operation.
+//
+// GET /user/following/{username}
 func (s *Server) HandleUsersCheckPersonIsFollowedByAuthenticatedRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersCheckPersonIsFollowedByAuthenticated`,
 		trace.WithAttributes(otelogen.OperationID(`users/check-person-is-followed-by-authenticated`)),
@@ -14828,6 +16481,9 @@ func (s *Server) HandleUsersCheckPersonIsFollowedByAuthenticatedRequest(w http.R
 	}
 }
 
+// HandleUsersDeletePublicSSHKeyForAuthenticatedRequest handles users/delete-public-ssh-key-for-authenticated operation.
+//
+// DELETE /user/keys/{key_id}
 func (s *Server) HandleUsersDeletePublicSSHKeyForAuthenticatedRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersDeletePublicSSHKeyForAuthenticated`,
 		trace.WithAttributes(otelogen.OperationID(`users/delete-public-ssh-key-for-authenticated`)),
@@ -14854,6 +16510,9 @@ func (s *Server) HandleUsersDeletePublicSSHKeyForAuthenticatedRequest(w http.Res
 	}
 }
 
+// HandleUsersFollowRequest handles users/follow operation.
+//
+// PUT /user/following/{username}
 func (s *Server) HandleUsersFollowRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersFollow`,
 		trace.WithAttributes(otelogen.OperationID(`users/follow`)),
@@ -14880,6 +16539,9 @@ func (s *Server) HandleUsersFollowRequest(w http.ResponseWriter, r *http.Request
 	}
 }
 
+// HandleUsersGetAuthenticatedRequest handles users/get-authenticated operation.
+//
+// GET /user
 func (s *Server) HandleUsersGetAuthenticatedRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersGetAuthenticated`,
 		trace.WithAttributes(otelogen.OperationID(`users/get-authenticated`)),
@@ -14900,6 +16562,9 @@ func (s *Server) HandleUsersGetAuthenticatedRequest(w http.ResponseWriter, r *ht
 	}
 }
 
+// HandleUsersGetByUsernameRequest handles users/get-by-username operation.
+//
+// GET /users/{username}
 func (s *Server) HandleUsersGetByUsernameRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersGetByUsername`,
 		trace.WithAttributes(otelogen.OperationID(`users/get-by-username`)),
@@ -14926,6 +16591,9 @@ func (s *Server) HandleUsersGetByUsernameRequest(w http.ResponseWriter, r *http.
 	}
 }
 
+// HandleUsersGetGpgKeyForAuthenticatedRequest handles users/get-gpg-key-for-authenticated operation.
+//
+// GET /user/gpg_keys/{gpg_key_id}
 func (s *Server) HandleUsersGetGpgKeyForAuthenticatedRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersGetGpgKeyForAuthenticated`,
 		trace.WithAttributes(otelogen.OperationID(`users/get-gpg-key-for-authenticated`)),
@@ -14952,6 +16620,9 @@ func (s *Server) HandleUsersGetGpgKeyForAuthenticatedRequest(w http.ResponseWrit
 	}
 }
 
+// HandleUsersGetPublicSSHKeyForAuthenticatedRequest handles users/get-public-ssh-key-for-authenticated operation.
+//
+// GET /user/keys/{key_id}
 func (s *Server) HandleUsersGetPublicSSHKeyForAuthenticatedRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersGetPublicSSHKeyForAuthenticated`,
 		trace.WithAttributes(otelogen.OperationID(`users/get-public-ssh-key-for-authenticated`)),
@@ -14978,6 +16649,9 @@ func (s *Server) HandleUsersGetPublicSSHKeyForAuthenticatedRequest(w http.Respon
 	}
 }
 
+// HandleUsersListRequest handles users/list operation.
+//
+// GET /users
 func (s *Server) HandleUsersListRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersList`,
 		trace.WithAttributes(otelogen.OperationID(`users/list`)),
@@ -15004,6 +16678,9 @@ func (s *Server) HandleUsersListRequest(w http.ResponseWriter, r *http.Request) 
 	}
 }
 
+// HandleUsersListBlockedByAuthenticatedRequest handles users/list-blocked-by-authenticated operation.
+//
+// GET /user/blocks
 func (s *Server) HandleUsersListBlockedByAuthenticatedRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersListBlockedByAuthenticated`,
 		trace.WithAttributes(otelogen.OperationID(`users/list-blocked-by-authenticated`)),
@@ -15024,6 +16701,9 @@ func (s *Server) HandleUsersListBlockedByAuthenticatedRequest(w http.ResponseWri
 	}
 }
 
+// HandleUsersListEmailsForAuthenticatedRequest handles users/list-emails-for-authenticated operation.
+//
+// GET /user/emails
 func (s *Server) HandleUsersListEmailsForAuthenticatedRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersListEmailsForAuthenticated`,
 		trace.WithAttributes(otelogen.OperationID(`users/list-emails-for-authenticated`)),
@@ -15050,6 +16730,9 @@ func (s *Server) HandleUsersListEmailsForAuthenticatedRequest(w http.ResponseWri
 	}
 }
 
+// HandleUsersListFollowedByAuthenticatedRequest handles users/list-followed-by-authenticated operation.
+//
+// GET /user/following
 func (s *Server) HandleUsersListFollowedByAuthenticatedRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersListFollowedByAuthenticated`,
 		trace.WithAttributes(otelogen.OperationID(`users/list-followed-by-authenticated`)),
@@ -15076,6 +16759,9 @@ func (s *Server) HandleUsersListFollowedByAuthenticatedRequest(w http.ResponseWr
 	}
 }
 
+// HandleUsersListFollowersForAuthenticatedUserRequest handles users/list-followers-for-authenticated-user operation.
+//
+// GET /user/followers
 func (s *Server) HandleUsersListFollowersForAuthenticatedUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersListFollowersForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`users/list-followers-for-authenticated-user`)),
@@ -15102,6 +16788,9 @@ func (s *Server) HandleUsersListFollowersForAuthenticatedUserRequest(w http.Resp
 	}
 }
 
+// HandleUsersListFollowersForUserRequest handles users/list-followers-for-user operation.
+//
+// GET /users/{username}/followers
 func (s *Server) HandleUsersListFollowersForUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersListFollowersForUser`,
 		trace.WithAttributes(otelogen.OperationID(`users/list-followers-for-user`)),
@@ -15128,6 +16817,9 @@ func (s *Server) HandleUsersListFollowersForUserRequest(w http.ResponseWriter, r
 	}
 }
 
+// HandleUsersListFollowingForUserRequest handles users/list-following-for-user operation.
+//
+// GET /users/{username}/following
 func (s *Server) HandleUsersListFollowingForUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersListFollowingForUser`,
 		trace.WithAttributes(otelogen.OperationID(`users/list-following-for-user`)),
@@ -15154,6 +16846,9 @@ func (s *Server) HandleUsersListFollowingForUserRequest(w http.ResponseWriter, r
 	}
 }
 
+// HandleUsersListGpgKeysForAuthenticatedRequest handles users/list-gpg-keys-for-authenticated operation.
+//
+// GET /user/gpg_keys
 func (s *Server) HandleUsersListGpgKeysForAuthenticatedRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersListGpgKeysForAuthenticated`,
 		trace.WithAttributes(otelogen.OperationID(`users/list-gpg-keys-for-authenticated`)),
@@ -15180,6 +16875,9 @@ func (s *Server) HandleUsersListGpgKeysForAuthenticatedRequest(w http.ResponseWr
 	}
 }
 
+// HandleUsersListGpgKeysForUserRequest handles users/list-gpg-keys-for-user operation.
+//
+// GET /users/{username}/gpg_keys
 func (s *Server) HandleUsersListGpgKeysForUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersListGpgKeysForUser`,
 		trace.WithAttributes(otelogen.OperationID(`users/list-gpg-keys-for-user`)),
@@ -15206,6 +16904,9 @@ func (s *Server) HandleUsersListGpgKeysForUserRequest(w http.ResponseWriter, r *
 	}
 }
 
+// HandleUsersListPublicEmailsForAuthenticatedRequest handles users/list-public-emails-for-authenticated operation.
+//
+// GET /user/public_emails
 func (s *Server) HandleUsersListPublicEmailsForAuthenticatedRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersListPublicEmailsForAuthenticated`,
 		trace.WithAttributes(otelogen.OperationID(`users/list-public-emails-for-authenticated`)),
@@ -15232,6 +16933,9 @@ func (s *Server) HandleUsersListPublicEmailsForAuthenticatedRequest(w http.Respo
 	}
 }
 
+// HandleUsersListPublicKeysForUserRequest handles users/list-public-keys-for-user operation.
+//
+// GET /users/{username}/keys
 func (s *Server) HandleUsersListPublicKeysForUserRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersListPublicKeysForUser`,
 		trace.WithAttributes(otelogen.OperationID(`users/list-public-keys-for-user`)),
@@ -15258,6 +16962,9 @@ func (s *Server) HandleUsersListPublicKeysForUserRequest(w http.ResponseWriter, 
 	}
 }
 
+// HandleUsersListPublicSSHKeysForAuthenticatedRequest handles users/list-public-ssh-keys-for-authenticated operation.
+//
+// GET /user/keys
 func (s *Server) HandleUsersListPublicSSHKeysForAuthenticatedRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersListPublicSSHKeysForAuthenticated`,
 		trace.WithAttributes(otelogen.OperationID(`users/list-public-ssh-keys-for-authenticated`)),
@@ -15284,6 +16991,9 @@ func (s *Server) HandleUsersListPublicSSHKeysForAuthenticatedRequest(w http.Resp
 	}
 }
 
+// HandleUsersUnblockRequest handles users/unblock operation.
+//
+// DELETE /user/blocks/{username}
 func (s *Server) HandleUsersUnblockRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersUnblock`,
 		trace.WithAttributes(otelogen.OperationID(`users/unblock`)),
@@ -15310,6 +17020,9 @@ func (s *Server) HandleUsersUnblockRequest(w http.ResponseWriter, r *http.Reques
 	}
 }
 
+// HandleUsersUnfollowRequest handles users/unfollow operation.
+//
+// DELETE /user/following/{username}
 func (s *Server) HandleUsersUnfollowRequest(w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersUnfollow`,
 		trace.WithAttributes(otelogen.OperationID(`users/unfollow`)),

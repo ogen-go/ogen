@@ -95,7 +95,9 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 	return c, nil
 }
 
-// ErrorGet implements errorGet operation.
+// ErrorGet invokes errorGet operation.
+//
+// GET /error
 func (c *Client) ErrorGet(ctx context.Context) (res ErrorStatusCode, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ErrorGet`,
@@ -133,7 +135,9 @@ func (c *Client) ErrorGet(ctx context.Context) (res ErrorStatusCode, err error) 
 	return result, nil
 }
 
-// FoobarGet implements foobarGet operation.
+// FoobarGet invokes foobarGet operation.
+//
+// GET /foobar
 func (c *Client) FoobarGet(ctx context.Context, params FoobarGetParams) (res FoobarGetRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `FoobarGet`,
@@ -200,7 +204,9 @@ func (c *Client) FoobarGet(ctx context.Context, params FoobarGetParams) (res Foo
 	return result, nil
 }
 
-// FoobarPost implements foobarPost operation.
+// FoobarPost invokes foobarPost operation.
+//
+// POST /foobar
 func (c *Client) FoobarPost(ctx context.Context, request Pet) (res FoobarPostRes, err error) {
 	if err := func() error {
 
@@ -261,6 +267,9 @@ func (c *Client) FoobarPost(ctx context.Context, request Pet) (res FoobarPostRes
 	return result, nil
 }
 
+// FoobarPut invokes  operation.
+//
+// PUT /foobar
 func (c *Client) FoobarPut(ctx context.Context) (res FoobarPutDefStatusCode, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `FoobarPut`,
@@ -297,7 +306,9 @@ func (c *Client) FoobarPut(ctx context.Context) (res FoobarPutDefStatusCode, err
 	return result, nil
 }
 
-// PetCreate implements petCreate operation.
+// PetCreate invokes petCreate operation.
+//
+// POST /pet
 func (c *Client) PetCreate(ctx context.Context, request Pet) (res Pet, err error) {
 	if err := func() error {
 
@@ -358,7 +369,9 @@ func (c *Client) PetCreate(ctx context.Context, request Pet) (res Pet, err error
 	return result, nil
 }
 
-// PetFriendsNamesByID implements petFriendsNamesByID operation.
+// PetFriendsNamesByID invokes petFriendsNamesByID operation.
+//
+// GET /pet/friendNames/{id}
 func (c *Client) PetFriendsNamesByID(ctx context.Context, params PetFriendsNamesByIDParams) (res []string, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PetFriendsNamesByID`,
@@ -410,7 +423,9 @@ func (c *Client) PetFriendsNamesByID(ctx context.Context, params PetFriendsNames
 	return result, nil
 }
 
-// PetGet implements petGet operation.
+// PetGet invokes petGet operation.
+//
+// GET /pet
 func (c *Client) PetGet(ctx context.Context, params PetGetParams) (res PetGetRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PetGet`,
@@ -522,7 +537,9 @@ func (c *Client) PetGet(ctx context.Context, params PetGetParams) (res PetGetRes
 	return result, nil
 }
 
-// PetGetAvatarByID implements petGetAvatarByID operation.
+// PetGetAvatarByID invokes petGetAvatarByID operation.
+//
+// GET /pet/avatar
 func (c *Client) PetGetAvatarByID(ctx context.Context, params PetGetAvatarByIDParams) (res PetGetAvatarByIDRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PetGetAvatarByID`,
@@ -576,7 +593,9 @@ func (c *Client) PetGetAvatarByID(ctx context.Context, params PetGetAvatarByIDPa
 	return result, nil
 }
 
-// PetGetByName implements petGetByName operation.
+// PetGetByName invokes petGetByName operation.
+//
+// GET /pet/{name}
 func (c *Client) PetGetByName(ctx context.Context, params PetGetByNameParams) (res Pet, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PetGetByName`,
@@ -628,7 +647,9 @@ func (c *Client) PetGetByName(ctx context.Context, params PetGetByNameParams) (r
 	return result, nil
 }
 
-// PetNameByID implements petNameByID operation.
+// PetNameByID invokes petNameByID operation.
+//
+// GET /pet/name/{id}
 func (c *Client) PetNameByID(ctx context.Context, params PetNameByIDParams) (res string, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PetNameByID`,
@@ -680,6 +701,9 @@ func (c *Client) PetNameByID(ctx context.Context, params PetNameByIDParams) (res
 	return result, nil
 }
 
+// PetUpdateNameAliasPost invokes  operation.
+//
+// POST /pet/updateNameAlias
 func (c *Client) PetUpdateNameAliasPost(ctx context.Context, request PetName) (res PetUpdateNameAliasPostDefStatusCode, err error) {
 	if err := func() error {
 
@@ -739,6 +763,9 @@ func (c *Client) PetUpdateNameAliasPost(ctx context.Context, request PetName) (r
 	return result, nil
 }
 
+// PetUpdateNamePost invokes  operation.
+//
+// POST /pet/updateName
 func (c *Client) PetUpdateNamePost(ctx context.Context, request string) (res PetUpdateNamePostDefStatusCode, err error) {
 	if err := func() error {
 
@@ -806,7 +833,9 @@ func (c *Client) PetUpdateNamePost(ctx context.Context, request string) (res Pet
 	return result, nil
 }
 
-// PetUploadAvatarByID implements petUploadAvatarByID operation.
+// PetUploadAvatarByID invokes petUploadAvatarByID operation.
+//
+// POST /pet/avatar
 func (c *Client) PetUploadAvatarByID(ctx context.Context, request Stream, params PetUploadAvatarByIDParams) (res PetUploadAvatarByIDRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `PetUploadAvatarByID`,
