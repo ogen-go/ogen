@@ -1,8 +1,9 @@
+{{- /*gotype: github.com/ogen-go/ogen/internal/gen.TemplateConfig*/ -}}
 {{- define "uri_encoders" }}
 {{- template "header" $ }}
 
 {{- range $t, $_ := $.URITypes }}
-{{- if eq $t.Kind "struct" }}
+{{- if $t.IsStruct }}
 func (v {{ $t.Go }}) encodeURI(e uri.Encoder) error {
 	{{- range $f := $t.Fields }}
 	{{- if $f.Spec }}
@@ -24,11 +25,11 @@ func (v {{ $t.Go }}) encodeURI(e uri.Encoder) error {
 {{- /*gotype: github.com/ogen-go/ogen/internal/gen.Elem*/ -}}
 {{- $t := $.Type }}
 {{- $var := $.Var }}
-{{- if eq $t.Kind "primitive" }}
+{{- if $t.IsPrimitive }}
 	return e.EncodeValue(conv.{{ $t.ToString }}({{ $var }}))
-{{- else if eq $t.Kind "enum" }}
+{{- else if $t.IsEnum }}
 	return e.EncodeValue(conv.{{ $t.ToString }}({{ $t.Primitive.String }}({{ $var }})))
-{{- else if eq $t.Kind "array" }}
+{{- else if $t.IsArray  }}
 	return e.EncodeArray(func(e uri.Encoder) error {
 		for i, item := range {{ $var }} {
 			if err := func() error {
@@ -39,24 +40,24 @@ func (v {{ $t.Go }}) encodeURI(e uri.Encoder) error {
 		}
 		return nil
 	})
-{{- else if eq $t.Kind "alias" }}
+{{- else if $t.IsAlias }}
 	if unwrapped := {{ $t.AliasTo.Go }}({{ $var }}); true {
 		{{- template "encode_uri" elem $t.AliasTo "unwrapped" }}
 	}
 	return nil
-{{- else if eq $t.Kind "generic" }}
+{{- else if $t.IsGeneric }}
 	if val, ok := {{ $var }}.Get(); ok {
 		{{- template "encode_uri" elem $t.GenericOf "val" }}
 	}
 	return nil
-{{- else if eq $t.Kind "pointer" }}
+{{- else if $t.IsPointer }}
 	if v := {{ $var }}; v != nil {
 		{{- template "encode_uri" elem $t.PointerTo "(*v)" }}
 	}
 	return nil
-{{- else if eq $t.Kind "struct" }}
+{{- else if $t.IsStruct }}
 	return {{ $var }}.encodeURI(e)
-{{- else if eq $t.Kind "sum" }}
+{{- else if $t.IsSum }}
 	switch t := {{ $var }}.Type; t {
 	{{- range $of := $t.SumOf }}
 	case {{ $of.Name }}{{ $t.Name }}:
@@ -66,6 +67,6 @@ func (v {{ $t.Go }}) encodeURI(e uri.Encoder) error {
 		panic(fmt.Sprintf("unexpected type: %T", t))
 	}
 {{- else }}
-Unexpected kind {{ $t.Kind }}
+{{ errorf "unexpected kind %s" $t.Kind }}
 {{- end }}
 {{- end }}
