@@ -31,6 +31,7 @@ func (v *{{ $t.Go }}) decodeURI(d uri.Decoder) error {
 {{- /*gotype: github.com/ogen-go/ogen/internal/gen.Elem*/ -}}
 {{- $t := $.Type }}
 {{- $var := $.Var }}
+{{- $tmpVar := camelSpecial (printf "%sVal" $var) }}
 {{- if $t.IsPrimitive }}
 	s, err := d.DecodeValue()
 	if err != nil {
@@ -59,7 +60,6 @@ func (v *{{ $t.Go }}) decodeURI(d uri.Decoder) error {
 	return nil
 {{- else if $t.IsArray }}
 	return d.DecodeArray(func(d uri.Decoder) error {
-		{{- $tmpVar := pascalMP (printf "%sItem" $var ) }}
 		var {{ $tmpVar }} {{ $t.Item.Go }}
 		if err := func() error {
 			{{- template "decode_uri" elem $t.Item $tmpVar }}
@@ -70,7 +70,6 @@ func (v *{{ $t.Go }}) decodeURI(d uri.Decoder) error {
 		return nil
 	})
 {{- else if $t.IsAlias }}
-	{{- $tmpVar := pascalMP (printf "%sUnderlying" $var ) }}
 	var {{ $tmpVar }} {{ $t.AliasTo.Go }}
 	if err := func() error {
 		{{- template "decode_uri" elem $t.AliasTo $tmpVar }}
@@ -80,7 +79,6 @@ func (v *{{ $t.Go }}) decodeURI(d uri.Decoder) error {
 	{{ $var }} = {{ $t.Go }}({{ $tmpVar }})
 	return nil
 {{- else if $t.IsGeneric }}
-	{{- $tmpVar := pascalMP (printf "%sValue" $var ) }}
 	var {{ $tmpVar }} {{ $t.GenericOf.Go }}
 	if err := func() error {
 		{{- template "decode_uri" elem $t.GenericOf $tmpVar }}
@@ -90,7 +88,6 @@ func (v *{{ $t.Go }}) decodeURI(d uri.Decoder) error {
 	{{ $var }}.SetTo({{ $tmpVar }})
 	return nil
 {{- else if $t.IsPointer }}
-	{{- $tmpVar := pascalMP (printf "%sValue" $var ) }}
 	var {{ $tmpVar }} {{ $t.PointerTo.Go }}
 	if err := func() error {
 		{{- template "decode_uri" elem $t.PointerTo $tmpVar }}

@@ -41,7 +41,8 @@ func templateFunctions() template.FuncMap {
 		"errorf": func(format string, args ...interface{}) (interface{}, error) {
 			return nil, errors.Errorf(format, args...)
 		},
-		"pascalMP": pascalMP,
+		"pascalSpecial": pascalSpecial,
+		"camelSpecial":  camelSpecial,
 
 		// Helpers for recursive encoding and decoding.
 		"elem": func(t *ir.Type, v string) Elem {

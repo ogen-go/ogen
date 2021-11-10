@@ -10,7 +10,7 @@ type nameGen struct {
 	src   []rune
 	pos   int
 
-	allowMP bool
+	allowSpecial bool // special characters like +, -, /
 }
 
 func (g *nameGen) next() (rune, bool) {
@@ -49,7 +49,7 @@ func (g *nameGen) generate() string {
 		}
 
 		upper = true
-		if g.allowMP {
+		if g.allowSpecial {
 			switch r {
 			case '+':
 				pushPart()
@@ -104,15 +104,29 @@ func pascal(strs ...string) string {
 	}).generate()
 }
 
-func pascalMP(strs ...string) string {
+func pascalSpecial(strs ...string) string {
 	return (&nameGen{
-		src:     []rune(strings.Join(strs, " ")),
-		allowMP: true,
+		src:          []rune(strings.Join(strs, " ")),
+		allowSpecial: true,
 	}).generate()
 }
 
 func camel(s string) string {
-	rs := []rune(pascal(s))
-	rs[0] = unicode.ToLower(rs[0])
-	return string(rs)
+	return firstLower(pascal(s))
+}
+
+func camelSpecial(s ...string) string {
+	return firstLower(pascalSpecial(s...))
+}
+
+// firstLower returns s with first rune mapped to lower case.
+func firstLower(s string) string {
+	var out []rune
+	for i, c := range s {
+		if i == 0 {
+			c = unicode.ToLower(c)
+		}
+		out = append(out, c)
+	}
+	return string(out)
 }

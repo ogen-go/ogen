@@ -22,7 +22,7 @@ func decode{{ $op.Name }}Params(r *http.Request) ({{ $op.Name }}Params, error) {
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values: values,
-				Style: uri.QueryStyle{{ pascalMP $p.Spec.Style }},
+				Style: uri.QueryStyle{{ pascalSpecial $p.Spec.Style }},
 				Explode: {{ if $p.Spec.Explode }}true{{ else }}false{{ end }},
 			})
 
@@ -50,7 +50,7 @@ func decode{{ $op.Name }}Params(r *http.Request) ({{ $op.Name }}Params, error) {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param: "{{ $p.Spec.Name}}",
 				Value: param,
-				Style: uri.PathStyle{{ pascalMP $p.Spec.Style }},
+				Style: uri.PathStyle{{ pascalSpecial $p.Spec.Style }},
 				Explode: {{ if $p.Spec.Explode }}true{{ else }}false{{ end }},
 			})
 
