@@ -10,8 +10,13 @@
 func decode{{ $op.Name }}Params(r *http.Request) ({{ $op.Name }}Params, error) {
 	var params {{ $op.Name }}Params
 	{{- range $p := $op.Params }}{{/* Range params */}}
-	// Decode param "{{ $p.Spec.Name }}" located in "{{ $p.Spec.In }}".
-	{{- if eq $p.Spec.In "Query" }}{{/* Switch location */}}
+    {{- $loc             := printf "%s: %s" $p.Spec.In $p.Spec.Name }}
+    {{- $errParse        := printf "%s: parse"         $loc }}
+    {{- $errInvalid      := printf "%s: invalid"       $loc }}
+    {{- $errNotSpecified := printf "%s: not specified" $loc }}
+    {{- $el              := elem $p.Type (printf "params.%s" $p.Name) }}
+	// Decode {{ $loc }}.
+	{{- if $p.Spec.In.Query }}{{/* Switch location */}}
 	{
 		values, ok := r.URL.Query()["{{ $p.Spec.Name }}"]
 		if ok {
@@ -22,23 +27,23 @@ func decode{{ $op.Name }}Params(r *http.Request) ({{ $op.Name }}Params, error) {
 			})
 
 			if err := func() error {
-				{{- template "decode_uri" elem $p.Type  (printf "params.%s" $p.Name) }}
+				{{- template "decode_uri" $el }}
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter {{ $p.Spec.Name }} located in {{ lower $p.Spec.In }}`)
+				return params, errors.Wrap(err, `{{ $errParse }}`)
 			}
 
 			{{- if $p.Type.NeedValidation }}
 			if err := func() error {
-				{{- template "validate" elem $p.Type (printf "params.%s" $p.Name) }}
+				{{- template "validate" $el }}
 			}(); err != nil {
-				return params, errors.Wrap(err, `invalid parameter {{ $p.Spec.Name }} ({{ lower $p.Spec.In }}`)
+				return params, errors.Wrap(err, `{{ $errInvalid }}`)
 			}
 			{{- end }}
 		} {{- if $p.Spec.Required }} else {
-			return params, errors.New(`query parameter {{ $p.Spec.Name}} not specified`)
+			return params, errors.New(`{{ $errNotSpecified }}`)
 		} {{- end }}
 	}
-	{{- else if eq $p.Spec.In "Path" }}
+	{{- else if $p.Spec.In.Path }}
 	{
 		param := chi.URLParam(r, "{{ $p.Spec.Name }}")
 		if len(param) > 0 {
@@ -50,52 +55,51 @@ func decode{{ $op.Name }}Params(r *http.Request) ({{ $op.Name }}Params, error) {
 			})
 
 			if err := func() error {
-				{{- template "decode_uri" elem $p.Type (printf "params.%s" $p.Name) }}
+				{{- template "decode_uri" $el }}
 			}(); err != nil {
 				return params, err
 			}
 		} {{ if $p.Spec.Required }} else {
-			return params, errors.New(`path parameter {{ $p.Spec.Name}} not specified`)
+			return params, errors.New(`{{ $errNotSpecified }}`)
 		} {{ end }}
 	}
-	{{- else if eq $p.Spec.In "Header" }}
+	{{- else if $p.Spec.In.Header }}
 	{
 		param := r.Header.Get("{{ $p.Spec.Name }}")
 		if len(param) > 0 {
 			d := uri.NewHeaderDecoder(uri.HeaderDecoderConfig{
 				Explode: {{ if $p.Spec.Explode }}true{{ else }}false{{ end }},
 			})
-
 			if err := func() error {
-				{{- template "decode_uri" elem $p.Type (printf "params.%s" $p.Name) }}
+				{{- template "decode_uri" $el }}
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse {{ lower $p.Spec.In }}: param '{{ $p.Spec.Name }}`)
+				return params, errors.Wrap(err, `{{ $errParse }}`)
 			}
 		} {{ if $p.Spec.Required }} else {
-			return params, errors.New(`header parameter {{ $p.Spec.Name}} not specified`)
+			return params, errors.New(`{{ $errNotSpecified }}`)
 		} {{ end }}
 	}
-	{{- else if eq $p.Spec.In "Cookie" }}
+	{{- else if $p.Spec.In.Cookie }}
 	{
 		c, err := r.Cookie("{{ $p.Spec.Name }}")
 		if err != nil {
-			return params, errors.Wrap(err, `get cookie {{ $p.Spec.Name }}`)
+			return params, errors.Wrap(err, `{{ $loc }}: get`)
 		}
 
 		param := c.Value
 		if len(param) > 0 {
 			v, err := conv.{{ $p.Type.FromString }}(param)
 			if err != nil {
-				return params, errors.Wrap(err, `parse {{ lower $p.Spec.In }}: param {{ $p.Spec.Name }}`)
+				return params, errors.Wrap(err, `{{ $errParse }}`)
 			}
 
 			params.{{ $p.Name }} = v
 		} {{ if $p.Spec.Required }} else {
-			return params, errors.New(`cookie parameter {{ $p.Spec.Name}} not specified`)
+			return params, errors.New(`{{ $errNotSpecified }}`)
 		} {{ end }}
 	}
 	{{- else }}
-	unsupported parameter location: {{ $p.Spec.In }}
+	{{ errorf "unsupported location %s" $p.Spec.In }}
 	{{- end }}{{/* Switch location */}}
 	{{- end }}{{/* Range params */}}
 	return params, nil
@@ -107,7 +111,7 @@ func decode{{ $op.Name }}Params(r *http.Request) ({{ $op.Name }}Params, error) {
 
 {{ define "decode_param" }}
 	{{- /*gotype: github.com/ogen-go/ogen/internal/ir.Type*/ -}}
-	{{- if eq .Kind "array" }}
+	{{- if .IsArray }}
 	rawParam, err := d.DecodeArray()
 	{{- else }}
 	rawParam, err := d.DecodeValue()

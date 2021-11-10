@@ -41,7 +41,7 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 {{- end }}
 func (c *Client) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, request {{ $op.Request.Type.Go }}{{ end }}{{ if $op.Params }}, params {{ $op.Name }}Params {{ end }}) (res {{ $op.Response.Type.Go }}, err error) {
 	{{- if $op.Request }}{{/* Request validation */}}
-		{{- if eq $op.Request.Type.Kind "interface" }}
+		{{- if $op.Request.Type.IsInterface }}
 			switch request := request.(type) {
 			{{- range $_, $type:= $op.Request.Contents }}
 			case *{{ $type.Go }}:
@@ -159,7 +159,7 @@ func (c *Client) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, reques
 {{- range $param := $.CookieParams }}{{/* Range over params */}}
 {
 value := conv.{{ $param.Type.ToString }}(params.{{ $param.Name }})
-{{- if eq $param.Type.Kind "array" }}
+{{- if $param.Type.IsArray }}
 r.AddCookie(&http.Cookie{
 	Name: "{{ $param.Spec.Name }}",
 	Value: strings.Join(value, "/"),

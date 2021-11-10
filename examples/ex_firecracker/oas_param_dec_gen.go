@@ -66,7 +66,7 @@ var (
 
 func decodePatchGuestDriveByIDParams(r *http.Request) (PatchGuestDriveByIDParams, error) {
 	var params PatchGuestDriveByIDParams
-	// Decode param "drive_id" located in "Path".
+	// Decode path: drive_id.
 	{
 		param := chi.URLParam(r, "drive_id")
 		if len(param) > 0 {
@@ -94,7 +94,7 @@ func decodePatchGuestDriveByIDParams(r *http.Request) (PatchGuestDriveByIDParams
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter drive_id not specified`)
+			return params, errors.New(`path: drive_id: not specified`)
 		}
 	}
 	return params, nil
@@ -102,7 +102,7 @@ func decodePatchGuestDriveByIDParams(r *http.Request) (PatchGuestDriveByIDParams
 
 func decodePatchGuestNetworkInterfaceByIDParams(r *http.Request) (PatchGuestNetworkInterfaceByIDParams, error) {
 	var params PatchGuestNetworkInterfaceByIDParams
-	// Decode param "iface_id" located in "Path".
+	// Decode path: iface_id.
 	{
 		param := chi.URLParam(r, "iface_id")
 		if len(param) > 0 {
@@ -130,7 +130,7 @@ func decodePatchGuestNetworkInterfaceByIDParams(r *http.Request) (PatchGuestNetw
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter iface_id not specified`)
+			return params, errors.New(`path: iface_id: not specified`)
 		}
 	}
 	return params, nil
@@ -138,7 +138,7 @@ func decodePatchGuestNetworkInterfaceByIDParams(r *http.Request) (PatchGuestNetw
 
 func decodePutGuestDriveByIDParams(r *http.Request) (PutGuestDriveByIDParams, error) {
 	var params PutGuestDriveByIDParams
-	// Decode param "drive_id" located in "Path".
+	// Decode path: drive_id.
 	{
 		param := chi.URLParam(r, "drive_id")
 		if len(param) > 0 {
@@ -166,7 +166,7 @@ func decodePutGuestDriveByIDParams(r *http.Request) (PutGuestDriveByIDParams, er
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter drive_id not specified`)
+			return params, errors.New(`path: drive_id: not specified`)
 		}
 	}
 	return params, nil
@@ -174,7 +174,7 @@ func decodePutGuestDriveByIDParams(r *http.Request) (PutGuestDriveByIDParams, er
 
 func decodePutGuestNetworkInterfaceByIDParams(r *http.Request) (PutGuestNetworkInterfaceByIDParams, error) {
 	var params PutGuestNetworkInterfaceByIDParams
-	// Decode param "iface_id" located in "Path".
+	// Decode path: iface_id.
 	{
 		param := chi.URLParam(r, "iface_id")
 		if len(param) > 0 {
@@ -202,7 +202,7 @@ func decodePutGuestNetworkInterfaceByIDParams(r *http.Request) (PutGuestNetworkI
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter iface_id not specified`)
+			return params, errors.New(`path: iface_id: not specified`)
 		}
 	}
 	return params, nil

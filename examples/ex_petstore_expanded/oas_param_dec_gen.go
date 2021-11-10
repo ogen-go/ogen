@@ -66,7 +66,7 @@ var (
 
 func decodeDeletePetParams(r *http.Request) (DeletePetParams, error) {
 	var params DeletePetParams
-	// Decode param "id" located in "Path".
+	// Decode path: id.
 	{
 		param := chi.URLParam(r, "id")
 		if len(param) > 0 {
@@ -94,7 +94,7 @@ func decodeDeletePetParams(r *http.Request) (DeletePetParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter id not specified`)
+			return params, errors.New(`path: id: not specified`)
 		}
 	}
 	return params, nil

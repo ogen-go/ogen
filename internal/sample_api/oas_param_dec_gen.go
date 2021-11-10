@@ -66,7 +66,7 @@ var (
 
 func decodeFoobarGetParams(r *http.Request) (FoobarGetParams, error) {
 	var params FoobarGetParams
-	// Decode param "inlinedParam" located in "Query".
+	// Decode query: inlinedParam.
 	{
 		values, ok := r.URL.Query()["inlinedParam"]
 		if ok {
@@ -90,13 +90,13 @@ func decodeFoobarGetParams(r *http.Request) (FoobarGetParams, error) {
 				params.InlinedParam = c
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter inlinedParam located in query`)
+				return params, errors.Wrap(err, `query: inlinedParam: parse`)
 			}
 		} else {
-			return params, errors.New(`query parameter inlinedParam not specified`)
+			return params, errors.New(`query: inlinedParam: not specified`)
 		}
 	}
-	// Decode param "skip" located in "Query".
+	// Decode query: skip.
 	{
 		values, ok := r.URL.Query()["skip"]
 		if ok {
@@ -120,10 +120,10 @@ func decodeFoobarGetParams(r *http.Request) (FoobarGetParams, error) {
 				params.Skip = c
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter skip located in query`)
+				return params, errors.Wrap(err, `query: skip: parse`)
 			}
 		} else {
-			return params, errors.New(`query parameter skip not specified`)
+			return params, errors.New(`query: skip: not specified`)
 		}
 	}
 	return params, nil
@@ -131,7 +131,7 @@ func decodeFoobarGetParams(r *http.Request) (FoobarGetParams, error) {
 
 func decodePetFriendsNamesByIDParams(r *http.Request) (PetFriendsNamesByIDParams, error) {
 	var params PetFriendsNamesByIDParams
-	// Decode param "id" located in "Path".
+	// Decode path: id.
 	{
 		param := chi.URLParam(r, "id")
 		if len(param) > 0 {
@@ -159,7 +159,7 @@ func decodePetFriendsNamesByIDParams(r *http.Request) (PetFriendsNamesByIDParams
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter id not specified`)
+			return params, errors.New(`path: id: not specified`)
 		}
 	}
 	return params, nil
@@ -167,7 +167,7 @@ func decodePetFriendsNamesByIDParams(r *http.Request) (PetFriendsNamesByIDParams
 
 func decodePetGetParams(r *http.Request) (PetGetParams, error) {
 	var params PetGetParams
-	// Decode param "petID" located in "Query".
+	// Decode query: petID.
 	{
 		values, ok := r.URL.Query()["petID"]
 		if ok {
@@ -191,7 +191,7 @@ func decodePetGetParams(r *http.Request) (PetGetParams, error) {
 				params.PetID = c
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter petID located in query`)
+				return params, errors.Wrap(err, `query: petID: parse`)
 			}
 			if err := func() error {
 
@@ -207,20 +207,19 @@ func decodePetGetParams(r *http.Request) (PetGetParams, error) {
 				}
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `invalid parameter petID (query`)
+				return params, errors.Wrap(err, `query: petID: invalid`)
 			}
 		} else {
-			return params, errors.New(`query parameter petID not specified`)
+			return params, errors.New(`query: petID: not specified`)
 		}
 	}
-	// Decode param "x-tags" located in "Header".
+	// Decode header: x-tags.
 	{
 		param := r.Header.Get("x-tags")
 		if len(param) > 0 {
 			d := uri.NewHeaderDecoder(uri.HeaderDecoderConfig{
 				Explode: false,
 			})
-
 			if err := func() error {
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var ParamsXTagsItem uuid.UUID
@@ -244,20 +243,19 @@ func decodePetGetParams(r *http.Request) (PetGetParams, error) {
 					return nil
 				})
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse header: param 'x-tags`)
+				return params, errors.Wrap(err, `header: x-tags: parse`)
 			}
 		} else {
-			return params, errors.New(`header parameter x-tags not specified`)
+			return params, errors.New(`header: x-tags: not specified`)
 		}
 	}
-	// Decode param "x-scope" located in "Header".
+	// Decode header: x-scope.
 	{
 		param := r.Header.Get("x-scope")
 		if len(param) > 0 {
 			d := uri.NewHeaderDecoder(uri.HeaderDecoderConfig{
 				Explode: false,
 			})
-
 			if err := func() error {
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var ParamsXScopeItem string
@@ -281,13 +279,13 @@ func decodePetGetParams(r *http.Request) (PetGetParams, error) {
 					return nil
 				})
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse header: param 'x-scope`)
+				return params, errors.Wrap(err, `header: x-scope: parse`)
 			}
 		} else {
-			return params, errors.New(`header parameter x-scope not specified`)
+			return params, errors.New(`header: x-scope: not specified`)
 		}
 	}
-	// Decode param "token" located in "Query".
+	// Decode query: token.
 	{
 		values, ok := r.URL.Query()["token"]
 		if ok {
@@ -311,10 +309,10 @@ func decodePetGetParams(r *http.Request) (PetGetParams, error) {
 				params.Token = c
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter token located in query`)
+				return params, errors.Wrap(err, `query: token: parse`)
 			}
 		} else {
-			return params, errors.New(`query parameter token not specified`)
+			return params, errors.New(`query: token: not specified`)
 		}
 	}
 	return params, nil
@@ -322,7 +320,7 @@ func decodePetGetParams(r *http.Request) (PetGetParams, error) {
 
 func decodePetGetAvatarByIDParams(r *http.Request) (PetGetAvatarByIDParams, error) {
 	var params PetGetAvatarByIDParams
-	// Decode param "petID" located in "Query".
+	// Decode query: petID.
 	{
 		values, ok := r.URL.Query()["petID"]
 		if ok {
@@ -346,10 +344,10 @@ func decodePetGetAvatarByIDParams(r *http.Request) (PetGetAvatarByIDParams, erro
 				params.PetID = c
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter petID located in query`)
+				return params, errors.Wrap(err, `query: petID: parse`)
 			}
 		} else {
-			return params, errors.New(`query parameter petID not specified`)
+			return params, errors.New(`query: petID: not specified`)
 		}
 	}
 	return params, nil
@@ -357,7 +355,7 @@ func decodePetGetAvatarByIDParams(r *http.Request) (PetGetAvatarByIDParams, erro
 
 func decodePetGetByNameParams(r *http.Request) (PetGetByNameParams, error) {
 	var params PetGetByNameParams
-	// Decode param "name" located in "Path".
+	// Decode path: name.
 	{
 		param := chi.URLParam(r, "name")
 		if len(param) > 0 {
@@ -385,7 +383,7 @@ func decodePetGetByNameParams(r *http.Request) (PetGetByNameParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter name not specified`)
+			return params, errors.New(`path: name: not specified`)
 		}
 	}
 	return params, nil
@@ -393,7 +391,7 @@ func decodePetGetByNameParams(r *http.Request) (PetGetByNameParams, error) {
 
 func decodePetNameByIDParams(r *http.Request) (PetNameByIDParams, error) {
 	var params PetNameByIDParams
-	// Decode param "id" located in "Path".
+	// Decode path: id.
 	{
 		param := chi.URLParam(r, "id")
 		if len(param) > 0 {
@@ -421,7 +419,7 @@ func decodePetNameByIDParams(r *http.Request) (PetNameByIDParams, error) {
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path parameter id not specified`)
+			return params, errors.New(`path: id: not specified`)
 		}
 	}
 	return params, nil
@@ -429,7 +427,7 @@ func decodePetNameByIDParams(r *http.Request) (PetNameByIDParams, error) {
 
 func decodePetUploadAvatarByIDParams(r *http.Request) (PetUploadAvatarByIDParams, error) {
 	var params PetUploadAvatarByIDParams
-	// Decode param "petID" located in "Query".
+	// Decode query: petID.
 	{
 		values, ok := r.URL.Query()["petID"]
 		if ok {
@@ -453,10 +451,10 @@ func decodePetUploadAvatarByIDParams(r *http.Request) (PetUploadAvatarByIDParams
 				params.PetID = c
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `parse parameter petID located in query`)
+				return params, errors.Wrap(err, `query: petID: parse`)
 			}
 		} else {
-			return params, errors.New(`query parameter petID not specified`)
+			return params, errors.New(`query: petID: not specified`)
 		}
 	}
 	return params, nil
