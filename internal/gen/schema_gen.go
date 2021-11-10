@@ -111,13 +111,13 @@ func (g *schemaGen) generate(name string, schema *oas.Schema) (*ir.Type, error) 
 
 		for i := range schema.Properties {
 			prop := schema.Properties[i]
-			typ, err := g.generate(pascalMP(name, prop.Name), prop.Schema)
+			typ, err := g.generate(pascalSpecial(name, prop.Name), prop.Schema)
 			if err != nil {
 				return nil, errors.Wrapf(err, "field %s", prop.Name)
 			}
 
 			s.Fields = append(s.Fields, &ir.Field{
-				Name: pascalMP(prop.Name),
+				Name: pascalSpecial(prop.Name),
 				Type: typ,
 				Tag: ir.Tag{
 					JSON: prop.Name,
@@ -321,7 +321,7 @@ func (g *schemaGen) primitive(name string, schema *oas.Schema) (*ir.Type, error)
 			}
 
 			variants = append(variants, &ir.EnumVariant{
-				Name:  pascalMP(name, vstr),
+				Name:  pascalSpecial(name, vstr),
 				Value: v,
 			})
 		}

@@ -21,8 +21,8 @@ func TestNames(t *testing.T) {
 
 	for _, test := range tests {
 		out := (&nameGen{
-			src:     []rune(test.Input),
-			allowMP: test.AllowMP,
+			src:          []rune(test.Input),
+			allowSpecial: test.AllowMP,
 		}).generate()
 		require.Equal(t, test.Expect, out)
 	}

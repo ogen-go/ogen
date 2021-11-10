@@ -222,7 +222,7 @@ func decodePetGetParams(r *http.Request) (PetGetParams, error) {
 			})
 			if err := func() error {
 				return d.DecodeArray(func(d uri.Decoder) error {
-					var ParamsXTagsItem uuid.UUID
+					var paramsXTagsVal uuid.UUID
 					if err := func() error {
 						s, err := d.DecodeValue()
 						if err != nil {
@@ -234,12 +234,12 @@ func decodePetGetParams(r *http.Request) (PetGetParams, error) {
 							return err
 						}
 
-						ParamsXTagsItem = c
+						paramsXTagsVal = c
 						return nil
 					}(); err != nil {
 						return err
 					}
-					params.XTags = append(params.XTags, ParamsXTagsItem)
+					params.XTags = append(params.XTags, paramsXTagsVal)
 					return nil
 				})
 			}(); err != nil {
@@ -258,7 +258,7 @@ func decodePetGetParams(r *http.Request) (PetGetParams, error) {
 			})
 			if err := func() error {
 				return d.DecodeArray(func(d uri.Decoder) error {
-					var ParamsXScopeItem string
+					var paramsXScopeVal string
 					if err := func() error {
 						s, err := d.DecodeValue()
 						if err != nil {
@@ -270,12 +270,12 @@ func decodePetGetParams(r *http.Request) (PetGetParams, error) {
 							return err
 						}
 
-						ParamsXScopeItem = c
+						paramsXScopeVal = c
 						return nil
 					}(); err != nil {
 						return err
 					}
-					params.XScope = append(params.XScope, ParamsXScopeItem)
+					params.XScope = append(params.XScope, paramsXScopeVal)
 					return nil
 				})
 			}(); err != nil {
