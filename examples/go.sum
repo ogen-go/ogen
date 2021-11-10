@@ -11,7 +11,6 @@ github.com/go-chi/chi/v5 v5.0.5 h1:l3RJ8T8TAqLsXFfah+RA6N4pydMbPwSdvNM+AFWvLUM=
 github.com/go-chi/chi/v5 v5.0.5/go.mod h1:DslCQbL2OYiznFReuXYUmQ2hGd1aDpCnlMNITLSKoi8=
 github.com/go-faster/errors v0.5.0 h1:hS/zHFJ2Vb14jcupq5J9tk05XW+PFTmySOkDRByHBo4=
 github.com/go-faster/errors v0.5.0/go.mod h1:/9SNBcg2ESJTYztBFEiM5Np6ns85BtPNMJd8lFTiFwk=
-github.com/go-faster/jx v0.23.1/go.mod h1:I2qnT5kkW6iO0RXe4rOnIW3y3yZYJVeT7fG8JSQkP8I=
 github.com/go-faster/jx v0.23.2 h1:ppn/Cw5ZigBVRUcPpC5YhKpDJrLU/CRDETj54lHvk7o=
 github.com/go-faster/jx v0.23.2/go.mod h1:I2qnT5kkW6iO0RXe4rOnIW3y3yZYJVeT7fG8JSQkP8I=
 github.com/go-playground/assert/v2 v2.0.1/go.mod h1:VDjEfimB/XKnb+ZQfWdccd7VUvScMdVu0Titje2rxJ4=
