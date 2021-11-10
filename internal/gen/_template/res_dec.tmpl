@@ -1,4 +1,4 @@
-{{ define "res_dec_json" }}
+{{ define "dec_res_json" }}
 {{- /*gotype: github.com/ogen-go/ogen/internal/ir.Type*/ -}}
 buf := getBuf()
 defer putBuf(buf)
@@ -30,11 +30,11 @@ func decode{{ $op.Name }}Response(resp *http.Response, span trace.Span) (res {{ 
 	switch resp.StatusCode {
 	{{- range $statusCode, $response := $op.Response.StatusCode }}{{/* Range over responses */}}
 	case {{ $statusCode }}:
-		{{- template "decode_response" xresp_elem $response (eq $op.Response.Type.Kind "interface") }}
+		{{- template "dec_res" xresp_elem $response $op.Response.Type.IsInterface }}
 	{{- end }}
 	default:
 		{{- if $op.Response.Default }}
-			{{- template "decode_response" xresp_elem $op.Response.Default (eq $op.Response.Type.Kind "interface") }}
+			{{- template "dec_res" xresp_elem $op.Response.Default $op.Response.Type.IsInterface }}
 		{{- else }}
 			return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 		{{- end }}
@@ -44,7 +44,7 @@ func decode{{ $op.Name }}Response(resp *http.Response, span trace.Span) (res {{ 
 {{- end }}{{/* Range over all methods */}}
 {{ end }}
 
-{{- define "decode_response" }}
+{{- define "dec_res" }}
 {{- $response := $.Response }}
 {{- $ptr := $.Ptr }}
 {{- if $response.NoContent }}{{/* Decode NoContent response */}}
@@ -61,13 +61,13 @@ func decode{{ $op.Name }}Response(resp *http.Response, span trace.Span) (res {{ 
 	case "{{ $contentType }}":
 		{{- if $contentType.JSON }}
 			{{- if $response.Wrapped }}
-				{{- template "res_dec_json" ($type.MustField "Response").Type }}
+				{{- template "dec_res_json" ($type.MustField "Response").Type }}
 				return {{ if $ptr }}&{{ end }}{{ $type.Go }}{
 					StatusCode: resp.StatusCode,
 					Response:   response,
 				}, nil
 			{{- else }}
-				{{- template "res_dec_json" $type }}
+				{{- template "dec_res_json" $type }}
 				return {{ if $ptr }}&{{ end }}response, nil
 			{{- end }}
 		{{- else if $type.IsStream }}

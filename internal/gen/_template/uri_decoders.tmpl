@@ -1,8 +1,9 @@
+{{- /*gotype: github.com/ogen-go/ogen/internal/gen.TemplateConfig*/ -}}
 {{- define "uri_decoders" }}
 {{- template "header" $ }}
 
 {{- range $t, $_ := $.URITypes }}
-{{- if eq $t.Kind "struct" }}
+{{- if $t.IsStruct }}
 func (v *{{ $t.Go }}) decodeURI(d uri.Decoder) error {
 	if v == nil {
 		return errors.New(`unable to decode {{ $t.Go }} to nil`)
