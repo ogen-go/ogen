@@ -68,6 +68,7 @@ func decode{{ $op.Name }}Params(r *http.Request) ({{ $op.Name }}Params, error) {
 		param := r.Header.Get("{{ $p.Spec.Name }}")
 		if len(param) > 0 {
 			d := uri.NewHeaderDecoder(uri.HeaderDecoderConfig{
+				Value:   param,
 				Explode: {{ if $p.Spec.Explode }}true{{ else }}false{{ end }},
 			})
 			if err := func() error {
