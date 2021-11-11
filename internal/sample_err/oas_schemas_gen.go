@@ -65,7 +65,9 @@ var (
 )
 
 func (s ErrorStatusCode) Error() string {
-	return fmt.Sprintf("%+v", s)
+	var e jx.Encoder
+	s.Encode(&e)
+	return e.String()
 }
 
 // Ref: #/components/schemas/Data

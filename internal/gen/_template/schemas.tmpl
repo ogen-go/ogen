@@ -6,7 +6,9 @@
 
 {{- if $.Error }}
 func (s {{ $.ErrorType.Name }}) Error() string {
-	return fmt.Sprintf("%+v", s)
+	var e jx.Encoder
+	s.Encode(&e)
+	return e.String()
 }
 {{- end }}
 
