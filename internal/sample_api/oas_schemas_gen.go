@@ -177,6 +177,12 @@ type FoobarPutDefStatusCode struct {
 	Response   FoobarPutDef
 }
 
+// Ref: #/components/schemas/Hash
+type Hash struct {
+	Raw []byte `json:"raw"`
+	Hex string `json:"hex"`
+}
+
 // Ref: #/components/schemas/ID
 // ID represents sum type.
 type ID struct {

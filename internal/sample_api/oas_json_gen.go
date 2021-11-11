@@ -358,6 +358,44 @@ func (s *FoobarPutDefStatusCode) Decode(d *jx.Decoder) error {
 	})
 }
 
+// Encode implements json.Marshaler.
+func (s Hash) Encode(e *jx.Encoder) {
+	e.ObjStart()
+
+	e.FieldStart("raw")
+	e.Base64(s.Raw)
+
+	e.FieldStart("hex")
+	e.Str(s.Hex)
+	e.ObjEnd()
+}
+
+// Decode decodes Hash from json.
+func (s *Hash) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode Hash to nil`)
+	}
+	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		case "raw":
+			v, err := d.Base64()
+			s.Raw = []byte(v)
+			if err != nil {
+				return err
+			}
+		case "hex":
+			v, err := d.Str()
+			s.Hex = string(v)
+			if err != nil {
+				return err
+			}
+		default:
+			return d.Skip()
+		}
+		return nil
+	})
+}
+
 // Encode encodes ID as json.
 func (s ID) Encode(e *jx.Encoder) {
 	switch s.Type {

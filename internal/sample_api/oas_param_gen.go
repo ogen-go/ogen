@@ -69,6 +69,10 @@ type FoobarGetParams struct {
 	Skip         int32
 }
 
+type GetHeaderParams struct {
+	XAuthToken string
+}
+
 type PetFriendsNamesByIDParams struct {
 	ID int
 }

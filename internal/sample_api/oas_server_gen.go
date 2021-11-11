@@ -82,6 +82,10 @@ type Handler interface {
 	//
 	// PUT /foobar
 	FoobarPut(ctx context.Context) (FoobarPutDefStatusCode, error)
+	// GetHeader implements getHeader operation.
+	//
+	// GET /test/header
+	GetHeader(ctx context.Context, params GetHeaderParams) (Hash, error)
 	// PetCreate implements petCreate operation.
 	//
 	// POST /pet
@@ -141,6 +145,7 @@ func (s *Server) Register(r chi.Router) {
 	r.MethodFunc("GET", "/foobar", s.HandleFoobarGetRequest)
 	r.MethodFunc("POST", "/foobar", s.HandleFoobarPostRequest)
 	r.MethodFunc("PUT", "/foobar", s.HandleFoobarPutRequest)
+	r.MethodFunc("GET", "/test/header", s.HandleGetHeaderRequest)
 	r.MethodFunc("POST", "/pet", s.HandlePetCreateRequest)
 	r.MethodFunc("GET", "/pet/friendNames/{id}", s.HandlePetFriendsNamesByIDRequest)
 	r.MethodFunc("GET", "/pet", s.HandlePetGetRequest)

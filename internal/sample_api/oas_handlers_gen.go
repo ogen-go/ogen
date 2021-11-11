@@ -167,6 +167,35 @@ func (s *Server) HandleFoobarPutRequest(w http.ResponseWriter, r *http.Request) 
 	}
 }
 
+// HandleGetHeaderRequest handles getHeader operation.
+//
+// GET /test/header
+func (s *Server) HandleGetHeaderRequest(w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetHeader`,
+		trace.WithAttributes(otelogen.OperationID(`getHeader`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeGetHeaderParams(r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.GetHeader(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeGetHeaderResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
 // HandlePetCreateRequest handles petCreate operation.
 //
 // POST /pet

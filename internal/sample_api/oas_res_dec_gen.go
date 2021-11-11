@@ -208,6 +208,40 @@ func decodeFoobarPutResponse(resp *http.Response, span trace.Span) (res FoobarPu
 	}
 }
 
+func decodeGetHeaderResponse(resp *http.Response, span trace.Span) (res Hash, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Hash
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
 func decodePetCreateResponse(resp *http.Response, span trace.Span) (res Pet, err error) {
 	switch resp.StatusCode {
 	case 200:

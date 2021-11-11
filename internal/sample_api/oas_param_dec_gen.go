@@ -129,6 +129,39 @@ func decodeFoobarGetParams(r *http.Request) (FoobarGetParams, error) {
 	return params, nil
 }
 
+func decodeGetHeaderParams(r *http.Request) (GetHeaderParams, error) {
+	var params GetHeaderParams
+	// Decode header: x-auth-token.
+	{
+		param := r.Header.Get("x-auth-token")
+		if len(param) > 0 {
+			d := uri.NewHeaderDecoder(uri.HeaderDecoderConfig{
+				Value:   param,
+				Explode: false,
+			})
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.XAuthToken = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `header: x-auth-token: parse`)
+			}
+		} else {
+			return params, errors.New(`header: x-auth-token: not specified`)
+		}
+	}
+	return params, nil
+}
+
 func decodePetFriendsNamesByIDParams(r *http.Request) (PetFriendsNamesByIDParams, error) {
 	var params PetFriendsNamesByIDParams
 	// Decode path: id.
