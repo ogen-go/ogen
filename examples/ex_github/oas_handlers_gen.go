@@ -83,7 +83,7 @@ func (s *Server) HandleActionsAddRepoAccessToSelfHostedRunnerGroupInOrgRequest(w
 	response, err := s.h.ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -112,7 +112,7 @@ func (s *Server) HandleActionsAddSelectedRepoToOrgSecretRequest(w http.ResponseW
 	response, err := s.h.ActionsAddSelectedRepoToOrgSecret(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -141,7 +141,7 @@ func (s *Server) HandleActionsAddSelfHostedRunnerToGroupForOrgRequest(w http.Res
 	response, err := s.h.ActionsAddSelfHostedRunnerToGroupForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -170,7 +170,7 @@ func (s *Server) HandleActionsApproveWorkflowRunRequest(w http.ResponseWriter, r
 	response, err := s.h.ActionsApproveWorkflowRun(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -199,7 +199,7 @@ func (s *Server) HandleActionsCancelWorkflowRunRequest(w http.ResponseWriter, r 
 	response, err := s.h.ActionsCancelWorkflowRun(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -234,7 +234,7 @@ func (s *Server) HandleActionsCreateOrUpdateEnvironmentSecretRequest(w http.Resp
 	response, err := s.h.ActionsCreateOrUpdateEnvironmentSecret(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -269,7 +269,7 @@ func (s *Server) HandleActionsCreateOrUpdateOrgSecretRequest(w http.ResponseWrit
 	response, err := s.h.ActionsCreateOrUpdateOrgSecret(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -304,7 +304,7 @@ func (s *Server) HandleActionsCreateOrUpdateRepoSecretRequest(w http.ResponseWri
 	response, err := s.h.ActionsCreateOrUpdateRepoSecret(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -333,7 +333,7 @@ func (s *Server) HandleActionsCreateRegistrationTokenForOrgRequest(w http.Respon
 	response, err := s.h.ActionsCreateRegistrationTokenForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -362,7 +362,7 @@ func (s *Server) HandleActionsCreateRegistrationTokenForRepoRequest(w http.Respo
 	response, err := s.h.ActionsCreateRegistrationTokenForRepo(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -391,7 +391,7 @@ func (s *Server) HandleActionsCreateRemoveTokenForOrgRequest(w http.ResponseWrit
 	response, err := s.h.ActionsCreateRemoveTokenForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -420,7 +420,7 @@ func (s *Server) HandleActionsCreateRemoveTokenForRepoRequest(w http.ResponseWri
 	response, err := s.h.ActionsCreateRemoveTokenForRepo(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -455,7 +455,7 @@ func (s *Server) HandleActionsCreateSelfHostedRunnerGroupForOrgRequest(w http.Re
 	response, err := s.h.ActionsCreateSelfHostedRunnerGroupForOrg(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -484,7 +484,7 @@ func (s *Server) HandleActionsDeleteArtifactRequest(w http.ResponseWriter, r *ht
 	response, err := s.h.ActionsDeleteArtifact(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -513,7 +513,7 @@ func (s *Server) HandleActionsDeleteEnvironmentSecretRequest(w http.ResponseWrit
 	response, err := s.h.ActionsDeleteEnvironmentSecret(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -542,7 +542,7 @@ func (s *Server) HandleActionsDeleteOrgSecretRequest(w http.ResponseWriter, r *h
 	response, err := s.h.ActionsDeleteOrgSecret(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -571,7 +571,7 @@ func (s *Server) HandleActionsDeleteRepoSecretRequest(w http.ResponseWriter, r *
 	response, err := s.h.ActionsDeleteRepoSecret(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -600,7 +600,7 @@ func (s *Server) HandleActionsDeleteSelfHostedRunnerFromOrgRequest(w http.Respon
 	response, err := s.h.ActionsDeleteSelfHostedRunnerFromOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -629,7 +629,7 @@ func (s *Server) HandleActionsDeleteSelfHostedRunnerFromRepoRequest(w http.Respo
 	response, err := s.h.ActionsDeleteSelfHostedRunnerFromRepo(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -658,7 +658,7 @@ func (s *Server) HandleActionsDeleteSelfHostedRunnerGroupFromOrgRequest(w http.R
 	response, err := s.h.ActionsDeleteSelfHostedRunnerGroupFromOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -687,7 +687,7 @@ func (s *Server) HandleActionsDeleteWorkflowRunRequest(w http.ResponseWriter, r 
 	response, err := s.h.ActionsDeleteWorkflowRun(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -716,7 +716,7 @@ func (s *Server) HandleActionsDeleteWorkflowRunLogsRequest(w http.ResponseWriter
 	response, err := s.h.ActionsDeleteWorkflowRunLogs(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -745,7 +745,7 @@ func (s *Server) HandleActionsDisableSelectedRepositoryGithubActionsOrganization
 	response, err := s.h.ActionsDisableSelectedRepositoryGithubActionsOrganization(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -774,7 +774,7 @@ func (s *Server) HandleActionsDownloadArtifactRequest(w http.ResponseWriter, r *
 	response, err := s.h.ActionsDownloadArtifact(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -803,7 +803,7 @@ func (s *Server) HandleActionsDownloadJobLogsForWorkflowRunRequest(w http.Respon
 	response, err := s.h.ActionsDownloadJobLogsForWorkflowRun(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -832,7 +832,7 @@ func (s *Server) HandleActionsDownloadWorkflowRunLogsRequest(w http.ResponseWrit
 	response, err := s.h.ActionsDownloadWorkflowRunLogs(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -861,7 +861,7 @@ func (s *Server) HandleActionsEnableSelectedRepositoryGithubActionsOrganizationR
 	response, err := s.h.ActionsEnableSelectedRepositoryGithubActionsOrganization(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -890,7 +890,7 @@ func (s *Server) HandleActionsGetAllowedActionsOrganizationRequest(w http.Respon
 	response, err := s.h.ActionsGetAllowedActionsOrganization(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -919,7 +919,7 @@ func (s *Server) HandleActionsGetAllowedActionsRepositoryRequest(w http.Response
 	response, err := s.h.ActionsGetAllowedActionsRepository(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -948,7 +948,7 @@ func (s *Server) HandleActionsGetArtifactRequest(w http.ResponseWriter, r *http.
 	response, err := s.h.ActionsGetArtifact(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -977,7 +977,7 @@ func (s *Server) HandleActionsGetEnvironmentPublicKeyRequest(w http.ResponseWrit
 	response, err := s.h.ActionsGetEnvironmentPublicKey(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1006,7 +1006,7 @@ func (s *Server) HandleActionsGetEnvironmentSecretRequest(w http.ResponseWriter,
 	response, err := s.h.ActionsGetEnvironmentSecret(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1035,7 +1035,7 @@ func (s *Server) HandleActionsGetGithubActionsPermissionsOrganizationRequest(w h
 	response, err := s.h.ActionsGetGithubActionsPermissionsOrganization(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1064,7 +1064,7 @@ func (s *Server) HandleActionsGetGithubActionsPermissionsRepositoryRequest(w htt
 	response, err := s.h.ActionsGetGithubActionsPermissionsRepository(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1093,7 +1093,7 @@ func (s *Server) HandleActionsGetJobForWorkflowRunRequest(w http.ResponseWriter,
 	response, err := s.h.ActionsGetJobForWorkflowRun(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1122,7 +1122,7 @@ func (s *Server) HandleActionsGetOrgPublicKeyRequest(w http.ResponseWriter, r *h
 	response, err := s.h.ActionsGetOrgPublicKey(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1151,7 +1151,7 @@ func (s *Server) HandleActionsGetOrgSecretRequest(w http.ResponseWriter, r *http
 	response, err := s.h.ActionsGetOrgSecret(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1180,7 +1180,7 @@ func (s *Server) HandleActionsGetRepoPublicKeyRequest(w http.ResponseWriter, r *
 	response, err := s.h.ActionsGetRepoPublicKey(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1209,7 +1209,7 @@ func (s *Server) HandleActionsGetRepoSecretRequest(w http.ResponseWriter, r *htt
 	response, err := s.h.ActionsGetRepoSecret(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1238,7 +1238,7 @@ func (s *Server) HandleActionsGetReviewsForRunRequest(w http.ResponseWriter, r *
 	response, err := s.h.ActionsGetReviewsForRun(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1267,7 +1267,7 @@ func (s *Server) HandleActionsGetSelfHostedRunnerForOrgRequest(w http.ResponseWr
 	response, err := s.h.ActionsGetSelfHostedRunnerForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1296,7 +1296,7 @@ func (s *Server) HandleActionsGetSelfHostedRunnerForRepoRequest(w http.ResponseW
 	response, err := s.h.ActionsGetSelfHostedRunnerForRepo(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1325,7 +1325,7 @@ func (s *Server) HandleActionsGetSelfHostedRunnerGroupForOrgRequest(w http.Respo
 	response, err := s.h.ActionsGetSelfHostedRunnerGroupForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1354,7 +1354,7 @@ func (s *Server) HandleActionsGetWorkflowRunRequest(w http.ResponseWriter, r *ht
 	response, err := s.h.ActionsGetWorkflowRun(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1383,7 +1383,7 @@ func (s *Server) HandleActionsGetWorkflowRunUsageRequest(w http.ResponseWriter, 
 	response, err := s.h.ActionsGetWorkflowRunUsage(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1412,7 +1412,7 @@ func (s *Server) HandleActionsListArtifactsForRepoRequest(w http.ResponseWriter,
 	response, err := s.h.ActionsListArtifactsForRepo(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1441,7 +1441,7 @@ func (s *Server) HandleActionsListEnvironmentSecretsRequest(w http.ResponseWrite
 	response, err := s.h.ActionsListEnvironmentSecrets(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1470,7 +1470,7 @@ func (s *Server) HandleActionsListJobsForWorkflowRunRequest(w http.ResponseWrite
 	response, err := s.h.ActionsListJobsForWorkflowRun(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1499,7 +1499,7 @@ func (s *Server) HandleActionsListOrgSecretsRequest(w http.ResponseWriter, r *ht
 	response, err := s.h.ActionsListOrgSecrets(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1528,7 +1528,7 @@ func (s *Server) HandleActionsListRepoAccessToSelfHostedRunnerGroupInOrgRequest(
 	response, err := s.h.ActionsListRepoAccessToSelfHostedRunnerGroupInOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1557,7 +1557,7 @@ func (s *Server) HandleActionsListRepoSecretsRequest(w http.ResponseWriter, r *h
 	response, err := s.h.ActionsListRepoSecrets(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1586,7 +1586,7 @@ func (s *Server) HandleActionsListRepoWorkflowsRequest(w http.ResponseWriter, r 
 	response, err := s.h.ActionsListRepoWorkflows(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1615,7 +1615,7 @@ func (s *Server) HandleActionsListRunnerApplicationsForOrgRequest(w http.Respons
 	response, err := s.h.ActionsListRunnerApplicationsForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1644,7 +1644,7 @@ func (s *Server) HandleActionsListRunnerApplicationsForRepoRequest(w http.Respon
 	response, err := s.h.ActionsListRunnerApplicationsForRepo(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1673,7 +1673,7 @@ func (s *Server) HandleActionsListSelectedReposForOrgSecretRequest(w http.Respon
 	response, err := s.h.ActionsListSelectedReposForOrgSecret(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1702,7 +1702,7 @@ func (s *Server) HandleActionsListSelectedRepositoriesEnabledGithubActionsOrgani
 	response, err := s.h.ActionsListSelectedRepositoriesEnabledGithubActionsOrganization(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1731,7 +1731,7 @@ func (s *Server) HandleActionsListSelfHostedRunnerGroupsForOrgRequest(w http.Res
 	response, err := s.h.ActionsListSelfHostedRunnerGroupsForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1760,7 +1760,7 @@ func (s *Server) HandleActionsListSelfHostedRunnersForOrgRequest(w http.Response
 	response, err := s.h.ActionsListSelfHostedRunnersForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1789,7 +1789,7 @@ func (s *Server) HandleActionsListSelfHostedRunnersForRepoRequest(w http.Respons
 	response, err := s.h.ActionsListSelfHostedRunnersForRepo(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1818,7 +1818,7 @@ func (s *Server) HandleActionsListSelfHostedRunnersInGroupForOrgRequest(w http.R
 	response, err := s.h.ActionsListSelfHostedRunnersInGroupForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1847,7 +1847,7 @@ func (s *Server) HandleActionsListWorkflowRunArtifactsRequest(w http.ResponseWri
 	response, err := s.h.ActionsListWorkflowRunArtifacts(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1876,7 +1876,7 @@ func (s *Server) HandleActionsListWorkflowRunsForRepoRequest(w http.ResponseWrit
 	response, err := s.h.ActionsListWorkflowRunsForRepo(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1905,7 +1905,7 @@ func (s *Server) HandleActionsReRunWorkflowRequest(w http.ResponseWriter, r *htt
 	response, err := s.h.ActionsReRunWorkflow(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1934,7 +1934,7 @@ func (s *Server) HandleActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgReques
 	response, err := s.h.ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1963,7 +1963,7 @@ func (s *Server) HandleActionsRemoveSelectedRepoFromOrgSecretRequest(w http.Resp
 	response, err := s.h.ActionsRemoveSelectedRepoFromOrgSecret(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1992,7 +1992,7 @@ func (s *Server) HandleActionsRemoveSelfHostedRunnerFromGroupForOrgRequest(w htt
 	response, err := s.h.ActionsRemoveSelfHostedRunnerFromGroupForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2021,7 +2021,7 @@ func (s *Server) HandleActionsRetryWorkflowRequest(w http.ResponseWriter, r *htt
 	response, err := s.h.ActionsRetryWorkflow(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2056,7 +2056,7 @@ func (s *Server) HandleActionsSetAllowedActionsOrganizationRequest(w http.Respon
 	response, err := s.h.ActionsSetAllowedActionsOrganization(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2091,7 +2091,7 @@ func (s *Server) HandleActionsSetAllowedActionsRepositoryRequest(w http.Response
 	response, err := s.h.ActionsSetAllowedActionsRepository(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2126,7 +2126,7 @@ func (s *Server) HandleActionsSetGithubActionsPermissionsOrganizationRequest(w h
 	response, err := s.h.ActionsSetGithubActionsPermissionsOrganization(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2161,7 +2161,7 @@ func (s *Server) HandleActionsSetGithubActionsPermissionsRepositoryRequest(w htt
 	response, err := s.h.ActionsSetGithubActionsPermissionsRepository(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2196,7 +2196,7 @@ func (s *Server) HandleActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(w
 	response, err := s.h.ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2231,7 +2231,7 @@ func (s *Server) HandleActionsSetSelectedReposForOrgSecretRequest(w http.Respons
 	response, err := s.h.ActionsSetSelectedReposForOrgSecret(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2266,7 +2266,7 @@ func (s *Server) HandleActionsSetSelectedRepositoriesEnabledGithubActionsOrganiz
 	response, err := s.h.ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2301,7 +2301,7 @@ func (s *Server) HandleActionsSetSelfHostedRunnersInGroupForOrgRequest(w http.Re
 	response, err := s.h.ActionsSetSelfHostedRunnersInGroupForOrg(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2336,7 +2336,7 @@ func (s *Server) HandleActionsUpdateSelfHostedRunnerGroupForOrgRequest(w http.Re
 	response, err := s.h.ActionsUpdateSelfHostedRunnerGroupForOrg(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2365,7 +2365,7 @@ func (s *Server) HandleActivityCheckRepoIsStarredByAuthenticatedUserRequest(w ht
 	response, err := s.h.ActivityCheckRepoIsStarredByAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2394,7 +2394,7 @@ func (s *Server) HandleActivityDeleteRepoSubscriptionRequest(w http.ResponseWrit
 	response, err := s.h.ActivityDeleteRepoSubscription(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2423,7 +2423,7 @@ func (s *Server) HandleActivityDeleteThreadSubscriptionRequest(w http.ResponseWr
 	response, err := s.h.ActivityDeleteThreadSubscription(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2446,7 +2446,7 @@ func (s *Server) HandleActivityGetFeedsRequest(w http.ResponseWriter, r *http.Re
 	response, err := s.h.ActivityGetFeeds(ctx)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2475,7 +2475,7 @@ func (s *Server) HandleActivityGetRepoSubscriptionRequest(w http.ResponseWriter,
 	response, err := s.h.ActivityGetRepoSubscription(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2504,7 +2504,7 @@ func (s *Server) HandleActivityGetThreadRequest(w http.ResponseWriter, r *http.R
 	response, err := s.h.ActivityGetThread(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2533,7 +2533,7 @@ func (s *Server) HandleActivityGetThreadSubscriptionForAuthenticatedUserRequest(
 	response, err := s.h.ActivityGetThreadSubscriptionForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2562,7 +2562,7 @@ func (s *Server) HandleActivityListEventsForAuthenticatedUserRequest(w http.Resp
 	response, err := s.h.ActivityListEventsForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2591,7 +2591,7 @@ func (s *Server) HandleActivityListOrgEventsForAuthenticatedUserRequest(w http.R
 	response, err := s.h.ActivityListOrgEventsForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2620,7 +2620,7 @@ func (s *Server) HandleActivityListPublicEventsRequest(w http.ResponseWriter, r 
 	response, err := s.h.ActivityListPublicEvents(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2649,7 +2649,7 @@ func (s *Server) HandleActivityListPublicEventsForRepoNetworkRequest(w http.Resp
 	response, err := s.h.ActivityListPublicEventsForRepoNetwork(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2678,7 +2678,7 @@ func (s *Server) HandleActivityListPublicEventsForUserRequest(w http.ResponseWri
 	response, err := s.h.ActivityListPublicEventsForUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2707,7 +2707,7 @@ func (s *Server) HandleActivityListPublicOrgEventsRequest(w http.ResponseWriter,
 	response, err := s.h.ActivityListPublicOrgEvents(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2736,7 +2736,7 @@ func (s *Server) HandleActivityListReceivedEventsForUserRequest(w http.ResponseW
 	response, err := s.h.ActivityListReceivedEventsForUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2765,7 +2765,7 @@ func (s *Server) HandleActivityListReceivedPublicEventsForUserRequest(w http.Res
 	response, err := s.h.ActivityListReceivedPublicEventsForUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2794,7 +2794,7 @@ func (s *Server) HandleActivityListRepoEventsRequest(w http.ResponseWriter, r *h
 	response, err := s.h.ActivityListRepoEvents(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2823,7 +2823,7 @@ func (s *Server) HandleActivityListRepoNotificationsForAuthenticatedUserRequest(
 	response, err := s.h.ActivityListRepoNotificationsForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2852,7 +2852,7 @@ func (s *Server) HandleActivityListReposStarredByAuthenticatedUserRequest(w http
 	response, err := s.h.ActivityListReposStarredByAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2881,7 +2881,7 @@ func (s *Server) HandleActivityListReposWatchedByUserRequest(w http.ResponseWrit
 	response, err := s.h.ActivityListReposWatchedByUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2910,7 +2910,7 @@ func (s *Server) HandleActivityListWatchedReposForAuthenticatedUserRequest(w htt
 	response, err := s.h.ActivityListWatchedReposForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2939,7 +2939,7 @@ func (s *Server) HandleActivityListWatchersForRepoRequest(w http.ResponseWriter,
 	response, err := s.h.ActivityListWatchersForRepo(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2968,7 +2968,7 @@ func (s *Server) HandleActivityMarkNotificationsAsReadRequest(w http.ResponseWri
 	response, err := s.h.ActivityMarkNotificationsAsRead(ctx, request)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3003,7 +3003,7 @@ func (s *Server) HandleActivityMarkRepoNotificationsAsReadRequest(w http.Respons
 	response, err := s.h.ActivityMarkRepoNotificationsAsRead(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3032,7 +3032,7 @@ func (s *Server) HandleActivityMarkThreadAsReadRequest(w http.ResponseWriter, r 
 	response, err := s.h.ActivityMarkThreadAsRead(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3067,7 +3067,7 @@ func (s *Server) HandleActivitySetRepoSubscriptionRequest(w http.ResponseWriter,
 	response, err := s.h.ActivitySetRepoSubscription(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3102,7 +3102,7 @@ func (s *Server) HandleActivitySetThreadSubscriptionRequest(w http.ResponseWrite
 	response, err := s.h.ActivitySetThreadSubscription(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3131,7 +3131,7 @@ func (s *Server) HandleActivityStarRepoForAuthenticatedUserRequest(w http.Respon
 	response, err := s.h.ActivityStarRepoForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3160,7 +3160,7 @@ func (s *Server) HandleActivityUnstarRepoForAuthenticatedUserRequest(w http.Resp
 	response, err := s.h.ActivityUnstarRepoForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3189,7 +3189,7 @@ func (s *Server) HandleAppsAddRepoToInstallationRequest(w http.ResponseWriter, r
 	response, err := s.h.AppsAddRepoToInstallation(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3218,7 +3218,7 @@ func (s *Server) HandleAppsDeleteInstallationRequest(w http.ResponseWriter, r *h
 	response, err := s.h.AppsDeleteInstallation(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3241,7 +3241,7 @@ func (s *Server) HandleAppsGetAuthenticatedRequest(w http.ResponseWriter, r *htt
 	response, err := s.h.AppsGetAuthenticated(ctx)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3270,7 +3270,7 @@ func (s *Server) HandleAppsGetBySlugRequest(w http.ResponseWriter, r *http.Reque
 	response, err := s.h.AppsGetBySlug(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3299,7 +3299,7 @@ func (s *Server) HandleAppsGetSubscriptionPlanForAccountRequest(w http.ResponseW
 	response, err := s.h.AppsGetSubscriptionPlanForAccount(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3328,7 +3328,7 @@ func (s *Server) HandleAppsGetSubscriptionPlanForAccountStubbedRequest(w http.Re
 	response, err := s.h.AppsGetSubscriptionPlanForAccountStubbed(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3351,7 +3351,7 @@ func (s *Server) HandleAppsGetWebhookConfigForAppRequest(w http.ResponseWriter, 
 	response, err := s.h.AppsGetWebhookConfigForApp(ctx)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3380,7 +3380,7 @@ func (s *Server) HandleAppsListAccountsForPlanStubbedRequest(w http.ResponseWrit
 	response, err := s.h.AppsListAccountsForPlanStubbed(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3409,7 +3409,7 @@ func (s *Server) HandleAppsListInstallationReposForAuthenticatedUserRequest(w ht
 	response, err := s.h.AppsListInstallationReposForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3438,7 +3438,7 @@ func (s *Server) HandleAppsListPlansRequest(w http.ResponseWriter, r *http.Reque
 	response, err := s.h.AppsListPlans(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3467,7 +3467,7 @@ func (s *Server) HandleAppsListPlansStubbedRequest(w http.ResponseWriter, r *htt
 	response, err := s.h.AppsListPlansStubbed(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3496,7 +3496,7 @@ func (s *Server) HandleAppsListReposAccessibleToInstallationRequest(w http.Respo
 	response, err := s.h.AppsListReposAccessibleToInstallation(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3525,7 +3525,7 @@ func (s *Server) HandleAppsListSubscriptionsForAuthenticatedUserRequest(w http.R
 	response, err := s.h.AppsListSubscriptionsForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3554,7 +3554,7 @@ func (s *Server) HandleAppsListSubscriptionsForAuthenticatedUserStubbedRequest(w
 	response, err := s.h.AppsListSubscriptionsForAuthenticatedUserStubbed(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3583,7 +3583,7 @@ func (s *Server) HandleAppsRemoveRepoFromInstallationRequest(w http.ResponseWrit
 	response, err := s.h.AppsRemoveRepoFromInstallation(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3606,7 +3606,7 @@ func (s *Server) HandleAppsRevokeInstallationAccessTokenRequest(w http.ResponseW
 	response, err := s.h.AppsRevokeInstallationAccessToken(ctx)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3635,7 +3635,7 @@ func (s *Server) HandleAppsSuspendInstallationRequest(w http.ResponseWriter, r *
 	response, err := s.h.AppsSuspendInstallation(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3664,7 +3664,7 @@ func (s *Server) HandleAppsUnsuspendInstallationRequest(w http.ResponseWriter, r
 	response, err := s.h.AppsUnsuspendInstallation(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3693,7 +3693,7 @@ func (s *Server) HandleAppsUpdateWebhookConfigForAppRequest(w http.ResponseWrite
 	response, err := s.h.AppsUpdateWebhookConfigForApp(ctx, request)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3722,7 +3722,7 @@ func (s *Server) HandleBillingGetGithubActionsBillingGheRequest(w http.ResponseW
 	response, err := s.h.BillingGetGithubActionsBillingGhe(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3751,7 +3751,7 @@ func (s *Server) HandleBillingGetGithubActionsBillingOrgRequest(w http.ResponseW
 	response, err := s.h.BillingGetGithubActionsBillingOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3780,7 +3780,7 @@ func (s *Server) HandleBillingGetGithubActionsBillingUserRequest(w http.Response
 	response, err := s.h.BillingGetGithubActionsBillingUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3809,7 +3809,7 @@ func (s *Server) HandleBillingGetGithubPackagesBillingGheRequest(w http.Response
 	response, err := s.h.BillingGetGithubPackagesBillingGhe(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3838,7 +3838,7 @@ func (s *Server) HandleBillingGetGithubPackagesBillingOrgRequest(w http.Response
 	response, err := s.h.BillingGetGithubPackagesBillingOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3867,7 +3867,7 @@ func (s *Server) HandleBillingGetGithubPackagesBillingUserRequest(w http.Respons
 	response, err := s.h.BillingGetGithubPackagesBillingUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3896,7 +3896,7 @@ func (s *Server) HandleBillingGetSharedStorageBillingGheRequest(w http.ResponseW
 	response, err := s.h.BillingGetSharedStorageBillingGhe(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3925,7 +3925,7 @@ func (s *Server) HandleBillingGetSharedStorageBillingOrgRequest(w http.ResponseW
 	response, err := s.h.BillingGetSharedStorageBillingOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3954,7 +3954,7 @@ func (s *Server) HandleBillingGetSharedStorageBillingUserRequest(w http.Response
 	response, err := s.h.BillingGetSharedStorageBillingUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3989,7 +3989,7 @@ func (s *Server) HandleChecksCreateSuiteRequest(w http.ResponseWriter, r *http.R
 	response, err := s.h.ChecksCreateSuite(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4018,7 +4018,7 @@ func (s *Server) HandleChecksGetRequest(w http.ResponseWriter, r *http.Request) 
 	response, err := s.h.ChecksGet(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4047,7 +4047,7 @@ func (s *Server) HandleChecksGetSuiteRequest(w http.ResponseWriter, r *http.Requ
 	response, err := s.h.ChecksGetSuite(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4076,7 +4076,7 @@ func (s *Server) HandleChecksListAnnotationsRequest(w http.ResponseWriter, r *ht
 	response, err := s.h.ChecksListAnnotations(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4105,7 +4105,7 @@ func (s *Server) HandleChecksListForRefRequest(w http.ResponseWriter, r *http.Re
 	response, err := s.h.ChecksListForRef(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4134,7 +4134,7 @@ func (s *Server) HandleChecksListForSuiteRequest(w http.ResponseWriter, r *http.
 	response, err := s.h.ChecksListForSuite(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4163,7 +4163,7 @@ func (s *Server) HandleChecksListSuitesForRefRequest(w http.ResponseWriter, r *h
 	response, err := s.h.ChecksListSuitesForRef(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4192,7 +4192,7 @@ func (s *Server) HandleChecksRerequestSuiteRequest(w http.ResponseWriter, r *htt
 	response, err := s.h.ChecksRerequestSuite(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4227,7 +4227,7 @@ func (s *Server) HandleChecksSetSuitesPreferencesRequest(w http.ResponseWriter, 
 	response, err := s.h.ChecksSetSuitesPreferences(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4256,7 +4256,7 @@ func (s *Server) HandleCodeScanningDeleteAnalysisRequest(w http.ResponseWriter, 
 	response, err := s.h.CodeScanningDeleteAnalysis(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4285,7 +4285,7 @@ func (s *Server) HandleCodeScanningGetAlertRequest(w http.ResponseWriter, r *htt
 	response, err := s.h.CodeScanningGetAlert(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4314,7 +4314,7 @@ func (s *Server) HandleCodeScanningGetAnalysisRequest(w http.ResponseWriter, r *
 	response, err := s.h.CodeScanningGetAnalysis(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4343,7 +4343,7 @@ func (s *Server) HandleCodeScanningGetSarifRequest(w http.ResponseWriter, r *htt
 	response, err := s.h.CodeScanningGetSarif(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4372,7 +4372,7 @@ func (s *Server) HandleCodeScanningListAlertInstancesRequest(w http.ResponseWrit
 	response, err := s.h.CodeScanningListAlertInstances(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4401,7 +4401,7 @@ func (s *Server) HandleCodeScanningListAlertsForRepoRequest(w http.ResponseWrite
 	response, err := s.h.CodeScanningListAlertsForRepo(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4430,7 +4430,7 @@ func (s *Server) HandleCodeScanningListRecentAnalysesRequest(w http.ResponseWrit
 	response, err := s.h.CodeScanningListRecentAnalyses(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4465,7 +4465,7 @@ func (s *Server) HandleCodeScanningUpdateAlertRequest(w http.ResponseWriter, r *
 	response, err := s.h.CodeScanningUpdateAlert(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4500,7 +4500,7 @@ func (s *Server) HandleCodeScanningUploadSarifRequest(w http.ResponseWriter, r *
 	response, err := s.h.CodeScanningUploadSarif(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4523,7 +4523,7 @@ func (s *Server) HandleCodesOfConductGetAllCodesOfConductRequest(w http.Response
 	response, err := s.h.CodesOfConductGetAllCodesOfConduct(ctx)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4552,7 +4552,7 @@ func (s *Server) HandleCodesOfConductGetConductCodeRequest(w http.ResponseWriter
 	response, err := s.h.CodesOfConductGetConductCode(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4575,7 +4575,7 @@ func (s *Server) HandleEmojisGetRequest(w http.ResponseWriter, r *http.Request) 
 	response, err := s.h.EmojisGet(ctx)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4604,7 +4604,7 @@ func (s *Server) HandleEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnter
 	response, err := s.h.EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4633,7 +4633,7 @@ func (s *Server) HandleEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseReq
 	response, err := s.h.EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4662,7 +4662,7 @@ func (s *Server) HandleEnterpriseAdminCreateRegistrationTokenForEnterpriseReques
 	response, err := s.h.EnterpriseAdminCreateRegistrationTokenForEnterprise(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4691,7 +4691,7 @@ func (s *Server) HandleEnterpriseAdminCreateRemoveTokenForEnterpriseRequest(w ht
 	response, err := s.h.EnterpriseAdminCreateRemoveTokenForEnterprise(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4726,7 +4726,7 @@ func (s *Server) HandleEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRe
 	response, err := s.h.EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4755,7 +4755,7 @@ func (s *Server) HandleEnterpriseAdminDeleteScimGroupFromEnterpriseRequest(w htt
 	response, err := s.h.EnterpriseAdminDeleteScimGroupFromEnterprise(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4784,7 +4784,7 @@ func (s *Server) HandleEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseReques
 	response, err := s.h.EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4813,7 +4813,7 @@ func (s *Server) HandleEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseR
 	response, err := s.h.EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4842,7 +4842,7 @@ func (s *Server) HandleEnterpriseAdminDeleteUserFromEnterpriseRequest(w http.Res
 	response, err := s.h.EnterpriseAdminDeleteUserFromEnterprise(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4871,7 +4871,7 @@ func (s *Server) HandleEnterpriseAdminDisableSelectedOrganizationGithubActionsEn
 	response, err := s.h.EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4900,7 +4900,7 @@ func (s *Server) HandleEnterpriseAdminEnableSelectedOrganizationGithubActionsEnt
 	response, err := s.h.EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4929,7 +4929,7 @@ func (s *Server) HandleEnterpriseAdminGetAllowedActionsEnterpriseRequest(w http.
 	response, err := s.h.EnterpriseAdminGetAllowedActionsEnterprise(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4958,7 +4958,7 @@ func (s *Server) HandleEnterpriseAdminGetAuditLogRequest(w http.ResponseWriter, 
 	response, err := s.h.EnterpriseAdminGetAuditLog(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4987,7 +4987,7 @@ func (s *Server) HandleEnterpriseAdminGetGithubActionsPermissionsEnterpriseReque
 	response, err := s.h.EnterpriseAdminGetGithubActionsPermissionsEnterprise(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5016,7 +5016,7 @@ func (s *Server) HandleEnterpriseAdminGetProvisioningInformationForEnterpriseGro
 	response, err := s.h.EnterpriseAdminGetProvisioningInformationForEnterpriseGroup(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5045,7 +5045,7 @@ func (s *Server) HandleEnterpriseAdminGetProvisioningInformationForEnterpriseUse
 	response, err := s.h.EnterpriseAdminGetProvisioningInformationForEnterpriseUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5074,7 +5074,7 @@ func (s *Server) HandleEnterpriseAdminGetSelfHostedRunnerForEnterpriseRequest(w 
 	response, err := s.h.EnterpriseAdminGetSelfHostedRunnerForEnterprise(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5103,7 +5103,7 @@ func (s *Server) HandleEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseReque
 	response, err := s.h.EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5132,7 +5132,7 @@ func (s *Server) HandleEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnte
 	response, err := s.h.EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5161,7 +5161,7 @@ func (s *Server) HandleEnterpriseAdminListProvisionedGroupsEnterpriseRequest(w h
 	response, err := s.h.EnterpriseAdminListProvisionedGroupsEnterprise(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5190,7 +5190,7 @@ func (s *Server) HandleEnterpriseAdminListProvisionedIdentitiesEnterpriseRequest
 	response, err := s.h.EnterpriseAdminListProvisionedIdentitiesEnterprise(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5219,7 +5219,7 @@ func (s *Server) HandleEnterpriseAdminListRunnerApplicationsForEnterpriseRequest
 	response, err := s.h.EnterpriseAdminListRunnerApplicationsForEnterprise(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5248,7 +5248,7 @@ func (s *Server) HandleEnterpriseAdminListSelectedOrganizationsEnabledGithubActi
 	response, err := s.h.EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5277,7 +5277,7 @@ func (s *Server) HandleEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseReq
 	response, err := s.h.EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5306,7 +5306,7 @@ func (s *Server) HandleEnterpriseAdminListSelfHostedRunnersForEnterpriseRequest(
 	response, err := s.h.EnterpriseAdminListSelfHostedRunnersForEnterprise(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5335,7 +5335,7 @@ func (s *Server) HandleEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseR
 	response, err := s.h.EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5370,7 +5370,7 @@ func (s *Server) HandleEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(w
 	response, err := s.h.EnterpriseAdminProvisionAndInviteEnterpriseGroup(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5405,7 +5405,7 @@ func (s *Server) HandleEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(w 
 	response, err := s.h.EnterpriseAdminProvisionAndInviteEnterpriseUser(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5434,7 +5434,7 @@ func (s *Server) HandleEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEn
 	response, err := s.h.EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5463,7 +5463,7 @@ func (s *Server) HandleEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpri
 	response, err := s.h.EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5498,7 +5498,7 @@ func (s *Server) HandleEnterpriseAdminSetAllowedActionsEnterpriseRequest(w http.
 	response, err := s.h.EnterpriseAdminSetAllowedActionsEnterprise(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5533,7 +5533,7 @@ func (s *Server) HandleEnterpriseAdminSetGithubActionsPermissionsEnterpriseReque
 	response, err := s.h.EnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5568,7 +5568,7 @@ func (s *Server) HandleEnterpriseAdminSetInformationForProvisionedEnterpriseGrou
 	response, err := s.h.EnterpriseAdminSetInformationForProvisionedEnterpriseGroup(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5603,7 +5603,7 @@ func (s *Server) HandleEnterpriseAdminSetInformationForProvisionedEnterpriseUser
 	response, err := s.h.EnterpriseAdminSetInformationForProvisionedEnterpriseUser(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5638,7 +5638,7 @@ func (s *Server) HandleEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnter
 	response, err := s.h.EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5673,7 +5673,7 @@ func (s *Server) HandleEnterpriseAdminSetSelectedOrganizationsEnabledGithubActio
 	response, err := s.h.EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5708,7 +5708,7 @@ func (s *Server) HandleEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRe
 	response, err := s.h.EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5743,7 +5743,7 @@ func (s *Server) HandleEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(w 
 	response, err := s.h.EnterpriseAdminUpdateAttributeForEnterpriseUser(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5778,7 +5778,7 @@ func (s *Server) HandleEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRe
 	response, err := s.h.EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5807,7 +5807,7 @@ func (s *Server) HandleGistsCheckIsStarredRequest(w http.ResponseWriter, r *http
 	response, err := s.h.GistsCheckIsStarred(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5842,7 +5842,7 @@ func (s *Server) HandleGistsCreateCommentRequest(w http.ResponseWriter, r *http.
 	response, err := s.h.GistsCreateComment(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5871,7 +5871,7 @@ func (s *Server) HandleGistsDeleteRequest(w http.ResponseWriter, r *http.Request
 	response, err := s.h.GistsDelete(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5900,7 +5900,7 @@ func (s *Server) HandleGistsDeleteCommentRequest(w http.ResponseWriter, r *http.
 	response, err := s.h.GistsDeleteComment(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5929,7 +5929,7 @@ func (s *Server) HandleGistsGetRequest(w http.ResponseWriter, r *http.Request) {
 	response, err := s.h.GistsGet(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5958,7 +5958,7 @@ func (s *Server) HandleGistsGetCommentRequest(w http.ResponseWriter, r *http.Req
 	response, err := s.h.GistsGetComment(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5987,7 +5987,7 @@ func (s *Server) HandleGistsListRequest(w http.ResponseWriter, r *http.Request) 
 	response, err := s.h.GistsList(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6016,7 +6016,7 @@ func (s *Server) HandleGistsListCommentsRequest(w http.ResponseWriter, r *http.R
 	response, err := s.h.GistsListComments(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6045,7 +6045,7 @@ func (s *Server) HandleGistsListCommitsRequest(w http.ResponseWriter, r *http.Re
 	response, err := s.h.GistsListCommits(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6074,7 +6074,7 @@ func (s *Server) HandleGistsListForksRequest(w http.ResponseWriter, r *http.Requ
 	response, err := s.h.GistsListForks(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6103,7 +6103,7 @@ func (s *Server) HandleGistsListStarredRequest(w http.ResponseWriter, r *http.Re
 	response, err := s.h.GistsListStarred(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6132,7 +6132,7 @@ func (s *Server) HandleGistsStarRequest(w http.ResponseWriter, r *http.Request) 
 	response, err := s.h.GistsStar(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6161,7 +6161,7 @@ func (s *Server) HandleGistsUnstarRequest(w http.ResponseWriter, r *http.Request
 	response, err := s.h.GistsUnstar(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6196,7 +6196,7 @@ func (s *Server) HandleGistsUpdateCommentRequest(w http.ResponseWriter, r *http.
 	response, err := s.h.GistsUpdateComment(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6225,7 +6225,7 @@ func (s *Server) HandleGitGetCommitRequest(w http.ResponseWriter, r *http.Reques
 	response, err := s.h.GitGetCommit(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6254,7 +6254,7 @@ func (s *Server) HandleGitGetRefRequest(w http.ResponseWriter, r *http.Request) 
 	response, err := s.h.GitGetRef(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6283,7 +6283,7 @@ func (s *Server) HandleGitGetTagRequest(w http.ResponseWriter, r *http.Request) 
 	response, err := s.h.GitGetTag(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6312,7 +6312,7 @@ func (s *Server) HandleGitListMatchingRefsRequest(w http.ResponseWriter, r *http
 	response, err := s.h.GitListMatchingRefs(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6335,7 +6335,7 @@ func (s *Server) HandleGitignoreGetAllTemplatesRequest(w http.ResponseWriter, r 
 	response, err := s.h.GitignoreGetAllTemplates(ctx)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6364,7 +6364,7 @@ func (s *Server) HandleGitignoreGetTemplateRequest(w http.ResponseWriter, r *htt
 	response, err := s.h.GitignoreGetTemplate(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6387,7 +6387,7 @@ func (s *Server) HandleInteractionsRemoveRestrictionsForAuthenticatedUserRequest
 	response, err := s.h.InteractionsRemoveRestrictionsForAuthenticatedUser(ctx)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6416,7 +6416,7 @@ func (s *Server) HandleInteractionsRemoveRestrictionsForOrgRequest(w http.Respon
 	response, err := s.h.InteractionsRemoveRestrictionsForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6445,7 +6445,7 @@ func (s *Server) HandleInteractionsRemoveRestrictionsForRepoRequest(w http.Respo
 	response, err := s.h.InteractionsRemoveRestrictionsForRepo(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6480,7 +6480,7 @@ func (s *Server) HandleInteractionsSetRestrictionsForRepoRequest(w http.Response
 	response, err := s.h.InteractionsSetRestrictionsForRepo(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6515,7 +6515,7 @@ func (s *Server) HandleIssuesAddAssigneesRequest(w http.ResponseWriter, r *http.
 	response, err := s.h.IssuesAddAssignees(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6544,7 +6544,7 @@ func (s *Server) HandleIssuesCheckUserCanBeAssignedRequest(w http.ResponseWriter
 	response, err := s.h.IssuesCheckUserCanBeAssigned(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6573,7 +6573,7 @@ func (s *Server) HandleIssuesDeleteCommentRequest(w http.ResponseWriter, r *http
 	response, err := s.h.IssuesDeleteComment(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6602,7 +6602,7 @@ func (s *Server) HandleIssuesDeleteLabelRequest(w http.ResponseWriter, r *http.R
 	response, err := s.h.IssuesDeleteLabel(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6631,7 +6631,7 @@ func (s *Server) HandleIssuesDeleteMilestoneRequest(w http.ResponseWriter, r *ht
 	response, err := s.h.IssuesDeleteMilestone(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6660,7 +6660,7 @@ func (s *Server) HandleIssuesGetCommentRequest(w http.ResponseWriter, r *http.Re
 	response, err := s.h.IssuesGetComment(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6689,7 +6689,7 @@ func (s *Server) HandleIssuesGetEventRequest(w http.ResponseWriter, r *http.Requ
 	response, err := s.h.IssuesGetEvent(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6718,7 +6718,7 @@ func (s *Server) HandleIssuesGetLabelRequest(w http.ResponseWriter, r *http.Requ
 	response, err := s.h.IssuesGetLabel(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6747,7 +6747,7 @@ func (s *Server) HandleIssuesGetMilestoneRequest(w http.ResponseWriter, r *http.
 	response, err := s.h.IssuesGetMilestone(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6776,7 +6776,7 @@ func (s *Server) HandleIssuesListAssigneesRequest(w http.ResponseWriter, r *http
 	response, err := s.h.IssuesListAssignees(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6805,7 +6805,7 @@ func (s *Server) HandleIssuesListCommentsRequest(w http.ResponseWriter, r *http.
 	response, err := s.h.IssuesListComments(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6834,7 +6834,7 @@ func (s *Server) HandleIssuesListLabelsForMilestoneRequest(w http.ResponseWriter
 	response, err := s.h.IssuesListLabelsForMilestone(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6863,7 +6863,7 @@ func (s *Server) HandleIssuesListLabelsForRepoRequest(w http.ResponseWriter, r *
 	response, err := s.h.IssuesListLabelsForRepo(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6892,7 +6892,7 @@ func (s *Server) HandleIssuesListLabelsOnIssueRequest(w http.ResponseWriter, r *
 	response, err := s.h.IssuesListLabelsOnIssue(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6921,7 +6921,7 @@ func (s *Server) HandleIssuesListMilestonesRequest(w http.ResponseWriter, r *htt
 	response, err := s.h.IssuesListMilestones(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6950,7 +6950,7 @@ func (s *Server) HandleIssuesRemoveAllLabelsRequest(w http.ResponseWriter, r *ht
 	response, err := s.h.IssuesRemoveAllLabels(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6985,7 +6985,7 @@ func (s *Server) HandleIssuesRemoveAssigneesRequest(w http.ResponseWriter, r *ht
 	response, err := s.h.IssuesRemoveAssignees(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7014,7 +7014,7 @@ func (s *Server) HandleIssuesRemoveLabelRequest(w http.ResponseWriter, r *http.R
 	response, err := s.h.IssuesRemoveLabel(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7043,7 +7043,7 @@ func (s *Server) HandleIssuesUnlockRequest(w http.ResponseWriter, r *http.Reques
 	response, err := s.h.IssuesUnlock(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7078,7 +7078,7 @@ func (s *Server) HandleIssuesUpdateLabelRequest(w http.ResponseWriter, r *http.R
 	response, err := s.h.IssuesUpdateLabel(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7113,7 +7113,7 @@ func (s *Server) HandleIssuesUpdateMilestoneRequest(w http.ResponseWriter, r *ht
 	response, err := s.h.IssuesUpdateMilestone(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7142,7 +7142,7 @@ func (s *Server) HandleLicensesGetRequest(w http.ResponseWriter, r *http.Request
 	response, err := s.h.LicensesGet(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7171,7 +7171,7 @@ func (s *Server) HandleLicensesGetAllCommonlyUsedRequest(w http.ResponseWriter, 
 	response, err := s.h.LicensesGetAllCommonlyUsed(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7200,7 +7200,7 @@ func (s *Server) HandleLicensesGetForRepoRequest(w http.ResponseWriter, r *http.
 	response, err := s.h.LicensesGetForRepo(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7223,7 +7223,7 @@ func (s *Server) HandleMetaGetRequest(w http.ResponseWriter, r *http.Request) {
 	response, err := s.h.MetaGet(ctx)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7246,7 +7246,7 @@ func (s *Server) HandleMetaRootRequest(w http.ResponseWriter, r *http.Request) {
 	response, err := s.h.MetaRoot(ctx)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7275,7 +7275,7 @@ func (s *Server) HandleMigrationsCancelImportRequest(w http.ResponseWriter, r *h
 	response, err := s.h.MigrationsCancelImport(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7304,7 +7304,7 @@ func (s *Server) HandleMigrationsDeleteArchiveForAuthenticatedUserRequest(w http
 	response, err := s.h.MigrationsDeleteArchiveForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7333,7 +7333,7 @@ func (s *Server) HandleMigrationsDeleteArchiveForOrgRequest(w http.ResponseWrite
 	response, err := s.h.MigrationsDeleteArchiveForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7362,7 +7362,7 @@ func (s *Server) HandleMigrationsDownloadArchiveForOrgRequest(w http.ResponseWri
 	response, err := s.h.MigrationsDownloadArchiveForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7391,7 +7391,7 @@ func (s *Server) HandleMigrationsGetArchiveForAuthenticatedUserRequest(w http.Re
 	response, err := s.h.MigrationsGetArchiveForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7420,7 +7420,7 @@ func (s *Server) HandleMigrationsGetCommitAuthorsRequest(w http.ResponseWriter, 
 	response, err := s.h.MigrationsGetCommitAuthors(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7449,7 +7449,7 @@ func (s *Server) HandleMigrationsGetImportStatusRequest(w http.ResponseWriter, r
 	response, err := s.h.MigrationsGetImportStatus(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7478,7 +7478,7 @@ func (s *Server) HandleMigrationsGetLargeFilesRequest(w http.ResponseWriter, r *
 	response, err := s.h.MigrationsGetLargeFiles(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7507,7 +7507,7 @@ func (s *Server) HandleMigrationsGetStatusForAuthenticatedUserRequest(w http.Res
 	response, err := s.h.MigrationsGetStatusForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7536,7 +7536,7 @@ func (s *Server) HandleMigrationsGetStatusForOrgRequest(w http.ResponseWriter, r
 	response, err := s.h.MigrationsGetStatusForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7565,7 +7565,7 @@ func (s *Server) HandleMigrationsListForAuthenticatedUserRequest(w http.Response
 	response, err := s.h.MigrationsListForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7594,7 +7594,7 @@ func (s *Server) HandleMigrationsListForOrgRequest(w http.ResponseWriter, r *htt
 	response, err := s.h.MigrationsListForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7623,7 +7623,7 @@ func (s *Server) HandleMigrationsListReposForOrgRequest(w http.ResponseWriter, r
 	response, err := s.h.MigrationsListReposForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7652,7 +7652,7 @@ func (s *Server) HandleMigrationsListReposForUserRequest(w http.ResponseWriter, 
 	response, err := s.h.MigrationsListReposForUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7681,7 +7681,7 @@ func (s *Server) HandleMigrationsUnlockRepoForAuthenticatedUserRequest(w http.Re
 	response, err := s.h.MigrationsUnlockRepoForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7710,7 +7710,7 @@ func (s *Server) HandleMigrationsUnlockRepoForOrgRequest(w http.ResponseWriter, 
 	response, err := s.h.MigrationsUnlockRepoForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7745,7 +7745,7 @@ func (s *Server) HandleMigrationsUpdateImportRequest(w http.ResponseWriter, r *h
 	response, err := s.h.MigrationsUpdateImport(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7774,7 +7774,7 @@ func (s *Server) HandleOAuthAuthorizationsDeleteAuthorizationRequest(w http.Resp
 	response, err := s.h.OAuthAuthorizationsDeleteAuthorization(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7803,7 +7803,7 @@ func (s *Server) HandleOAuthAuthorizationsDeleteGrantRequest(w http.ResponseWrit
 	response, err := s.h.OAuthAuthorizationsDeleteGrant(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7832,7 +7832,7 @@ func (s *Server) HandleOAuthAuthorizationsGetAuthorizationRequest(w http.Respons
 	response, err := s.h.OAuthAuthorizationsGetAuthorization(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7861,7 +7861,7 @@ func (s *Server) HandleOAuthAuthorizationsGetGrantRequest(w http.ResponseWriter,
 	response, err := s.h.OAuthAuthorizationsGetGrant(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7890,7 +7890,7 @@ func (s *Server) HandleOAuthAuthorizationsListAuthorizationsRequest(w http.Respo
 	response, err := s.h.OAuthAuthorizationsListAuthorizations(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7919,7 +7919,7 @@ func (s *Server) HandleOAuthAuthorizationsListGrantsRequest(w http.ResponseWrite
 	response, err := s.h.OAuthAuthorizationsListGrants(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7948,7 +7948,7 @@ func (s *Server) HandleOrgsCheckBlockedUserRequest(w http.ResponseWriter, r *htt
 	response, err := s.h.OrgsCheckBlockedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7977,7 +7977,7 @@ func (s *Server) HandleOrgsCheckMembershipForUserRequest(w http.ResponseWriter, 
 	response, err := s.h.OrgsCheckMembershipForUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8006,7 +8006,7 @@ func (s *Server) HandleOrgsCheckPublicMembershipForUserRequest(w http.ResponseWr
 	response, err := s.h.OrgsCheckPublicMembershipForUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8035,7 +8035,7 @@ func (s *Server) HandleOrgsConvertMemberToOutsideCollaboratorRequest(w http.Resp
 	response, err := s.h.OrgsConvertMemberToOutsideCollaborator(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8064,7 +8064,7 @@ func (s *Server) HandleOrgsDeleteWebhookRequest(w http.ResponseWriter, r *http.R
 	response, err := s.h.OrgsDeleteWebhook(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8093,7 +8093,7 @@ func (s *Server) HandleOrgsGetRequest(w http.ResponseWriter, r *http.Request) {
 	response, err := s.h.OrgsGet(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8122,7 +8122,7 @@ func (s *Server) HandleOrgsGetAuditLogRequest(w http.ResponseWriter, r *http.Req
 	response, err := s.h.OrgsGetAuditLog(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8151,7 +8151,7 @@ func (s *Server) HandleOrgsGetMembershipForAuthenticatedUserRequest(w http.Respo
 	response, err := s.h.OrgsGetMembershipForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8180,7 +8180,7 @@ func (s *Server) HandleOrgsGetMembershipForUserRequest(w http.ResponseWriter, r 
 	response, err := s.h.OrgsGetMembershipForUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8209,7 +8209,7 @@ func (s *Server) HandleOrgsGetWebhookRequest(w http.ResponseWriter, r *http.Requ
 	response, err := s.h.OrgsGetWebhook(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8238,7 +8238,7 @@ func (s *Server) HandleOrgsGetWebhookConfigForOrgRequest(w http.ResponseWriter, 
 	response, err := s.h.OrgsGetWebhookConfigForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8267,7 +8267,7 @@ func (s *Server) HandleOrgsListRequest(w http.ResponseWriter, r *http.Request) {
 	response, err := s.h.OrgsList(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8296,7 +8296,7 @@ func (s *Server) HandleOrgsListBlockedUsersRequest(w http.ResponseWriter, r *htt
 	response, err := s.h.OrgsListBlockedUsers(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8325,7 +8325,7 @@ func (s *Server) HandleOrgsListFailedInvitationsRequest(w http.ResponseWriter, r
 	response, err := s.h.OrgsListFailedInvitations(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8354,7 +8354,7 @@ func (s *Server) HandleOrgsListForAuthenticatedUserRequest(w http.ResponseWriter
 	response, err := s.h.OrgsListForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8383,7 +8383,7 @@ func (s *Server) HandleOrgsListForUserRequest(w http.ResponseWriter, r *http.Req
 	response, err := s.h.OrgsListForUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8412,7 +8412,7 @@ func (s *Server) HandleOrgsListInvitationTeamsRequest(w http.ResponseWriter, r *
 	response, err := s.h.OrgsListInvitationTeams(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8441,7 +8441,7 @@ func (s *Server) HandleOrgsListOutsideCollaboratorsRequest(w http.ResponseWriter
 	response, err := s.h.OrgsListOutsideCollaborators(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8470,7 +8470,7 @@ func (s *Server) HandleOrgsListPendingInvitationsRequest(w http.ResponseWriter, 
 	response, err := s.h.OrgsListPendingInvitations(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8499,7 +8499,7 @@ func (s *Server) HandleOrgsListPublicMembersRequest(w http.ResponseWriter, r *ht
 	response, err := s.h.OrgsListPublicMembers(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8528,7 +8528,7 @@ func (s *Server) HandleOrgsListSamlSSOAuthorizationsRequest(w http.ResponseWrite
 	response, err := s.h.OrgsListSamlSSOAuthorizations(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8557,7 +8557,7 @@ func (s *Server) HandleOrgsListWebhooksRequest(w http.ResponseWriter, r *http.Re
 	response, err := s.h.OrgsListWebhooks(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8586,7 +8586,7 @@ func (s *Server) HandleOrgsPingWebhookRequest(w http.ResponseWriter, r *http.Req
 	response, err := s.h.OrgsPingWebhook(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8615,7 +8615,7 @@ func (s *Server) HandleOrgsRemoveMemberRequest(w http.ResponseWriter, r *http.Re
 	response, err := s.h.OrgsRemoveMember(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8644,7 +8644,7 @@ func (s *Server) HandleOrgsRemoveMembershipForUserRequest(w http.ResponseWriter,
 	response, err := s.h.OrgsRemoveMembershipForUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8673,7 +8673,7 @@ func (s *Server) HandleOrgsRemoveOutsideCollaboratorRequest(w http.ResponseWrite
 	response, err := s.h.OrgsRemoveOutsideCollaborator(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8702,7 +8702,7 @@ func (s *Server) HandleOrgsRemovePublicMembershipForAuthenticatedUserRequest(w h
 	response, err := s.h.OrgsRemovePublicMembershipForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8731,7 +8731,7 @@ func (s *Server) HandleOrgsRemoveSamlSSOAuthorizationRequest(w http.ResponseWrit
 	response, err := s.h.OrgsRemoveSamlSSOAuthorization(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8760,7 +8760,7 @@ func (s *Server) HandleOrgsSetPublicMembershipForAuthenticatedUserRequest(w http
 	response, err := s.h.OrgsSetPublicMembershipForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8789,7 +8789,7 @@ func (s *Server) HandleOrgsUnblockUserRequest(w http.ResponseWriter, r *http.Req
 	response, err := s.h.OrgsUnblockUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8824,7 +8824,7 @@ func (s *Server) HandleOrgsUpdateWebhookConfigForOrgRequest(w http.ResponseWrite
 	response, err := s.h.OrgsUpdateWebhookConfigForOrg(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8853,7 +8853,7 @@ func (s *Server) HandlePackagesDeletePackageForAuthenticatedUserRequest(w http.R
 	response, err := s.h.PackagesDeletePackageForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8882,7 +8882,7 @@ func (s *Server) HandlePackagesDeletePackageForOrgRequest(w http.ResponseWriter,
 	response, err := s.h.PackagesDeletePackageForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8911,7 +8911,7 @@ func (s *Server) HandlePackagesDeletePackageForUserRequest(w http.ResponseWriter
 	response, err := s.h.PackagesDeletePackageForUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8940,7 +8940,7 @@ func (s *Server) HandlePackagesDeletePackageVersionForAuthenticatedUserRequest(w
 	response, err := s.h.PackagesDeletePackageVersionForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8969,7 +8969,7 @@ func (s *Server) HandlePackagesDeletePackageVersionForOrgRequest(w http.Response
 	response, err := s.h.PackagesDeletePackageVersionForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8998,7 +8998,7 @@ func (s *Server) HandlePackagesDeletePackageVersionForUserRequest(w http.Respons
 	response, err := s.h.PackagesDeletePackageVersionForUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9027,7 +9027,7 @@ func (s *Server) HandlePackagesGetAllPackageVersionsForPackageOwnedByAuthenticat
 	response, err := s.h.PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9056,7 +9056,7 @@ func (s *Server) HandlePackagesGetAllPackageVersionsForPackageOwnedByOrgRequest(
 	response, err := s.h.PackagesGetAllPackageVersionsForPackageOwnedByOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9085,7 +9085,7 @@ func (s *Server) HandlePackagesGetAllPackageVersionsForPackageOwnedByUserRequest
 	response, err := s.h.PackagesGetAllPackageVersionsForPackageOwnedByUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9114,7 +9114,7 @@ func (s *Server) HandlePackagesGetPackageForAuthenticatedUserRequest(w http.Resp
 	response, err := s.h.PackagesGetPackageForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9143,7 +9143,7 @@ func (s *Server) HandlePackagesGetPackageForOrganizationRequest(w http.ResponseW
 	response, err := s.h.PackagesGetPackageForOrganization(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9172,7 +9172,7 @@ func (s *Server) HandlePackagesGetPackageForUserRequest(w http.ResponseWriter, r
 	response, err := s.h.PackagesGetPackageForUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9201,7 +9201,7 @@ func (s *Server) HandlePackagesGetPackageVersionForAuthenticatedUserRequest(w ht
 	response, err := s.h.PackagesGetPackageVersionForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9230,7 +9230,7 @@ func (s *Server) HandlePackagesGetPackageVersionForOrganizationRequest(w http.Re
 	response, err := s.h.PackagesGetPackageVersionForOrganization(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9259,7 +9259,7 @@ func (s *Server) HandlePackagesGetPackageVersionForUserRequest(w http.ResponseWr
 	response, err := s.h.PackagesGetPackageVersionForUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9288,7 +9288,7 @@ func (s *Server) HandlePackagesListPackagesForAuthenticatedUserRequest(w http.Re
 	response, err := s.h.PackagesListPackagesForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9317,7 +9317,7 @@ func (s *Server) HandlePackagesListPackagesForOrganizationRequest(w http.Respons
 	response, err := s.h.PackagesListPackagesForOrganization(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9346,7 +9346,7 @@ func (s *Server) HandlePackagesListPackagesForUserRequest(w http.ResponseWriter,
 	response, err := s.h.PackagesListPackagesForUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9375,7 +9375,7 @@ func (s *Server) HandlePackagesRestorePackageForAuthenticatedUserRequest(w http.
 	response, err := s.h.PackagesRestorePackageForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9404,7 +9404,7 @@ func (s *Server) HandlePackagesRestorePackageForOrgRequest(w http.ResponseWriter
 	response, err := s.h.PackagesRestorePackageForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9433,7 +9433,7 @@ func (s *Server) HandlePackagesRestorePackageForUserRequest(w http.ResponseWrite
 	response, err := s.h.PackagesRestorePackageForUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9462,7 +9462,7 @@ func (s *Server) HandlePackagesRestorePackageVersionForAuthenticatedUserRequest(
 	response, err := s.h.PackagesRestorePackageVersionForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9491,7 +9491,7 @@ func (s *Server) HandlePackagesRestorePackageVersionForOrgRequest(w http.Respons
 	response, err := s.h.PackagesRestorePackageVersionForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9520,7 +9520,7 @@ func (s *Server) HandlePackagesRestorePackageVersionForUserRequest(w http.Respon
 	response, err := s.h.PackagesRestorePackageVersionForUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9555,7 +9555,7 @@ func (s *Server) HandleProjectsCreateColumnRequest(w http.ResponseWriter, r *htt
 	response, err := s.h.ProjectsCreateColumn(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9584,7 +9584,7 @@ func (s *Server) HandleProjectsCreateForAuthenticatedUserRequest(w http.Response
 	response, err := s.h.ProjectsCreateForAuthenticatedUser(ctx, request)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9619,7 +9619,7 @@ func (s *Server) HandleProjectsCreateForOrgRequest(w http.ResponseWriter, r *htt
 	response, err := s.h.ProjectsCreateForOrg(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9654,7 +9654,7 @@ func (s *Server) HandleProjectsCreateForRepoRequest(w http.ResponseWriter, r *ht
 	response, err := s.h.ProjectsCreateForRepo(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9683,7 +9683,7 @@ func (s *Server) HandleProjectsDeleteRequest(w http.ResponseWriter, r *http.Requ
 	response, err := s.h.ProjectsDelete(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9712,7 +9712,7 @@ func (s *Server) HandleProjectsDeleteCardRequest(w http.ResponseWriter, r *http.
 	response, err := s.h.ProjectsDeleteCard(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9741,7 +9741,7 @@ func (s *Server) HandleProjectsDeleteColumnRequest(w http.ResponseWriter, r *htt
 	response, err := s.h.ProjectsDeleteColumn(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9770,7 +9770,7 @@ func (s *Server) HandleProjectsGetRequest(w http.ResponseWriter, r *http.Request
 	response, err := s.h.ProjectsGet(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9799,7 +9799,7 @@ func (s *Server) HandleProjectsGetCardRequest(w http.ResponseWriter, r *http.Req
 	response, err := s.h.ProjectsGetCard(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9828,7 +9828,7 @@ func (s *Server) HandleProjectsGetColumnRequest(w http.ResponseWriter, r *http.R
 	response, err := s.h.ProjectsGetColumn(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9857,7 +9857,7 @@ func (s *Server) HandleProjectsListCardsRequest(w http.ResponseWriter, r *http.R
 	response, err := s.h.ProjectsListCards(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9886,7 +9886,7 @@ func (s *Server) HandleProjectsListColumnsRequest(w http.ResponseWriter, r *http
 	response, err := s.h.ProjectsListColumns(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9915,7 +9915,7 @@ func (s *Server) HandleProjectsListForOrgRequest(w http.ResponseWriter, r *http.
 	response, err := s.h.ProjectsListForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9944,7 +9944,7 @@ func (s *Server) HandleProjectsListForRepoRequest(w http.ResponseWriter, r *http
 	response, err := s.h.ProjectsListForRepo(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9979,7 +9979,7 @@ func (s *Server) HandleProjectsMoveColumnRequest(w http.ResponseWriter, r *http.
 	response, err := s.h.ProjectsMoveColumn(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10014,7 +10014,7 @@ func (s *Server) HandleProjectsUpdateRequest(w http.ResponseWriter, r *http.Requ
 	response, err := s.h.ProjectsUpdate(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10049,7 +10049,7 @@ func (s *Server) HandleProjectsUpdateCardRequest(w http.ResponseWriter, r *http.
 	response, err := s.h.ProjectsUpdateCard(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10084,7 +10084,7 @@ func (s *Server) HandleProjectsUpdateColumnRequest(w http.ResponseWriter, r *htt
 	response, err := s.h.ProjectsUpdateColumn(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10113,7 +10113,7 @@ func (s *Server) HandlePullsCheckIfMergedRequest(w http.ResponseWriter, r *http.
 	response, err := s.h.PullsCheckIfMerged(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10148,7 +10148,7 @@ func (s *Server) HandlePullsCreateReplyForReviewCommentRequest(w http.ResponseWr
 	response, err := s.h.PullsCreateReplyForReviewComment(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10183,7 +10183,7 @@ func (s *Server) HandlePullsCreateReviewRequest(w http.ResponseWriter, r *http.R
 	response, err := s.h.PullsCreateReview(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10212,7 +10212,7 @@ func (s *Server) HandlePullsDeletePendingReviewRequest(w http.ResponseWriter, r 
 	response, err := s.h.PullsDeletePendingReview(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10241,7 +10241,7 @@ func (s *Server) HandlePullsDeleteReviewCommentRequest(w http.ResponseWriter, r 
 	response, err := s.h.PullsDeleteReviewComment(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10276,7 +10276,7 @@ func (s *Server) HandlePullsDismissReviewRequest(w http.ResponseWriter, r *http.
 	response, err := s.h.PullsDismissReview(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10305,7 +10305,7 @@ func (s *Server) HandlePullsGetRequest(w http.ResponseWriter, r *http.Request) {
 	response, err := s.h.PullsGet(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10334,7 +10334,7 @@ func (s *Server) HandlePullsGetReviewRequest(w http.ResponseWriter, r *http.Requ
 	response, err := s.h.PullsGetReview(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10363,7 +10363,7 @@ func (s *Server) HandlePullsGetReviewCommentRequest(w http.ResponseWriter, r *ht
 	response, err := s.h.PullsGetReviewComment(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10392,7 +10392,7 @@ func (s *Server) HandlePullsListCommentsForReviewRequest(w http.ResponseWriter, 
 	response, err := s.h.PullsListCommentsForReview(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10421,7 +10421,7 @@ func (s *Server) HandlePullsListCommitsRequest(w http.ResponseWriter, r *http.Re
 	response, err := s.h.PullsListCommits(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10450,7 +10450,7 @@ func (s *Server) HandlePullsListRequestedReviewersRequest(w http.ResponseWriter,
 	response, err := s.h.PullsListRequestedReviewers(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10479,7 +10479,7 @@ func (s *Server) HandlePullsListReviewCommentsRequest(w http.ResponseWriter, r *
 	response, err := s.h.PullsListReviewComments(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10508,7 +10508,7 @@ func (s *Server) HandlePullsListReviewCommentsForRepoRequest(w http.ResponseWrit
 	response, err := s.h.PullsListReviewCommentsForRepo(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10537,7 +10537,7 @@ func (s *Server) HandlePullsListReviewsRequest(w http.ResponseWriter, r *http.Re
 	response, err := s.h.PullsListReviews(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10572,7 +10572,7 @@ func (s *Server) HandlePullsSubmitReviewRequest(w http.ResponseWriter, r *http.R
 	response, err := s.h.PullsSubmitReview(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10607,7 +10607,7 @@ func (s *Server) HandlePullsUpdateReviewRequest(w http.ResponseWriter, r *http.R
 	response, err := s.h.PullsUpdateReview(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10642,7 +10642,7 @@ func (s *Server) HandlePullsUpdateReviewCommentRequest(w http.ResponseWriter, r 
 	response, err := s.h.PullsUpdateReviewComment(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10665,7 +10665,7 @@ func (s *Server) HandleRateLimitGetRequest(w http.ResponseWriter, r *http.Reques
 	response, err := s.h.RateLimitGet(ctx)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10700,7 +10700,7 @@ func (s *Server) HandleReactionsCreateForTeamDiscussionCommentInOrgRequest(w htt
 	response, err := s.h.ReactionsCreateForTeamDiscussionCommentInOrg(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10735,7 +10735,7 @@ func (s *Server) HandleReactionsCreateForTeamDiscussionCommentLegacyRequest(w ht
 	response, err := s.h.ReactionsCreateForTeamDiscussionCommentLegacy(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10770,7 +10770,7 @@ func (s *Server) HandleReactionsCreateForTeamDiscussionInOrgRequest(w http.Respo
 	response, err := s.h.ReactionsCreateForTeamDiscussionInOrg(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10805,7 +10805,7 @@ func (s *Server) HandleReactionsCreateForTeamDiscussionLegacyRequest(w http.Resp
 	response, err := s.h.ReactionsCreateForTeamDiscussionLegacy(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10834,7 +10834,7 @@ func (s *Server) HandleReactionsDeleteForCommitCommentRequest(w http.ResponseWri
 	response, err := s.h.ReactionsDeleteForCommitComment(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10863,7 +10863,7 @@ func (s *Server) HandleReactionsDeleteForIssueRequest(w http.ResponseWriter, r *
 	response, err := s.h.ReactionsDeleteForIssue(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10892,7 +10892,7 @@ func (s *Server) HandleReactionsDeleteForIssueCommentRequest(w http.ResponseWrit
 	response, err := s.h.ReactionsDeleteForIssueComment(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10921,7 +10921,7 @@ func (s *Server) HandleReactionsDeleteForPullRequestCommentRequest(w http.Respon
 	response, err := s.h.ReactionsDeleteForPullRequestComment(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10950,7 +10950,7 @@ func (s *Server) HandleReactionsDeleteForTeamDiscussionRequest(w http.ResponseWr
 	response, err := s.h.ReactionsDeleteForTeamDiscussion(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10979,7 +10979,7 @@ func (s *Server) HandleReactionsDeleteForTeamDiscussionCommentRequest(w http.Res
 	response, err := s.h.ReactionsDeleteForTeamDiscussionComment(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11008,7 +11008,7 @@ func (s *Server) HandleReactionsDeleteLegacyRequest(w http.ResponseWriter, r *ht
 	response, err := s.h.ReactionsDeleteLegacy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11037,7 +11037,7 @@ func (s *Server) HandleReactionsListForCommitCommentRequest(w http.ResponseWrite
 	response, err := s.h.ReactionsListForCommitComment(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11066,7 +11066,7 @@ func (s *Server) HandleReactionsListForIssueRequest(w http.ResponseWriter, r *ht
 	response, err := s.h.ReactionsListForIssue(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11095,7 +11095,7 @@ func (s *Server) HandleReactionsListForIssueCommentRequest(w http.ResponseWriter
 	response, err := s.h.ReactionsListForIssueComment(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11124,7 +11124,7 @@ func (s *Server) HandleReactionsListForPullRequestReviewCommentRequest(w http.Re
 	response, err := s.h.ReactionsListForPullRequestReviewComment(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11153,7 +11153,7 @@ func (s *Server) HandleReactionsListForTeamDiscussionCommentInOrgRequest(w http.
 	response, err := s.h.ReactionsListForTeamDiscussionCommentInOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11182,7 +11182,7 @@ func (s *Server) HandleReactionsListForTeamDiscussionCommentLegacyRequest(w http
 	response, err := s.h.ReactionsListForTeamDiscussionCommentLegacy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11211,7 +11211,7 @@ func (s *Server) HandleReactionsListForTeamDiscussionInOrgRequest(w http.Respons
 	response, err := s.h.ReactionsListForTeamDiscussionInOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11240,7 +11240,7 @@ func (s *Server) HandleReactionsListForTeamDiscussionLegacyRequest(w http.Respon
 	response, err := s.h.ReactionsListForTeamDiscussionLegacy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11269,7 +11269,7 @@ func (s *Server) HandleReposAcceptInvitationRequest(w http.ResponseWriter, r *ht
 	response, err := s.h.ReposAcceptInvitation(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11298,7 +11298,7 @@ func (s *Server) HandleReposCheckCollaboratorRequest(w http.ResponseWriter, r *h
 	response, err := s.h.ReposCheckCollaborator(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11327,7 +11327,7 @@ func (s *Server) HandleReposCheckVulnerabilityAlertsRequest(w http.ResponseWrite
 	response, err := s.h.ReposCheckVulnerabilityAlerts(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11356,7 +11356,7 @@ func (s *Server) HandleReposCompareCommitsRequest(w http.ResponseWriter, r *http
 	response, err := s.h.ReposCompareCommits(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11385,7 +11385,7 @@ func (s *Server) HandleReposCreateCommitSignatureProtectionRequest(w http.Respon
 	response, err := s.h.ReposCreateCommitSignatureProtection(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11420,7 +11420,7 @@ func (s *Server) HandleReposCreateCommitStatusRequest(w http.ResponseWriter, r *
 	response, err := s.h.ReposCreateCommitStatus(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11455,7 +11455,7 @@ func (s *Server) HandleReposCreateUsingTemplateRequest(w http.ResponseWriter, r 
 	response, err := s.h.ReposCreateUsingTemplate(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11484,7 +11484,7 @@ func (s *Server) HandleReposDeclineInvitationRequest(w http.ResponseWriter, r *h
 	response, err := s.h.ReposDeclineInvitation(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11513,7 +11513,7 @@ func (s *Server) HandleReposDeleteRequest(w http.ResponseWriter, r *http.Request
 	response, err := s.h.ReposDelete(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11542,7 +11542,7 @@ func (s *Server) HandleReposDeleteAccessRestrictionsRequest(w http.ResponseWrite
 	response, err := s.h.ReposDeleteAccessRestrictions(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11571,7 +11571,7 @@ func (s *Server) HandleReposDeleteAdminBranchProtectionRequest(w http.ResponseWr
 	response, err := s.h.ReposDeleteAdminBranchProtection(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11600,7 +11600,7 @@ func (s *Server) HandleReposDeleteAnEnvironmentRequest(w http.ResponseWriter, r 
 	response, err := s.h.ReposDeleteAnEnvironment(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11629,7 +11629,7 @@ func (s *Server) HandleReposDeleteAutolinkRequest(w http.ResponseWriter, r *http
 	response, err := s.h.ReposDeleteAutolink(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11658,7 +11658,7 @@ func (s *Server) HandleReposDeleteBranchProtectionRequest(w http.ResponseWriter,
 	response, err := s.h.ReposDeleteBranchProtection(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11687,7 +11687,7 @@ func (s *Server) HandleReposDeleteCommitCommentRequest(w http.ResponseWriter, r 
 	response, err := s.h.ReposDeleteCommitComment(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11716,7 +11716,7 @@ func (s *Server) HandleReposDeleteCommitSignatureProtectionRequest(w http.Respon
 	response, err := s.h.ReposDeleteCommitSignatureProtection(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11745,7 +11745,7 @@ func (s *Server) HandleReposDeleteDeployKeyRequest(w http.ResponseWriter, r *htt
 	response, err := s.h.ReposDeleteDeployKey(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11774,7 +11774,7 @@ func (s *Server) HandleReposDeleteDeploymentRequest(w http.ResponseWriter, r *ht
 	response, err := s.h.ReposDeleteDeployment(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11803,7 +11803,7 @@ func (s *Server) HandleReposDeleteInvitationRequest(w http.ResponseWriter, r *ht
 	response, err := s.h.ReposDeleteInvitation(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11832,7 +11832,7 @@ func (s *Server) HandleReposDeletePullRequestReviewProtectionRequest(w http.Resp
 	response, err := s.h.ReposDeletePullRequestReviewProtection(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11861,7 +11861,7 @@ func (s *Server) HandleReposDeleteReleaseRequest(w http.ResponseWriter, r *http.
 	response, err := s.h.ReposDeleteRelease(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11890,7 +11890,7 @@ func (s *Server) HandleReposDeleteReleaseAssetRequest(w http.ResponseWriter, r *
 	response, err := s.h.ReposDeleteReleaseAsset(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11919,7 +11919,7 @@ func (s *Server) HandleReposDeleteWebhookRequest(w http.ResponseWriter, r *http.
 	response, err := s.h.ReposDeleteWebhook(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11948,7 +11948,7 @@ func (s *Server) HandleReposDisableAutomatedSecurityFixesRequest(w http.Response
 	response, err := s.h.ReposDisableAutomatedSecurityFixes(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11977,7 +11977,7 @@ func (s *Server) HandleReposDisableLfsForRepoRequest(w http.ResponseWriter, r *h
 	response, err := s.h.ReposDisableLfsForRepo(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -12006,7 +12006,7 @@ func (s *Server) HandleReposDisableVulnerabilityAlertsRequest(w http.ResponseWri
 	response, err := s.h.ReposDisableVulnerabilityAlerts(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -12035,7 +12035,7 @@ func (s *Server) HandleReposDownloadTarballArchiveRequest(w http.ResponseWriter,
 	response, err := s.h.ReposDownloadTarballArchive(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -12064,7 +12064,7 @@ func (s *Server) HandleReposDownloadZipballArchiveRequest(w http.ResponseWriter,
 	response, err := s.h.ReposDownloadZipballArchive(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -12093,7 +12093,7 @@ func (s *Server) HandleReposEnableAutomatedSecurityFixesRequest(w http.ResponseW
 	response, err := s.h.ReposEnableAutomatedSecurityFixes(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -12122,7 +12122,7 @@ func (s *Server) HandleReposEnableLfsForRepoRequest(w http.ResponseWriter, r *ht
 	response, err := s.h.ReposEnableLfsForRepo(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -12151,7 +12151,7 @@ func (s *Server) HandleReposEnableVulnerabilityAlertsRequest(w http.ResponseWrit
 	response, err := s.h.ReposEnableVulnerabilityAlerts(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -12180,7 +12180,7 @@ func (s *Server) HandleReposGetRequest(w http.ResponseWriter, r *http.Request) {
 	response, err := s.h.ReposGet(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -12209,7 +12209,7 @@ func (s *Server) HandleReposGetAccessRestrictionsRequest(w http.ResponseWriter, 
 	response, err := s.h.ReposGetAccessRestrictions(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -12238,7 +12238,7 @@ func (s *Server) HandleReposGetAdminBranchProtectionRequest(w http.ResponseWrite
 	response, err := s.h.ReposGetAdminBranchProtection(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -12267,7 +12267,7 @@ func (s *Server) HandleReposGetAllStatusCheckContextsRequest(w http.ResponseWrit
 	response, err := s.h.ReposGetAllStatusCheckContexts(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -12296,7 +12296,7 @@ func (s *Server) HandleReposGetAllTopicsRequest(w http.ResponseWriter, r *http.R
 	response, err := s.h.ReposGetAllTopics(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -12325,7 +12325,7 @@ func (s *Server) HandleReposGetAppsWithAccessToProtectedBranchRequest(w http.Res
 	response, err := s.h.ReposGetAppsWithAccessToProtectedBranch(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -12354,7 +12354,7 @@ func (s *Server) HandleReposGetAutolinkRequest(w http.ResponseWriter, r *http.Re
 	response, err := s.h.ReposGetAutolink(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -12383,7 +12383,7 @@ func (s *Server) HandleReposGetBranchRequest(w http.ResponseWriter, r *http.Requ
 	response, err := s.h.ReposGetBranch(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -12412,7 +12412,7 @@ func (s *Server) HandleReposGetBranchProtectionRequest(w http.ResponseWriter, r 
 	response, err := s.h.ReposGetBranchProtection(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -12441,7 +12441,7 @@ func (s *Server) HandleReposGetClonesRequest(w http.ResponseWriter, r *http.Requ
 	response, err := s.h.ReposGetClones(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -12470,7 +12470,7 @@ func (s *Server) HandleReposGetCodeFrequencyStatsRequest(w http.ResponseWriter, 
 	response, err := s.h.ReposGetCodeFrequencyStats(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -12499,7 +12499,7 @@ func (s *Server) HandleReposGetCollaboratorPermissionLevelRequest(w http.Respons
 	response, err := s.h.ReposGetCollaboratorPermissionLevel(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -12528,7 +12528,7 @@ func (s *Server) HandleReposGetCombinedStatusForRefRequest(w http.ResponseWriter
 	response, err := s.h.ReposGetCombinedStatusForRef(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -12557,7 +12557,7 @@ func (s *Server) HandleReposGetCommitActivityStatsRequest(w http.ResponseWriter,
 	response, err := s.h.ReposGetCommitActivityStats(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -12586,7 +12586,7 @@ func (s *Server) HandleReposGetCommitCommentRequest(w http.ResponseWriter, r *ht
 	response, err := s.h.ReposGetCommitComment(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -12615,7 +12615,7 @@ func (s *Server) HandleReposGetCommitSignatureProtectionRequest(w http.ResponseW
 	response, err := s.h.ReposGetCommitSignatureProtection(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -12644,7 +12644,7 @@ func (s *Server) HandleReposGetCommunityProfileMetricsRequest(w http.ResponseWri
 	response, err := s.h.ReposGetCommunityProfileMetrics(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -12673,7 +12673,7 @@ func (s *Server) HandleReposGetContributorsStatsRequest(w http.ResponseWriter, r
 	response, err := s.h.ReposGetContributorsStats(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -12702,7 +12702,7 @@ func (s *Server) HandleReposGetDeployKeyRequest(w http.ResponseWriter, r *http.R
 	response, err := s.h.ReposGetDeployKey(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -12731,7 +12731,7 @@ func (s *Server) HandleReposGetDeploymentStatusRequest(w http.ResponseWriter, r 
 	response, err := s.h.ReposGetDeploymentStatus(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -12760,7 +12760,7 @@ func (s *Server) HandleReposGetLatestPagesBuildRequest(w http.ResponseWriter, r 
 	response, err := s.h.ReposGetLatestPagesBuild(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -12789,7 +12789,7 @@ func (s *Server) HandleReposGetLatestReleaseRequest(w http.ResponseWriter, r *ht
 	response, err := s.h.ReposGetLatestRelease(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -12818,7 +12818,7 @@ func (s *Server) HandleReposGetPagesRequest(w http.ResponseWriter, r *http.Reque
 	response, err := s.h.ReposGetPages(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -12847,7 +12847,7 @@ func (s *Server) HandleReposGetPagesBuildRequest(w http.ResponseWriter, r *http.
 	response, err := s.h.ReposGetPagesBuild(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -12876,7 +12876,7 @@ func (s *Server) HandleReposGetPagesHealthCheckRequest(w http.ResponseWriter, r 
 	response, err := s.h.ReposGetPagesHealthCheck(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -12905,7 +12905,7 @@ func (s *Server) HandleReposGetParticipationStatsRequest(w http.ResponseWriter, 
 	response, err := s.h.ReposGetParticipationStats(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -12934,7 +12934,7 @@ func (s *Server) HandleReposGetPullRequestReviewProtectionRequest(w http.Respons
 	response, err := s.h.ReposGetPullRequestReviewProtection(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -12963,7 +12963,7 @@ func (s *Server) HandleReposGetPunchCardStatsRequest(w http.ResponseWriter, r *h
 	response, err := s.h.ReposGetPunchCardStats(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -12992,7 +12992,7 @@ func (s *Server) HandleReposGetReleaseRequest(w http.ResponseWriter, r *http.Req
 	response, err := s.h.ReposGetRelease(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -13021,7 +13021,7 @@ func (s *Server) HandleReposGetReleaseAssetRequest(w http.ResponseWriter, r *htt
 	response, err := s.h.ReposGetReleaseAsset(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -13050,7 +13050,7 @@ func (s *Server) HandleReposGetReleaseByTagRequest(w http.ResponseWriter, r *htt
 	response, err := s.h.ReposGetReleaseByTag(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -13079,7 +13079,7 @@ func (s *Server) HandleReposGetStatusChecksProtectionRequest(w http.ResponseWrit
 	response, err := s.h.ReposGetStatusChecksProtection(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -13108,7 +13108,7 @@ func (s *Server) HandleReposGetTeamsWithAccessToProtectedBranchRequest(w http.Re
 	response, err := s.h.ReposGetTeamsWithAccessToProtectedBranch(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -13137,7 +13137,7 @@ func (s *Server) HandleReposGetTopPathsRequest(w http.ResponseWriter, r *http.Re
 	response, err := s.h.ReposGetTopPaths(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -13166,7 +13166,7 @@ func (s *Server) HandleReposGetTopReferrersRequest(w http.ResponseWriter, r *htt
 	response, err := s.h.ReposGetTopReferrers(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -13195,7 +13195,7 @@ func (s *Server) HandleReposGetUsersWithAccessToProtectedBranchRequest(w http.Re
 	response, err := s.h.ReposGetUsersWithAccessToProtectedBranch(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -13224,7 +13224,7 @@ func (s *Server) HandleReposGetViewsRequest(w http.ResponseWriter, r *http.Reque
 	response, err := s.h.ReposGetViews(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -13253,7 +13253,7 @@ func (s *Server) HandleReposGetWebhookRequest(w http.ResponseWriter, r *http.Req
 	response, err := s.h.ReposGetWebhook(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -13282,7 +13282,7 @@ func (s *Server) HandleReposGetWebhookConfigForRepoRequest(w http.ResponseWriter
 	response, err := s.h.ReposGetWebhookConfigForRepo(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -13311,7 +13311,7 @@ func (s *Server) HandleReposListAutolinksRequest(w http.ResponseWriter, r *http.
 	response, err := s.h.ReposListAutolinks(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -13340,7 +13340,7 @@ func (s *Server) HandleReposListBranchesRequest(w http.ResponseWriter, r *http.R
 	response, err := s.h.ReposListBranches(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -13369,7 +13369,7 @@ func (s *Server) HandleReposListCollaboratorsRequest(w http.ResponseWriter, r *h
 	response, err := s.h.ReposListCollaborators(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -13398,7 +13398,7 @@ func (s *Server) HandleReposListCommentsForCommitRequest(w http.ResponseWriter, 
 	response, err := s.h.ReposListCommentsForCommit(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -13427,7 +13427,7 @@ func (s *Server) HandleReposListCommitCommentsForRepoRequest(w http.ResponseWrit
 	response, err := s.h.ReposListCommitCommentsForRepo(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -13456,7 +13456,7 @@ func (s *Server) HandleReposListCommitStatusesForRefRequest(w http.ResponseWrite
 	response, err := s.h.ReposListCommitStatusesForRef(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -13485,7 +13485,7 @@ func (s *Server) HandleReposListCommitsRequest(w http.ResponseWriter, r *http.Re
 	response, err := s.h.ReposListCommits(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -13514,7 +13514,7 @@ func (s *Server) HandleReposListContributorsRequest(w http.ResponseWriter, r *ht
 	response, err := s.h.ReposListContributors(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -13543,7 +13543,7 @@ func (s *Server) HandleReposListDeployKeysRequest(w http.ResponseWriter, r *http
 	response, err := s.h.ReposListDeployKeys(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -13572,7 +13572,7 @@ func (s *Server) HandleReposListDeploymentStatusesRequest(w http.ResponseWriter,
 	response, err := s.h.ReposListDeploymentStatuses(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -13601,7 +13601,7 @@ func (s *Server) HandleReposListForOrgRequest(w http.ResponseWriter, r *http.Req
 	response, err := s.h.ReposListForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -13630,7 +13630,7 @@ func (s *Server) HandleReposListForUserRequest(w http.ResponseWriter, r *http.Re
 	response, err := s.h.ReposListForUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -13659,7 +13659,7 @@ func (s *Server) HandleReposListForksRequest(w http.ResponseWriter, r *http.Requ
 	response, err := s.h.ReposListForks(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -13688,7 +13688,7 @@ func (s *Server) HandleReposListInvitationsRequest(w http.ResponseWriter, r *htt
 	response, err := s.h.ReposListInvitations(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -13717,7 +13717,7 @@ func (s *Server) HandleReposListInvitationsForAuthenticatedUserRequest(w http.Re
 	response, err := s.h.ReposListInvitationsForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -13746,7 +13746,7 @@ func (s *Server) HandleReposListLanguagesRequest(w http.ResponseWriter, r *http.
 	response, err := s.h.ReposListLanguages(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -13775,7 +13775,7 @@ func (s *Server) HandleReposListPagesBuildsRequest(w http.ResponseWriter, r *htt
 	response, err := s.h.ReposListPagesBuilds(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -13804,7 +13804,7 @@ func (s *Server) HandleReposListPullRequestsAssociatedWithCommitRequest(w http.R
 	response, err := s.h.ReposListPullRequestsAssociatedWithCommit(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -13833,7 +13833,7 @@ func (s *Server) HandleReposListReleaseAssetsRequest(w http.ResponseWriter, r *h
 	response, err := s.h.ReposListReleaseAssets(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -13862,7 +13862,7 @@ func (s *Server) HandleReposListReleasesRequest(w http.ResponseWriter, r *http.R
 	response, err := s.h.ReposListReleases(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -13891,7 +13891,7 @@ func (s *Server) HandleReposListTagsRequest(w http.ResponseWriter, r *http.Reque
 	response, err := s.h.ReposListTags(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -13920,7 +13920,7 @@ func (s *Server) HandleReposListTeamsRequest(w http.ResponseWriter, r *http.Requ
 	response, err := s.h.ReposListTeams(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -13949,7 +13949,7 @@ func (s *Server) HandleReposListWebhooksRequest(w http.ResponseWriter, r *http.R
 	response, err := s.h.ReposListWebhooks(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -13984,7 +13984,7 @@ func (s *Server) HandleReposMergeUpstreamRequest(w http.ResponseWriter, r *http.
 	response, err := s.h.ReposMergeUpstream(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -14013,7 +14013,7 @@ func (s *Server) HandleReposPingWebhookRequest(w http.ResponseWriter, r *http.Re
 	response, err := s.h.ReposPingWebhook(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -14042,7 +14042,7 @@ func (s *Server) HandleReposRemoveCollaboratorRequest(w http.ResponseWriter, r *
 	response, err := s.h.ReposRemoveCollaborator(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -14071,7 +14071,7 @@ func (s *Server) HandleReposRemoveStatusCheckProtectionRequest(w http.ResponseWr
 	response, err := s.h.ReposRemoveStatusCheckProtection(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -14106,7 +14106,7 @@ func (s *Server) HandleReposReplaceAllTopicsRequest(w http.ResponseWriter, r *ht
 	response, err := s.h.ReposReplaceAllTopics(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -14135,7 +14135,7 @@ func (s *Server) HandleReposRequestPagesBuildRequest(w http.ResponseWriter, r *h
 	response, err := s.h.ReposRequestPagesBuild(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -14164,7 +14164,7 @@ func (s *Server) HandleReposSetAdminBranchProtectionRequest(w http.ResponseWrite
 	response, err := s.h.ReposSetAdminBranchProtection(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -14193,7 +14193,7 @@ func (s *Server) HandleReposTestPushWebhookRequest(w http.ResponseWriter, r *htt
 	response, err := s.h.ReposTestPushWebhook(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -14228,7 +14228,7 @@ func (s *Server) HandleReposTransferRequest(w http.ResponseWriter, r *http.Reque
 	response, err := s.h.ReposTransfer(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -14263,7 +14263,7 @@ func (s *Server) HandleReposUpdateBranchProtectionRequest(w http.ResponseWriter,
 	response, err := s.h.ReposUpdateBranchProtection(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -14298,7 +14298,7 @@ func (s *Server) HandleReposUpdateCommitCommentRequest(w http.ResponseWriter, r 
 	response, err := s.h.ReposUpdateCommitComment(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -14333,7 +14333,7 @@ func (s *Server) HandleReposUpdateInvitationRequest(w http.ResponseWriter, r *ht
 	response, err := s.h.ReposUpdateInvitation(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -14368,7 +14368,7 @@ func (s *Server) HandleReposUpdateReleaseRequest(w http.ResponseWriter, r *http.
 	response, err := s.h.ReposUpdateRelease(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -14403,7 +14403,7 @@ func (s *Server) HandleReposUpdateReleaseAssetRequest(w http.ResponseWriter, r *
 	response, err := s.h.ReposUpdateReleaseAsset(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -14438,7 +14438,7 @@ func (s *Server) HandleReposUpdateWebhookConfigForRepoRequest(w http.ResponseWri
 	response, err := s.h.ReposUpdateWebhookConfigForRepo(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -14467,7 +14467,7 @@ func (s *Server) HandleScimDeleteUserFromOrgRequest(w http.ResponseWriter, r *ht
 	response, err := s.h.ScimDeleteUserFromOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -14496,7 +14496,7 @@ func (s *Server) HandleSearchCommitsRequest(w http.ResponseWriter, r *http.Reque
 	response, err := s.h.SearchCommits(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -14525,7 +14525,7 @@ func (s *Server) HandleSearchTopicsRequest(w http.ResponseWriter, r *http.Reques
 	response, err := s.h.SearchTopics(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -14554,7 +14554,7 @@ func (s *Server) HandleSecretScanningGetAlertRequest(w http.ResponseWriter, r *h
 	response, err := s.h.SecretScanningGetAlert(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -14583,7 +14583,7 @@ func (s *Server) HandleSecretScanningListAlertsForOrgRequest(w http.ResponseWrit
 	response, err := s.h.SecretScanningListAlertsForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -14612,7 +14612,7 @@ func (s *Server) HandleSecretScanningListAlertsForRepoRequest(w http.ResponseWri
 	response, err := s.h.SecretScanningListAlertsForRepo(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -14647,7 +14647,7 @@ func (s *Server) HandleSecretScanningUpdateAlertRequest(w http.ResponseWriter, r
 	response, err := s.h.SecretScanningUpdateAlert(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -14676,7 +14676,7 @@ func (s *Server) HandleTeamsAddMemberLegacyRequest(w http.ResponseWriter, r *htt
 	response, err := s.h.TeamsAddMemberLegacy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -14711,7 +14711,7 @@ func (s *Server) HandleTeamsAddOrUpdateMembershipForUserInOrgRequest(w http.Resp
 	response, err := s.h.TeamsAddOrUpdateMembershipForUserInOrg(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -14746,7 +14746,7 @@ func (s *Server) HandleTeamsAddOrUpdateMembershipForUserLegacyRequest(w http.Res
 	response, err := s.h.TeamsAddOrUpdateMembershipForUserLegacy(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -14781,7 +14781,7 @@ func (s *Server) HandleTeamsAddOrUpdateProjectPermissionsInOrgRequest(w http.Res
 	response, err := s.h.TeamsAddOrUpdateProjectPermissionsInOrg(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -14816,7 +14816,7 @@ func (s *Server) HandleTeamsAddOrUpdateRepoPermissionsInOrgRequest(w http.Respon
 	response, err := s.h.TeamsAddOrUpdateRepoPermissionsInOrg(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -14845,7 +14845,7 @@ func (s *Server) HandleTeamsCheckPermissionsForProjectInOrgRequest(w http.Respon
 	response, err := s.h.TeamsCheckPermissionsForProjectInOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -14874,7 +14874,7 @@ func (s *Server) HandleTeamsCheckPermissionsForProjectLegacyRequest(w http.Respo
 	response, err := s.h.TeamsCheckPermissionsForProjectLegacy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -14903,7 +14903,7 @@ func (s *Server) HandleTeamsCheckPermissionsForRepoInOrgRequest(w http.ResponseW
 	response, err := s.h.TeamsCheckPermissionsForRepoInOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -14932,7 +14932,7 @@ func (s *Server) HandleTeamsCheckPermissionsForRepoLegacyRequest(w http.Response
 	response, err := s.h.TeamsCheckPermissionsForRepoLegacy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -14967,7 +14967,7 @@ func (s *Server) HandleTeamsCreateDiscussionCommentInOrgRequest(w http.ResponseW
 	response, err := s.h.TeamsCreateDiscussionCommentInOrg(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -15002,7 +15002,7 @@ func (s *Server) HandleTeamsCreateDiscussionCommentLegacyRequest(w http.Response
 	response, err := s.h.TeamsCreateDiscussionCommentLegacy(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -15037,7 +15037,7 @@ func (s *Server) HandleTeamsCreateDiscussionInOrgRequest(w http.ResponseWriter, 
 	response, err := s.h.TeamsCreateDiscussionInOrg(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -15072,7 +15072,7 @@ func (s *Server) HandleTeamsCreateDiscussionLegacyRequest(w http.ResponseWriter,
 	response, err := s.h.TeamsCreateDiscussionLegacy(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -15107,7 +15107,7 @@ func (s *Server) HandleTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(w http
 	response, err := s.h.TeamsCreateOrUpdateIdpGroupConnectionsInOrg(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -15136,7 +15136,7 @@ func (s *Server) HandleTeamsDeleteDiscussionCommentInOrgRequest(w http.ResponseW
 	response, err := s.h.TeamsDeleteDiscussionCommentInOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -15165,7 +15165,7 @@ func (s *Server) HandleTeamsDeleteDiscussionCommentLegacyRequest(w http.Response
 	response, err := s.h.TeamsDeleteDiscussionCommentLegacy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -15194,7 +15194,7 @@ func (s *Server) HandleTeamsDeleteDiscussionInOrgRequest(w http.ResponseWriter, 
 	response, err := s.h.TeamsDeleteDiscussionInOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -15223,7 +15223,7 @@ func (s *Server) HandleTeamsDeleteDiscussionLegacyRequest(w http.ResponseWriter,
 	response, err := s.h.TeamsDeleteDiscussionLegacy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -15252,7 +15252,7 @@ func (s *Server) HandleTeamsDeleteInOrgRequest(w http.ResponseWriter, r *http.Re
 	response, err := s.h.TeamsDeleteInOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -15281,7 +15281,7 @@ func (s *Server) HandleTeamsGetByNameRequest(w http.ResponseWriter, r *http.Requ
 	response, err := s.h.TeamsGetByName(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -15310,7 +15310,7 @@ func (s *Server) HandleTeamsGetDiscussionCommentInOrgRequest(w http.ResponseWrit
 	response, err := s.h.TeamsGetDiscussionCommentInOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -15339,7 +15339,7 @@ func (s *Server) HandleTeamsGetDiscussionCommentLegacyRequest(w http.ResponseWri
 	response, err := s.h.TeamsGetDiscussionCommentLegacy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -15368,7 +15368,7 @@ func (s *Server) HandleTeamsGetDiscussionInOrgRequest(w http.ResponseWriter, r *
 	response, err := s.h.TeamsGetDiscussionInOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -15397,7 +15397,7 @@ func (s *Server) HandleTeamsGetDiscussionLegacyRequest(w http.ResponseWriter, r 
 	response, err := s.h.TeamsGetDiscussionLegacy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -15426,7 +15426,7 @@ func (s *Server) HandleTeamsGetLegacyRequest(w http.ResponseWriter, r *http.Requ
 	response, err := s.h.TeamsGetLegacy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -15455,7 +15455,7 @@ func (s *Server) HandleTeamsGetMemberLegacyRequest(w http.ResponseWriter, r *htt
 	response, err := s.h.TeamsGetMemberLegacy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -15484,7 +15484,7 @@ func (s *Server) HandleTeamsGetMembershipForUserInOrgRequest(w http.ResponseWrit
 	response, err := s.h.TeamsGetMembershipForUserInOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -15513,7 +15513,7 @@ func (s *Server) HandleTeamsGetMembershipForUserLegacyRequest(w http.ResponseWri
 	response, err := s.h.TeamsGetMembershipForUserLegacy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -15542,7 +15542,7 @@ func (s *Server) HandleTeamsListRequest(w http.ResponseWriter, r *http.Request) 
 	response, err := s.h.TeamsList(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -15571,7 +15571,7 @@ func (s *Server) HandleTeamsListChildInOrgRequest(w http.ResponseWriter, r *http
 	response, err := s.h.TeamsListChildInOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -15600,7 +15600,7 @@ func (s *Server) HandleTeamsListDiscussionCommentsInOrgRequest(w http.ResponseWr
 	response, err := s.h.TeamsListDiscussionCommentsInOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -15629,7 +15629,7 @@ func (s *Server) HandleTeamsListDiscussionCommentsLegacyRequest(w http.ResponseW
 	response, err := s.h.TeamsListDiscussionCommentsLegacy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -15658,7 +15658,7 @@ func (s *Server) HandleTeamsListDiscussionsInOrgRequest(w http.ResponseWriter, r
 	response, err := s.h.TeamsListDiscussionsInOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -15687,7 +15687,7 @@ func (s *Server) HandleTeamsListDiscussionsLegacyRequest(w http.ResponseWriter, 
 	response, err := s.h.TeamsListDiscussionsLegacy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -15716,7 +15716,7 @@ func (s *Server) HandleTeamsListForAuthenticatedUserRequest(w http.ResponseWrite
 	response, err := s.h.TeamsListForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -15745,7 +15745,7 @@ func (s *Server) HandleTeamsListIdpGroupsForLegacyRequest(w http.ResponseWriter,
 	response, err := s.h.TeamsListIdpGroupsForLegacy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -15774,7 +15774,7 @@ func (s *Server) HandleTeamsListIdpGroupsForOrgRequest(w http.ResponseWriter, r 
 	response, err := s.h.TeamsListIdpGroupsForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -15803,7 +15803,7 @@ func (s *Server) HandleTeamsListIdpGroupsInOrgRequest(w http.ResponseWriter, r *
 	response, err := s.h.TeamsListIdpGroupsInOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -15832,7 +15832,7 @@ func (s *Server) HandleTeamsListMembersInOrgRequest(w http.ResponseWriter, r *ht
 	response, err := s.h.TeamsListMembersInOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -15861,7 +15861,7 @@ func (s *Server) HandleTeamsListMembersLegacyRequest(w http.ResponseWriter, r *h
 	response, err := s.h.TeamsListMembersLegacy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -15890,7 +15890,7 @@ func (s *Server) HandleTeamsListPendingInvitationsInOrgRequest(w http.ResponseWr
 	response, err := s.h.TeamsListPendingInvitationsInOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -15919,7 +15919,7 @@ func (s *Server) HandleTeamsListPendingInvitationsLegacyRequest(w http.ResponseW
 	response, err := s.h.TeamsListPendingInvitationsLegacy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -15948,7 +15948,7 @@ func (s *Server) HandleTeamsListProjectsInOrgRequest(w http.ResponseWriter, r *h
 	response, err := s.h.TeamsListProjectsInOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -15977,7 +15977,7 @@ func (s *Server) HandleTeamsListProjectsLegacyRequest(w http.ResponseWriter, r *
 	response, err := s.h.TeamsListProjectsLegacy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -16006,7 +16006,7 @@ func (s *Server) HandleTeamsListReposInOrgRequest(w http.ResponseWriter, r *http
 	response, err := s.h.TeamsListReposInOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -16035,7 +16035,7 @@ func (s *Server) HandleTeamsListReposLegacyRequest(w http.ResponseWriter, r *htt
 	response, err := s.h.TeamsListReposLegacy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -16064,7 +16064,7 @@ func (s *Server) HandleTeamsRemoveMemberLegacyRequest(w http.ResponseWriter, r *
 	response, err := s.h.TeamsRemoveMemberLegacy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -16093,7 +16093,7 @@ func (s *Server) HandleTeamsRemoveMembershipForUserInOrgRequest(w http.ResponseW
 	response, err := s.h.TeamsRemoveMembershipForUserInOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -16122,7 +16122,7 @@ func (s *Server) HandleTeamsRemoveMembershipForUserLegacyRequest(w http.Response
 	response, err := s.h.TeamsRemoveMembershipForUserLegacy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -16151,7 +16151,7 @@ func (s *Server) HandleTeamsRemoveProjectInOrgRequest(w http.ResponseWriter, r *
 	response, err := s.h.TeamsRemoveProjectInOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -16180,7 +16180,7 @@ func (s *Server) HandleTeamsRemoveRepoInOrgRequest(w http.ResponseWriter, r *htt
 	response, err := s.h.TeamsRemoveRepoInOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -16209,7 +16209,7 @@ func (s *Server) HandleTeamsRemoveRepoLegacyRequest(w http.ResponseWriter, r *ht
 	response, err := s.h.TeamsRemoveRepoLegacy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -16244,7 +16244,7 @@ func (s *Server) HandleTeamsUpdateDiscussionCommentInOrgRequest(w http.ResponseW
 	response, err := s.h.TeamsUpdateDiscussionCommentInOrg(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -16279,7 +16279,7 @@ func (s *Server) HandleTeamsUpdateDiscussionCommentLegacyRequest(w http.Response
 	response, err := s.h.TeamsUpdateDiscussionCommentLegacy(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -16314,7 +16314,7 @@ func (s *Server) HandleTeamsUpdateDiscussionInOrgRequest(w http.ResponseWriter, 
 	response, err := s.h.TeamsUpdateDiscussionInOrg(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -16349,7 +16349,7 @@ func (s *Server) HandleTeamsUpdateDiscussionLegacyRequest(w http.ResponseWriter,
 	response, err := s.h.TeamsUpdateDiscussionLegacy(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -16384,7 +16384,7 @@ func (s *Server) HandleTeamsUpdateInOrgRequest(w http.ResponseWriter, r *http.Re
 	response, err := s.h.TeamsUpdateInOrg(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -16413,7 +16413,7 @@ func (s *Server) HandleUsersCheckBlockedRequest(w http.ResponseWriter, r *http.R
 	response, err := s.h.UsersCheckBlocked(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -16442,7 +16442,7 @@ func (s *Server) HandleUsersCheckFollowingForUserRequest(w http.ResponseWriter, 
 	response, err := s.h.UsersCheckFollowingForUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -16471,7 +16471,7 @@ func (s *Server) HandleUsersCheckPersonIsFollowedByAuthenticatedRequest(w http.R
 	response, err := s.h.UsersCheckPersonIsFollowedByAuthenticated(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -16500,7 +16500,7 @@ func (s *Server) HandleUsersDeletePublicSSHKeyForAuthenticatedRequest(w http.Res
 	response, err := s.h.UsersDeletePublicSSHKeyForAuthenticated(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -16529,7 +16529,7 @@ func (s *Server) HandleUsersFollowRequest(w http.ResponseWriter, r *http.Request
 	response, err := s.h.UsersFollow(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -16552,7 +16552,7 @@ func (s *Server) HandleUsersGetAuthenticatedRequest(w http.ResponseWriter, r *ht
 	response, err := s.h.UsersGetAuthenticated(ctx)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -16581,7 +16581,7 @@ func (s *Server) HandleUsersGetByUsernameRequest(w http.ResponseWriter, r *http.
 	response, err := s.h.UsersGetByUsername(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -16610,7 +16610,7 @@ func (s *Server) HandleUsersGetGpgKeyForAuthenticatedRequest(w http.ResponseWrit
 	response, err := s.h.UsersGetGpgKeyForAuthenticated(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -16639,7 +16639,7 @@ func (s *Server) HandleUsersGetPublicSSHKeyForAuthenticatedRequest(w http.Respon
 	response, err := s.h.UsersGetPublicSSHKeyForAuthenticated(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -16668,7 +16668,7 @@ func (s *Server) HandleUsersListRequest(w http.ResponseWriter, r *http.Request) 
 	response, err := s.h.UsersList(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -16691,7 +16691,7 @@ func (s *Server) HandleUsersListBlockedByAuthenticatedRequest(w http.ResponseWri
 	response, err := s.h.UsersListBlockedByAuthenticated(ctx)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -16720,7 +16720,7 @@ func (s *Server) HandleUsersListEmailsForAuthenticatedRequest(w http.ResponseWri
 	response, err := s.h.UsersListEmailsForAuthenticated(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -16749,7 +16749,7 @@ func (s *Server) HandleUsersListFollowedByAuthenticatedRequest(w http.ResponseWr
 	response, err := s.h.UsersListFollowedByAuthenticated(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -16778,7 +16778,7 @@ func (s *Server) HandleUsersListFollowersForAuthenticatedUserRequest(w http.Resp
 	response, err := s.h.UsersListFollowersForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -16807,7 +16807,7 @@ func (s *Server) HandleUsersListFollowersForUserRequest(w http.ResponseWriter, r
 	response, err := s.h.UsersListFollowersForUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -16836,7 +16836,7 @@ func (s *Server) HandleUsersListFollowingForUserRequest(w http.ResponseWriter, r
 	response, err := s.h.UsersListFollowingForUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -16865,7 +16865,7 @@ func (s *Server) HandleUsersListGpgKeysForAuthenticatedRequest(w http.ResponseWr
 	response, err := s.h.UsersListGpgKeysForAuthenticated(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -16894,7 +16894,7 @@ func (s *Server) HandleUsersListGpgKeysForUserRequest(w http.ResponseWriter, r *
 	response, err := s.h.UsersListGpgKeysForUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -16923,7 +16923,7 @@ func (s *Server) HandleUsersListPublicEmailsForAuthenticatedRequest(w http.Respo
 	response, err := s.h.UsersListPublicEmailsForAuthenticated(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -16952,7 +16952,7 @@ func (s *Server) HandleUsersListPublicKeysForUserRequest(w http.ResponseWriter, 
 	response, err := s.h.UsersListPublicKeysForUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -16981,7 +16981,7 @@ func (s *Server) HandleUsersListPublicSSHKeysForAuthenticatedRequest(w http.Resp
 	response, err := s.h.UsersListPublicSSHKeysForAuthenticated(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -17010,7 +17010,7 @@ func (s *Server) HandleUsersUnblockRequest(w http.ResponseWriter, r *http.Reques
 	response, err := s.h.UsersUnblock(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -17039,7 +17039,7 @@ func (s *Server) HandleUsersUnfollowRequest(w http.ResponseWriter, r *http.Reque
 	response, err := s.h.UsersUnfollow(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 

@@ -83,7 +83,7 @@ func (s *Server) HandleCachingRequest(w http.ResponseWriter, r *http.Request) {
 	response, err := s.h.Caching(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -106,7 +106,7 @@ func (s *Server) HandleDBRequest(w http.ResponseWriter, r *http.Request) {
 	response, err := s.h.DB(ctx)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -129,7 +129,7 @@ func (s *Server) HandleJSONRequest(w http.ResponseWriter, r *http.Request) {
 	response, err := s.h.JSON(ctx)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -158,7 +158,7 @@ func (s *Server) HandleQueriesRequest(w http.ResponseWriter, r *http.Request) {
 	response, err := s.h.Queries(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -187,7 +187,7 @@ func (s *Server) HandleUpdatesRequest(w http.ResponseWriter, r *http.Request) {
 	response, err := s.h.Updates(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 

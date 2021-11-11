@@ -64,13 +64,14 @@ var (
 	_ = sync.Pool{}
 )
 
+func (s ErrorStatusCode) Error() string {
+	return fmt.Sprintf("%+v", s)
+}
+
 // Ref: #/components/schemas/Data
 type Data struct {
 	Name string `json:"name"`
 }
-
-func (*Data) dataCreateRes() {}
-func (*Data) dataGetRes()    {}
 
 // Ref: #/components/schemas/Error
 type Error struct {
@@ -83,6 +84,3 @@ type ErrorStatusCode struct {
 	StatusCode int
 	Response   Error
 }
-
-func (*ErrorStatusCode) dataCreateRes() {}
-func (*ErrorStatusCode) dataGetRes()    {}

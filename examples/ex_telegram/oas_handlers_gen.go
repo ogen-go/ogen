@@ -82,7 +82,7 @@ func (s *Server) HandleAnswerCallbackQueryPostRequest(w http.ResponseWriter, r *
 	response, err := s.h.AnswerCallbackQueryPost(ctx, request)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -110,7 +110,7 @@ func (s *Server) HandleAnswerPreCheckoutQueryPostRequest(w http.ResponseWriter, 
 	response, err := s.h.AnswerPreCheckoutQueryPost(ctx, request)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -138,7 +138,7 @@ func (s *Server) HandleAnswerShippingQueryPostRequest(w http.ResponseWriter, r *
 	response, err := s.h.AnswerShippingQueryPost(ctx, request)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -160,7 +160,7 @@ func (s *Server) HandleClosePostRequest(w http.ResponseWriter, r *http.Request) 
 	response, err := s.h.ClosePost(ctx)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -188,7 +188,7 @@ func (s *Server) HandleDeleteStickerFromSetPostRequest(w http.ResponseWriter, r 
 	response, err := s.h.DeleteStickerFromSetPost(ctx, request)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -216,7 +216,7 @@ func (s *Server) HandleDeleteWebhookPostRequest(w http.ResponseWriter, r *http.R
 	response, err := s.h.DeleteWebhookPost(ctx, request)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -244,7 +244,7 @@ func (s *Server) HandleGetFilePostRequest(w http.ResponseWriter, r *http.Request
 	response, err := s.h.GetFilePost(ctx, request)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -272,7 +272,7 @@ func (s *Server) HandleGetGameHighScoresPostRequest(w http.ResponseWriter, r *ht
 	response, err := s.h.GetGameHighScoresPost(ctx, request)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -294,7 +294,7 @@ func (s *Server) HandleGetMePostRequest(w http.ResponseWriter, r *http.Request) 
 	response, err := s.h.GetMePost(ctx)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -316,7 +316,7 @@ func (s *Server) HandleGetMyCommandsPostRequest(w http.ResponseWriter, r *http.R
 	response, err := s.h.GetMyCommandsPost(ctx)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -344,7 +344,7 @@ func (s *Server) HandleGetStickerSetPostRequest(w http.ResponseWriter, r *http.R
 	response, err := s.h.GetStickerSetPost(ctx, request)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -372,7 +372,7 @@ func (s *Server) HandleGetUpdatesPostRequest(w http.ResponseWriter, r *http.Requ
 	response, err := s.h.GetUpdatesPost(ctx, request)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -400,7 +400,7 @@ func (s *Server) HandleGetUserProfilePhotosPostRequest(w http.ResponseWriter, r 
 	response, err := s.h.GetUserProfilePhotosPost(ctx, request)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -422,7 +422,7 @@ func (s *Server) HandleGetWebhookInfoPostRequest(w http.ResponseWriter, r *http.
 	response, err := s.h.GetWebhookInfoPost(ctx)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -444,7 +444,7 @@ func (s *Server) HandleLogOutPostRequest(w http.ResponseWriter, r *http.Request)
 	response, err := s.h.LogOutPost(ctx)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -472,7 +472,7 @@ func (s *Server) HandleSendGamePostRequest(w http.ResponseWriter, r *http.Reques
 	response, err := s.h.SendGamePost(ctx, request)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -500,7 +500,7 @@ func (s *Server) HandleSendInvoicePostRequest(w http.ResponseWriter, r *http.Req
 	response, err := s.h.SendInvoicePost(ctx, request)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -528,7 +528,7 @@ func (s *Server) HandleSetMyCommandsPostRequest(w http.ResponseWriter, r *http.R
 	response, err := s.h.SetMyCommandsPost(ctx, request)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -556,7 +556,7 @@ func (s *Server) HandleSetStickerPositionInSetPostRequest(w http.ResponseWriter,
 	response, err := s.h.SetStickerPositionInSetPost(ctx, request)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 

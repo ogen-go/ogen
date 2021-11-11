@@ -83,7 +83,7 @@ func (s *Server) HandleCreateSnapshotRequest(w http.ResponseWriter, r *http.Requ
 	response, err := s.h.CreateSnapshot(ctx, request)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -112,7 +112,7 @@ func (s *Server) HandleCreateSyncActionRequest(w http.ResponseWriter, r *http.Re
 	response, err := s.h.CreateSyncAction(ctx, request)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -135,7 +135,7 @@ func (s *Server) HandleDescribeBalloonConfigRequest(w http.ResponseWriter, r *ht
 	response, err := s.h.DescribeBalloonConfig(ctx)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -158,7 +158,7 @@ func (s *Server) HandleDescribeBalloonStatsRequest(w http.ResponseWriter, r *htt
 	response, err := s.h.DescribeBalloonStats(ctx)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -181,7 +181,7 @@ func (s *Server) HandleDescribeInstanceRequest(w http.ResponseWriter, r *http.Re
 	response, err := s.h.DescribeInstance(ctx)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -204,7 +204,7 @@ func (s *Server) HandleGetExportVmConfigRequest(w http.ResponseWriter, r *http.R
 	response, err := s.h.GetExportVmConfig(ctx)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -227,7 +227,7 @@ func (s *Server) HandleGetMachineConfigurationRequest(w http.ResponseWriter, r *
 	response, err := s.h.GetMachineConfiguration(ctx)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -256,7 +256,7 @@ func (s *Server) HandleLoadSnapshotRequest(w http.ResponseWriter, r *http.Reques
 	response, err := s.h.LoadSnapshot(ctx, request)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -284,7 +284,7 @@ func (s *Server) HandleMmdsConfigPutRequest(w http.ResponseWriter, r *http.Reque
 	response, err := s.h.MmdsConfigPut(ctx, request)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -306,7 +306,7 @@ func (s *Server) HandleMmdsGetRequest(w http.ResponseWriter, r *http.Request) {
 	response, err := s.h.MmdsGet(ctx)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -334,7 +334,7 @@ func (s *Server) HandleMmdsPatchRequest(w http.ResponseWriter, r *http.Request) 
 	response, err := s.h.MmdsPatch(ctx, request)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -362,7 +362,7 @@ func (s *Server) HandleMmdsPutRequest(w http.ResponseWriter, r *http.Request) {
 	response, err := s.h.MmdsPut(ctx, request)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -391,7 +391,7 @@ func (s *Server) HandlePatchBalloonRequest(w http.ResponseWriter, r *http.Reques
 	response, err := s.h.PatchBalloon(ctx, request)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -420,7 +420,7 @@ func (s *Server) HandlePatchBalloonStatsIntervalRequest(w http.ResponseWriter, r
 	response, err := s.h.PatchBalloonStatsInterval(ctx, request)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -455,7 +455,7 @@ func (s *Server) HandlePatchGuestDriveByIDRequest(w http.ResponseWriter, r *http
 	response, err := s.h.PatchGuestDriveByID(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -490,7 +490,7 @@ func (s *Server) HandlePatchGuestNetworkInterfaceByIDRequest(w http.ResponseWrit
 	response, err := s.h.PatchGuestNetworkInterfaceByID(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -519,7 +519,7 @@ func (s *Server) HandlePatchMachineConfigurationRequest(w http.ResponseWriter, r
 	response, err := s.h.PatchMachineConfiguration(ctx, request)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -548,7 +548,7 @@ func (s *Server) HandlePatchVmRequest(w http.ResponseWriter, r *http.Request) {
 	response, err := s.h.PatchVm(ctx, request)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -577,7 +577,7 @@ func (s *Server) HandlePutBalloonRequest(w http.ResponseWriter, r *http.Request)
 	response, err := s.h.PutBalloon(ctx, request)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -606,7 +606,7 @@ func (s *Server) HandlePutGuestBootSourceRequest(w http.ResponseWriter, r *http.
 	response, err := s.h.PutGuestBootSource(ctx, request)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -641,7 +641,7 @@ func (s *Server) HandlePutGuestDriveByIDRequest(w http.ResponseWriter, r *http.R
 	response, err := s.h.PutGuestDriveByID(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -676,7 +676,7 @@ func (s *Server) HandlePutGuestNetworkInterfaceByIDRequest(w http.ResponseWriter
 	response, err := s.h.PutGuestNetworkInterfaceByID(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -705,7 +705,7 @@ func (s *Server) HandlePutGuestVsockRequest(w http.ResponseWriter, r *http.Reque
 	response, err := s.h.PutGuestVsock(ctx, request)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -734,7 +734,7 @@ func (s *Server) HandlePutLoggerRequest(w http.ResponseWriter, r *http.Request) 
 	response, err := s.h.PutLogger(ctx, request)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -763,7 +763,7 @@ func (s *Server) HandlePutMachineConfigurationRequest(w http.ResponseWriter, r *
 	response, err := s.h.PutMachineConfiguration(ctx, request)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -792,7 +792,7 @@ func (s *Server) HandlePutMetricsRequest(w http.ResponseWriter, r *http.Request)
 	response, err := s.h.PutMetrics(ctx, request)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		s.respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 

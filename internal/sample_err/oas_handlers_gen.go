@@ -83,7 +83,7 @@ func (s *Server) HandleDataCreateRequest(w http.ResponseWriter, r *http.Request)
 	response, err := s.h.DataCreate(ctx, request)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
 
@@ -106,7 +106,7 @@ func (s *Server) HandleDataGetRequest(w http.ResponseWriter, r *http.Request) {
 	response, err := s.h.DataGet(ctx)
 	if err != nil {
 		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
+		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
 

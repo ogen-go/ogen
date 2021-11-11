@@ -64,64 +64,43 @@ var (
 	_ = sync.Pool{}
 )
 
-func encodeDataCreateResponse(response DataCreateRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *Data:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+func encodeDataCreateResponse(response Data, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/data: unexpected response type: %T`, response)
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
 	}
+
+	return nil
 }
 
-func encodeDataGetResponse(response DataGetRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *Data:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+func encodeDataGetResponse(response Data, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/data: unexpected response type: %T`, response)
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
 	}
+
+	return nil
+}
+func encodeErrorResponse(response ErrorStatusCode, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(response.StatusCode)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
 }

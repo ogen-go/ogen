@@ -64,2389 +64,1093 @@ var (
 	_ = sync.Pool{}
 )
 
-func encodeAddStickerToSetResponse(response AddStickerToSetRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *Result:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/addStickerToSet: unexpected response type: %T`, response)
-	}
-}
-
-func encodeAnswerCallbackQueryResponse(response AnswerCallbackQueryRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *Result:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/answerCallbackQuery: unexpected response type: %T`, response)
-	}
-}
-
-func encodeAnswerInlineQueryResponse(response AnswerInlineQueryRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *Result:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/answerInlineQuery: unexpected response type: %T`, response)
-	}
-}
-
-func encodeAnswerPreCheckoutQueryResponse(response AnswerPreCheckoutQueryRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *Result:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/answerPreCheckoutQuery: unexpected response type: %T`, response)
-	}
-}
-
-func encodeAnswerShippingQueryResponse(response AnswerShippingQueryRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *Result:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/answerShippingQuery: unexpected response type: %T`, response)
-	}
-}
-
-func encodeApproveChatJoinRequestResponse(response ApproveChatJoinRequestRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *Result:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/approveChatJoinRequest: unexpected response type: %T`, response)
-	}
-}
-
-func encodeBanChatMemberResponse(response BanChatMemberRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *Result:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/banChatMember: unexpected response type: %T`, response)
-	}
-}
-
-func encodeCopyMessageResponse(response CopyMessageRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *Result:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/copyMessage: unexpected response type: %T`, response)
-	}
-}
-
-func encodeCreateChatInviteLinkResponse(response CreateChatInviteLinkRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *Result:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/createChatInviteLink: unexpected response type: %T`, response)
-	}
-}
-
-func encodeCreateNewStickerSetResponse(response CreateNewStickerSetRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *Result:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/createNewStickerSet: unexpected response type: %T`, response)
-	}
-}
-
-func encodeDeclineChatJoinRequestResponse(response DeclineChatJoinRequestRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *Result:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/declineChatJoinRequest: unexpected response type: %T`, response)
-	}
-}
-
-func encodeDeleteChatPhotoResponse(response DeleteChatPhotoRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *Result:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/deleteChatPhoto: unexpected response type: %T`, response)
-	}
-}
-
-func encodeDeleteChatStickerSetResponse(response DeleteChatStickerSetRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *Result:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/deleteChatStickerSet: unexpected response type: %T`, response)
-	}
-}
-
-func encodeDeleteMessageResponse(response DeleteMessageRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *Result:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/deleteMessage: unexpected response type: %T`, response)
-	}
-}
-
-func encodeDeleteMyCommandsResponse(response DeleteMyCommandsRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *Result:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/deleteMyCommands: unexpected response type: %T`, response)
-	}
-}
-
-func encodeDeleteStickerFromSetResponse(response DeleteStickerFromSetRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *Result:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/deleteStickerFromSet: unexpected response type: %T`, response)
-	}
-}
-
-func encodeDeleteWebhookResponse(response DeleteWebhookRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *Result:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/deleteWebhook: unexpected response type: %T`, response)
-	}
-}
-
-func encodeEditChatInviteLinkResponse(response EditChatInviteLinkRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *Result:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/editChatInviteLink: unexpected response type: %T`, response)
-	}
-}
-
-func encodeEditMessageCaptionResponse(response EditMessageCaptionRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *Result:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/editMessageCaption: unexpected response type: %T`, response)
-	}
-}
-
-func encodeEditMessageLiveLocationResponse(response EditMessageLiveLocationRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *Result:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/editMessageLiveLocation: unexpected response type: %T`, response)
-	}
-}
-
-func encodeEditMessageMediaResponse(response EditMessageMediaRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *Result:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/editMessageMedia: unexpected response type: %T`, response)
-	}
-}
-
-func encodeEditMessageReplyMarkupResponse(response EditMessageReplyMarkupRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *Result:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/editMessageReplyMarkup: unexpected response type: %T`, response)
-	}
-}
-
-func encodeEditMessageTextResponse(response EditMessageTextRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *Result:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/editMessageText: unexpected response type: %T`, response)
-	}
-}
-
-func encodeExportChatInviteLinkResponse(response ExportChatInviteLinkRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *Result:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/exportChatInviteLink: unexpected response type: %T`, response)
-	}
-}
-
-func encodeForwardMessageResponse(response ForwardMessageRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *ResultMsg:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/forwardMessage: unexpected response type: %T`, response)
-	}
-}
-
-func encodeGetChatResponse(response GetChatRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *Result:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/getChat: unexpected response type: %T`, response)
-	}
-}
-
-func encodeGetChatAdministratorsResponse(response GetChatAdministratorsRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *Result:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/getChatAdministrators: unexpected response type: %T`, response)
-	}
-}
-
-func encodeGetChatMemberResponse(response GetChatMemberRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *Result:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/getChatMember: unexpected response type: %T`, response)
-	}
-}
-
-func encodeGetChatMemberCountResponse(response GetChatMemberCountRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *Result:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/getChatMemberCount: unexpected response type: %T`, response)
-	}
-}
-
-func encodeGetFileResponse(response GetFileRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *Result:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/getFile: unexpected response type: %T`, response)
-	}
-}
-
-func encodeGetGameHighScoresResponse(response GetGameHighScoresRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *Result:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/getGameHighScores: unexpected response type: %T`, response)
-	}
-}
-
-func encodeGetMeResponse(response GetMeRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *ResultUsr:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/getMe: unexpected response type: %T`, response)
-	}
-}
-
-func encodeGetMyCommandsResponse(response GetMyCommandsRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *Result:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/getMyCommands: unexpected response type: %T`, response)
-	}
-}
-
-func encodeGetStickerSetResponse(response GetStickerSetRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *Result:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/getStickerSet: unexpected response type: %T`, response)
-	}
-}
-
-func encodeGetUpdatesResponse(response GetUpdatesRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *Result:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/getUpdates: unexpected response type: %T`, response)
-	}
-}
-
-func encodeGetUserProfilePhotosResponse(response GetUserProfilePhotosRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *Result:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/getUserProfilePhotos: unexpected response type: %T`, response)
-	}
-}
-
-func encodeLeaveChatResponse(response LeaveChatRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *Result:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/leaveChat: unexpected response type: %T`, response)
-	}
-}
-
-func encodePinChatMessageResponse(response PinChatMessageRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *Result:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/pinChatMessage: unexpected response type: %T`, response)
-	}
-}
-
-func encodePromoteChatMemberResponse(response PromoteChatMemberRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *Result:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/promoteChatMember: unexpected response type: %T`, response)
-	}
-}
-
-func encodeRestrictChatMemberResponse(response RestrictChatMemberRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *Result:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/restrictChatMember: unexpected response type: %T`, response)
-	}
-}
-
-func encodeRevokeChatInviteLinkResponse(response RevokeChatInviteLinkRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *Result:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/revokeChatInviteLink: unexpected response type: %T`, response)
-	}
-}
-
-func encodeSendAnimationResponse(response SendAnimationRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *ResultMsg:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/sendAnimation: unexpected response type: %T`, response)
-	}
-}
-
-func encodeSendAudioResponse(response SendAudioRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *Result:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/sendAudio: unexpected response type: %T`, response)
-	}
-}
-
-func encodeSendChatActionResponse(response SendChatActionRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *Result:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/sendChatAction: unexpected response type: %T`, response)
-	}
-}
-
-func encodeSendContactResponse(response SendContactRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *ResultMsg:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/sendContact: unexpected response type: %T`, response)
-	}
-}
-
-func encodeSendDiceResponse(response SendDiceRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *ResultMsg:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/sendDice: unexpected response type: %T`, response)
-	}
-}
-
-func encodeSendDocumentResponse(response SendDocumentRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *ResultMsg:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/sendDocument: unexpected response type: %T`, response)
-	}
-}
-
-func encodeSendGameResponse(response SendGameRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *ResultMsg:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/sendGame: unexpected response type: %T`, response)
-	}
-}
-
-func encodeSendInvoiceResponse(response SendInvoiceRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *ResultMsg:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/sendInvoice: unexpected response type: %T`, response)
-	}
-}
-
-func encodeSendLocationResponse(response SendLocationRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *ResultMsg:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/sendLocation: unexpected response type: %T`, response)
-	}
-}
-
-func encodeSendMediaGroupResponse(response SendMediaGroupRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *Result:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/sendMediaGroup: unexpected response type: %T`, response)
-	}
-}
-
-func encodeSendMessageResponse(response SendMessageRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *ResultMsg:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/sendMessage: unexpected response type: %T`, response)
-	}
-}
-
-func encodeSendPhotoResponse(response SendPhotoRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *ResultMsg:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/sendPhoto: unexpected response type: %T`, response)
-	}
-}
-
-func encodeSendPollResponse(response SendPollRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *ResultMsg:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/sendPoll: unexpected response type: %T`, response)
-	}
-}
-
-func encodeSendStickerResponse(response SendStickerRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *ResultMsg:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/sendSticker: unexpected response type: %T`, response)
-	}
-}
-
-func encodeSendVenueResponse(response SendVenueRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *ResultMsg:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/sendVenue: unexpected response type: %T`, response)
-	}
-}
-
-func encodeSendVideoResponse(response SendVideoRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *ResultMsg:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/sendVideo: unexpected response type: %T`, response)
-	}
-}
-
-func encodeSendVideoNoteResponse(response SendVideoNoteRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *ResultMsg:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/sendVideoNote: unexpected response type: %T`, response)
-	}
-}
-
-func encodeSendVoiceResponse(response SendVoiceRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *ResultMsg:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/sendVoice: unexpected response type: %T`, response)
-	}
-}
-
-func encodeSetChatAdministratorCustomTitleResponse(response SetChatAdministratorCustomTitleRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *Result:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/setChatAdministratorCustomTitle: unexpected response type: %T`, response)
-	}
-}
-
-func encodeSetChatDescriptionResponse(response SetChatDescriptionRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *Result:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/setChatDescription: unexpected response type: %T`, response)
-	}
-}
-
-func encodeSetChatPermissionsResponse(response SetChatPermissionsRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *Result:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/setChatPermissions: unexpected response type: %T`, response)
-	}
-}
-
-func encodeSetChatPhotoResponse(response SetChatPhotoRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *Result:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/setChatPhoto: unexpected response type: %T`, response)
-	}
-}
-
-func encodeSetChatStickerSetResponse(response SetChatStickerSetRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *Result:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/setChatStickerSet: unexpected response type: %T`, response)
-	}
-}
-
-func encodeSetChatTitleResponse(response SetChatTitleRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *Result:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/setChatTitle: unexpected response type: %T`, response)
-	}
-}
-
-func encodeSetGameScoreResponse(response SetGameScoreRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *Result:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/setGameScore: unexpected response type: %T`, response)
-	}
-}
-
-func encodeSetMyCommandsResponse(response SetMyCommandsRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *Result:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/setMyCommands: unexpected response type: %T`, response)
-	}
-}
-
-func encodeSetPassportDataErrorsResponse(response SetPassportDataErrorsRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *Result:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/setPassportDataErrors: unexpected response type: %T`, response)
-	}
-}
-
-func encodeSetStickerPositionInSetResponse(response SetStickerPositionInSetRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *Result:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/setStickerPositionInSet: unexpected response type: %T`, response)
-	}
-}
-
-func encodeSetStickerSetThumbResponse(response SetStickerSetThumbRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *Result:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/setStickerSetThumb: unexpected response type: %T`, response)
-	}
-}
-
-func encodeSetWebhookResponse(response SetWebhookRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *Result:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/setWebhook: unexpected response type: %T`, response)
-	}
-}
-
-func encodeStopMessageLiveLocationResponse(response StopMessageLiveLocationRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *Result:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/stopMessageLiveLocation: unexpected response type: %T`, response)
-	}
-}
-
-func encodeStopPollResponse(response StopPollRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *Result:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/stopPoll: unexpected response type: %T`, response)
-	}
-}
-
-func encodeUnbanChatMemberResponse(response UnbanChatMemberRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *Result:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/unbanChatMember: unexpected response type: %T`, response)
-	}
-}
-
-func encodeUnpinAllChatMessagesResponse(response UnpinAllChatMessagesRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *Result:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/unpinAllChatMessages: unexpected response type: %T`, response)
-	}
-}
-
-func encodeUnpinChatMessageResponse(response UnpinChatMessageRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *Result:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/unpinChatMessage: unexpected response type: %T`, response)
-	}
-}
-
-func encodeUploadStickerFileResponse(response UploadStickerFileRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *Result:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *ErrorStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-
-		response.Response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf(`/uploadStickerFile: unexpected response type: %T`, response)
+func encodeAddStickerToSetResponse(response Result, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeAnswerCallbackQueryResponse(response Result, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeAnswerInlineQueryResponse(response Result, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeAnswerPreCheckoutQueryResponse(response Result, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeAnswerShippingQueryResponse(response Result, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeApproveChatJoinRequestResponse(response Result, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeBanChatMemberResponse(response Result, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeCopyMessageResponse(response Result, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeCreateChatInviteLinkResponse(response Result, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeCreateNewStickerSetResponse(response Result, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeDeclineChatJoinRequestResponse(response Result, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeDeleteChatPhotoResponse(response Result, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeDeleteChatStickerSetResponse(response Result, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeDeleteMessageResponse(response Result, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeDeleteMyCommandsResponse(response Result, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeDeleteStickerFromSetResponse(response Result, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeDeleteWebhookResponse(response Result, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeEditChatInviteLinkResponse(response Result, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeEditMessageCaptionResponse(response Result, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeEditMessageLiveLocationResponse(response Result, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeEditMessageMediaResponse(response Result, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeEditMessageReplyMarkupResponse(response Result, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeEditMessageTextResponse(response Result, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeExportChatInviteLinkResponse(response Result, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeForwardMessageResponse(response ResultMsg, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeGetChatResponse(response Result, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeGetChatAdministratorsResponse(response Result, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeGetChatMemberResponse(response Result, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeGetChatMemberCountResponse(response Result, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeGetFileResponse(response Result, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeGetGameHighScoresResponse(response Result, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeGetMeResponse(response ResultUsr, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeGetMyCommandsResponse(response Result, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeGetStickerSetResponse(response Result, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeGetUpdatesResponse(response Result, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeGetUserProfilePhotosResponse(response Result, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeLeaveChatResponse(response Result, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodePinChatMessageResponse(response Result, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodePromoteChatMemberResponse(response Result, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeRestrictChatMemberResponse(response Result, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeRevokeChatInviteLinkResponse(response Result, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeSendAnimationResponse(response ResultMsg, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeSendAudioResponse(response Result, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeSendChatActionResponse(response Result, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeSendContactResponse(response ResultMsg, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeSendDiceResponse(response ResultMsg, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeSendDocumentResponse(response ResultMsg, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeSendGameResponse(response ResultMsg, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeSendInvoiceResponse(response ResultMsg, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeSendLocationResponse(response ResultMsg, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeSendMediaGroupResponse(response Result, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeSendMessageResponse(response ResultMsg, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeSendPhotoResponse(response ResultMsg, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeSendPollResponse(response ResultMsg, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeSendStickerResponse(response ResultMsg, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeSendVenueResponse(response ResultMsg, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeSendVideoResponse(response ResultMsg, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeSendVideoNoteResponse(response ResultMsg, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeSendVoiceResponse(response ResultMsg, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeSetChatAdministratorCustomTitleResponse(response Result, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeSetChatDescriptionResponse(response Result, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeSetChatPermissionsResponse(response Result, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeSetChatPhotoResponse(response Result, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeSetChatStickerSetResponse(response Result, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeSetChatTitleResponse(response Result, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeSetGameScoreResponse(response Result, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeSetMyCommandsResponse(response Result, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeSetPassportDataErrorsResponse(response Result, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeSetStickerPositionInSetResponse(response Result, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeSetStickerSetThumbResponse(response Result, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeSetWebhookResponse(response Result, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeStopMessageLiveLocationResponse(response Result, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeStopPollResponse(response Result, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
 	}
+
+	return nil
+}
+
+func encodeUnbanChatMemberResponse(response Result, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeUnpinAllChatMessagesResponse(response Result, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeUnpinChatMessageResponse(response Result, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeUploadStickerFileResponse(response Result, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+func encodeErrorResponse(response ErrorStatusCode, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(response.StatusCode)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
 }
