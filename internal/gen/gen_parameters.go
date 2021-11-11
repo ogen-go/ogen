@@ -11,10 +11,10 @@ func (g *Generator) generateParameters(opName string, params []*oas.Parameter) (
 	result := make([]*ir.Parameter, 0, len(params))
 	for _, p := range params {
 		if p.In == oas.LocationCookie {
-			err := &ErrNotImplemented{"cookie params"}
-			if g.shouldFail(err) {
-				return nil, err
+			if err := g.fail(&ErrNotImplemented{"cookie params"}); err != nil {
+				return nil, errors.Wrap(err, "fail")
 			}
+
 			continue
 		}
 

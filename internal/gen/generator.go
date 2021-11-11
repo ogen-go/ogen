@@ -75,7 +75,7 @@ func (g *Generator) makeIR(ops []*oas.Operation) error {
 	for _, spec := range ops {
 		op, err := g.generateOperation(spec)
 		if err != nil {
-			if g.shouldFail(err) {
+			if err := g.fail(err); err != nil {
 				return errors.Wrapf(err, "%q: %s",
 					spec.Path(),
 					strings.ToLower(spec.HTTPMethod),
@@ -84,7 +84,6 @@ func (g *Generator) makeIR(ops []*oas.Operation) error {
 
 			continue
 		}
-
 		g.operations = append(g.operations, op)
 	}
 

@@ -23,16 +23,16 @@ func (e *ErrUnsupportedContentTypes) Error() string {
 	return fmt.Sprintf("unsupported content types: [%s]", strings.Join(e.ContentTypes, ", "))
 }
 
-func (g *Generator) shouldFail(err error) bool {
+func (g *Generator) fail(err error) error {
 	var notImplementedErr *ErrNotImplemented
 	if errors.As(err, &notImplementedErr) {
 		for _, s := range g.opt.IgnoreNotImplemented {
 			s = strings.TrimSpace(s)
 			if s == "all" {
-				return false
+				return nil
 			}
 			if s == notImplementedErr.Name {
-				return false
+				return nil
 			}
 		}
 	}
@@ -42,9 +42,9 @@ func (g *Generator) shouldFail(err error) bool {
 		for _, s := range g.opt.IgnoreNotImplemented {
 			s = strings.TrimSpace(s)
 			if s == "all" || s == "unsupported content types" {
-				return false
+				return nil
 			}
 		}
 	}
-	return true
+	return err
 }
