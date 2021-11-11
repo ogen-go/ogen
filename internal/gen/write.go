@@ -17,6 +17,8 @@ type TemplateConfig struct {
 	Types      map[string]*ir.Type
 	URITypes   map[*ir.Type]struct{}
 	Interfaces map[string]*ir.Type
+	Error      *ir.StatusResponse
+	ErrorType  *ir.Type
 }
 
 // FileSystem represents a directory of generated package.
@@ -65,6 +67,10 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 		Types:      g.types,
 		URITypes:   g.uriTypes,
 		Interfaces: g.interfaces,
+		Error:      g.errType,
+	}
+	if cfg.Error != nil {
+		cfg.ErrorType = cfg.Error.Contents[ir.ContentTypeJSON]
 	}
 	for _, name := range []string{
 		"schemas",

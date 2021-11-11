@@ -39,7 +39,7 @@ func (g *Generator) generateResponses(opName string, responses *oas.OperationRes
 		result.StatusCode[code] = r
 	}
 
-	if def := responses.Default; def != nil {
+	if def := responses.Default; def != nil && g.errType == nil {
 		var (
 			respName = opName + "Def"
 			doc      = fmt.Sprintf("%s is default response for %s operation.", respName, opName)

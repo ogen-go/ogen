@@ -4,6 +4,12 @@
 {{ $pkg := $.Package }}
 {{ template "header" $ }}
 
+{{- if $.Error }}
+func (s {{ $.ErrorType.Name }}) Error() string {
+	return fmt.Sprintf("%+v", s)
+}
+{{- end }}
+
 {{- range $_, $s := $.Types }}
 {{- template "define_schema" $s }}
 {{- end }}
@@ -194,6 +200,4 @@ func (o {{ $.Name }}) Get() (v {{ $g.Go }}, ok bool) {
 func (*{{ $.Name }}) {{ $method }}() {}
 {{- end }}
 {{/* end define methods */}}
-
-
 {{- end }}

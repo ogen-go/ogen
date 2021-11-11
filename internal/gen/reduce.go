@@ -8,14 +8,14 @@ import (
 	"github.com/ogen-go/ogen/internal/ir"
 )
 
-func (g *Generator) fix() {
+func (g *Generator) reduce() {
 	for _, op := range g.operations {
-		g.fixEqualRequests(op)
-		g.fixEqualResponses(op)
+		g.reduceEqualRequests(op)
+		g.reduceEqualResponses(op)
 	}
 }
 
-func (g *Generator) fixEqualResponses(op *ir.Operation) {
+func (g *Generator) reduceEqualResponses(op *ir.Operation) {
 	if !op.Response.Type.Is(ir.KindInterface) {
 		return
 	}
@@ -139,7 +139,7 @@ func cloneResponse(r *ir.Response) *ir.Response {
 	return newR
 }
 
-func (g *Generator) fixEqualRequests(op *ir.Operation) {
+func (g *Generator) reduceEqualRequests(op *ir.Operation) {
 	if op.Request == nil {
 		return
 	}

@@ -1,6 +1,7 @@
 package gen
 
 import (
+	"reflect"
 	"sort"
 	"strings"
 
@@ -25,6 +26,7 @@ type Generator struct {
 	refs       responses
 	wrapped    responses
 	uriTypes   map[*ir.Type]struct{}
+	errType    *ir.StatusResponse
 }
 
 type Options struct {
@@ -59,12 +61,51 @@ func NewGenerator(spec *ogen.Spec, opts Options) (*Generator, error) {
 	for _, w := range g.wrapped.types {
 		g.saveType(w)
 	}
-	g.fix()
+	g.reduce()
 	g.wrapGenerics()
 	return g, nil
 }
 
+func (g *Generator) reduceDefault(ops []*oas.Operation) error {
+	if len(ops) < 2 {
+		return nil
+	}
+
+	// Compare first default response to others.
+	first := ops[0]
+	if first.Responses == nil || first.Responses.Default == nil {
+		return nil
+	}
+	d := first.Responses.Default
+	if d.Ref == "" {
+		// Not supported.
+		return nil
+	}
+
+	for _, spec := range ops[1:] {
+		if !reflect.DeepEqual(spec.Responses.Default, d) {
+			return nil
+		}
+	}
+
+	resp, err := g.responseToIR("ErrResp", "reduced default response", d)
+	if err != nil {
+		return errors.Wrap(err, "default")
+	}
+	if resp.NoContent != nil || len(resp.Contents) > 1 || resp.Contents[ir.ContentTypeJSON] == nil {
+		return errors.Wrap(err, "too complicated to reduce default error")
+	}
+
+	g.errType = g.wrapResponseStatusCode(resp)
+
+	return nil
+}
+
 func (g *Generator) makeIR(ops []*oas.Operation) error {
+	if err := g.reduceDefault(ops); err != nil {
+		return errors.Wrap(err, "reduce default")
+	}
+
 	for _, spec := range ops {
 		op, err := g.generateOperation(spec)
 		if err != nil {

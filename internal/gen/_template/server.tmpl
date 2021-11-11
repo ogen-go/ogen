@@ -12,6 +12,12 @@ type Handler interface {
 	// {{ $op.Spec.HTTPMethod }} {{ $op.Spec.Path }}
 	{{ $op.Name }}(ctx context.Context {{ if $op.Request }}, req {{ $op.Request.Type.Go }}{{ end }}{{ if $op.Params }}, params {{ $op.Name }}Params {{ end }}) ({{ $op.Response.Type.Go }}, error)
 {{- end }}
+{{- if $.Error }}
+	// NewError creates {{ $.ErrorType.Go }} from error returned by handler.
+	//
+	// Used for common default response.
+	NewError(ctx context.Context, err error) {{ $.ErrorType.Go }}
+{{- end }}
 }
 
 // Server implements http server based on OpenAPI v3 specification and

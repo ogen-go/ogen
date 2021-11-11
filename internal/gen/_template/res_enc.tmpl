@@ -28,6 +28,27 @@ func encode{{ $op.Name }}Response(response {{ $op.Response.Type.Go }}, w http.Re
 
 
 {{- end }}{{/* Range over all methods */}}
+
+{{- if $.Error }}
+func encodeErrorResponse(response {{ $.ErrorType.Go }}, w http.ResponseWriter, span trace.Span) error {
+{{- $typesCount := len $.Error.ResponseInfo }}
+{{- if eq $typesCount 1 }}
+    {{- range $info := $.Error.ResponseInfo }}
+        {{- template "respond" $info }}
+    {{- end }}
+{{- else }}
+	switch response := response.(type) {
+    {{- range $info := $.Error.ResponseInfo }}
+		case *{{ $info.Type.Name }}:
+        {{- template "respond" $info }}
+    {{- end }}
+	default:
+	return errors.Errorf(`default: unexpected response type: %T`, response)
+	}
+{{- end }}
+}
+{{- end }}
+
 {{ end }}
 
 {{ define "respond" }}
