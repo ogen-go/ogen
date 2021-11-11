@@ -1,6 +1,9 @@
 package ir
 
 import (
+	"sort"
+	"strings"
+
 	"github.com/ogen-go/ogen/internal/oas"
 )
 
@@ -84,4 +87,40 @@ type StatusResponse struct {
 	NoContent *Type
 	Contents  map[ContentType]*Type
 	Spec      *oas.Response
+}
+
+func (s StatusResponse) ResponseInfo() []ResponseInfo {
+	var result []ResponseInfo
+
+	if noc := s.NoContent; noc != nil {
+		result = append(result, ResponseInfo{
+			Type:      noc,
+			Default:   true,
+			NoContent: true,
+		})
+	}
+	for contentType, typ := range s.Contents {
+		result = append(result, ResponseInfo{
+			Type:        typ,
+			Default:     true,
+			ContentType: contentType,
+		})
+	}
+
+	sort.SliceStable(result, func(i, j int) bool {
+		l, r := result[i], result[j]
+		// Default responses has zero status code.
+		if l.Default {
+			l.StatusCode = 999
+		}
+		if r.Default {
+			r.StatusCode = 999
+		}
+		if l.StatusCode != r.StatusCode {
+			return l.StatusCode < r.StatusCode
+		}
+		return strings.Compare(string(l.ContentType), string(r.ContentType)) < 0
+	})
+
+	return result
 }

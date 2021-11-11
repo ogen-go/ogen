@@ -98,7 +98,7 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 // DataCreate invokes dataCreate operation.
 //
 // POST /data
-func (c *Client) DataCreate(ctx context.Context, request Data) (res DataCreateRes, err error) {
+func (c *Client) DataCreate(ctx context.Context, request Data) (res Data, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DataCreate`,
 		trace.WithAttributes(otelogen.OperationID(`dataCreate`)),
@@ -152,7 +152,7 @@ func (c *Client) DataCreate(ctx context.Context, request Data) (res DataCreateRe
 // DataGet invokes dataGet operation.
 //
 // GET /data
-func (c *Client) DataGet(ctx context.Context) (res DataGetRes, err error) {
+func (c *Client) DataGet(ctx context.Context) (res Data, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DataGet`,
 		trace.WithAttributes(otelogen.OperationID(`dataGet`)),

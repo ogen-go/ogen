@@ -8,9 +8,9 @@ import (
 )
 
 func (g *Generator) wrapGenerics() {
-	for _, typ := range g.types {
-		if typ.Is(ir.KindStruct) {
-			g.boxStructFields(typ)
+	for _, t := range g.types {
+		if t.Is(ir.KindStruct) {
+			g.boxStructFields(t)
 		}
 	}
 
@@ -39,26 +39,26 @@ func (g *Generator) boxStructFields(s *ir.Type) {
 			Optional: !field.Spec.Required,
 		}
 
-		field.Type = func(typ *ir.Type) *ir.Type {
-			if s.RecursiveTo(typ) {
+		field.Type = func(t *ir.Type) *ir.Type {
+			if s.RecursiveTo(t) {
 				switch {
 				case v.OnlyOptional():
-					return ir.Pointer(typ, ir.NilOptional)
+					return ir.Pointer(t, ir.NilOptional)
 				case v.OnlyNullable():
-					return ir.Pointer(typ, ir.NilNull)
+					return ir.Pointer(t, ir.NilNull)
 				case v.NullableOptional():
 					return ir.Pointer(g.boxType(ir.GenericVariant{
 						Optional: true,
-					}, typ), ir.NilNull)
+					}, t), ir.NilNull)
 				default:
 					// Required.
 					panic(fmt.Sprintf("recursion: %s.%s", s.Name, field.Name))
 				}
 			}
 			if v.Any() {
-				return g.boxType(v, typ)
+				return g.boxType(v, t)
 			}
-			return typ
+			return t
 		}(field.Type)
 	}
 }

@@ -111,14 +111,14 @@ func (g *schemaGen) generate(name string, schema *oas.Schema) (*ir.Type, error) 
 
 		for i := range schema.Properties {
 			prop := schema.Properties[i]
-			typ, err := g.generate(pascalSpecial(name, prop.Name), prop.Schema)
+			t, err := g.generate(pascalSpecial(name, prop.Name), prop.Schema)
 			if err != nil {
 				return nil, errors.Wrapf(err, "field %s", prop.Name)
 			}
 
 			s.Fields = append(s.Fields, &ir.Field{
 				Name: pascalSpecial(prop.Name),
-				Type: typ,
+				Type: t,
 				Tag: ir.Tag{
 					JSON: prop.Name,
 				},
@@ -303,13 +303,13 @@ func (g *schemaGen) generate(name string, schema *oas.Schema) (*ir.Type, error) 
 }
 
 func (g *schemaGen) primitive(name string, schema *oas.Schema) (*ir.Type, error) {
-	typ, err := parseSimple(schema)
+	t, err := parseSimple(schema)
 	if err != nil {
 		return nil, err
 	}
 
 	if len(schema.Enum) > 0 {
-		if !typ.Is(ir.KindPrimitive) {
+		if !t.Is(ir.KindPrimitive) {
 			return nil, errors.Errorf("unsupported enum type: %q", schema.Type)
 		}
 
@@ -329,18 +329,18 @@ func (g *schemaGen) primitive(name string, schema *oas.Schema) (*ir.Type, error)
 		return &ir.Type{
 			Kind:         ir.KindEnum,
 			Name:         name,
-			Primitive:    typ.Primitive,
+			Primitive:    t.Primitive,
 			EnumVariants: variants,
 			Schema:       schema,
 		}, nil
 	}
 
-	return typ, nil
+	return t, nil
 }
 
 func parseSimple(schema *oas.Schema) (*ir.Type, error) {
-	typ, format := schema.Type, schema.Format
-	switch typ {
+	t, format := schema.Type, schema.Format
+	switch t {
 	case oas.Integer:
 		switch format {
 		case oas.FormatInt32:
@@ -389,6 +389,6 @@ func parseSimple(schema *oas.Schema) (*ir.Type, error) {
 			return nil, errors.Errorf("unexpected bool format: %q", format)
 		}
 	default:
-		return nil, errors.Errorf("unexpected type: %q", typ)
+		return nil, errors.Errorf("unexpected type: %q", t)
 	}
 }

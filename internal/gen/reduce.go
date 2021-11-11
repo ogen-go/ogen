@@ -8,14 +8,14 @@ import (
 	"github.com/ogen-go/ogen/internal/ir"
 )
 
-func (g *Generator) fix() {
+func (g *Generator) reduce() {
 	for _, op := range g.operations {
-		g.fixEqualRequests(op)
-		g.fixEqualResponses(op)
+		g.reduceEqualRequests(op)
+		g.reduceEqualResponses(op)
 	}
 }
 
-func (g *Generator) fixEqualResponses(op *ir.Operation) {
+func (g *Generator) reduceEqualResponses(op *ir.Operation) {
 	if !op.Response.Type.Is(ir.KindInterface) {
 		return
 	}
@@ -35,9 +35,9 @@ func (g *Generator) fixEqualResponses(op *ir.Operation) {
 		renameTo string
 		typ      *ir.Type
 
-		replaceNoc   bool
-		replaceCtype string
-		response     *ir.StatusResponse
+		replaceNoc bool
+		replaceCT  string
+		response   *ir.StatusResponse
 	}
 
 	var candidates []candidate
@@ -84,16 +84,16 @@ func (g *Generator) fixEqualResponses(op *ir.Operation) {
 					lschema, rschema := lresp.Contents[ir.ContentType(lct)], rresp.Contents[ir.ContentType(rct)]
 					if reflect.DeepEqual(lschema, rschema) {
 						candidates = append(candidates, candidate{
-							renameTo:     pascal(op.Name, lct, http.StatusText(lcode)),
-							typ:          lschema,
-							replaceCtype: lct,
-							response:     lresp,
+							renameTo:  pascal(op.Name, lct, http.StatusText(lcode)),
+							typ:       lschema,
+							replaceCT: lct,
+							response:  lresp,
 						})
 						candidates = append(candidates, candidate{
-							renameTo:     pascal(op.Name, rct, http.StatusText(rcode)),
-							typ:          rschema,
-							replaceCtype: rct,
-							response:     rresp,
+							renameTo:  pascal(op.Name, rct, http.StatusText(rcode)),
+							typ:       rschema,
+							replaceCT: rct,
+							response:  rresp,
 						})
 					}
 				}
@@ -115,7 +115,7 @@ func (g *Generator) fixEqualResponses(op *ir.Operation) {
 			continue
 		}
 
-		candidate.response.Contents[ir.ContentType(candidate.replaceCtype)] = alias
+		candidate.response.Contents[ir.ContentType(candidate.replaceCT)] = alias
 	}
 }
 
@@ -131,15 +131,15 @@ func cloneResponse(r *ir.Response) *ir.Response {
 			NoContent: statResp.NoContent,
 			Contents:  map[ir.ContentType]*ir.Type{},
 		}
-		for contentType, typ := range statResp.Contents {
-			newStatResp.Contents[contentType] = typ
+		for contentType, t := range statResp.Contents {
+			newStatResp.Contents[contentType] = t
 		}
 		newR.StatusCode[code] = newStatResp
 	}
 	return newR
 }
 
-func (g *Generator) fixEqualRequests(op *ir.Operation) {
+func (g *Generator) reduceEqualRequests(op *ir.Operation) {
 	if op.Request == nil {
 		return
 	}
@@ -155,7 +155,7 @@ func (g *Generator) fixEqualRequests(op *ir.Operation) {
 	type candidate struct {
 		renameTo string
 		ctype    string
-		typ      *ir.Type
+		t        *ir.Type
 	}
 	var candidates []candidate
 
@@ -177,20 +177,20 @@ func (g *Generator) fixEqualRequests(op *ir.Operation) {
 				candidates = append(candidates, candidate{
 					renameTo: pascal(op.Name, lcontent),
 					ctype:    lcontent,
-					typ:      lschema,
+					t:        lschema,
 				})
 				candidates = append(candidates, candidate{
 					renameTo: pascal(op.Name, rcontent),
 					ctype:    rcontent,
-					typ:      rschema,
+					t:        rschema,
 				})
 			}
 		}
 	}
 
 	for _, candidate := range candidates {
-		candidate.typ.Unimplement(op.Request.Type)
-		alias := ir.Alias(candidate.renameTo, candidate.typ)
+		candidate.t.Unimplement(op.Request.Type)
+		alias := ir.Alias(candidate.renameTo, candidate.t)
 		alias.Implement(op.Request.Type)
 
 		// TODO: Fix duplicates.
@@ -203,8 +203,8 @@ func (g *Generator) fixEqualRequests(op *ir.Operation) {
 
 func cloneRequest(r *ir.Request) *ir.Request {
 	contents := make(map[ir.ContentType]*ir.Type)
-	for contentType, typ := range r.Contents {
-		contents[contentType] = typ
+	for contentType, t := range r.Contents {
+		contents[contentType] = t
 	}
 	return &ir.Request{
 		Type:     r.Type,

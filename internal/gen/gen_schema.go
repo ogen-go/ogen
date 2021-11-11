@@ -8,10 +8,10 @@ import (
 func (g *Generator) generateSchema(name string, schema *oas.Schema) (*ir.Type, error) {
 	gen := &schemaGen{
 		localRefs:  map[string]*ir.Type{},
-		globalRefs: g.refs.schemas,
+		globalRefs: g.refs.types,
 	}
 
-	typ, err := gen.generate(name, schema)
+	t, err := gen.generate(name, schema)
 	if err != nil {
 		return nil, err
 	}
@@ -20,9 +20,9 @@ func (g *Generator) generateSchema(name string, schema *oas.Schema) (*ir.Type, e
 		g.saveType(side)
 	}
 
-	for ref, typ := range gen.localRefs {
-		g.saveRef(ref, typ)
+	for ref, t := range gen.localRefs {
+		g.saveRef(ref, t)
 	}
 
-	return typ, nil
+	return t, nil
 }
