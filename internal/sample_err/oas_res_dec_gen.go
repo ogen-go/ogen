@@ -128,7 +128,7 @@ func decodeDataCreateResponse(resp *http.Response, span trace.Span) (res Data, e
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }
 
@@ -196,6 +196,6 @@ func decodeDataGetResponse(resp *http.Response, span trace.Span) (res Data, err 
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }

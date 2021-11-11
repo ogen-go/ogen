@@ -5,10 +5,8 @@
 {{ template "header" $ }}
 
 {{- if $.Error }}
-func (s {{ $.ErrorType.Name }}) Error() string {
-	var e jx.Encoder
-	s.Encode(&e)
-	return e.String()
+func (s *{{ $.ErrorType.Name }}) Error() string {
+	return fmt.Sprintf("code %d: %+v", s.StatusCode, s.Response)
 }
 {{- end }}
 

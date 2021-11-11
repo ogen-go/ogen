@@ -42,7 +42,7 @@ func decode{{ $op.Name }}Response(resp *http.Response, span trace.Span) (res {{ 
 			if err != nil {
 				return res, errors.Wrap(err, "default")
 			}
-			return res, errors.Wrap(defRes, "error")
+			return res, errors.Wrap(&defRes, "error")
 		{{- else }}
 			return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 		{{- end }}

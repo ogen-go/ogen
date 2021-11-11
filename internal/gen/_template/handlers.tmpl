@@ -29,7 +29,7 @@ func (s *Server) Handle{{ $op.Name }}Request(w http.ResponseWriter, r *http.Requ
 	{{- if $op.Request }}
 	request, err := decode{{ $op.Name }}Request(r, span)
 	if err != nil {
-	  span.RecordError(err)
+		span.RecordError(err)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -40,6 +40,11 @@ func (s *Server) Handle{{ $op.Name }}Request(w http.ResponseWriter, r *http.Requ
 		{{- /* It is not secure to expose internal error to client, but better than nothing. */ -}}
 		span.RecordError(err)
 		{{- if $.Error }}
+		var errRes *{{ $.ErrorType.Go }}
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		{{- else }}
 		respondError(w, http.StatusInternalServerError, err)

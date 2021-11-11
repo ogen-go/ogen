@@ -83,6 +83,11 @@ func (s *Server) HandleAddStickerToSetRequest(w http.ResponseWriter, r *http.Req
 	response, err := s.h.AddStickerToSet(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -112,6 +117,11 @@ func (s *Server) HandleAnswerCallbackQueryRequest(w http.ResponseWriter, r *http
 	response, err := s.h.AnswerCallbackQuery(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -141,6 +151,11 @@ func (s *Server) HandleAnswerInlineQueryRequest(w http.ResponseWriter, r *http.R
 	response, err := s.h.AnswerInlineQuery(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -170,6 +185,11 @@ func (s *Server) HandleAnswerPreCheckoutQueryRequest(w http.ResponseWriter, r *h
 	response, err := s.h.AnswerPreCheckoutQuery(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -199,6 +219,11 @@ func (s *Server) HandleAnswerShippingQueryRequest(w http.ResponseWriter, r *http
 	response, err := s.h.AnswerShippingQuery(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -228,6 +253,11 @@ func (s *Server) HandleApproveChatJoinRequestRequest(w http.ResponseWriter, r *h
 	response, err := s.h.ApproveChatJoinRequest(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -257,6 +287,11 @@ func (s *Server) HandleBanChatMemberRequest(w http.ResponseWriter, r *http.Reque
 	response, err := s.h.BanChatMember(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -286,6 +321,11 @@ func (s *Server) HandleCopyMessageRequest(w http.ResponseWriter, r *http.Request
 	response, err := s.h.CopyMessage(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -315,6 +355,11 @@ func (s *Server) HandleCreateChatInviteLinkRequest(w http.ResponseWriter, r *htt
 	response, err := s.h.CreateChatInviteLink(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -344,6 +389,11 @@ func (s *Server) HandleCreateNewStickerSetRequest(w http.ResponseWriter, r *http
 	response, err := s.h.CreateNewStickerSet(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -373,6 +423,11 @@ func (s *Server) HandleDeclineChatJoinRequestRequest(w http.ResponseWriter, r *h
 	response, err := s.h.DeclineChatJoinRequest(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -402,6 +457,11 @@ func (s *Server) HandleDeleteChatPhotoRequest(w http.ResponseWriter, r *http.Req
 	response, err := s.h.DeleteChatPhoto(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -431,6 +491,11 @@ func (s *Server) HandleDeleteChatStickerSetRequest(w http.ResponseWriter, r *htt
 	response, err := s.h.DeleteChatStickerSet(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -460,6 +525,11 @@ func (s *Server) HandleDeleteMessageRequest(w http.ResponseWriter, r *http.Reque
 	response, err := s.h.DeleteMessage(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -489,6 +559,11 @@ func (s *Server) HandleDeleteMyCommandsRequest(w http.ResponseWriter, r *http.Re
 	response, err := s.h.DeleteMyCommands(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -518,6 +593,11 @@ func (s *Server) HandleDeleteStickerFromSetRequest(w http.ResponseWriter, r *htt
 	response, err := s.h.DeleteStickerFromSet(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -547,6 +627,11 @@ func (s *Server) HandleDeleteWebhookRequest(w http.ResponseWriter, r *http.Reque
 	response, err := s.h.DeleteWebhook(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -576,6 +661,11 @@ func (s *Server) HandleEditChatInviteLinkRequest(w http.ResponseWriter, r *http.
 	response, err := s.h.EditChatInviteLink(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -605,6 +695,11 @@ func (s *Server) HandleEditMessageCaptionRequest(w http.ResponseWriter, r *http.
 	response, err := s.h.EditMessageCaption(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -634,6 +729,11 @@ func (s *Server) HandleEditMessageLiveLocationRequest(w http.ResponseWriter, r *
 	response, err := s.h.EditMessageLiveLocation(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -663,6 +763,11 @@ func (s *Server) HandleEditMessageMediaRequest(w http.ResponseWriter, r *http.Re
 	response, err := s.h.EditMessageMedia(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -692,6 +797,11 @@ func (s *Server) HandleEditMessageReplyMarkupRequest(w http.ResponseWriter, r *h
 	response, err := s.h.EditMessageReplyMarkup(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -721,6 +831,11 @@ func (s *Server) HandleEditMessageTextRequest(w http.ResponseWriter, r *http.Req
 	response, err := s.h.EditMessageText(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -750,6 +865,11 @@ func (s *Server) HandleExportChatInviteLinkRequest(w http.ResponseWriter, r *htt
 	response, err := s.h.ExportChatInviteLink(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -779,6 +899,11 @@ func (s *Server) HandleForwardMessageRequest(w http.ResponseWriter, r *http.Requ
 	response, err := s.h.ForwardMessage(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -808,6 +933,11 @@ func (s *Server) HandleGetChatRequest(w http.ResponseWriter, r *http.Request) {
 	response, err := s.h.GetChat(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -837,6 +967,11 @@ func (s *Server) HandleGetChatAdministratorsRequest(w http.ResponseWriter, r *ht
 	response, err := s.h.GetChatAdministrators(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -866,6 +1001,11 @@ func (s *Server) HandleGetChatMemberRequest(w http.ResponseWriter, r *http.Reque
 	response, err := s.h.GetChatMember(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -895,6 +1035,11 @@ func (s *Server) HandleGetChatMemberCountRequest(w http.ResponseWriter, r *http.
 	response, err := s.h.GetChatMemberCount(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -924,6 +1069,11 @@ func (s *Server) HandleGetFileRequest(w http.ResponseWriter, r *http.Request) {
 	response, err := s.h.GetFile(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -953,6 +1103,11 @@ func (s *Server) HandleGetGameHighScoresRequest(w http.ResponseWriter, r *http.R
 	response, err := s.h.GetGameHighScores(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -976,6 +1131,11 @@ func (s *Server) HandleGetMeRequest(w http.ResponseWriter, r *http.Request) {
 	response, err := s.h.GetMe(ctx)
 	if err != nil {
 		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -1005,6 +1165,11 @@ func (s *Server) HandleGetMyCommandsRequest(w http.ResponseWriter, r *http.Reque
 	response, err := s.h.GetMyCommands(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -1034,6 +1199,11 @@ func (s *Server) HandleGetStickerSetRequest(w http.ResponseWriter, r *http.Reque
 	response, err := s.h.GetStickerSet(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -1063,6 +1233,11 @@ func (s *Server) HandleGetUpdatesRequest(w http.ResponseWriter, r *http.Request)
 	response, err := s.h.GetUpdates(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -1092,6 +1267,11 @@ func (s *Server) HandleGetUserProfilePhotosRequest(w http.ResponseWriter, r *htt
 	response, err := s.h.GetUserProfilePhotos(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -1121,6 +1301,11 @@ func (s *Server) HandleLeaveChatRequest(w http.ResponseWriter, r *http.Request) 
 	response, err := s.h.LeaveChat(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -1150,6 +1335,11 @@ func (s *Server) HandlePinChatMessageRequest(w http.ResponseWriter, r *http.Requ
 	response, err := s.h.PinChatMessage(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -1179,6 +1369,11 @@ func (s *Server) HandlePromoteChatMemberRequest(w http.ResponseWriter, r *http.R
 	response, err := s.h.PromoteChatMember(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -1208,6 +1403,11 @@ func (s *Server) HandleRestrictChatMemberRequest(w http.ResponseWriter, r *http.
 	response, err := s.h.RestrictChatMember(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -1237,6 +1437,11 @@ func (s *Server) HandleRevokeChatInviteLinkRequest(w http.ResponseWriter, r *htt
 	response, err := s.h.RevokeChatInviteLink(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -1266,6 +1471,11 @@ func (s *Server) HandleSendAnimationRequest(w http.ResponseWriter, r *http.Reque
 	response, err := s.h.SendAnimation(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -1295,6 +1505,11 @@ func (s *Server) HandleSendAudioRequest(w http.ResponseWriter, r *http.Request) 
 	response, err := s.h.SendAudio(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -1324,6 +1539,11 @@ func (s *Server) HandleSendChatActionRequest(w http.ResponseWriter, r *http.Requ
 	response, err := s.h.SendChatAction(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -1353,6 +1573,11 @@ func (s *Server) HandleSendContactRequest(w http.ResponseWriter, r *http.Request
 	response, err := s.h.SendContact(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -1382,6 +1607,11 @@ func (s *Server) HandleSendDiceRequest(w http.ResponseWriter, r *http.Request) {
 	response, err := s.h.SendDice(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -1411,6 +1641,11 @@ func (s *Server) HandleSendDocumentRequest(w http.ResponseWriter, r *http.Reques
 	response, err := s.h.SendDocument(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -1440,6 +1675,11 @@ func (s *Server) HandleSendGameRequest(w http.ResponseWriter, r *http.Request) {
 	response, err := s.h.SendGame(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -1469,6 +1709,11 @@ func (s *Server) HandleSendInvoiceRequest(w http.ResponseWriter, r *http.Request
 	response, err := s.h.SendInvoice(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -1498,6 +1743,11 @@ func (s *Server) HandleSendLocationRequest(w http.ResponseWriter, r *http.Reques
 	response, err := s.h.SendLocation(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -1527,6 +1777,11 @@ func (s *Server) HandleSendMediaGroupRequest(w http.ResponseWriter, r *http.Requ
 	response, err := s.h.SendMediaGroup(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -1556,6 +1811,11 @@ func (s *Server) HandleSendMessageRequest(w http.ResponseWriter, r *http.Request
 	response, err := s.h.SendMessage(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -1585,6 +1845,11 @@ func (s *Server) HandleSendPhotoRequest(w http.ResponseWriter, r *http.Request) 
 	response, err := s.h.SendPhoto(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -1614,6 +1879,11 @@ func (s *Server) HandleSendPollRequest(w http.ResponseWriter, r *http.Request) {
 	response, err := s.h.SendPoll(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -1643,6 +1913,11 @@ func (s *Server) HandleSendStickerRequest(w http.ResponseWriter, r *http.Request
 	response, err := s.h.SendSticker(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -1672,6 +1947,11 @@ func (s *Server) HandleSendVenueRequest(w http.ResponseWriter, r *http.Request) 
 	response, err := s.h.SendVenue(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -1701,6 +1981,11 @@ func (s *Server) HandleSendVideoRequest(w http.ResponseWriter, r *http.Request) 
 	response, err := s.h.SendVideo(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -1730,6 +2015,11 @@ func (s *Server) HandleSendVideoNoteRequest(w http.ResponseWriter, r *http.Reque
 	response, err := s.h.SendVideoNote(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -1759,6 +2049,11 @@ func (s *Server) HandleSendVoiceRequest(w http.ResponseWriter, r *http.Request) 
 	response, err := s.h.SendVoice(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -1788,6 +2083,11 @@ func (s *Server) HandleSetChatAdministratorCustomTitleRequest(w http.ResponseWri
 	response, err := s.h.SetChatAdministratorCustomTitle(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -1817,6 +2117,11 @@ func (s *Server) HandleSetChatDescriptionRequest(w http.ResponseWriter, r *http.
 	response, err := s.h.SetChatDescription(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -1846,6 +2151,11 @@ func (s *Server) HandleSetChatPermissionsRequest(w http.ResponseWriter, r *http.
 	response, err := s.h.SetChatPermissions(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -1875,6 +2185,11 @@ func (s *Server) HandleSetChatPhotoRequest(w http.ResponseWriter, r *http.Reques
 	response, err := s.h.SetChatPhoto(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -1904,6 +2219,11 @@ func (s *Server) HandleSetChatStickerSetRequest(w http.ResponseWriter, r *http.R
 	response, err := s.h.SetChatStickerSet(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -1933,6 +2253,11 @@ func (s *Server) HandleSetChatTitleRequest(w http.ResponseWriter, r *http.Reques
 	response, err := s.h.SetChatTitle(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -1962,6 +2287,11 @@ func (s *Server) HandleSetGameScoreRequest(w http.ResponseWriter, r *http.Reques
 	response, err := s.h.SetGameScore(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -1991,6 +2321,11 @@ func (s *Server) HandleSetMyCommandsRequest(w http.ResponseWriter, r *http.Reque
 	response, err := s.h.SetMyCommands(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -2020,6 +2355,11 @@ func (s *Server) HandleSetPassportDataErrorsRequest(w http.ResponseWriter, r *ht
 	response, err := s.h.SetPassportDataErrors(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -2049,6 +2389,11 @@ func (s *Server) HandleSetStickerPositionInSetRequest(w http.ResponseWriter, r *
 	response, err := s.h.SetStickerPositionInSet(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -2078,6 +2423,11 @@ func (s *Server) HandleSetStickerSetThumbRequest(w http.ResponseWriter, r *http.
 	response, err := s.h.SetStickerSetThumb(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -2107,6 +2457,11 @@ func (s *Server) HandleSetWebhookRequest(w http.ResponseWriter, r *http.Request)
 	response, err := s.h.SetWebhook(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -2136,6 +2491,11 @@ func (s *Server) HandleStopMessageLiveLocationRequest(w http.ResponseWriter, r *
 	response, err := s.h.StopMessageLiveLocation(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -2165,6 +2525,11 @@ func (s *Server) HandleStopPollRequest(w http.ResponseWriter, r *http.Request) {
 	response, err := s.h.StopPoll(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -2194,6 +2559,11 @@ func (s *Server) HandleUnbanChatMemberRequest(w http.ResponseWriter, r *http.Req
 	response, err := s.h.UnbanChatMember(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -2223,6 +2593,11 @@ func (s *Server) HandleUnpinAllChatMessagesRequest(w http.ResponseWriter, r *htt
 	response, err := s.h.UnpinAllChatMessages(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -2252,6 +2627,11 @@ func (s *Server) HandleUnpinChatMessageRequest(w http.ResponseWriter, r *http.Re
 	response, err := s.h.UnpinChatMessage(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -2281,6 +2661,11 @@ func (s *Server) HandleUploadStickerFileRequest(w http.ResponseWriter, r *http.R
 	response, err := s.h.UploadStickerFile(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}

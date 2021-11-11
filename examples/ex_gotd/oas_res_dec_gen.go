@@ -128,7 +128,7 @@ func decodeAddStickerToSetResponse(resp *http.Response, span trace.Span) (res Re
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }
 
@@ -196,7 +196,7 @@ func decodeAnswerCallbackQueryResponse(resp *http.Response, span trace.Span) (re
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }
 
@@ -264,7 +264,7 @@ func decodeAnswerInlineQueryResponse(resp *http.Response, span trace.Span) (res 
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }
 
@@ -332,7 +332,7 @@ func decodeAnswerPreCheckoutQueryResponse(resp *http.Response, span trace.Span) 
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }
 
@@ -400,7 +400,7 @@ func decodeAnswerShippingQueryResponse(resp *http.Response, span trace.Span) (re
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }
 
@@ -468,7 +468,7 @@ func decodeApproveChatJoinRequestResponse(resp *http.Response, span trace.Span) 
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }
 
@@ -536,7 +536,7 @@ func decodeBanChatMemberResponse(resp *http.Response, span trace.Span) (res Resu
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }
 
@@ -604,7 +604,7 @@ func decodeCopyMessageResponse(resp *http.Response, span trace.Span) (res Result
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }
 
@@ -672,7 +672,7 @@ func decodeCreateChatInviteLinkResponse(resp *http.Response, span trace.Span) (r
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }
 
@@ -740,7 +740,7 @@ func decodeCreateNewStickerSetResponse(resp *http.Response, span trace.Span) (re
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }
 
@@ -808,7 +808,7 @@ func decodeDeclineChatJoinRequestResponse(resp *http.Response, span trace.Span) 
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }
 
@@ -876,7 +876,7 @@ func decodeDeleteChatPhotoResponse(resp *http.Response, span trace.Span) (res Re
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }
 
@@ -944,7 +944,7 @@ func decodeDeleteChatStickerSetResponse(resp *http.Response, span trace.Span) (r
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }
 
@@ -1012,7 +1012,7 @@ func decodeDeleteMessageResponse(resp *http.Response, span trace.Span) (res Resu
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }
 
@@ -1080,7 +1080,7 @@ func decodeDeleteMyCommandsResponse(resp *http.Response, span trace.Span) (res R
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }
 
@@ -1148,7 +1148,7 @@ func decodeDeleteStickerFromSetResponse(resp *http.Response, span trace.Span) (r
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }
 
@@ -1216,7 +1216,7 @@ func decodeDeleteWebhookResponse(resp *http.Response, span trace.Span) (res Resu
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }
 
@@ -1284,7 +1284,7 @@ func decodeEditChatInviteLinkResponse(resp *http.Response, span trace.Span) (res
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }
 
@@ -1352,7 +1352,7 @@ func decodeEditMessageCaptionResponse(resp *http.Response, span trace.Span) (res
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }
 
@@ -1420,7 +1420,7 @@ func decodeEditMessageLiveLocationResponse(resp *http.Response, span trace.Span)
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }
 
@@ -1488,7 +1488,7 @@ func decodeEditMessageMediaResponse(resp *http.Response, span trace.Span) (res R
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }
 
@@ -1556,7 +1556,7 @@ func decodeEditMessageReplyMarkupResponse(resp *http.Response, span trace.Span) 
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }
 
@@ -1624,7 +1624,7 @@ func decodeEditMessageTextResponse(resp *http.Response, span trace.Span) (res Re
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }
 
@@ -1692,7 +1692,7 @@ func decodeExportChatInviteLinkResponse(resp *http.Response, span trace.Span) (r
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }
 
@@ -1760,7 +1760,7 @@ func decodeForwardMessageResponse(resp *http.Response, span trace.Span) (res Res
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }
 
@@ -1828,7 +1828,7 @@ func decodeGetChatResponse(resp *http.Response, span trace.Span) (res Result, er
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }
 
@@ -1896,7 +1896,7 @@ func decodeGetChatAdministratorsResponse(resp *http.Response, span trace.Span) (
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }
 
@@ -1964,7 +1964,7 @@ func decodeGetChatMemberResponse(resp *http.Response, span trace.Span) (res Resu
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }
 
@@ -2032,7 +2032,7 @@ func decodeGetChatMemberCountResponse(resp *http.Response, span trace.Span) (res
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }
 
@@ -2100,7 +2100,7 @@ func decodeGetFileResponse(resp *http.Response, span trace.Span) (res Result, er
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }
 
@@ -2168,7 +2168,7 @@ func decodeGetGameHighScoresResponse(resp *http.Response, span trace.Span) (res 
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }
 
@@ -2236,7 +2236,7 @@ func decodeGetMeResponse(resp *http.Response, span trace.Span) (res ResultUsr, e
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }
 
@@ -2304,7 +2304,7 @@ func decodeGetMyCommandsResponse(resp *http.Response, span trace.Span) (res Resu
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }
 
@@ -2372,7 +2372,7 @@ func decodeGetStickerSetResponse(resp *http.Response, span trace.Span) (res Resu
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }
 
@@ -2440,7 +2440,7 @@ func decodeGetUpdatesResponse(resp *http.Response, span trace.Span) (res Result,
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }
 
@@ -2508,7 +2508,7 @@ func decodeGetUserProfilePhotosResponse(resp *http.Response, span trace.Span) (r
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }
 
@@ -2576,7 +2576,7 @@ func decodeLeaveChatResponse(resp *http.Response, span trace.Span) (res Result, 
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }
 
@@ -2644,7 +2644,7 @@ func decodePinChatMessageResponse(resp *http.Response, span trace.Span) (res Res
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }
 
@@ -2712,7 +2712,7 @@ func decodePromoteChatMemberResponse(resp *http.Response, span trace.Span) (res 
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }
 
@@ -2780,7 +2780,7 @@ func decodeRestrictChatMemberResponse(resp *http.Response, span trace.Span) (res
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }
 
@@ -2848,7 +2848,7 @@ func decodeRevokeChatInviteLinkResponse(resp *http.Response, span trace.Span) (r
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }
 
@@ -2916,7 +2916,7 @@ func decodeSendAnimationResponse(resp *http.Response, span trace.Span) (res Resu
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }
 
@@ -2984,7 +2984,7 @@ func decodeSendAudioResponse(resp *http.Response, span trace.Span) (res Result, 
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }
 
@@ -3052,7 +3052,7 @@ func decodeSendChatActionResponse(resp *http.Response, span trace.Span) (res Res
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }
 
@@ -3120,7 +3120,7 @@ func decodeSendContactResponse(resp *http.Response, span trace.Span) (res Result
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }
 
@@ -3188,7 +3188,7 @@ func decodeSendDiceResponse(resp *http.Response, span trace.Span) (res ResultMsg
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }
 
@@ -3256,7 +3256,7 @@ func decodeSendDocumentResponse(resp *http.Response, span trace.Span) (res Resul
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }
 
@@ -3324,7 +3324,7 @@ func decodeSendGameResponse(resp *http.Response, span trace.Span) (res ResultMsg
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }
 
@@ -3392,7 +3392,7 @@ func decodeSendInvoiceResponse(resp *http.Response, span trace.Span) (res Result
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }
 
@@ -3460,7 +3460,7 @@ func decodeSendLocationResponse(resp *http.Response, span trace.Span) (res Resul
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }
 
@@ -3528,7 +3528,7 @@ func decodeSendMediaGroupResponse(resp *http.Response, span trace.Span) (res Res
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }
 
@@ -3596,7 +3596,7 @@ func decodeSendMessageResponse(resp *http.Response, span trace.Span) (res Result
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }
 
@@ -3664,7 +3664,7 @@ func decodeSendPhotoResponse(resp *http.Response, span trace.Span) (res ResultMs
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }
 
@@ -3732,7 +3732,7 @@ func decodeSendPollResponse(resp *http.Response, span trace.Span) (res ResultMsg
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }
 
@@ -3800,7 +3800,7 @@ func decodeSendStickerResponse(resp *http.Response, span trace.Span) (res Result
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }
 
@@ -3868,7 +3868,7 @@ func decodeSendVenueResponse(resp *http.Response, span trace.Span) (res ResultMs
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }
 
@@ -3936,7 +3936,7 @@ func decodeSendVideoResponse(resp *http.Response, span trace.Span) (res ResultMs
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }
 
@@ -4004,7 +4004,7 @@ func decodeSendVideoNoteResponse(resp *http.Response, span trace.Span) (res Resu
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }
 
@@ -4072,7 +4072,7 @@ func decodeSendVoiceResponse(resp *http.Response, span trace.Span) (res ResultMs
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }
 
@@ -4140,7 +4140,7 @@ func decodeSetChatAdministratorCustomTitleResponse(resp *http.Response, span tra
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }
 
@@ -4208,7 +4208,7 @@ func decodeSetChatDescriptionResponse(resp *http.Response, span trace.Span) (res
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }
 
@@ -4276,7 +4276,7 @@ func decodeSetChatPermissionsResponse(resp *http.Response, span trace.Span) (res
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }
 
@@ -4344,7 +4344,7 @@ func decodeSetChatPhotoResponse(resp *http.Response, span trace.Span) (res Resul
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }
 
@@ -4412,7 +4412,7 @@ func decodeSetChatStickerSetResponse(resp *http.Response, span trace.Span) (res 
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }
 
@@ -4480,7 +4480,7 @@ func decodeSetChatTitleResponse(resp *http.Response, span trace.Span) (res Resul
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }
 
@@ -4548,7 +4548,7 @@ func decodeSetGameScoreResponse(resp *http.Response, span trace.Span) (res Resul
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }
 
@@ -4616,7 +4616,7 @@ func decodeSetMyCommandsResponse(resp *http.Response, span trace.Span) (res Resu
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }
 
@@ -4684,7 +4684,7 @@ func decodeSetPassportDataErrorsResponse(resp *http.Response, span trace.Span) (
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }
 
@@ -4752,7 +4752,7 @@ func decodeSetStickerPositionInSetResponse(resp *http.Response, span trace.Span)
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }
 
@@ -4820,7 +4820,7 @@ func decodeSetStickerSetThumbResponse(resp *http.Response, span trace.Span) (res
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }
 
@@ -4888,7 +4888,7 @@ func decodeSetWebhookResponse(resp *http.Response, span trace.Span) (res Result,
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }
 
@@ -4956,7 +4956,7 @@ func decodeStopMessageLiveLocationResponse(resp *http.Response, span trace.Span)
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }
 
@@ -5024,7 +5024,7 @@ func decodeStopPollResponse(resp *http.Response, span trace.Span) (res Result, e
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }
 
@@ -5092,7 +5092,7 @@ func decodeUnbanChatMemberResponse(resp *http.Response, span trace.Span) (res Re
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }
 
@@ -5160,7 +5160,7 @@ func decodeUnpinAllChatMessagesResponse(resp *http.Response, span trace.Span) (r
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }
 
@@ -5228,7 +5228,7 @@ func decodeUnpinChatMessageResponse(resp *http.Response, span trace.Span) (res R
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }
 
@@ -5296,6 +5296,6 @@ func decodeUploadStickerFileResponse(resp *http.Response, span trace.Span) (res 
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(defRes, "error")
+		return res, errors.Wrap(&defRes, "error")
 	}
 }

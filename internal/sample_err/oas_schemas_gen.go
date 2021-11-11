@@ -64,10 +64,8 @@ var (
 	_ = sync.Pool{}
 )
 
-func (s ErrorStatusCode) Error() string {
-	var e jx.Encoder
-	s.Encode(&e)
-	return e.String()
+func (s *ErrorStatusCode) Error() string {
+	return fmt.Sprintf("code %d: %+v", s.StatusCode, s.Response)
 }
 
 // Ref: #/components/schemas/Data
