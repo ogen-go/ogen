@@ -3,7 +3,9 @@ package ogen
 import (
 	"bytes"
 	"context"
+	"crypto/sha256"
 	_ "embed"
+	"encoding/hex"
 	"fmt"
 	"io"
 	"net"
@@ -63,6 +65,14 @@ func (t techEmpowerServer) JSON(ctx context.Context) (techempower.HelloWorld, er
 
 type sampleAPIServer struct {
 	pet api.Pet
+}
+
+func (s sampleAPIServer) GetHeader(ctx context.Context, params api.GetHeaderParams) (api.Hash, error) {
+	h := sha256.Sum256([]byte(params.XAuthToken))
+	return api.Hash{
+		Raw: h[:],
+		Hex: hex.EncodeToString(h[:]),
+	}, nil
 }
 
 func (s sampleAPIServer) PetUpdateNameAliasPost(ctx context.Context, req api.PetName) (api.PetUpdateNameAliasPostDefStatusCode, error) {
@@ -166,6 +176,8 @@ func (s *sampleAPIServer) ErrorGet(ctx context.Context) (api.ErrorStatusCode, er
 		},
 	}, nil
 }
+
+var _ api.Handler = (*sampleAPIServer)(nil)
 
 //go:embed _testdata/pet.json
 var petTestData string
@@ -393,6 +405,13 @@ func TestIntegration(t *testing.T) {
 				}
 				assert.Equal(t, errStatusCode, got)
 			})
+		})
+		t.Run("GetHeader", func(t *testing.T) {
+			h, err := client.GetHeader(ctx, api.GetHeaderParams{XAuthToken: "hello, world"})
+			require.NoError(t, err)
+			assert.NotEmpty(t, h.Raw)
+			assert.Equal(t, hex.EncodeToString(h.Raw[:]), h.Hex)
+			assert.Equal(t, "09ca7e4eaa6e8ae9c7d261167129184883644d07dfba7cbfbc4c8a2e08360d5b", h.Hex)
 		})
 	})
 

@@ -387,6 +387,34 @@
           }
         }
       }
+    },
+    "/test/header": {
+      "get": {
+        "description": "Test for header param",
+        "operationId": "getHeader",
+        "parameters": [
+          {
+            "in": "header",
+            "required": true,
+            "name": "x-auth-token",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns sha256 of header value",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Hash"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -598,6 +626,24 @@
       "PetName": {
         "type": "string",
         "minLength": 6
+      },
+      "Hash": {
+        "type": "object",
+        "required": [
+          "raw",
+          "hex"
+        ],
+        "properties": {
+          "raw": {
+            "type": "string",
+            "format": "byte"
+          },
+          "hex": {
+            "type": "string",
+            "minLength": 64,
+            "maxLength": 64
+          }
+        }
       }
     },
     "parameters": {
