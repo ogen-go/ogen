@@ -27,7 +27,7 @@ func decode{{ $op.Name }}Params(r *http.Request) ({{ $op.Name }}Params, error) {
 			})
 
 			if err := func() error {
-				{{- template "decode_uri" $el }}
+				{{- template "dec_uri" $el }}
 			}(); err != nil {
 				return params, errors.Wrap(err, `{{ $errParse }}`)
 			}
@@ -55,7 +55,7 @@ func decode{{ $op.Name }}Params(r *http.Request) ({{ $op.Name }}Params, error) {
 			})
 
 			if err := func() error {
-				{{- template "decode_uri" $el }}
+				{{- template "dec_uri" $el }}
 			}(); err != nil {
 				return params, err
 			}
@@ -71,7 +71,7 @@ func decode{{ $op.Name }}Params(r *http.Request) ({{ $op.Name }}Params, error) {
 				Explode: {{ if $p.Spec.Explode }}true{{ else }}false{{ end }},
 			})
 			if err := func() error {
-				{{- template "decode_uri" $el }}
+				{{- template "dec_uri" $el }}
 			}(); err != nil {
 				return params, errors.Wrap(err, `{{ $errParse }}`)
 			}
@@ -109,19 +109,3 @@ func decode{{ $op.Name }}Params(r *http.Request) ({{ $op.Name }}Params, error) {
 {{- end }}{{/* Range over methods */}}
 {{ end }}
 
-{{ define "decode_param" }}
-	{{- /*gotype: github.com/ogen-go/ogen/internal/ir.Type*/ -}}
-	{{- if .IsArray }}
-	rawParam, err := d.DecodeArray()
-	{{- else }}
-	rawParam, err := d.DecodeValue()
-	{{- end }}
-	if err != nil {
-		return params, err
-	}
-
-	v, err := conv.{{ .FromString }}(rawParam)
-	if err != nil {
-		return params, err
-	}
-{{- end }}

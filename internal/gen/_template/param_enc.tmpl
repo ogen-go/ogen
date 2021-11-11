@@ -1,4 +1,4 @@
-{{ define "params_encode_path" }}
+{{ define "enc_param_path" }}
 u := uri.Clone(c.serverURL)
 {{- range $part := $.PathParts }}{{/* Range over path parts */}}
 {{- if $part.Raw }}
@@ -14,7 +14,7 @@ u.Path += "{{ $part.Raw }}"
 		Explode: {{ if $param.Spec.Explode }}true{{ else }}false{{ end }},
 	})
 	if err := func() error {
-		{{- template "encode_uri" elem $param.Type (printf "params.%s" $param.Name) }}
+		{{- template "enc_uri" elem $param.Type (printf "params.%s" $param.Name) }}
 	}(); err != nil {
 		return res, errors.Wrap(err, "encode path")
 	}
@@ -24,7 +24,7 @@ u.Path += "{{ $part.Raw }}"
 {{- end }}
 {{- end }}
 
-{{ define "params_encode_query" }}
+{{ define "enc_param_query" }}
 {{ $pcount := len $.QueryParams }}
 {{ if ne $pcount 0 }}{{/* Check params existence */}}
 q := u.Query()
@@ -36,7 +36,7 @@ q := u.Query()
 		Explode: {{ if $param.Spec.Explode }}true{{ else }}false{{ end }},
 	})
 	if err := func() error {
-		{{- template "encode_uri" elem $param.Type (printf "params.%s" $param.Name) }}
+		{{- template "enc_uri" elem $param.Type (printf "params.%s" $param.Name) }}
 	}(); err != nil {
 		return res, errors.Wrap(err, "encode query")
 	}

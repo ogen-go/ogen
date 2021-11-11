@@ -127,8 +127,8 @@ func (c *Client) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, reques
 	{{- end }}
 	{{ end }}
 
-	{{- template "params_encode_path" $op }}
-	{{- template "params_encode_query" $op }}
+	{{- template "enc_param_path" $op }}
+	{{- template "enc_param_query" $op }}
 
 	r := ht.NewRequest(ctx, "{{ $op.Spec.HTTPMethod }}", u, {{ if $op.Request }}reqBody{{ else }}nil{{ end }})
 	defer ht.PutRequest(r)
@@ -184,7 +184,7 @@ r.AddCookie(&http.Cookie{
 		Explode: {{ if $p.Spec.Explode }}true{{ else }}false{{ end }},
 	})
 	if err := func() error {
-		{{- template "encode_uri" elem $p.Type (printf "params.%s" $p.Name) }}
+		{{- template "enc_uri" elem $p.Type (printf "params.%s" $p.Name) }}
 	}(); err != nil {
 		return res, errors.Wrap(err, `encode header param {{ $p.Spec.Name }}`)
 	}

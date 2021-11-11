@@ -25,7 +25,7 @@ type Generator struct {
 		types     map[string]*ir.Type
 		responses map[string]*ir.StatusResponse
 	}
-	uritypes map[*ir.Type]struct{}
+	uriTypes map[*ir.Type]struct{}
 }
 
 type Options struct {
@@ -57,7 +57,7 @@ func NewGenerator(spec *ogen.Spec, opts Options) (*Generator, error) {
 			types:     map[string]*ir.Type{},
 			responses: map[string]*ir.StatusResponse{},
 		},
-		uritypes: map[*ir.Type]struct{}{},
+		uriTypes: map[*ir.Type]struct{}{},
 	}
 
 	if err := g.makeIR(operations); err != nil {

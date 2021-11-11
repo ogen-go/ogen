@@ -30,7 +30,7 @@ func (g *Generator) generateParameters(opName string, params []*oas.Parameter) (
 
 		for t := range visited {
 			if t.Is(ir.KindStruct) {
-				g.uritypes[t] = struct{}{}
+				g.uriTypes[t] = struct{}{}
 			}
 		}
 
