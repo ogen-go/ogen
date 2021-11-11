@@ -100,7 +100,7 @@ func templateFunctions() template.FuncMap {
 				More: true,
 			}
 		},
-		"xresp_elem": func(r *ir.StatusResponse, ptr bool) ResponseElem {
+		"status_res_elem": func(r *ir.StatusResponse, ptr bool) ResponseElem {
 			return ResponseElem{
 				Response: r,
 				Ptr:      ptr,
