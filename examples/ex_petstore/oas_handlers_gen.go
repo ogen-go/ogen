@@ -77,7 +77,7 @@ func (s *Server) HandleCreatePetsRequest(w http.ResponseWriter, r *http.Request)
 	response, err := s.h.CreatePets(ctx)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -106,7 +106,7 @@ func (s *Server) HandleListPetsRequest(w http.ResponseWriter, r *http.Request) {
 	response, err := s.h.ListPets(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -135,7 +135,7 @@ func (s *Server) HandleShowPetByIdRequest(w http.ResponseWriter, r *http.Request
 	response, err := s.h.ShowPetById(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 

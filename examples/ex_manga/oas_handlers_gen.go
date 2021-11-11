@@ -83,7 +83,7 @@ func (s *Server) HandleGetBookRequest(w http.ResponseWriter, r *http.Request) {
 	response, err := s.h.GetBook(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -112,7 +112,7 @@ func (s *Server) HandleGetPageCoverImageRequest(w http.ResponseWriter, r *http.R
 	response, err := s.h.GetPageCoverImage(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -141,7 +141,7 @@ func (s *Server) HandleGetPageImageRequest(w http.ResponseWriter, r *http.Reques
 	response, err := s.h.GetPageImage(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -170,7 +170,7 @@ func (s *Server) HandleGetPageThumbnailImageRequest(w http.ResponseWriter, r *ht
 	response, err := s.h.GetPageThumbnailImage(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -199,7 +199,7 @@ func (s *Server) HandleSearchRequest(w http.ResponseWriter, r *http.Request) {
 	response, err := s.h.Search(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -228,7 +228,7 @@ func (s *Server) HandleSearchByTagIDRequest(w http.ResponseWriter, r *http.Reque
 	response, err := s.h.SearchByTagID(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 

@@ -83,7 +83,7 @@ func (s *Server) HandleDeletePetRequest(w http.ResponseWriter, r *http.Request) 
 	response, err := s.h.DeletePet(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 

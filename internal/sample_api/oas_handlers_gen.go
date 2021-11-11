@@ -77,7 +77,7 @@ func (s *Server) HandleErrorGetRequest(w http.ResponseWriter, r *http.Request) {
 	response, err := s.h.ErrorGet(ctx)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -106,7 +106,7 @@ func (s *Server) HandleFoobarGetRequest(w http.ResponseWriter, r *http.Request) 
 	response, err := s.h.FoobarGet(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -135,7 +135,7 @@ func (s *Server) HandleFoobarPostRequest(w http.ResponseWriter, r *http.Request)
 	response, err := s.h.FoobarPost(ctx, request)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -157,7 +157,7 @@ func (s *Server) HandleFoobarPutRequest(w http.ResponseWriter, r *http.Request) 
 	response, err := s.h.FoobarPut(ctx)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -186,7 +186,7 @@ func (s *Server) HandlePetCreateRequest(w http.ResponseWriter, r *http.Request) 
 	response, err := s.h.PetCreate(ctx, request)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -215,7 +215,7 @@ func (s *Server) HandlePetFriendsNamesByIDRequest(w http.ResponseWriter, r *http
 	response, err := s.h.PetFriendsNamesByID(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -244,7 +244,7 @@ func (s *Server) HandlePetGetRequest(w http.ResponseWriter, r *http.Request) {
 	response, err := s.h.PetGet(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -273,7 +273,7 @@ func (s *Server) HandlePetGetAvatarByIDRequest(w http.ResponseWriter, r *http.Re
 	response, err := s.h.PetGetAvatarByID(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -302,7 +302,7 @@ func (s *Server) HandlePetGetByNameRequest(w http.ResponseWriter, r *http.Reques
 	response, err := s.h.PetGetByName(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -331,7 +331,7 @@ func (s *Server) HandlePetNameByIDRequest(w http.ResponseWriter, r *http.Request
 	response, err := s.h.PetNameByID(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -359,7 +359,7 @@ func (s *Server) HandlePetUpdateNameAliasPostRequest(w http.ResponseWriter, r *h
 	response, err := s.h.PetUpdateNameAliasPost(ctx, request)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -387,7 +387,7 @@ func (s *Server) HandlePetUpdateNamePostRequest(w http.ResponseWriter, r *http.R
 	response, err := s.h.PetUpdateNamePost(ctx, request)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -422,7 +422,7 @@ func (s *Server) HandlePetUploadAvatarByIDRequest(w http.ResponseWriter, r *http
 	response, err := s.h.PetUploadAvatarByID(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 

@@ -77,7 +77,7 @@ func (s *Server) HandleGetAPIVersionsRequest(w http.ResponseWriter, r *http.Requ
 	response, err := s.h.GetAPIVersions(ctx)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -100,7 +100,7 @@ func (s *Server) HandleGetAdmissionregistrationAPIGroupRequest(w http.ResponseWr
 	response, err := s.h.GetAdmissionregistrationAPIGroup(ctx)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -123,7 +123,7 @@ func (s *Server) HandleGetAdmissionregistrationV1APIResourcesRequest(w http.Resp
 	response, err := s.h.GetAdmissionregistrationV1APIResources(ctx)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -146,7 +146,7 @@ func (s *Server) HandleGetApiextensionsAPIGroupRequest(w http.ResponseWriter, r 
 	response, err := s.h.GetApiextensionsAPIGroup(ctx)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -169,7 +169,7 @@ func (s *Server) HandleGetApiextensionsV1APIResourcesRequest(w http.ResponseWrit
 	response, err := s.h.GetApiextensionsV1APIResources(ctx)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -192,7 +192,7 @@ func (s *Server) HandleGetApiregistrationAPIGroupRequest(w http.ResponseWriter, 
 	response, err := s.h.GetApiregistrationAPIGroup(ctx)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -215,7 +215,7 @@ func (s *Server) HandleGetApiregistrationV1APIResourcesRequest(w http.ResponseWr
 	response, err := s.h.GetApiregistrationV1APIResources(ctx)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -238,7 +238,7 @@ func (s *Server) HandleGetAppsAPIGroupRequest(w http.ResponseWriter, r *http.Req
 	response, err := s.h.GetAppsAPIGroup(ctx)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -261,7 +261,7 @@ func (s *Server) HandleGetAppsV1APIResourcesRequest(w http.ResponseWriter, r *ht
 	response, err := s.h.GetAppsV1APIResources(ctx)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -284,7 +284,7 @@ func (s *Server) HandleGetAuthenticationAPIGroupRequest(w http.ResponseWriter, r
 	response, err := s.h.GetAuthenticationAPIGroup(ctx)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -307,7 +307,7 @@ func (s *Server) HandleGetAuthenticationV1APIResourcesRequest(w http.ResponseWri
 	response, err := s.h.GetAuthenticationV1APIResources(ctx)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -330,7 +330,7 @@ func (s *Server) HandleGetAuthorizationAPIGroupRequest(w http.ResponseWriter, r 
 	response, err := s.h.GetAuthorizationAPIGroup(ctx)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -353,7 +353,7 @@ func (s *Server) HandleGetAuthorizationV1APIResourcesRequest(w http.ResponseWrit
 	response, err := s.h.GetAuthorizationV1APIResources(ctx)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -376,7 +376,7 @@ func (s *Server) HandleGetAutoscalingAPIGroupRequest(w http.ResponseWriter, r *h
 	response, err := s.h.GetAutoscalingAPIGroup(ctx)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -399,7 +399,7 @@ func (s *Server) HandleGetAutoscalingV1APIResourcesRequest(w http.ResponseWriter
 	response, err := s.h.GetAutoscalingV1APIResources(ctx)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -422,7 +422,7 @@ func (s *Server) HandleGetAutoscalingV2beta1APIResourcesRequest(w http.ResponseW
 	response, err := s.h.GetAutoscalingV2beta1APIResources(ctx)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -445,7 +445,7 @@ func (s *Server) HandleGetAutoscalingV2beta2APIResourcesRequest(w http.ResponseW
 	response, err := s.h.GetAutoscalingV2beta2APIResources(ctx)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -468,7 +468,7 @@ func (s *Server) HandleGetBatchAPIGroupRequest(w http.ResponseWriter, r *http.Re
 	response, err := s.h.GetBatchAPIGroup(ctx)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -491,7 +491,7 @@ func (s *Server) HandleGetBatchV1APIResourcesRequest(w http.ResponseWriter, r *h
 	response, err := s.h.GetBatchV1APIResources(ctx)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -514,7 +514,7 @@ func (s *Server) HandleGetBatchV1beta1APIResourcesRequest(w http.ResponseWriter,
 	response, err := s.h.GetBatchV1beta1APIResources(ctx)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -537,7 +537,7 @@ func (s *Server) HandleGetCertificatesAPIGroupRequest(w http.ResponseWriter, r *
 	response, err := s.h.GetCertificatesAPIGroup(ctx)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -560,7 +560,7 @@ func (s *Server) HandleGetCertificatesV1APIResourcesRequest(w http.ResponseWrite
 	response, err := s.h.GetCertificatesV1APIResources(ctx)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -583,7 +583,7 @@ func (s *Server) HandleGetCodeVersionRequest(w http.ResponseWriter, r *http.Requ
 	response, err := s.h.GetCodeVersion(ctx)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -606,7 +606,7 @@ func (s *Server) HandleGetCoordinationAPIGroupRequest(w http.ResponseWriter, r *
 	response, err := s.h.GetCoordinationAPIGroup(ctx)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -629,7 +629,7 @@ func (s *Server) HandleGetCoordinationV1APIResourcesRequest(w http.ResponseWrite
 	response, err := s.h.GetCoordinationV1APIResources(ctx)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -652,7 +652,7 @@ func (s *Server) HandleGetCoreAPIVersionsRequest(w http.ResponseWriter, r *http.
 	response, err := s.h.GetCoreAPIVersions(ctx)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -675,7 +675,7 @@ func (s *Server) HandleGetCoreV1APIResourcesRequest(w http.ResponseWriter, r *ht
 	response, err := s.h.GetCoreV1APIResources(ctx)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -698,7 +698,7 @@ func (s *Server) HandleGetDiscoveryAPIGroupRequest(w http.ResponseWriter, r *htt
 	response, err := s.h.GetDiscoveryAPIGroup(ctx)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -721,7 +721,7 @@ func (s *Server) HandleGetDiscoveryV1APIResourcesRequest(w http.ResponseWriter, 
 	response, err := s.h.GetDiscoveryV1APIResources(ctx)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -744,7 +744,7 @@ func (s *Server) HandleGetDiscoveryV1beta1APIResourcesRequest(w http.ResponseWri
 	response, err := s.h.GetDiscoveryV1beta1APIResources(ctx)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -767,7 +767,7 @@ func (s *Server) HandleGetEventsAPIGroupRequest(w http.ResponseWriter, r *http.R
 	response, err := s.h.GetEventsAPIGroup(ctx)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -790,7 +790,7 @@ func (s *Server) HandleGetEventsV1APIResourcesRequest(w http.ResponseWriter, r *
 	response, err := s.h.GetEventsV1APIResources(ctx)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -813,7 +813,7 @@ func (s *Server) HandleGetEventsV1beta1APIResourcesRequest(w http.ResponseWriter
 	response, err := s.h.GetEventsV1beta1APIResources(ctx)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -836,7 +836,7 @@ func (s *Server) HandleGetFlowcontrolApiserverAPIGroupRequest(w http.ResponseWri
 	response, err := s.h.GetFlowcontrolApiserverAPIGroup(ctx)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -859,7 +859,7 @@ func (s *Server) HandleGetFlowcontrolApiserverV1beta1APIResourcesRequest(w http.
 	response, err := s.h.GetFlowcontrolApiserverV1beta1APIResources(ctx)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -882,7 +882,7 @@ func (s *Server) HandleGetFlowcontrolApiserverV1beta2APIResourcesRequest(w http.
 	response, err := s.h.GetFlowcontrolApiserverV1beta2APIResources(ctx)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -905,7 +905,7 @@ func (s *Server) HandleGetInternalApiserverAPIGroupRequest(w http.ResponseWriter
 	response, err := s.h.GetInternalApiserverAPIGroup(ctx)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -928,7 +928,7 @@ func (s *Server) HandleGetInternalApiserverV1alpha1APIResourcesRequest(w http.Re
 	response, err := s.h.GetInternalApiserverV1alpha1APIResources(ctx)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -951,7 +951,7 @@ func (s *Server) HandleGetNetworkingAPIGroupRequest(w http.ResponseWriter, r *ht
 	response, err := s.h.GetNetworkingAPIGroup(ctx)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -974,7 +974,7 @@ func (s *Server) HandleGetNetworkingV1APIResourcesRequest(w http.ResponseWriter,
 	response, err := s.h.GetNetworkingV1APIResources(ctx)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -997,7 +997,7 @@ func (s *Server) HandleGetNodeAPIGroupRequest(w http.ResponseWriter, r *http.Req
 	response, err := s.h.GetNodeAPIGroup(ctx)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1020,7 +1020,7 @@ func (s *Server) HandleGetNodeV1APIResourcesRequest(w http.ResponseWriter, r *ht
 	response, err := s.h.GetNodeV1APIResources(ctx)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1043,7 +1043,7 @@ func (s *Server) HandleGetNodeV1alpha1APIResourcesRequest(w http.ResponseWriter,
 	response, err := s.h.GetNodeV1alpha1APIResources(ctx)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1066,7 +1066,7 @@ func (s *Server) HandleGetNodeV1beta1APIResourcesRequest(w http.ResponseWriter, 
 	response, err := s.h.GetNodeV1beta1APIResources(ctx)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1089,7 +1089,7 @@ func (s *Server) HandleGetPolicyAPIGroupRequest(w http.ResponseWriter, r *http.R
 	response, err := s.h.GetPolicyAPIGroup(ctx)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1112,7 +1112,7 @@ func (s *Server) HandleGetPolicyV1APIResourcesRequest(w http.ResponseWriter, r *
 	response, err := s.h.GetPolicyV1APIResources(ctx)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1135,7 +1135,7 @@ func (s *Server) HandleGetPolicyV1beta1APIResourcesRequest(w http.ResponseWriter
 	response, err := s.h.GetPolicyV1beta1APIResources(ctx)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1158,7 +1158,7 @@ func (s *Server) HandleGetRbacAuthorizationAPIGroupRequest(w http.ResponseWriter
 	response, err := s.h.GetRbacAuthorizationAPIGroup(ctx)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1181,7 +1181,7 @@ func (s *Server) HandleGetRbacAuthorizationV1APIResourcesRequest(w http.Response
 	response, err := s.h.GetRbacAuthorizationV1APIResources(ctx)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1204,7 +1204,7 @@ func (s *Server) HandleGetSchedulingAPIGroupRequest(w http.ResponseWriter, r *ht
 	response, err := s.h.GetSchedulingAPIGroup(ctx)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1227,7 +1227,7 @@ func (s *Server) HandleGetSchedulingV1APIResourcesRequest(w http.ResponseWriter,
 	response, err := s.h.GetSchedulingV1APIResources(ctx)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1250,7 +1250,7 @@ func (s *Server) HandleGetServiceAccountIssuerOpenIDConfigurationRequest(w http.
 	response, err := s.h.GetServiceAccountIssuerOpenIDConfiguration(ctx)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1273,7 +1273,7 @@ func (s *Server) HandleGetStorageAPIGroupRequest(w http.ResponseWriter, r *http.
 	response, err := s.h.GetStorageAPIGroup(ctx)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1296,7 +1296,7 @@ func (s *Server) HandleGetStorageV1APIResourcesRequest(w http.ResponseWriter, r 
 	response, err := s.h.GetStorageV1APIResources(ctx)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1319,7 +1319,7 @@ func (s *Server) HandleGetStorageV1alpha1APIResourcesRequest(w http.ResponseWrit
 	response, err := s.h.GetStorageV1alpha1APIResources(ctx)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1342,7 +1342,7 @@ func (s *Server) HandleGetStorageV1beta1APIResourcesRequest(w http.ResponseWrite
 	response, err := s.h.GetStorageV1beta1APIResources(ctx)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1371,7 +1371,7 @@ func (s *Server) HandleListAdmissionregistrationV1MutatingWebhookConfigurationRe
 	response, err := s.h.ListAdmissionregistrationV1MutatingWebhookConfiguration(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1400,7 +1400,7 @@ func (s *Server) HandleListAdmissionregistrationV1ValidatingWebhookConfiguration
 	response, err := s.h.ListAdmissionregistrationV1ValidatingWebhookConfiguration(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1429,7 +1429,7 @@ func (s *Server) HandleListApiextensionsV1CustomResourceDefinitionRequest(w http
 	response, err := s.h.ListApiextensionsV1CustomResourceDefinition(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1458,7 +1458,7 @@ func (s *Server) HandleListApiregistrationV1APIServiceRequest(w http.ResponseWri
 	response, err := s.h.ListApiregistrationV1APIService(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1487,7 +1487,7 @@ func (s *Server) HandleListAppsV1ControllerRevisionForAllNamespacesRequest(w htt
 	response, err := s.h.ListAppsV1ControllerRevisionForAllNamespaces(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1516,7 +1516,7 @@ func (s *Server) HandleListAppsV1DaemonSetForAllNamespacesRequest(w http.Respons
 	response, err := s.h.ListAppsV1DaemonSetForAllNamespaces(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1545,7 +1545,7 @@ func (s *Server) HandleListAppsV1DeploymentForAllNamespacesRequest(w http.Respon
 	response, err := s.h.ListAppsV1DeploymentForAllNamespaces(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1574,7 +1574,7 @@ func (s *Server) HandleListAppsV1NamespacedControllerRevisionRequest(w http.Resp
 	response, err := s.h.ListAppsV1NamespacedControllerRevision(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1603,7 +1603,7 @@ func (s *Server) HandleListAppsV1NamespacedDaemonSetRequest(w http.ResponseWrite
 	response, err := s.h.ListAppsV1NamespacedDaemonSet(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1632,7 +1632,7 @@ func (s *Server) HandleListAppsV1NamespacedDeploymentRequest(w http.ResponseWrit
 	response, err := s.h.ListAppsV1NamespacedDeployment(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1661,7 +1661,7 @@ func (s *Server) HandleListAppsV1NamespacedReplicaSetRequest(w http.ResponseWrit
 	response, err := s.h.ListAppsV1NamespacedReplicaSet(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1690,7 +1690,7 @@ func (s *Server) HandleListAppsV1NamespacedStatefulSetRequest(w http.ResponseWri
 	response, err := s.h.ListAppsV1NamespacedStatefulSet(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1719,7 +1719,7 @@ func (s *Server) HandleListAppsV1ReplicaSetForAllNamespacesRequest(w http.Respon
 	response, err := s.h.ListAppsV1ReplicaSetForAllNamespaces(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1748,7 +1748,7 @@ func (s *Server) HandleListAppsV1StatefulSetForAllNamespacesRequest(w http.Respo
 	response, err := s.h.ListAppsV1StatefulSetForAllNamespaces(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1777,7 +1777,7 @@ func (s *Server) HandleListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesR
 	response, err := s.h.ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1806,7 +1806,7 @@ func (s *Server) HandleListAutoscalingV1NamespacedHorizontalPodAutoscalerRequest
 	response, err := s.h.ListAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1835,7 +1835,7 @@ func (s *Server) HandleListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamesp
 	response, err := s.h.ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1864,7 +1864,7 @@ func (s *Server) HandleListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRe
 	response, err := s.h.ListAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1893,7 +1893,7 @@ func (s *Server) HandleListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamesp
 	response, err := s.h.ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1922,7 +1922,7 @@ func (s *Server) HandleListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRe
 	response, err := s.h.ListAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1951,7 +1951,7 @@ func (s *Server) HandleListBatchV1CronJobForAllNamespacesRequest(w http.Response
 	response, err := s.h.ListBatchV1CronJobForAllNamespaces(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1980,7 +1980,7 @@ func (s *Server) HandleListBatchV1JobForAllNamespacesRequest(w http.ResponseWrit
 	response, err := s.h.ListBatchV1JobForAllNamespaces(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2009,7 +2009,7 @@ func (s *Server) HandleListBatchV1NamespacedCronJobRequest(w http.ResponseWriter
 	response, err := s.h.ListBatchV1NamespacedCronJob(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2038,7 +2038,7 @@ func (s *Server) HandleListBatchV1NamespacedJobRequest(w http.ResponseWriter, r 
 	response, err := s.h.ListBatchV1NamespacedJob(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2067,7 +2067,7 @@ func (s *Server) HandleListBatchV1beta1CronJobForAllNamespacesRequest(w http.Res
 	response, err := s.h.ListBatchV1beta1CronJobForAllNamespaces(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2096,7 +2096,7 @@ func (s *Server) HandleListBatchV1beta1NamespacedCronJobRequest(w http.ResponseW
 	response, err := s.h.ListBatchV1beta1NamespacedCronJob(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2125,7 +2125,7 @@ func (s *Server) HandleListCertificatesV1CertificateSigningRequestRequest(w http
 	response, err := s.h.ListCertificatesV1CertificateSigningRequest(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2154,7 +2154,7 @@ func (s *Server) HandleListCoordinationV1LeaseForAllNamespacesRequest(w http.Res
 	response, err := s.h.ListCoordinationV1LeaseForAllNamespaces(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2183,7 +2183,7 @@ func (s *Server) HandleListCoordinationV1NamespacedLeaseRequest(w http.ResponseW
 	response, err := s.h.ListCoordinationV1NamespacedLease(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2212,7 +2212,7 @@ func (s *Server) HandleListCoreV1ComponentStatusRequest(w http.ResponseWriter, r
 	response, err := s.h.ListCoreV1ComponentStatus(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2241,7 +2241,7 @@ func (s *Server) HandleListCoreV1ConfigMapForAllNamespacesRequest(w http.Respons
 	response, err := s.h.ListCoreV1ConfigMapForAllNamespaces(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2270,7 +2270,7 @@ func (s *Server) HandleListCoreV1EndpointsForAllNamespacesRequest(w http.Respons
 	response, err := s.h.ListCoreV1EndpointsForAllNamespaces(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2299,7 +2299,7 @@ func (s *Server) HandleListCoreV1EventForAllNamespacesRequest(w http.ResponseWri
 	response, err := s.h.ListCoreV1EventForAllNamespaces(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2328,7 +2328,7 @@ func (s *Server) HandleListCoreV1LimitRangeForAllNamespacesRequest(w http.Respon
 	response, err := s.h.ListCoreV1LimitRangeForAllNamespaces(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2357,7 +2357,7 @@ func (s *Server) HandleListCoreV1NamespaceRequest(w http.ResponseWriter, r *http
 	response, err := s.h.ListCoreV1Namespace(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2386,7 +2386,7 @@ func (s *Server) HandleListCoreV1NamespacedConfigMapRequest(w http.ResponseWrite
 	response, err := s.h.ListCoreV1NamespacedConfigMap(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2415,7 +2415,7 @@ func (s *Server) HandleListCoreV1NamespacedEndpointsRequest(w http.ResponseWrite
 	response, err := s.h.ListCoreV1NamespacedEndpoints(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2444,7 +2444,7 @@ func (s *Server) HandleListCoreV1NamespacedEventRequest(w http.ResponseWriter, r
 	response, err := s.h.ListCoreV1NamespacedEvent(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2473,7 +2473,7 @@ func (s *Server) HandleListCoreV1NamespacedLimitRangeRequest(w http.ResponseWrit
 	response, err := s.h.ListCoreV1NamespacedLimitRange(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2502,7 +2502,7 @@ func (s *Server) HandleListCoreV1NamespacedPersistentVolumeClaimRequest(w http.R
 	response, err := s.h.ListCoreV1NamespacedPersistentVolumeClaim(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2531,7 +2531,7 @@ func (s *Server) HandleListCoreV1NamespacedPodRequest(w http.ResponseWriter, r *
 	response, err := s.h.ListCoreV1NamespacedPod(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2560,7 +2560,7 @@ func (s *Server) HandleListCoreV1NamespacedPodTemplateRequest(w http.ResponseWri
 	response, err := s.h.ListCoreV1NamespacedPodTemplate(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2589,7 +2589,7 @@ func (s *Server) HandleListCoreV1NamespacedReplicationControllerRequest(w http.R
 	response, err := s.h.ListCoreV1NamespacedReplicationController(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2618,7 +2618,7 @@ func (s *Server) HandleListCoreV1NamespacedResourceQuotaRequest(w http.ResponseW
 	response, err := s.h.ListCoreV1NamespacedResourceQuota(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2647,7 +2647,7 @@ func (s *Server) HandleListCoreV1NamespacedSecretRequest(w http.ResponseWriter, 
 	response, err := s.h.ListCoreV1NamespacedSecret(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2676,7 +2676,7 @@ func (s *Server) HandleListCoreV1NamespacedServiceRequest(w http.ResponseWriter,
 	response, err := s.h.ListCoreV1NamespacedService(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2705,7 +2705,7 @@ func (s *Server) HandleListCoreV1NamespacedServiceAccountRequest(w http.Response
 	response, err := s.h.ListCoreV1NamespacedServiceAccount(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2734,7 +2734,7 @@ func (s *Server) HandleListCoreV1NodeRequest(w http.ResponseWriter, r *http.Requ
 	response, err := s.h.ListCoreV1Node(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2763,7 +2763,7 @@ func (s *Server) HandleListCoreV1PersistentVolumeRequest(w http.ResponseWriter, 
 	response, err := s.h.ListCoreV1PersistentVolume(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2792,7 +2792,7 @@ func (s *Server) HandleListCoreV1PersistentVolumeClaimForAllNamespacesRequest(w 
 	response, err := s.h.ListCoreV1PersistentVolumeClaimForAllNamespaces(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2821,7 +2821,7 @@ func (s *Server) HandleListCoreV1PodForAllNamespacesRequest(w http.ResponseWrite
 	response, err := s.h.ListCoreV1PodForAllNamespaces(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2850,7 +2850,7 @@ func (s *Server) HandleListCoreV1PodTemplateForAllNamespacesRequest(w http.Respo
 	response, err := s.h.ListCoreV1PodTemplateForAllNamespaces(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2879,7 +2879,7 @@ func (s *Server) HandleListCoreV1ReplicationControllerForAllNamespacesRequest(w 
 	response, err := s.h.ListCoreV1ReplicationControllerForAllNamespaces(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2908,7 +2908,7 @@ func (s *Server) HandleListCoreV1ResourceQuotaForAllNamespacesRequest(w http.Res
 	response, err := s.h.ListCoreV1ResourceQuotaForAllNamespaces(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2937,7 +2937,7 @@ func (s *Server) HandleListCoreV1SecretForAllNamespacesRequest(w http.ResponseWr
 	response, err := s.h.ListCoreV1SecretForAllNamespaces(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2966,7 +2966,7 @@ func (s *Server) HandleListCoreV1ServiceAccountForAllNamespacesRequest(w http.Re
 	response, err := s.h.ListCoreV1ServiceAccountForAllNamespaces(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2995,7 +2995,7 @@ func (s *Server) HandleListCoreV1ServiceForAllNamespacesRequest(w http.ResponseW
 	response, err := s.h.ListCoreV1ServiceForAllNamespaces(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3024,7 +3024,7 @@ func (s *Server) HandleListDiscoveryV1EndpointSliceForAllNamespacesRequest(w htt
 	response, err := s.h.ListDiscoveryV1EndpointSliceForAllNamespaces(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3053,7 +3053,7 @@ func (s *Server) HandleListDiscoveryV1NamespacedEndpointSliceRequest(w http.Resp
 	response, err := s.h.ListDiscoveryV1NamespacedEndpointSlice(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3082,7 +3082,7 @@ func (s *Server) HandleListDiscoveryV1beta1EndpointSliceForAllNamespacesRequest(
 	response, err := s.h.ListDiscoveryV1beta1EndpointSliceForAllNamespaces(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3111,7 +3111,7 @@ func (s *Server) HandleListDiscoveryV1beta1NamespacedEndpointSliceRequest(w http
 	response, err := s.h.ListDiscoveryV1beta1NamespacedEndpointSlice(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3140,7 +3140,7 @@ func (s *Server) HandleListEventsV1EventForAllNamespacesRequest(w http.ResponseW
 	response, err := s.h.ListEventsV1EventForAllNamespaces(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3169,7 +3169,7 @@ func (s *Server) HandleListEventsV1NamespacedEventRequest(w http.ResponseWriter,
 	response, err := s.h.ListEventsV1NamespacedEvent(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3198,7 +3198,7 @@ func (s *Server) HandleListEventsV1beta1EventForAllNamespacesRequest(w http.Resp
 	response, err := s.h.ListEventsV1beta1EventForAllNamespaces(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3227,7 +3227,7 @@ func (s *Server) HandleListEventsV1beta1NamespacedEventRequest(w http.ResponseWr
 	response, err := s.h.ListEventsV1beta1NamespacedEvent(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3256,7 +3256,7 @@ func (s *Server) HandleListFlowcontrolApiserverV1beta1FlowSchemaRequest(w http.R
 	response, err := s.h.ListFlowcontrolApiserverV1beta1FlowSchema(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3285,7 +3285,7 @@ func (s *Server) HandleListFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 	response, err := s.h.ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3314,7 +3314,7 @@ func (s *Server) HandleListFlowcontrolApiserverV1beta2FlowSchemaRequest(w http.R
 	response, err := s.h.ListFlowcontrolApiserverV1beta2FlowSchema(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3343,7 +3343,7 @@ func (s *Server) HandleListFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 	response, err := s.h.ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3372,7 +3372,7 @@ func (s *Server) HandleListInternalApiserverV1alpha1StorageVersionRequest(w http
 	response, err := s.h.ListInternalApiserverV1alpha1StorageVersion(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3401,7 +3401,7 @@ func (s *Server) HandleListNetworkingV1IngressClassRequest(w http.ResponseWriter
 	response, err := s.h.ListNetworkingV1IngressClass(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3430,7 +3430,7 @@ func (s *Server) HandleListNetworkingV1IngressForAllNamespacesRequest(w http.Res
 	response, err := s.h.ListNetworkingV1IngressForAllNamespaces(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3459,7 +3459,7 @@ func (s *Server) HandleListNetworkingV1NamespacedIngressRequest(w http.ResponseW
 	response, err := s.h.ListNetworkingV1NamespacedIngress(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3488,7 +3488,7 @@ func (s *Server) HandleListNetworkingV1NamespacedNetworkPolicyRequest(w http.Res
 	response, err := s.h.ListNetworkingV1NamespacedNetworkPolicy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3517,7 +3517,7 @@ func (s *Server) HandleListNetworkingV1NetworkPolicyForAllNamespacesRequest(w ht
 	response, err := s.h.ListNetworkingV1NetworkPolicyForAllNamespaces(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3546,7 +3546,7 @@ func (s *Server) HandleListNodeV1RuntimeClassRequest(w http.ResponseWriter, r *h
 	response, err := s.h.ListNodeV1RuntimeClass(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3575,7 +3575,7 @@ func (s *Server) HandleListNodeV1alpha1RuntimeClassRequest(w http.ResponseWriter
 	response, err := s.h.ListNodeV1alpha1RuntimeClass(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3604,7 +3604,7 @@ func (s *Server) HandleListNodeV1beta1RuntimeClassRequest(w http.ResponseWriter,
 	response, err := s.h.ListNodeV1beta1RuntimeClass(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3633,7 +3633,7 @@ func (s *Server) HandleListPolicyV1NamespacedPodDisruptionBudgetRequest(w http.R
 	response, err := s.h.ListPolicyV1NamespacedPodDisruptionBudget(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3662,7 +3662,7 @@ func (s *Server) HandleListPolicyV1PodDisruptionBudgetForAllNamespacesRequest(w 
 	response, err := s.h.ListPolicyV1PodDisruptionBudgetForAllNamespaces(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3691,7 +3691,7 @@ func (s *Server) HandleListPolicyV1beta1NamespacedPodDisruptionBudgetRequest(w h
 	response, err := s.h.ListPolicyV1beta1NamespacedPodDisruptionBudget(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3720,7 +3720,7 @@ func (s *Server) HandleListPolicyV1beta1PodDisruptionBudgetForAllNamespacesReque
 	response, err := s.h.ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3749,7 +3749,7 @@ func (s *Server) HandleListPolicyV1beta1PodSecurityPolicyRequest(w http.Response
 	response, err := s.h.ListPolicyV1beta1PodSecurityPolicy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3778,7 +3778,7 @@ func (s *Server) HandleListRbacAuthorizationV1ClusterRoleRequest(w http.Response
 	response, err := s.h.ListRbacAuthorizationV1ClusterRole(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3807,7 +3807,7 @@ func (s *Server) HandleListRbacAuthorizationV1ClusterRoleBindingRequest(w http.R
 	response, err := s.h.ListRbacAuthorizationV1ClusterRoleBinding(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3836,7 +3836,7 @@ func (s *Server) HandleListRbacAuthorizationV1NamespacedRoleRequest(w http.Respo
 	response, err := s.h.ListRbacAuthorizationV1NamespacedRole(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3865,7 +3865,7 @@ func (s *Server) HandleListRbacAuthorizationV1NamespacedRoleBindingRequest(w htt
 	response, err := s.h.ListRbacAuthorizationV1NamespacedRoleBinding(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3894,7 +3894,7 @@ func (s *Server) HandleListRbacAuthorizationV1RoleBindingForAllNamespacesRequest
 	response, err := s.h.ListRbacAuthorizationV1RoleBindingForAllNamespaces(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3923,7 +3923,7 @@ func (s *Server) HandleListRbacAuthorizationV1RoleForAllNamespacesRequest(w http
 	response, err := s.h.ListRbacAuthorizationV1RoleForAllNamespaces(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3952,7 +3952,7 @@ func (s *Server) HandleListSchedulingV1PriorityClassRequest(w http.ResponseWrite
 	response, err := s.h.ListSchedulingV1PriorityClass(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3981,7 +3981,7 @@ func (s *Server) HandleListStorageV1CSIDriverRequest(w http.ResponseWriter, r *h
 	response, err := s.h.ListStorageV1CSIDriver(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4010,7 +4010,7 @@ func (s *Server) HandleListStorageV1CSINodeRequest(w http.ResponseWriter, r *htt
 	response, err := s.h.ListStorageV1CSINode(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4039,7 +4039,7 @@ func (s *Server) HandleListStorageV1StorageClassRequest(w http.ResponseWriter, r
 	response, err := s.h.ListStorageV1StorageClass(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4068,7 +4068,7 @@ func (s *Server) HandleListStorageV1VolumeAttachmentRequest(w http.ResponseWrite
 	response, err := s.h.ListStorageV1VolumeAttachment(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4097,7 +4097,7 @@ func (s *Server) HandleListStorageV1alpha1CSIStorageCapacityForAllNamespacesRequ
 	response, err := s.h.ListStorageV1alpha1CSIStorageCapacityForAllNamespaces(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4126,7 +4126,7 @@ func (s *Server) HandleListStorageV1alpha1NamespacedCSIStorageCapacityRequest(w 
 	response, err := s.h.ListStorageV1alpha1NamespacedCSIStorageCapacity(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4155,7 +4155,7 @@ func (s *Server) HandleListStorageV1beta1CSIStorageCapacityForAllNamespacesReque
 	response, err := s.h.ListStorageV1beta1CSIStorageCapacityForAllNamespaces(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4184,7 +4184,7 @@ func (s *Server) HandleListStorageV1beta1NamespacedCSIStorageCapacityRequest(w h
 	response, err := s.h.ListStorageV1beta1NamespacedCSIStorageCapacity(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4213,7 +4213,7 @@ func (s *Server) HandleLogFileHandlerRequest(w http.ResponseWriter, r *http.Requ
 	response, err := s.h.LogFileHandler(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4236,7 +4236,7 @@ func (s *Server) HandleLogFileListHandlerRequest(w http.ResponseWriter, r *http.
 	response, err := s.h.LogFileListHandler(ctx)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4265,7 +4265,7 @@ func (s *Server) HandleReadAdmissionregistrationV1MutatingWebhookConfigurationRe
 	response, err := s.h.ReadAdmissionregistrationV1MutatingWebhookConfiguration(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4294,7 +4294,7 @@ func (s *Server) HandleReadAdmissionregistrationV1ValidatingWebhookConfiguration
 	response, err := s.h.ReadAdmissionregistrationV1ValidatingWebhookConfiguration(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4323,7 +4323,7 @@ func (s *Server) HandleReadApiextensionsV1CustomResourceDefinitionRequest(w http
 	response, err := s.h.ReadApiextensionsV1CustomResourceDefinition(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4352,7 +4352,7 @@ func (s *Server) HandleReadApiextensionsV1CustomResourceDefinitionStatusRequest(
 	response, err := s.h.ReadApiextensionsV1CustomResourceDefinitionStatus(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4381,7 +4381,7 @@ func (s *Server) HandleReadApiregistrationV1APIServiceRequest(w http.ResponseWri
 	response, err := s.h.ReadApiregistrationV1APIService(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4410,7 +4410,7 @@ func (s *Server) HandleReadApiregistrationV1APIServiceStatusRequest(w http.Respo
 	response, err := s.h.ReadApiregistrationV1APIServiceStatus(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4439,7 +4439,7 @@ func (s *Server) HandleReadAppsV1NamespacedControllerRevisionRequest(w http.Resp
 	response, err := s.h.ReadAppsV1NamespacedControllerRevision(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4468,7 +4468,7 @@ func (s *Server) HandleReadAppsV1NamespacedDaemonSetRequest(w http.ResponseWrite
 	response, err := s.h.ReadAppsV1NamespacedDaemonSet(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4497,7 +4497,7 @@ func (s *Server) HandleReadAppsV1NamespacedDaemonSetStatusRequest(w http.Respons
 	response, err := s.h.ReadAppsV1NamespacedDaemonSetStatus(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4526,7 +4526,7 @@ func (s *Server) HandleReadAppsV1NamespacedDeploymentRequest(w http.ResponseWrit
 	response, err := s.h.ReadAppsV1NamespacedDeployment(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4555,7 +4555,7 @@ func (s *Server) HandleReadAppsV1NamespacedDeploymentScaleRequest(w http.Respons
 	response, err := s.h.ReadAppsV1NamespacedDeploymentScale(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4584,7 +4584,7 @@ func (s *Server) HandleReadAppsV1NamespacedDeploymentStatusRequest(w http.Respon
 	response, err := s.h.ReadAppsV1NamespacedDeploymentStatus(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4613,7 +4613,7 @@ func (s *Server) HandleReadAppsV1NamespacedReplicaSetRequest(w http.ResponseWrit
 	response, err := s.h.ReadAppsV1NamespacedReplicaSet(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4642,7 +4642,7 @@ func (s *Server) HandleReadAppsV1NamespacedReplicaSetScaleRequest(w http.Respons
 	response, err := s.h.ReadAppsV1NamespacedReplicaSetScale(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4671,7 +4671,7 @@ func (s *Server) HandleReadAppsV1NamespacedReplicaSetStatusRequest(w http.Respon
 	response, err := s.h.ReadAppsV1NamespacedReplicaSetStatus(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4700,7 +4700,7 @@ func (s *Server) HandleReadAppsV1NamespacedStatefulSetRequest(w http.ResponseWri
 	response, err := s.h.ReadAppsV1NamespacedStatefulSet(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4729,7 +4729,7 @@ func (s *Server) HandleReadAppsV1NamespacedStatefulSetScaleRequest(w http.Respon
 	response, err := s.h.ReadAppsV1NamespacedStatefulSetScale(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4758,7 +4758,7 @@ func (s *Server) HandleReadAppsV1NamespacedStatefulSetStatusRequest(w http.Respo
 	response, err := s.h.ReadAppsV1NamespacedStatefulSetStatus(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4787,7 +4787,7 @@ func (s *Server) HandleReadAutoscalingV1NamespacedHorizontalPodAutoscalerRequest
 	response, err := s.h.ReadAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4816,7 +4816,7 @@ func (s *Server) HandleReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusR
 	response, err := s.h.ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4845,7 +4845,7 @@ func (s *Server) HandleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRe
 	response, err := s.h.ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4874,7 +4874,7 @@ func (s *Server) HandleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerSt
 	response, err := s.h.ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4903,7 +4903,7 @@ func (s *Server) HandleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRe
 	response, err := s.h.ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4932,7 +4932,7 @@ func (s *Server) HandleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerSt
 	response, err := s.h.ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4961,7 +4961,7 @@ func (s *Server) HandleReadBatchV1NamespacedCronJobRequest(w http.ResponseWriter
 	response, err := s.h.ReadBatchV1NamespacedCronJob(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4990,7 +4990,7 @@ func (s *Server) HandleReadBatchV1NamespacedCronJobStatusRequest(w http.Response
 	response, err := s.h.ReadBatchV1NamespacedCronJobStatus(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5019,7 +5019,7 @@ func (s *Server) HandleReadBatchV1NamespacedJobRequest(w http.ResponseWriter, r 
 	response, err := s.h.ReadBatchV1NamespacedJob(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5048,7 +5048,7 @@ func (s *Server) HandleReadBatchV1NamespacedJobStatusRequest(w http.ResponseWrit
 	response, err := s.h.ReadBatchV1NamespacedJobStatus(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5077,7 +5077,7 @@ func (s *Server) HandleReadBatchV1beta1NamespacedCronJobRequest(w http.ResponseW
 	response, err := s.h.ReadBatchV1beta1NamespacedCronJob(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5106,7 +5106,7 @@ func (s *Server) HandleReadBatchV1beta1NamespacedCronJobStatusRequest(w http.Res
 	response, err := s.h.ReadBatchV1beta1NamespacedCronJobStatus(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5135,7 +5135,7 @@ func (s *Server) HandleReadCertificatesV1CertificateSigningRequestRequest(w http
 	response, err := s.h.ReadCertificatesV1CertificateSigningRequest(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5164,7 +5164,7 @@ func (s *Server) HandleReadCertificatesV1CertificateSigningRequestApprovalReques
 	response, err := s.h.ReadCertificatesV1CertificateSigningRequestApproval(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5193,7 +5193,7 @@ func (s *Server) HandleReadCertificatesV1CertificateSigningRequestStatusRequest(
 	response, err := s.h.ReadCertificatesV1CertificateSigningRequestStatus(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5222,7 +5222,7 @@ func (s *Server) HandleReadCoordinationV1NamespacedLeaseRequest(w http.ResponseW
 	response, err := s.h.ReadCoordinationV1NamespacedLease(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5251,7 +5251,7 @@ func (s *Server) HandleReadCoreV1ComponentStatusRequest(w http.ResponseWriter, r
 	response, err := s.h.ReadCoreV1ComponentStatus(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5280,7 +5280,7 @@ func (s *Server) HandleReadCoreV1NamespaceRequest(w http.ResponseWriter, r *http
 	response, err := s.h.ReadCoreV1Namespace(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5309,7 +5309,7 @@ func (s *Server) HandleReadCoreV1NamespaceStatusRequest(w http.ResponseWriter, r
 	response, err := s.h.ReadCoreV1NamespaceStatus(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5338,7 +5338,7 @@ func (s *Server) HandleReadCoreV1NamespacedConfigMapRequest(w http.ResponseWrite
 	response, err := s.h.ReadCoreV1NamespacedConfigMap(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5367,7 +5367,7 @@ func (s *Server) HandleReadCoreV1NamespacedEndpointsRequest(w http.ResponseWrite
 	response, err := s.h.ReadCoreV1NamespacedEndpoints(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5396,7 +5396,7 @@ func (s *Server) HandleReadCoreV1NamespacedEventRequest(w http.ResponseWriter, r
 	response, err := s.h.ReadCoreV1NamespacedEvent(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5425,7 +5425,7 @@ func (s *Server) HandleReadCoreV1NamespacedLimitRangeRequest(w http.ResponseWrit
 	response, err := s.h.ReadCoreV1NamespacedLimitRange(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5454,7 +5454,7 @@ func (s *Server) HandleReadCoreV1NamespacedPersistentVolumeClaimRequest(w http.R
 	response, err := s.h.ReadCoreV1NamespacedPersistentVolumeClaim(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5483,7 +5483,7 @@ func (s *Server) HandleReadCoreV1NamespacedPersistentVolumeClaimStatusRequest(w 
 	response, err := s.h.ReadCoreV1NamespacedPersistentVolumeClaimStatus(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5512,7 +5512,7 @@ func (s *Server) HandleReadCoreV1NamespacedPodRequest(w http.ResponseWriter, r *
 	response, err := s.h.ReadCoreV1NamespacedPod(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5541,7 +5541,7 @@ func (s *Server) HandleReadCoreV1NamespacedPodEphemeralcontainersRequest(w http.
 	response, err := s.h.ReadCoreV1NamespacedPodEphemeralcontainers(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5570,7 +5570,7 @@ func (s *Server) HandleReadCoreV1NamespacedPodLogRequest(w http.ResponseWriter, 
 	response, err := s.h.ReadCoreV1NamespacedPodLog(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5599,7 +5599,7 @@ func (s *Server) HandleReadCoreV1NamespacedPodStatusRequest(w http.ResponseWrite
 	response, err := s.h.ReadCoreV1NamespacedPodStatus(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5628,7 +5628,7 @@ func (s *Server) HandleReadCoreV1NamespacedPodTemplateRequest(w http.ResponseWri
 	response, err := s.h.ReadCoreV1NamespacedPodTemplate(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5657,7 +5657,7 @@ func (s *Server) HandleReadCoreV1NamespacedReplicationControllerRequest(w http.R
 	response, err := s.h.ReadCoreV1NamespacedReplicationController(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5686,7 +5686,7 @@ func (s *Server) HandleReadCoreV1NamespacedReplicationControllerScaleRequest(w h
 	response, err := s.h.ReadCoreV1NamespacedReplicationControllerScale(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5715,7 +5715,7 @@ func (s *Server) HandleReadCoreV1NamespacedReplicationControllerStatusRequest(w 
 	response, err := s.h.ReadCoreV1NamespacedReplicationControllerStatus(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5744,7 +5744,7 @@ func (s *Server) HandleReadCoreV1NamespacedResourceQuotaRequest(w http.ResponseW
 	response, err := s.h.ReadCoreV1NamespacedResourceQuota(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5773,7 +5773,7 @@ func (s *Server) HandleReadCoreV1NamespacedResourceQuotaStatusRequest(w http.Res
 	response, err := s.h.ReadCoreV1NamespacedResourceQuotaStatus(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5802,7 +5802,7 @@ func (s *Server) HandleReadCoreV1NamespacedSecretRequest(w http.ResponseWriter, 
 	response, err := s.h.ReadCoreV1NamespacedSecret(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5831,7 +5831,7 @@ func (s *Server) HandleReadCoreV1NamespacedServiceRequest(w http.ResponseWriter,
 	response, err := s.h.ReadCoreV1NamespacedService(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5860,7 +5860,7 @@ func (s *Server) HandleReadCoreV1NamespacedServiceAccountRequest(w http.Response
 	response, err := s.h.ReadCoreV1NamespacedServiceAccount(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5889,7 +5889,7 @@ func (s *Server) HandleReadCoreV1NamespacedServiceStatusRequest(w http.ResponseW
 	response, err := s.h.ReadCoreV1NamespacedServiceStatus(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5918,7 +5918,7 @@ func (s *Server) HandleReadCoreV1NodeRequest(w http.ResponseWriter, r *http.Requ
 	response, err := s.h.ReadCoreV1Node(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5947,7 +5947,7 @@ func (s *Server) HandleReadCoreV1NodeStatusRequest(w http.ResponseWriter, r *htt
 	response, err := s.h.ReadCoreV1NodeStatus(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5976,7 +5976,7 @@ func (s *Server) HandleReadCoreV1PersistentVolumeRequest(w http.ResponseWriter, 
 	response, err := s.h.ReadCoreV1PersistentVolume(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6005,7 +6005,7 @@ func (s *Server) HandleReadCoreV1PersistentVolumeStatusRequest(w http.ResponseWr
 	response, err := s.h.ReadCoreV1PersistentVolumeStatus(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6034,7 +6034,7 @@ func (s *Server) HandleReadDiscoveryV1NamespacedEndpointSliceRequest(w http.Resp
 	response, err := s.h.ReadDiscoveryV1NamespacedEndpointSlice(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6063,7 +6063,7 @@ func (s *Server) HandleReadDiscoveryV1beta1NamespacedEndpointSliceRequest(w http
 	response, err := s.h.ReadDiscoveryV1beta1NamespacedEndpointSlice(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6092,7 +6092,7 @@ func (s *Server) HandleReadEventsV1NamespacedEventRequest(w http.ResponseWriter,
 	response, err := s.h.ReadEventsV1NamespacedEvent(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6121,7 +6121,7 @@ func (s *Server) HandleReadEventsV1beta1NamespacedEventRequest(w http.ResponseWr
 	response, err := s.h.ReadEventsV1beta1NamespacedEvent(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6150,7 +6150,7 @@ func (s *Server) HandleReadFlowcontrolApiserverV1beta1FlowSchemaRequest(w http.R
 	response, err := s.h.ReadFlowcontrolApiserverV1beta1FlowSchema(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6179,7 +6179,7 @@ func (s *Server) HandleReadFlowcontrolApiserverV1beta1FlowSchemaStatusRequest(w 
 	response, err := s.h.ReadFlowcontrolApiserverV1beta1FlowSchemaStatus(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6208,7 +6208,7 @@ func (s *Server) HandleReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 	response, err := s.h.ReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6237,7 +6237,7 @@ func (s *Server) HandleReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 	response, err := s.h.ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6266,7 +6266,7 @@ func (s *Server) HandleReadFlowcontrolApiserverV1beta2FlowSchemaRequest(w http.R
 	response, err := s.h.ReadFlowcontrolApiserverV1beta2FlowSchema(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6295,7 +6295,7 @@ func (s *Server) HandleReadFlowcontrolApiserverV1beta2FlowSchemaStatusRequest(w 
 	response, err := s.h.ReadFlowcontrolApiserverV1beta2FlowSchemaStatus(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6324,7 +6324,7 @@ func (s *Server) HandleReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 	response, err := s.h.ReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6353,7 +6353,7 @@ func (s *Server) HandleReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 	response, err := s.h.ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6382,7 +6382,7 @@ func (s *Server) HandleReadInternalApiserverV1alpha1StorageVersionRequest(w http
 	response, err := s.h.ReadInternalApiserverV1alpha1StorageVersion(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6411,7 +6411,7 @@ func (s *Server) HandleReadInternalApiserverV1alpha1StorageVersionStatusRequest(
 	response, err := s.h.ReadInternalApiserverV1alpha1StorageVersionStatus(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6440,7 +6440,7 @@ func (s *Server) HandleReadNetworkingV1IngressClassRequest(w http.ResponseWriter
 	response, err := s.h.ReadNetworkingV1IngressClass(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6469,7 +6469,7 @@ func (s *Server) HandleReadNetworkingV1NamespacedIngressRequest(w http.ResponseW
 	response, err := s.h.ReadNetworkingV1NamespacedIngress(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6498,7 +6498,7 @@ func (s *Server) HandleReadNetworkingV1NamespacedIngressStatusRequest(w http.Res
 	response, err := s.h.ReadNetworkingV1NamespacedIngressStatus(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6527,7 +6527,7 @@ func (s *Server) HandleReadNetworkingV1NamespacedNetworkPolicyRequest(w http.Res
 	response, err := s.h.ReadNetworkingV1NamespacedNetworkPolicy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6556,7 +6556,7 @@ func (s *Server) HandleReadNodeV1RuntimeClassRequest(w http.ResponseWriter, r *h
 	response, err := s.h.ReadNodeV1RuntimeClass(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6585,7 +6585,7 @@ func (s *Server) HandleReadNodeV1alpha1RuntimeClassRequest(w http.ResponseWriter
 	response, err := s.h.ReadNodeV1alpha1RuntimeClass(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6614,7 +6614,7 @@ func (s *Server) HandleReadNodeV1beta1RuntimeClassRequest(w http.ResponseWriter,
 	response, err := s.h.ReadNodeV1beta1RuntimeClass(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6643,7 +6643,7 @@ func (s *Server) HandleReadPolicyV1NamespacedPodDisruptionBudgetRequest(w http.R
 	response, err := s.h.ReadPolicyV1NamespacedPodDisruptionBudget(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6672,7 +6672,7 @@ func (s *Server) HandleReadPolicyV1NamespacedPodDisruptionBudgetStatusRequest(w 
 	response, err := s.h.ReadPolicyV1NamespacedPodDisruptionBudgetStatus(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6701,7 +6701,7 @@ func (s *Server) HandleReadPolicyV1beta1NamespacedPodDisruptionBudgetRequest(w h
 	response, err := s.h.ReadPolicyV1beta1NamespacedPodDisruptionBudget(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6730,7 +6730,7 @@ func (s *Server) HandleReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusReque
 	response, err := s.h.ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6759,7 +6759,7 @@ func (s *Server) HandleReadPolicyV1beta1PodSecurityPolicyRequest(w http.Response
 	response, err := s.h.ReadPolicyV1beta1PodSecurityPolicy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6788,7 +6788,7 @@ func (s *Server) HandleReadRbacAuthorizationV1ClusterRoleRequest(w http.Response
 	response, err := s.h.ReadRbacAuthorizationV1ClusterRole(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6817,7 +6817,7 @@ func (s *Server) HandleReadRbacAuthorizationV1ClusterRoleBindingRequest(w http.R
 	response, err := s.h.ReadRbacAuthorizationV1ClusterRoleBinding(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6846,7 +6846,7 @@ func (s *Server) HandleReadRbacAuthorizationV1NamespacedRoleRequest(w http.Respo
 	response, err := s.h.ReadRbacAuthorizationV1NamespacedRole(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6875,7 +6875,7 @@ func (s *Server) HandleReadRbacAuthorizationV1NamespacedRoleBindingRequest(w htt
 	response, err := s.h.ReadRbacAuthorizationV1NamespacedRoleBinding(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6904,7 +6904,7 @@ func (s *Server) HandleReadSchedulingV1PriorityClassRequest(w http.ResponseWrite
 	response, err := s.h.ReadSchedulingV1PriorityClass(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6933,7 +6933,7 @@ func (s *Server) HandleReadStorageV1CSIDriverRequest(w http.ResponseWriter, r *h
 	response, err := s.h.ReadStorageV1CSIDriver(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6962,7 +6962,7 @@ func (s *Server) HandleReadStorageV1CSINodeRequest(w http.ResponseWriter, r *htt
 	response, err := s.h.ReadStorageV1CSINode(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6991,7 +6991,7 @@ func (s *Server) HandleReadStorageV1StorageClassRequest(w http.ResponseWriter, r
 	response, err := s.h.ReadStorageV1StorageClass(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7020,7 +7020,7 @@ func (s *Server) HandleReadStorageV1VolumeAttachmentRequest(w http.ResponseWrite
 	response, err := s.h.ReadStorageV1VolumeAttachment(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7049,7 +7049,7 @@ func (s *Server) HandleReadStorageV1VolumeAttachmentStatusRequest(w http.Respons
 	response, err := s.h.ReadStorageV1VolumeAttachmentStatus(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7078,7 +7078,7 @@ func (s *Server) HandleReadStorageV1alpha1NamespacedCSIStorageCapacityRequest(w 
 	response, err := s.h.ReadStorageV1alpha1NamespacedCSIStorageCapacity(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7107,7 +7107,7 @@ func (s *Server) HandleReadStorageV1beta1NamespacedCSIStorageCapacityRequest(w h
 	response, err := s.h.ReadStorageV1beta1NamespacedCSIStorageCapacity(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7136,7 +7136,7 @@ func (s *Server) HandleWatchAdmissionregistrationV1MutatingWebhookConfigurationR
 	response, err := s.h.WatchAdmissionregistrationV1MutatingWebhookConfiguration(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7165,7 +7165,7 @@ func (s *Server) HandleWatchAdmissionregistrationV1MutatingWebhookConfigurationL
 	response, err := s.h.WatchAdmissionregistrationV1MutatingWebhookConfigurationList(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7194,7 +7194,7 @@ func (s *Server) HandleWatchAdmissionregistrationV1ValidatingWebhookConfiguratio
 	response, err := s.h.WatchAdmissionregistrationV1ValidatingWebhookConfiguration(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7223,7 +7223,7 @@ func (s *Server) HandleWatchAdmissionregistrationV1ValidatingWebhookConfiguratio
 	response, err := s.h.WatchAdmissionregistrationV1ValidatingWebhookConfigurationList(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7252,7 +7252,7 @@ func (s *Server) HandleWatchApiextensionsV1CustomResourceDefinitionRequest(w htt
 	response, err := s.h.WatchApiextensionsV1CustomResourceDefinition(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7281,7 +7281,7 @@ func (s *Server) HandleWatchApiextensionsV1CustomResourceDefinitionListRequest(w
 	response, err := s.h.WatchApiextensionsV1CustomResourceDefinitionList(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7310,7 +7310,7 @@ func (s *Server) HandleWatchApiregistrationV1APIServiceRequest(w http.ResponseWr
 	response, err := s.h.WatchApiregistrationV1APIService(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7339,7 +7339,7 @@ func (s *Server) HandleWatchApiregistrationV1APIServiceListRequest(w http.Respon
 	response, err := s.h.WatchApiregistrationV1APIServiceList(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7368,7 +7368,7 @@ func (s *Server) HandleWatchAppsV1ControllerRevisionListForAllNamespacesRequest(
 	response, err := s.h.WatchAppsV1ControllerRevisionListForAllNamespaces(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7397,7 +7397,7 @@ func (s *Server) HandleWatchAppsV1DaemonSetListForAllNamespacesRequest(w http.Re
 	response, err := s.h.WatchAppsV1DaemonSetListForAllNamespaces(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7426,7 +7426,7 @@ func (s *Server) HandleWatchAppsV1DeploymentListForAllNamespacesRequest(w http.R
 	response, err := s.h.WatchAppsV1DeploymentListForAllNamespaces(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7455,7 +7455,7 @@ func (s *Server) HandleWatchAppsV1NamespacedControllerRevisionRequest(w http.Res
 	response, err := s.h.WatchAppsV1NamespacedControllerRevision(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7484,7 +7484,7 @@ func (s *Server) HandleWatchAppsV1NamespacedControllerRevisionListRequest(w http
 	response, err := s.h.WatchAppsV1NamespacedControllerRevisionList(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7513,7 +7513,7 @@ func (s *Server) HandleWatchAppsV1NamespacedDaemonSetRequest(w http.ResponseWrit
 	response, err := s.h.WatchAppsV1NamespacedDaemonSet(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7542,7 +7542,7 @@ func (s *Server) HandleWatchAppsV1NamespacedDaemonSetListRequest(w http.Response
 	response, err := s.h.WatchAppsV1NamespacedDaemonSetList(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7571,7 +7571,7 @@ func (s *Server) HandleWatchAppsV1NamespacedDeploymentRequest(w http.ResponseWri
 	response, err := s.h.WatchAppsV1NamespacedDeployment(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7600,7 +7600,7 @@ func (s *Server) HandleWatchAppsV1NamespacedDeploymentListRequest(w http.Respons
 	response, err := s.h.WatchAppsV1NamespacedDeploymentList(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7629,7 +7629,7 @@ func (s *Server) HandleWatchAppsV1NamespacedReplicaSetRequest(w http.ResponseWri
 	response, err := s.h.WatchAppsV1NamespacedReplicaSet(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7658,7 +7658,7 @@ func (s *Server) HandleWatchAppsV1NamespacedReplicaSetListRequest(w http.Respons
 	response, err := s.h.WatchAppsV1NamespacedReplicaSetList(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7687,7 +7687,7 @@ func (s *Server) HandleWatchAppsV1NamespacedStatefulSetRequest(w http.ResponseWr
 	response, err := s.h.WatchAppsV1NamespacedStatefulSet(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7716,7 +7716,7 @@ func (s *Server) HandleWatchAppsV1NamespacedStatefulSetListRequest(w http.Respon
 	response, err := s.h.WatchAppsV1NamespacedStatefulSetList(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7745,7 +7745,7 @@ func (s *Server) HandleWatchAppsV1ReplicaSetListForAllNamespacesRequest(w http.R
 	response, err := s.h.WatchAppsV1ReplicaSetListForAllNamespaces(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7774,7 +7774,7 @@ func (s *Server) HandleWatchAppsV1StatefulSetListForAllNamespacesRequest(w http.
 	response, err := s.h.WatchAppsV1StatefulSetListForAllNamespaces(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7803,7 +7803,7 @@ func (s *Server) HandleWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamesp
 	response, err := s.h.WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7832,7 +7832,7 @@ func (s *Server) HandleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerReques
 	response, err := s.h.WatchAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7861,7 +7861,7 @@ func (s *Server) HandleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRe
 	response, err := s.h.WatchAutoscalingV1NamespacedHorizontalPodAutoscalerList(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7890,7 +7890,7 @@ func (s *Server) HandleWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllN
 	response, err := s.h.WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7919,7 +7919,7 @@ func (s *Server) HandleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerR
 	response, err := s.h.WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7948,7 +7948,7 @@ func (s *Server) HandleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerL
 	response, err := s.h.WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7977,7 +7977,7 @@ func (s *Server) HandleWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllN
 	response, err := s.h.WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8006,7 +8006,7 @@ func (s *Server) HandleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerR
 	response, err := s.h.WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8035,7 +8035,7 @@ func (s *Server) HandleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerL
 	response, err := s.h.WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8064,7 +8064,7 @@ func (s *Server) HandleWatchBatchV1CronJobListForAllNamespacesRequest(w http.Res
 	response, err := s.h.WatchBatchV1CronJobListForAllNamespaces(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8093,7 +8093,7 @@ func (s *Server) HandleWatchBatchV1JobListForAllNamespacesRequest(w http.Respons
 	response, err := s.h.WatchBatchV1JobListForAllNamespaces(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8122,7 +8122,7 @@ func (s *Server) HandleWatchBatchV1NamespacedCronJobRequest(w http.ResponseWrite
 	response, err := s.h.WatchBatchV1NamespacedCronJob(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8151,7 +8151,7 @@ func (s *Server) HandleWatchBatchV1NamespacedCronJobListRequest(w http.ResponseW
 	response, err := s.h.WatchBatchV1NamespacedCronJobList(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8180,7 +8180,7 @@ func (s *Server) HandleWatchBatchV1NamespacedJobRequest(w http.ResponseWriter, r
 	response, err := s.h.WatchBatchV1NamespacedJob(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8209,7 +8209,7 @@ func (s *Server) HandleWatchBatchV1NamespacedJobListRequest(w http.ResponseWrite
 	response, err := s.h.WatchBatchV1NamespacedJobList(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8238,7 +8238,7 @@ func (s *Server) HandleWatchBatchV1beta1CronJobListForAllNamespacesRequest(w htt
 	response, err := s.h.WatchBatchV1beta1CronJobListForAllNamespaces(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8267,7 +8267,7 @@ func (s *Server) HandleWatchBatchV1beta1NamespacedCronJobRequest(w http.Response
 	response, err := s.h.WatchBatchV1beta1NamespacedCronJob(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8296,7 +8296,7 @@ func (s *Server) HandleWatchBatchV1beta1NamespacedCronJobListRequest(w http.Resp
 	response, err := s.h.WatchBatchV1beta1NamespacedCronJobList(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8325,7 +8325,7 @@ func (s *Server) HandleWatchCertificatesV1CertificateSigningRequestRequest(w htt
 	response, err := s.h.WatchCertificatesV1CertificateSigningRequest(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8354,7 +8354,7 @@ func (s *Server) HandleWatchCertificatesV1CertificateSigningRequestListRequest(w
 	response, err := s.h.WatchCertificatesV1CertificateSigningRequestList(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8383,7 +8383,7 @@ func (s *Server) HandleWatchCoordinationV1LeaseListForAllNamespacesRequest(w htt
 	response, err := s.h.WatchCoordinationV1LeaseListForAllNamespaces(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8412,7 +8412,7 @@ func (s *Server) HandleWatchCoordinationV1NamespacedLeaseRequest(w http.Response
 	response, err := s.h.WatchCoordinationV1NamespacedLease(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8441,7 +8441,7 @@ func (s *Server) HandleWatchCoordinationV1NamespacedLeaseListRequest(w http.Resp
 	response, err := s.h.WatchCoordinationV1NamespacedLeaseList(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8470,7 +8470,7 @@ func (s *Server) HandleWatchCoreV1ConfigMapListForAllNamespacesRequest(w http.Re
 	response, err := s.h.WatchCoreV1ConfigMapListForAllNamespaces(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8499,7 +8499,7 @@ func (s *Server) HandleWatchCoreV1EndpointsListForAllNamespacesRequest(w http.Re
 	response, err := s.h.WatchCoreV1EndpointsListForAllNamespaces(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8528,7 +8528,7 @@ func (s *Server) HandleWatchCoreV1EventListForAllNamespacesRequest(w http.Respon
 	response, err := s.h.WatchCoreV1EventListForAllNamespaces(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8557,7 +8557,7 @@ func (s *Server) HandleWatchCoreV1LimitRangeListForAllNamespacesRequest(w http.R
 	response, err := s.h.WatchCoreV1LimitRangeListForAllNamespaces(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8586,7 +8586,7 @@ func (s *Server) HandleWatchCoreV1NamespaceRequest(w http.ResponseWriter, r *htt
 	response, err := s.h.WatchCoreV1Namespace(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8615,7 +8615,7 @@ func (s *Server) HandleWatchCoreV1NamespaceListRequest(w http.ResponseWriter, r 
 	response, err := s.h.WatchCoreV1NamespaceList(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8644,7 +8644,7 @@ func (s *Server) HandleWatchCoreV1NamespacedConfigMapRequest(w http.ResponseWrit
 	response, err := s.h.WatchCoreV1NamespacedConfigMap(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8673,7 +8673,7 @@ func (s *Server) HandleWatchCoreV1NamespacedConfigMapListRequest(w http.Response
 	response, err := s.h.WatchCoreV1NamespacedConfigMapList(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8702,7 +8702,7 @@ func (s *Server) HandleWatchCoreV1NamespacedEndpointsRequest(w http.ResponseWrit
 	response, err := s.h.WatchCoreV1NamespacedEndpoints(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8731,7 +8731,7 @@ func (s *Server) HandleWatchCoreV1NamespacedEndpointsListRequest(w http.Response
 	response, err := s.h.WatchCoreV1NamespacedEndpointsList(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8760,7 +8760,7 @@ func (s *Server) HandleWatchCoreV1NamespacedEventRequest(w http.ResponseWriter, 
 	response, err := s.h.WatchCoreV1NamespacedEvent(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8789,7 +8789,7 @@ func (s *Server) HandleWatchCoreV1NamespacedEventListRequest(w http.ResponseWrit
 	response, err := s.h.WatchCoreV1NamespacedEventList(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8818,7 +8818,7 @@ func (s *Server) HandleWatchCoreV1NamespacedLimitRangeRequest(w http.ResponseWri
 	response, err := s.h.WatchCoreV1NamespacedLimitRange(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8847,7 +8847,7 @@ func (s *Server) HandleWatchCoreV1NamespacedLimitRangeListRequest(w http.Respons
 	response, err := s.h.WatchCoreV1NamespacedLimitRangeList(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8876,7 +8876,7 @@ func (s *Server) HandleWatchCoreV1NamespacedPersistentVolumeClaimRequest(w http.
 	response, err := s.h.WatchCoreV1NamespacedPersistentVolumeClaim(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8905,7 +8905,7 @@ func (s *Server) HandleWatchCoreV1NamespacedPersistentVolumeClaimListRequest(w h
 	response, err := s.h.WatchCoreV1NamespacedPersistentVolumeClaimList(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8934,7 +8934,7 @@ func (s *Server) HandleWatchCoreV1NamespacedPodRequest(w http.ResponseWriter, r 
 	response, err := s.h.WatchCoreV1NamespacedPod(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8963,7 +8963,7 @@ func (s *Server) HandleWatchCoreV1NamespacedPodListRequest(w http.ResponseWriter
 	response, err := s.h.WatchCoreV1NamespacedPodList(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8992,7 +8992,7 @@ func (s *Server) HandleWatchCoreV1NamespacedPodTemplateRequest(w http.ResponseWr
 	response, err := s.h.WatchCoreV1NamespacedPodTemplate(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9021,7 +9021,7 @@ func (s *Server) HandleWatchCoreV1NamespacedPodTemplateListRequest(w http.Respon
 	response, err := s.h.WatchCoreV1NamespacedPodTemplateList(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9050,7 +9050,7 @@ func (s *Server) HandleWatchCoreV1NamespacedReplicationControllerRequest(w http.
 	response, err := s.h.WatchCoreV1NamespacedReplicationController(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9079,7 +9079,7 @@ func (s *Server) HandleWatchCoreV1NamespacedReplicationControllerListRequest(w h
 	response, err := s.h.WatchCoreV1NamespacedReplicationControllerList(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9108,7 +9108,7 @@ func (s *Server) HandleWatchCoreV1NamespacedResourceQuotaRequest(w http.Response
 	response, err := s.h.WatchCoreV1NamespacedResourceQuota(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9137,7 +9137,7 @@ func (s *Server) HandleWatchCoreV1NamespacedResourceQuotaListRequest(w http.Resp
 	response, err := s.h.WatchCoreV1NamespacedResourceQuotaList(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9166,7 +9166,7 @@ func (s *Server) HandleWatchCoreV1NamespacedSecretRequest(w http.ResponseWriter,
 	response, err := s.h.WatchCoreV1NamespacedSecret(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9195,7 +9195,7 @@ func (s *Server) HandleWatchCoreV1NamespacedSecretListRequest(w http.ResponseWri
 	response, err := s.h.WatchCoreV1NamespacedSecretList(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9224,7 +9224,7 @@ func (s *Server) HandleWatchCoreV1NamespacedServiceRequest(w http.ResponseWriter
 	response, err := s.h.WatchCoreV1NamespacedService(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9253,7 +9253,7 @@ func (s *Server) HandleWatchCoreV1NamespacedServiceAccountRequest(w http.Respons
 	response, err := s.h.WatchCoreV1NamespacedServiceAccount(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9282,7 +9282,7 @@ func (s *Server) HandleWatchCoreV1NamespacedServiceAccountListRequest(w http.Res
 	response, err := s.h.WatchCoreV1NamespacedServiceAccountList(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9311,7 +9311,7 @@ func (s *Server) HandleWatchCoreV1NamespacedServiceListRequest(w http.ResponseWr
 	response, err := s.h.WatchCoreV1NamespacedServiceList(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9340,7 +9340,7 @@ func (s *Server) HandleWatchCoreV1NodeRequest(w http.ResponseWriter, r *http.Req
 	response, err := s.h.WatchCoreV1Node(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9369,7 +9369,7 @@ func (s *Server) HandleWatchCoreV1NodeListRequest(w http.ResponseWriter, r *http
 	response, err := s.h.WatchCoreV1NodeList(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9398,7 +9398,7 @@ func (s *Server) HandleWatchCoreV1PersistentVolumeRequest(w http.ResponseWriter,
 	response, err := s.h.WatchCoreV1PersistentVolume(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9427,7 +9427,7 @@ func (s *Server) HandleWatchCoreV1PersistentVolumeClaimListForAllNamespacesReque
 	response, err := s.h.WatchCoreV1PersistentVolumeClaimListForAllNamespaces(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9456,7 +9456,7 @@ func (s *Server) HandleWatchCoreV1PersistentVolumeListRequest(w http.ResponseWri
 	response, err := s.h.WatchCoreV1PersistentVolumeList(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9485,7 +9485,7 @@ func (s *Server) HandleWatchCoreV1PodListForAllNamespacesRequest(w http.Response
 	response, err := s.h.WatchCoreV1PodListForAllNamespaces(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9514,7 +9514,7 @@ func (s *Server) HandleWatchCoreV1PodTemplateListForAllNamespacesRequest(w http.
 	response, err := s.h.WatchCoreV1PodTemplateListForAllNamespaces(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9543,7 +9543,7 @@ func (s *Server) HandleWatchCoreV1ReplicationControllerListForAllNamespacesReque
 	response, err := s.h.WatchCoreV1ReplicationControllerListForAllNamespaces(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9572,7 +9572,7 @@ func (s *Server) HandleWatchCoreV1ResourceQuotaListForAllNamespacesRequest(w htt
 	response, err := s.h.WatchCoreV1ResourceQuotaListForAllNamespaces(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9601,7 +9601,7 @@ func (s *Server) HandleWatchCoreV1SecretListForAllNamespacesRequest(w http.Respo
 	response, err := s.h.WatchCoreV1SecretListForAllNamespaces(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9630,7 +9630,7 @@ func (s *Server) HandleWatchCoreV1ServiceAccountListForAllNamespacesRequest(w ht
 	response, err := s.h.WatchCoreV1ServiceAccountListForAllNamespaces(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9659,7 +9659,7 @@ func (s *Server) HandleWatchCoreV1ServiceListForAllNamespacesRequest(w http.Resp
 	response, err := s.h.WatchCoreV1ServiceListForAllNamespaces(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9688,7 +9688,7 @@ func (s *Server) HandleWatchDiscoveryV1EndpointSliceListForAllNamespacesRequest(
 	response, err := s.h.WatchDiscoveryV1EndpointSliceListForAllNamespaces(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9717,7 +9717,7 @@ func (s *Server) HandleWatchDiscoveryV1NamespacedEndpointSliceRequest(w http.Res
 	response, err := s.h.WatchDiscoveryV1NamespacedEndpointSlice(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9746,7 +9746,7 @@ func (s *Server) HandleWatchDiscoveryV1NamespacedEndpointSliceListRequest(w http
 	response, err := s.h.WatchDiscoveryV1NamespacedEndpointSliceList(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9775,7 +9775,7 @@ func (s *Server) HandleWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesReq
 	response, err := s.h.WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9804,7 +9804,7 @@ func (s *Server) HandleWatchDiscoveryV1beta1NamespacedEndpointSliceRequest(w htt
 	response, err := s.h.WatchDiscoveryV1beta1NamespacedEndpointSlice(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9833,7 +9833,7 @@ func (s *Server) HandleWatchDiscoveryV1beta1NamespacedEndpointSliceListRequest(w
 	response, err := s.h.WatchDiscoveryV1beta1NamespacedEndpointSliceList(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9862,7 +9862,7 @@ func (s *Server) HandleWatchEventsV1EventListForAllNamespacesRequest(w http.Resp
 	response, err := s.h.WatchEventsV1EventListForAllNamespaces(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9891,7 +9891,7 @@ func (s *Server) HandleWatchEventsV1NamespacedEventRequest(w http.ResponseWriter
 	response, err := s.h.WatchEventsV1NamespacedEvent(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9920,7 +9920,7 @@ func (s *Server) HandleWatchEventsV1NamespacedEventListRequest(w http.ResponseWr
 	response, err := s.h.WatchEventsV1NamespacedEventList(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9949,7 +9949,7 @@ func (s *Server) HandleWatchEventsV1beta1EventListForAllNamespacesRequest(w http
 	response, err := s.h.WatchEventsV1beta1EventListForAllNamespaces(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9978,7 +9978,7 @@ func (s *Server) HandleWatchEventsV1beta1NamespacedEventRequest(w http.ResponseW
 	response, err := s.h.WatchEventsV1beta1NamespacedEvent(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10007,7 +10007,7 @@ func (s *Server) HandleWatchEventsV1beta1NamespacedEventListRequest(w http.Respo
 	response, err := s.h.WatchEventsV1beta1NamespacedEventList(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10036,7 +10036,7 @@ func (s *Server) HandleWatchFlowcontrolApiserverV1beta1FlowSchemaRequest(w http.
 	response, err := s.h.WatchFlowcontrolApiserverV1beta1FlowSchema(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10065,7 +10065,7 @@ func (s *Server) HandleWatchFlowcontrolApiserverV1beta1FlowSchemaListRequest(w h
 	response, err := s.h.WatchFlowcontrolApiserverV1beta1FlowSchemaList(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10094,7 +10094,7 @@ func (s *Server) HandleWatchFlowcontrolApiserverV1beta1PriorityLevelConfiguratio
 	response, err := s.h.WatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10123,7 +10123,7 @@ func (s *Server) HandleWatchFlowcontrolApiserverV1beta1PriorityLevelConfiguratio
 	response, err := s.h.WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10152,7 +10152,7 @@ func (s *Server) HandleWatchFlowcontrolApiserverV1beta2FlowSchemaRequest(w http.
 	response, err := s.h.WatchFlowcontrolApiserverV1beta2FlowSchema(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10181,7 +10181,7 @@ func (s *Server) HandleWatchFlowcontrolApiserverV1beta2FlowSchemaListRequest(w h
 	response, err := s.h.WatchFlowcontrolApiserverV1beta2FlowSchemaList(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10210,7 +10210,7 @@ func (s *Server) HandleWatchFlowcontrolApiserverV1beta2PriorityLevelConfiguratio
 	response, err := s.h.WatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10239,7 +10239,7 @@ func (s *Server) HandleWatchFlowcontrolApiserverV1beta2PriorityLevelConfiguratio
 	response, err := s.h.WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10268,7 +10268,7 @@ func (s *Server) HandleWatchInternalApiserverV1alpha1StorageVersionRequest(w htt
 	response, err := s.h.WatchInternalApiserverV1alpha1StorageVersion(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10297,7 +10297,7 @@ func (s *Server) HandleWatchInternalApiserverV1alpha1StorageVersionListRequest(w
 	response, err := s.h.WatchInternalApiserverV1alpha1StorageVersionList(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10326,7 +10326,7 @@ func (s *Server) HandleWatchNetworkingV1IngressClassRequest(w http.ResponseWrite
 	response, err := s.h.WatchNetworkingV1IngressClass(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10355,7 +10355,7 @@ func (s *Server) HandleWatchNetworkingV1IngressClassListRequest(w http.ResponseW
 	response, err := s.h.WatchNetworkingV1IngressClassList(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10384,7 +10384,7 @@ func (s *Server) HandleWatchNetworkingV1IngressListForAllNamespacesRequest(w htt
 	response, err := s.h.WatchNetworkingV1IngressListForAllNamespaces(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10413,7 +10413,7 @@ func (s *Server) HandleWatchNetworkingV1NamespacedIngressRequest(w http.Response
 	response, err := s.h.WatchNetworkingV1NamespacedIngress(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10442,7 +10442,7 @@ func (s *Server) HandleWatchNetworkingV1NamespacedIngressListRequest(w http.Resp
 	response, err := s.h.WatchNetworkingV1NamespacedIngressList(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10471,7 +10471,7 @@ func (s *Server) HandleWatchNetworkingV1NamespacedNetworkPolicyRequest(w http.Re
 	response, err := s.h.WatchNetworkingV1NamespacedNetworkPolicy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10500,7 +10500,7 @@ func (s *Server) HandleWatchNetworkingV1NamespacedNetworkPolicyListRequest(w htt
 	response, err := s.h.WatchNetworkingV1NamespacedNetworkPolicyList(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10529,7 +10529,7 @@ func (s *Server) HandleWatchNetworkingV1NetworkPolicyListForAllNamespacesRequest
 	response, err := s.h.WatchNetworkingV1NetworkPolicyListForAllNamespaces(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10558,7 +10558,7 @@ func (s *Server) HandleWatchNodeV1RuntimeClassRequest(w http.ResponseWriter, r *
 	response, err := s.h.WatchNodeV1RuntimeClass(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10587,7 +10587,7 @@ func (s *Server) HandleWatchNodeV1RuntimeClassListRequest(w http.ResponseWriter,
 	response, err := s.h.WatchNodeV1RuntimeClassList(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10616,7 +10616,7 @@ func (s *Server) HandleWatchNodeV1alpha1RuntimeClassRequest(w http.ResponseWrite
 	response, err := s.h.WatchNodeV1alpha1RuntimeClass(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10645,7 +10645,7 @@ func (s *Server) HandleWatchNodeV1alpha1RuntimeClassListRequest(w http.ResponseW
 	response, err := s.h.WatchNodeV1alpha1RuntimeClassList(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10674,7 +10674,7 @@ func (s *Server) HandleWatchNodeV1beta1RuntimeClassRequest(w http.ResponseWriter
 	response, err := s.h.WatchNodeV1beta1RuntimeClass(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10703,7 +10703,7 @@ func (s *Server) HandleWatchNodeV1beta1RuntimeClassListRequest(w http.ResponseWr
 	response, err := s.h.WatchNodeV1beta1RuntimeClassList(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10732,7 +10732,7 @@ func (s *Server) HandleWatchPolicyV1NamespacedPodDisruptionBudgetRequest(w http.
 	response, err := s.h.WatchPolicyV1NamespacedPodDisruptionBudget(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10761,7 +10761,7 @@ func (s *Server) HandleWatchPolicyV1NamespacedPodDisruptionBudgetListRequest(w h
 	response, err := s.h.WatchPolicyV1NamespacedPodDisruptionBudgetList(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10790,7 +10790,7 @@ func (s *Server) HandleWatchPolicyV1PodDisruptionBudgetListForAllNamespacesReque
 	response, err := s.h.WatchPolicyV1PodDisruptionBudgetListForAllNamespaces(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10819,7 +10819,7 @@ func (s *Server) HandleWatchPolicyV1beta1NamespacedPodDisruptionBudgetRequest(w 
 	response, err := s.h.WatchPolicyV1beta1NamespacedPodDisruptionBudget(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10848,7 +10848,7 @@ func (s *Server) HandleWatchPolicyV1beta1NamespacedPodDisruptionBudgetListReques
 	response, err := s.h.WatchPolicyV1beta1NamespacedPodDisruptionBudgetList(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10877,7 +10877,7 @@ func (s *Server) HandleWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces
 	response, err := s.h.WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10906,7 +10906,7 @@ func (s *Server) HandleWatchPolicyV1beta1PodSecurityPolicyRequest(w http.Respons
 	response, err := s.h.WatchPolicyV1beta1PodSecurityPolicy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10935,7 +10935,7 @@ func (s *Server) HandleWatchPolicyV1beta1PodSecurityPolicyListRequest(w http.Res
 	response, err := s.h.WatchPolicyV1beta1PodSecurityPolicyList(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10964,7 +10964,7 @@ func (s *Server) HandleWatchRbacAuthorizationV1ClusterRoleRequest(w http.Respons
 	response, err := s.h.WatchRbacAuthorizationV1ClusterRole(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10993,7 +10993,7 @@ func (s *Server) HandleWatchRbacAuthorizationV1ClusterRoleBindingRequest(w http.
 	response, err := s.h.WatchRbacAuthorizationV1ClusterRoleBinding(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11022,7 +11022,7 @@ func (s *Server) HandleWatchRbacAuthorizationV1ClusterRoleBindingListRequest(w h
 	response, err := s.h.WatchRbacAuthorizationV1ClusterRoleBindingList(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11051,7 +11051,7 @@ func (s *Server) HandleWatchRbacAuthorizationV1ClusterRoleListRequest(w http.Res
 	response, err := s.h.WatchRbacAuthorizationV1ClusterRoleList(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11080,7 +11080,7 @@ func (s *Server) HandleWatchRbacAuthorizationV1NamespacedRoleRequest(w http.Resp
 	response, err := s.h.WatchRbacAuthorizationV1NamespacedRole(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11109,7 +11109,7 @@ func (s *Server) HandleWatchRbacAuthorizationV1NamespacedRoleBindingRequest(w ht
 	response, err := s.h.WatchRbacAuthorizationV1NamespacedRoleBinding(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11138,7 +11138,7 @@ func (s *Server) HandleWatchRbacAuthorizationV1NamespacedRoleBindingListRequest(
 	response, err := s.h.WatchRbacAuthorizationV1NamespacedRoleBindingList(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11167,7 +11167,7 @@ func (s *Server) HandleWatchRbacAuthorizationV1NamespacedRoleListRequest(w http.
 	response, err := s.h.WatchRbacAuthorizationV1NamespacedRoleList(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11196,7 +11196,7 @@ func (s *Server) HandleWatchRbacAuthorizationV1RoleBindingListForAllNamespacesRe
 	response, err := s.h.WatchRbacAuthorizationV1RoleBindingListForAllNamespaces(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11225,7 +11225,7 @@ func (s *Server) HandleWatchRbacAuthorizationV1RoleListForAllNamespacesRequest(w
 	response, err := s.h.WatchRbacAuthorizationV1RoleListForAllNamespaces(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11254,7 +11254,7 @@ func (s *Server) HandleWatchSchedulingV1PriorityClassRequest(w http.ResponseWrit
 	response, err := s.h.WatchSchedulingV1PriorityClass(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11283,7 +11283,7 @@ func (s *Server) HandleWatchSchedulingV1PriorityClassListRequest(w http.Response
 	response, err := s.h.WatchSchedulingV1PriorityClassList(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11312,7 +11312,7 @@ func (s *Server) HandleWatchStorageV1CSIDriverRequest(w http.ResponseWriter, r *
 	response, err := s.h.WatchStorageV1CSIDriver(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11341,7 +11341,7 @@ func (s *Server) HandleWatchStorageV1CSIDriverListRequest(w http.ResponseWriter,
 	response, err := s.h.WatchStorageV1CSIDriverList(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11370,7 +11370,7 @@ func (s *Server) HandleWatchStorageV1CSINodeRequest(w http.ResponseWriter, r *ht
 	response, err := s.h.WatchStorageV1CSINode(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11399,7 +11399,7 @@ func (s *Server) HandleWatchStorageV1CSINodeListRequest(w http.ResponseWriter, r
 	response, err := s.h.WatchStorageV1CSINodeList(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11428,7 +11428,7 @@ func (s *Server) HandleWatchStorageV1StorageClassRequest(w http.ResponseWriter, 
 	response, err := s.h.WatchStorageV1StorageClass(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11457,7 +11457,7 @@ func (s *Server) HandleWatchStorageV1StorageClassListRequest(w http.ResponseWrit
 	response, err := s.h.WatchStorageV1StorageClassList(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11486,7 +11486,7 @@ func (s *Server) HandleWatchStorageV1VolumeAttachmentRequest(w http.ResponseWrit
 	response, err := s.h.WatchStorageV1VolumeAttachment(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11515,7 +11515,7 @@ func (s *Server) HandleWatchStorageV1VolumeAttachmentListRequest(w http.Response
 	response, err := s.h.WatchStorageV1VolumeAttachmentList(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11544,7 +11544,7 @@ func (s *Server) HandleWatchStorageV1alpha1CSIStorageCapacityListForAllNamespace
 	response, err := s.h.WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11573,7 +11573,7 @@ func (s *Server) HandleWatchStorageV1alpha1NamespacedCSIStorageCapacityRequest(w
 	response, err := s.h.WatchStorageV1alpha1NamespacedCSIStorageCapacity(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11602,7 +11602,7 @@ func (s *Server) HandleWatchStorageV1alpha1NamespacedCSIStorageCapacityListReque
 	response, err := s.h.WatchStorageV1alpha1NamespacedCSIStorageCapacityList(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11631,7 +11631,7 @@ func (s *Server) HandleWatchStorageV1beta1CSIStorageCapacityListForAllNamespaces
 	response, err := s.h.WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11660,7 +11660,7 @@ func (s *Server) HandleWatchStorageV1beta1NamespacedCSIStorageCapacityRequest(w 
 	response, err := s.h.WatchStorageV1beta1NamespacedCSIStorageCapacity(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11689,7 +11689,7 @@ func (s *Server) HandleWatchStorageV1beta1NamespacedCSIStorageCapacityListReques
 	response, err := s.h.WatchStorageV1beta1NamespacedCSIStorageCapacityList(ctx, params)
 	if err != nil {
 		span.RecordError(err)
-		s.respondError(w, http.StatusInternalServerError, err)
+		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
