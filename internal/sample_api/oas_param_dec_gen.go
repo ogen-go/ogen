@@ -218,6 +218,7 @@ func decodePetGetParams(r *http.Request) (PetGetParams, error) {
 		param := r.Header.Get("x-tags")
 		if len(param) > 0 {
 			d := uri.NewHeaderDecoder(uri.HeaderDecoderConfig{
+				Value:   param,
 				Explode: false,
 			})
 			if err := func() error {
@@ -254,6 +255,7 @@ func decodePetGetParams(r *http.Request) (PetGetParams, error) {
 		param := r.Header.Get("x-scope")
 		if len(param) > 0 {
 			d := uri.NewHeaderDecoder(uri.HeaderDecoderConfig{
+				Value:   param,
 				Explode: false,
 			})
 			if err := func() error {
