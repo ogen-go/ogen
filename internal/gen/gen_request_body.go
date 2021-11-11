@@ -35,27 +35,27 @@ func (g *Generator) generateRequest(opName string, body *oas.RequestBody) (*ir.R
 		if schema == nil {
 			switch contentType {
 			case "application/octet-stream":
-				typ := ir.Stream()
-				types[ir.ContentType(contentType)] = typ
-				g.saveType(typ)
+				t := ir.Stream()
+				types[ir.ContentType(contentType)] = t
+				g.saveType(t)
 				continue
 			default:
 				return nil, errors.Errorf("unsupported empty schema for content-type %q", contentType)
 			}
 		}
 
-		typ, err := g.generateSchema(sName, schema)
+		t, err := g.generateSchema(sName, schema)
 		if err != nil {
 			return nil, errors.Wrapf(err, "contents: %s", contentType)
 		}
 
-		types[ir.ContentType(contentType)] = typ
+		types[ir.ContentType(contentType)] = t
 	}
 
 	if len(types) == 1 {
-		for _, typ := range types {
+		for _, t := range types {
 			return &ir.Request{
-				Type:     typ,
+				Type:     t,
 				Contents: types,
 				Required: body.Required,
 				Spec:     body,
@@ -66,20 +66,20 @@ func (g *Generator) generateRequest(opName string, body *oas.RequestBody) (*ir.R
 	iface := ir.Interface(name)
 	iface.AddMethod(camel(name))
 	g.saveIface(iface)
-	for contentType, typ := range types {
-		switch typ.Kind {
+	for contentType, t := range types {
+		switch t.Kind {
 		case ir.KindPrimitive, ir.KindArray:
 			// Primitive types cannot have methods, wrap it with alias.
-			typ = ir.Alias(pascal(name, string(contentType)), typ)
-			types[contentType] = typ
-			g.saveType(typ)
+			t = ir.Alias(pascal(name, string(contentType)), t)
+			types[contentType] = t
+			g.saveType(t)
 		case ir.KindStream:
-			typ.Name = pascal(name, string(contentType))
-			g.saveType(typ)
+			t.Name = pascal(name, string(contentType))
+			g.saveType(t)
 		default:
 		}
 
-		typ.Implement(iface)
+		t.Implement(iface)
 	}
 
 	return &ir.Request{

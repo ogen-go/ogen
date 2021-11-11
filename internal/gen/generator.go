@@ -12,20 +12,19 @@ import (
 	"github.com/ogen-go/ogen/internal/oas/parser"
 )
 
+type responses struct {
+	types     map[string]*ir.Type
+	responses map[string]*ir.StatusResponse
+}
+
 type Generator struct {
 	opt        Options
 	operations []*ir.Operation
 	types      map[string]*ir.Type
 	interfaces map[string]*ir.Type
-	refs       struct {
-		schemas   map[string]*ir.Type
-		responses map[string]*ir.StatusResponse
-	}
-	wrapped struct {
-		types     map[string]*ir.Type
-		responses map[string]*ir.StatusResponse
-	}
-	uriTypes map[*ir.Type]struct{}
+	refs       responses
+	wrapped    responses
+	uriTypes   map[*ir.Type]struct{}
 }
 
 type Options struct {
@@ -36,24 +35,18 @@ type Options struct {
 func NewGenerator(spec *ogen.Spec, opts Options) (*Generator, error) {
 	operations, err := parser.Parse(spec)
 	if err != nil {
-		return nil, err
+		return nil, errors.Wrap(err, "parse")
 	}
 
 	g := &Generator{
 		opt:        opts,
 		types:      map[string]*ir.Type{},
 		interfaces: map[string]*ir.Type{},
-		refs: struct {
-			schemas   map[string]*ir.Type
-			responses map[string]*ir.StatusResponse
-		}{
-			schemas:   map[string]*ir.Type{},
+		refs: responses{
+			types:     map[string]*ir.Type{},
 			responses: map[string]*ir.StatusResponse{},
 		},
-		wrapped: struct {
-			types     map[string]*ir.Type
-			responses map[string]*ir.StatusResponse
-		}{
+		wrapped: responses{
 			types:     map[string]*ir.Type{},
 			responses: map[string]*ir.StatusResponse{},
 		},
@@ -61,7 +54,7 @@ func NewGenerator(spec *ogen.Spec, opts Options) (*Generator, error) {
 	}
 
 	if err := g.makeIR(operations); err != nil {
-		return nil, err
+		return nil, errors.Wrap(err, "make ir")
 	}
 	for _, w := range g.wrapped.types {
 		g.saveType(w)

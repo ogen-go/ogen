@@ -18,13 +18,13 @@ func (g *Generator) generateParameters(opName string, params []*oas.Parameter) (
 			continue
 		}
 
-		typ, err := g.generateSchema(pascal(opName, p.Name), p.Schema)
+		t, err := g.generateSchema(pascal(opName, p.Name), p.Schema)
 		if err != nil {
 			return nil, errors.Wrapf(err, "%q", p.Name)
 		}
 
 		visited := map[*ir.Type]struct{}{}
-		if err := isParamAllowed(typ, true, visited); err != nil {
+		if err := isParamAllowed(t, true, visited); err != nil {
 			return nil, err
 		}
 
@@ -36,7 +36,7 @@ func (g *Generator) generateParameters(opName string, params []*oas.Parameter) (
 
 		result = append(result, &ir.Parameter{
 			Name: pascal(p.Name),
-			Type: typ,
+			Type: t,
 			Spec: p,
 		})
 	}
