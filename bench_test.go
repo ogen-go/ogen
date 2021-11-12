@@ -377,15 +377,3 @@ func BenchmarkJSON(b *testing.B) {
 		})
 	})
 }
-
-type noopWriter struct{}
-
-func (n *noopWriter) Header() http.Header {
-	return http.Header{}
-}
-
-func (n *noopWriter) Write(bytes []byte) (int, error) {
-	return len(bytes), nil
-}
-
-func (n *noopWriter) WriteHeader(statusCode int) {}
