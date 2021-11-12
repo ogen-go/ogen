@@ -32,7 +32,7 @@ func (s sampleErrServer) NewError(ctx context.Context, err error) api.ErrorStatu
 }
 
 func TestConvenientErrors(t *testing.T) {
-	s := httptest.NewServer(api.NewServer(&sampleErrServer{}).DefaultMux())
+	s := httptest.NewServer(api.NewServer(&sampleErrServer{}))
 	defer s.Close()
 
 	client, err := api.NewClient(s.URL)

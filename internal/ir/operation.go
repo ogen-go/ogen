@@ -1,6 +1,7 @@
 package ir
 
 import (
+	"fmt"
 	"sort"
 	"strings"
 
@@ -19,6 +20,13 @@ type Operation struct {
 type PathPart struct {
 	Raw   string
 	Param *Parameter
+}
+
+func (p PathPart) String() string {
+	if p.Param != nil {
+		return fmt.Sprintf("{%s}", p.Param.Spec.Name)
+	}
+	return p.Raw
 }
 
 type Parameter struct {

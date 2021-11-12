@@ -94,16 +94,3 @@ func NewServer(h Handler, opts ...Option) *Server {
 	}
 	return srv
 }
-
-// Register request handlers in router.
-func (s *Server) Register(r chi.Router) {
-	r.MethodFunc("POST", "/data", s.HandleDataCreateRequest)
-	r.MethodFunc("GET", "/data", s.HandleDataGetRequest)
-}
-
-// DefaultMux returns new *chi.Mux with called Register method on it.
-func (s *Server) DefaultMux() *chi.Mux {
-	mux := chi.NewMux()
-	s.Register(mux)
-	return mux
-}

@@ -138,28 +138,3 @@ func NewServer(h Handler, opts ...Option) *Server {
 	}
 	return srv
 }
-
-// Register request handlers in router.
-func (s *Server) Register(r chi.Router) {
-	r.MethodFunc("GET", "/error", s.HandleErrorGetRequest)
-	r.MethodFunc("GET", "/foobar", s.HandleFoobarGetRequest)
-	r.MethodFunc("POST", "/foobar", s.HandleFoobarPostRequest)
-	r.MethodFunc("PUT", "/foobar", s.HandleFoobarPutRequest)
-	r.MethodFunc("GET", "/test/header", s.HandleGetHeaderRequest)
-	r.MethodFunc("POST", "/pet", s.HandlePetCreateRequest)
-	r.MethodFunc("GET", "/pet/friendNames/{id}", s.HandlePetFriendsNamesByIDRequest)
-	r.MethodFunc("GET", "/pet", s.HandlePetGetRequest)
-	r.MethodFunc("GET", "/pet/avatar", s.HandlePetGetAvatarByIDRequest)
-	r.MethodFunc("GET", "/pet/{name}", s.HandlePetGetByNameRequest)
-	r.MethodFunc("GET", "/pet/name/{id}", s.HandlePetNameByIDRequest)
-	r.MethodFunc("POST", "/pet/updateNameAlias", s.HandlePetUpdateNameAliasPostRequest)
-	r.MethodFunc("POST", "/pet/updateName", s.HandlePetUpdateNamePostRequest)
-	r.MethodFunc("POST", "/pet/avatar", s.HandlePetUploadAvatarByIDRequest)
-}
-
-// DefaultMux returns new *chi.Mux with called Register method on it.
-func (s *Server) DefaultMux() *chi.Mux {
-	mux := chi.NewMux()
-	s.Register(mux)
-	return mux
-}

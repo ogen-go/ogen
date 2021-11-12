@@ -67,13 +67,13 @@ var (
 // HandleGetBookRequest handles getBook operation.
 //
 // GET /api/gallery/{book_id}
-func (s *Server) HandleGetBookRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetBookRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetBook`,
 		trace.WithAttributes(otelogen.OperationID(`getBook`)),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
-	params, err := decodeGetBookParams(r)
+	params, err := decodeGetBookParams(args, r)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusBadRequest, err)
@@ -96,13 +96,13 @@ func (s *Server) HandleGetBookRequest(w http.ResponseWriter, r *http.Request) {
 // HandleGetPageCoverImageRequest handles getPageCoverImage operation.
 //
 // GET /galleries/{media_id}/cover.{format}
-func (s *Server) HandleGetPageCoverImageRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetPageCoverImageRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetPageCoverImage`,
 		trace.WithAttributes(otelogen.OperationID(`getPageCoverImage`)),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
-	params, err := decodeGetPageCoverImageParams(r)
+	params, err := decodeGetPageCoverImageParams(args, r)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusBadRequest, err)
@@ -125,13 +125,13 @@ func (s *Server) HandleGetPageCoverImageRequest(w http.ResponseWriter, r *http.R
 // HandleGetPageImageRequest handles getPageImage operation.
 //
 // GET /galleries/{media_id}/{page}.{format}
-func (s *Server) HandleGetPageImageRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetPageImageRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetPageImage`,
 		trace.WithAttributes(otelogen.OperationID(`getPageImage`)),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
-	params, err := decodeGetPageImageParams(r)
+	params, err := decodeGetPageImageParams(args, r)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusBadRequest, err)
@@ -154,13 +154,13 @@ func (s *Server) HandleGetPageImageRequest(w http.ResponseWriter, r *http.Reques
 // HandleGetPageThumbnailImageRequest handles getPageThumbnailImage operation.
 //
 // GET /galleries/{media_id}/{page}t.{format}
-func (s *Server) HandleGetPageThumbnailImageRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetPageThumbnailImageRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetPageThumbnailImage`,
 		trace.WithAttributes(otelogen.OperationID(`getPageThumbnailImage`)),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
-	params, err := decodeGetPageThumbnailImageParams(r)
+	params, err := decodeGetPageThumbnailImageParams(args, r)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusBadRequest, err)
@@ -183,13 +183,13 @@ func (s *Server) HandleGetPageThumbnailImageRequest(w http.ResponseWriter, r *ht
 // HandleSearchRequest handles search operation.
 //
 // GET /api/galleries/search
-func (s *Server) HandleSearchRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleSearchRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `Search`,
 		trace.WithAttributes(otelogen.OperationID(`search`)),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
-	params, err := decodeSearchParams(r)
+	params, err := decodeSearchParams(args, r)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusBadRequest, err)
@@ -212,13 +212,13 @@ func (s *Server) HandleSearchRequest(w http.ResponseWriter, r *http.Request) {
 // HandleSearchByTagIDRequest handles searchByTagID operation.
 //
 // GET /api/galleries/tagged
-func (s *Server) HandleSearchByTagIDRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleSearchByTagIDRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `SearchByTagID`,
 		trace.WithAttributes(otelogen.OperationID(`searchByTagID`)),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
-	params, err := decodeSearchByTagIDParams(r)
+	params, err := decodeSearchByTagIDParams(args, r)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusBadRequest, err)

@@ -64,11 +64,11 @@ var (
 	_ = sync.Pool{}
 )
 
-func decodeActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams(r *http.Request) (ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams, error) {
+func decodeActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams(args map[string]string, r *http.Request) (ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams, error) {
 	var params ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -99,7 +99,7 @@ func decodeActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams(r *http.Reques
 	}
 	// Decode path: runner_group_id.
 	{
-		param := chi.URLParam(r, "runner_group_id")
+		param := args["runner_group_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "runner_group_id",
@@ -130,7 +130,7 @@ func decodeActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams(r *http.Reques
 	}
 	// Decode path: repository_id.
 	{
-		param := chi.URLParam(r, "repository_id")
+		param := args["repository_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repository_id",
@@ -162,11 +162,11 @@ func decodeActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams(r *http.Reques
 	return params, nil
 }
 
-func decodeActionsAddSelectedRepoToOrgSecretParams(r *http.Request) (ActionsAddSelectedRepoToOrgSecretParams, error) {
+func decodeActionsAddSelectedRepoToOrgSecretParams(args map[string]string, r *http.Request) (ActionsAddSelectedRepoToOrgSecretParams, error) {
 	var params ActionsAddSelectedRepoToOrgSecretParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -197,7 +197,7 @@ func decodeActionsAddSelectedRepoToOrgSecretParams(r *http.Request) (ActionsAddS
 	}
 	// Decode path: secret_name.
 	{
-		param := chi.URLParam(r, "secret_name")
+		param := args["secret_name"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "secret_name",
@@ -228,7 +228,7 @@ func decodeActionsAddSelectedRepoToOrgSecretParams(r *http.Request) (ActionsAddS
 	}
 	// Decode path: repository_id.
 	{
-		param := chi.URLParam(r, "repository_id")
+		param := args["repository_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repository_id",
@@ -260,11 +260,11 @@ func decodeActionsAddSelectedRepoToOrgSecretParams(r *http.Request) (ActionsAddS
 	return params, nil
 }
 
-func decodeActionsAddSelfHostedRunnerToGroupForOrgParams(r *http.Request) (ActionsAddSelfHostedRunnerToGroupForOrgParams, error) {
+func decodeActionsAddSelfHostedRunnerToGroupForOrgParams(args map[string]string, r *http.Request) (ActionsAddSelfHostedRunnerToGroupForOrgParams, error) {
 	var params ActionsAddSelfHostedRunnerToGroupForOrgParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -295,7 +295,7 @@ func decodeActionsAddSelfHostedRunnerToGroupForOrgParams(r *http.Request) (Actio
 	}
 	// Decode path: runner_group_id.
 	{
-		param := chi.URLParam(r, "runner_group_id")
+		param := args["runner_group_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "runner_group_id",
@@ -326,7 +326,7 @@ func decodeActionsAddSelfHostedRunnerToGroupForOrgParams(r *http.Request) (Actio
 	}
 	// Decode path: runner_id.
 	{
-		param := chi.URLParam(r, "runner_id")
+		param := args["runner_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "runner_id",
@@ -358,11 +358,11 @@ func decodeActionsAddSelfHostedRunnerToGroupForOrgParams(r *http.Request) (Actio
 	return params, nil
 }
 
-func decodeActionsApproveWorkflowRunParams(r *http.Request) (ActionsApproveWorkflowRunParams, error) {
+func decodeActionsApproveWorkflowRunParams(args map[string]string, r *http.Request) (ActionsApproveWorkflowRunParams, error) {
 	var params ActionsApproveWorkflowRunParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -393,7 +393,7 @@ func decodeActionsApproveWorkflowRunParams(r *http.Request) (ActionsApproveWorkf
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -424,7 +424,7 @@ func decodeActionsApproveWorkflowRunParams(r *http.Request) (ActionsApproveWorkf
 	}
 	// Decode path: run_id.
 	{
-		param := chi.URLParam(r, "run_id")
+		param := args["run_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "run_id",
@@ -456,11 +456,11 @@ func decodeActionsApproveWorkflowRunParams(r *http.Request) (ActionsApproveWorkf
 	return params, nil
 }
 
-func decodeActionsCancelWorkflowRunParams(r *http.Request) (ActionsCancelWorkflowRunParams, error) {
+func decodeActionsCancelWorkflowRunParams(args map[string]string, r *http.Request) (ActionsCancelWorkflowRunParams, error) {
 	var params ActionsCancelWorkflowRunParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -491,7 +491,7 @@ func decodeActionsCancelWorkflowRunParams(r *http.Request) (ActionsCancelWorkflo
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -522,7 +522,7 @@ func decodeActionsCancelWorkflowRunParams(r *http.Request) (ActionsCancelWorkflo
 	}
 	// Decode path: run_id.
 	{
-		param := chi.URLParam(r, "run_id")
+		param := args["run_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "run_id",
@@ -554,11 +554,11 @@ func decodeActionsCancelWorkflowRunParams(r *http.Request) (ActionsCancelWorkflo
 	return params, nil
 }
 
-func decodeActionsCreateOrUpdateEnvironmentSecretParams(r *http.Request) (ActionsCreateOrUpdateEnvironmentSecretParams, error) {
+func decodeActionsCreateOrUpdateEnvironmentSecretParams(args map[string]string, r *http.Request) (ActionsCreateOrUpdateEnvironmentSecretParams, error) {
 	var params ActionsCreateOrUpdateEnvironmentSecretParams
 	// Decode path: repository_id.
 	{
-		param := chi.URLParam(r, "repository_id")
+		param := args["repository_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repository_id",
@@ -589,7 +589,7 @@ func decodeActionsCreateOrUpdateEnvironmentSecretParams(r *http.Request) (Action
 	}
 	// Decode path: environment_name.
 	{
-		param := chi.URLParam(r, "environment_name")
+		param := args["environment_name"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "environment_name",
@@ -620,7 +620,7 @@ func decodeActionsCreateOrUpdateEnvironmentSecretParams(r *http.Request) (Action
 	}
 	// Decode path: secret_name.
 	{
-		param := chi.URLParam(r, "secret_name")
+		param := args["secret_name"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "secret_name",
@@ -652,11 +652,11 @@ func decodeActionsCreateOrUpdateEnvironmentSecretParams(r *http.Request) (Action
 	return params, nil
 }
 
-func decodeActionsCreateOrUpdateOrgSecretParams(r *http.Request) (ActionsCreateOrUpdateOrgSecretParams, error) {
+func decodeActionsCreateOrUpdateOrgSecretParams(args map[string]string, r *http.Request) (ActionsCreateOrUpdateOrgSecretParams, error) {
 	var params ActionsCreateOrUpdateOrgSecretParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -687,7 +687,7 @@ func decodeActionsCreateOrUpdateOrgSecretParams(r *http.Request) (ActionsCreateO
 	}
 	// Decode path: secret_name.
 	{
-		param := chi.URLParam(r, "secret_name")
+		param := args["secret_name"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "secret_name",
@@ -719,11 +719,11 @@ func decodeActionsCreateOrUpdateOrgSecretParams(r *http.Request) (ActionsCreateO
 	return params, nil
 }
 
-func decodeActionsCreateOrUpdateRepoSecretParams(r *http.Request) (ActionsCreateOrUpdateRepoSecretParams, error) {
+func decodeActionsCreateOrUpdateRepoSecretParams(args map[string]string, r *http.Request) (ActionsCreateOrUpdateRepoSecretParams, error) {
 	var params ActionsCreateOrUpdateRepoSecretParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -754,7 +754,7 @@ func decodeActionsCreateOrUpdateRepoSecretParams(r *http.Request) (ActionsCreate
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -785,7 +785,7 @@ func decodeActionsCreateOrUpdateRepoSecretParams(r *http.Request) (ActionsCreate
 	}
 	// Decode path: secret_name.
 	{
-		param := chi.URLParam(r, "secret_name")
+		param := args["secret_name"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "secret_name",
@@ -817,11 +817,11 @@ func decodeActionsCreateOrUpdateRepoSecretParams(r *http.Request) (ActionsCreate
 	return params, nil
 }
 
-func decodeActionsCreateRegistrationTokenForOrgParams(r *http.Request) (ActionsCreateRegistrationTokenForOrgParams, error) {
+func decodeActionsCreateRegistrationTokenForOrgParams(args map[string]string, r *http.Request) (ActionsCreateRegistrationTokenForOrgParams, error) {
 	var params ActionsCreateRegistrationTokenForOrgParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -853,11 +853,11 @@ func decodeActionsCreateRegistrationTokenForOrgParams(r *http.Request) (ActionsC
 	return params, nil
 }
 
-func decodeActionsCreateRegistrationTokenForRepoParams(r *http.Request) (ActionsCreateRegistrationTokenForRepoParams, error) {
+func decodeActionsCreateRegistrationTokenForRepoParams(args map[string]string, r *http.Request) (ActionsCreateRegistrationTokenForRepoParams, error) {
 	var params ActionsCreateRegistrationTokenForRepoParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -888,7 +888,7 @@ func decodeActionsCreateRegistrationTokenForRepoParams(r *http.Request) (Actions
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -920,11 +920,11 @@ func decodeActionsCreateRegistrationTokenForRepoParams(r *http.Request) (Actions
 	return params, nil
 }
 
-func decodeActionsCreateRemoveTokenForOrgParams(r *http.Request) (ActionsCreateRemoveTokenForOrgParams, error) {
+func decodeActionsCreateRemoveTokenForOrgParams(args map[string]string, r *http.Request) (ActionsCreateRemoveTokenForOrgParams, error) {
 	var params ActionsCreateRemoveTokenForOrgParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -956,11 +956,11 @@ func decodeActionsCreateRemoveTokenForOrgParams(r *http.Request) (ActionsCreateR
 	return params, nil
 }
 
-func decodeActionsCreateRemoveTokenForRepoParams(r *http.Request) (ActionsCreateRemoveTokenForRepoParams, error) {
+func decodeActionsCreateRemoveTokenForRepoParams(args map[string]string, r *http.Request) (ActionsCreateRemoveTokenForRepoParams, error) {
 	var params ActionsCreateRemoveTokenForRepoParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -991,7 +991,7 @@ func decodeActionsCreateRemoveTokenForRepoParams(r *http.Request) (ActionsCreate
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -1023,11 +1023,11 @@ func decodeActionsCreateRemoveTokenForRepoParams(r *http.Request) (ActionsCreate
 	return params, nil
 }
 
-func decodeActionsCreateSelfHostedRunnerGroupForOrgParams(r *http.Request) (ActionsCreateSelfHostedRunnerGroupForOrgParams, error) {
+func decodeActionsCreateSelfHostedRunnerGroupForOrgParams(args map[string]string, r *http.Request) (ActionsCreateSelfHostedRunnerGroupForOrgParams, error) {
 	var params ActionsCreateSelfHostedRunnerGroupForOrgParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -1059,11 +1059,11 @@ func decodeActionsCreateSelfHostedRunnerGroupForOrgParams(r *http.Request) (Acti
 	return params, nil
 }
 
-func decodeActionsDeleteArtifactParams(r *http.Request) (ActionsDeleteArtifactParams, error) {
+func decodeActionsDeleteArtifactParams(args map[string]string, r *http.Request) (ActionsDeleteArtifactParams, error) {
 	var params ActionsDeleteArtifactParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -1094,7 +1094,7 @@ func decodeActionsDeleteArtifactParams(r *http.Request) (ActionsDeleteArtifactPa
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -1125,7 +1125,7 @@ func decodeActionsDeleteArtifactParams(r *http.Request) (ActionsDeleteArtifactPa
 	}
 	// Decode path: artifact_id.
 	{
-		param := chi.URLParam(r, "artifact_id")
+		param := args["artifact_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "artifact_id",
@@ -1157,11 +1157,11 @@ func decodeActionsDeleteArtifactParams(r *http.Request) (ActionsDeleteArtifactPa
 	return params, nil
 }
 
-func decodeActionsDeleteEnvironmentSecretParams(r *http.Request) (ActionsDeleteEnvironmentSecretParams, error) {
+func decodeActionsDeleteEnvironmentSecretParams(args map[string]string, r *http.Request) (ActionsDeleteEnvironmentSecretParams, error) {
 	var params ActionsDeleteEnvironmentSecretParams
 	// Decode path: repository_id.
 	{
-		param := chi.URLParam(r, "repository_id")
+		param := args["repository_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repository_id",
@@ -1192,7 +1192,7 @@ func decodeActionsDeleteEnvironmentSecretParams(r *http.Request) (ActionsDeleteE
 	}
 	// Decode path: environment_name.
 	{
-		param := chi.URLParam(r, "environment_name")
+		param := args["environment_name"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "environment_name",
@@ -1223,7 +1223,7 @@ func decodeActionsDeleteEnvironmentSecretParams(r *http.Request) (ActionsDeleteE
 	}
 	// Decode path: secret_name.
 	{
-		param := chi.URLParam(r, "secret_name")
+		param := args["secret_name"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "secret_name",
@@ -1255,11 +1255,11 @@ func decodeActionsDeleteEnvironmentSecretParams(r *http.Request) (ActionsDeleteE
 	return params, nil
 }
 
-func decodeActionsDeleteOrgSecretParams(r *http.Request) (ActionsDeleteOrgSecretParams, error) {
+func decodeActionsDeleteOrgSecretParams(args map[string]string, r *http.Request) (ActionsDeleteOrgSecretParams, error) {
 	var params ActionsDeleteOrgSecretParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -1290,7 +1290,7 @@ func decodeActionsDeleteOrgSecretParams(r *http.Request) (ActionsDeleteOrgSecret
 	}
 	// Decode path: secret_name.
 	{
-		param := chi.URLParam(r, "secret_name")
+		param := args["secret_name"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "secret_name",
@@ -1322,11 +1322,11 @@ func decodeActionsDeleteOrgSecretParams(r *http.Request) (ActionsDeleteOrgSecret
 	return params, nil
 }
 
-func decodeActionsDeleteRepoSecretParams(r *http.Request) (ActionsDeleteRepoSecretParams, error) {
+func decodeActionsDeleteRepoSecretParams(args map[string]string, r *http.Request) (ActionsDeleteRepoSecretParams, error) {
 	var params ActionsDeleteRepoSecretParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -1357,7 +1357,7 @@ func decodeActionsDeleteRepoSecretParams(r *http.Request) (ActionsDeleteRepoSecr
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -1388,7 +1388,7 @@ func decodeActionsDeleteRepoSecretParams(r *http.Request) (ActionsDeleteRepoSecr
 	}
 	// Decode path: secret_name.
 	{
-		param := chi.URLParam(r, "secret_name")
+		param := args["secret_name"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "secret_name",
@@ -1420,11 +1420,11 @@ func decodeActionsDeleteRepoSecretParams(r *http.Request) (ActionsDeleteRepoSecr
 	return params, nil
 }
 
-func decodeActionsDeleteSelfHostedRunnerFromOrgParams(r *http.Request) (ActionsDeleteSelfHostedRunnerFromOrgParams, error) {
+func decodeActionsDeleteSelfHostedRunnerFromOrgParams(args map[string]string, r *http.Request) (ActionsDeleteSelfHostedRunnerFromOrgParams, error) {
 	var params ActionsDeleteSelfHostedRunnerFromOrgParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -1455,7 +1455,7 @@ func decodeActionsDeleteSelfHostedRunnerFromOrgParams(r *http.Request) (ActionsD
 	}
 	// Decode path: runner_id.
 	{
-		param := chi.URLParam(r, "runner_id")
+		param := args["runner_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "runner_id",
@@ -1487,11 +1487,11 @@ func decodeActionsDeleteSelfHostedRunnerFromOrgParams(r *http.Request) (ActionsD
 	return params, nil
 }
 
-func decodeActionsDeleteSelfHostedRunnerFromRepoParams(r *http.Request) (ActionsDeleteSelfHostedRunnerFromRepoParams, error) {
+func decodeActionsDeleteSelfHostedRunnerFromRepoParams(args map[string]string, r *http.Request) (ActionsDeleteSelfHostedRunnerFromRepoParams, error) {
 	var params ActionsDeleteSelfHostedRunnerFromRepoParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -1522,7 +1522,7 @@ func decodeActionsDeleteSelfHostedRunnerFromRepoParams(r *http.Request) (Actions
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -1553,7 +1553,7 @@ func decodeActionsDeleteSelfHostedRunnerFromRepoParams(r *http.Request) (Actions
 	}
 	// Decode path: runner_id.
 	{
-		param := chi.URLParam(r, "runner_id")
+		param := args["runner_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "runner_id",
@@ -1585,11 +1585,11 @@ func decodeActionsDeleteSelfHostedRunnerFromRepoParams(r *http.Request) (Actions
 	return params, nil
 }
 
-func decodeActionsDeleteSelfHostedRunnerGroupFromOrgParams(r *http.Request) (ActionsDeleteSelfHostedRunnerGroupFromOrgParams, error) {
+func decodeActionsDeleteSelfHostedRunnerGroupFromOrgParams(args map[string]string, r *http.Request) (ActionsDeleteSelfHostedRunnerGroupFromOrgParams, error) {
 	var params ActionsDeleteSelfHostedRunnerGroupFromOrgParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -1620,7 +1620,7 @@ func decodeActionsDeleteSelfHostedRunnerGroupFromOrgParams(r *http.Request) (Act
 	}
 	// Decode path: runner_group_id.
 	{
-		param := chi.URLParam(r, "runner_group_id")
+		param := args["runner_group_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "runner_group_id",
@@ -1652,11 +1652,11 @@ func decodeActionsDeleteSelfHostedRunnerGroupFromOrgParams(r *http.Request) (Act
 	return params, nil
 }
 
-func decodeActionsDeleteWorkflowRunParams(r *http.Request) (ActionsDeleteWorkflowRunParams, error) {
+func decodeActionsDeleteWorkflowRunParams(args map[string]string, r *http.Request) (ActionsDeleteWorkflowRunParams, error) {
 	var params ActionsDeleteWorkflowRunParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -1687,7 +1687,7 @@ func decodeActionsDeleteWorkflowRunParams(r *http.Request) (ActionsDeleteWorkflo
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -1718,7 +1718,7 @@ func decodeActionsDeleteWorkflowRunParams(r *http.Request) (ActionsDeleteWorkflo
 	}
 	// Decode path: run_id.
 	{
-		param := chi.URLParam(r, "run_id")
+		param := args["run_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "run_id",
@@ -1750,11 +1750,11 @@ func decodeActionsDeleteWorkflowRunParams(r *http.Request) (ActionsDeleteWorkflo
 	return params, nil
 }
 
-func decodeActionsDeleteWorkflowRunLogsParams(r *http.Request) (ActionsDeleteWorkflowRunLogsParams, error) {
+func decodeActionsDeleteWorkflowRunLogsParams(args map[string]string, r *http.Request) (ActionsDeleteWorkflowRunLogsParams, error) {
 	var params ActionsDeleteWorkflowRunLogsParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -1785,7 +1785,7 @@ func decodeActionsDeleteWorkflowRunLogsParams(r *http.Request) (ActionsDeleteWor
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -1816,7 +1816,7 @@ func decodeActionsDeleteWorkflowRunLogsParams(r *http.Request) (ActionsDeleteWor
 	}
 	// Decode path: run_id.
 	{
-		param := chi.URLParam(r, "run_id")
+		param := args["run_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "run_id",
@@ -1848,11 +1848,11 @@ func decodeActionsDeleteWorkflowRunLogsParams(r *http.Request) (ActionsDeleteWor
 	return params, nil
 }
 
-func decodeActionsDisableSelectedRepositoryGithubActionsOrganizationParams(r *http.Request) (ActionsDisableSelectedRepositoryGithubActionsOrganizationParams, error) {
+func decodeActionsDisableSelectedRepositoryGithubActionsOrganizationParams(args map[string]string, r *http.Request) (ActionsDisableSelectedRepositoryGithubActionsOrganizationParams, error) {
 	var params ActionsDisableSelectedRepositoryGithubActionsOrganizationParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -1883,7 +1883,7 @@ func decodeActionsDisableSelectedRepositoryGithubActionsOrganizationParams(r *ht
 	}
 	// Decode path: repository_id.
 	{
-		param := chi.URLParam(r, "repository_id")
+		param := args["repository_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repository_id",
@@ -1915,11 +1915,11 @@ func decodeActionsDisableSelectedRepositoryGithubActionsOrganizationParams(r *ht
 	return params, nil
 }
 
-func decodeActionsDownloadArtifactParams(r *http.Request) (ActionsDownloadArtifactParams, error) {
+func decodeActionsDownloadArtifactParams(args map[string]string, r *http.Request) (ActionsDownloadArtifactParams, error) {
 	var params ActionsDownloadArtifactParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -1950,7 +1950,7 @@ func decodeActionsDownloadArtifactParams(r *http.Request) (ActionsDownloadArtifa
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -1981,7 +1981,7 @@ func decodeActionsDownloadArtifactParams(r *http.Request) (ActionsDownloadArtifa
 	}
 	// Decode path: artifact_id.
 	{
-		param := chi.URLParam(r, "artifact_id")
+		param := args["artifact_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "artifact_id",
@@ -2012,7 +2012,7 @@ func decodeActionsDownloadArtifactParams(r *http.Request) (ActionsDownloadArtifa
 	}
 	// Decode path: archive_format.
 	{
-		param := chi.URLParam(r, "archive_format")
+		param := args["archive_format"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "archive_format",
@@ -2044,11 +2044,11 @@ func decodeActionsDownloadArtifactParams(r *http.Request) (ActionsDownloadArtifa
 	return params, nil
 }
 
-func decodeActionsDownloadJobLogsForWorkflowRunParams(r *http.Request) (ActionsDownloadJobLogsForWorkflowRunParams, error) {
+func decodeActionsDownloadJobLogsForWorkflowRunParams(args map[string]string, r *http.Request) (ActionsDownloadJobLogsForWorkflowRunParams, error) {
 	var params ActionsDownloadJobLogsForWorkflowRunParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -2079,7 +2079,7 @@ func decodeActionsDownloadJobLogsForWorkflowRunParams(r *http.Request) (ActionsD
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -2110,7 +2110,7 @@ func decodeActionsDownloadJobLogsForWorkflowRunParams(r *http.Request) (ActionsD
 	}
 	// Decode path: job_id.
 	{
-		param := chi.URLParam(r, "job_id")
+		param := args["job_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "job_id",
@@ -2142,11 +2142,11 @@ func decodeActionsDownloadJobLogsForWorkflowRunParams(r *http.Request) (ActionsD
 	return params, nil
 }
 
-func decodeActionsDownloadWorkflowRunLogsParams(r *http.Request) (ActionsDownloadWorkflowRunLogsParams, error) {
+func decodeActionsDownloadWorkflowRunLogsParams(args map[string]string, r *http.Request) (ActionsDownloadWorkflowRunLogsParams, error) {
 	var params ActionsDownloadWorkflowRunLogsParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -2177,7 +2177,7 @@ func decodeActionsDownloadWorkflowRunLogsParams(r *http.Request) (ActionsDownloa
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -2208,7 +2208,7 @@ func decodeActionsDownloadWorkflowRunLogsParams(r *http.Request) (ActionsDownloa
 	}
 	// Decode path: run_id.
 	{
-		param := chi.URLParam(r, "run_id")
+		param := args["run_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "run_id",
@@ -2240,11 +2240,11 @@ func decodeActionsDownloadWorkflowRunLogsParams(r *http.Request) (ActionsDownloa
 	return params, nil
 }
 
-func decodeActionsEnableSelectedRepositoryGithubActionsOrganizationParams(r *http.Request) (ActionsEnableSelectedRepositoryGithubActionsOrganizationParams, error) {
+func decodeActionsEnableSelectedRepositoryGithubActionsOrganizationParams(args map[string]string, r *http.Request) (ActionsEnableSelectedRepositoryGithubActionsOrganizationParams, error) {
 	var params ActionsEnableSelectedRepositoryGithubActionsOrganizationParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -2275,7 +2275,7 @@ func decodeActionsEnableSelectedRepositoryGithubActionsOrganizationParams(r *htt
 	}
 	// Decode path: repository_id.
 	{
-		param := chi.URLParam(r, "repository_id")
+		param := args["repository_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repository_id",
@@ -2307,11 +2307,11 @@ func decodeActionsEnableSelectedRepositoryGithubActionsOrganizationParams(r *htt
 	return params, nil
 }
 
-func decodeActionsGetAllowedActionsOrganizationParams(r *http.Request) (ActionsGetAllowedActionsOrganizationParams, error) {
+func decodeActionsGetAllowedActionsOrganizationParams(args map[string]string, r *http.Request) (ActionsGetAllowedActionsOrganizationParams, error) {
 	var params ActionsGetAllowedActionsOrganizationParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -2343,11 +2343,11 @@ func decodeActionsGetAllowedActionsOrganizationParams(r *http.Request) (ActionsG
 	return params, nil
 }
 
-func decodeActionsGetAllowedActionsRepositoryParams(r *http.Request) (ActionsGetAllowedActionsRepositoryParams, error) {
+func decodeActionsGetAllowedActionsRepositoryParams(args map[string]string, r *http.Request) (ActionsGetAllowedActionsRepositoryParams, error) {
 	var params ActionsGetAllowedActionsRepositoryParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -2378,7 +2378,7 @@ func decodeActionsGetAllowedActionsRepositoryParams(r *http.Request) (ActionsGet
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -2410,11 +2410,11 @@ func decodeActionsGetAllowedActionsRepositoryParams(r *http.Request) (ActionsGet
 	return params, nil
 }
 
-func decodeActionsGetArtifactParams(r *http.Request) (ActionsGetArtifactParams, error) {
+func decodeActionsGetArtifactParams(args map[string]string, r *http.Request) (ActionsGetArtifactParams, error) {
 	var params ActionsGetArtifactParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -2445,7 +2445,7 @@ func decodeActionsGetArtifactParams(r *http.Request) (ActionsGetArtifactParams, 
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -2476,7 +2476,7 @@ func decodeActionsGetArtifactParams(r *http.Request) (ActionsGetArtifactParams, 
 	}
 	// Decode path: artifact_id.
 	{
-		param := chi.URLParam(r, "artifact_id")
+		param := args["artifact_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "artifact_id",
@@ -2508,11 +2508,11 @@ func decodeActionsGetArtifactParams(r *http.Request) (ActionsGetArtifactParams, 
 	return params, nil
 }
 
-func decodeActionsGetEnvironmentPublicKeyParams(r *http.Request) (ActionsGetEnvironmentPublicKeyParams, error) {
+func decodeActionsGetEnvironmentPublicKeyParams(args map[string]string, r *http.Request) (ActionsGetEnvironmentPublicKeyParams, error) {
 	var params ActionsGetEnvironmentPublicKeyParams
 	// Decode path: repository_id.
 	{
-		param := chi.URLParam(r, "repository_id")
+		param := args["repository_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repository_id",
@@ -2543,7 +2543,7 @@ func decodeActionsGetEnvironmentPublicKeyParams(r *http.Request) (ActionsGetEnvi
 	}
 	// Decode path: environment_name.
 	{
-		param := chi.URLParam(r, "environment_name")
+		param := args["environment_name"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "environment_name",
@@ -2575,11 +2575,11 @@ func decodeActionsGetEnvironmentPublicKeyParams(r *http.Request) (ActionsGetEnvi
 	return params, nil
 }
 
-func decodeActionsGetEnvironmentSecretParams(r *http.Request) (ActionsGetEnvironmentSecretParams, error) {
+func decodeActionsGetEnvironmentSecretParams(args map[string]string, r *http.Request) (ActionsGetEnvironmentSecretParams, error) {
 	var params ActionsGetEnvironmentSecretParams
 	// Decode path: repository_id.
 	{
-		param := chi.URLParam(r, "repository_id")
+		param := args["repository_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repository_id",
@@ -2610,7 +2610,7 @@ func decodeActionsGetEnvironmentSecretParams(r *http.Request) (ActionsGetEnviron
 	}
 	// Decode path: environment_name.
 	{
-		param := chi.URLParam(r, "environment_name")
+		param := args["environment_name"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "environment_name",
@@ -2641,7 +2641,7 @@ func decodeActionsGetEnvironmentSecretParams(r *http.Request) (ActionsGetEnviron
 	}
 	// Decode path: secret_name.
 	{
-		param := chi.URLParam(r, "secret_name")
+		param := args["secret_name"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "secret_name",
@@ -2673,11 +2673,11 @@ func decodeActionsGetEnvironmentSecretParams(r *http.Request) (ActionsGetEnviron
 	return params, nil
 }
 
-func decodeActionsGetGithubActionsPermissionsOrganizationParams(r *http.Request) (ActionsGetGithubActionsPermissionsOrganizationParams, error) {
+func decodeActionsGetGithubActionsPermissionsOrganizationParams(args map[string]string, r *http.Request) (ActionsGetGithubActionsPermissionsOrganizationParams, error) {
 	var params ActionsGetGithubActionsPermissionsOrganizationParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -2709,11 +2709,11 @@ func decodeActionsGetGithubActionsPermissionsOrganizationParams(r *http.Request)
 	return params, nil
 }
 
-func decodeActionsGetGithubActionsPermissionsRepositoryParams(r *http.Request) (ActionsGetGithubActionsPermissionsRepositoryParams, error) {
+func decodeActionsGetGithubActionsPermissionsRepositoryParams(args map[string]string, r *http.Request) (ActionsGetGithubActionsPermissionsRepositoryParams, error) {
 	var params ActionsGetGithubActionsPermissionsRepositoryParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -2744,7 +2744,7 @@ func decodeActionsGetGithubActionsPermissionsRepositoryParams(r *http.Request) (
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -2776,11 +2776,11 @@ func decodeActionsGetGithubActionsPermissionsRepositoryParams(r *http.Request) (
 	return params, nil
 }
 
-func decodeActionsGetJobForWorkflowRunParams(r *http.Request) (ActionsGetJobForWorkflowRunParams, error) {
+func decodeActionsGetJobForWorkflowRunParams(args map[string]string, r *http.Request) (ActionsGetJobForWorkflowRunParams, error) {
 	var params ActionsGetJobForWorkflowRunParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -2811,7 +2811,7 @@ func decodeActionsGetJobForWorkflowRunParams(r *http.Request) (ActionsGetJobForW
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -2842,7 +2842,7 @@ func decodeActionsGetJobForWorkflowRunParams(r *http.Request) (ActionsGetJobForW
 	}
 	// Decode path: job_id.
 	{
-		param := chi.URLParam(r, "job_id")
+		param := args["job_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "job_id",
@@ -2874,11 +2874,11 @@ func decodeActionsGetJobForWorkflowRunParams(r *http.Request) (ActionsGetJobForW
 	return params, nil
 }
 
-func decodeActionsGetOrgPublicKeyParams(r *http.Request) (ActionsGetOrgPublicKeyParams, error) {
+func decodeActionsGetOrgPublicKeyParams(args map[string]string, r *http.Request) (ActionsGetOrgPublicKeyParams, error) {
 	var params ActionsGetOrgPublicKeyParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -2910,11 +2910,11 @@ func decodeActionsGetOrgPublicKeyParams(r *http.Request) (ActionsGetOrgPublicKey
 	return params, nil
 }
 
-func decodeActionsGetOrgSecretParams(r *http.Request) (ActionsGetOrgSecretParams, error) {
+func decodeActionsGetOrgSecretParams(args map[string]string, r *http.Request) (ActionsGetOrgSecretParams, error) {
 	var params ActionsGetOrgSecretParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -2945,7 +2945,7 @@ func decodeActionsGetOrgSecretParams(r *http.Request) (ActionsGetOrgSecretParams
 	}
 	// Decode path: secret_name.
 	{
-		param := chi.URLParam(r, "secret_name")
+		param := args["secret_name"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "secret_name",
@@ -2977,11 +2977,11 @@ func decodeActionsGetOrgSecretParams(r *http.Request) (ActionsGetOrgSecretParams
 	return params, nil
 }
 
-func decodeActionsGetRepoPublicKeyParams(r *http.Request) (ActionsGetRepoPublicKeyParams, error) {
+func decodeActionsGetRepoPublicKeyParams(args map[string]string, r *http.Request) (ActionsGetRepoPublicKeyParams, error) {
 	var params ActionsGetRepoPublicKeyParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -3012,7 +3012,7 @@ func decodeActionsGetRepoPublicKeyParams(r *http.Request) (ActionsGetRepoPublicK
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -3044,11 +3044,11 @@ func decodeActionsGetRepoPublicKeyParams(r *http.Request) (ActionsGetRepoPublicK
 	return params, nil
 }
 
-func decodeActionsGetRepoSecretParams(r *http.Request) (ActionsGetRepoSecretParams, error) {
+func decodeActionsGetRepoSecretParams(args map[string]string, r *http.Request) (ActionsGetRepoSecretParams, error) {
 	var params ActionsGetRepoSecretParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -3079,7 +3079,7 @@ func decodeActionsGetRepoSecretParams(r *http.Request) (ActionsGetRepoSecretPara
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -3110,7 +3110,7 @@ func decodeActionsGetRepoSecretParams(r *http.Request) (ActionsGetRepoSecretPara
 	}
 	// Decode path: secret_name.
 	{
-		param := chi.URLParam(r, "secret_name")
+		param := args["secret_name"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "secret_name",
@@ -3142,11 +3142,11 @@ func decodeActionsGetRepoSecretParams(r *http.Request) (ActionsGetRepoSecretPara
 	return params, nil
 }
 
-func decodeActionsGetReviewsForRunParams(r *http.Request) (ActionsGetReviewsForRunParams, error) {
+func decodeActionsGetReviewsForRunParams(args map[string]string, r *http.Request) (ActionsGetReviewsForRunParams, error) {
 	var params ActionsGetReviewsForRunParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -3177,7 +3177,7 @@ func decodeActionsGetReviewsForRunParams(r *http.Request) (ActionsGetReviewsForR
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -3208,7 +3208,7 @@ func decodeActionsGetReviewsForRunParams(r *http.Request) (ActionsGetReviewsForR
 	}
 	// Decode path: run_id.
 	{
-		param := chi.URLParam(r, "run_id")
+		param := args["run_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "run_id",
@@ -3240,11 +3240,11 @@ func decodeActionsGetReviewsForRunParams(r *http.Request) (ActionsGetReviewsForR
 	return params, nil
 }
 
-func decodeActionsGetSelfHostedRunnerForOrgParams(r *http.Request) (ActionsGetSelfHostedRunnerForOrgParams, error) {
+func decodeActionsGetSelfHostedRunnerForOrgParams(args map[string]string, r *http.Request) (ActionsGetSelfHostedRunnerForOrgParams, error) {
 	var params ActionsGetSelfHostedRunnerForOrgParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -3275,7 +3275,7 @@ func decodeActionsGetSelfHostedRunnerForOrgParams(r *http.Request) (ActionsGetSe
 	}
 	// Decode path: runner_id.
 	{
-		param := chi.URLParam(r, "runner_id")
+		param := args["runner_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "runner_id",
@@ -3307,11 +3307,11 @@ func decodeActionsGetSelfHostedRunnerForOrgParams(r *http.Request) (ActionsGetSe
 	return params, nil
 }
 
-func decodeActionsGetSelfHostedRunnerForRepoParams(r *http.Request) (ActionsGetSelfHostedRunnerForRepoParams, error) {
+func decodeActionsGetSelfHostedRunnerForRepoParams(args map[string]string, r *http.Request) (ActionsGetSelfHostedRunnerForRepoParams, error) {
 	var params ActionsGetSelfHostedRunnerForRepoParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -3342,7 +3342,7 @@ func decodeActionsGetSelfHostedRunnerForRepoParams(r *http.Request) (ActionsGetS
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -3373,7 +3373,7 @@ func decodeActionsGetSelfHostedRunnerForRepoParams(r *http.Request) (ActionsGetS
 	}
 	// Decode path: runner_id.
 	{
-		param := chi.URLParam(r, "runner_id")
+		param := args["runner_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "runner_id",
@@ -3405,11 +3405,11 @@ func decodeActionsGetSelfHostedRunnerForRepoParams(r *http.Request) (ActionsGetS
 	return params, nil
 }
 
-func decodeActionsGetSelfHostedRunnerGroupForOrgParams(r *http.Request) (ActionsGetSelfHostedRunnerGroupForOrgParams, error) {
+func decodeActionsGetSelfHostedRunnerGroupForOrgParams(args map[string]string, r *http.Request) (ActionsGetSelfHostedRunnerGroupForOrgParams, error) {
 	var params ActionsGetSelfHostedRunnerGroupForOrgParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -3440,7 +3440,7 @@ func decodeActionsGetSelfHostedRunnerGroupForOrgParams(r *http.Request) (Actions
 	}
 	// Decode path: runner_group_id.
 	{
-		param := chi.URLParam(r, "runner_group_id")
+		param := args["runner_group_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "runner_group_id",
@@ -3472,11 +3472,11 @@ func decodeActionsGetSelfHostedRunnerGroupForOrgParams(r *http.Request) (Actions
 	return params, nil
 }
 
-func decodeActionsGetWorkflowRunParams(r *http.Request) (ActionsGetWorkflowRunParams, error) {
+func decodeActionsGetWorkflowRunParams(args map[string]string, r *http.Request) (ActionsGetWorkflowRunParams, error) {
 	var params ActionsGetWorkflowRunParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -3507,7 +3507,7 @@ func decodeActionsGetWorkflowRunParams(r *http.Request) (ActionsGetWorkflowRunPa
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -3538,7 +3538,7 @@ func decodeActionsGetWorkflowRunParams(r *http.Request) (ActionsGetWorkflowRunPa
 	}
 	// Decode path: run_id.
 	{
-		param := chi.URLParam(r, "run_id")
+		param := args["run_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "run_id",
@@ -3570,11 +3570,11 @@ func decodeActionsGetWorkflowRunParams(r *http.Request) (ActionsGetWorkflowRunPa
 	return params, nil
 }
 
-func decodeActionsGetWorkflowRunUsageParams(r *http.Request) (ActionsGetWorkflowRunUsageParams, error) {
+func decodeActionsGetWorkflowRunUsageParams(args map[string]string, r *http.Request) (ActionsGetWorkflowRunUsageParams, error) {
 	var params ActionsGetWorkflowRunUsageParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -3605,7 +3605,7 @@ func decodeActionsGetWorkflowRunUsageParams(r *http.Request) (ActionsGetWorkflow
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -3636,7 +3636,7 @@ func decodeActionsGetWorkflowRunUsageParams(r *http.Request) (ActionsGetWorkflow
 	}
 	// Decode path: run_id.
 	{
-		param := chi.URLParam(r, "run_id")
+		param := args["run_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "run_id",
@@ -3668,11 +3668,11 @@ func decodeActionsGetWorkflowRunUsageParams(r *http.Request) (ActionsGetWorkflow
 	return params, nil
 }
 
-func decodeActionsListArtifactsForRepoParams(r *http.Request) (ActionsListArtifactsForRepoParams, error) {
+func decodeActionsListArtifactsForRepoParams(args map[string]string, r *http.Request) (ActionsListArtifactsForRepoParams, error) {
 	var params ActionsListArtifactsForRepoParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -3703,7 +3703,7 @@ func decodeActionsListArtifactsForRepoParams(r *http.Request) (ActionsListArtifa
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -3805,11 +3805,11 @@ func decodeActionsListArtifactsForRepoParams(r *http.Request) (ActionsListArtifa
 	return params, nil
 }
 
-func decodeActionsListEnvironmentSecretsParams(r *http.Request) (ActionsListEnvironmentSecretsParams, error) {
+func decodeActionsListEnvironmentSecretsParams(args map[string]string, r *http.Request) (ActionsListEnvironmentSecretsParams, error) {
 	var params ActionsListEnvironmentSecretsParams
 	// Decode path: repository_id.
 	{
-		param := chi.URLParam(r, "repository_id")
+		param := args["repository_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repository_id",
@@ -3840,7 +3840,7 @@ func decodeActionsListEnvironmentSecretsParams(r *http.Request) (ActionsListEnvi
 	}
 	// Decode path: environment_name.
 	{
-		param := chi.URLParam(r, "environment_name")
+		param := args["environment_name"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "environment_name",
@@ -3942,11 +3942,11 @@ func decodeActionsListEnvironmentSecretsParams(r *http.Request) (ActionsListEnvi
 	return params, nil
 }
 
-func decodeActionsListJobsForWorkflowRunParams(r *http.Request) (ActionsListJobsForWorkflowRunParams, error) {
+func decodeActionsListJobsForWorkflowRunParams(args map[string]string, r *http.Request) (ActionsListJobsForWorkflowRunParams, error) {
 	var params ActionsListJobsForWorkflowRunParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -3977,7 +3977,7 @@ func decodeActionsListJobsForWorkflowRunParams(r *http.Request) (ActionsListJobs
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -4008,7 +4008,7 @@ func decodeActionsListJobsForWorkflowRunParams(r *http.Request) (ActionsListJobs
 	}
 	// Decode path: run_id.
 	{
-		param := chi.URLParam(r, "run_id")
+		param := args["run_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "run_id",
@@ -4164,11 +4164,11 @@ func decodeActionsListJobsForWorkflowRunParams(r *http.Request) (ActionsListJobs
 	return params, nil
 }
 
-func decodeActionsListOrgSecretsParams(r *http.Request) (ActionsListOrgSecretsParams, error) {
+func decodeActionsListOrgSecretsParams(args map[string]string, r *http.Request) (ActionsListOrgSecretsParams, error) {
 	var params ActionsListOrgSecretsParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -4270,11 +4270,11 @@ func decodeActionsListOrgSecretsParams(r *http.Request) (ActionsListOrgSecretsPa
 	return params, nil
 }
 
-func decodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams(r *http.Request) (ActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams, error) {
+func decodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams(args map[string]string, r *http.Request) (ActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams, error) {
 	var params ActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -4305,7 +4305,7 @@ func decodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams(r *http.Reque
 	}
 	// Decode path: runner_group_id.
 	{
-		param := chi.URLParam(r, "runner_group_id")
+		param := args["runner_group_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "runner_group_id",
@@ -4407,11 +4407,11 @@ func decodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams(r *http.Reque
 	return params, nil
 }
 
-func decodeActionsListRepoSecretsParams(r *http.Request) (ActionsListRepoSecretsParams, error) {
+func decodeActionsListRepoSecretsParams(args map[string]string, r *http.Request) (ActionsListRepoSecretsParams, error) {
 	var params ActionsListRepoSecretsParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -4442,7 +4442,7 @@ func decodeActionsListRepoSecretsParams(r *http.Request) (ActionsListRepoSecrets
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -4544,11 +4544,11 @@ func decodeActionsListRepoSecretsParams(r *http.Request) (ActionsListRepoSecrets
 	return params, nil
 }
 
-func decodeActionsListRepoWorkflowsParams(r *http.Request) (ActionsListRepoWorkflowsParams, error) {
+func decodeActionsListRepoWorkflowsParams(args map[string]string, r *http.Request) (ActionsListRepoWorkflowsParams, error) {
 	var params ActionsListRepoWorkflowsParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -4579,7 +4579,7 @@ func decodeActionsListRepoWorkflowsParams(r *http.Request) (ActionsListRepoWorkf
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -4681,11 +4681,11 @@ func decodeActionsListRepoWorkflowsParams(r *http.Request) (ActionsListRepoWorkf
 	return params, nil
 }
 
-func decodeActionsListRunnerApplicationsForOrgParams(r *http.Request) (ActionsListRunnerApplicationsForOrgParams, error) {
+func decodeActionsListRunnerApplicationsForOrgParams(args map[string]string, r *http.Request) (ActionsListRunnerApplicationsForOrgParams, error) {
 	var params ActionsListRunnerApplicationsForOrgParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -4717,11 +4717,11 @@ func decodeActionsListRunnerApplicationsForOrgParams(r *http.Request) (ActionsLi
 	return params, nil
 }
 
-func decodeActionsListRunnerApplicationsForRepoParams(r *http.Request) (ActionsListRunnerApplicationsForRepoParams, error) {
+func decodeActionsListRunnerApplicationsForRepoParams(args map[string]string, r *http.Request) (ActionsListRunnerApplicationsForRepoParams, error) {
 	var params ActionsListRunnerApplicationsForRepoParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -4752,7 +4752,7 @@ func decodeActionsListRunnerApplicationsForRepoParams(r *http.Request) (ActionsL
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -4784,11 +4784,11 @@ func decodeActionsListRunnerApplicationsForRepoParams(r *http.Request) (ActionsL
 	return params, nil
 }
 
-func decodeActionsListSelectedReposForOrgSecretParams(r *http.Request) (ActionsListSelectedReposForOrgSecretParams, error) {
+func decodeActionsListSelectedReposForOrgSecretParams(args map[string]string, r *http.Request) (ActionsListSelectedReposForOrgSecretParams, error) {
 	var params ActionsListSelectedReposForOrgSecretParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -4819,7 +4819,7 @@ func decodeActionsListSelectedReposForOrgSecretParams(r *http.Request) (ActionsL
 	}
 	// Decode path: secret_name.
 	{
-		param := chi.URLParam(r, "secret_name")
+		param := args["secret_name"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "secret_name",
@@ -4921,11 +4921,11 @@ func decodeActionsListSelectedReposForOrgSecretParams(r *http.Request) (ActionsL
 	return params, nil
 }
 
-func decodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams(r *http.Request) (ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams, error) {
+func decodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams(args map[string]string, r *http.Request) (ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams, error) {
 	var params ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -5027,11 +5027,11 @@ func decodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams
 	return params, nil
 }
 
-func decodeActionsListSelfHostedRunnerGroupsForOrgParams(r *http.Request) (ActionsListSelfHostedRunnerGroupsForOrgParams, error) {
+func decodeActionsListSelfHostedRunnerGroupsForOrgParams(args map[string]string, r *http.Request) (ActionsListSelfHostedRunnerGroupsForOrgParams, error) {
 	var params ActionsListSelfHostedRunnerGroupsForOrgParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -5133,11 +5133,11 @@ func decodeActionsListSelfHostedRunnerGroupsForOrgParams(r *http.Request) (Actio
 	return params, nil
 }
 
-func decodeActionsListSelfHostedRunnersForOrgParams(r *http.Request) (ActionsListSelfHostedRunnersForOrgParams, error) {
+func decodeActionsListSelfHostedRunnersForOrgParams(args map[string]string, r *http.Request) (ActionsListSelfHostedRunnersForOrgParams, error) {
 	var params ActionsListSelfHostedRunnersForOrgParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -5239,11 +5239,11 @@ func decodeActionsListSelfHostedRunnersForOrgParams(r *http.Request) (ActionsLis
 	return params, nil
 }
 
-func decodeActionsListSelfHostedRunnersForRepoParams(r *http.Request) (ActionsListSelfHostedRunnersForRepoParams, error) {
+func decodeActionsListSelfHostedRunnersForRepoParams(args map[string]string, r *http.Request) (ActionsListSelfHostedRunnersForRepoParams, error) {
 	var params ActionsListSelfHostedRunnersForRepoParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -5274,7 +5274,7 @@ func decodeActionsListSelfHostedRunnersForRepoParams(r *http.Request) (ActionsLi
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -5376,11 +5376,11 @@ func decodeActionsListSelfHostedRunnersForRepoParams(r *http.Request) (ActionsLi
 	return params, nil
 }
 
-func decodeActionsListSelfHostedRunnersInGroupForOrgParams(r *http.Request) (ActionsListSelfHostedRunnersInGroupForOrgParams, error) {
+func decodeActionsListSelfHostedRunnersInGroupForOrgParams(args map[string]string, r *http.Request) (ActionsListSelfHostedRunnersInGroupForOrgParams, error) {
 	var params ActionsListSelfHostedRunnersInGroupForOrgParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -5411,7 +5411,7 @@ func decodeActionsListSelfHostedRunnersInGroupForOrgParams(r *http.Request) (Act
 	}
 	// Decode path: runner_group_id.
 	{
-		param := chi.URLParam(r, "runner_group_id")
+		param := args["runner_group_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "runner_group_id",
@@ -5513,11 +5513,11 @@ func decodeActionsListSelfHostedRunnersInGroupForOrgParams(r *http.Request) (Act
 	return params, nil
 }
 
-func decodeActionsListWorkflowRunArtifactsParams(r *http.Request) (ActionsListWorkflowRunArtifactsParams, error) {
+func decodeActionsListWorkflowRunArtifactsParams(args map[string]string, r *http.Request) (ActionsListWorkflowRunArtifactsParams, error) {
 	var params ActionsListWorkflowRunArtifactsParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -5548,7 +5548,7 @@ func decodeActionsListWorkflowRunArtifactsParams(r *http.Request) (ActionsListWo
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -5579,7 +5579,7 @@ func decodeActionsListWorkflowRunArtifactsParams(r *http.Request) (ActionsListWo
 	}
 	// Decode path: run_id.
 	{
-		param := chi.URLParam(r, "run_id")
+		param := args["run_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "run_id",
@@ -5681,11 +5681,11 @@ func decodeActionsListWorkflowRunArtifactsParams(r *http.Request) (ActionsListWo
 	return params, nil
 }
 
-func decodeActionsListWorkflowRunsForRepoParams(r *http.Request) (ActionsListWorkflowRunsForRepoParams, error) {
+func decodeActionsListWorkflowRunsForRepoParams(args map[string]string, r *http.Request) (ActionsListWorkflowRunsForRepoParams, error) {
 	var params ActionsListWorkflowRunsForRepoParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -5716,7 +5716,7 @@ func decodeActionsListWorkflowRunsForRepoParams(r *http.Request) (ActionsListWor
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -6012,11 +6012,11 @@ func decodeActionsListWorkflowRunsForRepoParams(r *http.Request) (ActionsListWor
 	return params, nil
 }
 
-func decodeActionsReRunWorkflowParams(r *http.Request) (ActionsReRunWorkflowParams, error) {
+func decodeActionsReRunWorkflowParams(args map[string]string, r *http.Request) (ActionsReRunWorkflowParams, error) {
 	var params ActionsReRunWorkflowParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -6047,7 +6047,7 @@ func decodeActionsReRunWorkflowParams(r *http.Request) (ActionsReRunWorkflowPara
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -6078,7 +6078,7 @@ func decodeActionsReRunWorkflowParams(r *http.Request) (ActionsReRunWorkflowPara
 	}
 	// Decode path: run_id.
 	{
-		param := chi.URLParam(r, "run_id")
+		param := args["run_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "run_id",
@@ -6110,11 +6110,11 @@ func decodeActionsReRunWorkflowParams(r *http.Request) (ActionsReRunWorkflowPara
 	return params, nil
 }
 
-func decodeActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams(r *http.Request) (ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams, error) {
+func decodeActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams(args map[string]string, r *http.Request) (ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams, error) {
 	var params ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -6145,7 +6145,7 @@ func decodeActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams(r *http.Req
 	}
 	// Decode path: runner_group_id.
 	{
-		param := chi.URLParam(r, "runner_group_id")
+		param := args["runner_group_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "runner_group_id",
@@ -6176,7 +6176,7 @@ func decodeActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams(r *http.Req
 	}
 	// Decode path: repository_id.
 	{
-		param := chi.URLParam(r, "repository_id")
+		param := args["repository_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repository_id",
@@ -6208,11 +6208,11 @@ func decodeActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams(r *http.Req
 	return params, nil
 }
 
-func decodeActionsRemoveSelectedRepoFromOrgSecretParams(r *http.Request) (ActionsRemoveSelectedRepoFromOrgSecretParams, error) {
+func decodeActionsRemoveSelectedRepoFromOrgSecretParams(args map[string]string, r *http.Request) (ActionsRemoveSelectedRepoFromOrgSecretParams, error) {
 	var params ActionsRemoveSelectedRepoFromOrgSecretParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -6243,7 +6243,7 @@ func decodeActionsRemoveSelectedRepoFromOrgSecretParams(r *http.Request) (Action
 	}
 	// Decode path: secret_name.
 	{
-		param := chi.URLParam(r, "secret_name")
+		param := args["secret_name"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "secret_name",
@@ -6274,7 +6274,7 @@ func decodeActionsRemoveSelectedRepoFromOrgSecretParams(r *http.Request) (Action
 	}
 	// Decode path: repository_id.
 	{
-		param := chi.URLParam(r, "repository_id")
+		param := args["repository_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repository_id",
@@ -6306,11 +6306,11 @@ func decodeActionsRemoveSelectedRepoFromOrgSecretParams(r *http.Request) (Action
 	return params, nil
 }
 
-func decodeActionsRemoveSelfHostedRunnerFromGroupForOrgParams(r *http.Request) (ActionsRemoveSelfHostedRunnerFromGroupForOrgParams, error) {
+func decodeActionsRemoveSelfHostedRunnerFromGroupForOrgParams(args map[string]string, r *http.Request) (ActionsRemoveSelfHostedRunnerFromGroupForOrgParams, error) {
 	var params ActionsRemoveSelfHostedRunnerFromGroupForOrgParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -6341,7 +6341,7 @@ func decodeActionsRemoveSelfHostedRunnerFromGroupForOrgParams(r *http.Request) (
 	}
 	// Decode path: runner_group_id.
 	{
-		param := chi.URLParam(r, "runner_group_id")
+		param := args["runner_group_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "runner_group_id",
@@ -6372,7 +6372,7 @@ func decodeActionsRemoveSelfHostedRunnerFromGroupForOrgParams(r *http.Request) (
 	}
 	// Decode path: runner_id.
 	{
-		param := chi.URLParam(r, "runner_id")
+		param := args["runner_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "runner_id",
@@ -6404,11 +6404,11 @@ func decodeActionsRemoveSelfHostedRunnerFromGroupForOrgParams(r *http.Request) (
 	return params, nil
 }
 
-func decodeActionsRetryWorkflowParams(r *http.Request) (ActionsRetryWorkflowParams, error) {
+func decodeActionsRetryWorkflowParams(args map[string]string, r *http.Request) (ActionsRetryWorkflowParams, error) {
 	var params ActionsRetryWorkflowParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -6439,7 +6439,7 @@ func decodeActionsRetryWorkflowParams(r *http.Request) (ActionsRetryWorkflowPara
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -6470,7 +6470,7 @@ func decodeActionsRetryWorkflowParams(r *http.Request) (ActionsRetryWorkflowPara
 	}
 	// Decode path: run_id.
 	{
-		param := chi.URLParam(r, "run_id")
+		param := args["run_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "run_id",
@@ -6502,11 +6502,11 @@ func decodeActionsRetryWorkflowParams(r *http.Request) (ActionsRetryWorkflowPara
 	return params, nil
 }
 
-func decodeActionsSetAllowedActionsOrganizationParams(r *http.Request) (ActionsSetAllowedActionsOrganizationParams, error) {
+func decodeActionsSetAllowedActionsOrganizationParams(args map[string]string, r *http.Request) (ActionsSetAllowedActionsOrganizationParams, error) {
 	var params ActionsSetAllowedActionsOrganizationParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -6538,11 +6538,11 @@ func decodeActionsSetAllowedActionsOrganizationParams(r *http.Request) (ActionsS
 	return params, nil
 }
 
-func decodeActionsSetAllowedActionsRepositoryParams(r *http.Request) (ActionsSetAllowedActionsRepositoryParams, error) {
+func decodeActionsSetAllowedActionsRepositoryParams(args map[string]string, r *http.Request) (ActionsSetAllowedActionsRepositoryParams, error) {
 	var params ActionsSetAllowedActionsRepositoryParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -6573,7 +6573,7 @@ func decodeActionsSetAllowedActionsRepositoryParams(r *http.Request) (ActionsSet
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -6605,11 +6605,11 @@ func decodeActionsSetAllowedActionsRepositoryParams(r *http.Request) (ActionsSet
 	return params, nil
 }
 
-func decodeActionsSetGithubActionsPermissionsOrganizationParams(r *http.Request) (ActionsSetGithubActionsPermissionsOrganizationParams, error) {
+func decodeActionsSetGithubActionsPermissionsOrganizationParams(args map[string]string, r *http.Request) (ActionsSetGithubActionsPermissionsOrganizationParams, error) {
 	var params ActionsSetGithubActionsPermissionsOrganizationParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -6641,11 +6641,11 @@ func decodeActionsSetGithubActionsPermissionsOrganizationParams(r *http.Request)
 	return params, nil
 }
 
-func decodeActionsSetGithubActionsPermissionsRepositoryParams(r *http.Request) (ActionsSetGithubActionsPermissionsRepositoryParams, error) {
+func decodeActionsSetGithubActionsPermissionsRepositoryParams(args map[string]string, r *http.Request) (ActionsSetGithubActionsPermissionsRepositoryParams, error) {
 	var params ActionsSetGithubActionsPermissionsRepositoryParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -6676,7 +6676,7 @@ func decodeActionsSetGithubActionsPermissionsRepositoryParams(r *http.Request) (
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -6708,11 +6708,11 @@ func decodeActionsSetGithubActionsPermissionsRepositoryParams(r *http.Request) (
 	return params, nil
 }
 
-func decodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams(r *http.Request) (ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams, error) {
+func decodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams(args map[string]string, r *http.Request) (ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams, error) {
 	var params ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -6743,7 +6743,7 @@ func decodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams(r *http.Reques
 	}
 	// Decode path: runner_group_id.
 	{
-		param := chi.URLParam(r, "runner_group_id")
+		param := args["runner_group_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "runner_group_id",
@@ -6775,11 +6775,11 @@ func decodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams(r *http.Reques
 	return params, nil
 }
 
-func decodeActionsSetSelectedReposForOrgSecretParams(r *http.Request) (ActionsSetSelectedReposForOrgSecretParams, error) {
+func decodeActionsSetSelectedReposForOrgSecretParams(args map[string]string, r *http.Request) (ActionsSetSelectedReposForOrgSecretParams, error) {
 	var params ActionsSetSelectedReposForOrgSecretParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -6810,7 +6810,7 @@ func decodeActionsSetSelectedReposForOrgSecretParams(r *http.Request) (ActionsSe
 	}
 	// Decode path: secret_name.
 	{
-		param := chi.URLParam(r, "secret_name")
+		param := args["secret_name"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "secret_name",
@@ -6842,11 +6842,11 @@ func decodeActionsSetSelectedReposForOrgSecretParams(r *http.Request) (ActionsSe
 	return params, nil
 }
 
-func decodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams(r *http.Request) (ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams, error) {
+func decodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams(args map[string]string, r *http.Request) (ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams, error) {
 	var params ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -6878,11 +6878,11 @@ func decodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams(
 	return params, nil
 }
 
-func decodeActionsSetSelfHostedRunnersInGroupForOrgParams(r *http.Request) (ActionsSetSelfHostedRunnersInGroupForOrgParams, error) {
+func decodeActionsSetSelfHostedRunnersInGroupForOrgParams(args map[string]string, r *http.Request) (ActionsSetSelfHostedRunnersInGroupForOrgParams, error) {
 	var params ActionsSetSelfHostedRunnersInGroupForOrgParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -6913,7 +6913,7 @@ func decodeActionsSetSelfHostedRunnersInGroupForOrgParams(r *http.Request) (Acti
 	}
 	// Decode path: runner_group_id.
 	{
-		param := chi.URLParam(r, "runner_group_id")
+		param := args["runner_group_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "runner_group_id",
@@ -6945,11 +6945,11 @@ func decodeActionsSetSelfHostedRunnersInGroupForOrgParams(r *http.Request) (Acti
 	return params, nil
 }
 
-func decodeActionsUpdateSelfHostedRunnerGroupForOrgParams(r *http.Request) (ActionsUpdateSelfHostedRunnerGroupForOrgParams, error) {
+func decodeActionsUpdateSelfHostedRunnerGroupForOrgParams(args map[string]string, r *http.Request) (ActionsUpdateSelfHostedRunnerGroupForOrgParams, error) {
 	var params ActionsUpdateSelfHostedRunnerGroupForOrgParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -6980,7 +6980,7 @@ func decodeActionsUpdateSelfHostedRunnerGroupForOrgParams(r *http.Request) (Acti
 	}
 	// Decode path: runner_group_id.
 	{
-		param := chi.URLParam(r, "runner_group_id")
+		param := args["runner_group_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "runner_group_id",
@@ -7012,11 +7012,11 @@ func decodeActionsUpdateSelfHostedRunnerGroupForOrgParams(r *http.Request) (Acti
 	return params, nil
 }
 
-func decodeActivityCheckRepoIsStarredByAuthenticatedUserParams(r *http.Request) (ActivityCheckRepoIsStarredByAuthenticatedUserParams, error) {
+func decodeActivityCheckRepoIsStarredByAuthenticatedUserParams(args map[string]string, r *http.Request) (ActivityCheckRepoIsStarredByAuthenticatedUserParams, error) {
 	var params ActivityCheckRepoIsStarredByAuthenticatedUserParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -7047,7 +7047,7 @@ func decodeActivityCheckRepoIsStarredByAuthenticatedUserParams(r *http.Request) 
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -7079,11 +7079,11 @@ func decodeActivityCheckRepoIsStarredByAuthenticatedUserParams(r *http.Request) 
 	return params, nil
 }
 
-func decodeActivityDeleteRepoSubscriptionParams(r *http.Request) (ActivityDeleteRepoSubscriptionParams, error) {
+func decodeActivityDeleteRepoSubscriptionParams(args map[string]string, r *http.Request) (ActivityDeleteRepoSubscriptionParams, error) {
 	var params ActivityDeleteRepoSubscriptionParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -7114,7 +7114,7 @@ func decodeActivityDeleteRepoSubscriptionParams(r *http.Request) (ActivityDelete
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -7146,11 +7146,11 @@ func decodeActivityDeleteRepoSubscriptionParams(r *http.Request) (ActivityDelete
 	return params, nil
 }
 
-func decodeActivityDeleteThreadSubscriptionParams(r *http.Request) (ActivityDeleteThreadSubscriptionParams, error) {
+func decodeActivityDeleteThreadSubscriptionParams(args map[string]string, r *http.Request) (ActivityDeleteThreadSubscriptionParams, error) {
 	var params ActivityDeleteThreadSubscriptionParams
 	// Decode path: thread_id.
 	{
-		param := chi.URLParam(r, "thread_id")
+		param := args["thread_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "thread_id",
@@ -7182,11 +7182,11 @@ func decodeActivityDeleteThreadSubscriptionParams(r *http.Request) (ActivityDele
 	return params, nil
 }
 
-func decodeActivityGetRepoSubscriptionParams(r *http.Request) (ActivityGetRepoSubscriptionParams, error) {
+func decodeActivityGetRepoSubscriptionParams(args map[string]string, r *http.Request) (ActivityGetRepoSubscriptionParams, error) {
 	var params ActivityGetRepoSubscriptionParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -7217,7 +7217,7 @@ func decodeActivityGetRepoSubscriptionParams(r *http.Request) (ActivityGetRepoSu
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -7249,11 +7249,11 @@ func decodeActivityGetRepoSubscriptionParams(r *http.Request) (ActivityGetRepoSu
 	return params, nil
 }
 
-func decodeActivityGetThreadParams(r *http.Request) (ActivityGetThreadParams, error) {
+func decodeActivityGetThreadParams(args map[string]string, r *http.Request) (ActivityGetThreadParams, error) {
 	var params ActivityGetThreadParams
 	// Decode path: thread_id.
 	{
-		param := chi.URLParam(r, "thread_id")
+		param := args["thread_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "thread_id",
@@ -7285,11 +7285,11 @@ func decodeActivityGetThreadParams(r *http.Request) (ActivityGetThreadParams, er
 	return params, nil
 }
 
-func decodeActivityGetThreadSubscriptionForAuthenticatedUserParams(r *http.Request) (ActivityGetThreadSubscriptionForAuthenticatedUserParams, error) {
+func decodeActivityGetThreadSubscriptionForAuthenticatedUserParams(args map[string]string, r *http.Request) (ActivityGetThreadSubscriptionForAuthenticatedUserParams, error) {
 	var params ActivityGetThreadSubscriptionForAuthenticatedUserParams
 	// Decode path: thread_id.
 	{
-		param := chi.URLParam(r, "thread_id")
+		param := args["thread_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "thread_id",
@@ -7321,11 +7321,11 @@ func decodeActivityGetThreadSubscriptionForAuthenticatedUserParams(r *http.Reque
 	return params, nil
 }
 
-func decodeActivityListEventsForAuthenticatedUserParams(r *http.Request) (ActivityListEventsForAuthenticatedUserParams, error) {
+func decodeActivityListEventsForAuthenticatedUserParams(args map[string]string, r *http.Request) (ActivityListEventsForAuthenticatedUserParams, error) {
 	var params ActivityListEventsForAuthenticatedUserParams
 	// Decode path: username.
 	{
-		param := chi.URLParam(r, "username")
+		param := args["username"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "username",
@@ -7427,11 +7427,11 @@ func decodeActivityListEventsForAuthenticatedUserParams(r *http.Request) (Activi
 	return params, nil
 }
 
-func decodeActivityListOrgEventsForAuthenticatedUserParams(r *http.Request) (ActivityListOrgEventsForAuthenticatedUserParams, error) {
+func decodeActivityListOrgEventsForAuthenticatedUserParams(args map[string]string, r *http.Request) (ActivityListOrgEventsForAuthenticatedUserParams, error) {
 	var params ActivityListOrgEventsForAuthenticatedUserParams
 	// Decode path: username.
 	{
-		param := chi.URLParam(r, "username")
+		param := args["username"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "username",
@@ -7462,7 +7462,7 @@ func decodeActivityListOrgEventsForAuthenticatedUserParams(r *http.Request) (Act
 	}
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -7564,7 +7564,7 @@ func decodeActivityListOrgEventsForAuthenticatedUserParams(r *http.Request) (Act
 	return params, nil
 }
 
-func decodeActivityListPublicEventsParams(r *http.Request) (ActivityListPublicEventsParams, error) {
+func decodeActivityListPublicEventsParams(args map[string]string, r *http.Request) (ActivityListPublicEventsParams, error) {
 	var params ActivityListPublicEventsParams
 	// Decode query: per_page.
 	{
@@ -7639,11 +7639,11 @@ func decodeActivityListPublicEventsParams(r *http.Request) (ActivityListPublicEv
 	return params, nil
 }
 
-func decodeActivityListPublicEventsForRepoNetworkParams(r *http.Request) (ActivityListPublicEventsForRepoNetworkParams, error) {
+func decodeActivityListPublicEventsForRepoNetworkParams(args map[string]string, r *http.Request) (ActivityListPublicEventsForRepoNetworkParams, error) {
 	var params ActivityListPublicEventsForRepoNetworkParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -7674,7 +7674,7 @@ func decodeActivityListPublicEventsForRepoNetworkParams(r *http.Request) (Activi
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -7776,11 +7776,11 @@ func decodeActivityListPublicEventsForRepoNetworkParams(r *http.Request) (Activi
 	return params, nil
 }
 
-func decodeActivityListPublicEventsForUserParams(r *http.Request) (ActivityListPublicEventsForUserParams, error) {
+func decodeActivityListPublicEventsForUserParams(args map[string]string, r *http.Request) (ActivityListPublicEventsForUserParams, error) {
 	var params ActivityListPublicEventsForUserParams
 	// Decode path: username.
 	{
-		param := chi.URLParam(r, "username")
+		param := args["username"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "username",
@@ -7882,11 +7882,11 @@ func decodeActivityListPublicEventsForUserParams(r *http.Request) (ActivityListP
 	return params, nil
 }
 
-func decodeActivityListPublicOrgEventsParams(r *http.Request) (ActivityListPublicOrgEventsParams, error) {
+func decodeActivityListPublicOrgEventsParams(args map[string]string, r *http.Request) (ActivityListPublicOrgEventsParams, error) {
 	var params ActivityListPublicOrgEventsParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -7988,11 +7988,11 @@ func decodeActivityListPublicOrgEventsParams(r *http.Request) (ActivityListPubli
 	return params, nil
 }
 
-func decodeActivityListReceivedEventsForUserParams(r *http.Request) (ActivityListReceivedEventsForUserParams, error) {
+func decodeActivityListReceivedEventsForUserParams(args map[string]string, r *http.Request) (ActivityListReceivedEventsForUserParams, error) {
 	var params ActivityListReceivedEventsForUserParams
 	// Decode path: username.
 	{
-		param := chi.URLParam(r, "username")
+		param := args["username"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "username",
@@ -8094,11 +8094,11 @@ func decodeActivityListReceivedEventsForUserParams(r *http.Request) (ActivityLis
 	return params, nil
 }
 
-func decodeActivityListReceivedPublicEventsForUserParams(r *http.Request) (ActivityListReceivedPublicEventsForUserParams, error) {
+func decodeActivityListReceivedPublicEventsForUserParams(args map[string]string, r *http.Request) (ActivityListReceivedPublicEventsForUserParams, error) {
 	var params ActivityListReceivedPublicEventsForUserParams
 	// Decode path: username.
 	{
-		param := chi.URLParam(r, "username")
+		param := args["username"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "username",
@@ -8200,11 +8200,11 @@ func decodeActivityListReceivedPublicEventsForUserParams(r *http.Request) (Activ
 	return params, nil
 }
 
-func decodeActivityListRepoEventsParams(r *http.Request) (ActivityListRepoEventsParams, error) {
+func decodeActivityListRepoEventsParams(args map[string]string, r *http.Request) (ActivityListRepoEventsParams, error) {
 	var params ActivityListRepoEventsParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -8235,7 +8235,7 @@ func decodeActivityListRepoEventsParams(r *http.Request) (ActivityListRepoEvents
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -8337,11 +8337,11 @@ func decodeActivityListRepoEventsParams(r *http.Request) (ActivityListRepoEvents
 	return params, nil
 }
 
-func decodeActivityListRepoNotificationsForAuthenticatedUserParams(r *http.Request) (ActivityListRepoNotificationsForAuthenticatedUserParams, error) {
+func decodeActivityListRepoNotificationsForAuthenticatedUserParams(args map[string]string, r *http.Request) (ActivityListRepoNotificationsForAuthenticatedUserParams, error) {
 	var params ActivityListRepoNotificationsForAuthenticatedUserParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -8372,7 +8372,7 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(r *http.Reque
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -8614,7 +8614,7 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(r *http.Reque
 	return params, nil
 }
 
-func decodeActivityListReposStarredByAuthenticatedUserParams(r *http.Request) (ActivityListReposStarredByAuthenticatedUserParams, error) {
+func decodeActivityListReposStarredByAuthenticatedUserParams(args map[string]string, r *http.Request) (ActivityListReposStarredByAuthenticatedUserParams, error) {
 	var params ActivityListReposStarredByAuthenticatedUserParams
 	// Decode query: sort.
 	{
@@ -8797,11 +8797,11 @@ func decodeActivityListReposStarredByAuthenticatedUserParams(r *http.Request) (A
 	return params, nil
 }
 
-func decodeActivityListReposWatchedByUserParams(r *http.Request) (ActivityListReposWatchedByUserParams, error) {
+func decodeActivityListReposWatchedByUserParams(args map[string]string, r *http.Request) (ActivityListReposWatchedByUserParams, error) {
 	var params ActivityListReposWatchedByUserParams
 	// Decode path: username.
 	{
-		param := chi.URLParam(r, "username")
+		param := args["username"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "username",
@@ -8903,7 +8903,7 @@ func decodeActivityListReposWatchedByUserParams(r *http.Request) (ActivityListRe
 	return params, nil
 }
 
-func decodeActivityListWatchedReposForAuthenticatedUserParams(r *http.Request) (ActivityListWatchedReposForAuthenticatedUserParams, error) {
+func decodeActivityListWatchedReposForAuthenticatedUserParams(args map[string]string, r *http.Request) (ActivityListWatchedReposForAuthenticatedUserParams, error) {
 	var params ActivityListWatchedReposForAuthenticatedUserParams
 	// Decode query: per_page.
 	{
@@ -8978,11 +8978,11 @@ func decodeActivityListWatchedReposForAuthenticatedUserParams(r *http.Request) (
 	return params, nil
 }
 
-func decodeActivityListWatchersForRepoParams(r *http.Request) (ActivityListWatchersForRepoParams, error) {
+func decodeActivityListWatchersForRepoParams(args map[string]string, r *http.Request) (ActivityListWatchersForRepoParams, error) {
 	var params ActivityListWatchersForRepoParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -9013,7 +9013,7 @@ func decodeActivityListWatchersForRepoParams(r *http.Request) (ActivityListWatch
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -9115,11 +9115,11 @@ func decodeActivityListWatchersForRepoParams(r *http.Request) (ActivityListWatch
 	return params, nil
 }
 
-func decodeActivityMarkRepoNotificationsAsReadParams(r *http.Request) (ActivityMarkRepoNotificationsAsReadParams, error) {
+func decodeActivityMarkRepoNotificationsAsReadParams(args map[string]string, r *http.Request) (ActivityMarkRepoNotificationsAsReadParams, error) {
 	var params ActivityMarkRepoNotificationsAsReadParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -9150,7 +9150,7 @@ func decodeActivityMarkRepoNotificationsAsReadParams(r *http.Request) (ActivityM
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -9182,11 +9182,11 @@ func decodeActivityMarkRepoNotificationsAsReadParams(r *http.Request) (ActivityM
 	return params, nil
 }
 
-func decodeActivityMarkThreadAsReadParams(r *http.Request) (ActivityMarkThreadAsReadParams, error) {
+func decodeActivityMarkThreadAsReadParams(args map[string]string, r *http.Request) (ActivityMarkThreadAsReadParams, error) {
 	var params ActivityMarkThreadAsReadParams
 	// Decode path: thread_id.
 	{
-		param := chi.URLParam(r, "thread_id")
+		param := args["thread_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "thread_id",
@@ -9218,11 +9218,11 @@ func decodeActivityMarkThreadAsReadParams(r *http.Request) (ActivityMarkThreadAs
 	return params, nil
 }
 
-func decodeActivitySetRepoSubscriptionParams(r *http.Request) (ActivitySetRepoSubscriptionParams, error) {
+func decodeActivitySetRepoSubscriptionParams(args map[string]string, r *http.Request) (ActivitySetRepoSubscriptionParams, error) {
 	var params ActivitySetRepoSubscriptionParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -9253,7 +9253,7 @@ func decodeActivitySetRepoSubscriptionParams(r *http.Request) (ActivitySetRepoSu
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -9285,11 +9285,11 @@ func decodeActivitySetRepoSubscriptionParams(r *http.Request) (ActivitySetRepoSu
 	return params, nil
 }
 
-func decodeActivitySetThreadSubscriptionParams(r *http.Request) (ActivitySetThreadSubscriptionParams, error) {
+func decodeActivitySetThreadSubscriptionParams(args map[string]string, r *http.Request) (ActivitySetThreadSubscriptionParams, error) {
 	var params ActivitySetThreadSubscriptionParams
 	// Decode path: thread_id.
 	{
-		param := chi.URLParam(r, "thread_id")
+		param := args["thread_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "thread_id",
@@ -9321,11 +9321,11 @@ func decodeActivitySetThreadSubscriptionParams(r *http.Request) (ActivitySetThre
 	return params, nil
 }
 
-func decodeActivityStarRepoForAuthenticatedUserParams(r *http.Request) (ActivityStarRepoForAuthenticatedUserParams, error) {
+func decodeActivityStarRepoForAuthenticatedUserParams(args map[string]string, r *http.Request) (ActivityStarRepoForAuthenticatedUserParams, error) {
 	var params ActivityStarRepoForAuthenticatedUserParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -9356,7 +9356,7 @@ func decodeActivityStarRepoForAuthenticatedUserParams(r *http.Request) (Activity
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -9388,11 +9388,11 @@ func decodeActivityStarRepoForAuthenticatedUserParams(r *http.Request) (Activity
 	return params, nil
 }
 
-func decodeActivityUnstarRepoForAuthenticatedUserParams(r *http.Request) (ActivityUnstarRepoForAuthenticatedUserParams, error) {
+func decodeActivityUnstarRepoForAuthenticatedUserParams(args map[string]string, r *http.Request) (ActivityUnstarRepoForAuthenticatedUserParams, error) {
 	var params ActivityUnstarRepoForAuthenticatedUserParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -9423,7 +9423,7 @@ func decodeActivityUnstarRepoForAuthenticatedUserParams(r *http.Request) (Activi
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -9455,11 +9455,11 @@ func decodeActivityUnstarRepoForAuthenticatedUserParams(r *http.Request) (Activi
 	return params, nil
 }
 
-func decodeAppsAddRepoToInstallationParams(r *http.Request) (AppsAddRepoToInstallationParams, error) {
+func decodeAppsAddRepoToInstallationParams(args map[string]string, r *http.Request) (AppsAddRepoToInstallationParams, error) {
 	var params AppsAddRepoToInstallationParams
 	// Decode path: installation_id.
 	{
-		param := chi.URLParam(r, "installation_id")
+		param := args["installation_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "installation_id",
@@ -9490,7 +9490,7 @@ func decodeAppsAddRepoToInstallationParams(r *http.Request) (AppsAddRepoToInstal
 	}
 	// Decode path: repository_id.
 	{
-		param := chi.URLParam(r, "repository_id")
+		param := args["repository_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repository_id",
@@ -9522,11 +9522,11 @@ func decodeAppsAddRepoToInstallationParams(r *http.Request) (AppsAddRepoToInstal
 	return params, nil
 }
 
-func decodeAppsDeleteInstallationParams(r *http.Request) (AppsDeleteInstallationParams, error) {
+func decodeAppsDeleteInstallationParams(args map[string]string, r *http.Request) (AppsDeleteInstallationParams, error) {
 	var params AppsDeleteInstallationParams
 	// Decode path: installation_id.
 	{
-		param := chi.URLParam(r, "installation_id")
+		param := args["installation_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "installation_id",
@@ -9558,11 +9558,11 @@ func decodeAppsDeleteInstallationParams(r *http.Request) (AppsDeleteInstallation
 	return params, nil
 }
 
-func decodeAppsGetBySlugParams(r *http.Request) (AppsGetBySlugParams, error) {
+func decodeAppsGetBySlugParams(args map[string]string, r *http.Request) (AppsGetBySlugParams, error) {
 	var params AppsGetBySlugParams
 	// Decode path: app_slug.
 	{
-		param := chi.URLParam(r, "app_slug")
+		param := args["app_slug"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "app_slug",
@@ -9594,11 +9594,11 @@ func decodeAppsGetBySlugParams(r *http.Request) (AppsGetBySlugParams, error) {
 	return params, nil
 }
 
-func decodeAppsGetSubscriptionPlanForAccountParams(r *http.Request) (AppsGetSubscriptionPlanForAccountParams, error) {
+func decodeAppsGetSubscriptionPlanForAccountParams(args map[string]string, r *http.Request) (AppsGetSubscriptionPlanForAccountParams, error) {
 	var params AppsGetSubscriptionPlanForAccountParams
 	// Decode path: account_id.
 	{
-		param := chi.URLParam(r, "account_id")
+		param := args["account_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "account_id",
@@ -9630,11 +9630,11 @@ func decodeAppsGetSubscriptionPlanForAccountParams(r *http.Request) (AppsGetSubs
 	return params, nil
 }
 
-func decodeAppsGetSubscriptionPlanForAccountStubbedParams(r *http.Request) (AppsGetSubscriptionPlanForAccountStubbedParams, error) {
+func decodeAppsGetSubscriptionPlanForAccountStubbedParams(args map[string]string, r *http.Request) (AppsGetSubscriptionPlanForAccountStubbedParams, error) {
 	var params AppsGetSubscriptionPlanForAccountStubbedParams
 	// Decode path: account_id.
 	{
-		param := chi.URLParam(r, "account_id")
+		param := args["account_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "account_id",
@@ -9666,11 +9666,11 @@ func decodeAppsGetSubscriptionPlanForAccountStubbedParams(r *http.Request) (Apps
 	return params, nil
 }
 
-func decodeAppsListAccountsForPlanStubbedParams(r *http.Request) (AppsListAccountsForPlanStubbedParams, error) {
+func decodeAppsListAccountsForPlanStubbedParams(args map[string]string, r *http.Request) (AppsListAccountsForPlanStubbedParams, error) {
 	var params AppsListAccountsForPlanStubbedParams
 	// Decode path: plan_id.
 	{
-		param := chi.URLParam(r, "plan_id")
+		param := args["plan_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "plan_id",
@@ -9880,11 +9880,11 @@ func decodeAppsListAccountsForPlanStubbedParams(r *http.Request) (AppsListAccoun
 	return params, nil
 }
 
-func decodeAppsListInstallationReposForAuthenticatedUserParams(r *http.Request) (AppsListInstallationReposForAuthenticatedUserParams, error) {
+func decodeAppsListInstallationReposForAuthenticatedUserParams(args map[string]string, r *http.Request) (AppsListInstallationReposForAuthenticatedUserParams, error) {
 	var params AppsListInstallationReposForAuthenticatedUserParams
 	// Decode path: installation_id.
 	{
-		param := chi.URLParam(r, "installation_id")
+		param := args["installation_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "installation_id",
@@ -9986,7 +9986,7 @@ func decodeAppsListInstallationReposForAuthenticatedUserParams(r *http.Request) 
 	return params, nil
 }
 
-func decodeAppsListPlansParams(r *http.Request) (AppsListPlansParams, error) {
+func decodeAppsListPlansParams(args map[string]string, r *http.Request) (AppsListPlansParams, error) {
 	var params AppsListPlansParams
 	// Decode query: per_page.
 	{
@@ -10061,7 +10061,7 @@ func decodeAppsListPlansParams(r *http.Request) (AppsListPlansParams, error) {
 	return params, nil
 }
 
-func decodeAppsListPlansStubbedParams(r *http.Request) (AppsListPlansStubbedParams, error) {
+func decodeAppsListPlansStubbedParams(args map[string]string, r *http.Request) (AppsListPlansStubbedParams, error) {
 	var params AppsListPlansStubbedParams
 	// Decode query: per_page.
 	{
@@ -10136,7 +10136,7 @@ func decodeAppsListPlansStubbedParams(r *http.Request) (AppsListPlansStubbedPara
 	return params, nil
 }
 
-func decodeAppsListReposAccessibleToInstallationParams(r *http.Request) (AppsListReposAccessibleToInstallationParams, error) {
+func decodeAppsListReposAccessibleToInstallationParams(args map[string]string, r *http.Request) (AppsListReposAccessibleToInstallationParams, error) {
 	var params AppsListReposAccessibleToInstallationParams
 	// Decode query: per_page.
 	{
@@ -10211,7 +10211,7 @@ func decodeAppsListReposAccessibleToInstallationParams(r *http.Request) (AppsLis
 	return params, nil
 }
 
-func decodeAppsListSubscriptionsForAuthenticatedUserParams(r *http.Request) (AppsListSubscriptionsForAuthenticatedUserParams, error) {
+func decodeAppsListSubscriptionsForAuthenticatedUserParams(args map[string]string, r *http.Request) (AppsListSubscriptionsForAuthenticatedUserParams, error) {
 	var params AppsListSubscriptionsForAuthenticatedUserParams
 	// Decode query: per_page.
 	{
@@ -10286,7 +10286,7 @@ func decodeAppsListSubscriptionsForAuthenticatedUserParams(r *http.Request) (App
 	return params, nil
 }
 
-func decodeAppsListSubscriptionsForAuthenticatedUserStubbedParams(r *http.Request) (AppsListSubscriptionsForAuthenticatedUserStubbedParams, error) {
+func decodeAppsListSubscriptionsForAuthenticatedUserStubbedParams(args map[string]string, r *http.Request) (AppsListSubscriptionsForAuthenticatedUserStubbedParams, error) {
 	var params AppsListSubscriptionsForAuthenticatedUserStubbedParams
 	// Decode query: per_page.
 	{
@@ -10361,11 +10361,11 @@ func decodeAppsListSubscriptionsForAuthenticatedUserStubbedParams(r *http.Reques
 	return params, nil
 }
 
-func decodeAppsRemoveRepoFromInstallationParams(r *http.Request) (AppsRemoveRepoFromInstallationParams, error) {
+func decodeAppsRemoveRepoFromInstallationParams(args map[string]string, r *http.Request) (AppsRemoveRepoFromInstallationParams, error) {
 	var params AppsRemoveRepoFromInstallationParams
 	// Decode path: installation_id.
 	{
-		param := chi.URLParam(r, "installation_id")
+		param := args["installation_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "installation_id",
@@ -10396,7 +10396,7 @@ func decodeAppsRemoveRepoFromInstallationParams(r *http.Request) (AppsRemoveRepo
 	}
 	// Decode path: repository_id.
 	{
-		param := chi.URLParam(r, "repository_id")
+		param := args["repository_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repository_id",
@@ -10428,11 +10428,11 @@ func decodeAppsRemoveRepoFromInstallationParams(r *http.Request) (AppsRemoveRepo
 	return params, nil
 }
 
-func decodeAppsSuspendInstallationParams(r *http.Request) (AppsSuspendInstallationParams, error) {
+func decodeAppsSuspendInstallationParams(args map[string]string, r *http.Request) (AppsSuspendInstallationParams, error) {
 	var params AppsSuspendInstallationParams
 	// Decode path: installation_id.
 	{
-		param := chi.URLParam(r, "installation_id")
+		param := args["installation_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "installation_id",
@@ -10464,11 +10464,11 @@ func decodeAppsSuspendInstallationParams(r *http.Request) (AppsSuspendInstallati
 	return params, nil
 }
 
-func decodeAppsUnsuspendInstallationParams(r *http.Request) (AppsUnsuspendInstallationParams, error) {
+func decodeAppsUnsuspendInstallationParams(args map[string]string, r *http.Request) (AppsUnsuspendInstallationParams, error) {
 	var params AppsUnsuspendInstallationParams
 	// Decode path: installation_id.
 	{
-		param := chi.URLParam(r, "installation_id")
+		param := args["installation_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "installation_id",
@@ -10500,11 +10500,11 @@ func decodeAppsUnsuspendInstallationParams(r *http.Request) (AppsUnsuspendInstal
 	return params, nil
 }
 
-func decodeBillingGetGithubActionsBillingGheParams(r *http.Request) (BillingGetGithubActionsBillingGheParams, error) {
+func decodeBillingGetGithubActionsBillingGheParams(args map[string]string, r *http.Request) (BillingGetGithubActionsBillingGheParams, error) {
 	var params BillingGetGithubActionsBillingGheParams
 	// Decode path: enterprise.
 	{
-		param := chi.URLParam(r, "enterprise")
+		param := args["enterprise"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "enterprise",
@@ -10536,11 +10536,11 @@ func decodeBillingGetGithubActionsBillingGheParams(r *http.Request) (BillingGetG
 	return params, nil
 }
 
-func decodeBillingGetGithubActionsBillingOrgParams(r *http.Request) (BillingGetGithubActionsBillingOrgParams, error) {
+func decodeBillingGetGithubActionsBillingOrgParams(args map[string]string, r *http.Request) (BillingGetGithubActionsBillingOrgParams, error) {
 	var params BillingGetGithubActionsBillingOrgParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -10572,11 +10572,11 @@ func decodeBillingGetGithubActionsBillingOrgParams(r *http.Request) (BillingGetG
 	return params, nil
 }
 
-func decodeBillingGetGithubActionsBillingUserParams(r *http.Request) (BillingGetGithubActionsBillingUserParams, error) {
+func decodeBillingGetGithubActionsBillingUserParams(args map[string]string, r *http.Request) (BillingGetGithubActionsBillingUserParams, error) {
 	var params BillingGetGithubActionsBillingUserParams
 	// Decode path: username.
 	{
-		param := chi.URLParam(r, "username")
+		param := args["username"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "username",
@@ -10608,11 +10608,11 @@ func decodeBillingGetGithubActionsBillingUserParams(r *http.Request) (BillingGet
 	return params, nil
 }
 
-func decodeBillingGetGithubPackagesBillingGheParams(r *http.Request) (BillingGetGithubPackagesBillingGheParams, error) {
+func decodeBillingGetGithubPackagesBillingGheParams(args map[string]string, r *http.Request) (BillingGetGithubPackagesBillingGheParams, error) {
 	var params BillingGetGithubPackagesBillingGheParams
 	// Decode path: enterprise.
 	{
-		param := chi.URLParam(r, "enterprise")
+		param := args["enterprise"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "enterprise",
@@ -10644,11 +10644,11 @@ func decodeBillingGetGithubPackagesBillingGheParams(r *http.Request) (BillingGet
 	return params, nil
 }
 
-func decodeBillingGetGithubPackagesBillingOrgParams(r *http.Request) (BillingGetGithubPackagesBillingOrgParams, error) {
+func decodeBillingGetGithubPackagesBillingOrgParams(args map[string]string, r *http.Request) (BillingGetGithubPackagesBillingOrgParams, error) {
 	var params BillingGetGithubPackagesBillingOrgParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -10680,11 +10680,11 @@ func decodeBillingGetGithubPackagesBillingOrgParams(r *http.Request) (BillingGet
 	return params, nil
 }
 
-func decodeBillingGetGithubPackagesBillingUserParams(r *http.Request) (BillingGetGithubPackagesBillingUserParams, error) {
+func decodeBillingGetGithubPackagesBillingUserParams(args map[string]string, r *http.Request) (BillingGetGithubPackagesBillingUserParams, error) {
 	var params BillingGetGithubPackagesBillingUserParams
 	// Decode path: username.
 	{
-		param := chi.URLParam(r, "username")
+		param := args["username"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "username",
@@ -10716,11 +10716,11 @@ func decodeBillingGetGithubPackagesBillingUserParams(r *http.Request) (BillingGe
 	return params, nil
 }
 
-func decodeBillingGetSharedStorageBillingGheParams(r *http.Request) (BillingGetSharedStorageBillingGheParams, error) {
+func decodeBillingGetSharedStorageBillingGheParams(args map[string]string, r *http.Request) (BillingGetSharedStorageBillingGheParams, error) {
 	var params BillingGetSharedStorageBillingGheParams
 	// Decode path: enterprise.
 	{
-		param := chi.URLParam(r, "enterprise")
+		param := args["enterprise"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "enterprise",
@@ -10752,11 +10752,11 @@ func decodeBillingGetSharedStorageBillingGheParams(r *http.Request) (BillingGetS
 	return params, nil
 }
 
-func decodeBillingGetSharedStorageBillingOrgParams(r *http.Request) (BillingGetSharedStorageBillingOrgParams, error) {
+func decodeBillingGetSharedStorageBillingOrgParams(args map[string]string, r *http.Request) (BillingGetSharedStorageBillingOrgParams, error) {
 	var params BillingGetSharedStorageBillingOrgParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -10788,11 +10788,11 @@ func decodeBillingGetSharedStorageBillingOrgParams(r *http.Request) (BillingGetS
 	return params, nil
 }
 
-func decodeBillingGetSharedStorageBillingUserParams(r *http.Request) (BillingGetSharedStorageBillingUserParams, error) {
+func decodeBillingGetSharedStorageBillingUserParams(args map[string]string, r *http.Request) (BillingGetSharedStorageBillingUserParams, error) {
 	var params BillingGetSharedStorageBillingUserParams
 	// Decode path: username.
 	{
-		param := chi.URLParam(r, "username")
+		param := args["username"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "username",
@@ -10824,11 +10824,11 @@ func decodeBillingGetSharedStorageBillingUserParams(r *http.Request) (BillingGet
 	return params, nil
 }
 
-func decodeChecksCreateSuiteParams(r *http.Request) (ChecksCreateSuiteParams, error) {
+func decodeChecksCreateSuiteParams(args map[string]string, r *http.Request) (ChecksCreateSuiteParams, error) {
 	var params ChecksCreateSuiteParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -10859,7 +10859,7 @@ func decodeChecksCreateSuiteParams(r *http.Request) (ChecksCreateSuiteParams, er
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -10891,11 +10891,11 @@ func decodeChecksCreateSuiteParams(r *http.Request) (ChecksCreateSuiteParams, er
 	return params, nil
 }
 
-func decodeChecksGetParams(r *http.Request) (ChecksGetParams, error) {
+func decodeChecksGetParams(args map[string]string, r *http.Request) (ChecksGetParams, error) {
 	var params ChecksGetParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -10926,7 +10926,7 @@ func decodeChecksGetParams(r *http.Request) (ChecksGetParams, error) {
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -10957,7 +10957,7 @@ func decodeChecksGetParams(r *http.Request) (ChecksGetParams, error) {
 	}
 	// Decode path: check_run_id.
 	{
-		param := chi.URLParam(r, "check_run_id")
+		param := args["check_run_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "check_run_id",
@@ -10989,11 +10989,11 @@ func decodeChecksGetParams(r *http.Request) (ChecksGetParams, error) {
 	return params, nil
 }
 
-func decodeChecksGetSuiteParams(r *http.Request) (ChecksGetSuiteParams, error) {
+func decodeChecksGetSuiteParams(args map[string]string, r *http.Request) (ChecksGetSuiteParams, error) {
 	var params ChecksGetSuiteParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -11024,7 +11024,7 @@ func decodeChecksGetSuiteParams(r *http.Request) (ChecksGetSuiteParams, error) {
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -11055,7 +11055,7 @@ func decodeChecksGetSuiteParams(r *http.Request) (ChecksGetSuiteParams, error) {
 	}
 	// Decode path: check_suite_id.
 	{
-		param := chi.URLParam(r, "check_suite_id")
+		param := args["check_suite_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "check_suite_id",
@@ -11087,11 +11087,11 @@ func decodeChecksGetSuiteParams(r *http.Request) (ChecksGetSuiteParams, error) {
 	return params, nil
 }
 
-func decodeChecksListAnnotationsParams(r *http.Request) (ChecksListAnnotationsParams, error) {
+func decodeChecksListAnnotationsParams(args map[string]string, r *http.Request) (ChecksListAnnotationsParams, error) {
 	var params ChecksListAnnotationsParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -11122,7 +11122,7 @@ func decodeChecksListAnnotationsParams(r *http.Request) (ChecksListAnnotationsPa
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -11153,7 +11153,7 @@ func decodeChecksListAnnotationsParams(r *http.Request) (ChecksListAnnotationsPa
 	}
 	// Decode path: check_run_id.
 	{
-		param := chi.URLParam(r, "check_run_id")
+		param := args["check_run_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "check_run_id",
@@ -11255,11 +11255,11 @@ func decodeChecksListAnnotationsParams(r *http.Request) (ChecksListAnnotationsPa
 	return params, nil
 }
 
-func decodeChecksListForRefParams(r *http.Request) (ChecksListForRefParams, error) {
+func decodeChecksListForRefParams(args map[string]string, r *http.Request) (ChecksListForRefParams, error) {
 	var params ChecksListForRefParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -11290,7 +11290,7 @@ func decodeChecksListForRefParams(r *http.Request) (ChecksListForRefParams, erro
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -11321,7 +11321,7 @@ func decodeChecksListForRefParams(r *http.Request) (ChecksListForRefParams, erro
 	}
 	// Decode path: ref.
 	{
-		param := chi.URLParam(r, "ref")
+		param := args["ref"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "ref",
@@ -11601,11 +11601,11 @@ func decodeChecksListForRefParams(r *http.Request) (ChecksListForRefParams, erro
 	return params, nil
 }
 
-func decodeChecksListForSuiteParams(r *http.Request) (ChecksListForSuiteParams, error) {
+func decodeChecksListForSuiteParams(args map[string]string, r *http.Request) (ChecksListForSuiteParams, error) {
 	var params ChecksListForSuiteParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -11636,7 +11636,7 @@ func decodeChecksListForSuiteParams(r *http.Request) (ChecksListForSuiteParams, 
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -11667,7 +11667,7 @@ func decodeChecksListForSuiteParams(r *http.Request) (ChecksListForSuiteParams, 
 	}
 	// Decode path: check_suite_id.
 	{
-		param := chi.URLParam(r, "check_suite_id")
+		param := args["check_suite_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "check_suite_id",
@@ -11912,11 +11912,11 @@ func decodeChecksListForSuiteParams(r *http.Request) (ChecksListForSuiteParams, 
 	return params, nil
 }
 
-func decodeChecksListSuitesForRefParams(r *http.Request) (ChecksListSuitesForRefParams, error) {
+func decodeChecksListSuitesForRefParams(args map[string]string, r *http.Request) (ChecksListSuitesForRefParams, error) {
 	var params ChecksListSuitesForRefParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -11947,7 +11947,7 @@ func decodeChecksListSuitesForRefParams(r *http.Request) (ChecksListSuitesForRef
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -11978,7 +11978,7 @@ func decodeChecksListSuitesForRefParams(r *http.Request) (ChecksListSuitesForRef
 	}
 	// Decode path: ref.
 	{
-		param := chi.URLParam(r, "ref")
+		param := args["ref"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "ref",
@@ -12150,11 +12150,11 @@ func decodeChecksListSuitesForRefParams(r *http.Request) (ChecksListSuitesForRef
 	return params, nil
 }
 
-func decodeChecksRerequestSuiteParams(r *http.Request) (ChecksRerequestSuiteParams, error) {
+func decodeChecksRerequestSuiteParams(args map[string]string, r *http.Request) (ChecksRerequestSuiteParams, error) {
 	var params ChecksRerequestSuiteParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -12185,7 +12185,7 @@ func decodeChecksRerequestSuiteParams(r *http.Request) (ChecksRerequestSuitePara
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -12216,7 +12216,7 @@ func decodeChecksRerequestSuiteParams(r *http.Request) (ChecksRerequestSuitePara
 	}
 	// Decode path: check_suite_id.
 	{
-		param := chi.URLParam(r, "check_suite_id")
+		param := args["check_suite_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "check_suite_id",
@@ -12248,11 +12248,11 @@ func decodeChecksRerequestSuiteParams(r *http.Request) (ChecksRerequestSuitePara
 	return params, nil
 }
 
-func decodeChecksSetSuitesPreferencesParams(r *http.Request) (ChecksSetSuitesPreferencesParams, error) {
+func decodeChecksSetSuitesPreferencesParams(args map[string]string, r *http.Request) (ChecksSetSuitesPreferencesParams, error) {
 	var params ChecksSetSuitesPreferencesParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -12283,7 +12283,7 @@ func decodeChecksSetSuitesPreferencesParams(r *http.Request) (ChecksSetSuitesPre
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -12315,11 +12315,11 @@ func decodeChecksSetSuitesPreferencesParams(r *http.Request) (ChecksSetSuitesPre
 	return params, nil
 }
 
-func decodeCodeScanningDeleteAnalysisParams(r *http.Request) (CodeScanningDeleteAnalysisParams, error) {
+func decodeCodeScanningDeleteAnalysisParams(args map[string]string, r *http.Request) (CodeScanningDeleteAnalysisParams, error) {
 	var params CodeScanningDeleteAnalysisParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -12350,7 +12350,7 @@ func decodeCodeScanningDeleteAnalysisParams(r *http.Request) (CodeScanningDelete
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -12381,7 +12381,7 @@ func decodeCodeScanningDeleteAnalysisParams(r *http.Request) (CodeScanningDelete
 	}
 	// Decode path: analysis_id.
 	{
-		param := chi.URLParam(r, "analysis_id")
+		param := args["analysis_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "analysis_id",
@@ -12448,11 +12448,11 @@ func decodeCodeScanningDeleteAnalysisParams(r *http.Request) (CodeScanningDelete
 	return params, nil
 }
 
-func decodeCodeScanningGetAlertParams(r *http.Request) (CodeScanningGetAlertParams, error) {
+func decodeCodeScanningGetAlertParams(args map[string]string, r *http.Request) (CodeScanningGetAlertParams, error) {
 	var params CodeScanningGetAlertParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -12483,7 +12483,7 @@ func decodeCodeScanningGetAlertParams(r *http.Request) (CodeScanningGetAlertPara
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -12514,7 +12514,7 @@ func decodeCodeScanningGetAlertParams(r *http.Request) (CodeScanningGetAlertPara
 	}
 	// Decode path: alert_number.
 	{
-		param := chi.URLParam(r, "alert_number")
+		param := args["alert_number"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "alert_number",
@@ -12553,11 +12553,11 @@ func decodeCodeScanningGetAlertParams(r *http.Request) (CodeScanningGetAlertPara
 	return params, nil
 }
 
-func decodeCodeScanningGetAnalysisParams(r *http.Request) (CodeScanningGetAnalysisParams, error) {
+func decodeCodeScanningGetAnalysisParams(args map[string]string, r *http.Request) (CodeScanningGetAnalysisParams, error) {
 	var params CodeScanningGetAnalysisParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -12588,7 +12588,7 @@ func decodeCodeScanningGetAnalysisParams(r *http.Request) (CodeScanningGetAnalys
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -12619,7 +12619,7 @@ func decodeCodeScanningGetAnalysisParams(r *http.Request) (CodeScanningGetAnalys
 	}
 	// Decode path: analysis_id.
 	{
-		param := chi.URLParam(r, "analysis_id")
+		param := args["analysis_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "analysis_id",
@@ -12651,11 +12651,11 @@ func decodeCodeScanningGetAnalysisParams(r *http.Request) (CodeScanningGetAnalys
 	return params, nil
 }
 
-func decodeCodeScanningGetSarifParams(r *http.Request) (CodeScanningGetSarifParams, error) {
+func decodeCodeScanningGetSarifParams(args map[string]string, r *http.Request) (CodeScanningGetSarifParams, error) {
 	var params CodeScanningGetSarifParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -12686,7 +12686,7 @@ func decodeCodeScanningGetSarifParams(r *http.Request) (CodeScanningGetSarifPara
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -12717,7 +12717,7 @@ func decodeCodeScanningGetSarifParams(r *http.Request) (CodeScanningGetSarifPara
 	}
 	// Decode path: sarif_id.
 	{
-		param := chi.URLParam(r, "sarif_id")
+		param := args["sarif_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "sarif_id",
@@ -12749,11 +12749,11 @@ func decodeCodeScanningGetSarifParams(r *http.Request) (CodeScanningGetSarifPara
 	return params, nil
 }
 
-func decodeCodeScanningListAlertInstancesParams(r *http.Request) (CodeScanningListAlertInstancesParams, error) {
+func decodeCodeScanningListAlertInstancesParams(args map[string]string, r *http.Request) (CodeScanningListAlertInstancesParams, error) {
 	var params CodeScanningListAlertInstancesParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -12784,7 +12784,7 @@ func decodeCodeScanningListAlertInstancesParams(r *http.Request) (CodeScanningLi
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -12815,7 +12815,7 @@ func decodeCodeScanningListAlertInstancesParams(r *http.Request) (CodeScanningLi
 	}
 	// Decode path: alert_number.
 	{
-		param := chi.URLParam(r, "alert_number")
+		param := args["alert_number"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "alert_number",
@@ -12966,11 +12966,11 @@ func decodeCodeScanningListAlertInstancesParams(r *http.Request) (CodeScanningLi
 	return params, nil
 }
 
-func decodeCodeScanningListAlertsForRepoParams(r *http.Request) (CodeScanningListAlertsForRepoParams, error) {
+func decodeCodeScanningListAlertsForRepoParams(args map[string]string, r *http.Request) (CodeScanningListAlertsForRepoParams, error) {
 	var params CodeScanningListAlertsForRepoParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -13001,7 +13001,7 @@ func decodeCodeScanningListAlertsForRepoParams(r *http.Request) (CodeScanningLis
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -13283,11 +13283,11 @@ func decodeCodeScanningListAlertsForRepoParams(r *http.Request) (CodeScanningLis
 	return params, nil
 }
 
-func decodeCodeScanningListRecentAnalysesParams(r *http.Request) (CodeScanningListRecentAnalysesParams, error) {
+func decodeCodeScanningListRecentAnalysesParams(args map[string]string, r *http.Request) (CodeScanningListRecentAnalysesParams, error) {
 	var params CodeScanningListRecentAnalysesParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -13318,7 +13318,7 @@ func decodeCodeScanningListRecentAnalysesParams(r *http.Request) (CodeScanningLi
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -13588,11 +13588,11 @@ func decodeCodeScanningListRecentAnalysesParams(r *http.Request) (CodeScanningLi
 	return params, nil
 }
 
-func decodeCodeScanningUpdateAlertParams(r *http.Request) (CodeScanningUpdateAlertParams, error) {
+func decodeCodeScanningUpdateAlertParams(args map[string]string, r *http.Request) (CodeScanningUpdateAlertParams, error) {
 	var params CodeScanningUpdateAlertParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -13623,7 +13623,7 @@ func decodeCodeScanningUpdateAlertParams(r *http.Request) (CodeScanningUpdateAle
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -13654,7 +13654,7 @@ func decodeCodeScanningUpdateAlertParams(r *http.Request) (CodeScanningUpdateAle
 	}
 	// Decode path: alert_number.
 	{
-		param := chi.URLParam(r, "alert_number")
+		param := args["alert_number"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "alert_number",
@@ -13693,11 +13693,11 @@ func decodeCodeScanningUpdateAlertParams(r *http.Request) (CodeScanningUpdateAle
 	return params, nil
 }
 
-func decodeCodeScanningUploadSarifParams(r *http.Request) (CodeScanningUploadSarifParams, error) {
+func decodeCodeScanningUploadSarifParams(args map[string]string, r *http.Request) (CodeScanningUploadSarifParams, error) {
 	var params CodeScanningUploadSarifParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -13728,7 +13728,7 @@ func decodeCodeScanningUploadSarifParams(r *http.Request) (CodeScanningUploadSar
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -13760,11 +13760,11 @@ func decodeCodeScanningUploadSarifParams(r *http.Request) (CodeScanningUploadSar
 	return params, nil
 }
 
-func decodeCodesOfConductGetConductCodeParams(r *http.Request) (CodesOfConductGetConductCodeParams, error) {
+func decodeCodesOfConductGetConductCodeParams(args map[string]string, r *http.Request) (CodesOfConductGetConductCodeParams, error) {
 	var params CodesOfConductGetConductCodeParams
 	// Decode path: key.
 	{
-		param := chi.URLParam(r, "key")
+		param := args["key"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "key",
@@ -13796,11 +13796,11 @@ func decodeCodesOfConductGetConductCodeParams(r *http.Request) (CodesOfConductGe
 	return params, nil
 }
 
-func decodeEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(r *http.Request) (EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams, error) {
+func decodeEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(args map[string]string, r *http.Request) (EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams, error) {
 	var params EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams
 	// Decode path: enterprise.
 	{
-		param := chi.URLParam(r, "enterprise")
+		param := args["enterprise"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "enterprise",
@@ -13831,7 +13831,7 @@ func decodeEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(
 	}
 	// Decode path: runner_group_id.
 	{
-		param := chi.URLParam(r, "runner_group_id")
+		param := args["runner_group_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "runner_group_id",
@@ -13862,7 +13862,7 @@ func decodeEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(
 	}
 	// Decode path: org_id.
 	{
-		param := chi.URLParam(r, "org_id")
+		param := args["org_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org_id",
@@ -13894,11 +13894,11 @@ func decodeEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(
 	return params, nil
 }
 
-func decodeEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams(r *http.Request) (EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams, error) {
+func decodeEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams(args map[string]string, r *http.Request) (EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams, error) {
 	var params EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams
 	// Decode path: enterprise.
 	{
-		param := chi.URLParam(r, "enterprise")
+		param := args["enterprise"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "enterprise",
@@ -13929,7 +13929,7 @@ func decodeEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams(r *http.
 	}
 	// Decode path: runner_group_id.
 	{
-		param := chi.URLParam(r, "runner_group_id")
+		param := args["runner_group_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "runner_group_id",
@@ -13960,7 +13960,7 @@ func decodeEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams(r *http.
 	}
 	// Decode path: runner_id.
 	{
-		param := chi.URLParam(r, "runner_id")
+		param := args["runner_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "runner_id",
@@ -13992,11 +13992,11 @@ func decodeEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams(r *http.
 	return params, nil
 }
 
-func decodeEnterpriseAdminCreateRegistrationTokenForEnterpriseParams(r *http.Request) (EnterpriseAdminCreateRegistrationTokenForEnterpriseParams, error) {
+func decodeEnterpriseAdminCreateRegistrationTokenForEnterpriseParams(args map[string]string, r *http.Request) (EnterpriseAdminCreateRegistrationTokenForEnterpriseParams, error) {
 	var params EnterpriseAdminCreateRegistrationTokenForEnterpriseParams
 	// Decode path: enterprise.
 	{
-		param := chi.URLParam(r, "enterprise")
+		param := args["enterprise"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "enterprise",
@@ -14028,11 +14028,11 @@ func decodeEnterpriseAdminCreateRegistrationTokenForEnterpriseParams(r *http.Req
 	return params, nil
 }
 
-func decodeEnterpriseAdminCreateRemoveTokenForEnterpriseParams(r *http.Request) (EnterpriseAdminCreateRemoveTokenForEnterpriseParams, error) {
+func decodeEnterpriseAdminCreateRemoveTokenForEnterpriseParams(args map[string]string, r *http.Request) (EnterpriseAdminCreateRemoveTokenForEnterpriseParams, error) {
 	var params EnterpriseAdminCreateRemoveTokenForEnterpriseParams
 	// Decode path: enterprise.
 	{
-		param := chi.URLParam(r, "enterprise")
+		param := args["enterprise"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "enterprise",
@@ -14064,11 +14064,11 @@ func decodeEnterpriseAdminCreateRemoveTokenForEnterpriseParams(r *http.Request) 
 	return params, nil
 }
 
-func decodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams(r *http.Request) (EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams, error) {
+func decodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams(args map[string]string, r *http.Request) (EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams, error) {
 	var params EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams
 	// Decode path: enterprise.
 	{
-		param := chi.URLParam(r, "enterprise")
+		param := args["enterprise"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "enterprise",
@@ -14100,11 +14100,11 @@ func decodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams(r *http
 	return params, nil
 }
 
-func decodeEnterpriseAdminDeleteScimGroupFromEnterpriseParams(r *http.Request) (EnterpriseAdminDeleteScimGroupFromEnterpriseParams, error) {
+func decodeEnterpriseAdminDeleteScimGroupFromEnterpriseParams(args map[string]string, r *http.Request) (EnterpriseAdminDeleteScimGroupFromEnterpriseParams, error) {
 	var params EnterpriseAdminDeleteScimGroupFromEnterpriseParams
 	// Decode path: enterprise.
 	{
-		param := chi.URLParam(r, "enterprise")
+		param := args["enterprise"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "enterprise",
@@ -14135,7 +14135,7 @@ func decodeEnterpriseAdminDeleteScimGroupFromEnterpriseParams(r *http.Request) (
 	}
 	// Decode path: scim_group_id.
 	{
-		param := chi.URLParam(r, "scim_group_id")
+		param := args["scim_group_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "scim_group_id",
@@ -14167,11 +14167,11 @@ func decodeEnterpriseAdminDeleteScimGroupFromEnterpriseParams(r *http.Request) (
 	return params, nil
 }
 
-func decodeEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams(r *http.Request) (EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams, error) {
+func decodeEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams(args map[string]string, r *http.Request) (EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams, error) {
 	var params EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams
 	// Decode path: enterprise.
 	{
-		param := chi.URLParam(r, "enterprise")
+		param := args["enterprise"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "enterprise",
@@ -14202,7 +14202,7 @@ func decodeEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams(r *http.Req
 	}
 	// Decode path: runner_id.
 	{
-		param := chi.URLParam(r, "runner_id")
+		param := args["runner_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "runner_id",
@@ -14234,11 +14234,11 @@ func decodeEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams(r *http.Req
 	return params, nil
 }
 
-func decodeEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams(r *http.Request) (EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams, error) {
+func decodeEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams(args map[string]string, r *http.Request) (EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams, error) {
 	var params EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams
 	// Decode path: enterprise.
 	{
-		param := chi.URLParam(r, "enterprise")
+		param := args["enterprise"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "enterprise",
@@ -14269,7 +14269,7 @@ func decodeEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams(r *htt
 	}
 	// Decode path: runner_group_id.
 	{
-		param := chi.URLParam(r, "runner_group_id")
+		param := args["runner_group_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "runner_group_id",
@@ -14301,11 +14301,11 @@ func decodeEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams(r *htt
 	return params, nil
 }
 
-func decodeEnterpriseAdminDeleteUserFromEnterpriseParams(r *http.Request) (EnterpriseAdminDeleteUserFromEnterpriseParams, error) {
+func decodeEnterpriseAdminDeleteUserFromEnterpriseParams(args map[string]string, r *http.Request) (EnterpriseAdminDeleteUserFromEnterpriseParams, error) {
 	var params EnterpriseAdminDeleteUserFromEnterpriseParams
 	// Decode path: enterprise.
 	{
-		param := chi.URLParam(r, "enterprise")
+		param := args["enterprise"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "enterprise",
@@ -14336,7 +14336,7 @@ func decodeEnterpriseAdminDeleteUserFromEnterpriseParams(r *http.Request) (Enter
 	}
 	// Decode path: scim_user_id.
 	{
-		param := chi.URLParam(r, "scim_user_id")
+		param := args["scim_user_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "scim_user_id",
@@ -14368,11 +14368,11 @@ func decodeEnterpriseAdminDeleteUserFromEnterpriseParams(r *http.Request) (Enter
 	return params, nil
 }
 
-func decodeEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseParams(r *http.Request) (EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseParams, error) {
+func decodeEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseParams(args map[string]string, r *http.Request) (EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseParams, error) {
 	var params EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseParams
 	// Decode path: enterprise.
 	{
-		param := chi.URLParam(r, "enterprise")
+		param := args["enterprise"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "enterprise",
@@ -14403,7 +14403,7 @@ func decodeEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprisePara
 	}
 	// Decode path: org_id.
 	{
-		param := chi.URLParam(r, "org_id")
+		param := args["org_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org_id",
@@ -14435,11 +14435,11 @@ func decodeEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprisePara
 	return params, nil
 }
 
-func decodeEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParams(r *http.Request) (EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParams, error) {
+func decodeEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParams(args map[string]string, r *http.Request) (EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParams, error) {
 	var params EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParams
 	// Decode path: enterprise.
 	{
-		param := chi.URLParam(r, "enterprise")
+		param := args["enterprise"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "enterprise",
@@ -14470,7 +14470,7 @@ func decodeEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParam
 	}
 	// Decode path: org_id.
 	{
-		param := chi.URLParam(r, "org_id")
+		param := args["org_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org_id",
@@ -14502,11 +14502,11 @@ func decodeEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParam
 	return params, nil
 }
 
-func decodeEnterpriseAdminGetAllowedActionsEnterpriseParams(r *http.Request) (EnterpriseAdminGetAllowedActionsEnterpriseParams, error) {
+func decodeEnterpriseAdminGetAllowedActionsEnterpriseParams(args map[string]string, r *http.Request) (EnterpriseAdminGetAllowedActionsEnterpriseParams, error) {
 	var params EnterpriseAdminGetAllowedActionsEnterpriseParams
 	// Decode path: enterprise.
 	{
-		param := chi.URLParam(r, "enterprise")
+		param := args["enterprise"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "enterprise",
@@ -14538,11 +14538,11 @@ func decodeEnterpriseAdminGetAllowedActionsEnterpriseParams(r *http.Request) (En
 	return params, nil
 }
 
-func decodeEnterpriseAdminGetAuditLogParams(r *http.Request) (EnterpriseAdminGetAuditLogParams, error) {
+func decodeEnterpriseAdminGetAuditLogParams(args map[string]string, r *http.Request) (EnterpriseAdminGetAuditLogParams, error) {
 	var params EnterpriseAdminGetAuditLogParams
 	// Decode path: enterprise.
 	{
-		param := chi.URLParam(r, "enterprise")
+		param := args["enterprise"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "enterprise",
@@ -14857,11 +14857,11 @@ func decodeEnterpriseAdminGetAuditLogParams(r *http.Request) (EnterpriseAdminGet
 	return params, nil
 }
 
-func decodeEnterpriseAdminGetGithubActionsPermissionsEnterpriseParams(r *http.Request) (EnterpriseAdminGetGithubActionsPermissionsEnterpriseParams, error) {
+func decodeEnterpriseAdminGetGithubActionsPermissionsEnterpriseParams(args map[string]string, r *http.Request) (EnterpriseAdminGetGithubActionsPermissionsEnterpriseParams, error) {
 	var params EnterpriseAdminGetGithubActionsPermissionsEnterpriseParams
 	// Decode path: enterprise.
 	{
-		param := chi.URLParam(r, "enterprise")
+		param := args["enterprise"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "enterprise",
@@ -14893,11 +14893,11 @@ func decodeEnterpriseAdminGetGithubActionsPermissionsEnterpriseParams(r *http.Re
 	return params, nil
 }
 
-func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams(r *http.Request) (EnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams, error) {
+func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams(args map[string]string, r *http.Request) (EnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams, error) {
 	var params EnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams
 	// Decode path: enterprise.
 	{
-		param := chi.URLParam(r, "enterprise")
+		param := args["enterprise"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "enterprise",
@@ -14928,7 +14928,7 @@ func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams(r *
 	}
 	// Decode path: scim_group_id.
 	{
-		param := chi.URLParam(r, "scim_group_id")
+		param := args["scim_group_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "scim_group_id",
@@ -14995,11 +14995,11 @@ func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams(r *
 	return params, nil
 }
 
-func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseUserParams(r *http.Request) (EnterpriseAdminGetProvisioningInformationForEnterpriseUserParams, error) {
+func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseUserParams(args map[string]string, r *http.Request) (EnterpriseAdminGetProvisioningInformationForEnterpriseUserParams, error) {
 	var params EnterpriseAdminGetProvisioningInformationForEnterpriseUserParams
 	// Decode path: enterprise.
 	{
-		param := chi.URLParam(r, "enterprise")
+		param := args["enterprise"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "enterprise",
@@ -15030,7 +15030,7 @@ func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseUserParams(r *h
 	}
 	// Decode path: scim_user_id.
 	{
-		param := chi.URLParam(r, "scim_user_id")
+		param := args["scim_user_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "scim_user_id",
@@ -15062,11 +15062,11 @@ func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseUserParams(r *h
 	return params, nil
 }
 
-func decodeEnterpriseAdminGetSelfHostedRunnerForEnterpriseParams(r *http.Request) (EnterpriseAdminGetSelfHostedRunnerForEnterpriseParams, error) {
+func decodeEnterpriseAdminGetSelfHostedRunnerForEnterpriseParams(args map[string]string, r *http.Request) (EnterpriseAdminGetSelfHostedRunnerForEnterpriseParams, error) {
 	var params EnterpriseAdminGetSelfHostedRunnerForEnterpriseParams
 	// Decode path: enterprise.
 	{
-		param := chi.URLParam(r, "enterprise")
+		param := args["enterprise"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "enterprise",
@@ -15097,7 +15097,7 @@ func decodeEnterpriseAdminGetSelfHostedRunnerForEnterpriseParams(r *http.Request
 	}
 	// Decode path: runner_id.
 	{
-		param := chi.URLParam(r, "runner_id")
+		param := args["runner_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "runner_id",
@@ -15129,11 +15129,11 @@ func decodeEnterpriseAdminGetSelfHostedRunnerForEnterpriseParams(r *http.Request
 	return params, nil
 }
 
-func decodeEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams(r *http.Request) (EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams, error) {
+func decodeEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams(args map[string]string, r *http.Request) (EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams, error) {
 	var params EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams
 	// Decode path: enterprise.
 	{
-		param := chi.URLParam(r, "enterprise")
+		param := args["enterprise"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "enterprise",
@@ -15164,7 +15164,7 @@ func decodeEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams(r *http.Re
 	}
 	// Decode path: runner_group_id.
 	{
-		param := chi.URLParam(r, "runner_group_id")
+		param := args["runner_group_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "runner_group_id",
@@ -15196,11 +15196,11 @@ func decodeEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams(r *http.Re
 	return params, nil
 }
 
-func decodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(r *http.Request) (EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams, error) {
+func decodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(args map[string]string, r *http.Request) (EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams, error) {
 	var params EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams
 	// Decode path: enterprise.
 	{
-		param := chi.URLParam(r, "enterprise")
+		param := args["enterprise"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "enterprise",
@@ -15231,7 +15231,7 @@ func decodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams
 	}
 	// Decode path: runner_group_id.
 	{
-		param := chi.URLParam(r, "runner_group_id")
+		param := args["runner_group_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "runner_group_id",
@@ -15333,11 +15333,11 @@ func decodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams
 	return params, nil
 }
 
-func decodeEnterpriseAdminListProvisionedGroupsEnterpriseParams(r *http.Request) (EnterpriseAdminListProvisionedGroupsEnterpriseParams, error) {
+func decodeEnterpriseAdminListProvisionedGroupsEnterpriseParams(args map[string]string, r *http.Request) (EnterpriseAdminListProvisionedGroupsEnterpriseParams, error) {
 	var params EnterpriseAdminListProvisionedGroupsEnterpriseParams
 	// Decode path: enterprise.
 	{
-		param := chi.URLParam(r, "enterprise")
+		param := args["enterprise"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "enterprise",
@@ -15509,11 +15509,11 @@ func decodeEnterpriseAdminListProvisionedGroupsEnterpriseParams(r *http.Request)
 	return params, nil
 }
 
-func decodeEnterpriseAdminListProvisionedIdentitiesEnterpriseParams(r *http.Request) (EnterpriseAdminListProvisionedIdentitiesEnterpriseParams, error) {
+func decodeEnterpriseAdminListProvisionedIdentitiesEnterpriseParams(args map[string]string, r *http.Request) (EnterpriseAdminListProvisionedIdentitiesEnterpriseParams, error) {
 	var params EnterpriseAdminListProvisionedIdentitiesEnterpriseParams
 	// Decode path: enterprise.
 	{
-		param := chi.URLParam(r, "enterprise")
+		param := args["enterprise"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "enterprise",
@@ -15650,11 +15650,11 @@ func decodeEnterpriseAdminListProvisionedIdentitiesEnterpriseParams(r *http.Requ
 	return params, nil
 }
 
-func decodeEnterpriseAdminListRunnerApplicationsForEnterpriseParams(r *http.Request) (EnterpriseAdminListRunnerApplicationsForEnterpriseParams, error) {
+func decodeEnterpriseAdminListRunnerApplicationsForEnterpriseParams(args map[string]string, r *http.Request) (EnterpriseAdminListRunnerApplicationsForEnterpriseParams, error) {
 	var params EnterpriseAdminListRunnerApplicationsForEnterpriseParams
 	// Decode path: enterprise.
 	{
-		param := chi.URLParam(r, "enterprise")
+		param := args["enterprise"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "enterprise",
@@ -15686,11 +15686,11 @@ func decodeEnterpriseAdminListRunnerApplicationsForEnterpriseParams(r *http.Requ
 	return params, nil
 }
 
-func decodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseParams(r *http.Request) (EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseParams, error) {
+func decodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseParams(args map[string]string, r *http.Request) (EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseParams, error) {
 	var params EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseParams
 	// Decode path: enterprise.
 	{
-		param := chi.URLParam(r, "enterprise")
+		param := args["enterprise"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "enterprise",
@@ -15792,11 +15792,11 @@ func decodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpris
 	return params, nil
 }
 
-func decodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams(r *http.Request) (EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams, error) {
+func decodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams(args map[string]string, r *http.Request) (EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams, error) {
 	var params EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams
 	// Decode path: enterprise.
 	{
-		param := chi.URLParam(r, "enterprise")
+		param := args["enterprise"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "enterprise",
@@ -15898,11 +15898,11 @@ func decodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams(r *http.
 	return params, nil
 }
 
-func decodeEnterpriseAdminListSelfHostedRunnersForEnterpriseParams(r *http.Request) (EnterpriseAdminListSelfHostedRunnersForEnterpriseParams, error) {
+func decodeEnterpriseAdminListSelfHostedRunnersForEnterpriseParams(args map[string]string, r *http.Request) (EnterpriseAdminListSelfHostedRunnersForEnterpriseParams, error) {
 	var params EnterpriseAdminListSelfHostedRunnersForEnterpriseParams
 	// Decode path: enterprise.
 	{
-		param := chi.URLParam(r, "enterprise")
+		param := args["enterprise"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "enterprise",
@@ -16004,11 +16004,11 @@ func decodeEnterpriseAdminListSelfHostedRunnersForEnterpriseParams(r *http.Reque
 	return params, nil
 }
 
-func decodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams(r *http.Request) (EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams, error) {
+func decodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams(args map[string]string, r *http.Request) (EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams, error) {
 	var params EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams
 	// Decode path: enterprise.
 	{
-		param := chi.URLParam(r, "enterprise")
+		param := args["enterprise"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "enterprise",
@@ -16039,7 +16039,7 @@ func decodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams(r *htt
 	}
 	// Decode path: runner_group_id.
 	{
-		param := chi.URLParam(r, "runner_group_id")
+		param := args["runner_group_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "runner_group_id",
@@ -16141,11 +16141,11 @@ func decodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams(r *htt
 	return params, nil
 }
 
-func decodeEnterpriseAdminProvisionAndInviteEnterpriseGroupParams(r *http.Request) (EnterpriseAdminProvisionAndInviteEnterpriseGroupParams, error) {
+func decodeEnterpriseAdminProvisionAndInviteEnterpriseGroupParams(args map[string]string, r *http.Request) (EnterpriseAdminProvisionAndInviteEnterpriseGroupParams, error) {
 	var params EnterpriseAdminProvisionAndInviteEnterpriseGroupParams
 	// Decode path: enterprise.
 	{
-		param := chi.URLParam(r, "enterprise")
+		param := args["enterprise"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "enterprise",
@@ -16177,11 +16177,11 @@ func decodeEnterpriseAdminProvisionAndInviteEnterpriseGroupParams(r *http.Reques
 	return params, nil
 }
 
-func decodeEnterpriseAdminProvisionAndInviteEnterpriseUserParams(r *http.Request) (EnterpriseAdminProvisionAndInviteEnterpriseUserParams, error) {
+func decodeEnterpriseAdminProvisionAndInviteEnterpriseUserParams(args map[string]string, r *http.Request) (EnterpriseAdminProvisionAndInviteEnterpriseUserParams, error) {
 	var params EnterpriseAdminProvisionAndInviteEnterpriseUserParams
 	// Decode path: enterprise.
 	{
-		param := chi.URLParam(r, "enterprise")
+		param := args["enterprise"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "enterprise",
@@ -16213,11 +16213,11 @@ func decodeEnterpriseAdminProvisionAndInviteEnterpriseUserParams(r *http.Request
 	return params, nil
 }
 
-func decodeEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(r *http.Request) (EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseParams, error) {
+func decodeEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(args map[string]string, r *http.Request) (EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseParams, error) {
 	var params EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseParams
 	// Decode path: enterprise.
 	{
-		param := chi.URLParam(r, "enterprise")
+		param := args["enterprise"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "enterprise",
@@ -16248,7 +16248,7 @@ func decodeEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprisePara
 	}
 	// Decode path: runner_group_id.
 	{
-		param := chi.URLParam(r, "runner_group_id")
+		param := args["runner_group_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "runner_group_id",
@@ -16279,7 +16279,7 @@ func decodeEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprisePara
 	}
 	// Decode path: org_id.
 	{
-		param := chi.URLParam(r, "org_id")
+		param := args["org_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org_id",
@@ -16311,11 +16311,11 @@ func decodeEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprisePara
 	return params, nil
 }
 
-func decodeEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams(r *http.Request) (EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams, error) {
+func decodeEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams(args map[string]string, r *http.Request) (EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams, error) {
 	var params EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams
 	// Decode path: enterprise.
 	{
-		param := chi.URLParam(r, "enterprise")
+		param := args["enterprise"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "enterprise",
@@ -16346,7 +16346,7 @@ func decodeEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams(r *
 	}
 	// Decode path: runner_group_id.
 	{
-		param := chi.URLParam(r, "runner_group_id")
+		param := args["runner_group_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "runner_group_id",
@@ -16377,7 +16377,7 @@ func decodeEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams(r *
 	}
 	// Decode path: runner_id.
 	{
-		param := chi.URLParam(r, "runner_id")
+		param := args["runner_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "runner_id",
@@ -16409,11 +16409,11 @@ func decodeEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams(r *
 	return params, nil
 }
 
-func decodeEnterpriseAdminSetAllowedActionsEnterpriseParams(r *http.Request) (EnterpriseAdminSetAllowedActionsEnterpriseParams, error) {
+func decodeEnterpriseAdminSetAllowedActionsEnterpriseParams(args map[string]string, r *http.Request) (EnterpriseAdminSetAllowedActionsEnterpriseParams, error) {
 	var params EnterpriseAdminSetAllowedActionsEnterpriseParams
 	// Decode path: enterprise.
 	{
-		param := chi.URLParam(r, "enterprise")
+		param := args["enterprise"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "enterprise",
@@ -16445,11 +16445,11 @@ func decodeEnterpriseAdminSetAllowedActionsEnterpriseParams(r *http.Request) (En
 	return params, nil
 }
 
-func decodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseParams(r *http.Request) (EnterpriseAdminSetGithubActionsPermissionsEnterpriseParams, error) {
+func decodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseParams(args map[string]string, r *http.Request) (EnterpriseAdminSetGithubActionsPermissionsEnterpriseParams, error) {
 	var params EnterpriseAdminSetGithubActionsPermissionsEnterpriseParams
 	// Decode path: enterprise.
 	{
-		param := chi.URLParam(r, "enterprise")
+		param := args["enterprise"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "enterprise",
@@ -16481,11 +16481,11 @@ func decodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseParams(r *http.Re
 	return params, nil
 }
 
-func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams(r *http.Request) (EnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams, error) {
+func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams(args map[string]string, r *http.Request) (EnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams, error) {
 	var params EnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams
 	// Decode path: enterprise.
 	{
-		param := chi.URLParam(r, "enterprise")
+		param := args["enterprise"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "enterprise",
@@ -16516,7 +16516,7 @@ func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams(r *h
 	}
 	// Decode path: scim_group_id.
 	{
-		param := chi.URLParam(r, "scim_group_id")
+		param := args["scim_group_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "scim_group_id",
@@ -16548,11 +16548,11 @@ func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams(r *h
 	return params, nil
 }
 
-func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserParams(r *http.Request) (EnterpriseAdminSetInformationForProvisionedEnterpriseUserParams, error) {
+func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserParams(args map[string]string, r *http.Request) (EnterpriseAdminSetInformationForProvisionedEnterpriseUserParams, error) {
 	var params EnterpriseAdminSetInformationForProvisionedEnterpriseUserParams
 	// Decode path: enterprise.
 	{
-		param := chi.URLParam(r, "enterprise")
+		param := args["enterprise"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "enterprise",
@@ -16583,7 +16583,7 @@ func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserParams(r *ht
 	}
 	// Decode path: scim_user_id.
 	{
-		param := chi.URLParam(r, "scim_user_id")
+		param := args["scim_user_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "scim_user_id",
@@ -16615,11 +16615,11 @@ func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserParams(r *ht
 	return params, nil
 }
 
-func decodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(r *http.Request) (EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams, error) {
+func decodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(args map[string]string, r *http.Request) (EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams, error) {
 	var params EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams
 	// Decode path: enterprise.
 	{
-		param := chi.URLParam(r, "enterprise")
+		param := args["enterprise"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "enterprise",
@@ -16650,7 +16650,7 @@ func decodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(
 	}
 	// Decode path: runner_group_id.
 	{
-		param := chi.URLParam(r, "runner_group_id")
+		param := args["runner_group_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "runner_group_id",
@@ -16682,11 +16682,11 @@ func decodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(
 	return params, nil
 }
 
-func decodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseParams(r *http.Request) (EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseParams, error) {
+func decodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseParams(args map[string]string, r *http.Request) (EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseParams, error) {
 	var params EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseParams
 	// Decode path: enterprise.
 	{
-		param := chi.URLParam(r, "enterprise")
+		param := args["enterprise"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "enterprise",
@@ -16718,11 +16718,11 @@ func decodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise
 	return params, nil
 }
 
-func decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams(r *http.Request) (EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams, error) {
+func decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams(args map[string]string, r *http.Request) (EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams, error) {
 	var params EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams
 	// Decode path: enterprise.
 	{
-		param := chi.URLParam(r, "enterprise")
+		param := args["enterprise"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "enterprise",
@@ -16753,7 +16753,7 @@ func decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams(r *http
 	}
 	// Decode path: runner_group_id.
 	{
-		param := chi.URLParam(r, "runner_group_id")
+		param := args["runner_group_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "runner_group_id",
@@ -16785,11 +16785,11 @@ func decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams(r *http
 	return params, nil
 }
 
-func decodeEnterpriseAdminUpdateAttributeForEnterpriseUserParams(r *http.Request) (EnterpriseAdminUpdateAttributeForEnterpriseUserParams, error) {
+func decodeEnterpriseAdminUpdateAttributeForEnterpriseUserParams(args map[string]string, r *http.Request) (EnterpriseAdminUpdateAttributeForEnterpriseUserParams, error) {
 	var params EnterpriseAdminUpdateAttributeForEnterpriseUserParams
 	// Decode path: enterprise.
 	{
-		param := chi.URLParam(r, "enterprise")
+		param := args["enterprise"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "enterprise",
@@ -16820,7 +16820,7 @@ func decodeEnterpriseAdminUpdateAttributeForEnterpriseUserParams(r *http.Request
 	}
 	// Decode path: scim_user_id.
 	{
-		param := chi.URLParam(r, "scim_user_id")
+		param := args["scim_user_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "scim_user_id",
@@ -16852,11 +16852,11 @@ func decodeEnterpriseAdminUpdateAttributeForEnterpriseUserParams(r *http.Request
 	return params, nil
 }
 
-func decodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams(r *http.Request) (EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams, error) {
+func decodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams(args map[string]string, r *http.Request) (EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams, error) {
 	var params EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams
 	// Decode path: enterprise.
 	{
-		param := chi.URLParam(r, "enterprise")
+		param := args["enterprise"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "enterprise",
@@ -16887,7 +16887,7 @@ func decodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams(r *http
 	}
 	// Decode path: runner_group_id.
 	{
-		param := chi.URLParam(r, "runner_group_id")
+		param := args["runner_group_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "runner_group_id",
@@ -16919,11 +16919,11 @@ func decodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams(r *http
 	return params, nil
 }
 
-func decodeGistsCheckIsStarredParams(r *http.Request) (GistsCheckIsStarredParams, error) {
+func decodeGistsCheckIsStarredParams(args map[string]string, r *http.Request) (GistsCheckIsStarredParams, error) {
 	var params GistsCheckIsStarredParams
 	// Decode path: gist_id.
 	{
-		param := chi.URLParam(r, "gist_id")
+		param := args["gist_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "gist_id",
@@ -16955,11 +16955,11 @@ func decodeGistsCheckIsStarredParams(r *http.Request) (GistsCheckIsStarredParams
 	return params, nil
 }
 
-func decodeGistsCreateCommentParams(r *http.Request) (GistsCreateCommentParams, error) {
+func decodeGistsCreateCommentParams(args map[string]string, r *http.Request) (GistsCreateCommentParams, error) {
 	var params GistsCreateCommentParams
 	// Decode path: gist_id.
 	{
-		param := chi.URLParam(r, "gist_id")
+		param := args["gist_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "gist_id",
@@ -16991,11 +16991,11 @@ func decodeGistsCreateCommentParams(r *http.Request) (GistsCreateCommentParams, 
 	return params, nil
 }
 
-func decodeGistsDeleteParams(r *http.Request) (GistsDeleteParams, error) {
+func decodeGistsDeleteParams(args map[string]string, r *http.Request) (GistsDeleteParams, error) {
 	var params GistsDeleteParams
 	// Decode path: gist_id.
 	{
-		param := chi.URLParam(r, "gist_id")
+		param := args["gist_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "gist_id",
@@ -17027,11 +17027,11 @@ func decodeGistsDeleteParams(r *http.Request) (GistsDeleteParams, error) {
 	return params, nil
 }
 
-func decodeGistsDeleteCommentParams(r *http.Request) (GistsDeleteCommentParams, error) {
+func decodeGistsDeleteCommentParams(args map[string]string, r *http.Request) (GistsDeleteCommentParams, error) {
 	var params GistsDeleteCommentParams
 	// Decode path: gist_id.
 	{
-		param := chi.URLParam(r, "gist_id")
+		param := args["gist_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "gist_id",
@@ -17062,7 +17062,7 @@ func decodeGistsDeleteCommentParams(r *http.Request) (GistsDeleteCommentParams, 
 	}
 	// Decode path: comment_id.
 	{
-		param := chi.URLParam(r, "comment_id")
+		param := args["comment_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "comment_id",
@@ -17094,11 +17094,11 @@ func decodeGistsDeleteCommentParams(r *http.Request) (GistsDeleteCommentParams, 
 	return params, nil
 }
 
-func decodeGistsGetParams(r *http.Request) (GistsGetParams, error) {
+func decodeGistsGetParams(args map[string]string, r *http.Request) (GistsGetParams, error) {
 	var params GistsGetParams
 	// Decode path: gist_id.
 	{
-		param := chi.URLParam(r, "gist_id")
+		param := args["gist_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "gist_id",
@@ -17130,11 +17130,11 @@ func decodeGistsGetParams(r *http.Request) (GistsGetParams, error) {
 	return params, nil
 }
 
-func decodeGistsGetCommentParams(r *http.Request) (GistsGetCommentParams, error) {
+func decodeGistsGetCommentParams(args map[string]string, r *http.Request) (GistsGetCommentParams, error) {
 	var params GistsGetCommentParams
 	// Decode path: gist_id.
 	{
-		param := chi.URLParam(r, "gist_id")
+		param := args["gist_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "gist_id",
@@ -17165,7 +17165,7 @@ func decodeGistsGetCommentParams(r *http.Request) (GistsGetCommentParams, error)
 	}
 	// Decode path: comment_id.
 	{
-		param := chi.URLParam(r, "comment_id")
+		param := args["comment_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "comment_id",
@@ -17197,7 +17197,7 @@ func decodeGistsGetCommentParams(r *http.Request) (GistsGetCommentParams, error)
 	return params, nil
 }
 
-func decodeGistsListParams(r *http.Request) (GistsListParams, error) {
+func decodeGistsListParams(args map[string]string, r *http.Request) (GistsListParams, error) {
 	var params GistsListParams
 	// Decode query: since.
 	{
@@ -17307,11 +17307,11 @@ func decodeGistsListParams(r *http.Request) (GistsListParams, error) {
 	return params, nil
 }
 
-func decodeGistsListCommentsParams(r *http.Request) (GistsListCommentsParams, error) {
+func decodeGistsListCommentsParams(args map[string]string, r *http.Request) (GistsListCommentsParams, error) {
 	var params GistsListCommentsParams
 	// Decode path: gist_id.
 	{
-		param := chi.URLParam(r, "gist_id")
+		param := args["gist_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "gist_id",
@@ -17413,11 +17413,11 @@ func decodeGistsListCommentsParams(r *http.Request) (GistsListCommentsParams, er
 	return params, nil
 }
 
-func decodeGistsListCommitsParams(r *http.Request) (GistsListCommitsParams, error) {
+func decodeGistsListCommitsParams(args map[string]string, r *http.Request) (GistsListCommitsParams, error) {
 	var params GistsListCommitsParams
 	// Decode path: gist_id.
 	{
-		param := chi.URLParam(r, "gist_id")
+		param := args["gist_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "gist_id",
@@ -17519,11 +17519,11 @@ func decodeGistsListCommitsParams(r *http.Request) (GistsListCommitsParams, erro
 	return params, nil
 }
 
-func decodeGistsListForksParams(r *http.Request) (GistsListForksParams, error) {
+func decodeGistsListForksParams(args map[string]string, r *http.Request) (GistsListForksParams, error) {
 	var params GistsListForksParams
 	// Decode path: gist_id.
 	{
-		param := chi.URLParam(r, "gist_id")
+		param := args["gist_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "gist_id",
@@ -17625,7 +17625,7 @@ func decodeGistsListForksParams(r *http.Request) (GistsListForksParams, error) {
 	return params, nil
 }
 
-func decodeGistsListStarredParams(r *http.Request) (GistsListStarredParams, error) {
+func decodeGistsListStarredParams(args map[string]string, r *http.Request) (GistsListStarredParams, error) {
 	var params GistsListStarredParams
 	// Decode query: since.
 	{
@@ -17735,11 +17735,11 @@ func decodeGistsListStarredParams(r *http.Request) (GistsListStarredParams, erro
 	return params, nil
 }
 
-func decodeGistsStarParams(r *http.Request) (GistsStarParams, error) {
+func decodeGistsStarParams(args map[string]string, r *http.Request) (GistsStarParams, error) {
 	var params GistsStarParams
 	// Decode path: gist_id.
 	{
-		param := chi.URLParam(r, "gist_id")
+		param := args["gist_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "gist_id",
@@ -17771,11 +17771,11 @@ func decodeGistsStarParams(r *http.Request) (GistsStarParams, error) {
 	return params, nil
 }
 
-func decodeGistsUnstarParams(r *http.Request) (GistsUnstarParams, error) {
+func decodeGistsUnstarParams(args map[string]string, r *http.Request) (GistsUnstarParams, error) {
 	var params GistsUnstarParams
 	// Decode path: gist_id.
 	{
-		param := chi.URLParam(r, "gist_id")
+		param := args["gist_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "gist_id",
@@ -17807,11 +17807,11 @@ func decodeGistsUnstarParams(r *http.Request) (GistsUnstarParams, error) {
 	return params, nil
 }
 
-func decodeGistsUpdateCommentParams(r *http.Request) (GistsUpdateCommentParams, error) {
+func decodeGistsUpdateCommentParams(args map[string]string, r *http.Request) (GistsUpdateCommentParams, error) {
 	var params GistsUpdateCommentParams
 	// Decode path: gist_id.
 	{
-		param := chi.URLParam(r, "gist_id")
+		param := args["gist_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "gist_id",
@@ -17842,7 +17842,7 @@ func decodeGistsUpdateCommentParams(r *http.Request) (GistsUpdateCommentParams, 
 	}
 	// Decode path: comment_id.
 	{
-		param := chi.URLParam(r, "comment_id")
+		param := args["comment_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "comment_id",
@@ -17874,11 +17874,11 @@ func decodeGistsUpdateCommentParams(r *http.Request) (GistsUpdateCommentParams, 
 	return params, nil
 }
 
-func decodeGitGetCommitParams(r *http.Request) (GitGetCommitParams, error) {
+func decodeGitGetCommitParams(args map[string]string, r *http.Request) (GitGetCommitParams, error) {
 	var params GitGetCommitParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -17909,7 +17909,7 @@ func decodeGitGetCommitParams(r *http.Request) (GitGetCommitParams, error) {
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -17940,7 +17940,7 @@ func decodeGitGetCommitParams(r *http.Request) (GitGetCommitParams, error) {
 	}
 	// Decode path: commit_sha.
 	{
-		param := chi.URLParam(r, "commit_sha")
+		param := args["commit_sha"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "commit_sha",
@@ -17972,11 +17972,11 @@ func decodeGitGetCommitParams(r *http.Request) (GitGetCommitParams, error) {
 	return params, nil
 }
 
-func decodeGitGetRefParams(r *http.Request) (GitGetRefParams, error) {
+func decodeGitGetRefParams(args map[string]string, r *http.Request) (GitGetRefParams, error) {
 	var params GitGetRefParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -18007,7 +18007,7 @@ func decodeGitGetRefParams(r *http.Request) (GitGetRefParams, error) {
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -18038,7 +18038,7 @@ func decodeGitGetRefParams(r *http.Request) (GitGetRefParams, error) {
 	}
 	// Decode path: ref.
 	{
-		param := chi.URLParam(r, "ref")
+		param := args["ref"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "ref",
@@ -18070,11 +18070,11 @@ func decodeGitGetRefParams(r *http.Request) (GitGetRefParams, error) {
 	return params, nil
 }
 
-func decodeGitGetTagParams(r *http.Request) (GitGetTagParams, error) {
+func decodeGitGetTagParams(args map[string]string, r *http.Request) (GitGetTagParams, error) {
 	var params GitGetTagParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -18105,7 +18105,7 @@ func decodeGitGetTagParams(r *http.Request) (GitGetTagParams, error) {
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -18136,7 +18136,7 @@ func decodeGitGetTagParams(r *http.Request) (GitGetTagParams, error) {
 	}
 	// Decode path: tag_sha.
 	{
-		param := chi.URLParam(r, "tag_sha")
+		param := args["tag_sha"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "tag_sha",
@@ -18168,11 +18168,11 @@ func decodeGitGetTagParams(r *http.Request) (GitGetTagParams, error) {
 	return params, nil
 }
 
-func decodeGitListMatchingRefsParams(r *http.Request) (GitListMatchingRefsParams, error) {
+func decodeGitListMatchingRefsParams(args map[string]string, r *http.Request) (GitListMatchingRefsParams, error) {
 	var params GitListMatchingRefsParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -18203,7 +18203,7 @@ func decodeGitListMatchingRefsParams(r *http.Request) (GitListMatchingRefsParams
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -18234,7 +18234,7 @@ func decodeGitListMatchingRefsParams(r *http.Request) (GitListMatchingRefsParams
 	}
 	// Decode path: ref.
 	{
-		param := chi.URLParam(r, "ref")
+		param := args["ref"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "ref",
@@ -18336,11 +18336,11 @@ func decodeGitListMatchingRefsParams(r *http.Request) (GitListMatchingRefsParams
 	return params, nil
 }
 
-func decodeGitignoreGetTemplateParams(r *http.Request) (GitignoreGetTemplateParams, error) {
+func decodeGitignoreGetTemplateParams(args map[string]string, r *http.Request) (GitignoreGetTemplateParams, error) {
 	var params GitignoreGetTemplateParams
 	// Decode path: name.
 	{
-		param := chi.URLParam(r, "name")
+		param := args["name"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -18372,11 +18372,11 @@ func decodeGitignoreGetTemplateParams(r *http.Request) (GitignoreGetTemplatePara
 	return params, nil
 }
 
-func decodeInteractionsRemoveRestrictionsForOrgParams(r *http.Request) (InteractionsRemoveRestrictionsForOrgParams, error) {
+func decodeInteractionsRemoveRestrictionsForOrgParams(args map[string]string, r *http.Request) (InteractionsRemoveRestrictionsForOrgParams, error) {
 	var params InteractionsRemoveRestrictionsForOrgParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -18408,11 +18408,11 @@ func decodeInteractionsRemoveRestrictionsForOrgParams(r *http.Request) (Interact
 	return params, nil
 }
 
-func decodeInteractionsRemoveRestrictionsForRepoParams(r *http.Request) (InteractionsRemoveRestrictionsForRepoParams, error) {
+func decodeInteractionsRemoveRestrictionsForRepoParams(args map[string]string, r *http.Request) (InteractionsRemoveRestrictionsForRepoParams, error) {
 	var params InteractionsRemoveRestrictionsForRepoParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -18443,7 +18443,7 @@ func decodeInteractionsRemoveRestrictionsForRepoParams(r *http.Request) (Interac
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -18475,11 +18475,11 @@ func decodeInteractionsRemoveRestrictionsForRepoParams(r *http.Request) (Interac
 	return params, nil
 }
 
-func decodeInteractionsSetRestrictionsForRepoParams(r *http.Request) (InteractionsSetRestrictionsForRepoParams, error) {
+func decodeInteractionsSetRestrictionsForRepoParams(args map[string]string, r *http.Request) (InteractionsSetRestrictionsForRepoParams, error) {
 	var params InteractionsSetRestrictionsForRepoParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -18510,7 +18510,7 @@ func decodeInteractionsSetRestrictionsForRepoParams(r *http.Request) (Interactio
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -18542,11 +18542,11 @@ func decodeInteractionsSetRestrictionsForRepoParams(r *http.Request) (Interactio
 	return params, nil
 }
 
-func decodeIssuesAddAssigneesParams(r *http.Request) (IssuesAddAssigneesParams, error) {
+func decodeIssuesAddAssigneesParams(args map[string]string, r *http.Request) (IssuesAddAssigneesParams, error) {
 	var params IssuesAddAssigneesParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -18577,7 +18577,7 @@ func decodeIssuesAddAssigneesParams(r *http.Request) (IssuesAddAssigneesParams, 
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -18608,7 +18608,7 @@ func decodeIssuesAddAssigneesParams(r *http.Request) (IssuesAddAssigneesParams, 
 	}
 	// Decode path: issue_number.
 	{
-		param := chi.URLParam(r, "issue_number")
+		param := args["issue_number"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "issue_number",
@@ -18640,11 +18640,11 @@ func decodeIssuesAddAssigneesParams(r *http.Request) (IssuesAddAssigneesParams, 
 	return params, nil
 }
 
-func decodeIssuesCheckUserCanBeAssignedParams(r *http.Request) (IssuesCheckUserCanBeAssignedParams, error) {
+func decodeIssuesCheckUserCanBeAssignedParams(args map[string]string, r *http.Request) (IssuesCheckUserCanBeAssignedParams, error) {
 	var params IssuesCheckUserCanBeAssignedParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -18675,7 +18675,7 @@ func decodeIssuesCheckUserCanBeAssignedParams(r *http.Request) (IssuesCheckUserC
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -18706,7 +18706,7 @@ func decodeIssuesCheckUserCanBeAssignedParams(r *http.Request) (IssuesCheckUserC
 	}
 	// Decode path: assignee.
 	{
-		param := chi.URLParam(r, "assignee")
+		param := args["assignee"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "assignee",
@@ -18738,11 +18738,11 @@ func decodeIssuesCheckUserCanBeAssignedParams(r *http.Request) (IssuesCheckUserC
 	return params, nil
 }
 
-func decodeIssuesDeleteCommentParams(r *http.Request) (IssuesDeleteCommentParams, error) {
+func decodeIssuesDeleteCommentParams(args map[string]string, r *http.Request) (IssuesDeleteCommentParams, error) {
 	var params IssuesDeleteCommentParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -18773,7 +18773,7 @@ func decodeIssuesDeleteCommentParams(r *http.Request) (IssuesDeleteCommentParams
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -18804,7 +18804,7 @@ func decodeIssuesDeleteCommentParams(r *http.Request) (IssuesDeleteCommentParams
 	}
 	// Decode path: comment_id.
 	{
-		param := chi.URLParam(r, "comment_id")
+		param := args["comment_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "comment_id",
@@ -18836,11 +18836,11 @@ func decodeIssuesDeleteCommentParams(r *http.Request) (IssuesDeleteCommentParams
 	return params, nil
 }
 
-func decodeIssuesDeleteLabelParams(r *http.Request) (IssuesDeleteLabelParams, error) {
+func decodeIssuesDeleteLabelParams(args map[string]string, r *http.Request) (IssuesDeleteLabelParams, error) {
 	var params IssuesDeleteLabelParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -18871,7 +18871,7 @@ func decodeIssuesDeleteLabelParams(r *http.Request) (IssuesDeleteLabelParams, er
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -18902,7 +18902,7 @@ func decodeIssuesDeleteLabelParams(r *http.Request) (IssuesDeleteLabelParams, er
 	}
 	// Decode path: name.
 	{
-		param := chi.URLParam(r, "name")
+		param := args["name"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -18934,11 +18934,11 @@ func decodeIssuesDeleteLabelParams(r *http.Request) (IssuesDeleteLabelParams, er
 	return params, nil
 }
 
-func decodeIssuesDeleteMilestoneParams(r *http.Request) (IssuesDeleteMilestoneParams, error) {
+func decodeIssuesDeleteMilestoneParams(args map[string]string, r *http.Request) (IssuesDeleteMilestoneParams, error) {
 	var params IssuesDeleteMilestoneParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -18969,7 +18969,7 @@ func decodeIssuesDeleteMilestoneParams(r *http.Request) (IssuesDeleteMilestonePa
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -19000,7 +19000,7 @@ func decodeIssuesDeleteMilestoneParams(r *http.Request) (IssuesDeleteMilestonePa
 	}
 	// Decode path: milestone_number.
 	{
-		param := chi.URLParam(r, "milestone_number")
+		param := args["milestone_number"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "milestone_number",
@@ -19032,11 +19032,11 @@ func decodeIssuesDeleteMilestoneParams(r *http.Request) (IssuesDeleteMilestonePa
 	return params, nil
 }
 
-func decodeIssuesGetCommentParams(r *http.Request) (IssuesGetCommentParams, error) {
+func decodeIssuesGetCommentParams(args map[string]string, r *http.Request) (IssuesGetCommentParams, error) {
 	var params IssuesGetCommentParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -19067,7 +19067,7 @@ func decodeIssuesGetCommentParams(r *http.Request) (IssuesGetCommentParams, erro
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -19098,7 +19098,7 @@ func decodeIssuesGetCommentParams(r *http.Request) (IssuesGetCommentParams, erro
 	}
 	// Decode path: comment_id.
 	{
-		param := chi.URLParam(r, "comment_id")
+		param := args["comment_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "comment_id",
@@ -19130,11 +19130,11 @@ func decodeIssuesGetCommentParams(r *http.Request) (IssuesGetCommentParams, erro
 	return params, nil
 }
 
-func decodeIssuesGetEventParams(r *http.Request) (IssuesGetEventParams, error) {
+func decodeIssuesGetEventParams(args map[string]string, r *http.Request) (IssuesGetEventParams, error) {
 	var params IssuesGetEventParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -19165,7 +19165,7 @@ func decodeIssuesGetEventParams(r *http.Request) (IssuesGetEventParams, error) {
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -19196,7 +19196,7 @@ func decodeIssuesGetEventParams(r *http.Request) (IssuesGetEventParams, error) {
 	}
 	// Decode path: event_id.
 	{
-		param := chi.URLParam(r, "event_id")
+		param := args["event_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "event_id",
@@ -19228,11 +19228,11 @@ func decodeIssuesGetEventParams(r *http.Request) (IssuesGetEventParams, error) {
 	return params, nil
 }
 
-func decodeIssuesGetLabelParams(r *http.Request) (IssuesGetLabelParams, error) {
+func decodeIssuesGetLabelParams(args map[string]string, r *http.Request) (IssuesGetLabelParams, error) {
 	var params IssuesGetLabelParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -19263,7 +19263,7 @@ func decodeIssuesGetLabelParams(r *http.Request) (IssuesGetLabelParams, error) {
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -19294,7 +19294,7 @@ func decodeIssuesGetLabelParams(r *http.Request) (IssuesGetLabelParams, error) {
 	}
 	// Decode path: name.
 	{
-		param := chi.URLParam(r, "name")
+		param := args["name"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -19326,11 +19326,11 @@ func decodeIssuesGetLabelParams(r *http.Request) (IssuesGetLabelParams, error) {
 	return params, nil
 }
 
-func decodeIssuesGetMilestoneParams(r *http.Request) (IssuesGetMilestoneParams, error) {
+func decodeIssuesGetMilestoneParams(args map[string]string, r *http.Request) (IssuesGetMilestoneParams, error) {
 	var params IssuesGetMilestoneParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -19361,7 +19361,7 @@ func decodeIssuesGetMilestoneParams(r *http.Request) (IssuesGetMilestoneParams, 
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -19392,7 +19392,7 @@ func decodeIssuesGetMilestoneParams(r *http.Request) (IssuesGetMilestoneParams, 
 	}
 	// Decode path: milestone_number.
 	{
-		param := chi.URLParam(r, "milestone_number")
+		param := args["milestone_number"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "milestone_number",
@@ -19424,11 +19424,11 @@ func decodeIssuesGetMilestoneParams(r *http.Request) (IssuesGetMilestoneParams, 
 	return params, nil
 }
 
-func decodeIssuesListAssigneesParams(r *http.Request) (IssuesListAssigneesParams, error) {
+func decodeIssuesListAssigneesParams(args map[string]string, r *http.Request) (IssuesListAssigneesParams, error) {
 	var params IssuesListAssigneesParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -19459,7 +19459,7 @@ func decodeIssuesListAssigneesParams(r *http.Request) (IssuesListAssigneesParams
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -19561,11 +19561,11 @@ func decodeIssuesListAssigneesParams(r *http.Request) (IssuesListAssigneesParams
 	return params, nil
 }
 
-func decodeIssuesListCommentsParams(r *http.Request) (IssuesListCommentsParams, error) {
+func decodeIssuesListCommentsParams(args map[string]string, r *http.Request) (IssuesListCommentsParams, error) {
 	var params IssuesListCommentsParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -19596,7 +19596,7 @@ func decodeIssuesListCommentsParams(r *http.Request) (IssuesListCommentsParams, 
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -19627,7 +19627,7 @@ func decodeIssuesListCommentsParams(r *http.Request) (IssuesListCommentsParams, 
 	}
 	// Decode path: issue_number.
 	{
-		param := chi.URLParam(r, "issue_number")
+		param := args["issue_number"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "issue_number",
@@ -19764,11 +19764,11 @@ func decodeIssuesListCommentsParams(r *http.Request) (IssuesListCommentsParams, 
 	return params, nil
 }
 
-func decodeIssuesListLabelsForMilestoneParams(r *http.Request) (IssuesListLabelsForMilestoneParams, error) {
+func decodeIssuesListLabelsForMilestoneParams(args map[string]string, r *http.Request) (IssuesListLabelsForMilestoneParams, error) {
 	var params IssuesListLabelsForMilestoneParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -19799,7 +19799,7 @@ func decodeIssuesListLabelsForMilestoneParams(r *http.Request) (IssuesListLabels
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -19830,7 +19830,7 @@ func decodeIssuesListLabelsForMilestoneParams(r *http.Request) (IssuesListLabels
 	}
 	// Decode path: milestone_number.
 	{
-		param := chi.URLParam(r, "milestone_number")
+		param := args["milestone_number"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "milestone_number",
@@ -19932,11 +19932,11 @@ func decodeIssuesListLabelsForMilestoneParams(r *http.Request) (IssuesListLabels
 	return params, nil
 }
 
-func decodeIssuesListLabelsForRepoParams(r *http.Request) (IssuesListLabelsForRepoParams, error) {
+func decodeIssuesListLabelsForRepoParams(args map[string]string, r *http.Request) (IssuesListLabelsForRepoParams, error) {
 	var params IssuesListLabelsForRepoParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -19967,7 +19967,7 @@ func decodeIssuesListLabelsForRepoParams(r *http.Request) (IssuesListLabelsForRe
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -20069,11 +20069,11 @@ func decodeIssuesListLabelsForRepoParams(r *http.Request) (IssuesListLabelsForRe
 	return params, nil
 }
 
-func decodeIssuesListLabelsOnIssueParams(r *http.Request) (IssuesListLabelsOnIssueParams, error) {
+func decodeIssuesListLabelsOnIssueParams(args map[string]string, r *http.Request) (IssuesListLabelsOnIssueParams, error) {
 	var params IssuesListLabelsOnIssueParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -20104,7 +20104,7 @@ func decodeIssuesListLabelsOnIssueParams(r *http.Request) (IssuesListLabelsOnIss
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -20135,7 +20135,7 @@ func decodeIssuesListLabelsOnIssueParams(r *http.Request) (IssuesListLabelsOnIss
 	}
 	// Decode path: issue_number.
 	{
-		param := chi.URLParam(r, "issue_number")
+		param := args["issue_number"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "issue_number",
@@ -20237,11 +20237,11 @@ func decodeIssuesListLabelsOnIssueParams(r *http.Request) (IssuesListLabelsOnIss
 	return params, nil
 }
 
-func decodeIssuesListMilestonesParams(r *http.Request) (IssuesListMilestonesParams, error) {
+func decodeIssuesListMilestonesParams(args map[string]string, r *http.Request) (IssuesListMilestonesParams, error) {
 	var params IssuesListMilestonesParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -20272,7 +20272,7 @@ func decodeIssuesListMilestonesParams(r *http.Request) (IssuesListMilestonesPara
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -20536,11 +20536,11 @@ func decodeIssuesListMilestonesParams(r *http.Request) (IssuesListMilestonesPara
 	return params, nil
 }
 
-func decodeIssuesRemoveAllLabelsParams(r *http.Request) (IssuesRemoveAllLabelsParams, error) {
+func decodeIssuesRemoveAllLabelsParams(args map[string]string, r *http.Request) (IssuesRemoveAllLabelsParams, error) {
 	var params IssuesRemoveAllLabelsParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -20571,7 +20571,7 @@ func decodeIssuesRemoveAllLabelsParams(r *http.Request) (IssuesRemoveAllLabelsPa
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -20602,7 +20602,7 @@ func decodeIssuesRemoveAllLabelsParams(r *http.Request) (IssuesRemoveAllLabelsPa
 	}
 	// Decode path: issue_number.
 	{
-		param := chi.URLParam(r, "issue_number")
+		param := args["issue_number"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "issue_number",
@@ -20634,11 +20634,11 @@ func decodeIssuesRemoveAllLabelsParams(r *http.Request) (IssuesRemoveAllLabelsPa
 	return params, nil
 }
 
-func decodeIssuesRemoveAssigneesParams(r *http.Request) (IssuesRemoveAssigneesParams, error) {
+func decodeIssuesRemoveAssigneesParams(args map[string]string, r *http.Request) (IssuesRemoveAssigneesParams, error) {
 	var params IssuesRemoveAssigneesParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -20669,7 +20669,7 @@ func decodeIssuesRemoveAssigneesParams(r *http.Request) (IssuesRemoveAssigneesPa
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -20700,7 +20700,7 @@ func decodeIssuesRemoveAssigneesParams(r *http.Request) (IssuesRemoveAssigneesPa
 	}
 	// Decode path: issue_number.
 	{
-		param := chi.URLParam(r, "issue_number")
+		param := args["issue_number"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "issue_number",
@@ -20732,11 +20732,11 @@ func decodeIssuesRemoveAssigneesParams(r *http.Request) (IssuesRemoveAssigneesPa
 	return params, nil
 }
 
-func decodeIssuesRemoveLabelParams(r *http.Request) (IssuesRemoveLabelParams, error) {
+func decodeIssuesRemoveLabelParams(args map[string]string, r *http.Request) (IssuesRemoveLabelParams, error) {
 	var params IssuesRemoveLabelParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -20767,7 +20767,7 @@ func decodeIssuesRemoveLabelParams(r *http.Request) (IssuesRemoveLabelParams, er
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -20798,7 +20798,7 @@ func decodeIssuesRemoveLabelParams(r *http.Request) (IssuesRemoveLabelParams, er
 	}
 	// Decode path: issue_number.
 	{
-		param := chi.URLParam(r, "issue_number")
+		param := args["issue_number"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "issue_number",
@@ -20829,7 +20829,7 @@ func decodeIssuesRemoveLabelParams(r *http.Request) (IssuesRemoveLabelParams, er
 	}
 	// Decode path: name.
 	{
-		param := chi.URLParam(r, "name")
+		param := args["name"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -20861,11 +20861,11 @@ func decodeIssuesRemoveLabelParams(r *http.Request) (IssuesRemoveLabelParams, er
 	return params, nil
 }
 
-func decodeIssuesUnlockParams(r *http.Request) (IssuesUnlockParams, error) {
+func decodeIssuesUnlockParams(args map[string]string, r *http.Request) (IssuesUnlockParams, error) {
 	var params IssuesUnlockParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -20896,7 +20896,7 @@ func decodeIssuesUnlockParams(r *http.Request) (IssuesUnlockParams, error) {
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -20927,7 +20927,7 @@ func decodeIssuesUnlockParams(r *http.Request) (IssuesUnlockParams, error) {
 	}
 	// Decode path: issue_number.
 	{
-		param := chi.URLParam(r, "issue_number")
+		param := args["issue_number"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "issue_number",
@@ -20959,11 +20959,11 @@ func decodeIssuesUnlockParams(r *http.Request) (IssuesUnlockParams, error) {
 	return params, nil
 }
 
-func decodeIssuesUpdateLabelParams(r *http.Request) (IssuesUpdateLabelParams, error) {
+func decodeIssuesUpdateLabelParams(args map[string]string, r *http.Request) (IssuesUpdateLabelParams, error) {
 	var params IssuesUpdateLabelParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -20994,7 +20994,7 @@ func decodeIssuesUpdateLabelParams(r *http.Request) (IssuesUpdateLabelParams, er
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -21025,7 +21025,7 @@ func decodeIssuesUpdateLabelParams(r *http.Request) (IssuesUpdateLabelParams, er
 	}
 	// Decode path: name.
 	{
-		param := chi.URLParam(r, "name")
+		param := args["name"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -21057,11 +21057,11 @@ func decodeIssuesUpdateLabelParams(r *http.Request) (IssuesUpdateLabelParams, er
 	return params, nil
 }
 
-func decodeIssuesUpdateMilestoneParams(r *http.Request) (IssuesUpdateMilestoneParams, error) {
+func decodeIssuesUpdateMilestoneParams(args map[string]string, r *http.Request) (IssuesUpdateMilestoneParams, error) {
 	var params IssuesUpdateMilestoneParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -21092,7 +21092,7 @@ func decodeIssuesUpdateMilestoneParams(r *http.Request) (IssuesUpdateMilestonePa
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -21123,7 +21123,7 @@ func decodeIssuesUpdateMilestoneParams(r *http.Request) (IssuesUpdateMilestonePa
 	}
 	// Decode path: milestone_number.
 	{
-		param := chi.URLParam(r, "milestone_number")
+		param := args["milestone_number"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "milestone_number",
@@ -21155,11 +21155,11 @@ func decodeIssuesUpdateMilestoneParams(r *http.Request) (IssuesUpdateMilestonePa
 	return params, nil
 }
 
-func decodeLicensesGetParams(r *http.Request) (LicensesGetParams, error) {
+func decodeLicensesGetParams(args map[string]string, r *http.Request) (LicensesGetParams, error) {
 	var params LicensesGetParams
 	// Decode path: license.
 	{
-		param := chi.URLParam(r, "license")
+		param := args["license"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "license",
@@ -21191,7 +21191,7 @@ func decodeLicensesGetParams(r *http.Request) (LicensesGetParams, error) {
 	return params, nil
 }
 
-func decodeLicensesGetAllCommonlyUsedParams(r *http.Request) (LicensesGetAllCommonlyUsedParams, error) {
+func decodeLicensesGetAllCommonlyUsedParams(args map[string]string, r *http.Request) (LicensesGetAllCommonlyUsedParams, error) {
 	var params LicensesGetAllCommonlyUsedParams
 	// Decode query: featured.
 	{
@@ -21301,11 +21301,11 @@ func decodeLicensesGetAllCommonlyUsedParams(r *http.Request) (LicensesGetAllComm
 	return params, nil
 }
 
-func decodeLicensesGetForRepoParams(r *http.Request) (LicensesGetForRepoParams, error) {
+func decodeLicensesGetForRepoParams(args map[string]string, r *http.Request) (LicensesGetForRepoParams, error) {
 	var params LicensesGetForRepoParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -21336,7 +21336,7 @@ func decodeLicensesGetForRepoParams(r *http.Request) (LicensesGetForRepoParams, 
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -21368,11 +21368,11 @@ func decodeLicensesGetForRepoParams(r *http.Request) (LicensesGetForRepoParams, 
 	return params, nil
 }
 
-func decodeMigrationsCancelImportParams(r *http.Request) (MigrationsCancelImportParams, error) {
+func decodeMigrationsCancelImportParams(args map[string]string, r *http.Request) (MigrationsCancelImportParams, error) {
 	var params MigrationsCancelImportParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -21403,7 +21403,7 @@ func decodeMigrationsCancelImportParams(r *http.Request) (MigrationsCancelImport
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -21435,11 +21435,11 @@ func decodeMigrationsCancelImportParams(r *http.Request) (MigrationsCancelImport
 	return params, nil
 }
 
-func decodeMigrationsDeleteArchiveForAuthenticatedUserParams(r *http.Request) (MigrationsDeleteArchiveForAuthenticatedUserParams, error) {
+func decodeMigrationsDeleteArchiveForAuthenticatedUserParams(args map[string]string, r *http.Request) (MigrationsDeleteArchiveForAuthenticatedUserParams, error) {
 	var params MigrationsDeleteArchiveForAuthenticatedUserParams
 	// Decode path: migration_id.
 	{
-		param := chi.URLParam(r, "migration_id")
+		param := args["migration_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "migration_id",
@@ -21471,11 +21471,11 @@ func decodeMigrationsDeleteArchiveForAuthenticatedUserParams(r *http.Request) (M
 	return params, nil
 }
 
-func decodeMigrationsDeleteArchiveForOrgParams(r *http.Request) (MigrationsDeleteArchiveForOrgParams, error) {
+func decodeMigrationsDeleteArchiveForOrgParams(args map[string]string, r *http.Request) (MigrationsDeleteArchiveForOrgParams, error) {
 	var params MigrationsDeleteArchiveForOrgParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -21506,7 +21506,7 @@ func decodeMigrationsDeleteArchiveForOrgParams(r *http.Request) (MigrationsDelet
 	}
 	// Decode path: migration_id.
 	{
-		param := chi.URLParam(r, "migration_id")
+		param := args["migration_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "migration_id",
@@ -21538,11 +21538,11 @@ func decodeMigrationsDeleteArchiveForOrgParams(r *http.Request) (MigrationsDelet
 	return params, nil
 }
 
-func decodeMigrationsDownloadArchiveForOrgParams(r *http.Request) (MigrationsDownloadArchiveForOrgParams, error) {
+func decodeMigrationsDownloadArchiveForOrgParams(args map[string]string, r *http.Request) (MigrationsDownloadArchiveForOrgParams, error) {
 	var params MigrationsDownloadArchiveForOrgParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -21573,7 +21573,7 @@ func decodeMigrationsDownloadArchiveForOrgParams(r *http.Request) (MigrationsDow
 	}
 	// Decode path: migration_id.
 	{
-		param := chi.URLParam(r, "migration_id")
+		param := args["migration_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "migration_id",
@@ -21605,11 +21605,11 @@ func decodeMigrationsDownloadArchiveForOrgParams(r *http.Request) (MigrationsDow
 	return params, nil
 }
 
-func decodeMigrationsGetArchiveForAuthenticatedUserParams(r *http.Request) (MigrationsGetArchiveForAuthenticatedUserParams, error) {
+func decodeMigrationsGetArchiveForAuthenticatedUserParams(args map[string]string, r *http.Request) (MigrationsGetArchiveForAuthenticatedUserParams, error) {
 	var params MigrationsGetArchiveForAuthenticatedUserParams
 	// Decode path: migration_id.
 	{
-		param := chi.URLParam(r, "migration_id")
+		param := args["migration_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "migration_id",
@@ -21641,11 +21641,11 @@ func decodeMigrationsGetArchiveForAuthenticatedUserParams(r *http.Request) (Migr
 	return params, nil
 }
 
-func decodeMigrationsGetCommitAuthorsParams(r *http.Request) (MigrationsGetCommitAuthorsParams, error) {
+func decodeMigrationsGetCommitAuthorsParams(args map[string]string, r *http.Request) (MigrationsGetCommitAuthorsParams, error) {
 	var params MigrationsGetCommitAuthorsParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -21676,7 +21676,7 @@ func decodeMigrationsGetCommitAuthorsParams(r *http.Request) (MigrationsGetCommi
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -21743,11 +21743,11 @@ func decodeMigrationsGetCommitAuthorsParams(r *http.Request) (MigrationsGetCommi
 	return params, nil
 }
 
-func decodeMigrationsGetImportStatusParams(r *http.Request) (MigrationsGetImportStatusParams, error) {
+func decodeMigrationsGetImportStatusParams(args map[string]string, r *http.Request) (MigrationsGetImportStatusParams, error) {
 	var params MigrationsGetImportStatusParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -21778,7 +21778,7 @@ func decodeMigrationsGetImportStatusParams(r *http.Request) (MigrationsGetImport
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -21810,11 +21810,11 @@ func decodeMigrationsGetImportStatusParams(r *http.Request) (MigrationsGetImport
 	return params, nil
 }
 
-func decodeMigrationsGetLargeFilesParams(r *http.Request) (MigrationsGetLargeFilesParams, error) {
+func decodeMigrationsGetLargeFilesParams(args map[string]string, r *http.Request) (MigrationsGetLargeFilesParams, error) {
 	var params MigrationsGetLargeFilesParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -21845,7 +21845,7 @@ func decodeMigrationsGetLargeFilesParams(r *http.Request) (MigrationsGetLargeFil
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -21877,11 +21877,11 @@ func decodeMigrationsGetLargeFilesParams(r *http.Request) (MigrationsGetLargeFil
 	return params, nil
 }
 
-func decodeMigrationsGetStatusForAuthenticatedUserParams(r *http.Request) (MigrationsGetStatusForAuthenticatedUserParams, error) {
+func decodeMigrationsGetStatusForAuthenticatedUserParams(args map[string]string, r *http.Request) (MigrationsGetStatusForAuthenticatedUserParams, error) {
 	var params MigrationsGetStatusForAuthenticatedUserParams
 	// Decode path: migration_id.
 	{
-		param := chi.URLParam(r, "migration_id")
+		param := args["migration_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "migration_id",
@@ -21950,11 +21950,11 @@ func decodeMigrationsGetStatusForAuthenticatedUserParams(r *http.Request) (Migra
 	return params, nil
 }
 
-func decodeMigrationsGetStatusForOrgParams(r *http.Request) (MigrationsGetStatusForOrgParams, error) {
+func decodeMigrationsGetStatusForOrgParams(args map[string]string, r *http.Request) (MigrationsGetStatusForOrgParams, error) {
 	var params MigrationsGetStatusForOrgParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -21985,7 +21985,7 @@ func decodeMigrationsGetStatusForOrgParams(r *http.Request) (MigrationsGetStatus
 	}
 	// Decode path: migration_id.
 	{
-		param := chi.URLParam(r, "migration_id")
+		param := args["migration_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "migration_id",
@@ -22078,7 +22078,7 @@ func decodeMigrationsGetStatusForOrgParams(r *http.Request) (MigrationsGetStatus
 	return params, nil
 }
 
-func decodeMigrationsListForAuthenticatedUserParams(r *http.Request) (MigrationsListForAuthenticatedUserParams, error) {
+func decodeMigrationsListForAuthenticatedUserParams(args map[string]string, r *http.Request) (MigrationsListForAuthenticatedUserParams, error) {
 	var params MigrationsListForAuthenticatedUserParams
 	// Decode query: per_page.
 	{
@@ -22153,11 +22153,11 @@ func decodeMigrationsListForAuthenticatedUserParams(r *http.Request) (Migrations
 	return params, nil
 }
 
-func decodeMigrationsListForOrgParams(r *http.Request) (MigrationsListForOrgParams, error) {
+func decodeMigrationsListForOrgParams(args map[string]string, r *http.Request) (MigrationsListForOrgParams, error) {
 	var params MigrationsListForOrgParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -22320,11 +22320,11 @@ func decodeMigrationsListForOrgParams(r *http.Request) (MigrationsListForOrgPara
 	return params, nil
 }
 
-func decodeMigrationsListReposForOrgParams(r *http.Request) (MigrationsListReposForOrgParams, error) {
+func decodeMigrationsListReposForOrgParams(args map[string]string, r *http.Request) (MigrationsListReposForOrgParams, error) {
 	var params MigrationsListReposForOrgParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -22355,7 +22355,7 @@ func decodeMigrationsListReposForOrgParams(r *http.Request) (MigrationsListRepos
 	}
 	// Decode path: migration_id.
 	{
-		param := chi.URLParam(r, "migration_id")
+		param := args["migration_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "migration_id",
@@ -22457,11 +22457,11 @@ func decodeMigrationsListReposForOrgParams(r *http.Request) (MigrationsListRepos
 	return params, nil
 }
 
-func decodeMigrationsListReposForUserParams(r *http.Request) (MigrationsListReposForUserParams, error) {
+func decodeMigrationsListReposForUserParams(args map[string]string, r *http.Request) (MigrationsListReposForUserParams, error) {
 	var params MigrationsListReposForUserParams
 	// Decode path: migration_id.
 	{
-		param := chi.URLParam(r, "migration_id")
+		param := args["migration_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "migration_id",
@@ -22563,11 +22563,11 @@ func decodeMigrationsListReposForUserParams(r *http.Request) (MigrationsListRepo
 	return params, nil
 }
 
-func decodeMigrationsUnlockRepoForAuthenticatedUserParams(r *http.Request) (MigrationsUnlockRepoForAuthenticatedUserParams, error) {
+func decodeMigrationsUnlockRepoForAuthenticatedUserParams(args map[string]string, r *http.Request) (MigrationsUnlockRepoForAuthenticatedUserParams, error) {
 	var params MigrationsUnlockRepoForAuthenticatedUserParams
 	// Decode path: migration_id.
 	{
-		param := chi.URLParam(r, "migration_id")
+		param := args["migration_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "migration_id",
@@ -22598,7 +22598,7 @@ func decodeMigrationsUnlockRepoForAuthenticatedUserParams(r *http.Request) (Migr
 	}
 	// Decode path: repo_name.
 	{
-		param := chi.URLParam(r, "repo_name")
+		param := args["repo_name"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo_name",
@@ -22630,11 +22630,11 @@ func decodeMigrationsUnlockRepoForAuthenticatedUserParams(r *http.Request) (Migr
 	return params, nil
 }
 
-func decodeMigrationsUnlockRepoForOrgParams(r *http.Request) (MigrationsUnlockRepoForOrgParams, error) {
+func decodeMigrationsUnlockRepoForOrgParams(args map[string]string, r *http.Request) (MigrationsUnlockRepoForOrgParams, error) {
 	var params MigrationsUnlockRepoForOrgParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -22665,7 +22665,7 @@ func decodeMigrationsUnlockRepoForOrgParams(r *http.Request) (MigrationsUnlockRe
 	}
 	// Decode path: migration_id.
 	{
-		param := chi.URLParam(r, "migration_id")
+		param := args["migration_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "migration_id",
@@ -22696,7 +22696,7 @@ func decodeMigrationsUnlockRepoForOrgParams(r *http.Request) (MigrationsUnlockRe
 	}
 	// Decode path: repo_name.
 	{
-		param := chi.URLParam(r, "repo_name")
+		param := args["repo_name"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo_name",
@@ -22728,11 +22728,11 @@ func decodeMigrationsUnlockRepoForOrgParams(r *http.Request) (MigrationsUnlockRe
 	return params, nil
 }
 
-func decodeMigrationsUpdateImportParams(r *http.Request) (MigrationsUpdateImportParams, error) {
+func decodeMigrationsUpdateImportParams(args map[string]string, r *http.Request) (MigrationsUpdateImportParams, error) {
 	var params MigrationsUpdateImportParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -22763,7 +22763,7 @@ func decodeMigrationsUpdateImportParams(r *http.Request) (MigrationsUpdateImport
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -22795,11 +22795,11 @@ func decodeMigrationsUpdateImportParams(r *http.Request) (MigrationsUpdateImport
 	return params, nil
 }
 
-func decodeOAuthAuthorizationsDeleteAuthorizationParams(r *http.Request) (OAuthAuthorizationsDeleteAuthorizationParams, error) {
+func decodeOAuthAuthorizationsDeleteAuthorizationParams(args map[string]string, r *http.Request) (OAuthAuthorizationsDeleteAuthorizationParams, error) {
 	var params OAuthAuthorizationsDeleteAuthorizationParams
 	// Decode path: authorization_id.
 	{
-		param := chi.URLParam(r, "authorization_id")
+		param := args["authorization_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "authorization_id",
@@ -22831,11 +22831,11 @@ func decodeOAuthAuthorizationsDeleteAuthorizationParams(r *http.Request) (OAuthA
 	return params, nil
 }
 
-func decodeOAuthAuthorizationsDeleteGrantParams(r *http.Request) (OAuthAuthorizationsDeleteGrantParams, error) {
+func decodeOAuthAuthorizationsDeleteGrantParams(args map[string]string, r *http.Request) (OAuthAuthorizationsDeleteGrantParams, error) {
 	var params OAuthAuthorizationsDeleteGrantParams
 	// Decode path: grant_id.
 	{
-		param := chi.URLParam(r, "grant_id")
+		param := args["grant_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "grant_id",
@@ -22867,11 +22867,11 @@ func decodeOAuthAuthorizationsDeleteGrantParams(r *http.Request) (OAuthAuthoriza
 	return params, nil
 }
 
-func decodeOAuthAuthorizationsGetAuthorizationParams(r *http.Request) (OAuthAuthorizationsGetAuthorizationParams, error) {
+func decodeOAuthAuthorizationsGetAuthorizationParams(args map[string]string, r *http.Request) (OAuthAuthorizationsGetAuthorizationParams, error) {
 	var params OAuthAuthorizationsGetAuthorizationParams
 	// Decode path: authorization_id.
 	{
-		param := chi.URLParam(r, "authorization_id")
+		param := args["authorization_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "authorization_id",
@@ -22903,11 +22903,11 @@ func decodeOAuthAuthorizationsGetAuthorizationParams(r *http.Request) (OAuthAuth
 	return params, nil
 }
 
-func decodeOAuthAuthorizationsGetGrantParams(r *http.Request) (OAuthAuthorizationsGetGrantParams, error) {
+func decodeOAuthAuthorizationsGetGrantParams(args map[string]string, r *http.Request) (OAuthAuthorizationsGetGrantParams, error) {
 	var params OAuthAuthorizationsGetGrantParams
 	// Decode path: grant_id.
 	{
-		param := chi.URLParam(r, "grant_id")
+		param := args["grant_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "grant_id",
@@ -22939,7 +22939,7 @@ func decodeOAuthAuthorizationsGetGrantParams(r *http.Request) (OAuthAuthorizatio
 	return params, nil
 }
 
-func decodeOAuthAuthorizationsListAuthorizationsParams(r *http.Request) (OAuthAuthorizationsListAuthorizationsParams, error) {
+func decodeOAuthAuthorizationsListAuthorizationsParams(args map[string]string, r *http.Request) (OAuthAuthorizationsListAuthorizationsParams, error) {
 	var params OAuthAuthorizationsListAuthorizationsParams
 	// Decode query: per_page.
 	{
@@ -23049,7 +23049,7 @@ func decodeOAuthAuthorizationsListAuthorizationsParams(r *http.Request) (OAuthAu
 	return params, nil
 }
 
-func decodeOAuthAuthorizationsListGrantsParams(r *http.Request) (OAuthAuthorizationsListGrantsParams, error) {
+func decodeOAuthAuthorizationsListGrantsParams(args map[string]string, r *http.Request) (OAuthAuthorizationsListGrantsParams, error) {
 	var params OAuthAuthorizationsListGrantsParams
 	// Decode query: per_page.
 	{
@@ -23159,11 +23159,11 @@ func decodeOAuthAuthorizationsListGrantsParams(r *http.Request) (OAuthAuthorizat
 	return params, nil
 }
 
-func decodeOrgsCheckBlockedUserParams(r *http.Request) (OrgsCheckBlockedUserParams, error) {
+func decodeOrgsCheckBlockedUserParams(args map[string]string, r *http.Request) (OrgsCheckBlockedUserParams, error) {
 	var params OrgsCheckBlockedUserParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -23194,7 +23194,7 @@ func decodeOrgsCheckBlockedUserParams(r *http.Request) (OrgsCheckBlockedUserPara
 	}
 	// Decode path: username.
 	{
-		param := chi.URLParam(r, "username")
+		param := args["username"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "username",
@@ -23226,11 +23226,11 @@ func decodeOrgsCheckBlockedUserParams(r *http.Request) (OrgsCheckBlockedUserPara
 	return params, nil
 }
 
-func decodeOrgsCheckMembershipForUserParams(r *http.Request) (OrgsCheckMembershipForUserParams, error) {
+func decodeOrgsCheckMembershipForUserParams(args map[string]string, r *http.Request) (OrgsCheckMembershipForUserParams, error) {
 	var params OrgsCheckMembershipForUserParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -23261,7 +23261,7 @@ func decodeOrgsCheckMembershipForUserParams(r *http.Request) (OrgsCheckMembershi
 	}
 	// Decode path: username.
 	{
-		param := chi.URLParam(r, "username")
+		param := args["username"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "username",
@@ -23293,11 +23293,11 @@ func decodeOrgsCheckMembershipForUserParams(r *http.Request) (OrgsCheckMembershi
 	return params, nil
 }
 
-func decodeOrgsCheckPublicMembershipForUserParams(r *http.Request) (OrgsCheckPublicMembershipForUserParams, error) {
+func decodeOrgsCheckPublicMembershipForUserParams(args map[string]string, r *http.Request) (OrgsCheckPublicMembershipForUserParams, error) {
 	var params OrgsCheckPublicMembershipForUserParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -23328,7 +23328,7 @@ func decodeOrgsCheckPublicMembershipForUserParams(r *http.Request) (OrgsCheckPub
 	}
 	// Decode path: username.
 	{
-		param := chi.URLParam(r, "username")
+		param := args["username"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "username",
@@ -23360,11 +23360,11 @@ func decodeOrgsCheckPublicMembershipForUserParams(r *http.Request) (OrgsCheckPub
 	return params, nil
 }
 
-func decodeOrgsConvertMemberToOutsideCollaboratorParams(r *http.Request) (OrgsConvertMemberToOutsideCollaboratorParams, error) {
+func decodeOrgsConvertMemberToOutsideCollaboratorParams(args map[string]string, r *http.Request) (OrgsConvertMemberToOutsideCollaboratorParams, error) {
 	var params OrgsConvertMemberToOutsideCollaboratorParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -23395,7 +23395,7 @@ func decodeOrgsConvertMemberToOutsideCollaboratorParams(r *http.Request) (OrgsCo
 	}
 	// Decode path: username.
 	{
-		param := chi.URLParam(r, "username")
+		param := args["username"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "username",
@@ -23427,11 +23427,11 @@ func decodeOrgsConvertMemberToOutsideCollaboratorParams(r *http.Request) (OrgsCo
 	return params, nil
 }
 
-func decodeOrgsDeleteWebhookParams(r *http.Request) (OrgsDeleteWebhookParams, error) {
+func decodeOrgsDeleteWebhookParams(args map[string]string, r *http.Request) (OrgsDeleteWebhookParams, error) {
 	var params OrgsDeleteWebhookParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -23462,7 +23462,7 @@ func decodeOrgsDeleteWebhookParams(r *http.Request) (OrgsDeleteWebhookParams, er
 	}
 	// Decode path: hook_id.
 	{
-		param := chi.URLParam(r, "hook_id")
+		param := args["hook_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "hook_id",
@@ -23494,11 +23494,11 @@ func decodeOrgsDeleteWebhookParams(r *http.Request) (OrgsDeleteWebhookParams, er
 	return params, nil
 }
 
-func decodeOrgsGetParams(r *http.Request) (OrgsGetParams, error) {
+func decodeOrgsGetParams(args map[string]string, r *http.Request) (OrgsGetParams, error) {
 	var params OrgsGetParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -23530,11 +23530,11 @@ func decodeOrgsGetParams(r *http.Request) (OrgsGetParams, error) {
 	return params, nil
 }
 
-func decodeOrgsGetAuditLogParams(r *http.Request) (OrgsGetAuditLogParams, error) {
+func decodeOrgsGetAuditLogParams(args map[string]string, r *http.Request) (OrgsGetAuditLogParams, error) {
 	var params OrgsGetAuditLogParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -23849,11 +23849,11 @@ func decodeOrgsGetAuditLogParams(r *http.Request) (OrgsGetAuditLogParams, error)
 	return params, nil
 }
 
-func decodeOrgsGetMembershipForAuthenticatedUserParams(r *http.Request) (OrgsGetMembershipForAuthenticatedUserParams, error) {
+func decodeOrgsGetMembershipForAuthenticatedUserParams(args map[string]string, r *http.Request) (OrgsGetMembershipForAuthenticatedUserParams, error) {
 	var params OrgsGetMembershipForAuthenticatedUserParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -23885,11 +23885,11 @@ func decodeOrgsGetMembershipForAuthenticatedUserParams(r *http.Request) (OrgsGet
 	return params, nil
 }
 
-func decodeOrgsGetMembershipForUserParams(r *http.Request) (OrgsGetMembershipForUserParams, error) {
+func decodeOrgsGetMembershipForUserParams(args map[string]string, r *http.Request) (OrgsGetMembershipForUserParams, error) {
 	var params OrgsGetMembershipForUserParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -23920,7 +23920,7 @@ func decodeOrgsGetMembershipForUserParams(r *http.Request) (OrgsGetMembershipFor
 	}
 	// Decode path: username.
 	{
-		param := chi.URLParam(r, "username")
+		param := args["username"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "username",
@@ -23952,11 +23952,11 @@ func decodeOrgsGetMembershipForUserParams(r *http.Request) (OrgsGetMembershipFor
 	return params, nil
 }
 
-func decodeOrgsGetWebhookParams(r *http.Request) (OrgsGetWebhookParams, error) {
+func decodeOrgsGetWebhookParams(args map[string]string, r *http.Request) (OrgsGetWebhookParams, error) {
 	var params OrgsGetWebhookParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -23987,7 +23987,7 @@ func decodeOrgsGetWebhookParams(r *http.Request) (OrgsGetWebhookParams, error) {
 	}
 	// Decode path: hook_id.
 	{
-		param := chi.URLParam(r, "hook_id")
+		param := args["hook_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "hook_id",
@@ -24019,11 +24019,11 @@ func decodeOrgsGetWebhookParams(r *http.Request) (OrgsGetWebhookParams, error) {
 	return params, nil
 }
 
-func decodeOrgsGetWebhookConfigForOrgParams(r *http.Request) (OrgsGetWebhookConfigForOrgParams, error) {
+func decodeOrgsGetWebhookConfigForOrgParams(args map[string]string, r *http.Request) (OrgsGetWebhookConfigForOrgParams, error) {
 	var params OrgsGetWebhookConfigForOrgParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -24054,7 +24054,7 @@ func decodeOrgsGetWebhookConfigForOrgParams(r *http.Request) (OrgsGetWebhookConf
 	}
 	// Decode path: hook_id.
 	{
-		param := chi.URLParam(r, "hook_id")
+		param := args["hook_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "hook_id",
@@ -24086,7 +24086,7 @@ func decodeOrgsGetWebhookConfigForOrgParams(r *http.Request) (OrgsGetWebhookConf
 	return params, nil
 }
 
-func decodeOrgsListParams(r *http.Request) (OrgsListParams, error) {
+func decodeOrgsListParams(args map[string]string, r *http.Request) (OrgsListParams, error) {
 	var params OrgsListParams
 	// Decode query: since.
 	{
@@ -24161,11 +24161,11 @@ func decodeOrgsListParams(r *http.Request) (OrgsListParams, error) {
 	return params, nil
 }
 
-func decodeOrgsListBlockedUsersParams(r *http.Request) (OrgsListBlockedUsersParams, error) {
+func decodeOrgsListBlockedUsersParams(args map[string]string, r *http.Request) (OrgsListBlockedUsersParams, error) {
 	var params OrgsListBlockedUsersParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -24197,11 +24197,11 @@ func decodeOrgsListBlockedUsersParams(r *http.Request) (OrgsListBlockedUsersPara
 	return params, nil
 }
 
-func decodeOrgsListFailedInvitationsParams(r *http.Request) (OrgsListFailedInvitationsParams, error) {
+func decodeOrgsListFailedInvitationsParams(args map[string]string, r *http.Request) (OrgsListFailedInvitationsParams, error) {
 	var params OrgsListFailedInvitationsParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -24303,7 +24303,7 @@ func decodeOrgsListFailedInvitationsParams(r *http.Request) (OrgsListFailedInvit
 	return params, nil
 }
 
-func decodeOrgsListForAuthenticatedUserParams(r *http.Request) (OrgsListForAuthenticatedUserParams, error) {
+func decodeOrgsListForAuthenticatedUserParams(args map[string]string, r *http.Request) (OrgsListForAuthenticatedUserParams, error) {
 	var params OrgsListForAuthenticatedUserParams
 	// Decode query: per_page.
 	{
@@ -24378,11 +24378,11 @@ func decodeOrgsListForAuthenticatedUserParams(r *http.Request) (OrgsListForAuthe
 	return params, nil
 }
 
-func decodeOrgsListForUserParams(r *http.Request) (OrgsListForUserParams, error) {
+func decodeOrgsListForUserParams(args map[string]string, r *http.Request) (OrgsListForUserParams, error) {
 	var params OrgsListForUserParams
 	// Decode path: username.
 	{
-		param := chi.URLParam(r, "username")
+		param := args["username"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "username",
@@ -24484,11 +24484,11 @@ func decodeOrgsListForUserParams(r *http.Request) (OrgsListForUserParams, error)
 	return params, nil
 }
 
-func decodeOrgsListInvitationTeamsParams(r *http.Request) (OrgsListInvitationTeamsParams, error) {
+func decodeOrgsListInvitationTeamsParams(args map[string]string, r *http.Request) (OrgsListInvitationTeamsParams, error) {
 	var params OrgsListInvitationTeamsParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -24519,7 +24519,7 @@ func decodeOrgsListInvitationTeamsParams(r *http.Request) (OrgsListInvitationTea
 	}
 	// Decode path: invitation_id.
 	{
-		param := chi.URLParam(r, "invitation_id")
+		param := args["invitation_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "invitation_id",
@@ -24621,11 +24621,11 @@ func decodeOrgsListInvitationTeamsParams(r *http.Request) (OrgsListInvitationTea
 	return params, nil
 }
 
-func decodeOrgsListOutsideCollaboratorsParams(r *http.Request) (OrgsListOutsideCollaboratorsParams, error) {
+func decodeOrgsListOutsideCollaboratorsParams(args map[string]string, r *http.Request) (OrgsListOutsideCollaboratorsParams, error) {
 	var params OrgsListOutsideCollaboratorsParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -24781,11 +24781,11 @@ func decodeOrgsListOutsideCollaboratorsParams(r *http.Request) (OrgsListOutsideC
 	return params, nil
 }
 
-func decodeOrgsListPendingInvitationsParams(r *http.Request) (OrgsListPendingInvitationsParams, error) {
+func decodeOrgsListPendingInvitationsParams(args map[string]string, r *http.Request) (OrgsListPendingInvitationsParams, error) {
 	var params OrgsListPendingInvitationsParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -24887,11 +24887,11 @@ func decodeOrgsListPendingInvitationsParams(r *http.Request) (OrgsListPendingInv
 	return params, nil
 }
 
-func decodeOrgsListPublicMembersParams(r *http.Request) (OrgsListPublicMembersParams, error) {
+func decodeOrgsListPublicMembersParams(args map[string]string, r *http.Request) (OrgsListPublicMembersParams, error) {
 	var params OrgsListPublicMembersParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -24993,11 +24993,11 @@ func decodeOrgsListPublicMembersParams(r *http.Request) (OrgsListPublicMembersPa
 	return params, nil
 }
 
-func decodeOrgsListSamlSSOAuthorizationsParams(r *http.Request) (OrgsListSamlSSOAuthorizationsParams, error) {
+func decodeOrgsListSamlSSOAuthorizationsParams(args map[string]string, r *http.Request) (OrgsListSamlSSOAuthorizationsParams, error) {
 	var params OrgsListSamlSSOAuthorizationsParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -25029,11 +25029,11 @@ func decodeOrgsListSamlSSOAuthorizationsParams(r *http.Request) (OrgsListSamlSSO
 	return params, nil
 }
 
-func decodeOrgsListWebhooksParams(r *http.Request) (OrgsListWebhooksParams, error) {
+func decodeOrgsListWebhooksParams(args map[string]string, r *http.Request) (OrgsListWebhooksParams, error) {
 	var params OrgsListWebhooksParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -25135,11 +25135,11 @@ func decodeOrgsListWebhooksParams(r *http.Request) (OrgsListWebhooksParams, erro
 	return params, nil
 }
 
-func decodeOrgsPingWebhookParams(r *http.Request) (OrgsPingWebhookParams, error) {
+func decodeOrgsPingWebhookParams(args map[string]string, r *http.Request) (OrgsPingWebhookParams, error) {
 	var params OrgsPingWebhookParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -25170,7 +25170,7 @@ func decodeOrgsPingWebhookParams(r *http.Request) (OrgsPingWebhookParams, error)
 	}
 	// Decode path: hook_id.
 	{
-		param := chi.URLParam(r, "hook_id")
+		param := args["hook_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "hook_id",
@@ -25202,11 +25202,11 @@ func decodeOrgsPingWebhookParams(r *http.Request) (OrgsPingWebhookParams, error)
 	return params, nil
 }
 
-func decodeOrgsRemoveMemberParams(r *http.Request) (OrgsRemoveMemberParams, error) {
+func decodeOrgsRemoveMemberParams(args map[string]string, r *http.Request) (OrgsRemoveMemberParams, error) {
 	var params OrgsRemoveMemberParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -25237,7 +25237,7 @@ func decodeOrgsRemoveMemberParams(r *http.Request) (OrgsRemoveMemberParams, erro
 	}
 	// Decode path: username.
 	{
-		param := chi.URLParam(r, "username")
+		param := args["username"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "username",
@@ -25269,11 +25269,11 @@ func decodeOrgsRemoveMemberParams(r *http.Request) (OrgsRemoveMemberParams, erro
 	return params, nil
 }
 
-func decodeOrgsRemoveMembershipForUserParams(r *http.Request) (OrgsRemoveMembershipForUserParams, error) {
+func decodeOrgsRemoveMembershipForUserParams(args map[string]string, r *http.Request) (OrgsRemoveMembershipForUserParams, error) {
 	var params OrgsRemoveMembershipForUserParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -25304,7 +25304,7 @@ func decodeOrgsRemoveMembershipForUserParams(r *http.Request) (OrgsRemoveMembers
 	}
 	// Decode path: username.
 	{
-		param := chi.URLParam(r, "username")
+		param := args["username"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "username",
@@ -25336,11 +25336,11 @@ func decodeOrgsRemoveMembershipForUserParams(r *http.Request) (OrgsRemoveMembers
 	return params, nil
 }
 
-func decodeOrgsRemoveOutsideCollaboratorParams(r *http.Request) (OrgsRemoveOutsideCollaboratorParams, error) {
+func decodeOrgsRemoveOutsideCollaboratorParams(args map[string]string, r *http.Request) (OrgsRemoveOutsideCollaboratorParams, error) {
 	var params OrgsRemoveOutsideCollaboratorParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -25371,7 +25371,7 @@ func decodeOrgsRemoveOutsideCollaboratorParams(r *http.Request) (OrgsRemoveOutsi
 	}
 	// Decode path: username.
 	{
-		param := chi.URLParam(r, "username")
+		param := args["username"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "username",
@@ -25403,11 +25403,11 @@ func decodeOrgsRemoveOutsideCollaboratorParams(r *http.Request) (OrgsRemoveOutsi
 	return params, nil
 }
 
-func decodeOrgsRemovePublicMembershipForAuthenticatedUserParams(r *http.Request) (OrgsRemovePublicMembershipForAuthenticatedUserParams, error) {
+func decodeOrgsRemovePublicMembershipForAuthenticatedUserParams(args map[string]string, r *http.Request) (OrgsRemovePublicMembershipForAuthenticatedUserParams, error) {
 	var params OrgsRemovePublicMembershipForAuthenticatedUserParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -25438,7 +25438,7 @@ func decodeOrgsRemovePublicMembershipForAuthenticatedUserParams(r *http.Request)
 	}
 	// Decode path: username.
 	{
-		param := chi.URLParam(r, "username")
+		param := args["username"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "username",
@@ -25470,11 +25470,11 @@ func decodeOrgsRemovePublicMembershipForAuthenticatedUserParams(r *http.Request)
 	return params, nil
 }
 
-func decodeOrgsRemoveSamlSSOAuthorizationParams(r *http.Request) (OrgsRemoveSamlSSOAuthorizationParams, error) {
+func decodeOrgsRemoveSamlSSOAuthorizationParams(args map[string]string, r *http.Request) (OrgsRemoveSamlSSOAuthorizationParams, error) {
 	var params OrgsRemoveSamlSSOAuthorizationParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -25505,7 +25505,7 @@ func decodeOrgsRemoveSamlSSOAuthorizationParams(r *http.Request) (OrgsRemoveSaml
 	}
 	// Decode path: credential_id.
 	{
-		param := chi.URLParam(r, "credential_id")
+		param := args["credential_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "credential_id",
@@ -25537,11 +25537,11 @@ func decodeOrgsRemoveSamlSSOAuthorizationParams(r *http.Request) (OrgsRemoveSaml
 	return params, nil
 }
 
-func decodeOrgsSetPublicMembershipForAuthenticatedUserParams(r *http.Request) (OrgsSetPublicMembershipForAuthenticatedUserParams, error) {
+func decodeOrgsSetPublicMembershipForAuthenticatedUserParams(args map[string]string, r *http.Request) (OrgsSetPublicMembershipForAuthenticatedUserParams, error) {
 	var params OrgsSetPublicMembershipForAuthenticatedUserParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -25572,7 +25572,7 @@ func decodeOrgsSetPublicMembershipForAuthenticatedUserParams(r *http.Request) (O
 	}
 	// Decode path: username.
 	{
-		param := chi.URLParam(r, "username")
+		param := args["username"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "username",
@@ -25604,11 +25604,11 @@ func decodeOrgsSetPublicMembershipForAuthenticatedUserParams(r *http.Request) (O
 	return params, nil
 }
 
-func decodeOrgsUnblockUserParams(r *http.Request) (OrgsUnblockUserParams, error) {
+func decodeOrgsUnblockUserParams(args map[string]string, r *http.Request) (OrgsUnblockUserParams, error) {
 	var params OrgsUnblockUserParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -25639,7 +25639,7 @@ func decodeOrgsUnblockUserParams(r *http.Request) (OrgsUnblockUserParams, error)
 	}
 	// Decode path: username.
 	{
-		param := chi.URLParam(r, "username")
+		param := args["username"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "username",
@@ -25671,11 +25671,11 @@ func decodeOrgsUnblockUserParams(r *http.Request) (OrgsUnblockUserParams, error)
 	return params, nil
 }
 
-func decodeOrgsUpdateWebhookConfigForOrgParams(r *http.Request) (OrgsUpdateWebhookConfigForOrgParams, error) {
+func decodeOrgsUpdateWebhookConfigForOrgParams(args map[string]string, r *http.Request) (OrgsUpdateWebhookConfigForOrgParams, error) {
 	var params OrgsUpdateWebhookConfigForOrgParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -25706,7 +25706,7 @@ func decodeOrgsUpdateWebhookConfigForOrgParams(r *http.Request) (OrgsUpdateWebho
 	}
 	// Decode path: hook_id.
 	{
-		param := chi.URLParam(r, "hook_id")
+		param := args["hook_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "hook_id",
@@ -25738,11 +25738,11 @@ func decodeOrgsUpdateWebhookConfigForOrgParams(r *http.Request) (OrgsUpdateWebho
 	return params, nil
 }
 
-func decodePackagesDeletePackageForAuthenticatedUserParams(r *http.Request) (PackagesDeletePackageForAuthenticatedUserParams, error) {
+func decodePackagesDeletePackageForAuthenticatedUserParams(args map[string]string, r *http.Request) (PackagesDeletePackageForAuthenticatedUserParams, error) {
 	var params PackagesDeletePackageForAuthenticatedUserParams
 	// Decode path: package_type.
 	{
-		param := chi.URLParam(r, "package_type")
+		param := args["package_type"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "package_type",
@@ -25773,7 +25773,7 @@ func decodePackagesDeletePackageForAuthenticatedUserParams(r *http.Request) (Pac
 	}
 	// Decode path: package_name.
 	{
-		param := chi.URLParam(r, "package_name")
+		param := args["package_name"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "package_name",
@@ -25805,11 +25805,11 @@ func decodePackagesDeletePackageForAuthenticatedUserParams(r *http.Request) (Pac
 	return params, nil
 }
 
-func decodePackagesDeletePackageForOrgParams(r *http.Request) (PackagesDeletePackageForOrgParams, error) {
+func decodePackagesDeletePackageForOrgParams(args map[string]string, r *http.Request) (PackagesDeletePackageForOrgParams, error) {
 	var params PackagesDeletePackageForOrgParams
 	// Decode path: package_type.
 	{
-		param := chi.URLParam(r, "package_type")
+		param := args["package_type"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "package_type",
@@ -25840,7 +25840,7 @@ func decodePackagesDeletePackageForOrgParams(r *http.Request) (PackagesDeletePac
 	}
 	// Decode path: package_name.
 	{
-		param := chi.URLParam(r, "package_name")
+		param := args["package_name"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "package_name",
@@ -25871,7 +25871,7 @@ func decodePackagesDeletePackageForOrgParams(r *http.Request) (PackagesDeletePac
 	}
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -25903,11 +25903,11 @@ func decodePackagesDeletePackageForOrgParams(r *http.Request) (PackagesDeletePac
 	return params, nil
 }
 
-func decodePackagesDeletePackageForUserParams(r *http.Request) (PackagesDeletePackageForUserParams, error) {
+func decodePackagesDeletePackageForUserParams(args map[string]string, r *http.Request) (PackagesDeletePackageForUserParams, error) {
 	var params PackagesDeletePackageForUserParams
 	// Decode path: package_type.
 	{
-		param := chi.URLParam(r, "package_type")
+		param := args["package_type"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "package_type",
@@ -25938,7 +25938,7 @@ func decodePackagesDeletePackageForUserParams(r *http.Request) (PackagesDeletePa
 	}
 	// Decode path: package_name.
 	{
-		param := chi.URLParam(r, "package_name")
+		param := args["package_name"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "package_name",
@@ -25969,7 +25969,7 @@ func decodePackagesDeletePackageForUserParams(r *http.Request) (PackagesDeletePa
 	}
 	// Decode path: username.
 	{
-		param := chi.URLParam(r, "username")
+		param := args["username"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "username",
@@ -26001,11 +26001,11 @@ func decodePackagesDeletePackageForUserParams(r *http.Request) (PackagesDeletePa
 	return params, nil
 }
 
-func decodePackagesDeletePackageVersionForAuthenticatedUserParams(r *http.Request) (PackagesDeletePackageVersionForAuthenticatedUserParams, error) {
+func decodePackagesDeletePackageVersionForAuthenticatedUserParams(args map[string]string, r *http.Request) (PackagesDeletePackageVersionForAuthenticatedUserParams, error) {
 	var params PackagesDeletePackageVersionForAuthenticatedUserParams
 	// Decode path: package_type.
 	{
-		param := chi.URLParam(r, "package_type")
+		param := args["package_type"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "package_type",
@@ -26036,7 +26036,7 @@ func decodePackagesDeletePackageVersionForAuthenticatedUserParams(r *http.Reques
 	}
 	// Decode path: package_name.
 	{
-		param := chi.URLParam(r, "package_name")
+		param := args["package_name"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "package_name",
@@ -26067,7 +26067,7 @@ func decodePackagesDeletePackageVersionForAuthenticatedUserParams(r *http.Reques
 	}
 	// Decode path: package_version_id.
 	{
-		param := chi.URLParam(r, "package_version_id")
+		param := args["package_version_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "package_version_id",
@@ -26099,11 +26099,11 @@ func decodePackagesDeletePackageVersionForAuthenticatedUserParams(r *http.Reques
 	return params, nil
 }
 
-func decodePackagesDeletePackageVersionForOrgParams(r *http.Request) (PackagesDeletePackageVersionForOrgParams, error) {
+func decodePackagesDeletePackageVersionForOrgParams(args map[string]string, r *http.Request) (PackagesDeletePackageVersionForOrgParams, error) {
 	var params PackagesDeletePackageVersionForOrgParams
 	// Decode path: package_type.
 	{
-		param := chi.URLParam(r, "package_type")
+		param := args["package_type"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "package_type",
@@ -26134,7 +26134,7 @@ func decodePackagesDeletePackageVersionForOrgParams(r *http.Request) (PackagesDe
 	}
 	// Decode path: package_name.
 	{
-		param := chi.URLParam(r, "package_name")
+		param := args["package_name"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "package_name",
@@ -26165,7 +26165,7 @@ func decodePackagesDeletePackageVersionForOrgParams(r *http.Request) (PackagesDe
 	}
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -26196,7 +26196,7 @@ func decodePackagesDeletePackageVersionForOrgParams(r *http.Request) (PackagesDe
 	}
 	// Decode path: package_version_id.
 	{
-		param := chi.URLParam(r, "package_version_id")
+		param := args["package_version_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "package_version_id",
@@ -26228,11 +26228,11 @@ func decodePackagesDeletePackageVersionForOrgParams(r *http.Request) (PackagesDe
 	return params, nil
 }
 
-func decodePackagesDeletePackageVersionForUserParams(r *http.Request) (PackagesDeletePackageVersionForUserParams, error) {
+func decodePackagesDeletePackageVersionForUserParams(args map[string]string, r *http.Request) (PackagesDeletePackageVersionForUserParams, error) {
 	var params PackagesDeletePackageVersionForUserParams
 	// Decode path: package_type.
 	{
-		param := chi.URLParam(r, "package_type")
+		param := args["package_type"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "package_type",
@@ -26263,7 +26263,7 @@ func decodePackagesDeletePackageVersionForUserParams(r *http.Request) (PackagesD
 	}
 	// Decode path: package_name.
 	{
-		param := chi.URLParam(r, "package_name")
+		param := args["package_name"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "package_name",
@@ -26294,7 +26294,7 @@ func decodePackagesDeletePackageVersionForUserParams(r *http.Request) (PackagesD
 	}
 	// Decode path: username.
 	{
-		param := chi.URLParam(r, "username")
+		param := args["username"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "username",
@@ -26325,7 +26325,7 @@ func decodePackagesDeletePackageVersionForUserParams(r *http.Request) (PackagesD
 	}
 	// Decode path: package_version_id.
 	{
-		param := chi.URLParam(r, "package_version_id")
+		param := args["package_version_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "package_version_id",
@@ -26357,11 +26357,11 @@ func decodePackagesDeletePackageVersionForUserParams(r *http.Request) (PackagesD
 	return params, nil
 }
 
-func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams(r *http.Request) (PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams, error) {
+func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams(args map[string]string, r *http.Request) (PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams, error) {
 	var params PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams
 	// Decode path: package_type.
 	{
-		param := chi.URLParam(r, "package_type")
+		param := args["package_type"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "package_type",
@@ -26392,7 +26392,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams
 	}
 	// Decode path: package_name.
 	{
-		param := chi.URLParam(r, "package_name")
+		param := args["package_name"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "package_name",
@@ -26548,11 +26548,11 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams
 	return params, nil
 }
 
-func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(r *http.Request) (PackagesGetAllPackageVersionsForPackageOwnedByOrgParams, error) {
+func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(args map[string]string, r *http.Request) (PackagesGetAllPackageVersionsForPackageOwnedByOrgParams, error) {
 	var params PackagesGetAllPackageVersionsForPackageOwnedByOrgParams
 	// Decode path: package_type.
 	{
-		param := chi.URLParam(r, "package_type")
+		param := args["package_type"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "package_type",
@@ -26583,7 +26583,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(r *http.Reque
 	}
 	// Decode path: package_name.
 	{
-		param := chi.URLParam(r, "package_name")
+		param := args["package_name"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "package_name",
@@ -26614,7 +26614,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(r *http.Reque
 	}
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -26770,11 +26770,11 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(r *http.Reque
 	return params, nil
 }
 
-func decodePackagesGetAllPackageVersionsForPackageOwnedByUserParams(r *http.Request) (PackagesGetAllPackageVersionsForPackageOwnedByUserParams, error) {
+func decodePackagesGetAllPackageVersionsForPackageOwnedByUserParams(args map[string]string, r *http.Request) (PackagesGetAllPackageVersionsForPackageOwnedByUserParams, error) {
 	var params PackagesGetAllPackageVersionsForPackageOwnedByUserParams
 	// Decode path: package_type.
 	{
-		param := chi.URLParam(r, "package_type")
+		param := args["package_type"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "package_type",
@@ -26805,7 +26805,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByUserParams(r *http.Requ
 	}
 	// Decode path: package_name.
 	{
-		param := chi.URLParam(r, "package_name")
+		param := args["package_name"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "package_name",
@@ -26836,7 +26836,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByUserParams(r *http.Requ
 	}
 	// Decode path: username.
 	{
-		param := chi.URLParam(r, "username")
+		param := args["username"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "username",
@@ -26868,11 +26868,11 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByUserParams(r *http.Requ
 	return params, nil
 }
 
-func decodePackagesGetPackageForAuthenticatedUserParams(r *http.Request) (PackagesGetPackageForAuthenticatedUserParams, error) {
+func decodePackagesGetPackageForAuthenticatedUserParams(args map[string]string, r *http.Request) (PackagesGetPackageForAuthenticatedUserParams, error) {
 	var params PackagesGetPackageForAuthenticatedUserParams
 	// Decode path: package_type.
 	{
-		param := chi.URLParam(r, "package_type")
+		param := args["package_type"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "package_type",
@@ -26903,7 +26903,7 @@ func decodePackagesGetPackageForAuthenticatedUserParams(r *http.Request) (Packag
 	}
 	// Decode path: package_name.
 	{
-		param := chi.URLParam(r, "package_name")
+		param := args["package_name"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "package_name",
@@ -26935,11 +26935,11 @@ func decodePackagesGetPackageForAuthenticatedUserParams(r *http.Request) (Packag
 	return params, nil
 }
 
-func decodePackagesGetPackageForOrganizationParams(r *http.Request) (PackagesGetPackageForOrganizationParams, error) {
+func decodePackagesGetPackageForOrganizationParams(args map[string]string, r *http.Request) (PackagesGetPackageForOrganizationParams, error) {
 	var params PackagesGetPackageForOrganizationParams
 	// Decode path: package_type.
 	{
-		param := chi.URLParam(r, "package_type")
+		param := args["package_type"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "package_type",
@@ -26970,7 +26970,7 @@ func decodePackagesGetPackageForOrganizationParams(r *http.Request) (PackagesGet
 	}
 	// Decode path: package_name.
 	{
-		param := chi.URLParam(r, "package_name")
+		param := args["package_name"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "package_name",
@@ -27001,7 +27001,7 @@ func decodePackagesGetPackageForOrganizationParams(r *http.Request) (PackagesGet
 	}
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -27033,11 +27033,11 @@ func decodePackagesGetPackageForOrganizationParams(r *http.Request) (PackagesGet
 	return params, nil
 }
 
-func decodePackagesGetPackageForUserParams(r *http.Request) (PackagesGetPackageForUserParams, error) {
+func decodePackagesGetPackageForUserParams(args map[string]string, r *http.Request) (PackagesGetPackageForUserParams, error) {
 	var params PackagesGetPackageForUserParams
 	// Decode path: package_type.
 	{
-		param := chi.URLParam(r, "package_type")
+		param := args["package_type"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "package_type",
@@ -27068,7 +27068,7 @@ func decodePackagesGetPackageForUserParams(r *http.Request) (PackagesGetPackageF
 	}
 	// Decode path: package_name.
 	{
-		param := chi.URLParam(r, "package_name")
+		param := args["package_name"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "package_name",
@@ -27099,7 +27099,7 @@ func decodePackagesGetPackageForUserParams(r *http.Request) (PackagesGetPackageF
 	}
 	// Decode path: username.
 	{
-		param := chi.URLParam(r, "username")
+		param := args["username"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "username",
@@ -27131,11 +27131,11 @@ func decodePackagesGetPackageForUserParams(r *http.Request) (PackagesGetPackageF
 	return params, nil
 }
 
-func decodePackagesGetPackageVersionForAuthenticatedUserParams(r *http.Request) (PackagesGetPackageVersionForAuthenticatedUserParams, error) {
+func decodePackagesGetPackageVersionForAuthenticatedUserParams(args map[string]string, r *http.Request) (PackagesGetPackageVersionForAuthenticatedUserParams, error) {
 	var params PackagesGetPackageVersionForAuthenticatedUserParams
 	// Decode path: package_type.
 	{
-		param := chi.URLParam(r, "package_type")
+		param := args["package_type"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "package_type",
@@ -27166,7 +27166,7 @@ func decodePackagesGetPackageVersionForAuthenticatedUserParams(r *http.Request) 
 	}
 	// Decode path: package_name.
 	{
-		param := chi.URLParam(r, "package_name")
+		param := args["package_name"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "package_name",
@@ -27197,7 +27197,7 @@ func decodePackagesGetPackageVersionForAuthenticatedUserParams(r *http.Request) 
 	}
 	// Decode path: package_version_id.
 	{
-		param := chi.URLParam(r, "package_version_id")
+		param := args["package_version_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "package_version_id",
@@ -27229,11 +27229,11 @@ func decodePackagesGetPackageVersionForAuthenticatedUserParams(r *http.Request) 
 	return params, nil
 }
 
-func decodePackagesGetPackageVersionForOrganizationParams(r *http.Request) (PackagesGetPackageVersionForOrganizationParams, error) {
+func decodePackagesGetPackageVersionForOrganizationParams(args map[string]string, r *http.Request) (PackagesGetPackageVersionForOrganizationParams, error) {
 	var params PackagesGetPackageVersionForOrganizationParams
 	// Decode path: package_type.
 	{
-		param := chi.URLParam(r, "package_type")
+		param := args["package_type"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "package_type",
@@ -27264,7 +27264,7 @@ func decodePackagesGetPackageVersionForOrganizationParams(r *http.Request) (Pack
 	}
 	// Decode path: package_name.
 	{
-		param := chi.URLParam(r, "package_name")
+		param := args["package_name"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "package_name",
@@ -27295,7 +27295,7 @@ func decodePackagesGetPackageVersionForOrganizationParams(r *http.Request) (Pack
 	}
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -27326,7 +27326,7 @@ func decodePackagesGetPackageVersionForOrganizationParams(r *http.Request) (Pack
 	}
 	// Decode path: package_version_id.
 	{
-		param := chi.URLParam(r, "package_version_id")
+		param := args["package_version_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "package_version_id",
@@ -27358,11 +27358,11 @@ func decodePackagesGetPackageVersionForOrganizationParams(r *http.Request) (Pack
 	return params, nil
 }
 
-func decodePackagesGetPackageVersionForUserParams(r *http.Request) (PackagesGetPackageVersionForUserParams, error) {
+func decodePackagesGetPackageVersionForUserParams(args map[string]string, r *http.Request) (PackagesGetPackageVersionForUserParams, error) {
 	var params PackagesGetPackageVersionForUserParams
 	// Decode path: package_type.
 	{
-		param := chi.URLParam(r, "package_type")
+		param := args["package_type"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "package_type",
@@ -27393,7 +27393,7 @@ func decodePackagesGetPackageVersionForUserParams(r *http.Request) (PackagesGetP
 	}
 	// Decode path: package_name.
 	{
-		param := chi.URLParam(r, "package_name")
+		param := args["package_name"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "package_name",
@@ -27424,7 +27424,7 @@ func decodePackagesGetPackageVersionForUserParams(r *http.Request) (PackagesGetP
 	}
 	// Decode path: package_version_id.
 	{
-		param := chi.URLParam(r, "package_version_id")
+		param := args["package_version_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "package_version_id",
@@ -27455,7 +27455,7 @@ func decodePackagesGetPackageVersionForUserParams(r *http.Request) (PackagesGetP
 	}
 	// Decode path: username.
 	{
-		param := chi.URLParam(r, "username")
+		param := args["username"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "username",
@@ -27487,7 +27487,7 @@ func decodePackagesGetPackageVersionForUserParams(r *http.Request) (PackagesGetP
 	return params, nil
 }
 
-func decodePackagesListPackagesForAuthenticatedUserParams(r *http.Request) (PackagesListPackagesForAuthenticatedUserParams, error) {
+func decodePackagesListPackagesForAuthenticatedUserParams(args map[string]string, r *http.Request) (PackagesListPackagesForAuthenticatedUserParams, error) {
 	var params PackagesListPackagesForAuthenticatedUserParams
 	// Decode query: package_type.
 	{
@@ -27585,7 +27585,7 @@ func decodePackagesListPackagesForAuthenticatedUserParams(r *http.Request) (Pack
 	return params, nil
 }
 
-func decodePackagesListPackagesForOrganizationParams(r *http.Request) (PackagesListPackagesForOrganizationParams, error) {
+func decodePackagesListPackagesForOrganizationParams(args map[string]string, r *http.Request) (PackagesListPackagesForOrganizationParams, error) {
 	var params PackagesListPackagesForOrganizationParams
 	// Decode query: package_type.
 	{
@@ -27628,7 +27628,7 @@ func decodePackagesListPackagesForOrganizationParams(r *http.Request) (PackagesL
 	}
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -27714,7 +27714,7 @@ func decodePackagesListPackagesForOrganizationParams(r *http.Request) (PackagesL
 	return params, nil
 }
 
-func decodePackagesListPackagesForUserParams(r *http.Request) (PackagesListPackagesForUserParams, error) {
+func decodePackagesListPackagesForUserParams(args map[string]string, r *http.Request) (PackagesListPackagesForUserParams, error) {
 	var params PackagesListPackagesForUserParams
 	// Decode query: package_type.
 	{
@@ -27811,7 +27811,7 @@ func decodePackagesListPackagesForUserParams(r *http.Request) (PackagesListPacka
 	}
 	// Decode path: username.
 	{
-		param := chi.URLParam(r, "username")
+		param := args["username"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "username",
@@ -27843,11 +27843,11 @@ func decodePackagesListPackagesForUserParams(r *http.Request) (PackagesListPacka
 	return params, nil
 }
 
-func decodePackagesRestorePackageForAuthenticatedUserParams(r *http.Request) (PackagesRestorePackageForAuthenticatedUserParams, error) {
+func decodePackagesRestorePackageForAuthenticatedUserParams(args map[string]string, r *http.Request) (PackagesRestorePackageForAuthenticatedUserParams, error) {
 	var params PackagesRestorePackageForAuthenticatedUserParams
 	// Decode path: package_type.
 	{
-		param := chi.URLParam(r, "package_type")
+		param := args["package_type"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "package_type",
@@ -27878,7 +27878,7 @@ func decodePackagesRestorePackageForAuthenticatedUserParams(r *http.Request) (Pa
 	}
 	// Decode path: package_name.
 	{
-		param := chi.URLParam(r, "package_name")
+		param := args["package_name"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "package_name",
@@ -27945,11 +27945,11 @@ func decodePackagesRestorePackageForAuthenticatedUserParams(r *http.Request) (Pa
 	return params, nil
 }
 
-func decodePackagesRestorePackageForOrgParams(r *http.Request) (PackagesRestorePackageForOrgParams, error) {
+func decodePackagesRestorePackageForOrgParams(args map[string]string, r *http.Request) (PackagesRestorePackageForOrgParams, error) {
 	var params PackagesRestorePackageForOrgParams
 	// Decode path: package_type.
 	{
-		param := chi.URLParam(r, "package_type")
+		param := args["package_type"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "package_type",
@@ -27980,7 +27980,7 @@ func decodePackagesRestorePackageForOrgParams(r *http.Request) (PackagesRestoreP
 	}
 	// Decode path: package_name.
 	{
-		param := chi.URLParam(r, "package_name")
+		param := args["package_name"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "package_name",
@@ -28011,7 +28011,7 @@ func decodePackagesRestorePackageForOrgParams(r *http.Request) (PackagesRestoreP
 	}
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -28078,11 +28078,11 @@ func decodePackagesRestorePackageForOrgParams(r *http.Request) (PackagesRestoreP
 	return params, nil
 }
 
-func decodePackagesRestorePackageForUserParams(r *http.Request) (PackagesRestorePackageForUserParams, error) {
+func decodePackagesRestorePackageForUserParams(args map[string]string, r *http.Request) (PackagesRestorePackageForUserParams, error) {
 	var params PackagesRestorePackageForUserParams
 	// Decode path: package_type.
 	{
-		param := chi.URLParam(r, "package_type")
+		param := args["package_type"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "package_type",
@@ -28113,7 +28113,7 @@ func decodePackagesRestorePackageForUserParams(r *http.Request) (PackagesRestore
 	}
 	// Decode path: package_name.
 	{
-		param := chi.URLParam(r, "package_name")
+		param := args["package_name"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "package_name",
@@ -28144,7 +28144,7 @@ func decodePackagesRestorePackageForUserParams(r *http.Request) (PackagesRestore
 	}
 	// Decode path: username.
 	{
-		param := chi.URLParam(r, "username")
+		param := args["username"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "username",
@@ -28211,11 +28211,11 @@ func decodePackagesRestorePackageForUserParams(r *http.Request) (PackagesRestore
 	return params, nil
 }
 
-func decodePackagesRestorePackageVersionForAuthenticatedUserParams(r *http.Request) (PackagesRestorePackageVersionForAuthenticatedUserParams, error) {
+func decodePackagesRestorePackageVersionForAuthenticatedUserParams(args map[string]string, r *http.Request) (PackagesRestorePackageVersionForAuthenticatedUserParams, error) {
 	var params PackagesRestorePackageVersionForAuthenticatedUserParams
 	// Decode path: package_type.
 	{
-		param := chi.URLParam(r, "package_type")
+		param := args["package_type"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "package_type",
@@ -28246,7 +28246,7 @@ func decodePackagesRestorePackageVersionForAuthenticatedUserParams(r *http.Reque
 	}
 	// Decode path: package_name.
 	{
-		param := chi.URLParam(r, "package_name")
+		param := args["package_name"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "package_name",
@@ -28277,7 +28277,7 @@ func decodePackagesRestorePackageVersionForAuthenticatedUserParams(r *http.Reque
 	}
 	// Decode path: package_version_id.
 	{
-		param := chi.URLParam(r, "package_version_id")
+		param := args["package_version_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "package_version_id",
@@ -28309,11 +28309,11 @@ func decodePackagesRestorePackageVersionForAuthenticatedUserParams(r *http.Reque
 	return params, nil
 }
 
-func decodePackagesRestorePackageVersionForOrgParams(r *http.Request) (PackagesRestorePackageVersionForOrgParams, error) {
+func decodePackagesRestorePackageVersionForOrgParams(args map[string]string, r *http.Request) (PackagesRestorePackageVersionForOrgParams, error) {
 	var params PackagesRestorePackageVersionForOrgParams
 	// Decode path: package_type.
 	{
-		param := chi.URLParam(r, "package_type")
+		param := args["package_type"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "package_type",
@@ -28344,7 +28344,7 @@ func decodePackagesRestorePackageVersionForOrgParams(r *http.Request) (PackagesR
 	}
 	// Decode path: package_name.
 	{
-		param := chi.URLParam(r, "package_name")
+		param := args["package_name"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "package_name",
@@ -28375,7 +28375,7 @@ func decodePackagesRestorePackageVersionForOrgParams(r *http.Request) (PackagesR
 	}
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -28406,7 +28406,7 @@ func decodePackagesRestorePackageVersionForOrgParams(r *http.Request) (PackagesR
 	}
 	// Decode path: package_version_id.
 	{
-		param := chi.URLParam(r, "package_version_id")
+		param := args["package_version_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "package_version_id",
@@ -28438,11 +28438,11 @@ func decodePackagesRestorePackageVersionForOrgParams(r *http.Request) (PackagesR
 	return params, nil
 }
 
-func decodePackagesRestorePackageVersionForUserParams(r *http.Request) (PackagesRestorePackageVersionForUserParams, error) {
+func decodePackagesRestorePackageVersionForUserParams(args map[string]string, r *http.Request) (PackagesRestorePackageVersionForUserParams, error) {
 	var params PackagesRestorePackageVersionForUserParams
 	// Decode path: package_type.
 	{
-		param := chi.URLParam(r, "package_type")
+		param := args["package_type"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "package_type",
@@ -28473,7 +28473,7 @@ func decodePackagesRestorePackageVersionForUserParams(r *http.Request) (Packages
 	}
 	// Decode path: package_name.
 	{
-		param := chi.URLParam(r, "package_name")
+		param := args["package_name"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "package_name",
@@ -28504,7 +28504,7 @@ func decodePackagesRestorePackageVersionForUserParams(r *http.Request) (Packages
 	}
 	// Decode path: username.
 	{
-		param := chi.URLParam(r, "username")
+		param := args["username"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "username",
@@ -28535,7 +28535,7 @@ func decodePackagesRestorePackageVersionForUserParams(r *http.Request) (Packages
 	}
 	// Decode path: package_version_id.
 	{
-		param := chi.URLParam(r, "package_version_id")
+		param := args["package_version_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "package_version_id",
@@ -28567,11 +28567,11 @@ func decodePackagesRestorePackageVersionForUserParams(r *http.Request) (Packages
 	return params, nil
 }
 
-func decodeProjectsCreateColumnParams(r *http.Request) (ProjectsCreateColumnParams, error) {
+func decodeProjectsCreateColumnParams(args map[string]string, r *http.Request) (ProjectsCreateColumnParams, error) {
 	var params ProjectsCreateColumnParams
 	// Decode path: project_id.
 	{
-		param := chi.URLParam(r, "project_id")
+		param := args["project_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "project_id",
@@ -28603,11 +28603,11 @@ func decodeProjectsCreateColumnParams(r *http.Request) (ProjectsCreateColumnPara
 	return params, nil
 }
 
-func decodeProjectsCreateForOrgParams(r *http.Request) (ProjectsCreateForOrgParams, error) {
+func decodeProjectsCreateForOrgParams(args map[string]string, r *http.Request) (ProjectsCreateForOrgParams, error) {
 	var params ProjectsCreateForOrgParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -28639,11 +28639,11 @@ func decodeProjectsCreateForOrgParams(r *http.Request) (ProjectsCreateForOrgPara
 	return params, nil
 }
 
-func decodeProjectsCreateForRepoParams(r *http.Request) (ProjectsCreateForRepoParams, error) {
+func decodeProjectsCreateForRepoParams(args map[string]string, r *http.Request) (ProjectsCreateForRepoParams, error) {
 	var params ProjectsCreateForRepoParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -28674,7 +28674,7 @@ func decodeProjectsCreateForRepoParams(r *http.Request) (ProjectsCreateForRepoPa
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -28706,11 +28706,11 @@ func decodeProjectsCreateForRepoParams(r *http.Request) (ProjectsCreateForRepoPa
 	return params, nil
 }
 
-func decodeProjectsDeleteParams(r *http.Request) (ProjectsDeleteParams, error) {
+func decodeProjectsDeleteParams(args map[string]string, r *http.Request) (ProjectsDeleteParams, error) {
 	var params ProjectsDeleteParams
 	// Decode path: project_id.
 	{
-		param := chi.URLParam(r, "project_id")
+		param := args["project_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "project_id",
@@ -28742,11 +28742,11 @@ func decodeProjectsDeleteParams(r *http.Request) (ProjectsDeleteParams, error) {
 	return params, nil
 }
 
-func decodeProjectsDeleteCardParams(r *http.Request) (ProjectsDeleteCardParams, error) {
+func decodeProjectsDeleteCardParams(args map[string]string, r *http.Request) (ProjectsDeleteCardParams, error) {
 	var params ProjectsDeleteCardParams
 	// Decode path: card_id.
 	{
-		param := chi.URLParam(r, "card_id")
+		param := args["card_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "card_id",
@@ -28778,11 +28778,11 @@ func decodeProjectsDeleteCardParams(r *http.Request) (ProjectsDeleteCardParams, 
 	return params, nil
 }
 
-func decodeProjectsDeleteColumnParams(r *http.Request) (ProjectsDeleteColumnParams, error) {
+func decodeProjectsDeleteColumnParams(args map[string]string, r *http.Request) (ProjectsDeleteColumnParams, error) {
 	var params ProjectsDeleteColumnParams
 	// Decode path: column_id.
 	{
-		param := chi.URLParam(r, "column_id")
+		param := args["column_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "column_id",
@@ -28814,11 +28814,11 @@ func decodeProjectsDeleteColumnParams(r *http.Request) (ProjectsDeleteColumnPara
 	return params, nil
 }
 
-func decodeProjectsGetParams(r *http.Request) (ProjectsGetParams, error) {
+func decodeProjectsGetParams(args map[string]string, r *http.Request) (ProjectsGetParams, error) {
 	var params ProjectsGetParams
 	// Decode path: project_id.
 	{
-		param := chi.URLParam(r, "project_id")
+		param := args["project_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "project_id",
@@ -28850,11 +28850,11 @@ func decodeProjectsGetParams(r *http.Request) (ProjectsGetParams, error) {
 	return params, nil
 }
 
-func decodeProjectsGetCardParams(r *http.Request) (ProjectsGetCardParams, error) {
+func decodeProjectsGetCardParams(args map[string]string, r *http.Request) (ProjectsGetCardParams, error) {
 	var params ProjectsGetCardParams
 	// Decode path: card_id.
 	{
-		param := chi.URLParam(r, "card_id")
+		param := args["card_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "card_id",
@@ -28886,11 +28886,11 @@ func decodeProjectsGetCardParams(r *http.Request) (ProjectsGetCardParams, error)
 	return params, nil
 }
 
-func decodeProjectsGetColumnParams(r *http.Request) (ProjectsGetColumnParams, error) {
+func decodeProjectsGetColumnParams(args map[string]string, r *http.Request) (ProjectsGetColumnParams, error) {
 	var params ProjectsGetColumnParams
 	// Decode path: column_id.
 	{
-		param := chi.URLParam(r, "column_id")
+		param := args["column_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "column_id",
@@ -28922,11 +28922,11 @@ func decodeProjectsGetColumnParams(r *http.Request) (ProjectsGetColumnParams, er
 	return params, nil
 }
 
-func decodeProjectsListCardsParams(r *http.Request) (ProjectsListCardsParams, error) {
+func decodeProjectsListCardsParams(args map[string]string, r *http.Request) (ProjectsListCardsParams, error) {
 	var params ProjectsListCardsParams
 	// Decode path: column_id.
 	{
-		param := chi.URLParam(r, "column_id")
+		param := args["column_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "column_id",
@@ -29082,11 +29082,11 @@ func decodeProjectsListCardsParams(r *http.Request) (ProjectsListCardsParams, er
 	return params, nil
 }
 
-func decodeProjectsListColumnsParams(r *http.Request) (ProjectsListColumnsParams, error) {
+func decodeProjectsListColumnsParams(args map[string]string, r *http.Request) (ProjectsListColumnsParams, error) {
 	var params ProjectsListColumnsParams
 	// Decode path: project_id.
 	{
-		param := chi.URLParam(r, "project_id")
+		param := args["project_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "project_id",
@@ -29188,11 +29188,11 @@ func decodeProjectsListColumnsParams(r *http.Request) (ProjectsListColumnsParams
 	return params, nil
 }
 
-func decodeProjectsListForOrgParams(r *http.Request) (ProjectsListForOrgParams, error) {
+func decodeProjectsListForOrgParams(args map[string]string, r *http.Request) (ProjectsListForOrgParams, error) {
 	var params ProjectsListForOrgParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -29348,11 +29348,11 @@ func decodeProjectsListForOrgParams(r *http.Request) (ProjectsListForOrgParams, 
 	return params, nil
 }
 
-func decodeProjectsListForRepoParams(r *http.Request) (ProjectsListForRepoParams, error) {
+func decodeProjectsListForRepoParams(args map[string]string, r *http.Request) (ProjectsListForRepoParams, error) {
 	var params ProjectsListForRepoParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -29383,7 +29383,7 @@ func decodeProjectsListForRepoParams(r *http.Request) (ProjectsListForRepoParams
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -29539,11 +29539,11 @@ func decodeProjectsListForRepoParams(r *http.Request) (ProjectsListForRepoParams
 	return params, nil
 }
 
-func decodeProjectsMoveColumnParams(r *http.Request) (ProjectsMoveColumnParams, error) {
+func decodeProjectsMoveColumnParams(args map[string]string, r *http.Request) (ProjectsMoveColumnParams, error) {
 	var params ProjectsMoveColumnParams
 	// Decode path: column_id.
 	{
-		param := chi.URLParam(r, "column_id")
+		param := args["column_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "column_id",
@@ -29575,11 +29575,11 @@ func decodeProjectsMoveColumnParams(r *http.Request) (ProjectsMoveColumnParams, 
 	return params, nil
 }
 
-func decodeProjectsUpdateParams(r *http.Request) (ProjectsUpdateParams, error) {
+func decodeProjectsUpdateParams(args map[string]string, r *http.Request) (ProjectsUpdateParams, error) {
 	var params ProjectsUpdateParams
 	// Decode path: project_id.
 	{
-		param := chi.URLParam(r, "project_id")
+		param := args["project_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "project_id",
@@ -29611,11 +29611,11 @@ func decodeProjectsUpdateParams(r *http.Request) (ProjectsUpdateParams, error) {
 	return params, nil
 }
 
-func decodeProjectsUpdateCardParams(r *http.Request) (ProjectsUpdateCardParams, error) {
+func decodeProjectsUpdateCardParams(args map[string]string, r *http.Request) (ProjectsUpdateCardParams, error) {
 	var params ProjectsUpdateCardParams
 	// Decode path: card_id.
 	{
-		param := chi.URLParam(r, "card_id")
+		param := args["card_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "card_id",
@@ -29647,11 +29647,11 @@ func decodeProjectsUpdateCardParams(r *http.Request) (ProjectsUpdateCardParams, 
 	return params, nil
 }
 
-func decodeProjectsUpdateColumnParams(r *http.Request) (ProjectsUpdateColumnParams, error) {
+func decodeProjectsUpdateColumnParams(args map[string]string, r *http.Request) (ProjectsUpdateColumnParams, error) {
 	var params ProjectsUpdateColumnParams
 	// Decode path: column_id.
 	{
-		param := chi.URLParam(r, "column_id")
+		param := args["column_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "column_id",
@@ -29683,11 +29683,11 @@ func decodeProjectsUpdateColumnParams(r *http.Request) (ProjectsUpdateColumnPara
 	return params, nil
 }
 
-func decodePullsCheckIfMergedParams(r *http.Request) (PullsCheckIfMergedParams, error) {
+func decodePullsCheckIfMergedParams(args map[string]string, r *http.Request) (PullsCheckIfMergedParams, error) {
 	var params PullsCheckIfMergedParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -29718,7 +29718,7 @@ func decodePullsCheckIfMergedParams(r *http.Request) (PullsCheckIfMergedParams, 
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -29749,7 +29749,7 @@ func decodePullsCheckIfMergedParams(r *http.Request) (PullsCheckIfMergedParams, 
 	}
 	// Decode path: pull_number.
 	{
-		param := chi.URLParam(r, "pull_number")
+		param := args["pull_number"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "pull_number",
@@ -29781,11 +29781,11 @@ func decodePullsCheckIfMergedParams(r *http.Request) (PullsCheckIfMergedParams, 
 	return params, nil
 }
 
-func decodePullsCreateReplyForReviewCommentParams(r *http.Request) (PullsCreateReplyForReviewCommentParams, error) {
+func decodePullsCreateReplyForReviewCommentParams(args map[string]string, r *http.Request) (PullsCreateReplyForReviewCommentParams, error) {
 	var params PullsCreateReplyForReviewCommentParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -29816,7 +29816,7 @@ func decodePullsCreateReplyForReviewCommentParams(r *http.Request) (PullsCreateR
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -29847,7 +29847,7 @@ func decodePullsCreateReplyForReviewCommentParams(r *http.Request) (PullsCreateR
 	}
 	// Decode path: pull_number.
 	{
-		param := chi.URLParam(r, "pull_number")
+		param := args["pull_number"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "pull_number",
@@ -29878,7 +29878,7 @@ func decodePullsCreateReplyForReviewCommentParams(r *http.Request) (PullsCreateR
 	}
 	// Decode path: comment_id.
 	{
-		param := chi.URLParam(r, "comment_id")
+		param := args["comment_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "comment_id",
@@ -29910,11 +29910,11 @@ func decodePullsCreateReplyForReviewCommentParams(r *http.Request) (PullsCreateR
 	return params, nil
 }
 
-func decodePullsCreateReviewParams(r *http.Request) (PullsCreateReviewParams, error) {
+func decodePullsCreateReviewParams(args map[string]string, r *http.Request) (PullsCreateReviewParams, error) {
 	var params PullsCreateReviewParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -29945,7 +29945,7 @@ func decodePullsCreateReviewParams(r *http.Request) (PullsCreateReviewParams, er
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -29976,7 +29976,7 @@ func decodePullsCreateReviewParams(r *http.Request) (PullsCreateReviewParams, er
 	}
 	// Decode path: pull_number.
 	{
-		param := chi.URLParam(r, "pull_number")
+		param := args["pull_number"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "pull_number",
@@ -30008,11 +30008,11 @@ func decodePullsCreateReviewParams(r *http.Request) (PullsCreateReviewParams, er
 	return params, nil
 }
 
-func decodePullsDeletePendingReviewParams(r *http.Request) (PullsDeletePendingReviewParams, error) {
+func decodePullsDeletePendingReviewParams(args map[string]string, r *http.Request) (PullsDeletePendingReviewParams, error) {
 	var params PullsDeletePendingReviewParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -30043,7 +30043,7 @@ func decodePullsDeletePendingReviewParams(r *http.Request) (PullsDeletePendingRe
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -30074,7 +30074,7 @@ func decodePullsDeletePendingReviewParams(r *http.Request) (PullsDeletePendingRe
 	}
 	// Decode path: pull_number.
 	{
-		param := chi.URLParam(r, "pull_number")
+		param := args["pull_number"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "pull_number",
@@ -30105,7 +30105,7 @@ func decodePullsDeletePendingReviewParams(r *http.Request) (PullsDeletePendingRe
 	}
 	// Decode path: review_id.
 	{
-		param := chi.URLParam(r, "review_id")
+		param := args["review_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "review_id",
@@ -30137,11 +30137,11 @@ func decodePullsDeletePendingReviewParams(r *http.Request) (PullsDeletePendingRe
 	return params, nil
 }
 
-func decodePullsDeleteReviewCommentParams(r *http.Request) (PullsDeleteReviewCommentParams, error) {
+func decodePullsDeleteReviewCommentParams(args map[string]string, r *http.Request) (PullsDeleteReviewCommentParams, error) {
 	var params PullsDeleteReviewCommentParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -30172,7 +30172,7 @@ func decodePullsDeleteReviewCommentParams(r *http.Request) (PullsDeleteReviewCom
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -30203,7 +30203,7 @@ func decodePullsDeleteReviewCommentParams(r *http.Request) (PullsDeleteReviewCom
 	}
 	// Decode path: comment_id.
 	{
-		param := chi.URLParam(r, "comment_id")
+		param := args["comment_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "comment_id",
@@ -30235,11 +30235,11 @@ func decodePullsDeleteReviewCommentParams(r *http.Request) (PullsDeleteReviewCom
 	return params, nil
 }
 
-func decodePullsDismissReviewParams(r *http.Request) (PullsDismissReviewParams, error) {
+func decodePullsDismissReviewParams(args map[string]string, r *http.Request) (PullsDismissReviewParams, error) {
 	var params PullsDismissReviewParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -30270,7 +30270,7 @@ func decodePullsDismissReviewParams(r *http.Request) (PullsDismissReviewParams, 
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -30301,7 +30301,7 @@ func decodePullsDismissReviewParams(r *http.Request) (PullsDismissReviewParams, 
 	}
 	// Decode path: pull_number.
 	{
-		param := chi.URLParam(r, "pull_number")
+		param := args["pull_number"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "pull_number",
@@ -30332,7 +30332,7 @@ func decodePullsDismissReviewParams(r *http.Request) (PullsDismissReviewParams, 
 	}
 	// Decode path: review_id.
 	{
-		param := chi.URLParam(r, "review_id")
+		param := args["review_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "review_id",
@@ -30364,11 +30364,11 @@ func decodePullsDismissReviewParams(r *http.Request) (PullsDismissReviewParams, 
 	return params, nil
 }
 
-func decodePullsGetParams(r *http.Request) (PullsGetParams, error) {
+func decodePullsGetParams(args map[string]string, r *http.Request) (PullsGetParams, error) {
 	var params PullsGetParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -30399,7 +30399,7 @@ func decodePullsGetParams(r *http.Request) (PullsGetParams, error) {
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -30430,7 +30430,7 @@ func decodePullsGetParams(r *http.Request) (PullsGetParams, error) {
 	}
 	// Decode path: pull_number.
 	{
-		param := chi.URLParam(r, "pull_number")
+		param := args["pull_number"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "pull_number",
@@ -30462,11 +30462,11 @@ func decodePullsGetParams(r *http.Request) (PullsGetParams, error) {
 	return params, nil
 }
 
-func decodePullsGetReviewParams(r *http.Request) (PullsGetReviewParams, error) {
+func decodePullsGetReviewParams(args map[string]string, r *http.Request) (PullsGetReviewParams, error) {
 	var params PullsGetReviewParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -30497,7 +30497,7 @@ func decodePullsGetReviewParams(r *http.Request) (PullsGetReviewParams, error) {
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -30528,7 +30528,7 @@ func decodePullsGetReviewParams(r *http.Request) (PullsGetReviewParams, error) {
 	}
 	// Decode path: pull_number.
 	{
-		param := chi.URLParam(r, "pull_number")
+		param := args["pull_number"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "pull_number",
@@ -30559,7 +30559,7 @@ func decodePullsGetReviewParams(r *http.Request) (PullsGetReviewParams, error) {
 	}
 	// Decode path: review_id.
 	{
-		param := chi.URLParam(r, "review_id")
+		param := args["review_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "review_id",
@@ -30591,11 +30591,11 @@ func decodePullsGetReviewParams(r *http.Request) (PullsGetReviewParams, error) {
 	return params, nil
 }
 
-func decodePullsGetReviewCommentParams(r *http.Request) (PullsGetReviewCommentParams, error) {
+func decodePullsGetReviewCommentParams(args map[string]string, r *http.Request) (PullsGetReviewCommentParams, error) {
 	var params PullsGetReviewCommentParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -30626,7 +30626,7 @@ func decodePullsGetReviewCommentParams(r *http.Request) (PullsGetReviewCommentPa
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -30657,7 +30657,7 @@ func decodePullsGetReviewCommentParams(r *http.Request) (PullsGetReviewCommentPa
 	}
 	// Decode path: comment_id.
 	{
-		param := chi.URLParam(r, "comment_id")
+		param := args["comment_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "comment_id",
@@ -30689,11 +30689,11 @@ func decodePullsGetReviewCommentParams(r *http.Request) (PullsGetReviewCommentPa
 	return params, nil
 }
 
-func decodePullsListCommentsForReviewParams(r *http.Request) (PullsListCommentsForReviewParams, error) {
+func decodePullsListCommentsForReviewParams(args map[string]string, r *http.Request) (PullsListCommentsForReviewParams, error) {
 	var params PullsListCommentsForReviewParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -30724,7 +30724,7 @@ func decodePullsListCommentsForReviewParams(r *http.Request) (PullsListCommentsF
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -30755,7 +30755,7 @@ func decodePullsListCommentsForReviewParams(r *http.Request) (PullsListCommentsF
 	}
 	// Decode path: pull_number.
 	{
-		param := chi.URLParam(r, "pull_number")
+		param := args["pull_number"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "pull_number",
@@ -30786,7 +30786,7 @@ func decodePullsListCommentsForReviewParams(r *http.Request) (PullsListCommentsF
 	}
 	// Decode path: review_id.
 	{
-		param := chi.URLParam(r, "review_id")
+		param := args["review_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "review_id",
@@ -30888,11 +30888,11 @@ func decodePullsListCommentsForReviewParams(r *http.Request) (PullsListCommentsF
 	return params, nil
 }
 
-func decodePullsListCommitsParams(r *http.Request) (PullsListCommitsParams, error) {
+func decodePullsListCommitsParams(args map[string]string, r *http.Request) (PullsListCommitsParams, error) {
 	var params PullsListCommitsParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -30923,7 +30923,7 @@ func decodePullsListCommitsParams(r *http.Request) (PullsListCommitsParams, erro
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -30954,7 +30954,7 @@ func decodePullsListCommitsParams(r *http.Request) (PullsListCommitsParams, erro
 	}
 	// Decode path: pull_number.
 	{
-		param := chi.URLParam(r, "pull_number")
+		param := args["pull_number"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "pull_number",
@@ -31056,11 +31056,11 @@ func decodePullsListCommitsParams(r *http.Request) (PullsListCommitsParams, erro
 	return params, nil
 }
 
-func decodePullsListRequestedReviewersParams(r *http.Request) (PullsListRequestedReviewersParams, error) {
+func decodePullsListRequestedReviewersParams(args map[string]string, r *http.Request) (PullsListRequestedReviewersParams, error) {
 	var params PullsListRequestedReviewersParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -31091,7 +31091,7 @@ func decodePullsListRequestedReviewersParams(r *http.Request) (PullsListRequeste
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -31122,7 +31122,7 @@ func decodePullsListRequestedReviewersParams(r *http.Request) (PullsListRequeste
 	}
 	// Decode path: pull_number.
 	{
-		param := chi.URLParam(r, "pull_number")
+		param := args["pull_number"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "pull_number",
@@ -31224,11 +31224,11 @@ func decodePullsListRequestedReviewersParams(r *http.Request) (PullsListRequeste
 	return params, nil
 }
 
-func decodePullsListReviewCommentsParams(r *http.Request) (PullsListReviewCommentsParams, error) {
+func decodePullsListReviewCommentsParams(args map[string]string, r *http.Request) (PullsListReviewCommentsParams, error) {
 	var params PullsListReviewCommentsParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -31259,7 +31259,7 @@ func decodePullsListReviewCommentsParams(r *http.Request) (PullsListReviewCommen
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -31290,7 +31290,7 @@ func decodePullsListReviewCommentsParams(r *http.Request) (PullsListReviewCommen
 	}
 	// Decode path: pull_number.
 	{
-		param := chi.URLParam(r, "pull_number")
+		param := args["pull_number"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "pull_number",
@@ -31535,11 +31535,11 @@ func decodePullsListReviewCommentsParams(r *http.Request) (PullsListReviewCommen
 	return params, nil
 }
 
-func decodePullsListReviewCommentsForRepoParams(r *http.Request) (PullsListReviewCommentsForRepoParams, error) {
+func decodePullsListReviewCommentsForRepoParams(args map[string]string, r *http.Request) (PullsListReviewCommentsForRepoParams, error) {
 	var params PullsListReviewCommentsForRepoParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -31570,7 +31570,7 @@ func decodePullsListReviewCommentsForRepoParams(r *http.Request) (PullsListRevie
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -31815,11 +31815,11 @@ func decodePullsListReviewCommentsForRepoParams(r *http.Request) (PullsListRevie
 	return params, nil
 }
 
-func decodePullsListReviewsParams(r *http.Request) (PullsListReviewsParams, error) {
+func decodePullsListReviewsParams(args map[string]string, r *http.Request) (PullsListReviewsParams, error) {
 	var params PullsListReviewsParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -31850,7 +31850,7 @@ func decodePullsListReviewsParams(r *http.Request) (PullsListReviewsParams, erro
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -31881,7 +31881,7 @@ func decodePullsListReviewsParams(r *http.Request) (PullsListReviewsParams, erro
 	}
 	// Decode path: pull_number.
 	{
-		param := chi.URLParam(r, "pull_number")
+		param := args["pull_number"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "pull_number",
@@ -31983,11 +31983,11 @@ func decodePullsListReviewsParams(r *http.Request) (PullsListReviewsParams, erro
 	return params, nil
 }
 
-func decodePullsSubmitReviewParams(r *http.Request) (PullsSubmitReviewParams, error) {
+func decodePullsSubmitReviewParams(args map[string]string, r *http.Request) (PullsSubmitReviewParams, error) {
 	var params PullsSubmitReviewParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -32018,7 +32018,7 @@ func decodePullsSubmitReviewParams(r *http.Request) (PullsSubmitReviewParams, er
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -32049,7 +32049,7 @@ func decodePullsSubmitReviewParams(r *http.Request) (PullsSubmitReviewParams, er
 	}
 	// Decode path: pull_number.
 	{
-		param := chi.URLParam(r, "pull_number")
+		param := args["pull_number"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "pull_number",
@@ -32080,7 +32080,7 @@ func decodePullsSubmitReviewParams(r *http.Request) (PullsSubmitReviewParams, er
 	}
 	// Decode path: review_id.
 	{
-		param := chi.URLParam(r, "review_id")
+		param := args["review_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "review_id",
@@ -32112,11 +32112,11 @@ func decodePullsSubmitReviewParams(r *http.Request) (PullsSubmitReviewParams, er
 	return params, nil
 }
 
-func decodePullsUpdateReviewParams(r *http.Request) (PullsUpdateReviewParams, error) {
+func decodePullsUpdateReviewParams(args map[string]string, r *http.Request) (PullsUpdateReviewParams, error) {
 	var params PullsUpdateReviewParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -32147,7 +32147,7 @@ func decodePullsUpdateReviewParams(r *http.Request) (PullsUpdateReviewParams, er
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -32178,7 +32178,7 @@ func decodePullsUpdateReviewParams(r *http.Request) (PullsUpdateReviewParams, er
 	}
 	// Decode path: pull_number.
 	{
-		param := chi.URLParam(r, "pull_number")
+		param := args["pull_number"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "pull_number",
@@ -32209,7 +32209,7 @@ func decodePullsUpdateReviewParams(r *http.Request) (PullsUpdateReviewParams, er
 	}
 	// Decode path: review_id.
 	{
-		param := chi.URLParam(r, "review_id")
+		param := args["review_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "review_id",
@@ -32241,11 +32241,11 @@ func decodePullsUpdateReviewParams(r *http.Request) (PullsUpdateReviewParams, er
 	return params, nil
 }
 
-func decodePullsUpdateReviewCommentParams(r *http.Request) (PullsUpdateReviewCommentParams, error) {
+func decodePullsUpdateReviewCommentParams(args map[string]string, r *http.Request) (PullsUpdateReviewCommentParams, error) {
 	var params PullsUpdateReviewCommentParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -32276,7 +32276,7 @@ func decodePullsUpdateReviewCommentParams(r *http.Request) (PullsUpdateReviewCom
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -32307,7 +32307,7 @@ func decodePullsUpdateReviewCommentParams(r *http.Request) (PullsUpdateReviewCom
 	}
 	// Decode path: comment_id.
 	{
-		param := chi.URLParam(r, "comment_id")
+		param := args["comment_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "comment_id",
@@ -32339,11 +32339,11 @@ func decodePullsUpdateReviewCommentParams(r *http.Request) (PullsUpdateReviewCom
 	return params, nil
 }
 
-func decodeReactionsCreateForTeamDiscussionCommentInOrgParams(r *http.Request) (ReactionsCreateForTeamDiscussionCommentInOrgParams, error) {
+func decodeReactionsCreateForTeamDiscussionCommentInOrgParams(args map[string]string, r *http.Request) (ReactionsCreateForTeamDiscussionCommentInOrgParams, error) {
 	var params ReactionsCreateForTeamDiscussionCommentInOrgParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -32374,7 +32374,7 @@ func decodeReactionsCreateForTeamDiscussionCommentInOrgParams(r *http.Request) (
 	}
 	// Decode path: team_slug.
 	{
-		param := chi.URLParam(r, "team_slug")
+		param := args["team_slug"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "team_slug",
@@ -32405,7 +32405,7 @@ func decodeReactionsCreateForTeamDiscussionCommentInOrgParams(r *http.Request) (
 	}
 	// Decode path: discussion_number.
 	{
-		param := chi.URLParam(r, "discussion_number")
+		param := args["discussion_number"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "discussion_number",
@@ -32436,7 +32436,7 @@ func decodeReactionsCreateForTeamDiscussionCommentInOrgParams(r *http.Request) (
 	}
 	// Decode path: comment_number.
 	{
-		param := chi.URLParam(r, "comment_number")
+		param := args["comment_number"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "comment_number",
@@ -32468,11 +32468,11 @@ func decodeReactionsCreateForTeamDiscussionCommentInOrgParams(r *http.Request) (
 	return params, nil
 }
 
-func decodeReactionsCreateForTeamDiscussionCommentLegacyParams(r *http.Request) (ReactionsCreateForTeamDiscussionCommentLegacyParams, error) {
+func decodeReactionsCreateForTeamDiscussionCommentLegacyParams(args map[string]string, r *http.Request) (ReactionsCreateForTeamDiscussionCommentLegacyParams, error) {
 	var params ReactionsCreateForTeamDiscussionCommentLegacyParams
 	// Decode path: team_id.
 	{
-		param := chi.URLParam(r, "team_id")
+		param := args["team_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "team_id",
@@ -32503,7 +32503,7 @@ func decodeReactionsCreateForTeamDiscussionCommentLegacyParams(r *http.Request) 
 	}
 	// Decode path: discussion_number.
 	{
-		param := chi.URLParam(r, "discussion_number")
+		param := args["discussion_number"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "discussion_number",
@@ -32534,7 +32534,7 @@ func decodeReactionsCreateForTeamDiscussionCommentLegacyParams(r *http.Request) 
 	}
 	// Decode path: comment_number.
 	{
-		param := chi.URLParam(r, "comment_number")
+		param := args["comment_number"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "comment_number",
@@ -32566,11 +32566,11 @@ func decodeReactionsCreateForTeamDiscussionCommentLegacyParams(r *http.Request) 
 	return params, nil
 }
 
-func decodeReactionsCreateForTeamDiscussionInOrgParams(r *http.Request) (ReactionsCreateForTeamDiscussionInOrgParams, error) {
+func decodeReactionsCreateForTeamDiscussionInOrgParams(args map[string]string, r *http.Request) (ReactionsCreateForTeamDiscussionInOrgParams, error) {
 	var params ReactionsCreateForTeamDiscussionInOrgParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -32601,7 +32601,7 @@ func decodeReactionsCreateForTeamDiscussionInOrgParams(r *http.Request) (Reactio
 	}
 	// Decode path: team_slug.
 	{
-		param := chi.URLParam(r, "team_slug")
+		param := args["team_slug"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "team_slug",
@@ -32632,7 +32632,7 @@ func decodeReactionsCreateForTeamDiscussionInOrgParams(r *http.Request) (Reactio
 	}
 	// Decode path: discussion_number.
 	{
-		param := chi.URLParam(r, "discussion_number")
+		param := args["discussion_number"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "discussion_number",
@@ -32664,11 +32664,11 @@ func decodeReactionsCreateForTeamDiscussionInOrgParams(r *http.Request) (Reactio
 	return params, nil
 }
 
-func decodeReactionsCreateForTeamDiscussionLegacyParams(r *http.Request) (ReactionsCreateForTeamDiscussionLegacyParams, error) {
+func decodeReactionsCreateForTeamDiscussionLegacyParams(args map[string]string, r *http.Request) (ReactionsCreateForTeamDiscussionLegacyParams, error) {
 	var params ReactionsCreateForTeamDiscussionLegacyParams
 	// Decode path: team_id.
 	{
-		param := chi.URLParam(r, "team_id")
+		param := args["team_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "team_id",
@@ -32699,7 +32699,7 @@ func decodeReactionsCreateForTeamDiscussionLegacyParams(r *http.Request) (Reacti
 	}
 	// Decode path: discussion_number.
 	{
-		param := chi.URLParam(r, "discussion_number")
+		param := args["discussion_number"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "discussion_number",
@@ -32731,11 +32731,11 @@ func decodeReactionsCreateForTeamDiscussionLegacyParams(r *http.Request) (Reacti
 	return params, nil
 }
 
-func decodeReactionsDeleteForCommitCommentParams(r *http.Request) (ReactionsDeleteForCommitCommentParams, error) {
+func decodeReactionsDeleteForCommitCommentParams(args map[string]string, r *http.Request) (ReactionsDeleteForCommitCommentParams, error) {
 	var params ReactionsDeleteForCommitCommentParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -32766,7 +32766,7 @@ func decodeReactionsDeleteForCommitCommentParams(r *http.Request) (ReactionsDele
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -32797,7 +32797,7 @@ func decodeReactionsDeleteForCommitCommentParams(r *http.Request) (ReactionsDele
 	}
 	// Decode path: comment_id.
 	{
-		param := chi.URLParam(r, "comment_id")
+		param := args["comment_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "comment_id",
@@ -32828,7 +32828,7 @@ func decodeReactionsDeleteForCommitCommentParams(r *http.Request) (ReactionsDele
 	}
 	// Decode path: reaction_id.
 	{
-		param := chi.URLParam(r, "reaction_id")
+		param := args["reaction_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "reaction_id",
@@ -32860,11 +32860,11 @@ func decodeReactionsDeleteForCommitCommentParams(r *http.Request) (ReactionsDele
 	return params, nil
 }
 
-func decodeReactionsDeleteForIssueParams(r *http.Request) (ReactionsDeleteForIssueParams, error) {
+func decodeReactionsDeleteForIssueParams(args map[string]string, r *http.Request) (ReactionsDeleteForIssueParams, error) {
 	var params ReactionsDeleteForIssueParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -32895,7 +32895,7 @@ func decodeReactionsDeleteForIssueParams(r *http.Request) (ReactionsDeleteForIss
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -32926,7 +32926,7 @@ func decodeReactionsDeleteForIssueParams(r *http.Request) (ReactionsDeleteForIss
 	}
 	// Decode path: issue_number.
 	{
-		param := chi.URLParam(r, "issue_number")
+		param := args["issue_number"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "issue_number",
@@ -32957,7 +32957,7 @@ func decodeReactionsDeleteForIssueParams(r *http.Request) (ReactionsDeleteForIss
 	}
 	// Decode path: reaction_id.
 	{
-		param := chi.URLParam(r, "reaction_id")
+		param := args["reaction_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "reaction_id",
@@ -32989,11 +32989,11 @@ func decodeReactionsDeleteForIssueParams(r *http.Request) (ReactionsDeleteForIss
 	return params, nil
 }
 
-func decodeReactionsDeleteForIssueCommentParams(r *http.Request) (ReactionsDeleteForIssueCommentParams, error) {
+func decodeReactionsDeleteForIssueCommentParams(args map[string]string, r *http.Request) (ReactionsDeleteForIssueCommentParams, error) {
 	var params ReactionsDeleteForIssueCommentParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -33024,7 +33024,7 @@ func decodeReactionsDeleteForIssueCommentParams(r *http.Request) (ReactionsDelet
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -33055,7 +33055,7 @@ func decodeReactionsDeleteForIssueCommentParams(r *http.Request) (ReactionsDelet
 	}
 	// Decode path: comment_id.
 	{
-		param := chi.URLParam(r, "comment_id")
+		param := args["comment_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "comment_id",
@@ -33086,7 +33086,7 @@ func decodeReactionsDeleteForIssueCommentParams(r *http.Request) (ReactionsDelet
 	}
 	// Decode path: reaction_id.
 	{
-		param := chi.URLParam(r, "reaction_id")
+		param := args["reaction_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "reaction_id",
@@ -33118,11 +33118,11 @@ func decodeReactionsDeleteForIssueCommentParams(r *http.Request) (ReactionsDelet
 	return params, nil
 }
 
-func decodeReactionsDeleteForPullRequestCommentParams(r *http.Request) (ReactionsDeleteForPullRequestCommentParams, error) {
+func decodeReactionsDeleteForPullRequestCommentParams(args map[string]string, r *http.Request) (ReactionsDeleteForPullRequestCommentParams, error) {
 	var params ReactionsDeleteForPullRequestCommentParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -33153,7 +33153,7 @@ func decodeReactionsDeleteForPullRequestCommentParams(r *http.Request) (Reaction
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -33184,7 +33184,7 @@ func decodeReactionsDeleteForPullRequestCommentParams(r *http.Request) (Reaction
 	}
 	// Decode path: comment_id.
 	{
-		param := chi.URLParam(r, "comment_id")
+		param := args["comment_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "comment_id",
@@ -33215,7 +33215,7 @@ func decodeReactionsDeleteForPullRequestCommentParams(r *http.Request) (Reaction
 	}
 	// Decode path: reaction_id.
 	{
-		param := chi.URLParam(r, "reaction_id")
+		param := args["reaction_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "reaction_id",
@@ -33247,11 +33247,11 @@ func decodeReactionsDeleteForPullRequestCommentParams(r *http.Request) (Reaction
 	return params, nil
 }
 
-func decodeReactionsDeleteForTeamDiscussionParams(r *http.Request) (ReactionsDeleteForTeamDiscussionParams, error) {
+func decodeReactionsDeleteForTeamDiscussionParams(args map[string]string, r *http.Request) (ReactionsDeleteForTeamDiscussionParams, error) {
 	var params ReactionsDeleteForTeamDiscussionParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -33282,7 +33282,7 @@ func decodeReactionsDeleteForTeamDiscussionParams(r *http.Request) (ReactionsDel
 	}
 	// Decode path: team_slug.
 	{
-		param := chi.URLParam(r, "team_slug")
+		param := args["team_slug"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "team_slug",
@@ -33313,7 +33313,7 @@ func decodeReactionsDeleteForTeamDiscussionParams(r *http.Request) (ReactionsDel
 	}
 	// Decode path: discussion_number.
 	{
-		param := chi.URLParam(r, "discussion_number")
+		param := args["discussion_number"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "discussion_number",
@@ -33344,7 +33344,7 @@ func decodeReactionsDeleteForTeamDiscussionParams(r *http.Request) (ReactionsDel
 	}
 	// Decode path: reaction_id.
 	{
-		param := chi.URLParam(r, "reaction_id")
+		param := args["reaction_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "reaction_id",
@@ -33376,11 +33376,11 @@ func decodeReactionsDeleteForTeamDiscussionParams(r *http.Request) (ReactionsDel
 	return params, nil
 }
 
-func decodeReactionsDeleteForTeamDiscussionCommentParams(r *http.Request) (ReactionsDeleteForTeamDiscussionCommentParams, error) {
+func decodeReactionsDeleteForTeamDiscussionCommentParams(args map[string]string, r *http.Request) (ReactionsDeleteForTeamDiscussionCommentParams, error) {
 	var params ReactionsDeleteForTeamDiscussionCommentParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -33411,7 +33411,7 @@ func decodeReactionsDeleteForTeamDiscussionCommentParams(r *http.Request) (React
 	}
 	// Decode path: team_slug.
 	{
-		param := chi.URLParam(r, "team_slug")
+		param := args["team_slug"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "team_slug",
@@ -33442,7 +33442,7 @@ func decodeReactionsDeleteForTeamDiscussionCommentParams(r *http.Request) (React
 	}
 	// Decode path: discussion_number.
 	{
-		param := chi.URLParam(r, "discussion_number")
+		param := args["discussion_number"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "discussion_number",
@@ -33473,7 +33473,7 @@ func decodeReactionsDeleteForTeamDiscussionCommentParams(r *http.Request) (React
 	}
 	// Decode path: comment_number.
 	{
-		param := chi.URLParam(r, "comment_number")
+		param := args["comment_number"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "comment_number",
@@ -33504,7 +33504,7 @@ func decodeReactionsDeleteForTeamDiscussionCommentParams(r *http.Request) (React
 	}
 	// Decode path: reaction_id.
 	{
-		param := chi.URLParam(r, "reaction_id")
+		param := args["reaction_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "reaction_id",
@@ -33536,11 +33536,11 @@ func decodeReactionsDeleteForTeamDiscussionCommentParams(r *http.Request) (React
 	return params, nil
 }
 
-func decodeReactionsDeleteLegacyParams(r *http.Request) (ReactionsDeleteLegacyParams, error) {
+func decodeReactionsDeleteLegacyParams(args map[string]string, r *http.Request) (ReactionsDeleteLegacyParams, error) {
 	var params ReactionsDeleteLegacyParams
 	// Decode path: reaction_id.
 	{
-		param := chi.URLParam(r, "reaction_id")
+		param := args["reaction_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "reaction_id",
@@ -33572,11 +33572,11 @@ func decodeReactionsDeleteLegacyParams(r *http.Request) (ReactionsDeleteLegacyPa
 	return params, nil
 }
 
-func decodeReactionsListForCommitCommentParams(r *http.Request) (ReactionsListForCommitCommentParams, error) {
+func decodeReactionsListForCommitCommentParams(args map[string]string, r *http.Request) (ReactionsListForCommitCommentParams, error) {
 	var params ReactionsListForCommitCommentParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -33607,7 +33607,7 @@ func decodeReactionsListForCommitCommentParams(r *http.Request) (ReactionsListFo
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -33638,7 +33638,7 @@ func decodeReactionsListForCommitCommentParams(r *http.Request) (ReactionsListFo
 	}
 	// Decode path: comment_id.
 	{
-		param := chi.URLParam(r, "comment_id")
+		param := args["comment_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "comment_id",
@@ -33794,11 +33794,11 @@ func decodeReactionsListForCommitCommentParams(r *http.Request) (ReactionsListFo
 	return params, nil
 }
 
-func decodeReactionsListForIssueParams(r *http.Request) (ReactionsListForIssueParams, error) {
+func decodeReactionsListForIssueParams(args map[string]string, r *http.Request) (ReactionsListForIssueParams, error) {
 	var params ReactionsListForIssueParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -33829,7 +33829,7 @@ func decodeReactionsListForIssueParams(r *http.Request) (ReactionsListForIssuePa
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -33860,7 +33860,7 @@ func decodeReactionsListForIssueParams(r *http.Request) (ReactionsListForIssuePa
 	}
 	// Decode path: issue_number.
 	{
-		param := chi.URLParam(r, "issue_number")
+		param := args["issue_number"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "issue_number",
@@ -34016,11 +34016,11 @@ func decodeReactionsListForIssueParams(r *http.Request) (ReactionsListForIssuePa
 	return params, nil
 }
 
-func decodeReactionsListForIssueCommentParams(r *http.Request) (ReactionsListForIssueCommentParams, error) {
+func decodeReactionsListForIssueCommentParams(args map[string]string, r *http.Request) (ReactionsListForIssueCommentParams, error) {
 	var params ReactionsListForIssueCommentParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -34051,7 +34051,7 @@ func decodeReactionsListForIssueCommentParams(r *http.Request) (ReactionsListFor
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -34082,7 +34082,7 @@ func decodeReactionsListForIssueCommentParams(r *http.Request) (ReactionsListFor
 	}
 	// Decode path: comment_id.
 	{
-		param := chi.URLParam(r, "comment_id")
+		param := args["comment_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "comment_id",
@@ -34238,11 +34238,11 @@ func decodeReactionsListForIssueCommentParams(r *http.Request) (ReactionsListFor
 	return params, nil
 }
 
-func decodeReactionsListForPullRequestReviewCommentParams(r *http.Request) (ReactionsListForPullRequestReviewCommentParams, error) {
+func decodeReactionsListForPullRequestReviewCommentParams(args map[string]string, r *http.Request) (ReactionsListForPullRequestReviewCommentParams, error) {
 	var params ReactionsListForPullRequestReviewCommentParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -34273,7 +34273,7 @@ func decodeReactionsListForPullRequestReviewCommentParams(r *http.Request) (Reac
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -34304,7 +34304,7 @@ func decodeReactionsListForPullRequestReviewCommentParams(r *http.Request) (Reac
 	}
 	// Decode path: comment_id.
 	{
-		param := chi.URLParam(r, "comment_id")
+		param := args["comment_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "comment_id",
@@ -34460,11 +34460,11 @@ func decodeReactionsListForPullRequestReviewCommentParams(r *http.Request) (Reac
 	return params, nil
 }
 
-func decodeReactionsListForTeamDiscussionCommentInOrgParams(r *http.Request) (ReactionsListForTeamDiscussionCommentInOrgParams, error) {
+func decodeReactionsListForTeamDiscussionCommentInOrgParams(args map[string]string, r *http.Request) (ReactionsListForTeamDiscussionCommentInOrgParams, error) {
 	var params ReactionsListForTeamDiscussionCommentInOrgParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -34495,7 +34495,7 @@ func decodeReactionsListForTeamDiscussionCommentInOrgParams(r *http.Request) (Re
 	}
 	// Decode path: team_slug.
 	{
-		param := chi.URLParam(r, "team_slug")
+		param := args["team_slug"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "team_slug",
@@ -34526,7 +34526,7 @@ func decodeReactionsListForTeamDiscussionCommentInOrgParams(r *http.Request) (Re
 	}
 	// Decode path: discussion_number.
 	{
-		param := chi.URLParam(r, "discussion_number")
+		param := args["discussion_number"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "discussion_number",
@@ -34557,7 +34557,7 @@ func decodeReactionsListForTeamDiscussionCommentInOrgParams(r *http.Request) (Re
 	}
 	// Decode path: comment_number.
 	{
-		param := chi.URLParam(r, "comment_number")
+		param := args["comment_number"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "comment_number",
@@ -34713,11 +34713,11 @@ func decodeReactionsListForTeamDiscussionCommentInOrgParams(r *http.Request) (Re
 	return params, nil
 }
 
-func decodeReactionsListForTeamDiscussionCommentLegacyParams(r *http.Request) (ReactionsListForTeamDiscussionCommentLegacyParams, error) {
+func decodeReactionsListForTeamDiscussionCommentLegacyParams(args map[string]string, r *http.Request) (ReactionsListForTeamDiscussionCommentLegacyParams, error) {
 	var params ReactionsListForTeamDiscussionCommentLegacyParams
 	// Decode path: team_id.
 	{
-		param := chi.URLParam(r, "team_id")
+		param := args["team_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "team_id",
@@ -34748,7 +34748,7 @@ func decodeReactionsListForTeamDiscussionCommentLegacyParams(r *http.Request) (R
 	}
 	// Decode path: discussion_number.
 	{
-		param := chi.URLParam(r, "discussion_number")
+		param := args["discussion_number"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "discussion_number",
@@ -34779,7 +34779,7 @@ func decodeReactionsListForTeamDiscussionCommentLegacyParams(r *http.Request) (R
 	}
 	// Decode path: comment_number.
 	{
-		param := chi.URLParam(r, "comment_number")
+		param := args["comment_number"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "comment_number",
@@ -34935,11 +34935,11 @@ func decodeReactionsListForTeamDiscussionCommentLegacyParams(r *http.Request) (R
 	return params, nil
 }
 
-func decodeReactionsListForTeamDiscussionInOrgParams(r *http.Request) (ReactionsListForTeamDiscussionInOrgParams, error) {
+func decodeReactionsListForTeamDiscussionInOrgParams(args map[string]string, r *http.Request) (ReactionsListForTeamDiscussionInOrgParams, error) {
 	var params ReactionsListForTeamDiscussionInOrgParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -34970,7 +34970,7 @@ func decodeReactionsListForTeamDiscussionInOrgParams(r *http.Request) (Reactions
 	}
 	// Decode path: team_slug.
 	{
-		param := chi.URLParam(r, "team_slug")
+		param := args["team_slug"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "team_slug",
@@ -35001,7 +35001,7 @@ func decodeReactionsListForTeamDiscussionInOrgParams(r *http.Request) (Reactions
 	}
 	// Decode path: discussion_number.
 	{
-		param := chi.URLParam(r, "discussion_number")
+		param := args["discussion_number"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "discussion_number",
@@ -35157,11 +35157,11 @@ func decodeReactionsListForTeamDiscussionInOrgParams(r *http.Request) (Reactions
 	return params, nil
 }
 
-func decodeReactionsListForTeamDiscussionLegacyParams(r *http.Request) (ReactionsListForTeamDiscussionLegacyParams, error) {
+func decodeReactionsListForTeamDiscussionLegacyParams(args map[string]string, r *http.Request) (ReactionsListForTeamDiscussionLegacyParams, error) {
 	var params ReactionsListForTeamDiscussionLegacyParams
 	// Decode path: team_id.
 	{
-		param := chi.URLParam(r, "team_id")
+		param := args["team_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "team_id",
@@ -35192,7 +35192,7 @@ func decodeReactionsListForTeamDiscussionLegacyParams(r *http.Request) (Reaction
 	}
 	// Decode path: discussion_number.
 	{
-		param := chi.URLParam(r, "discussion_number")
+		param := args["discussion_number"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "discussion_number",
@@ -35348,11 +35348,11 @@ func decodeReactionsListForTeamDiscussionLegacyParams(r *http.Request) (Reaction
 	return params, nil
 }
 
-func decodeReposAcceptInvitationParams(r *http.Request) (ReposAcceptInvitationParams, error) {
+func decodeReposAcceptInvitationParams(args map[string]string, r *http.Request) (ReposAcceptInvitationParams, error) {
 	var params ReposAcceptInvitationParams
 	// Decode path: invitation_id.
 	{
-		param := chi.URLParam(r, "invitation_id")
+		param := args["invitation_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "invitation_id",
@@ -35384,11 +35384,11 @@ func decodeReposAcceptInvitationParams(r *http.Request) (ReposAcceptInvitationPa
 	return params, nil
 }
 
-func decodeReposCheckCollaboratorParams(r *http.Request) (ReposCheckCollaboratorParams, error) {
+func decodeReposCheckCollaboratorParams(args map[string]string, r *http.Request) (ReposCheckCollaboratorParams, error) {
 	var params ReposCheckCollaboratorParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -35419,7 +35419,7 @@ func decodeReposCheckCollaboratorParams(r *http.Request) (ReposCheckCollaborator
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -35450,7 +35450,7 @@ func decodeReposCheckCollaboratorParams(r *http.Request) (ReposCheckCollaborator
 	}
 	// Decode path: username.
 	{
-		param := chi.URLParam(r, "username")
+		param := args["username"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "username",
@@ -35482,11 +35482,11 @@ func decodeReposCheckCollaboratorParams(r *http.Request) (ReposCheckCollaborator
 	return params, nil
 }
 
-func decodeReposCheckVulnerabilityAlertsParams(r *http.Request) (ReposCheckVulnerabilityAlertsParams, error) {
+func decodeReposCheckVulnerabilityAlertsParams(args map[string]string, r *http.Request) (ReposCheckVulnerabilityAlertsParams, error) {
 	var params ReposCheckVulnerabilityAlertsParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -35517,7 +35517,7 @@ func decodeReposCheckVulnerabilityAlertsParams(r *http.Request) (ReposCheckVulne
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -35549,11 +35549,11 @@ func decodeReposCheckVulnerabilityAlertsParams(r *http.Request) (ReposCheckVulne
 	return params, nil
 }
 
-func decodeReposCompareCommitsParams(r *http.Request) (ReposCompareCommitsParams, error) {
+func decodeReposCompareCommitsParams(args map[string]string, r *http.Request) (ReposCompareCommitsParams, error) {
 	var params ReposCompareCommitsParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -35584,7 +35584,7 @@ func decodeReposCompareCommitsParams(r *http.Request) (ReposCompareCommitsParams
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -35685,7 +35685,7 @@ func decodeReposCompareCommitsParams(r *http.Request) (ReposCompareCommitsParams
 	}
 	// Decode path: basehead.
 	{
-		param := chi.URLParam(r, "basehead")
+		param := args["basehead"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "basehead",
@@ -35717,11 +35717,11 @@ func decodeReposCompareCommitsParams(r *http.Request) (ReposCompareCommitsParams
 	return params, nil
 }
 
-func decodeReposCreateCommitSignatureProtectionParams(r *http.Request) (ReposCreateCommitSignatureProtectionParams, error) {
+func decodeReposCreateCommitSignatureProtectionParams(args map[string]string, r *http.Request) (ReposCreateCommitSignatureProtectionParams, error) {
 	var params ReposCreateCommitSignatureProtectionParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -35752,7 +35752,7 @@ func decodeReposCreateCommitSignatureProtectionParams(r *http.Request) (ReposCre
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -35783,7 +35783,7 @@ func decodeReposCreateCommitSignatureProtectionParams(r *http.Request) (ReposCre
 	}
 	// Decode path: branch.
 	{
-		param := chi.URLParam(r, "branch")
+		param := args["branch"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "branch",
@@ -35815,11 +35815,11 @@ func decodeReposCreateCommitSignatureProtectionParams(r *http.Request) (ReposCre
 	return params, nil
 }
 
-func decodeReposCreateCommitStatusParams(r *http.Request) (ReposCreateCommitStatusParams, error) {
+func decodeReposCreateCommitStatusParams(args map[string]string, r *http.Request) (ReposCreateCommitStatusParams, error) {
 	var params ReposCreateCommitStatusParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -35850,7 +35850,7 @@ func decodeReposCreateCommitStatusParams(r *http.Request) (ReposCreateCommitStat
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -35881,7 +35881,7 @@ func decodeReposCreateCommitStatusParams(r *http.Request) (ReposCreateCommitStat
 	}
 	// Decode path: sha.
 	{
-		param := chi.URLParam(r, "sha")
+		param := args["sha"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "sha",
@@ -35913,11 +35913,11 @@ func decodeReposCreateCommitStatusParams(r *http.Request) (ReposCreateCommitStat
 	return params, nil
 }
 
-func decodeReposCreateUsingTemplateParams(r *http.Request) (ReposCreateUsingTemplateParams, error) {
+func decodeReposCreateUsingTemplateParams(args map[string]string, r *http.Request) (ReposCreateUsingTemplateParams, error) {
 	var params ReposCreateUsingTemplateParams
 	// Decode path: template_owner.
 	{
-		param := chi.URLParam(r, "template_owner")
+		param := args["template_owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "template_owner",
@@ -35948,7 +35948,7 @@ func decodeReposCreateUsingTemplateParams(r *http.Request) (ReposCreateUsingTemp
 	}
 	// Decode path: template_repo.
 	{
-		param := chi.URLParam(r, "template_repo")
+		param := args["template_repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "template_repo",
@@ -35980,11 +35980,11 @@ func decodeReposCreateUsingTemplateParams(r *http.Request) (ReposCreateUsingTemp
 	return params, nil
 }
 
-func decodeReposDeclineInvitationParams(r *http.Request) (ReposDeclineInvitationParams, error) {
+func decodeReposDeclineInvitationParams(args map[string]string, r *http.Request) (ReposDeclineInvitationParams, error) {
 	var params ReposDeclineInvitationParams
 	// Decode path: invitation_id.
 	{
-		param := chi.URLParam(r, "invitation_id")
+		param := args["invitation_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "invitation_id",
@@ -36016,11 +36016,11 @@ func decodeReposDeclineInvitationParams(r *http.Request) (ReposDeclineInvitation
 	return params, nil
 }
 
-func decodeReposDeleteParams(r *http.Request) (ReposDeleteParams, error) {
+func decodeReposDeleteParams(args map[string]string, r *http.Request) (ReposDeleteParams, error) {
 	var params ReposDeleteParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -36051,7 +36051,7 @@ func decodeReposDeleteParams(r *http.Request) (ReposDeleteParams, error) {
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -36083,11 +36083,11 @@ func decodeReposDeleteParams(r *http.Request) (ReposDeleteParams, error) {
 	return params, nil
 }
 
-func decodeReposDeleteAccessRestrictionsParams(r *http.Request) (ReposDeleteAccessRestrictionsParams, error) {
+func decodeReposDeleteAccessRestrictionsParams(args map[string]string, r *http.Request) (ReposDeleteAccessRestrictionsParams, error) {
 	var params ReposDeleteAccessRestrictionsParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -36118,7 +36118,7 @@ func decodeReposDeleteAccessRestrictionsParams(r *http.Request) (ReposDeleteAcce
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -36149,7 +36149,7 @@ func decodeReposDeleteAccessRestrictionsParams(r *http.Request) (ReposDeleteAcce
 	}
 	// Decode path: branch.
 	{
-		param := chi.URLParam(r, "branch")
+		param := args["branch"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "branch",
@@ -36181,11 +36181,11 @@ func decodeReposDeleteAccessRestrictionsParams(r *http.Request) (ReposDeleteAcce
 	return params, nil
 }
 
-func decodeReposDeleteAdminBranchProtectionParams(r *http.Request) (ReposDeleteAdminBranchProtectionParams, error) {
+func decodeReposDeleteAdminBranchProtectionParams(args map[string]string, r *http.Request) (ReposDeleteAdminBranchProtectionParams, error) {
 	var params ReposDeleteAdminBranchProtectionParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -36216,7 +36216,7 @@ func decodeReposDeleteAdminBranchProtectionParams(r *http.Request) (ReposDeleteA
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -36247,7 +36247,7 @@ func decodeReposDeleteAdminBranchProtectionParams(r *http.Request) (ReposDeleteA
 	}
 	// Decode path: branch.
 	{
-		param := chi.URLParam(r, "branch")
+		param := args["branch"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "branch",
@@ -36279,11 +36279,11 @@ func decodeReposDeleteAdminBranchProtectionParams(r *http.Request) (ReposDeleteA
 	return params, nil
 }
 
-func decodeReposDeleteAnEnvironmentParams(r *http.Request) (ReposDeleteAnEnvironmentParams, error) {
+func decodeReposDeleteAnEnvironmentParams(args map[string]string, r *http.Request) (ReposDeleteAnEnvironmentParams, error) {
 	var params ReposDeleteAnEnvironmentParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -36314,7 +36314,7 @@ func decodeReposDeleteAnEnvironmentParams(r *http.Request) (ReposDeleteAnEnviron
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -36345,7 +36345,7 @@ func decodeReposDeleteAnEnvironmentParams(r *http.Request) (ReposDeleteAnEnviron
 	}
 	// Decode path: environment_name.
 	{
-		param := chi.URLParam(r, "environment_name")
+		param := args["environment_name"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "environment_name",
@@ -36377,11 +36377,11 @@ func decodeReposDeleteAnEnvironmentParams(r *http.Request) (ReposDeleteAnEnviron
 	return params, nil
 }
 
-func decodeReposDeleteAutolinkParams(r *http.Request) (ReposDeleteAutolinkParams, error) {
+func decodeReposDeleteAutolinkParams(args map[string]string, r *http.Request) (ReposDeleteAutolinkParams, error) {
 	var params ReposDeleteAutolinkParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -36412,7 +36412,7 @@ func decodeReposDeleteAutolinkParams(r *http.Request) (ReposDeleteAutolinkParams
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -36443,7 +36443,7 @@ func decodeReposDeleteAutolinkParams(r *http.Request) (ReposDeleteAutolinkParams
 	}
 	// Decode path: autolink_id.
 	{
-		param := chi.URLParam(r, "autolink_id")
+		param := args["autolink_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "autolink_id",
@@ -36475,11 +36475,11 @@ func decodeReposDeleteAutolinkParams(r *http.Request) (ReposDeleteAutolinkParams
 	return params, nil
 }
 
-func decodeReposDeleteBranchProtectionParams(r *http.Request) (ReposDeleteBranchProtectionParams, error) {
+func decodeReposDeleteBranchProtectionParams(args map[string]string, r *http.Request) (ReposDeleteBranchProtectionParams, error) {
 	var params ReposDeleteBranchProtectionParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -36510,7 +36510,7 @@ func decodeReposDeleteBranchProtectionParams(r *http.Request) (ReposDeleteBranch
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -36541,7 +36541,7 @@ func decodeReposDeleteBranchProtectionParams(r *http.Request) (ReposDeleteBranch
 	}
 	// Decode path: branch.
 	{
-		param := chi.URLParam(r, "branch")
+		param := args["branch"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "branch",
@@ -36573,11 +36573,11 @@ func decodeReposDeleteBranchProtectionParams(r *http.Request) (ReposDeleteBranch
 	return params, nil
 }
 
-func decodeReposDeleteCommitCommentParams(r *http.Request) (ReposDeleteCommitCommentParams, error) {
+func decodeReposDeleteCommitCommentParams(args map[string]string, r *http.Request) (ReposDeleteCommitCommentParams, error) {
 	var params ReposDeleteCommitCommentParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -36608,7 +36608,7 @@ func decodeReposDeleteCommitCommentParams(r *http.Request) (ReposDeleteCommitCom
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -36639,7 +36639,7 @@ func decodeReposDeleteCommitCommentParams(r *http.Request) (ReposDeleteCommitCom
 	}
 	// Decode path: comment_id.
 	{
-		param := chi.URLParam(r, "comment_id")
+		param := args["comment_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "comment_id",
@@ -36671,11 +36671,11 @@ func decodeReposDeleteCommitCommentParams(r *http.Request) (ReposDeleteCommitCom
 	return params, nil
 }
 
-func decodeReposDeleteCommitSignatureProtectionParams(r *http.Request) (ReposDeleteCommitSignatureProtectionParams, error) {
+func decodeReposDeleteCommitSignatureProtectionParams(args map[string]string, r *http.Request) (ReposDeleteCommitSignatureProtectionParams, error) {
 	var params ReposDeleteCommitSignatureProtectionParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -36706,7 +36706,7 @@ func decodeReposDeleteCommitSignatureProtectionParams(r *http.Request) (ReposDel
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -36737,7 +36737,7 @@ func decodeReposDeleteCommitSignatureProtectionParams(r *http.Request) (ReposDel
 	}
 	// Decode path: branch.
 	{
-		param := chi.URLParam(r, "branch")
+		param := args["branch"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "branch",
@@ -36769,11 +36769,11 @@ func decodeReposDeleteCommitSignatureProtectionParams(r *http.Request) (ReposDel
 	return params, nil
 }
 
-func decodeReposDeleteDeployKeyParams(r *http.Request) (ReposDeleteDeployKeyParams, error) {
+func decodeReposDeleteDeployKeyParams(args map[string]string, r *http.Request) (ReposDeleteDeployKeyParams, error) {
 	var params ReposDeleteDeployKeyParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -36804,7 +36804,7 @@ func decodeReposDeleteDeployKeyParams(r *http.Request) (ReposDeleteDeployKeyPara
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -36835,7 +36835,7 @@ func decodeReposDeleteDeployKeyParams(r *http.Request) (ReposDeleteDeployKeyPara
 	}
 	// Decode path: key_id.
 	{
-		param := chi.URLParam(r, "key_id")
+		param := args["key_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "key_id",
@@ -36867,11 +36867,11 @@ func decodeReposDeleteDeployKeyParams(r *http.Request) (ReposDeleteDeployKeyPara
 	return params, nil
 }
 
-func decodeReposDeleteDeploymentParams(r *http.Request) (ReposDeleteDeploymentParams, error) {
+func decodeReposDeleteDeploymentParams(args map[string]string, r *http.Request) (ReposDeleteDeploymentParams, error) {
 	var params ReposDeleteDeploymentParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -36902,7 +36902,7 @@ func decodeReposDeleteDeploymentParams(r *http.Request) (ReposDeleteDeploymentPa
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -36933,7 +36933,7 @@ func decodeReposDeleteDeploymentParams(r *http.Request) (ReposDeleteDeploymentPa
 	}
 	// Decode path: deployment_id.
 	{
-		param := chi.URLParam(r, "deployment_id")
+		param := args["deployment_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "deployment_id",
@@ -36965,11 +36965,11 @@ func decodeReposDeleteDeploymentParams(r *http.Request) (ReposDeleteDeploymentPa
 	return params, nil
 }
 
-func decodeReposDeleteInvitationParams(r *http.Request) (ReposDeleteInvitationParams, error) {
+func decodeReposDeleteInvitationParams(args map[string]string, r *http.Request) (ReposDeleteInvitationParams, error) {
 	var params ReposDeleteInvitationParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -37000,7 +37000,7 @@ func decodeReposDeleteInvitationParams(r *http.Request) (ReposDeleteInvitationPa
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -37031,7 +37031,7 @@ func decodeReposDeleteInvitationParams(r *http.Request) (ReposDeleteInvitationPa
 	}
 	// Decode path: invitation_id.
 	{
-		param := chi.URLParam(r, "invitation_id")
+		param := args["invitation_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "invitation_id",
@@ -37063,11 +37063,11 @@ func decodeReposDeleteInvitationParams(r *http.Request) (ReposDeleteInvitationPa
 	return params, nil
 }
 
-func decodeReposDeletePullRequestReviewProtectionParams(r *http.Request) (ReposDeletePullRequestReviewProtectionParams, error) {
+func decodeReposDeletePullRequestReviewProtectionParams(args map[string]string, r *http.Request) (ReposDeletePullRequestReviewProtectionParams, error) {
 	var params ReposDeletePullRequestReviewProtectionParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -37098,7 +37098,7 @@ func decodeReposDeletePullRequestReviewProtectionParams(r *http.Request) (ReposD
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -37129,7 +37129,7 @@ func decodeReposDeletePullRequestReviewProtectionParams(r *http.Request) (ReposD
 	}
 	// Decode path: branch.
 	{
-		param := chi.URLParam(r, "branch")
+		param := args["branch"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "branch",
@@ -37161,11 +37161,11 @@ func decodeReposDeletePullRequestReviewProtectionParams(r *http.Request) (ReposD
 	return params, nil
 }
 
-func decodeReposDeleteReleaseParams(r *http.Request) (ReposDeleteReleaseParams, error) {
+func decodeReposDeleteReleaseParams(args map[string]string, r *http.Request) (ReposDeleteReleaseParams, error) {
 	var params ReposDeleteReleaseParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -37196,7 +37196,7 @@ func decodeReposDeleteReleaseParams(r *http.Request) (ReposDeleteReleaseParams, 
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -37227,7 +37227,7 @@ func decodeReposDeleteReleaseParams(r *http.Request) (ReposDeleteReleaseParams, 
 	}
 	// Decode path: release_id.
 	{
-		param := chi.URLParam(r, "release_id")
+		param := args["release_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "release_id",
@@ -37259,11 +37259,11 @@ func decodeReposDeleteReleaseParams(r *http.Request) (ReposDeleteReleaseParams, 
 	return params, nil
 }
 
-func decodeReposDeleteReleaseAssetParams(r *http.Request) (ReposDeleteReleaseAssetParams, error) {
+func decodeReposDeleteReleaseAssetParams(args map[string]string, r *http.Request) (ReposDeleteReleaseAssetParams, error) {
 	var params ReposDeleteReleaseAssetParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -37294,7 +37294,7 @@ func decodeReposDeleteReleaseAssetParams(r *http.Request) (ReposDeleteReleaseAss
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -37325,7 +37325,7 @@ func decodeReposDeleteReleaseAssetParams(r *http.Request) (ReposDeleteReleaseAss
 	}
 	// Decode path: asset_id.
 	{
-		param := chi.URLParam(r, "asset_id")
+		param := args["asset_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "asset_id",
@@ -37357,11 +37357,11 @@ func decodeReposDeleteReleaseAssetParams(r *http.Request) (ReposDeleteReleaseAss
 	return params, nil
 }
 
-func decodeReposDeleteWebhookParams(r *http.Request) (ReposDeleteWebhookParams, error) {
+func decodeReposDeleteWebhookParams(args map[string]string, r *http.Request) (ReposDeleteWebhookParams, error) {
 	var params ReposDeleteWebhookParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -37392,7 +37392,7 @@ func decodeReposDeleteWebhookParams(r *http.Request) (ReposDeleteWebhookParams, 
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -37423,7 +37423,7 @@ func decodeReposDeleteWebhookParams(r *http.Request) (ReposDeleteWebhookParams, 
 	}
 	// Decode path: hook_id.
 	{
-		param := chi.URLParam(r, "hook_id")
+		param := args["hook_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "hook_id",
@@ -37455,11 +37455,11 @@ func decodeReposDeleteWebhookParams(r *http.Request) (ReposDeleteWebhookParams, 
 	return params, nil
 }
 
-func decodeReposDisableAutomatedSecurityFixesParams(r *http.Request) (ReposDisableAutomatedSecurityFixesParams, error) {
+func decodeReposDisableAutomatedSecurityFixesParams(args map[string]string, r *http.Request) (ReposDisableAutomatedSecurityFixesParams, error) {
 	var params ReposDisableAutomatedSecurityFixesParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -37490,7 +37490,7 @@ func decodeReposDisableAutomatedSecurityFixesParams(r *http.Request) (ReposDisab
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -37522,11 +37522,11 @@ func decodeReposDisableAutomatedSecurityFixesParams(r *http.Request) (ReposDisab
 	return params, nil
 }
 
-func decodeReposDisableLfsForRepoParams(r *http.Request) (ReposDisableLfsForRepoParams, error) {
+func decodeReposDisableLfsForRepoParams(args map[string]string, r *http.Request) (ReposDisableLfsForRepoParams, error) {
 	var params ReposDisableLfsForRepoParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -37557,7 +37557,7 @@ func decodeReposDisableLfsForRepoParams(r *http.Request) (ReposDisableLfsForRepo
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -37589,11 +37589,11 @@ func decodeReposDisableLfsForRepoParams(r *http.Request) (ReposDisableLfsForRepo
 	return params, nil
 }
 
-func decodeReposDisableVulnerabilityAlertsParams(r *http.Request) (ReposDisableVulnerabilityAlertsParams, error) {
+func decodeReposDisableVulnerabilityAlertsParams(args map[string]string, r *http.Request) (ReposDisableVulnerabilityAlertsParams, error) {
 	var params ReposDisableVulnerabilityAlertsParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -37624,7 +37624,7 @@ func decodeReposDisableVulnerabilityAlertsParams(r *http.Request) (ReposDisableV
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -37656,11 +37656,11 @@ func decodeReposDisableVulnerabilityAlertsParams(r *http.Request) (ReposDisableV
 	return params, nil
 }
 
-func decodeReposDownloadTarballArchiveParams(r *http.Request) (ReposDownloadTarballArchiveParams, error) {
+func decodeReposDownloadTarballArchiveParams(args map[string]string, r *http.Request) (ReposDownloadTarballArchiveParams, error) {
 	var params ReposDownloadTarballArchiveParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -37691,7 +37691,7 @@ func decodeReposDownloadTarballArchiveParams(r *http.Request) (ReposDownloadTarb
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -37722,7 +37722,7 @@ func decodeReposDownloadTarballArchiveParams(r *http.Request) (ReposDownloadTarb
 	}
 	// Decode path: ref.
 	{
-		param := chi.URLParam(r, "ref")
+		param := args["ref"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "ref",
@@ -37754,11 +37754,11 @@ func decodeReposDownloadTarballArchiveParams(r *http.Request) (ReposDownloadTarb
 	return params, nil
 }
 
-func decodeReposDownloadZipballArchiveParams(r *http.Request) (ReposDownloadZipballArchiveParams, error) {
+func decodeReposDownloadZipballArchiveParams(args map[string]string, r *http.Request) (ReposDownloadZipballArchiveParams, error) {
 	var params ReposDownloadZipballArchiveParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -37789,7 +37789,7 @@ func decodeReposDownloadZipballArchiveParams(r *http.Request) (ReposDownloadZipb
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -37820,7 +37820,7 @@ func decodeReposDownloadZipballArchiveParams(r *http.Request) (ReposDownloadZipb
 	}
 	// Decode path: ref.
 	{
-		param := chi.URLParam(r, "ref")
+		param := args["ref"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "ref",
@@ -37852,11 +37852,11 @@ func decodeReposDownloadZipballArchiveParams(r *http.Request) (ReposDownloadZipb
 	return params, nil
 }
 
-func decodeReposEnableAutomatedSecurityFixesParams(r *http.Request) (ReposEnableAutomatedSecurityFixesParams, error) {
+func decodeReposEnableAutomatedSecurityFixesParams(args map[string]string, r *http.Request) (ReposEnableAutomatedSecurityFixesParams, error) {
 	var params ReposEnableAutomatedSecurityFixesParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -37887,7 +37887,7 @@ func decodeReposEnableAutomatedSecurityFixesParams(r *http.Request) (ReposEnable
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -37919,11 +37919,11 @@ func decodeReposEnableAutomatedSecurityFixesParams(r *http.Request) (ReposEnable
 	return params, nil
 }
 
-func decodeReposEnableLfsForRepoParams(r *http.Request) (ReposEnableLfsForRepoParams, error) {
+func decodeReposEnableLfsForRepoParams(args map[string]string, r *http.Request) (ReposEnableLfsForRepoParams, error) {
 	var params ReposEnableLfsForRepoParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -37954,7 +37954,7 @@ func decodeReposEnableLfsForRepoParams(r *http.Request) (ReposEnableLfsForRepoPa
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -37986,11 +37986,11 @@ func decodeReposEnableLfsForRepoParams(r *http.Request) (ReposEnableLfsForRepoPa
 	return params, nil
 }
 
-func decodeReposEnableVulnerabilityAlertsParams(r *http.Request) (ReposEnableVulnerabilityAlertsParams, error) {
+func decodeReposEnableVulnerabilityAlertsParams(args map[string]string, r *http.Request) (ReposEnableVulnerabilityAlertsParams, error) {
 	var params ReposEnableVulnerabilityAlertsParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -38021,7 +38021,7 @@ func decodeReposEnableVulnerabilityAlertsParams(r *http.Request) (ReposEnableVul
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -38053,11 +38053,11 @@ func decodeReposEnableVulnerabilityAlertsParams(r *http.Request) (ReposEnableVul
 	return params, nil
 }
 
-func decodeReposGetParams(r *http.Request) (ReposGetParams, error) {
+func decodeReposGetParams(args map[string]string, r *http.Request) (ReposGetParams, error) {
 	var params ReposGetParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -38088,7 +38088,7 @@ func decodeReposGetParams(r *http.Request) (ReposGetParams, error) {
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -38120,11 +38120,11 @@ func decodeReposGetParams(r *http.Request) (ReposGetParams, error) {
 	return params, nil
 }
 
-func decodeReposGetAccessRestrictionsParams(r *http.Request) (ReposGetAccessRestrictionsParams, error) {
+func decodeReposGetAccessRestrictionsParams(args map[string]string, r *http.Request) (ReposGetAccessRestrictionsParams, error) {
 	var params ReposGetAccessRestrictionsParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -38155,7 +38155,7 @@ func decodeReposGetAccessRestrictionsParams(r *http.Request) (ReposGetAccessRest
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -38186,7 +38186,7 @@ func decodeReposGetAccessRestrictionsParams(r *http.Request) (ReposGetAccessRest
 	}
 	// Decode path: branch.
 	{
-		param := chi.URLParam(r, "branch")
+		param := args["branch"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "branch",
@@ -38218,11 +38218,11 @@ func decodeReposGetAccessRestrictionsParams(r *http.Request) (ReposGetAccessRest
 	return params, nil
 }
 
-func decodeReposGetAdminBranchProtectionParams(r *http.Request) (ReposGetAdminBranchProtectionParams, error) {
+func decodeReposGetAdminBranchProtectionParams(args map[string]string, r *http.Request) (ReposGetAdminBranchProtectionParams, error) {
 	var params ReposGetAdminBranchProtectionParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -38253,7 +38253,7 @@ func decodeReposGetAdminBranchProtectionParams(r *http.Request) (ReposGetAdminBr
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -38284,7 +38284,7 @@ func decodeReposGetAdminBranchProtectionParams(r *http.Request) (ReposGetAdminBr
 	}
 	// Decode path: branch.
 	{
-		param := chi.URLParam(r, "branch")
+		param := args["branch"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "branch",
@@ -38316,11 +38316,11 @@ func decodeReposGetAdminBranchProtectionParams(r *http.Request) (ReposGetAdminBr
 	return params, nil
 }
 
-func decodeReposGetAllStatusCheckContextsParams(r *http.Request) (ReposGetAllStatusCheckContextsParams, error) {
+func decodeReposGetAllStatusCheckContextsParams(args map[string]string, r *http.Request) (ReposGetAllStatusCheckContextsParams, error) {
 	var params ReposGetAllStatusCheckContextsParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -38351,7 +38351,7 @@ func decodeReposGetAllStatusCheckContextsParams(r *http.Request) (ReposGetAllSta
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -38382,7 +38382,7 @@ func decodeReposGetAllStatusCheckContextsParams(r *http.Request) (ReposGetAllSta
 	}
 	// Decode path: branch.
 	{
-		param := chi.URLParam(r, "branch")
+		param := args["branch"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "branch",
@@ -38414,11 +38414,11 @@ func decodeReposGetAllStatusCheckContextsParams(r *http.Request) (ReposGetAllSta
 	return params, nil
 }
 
-func decodeReposGetAllTopicsParams(r *http.Request) (ReposGetAllTopicsParams, error) {
+func decodeReposGetAllTopicsParams(args map[string]string, r *http.Request) (ReposGetAllTopicsParams, error) {
 	var params ReposGetAllTopicsParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -38449,7 +38449,7 @@ func decodeReposGetAllTopicsParams(r *http.Request) (ReposGetAllTopicsParams, er
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -38551,11 +38551,11 @@ func decodeReposGetAllTopicsParams(r *http.Request) (ReposGetAllTopicsParams, er
 	return params, nil
 }
 
-func decodeReposGetAppsWithAccessToProtectedBranchParams(r *http.Request) (ReposGetAppsWithAccessToProtectedBranchParams, error) {
+func decodeReposGetAppsWithAccessToProtectedBranchParams(args map[string]string, r *http.Request) (ReposGetAppsWithAccessToProtectedBranchParams, error) {
 	var params ReposGetAppsWithAccessToProtectedBranchParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -38586,7 +38586,7 @@ func decodeReposGetAppsWithAccessToProtectedBranchParams(r *http.Request) (Repos
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -38617,7 +38617,7 @@ func decodeReposGetAppsWithAccessToProtectedBranchParams(r *http.Request) (Repos
 	}
 	// Decode path: branch.
 	{
-		param := chi.URLParam(r, "branch")
+		param := args["branch"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "branch",
@@ -38649,11 +38649,11 @@ func decodeReposGetAppsWithAccessToProtectedBranchParams(r *http.Request) (Repos
 	return params, nil
 }
 
-func decodeReposGetAutolinkParams(r *http.Request) (ReposGetAutolinkParams, error) {
+func decodeReposGetAutolinkParams(args map[string]string, r *http.Request) (ReposGetAutolinkParams, error) {
 	var params ReposGetAutolinkParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -38684,7 +38684,7 @@ func decodeReposGetAutolinkParams(r *http.Request) (ReposGetAutolinkParams, erro
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -38715,7 +38715,7 @@ func decodeReposGetAutolinkParams(r *http.Request) (ReposGetAutolinkParams, erro
 	}
 	// Decode path: autolink_id.
 	{
-		param := chi.URLParam(r, "autolink_id")
+		param := args["autolink_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "autolink_id",
@@ -38747,11 +38747,11 @@ func decodeReposGetAutolinkParams(r *http.Request) (ReposGetAutolinkParams, erro
 	return params, nil
 }
 
-func decodeReposGetBranchParams(r *http.Request) (ReposGetBranchParams, error) {
+func decodeReposGetBranchParams(args map[string]string, r *http.Request) (ReposGetBranchParams, error) {
 	var params ReposGetBranchParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -38782,7 +38782,7 @@ func decodeReposGetBranchParams(r *http.Request) (ReposGetBranchParams, error) {
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -38813,7 +38813,7 @@ func decodeReposGetBranchParams(r *http.Request) (ReposGetBranchParams, error) {
 	}
 	// Decode path: branch.
 	{
-		param := chi.URLParam(r, "branch")
+		param := args["branch"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "branch",
@@ -38845,11 +38845,11 @@ func decodeReposGetBranchParams(r *http.Request) (ReposGetBranchParams, error) {
 	return params, nil
 }
 
-func decodeReposGetBranchProtectionParams(r *http.Request) (ReposGetBranchProtectionParams, error) {
+func decodeReposGetBranchProtectionParams(args map[string]string, r *http.Request) (ReposGetBranchProtectionParams, error) {
 	var params ReposGetBranchProtectionParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -38880,7 +38880,7 @@ func decodeReposGetBranchProtectionParams(r *http.Request) (ReposGetBranchProtec
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -38911,7 +38911,7 @@ func decodeReposGetBranchProtectionParams(r *http.Request) (ReposGetBranchProtec
 	}
 	// Decode path: branch.
 	{
-		param := chi.URLParam(r, "branch")
+		param := args["branch"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "branch",
@@ -38943,11 +38943,11 @@ func decodeReposGetBranchProtectionParams(r *http.Request) (ReposGetBranchProtec
 	return params, nil
 }
 
-func decodeReposGetClonesParams(r *http.Request) (ReposGetClonesParams, error) {
+func decodeReposGetClonesParams(args map[string]string, r *http.Request) (ReposGetClonesParams, error) {
 	var params ReposGetClonesParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -38978,7 +38978,7 @@ func decodeReposGetClonesParams(r *http.Request) (ReposGetClonesParams, error) {
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -39064,11 +39064,11 @@ func decodeReposGetClonesParams(r *http.Request) (ReposGetClonesParams, error) {
 	return params, nil
 }
 
-func decodeReposGetCodeFrequencyStatsParams(r *http.Request) (ReposGetCodeFrequencyStatsParams, error) {
+func decodeReposGetCodeFrequencyStatsParams(args map[string]string, r *http.Request) (ReposGetCodeFrequencyStatsParams, error) {
 	var params ReposGetCodeFrequencyStatsParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -39099,7 +39099,7 @@ func decodeReposGetCodeFrequencyStatsParams(r *http.Request) (ReposGetCodeFreque
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -39131,11 +39131,11 @@ func decodeReposGetCodeFrequencyStatsParams(r *http.Request) (ReposGetCodeFreque
 	return params, nil
 }
 
-func decodeReposGetCollaboratorPermissionLevelParams(r *http.Request) (ReposGetCollaboratorPermissionLevelParams, error) {
+func decodeReposGetCollaboratorPermissionLevelParams(args map[string]string, r *http.Request) (ReposGetCollaboratorPermissionLevelParams, error) {
 	var params ReposGetCollaboratorPermissionLevelParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -39166,7 +39166,7 @@ func decodeReposGetCollaboratorPermissionLevelParams(r *http.Request) (ReposGetC
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -39197,7 +39197,7 @@ func decodeReposGetCollaboratorPermissionLevelParams(r *http.Request) (ReposGetC
 	}
 	// Decode path: username.
 	{
-		param := chi.URLParam(r, "username")
+		param := args["username"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "username",
@@ -39229,11 +39229,11 @@ func decodeReposGetCollaboratorPermissionLevelParams(r *http.Request) (ReposGetC
 	return params, nil
 }
 
-func decodeReposGetCombinedStatusForRefParams(r *http.Request) (ReposGetCombinedStatusForRefParams, error) {
+func decodeReposGetCombinedStatusForRefParams(args map[string]string, r *http.Request) (ReposGetCombinedStatusForRefParams, error) {
 	var params ReposGetCombinedStatusForRefParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -39264,7 +39264,7 @@ func decodeReposGetCombinedStatusForRefParams(r *http.Request) (ReposGetCombined
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -39295,7 +39295,7 @@ func decodeReposGetCombinedStatusForRefParams(r *http.Request) (ReposGetCombined
 	}
 	// Decode path: ref.
 	{
-		param := chi.URLParam(r, "ref")
+		param := args["ref"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "ref",
@@ -39397,11 +39397,11 @@ func decodeReposGetCombinedStatusForRefParams(r *http.Request) (ReposGetCombined
 	return params, nil
 }
 
-func decodeReposGetCommitActivityStatsParams(r *http.Request) (ReposGetCommitActivityStatsParams, error) {
+func decodeReposGetCommitActivityStatsParams(args map[string]string, r *http.Request) (ReposGetCommitActivityStatsParams, error) {
 	var params ReposGetCommitActivityStatsParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -39432,7 +39432,7 @@ func decodeReposGetCommitActivityStatsParams(r *http.Request) (ReposGetCommitAct
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -39464,11 +39464,11 @@ func decodeReposGetCommitActivityStatsParams(r *http.Request) (ReposGetCommitAct
 	return params, nil
 }
 
-func decodeReposGetCommitCommentParams(r *http.Request) (ReposGetCommitCommentParams, error) {
+func decodeReposGetCommitCommentParams(args map[string]string, r *http.Request) (ReposGetCommitCommentParams, error) {
 	var params ReposGetCommitCommentParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -39499,7 +39499,7 @@ func decodeReposGetCommitCommentParams(r *http.Request) (ReposGetCommitCommentPa
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -39530,7 +39530,7 @@ func decodeReposGetCommitCommentParams(r *http.Request) (ReposGetCommitCommentPa
 	}
 	// Decode path: comment_id.
 	{
-		param := chi.URLParam(r, "comment_id")
+		param := args["comment_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "comment_id",
@@ -39562,11 +39562,11 @@ func decodeReposGetCommitCommentParams(r *http.Request) (ReposGetCommitCommentPa
 	return params, nil
 }
 
-func decodeReposGetCommitSignatureProtectionParams(r *http.Request) (ReposGetCommitSignatureProtectionParams, error) {
+func decodeReposGetCommitSignatureProtectionParams(args map[string]string, r *http.Request) (ReposGetCommitSignatureProtectionParams, error) {
 	var params ReposGetCommitSignatureProtectionParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -39597,7 +39597,7 @@ func decodeReposGetCommitSignatureProtectionParams(r *http.Request) (ReposGetCom
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -39628,7 +39628,7 @@ func decodeReposGetCommitSignatureProtectionParams(r *http.Request) (ReposGetCom
 	}
 	// Decode path: branch.
 	{
-		param := chi.URLParam(r, "branch")
+		param := args["branch"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "branch",
@@ -39660,11 +39660,11 @@ func decodeReposGetCommitSignatureProtectionParams(r *http.Request) (ReposGetCom
 	return params, nil
 }
 
-func decodeReposGetCommunityProfileMetricsParams(r *http.Request) (ReposGetCommunityProfileMetricsParams, error) {
+func decodeReposGetCommunityProfileMetricsParams(args map[string]string, r *http.Request) (ReposGetCommunityProfileMetricsParams, error) {
 	var params ReposGetCommunityProfileMetricsParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -39695,7 +39695,7 @@ func decodeReposGetCommunityProfileMetricsParams(r *http.Request) (ReposGetCommu
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -39727,11 +39727,11 @@ func decodeReposGetCommunityProfileMetricsParams(r *http.Request) (ReposGetCommu
 	return params, nil
 }
 
-func decodeReposGetContributorsStatsParams(r *http.Request) (ReposGetContributorsStatsParams, error) {
+func decodeReposGetContributorsStatsParams(args map[string]string, r *http.Request) (ReposGetContributorsStatsParams, error) {
 	var params ReposGetContributorsStatsParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -39762,7 +39762,7 @@ func decodeReposGetContributorsStatsParams(r *http.Request) (ReposGetContributor
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -39794,11 +39794,11 @@ func decodeReposGetContributorsStatsParams(r *http.Request) (ReposGetContributor
 	return params, nil
 }
 
-func decodeReposGetDeployKeyParams(r *http.Request) (ReposGetDeployKeyParams, error) {
+func decodeReposGetDeployKeyParams(args map[string]string, r *http.Request) (ReposGetDeployKeyParams, error) {
 	var params ReposGetDeployKeyParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -39829,7 +39829,7 @@ func decodeReposGetDeployKeyParams(r *http.Request) (ReposGetDeployKeyParams, er
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -39860,7 +39860,7 @@ func decodeReposGetDeployKeyParams(r *http.Request) (ReposGetDeployKeyParams, er
 	}
 	// Decode path: key_id.
 	{
-		param := chi.URLParam(r, "key_id")
+		param := args["key_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "key_id",
@@ -39892,11 +39892,11 @@ func decodeReposGetDeployKeyParams(r *http.Request) (ReposGetDeployKeyParams, er
 	return params, nil
 }
 
-func decodeReposGetDeploymentStatusParams(r *http.Request) (ReposGetDeploymentStatusParams, error) {
+func decodeReposGetDeploymentStatusParams(args map[string]string, r *http.Request) (ReposGetDeploymentStatusParams, error) {
 	var params ReposGetDeploymentStatusParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -39927,7 +39927,7 @@ func decodeReposGetDeploymentStatusParams(r *http.Request) (ReposGetDeploymentSt
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -39958,7 +39958,7 @@ func decodeReposGetDeploymentStatusParams(r *http.Request) (ReposGetDeploymentSt
 	}
 	// Decode path: deployment_id.
 	{
-		param := chi.URLParam(r, "deployment_id")
+		param := args["deployment_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "deployment_id",
@@ -39989,7 +39989,7 @@ func decodeReposGetDeploymentStatusParams(r *http.Request) (ReposGetDeploymentSt
 	}
 	// Decode path: status_id.
 	{
-		param := chi.URLParam(r, "status_id")
+		param := args["status_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "status_id",
@@ -40021,11 +40021,11 @@ func decodeReposGetDeploymentStatusParams(r *http.Request) (ReposGetDeploymentSt
 	return params, nil
 }
 
-func decodeReposGetLatestPagesBuildParams(r *http.Request) (ReposGetLatestPagesBuildParams, error) {
+func decodeReposGetLatestPagesBuildParams(args map[string]string, r *http.Request) (ReposGetLatestPagesBuildParams, error) {
 	var params ReposGetLatestPagesBuildParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -40056,7 +40056,7 @@ func decodeReposGetLatestPagesBuildParams(r *http.Request) (ReposGetLatestPagesB
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -40088,11 +40088,11 @@ func decodeReposGetLatestPagesBuildParams(r *http.Request) (ReposGetLatestPagesB
 	return params, nil
 }
 
-func decodeReposGetLatestReleaseParams(r *http.Request) (ReposGetLatestReleaseParams, error) {
+func decodeReposGetLatestReleaseParams(args map[string]string, r *http.Request) (ReposGetLatestReleaseParams, error) {
 	var params ReposGetLatestReleaseParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -40123,7 +40123,7 @@ func decodeReposGetLatestReleaseParams(r *http.Request) (ReposGetLatestReleasePa
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -40155,11 +40155,11 @@ func decodeReposGetLatestReleaseParams(r *http.Request) (ReposGetLatestReleasePa
 	return params, nil
 }
 
-func decodeReposGetPagesParams(r *http.Request) (ReposGetPagesParams, error) {
+func decodeReposGetPagesParams(args map[string]string, r *http.Request) (ReposGetPagesParams, error) {
 	var params ReposGetPagesParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -40190,7 +40190,7 @@ func decodeReposGetPagesParams(r *http.Request) (ReposGetPagesParams, error) {
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -40222,11 +40222,11 @@ func decodeReposGetPagesParams(r *http.Request) (ReposGetPagesParams, error) {
 	return params, nil
 }
 
-func decodeReposGetPagesBuildParams(r *http.Request) (ReposGetPagesBuildParams, error) {
+func decodeReposGetPagesBuildParams(args map[string]string, r *http.Request) (ReposGetPagesBuildParams, error) {
 	var params ReposGetPagesBuildParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -40257,7 +40257,7 @@ func decodeReposGetPagesBuildParams(r *http.Request) (ReposGetPagesBuildParams, 
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -40288,7 +40288,7 @@ func decodeReposGetPagesBuildParams(r *http.Request) (ReposGetPagesBuildParams, 
 	}
 	// Decode path: build_id.
 	{
-		param := chi.URLParam(r, "build_id")
+		param := args["build_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "build_id",
@@ -40320,11 +40320,11 @@ func decodeReposGetPagesBuildParams(r *http.Request) (ReposGetPagesBuildParams, 
 	return params, nil
 }
 
-func decodeReposGetPagesHealthCheckParams(r *http.Request) (ReposGetPagesHealthCheckParams, error) {
+func decodeReposGetPagesHealthCheckParams(args map[string]string, r *http.Request) (ReposGetPagesHealthCheckParams, error) {
 	var params ReposGetPagesHealthCheckParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -40355,7 +40355,7 @@ func decodeReposGetPagesHealthCheckParams(r *http.Request) (ReposGetPagesHealthC
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -40387,11 +40387,11 @@ func decodeReposGetPagesHealthCheckParams(r *http.Request) (ReposGetPagesHealthC
 	return params, nil
 }
 
-func decodeReposGetParticipationStatsParams(r *http.Request) (ReposGetParticipationStatsParams, error) {
+func decodeReposGetParticipationStatsParams(args map[string]string, r *http.Request) (ReposGetParticipationStatsParams, error) {
 	var params ReposGetParticipationStatsParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -40422,7 +40422,7 @@ func decodeReposGetParticipationStatsParams(r *http.Request) (ReposGetParticipat
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -40454,11 +40454,11 @@ func decodeReposGetParticipationStatsParams(r *http.Request) (ReposGetParticipat
 	return params, nil
 }
 
-func decodeReposGetPullRequestReviewProtectionParams(r *http.Request) (ReposGetPullRequestReviewProtectionParams, error) {
+func decodeReposGetPullRequestReviewProtectionParams(args map[string]string, r *http.Request) (ReposGetPullRequestReviewProtectionParams, error) {
 	var params ReposGetPullRequestReviewProtectionParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -40489,7 +40489,7 @@ func decodeReposGetPullRequestReviewProtectionParams(r *http.Request) (ReposGetP
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -40520,7 +40520,7 @@ func decodeReposGetPullRequestReviewProtectionParams(r *http.Request) (ReposGetP
 	}
 	// Decode path: branch.
 	{
-		param := chi.URLParam(r, "branch")
+		param := args["branch"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "branch",
@@ -40552,11 +40552,11 @@ func decodeReposGetPullRequestReviewProtectionParams(r *http.Request) (ReposGetP
 	return params, nil
 }
 
-func decodeReposGetPunchCardStatsParams(r *http.Request) (ReposGetPunchCardStatsParams, error) {
+func decodeReposGetPunchCardStatsParams(args map[string]string, r *http.Request) (ReposGetPunchCardStatsParams, error) {
 	var params ReposGetPunchCardStatsParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -40587,7 +40587,7 @@ func decodeReposGetPunchCardStatsParams(r *http.Request) (ReposGetPunchCardStats
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -40619,11 +40619,11 @@ func decodeReposGetPunchCardStatsParams(r *http.Request) (ReposGetPunchCardStats
 	return params, nil
 }
 
-func decodeReposGetReleaseParams(r *http.Request) (ReposGetReleaseParams, error) {
+func decodeReposGetReleaseParams(args map[string]string, r *http.Request) (ReposGetReleaseParams, error) {
 	var params ReposGetReleaseParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -40654,7 +40654,7 @@ func decodeReposGetReleaseParams(r *http.Request) (ReposGetReleaseParams, error)
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -40685,7 +40685,7 @@ func decodeReposGetReleaseParams(r *http.Request) (ReposGetReleaseParams, error)
 	}
 	// Decode path: release_id.
 	{
-		param := chi.URLParam(r, "release_id")
+		param := args["release_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "release_id",
@@ -40717,11 +40717,11 @@ func decodeReposGetReleaseParams(r *http.Request) (ReposGetReleaseParams, error)
 	return params, nil
 }
 
-func decodeReposGetReleaseAssetParams(r *http.Request) (ReposGetReleaseAssetParams, error) {
+func decodeReposGetReleaseAssetParams(args map[string]string, r *http.Request) (ReposGetReleaseAssetParams, error) {
 	var params ReposGetReleaseAssetParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -40752,7 +40752,7 @@ func decodeReposGetReleaseAssetParams(r *http.Request) (ReposGetReleaseAssetPara
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -40783,7 +40783,7 @@ func decodeReposGetReleaseAssetParams(r *http.Request) (ReposGetReleaseAssetPara
 	}
 	// Decode path: asset_id.
 	{
-		param := chi.URLParam(r, "asset_id")
+		param := args["asset_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "asset_id",
@@ -40815,11 +40815,11 @@ func decodeReposGetReleaseAssetParams(r *http.Request) (ReposGetReleaseAssetPara
 	return params, nil
 }
 
-func decodeReposGetReleaseByTagParams(r *http.Request) (ReposGetReleaseByTagParams, error) {
+func decodeReposGetReleaseByTagParams(args map[string]string, r *http.Request) (ReposGetReleaseByTagParams, error) {
 	var params ReposGetReleaseByTagParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -40850,7 +40850,7 @@ func decodeReposGetReleaseByTagParams(r *http.Request) (ReposGetReleaseByTagPara
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -40881,7 +40881,7 @@ func decodeReposGetReleaseByTagParams(r *http.Request) (ReposGetReleaseByTagPara
 	}
 	// Decode path: tag.
 	{
-		param := chi.URLParam(r, "tag")
+		param := args["tag"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "tag",
@@ -40913,11 +40913,11 @@ func decodeReposGetReleaseByTagParams(r *http.Request) (ReposGetReleaseByTagPara
 	return params, nil
 }
 
-func decodeReposGetStatusChecksProtectionParams(r *http.Request) (ReposGetStatusChecksProtectionParams, error) {
+func decodeReposGetStatusChecksProtectionParams(args map[string]string, r *http.Request) (ReposGetStatusChecksProtectionParams, error) {
 	var params ReposGetStatusChecksProtectionParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -40948,7 +40948,7 @@ func decodeReposGetStatusChecksProtectionParams(r *http.Request) (ReposGetStatus
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -40979,7 +40979,7 @@ func decodeReposGetStatusChecksProtectionParams(r *http.Request) (ReposGetStatus
 	}
 	// Decode path: branch.
 	{
-		param := chi.URLParam(r, "branch")
+		param := args["branch"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "branch",
@@ -41011,11 +41011,11 @@ func decodeReposGetStatusChecksProtectionParams(r *http.Request) (ReposGetStatus
 	return params, nil
 }
 
-func decodeReposGetTeamsWithAccessToProtectedBranchParams(r *http.Request) (ReposGetTeamsWithAccessToProtectedBranchParams, error) {
+func decodeReposGetTeamsWithAccessToProtectedBranchParams(args map[string]string, r *http.Request) (ReposGetTeamsWithAccessToProtectedBranchParams, error) {
 	var params ReposGetTeamsWithAccessToProtectedBranchParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -41046,7 +41046,7 @@ func decodeReposGetTeamsWithAccessToProtectedBranchParams(r *http.Request) (Repo
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -41077,7 +41077,7 @@ func decodeReposGetTeamsWithAccessToProtectedBranchParams(r *http.Request) (Repo
 	}
 	// Decode path: branch.
 	{
-		param := chi.URLParam(r, "branch")
+		param := args["branch"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "branch",
@@ -41109,11 +41109,11 @@ func decodeReposGetTeamsWithAccessToProtectedBranchParams(r *http.Request) (Repo
 	return params, nil
 }
 
-func decodeReposGetTopPathsParams(r *http.Request) (ReposGetTopPathsParams, error) {
+func decodeReposGetTopPathsParams(args map[string]string, r *http.Request) (ReposGetTopPathsParams, error) {
 	var params ReposGetTopPathsParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -41144,7 +41144,7 @@ func decodeReposGetTopPathsParams(r *http.Request) (ReposGetTopPathsParams, erro
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -41176,11 +41176,11 @@ func decodeReposGetTopPathsParams(r *http.Request) (ReposGetTopPathsParams, erro
 	return params, nil
 }
 
-func decodeReposGetTopReferrersParams(r *http.Request) (ReposGetTopReferrersParams, error) {
+func decodeReposGetTopReferrersParams(args map[string]string, r *http.Request) (ReposGetTopReferrersParams, error) {
 	var params ReposGetTopReferrersParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -41211,7 +41211,7 @@ func decodeReposGetTopReferrersParams(r *http.Request) (ReposGetTopReferrersPara
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -41243,11 +41243,11 @@ func decodeReposGetTopReferrersParams(r *http.Request) (ReposGetTopReferrersPara
 	return params, nil
 }
 
-func decodeReposGetUsersWithAccessToProtectedBranchParams(r *http.Request) (ReposGetUsersWithAccessToProtectedBranchParams, error) {
+func decodeReposGetUsersWithAccessToProtectedBranchParams(args map[string]string, r *http.Request) (ReposGetUsersWithAccessToProtectedBranchParams, error) {
 	var params ReposGetUsersWithAccessToProtectedBranchParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -41278,7 +41278,7 @@ func decodeReposGetUsersWithAccessToProtectedBranchParams(r *http.Request) (Repo
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -41309,7 +41309,7 @@ func decodeReposGetUsersWithAccessToProtectedBranchParams(r *http.Request) (Repo
 	}
 	// Decode path: branch.
 	{
-		param := chi.URLParam(r, "branch")
+		param := args["branch"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "branch",
@@ -41341,11 +41341,11 @@ func decodeReposGetUsersWithAccessToProtectedBranchParams(r *http.Request) (Repo
 	return params, nil
 }
 
-func decodeReposGetViewsParams(r *http.Request) (ReposGetViewsParams, error) {
+func decodeReposGetViewsParams(args map[string]string, r *http.Request) (ReposGetViewsParams, error) {
 	var params ReposGetViewsParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -41376,7 +41376,7 @@ func decodeReposGetViewsParams(r *http.Request) (ReposGetViewsParams, error) {
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -41462,11 +41462,11 @@ func decodeReposGetViewsParams(r *http.Request) (ReposGetViewsParams, error) {
 	return params, nil
 }
 
-func decodeReposGetWebhookParams(r *http.Request) (ReposGetWebhookParams, error) {
+func decodeReposGetWebhookParams(args map[string]string, r *http.Request) (ReposGetWebhookParams, error) {
 	var params ReposGetWebhookParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -41497,7 +41497,7 @@ func decodeReposGetWebhookParams(r *http.Request) (ReposGetWebhookParams, error)
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -41528,7 +41528,7 @@ func decodeReposGetWebhookParams(r *http.Request) (ReposGetWebhookParams, error)
 	}
 	// Decode path: hook_id.
 	{
-		param := chi.URLParam(r, "hook_id")
+		param := args["hook_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "hook_id",
@@ -41560,11 +41560,11 @@ func decodeReposGetWebhookParams(r *http.Request) (ReposGetWebhookParams, error)
 	return params, nil
 }
 
-func decodeReposGetWebhookConfigForRepoParams(r *http.Request) (ReposGetWebhookConfigForRepoParams, error) {
+func decodeReposGetWebhookConfigForRepoParams(args map[string]string, r *http.Request) (ReposGetWebhookConfigForRepoParams, error) {
 	var params ReposGetWebhookConfigForRepoParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -41595,7 +41595,7 @@ func decodeReposGetWebhookConfigForRepoParams(r *http.Request) (ReposGetWebhookC
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -41626,7 +41626,7 @@ func decodeReposGetWebhookConfigForRepoParams(r *http.Request) (ReposGetWebhookC
 	}
 	// Decode path: hook_id.
 	{
-		param := chi.URLParam(r, "hook_id")
+		param := args["hook_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "hook_id",
@@ -41658,11 +41658,11 @@ func decodeReposGetWebhookConfigForRepoParams(r *http.Request) (ReposGetWebhookC
 	return params, nil
 }
 
-func decodeReposListAutolinksParams(r *http.Request) (ReposListAutolinksParams, error) {
+func decodeReposListAutolinksParams(args map[string]string, r *http.Request) (ReposListAutolinksParams, error) {
 	var params ReposListAutolinksParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -41693,7 +41693,7 @@ func decodeReposListAutolinksParams(r *http.Request) (ReposListAutolinksParams, 
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -41760,11 +41760,11 @@ func decodeReposListAutolinksParams(r *http.Request) (ReposListAutolinksParams, 
 	return params, nil
 }
 
-func decodeReposListBranchesParams(r *http.Request) (ReposListBranchesParams, error) {
+func decodeReposListBranchesParams(args map[string]string, r *http.Request) (ReposListBranchesParams, error) {
 	var params ReposListBranchesParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -41795,7 +41795,7 @@ func decodeReposListBranchesParams(r *http.Request) (ReposListBranchesParams, er
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -41932,11 +41932,11 @@ func decodeReposListBranchesParams(r *http.Request) (ReposListBranchesParams, er
 	return params, nil
 }
 
-func decodeReposListCollaboratorsParams(r *http.Request) (ReposListCollaboratorsParams, error) {
+func decodeReposListCollaboratorsParams(args map[string]string, r *http.Request) (ReposListCollaboratorsParams, error) {
 	var params ReposListCollaboratorsParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -41967,7 +41967,7 @@ func decodeReposListCollaboratorsParams(r *http.Request) (ReposListCollaborators
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -42123,11 +42123,11 @@ func decodeReposListCollaboratorsParams(r *http.Request) (ReposListCollaborators
 	return params, nil
 }
 
-func decodeReposListCommentsForCommitParams(r *http.Request) (ReposListCommentsForCommitParams, error) {
+func decodeReposListCommentsForCommitParams(args map[string]string, r *http.Request) (ReposListCommentsForCommitParams, error) {
 	var params ReposListCommentsForCommitParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -42158,7 +42158,7 @@ func decodeReposListCommentsForCommitParams(r *http.Request) (ReposListCommentsF
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -42189,7 +42189,7 @@ func decodeReposListCommentsForCommitParams(r *http.Request) (ReposListCommentsF
 	}
 	// Decode path: commit_sha.
 	{
-		param := chi.URLParam(r, "commit_sha")
+		param := args["commit_sha"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "commit_sha",
@@ -42291,11 +42291,11 @@ func decodeReposListCommentsForCommitParams(r *http.Request) (ReposListCommentsF
 	return params, nil
 }
 
-func decodeReposListCommitCommentsForRepoParams(r *http.Request) (ReposListCommitCommentsForRepoParams, error) {
+func decodeReposListCommitCommentsForRepoParams(args map[string]string, r *http.Request) (ReposListCommitCommentsForRepoParams, error) {
 	var params ReposListCommitCommentsForRepoParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -42326,7 +42326,7 @@ func decodeReposListCommitCommentsForRepoParams(r *http.Request) (ReposListCommi
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -42428,11 +42428,11 @@ func decodeReposListCommitCommentsForRepoParams(r *http.Request) (ReposListCommi
 	return params, nil
 }
 
-func decodeReposListCommitStatusesForRefParams(r *http.Request) (ReposListCommitStatusesForRefParams, error) {
+func decodeReposListCommitStatusesForRefParams(args map[string]string, r *http.Request) (ReposListCommitStatusesForRefParams, error) {
 	var params ReposListCommitStatusesForRefParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -42463,7 +42463,7 @@ func decodeReposListCommitStatusesForRefParams(r *http.Request) (ReposListCommit
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -42494,7 +42494,7 @@ func decodeReposListCommitStatusesForRefParams(r *http.Request) (ReposListCommit
 	}
 	// Decode path: ref.
 	{
-		param := chi.URLParam(r, "ref")
+		param := args["ref"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "ref",
@@ -42596,11 +42596,11 @@ func decodeReposListCommitStatusesForRefParams(r *http.Request) (ReposListCommit
 	return params, nil
 }
 
-func decodeReposListCommitsParams(r *http.Request) (ReposListCommitsParams, error) {
+func decodeReposListCommitsParams(args map[string]string, r *http.Request) (ReposListCommitsParams, error) {
 	var params ReposListCommitsParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -42631,7 +42631,7 @@ func decodeReposListCommitsParams(r *http.Request) (ReposListCommitsParams, erro
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -42908,11 +42908,11 @@ func decodeReposListCommitsParams(r *http.Request) (ReposListCommitsParams, erro
 	return params, nil
 }
 
-func decodeReposListContributorsParams(r *http.Request) (ReposListContributorsParams, error) {
+func decodeReposListContributorsParams(args map[string]string, r *http.Request) (ReposListContributorsParams, error) {
 	var params ReposListContributorsParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -42943,7 +42943,7 @@ func decodeReposListContributorsParams(r *http.Request) (ReposListContributorsPa
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -43080,11 +43080,11 @@ func decodeReposListContributorsParams(r *http.Request) (ReposListContributorsPa
 	return params, nil
 }
 
-func decodeReposListDeployKeysParams(r *http.Request) (ReposListDeployKeysParams, error) {
+func decodeReposListDeployKeysParams(args map[string]string, r *http.Request) (ReposListDeployKeysParams, error) {
 	var params ReposListDeployKeysParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -43115,7 +43115,7 @@ func decodeReposListDeployKeysParams(r *http.Request) (ReposListDeployKeysParams
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -43217,11 +43217,11 @@ func decodeReposListDeployKeysParams(r *http.Request) (ReposListDeployKeysParams
 	return params, nil
 }
 
-func decodeReposListDeploymentStatusesParams(r *http.Request) (ReposListDeploymentStatusesParams, error) {
+func decodeReposListDeploymentStatusesParams(args map[string]string, r *http.Request) (ReposListDeploymentStatusesParams, error) {
 	var params ReposListDeploymentStatusesParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -43252,7 +43252,7 @@ func decodeReposListDeploymentStatusesParams(r *http.Request) (ReposListDeployme
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -43283,7 +43283,7 @@ func decodeReposListDeploymentStatusesParams(r *http.Request) (ReposListDeployme
 	}
 	// Decode path: deployment_id.
 	{
-		param := chi.URLParam(r, "deployment_id")
+		param := args["deployment_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "deployment_id",
@@ -43385,11 +43385,11 @@ func decodeReposListDeploymentStatusesParams(r *http.Request) (ReposListDeployme
 	return params, nil
 }
 
-func decodeReposListForOrgParams(r *http.Request) (ReposListForOrgParams, error) {
+func decodeReposListForOrgParams(args map[string]string, r *http.Request) (ReposListForOrgParams, error) {
 	var params ReposListForOrgParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -43653,11 +43653,11 @@ func decodeReposListForOrgParams(r *http.Request) (ReposListForOrgParams, error)
 	return params, nil
 }
 
-func decodeReposListForUserParams(r *http.Request) (ReposListForUserParams, error) {
+func decodeReposListForUserParams(args map[string]string, r *http.Request) (ReposListForUserParams, error) {
 	var params ReposListForUserParams
 	// Decode path: username.
 	{
-		param := chi.URLParam(r, "username")
+		param := args["username"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "username",
@@ -43921,11 +43921,11 @@ func decodeReposListForUserParams(r *http.Request) (ReposListForUserParams, erro
 	return params, nil
 }
 
-func decodeReposListForksParams(r *http.Request) (ReposListForksParams, error) {
+func decodeReposListForksParams(args map[string]string, r *http.Request) (ReposListForksParams, error) {
 	var params ReposListForksParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -43956,7 +43956,7 @@ func decodeReposListForksParams(r *http.Request) (ReposListForksParams, error) {
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -44112,11 +44112,11 @@ func decodeReposListForksParams(r *http.Request) (ReposListForksParams, error) {
 	return params, nil
 }
 
-func decodeReposListInvitationsParams(r *http.Request) (ReposListInvitationsParams, error) {
+func decodeReposListInvitationsParams(args map[string]string, r *http.Request) (ReposListInvitationsParams, error) {
 	var params ReposListInvitationsParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -44147,7 +44147,7 @@ func decodeReposListInvitationsParams(r *http.Request) (ReposListInvitationsPara
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -44249,7 +44249,7 @@ func decodeReposListInvitationsParams(r *http.Request) (ReposListInvitationsPara
 	return params, nil
 }
 
-func decodeReposListInvitationsForAuthenticatedUserParams(r *http.Request) (ReposListInvitationsForAuthenticatedUserParams, error) {
+func decodeReposListInvitationsForAuthenticatedUserParams(args map[string]string, r *http.Request) (ReposListInvitationsForAuthenticatedUserParams, error) {
 	var params ReposListInvitationsForAuthenticatedUserParams
 	// Decode query: per_page.
 	{
@@ -44324,11 +44324,11 @@ func decodeReposListInvitationsForAuthenticatedUserParams(r *http.Request) (Repo
 	return params, nil
 }
 
-func decodeReposListLanguagesParams(r *http.Request) (ReposListLanguagesParams, error) {
+func decodeReposListLanguagesParams(args map[string]string, r *http.Request) (ReposListLanguagesParams, error) {
 	var params ReposListLanguagesParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -44359,7 +44359,7 @@ func decodeReposListLanguagesParams(r *http.Request) (ReposListLanguagesParams, 
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -44391,11 +44391,11 @@ func decodeReposListLanguagesParams(r *http.Request) (ReposListLanguagesParams, 
 	return params, nil
 }
 
-func decodeReposListPagesBuildsParams(r *http.Request) (ReposListPagesBuildsParams, error) {
+func decodeReposListPagesBuildsParams(args map[string]string, r *http.Request) (ReposListPagesBuildsParams, error) {
 	var params ReposListPagesBuildsParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -44426,7 +44426,7 @@ func decodeReposListPagesBuildsParams(r *http.Request) (ReposListPagesBuildsPara
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -44528,11 +44528,11 @@ func decodeReposListPagesBuildsParams(r *http.Request) (ReposListPagesBuildsPara
 	return params, nil
 }
 
-func decodeReposListPullRequestsAssociatedWithCommitParams(r *http.Request) (ReposListPullRequestsAssociatedWithCommitParams, error) {
+func decodeReposListPullRequestsAssociatedWithCommitParams(args map[string]string, r *http.Request) (ReposListPullRequestsAssociatedWithCommitParams, error) {
 	var params ReposListPullRequestsAssociatedWithCommitParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -44563,7 +44563,7 @@ func decodeReposListPullRequestsAssociatedWithCommitParams(r *http.Request) (Rep
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -44594,7 +44594,7 @@ func decodeReposListPullRequestsAssociatedWithCommitParams(r *http.Request) (Rep
 	}
 	// Decode path: commit_sha.
 	{
-		param := chi.URLParam(r, "commit_sha")
+		param := args["commit_sha"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "commit_sha",
@@ -44696,11 +44696,11 @@ func decodeReposListPullRequestsAssociatedWithCommitParams(r *http.Request) (Rep
 	return params, nil
 }
 
-func decodeReposListReleaseAssetsParams(r *http.Request) (ReposListReleaseAssetsParams, error) {
+func decodeReposListReleaseAssetsParams(args map[string]string, r *http.Request) (ReposListReleaseAssetsParams, error) {
 	var params ReposListReleaseAssetsParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -44731,7 +44731,7 @@ func decodeReposListReleaseAssetsParams(r *http.Request) (ReposListReleaseAssets
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -44762,7 +44762,7 @@ func decodeReposListReleaseAssetsParams(r *http.Request) (ReposListReleaseAssets
 	}
 	// Decode path: release_id.
 	{
-		param := chi.URLParam(r, "release_id")
+		param := args["release_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "release_id",
@@ -44864,11 +44864,11 @@ func decodeReposListReleaseAssetsParams(r *http.Request) (ReposListReleaseAssets
 	return params, nil
 }
 
-func decodeReposListReleasesParams(r *http.Request) (ReposListReleasesParams, error) {
+func decodeReposListReleasesParams(args map[string]string, r *http.Request) (ReposListReleasesParams, error) {
 	var params ReposListReleasesParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -44899,7 +44899,7 @@ func decodeReposListReleasesParams(r *http.Request) (ReposListReleasesParams, er
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -45001,11 +45001,11 @@ func decodeReposListReleasesParams(r *http.Request) (ReposListReleasesParams, er
 	return params, nil
 }
 
-func decodeReposListTagsParams(r *http.Request) (ReposListTagsParams, error) {
+func decodeReposListTagsParams(args map[string]string, r *http.Request) (ReposListTagsParams, error) {
 	var params ReposListTagsParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -45036,7 +45036,7 @@ func decodeReposListTagsParams(r *http.Request) (ReposListTagsParams, error) {
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -45138,11 +45138,11 @@ func decodeReposListTagsParams(r *http.Request) (ReposListTagsParams, error) {
 	return params, nil
 }
 
-func decodeReposListTeamsParams(r *http.Request) (ReposListTeamsParams, error) {
+func decodeReposListTeamsParams(args map[string]string, r *http.Request) (ReposListTeamsParams, error) {
 	var params ReposListTeamsParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -45173,7 +45173,7 @@ func decodeReposListTeamsParams(r *http.Request) (ReposListTeamsParams, error) {
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -45275,11 +45275,11 @@ func decodeReposListTeamsParams(r *http.Request) (ReposListTeamsParams, error) {
 	return params, nil
 }
 
-func decodeReposListWebhooksParams(r *http.Request) (ReposListWebhooksParams, error) {
+func decodeReposListWebhooksParams(args map[string]string, r *http.Request) (ReposListWebhooksParams, error) {
 	var params ReposListWebhooksParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -45310,7 +45310,7 @@ func decodeReposListWebhooksParams(r *http.Request) (ReposListWebhooksParams, er
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -45412,11 +45412,11 @@ func decodeReposListWebhooksParams(r *http.Request) (ReposListWebhooksParams, er
 	return params, nil
 }
 
-func decodeReposMergeUpstreamParams(r *http.Request) (ReposMergeUpstreamParams, error) {
+func decodeReposMergeUpstreamParams(args map[string]string, r *http.Request) (ReposMergeUpstreamParams, error) {
 	var params ReposMergeUpstreamParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -45447,7 +45447,7 @@ func decodeReposMergeUpstreamParams(r *http.Request) (ReposMergeUpstreamParams, 
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -45479,11 +45479,11 @@ func decodeReposMergeUpstreamParams(r *http.Request) (ReposMergeUpstreamParams, 
 	return params, nil
 }
 
-func decodeReposPingWebhookParams(r *http.Request) (ReposPingWebhookParams, error) {
+func decodeReposPingWebhookParams(args map[string]string, r *http.Request) (ReposPingWebhookParams, error) {
 	var params ReposPingWebhookParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -45514,7 +45514,7 @@ func decodeReposPingWebhookParams(r *http.Request) (ReposPingWebhookParams, erro
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -45545,7 +45545,7 @@ func decodeReposPingWebhookParams(r *http.Request) (ReposPingWebhookParams, erro
 	}
 	// Decode path: hook_id.
 	{
-		param := chi.URLParam(r, "hook_id")
+		param := args["hook_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "hook_id",
@@ -45577,11 +45577,11 @@ func decodeReposPingWebhookParams(r *http.Request) (ReposPingWebhookParams, erro
 	return params, nil
 }
 
-func decodeReposRemoveCollaboratorParams(r *http.Request) (ReposRemoveCollaboratorParams, error) {
+func decodeReposRemoveCollaboratorParams(args map[string]string, r *http.Request) (ReposRemoveCollaboratorParams, error) {
 	var params ReposRemoveCollaboratorParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -45612,7 +45612,7 @@ func decodeReposRemoveCollaboratorParams(r *http.Request) (ReposRemoveCollaborat
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -45643,7 +45643,7 @@ func decodeReposRemoveCollaboratorParams(r *http.Request) (ReposRemoveCollaborat
 	}
 	// Decode path: username.
 	{
-		param := chi.URLParam(r, "username")
+		param := args["username"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "username",
@@ -45675,11 +45675,11 @@ func decodeReposRemoveCollaboratorParams(r *http.Request) (ReposRemoveCollaborat
 	return params, nil
 }
 
-func decodeReposRemoveStatusCheckProtectionParams(r *http.Request) (ReposRemoveStatusCheckProtectionParams, error) {
+func decodeReposRemoveStatusCheckProtectionParams(args map[string]string, r *http.Request) (ReposRemoveStatusCheckProtectionParams, error) {
 	var params ReposRemoveStatusCheckProtectionParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -45710,7 +45710,7 @@ func decodeReposRemoveStatusCheckProtectionParams(r *http.Request) (ReposRemoveS
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -45741,7 +45741,7 @@ func decodeReposRemoveStatusCheckProtectionParams(r *http.Request) (ReposRemoveS
 	}
 	// Decode path: branch.
 	{
-		param := chi.URLParam(r, "branch")
+		param := args["branch"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "branch",
@@ -45773,11 +45773,11 @@ func decodeReposRemoveStatusCheckProtectionParams(r *http.Request) (ReposRemoveS
 	return params, nil
 }
 
-func decodeReposReplaceAllTopicsParams(r *http.Request) (ReposReplaceAllTopicsParams, error) {
+func decodeReposReplaceAllTopicsParams(args map[string]string, r *http.Request) (ReposReplaceAllTopicsParams, error) {
 	var params ReposReplaceAllTopicsParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -45808,7 +45808,7 @@ func decodeReposReplaceAllTopicsParams(r *http.Request) (ReposReplaceAllTopicsPa
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -45840,11 +45840,11 @@ func decodeReposReplaceAllTopicsParams(r *http.Request) (ReposReplaceAllTopicsPa
 	return params, nil
 }
 
-func decodeReposRequestPagesBuildParams(r *http.Request) (ReposRequestPagesBuildParams, error) {
+func decodeReposRequestPagesBuildParams(args map[string]string, r *http.Request) (ReposRequestPagesBuildParams, error) {
 	var params ReposRequestPagesBuildParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -45875,7 +45875,7 @@ func decodeReposRequestPagesBuildParams(r *http.Request) (ReposRequestPagesBuild
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -45907,11 +45907,11 @@ func decodeReposRequestPagesBuildParams(r *http.Request) (ReposRequestPagesBuild
 	return params, nil
 }
 
-func decodeReposSetAdminBranchProtectionParams(r *http.Request) (ReposSetAdminBranchProtectionParams, error) {
+func decodeReposSetAdminBranchProtectionParams(args map[string]string, r *http.Request) (ReposSetAdminBranchProtectionParams, error) {
 	var params ReposSetAdminBranchProtectionParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -45942,7 +45942,7 @@ func decodeReposSetAdminBranchProtectionParams(r *http.Request) (ReposSetAdminBr
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -45973,7 +45973,7 @@ func decodeReposSetAdminBranchProtectionParams(r *http.Request) (ReposSetAdminBr
 	}
 	// Decode path: branch.
 	{
-		param := chi.URLParam(r, "branch")
+		param := args["branch"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "branch",
@@ -46005,11 +46005,11 @@ func decodeReposSetAdminBranchProtectionParams(r *http.Request) (ReposSetAdminBr
 	return params, nil
 }
 
-func decodeReposTestPushWebhookParams(r *http.Request) (ReposTestPushWebhookParams, error) {
+func decodeReposTestPushWebhookParams(args map[string]string, r *http.Request) (ReposTestPushWebhookParams, error) {
 	var params ReposTestPushWebhookParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -46040,7 +46040,7 @@ func decodeReposTestPushWebhookParams(r *http.Request) (ReposTestPushWebhookPara
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -46071,7 +46071,7 @@ func decodeReposTestPushWebhookParams(r *http.Request) (ReposTestPushWebhookPara
 	}
 	// Decode path: hook_id.
 	{
-		param := chi.URLParam(r, "hook_id")
+		param := args["hook_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "hook_id",
@@ -46103,11 +46103,11 @@ func decodeReposTestPushWebhookParams(r *http.Request) (ReposTestPushWebhookPara
 	return params, nil
 }
 
-func decodeReposTransferParams(r *http.Request) (ReposTransferParams, error) {
+func decodeReposTransferParams(args map[string]string, r *http.Request) (ReposTransferParams, error) {
 	var params ReposTransferParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -46138,7 +46138,7 @@ func decodeReposTransferParams(r *http.Request) (ReposTransferParams, error) {
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -46170,11 +46170,11 @@ func decodeReposTransferParams(r *http.Request) (ReposTransferParams, error) {
 	return params, nil
 }
 
-func decodeReposUpdateBranchProtectionParams(r *http.Request) (ReposUpdateBranchProtectionParams, error) {
+func decodeReposUpdateBranchProtectionParams(args map[string]string, r *http.Request) (ReposUpdateBranchProtectionParams, error) {
 	var params ReposUpdateBranchProtectionParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -46205,7 +46205,7 @@ func decodeReposUpdateBranchProtectionParams(r *http.Request) (ReposUpdateBranch
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -46236,7 +46236,7 @@ func decodeReposUpdateBranchProtectionParams(r *http.Request) (ReposUpdateBranch
 	}
 	// Decode path: branch.
 	{
-		param := chi.URLParam(r, "branch")
+		param := args["branch"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "branch",
@@ -46268,11 +46268,11 @@ func decodeReposUpdateBranchProtectionParams(r *http.Request) (ReposUpdateBranch
 	return params, nil
 }
 
-func decodeReposUpdateCommitCommentParams(r *http.Request) (ReposUpdateCommitCommentParams, error) {
+func decodeReposUpdateCommitCommentParams(args map[string]string, r *http.Request) (ReposUpdateCommitCommentParams, error) {
 	var params ReposUpdateCommitCommentParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -46303,7 +46303,7 @@ func decodeReposUpdateCommitCommentParams(r *http.Request) (ReposUpdateCommitCom
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -46334,7 +46334,7 @@ func decodeReposUpdateCommitCommentParams(r *http.Request) (ReposUpdateCommitCom
 	}
 	// Decode path: comment_id.
 	{
-		param := chi.URLParam(r, "comment_id")
+		param := args["comment_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "comment_id",
@@ -46366,11 +46366,11 @@ func decodeReposUpdateCommitCommentParams(r *http.Request) (ReposUpdateCommitCom
 	return params, nil
 }
 
-func decodeReposUpdateInvitationParams(r *http.Request) (ReposUpdateInvitationParams, error) {
+func decodeReposUpdateInvitationParams(args map[string]string, r *http.Request) (ReposUpdateInvitationParams, error) {
 	var params ReposUpdateInvitationParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -46401,7 +46401,7 @@ func decodeReposUpdateInvitationParams(r *http.Request) (ReposUpdateInvitationPa
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -46432,7 +46432,7 @@ func decodeReposUpdateInvitationParams(r *http.Request) (ReposUpdateInvitationPa
 	}
 	// Decode path: invitation_id.
 	{
-		param := chi.URLParam(r, "invitation_id")
+		param := args["invitation_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "invitation_id",
@@ -46464,11 +46464,11 @@ func decodeReposUpdateInvitationParams(r *http.Request) (ReposUpdateInvitationPa
 	return params, nil
 }
 
-func decodeReposUpdateReleaseParams(r *http.Request) (ReposUpdateReleaseParams, error) {
+func decodeReposUpdateReleaseParams(args map[string]string, r *http.Request) (ReposUpdateReleaseParams, error) {
 	var params ReposUpdateReleaseParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -46499,7 +46499,7 @@ func decodeReposUpdateReleaseParams(r *http.Request) (ReposUpdateReleaseParams, 
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -46530,7 +46530,7 @@ func decodeReposUpdateReleaseParams(r *http.Request) (ReposUpdateReleaseParams, 
 	}
 	// Decode path: release_id.
 	{
-		param := chi.URLParam(r, "release_id")
+		param := args["release_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "release_id",
@@ -46562,11 +46562,11 @@ func decodeReposUpdateReleaseParams(r *http.Request) (ReposUpdateReleaseParams, 
 	return params, nil
 }
 
-func decodeReposUpdateReleaseAssetParams(r *http.Request) (ReposUpdateReleaseAssetParams, error) {
+func decodeReposUpdateReleaseAssetParams(args map[string]string, r *http.Request) (ReposUpdateReleaseAssetParams, error) {
 	var params ReposUpdateReleaseAssetParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -46597,7 +46597,7 @@ func decodeReposUpdateReleaseAssetParams(r *http.Request) (ReposUpdateReleaseAss
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -46628,7 +46628,7 @@ func decodeReposUpdateReleaseAssetParams(r *http.Request) (ReposUpdateReleaseAss
 	}
 	// Decode path: asset_id.
 	{
-		param := chi.URLParam(r, "asset_id")
+		param := args["asset_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "asset_id",
@@ -46660,11 +46660,11 @@ func decodeReposUpdateReleaseAssetParams(r *http.Request) (ReposUpdateReleaseAss
 	return params, nil
 }
 
-func decodeReposUpdateWebhookConfigForRepoParams(r *http.Request) (ReposUpdateWebhookConfigForRepoParams, error) {
+func decodeReposUpdateWebhookConfigForRepoParams(args map[string]string, r *http.Request) (ReposUpdateWebhookConfigForRepoParams, error) {
 	var params ReposUpdateWebhookConfigForRepoParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -46695,7 +46695,7 @@ func decodeReposUpdateWebhookConfigForRepoParams(r *http.Request) (ReposUpdateWe
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -46726,7 +46726,7 @@ func decodeReposUpdateWebhookConfigForRepoParams(r *http.Request) (ReposUpdateWe
 	}
 	// Decode path: hook_id.
 	{
-		param := chi.URLParam(r, "hook_id")
+		param := args["hook_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "hook_id",
@@ -46758,11 +46758,11 @@ func decodeReposUpdateWebhookConfigForRepoParams(r *http.Request) (ReposUpdateWe
 	return params, nil
 }
 
-func decodeScimDeleteUserFromOrgParams(r *http.Request) (ScimDeleteUserFromOrgParams, error) {
+func decodeScimDeleteUserFromOrgParams(args map[string]string, r *http.Request) (ScimDeleteUserFromOrgParams, error) {
 	var params ScimDeleteUserFromOrgParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -46793,7 +46793,7 @@ func decodeScimDeleteUserFromOrgParams(r *http.Request) (ScimDeleteUserFromOrgPa
 	}
 	// Decode path: scim_user_id.
 	{
-		param := chi.URLParam(r, "scim_user_id")
+		param := args["scim_user_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "scim_user_id",
@@ -46825,7 +46825,7 @@ func decodeScimDeleteUserFromOrgParams(r *http.Request) (ScimDeleteUserFromOrgPa
 	return params, nil
 }
 
-func decodeSearchCommitsParams(r *http.Request) (SearchCommitsParams, error) {
+func decodeSearchCommitsParams(args map[string]string, r *http.Request) (SearchCommitsParams, error) {
 	var params SearchCommitsParams
 	// Decode query: q.
 	{
@@ -47038,7 +47038,7 @@ func decodeSearchCommitsParams(r *http.Request) (SearchCommitsParams, error) {
 	return params, nil
 }
 
-func decodeSearchTopicsParams(r *http.Request) (SearchTopicsParams, error) {
+func decodeSearchTopicsParams(args map[string]string, r *http.Request) (SearchTopicsParams, error) {
 	var params SearchTopicsParams
 	// Decode query: q.
 	{
@@ -47143,11 +47143,11 @@ func decodeSearchTopicsParams(r *http.Request) (SearchTopicsParams, error) {
 	return params, nil
 }
 
-func decodeSecretScanningGetAlertParams(r *http.Request) (SecretScanningGetAlertParams, error) {
+func decodeSecretScanningGetAlertParams(args map[string]string, r *http.Request) (SecretScanningGetAlertParams, error) {
 	var params SecretScanningGetAlertParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -47178,7 +47178,7 @@ func decodeSecretScanningGetAlertParams(r *http.Request) (SecretScanningGetAlert
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -47209,7 +47209,7 @@ func decodeSecretScanningGetAlertParams(r *http.Request) (SecretScanningGetAlert
 	}
 	// Decode path: alert_number.
 	{
-		param := chi.URLParam(r, "alert_number")
+		param := args["alert_number"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "alert_number",
@@ -47248,11 +47248,11 @@ func decodeSecretScanningGetAlertParams(r *http.Request) (SecretScanningGetAlert
 	return params, nil
 }
 
-func decodeSecretScanningListAlertsForOrgParams(r *http.Request) (SecretScanningListAlertsForOrgParams, error) {
+func decodeSecretScanningListAlertsForOrgParams(args map[string]string, r *http.Request) (SecretScanningListAlertsForOrgParams, error) {
 	var params SecretScanningListAlertsForOrgParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -47443,11 +47443,11 @@ func decodeSecretScanningListAlertsForOrgParams(r *http.Request) (SecretScanning
 	return params, nil
 }
 
-func decodeSecretScanningListAlertsForRepoParams(r *http.Request) (SecretScanningListAlertsForRepoParams, error) {
+func decodeSecretScanningListAlertsForRepoParams(args map[string]string, r *http.Request) (SecretScanningListAlertsForRepoParams, error) {
 	var params SecretScanningListAlertsForRepoParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -47478,7 +47478,7 @@ func decodeSecretScanningListAlertsForRepoParams(r *http.Request) (SecretScannin
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -47669,11 +47669,11 @@ func decodeSecretScanningListAlertsForRepoParams(r *http.Request) (SecretScannin
 	return params, nil
 }
 
-func decodeSecretScanningUpdateAlertParams(r *http.Request) (SecretScanningUpdateAlertParams, error) {
+func decodeSecretScanningUpdateAlertParams(args map[string]string, r *http.Request) (SecretScanningUpdateAlertParams, error) {
 	var params SecretScanningUpdateAlertParams
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -47704,7 +47704,7 @@ func decodeSecretScanningUpdateAlertParams(r *http.Request) (SecretScanningUpdat
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -47735,7 +47735,7 @@ func decodeSecretScanningUpdateAlertParams(r *http.Request) (SecretScanningUpdat
 	}
 	// Decode path: alert_number.
 	{
-		param := chi.URLParam(r, "alert_number")
+		param := args["alert_number"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "alert_number",
@@ -47774,11 +47774,11 @@ func decodeSecretScanningUpdateAlertParams(r *http.Request) (SecretScanningUpdat
 	return params, nil
 }
 
-func decodeTeamsAddMemberLegacyParams(r *http.Request) (TeamsAddMemberLegacyParams, error) {
+func decodeTeamsAddMemberLegacyParams(args map[string]string, r *http.Request) (TeamsAddMemberLegacyParams, error) {
 	var params TeamsAddMemberLegacyParams
 	// Decode path: team_id.
 	{
-		param := chi.URLParam(r, "team_id")
+		param := args["team_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "team_id",
@@ -47809,7 +47809,7 @@ func decodeTeamsAddMemberLegacyParams(r *http.Request) (TeamsAddMemberLegacyPara
 	}
 	// Decode path: username.
 	{
-		param := chi.URLParam(r, "username")
+		param := args["username"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "username",
@@ -47841,11 +47841,11 @@ func decodeTeamsAddMemberLegacyParams(r *http.Request) (TeamsAddMemberLegacyPara
 	return params, nil
 }
 
-func decodeTeamsAddOrUpdateMembershipForUserInOrgParams(r *http.Request) (TeamsAddOrUpdateMembershipForUserInOrgParams, error) {
+func decodeTeamsAddOrUpdateMembershipForUserInOrgParams(args map[string]string, r *http.Request) (TeamsAddOrUpdateMembershipForUserInOrgParams, error) {
 	var params TeamsAddOrUpdateMembershipForUserInOrgParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -47876,7 +47876,7 @@ func decodeTeamsAddOrUpdateMembershipForUserInOrgParams(r *http.Request) (TeamsA
 	}
 	// Decode path: team_slug.
 	{
-		param := chi.URLParam(r, "team_slug")
+		param := args["team_slug"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "team_slug",
@@ -47907,7 +47907,7 @@ func decodeTeamsAddOrUpdateMembershipForUserInOrgParams(r *http.Request) (TeamsA
 	}
 	// Decode path: username.
 	{
-		param := chi.URLParam(r, "username")
+		param := args["username"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "username",
@@ -47939,11 +47939,11 @@ func decodeTeamsAddOrUpdateMembershipForUserInOrgParams(r *http.Request) (TeamsA
 	return params, nil
 }
 
-func decodeTeamsAddOrUpdateMembershipForUserLegacyParams(r *http.Request) (TeamsAddOrUpdateMembershipForUserLegacyParams, error) {
+func decodeTeamsAddOrUpdateMembershipForUserLegacyParams(args map[string]string, r *http.Request) (TeamsAddOrUpdateMembershipForUserLegacyParams, error) {
 	var params TeamsAddOrUpdateMembershipForUserLegacyParams
 	// Decode path: team_id.
 	{
-		param := chi.URLParam(r, "team_id")
+		param := args["team_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "team_id",
@@ -47974,7 +47974,7 @@ func decodeTeamsAddOrUpdateMembershipForUserLegacyParams(r *http.Request) (Teams
 	}
 	// Decode path: username.
 	{
-		param := chi.URLParam(r, "username")
+		param := args["username"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "username",
@@ -48006,11 +48006,11 @@ func decodeTeamsAddOrUpdateMembershipForUserLegacyParams(r *http.Request) (Teams
 	return params, nil
 }
 
-func decodeTeamsAddOrUpdateProjectPermissionsInOrgParams(r *http.Request) (TeamsAddOrUpdateProjectPermissionsInOrgParams, error) {
+func decodeTeamsAddOrUpdateProjectPermissionsInOrgParams(args map[string]string, r *http.Request) (TeamsAddOrUpdateProjectPermissionsInOrgParams, error) {
 	var params TeamsAddOrUpdateProjectPermissionsInOrgParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -48041,7 +48041,7 @@ func decodeTeamsAddOrUpdateProjectPermissionsInOrgParams(r *http.Request) (Teams
 	}
 	// Decode path: team_slug.
 	{
-		param := chi.URLParam(r, "team_slug")
+		param := args["team_slug"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "team_slug",
@@ -48072,7 +48072,7 @@ func decodeTeamsAddOrUpdateProjectPermissionsInOrgParams(r *http.Request) (Teams
 	}
 	// Decode path: project_id.
 	{
-		param := chi.URLParam(r, "project_id")
+		param := args["project_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "project_id",
@@ -48104,11 +48104,11 @@ func decodeTeamsAddOrUpdateProjectPermissionsInOrgParams(r *http.Request) (Teams
 	return params, nil
 }
 
-func decodeTeamsAddOrUpdateRepoPermissionsInOrgParams(r *http.Request) (TeamsAddOrUpdateRepoPermissionsInOrgParams, error) {
+func decodeTeamsAddOrUpdateRepoPermissionsInOrgParams(args map[string]string, r *http.Request) (TeamsAddOrUpdateRepoPermissionsInOrgParams, error) {
 	var params TeamsAddOrUpdateRepoPermissionsInOrgParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -48139,7 +48139,7 @@ func decodeTeamsAddOrUpdateRepoPermissionsInOrgParams(r *http.Request) (TeamsAdd
 	}
 	// Decode path: team_slug.
 	{
-		param := chi.URLParam(r, "team_slug")
+		param := args["team_slug"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "team_slug",
@@ -48170,7 +48170,7 @@ func decodeTeamsAddOrUpdateRepoPermissionsInOrgParams(r *http.Request) (TeamsAdd
 	}
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -48201,7 +48201,7 @@ func decodeTeamsAddOrUpdateRepoPermissionsInOrgParams(r *http.Request) (TeamsAdd
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -48233,11 +48233,11 @@ func decodeTeamsAddOrUpdateRepoPermissionsInOrgParams(r *http.Request) (TeamsAdd
 	return params, nil
 }
 
-func decodeTeamsCheckPermissionsForProjectInOrgParams(r *http.Request) (TeamsCheckPermissionsForProjectInOrgParams, error) {
+func decodeTeamsCheckPermissionsForProjectInOrgParams(args map[string]string, r *http.Request) (TeamsCheckPermissionsForProjectInOrgParams, error) {
 	var params TeamsCheckPermissionsForProjectInOrgParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -48268,7 +48268,7 @@ func decodeTeamsCheckPermissionsForProjectInOrgParams(r *http.Request) (TeamsChe
 	}
 	// Decode path: team_slug.
 	{
-		param := chi.URLParam(r, "team_slug")
+		param := args["team_slug"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "team_slug",
@@ -48299,7 +48299,7 @@ func decodeTeamsCheckPermissionsForProjectInOrgParams(r *http.Request) (TeamsChe
 	}
 	// Decode path: project_id.
 	{
-		param := chi.URLParam(r, "project_id")
+		param := args["project_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "project_id",
@@ -48331,11 +48331,11 @@ func decodeTeamsCheckPermissionsForProjectInOrgParams(r *http.Request) (TeamsChe
 	return params, nil
 }
 
-func decodeTeamsCheckPermissionsForProjectLegacyParams(r *http.Request) (TeamsCheckPermissionsForProjectLegacyParams, error) {
+func decodeTeamsCheckPermissionsForProjectLegacyParams(args map[string]string, r *http.Request) (TeamsCheckPermissionsForProjectLegacyParams, error) {
 	var params TeamsCheckPermissionsForProjectLegacyParams
 	// Decode path: team_id.
 	{
-		param := chi.URLParam(r, "team_id")
+		param := args["team_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "team_id",
@@ -48366,7 +48366,7 @@ func decodeTeamsCheckPermissionsForProjectLegacyParams(r *http.Request) (TeamsCh
 	}
 	// Decode path: project_id.
 	{
-		param := chi.URLParam(r, "project_id")
+		param := args["project_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "project_id",
@@ -48398,11 +48398,11 @@ func decodeTeamsCheckPermissionsForProjectLegacyParams(r *http.Request) (TeamsCh
 	return params, nil
 }
 
-func decodeTeamsCheckPermissionsForRepoInOrgParams(r *http.Request) (TeamsCheckPermissionsForRepoInOrgParams, error) {
+func decodeTeamsCheckPermissionsForRepoInOrgParams(args map[string]string, r *http.Request) (TeamsCheckPermissionsForRepoInOrgParams, error) {
 	var params TeamsCheckPermissionsForRepoInOrgParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -48433,7 +48433,7 @@ func decodeTeamsCheckPermissionsForRepoInOrgParams(r *http.Request) (TeamsCheckP
 	}
 	// Decode path: team_slug.
 	{
-		param := chi.URLParam(r, "team_slug")
+		param := args["team_slug"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "team_slug",
@@ -48464,7 +48464,7 @@ func decodeTeamsCheckPermissionsForRepoInOrgParams(r *http.Request) (TeamsCheckP
 	}
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -48495,7 +48495,7 @@ func decodeTeamsCheckPermissionsForRepoInOrgParams(r *http.Request) (TeamsCheckP
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -48527,11 +48527,11 @@ func decodeTeamsCheckPermissionsForRepoInOrgParams(r *http.Request) (TeamsCheckP
 	return params, nil
 }
 
-func decodeTeamsCheckPermissionsForRepoLegacyParams(r *http.Request) (TeamsCheckPermissionsForRepoLegacyParams, error) {
+func decodeTeamsCheckPermissionsForRepoLegacyParams(args map[string]string, r *http.Request) (TeamsCheckPermissionsForRepoLegacyParams, error) {
 	var params TeamsCheckPermissionsForRepoLegacyParams
 	// Decode path: team_id.
 	{
-		param := chi.URLParam(r, "team_id")
+		param := args["team_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "team_id",
@@ -48562,7 +48562,7 @@ func decodeTeamsCheckPermissionsForRepoLegacyParams(r *http.Request) (TeamsCheck
 	}
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -48593,7 +48593,7 @@ func decodeTeamsCheckPermissionsForRepoLegacyParams(r *http.Request) (TeamsCheck
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -48625,11 +48625,11 @@ func decodeTeamsCheckPermissionsForRepoLegacyParams(r *http.Request) (TeamsCheck
 	return params, nil
 }
 
-func decodeTeamsCreateDiscussionCommentInOrgParams(r *http.Request) (TeamsCreateDiscussionCommentInOrgParams, error) {
+func decodeTeamsCreateDiscussionCommentInOrgParams(args map[string]string, r *http.Request) (TeamsCreateDiscussionCommentInOrgParams, error) {
 	var params TeamsCreateDiscussionCommentInOrgParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -48660,7 +48660,7 @@ func decodeTeamsCreateDiscussionCommentInOrgParams(r *http.Request) (TeamsCreate
 	}
 	// Decode path: team_slug.
 	{
-		param := chi.URLParam(r, "team_slug")
+		param := args["team_slug"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "team_slug",
@@ -48691,7 +48691,7 @@ func decodeTeamsCreateDiscussionCommentInOrgParams(r *http.Request) (TeamsCreate
 	}
 	// Decode path: discussion_number.
 	{
-		param := chi.URLParam(r, "discussion_number")
+		param := args["discussion_number"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "discussion_number",
@@ -48723,11 +48723,11 @@ func decodeTeamsCreateDiscussionCommentInOrgParams(r *http.Request) (TeamsCreate
 	return params, nil
 }
 
-func decodeTeamsCreateDiscussionCommentLegacyParams(r *http.Request) (TeamsCreateDiscussionCommentLegacyParams, error) {
+func decodeTeamsCreateDiscussionCommentLegacyParams(args map[string]string, r *http.Request) (TeamsCreateDiscussionCommentLegacyParams, error) {
 	var params TeamsCreateDiscussionCommentLegacyParams
 	// Decode path: team_id.
 	{
-		param := chi.URLParam(r, "team_id")
+		param := args["team_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "team_id",
@@ -48758,7 +48758,7 @@ func decodeTeamsCreateDiscussionCommentLegacyParams(r *http.Request) (TeamsCreat
 	}
 	// Decode path: discussion_number.
 	{
-		param := chi.URLParam(r, "discussion_number")
+		param := args["discussion_number"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "discussion_number",
@@ -48790,11 +48790,11 @@ func decodeTeamsCreateDiscussionCommentLegacyParams(r *http.Request) (TeamsCreat
 	return params, nil
 }
 
-func decodeTeamsCreateDiscussionInOrgParams(r *http.Request) (TeamsCreateDiscussionInOrgParams, error) {
+func decodeTeamsCreateDiscussionInOrgParams(args map[string]string, r *http.Request) (TeamsCreateDiscussionInOrgParams, error) {
 	var params TeamsCreateDiscussionInOrgParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -48825,7 +48825,7 @@ func decodeTeamsCreateDiscussionInOrgParams(r *http.Request) (TeamsCreateDiscuss
 	}
 	// Decode path: team_slug.
 	{
-		param := chi.URLParam(r, "team_slug")
+		param := args["team_slug"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "team_slug",
@@ -48857,11 +48857,11 @@ func decodeTeamsCreateDiscussionInOrgParams(r *http.Request) (TeamsCreateDiscuss
 	return params, nil
 }
 
-func decodeTeamsCreateDiscussionLegacyParams(r *http.Request) (TeamsCreateDiscussionLegacyParams, error) {
+func decodeTeamsCreateDiscussionLegacyParams(args map[string]string, r *http.Request) (TeamsCreateDiscussionLegacyParams, error) {
 	var params TeamsCreateDiscussionLegacyParams
 	// Decode path: team_id.
 	{
-		param := chi.URLParam(r, "team_id")
+		param := args["team_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "team_id",
@@ -48893,11 +48893,11 @@ func decodeTeamsCreateDiscussionLegacyParams(r *http.Request) (TeamsCreateDiscus
 	return params, nil
 }
 
-func decodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgParams(r *http.Request) (TeamsCreateOrUpdateIdpGroupConnectionsInOrgParams, error) {
+func decodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgParams(args map[string]string, r *http.Request) (TeamsCreateOrUpdateIdpGroupConnectionsInOrgParams, error) {
 	var params TeamsCreateOrUpdateIdpGroupConnectionsInOrgParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -48928,7 +48928,7 @@ func decodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgParams(r *http.Request) (T
 	}
 	// Decode path: team_slug.
 	{
-		param := chi.URLParam(r, "team_slug")
+		param := args["team_slug"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "team_slug",
@@ -48960,11 +48960,11 @@ func decodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgParams(r *http.Request) (T
 	return params, nil
 }
 
-func decodeTeamsDeleteDiscussionCommentInOrgParams(r *http.Request) (TeamsDeleteDiscussionCommentInOrgParams, error) {
+func decodeTeamsDeleteDiscussionCommentInOrgParams(args map[string]string, r *http.Request) (TeamsDeleteDiscussionCommentInOrgParams, error) {
 	var params TeamsDeleteDiscussionCommentInOrgParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -48995,7 +48995,7 @@ func decodeTeamsDeleteDiscussionCommentInOrgParams(r *http.Request) (TeamsDelete
 	}
 	// Decode path: team_slug.
 	{
-		param := chi.URLParam(r, "team_slug")
+		param := args["team_slug"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "team_slug",
@@ -49026,7 +49026,7 @@ func decodeTeamsDeleteDiscussionCommentInOrgParams(r *http.Request) (TeamsDelete
 	}
 	// Decode path: discussion_number.
 	{
-		param := chi.URLParam(r, "discussion_number")
+		param := args["discussion_number"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "discussion_number",
@@ -49057,7 +49057,7 @@ func decodeTeamsDeleteDiscussionCommentInOrgParams(r *http.Request) (TeamsDelete
 	}
 	// Decode path: comment_number.
 	{
-		param := chi.URLParam(r, "comment_number")
+		param := args["comment_number"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "comment_number",
@@ -49089,11 +49089,11 @@ func decodeTeamsDeleteDiscussionCommentInOrgParams(r *http.Request) (TeamsDelete
 	return params, nil
 }
 
-func decodeTeamsDeleteDiscussionCommentLegacyParams(r *http.Request) (TeamsDeleteDiscussionCommentLegacyParams, error) {
+func decodeTeamsDeleteDiscussionCommentLegacyParams(args map[string]string, r *http.Request) (TeamsDeleteDiscussionCommentLegacyParams, error) {
 	var params TeamsDeleteDiscussionCommentLegacyParams
 	// Decode path: team_id.
 	{
-		param := chi.URLParam(r, "team_id")
+		param := args["team_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "team_id",
@@ -49124,7 +49124,7 @@ func decodeTeamsDeleteDiscussionCommentLegacyParams(r *http.Request) (TeamsDelet
 	}
 	// Decode path: discussion_number.
 	{
-		param := chi.URLParam(r, "discussion_number")
+		param := args["discussion_number"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "discussion_number",
@@ -49155,7 +49155,7 @@ func decodeTeamsDeleteDiscussionCommentLegacyParams(r *http.Request) (TeamsDelet
 	}
 	// Decode path: comment_number.
 	{
-		param := chi.URLParam(r, "comment_number")
+		param := args["comment_number"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "comment_number",
@@ -49187,11 +49187,11 @@ func decodeTeamsDeleteDiscussionCommentLegacyParams(r *http.Request) (TeamsDelet
 	return params, nil
 }
 
-func decodeTeamsDeleteDiscussionInOrgParams(r *http.Request) (TeamsDeleteDiscussionInOrgParams, error) {
+func decodeTeamsDeleteDiscussionInOrgParams(args map[string]string, r *http.Request) (TeamsDeleteDiscussionInOrgParams, error) {
 	var params TeamsDeleteDiscussionInOrgParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -49222,7 +49222,7 @@ func decodeTeamsDeleteDiscussionInOrgParams(r *http.Request) (TeamsDeleteDiscuss
 	}
 	// Decode path: team_slug.
 	{
-		param := chi.URLParam(r, "team_slug")
+		param := args["team_slug"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "team_slug",
@@ -49253,7 +49253,7 @@ func decodeTeamsDeleteDiscussionInOrgParams(r *http.Request) (TeamsDeleteDiscuss
 	}
 	// Decode path: discussion_number.
 	{
-		param := chi.URLParam(r, "discussion_number")
+		param := args["discussion_number"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "discussion_number",
@@ -49285,11 +49285,11 @@ func decodeTeamsDeleteDiscussionInOrgParams(r *http.Request) (TeamsDeleteDiscuss
 	return params, nil
 }
 
-func decodeTeamsDeleteDiscussionLegacyParams(r *http.Request) (TeamsDeleteDiscussionLegacyParams, error) {
+func decodeTeamsDeleteDiscussionLegacyParams(args map[string]string, r *http.Request) (TeamsDeleteDiscussionLegacyParams, error) {
 	var params TeamsDeleteDiscussionLegacyParams
 	// Decode path: team_id.
 	{
-		param := chi.URLParam(r, "team_id")
+		param := args["team_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "team_id",
@@ -49320,7 +49320,7 @@ func decodeTeamsDeleteDiscussionLegacyParams(r *http.Request) (TeamsDeleteDiscus
 	}
 	// Decode path: discussion_number.
 	{
-		param := chi.URLParam(r, "discussion_number")
+		param := args["discussion_number"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "discussion_number",
@@ -49352,11 +49352,11 @@ func decodeTeamsDeleteDiscussionLegacyParams(r *http.Request) (TeamsDeleteDiscus
 	return params, nil
 }
 
-func decodeTeamsDeleteInOrgParams(r *http.Request) (TeamsDeleteInOrgParams, error) {
+func decodeTeamsDeleteInOrgParams(args map[string]string, r *http.Request) (TeamsDeleteInOrgParams, error) {
 	var params TeamsDeleteInOrgParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -49387,7 +49387,7 @@ func decodeTeamsDeleteInOrgParams(r *http.Request) (TeamsDeleteInOrgParams, erro
 	}
 	// Decode path: team_slug.
 	{
-		param := chi.URLParam(r, "team_slug")
+		param := args["team_slug"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "team_slug",
@@ -49419,11 +49419,11 @@ func decodeTeamsDeleteInOrgParams(r *http.Request) (TeamsDeleteInOrgParams, erro
 	return params, nil
 }
 
-func decodeTeamsGetByNameParams(r *http.Request) (TeamsGetByNameParams, error) {
+func decodeTeamsGetByNameParams(args map[string]string, r *http.Request) (TeamsGetByNameParams, error) {
 	var params TeamsGetByNameParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -49454,7 +49454,7 @@ func decodeTeamsGetByNameParams(r *http.Request) (TeamsGetByNameParams, error) {
 	}
 	// Decode path: team_slug.
 	{
-		param := chi.URLParam(r, "team_slug")
+		param := args["team_slug"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "team_slug",
@@ -49486,11 +49486,11 @@ func decodeTeamsGetByNameParams(r *http.Request) (TeamsGetByNameParams, error) {
 	return params, nil
 }
 
-func decodeTeamsGetDiscussionCommentInOrgParams(r *http.Request) (TeamsGetDiscussionCommentInOrgParams, error) {
+func decodeTeamsGetDiscussionCommentInOrgParams(args map[string]string, r *http.Request) (TeamsGetDiscussionCommentInOrgParams, error) {
 	var params TeamsGetDiscussionCommentInOrgParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -49521,7 +49521,7 @@ func decodeTeamsGetDiscussionCommentInOrgParams(r *http.Request) (TeamsGetDiscus
 	}
 	// Decode path: team_slug.
 	{
-		param := chi.URLParam(r, "team_slug")
+		param := args["team_slug"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "team_slug",
@@ -49552,7 +49552,7 @@ func decodeTeamsGetDiscussionCommentInOrgParams(r *http.Request) (TeamsGetDiscus
 	}
 	// Decode path: discussion_number.
 	{
-		param := chi.URLParam(r, "discussion_number")
+		param := args["discussion_number"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "discussion_number",
@@ -49583,7 +49583,7 @@ func decodeTeamsGetDiscussionCommentInOrgParams(r *http.Request) (TeamsGetDiscus
 	}
 	// Decode path: comment_number.
 	{
-		param := chi.URLParam(r, "comment_number")
+		param := args["comment_number"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "comment_number",
@@ -49615,11 +49615,11 @@ func decodeTeamsGetDiscussionCommentInOrgParams(r *http.Request) (TeamsGetDiscus
 	return params, nil
 }
 
-func decodeTeamsGetDiscussionCommentLegacyParams(r *http.Request) (TeamsGetDiscussionCommentLegacyParams, error) {
+func decodeTeamsGetDiscussionCommentLegacyParams(args map[string]string, r *http.Request) (TeamsGetDiscussionCommentLegacyParams, error) {
 	var params TeamsGetDiscussionCommentLegacyParams
 	// Decode path: team_id.
 	{
-		param := chi.URLParam(r, "team_id")
+		param := args["team_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "team_id",
@@ -49650,7 +49650,7 @@ func decodeTeamsGetDiscussionCommentLegacyParams(r *http.Request) (TeamsGetDiscu
 	}
 	// Decode path: discussion_number.
 	{
-		param := chi.URLParam(r, "discussion_number")
+		param := args["discussion_number"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "discussion_number",
@@ -49681,7 +49681,7 @@ func decodeTeamsGetDiscussionCommentLegacyParams(r *http.Request) (TeamsGetDiscu
 	}
 	// Decode path: comment_number.
 	{
-		param := chi.URLParam(r, "comment_number")
+		param := args["comment_number"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "comment_number",
@@ -49713,11 +49713,11 @@ func decodeTeamsGetDiscussionCommentLegacyParams(r *http.Request) (TeamsGetDiscu
 	return params, nil
 }
 
-func decodeTeamsGetDiscussionInOrgParams(r *http.Request) (TeamsGetDiscussionInOrgParams, error) {
+func decodeTeamsGetDiscussionInOrgParams(args map[string]string, r *http.Request) (TeamsGetDiscussionInOrgParams, error) {
 	var params TeamsGetDiscussionInOrgParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -49748,7 +49748,7 @@ func decodeTeamsGetDiscussionInOrgParams(r *http.Request) (TeamsGetDiscussionInO
 	}
 	// Decode path: team_slug.
 	{
-		param := chi.URLParam(r, "team_slug")
+		param := args["team_slug"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "team_slug",
@@ -49779,7 +49779,7 @@ func decodeTeamsGetDiscussionInOrgParams(r *http.Request) (TeamsGetDiscussionInO
 	}
 	// Decode path: discussion_number.
 	{
-		param := chi.URLParam(r, "discussion_number")
+		param := args["discussion_number"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "discussion_number",
@@ -49811,11 +49811,11 @@ func decodeTeamsGetDiscussionInOrgParams(r *http.Request) (TeamsGetDiscussionInO
 	return params, nil
 }
 
-func decodeTeamsGetDiscussionLegacyParams(r *http.Request) (TeamsGetDiscussionLegacyParams, error) {
+func decodeTeamsGetDiscussionLegacyParams(args map[string]string, r *http.Request) (TeamsGetDiscussionLegacyParams, error) {
 	var params TeamsGetDiscussionLegacyParams
 	// Decode path: team_id.
 	{
-		param := chi.URLParam(r, "team_id")
+		param := args["team_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "team_id",
@@ -49846,7 +49846,7 @@ func decodeTeamsGetDiscussionLegacyParams(r *http.Request) (TeamsGetDiscussionLe
 	}
 	// Decode path: discussion_number.
 	{
-		param := chi.URLParam(r, "discussion_number")
+		param := args["discussion_number"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "discussion_number",
@@ -49878,11 +49878,11 @@ func decodeTeamsGetDiscussionLegacyParams(r *http.Request) (TeamsGetDiscussionLe
 	return params, nil
 }
 
-func decodeTeamsGetLegacyParams(r *http.Request) (TeamsGetLegacyParams, error) {
+func decodeTeamsGetLegacyParams(args map[string]string, r *http.Request) (TeamsGetLegacyParams, error) {
 	var params TeamsGetLegacyParams
 	// Decode path: team_id.
 	{
-		param := chi.URLParam(r, "team_id")
+		param := args["team_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "team_id",
@@ -49914,11 +49914,11 @@ func decodeTeamsGetLegacyParams(r *http.Request) (TeamsGetLegacyParams, error) {
 	return params, nil
 }
 
-func decodeTeamsGetMemberLegacyParams(r *http.Request) (TeamsGetMemberLegacyParams, error) {
+func decodeTeamsGetMemberLegacyParams(args map[string]string, r *http.Request) (TeamsGetMemberLegacyParams, error) {
 	var params TeamsGetMemberLegacyParams
 	// Decode path: team_id.
 	{
-		param := chi.URLParam(r, "team_id")
+		param := args["team_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "team_id",
@@ -49949,7 +49949,7 @@ func decodeTeamsGetMemberLegacyParams(r *http.Request) (TeamsGetMemberLegacyPara
 	}
 	// Decode path: username.
 	{
-		param := chi.URLParam(r, "username")
+		param := args["username"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "username",
@@ -49981,11 +49981,11 @@ func decodeTeamsGetMemberLegacyParams(r *http.Request) (TeamsGetMemberLegacyPara
 	return params, nil
 }
 
-func decodeTeamsGetMembershipForUserInOrgParams(r *http.Request) (TeamsGetMembershipForUserInOrgParams, error) {
+func decodeTeamsGetMembershipForUserInOrgParams(args map[string]string, r *http.Request) (TeamsGetMembershipForUserInOrgParams, error) {
 	var params TeamsGetMembershipForUserInOrgParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -50016,7 +50016,7 @@ func decodeTeamsGetMembershipForUserInOrgParams(r *http.Request) (TeamsGetMember
 	}
 	// Decode path: team_slug.
 	{
-		param := chi.URLParam(r, "team_slug")
+		param := args["team_slug"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "team_slug",
@@ -50047,7 +50047,7 @@ func decodeTeamsGetMembershipForUserInOrgParams(r *http.Request) (TeamsGetMember
 	}
 	// Decode path: username.
 	{
-		param := chi.URLParam(r, "username")
+		param := args["username"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "username",
@@ -50079,11 +50079,11 @@ func decodeTeamsGetMembershipForUserInOrgParams(r *http.Request) (TeamsGetMember
 	return params, nil
 }
 
-func decodeTeamsGetMembershipForUserLegacyParams(r *http.Request) (TeamsGetMembershipForUserLegacyParams, error) {
+func decodeTeamsGetMembershipForUserLegacyParams(args map[string]string, r *http.Request) (TeamsGetMembershipForUserLegacyParams, error) {
 	var params TeamsGetMembershipForUserLegacyParams
 	// Decode path: team_id.
 	{
-		param := chi.URLParam(r, "team_id")
+		param := args["team_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "team_id",
@@ -50114,7 +50114,7 @@ func decodeTeamsGetMembershipForUserLegacyParams(r *http.Request) (TeamsGetMembe
 	}
 	// Decode path: username.
 	{
-		param := chi.URLParam(r, "username")
+		param := args["username"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "username",
@@ -50146,11 +50146,11 @@ func decodeTeamsGetMembershipForUserLegacyParams(r *http.Request) (TeamsGetMembe
 	return params, nil
 }
 
-func decodeTeamsListParams(r *http.Request) (TeamsListParams, error) {
+func decodeTeamsListParams(args map[string]string, r *http.Request) (TeamsListParams, error) {
 	var params TeamsListParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -50252,11 +50252,11 @@ func decodeTeamsListParams(r *http.Request) (TeamsListParams, error) {
 	return params, nil
 }
 
-func decodeTeamsListChildInOrgParams(r *http.Request) (TeamsListChildInOrgParams, error) {
+func decodeTeamsListChildInOrgParams(args map[string]string, r *http.Request) (TeamsListChildInOrgParams, error) {
 	var params TeamsListChildInOrgParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -50287,7 +50287,7 @@ func decodeTeamsListChildInOrgParams(r *http.Request) (TeamsListChildInOrgParams
 	}
 	// Decode path: team_slug.
 	{
-		param := chi.URLParam(r, "team_slug")
+		param := args["team_slug"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "team_slug",
@@ -50389,11 +50389,11 @@ func decodeTeamsListChildInOrgParams(r *http.Request) (TeamsListChildInOrgParams
 	return params, nil
 }
 
-func decodeTeamsListDiscussionCommentsInOrgParams(r *http.Request) (TeamsListDiscussionCommentsInOrgParams, error) {
+func decodeTeamsListDiscussionCommentsInOrgParams(args map[string]string, r *http.Request) (TeamsListDiscussionCommentsInOrgParams, error) {
 	var params TeamsListDiscussionCommentsInOrgParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -50424,7 +50424,7 @@ func decodeTeamsListDiscussionCommentsInOrgParams(r *http.Request) (TeamsListDis
 	}
 	// Decode path: team_slug.
 	{
-		param := chi.URLParam(r, "team_slug")
+		param := args["team_slug"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "team_slug",
@@ -50455,7 +50455,7 @@ func decodeTeamsListDiscussionCommentsInOrgParams(r *http.Request) (TeamsListDis
 	}
 	// Decode path: discussion_number.
 	{
-		param := chi.URLParam(r, "discussion_number")
+		param := args["discussion_number"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "discussion_number",
@@ -50611,11 +50611,11 @@ func decodeTeamsListDiscussionCommentsInOrgParams(r *http.Request) (TeamsListDis
 	return params, nil
 }
 
-func decodeTeamsListDiscussionCommentsLegacyParams(r *http.Request) (TeamsListDiscussionCommentsLegacyParams, error) {
+func decodeTeamsListDiscussionCommentsLegacyParams(args map[string]string, r *http.Request) (TeamsListDiscussionCommentsLegacyParams, error) {
 	var params TeamsListDiscussionCommentsLegacyParams
 	// Decode path: team_id.
 	{
-		param := chi.URLParam(r, "team_id")
+		param := args["team_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "team_id",
@@ -50646,7 +50646,7 @@ func decodeTeamsListDiscussionCommentsLegacyParams(r *http.Request) (TeamsListDi
 	}
 	// Decode path: discussion_number.
 	{
-		param := chi.URLParam(r, "discussion_number")
+		param := args["discussion_number"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "discussion_number",
@@ -50802,11 +50802,11 @@ func decodeTeamsListDiscussionCommentsLegacyParams(r *http.Request) (TeamsListDi
 	return params, nil
 }
 
-func decodeTeamsListDiscussionsInOrgParams(r *http.Request) (TeamsListDiscussionsInOrgParams, error) {
+func decodeTeamsListDiscussionsInOrgParams(args map[string]string, r *http.Request) (TeamsListDiscussionsInOrgParams, error) {
 	var params TeamsListDiscussionsInOrgParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -50837,7 +50837,7 @@ func decodeTeamsListDiscussionsInOrgParams(r *http.Request) (TeamsListDiscussion
 	}
 	// Decode path: team_slug.
 	{
-		param := chi.URLParam(r, "team_slug")
+		param := args["team_slug"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "team_slug",
@@ -51028,11 +51028,11 @@ func decodeTeamsListDiscussionsInOrgParams(r *http.Request) (TeamsListDiscussion
 	return params, nil
 }
 
-func decodeTeamsListDiscussionsLegacyParams(r *http.Request) (TeamsListDiscussionsLegacyParams, error) {
+func decodeTeamsListDiscussionsLegacyParams(args map[string]string, r *http.Request) (TeamsListDiscussionsLegacyParams, error) {
 	var params TeamsListDiscussionsLegacyParams
 	// Decode path: team_id.
 	{
-		param := chi.URLParam(r, "team_id")
+		param := args["team_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "team_id",
@@ -51188,7 +51188,7 @@ func decodeTeamsListDiscussionsLegacyParams(r *http.Request) (TeamsListDiscussio
 	return params, nil
 }
 
-func decodeTeamsListForAuthenticatedUserParams(r *http.Request) (TeamsListForAuthenticatedUserParams, error) {
+func decodeTeamsListForAuthenticatedUserParams(args map[string]string, r *http.Request) (TeamsListForAuthenticatedUserParams, error) {
 	var params TeamsListForAuthenticatedUserParams
 	// Decode query: per_page.
 	{
@@ -51263,11 +51263,11 @@ func decodeTeamsListForAuthenticatedUserParams(r *http.Request) (TeamsListForAut
 	return params, nil
 }
 
-func decodeTeamsListIdpGroupsForLegacyParams(r *http.Request) (TeamsListIdpGroupsForLegacyParams, error) {
+func decodeTeamsListIdpGroupsForLegacyParams(args map[string]string, r *http.Request) (TeamsListIdpGroupsForLegacyParams, error) {
 	var params TeamsListIdpGroupsForLegacyParams
 	// Decode path: team_id.
 	{
-		param := chi.URLParam(r, "team_id")
+		param := args["team_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "team_id",
@@ -51299,11 +51299,11 @@ func decodeTeamsListIdpGroupsForLegacyParams(r *http.Request) (TeamsListIdpGroup
 	return params, nil
 }
 
-func decodeTeamsListIdpGroupsForOrgParams(r *http.Request) (TeamsListIdpGroupsForOrgParams, error) {
+func decodeTeamsListIdpGroupsForOrgParams(args map[string]string, r *http.Request) (TeamsListIdpGroupsForOrgParams, error) {
 	var params TeamsListIdpGroupsForOrgParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -51405,11 +51405,11 @@ func decodeTeamsListIdpGroupsForOrgParams(r *http.Request) (TeamsListIdpGroupsFo
 	return params, nil
 }
 
-func decodeTeamsListIdpGroupsInOrgParams(r *http.Request) (TeamsListIdpGroupsInOrgParams, error) {
+func decodeTeamsListIdpGroupsInOrgParams(args map[string]string, r *http.Request) (TeamsListIdpGroupsInOrgParams, error) {
 	var params TeamsListIdpGroupsInOrgParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -51440,7 +51440,7 @@ func decodeTeamsListIdpGroupsInOrgParams(r *http.Request) (TeamsListIdpGroupsInO
 	}
 	// Decode path: team_slug.
 	{
-		param := chi.URLParam(r, "team_slug")
+		param := args["team_slug"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "team_slug",
@@ -51472,11 +51472,11 @@ func decodeTeamsListIdpGroupsInOrgParams(r *http.Request) (TeamsListIdpGroupsInO
 	return params, nil
 }
 
-func decodeTeamsListMembersInOrgParams(r *http.Request) (TeamsListMembersInOrgParams, error) {
+func decodeTeamsListMembersInOrgParams(args map[string]string, r *http.Request) (TeamsListMembersInOrgParams, error) {
 	var params TeamsListMembersInOrgParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -51507,7 +51507,7 @@ func decodeTeamsListMembersInOrgParams(r *http.Request) (TeamsListMembersInOrgPa
 	}
 	// Decode path: team_slug.
 	{
-		param := chi.URLParam(r, "team_slug")
+		param := args["team_slug"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "team_slug",
@@ -51663,11 +51663,11 @@ func decodeTeamsListMembersInOrgParams(r *http.Request) (TeamsListMembersInOrgPa
 	return params, nil
 }
 
-func decodeTeamsListMembersLegacyParams(r *http.Request) (TeamsListMembersLegacyParams, error) {
+func decodeTeamsListMembersLegacyParams(args map[string]string, r *http.Request) (TeamsListMembersLegacyParams, error) {
 	var params TeamsListMembersLegacyParams
 	// Decode path: team_id.
 	{
-		param := chi.URLParam(r, "team_id")
+		param := args["team_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "team_id",
@@ -51823,11 +51823,11 @@ func decodeTeamsListMembersLegacyParams(r *http.Request) (TeamsListMembersLegacy
 	return params, nil
 }
 
-func decodeTeamsListPendingInvitationsInOrgParams(r *http.Request) (TeamsListPendingInvitationsInOrgParams, error) {
+func decodeTeamsListPendingInvitationsInOrgParams(args map[string]string, r *http.Request) (TeamsListPendingInvitationsInOrgParams, error) {
 	var params TeamsListPendingInvitationsInOrgParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -51858,7 +51858,7 @@ func decodeTeamsListPendingInvitationsInOrgParams(r *http.Request) (TeamsListPen
 	}
 	// Decode path: team_slug.
 	{
-		param := chi.URLParam(r, "team_slug")
+		param := args["team_slug"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "team_slug",
@@ -51960,11 +51960,11 @@ func decodeTeamsListPendingInvitationsInOrgParams(r *http.Request) (TeamsListPen
 	return params, nil
 }
 
-func decodeTeamsListPendingInvitationsLegacyParams(r *http.Request) (TeamsListPendingInvitationsLegacyParams, error) {
+func decodeTeamsListPendingInvitationsLegacyParams(args map[string]string, r *http.Request) (TeamsListPendingInvitationsLegacyParams, error) {
 	var params TeamsListPendingInvitationsLegacyParams
 	// Decode path: team_id.
 	{
-		param := chi.URLParam(r, "team_id")
+		param := args["team_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "team_id",
@@ -52066,11 +52066,11 @@ func decodeTeamsListPendingInvitationsLegacyParams(r *http.Request) (TeamsListPe
 	return params, nil
 }
 
-func decodeTeamsListProjectsInOrgParams(r *http.Request) (TeamsListProjectsInOrgParams, error) {
+func decodeTeamsListProjectsInOrgParams(args map[string]string, r *http.Request) (TeamsListProjectsInOrgParams, error) {
 	var params TeamsListProjectsInOrgParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -52101,7 +52101,7 @@ func decodeTeamsListProjectsInOrgParams(r *http.Request) (TeamsListProjectsInOrg
 	}
 	// Decode path: team_slug.
 	{
-		param := chi.URLParam(r, "team_slug")
+		param := args["team_slug"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "team_slug",
@@ -52203,11 +52203,11 @@ func decodeTeamsListProjectsInOrgParams(r *http.Request) (TeamsListProjectsInOrg
 	return params, nil
 }
 
-func decodeTeamsListProjectsLegacyParams(r *http.Request) (TeamsListProjectsLegacyParams, error) {
+func decodeTeamsListProjectsLegacyParams(args map[string]string, r *http.Request) (TeamsListProjectsLegacyParams, error) {
 	var params TeamsListProjectsLegacyParams
 	// Decode path: team_id.
 	{
-		param := chi.URLParam(r, "team_id")
+		param := args["team_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "team_id",
@@ -52309,11 +52309,11 @@ func decodeTeamsListProjectsLegacyParams(r *http.Request) (TeamsListProjectsLega
 	return params, nil
 }
 
-func decodeTeamsListReposInOrgParams(r *http.Request) (TeamsListReposInOrgParams, error) {
+func decodeTeamsListReposInOrgParams(args map[string]string, r *http.Request) (TeamsListReposInOrgParams, error) {
 	var params TeamsListReposInOrgParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -52344,7 +52344,7 @@ func decodeTeamsListReposInOrgParams(r *http.Request) (TeamsListReposInOrgParams
 	}
 	// Decode path: team_slug.
 	{
-		param := chi.URLParam(r, "team_slug")
+		param := args["team_slug"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "team_slug",
@@ -52446,11 +52446,11 @@ func decodeTeamsListReposInOrgParams(r *http.Request) (TeamsListReposInOrgParams
 	return params, nil
 }
 
-func decodeTeamsListReposLegacyParams(r *http.Request) (TeamsListReposLegacyParams, error) {
+func decodeTeamsListReposLegacyParams(args map[string]string, r *http.Request) (TeamsListReposLegacyParams, error) {
 	var params TeamsListReposLegacyParams
 	// Decode path: team_id.
 	{
-		param := chi.URLParam(r, "team_id")
+		param := args["team_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "team_id",
@@ -52552,11 +52552,11 @@ func decodeTeamsListReposLegacyParams(r *http.Request) (TeamsListReposLegacyPara
 	return params, nil
 }
 
-func decodeTeamsRemoveMemberLegacyParams(r *http.Request) (TeamsRemoveMemberLegacyParams, error) {
+func decodeTeamsRemoveMemberLegacyParams(args map[string]string, r *http.Request) (TeamsRemoveMemberLegacyParams, error) {
 	var params TeamsRemoveMemberLegacyParams
 	// Decode path: team_id.
 	{
-		param := chi.URLParam(r, "team_id")
+		param := args["team_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "team_id",
@@ -52587,7 +52587,7 @@ func decodeTeamsRemoveMemberLegacyParams(r *http.Request) (TeamsRemoveMemberLega
 	}
 	// Decode path: username.
 	{
-		param := chi.URLParam(r, "username")
+		param := args["username"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "username",
@@ -52619,11 +52619,11 @@ func decodeTeamsRemoveMemberLegacyParams(r *http.Request) (TeamsRemoveMemberLega
 	return params, nil
 }
 
-func decodeTeamsRemoveMembershipForUserInOrgParams(r *http.Request) (TeamsRemoveMembershipForUserInOrgParams, error) {
+func decodeTeamsRemoveMembershipForUserInOrgParams(args map[string]string, r *http.Request) (TeamsRemoveMembershipForUserInOrgParams, error) {
 	var params TeamsRemoveMembershipForUserInOrgParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -52654,7 +52654,7 @@ func decodeTeamsRemoveMembershipForUserInOrgParams(r *http.Request) (TeamsRemove
 	}
 	// Decode path: team_slug.
 	{
-		param := chi.URLParam(r, "team_slug")
+		param := args["team_slug"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "team_slug",
@@ -52685,7 +52685,7 @@ func decodeTeamsRemoveMembershipForUserInOrgParams(r *http.Request) (TeamsRemove
 	}
 	// Decode path: username.
 	{
-		param := chi.URLParam(r, "username")
+		param := args["username"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "username",
@@ -52717,11 +52717,11 @@ func decodeTeamsRemoveMembershipForUserInOrgParams(r *http.Request) (TeamsRemove
 	return params, nil
 }
 
-func decodeTeamsRemoveMembershipForUserLegacyParams(r *http.Request) (TeamsRemoveMembershipForUserLegacyParams, error) {
+func decodeTeamsRemoveMembershipForUserLegacyParams(args map[string]string, r *http.Request) (TeamsRemoveMembershipForUserLegacyParams, error) {
 	var params TeamsRemoveMembershipForUserLegacyParams
 	// Decode path: team_id.
 	{
-		param := chi.URLParam(r, "team_id")
+		param := args["team_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "team_id",
@@ -52752,7 +52752,7 @@ func decodeTeamsRemoveMembershipForUserLegacyParams(r *http.Request) (TeamsRemov
 	}
 	// Decode path: username.
 	{
-		param := chi.URLParam(r, "username")
+		param := args["username"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "username",
@@ -52784,11 +52784,11 @@ func decodeTeamsRemoveMembershipForUserLegacyParams(r *http.Request) (TeamsRemov
 	return params, nil
 }
 
-func decodeTeamsRemoveProjectInOrgParams(r *http.Request) (TeamsRemoveProjectInOrgParams, error) {
+func decodeTeamsRemoveProjectInOrgParams(args map[string]string, r *http.Request) (TeamsRemoveProjectInOrgParams, error) {
 	var params TeamsRemoveProjectInOrgParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -52819,7 +52819,7 @@ func decodeTeamsRemoveProjectInOrgParams(r *http.Request) (TeamsRemoveProjectInO
 	}
 	// Decode path: team_slug.
 	{
-		param := chi.URLParam(r, "team_slug")
+		param := args["team_slug"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "team_slug",
@@ -52850,7 +52850,7 @@ func decodeTeamsRemoveProjectInOrgParams(r *http.Request) (TeamsRemoveProjectInO
 	}
 	// Decode path: project_id.
 	{
-		param := chi.URLParam(r, "project_id")
+		param := args["project_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "project_id",
@@ -52882,11 +52882,11 @@ func decodeTeamsRemoveProjectInOrgParams(r *http.Request) (TeamsRemoveProjectInO
 	return params, nil
 }
 
-func decodeTeamsRemoveRepoInOrgParams(r *http.Request) (TeamsRemoveRepoInOrgParams, error) {
+func decodeTeamsRemoveRepoInOrgParams(args map[string]string, r *http.Request) (TeamsRemoveRepoInOrgParams, error) {
 	var params TeamsRemoveRepoInOrgParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -52917,7 +52917,7 @@ func decodeTeamsRemoveRepoInOrgParams(r *http.Request) (TeamsRemoveRepoInOrgPara
 	}
 	// Decode path: team_slug.
 	{
-		param := chi.URLParam(r, "team_slug")
+		param := args["team_slug"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "team_slug",
@@ -52948,7 +52948,7 @@ func decodeTeamsRemoveRepoInOrgParams(r *http.Request) (TeamsRemoveRepoInOrgPara
 	}
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -52979,7 +52979,7 @@ func decodeTeamsRemoveRepoInOrgParams(r *http.Request) (TeamsRemoveRepoInOrgPara
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -53011,11 +53011,11 @@ func decodeTeamsRemoveRepoInOrgParams(r *http.Request) (TeamsRemoveRepoInOrgPara
 	return params, nil
 }
 
-func decodeTeamsRemoveRepoLegacyParams(r *http.Request) (TeamsRemoveRepoLegacyParams, error) {
+func decodeTeamsRemoveRepoLegacyParams(args map[string]string, r *http.Request) (TeamsRemoveRepoLegacyParams, error) {
 	var params TeamsRemoveRepoLegacyParams
 	// Decode path: team_id.
 	{
-		param := chi.URLParam(r, "team_id")
+		param := args["team_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "team_id",
@@ -53046,7 +53046,7 @@ func decodeTeamsRemoveRepoLegacyParams(r *http.Request) (TeamsRemoveRepoLegacyPa
 	}
 	// Decode path: owner.
 	{
-		param := chi.URLParam(r, "owner")
+		param := args["owner"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "owner",
@@ -53077,7 +53077,7 @@ func decodeTeamsRemoveRepoLegacyParams(r *http.Request) (TeamsRemoveRepoLegacyPa
 	}
 	// Decode path: repo.
 	{
-		param := chi.URLParam(r, "repo")
+		param := args["repo"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "repo",
@@ -53109,11 +53109,11 @@ func decodeTeamsRemoveRepoLegacyParams(r *http.Request) (TeamsRemoveRepoLegacyPa
 	return params, nil
 }
 
-func decodeTeamsUpdateDiscussionCommentInOrgParams(r *http.Request) (TeamsUpdateDiscussionCommentInOrgParams, error) {
+func decodeTeamsUpdateDiscussionCommentInOrgParams(args map[string]string, r *http.Request) (TeamsUpdateDiscussionCommentInOrgParams, error) {
 	var params TeamsUpdateDiscussionCommentInOrgParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -53144,7 +53144,7 @@ func decodeTeamsUpdateDiscussionCommentInOrgParams(r *http.Request) (TeamsUpdate
 	}
 	// Decode path: team_slug.
 	{
-		param := chi.URLParam(r, "team_slug")
+		param := args["team_slug"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "team_slug",
@@ -53175,7 +53175,7 @@ func decodeTeamsUpdateDiscussionCommentInOrgParams(r *http.Request) (TeamsUpdate
 	}
 	// Decode path: discussion_number.
 	{
-		param := chi.URLParam(r, "discussion_number")
+		param := args["discussion_number"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "discussion_number",
@@ -53206,7 +53206,7 @@ func decodeTeamsUpdateDiscussionCommentInOrgParams(r *http.Request) (TeamsUpdate
 	}
 	// Decode path: comment_number.
 	{
-		param := chi.URLParam(r, "comment_number")
+		param := args["comment_number"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "comment_number",
@@ -53238,11 +53238,11 @@ func decodeTeamsUpdateDiscussionCommentInOrgParams(r *http.Request) (TeamsUpdate
 	return params, nil
 }
 
-func decodeTeamsUpdateDiscussionCommentLegacyParams(r *http.Request) (TeamsUpdateDiscussionCommentLegacyParams, error) {
+func decodeTeamsUpdateDiscussionCommentLegacyParams(args map[string]string, r *http.Request) (TeamsUpdateDiscussionCommentLegacyParams, error) {
 	var params TeamsUpdateDiscussionCommentLegacyParams
 	// Decode path: team_id.
 	{
-		param := chi.URLParam(r, "team_id")
+		param := args["team_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "team_id",
@@ -53273,7 +53273,7 @@ func decodeTeamsUpdateDiscussionCommentLegacyParams(r *http.Request) (TeamsUpdat
 	}
 	// Decode path: discussion_number.
 	{
-		param := chi.URLParam(r, "discussion_number")
+		param := args["discussion_number"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "discussion_number",
@@ -53304,7 +53304,7 @@ func decodeTeamsUpdateDiscussionCommentLegacyParams(r *http.Request) (TeamsUpdat
 	}
 	// Decode path: comment_number.
 	{
-		param := chi.URLParam(r, "comment_number")
+		param := args["comment_number"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "comment_number",
@@ -53336,11 +53336,11 @@ func decodeTeamsUpdateDiscussionCommentLegacyParams(r *http.Request) (TeamsUpdat
 	return params, nil
 }
 
-func decodeTeamsUpdateDiscussionInOrgParams(r *http.Request) (TeamsUpdateDiscussionInOrgParams, error) {
+func decodeTeamsUpdateDiscussionInOrgParams(args map[string]string, r *http.Request) (TeamsUpdateDiscussionInOrgParams, error) {
 	var params TeamsUpdateDiscussionInOrgParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -53371,7 +53371,7 @@ func decodeTeamsUpdateDiscussionInOrgParams(r *http.Request) (TeamsUpdateDiscuss
 	}
 	// Decode path: team_slug.
 	{
-		param := chi.URLParam(r, "team_slug")
+		param := args["team_slug"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "team_slug",
@@ -53402,7 +53402,7 @@ func decodeTeamsUpdateDiscussionInOrgParams(r *http.Request) (TeamsUpdateDiscuss
 	}
 	// Decode path: discussion_number.
 	{
-		param := chi.URLParam(r, "discussion_number")
+		param := args["discussion_number"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "discussion_number",
@@ -53434,11 +53434,11 @@ func decodeTeamsUpdateDiscussionInOrgParams(r *http.Request) (TeamsUpdateDiscuss
 	return params, nil
 }
 
-func decodeTeamsUpdateDiscussionLegacyParams(r *http.Request) (TeamsUpdateDiscussionLegacyParams, error) {
+func decodeTeamsUpdateDiscussionLegacyParams(args map[string]string, r *http.Request) (TeamsUpdateDiscussionLegacyParams, error) {
 	var params TeamsUpdateDiscussionLegacyParams
 	// Decode path: team_id.
 	{
-		param := chi.URLParam(r, "team_id")
+		param := args["team_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "team_id",
@@ -53469,7 +53469,7 @@ func decodeTeamsUpdateDiscussionLegacyParams(r *http.Request) (TeamsUpdateDiscus
 	}
 	// Decode path: discussion_number.
 	{
-		param := chi.URLParam(r, "discussion_number")
+		param := args["discussion_number"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "discussion_number",
@@ -53501,11 +53501,11 @@ func decodeTeamsUpdateDiscussionLegacyParams(r *http.Request) (TeamsUpdateDiscus
 	return params, nil
 }
 
-func decodeTeamsUpdateInOrgParams(r *http.Request) (TeamsUpdateInOrgParams, error) {
+func decodeTeamsUpdateInOrgParams(args map[string]string, r *http.Request) (TeamsUpdateInOrgParams, error) {
 	var params TeamsUpdateInOrgParams
 	// Decode path: org.
 	{
-		param := chi.URLParam(r, "org")
+		param := args["org"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "org",
@@ -53536,7 +53536,7 @@ func decodeTeamsUpdateInOrgParams(r *http.Request) (TeamsUpdateInOrgParams, erro
 	}
 	// Decode path: team_slug.
 	{
-		param := chi.URLParam(r, "team_slug")
+		param := args["team_slug"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "team_slug",
@@ -53568,11 +53568,11 @@ func decodeTeamsUpdateInOrgParams(r *http.Request) (TeamsUpdateInOrgParams, erro
 	return params, nil
 }
 
-func decodeUsersCheckBlockedParams(r *http.Request) (UsersCheckBlockedParams, error) {
+func decodeUsersCheckBlockedParams(args map[string]string, r *http.Request) (UsersCheckBlockedParams, error) {
 	var params UsersCheckBlockedParams
 	// Decode path: username.
 	{
-		param := chi.URLParam(r, "username")
+		param := args["username"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "username",
@@ -53604,11 +53604,11 @@ func decodeUsersCheckBlockedParams(r *http.Request) (UsersCheckBlockedParams, er
 	return params, nil
 }
 
-func decodeUsersCheckFollowingForUserParams(r *http.Request) (UsersCheckFollowingForUserParams, error) {
+func decodeUsersCheckFollowingForUserParams(args map[string]string, r *http.Request) (UsersCheckFollowingForUserParams, error) {
 	var params UsersCheckFollowingForUserParams
 	// Decode path: username.
 	{
-		param := chi.URLParam(r, "username")
+		param := args["username"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "username",
@@ -53639,7 +53639,7 @@ func decodeUsersCheckFollowingForUserParams(r *http.Request) (UsersCheckFollowin
 	}
 	// Decode path: target_user.
 	{
-		param := chi.URLParam(r, "target_user")
+		param := args["target_user"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "target_user",
@@ -53671,11 +53671,11 @@ func decodeUsersCheckFollowingForUserParams(r *http.Request) (UsersCheckFollowin
 	return params, nil
 }
 
-func decodeUsersCheckPersonIsFollowedByAuthenticatedParams(r *http.Request) (UsersCheckPersonIsFollowedByAuthenticatedParams, error) {
+func decodeUsersCheckPersonIsFollowedByAuthenticatedParams(args map[string]string, r *http.Request) (UsersCheckPersonIsFollowedByAuthenticatedParams, error) {
 	var params UsersCheckPersonIsFollowedByAuthenticatedParams
 	// Decode path: username.
 	{
-		param := chi.URLParam(r, "username")
+		param := args["username"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "username",
@@ -53707,11 +53707,11 @@ func decodeUsersCheckPersonIsFollowedByAuthenticatedParams(r *http.Request) (Use
 	return params, nil
 }
 
-func decodeUsersDeletePublicSSHKeyForAuthenticatedParams(r *http.Request) (UsersDeletePublicSSHKeyForAuthenticatedParams, error) {
+func decodeUsersDeletePublicSSHKeyForAuthenticatedParams(args map[string]string, r *http.Request) (UsersDeletePublicSSHKeyForAuthenticatedParams, error) {
 	var params UsersDeletePublicSSHKeyForAuthenticatedParams
 	// Decode path: key_id.
 	{
-		param := chi.URLParam(r, "key_id")
+		param := args["key_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "key_id",
@@ -53743,11 +53743,11 @@ func decodeUsersDeletePublicSSHKeyForAuthenticatedParams(r *http.Request) (Users
 	return params, nil
 }
 
-func decodeUsersFollowParams(r *http.Request) (UsersFollowParams, error) {
+func decodeUsersFollowParams(args map[string]string, r *http.Request) (UsersFollowParams, error) {
 	var params UsersFollowParams
 	// Decode path: username.
 	{
-		param := chi.URLParam(r, "username")
+		param := args["username"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "username",
@@ -53779,11 +53779,11 @@ func decodeUsersFollowParams(r *http.Request) (UsersFollowParams, error) {
 	return params, nil
 }
 
-func decodeUsersGetByUsernameParams(r *http.Request) (UsersGetByUsernameParams, error) {
+func decodeUsersGetByUsernameParams(args map[string]string, r *http.Request) (UsersGetByUsernameParams, error) {
 	var params UsersGetByUsernameParams
 	// Decode path: username.
 	{
-		param := chi.URLParam(r, "username")
+		param := args["username"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "username",
@@ -53815,11 +53815,11 @@ func decodeUsersGetByUsernameParams(r *http.Request) (UsersGetByUsernameParams, 
 	return params, nil
 }
 
-func decodeUsersGetGpgKeyForAuthenticatedParams(r *http.Request) (UsersGetGpgKeyForAuthenticatedParams, error) {
+func decodeUsersGetGpgKeyForAuthenticatedParams(args map[string]string, r *http.Request) (UsersGetGpgKeyForAuthenticatedParams, error) {
 	var params UsersGetGpgKeyForAuthenticatedParams
 	// Decode path: gpg_key_id.
 	{
-		param := chi.URLParam(r, "gpg_key_id")
+		param := args["gpg_key_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "gpg_key_id",
@@ -53851,11 +53851,11 @@ func decodeUsersGetGpgKeyForAuthenticatedParams(r *http.Request) (UsersGetGpgKey
 	return params, nil
 }
 
-func decodeUsersGetPublicSSHKeyForAuthenticatedParams(r *http.Request) (UsersGetPublicSSHKeyForAuthenticatedParams, error) {
+func decodeUsersGetPublicSSHKeyForAuthenticatedParams(args map[string]string, r *http.Request) (UsersGetPublicSSHKeyForAuthenticatedParams, error) {
 	var params UsersGetPublicSSHKeyForAuthenticatedParams
 	// Decode path: key_id.
 	{
-		param := chi.URLParam(r, "key_id")
+		param := args["key_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "key_id",
@@ -53887,7 +53887,7 @@ func decodeUsersGetPublicSSHKeyForAuthenticatedParams(r *http.Request) (UsersGet
 	return params, nil
 }
 
-func decodeUsersListParams(r *http.Request) (UsersListParams, error) {
+func decodeUsersListParams(args map[string]string, r *http.Request) (UsersListParams, error) {
 	var params UsersListParams
 	// Decode query: since.
 	{
@@ -53962,7 +53962,7 @@ func decodeUsersListParams(r *http.Request) (UsersListParams, error) {
 	return params, nil
 }
 
-func decodeUsersListEmailsForAuthenticatedParams(r *http.Request) (UsersListEmailsForAuthenticatedParams, error) {
+func decodeUsersListEmailsForAuthenticatedParams(args map[string]string, r *http.Request) (UsersListEmailsForAuthenticatedParams, error) {
 	var params UsersListEmailsForAuthenticatedParams
 	// Decode query: per_page.
 	{
@@ -54037,7 +54037,7 @@ func decodeUsersListEmailsForAuthenticatedParams(r *http.Request) (UsersListEmai
 	return params, nil
 }
 
-func decodeUsersListFollowedByAuthenticatedParams(r *http.Request) (UsersListFollowedByAuthenticatedParams, error) {
+func decodeUsersListFollowedByAuthenticatedParams(args map[string]string, r *http.Request) (UsersListFollowedByAuthenticatedParams, error) {
 	var params UsersListFollowedByAuthenticatedParams
 	// Decode query: per_page.
 	{
@@ -54112,7 +54112,7 @@ func decodeUsersListFollowedByAuthenticatedParams(r *http.Request) (UsersListFol
 	return params, nil
 }
 
-func decodeUsersListFollowersForAuthenticatedUserParams(r *http.Request) (UsersListFollowersForAuthenticatedUserParams, error) {
+func decodeUsersListFollowersForAuthenticatedUserParams(args map[string]string, r *http.Request) (UsersListFollowersForAuthenticatedUserParams, error) {
 	var params UsersListFollowersForAuthenticatedUserParams
 	// Decode query: per_page.
 	{
@@ -54187,11 +54187,11 @@ func decodeUsersListFollowersForAuthenticatedUserParams(r *http.Request) (UsersL
 	return params, nil
 }
 
-func decodeUsersListFollowersForUserParams(r *http.Request) (UsersListFollowersForUserParams, error) {
+func decodeUsersListFollowersForUserParams(args map[string]string, r *http.Request) (UsersListFollowersForUserParams, error) {
 	var params UsersListFollowersForUserParams
 	// Decode path: username.
 	{
-		param := chi.URLParam(r, "username")
+		param := args["username"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "username",
@@ -54293,11 +54293,11 @@ func decodeUsersListFollowersForUserParams(r *http.Request) (UsersListFollowersF
 	return params, nil
 }
 
-func decodeUsersListFollowingForUserParams(r *http.Request) (UsersListFollowingForUserParams, error) {
+func decodeUsersListFollowingForUserParams(args map[string]string, r *http.Request) (UsersListFollowingForUserParams, error) {
 	var params UsersListFollowingForUserParams
 	// Decode path: username.
 	{
-		param := chi.URLParam(r, "username")
+		param := args["username"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "username",
@@ -54399,7 +54399,7 @@ func decodeUsersListFollowingForUserParams(r *http.Request) (UsersListFollowingF
 	return params, nil
 }
 
-func decodeUsersListGpgKeysForAuthenticatedParams(r *http.Request) (UsersListGpgKeysForAuthenticatedParams, error) {
+func decodeUsersListGpgKeysForAuthenticatedParams(args map[string]string, r *http.Request) (UsersListGpgKeysForAuthenticatedParams, error) {
 	var params UsersListGpgKeysForAuthenticatedParams
 	// Decode query: per_page.
 	{
@@ -54474,11 +54474,11 @@ func decodeUsersListGpgKeysForAuthenticatedParams(r *http.Request) (UsersListGpg
 	return params, nil
 }
 
-func decodeUsersListGpgKeysForUserParams(r *http.Request) (UsersListGpgKeysForUserParams, error) {
+func decodeUsersListGpgKeysForUserParams(args map[string]string, r *http.Request) (UsersListGpgKeysForUserParams, error) {
 	var params UsersListGpgKeysForUserParams
 	// Decode path: username.
 	{
-		param := chi.URLParam(r, "username")
+		param := args["username"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "username",
@@ -54580,7 +54580,7 @@ func decodeUsersListGpgKeysForUserParams(r *http.Request) (UsersListGpgKeysForUs
 	return params, nil
 }
 
-func decodeUsersListPublicEmailsForAuthenticatedParams(r *http.Request) (UsersListPublicEmailsForAuthenticatedParams, error) {
+func decodeUsersListPublicEmailsForAuthenticatedParams(args map[string]string, r *http.Request) (UsersListPublicEmailsForAuthenticatedParams, error) {
 	var params UsersListPublicEmailsForAuthenticatedParams
 	// Decode query: per_page.
 	{
@@ -54655,11 +54655,11 @@ func decodeUsersListPublicEmailsForAuthenticatedParams(r *http.Request) (UsersLi
 	return params, nil
 }
 
-func decodeUsersListPublicKeysForUserParams(r *http.Request) (UsersListPublicKeysForUserParams, error) {
+func decodeUsersListPublicKeysForUserParams(args map[string]string, r *http.Request) (UsersListPublicKeysForUserParams, error) {
 	var params UsersListPublicKeysForUserParams
 	// Decode path: username.
 	{
-		param := chi.URLParam(r, "username")
+		param := args["username"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "username",
@@ -54761,7 +54761,7 @@ func decodeUsersListPublicKeysForUserParams(r *http.Request) (UsersListPublicKey
 	return params, nil
 }
 
-func decodeUsersListPublicSSHKeysForAuthenticatedParams(r *http.Request) (UsersListPublicSSHKeysForAuthenticatedParams, error) {
+func decodeUsersListPublicSSHKeysForAuthenticatedParams(args map[string]string, r *http.Request) (UsersListPublicSSHKeysForAuthenticatedParams, error) {
 	var params UsersListPublicSSHKeysForAuthenticatedParams
 	// Decode query: per_page.
 	{
@@ -54836,11 +54836,11 @@ func decodeUsersListPublicSSHKeysForAuthenticatedParams(r *http.Request) (UsersL
 	return params, nil
 }
 
-func decodeUsersUnblockParams(r *http.Request) (UsersUnblockParams, error) {
+func decodeUsersUnblockParams(args map[string]string, r *http.Request) (UsersUnblockParams, error) {
 	var params UsersUnblockParams
 	// Decode path: username.
 	{
-		param := chi.URLParam(r, "username")
+		param := args["username"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "username",
@@ -54872,11 +54872,11 @@ func decodeUsersUnblockParams(r *http.Request) (UsersUnblockParams, error) {
 	return params, nil
 }
 
-func decodeUsersUnfollowParams(r *http.Request) (UsersUnfollowParams, error) {
+func decodeUsersUnfollowParams(args map[string]string, r *http.Request) (UsersUnfollowParams, error) {
 	var params UsersUnfollowParams
 	// Decode path: username.
 	{
-		param := chi.URLParam(r, "username")
+		param := args["username"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "username",

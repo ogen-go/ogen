@@ -64,7 +64,7 @@ var (
 	_ = sync.Pool{}
 )
 
-func decodeCachingParams(r *http.Request) (CachingParams, error) {
+func decodeCachingParams(args map[string]string, r *http.Request) (CachingParams, error) {
 	var params CachingParams
 	// Decode query: count.
 	{
@@ -99,7 +99,7 @@ func decodeCachingParams(r *http.Request) (CachingParams, error) {
 	return params, nil
 }
 
-func decodeQueriesParams(r *http.Request) (QueriesParams, error) {
+func decodeQueriesParams(args map[string]string, r *http.Request) (QueriesParams, error) {
 	var params QueriesParams
 	// Decode query: queries.
 	{
@@ -134,7 +134,7 @@ func decodeQueriesParams(r *http.Request) (QueriesParams, error) {
 	return params, nil
 }
 
-func decodeUpdatesParams(r *http.Request) (UpdatesParams, error) {
+func decodeUpdatesParams(args map[string]string, r *http.Request) (UpdatesParams, error) {
 	var params UpdatesParams
 	// Decode query: queries.
 	{

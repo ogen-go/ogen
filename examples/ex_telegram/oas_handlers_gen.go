@@ -67,7 +67,7 @@ var (
 // HandleAnswerCallbackQueryPostRequest handles  operation.
 //
 // POST /answerCallbackQuery
-func (s *Server) HandleAnswerCallbackQueryPostRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAnswerCallbackQueryPostRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `AnswerCallbackQueryPost`,
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
@@ -95,7 +95,7 @@ func (s *Server) HandleAnswerCallbackQueryPostRequest(w http.ResponseWriter, r *
 // HandleAnswerPreCheckoutQueryPostRequest handles  operation.
 //
 // POST /answerPreCheckoutQuery
-func (s *Server) HandleAnswerPreCheckoutQueryPostRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAnswerPreCheckoutQueryPostRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `AnswerPreCheckoutQueryPost`,
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
@@ -123,7 +123,7 @@ func (s *Server) HandleAnswerPreCheckoutQueryPostRequest(w http.ResponseWriter, 
 // HandleAnswerShippingQueryPostRequest handles  operation.
 //
 // POST /answerShippingQuery
-func (s *Server) HandleAnswerShippingQueryPostRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAnswerShippingQueryPostRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `AnswerShippingQueryPost`,
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
@@ -151,7 +151,7 @@ func (s *Server) HandleAnswerShippingQueryPostRequest(w http.ResponseWriter, r *
 // HandleClosePostRequest handles  operation.
 //
 // POST /close
-func (s *Server) HandleClosePostRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleClosePostRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ClosePost`,
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
@@ -173,7 +173,7 @@ func (s *Server) HandleClosePostRequest(w http.ResponseWriter, r *http.Request) 
 // HandleDeleteStickerFromSetPostRequest handles  operation.
 //
 // POST /deleteStickerFromSet
-func (s *Server) HandleDeleteStickerFromSetPostRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleDeleteStickerFromSetPostRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `DeleteStickerFromSetPost`,
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
@@ -201,7 +201,7 @@ func (s *Server) HandleDeleteStickerFromSetPostRequest(w http.ResponseWriter, r 
 // HandleDeleteWebhookPostRequest handles  operation.
 //
 // POST /deleteWebhook
-func (s *Server) HandleDeleteWebhookPostRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleDeleteWebhookPostRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `DeleteWebhookPost`,
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
@@ -229,7 +229,7 @@ func (s *Server) HandleDeleteWebhookPostRequest(w http.ResponseWriter, r *http.R
 // HandleGetFilePostRequest handles  operation.
 //
 // POST /getFile
-func (s *Server) HandleGetFilePostRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetFilePostRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetFilePost`,
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
@@ -257,7 +257,7 @@ func (s *Server) HandleGetFilePostRequest(w http.ResponseWriter, r *http.Request
 // HandleGetGameHighScoresPostRequest handles  operation.
 //
 // POST /getGameHighScores
-func (s *Server) HandleGetGameHighScoresPostRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetGameHighScoresPostRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetGameHighScoresPost`,
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
@@ -285,7 +285,7 @@ func (s *Server) HandleGetGameHighScoresPostRequest(w http.ResponseWriter, r *ht
 // HandleGetMePostRequest handles  operation.
 //
 // POST /getMe
-func (s *Server) HandleGetMePostRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetMePostRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetMePost`,
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
@@ -307,7 +307,7 @@ func (s *Server) HandleGetMePostRequest(w http.ResponseWriter, r *http.Request) 
 // HandleGetMyCommandsPostRequest handles  operation.
 //
 // POST /getMyCommands
-func (s *Server) HandleGetMyCommandsPostRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetMyCommandsPostRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetMyCommandsPost`,
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
@@ -329,7 +329,7 @@ func (s *Server) HandleGetMyCommandsPostRequest(w http.ResponseWriter, r *http.R
 // HandleGetStickerSetPostRequest handles  operation.
 //
 // POST /getStickerSet
-func (s *Server) HandleGetStickerSetPostRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetStickerSetPostRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetStickerSetPost`,
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
@@ -357,7 +357,7 @@ func (s *Server) HandleGetStickerSetPostRequest(w http.ResponseWriter, r *http.R
 // HandleGetUpdatesPostRequest handles  operation.
 //
 // POST /getUpdates
-func (s *Server) HandleGetUpdatesPostRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetUpdatesPostRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetUpdatesPost`,
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
@@ -385,7 +385,7 @@ func (s *Server) HandleGetUpdatesPostRequest(w http.ResponseWriter, r *http.Requ
 // HandleGetUserProfilePhotosPostRequest handles  operation.
 //
 // POST /getUserProfilePhotos
-func (s *Server) HandleGetUserProfilePhotosPostRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetUserProfilePhotosPostRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetUserProfilePhotosPost`,
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
@@ -413,7 +413,7 @@ func (s *Server) HandleGetUserProfilePhotosPostRequest(w http.ResponseWriter, r 
 // HandleGetWebhookInfoPostRequest handles  operation.
 //
 // POST /getWebhookInfo
-func (s *Server) HandleGetWebhookInfoPostRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetWebhookInfoPostRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetWebhookInfoPost`,
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
@@ -435,7 +435,7 @@ func (s *Server) HandleGetWebhookInfoPostRequest(w http.ResponseWriter, r *http.
 // HandleLogOutPostRequest handles  operation.
 //
 // POST /logOut
-func (s *Server) HandleLogOutPostRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleLogOutPostRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `LogOutPost`,
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
@@ -457,7 +457,7 @@ func (s *Server) HandleLogOutPostRequest(w http.ResponseWriter, r *http.Request)
 // HandleSendGamePostRequest handles  operation.
 //
 // POST /sendGame
-func (s *Server) HandleSendGamePostRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleSendGamePostRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `SendGamePost`,
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
@@ -485,7 +485,7 @@ func (s *Server) HandleSendGamePostRequest(w http.ResponseWriter, r *http.Reques
 // HandleSendInvoicePostRequest handles  operation.
 //
 // POST /sendInvoice
-func (s *Server) HandleSendInvoicePostRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleSendInvoicePostRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `SendInvoicePost`,
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
@@ -513,7 +513,7 @@ func (s *Server) HandleSendInvoicePostRequest(w http.ResponseWriter, r *http.Req
 // HandleSetMyCommandsPostRequest handles  operation.
 //
 // POST /setMyCommands
-func (s *Server) HandleSetMyCommandsPostRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleSetMyCommandsPostRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `SetMyCommandsPost`,
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
@@ -541,7 +541,7 @@ func (s *Server) HandleSetMyCommandsPostRequest(w http.ResponseWriter, r *http.R
 // HandleSetStickerPositionInSetPostRequest handles  operation.
 //
 // POST /setStickerPositionInSet
-func (s *Server) HandleSetStickerPositionInSetPostRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleSetStickerPositionInSetPostRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `SetStickerPositionInSetPost`,
 		trace.WithSpanKind(trace.SpanKindServer),
 	)

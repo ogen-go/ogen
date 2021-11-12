@@ -27,6 +27,7 @@ type Generator struct {
 	wrapped    responses
 	uriTypes   map[*ir.Type]struct{}
 	errType    *ir.StatusResponse
+	router     Router
 }
 
 type Options struct {
@@ -63,6 +64,9 @@ func NewGenerator(spec *ogen.Spec, opts Options) (*Generator, error) {
 	}
 	g.reduce()
 	g.wrapGenerics()
+	if err := g.route(); err != nil {
+		return nil, errors.Wrap(err, "route")
+	}
 	return g, nil
 }
 

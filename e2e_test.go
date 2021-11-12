@@ -202,7 +202,7 @@ func TestIntegration(t *testing.T) {
 			require.Equal(t, "invalid: id (int: value -1 less than 0), name (string: len 1 less than minimum 4)", validateErr.Error())
 		})
 
-		s := httptest.NewServer(api.NewServer(&sampleAPIServer{}).DefaultMux())
+		s := httptest.NewServer(api.NewServer(&sampleAPIServer{}))
 		defer s.Close()
 
 		client, err := api.NewClient(s.URL)
@@ -420,7 +420,7 @@ func TestIntegration(t *testing.T) {
 		// https://github.com/TechEmpower/FrameworkBenchmarks/wiki/Project-Information-Framework-Tests-Overview#test-types
 		t.Parallel()
 
-		s := httptest.NewServer(techempower.NewServer(techEmpowerServer{}).DefaultMux())
+		s := httptest.NewServer(techempower.NewServer(techEmpowerServer{}))
 		defer s.Close()
 
 		client, err := techempower.NewClient(s.URL)

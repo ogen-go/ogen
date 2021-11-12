@@ -19,6 +19,7 @@ type TemplateConfig struct {
 	Interfaces map[string]*ir.Type
 	Error      *ir.StatusResponse
 	ErrorType  *ir.Type
+	Methods    []RouterMethod
 }
 
 // FileSystem represents a directory of generated package.
@@ -68,6 +69,7 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 		URITypes:   g.uriTypes,
 		Interfaces: g.interfaces,
 		Error:      g.errType,
+		Methods:    g.router.Methods,
 	}
 	if cfg.Error != nil {
 		cfg.ErrorType = cfg.Error.Contents[ir.ContentTypeJSON]
@@ -89,6 +91,7 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 		"server",
 		"client",
 		"cfg",
+		"router",
 	} {
 		// Skip uri encode/decode if no types for that.
 		if (name == "uri_enc" || name == "uri_dec") && len(g.uriTypes) == 0 {

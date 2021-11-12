@@ -67,13 +67,13 @@ var (
 // HandleDeletePetRequest handles deletePet operation.
 //
 // DELETE /pets/{id}
-func (s *Server) HandleDeletePetRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleDeletePetRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `DeletePet`,
 		trace.WithAttributes(otelogen.OperationID(`deletePet`)),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
-	params, err := decodeDeletePetParams(r)
+	params, err := decodeDeletePetParams(args, r)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusBadRequest, err)

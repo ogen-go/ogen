@@ -67,7 +67,7 @@ var (
 // HandleCreatePetsRequest handles createPets operation.
 //
 // POST /pets
-func (s *Server) HandleCreatePetsRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleCreatePetsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `CreatePets`,
 		trace.WithAttributes(otelogen.OperationID(`createPets`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -90,13 +90,13 @@ func (s *Server) HandleCreatePetsRequest(w http.ResponseWriter, r *http.Request)
 // HandleListPetsRequest handles listPets operation.
 //
 // GET /pets
-func (s *Server) HandleListPetsRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListPetsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListPets`,
 		trace.WithAttributes(otelogen.OperationID(`listPets`)),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
-	params, err := decodeListPetsParams(r)
+	params, err := decodeListPetsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusBadRequest, err)
@@ -119,13 +119,13 @@ func (s *Server) HandleListPetsRequest(w http.ResponseWriter, r *http.Request) {
 // HandleShowPetByIdRequest handles showPetById operation.
 //
 // GET /pets/{petId}
-func (s *Server) HandleShowPetByIdRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleShowPetByIdRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ShowPetById`,
 		trace.WithAttributes(otelogen.OperationID(`showPetById`)),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
-	params, err := decodeShowPetByIdParams(r)
+	params, err := decodeShowPetByIdParams(args, r)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusBadRequest, err)
