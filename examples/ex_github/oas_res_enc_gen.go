@@ -18,7 +18,6 @@ import (
 	"sync"
 	"time"
 
-	"github.com/go-chi/chi/v5"
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
 	"github.com/google/uuid"
@@ -40,7 +39,6 @@ var (
 	_ = strings.Builder{}
 	_ = errors.Is
 	_ = sort.Ints
-	_ = chi.Context{}
 	_ = http.MethodGet
 	_ = io.Copy
 	_ = json.Marshal
