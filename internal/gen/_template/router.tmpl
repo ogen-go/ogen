@@ -44,7 +44,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		args["{{ $.Param.Spec.Name }}"] = string(elem)
 	{{- end }}
 	{{- if and ($.Operation) (not $.HasNext) }}
-		// {{ $.Operation.Spec.HTTPMethod }} {{ $.Operation.Spec.Path }}.
+		// {{ $.Operation.Spec.HTTPMethod }} {{ $.Operation.Spec.Path }}
 		s.handle{{ $.Operation.Name }}Request(args, w, r)
 		return
 	{{- else }}
