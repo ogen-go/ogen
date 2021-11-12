@@ -85,26 +85,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 	// Static code generated router with unwrapped path search.
 	switch r.Method {
-	case "GET":
-		// Root edge.
-		if len(p) > 1 && p[0] == '/' {
-			p = p[1:]
-		}
-		if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-			elem, p = p, p[:0] // slash not found, using full path
-		} else {
-			elem = p[:idx] // slash found, element is path until slash
-			p = p[idx:]
-		}
-		switch string(elem) {
-		case "data": // -> 1
-			// GET /data.
-			s.handleDataGetRequest(args, w, r)
-			return
-		default:
-			s.notFound(w, r)
-			return
-		}
 	case "POST":
 		// Root edge.
 		if len(p) > 1 && p[0] == '/' {
@@ -117,9 +97,81 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			p = p[idx:]
 		}
 		switch string(elem) {
-		case "data": // -> 1
-			// POST /data.
-			s.handleDataCreateRequest(args, w, r)
+		case "answerCallbackQuery": // -> 1
+			// POST /answerCallbackQuery.
+			s.handleAnswerCallbackQueryPostRequest(args, w, r)
+			return
+		case "answerPreCheckoutQuery": // -> 2
+			// POST /answerPreCheckoutQuery.
+			s.handleAnswerPreCheckoutQueryPostRequest(args, w, r)
+			return
+		case "answerShippingQuery": // -> 3
+			// POST /answerShippingQuery.
+			s.handleAnswerShippingQueryPostRequest(args, w, r)
+			return
+		case "close": // -> 4
+			// POST /close.
+			s.handleClosePostRequest(args, w, r)
+			return
+		case "deleteStickerFromSet": // -> 5
+			// POST /deleteStickerFromSet.
+			s.handleDeleteStickerFromSetPostRequest(args, w, r)
+			return
+		case "deleteWebhook": // -> 6
+			// POST /deleteWebhook.
+			s.handleDeleteWebhookPostRequest(args, w, r)
+			return
+		case "getFile": // -> 7
+			// POST /getFile.
+			s.handleGetFilePostRequest(args, w, r)
+			return
+		case "getGameHighScores": // -> 8
+			// POST /getGameHighScores.
+			s.handleGetGameHighScoresPostRequest(args, w, r)
+			return
+		case "getMe": // -> 9
+			// POST /getMe.
+			s.handleGetMePostRequest(args, w, r)
+			return
+		case "getMyCommands": // -> 10
+			// POST /getMyCommands.
+			s.handleGetMyCommandsPostRequest(args, w, r)
+			return
+		case "getStickerSet": // -> 11
+			// POST /getStickerSet.
+			s.handleGetStickerSetPostRequest(args, w, r)
+			return
+		case "getUpdates": // -> 12
+			// POST /getUpdates.
+			s.handleGetUpdatesPostRequest(args, w, r)
+			return
+		case "getUserProfilePhotos": // -> 13
+			// POST /getUserProfilePhotos.
+			s.handleGetUserProfilePhotosPostRequest(args, w, r)
+			return
+		case "getWebhookInfo": // -> 14
+			// POST /getWebhookInfo.
+			s.handleGetWebhookInfoPostRequest(args, w, r)
+			return
+		case "logOut": // -> 15
+			// POST /logOut.
+			s.handleLogOutPostRequest(args, w, r)
+			return
+		case "sendGame": // -> 16
+			// POST /sendGame.
+			s.handleSendGamePostRequest(args, w, r)
+			return
+		case "sendInvoice": // -> 17
+			// POST /sendInvoice.
+			s.handleSendInvoicePostRequest(args, w, r)
+			return
+		case "setMyCommands": // -> 18
+			// POST /setMyCommands.
+			s.handleSetMyCommandsPostRequest(args, w, r)
+			return
+		case "setStickerPositionInSet": // -> 19
+			// POST /setStickerPositionInSet.
+			s.handleSetStickerPositionInSetPostRequest(args, w, r)
 			return
 		default:
 			s.notFound(w, r)

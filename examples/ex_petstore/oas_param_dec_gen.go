@@ -64,7 +64,7 @@ var (
 	_ = sync.Pool{}
 )
 
-func decodeListPetsParams(r *http.Request) (ListPetsParams, error) {
+func decodeListPetsParams(args map[string]string, r *http.Request) (ListPetsParams, error) {
 	var params ListPetsParams
 	// Decode query: limit.
 	{
@@ -104,11 +104,11 @@ func decodeListPetsParams(r *http.Request) (ListPetsParams, error) {
 	return params, nil
 }
 
-func decodeShowPetByIdParams(r *http.Request) (ShowPetByIdParams, error) {
+func decodeShowPetByIdParams(args map[string]string, r *http.Request) (ShowPetByIdParams, error) {
 	var params ShowPetByIdParams
 	// Decode path: petId.
 	{
-		param := chi.URLParam(r, "petId")
+		param := args["petId"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "petId",

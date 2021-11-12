@@ -97,10 +97,27 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			p = p[idx:]
 		}
 		switch string(elem) {
-		case "data": // -> 1
-			// GET /data.
-			s.handleDataGetRequest(args, w, r)
-			return
+		case "pets": // -> 1
+			// Edge: 1, path: "pets".
+			if len(p) > 1 && p[0] == '/' {
+				p = p[1:]
+			}
+			if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
+				elem, p = p, p[:0] // slash not found, using full path
+			} else {
+				elem = p[:idx] // slash found, element is path until slash
+				p = p[idx:]
+			}
+			switch string(elem) {
+			default:
+				if args == nil {
+					args = make(map[string]string)
+				}
+				args["petId"] = string(elem)
+				// GET /pets/{petId}.
+				s.handleShowPetByIdRequest(args, w, r)
+				return
+			}
 		default:
 			s.notFound(w, r)
 			return
@@ -117,9 +134,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			p = p[idx:]
 		}
 		switch string(elem) {
-		case "data": // -> 1
-			// POST /data.
-			s.handleDataCreateRequest(args, w, r)
+		case "pets": // -> 1
+			// POST /pets.
+			s.handleCreatePetsRequest(args, w, r)
 			return
 		default:
 			s.notFound(w, r)

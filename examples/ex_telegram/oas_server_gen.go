@@ -158,33 +158,3 @@ func NewServer(h Handler, opts ...Option) *Server {
 	}
 	return srv
 }
-
-// Register request handlers in router.
-func (s *Server) Register(r chi.Router) {
-	r.MethodFunc("POST", "/answerCallbackQuery", s.HandleAnswerCallbackQueryPostRequest)
-	r.MethodFunc("POST", "/answerPreCheckoutQuery", s.HandleAnswerPreCheckoutQueryPostRequest)
-	r.MethodFunc("POST", "/answerShippingQuery", s.HandleAnswerShippingQueryPostRequest)
-	r.MethodFunc("POST", "/close", s.HandleClosePostRequest)
-	r.MethodFunc("POST", "/deleteStickerFromSet", s.HandleDeleteStickerFromSetPostRequest)
-	r.MethodFunc("POST", "/deleteWebhook", s.HandleDeleteWebhookPostRequest)
-	r.MethodFunc("POST", "/getFile", s.HandleGetFilePostRequest)
-	r.MethodFunc("POST", "/getGameHighScores", s.HandleGetGameHighScoresPostRequest)
-	r.MethodFunc("POST", "/getMe", s.HandleGetMePostRequest)
-	r.MethodFunc("POST", "/getMyCommands", s.HandleGetMyCommandsPostRequest)
-	r.MethodFunc("POST", "/getStickerSet", s.HandleGetStickerSetPostRequest)
-	r.MethodFunc("POST", "/getUpdates", s.HandleGetUpdatesPostRequest)
-	r.MethodFunc("POST", "/getUserProfilePhotos", s.HandleGetUserProfilePhotosPostRequest)
-	r.MethodFunc("POST", "/getWebhookInfo", s.HandleGetWebhookInfoPostRequest)
-	r.MethodFunc("POST", "/logOut", s.HandleLogOutPostRequest)
-	r.MethodFunc("POST", "/sendGame", s.HandleSendGamePostRequest)
-	r.MethodFunc("POST", "/sendInvoice", s.HandleSendInvoicePostRequest)
-	r.MethodFunc("POST", "/setMyCommands", s.HandleSetMyCommandsPostRequest)
-	r.MethodFunc("POST", "/setStickerPositionInSet", s.HandleSetStickerPositionInSetPostRequest)
-}
-
-// DefaultMux returns new *chi.Mux with called Register method on it.
-func (s *Server) DefaultMux() *chi.Mux {
-	mux := chi.NewMux()
-	s.Register(mux)
-	return mux
-}

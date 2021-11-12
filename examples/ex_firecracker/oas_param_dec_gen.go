@@ -64,11 +64,11 @@ var (
 	_ = sync.Pool{}
 )
 
-func decodePatchGuestDriveByIDParams(r *http.Request) (PatchGuestDriveByIDParams, error) {
+func decodePatchGuestDriveByIDParams(args map[string]string, r *http.Request) (PatchGuestDriveByIDParams, error) {
 	var params PatchGuestDriveByIDParams
 	// Decode path: drive_id.
 	{
-		param := chi.URLParam(r, "drive_id")
+		param := args["drive_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "drive_id",
@@ -100,11 +100,11 @@ func decodePatchGuestDriveByIDParams(r *http.Request) (PatchGuestDriveByIDParams
 	return params, nil
 }
 
-func decodePatchGuestNetworkInterfaceByIDParams(r *http.Request) (PatchGuestNetworkInterfaceByIDParams, error) {
+func decodePatchGuestNetworkInterfaceByIDParams(args map[string]string, r *http.Request) (PatchGuestNetworkInterfaceByIDParams, error) {
 	var params PatchGuestNetworkInterfaceByIDParams
 	// Decode path: iface_id.
 	{
-		param := chi.URLParam(r, "iface_id")
+		param := args["iface_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "iface_id",
@@ -136,11 +136,11 @@ func decodePatchGuestNetworkInterfaceByIDParams(r *http.Request) (PatchGuestNetw
 	return params, nil
 }
 
-func decodePutGuestDriveByIDParams(r *http.Request) (PutGuestDriveByIDParams, error) {
+func decodePutGuestDriveByIDParams(args map[string]string, r *http.Request) (PutGuestDriveByIDParams, error) {
 	var params PutGuestDriveByIDParams
 	// Decode path: drive_id.
 	{
-		param := chi.URLParam(r, "drive_id")
+		param := args["drive_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "drive_id",
@@ -172,11 +172,11 @@ func decodePutGuestDriveByIDParams(r *http.Request) (PutGuestDriveByIDParams, er
 	return params, nil
 }
 
-func decodePutGuestNetworkInterfaceByIDParams(r *http.Request) (PutGuestNetworkInterfaceByIDParams, error) {
+func decodePutGuestNetworkInterfaceByIDParams(args map[string]string, r *http.Request) (PutGuestNetworkInterfaceByIDParams, error) {
 	var params PutGuestNetworkInterfaceByIDParams
 	// Decode path: iface_id.
 	{
-		param := chi.URLParam(r, "iface_id")
+		param := args["iface_id"]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "iface_id",

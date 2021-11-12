@@ -67,7 +67,7 @@ var (
 // HandleCreateSnapshotRequest handles createSnapshot operation.
 //
 // PUT /snapshot/create
-func (s *Server) HandleCreateSnapshotRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleCreateSnapshotRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `CreateSnapshot`,
 		trace.WithAttributes(otelogen.OperationID(`createSnapshot`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -96,7 +96,7 @@ func (s *Server) HandleCreateSnapshotRequest(w http.ResponseWriter, r *http.Requ
 // HandleCreateSyncActionRequest handles createSyncAction operation.
 //
 // PUT /actions
-func (s *Server) HandleCreateSyncActionRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleCreateSyncActionRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `CreateSyncAction`,
 		trace.WithAttributes(otelogen.OperationID(`createSyncAction`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -125,7 +125,7 @@ func (s *Server) HandleCreateSyncActionRequest(w http.ResponseWriter, r *http.Re
 // HandleDescribeBalloonConfigRequest handles describeBalloonConfig operation.
 //
 // GET /balloon
-func (s *Server) HandleDescribeBalloonConfigRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleDescribeBalloonConfigRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `DescribeBalloonConfig`,
 		trace.WithAttributes(otelogen.OperationID(`describeBalloonConfig`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -148,7 +148,7 @@ func (s *Server) HandleDescribeBalloonConfigRequest(w http.ResponseWriter, r *ht
 // HandleDescribeBalloonStatsRequest handles describeBalloonStats operation.
 //
 // GET /balloon/statistics
-func (s *Server) HandleDescribeBalloonStatsRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleDescribeBalloonStatsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `DescribeBalloonStats`,
 		trace.WithAttributes(otelogen.OperationID(`describeBalloonStats`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -171,7 +171,7 @@ func (s *Server) HandleDescribeBalloonStatsRequest(w http.ResponseWriter, r *htt
 // HandleDescribeInstanceRequest handles describeInstance operation.
 //
 // GET /
-func (s *Server) HandleDescribeInstanceRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleDescribeInstanceRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `DescribeInstance`,
 		trace.WithAttributes(otelogen.OperationID(`describeInstance`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -194,7 +194,7 @@ func (s *Server) HandleDescribeInstanceRequest(w http.ResponseWriter, r *http.Re
 // HandleGetExportVmConfigRequest handles getExportVmConfig operation.
 //
 // GET /vm/config
-func (s *Server) HandleGetExportVmConfigRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetExportVmConfigRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetExportVmConfig`,
 		trace.WithAttributes(otelogen.OperationID(`getExportVmConfig`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -217,7 +217,7 @@ func (s *Server) HandleGetExportVmConfigRequest(w http.ResponseWriter, r *http.R
 // HandleGetMachineConfigurationRequest handles getMachineConfiguration operation.
 //
 // GET /machine-config
-func (s *Server) HandleGetMachineConfigurationRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetMachineConfigurationRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetMachineConfiguration`,
 		trace.WithAttributes(otelogen.OperationID(`getMachineConfiguration`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -240,7 +240,7 @@ func (s *Server) HandleGetMachineConfigurationRequest(w http.ResponseWriter, r *
 // HandleLoadSnapshotRequest handles loadSnapshot operation.
 //
 // PUT /snapshot/load
-func (s *Server) HandleLoadSnapshotRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleLoadSnapshotRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `LoadSnapshot`,
 		trace.WithAttributes(otelogen.OperationID(`loadSnapshot`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -269,7 +269,7 @@ func (s *Server) HandleLoadSnapshotRequest(w http.ResponseWriter, r *http.Reques
 // HandleMmdsConfigPutRequest handles  operation.
 //
 // PUT /mmds/config
-func (s *Server) HandleMmdsConfigPutRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleMmdsConfigPutRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MmdsConfigPut`,
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
@@ -297,7 +297,7 @@ func (s *Server) HandleMmdsConfigPutRequest(w http.ResponseWriter, r *http.Reque
 // HandleMmdsGetRequest handles  operation.
 //
 // GET /mmds
-func (s *Server) HandleMmdsGetRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleMmdsGetRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MmdsGet`,
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
@@ -319,7 +319,7 @@ func (s *Server) HandleMmdsGetRequest(w http.ResponseWriter, r *http.Request) {
 // HandleMmdsPatchRequest handles  operation.
 //
 // PATCH /mmds
-func (s *Server) HandleMmdsPatchRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleMmdsPatchRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MmdsPatch`,
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
@@ -347,7 +347,7 @@ func (s *Server) HandleMmdsPatchRequest(w http.ResponseWriter, r *http.Request) 
 // HandleMmdsPutRequest handles  operation.
 //
 // PUT /mmds
-func (s *Server) HandleMmdsPutRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleMmdsPutRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MmdsPut`,
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
@@ -375,7 +375,7 @@ func (s *Server) HandleMmdsPutRequest(w http.ResponseWriter, r *http.Request) {
 // HandlePatchBalloonRequest handles patchBalloon operation.
 //
 // PATCH /balloon
-func (s *Server) HandlePatchBalloonRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePatchBalloonRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PatchBalloon`,
 		trace.WithAttributes(otelogen.OperationID(`patchBalloon`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -404,7 +404,7 @@ func (s *Server) HandlePatchBalloonRequest(w http.ResponseWriter, r *http.Reques
 // HandlePatchBalloonStatsIntervalRequest handles patchBalloonStatsInterval operation.
 //
 // PATCH /balloon/statistics
-func (s *Server) HandlePatchBalloonStatsIntervalRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePatchBalloonStatsIntervalRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PatchBalloonStatsInterval`,
 		trace.WithAttributes(otelogen.OperationID(`patchBalloonStatsInterval`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -433,13 +433,13 @@ func (s *Server) HandlePatchBalloonStatsIntervalRequest(w http.ResponseWriter, r
 // HandlePatchGuestDriveByIDRequest handles patchGuestDriveByID operation.
 //
 // PATCH /drives/{drive_id}
-func (s *Server) HandlePatchGuestDriveByIDRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePatchGuestDriveByIDRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PatchGuestDriveByID`,
 		trace.WithAttributes(otelogen.OperationID(`patchGuestDriveByID`)),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
-	params, err := decodePatchGuestDriveByIDParams(r)
+	params, err := decodePatchGuestDriveByIDParams(args, r)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusBadRequest, err)
@@ -468,13 +468,13 @@ func (s *Server) HandlePatchGuestDriveByIDRequest(w http.ResponseWriter, r *http
 // HandlePatchGuestNetworkInterfaceByIDRequest handles patchGuestNetworkInterfaceByID operation.
 //
 // PATCH /network-interfaces/{iface_id}
-func (s *Server) HandlePatchGuestNetworkInterfaceByIDRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePatchGuestNetworkInterfaceByIDRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PatchGuestNetworkInterfaceByID`,
 		trace.WithAttributes(otelogen.OperationID(`patchGuestNetworkInterfaceByID`)),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
-	params, err := decodePatchGuestNetworkInterfaceByIDParams(r)
+	params, err := decodePatchGuestNetworkInterfaceByIDParams(args, r)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusBadRequest, err)
@@ -503,7 +503,7 @@ func (s *Server) HandlePatchGuestNetworkInterfaceByIDRequest(w http.ResponseWrit
 // HandlePatchMachineConfigurationRequest handles patchMachineConfiguration operation.
 //
 // PATCH /machine-config
-func (s *Server) HandlePatchMachineConfigurationRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePatchMachineConfigurationRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PatchMachineConfiguration`,
 		trace.WithAttributes(otelogen.OperationID(`patchMachineConfiguration`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -532,7 +532,7 @@ func (s *Server) HandlePatchMachineConfigurationRequest(w http.ResponseWriter, r
 // HandlePatchVmRequest handles patchVm operation.
 //
 // PATCH /vm
-func (s *Server) HandlePatchVmRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePatchVmRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PatchVm`,
 		trace.WithAttributes(otelogen.OperationID(`patchVm`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -561,7 +561,7 @@ func (s *Server) HandlePatchVmRequest(w http.ResponseWriter, r *http.Request) {
 // HandlePutBalloonRequest handles putBalloon operation.
 //
 // PUT /balloon
-func (s *Server) HandlePutBalloonRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePutBalloonRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PutBalloon`,
 		trace.WithAttributes(otelogen.OperationID(`putBalloon`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -590,7 +590,7 @@ func (s *Server) HandlePutBalloonRequest(w http.ResponseWriter, r *http.Request)
 // HandlePutGuestBootSourceRequest handles putGuestBootSource operation.
 //
 // PUT /boot-source
-func (s *Server) HandlePutGuestBootSourceRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePutGuestBootSourceRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PutGuestBootSource`,
 		trace.WithAttributes(otelogen.OperationID(`putGuestBootSource`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -619,13 +619,13 @@ func (s *Server) HandlePutGuestBootSourceRequest(w http.ResponseWriter, r *http.
 // HandlePutGuestDriveByIDRequest handles putGuestDriveByID operation.
 //
 // PUT /drives/{drive_id}
-func (s *Server) HandlePutGuestDriveByIDRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePutGuestDriveByIDRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PutGuestDriveByID`,
 		trace.WithAttributes(otelogen.OperationID(`putGuestDriveByID`)),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
-	params, err := decodePutGuestDriveByIDParams(r)
+	params, err := decodePutGuestDriveByIDParams(args, r)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusBadRequest, err)
@@ -654,13 +654,13 @@ func (s *Server) HandlePutGuestDriveByIDRequest(w http.ResponseWriter, r *http.R
 // HandlePutGuestNetworkInterfaceByIDRequest handles putGuestNetworkInterfaceByID operation.
 //
 // PUT /network-interfaces/{iface_id}
-func (s *Server) HandlePutGuestNetworkInterfaceByIDRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePutGuestNetworkInterfaceByIDRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PutGuestNetworkInterfaceByID`,
 		trace.WithAttributes(otelogen.OperationID(`putGuestNetworkInterfaceByID`)),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
-	params, err := decodePutGuestNetworkInterfaceByIDParams(r)
+	params, err := decodePutGuestNetworkInterfaceByIDParams(args, r)
 	if err != nil {
 		span.RecordError(err)
 		respondError(w, http.StatusBadRequest, err)
@@ -689,7 +689,7 @@ func (s *Server) HandlePutGuestNetworkInterfaceByIDRequest(w http.ResponseWriter
 // HandlePutGuestVsockRequest handles putGuestVsock operation.
 //
 // PUT /vsock
-func (s *Server) HandlePutGuestVsockRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePutGuestVsockRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PutGuestVsock`,
 		trace.WithAttributes(otelogen.OperationID(`putGuestVsock`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -718,7 +718,7 @@ func (s *Server) HandlePutGuestVsockRequest(w http.ResponseWriter, r *http.Reque
 // HandlePutLoggerRequest handles putLogger operation.
 //
 // PUT /logger
-func (s *Server) HandlePutLoggerRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePutLoggerRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PutLogger`,
 		trace.WithAttributes(otelogen.OperationID(`putLogger`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -747,7 +747,7 @@ func (s *Server) HandlePutLoggerRequest(w http.ResponseWriter, r *http.Request) 
 // HandlePutMachineConfigurationRequest handles putMachineConfiguration operation.
 //
 // PUT /machine-config
-func (s *Server) HandlePutMachineConfigurationRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePutMachineConfigurationRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PutMachineConfiguration`,
 		trace.WithAttributes(otelogen.OperationID(`putMachineConfiguration`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -776,7 +776,7 @@ func (s *Server) HandlePutMachineConfigurationRequest(w http.ResponseWriter, r *
 // HandlePutMetricsRequest handles putMetrics operation.
 //
 // PUT /metrics
-func (s *Server) HandlePutMetricsRequest(w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePutMetricsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PutMetrics`,
 		trace.WithAttributes(otelogen.OperationID(`putMetrics`)),
 		trace.WithSpanKind(trace.SpanKindServer),

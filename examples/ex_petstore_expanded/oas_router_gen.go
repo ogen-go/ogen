@@ -85,7 +85,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 	// Static code generated router with unwrapped path search.
 	switch r.Method {
-	case "GET":
+	case "DELETE":
 		// Root edge.
 		if len(p) > 1 && p[0] == '/' {
 			p = p[1:]
@@ -97,30 +97,27 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			p = p[idx:]
 		}
 		switch string(elem) {
-		case "data": // -> 1
-			// GET /data.
-			s.handleDataGetRequest(args, w, r)
-			return
-		default:
-			s.notFound(w, r)
-			return
-		}
-	case "POST":
-		// Root edge.
-		if len(p) > 1 && p[0] == '/' {
-			p = p[1:]
-		}
-		if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-			elem, p = p, p[:0] // slash not found, using full path
-		} else {
-			elem = p[:idx] // slash found, element is path until slash
-			p = p[idx:]
-		}
-		switch string(elem) {
-		case "data": // -> 1
-			// POST /data.
-			s.handleDataCreateRequest(args, w, r)
-			return
+		case "pets": // -> 1
+			// Edge: 1, path: "pets".
+			if len(p) > 1 && p[0] == '/' {
+				p = p[1:]
+			}
+			if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
+				elem, p = p, p[:0] // slash not found, using full path
+			} else {
+				elem = p[:idx] // slash found, element is path until slash
+				p = p[idx:]
+			}
+			switch string(elem) {
+			default:
+				if args == nil {
+					args = make(map[string]string)
+				}
+				args["id"] = string(elem)
+				// DELETE /pets/{id}.
+				s.handleDeletePetRequest(args, w, r)
+				return
+			}
 		default:
 			s.notFound(w, r)
 			return

@@ -87,7 +87,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	switch r.Method {
 	case "GET":
 		// Root edge.
-		fmt.Printf("PATH %q\n", p)
 		if len(p) > 1 && p[0] == '/' {
 			p = p[1:]
 		}
@@ -97,7 +96,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			elem = p[:idx] // slash found, element is path until slash
 			p = p[idx:]
 		}
-		fmt.Printf("ELEM %q\n", elem)
 		switch string(elem) {
 		case "cached-worlds": // -> 1
 			// GET /cached-worlds.

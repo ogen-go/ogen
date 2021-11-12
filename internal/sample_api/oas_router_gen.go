@@ -87,7 +87,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	switch r.Method {
 	case "GET":
 		// Root edge.
-		fmt.Printf("PATH %q\n", p)
 		if len(p) > 1 && p[0] == '/' {
 			p = p[1:]
 		}
@@ -97,7 +96,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			elem = p[:idx] // slash found, element is path until slash
 			p = p[idx:]
 		}
-		fmt.Printf("ELEM %q\n", elem)
 		switch string(elem) {
 		case "error": // -> 1
 			// GET /error.
@@ -109,7 +107,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			return
 		case "test": // -> 3
 			// Edge: 3, path: "test".
-			fmt.Printf("PATH %q\n", p)
 			if len(p) > 1 && p[0] == '/' {
 				p = p[1:]
 			}
@@ -119,7 +116,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				elem = p[:idx] // slash found, element is path until slash
 				p = p[idx:]
 			}
-			fmt.Printf("ELEM %q\n", elem)
 			switch string(elem) {
 			case "header": // -> 4
 				// GET /test/header.
@@ -131,7 +127,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 		case "pet": // -> 5
 			// Edge: 5, path: "pet".
-			fmt.Printf("PATH %q\n", p)
 			if len(p) > 1 && p[0] == '/' {
 				p = p[1:]
 			}
@@ -141,11 +136,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				elem = p[:idx] // slash found, element is path until slash
 				p = p[idx:]
 			}
-			fmt.Printf("ELEM %q\n", elem)
 			switch string(elem) {
 			case "friendNames": // -> 6
 				// Edge: 6, path: "friendNames".
-				fmt.Printf("PATH %q\n", p)
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
@@ -155,14 +148,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					elem = p[:idx] // slash found, element is path until slash
 					p = p[idx:]
 				}
-				fmt.Printf("ELEM %q\n", elem)
 				switch string(elem) {
 				default:
-					// GET /pet/friendNames/{id}.
 					if args == nil {
 						args = make(map[string]string)
 					}
 					args["id"] = string(elem)
+					// GET /pet/friendNames/{id}.
 					s.handlePetFriendsNamesByIDRequest(args, w, r)
 					return
 				}
@@ -172,7 +164,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				return
 			case "name": // -> 10
 				// Edge: 10, path: "name".
-				fmt.Printf("PATH %q\n", p)
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
@@ -182,23 +173,22 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					elem = p[:idx] // slash found, element is path until slash
 					p = p[idx:]
 				}
-				fmt.Printf("ELEM %q\n", elem)
 				switch string(elem) {
 				default:
-					// GET /pet/name/{id}.
 					if args == nil {
 						args = make(map[string]string)
 					}
 					args["id"] = string(elem)
+					// GET /pet/name/{id}.
 					s.handlePetNameByIDRequest(args, w, r)
 					return
 				}
 			default:
-				// GET /pet/{name}.
 				if args == nil {
 					args = make(map[string]string)
 				}
 				args["name"] = string(elem)
+				// GET /pet/{name}.
 				s.handlePetGetByNameRequest(args, w, r)
 				return
 			}
@@ -208,7 +198,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		}
 	case "POST":
 		// Root edge.
-		fmt.Printf("PATH %q\n", p)
 		if len(p) > 1 && p[0] == '/' {
 			p = p[1:]
 		}
@@ -218,7 +207,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			elem = p[:idx] // slash found, element is path until slash
 			p = p[idx:]
 		}
-		fmt.Printf("ELEM %q\n", elem)
 		switch string(elem) {
 		case "foobar": // -> 1
 			// POST /foobar.
@@ -226,7 +214,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			return
 		case "pet": // -> 2
 			// Edge: 2, path: "pet".
-			fmt.Printf("PATH %q\n", p)
 			if len(p) > 1 && p[0] == '/' {
 				p = p[1:]
 			}
@@ -236,7 +223,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				elem = p[:idx] // slash found, element is path until slash
 				p = p[idx:]
 			}
-			fmt.Printf("ELEM %q\n", elem)
 			switch string(elem) {
 			case "updateNameAlias": // -> 3
 				// POST /pet/updateNameAlias.
@@ -261,7 +247,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		}
 	case "PUT":
 		// Root edge.
-		fmt.Printf("PATH %q\n", p)
 		if len(p) > 1 && p[0] == '/' {
 			p = p[1:]
 		}
@@ -271,7 +256,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			elem = p[:idx] // slash found, element is path until slash
 			p = p[idx:]
 		}
-		fmt.Printf("ELEM %q\n", elem)
 		switch string(elem) {
 		case "foobar": // -> 1
 			// PUT /foobar.
