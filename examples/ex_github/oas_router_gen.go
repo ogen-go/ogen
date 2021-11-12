@@ -88,24 +88,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		if len(p) > 1 && p[0] == '/' {
 			p = p[1:]
 		}
-		if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-			elem, p = p, p[:0] // slash not found, using full path
-		} else {
-			elem = p[:idx] // slash found, element is path until slash
-			p = p[idx:]
+		if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+			idx = len(p) // no next slash, using full p
 		}
+		elem, p = p[:idx], p[idx:] // next elem, forward p
 		switch string(elem) {
 		case "repos": // -> 1
 			// Edge: 1, path: "repos".
 			if len(p) > 1 && p[0] == '/' {
 				p = p[1:]
 			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-				elem, p = p, p[:0] // slash not found, using full path
-			} else {
-				elem = p[:idx] // slash found, element is path until slash
-				p = p[idx:]
+			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+				idx = len(p) // no next slash, using full p
 			}
+			elem, p = p[:idx], p[idx:] // next elem, forward p
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -116,24 +112,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				case "": // -> 3
 					// Edge: 3, path: "".
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -144,36 +136,30 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						if len(p) > 1 && p[0] == '/' {
 							p = p[1:]
 						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-							elem, p = p, p[:0] // slash not found, using full path
-						} else {
-							elem = p[:idx] // slash found, element is path until slash
-							p = p[idx:]
+						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+							idx = len(p) // no next slash, using full p
 						}
+						elem, p = p[:idx], p[idx:] // next elem, forward p
 						switch string(elem) {
 						case "actions": // -> 5
 							// Edge: 5, path: "actions".
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							case "artifacts": // -> 6
 								// Edge: 6, path: "artifacts".
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -189,12 +175,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -210,12 +194,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -231,12 +213,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -247,12 +227,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(p) > 1 && p[0] == '/' {
 										p = p[1:]
 									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-										elem, p = p, p[:0] // slash not found, using full path
-									} else {
-										elem = p[:idx] // slash found, element is path until slash
-										p = p[idx:]
+									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+										idx = len(p) // no next slash, using full p
 									}
+									elem, p = p[:idx], p[idx:] // next elem, forward p
 									switch string(elem) {
 									case "logs": // -> 29
 										// DELETE /repos/{owner}/{repo}/actions/runs/{run_id}/logs
@@ -277,24 +255,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							case "analyses": // -> 60
 								// Edge: 60, path: "analyses".
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -318,24 +292,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							case "comments": // -> 93
 								// Edge: 93, path: "comments".
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -346,24 +316,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(p) > 1 && p[0] == '/' {
 										p = p[1:]
 									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-										elem, p = p, p[:0] // slash not found, using full path
-									} else {
-										elem = p[:idx] // slash found, element is path until slash
-										p = p[idx:]
+									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+										idx = len(p) // no next slash, using full p
 									}
+									elem, p = p[:idx], p[idx:] // next elem, forward p
 									switch string(elem) {
 									case "reactions": // -> 174
 										// Edge: 174, path: "reactions".
 										if len(p) > 1 && p[0] == '/' {
 											p = p[1:]
 										}
-										if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-											elem, p = p, p[:0] // slash not found, using full path
-										} else {
-											elem = p[:idx] // slash found, element is path until slash
-											p = p[idx:]
+										if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+											idx = len(p) // no next slash, using full p
 										}
+										elem, p = p[:idx], p[idx:] // next elem, forward p
 										switch string(elem) {
 										default:
 											if args == nil {
@@ -389,24 +355,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								case "labels": // -> 100
 									// Edge: 100, path: "labels".
 									if len(p) > 1 && p[0] == '/' {
 										p = p[1:]
 									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-										elem, p = p, p[:0] // slash not found, using full path
-									} else {
-										elem = p[:idx] // slash found, element is path until slash
-										p = p[idx:]
+									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+										idx = len(p) // no next slash, using full p
 									}
+									elem, p = p[:idx], p[idx:] // next elem, forward p
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -430,12 +392,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(p) > 1 && p[0] == '/' {
 										p = p[1:]
 									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-										elem, p = p, p[:0] // slash not found, using full path
-									} else {
-										elem = p[:idx] // slash found, element is path until slash
-										p = p[idx:]
+									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+										idx = len(p) // no next slash, using full p
 									}
+									elem, p = p[:idx], p[idx:] // next elem, forward p
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -456,12 +416,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -477,12 +435,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -502,24 +458,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							case "comments": // -> 166
 								// Edge: 166, path: "comments".
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -530,24 +482,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(p) > 1 && p[0] == '/' {
 										p = p[1:]
 									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-										elem, p = p, p[:0] // slash not found, using full path
-									} else {
-										elem = p[:idx] // slash found, element is path until slash
-										p = p[idx:]
+									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+										idx = len(p) // no next slash, using full p
 									}
+									elem, p = p[:idx], p[idx:] // next elem, forward p
 									switch string(elem) {
 									case "reactions": // -> 176
 										// Edge: 176, path: "reactions".
 										if len(p) > 1 && p[0] == '/' {
 											p = p[1:]
 										}
-										if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-											elem, p = p, p[:0] // slash not found, using full path
-										} else {
-											elem = p[:idx] // slash found, element is path until slash
-											p = p[idx:]
+										if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+											idx = len(p) // no next slash, using full p
 										}
+										elem, p = p[:idx], p[idx:] // next elem, forward p
 										switch string(elem) {
 										default:
 											if args == nil {
@@ -573,24 +521,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								case "reviews": // -> 164
 									// Edge: 164, path: "reviews".
 									if len(p) > 1 && p[0] == '/' {
 										p = p[1:]
 									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-										elem, p = p, p[:0] // slash not found, using full path
-									} else {
-										elem = p[:idx] // slash found, element is path until slash
-										p = p[idx:]
+									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+										idx = len(p) // no next slash, using full p
 									}
+									elem, p = p[:idx], p[idx:] // next elem, forward p
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -611,12 +555,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -627,24 +569,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								case "reactions": // -> 170
 									// Edge: 170, path: "reactions".
 									if len(p) > 1 && p[0] == '/' {
 										p = p[1:]
 									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-										elem, p = p, p[:0] // slash not found, using full path
-									} else {
-										elem = p[:idx] // slash found, element is path until slash
-										p = p[idx:]
+									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+										idx = len(p) // no next slash, using full p
 									}
+									elem, p = p[:idx], p[idx:] // next elem, forward p
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -666,12 +604,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -682,24 +618,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								case "protection": // -> 194
 									// Edge: 194, path: "protection".
 									if len(p) > 1 && p[0] == '/' {
 										p = p[1:]
 									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-										elem, p = p, p[:0] // slash not found, using full path
-									} else {
-										elem = p[:idx] // slash found, element is path until slash
-										p = p[idx:]
+									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+										idx = len(p) // no next slash, using full p
 									}
+									elem, p = p[:idx], p[idx:] // next elem, forward p
 									switch string(elem) {
 									case "restrictions": // -> 195
 										// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions
@@ -736,12 +668,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -757,12 +687,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -778,12 +706,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -799,12 +725,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -820,12 +744,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -841,24 +763,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							case "assets": // -> 211
 								// Edge: 211, path: "assets".
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -883,12 +801,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -916,12 +832,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -948,12 +862,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			if len(p) > 1 && p[0] == '/' {
 				p = p[1:]
 			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-				elem, p = p, p[:0] // slash not found, using full path
-			} else {
-				elem = p[:idx] // slash found, element is path until slash
-				p = p[idx:]
+			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+				idx = len(p) // no next slash, using full p
 			}
+			elem, p = p[:idx], p[idx:] // next elem, forward p
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -964,24 +876,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				case "environments": // -> 10
 					// Edge: 10, path: "environments".
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -992,24 +900,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						if len(p) > 1 && p[0] == '/' {
 							p = p[1:]
 						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-							elem, p = p, p[:0] // slash not found, using full path
-						} else {
-							elem = p[:idx] // slash found, element is path until slash
-							p = p[idx:]
+						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+							idx = len(p) // no next slash, using full p
 						}
+						elem, p = p[:idx], p[idx:] // next elem, forward p
 						switch string(elem) {
 						case "secrets": // -> 12
 							// Edge: 12, path: "secrets".
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -1035,12 +939,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			if len(p) > 1 && p[0] == '/' {
 				p = p[1:]
 			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-				elem, p = p, p[:0] // slash not found, using full path
-			} else {
-				elem = p[:idx] // slash found, element is path until slash
-				p = p[idx:]
+			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+				idx = len(p) // no next slash, using full p
 			}
+			elem, p = p[:idx], p[idx:] // next elem, forward p
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -1051,36 +953,30 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				case "actions": // -> 16
 					// Edge: 16, path: "actions".
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					case "secrets": // -> 17
 						// Edge: 17, path: "secrets".
 						if len(p) > 1 && p[0] == '/' {
 							p = p[1:]
 						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-							elem, p = p, p[:0] // slash not found, using full path
-						} else {
-							elem = p[:idx] // slash found, element is path until slash
-							p = p[idx:]
+						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+							idx = len(p) // no next slash, using full p
 						}
+						elem, p = p[:idx], p[idx:] // next elem, forward p
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -1091,24 +987,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							case "repositories": // -> 35
 								// Edge: 35, path: "repositories".
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -1130,12 +1022,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						if len(p) > 1 && p[0] == '/' {
 							p = p[1:]
 						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-							elem, p = p, p[:0] // slash not found, using full path
-						} else {
-							elem = p[:idx] // slash found, element is path until slash
-							p = p[idx:]
+						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+							idx = len(p) // no next slash, using full p
 						}
+						elem, p = p[:idx], p[idx:] // next elem, forward p
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -1151,12 +1041,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						if len(p) > 1 && p[0] == '/' {
 							p = p[1:]
 						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-							elem, p = p, p[:0] // slash not found, using full path
-						} else {
-							elem = p[:idx] // slash found, element is path until slash
-							p = p[idx:]
+						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+							idx = len(p) // no next slash, using full p
 						}
+						elem, p = p[:idx], p[idx:] // next elem, forward p
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -1167,24 +1055,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							case "repositories": // -> 33
 								// Edge: 33, path: "repositories".
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -1200,12 +1084,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -1227,24 +1109,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						if len(p) > 1 && p[0] == '/' {
 							p = p[1:]
 						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-							elem, p = p, p[:0] // slash not found, using full path
-						} else {
-							elem = p[:idx] // slash found, element is path until slash
-							p = p[idx:]
+						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+							idx = len(p) // no next slash, using full p
 						}
+						elem, p = p[:idx], p[idx:] // next elem, forward p
 						switch string(elem) {
 						case "repositories": // -> 31
 							// Edge: 31, path: "repositories".
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -1272,12 +1150,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -1288,12 +1164,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						if len(p) > 1 && p[0] == '/' {
 							p = p[1:]
 						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-							elem, p = p, p[:0] // slash not found, using full path
-						} else {
-							elem = p[:idx] // slash found, element is path until slash
-							p = p[idx:]
+						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+							idx = len(p) // no next slash, using full p
 						}
+						elem, p = p[:idx], p[idx:] // next elem, forward p
 						switch string(elem) {
 						case "archive": // -> 110
 							// DELETE /orgs/{org}/migrations/{migration_id}/archive
@@ -1304,12 +1178,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -1320,12 +1192,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								case "lock": // -> 116
 									// DELETE /orgs/{org}/migrations/{migration_id}/repos/{repo_name}/lock
@@ -1346,12 +1216,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -1367,12 +1235,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -1388,12 +1254,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -1409,12 +1273,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -1430,12 +1292,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -1451,12 +1311,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -1472,12 +1330,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -1493,12 +1349,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -1509,24 +1363,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						if len(p) > 1 && p[0] == '/' {
 							p = p[1:]
 						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-							elem, p = p, p[:0] // slash not found, using full path
-						} else {
-							elem = p[:idx] // slash found, element is path until slash
-							p = p[idx:]
+						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+							idx = len(p) // no next slash, using full p
 						}
+						elem, p = p[:idx], p[idx:] // next elem, forward p
 						switch string(elem) {
 						case "": // -> 142
 							// Edge: 142, path: "".
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -1537,24 +1387,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								case "versions": // -> 152
 									// Edge: 152, path: "versions".
 									if len(p) > 1 && p[0] == '/' {
 										p = p[1:]
 									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-										elem, p = p, p[:0] // slash not found, using full path
-									} else {
-										elem = p[:idx] // slash found, element is path until slash
-										p = p[idx:]
+									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+										idx = len(p) // no next slash, using full p
 									}
+									elem, p = p[:idx], p[idx:] // next elem, forward p
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -1581,12 +1427,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -1597,24 +1441,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						if len(p) > 1 && p[0] == '/' {
 							p = p[1:]
 						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-							elem, p = p, p[:0] // slash not found, using full path
-						} else {
-							elem = p[:idx] // slash found, element is path until slash
-							p = p[idx:]
+						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+							idx = len(p) // no next slash, using full p
 						}
+						elem, p = p[:idx], p[idx:] // next elem, forward p
 						switch string(elem) {
 						case "discussions": // -> 180
 							// Edge: 180, path: "discussions".
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -1625,24 +1465,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								case "reactions": // -> 182
 									// Edge: 182, path: "reactions".
 									if len(p) > 1 && p[0] == '/' {
 										p = p[1:]
 									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-										elem, p = p, p[:0] // slash not found, using full path
-									} else {
-										elem = p[:idx] // slash found, element is path until slash
-										p = p[idx:]
+									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+										idx = len(p) // no next slash, using full p
 									}
+									elem, p = p[:idx], p[idx:] // next elem, forward p
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -1658,12 +1494,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(p) > 1 && p[0] == '/' {
 										p = p[1:]
 									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-										elem, p = p, p[:0] // slash not found, using full path
-									} else {
-										elem = p[:idx] // slash found, element is path until slash
-										p = p[idx:]
+									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+										idx = len(p) // no next slash, using full p
 									}
+									elem, p = p[:idx], p[idx:] // next elem, forward p
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -1674,24 +1508,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(p) > 1 && p[0] == '/' {
 											p = p[1:]
 										}
-										if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-											elem, p = p, p[:0] // slash not found, using full path
-										} else {
-											elem = p[:idx] // slash found, element is path until slash
-											p = p[idx:]
+										if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+											idx = len(p) // no next slash, using full p
 										}
+										elem, p = p[:idx], p[idx:] // next elem, forward p
 										switch string(elem) {
 										case "reactions": // -> 186
 											// Edge: 186, path: "reactions".
 											if len(p) > 1 && p[0] == '/' {
 												p = p[1:]
 											}
-											if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-												elem, p = p, p[:0] // slash not found, using full path
-											} else {
-												elem = p[:idx] // slash found, element is path until slash
-												p = p[idx:]
+											if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+												idx = len(p) // no next slash, using full p
 											}
+											elem, p = p[:idx], p[idx:] // next elem, forward p
 											switch string(elem) {
 											default:
 												if args == nil {
@@ -1719,12 +1549,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -1740,12 +1568,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -1761,12 +1587,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -1777,24 +1601,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								case "": // -> 241
 									// Edge: 241, path: "".
 									if len(p) > 1 && p[0] == '/' {
 										p = p[1:]
 									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-										elem, p = p, p[:0] // slash not found, using full path
-									} else {
-										elem = p[:idx] // slash found, element is path until slash
-										p = p[idx:]
+									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+										idx = len(p) // no next slash, using full p
 									}
+									elem, p = p[:idx], p[idx:] // next elem, forward p
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -1826,24 +1646,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			if len(p) > 1 && p[0] == '/' {
 				p = p[1:]
 			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-				elem, p = p, p[:0] // slash not found, using full path
-			} else {
-				elem = p[:idx] // slash found, element is path until slash
-				p = p[idx:]
+			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+				idx = len(p) // no next slash, using full p
 			}
+			elem, p = p[:idx], p[idx:] // next elem, forward p
 			switch string(elem) {
 			case "threads": // -> 41
 				// Edge: 41, path: "threads".
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				default:
 					if args == nil {
@@ -1854,12 +1670,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					case "subscription": // -> 43
 						// DELETE /notifications/threads/{thread_id}/subscription
@@ -1879,24 +1693,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			if len(p) > 1 && p[0] == '/' {
 				p = p[1:]
 			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-				elem, p = p, p[:0] // slash not found, using full path
-			} else {
-				elem = p[:idx] // slash found, element is path until slash
-				p = p[idx:]
+			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+				idx = len(p) // no next slash, using full p
 			}
+			elem, p = p[:idx], p[idx:] // next elem, forward p
 			switch string(elem) {
 			case "starred": // -> 45
 				// Edge: 45, path: "starred".
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				default:
 					if args == nil {
@@ -1907,24 +1717,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					case "": // -> 47
 						// Edge: 47, path: "".
 						if len(p) > 1 && p[0] == '/' {
 							p = p[1:]
 						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-							elem, p = p, p[:0] // slash not found, using full path
-						} else {
-							elem = p[:idx] // slash found, element is path until slash
-							p = p[idx:]
+						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+							idx = len(p) // no next slash, using full p
 						}
+						elem, p = p[:idx], p[idx:] // next elem, forward p
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -1945,12 +1751,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				default:
 					if args == nil {
@@ -1961,24 +1765,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					case "repositories": // -> 54
 						// Edge: 54, path: "repositories".
 						if len(p) > 1 && p[0] == '/' {
 							p = p[1:]
 						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-							elem, p = p, p[:0] // slash not found, using full path
-						} else {
-							elem = p[:idx] // slash found, element is path until slash
-							p = p[idx:]
+						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+							idx = len(p) // no next slash, using full p
 						}
+						elem, p = p[:idx], p[idx:] // next elem, forward p
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -2003,12 +1803,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				default:
 					if args == nil {
@@ -2019,12 +1817,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					case "archive": // -> 107
 						// DELETE /user/migrations/{migration_id}/archive
@@ -2035,12 +1831,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						if len(p) > 1 && p[0] == '/' {
 							p = p[1:]
 						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-							elem, p = p, p[:0] // slash not found, using full path
-						} else {
-							elem = p[:idx] // slash found, element is path until slash
-							p = p[idx:]
+						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+							idx = len(p) // no next slash, using full p
 						}
+						elem, p = p[:idx], p[idx:] // next elem, forward p
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -2051,12 +1845,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							case "lock": // -> 113
 								// DELETE /user/migrations/{migration_id}/repos/{repo_name}/lock
@@ -2077,12 +1869,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				default:
 					if args == nil {
@@ -2093,24 +1883,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					case "": // -> 138
 						// Edge: 138, path: "".
 						if len(p) > 1 && p[0] == '/' {
 							p = p[1:]
 						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-							elem, p = p, p[:0] // slash not found, using full path
-						} else {
-							elem = p[:idx] // slash found, element is path until slash
-							p = p[idx:]
+						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+							idx = len(p) // no next slash, using full p
 						}
+						elem, p = p[:idx], p[idx:] // next elem, forward p
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -2121,24 +1907,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							case "versions": // -> 150
 								// Edge: 150, path: "versions".
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -2165,12 +1947,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				default:
 					if args == nil {
@@ -2186,12 +1966,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				default:
 					if args == nil {
@@ -2207,12 +1985,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				default:
 					if args == nil {
@@ -2228,12 +2004,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				default:
 					if args == nil {
@@ -2253,24 +2027,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			if len(p) > 1 && p[0] == '/' {
 				p = p[1:]
 			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-				elem, p = p, p[:0] // slash not found, using full path
-			} else {
-				elem = p[:idx] // slash found, element is path until slash
-				p = p[idx:]
+			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+				idx = len(p) // no next slash, using full p
 			}
+			elem, p = p[:idx], p[idx:] // next elem, forward p
 			switch string(elem) {
 			case "installations": // -> 50
 				// Edge: 50, path: "installations".
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				default:
 					if args == nil {
@@ -2281,12 +2051,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					case "suspended": // -> 58
 						// DELETE /app/installations/{installation_id}/suspended
@@ -2307,12 +2075,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			if len(p) > 1 && p[0] == '/' {
 				p = p[1:]
 			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-				elem, p = p, p[:0] // slash not found, using full path
-			} else {
-				elem = p[:idx] // slash found, element is path until slash
-				p = p[idx:]
+			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+				idx = len(p) // no next slash, using full p
 			}
+			elem, p = p[:idx], p[idx:] // next elem, forward p
 			switch string(elem) {
 			case "token": // -> 57
 				// DELETE /installation/token
@@ -2327,36 +2093,30 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			if len(p) > 1 && p[0] == '/' {
 				p = p[1:]
 			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-				elem, p = p, p[:0] // slash not found, using full path
-			} else {
-				elem = p[:idx] // slash found, element is path until slash
-				p = p[idx:]
+			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+				idx = len(p) // no next slash, using full p
 			}
+			elem, p = p[:idx], p[idx:] // next elem, forward p
 			switch string(elem) {
 			case "v2": // -> 63
 				// Edge: 63, path: "v2".
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				case "enterprises": // -> 64
 					// Edge: 64, path: "enterprises".
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -2367,24 +2127,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						if len(p) > 1 && p[0] == '/' {
 							p = p[1:]
 						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-							elem, p = p, p[:0] // slash not found, using full path
-						} else {
-							elem = p[:idx] // slash found, element is path until slash
-							p = p[idx:]
+						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+							idx = len(p) // no next slash, using full p
 						}
+						elem, p = p[:idx], p[idx:] // next elem, forward p
 						switch string(elem) {
 						case "Groups": // -> 66
 							// Edge: 66, path: "Groups".
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -2400,12 +2156,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -2426,12 +2180,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -2442,24 +2194,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						if len(p) > 1 && p[0] == '/' {
 							p = p[1:]
 						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-							elem, p = p, p[:0] // slash not found, using full path
-						} else {
-							elem = p[:idx] // slash found, element is path until slash
-							p = p[idx:]
+						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+							idx = len(p) // no next slash, using full p
 						}
+						elem, p = p[:idx], p[idx:] // next elem, forward p
 						switch string(elem) {
 						case "Users": // -> 223
 							// Edge: 223, path: "Users".
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -2488,12 +2236,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			if len(p) > 1 && p[0] == '/' {
 				p = p[1:]
 			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-				elem, p = p, p[:0] // slash not found, using full path
-			} else {
-				elem = p[:idx] // slash found, element is path until slash
-				p = p[idx:]
+			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+				idx = len(p) // no next slash, using full p
 			}
+			elem, p = p[:idx], p[idx:] // next elem, forward p
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -2504,36 +2250,30 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				case "actions": // -> 70
 					// Edge: 70, path: "actions".
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					case "runners": // -> 71
 						// Edge: 71, path: "runners".
 						if len(p) > 1 && p[0] == '/' {
 							p = p[1:]
 						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-							elem, p = p, p[:0] // slash not found, using full path
-						} else {
-							elem = p[:idx] // slash found, element is path until slash
-							p = p[idx:]
+						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+							idx = len(p) // no next slash, using full p
 						}
+						elem, p = p[:idx], p[idx:] // next elem, forward p
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -2549,12 +2289,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						if len(p) > 1 && p[0] == '/' {
 							p = p[1:]
 						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-							elem, p = p, p[:0] // slash not found, using full path
-						} else {
-							elem = p[:idx] // slash found, element is path until slash
-							p = p[idx:]
+						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+							idx = len(p) // no next slash, using full p
 						}
+						elem, p = p[:idx], p[idx:] // next elem, forward p
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -2565,24 +2303,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							case "organizations": // -> 80
 								// Edge: 80, path: "organizations".
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -2598,12 +2332,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -2625,24 +2357,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						if len(p) > 1 && p[0] == '/' {
 							p = p[1:]
 						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-							elem, p = p, p[:0] // slash not found, using full path
-						} else {
-							elem = p[:idx] // slash found, element is path until slash
-							p = p[idx:]
+						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+							idx = len(p) // no next slash, using full p
 						}
+						elem, p = p[:idx], p[idx:] // next elem, forward p
 						switch string(elem) {
 						case "organizations": // -> 78
 							// Edge: 78, path: "organizations".
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -2671,12 +2399,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			if len(p) > 1 && p[0] == '/' {
 				p = p[1:]
 			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-				elem, p = p, p[:0] // slash not found, using full path
-			} else {
-				elem = p[:idx] // slash found, element is path until slash
-				p = p[idx:]
+			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+				idx = len(p) // no next slash, using full p
 			}
+			elem, p = p[:idx], p[idx:] // next elem, forward p
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -2687,24 +2413,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				case "comments": // -> 86
 					// Edge: 86, path: "comments".
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -2730,12 +2452,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			if len(p) > 1 && p[0] == '/' {
 				p = p[1:]
 			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-				elem, p = p, p[:0] // slash not found, using full path
-			} else {
-				elem = p[:idx] // slash found, element is path until slash
-				p = p[idx:]
+			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+				idx = len(p) // no next slash, using full p
 			}
+			elem, p = p[:idx], p[idx:] // next elem, forward p
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -2751,24 +2471,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			if len(p) > 1 && p[0] == '/' {
 				p = p[1:]
 			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-				elem, p = p, p[:0] // slash not found, using full path
-			} else {
-				elem = p[:idx] // slash found, element is path until slash
-				p = p[idx:]
+			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+				idx = len(p) // no next slash, using full p
 			}
+			elem, p = p[:idx], p[idx:] // next elem, forward p
 			switch string(elem) {
 			case "grants": // -> 120
 				// Edge: 120, path: "grants".
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				default:
 					if args == nil {
@@ -2788,12 +2504,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			if len(p) > 1 && p[0] == '/' {
 				p = p[1:]
 			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-				elem, p = p, p[:0] // slash not found, using full path
-			} else {
-				elem = p[:idx] // slash found, element is path until slash
-				p = p[idx:]
+			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+				idx = len(p) // no next slash, using full p
 			}
+			elem, p = p[:idx], p[idx:] // next elem, forward p
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -2804,24 +2518,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				case "packages": // -> 146
 					// Edge: 146, path: "packages".
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -2832,24 +2542,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						if len(p) > 1 && p[0] == '/' {
 							p = p[1:]
 						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-							elem, p = p, p[:0] // slash not found, using full path
-						} else {
-							elem = p[:idx] // slash found, element is path until slash
-							p = p[idx:]
+						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+							idx = len(p) // no next slash, using full p
 						}
+						elem, p = p[:idx], p[idx:] // next elem, forward p
 						switch string(elem) {
 						case "": // -> 148
 							// Edge: 148, path: "".
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -2860,24 +2566,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								case "versions": // -> 154
 									// Edge: 154, path: "versions".
 									if len(p) > 1 && p[0] == '/' {
 										p = p[1:]
 									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-										elem, p = p, p[:0] // slash not found, using full path
-									} else {
-										elem = p[:idx] // slash found, element is path until slash
-										p = p[idx:]
+									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+										idx = len(p) // no next slash, using full p
 									}
+									elem, p = p[:idx], p[idx:] // next elem, forward p
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -2909,36 +2611,30 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			if len(p) > 1 && p[0] == '/' {
 				p = p[1:]
 			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-				elem, p = p, p[:0] // slash not found, using full path
-			} else {
-				elem = p[:idx] // slash found, element is path until slash
-				p = p[idx:]
+			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+				idx = len(p) // no next slash, using full p
 			}
+			elem, p = p[:idx], p[idx:] // next elem, forward p
 			switch string(elem) {
 			case "columns": // -> 158
 				// Edge: 158, path: "columns".
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				case "cards": // -> 159
 					// Edge: 159, path: "cards".
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -2972,12 +2668,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			if len(p) > 1 && p[0] == '/' {
 				p = p[1:]
 			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-				elem, p = p, p[:0] // slash not found, using full path
-			} else {
-				elem = p[:idx] // slash found, element is path until slash
-				p = p[idx:]
+			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+				idx = len(p) // no next slash, using full p
 			}
+			elem, p = p[:idx], p[idx:] // next elem, forward p
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -2993,12 +2687,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			if len(p) > 1 && p[0] == '/' {
 				p = p[1:]
 			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-				elem, p = p, p[:0] // slash not found, using full path
-			} else {
-				elem = p[:idx] // slash found, element is path until slash
-				p = p[idx:]
+			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+				idx = len(p) // no next slash, using full p
 			}
+			elem, p = p[:idx], p[idx:] // next elem, forward p
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -3009,24 +2701,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				case "discussions": // -> 227
 					// Edge: 227, path: "discussions".
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -3037,24 +2725,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						if len(p) > 1 && p[0] == '/' {
 							p = p[1:]
 						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-							elem, p = p, p[:0] // slash not found, using full path
-						} else {
-							elem = p[:idx] // slash found, element is path until slash
-							p = p[idx:]
+						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+							idx = len(p) // no next slash, using full p
 						}
+						elem, p = p[:idx], p[idx:] // next elem, forward p
 						switch string(elem) {
 						case "comments": // -> 229
 							// Edge: 229, path: "comments".
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -3076,12 +2760,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -3097,12 +2779,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -3118,12 +2798,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -3134,24 +2812,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						if len(p) > 1 && p[0] == '/' {
 							p = p[1:]
 						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-							elem, p = p, p[:0] // slash not found, using full path
-						} else {
-							elem = p[:idx] // slash found, element is path until slash
-							p = p[idx:]
+						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+							idx = len(p) // no next slash, using full p
 						}
+						elem, p = p[:idx], p[idx:] // next elem, forward p
 						switch string(elem) {
 						case "": // -> 245
 							// Edge: 245, path: "".
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -3181,24 +2855,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		if len(p) > 1 && p[0] == '/' {
 			p = p[1:]
 		}
-		if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-			elem, p = p, p[:0] // slash not found, using full path
-		} else {
-			elem = p[:idx] // slash found, element is path until slash
-			p = p[idx:]
+		if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+			idx = len(p) // no next slash, using full p
 		}
+		elem, p = p[:idx], p[idx:] // next elem, forward p
 		switch string(elem) {
 		case "repos": // -> 1
 			// Edge: 1, path: "repos".
 			if len(p) > 1 && p[0] == '/' {
 				p = p[1:]
 			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-				elem, p = p, p[:0] // slash not found, using full path
-			} else {
-				elem = p[:idx] // slash found, element is path until slash
-				p = p[idx:]
+			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+				idx = len(p) // no next slash, using full p
 			}
+			elem, p = p[:idx], p[idx:] // next elem, forward p
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -3209,24 +2879,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				case "": // -> 3
 					// Edge: 3, path: "".
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -3237,36 +2903,30 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						if len(p) > 1 && p[0] == '/' {
 							p = p[1:]
 						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-							elem, p = p, p[:0] // slash not found, using full path
-						} else {
-							elem = p[:idx] // slash found, element is path until slash
-							p = p[idx:]
+						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+							idx = len(p) // no next slash, using full p
 						}
+						elem, p = p[:idx], p[idx:] // next elem, forward p
 						switch string(elem) {
 						case "actions": // -> 5
 							// Edge: 5, path: "actions".
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							case "artifacts": // -> 6
 								// Edge: 6, path: "artifacts".
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -3277,24 +2937,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(p) > 1 && p[0] == '/' {
 										p = p[1:]
 									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-										elem, p = p, p[:0] // slash not found, using full path
-									} else {
-										elem = p[:idx] // slash found, element is path until slash
-										p = p[idx:]
+									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+										idx = len(p) // no next slash, using full p
 									}
+									elem, p = p[:idx], p[idx:] // next elem, forward p
 									switch string(elem) {
 									case "": // -> 8
 										// Edge: 8, path: "".
 										if len(p) > 1 && p[0] == '/' {
 											p = p[1:]
 										}
-										if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-											elem, p = p, p[:0] // slash not found, using full path
-										} else {
-											elem = p[:idx] // slash found, element is path until slash
-											p = p[idx:]
+										if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+											idx = len(p) // no next slash, using full p
 										}
+										elem, p = p[:idx], p[idx:] // next elem, forward p
 										switch string(elem) {
 										default:
 											if args == nil {
@@ -3316,12 +2972,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -3332,12 +2986,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(p) > 1 && p[0] == '/' {
 										p = p[1:]
 									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-										elem, p = p, p[:0] // slash not found, using full path
-									} else {
-										elem = p[:idx] // slash found, element is path until slash
-										p = p[idx:]
+									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+										idx = len(p) // no next slash, using full p
 									}
+									elem, p = p[:idx], p[idx:] // next elem, forward p
 									switch string(elem) {
 									case "logs": // -> 12
 										// GET /repos/{owner}/{repo}/actions/jobs/{job_id}/logs
@@ -3354,12 +3006,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -3370,12 +3020,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(p) > 1 && p[0] == '/' {
 										p = p[1:]
 									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-										elem, p = p, p[:0] // slash not found, using full path
-									} else {
-										elem = p[:idx] // slash found, element is path until slash
-										p = p[idx:]
+									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+										idx = len(p) // no next slash, using full p
 									}
+									elem, p = p[:idx], p[idx:] // next elem, forward p
 									switch string(elem) {
 									case "logs": // -> 15
 										// GET /repos/{owner}/{repo}/actions/runs/{run_id}/logs
@@ -3408,12 +3056,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								case "selected-actions": // -> 22
 									// GET /repos/{owner}/{repo}/actions/permissions/selected-actions
@@ -3429,12 +3075,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								case "public-key": // -> 34
 									// GET /repos/{owner}/{repo}/actions/secrets/public-key
@@ -3454,12 +3098,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								case "downloads": // -> 48
 									// GET /repos/{owner}/{repo}/actions/runners/downloads
@@ -3503,12 +3145,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -3519,12 +3159,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								case "annotations": // -> 127
 									// GET /repos/{owner}/{repo}/check-runs/{check_run_id}/annotations
@@ -3541,12 +3179,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -3557,12 +3193,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								case "check-runs": // -> 131
 									// GET /repos/{owner}/{repo}/check-suites/{check_suite_id}/check-runs
@@ -3579,12 +3213,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -3595,12 +3227,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								case "check-runs": // -> 130
 									// GET /repos/{owner}/{repo}/commits/{ref}/check-runs
@@ -3636,24 +3266,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							case "alerts": // -> 134
 								// Edge: 134, path: "alerts".
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -3664,12 +3290,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(p) > 1 && p[0] == '/' {
 										p = p[1:]
 									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-										elem, p = p, p[:0] // slash not found, using full path
-									} else {
-										elem = p[:idx] // slash found, element is path until slash
-										p = p[idx:]
+									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+										idx = len(p) // no next slash, using full p
 									}
+									elem, p = p[:idx], p[idx:] // next elem, forward p
 									switch string(elem) {
 									case "instances": // -> 140
 										// GET /repos/{owner}/{repo}/code-scanning/alerts/{alert_number}/instances
@@ -3686,12 +3310,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -3707,12 +3329,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -3732,24 +3352,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							case "commits": // -> 173
 								// Edge: 173, path: "commits".
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -3765,12 +3381,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -3786,12 +3400,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -3807,12 +3419,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -3832,12 +3442,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -3853,24 +3461,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							case "comments": // -> 187
 								// Edge: 187, path: "comments".
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -3881,12 +3485,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(p) > 1 && p[0] == '/' {
 										p = p[1:]
 									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-										elem, p = p, p[:0] // slash not found, using full path
-									} else {
-										elem = p[:idx] // slash found, element is path until slash
-										p = p[idx:]
+									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+										idx = len(p) // no next slash, using full p
 									}
+									elem, p = p[:idx], p[idx:] // next elem, forward p
 									switch string(elem) {
 									case "reactions": // -> 288
 										// GET /repos/{owner}/{repo}/issues/comments/{comment_id}/reactions
@@ -3903,12 +3505,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -3928,12 +3528,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								case "comments": // -> 196
 									// GET /repos/{owner}/{repo}/issues/{issue_number}/comments
@@ -3957,12 +3555,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -3978,12 +3574,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -3994,12 +3588,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								case "labels": // -> 197
 									// GET /repos/{owner}/{repo}/milestones/{milestone_number}/labels
@@ -4020,12 +3612,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							case "authors": // -> 211
 								// GET /repos/{owner}/{repo}/import/authors
@@ -4049,24 +3639,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							case "comments": // -> 277
 								// Edge: 277, path: "comments".
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -4077,12 +3663,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(p) > 1 && p[0] == '/' {
 										p = p[1:]
 									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-										elem, p = p, p[:0] // slash not found, using full path
-									} else {
-										elem = p[:idx] // slash found, element is path until slash
-										p = p[idx:]
+									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+										idx = len(p) // no next slash, using full p
 									}
+									elem, p = p[:idx], p[idx:] // next elem, forward p
 									switch string(elem) {
 									case "reactions": // -> 289
 										// GET /repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions
@@ -4103,12 +3687,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								case "merge": // -> 274
 									// GET /repos/{owner}/{repo}/pulls/{pull_number}/merge
@@ -4119,12 +3701,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(p) > 1 && p[0] == '/' {
 										p = p[1:]
 									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-										elem, p = p, p[:0] // slash not found, using full path
-									} else {
-										elem = p[:idx] // slash found, element is path until slash
-										p = p[idx:]
+									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+										idx = len(p) // no next slash, using full p
 									}
+									elem, p = p[:idx], p[idx:] // next elem, forward p
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -4135,12 +3715,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(p) > 1 && p[0] == '/' {
 											p = p[1:]
 										}
-										if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-											elem, p = p, p[:0] // slash not found, using full path
-										} else {
-											elem = p[:idx] // slash found, element is path until slash
-											p = p[idx:]
+										if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+											idx = len(p) // no next slash, using full p
 										}
+										elem, p = p[:idx], p[idx:] // next elem, forward p
 										switch string(elem) {
 										case "comments": // -> 279
 											// GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/comments
@@ -4175,12 +3753,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -4191,12 +3767,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								case "reactions": // -> 286
 									// GET /repos/{owner}/{repo}/comments/{comment_id}/reactions
@@ -4213,12 +3787,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -4229,12 +3801,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								case "permission": // -> 330
 									// GET /repos/{owner}/{repo}/collaborators/{username}/permission
@@ -4255,12 +3825,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -4276,12 +3844,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -4297,12 +3863,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -4318,12 +3882,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -4334,36 +3896,30 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								case "protection": // -> 317
 									// Edge: 317, path: "protection".
 									if len(p) > 1 && p[0] == '/' {
 										p = p[1:]
 									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-										elem, p = p, p[:0] // slash not found, using full path
-									} else {
-										elem = p[:idx] // slash found, element is path until slash
-										p = p[idx:]
+									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+										idx = len(p) // no next slash, using full p
 									}
+									elem, p = p[:idx], p[idx:] // next elem, forward p
 									switch string(elem) {
 									case "restrictions": // -> 318
 										// Edge: 318, path: "restrictions".
 										if len(p) > 1 && p[0] == '/' {
 											p = p[1:]
 										}
-										if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-											elem, p = p, p[:0] // slash not found, using full path
-										} else {
-											elem = p[:idx] // slash found, element is path until slash
-											p = p[idx:]
+										if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+											idx = len(p) // no next slash, using full p
 										}
+										elem, p = p[:idx], p[idx:] // next elem, forward p
 										switch string(elem) {
 										case "apps": // -> 323
 											// GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps
@@ -4391,12 +3947,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(p) > 1 && p[0] == '/' {
 											p = p[1:]
 										}
-										if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-											elem, p = p, p[:0] // slash not found, using full path
-										} else {
-											elem = p[:idx] // slash found, element is path until slash
-											p = p[idx:]
+										if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+											idx = len(p) // no next slash, using full p
 										}
+										elem, p = p[:idx], p[idx:] // next elem, forward p
 										switch string(elem) {
 										case "contexts": // -> 321
 											// GET /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts
@@ -4435,12 +3989,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -4456,12 +4008,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							case "clones": // -> 327
 								// GET /repos/{owner}/{repo}/traffic/clones
@@ -4472,12 +4022,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								case "paths": // -> 360
 									// GET /repos/{owner}/{repo}/traffic/popular/paths
@@ -4504,12 +4052,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							case "code_frequency": // -> 329
 								// GET /repos/{owner}/{repo}/stats/code_frequency
@@ -4540,12 +4086,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							case "profile": // -> 335
 								// GET /repos/{owner}/{repo}/community/profile
@@ -4560,12 +4104,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -4581,12 +4123,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -4597,24 +4137,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								case "statuses": // -> 341
 									// Edge: 341, path: "statuses".
 									if len(p) > 1 && p[0] == '/' {
 										p = p[1:]
 									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-										elem, p = p, p[:0] // slash not found, using full path
-									} else {
-										elem = p[:idx] // slash found, element is path until slash
-										p = p[idx:]
+									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+										idx = len(p) // no next slash, using full p
 									}
+									elem, p = p[:idx], p[idx:] // next elem, forward p
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -4635,24 +4171,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							case "builds": // -> 344
 								// Edge: 344, path: "builds".
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								case "latest": // -> 345
 									// GET /repos/{owner}/{repo}/pages/builds/latest
@@ -4681,12 +4213,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							case "latest": // -> 347
 								// GET /repos/{owner}/{repo}/releases/latest
@@ -4697,12 +4227,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -4718,12 +4246,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -4743,12 +4269,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								case "assets": // -> 377
 									// GET /repos/{owner}/{repo}/releases/{release_id}/assets
@@ -4765,12 +4289,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -4781,12 +4303,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								case "config": // -> 366
 									// GET /repos/{owner}/{repo}/hooks/{hook_id}/config
@@ -4827,24 +4347,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							case "alerts": // -> 384
 								// Edge: 384, path: "alerts".
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -4875,12 +4391,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			if len(p) > 1 && p[0] == '/' {
 				p = p[1:]
 			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-				elem, p = p, p[:0] // slash not found, using full path
-			} else {
-				elem = p[:idx] // slash found, element is path until slash
-				p = p[idx:]
+			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+				idx = len(p) // no next slash, using full p
 			}
+			elem, p = p[:idx], p[idx:] // next elem, forward p
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -4891,36 +4405,30 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				case "actions": // -> 18
 					// Edge: 18, path: "actions".
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					case "permissions": // -> 19
 						// Edge: 19, path: "permissions".
 						if len(p) > 1 && p[0] == '/' {
 							p = p[1:]
 						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-							elem, p = p, p[:0] // slash not found, using full path
-						} else {
-							elem = p[:idx] // slash found, element is path until slash
-							p = p[idx:]
+						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+							idx = len(p) // no next slash, using full p
 						}
+						elem, p = p[:idx], p[idx:] // next elem, forward p
 						switch string(elem) {
 						case "selected-actions": // -> 20
 							// GET /orgs/{org}/actions/permissions/selected-actions
@@ -4940,12 +4448,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						if len(p) > 1 && p[0] == '/' {
 							p = p[1:]
 						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-							elem, p = p, p[:0] // slash not found, using full path
-						} else {
-							elem = p[:idx] // slash found, element is path until slash
-							p = p[idx:]
+						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+							idx = len(p) // no next slash, using full p
 						}
+						elem, p = p[:idx], p[idx:] // next elem, forward p
 						switch string(elem) {
 						case "public-key": // -> 31
 							// GET /orgs/{org}/actions/secrets/public-key
@@ -4960,12 +4466,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							case "repositories": // -> 49
 								// GET /orgs/{org}/actions/secrets/{secret_name}/repositories
@@ -4982,12 +4486,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						if len(p) > 1 && p[0] == '/' {
 							p = p[1:]
 						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-							elem, p = p, p[:0] // slash not found, using full path
-						} else {
-							elem = p[:idx] // slash found, element is path until slash
-							p = p[idx:]
+						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+							idx = len(p) // no next slash, using full p
 						}
+						elem, p = p[:idx], p[idx:] // next elem, forward p
 						switch string(elem) {
 						case "downloads": // -> 47
 							// GET /orgs/{org}/actions/runners/downloads
@@ -5007,12 +4509,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						if len(p) > 1 && p[0] == '/' {
 							p = p[1:]
 						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-							elem, p = p, p[:0] // slash not found, using full path
-						} else {
-							elem = p[:idx] // slash found, element is path until slash
-							p = p[idx:]
+						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+							idx = len(p) // no next slash, using full p
 						}
+						elem, p = p[:idx], p[idx:] // next elem, forward p
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -5023,12 +4523,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							case "repositories": // -> 45
 								// GET /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories
@@ -5057,24 +4555,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					case "billing": // -> 112
 						// Edge: 112, path: "billing".
 						if len(p) > 1 && p[0] == '/' {
 							p = p[1:]
 						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-							elem, p = p, p[:0] // slash not found, using full path
-						} else {
-							elem = p[:idx] // slash found, element is path until slash
-							p = p[idx:]
+						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+							idx = len(p) // no next slash, using full p
 						}
+						elem, p = p[:idx], p[idx:] // next elem, forward p
 						switch string(elem) {
 						case "actions": // -> 113
 							// GET /orgs/{org}/settings/billing/actions
@@ -5101,12 +4595,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -5117,12 +4609,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						if len(p) > 1 && p[0] == '/' {
 							p = p[1:]
 						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-							elem, p = p, p[:0] // slash not found, using full path
-						} else {
-							elem = p[:idx] // slash found, element is path until slash
-							p = p[idx:]
+						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+							idx = len(p) // no next slash, using full p
 						}
+						elem, p = p[:idx], p[idx:] // next elem, forward p
 						switch string(elem) {
 						case "archive": // -> 206
 							// GET /orgs/{org}/migrations/{migration_id}/archive
@@ -5143,12 +4633,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -5164,12 +4652,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -5185,12 +4671,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -5210,12 +4694,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -5231,12 +4713,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -5247,12 +4727,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						if len(p) > 1 && p[0] == '/' {
 							p = p[1:]
 						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-							elem, p = p, p[:0] // slash not found, using full path
-						} else {
-							elem = p[:idx] // slash found, element is path until slash
-							p = p[idx:]
+						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+							idx = len(p) // no next slash, using full p
 						}
+						elem, p = p[:idx], p[idx:] // next elem, forward p
 						switch string(elem) {
 						case "config": // -> 234
 							// GET /orgs/{org}/hooks/{hook_id}/config
@@ -5273,12 +4751,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -5289,12 +4765,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						if len(p) > 1 && p[0] == '/' {
 							p = p[1:]
 						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-							elem, p = p, p[:0] // slash not found, using full path
-						} else {
-							elem = p[:idx] // slash found, element is path until slash
-							p = p[idx:]
+						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+							idx = len(p) // no next slash, using full p
 						}
+						elem, p = p[:idx], p[idx:] // next elem, forward p
 						switch string(elem) {
 						case "teams": // -> 241
 							// GET /orgs/{org}/invitations/{invitation_id}/teams
@@ -5318,12 +4792,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -5334,24 +4806,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						if len(p) > 1 && p[0] == '/' {
 							p = p[1:]
 						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-							elem, p = p, p[:0] // slash not found, using full path
-						} else {
-							elem = p[:idx] // slash found, element is path until slash
-							p = p[idx:]
+						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+							idx = len(p) // no next slash, using full p
 						}
+						elem, p = p[:idx], p[idx:] // next elem, forward p
 						switch string(elem) {
 						case "": // -> 251
 							// Edge: 251, path: "".
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -5362,24 +4830,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								case "versions": // -> 253
 									// Edge: 253, path: "versions".
 									if len(p) > 1 && p[0] == '/' {
 										p = p[1:]
 									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-										elem, p = p, p[:0] // slash not found, using full path
-									} else {
-										elem = p[:idx] // slash found, element is path until slash
-										p = p[idx:]
+									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+										idx = len(p) // no next slash, using full p
 									}
+									elem, p = p[:idx], p[idx:] // next elem, forward p
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -5410,12 +4874,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -5426,24 +4888,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						if len(p) > 1 && p[0] == '/' {
 							p = p[1:]
 						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-							elem, p = p, p[:0] // slash not found, using full path
-						} else {
-							elem = p[:idx] // slash found, element is path until slash
-							p = p[idx:]
+						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+							idx = len(p) // no next slash, using full p
 						}
+						elem, p = p[:idx], p[idx:] // next elem, forward p
 						switch string(elem) {
 						case "discussions": // -> 292
 							// Edge: 292, path: "discussions".
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -5454,24 +4912,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								case "comments": // -> 294
 									// Edge: 294, path: "comments".
 									if len(p) > 1 && p[0] == '/' {
 										p = p[1:]
 									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-										elem, p = p, p[:0] // slash not found, using full path
-									} else {
-										elem = p[:idx] // slash found, element is path until slash
-										p = p[idx:]
+									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+										idx = len(p) // no next slash, using full p
 									}
+									elem, p = p[:idx], p[idx:] // next elem, forward p
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -5482,12 +4936,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(p) > 1 && p[0] == '/' {
 											p = p[1:]
 										}
-										if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-											elem, p = p, p[:0] // slash not found, using full path
-										} else {
-											elem = p[:idx] // slash found, element is path until slash
-											p = p[idx:]
+										if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+											idx = len(p) // no next slash, using full p
 										}
+										elem, p = p[:idx], p[idx:] // next elem, forward p
 										switch string(elem) {
 										case "reactions": // -> 296
 											// GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions
@@ -5514,12 +4966,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -5535,12 +4985,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -5551,24 +4999,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								case "": // -> 394
 									// Edge: 394, path: "".
 									if len(p) > 1 && p[0] == '/' {
 										p = p[1:]
 									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-										elem, p = p, p[:0] // slash not found, using full path
-									} else {
-										elem = p[:idx] // slash found, element is path until slash
-										p = p[idx:]
+									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+										idx = len(p) // no next slash, using full p
 									}
+									elem, p = p[:idx], p[idx:] // next elem, forward p
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -5589,12 +5033,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -5614,12 +5056,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							case "group-mappings": // -> 413
 								// GET /orgs/{org}/teams/{team_slug}/team-sync/group-mappings
@@ -5652,12 +5092,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					case "alerts": // -> 387
 						// GET /orgs/{org}/secret-scanning/alerts
@@ -5672,12 +5110,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					case "groups": // -> 411
 						// GET /orgs/{org}/team-sync/groups
@@ -5698,12 +5134,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			if len(p) > 1 && p[0] == '/' {
 				p = p[1:]
 			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-				elem, p = p, p[:0] // slash not found, using full path
-			} else {
-				elem = p[:idx] // slash found, element is path until slash
-				p = p[idx:]
+			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+				idx = len(p) // no next slash, using full p
 			}
+			elem, p = p[:idx], p[idx:] // next elem, forward p
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -5714,24 +5148,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				case "environments": // -> 25
 					// Edge: 25, path: "environments".
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -5742,24 +5172,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						if len(p) > 1 && p[0] == '/' {
 							p = p[1:]
 						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-							elem, p = p, p[:0] // slash not found, using full path
-						} else {
-							elem = p[:idx] // slash found, element is path until slash
-							p = p[idx:]
+						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+							idx = len(p) // no next slash, using full p
 						}
+						elem, p = p[:idx], p[idx:] // next elem, forward p
 						switch string(elem) {
 						case "secrets": // -> 27
 							// Edge: 27, path: "secrets".
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							case "public-key": // -> 28
 								// GET /repositories/{repository_id}/environments/{environment_name}/secrets/public-key
@@ -5789,24 +5215,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			if len(p) > 1 && p[0] == '/' {
 				p = p[1:]
 			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-				elem, p = p, p[:0] // slash not found, using full path
-			} else {
-				elem = p[:idx] // slash found, element is path until slash
-				p = p[idx:]
+			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+				idx = len(p) // no next slash, using full p
 			}
+			elem, p = p[:idx], p[idx:] // next elem, forward p
 			switch string(elem) {
 			case "starred": // -> 54
 				// Edge: 54, path: "starred".
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				default:
 					if args == nil {
@@ -5817,24 +5239,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					case "": // -> 56
 						// Edge: 56, path: "".
 						if len(p) > 1 && p[0] == '/' {
 							p = p[1:]
 						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-							elem, p = p, p[:0] // slash not found, using full path
-						} else {
-							elem = p[:idx] // slash found, element is path until slash
-							p = p[idx:]
+						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+							idx = len(p) // no next slash, using full p
 						}
+						elem, p = p[:idx], p[idx:] // next elem, forward p
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -5859,12 +5277,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				default:
 					if args == nil {
@@ -5875,12 +5291,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					case "repositories": // -> 100
 						// GET /user/installations/{installation_id}/repositories
@@ -5896,12 +5310,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				case "stubbed": // -> 105
 					// GET /user/marketplace_purchases/stubbed
@@ -5917,12 +5329,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				default:
 					if args == nil {
@@ -5933,12 +5343,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					case "archive": // -> 209
 						// GET /user/migrations/{migration_id}/archive
@@ -5959,24 +5367,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				case "orgs": // -> 228
 					// Edge: 228, path: "orgs".
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -6000,12 +5404,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				default:
 					if args == nil {
@@ -6016,24 +5418,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					case "": // -> 246
 						// Edge: 246, path: "".
 						if len(p) > 1 && p[0] == '/' {
 							p = p[1:]
 						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-							elem, p = p, p[:0] // slash not found, using full path
-						} else {
-							elem = p[:idx] // slash found, element is path until slash
-							p = p[idx:]
+						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+							idx = len(p) // no next slash, using full p
 						}
+						elem, p = p[:idx], p[idx:] // next elem, forward p
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -6044,24 +5442,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							case "versions": // -> 248
 								// Edge: 248, path: "versions".
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -6096,12 +5490,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				default:
 					if args == nil {
@@ -6117,12 +5509,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				default:
 					if args == nil {
@@ -6138,12 +5528,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				default:
 					if args == nil {
@@ -6159,12 +5547,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				default:
 					if args == nil {
@@ -6201,24 +5587,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			if len(p) > 1 && p[0] == '/' {
 				p = p[1:]
 			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-				elem, p = p, p[:0] // slash not found, using full path
-			} else {
-				elem = p[:idx] // slash found, element is path until slash
-				p = p[idx:]
+			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+				idx = len(p) // no next slash, using full p
 			}
+			elem, p = p[:idx], p[idx:] // next elem, forward p
 			switch string(elem) {
 			case "threads": // -> 61
 				// Edge: 61, path: "threads".
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				default:
 					if args == nil {
@@ -6229,12 +5611,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					case "subscription": // -> 63
 						// GET /notifications/threads/{thread_id}/subscription
@@ -6255,12 +5635,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			if len(p) > 1 && p[0] == '/' {
 				p = p[1:]
 			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-				elem, p = p, p[:0] // slash not found, using full path
-			} else {
-				elem = p[:idx] // slash found, element is path until slash
-				p = p[idx:]
+			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+				idx = len(p) // no next slash, using full p
 			}
+			elem, p = p[:idx], p[idx:] // next elem, forward p
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -6271,36 +5649,30 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				case "events": // -> 66
 					// Edge: 66, path: "events".
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					case "orgs": // -> 67
 						// Edge: 67, path: "orgs".
 						if len(p) > 1 && p[0] == '/' {
 							p = p[1:]
 						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-							elem, p = p, p[:0] // slash not found, using full path
-						} else {
-							elem = p[:idx] // slash found, element is path until slash
-							p = p[idx:]
+						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+							idx = len(p) // no next slash, using full p
 						}
+						elem, p = p[:idx], p[idx:] // next elem, forward p
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -6325,12 +5697,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					case "public": // -> 78
 						// GET /users/{username}/received_events/public
@@ -6350,24 +5720,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					case "billing": // -> 115
 						// Edge: 115, path: "billing".
 						if len(p) > 1 && p[0] == '/' {
 							p = p[1:]
 						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-							elem, p = p, p[:0] // slash not found, using full path
-						} else {
-							elem = p[:idx] // slash found, element is path until slash
-							p = p[idx:]
+						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+							idx = len(p) // no next slash, using full p
 						}
+						elem, p = p[:idx], p[idx:] // next elem, forward p
 						switch string(elem) {
 						case "actions": // -> 116
 							// GET /users/{username}/settings/billing/actions
@@ -6398,12 +5764,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -6414,24 +5778,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						if len(p) > 1 && p[0] == '/' {
 							p = p[1:]
 						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-							elem, p = p, p[:0] // slash not found, using full path
-						} else {
-							elem = p[:idx] // slash found, element is path until slash
-							p = p[idx:]
+						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+							idx = len(p) // no next slash, using full p
 						}
+						elem, p = p[:idx], p[idx:] // next elem, forward p
 						switch string(elem) {
 						case "": // -> 256
 							// Edge: 256, path: "".
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -6442,24 +5802,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								case "versions": // -> 258
 									// Edge: 258, path: "versions".
 									if len(p) > 1 && p[0] == '/' {
 										p = p[1:]
 									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-										elem, p = p, p[:0] // slash not found, using full path
-									} else {
-										elem = p[:idx] // slash found, element is path until slash
-										p = p[idx:]
+									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+										idx = len(p) // no next slash, using full p
 									}
+									elem, p = p[:idx], p[idx:] // next elem, forward p
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -6490,12 +5846,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -6533,12 +5887,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			if len(p) > 1 && p[0] == '/' {
 				p = p[1:]
 			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-				elem, p = p, p[:0] // slash not found, using full path
-			} else {
-				elem = p[:idx] // slash found, element is path until slash
-				p = p[idx:]
+			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+				idx = len(p) // no next slash, using full p
 			}
+			elem, p = p[:idx], p[idx:] // next elem, forward p
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -6549,24 +5901,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				case "": // -> 72
 					// Edge: 72, path: "".
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -6577,12 +5925,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						if len(p) > 1 && p[0] == '/' {
 							p = p[1:]
 						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-							elem, p = p, p[:0] // slash not found, using full path
-						} else {
-							elem = p[:idx] // slash found, element is path until slash
-							p = p[idx:]
+						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+							idx = len(p) // no next slash, using full p
 						}
+						elem, p = p[:idx], p[idx:] // next elem, forward p
 						switch string(elem) {
 						case "events": // -> 74
 							// GET /networks/{owner}/{repo}/events
@@ -6603,24 +5949,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			if len(p) > 1 && p[0] == '/' {
 				p = p[1:]
 			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-				elem, p = p, p[:0] // slash not found, using full path
-			} else {
-				elem = p[:idx] // slash found, element is path until slash
-				p = p[idx:]
+			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+				idx = len(p) // no next slash, using full p
 			}
+			elem, p = p[:idx], p[idx:] // next elem, forward p
 			switch string(elem) {
 			case "hook": // -> 93
 				// Edge: 93, path: "hook".
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				case "config": // -> 94
 					// GET /app/hook/config
@@ -6640,12 +5982,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			if len(p) > 1 && p[0] == '/' {
 				p = p[1:]
 			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-				elem, p = p, p[:0] // slash not found, using full path
-			} else {
-				elem = p[:idx] // slash found, element is path until slash
-				p = p[idx:]
+			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+				idx = len(p) // no next slash, using full p
 			}
+			elem, p = p[:idx], p[idx:] // next elem, forward p
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -6661,24 +6001,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			if len(p) > 1 && p[0] == '/' {
 				p = p[1:]
 			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-				elem, p = p, p[:0] // slash not found, using full path
-			} else {
-				elem = p[:idx] // slash found, element is path until slash
-				p = p[idx:]
+			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+				idx = len(p) // no next slash, using full p
 			}
+			elem, p = p[:idx], p[idx:] // next elem, forward p
 			switch string(elem) {
 			case "accounts": // -> 88
 				// Edge: 88, path: "accounts".
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				default:
 					if args == nil {
@@ -6694,24 +6030,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				case "accounts": // -> 91
 					// Edge: 91, path: "accounts".
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -6727,12 +6059,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -6743,12 +6073,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						if len(p) > 1 && p[0] == '/' {
 							p = p[1:]
 						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-							elem, p = p, p[:0] // slash not found, using full path
-						} else {
-							elem = p[:idx] // slash found, element is path until slash
-							p = p[idx:]
+						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+							idx = len(p) // no next slash, using full p
 						}
+						elem, p = p[:idx], p[idx:] // next elem, forward p
 						switch string(elem) {
 						case "accounts": // -> 97
 							// GET /marketplace_listing/stubbed/plans/{plan_id}/accounts
@@ -6776,12 +6104,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			if len(p) > 1 && p[0] == '/' {
 				p = p[1:]
 			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-				elem, p = p, p[:0] // slash not found, using full path
-			} else {
-				elem = p[:idx] // slash found, element is path until slash
-				p = p[idx:]
+			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+				idx = len(p) // no next slash, using full p
 			}
+			elem, p = p[:idx], p[idx:] // next elem, forward p
 			switch string(elem) {
 			case "repositories": // -> 103
 				// GET /installation/repositories
@@ -6796,12 +6122,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			if len(p) > 1 && p[0] == '/' {
 				p = p[1:]
 			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-				elem, p = p, p[:0] // slash not found, using full path
-			} else {
-				elem = p[:idx] // slash found, element is path until slash
-				p = p[idx:]
+			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+				idx = len(p) // no next slash, using full p
 			}
+			elem, p = p[:idx], p[idx:] // next elem, forward p
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -6812,36 +6136,30 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				case "settings": // -> 108
 					// Edge: 108, path: "settings".
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					case "billing": // -> 109
 						// Edge: 109, path: "billing".
 						if len(p) > 1 && p[0] == '/' {
 							p = p[1:]
 						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-							elem, p = p, p[:0] // slash not found, using full path
-						} else {
-							elem = p[:idx] // slash found, element is path until slash
-							p = p[idx:]
+						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+							idx = len(p) // no next slash, using full p
 						}
+						elem, p = p[:idx], p[idx:] // next elem, forward p
 						switch string(elem) {
 						case "actions": // -> 110
 							// GET /enterprises/{enterprise}/settings/billing/actions
@@ -6868,24 +6186,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					case "permissions": // -> 145
 						// Edge: 145, path: "permissions".
 						if len(p) > 1 && p[0] == '/' {
 							p = p[1:]
 						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-							elem, p = p, p[:0] // slash not found, using full path
-						} else {
-							elem = p[:idx] // slash found, element is path until slash
-							p = p[idx:]
+						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+							idx = len(p) // no next slash, using full p
 						}
+						elem, p = p[:idx], p[idx:] // next elem, forward p
 						switch string(elem) {
 						case "selected-actions": // -> 146
 							// GET /enterprises/{enterprise}/actions/permissions/selected-actions
@@ -6905,12 +6219,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						if len(p) > 1 && p[0] == '/' {
 							p = p[1:]
 						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-							elem, p = p, p[:0] // slash not found, using full path
-						} else {
-							elem = p[:idx] // slash found, element is path until slash
-							p = p[idx:]
+						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+							idx = len(p) // no next slash, using full p
 						}
+						elem, p = p[:idx], p[idx:] // next elem, forward p
 						switch string(elem) {
 						case "downloads": // -> 161
 							// GET /enterprises/{enterprise}/actions/runners/downloads
@@ -6930,12 +6242,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						if len(p) > 1 && p[0] == '/' {
 							p = p[1:]
 						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-							elem, p = p, p[:0] // slash not found, using full path
-						} else {
-							elem = p[:idx] // slash found, element is path until slash
-							p = p[idx:]
+						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+							idx = len(p) // no next slash, using full p
 						}
+						elem, p = p[:idx], p[idx:] // next elem, forward p
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -6946,12 +6256,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							case "organizations": // -> 160
 								// GET /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations
@@ -6985,12 +6293,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			if len(p) > 1 && p[0] == '/' {
 				p = p[1:]
 			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-				elem, p = p, p[:0] // slash not found, using full path
-			} else {
-				elem = p[:idx] // slash found, element is path until slash
-				p = p[idx:]
+			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+				idx = len(p) // no next slash, using full p
 			}
+			elem, p = p[:idx], p[idx:] // next elem, forward p
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -7010,36 +6316,30 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			if len(p) > 1 && p[0] == '/' {
 				p = p[1:]
 			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-				elem, p = p, p[:0] // slash not found, using full path
-			} else {
-				elem = p[:idx] // slash found, element is path until slash
-				p = p[idx:]
+			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+				idx = len(p) // no next slash, using full p
 			}
+			elem, p = p[:idx], p[idx:] // next elem, forward p
 			switch string(elem) {
 			case "v2": // -> 149
 				// Edge: 149, path: "v2".
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				case "enterprises": // -> 150
 					// Edge: 150, path: "enterprises".
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -7050,24 +6350,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						if len(p) > 1 && p[0] == '/' {
 							p = p[1:]
 						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-							elem, p = p, p[:0] // slash not found, using full path
-						} else {
-							elem = p[:idx] // slash found, element is path until slash
-							p = p[idx:]
+						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+							idx = len(p) // no next slash, using full p
 						}
+						elem, p = p[:idx], p[idx:] // next elem, forward p
 						switch string(elem) {
 						case "Groups": // -> 152
 							// Edge: 152, path: "Groups".
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -7083,12 +6379,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -7117,12 +6411,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			if len(p) > 1 && p[0] == '/' {
 				p = p[1:]
 			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-				elem, p = p, p[:0] // slash not found, using full path
-			} else {
-				elem = p[:idx] // slash found, element is path until slash
-				p = p[idx:]
+			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+				idx = len(p) // no next slash, using full p
 			}
+			elem, p = p[:idx], p[idx:] // next elem, forward p
 			switch string(elem) {
 			case "starred": // -> 171
 				// GET /gists/starred
@@ -7137,12 +6429,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				case "star": // -> 166
 					// GET /gists/{gist_id}/star
@@ -7153,12 +6443,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -7188,24 +6476,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			if len(p) > 1 && p[0] == '/' {
 				p = p[1:]
 			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-				elem, p = p, p[:0] // slash not found, using full path
-			} else {
-				elem = p[:idx] // slash found, element is path until slash
-				p = p[idx:]
+			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+				idx = len(p) // no next slash, using full p
 			}
+			elem, p = p[:idx], p[idx:] // next elem, forward p
 			switch string(elem) {
 			case "templates": // -> 182
 				// Edge: 182, path: "templates".
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				default:
 					if args == nil {
@@ -7225,12 +6509,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			if len(p) > 1 && p[0] == '/' {
 				p = p[1:]
 			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-				elem, p = p, p[:0] // slash not found, using full path
-			} else {
-				elem = p[:idx] // slash found, element is path until slash
-				p = p[idx:]
+			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+				idx = len(p) // no next slash, using full p
 			}
+			elem, p = p[:idx], p[idx:] // next elem, forward p
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -7254,12 +6536,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			if len(p) > 1 && p[0] == '/' {
 				p = p[1:]
 			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-				elem, p = p, p[:0] // slash not found, using full path
-			} else {
-				elem = p[:idx] // slash found, element is path until slash
-				p = p[idx:]
+			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+				idx = len(p) // no next slash, using full p
 			}
+			elem, p = p[:idx], p[idx:] // next elem, forward p
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -7275,24 +6555,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			if len(p) > 1 && p[0] == '/' {
 				p = p[1:]
 			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-				elem, p = p, p[:0] // slash not found, using full path
-			} else {
-				elem = p[:idx] // slash found, element is path until slash
-				p = p[idx:]
+			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+				idx = len(p) // no next slash, using full p
 			}
+			elem, p = p[:idx], p[idx:] // next elem, forward p
 			switch string(elem) {
 			case "grants": // -> 218
 				// Edge: 218, path: "grants".
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				default:
 					if args == nil {
@@ -7316,36 +6592,30 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			if len(p) > 1 && p[0] == '/' {
 				p = p[1:]
 			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-				elem, p = p, p[:0] // slash not found, using full path
-			} else {
-				elem = p[:idx] // slash found, element is path until slash
-				p = p[idx:]
+			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+				idx = len(p) // no next slash, using full p
 			}
+			elem, p = p[:idx], p[idx:] // next elem, forward p
 			switch string(elem) {
 			case "columns": // -> 264
 				// Edge: 264, path: "columns".
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				case "cards": // -> 265
 					// Edge: 265, path: "cards".
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -7365,12 +6635,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					case "cards": // -> 268
 						// GET /projects/columns/{column_id}/cards
@@ -7391,12 +6659,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				case "columns": // -> 269
 					// GET /projects/{project_id}/columns
@@ -7417,12 +6683,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			if len(p) > 1 && p[0] == '/' {
 				p = p[1:]
 			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-				elem, p = p, p[:0] // slash not found, using full path
-			} else {
-				elem = p[:idx] // slash found, element is path until slash
-				p = p[idx:]
+			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+				idx = len(p) // no next slash, using full p
 			}
+			elem, p = p[:idx], p[idx:] // next elem, forward p
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -7433,24 +6697,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				case "discussions": // -> 299
 					// Edge: 299, path: "discussions".
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -7461,24 +6721,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						if len(p) > 1 && p[0] == '/' {
 							p = p[1:]
 						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-							elem, p = p, p[:0] // slash not found, using full path
-						} else {
-							elem = p[:idx] // slash found, element is path until slash
-							p = p[idx:]
+						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+							idx = len(p) // no next slash, using full p
 						}
+						elem, p = p[:idx], p[idx:] // next elem, forward p
 						switch string(elem) {
 						case "comments": // -> 301
 							// Edge: 301, path: "comments".
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -7489,12 +6745,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								case "reactions": // -> 303
 									// GET /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions
@@ -7521,12 +6775,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -7542,12 +6794,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -7558,24 +6808,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						if len(p) > 1 && p[0] == '/' {
 							p = p[1:]
 						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-							elem, p = p, p[:0] // slash not found, using full path
-						} else {
-							elem = p[:idx] // slash found, element is path until slash
-							p = p[idx:]
+						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+							idx = len(p) // no next slash, using full p
 						}
+						elem, p = p[:idx], p[idx:] // next elem, forward p
 						switch string(elem) {
 						case "": // -> 398
 							// Edge: 398, path: "".
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -7596,12 +6842,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -7617,12 +6861,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -7638,12 +6880,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					case "group-mappings": // -> 409
 						// GET /teams/{team_id}/team-sync/group-mappings
@@ -7668,12 +6908,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			if len(p) > 1 && p[0] == '/' {
 				p = p[1:]
 			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-				elem, p = p, p[:0] // slash not found, using full path
-			} else {
-				elem = p[:idx] // slash found, element is path until slash
-				p = p[idx:]
+			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+				idx = len(p) // no next slash, using full p
 			}
+			elem, p = p[:idx], p[idx:] // next elem, forward p
 			switch string(elem) {
 			case "commits": // -> 381
 				// GET /search/commits
@@ -7696,24 +6934,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		if len(p) > 1 && p[0] == '/' {
 			p = p[1:]
 		}
-		if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-			elem, p = p, p[:0] // slash not found, using full path
-		} else {
-			elem = p[:idx] // slash found, element is path until slash
-			p = p[idx:]
+		if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+			idx = len(p) // no next slash, using full p
 		}
+		elem, p = p[:idx], p[idx:] // next elem, forward p
 		switch string(elem) {
 		case "orgs": // -> 1
 			// Edge: 1, path: "orgs".
 			if len(p) > 1 && p[0] == '/' {
 				p = p[1:]
 			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-				elem, p = p, p[:0] // slash not found, using full path
-			} else {
-				elem = p[:idx] // slash found, element is path until slash
-				p = p[idx:]
+			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+				idx = len(p) // no next slash, using full p
 			}
+			elem, p = p[:idx], p[idx:] // next elem, forward p
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -7724,36 +6958,30 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				case "actions": // -> 3
 					// Edge: 3, path: "actions".
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					case "runner-groups": // -> 4
 						// Edge: 4, path: "runner-groups".
 						if len(p) > 1 && p[0] == '/' {
 							p = p[1:]
 						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-							elem, p = p, p[:0] // slash not found, using full path
-						} else {
-							elem = p[:idx] // slash found, element is path until slash
-							p = p[idx:]
+						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+							idx = len(p) // no next slash, using full p
 						}
+						elem, p = p[:idx], p[idx:] // next elem, forward p
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -7773,12 +7001,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -7789,12 +7015,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						if len(p) > 1 && p[0] == '/' {
 							p = p[1:]
 						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-							elem, p = p, p[:0] // slash not found, using full path
-						} else {
-							elem = p[:idx] // slash found, element is path until slash
-							p = p[idx:]
+						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+							idx = len(p) // no next slash, using full p
 						}
+						elem, p = p[:idx], p[idx:] // next elem, forward p
 						switch string(elem) {
 						case "config": // -> 43
 							// PATCH /orgs/{org}/hooks/{hook_id}/config
@@ -7810,12 +7034,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -7826,24 +7048,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						if len(p) > 1 && p[0] == '/' {
 							p = p[1:]
 						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-							elem, p = p, p[:0] // slash not found, using full path
-						} else {
-							elem = p[:idx] // slash found, element is path until slash
-							p = p[idx:]
+						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+							idx = len(p) // no next slash, using full p
 						}
+						elem, p = p[:idx], p[idx:] // next elem, forward p
 						switch string(elem) {
 						case "team-sync": // -> 72
 							// Edge: 72, path: "team-sync".
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							case "group-mappings": // -> 73
 								// PATCH /orgs/{org}/teams/{team_slug}/team-sync/group-mappings
@@ -7858,12 +7076,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -7874,24 +7090,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								case "comments": // -> 76
 									// Edge: 76, path: "comments".
 									if len(p) > 1 && p[0] == '/' {
 										p = p[1:]
 									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-										elem, p = p, p[:0] // slash not found, using full path
-									} else {
-										elem = p[:idx] // slash found, element is path until slash
-										p = p[idx:]
+									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+										idx = len(p) // no next slash, using full p
 									}
+									elem, p = p[:idx], p[idx:] // next elem, forward p
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -7924,24 +7136,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			if len(p) > 1 && p[0] == '/' {
 				p = p[1:]
 			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-				elem, p = p, p[:0] // slash not found, using full path
-			} else {
-				elem = p[:idx] // slash found, element is path until slash
-				p = p[idx:]
+			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+				idx = len(p) // no next slash, using full p
 			}
+			elem, p = p[:idx], p[idx:] // next elem, forward p
 			switch string(elem) {
 			case "threads": // -> 7
 				// Edge: 7, path: "threads".
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				default:
 					if args == nil {
@@ -7961,24 +7169,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			if len(p) > 1 && p[0] == '/' {
 				p = p[1:]
 			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-				elem, p = p, p[:0] // slash not found, using full path
-			} else {
-				elem = p[:idx] // slash found, element is path until slash
-				p = p[idx:]
+			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+				idx = len(p) // no next slash, using full p
 			}
+			elem, p = p[:idx], p[idx:] // next elem, forward p
 			switch string(elem) {
 			case "hook": // -> 10
 				// Edge: 10, path: "hook".
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				case "config": // -> 11
 					// PATCH /app/hook/config
@@ -7997,12 +7201,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			if len(p) > 1 && p[0] == '/' {
 				p = p[1:]
 			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-				elem, p = p, p[:0] // slash not found, using full path
-			} else {
-				elem = p[:idx] // slash found, element is path until slash
-				p = p[idx:]
+			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+				idx = len(p) // no next slash, using full p
 			}
+			elem, p = p[:idx], p[idx:] // next elem, forward p
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -8013,24 +7215,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				case "": // -> 14
 					// Edge: 14, path: "".
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -8041,24 +7239,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						if len(p) > 1 && p[0] == '/' {
 							p = p[1:]
 						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-							elem, p = p, p[:0] // slash not found, using full path
-						} else {
-							elem = p[:idx] // slash found, element is path until slash
-							p = p[idx:]
+						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+							idx = len(p) // no next slash, using full p
 						}
+						elem, p = p[:idx], p[idx:] // next elem, forward p
 						switch string(elem) {
 						case "check-suites": // -> 16
 							// Edge: 16, path: "check-suites".
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							case "preferences": // -> 17
 								// PATCH /repos/{owner}/{repo}/check-suites/preferences
@@ -8073,24 +7267,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							case "alerts": // -> 19
 								// Edge: 19, path: "alerts".
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -8110,12 +7300,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -8131,12 +7319,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -8156,24 +7342,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							case "comments": // -> 51
 								// Edge: 51, path: "comments".
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -8193,12 +7375,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -8214,12 +7394,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -8235,24 +7413,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							case "assets": // -> 62
 								// Edge: 62, path: "assets".
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -8277,12 +7451,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -8293,12 +7465,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								case "config": // -> 66
 									// PATCH /repos/{owner}/{repo}/hooks/{hook_id}/config
@@ -8314,24 +7484,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							case "alerts": // -> 68
 								// Edge: 68, path: "alerts".
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -8361,36 +7527,30 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			if len(p) > 1 && p[0] == '/' {
 				p = p[1:]
 			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-				elem, p = p, p[:0] // slash not found, using full path
-			} else {
-				elem = p[:idx] // slash found, element is path until slash
-				p = p[idx:]
+			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+				idx = len(p) // no next slash, using full p
 			}
+			elem, p = p[:idx], p[idx:] // next elem, forward p
 			switch string(elem) {
 			case "v2": // -> 22
 				// Edge: 22, path: "v2".
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				case "enterprises": // -> 23
 					// Edge: 23, path: "enterprises".
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -8401,24 +7561,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						if len(p) > 1 && p[0] == '/' {
 							p = p[1:]
 						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-							elem, p = p, p[:0] // slash not found, using full path
-						} else {
-							elem = p[:idx] // slash found, element is path until slash
-							p = p[idx:]
+						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+							idx = len(p) // no next slash, using full p
 						}
+						elem, p = p[:idx], p[idx:] // next elem, forward p
 						switch string(elem) {
 						case "Users": // -> 25
 							// Edge: 25, path: "Users".
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -8447,12 +7603,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			if len(p) > 1 && p[0] == '/' {
 				p = p[1:]
 			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-				elem, p = p, p[:0] // slash not found, using full path
-			} else {
-				elem = p[:idx] // slash found, element is path until slash
-				p = p[idx:]
+			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+				idx = len(p) // no next slash, using full p
 			}
+			elem, p = p[:idx], p[idx:] // next elem, forward p
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -8463,36 +7617,30 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				case "actions": // -> 29
 					// Edge: 29, path: "actions".
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					case "runner-groups": // -> 30
 						// Edge: 30, path: "runner-groups".
 						if len(p) > 1 && p[0] == '/' {
 							p = p[1:]
 						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-							elem, p = p, p[:0] // slash not found, using full path
-						} else {
-							elem = p[:idx] // slash found, element is path until slash
-							p = p[idx:]
+						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+							idx = len(p) // no next slash, using full p
 						}
+						elem, p = p[:idx], p[idx:] // next elem, forward p
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -8517,12 +7665,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			if len(p) > 1 && p[0] == '/' {
 				p = p[1:]
 			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-				elem, p = p, p[:0] // slash not found, using full path
-			} else {
-				elem = p[:idx] // slash found, element is path until slash
-				p = p[idx:]
+			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+				idx = len(p) // no next slash, using full p
 			}
+			elem, p = p[:idx], p[idx:] // next elem, forward p
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -8533,24 +7679,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				case "comments": // -> 34
 					// Edge: 34, path: "comments".
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -8571,36 +7713,30 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			if len(p) > 1 && p[0] == '/' {
 				p = p[1:]
 			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-				elem, p = p, p[:0] // slash not found, using full path
-			} else {
-				elem = p[:idx] // slash found, element is path until slash
-				p = p[idx:]
+			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+				idx = len(p) // no next slash, using full p
 			}
+			elem, p = p[:idx], p[idx:] // next elem, forward p
 			switch string(elem) {
 			case "columns": // -> 46
 				// Edge: 46, path: "columns".
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				case "cards": // -> 47
 					// Edge: 47, path: "cards".
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -8634,24 +7770,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			if len(p) > 1 && p[0] == '/' {
 				p = p[1:]
 			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-				elem, p = p, p[:0] // slash not found, using full path
-			} else {
-				elem = p[:idx] // slash found, element is path until slash
-				p = p[idx:]
+			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+				idx = len(p) // no next slash, using full p
 			}
+			elem, p = p[:idx], p[idx:] // next elem, forward p
 			switch string(elem) {
 			case "repository_invitations": // -> 54
 				// Edge: 54, path: "repository_invitations".
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				default:
 					if args == nil {
@@ -8671,12 +7803,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			if len(p) > 1 && p[0] == '/' {
 				p = p[1:]
 			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-				elem, p = p, p[:0] // slash not found, using full path
-			} else {
-				elem = p[:idx] // slash found, element is path until slash
-				p = p[idx:]
+			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+				idx = len(p) // no next slash, using full p
 			}
+			elem, p = p[:idx], p[idx:] // next elem, forward p
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -8687,24 +7817,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				case "discussions": // -> 80
 					// Edge: 80, path: "discussions".
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -8715,24 +7841,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						if len(p) > 1 && p[0] == '/' {
 							p = p[1:]
 						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-							elem, p = p, p[:0] // slash not found, using full path
-						} else {
-							elem = p[:idx] // slash found, element is path until slash
-							p = p[idx:]
+						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+							idx = len(p) // no next slash, using full p
 						}
+						elem, p = p[:idx], p[idx:] // next elem, forward p
 						switch string(elem) {
 						case "comments": // -> 82
 							// Edge: 82, path: "comments".
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -8763,24 +7885,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		if len(p) > 1 && p[0] == '/' {
 			p = p[1:]
 		}
-		if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-			elem, p = p, p[:0] // slash not found, using full path
-		} else {
-			elem = p[:idx] // slash found, element is path until slash
-			p = p[idx:]
+		if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+			idx = len(p) // no next slash, using full p
 		}
+		elem, p = p[:idx], p[idx:] // next elem, forward p
 		switch string(elem) {
 		case "repos": // -> 1
 			// Edge: 1, path: "repos".
 			if len(p) > 1 && p[0] == '/' {
 				p = p[1:]
 			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-				elem, p = p, p[:0] // slash not found, using full path
-			} else {
-				elem = p[:idx] // slash found, element is path until slash
-				p = p[idx:]
+			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+				idx = len(p) // no next slash, using full p
 			}
+			elem, p = p[:idx], p[idx:] // next elem, forward p
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -8791,24 +7909,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				case "": // -> 3
 					// Edge: 3, path: "".
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -8819,36 +7933,30 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						if len(p) > 1 && p[0] == '/' {
 							p = p[1:]
 						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-							elem, p = p, p[:0] // slash not found, using full path
-						} else {
-							elem = p[:idx] // slash found, element is path until slash
-							p = p[idx:]
+						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+							idx = len(p) // no next slash, using full p
 						}
+						elem, p = p[:idx], p[idx:] // next elem, forward p
 						switch string(elem) {
 						case "actions": // -> 5
 							// Edge: 5, path: "actions".
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							case "runs": // -> 6
 								// Edge: 6, path: "runs".
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -8859,12 +7967,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(p) > 1 && p[0] == '/' {
 										p = p[1:]
 									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-										elem, p = p, p[:0] // slash not found, using full path
-									} else {
-										elem = p[:idx] // slash found, element is path until slash
-										p = p[idx:]
+									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+										idx = len(p) // no next slash, using full p
 									}
+									elem, p = p[:idx], p[idx:] // next elem, forward p
 									switch string(elem) {
 									case "approve": // -> 8
 										// POST /repos/{owner}/{repo}/actions/runs/{run_id}/approve
@@ -8892,12 +7998,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								case "registration-token": // -> 16
 									// POST /repos/{owner}/{repo}/actions/runners/registration-token
@@ -8920,12 +8024,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -8936,12 +8038,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								case "rerequest": // -> 24
 									// POST /repos/{owner}/{repo}/check-suites/{check_suite_id}/rerequest
@@ -8957,12 +8057,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							case "sarifs": // -> 26
 								// POST /repos/{owner}/{repo}/code-scanning/sarifs
@@ -8977,12 +8075,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -8993,12 +8089,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								case "assignees": // -> 45
 									// POST /repos/{owner}/{repo}/issues/{issue_number}/assignees
@@ -9018,12 +8112,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -9034,24 +8126,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								case "comments": // -> 87
 									// Edge: 87, path: "comments".
 									if len(p) > 1 && p[0] == '/' {
 										p = p[1:]
 									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-										elem, p = p, p[:0] // slash not found, using full path
-									} else {
-										elem = p[:idx] // slash found, element is path until slash
-										p = p[idx:]
+									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+										idx = len(p) // no next slash, using full p
 									}
+									elem, p = p[:idx], p[idx:] // next elem, forward p
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -9062,12 +8150,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(p) > 1 && p[0] == '/' {
 											p = p[1:]
 										}
-										if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-											elem, p = p, p[:0] // slash not found, using full path
-										} else {
-											elem = p[:idx] // slash found, element is path until slash
-											p = p[idx:]
+										if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+											idx = len(p) // no next slash, using full p
 										}
+										elem, p = p[:idx], p[idx:] // next elem, forward p
 										switch string(elem) {
 										case "replies": // -> 89
 											// POST /repos/{owner}/{repo}/pulls/{pull_number}/comments/{comment_id}/replies
@@ -9083,12 +8169,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(p) > 1 && p[0] == '/' {
 										p = p[1:]
 									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-										elem, p = p, p[:0] // slash not found, using full path
-									} else {
-										elem = p[:idx] // slash found, element is path until slash
-										p = p[idx:]
+									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+										idx = len(p) // no next slash, using full p
 									}
+									elem, p = p[:idx], p[idx:] // next elem, forward p
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -9099,12 +8183,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(p) > 1 && p[0] == '/' {
 											p = p[1:]
 										}
-										if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-											elem, p = p, p[:0] // slash not found, using full path
-										} else {
-											elem = p[:idx] // slash found, element is path until slash
-											p = p[idx:]
+										if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+											idx = len(p) // no next slash, using full p
 										}
+										elem, p = p[:idx], p[idx:] // next elem, forward p
 										switch string(elem) {
 										case "events": // -> 92
 											// POST /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/events
@@ -9125,12 +8207,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -9141,24 +8221,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								case "protection": // -> 111
 									// Edge: 111, path: "protection".
 									if len(p) > 1 && p[0] == '/' {
 										p = p[1:]
 									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-										elem, p = p, p[:0] // slash not found, using full path
-									} else {
-										elem = p[:idx] // slash found, element is path until slash
-										p = p[idx:]
+									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+										idx = len(p) // no next slash, using full p
 									}
+									elem, p = p[:idx], p[idx:] // next elem, forward p
 									switch string(elem) {
 									case "required_signatures": // -> 112
 										// POST /repos/{owner}/{repo}/branches/{branch}/protection/required_signatures
@@ -9182,12 +8258,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -9211,12 +8285,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -9227,12 +8299,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								case "pings": // -> 119
 									// POST /repos/{owner}/{repo}/hooks/{hook_id}/pings
@@ -9252,12 +8322,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							case "builds": // -> 121
 								// POST /repos/{owner}/{repo}/pages/builds
@@ -9286,12 +8354,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			if len(p) > 1 && p[0] == '/' {
 				p = p[1:]
 			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-				elem, p = p, p[:0] // slash not found, using full path
-			} else {
-				elem = p[:idx] // slash found, element is path until slash
-				p = p[idx:]
+			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+				idx = len(p) // no next slash, using full p
 			}
+			elem, p = p[:idx], p[idx:] // next elem, forward p
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -9302,36 +8368,30 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				case "actions": // -> 12
 					// Edge: 12, path: "actions".
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					case "runners": // -> 13
 						// Edge: 13, path: "runners".
 						if len(p) > 1 && p[0] == '/' {
 							p = p[1:]
 						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-							elem, p = p, p[:0] // slash not found, using full path
-						} else {
-							elem = p[:idx] // slash found, element is path until slash
-							p = p[idx:]
+						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+							idx = len(p) // no next slash, using full p
 						}
+						elem, p = p[:idx], p[idx:] // next elem, forward p
 						switch string(elem) {
 						case "registration-token": // -> 14
 							// POST /orgs/{org}/actions/runners/registration-token
@@ -9358,12 +8418,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -9374,12 +8432,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						if len(p) > 1 && p[0] == '/' {
 							p = p[1:]
 						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-							elem, p = p, p[:0] // slash not found, using full path
-						} else {
-							elem = p[:idx] // slash found, element is path until slash
-							p = p[idx:]
+						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+							idx = len(p) // no next slash, using full p
 						}
+						elem, p = p[:idx], p[idx:] // next elem, forward p
 						switch string(elem) {
 						case "pings": // -> 48
 							// POST /orgs/{org}/hooks/{hook_id}/pings
@@ -9395,12 +8451,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -9411,24 +8465,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						if len(p) > 1 && p[0] == '/' {
 							p = p[1:]
 						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-							elem, p = p, p[:0] // slash not found, using full path
-						} else {
-							elem = p[:idx] // slash found, element is path until slash
-							p = p[idx:]
+						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+							idx = len(p) // no next slash, using full p
 						}
+						elem, p = p[:idx], p[idx:] // next elem, forward p
 						switch string(elem) {
 						case "": // -> 57
 							// Edge: 57, path: "".
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -9439,12 +8489,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								case "restore": // -> 59
 									// POST /orgs/{org}/packages/{package_type}/{package_name}/restore
@@ -9455,12 +8503,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(p) > 1 && p[0] == '/' {
 										p = p[1:]
 									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-										elem, p = p, p[:0] // slash not found, using full path
-									} else {
-										elem = p[:idx] // slash found, element is path until slash
-										p = p[idx:]
+									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+										idx = len(p) // no next slash, using full p
 									}
+									elem, p = p[:idx], p[idx:] // next elem, forward p
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -9471,12 +8517,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(p) > 1 && p[0] == '/' {
 											p = p[1:]
 										}
-										if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-											elem, p = p, p[:0] // slash not found, using full path
-										} else {
-											elem = p[:idx] // slash found, element is path until slash
-											p = p[idx:]
+										if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+											idx = len(p) // no next slash, using full p
 										}
+										elem, p = p[:idx], p[idx:] // next elem, forward p
 										switch string(elem) {
 										case "restore": // -> 72
 											// POST /orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore
@@ -9506,12 +8550,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -9522,24 +8564,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						if len(p) > 1 && p[0] == '/' {
 							p = p[1:]
 						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-							elem, p = p, p[:0] // slash not found, using full path
-						} else {
-							elem = p[:idx] // slash found, element is path until slash
-							p = p[idx:]
+						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+							idx = len(p) // no next slash, using full p
 						}
+						elem, p = p[:idx], p[idx:] // next elem, forward p
 						switch string(elem) {
 						case "discussions": // -> 95
 							// Edge: 95, path: "discussions".
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -9550,24 +8588,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								case "comments": // -> 97
 									// Edge: 97, path: "comments".
 									if len(p) > 1 && p[0] == '/' {
 										p = p[1:]
 									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-										elem, p = p, p[:0] // slash not found, using full path
-									} else {
-										elem = p[:idx] // slash found, element is path until slash
-										p = p[idx:]
+									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+										idx = len(p) // no next slash, using full p
 									}
+									elem, p = p[:idx], p[idx:] // next elem, forward p
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -9578,12 +8612,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(p) > 1 && p[0] == '/' {
 											p = p[1:]
 										}
-										if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-											elem, p = p, p[:0] // slash not found, using full path
-										} else {
-											elem = p[:idx] // slash found, element is path until slash
-											p = p[idx:]
+										if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+											idx = len(p) // no next slash, using full p
 										}
+										elem, p = p[:idx], p[idx:] // next elem, forward p
 										switch string(elem) {
 										case "reactions": // -> 99
 											// POST /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions
@@ -9618,12 +8650,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			if len(p) > 1 && p[0] == '/' {
 				p = p[1:]
 			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-				elem, p = p, p[:0] // slash not found, using full path
-			} else {
-				elem = p[:idx] // slash found, element is path until slash
-				p = p[idx:]
+			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+				idx = len(p) // no next slash, using full p
 			}
+			elem, p = p[:idx], p[idx:] // next elem, forward p
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -9634,36 +8664,30 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				case "actions": // -> 29
 					// Edge: 29, path: "actions".
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					case "runners": // -> 30
 						// Edge: 30, path: "runners".
 						if len(p) > 1 && p[0] == '/' {
 							p = p[1:]
 						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-							elem, p = p, p[:0] // slash not found, using full path
-						} else {
-							elem = p[:idx] // slash found, element is path until slash
-							p = p[idx:]
+						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+							idx = len(p) // no next slash, using full p
 						}
+						elem, p = p[:idx], p[idx:] // next elem, forward p
 						switch string(elem) {
 						case "registration-token": // -> 31
 							// POST /enterprises/{enterprise}/actions/runners/registration-token
@@ -9695,36 +8719,30 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			if len(p) > 1 && p[0] == '/' {
 				p = p[1:]
 			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-				elem, p = p, p[:0] // slash not found, using full path
-			} else {
-				elem = p[:idx] // slash found, element is path until slash
-				p = p[idx:]
+			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+				idx = len(p) // no next slash, using full p
 			}
+			elem, p = p[:idx], p[idx:] // next elem, forward p
 			switch string(elem) {
 			case "v2": // -> 35
 				// Edge: 35, path: "v2".
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				case "enterprises": // -> 36
 					// Edge: 36, path: "enterprises".
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -9735,12 +8753,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						if len(p) > 1 && p[0] == '/' {
 							p = p[1:]
 						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-							elem, p = p, p[:0] // slash not found, using full path
-						} else {
-							elem = p[:idx] // slash found, element is path until slash
-							p = p[idx:]
+						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+							idx = len(p) // no next slash, using full p
 						}
+						elem, p = p[:idx], p[idx:] // next elem, forward p
 						switch string(elem) {
 						case "Groups": // -> 38
 							// POST /scim/v2/enterprises/{enterprise}/Groups
@@ -9768,12 +8784,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			if len(p) > 1 && p[0] == '/' {
 				p = p[1:]
 			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-				elem, p = p, p[:0] // slash not found, using full path
-			} else {
-				elem = p[:idx] // slash found, element is path until slash
-				p = p[idx:]
+			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+				idx = len(p) // no next slash, using full p
 			}
+			elem, p = p[:idx], p[idx:] // next elem, forward p
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -9784,12 +8798,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				case "comments": // -> 42
 					// POST /gists/{gist_id}/comments
@@ -9805,24 +8817,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			if len(p) > 1 && p[0] == '/' {
 				p = p[1:]
 			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-				elem, p = p, p[:0] // slash not found, using full path
-			} else {
-				elem = p[:idx] // slash found, element is path until slash
-				p = p[idx:]
+			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+				idx = len(p) // no next slash, using full p
 			}
+			elem, p = p[:idx], p[idx:] // next elem, forward p
 			switch string(elem) {
 			case "packages": // -> 50
 				// Edge: 50, path: "packages".
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				default:
 					if args == nil {
@@ -9833,24 +8841,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					case "": // -> 52
 						// Edge: 52, path: "".
 						if len(p) > 1 && p[0] == '/' {
 							p = p[1:]
 						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-							elem, p = p, p[:0] // slash not found, using full path
-						} else {
-							elem = p[:idx] // slash found, element is path until slash
-							p = p[idx:]
+						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+							idx = len(p) // no next slash, using full p
 						}
+						elem, p = p[:idx], p[idx:] // next elem, forward p
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -9861,12 +8865,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							case "restore": // -> 54
 								// POST /user/packages/{package_type}/{package_name}/restore
@@ -9877,12 +8879,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -9893,12 +8893,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(p) > 1 && p[0] == '/' {
 										p = p[1:]
 									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-										elem, p = p, p[:0] // slash not found, using full path
-									} else {
-										elem = p[:idx] // slash found, element is path until slash
-										p = p[idx:]
+									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+										idx = len(p) // no next slash, using full p
 									}
+									elem, p = p[:idx], p[idx:] // next elem, forward p
 									switch string(elem) {
 									case "restore": // -> 69
 										// POST /user/packages/{package_type}/{package_name}/versions/{package_version_id}/restore
@@ -9932,12 +8930,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			if len(p) > 1 && p[0] == '/' {
 				p = p[1:]
 			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-				elem, p = p, p[:0] // slash not found, using full path
-			} else {
-				elem = p[:idx] // slash found, element is path until slash
-				p = p[idx:]
+			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+				idx = len(p) // no next slash, using full p
 			}
+			elem, p = p[:idx], p[idx:] // next elem, forward p
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -9948,24 +8944,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				case "packages": // -> 62
 					// Edge: 62, path: "packages".
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -9976,24 +8968,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						if len(p) > 1 && p[0] == '/' {
 							p = p[1:]
 						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-							elem, p = p, p[:0] // slash not found, using full path
-						} else {
-							elem = p[:idx] // slash found, element is path until slash
-							p = p[idx:]
+						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+							idx = len(p) // no next slash, using full p
 						}
+						elem, p = p[:idx], p[idx:] // next elem, forward p
 						switch string(elem) {
 						case "": // -> 64
 							// Edge: 64, path: "".
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -10004,12 +8992,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								case "restore": // -> 66
 									// POST /users/{username}/packages/{package_type}/{package_name}/restore
@@ -10020,12 +9006,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(p) > 1 && p[0] == '/' {
 										p = p[1:]
 									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-										elem, p = p, p[:0] // slash not found, using full path
-									} else {
-										elem = p[:idx] // slash found, element is path until slash
-										p = p[idx:]
+									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+										idx = len(p) // no next slash, using full p
 									}
+									elem, p = p[:idx], p[idx:] // next elem, forward p
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -10036,12 +9020,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(p) > 1 && p[0] == '/' {
 											p = p[1:]
 										}
-										if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-											elem, p = p, p[:0] // slash not found, using full path
-										} else {
-											elem = p[:idx] // slash found, element is path until slash
-											p = p[idx:]
+										if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+											idx = len(p) // no next slash, using full p
 										}
+										elem, p = p[:idx], p[idx:] // next elem, forward p
 										switch string(elem) {
 										case "restore": // -> 75
 											// POST /users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore
@@ -10072,24 +9054,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			if len(p) > 1 && p[0] == '/' {
 				p = p[1:]
 			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-				elem, p = p, p[:0] // slash not found, using full path
-			} else {
-				elem = p[:idx] // slash found, element is path until slash
-				p = p[idx:]
+			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+				idx = len(p) // no next slash, using full p
 			}
+			elem, p = p[:idx], p[idx:] // next elem, forward p
 			switch string(elem) {
 			case "columns": // -> 82
 				// Edge: 82, path: "columns".
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				default:
 					if args == nil {
@@ -10100,12 +9078,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					case "moves": // -> 84
 						// POST /projects/columns/{column_id}/moves
@@ -10125,12 +9101,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				case "columns": // -> 78
 					// POST /projects/{project_id}/columns
@@ -10146,12 +9120,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			if len(p) > 1 && p[0] == '/' {
 				p = p[1:]
 			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-				elem, p = p, p[:0] // slash not found, using full path
-			} else {
-				elem = p[:idx] // slash found, element is path until slash
-				p = p[idx:]
+			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+				idx = len(p) // no next slash, using full p
 			}
+			elem, p = p[:idx], p[idx:] // next elem, forward p
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -10162,24 +9134,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				case "discussions": // -> 102
 					// Edge: 102, path: "discussions".
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -10190,24 +9158,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						if len(p) > 1 && p[0] == '/' {
 							p = p[1:]
 						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-							elem, p = p, p[:0] // slash not found, using full path
-						} else {
-							elem = p[:idx] // slash found, element is path until slash
-							p = p[idx:]
+						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+							idx = len(p) // no next slash, using full p
 						}
+						elem, p = p[:idx], p[idx:] // next elem, forward p
 						switch string(elem) {
 						case "comments": // -> 104
 							// Edge: 104, path: "comments".
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -10218,12 +9182,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								case "reactions": // -> 106
 									// POST /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions
@@ -10257,24 +9219,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		if len(p) > 1 && p[0] == '/' {
 			p = p[1:]
 		}
-		if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-			elem, p = p, p[:0] // slash not found, using full path
-		} else {
-			elem = p[:idx] // slash found, element is path until slash
-			p = p[idx:]
+		if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+			idx = len(p) // no next slash, using full p
 		}
+		elem, p = p[:idx], p[idx:] // next elem, forward p
 		switch string(elem) {
 		case "orgs": // -> 1
 			// Edge: 1, path: "orgs".
 			if len(p) > 1 && p[0] == '/' {
 				p = p[1:]
 			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-				elem, p = p, p[:0] // slash not found, using full path
-			} else {
-				elem = p[:idx] // slash found, element is path until slash
-				p = p[idx:]
+			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+				idx = len(p) // no next slash, using full p
 			}
+			elem, p = p[:idx], p[idx:] // next elem, forward p
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -10285,36 +9243,30 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				case "actions": // -> 3
 					// Edge: 3, path: "actions".
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					case "runner-groups": // -> 4
 						// Edge: 4, path: "runner-groups".
 						if len(p) > 1 && p[0] == '/' {
 							p = p[1:]
 						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-							elem, p = p, p[:0] // slash not found, using full path
-						} else {
-							elem = p[:idx] // slash found, element is path until slash
-							p = p[idx:]
+						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+							idx = len(p) // no next slash, using full p
 						}
+						elem, p = p[:idx], p[idx:] // next elem, forward p
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -10325,24 +9277,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							case "repositories": // -> 6
 								// Edge: 6, path: "repositories".
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -10358,12 +9306,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -10384,12 +9330,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						if len(p) > 1 && p[0] == '/' {
 							p = p[1:]
 						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-							elem, p = p, p[:0] // slash not found, using full path
-						} else {
-							elem = p[:idx] // slash found, element is path until slash
-							p = p[idx:]
+						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+							idx = len(p) // no next slash, using full p
 						}
+						elem, p = p[:idx], p[idx:] // next elem, forward p
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -10400,24 +9344,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							case "repositories": // -> 10
 								// Edge: 10, path: "repositories".
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -10439,24 +9379,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						if len(p) > 1 && p[0] == '/' {
 							p = p[1:]
 						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-							elem, p = p, p[:0] // slash not found, using full path
-						} else {
-							elem = p[:idx] // slash found, element is path until slash
-							p = p[idx:]
+						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+							idx = len(p) // no next slash, using full p
 						}
+						elem, p = p[:idx], p[idx:] // next elem, forward p
 						switch string(elem) {
 						case "repositories": // -> 28
 							// Edge: 28, path: "repositories".
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -10485,12 +9421,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -10506,12 +9440,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -10527,12 +9459,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -10543,24 +9473,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						if len(p) > 1 && p[0] == '/' {
 							p = p[1:]
 						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-							elem, p = p, p[:0] // slash not found, using full path
-						} else {
-							elem = p[:idx] // slash found, element is path until slash
-							p = p[idx:]
+						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+							idx = len(p) // no next slash, using full p
 						}
+						elem, p = p[:idx], p[idx:] // next elem, forward p
 						switch string(elem) {
 						case "memberships": // -> 99
 							// Edge: 99, path: "memberships".
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -10576,12 +9502,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -10597,12 +9521,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -10613,24 +9535,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								case "": // -> 107
 									// Edge: 107, path: "".
 									if len(p) > 1 && p[0] == '/' {
 										p = p[1:]
 									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-										elem, p = p, p[:0] // slash not found, using full path
-									} else {
-										elem = p[:idx] // slash found, element is path until slash
-										p = p[idx:]
+									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+										idx = len(p) // no next slash, using full p
 									}
+									elem, p = p[:idx], p[idx:] // next elem, forward p
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -10661,12 +9579,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			if len(p) > 1 && p[0] == '/' {
 				p = p[1:]
 			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-				elem, p = p, p[:0] // slash not found, using full path
-			} else {
-				elem = p[:idx] // slash found, element is path until slash
-				p = p[idx:]
+			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+				idx = len(p) // no next slash, using full p
 			}
+			elem, p = p[:idx], p[idx:] // next elem, forward p
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -10677,24 +9593,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				case "environments": // -> 16
 					// Edge: 16, path: "environments".
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -10705,24 +9617,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						if len(p) > 1 && p[0] == '/' {
 							p = p[1:]
 						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-							elem, p = p, p[:0] // slash not found, using full path
-						} else {
-							elem = p[:idx] // slash found, element is path until slash
-							p = p[idx:]
+						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+							idx = len(p) // no next slash, using full p
 						}
+						elem, p = p[:idx], p[idx:] // next elem, forward p
 						switch string(elem) {
 						case "secrets": // -> 18
 							// Edge: 18, path: "secrets".
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -10748,12 +9656,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			if len(p) > 1 && p[0] == '/' {
 				p = p[1:]
 			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-				elem, p = p, p[:0] // slash not found, using full path
-			} else {
-				elem = p[:idx] // slash found, element is path until slash
-				p = p[idx:]
+			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+				idx = len(p) // no next slash, using full p
 			}
+			elem, p = p[:idx], p[idx:] // next elem, forward p
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -10764,24 +9670,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				case "": // -> 22
 					// Edge: 22, path: "".
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -10792,36 +9694,30 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						if len(p) > 1 && p[0] == '/' {
 							p = p[1:]
 						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-							elem, p = p, p[:0] // slash not found, using full path
-						} else {
-							elem = p[:idx] // slash found, element is path until slash
-							p = p[idx:]
+						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+							idx = len(p) // no next slash, using full p
 						}
+						elem, p = p[:idx], p[idx:] // next elem, forward p
 						switch string(elem) {
 						case "actions": // -> 24
 							// Edge: 24, path: "actions".
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							case "secrets": // -> 25
 								// Edge: 25, path: "secrets".
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -10837,12 +9733,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								case "selected-actions": // -> 32
 									// PUT /repos/{owner}/{repo}/actions/permissions/selected-actions
@@ -10874,12 +9768,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -10890,24 +9782,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								case "reviews": // -> 83
 									// Edge: 83, path: "reviews".
 									if len(p) > 1 && p[0] == '/' {
 										p = p[1:]
 									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-										elem, p = p, p[:0] // slash not found, using full path
-									} else {
-										elem = p[:idx] // slash found, element is path until slash
-										p = p[idx:]
+									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+										idx = len(p) // no next slash, using full p
 									}
+									elem, p = p[:idx], p[idx:] // next elem, forward p
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -10918,12 +9806,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(p) > 1 && p[0] == '/' {
 											p = p[1:]
 										}
-										if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-											elem, p = p, p[:0] // slash not found, using full path
-										} else {
-											elem = p[:idx] // slash found, element is path until slash
-											p = p[idx:]
+										if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+											idx = len(p) // no next slash, using full p
 										}
+										elem, p = p[:idx], p[idx:] // next elem, forward p
 										switch string(elem) {
 										case "dismissals": // -> 85
 											// PUT /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/dismissals
@@ -10961,12 +9847,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -10977,12 +9861,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								case "protection": // -> 92
 									// PUT /repos/{owner}/{repo}/branches/{branch}/protection
@@ -11008,24 +9890,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			if len(p) > 1 && p[0] == '/' {
 				p = p[1:]
 			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-				elem, p = p, p[:0] // slash not found, using full path
-			} else {
-				elem = p[:idx] // slash found, element is path until slash
-				p = p[idx:]
+			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+				idx = len(p) // no next slash, using full p
 			}
+			elem, p = p[:idx], p[idx:] // next elem, forward p
 			switch string(elem) {
 			case "threads": // -> 36
 				// Edge: 36, path: "threads".
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				default:
 					if args == nil {
@@ -11036,12 +9914,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					case "subscription": // -> 38
 						// PUT /notifications/threads/{thread_id}/subscription
@@ -11062,24 +9938,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			if len(p) > 1 && p[0] == '/' {
 				p = p[1:]
 			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-				elem, p = p, p[:0] // slash not found, using full path
-			} else {
-				elem = p[:idx] // slash found, element is path until slash
-				p = p[idx:]
+			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+				idx = len(p) // no next slash, using full p
 			}
+			elem, p = p[:idx], p[idx:] // next elem, forward p
 			switch string(elem) {
 			case "starred": // -> 40
 				// Edge: 40, path: "starred".
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				default:
 					if args == nil {
@@ -11090,24 +9962,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					case "": // -> 42
 						// Edge: 42, path: "".
 						if len(p) > 1 && p[0] == '/' {
 							p = p[1:]
 						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-							elem, p = p, p[:0] // slash not found, using full path
-						} else {
-							elem = p[:idx] // slash found, element is path until slash
-							p = p[idx:]
+						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+							idx = len(p) // no next slash, using full p
 						}
+						elem, p = p[:idx], p[idx:] // next elem, forward p
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -11128,12 +9996,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				default:
 					if args == nil {
@@ -11144,24 +10010,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					case "repositories": // -> 46
 						// Edge: 46, path: "repositories".
 						if len(p) > 1 && p[0] == '/' {
 							p = p[1:]
 						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-							elem, p = p, p[:0] // slash not found, using full path
-						} else {
-							elem = p[:idx] // slash found, element is path until slash
-							p = p[idx:]
+						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+							idx = len(p) // no next slash, using full p
 						}
+						elem, p = p[:idx], p[idx:] // next elem, forward p
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -11182,12 +10044,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				default:
 					if args == nil {
@@ -11207,24 +10067,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			if len(p) > 1 && p[0] == '/' {
 				p = p[1:]
 			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-				elem, p = p, p[:0] // slash not found, using full path
-			} else {
-				elem = p[:idx] // slash found, element is path until slash
-				p = p[idx:]
+			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+				idx = len(p) // no next slash, using full p
 			}
+			elem, p = p[:idx], p[idx:] // next elem, forward p
 			switch string(elem) {
 			case "installations": // -> 49
 				// Edge: 49, path: "installations".
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				default:
 					if args == nil {
@@ -11235,12 +10091,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					case "suspended": // -> 51
 						// PUT /app/installations/{installation_id}/suspended
@@ -11260,12 +10114,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			if len(p) > 1 && p[0] == '/' {
 				p = p[1:]
 			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-				elem, p = p, p[:0] // slash not found, using full path
-			} else {
-				elem = p[:idx] // slash found, element is path until slash
-				p = p[idx:]
+			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+				idx = len(p) // no next slash, using full p
 			}
+			elem, p = p[:idx], p[idx:] // next elem, forward p
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -11276,36 +10128,30 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				case "actions": // -> 54
 					// Edge: 54, path: "actions".
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					case "runner-groups": // -> 55
 						// Edge: 55, path: "runner-groups".
 						if len(p) > 1 && p[0] == '/' {
 							p = p[1:]
 						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-							elem, p = p, p[:0] // slash not found, using full path
-						} else {
-							elem = p[:idx] // slash found, element is path until slash
-							p = p[idx:]
+						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+							idx = len(p) // no next slash, using full p
 						}
+						elem, p = p[:idx], p[idx:] // next elem, forward p
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -11316,24 +10162,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							case "organizations": // -> 57
 								// Edge: 57, path: "organizations".
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -11349,12 +10191,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(p) > 1 && p[0] == '/' {
 									p = p[1:]
 								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-									elem, p = p, p[:0] // slash not found, using full path
-								} else {
-									elem = p[:idx] // slash found, element is path until slash
-									p = p[idx:]
+								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+									idx = len(p) // no next slash, using full p
 								}
+								elem, p = p[:idx], p[idx:] // next elem, forward p
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -11375,24 +10215,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						if len(p) > 1 && p[0] == '/' {
 							p = p[1:]
 						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-							elem, p = p, p[:0] // slash not found, using full path
-						} else {
-							elem = p[:idx] // slash found, element is path until slash
-							p = p[idx:]
+						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+							idx = len(p) // no next slash, using full p
 						}
+						elem, p = p[:idx], p[idx:] // next elem, forward p
 						switch string(elem) {
 						case "organizations": // -> 62
 							// Edge: 62, path: "organizations".
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -11426,36 +10262,30 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			if len(p) > 1 && p[0] == '/' {
 				p = p[1:]
 			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-				elem, p = p, p[:0] // slash not found, using full path
-			} else {
-				elem = p[:idx] // slash found, element is path until slash
-				p = p[idx:]
+			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+				idx = len(p) // no next slash, using full p
 			}
+			elem, p = p[:idx], p[idx:] // next elem, forward p
 			switch string(elem) {
 			case "v2": // -> 66
 				// Edge: 66, path: "v2".
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				case "enterprises": // -> 67
 					// Edge: 67, path: "enterprises".
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -11466,24 +10296,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						if len(p) > 1 && p[0] == '/' {
 							p = p[1:]
 						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-							elem, p = p, p[:0] // slash not found, using full path
-						} else {
-							elem = p[:idx] // slash found, element is path until slash
-							p = p[idx:]
+						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+							idx = len(p) // no next slash, using full p
 						}
+						elem, p = p[:idx], p[idx:] // next elem, forward p
 						switch string(elem) {
 						case "Groups": // -> 69
 							// Edge: 69, path: "Groups".
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -11499,12 +10325,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(p) > 1 && p[0] == '/' {
 								p = p[1:]
 							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-								elem, p = p, p[:0] // slash not found, using full path
-							} else {
-								elem = p[:idx] // slash found, element is path until slash
-								p = p[idx:]
+							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+								idx = len(p) // no next slash, using full p
 							}
+							elem, p = p[:idx], p[idx:] // next elem, forward p
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -11533,12 +10357,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			if len(p) > 1 && p[0] == '/' {
 				p = p[1:]
 			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-				elem, p = p, p[:0] // slash not found, using full path
-			} else {
-				elem = p[:idx] // slash found, element is path until slash
-				p = p[idx:]
+			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+				idx = len(p) // no next slash, using full p
 			}
+			elem, p = p[:idx], p[idx:] // next elem, forward p
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -11549,12 +10371,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				case "star": // -> 75
 					// PUT /gists/{gist_id}/star
@@ -11570,12 +10390,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			if len(p) > 1 && p[0] == '/' {
 				p = p[1:]
 			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-				elem, p = p, p[:0] // slash not found, using full path
-			} else {
-				elem = p[:idx] // slash found, element is path until slash
-				p = p[idx:]
+			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+				idx = len(p) // no next slash, using full p
 			}
+			elem, p = p[:idx], p[idx:] // next elem, forward p
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -11586,24 +10404,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				if len(p) > 1 && p[0] == '/' {
 					p = p[1:]
 				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-					elem, p = p, p[:0] // slash not found, using full path
-				} else {
-					elem = p[:idx] // slash found, element is path until slash
-					p = p[idx:]
+				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+					idx = len(p) // no next slash, using full p
 				}
+				elem, p = p[:idx], p[idx:] // next elem, forward p
 				switch string(elem) {
 				case "members": // -> 95
 					// Edge: 95, path: "members".
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -11619,12 +10433,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					if len(p) > 1 && p[0] == '/' {
 						p = p[1:]
 					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
-						elem, p = p, p[:0] // slash not found, using full path
-					} else {
-						elem = p[:idx] // slash found, element is path until slash
-						p = p[idx:]
+					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
+						idx = len(p) // no next slash, using full p
 					}
+					elem, p = p[:idx], p[idx:] // next elem, forward p
 					switch string(elem) {
 					default:
 						if args == nil {
