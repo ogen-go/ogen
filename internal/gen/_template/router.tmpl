@@ -37,6 +37,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 {{ define "route_edge" }}
 	{{- /*gotype: github.com/ogen-go/ogen/internal/gen.RouteEge*/ -}}
+	{{- if $.Param }}
+		if args == nil {
+			args = make(map[string]string)
+		}
+		args["{{ $.Param.Spec.Name }}"] = string(elem)
+	{{- end }}
 	{{- if and ($.Operation) (not $.HasNext) }}
 		// {{ $.Operation.Spec.HTTPMethod }} {{ $.Operation.Spec.Path }}.
 		s.handle{{ $.Operation.Name }}Request(args, w, r)
@@ -63,15 +69,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					{{- template "route_edge" $next }}
 			{{- end }}
 			{{- if $.Case.Variable }}
-				{{- $v := $.Case.Variable }}
 				default:
-					// {{ $v.Operation.Spec.HTTPMethod }} {{ $v.Operation.Spec.Path }}.
-					if args == nil {
-						args = make(map[string]string)
-					}
-					args["{{ $v.Param.Spec.Name }}"] = string(elem)
-					s.handle{{ $v.Operation.Name }}Request(args, w, r)
-					return
+                	{{- template "route_edge" $.Case.Variable }}
 				}
 			{{- else }}
 				default:
