@@ -83,7 +83,6 @@ func decodeCreateSnapshotRequest(r *http.Request, span trace.Span) (req Snapshot
 			return req, err
 		}
 		if err := func() error {
-
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -118,7 +117,6 @@ func decodeCreateSyncActionRequest(r *http.Request, span trace.Span) (req Instan
 			return req, err
 		}
 		if err := func() error {
-
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -309,7 +307,6 @@ func decodePatchGuestDriveByIDRequest(r *http.Request, span trace.Span) (req Par
 			return req, err
 		}
 		if err := func() error {
-
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -344,7 +341,6 @@ func decodePatchGuestNetworkInterfaceByIDRequest(r *http.Request, span trace.Spa
 			return req, err
 		}
 		if err := func() error {
-
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -379,7 +375,6 @@ func decodePatchMachineConfigurationRequest(r *http.Request, span trace.Span) (r
 			return req, err
 		}
 		if err := func() error {
-
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -414,7 +409,6 @@ func decodePatchVmRequest(r *http.Request, span trace.Span) (req VM, err error) 
 			return req, err
 		}
 		if err := func() error {
-
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -501,7 +495,6 @@ func decodePutGuestDriveByIDRequest(r *http.Request, span trace.Span) (req Drive
 			return req, err
 		}
 		if err := func() error {
-
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -536,7 +529,6 @@ func decodePutGuestNetworkInterfaceByIDRequest(r *http.Request, span trace.Span)
 			return req, err
 		}
 		if err := func() error {
-
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -571,7 +563,6 @@ func decodePutGuestVsockRequest(r *http.Request, span trace.Span) (req Vsock, er
 			return req, err
 		}
 		if err := func() error {
-
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -606,7 +597,6 @@ func decodePutLoggerRequest(r *http.Request, span trace.Span) (req Logger, err e
 			return req, err
 		}
 		if err := func() error {
-
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -641,7 +631,6 @@ func decodePutMachineConfigurationRequest(r *http.Request, span trace.Span) (req
 			return req, err
 		}
 		if err := func() error {
-
 			if err := request.Validate(); err != nil {
 				return err
 			}

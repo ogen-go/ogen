@@ -65,7 +65,6 @@ var (
 func (s Data) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-
 		if err := (validate.String{
 			MinLength:    0,
 			MinLengthSet: false,
@@ -85,7 +84,6 @@ func (s Data) Validate() error {
 		})
 	}
 	if err := func() error {
-
 		if err := (validate.String{
 			MinLength:    0,
 			MinLengthSet: false,
@@ -105,7 +103,6 @@ func (s Data) Validate() error {
 		})
 	}
 	if err := func() error {
-
 		if err := (validate.String{
 			MinLength:    0,
 			MinLengthSet: false,
@@ -132,7 +129,6 @@ func (s Data) Validate() error {
 func (s Hash) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-
 		if err := (validate.String{
 			MinLength:    64,
 			MinLengthSet: true,
@@ -160,12 +156,10 @@ func (s Hash) Validate() error {
 func (s Pet) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-
 		if s.Primary == nil {
 			return nil // optional
 		}
 		if err := func() error {
-
 			if err := s.Primary.Validate(); err != nil {
 				return err
 			}
@@ -181,7 +175,6 @@ func (s Pet) Validate() error {
 		})
 	}
 	if err := func() error {
-
 		if err := (validate.Int{
 			MinSet:       true,
 			Min:          0,
@@ -200,7 +193,6 @@ func (s Pet) Validate() error {
 		})
 	}
 	if err := func() error {
-
 		if err := (validate.String{
 			MinLength:    4,
 			MinLengthSet: true,
@@ -220,10 +212,8 @@ func (s Pet) Validate() error {
 		})
 	}
 	if err := func() error {
-
 		if s.Type.Set {
 			if err := func() error {
-
 				if err := s.Type.Value.Validate(); err != nil {
 					return err
 				}
@@ -233,7 +223,6 @@ func (s Pet) Validate() error {
 			}
 		}
 		return nil
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -242,7 +231,6 @@ func (s Pet) Validate() error {
 		})
 	}
 	if err := func() error {
-
 		if err := s.Kind.Validate(); err != nil {
 			return err
 		}
@@ -254,7 +242,6 @@ func (s Pet) Validate() error {
 		})
 	}
 	if err := func() error {
-
 		if err := (validate.Array{
 			MinLength:    0,
 			MinLengthSet: false,
@@ -266,7 +253,6 @@ func (s Pet) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Friends {
 			if err := func() error {
-
 				if err := elem.Validate(); err != nil {
 					return err
 				}
@@ -289,10 +275,8 @@ func (s Pet) Validate() error {
 		})
 	}
 	if err := func() error {
-
 		if s.Next.Set {
 			if err := func() error {
-
 				if err := s.Next.Value.Validate(); err != nil {
 					return err
 				}
@@ -302,7 +286,6 @@ func (s Pet) Validate() error {
 			}
 		}
 		return nil
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -311,10 +294,8 @@ func (s Pet) Validate() error {
 		})
 	}
 	if err := func() error {
-
 		if s.TestInteger1.Set {
 			if err := func() error {
-
 				if err := (validate.Int{
 					MinSet:       false,
 					Min:          0,
@@ -331,7 +312,6 @@ func (s Pet) Validate() error {
 			}
 		}
 		return nil
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -340,10 +320,8 @@ func (s Pet) Validate() error {
 		})
 	}
 	if err := func() error {
-
 		if s.TestFloat1.Set {
 			if err := func() error {
-
 				if err := (validate.Int{
 					MinSet:       true,
 					Min:          15,
@@ -354,13 +332,15 @@ func (s Pet) Validate() error {
 				}).Validate(int64(s.TestFloat1.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
+				if f := float64(s.TestFloat1.Value); math.IsInf(f, 0) || math.IsNaN(f) {
+					return errors.Errorf("%f float value is invalid", f)
+				}
 				return nil
 			}(); err != nil {
 				return err
 			}
 		}
 		return nil
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -369,14 +349,12 @@ func (s Pet) Validate() error {
 		})
 	}
 	if err := func() error {
-
 		var failures []validate.FieldError
 		for i, elem := range s.TestArray1 {
 			if err := func() error {
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-
 				if err := (validate.Array{
 					MinLength:    0,
 					MinLengthSet: false,
@@ -388,7 +366,6 @@ func (s Pet) Validate() error {
 				var failures []validate.FieldError
 				for i, elem := range elem {
 					if err := func() error {
-
 						if err := (validate.String{
 							MinLength:    0,
 							MinLengthSet: false,
@@ -445,7 +422,6 @@ func (s PetKind) Validate() error {
 	}
 }
 func (s PetName) Validate() error {
-
 	if err := (validate.String{
 		MinLength:    6,
 		MinLengthSet: true,

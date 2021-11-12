@@ -65,10 +65,8 @@ var (
 func (s Book) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-
 		if s.ID.Set {
 			if err := func() error {
-
 				if err := (validate.Int{
 					MinSet:       true,
 					Min:          1,
@@ -85,7 +83,6 @@ func (s Book) Validate() error {
 			}
 		}
 		return nil
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -94,10 +91,8 @@ func (s Book) Validate() error {
 		})
 	}
 	if err := func() error {
-
 		if s.MediaID.Set {
 			if err := func() error {
-
 				if err := (validate.Int{
 					MinSet:       true,
 					Min:          1,
@@ -114,7 +109,6 @@ func (s Book) Validate() error {
 			}
 		}
 		return nil
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -123,10 +117,8 @@ func (s Book) Validate() error {
 		})
 	}
 	if err := func() error {
-
 		if s.Images.Set {
 			if err := func() error {
-
 				if err := s.Images.Value.Validate(); err != nil {
 					return err
 				}
@@ -136,7 +128,6 @@ func (s Book) Validate() error {
 			}
 		}
 		return nil
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -145,11 +136,9 @@ func (s Book) Validate() error {
 		})
 	}
 	if err := func() error {
-
 		var failures []validate.FieldError
 		for i, elem := range s.Tags {
 			if err := func() error {
-
 				if err := elem.Validate(); err != nil {
 					return err
 				}
@@ -172,10 +161,8 @@ func (s Book) Validate() error {
 		})
 	}
 	if err := func() error {
-
 		if s.NumPages.Set {
 			if err := func() error {
-
 				if err := (validate.Int{
 					MinSet:       true,
 					Min:          0,
@@ -192,7 +179,6 @@ func (s Book) Validate() error {
 			}
 		}
 		return nil
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -201,10 +187,8 @@ func (s Book) Validate() error {
 		})
 	}
 	if err := func() error {
-
 		if s.NumFavorites.Set {
 			if err := func() error {
-
 				if err := (validate.Int{
 					MinSet:       true,
 					Min:          0,
@@ -221,7 +205,6 @@ func (s Book) Validate() error {
 			}
 		}
 		return nil
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -237,10 +220,8 @@ func (s Book) Validate() error {
 func (s Image) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-
 		if s.W.Set {
 			if err := func() error {
-
 				if err := (validate.Int{
 					MinSet:       true,
 					Min:          0,
@@ -257,7 +238,6 @@ func (s Image) Validate() error {
 			}
 		}
 		return nil
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -266,10 +246,8 @@ func (s Image) Validate() error {
 		})
 	}
 	if err := func() error {
-
 		if s.H.Set {
 			if err := func() error {
-
 				if err := (validate.Int{
 					MinSet:       true,
 					Min:          0,
@@ -286,7 +264,6 @@ func (s Image) Validate() error {
 			}
 		}
 		return nil
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -302,11 +279,9 @@ func (s Image) Validate() error {
 func (s Images) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-
 		var failures []validate.FieldError
 		for i, elem := range s.Pages {
 			if err := func() error {
-
 				if err := elem.Validate(); err != nil {
 					return err
 				}
@@ -329,10 +304,8 @@ func (s Images) Validate() error {
 		})
 	}
 	if err := func() error {
-
 		if s.Cover.Set {
 			if err := func() error {
-
 				if err := s.Cover.Value.Validate(); err != nil {
 					return err
 				}
@@ -342,7 +315,6 @@ func (s Images) Validate() error {
 			}
 		}
 		return nil
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -351,10 +323,8 @@ func (s Images) Validate() error {
 		})
 	}
 	if err := func() error {
-
 		if s.Thumbnail.Set {
 			if err := func() error {
-
 				if err := s.Thumbnail.Value.Validate(); err != nil {
 					return err
 				}
@@ -364,7 +334,6 @@ func (s Images) Validate() error {
 			}
 		}
 		return nil
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -382,11 +351,9 @@ func (s SearchByTagIDOKApplicationJSON) Validate() error {
 	if s == nil {
 		return errors.New("nil is invalid value")
 	}
-
 	var failures []validate.FieldError
 	for i, elem := range s {
 		if err := func() error {
-
 			if err := elem.Validate(); err != nil {
 				return err
 			}
@@ -407,11 +374,9 @@ func (s SearchOKApplicationJSON) Validate() error {
 	if s == nil {
 		return errors.New("nil is invalid value")
 	}
-
 	var failures []validate.FieldError
 	for i, elem := range s {
 		if err := func() error {
-
 			if err := elem.Validate(); err != nil {
 				return err
 			}
@@ -431,11 +396,9 @@ func (s SearchOKApplicationJSON) Validate() error {
 func (s SearchResponse) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-
 		var failures []validate.FieldError
 		for i, elem := range s.Result {
 			if err := func() error {
-
 				if err := elem.Validate(); err != nil {
 					return err
 				}
@@ -465,10 +428,8 @@ func (s SearchResponse) Validate() error {
 func (s Tag) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-
 		if s.ID.Set {
 			if err := func() error {
-
 				if err := (validate.Int{
 					MinSet:       true,
 					Min:          1,
@@ -485,7 +446,6 @@ func (s Tag) Validate() error {
 			}
 		}
 		return nil
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -494,10 +454,8 @@ func (s Tag) Validate() error {
 		})
 	}
 	if err := func() error {
-
 		if s.Type.Set {
 			if err := func() error {
-
 				if err := s.Type.Value.Validate(); err != nil {
 					return err
 				}
@@ -507,7 +465,6 @@ func (s Tag) Validate() error {
 			}
 		}
 		return nil
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{

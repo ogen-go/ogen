@@ -82,6 +82,14 @@ func decodeAddStickerToSetRequest(r *http.Request, span trace.Span) (req AddStic
 		}(); err != nil {
 			return req, err
 		}
+		if err := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate")
+		}
 		return request, nil
 	default:
 		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -109,7 +117,6 @@ func decodeAnswerCallbackQueryRequest(r *http.Request, span trace.Span) (req Ans
 			return req, err
 		}
 		if err := func() error {
-
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -144,7 +151,6 @@ func decodeAnswerInlineQueryRequest(r *http.Request, span trace.Span) (req Answe
 			return req, err
 		}
 		if err := func() error {
-
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -205,7 +211,6 @@ func decodeAnswerShippingQueryRequest(r *http.Request, span trace.Span) (req Ans
 			return req, err
 		}
 		if err := func() error {
-
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -292,7 +297,6 @@ func decodeCopyMessageRequest(r *http.Request, span trace.Span) (req CopyMessage
 			return req, err
 		}
 		if err := func() error {
-
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -327,7 +331,6 @@ func decodeCreateChatInviteLinkRequest(r *http.Request, span trace.Span) (req Cr
 			return req, err
 		}
 		if err := func() error {
-
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -362,7 +365,6 @@ func decodeCreateNewStickerSetRequest(r *http.Request, span trace.Span) (req Cre
 			return req, err
 		}
 		if err := func() error {
-
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -579,7 +581,6 @@ func decodeEditChatInviteLinkRequest(r *http.Request, span trace.Span) (req Edit
 			return req, err
 		}
 		if err := func() error {
-
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -614,7 +615,6 @@ func decodeEditMessageCaptionRequest(r *http.Request, span trace.Span) (req Edit
 			return req, err
 		}
 		if err := func() error {
-
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -649,7 +649,6 @@ func decodeEditMessageLiveLocationRequest(r *http.Request, span trace.Span) (req
 			return req, err
 		}
 		if err := func() error {
-
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -684,7 +683,6 @@ func decodeEditMessageMediaRequest(r *http.Request, span trace.Span) (req EditMe
 			return req, err
 		}
 		if err := func() error {
-
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -719,7 +717,6 @@ func decodeEditMessageReplyMarkupRequest(r *http.Request, span trace.Span) (req 
 			return req, err
 		}
 		if err := func() error {
-
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -754,7 +751,6 @@ func decodeEditMessageTextRequest(r *http.Request, span trace.Span) (req EditMes
 			return req, err
 		}
 		if err := func() error {
-
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -1049,7 +1045,6 @@ func decodeGetUpdatesRequest(r *http.Request, span trace.Span) (req GetUpdates, 
 			return req, err
 		}
 		if err := func() error {
-
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -1084,7 +1079,6 @@ func decodeGetUserProfilePhotosRequest(r *http.Request, span trace.Span) (req Ge
 			return req, err
 		}
 		if err := func() error {
-
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -1249,7 +1243,6 @@ func decodeSendAnimationRequest(r *http.Request, span trace.Span) (req SendAnima
 			return req, err
 		}
 		if err := func() error {
-
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -1284,7 +1277,6 @@ func decodeSendAudioRequest(r *http.Request, span trace.Span) (req SendAudio, er
 			return req, err
 		}
 		if err := func() error {
-
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -1345,7 +1337,6 @@ func decodeSendContactRequest(r *http.Request, span trace.Span) (req SendContact
 			return req, err
 		}
 		if err := func() error {
-
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -1380,7 +1371,6 @@ func decodeSendDiceRequest(r *http.Request, span trace.Span) (req SendDice, err 
 			return req, err
 		}
 		if err := func() error {
-
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -1415,7 +1405,6 @@ func decodeSendDocumentRequest(r *http.Request, span trace.Span) (req SendDocume
 			return req, err
 		}
 		if err := func() error {
-
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -1450,7 +1439,6 @@ func decodeSendGameRequest(r *http.Request, span trace.Span) (req SendGame, err 
 			return req, err
 		}
 		if err := func() error {
-
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -1485,7 +1473,6 @@ func decodeSendInvoiceRequest(r *http.Request, span trace.Span) (req SendInvoice
 			return req, err
 		}
 		if err := func() error {
-
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -1520,7 +1507,6 @@ func decodeSendLocationRequest(r *http.Request, span trace.Span) (req SendLocati
 			return req, err
 		}
 		if err := func() error {
-
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -1555,7 +1541,6 @@ func decodeSendMediaGroupRequest(r *http.Request, span trace.Span) (req SendMedi
 			return req, err
 		}
 		if err := func() error {
-
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -1590,7 +1575,6 @@ func decodeSendMessageRequest(r *http.Request, span trace.Span) (req SendMessage
 			return req, err
 		}
 		if err := func() error {
-
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -1625,7 +1609,6 @@ func decodeSendPhotoRequest(r *http.Request, span trace.Span) (req SendPhoto, er
 			return req, err
 		}
 		if err := func() error {
-
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -1660,7 +1643,6 @@ func decodeSendPollRequest(r *http.Request, span trace.Span) (req SendPoll, err 
 			return req, err
 		}
 		if err := func() error {
-
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -1695,7 +1677,6 @@ func decodeSendStickerRequest(r *http.Request, span trace.Span) (req SendSticker
 			return req, err
 		}
 		if err := func() error {
-
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -1730,7 +1711,6 @@ func decodeSendVenueRequest(r *http.Request, span trace.Span) (req SendVenue, er
 			return req, err
 		}
 		if err := func() error {
-
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -1765,7 +1745,6 @@ func decodeSendVideoRequest(r *http.Request, span trace.Span) (req SendVideo, er
 			return req, err
 		}
 		if err := func() error {
-
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -1800,7 +1779,6 @@ func decodeSendVideoNoteRequest(r *http.Request, span trace.Span) (req SendVideo
 			return req, err
 		}
 		if err := func() error {
-
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -1835,7 +1813,6 @@ func decodeSendVoiceRequest(r *http.Request, span trace.Span) (req SendVoice, er
 			return req, err
 		}
 		if err := func() error {
-
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -1870,7 +1847,6 @@ func decodeSetChatAdministratorCustomTitleRequest(r *http.Request, span trace.Sp
 			return req, err
 		}
 		if err := func() error {
-
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -1905,7 +1881,6 @@ func decodeSetChatDescriptionRequest(r *http.Request, span trace.Span) (req SetC
 			return req, err
 		}
 		if err := func() error {
-
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -2018,7 +1993,6 @@ func decodeSetChatTitleRequest(r *http.Request, span trace.Span) (req SetChatTit
 			return req, err
 		}
 		if err := func() error {
-
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -2079,7 +2053,6 @@ func decodeSetMyCommandsRequest(r *http.Request, span trace.Span) (req SetMyComm
 			return req, err
 		}
 		if err := func() error {
-
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -2114,7 +2087,6 @@ func decodeSetPassportDataErrorsRequest(r *http.Request, span trace.Span) (req S
 			return req, err
 		}
 		if err := func() error {
-
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -2227,7 +2199,6 @@ func decodeStopMessageLiveLocationRequest(r *http.Request, span trace.Span) (req
 			return req, err
 		}
 		if err := func() error {
-
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -2262,7 +2233,6 @@ func decodeStopPollRequest(r *http.Request, span trace.Span) (req StopPoll, err 
 			return req, err
 		}
 		if err := func() error {
-
 			if err := request.Validate(); err != nil {
 				return err
 			}

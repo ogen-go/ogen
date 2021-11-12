@@ -207,7 +207,6 @@ func (c *Client) FoobarGet(ctx context.Context, params FoobarGetParams) (res Foo
 // POST /foobar
 func (c *Client) FoobarPost(ctx context.Context, request Pet) (res FoobarPostRes, err error) {
 	if err := func() error {
-
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -363,7 +362,6 @@ func (c *Client) GetHeader(ctx context.Context, params GetHeaderParams) (res Has
 // POST /pet
 func (c *Client) PetCreate(ctx context.Context, request Pet) (res Pet, err error) {
 	if err := func() error {
-
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -758,7 +756,6 @@ func (c *Client) PetNameByID(ctx context.Context, params PetNameByIDParams) (res
 // POST /pet/updateNameAlias
 func (c *Client) PetUpdateNameAliasPost(ctx context.Context, request PetName) (res PetUpdateNameAliasPostDefStatusCode, err error) {
 	if err := func() error {
-
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -820,7 +817,6 @@ func (c *Client) PetUpdateNameAliasPost(ctx context.Context, request PetName) (r
 // POST /pet/updateName
 func (c *Client) PetUpdateNamePost(ctx context.Context, request string) (res PetUpdateNamePostDefStatusCode, err error) {
 	if err := func() error {
-
 		if err := (validate.String{
 			MinLength:    6,
 			MinLengthSet: true,

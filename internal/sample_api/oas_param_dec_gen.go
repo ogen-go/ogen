@@ -225,7 +225,6 @@ func decodePetGetParams(args map[string]string, r *http.Request) (PetGetParams, 
 				return params, errors.Wrap(err, `query: petID: parse`)
 			}
 			if err := func() error {
-
 				if err := (validate.Int{
 					MinSet:       true,
 					Min:          1337,

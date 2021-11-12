@@ -98,7 +98,6 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 // PUT /snapshot/create
 func (c *Client) CreateSnapshot(ctx context.Context, request SnapshotCreateParams) (res CreateSnapshotRes, err error) {
 	if err := func() error {
-
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -161,7 +160,6 @@ func (c *Client) CreateSnapshot(ctx context.Context, request SnapshotCreateParam
 // PUT /actions
 func (c *Client) CreateSyncAction(ctx context.Context, request InstanceActionInfo) (res CreateSyncActionRes, err error) {
 	if err := func() error {
-
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -784,7 +782,6 @@ func (c *Client) PatchBalloonStatsInterval(ctx context.Context, request BalloonS
 // PATCH /drives/{drive_id}
 func (c *Client) PatchGuestDriveByID(ctx context.Context, request PartialDrive, params PatchGuestDriveByIDParams) (res PatchGuestDriveByIDRes, err error) {
 	if err := func() error {
-
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -861,7 +858,6 @@ func (c *Client) PatchGuestDriveByID(ctx context.Context, request PartialDrive, 
 // PATCH /network-interfaces/{iface_id}
 func (c *Client) PatchGuestNetworkInterfaceByID(ctx context.Context, request PartialNetworkInterface, params PatchGuestNetworkInterfaceByIDParams) (res PatchGuestNetworkInterfaceByIDRes, err error) {
 	if err := func() error {
-
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -938,7 +934,6 @@ func (c *Client) PatchGuestNetworkInterfaceByID(ctx context.Context, request Par
 // PATCH /machine-config
 func (c *Client) PatchMachineConfiguration(ctx context.Context, request MachineConfiguration) (res PatchMachineConfigurationRes, err error) {
 	if err := func() error {
-
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -1001,7 +996,6 @@ func (c *Client) PatchMachineConfiguration(ctx context.Context, request MachineC
 // PATCH /vm
 func (c *Client) PatchVm(ctx context.Context, request VM) (res PatchVmRes, err error) {
 	if err := func() error {
-
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -1172,7 +1166,6 @@ func (c *Client) PutGuestBootSource(ctx context.Context, request BootSource) (re
 // PUT /drives/{drive_id}
 func (c *Client) PutGuestDriveByID(ctx context.Context, request Drive, params PutGuestDriveByIDParams) (res PutGuestDriveByIDRes, err error) {
 	if err := func() error {
-
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -1249,7 +1242,6 @@ func (c *Client) PutGuestDriveByID(ctx context.Context, request Drive, params Pu
 // PUT /network-interfaces/{iface_id}
 func (c *Client) PutGuestNetworkInterfaceByID(ctx context.Context, request NetworkInterface, params PutGuestNetworkInterfaceByIDParams) (res PutGuestNetworkInterfaceByIDRes, err error) {
 	if err := func() error {
-
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -1326,7 +1318,6 @@ func (c *Client) PutGuestNetworkInterfaceByID(ctx context.Context, request Netwo
 // PUT /vsock
 func (c *Client) PutGuestVsock(ctx context.Context, request Vsock) (res PutGuestVsockRes, err error) {
 	if err := func() error {
-
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -1389,7 +1380,6 @@ func (c *Client) PutGuestVsock(ctx context.Context, request Vsock) (res PutGuest
 // PUT /logger
 func (c *Client) PutLogger(ctx context.Context, request Logger) (res PutLoggerRes, err error) {
 	if err := func() error {
-
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -1452,7 +1442,6 @@ func (c *Client) PutLogger(ctx context.Context, request Logger) (res PutLoggerRe
 // PUT /machine-config
 func (c *Client) PutMachineConfiguration(ctx context.Context, request MachineConfiguration) (res PutMachineConfigurationRes, err error) {
 	if err := func() error {
-
 		if err := request.Validate(); err != nil {
 			return err
 		}

@@ -4069,10 +4069,8 @@ func decodeActionsListJobsForWorkflowRunParams(args map[string]string, r *http.R
 				return params, errors.Wrap(err, `query: filter: parse`)
 			}
 			if err := func() error {
-
 				if params.Filter.Set {
 					if err := func() error {
-
 						if err := params.Filter.Value.Validate(); err != nil {
 							return err
 						}
@@ -4082,7 +4080,6 @@ func decodeActionsListJobsForWorkflowRunParams(args map[string]string, r *http.R
 					}
 				}
 				return nil
-
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `query: filter: invalid`)
@@ -5882,10 +5879,8 @@ func decodeActionsListWorkflowRunsForRepoParams(args map[string]string, r *http.
 				return params, errors.Wrap(err, `query: status: parse`)
 			}
 			if err := func() error {
-
 				if params.Status.Set {
 					if err := func() error {
-
 						if err := params.Status.Value.Validate(); err != nil {
 							return err
 						}
@@ -5895,7 +5890,6 @@ func decodeActionsListWorkflowRunsForRepoParams(args map[string]string, r *http.
 					}
 				}
 				return nil
-
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `query: status: invalid`)
@@ -8648,10 +8642,8 @@ func decodeActivityListReposStarredByAuthenticatedUserParams(args map[string]str
 				return params, errors.Wrap(err, `query: sort: parse`)
 			}
 			if err := func() error {
-
 				if params.Sort.Set {
 					if err := func() error {
-
 						if err := params.Sort.Value.Validate(); err != nil {
 							return err
 						}
@@ -8661,7 +8653,6 @@ func decodeActivityListReposStarredByAuthenticatedUserParams(args map[string]str
 					}
 				}
 				return nil
-
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `query: sort: invalid`)
@@ -8702,10 +8693,8 @@ func decodeActivityListReposStarredByAuthenticatedUserParams(args map[string]str
 				return params, errors.Wrap(err, `query: direction: parse`)
 			}
 			if err := func() error {
-
 				if params.Direction.Set {
 					if err := func() error {
-
 						if err := params.Direction.Value.Validate(); err != nil {
 							return err
 						}
@@ -8715,7 +8704,6 @@ func decodeActivityListReposStarredByAuthenticatedUserParams(args map[string]str
 					}
 				}
 				return nil
-
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `query: direction: invalid`)
@@ -9731,10 +9719,8 @@ func decodeAppsListAccountsForPlanStubbedParams(args map[string]string, r *http.
 				return params, errors.Wrap(err, `query: sort: parse`)
 			}
 			if err := func() error {
-
 				if params.Sort.Set {
 					if err := func() error {
-
 						if err := params.Sort.Value.Validate(); err != nil {
 							return err
 						}
@@ -9744,7 +9730,6 @@ func decodeAppsListAccountsForPlanStubbedParams(args map[string]string, r *http.
 					}
 				}
 				return nil
-
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `query: sort: invalid`)
@@ -9785,10 +9770,8 @@ func decodeAppsListAccountsForPlanStubbedParams(args map[string]string, r *http.
 				return params, errors.Wrap(err, `query: direction: parse`)
 			}
 			if err := func() error {
-
 				if params.Direction.Set {
 					if err := func() error {
-
 						if err := params.Direction.Value.Validate(); err != nil {
 							return err
 						}
@@ -9798,7 +9781,6 @@ func decodeAppsListAccountsForPlanStubbedParams(args map[string]string, r *http.
 					}
 				}
 				return nil
-
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `query: direction: invalid`)
@@ -11417,10 +11399,8 @@ func decodeChecksListForRefParams(args map[string]string, r *http.Request) (Chec
 				return params, errors.Wrap(err, `query: status: parse`)
 			}
 			if err := func() error {
-
 				if params.Status.Set {
 					if err := func() error {
-
 						if err := params.Status.Value.Validate(); err != nil {
 							return err
 						}
@@ -11430,7 +11410,6 @@ func decodeChecksListForRefParams(args map[string]string, r *http.Request) (Chec
 					}
 				}
 				return nil
-
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `query: status: invalid`)
@@ -11471,10 +11450,8 @@ func decodeChecksListForRefParams(args map[string]string, r *http.Request) (Chec
 				return params, errors.Wrap(err, `query: filter: parse`)
 			}
 			if err := func() error {
-
 				if params.Filter.Set {
 					if err := func() error {
-
 						if err := params.Filter.Value.Validate(); err != nil {
 							return err
 						}
@@ -11484,7 +11461,6 @@ func decodeChecksListForRefParams(args map[string]string, r *http.Request) (Chec
 					}
 				}
 				return nil
-
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `query: filter: invalid`)
@@ -11763,10 +11739,8 @@ func decodeChecksListForSuiteParams(args map[string]string, r *http.Request) (Ch
 				return params, errors.Wrap(err, `query: status: parse`)
 			}
 			if err := func() error {
-
 				if params.Status.Set {
 					if err := func() error {
-
 						if err := params.Status.Value.Validate(); err != nil {
 							return err
 						}
@@ -11776,7 +11750,6 @@ func decodeChecksListForSuiteParams(args map[string]string, r *http.Request) (Ch
 					}
 				}
 				return nil
-
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `query: status: invalid`)
@@ -11817,10 +11790,8 @@ func decodeChecksListForSuiteParams(args map[string]string, r *http.Request) (Ch
 				return params, errors.Wrap(err, `query: filter: parse`)
 			}
 			if err := func() error {
-
 				if params.Filter.Set {
 					if err := func() error {
-
 						if err := params.Filter.Value.Validate(); err != nil {
 							return err
 						}
@@ -11830,7 +11801,6 @@ func decodeChecksListForSuiteParams(args map[string]string, r *http.Request) (Ch
 					}
 				}
 				return nil
-
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `query: filter: invalid`)
@@ -13258,10 +13228,8 @@ func decodeCodeScanningListAlertsForRepoParams(args map[string]string, r *http.R
 				return params, errors.Wrap(err, `query: state: parse`)
 			}
 			if err := func() error {
-
 				if params.State.Set {
 					if err := func() error {
-
 						if err := params.State.Value.Validate(); err != nil {
 							return err
 						}
@@ -13271,7 +13239,6 @@ func decodeCodeScanningListAlertsForRepoParams(args map[string]string, r *http.R
 					}
 				}
 				return nil
-
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `query: state: invalid`)
@@ -14638,10 +14605,8 @@ func decodeEnterpriseAdminGetAuditLogParams(args map[string]string, r *http.Requ
 				return params, errors.Wrap(err, `query: include: parse`)
 			}
 			if err := func() error {
-
 				if params.Include.Set {
 					if err := func() error {
-
 						if err := params.Include.Value.Validate(); err != nil {
 							return err
 						}
@@ -14651,7 +14616,6 @@ func decodeEnterpriseAdminGetAuditLogParams(args map[string]string, r *http.Requ
 					}
 				}
 				return nil
-
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `query: include: invalid`)
@@ -14762,10 +14726,8 @@ func decodeEnterpriseAdminGetAuditLogParams(args map[string]string, r *http.Requ
 				return params, errors.Wrap(err, `query: order: parse`)
 			}
 			if err := func() error {
-
 				if params.Order.Set {
 					if err := func() error {
-
 						if err := params.Order.Value.Validate(); err != nil {
 							return err
 						}
@@ -14775,7 +14737,6 @@ func decodeEnterpriseAdminGetAuditLogParams(args map[string]string, r *http.Requ
 					}
 				}
 				return nil
-
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `query: order: invalid`)
@@ -20333,10 +20294,8 @@ func decodeIssuesListMilestonesParams(args map[string]string, r *http.Request) (
 				return params, errors.Wrap(err, `query: state: parse`)
 			}
 			if err := func() error {
-
 				if params.State.Set {
 					if err := func() error {
-
 						if err := params.State.Value.Validate(); err != nil {
 							return err
 						}
@@ -20346,7 +20305,6 @@ func decodeIssuesListMilestonesParams(args map[string]string, r *http.Request) (
 					}
 				}
 				return nil
-
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `query: state: invalid`)
@@ -20387,10 +20345,8 @@ func decodeIssuesListMilestonesParams(args map[string]string, r *http.Request) (
 				return params, errors.Wrap(err, `query: sort: parse`)
 			}
 			if err := func() error {
-
 				if params.Sort.Set {
 					if err := func() error {
-
 						if err := params.Sort.Value.Validate(); err != nil {
 							return err
 						}
@@ -20400,7 +20356,6 @@ func decodeIssuesListMilestonesParams(args map[string]string, r *http.Request) (
 					}
 				}
 				return nil
-
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `query: sort: invalid`)
@@ -20441,10 +20396,8 @@ func decodeIssuesListMilestonesParams(args map[string]string, r *http.Request) (
 				return params, errors.Wrap(err, `query: direction: parse`)
 			}
 			if err := func() error {
-
 				if params.Direction.Set {
 					if err := func() error {
-
 						if err := params.Direction.Value.Validate(); err != nil {
 							return err
 						}
@@ -20454,7 +20407,6 @@ func decodeIssuesListMilestonesParams(args map[string]string, r *http.Request) (
 					}
 				}
 				return nil
-
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `query: direction: invalid`)
@@ -22048,11 +22000,9 @@ func decodeMigrationsGetStatusForOrgParams(args map[string]string, r *http.Reque
 				return params, errors.Wrap(err, `query: exclude: parse`)
 			}
 			if err := func() error {
-
 				var failures []validate.FieldError
 				for i, elem := range params.Exclude {
 					if err := func() error {
-
 						if err := elem.Validate(); err != nil {
 							return err
 						}
@@ -22290,11 +22240,9 @@ func decodeMigrationsListForOrgParams(args map[string]string, r *http.Request) (
 				return params, errors.Wrap(err, `query: exclude: parse`)
 			}
 			if err := func() error {
-
 				var failures []validate.FieldError
 				for i, elem := range params.Exclude {
 					if err := func() error {
-
 						if err := elem.Validate(); err != nil {
 							return err
 						}
@@ -23630,10 +23578,8 @@ func decodeOrgsGetAuditLogParams(args map[string]string, r *http.Request) (OrgsG
 				return params, errors.Wrap(err, `query: include: parse`)
 			}
 			if err := func() error {
-
 				if params.Include.Set {
 					if err := func() error {
-
 						if err := params.Include.Value.Validate(); err != nil {
 							return err
 						}
@@ -23643,7 +23589,6 @@ func decodeOrgsGetAuditLogParams(args map[string]string, r *http.Request) (OrgsG
 					}
 				}
 				return nil
-
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `query: include: invalid`)
@@ -23754,10 +23699,8 @@ func decodeOrgsGetAuditLogParams(args map[string]string, r *http.Request) (OrgsG
 				return params, errors.Wrap(err, `query: order: parse`)
 			}
 			if err := func() error {
-
 				if params.Order.Set {
 					if err := func() error {
-
 						if err := params.Order.Value.Validate(); err != nil {
 							return err
 						}
@@ -23767,7 +23710,6 @@ func decodeOrgsGetAuditLogParams(args map[string]string, r *http.Request) (OrgsG
 					}
 				}
 				return nil
-
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `query: order: invalid`)
@@ -24686,10 +24628,8 @@ func decodeOrgsListOutsideCollaboratorsParams(args map[string]string, r *http.Re
 				return params, errors.Wrap(err, `query: filter: parse`)
 			}
 			if err := func() error {
-
 				if params.Filter.Set {
 					if err := func() error {
-
 						if err := params.Filter.Value.Validate(); err != nil {
 							return err
 						}
@@ -24699,7 +24639,6 @@ func decodeOrgsListOutsideCollaboratorsParams(args map[string]string, r *http.Re
 					}
 				}
 				return nil
-
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `query: filter: invalid`)
@@ -26523,10 +26462,8 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams
 				return params, errors.Wrap(err, `query: state: parse`)
 			}
 			if err := func() error {
-
 				if params.State.Set {
 					if err := func() error {
-
 						if err := params.State.Value.Validate(); err != nil {
 							return err
 						}
@@ -26536,7 +26473,6 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams
 					}
 				}
 				return nil
-
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `query: state: invalid`)
@@ -26745,10 +26681,8 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(args map[stri
 				return params, errors.Wrap(err, `query: state: parse`)
 			}
 			if err := func() error {
-
 				if params.State.Set {
 					if err := func() error {
-
 						if err := params.State.Value.Validate(); err != nil {
 							return err
 						}
@@ -26758,7 +26692,6 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(args map[stri
 					}
 				}
 				return nil
-
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `query: state: invalid`)
@@ -27514,7 +27447,6 @@ func decodePackagesListPackagesForAuthenticatedUserParams(args map[string]string
 				return params, errors.Wrap(err, `query: package_type: parse`)
 			}
 			if err := func() error {
-
 				if err := params.PackageType.Validate(); err != nil {
 					return err
 				}
@@ -27560,10 +27492,8 @@ func decodePackagesListPackagesForAuthenticatedUserParams(args map[string]string
 				return params, errors.Wrap(err, `query: visibility: parse`)
 			}
 			if err := func() error {
-
 				if params.Visibility.Set {
 					if err := func() error {
-
 						if err := params.Visibility.Value.Validate(); err != nil {
 							return err
 						}
@@ -27573,7 +27503,6 @@ func decodePackagesListPackagesForAuthenticatedUserParams(args map[string]string
 					}
 				}
 				return nil
-
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `query: visibility: invalid`)
@@ -27612,7 +27541,6 @@ func decodePackagesListPackagesForOrganizationParams(args map[string]string, r *
 				return params, errors.Wrap(err, `query: package_type: parse`)
 			}
 			if err := func() error {
-
 				if err := params.PackageType.Validate(); err != nil {
 					return err
 				}
@@ -27689,10 +27617,8 @@ func decodePackagesListPackagesForOrganizationParams(args map[string]string, r *
 				return params, errors.Wrap(err, `query: visibility: parse`)
 			}
 			if err := func() error {
-
 				if params.Visibility.Set {
 					if err := func() error {
-
 						if err := params.Visibility.Value.Validate(); err != nil {
 							return err
 						}
@@ -27702,7 +27628,6 @@ func decodePackagesListPackagesForOrganizationParams(args map[string]string, r *
 					}
 				}
 				return nil
-
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `query: visibility: invalid`)
@@ -27741,7 +27666,6 @@ func decodePackagesListPackagesForUserParams(args map[string]string, r *http.Req
 				return params, errors.Wrap(err, `query: package_type: parse`)
 			}
 			if err := func() error {
-
 				if err := params.PackageType.Validate(); err != nil {
 					return err
 				}
@@ -27787,10 +27711,8 @@ func decodePackagesListPackagesForUserParams(args map[string]string, r *http.Req
 				return params, errors.Wrap(err, `query: visibility: parse`)
 			}
 			if err := func() error {
-
 				if params.Visibility.Set {
 					if err := func() error {
-
 						if err := params.Visibility.Value.Validate(); err != nil {
 							return err
 						}
@@ -27800,7 +27722,6 @@ func decodePackagesListPackagesForUserParams(args map[string]string, r *http.Req
 					}
 				}
 				return nil
-
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `query: visibility: invalid`)
@@ -28987,10 +28908,8 @@ func decodeProjectsListCardsParams(args map[string]string, r *http.Request) (Pro
 				return params, errors.Wrap(err, `query: archived_state: parse`)
 			}
 			if err := func() error {
-
 				if params.ArchivedState.Set {
 					if err := func() error {
-
 						if err := params.ArchivedState.Value.Validate(); err != nil {
 							return err
 						}
@@ -29000,7 +28919,6 @@ func decodeProjectsListCardsParams(args map[string]string, r *http.Request) (Pro
 					}
 				}
 				return nil
-
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `query: archived_state: invalid`)
@@ -29253,10 +29171,8 @@ func decodeProjectsListForOrgParams(args map[string]string, r *http.Request) (Pr
 				return params, errors.Wrap(err, `query: state: parse`)
 			}
 			if err := func() error {
-
 				if params.State.Set {
 					if err := func() error {
-
 						if err := params.State.Value.Validate(); err != nil {
 							return err
 						}
@@ -29266,7 +29182,6 @@ func decodeProjectsListForOrgParams(args map[string]string, r *http.Request) (Pr
 					}
 				}
 				return nil
-
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `query: state: invalid`)
@@ -29444,10 +29359,8 @@ func decodeProjectsListForRepoParams(args map[string]string, r *http.Request) (P
 				return params, errors.Wrap(err, `query: state: parse`)
 			}
 			if err := func() error {
-
 				if params.State.Set {
 					if err := func() error {
-
 						if err := params.State.Value.Validate(); err != nil {
 							return err
 						}
@@ -29457,7 +29370,6 @@ func decodeProjectsListForRepoParams(args map[string]string, r *http.Request) (P
 					}
 				}
 				return nil
-
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `query: state: invalid`)
@@ -31351,10 +31263,8 @@ func decodePullsListReviewCommentsParams(args map[string]string, r *http.Request
 				return params, errors.Wrap(err, `query: sort: parse`)
 			}
 			if err := func() error {
-
 				if params.Sort.Set {
 					if err := func() error {
-
 						if err := params.Sort.Value.Validate(); err != nil {
 							return err
 						}
@@ -31364,7 +31274,6 @@ func decodePullsListReviewCommentsParams(args map[string]string, r *http.Request
 					}
 				}
 				return nil
-
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `query: sort: invalid`)
@@ -31405,10 +31314,8 @@ func decodePullsListReviewCommentsParams(args map[string]string, r *http.Request
 				return params, errors.Wrap(err, `query: direction: parse`)
 			}
 			if err := func() error {
-
 				if params.Direction.Set {
 					if err := func() error {
-
 						if err := params.Direction.Value.Validate(); err != nil {
 							return err
 						}
@@ -31418,7 +31325,6 @@ func decodePullsListReviewCommentsParams(args map[string]string, r *http.Request
 					}
 				}
 				return nil
-
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `query: direction: invalid`)
@@ -31631,10 +31537,8 @@ func decodePullsListReviewCommentsForRepoParams(args map[string]string, r *http.
 				return params, errors.Wrap(err, `query: sort: parse`)
 			}
 			if err := func() error {
-
 				if params.Sort.Set {
 					if err := func() error {
-
 						if err := params.Sort.Value.Validate(); err != nil {
 							return err
 						}
@@ -31644,7 +31548,6 @@ func decodePullsListReviewCommentsForRepoParams(args map[string]string, r *http.
 					}
 				}
 				return nil
-
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `query: sort: invalid`)
@@ -31685,10 +31588,8 @@ func decodePullsListReviewCommentsForRepoParams(args map[string]string, r *http.
 				return params, errors.Wrap(err, `query: direction: parse`)
 			}
 			if err := func() error {
-
 				if params.Direction.Set {
 					if err := func() error {
-
 						if err := params.Direction.Value.Validate(); err != nil {
 							return err
 						}
@@ -31698,7 +31599,6 @@ func decodePullsListReviewCommentsForRepoParams(args map[string]string, r *http.
 					}
 				}
 				return nil
-
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `query: direction: invalid`)
@@ -33699,10 +33599,8 @@ func decodeReactionsListForCommitCommentParams(args map[string]string, r *http.R
 				return params, errors.Wrap(err, `query: content: parse`)
 			}
 			if err := func() error {
-
 				if params.Content.Set {
 					if err := func() error {
-
 						if err := params.Content.Value.Validate(); err != nil {
 							return err
 						}
@@ -33712,7 +33610,6 @@ func decodeReactionsListForCommitCommentParams(args map[string]string, r *http.R
 					}
 				}
 				return nil
-
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `query: content: invalid`)
@@ -33921,10 +33818,8 @@ func decodeReactionsListForIssueParams(args map[string]string, r *http.Request) 
 				return params, errors.Wrap(err, `query: content: parse`)
 			}
 			if err := func() error {
-
 				if params.Content.Set {
 					if err := func() error {
-
 						if err := params.Content.Value.Validate(); err != nil {
 							return err
 						}
@@ -33934,7 +33829,6 @@ func decodeReactionsListForIssueParams(args map[string]string, r *http.Request) 
 					}
 				}
 				return nil
-
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `query: content: invalid`)
@@ -34143,10 +34037,8 @@ func decodeReactionsListForIssueCommentParams(args map[string]string, r *http.Re
 				return params, errors.Wrap(err, `query: content: parse`)
 			}
 			if err := func() error {
-
 				if params.Content.Set {
 					if err := func() error {
-
 						if err := params.Content.Value.Validate(); err != nil {
 							return err
 						}
@@ -34156,7 +34048,6 @@ func decodeReactionsListForIssueCommentParams(args map[string]string, r *http.Re
 					}
 				}
 				return nil
-
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `query: content: invalid`)
@@ -34365,10 +34256,8 @@ func decodeReactionsListForPullRequestReviewCommentParams(args map[string]string
 				return params, errors.Wrap(err, `query: content: parse`)
 			}
 			if err := func() error {
-
 				if params.Content.Set {
 					if err := func() error {
-
 						if err := params.Content.Value.Validate(); err != nil {
 							return err
 						}
@@ -34378,7 +34267,6 @@ func decodeReactionsListForPullRequestReviewCommentParams(args map[string]string
 					}
 				}
 				return nil
-
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `query: content: invalid`)
@@ -34618,10 +34506,8 @@ func decodeReactionsListForTeamDiscussionCommentInOrgParams(args map[string]stri
 				return params, errors.Wrap(err, `query: content: parse`)
 			}
 			if err := func() error {
-
 				if params.Content.Set {
 					if err := func() error {
-
 						if err := params.Content.Value.Validate(); err != nil {
 							return err
 						}
@@ -34631,7 +34517,6 @@ func decodeReactionsListForTeamDiscussionCommentInOrgParams(args map[string]stri
 					}
 				}
 				return nil
-
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `query: content: invalid`)
@@ -34840,10 +34725,8 @@ func decodeReactionsListForTeamDiscussionCommentLegacyParams(args map[string]str
 				return params, errors.Wrap(err, `query: content: parse`)
 			}
 			if err := func() error {
-
 				if params.Content.Set {
 					if err := func() error {
-
 						if err := params.Content.Value.Validate(); err != nil {
 							return err
 						}
@@ -34853,7 +34736,6 @@ func decodeReactionsListForTeamDiscussionCommentLegacyParams(args map[string]str
 					}
 				}
 				return nil
-
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `query: content: invalid`)
@@ -35062,10 +34944,8 @@ func decodeReactionsListForTeamDiscussionInOrgParams(args map[string]string, r *
 				return params, errors.Wrap(err, `query: content: parse`)
 			}
 			if err := func() error {
-
 				if params.Content.Set {
 					if err := func() error {
-
 						if err := params.Content.Value.Validate(); err != nil {
 							return err
 						}
@@ -35075,7 +34955,6 @@ func decodeReactionsListForTeamDiscussionInOrgParams(args map[string]string, r *
 					}
 				}
 				return nil
-
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `query: content: invalid`)
@@ -35253,10 +35132,8 @@ func decodeReactionsListForTeamDiscussionLegacyParams(args map[string]string, r 
 				return params, errors.Wrap(err, `query: content: parse`)
 			}
 			if err := func() error {
-
 				if params.Content.Set {
 					if err := func() error {
-
 						if err := params.Content.Value.Validate(); err != nil {
 							return err
 						}
@@ -35266,7 +35143,6 @@ func decodeReactionsListForTeamDiscussionLegacyParams(args map[string]string, r 
 					}
 				}
 				return nil
-
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `query: content: invalid`)
@@ -39039,10 +38915,8 @@ func decodeReposGetClonesParams(args map[string]string, r *http.Request) (ReposG
 				return params, errors.Wrap(err, `query: per: parse`)
 			}
 			if err := func() error {
-
 				if params.Per.Set {
 					if err := func() error {
-
 						if err := params.Per.Value.Validate(); err != nil {
 							return err
 						}
@@ -39052,7 +38926,6 @@ func decodeReposGetClonesParams(args map[string]string, r *http.Request) (ReposG
 					}
 				}
 				return nil
-
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `query: per: invalid`)
@@ -41437,10 +41310,8 @@ func decodeReposGetViewsParams(args map[string]string, r *http.Request) (ReposGe
 				return params, errors.Wrap(err, `query: per: parse`)
 			}
 			if err := func() error {
-
 				if params.Per.Set {
 					if err := func() error {
-
 						if err := params.Per.Value.Validate(); err != nil {
 							return err
 						}
@@ -41450,7 +41321,6 @@ func decodeReposGetViewsParams(args map[string]string, r *http.Request) (ReposGe
 					}
 				}
 				return nil
-
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `query: per: invalid`)
@@ -42028,10 +41898,8 @@ func decodeReposListCollaboratorsParams(args map[string]string, r *http.Request)
 				return params, errors.Wrap(err, `query: affiliation: parse`)
 			}
 			if err := func() error {
-
 				if params.Affiliation.Set {
 					if err := func() error {
-
 						if err := params.Affiliation.Value.Validate(); err != nil {
 							return err
 						}
@@ -42041,7 +41909,6 @@ func decodeReposListCollaboratorsParams(args map[string]string, r *http.Request)
 					}
 				}
 				return nil
-
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `query: affiliation: invalid`)
@@ -43450,10 +43317,8 @@ func decodeReposListForOrgParams(args map[string]string, r *http.Request) (Repos
 				return params, errors.Wrap(err, `query: type: parse`)
 			}
 			if err := func() error {
-
 				if params.Type.Set {
 					if err := func() error {
-
 						if err := params.Type.Value.Validate(); err != nil {
 							return err
 						}
@@ -43463,7 +43328,6 @@ func decodeReposListForOrgParams(args map[string]string, r *http.Request) (Repos
 					}
 				}
 				return nil
-
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `query: type: invalid`)
@@ -43504,10 +43368,8 @@ func decodeReposListForOrgParams(args map[string]string, r *http.Request) (Repos
 				return params, errors.Wrap(err, `query: sort: parse`)
 			}
 			if err := func() error {
-
 				if params.Sort.Set {
 					if err := func() error {
-
 						if err := params.Sort.Value.Validate(); err != nil {
 							return err
 						}
@@ -43517,7 +43379,6 @@ func decodeReposListForOrgParams(args map[string]string, r *http.Request) (Repos
 					}
 				}
 				return nil
-
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `query: sort: invalid`)
@@ -43558,10 +43419,8 @@ func decodeReposListForOrgParams(args map[string]string, r *http.Request) (Repos
 				return params, errors.Wrap(err, `query: direction: parse`)
 			}
 			if err := func() error {
-
 				if params.Direction.Set {
 					if err := func() error {
-
 						if err := params.Direction.Value.Validate(); err != nil {
 							return err
 						}
@@ -43571,7 +43430,6 @@ func decodeReposListForOrgParams(args map[string]string, r *http.Request) (Repos
 					}
 				}
 				return nil
-
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `query: direction: invalid`)
@@ -43718,10 +43576,8 @@ func decodeReposListForUserParams(args map[string]string, r *http.Request) (Repo
 				return params, errors.Wrap(err, `query: type: parse`)
 			}
 			if err := func() error {
-
 				if params.Type.Set {
 					if err := func() error {
-
 						if err := params.Type.Value.Validate(); err != nil {
 							return err
 						}
@@ -43731,7 +43587,6 @@ func decodeReposListForUserParams(args map[string]string, r *http.Request) (Repo
 					}
 				}
 				return nil
-
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `query: type: invalid`)
@@ -43772,10 +43627,8 @@ func decodeReposListForUserParams(args map[string]string, r *http.Request) (Repo
 				return params, errors.Wrap(err, `query: sort: parse`)
 			}
 			if err := func() error {
-
 				if params.Sort.Set {
 					if err := func() error {
-
 						if err := params.Sort.Value.Validate(); err != nil {
 							return err
 						}
@@ -43785,7 +43638,6 @@ func decodeReposListForUserParams(args map[string]string, r *http.Request) (Repo
 					}
 				}
 				return nil
-
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `query: sort: invalid`)
@@ -43826,10 +43678,8 @@ func decodeReposListForUserParams(args map[string]string, r *http.Request) (Repo
 				return params, errors.Wrap(err, `query: direction: parse`)
 			}
 			if err := func() error {
-
 				if params.Direction.Set {
 					if err := func() error {
-
 						if err := params.Direction.Value.Validate(); err != nil {
 							return err
 						}
@@ -43839,7 +43689,6 @@ func decodeReposListForUserParams(args map[string]string, r *http.Request) (Repo
 					}
 				}
 				return nil
-
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `query: direction: invalid`)
@@ -44017,10 +43866,8 @@ func decodeReposListForksParams(args map[string]string, r *http.Request) (ReposL
 				return params, errors.Wrap(err, `query: sort: parse`)
 			}
 			if err := func() error {
-
 				if params.Sort.Set {
 					if err := func() error {
-
 						if err := params.Sort.Value.Validate(); err != nil {
 							return err
 						}
@@ -44030,7 +43877,6 @@ func decodeReposListForksParams(args map[string]string, r *http.Request) (ReposL
 					}
 				}
 				return nil
-
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `query: sort: invalid`)
@@ -46889,10 +46735,8 @@ func decodeSearchCommitsParams(args map[string]string, r *http.Request) (SearchC
 				return params, errors.Wrap(err, `query: sort: parse`)
 			}
 			if err := func() error {
-
 				if params.Sort.Set {
 					if err := func() error {
-
 						if err := params.Sort.Value.Validate(); err != nil {
 							return err
 						}
@@ -46902,7 +46746,6 @@ func decodeSearchCommitsParams(args map[string]string, r *http.Request) (SearchC
 					}
 				}
 				return nil
-
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `query: sort: invalid`)
@@ -46943,10 +46786,8 @@ func decodeSearchCommitsParams(args map[string]string, r *http.Request) (SearchC
 				return params, errors.Wrap(err, `query: order: parse`)
 			}
 			if err := func() error {
-
 				if params.Order.Set {
 					if err := func() error {
-
 						if err := params.Order.Value.Validate(); err != nil {
 							return err
 						}
@@ -46956,7 +46797,6 @@ func decodeSearchCommitsParams(args map[string]string, r *http.Request) (SearchC
 					}
 				}
 				return nil
-
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `query: order: invalid`)
@@ -47313,10 +47153,8 @@ func decodeSecretScanningListAlertsForOrgParams(args map[string]string, r *http.
 				return params, errors.Wrap(err, `query: state: parse`)
 			}
 			if err := func() error {
-
 				if params.State.Set {
 					if err := func() error {
-
 						if err := params.State.Value.Validate(); err != nil {
 							return err
 						}
@@ -47326,7 +47164,6 @@ func decodeSecretScanningListAlertsForOrgParams(args map[string]string, r *http.
 					}
 				}
 				return nil
-
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `query: state: invalid`)
@@ -47539,10 +47376,8 @@ func decodeSecretScanningListAlertsForRepoParams(args map[string]string, r *http
 				return params, errors.Wrap(err, `query: state: parse`)
 			}
 			if err := func() error {
-
 				if params.State.Set {
 					if err := func() error {
-
 						if err := params.State.Value.Validate(); err != nil {
 							return err
 						}
@@ -47552,7 +47387,6 @@ func decodeSecretScanningListAlertsForRepoParams(args map[string]string, r *http
 					}
 				}
 				return nil
-
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `query: state: invalid`)
@@ -50516,10 +50350,8 @@ func decodeTeamsListDiscussionCommentsInOrgParams(args map[string]string, r *htt
 				return params, errors.Wrap(err, `query: direction: parse`)
 			}
 			if err := func() error {
-
 				if params.Direction.Set {
 					if err := func() error {
-
 						if err := params.Direction.Value.Validate(); err != nil {
 							return err
 						}
@@ -50529,7 +50361,6 @@ func decodeTeamsListDiscussionCommentsInOrgParams(args map[string]string, r *htt
 					}
 				}
 				return nil
-
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `query: direction: invalid`)
@@ -50707,10 +50538,8 @@ func decodeTeamsListDiscussionCommentsLegacyParams(args map[string]string, r *ht
 				return params, errors.Wrap(err, `query: direction: parse`)
 			}
 			if err := func() error {
-
 				if params.Direction.Set {
 					if err := func() error {
-
 						if err := params.Direction.Value.Validate(); err != nil {
 							return err
 						}
@@ -50720,7 +50549,6 @@ func decodeTeamsListDiscussionCommentsLegacyParams(args map[string]string, r *ht
 					}
 				}
 				return nil
-
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `query: direction: invalid`)
@@ -50898,10 +50726,8 @@ func decodeTeamsListDiscussionsInOrgParams(args map[string]string, r *http.Reque
 				return params, errors.Wrap(err, `query: direction: parse`)
 			}
 			if err := func() error {
-
 				if params.Direction.Set {
 					if err := func() error {
-
 						if err := params.Direction.Value.Validate(); err != nil {
 							return err
 						}
@@ -50911,7 +50737,6 @@ func decodeTeamsListDiscussionsInOrgParams(args map[string]string, r *http.Reque
 					}
 				}
 				return nil
-
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `query: direction: invalid`)
@@ -51093,10 +50918,8 @@ func decodeTeamsListDiscussionsLegacyParams(args map[string]string, r *http.Requ
 				return params, errors.Wrap(err, `query: direction: parse`)
 			}
 			if err := func() error {
-
 				if params.Direction.Set {
 					if err := func() error {
-
 						if err := params.Direction.Value.Validate(); err != nil {
 							return err
 						}
@@ -51106,7 +50929,6 @@ func decodeTeamsListDiscussionsLegacyParams(args map[string]string, r *http.Requ
 					}
 				}
 				return nil
-
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `query: direction: invalid`)
@@ -51568,10 +51390,8 @@ func decodeTeamsListMembersInOrgParams(args map[string]string, r *http.Request) 
 				return params, errors.Wrap(err, `query: role: parse`)
 			}
 			if err := func() error {
-
 				if params.Role.Set {
 					if err := func() error {
-
 						if err := params.Role.Value.Validate(); err != nil {
 							return err
 						}
@@ -51581,7 +51401,6 @@ func decodeTeamsListMembersInOrgParams(args map[string]string, r *http.Request) 
 					}
 				}
 				return nil
-
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `query: role: invalid`)
@@ -51728,10 +51547,8 @@ func decodeTeamsListMembersLegacyParams(args map[string]string, r *http.Request)
 				return params, errors.Wrap(err, `query: role: parse`)
 			}
 			if err := func() error {
-
 				if params.Role.Set {
 					if err := func() error {
-
 						if err := params.Role.Value.Validate(); err != nil {
 							return err
 						}
@@ -51741,7 +51558,6 @@ func decodeTeamsListMembersLegacyParams(args map[string]string, r *http.Request)
 					}
 				}
 				return nil
-
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `query: role: invalid`)

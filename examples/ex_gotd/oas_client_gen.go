@@ -97,6 +97,14 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 //
 // POST /addStickerToSet
 func (c *Client) AddStickerToSet(ctx context.Context, request AddStickerToSet) (res Result, err error) {
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `AddStickerToSet`,
 		trace.WithAttributes(otelogen.OperationID(`addStickerToSet`)),
@@ -152,7 +160,6 @@ func (c *Client) AddStickerToSet(ctx context.Context, request AddStickerToSet) (
 // POST /answerCallbackQuery
 func (c *Client) AnswerCallbackQuery(ctx context.Context, request AnswerCallbackQuery) (res Result, err error) {
 	if err := func() error {
-
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -215,7 +222,6 @@ func (c *Client) AnswerCallbackQuery(ctx context.Context, request AnswerCallback
 // POST /answerInlineQuery
 func (c *Client) AnswerInlineQuery(ctx context.Context, request AnswerInlineQuery) (res Result, err error) {
 	if err := func() error {
-
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -332,7 +338,6 @@ func (c *Client) AnswerPreCheckoutQuery(ctx context.Context, request AnswerPreCh
 // POST /answerShippingQuery
 func (c *Client) AnswerShippingQuery(ctx context.Context, request AnswerShippingQuery) (res Result, err error) {
 	if err := func() error {
-
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -503,7 +508,6 @@ func (c *Client) BanChatMember(ctx context.Context, request BanChatMember) (res 
 // POST /copyMessage
 func (c *Client) CopyMessage(ctx context.Context, request CopyMessage) (res Result, err error) {
 	if err := func() error {
-
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -566,7 +570,6 @@ func (c *Client) CopyMessage(ctx context.Context, request CopyMessage) (res Resu
 // POST /createChatInviteLink
 func (c *Client) CreateChatInviteLink(ctx context.Context, request CreateChatInviteLink) (res Result, err error) {
 	if err := func() error {
-
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -629,7 +632,6 @@ func (c *Client) CreateChatInviteLink(ctx context.Context, request CreateChatInv
 // POST /createNewStickerSet
 func (c *Client) CreateNewStickerSet(ctx context.Context, request CreateNewStickerSet) (res Result, err error) {
 	if err := func() error {
-
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -1070,7 +1072,6 @@ func (c *Client) DeleteWebhook(ctx context.Context, request DeleteWebhook) (res 
 // POST /editChatInviteLink
 func (c *Client) EditChatInviteLink(ctx context.Context, request EditChatInviteLink) (res Result, err error) {
 	if err := func() error {
-
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -1133,7 +1134,6 @@ func (c *Client) EditChatInviteLink(ctx context.Context, request EditChatInviteL
 // POST /editMessageCaption
 func (c *Client) EditMessageCaption(ctx context.Context, request EditMessageCaption) (res Result, err error) {
 	if err := func() error {
-
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -1196,7 +1196,6 @@ func (c *Client) EditMessageCaption(ctx context.Context, request EditMessageCapt
 // POST /editMessageLiveLocation
 func (c *Client) EditMessageLiveLocation(ctx context.Context, request EditMessageLiveLocation) (res Result, err error) {
 	if err := func() error {
-
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -1259,7 +1258,6 @@ func (c *Client) EditMessageLiveLocation(ctx context.Context, request EditMessag
 // POST /editMessageMedia
 func (c *Client) EditMessageMedia(ctx context.Context, request EditMessageMedia) (res Result, err error) {
 	if err := func() error {
-
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -1322,7 +1320,6 @@ func (c *Client) EditMessageMedia(ctx context.Context, request EditMessageMedia)
 // POST /editMessageReplyMarkup
 func (c *Client) EditMessageReplyMarkup(ctx context.Context, request EditMessageReplyMarkup) (res Result, err error) {
 	if err := func() error {
-
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -1385,7 +1382,6 @@ func (c *Client) EditMessageReplyMarkup(ctx context.Context, request EditMessage
 // POST /editMessageText
 func (c *Client) EditMessageText(ctx context.Context, request EditMessageText) (res Result, err error) {
 	if err := func() error {
-
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -2028,7 +2024,6 @@ func (c *Client) GetStickerSet(ctx context.Context, request GetStickerSet) (res 
 // POST /getUpdates
 func (c *Client) GetUpdates(ctx context.Context, request GetUpdates) (res Result, err error) {
 	if err := func() error {
-
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -2091,7 +2086,6 @@ func (c *Client) GetUpdates(ctx context.Context, request GetUpdates) (res Result
 // POST /getUserProfilePhotos
 func (c *Client) GetUserProfilePhotos(ctx context.Context, request GetUserProfilePhotos) (res Result, err error) {
 	if err := func() error {
-
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -2424,7 +2418,6 @@ func (c *Client) RevokeChatInviteLink(ctx context.Context, request RevokeChatInv
 // POST /sendAnimation
 func (c *Client) SendAnimation(ctx context.Context, request SendAnimation) (res ResultMsg, err error) {
 	if err := func() error {
-
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -2487,7 +2480,6 @@ func (c *Client) SendAnimation(ctx context.Context, request SendAnimation) (res 
 // POST /sendAudio
 func (c *Client) SendAudio(ctx context.Context, request SendAudio) (res Result, err error) {
 	if err := func() error {
-
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -2604,7 +2596,6 @@ func (c *Client) SendChatAction(ctx context.Context, request SendChatAction) (re
 // POST /sendContact
 func (c *Client) SendContact(ctx context.Context, request SendContact) (res ResultMsg, err error) {
 	if err := func() error {
-
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -2667,7 +2658,6 @@ func (c *Client) SendContact(ctx context.Context, request SendContact) (res Resu
 // POST /sendDice
 func (c *Client) SendDice(ctx context.Context, request SendDice) (res ResultMsg, err error) {
 	if err := func() error {
-
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -2730,7 +2720,6 @@ func (c *Client) SendDice(ctx context.Context, request SendDice) (res ResultMsg,
 // POST /sendDocument
 func (c *Client) SendDocument(ctx context.Context, request SendDocument) (res ResultMsg, err error) {
 	if err := func() error {
-
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -2793,7 +2782,6 @@ func (c *Client) SendDocument(ctx context.Context, request SendDocument) (res Re
 // POST /sendGame
 func (c *Client) SendGame(ctx context.Context, request SendGame) (res ResultMsg, err error) {
 	if err := func() error {
-
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -2856,7 +2844,6 @@ func (c *Client) SendGame(ctx context.Context, request SendGame) (res ResultMsg,
 // POST /sendInvoice
 func (c *Client) SendInvoice(ctx context.Context, request SendInvoice) (res ResultMsg, err error) {
 	if err := func() error {
-
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -2919,7 +2906,6 @@ func (c *Client) SendInvoice(ctx context.Context, request SendInvoice) (res Resu
 // POST /sendLocation
 func (c *Client) SendLocation(ctx context.Context, request SendLocation) (res ResultMsg, err error) {
 	if err := func() error {
-
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -2982,7 +2968,6 @@ func (c *Client) SendLocation(ctx context.Context, request SendLocation) (res Re
 // POST /sendMediaGroup
 func (c *Client) SendMediaGroup(ctx context.Context, request SendMediaGroup) (res Result, err error) {
 	if err := func() error {
-
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -3045,7 +3030,6 @@ func (c *Client) SendMediaGroup(ctx context.Context, request SendMediaGroup) (re
 // POST /sendMessage
 func (c *Client) SendMessage(ctx context.Context, request SendMessage) (res ResultMsg, err error) {
 	if err := func() error {
-
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -3108,7 +3092,6 @@ func (c *Client) SendMessage(ctx context.Context, request SendMessage) (res Resu
 // POST /sendPhoto
 func (c *Client) SendPhoto(ctx context.Context, request SendPhoto) (res ResultMsg, err error) {
 	if err := func() error {
-
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -3171,7 +3154,6 @@ func (c *Client) SendPhoto(ctx context.Context, request SendPhoto) (res ResultMs
 // POST /sendPoll
 func (c *Client) SendPoll(ctx context.Context, request SendPoll) (res ResultMsg, err error) {
 	if err := func() error {
-
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -3234,7 +3216,6 @@ func (c *Client) SendPoll(ctx context.Context, request SendPoll) (res ResultMsg,
 // POST /sendSticker
 func (c *Client) SendSticker(ctx context.Context, request SendSticker) (res ResultMsg, err error) {
 	if err := func() error {
-
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -3297,7 +3278,6 @@ func (c *Client) SendSticker(ctx context.Context, request SendSticker) (res Resu
 // POST /sendVenue
 func (c *Client) SendVenue(ctx context.Context, request SendVenue) (res ResultMsg, err error) {
 	if err := func() error {
-
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -3360,7 +3340,6 @@ func (c *Client) SendVenue(ctx context.Context, request SendVenue) (res ResultMs
 // POST /sendVideo
 func (c *Client) SendVideo(ctx context.Context, request SendVideo) (res ResultMsg, err error) {
 	if err := func() error {
-
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -3423,7 +3402,6 @@ func (c *Client) SendVideo(ctx context.Context, request SendVideo) (res ResultMs
 // POST /sendVideoNote
 func (c *Client) SendVideoNote(ctx context.Context, request SendVideoNote) (res ResultMsg, err error) {
 	if err := func() error {
-
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -3486,7 +3464,6 @@ func (c *Client) SendVideoNote(ctx context.Context, request SendVideoNote) (res 
 // POST /sendVoice
 func (c *Client) SendVoice(ctx context.Context, request SendVoice) (res ResultMsg, err error) {
 	if err := func() error {
-
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -3549,7 +3526,6 @@ func (c *Client) SendVoice(ctx context.Context, request SendVoice) (res ResultMs
 // POST /setChatAdministratorCustomTitle
 func (c *Client) SetChatAdministratorCustomTitle(ctx context.Context, request SetChatAdministratorCustomTitle) (res Result, err error) {
 	if err := func() error {
-
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -3612,7 +3588,6 @@ func (c *Client) SetChatAdministratorCustomTitle(ctx context.Context, request Se
 // POST /setChatDescription
 func (c *Client) SetChatDescription(ctx context.Context, request SetChatDescription) (res Result, err error) {
 	if err := func() error {
-
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -3837,7 +3812,6 @@ func (c *Client) SetChatStickerSet(ctx context.Context, request SetChatStickerSe
 // POST /setChatTitle
 func (c *Client) SetChatTitle(ctx context.Context, request SetChatTitle) (res Result, err error) {
 	if err := func() error {
-
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -3954,7 +3928,6 @@ func (c *Client) SetGameScore(ctx context.Context, request SetGameScore) (res Re
 // POST /setMyCommands
 func (c *Client) SetMyCommands(ctx context.Context, request SetMyCommands) (res Result, err error) {
 	if err := func() error {
-
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -4017,7 +3990,6 @@ func (c *Client) SetMyCommands(ctx context.Context, request SetMyCommands) (res 
 // POST /setPassportDataErrors
 func (c *Client) SetPassportDataErrors(ctx context.Context, request SetPassportDataErrors) (res Result, err error) {
 	if err := func() error {
-
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -4242,7 +4214,6 @@ func (c *Client) SetWebhook(ctx context.Context, request SetWebhook) (res Result
 // POST /stopMessageLiveLocation
 func (c *Client) StopMessageLiveLocation(ctx context.Context, request StopMessageLiveLocation) (res Result, err error) {
 	if err := func() error {
-
 		if err := request.Validate(); err != nil {
 			return err
 		}
@@ -4305,7 +4276,6 @@ func (c *Client) StopMessageLiveLocation(ctx context.Context, request StopMessag
 // POST /stopPoll
 func (c *Client) StopPoll(ctx context.Context, request StopPoll) (res Result, err error) {
 	if err := func() error {
-
 		if err := request.Validate(); err != nil {
 			return err
 		}

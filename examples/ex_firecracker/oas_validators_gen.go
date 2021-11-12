@@ -75,10 +75,8 @@ func (s CpuTemplate) Validate() error {
 func (s Drive) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-
 		if s.RateLimiter.Set {
 			if err := func() error {
-
 				if err := s.RateLimiter.Value.Validate(); err != nil {
 					return err
 				}
@@ -88,7 +86,6 @@ func (s Drive) Validate() error {
 			}
 		}
 		return nil
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -104,11 +101,9 @@ func (s Drive) Validate() error {
 func (s FullVmConfiguration) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-
 		var failures []validate.FieldError
 		for i, elem := range s.BlockDevices {
 			if err := func() error {
-
 				if err := elem.Validate(); err != nil {
 					return err
 				}
@@ -131,10 +126,8 @@ func (s FullVmConfiguration) Validate() error {
 		})
 	}
 	if err := func() error {
-
 		if s.Logger.Set {
 			if err := func() error {
-
 				if err := s.Logger.Value.Validate(); err != nil {
 					return err
 				}
@@ -144,7 +137,6 @@ func (s FullVmConfiguration) Validate() error {
 			}
 		}
 		return nil
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -153,10 +145,8 @@ func (s FullVmConfiguration) Validate() error {
 		})
 	}
 	if err := func() error {
-
 		if s.MachineConfig.Set {
 			if err := func() error {
-
 				if err := s.MachineConfig.Value.Validate(); err != nil {
 					return err
 				}
@@ -166,7 +156,6 @@ func (s FullVmConfiguration) Validate() error {
 			}
 		}
 		return nil
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -175,11 +164,9 @@ func (s FullVmConfiguration) Validate() error {
 		})
 	}
 	if err := func() error {
-
 		var failures []validate.FieldError
 		for i, elem := range s.NetDevices {
 			if err := func() error {
-
 				if err := elem.Validate(); err != nil {
 					return err
 				}
@@ -202,10 +189,8 @@ func (s FullVmConfiguration) Validate() error {
 		})
 	}
 	if err := func() error {
-
 		if s.VsockDevice.Set {
 			if err := func() error {
-
 				if err := s.VsockDevice.Value.Validate(); err != nil {
 					return err
 				}
@@ -215,7 +200,6 @@ func (s FullVmConfiguration) Validate() error {
 			}
 		}
 		return nil
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -231,7 +215,6 @@ func (s FullVmConfiguration) Validate() error {
 func (s InstanceActionInfo) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-
 		if err := s.ActionType.Validate(); err != nil {
 			return err
 		}
@@ -262,7 +245,6 @@ func (s InstanceActionInfoActionType) Validate() error {
 func (s InstanceInfo) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-
 		if err := s.State.Validate(); err != nil {
 			return err
 		}
@@ -293,10 +275,8 @@ func (s InstanceInfoState) Validate() error {
 func (s Logger) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-
 		if s.Level.Set {
 			if err := func() error {
-
 				if err := s.Level.Value.Validate(); err != nil {
 					return err
 				}
@@ -306,7 +286,6 @@ func (s Logger) Validate() error {
 			}
 		}
 		return nil
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -336,10 +315,8 @@ func (s LoggerLevel) Validate() error {
 func (s MachineConfiguration) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-
 		if s.CPUTemplate.Set {
 			if err := func() error {
-
 				if err := s.CPUTemplate.Value.Validate(); err != nil {
 					return err
 				}
@@ -349,7 +326,6 @@ func (s MachineConfiguration) Validate() error {
 			}
 		}
 		return nil
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -358,7 +334,6 @@ func (s MachineConfiguration) Validate() error {
 		})
 	}
 	if err := func() error {
-
 		if err := (validate.Int{
 			MinSet:       true,
 			Min:          1,
@@ -384,10 +359,8 @@ func (s MachineConfiguration) Validate() error {
 func (s NetworkInterface) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-
 		if s.RxRateLimiter.Set {
 			if err := func() error {
-
 				if err := s.RxRateLimiter.Value.Validate(); err != nil {
 					return err
 				}
@@ -397,7 +370,6 @@ func (s NetworkInterface) Validate() error {
 			}
 		}
 		return nil
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -406,10 +378,8 @@ func (s NetworkInterface) Validate() error {
 		})
 	}
 	if err := func() error {
-
 		if s.TxRateLimiter.Set {
 			if err := func() error {
-
 				if err := s.TxRateLimiter.Value.Validate(); err != nil {
 					return err
 				}
@@ -419,7 +389,6 @@ func (s NetworkInterface) Validate() error {
 			}
 		}
 		return nil
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -436,10 +405,8 @@ func (s NetworkInterface) Validate() error {
 func (s PartialDrive) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-
 		if s.RateLimiter.Set {
 			if err := func() error {
-
 				if err := s.RateLimiter.Value.Validate(); err != nil {
 					return err
 				}
@@ -449,7 +416,6 @@ func (s PartialDrive) Validate() error {
 			}
 		}
 		return nil
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -465,10 +431,8 @@ func (s PartialDrive) Validate() error {
 func (s PartialNetworkInterface) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-
 		if s.RxRateLimiter.Set {
 			if err := func() error {
-
 				if err := s.RxRateLimiter.Value.Validate(); err != nil {
 					return err
 				}
@@ -478,7 +442,6 @@ func (s PartialNetworkInterface) Validate() error {
 			}
 		}
 		return nil
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -487,10 +450,8 @@ func (s PartialNetworkInterface) Validate() error {
 		})
 	}
 	if err := func() error {
-
 		if s.TxRateLimiter.Set {
 			if err := func() error {
-
 				if err := s.TxRateLimiter.Value.Validate(); err != nil {
 					return err
 				}
@@ -500,7 +461,6 @@ func (s PartialNetworkInterface) Validate() error {
 			}
 		}
 		return nil
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -516,10 +476,8 @@ func (s PartialNetworkInterface) Validate() error {
 func (s RateLimiter) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-
 		if s.Bandwidth.Set {
 			if err := func() error {
-
 				if err := s.Bandwidth.Value.Validate(); err != nil {
 					return err
 				}
@@ -529,7 +487,6 @@ func (s RateLimiter) Validate() error {
 			}
 		}
 		return nil
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -538,10 +495,8 @@ func (s RateLimiter) Validate() error {
 		})
 	}
 	if err := func() error {
-
 		if s.Ops.Set {
 			if err := func() error {
-
 				if err := s.Ops.Value.Validate(); err != nil {
 					return err
 				}
@@ -551,7 +506,6 @@ func (s RateLimiter) Validate() error {
 			}
 		}
 		return nil
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -567,10 +521,8 @@ func (s RateLimiter) Validate() error {
 func (s SnapshotCreateParams) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-
 		if s.SnapshotType.Set {
 			if err := func() error {
-
 				if err := s.SnapshotType.Value.Validate(); err != nil {
 					return err
 				}
@@ -580,7 +532,6 @@ func (s SnapshotCreateParams) Validate() error {
 			}
 		}
 		return nil
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -606,10 +557,8 @@ func (s SnapshotCreateParamsSnapshotType) Validate() error {
 func (s TokenBucket) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-
 		if s.OneTimeBurst.Set {
 			if err := func() error {
-
 				if err := (validate.Int{
 					MinSet:       true,
 					Min:          0,
@@ -626,7 +575,6 @@ func (s TokenBucket) Validate() error {
 			}
 		}
 		return nil
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -635,7 +583,6 @@ func (s TokenBucket) Validate() error {
 		})
 	}
 	if err := func() error {
-
 		if err := (validate.Int{
 			MinSet:       true,
 			Min:          0,
@@ -654,7 +601,6 @@ func (s TokenBucket) Validate() error {
 		})
 	}
 	if err := func() error {
-
 		if err := (validate.Int{
 			MinSet:       true,
 			Min:          0,
@@ -680,7 +626,6 @@ func (s TokenBucket) Validate() error {
 func (s VM) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-
 		if err := s.State.Validate(); err != nil {
 			return err
 		}
@@ -709,7 +654,6 @@ func (s VMState) Validate() error {
 func (s Vsock) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-
 		if err := (validate.Int{
 			MinSet:       true,
 			Min:          3,

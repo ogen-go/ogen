@@ -83,7 +83,6 @@ func decodeFoobarPostRequest(r *http.Request, span trace.Span) (req Pet, err err
 			return req, err
 		}
 		if err := func() error {
-
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -118,7 +117,6 @@ func decodePetCreateRequest(r *http.Request, span trace.Span) (req Pet, err erro
 			return req, err
 		}
 		if err := func() error {
-
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -159,7 +157,6 @@ func decodePetUpdateNameAliasPostRequest(r *http.Request, span trace.Span) (req 
 			return req, err
 		}
 		if err := func() error {
-
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -196,7 +193,6 @@ func decodePetUpdateNamePostRequest(r *http.Request, span trace.Span) (req strin
 			return req, err
 		}
 		if err := func() error {
-
 			if err := (validate.String{
 				MinLength:    6,
 				MinLengthSet: true,

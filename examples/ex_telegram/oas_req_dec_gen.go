@@ -135,7 +135,6 @@ func decodeAnswerShippingQueryPostRequest(r *http.Request, span trace.Span) (req
 			return req, err
 		}
 		if err := func() error {
-
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -300,7 +299,6 @@ func decodeGetUpdatesPostRequest(r *http.Request, span trace.Span) (req GetUpdat
 			return req, err
 		}
 		if err := func() error {
-
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -335,7 +333,6 @@ func decodeGetUserProfilePhotosPostRequest(r *http.Request, span trace.Span) (re
 			return req, err
 		}
 		if err := func() error {
-
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -370,7 +367,6 @@ func decodeSendGamePostRequest(r *http.Request, span trace.Span) (req SendGamePo
 			return req, err
 		}
 		if err := func() error {
-
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -405,7 +401,6 @@ func decodeSendInvoicePostRequest(r *http.Request, span trace.Span) (req SendInv
 			return req, err
 		}
 		if err := func() error {
-
 			if err := request.Validate(); err != nil {
 				return err
 			}
@@ -440,7 +435,6 @@ func decodeSetMyCommandsPostRequest(r *http.Request, span trace.Span) (req SetMy
 			return req, err
 		}
 		if err := func() error {
-
 			if err := request.Validate(); err != nil {
 				return err
 			}
