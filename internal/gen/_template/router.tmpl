@@ -1,0 +1,80 @@
+{{- /*gotype: github.com/ogen-go/ogen/internal/gen.TemplateConfig*/ -}}
+{{ define "router" }}
+{{ template "header" $ }}
+
+type routeArg struct {
+
+}
+
+type routeMatch struct {
+	Operation string
+	Args      map[string]string
+}
+
+func (s *Server) notFound(w http.ResponseWriter, r *http.Request) {
+	http.NotFound(w, r)
+}
+
+// ServeHTTP serves http request as defined by OpenAPI v3 specification,
+// calling handler that matches the path or returning not found error.
+func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	p := []byte(r.URL.Path)
+	if len(p) == 0 {
+		s.notFound(w, r)
+		return
+	}
+
+	args := make(map[string]string)
+	_ = args
+
+	var offset, idx int
+	var head []byte
+
+	// Static code generated router with unwrapped path search.
+	switch r.Method {
+	{{- range $m := $.Methods }}
+	case "{{ $m.Method }}":
+		{{- template "route_edge" $m.Root }}
+	{{- end }}
+	default:
+		s.notFound(w, r)
+		return
+	}
+}
+
+{{ end }}
+
+{{ define "route_edge" }}
+{{- /*gotype: github.com/ogen-go/ogen/internal/gen.RouteEge*/ -}}
+{{- if $.Operation }}
+	s.Handle{{ $.Operation }}Request(w, r)
+	return
+{{- else }}
+// Edge: {{ $.ID }}, path: {{ printf "%q" $.Path }}.
+if len(p) < offset {
+	s.notFound(w, r)
+	return
+}
+p = p[offset:]
+if idx = bytes.IndexByte(p[offset+1:], '/'); idx < 0 {
+	offset = len(p)
+} else {
+	offset += idx + 1
+}
+head = p[:offset]
+switch string(head) {
+{{- range $next := $.Next }}
+case "{{ $next.Path }}": // {{ $next.ID }}
+	{{- template "route_edge" $next }}
+{{- end }}
+default:
+	{{- if $.Operation }}
+	s.Handle{{ $.Operation }}Request(w, r)
+	return
+	{{- else }}
+	s.notFound(w, r)
+	return
+	{{- end }}
+}
+{{- end }}
+{{- end }}
