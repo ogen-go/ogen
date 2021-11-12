@@ -98,7 +98,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		}
 		switch string(elem) {
 		case "data": // -> 1
-			// GET /data.
+			// GET /data
 			s.handleDataGetRequest(args, w, r)
 			return
 		default:
@@ -118,7 +118,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		}
 		switch string(elem) {
 		case "data": // -> 1
-			// POST /data.
+			// POST /data
 			s.handleDataCreateRequest(args, w, r)
 			return
 		default:

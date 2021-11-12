@@ -114,7 +114,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					args = make(map[string]string)
 				}
 				args["petId"] = string(elem)
-				// GET /pets/{petId}.
+				// GET /pets/{petId}
 				s.handleShowPetByIdRequest(args, w, r)
 				return
 			}
@@ -135,7 +135,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		}
 		switch string(elem) {
 		case "pets": // -> 1
-			// POST /pets.
+			// POST /pets
 			s.handleCreatePetsRequest(args, w, r)
 			return
 		default:

@@ -114,7 +114,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					args = make(map[string]string)
 				}
 				args["id"] = string(elem)
-				// DELETE /pets/{id}.
+				// DELETE /pets/{id}
 				s.handleDeletePetRequest(args, w, r)
 				return
 			}

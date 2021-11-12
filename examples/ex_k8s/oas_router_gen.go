@@ -150,7 +150,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								args = make(map[string]string)
 							}
 							args["name"] = string(elem)
-							// GET /apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations/{name}.
+							// GET /apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations/{name}
 							s.handleReadAdmissionregistrationV1MutatingWebhookConfigurationRequest(args, w, r)
 							return
 						}
@@ -171,7 +171,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								args = make(map[string]string)
 							}
 							args["name"] = string(elem)
-							// GET /apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations/{name}.
+							// GET /apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations/{name}
 							s.handleReadAdmissionregistrationV1ValidatingWebhookConfigurationRequest(args, w, r)
 							return
 						}
@@ -204,7 +204,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["name"] = string(elem)
-								// GET /apis/admissionregistration.k8s.io/v1/watch/mutatingwebhookconfigurations/{name}.
+								// GET /apis/admissionregistration.k8s.io/v1/watch/mutatingwebhookconfigurations/{name}
 								s.handleWatchAdmissionregistrationV1MutatingWebhookConfigurationRequest(args, w, r)
 								return
 							}
@@ -225,7 +225,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["name"] = string(elem)
-								// GET /apis/admissionregistration.k8s.io/v1/watch/validatingwebhookconfigurations/{name}.
+								// GET /apis/admissionregistration.k8s.io/v1/watch/validatingwebhookconfigurations/{name}
 								s.handleWatchAdmissionregistrationV1ValidatingWebhookConfigurationRequest(args, w, r)
 								return
 							}
@@ -296,7 +296,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							switch string(elem) {
 							case "status": // -> 196
-								// GET /apis/apiextensions.k8s.io/v1/customresourcedefinitions/{name}/status.
+								// GET /apis/apiextensions.k8s.io/v1/customresourcedefinitions/{name}/status
 								s.handleReadApiextensionsV1CustomResourceDefinitionStatusRequest(args, w, r)
 								return
 							default:
@@ -334,7 +334,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["name"] = string(elem)
-								// GET /apis/apiextensions.k8s.io/v1/watch/customresourcedefinitions/{name}.
+								// GET /apis/apiextensions.k8s.io/v1/watch/customresourcedefinitions/{name}
 								s.handleWatchApiextensionsV1CustomResourceDefinitionRequest(args, w, r)
 								return
 							}
@@ -405,7 +405,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							switch string(elem) {
 							case "status": // -> 198
-								// GET /apis/apiregistration.k8s.io/v1/apiservices/{name}/status.
+								// GET /apis/apiregistration.k8s.io/v1/apiservices/{name}/status
 								s.handleReadApiregistrationV1APIServiceStatusRequest(args, w, r)
 								return
 							default:
@@ -443,7 +443,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["name"] = string(elem)
-								// GET /apis/apiregistration.k8s.io/v1/watch/apiservices/{name}.
+								// GET /apis/apiregistration.k8s.io/v1/watch/apiservices/{name}
 								s.handleWatchApiregistrationV1APIServiceRequest(args, w, r)
 								return
 							}
@@ -486,15 +486,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch string(elem) {
 					case "controllerrevisions": // -> 62
-						// GET /apis/apps/v1/controllerrevisions.
+						// GET /apis/apps/v1/controllerrevisions
 						s.handleListAppsV1ControllerRevisionForAllNamespacesRequest(args, w, r)
 						return
 					case "daemonsets": // -> 63
-						// GET /apis/apps/v1/daemonsets.
+						// GET /apis/apps/v1/daemonsets
 						s.handleListAppsV1DaemonSetForAllNamespacesRequest(args, w, r)
 						return
 					case "deployments": // -> 64
-						// GET /apis/apps/v1/deployments.
+						// GET /apis/apps/v1/deployments
 						s.handleListAppsV1DeploymentForAllNamespacesRequest(args, w, r)
 						return
 					case "namespaces": // -> 65
@@ -542,7 +542,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										args = make(map[string]string)
 									}
 									args["name"] = string(elem)
-									// GET /apis/apps/v1/namespaces/{namespace}/controllerrevisions/{name}.
+									// GET /apis/apps/v1/namespaces/{namespace}/controllerrevisions/{name}
 									s.handleReadAppsV1NamespacedControllerRevisionRequest(args, w, r)
 									return
 								}
@@ -575,7 +575,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch string(elem) {
 									case "status": // -> 201
-										// GET /apis/apps/v1/namespaces/{namespace}/daemonsets/{name}/status.
+										// GET /apis/apps/v1/namespaces/{namespace}/daemonsets/{name}/status
 										s.handleReadAppsV1NamespacedDaemonSetStatusRequest(args, w, r)
 										return
 									default:
@@ -613,11 +613,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch string(elem) {
 									case "scale": // -> 203
-										// GET /apis/apps/v1/namespaces/{namespace}/deployments/{name}/scale.
+										// GET /apis/apps/v1/namespaces/{namespace}/deployments/{name}/scale
 										s.handleReadAppsV1NamespacedDeploymentScaleRequest(args, w, r)
 										return
 									case "status": // -> 204
-										// GET /apis/apps/v1/namespaces/{namespace}/deployments/{name}/status.
+										// GET /apis/apps/v1/namespaces/{namespace}/deployments/{name}/status
 										s.handleReadAppsV1NamespacedDeploymentStatusRequest(args, w, r)
 										return
 									default:
@@ -655,11 +655,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch string(elem) {
 									case "scale": // -> 206
-										// GET /apis/apps/v1/namespaces/{namespace}/replicasets/{name}/scale.
+										// GET /apis/apps/v1/namespaces/{namespace}/replicasets/{name}/scale
 										s.handleReadAppsV1NamespacedReplicaSetScaleRequest(args, w, r)
 										return
 									case "status": // -> 207
-										// GET /apis/apps/v1/namespaces/{namespace}/replicasets/{name}/status.
+										// GET /apis/apps/v1/namespaces/{namespace}/replicasets/{name}/status
 										s.handleReadAppsV1NamespacedReplicaSetStatusRequest(args, w, r)
 										return
 									default:
@@ -697,11 +697,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch string(elem) {
 									case "scale": // -> 209
-										// GET /apis/apps/v1/namespaces/{namespace}/statefulsets/{name}/scale.
+										// GET /apis/apps/v1/namespaces/{namespace}/statefulsets/{name}/scale
 										s.handleReadAppsV1NamespacedStatefulSetScaleRequest(args, w, r)
 										return
 									case "status": // -> 210
-										// GET /apis/apps/v1/namespaces/{namespace}/statefulsets/{name}/status.
+										// GET /apis/apps/v1/namespaces/{namespace}/statefulsets/{name}/status
 										s.handleReadAppsV1NamespacedStatefulSetStatusRequest(args, w, r)
 										return
 									default:
@@ -716,11 +716,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						}
 					case "replicasets": // -> 72
-						// GET /apis/apps/v1/replicasets.
+						// GET /apis/apps/v1/replicasets
 						s.handleListAppsV1ReplicaSetForAllNamespacesRequest(args, w, r)
 						return
 					case "statefulsets": // -> 73
-						// GET /apis/apps/v1/statefulsets.
+						// GET /apis/apps/v1/statefulsets
 						s.handleListAppsV1StatefulSetForAllNamespacesRequest(args, w, r)
 						return
 					case "watch": // -> 302
@@ -736,15 +736,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch string(elem) {
 						case "controllerrevisions": // -> 303
-							// GET /apis/apps/v1/watch/controllerrevisions.
+							// GET /apis/apps/v1/watch/controllerrevisions
 							s.handleWatchAppsV1ControllerRevisionListForAllNamespacesRequest(args, w, r)
 							return
 						case "daemonsets": // -> 304
-							// GET /apis/apps/v1/watch/daemonsets.
+							// GET /apis/apps/v1/watch/daemonsets
 							s.handleWatchAppsV1DaemonSetListForAllNamespacesRequest(args, w, r)
 							return
 						case "deployments": // -> 305
-							// GET /apis/apps/v1/watch/deployments.
+							// GET /apis/apps/v1/watch/deployments
 							s.handleWatchAppsV1DeploymentListForAllNamespacesRequest(args, w, r)
 							return
 						case "namespaces": // -> 306
@@ -792,7 +792,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											args = make(map[string]string)
 										}
 										args["name"] = string(elem)
-										// GET /apis/apps/v1/watch/namespaces/{namespace}/controllerrevisions/{name}.
+										// GET /apis/apps/v1/watch/namespaces/{namespace}/controllerrevisions/{name}
 										s.handleWatchAppsV1NamespacedControllerRevisionRequest(args, w, r)
 										return
 									}
@@ -813,7 +813,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											args = make(map[string]string)
 										}
 										args["name"] = string(elem)
-										// GET /apis/apps/v1/watch/namespaces/{namespace}/daemonsets/{name}.
+										// GET /apis/apps/v1/watch/namespaces/{namespace}/daemonsets/{name}
 										s.handleWatchAppsV1NamespacedDaemonSetRequest(args, w, r)
 										return
 									}
@@ -834,7 +834,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											args = make(map[string]string)
 										}
 										args["name"] = string(elem)
-										// GET /apis/apps/v1/watch/namespaces/{namespace}/deployments/{name}.
+										// GET /apis/apps/v1/watch/namespaces/{namespace}/deployments/{name}
 										s.handleWatchAppsV1NamespacedDeploymentRequest(args, w, r)
 										return
 									}
@@ -855,7 +855,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											args = make(map[string]string)
 										}
 										args["name"] = string(elem)
-										// GET /apis/apps/v1/watch/namespaces/{namespace}/replicasets/{name}.
+										// GET /apis/apps/v1/watch/namespaces/{namespace}/replicasets/{name}
 										s.handleWatchAppsV1NamespacedReplicaSetRequest(args, w, r)
 										return
 									}
@@ -876,7 +876,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											args = make(map[string]string)
 										}
 										args["name"] = string(elem)
-										// GET /apis/apps/v1/watch/namespaces/{namespace}/statefulsets/{name}.
+										// GET /apis/apps/v1/watch/namespaces/{namespace}/statefulsets/{name}
 										s.handleWatchAppsV1NamespacedStatefulSetRequest(args, w, r)
 										return
 									}
@@ -886,11 +886,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 							}
 						case "replicasets": // -> 318
-							// GET /apis/apps/v1/watch/replicasets.
+							// GET /apis/apps/v1/watch/replicasets
 							s.handleWatchAppsV1ReplicaSetListForAllNamespacesRequest(args, w, r)
 							return
 						case "statefulsets": // -> 319
-							// GET /apis/apps/v1/watch/statefulsets.
+							// GET /apis/apps/v1/watch/statefulsets
 							s.handleWatchAppsV1StatefulSetListForAllNamespacesRequest(args, w, r)
 							return
 						default:
@@ -920,7 +920,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				switch string(elem) {
 				case "v1": // -> 11
-					// GET /apis/authentication.k8s.io/v1/.
+					// GET /apis/authentication.k8s.io/v1/
 					s.handleGetAuthenticationV1APIResourcesRequest(args, w, r)
 					return
 				default:
@@ -941,7 +941,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				switch string(elem) {
 				case "v1": // -> 13
-					// GET /apis/authorization.k8s.io/v1/.
+					// GET /apis/authorization.k8s.io/v1/
 					s.handleGetAuthorizationV1APIResourcesRequest(args, w, r)
 					return
 				default:
@@ -974,7 +974,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch string(elem) {
 					case "horizontalpodautoscalers": // -> 74
-						// GET /apis/autoscaling/v1/horizontalpodautoscalers.
+						// GET /apis/autoscaling/v1/horizontalpodautoscalers
 						s.handleListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesRequest(args, w, r)
 						return
 					case "namespaces": // -> 75
@@ -1034,7 +1034,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch string(elem) {
 									case "status": // -> 212
-										// GET /apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status.
+										// GET /apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status
 										s.handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRequest(args, w, r)
 										return
 									default:
@@ -1061,7 +1061,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch string(elem) {
 						case "horizontalpodautoscalers": // -> 321
-							// GET /apis/autoscaling/v1/watch/horizontalpodautoscalers.
+							// GET /apis/autoscaling/v1/watch/horizontalpodautoscalers
 							s.handleWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesRequest(args, w, r)
 							return
 						case "namespaces": // -> 322
@@ -1109,7 +1109,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											args = make(map[string]string)
 										}
 										args["name"] = string(elem)
-										// GET /apis/autoscaling/v1/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}.
+										// GET /apis/autoscaling/v1/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}
 										s.handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerRequest(args, w, r)
 										return
 									}
@@ -1140,7 +1140,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch string(elem) {
 					case "horizontalpodautoscalers": // -> 78
-						// GET /apis/autoscaling/v2beta1/horizontalpodautoscalers.
+						// GET /apis/autoscaling/v2beta1/horizontalpodautoscalers
 						s.handleListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesRequest(args, w, r)
 						return
 					case "namespaces": // -> 79
@@ -1200,7 +1200,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch string(elem) {
 									case "status": // -> 214
-										// GET /apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status.
+										// GET /apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status
 										s.handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusRequest(args, w, r)
 										return
 									default:
@@ -1227,7 +1227,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch string(elem) {
 						case "horizontalpodautoscalers": // -> 327
-							// GET /apis/autoscaling/v2beta1/watch/horizontalpodautoscalers.
+							// GET /apis/autoscaling/v2beta1/watch/horizontalpodautoscalers
 							s.handleWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRequest(args, w, r)
 							return
 						case "namespaces": // -> 328
@@ -1275,7 +1275,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											args = make(map[string]string)
 										}
 										args["name"] = string(elem)
-										// GET /apis/autoscaling/v2beta1/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}.
+										// GET /apis/autoscaling/v2beta1/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}
 										s.handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRequest(args, w, r)
 										return
 									}
@@ -1306,7 +1306,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch string(elem) {
 					case "horizontalpodautoscalers": // -> 82
-						// GET /apis/autoscaling/v2beta2/horizontalpodautoscalers.
+						// GET /apis/autoscaling/v2beta2/horizontalpodautoscalers
 						s.handleListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesRequest(args, w, r)
 						return
 					case "namespaces": // -> 83
@@ -1366,7 +1366,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch string(elem) {
 									case "status": // -> 216
-										// GET /apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers/{name}/status.
+										// GET /apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers/{name}/status
 										s.handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusRequest(args, w, r)
 										return
 									default:
@@ -1393,7 +1393,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch string(elem) {
 						case "horizontalpodautoscalers": // -> 333
-							// GET /apis/autoscaling/v2beta2/watch/horizontalpodautoscalers.
+							// GET /apis/autoscaling/v2beta2/watch/horizontalpodautoscalers
 							s.handleWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRequest(args, w, r)
 							return
 						case "namespaces": // -> 334
@@ -1441,7 +1441,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											args = make(map[string]string)
 										}
 										args["name"] = string(elem)
-										// GET /apis/autoscaling/v2beta2/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}.
+										// GET /apis/autoscaling/v2beta2/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}
 										s.handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRequest(args, w, r)
 										return
 									}
@@ -1489,11 +1489,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch string(elem) {
 					case "cronjobs": // -> 86
-						// GET /apis/batch/v1/cronjobs.
+						// GET /apis/batch/v1/cronjobs
 						s.handleListBatchV1CronJobForAllNamespacesRequest(args, w, r)
 						return
 					case "jobs": // -> 87
-						// GET /apis/batch/v1/jobs.
+						// GET /apis/batch/v1/jobs
 						s.handleListBatchV1JobForAllNamespacesRequest(args, w, r)
 						return
 					case "namespaces": // -> 88
@@ -1553,7 +1553,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch string(elem) {
 									case "status": // -> 218
-										// GET /apis/batch/v1/namespaces/{namespace}/cronjobs/{name}/status.
+										// GET /apis/batch/v1/namespaces/{namespace}/cronjobs/{name}/status
 										s.handleReadBatchV1NamespacedCronJobStatusRequest(args, w, r)
 										return
 									default:
@@ -1591,7 +1591,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch string(elem) {
 									case "status": // -> 220
-										// GET /apis/batch/v1/namespaces/{namespace}/jobs/{name}/status.
+										// GET /apis/batch/v1/namespaces/{namespace}/jobs/{name}/status
 										s.handleReadBatchV1NamespacedJobStatusRequest(args, w, r)
 										return
 									default:
@@ -1618,11 +1618,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch string(elem) {
 						case "cronjobs": // -> 339
-							// GET /apis/batch/v1/watch/cronjobs.
+							// GET /apis/batch/v1/watch/cronjobs
 							s.handleWatchBatchV1CronJobListForAllNamespacesRequest(args, w, r)
 							return
 						case "jobs": // -> 340
-							// GET /apis/batch/v1/watch/jobs.
+							// GET /apis/batch/v1/watch/jobs
 							s.handleWatchBatchV1JobListForAllNamespacesRequest(args, w, r)
 							return
 						case "namespaces": // -> 341
@@ -1670,7 +1670,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											args = make(map[string]string)
 										}
 										args["name"] = string(elem)
-										// GET /apis/batch/v1/watch/namespaces/{namespace}/cronjobs/{name}.
+										// GET /apis/batch/v1/watch/namespaces/{namespace}/cronjobs/{name}
 										s.handleWatchBatchV1NamespacedCronJobRequest(args, w, r)
 										return
 									}
@@ -1691,7 +1691,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											args = make(map[string]string)
 										}
 										args["name"] = string(elem)
-										// GET /apis/batch/v1/watch/namespaces/{namespace}/jobs/{name}.
+										// GET /apis/batch/v1/watch/namespaces/{namespace}/jobs/{name}
 										s.handleWatchBatchV1NamespacedJobRequest(args, w, r)
 										return
 									}
@@ -1722,7 +1722,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch string(elem) {
 					case "cronjobs": // -> 92
-						// GET /apis/batch/v1beta1/cronjobs.
+						// GET /apis/batch/v1beta1/cronjobs
 						s.handleListBatchV1beta1CronJobForAllNamespacesRequest(args, w, r)
 						return
 					case "namespaces": // -> 93
@@ -1782,7 +1782,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch string(elem) {
 									case "status": // -> 222
-										// GET /apis/batch/v1beta1/namespaces/{namespace}/cronjobs/{name}/status.
+										// GET /apis/batch/v1beta1/namespaces/{namespace}/cronjobs/{name}/status
 										s.handleReadBatchV1beta1NamespacedCronJobStatusRequest(args, w, r)
 										return
 									default:
@@ -1809,7 +1809,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch string(elem) {
 						case "cronjobs": // -> 348
-							// GET /apis/batch/v1beta1/watch/cronjobs.
+							// GET /apis/batch/v1beta1/watch/cronjobs
 							s.handleWatchBatchV1beta1CronJobListForAllNamespacesRequest(args, w, r)
 							return
 						case "namespaces": // -> 349
@@ -1857,7 +1857,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											args = make(map[string]string)
 										}
 										args["name"] = string(elem)
-										// GET /apis/batch/v1beta1/watch/namespaces/{namespace}/cronjobs/{name}.
+										// GET /apis/batch/v1beta1/watch/namespaces/{namespace}/cronjobs/{name}
 										s.handleWatchBatchV1beta1NamespacedCronJobRequest(args, w, r)
 										return
 									}
@@ -1933,11 +1933,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							switch string(elem) {
 							case "approval": // -> 224
-								// GET /apis/certificates.k8s.io/v1/certificatesigningrequests/{name}/approval.
+								// GET /apis/certificates.k8s.io/v1/certificatesigningrequests/{name}/approval
 								s.handleReadCertificatesV1CertificateSigningRequestApprovalRequest(args, w, r)
 								return
 							case "status": // -> 225
-								// GET /apis/certificates.k8s.io/v1/certificatesigningrequests/{name}/status.
+								// GET /apis/certificates.k8s.io/v1/certificatesigningrequests/{name}/status
 								s.handleReadCertificatesV1CertificateSigningRequestStatusRequest(args, w, r)
 								return
 							default:
@@ -1975,7 +1975,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["name"] = string(elem)
-								// GET /apis/certificates.k8s.io/v1/watch/certificatesigningrequests/{name}.
+								// GET /apis/certificates.k8s.io/v1/watch/certificatesigningrequests/{name}
 								s.handleWatchCertificatesV1CertificateSigningRequestRequest(args, w, r)
 								return
 							}
@@ -2018,7 +2018,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch string(elem) {
 					case "leases": // -> 97
-						// GET /apis/coordination.k8s.io/v1/leases.
+						// GET /apis/coordination.k8s.io/v1/leases
 						s.handleListCoordinationV1LeaseForAllNamespacesRequest(args, w, r)
 						return
 					case "namespaces": // -> 98
@@ -2066,7 +2066,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										args = make(map[string]string)
 									}
 									args["name"] = string(elem)
-									// GET /apis/coordination.k8s.io/v1/namespaces/{namespace}/leases/{name}.
+									// GET /apis/coordination.k8s.io/v1/namespaces/{namespace}/leases/{name}
 									s.handleReadCoordinationV1NamespacedLeaseRequest(args, w, r)
 									return
 								}
@@ -2088,7 +2088,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch string(elem) {
 						case "leases": // -> 357
-							// GET /apis/coordination.k8s.io/v1/watch/leases.
+							// GET /apis/coordination.k8s.io/v1/watch/leases
 							s.handleWatchCoordinationV1LeaseListForAllNamespacesRequest(args, w, r)
 							return
 						case "namespaces": // -> 358
@@ -2136,7 +2136,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											args = make(map[string]string)
 										}
 										args["name"] = string(elem)
-										// GET /apis/coordination.k8s.io/v1/watch/namespaces/{namespace}/leases/{name}.
+										// GET /apis/coordination.k8s.io/v1/watch/namespaces/{namespace}/leases/{name}
 										s.handleWatchCoordinationV1NamespacedLeaseRequest(args, w, r)
 										return
 									}
@@ -2184,7 +2184,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch string(elem) {
 					case "endpointslices": // -> 130
-						// GET /apis/discovery.k8s.io/v1/endpointslices.
+						// GET /apis/discovery.k8s.io/v1/endpointslices
 						s.handleListDiscoveryV1EndpointSliceForAllNamespacesRequest(args, w, r)
 						return
 					case "namespaces": // -> 131
@@ -2232,7 +2232,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										args = make(map[string]string)
 									}
 									args["name"] = string(elem)
-									// GET /apis/discovery.k8s.io/v1/namespaces/{namespace}/endpointslices/{name}.
+									// GET /apis/discovery.k8s.io/v1/namespaces/{namespace}/endpointslices/{name}
 									s.handleReadDiscoveryV1NamespacedEndpointSliceRequest(args, w, r)
 									return
 								}
@@ -2254,7 +2254,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch string(elem) {
 						case "endpointslices": // -> 406
-							// GET /apis/discovery.k8s.io/v1/watch/endpointslices.
+							// GET /apis/discovery.k8s.io/v1/watch/endpointslices
 							s.handleWatchDiscoveryV1EndpointSliceListForAllNamespacesRequest(args, w, r)
 							return
 						case "namespaces": // -> 407
@@ -2302,7 +2302,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											args = make(map[string]string)
 										}
 										args["name"] = string(elem)
-										// GET /apis/discovery.k8s.io/v1/watch/namespaces/{namespace}/endpointslices/{name}.
+										// GET /apis/discovery.k8s.io/v1/watch/namespaces/{namespace}/endpointslices/{name}
 										s.handleWatchDiscoveryV1NamespacedEndpointSliceRequest(args, w, r)
 										return
 									}
@@ -2333,7 +2333,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch string(elem) {
 					case "endpointslices": // -> 134
-						// GET /apis/discovery.k8s.io/v1beta1/endpointslices.
+						// GET /apis/discovery.k8s.io/v1beta1/endpointslices
 						s.handleListDiscoveryV1beta1EndpointSliceForAllNamespacesRequest(args, w, r)
 						return
 					case "namespaces": // -> 135
@@ -2381,7 +2381,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										args = make(map[string]string)
 									}
 									args["name"] = string(elem)
-									// GET /apis/discovery.k8s.io/v1beta1/namespaces/{namespace}/endpointslices/{name}.
+									// GET /apis/discovery.k8s.io/v1beta1/namespaces/{namespace}/endpointslices/{name}
 									s.handleReadDiscoveryV1beta1NamespacedEndpointSliceRequest(args, w, r)
 									return
 								}
@@ -2403,7 +2403,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch string(elem) {
 						case "endpointslices": // -> 412
-							// GET /apis/discovery.k8s.io/v1beta1/watch/endpointslices.
+							// GET /apis/discovery.k8s.io/v1beta1/watch/endpointslices
 							s.handleWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesRequest(args, w, r)
 							return
 						case "namespaces": // -> 413
@@ -2451,7 +2451,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											args = make(map[string]string)
 										}
 										args["name"] = string(elem)
-										// GET /apis/discovery.k8s.io/v1beta1/watch/namespaces/{namespace}/endpointslices/{name}.
+										// GET /apis/discovery.k8s.io/v1beta1/watch/namespaces/{namespace}/endpointslices/{name}
 										s.handleWatchDiscoveryV1beta1NamespacedEndpointSliceRequest(args, w, r)
 										return
 									}
@@ -2499,7 +2499,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch string(elem) {
 					case "events": // -> 138
-						// GET /apis/events.k8s.io/v1/events.
+						// GET /apis/events.k8s.io/v1/events
 						s.handleListEventsV1EventForAllNamespacesRequest(args, w, r)
 						return
 					case "namespaces": // -> 139
@@ -2547,7 +2547,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										args = make(map[string]string)
 									}
 									args["name"] = string(elem)
-									// GET /apis/events.k8s.io/v1/namespaces/{namespace}/events/{name}.
+									// GET /apis/events.k8s.io/v1/namespaces/{namespace}/events/{name}
 									s.handleReadEventsV1NamespacedEventRequest(args, w, r)
 									return
 								}
@@ -2569,7 +2569,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch string(elem) {
 						case "events": // -> 418
-							// GET /apis/events.k8s.io/v1/watch/events.
+							// GET /apis/events.k8s.io/v1/watch/events
 							s.handleWatchEventsV1EventListForAllNamespacesRequest(args, w, r)
 							return
 						case "namespaces": // -> 419
@@ -2617,7 +2617,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											args = make(map[string]string)
 										}
 										args["name"] = string(elem)
-										// GET /apis/events.k8s.io/v1/watch/namespaces/{namespace}/events/{name}.
+										// GET /apis/events.k8s.io/v1/watch/namespaces/{namespace}/events/{name}
 										s.handleWatchEventsV1NamespacedEventRequest(args, w, r)
 										return
 									}
@@ -2648,7 +2648,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch string(elem) {
 					case "events": // -> 142
-						// GET /apis/events.k8s.io/v1beta1/events.
+						// GET /apis/events.k8s.io/v1beta1/events
 						s.handleListEventsV1beta1EventForAllNamespacesRequest(args, w, r)
 						return
 					case "namespaces": // -> 143
@@ -2696,7 +2696,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										args = make(map[string]string)
 									}
 									args["name"] = string(elem)
-									// GET /apis/events.k8s.io/v1beta1/namespaces/{namespace}/events/{name}.
+									// GET /apis/events.k8s.io/v1beta1/namespaces/{namespace}/events/{name}
 									s.handleReadEventsV1beta1NamespacedEventRequest(args, w, r)
 									return
 								}
@@ -2718,7 +2718,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch string(elem) {
 						case "events": // -> 424
-							// GET /apis/events.k8s.io/v1beta1/watch/events.
+							// GET /apis/events.k8s.io/v1beta1/watch/events
 							s.handleWatchEventsV1beta1EventListForAllNamespacesRequest(args, w, r)
 							return
 						case "namespaces": // -> 425
@@ -2766,7 +2766,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											args = make(map[string]string)
 										}
 										args["name"] = string(elem)
-										// GET /apis/events.k8s.io/v1beta1/watch/namespaces/{namespace}/events/{name}.
+										// GET /apis/events.k8s.io/v1beta1/watch/namespaces/{namespace}/events/{name}
 										s.handleWatchEventsV1beta1NamespacedEventRequest(args, w, r)
 										return
 									}
@@ -2842,7 +2842,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							switch string(elem) {
 							case "status": // -> 258
-								// GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas/{name}/status.
+								// GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas/{name}/status
 								s.handleReadFlowcontrolApiserverV1beta1FlowSchemaStatusRequest(args, w, r)
 								return
 							default:
@@ -2880,7 +2880,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							switch string(elem) {
 							case "status": // -> 260
-								// GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations/{name}/status.
+								// GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations/{name}/status
 								s.handleReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusRequest(args, w, r)
 								return
 							default:
@@ -2918,7 +2918,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["name"] = string(elem)
-								// GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/flowschemas/{name}.
+								// GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/flowschemas/{name}
 								s.handleWatchFlowcontrolApiserverV1beta1FlowSchemaRequest(args, w, r)
 								return
 							}
@@ -2939,7 +2939,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["name"] = string(elem)
-								// GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/prioritylevelconfigurations/{name}.
+								// GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/prioritylevelconfigurations/{name}
 								s.handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest(args, w, r)
 								return
 							}
@@ -2993,7 +2993,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							switch string(elem) {
 							case "status": // -> 262
-								// GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas/{name}/status.
+								// GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas/{name}/status
 								s.handleReadFlowcontrolApiserverV1beta2FlowSchemaStatusRequest(args, w, r)
 								return
 							default:
@@ -3031,7 +3031,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							switch string(elem) {
 							case "status": // -> 264
-								// GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations/{name}/status.
+								// GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations/{name}/status
 								s.handleReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusRequest(args, w, r)
 								return
 							default:
@@ -3069,7 +3069,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["name"] = string(elem)
-								// GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/flowschemas/{name}.
+								// GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/flowschemas/{name}
 								s.handleWatchFlowcontrolApiserverV1beta2FlowSchemaRequest(args, w, r)
 								return
 							}
@@ -3090,7 +3090,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["name"] = string(elem)
-								// GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/prioritylevelconfigurations/{name}.
+								// GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/prioritylevelconfigurations/{name}
 								s.handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest(args, w, r)
 								return
 							}
@@ -3161,7 +3161,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							switch string(elem) {
 							case "status": // -> 266
-								// GET /apis/internal.apiserver.k8s.io/v1alpha1/storageversions/{name}/status.
+								// GET /apis/internal.apiserver.k8s.io/v1alpha1/storageversions/{name}/status
 								s.handleReadInternalApiserverV1alpha1StorageVersionStatusRequest(args, w, r)
 								return
 							default:
@@ -3199,7 +3199,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["name"] = string(elem)
-								// GET /apis/internal.apiserver.k8s.io/v1alpha1/watch/storageversions/{name}.
+								// GET /apis/internal.apiserver.k8s.io/v1alpha1/watch/storageversions/{name}
 								s.handleWatchInternalApiserverV1alpha1StorageVersionRequest(args, w, r)
 								return
 							}
@@ -3258,12 +3258,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								args = make(map[string]string)
 							}
 							args["name"] = string(elem)
-							// GET /apis/networking.k8s.io/v1/ingressclasses/{name}.
+							// GET /apis/networking.k8s.io/v1/ingressclasses/{name}
 							s.handleReadNetworkingV1IngressClassRequest(args, w, r)
 							return
 						}
 					case "ingresses": // -> 152
-						// GET /apis/networking.k8s.io/v1/ingresses.
+						// GET /apis/networking.k8s.io/v1/ingresses
 						s.handleListNetworkingV1IngressForAllNamespacesRequest(args, w, r)
 						return
 					case "namespaces": // -> 153
@@ -3323,7 +3323,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch string(elem) {
 									case "status": // -> 269
-										// GET /apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/{name}/status.
+										// GET /apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/{name}/status
 										s.handleReadNetworkingV1NamespacedIngressStatusRequest(args, w, r)
 										return
 									default:
@@ -3349,7 +3349,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										args = make(map[string]string)
 									}
 									args["name"] = string(elem)
-									// GET /apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies/{name}.
+									// GET /apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies/{name}
 									s.handleReadNetworkingV1NamespacedNetworkPolicyRequest(args, w, r)
 									return
 								}
@@ -3359,7 +3359,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						}
 					case "networkpolicies": // -> 157
-						// GET /apis/networking.k8s.io/v1/networkpolicies.
+						// GET /apis/networking.k8s.io/v1/networkpolicies
 						s.handleListNetworkingV1NetworkPolicyForAllNamespacesRequest(args, w, r)
 						return
 					case "watch": // -> 442
@@ -3391,12 +3391,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["name"] = string(elem)
-								// GET /apis/networking.k8s.io/v1/watch/ingressclasses/{name}.
+								// GET /apis/networking.k8s.io/v1/watch/ingressclasses/{name}
 								s.handleWatchNetworkingV1IngressClassRequest(args, w, r)
 								return
 							}
 						case "ingresses": // -> 445
-							// GET /apis/networking.k8s.io/v1/watch/ingresses.
+							// GET /apis/networking.k8s.io/v1/watch/ingresses
 							s.handleWatchNetworkingV1IngressListForAllNamespacesRequest(args, w, r)
 							return
 						case "namespaces": // -> 446
@@ -3444,7 +3444,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											args = make(map[string]string)
 										}
 										args["name"] = string(elem)
-										// GET /apis/networking.k8s.io/v1/watch/namespaces/{namespace}/ingresses/{name}.
+										// GET /apis/networking.k8s.io/v1/watch/namespaces/{namespace}/ingresses/{name}
 										s.handleWatchNetworkingV1NamespacedIngressRequest(args, w, r)
 										return
 									}
@@ -3465,7 +3465,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											args = make(map[string]string)
 										}
 										args["name"] = string(elem)
-										// GET /apis/networking.k8s.io/v1/watch/namespaces/{namespace}/networkpolicies/{name}.
+										// GET /apis/networking.k8s.io/v1/watch/namespaces/{namespace}/networkpolicies/{name}
 										s.handleWatchNetworkingV1NamespacedNetworkPolicyRequest(args, w, r)
 										return
 									}
@@ -3475,7 +3475,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 							}
 						case "networkpolicies": // -> 452
-							// GET /apis/networking.k8s.io/v1/watch/networkpolicies.
+							// GET /apis/networking.k8s.io/v1/watch/networkpolicies
 							s.handleWatchNetworkingV1NetworkPolicyListForAllNamespacesRequest(args, w, r)
 							return
 						default:
@@ -3533,7 +3533,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								args = make(map[string]string)
 							}
 							args["name"] = string(elem)
-							// GET /apis/node.k8s.io/v1/runtimeclasses/{name}.
+							// GET /apis/node.k8s.io/v1/runtimeclasses/{name}
 							s.handleReadNodeV1RuntimeClassRequest(args, w, r)
 							return
 						}
@@ -3566,7 +3566,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["name"] = string(elem)
-								// GET /apis/node.k8s.io/v1/watch/runtimeclasses/{name}.
+								// GET /apis/node.k8s.io/v1/watch/runtimeclasses/{name}
 								s.handleWatchNodeV1RuntimeClassRequest(args, w, r)
 								return
 							}
@@ -3608,7 +3608,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								args = make(map[string]string)
 							}
 							args["name"] = string(elem)
-							// GET /apis/node.k8s.io/v1alpha1/runtimeclasses/{name}.
+							// GET /apis/node.k8s.io/v1alpha1/runtimeclasses/{name}
 							s.handleReadNodeV1alpha1RuntimeClassRequest(args, w, r)
 							return
 						}
@@ -3641,7 +3641,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["name"] = string(elem)
-								// GET /apis/node.k8s.io/v1alpha1/watch/runtimeclasses/{name}.
+								// GET /apis/node.k8s.io/v1alpha1/watch/runtimeclasses/{name}
 								s.handleWatchNodeV1alpha1RuntimeClassRequest(args, w, r)
 								return
 							}
@@ -3683,7 +3683,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								args = make(map[string]string)
 							}
 							args["name"] = string(elem)
-							// GET /apis/node.k8s.io/v1beta1/runtimeclasses/{name}.
+							// GET /apis/node.k8s.io/v1beta1/runtimeclasses/{name}
 							s.handleReadNodeV1beta1RuntimeClassRequest(args, w, r)
 							return
 						}
@@ -3716,7 +3716,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["name"] = string(elem)
-								// GET /apis/node.k8s.io/v1beta1/watch/runtimeclasses/{name}.
+								// GET /apis/node.k8s.io/v1beta1/watch/runtimeclasses/{name}
 								s.handleWatchNodeV1beta1RuntimeClassRequest(args, w, r)
 								return
 							}
@@ -3815,7 +3815,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch string(elem) {
 									case "status": // -> 275
-										// GET /apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets/{name}/status.
+										// GET /apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets/{name}/status
 										s.handleReadPolicyV1NamespacedPodDisruptionBudgetStatusRequest(args, w, r)
 										return
 									default:
@@ -3830,7 +3830,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						}
 					case "poddisruptionbudgets": // -> 164
-						// GET /apis/policy/v1/poddisruptionbudgets.
+						// GET /apis/policy/v1/poddisruptionbudgets
 						s.handleListPolicyV1PodDisruptionBudgetForAllNamespacesRequest(args, w, r)
 						return
 					case "watch": // -> 462
@@ -3890,7 +3890,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											args = make(map[string]string)
 										}
 										args["name"] = string(elem)
-										// GET /apis/policy/v1/watch/namespaces/{namespace}/poddisruptionbudgets/{name}.
+										// GET /apis/policy/v1/watch/namespaces/{namespace}/poddisruptionbudgets/{name}
 										s.handleWatchPolicyV1NamespacedPodDisruptionBudgetRequest(args, w, r)
 										return
 									}
@@ -3900,7 +3900,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 							}
 						case "poddisruptionbudgets": // -> 467
-							// GET /apis/policy/v1/watch/poddisruptionbudgets.
+							// GET /apis/policy/v1/watch/poddisruptionbudgets
 							s.handleWatchPolicyV1PodDisruptionBudgetListForAllNamespacesRequest(args, w, r)
 							return
 						default:
@@ -3981,7 +3981,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch string(elem) {
 									case "status": // -> 277
-										// GET /apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets/{name}/status.
+										// GET /apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets/{name}/status
 										s.handleReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusRequest(args, w, r)
 										return
 									default:
@@ -3996,7 +3996,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						}
 					case "poddisruptionbudgets": // -> 168
-						// GET /apis/policy/v1beta1/poddisruptionbudgets.
+						// GET /apis/policy/v1beta1/poddisruptionbudgets
 						s.handleListPolicyV1beta1PodDisruptionBudgetForAllNamespacesRequest(args, w, r)
 						return
 					case "podsecuritypolicies": // -> 169
@@ -4016,7 +4016,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								args = make(map[string]string)
 							}
 							args["name"] = string(elem)
-							// GET /apis/policy/v1beta1/podsecuritypolicies/{name}.
+							// GET /apis/policy/v1beta1/podsecuritypolicies/{name}
 							s.handleReadPolicyV1beta1PodSecurityPolicyRequest(args, w, r)
 							return
 						}
@@ -4077,7 +4077,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											args = make(map[string]string)
 										}
 										args["name"] = string(elem)
-										// GET /apis/policy/v1beta1/watch/namespaces/{namespace}/poddisruptionbudgets/{name}.
+										// GET /apis/policy/v1beta1/watch/namespaces/{namespace}/poddisruptionbudgets/{name}
 										s.handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetRequest(args, w, r)
 										return
 									}
@@ -4087,7 +4087,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 							}
 						case "poddisruptionbudgets": // -> 473
-							// GET /apis/policy/v1beta1/watch/poddisruptionbudgets.
+							// GET /apis/policy/v1beta1/watch/poddisruptionbudgets
 							s.handleWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesRequest(args, w, r)
 							return
 						case "podsecuritypolicies": // -> 474
@@ -4107,7 +4107,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["name"] = string(elem)
-								// GET /apis/policy/v1beta1/watch/podsecuritypolicies/{name}.
+								// GET /apis/policy/v1beta1/watch/podsecuritypolicies/{name}
 								s.handleWatchPolicyV1beta1PodSecurityPolicyRequest(args, w, r)
 								return
 							}
@@ -4166,7 +4166,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								args = make(map[string]string)
 							}
 							args["name"] = string(elem)
-							// GET /apis/rbac.authorization.k8s.io/v1/clusterroles/{name}.
+							// GET /apis/rbac.authorization.k8s.io/v1/clusterroles/{name}
 							s.handleReadRbacAuthorizationV1ClusterRoleRequest(args, w, r)
 							return
 						}
@@ -4187,7 +4187,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								args = make(map[string]string)
 							}
 							args["name"] = string(elem)
-							// GET /apis/rbac.authorization.k8s.io/v1/clusterrolebindings/{name}.
+							// GET /apis/rbac.authorization.k8s.io/v1/clusterrolebindings/{name}
 							s.handleReadRbacAuthorizationV1ClusterRoleBindingRequest(args, w, r)
 							return
 						}
@@ -4236,7 +4236,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										args = make(map[string]string)
 									}
 									args["name"] = string(elem)
-									// GET /apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles/{name}.
+									// GET /apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles/{name}
 									s.handleReadRbacAuthorizationV1NamespacedRoleRequest(args, w, r)
 									return
 								}
@@ -4257,7 +4257,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										args = make(map[string]string)
 									}
 									args["name"] = string(elem)
-									// GET /apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings/{name}.
+									// GET /apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings/{name}
 									s.handleReadRbacAuthorizationV1NamespacedRoleBindingRequest(args, w, r)
 									return
 								}
@@ -4267,11 +4267,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						}
 					case "rolebindings": // -> 176
-						// GET /apis/rbac.authorization.k8s.io/v1/rolebindings.
+						// GET /apis/rbac.authorization.k8s.io/v1/rolebindings
 						s.handleListRbacAuthorizationV1RoleBindingForAllNamespacesRequest(args, w, r)
 						return
 					case "roles": // -> 177
-						// GET /apis/rbac.authorization.k8s.io/v1/roles.
+						// GET /apis/rbac.authorization.k8s.io/v1/roles
 						s.handleListRbacAuthorizationV1RoleForAllNamespacesRequest(args, w, r)
 						return
 					case "watch": // -> 476
@@ -4303,7 +4303,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["name"] = string(elem)
-								// GET /apis/rbac.authorization.k8s.io/v1/watch/clusterroles/{name}.
+								// GET /apis/rbac.authorization.k8s.io/v1/watch/clusterroles/{name}
 								s.handleWatchRbacAuthorizationV1ClusterRoleRequest(args, w, r)
 								return
 							}
@@ -4324,7 +4324,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["name"] = string(elem)
-								// GET /apis/rbac.authorization.k8s.io/v1/watch/clusterrolebindings/{name}.
+								// GET /apis/rbac.authorization.k8s.io/v1/watch/clusterrolebindings/{name}
 								s.handleWatchRbacAuthorizationV1ClusterRoleBindingRequest(args, w, r)
 								return
 							}
@@ -4373,7 +4373,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											args = make(map[string]string)
 										}
 										args["name"] = string(elem)
-										// GET /apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/roles/{name}.
+										// GET /apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/roles/{name}
 										s.handleWatchRbacAuthorizationV1NamespacedRoleRequest(args, w, r)
 										return
 									}
@@ -4394,7 +4394,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											args = make(map[string]string)
 										}
 										args["name"] = string(elem)
-										// GET /apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/rolebindings/{name}.
+										// GET /apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/rolebindings/{name}
 										s.handleWatchRbacAuthorizationV1NamespacedRoleBindingRequest(args, w, r)
 										return
 									}
@@ -4404,11 +4404,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 							}
 						case "rolebindings": // -> 487
-							// GET /apis/rbac.authorization.k8s.io/v1/watch/rolebindings.
+							// GET /apis/rbac.authorization.k8s.io/v1/watch/rolebindings
 							s.handleWatchRbacAuthorizationV1RoleBindingListForAllNamespacesRequest(args, w, r)
 							return
 						case "roles": // -> 488
-							// GET /apis/rbac.authorization.k8s.io/v1/watch/roles.
+							// GET /apis/rbac.authorization.k8s.io/v1/watch/roles
 							s.handleWatchRbacAuthorizationV1RoleListForAllNamespacesRequest(args, w, r)
 							return
 						default:
@@ -4466,7 +4466,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								args = make(map[string]string)
 							}
 							args["name"] = string(elem)
-							// GET /apis/scheduling.k8s.io/v1/priorityclasses/{name}.
+							// GET /apis/scheduling.k8s.io/v1/priorityclasses/{name}
 							s.handleReadSchedulingV1PriorityClassRequest(args, w, r)
 							return
 						}
@@ -4499,7 +4499,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["name"] = string(elem)
-								// GET /apis/scheduling.k8s.io/v1/watch/priorityclasses/{name}.
+								// GET /apis/scheduling.k8s.io/v1/watch/priorityclasses/{name}
 								s.handleWatchSchedulingV1PriorityClassRequest(args, w, r)
 								return
 							}
@@ -4558,7 +4558,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								args = make(map[string]string)
 							}
 							args["name"] = string(elem)
-							// GET /apis/storage.k8s.io/v1/csidrivers/{name}.
+							// GET /apis/storage.k8s.io/v1/csidrivers/{name}
 							s.handleReadStorageV1CSIDriverRequest(args, w, r)
 							return
 						}
@@ -4579,7 +4579,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								args = make(map[string]string)
 							}
 							args["name"] = string(elem)
-							// GET /apis/storage.k8s.io/v1/csinodes/{name}.
+							// GET /apis/storage.k8s.io/v1/csinodes/{name}
 							s.handleReadStorageV1CSINodeRequest(args, w, r)
 							return
 						}
@@ -4600,7 +4600,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								args = make(map[string]string)
 							}
 							args["name"] = string(elem)
-							// GET /apis/storage.k8s.io/v1/storageclasses/{name}.
+							// GET /apis/storage.k8s.io/v1/storageclasses/{name}
 							s.handleReadStorageV1StorageClassRequest(args, w, r)
 							return
 						}
@@ -4633,7 +4633,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							switch string(elem) {
 							case "status": // -> 288
-								// GET /apis/storage.k8s.io/v1/volumeattachments/{name}/status.
+								// GET /apis/storage.k8s.io/v1/volumeattachments/{name}/status
 								s.handleReadStorageV1VolumeAttachmentStatusRequest(args, w, r)
 								return
 							default:
@@ -4671,7 +4671,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["name"] = string(elem)
-								// GET /apis/storage.k8s.io/v1/watch/csidrivers/{name}.
+								// GET /apis/storage.k8s.io/v1/watch/csidrivers/{name}
 								s.handleWatchStorageV1CSIDriverRequest(args, w, r)
 								return
 							}
@@ -4692,7 +4692,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["name"] = string(elem)
-								// GET /apis/storage.k8s.io/v1/watch/csinodes/{name}.
+								// GET /apis/storage.k8s.io/v1/watch/csinodes/{name}
 								s.handleWatchStorageV1CSINodeRequest(args, w, r)
 								return
 							}
@@ -4713,7 +4713,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["name"] = string(elem)
-								// GET /apis/storage.k8s.io/v1/watch/storageclasses/{name}.
+								// GET /apis/storage.k8s.io/v1/watch/storageclasses/{name}
 								s.handleWatchStorageV1StorageClassRequest(args, w, r)
 								return
 							}
@@ -4734,7 +4734,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["name"] = string(elem)
-								// GET /apis/storage.k8s.io/v1/watch/volumeattachments/{name}.
+								// GET /apis/storage.k8s.io/v1/watch/volumeattachments/{name}
 								s.handleWatchStorageV1VolumeAttachmentRequest(args, w, r)
 								return
 							}
@@ -4760,7 +4760,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch string(elem) {
 					case "csistoragecapacities": // -> 183
-						// GET /apis/storage.k8s.io/v1alpha1/csistoragecapacities.
+						// GET /apis/storage.k8s.io/v1alpha1/csistoragecapacities
 						s.handleListStorageV1alpha1CSIStorageCapacityForAllNamespacesRequest(args, w, r)
 						return
 					case "namespaces": // -> 184
@@ -4808,7 +4808,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										args = make(map[string]string)
 									}
 									args["name"] = string(elem)
-									// GET /apis/storage.k8s.io/v1alpha1/namespaces/{namespace}/csistoragecapacities/{name}.
+									// GET /apis/storage.k8s.io/v1alpha1/namespaces/{namespace}/csistoragecapacities/{name}
 									s.handleReadStorageV1alpha1NamespacedCSIStorageCapacityRequest(args, w, r)
 									return
 								}
@@ -4830,7 +4830,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch string(elem) {
 						case "csistoragecapacities": // -> 502
-							// GET /apis/storage.k8s.io/v1alpha1/watch/csistoragecapacities.
+							// GET /apis/storage.k8s.io/v1alpha1/watch/csistoragecapacities
 							s.handleWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesRequest(args, w, r)
 							return
 						case "namespaces": // -> 503
@@ -4878,7 +4878,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											args = make(map[string]string)
 										}
 										args["name"] = string(elem)
-										// GET /apis/storage.k8s.io/v1alpha1/watch/namespaces/{namespace}/csistoragecapacities/{name}.
+										// GET /apis/storage.k8s.io/v1alpha1/watch/namespaces/{namespace}/csistoragecapacities/{name}
 										s.handleWatchStorageV1alpha1NamespacedCSIStorageCapacityRequest(args, w, r)
 										return
 									}
@@ -4909,7 +4909,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch string(elem) {
 					case "csistoragecapacities": // -> 187
-						// GET /apis/storage.k8s.io/v1beta1/csistoragecapacities.
+						// GET /apis/storage.k8s.io/v1beta1/csistoragecapacities
 						s.handleListStorageV1beta1CSIStorageCapacityForAllNamespacesRequest(args, w, r)
 						return
 					case "namespaces": // -> 188
@@ -4957,7 +4957,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										args = make(map[string]string)
 									}
 									args["name"] = string(elem)
-									// GET /apis/storage.k8s.io/v1beta1/namespaces/{namespace}/csistoragecapacities/{name}.
+									// GET /apis/storage.k8s.io/v1beta1/namespaces/{namespace}/csistoragecapacities/{name}
 									s.handleReadStorageV1beta1NamespacedCSIStorageCapacityRequest(args, w, r)
 									return
 								}
@@ -4979,7 +4979,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch string(elem) {
 						case "csistoragecapacities": // -> 508
-							// GET /apis/storage.k8s.io/v1beta1/watch/csistoragecapacities.
+							// GET /apis/storage.k8s.io/v1beta1/watch/csistoragecapacities
 							s.handleWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesRequest(args, w, r)
 							return
 						case "namespaces": // -> 509
@@ -5027,7 +5027,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											args = make(map[string]string)
 										}
 										args["name"] = string(elem)
-										// GET /apis/storage.k8s.io/v1beta1/watch/namespaces/{namespace}/csistoragecapacities/{name}.
+										// GET /apis/storage.k8s.io/v1beta1/watch/namespaces/{namespace}/csistoragecapacities/{name}
 										s.handleWatchStorageV1beta1NamespacedCSIStorageCapacityRequest(args, w, r)
 										return
 									}
@@ -5056,7 +5056,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				return
 			}
 		case "version": // -> 23
-			// GET /version/.
+			// GET /version/
 			s.handleGetCodeVersionRequest(args, w, r)
 			return
 		case "api": // -> 26
@@ -5100,24 +5100,24 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args = make(map[string]string)
 						}
 						args["name"] = string(elem)
-						// GET /api/v1/componentstatuses/{name}.
+						// GET /api/v1/componentstatuses/{name}
 						s.handleReadCoreV1ComponentStatusRequest(args, w, r)
 						return
 					}
 				case "configmaps": // -> 102
-					// GET /api/v1/configmaps.
+					// GET /api/v1/configmaps
 					s.handleListCoreV1ConfigMapForAllNamespacesRequest(args, w, r)
 					return
 				case "endpoints": // -> 103
-					// GET /api/v1/endpoints.
+					// GET /api/v1/endpoints
 					s.handleListCoreV1EndpointsForAllNamespacesRequest(args, w, r)
 					return
 				case "events": // -> 104
-					// GET /api/v1/events.
+					// GET /api/v1/events
 					s.handleListCoreV1EventForAllNamespacesRequest(args, w, r)
 					return
 				case "limitranges": // -> 105
-					// GET /api/v1/limitranges.
+					// GET /api/v1/limitranges
 					s.handleListCoreV1LimitRangeForAllNamespacesRequest(args, w, r)
 					return
 				case "namespaces": // -> 106
@@ -5165,7 +5165,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["name"] = string(elem)
-								// GET /api/v1/namespaces/{namespace}/configmaps/{name}.
+								// GET /api/v1/namespaces/{namespace}/configmaps/{name}
 								s.handleReadCoreV1NamespacedConfigMapRequest(args, w, r)
 								return
 							}
@@ -5186,7 +5186,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["name"] = string(elem)
-								// GET /api/v1/namespaces/{namespace}/endpoints/{name}.
+								// GET /api/v1/namespaces/{namespace}/endpoints/{name}
 								s.handleReadCoreV1NamespacedEndpointsRequest(args, w, r)
 								return
 							}
@@ -5207,7 +5207,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["name"] = string(elem)
-								// GET /api/v1/namespaces/{namespace}/events/{name}.
+								// GET /api/v1/namespaces/{namespace}/events/{name}
 								s.handleReadCoreV1NamespacedEventRequest(args, w, r)
 								return
 							}
@@ -5228,7 +5228,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["name"] = string(elem)
-								// GET /api/v1/namespaces/{namespace}/limitranges/{name}.
+								// GET /api/v1/namespaces/{namespace}/limitranges/{name}
 								s.handleReadCoreV1NamespacedLimitRangeRequest(args, w, r)
 								return
 							}
@@ -5261,7 +5261,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch string(elem) {
 								case "status": // -> 234
-									// GET /api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}/status.
+									// GET /api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}/status
 									s.handleReadCoreV1NamespacedPersistentVolumeClaimStatusRequest(args, w, r)
 									return
 								default:
@@ -5299,15 +5299,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch string(elem) {
 								case "ephemeralcontainers": // -> 236
-									// GET /api/v1/namespaces/{namespace}/pods/{name}/ephemeralcontainers.
+									// GET /api/v1/namespaces/{namespace}/pods/{name}/ephemeralcontainers
 									s.handleReadCoreV1NamespacedPodEphemeralcontainersRequest(args, w, r)
 									return
 								case "log": // -> 237
-									// GET /api/v1/namespaces/{namespace}/pods/{name}/log.
+									// GET /api/v1/namespaces/{namespace}/pods/{name}/log
 									s.handleReadCoreV1NamespacedPodLogRequest(args, w, r)
 									return
 								case "status": // -> 238
-									// GET /api/v1/namespaces/{namespace}/pods/{name}/status.
+									// GET /api/v1/namespaces/{namespace}/pods/{name}/status
 									s.handleReadCoreV1NamespacedPodStatusRequest(args, w, r)
 									return
 								default:
@@ -5333,7 +5333,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["name"] = string(elem)
-								// GET /api/v1/namespaces/{namespace}/podtemplates/{name}.
+								// GET /api/v1/namespaces/{namespace}/podtemplates/{name}
 								s.handleReadCoreV1NamespacedPodTemplateRequest(args, w, r)
 								return
 							}
@@ -5366,11 +5366,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch string(elem) {
 								case "scale": // -> 241
-									// GET /api/v1/namespaces/{namespace}/replicationcontrollers/{name}/scale.
+									// GET /api/v1/namespaces/{namespace}/replicationcontrollers/{name}/scale
 									s.handleReadCoreV1NamespacedReplicationControllerScaleRequest(args, w, r)
 									return
 								case "status": // -> 242
-									// GET /api/v1/namespaces/{namespace}/replicationcontrollers/{name}/status.
+									// GET /api/v1/namespaces/{namespace}/replicationcontrollers/{name}/status
 									s.handleReadCoreV1NamespacedReplicationControllerStatusRequest(args, w, r)
 									return
 								default:
@@ -5408,7 +5408,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch string(elem) {
 								case "status": // -> 244
-									// GET /api/v1/namespaces/{namespace}/resourcequotas/{name}/status.
+									// GET /api/v1/namespaces/{namespace}/resourcequotas/{name}/status
 									s.handleReadCoreV1NamespacedResourceQuotaStatusRequest(args, w, r)
 									return
 								default:
@@ -5434,7 +5434,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["name"] = string(elem)
-								// GET /api/v1/namespaces/{namespace}/secrets/{name}.
+								// GET /api/v1/namespaces/{namespace}/secrets/{name}
 								s.handleReadCoreV1NamespacedSecretRequest(args, w, r)
 								return
 							}
@@ -5467,7 +5467,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch string(elem) {
 								case "status": // -> 248
-									// GET /api/v1/namespaces/{namespace}/services/{name}/status.
+									// GET /api/v1/namespaces/{namespace}/services/{name}/status
 									s.handleReadCoreV1NamespacedServiceStatusRequest(args, w, r)
 									return
 								default:
@@ -5493,12 +5493,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["name"] = string(elem)
-								// GET /api/v1/namespaces/{namespace}/serviceaccounts/{name}.
+								// GET /api/v1/namespaces/{namespace}/serviceaccounts/{name}
 								s.handleReadCoreV1NamespacedServiceAccountRequest(args, w, r)
 								return
 							}
 						case "status": // -> 228
-							// GET /api/v1/namespaces/{name}/status.
+							// GET /api/v1/namespaces/{name}/status
 							s.handleReadCoreV1NamespaceStatusRequest(args, w, r)
 							return
 						default:
@@ -5536,7 +5536,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch string(elem) {
 						case "status": // -> 250
-							// GET /api/v1/nodes/{name}/status.
+							// GET /api/v1/nodes/{name}/status
 							s.handleReadCoreV1NodeStatusRequest(args, w, r)
 							return
 						default:
@@ -5574,7 +5574,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch string(elem) {
 						case "status": // -> 252
-							// GET /api/v1/persistentvolumes/{name}/status.
+							// GET /api/v1/persistentvolumes/{name}/status
 							s.handleReadCoreV1PersistentVolumeStatusRequest(args, w, r)
 							return
 						default:
@@ -5584,35 +5584,35 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 					}
 				case "persistentvolumeclaims": // -> 122
-					// GET /api/v1/persistentvolumeclaims.
+					// GET /api/v1/persistentvolumeclaims
 					s.handleListCoreV1PersistentVolumeClaimForAllNamespacesRequest(args, w, r)
 					return
 				case "pods": // -> 123
-					// GET /api/v1/pods.
+					// GET /api/v1/pods
 					s.handleListCoreV1PodForAllNamespacesRequest(args, w, r)
 					return
 				case "podtemplates": // -> 124
-					// GET /api/v1/podtemplates.
+					// GET /api/v1/podtemplates
 					s.handleListCoreV1PodTemplateForAllNamespacesRequest(args, w, r)
 					return
 				case "replicationcontrollers": // -> 125
-					// GET /api/v1/replicationcontrollers.
+					// GET /api/v1/replicationcontrollers
 					s.handleListCoreV1ReplicationControllerForAllNamespacesRequest(args, w, r)
 					return
 				case "resourcequotas": // -> 126
-					// GET /api/v1/resourcequotas.
+					// GET /api/v1/resourcequotas
 					s.handleListCoreV1ResourceQuotaForAllNamespacesRequest(args, w, r)
 					return
 				case "secrets": // -> 127
-					// GET /api/v1/secrets.
+					// GET /api/v1/secrets
 					s.handleListCoreV1SecretForAllNamespacesRequest(args, w, r)
 					return
 				case "serviceaccounts": // -> 128
-					// GET /api/v1/serviceaccounts.
+					// GET /api/v1/serviceaccounts
 					s.handleListCoreV1ServiceAccountForAllNamespacesRequest(args, w, r)
 					return
 				case "services": // -> 129
-					// GET /api/v1/services.
+					// GET /api/v1/services
 					s.handleListCoreV1ServiceForAllNamespacesRequest(args, w, r)
 					return
 				case "watch": // -> 362
@@ -5628,19 +5628,19 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch string(elem) {
 					case "configmaps": // -> 363
-						// GET /api/v1/watch/configmaps.
+						// GET /api/v1/watch/configmaps
 						s.handleWatchCoreV1ConfigMapListForAllNamespacesRequest(args, w, r)
 						return
 					case "endpoints": // -> 364
-						// GET /api/v1/watch/endpoints.
+						// GET /api/v1/watch/endpoints
 						s.handleWatchCoreV1EndpointsListForAllNamespacesRequest(args, w, r)
 						return
 					case "events": // -> 365
-						// GET /api/v1/watch/events.
+						// GET /api/v1/watch/events
 						s.handleWatchCoreV1EventListForAllNamespacesRequest(args, w, r)
 						return
 					case "limitranges": // -> 366
-						// GET /api/v1/watch/limitranges.
+						// GET /api/v1/watch/limitranges
 						s.handleWatchCoreV1LimitRangeListForAllNamespacesRequest(args, w, r)
 						return
 					case "namespaces": // -> 367
@@ -5688,7 +5688,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										args = make(map[string]string)
 									}
 									args["name"] = string(elem)
-									// GET /api/v1/watch/namespaces/{namespace}/configmaps/{name}.
+									// GET /api/v1/watch/namespaces/{namespace}/configmaps/{name}
 									s.handleWatchCoreV1NamespacedConfigMapRequest(args, w, r)
 									return
 								}
@@ -5709,7 +5709,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										args = make(map[string]string)
 									}
 									args["name"] = string(elem)
-									// GET /api/v1/watch/namespaces/{namespace}/endpoints/{name}.
+									// GET /api/v1/watch/namespaces/{namespace}/endpoints/{name}
 									s.handleWatchCoreV1NamespacedEndpointsRequest(args, w, r)
 									return
 								}
@@ -5730,7 +5730,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										args = make(map[string]string)
 									}
 									args["name"] = string(elem)
-									// GET /api/v1/watch/namespaces/{namespace}/events/{name}.
+									// GET /api/v1/watch/namespaces/{namespace}/events/{name}
 									s.handleWatchCoreV1NamespacedEventRequest(args, w, r)
 									return
 								}
@@ -5751,7 +5751,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										args = make(map[string]string)
 									}
 									args["name"] = string(elem)
-									// GET /api/v1/watch/namespaces/{namespace}/limitranges/{name}.
+									// GET /api/v1/watch/namespaces/{namespace}/limitranges/{name}
 									s.handleWatchCoreV1NamespacedLimitRangeRequest(args, w, r)
 									return
 								}
@@ -5772,7 +5772,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										args = make(map[string]string)
 									}
 									args["name"] = string(elem)
-									// GET /api/v1/watch/namespaces/{namespace}/persistentvolumeclaims/{name}.
+									// GET /api/v1/watch/namespaces/{namespace}/persistentvolumeclaims/{name}
 									s.handleWatchCoreV1NamespacedPersistentVolumeClaimRequest(args, w, r)
 									return
 								}
@@ -5793,7 +5793,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										args = make(map[string]string)
 									}
 									args["name"] = string(elem)
-									// GET /api/v1/watch/namespaces/{namespace}/pods/{name}.
+									// GET /api/v1/watch/namespaces/{namespace}/pods/{name}
 									s.handleWatchCoreV1NamespacedPodRequest(args, w, r)
 									return
 								}
@@ -5814,7 +5814,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										args = make(map[string]string)
 									}
 									args["name"] = string(elem)
-									// GET /api/v1/watch/namespaces/{namespace}/podtemplates/{name}.
+									// GET /api/v1/watch/namespaces/{namespace}/podtemplates/{name}
 									s.handleWatchCoreV1NamespacedPodTemplateRequest(args, w, r)
 									return
 								}
@@ -5835,7 +5835,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										args = make(map[string]string)
 									}
 									args["name"] = string(elem)
-									// GET /api/v1/watch/namespaces/{namespace}/replicationcontrollers/{name}.
+									// GET /api/v1/watch/namespaces/{namespace}/replicationcontrollers/{name}
 									s.handleWatchCoreV1NamespacedReplicationControllerRequest(args, w, r)
 									return
 								}
@@ -5856,7 +5856,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										args = make(map[string]string)
 									}
 									args["name"] = string(elem)
-									// GET /api/v1/watch/namespaces/{namespace}/resourcequotas/{name}.
+									// GET /api/v1/watch/namespaces/{namespace}/resourcequotas/{name}
 									s.handleWatchCoreV1NamespacedResourceQuotaRequest(args, w, r)
 									return
 								}
@@ -5877,7 +5877,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										args = make(map[string]string)
 									}
 									args["name"] = string(elem)
-									// GET /api/v1/watch/namespaces/{namespace}/secrets/{name}.
+									// GET /api/v1/watch/namespaces/{namespace}/secrets/{name}
 									s.handleWatchCoreV1NamespacedSecretRequest(args, w, r)
 									return
 								}
@@ -5898,7 +5898,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										args = make(map[string]string)
 									}
 									args["name"] = string(elem)
-									// GET /api/v1/watch/namespaces/{namespace}/services/{name}.
+									// GET /api/v1/watch/namespaces/{namespace}/services/{name}
 									s.handleWatchCoreV1NamespacedServiceRequest(args, w, r)
 									return
 								}
@@ -5919,7 +5919,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										args = make(map[string]string)
 									}
 									args["name"] = string(elem)
-									// GET /api/v1/watch/namespaces/{namespace}/serviceaccounts/{name}.
+									// GET /api/v1/watch/namespaces/{namespace}/serviceaccounts/{name}
 									s.handleWatchCoreV1NamespacedServiceAccountRequest(args, w, r)
 									return
 								}
@@ -5946,7 +5946,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								args = make(map[string]string)
 							}
 							args["name"] = string(elem)
-							// GET /api/v1/watch/nodes/{name}.
+							// GET /api/v1/watch/nodes/{name}
 							s.handleWatchCoreV1NodeRequest(args, w, r)
 							return
 						}
@@ -5967,40 +5967,40 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								args = make(map[string]string)
 							}
 							args["name"] = string(elem)
-							// GET /api/v1/watch/persistentvolumes/{name}.
+							// GET /api/v1/watch/persistentvolumes/{name}
 							s.handleWatchCoreV1PersistentVolumeRequest(args, w, r)
 							return
 						}
 					case "persistentvolumeclaims": // -> 397
-						// GET /api/v1/watch/persistentvolumeclaims.
+						// GET /api/v1/watch/persistentvolumeclaims
 						s.handleWatchCoreV1PersistentVolumeClaimListForAllNamespacesRequest(args, w, r)
 						return
 					case "pods": // -> 398
-						// GET /api/v1/watch/pods.
+						// GET /api/v1/watch/pods
 						s.handleWatchCoreV1PodListForAllNamespacesRequest(args, w, r)
 						return
 					case "podtemplates": // -> 399
-						// GET /api/v1/watch/podtemplates.
+						// GET /api/v1/watch/podtemplates
 						s.handleWatchCoreV1PodTemplateListForAllNamespacesRequest(args, w, r)
 						return
 					case "replicationcontrollers": // -> 400
-						// GET /api/v1/watch/replicationcontrollers.
+						// GET /api/v1/watch/replicationcontrollers
 						s.handleWatchCoreV1ReplicationControllerListForAllNamespacesRequest(args, w, r)
 						return
 					case "resourcequotas": // -> 401
-						// GET /api/v1/watch/resourcequotas.
+						// GET /api/v1/watch/resourcequotas
 						s.handleWatchCoreV1ResourceQuotaListForAllNamespacesRequest(args, w, r)
 						return
 					case "secrets": // -> 402
-						// GET /api/v1/watch/secrets.
+						// GET /api/v1/watch/secrets
 						s.handleWatchCoreV1SecretListForAllNamespacesRequest(args, w, r)
 						return
 					case "serviceaccounts": // -> 403
-						// GET /api/v1/watch/serviceaccounts.
+						// GET /api/v1/watch/serviceaccounts
 						s.handleWatchCoreV1ServiceAccountListForAllNamespacesRequest(args, w, r)
 						return
 					case "services": // -> 404
-						// GET /api/v1/watch/services.
+						// GET /api/v1/watch/services
 						s.handleWatchCoreV1ServiceListForAllNamespacesRequest(args, w, r)
 						return
 					default:
@@ -6030,7 +6030,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 			switch string(elem) {
 			case "openid-configuration": // -> 53
-				// GET /.well-known/openid-configuration/.
+				// GET /.well-known/openid-configuration/
 				s.handleGetServiceAccountIssuerOpenIDConfigurationRequest(args, w, r)
 				return
 			default:
@@ -6054,7 +6054,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					args = make(map[string]string)
 				}
 				args["logpath"] = string(elem)
-				// GET /logs/{logpath}.
+				// GET /logs/{logpath}
 				s.handleLogFileHandlerRequest(args, w, r)
 				return
 			}

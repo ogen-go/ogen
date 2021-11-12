@@ -182,7 +182,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										args = make(map[string]string)
 									}
 									args["artifact_id"] = string(elem)
-									// DELETE /repos/{owner}/{repo}/actions/artifacts/{artifact_id}.
+									// DELETE /repos/{owner}/{repo}/actions/artifacts/{artifact_id}
 									s.handleActionsDeleteArtifactRequest(args, w, r)
 									return
 								}
@@ -203,7 +203,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										args = make(map[string]string)
 									}
 									args["secret_name"] = string(elem)
-									// DELETE /repos/{owner}/{repo}/actions/secrets/{secret_name}.
+									// DELETE /repos/{owner}/{repo}/actions/secrets/{secret_name}
 									s.handleActionsDeleteRepoSecretRequest(args, w, r)
 									return
 								}
@@ -224,7 +224,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										args = make(map[string]string)
 									}
 									args["runner_id"] = string(elem)
-									// DELETE /repos/{owner}/{repo}/actions/runners/{runner_id}.
+									// DELETE /repos/{owner}/{repo}/actions/runners/{runner_id}
 									s.handleActionsDeleteSelfHostedRunnerFromRepoRequest(args, w, r)
 									return
 								}
@@ -257,7 +257,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch string(elem) {
 									case "logs": // -> 29
-										// DELETE /repos/{owner}/{repo}/actions/runs/{run_id}/logs.
+										// DELETE /repos/{owner}/{repo}/actions/runs/{run_id}/logs
 										s.handleActionsDeleteWorkflowRunLogsRequest(args, w, r)
 										return
 									default:
@@ -271,7 +271,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								return
 							}
 						case "subscription": // -> 39
-							// DELETE /repos/{owner}/{repo}/subscription.
+							// DELETE /repos/{owner}/{repo}/subscription
 							s.handleActivityDeleteRepoSubscriptionRequest(args, w, r)
 							return
 						case "code-scanning": // -> 59
@@ -303,7 +303,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										args = make(map[string]string)
 									}
 									args["analysis_id"] = string(elem)
-									// DELETE /repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}.
+									// DELETE /repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}
 									s.handleCodeScanningDeleteAnalysisRequest(args, w, r)
 									return
 								}
@@ -312,7 +312,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								return
 							}
 						case "interaction-limits": // -> 91
-							// DELETE /repos/{owner}/{repo}/interaction-limits.
+							// DELETE /repos/{owner}/{repo}/interaction-limits
 							s.handleInteractionsRemoveRestrictionsForRepoRequest(args, w, r)
 							return
 						case "issues": // -> 92
@@ -372,7 +372,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												args = make(map[string]string)
 											}
 											args["reaction_id"] = string(elem)
-											// DELETE /repos/{owner}/{repo}/issues/comments/{comment_id}/reactions/{reaction_id}.
+											// DELETE /repos/{owner}/{repo}/issues/comments/{comment_id}/reactions/{reaction_id}
 											s.handleReactionsDeleteForIssueCommentRequest(args, w, r)
 											return
 										}
@@ -415,16 +415,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											args = make(map[string]string)
 										}
 										args["name"] = string(elem)
-										// DELETE /repos/{owner}/{repo}/issues/{issue_number}/labels/{name}.
+										// DELETE /repos/{owner}/{repo}/issues/{issue_number}/labels/{name}
 										s.handleIssuesRemoveLabelRequest(args, w, r)
 										return
 									}
 								case "assignees": // -> 101
-									// DELETE /repos/{owner}/{repo}/issues/{issue_number}/assignees.
+									// DELETE /repos/{owner}/{repo}/issues/{issue_number}/assignees
 									s.handleIssuesRemoveAssigneesRequest(args, w, r)
 									return
 								case "lock": // -> 103
-									// DELETE /repos/{owner}/{repo}/issues/{issue_number}/lock.
+									// DELETE /repos/{owner}/{repo}/issues/{issue_number}/lock
 									s.handleIssuesUnlockRequest(args, w, r)
 									return
 								case "reactions": // -> 172
@@ -444,7 +444,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											args = make(map[string]string)
 										}
 										args["reaction_id"] = string(elem)
-										// DELETE /repos/{owner}/{repo}/issues/{issue_number}/reactions/{reaction_id}.
+										// DELETE /repos/{owner}/{repo}/issues/{issue_number}/reactions/{reaction_id}
 										s.handleReactionsDeleteForIssueRequest(args, w, r)
 										return
 									}
@@ -470,7 +470,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["name"] = string(elem)
-								// DELETE /repos/{owner}/{repo}/labels/{name}.
+								// DELETE /repos/{owner}/{repo}/labels/{name}
 								s.handleIssuesDeleteLabelRequest(args, w, r)
 								return
 							}
@@ -491,12 +491,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["milestone_number"] = string(elem)
-								// DELETE /repos/{owner}/{repo}/milestones/{milestone_number}.
+								// DELETE /repos/{owner}/{repo}/milestones/{milestone_number}
 								s.handleIssuesDeleteMilestoneRequest(args, w, r)
 								return
 							}
 						case "import": // -> 104
-							// DELETE /repos/{owner}/{repo}/import.
+							// DELETE /repos/{owner}/{repo}/import
 							s.handleMigrationsCancelImportRequest(args, w, r)
 							return
 						case "pulls": // -> 162
@@ -556,7 +556,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												args = make(map[string]string)
 											}
 											args["reaction_id"] = string(elem)
-											// DELETE /repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions/{reaction_id}.
+											// DELETE /repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions/{reaction_id}
 											s.handleReactionsDeleteForPullRequestCommentRequest(args, w, r)
 											return
 										}
@@ -599,7 +599,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											args = make(map[string]string)
 										}
 										args["review_id"] = string(elem)
-										// DELETE /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}.
+										// DELETE /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}
 										s.handlePullsDeletePendingReviewRequest(args, w, r)
 										return
 									}
@@ -653,7 +653,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											args = make(map[string]string)
 										}
 										args["reaction_id"] = string(elem)
-										// DELETE /repos/{owner}/{repo}/comments/{comment_id}/reactions/{reaction_id}.
+										// DELETE /repos/{owner}/{repo}/comments/{comment_id}/reactions/{reaction_id}
 										s.handleReactionsDeleteForCommitCommentRequest(args, w, r)
 										return
 									}
@@ -704,23 +704,23 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch string(elem) {
 									case "restrictions": // -> 195
-										// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions.
+										// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions
 										s.handleReposDeleteAccessRestrictionsRequest(args, w, r)
 										return
 									case "enforce_admins": // -> 196
-										// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins.
+										// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins
 										s.handleReposDeleteAdminBranchProtectionRequest(args, w, r)
 										return
 									case "required_signatures": // -> 201
-										// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_signatures.
+										// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_signatures
 										s.handleReposDeleteCommitSignatureProtectionRequest(args, w, r)
 										return
 									case "required_pull_request_reviews": // -> 208
-										// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews.
+										// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews
 										s.handleReposDeletePullRequestReviewProtectionRequest(args, w, r)
 										return
 									case "required_status_checks": // -> 220
-										// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks.
+										// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks
 										s.handleReposRemoveStatusCheckProtectionRequest(args, w, r)
 										return
 									default:
@@ -750,7 +750,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["environment_name"] = string(elem)
-								// DELETE /repos/{owner}/{repo}/environments/{environment_name}.
+								// DELETE /repos/{owner}/{repo}/environments/{environment_name}
 								s.handleReposDeleteAnEnvironmentRequest(args, w, r)
 								return
 							}
@@ -771,7 +771,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["autolink_id"] = string(elem)
-								// DELETE /repos/{owner}/{repo}/autolinks/{autolink_id}.
+								// DELETE /repos/{owner}/{repo}/autolinks/{autolink_id}
 								s.handleReposDeleteAutolinkRequest(args, w, r)
 								return
 							}
@@ -792,7 +792,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["key_id"] = string(elem)
-								// DELETE /repos/{owner}/{repo}/keys/{key_id}.
+								// DELETE /repos/{owner}/{repo}/keys/{key_id}
 								s.handleReposDeleteDeployKeyRequest(args, w, r)
 								return
 							}
@@ -813,7 +813,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["deployment_id"] = string(elem)
-								// DELETE /repos/{owner}/{repo}/deployments/{deployment_id}.
+								// DELETE /repos/{owner}/{repo}/deployments/{deployment_id}
 								s.handleReposDeleteDeploymentRequest(args, w, r)
 								return
 							}
@@ -834,7 +834,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["invitation_id"] = string(elem)
-								// DELETE /repos/{owner}/{repo}/invitations/{invitation_id}.
+								// DELETE /repos/{owner}/{repo}/invitations/{invitation_id}
 								s.handleReposDeleteInvitationRequest(args, w, r)
 								return
 							}
@@ -867,7 +867,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										args = make(map[string]string)
 									}
 									args["asset_id"] = string(elem)
-									// DELETE /repos/{owner}/{repo}/releases/assets/{asset_id}.
+									// DELETE /repos/{owner}/{repo}/releases/assets/{asset_id}
 									s.handleReposDeleteReleaseAssetRequest(args, w, r)
 									return
 								}
@@ -876,7 +876,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["release_id"] = string(elem)
-								// DELETE /repos/{owner}/{repo}/releases/{release_id}.
+								// DELETE /repos/{owner}/{repo}/releases/{release_id}
 								s.handleReposDeleteReleaseRequest(args, w, r)
 								return
 							}
@@ -897,20 +897,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["hook_id"] = string(elem)
-								// DELETE /repos/{owner}/{repo}/hooks/{hook_id}.
+								// DELETE /repos/{owner}/{repo}/hooks/{hook_id}
 								s.handleReposDeleteWebhookRequest(args, w, r)
 								return
 							}
 						case "automated-security-fixes": // -> 215
-							// DELETE /repos/{owner}/{repo}/automated-security-fixes.
+							// DELETE /repos/{owner}/{repo}/automated-security-fixes
 							s.handleReposDisableAutomatedSecurityFixesRequest(args, w, r)
 							return
 						case "lfs": // -> 216
-							// DELETE /repos/{owner}/{repo}/lfs.
+							// DELETE /repos/{owner}/{repo}/lfs
 							s.handleReposDisableLfsForRepoRequest(args, w, r)
 							return
 						case "vulnerability-alerts": // -> 217
-							// DELETE /repos/{owner}/{repo}/vulnerability-alerts.
+							// DELETE /repos/{owner}/{repo}/vulnerability-alerts
 							s.handleReposDisableVulnerabilityAlertsRequest(args, w, r)
 							return
 						case "collaborators": // -> 218
@@ -930,7 +930,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["username"] = string(elem)
-								// DELETE /repos/{owner}/{repo}/collaborators/{username}.
+								// DELETE /repos/{owner}/{repo}/collaborators/{username}
 								s.handleReposRemoveCollaboratorRequest(args, w, r)
 								return
 							}
@@ -1018,7 +1018,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["secret_name"] = string(elem)
-								// DELETE /repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}.
+								// DELETE /repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}
 								s.handleActionsDeleteEnvironmentSecretRequest(args, w, r)
 								return
 							}
@@ -1117,7 +1117,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										args = make(map[string]string)
 									}
 									args["repository_id"] = string(elem)
-									// DELETE /orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}.
+									// DELETE /orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}
 									s.handleActionsRemoveSelectedRepoFromOrgSecretRequest(args, w, r)
 									return
 								}
@@ -1144,7 +1144,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								args = make(map[string]string)
 							}
 							args["runner_id"] = string(elem)
-							// DELETE /orgs/{org}/actions/runners/{runner_id}.
+							// DELETE /orgs/{org}/actions/runners/{runner_id}
 							s.handleActionsDeleteSelfHostedRunnerFromOrgRequest(args, w, r)
 							return
 						}
@@ -1193,7 +1193,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										args = make(map[string]string)
 									}
 									args["repository_id"] = string(elem)
-									// DELETE /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories/{repository_id}.
+									// DELETE /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories/{repository_id}
 									s.handleActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgRequest(args, w, r)
 									return
 								}
@@ -1214,7 +1214,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										args = make(map[string]string)
 									}
 									args["runner_id"] = string(elem)
-									// DELETE /orgs/{org}/actions/runner-groups/{runner_group_id}/runners/{runner_id}.
+									// DELETE /orgs/{org}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
 									s.handleActionsRemoveSelfHostedRunnerFromGroupForOrgRequest(args, w, r)
 									return
 								}
@@ -1253,7 +1253,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["repository_id"] = string(elem)
-								// DELETE /orgs/{org}/actions/permissions/repositories/{repository_id}.
+								// DELETE /orgs/{org}/actions/permissions/repositories/{repository_id}
 								s.handleActionsDisableSelectedRepositoryGithubActionsOrganizationRequest(args, w, r)
 								return
 							}
@@ -1266,7 +1266,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						return
 					}
 				case "interaction-limits": // -> 90
-					// DELETE /orgs/{org}/interaction-limits.
+					// DELETE /orgs/{org}/interaction-limits
 					s.handleInteractionsRemoveRestrictionsForOrgRequest(args, w, r)
 					return
 				case "migrations": // -> 108
@@ -1298,7 +1298,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch string(elem) {
 						case "archive": // -> 110
-							// DELETE /orgs/{org}/migrations/{migration_id}/archive.
+							// DELETE /orgs/{org}/migrations/{migration_id}/archive
 							s.handleMigrationsDeleteArchiveForOrgRequest(args, w, r)
 							return
 						case "repos": // -> 114
@@ -1330,7 +1330,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch string(elem) {
 								case "lock": // -> 116
-									// DELETE /orgs/{org}/migrations/{migration_id}/repos/{repo_name}/lock.
+									// DELETE /orgs/{org}/migrations/{migration_id}/repos/{repo_name}/lock
 									s.handleMigrationsUnlockRepoForOrgRequest(args, w, r)
 									return
 								default:
@@ -1360,7 +1360,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args = make(map[string]string)
 						}
 						args["hook_id"] = string(elem)
-						// DELETE /orgs/{org}/hooks/{hook_id}.
+						// DELETE /orgs/{org}/hooks/{hook_id}
 						s.handleOrgsDeleteWebhookRequest(args, w, r)
 						return
 					}
@@ -1381,7 +1381,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args = make(map[string]string)
 						}
 						args["username"] = string(elem)
-						// DELETE /orgs/{org}/members/{username}.
+						// DELETE /orgs/{org}/members/{username}
 						s.handleOrgsRemoveMemberRequest(args, w, r)
 						return
 					}
@@ -1402,7 +1402,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args = make(map[string]string)
 						}
 						args["username"] = string(elem)
-						// DELETE /orgs/{org}/memberships/{username}.
+						// DELETE /orgs/{org}/memberships/{username}
 						s.handleOrgsRemoveMembershipForUserRequest(args, w, r)
 						return
 					}
@@ -1423,7 +1423,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args = make(map[string]string)
 						}
 						args["username"] = string(elem)
-						// DELETE /orgs/{org}/outside_collaborators/{username}.
+						// DELETE /orgs/{org}/outside_collaborators/{username}
 						s.handleOrgsRemoveOutsideCollaboratorRequest(args, w, r)
 						return
 					}
@@ -1444,7 +1444,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args = make(map[string]string)
 						}
 						args["username"] = string(elem)
-						// DELETE /orgs/{org}/public_members/{username}.
+						// DELETE /orgs/{org}/public_members/{username}
 						s.handleOrgsRemovePublicMembershipForAuthenticatedUserRequest(args, w, r)
 						return
 					}
@@ -1465,7 +1465,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args = make(map[string]string)
 						}
 						args["credential_id"] = string(elem)
-						// DELETE /orgs/{org}/credential-authorizations/{credential_id}.
+						// DELETE /orgs/{org}/credential-authorizations/{credential_id}
 						s.handleOrgsRemoveSamlSSOAuthorizationRequest(args, w, r)
 						return
 					}
@@ -1486,7 +1486,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args = make(map[string]string)
 						}
 						args["username"] = string(elem)
-						// DELETE /orgs/{org}/blocks/{username}.
+						// DELETE /orgs/{org}/blocks/{username}
 						s.handleOrgsUnblockUserRequest(args, w, r)
 						return
 					}
@@ -1563,7 +1563,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											args = make(map[string]string)
 										}
 										args["package_version_id"] = string(elem)
-										// DELETE /orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}.
+										// DELETE /orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}
 										s.handlePackagesDeletePackageVersionForOrgRequest(args, w, r)
 										return
 									}
@@ -1651,7 +1651,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											args = make(map[string]string)
 										}
 										args["reaction_id"] = string(elem)
-										// DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions/{reaction_id}.
+										// DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions/{reaction_id}
 										s.handleReactionsDeleteForTeamDiscussionRequest(args, w, r)
 										return
 									}
@@ -1700,7 +1700,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													args = make(map[string]string)
 												}
 												args["reaction_id"] = string(elem)
-												// DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions/{reaction_id}.
+												// DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions/{reaction_id}
 												s.handleReactionsDeleteForTeamDiscussionCommentRequest(args, w, r)
 												return
 											}
@@ -1733,7 +1733,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["username"] = string(elem)
-								// DELETE /orgs/{org}/teams/{team_slug}/memberships/{username}.
+								// DELETE /orgs/{org}/teams/{team_slug}/memberships/{username}
 								s.handleTeamsRemoveMembershipForUserInOrgRequest(args, w, r)
 								return
 							}
@@ -1754,7 +1754,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["project_id"] = string(elem)
-								// DELETE /orgs/{org}/teams/{team_slug}/projects/{project_id}.
+								// DELETE /orgs/{org}/teams/{team_slug}/projects/{project_id}
 								s.handleTeamsRemoveProjectInOrgRequest(args, w, r)
 								return
 							}
@@ -1803,7 +1803,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											args = make(map[string]string)
 										}
 										args["repo"] = string(elem)
-										// DELETE /orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}.
+										// DELETE /orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}
 										s.handleTeamsRemoveRepoInOrgRequest(args, w, r)
 										return
 									}
@@ -1864,7 +1864,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch string(elem) {
 					case "subscription": // -> 43
-						// DELETE /notifications/threads/{thread_id}/subscription.
+						// DELETE /notifications/threads/{thread_id}/subscription
 						s.handleActivityDeleteThreadSubscriptionRequest(args, w, r)
 						return
 					default:
@@ -1933,7 +1933,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								args = make(map[string]string)
 							}
 							args["repo"] = string(elem)
-							// DELETE /user/starred/{owner}/{repo}.
+							// DELETE /user/starred/{owner}/{repo}
 							s.handleActivityUnstarRepoForAuthenticatedUserRequest(args, w, r)
 							return
 						}
@@ -1987,7 +1987,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								args = make(map[string]string)
 							}
 							args["repository_id"] = string(elem)
-							// DELETE /user/installations/{installation_id}/repositories/{repository_id}.
+							// DELETE /user/installations/{installation_id}/repositories/{repository_id}
 							s.handleAppsRemoveRepoFromInstallationRequest(args, w, r)
 							return
 						}
@@ -1997,7 +1997,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 				}
 			case "interaction-limits": // -> 89
-				// DELETE /user/interaction-limits.
+				// DELETE /user/interaction-limits
 				s.handleInteractionsRemoveRestrictionsForAuthenticatedUserRequest(args, w, r)
 				return
 			case "migrations": // -> 105
@@ -2029,7 +2029,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch string(elem) {
 					case "archive": // -> 107
-						// DELETE /user/migrations/{migration_id}/archive.
+						// DELETE /user/migrations/{migration_id}/archive
 						s.handleMigrationsDeleteArchiveForAuthenticatedUserRequest(args, w, r)
 						return
 					case "repos": // -> 111
@@ -2061,7 +2061,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							switch string(elem) {
 							case "lock": // -> 113
-								// DELETE /user/migrations/{migration_id}/repos/{repo_name}/lock.
+								// DELETE /user/migrations/{migration_id}/repos/{repo_name}/lock
 								s.handleMigrationsUnlockRepoForAuthenticatedUserRequest(args, w, r)
 								return
 							default:
@@ -2147,7 +2147,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										args = make(map[string]string)
 									}
 									args["package_version_id"] = string(elem)
-									// DELETE /user/packages/{package_type}/{package_name}/versions/{package_version_id}.
+									// DELETE /user/packages/{package_type}/{package_name}/versions/{package_version_id}
 									s.handlePackagesDeletePackageVersionForAuthenticatedUserRequest(args, w, r)
 									return
 								}
@@ -2179,7 +2179,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						args = make(map[string]string)
 					}
 					args["invitation_id"] = string(elem)
-					// DELETE /user/repository_invitations/{invitation_id}.
+					// DELETE /user/repository_invitations/{invitation_id}
 					s.handleReposDeclineInvitationRequest(args, w, r)
 					return
 				}
@@ -2200,7 +2200,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						args = make(map[string]string)
 					}
 					args["key_id"] = string(elem)
-					// DELETE /user/keys/{key_id}.
+					// DELETE /user/keys/{key_id}
 					s.handleUsersDeletePublicSSHKeyForAuthenticatedRequest(args, w, r)
 					return
 				}
@@ -2221,7 +2221,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						args = make(map[string]string)
 					}
 					args["username"] = string(elem)
-					// DELETE /user/blocks/{username}.
+					// DELETE /user/blocks/{username}
 					s.handleUsersUnblockRequest(args, w, r)
 					return
 				}
@@ -2242,7 +2242,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						args = make(map[string]string)
 					}
 					args["username"] = string(elem)
-					// DELETE /user/following/{username}.
+					// DELETE /user/following/{username}
 					s.handleUsersUnfollowRequest(args, w, r)
 					return
 				}
@@ -2291,7 +2291,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch string(elem) {
 					case "suspended": // -> 58
-						// DELETE /app/installations/{installation_id}/suspended.
+						// DELETE /app/installations/{installation_id}/suspended
 						s.handleAppsUnsuspendInstallationRequest(args, w, r)
 						return
 					default:
@@ -2317,7 +2317,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 			switch string(elem) {
 			case "token": // -> 57
-				// DELETE /installation/token.
+				// DELETE /installation/token
 				s.handleAppsRevokeInstallationAccessTokenRequest(args, w, r)
 				return
 			default:
@@ -2393,7 +2393,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["scim_group_id"] = string(elem)
-								// DELETE /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}.
+								// DELETE /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
 								s.handleEnterpriseAdminDeleteScimGroupFromEnterpriseRequest(args, w, r)
 								return
 							}
@@ -2414,7 +2414,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["scim_user_id"] = string(elem)
-								// DELETE /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}.
+								// DELETE /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
 								s.handleEnterpriseAdminDeleteUserFromEnterpriseRequest(args, w, r)
 								return
 							}
@@ -2468,7 +2468,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["scim_user_id"] = string(elem)
-								// DELETE /scim/v2/organizations/{org}/Users/{scim_user_id}.
+								// DELETE /scim/v2/organizations/{org}/Users/{scim_user_id}
 								s.handleScimDeleteUserFromOrgRequest(args, w, r)
 								return
 							}
@@ -2542,7 +2542,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								args = make(map[string]string)
 							}
 							args["runner_id"] = string(elem)
-							// DELETE /enterprises/{enterprise}/actions/runners/{runner_id}.
+							// DELETE /enterprises/{enterprise}/actions/runners/{runner_id}
 							s.handleEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseRequest(args, w, r)
 							return
 						}
@@ -2591,7 +2591,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										args = make(map[string]string)
 									}
 									args["org_id"] = string(elem)
-									// DELETE /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations/{org_id}.
+									// DELETE /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations/{org_id}
 									s.handleEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(args, w, r)
 									return
 								}
@@ -2612,7 +2612,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										args = make(map[string]string)
 									}
 									args["runner_id"] = string(elem)
-									// DELETE /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners/{runner_id}.
+									// DELETE /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
 									s.handleEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseRequest(args, w, r)
 									return
 								}
@@ -2651,7 +2651,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["org_id"] = string(elem)
-								// DELETE /enterprises/{enterprise}/actions/permissions/organizations/{org_id}.
+								// DELETE /enterprises/{enterprise}/actions/permissions/organizations/{org_id}
 								s.handleEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseRequest(args, w, r)
 								return
 							}
@@ -2713,12 +2713,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args = make(map[string]string)
 						}
 						args["comment_id"] = string(elem)
-						// DELETE /gists/{gist_id}/comments/{comment_id}.
+						// DELETE /gists/{gist_id}/comments/{comment_id}
 						s.handleGistsDeleteCommentRequest(args, w, r)
 						return
 					}
 				case "star": // -> 88
-					// DELETE /gists/{gist_id}/star.
+					// DELETE /gists/{gist_id}/star
 					s.handleGistsUnstarRequest(args, w, r)
 					return
 				default:
@@ -2744,7 +2744,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					args = make(map[string]string)
 				}
 				args["authorization_id"] = string(elem)
-				// DELETE /authorizations/{authorization_id}.
+				// DELETE /authorizations/{authorization_id}
 				s.handleOAuthAuthorizationsDeleteAuthorizationRequest(args, w, r)
 				return
 			}
@@ -2777,7 +2777,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						args = make(map[string]string)
 					}
 					args["grant_id"] = string(elem)
-					// DELETE /applications/grants/{grant_id}.
+					// DELETE /applications/grants/{grant_id}
 					s.handleOAuthAuthorizationsDeleteGrantRequest(args, w, r)
 					return
 				}
@@ -2886,7 +2886,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											args = make(map[string]string)
 										}
 										args["package_version_id"] = string(elem)
-										// DELETE /users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}.
+										// DELETE /users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}
 										s.handlePackagesDeletePackageVersionForUserRequest(args, w, r)
 										return
 									}
@@ -2947,7 +2947,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args = make(map[string]string)
 						}
 						args["card_id"] = string(elem)
-						// DELETE /projects/columns/cards/{card_id}.
+						// DELETE /projects/columns/cards/{card_id}
 						s.handleProjectsDeleteCardRequest(args, w, r)
 						return
 					}
@@ -2956,7 +2956,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						args = make(map[string]string)
 					}
 					args["column_id"] = string(elem)
-					// DELETE /projects/columns/{column_id}.
+					// DELETE /projects/columns/{column_id}
 					s.handleProjectsDeleteColumnRequest(args, w, r)
 					return
 				}
@@ -2965,7 +2965,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					args = make(map[string]string)
 				}
 				args["project_id"] = string(elem)
-				// DELETE /projects/{project_id}.
+				// DELETE /projects/{project_id}
 				s.handleProjectsDeleteRequest(args, w, r)
 				return
 			}
@@ -2986,7 +2986,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					args = make(map[string]string)
 				}
 				args["reaction_id"] = string(elem)
-				// DELETE /reactions/{reaction_id}.
+				// DELETE /reactions/{reaction_id}
 				s.handleReactionsDeleteLegacyRequest(args, w, r)
 				return
 			}
@@ -3063,7 +3063,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["comment_number"] = string(elem)
-								// DELETE /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}.
+								// DELETE /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}
 								s.handleTeamsDeleteDiscussionCommentLegacyRequest(args, w, r)
 								return
 							}
@@ -3090,7 +3090,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args = make(map[string]string)
 						}
 						args["username"] = string(elem)
-						// DELETE /teams/{team_id}/members/{username}.
+						// DELETE /teams/{team_id}/members/{username}
 						s.handleTeamsRemoveMemberLegacyRequest(args, w, r)
 						return
 					}
@@ -3111,7 +3111,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args = make(map[string]string)
 						}
 						args["username"] = string(elem)
-						// DELETE /teams/{team_id}/memberships/{username}.
+						// DELETE /teams/{team_id}/memberships/{username}
 						s.handleTeamsRemoveMembershipForUserLegacyRequest(args, w, r)
 						return
 					}
@@ -3160,7 +3160,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["repo"] = string(elem)
-								// DELETE /teams/{team_id}/repos/{owner}/{repo}.
+								// DELETE /teams/{team_id}/repos/{owner}/{repo}
 								s.handleTeamsRemoveRepoLegacyRequest(args, w, r)
 								return
 							}
@@ -3303,7 +3303,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												args = make(map[string]string)
 											}
 											args["archive_format"] = string(elem)
-											// GET /repos/{owner}/{repo}/actions/artifacts/{artifact_id}/{archive_format}.
+											// GET /repos/{owner}/{repo}/actions/artifacts/{artifact_id}/{archive_format}
 											s.handleActionsDownloadArtifactRequest(args, w, r)
 											return
 										}
@@ -3342,7 +3342,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch string(elem) {
 									case "logs": // -> 12
-										// GET /repos/{owner}/{repo}/actions/jobs/{job_id}/logs.
+										// GET /repos/{owner}/{repo}/actions/jobs/{job_id}/logs
 										s.handleActionsDownloadJobLogsForWorkflowRunRequest(args, w, r)
 										return
 									default:
@@ -3380,23 +3380,23 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch string(elem) {
 									case "logs": // -> 15
-										// GET /repos/{owner}/{repo}/actions/runs/{run_id}/logs.
+										// GET /repos/{owner}/{repo}/actions/runs/{run_id}/logs
 										s.handleActionsDownloadWorkflowRunLogsRequest(args, w, r)
 										return
 									case "approvals": // -> 36
-										// GET /repos/{owner}/{repo}/actions/runs/{run_id}/approvals.
+										// GET /repos/{owner}/{repo}/actions/runs/{run_id}/approvals
 										s.handleActionsGetReviewsForRunRequest(args, w, r)
 										return
 									case "timing": // -> 43
-										// GET /repos/{owner}/{repo}/actions/runs/{run_id}/timing.
+										// GET /repos/{owner}/{repo}/actions/runs/{run_id}/timing
 										s.handleActionsGetWorkflowRunUsageRequest(args, w, r)
 										return
 									case "jobs": // -> 44
-										// GET /repos/{owner}/{repo}/actions/runs/{run_id}/jobs.
+										// GET /repos/{owner}/{repo}/actions/runs/{run_id}/jobs
 										s.handleActionsListJobsForWorkflowRunRequest(args, w, r)
 										return
 									case "artifacts": // -> 52
-										// GET /repos/{owner}/{repo}/actions/runs/{run_id}/artifacts.
+										// GET /repos/{owner}/{repo}/actions/runs/{run_id}/artifacts
 										s.handleActionsListWorkflowRunArtifactsRequest(args, w, r)
 										return
 									default:
@@ -3418,7 +3418,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch string(elem) {
 								case "selected-actions": // -> 22
-									// GET /repos/{owner}/{repo}/actions/permissions/selected-actions.
+									// GET /repos/{owner}/{repo}/actions/permissions/selected-actions
 									s.handleActionsGetAllowedActionsRepositoryRequest(args, w, r)
 									return
 								default:
@@ -3439,7 +3439,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch string(elem) {
 								case "public-key": // -> 34
-									// GET /repos/{owner}/{repo}/actions/secrets/public-key.
+									// GET /repos/{owner}/{repo}/actions/secrets/public-key
 									s.handleActionsGetRepoPublicKeyRequest(args, w, r)
 									return
 								default:
@@ -3447,7 +3447,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										args = make(map[string]string)
 									}
 									args["secret_name"] = string(elem)
-									// GET /repos/{owner}/{repo}/actions/secrets/{secret_name}.
+									// GET /repos/{owner}/{repo}/actions/secrets/{secret_name}
 									s.handleActionsGetRepoSecretRequest(args, w, r)
 									return
 								}
@@ -3464,7 +3464,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch string(elem) {
 								case "downloads": // -> 48
-									// GET /repos/{owner}/{repo}/actions/runners/downloads.
+									// GET /repos/{owner}/{repo}/actions/runners/downloads
 									s.handleActionsListRunnerApplicationsForRepoRequest(args, w, r)
 									return
 								default:
@@ -3472,12 +3472,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										args = make(map[string]string)
 									}
 									args["runner_id"] = string(elem)
-									// GET /repos/{owner}/{repo}/actions/runners/{runner_id}.
+									// GET /repos/{owner}/{repo}/actions/runners/{runner_id}
 									s.handleActionsGetSelfHostedRunnerForRepoRequest(args, w, r)
 									return
 								}
 							case "workflows": // -> 46
-								// GET /repos/{owner}/{repo}/actions/workflows.
+								// GET /repos/{owner}/{repo}/actions/workflows
 								s.handleActionsListRepoWorkflowsRequest(args, w, r)
 								return
 							default:
@@ -3485,19 +3485,19 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								return
 							}
 						case "subscription": // -> 59
-							// GET /repos/{owner}/{repo}/subscription.
+							// GET /repos/{owner}/{repo}/subscription
 							s.handleActivityGetRepoSubscriptionRequest(args, w, r)
 							return
 						case "events": // -> 79
-							// GET /repos/{owner}/{repo}/events.
+							// GET /repos/{owner}/{repo}/events
 							s.handleActivityListRepoEventsRequest(args, w, r)
 							return
 						case "notifications": // -> 80
-							// GET /repos/{owner}/{repo}/notifications.
+							// GET /repos/{owner}/{repo}/notifications
 							s.handleActivityListRepoNotificationsForAuthenticatedUserRequest(args, w, r)
 							return
 						case "subscribers": // -> 83
-							// GET /repos/{owner}/{repo}/subscribers.
+							// GET /repos/{owner}/{repo}/subscribers
 							s.handleActivityListWatchersForRepoRequest(args, w, r)
 							return
 						case "check-runs": // -> 123
@@ -3529,7 +3529,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch string(elem) {
 								case "annotations": // -> 127
-									// GET /repos/{owner}/{repo}/check-runs/{check_run_id}/annotations.
+									// GET /repos/{owner}/{repo}/check-runs/{check_run_id}/annotations
 									s.handleChecksListAnnotationsRequest(args, w, r)
 									return
 								default:
@@ -3567,7 +3567,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch string(elem) {
 								case "check-runs": // -> 131
-									// GET /repos/{owner}/{repo}/check-suites/{check_suite_id}/check-runs.
+									// GET /repos/{owner}/{repo}/check-suites/{check_suite_id}/check-runs
 									s.handleChecksListForSuiteRequest(args, w, r)
 									return
 								default:
@@ -3605,27 +3605,27 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch string(elem) {
 								case "check-runs": // -> 130
-									// GET /repos/{owner}/{repo}/commits/{ref}/check-runs.
+									// GET /repos/{owner}/{repo}/commits/{ref}/check-runs
 									s.handleChecksListForRefRequest(args, w, r)
 									return
 								case "check-suites": // -> 132
-									// GET /repos/{owner}/{repo}/commits/{ref}/check-suites.
+									// GET /repos/{owner}/{repo}/commits/{ref}/check-suites
 									s.handleChecksListSuitesForRefRequest(args, w, r)
 									return
 								case "status": // -> 331
-									// GET /repos/{owner}/{repo}/commits/{ref}/status.
+									// GET /repos/{owner}/{repo}/commits/{ref}/status
 									s.handleReposGetCombinedStatusForRefRequest(args, w, r)
 									return
 								case "comments": // -> 367
-									// GET /repos/{owner}/{repo}/commits/{commit_sha}/comments.
+									// GET /repos/{owner}/{repo}/commits/{commit_sha}/comments
 									s.handleReposListCommentsForCommitRequest(args, w, r)
 									return
 								case "statuses": // -> 368
-									// GET /repos/{owner}/{repo}/commits/{ref}/statuses.
+									// GET /repos/{owner}/{repo}/commits/{ref}/statuses
 									s.handleReposListCommitStatusesForRefRequest(args, w, r)
 									return
 								case "pulls": // -> 376
-									// GET /repos/{owner}/{repo}/commits/{commit_sha}/pulls.
+									// GET /repos/{owner}/{repo}/commits/{commit_sha}/pulls
 									s.handleReposListPullRequestsAssociatedWithCommitRequest(args, w, r)
 									return
 								default:
@@ -3674,7 +3674,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch string(elem) {
 									case "instances": // -> 140
-										// GET /repos/{owner}/{repo}/code-scanning/alerts/{alert_number}/instances.
+										// GET /repos/{owner}/{repo}/code-scanning/alerts/{alert_number}/instances
 										s.handleCodeScanningListAlertInstancesRequest(args, w, r)
 										return
 									default:
@@ -3700,7 +3700,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										args = make(map[string]string)
 									}
 									args["analysis_id"] = string(elem)
-									// GET /repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}.
+									// GET /repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}
 									s.handleCodeScanningGetAnalysisRequest(args, w, r)
 									return
 								}
@@ -3721,7 +3721,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										args = make(map[string]string)
 									}
 									args["sarif_id"] = string(elem)
-									// GET /repos/{owner}/{repo}/code-scanning/sarifs/{sarif_id}.
+									// GET /repos/{owner}/{repo}/code-scanning/sarifs/{sarif_id}
 									s.handleCodeScanningGetSarifRequest(args, w, r)
 									return
 								}
@@ -3758,7 +3758,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										args = make(map[string]string)
 									}
 									args["commit_sha"] = string(elem)
-									// GET /repos/{owner}/{repo}/git/commits/{commit_sha}.
+									// GET /repos/{owner}/{repo}/git/commits/{commit_sha}
 									s.handleGitGetCommitRequest(args, w, r)
 									return
 								}
@@ -3779,7 +3779,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										args = make(map[string]string)
 									}
 									args["ref"] = string(elem)
-									// GET /repos/{owner}/{repo}/git/ref/{ref}.
+									// GET /repos/{owner}/{repo}/git/ref/{ref}
 									s.handleGitGetRefRequest(args, w, r)
 									return
 								}
@@ -3800,7 +3800,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										args = make(map[string]string)
 									}
 									args["tag_sha"] = string(elem)
-									// GET /repos/{owner}/{repo}/git/tags/{tag_sha}.
+									// GET /repos/{owner}/{repo}/git/tags/{tag_sha}
 									s.handleGitGetTagRequest(args, w, r)
 									return
 								}
@@ -3821,7 +3821,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										args = make(map[string]string)
 									}
 									args["ref"] = string(elem)
-									// GET /repos/{owner}/{repo}/git/matching-refs/{ref}.
+									// GET /repos/{owner}/{repo}/git/matching-refs/{ref}
 									s.handleGitListMatchingRefsRequest(args, w, r)
 									return
 								}
@@ -3846,7 +3846,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["assignee"] = string(elem)
-								// GET /repos/{owner}/{repo}/assignees/{assignee}.
+								// GET /repos/{owner}/{repo}/assignees/{assignee}
 								s.handleIssuesCheckUserCanBeAssignedRequest(args, w, r)
 								return
 							}
@@ -3891,7 +3891,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch string(elem) {
 									case "reactions": // -> 288
-										// GET /repos/{owner}/{repo}/issues/comments/{comment_id}/reactions.
+										// GET /repos/{owner}/{repo}/issues/comments/{comment_id}/reactions
 										s.handleReactionsListForIssueCommentRequest(args, w, r)
 										return
 									default:
@@ -3917,7 +3917,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										args = make(map[string]string)
 									}
 									args["event_id"] = string(elem)
-									// GET /repos/{owner}/{repo}/issues/events/{event_id}.
+									// GET /repos/{owner}/{repo}/issues/events/{event_id}
 									s.handleIssuesGetEventRequest(args, w, r)
 									return
 								}
@@ -3938,15 +3938,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch string(elem) {
 								case "comments": // -> 196
-									// GET /repos/{owner}/{repo}/issues/{issue_number}/comments.
+									// GET /repos/{owner}/{repo}/issues/{issue_number}/comments
 									s.handleIssuesListCommentsRequest(args, w, r)
 									return
 								case "labels": // -> 198
-									// GET /repos/{owner}/{repo}/issues/{issue_number}/labels.
+									// GET /repos/{owner}/{repo}/issues/{issue_number}/labels
 									s.handleIssuesListLabelsOnIssueRequest(args, w, r)
 									return
 								case "reactions": // -> 287
-									// GET /repos/{owner}/{repo}/issues/{issue_number}/reactions.
+									// GET /repos/{owner}/{repo}/issues/{issue_number}/reactions
 									s.handleReactionsListForIssueRequest(args, w, r)
 									return
 								default:
@@ -3971,7 +3971,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["name"] = string(elem)
-								// GET /repos/{owner}/{repo}/labels/{name}.
+								// GET /repos/{owner}/{repo}/labels/{name}
 								s.handleIssuesGetLabelRequest(args, w, r)
 								return
 							}
@@ -4004,7 +4004,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch string(elem) {
 								case "labels": // -> 197
-									// GET /repos/{owner}/{repo}/milestones/{milestone_number}/labels.
+									// GET /repos/{owner}/{repo}/milestones/{milestone_number}/labels
 									s.handleIssuesListLabelsForMilestoneRequest(args, w, r)
 									return
 								default:
@@ -4014,7 +4014,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 							}
 						case "license": // -> 201
-							// GET /repos/{owner}/{repo}/license.
+							// GET /repos/{owner}/{repo}/license
 							s.handleLicensesGetForRepoRequest(args, w, r)
 							return
 						case "import": // -> 210
@@ -4030,11 +4030,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							switch string(elem) {
 							case "authors": // -> 211
-								// GET /repos/{owner}/{repo}/import/authors.
+								// GET /repos/{owner}/{repo}/import/authors
 								s.handleMigrationsGetCommitAuthorsRequest(args, w, r)
 								return
 							case "large_files": // -> 212
-								// GET /repos/{owner}/{repo}/import/large_files.
+								// GET /repos/{owner}/{repo}/import/large_files
 								s.handleMigrationsGetLargeFilesRequest(args, w, r)
 								return
 							default:
@@ -4043,7 +4043,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								return
 							}
 						case "projects": // -> 271
-							// GET /repos/{owner}/{repo}/projects.
+							// GET /repos/{owner}/{repo}/projects
 							s.handleProjectsListForRepoRequest(args, w, r)
 							return
 						case "pulls": // -> 272
@@ -4087,7 +4087,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch string(elem) {
 									case "reactions": // -> 289
-										// GET /repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions.
+										// GET /repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions
 										s.handleReactionsListForPullRequestReviewCommentRequest(args, w, r)
 										return
 									default:
@@ -4113,7 +4113,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch string(elem) {
 								case "merge": // -> 274
-									// GET /repos/{owner}/{repo}/pulls/{pull_number}/merge.
+									// GET /repos/{owner}/{repo}/pulls/{pull_number}/merge
 									s.handlePullsCheckIfMergedRequest(args, w, r)
 									return
 								case "reviews": // -> 275
@@ -4145,7 +4145,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 										switch string(elem) {
 										case "comments": // -> 279
-											// GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/comments.
+											// GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/comments
 											s.handlePullsListCommentsForReviewRequest(args, w, r)
 											return
 										default:
@@ -4155,15 +4155,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 									}
 								case "commits": // -> 280
-									// GET /repos/{owner}/{repo}/pulls/{pull_number}/commits.
+									// GET /repos/{owner}/{repo}/pulls/{pull_number}/commits
 									s.handlePullsListCommitsRequest(args, w, r)
 									return
 								case "requested_reviewers": // -> 281
-									// GET /repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers.
+									// GET /repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers
 									s.handlePullsListRequestedReviewersRequest(args, w, r)
 									return
 								case "comments": // -> 282
-									// GET /repos/{owner}/{repo}/pulls/{pull_number}/comments.
+									// GET /repos/{owner}/{repo}/pulls/{pull_number}/comments
 									s.handlePullsListReviewCommentsRequest(args, w, r)
 									return
 								default:
@@ -4201,7 +4201,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch string(elem) {
 								case "reactions": // -> 286
-									// GET /repos/{owner}/{repo}/comments/{comment_id}/reactions.
+									// GET /repos/{owner}/{repo}/comments/{comment_id}/reactions
 									s.handleReactionsListForCommitCommentRequest(args, w, r)
 									return
 								default:
@@ -4239,7 +4239,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch string(elem) {
 								case "permission": // -> 330
-									// GET /repos/{owner}/{repo}/collaborators/{username}/permission.
+									// GET /repos/{owner}/{repo}/collaborators/{username}/permission
 									s.handleReposGetCollaboratorPermissionLevelRequest(args, w, r)
 									return
 								default:
@@ -4249,7 +4249,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 							}
 						case "vulnerability-alerts": // -> 308
-							// GET /repos/{owner}/{repo}/vulnerability-alerts.
+							// GET /repos/{owner}/{repo}/vulnerability-alerts
 							s.handleReposCheckVulnerabilityAlertsRequest(args, w, r)
 							return
 						case "compare": // -> 309
@@ -4269,7 +4269,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["basehead"] = string(elem)
-								// GET /repos/{owner}/{repo}/compare/{basehead}.
+								// GET /repos/{owner}/{repo}/compare/{basehead}
 								s.handleReposCompareCommitsRequest(args, w, r)
 								return
 							}
@@ -4290,7 +4290,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["ref"] = string(elem)
-								// GET /repos/{owner}/{repo}/tarball/{ref}.
+								// GET /repos/{owner}/{repo}/tarball/{ref}
 								s.handleReposDownloadTarballArchiveRequest(args, w, r)
 								return
 							}
@@ -4311,7 +4311,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["ref"] = string(elem)
-								// GET /repos/{owner}/{repo}/zipball/{ref}.
+								// GET /repos/{owner}/{repo}/zipball/{ref}
 								s.handleReposDownloadZipballArchiveRequest(args, w, r)
 								return
 							}
@@ -4368,15 +4368,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 										switch string(elem) {
 										case "apps": // -> 323
-											// GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps.
+											// GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps
 											s.handleReposGetAppsWithAccessToProtectedBranchRequest(args, w, r)
 											return
 										case "teams": // -> 358
-											// GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams.
+											// GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams
 											s.handleReposGetTeamsWithAccessToProtectedBranchRequest(args, w, r)
 											return
 										case "users": // -> 362
-											// GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users.
+											// GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users
 											s.handleReposGetUsersWithAccessToProtectedBranchRequest(args, w, r)
 											return
 										default:
@@ -4385,7 +4385,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											return
 										}
 									case "enforce_admins": // -> 319
-										// GET /repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins.
+										// GET /repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins
 										s.handleReposGetAdminBranchProtectionRequest(args, w, r)
 										return
 									case "required_status_checks": // -> 320
@@ -4401,7 +4401,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 										switch string(elem) {
 										case "contexts": // -> 321
-											// GET /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts.
+											// GET /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts
 											s.handleReposGetAllStatusCheckContextsRequest(args, w, r)
 											return
 										default:
@@ -4410,11 +4410,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											return
 										}
 									case "required_signatures": // -> 333
-										// GET /repos/{owner}/{repo}/branches/{branch}/protection/required_signatures.
+										// GET /repos/{owner}/{repo}/branches/{branch}/protection/required_signatures
 										s.handleReposGetCommitSignatureProtectionRequest(args, w, r)
 										return
 									case "required_pull_request_reviews": // -> 351
-										// GET /repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews.
+										// GET /repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews
 										s.handleReposGetPullRequestReviewProtectionRequest(args, w, r)
 										return
 									default:
@@ -4429,7 +4429,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 							}
 						case "topics": // -> 322
-							// GET /repos/{owner}/{repo}/topics.
+							// GET /repos/{owner}/{repo}/topics
 							s.handleReposGetAllTopicsRequest(args, w, r)
 							return
 						case "autolinks": // -> 324
@@ -4449,7 +4449,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["autolink_id"] = string(elem)
-								// GET /repos/{owner}/{repo}/autolinks/{autolink_id}.
+								// GET /repos/{owner}/{repo}/autolinks/{autolink_id}
 								s.handleReposGetAutolinkRequest(args, w, r)
 								return
 							}
@@ -4466,7 +4466,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							switch string(elem) {
 							case "clones": // -> 327
-								// GET /repos/{owner}/{repo}/traffic/clones.
+								// GET /repos/{owner}/{repo}/traffic/clones
 								s.handleReposGetClonesRequest(args, w, r)
 								return
 							case "popular": // -> 359
@@ -4482,11 +4482,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch string(elem) {
 								case "paths": // -> 360
-									// GET /repos/{owner}/{repo}/traffic/popular/paths.
+									// GET /repos/{owner}/{repo}/traffic/popular/paths
 									s.handleReposGetTopPathsRequest(args, w, r)
 									return
 								case "referrers": // -> 361
-									// GET /repos/{owner}/{repo}/traffic/popular/referrers.
+									// GET /repos/{owner}/{repo}/traffic/popular/referrers
 									s.handleReposGetTopReferrersRequest(args, w, r)
 									return
 								default:
@@ -4494,7 +4494,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									return
 								}
 							case "views": // -> 363
-								// GET /repos/{owner}/{repo}/traffic/views.
+								// GET /repos/{owner}/{repo}/traffic/views
 								s.handleReposGetViewsRequest(args, w, r)
 								return
 							default:
@@ -4514,23 +4514,23 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							switch string(elem) {
 							case "code_frequency": // -> 329
-								// GET /repos/{owner}/{repo}/stats/code_frequency.
+								// GET /repos/{owner}/{repo}/stats/code_frequency
 								s.handleReposGetCodeFrequencyStatsRequest(args, w, r)
 								return
 							case "commit_activity": // -> 332
-								// GET /repos/{owner}/{repo}/stats/commit_activity.
+								// GET /repos/{owner}/{repo}/stats/commit_activity
 								s.handleReposGetCommitActivityStatsRequest(args, w, r)
 								return
 							case "contributors": // -> 336
-								// GET /repos/{owner}/{repo}/stats/contributors.
+								// GET /repos/{owner}/{repo}/stats/contributors
 								s.handleReposGetContributorsStatsRequest(args, w, r)
 								return
 							case "participation": // -> 350
-								// GET /repos/{owner}/{repo}/stats/participation.
+								// GET /repos/{owner}/{repo}/stats/participation
 								s.handleReposGetParticipationStatsRequest(args, w, r)
 								return
 							case "punch_card": // -> 352
-								// GET /repos/{owner}/{repo}/stats/punch_card.
+								// GET /repos/{owner}/{repo}/stats/punch_card
 								s.handleReposGetPunchCardStatsRequest(args, w, r)
 								return
 							default:
@@ -4550,7 +4550,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							switch string(elem) {
 							case "profile": // -> 335
-								// GET /repos/{owner}/{repo}/community/profile.
+								// GET /repos/{owner}/{repo}/community/profile
 								s.handleReposGetCommunityProfileMetricsRequest(args, w, r)
 								return
 							default:
@@ -4574,7 +4574,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["key_id"] = string(elem)
-								// GET /repos/{owner}/{repo}/keys/{key_id}.
+								// GET /repos/{owner}/{repo}/keys/{key_id}
 								s.handleReposGetDeployKeyRequest(args, w, r)
 								return
 							}
@@ -4623,7 +4623,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											args = make(map[string]string)
 										}
 										args["status_id"] = string(elem)
-										// GET /repos/{owner}/{repo}/deployments/{deployment_id}/statuses/{status_id}.
+										// GET /repos/{owner}/{repo}/deployments/{deployment_id}/statuses/{status_id}
 										s.handleReposGetDeploymentStatusRequest(args, w, r)
 										return
 									}
@@ -4657,7 +4657,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch string(elem) {
 								case "latest": // -> 345
-									// GET /repos/{owner}/{repo}/pages/builds/latest.
+									// GET /repos/{owner}/{repo}/pages/builds/latest
 									s.handleReposGetLatestPagesBuildRequest(args, w, r)
 									return
 								default:
@@ -4665,12 +4665,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										args = make(map[string]string)
 									}
 									args["build_id"] = string(elem)
-									// GET /repos/{owner}/{repo}/pages/builds/{build_id}.
+									// GET /repos/{owner}/{repo}/pages/builds/{build_id}
 									s.handleReposGetPagesBuildRequest(args, w, r)
 									return
 								}
 							case "health": // -> 349
-								// GET /repos/{owner}/{repo}/pages/health.
+								// GET /repos/{owner}/{repo}/pages/health
 								s.handleReposGetPagesHealthCheckRequest(args, w, r)
 								return
 							default:
@@ -4691,7 +4691,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							switch string(elem) {
 							case "latest": // -> 347
-								// GET /repos/{owner}/{repo}/releases/latest.
+								// GET /repos/{owner}/{repo}/releases/latest
 								s.handleReposGetLatestReleaseRequest(args, w, r)
 								return
 							case "assets": // -> 354
@@ -4711,7 +4711,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										args = make(map[string]string)
 									}
 									args["asset_id"] = string(elem)
-									// GET /repos/{owner}/{repo}/releases/assets/{asset_id}.
+									// GET /repos/{owner}/{repo}/releases/assets/{asset_id}
 									s.handleReposGetReleaseAssetRequest(args, w, r)
 									return
 								}
@@ -4732,7 +4732,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										args = make(map[string]string)
 									}
 									args["tag"] = string(elem)
-									// GET /repos/{owner}/{repo}/releases/tags/{tag}.
+									// GET /repos/{owner}/{repo}/releases/tags/{tag}
 									s.handleReposGetReleaseByTagRequest(args, w, r)
 									return
 								}
@@ -4753,7 +4753,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch string(elem) {
 								case "assets": // -> 377
-									// GET /repos/{owner}/{repo}/releases/{release_id}/assets.
+									// GET /repos/{owner}/{repo}/releases/{release_id}/assets
 									s.handleReposListReleaseAssetsRequest(args, w, r)
 									return
 								default:
@@ -4791,7 +4791,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch string(elem) {
 								case "config": // -> 366
-									// GET /repos/{owner}/{repo}/hooks/{hook_id}/config.
+									// GET /repos/{owner}/{repo}/hooks/{hook_id}/config
 									s.handleReposGetWebhookConfigForRepoRequest(args, w, r)
 									return
 								default:
@@ -4801,27 +4801,27 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 							}
 						case "contributors": // -> 369
-							// GET /repos/{owner}/{repo}/contributors.
+							// GET /repos/{owner}/{repo}/contributors
 							s.handleReposListContributorsRequest(args, w, r)
 							return
 						case "forks": // -> 372
-							// GET /repos/{owner}/{repo}/forks.
+							// GET /repos/{owner}/{repo}/forks
 							s.handleReposListForksRequest(args, w, r)
 							return
 						case "invitations": // -> 373
-							// GET /repos/{owner}/{repo}/invitations.
+							// GET /repos/{owner}/{repo}/invitations
 							s.handleReposListInvitationsRequest(args, w, r)
 							return
 						case "languages": // -> 375
-							// GET /repos/{owner}/{repo}/languages.
+							// GET /repos/{owner}/{repo}/languages
 							s.handleReposListLanguagesRequest(args, w, r)
 							return
 						case "tags": // -> 378
-							// GET /repos/{owner}/{repo}/tags.
+							// GET /repos/{owner}/{repo}/tags
 							s.handleReposListTagsRequest(args, w, r)
 							return
 						case "teams": // -> 379
-							// GET /repos/{owner}/{repo}/teams.
+							// GET /repos/{owner}/{repo}/teams
 							s.handleReposListTeamsRequest(args, w, r)
 							return
 						case "secret-scanning": // -> 383
@@ -4853,7 +4853,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										args = make(map[string]string)
 									}
 									args["alert_number"] = string(elem)
-									// GET /repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}.
+									// GET /repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}
 									s.handleSecretScanningGetAlertRequest(args, w, r)
 									return
 								}
@@ -4925,11 +4925,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch string(elem) {
 						case "selected-actions": // -> 20
-							// GET /orgs/{org}/actions/permissions/selected-actions.
+							// GET /orgs/{org}/actions/permissions/selected-actions
 							s.handleActionsGetAllowedActionsOrganizationRequest(args, w, r)
 							return
 						case "repositories": // -> 50
-							// GET /orgs/{org}/actions/permissions/repositories.
+							// GET /orgs/{org}/actions/permissions/repositories
 							s.handleActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRequest(args, w, r)
 							return
 						default:
@@ -4950,7 +4950,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch string(elem) {
 						case "public-key": // -> 31
-							// GET /orgs/{org}/actions/secrets/public-key.
+							// GET /orgs/{org}/actions/secrets/public-key
 							s.handleActionsGetOrgPublicKeyRequest(args, w, r)
 							return
 						default:
@@ -4970,7 +4970,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							switch string(elem) {
 							case "repositories": // -> 49
-								// GET /orgs/{org}/actions/secrets/{secret_name}/repositories.
+								// GET /orgs/{org}/actions/secrets/{secret_name}/repositories
 								s.handleActionsListSelectedReposForOrgSecretRequest(args, w, r)
 								return
 							default:
@@ -4992,7 +4992,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch string(elem) {
 						case "downloads": // -> 47
-							// GET /orgs/{org}/actions/runners/downloads.
+							// GET /orgs/{org}/actions/runners/downloads
 							s.handleActionsListRunnerApplicationsForOrgRequest(args, w, r)
 							return
 						default:
@@ -5000,7 +5000,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								args = make(map[string]string)
 							}
 							args["runner_id"] = string(elem)
-							// GET /orgs/{org}/actions/runners/{runner_id}.
+							// GET /orgs/{org}/actions/runners/{runner_id}
 							s.handleActionsGetSelfHostedRunnerForOrgRequest(args, w, r)
 							return
 						}
@@ -5033,11 +5033,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							switch string(elem) {
 							case "repositories": // -> 45
-								// GET /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories.
+								// GET /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories
 								s.handleActionsListRepoAccessToSelfHostedRunnerGroupInOrgRequest(args, w, r)
 								return
 							case "runners": // -> 51
-								// GET /orgs/{org}/actions/runner-groups/{runner_group_id}/runners.
+								// GET /orgs/{org}/actions/runner-groups/{runner_group_id}/runners
 								s.handleActionsListSelfHostedRunnersInGroupForOrgRequest(args, w, r)
 								return
 							default:
@@ -5051,7 +5051,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						return
 					}
 				case "events": // -> 76
-					// GET /orgs/{org}/events.
+					// GET /orgs/{org}/events
 					s.handleActivityListPublicOrgEventsRequest(args, w, r)
 					return
 				case "settings": // -> 111
@@ -5079,15 +5079,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch string(elem) {
 						case "actions": // -> 113
-							// GET /orgs/{org}/settings/billing/actions.
+							// GET /orgs/{org}/settings/billing/actions
 							s.handleBillingGetGithubActionsBillingOrgRequest(args, w, r)
 							return
 						case "packages": // -> 118
-							// GET /orgs/{org}/settings/billing/packages.
+							// GET /orgs/{org}/settings/billing/packages
 							s.handleBillingGetGithubPackagesBillingOrgRequest(args, w, r)
 							return
 						case "shared-storage": // -> 121
-							// GET /orgs/{org}/settings/billing/shared-storage.
+							// GET /orgs/{org}/settings/billing/shared-storage
 							s.handleBillingGetSharedStorageBillingOrgRequest(args, w, r)
 							return
 						default:
@@ -5127,11 +5127,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch string(elem) {
 						case "archive": // -> 206
-							// GET /orgs/{org}/migrations/{migration_id}/archive.
+							// GET /orgs/{org}/migrations/{migration_id}/archive
 							s.handleMigrationsDownloadArchiveForOrgRequest(args, w, r)
 							return
 						case "repositories": // -> 213
-							// GET /orgs/{org}/migrations/{migration_id}/repositories.
+							// GET /orgs/{org}/migrations/{migration_id}/repositories
 							s.handleMigrationsListReposForOrgRequest(args, w, r)
 							return
 						default:
@@ -5157,7 +5157,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args = make(map[string]string)
 						}
 						args["username"] = string(elem)
-						// GET /orgs/{org}/blocks/{username}.
+						// GET /orgs/{org}/blocks/{username}
 						s.handleOrgsCheckBlockedUserRequest(args, w, r)
 						return
 					}
@@ -5178,7 +5178,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args = make(map[string]string)
 						}
 						args["username"] = string(elem)
-						// GET /orgs/{org}/members/{username}.
+						// GET /orgs/{org}/members/{username}
 						s.handleOrgsCheckMembershipForUserRequest(args, w, r)
 						return
 					}
@@ -5199,12 +5199,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args = make(map[string]string)
 						}
 						args["username"] = string(elem)
-						// GET /orgs/{org}/public_members/{username}.
+						// GET /orgs/{org}/public_members/{username}
 						s.handleOrgsCheckPublicMembershipForUserRequest(args, w, r)
 						return
 					}
 				case "audit-log": // -> 226
-					// GET /orgs/{org}/audit-log.
+					// GET /orgs/{org}/audit-log
 					s.handleOrgsGetAuditLogRequest(args, w, r)
 					return
 				case "memberships": // -> 230
@@ -5224,7 +5224,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args = make(map[string]string)
 						}
 						args["username"] = string(elem)
-						// GET /orgs/{org}/memberships/{username}.
+						// GET /orgs/{org}/memberships/{username}
 						s.handleOrgsGetMembershipForUserRequest(args, w, r)
 						return
 					}
@@ -5257,7 +5257,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch string(elem) {
 						case "config": // -> 234
-							// GET /orgs/{org}/hooks/{hook_id}/config.
+							// GET /orgs/{org}/hooks/{hook_id}/config
 							s.handleOrgsGetWebhookConfigForOrgRequest(args, w, r)
 							return
 						default:
@@ -5267,7 +5267,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 					}
 				case "failed_invitations": // -> 236
-					// GET /orgs/{org}/failed_invitations.
+					// GET /orgs/{org}/failed_invitations
 					s.handleOrgsListFailedInvitationsRequest(args, w, r)
 					return
 				case "invitations": // -> 239
@@ -5299,7 +5299,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch string(elem) {
 						case "teams": // -> 241
-							// GET /orgs/{org}/invitations/{invitation_id}/teams.
+							// GET /orgs/{org}/invitations/{invitation_id}/teams
 							s.handleOrgsListInvitationTeamsRequest(args, w, r)
 							return
 						default:
@@ -5308,11 +5308,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 					}
 				case "outside_collaborators": // -> 242
-					// GET /orgs/{org}/outside_collaborators.
+					// GET /orgs/{org}/outside_collaborators
 					s.handleOrgsListOutsideCollaboratorsRequest(args, w, r)
 					return
 				case "credential-authorizations": // -> 243
-					// GET /orgs/{org}/credential-authorizations.
+					// GET /orgs/{org}/credential-authorizations
 					s.handleOrgsListSamlSSOAuthorizationsRequest(args, w, r)
 					return
 				case "packages": // -> 249
@@ -5388,7 +5388,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											args = make(map[string]string)
 										}
 										args["package_version_id"] = string(elem)
-										// GET /orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}.
+										// GET /orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}
 										s.handlePackagesGetPackageVersionForOrganizationRequest(args, w, r)
 										return
 									}
@@ -5404,7 +5404,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 					}
 				case "projects": // -> 270
-					// GET /orgs/{org}/projects.
+					// GET /orgs/{org}/projects
 					s.handleProjectsListForOrgRequest(args, w, r)
 					return
 				case "teams": // -> 290
@@ -5492,7 +5492,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 										switch string(elem) {
 										case "reactions": // -> 296
-											// GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions.
+											// GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions
 											s.handleReactionsListForTeamDiscussionCommentInOrgRequest(args, w, r)
 											return
 										default:
@@ -5502,7 +5502,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 									}
 								case "reactions": // -> 304
-									// GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions.
+									// GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions
 									s.handleReactionsListForTeamDiscussionInOrgRequest(args, w, r)
 									return
 								default:
@@ -5528,7 +5528,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["project_id"] = string(elem)
-								// GET /orgs/{org}/teams/{team_slug}/projects/{project_id}.
+								// GET /orgs/{org}/teams/{team_slug}/projects/{project_id}
 								s.handleTeamsCheckPermissionsForProjectInOrgRequest(args, w, r)
 								return
 							}
@@ -5577,7 +5577,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											args = make(map[string]string)
 										}
 										args["repo"] = string(elem)
-										// GET /orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}.
+										// GET /orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}
 										s.handleTeamsCheckPermissionsForRepoInOrgRequest(args, w, r)
 										return
 									}
@@ -5603,12 +5603,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["username"] = string(elem)
-								// GET /orgs/{org}/teams/{team_slug}/memberships/{username}.
+								// GET /orgs/{org}/teams/{team_slug}/memberships/{username}
 								s.handleTeamsGetMembershipForUserInOrgRequest(args, w, r)
 								return
 							}
 						case "teams": // -> 406
-							// GET /orgs/{org}/teams/{team_slug}/teams.
+							// GET /orgs/{org}/teams/{team_slug}/teams
 							s.handleTeamsListChildInOrgRequest(args, w, r)
 							return
 						case "team-sync": // -> 412
@@ -5624,7 +5624,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							switch string(elem) {
 							case "group-mappings": // -> 413
-								// GET /orgs/{org}/teams/{team_slug}/team-sync/group-mappings.
+								// GET /orgs/{org}/teams/{team_slug}/team-sync/group-mappings
 								s.handleTeamsListIdpGroupsInOrgRequest(args, w, r)
 								return
 							default:
@@ -5632,11 +5632,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								return
 							}
 						case "members": // -> 414
-							// GET /orgs/{org}/teams/{team_slug}/members.
+							// GET /orgs/{org}/teams/{team_slug}/members
 							s.handleTeamsListMembersInOrgRequest(args, w, r)
 							return
 						case "invitations": // -> 415
-							// GET /orgs/{org}/teams/{team_slug}/invitations.
+							// GET /orgs/{org}/teams/{team_slug}/invitations
 							s.handleTeamsListPendingInvitationsInOrgRequest(args, w, r)
 							return
 						default:
@@ -5646,7 +5646,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 					}
 				case "repos": // -> 370
-					// GET /orgs/{org}/repos.
+					// GET /orgs/{org}/repos
 					s.handleReposListForOrgRequest(args, w, r)
 					return
 				case "secret-scanning": // -> 386
@@ -5662,7 +5662,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch string(elem) {
 					case "alerts": // -> 387
-						// GET /orgs/{org}/secret-scanning/alerts.
+						// GET /orgs/{org}/secret-scanning/alerts
 						s.handleSecretScanningListAlertsForOrgRequest(args, w, r)
 						return
 					default:
@@ -5682,7 +5682,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch string(elem) {
 					case "groups": // -> 411
-						// GET /orgs/{org}/team-sync/groups.
+						// GET /orgs/{org}/team-sync/groups
 						s.handleTeamsListIdpGroupsForOrgRequest(args, w, r)
 						return
 					default:
@@ -5764,7 +5764,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							switch string(elem) {
 							case "public-key": // -> 28
-								// GET /repositories/{repository_id}/environments/{environment_name}/secrets/public-key.
+								// GET /repositories/{repository_id}/environments/{environment_name}/secrets/public-key
 								s.handleActionsGetEnvironmentPublicKeyRequest(args, w, r)
 								return
 							default:
@@ -5772,7 +5772,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["secret_name"] = string(elem)
-								// GET /repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}.
+								// GET /repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}
 								s.handleActionsGetEnvironmentSecretRequest(args, w, r)
 								return
 							}
@@ -5843,7 +5843,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								args = make(map[string]string)
 							}
 							args["repo"] = string(elem)
-							// GET /user/starred/{owner}/{repo}.
+							// GET /user/starred/{owner}/{repo}
 							s.handleActivityCheckRepoIsStarredByAuthenticatedUserRequest(args, w, r)
 							return
 						}
@@ -5853,7 +5853,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 				}
 			case "subscriptions": // -> 82
-				// GET /user/subscriptions.
+				// GET /user/subscriptions
 				s.handleActivityListWatchedReposForAuthenticatedUserRequest(args, w, r)
 				return
 			case "installations": // -> 98
@@ -5885,7 +5885,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch string(elem) {
 					case "repositories": // -> 100
-						// GET /user/installations/{installation_id}/repositories.
+						// GET /user/installations/{installation_id}/repositories
 						s.handleAppsListInstallationReposForAuthenticatedUserRequest(args, w, r)
 						return
 					default:
@@ -5906,7 +5906,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				switch string(elem) {
 				case "stubbed": // -> 105
-					// GET /user/marketplace_purchases/stubbed.
+					// GET /user/marketplace_purchases/stubbed
 					s.handleAppsListSubscriptionsForAuthenticatedUserStubbedRequest(args, w, r)
 					return
 				default:
@@ -5943,11 +5943,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch string(elem) {
 					case "archive": // -> 209
-						// GET /user/migrations/{migration_id}/archive.
+						// GET /user/migrations/{migration_id}/archive
 						s.handleMigrationsGetArchiveForAuthenticatedUserRequest(args, w, r)
 						return
 					case "repositories": // -> 214
-						// GET /user/migrations/{migration_id}/repositories.
+						// GET /user/migrations/{migration_id}/repositories
 						s.handleMigrationsListReposForUserRequest(args, w, r)
 						return
 					default:
@@ -5985,7 +5985,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args = make(map[string]string)
 						}
 						args["org"] = string(elem)
-						// GET /user/memberships/orgs/{org}.
+						// GET /user/memberships/orgs/{org}
 						s.handleOrgsGetMembershipForAuthenticatedUserRequest(args, w, r)
 						return
 					}
@@ -5994,7 +5994,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					return
 				}
 			case "orgs": // -> 237
-				// GET /user/orgs.
+				// GET /user/orgs
 				s.handleOrgsListForAuthenticatedUserRequest(args, w, r)
 				return
 			case "packages": // -> 244
@@ -6070,7 +6070,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										args = make(map[string]string)
 									}
 									args["package_version_id"] = string(elem)
-									// GET /user/packages/{package_type}/{package_name}/versions/{package_version_id}.
+									// GET /user/packages/{package_type}/{package_name}/versions/{package_version_id}
 									s.handlePackagesGetPackageVersionForAuthenticatedUserRequest(args, w, r)
 									return
 								}
@@ -6086,11 +6086,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 				}
 			case "repository_invitations": // -> 374
-				// GET /user/repository_invitations.
+				// GET /user/repository_invitations
 				s.handleReposListInvitationsForAuthenticatedUserRequest(args, w, r)
 				return
 			case "teams": // -> 407
-				// GET /user/teams.
+				// GET /user/teams
 				s.handleTeamsListForAuthenticatedUserRequest(args, w, r)
 				return
 			case "blocks": // -> 417
@@ -6110,7 +6110,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						args = make(map[string]string)
 					}
 					args["username"] = string(elem)
-					// GET /user/blocks/{username}.
+					// GET /user/blocks/{username}
 					s.handleUsersCheckBlockedRequest(args, w, r)
 					return
 				}
@@ -6131,7 +6131,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						args = make(map[string]string)
 					}
 					args["username"] = string(elem)
-					// GET /user/following/{username}.
+					// GET /user/following/{username}
 					s.handleUsersCheckPersonIsFollowedByAuthenticatedRequest(args, w, r)
 					return
 				}
@@ -6152,7 +6152,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						args = make(map[string]string)
 					}
 					args["gpg_key_id"] = string(elem)
-					// GET /user/gpg_keys/{gpg_key_id}.
+					// GET /user/gpg_keys/{gpg_key_id}
 					s.handleUsersGetGpgKeyForAuthenticatedRequest(args, w, r)
 					return
 				}
@@ -6173,20 +6173,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						args = make(map[string]string)
 					}
 					args["key_id"] = string(elem)
-					// GET /user/keys/{key_id}.
+					// GET /user/keys/{key_id}
 					s.handleUsersGetPublicSSHKeyForAuthenticatedRequest(args, w, r)
 					return
 				}
 			case "emails": // -> 427
-				// GET /user/emails.
+				// GET /user/emails
 				s.handleUsersListEmailsForAuthenticatedRequest(args, w, r)
 				return
 			case "followers": // -> 428
-				// GET /user/followers.
+				// GET /user/followers
 				s.handleUsersListFollowersForAuthenticatedUserRequest(args, w, r)
 				return
 			case "public_emails": // -> 431
-				// GET /user/public_emails.
+				// GET /user/public_emails
 				s.handleUsersListPublicEmailsForAuthenticatedRequest(args, w, r)
 				return
 			default:
@@ -6195,7 +6195,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				return
 			}
 		case "feeds": // -> 58
-			// GET /feeds.
+			// GET /feeds
 			s.handleActivityGetFeedsRequest(args, w, r)
 			return
 		case "notifications": // -> 60
@@ -6239,7 +6239,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch string(elem) {
 					case "subscription": // -> 63
-						// GET /notifications/threads/{thread_id}/subscription.
+						// GET /notifications/threads/{thread_id}/subscription
 						s.handleActivityGetThreadSubscriptionForAuthenticatedUserRequest(args, w, r)
 						return
 					default:
@@ -6309,12 +6309,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								args = make(map[string]string)
 							}
 							args["org"] = string(elem)
-							// GET /users/{username}/events/orgs/{org}.
+							// GET /users/{username}/events/orgs/{org}
 							s.handleActivityListOrgEventsForAuthenticatedUserRequest(args, w, r)
 							return
 						}
 					case "public": // -> 75
-						// GET /users/{username}/events/public.
+						// GET /users/{username}/events/public
 						s.handleActivityListPublicEventsForUserRequest(args, w, r)
 						return
 					default:
@@ -6335,7 +6335,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch string(elem) {
 					case "public": // -> 78
-						// GET /users/{username}/received_events/public.
+						// GET /users/{username}/received_events/public
 						s.handleActivityListReceivedPublicEventsForUserRequest(args, w, r)
 						return
 					default:
@@ -6344,7 +6344,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						return
 					}
 				case "subscriptions": // -> 81
-					// GET /users/{username}/subscriptions.
+					// GET /users/{username}/subscriptions
 					s.handleActivityListReposWatchedByUserRequest(args, w, r)
 					return
 				case "settings": // -> 114
@@ -6372,15 +6372,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch string(elem) {
 						case "actions": // -> 116
-							// GET /users/{username}/settings/billing/actions.
+							// GET /users/{username}/settings/billing/actions
 							s.handleBillingGetGithubActionsBillingUserRequest(args, w, r)
 							return
 						case "packages": // -> 119
-							// GET /users/{username}/settings/billing/packages.
+							// GET /users/{username}/settings/billing/packages
 							s.handleBillingGetGithubPackagesBillingUserRequest(args, w, r)
 							return
 						case "shared-storage": // -> 122
-							// GET /users/{username}/settings/billing/shared-storage.
+							// GET /users/{username}/settings/billing/shared-storage
 							s.handleBillingGetSharedStorageBillingUserRequest(args, w, r)
 							return
 						default:
@@ -6392,7 +6392,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						return
 					}
 				case "orgs": // -> 238
-					// GET /users/{username}/orgs.
+					// GET /users/{username}/orgs
 					s.handleOrgsListForUserRequest(args, w, r)
 					return
 				case "packages": // -> 254
@@ -6468,7 +6468,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											args = make(map[string]string)
 										}
 										args["package_version_id"] = string(elem)
-										// GET /users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}.
+										// GET /users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}
 										s.handlePackagesGetPackageVersionForUserRequest(args, w, r)
 										return
 									}
@@ -6484,7 +6484,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 					}
 				case "repos": // -> 371
-					// GET /users/{username}/repos.
+					// GET /users/{username}/repos
 					s.handleReposListForUserRequest(args, w, r)
 					return
 				case "following": // -> 419
@@ -6504,20 +6504,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args = make(map[string]string)
 						}
 						args["target_user"] = string(elem)
-						// GET /users/{username}/following/{target_user}.
+						// GET /users/{username}/following/{target_user}
 						s.handleUsersCheckFollowingForUserRequest(args, w, r)
 						return
 					}
 				case "followers": // -> 429
-					// GET /users/{username}/followers.
+					// GET /users/{username}/followers
 					s.handleUsersListFollowersForUserRequest(args, w, r)
 					return
 				case "gpg_keys": // -> 430
-					// GET /users/{username}/gpg_keys.
+					// GET /users/{username}/gpg_keys
 					s.handleUsersListGpgKeysForUserRequest(args, w, r)
 					return
 				case "keys": // -> 432
-					// GET /users/{username}/keys.
+					// GET /users/{username}/keys
 					s.handleUsersListPublicKeysForUserRequest(args, w, r)
 					return
 				default:
@@ -6527,7 +6527,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 			}
 		case "events": // -> 69
-			// GET /events.
+			// GET /events
 			s.handleActivityListPublicEventsRequest(args, w, r)
 			return
 		case "networks": // -> 70
@@ -6587,7 +6587,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch string(elem) {
 						case "events": // -> 74
-							// GET /networks/{owner}/{repo}/events.
+							// GET /networks/{owner}/{repo}/events
 							s.handleActivityListPublicEventsForRepoNetworkRequest(args, w, r)
 							return
 						default:
@@ -6625,7 +6625,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				switch string(elem) {
 				case "config": // -> 94
-					// GET /app/hook/config.
+					// GET /app/hook/config
 					s.handleAppsGetWebhookConfigForAppRequest(args, w, r)
 					return
 				default:
@@ -6654,7 +6654,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					args = make(map[string]string)
 				}
 				args["app_slug"] = string(elem)
-				// GET /apps/{app_slug}.
+				// GET /apps/{app_slug}
 				s.handleAppsGetBySlugRequest(args, w, r)
 				return
 			}
@@ -6687,7 +6687,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						args = make(map[string]string)
 					}
 					args["account_id"] = string(elem)
-					// GET /marketplace_listing/accounts/{account_id}.
+					// GET /marketplace_listing/accounts/{account_id}
 					s.handleAppsGetSubscriptionPlanForAccountRequest(args, w, r)
 					return
 				}
@@ -6720,7 +6720,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args = make(map[string]string)
 						}
 						args["account_id"] = string(elem)
-						// GET /marketplace_listing/stubbed/accounts/{account_id}.
+						// GET /marketplace_listing/stubbed/accounts/{account_id}
 						s.handleAppsGetSubscriptionPlanForAccountStubbedRequest(args, w, r)
 						return
 					}
@@ -6753,7 +6753,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch string(elem) {
 						case "accounts": // -> 97
-							// GET /marketplace_listing/stubbed/plans/{plan_id}/accounts.
+							// GET /marketplace_listing/stubbed/plans/{plan_id}/accounts
 							s.handleAppsListAccountsForPlanStubbedRequest(args, w, r)
 							return
 						default:
@@ -6766,7 +6766,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					return
 				}
 			case "plans": // -> 101
-				// GET /marketplace_listing/plans.
+				// GET /marketplace_listing/plans
 				s.handleAppsListPlansRequest(args, w, r)
 				return
 			default:
@@ -6786,7 +6786,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 			switch string(elem) {
 			case "repositories": // -> 103
-				// GET /installation/repositories.
+				// GET /installation/repositories
 				s.handleAppsListReposAccessibleToInstallationRequest(args, w, r)
 				return
 			default:
@@ -6846,15 +6846,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch string(elem) {
 						case "actions": // -> 110
-							// GET /enterprises/{enterprise}/settings/billing/actions.
+							// GET /enterprises/{enterprise}/settings/billing/actions
 							s.handleBillingGetGithubActionsBillingGheRequest(args, w, r)
 							return
 						case "packages": // -> 117
-							// GET /enterprises/{enterprise}/settings/billing/packages.
+							// GET /enterprises/{enterprise}/settings/billing/packages
 							s.handleBillingGetGithubPackagesBillingGheRequest(args, w, r)
 							return
 						case "shared-storage": // -> 120
-							// GET /enterprises/{enterprise}/settings/billing/shared-storage.
+							// GET /enterprises/{enterprise}/settings/billing/shared-storage
 							s.handleBillingGetSharedStorageBillingGheRequest(args, w, r)
 							return
 						default:
@@ -6890,11 +6890,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch string(elem) {
 						case "selected-actions": // -> 146
-							// GET /enterprises/{enterprise}/actions/permissions/selected-actions.
+							// GET /enterprises/{enterprise}/actions/permissions/selected-actions
 							s.handleEnterpriseAdminGetAllowedActionsEnterpriseRequest(args, w, r)
 							return
 						case "organizations": // -> 162
-							// GET /enterprises/{enterprise}/actions/permissions/organizations.
+							// GET /enterprises/{enterprise}/actions/permissions/organizations
 							s.handleEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseRequest(args, w, r)
 							return
 						default:
@@ -6915,7 +6915,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch string(elem) {
 						case "downloads": // -> 161
-							// GET /enterprises/{enterprise}/actions/runners/downloads.
+							// GET /enterprises/{enterprise}/actions/runners/downloads
 							s.handleEnterpriseAdminListRunnerApplicationsForEnterpriseRequest(args, w, r)
 							return
 						default:
@@ -6923,7 +6923,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								args = make(map[string]string)
 							}
 							args["runner_id"] = string(elem)
-							// GET /enterprises/{enterprise}/actions/runners/{runner_id}.
+							// GET /enterprises/{enterprise}/actions/runners/{runner_id}
 							s.handleEnterpriseAdminGetSelfHostedRunnerForEnterpriseRequest(args, w, r)
 							return
 						}
@@ -6956,11 +6956,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							switch string(elem) {
 							case "organizations": // -> 160
-								// GET /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations.
+								// GET /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations
 								s.handleEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(args, w, r)
 								return
 							case "runners": // -> 163
-								// GET /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners.
+								// GET /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners
 								s.handleEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseRequest(args, w, r)
 								return
 							default:
@@ -6974,7 +6974,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						return
 					}
 				case "audit-log": // -> 147
-					// GET /enterprises/{enterprise}/audit-log.
+					// GET /enterprises/{enterprise}/audit-log
 					s.handleEnterpriseAdminGetAuditLogRequest(args, w, r)
 					return
 				default:
@@ -6999,12 +6999,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					args = make(map[string]string)
 				}
 				args["key"] = string(elem)
-				// GET /codes_of_conduct/{key}.
+				// GET /codes_of_conduct/{key}
 				s.handleCodesOfConductGetConductCodeRequest(args, w, r)
 				return
 			}
 		case "emojis": // -> 143
-			// GET /emojis.
+			// GET /emojis
 			s.handleEmojisGetRequest(args, w, r)
 			return
 		case "scim": // -> 148
@@ -7076,7 +7076,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["scim_group_id"] = string(elem)
-								// GET /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}.
+								// GET /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
 								s.handleEnterpriseAdminGetProvisioningInformationForEnterpriseGroupRequest(args, w, r)
 								return
 							}
@@ -7097,7 +7097,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["scim_user_id"] = string(elem)
-								// GET /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}.
+								// GET /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
 								s.handleEnterpriseAdminGetProvisioningInformationForEnterpriseUserRequest(args, w, r)
 								return
 							}
@@ -7127,7 +7127,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 			switch string(elem) {
 			case "starred": // -> 171
-				// GET /gists/starred.
+				// GET /gists/starred
 				s.handleGistsListStarredRequest(args, w, r)
 				return
 			default:
@@ -7147,7 +7147,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				switch string(elem) {
 				case "star": // -> 166
-					// GET /gists/{gist_id}/star.
+					// GET /gists/{gist_id}/star
 					s.handleGistsCheckIsStarredRequest(args, w, r)
 					return
 				case "comments": // -> 167
@@ -7167,16 +7167,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args = make(map[string]string)
 						}
 						args["comment_id"] = string(elem)
-						// GET /gists/{gist_id}/comments/{comment_id}.
+						// GET /gists/{gist_id}/comments/{comment_id}
 						s.handleGistsGetCommentRequest(args, w, r)
 						return
 					}
 				case "commits": // -> 169
-					// GET /gists/{gist_id}/commits.
+					// GET /gists/{gist_id}/commits
 					s.handleGistsListCommitsRequest(args, w, r)
 					return
 				case "forks": // -> 170
-					// GET /gists/{gist_id}/forks.
+					// GET /gists/{gist_id}/forks
 					s.handleGistsListForksRequest(args, w, r)
 					return
 				default:
@@ -7214,7 +7214,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						args = make(map[string]string)
 					}
 					args["name"] = string(elem)
-					// GET /gitignore/templates/{name}.
+					// GET /gitignore/templates/{name}
 					s.handleGitignoreGetTemplateRequest(args, w, r)
 					return
 				}
@@ -7239,16 +7239,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					args = make(map[string]string)
 				}
 				args["license"] = string(elem)
-				// GET /licenses/{license}.
+				// GET /licenses/{license}
 				s.handleLicensesGetRequest(args, w, r)
 				return
 			}
 		case "meta": // -> 202
-			// GET /meta.
+			// GET /meta
 			s.handleMetaGetRequest(args, w, r)
 			return
 		case "": // -> 203
-			// GET /.
+			// GET /
 			s.handleMetaRootRequest(args, w, r)
 			return
 		case "authorizations": // -> 215
@@ -7268,7 +7268,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					args = make(map[string]string)
 				}
 				args["authorization_id"] = string(elem)
-				// GET /authorizations/{authorization_id}.
+				// GET /authorizations/{authorization_id}
 				s.handleOAuthAuthorizationsGetAuthorizationRequest(args, w, r)
 				return
 			}
@@ -7301,7 +7301,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						args = make(map[string]string)
 					}
 					args["grant_id"] = string(elem)
-					// GET /applications/grants/{grant_id}.
+					// GET /applications/grants/{grant_id}
 					s.handleOAuthAuthorizationsGetGrantRequest(args, w, r)
 					return
 				}
@@ -7310,7 +7310,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				return
 			}
 		case "organizations": // -> 235
-			// GET /organizations.
+			// GET /organizations
 			s.handleOrgsListRequest(args, w, r)
 			return
 		case "projects": // -> 262
@@ -7354,7 +7354,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args = make(map[string]string)
 						}
 						args["card_id"] = string(elem)
-						// GET /projects/columns/cards/{card_id}.
+						// GET /projects/columns/cards/{card_id}
 						s.handleProjectsGetCardRequest(args, w, r)
 						return
 					}
@@ -7375,7 +7375,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch string(elem) {
 					case "cards": // -> 268
-						// GET /projects/columns/{column_id}/cards.
+						// GET /projects/columns/{column_id}/cards
 						s.handleProjectsListCardsRequest(args, w, r)
 						return
 					default:
@@ -7401,7 +7401,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				switch string(elem) {
 				case "columns": // -> 269
-					// GET /projects/{project_id}/columns.
+					// GET /projects/{project_id}/columns
 					s.handleProjectsListColumnsRequest(args, w, r)
 					return
 				default:
@@ -7411,7 +7411,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 			}
 		case "rate_limit": // -> 283
-			// GET /rate_limit.
+			// GET /rate_limit
 			s.handleRateLimitGetRequest(args, w, r)
 			return
 		case "teams": // -> 297
@@ -7499,7 +7499,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch string(elem) {
 								case "reactions": // -> 303
-									// GET /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions.
+									// GET /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions
 									s.handleReactionsListForTeamDiscussionCommentLegacyRequest(args, w, r)
 									return
 								default:
@@ -7509,7 +7509,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 							}
 						case "reactions": // -> 305
-							// GET /teams/{team_id}/discussions/{discussion_number}/reactions.
+							// GET /teams/{team_id}/discussions/{discussion_number}/reactions
 							s.handleReactionsListForTeamDiscussionLegacyRequest(args, w, r)
 							return
 						default:
@@ -7535,7 +7535,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args = make(map[string]string)
 						}
 						args["project_id"] = string(elem)
-						// GET /teams/{team_id}/projects/{project_id}.
+						// GET /teams/{team_id}/projects/{project_id}
 						s.handleTeamsCheckPermissionsForProjectLegacyRequest(args, w, r)
 						return
 					}
@@ -7584,7 +7584,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["repo"] = string(elem)
-								// GET /teams/{team_id}/repos/{owner}/{repo}.
+								// GET /teams/{team_id}/repos/{owner}/{repo}
 								s.handleTeamsCheckPermissionsForRepoLegacyRequest(args, w, r)
 								return
 							}
@@ -7610,7 +7610,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args = make(map[string]string)
 						}
 						args["username"] = string(elem)
-						// GET /teams/{team_id}/members/{username}.
+						// GET /teams/{team_id}/members/{username}
 						s.handleTeamsGetMemberLegacyRequest(args, w, r)
 						return
 					}
@@ -7631,7 +7631,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args = make(map[string]string)
 						}
 						args["username"] = string(elem)
-						// GET /teams/{team_id}/memberships/{username}.
+						// GET /teams/{team_id}/memberships/{username}
 						s.handleTeamsGetMembershipForUserLegacyRequest(args, w, r)
 						return
 					}
@@ -7648,7 +7648,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch string(elem) {
 					case "group-mappings": // -> 409
-						// GET /teams/{team_id}/team-sync/group-mappings.
+						// GET /teams/{team_id}/team-sync/group-mappings
 						s.handleTeamsListIdpGroupsForLegacyRequest(args, w, r)
 						return
 					default:
@@ -7656,7 +7656,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						return
 					}
 				case "invitations": // -> 416
-					// GET /teams/{team_id}/invitations.
+					// GET /teams/{team_id}/invitations
 					s.handleTeamsListPendingInvitationsLegacyRequest(args, w, r)
 					return
 				default:
@@ -7678,11 +7678,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 			switch string(elem) {
 			case "commits": // -> 381
-				// GET /search/commits.
+				// GET /search/commits
 				s.handleSearchCommitsRequest(args, w, r)
 				return
 			case "topics": // -> 382
-				// GET /search/topics.
+				// GET /search/topics
 				s.handleSearchTopicsRequest(args, w, r)
 				return
 			default:
@@ -7762,7 +7762,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								args = make(map[string]string)
 							}
 							args["runner_group_id"] = string(elem)
-							// PATCH /orgs/{org}/actions/runner-groups/{runner_group_id}.
+							// PATCH /orgs/{org}/actions/runner-groups/{runner_group_id}
 							s.handleActionsUpdateSelfHostedRunnerGroupForOrgRequest(args, w, r)
 							return
 						}
@@ -7799,7 +7799,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch string(elem) {
 						case "config": // -> 43
-							// PATCH /orgs/{org}/hooks/{hook_id}/config.
+							// PATCH /orgs/{org}/hooks/{hook_id}/config
 							s.handleOrgsUpdateWebhookConfigForOrgRequest(args, w, r)
 							return
 						default:
@@ -7848,7 +7848,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							switch string(elem) {
 							case "group-mappings": // -> 73
-								// PATCH /orgs/{org}/teams/{team_slug}/team-sync/group-mappings.
+								// PATCH /orgs/{org}/teams/{team_slug}/team-sync/group-mappings
 								s.handleTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(args, w, r)
 								return
 							default:
@@ -7900,7 +7900,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											args = make(map[string]string)
 										}
 										args["comment_number"] = string(elem)
-										// PATCH /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}.
+										// PATCH /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}
 										s.handleTeamsUpdateDiscussionCommentInOrgRequest(args, w, r)
 										return
 									}
@@ -7950,7 +7950,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						args = make(map[string]string)
 					}
 					args["thread_id"] = string(elem)
-					// PATCH /notifications/threads/{thread_id}.
+					// PATCH /notifications/threads/{thread_id}
 					s.handleActivityMarkThreadAsReadRequest(args, w, r)
 					return
 				}
@@ -7983,7 +7983,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				switch string(elem) {
 				case "config": // -> 11
-					// PATCH /app/hook/config.
+					// PATCH /app/hook/config
 					s.handleAppsUpdateWebhookConfigForAppRequest(args, w, r)
 					return
 				default:
@@ -8063,7 +8063,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							switch string(elem) {
 							case "preferences": // -> 17
-								// PATCH /repos/{owner}/{repo}/check-suites/preferences.
+								// PATCH /repos/{owner}/{repo}/check-suites/preferences
 								s.handleChecksSetSuitesPreferencesRequest(args, w, r)
 								return
 							default:
@@ -8099,7 +8099,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										args = make(map[string]string)
 									}
 									args["alert_number"] = string(elem)
-									// PATCH /repos/{owner}/{repo}/code-scanning/alerts/{alert_number}.
+									// PATCH /repos/{owner}/{repo}/code-scanning/alerts/{alert_number}
 									s.handleCodeScanningUpdateAlertRequest(args, w, r)
 									return
 								}
@@ -8124,7 +8124,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["name"] = string(elem)
-								// PATCH /repos/{owner}/{repo}/labels/{name}.
+								// PATCH /repos/{owner}/{repo}/labels/{name}
 								s.handleIssuesUpdateLabelRequest(args, w, r)
 								return
 							}
@@ -8145,12 +8145,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["milestone_number"] = string(elem)
-								// PATCH /repos/{owner}/{repo}/milestones/{milestone_number}.
+								// PATCH /repos/{owner}/{repo}/milestones/{milestone_number}
 								s.handleIssuesUpdateMilestoneRequest(args, w, r)
 								return
 							}
 						case "import": // -> 40
-							// PATCH /repos/{owner}/{repo}/import.
+							// PATCH /repos/{owner}/{repo}/import
 							s.handleMigrationsUpdateImportRequest(args, w, r)
 							return
 						case "pulls": // -> 50
@@ -8182,7 +8182,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										args = make(map[string]string)
 									}
 									args["comment_id"] = string(elem)
-									// PATCH /repos/{owner}/{repo}/pulls/comments/{comment_id}.
+									// PATCH /repos/{owner}/{repo}/pulls/comments/{comment_id}
 									s.handlePullsUpdateReviewCommentRequest(args, w, r)
 									return
 								}
@@ -8207,7 +8207,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["comment_id"] = string(elem)
-								// PATCH /repos/{owner}/{repo}/comments/{comment_id}.
+								// PATCH /repos/{owner}/{repo}/comments/{comment_id}
 								s.handleReposUpdateCommitCommentRequest(args, w, r)
 								return
 							}
@@ -8228,7 +8228,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["invitation_id"] = string(elem)
-								// PATCH /repos/{owner}/{repo}/invitations/{invitation_id}.
+								// PATCH /repos/{owner}/{repo}/invitations/{invitation_id}
 								s.handleReposUpdateInvitationRequest(args, w, r)
 								return
 							}
@@ -8261,7 +8261,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										args = make(map[string]string)
 									}
 									args["asset_id"] = string(elem)
-									// PATCH /repos/{owner}/{repo}/releases/assets/{asset_id}.
+									// PATCH /repos/{owner}/{repo}/releases/assets/{asset_id}
 									s.handleReposUpdateReleaseAssetRequest(args, w, r)
 									return
 								}
@@ -8270,7 +8270,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["release_id"] = string(elem)
-								// PATCH /repos/{owner}/{repo}/releases/{release_id}.
+								// PATCH /repos/{owner}/{repo}/releases/{release_id}
 								s.handleReposUpdateReleaseRequest(args, w, r)
 								return
 							}
@@ -8303,7 +8303,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch string(elem) {
 								case "config": // -> 66
-									// PATCH /repos/{owner}/{repo}/hooks/{hook_id}/config.
+									// PATCH /repos/{owner}/{repo}/hooks/{hook_id}/config
 									s.handleReposUpdateWebhookConfigForRepoRequest(args, w, r)
 									return
 								default:
@@ -8340,7 +8340,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										args = make(map[string]string)
 									}
 									args["alert_number"] = string(elem)
-									// PATCH /repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}.
+									// PATCH /repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}
 									s.handleSecretScanningUpdateAlertRequest(args, w, r)
 									return
 								}
@@ -8427,7 +8427,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["scim_user_id"] = string(elem)
-								// PATCH /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}.
+								// PATCH /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
 								s.handleEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(args, w, r)
 								return
 							}
@@ -8501,7 +8501,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								args = make(map[string]string)
 							}
 							args["runner_group_id"] = string(elem)
-							// PATCH /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}.
+							// PATCH /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}
 							s.handleEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequest(args, w, r)
 							return
 						}
@@ -8559,7 +8559,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args = make(map[string]string)
 						}
 						args["comment_id"] = string(elem)
-						// PATCH /gists/{gist_id}/comments/{comment_id}.
+						// PATCH /gists/{gist_id}/comments/{comment_id}
 						s.handleGistsUpdateCommentRequest(args, w, r)
 						return
 					}
@@ -8609,7 +8609,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args = make(map[string]string)
 						}
 						args["card_id"] = string(elem)
-						// PATCH /projects/columns/cards/{card_id}.
+						// PATCH /projects/columns/cards/{card_id}
 						s.handleProjectsUpdateCardRequest(args, w, r)
 						return
 					}
@@ -8618,7 +8618,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						args = make(map[string]string)
 					}
 					args["column_id"] = string(elem)
-					// PATCH /projects/columns/{column_id}.
+					// PATCH /projects/columns/{column_id}
 					s.handleProjectsUpdateColumnRequest(args, w, r)
 					return
 				}
@@ -8627,7 +8627,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					args = make(map[string]string)
 				}
 				args["project_id"] = string(elem)
-				// PATCH /projects/{project_id}.
+				// PATCH /projects/{project_id}
 				s.handleProjectsUpdateRequest(args, w, r)
 				return
 			}
@@ -8660,7 +8660,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						args = make(map[string]string)
 					}
 					args["invitation_id"] = string(elem)
-					// PATCH /user/repository_invitations/{invitation_id}.
+					// PATCH /user/repository_invitations/{invitation_id}
 					s.handleReposAcceptInvitationRequest(args, w, r)
 					return
 				}
@@ -8741,7 +8741,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["comment_number"] = string(elem)
-								// PATCH /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}.
+								// PATCH /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}
 								s.handleTeamsUpdateDiscussionCommentLegacyRequest(args, w, r)
 								return
 							}
@@ -8869,19 +8869,19 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch string(elem) {
 									case "approve": // -> 8
-										// POST /repos/{owner}/{repo}/actions/runs/{run_id}/approve.
+										// POST /repos/{owner}/{repo}/actions/runs/{run_id}/approve
 										s.handleActionsApproveWorkflowRunRequest(args, w, r)
 										return
 									case "cancel": // -> 9
-										// POST /repos/{owner}/{repo}/actions/runs/{run_id}/cancel.
+										// POST /repos/{owner}/{repo}/actions/runs/{run_id}/cancel
 										s.handleActionsCancelWorkflowRunRequest(args, w, r)
 										return
 									case "rerun": // -> 20
-										// POST /repos/{owner}/{repo}/actions/runs/{run_id}/rerun.
+										// POST /repos/{owner}/{repo}/actions/runs/{run_id}/rerun
 										s.handleActionsReRunWorkflowRequest(args, w, r)
 										return
 									case "retry": // -> 21
-										// POST /repos/{owner}/{repo}/actions/runs/{run_id}/retry.
+										// POST /repos/{owner}/{repo}/actions/runs/{run_id}/retry
 										s.handleActionsRetryWorkflowRequest(args, w, r)
 										return
 									default:
@@ -8902,11 +8902,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch string(elem) {
 								case "registration-token": // -> 16
-									// POST /repos/{owner}/{repo}/actions/runners/registration-token.
+									// POST /repos/{owner}/{repo}/actions/runners/registration-token
 									s.handleActionsCreateRegistrationTokenForRepoRequest(args, w, r)
 									return
 								case "remove-token": // -> 18
-									// POST /repos/{owner}/{repo}/actions/runners/remove-token.
+									// POST /repos/{owner}/{repo}/actions/runners/remove-token
 									s.handleActionsCreateRemoveTokenForRepoRequest(args, w, r)
 									return
 								default:
@@ -8946,7 +8946,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch string(elem) {
 								case "rerequest": // -> 24
-									// POST /repos/{owner}/{repo}/check-suites/{check_suite_id}/rerequest.
+									// POST /repos/{owner}/{repo}/check-suites/{check_suite_id}/rerequest
 									s.handleChecksRerequestSuiteRequest(args, w, r)
 									return
 								default:
@@ -8967,7 +8967,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							switch string(elem) {
 							case "sarifs": // -> 26
-								// POST /repos/{owner}/{repo}/code-scanning/sarifs.
+								// POST /repos/{owner}/{repo}/code-scanning/sarifs
 								s.handleCodeScanningUploadSarifRequest(args, w, r)
 								return
 							default:
@@ -9003,7 +9003,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch string(elem) {
 								case "assignees": // -> 45
-									// POST /repos/{owner}/{repo}/issues/{issue_number}/assignees.
+									// POST /repos/{owner}/{repo}/issues/{issue_number}/assignees
 									s.handleIssuesAddAssigneesRequest(args, w, r)
 									return
 								default:
@@ -9012,7 +9012,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 							}
 						case "projects": // -> 81
-							// POST /repos/{owner}/{repo}/projects.
+							// POST /repos/{owner}/{repo}/projects
 							s.handleProjectsCreateForRepoRequest(args, w, r)
 							return
 						case "pulls": // -> 85
@@ -9072,7 +9072,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 										switch string(elem) {
 										case "replies": // -> 89
-											// POST /repos/{owner}/{repo}/pulls/{pull_number}/comments/{comment_id}/replies.
+											// POST /repos/{owner}/{repo}/pulls/{pull_number}/comments/{comment_id}/replies
 											s.handlePullsCreateReplyForReviewCommentRequest(args, w, r)
 											return
 										default:
@@ -9109,7 +9109,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 										switch string(elem) {
 										case "events": // -> 92
-											// POST /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/events.
+											// POST /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/events
 											s.handlePullsSubmitReviewRequest(args, w, r)
 											return
 										default:
@@ -9163,11 +9163,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch string(elem) {
 									case "required_signatures": // -> 112
-										// POST /repos/{owner}/{repo}/branches/{branch}/protection/required_signatures.
+										// POST /repos/{owner}/{repo}/branches/{branch}/protection/required_signatures
 										s.handleReposCreateCommitSignatureProtectionRequest(args, w, r)
 										return
 									case "enforce_admins": // -> 122
-										// POST /repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins.
+										// POST /repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins
 										s.handleReposSetAdminBranchProtectionRequest(args, w, r)
 										return
 									default:
@@ -9196,16 +9196,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["sha"] = string(elem)
-								// POST /repos/{owner}/{repo}/statuses/{sha}.
+								// POST /repos/{owner}/{repo}/statuses/{sha}
 								s.handleReposCreateCommitStatusRequest(args, w, r)
 								return
 							}
 						case "generate": // -> 115
-							// POST /repos/{template_owner}/{template_repo}/generate.
+							// POST /repos/{template_owner}/{template_repo}/generate
 							s.handleReposCreateUsingTemplateRequest(args, w, r)
 							return
 						case "merge-upstream": // -> 116
-							// POST /repos/{owner}/{repo}/merge-upstream.
+							// POST /repos/{owner}/{repo}/merge-upstream
 							s.handleReposMergeUpstreamRequest(args, w, r)
 							return
 						case "hooks": // -> 117
@@ -9237,11 +9237,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch string(elem) {
 								case "pings": // -> 119
-									// POST /repos/{owner}/{repo}/hooks/{hook_id}/pings.
+									// POST /repos/{owner}/{repo}/hooks/{hook_id}/pings
 									s.handleReposPingWebhookRequest(args, w, r)
 									return
 								case "tests": // -> 123
-									// POST /repos/{owner}/{repo}/hooks/{hook_id}/tests.
+									// POST /repos/{owner}/{repo}/hooks/{hook_id}/tests
 									s.handleReposTestPushWebhookRequest(args, w, r)
 									return
 								default:
@@ -9262,7 +9262,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							switch string(elem) {
 							case "builds": // -> 121
-								// POST /repos/{owner}/{repo}/pages/builds.
+								// POST /repos/{owner}/{repo}/pages/builds
 								s.handleReposRequestPagesBuildRequest(args, w, r)
 								return
 							default:
@@ -9270,7 +9270,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								return
 							}
 						case "transfer": // -> 124
-							// POST /repos/{owner}/{repo}/transfer.
+							// POST /repos/{owner}/{repo}/transfer
 							s.handleReposTransferRequest(args, w, r)
 							return
 						default:
@@ -9336,11 +9336,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch string(elem) {
 						case "registration-token": // -> 14
-							// POST /orgs/{org}/actions/runners/registration-token.
+							// POST /orgs/{org}/actions/runners/registration-token
 							s.handleActionsCreateRegistrationTokenForOrgRequest(args, w, r)
 							return
 						case "remove-token": // -> 17
-							// POST /orgs/{org}/actions/runners/remove-token.
+							// POST /orgs/{org}/actions/runners/remove-token
 							s.handleActionsCreateRemoveTokenForOrgRequest(args, w, r)
 							return
 						default:
@@ -9348,7 +9348,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							return
 						}
 					case "runner-groups": // -> 19
-						// POST /orgs/{org}/actions/runner-groups.
+						// POST /orgs/{org}/actions/runner-groups
 						s.handleActionsCreateSelfHostedRunnerGroupForOrgRequest(args, w, r)
 						return
 					default:
@@ -9384,7 +9384,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch string(elem) {
 						case "pings": // -> 48
-							// POST /orgs/{org}/hooks/{hook_id}/pings.
+							// POST /orgs/{org}/hooks/{hook_id}/pings
 							s.handleOrgsPingWebhookRequest(args, w, r)
 							return
 						default:
@@ -9449,7 +9449,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch string(elem) {
 								case "restore": // -> 59
-									// POST /orgs/{org}/packages/{package_type}/{package_name}/restore.
+									// POST /orgs/{org}/packages/{package_type}/{package_name}/restore
 									s.handlePackagesRestorePackageForOrgRequest(args, w, r)
 									return
 								case "versions": // -> 70
@@ -9481,7 +9481,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 										switch string(elem) {
 										case "restore": // -> 72
-											// POST /orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore.
+											// POST /orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore
 											s.handlePackagesRestorePackageVersionForOrgRequest(args, w, r)
 											return
 										default:
@@ -9500,7 +9500,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 					}
 				case "projects": // -> 80
-					// POST /orgs/{org}/projects.
+					// POST /orgs/{org}/projects
 					s.handleProjectsCreateForOrgRequest(args, w, r)
 					return
 				case "teams": // -> 93
@@ -9588,7 +9588,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 										switch string(elem) {
 										case "reactions": // -> 99
-											// POST /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions.
+											// POST /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions
 											s.handleReactionsCreateForTeamDiscussionCommentInOrgRequest(args, w, r)
 											return
 										default:
@@ -9597,7 +9597,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 									}
 								case "reactions": // -> 107
-									// POST /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions.
+									// POST /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions
 									s.handleReactionsCreateForTeamDiscussionInOrgRequest(args, w, r)
 									return
 								default:
@@ -9668,11 +9668,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch string(elem) {
 						case "registration-token": // -> 31
-							// POST /enterprises/{enterprise}/actions/runners/registration-token.
+							// POST /enterprises/{enterprise}/actions/runners/registration-token
 							s.handleEnterpriseAdminCreateRegistrationTokenForEnterpriseRequest(args, w, r)
 							return
 						case "remove-token": // -> 32
-							// POST /enterprises/{enterprise}/actions/runners/remove-token.
+							// POST /enterprises/{enterprise}/actions/runners/remove-token
 							s.handleEnterpriseAdminCreateRemoveTokenForEnterpriseRequest(args, w, r)
 							return
 						default:
@@ -9680,7 +9680,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							return
 						}
 					case "runner-groups": // -> 33
-						// POST /enterprises/{enterprise}/actions/runner-groups.
+						// POST /enterprises/{enterprise}/actions/runner-groups
 						s.handleEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequest(args, w, r)
 						return
 					default:
@@ -9745,11 +9745,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch string(elem) {
 						case "Groups": // -> 38
-							// POST /scim/v2/enterprises/{enterprise}/Groups.
+							// POST /scim/v2/enterprises/{enterprise}/Groups
 							s.handleEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(args, w, r)
 							return
 						case "Users": // -> 39
-							// POST /scim/v2/enterprises/{enterprise}/Users.
+							// POST /scim/v2/enterprises/{enterprise}/Users
 							s.handleEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(args, w, r)
 							return
 						default:
@@ -9794,7 +9794,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				switch string(elem) {
 				case "comments": // -> 42
-					// POST /gists/{gist_id}/comments.
+					// POST /gists/{gist_id}/comments
 					s.handleGistsCreateCommentRequest(args, w, r)
 					return
 				default:
@@ -9871,7 +9871,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							switch string(elem) {
 							case "restore": // -> 54
-								// POST /user/packages/{package_type}/{package_name}/restore.
+								// POST /user/packages/{package_type}/{package_name}/restore
 								s.handlePackagesRestorePackageForAuthenticatedUserRequest(args, w, r)
 								return
 							case "versions": // -> 67
@@ -9903,7 +9903,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch string(elem) {
 									case "restore": // -> 69
-										// POST /user/packages/{package_type}/{package_name}/versions/{package_version_id}/restore.
+										// POST /user/packages/{package_type}/{package_name}/versions/{package_version_id}/restore
 										s.handlePackagesRestorePackageVersionForAuthenticatedUserRequest(args, w, r)
 										return
 									default:
@@ -9922,7 +9922,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 				}
 			case "projects": // -> 79
-				// POST /user/projects.
+				// POST /user/projects
 				s.handleProjectsCreateForAuthenticatedUserRequest(args, w, r)
 				return
 			default:
@@ -10014,7 +10014,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch string(elem) {
 								case "restore": // -> 66
-									// POST /users/{username}/packages/{package_type}/{package_name}/restore.
+									// POST /users/{username}/packages/{package_type}/{package_name}/restore
 									s.handlePackagesRestorePackageForUserRequest(args, w, r)
 									return
 								case "versions": // -> 73
@@ -10046,7 +10046,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 										switch string(elem) {
 										case "restore": // -> 75
-											// POST /users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore.
+											// POST /users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore
 											s.handlePackagesRestorePackageVersionForUserRequest(args, w, r)
 											return
 										default:
@@ -10110,7 +10110,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch string(elem) {
 					case "moves": // -> 84
-						// POST /projects/columns/{column_id}/moves.
+						// POST /projects/columns/{column_id}/moves
 						s.handleProjectsMoveColumnRequest(args, w, r)
 						return
 					default:
@@ -10135,7 +10135,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				switch string(elem) {
 				case "columns": // -> 78
-					// POST /projects/{project_id}/columns.
+					// POST /projects/{project_id}/columns
 					s.handleProjectsCreateColumnRequest(args, w, r)
 					return
 				default:
@@ -10228,7 +10228,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch string(elem) {
 								case "reactions": // -> 106
-									// POST /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions.
+									// POST /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions
 									s.handleReactionsCreateForTeamDiscussionCommentLegacyRequest(args, w, r)
 									return
 								default:
@@ -10237,7 +10237,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 							}
 						case "reactions": // -> 108
-							// POST /teams/{team_id}/discussions/{discussion_number}/reactions.
+							// POST /teams/{team_id}/discussions/{discussion_number}/reactions
 							s.handleReactionsCreateForTeamDiscussionLegacyRequest(args, w, r)
 							return
 						default:
@@ -10351,7 +10351,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										args = make(map[string]string)
 									}
 									args["repository_id"] = string(elem)
-									// PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories/{repository_id}.
+									// PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories/{repository_id}
 									s.handleActionsAddRepoAccessToSelfHostedRunnerGroupInOrgRequest(args, w, r)
 									return
 								}
@@ -10372,7 +10372,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										args = make(map[string]string)
 									}
 									args["runner_id"] = string(elem)
-									// PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/runners/{runner_id}.
+									// PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
 									s.handleActionsAddSelfHostedRunnerToGroupForOrgRequest(args, w, r)
 									return
 								}
@@ -10426,7 +10426,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										args = make(map[string]string)
 									}
 									args["repository_id"] = string(elem)
-									// PUT /orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}.
+									// PUT /orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}
 									s.handleActionsAddSelectedRepoToOrgSecretRequest(args, w, r)
 									return
 								}
@@ -10465,12 +10465,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["repository_id"] = string(elem)
-								// PUT /orgs/{org}/actions/permissions/repositories/{repository_id}.
+								// PUT /orgs/{org}/actions/permissions/repositories/{repository_id}
 								s.handleActionsEnableSelectedRepositoryGithubActionsOrganizationRequest(args, w, r)
 								return
 							}
 						case "selected-actions": // -> 30
-							// PUT /orgs/{org}/actions/permissions/selected-actions.
+							// PUT /orgs/{org}/actions/permissions/selected-actions
 							s.handleActionsSetAllowedActionsOrganizationRequest(args, w, r)
 							return
 						default:
@@ -10499,7 +10499,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args = make(map[string]string)
 						}
 						args["username"] = string(elem)
-						// PUT /orgs/{org}/outside_collaborators/{username}.
+						// PUT /orgs/{org}/outside_collaborators/{username}
 						s.handleOrgsConvertMemberToOutsideCollaboratorRequest(args, w, r)
 						return
 					}
@@ -10520,7 +10520,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args = make(map[string]string)
 						}
 						args["username"] = string(elem)
-						// PUT /orgs/{org}/public_members/{username}.
+						// PUT /orgs/{org}/public_members/{username}
 						s.handleOrgsSetPublicMembershipForAuthenticatedUserRequest(args, w, r)
 						return
 					}
@@ -10569,7 +10569,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["username"] = string(elem)
-								// PUT /orgs/{org}/teams/{team_slug}/memberships/{username}.
+								// PUT /orgs/{org}/teams/{team_slug}/memberships/{username}
 								s.handleTeamsAddOrUpdateMembershipForUserInOrgRequest(args, w, r)
 								return
 							}
@@ -10590,7 +10590,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["project_id"] = string(elem)
-								// PUT /orgs/{org}/teams/{team_slug}/projects/{project_id}.
+								// PUT /orgs/{org}/teams/{team_slug}/projects/{project_id}
 								s.handleTeamsAddOrUpdateProjectPermissionsInOrgRequest(args, w, r)
 								return
 							}
@@ -10639,7 +10639,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											args = make(map[string]string)
 										}
 										args["repo"] = string(elem)
-										// PUT /orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}.
+										// PUT /orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}
 										s.handleTeamsAddOrUpdateRepoPermissionsInOrgRequest(args, w, r)
 										return
 									}
@@ -10731,7 +10731,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["secret_name"] = string(elem)
-								// PUT /repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}.
+								// PUT /repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}
 								s.handleActionsCreateOrUpdateEnvironmentSecretRequest(args, w, r)
 								return
 							}
@@ -10830,7 +10830,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										args = make(map[string]string)
 									}
 									args["secret_name"] = string(elem)
-									// PUT /repos/{owner}/{repo}/actions/secrets/{secret_name}.
+									// PUT /repos/{owner}/{repo}/actions/secrets/{secret_name}
 									s.handleActionsCreateOrUpdateRepoSecretRequest(args, w, r)
 									return
 								}
@@ -10847,7 +10847,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch string(elem) {
 								case "selected-actions": // -> 32
-									// PUT /repos/{owner}/{repo}/actions/permissions/selected-actions.
+									// PUT /repos/{owner}/{repo}/actions/permissions/selected-actions
 									s.handleActionsSetAllowedActionsRepositoryRequest(args, w, r)
 									return
 								default:
@@ -10860,15 +10860,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								return
 							}
 						case "notifications": // -> 34
-							// PUT /repos/{owner}/{repo}/notifications.
+							// PUT /repos/{owner}/{repo}/notifications
 							s.handleActivityMarkRepoNotificationsAsReadRequest(args, w, r)
 							return
 						case "subscription": // -> 35
-							// PUT /repos/{owner}/{repo}/subscription.
+							// PUT /repos/{owner}/{repo}/subscription
 							s.handleActivitySetRepoSubscriptionRequest(args, w, r)
 							return
 						case "interaction-limits": // -> 76
-							// PUT /repos/{owner}/{repo}/interaction-limits.
+							// PUT /repos/{owner}/{repo}/interaction-limits
 							s.handleInteractionsSetRestrictionsForRepoRequest(args, w, r)
 							return
 						case "pulls": // -> 81
@@ -10928,7 +10928,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 										switch string(elem) {
 										case "dismissals": // -> 85
-											// PUT /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/dismissals.
+											// PUT /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/dismissals
 											s.handlePullsDismissReviewRequest(args, w, r)
 											return
 										default:
@@ -10943,19 +10943,19 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 							}
 						case "automated-security-fixes": // -> 86
-							// PUT /repos/{owner}/{repo}/automated-security-fixes.
+							// PUT /repos/{owner}/{repo}/automated-security-fixes
 							s.handleReposEnableAutomatedSecurityFixesRequest(args, w, r)
 							return
 						case "lfs": // -> 87
-							// PUT /repos/{owner}/{repo}/lfs.
+							// PUT /repos/{owner}/{repo}/lfs
 							s.handleReposEnableLfsForRepoRequest(args, w, r)
 							return
 						case "vulnerability-alerts": // -> 88
-							// PUT /repos/{owner}/{repo}/vulnerability-alerts.
+							// PUT /repos/{owner}/{repo}/vulnerability-alerts
 							s.handleReposEnableVulnerabilityAlertsRequest(args, w, r)
 							return
 						case "topics": // -> 89
-							// PUT /repos/{owner}/{repo}/topics.
+							// PUT /repos/{owner}/{repo}/topics
 							s.handleReposReplaceAllTopicsRequest(args, w, r)
 							return
 						case "branches": // -> 90
@@ -10987,7 +10987,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch string(elem) {
 								case "protection": // -> 92
-									// PUT /repos/{owner}/{repo}/branches/{branch}/protection.
+									// PUT /repos/{owner}/{repo}/branches/{branch}/protection
 									s.handleReposUpdateBranchProtectionRequest(args, w, r)
 									return
 								default:
@@ -11046,7 +11046,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch string(elem) {
 					case "subscription": // -> 38
-						// PUT /notifications/threads/{thread_id}/subscription.
+						// PUT /notifications/threads/{thread_id}/subscription
 						s.handleActivitySetThreadSubscriptionRequest(args, w, r)
 						return
 					default:
@@ -11116,7 +11116,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								args = make(map[string]string)
 							}
 							args["repo"] = string(elem)
-							// PUT /user/starred/{owner}/{repo}.
+							// PUT /user/starred/{owner}/{repo}
 							s.handleActivityStarRepoForAuthenticatedUserRequest(args, w, r)
 							return
 						}
@@ -11170,7 +11170,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								args = make(map[string]string)
 							}
 							args["repository_id"] = string(elem)
-							// PUT /user/installations/{installation_id}/repositories/{repository_id}.
+							// PUT /user/installations/{installation_id}/repositories/{repository_id}
 							s.handleAppsAddRepoToInstallationRequest(args, w, r)
 							return
 						}
@@ -11196,7 +11196,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						args = make(map[string]string)
 					}
 					args["username"] = string(elem)
-					// PUT /user/following/{username}.
+					// PUT /user/following/{username}
 					s.handleUsersFollowRequest(args, w, r)
 					return
 				}
@@ -11245,7 +11245,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch string(elem) {
 					case "suspended": // -> 51
-						// PUT /app/installations/{installation_id}/suspended.
+						// PUT /app/installations/{installation_id}/suspended
 						s.handleAppsSuspendInstallationRequest(args, w, r)
 						return
 					default:
@@ -11342,7 +11342,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										args = make(map[string]string)
 									}
 									args["org_id"] = string(elem)
-									// PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations/{org_id}.
+									// PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations/{org_id}
 									s.handleEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(args, w, r)
 									return
 								}
@@ -11363,7 +11363,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										args = make(map[string]string)
 									}
 									args["runner_id"] = string(elem)
-									// PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners/{runner_id}.
+									// PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
 									s.handleEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseRequest(args, w, r)
 									return
 								}
@@ -11401,12 +11401,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["org_id"] = string(elem)
-								// PUT /enterprises/{enterprise}/actions/permissions/organizations/{org_id}.
+								// PUT /enterprises/{enterprise}/actions/permissions/organizations/{org_id}
 								s.handleEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseRequest(args, w, r)
 								return
 							}
 						case "selected-actions": // -> 64
-							// PUT /enterprises/{enterprise}/actions/permissions/selected-actions.
+							// PUT /enterprises/{enterprise}/actions/permissions/selected-actions
 							s.handleEnterpriseAdminSetAllowedActionsEnterpriseRequest(args, w, r)
 							return
 						default:
@@ -11492,7 +11492,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["scim_group_id"] = string(elem)
-								// PUT /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}.
+								// PUT /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
 								s.handleEnterpriseAdminSetInformationForProvisionedEnterpriseGroupRequest(args, w, r)
 								return
 							}
@@ -11513,7 +11513,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["scim_user_id"] = string(elem)
-								// PUT /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}.
+								// PUT /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
 								s.handleEnterpriseAdminSetInformationForProvisionedEnterpriseUserRequest(args, w, r)
 								return
 							}
@@ -11559,7 +11559,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				switch string(elem) {
 				case "star": // -> 75
-					// PUT /gists/{gist_id}/star.
+					// PUT /gists/{gist_id}/star
 					s.handleGistsStarRequest(args, w, r)
 					return
 				default:
@@ -11612,7 +11612,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args = make(map[string]string)
 						}
 						args["username"] = string(elem)
-						// PUT /teams/{team_id}/members/{username}.
+						// PUT /teams/{team_id}/members/{username}
 						s.handleTeamsAddMemberLegacyRequest(args, w, r)
 						return
 					}
@@ -11633,7 +11633,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args = make(map[string]string)
 						}
 						args["username"] = string(elem)
-						// PUT /teams/{team_id}/memberships/{username}.
+						// PUT /teams/{team_id}/memberships/{username}
 						s.handleTeamsAddOrUpdateMembershipForUserLegacyRequest(args, w, r)
 						return
 					}

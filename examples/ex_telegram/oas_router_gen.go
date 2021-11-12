@@ -98,79 +98,79 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		}
 		switch string(elem) {
 		case "answerCallbackQuery": // -> 1
-			// POST /answerCallbackQuery.
+			// POST /answerCallbackQuery
 			s.handleAnswerCallbackQueryPostRequest(args, w, r)
 			return
 		case "answerPreCheckoutQuery": // -> 2
-			// POST /answerPreCheckoutQuery.
+			// POST /answerPreCheckoutQuery
 			s.handleAnswerPreCheckoutQueryPostRequest(args, w, r)
 			return
 		case "answerShippingQuery": // -> 3
-			// POST /answerShippingQuery.
+			// POST /answerShippingQuery
 			s.handleAnswerShippingQueryPostRequest(args, w, r)
 			return
 		case "close": // -> 4
-			// POST /close.
+			// POST /close
 			s.handleClosePostRequest(args, w, r)
 			return
 		case "deleteStickerFromSet": // -> 5
-			// POST /deleteStickerFromSet.
+			// POST /deleteStickerFromSet
 			s.handleDeleteStickerFromSetPostRequest(args, w, r)
 			return
 		case "deleteWebhook": // -> 6
-			// POST /deleteWebhook.
+			// POST /deleteWebhook
 			s.handleDeleteWebhookPostRequest(args, w, r)
 			return
 		case "getFile": // -> 7
-			// POST /getFile.
+			// POST /getFile
 			s.handleGetFilePostRequest(args, w, r)
 			return
 		case "getGameHighScores": // -> 8
-			// POST /getGameHighScores.
+			// POST /getGameHighScores
 			s.handleGetGameHighScoresPostRequest(args, w, r)
 			return
 		case "getMe": // -> 9
-			// POST /getMe.
+			// POST /getMe
 			s.handleGetMePostRequest(args, w, r)
 			return
 		case "getMyCommands": // -> 10
-			// POST /getMyCommands.
+			// POST /getMyCommands
 			s.handleGetMyCommandsPostRequest(args, w, r)
 			return
 		case "getStickerSet": // -> 11
-			// POST /getStickerSet.
+			// POST /getStickerSet
 			s.handleGetStickerSetPostRequest(args, w, r)
 			return
 		case "getUpdates": // -> 12
-			// POST /getUpdates.
+			// POST /getUpdates
 			s.handleGetUpdatesPostRequest(args, w, r)
 			return
 		case "getUserProfilePhotos": // -> 13
-			// POST /getUserProfilePhotos.
+			// POST /getUserProfilePhotos
 			s.handleGetUserProfilePhotosPostRequest(args, w, r)
 			return
 		case "getWebhookInfo": // -> 14
-			// POST /getWebhookInfo.
+			// POST /getWebhookInfo
 			s.handleGetWebhookInfoPostRequest(args, w, r)
 			return
 		case "logOut": // -> 15
-			// POST /logOut.
+			// POST /logOut
 			s.handleLogOutPostRequest(args, w, r)
 			return
 		case "sendGame": // -> 16
-			// POST /sendGame.
+			// POST /sendGame
 			s.handleSendGamePostRequest(args, w, r)
 			return
 		case "sendInvoice": // -> 17
-			// POST /sendInvoice.
+			// POST /sendInvoice
 			s.handleSendInvoicePostRequest(args, w, r)
 			return
 		case "setMyCommands": // -> 18
-			// POST /setMyCommands.
+			// POST /setMyCommands
 			s.handleSetMyCommandsPostRequest(args, w, r)
 			return
 		case "setStickerPositionInSet": // -> 19
-			// POST /setStickerPositionInSet.
+			// POST /setStickerPositionInSet
 			s.handleSetStickerPositionInSetPostRequest(args, w, r)
 			return
 		default:

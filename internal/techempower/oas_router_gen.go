@@ -98,23 +98,23 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		}
 		switch string(elem) {
 		case "cached-worlds": // -> 1
-			// GET /cached-worlds.
+			// GET /cached-worlds
 			s.handleCachingRequest(args, w, r)
 			return
 		case "db": // -> 2
-			// GET /db.
+			// GET /db
 			s.handleDBRequest(args, w, r)
 			return
 		case "json": // -> 3
-			// GET /json.
+			// GET /json
 			s.handleJSONRequest(args, w, r)
 			return
 		case "queries": // -> 4
-			// GET /queries.
+			// GET /queries
 			s.handleQueriesRequest(args, w, r)
 			return
 		case "updates": // -> 5
-			// GET /updates.
+			// GET /updates
 			s.handleUpdatesRequest(args, w, r)
 			return
 		default:

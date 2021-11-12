@@ -98,311 +98,311 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		}
 		switch string(elem) {
 		case "addStickerToSet": // -> 1
-			// POST /addStickerToSet.
+			// POST /addStickerToSet
 			s.handleAddStickerToSetRequest(args, w, r)
 			return
 		case "answerCallbackQuery": // -> 2
-			// POST /answerCallbackQuery.
+			// POST /answerCallbackQuery
 			s.handleAnswerCallbackQueryRequest(args, w, r)
 			return
 		case "answerInlineQuery": // -> 3
-			// POST /answerInlineQuery.
+			// POST /answerInlineQuery
 			s.handleAnswerInlineQueryRequest(args, w, r)
 			return
 		case "answerPreCheckoutQuery": // -> 4
-			// POST /answerPreCheckoutQuery.
+			// POST /answerPreCheckoutQuery
 			s.handleAnswerPreCheckoutQueryRequest(args, w, r)
 			return
 		case "answerShippingQuery": // -> 5
-			// POST /answerShippingQuery.
+			// POST /answerShippingQuery
 			s.handleAnswerShippingQueryRequest(args, w, r)
 			return
 		case "approveChatJoinRequest": // -> 6
-			// POST /approveChatJoinRequest.
+			// POST /approveChatJoinRequest
 			s.handleApproveChatJoinRequestRequest(args, w, r)
 			return
 		case "banChatMember": // -> 7
-			// POST /banChatMember.
+			// POST /banChatMember
 			s.handleBanChatMemberRequest(args, w, r)
 			return
 		case "copyMessage": // -> 8
-			// POST /copyMessage.
+			// POST /copyMessage
 			s.handleCopyMessageRequest(args, w, r)
 			return
 		case "createChatInviteLink": // -> 9
-			// POST /createChatInviteLink.
+			// POST /createChatInviteLink
 			s.handleCreateChatInviteLinkRequest(args, w, r)
 			return
 		case "createNewStickerSet": // -> 10
-			// POST /createNewStickerSet.
+			// POST /createNewStickerSet
 			s.handleCreateNewStickerSetRequest(args, w, r)
 			return
 		case "declineChatJoinRequest": // -> 11
-			// POST /declineChatJoinRequest.
+			// POST /declineChatJoinRequest
 			s.handleDeclineChatJoinRequestRequest(args, w, r)
 			return
 		case "deleteChatPhoto": // -> 12
-			// POST /deleteChatPhoto.
+			// POST /deleteChatPhoto
 			s.handleDeleteChatPhotoRequest(args, w, r)
 			return
 		case "deleteChatStickerSet": // -> 13
-			// POST /deleteChatStickerSet.
+			// POST /deleteChatStickerSet
 			s.handleDeleteChatStickerSetRequest(args, w, r)
 			return
 		case "deleteMessage": // -> 14
-			// POST /deleteMessage.
+			// POST /deleteMessage
 			s.handleDeleteMessageRequest(args, w, r)
 			return
 		case "deleteMyCommands": // -> 15
-			// POST /deleteMyCommands.
+			// POST /deleteMyCommands
 			s.handleDeleteMyCommandsRequest(args, w, r)
 			return
 		case "deleteStickerFromSet": // -> 16
-			// POST /deleteStickerFromSet.
+			// POST /deleteStickerFromSet
 			s.handleDeleteStickerFromSetRequest(args, w, r)
 			return
 		case "deleteWebhook": // -> 17
-			// POST /deleteWebhook.
+			// POST /deleteWebhook
 			s.handleDeleteWebhookRequest(args, w, r)
 			return
 		case "editChatInviteLink": // -> 18
-			// POST /editChatInviteLink.
+			// POST /editChatInviteLink
 			s.handleEditChatInviteLinkRequest(args, w, r)
 			return
 		case "editMessageCaption": // -> 19
-			// POST /editMessageCaption.
+			// POST /editMessageCaption
 			s.handleEditMessageCaptionRequest(args, w, r)
 			return
 		case "editMessageLiveLocation": // -> 20
-			// POST /editMessageLiveLocation.
+			// POST /editMessageLiveLocation
 			s.handleEditMessageLiveLocationRequest(args, w, r)
 			return
 		case "editMessageMedia": // -> 21
-			// POST /editMessageMedia.
+			// POST /editMessageMedia
 			s.handleEditMessageMediaRequest(args, w, r)
 			return
 		case "editMessageReplyMarkup": // -> 22
-			// POST /editMessageReplyMarkup.
+			// POST /editMessageReplyMarkup
 			s.handleEditMessageReplyMarkupRequest(args, w, r)
 			return
 		case "editMessageText": // -> 23
-			// POST /editMessageText.
+			// POST /editMessageText
 			s.handleEditMessageTextRequest(args, w, r)
 			return
 		case "exportChatInviteLink": // -> 24
-			// POST /exportChatInviteLink.
+			// POST /exportChatInviteLink
 			s.handleExportChatInviteLinkRequest(args, w, r)
 			return
 		case "forwardMessage": // -> 25
-			// POST /forwardMessage.
+			// POST /forwardMessage
 			s.handleForwardMessageRequest(args, w, r)
 			return
 		case "getChat": // -> 26
-			// POST /getChat.
+			// POST /getChat
 			s.handleGetChatRequest(args, w, r)
 			return
 		case "getChatAdministrators": // -> 27
-			// POST /getChatAdministrators.
+			// POST /getChatAdministrators
 			s.handleGetChatAdministratorsRequest(args, w, r)
 			return
 		case "getChatMember": // -> 28
-			// POST /getChatMember.
+			// POST /getChatMember
 			s.handleGetChatMemberRequest(args, w, r)
 			return
 		case "getChatMemberCount": // -> 29
-			// POST /getChatMemberCount.
+			// POST /getChatMemberCount
 			s.handleGetChatMemberCountRequest(args, w, r)
 			return
 		case "getFile": // -> 30
-			// POST /getFile.
+			// POST /getFile
 			s.handleGetFileRequest(args, w, r)
 			return
 		case "getGameHighScores": // -> 31
-			// POST /getGameHighScores.
+			// POST /getGameHighScores
 			s.handleGetGameHighScoresRequest(args, w, r)
 			return
 		case "getMe": // -> 32
-			// POST /getMe.
+			// POST /getMe
 			s.handleGetMeRequest(args, w, r)
 			return
 		case "getMyCommands": // -> 33
-			// POST /getMyCommands.
+			// POST /getMyCommands
 			s.handleGetMyCommandsRequest(args, w, r)
 			return
 		case "getStickerSet": // -> 34
-			// POST /getStickerSet.
+			// POST /getStickerSet
 			s.handleGetStickerSetRequest(args, w, r)
 			return
 		case "getUpdates": // -> 35
-			// POST /getUpdates.
+			// POST /getUpdates
 			s.handleGetUpdatesRequest(args, w, r)
 			return
 		case "getUserProfilePhotos": // -> 36
-			// POST /getUserProfilePhotos.
+			// POST /getUserProfilePhotos
 			s.handleGetUserProfilePhotosRequest(args, w, r)
 			return
 		case "leaveChat": // -> 37
-			// POST /leaveChat.
+			// POST /leaveChat
 			s.handleLeaveChatRequest(args, w, r)
 			return
 		case "pinChatMessage": // -> 38
-			// POST /pinChatMessage.
+			// POST /pinChatMessage
 			s.handlePinChatMessageRequest(args, w, r)
 			return
 		case "promoteChatMember": // -> 39
-			// POST /promoteChatMember.
+			// POST /promoteChatMember
 			s.handlePromoteChatMemberRequest(args, w, r)
 			return
 		case "restrictChatMember": // -> 40
-			// POST /restrictChatMember.
+			// POST /restrictChatMember
 			s.handleRestrictChatMemberRequest(args, w, r)
 			return
 		case "revokeChatInviteLink": // -> 41
-			// POST /revokeChatInviteLink.
+			// POST /revokeChatInviteLink
 			s.handleRevokeChatInviteLinkRequest(args, w, r)
 			return
 		case "sendAnimation": // -> 42
-			// POST /sendAnimation.
+			// POST /sendAnimation
 			s.handleSendAnimationRequest(args, w, r)
 			return
 		case "sendAudio": // -> 43
-			// POST /sendAudio.
+			// POST /sendAudio
 			s.handleSendAudioRequest(args, w, r)
 			return
 		case "sendChatAction": // -> 44
-			// POST /sendChatAction.
+			// POST /sendChatAction
 			s.handleSendChatActionRequest(args, w, r)
 			return
 		case "sendContact": // -> 45
-			// POST /sendContact.
+			// POST /sendContact
 			s.handleSendContactRequest(args, w, r)
 			return
 		case "sendDice": // -> 46
-			// POST /sendDice.
+			// POST /sendDice
 			s.handleSendDiceRequest(args, w, r)
 			return
 		case "sendDocument": // -> 47
-			// POST /sendDocument.
+			// POST /sendDocument
 			s.handleSendDocumentRequest(args, w, r)
 			return
 		case "sendGame": // -> 48
-			// POST /sendGame.
+			// POST /sendGame
 			s.handleSendGameRequest(args, w, r)
 			return
 		case "sendInvoice": // -> 49
-			// POST /sendInvoice.
+			// POST /sendInvoice
 			s.handleSendInvoiceRequest(args, w, r)
 			return
 		case "sendLocation": // -> 50
-			// POST /sendLocation.
+			// POST /sendLocation
 			s.handleSendLocationRequest(args, w, r)
 			return
 		case "sendMediaGroup": // -> 51
-			// POST /sendMediaGroup.
+			// POST /sendMediaGroup
 			s.handleSendMediaGroupRequest(args, w, r)
 			return
 		case "sendMessage": // -> 52
-			// POST /sendMessage.
+			// POST /sendMessage
 			s.handleSendMessageRequest(args, w, r)
 			return
 		case "sendPhoto": // -> 53
-			// POST /sendPhoto.
+			// POST /sendPhoto
 			s.handleSendPhotoRequest(args, w, r)
 			return
 		case "sendPoll": // -> 54
-			// POST /sendPoll.
+			// POST /sendPoll
 			s.handleSendPollRequest(args, w, r)
 			return
 		case "sendSticker": // -> 55
-			// POST /sendSticker.
+			// POST /sendSticker
 			s.handleSendStickerRequest(args, w, r)
 			return
 		case "sendVenue": // -> 56
-			// POST /sendVenue.
+			// POST /sendVenue
 			s.handleSendVenueRequest(args, w, r)
 			return
 		case "sendVideo": // -> 57
-			// POST /sendVideo.
+			// POST /sendVideo
 			s.handleSendVideoRequest(args, w, r)
 			return
 		case "sendVideoNote": // -> 58
-			// POST /sendVideoNote.
+			// POST /sendVideoNote
 			s.handleSendVideoNoteRequest(args, w, r)
 			return
 		case "sendVoice": // -> 59
-			// POST /sendVoice.
+			// POST /sendVoice
 			s.handleSendVoiceRequest(args, w, r)
 			return
 		case "setChatAdministratorCustomTitle": // -> 60
-			// POST /setChatAdministratorCustomTitle.
+			// POST /setChatAdministratorCustomTitle
 			s.handleSetChatAdministratorCustomTitleRequest(args, w, r)
 			return
 		case "setChatDescription": // -> 61
-			// POST /setChatDescription.
+			// POST /setChatDescription
 			s.handleSetChatDescriptionRequest(args, w, r)
 			return
 		case "setChatPermissions": // -> 62
-			// POST /setChatPermissions.
+			// POST /setChatPermissions
 			s.handleSetChatPermissionsRequest(args, w, r)
 			return
 		case "setChatPhoto": // -> 63
-			// POST /setChatPhoto.
+			// POST /setChatPhoto
 			s.handleSetChatPhotoRequest(args, w, r)
 			return
 		case "setChatStickerSet": // -> 64
-			// POST /setChatStickerSet.
+			// POST /setChatStickerSet
 			s.handleSetChatStickerSetRequest(args, w, r)
 			return
 		case "setChatTitle": // -> 65
-			// POST /setChatTitle.
+			// POST /setChatTitle
 			s.handleSetChatTitleRequest(args, w, r)
 			return
 		case "setGameScore": // -> 66
-			// POST /setGameScore.
+			// POST /setGameScore
 			s.handleSetGameScoreRequest(args, w, r)
 			return
 		case "setMyCommands": // -> 67
-			// POST /setMyCommands.
+			// POST /setMyCommands
 			s.handleSetMyCommandsRequest(args, w, r)
 			return
 		case "setPassportDataErrors": // -> 68
-			// POST /setPassportDataErrors.
+			// POST /setPassportDataErrors
 			s.handleSetPassportDataErrorsRequest(args, w, r)
 			return
 		case "setStickerPositionInSet": // -> 69
-			// POST /setStickerPositionInSet.
+			// POST /setStickerPositionInSet
 			s.handleSetStickerPositionInSetRequest(args, w, r)
 			return
 		case "setStickerSetThumb": // -> 70
-			// POST /setStickerSetThumb.
+			// POST /setStickerSetThumb
 			s.handleSetStickerSetThumbRequest(args, w, r)
 			return
 		case "setWebhook": // -> 71
-			// POST /setWebhook.
+			// POST /setWebhook
 			s.handleSetWebhookRequest(args, w, r)
 			return
 		case "stopMessageLiveLocation": // -> 72
-			// POST /stopMessageLiveLocation.
+			// POST /stopMessageLiveLocation
 			s.handleStopMessageLiveLocationRequest(args, w, r)
 			return
 		case "stopPoll": // -> 73
-			// POST /stopPoll.
+			// POST /stopPoll
 			s.handleStopPollRequest(args, w, r)
 			return
 		case "unbanChatMember": // -> 74
-			// POST /unbanChatMember.
+			// POST /unbanChatMember
 			s.handleUnbanChatMemberRequest(args, w, r)
 			return
 		case "unpinAllChatMessages": // -> 75
-			// POST /unpinAllChatMessages.
+			// POST /unpinAllChatMessages
 			s.handleUnpinAllChatMessagesRequest(args, w, r)
 			return
 		case "unpinChatMessage": // -> 76
-			// POST /unpinChatMessage.
+			// POST /unpinChatMessage
 			s.handleUnpinChatMessageRequest(args, w, r)
 			return
 		case "uploadStickerFile": // -> 77
-			// POST /uploadStickerFile.
+			// POST /uploadStickerFile
 			s.handleUploadStickerFileRequest(args, w, r)
 			return
 		default:

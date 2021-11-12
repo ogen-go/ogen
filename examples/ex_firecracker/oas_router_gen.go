@@ -110,7 +110,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 			switch string(elem) {
 			case "statistics": // -> 2
-				// GET /balloon/statistics.
+				// GET /balloon/statistics
 				s.handleDescribeBalloonStatsRequest(args, w, r)
 				return
 			default:
@@ -119,7 +119,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				return
 			}
 		case "": // -> 3
-			// GET /.
+			// GET /
 			s.handleDescribeInstanceRequest(args, w, r)
 			return
 		case "vm": // -> 4
@@ -135,7 +135,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 			switch string(elem) {
 			case "config": // -> 5
-				// GET /vm/config.
+				// GET /vm/config
 				s.handleGetExportVmConfigRequest(args, w, r)
 				return
 			default:
@@ -143,11 +143,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				return
 			}
 		case "machine-config": // -> 6
-			// GET /machine-config.
+			// GET /machine-config
 			s.handleGetMachineConfigurationRequest(args, w, r)
 			return
 		case "mmds": // -> 7
-			// GET /mmds.
+			// GET /mmds
 			s.handleMmdsGetRequest(args, w, r)
 			return
 		default:
@@ -167,7 +167,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		}
 		switch string(elem) {
 		case "mmds": // -> 1
-			// PATCH /mmds.
+			// PATCH /mmds
 			s.handleMmdsPatchRequest(args, w, r)
 			return
 		case "balloon": // -> 2
@@ -183,7 +183,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 			switch string(elem) {
 			case "statistics": // -> 3
-				// PATCH /balloon/statistics.
+				// PATCH /balloon/statistics
 				s.handlePatchBalloonStatsIntervalRequest(args, w, r)
 				return
 			default:
@@ -208,7 +208,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					args = make(map[string]string)
 				}
 				args["drive_id"] = string(elem)
-				// PATCH /drives/{drive_id}.
+				// PATCH /drives/{drive_id}
 				s.handlePatchGuestDriveByIDRequest(args, w, r)
 				return
 			}
@@ -229,16 +229,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					args = make(map[string]string)
 				}
 				args["iface_id"] = string(elem)
-				// PATCH /network-interfaces/{iface_id}.
+				// PATCH /network-interfaces/{iface_id}
 				s.handlePatchGuestNetworkInterfaceByIDRequest(args, w, r)
 				return
 			}
 		case "machine-config": // -> 8
-			// PATCH /machine-config.
+			// PATCH /machine-config
 			s.handlePatchMachineConfigurationRequest(args, w, r)
 			return
 		case "vm": // -> 9
-			// PATCH /vm.
+			// PATCH /vm
 			s.handlePatchVmRequest(args, w, r)
 			return
 		default:
@@ -270,11 +270,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 			switch string(elem) {
 			case "create": // -> 2
-				// PUT /snapshot/create.
+				// PUT /snapshot/create
 				s.handleCreateSnapshotRequest(args, w, r)
 				return
 			case "load": // -> 4
-				// PUT /snapshot/load.
+				// PUT /snapshot/load
 				s.handleLoadSnapshotRequest(args, w, r)
 				return
 			default:
@@ -282,7 +282,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				return
 			}
 		case "actions": // -> 3
-			// PUT /actions.
+			// PUT /actions
 			s.handleCreateSyncActionRequest(args, w, r)
 			return
 		case "mmds": // -> 5
@@ -298,7 +298,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 			switch string(elem) {
 			case "config": // -> 6
-				// PUT /mmds/config.
+				// PUT /mmds/config
 				s.handleMmdsConfigPutRequest(args, w, r)
 				return
 			default:
@@ -307,11 +307,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				return
 			}
 		case "balloon": // -> 7
-			// PUT /balloon.
+			// PUT /balloon
 			s.handlePutBalloonRequest(args, w, r)
 			return
 		case "boot-source": // -> 8
-			// PUT /boot-source.
+			// PUT /boot-source
 			s.handlePutGuestBootSourceRequest(args, w, r)
 			return
 		case "drives": // -> 9
@@ -331,7 +331,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					args = make(map[string]string)
 				}
 				args["drive_id"] = string(elem)
-				// PUT /drives/{drive_id}.
+				// PUT /drives/{drive_id}
 				s.handlePutGuestDriveByIDRequest(args, w, r)
 				return
 			}
@@ -352,24 +352,24 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					args = make(map[string]string)
 				}
 				args["iface_id"] = string(elem)
-				// PUT /network-interfaces/{iface_id}.
+				// PUT /network-interfaces/{iface_id}
 				s.handlePutGuestNetworkInterfaceByIDRequest(args, w, r)
 				return
 			}
 		case "vsock": // -> 13
-			// PUT /vsock.
+			// PUT /vsock
 			s.handlePutGuestVsockRequest(args, w, r)
 			return
 		case "logger": // -> 14
-			// PUT /logger.
+			// PUT /logger
 			s.handlePutLoggerRequest(args, w, r)
 			return
 		case "machine-config": // -> 15
-			// PUT /machine-config.
+			// PUT /machine-config
 			s.handlePutMachineConfigurationRequest(args, w, r)
 			return
 		case "metrics": // -> 16
-			// PUT /metrics.
+			// PUT /metrics
 			s.handlePutMetricsRequest(args, w, r)
 			return
 		default:

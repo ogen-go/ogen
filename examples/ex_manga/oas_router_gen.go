@@ -126,7 +126,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						args = make(map[string]string)
 					}
 					args["book_id"] = string(elem)
-					// GET /api/gallery/{book_id}.
+					// GET /api/gallery/{book_id}
 					s.handleGetBookRequest(args, w, r)
 					return
 				}
@@ -143,11 +143,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				switch string(elem) {
 				case "search": // -> 15
-					// GET /api/galleries/search.
+					// GET /api/galleries/search
 					s.handleSearchRequest(args, w, r)
 					return
 				case "tagged": // -> 16
-					// GET /api/galleries/tagged.
+					// GET /api/galleries/tagged
 					s.handleSearchByTagIDRequest(args, w, r)
 					return
 				default:
@@ -203,7 +203,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args = make(map[string]string)
 						}
 						args["format"] = string(elem)
-						// GET /galleries/{media_id}/cover.{format}.
+						// GET /galleries/{media_id}/cover.{format}
 						s.handleGetPageCoverImageRequest(args, w, r)
 						return
 					}
@@ -252,7 +252,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["format"] = string(elem)
-								// GET /galleries/{media_id}/{page}.{format}.
+								// GET /galleries/{media_id}/{page}.{format}
 								s.handleGetPageImageRequest(args, w, r)
 								return
 							}
@@ -273,7 +273,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["format"] = string(elem)
-								// GET /galleries/{media_id}/{page}t.{format}.
+								// GET /galleries/{media_id}/{page}t.{format}
 								s.handleGetPageThumbnailImageRequest(args, w, r)
 								return
 							}

@@ -98,11 +98,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		}
 		switch string(elem) {
 		case "error": // -> 1
-			// GET /error.
+			// GET /error
 			s.handleErrorGetRequest(args, w, r)
 			return
 		case "foobar": // -> 2
-			// GET /foobar.
+			// GET /foobar
 			s.handleFoobarGetRequest(args, w, r)
 			return
 		case "test": // -> 3
@@ -118,7 +118,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 			switch string(elem) {
 			case "header": // -> 4
-				// GET /test/header.
+				// GET /test/header
 				s.handleGetHeaderRequest(args, w, r)
 				return
 			default:
@@ -154,12 +154,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						args = make(map[string]string)
 					}
 					args["id"] = string(elem)
-					// GET /pet/friendNames/{id}.
+					// GET /pet/friendNames/{id}
 					s.handlePetFriendsNamesByIDRequest(args, w, r)
 					return
 				}
 			case "avatar": // -> 8
-				// GET /pet/avatar.
+				// GET /pet/avatar
 				s.handlePetGetAvatarByIDRequest(args, w, r)
 				return
 			case "name": // -> 10
@@ -179,7 +179,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						args = make(map[string]string)
 					}
 					args["id"] = string(elem)
-					// GET /pet/name/{id}.
+					// GET /pet/name/{id}
 					s.handlePetNameByIDRequest(args, w, r)
 					return
 				}
@@ -188,7 +188,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					args = make(map[string]string)
 				}
 				args["name"] = string(elem)
-				// GET /pet/{name}.
+				// GET /pet/{name}
 				s.handlePetGetByNameRequest(args, w, r)
 				return
 			}
@@ -209,7 +209,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		}
 		switch string(elem) {
 		case "foobar": // -> 1
-			// POST /foobar.
+			// POST /foobar
 			s.handleFoobarPostRequest(args, w, r)
 			return
 		case "pet": // -> 2
@@ -225,15 +225,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 			switch string(elem) {
 			case "updateNameAlias": // -> 3
-				// POST /pet/updateNameAlias.
+				// POST /pet/updateNameAlias
 				s.handlePetUpdateNameAliasPostRequest(args, w, r)
 				return
 			case "updateName": // -> 4
-				// POST /pet/updateName.
+				// POST /pet/updateName
 				s.handlePetUpdateNamePostRequest(args, w, r)
 				return
 			case "avatar": // -> 5
-				// POST /pet/avatar.
+				// POST /pet/avatar
 				s.handlePetUploadAvatarByIDRequest(args, w, r)
 				return
 			default:
@@ -258,7 +258,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		}
 		switch string(elem) {
 		case "foobar": // -> 1
-			// PUT /foobar.
+			// PUT /foobar
 			s.handleFoobarPutRequest(args, w, r)
 			return
 		default:
