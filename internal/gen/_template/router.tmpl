@@ -2,15 +2,6 @@
 {{ define "router" }}
 {{ template "header" $ }}
 
-type routeArg struct {
-
-}
-
-type routeMatch struct {
-	Operation string
-	Args      map[string]string
-}
-
 func (s *Server) notFound(w http.ResponseWriter, r *http.Request) {
 	http.NotFound(w, r)
 }
@@ -24,11 +15,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	args := make(map[string]string)
-	_ = args
-
-	var offset, idx int
-	var head []byte
+	var (
+		idx    int               // index of next slash
+		elem   []byte            // current element, without slashes
+		args   map[string]string // lazily initialized
+	)
 
 	// Static code generated router with unwrapped path search.
 	switch r.Method {
@@ -45,36 +36,70 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 {{ end }}
 
 {{ define "route_edge" }}
-{{- /*gotype: github.com/ogen-go/ogen/internal/gen.RouteEge*/ -}}
-{{- if $.Operation }}
-	s.Handle{{ $.Operation }}Request(w, r)
-	return
-{{- else }}
-// Edge: {{ $.ID }}, path: {{ printf "%q" $.Path }}.
-if len(p) < offset {
-	s.notFound(w, r)
-	return
-}
-p = p[offset:]
-if idx = bytes.IndexByte(p[offset+1:], '/'); idx < 0 {
-	offset = len(p)
-} else {
-	offset += idx + 1
-}
-head = p[:offset]
-switch string(head) {
-{{- range $next := $.Next }}
-case "{{ $next.Path }}": // {{ $next.ID }}
-	{{- template "route_edge" $next }}
-{{- end }}
-default:
-	{{- if $.Operation }}
-	s.Handle{{ $.Operation }}Request(w, r)
-	return
+	{{- /*gotype: github.com/ogen-go/ogen/internal/gen.RouteEge*/ -}}
+	{{- if and ($.Operation) (not $.HasNext) }}
+		// {{ $.Operation.Spec.HTTPMethod }} {{ $.Operation.Spec.Path }}.
+		s.handle{{ $.Operation.Name }}Request(args, w, r)
+		return
 	{{- else }}
-	s.notFound(w, r)
-	return
+		{{- if and (not $.ID) (not $.Path) }}
+		// Root edge.
+        {{- else }}
+		// Edge: {{ $.ID }}, path: {{ printf "%q" $.Path }}.
+		{{- end }}
+		fmt.Printf("PATH %q\n", p)
+		if len(p) > 1 && p[0] == '/' {
+			p = p[1:]
+		}
+		if idx = bytes.IndexByte(p[:], '/'); idx < 0 { // looking for next element
+			elem, p = p, p[:0] // slash not found, using full path
+		} else {
+			elem = p[:idx] // slash found, element is path until slash
+			p = p[idx:]
+		}
+		fmt.Printf("ELEM %q\n", elem)
+		{{- if $.HasNext }}
+			switch string(elem) {
+			{{- range $next := $.Case.Static }}
+				case "{{ $next.Path }}": // -> {{ $next.ID }}
+					{{- template "route_edge" $next }}
+			{{- end }}
+			{{- if $.Case.Variable }}
+				{{- $v := $.Case.Variable }}
+				default:
+					// {{ $v.Operation.Spec.HTTPMethod }} {{ $v.Operation.Spec.Path }}.
+					if args == nil {
+						args = make(map[string]string)
+					}
+					args["{{ $v.Param.Spec.Name }}"] = string(elem)
+					s.handle{{ $v.Operation.Name }}Request(args, w, r)
+					return
+				}
+			{{- else }}
+				default:
+					{{- if $.Operation }}
+						// {{ $.Operation.Spec.HTTPMethod }} {{ $.Operation.Spec.Path }}.
+						s.handle{{ $.Operation.Name }}Request(args, w, r)
+						return
+					{{- else }}
+						s.notFound(w, r)
+						return
+					{{- end }}
+				}
+			{{- end }}
+		{{- else }}
+			{{- if not $.Operation }}
+				{{ errorf "leaf without operation: %+v" $ }}
+			{{- end }}
+			{{- if $.Param }}
+				if args == nil {
+					args = make(map[string]string)
+				}
+				args["{{ $.Param.Spec.Name }}"] = string(elem)
+			{{- end }}
+			// {{ $.Operation.Spec.HTTPMethod }} {{ $.Operation.Spec.Path }}.
+			s.handle{{ $.Operation.Name }}Request(args, w, r)
+			return
+		{{- end }}
 	{{- end }}
-}
-{{- end }}
 {{- end }}

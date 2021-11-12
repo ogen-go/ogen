@@ -33,16 +33,16 @@ func printEdge(ident int, e *RouteEge) {
 	prefix := strings.Repeat(" ", ident)
 	p := e.Path
 	if e.Param != nil {
-		p = fmt.Sprintf(":%s", e.Param.Name)
+		p = fmt.Sprintf(":%s", e.Param.Spec.Name)
 	}
 
 	fmt.Printf("%s[%02d] /%s", prefix, e.ID, p)
 	if len(e.Next) == 0 {
-		fmt.Printf(" %s\n", e.Operation)
+		fmt.Printf(" %s\n", e.Operation.Name)
 		return
 	}
-	if e.Operation != "" {
-		fmt.Printf("/ %s\n", e.Operation)
+	if e.Operation != nil {
+		fmt.Printf("/ %s\n", e.Operation.Name)
 	} else {
 		fmt.Printf("/\n")
 	}
@@ -54,14 +54,38 @@ func printEdge(ident int, e *RouteEge) {
 type RouteEge struct {
 	ID        int
 	Path      string // path part
-	Operation string // operation name if not blank
 	Param     *ir.Parameter
 	Next      []*RouteEge
+	Operation *ir.Operation
+}
+
+type RouteCase struct {
+	Static   []*RouteEge
+	Variable *RouteEge
+}
+
+func (e RouteEge) Case() RouteCase {
+	var c RouteCase
+	for _, edge := range e.Next {
+		if edge.Param != nil {
+			if c.Variable != nil {
+				panic("multiple params in same path")
+			}
+			c.Variable = edge
+			continue
+		}
+		c.Static = append(c.Static, edge)
+	}
+	return c
+}
+
+func (e RouteEge) HasNext() bool {
+	return len(e.Next) > 0
 }
 
 type Route struct {
 	Method    string         // GET, POST, DELETE
-	Operation string         // getUserInfo
+	Operation *ir.Operation  // getUserInfo
 	Path      []*ir.PathPart // /api/v1/user/{name}/info
 }
 
@@ -99,16 +123,15 @@ func (r *Router) Graph() error {
 				continue
 			}
 
+			fmt.Printf("%25s <- %s\n", route.Operation.Name, route.Path)
 		Path:
 			for _, elem := range route.Path {
-				raw := strings.ReplaceAll(elem.Raw, "/", "")
-
 				edges := m.Edges
 				if edge != nil {
 					edges = edge.Next
 				}
 				for _, next := range edges {
-					if next.Path == raw {
+					if next.Path == elem.Raw {
 						edge = next
 						continue Path
 					}
@@ -118,7 +141,7 @@ func (r *Router) Graph() error {
 					id++
 					edge = &RouteEge{
 						ID:    id,
-						Path:  raw,
+						Path:  elem.Raw,
 						Param: elem.Param,
 					}
 					m.Edges = append(m.Edges, edge)
@@ -128,7 +151,7 @@ func (r *Router) Graph() error {
 				id++
 				nextEdge := &RouteEge{
 					ID:    id,
-					Path:  raw,
+					Path:  elem.Raw,
 					Param: elem.Param,
 				}
 				edge.Next = append(edge.Next, nextEdge)
@@ -145,10 +168,30 @@ func (r *Router) Graph() error {
 
 func (g *Generator) route() error {
 	for _, op := range g.operations {
+		var parts []*ir.PathPart
+		for _, p := range op.PathParts {
+			if p.Param != nil {
+				parts = append(parts, p)
+				continue
+			}
+
+			// Normalize and re-split by slash.
+			raw := p.Raw
+			raw = strings.TrimPrefix(raw, "/")
+			raw = strings.TrimSuffix(raw, "/")
+			elems := strings.Split(raw, "/")
+
+			for _, e := range elems {
+				parts = append(parts, &ir.PathPart{
+					Raw:   e,
+					Param: p.Param,
+				})
+			}
+		}
 		g.router.Register(Route{
 			Method:    op.Spec.HTTPMethod,
-			Path:      op.PathParts,
-			Operation: op.Name,
+			Path:      parts,
+			Operation: op,
 		})
 	}
 	if err := g.router.Graph(); err != nil {

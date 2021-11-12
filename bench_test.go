@@ -215,7 +215,7 @@ func BenchmarkIntegration(b *testing.B) {
 		// https://github.com/TechEmpower/FrameworkBenchmarks/wiki/Project-Information-Framework-Tests-Overview#test-types
 
 		srv := techEmpowerServer{}
-		s := httptest.NewServer(techempower.NewServer(srv).DefaultMux())
+		s := httptest.NewServer(techempower.NewServer(srv))
 		defer s.Close()
 
 		httpClient := &http.Client{
@@ -377,3 +377,15 @@ func BenchmarkJSON(b *testing.B) {
 		})
 	})
 }
+
+type noopWriter struct{}
+
+func (n *noopWriter) Header() http.Header {
+	return http.Header{}
+}
+
+func (n *noopWriter) Write(bytes []byte) (int, error) {
+	return len(bytes), nil
+}
+
+func (n *noopWriter) WriteHeader(statusCode int) {}
