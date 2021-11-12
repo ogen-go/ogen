@@ -163,23 +163,19 @@ func (s *Error) ReadJSON(r *json.Reader) error {
 }
 ```
 
-# Draft Roadmap
+# Roadmap
 
-* Client-side validation
-  * Validate request before sending
-  * Export Validate
-  * Validate float values (NaN or Inf)
-* Handle unexpected json keys
-* Convenient global errors schema (e.g. 500, 404)
 * Security (e.g. Bearer token)
-* Separate JSON Schema generator
-* AnyOf
+* Validate float values (NaN or Inf)
+* Convenient global errors schema (e.g. 500, 404)
 * Webhook support
-* Files support (with streaming, like io.Reader/Writer)
+* AnyOf
+* Full validation support
 * Client retries
   * Retry strategy (e.g. exponential backoff)
   * Configuring via `x-ogen-*` annotations
   * Configuring via generation config
+* Separate JSON Schema generator
 * Tool for OAS validation for ogen compatibility
   * Multiple error reporting with references
     * JSON path
@@ -190,7 +186,6 @@ func (s *Error) ReadJSON(r *json.Reader) error {
   * Target go1.18
   * Use Optional[T]
   * Reduce generated code via generics
-* Full validation support
 * Extreme optimizations
   * Code generation for [regex](https://github.com/CAFxX/regexp2go)
   * Streaming/iterator API support
