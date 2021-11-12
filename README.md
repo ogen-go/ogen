@@ -166,7 +166,6 @@ func (s *Error) ReadJSON(r *json.Reader) error {
 # Roadmap
 
 * Security (e.g. Bearer token)
-* Validate float values (NaN or Inf)
 * Convenient global errors schema (e.g. 500, 404)
 * Webhook support
 * AnyOf

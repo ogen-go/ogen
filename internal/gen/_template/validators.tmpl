@@ -9,7 +9,7 @@
 			return errors.New("nil is invalid value")
 		}
 	{{- end }}
-	{{ if and ($t.IsGeneric) ($t.GenericOf.NeedValidation) }}
+	{{- if and ($t.IsGeneric) ($t.GenericOf.NeedValidation) }}
         {{- $validated = true }}
         {{- if $t.GenericVariant.Optional }}
 			if {{ $.Var }}.Set {
@@ -23,7 +23,7 @@
         {{- else }}
             {{- template "validate" elem $t.GenericOf (printf "%s.Value" $.Var) }}
         {{- end }}
-	{{ end }}
+	{{- end }}
 	{{- if and ($t.IsPointer) ($t.PointerTo.NeedValidation) -}}
         {{- $validated = true }}
 		if {{ $.Var }} == nil {
@@ -104,6 +104,12 @@
 			return errors.Wrap(err, "int")
 		}
 	{{- end }}
+    {{- if $t.IsFloat }}
+    {{- $validated = true }}
+		if f := float64({{ $.Var }}); math.IsInf(f, 0) || math.IsNaN(f) {
+			return errors.Errorf("%f float value is invalid", f)
+		}
+    {{- end }}
     {{- end }}
 	{{- if not $validated }}
 	{{ errorf "validation expected %s" $t }}

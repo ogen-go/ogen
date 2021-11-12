@@ -1,6 +1,8 @@
 package ir
 
-import "github.com/ogen-go/ogen/validate"
+import (
+	"github.com/ogen-go/ogen/validate"
+)
 
 type Validators struct {
 	String validate.String
@@ -25,6 +27,10 @@ func (t *Type) needValidation(path *walkpath) (result bool) {
 
 	switch t.Kind {
 	case KindPrimitive:
+		if t.IsFloat() {
+			// NaN, Inf.
+			return true
+		}
 		if t.IsNumeric() && t.Validators.Int.Set() {
 			return true
 		}
