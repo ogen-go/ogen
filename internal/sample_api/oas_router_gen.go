@@ -66,6 +66,23 @@ func (s *Server) notFound(w http.ResponseWriter, r *http.Request) {
 	http.NotFound(w, r)
 }
 
+func skipSlash(p []byte) []byte {
+	if len(p) > 0 && p[0] == '/' {
+		return p[1:]
+	}
+	return p
+}
+
+// nextElem return next path element from p and forwarded p.
+func nextElem(p []byte) (elem, next []byte) {
+	p = skipSlash(p)
+	idx := bytes.IndexByte(p, '/')
+	if idx < 0 {
+		idx = len(p)
+	}
+	return p[:idx], p[idx:]
+}
+
 // ServeHTTP serves http request as defined by OpenAPI v3 specification,
 // calling handler that matches the path or returning not found error.
 func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
@@ -76,7 +93,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	}
 
 	var (
-		idx  int               // index of next slash
 		elem []byte            // current element, without slashes
 		args map[string]string // lazily initialized
 	)
@@ -85,13 +101,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	switch r.Method {
 	case "GET":
 		// Root edge.
-		if len(p) > 1 && p[0] == '/' {
-			p = p[1:]
-		}
-		if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-			idx = len(p) // no next slash, using full p
-		}
-		elem, p = p[:idx], p[idx:] // next elem, forward p
+		elem, p = nextElem(p)
 		switch string(elem) {
 		case "error": // -> 1
 			// GET /error
@@ -103,13 +113,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			return
 		case "test": // -> 3
 			// Edge: 3, path: "test".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			case "header": // -> 4
 				// GET /test/header
@@ -121,23 +125,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 		case "pet": // -> 5
 			// Edge: 5, path: "pet".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			case "friendNames": // -> 6
 				// Edge: 6, path: "friendNames".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				default:
 					if args == nil {
@@ -154,13 +146,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				return
 			case "name": // -> 10
 				// Edge: 10, path: "name".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				default:
 					if args == nil {
@@ -186,13 +172,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		}
 	case "POST":
 		// Root edge.
-		if len(p) > 1 && p[0] == '/' {
-			p = p[1:]
-		}
-		if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-			idx = len(p) // no next slash, using full p
-		}
-		elem, p = p[:idx], p[idx:] // next elem, forward p
+		elem, p = nextElem(p)
 		switch string(elem) {
 		case "foobar": // -> 1
 			// POST /foobar
@@ -200,13 +180,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			return
 		case "pet": // -> 2
 			// Edge: 2, path: "pet".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			case "updateNameAlias": // -> 3
 				// POST /pet/updateNameAlias
@@ -231,13 +205,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		}
 	case "PUT":
 		// Root edge.
-		if len(p) > 1 && p[0] == '/' {
-			p = p[1:]
-		}
-		if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-			idx = len(p) // no next slash, using full p
-		}
-		elem, p = p[:idx], p[idx:] // next elem, forward p
+		elem, p = nextElem(p)
 		switch string(elem) {
 		case "foobar": // -> 1
 			// PUT /foobar

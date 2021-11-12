@@ -66,6 +66,23 @@ func (s *Server) notFound(w http.ResponseWriter, r *http.Request) {
 	http.NotFound(w, r)
 }
 
+func skipSlash(p []byte) []byte {
+	if len(p) > 0 && p[0] == '/' {
+		return p[1:]
+	}
+	return p
+}
+
+// nextElem return next path element from p and forwarded p.
+func nextElem(p []byte) (elem, next []byte) {
+	p = skipSlash(p)
+	idx := bytes.IndexByte(p, '/')
+	if idx < 0 {
+		idx = len(p)
+	}
+	return p[:idx], p[idx:]
+}
+
 // ServeHTTP serves http request as defined by OpenAPI v3 specification,
 // calling handler that matches the path or returning not found error.
 func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
@@ -76,7 +93,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	}
 
 	var (
-		idx  int               // index of next slash
 		elem []byte            // current element, without slashes
 		args map[string]string // lazily initialized
 	)
@@ -85,53 +101,23 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	switch r.Method {
 	case "GET":
 		// Root edge.
-		if len(p) > 1 && p[0] == '/' {
-			p = p[1:]
-		}
-		if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-			idx = len(p) // no next slash, using full p
-		}
-		elem, p = p[:idx], p[idx:] // next elem, forward p
+		elem, p = nextElem(p)
 		switch string(elem) {
 		case "apis": // -> 1
 			// Edge: 1, path: "apis".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			case "admissionregistration.k8s.io": // -> 2
 				// Edge: 2, path: "admissionregistration.k8s.io".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				case "v1": // -> 3
 					// Edge: 3, path: "v1".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					case "mutatingwebhookconfigurations": // -> 58
 						// Edge: 58, path: "mutatingwebhookconfigurations".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -144,13 +130,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 					case "validatingwebhookconfigurations": // -> 59
 						// Edge: 59, path: "validatingwebhookconfigurations".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -163,23 +143,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 					case "watch": // -> 291
 						// Edge: 291, path: "watch".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "mutatingwebhookconfigurations": // -> 292
 							// Edge: 292, path: "mutatingwebhookconfigurations".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -192,13 +160,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						case "validatingwebhookconfigurations": // -> 294
 							// Edge: 294, path: "validatingwebhookconfigurations".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -225,33 +187,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 			case "apiextensions.k8s.io": // -> 4
 				// Edge: 4, path: "apiextensions.k8s.io".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				case "v1": // -> 5
 					// Edge: 5, path: "v1".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					case "customresourcedefinitions": // -> 60
 						// Edge: 60, path: "customresourcedefinitions".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -259,13 +203,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							args["name"] = string(elem)
 							// Edge: 195, path: "".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							case "status": // -> 196
 								// GET /apis/apiextensions.k8s.io/v1/customresourcedefinitions/{name}/status
@@ -279,23 +217,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 					case "watch": // -> 296
 						// Edge: 296, path: "watch".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "customresourcedefinitions": // -> 297
 							// Edge: 297, path: "customresourcedefinitions".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -322,33 +248,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 			case "apiregistration.k8s.io": // -> 6
 				// Edge: 6, path: "apiregistration.k8s.io".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				case "v1": // -> 7
 					// Edge: 7, path: "v1".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					case "apiservices": // -> 61
 						// Edge: 61, path: "apiservices".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -356,13 +264,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							args["name"] = string(elem)
 							// Edge: 197, path: "".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							case "status": // -> 198
 								// GET /apis/apiregistration.k8s.io/v1/apiservices/{name}/status
@@ -376,23 +278,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 					case "watch": // -> 299
 						// Edge: 299, path: "watch".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "apiservices": // -> 300
 							// Edge: 300, path: "apiservices".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -419,23 +309,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 			case "apps": // -> 8
 				// Edge: 8, path: "apps".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				case "v1": // -> 9
 					// Edge: 9, path: "v1".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					case "controllerrevisions": // -> 62
 						// GET /apis/apps/v1/controllerrevisions
@@ -451,13 +329,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						return
 					case "namespaces": // -> 65
 						// Edge: 65, path: "namespaces".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -465,23 +337,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							args["namespace"] = string(elem)
 							// Edge: 66, path: "".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							case "controllerrevisions": // -> 67
 								// Edge: 67, path: "controllerrevisions".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -494,13 +354,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 							case "daemonsets": // -> 68
 								// Edge: 68, path: "daemonsets".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -508,13 +362,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									args["name"] = string(elem)
 									// Edge: 200, path: "".
-									if len(p) > 1 && p[0] == '/' {
-										p = p[1:]
-									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-										idx = len(p) // no next slash, using full p
-									}
-									elem, p = p[:idx], p[idx:] // next elem, forward p
+									elem, p = nextElem(p)
 									switch string(elem) {
 									case "status": // -> 201
 										// GET /apis/apps/v1/namespaces/{namespace}/daemonsets/{name}/status
@@ -528,13 +376,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 							case "deployments": // -> 69
 								// Edge: 69, path: "deployments".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -542,13 +384,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									args["name"] = string(elem)
 									// Edge: 202, path: "".
-									if len(p) > 1 && p[0] == '/' {
-										p = p[1:]
-									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-										idx = len(p) // no next slash, using full p
-									}
-									elem, p = p[:idx], p[idx:] // next elem, forward p
+									elem, p = nextElem(p)
 									switch string(elem) {
 									case "scale": // -> 203
 										// GET /apis/apps/v1/namespaces/{namespace}/deployments/{name}/scale
@@ -566,13 +402,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 							case "replicasets": // -> 70
 								// Edge: 70, path: "replicasets".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -580,13 +410,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									args["name"] = string(elem)
 									// Edge: 205, path: "".
-									if len(p) > 1 && p[0] == '/' {
-										p = p[1:]
-									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-										idx = len(p) // no next slash, using full p
-									}
-									elem, p = p[:idx], p[idx:] // next elem, forward p
+									elem, p = nextElem(p)
 									switch string(elem) {
 									case "scale": // -> 206
 										// GET /apis/apps/v1/namespaces/{namespace}/replicasets/{name}/scale
@@ -604,13 +428,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 							case "statefulsets": // -> 71
 								// Edge: 71, path: "statefulsets".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -618,13 +436,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									args["name"] = string(elem)
 									// Edge: 208, path: "".
-									if len(p) > 1 && p[0] == '/' {
-										p = p[1:]
-									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-										idx = len(p) // no next slash, using full p
-									}
-									elem, p = p[:idx], p[idx:] // next elem, forward p
+									elem, p = nextElem(p)
 									switch string(elem) {
 									case "scale": // -> 209
 										// GET /apis/apps/v1/namespaces/{namespace}/statefulsets/{name}/scale
@@ -655,13 +467,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						return
 					case "watch": // -> 302
 						// Edge: 302, path: "watch".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "controllerrevisions": // -> 303
 							// GET /apis/apps/v1/watch/controllerrevisions
@@ -677,13 +483,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							return
 						case "namespaces": // -> 306
 							// Edge: 306, path: "namespaces".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -691,23 +491,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								args["namespace"] = string(elem)
 								// Edge: 307, path: "".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								case "controllerrevisions": // -> 308
 									// Edge: 308, path: "controllerrevisions".
-									if len(p) > 1 && p[0] == '/' {
-										p = p[1:]
-									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-										idx = len(p) // no next slash, using full p
-									}
-									elem, p = p[:idx], p[idx:] // next elem, forward p
+									elem, p = nextElem(p)
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -720,13 +508,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 								case "daemonsets": // -> 310
 									// Edge: 310, path: "daemonsets".
-									if len(p) > 1 && p[0] == '/' {
-										p = p[1:]
-									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-										idx = len(p) // no next slash, using full p
-									}
-									elem, p = p[:idx], p[idx:] // next elem, forward p
+									elem, p = nextElem(p)
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -739,13 +521,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 								case "deployments": // -> 312
 									// Edge: 312, path: "deployments".
-									if len(p) > 1 && p[0] == '/' {
-										p = p[1:]
-									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-										idx = len(p) // no next slash, using full p
-									}
-									elem, p = p[:idx], p[idx:] // next elem, forward p
+									elem, p = nextElem(p)
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -758,13 +534,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 								case "replicasets": // -> 314
 									// Edge: 314, path: "replicasets".
-									if len(p) > 1 && p[0] == '/' {
-										p = p[1:]
-									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-										idx = len(p) // no next slash, using full p
-									}
-									elem, p = p[:idx], p[idx:] // next elem, forward p
+									elem, p = nextElem(p)
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -777,13 +547,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 								case "statefulsets": // -> 316
 									// Edge: 316, path: "statefulsets".
-									if len(p) > 1 && p[0] == '/' {
-										p = p[1:]
-									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-										idx = len(p) // no next slash, using full p
-									}
-									elem, p = p[:idx], p[idx:] // next elem, forward p
+									elem, p = nextElem(p)
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -823,13 +587,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 			case "authentication.k8s.io": // -> 10
 				// Edge: 10, path: "authentication.k8s.io".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				case "v1": // -> 11
 					// GET /apis/authentication.k8s.io/v1/
@@ -842,13 +600,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 			case "authorization.k8s.io": // -> 12
 				// Edge: 12, path: "authorization.k8s.io".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				case "v1": // -> 13
 					// GET /apis/authorization.k8s.io/v1/
@@ -861,23 +613,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 			case "autoscaling": // -> 14
 				// Edge: 14, path: "autoscaling".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				case "v1": // -> 15
 					// Edge: 15, path: "v1".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					case "horizontalpodautoscalers": // -> 74
 						// GET /apis/autoscaling/v1/horizontalpodautoscalers
@@ -885,13 +625,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						return
 					case "namespaces": // -> 75
 						// Edge: 75, path: "namespaces".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -899,23 +633,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							args["namespace"] = string(elem)
 							// Edge: 76, path: "".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							case "horizontalpodautoscalers": // -> 77
 								// Edge: 77, path: "horizontalpodautoscalers".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -923,13 +645,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									args["name"] = string(elem)
 									// Edge: 211, path: "".
-									if len(p) > 1 && p[0] == '/' {
-										p = p[1:]
-									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-										idx = len(p) // no next slash, using full p
-									}
-									elem, p = p[:idx], p[idx:] // next elem, forward p
+									elem, p = nextElem(p)
 									switch string(elem) {
 									case "status": // -> 212
 										// GET /apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status
@@ -948,13 +664,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 					case "watch": // -> 320
 						// Edge: 320, path: "watch".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "horizontalpodautoscalers": // -> 321
 							// GET /apis/autoscaling/v1/watch/horizontalpodautoscalers
@@ -962,13 +672,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							return
 						case "namespaces": // -> 322
 							// Edge: 322, path: "namespaces".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -976,23 +680,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								args["namespace"] = string(elem)
 								// Edge: 323, path: "".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								case "horizontalpodautoscalers": // -> 324
 									// Edge: 324, path: "horizontalpodautoscalers".
-									if len(p) > 1 && p[0] == '/' {
-										p = p[1:]
-									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-										idx = len(p) // no next slash, using full p
-									}
-									elem, p = p[:idx], p[idx:] // next elem, forward p
+									elem, p = nextElem(p)
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -1019,13 +711,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 				case "v2beta1": // -> 16
 					// Edge: 16, path: "v2beta1".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					case "horizontalpodautoscalers": // -> 78
 						// GET /apis/autoscaling/v2beta1/horizontalpodautoscalers
@@ -1033,13 +719,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						return
 					case "namespaces": // -> 79
 						// Edge: 79, path: "namespaces".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -1047,23 +727,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							args["namespace"] = string(elem)
 							// Edge: 80, path: "".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							case "horizontalpodautoscalers": // -> 81
 								// Edge: 81, path: "horizontalpodautoscalers".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -1071,13 +739,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									args["name"] = string(elem)
 									// Edge: 213, path: "".
-									if len(p) > 1 && p[0] == '/' {
-										p = p[1:]
-									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-										idx = len(p) // no next slash, using full p
-									}
-									elem, p = p[:idx], p[idx:] // next elem, forward p
+									elem, p = nextElem(p)
 									switch string(elem) {
 									case "status": // -> 214
 										// GET /apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status
@@ -1096,13 +758,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 					case "watch": // -> 326
 						// Edge: 326, path: "watch".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "horizontalpodautoscalers": // -> 327
 							// GET /apis/autoscaling/v2beta1/watch/horizontalpodautoscalers
@@ -1110,13 +766,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							return
 						case "namespaces": // -> 328
 							// Edge: 328, path: "namespaces".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -1124,23 +774,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								args["namespace"] = string(elem)
 								// Edge: 329, path: "".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								case "horizontalpodautoscalers": // -> 330
 									// Edge: 330, path: "horizontalpodautoscalers".
-									if len(p) > 1 && p[0] == '/' {
-										p = p[1:]
-									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-										idx = len(p) // no next slash, using full p
-									}
-									elem, p = p[:idx], p[idx:] // next elem, forward p
+									elem, p = nextElem(p)
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -1167,13 +805,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 				case "v2beta2": // -> 17
 					// Edge: 17, path: "v2beta2".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					case "horizontalpodautoscalers": // -> 82
 						// GET /apis/autoscaling/v2beta2/horizontalpodautoscalers
@@ -1181,13 +813,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						return
 					case "namespaces": // -> 83
 						// Edge: 83, path: "namespaces".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -1195,23 +821,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							args["namespace"] = string(elem)
 							// Edge: 84, path: "".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							case "horizontalpodautoscalers": // -> 85
 								// Edge: 85, path: "horizontalpodautoscalers".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -1219,13 +833,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									args["name"] = string(elem)
 									// Edge: 215, path: "".
-									if len(p) > 1 && p[0] == '/' {
-										p = p[1:]
-									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-										idx = len(p) // no next slash, using full p
-									}
-									elem, p = p[:idx], p[idx:] // next elem, forward p
+									elem, p = nextElem(p)
 									switch string(elem) {
 									case "status": // -> 216
 										// GET /apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers/{name}/status
@@ -1244,13 +852,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 					case "watch": // -> 332
 						// Edge: 332, path: "watch".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "horizontalpodautoscalers": // -> 333
 							// GET /apis/autoscaling/v2beta2/watch/horizontalpodautoscalers
@@ -1258,13 +860,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							return
 						case "namespaces": // -> 334
 							// Edge: 334, path: "namespaces".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -1272,23 +868,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								args["namespace"] = string(elem)
 								// Edge: 335, path: "".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								case "horizontalpodautoscalers": // -> 336
 									// Edge: 336, path: "horizontalpodautoscalers".
-									if len(p) > 1 && p[0] == '/' {
-										p = p[1:]
-									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-										idx = len(p) // no next slash, using full p
-									}
-									elem, p = p[:idx], p[idx:] // next elem, forward p
+									elem, p = nextElem(p)
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -1320,23 +904,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 			case "batch": // -> 18
 				// Edge: 18, path: "batch".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				case "v1": // -> 19
 					// Edge: 19, path: "v1".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					case "cronjobs": // -> 86
 						// GET /apis/batch/v1/cronjobs
@@ -1348,13 +920,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						return
 					case "namespaces": // -> 88
 						// Edge: 88, path: "namespaces".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -1362,23 +928,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							args["namespace"] = string(elem)
 							// Edge: 89, path: "".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							case "cronjobs": // -> 90
 								// Edge: 90, path: "cronjobs".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -1386,13 +940,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									args["name"] = string(elem)
 									// Edge: 217, path: "".
-									if len(p) > 1 && p[0] == '/' {
-										p = p[1:]
-									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-										idx = len(p) // no next slash, using full p
-									}
-									elem, p = p[:idx], p[idx:] // next elem, forward p
+									elem, p = nextElem(p)
 									switch string(elem) {
 									case "status": // -> 218
 										// GET /apis/batch/v1/namespaces/{namespace}/cronjobs/{name}/status
@@ -1406,13 +954,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 							case "jobs": // -> 91
 								// Edge: 91, path: "jobs".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -1420,13 +962,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									args["name"] = string(elem)
 									// Edge: 219, path: "".
-									if len(p) > 1 && p[0] == '/' {
-										p = p[1:]
-									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-										idx = len(p) // no next slash, using full p
-									}
-									elem, p = p[:idx], p[idx:] // next elem, forward p
+									elem, p = nextElem(p)
 									switch string(elem) {
 									case "status": // -> 220
 										// GET /apis/batch/v1/namespaces/{namespace}/jobs/{name}/status
@@ -1445,13 +981,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 					case "watch": // -> 338
 						// Edge: 338, path: "watch".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "cronjobs": // -> 339
 							// GET /apis/batch/v1/watch/cronjobs
@@ -1463,13 +993,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							return
 						case "namespaces": // -> 341
 							// Edge: 341, path: "namespaces".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -1477,23 +1001,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								args["namespace"] = string(elem)
 								// Edge: 342, path: "".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								case "cronjobs": // -> 343
 									// Edge: 343, path: "cronjobs".
-									if len(p) > 1 && p[0] == '/' {
-										p = p[1:]
-									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-										idx = len(p) // no next slash, using full p
-									}
-									elem, p = p[:idx], p[idx:] // next elem, forward p
+									elem, p = nextElem(p)
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -1506,13 +1018,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 								case "jobs": // -> 345
 									// Edge: 345, path: "jobs".
-									if len(p) > 1 && p[0] == '/' {
-										p = p[1:]
-									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-										idx = len(p) // no next slash, using full p
-									}
-									elem, p = p[:idx], p[idx:] // next elem, forward p
+									elem, p = nextElem(p)
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -1539,13 +1045,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 				case "v1beta1": // -> 20
 					// Edge: 20, path: "v1beta1".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					case "cronjobs": // -> 92
 						// GET /apis/batch/v1beta1/cronjobs
@@ -1553,13 +1053,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						return
 					case "namespaces": // -> 93
 						// Edge: 93, path: "namespaces".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -1567,23 +1061,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							args["namespace"] = string(elem)
 							// Edge: 94, path: "".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							case "cronjobs": // -> 95
 								// Edge: 95, path: "cronjobs".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -1591,13 +1073,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									args["name"] = string(elem)
 									// Edge: 221, path: "".
-									if len(p) > 1 && p[0] == '/' {
-										p = p[1:]
-									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-										idx = len(p) // no next slash, using full p
-									}
-									elem, p = p[:idx], p[idx:] // next elem, forward p
+									elem, p = nextElem(p)
 									switch string(elem) {
 									case "status": // -> 222
 										// GET /apis/batch/v1beta1/namespaces/{namespace}/cronjobs/{name}/status
@@ -1616,13 +1092,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 					case "watch": // -> 347
 						// Edge: 347, path: "watch".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "cronjobs": // -> 348
 							// GET /apis/batch/v1beta1/watch/cronjobs
@@ -1630,13 +1100,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							return
 						case "namespaces": // -> 349
 							// Edge: 349, path: "namespaces".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -1644,23 +1108,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								args["namespace"] = string(elem)
 								// Edge: 350, path: "".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								case "cronjobs": // -> 351
 									// Edge: 351, path: "cronjobs".
-									if len(p) > 1 && p[0] == '/' {
-										p = p[1:]
-									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-										idx = len(p) // no next slash, using full p
-									}
-									elem, p = p[:idx], p[idx:] // next elem, forward p
+									elem, p = nextElem(p)
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -1692,33 +1144,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 			case "certificates.k8s.io": // -> 21
 				// Edge: 21, path: "certificates.k8s.io".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				case "v1": // -> 22
 					// Edge: 22, path: "v1".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					case "certificatesigningrequests": // -> 96
 						// Edge: 96, path: "certificatesigningrequests".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -1726,13 +1160,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							args["name"] = string(elem)
 							// Edge: 223, path: "".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							case "approval": // -> 224
 								// GET /apis/certificates.k8s.io/v1/certificatesigningrequests/{name}/approval
@@ -1750,23 +1178,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 					case "watch": // -> 353
 						// Edge: 353, path: "watch".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "certificatesigningrequests": // -> 354
 							// Edge: 354, path: "certificatesigningrequests".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -1793,23 +1209,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 			case "coordination.k8s.io": // -> 24
 				// Edge: 24, path: "coordination.k8s.io".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				case "v1": // -> 25
 					// Edge: 25, path: "v1".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					case "leases": // -> 97
 						// GET /apis/coordination.k8s.io/v1/leases
@@ -1817,13 +1221,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						return
 					case "namespaces": // -> 98
 						// Edge: 98, path: "namespaces".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -1831,23 +1229,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							args["namespace"] = string(elem)
 							// Edge: 99, path: "".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							case "leases": // -> 100
 								// Edge: 100, path: "leases".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -1865,13 +1251,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 					case "watch": // -> 356
 						// Edge: 356, path: "watch".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "leases": // -> 357
 							// GET /apis/coordination.k8s.io/v1/watch/leases
@@ -1879,13 +1259,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							return
 						case "namespaces": // -> 358
 							// Edge: 358, path: "namespaces".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -1893,23 +1267,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								args["namespace"] = string(elem)
 								// Edge: 359, path: "".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								case "leases": // -> 360
 									// Edge: 360, path: "leases".
-									if len(p) > 1 && p[0] == '/' {
-										p = p[1:]
-									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-										idx = len(p) // no next slash, using full p
-									}
-									elem, p = p[:idx], p[idx:] // next elem, forward p
+									elem, p = nextElem(p)
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -1941,23 +1303,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 			case "discovery.k8s.io": // -> 28
 				// Edge: 28, path: "discovery.k8s.io".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				case "v1": // -> 29
 					// Edge: 29, path: "v1".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					case "endpointslices": // -> 130
 						// GET /apis/discovery.k8s.io/v1/endpointslices
@@ -1965,13 +1315,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						return
 					case "namespaces": // -> 131
 						// Edge: 131, path: "namespaces".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -1979,23 +1323,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							args["namespace"] = string(elem)
 							// Edge: 132, path: "".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							case "endpointslices": // -> 133
 								// Edge: 133, path: "endpointslices".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -2013,13 +1345,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 					case "watch": // -> 405
 						// Edge: 405, path: "watch".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "endpointslices": // -> 406
 							// GET /apis/discovery.k8s.io/v1/watch/endpointslices
@@ -2027,13 +1353,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							return
 						case "namespaces": // -> 407
 							// Edge: 407, path: "namespaces".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -2041,23 +1361,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								args["namespace"] = string(elem)
 								// Edge: 408, path: "".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								case "endpointslices": // -> 409
 									// Edge: 409, path: "endpointslices".
-									if len(p) > 1 && p[0] == '/' {
-										p = p[1:]
-									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-										idx = len(p) // no next slash, using full p
-									}
-									elem, p = p[:idx], p[idx:] // next elem, forward p
+									elem, p = nextElem(p)
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -2084,13 +1392,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 				case "v1beta1": // -> 30
 					// Edge: 30, path: "v1beta1".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					case "endpointslices": // -> 134
 						// GET /apis/discovery.k8s.io/v1beta1/endpointslices
@@ -2098,13 +1400,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						return
 					case "namespaces": // -> 135
 						// Edge: 135, path: "namespaces".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -2112,23 +1408,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							args["namespace"] = string(elem)
 							// Edge: 136, path: "".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							case "endpointslices": // -> 137
 								// Edge: 137, path: "endpointslices".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -2146,13 +1430,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 					case "watch": // -> 411
 						// Edge: 411, path: "watch".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "endpointslices": // -> 412
 							// GET /apis/discovery.k8s.io/v1beta1/watch/endpointslices
@@ -2160,13 +1438,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							return
 						case "namespaces": // -> 413
 							// Edge: 413, path: "namespaces".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -2174,23 +1446,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								args["namespace"] = string(elem)
 								// Edge: 414, path: "".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								case "endpointslices": // -> 415
 									// Edge: 415, path: "endpointslices".
-									if len(p) > 1 && p[0] == '/' {
-										p = p[1:]
-									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-										idx = len(p) // no next slash, using full p
-									}
-									elem, p = p[:idx], p[idx:] // next elem, forward p
+									elem, p = nextElem(p)
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -2222,23 +1482,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 			case "events.k8s.io": // -> 31
 				// Edge: 31, path: "events.k8s.io".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				case "v1": // -> 32
 					// Edge: 32, path: "v1".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					case "events": // -> 138
 						// GET /apis/events.k8s.io/v1/events
@@ -2246,13 +1494,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						return
 					case "namespaces": // -> 139
 						// Edge: 139, path: "namespaces".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -2260,23 +1502,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							args["namespace"] = string(elem)
 							// Edge: 140, path: "".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							case "events": // -> 141
 								// Edge: 141, path: "events".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -2294,13 +1524,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 					case "watch": // -> 417
 						// Edge: 417, path: "watch".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "events": // -> 418
 							// GET /apis/events.k8s.io/v1/watch/events
@@ -2308,13 +1532,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							return
 						case "namespaces": // -> 419
 							// Edge: 419, path: "namespaces".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -2322,23 +1540,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								args["namespace"] = string(elem)
 								// Edge: 420, path: "".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								case "events": // -> 421
 									// Edge: 421, path: "events".
-									if len(p) > 1 && p[0] == '/' {
-										p = p[1:]
-									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-										idx = len(p) // no next slash, using full p
-									}
-									elem, p = p[:idx], p[idx:] // next elem, forward p
+									elem, p = nextElem(p)
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -2365,13 +1571,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 				case "v1beta1": // -> 33
 					// Edge: 33, path: "v1beta1".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					case "events": // -> 142
 						// GET /apis/events.k8s.io/v1beta1/events
@@ -2379,13 +1579,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						return
 					case "namespaces": // -> 143
 						// Edge: 143, path: "namespaces".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -2393,23 +1587,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							args["namespace"] = string(elem)
 							// Edge: 144, path: "".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							case "events": // -> 145
 								// Edge: 145, path: "events".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -2427,13 +1609,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 					case "watch": // -> 423
 						// Edge: 423, path: "watch".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "events": // -> 424
 							// GET /apis/events.k8s.io/v1beta1/watch/events
@@ -2441,13 +1617,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							return
 						case "namespaces": // -> 425
 							// Edge: 425, path: "namespaces".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -2455,23 +1625,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								args["namespace"] = string(elem)
 								// Edge: 426, path: "".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								case "events": // -> 427
 									// Edge: 427, path: "events".
-									if len(p) > 1 && p[0] == '/' {
-										p = p[1:]
-									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-										idx = len(p) // no next slash, using full p
-									}
-									elem, p = p[:idx], p[idx:] // next elem, forward p
+									elem, p = nextElem(p)
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -2503,33 +1661,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 			case "flowcontrol.apiserver.k8s.io": // -> 34
 				// Edge: 34, path: "flowcontrol.apiserver.k8s.io".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				case "v1beta1": // -> 35
 					// Edge: 35, path: "v1beta1".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					case "flowschemas": // -> 146
 						// Edge: 146, path: "flowschemas".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -2537,13 +1677,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							args["name"] = string(elem)
 							// Edge: 257, path: "".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							case "status": // -> 258
 								// GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas/{name}/status
@@ -2557,13 +1691,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 					case "prioritylevelconfigurations": // -> 147
 						// Edge: 147, path: "prioritylevelconfigurations".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -2571,13 +1699,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							args["name"] = string(elem)
 							// Edge: 259, path: "".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							case "status": // -> 260
 								// GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations/{name}/status
@@ -2591,23 +1713,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 					case "watch": // -> 429
 						// Edge: 429, path: "watch".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "flowschemas": // -> 430
 							// Edge: 430, path: "flowschemas".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -2620,13 +1730,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						case "prioritylevelconfigurations": // -> 432
 							// Edge: 432, path: "prioritylevelconfigurations".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -2648,23 +1752,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 				case "v1beta2": // -> 36
 					// Edge: 36, path: "v1beta2".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					case "flowschemas": // -> 148
 						// Edge: 148, path: "flowschemas".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -2672,13 +1764,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							args["name"] = string(elem)
 							// Edge: 261, path: "".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							case "status": // -> 262
 								// GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas/{name}/status
@@ -2692,13 +1778,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 					case "prioritylevelconfigurations": // -> 149
 						// Edge: 149, path: "prioritylevelconfigurations".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -2706,13 +1786,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							args["name"] = string(elem)
 							// Edge: 263, path: "".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							case "status": // -> 264
 								// GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations/{name}/status
@@ -2726,23 +1800,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 					case "watch": // -> 434
 						// Edge: 434, path: "watch".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "flowschemas": // -> 435
 							// Edge: 435, path: "flowschemas".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -2755,13 +1817,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						case "prioritylevelconfigurations": // -> 437
 							// Edge: 437, path: "prioritylevelconfigurations".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -2788,33 +1844,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 			case "internal.apiserver.k8s.io": // -> 37
 				// Edge: 37, path: "internal.apiserver.k8s.io".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				case "v1alpha1": // -> 38
 					// Edge: 38, path: "v1alpha1".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					case "storageversions": // -> 150
 						// Edge: 150, path: "storageversions".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -2822,13 +1860,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							args["name"] = string(elem)
 							// Edge: 265, path: "".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							case "status": // -> 266
 								// GET /apis/internal.apiserver.k8s.io/v1alpha1/storageversions/{name}/status
@@ -2842,23 +1874,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 					case "watch": // -> 439
 						// Edge: 439, path: "watch".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "storageversions": // -> 440
 							// Edge: 440, path: "storageversions".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -2885,33 +1905,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 			case "networking.k8s.io": // -> 39
 				// Edge: 39, path: "networking.k8s.io".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				case "v1": // -> 40
 					// Edge: 40, path: "v1".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					case "ingressclasses": // -> 151
 						// Edge: 151, path: "ingressclasses".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -2928,13 +1930,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						return
 					case "namespaces": // -> 153
 						// Edge: 153, path: "namespaces".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -2942,23 +1938,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							args["namespace"] = string(elem)
 							// Edge: 154, path: "".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							case "ingresses": // -> 155
 								// Edge: 155, path: "ingresses".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -2966,13 +1950,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									args["name"] = string(elem)
 									// Edge: 268, path: "".
-									if len(p) > 1 && p[0] == '/' {
-										p = p[1:]
-									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-										idx = len(p) // no next slash, using full p
-									}
-									elem, p = p[:idx], p[idx:] // next elem, forward p
+									elem, p = nextElem(p)
 									switch string(elem) {
 									case "status": // -> 269
 										// GET /apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/{name}/status
@@ -2986,13 +1964,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 							case "networkpolicies": // -> 156
 								// Edge: 156, path: "networkpolicies".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -3014,23 +1986,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						return
 					case "watch": // -> 442
 						// Edge: 442, path: "watch".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "ingressclasses": // -> 443
 							// Edge: 443, path: "ingressclasses".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -3047,13 +2007,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							return
 						case "namespaces": // -> 446
 							// Edge: 446, path: "namespaces".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -3061,23 +2015,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								args["namespace"] = string(elem)
 								// Edge: 447, path: "".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								case "ingresses": // -> 448
 									// Edge: 448, path: "ingresses".
-									if len(p) > 1 && p[0] == '/' {
-										p = p[1:]
-									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-										idx = len(p) // no next slash, using full p
-									}
-									elem, p = p[:idx], p[idx:] // next elem, forward p
+									elem, p = nextElem(p)
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -3090,13 +2032,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 								case "networkpolicies": // -> 450
 									// Edge: 450, path: "networkpolicies".
-									if len(p) > 1 && p[0] == '/' {
-										p = p[1:]
-									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-										idx = len(p) // no next slash, using full p
-									}
-									elem, p = p[:idx], p[idx:] // next elem, forward p
+									elem, p = nextElem(p)
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -3132,33 +2068,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 			case "node.k8s.io": // -> 41
 				// Edge: 41, path: "node.k8s.io".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				case "v1": // -> 42
 					// Edge: 42, path: "v1".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					case "runtimeclasses": // -> 158
 						// Edge: 158, path: "runtimeclasses".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -3171,23 +2089,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 					case "watch": // -> 453
 						// Edge: 453, path: "watch".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "runtimeclasses": // -> 454
 							// Edge: 454, path: "runtimeclasses".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -3209,23 +2115,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 				case "v1alpha1": // -> 43
 					// Edge: 43, path: "v1alpha1".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					case "runtimeclasses": // -> 159
 						// Edge: 159, path: "runtimeclasses".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -3238,23 +2132,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 					case "watch": // -> 456
 						// Edge: 456, path: "watch".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "runtimeclasses": // -> 457
 							// Edge: 457, path: "runtimeclasses".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -3276,23 +2158,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 				case "v1beta1": // -> 44
 					// Edge: 44, path: "v1beta1".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					case "runtimeclasses": // -> 160
 						// Edge: 160, path: "runtimeclasses".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -3305,23 +2175,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 					case "watch": // -> 459
 						// Edge: 459, path: "watch".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "runtimeclasses": // -> 460
 							// Edge: 460, path: "runtimeclasses".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -3348,33 +2206,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 			case "policy": // -> 45
 				// Edge: 45, path: "policy".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				case "v1": // -> 46
 					// Edge: 46, path: "v1".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					case "namespaces": // -> 161
 						// Edge: 161, path: "namespaces".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -3382,23 +2222,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							args["namespace"] = string(elem)
 							// Edge: 162, path: "".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							case "poddisruptionbudgets": // -> 163
 								// Edge: 163, path: "poddisruptionbudgets".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -3406,13 +2234,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									args["name"] = string(elem)
 									// Edge: 274, path: "".
-									if len(p) > 1 && p[0] == '/' {
-										p = p[1:]
-									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-										idx = len(p) // no next slash, using full p
-									}
-									elem, p = p[:idx], p[idx:] // next elem, forward p
+									elem, p = nextElem(p)
 									switch string(elem) {
 									case "status": // -> 275
 										// GET /apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets/{name}/status
@@ -3435,23 +2257,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						return
 					case "watch": // -> 462
 						// Edge: 462, path: "watch".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "namespaces": // -> 463
 							// Edge: 463, path: "namespaces".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -3459,23 +2269,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								args["namespace"] = string(elem)
 								// Edge: 464, path: "".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								case "poddisruptionbudgets": // -> 465
 									// Edge: 465, path: "poddisruptionbudgets".
-									if len(p) > 1 && p[0] == '/' {
-										p = p[1:]
-									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-										idx = len(p) // no next slash, using full p
-									}
-									elem, p = p[:idx], p[idx:] // next elem, forward p
+									elem, p = nextElem(p)
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -3506,23 +2304,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 				case "v1beta1": // -> 47
 					// Edge: 47, path: "v1beta1".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					case "namespaces": // -> 165
 						// Edge: 165, path: "namespaces".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -3530,23 +2316,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							args["namespace"] = string(elem)
 							// Edge: 166, path: "".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							case "poddisruptionbudgets": // -> 167
 								// Edge: 167, path: "poddisruptionbudgets".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -3554,13 +2328,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									args["name"] = string(elem)
 									// Edge: 276, path: "".
-									if len(p) > 1 && p[0] == '/' {
-										p = p[1:]
-									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-										idx = len(p) // no next slash, using full p
-									}
-									elem, p = p[:idx], p[idx:] // next elem, forward p
+									elem, p = nextElem(p)
 									switch string(elem) {
 									case "status": // -> 277
 										// GET /apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets/{name}/status
@@ -3583,13 +2351,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						return
 					case "podsecuritypolicies": // -> 169
 						// Edge: 169, path: "podsecuritypolicies".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -3602,23 +2364,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 					case "watch": // -> 468
 						// Edge: 468, path: "watch".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "namespaces": // -> 469
 							// Edge: 469, path: "namespaces".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -3626,23 +2376,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								args["namespace"] = string(elem)
 								// Edge: 470, path: "".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								case "poddisruptionbudgets": // -> 471
 									// Edge: 471, path: "poddisruptionbudgets".
-									if len(p) > 1 && p[0] == '/' {
-										p = p[1:]
-									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-										idx = len(p) // no next slash, using full p
-									}
-									elem, p = p[:idx], p[idx:] // next elem, forward p
+									elem, p = nextElem(p)
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -3664,13 +2402,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							return
 						case "podsecuritypolicies": // -> 474
 							// Edge: 474, path: "podsecuritypolicies".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -3697,33 +2429,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 			case "rbac.authorization.k8s.io": // -> 48
 				// Edge: 48, path: "rbac.authorization.k8s.io".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				case "v1": // -> 49
 					// Edge: 49, path: "v1".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					case "clusterroles": // -> 170
 						// Edge: 170, path: "clusterroles".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -3736,13 +2450,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 					case "clusterrolebindings": // -> 171
 						// Edge: 171, path: "clusterrolebindings".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -3755,13 +2463,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 					case "namespaces": // -> 172
 						// Edge: 172, path: "namespaces".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -3769,23 +2471,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							args["namespace"] = string(elem)
 							// Edge: 173, path: "".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							case "roles": // -> 174
 								// Edge: 174, path: "roles".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -3798,13 +2488,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 							case "rolebindings": // -> 175
 								// Edge: 175, path: "rolebindings".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -3830,23 +2514,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						return
 					case "watch": // -> 476
 						// Edge: 476, path: "watch".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "clusterroles": // -> 477
 							// Edge: 477, path: "clusterroles".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -3859,13 +2531,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						case "clusterrolebindings": // -> 479
 							// Edge: 479, path: "clusterrolebindings".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -3878,13 +2544,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						case "namespaces": // -> 481
 							// Edge: 481, path: "namespaces".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -3892,23 +2552,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								args["namespace"] = string(elem)
 								// Edge: 482, path: "".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								case "roles": // -> 483
 									// Edge: 483, path: "roles".
-									if len(p) > 1 && p[0] == '/' {
-										p = p[1:]
-									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-										idx = len(p) // no next slash, using full p
-									}
-									elem, p = p[:idx], p[idx:] // next elem, forward p
+									elem, p = nextElem(p)
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -3921,13 +2569,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 								case "rolebindings": // -> 485
 									// Edge: 485, path: "rolebindings".
-									if len(p) > 1 && p[0] == '/' {
-										p = p[1:]
-									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-										idx = len(p) // no next slash, using full p
-									}
-									elem, p = p[:idx], p[idx:] // next elem, forward p
+									elem, p = nextElem(p)
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -3967,33 +2609,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 			case "scheduling.k8s.io": // -> 50
 				// Edge: 50, path: "scheduling.k8s.io".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				case "v1": // -> 51
 					// Edge: 51, path: "v1".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					case "priorityclasses": // -> 178
 						// Edge: 178, path: "priorityclasses".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -4006,23 +2630,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 					case "watch": // -> 489
 						// Edge: 489, path: "watch".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "priorityclasses": // -> 490
 							// Edge: 490, path: "priorityclasses".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -4049,33 +2661,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 			case "storage.k8s.io": // -> 54
 				// Edge: 54, path: "storage.k8s.io".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				case "v1": // -> 55
 					// Edge: 55, path: "v1".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					case "csidrivers": // -> 179
 						// Edge: 179, path: "csidrivers".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -4088,13 +2682,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 					case "csinodes": // -> 180
 						// Edge: 180, path: "csinodes".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -4107,13 +2695,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 					case "storageclasses": // -> 181
 						// Edge: 181, path: "storageclasses".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -4126,13 +2708,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 					case "volumeattachments": // -> 182
 						// Edge: 182, path: "volumeattachments".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -4140,13 +2716,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							args["name"] = string(elem)
 							// Edge: 287, path: "".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							case "status": // -> 288
 								// GET /apis/storage.k8s.io/v1/volumeattachments/{name}/status
@@ -4160,23 +2730,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 					case "watch": // -> 492
 						// Edge: 492, path: "watch".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "csidrivers": // -> 493
 							// Edge: 493, path: "csidrivers".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -4189,13 +2747,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						case "csinodes": // -> 495
 							// Edge: 495, path: "csinodes".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -4208,13 +2760,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						case "storageclasses": // -> 497
 							// Edge: 497, path: "storageclasses".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -4227,13 +2773,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						case "volumeattachments": // -> 499
 							// Edge: 499, path: "volumeattachments".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -4255,13 +2795,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 				case "v1alpha1": // -> 56
 					// Edge: 56, path: "v1alpha1".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					case "csistoragecapacities": // -> 183
 						// GET /apis/storage.k8s.io/v1alpha1/csistoragecapacities
@@ -4269,13 +2803,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						return
 					case "namespaces": // -> 184
 						// Edge: 184, path: "namespaces".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -4283,23 +2811,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							args["namespace"] = string(elem)
 							// Edge: 185, path: "".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							case "csistoragecapacities": // -> 186
 								// Edge: 186, path: "csistoragecapacities".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -4317,13 +2833,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 					case "watch": // -> 501
 						// Edge: 501, path: "watch".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "csistoragecapacities": // -> 502
 							// GET /apis/storage.k8s.io/v1alpha1/watch/csistoragecapacities
@@ -4331,13 +2841,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							return
 						case "namespaces": // -> 503
 							// Edge: 503, path: "namespaces".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -4345,23 +2849,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								args["namespace"] = string(elem)
 								// Edge: 504, path: "".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								case "csistoragecapacities": // -> 505
 									// Edge: 505, path: "csistoragecapacities".
-									if len(p) > 1 && p[0] == '/' {
-										p = p[1:]
-									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-										idx = len(p) // no next slash, using full p
-									}
-									elem, p = p[:idx], p[idx:] // next elem, forward p
+									elem, p = nextElem(p)
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -4388,13 +2880,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 				case "v1beta1": // -> 57
 					// Edge: 57, path: "v1beta1".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					case "csistoragecapacities": // -> 187
 						// GET /apis/storage.k8s.io/v1beta1/csistoragecapacities
@@ -4402,13 +2888,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						return
 					case "namespaces": // -> 188
 						// Edge: 188, path: "namespaces".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -4416,23 +2896,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							args["namespace"] = string(elem)
 							// Edge: 189, path: "".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							case "csistoragecapacities": // -> 190
 								// Edge: 190, path: "csistoragecapacities".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -4450,13 +2918,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 					case "watch": // -> 507
 						// Edge: 507, path: "watch".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "csistoragecapacities": // -> 508
 							// GET /apis/storage.k8s.io/v1beta1/watch/csistoragecapacities
@@ -4464,13 +2926,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							return
 						case "namespaces": // -> 509
 							// Edge: 509, path: "namespaces".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -4478,23 +2934,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								args["namespace"] = string(elem)
 								// Edge: 510, path: "".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								case "csistoragecapacities": // -> 511
 									// Edge: 511, path: "csistoragecapacities".
-									if len(p) > 1 && p[0] == '/' {
-										p = p[1:]
-									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-										idx = len(p) // no next slash, using full p
-									}
-									elem, p = p[:idx], p[idx:] // next elem, forward p
+									elem, p = nextElem(p)
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -4535,33 +2979,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			return
 		case "api": // -> 26
 			// Edge: 26, path: "api".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			case "v1": // -> 27
 				// Edge: 27, path: "v1".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				case "componentstatuses": // -> 101
 					// Edge: 101, path: "componentstatuses".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -4590,13 +3016,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					return
 				case "namespaces": // -> 106
 					// Edge: 106, path: "namespaces".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -4604,23 +3024,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						args["namespace"] = string(elem)
 						// Edge: 107, path: "".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "configmaps": // -> 108
 							// Edge: 108, path: "configmaps".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -4633,13 +3041,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						case "endpoints": // -> 109
 							// Edge: 109, path: "endpoints".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -4652,13 +3054,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						case "events": // -> 110
 							// Edge: 110, path: "events".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -4671,13 +3067,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						case "limitranges": // -> 111
 							// Edge: 111, path: "limitranges".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -4690,13 +3080,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						case "persistentvolumeclaims": // -> 112
 							// Edge: 112, path: "persistentvolumeclaims".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -4704,13 +3088,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								args["name"] = string(elem)
 								// Edge: 233, path: "".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								case "status": // -> 234
 									// GET /api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}/status
@@ -4724,13 +3102,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						case "pods": // -> 113
 							// Edge: 113, path: "pods".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -4738,13 +3110,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								args["name"] = string(elem)
 								// Edge: 235, path: "".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								case "ephemeralcontainers": // -> 236
 									// GET /api/v1/namespaces/{namespace}/pods/{name}/ephemeralcontainers
@@ -4766,13 +3132,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						case "podtemplates": // -> 114
 							// Edge: 114, path: "podtemplates".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -4785,13 +3145,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						case "replicationcontrollers": // -> 115
 							// Edge: 115, path: "replicationcontrollers".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -4799,13 +3153,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								args["name"] = string(elem)
 								// Edge: 240, path: "".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								case "scale": // -> 241
 									// GET /api/v1/namespaces/{namespace}/replicationcontrollers/{name}/scale
@@ -4823,13 +3171,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						case "resourcequotas": // -> 116
 							// Edge: 116, path: "resourcequotas".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -4837,13 +3179,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								args["name"] = string(elem)
 								// Edge: 243, path: "".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								case "status": // -> 244
 									// GET /api/v1/namespaces/{namespace}/resourcequotas/{name}/status
@@ -4857,13 +3193,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						case "secrets": // -> 117
 							// Edge: 117, path: "secrets".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -4876,13 +3206,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						case "services": // -> 118
 							// Edge: 118, path: "services".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -4890,13 +3214,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								args["name"] = string(elem)
 								// Edge: 246, path: "".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								case "status": // -> 248
 									// GET /api/v1/namespaces/{namespace}/services/{name}/status
@@ -4910,13 +3228,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						case "serviceaccounts": // -> 119
 							// Edge: 119, path: "serviceaccounts".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -4939,13 +3251,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 				case "nodes": // -> 120
 					// Edge: 120, path: "nodes".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -4953,13 +3259,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						args["name"] = string(elem)
 						// Edge: 249, path: "".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "status": // -> 250
 							// GET /api/v1/nodes/{name}/status
@@ -4973,13 +3273,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 				case "persistentvolumes": // -> 121
 					// Edge: 121, path: "persistentvolumes".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -4987,13 +3281,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						args["name"] = string(elem)
 						// Edge: 251, path: "".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "status": // -> 252
 							// GET /api/v1/persistentvolumes/{name}/status
@@ -5039,13 +3327,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					return
 				case "watch": // -> 362
 					// Edge: 362, path: "watch".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					case "configmaps": // -> 363
 						// GET /api/v1/watch/configmaps
@@ -5065,13 +3347,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						return
 					case "namespaces": // -> 367
 						// Edge: 367, path: "namespaces".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -5079,23 +3355,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							args["name"] = string(elem)
 							// Edge: 368, path: "".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							case "configmaps": // -> 369
 								// Edge: 369, path: "configmaps".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -5108,13 +3372,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 							case "endpoints": // -> 371
 								// Edge: 371, path: "endpoints".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -5127,13 +3385,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 							case "events": // -> 373
 								// Edge: 373, path: "events".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -5146,13 +3398,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 							case "limitranges": // -> 375
 								// Edge: 375, path: "limitranges".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -5165,13 +3411,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 							case "persistentvolumeclaims": // -> 377
 								// Edge: 377, path: "persistentvolumeclaims".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -5184,13 +3424,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 							case "pods": // -> 379
 								// Edge: 379, path: "pods".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -5203,13 +3437,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 							case "podtemplates": // -> 381
 								// Edge: 381, path: "podtemplates".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -5222,13 +3450,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 							case "replicationcontrollers": // -> 383
 								// Edge: 383, path: "replicationcontrollers".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -5241,13 +3463,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 							case "resourcequotas": // -> 385
 								// Edge: 385, path: "resourcequotas".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -5260,13 +3476,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 							case "secrets": // -> 387
 								// Edge: 387, path: "secrets".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -5279,13 +3489,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 							case "services": // -> 389
 								// Edge: 389, path: "services".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -5298,13 +3502,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 							case "serviceaccounts": // -> 391
 								// Edge: 391, path: "serviceaccounts".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -5323,13 +3521,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 					case "nodes": // -> 393
 						// Edge: 393, path: "nodes".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -5342,13 +3534,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 					case "persistentvolumes": // -> 395
 						// Edge: 395, path: "persistentvolumes".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -5407,13 +3593,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 		case ".well-known": // -> 52
 			// Edge: 52, path: ".well-known".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			case "openid-configuration": // -> 53
 				// GET /.well-known/openid-configuration/
@@ -5425,13 +3605,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 		case "logs": // -> 191
 			// Edge: 191, path: "logs".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			default:
 				if args == nil {

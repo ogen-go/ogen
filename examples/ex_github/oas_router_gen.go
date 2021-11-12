@@ -66,6 +66,23 @@ func (s *Server) notFound(w http.ResponseWriter, r *http.Request) {
 	http.NotFound(w, r)
 }
 
+func skipSlash(p []byte) []byte {
+	if len(p) > 0 && p[0] == '/' {
+		return p[1:]
+	}
+	return p
+}
+
+// nextElem return next path element from p and forwarded p.
+func nextElem(p []byte) (elem, next []byte) {
+	p = skipSlash(p)
+	idx := bytes.IndexByte(p, '/')
+	if idx < 0 {
+		idx = len(p)
+	}
+	return p[:idx], p[idx:]
+}
+
 // ServeHTTP serves http request as defined by OpenAPI v3 specification,
 // calling handler that matches the path or returning not found error.
 func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
@@ -76,7 +93,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	}
 
 	var (
-		idx  int               // index of next slash
 		elem []byte            // current element, without slashes
 		args map[string]string // lazily initialized
 	)
@@ -85,23 +101,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	switch r.Method {
 	case "DELETE":
 		// Root edge.
-		if len(p) > 1 && p[0] == '/' {
-			p = p[1:]
-		}
-		if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-			idx = len(p) // no next slash, using full p
-		}
-		elem, p = p[:idx], p[idx:] // next elem, forward p
+		elem, p = nextElem(p)
 		switch string(elem) {
 		case "repos": // -> 1
 			// Edge: 1, path: "repos".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -109,23 +113,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				args["owner"] = string(elem)
 				// Edge: 2, path: "".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				case "": // -> 3
 					// Edge: 3, path: "".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -133,33 +125,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						args["repo"] = string(elem)
 						// Edge: 4, path: "".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "actions": // -> 5
 							// Edge: 5, path: "actions".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							case "artifacts": // -> 6
 								// Edge: 6, path: "artifacts".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -172,13 +146,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 							case "secrets": // -> 19
 								// Edge: 19, path: "secrets".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -191,13 +159,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 							case "runners": // -> 23
 								// Edge: 23, path: "runners".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -210,13 +172,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 							case "runs": // -> 27
 								// Edge: 27, path: "runs".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -224,13 +180,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									args["run_id"] = string(elem)
 									// Edge: 28, path: "".
-									if len(p) > 1 && p[0] == '/' {
-										p = p[1:]
-									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-										idx = len(p) // no next slash, using full p
-									}
-									elem, p = p[:idx], p[idx:] // next elem, forward p
+									elem, p = nextElem(p)
 									switch string(elem) {
 									case "logs": // -> 29
 										// DELETE /repos/{owner}/{repo}/actions/runs/{run_id}/logs
@@ -252,23 +202,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							return
 						case "code-scanning": // -> 59
 							// Edge: 59, path: "code-scanning".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							case "analyses": // -> 60
 								// Edge: 60, path: "analyses".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -289,23 +227,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							return
 						case "issues": // -> 92
 							// Edge: 92, path: "issues".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							case "comments": // -> 93
 								// Edge: 93, path: "comments".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -313,23 +239,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									args["comment_id"] = string(elem)
 									// Edge: 94, path: "".
-									if len(p) > 1 && p[0] == '/' {
-										p = p[1:]
-									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-										idx = len(p) // no next slash, using full p
-									}
-									elem, p = p[:idx], p[idx:] // next elem, forward p
+									elem, p = nextElem(p)
 									switch string(elem) {
 									case "reactions": // -> 174
 										// Edge: 174, path: "reactions".
-										if len(p) > 1 && p[0] == '/' {
-											p = p[1:]
-										}
-										if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-											idx = len(p) // no next slash, using full p
-										}
-										elem, p = p[:idx], p[idx:] // next elem, forward p
+										elem, p = nextElem(p)
 										switch string(elem) {
 										default:
 											if args == nil {
@@ -352,23 +266,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								args["issue_number"] = string(elem)
 								// Edge: 99, path: "".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								case "labels": // -> 100
 									// Edge: 100, path: "labels".
-									if len(p) > 1 && p[0] == '/' {
-										p = p[1:]
-									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-										idx = len(p) // no next slash, using full p
-									}
-									elem, p = p[:idx], p[idx:] // next elem, forward p
+									elem, p = nextElem(p)
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -389,13 +291,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									return
 								case "reactions": // -> 172
 									// Edge: 172, path: "reactions".
-									if len(p) > 1 && p[0] == '/' {
-										p = p[1:]
-									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-										idx = len(p) // no next slash, using full p
-									}
-									elem, p = p[:idx], p[idx:] // next elem, forward p
+									elem, p = nextElem(p)
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -413,13 +309,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						case "labels": // -> 95
 							// Edge: 95, path: "labels".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -432,13 +322,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						case "milestones": // -> 97
 							// Edge: 97, path: "milestones".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -455,23 +339,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							return
 						case "pulls": // -> 162
 							// Edge: 162, path: "pulls".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							case "comments": // -> 166
 								// Edge: 166, path: "comments".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -479,23 +351,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									args["comment_id"] = string(elem)
 									// Edge: 167, path: "".
-									if len(p) > 1 && p[0] == '/' {
-										p = p[1:]
-									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-										idx = len(p) // no next slash, using full p
-									}
-									elem, p = p[:idx], p[idx:] // next elem, forward p
+									elem, p = nextElem(p)
 									switch string(elem) {
 									case "reactions": // -> 176
 										// Edge: 176, path: "reactions".
-										if len(p) > 1 && p[0] == '/' {
-											p = p[1:]
-										}
-										if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-											idx = len(p) // no next slash, using full p
-										}
-										elem, p = p[:idx], p[idx:] // next elem, forward p
+										elem, p = nextElem(p)
 										switch string(elem) {
 										default:
 											if args == nil {
@@ -518,23 +378,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								args["pull_number"] = string(elem)
 								// Edge: 163, path: "".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								case "reviews": // -> 164
 									// Edge: 164, path: "reviews".
-									if len(p) > 1 && p[0] == '/' {
-										p = p[1:]
-									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-										idx = len(p) // no next slash, using full p
-									}
-									elem, p = p[:idx], p[idx:] // next elem, forward p
+									elem, p = nextElem(p)
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -552,13 +400,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						case "comments": // -> 168
 							// Edge: 168, path: "comments".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -566,23 +408,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								args["comment_id"] = string(elem)
 								// Edge: 169, path: "".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								case "reactions": // -> 170
 									// Edge: 170, path: "reactions".
-									if len(p) > 1 && p[0] == '/' {
-										p = p[1:]
-									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-										idx = len(p) // no next slash, using full p
-									}
-									elem, p = p[:idx], p[idx:] // next elem, forward p
+									elem, p = nextElem(p)
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -601,13 +431,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						case "branches": // -> 192
 							// Edge: 192, path: "branches".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -615,23 +439,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								args["branch"] = string(elem)
 								// Edge: 193, path: "".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								case "protection": // -> 194
 									// Edge: 194, path: "protection".
-									if len(p) > 1 && p[0] == '/' {
-										p = p[1:]
-									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-										idx = len(p) // no next slash, using full p
-									}
-									elem, p = p[:idx], p[idx:] // next elem, forward p
+									elem, p = nextElem(p)
 									switch string(elem) {
 									case "restrictions": // -> 195
 										// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions
@@ -665,13 +477,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						case "environments": // -> 197
 							// Edge: 197, path: "environments".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -684,13 +490,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						case "autolinks": // -> 199
 							// Edge: 199, path: "autolinks".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -703,13 +503,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						case "keys": // -> 202
 							// Edge: 202, path: "keys".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -722,13 +516,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						case "deployments": // -> 204
 							// Edge: 204, path: "deployments".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -741,13 +529,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						case "invitations": // -> 206
 							// Edge: 206, path: "invitations".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -760,23 +542,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						case "releases": // -> 209
 							// Edge: 209, path: "releases".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							case "assets": // -> 211
 								// Edge: 211, path: "assets".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -798,13 +568,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						case "hooks": // -> 213
 							// Edge: 213, path: "hooks".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -829,13 +593,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							return
 						case "collaborators": // -> 218
 							// Edge: 218, path: "collaborators".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -859,13 +617,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 		case "repositories": // -> 8
 			// Edge: 8, path: "repositories".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -873,23 +625,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				args["repository_id"] = string(elem)
 				// Edge: 9, path: "".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				case "environments": // -> 10
 					// Edge: 10, path: "environments".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -897,23 +637,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						args["environment_name"] = string(elem)
 						// Edge: 11, path: "".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "secrets": // -> 12
 							// Edge: 12, path: "secrets".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -936,13 +664,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 		case "orgs": // -> 14
 			// Edge: 14, path: "orgs".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -950,33 +672,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				args["org"] = string(elem)
 				// Edge: 15, path: "".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				case "actions": // -> 16
 					// Edge: 16, path: "actions".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					case "secrets": // -> 17
 						// Edge: 17, path: "secrets".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -984,23 +688,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							args["secret_name"] = string(elem)
 							// Edge: 18, path: "".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							case "repositories": // -> 35
 								// Edge: 35, path: "repositories".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -1019,13 +711,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 					case "runners": // -> 21
 						// Edge: 21, path: "runners".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -1038,13 +724,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 					case "runner-groups": // -> 25
 						// Edge: 25, path: "runner-groups".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -1052,23 +732,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							args["runner_group_id"] = string(elem)
 							// Edge: 26, path: "".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							case "repositories": // -> 33
 								// Edge: 33, path: "repositories".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -1081,13 +749,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 							case "runners": // -> 37
 								// Edge: 37, path: "runners".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -1106,23 +768,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 					case "permissions": // -> 30
 						// Edge: 30, path: "permissions".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "repositories": // -> 31
 							// Edge: 31, path: "repositories".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -1147,13 +797,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					return
 				case "migrations": // -> 108
 					// Edge: 108, path: "migrations".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -1161,13 +805,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						args["migration_id"] = string(elem)
 						// Edge: 109, path: "".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "archive": // -> 110
 							// DELETE /orgs/{org}/migrations/{migration_id}/archive
@@ -1175,13 +813,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							return
 						case "repos": // -> 114
 							// Edge: 114, path: "repos".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -1189,13 +821,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								args["repo_name"] = string(elem)
 								// Edge: 115, path: "".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								case "lock": // -> 116
 									// DELETE /orgs/{org}/migrations/{migration_id}/repos/{repo_name}/lock
@@ -1213,13 +839,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 				case "hooks": // -> 122
 					// Edge: 122, path: "hooks".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -1232,13 +852,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 				case "members": // -> 124
 					// Edge: 124, path: "members".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -1251,13 +865,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 				case "memberships": // -> 126
 					// Edge: 126, path: "memberships".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -1270,13 +878,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 				case "outside_collaborators": // -> 128
 					// Edge: 128, path: "outside_collaborators".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -1289,13 +891,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 				case "public_members": // -> 130
 					// Edge: 130, path: "public_members".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -1308,13 +904,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 				case "credential-authorizations": // -> 132
 					// Edge: 132, path: "credential-authorizations".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -1327,13 +917,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 				case "blocks": // -> 134
 					// Edge: 134, path: "blocks".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -1346,13 +930,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 				case "packages": // -> 140
 					// Edge: 140, path: "packages".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -1360,23 +938,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						args["package_type"] = string(elem)
 						// Edge: 141, path: "".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "": // -> 142
 							// Edge: 142, path: "".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -1384,23 +950,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								args["package_name"] = string(elem)
 								// Edge: 143, path: "".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								case "versions": // -> 152
 									// Edge: 152, path: "versions".
-									if len(p) > 1 && p[0] == '/' {
-										p = p[1:]
-									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-										idx = len(p) // no next slash, using full p
-									}
-									elem, p = p[:idx], p[idx:] // next elem, forward p
+									elem, p = nextElem(p)
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -1424,13 +978,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 				case "teams": // -> 178
 					// Edge: 178, path: "teams".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -1438,23 +986,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						args["team_slug"] = string(elem)
 						// Edge: 179, path: "".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "discussions": // -> 180
 							// Edge: 180, path: "discussions".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -1462,23 +998,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								args["discussion_number"] = string(elem)
 								// Edge: 181, path: "".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								case "reactions": // -> 182
 									// Edge: 182, path: "reactions".
-									if len(p) > 1 && p[0] == '/' {
-										p = p[1:]
-									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-										idx = len(p) // no next slash, using full p
-									}
-									elem, p = p[:idx], p[idx:] // next elem, forward p
+									elem, p = nextElem(p)
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -1491,13 +1015,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 								case "comments": // -> 184
 									// Edge: 184, path: "comments".
-									if len(p) > 1 && p[0] == '/' {
-										p = p[1:]
-									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-										idx = len(p) // no next slash, using full p
-									}
-									elem, p = p[:idx], p[idx:] // next elem, forward p
+									elem, p = nextElem(p)
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -1505,23 +1023,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 										args["comment_number"] = string(elem)
 										// Edge: 185, path: "".
-										if len(p) > 1 && p[0] == '/' {
-											p = p[1:]
-										}
-										if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-											idx = len(p) // no next slash, using full p
-										}
-										elem, p = p[:idx], p[idx:] // next elem, forward p
+										elem, p = nextElem(p)
 										switch string(elem) {
 										case "reactions": // -> 186
 											// Edge: 186, path: "reactions".
-											if len(p) > 1 && p[0] == '/' {
-												p = p[1:]
-											}
-											if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-												idx = len(p) // no next slash, using full p
-											}
-											elem, p = p[:idx], p[idx:] // next elem, forward p
+											elem, p = nextElem(p)
 											switch string(elem) {
 											default:
 												if args == nil {
@@ -1546,13 +1052,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						case "memberships": // -> 233
 							// Edge: 233, path: "memberships".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -1565,13 +1065,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						case "projects": // -> 237
 							// Edge: 237, path: "projects".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -1584,13 +1078,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						case "repos": // -> 239
 							// Edge: 239, path: "repos".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -1598,23 +1086,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								args["owner"] = string(elem)
 								// Edge: 240, path: "".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								case "": // -> 241
 									// Edge: 241, path: "".
-									if len(p) > 1 && p[0] == '/' {
-										p = p[1:]
-									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-										idx = len(p) // no next slash, using full p
-									}
-									elem, p = p[:idx], p[idx:] // next elem, forward p
+									elem, p = nextElem(p)
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -1643,23 +1119,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 		case "notifications": // -> 40
 			// Edge: 40, path: "notifications".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			case "threads": // -> 41
 				// Edge: 41, path: "threads".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				default:
 					if args == nil {
@@ -1667,13 +1131,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					args["thread_id"] = string(elem)
 					// Edge: 42, path: "".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					case "subscription": // -> 43
 						// DELETE /notifications/threads/{thread_id}/subscription
@@ -1690,23 +1148,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 		case "user": // -> 44
 			// Edge: 44, path: "user".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			case "starred": // -> 45
 				// Edge: 45, path: "starred".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				default:
 					if args == nil {
@@ -1714,23 +1160,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					args["owner"] = string(elem)
 					// Edge: 46, path: "".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					case "": // -> 47
 						// Edge: 47, path: "".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -1748,13 +1182,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 			case "installations": // -> 52
 				// Edge: 52, path: "installations".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				default:
 					if args == nil {
@@ -1762,23 +1190,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					args["installation_id"] = string(elem)
 					// Edge: 53, path: "".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					case "repositories": // -> 54
 						// Edge: 54, path: "repositories".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -1800,13 +1216,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				return
 			case "migrations": // -> 105
 				// Edge: 105, path: "migrations".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				default:
 					if args == nil {
@@ -1814,13 +1224,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					args["migration_id"] = string(elem)
 					// Edge: 106, path: "".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					case "archive": // -> 107
 						// DELETE /user/migrations/{migration_id}/archive
@@ -1828,13 +1232,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						return
 					case "repos": // -> 111
 						// Edge: 111, path: "repos".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -1842,13 +1240,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							args["repo_name"] = string(elem)
 							// Edge: 112, path: "".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							case "lock": // -> 113
 								// DELETE /user/migrations/{migration_id}/repos/{repo_name}/lock
@@ -1866,13 +1258,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 			case "packages": // -> 136
 				// Edge: 136, path: "packages".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				default:
 					if args == nil {
@@ -1880,23 +1266,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					args["package_type"] = string(elem)
 					// Edge: 137, path: "".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					case "": // -> 138
 						// Edge: 138, path: "".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -1904,23 +1278,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							args["package_name"] = string(elem)
 							// Edge: 139, path: "".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							case "versions": // -> 150
 								// Edge: 150, path: "versions".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -1944,13 +1306,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 			case "repository_invitations": // -> 190
 				// Edge: 190, path: "repository_invitations".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				default:
 					if args == nil {
@@ -1963,13 +1319,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 			case "keys": // -> 247
 				// Edge: 247, path: "keys".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				default:
 					if args == nil {
@@ -1982,13 +1332,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 			case "blocks": // -> 249
 				// Edge: 249, path: "blocks".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				default:
 					if args == nil {
@@ -2001,13 +1345,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 			case "following": // -> 251
 				// Edge: 251, path: "following".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				default:
 					if args == nil {
@@ -2024,23 +1362,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 		case "app": // -> 49
 			// Edge: 49, path: "app".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			case "installations": // -> 50
 				// Edge: 50, path: "installations".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				default:
 					if args == nil {
@@ -2048,13 +1374,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					args["installation_id"] = string(elem)
 					// Edge: 51, path: "".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					case "suspended": // -> 58
 						// DELETE /app/installations/{installation_id}/suspended
@@ -2072,13 +1392,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 		case "installation": // -> 56
 			// Edge: 56, path: "installation".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			case "token": // -> 57
 				// DELETE /installation/token
@@ -2090,33 +1404,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 		case "scim": // -> 62
 			// Edge: 62, path: "scim".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			case "v2": // -> 63
 				// Edge: 63, path: "v2".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				case "enterprises": // -> 64
 					// Edge: 64, path: "enterprises".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -2124,23 +1420,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						args["enterprise"] = string(elem)
 						// Edge: 65, path: "".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "Groups": // -> 66
 							// Edge: 66, path: "Groups".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -2153,13 +1437,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						case "Users": // -> 75
 							// Edge: 75, path: "Users".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -2177,13 +1455,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 				case "organizations": // -> 221
 					// Edge: 221, path: "organizations".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -2191,23 +1463,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						args["org"] = string(elem)
 						// Edge: 222, path: "".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "Users": // -> 223
 							// Edge: 223, path: "Users".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -2233,13 +1493,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 		case "enterprises": // -> 68
 			// Edge: 68, path: "enterprises".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -2247,33 +1501,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				args["enterprise"] = string(elem)
 				// Edge: 69, path: "".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				case "actions": // -> 70
 					// Edge: 70, path: "actions".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					case "runners": // -> 71
 						// Edge: 71, path: "runners".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -2286,13 +1522,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 					case "runner-groups": // -> 73
 						// Edge: 73, path: "runner-groups".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -2300,23 +1530,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							args["runner_group_id"] = string(elem)
 							// Edge: 74, path: "".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							case "organizations": // -> 80
 								// Edge: 80, path: "organizations".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -2329,13 +1547,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 							case "runners": // -> 82
 								// Edge: 82, path: "runners".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -2354,23 +1566,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 					case "permissions": // -> 77
 						// Edge: 77, path: "permissions".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "organizations": // -> 78
 							// Edge: 78, path: "organizations".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -2396,13 +1596,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 		case "gists": // -> 84
 			// Edge: 84, path: "gists".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -2410,23 +1604,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				args["gist_id"] = string(elem)
 				// Edge: 85, path: "".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				case "comments": // -> 86
 					// Edge: 86, path: "comments".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -2449,13 +1631,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 		case "authorizations": // -> 117
 			// Edge: 117, path: "authorizations".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -2468,23 +1644,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 		case "applications": // -> 119
 			// Edge: 119, path: "applications".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			case "grants": // -> 120
 				// Edge: 120, path: "grants".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				default:
 					if args == nil {
@@ -2501,13 +1665,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 		case "users": // -> 144
 			// Edge: 144, path: "users".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -2515,23 +1673,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				args["username"] = string(elem)
 				// Edge: 145, path: "".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				case "packages": // -> 146
 					// Edge: 146, path: "packages".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -2539,23 +1685,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						args["package_type"] = string(elem)
 						// Edge: 147, path: "".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "": // -> 148
 							// Edge: 148, path: "".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -2563,23 +1697,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								args["package_name"] = string(elem)
 								// Edge: 149, path: "".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								case "versions": // -> 154
 									// Edge: 154, path: "versions".
-									if len(p) > 1 && p[0] == '/' {
-										p = p[1:]
-									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-										idx = len(p) // no next slash, using full p
-									}
-									elem, p = p[:idx], p[idx:] // next elem, forward p
+									elem, p = nextElem(p)
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -2608,33 +1730,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 		case "projects": // -> 156
 			// Edge: 156, path: "projects".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			case "columns": // -> 158
 				// Edge: 158, path: "columns".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				case "cards": // -> 159
 					// Edge: 159, path: "cards".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -2665,13 +1769,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 		case "reactions": // -> 188
 			// Edge: 188, path: "reactions".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -2684,13 +1782,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 		case "teams": // -> 225
 			// Edge: 225, path: "teams".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -2698,23 +1790,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				args["team_id"] = string(elem)
 				// Edge: 226, path: "".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				case "discussions": // -> 227
 					// Edge: 227, path: "discussions".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -2722,23 +1802,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						args["discussion_number"] = string(elem)
 						// Edge: 228, path: "".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "comments": // -> 229
 							// Edge: 229, path: "comments".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -2757,13 +1825,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 				case "members": // -> 231
 					// Edge: 231, path: "members".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -2776,13 +1838,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 				case "memberships": // -> 235
 					// Edge: 235, path: "memberships".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -2795,13 +1851,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 				case "repos": // -> 243
 					// Edge: 243, path: "repos".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -2809,23 +1859,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						args["owner"] = string(elem)
 						// Edge: 244, path: "".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "": // -> 245
 							// Edge: 245, path: "".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -2852,23 +1890,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		}
 	case "GET":
 		// Root edge.
-		if len(p) > 1 && p[0] == '/' {
-			p = p[1:]
-		}
-		if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-			idx = len(p) // no next slash, using full p
-		}
-		elem, p = p[:idx], p[idx:] // next elem, forward p
+		elem, p = nextElem(p)
 		switch string(elem) {
 		case "repos": // -> 1
 			// Edge: 1, path: "repos".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -2876,23 +1902,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				args["owner"] = string(elem)
 				// Edge: 2, path: "".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				case "": // -> 3
 					// Edge: 3, path: "".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -2900,33 +1914,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						args["repo"] = string(elem)
 						// Edge: 4, path: "".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "actions": // -> 5
 							// Edge: 5, path: "actions".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							case "artifacts": // -> 6
 								// Edge: 6, path: "artifacts".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -2934,23 +1930,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									args["artifact_id"] = string(elem)
 									// Edge: 7, path: "".
-									if len(p) > 1 && p[0] == '/' {
-										p = p[1:]
-									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-										idx = len(p) // no next slash, using full p
-									}
-									elem, p = p[:idx], p[idx:] // next elem, forward p
+									elem, p = nextElem(p)
 									switch string(elem) {
 									case "": // -> 8
 										// Edge: 8, path: "".
-										if len(p) > 1 && p[0] == '/' {
-											p = p[1:]
-										}
-										if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-											idx = len(p) // no next slash, using full p
-										}
-										elem, p = p[:idx], p[idx:] // next elem, forward p
+										elem, p = nextElem(p)
 										switch string(elem) {
 										default:
 											if args == nil {
@@ -2969,13 +1953,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 							case "jobs": // -> 10
 								// Edge: 10, path: "jobs".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -2983,13 +1961,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									args["job_id"] = string(elem)
 									// Edge: 11, path: "".
-									if len(p) > 1 && p[0] == '/' {
-										p = p[1:]
-									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-										idx = len(p) // no next slash, using full p
-									}
-									elem, p = p[:idx], p[idx:] // next elem, forward p
+									elem, p = nextElem(p)
 									switch string(elem) {
 									case "logs": // -> 12
 										// GET /repos/{owner}/{repo}/actions/jobs/{job_id}/logs
@@ -3003,13 +1975,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 							case "runs": // -> 13
 								// Edge: 13, path: "runs".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -3017,13 +1983,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									args["run_id"] = string(elem)
 									// Edge: 14, path: "".
-									if len(p) > 1 && p[0] == '/' {
-										p = p[1:]
-									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-										idx = len(p) // no next slash, using full p
-									}
-									elem, p = p[:idx], p[idx:] // next elem, forward p
+									elem, p = nextElem(p)
 									switch string(elem) {
 									case "logs": // -> 15
 										// GET /repos/{owner}/{repo}/actions/runs/{run_id}/logs
@@ -3053,13 +2013,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 							case "permissions": // -> 21
 								// Edge: 21, path: "permissions".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								case "selected-actions": // -> 22
 									// GET /repos/{owner}/{repo}/actions/permissions/selected-actions
@@ -3072,13 +2026,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 							case "secrets": // -> 33
 								// Edge: 33, path: "secrets".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								case "public-key": // -> 34
 									// GET /repos/{owner}/{repo}/actions/secrets/public-key
@@ -3095,13 +2043,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 							case "runners": // -> 39
 								// Edge: 39, path: "runners".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								case "downloads": // -> 48
 									// GET /repos/{owner}/{repo}/actions/runners/downloads
@@ -3142,13 +2084,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							return
 						case "check-runs": // -> 123
 							// Edge: 123, path: "check-runs".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -3156,13 +2092,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								args["check_run_id"] = string(elem)
 								// Edge: 124, path: "".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								case "annotations": // -> 127
 									// GET /repos/{owner}/{repo}/check-runs/{check_run_id}/annotations
@@ -3176,13 +2106,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						case "check-suites": // -> 125
 							// Edge: 125, path: "check-suites".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -3190,13 +2114,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								args["check_suite_id"] = string(elem)
 								// Edge: 126, path: "".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								case "check-runs": // -> 131
 									// GET /repos/{owner}/{repo}/check-suites/{check_suite_id}/check-runs
@@ -3210,13 +2128,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						case "commits": // -> 128
 							// Edge: 128, path: "commits".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -3224,13 +2136,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								args["ref"] = string(elem)
 								// Edge: 129, path: "".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								case "check-runs": // -> 130
 									// GET /repos/{owner}/{repo}/commits/{ref}/check-runs
@@ -3263,23 +2169,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						case "code-scanning": // -> 133
 							// Edge: 133, path: "code-scanning".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							case "alerts": // -> 134
 								// Edge: 134, path: "alerts".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -3287,13 +2181,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									args["alert_number"] = string(elem)
 									// Edge: 135, path: "".
-									if len(p) > 1 && p[0] == '/' {
-										p = p[1:]
-									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-										idx = len(p) // no next slash, using full p
-									}
-									elem, p = p[:idx], p[idx:] // next elem, forward p
+									elem, p = nextElem(p)
 									switch string(elem) {
 									case "instances": // -> 140
 										// GET /repos/{owner}/{repo}/code-scanning/alerts/{alert_number}/instances
@@ -3307,13 +2195,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 							case "analyses": // -> 136
 								// Edge: 136, path: "analyses".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -3326,13 +2208,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 							case "sarifs": // -> 138
 								// Edge: 138, path: "sarifs".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -3349,23 +2225,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						case "git": // -> 172
 							// Edge: 172, path: "git".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							case "commits": // -> 173
 								// Edge: 173, path: "commits".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -3378,13 +2242,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 							case "ref": // -> 175
 								// Edge: 175, path: "ref".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -3397,13 +2255,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 							case "tags": // -> 177
 								// Edge: 177, path: "tags".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -3416,13 +2268,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 							case "matching-refs": // -> 179
 								// Edge: 179, path: "matching-refs".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -3439,13 +2285,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						case "assignees": // -> 184
 							// Edge: 184, path: "assignees".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -3458,23 +2298,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						case "issues": // -> 186
 							// Edge: 186, path: "issues".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							case "comments": // -> 187
 								// Edge: 187, path: "comments".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -3482,13 +2310,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									args["comment_id"] = string(elem)
 									// Edge: 188, path: "".
-									if len(p) > 1 && p[0] == '/' {
-										p = p[1:]
-									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-										idx = len(p) // no next slash, using full p
-									}
-									elem, p = p[:idx], p[idx:] // next elem, forward p
+									elem, p = nextElem(p)
 									switch string(elem) {
 									case "reactions": // -> 288
 										// GET /repos/{owner}/{repo}/issues/comments/{comment_id}/reactions
@@ -3502,13 +2324,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 							case "events": // -> 189
 								// Edge: 189, path: "events".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -3525,13 +2341,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								args["issue_number"] = string(elem)
 								// Edge: 195, path: "".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								case "comments": // -> 196
 									// GET /repos/{owner}/{repo}/issues/{issue_number}/comments
@@ -3552,13 +2362,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						case "labels": // -> 191
 							// Edge: 191, path: "labels".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -3571,13 +2375,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						case "milestones": // -> 193
 							// Edge: 193, path: "milestones".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -3585,13 +2383,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								args["milestone_number"] = string(elem)
 								// Edge: 194, path: "".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								case "labels": // -> 197
 									// GET /repos/{owner}/{repo}/milestones/{milestone_number}/labels
@@ -3609,13 +2401,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							return
 						case "import": // -> 210
 							// Edge: 210, path: "import".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							case "authors": // -> 211
 								// GET /repos/{owner}/{repo}/import/authors
@@ -3636,23 +2422,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							return
 						case "pulls": // -> 272
 							// Edge: 272, path: "pulls".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							case "comments": // -> 277
 								// Edge: 277, path: "comments".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -3660,13 +2434,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									args["comment_id"] = string(elem)
 									// Edge: 278, path: "".
-									if len(p) > 1 && p[0] == '/' {
-										p = p[1:]
-									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-										idx = len(p) // no next slash, using full p
-									}
-									elem, p = p[:idx], p[idx:] // next elem, forward p
+									elem, p = nextElem(p)
 									switch string(elem) {
 									case "reactions": // -> 289
 										// GET /repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions
@@ -3684,13 +2452,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								args["pull_number"] = string(elem)
 								// Edge: 273, path: "".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								case "merge": // -> 274
 									// GET /repos/{owner}/{repo}/pulls/{pull_number}/merge
@@ -3698,13 +2460,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									return
 								case "reviews": // -> 275
 									// Edge: 275, path: "reviews".
-									if len(p) > 1 && p[0] == '/' {
-										p = p[1:]
-									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-										idx = len(p) // no next slash, using full p
-									}
-									elem, p = p[:idx], p[idx:] // next elem, forward p
+									elem, p = nextElem(p)
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -3712,13 +2468,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 										args["review_id"] = string(elem)
 										// Edge: 276, path: "".
-										if len(p) > 1 && p[0] == '/' {
-											p = p[1:]
-										}
-										if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-											idx = len(p) // no next slash, using full p
-										}
-										elem, p = p[:idx], p[idx:] // next elem, forward p
+										elem, p = nextElem(p)
 										switch string(elem) {
 										case "comments": // -> 279
 											// GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/comments
@@ -3750,13 +2500,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						case "comments": // -> 284
 							// Edge: 284, path: "comments".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -3764,13 +2508,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								args["comment_id"] = string(elem)
 								// Edge: 285, path: "".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								case "reactions": // -> 286
 									// GET /repos/{owner}/{repo}/comments/{comment_id}/reactions
@@ -3784,13 +2522,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						case "collaborators": // -> 306
 							// Edge: 306, path: "collaborators".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -3798,13 +2530,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								args["username"] = string(elem)
 								// Edge: 307, path: "".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								case "permission": // -> 330
 									// GET /repos/{owner}/{repo}/collaborators/{username}/permission
@@ -3822,13 +2548,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							return
 						case "compare": // -> 309
 							// Edge: 309, path: "compare".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -3841,13 +2561,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						case "tarball": // -> 311
 							// Edge: 311, path: "tarball".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -3860,13 +2574,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						case "zipball": // -> 313
 							// Edge: 313, path: "zipball".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -3879,13 +2587,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						case "branches": // -> 315
 							// Edge: 315, path: "branches".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -3893,33 +2595,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								args["branch"] = string(elem)
 								// Edge: 316, path: "".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								case "protection": // -> 317
 									// Edge: 317, path: "protection".
-									if len(p) > 1 && p[0] == '/' {
-										p = p[1:]
-									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-										idx = len(p) // no next slash, using full p
-									}
-									elem, p = p[:idx], p[idx:] // next elem, forward p
+									elem, p = nextElem(p)
 									switch string(elem) {
 									case "restrictions": // -> 318
 										// Edge: 318, path: "restrictions".
-										if len(p) > 1 && p[0] == '/' {
-											p = p[1:]
-										}
-										if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-											idx = len(p) // no next slash, using full p
-										}
-										elem, p = p[:idx], p[idx:] // next elem, forward p
+										elem, p = nextElem(p)
 										switch string(elem) {
 										case "apps": // -> 323
 											// GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps
@@ -3944,13 +2628,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										return
 									case "required_status_checks": // -> 320
 										// Edge: 320, path: "required_status_checks".
-										if len(p) > 1 && p[0] == '/' {
-											p = p[1:]
-										}
-										if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-											idx = len(p) // no next slash, using full p
-										}
-										elem, p = p[:idx], p[idx:] // next elem, forward p
+										elem, p = nextElem(p)
 										switch string(elem) {
 										case "contexts": // -> 321
 											// GET /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts
@@ -3986,13 +2664,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							return
 						case "autolinks": // -> 324
 							// Edge: 324, path: "autolinks".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -4005,13 +2677,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						case "traffic": // -> 326
 							// Edge: 326, path: "traffic".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							case "clones": // -> 327
 								// GET /repos/{owner}/{repo}/traffic/clones
@@ -4019,13 +2685,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								return
 							case "popular": // -> 359
 								// Edge: 359, path: "popular".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								case "paths": // -> 360
 									// GET /repos/{owner}/{repo}/traffic/popular/paths
@@ -4049,13 +2709,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						case "stats": // -> 328
 							// Edge: 328, path: "stats".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							case "code_frequency": // -> 329
 								// GET /repos/{owner}/{repo}/stats/code_frequency
@@ -4083,13 +2737,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						case "community": // -> 334
 							// Edge: 334, path: "community".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							case "profile": // -> 335
 								// GET /repos/{owner}/{repo}/community/profile
@@ -4101,13 +2749,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						case "keys": // -> 337
 							// Edge: 337, path: "keys".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -4120,13 +2762,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						case "deployments": // -> 339
 							// Edge: 339, path: "deployments".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -4134,23 +2770,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								args["deployment_id"] = string(elem)
 								// Edge: 340, path: "".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								case "statuses": // -> 341
 									// Edge: 341, path: "statuses".
-									if len(p) > 1 && p[0] == '/' {
-										p = p[1:]
-									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-										idx = len(p) // no next slash, using full p
-									}
-									elem, p = p[:idx], p[idx:] // next elem, forward p
+									elem, p = nextElem(p)
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -4168,23 +2792,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						case "pages": // -> 343
 							// Edge: 343, path: "pages".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							case "builds": // -> 344
 								// Edge: 344, path: "builds".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								case "latest": // -> 345
 									// GET /repos/{owner}/{repo}/pages/builds/latest
@@ -4210,13 +2822,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						case "releases": // -> 346
 							// Edge: 346, path: "releases".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							case "latest": // -> 347
 								// GET /repos/{owner}/{repo}/releases/latest
@@ -4224,13 +2830,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								return
 							case "assets": // -> 354
 								// Edge: 354, path: "assets".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -4243,13 +2843,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 							case "tags": // -> 356
 								// Edge: 356, path: "tags".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -4266,13 +2860,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								args["release_id"] = string(elem)
 								// Edge: 353, path: "".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								case "assets": // -> 377
 									// GET /repos/{owner}/{repo}/releases/{release_id}/assets
@@ -4286,13 +2874,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						case "hooks": // -> 364
 							// Edge: 364, path: "hooks".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -4300,13 +2882,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								args["hook_id"] = string(elem)
 								// Edge: 365, path: "".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								case "config": // -> 366
 									// GET /repos/{owner}/{repo}/hooks/{hook_id}/config
@@ -4344,23 +2920,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							return
 						case "secret-scanning": // -> 383
 							// Edge: 383, path: "secret-scanning".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							case "alerts": // -> 384
 								// Edge: 384, path: "alerts".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -4388,13 +2952,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 		case "orgs": // -> 16
 			// Edge: 16, path: "orgs".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -4402,33 +2960,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				args["org"] = string(elem)
 				// Edge: 17, path: "".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				case "actions": // -> 18
 					// Edge: 18, path: "actions".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					case "permissions": // -> 19
 						// Edge: 19, path: "permissions".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "selected-actions": // -> 20
 							// GET /orgs/{org}/actions/permissions/selected-actions
@@ -4445,13 +2985,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 					case "secrets": // -> 30
 						// Edge: 30, path: "secrets".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "public-key": // -> 31
 							// GET /orgs/{org}/actions/secrets/public-key
@@ -4463,13 +2997,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							args["secret_name"] = string(elem)
 							// Edge: 32, path: "".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							case "repositories": // -> 49
 								// GET /orgs/{org}/actions/secrets/{secret_name}/repositories
@@ -4483,13 +3011,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 					case "runners": // -> 37
 						// Edge: 37, path: "runners".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "downloads": // -> 47
 							// GET /orgs/{org}/actions/runners/downloads
@@ -4506,13 +3028,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 					case "runner-groups": // -> 41
 						// Edge: 41, path: "runner-groups".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -4520,13 +3036,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							args["runner_group_id"] = string(elem)
 							// Edge: 42, path: "".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							case "repositories": // -> 45
 								// GET /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories
@@ -4552,23 +3062,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					return
 				case "settings": // -> 111
 					// Edge: 111, path: "settings".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					case "billing": // -> 112
 						// Edge: 112, path: "billing".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "actions": // -> 113
 							// GET /orgs/{org}/settings/billing/actions
@@ -4592,13 +3090,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 				case "migrations": // -> 204
 					// Edge: 204, path: "migrations".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -4606,13 +3098,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						args["migration_id"] = string(elem)
 						// Edge: 205, path: "".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "archive": // -> 206
 							// GET /orgs/{org}/migrations/{migration_id}/archive
@@ -4630,13 +3116,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 				case "blocks": // -> 220
 					// Edge: 220, path: "blocks".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -4649,13 +3129,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 				case "members": // -> 222
 					// Edge: 222, path: "members".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -4668,13 +3142,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 				case "public_members": // -> 224
 					// Edge: 224, path: "public_members".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -4691,13 +3159,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					return
 				case "memberships": // -> 230
 					// Edge: 230, path: "memberships".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -4710,13 +3172,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 				case "hooks": // -> 232
 					// Edge: 232, path: "hooks".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -4724,13 +3180,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						args["hook_id"] = string(elem)
 						// Edge: 233, path: "".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "config": // -> 234
 							// GET /orgs/{org}/hooks/{hook_id}/config
@@ -4748,13 +3198,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					return
 				case "invitations": // -> 239
 					// Edge: 239, path: "invitations".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -4762,13 +3206,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						args["invitation_id"] = string(elem)
 						// Edge: 240, path: "".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "teams": // -> 241
 							// GET /orgs/{org}/invitations/{invitation_id}/teams
@@ -4789,13 +3227,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					return
 				case "packages": // -> 249
 					// Edge: 249, path: "packages".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -4803,23 +3235,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						args["package_type"] = string(elem)
 						// Edge: 250, path: "".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "": // -> 251
 							// Edge: 251, path: "".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -4827,23 +3247,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								args["package_name"] = string(elem)
 								// Edge: 252, path: "".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								case "versions": // -> 253
 									// Edge: 253, path: "versions".
-									if len(p) > 1 && p[0] == '/' {
-										p = p[1:]
-									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-										idx = len(p) // no next slash, using full p
-									}
-									elem, p = p[:idx], p[idx:] // next elem, forward p
+									elem, p = nextElem(p)
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -4871,13 +3279,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					return
 				case "teams": // -> 290
 					// Edge: 290, path: "teams".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -4885,23 +3287,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						args["team_slug"] = string(elem)
 						// Edge: 291, path: "".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "discussions": // -> 292
 							// Edge: 292, path: "discussions".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -4909,23 +3299,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								args["discussion_number"] = string(elem)
 								// Edge: 293, path: "".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								case "comments": // -> 294
 									// Edge: 294, path: "comments".
-									if len(p) > 1 && p[0] == '/' {
-										p = p[1:]
-									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-										idx = len(p) // no next slash, using full p
-									}
-									elem, p = p[:idx], p[idx:] // next elem, forward p
+									elem, p = nextElem(p)
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -4933,13 +3311,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 										args["comment_number"] = string(elem)
 										// Edge: 295, path: "".
-										if len(p) > 1 && p[0] == '/' {
-											p = p[1:]
-										}
-										if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-											idx = len(p) // no next slash, using full p
-										}
-										elem, p = p[:idx], p[idx:] // next elem, forward p
+										elem, p = nextElem(p)
 										switch string(elem) {
 										case "reactions": // -> 296
 											// GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions
@@ -4963,13 +3335,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						case "projects": // -> 388
 							// Edge: 388, path: "projects".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -4982,13 +3348,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						case "repos": // -> 392
 							// Edge: 392, path: "repos".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -4996,23 +3356,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								args["owner"] = string(elem)
 								// Edge: 393, path: "".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								case "": // -> 394
 									// Edge: 394, path: "".
-									if len(p) > 1 && p[0] == '/' {
-										p = p[1:]
-									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-										idx = len(p) // no next slash, using full p
-									}
-									elem, p = p[:idx], p[idx:] // next elem, forward p
+									elem, p = nextElem(p)
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -5030,13 +3378,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						case "memberships": // -> 402
 							// Edge: 402, path: "memberships".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -5053,13 +3395,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							return
 						case "team-sync": // -> 412
 							// Edge: 412, path: "team-sync".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							case "group-mappings": // -> 413
 								// GET /orgs/{org}/teams/{team_slug}/team-sync/group-mappings
@@ -5089,13 +3425,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					return
 				case "secret-scanning": // -> 386
 					// Edge: 386, path: "secret-scanning".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					case "alerts": // -> 387
 						// GET /orgs/{org}/secret-scanning/alerts
@@ -5107,13 +3437,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 				case "team-sync": // -> 410
 					// Edge: 410, path: "team-sync".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					case "groups": // -> 411
 						// GET /orgs/{org}/team-sync/groups
@@ -5131,13 +3455,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 		case "repositories": // -> 23
 			// Edge: 23, path: "repositories".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -5145,23 +3463,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				args["repository_id"] = string(elem)
 				// Edge: 24, path: "".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				case "environments": // -> 25
 					// Edge: 25, path: "environments".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -5169,23 +3475,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						args["environment_name"] = string(elem)
 						// Edge: 26, path: "".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "secrets": // -> 27
 							// Edge: 27, path: "secrets".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							case "public-key": // -> 28
 								// GET /repositories/{repository_id}/environments/{environment_name}/secrets/public-key
@@ -5212,23 +3506,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 		case "user": // -> 53
 			// Edge: 53, path: "user".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			case "starred": // -> 54
 				// Edge: 54, path: "starred".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				default:
 					if args == nil {
@@ -5236,23 +3518,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					args["owner"] = string(elem)
 					// Edge: 55, path: "".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					case "": // -> 56
 						// Edge: 56, path: "".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -5274,13 +3544,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				return
 			case "installations": // -> 98
 				// Edge: 98, path: "installations".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				default:
 					if args == nil {
@@ -5288,13 +3552,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					args["installation_id"] = string(elem)
 					// Edge: 99, path: "".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					case "repositories": // -> 100
 						// GET /user/installations/{installation_id}/repositories
@@ -5307,13 +3565,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 			case "marketplace_purchases": // -> 104
 				// Edge: 104, path: "marketplace_purchases".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				case "stubbed": // -> 105
 					// GET /user/marketplace_purchases/stubbed
@@ -5326,13 +3578,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 			case "migrations": // -> 207
 				// Edge: 207, path: "migrations".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				default:
 					if args == nil {
@@ -5340,13 +3586,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					args["migration_id"] = string(elem)
 					// Edge: 208, path: "".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					case "archive": // -> 209
 						// GET /user/migrations/{migration_id}/archive
@@ -5364,23 +3604,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 			case "memberships": // -> 227
 				// Edge: 227, path: "memberships".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				case "orgs": // -> 228
 					// Edge: 228, path: "orgs".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -5401,13 +3629,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				return
 			case "packages": // -> 244
 				// Edge: 244, path: "packages".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				default:
 					if args == nil {
@@ -5415,23 +3637,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					args["package_type"] = string(elem)
 					// Edge: 245, path: "".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					case "": // -> 246
 						// Edge: 246, path: "".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -5439,23 +3649,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							args["package_name"] = string(elem)
 							// Edge: 247, path: "".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							case "versions": // -> 248
 								// Edge: 248, path: "versions".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -5487,13 +3685,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				return
 			case "blocks": // -> 417
 				// Edge: 417, path: "blocks".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				default:
 					if args == nil {
@@ -5506,13 +3698,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 			case "following": // -> 421
 				// Edge: 421, path: "following".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				default:
 					if args == nil {
@@ -5525,13 +3711,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 			case "gpg_keys": // -> 423
 				// Edge: 423, path: "gpg_keys".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				default:
 					if args == nil {
@@ -5544,13 +3724,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 			case "keys": // -> 425
 				// Edge: 425, path: "keys".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				default:
 					if args == nil {
@@ -5584,23 +3758,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			return
 		case "notifications": // -> 60
 			// Edge: 60, path: "notifications".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			case "threads": // -> 61
 				// Edge: 61, path: "threads".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				default:
 					if args == nil {
@@ -5608,13 +3770,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					args["thread_id"] = string(elem)
 					// Edge: 62, path: "".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					case "subscription": // -> 63
 						// GET /notifications/threads/{thread_id}/subscription
@@ -5632,13 +3788,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 		case "users": // -> 64
 			// Edge: 64, path: "users".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -5646,33 +3796,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				args["username"] = string(elem)
 				// Edge: 65, path: "".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				case "events": // -> 66
 					// Edge: 66, path: "events".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					case "orgs": // -> 67
 						// Edge: 67, path: "orgs".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -5694,13 +3826,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 				case "received_events": // -> 77
 					// Edge: 77, path: "received_events".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					case "public": // -> 78
 						// GET /users/{username}/received_events/public
@@ -5717,23 +3843,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					return
 				case "settings": // -> 114
 					// Edge: 114, path: "settings".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					case "billing": // -> 115
 						// Edge: 115, path: "billing".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "actions": // -> 116
 							// GET /users/{username}/settings/billing/actions
@@ -5761,13 +3875,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					return
 				case "packages": // -> 254
 					// Edge: 254, path: "packages".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -5775,23 +3883,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						args["package_type"] = string(elem)
 						// Edge: 255, path: "".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "": // -> 256
 							// Edge: 256, path: "".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -5799,23 +3895,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								args["package_name"] = string(elem)
 								// Edge: 257, path: "".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								case "versions": // -> 258
 									// Edge: 258, path: "versions".
-									if len(p) > 1 && p[0] == '/' {
-										p = p[1:]
-									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-										idx = len(p) // no next slash, using full p
-									}
-									elem, p = p[:idx], p[idx:] // next elem, forward p
+									elem, p = nextElem(p)
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -5843,13 +3927,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					return
 				case "following": // -> 419
 					// Edge: 419, path: "following".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -5884,13 +3962,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			return
 		case "networks": // -> 70
 			// Edge: 70, path: "networks".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -5898,23 +3970,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				args["owner"] = string(elem)
 				// Edge: 71, path: "".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				case "": // -> 72
 					// Edge: 72, path: "".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -5922,13 +3982,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						args["repo"] = string(elem)
 						// Edge: 73, path: "".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "events": // -> 74
 							// GET /networks/{owner}/{repo}/events
@@ -5946,23 +4000,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 		case "app": // -> 84
 			// Edge: 84, path: "app".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			case "hook": // -> 93
 				// Edge: 93, path: "hook".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				case "config": // -> 94
 					// GET /app/hook/config
@@ -5979,13 +4021,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 		case "apps": // -> 85
 			// Edge: 85, path: "apps".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -5998,23 +4034,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 		case "marketplace_listing": // -> 87
 			// Edge: 87, path: "marketplace_listing".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			case "accounts": // -> 88
 				// Edge: 88, path: "accounts".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				default:
 					if args == nil {
@@ -6027,23 +4051,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 			case "stubbed": // -> 90
 				// Edge: 90, path: "stubbed".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				case "accounts": // -> 91
 					// Edge: 91, path: "accounts".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -6056,13 +4068,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 				case "plans": // -> 95
 					// Edge: 95, path: "plans".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -6070,13 +4076,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						args["plan_id"] = string(elem)
 						// Edge: 96, path: "".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "accounts": // -> 97
 							// GET /marketplace_listing/stubbed/plans/{plan_id}/accounts
@@ -6101,13 +4101,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 		case "installation": // -> 102
 			// Edge: 102, path: "installation".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			case "repositories": // -> 103
 				// GET /installation/repositories
@@ -6119,13 +4113,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 		case "enterprises": // -> 106
 			// Edge: 106, path: "enterprises".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -6133,33 +4121,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				args["enterprise"] = string(elem)
 				// Edge: 107, path: "".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				case "settings": // -> 108
 					// Edge: 108, path: "settings".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					case "billing": // -> 109
 						// Edge: 109, path: "billing".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "actions": // -> 110
 							// GET /enterprises/{enterprise}/settings/billing/actions
@@ -6183,23 +4153,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 				case "actions": // -> 144
 					// Edge: 144, path: "actions".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					case "permissions": // -> 145
 						// Edge: 145, path: "permissions".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "selected-actions": // -> 146
 							// GET /enterprises/{enterprise}/actions/permissions/selected-actions
@@ -6216,13 +4174,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 					case "runners": // -> 156
 						// Edge: 156, path: "runners".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "downloads": // -> 161
 							// GET /enterprises/{enterprise}/actions/runners/downloads
@@ -6239,13 +4191,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 					case "runner-groups": // -> 158
 						// Edge: 158, path: "runner-groups".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -6253,13 +4199,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							args["runner_group_id"] = string(elem)
 							// Edge: 159, path: "".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							case "organizations": // -> 160
 								// GET /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations
@@ -6290,13 +4230,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 		case "codes_of_conduct": // -> 141
 			// Edge: 141, path: "codes_of_conduct".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -6313,33 +4247,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			return
 		case "scim": // -> 148
 			// Edge: 148, path: "scim".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			case "v2": // -> 149
 				// Edge: 149, path: "v2".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				case "enterprises": // -> 150
 					// Edge: 150, path: "enterprises".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -6347,23 +4263,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						args["enterprise"] = string(elem)
 						// Edge: 151, path: "".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "Groups": // -> 152
 							// Edge: 152, path: "Groups".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -6376,13 +4280,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						case "Users": // -> 154
 							// Edge: 154, path: "Users".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -6408,13 +4306,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 		case "gists": // -> 164
 			// Edge: 164, path: "gists".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			case "starred": // -> 171
 				// GET /gists/starred
@@ -6426,13 +4318,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				args["gist_id"] = string(elem)
 				// Edge: 165, path: "".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				case "star": // -> 166
 					// GET /gists/{gist_id}/star
@@ -6440,13 +4326,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					return
 				case "comments": // -> 167
 					// Edge: 167, path: "comments".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -6473,23 +4353,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 		case "gitignore": // -> 181
 			// Edge: 181, path: "gitignore".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			case "templates": // -> 182
 				// Edge: 182, path: "templates".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				default:
 					if args == nil {
@@ -6506,13 +4374,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 		case "licenses": // -> 199
 			// Edge: 199, path: "licenses".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -6533,13 +4395,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			return
 		case "authorizations": // -> 215
 			// Edge: 215, path: "authorizations".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -6552,23 +4408,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 		case "applications": // -> 217
 			// Edge: 217, path: "applications".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			case "grants": // -> 218
 				// Edge: 218, path: "grants".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				default:
 					if args == nil {
@@ -6589,33 +4433,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			return
 		case "projects": // -> 262
 			// Edge: 262, path: "projects".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			case "columns": // -> 264
 				// Edge: 264, path: "columns".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				case "cards": // -> 265
 					// Edge: 265, path: "cards".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -6632,13 +4458,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					args["column_id"] = string(elem)
 					// Edge: 267, path: "".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					case "cards": // -> 268
 						// GET /projects/columns/{column_id}/cards
@@ -6656,13 +4476,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				args["project_id"] = string(elem)
 				// Edge: 263, path: "".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				case "columns": // -> 269
 					// GET /projects/{project_id}/columns
@@ -6680,13 +4494,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			return
 		case "teams": // -> 297
 			// Edge: 297, path: "teams".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -6694,23 +4502,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				args["team_id"] = string(elem)
 				// Edge: 298, path: "".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				case "discussions": // -> 299
 					// Edge: 299, path: "discussions".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -6718,23 +4514,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						args["discussion_number"] = string(elem)
 						// Edge: 300, path: "".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "comments": // -> 301
 							// Edge: 301, path: "comments".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -6742,13 +4526,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								args["comment_number"] = string(elem)
 								// Edge: 302, path: "".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								case "reactions": // -> 303
 									// GET /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions
@@ -6772,13 +4550,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 				case "projects": // -> 390
 					// Edge: 390, path: "projects".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -6791,13 +4563,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 				case "repos": // -> 396
 					// Edge: 396, path: "repos".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -6805,23 +4571,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						args["owner"] = string(elem)
 						// Edge: 397, path: "".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "": // -> 398
 							// Edge: 398, path: "".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -6839,13 +4593,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 				case "members": // -> 400
 					// Edge: 400, path: "members".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -6858,13 +4606,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 				case "memberships": // -> 404
 					// Edge: 404, path: "memberships".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -6877,13 +4619,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 				case "team-sync": // -> 408
 					// Edge: 408, path: "team-sync".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					case "group-mappings": // -> 409
 						// GET /teams/{team_id}/team-sync/group-mappings
@@ -6905,13 +4641,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 		case "search": // -> 380
 			// Edge: 380, path: "search".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			case "commits": // -> 381
 				// GET /search/commits
@@ -6931,23 +4661,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		}
 	case "PATCH":
 		// Root edge.
-		if len(p) > 1 && p[0] == '/' {
-			p = p[1:]
-		}
-		if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-			idx = len(p) // no next slash, using full p
-		}
-		elem, p = p[:idx], p[idx:] // next elem, forward p
+		elem, p = nextElem(p)
 		switch string(elem) {
 		case "orgs": // -> 1
 			// Edge: 1, path: "orgs".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -6955,33 +4673,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				args["org"] = string(elem)
 				// Edge: 2, path: "".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				case "actions": // -> 3
 					// Edge: 3, path: "actions".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					case "runner-groups": // -> 4
 						// Edge: 4, path: "runner-groups".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -6998,13 +4698,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 				case "hooks": // -> 41
 					// Edge: 41, path: "hooks".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -7012,13 +4706,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						args["hook_id"] = string(elem)
 						// Edge: 42, path: "".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "config": // -> 43
 							// PATCH /orgs/{org}/hooks/{hook_id}/config
@@ -7031,13 +4719,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 				case "teams": // -> 70
 					// Edge: 70, path: "teams".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -7045,23 +4727,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						args["team_slug"] = string(elem)
 						// Edge: 71, path: "".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "team-sync": // -> 72
 							// Edge: 72, path: "team-sync".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							case "group-mappings": // -> 73
 								// PATCH /orgs/{org}/teams/{team_slug}/team-sync/group-mappings
@@ -7073,13 +4743,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						case "discussions": // -> 74
 							// Edge: 74, path: "discussions".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -7087,23 +4751,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								args["discussion_number"] = string(elem)
 								// Edge: 75, path: "".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								case "comments": // -> 76
 									// Edge: 76, path: "comments".
-									if len(p) > 1 && p[0] == '/' {
-										p = p[1:]
-									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-										idx = len(p) // no next slash, using full p
-									}
-									elem, p = p[:idx], p[idx:] // next elem, forward p
+									elem, p = nextElem(p)
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -7133,23 +4785,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 		case "notifications": // -> 6
 			// Edge: 6, path: "notifications".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			case "threads": // -> 7
 				// Edge: 7, path: "threads".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				default:
 					if args == nil {
@@ -7166,23 +4806,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 		case "app": // -> 9
 			// Edge: 9, path: "app".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			case "hook": // -> 10
 				// Edge: 10, path: "hook".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				case "config": // -> 11
 					// PATCH /app/hook/config
@@ -7198,13 +4826,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 		case "repos": // -> 12
 			// Edge: 12, path: "repos".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -7212,23 +4834,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				args["owner"] = string(elem)
 				// Edge: 13, path: "".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				case "": // -> 14
 					// Edge: 14, path: "".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -7236,23 +4846,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						args["repo"] = string(elem)
 						// Edge: 15, path: "".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "check-suites": // -> 16
 							// Edge: 16, path: "check-suites".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							case "preferences": // -> 17
 								// PATCH /repos/{owner}/{repo}/check-suites/preferences
@@ -7264,23 +4862,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						case "code-scanning": // -> 18
 							// Edge: 18, path: "code-scanning".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							case "alerts": // -> 19
 								// Edge: 19, path: "alerts".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -7297,13 +4883,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						case "labels": // -> 36
 							// Edge: 36, path: "labels".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -7316,13 +4896,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						case "milestones": // -> 38
 							// Edge: 38, path: "milestones".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -7339,23 +4913,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							return
 						case "pulls": // -> 50
 							// Edge: 50, path: "pulls".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							case "comments": // -> 51
 								// Edge: 51, path: "comments".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -7372,13 +4934,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						case "comments": // -> 56
 							// Edge: 56, path: "comments".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -7391,13 +4947,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						case "invitations": // -> 58
 							// Edge: 58, path: "invitations".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -7410,23 +4960,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						case "releases": // -> 60
 							// Edge: 60, path: "releases".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							case "assets": // -> 62
 								// Edge: 62, path: "assets".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -7448,13 +4986,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						case "hooks": // -> 64
 							// Edge: 64, path: "hooks".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -7462,13 +4994,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								args["hook_id"] = string(elem)
 								// Edge: 65, path: "".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								case "config": // -> 66
 									// PATCH /repos/{owner}/{repo}/hooks/{hook_id}/config
@@ -7481,23 +5007,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						case "secret-scanning": // -> 67
 							// Edge: 67, path: "secret-scanning".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							case "alerts": // -> 68
 								// Edge: 68, path: "alerts".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -7524,33 +5038,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 		case "scim": // -> 21
 			// Edge: 21, path: "scim".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			case "v2": // -> 22
 				// Edge: 22, path: "v2".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				case "enterprises": // -> 23
 					// Edge: 23, path: "enterprises".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -7558,23 +5054,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						args["enterprise"] = string(elem)
 						// Edge: 24, path: "".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "Users": // -> 25
 							// Edge: 25, path: "Users".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -7600,13 +5084,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 		case "enterprises": // -> 27
 			// Edge: 27, path: "enterprises".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -7614,33 +5092,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				args["enterprise"] = string(elem)
 				// Edge: 28, path: "".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				case "actions": // -> 29
 					// Edge: 29, path: "actions".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					case "runner-groups": // -> 30
 						// Edge: 30, path: "runner-groups".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -7662,13 +5122,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 		case "gists": // -> 32
 			// Edge: 32, path: "gists".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -7676,23 +5130,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				args["gist_id"] = string(elem)
 				// Edge: 33, path: "".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				case "comments": // -> 34
 					// Edge: 34, path: "comments".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -7710,33 +5152,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 		case "projects": // -> 44
 			// Edge: 44, path: "projects".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			case "columns": // -> 46
 				// Edge: 46, path: "columns".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				case "cards": // -> 47
 					// Edge: 47, path: "cards".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -7767,23 +5191,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 		case "user": // -> 53
 			// Edge: 53, path: "user".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			case "repository_invitations": // -> 54
 				// Edge: 54, path: "repository_invitations".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				default:
 					if args == nil {
@@ -7800,13 +5212,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 		case "teams": // -> 78
 			// Edge: 78, path: "teams".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -7814,23 +5220,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				args["team_id"] = string(elem)
 				// Edge: 79, path: "".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				case "discussions": // -> 80
 					// Edge: 80, path: "discussions".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -7838,23 +5232,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						args["discussion_number"] = string(elem)
 						// Edge: 81, path: "".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "comments": // -> 82
 							// Edge: 82, path: "comments".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -7882,23 +5264,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		}
 	case "POST":
 		// Root edge.
-		if len(p) > 1 && p[0] == '/' {
-			p = p[1:]
-		}
-		if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-			idx = len(p) // no next slash, using full p
-		}
-		elem, p = p[:idx], p[idx:] // next elem, forward p
+		elem, p = nextElem(p)
 		switch string(elem) {
 		case "repos": // -> 1
 			// Edge: 1, path: "repos".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -7906,23 +5276,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				args["owner"] = string(elem)
 				// Edge: 2, path: "".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				case "": // -> 3
 					// Edge: 3, path: "".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -7930,33 +5288,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						args["repo"] = string(elem)
 						// Edge: 4, path: "".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "actions": // -> 5
 							// Edge: 5, path: "actions".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							case "runs": // -> 6
 								// Edge: 6, path: "runs".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -7964,13 +5304,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									args["run_id"] = string(elem)
 									// Edge: 7, path: "".
-									if len(p) > 1 && p[0] == '/' {
-										p = p[1:]
-									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-										idx = len(p) // no next slash, using full p
-									}
-									elem, p = p[:idx], p[idx:] // next elem, forward p
+									elem, p = nextElem(p)
 									switch string(elem) {
 									case "approve": // -> 8
 										// POST /repos/{owner}/{repo}/actions/runs/{run_id}/approve
@@ -7995,13 +5329,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 							case "runners": // -> 15
 								// Edge: 15, path: "runners".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								case "registration-token": // -> 16
 									// POST /repos/{owner}/{repo}/actions/runners/registration-token
@@ -8021,13 +5349,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						case "check-suites": // -> 22
 							// Edge: 22, path: "check-suites".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -8035,13 +5357,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								args["check_suite_id"] = string(elem)
 								// Edge: 23, path: "".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								case "rerequest": // -> 24
 									// POST /repos/{owner}/{repo}/check-suites/{check_suite_id}/rerequest
@@ -8054,13 +5370,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						case "code-scanning": // -> 25
 							// Edge: 25, path: "code-scanning".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							case "sarifs": // -> 26
 								// POST /repos/{owner}/{repo}/code-scanning/sarifs
@@ -8072,13 +5382,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						case "issues": // -> 43
 							// Edge: 43, path: "issues".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -8086,13 +5390,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								args["issue_number"] = string(elem)
 								// Edge: 44, path: "".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								case "assignees": // -> 45
 									// POST /repos/{owner}/{repo}/issues/{issue_number}/assignees
@@ -8109,13 +5407,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							return
 						case "pulls": // -> 85
 							// Edge: 85, path: "pulls".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -8123,23 +5415,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								args["pull_number"] = string(elem)
 								// Edge: 86, path: "".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								case "comments": // -> 87
 									// Edge: 87, path: "comments".
-									if len(p) > 1 && p[0] == '/' {
-										p = p[1:]
-									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-										idx = len(p) // no next slash, using full p
-									}
-									elem, p = p[:idx], p[idx:] // next elem, forward p
+									elem, p = nextElem(p)
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -8147,13 +5427,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 										args["comment_id"] = string(elem)
 										// Edge: 88, path: "".
-										if len(p) > 1 && p[0] == '/' {
-											p = p[1:]
-										}
-										if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-											idx = len(p) // no next slash, using full p
-										}
-										elem, p = p[:idx], p[idx:] // next elem, forward p
+										elem, p = nextElem(p)
 										switch string(elem) {
 										case "replies": // -> 89
 											// POST /repos/{owner}/{repo}/pulls/{pull_number}/comments/{comment_id}/replies
@@ -8166,13 +5440,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 								case "reviews": // -> 90
 									// Edge: 90, path: "reviews".
-									if len(p) > 1 && p[0] == '/' {
-										p = p[1:]
-									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-										idx = len(p) // no next slash, using full p
-									}
-									elem, p = p[:idx], p[idx:] // next elem, forward p
+									elem, p = nextElem(p)
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -8180,13 +5448,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 										args["review_id"] = string(elem)
 										// Edge: 91, path: "".
-										if len(p) > 1 && p[0] == '/' {
-											p = p[1:]
-										}
-										if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-											idx = len(p) // no next slash, using full p
-										}
-										elem, p = p[:idx], p[idx:] // next elem, forward p
+										elem, p = nextElem(p)
 										switch string(elem) {
 										case "events": // -> 92
 											// POST /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/events
@@ -8204,13 +5466,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						case "branches": // -> 109
 							// Edge: 109, path: "branches".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -8218,23 +5474,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								args["branch"] = string(elem)
 								// Edge: 110, path: "".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								case "protection": // -> 111
 									// Edge: 111, path: "protection".
-									if len(p) > 1 && p[0] == '/' {
-										p = p[1:]
-									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-										idx = len(p) // no next slash, using full p
-									}
-									elem, p = p[:idx], p[idx:] // next elem, forward p
+									elem, p = nextElem(p)
 									switch string(elem) {
 									case "required_signatures": // -> 112
 										// POST /repos/{owner}/{repo}/branches/{branch}/protection/required_signatures
@@ -8255,13 +5499,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						case "statuses": // -> 113
 							// Edge: 113, path: "statuses".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -8282,13 +5520,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							return
 						case "hooks": // -> 117
 							// Edge: 117, path: "hooks".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -8296,13 +5528,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								args["hook_id"] = string(elem)
 								// Edge: 118, path: "".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								case "pings": // -> 119
 									// POST /repos/{owner}/{repo}/hooks/{hook_id}/pings
@@ -8319,13 +5545,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						case "pages": // -> 120
 							// Edge: 120, path: "pages".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							case "builds": // -> 121
 								// POST /repos/{owner}/{repo}/pages/builds
@@ -8351,13 +5571,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 		case "orgs": // -> 10
 			// Edge: 10, path: "orgs".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -8365,33 +5579,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				args["org"] = string(elem)
 				// Edge: 11, path: "".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				case "actions": // -> 12
 					// Edge: 12, path: "actions".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					case "runners": // -> 13
 						// Edge: 13, path: "runners".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "registration-token": // -> 14
 							// POST /orgs/{org}/actions/runners/registration-token
@@ -8415,13 +5611,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 				case "hooks": // -> 46
 					// Edge: 46, path: "hooks".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -8429,13 +5619,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						args["hook_id"] = string(elem)
 						// Edge: 47, path: "".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "pings": // -> 48
 							// POST /orgs/{org}/hooks/{hook_id}/pings
@@ -8448,13 +5632,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 				case "packages": // -> 55
 					// Edge: 55, path: "packages".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -8462,23 +5640,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						args["package_type"] = string(elem)
 						// Edge: 56, path: "".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "": // -> 57
 							// Edge: 57, path: "".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -8486,13 +5652,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								args["package_name"] = string(elem)
 								// Edge: 58, path: "".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								case "restore": // -> 59
 									// POST /orgs/{org}/packages/{package_type}/{package_name}/restore
@@ -8500,13 +5660,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									return
 								case "versions": // -> 70
 									// Edge: 70, path: "versions".
-									if len(p) > 1 && p[0] == '/' {
-										p = p[1:]
-									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-										idx = len(p) // no next slash, using full p
-									}
-									elem, p = p[:idx], p[idx:] // next elem, forward p
+									elem, p = nextElem(p)
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -8514,13 +5668,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 										args["package_version_id"] = string(elem)
 										// Edge: 71, path: "".
-										if len(p) > 1 && p[0] == '/' {
-											p = p[1:]
-										}
-										if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-											idx = len(p) // no next slash, using full p
-										}
-										elem, p = p[:idx], p[idx:] // next elem, forward p
+										elem, p = nextElem(p)
 										switch string(elem) {
 										case "restore": // -> 72
 											// POST /orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore
@@ -8547,13 +5695,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					return
 				case "teams": // -> 93
 					// Edge: 93, path: "teams".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -8561,23 +5703,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						args["team_slug"] = string(elem)
 						// Edge: 94, path: "".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "discussions": // -> 95
 							// Edge: 95, path: "discussions".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -8585,23 +5715,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								args["discussion_number"] = string(elem)
 								// Edge: 96, path: "".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								case "comments": // -> 97
 									// Edge: 97, path: "comments".
-									if len(p) > 1 && p[0] == '/' {
-										p = p[1:]
-									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-										idx = len(p) // no next slash, using full p
-									}
-									elem, p = p[:idx], p[idx:] // next elem, forward p
+									elem, p = nextElem(p)
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -8609,13 +5727,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 										args["comment_number"] = string(elem)
 										// Edge: 98, path: "".
-										if len(p) > 1 && p[0] == '/' {
-											p = p[1:]
-										}
-										if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-											idx = len(p) // no next slash, using full p
-										}
-										elem, p = p[:idx], p[idx:] // next elem, forward p
+										elem, p = nextElem(p)
 										switch string(elem) {
 										case "reactions": // -> 99
 											// POST /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions
@@ -8647,13 +5759,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 		case "enterprises": // -> 27
 			// Edge: 27, path: "enterprises".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -8661,33 +5767,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				args["enterprise"] = string(elem)
 				// Edge: 28, path: "".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				case "actions": // -> 29
 					// Edge: 29, path: "actions".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					case "runners": // -> 30
 						// Edge: 30, path: "runners".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "registration-token": // -> 31
 							// POST /enterprises/{enterprise}/actions/runners/registration-token
@@ -8716,33 +5804,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 		case "scim": // -> 34
 			// Edge: 34, path: "scim".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			case "v2": // -> 35
 				// Edge: 35, path: "v2".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				case "enterprises": // -> 36
 					// Edge: 36, path: "enterprises".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -8750,13 +5820,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						args["enterprise"] = string(elem)
 						// Edge: 37, path: "".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "Groups": // -> 38
 							// POST /scim/v2/enterprises/{enterprise}/Groups
@@ -8781,13 +5845,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 		case "gists": // -> 40
 			// Edge: 40, path: "gists".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -8795,13 +5853,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				args["gist_id"] = string(elem)
 				// Edge: 41, path: "".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				case "comments": // -> 42
 					// POST /gists/{gist_id}/comments
@@ -8814,23 +5866,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 		case "user": // -> 49
 			// Edge: 49, path: "user".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			case "packages": // -> 50
 				// Edge: 50, path: "packages".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				default:
 					if args == nil {
@@ -8838,23 +5878,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					args["package_type"] = string(elem)
 					// Edge: 51, path: "".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					case "": // -> 52
 						// Edge: 52, path: "".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -8862,13 +5890,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							args["package_name"] = string(elem)
 							// Edge: 53, path: "".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							case "restore": // -> 54
 								// POST /user/packages/{package_type}/{package_name}/restore
@@ -8876,13 +5898,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								return
 							case "versions": // -> 67
 								// Edge: 67, path: "versions".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -8890,13 +5906,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									args["package_version_id"] = string(elem)
 									// Edge: 68, path: "".
-									if len(p) > 1 && p[0] == '/' {
-										p = p[1:]
-									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-										idx = len(p) // no next slash, using full p
-									}
-									elem, p = p[:idx], p[idx:] // next elem, forward p
+									elem, p = nextElem(p)
 									switch string(elem) {
 									case "restore": // -> 69
 										// POST /user/packages/{package_type}/{package_name}/versions/{package_version_id}/restore
@@ -8927,13 +5937,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 		case "users": // -> 60
 			// Edge: 60, path: "users".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -8941,23 +5945,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				args["username"] = string(elem)
 				// Edge: 61, path: "".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				case "packages": // -> 62
 					// Edge: 62, path: "packages".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -8965,23 +5957,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						args["package_type"] = string(elem)
 						// Edge: 63, path: "".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "": // -> 64
 							// Edge: 64, path: "".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -8989,13 +5969,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								args["package_name"] = string(elem)
 								// Edge: 65, path: "".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								case "restore": // -> 66
 									// POST /users/{username}/packages/{package_type}/{package_name}/restore
@@ -9003,13 +5977,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									return
 								case "versions": // -> 73
 									// Edge: 73, path: "versions".
-									if len(p) > 1 && p[0] == '/' {
-										p = p[1:]
-									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-										idx = len(p) // no next slash, using full p
-									}
-									elem, p = p[:idx], p[idx:] // next elem, forward p
+									elem, p = nextElem(p)
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -9017,13 +5985,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 										args["package_version_id"] = string(elem)
 										// Edge: 74, path: "".
-										if len(p) > 1 && p[0] == '/' {
-											p = p[1:]
-										}
-										if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-											idx = len(p) // no next slash, using full p
-										}
-										elem, p = p[:idx], p[idx:] // next elem, forward p
+										elem, p = nextElem(p)
 										switch string(elem) {
 										case "restore": // -> 75
 											// POST /users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore
@@ -9051,23 +6013,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 		case "projects": // -> 76
 			// Edge: 76, path: "projects".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			case "columns": // -> 82
 				// Edge: 82, path: "columns".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				default:
 					if args == nil {
@@ -9075,13 +6025,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					args["column_id"] = string(elem)
 					// Edge: 83, path: "".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					case "moves": // -> 84
 						// POST /projects/columns/{column_id}/moves
@@ -9098,13 +6042,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				args["project_id"] = string(elem)
 				// Edge: 77, path: "".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				case "columns": // -> 78
 					// POST /projects/{project_id}/columns
@@ -9117,13 +6055,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 		case "teams": // -> 100
 			// Edge: 100, path: "teams".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -9131,23 +6063,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				args["team_id"] = string(elem)
 				// Edge: 101, path: "".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				case "discussions": // -> 102
 					// Edge: 102, path: "discussions".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -9155,23 +6075,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						args["discussion_number"] = string(elem)
 						// Edge: 103, path: "".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "comments": // -> 104
 							// Edge: 104, path: "comments".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -9179,13 +6087,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								args["comment_number"] = string(elem)
 								// Edge: 105, path: "".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								case "reactions": // -> 106
 									// POST /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions
@@ -9216,23 +6118,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		}
 	case "PUT":
 		// Root edge.
-		if len(p) > 1 && p[0] == '/' {
-			p = p[1:]
-		}
-		if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-			idx = len(p) // no next slash, using full p
-		}
-		elem, p = p[:idx], p[idx:] // next elem, forward p
+		elem, p = nextElem(p)
 		switch string(elem) {
 		case "orgs": // -> 1
 			// Edge: 1, path: "orgs".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -9240,33 +6130,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				args["org"] = string(elem)
 				// Edge: 2, path: "".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				case "actions": // -> 3
 					// Edge: 3, path: "actions".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					case "runner-groups": // -> 4
 						// Edge: 4, path: "runner-groups".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -9274,23 +6146,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							args["runner_group_id"] = string(elem)
 							// Edge: 5, path: "".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							case "repositories": // -> 6
 								// Edge: 6, path: "repositories".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -9303,13 +6163,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 							case "runners": // -> 12
 								// Edge: 12, path: "runners".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -9327,13 +6181,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 					case "secrets": // -> 8
 						// Edge: 8, path: "secrets".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -9341,23 +6189,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							args["secret_name"] = string(elem)
 							// Edge: 9, path: "".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							case "repositories": // -> 10
 								// Edge: 10, path: "repositories".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -9376,23 +6212,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 					case "permissions": // -> 27
 						// Edge: 27, path: "permissions".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "repositories": // -> 28
 							// Edge: 28, path: "repositories".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -9418,13 +6242,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 				case "outside_collaborators": // -> 77
 					// Edge: 77, path: "outside_collaborators".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -9437,13 +6255,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 				case "public_members": // -> 79
 					// Edge: 79, path: "public_members".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -9456,13 +6268,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 				case "teams": // -> 97
 					// Edge: 97, path: "teams".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -9470,23 +6276,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						args["team_slug"] = string(elem)
 						// Edge: 98, path: "".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "memberships": // -> 99
 							// Edge: 99, path: "memberships".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -9499,13 +6293,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						case "projects": // -> 103
 							// Edge: 103, path: "projects".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -9518,13 +6306,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						case "repos": // -> 105
 							// Edge: 105, path: "repos".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -9532,23 +6314,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								args["owner"] = string(elem)
 								// Edge: 106, path: "".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								case "": // -> 107
 									// Edge: 107, path: "".
-									if len(p) > 1 && p[0] == '/' {
-										p = p[1:]
-									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-										idx = len(p) // no next slash, using full p
-									}
-									elem, p = p[:idx], p[idx:] // next elem, forward p
+									elem, p = nextElem(p)
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -9576,13 +6346,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 		case "repositories": // -> 14
 			// Edge: 14, path: "repositories".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -9590,23 +6354,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				args["repository_id"] = string(elem)
 				// Edge: 15, path: "".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				case "environments": // -> 16
 					// Edge: 16, path: "environments".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -9614,23 +6366,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						args["environment_name"] = string(elem)
 						// Edge: 17, path: "".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "secrets": // -> 18
 							// Edge: 18, path: "secrets".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -9653,13 +6393,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 		case "repos": // -> 20
 			// Edge: 20, path: "repos".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -9667,23 +6401,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				args["owner"] = string(elem)
 				// Edge: 21, path: "".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				case "": // -> 22
 					// Edge: 22, path: "".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -9691,33 +6413,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						args["repo"] = string(elem)
 						// Edge: 23, path: "".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "actions": // -> 24
 							// Edge: 24, path: "actions".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							case "secrets": // -> 25
 								// Edge: 25, path: "secrets".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -9730,13 +6434,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 							case "permissions": // -> 31
 								// Edge: 31, path: "permissions".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								case "selected-actions": // -> 32
 									// PUT /repos/{owner}/{repo}/actions/permissions/selected-actions
@@ -9765,13 +6463,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							return
 						case "pulls": // -> 81
 							// Edge: 81, path: "pulls".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -9779,23 +6471,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								args["pull_number"] = string(elem)
 								// Edge: 82, path: "".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								case "reviews": // -> 83
 									// Edge: 83, path: "reviews".
-									if len(p) > 1 && p[0] == '/' {
-										p = p[1:]
-									}
-									if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-										idx = len(p) // no next slash, using full p
-									}
-									elem, p = p[:idx], p[idx:] // next elem, forward p
+									elem, p = nextElem(p)
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -9803,13 +6483,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 										args["review_id"] = string(elem)
 										// Edge: 84, path: "".
-										if len(p) > 1 && p[0] == '/' {
-											p = p[1:]
-										}
-										if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-											idx = len(p) // no next slash, using full p
-										}
-										elem, p = p[:idx], p[idx:] // next elem, forward p
+										elem, p = nextElem(p)
 										switch string(elem) {
 										case "dismissals": // -> 85
 											// PUT /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/dismissals
@@ -9844,13 +6518,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							return
 						case "branches": // -> 90
 							// Edge: 90, path: "branches".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -9858,13 +6526,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								args["branch"] = string(elem)
 								// Edge: 91, path: "".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								case "protection": // -> 92
 									// PUT /repos/{owner}/{repo}/branches/{branch}/protection
@@ -9887,23 +6549,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 		case "notifications": // -> 33
 			// Edge: 33, path: "notifications".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			case "threads": // -> 36
 				// Edge: 36, path: "threads".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				default:
 					if args == nil {
@@ -9911,13 +6561,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					args["thread_id"] = string(elem)
 					// Edge: 37, path: "".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					case "subscription": // -> 38
 						// PUT /notifications/threads/{thread_id}/subscription
@@ -9935,23 +6579,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 		case "user": // -> 39
 			// Edge: 39, path: "user".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			case "starred": // -> 40
 				// Edge: 40, path: "starred".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				default:
 					if args == nil {
@@ -9959,23 +6591,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					args["owner"] = string(elem)
 					// Edge: 41, path: "".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					case "": // -> 42
 						// Edge: 42, path: "".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -9993,13 +6613,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 			case "installations": // -> 44
 				// Edge: 44, path: "installations".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				default:
 					if args == nil {
@@ -10007,23 +6621,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					args["installation_id"] = string(elem)
 					// Edge: 45, path: "".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					case "repositories": // -> 46
 						// Edge: 46, path: "repositories".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -10041,13 +6643,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 			case "following": // -> 109
 				// Edge: 109, path: "following".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				default:
 					if args == nil {
@@ -10064,23 +6660,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 		case "app": // -> 48
 			// Edge: 48, path: "app".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			case "installations": // -> 49
 				// Edge: 49, path: "installations".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				default:
 					if args == nil {
@@ -10088,13 +6672,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					args["installation_id"] = string(elem)
 					// Edge: 50, path: "".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					case "suspended": // -> 51
 						// PUT /app/installations/{installation_id}/suspended
@@ -10111,13 +6689,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 		case "enterprises": // -> 52
 			// Edge: 52, path: "enterprises".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -10125,33 +6697,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				args["enterprise"] = string(elem)
 				// Edge: 53, path: "".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				case "actions": // -> 54
 					// Edge: 54, path: "actions".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					case "runner-groups": // -> 55
 						// Edge: 55, path: "runner-groups".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -10159,23 +6713,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							args["runner_group_id"] = string(elem)
 							// Edge: 56, path: "".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							case "organizations": // -> 57
 								// Edge: 57, path: "organizations".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -10188,13 +6730,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 							case "runners": // -> 59
 								// Edge: 59, path: "runners".
-								if len(p) > 1 && p[0] == '/' {
-									p = p[1:]
-								}
-								if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-									idx = len(p) // no next slash, using full p
-								}
-								elem, p = p[:idx], p[idx:] // next elem, forward p
+								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -10212,23 +6748,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 					case "permissions": // -> 61
 						// Edge: 61, path: "permissions".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "organizations": // -> 62
 							// Edge: 62, path: "organizations".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -10259,33 +6783,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 		case "scim": // -> 65
 			// Edge: 65, path: "scim".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			case "v2": // -> 66
 				// Edge: 66, path: "v2".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				case "enterprises": // -> 67
 					// Edge: 67, path: "enterprises".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -10293,23 +6799,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						args["enterprise"] = string(elem)
 						// Edge: 68, path: "".
-						if len(p) > 1 && p[0] == '/' {
-							p = p[1:]
-						}
-						if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-							idx = len(p) // no next slash, using full p
-						}
-						elem, p = p[:idx], p[idx:] // next elem, forward p
+						elem, p = nextElem(p)
 						switch string(elem) {
 						case "Groups": // -> 69
 							// Edge: 69, path: "Groups".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -10322,13 +6816,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						case "Users": // -> 71
 							// Edge: 71, path: "Users".
-							if len(p) > 1 && p[0] == '/' {
-								p = p[1:]
-							}
-							if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-								idx = len(p) // no next slash, using full p
-							}
-							elem, p = p[:idx], p[idx:] // next elem, forward p
+							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -10354,13 +6842,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 		case "gists": // -> 73
 			// Edge: 73, path: "gists".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -10368,13 +6850,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				args["gist_id"] = string(elem)
 				// Edge: 74, path: "".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				case "star": // -> 75
 					// PUT /gists/{gist_id}/star
@@ -10387,13 +6863,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 		case "teams": // -> 93
 			// Edge: 93, path: "teams".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -10401,23 +6871,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				args["team_id"] = string(elem)
 				// Edge: 94, path: "".
-				if len(p) > 1 && p[0] == '/' {
-					p = p[1:]
-				}
-				if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-					idx = len(p) // no next slash, using full p
-				}
-				elem, p = p[:idx], p[idx:] // next elem, forward p
+				elem, p = nextElem(p)
 				switch string(elem) {
 				case "members": // -> 95
 					// Edge: 95, path: "members".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -10430,13 +6888,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 				case "memberships": // -> 101
 					// Edge: 101, path: "memberships".
-					if len(p) > 1 && p[0] == '/' {
-						p = p[1:]
-					}
-					if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-						idx = len(p) // no next slash, using full p
-					}
-					elem, p = p[:idx], p[idx:] // next elem, forward p
+					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
 						if args == nil {

@@ -66,6 +66,23 @@ func (s *Server) notFound(w http.ResponseWriter, r *http.Request) {
 	http.NotFound(w, r)
 }
 
+func skipSlash(p []byte) []byte {
+	if len(p) > 0 && p[0] == '/' {
+		return p[1:]
+	}
+	return p
+}
+
+// nextElem return next path element from p and forwarded p.
+func nextElem(p []byte) (elem, next []byte) {
+	p = skipSlash(p)
+	idx := bytes.IndexByte(p, '/')
+	if idx < 0 {
+		idx = len(p)
+	}
+	return p[:idx], p[idx:]
+}
+
 // ServeHTTP serves http request as defined by OpenAPI v3 specification,
 // calling handler that matches the path or returning not found error.
 func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
@@ -76,7 +93,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	}
 
 	var (
-		idx  int               // index of next slash
 		elem []byte            // current element, without slashes
 		args map[string]string // lazily initialized
 	)
@@ -85,23 +101,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	switch r.Method {
 	case "GET":
 		// Root edge.
-		if len(p) > 1 && p[0] == '/' {
-			p = p[1:]
-		}
-		if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-			idx = len(p) // no next slash, using full p
-		}
-		elem, p = p[:idx], p[idx:] // next elem, forward p
+		elem, p = nextElem(p)
 		switch string(elem) {
 		case "balloon": // -> 1
 			// Edge: 1, path: "balloon".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			case "statistics": // -> 2
 				// GET /balloon/statistics
@@ -118,13 +122,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			return
 		case "vm": // -> 4
 			// Edge: 4, path: "vm".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			case "config": // -> 5
 				// GET /vm/config
@@ -148,13 +146,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		}
 	case "PATCH":
 		// Root edge.
-		if len(p) > 1 && p[0] == '/' {
-			p = p[1:]
-		}
-		if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-			idx = len(p) // no next slash, using full p
-		}
-		elem, p = p[:idx], p[idx:] // next elem, forward p
+		elem, p = nextElem(p)
 		switch string(elem) {
 		case "mmds": // -> 1
 			// PATCH /mmds
@@ -162,13 +154,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			return
 		case "balloon": // -> 2
 			// Edge: 2, path: "balloon".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			case "statistics": // -> 3
 				// PATCH /balloon/statistics
@@ -181,13 +167,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 		case "drives": // -> 4
 			// Edge: 4, path: "drives".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -200,13 +180,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 		case "network-interfaces": // -> 6
 			// Edge: 6, path: "network-interfaces".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -231,23 +205,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		}
 	case "PUT":
 		// Root edge.
-		if len(p) > 1 && p[0] == '/' {
-			p = p[1:]
-		}
-		if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-			idx = len(p) // no next slash, using full p
-		}
-		elem, p = p[:idx], p[idx:] // next elem, forward p
+		elem, p = nextElem(p)
 		switch string(elem) {
 		case "snapshot": // -> 1
 			// Edge: 1, path: "snapshot".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			case "create": // -> 2
 				// PUT /snapshot/create
@@ -267,13 +229,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			return
 		case "mmds": // -> 5
 			// Edge: 5, path: "mmds".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			case "config": // -> 6
 				// PUT /mmds/config
@@ -294,13 +250,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			return
 		case "drives": // -> 9
 			// Edge: 9, path: "drives".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -313,13 +263,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 		case "network-interfaces": // -> 11
 			// Edge: 11, path: "network-interfaces".
-			if len(p) > 1 && p[0] == '/' {
-				p = p[1:]
-			}
-			if idx = bytes.IndexByte(p[:], '/'); idx < 0 {
-				idx = len(p) // no next slash, using full p
-			}
-			elem, p = p[:idx], p[idx:] // next elem, forward p
+			elem, p = nextElem(p)
 			switch string(elem) {
 			default:
 				if args == nil {
