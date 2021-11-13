@@ -8,6 +8,7 @@ type Operation struct {
 	Parameters  []*Parameter
 	RequestBody *RequestBody // optional
 	Responses   *OperationResponse
+	Securities  []*Security // optional
 }
 
 // PathPart is a part of an OpenAPI Operation Path.

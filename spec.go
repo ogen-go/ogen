@@ -11,11 +11,12 @@ import (
 type Spec struct {
 	// This string MUST be the semantic version number
 	// of the OpenAPI Specification version that the OpenAPI document uses.
-	OpenAPI    string      `json:"openapi"`
-	Info       Info        `json:"info"`
-	Servers    []Server    `json:"servers,omitempty"`
-	Paths      Paths       `json:"paths,omitempty"`
-	Components *Components `json:"components,omitempty"`
+	OpenAPI    string                    `json:"openapi"`
+	Info       Info                      `json:"info"`
+	Servers    []Server                  `json:"servers,omitempty"`
+	Paths      Paths                     `json:"paths,omitempty"`
+	Components *Components               `json:"components,omitempty"`
+	Security   SecurityRequirementObject `json:"security,omitempty"`
 }
 
 // Init components of schema.
@@ -77,6 +78,9 @@ type Server struct {
 	Description string `json:"description,omitempty"`
 	URL         string `json:"url"`
 }
+
+// SecurityRequirementObject represents lists the required security schemes to execute this operation.
+type SecurityRequirementObject map[string][]string
 
 // Components hold a set of reusable objects for different aspects of the OAS.
 // All objects defined within the components object will have no effect on the API
@@ -158,12 +162,13 @@ type PathItem struct {
 type Operation struct {
 	// A list of tags for API documentation control.
 	// Tags can be used for logical grouping of operations by resources or any other qualifier.
-	Tags        []string     `json:"tags,omitempty"`
-	Description string       `json:"description,omitempty"`
-	OperationID string       `json:"operationId,omitempty"`
-	Parameters  []Parameter  `json:"parameters,omitempty"`
-	RequestBody *RequestBody `json:"requestBody,omitempty"`
-	Responses   Responses    `json:"responses,omitempty"`
+	Tags        []string                  `json:"tags,omitempty"`
+	Description string                    `json:"description,omitempty"`
+	OperationID string                    `json:"operationId,omitempty"`
+	Parameters  []Parameter               `json:"parameters,omitempty"`
+	RequestBody *RequestBody              `json:"requestBody,omitempty"`
+	Responses   Responses                 `json:"responses,omitempty"`
+	Security    SecurityRequirementObject `json:"security,omitempty"`
 }
 
 // Parameter describes a single operation parameter.

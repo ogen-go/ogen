@@ -83,3 +83,28 @@ func (p *parser) resolveParameter(ref string) (*oas.Parameter, error) {
 	p.refs.parameters[ref] = param
 	return param, nil
 }
+
+func (p *parser) resolveSecurity(ref string) (*oas.Security, error) {
+	const prefix = "#/components/securitySchemes/"
+	if !strings.HasPrefix(ref, prefix) {
+		return nil, errors.Errorf("invalid security reference: %q", ref)
+	}
+
+	if security, ok := p.refs.security[ref]; ok {
+		return security, nil
+	}
+
+	name := strings.TrimPrefix(ref, prefix)
+	schema, found := p.spec.Components.SecuritySchemes[name]
+	if !found {
+		return nil, errors.Errorf("component by reference %q not found", ref)
+	}
+
+	security, err := p.parseSecurity(schema)
+	if err != nil {
+		return nil, err
+	}
+
+	p.refs.security[ref] = security
+	return security, nil
+}

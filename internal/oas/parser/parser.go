@@ -14,12 +14,15 @@ type parser struct {
 	spec *ogen.Spec
 	// parsed operations.
 	operations []*oas.Operation
+	// parsed default securities
+	securities []*oas.Security
 	// refs contains lazy-initialized referenced components.
 	refs struct {
 		schemas       map[string]*oas.Schema
 		requestBodies map[string]*oas.RequestBody
 		responses     map[string]*oas.Response
 		parameters    map[string]*oas.Parameter
+		security      map[string]*oas.Security
 	}
 }
 
@@ -32,11 +35,13 @@ func Parse(spec *ogen.Spec) ([]*oas.Operation, error) {
 			requestBodies map[string]*oas.RequestBody
 			responses     map[string]*oas.Response
 			parameters    map[string]*oas.Parameter
+			security      map[string]*oas.Security
 		}{
 			schemas:       map[string]*oas.Schema{},
 			requestBodies: map[string]*oas.RequestBody{},
 			responses:     map[string]*oas.Response{},
 			parameters:    map[string]*oas.Parameter{},
+			security:      map[string]*oas.Security{},
 		},
 	}
 
@@ -45,6 +50,15 @@ func Parse(spec *ogen.Spec) ([]*oas.Operation, error) {
 }
 
 func (p *parser) parse() error {
+	if len(p.spec.Security) != 0 {
+		securities, err := p.parseSecurities(p.spec.Security)
+		if err != nil {
+			return errors.Wrapf(err, "securities")
+		}
+
+		p.securities = securities
+	}
+
 	for path, item := range p.spec.Paths {
 		if item.Ref != "" {
 			return errors.Errorf("%s: referenced pathItem not supported", path)
@@ -75,6 +89,16 @@ func (p *parser) parseOp(path, httpMethod string, spec ogen.Operation, itemParam
 	op := &oas.Operation{
 		OperationID: spec.OperationID,
 		HTTPMethod:  strings.ToUpper(httpMethod),
+		Securities:  p.securities,
+	}
+
+	if len(spec.Security) != 0 {
+		securities, err := p.parseSecurities(spec.Security)
+		if err != nil {
+			return nil, errors.Wrapf(err, "securities")
+		}
+
+		op.Securities = securities
 	}
 
 	opParams, err := p.parseParams(spec.Parameters)
