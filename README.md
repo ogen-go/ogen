@@ -166,7 +166,13 @@ func (s *Error) ReadJSON(r *json.Reader) error {
 # Roadmap
 
 * Security (e.g. Bearer token)
+* Cookie params
+* Tests for `ip` package
+* Support complex parameters in router
+  * `/{name}.{format}` or `foo.{bar}`, now only `/{foo}/{bar}/` is supported
 * Convenient global errors schema (e.g. 500, 404)
+  * Add convenience for `Error`, not only `ErrorWithCode`
+  * Handle case when `ref` is not used, but responses are equal
 * Webhook support
 * AnyOf
 * Full validation support
