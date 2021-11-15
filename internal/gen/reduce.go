@@ -5,8 +5,47 @@ import (
 	"reflect"
 	"sort"
 
+	"github.com/go-faster/errors"
+
 	"github.com/ogen-go/ogen/internal/ir"
+	"github.com/ogen-go/ogen/internal/oas"
 )
+
+// deduceDefault implements convenient errors, representing common default
+// response as error instead of variant of each response.
+func (g *Generator) reduceDefault(ops []*oas.Operation) error {
+	if len(ops) < 2 {
+		return nil
+	}
+
+	// Compare first default response to others.
+	first := ops[0]
+	if first.Responses == nil || first.Responses.Default == nil {
+		return nil
+	}
+	d := first.Responses.Default
+	if d.Ref == "" {
+		// Not supported.
+		return nil
+	}
+	for _, spec := range ops[1:] {
+		if !reflect.DeepEqual(spec.Responses.Default, d) {
+			return nil
+		}
+	}
+
+	resp, err := g.responseToIR("ErrResp", "reduced default response", d)
+	if err != nil {
+		return errors.Wrap(err, "default")
+	}
+	if resp.NoContent != nil || len(resp.Contents) > 1 || resp.Contents[ir.ContentTypeJSON] == nil {
+		return errors.Wrap(err, "too complicated to reduce default error")
+	}
+
+	g.errType = g.wrapResponseStatusCode(resp)
+
+	return nil
+}
 
 func (g *Generator) reduce() {
 	for _, op := range g.operations {
