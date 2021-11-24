@@ -1,0 +1,64 @@
+openapi: 3.0.3
+info:
+  title: Go Faster Github Archive Coordinator
+  description: Coordinates Archive Workers
+  version: 0.1.0
+servers:
+  - url: 'https://localhost:8080'
+paths:
+  /job/poll:
+    post:
+      description: Request job from coordinator
+      parameters:
+        - name: token
+          in: query
+          required: true
+          description: Worker token
+      responses:
+        200:
+          description: Job is available
+          content:
+            "application/json":
+              schema:
+                $ref: "#/components/schemas/Job"
+components:
+  responses:
+    Error:
+      description: "Error while processing request"
+      content:
+        "application/json":
+          schema:
+            $ref: "#/components/schemas/Error"
+  schemas:
+    Error:
+      type: object
+      description: "error description"
+      properties:
+        message:
+          type: string
+      required: [ message ]
+    JobNothing:
+      description: Do nothing
+      required:
+        - type
+      properties:
+        type:
+          type: string
+    JobDownload:
+      description: Download chunk
+      required:
+        - type
+        - date
+      properties:
+        type:
+          type: string
+        date:
+          type: string
+          format: datetime
+    Job:
+      description: job to perform on worker
+      discriminator:
+        propertyName: "type"
+      oneOf:
+        - $ref: "#/components/schemas/JobNothing"
+        - $ref: "#/components/schemas/JobDownload"

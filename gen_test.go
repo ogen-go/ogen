@@ -85,4 +85,10 @@ func TestGenerate(t *testing.T) {
 		"sum type parameter",
 		"unsupported content types",
 	))
+	t.Run("Regression", func(t *testing.T) {
+		t.Run("OneOf", func(t *testing.T) {
+			t.Run("Explicit", g("err_oneof_explicit.yaml"))
+			t.Run("Implicit", g("err_oneof_implicit.yaml"))
+		})
+	})
 }
