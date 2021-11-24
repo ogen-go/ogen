@@ -156,7 +156,7 @@ func (d *QueryDecoder) DecodeFields(f func(name string, d Decoder) error) error 
 		}
 
 		cur := &cursor{src: []rune(d.src[0])}
-		param, err := cur.readAt('=')
+		param, err := cur.readUntil('=')
 		if err != nil {
 			return err
 		}
@@ -183,7 +183,7 @@ func (d *QueryDecoder) DecodeFields(f func(name string, d Decoder) error) error 
 			cur.src = []rune(v)
 			cur.pos = 0
 
-			pname, err := cur.readAt('[')
+			pname, err := cur.readUntil('[')
 			if err != nil {
 				return err
 			}
@@ -192,7 +192,7 @@ func (d *QueryDecoder) DecodeFields(f func(name string, d Decoder) error) error 
 				return errors.Errorf("invalid param name: %q", pname)
 			}
 
-			key, err := cur.readAt(']')
+			key, err := cur.readUntil(']')
 			if err != nil {
 				return err
 			}

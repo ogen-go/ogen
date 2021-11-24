@@ -46,7 +46,7 @@ func (d *PathDecoder) DecodeValue() (string, error) {
 			return "", errors.Errorf(`label style value must begin with ";"`)
 		}
 
-		param, err := d.cur.readAt('=')
+		param, err := d.cur.readUntil('=')
 		if err != nil {
 			return "", err
 		}
@@ -164,7 +164,7 @@ func (d *PathDecoder) DecodeFields(f func(name string, d Decoder) error) error {
 		}
 
 		if !d.explode {
-			name, err := d.cur.readAt('=')
+			name, err := d.cur.readUntil('=')
 			if err != nil {
 				return err
 			}

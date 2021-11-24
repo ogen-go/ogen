@@ -7,7 +7,7 @@ type cursor struct {
 	pos int
 }
 
-func (c *cursor) readAt(at rune) (string, error) {
+func (c *cursor) readUntil(until rune) (string, error) {
 	var from, to = c.pos, c.pos
 	for {
 		r, ok := c.read()
@@ -15,14 +15,14 @@ func (c *cursor) readAt(at rune) (string, error) {
 			return "", io.EOF
 		}
 
-		if r == at {
+		if r == until {
 			return string(c.src[from:to]), nil
 		}
 		to++
 	}
 }
 
-func (c *cursor) readValue(until rune) (v string, hasNext bool, err error) {
+func (c *cursor) readValue(sep rune) (v string, hasNext bool, err error) {
 	var from, to = c.pos, c.pos
 	for {
 		r, ok := c.read()
@@ -33,7 +33,7 @@ func (c *cursor) readValue(until rune) (v string, hasNext bool, err error) {
 			return string(c.src[from:to]), false, nil
 		}
 
-		if r == until {
+		if r == sep {
 			return string(c.src[from:to]), len(c.src) != c.pos, nil
 		}
 
