@@ -54,6 +54,39 @@ func (g *Generator) reduce() {
 	}
 }
 
+// Example:
+// ...
+// responses:
+//   200:
+//     contents:
+//       application/json:
+//         ref: #/components/schemas/Foo
+//   202:
+//     contents:
+//       application/json:
+//         ref: #/components/schemas/Foo
+//
+// This response refers to the same schema for different
+// status codes, and it will cause a collision:
+//
+// func encodeResponse(resp FooResponse) {
+//     switch resp.(type) {
+//	   case *Foo:
+//     case *Foo:
+//     }
+// }
+//
+// To prevent collision we wrap referenced schema with aliases
+// and use them instead.
+//
+// type FooResponseOK Foo
+// func(*FooResponseOK) FooResponse() {}
+//
+// type FooResponseAccepted Foo
+// func(*FooResponseOK) FooResponse() {}
+//
+// Referring to the same schema in different content types
+// also can cause a collision.
 func (g *Generator) reduceEqualResponses(op *ir.Operation) {
 	if !op.Response.Type.Is(ir.KindInterface) {
 		return
