@@ -182,21 +182,11 @@ func (g *schemaGen) generate(name string, schema *oas.Schema) (*ir.Type, error) 
 		}
 		if d := schema.Discriminator; d != nil {
 			sum.SumSpec.Discriminator = schema.Discriminator.PropertyName
-			getRef := func(s *ir.Type) string {
-				// HACK(ernado): refactor
-				if s.Schema != nil && s.Schema.Ref != "" {
-					return s.Schema.Ref
-				}
-				if s.AliasTo != nil && s.AliasTo.Schema != nil && s.AliasTo.Schema.Ref != "" {
-					return s.AliasTo.Schema.Ref
-				}
-				panic("unable to find reference")
-			}
 			for k, v := range schema.Discriminator.Mapping {
 				// Explicit mapping.
 				var found bool
 				for _, s := range sum.SumOf {
-					if path.Base(getRef(s)) == v {
+					if path.Base(s.Schema.Ref) == v {
 						found = true
 						sum.SumSpec.Mapping = append(sum.SumSpec.Mapping, ir.SumSpecMap{
 							Key:  k,
@@ -212,7 +202,7 @@ func (g *schemaGen) generate(name string, schema *oas.Schema) (*ir.Type, error) 
 				// Implicit mapping, defaults to type name.
 				for _, s := range sum.SumOf {
 					sum.SumSpec.Mapping = append(sum.SumSpec.Mapping, ir.SumSpecMap{
-						Key:  path.Base(getRef(s)),
+						Key:  path.Base(s.Schema.Ref),
 						Type: s.Name,
 					})
 				}
