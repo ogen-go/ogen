@@ -1,0 +1,10 @@
+name: pkg
+
+on:
+  push:
+    tags:
+      - v*
+
+jobs:
+  run:
+    uses: go-faster/x/.github/workflows/release.yml@main
