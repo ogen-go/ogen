@@ -12,7 +12,7 @@ Telegram group for development: [@ogen_dev](https://t.me/ogen_dev)
 
 # Install
 ```console
-go get github.com/ogen-go/ogen
+go get -d github.com/ogen-go/ogen
 ```
 
 # Usage
