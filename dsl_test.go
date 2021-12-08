@@ -7,7 +7,7 @@ import (
 )
 
 func TestBuilder(t *testing.T) {
-	ex := Spec{
+	ex := &Spec{
 		OpenAPI: "3.1.0",
 		Info: Info{
 			Title:          "title",
@@ -25,25 +25,22 @@ func TestBuilder(t *testing.T) {
 			Version: "0.1.0",
 		},
 	}
-	ac := SpecBuilder().
+	ac := NewSpec().
 		SetOpenAPI(ex.OpenAPI).
-		SetInfo(InfoBuilder().
+		SetInfo(NewInfo().
 			SetTitle(ex.Info.Title).
 			SetDescription(ex.Info.Description).
 			SetTermsOfService(ex.Info.TermsOfService).
 			SetVersion(ex.Info.Version).
-			SetContact(ContactBuilder().
+			SetContact(NewContact().
 				SetName(ex.Info.Contact.Name).
 				SetURL(ex.Info.Contact.URL).
-				SetEmail(ex.Info.Contact.Email).
-				Contact(),
+				SetEmail(ex.Info.Contact.Email),
 			).
-			SetLicense(LicenseBuilder().
+			SetLicense(NewLicense().
 				SetName(ex.Info.License.Name).
-				SetURL(ex.Info.License.URL).
-				License()).
-			Info(),
-		).
-		Spec()
+				SetURL(ex.Info.License.URL),
+			),
+		)
 	assert.Equal(t, ex, ac)
 }
