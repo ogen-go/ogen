@@ -7,7 +7,31 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
+const (
+	pathWithID    = "/path/with/{id}"
+	refPathWithID = "/ref/path/with/id"
+)
+
 func TestBuilder(t *testing.T) {
+	// referenced query param
+	authQ := ogen.NewParameter().
+		InQuery().
+		SetName("auth").
+		SetDescription("Optional bearer token").
+		ToNamedParameter("authInQuery")
+	// referenced header param
+	authH := ogen.NewNamedParameter(
+		"authInHeader",
+		ogen.NewParameter().
+			SetIn("header").
+			SetName("Authorization").
+			SetDescription("Optional bearer token"),
+	)
+	// referenced cookie param
+	csrf := ogen.NewParameter().InCookie().
+		SetName("csrf").
+		SetDescription("CSRF token").ToNamedParameter("csrf")
+	// expected result
 	ex := &ogen.Spec{
 		OpenAPI: "3.1.0",
 		Info: ogen.Info{
@@ -29,6 +53,38 @@ func TestBuilder(t *testing.T) {
 			{"staging", "staging.api.com"},
 			{"production", "api.com"},
 		},
+		Paths: map[string]ogen.PathItem{
+			pathWithID: {
+				Description: "This is my first path",
+				Get: &ogen.Operation{
+					Tags:        []string{"default"},
+					Description: "Description for my path",
+					OperationID: "path-with-id",
+					Parameters: []ogen.Parameter{
+						{
+							Name:        "id",
+							In:          "path",
+							Description: "ID param in path",
+							Required:    true,
+							// TODO: Schema
+							// TODO: Required
+							// TODO: Deprecated
+							// TODO: Content
+							// TODO: Style
+							// TODO: Explode
+						},
+						{Ref: "#/components/parameters/authInQuery"},
+						{Ref: "#/components/parameters/authInHeader"},
+						{Ref: "#/components/parameters/csrf"},
+					},
+					RequestBody: nil, // TODO
+					Responses:   nil, // TODO
+				},
+			},
+			refPathWithID: {
+				Ref: "#/paths/~1path~1with~1{id}",
+			},
+		},
 	}
 	ac := ogen.NewSpec().
 		SetOpenAPI(ex.OpenAPI).
@@ -36,7 +92,6 @@ func TestBuilder(t *testing.T) {
 			SetTitle(ex.Info.Title).
 			SetDescription(ex.Info.Description).
 			SetTermsOfService(ex.Info.TermsOfService).
-			SetVersion(ex.Info.Version).
 			SetContact(ogen.NewContact().
 				SetName(ex.Info.Contact.Name).
 				SetURL(ex.Info.Contact.URL).
@@ -45,9 +100,35 @@ func TestBuilder(t *testing.T) {
 			SetLicense(ogen.NewLicense().
 				SetName(ex.Info.License.Name).
 				SetURL(ex.Info.License.URL),
-			),
+			).
+			SetVersion(ex.Info.Version),
 		).
-		AddServer(&ex.Servers[0]).
-		AddServer(&ex.Servers[1])
+		AddServers(
+			&ex.Servers[0],
+			ogen.NewServer().
+				SetDescription(ex.Servers[1].Description).
+				SetURL(ex.Servers[1].URL),
+		).
+		AddPaths(
+			ogen.NewPath(pathWithID).
+				SetDescription(ex.Paths[pathWithID].Description).
+				SetGet(ogen.NewOperation().
+					AddTags(ex.Paths[pathWithID].Get.Tags...).
+					SetDescription(ex.Paths[pathWithID].Get.Description).
+					SetOperationID(ex.Paths[pathWithID].Get.OperationID).
+					AddParameters(
+						ogen.NewParameter().
+							InPath().
+							SetName(ex.Paths[pathWithID].Get.Parameters[0].Name).
+							SetDescription(ex.Paths[pathWithID].Get.Parameters[0].Description).
+							SetRequired(true),
+						ogen.NewParameter().SetRef(authQ.LocalRef()),
+						ogen.NewParameter().SetRef(authH.LocalRef()),
+						ogen.NewParameter().SetRef(csrf.LocalRef()),
+					),
+				),
+			ogen.NewPath(refPathWithID).
+				SetRef(ogen.NewPath(pathWithID).LocalRef()),
+		)
 	assert.Equal(t, ex, ac)
 }
