@@ -1,43 +1,44 @@
-package ogen
+package ogen_test
 
 import (
 	"testing"
 
+	"github.com/ogen-go/ogen"
 	"github.com/stretchr/testify/assert"
 )
 
 func TestBuilder(t *testing.T) {
-	ex := &Spec{
+	ex := &ogen.Spec{
 		OpenAPI: "3.1.0",
-		Info: Info{
+		Info: ogen.Info{
 			Title:          "title",
 			Description:    "description",
 			TermsOfService: "terms of service",
-			Contact: &Contact{
+			Contact: &ogen.Contact{
 				Name:  "name",
 				URL:   "url",
 				Email: "email",
 			},
-			License: &License{
+			License: &ogen.License{
 				Name: "name",
 				URL:  "url",
 			},
 			Version: "0.1.0",
 		},
 	}
-	ac := NewSpec().
+	ac := ogen.NewSpec().
 		SetOpenAPI(ex.OpenAPI).
-		SetInfo(NewInfo().
+		SetInfo(ogen.NewInfo().
 			SetTitle(ex.Info.Title).
 			SetDescription(ex.Info.Description).
 			SetTermsOfService(ex.Info.TermsOfService).
 			SetVersion(ex.Info.Version).
-			SetContact(NewContact().
+			SetContact(ogen.NewContact().
 				SetName(ex.Info.Contact.Name).
 				SetURL(ex.Info.Contact.URL).
 				SetEmail(ex.Info.Contact.Email),
 			).
-			SetLicense(NewLicense().
+			SetLicense(ogen.NewLicense().
 				SetName(ex.Info.License.Name).
 				SetURL(ex.Info.License.URL),
 			),
