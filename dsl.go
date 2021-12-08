@@ -19,6 +19,20 @@ func (s *Spec) SetInfo(i *Info) *Spec {
 	return s
 }
 
+// SetServers sets the Servers of the Spec.
+func (s *Spec) SetServers(srv []Server) *Spec {
+	s.Servers = srv
+	return s
+}
+
+// AddServer adds a Server to Servers of the Spec.
+func (s *Spec) AddServer(srv *Server) *Spec {
+	if srv != nil {
+		s.Servers = append(s.Servers, *srv)
+	}
+	return s
+}
+
 // NewInfo returns a new Info.
 func NewInfo() *Info {
 	return new(Info)
@@ -42,12 +56,6 @@ func (i *Info) SetTermsOfService(t string) *Info {
 	return i
 }
 
-// SetVersion sets the version of the Info.
-func (i *Info) SetVersion(v string) *Info {
-	i.Version = v
-	return i
-}
-
 // SetContact sets the Contact of the Info.
 func (i *Info) SetContact(c *Contact) *Info {
 	i.Contact = c
@@ -57,6 +65,12 @@ func (i *Info) SetContact(c *Contact) *Info {
 // SetLicense sets the License of the Info.
 func (i *Info) SetLicense(l *License) *Info {
 	i.License = l
+	return i
+}
+
+// SetVersion sets the version of the Info.
+func (i *Info) SetVersion(v string) *Info {
+	i.Version = v
 	return i
 }
 
@@ -98,4 +112,21 @@ func (l *License) SetName(n string) *License {
 func (l *License) SetURL(url string) *License {
 	l.URL = url
 	return l
+}
+
+// NewServer returns a new Server.
+func NewServer() *Server {
+	return new(Server)
+}
+
+// SetDescription sets the Description of the Server.
+func (s *Server) SetDescription(d string) *Server {
+	s.Description = d
+	return s
+}
+
+// SetURL sets the URL of the Server.
+func (s *Server) SetURL(url string) *Server {
+	s.URL = url
+	return s
 }

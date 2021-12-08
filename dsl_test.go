@@ -25,6 +25,10 @@ func TestBuilder(t *testing.T) {
 			},
 			Version: "0.1.0",
 		},
+		Servers: []ogen.Server{
+			{"staging", "staging.api.com"},
+			{"production", "api.com"},
+		},
 	}
 	ac := ogen.NewSpec().
 		SetOpenAPI(ex.OpenAPI).
@@ -42,6 +46,8 @@ func TestBuilder(t *testing.T) {
 				SetName(ex.Info.License.Name).
 				SetURL(ex.Info.License.URL),
 			),
-		)
+		).
+		AddServer(&ex.Servers[0]).
+		AddServer(&ex.Servers[1])
 	assert.Equal(t, ex, ac)
 }
