@@ -18,7 +18,7 @@ func TestBuilder(t *testing.T) {
 		InQuery().
 		SetName("auth").
 		SetDescription("Optional bearer token").
-		ToNamedParameter("authInQuery")
+		Named("authInQuery")
 	// referenced header param
 	authH := ogen.NewNamedParameter(
 		"authInHeader",
@@ -30,7 +30,7 @@ func TestBuilder(t *testing.T) {
 	// referenced cookie param
 	csrf := ogen.NewParameter().InCookie().
 		SetName("csrf").
-		SetDescription("CSRF token").ToNamedParameter("csrf")
+		SetDescription("CSRF token").Named("csrf")
 	// expected result
 	ex := &ogen.Spec{
 		OpenAPI: "3.1.0",
@@ -132,9 +132,9 @@ func TestBuilder(t *testing.T) {
 							SetName(ex.Paths[pathWithID].Get.Parameters[0].Name).
 							SetDescription(ex.Paths[pathWithID].Get.Parameters[0].Description).
 							SetRequired(true),
-						ogen.NewParameter().SetRef(authQ.LocalRef()),
-						ogen.NewParameter().SetRef(authH.LocalRef()),
-						ogen.NewParameter().SetRef(csrf.LocalRef()),
+						authQ.LocalRef(),
+						authH.LocalRef(),
+						csrf.LocalRef(),
 					),
 				),
 			ogen.NewPath(refPathWithID).

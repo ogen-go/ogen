@@ -450,8 +450,8 @@ func (p *Parameter) SetExplode(e bool) *Parameter {
 	return p
 }
 
-// ToNamedParameter returns a namedParameter wrapping the receiver.
-func (p *Parameter) ToNamedParameter(n string) *namedParameter {
+// Named returns a namedParameter wrapping the receiver.
+func (p *Parameter) Named(n string) *namedParameter {
 	return NewNamedParameter(n, p)
 }
 
@@ -466,9 +466,9 @@ func NewNamedParameter(n string, p *Parameter) *namedParameter {
 	return &namedParameter{p, n}
 }
 
-// LocalRef returns the ref for the Parameter in the local document.
-func (p *namedParameter) LocalRef() string {
-	return "#/components/parameters/" + escapeRef(p.name)
+// LocalRef returns a new Parameter referencing the wrapped Parameter in the local document.
+func (p *namedParameter) LocalRef() *Parameter {
+	return NewParameter().SetRef("#/components/parameters/" + escapeRef(p.name))
 }
 
 // Ident returns the name of the namedParameter.
