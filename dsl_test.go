@@ -85,6 +85,16 @@ func TestBuilder(t *testing.T) {
 				Ref: "#/paths/~1path~1with~1{id}",
 			},
 		},
+		Components: &ogen.Components{
+			Schemas:   nil, // TODO
+			Responses: nil, // TODO
+			Parameters: map[string]ogen.Parameter{
+				authQ.Ident(): *authQ.Parameter,
+				authH.Ident(): *authH.Parameter,
+				csrf.Ident():  *csrf.Parameter,
+			},
+			RequestBodies: nil, // TODO
+		},
 	}
 	ac := ogen.NewSpec().
 		SetOpenAPI(ex.OpenAPI).
@@ -129,6 +139,7 @@ func TestBuilder(t *testing.T) {
 				),
 			ogen.NewPath(refPathWithID).
 				SetRef(ogen.NewPath(pathWithID).LocalRef()),
-		)
+		).
+		AddNamedParameters(authQ, authH, csrf)
 	assert.Equal(t, ex, ac)
 }

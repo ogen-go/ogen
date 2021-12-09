@@ -54,6 +54,64 @@ func (s *Spec) AddPaths(ps ...*path) *Spec {
 	return s
 }
 
+// SetComponents sets the Components of the Spec.
+func (s *Spec) SetComponents(c *Components) *Spec {
+	s.Components = c
+	return s
+}
+
+// TODO: AddSchemas
+// // AddSchema adds the given Schema under the given name to the Components of the Spec.
+// func (s *Spec) AddSchema(n string, sc *Schema) *Spec {
+// 	if sc != nil {
+// 		s.Init()
+// 		s.Components.Schemas[n] = *sc
+// 	}
+// 	return s
+// }
+//
+// // AddSchemas adds the given namedSchemas to the Components of the Spec.
+// func (s *Spec) AddSchemas(scs ...*namedSchema) *Spec {
+// 	for _, sc := range scs {
+// 		s.AddSchema(sc.name, sc.Schema)
+// 	}
+// }
+// TODO: AddResponses
+
+// AddParameter adds the given Parameter under the given name to the Components of the Spec.
+func (s *Spec) AddParameter(n string, p *Parameter) *Spec {
+	if p != nil {
+		s.initParameters()
+		s.Components.Parameters[n] = *p
+	}
+	return s
+}
+
+// AddNamedParameters adds the given namedParameters to the Components of the Spec.
+func (s *Spec) AddNamedParameters(ps ...*namedParameter) *Spec {
+	for _, p := range ps {
+		s.AddParameter(p.name, p.Parameter)
+	}
+	return s
+}
+
+// initParameters ensures the Parameters map is allocated.
+func (s *Spec) initParameters() {
+	s.initComponents()
+	if s.Components.Parameters == nil {
+		s.Components.Parameters = make(map[string]Parameter)
+	}
+}
+
+// initComponents ensures the Components property is non-nil.
+func (s *Spec) initComponents() {
+	if s.Components == nil {
+		s.Components = new(Components)
+	}
+}
+
+// TODO: AddRequestBodies
+
 // NewInfo returns a new Info.
 func NewInfo() *Info {
 	return new(Info)
@@ -397,7 +455,7 @@ func (p *Parameter) ToNamedParameter(n string) *namedParameter {
 	return NewNamedParameter(n, p)
 }
 
-// namedParameter can be used to construct a Reference to the wrapped Parameter.
+// namedParameter can be used to construct a reference to the wrapped Parameter.
 type namedParameter struct {
 	*Parameter
 	name string
@@ -413,12 +471,20 @@ func (p *namedParameter) LocalRef() string {
 	return "#/components/parameters/" + escapeRef(p.name)
 }
 
-// TODO: Parameter
+// Ident returns the name of the namedParameter.
+func (p *namedParameter) Ident() string { return p.name }
+
 // TODO: RequestBody
 // TODO: Response
 // TODO: Media
 // TODO: Discriminator
-// TODO: Schema
+
+// // namedSchema can be used to construct a reference to the wrapped Schema.
+// type namedSchema struct {
+// 	*Schema
+// 	name string
+// }
+
 // TODO: Property
 
 func escapeRef(ref string) string {
