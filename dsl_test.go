@@ -8,18 +8,18 @@ import (
 )
 
 const (
-	pathWithID    = "/path/with/{id}"
-	refPathWithID = "/ref/path/with/id"
+	pathWithID    = "/PathItem/with/{id}"
+	refPathWithID = "/ref/PathItem/with/id"
 )
 
 func TestBuilder(t *testing.T) {
-	// referenced query param
+	// referenced query Parameter
 	authQ := ogen.NewParameter().
 		InQuery().
 		SetName("auth").
 		SetDescription("Optional bearer token").
-		Named("authInQuery")
-	// referenced header param
+		ToNamed("authInQuery")
+	// referenced header Parameter
 	authH := ogen.NewNamedParameter(
 		"authInHeader",
 		ogen.NewParameter().
@@ -27,10 +27,12 @@ func TestBuilder(t *testing.T) {
 			SetName("Authorization").
 			SetDescription("Optional bearer token"),
 	)
-	// referenced cookie param
-	csrf := ogen.NewParameter().InCookie().
+	// referenced cookie Parameter
+	csrf := ogen.NewParameter().
+		InCookie().
 		SetName("csrf").
-		SetDescription("CSRF token").Named("csrf")
+		SetDescription("CSRF token").
+		ToNamed("csrf")
 	// expected result
 	ex := &ogen.Spec{
 		OpenAPI: "3.1.0",
@@ -39,12 +41,12 @@ func TestBuilder(t *testing.T) {
 			Description:    "description",
 			TermsOfService: "terms of service",
 			Contact: &ogen.Contact{
-				Name:  "name",
+				Name:  "Name",
 				URL:   "url",
 				Email: "email",
 			},
 			License: &ogen.License{
-				Name: "name",
+				Name: "Name",
 				URL:  "url",
 			},
 			Version: "0.1.0",
@@ -55,16 +57,16 @@ func TestBuilder(t *testing.T) {
 		},
 		Paths: map[string]ogen.PathItem{
 			pathWithID: {
-				Description: "This is my first path",
+				Description: "This is my first PathItem",
 				Get: &ogen.Operation{
 					Tags:        []string{"default"},
-					Description: "Description for my path",
-					OperationID: "path-with-id",
+					Description: "Description for my PathItem",
+					OperationID: "PathItem-with-id",
 					Parameters: []ogen.Parameter{
 						{
 							Name:        "id",
-							In:          "path",
-							Description: "ID param in path",
+							In:          "PathItem",
+							Description: "ID Parameter in PathItem",
 							Required:    true,
 							// TODO: Schema
 							// TODO: Required
@@ -89,13 +91,34 @@ func TestBuilder(t *testing.T) {
 			Schemas:   nil, // TODO
 			Responses: nil, // TODO
 			Parameters: map[string]ogen.Parameter{
-				authQ.Ident(): *authQ.Parameter,
-				authH.Ident(): *authH.Parameter,
-				csrf.Ident():  *csrf.Parameter,
+				authQ.Name: *authQ.Parameter,
+				authH.Name: *authH.Parameter,
+				csrf.Name:  *csrf.Parameter,
 			},
 			RequestBodies: nil, // TODO
 		},
 	}
+	// referenced path
+	path := ogen.NewPathItem().
+		SetDescription(ex.Paths[pathWithID].Description).
+		SetGet(ogen.NewOperation().
+			AddTags(ex.Paths[pathWithID].Get.Tags...).
+			SetDescription(ex.Paths[pathWithID].Get.Description).
+			SetOperationID(ex.Paths[pathWithID].Get.OperationID).
+			AddParameters(
+				ogen.NewParameter().
+					InPath().
+					SetName(ex.Paths[pathWithID].Get.Parameters[0].Name).
+					SetDescription(ex.Paths[pathWithID].Get.Parameters[0].Description).
+					SetRequired(true),
+				authQ.AsLocalRef(),
+				authH.AsLocalRef(),
+				csrf.AsLocalRef(),
+			),
+		).
+		ToNamed(pathWithID)
+
+	// actual result
 	ac := ogen.NewSpec().
 		SetOpenAPI(ex.OpenAPI).
 		SetInfo(ogen.NewInfo().
@@ -119,27 +142,8 @@ func TestBuilder(t *testing.T) {
 				SetDescription(ex.Servers[1].Description).
 				SetURL(ex.Servers[1].URL),
 		).
-		AddPaths(
-			ogen.NewPath(pathWithID).
-				SetDescription(ex.Paths[pathWithID].Description).
-				SetGet(ogen.NewOperation().
-					AddTags(ex.Paths[pathWithID].Get.Tags...).
-					SetDescription(ex.Paths[pathWithID].Get.Description).
-					SetOperationID(ex.Paths[pathWithID].Get.OperationID).
-					AddParameters(
-						ogen.NewParameter().
-							InPath().
-							SetName(ex.Paths[pathWithID].Get.Parameters[0].Name).
-							SetDescription(ex.Paths[pathWithID].Get.Parameters[0].Description).
-							SetRequired(true),
-						authQ.LocalRef(),
-						authH.LocalRef(),
-						csrf.LocalRef(),
-					),
-				),
-			ogen.NewPath(refPathWithID).
-				SetRef(ogen.NewPath(pathWithID).LocalRef()),
-		).
+		AddNamedPaths(path).
+		AddPathItem(refPathWithID, path.AsLocalRef()).
 		AddNamedParameters(authQ, authH, csrf)
 	assert.Equal(t, ex, ac)
 }

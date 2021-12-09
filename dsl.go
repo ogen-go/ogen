@@ -43,13 +43,19 @@ func (s *Spec) SetPaths(p Paths) *Spec {
 	return s
 }
 
-// AddPaths adds paths to the Paths of the Spec.
-func (s *Spec) AddPaths(ps ...*path) *Spec {
+// AddPathItem adds the given PathItem under the given Name to the Paths of the Spec.
+func (s *Spec) AddPathItem(n string, p *PathItem) *Spec {
+	if p != nil {
+		s.initPaths()
+		s.Paths[n] = *p
+	}
+	return s
+}
+
+// AddNamedPaths adds the given namedPaths to the Paths of the Spec.
+func (s *Spec) AddNamedPaths(ps ...*NamedPathItem) *Spec {
 	for _, p := range ps {
-		if s.Paths == nil {
-			s.Paths = make(Paths)
-		}
-		s.Paths[p.path] = *p.item
+		s.AddPathItem(p.Name, p.PathItem)
 	}
 	return s
 }
@@ -60,8 +66,15 @@ func (s *Spec) SetComponents(c *Components) *Spec {
 	return s
 }
 
+// initPaths ensures the Paths map is allocated.
+func (s *Spec) initPaths() {
+	if s.Paths == nil {
+		s.Paths = make(Paths)
+	}
+}
+
 // TODO: AddSchemas
-// // AddSchema adds the given Schema under the given name to the Components of the Spec.
+// // AddSchema adds the given Schema under the given Name to the Components of the Spec.
 // func (s *Spec) AddSchema(n string, sc *Schema) *Spec {
 // 	if sc != nil {
 // 		s.Init()
@@ -73,12 +86,12 @@ func (s *Spec) SetComponents(c *Components) *Spec {
 // // AddSchemas adds the given namedSchemas to the Components of the Spec.
 // func (s *Spec) AddSchemas(scs ...*namedSchema) *Spec {
 // 	for _, sc := range scs {
-// 		s.AddSchema(sc.name, sc.Schema)
+// 		s.AddSchema(sc.Name, sc.Schema)
 // 	}
 // }
 // TODO: AddResponses
 
-// AddParameter adds the given Parameter under the given name to the Components of the Spec.
+// AddParameter adds the given Parameter under the given Name to the Components of the Spec.
 func (s *Spec) AddParameter(n string, p *Parameter) *Spec {
 	if p != nil {
 		s.initParameters()
@@ -88,9 +101,9 @@ func (s *Spec) AddParameter(n string, p *Parameter) *Spec {
 }
 
 // AddNamedParameters adds the given namedParameters to the Components of the Spec.
-func (s *Spec) AddNamedParameters(ps ...*namedParameter) *Spec {
+func (s *Spec) AddNamedParameters(ps ...*NamedParameter) *Spec {
 	for _, p := range ps {
-		s.AddParameter(p.name, p.Parameter)
+		s.AddParameter(p.Name, p.Parameter)
 	}
 	return s
 }
@@ -212,112 +225,122 @@ func (s *Server) SetURL(url string) *Server {
 
 // TODO: Components
 
-// path holds the PathItem for a single path.
-type path struct {
-	path string
-	item *PathItem
-}
-
-// NewPath returns a new path.
-func NewPath(p string) *path {
-	return &path{p, new(PathItem)}
+// NewPathItem returns a new PathItem.
+func NewPathItem() *PathItem {
+	return new(PathItem)
 }
 
 // SetRef sets the Ref of the PathItem.
-func (p *path) SetRef(r string) *path {
-	p.item.Ref = r
+func (p *PathItem) SetRef(r string) *PathItem {
+	p.Ref = r
 	return p
 }
 
 // SetDescription sets the Description of the PathItem.
-func (p *path) SetDescription(d string) *path {
-	p.item.Description = d
+func (p *PathItem) SetDescription(d string) *PathItem {
+	p.Description = d
 	return p
 }
 
 // SetGet sets the Get of the PathItem.
-func (p *path) SetGet(o *Operation) *path {
-	p.item.Get = o
+func (p *PathItem) SetGet(o *Operation) *PathItem {
+	p.Get = o
 	return p
 }
 
 // SetPut sets the Put of the PathItem.
-func (p *path) SetPut(o *Operation) *path {
-	p.item.Put = o
+func (p *PathItem) SetPut(o *Operation) *PathItem {
+	p.Put = o
 	return p
 }
 
 // SetPost sets the Post of the PathItem.
-func (p *path) SetPost(o *Operation) *path {
-	p.item.Post = o
+func (p *PathItem) SetPost(o *Operation) *PathItem {
+	p.Post = o
 	return p
 }
 
 // SetDelete sets the Delete of the PathItem.
-func (p *path) SetDelete(o *Operation) *path {
-	p.item.Delete = o
+func (p *PathItem) SetDelete(o *Operation) *PathItem {
+	p.Delete = o
 	return p
 }
 
 // SetOptions sets the Options of the PathItem.
-func (p *path) SetOptions(o *Operation) *path {
-	p.item.Options = o
+func (p *PathItem) SetOptions(o *Operation) *PathItem {
+	p.Options = o
 	return p
 }
 
 // SetHead sets the Head of the PathItem.
-func (p *path) SetHead(o *Operation) *path {
-	p.item.Head = o
+func (p *PathItem) SetHead(o *Operation) *PathItem {
+	p.Head = o
 	return p
 }
 
 // SetPatch sets the Patch of the PathItem.
-func (p *path) SetPatch(o *Operation) *path {
-	p.item.Patch = o
+func (p *PathItem) SetPatch(o *Operation) *PathItem {
+	p.Patch = o
 	return p
 }
 
 // SetTrace sets the Trace of the PathItem.
-func (p *path) SetTrace(o *Operation) *path {
-	p.item.Trace = o
+func (p *PathItem) SetTrace(o *Operation) *PathItem {
+	p.Trace = o
 	return p
 }
 
 // SetServers sets the Servers of the PathItem.
-func (p *path) SetServers(srvs []Server) *path {
-	p.item.Servers = srvs
+func (p *PathItem) SetServers(srvs []Server) *PathItem {
+	p.Servers = srvs
 	return p
 }
 
 // AddServers adds Servers to the Servers of the PathItem.
-func (p *path) AddServers(srvs ...*Server) *path {
+func (p *PathItem) AddServers(srvs ...*Server) *PathItem {
 	for _, srv := range srvs {
 		if srv != nil {
-			p.item.Servers = append(p.item.Servers, *srv)
+			p.Servers = append(p.Servers, *srv)
 		}
 	}
 	return p
 }
 
 // SetParameters sets the Parameters of the PathItem.
-func (p *path) SetParameters(ps []Parameter) *path {
-	p.item.Parameters = ps
+func (p *PathItem) SetParameters(ps []Parameter) *PathItem {
+	p.Parameters = ps
 	return p
 }
 
 // AddParameters adds Parameters to the Parameters of the PathItem.
-func (p *path) AddParameters(ps ...*Parameter) *path {
+func (p *PathItem) AddParameters(ps ...*Parameter) *PathItem {
 	for _, i := range ps {
 		if i != nil {
-			p.item.Parameters = append(p.item.Parameters, *i)
+			p.Parameters = append(p.Parameters, *i)
 		}
 	}
 	return p
 }
 
-// LocalRef returns the ref for the path in the local document.
-func (p *path) LocalRef() string {
-	return "#/paths/" + strings.NewReplacer("~", "~0", "/", "~1").Replace(p.path)
+// ToNamed returns a NamedPathItem wrapping the receiver.
+func (p *PathItem) ToNamed(n string) *NamedPathItem {
+	return NewNamedPath(n, p)
+}
+
+// NamedPathItem can be used to construct a reference to the wrapped PathItem.
+type NamedPathItem struct {
+	PathItem *PathItem
+	Name     string
+}
+
+// NewNamedPath returns a new NamedPathItem.
+func NewNamedPath(n string, p *PathItem) *NamedPathItem {
+	return &NamedPathItem{p, n}
+}
+
+// AsLocalRef returns a new PathItem referencing the wrapped PathItem in the local document.
+func (p *NamedPathItem) AsLocalRef() *PathItem {
+	return NewPathItem().SetRef("#/components/parameters/" + escapeRef(p.Name))
 }
 
 // NewOperation returns a new Operation.
@@ -388,9 +411,9 @@ func (p *Parameter) SetIn(i string) *Parameter {
 	return p
 }
 
-// InPath sets the In of the Parameter to "path".
+// InPath sets the In of the Parameter to "PathItem".
 func (p *Parameter) InPath() *Parameter {
-	return p.SetIn("path")
+	return p.SetIn("PathItem")
 }
 
 // InQuery sets the In of the Parameter to "query".
@@ -450,29 +473,26 @@ func (p *Parameter) SetExplode(e bool) *Parameter {
 	return p
 }
 
-// Named returns a namedParameter wrapping the receiver.
-func (p *Parameter) Named(n string) *namedParameter {
+// ToNamed returns a NamedParameter wrapping the receiver.
+func (p *Parameter) ToNamed(n string) *NamedParameter {
 	return NewNamedParameter(n, p)
 }
 
-// namedParameter can be used to construct a reference to the wrapped Parameter.
-type namedParameter struct {
-	*Parameter
-	name string
+// NamedParameter can be used to construct a reference to the wrapped Parameter.
+type NamedParameter struct {
+	Parameter *Parameter
+	Name      string
 }
 
-// NewNamedParameter returns a new namedParameter.
-func NewNamedParameter(n string, p *Parameter) *namedParameter {
-	return &namedParameter{p, n}
+// NewNamedParameter returns a new NamedParameter.
+func NewNamedParameter(n string, p *Parameter) *NamedParameter {
+	return &NamedParameter{p, n}
 }
 
-// LocalRef returns a new Parameter referencing the wrapped Parameter in the local document.
-func (p *namedParameter) LocalRef() *Parameter {
-	return NewParameter().SetRef("#/components/parameters/" + escapeRef(p.name))
+// AsLocalRef returns a new Parameter referencing the wrapped Parameter in the local document.
+func (p *NamedParameter) AsLocalRef() *Parameter {
+	return NewParameter().SetRef("#/components/parameters/" + escapeRef(p.Name))
 }
-
-// Ident returns the name of the namedParameter.
-func (p *namedParameter) Ident() string { return p.name }
 
 // TODO: RequestBody
 // TODO: Response
@@ -482,7 +502,7 @@ func (p *namedParameter) Ident() string { return p.name }
 // // namedSchema can be used to construct a reference to the wrapped Schema.
 // type namedSchema struct {
 // 	*Schema
-// 	name string
+// 	Name string
 // }
 
 // TODO: Property
