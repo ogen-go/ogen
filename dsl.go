@@ -340,7 +340,7 @@ func NewNamedPath(n string, p *PathItem) *NamedPathItem {
 
 // AsLocalRef returns a new PathItem referencing the wrapped PathItem in the local document.
 func (p *NamedPathItem) AsLocalRef() *PathItem {
-	return NewPathItem().SetRef("#/components/parameters/" + escapeRef(p.Name))
+	return NewPathItem().SetRef("#/paths/" + escapeRef(p.Name))
 }
 
 // NewOperation returns a new Operation.

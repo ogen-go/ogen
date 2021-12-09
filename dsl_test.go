@@ -8,8 +8,8 @@ import (
 )
 
 const (
-	pathWithID    = "/PathItem/with/{id}"
-	refPathWithID = "/ref/PathItem/with/id"
+	pathWithID    = "/path/with/{id}"
+	refPathWithID = "/ref/path/with/id"
 )
 
 func TestBuilder(t *testing.T) {
@@ -57,16 +57,16 @@ func TestBuilder(t *testing.T) {
 		},
 		Paths: map[string]ogen.PathItem{
 			pathWithID: {
-				Description: "This is my first PathItem",
+				Description: "This is my first path",
 				Get: &ogen.Operation{
 					Tags:        []string{"default"},
-					Description: "Description for my PathItem",
-					OperationID: "PathItem-with-id",
+					Description: "Description for my path",
+					OperationID: "path-with-id",
 					Parameters: []ogen.Parameter{
 						{
 							Name:        "id",
 							In:          "PathItem",
-							Description: "ID Parameter in PathItem",
+							Description: "ID Parameter in path",
 							Required:    true,
 							// TODO: Schema
 							// TODO: Required
