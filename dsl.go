@@ -1,6 +1,12 @@
 package ogen
 
-import "strings"
+import (
+	"encoding/json"
+	"strings"
+
+	"github.com/ogen-go/ogen/internal/ir"
+	"github.com/ogen-go/ogen/internal/oas"
+)
 
 // NewSpec returns a new Spec.
 func NewSpec() *Spec {
@@ -45,15 +51,13 @@ func (s *Spec) SetPaths(p Paths) *Spec {
 
 // AddPathItem adds the given PathItem under the given Name to the Paths of the Spec.
 func (s *Spec) AddPathItem(n string, p *PathItem) *Spec {
-	if p != nil {
-		s.initPaths()
-		s.Paths[n] = *p
-	}
+	s.initPaths()
+	s.Paths[n] = p
 	return s
 }
 
-// AddNamedPaths adds the given namedPaths to the Paths of the Spec.
-func (s *Spec) AddNamedPaths(ps ...*NamedPathItem) *Spec {
+// AddNamedPathItems adds the given namedPaths to the Paths of the Spec.
+func (s *Spec) AddNamedPathItems(ps ...*NamedPathItem) *Spec {
 	for _, p := range ps {
 		s.AddPathItem(p.Name, p.PathItem)
 	}
@@ -73,30 +77,40 @@ func (s *Spec) initPaths() {
 	}
 }
 
-// TODO: AddSchemas
-// // AddSchema adds the given Schema under the given Name to the Components of the Spec.
-// func (s *Spec) AddSchema(n string, sc *Schema) *Spec {
-// 	if sc != nil {
-// 		s.Init()
-// 		s.Components.Schemas[n] = *sc
-// 	}
-// 	return s
-// }
-//
-// // AddSchemas adds the given namedSchemas to the Components of the Spec.
-// func (s *Spec) AddSchemas(scs ...*namedSchema) *Spec {
-// 	for _, sc := range scs {
-// 		s.AddSchema(sc.Name, sc.Schema)
-// 	}
-// }
-// TODO: AddResponses
+// AddSchema adds the given Schema under the given Name to the Components of the Spec.
+func (s *Spec) AddSchema(n string, sc *Schema) *Spec {
+	s.initSchemas()
+	s.Components.Schemas[n] = sc
+	return s
+}
+
+// AddNamedSchemas adds the given namedSchemas to the Components of the Spec.
+func (s *Spec) AddNamedSchemas(scs ...*NamedSchema) *Spec {
+	for _, sc := range scs {
+		s.AddSchema(sc.Name, sc.Schema)
+	}
+	return s
+}
+
+// AddResponse adds the given Response under the given Name to the Components of the Spec.
+func (s *Spec) AddResponse(n string, sc *Response) *Spec {
+	s.initResponses()
+	s.Components.Responses[n] = sc
+	return s
+}
+
+// AddNamedResponses adds the given namedResponses to the Components of the Spec.
+func (s *Spec) AddNamedResponses(scs ...*NamedResponse) *Spec {
+	for _, sc := range scs {
+		s.AddResponse(sc.Name, sc.Response)
+	}
+	return s
+}
 
 // AddParameter adds the given Parameter under the given Name to the Components of the Spec.
 func (s *Spec) AddParameter(n string, p *Parameter) *Spec {
-	if p != nil {
-		s.initParameters()
-		s.Components.Parameters[n] = *p
-	}
+	s.initParameters()
+	s.Components.Parameters[n] = p
 	return s
 }
 
@@ -108,13 +122,27 @@ func (s *Spec) AddNamedParameters(ps ...*NamedParameter) *Spec {
 	return s
 }
 
-// initParameters ensures the Parameters map is allocated.
-func (s *Spec) initParameters() {
-	s.initComponents()
-	if s.Components.Parameters == nil {
-		s.Components.Parameters = make(map[string]Parameter)
+// RefSchema returns a new Schema referencing the given name.
+func (s *Spec) RefSchema(n string) *NamedSchema {
+	if s.Components != nil && s.Components.Schemas != nil {
+		if r, ok := s.Components.Schemas[n]; ok {
+			return NewNamedSchema(n, r)
+		}
 	}
+	return nil
 }
+
+// RefResponse returns a new Response referencing the given name.
+func (s *Spec) RefResponse(n string) *NamedResponse {
+	if s.Components != nil && s.Components.Responses != nil {
+		if r, ok := s.Components.Responses[n]; ok {
+			return NewNamedResponse(n, r)
+		}
+	}
+	return nil
+}
+
+// TODO: AddRequestBodies
 
 // initComponents ensures the Components property is non-nil.
 func (s *Spec) initComponents() {
@@ -123,7 +151,29 @@ func (s *Spec) initComponents() {
 	}
 }
 
-// TODO: AddRequestBodies
+// initParameters ensures the Parameters map is allocated.
+func (s *Spec) initParameters() {
+	s.initComponents()
+	if s.Components.Parameters == nil {
+		s.Components.Parameters = make(map[string]*Parameter)
+	}
+}
+
+// initSchemas ensures the Schemas map is allocated.
+func (s *Spec) initSchemas() {
+	s.initComponents()
+	if s.Components.Schemas == nil {
+		s.Components.Schemas = make(map[string]*Schema)
+	}
+}
+
+// initResponses ensures the Responses map is allocated.
+func (s *Spec) initResponses() {
+	s.initComponents()
+	if s.Components.Responses == nil {
+		s.Components.Responses = make(map[string]*Response)
+	}
+}
 
 // NewInfo returns a new Info.
 func NewInfo() *Info {
@@ -223,8 +273,6 @@ func (s *Server) SetURL(url string) *Server {
 	return s
 }
 
-// TODO: Components
-
 // NewPathItem returns a new PathItem.
 func NewPathItem() *PathItem {
 	return new(PathItem)
@@ -307,7 +355,7 @@ func (p *PathItem) AddServers(srvs ...*Server) *PathItem {
 }
 
 // SetParameters sets the Parameters of the PathItem.
-func (p *PathItem) SetParameters(ps []Parameter) *PathItem {
+func (p *PathItem) SetParameters(ps []*Parameter) *PathItem {
 	p.Parameters = ps
 	return p
 }
@@ -315,16 +363,14 @@ func (p *PathItem) SetParameters(ps []Parameter) *PathItem {
 // AddParameters adds Parameters to the Parameters of the PathItem.
 func (p *PathItem) AddParameters(ps ...*Parameter) *PathItem {
 	for _, i := range ps {
-		if i != nil {
-			p.Parameters = append(p.Parameters, *i)
-		}
+		p.Parameters = append(p.Parameters, i)
 	}
 	return p
 }
 
 // ToNamed returns a NamedPathItem wrapping the receiver.
 func (p *PathItem) ToNamed(n string) *NamedPathItem {
-	return NewNamedPath(n, p)
+	return NewNamedPathItem(n, p)
 }
 
 // NamedPathItem can be used to construct a reference to the wrapped PathItem.
@@ -333,8 +379,8 @@ type NamedPathItem struct {
 	Name     string
 }
 
-// NewNamedPath returns a new NamedPathItem.
-func NewNamedPath(n string, p *PathItem) *NamedPathItem {
+// NewNamedPathItem returns a new NamedPathItem.
+func NewNamedPathItem(n string, p *PathItem) *NamedPathItem {
 	return &NamedPathItem{p, n}
 }
 
@@ -360,6 +406,12 @@ func (o *Operation) AddTags(ts ...string) *Operation {
 	return o
 }
 
+// SetSummary sets the Summary of the Operation.
+func (o *Operation) SetSummary(s string) *Operation {
+	o.Summary = s
+	return o
+}
+
 // SetDescription sets the Description of the Operation.
 func (o *Operation) SetDescription(d string) *Operation {
 	o.Description = d
@@ -373,7 +425,7 @@ func (o *Operation) SetOperationID(id string) *Operation {
 }
 
 // SetParameters sets the Parameters of the Operation.
-func (o *Operation) SetParameters(ps []Parameter) *Operation {
+func (o *Operation) SetParameters(ps []*Parameter) *Operation {
 	o.Parameters = ps
 	return o
 }
@@ -381,11 +433,37 @@ func (o *Operation) SetParameters(ps []Parameter) *Operation {
 // AddParameters adds Parameters to the Parameters of the Operation.
 func (o *Operation) AddParameters(ps ...*Parameter) *Operation {
 	for _, p := range ps {
-		if p != nil {
-			o.Parameters = append(o.Parameters, *p)
-		}
+		o.Parameters = append(o.Parameters, p)
 	}
 	return o
+}
+
+// SetResponses sets the Responses of the Operation.
+func (o *Operation) SetResponses(r Responses) *Operation {
+	o.Responses = r
+	return o
+}
+
+// AddResponse adds the given Response under the given Name to the Responses of the Operation.
+func (o *Operation) AddResponse(n string, p *Response) *Operation {
+	o.initResponses()
+	o.Responses[n] = p
+	return o
+}
+
+// AddNamedResponses adds the given namedResponses to the Responses of the Operation.
+func (o *Operation) AddNamedResponses(ps ...*NamedResponse) *Operation {
+	for _, p := range ps {
+		o.AddResponse(p.Name, p.Response)
+	}
+	return o
+}
+
+// initResponses ensures the Responses map is allocated.
+func (o *Operation) initResponses() {
+	if o.Responses == nil {
+		o.Responses = make(Responses)
+	}
 }
 
 // NewParameter returns a new Parameter.
@@ -413,22 +491,22 @@ func (p *Parameter) SetIn(i string) *Parameter {
 
 // InPath sets the In of the Parameter to "PathItem".
 func (p *Parameter) InPath() *Parameter {
-	return p.SetIn("PathItem")
+	return p.SetIn(string(oas.LocationPath))
 }
 
 // InQuery sets the In of the Parameter to "query".
 func (p *Parameter) InQuery() *Parameter {
-	return p.SetIn("query")
+	return p.SetIn(string(oas.LocationQuery))
 }
 
 // InHeader sets the In of the Parameter to "header".
 func (p *Parameter) InHeader() *Parameter {
-	return p.SetIn("header")
+	return p.SetIn(string(oas.LocationHeader))
 }
 
 // InCookie sets the In of the Parameter to "cookie".
 func (p *Parameter) InCookie() *Parameter {
-	return p.SetIn("cookie")
+	return p.SetIn(string(oas.LocationCookie))
 }
 
 // SetDescription sets the Description of the Parameter.
@@ -438,8 +516,10 @@ func (p *Parameter) SetDescription(d string) *Parameter {
 }
 
 // SetSchema sets the Schema of the Parameter.
-func (p *Parameter) SetSchema(s Schema) *Parameter {
-	p.Schema = s
+func (p *Parameter) SetSchema(s *Schema) *Parameter {
+	if s != nil {
+		p.Schema = *s
+	}
 	return p
 }
 
@@ -495,17 +575,377 @@ func (p *NamedParameter) AsLocalRef() *Parameter {
 }
 
 // TODO: RequestBody
-// TODO: Response
+
+// NewResponse returns a new Response.
+func NewResponse() *Response {
+	return new(Response)
+}
+
+// SetRef sets the Ref of the Response.
+func (r *Response) SetRef(ref string) *Response {
+	r.Ref = ref
+	return r
+}
+
+// SetDescription sets the Description of the Response.
+func (r *Response) SetDescription(d string) *Response {
+	r.Description = d
+	return r
+}
+
+// SetHeader sets the Header of the Response.
+func (r *Response) SetHeader(h map[string]interface{}) *Response {
+	r.Header = h
+	return r
+}
+
+// SetContent sets the Content of the Response.
+func (r *Response) SetContent(c map[string]Media) *Response {
+	r.Content = c
+	return r
+}
+
+// AddContent adds the given Schema under the MediaType to the Content of the Response.
+func (r *Response) AddContent(mt string, s *Schema) *Response {
+	if s != nil {
+		r.initContent()
+		r.Content[mt] = Media{*s}
+	}
+	return r
+}
+
+// SetJSONContent sets the given Schema under the JSON MediaType to the Content of the Response.
+func (r *Response) SetJSONContent(s *Schema) *Response {
+	return r.AddContent(string(ir.ContentTypeJSON), s)
+}
+
+// initContent ensures the Paths map is allocated.
+func (r *Response) initContent() {
+	if r.Content == nil {
+		r.Content = make(map[string]Media)
+	}
+}
+
+// SetLinks sets the Links of the Response.
+func (r *Response) SetLinks(l map[string]interface{}) *Response {
+	r.Links = l
+	return r
+}
+
+// ToNamed returns a NamedResponse wrapping the receiver.
+func (r *Response) ToNamed(n string) *NamedResponse {
+	return NewNamedResponse(n, r)
+}
+
+// NamedResponse can be used to construct a reference to the wrapped Response.
+type NamedResponse struct {
+	Response *Response
+	Name     string
+}
+
+// NewNamedResponse returns a new NamedResponse.
+func NewNamedResponse(n string, p *Response) *NamedResponse {
+	return &NamedResponse{p, n}
+}
+
+// AsLocalRef returns a new Response referencing the wrapped Response in the local document.
+func (p *NamedResponse) AsLocalRef() *Response {
+	return NewResponse().SetRef("#/components/responses/" + escapeRef(p.Name))
+}
+
 // TODO: Media
 // TODO: Discriminator
 
-// // namedSchema can be used to construct a reference to the wrapped Schema.
-// type namedSchema struct {
-// 	*Schema
-// 	Name string
-// }
+// NewSchema returns a new Schema.
+func NewSchema() *Schema {
+	return new(Schema)
+}
 
-// TODO: Property
+// SetRef sets the Ref of the Schema.
+func (s *Schema) SetRef(r string) *Schema {
+	s.Ref = r
+	return s
+}
+
+// SetDescription sets the Description of the Schema.
+func (s *Schema) SetDescription(d string) *Schema {
+	s.Description = d
+	return s
+}
+
+// SetType sets the Type of the Schema.
+func (s *Schema) SetType(t string) *Schema {
+	s.Type = t
+	return s
+}
+
+// SetFormat sets the Format of the Schema.
+func (s *Schema) SetFormat(f string) *Schema {
+	s.Format = f
+	return s
+}
+
+// SetProperties sets the Properties of the Schema.
+func (s *Schema) SetProperties(p *Properties) *Schema {
+	if p != nil {
+		s.Properties = *p
+	}
+	return s
+}
+
+// AddOptionalProperties adds the Properties to the Properties of the Schema.
+func (s *Schema) AddOptionalProperties(ps ...*Property) *Schema {
+	for _, p := range ps {
+		if p != nil {
+			s.Properties = append(s.Properties, *p)
+		}
+	}
+	return s
+}
+
+// AddRequiredProperties adds the Properties to the Properties of the Schema and marks them as required.
+func (s *Schema) AddRequiredProperties(ps ...*Property) *Schema {
+	s.AddOptionalProperties(ps...)
+	for _, p := range ps {
+		if p != nil {
+			s.Required = append(s.Required, p.Name)
+		}
+	}
+	return s
+}
+
+// SetRequired sets the Required of the Schema.
+func (s *Schema) SetRequired(r []string) *Schema {
+	s.Required = r
+	return s
+}
+
+// SetItems sets the Items of the Schema.
+func (s *Schema) SetItems(i *Schema) *Schema {
+	s.Items = i
+	return s
+}
+
+// SetNullable sets the Nullable of the Schema.
+func (s *Schema) SetNullable(n bool) *Schema {
+	s.Nullable = n
+	return s
+}
+
+// SetAllOf sets the AllOf of the Schema.
+func (s *Schema) SetAllOf(a []*Schema) *Schema {
+	s.AllOf = a
+	return s
+}
+
+// SetOneOf sets the OneOf of the Schema.
+func (s *Schema) SetOneOf(o []*Schema) *Schema {
+	s.OneOf = o
+	return s
+}
+
+// SetAnyOf sets the AnyOf of the Schema.
+func (s *Schema) SetAnyOf(a []*Schema) *Schema {
+	s.AnyOf = a
+	return s
+}
+
+// SetDiscriminator sets the Discriminator of the Schema.
+func (s *Schema) SetDiscriminator(d *Discriminator) *Schema {
+	s.Discriminator = d
+	return s
+}
+
+// SetEnum sets the Enum of the Schema.
+func (s *Schema) SetEnum(e []json.RawMessage) *Schema {
+	s.Enum = e
+	return s
+}
+
+// SetMultipleOf sets the MultipleOf of the Schema.
+func (s *Schema) SetMultipleOf(m *int) *Schema {
+	s.MultipleOf = m
+	return s
+}
+
+// SetMaximum sets the Maximum of the Schema.
+func (s *Schema) SetMaximum(m *int64) *Schema {
+	s.Maximum = m
+	return s
+}
+
+// SetExclusiveMaximum sets the ExclusiveMaximum of the Schema.
+func (s *Schema) SetExclusiveMaximum(e bool) *Schema {
+	s.ExclusiveMaximum = e
+	return s
+}
+
+// SetMinimum sets the Minimum of the Schema.
+func (s *Schema) SetMinimum(m *int64) *Schema {
+	s.Minimum = m
+	return s
+}
+
+// SetExclusiveMinimum sets the ExclusiveMinimum of the Schema.
+func (s *Schema) SetExclusiveMinimum(e bool) *Schema {
+	s.ExclusiveMinimum = e
+	return s
+}
+
+// SetMaxLength sets the MaxLength of the Schema.
+func (s *Schema) SetMaxLength(m *uint64) *Schema {
+	s.MaxLength = m
+	return s
+}
+
+// SetMinLength sets the MinLength of the Schema.
+func (s *Schema) SetMinLength(m *int64) *Schema {
+	s.MinLength = m
+	return s
+}
+
+// SetPattern sets the Pattern of the Schema.
+func (s *Schema) SetPattern(p string) *Schema {
+	s.Pattern = p
+	return s
+}
+
+// SetMaxItems sets the MaxItems of the Schema.
+func (s *Schema) SetMaxItems(m *uint64) *Schema {
+	s.MaxItems = m
+	return s
+}
+
+// SetMinItems sets the MinItems of the Schema.
+func (s *Schema) SetMinItems(m *uint64) *Schema {
+	s.MinItems = m
+	return s
+}
+
+// SetUniqueItems sets the UniqueItems of the Schema.
+func (s *Schema) SetUniqueItems(u bool) *Schema {
+	s.UniqueItems = u
+	return s
+}
+
+// SetMaxProperties sets the MaxProperties of the Schema.
+func (s *Schema) SetMaxProperties(m *uint64) *Schema {
+	s.MaxProperties = m
+	return s
+}
+
+// SetMinProperties sets the MinProperties of the Schema.
+func (s *Schema) SetMinProperties(m *uint64) *Schema {
+	s.MinProperties = m
+	return s
+}
+
+// SetDefault sets the Default of the Schema.
+func (s *Schema) SetDefault(d json.RawMessage) *Schema {
+	s.Default = d
+	return s
+}
+
+// ToNamed returns a NamedSchema wrapping the receiver.
+func (s *Schema) ToNamed(n string) *NamedSchema {
+	return NewNamedSchema(n, s)
+}
+
+// Int32 returns an 32-bit integer OAS data type (Schema).
+func Int32() *Schema { return schema("integer", "int32") }
+
+// Int64 returns an 64-bit integer OAS data type (Schema).
+func Int64() *Schema { return schema("integer", "int64") }
+
+// Float returns a float OAS data type (Schema).
+func Float() *Schema { return schema("number", "float") }
+
+// Double returns a double OAS data type (Schema).
+func Double() *Schema { return schema("number", "double") }
+
+// String returns a string OAS data type (Schema).
+func String() *Schema { return schema("string", "") }
+
+// Bytes returns a base64 encoded OAS data type (Schema).
+func Bytes() *Schema { return schema("string", "byte") }
+
+// Binary returns a sequence of octets OAS data type (Schema).
+func Binary() *Schema { return schema("string", "binary") }
+
+// Bool returns a boolean OAS data type (Schema).
+func Bool() *Schema { return schema("boolean", "") }
+
+// Date returns a date as defined by full-date - RFC3339 OAS data type (Schema).
+func Date() *Schema { return schema("string", "date") }
+
+// DateTime returns a date as defined by date-time - RFC3339 OAS data type (Schema).
+func DateTime() *Schema { return schema("string", "date-time") }
+
+// Password returns an obscured OAS data type (Schema).
+func Password() *Schema { return schema("string", "password") }
+
+// schema returns a Schema for a primitive type.
+func schema(t, f string) *Schema {
+	return &Schema{
+		Type:   t,
+		Format: f,
+	}
+}
+
+// AsArray returns a new "array" Schema wrapping the receiver.
+func (s *Schema) AsArray() *Schema {
+	return &Schema{
+		Type:  string(oas.Array),
+		Items: s,
+	}
+}
+
+// AsEnum returns a new "enum" Schema wrapping the receiver.
+func (s *Schema) AsEnum(def json.RawMessage, values ...json.RawMessage) *Schema {
+	return &Schema{
+		Type:    "enum", // TODO(ernado): add enum to oas.Array etc.
+		Default: def,
+		Enum:    values,
+	}
+}
+
+// ToProperty returns a Property with the given name and with this Schema.
+func (s *Schema) ToProperty(n string) *Property {
+	return NewProperty().SetName(n).SetSchema(s)
+}
+
+// NamedSchema can be used to construct a reference to the wrapped Schema.
+type NamedSchema struct {
+	Schema *Schema
+	Name   string
+}
+
+// NewNamedSchema returns a new NamedSchema.
+func NewNamedSchema(n string, p *Schema) *NamedSchema {
+	return &NamedSchema{p, n}
+}
+
+// AsLocalRef returns a new Schema referencing the wrapped Schema in the local document.
+func (p *NamedSchema) AsLocalRef() *Schema {
+	return NewSchema().SetRef("#/components/schemas/" + escapeRef(p.Name))
+}
+
+// NewProperty returns a new Property.
+func NewProperty() *Property {
+	return new(Property)
+}
+
+// SetName sets the Name of the Property.
+func (p *Property) SetName(n string) *Property {
+	p.Name = n
+	return p
+}
+
+// SetSchema sets the Schema of the Property.
+func (p *Property) SetSchema(s *Schema) *Property {
+	p.Schema = s
+	return p
+}
 
 func escapeRef(ref string) string {
 	return strings.NewReplacer("~", "~0", "/", "~1").Replace(ref)

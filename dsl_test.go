@@ -12,27 +12,66 @@ const (
 	refPathWithID = "/ref/path/with/id"
 )
 
-func TestBuilder(t *testing.T) {
-	// referenced query Parameter
-	authQ := ogen.NewParameter().
-		InQuery().
-		SetName("auth").
-		SetDescription("Optional bearer token").
-		ToNamed("authInQuery")
-	// referenced header Parameter
-	authH := ogen.NewNamedParameter(
+var (
+	// reusable query param
+	_queryParam = ogen.NewParameter().
+			InQuery().
+			SetName("auth").
+			SetDescription("Optional bearer token").
+			ToNamed("authInQuery")
+	// reusable header param
+	_headerParam = ogen.NewNamedParameter(
 		"authInHeader",
 		ogen.NewParameter().
 			SetIn("header").
 			SetName("Authorization").
 			SetDescription("Optional bearer token"),
 	)
-	// referenced cookie Parameter
-	csrf := ogen.NewParameter().
-		InCookie().
-		SetName("csrf").
-		SetDescription("CSRF token").
-		ToNamed("csrf")
+	// reusable cookie param
+	_cookieParam = ogen.NewParameter().
+			InCookie().
+			SetName("csrf").
+			SetDescription("CSRF token").
+			ToNamed("csrf")
+	// reusable pet schema
+	_petSchema = ogen.NewNamedSchema(
+		"Pet",
+		ogen.NewSchema().
+			SetDescription("A Pet").
+			AddRequiredProperties(
+				ogen.Int32().ToProperty("required_Int32"),
+				ogen.Int64().ToProperty("required_Int64"),
+				ogen.Float().ToProperty("required_Float"),
+				ogen.Double().ToProperty("required_Double"),
+				ogen.String().ToProperty("required_String"),
+				ogen.Bytes().ToProperty("required_Bytes"),
+				ogen.Binary().ToProperty("required_Binary"),
+				ogen.Bool().ToProperty("required_Bool"),
+				ogen.Date().ToProperty("required_Date"),
+				ogen.DateTime().ToProperty("required_DateTime"),
+				ogen.Password().ToProperty("required_Password"),
+			).
+			AddOptionalProperties(
+				ogen.Int32().ToProperty("optional_Int32"),
+				ogen.Int64().ToProperty("optional_Int64"),
+				ogen.Float().ToProperty("optional_Float"),
+				ogen.Double().ToProperty("optional_Double"),
+				ogen.String().ToProperty("optional_String"),
+				ogen.Bytes().ToProperty("optional_Bytes"),
+				ogen.Binary().ToProperty("optional_Binary"),
+				ogen.Bool().ToProperty("optional_Bool"),
+				ogen.Date().ToProperty("optional_Date"),
+				ogen.DateTime().ToProperty("optional_DateTime"),
+				ogen.Password().ToProperty("optional_Password"),
+			),
+	)
+	// reusable toy schema
+	_toySchema = ogen.NewSchema().
+			SetDescription("A toy of a Pet").
+			ToNamed("User")
+)
+
+func TestBuilder(t *testing.T) {
 	// expected result
 	ex := &ogen.Spec{
 		OpenAPI: "3.1.0",
@@ -55,14 +94,14 @@ func TestBuilder(t *testing.T) {
 			{"staging", "staging.api.com"},
 			{"production", "api.com"},
 		},
-		Paths: map[string]ogen.PathItem{
+		Paths: map[string]*ogen.PathItem{
 			pathWithID: {
 				Description: "This is my first path",
 				Get: &ogen.Operation{
 					Tags:        []string{"default"},
 					Description: "Description for my path",
 					OperationID: "path-with-id",
-					Parameters: []ogen.Parameter{
+					Parameters: []*ogen.Parameter{
 						{
 							Name:        "id",
 							In:          "PathItem",
@@ -88,12 +127,27 @@ func TestBuilder(t *testing.T) {
 			},
 		},
 		Components: &ogen.Components{
-			Schemas:   nil, // TODO
+			Schemas: map[string]*ogen.Schema{
+				_petSchema.Name: _petSchema.Schema,
+				_toySchema.Name: _toySchema.Schema,
+			},
 			Responses: nil, // TODO
-			Parameters: map[string]ogen.Parameter{
-				authQ.Name: *authQ.Parameter,
-				authH.Name: *authH.Parameter,
-				csrf.Name:  *csrf.Parameter,
+			Parameters: map[string]*ogen.Parameter{
+				"authInQuery": {
+					Name:        "auth",
+					In:          "query",
+					Description: "Optional bearer token",
+				},
+				"authInHeader": {
+					Name:        "Authorization",
+					In:          "header",
+					Description: "Optional bearer token",
+				},
+				"csrf": {
+					Name:        "csrf",
+					In:          "cookie",
+					Description: "CSRF token",
+				},
 			},
 			RequestBodies: nil, // TODO
 		},
@@ -111,13 +165,12 @@ func TestBuilder(t *testing.T) {
 					SetName(ex.Paths[pathWithID].Get.Parameters[0].Name).
 					SetDescription(ex.Paths[pathWithID].Get.Parameters[0].Description).
 					SetRequired(true),
-				authQ.AsLocalRef(),
-				authH.AsLocalRef(),
-				csrf.AsLocalRef(),
+				_queryParam.AsLocalRef(),
+				_headerParam.AsLocalRef(),
+				_cookieParam.AsLocalRef(),
 			),
 		).
 		ToNamed(pathWithID)
-
 	// actual result
 	ac := ogen.NewSpec().
 		SetOpenAPI(ex.OpenAPI).
@@ -142,8 +195,9 @@ func TestBuilder(t *testing.T) {
 				SetDescription(ex.Servers[1].Description).
 				SetURL(ex.Servers[1].URL),
 		).
-		AddNamedPaths(path).
+		AddNamedPathItems(path).
 		AddPathItem(refPathWithID, path.AsLocalRef()).
-		AddNamedParameters(authQ, authH, csrf)
+		AddNamedParameters(_queryParam, _headerParam, _cookieParam).
+		AddNamedSchemas(_petSchema, _toySchema)
 	assert.Equal(t, ex, ac)
 }
