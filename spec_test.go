@@ -15,11 +15,11 @@ func TestPropertiesJSON(t *testing.T) {
 	expect := Properties{
 		{
 			Name:   "foo",
-			Schema: Schema{Type: "integer"},
+			Schema: &Schema{Type: "integer"},
 		},
 		{
 			Name:   "bar",
-			Schema: Schema{Type: "string"},
+			Schema: &Schema{Type: "string"},
 		},
 	}
 	require.Equal(t, expect, props)

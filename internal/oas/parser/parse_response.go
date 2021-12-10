@@ -45,7 +45,7 @@ func (p *parser) parseResponses(responses ogen.Responses) (*oas.OperationRespons
 	return result, nil
 }
 
-func (p *parser) parseResponse(resp ogen.Response) (*oas.Response, error) {
+func (p *parser) parseResponse(resp *ogen.Response) (*oas.Response, error) {
 	if ref := resp.Ref; ref != "" {
 		resp, err := p.resolveResponse(ref)
 		if err != nil {
@@ -66,7 +66,7 @@ func (p *parser) parseResponse(resp ogen.Response) (*oas.Response, error) {
 			}
 		}
 
-		schema, err := p.parseSchema(media.Schema)
+		schema, err := p.parseSchema(&media.Schema)
 		if err != nil {
 			return nil, errors.Wrapf(err, "content: %s: schema", contentType)
 		}

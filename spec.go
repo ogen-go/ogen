@@ -26,16 +26,16 @@ func (s *Spec) Init() {
 
 	c := s.Components
 	if c.Schemas == nil {
-		c.Schemas = make(map[string]Schema)
+		c.Schemas = make(map[string]*Schema)
 	}
 	if c.Responses == nil {
-		c.Responses = make(map[string]Response)
+		c.Responses = make(map[string]*Response)
 	}
 	if c.Parameters == nil {
-		c.Parameters = make(map[string]Parameter)
+		c.Parameters = make(map[string]*Parameter)
 	}
 	if c.RequestBodies == nil {
-		c.RequestBodies = make(map[string]RequestBody)
+		c.RequestBodies = make(map[string]*RequestBody)
 	}
 }
 
@@ -82,11 +82,11 @@ type Server struct {
 // All objects defined within the components object will have no effect on the API
 // unless they are explicitly referenced from properties outside the components object.
 type Components struct {
-	Schemas    map[string]Schema    `json:"schemas,omitempty"`
-	Responses  map[string]Response  `json:"responses,omitempty"`
-	Parameters map[string]Parameter `json:"parameters,omitempty"`
+	Schemas    map[string]*Schema    `json:"schemas,omitempty"`
+	Responses  map[string]*Response  `json:"responses,omitempty"`
+	Parameters map[string]*Parameter `json:"parameters,omitempty"`
 	// Examples        map[string]Example         `json:"example"`
-	RequestBodies map[string]RequestBody `json:"requestBodies,omitempty"`
+	RequestBodies map[string]*RequestBody `json:"requestBodies,omitempty"`
 	// Headers         map[string]Header          `json:"headers"`
 	// SecuritySchemes map[string]SecuritySchema  `json:"securitySchemes"`
 	// Links           map[string]Link            `json:"links"`
@@ -96,7 +96,7 @@ type Components struct {
 // Paths holds the relative paths to the individual endpoints and their operations.
 // The path is appended to the URL from the Server Object in order to construct the full URL.
 // The Paths MAY be empty, due to ACL constraints.
-type Paths map[string]PathItem
+type Paths map[string]*PathItem
 
 // PathItem describes the operations available on a single path.
 // A Path Item MAY be empty, due to ACL constraints.
@@ -107,18 +107,18 @@ type PathItem struct {
 	// The referenced structure MUST be in the format of a Path Item Object.
 	// In case a Path Item Object field appears both
 	// in the defined object and the referenced object, the behavior is undefined.
-	Ref         string      `json:"$ref,omitempty"`
-	Description string      `json:"description,omitempty"`
-	Get         *Operation  `json:"get,omitempty"`
-	Put         *Operation  `json:"put,omitempty"`
-	Post        *Operation  `json:"post,omitempty"`
-	Delete      *Operation  `json:"delete,omitempty"`
-	Options     *Operation  `json:"options,omitempty"`
-	Head        *Operation  `json:"head,omitempty"`
-	Patch       *Operation  `json:"patch,omitempty"`
-	Trace       *Operation  `json:"trace,omitempty"`
-	Servers     []Server    `json:"servers,omitempty"`
-	Parameters  []Parameter `json:"parameters,omitempty"`
+	Ref         string       `json:"$ref,omitempty"`
+	Description string       `json:"description,omitempty"`
+	Get         *Operation   `json:"get,omitempty"`
+	Put         *Operation   `json:"put,omitempty"`
+	Post        *Operation   `json:"post,omitempty"`
+	Delete      *Operation   `json:"delete,omitempty"`
+	Options     *Operation   `json:"options,omitempty"`
+	Head        *Operation   `json:"head,omitempty"`
+	Patch       *Operation   `json:"patch,omitempty"`
+	Trace       *Operation   `json:"trace,omitempty"`
+	Servers     []Server     `json:"servers,omitempty"`
+	Parameters  []*Parameter `json:"parameters,omitempty"`
 }
 
 // Operation describes a single API operation on a path.
@@ -129,7 +129,7 @@ type Operation struct {
 	Summary     string       `json:"summary,omitempty"`
 	Description string       `json:"description,omitempty"`
 	OperationID string       `json:"operationId,omitempty"`
-	Parameters  []Parameter  `json:"parameters,omitempty"`
+	Parameters  []*Parameter `json:"parameters,omitempty"`
 	RequestBody *RequestBody `json:"requestBody,omitempty"`
 	Responses   Responses    `json:"responses,omitempty"`
 }
@@ -193,7 +193,7 @@ type RequestBody struct {
 
 // Responses is a container for the expected responses of an operation.
 // The container maps the HTTP response code to the expected response
-type Responses map[string]Response
+type Responses map[string]*Response
 
 // Response describes a single response from an API Operation,
 // including design-time, static links to operations based on the response.
@@ -257,13 +257,13 @@ type Schema struct {
 	// for independent validation but together compose a single object.
 	// Still, it does not imply a hierarchy between the models.
 	// For that purpose, you should include the discriminator.
-	AllOf []Schema `json:"allOf,omitempty"` // TODO: implement.
+	AllOf []*Schema `json:"allOf,omitempty"` // TODO: implement.
 
 	// OneOf validates the value against exactly one of the subschemas
-	OneOf []Schema `json:"oneOf,omitempty"` // TODO: implement.
+	OneOf []*Schema `json:"oneOf,omitempty"` // TODO: implement.
 
 	// AnyOf validates the value against any (one or more) of the subschemas
-	AnyOf []Schema `json:"anyOf,omitempty"` // TODO: implement.
+	AnyOf []*Schema `json:"anyOf,omitempty"` // TODO: implement.
 
 	// Discriminator for subschemas.
 	Discriminator *Discriminator `json:"discriminator,omitempty"`
@@ -401,7 +401,7 @@ type Schema struct {
 
 type Property struct {
 	Name   string
-	Schema Schema
+	Schema *Schema
 }
 
 type Properties []Property
@@ -426,13 +426,13 @@ func (p Properties) MarshalJSON() ([]byte, error) {
 func (p *Properties) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return d.Obj(func(d *jx.Decoder, key string) error {
-		var s Schema
+		s := new(Schema)
 		b, err := d.Raw()
 		if err != nil {
 			return err
 		}
 
-		if err := json.Unmarshal(b, &s); err != nil {
+		if err := json.Unmarshal(b, s); err != nil {
 			return err
 		}
 

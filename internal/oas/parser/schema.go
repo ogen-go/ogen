@@ -9,7 +9,7 @@ import (
 	"github.com/ogen-go/ogen/internal/oas"
 )
 
-func (p *parser) parseSchema(schema ogen.Schema) (*oas.Schema, error) {
+func (p *parser) parseSchema(schema *ogen.Schema) (*oas.Schema, error) {
 	gen := &schemaGen{
 		spec:       p.spec,
 		globalRefs: p.refs.schemas,

@@ -32,7 +32,7 @@ func (p *parser) parseRequestBody(body *ogen.RequestBody) (*oas.RequestBody, err
 			}
 		}
 
-		schema, err := p.parseSchema(media.Schema)
+		schema, err := p.parseSchema(&media.Schema)
 		if err != nil {
 			return nil, errors.Wrapf(err, "content: %s: parse schema", contentType)
 		}

@@ -9,7 +9,7 @@ import (
 	"github.com/ogen-go/ogen/internal/oas"
 )
 
-func (p *parser) parseParams(params []ogen.Parameter) ([]*oas.Parameter, error) {
+func (p *parser) parseParams(params []*ogen.Parameter) ([]*oas.Parameter, error) {
 	// Unique parameter is defined by a combination of a name and location.
 	type pnameLoc struct {
 		name     string
@@ -42,7 +42,7 @@ func (p *parser) parseParams(params []ogen.Parameter) ([]*oas.Parameter, error) 
 	return result, nil
 }
 
-func (p *parser) parseParameter(param ogen.Parameter) (*oas.Parameter, error) {
+func (p *parser) parseParameter(param *ogen.Parameter) (*oas.Parameter, error) {
 	if ref := param.Ref; ref != "" {
 		parsed, err := p.resolveParameter(ref)
 		if err != nil {
@@ -68,7 +68,7 @@ func (p *parser) parseParameter(param ogen.Parameter) (*oas.Parameter, error) {
 		return nil, errors.New("path parameters must be required")
 	}
 
-	schema, err := p.parseSchema(param.Schema)
+	schema, err := p.parseSchema(&param.Schema)
 	if err != nil {
 		return nil, errors.Wrap(err, "schema")
 	}
