@@ -13,7 +13,7 @@ import (
 type sampleErrServer struct {
 }
 
-func (s sampleErrServer) DataCreate(ctx context.Context, req api.Data) (api.Data, error) {
+func (s sampleErrServer) DataCreate(ctx context.Context, req api.OptData) (api.Data, error) {
 	panic("implement me")
 }
 

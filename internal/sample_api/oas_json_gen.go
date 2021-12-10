@@ -619,6 +619,46 @@ func (o *OptNilString) Decode(d *jx.Decoder) error {
 	}
 }
 
+// Encode encodes Pet as json.
+func (o OptPet) Encode(e *jx.Encoder) {
+	o.Value.Encode(e)
+}
+
+// Decode decodes Pet from json.
+func (o *OptPet) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptPet to nil`)
+	}
+	switch d.Next() {
+	case jx.Object:
+		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptPet`, d.Next())
+	}
+}
+
+// Encode encodes PetName as json.
+func (o OptPetName) Encode(e *jx.Encoder) {
+}
+
+// Decode decodes PetName from json.
+func (o *OptPetName) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptPetName to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptPetName`, d.Next())
+	}
+}
+
 // Encode encodes PetType as json.
 func (o OptPetType) Encode(e *jx.Encoder) {
 	e.Str(string(o.Value))
@@ -640,6 +680,30 @@ func (o *OptPetType) Decode(d *jx.Decoder) error {
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptPetType`, d.Next())
+	}
+}
+
+// Encode encodes string as json.
+func (o OptString) Encode(e *jx.Encoder) {
+	e.Str(string(o.Value))
+}
+
+// Decode decodes string from json.
+func (o *OptString) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptString to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		v, err := d.Str()
+		if err != nil {
+			return err
+		}
+		o.Value = string(v)
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptString`, d.Next())
 	}
 }
 

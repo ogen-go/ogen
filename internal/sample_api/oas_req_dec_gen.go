@@ -62,19 +62,27 @@ var (
 	_ = sync.Pool{}
 )
 
-func decodeFoobarPostRequest(r *http.Request, span trace.Span) (req Pet, err error) {
+func decodeFoobarPostRequest(r *http.Request, span trace.Span) (req OptPet, err error) {
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request Pet
+		if r.ContentLength == 0 {
+			return req, nil
+		}
+		var request OptPet
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
+			request.Reset()
 			if err := request.Decode(d); err != nil {
 				return err
 			}
@@ -83,83 +91,17 @@ func decodeFoobarPostRequest(r *http.Request, span trace.Span) (req Pet, err err
 			return req, err
 		}
 		if err := func() error {
-			if err := request.Validate(); err != nil {
-				return err
-			}
-			return nil
-		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
-		}
-		return request, nil
-	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
-	}
-}
-
-func decodePetCreateRequest(r *http.Request, span trace.Span) (req Pet, err error) {
-	switch r.Header.Get("Content-Type") {
-	case "application/json":
-		var request Pet
-		buf := getBuf()
-		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
-			return req, err
-		}
-		d := jx.GetDecoder()
-		defer jx.PutDecoder(d)
-		d.ResetBytes(buf.Bytes())
-		if err := func() error {
-			if err := request.Decode(d); err != nil {
-				return err
-			}
-			return nil
-		}(); err != nil {
-			return req, err
-		}
-		if err := func() error {
-			if err := request.Validate(); err != nil {
-				return err
-			}
-			return nil
-		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
-		}
-		return request, nil
-	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
-	}
-}
-
-func decodePetUpdateNameAliasPostRequest(r *http.Request, span trace.Span) (req PetName, err error) {
-	switch r.Header.Get("Content-Type") {
-	case "application/json":
-		var request PetName
-		buf := getBuf()
-		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
-			return req, err
-		}
-		d := jx.GetDecoder()
-		defer jx.PutDecoder(d)
-		d.ResetBytes(buf.Bytes())
-		if err := func() error {
-			{
-				var unwrapped string
-				v, err := d.Str()
-				unwrapped = string(v)
-				if err != nil {
+			if request.Set {
+				if err := func() error {
+					if err := request.Value.Validate(); err != nil {
+						return err
+					}
+					return nil
+				}(); err != nil {
 					return err
 				}
-				request = PetName(unwrapped)
 			}
 			return nil
-		}(); err != nil {
-			return req, err
-		}
-		if err := func() error {
-			if err := request.Validate(); err != nil {
-				return err
-			}
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate")
@@ -170,22 +112,28 @@ func decodePetUpdateNameAliasPostRequest(r *http.Request, span trace.Span) (req 
 	}
 }
 
-func decodePetUpdateNamePostRequest(r *http.Request, span trace.Span) (req string, err error) {
+func decodePetCreateRequest(r *http.Request, span trace.Span) (req OptPet, err error) {
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request string
+		if r.ContentLength == 0 {
+			return req, nil
+		}
+		var request OptPet
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			v, err := d.Str()
-			request = string(v)
-			if err != nil {
+			request.Reset()
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -193,17 +141,125 @@ func decodePetUpdateNamePostRequest(r *http.Request, span trace.Span) (req strin
 			return req, err
 		}
 		if err := func() error {
-			if err := (validate.String{
-				MinLength:    6,
-				MinLengthSet: true,
-				MaxLength:    0,
-				MaxLengthSet: false,
-				Email:        false,
-				Hostname:     false,
-				Regex:        nil,
-			}).Validate(string(request)); err != nil {
-				return errors.Wrap(err, "string")
+			if request.Set {
+				if err := func() error {
+					if err := request.Value.Validate(); err != nil {
+						return err
+					}
+					return nil
+				}(); err != nil {
+					return err
+				}
 			}
+			return nil
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate")
+		}
+		return request, nil
+	default:
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+	}
+}
+
+func decodePetUpdateNameAliasPostRequest(r *http.Request, span trace.Span) (req OptPetName, err error) {
+	switch r.Header.Get("Content-Type") {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, nil
+		}
+		var request OptPetName
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+		if written == 0 {
+			return req, nil
+		}
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request.Reset()
+			if err := request.Decode(d); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, err
+		}
+		if err := func() error {
+			if request.Set {
+				if err := func() error {
+					if err := request.Value.Validate(); err != nil {
+						return err
+					}
+					return nil
+				}(); err != nil {
+					return err
+				}
+			}
+			return nil
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate")
+		}
+		return request, nil
+	default:
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+	}
+}
+
+func decodePetUpdateNamePostRequest(r *http.Request, span trace.Span) (req OptString, err error) {
+	switch r.Header.Get("Content-Type") {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, nil
+		}
+		var request OptString
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+		if written == 0 {
+			return req, nil
+		}
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request.Reset()
+			if err := request.Decode(d); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, err
+		}
+		if err := func() error {
+			if request.Set {
+				if err := func() error {
+					if err := (validate.String{
+						MinLength:    6,
+						MinLengthSet: true,
+						MaxLength:    0,
+						MaxLengthSet: false,
+						Email:        false,
+						Hostname:     false,
+						Regex:        nil,
+					}).Validate(string(request.Value)); err != nil {
+						return errors.Wrap(err, "string")
+					}
+					return nil
+				}(); err != nil {
+					return err
+				}
+			}
+			return nil
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate")

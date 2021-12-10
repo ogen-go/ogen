@@ -82,3 +82,41 @@ type ErrorStatusCode struct {
 	StatusCode int
 	Response   Error
 }
+
+// NewOptData returns new OptData with value set to v.
+func NewOptData(v Data) OptData {
+	return OptData{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptData is optional Data.
+type OptData struct {
+	Value Data
+	Set   bool
+}
+
+// IsSet returns true if OptData was set.
+func (o OptData) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptData) Reset() {
+	var v Data
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptData) SetTo(v Data) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptData) Get() (v Data, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}

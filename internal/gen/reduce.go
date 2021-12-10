@@ -281,7 +281,6 @@ func cloneRequest(r *ir.Request) *ir.Request {
 	return &ir.Request{
 		Type:     r.Type,
 		Contents: contents,
-		Required: r.Required,
 		Spec:     r.Spec,
 	}
 }

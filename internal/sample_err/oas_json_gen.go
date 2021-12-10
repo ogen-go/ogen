@@ -148,3 +148,25 @@ func (s *ErrorStatusCode) Decode(d *jx.Decoder) error {
 		return nil
 	})
 }
+
+// Encode encodes Data as json.
+func (o OptData) Encode(e *jx.Encoder) {
+	o.Value.Encode(e)
+}
+
+// Decode decodes Data from json.
+func (o *OptData) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptData to nil`)
+	}
+	switch d.Next() {
+	case jx.Object:
+		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptData`, d.Next())
+	}
+}

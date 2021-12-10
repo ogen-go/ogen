@@ -62,19 +62,27 @@ var (
 	_ = sync.Pool{}
 )
 
-func decodeDataCreateRequest(r *http.Request, span trace.Span) (req Data, err error) {
+func decodeDataCreateRequest(r *http.Request, span trace.Span) (req OptData, err error) {
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request Data
+		if r.ContentLength == 0 {
+			return req, nil
+		}
+		var request OptData
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
+			request.Reset()
 			if err := request.Decode(d); err != nil {
 				return err
 			}

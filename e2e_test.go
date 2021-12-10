@@ -75,11 +75,11 @@ func (s sampleAPIServer) GetHeader(ctx context.Context, params api.GetHeaderPara
 	}, nil
 }
 
-func (s sampleAPIServer) PetUpdateNameAliasPost(ctx context.Context, req api.PetName) (api.PetUpdateNameAliasPostDefStatusCode, error) {
+func (s sampleAPIServer) PetUpdateNameAliasPost(ctx context.Context, req api.OptPetName) (api.PetUpdateNameAliasPostDefStatusCode, error) {
 	panic("implement me")
 }
 
-func (s sampleAPIServer) PetUpdateNamePost(ctx context.Context, req string) (api.PetUpdateNamePostDefStatusCode, error) {
+func (s sampleAPIServer) PetUpdateNamePost(ctx context.Context, req api.OptString) (api.PetUpdateNamePostDefStatusCode, error) {
 	panic("implement me")
 }
 
@@ -106,7 +106,7 @@ func (s sampleAPIServer) FoobarPut(ctx context.Context) (api.FoobarPutDefStatusC
 	panic("implement me")
 }
 
-func (s sampleAPIServer) FoobarPost(ctx context.Context, req api.Pet) (api.FoobarPostRes, error) {
+func (s sampleAPIServer) FoobarPost(ctx context.Context, req api.OptPet) (api.FoobarPostRes, error) {
 	panic("implement me")
 }
 
@@ -114,9 +114,9 @@ func (s sampleAPIServer) PetGet(ctx context.Context, params api.PetGetParams) (a
 	panic("implement me")
 }
 
-func (s *sampleAPIServer) PetCreate(ctx context.Context, req api.Pet) (pet api.Pet, err error) {
-	s.pet = req
-	return req, nil
+func (s *sampleAPIServer) PetCreate(ctx context.Context, req api.OptPet) (pet api.Pet, err error) {
+	s.pet = req.Value
+	return req.Value, nil
 }
 
 func (s *sampleAPIServer) PetGetByName(ctx context.Context, params api.PetGetByNameParams) (api.Pet, error) {
@@ -317,7 +317,7 @@ func TestIntegration(t *testing.T) {
 		}
 
 		t.Run("PetCreate", func(t *testing.T) {
-			got, err := client.PetCreate(ctx, pet)
+			got, err := client.PetCreate(ctx, api.NewOptPet(pet))
 			require.NoError(t, err)
 			assertPet(t, pet, got)
 

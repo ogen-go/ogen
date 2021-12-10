@@ -48,6 +48,12 @@ func (g *Generator) generateRequest(opName string, body *oas.RequestBody) (*ir.R
 		if err != nil {
 			return nil, errors.Wrapf(err, "contents: %s", contentType)
 		}
+		if !body.Required {
+			t = ir.Generic(genericPostfix(t.Go()), t, ir.GenericVariant{
+				Optional: true,
+			})
+			g.saveType(t)
+		}
 
 		types[ir.ContentType(contentType)] = t
 	}
@@ -57,7 +63,6 @@ func (g *Generator) generateRequest(opName string, body *oas.RequestBody) (*ir.R
 			return &ir.Request{
 				Type:     t,
 				Contents: types,
-				Required: body.Required,
 				Spec:     body,
 			}, nil
 		}
@@ -85,7 +90,6 @@ func (g *Generator) generateRequest(opName string, body *oas.RequestBody) (*ir.R
 	return &ir.Request{
 		Type:     iface,
 		Contents: types,
-		Required: body.Required,
 		Spec:     body,
 	}, nil
 }

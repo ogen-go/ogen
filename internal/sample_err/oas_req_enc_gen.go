@@ -62,12 +62,13 @@ var (
 	_ = sync.Pool{}
 )
 
-func encodeDataCreateRequestJSON(req Data, span trace.Span) (data *bytes.Buffer, err error) {
+func encodeDataCreateRequestJSON(req OptData, span trace.Span) (data *bytes.Buffer, err error) {
 	buf := getBuf()
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
-
-	req.Encode(e)
+	if req.Set {
+		req.Encode(e)
+	}
 	if _, err := e.WriteTo(buf); err != nil {
 		putBuf(buf)
 		return nil, err
