@@ -198,10 +198,12 @@ func (g *Generator) route() error {
 		return errors.Wrap(err, "graph")
 	}
 
-	for _, m := range g.router.Methods {
-		fmt.Println(m.Method)
-		for _, e := range m.Edges {
-			printEdge(2, e)
+	if g.opt.VerboseRoute {
+		for _, m := range g.router.Methods {
+			fmt.Println(m.Method)
+			for _, e := range m.Edges {
+				printEdge(2, e)
+			}
 		}
 	}
 
