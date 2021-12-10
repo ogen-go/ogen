@@ -118,12 +118,13 @@ func encodeMmdsConfigPutRequestJSON(req MmdsConfig, span trace.Span) (data *byte
 	return buf, nil
 }
 
-func encodeMmdsPatchRequestJSON(req MmdsPatchReq, span trace.Span) (data *bytes.Buffer, err error) {
+func encodeMmdsPatchRequestJSON(req OptMmdsPatchReq, span trace.Span) (data *bytes.Buffer, err error) {
 	buf := getBuf()
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
-
-	req.Encode(e)
+	if req.Set {
+		req.Encode(e)
+	}
 	if _, err := e.WriteTo(buf); err != nil {
 		putBuf(buf)
 		return nil, err
@@ -132,12 +133,13 @@ func encodeMmdsPatchRequestJSON(req MmdsPatchReq, span trace.Span) (data *bytes.
 	return buf, nil
 }
 
-func encodeMmdsPutRequestJSON(req MmdsPutReq, span trace.Span) (data *bytes.Buffer, err error) {
+func encodeMmdsPutRequestJSON(req OptMmdsPutReq, span trace.Span) (data *bytes.Buffer, err error) {
 	buf := getBuf()
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
-
-	req.Encode(e)
+	if req.Set {
+		req.Encode(e)
+	}
 	if _, err := e.WriteTo(buf); err != nil {
 		putBuf(buf)
 		return nil, err
@@ -202,12 +204,13 @@ func encodePatchGuestNetworkInterfaceByIDRequestJSON(req PartialNetworkInterface
 	return buf, nil
 }
 
-func encodePatchMachineConfigurationRequestJSON(req MachineConfiguration, span trace.Span) (data *bytes.Buffer, err error) {
+func encodePatchMachineConfigurationRequestJSON(req OptMachineConfiguration, span trace.Span) (data *bytes.Buffer, err error) {
 	buf := getBuf()
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
-
-	req.Encode(e)
+	if req.Set {
+		req.Encode(e)
+	}
 	if _, err := e.WriteTo(buf); err != nil {
 		putBuf(buf)
 		return nil, err
@@ -314,12 +317,13 @@ func encodePutLoggerRequestJSON(req Logger, span trace.Span) (data *bytes.Buffer
 	return buf, nil
 }
 
-func encodePutMachineConfigurationRequestJSON(req MachineConfiguration, span trace.Span) (data *bytes.Buffer, err error) {
+func encodePutMachineConfigurationRequestJSON(req OptMachineConfiguration, span trace.Span) (data *bytes.Buffer, err error) {
 	buf := getBuf()
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
-
-	req.Encode(e)
+	if req.Set {
+		req.Encode(e)
+	}
 	if _, err := e.WriteTo(buf); err != nil {
 		putBuf(buf)
 		return nil, err

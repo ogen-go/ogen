@@ -7543,6 +7543,158 @@ func (o OptActivityListReposStarredByAuthenticatedUserSort) Get() (v ActivityLis
 	return o.Value, true
 }
 
+// NewOptActivityMarkNotificationsAsReadReq returns new OptActivityMarkNotificationsAsReadReq with value set to v.
+func NewOptActivityMarkNotificationsAsReadReq(v ActivityMarkNotificationsAsReadReq) OptActivityMarkNotificationsAsReadReq {
+	return OptActivityMarkNotificationsAsReadReq{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptActivityMarkNotificationsAsReadReq is optional ActivityMarkNotificationsAsReadReq.
+type OptActivityMarkNotificationsAsReadReq struct {
+	Value ActivityMarkNotificationsAsReadReq
+	Set   bool
+}
+
+// IsSet returns true if OptActivityMarkNotificationsAsReadReq was set.
+func (o OptActivityMarkNotificationsAsReadReq) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptActivityMarkNotificationsAsReadReq) Reset() {
+	var v ActivityMarkNotificationsAsReadReq
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptActivityMarkNotificationsAsReadReq) SetTo(v ActivityMarkNotificationsAsReadReq) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptActivityMarkNotificationsAsReadReq) Get() (v ActivityMarkNotificationsAsReadReq, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptActivityMarkRepoNotificationsAsReadReq returns new OptActivityMarkRepoNotificationsAsReadReq with value set to v.
+func NewOptActivityMarkRepoNotificationsAsReadReq(v ActivityMarkRepoNotificationsAsReadReq) OptActivityMarkRepoNotificationsAsReadReq {
+	return OptActivityMarkRepoNotificationsAsReadReq{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptActivityMarkRepoNotificationsAsReadReq is optional ActivityMarkRepoNotificationsAsReadReq.
+type OptActivityMarkRepoNotificationsAsReadReq struct {
+	Value ActivityMarkRepoNotificationsAsReadReq
+	Set   bool
+}
+
+// IsSet returns true if OptActivityMarkRepoNotificationsAsReadReq was set.
+func (o OptActivityMarkRepoNotificationsAsReadReq) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptActivityMarkRepoNotificationsAsReadReq) Reset() {
+	var v ActivityMarkRepoNotificationsAsReadReq
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptActivityMarkRepoNotificationsAsReadReq) SetTo(v ActivityMarkRepoNotificationsAsReadReq) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptActivityMarkRepoNotificationsAsReadReq) Get() (v ActivityMarkRepoNotificationsAsReadReq, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptActivitySetRepoSubscriptionReq returns new OptActivitySetRepoSubscriptionReq with value set to v.
+func NewOptActivitySetRepoSubscriptionReq(v ActivitySetRepoSubscriptionReq) OptActivitySetRepoSubscriptionReq {
+	return OptActivitySetRepoSubscriptionReq{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptActivitySetRepoSubscriptionReq is optional ActivitySetRepoSubscriptionReq.
+type OptActivitySetRepoSubscriptionReq struct {
+	Value ActivitySetRepoSubscriptionReq
+	Set   bool
+}
+
+// IsSet returns true if OptActivitySetRepoSubscriptionReq was set.
+func (o OptActivitySetRepoSubscriptionReq) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptActivitySetRepoSubscriptionReq) Reset() {
+	var v ActivitySetRepoSubscriptionReq
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptActivitySetRepoSubscriptionReq) SetTo(v ActivitySetRepoSubscriptionReq) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptActivitySetRepoSubscriptionReq) Get() (v ActivitySetRepoSubscriptionReq, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptActivitySetThreadSubscriptionReq returns new OptActivitySetThreadSubscriptionReq with value set to v.
+func NewOptActivitySetThreadSubscriptionReq(v ActivitySetThreadSubscriptionReq) OptActivitySetThreadSubscriptionReq {
+	return OptActivitySetThreadSubscriptionReq{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptActivitySetThreadSubscriptionReq is optional ActivitySetThreadSubscriptionReq.
+type OptActivitySetThreadSubscriptionReq struct {
+	Value ActivitySetThreadSubscriptionReq
+	Set   bool
+}
+
+// IsSet returns true if OptActivitySetThreadSubscriptionReq was set.
+func (o OptActivitySetThreadSubscriptionReq) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptActivitySetThreadSubscriptionReq) Reset() {
+	var v ActivitySetThreadSubscriptionReq
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptActivitySetThreadSubscriptionReq) SetTo(v ActivitySetThreadSubscriptionReq) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptActivitySetThreadSubscriptionReq) Get() (v ActivitySetThreadSubscriptionReq, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
 // NewOptActor returns new OptActor with value set to v.
 func NewOptActor(v Actor) OptActor {
 	return OptActor{
@@ -8987,6 +9139,82 @@ func (o OptAppPermissionsWorkflows) Get() (v AppPermissionsWorkflows, ok bool) {
 	return o.Value, true
 }
 
+// NewOptAppsCreateFromManifestReq returns new OptAppsCreateFromManifestReq with value set to v.
+func NewOptAppsCreateFromManifestReq(v AppsCreateFromManifestReq) OptAppsCreateFromManifestReq {
+	return OptAppsCreateFromManifestReq{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptAppsCreateFromManifestReq is optional AppsCreateFromManifestReq.
+type OptAppsCreateFromManifestReq struct {
+	Value AppsCreateFromManifestReq
+	Set   bool
+}
+
+// IsSet returns true if OptAppsCreateFromManifestReq was set.
+func (o OptAppsCreateFromManifestReq) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptAppsCreateFromManifestReq) Reset() {
+	var v AppsCreateFromManifestReq
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptAppsCreateFromManifestReq) SetTo(v AppsCreateFromManifestReq) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptAppsCreateFromManifestReq) Get() (v AppsCreateFromManifestReq, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptAppsCreateInstallationAccessTokenReq returns new OptAppsCreateInstallationAccessTokenReq with value set to v.
+func NewOptAppsCreateInstallationAccessTokenReq(v AppsCreateInstallationAccessTokenReq) OptAppsCreateInstallationAccessTokenReq {
+	return OptAppsCreateInstallationAccessTokenReq{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptAppsCreateInstallationAccessTokenReq is optional AppsCreateInstallationAccessTokenReq.
+type OptAppsCreateInstallationAccessTokenReq struct {
+	Value AppsCreateInstallationAccessTokenReq
+	Set   bool
+}
+
+// IsSet returns true if OptAppsCreateInstallationAccessTokenReq was set.
+func (o OptAppsCreateInstallationAccessTokenReq) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptAppsCreateInstallationAccessTokenReq) Reset() {
+	var v AppsCreateInstallationAccessTokenReq
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptAppsCreateInstallationAccessTokenReq) SetTo(v AppsCreateInstallationAccessTokenReq) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptAppsCreateInstallationAccessTokenReq) Get() (v AppsCreateInstallationAccessTokenReq, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
 // NewOptAppsListAccountsForPlanStubbedDirection returns new OptAppsListAccountsForPlanStubbedDirection with value set to v.
 func NewOptAppsListAccountsForPlanStubbedDirection(v AppsListAccountsForPlanStubbedDirection) OptAppsListAccountsForPlanStubbedDirection {
 	return OptAppsListAccountsForPlanStubbedDirection{
@@ -9057,6 +9285,44 @@ func (o *OptAppsListAccountsForPlanStubbedSort) SetTo(v AppsListAccountsForPlanS
 
 // Get returns value and boolean that denotes whether value was set.
 func (o OptAppsListAccountsForPlanStubbedSort) Get() (v AppsListAccountsForPlanStubbedSort, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptAppsUpdateWebhookConfigForAppReq returns new OptAppsUpdateWebhookConfigForAppReq with value set to v.
+func NewOptAppsUpdateWebhookConfigForAppReq(v AppsUpdateWebhookConfigForAppReq) OptAppsUpdateWebhookConfigForAppReq {
+	return OptAppsUpdateWebhookConfigForAppReq{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptAppsUpdateWebhookConfigForAppReq is optional AppsUpdateWebhookConfigForAppReq.
+type OptAppsUpdateWebhookConfigForAppReq struct {
+	Value AppsUpdateWebhookConfigForAppReq
+	Set   bool
+}
+
+// IsSet returns true if OptAppsUpdateWebhookConfigForAppReq was set.
+func (o OptAppsUpdateWebhookConfigForAppReq) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptAppsUpdateWebhookConfigForAppReq) Reset() {
+	var v AppsUpdateWebhookConfigForAppReq
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptAppsUpdateWebhookConfigForAppReq) SetTo(v AppsUpdateWebhookConfigForAppReq) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptAppsUpdateWebhookConfigForAppReq) Get() (v AppsUpdateWebhookConfigForAppReq, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -10471,6 +10737,44 @@ func (o OptEnterpriseAdminGetAuditLogOrder) Get() (v EnterpriseAdminGetAuditLogO
 	return o.Value, true
 }
 
+// NewOptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq returns new OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq with value set to v.
+func NewOptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq(v EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq) OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq {
+	return OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq is optional EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq.
+type OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq struct {
+	Value EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq
+	Set   bool
+}
+
+// IsSet returns true if OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq was set.
+func (o OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq) Reset() {
+	var v EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq) SetTo(v EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq) Get() (v EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
 // NewOptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibility returns new OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibility with value set to v.
 func NewOptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibility(v EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibility) OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibility {
 	return OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibility{
@@ -11689,6 +11993,44 @@ func (o OptIssueSimplePullRequest) Get() (v IssueSimplePullRequest, ok bool) {
 	return o.Value, true
 }
 
+// NewOptIssuesAddAssigneesReq returns new OptIssuesAddAssigneesReq with value set to v.
+func NewOptIssuesAddAssigneesReq(v IssuesAddAssigneesReq) OptIssuesAddAssigneesReq {
+	return OptIssuesAddAssigneesReq{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIssuesAddAssigneesReq is optional IssuesAddAssigneesReq.
+type OptIssuesAddAssigneesReq struct {
+	Value IssuesAddAssigneesReq
+	Set   bool
+}
+
+// IsSet returns true if OptIssuesAddAssigneesReq was set.
+func (o OptIssuesAddAssigneesReq) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIssuesAddAssigneesReq) Reset() {
+	var v IssuesAddAssigneesReq
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIssuesAddAssigneesReq) SetTo(v IssuesAddAssigneesReq) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIssuesAddAssigneesReq) Get() (v IssuesAddAssigneesReq, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
 // NewOptIssuesCreateMilestoneReqState returns new OptIssuesCreateMilestoneReqState with value set to v.
 func NewOptIssuesCreateMilestoneReqState(v IssuesCreateMilestoneReqState) OptIssuesCreateMilestoneReqState {
 	return OptIssuesCreateMilestoneReqState{
@@ -11841,6 +12183,44 @@ func (o OptIssuesListMilestonesState) Get() (v IssuesListMilestonesState, ok boo
 	return o.Value, true
 }
 
+// NewOptIssuesLockReq returns new OptIssuesLockReq with value set to v.
+func NewOptIssuesLockReq(v IssuesLockReq) OptIssuesLockReq {
+	return OptIssuesLockReq{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIssuesLockReq is optional IssuesLockReq.
+type OptIssuesLockReq struct {
+	Value IssuesLockReq
+	Set   bool
+}
+
+// IsSet returns true if OptIssuesLockReq was set.
+func (o OptIssuesLockReq) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIssuesLockReq) Reset() {
+	var v IssuesLockReq
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIssuesLockReq) SetTo(v IssuesLockReq) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIssuesLockReq) Get() (v IssuesLockReq, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
 // NewOptIssuesLockReqLockReason returns new OptIssuesLockReqLockReason with value set to v.
 func NewOptIssuesLockReqLockReason(v IssuesLockReqLockReason) OptIssuesLockReqLockReason {
 	return OptIssuesLockReqLockReason{
@@ -11873,6 +12253,120 @@ func (o *OptIssuesLockReqLockReason) SetTo(v IssuesLockReqLockReason) {
 
 // Get returns value and boolean that denotes whether value was set.
 func (o OptIssuesLockReqLockReason) Get() (v IssuesLockReqLockReason, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptIssuesRemoveAssigneesReq returns new OptIssuesRemoveAssigneesReq with value set to v.
+func NewOptIssuesRemoveAssigneesReq(v IssuesRemoveAssigneesReq) OptIssuesRemoveAssigneesReq {
+	return OptIssuesRemoveAssigneesReq{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIssuesRemoveAssigneesReq is optional IssuesRemoveAssigneesReq.
+type OptIssuesRemoveAssigneesReq struct {
+	Value IssuesRemoveAssigneesReq
+	Set   bool
+}
+
+// IsSet returns true if OptIssuesRemoveAssigneesReq was set.
+func (o OptIssuesRemoveAssigneesReq) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIssuesRemoveAssigneesReq) Reset() {
+	var v IssuesRemoveAssigneesReq
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIssuesRemoveAssigneesReq) SetTo(v IssuesRemoveAssigneesReq) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIssuesRemoveAssigneesReq) Get() (v IssuesRemoveAssigneesReq, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptIssuesUpdateLabelReq returns new OptIssuesUpdateLabelReq with value set to v.
+func NewOptIssuesUpdateLabelReq(v IssuesUpdateLabelReq) OptIssuesUpdateLabelReq {
+	return OptIssuesUpdateLabelReq{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIssuesUpdateLabelReq is optional IssuesUpdateLabelReq.
+type OptIssuesUpdateLabelReq struct {
+	Value IssuesUpdateLabelReq
+	Set   bool
+}
+
+// IsSet returns true if OptIssuesUpdateLabelReq was set.
+func (o OptIssuesUpdateLabelReq) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIssuesUpdateLabelReq) Reset() {
+	var v IssuesUpdateLabelReq
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIssuesUpdateLabelReq) SetTo(v IssuesUpdateLabelReq) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIssuesUpdateLabelReq) Get() (v IssuesUpdateLabelReq, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptIssuesUpdateMilestoneReq returns new OptIssuesUpdateMilestoneReq with value set to v.
+func NewOptIssuesUpdateMilestoneReq(v IssuesUpdateMilestoneReq) OptIssuesUpdateMilestoneReq {
+	return OptIssuesUpdateMilestoneReq{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIssuesUpdateMilestoneReq is optional IssuesUpdateMilestoneReq.
+type OptIssuesUpdateMilestoneReq struct {
+	Value IssuesUpdateMilestoneReq
+	Set   bool
+}
+
+// IsSet returns true if OptIssuesUpdateMilestoneReq was set.
+func (o OptIssuesUpdateMilestoneReq) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIssuesUpdateMilestoneReq) Reset() {
+	var v IssuesUpdateMilestoneReq
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIssuesUpdateMilestoneReq) SetTo(v IssuesUpdateMilestoneReq) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIssuesUpdateMilestoneReq) Get() (v IssuesUpdateMilestoneReq, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -12069,6 +12563,44 @@ func (o OptMergedUpstreamMergeType) Get() (v MergedUpstreamMergeType, ok bool) {
 	return o.Value, true
 }
 
+// NewOptMigrationsMapCommitAuthorReq returns new OptMigrationsMapCommitAuthorReq with value set to v.
+func NewOptMigrationsMapCommitAuthorReq(v MigrationsMapCommitAuthorReq) OptMigrationsMapCommitAuthorReq {
+	return OptMigrationsMapCommitAuthorReq{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptMigrationsMapCommitAuthorReq is optional MigrationsMapCommitAuthorReq.
+type OptMigrationsMapCommitAuthorReq struct {
+	Value MigrationsMapCommitAuthorReq
+	Set   bool
+}
+
+// IsSet returns true if OptMigrationsMapCommitAuthorReq was set.
+func (o OptMigrationsMapCommitAuthorReq) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptMigrationsMapCommitAuthorReq) Reset() {
+	var v MigrationsMapCommitAuthorReq
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptMigrationsMapCommitAuthorReq) SetTo(v MigrationsMapCommitAuthorReq) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptMigrationsMapCommitAuthorReq) Get() (v MigrationsMapCommitAuthorReq, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
 // NewOptMigrationsStartImportReqVcs returns new OptMigrationsStartImportReqVcs with value set to v.
 func NewOptMigrationsStartImportReqVcs(v MigrationsStartImportReqVcs) OptMigrationsStartImportReqVcs {
 	return OptMigrationsStartImportReqVcs{
@@ -12101,6 +12633,44 @@ func (o *OptMigrationsStartImportReqVcs) SetTo(v MigrationsStartImportReqVcs) {
 
 // Get returns value and boolean that denotes whether value was set.
 func (o OptMigrationsStartImportReqVcs) Get() (v MigrationsStartImportReqVcs, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptMigrationsUpdateImportReq returns new OptMigrationsUpdateImportReq with value set to v.
+func NewOptMigrationsUpdateImportReq(v MigrationsUpdateImportReq) OptMigrationsUpdateImportReq {
+	return OptMigrationsUpdateImportReq{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptMigrationsUpdateImportReq is optional MigrationsUpdateImportReq.
+type OptMigrationsUpdateImportReq struct {
+	Value MigrationsUpdateImportReq
+	Set   bool
+}
+
+// IsSet returns true if OptMigrationsUpdateImportReq was set.
+func (o OptMigrationsUpdateImportReq) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptMigrationsUpdateImportReq) Reset() {
+	var v MigrationsUpdateImportReq
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptMigrationsUpdateImportReq) SetTo(v MigrationsUpdateImportReq) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptMigrationsUpdateImportReq) Get() (v MigrationsUpdateImportReq, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -14215,6 +14785,82 @@ func (o OptNullableRepositoryTemplateRepositoryPermissions) Get() (v NullableRep
 	return o.Value, true
 }
 
+// NewOptOAuthAuthorizationsCreateAuthorizationReq returns new OptOAuthAuthorizationsCreateAuthorizationReq with value set to v.
+func NewOptOAuthAuthorizationsCreateAuthorizationReq(v OAuthAuthorizationsCreateAuthorizationReq) OptOAuthAuthorizationsCreateAuthorizationReq {
+	return OptOAuthAuthorizationsCreateAuthorizationReq{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptOAuthAuthorizationsCreateAuthorizationReq is optional OAuthAuthorizationsCreateAuthorizationReq.
+type OptOAuthAuthorizationsCreateAuthorizationReq struct {
+	Value OAuthAuthorizationsCreateAuthorizationReq
+	Set   bool
+}
+
+// IsSet returns true if OptOAuthAuthorizationsCreateAuthorizationReq was set.
+func (o OptOAuthAuthorizationsCreateAuthorizationReq) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptOAuthAuthorizationsCreateAuthorizationReq) Reset() {
+	var v OAuthAuthorizationsCreateAuthorizationReq
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptOAuthAuthorizationsCreateAuthorizationReq) SetTo(v OAuthAuthorizationsCreateAuthorizationReq) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptOAuthAuthorizationsCreateAuthorizationReq) Get() (v OAuthAuthorizationsCreateAuthorizationReq, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptOAuthAuthorizationsUpdateAuthorizationReq returns new OptOAuthAuthorizationsUpdateAuthorizationReq with value set to v.
+func NewOptOAuthAuthorizationsUpdateAuthorizationReq(v OAuthAuthorizationsUpdateAuthorizationReq) OptOAuthAuthorizationsUpdateAuthorizationReq {
+	return OptOAuthAuthorizationsUpdateAuthorizationReq{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptOAuthAuthorizationsUpdateAuthorizationReq is optional OAuthAuthorizationsUpdateAuthorizationReq.
+type OptOAuthAuthorizationsUpdateAuthorizationReq struct {
+	Value OAuthAuthorizationsUpdateAuthorizationReq
+	Set   bool
+}
+
+// IsSet returns true if OptOAuthAuthorizationsUpdateAuthorizationReq was set.
+func (o OptOAuthAuthorizationsUpdateAuthorizationReq) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptOAuthAuthorizationsUpdateAuthorizationReq) Reset() {
+	var v OAuthAuthorizationsUpdateAuthorizationReq
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptOAuthAuthorizationsUpdateAuthorizationReq) SetTo(v OAuthAuthorizationsUpdateAuthorizationReq) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptOAuthAuthorizationsUpdateAuthorizationReq) Get() (v OAuthAuthorizationsUpdateAuthorizationReq, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
 // NewOptOrgMembershipPermissions returns new OptOrgMembershipPermissions with value set to v.
 func NewOptOrgMembershipPermissions(v OrgMembershipPermissions) OptOrgMembershipPermissions {
 	return OptOrgMembershipPermissions{
@@ -14285,6 +14931,44 @@ func (o *OptOrganizationFullPlan) SetTo(v OrganizationFullPlan) {
 
 // Get returns value and boolean that denotes whether value was set.
 func (o OptOrganizationFullPlan) Get() (v OrganizationFullPlan, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptOrgsCreateInvitationReq returns new OptOrgsCreateInvitationReq with value set to v.
+func NewOptOrgsCreateInvitationReq(v OrgsCreateInvitationReq) OptOrgsCreateInvitationReq {
+	return OptOrgsCreateInvitationReq{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptOrgsCreateInvitationReq is optional OrgsCreateInvitationReq.
+type OptOrgsCreateInvitationReq struct {
+	Value OrgsCreateInvitationReq
+	Set   bool
+}
+
+// IsSet returns true if OptOrgsCreateInvitationReq was set.
+func (o OptOrgsCreateInvitationReq) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptOrgsCreateInvitationReq) Reset() {
+	var v OrgsCreateInvitationReq
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptOrgsCreateInvitationReq) SetTo(v OrgsCreateInvitationReq) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptOrgsCreateInvitationReq) Get() (v OrgsCreateInvitationReq, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -14443,6 +15127,44 @@ func (o OptOrgsListOutsideCollaboratorsFilter) Get() (v OrgsListOutsideCollabora
 	return o.Value, true
 }
 
+// NewOptOrgsSetMembershipForUserReq returns new OptOrgsSetMembershipForUserReq with value set to v.
+func NewOptOrgsSetMembershipForUserReq(v OrgsSetMembershipForUserReq) OptOrgsSetMembershipForUserReq {
+	return OptOrgsSetMembershipForUserReq{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptOrgsSetMembershipForUserReq is optional OrgsSetMembershipForUserReq.
+type OptOrgsSetMembershipForUserReq struct {
+	Value OrgsSetMembershipForUserReq
+	Set   bool
+}
+
+// IsSet returns true if OptOrgsSetMembershipForUserReq was set.
+func (o OptOrgsSetMembershipForUserReq) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptOrgsSetMembershipForUserReq) Reset() {
+	var v OrgsSetMembershipForUserReq
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptOrgsSetMembershipForUserReq) SetTo(v OrgsSetMembershipForUserReq) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptOrgsSetMembershipForUserReq) Get() (v OrgsSetMembershipForUserReq, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
 // NewOptOrgsSetMembershipForUserReqRole returns new OptOrgsSetMembershipForUserReqRole with value set to v.
 func NewOptOrgsSetMembershipForUserReqRole(v OrgsSetMembershipForUserReqRole) OptOrgsSetMembershipForUserReqRole {
 	return OptOrgsSetMembershipForUserReqRole{
@@ -14475,6 +15197,44 @@ func (o *OptOrgsSetMembershipForUserReqRole) SetTo(v OrgsSetMembershipForUserReq
 
 // Get returns value and boolean that denotes whether value was set.
 func (o OptOrgsSetMembershipForUserReqRole) Get() (v OrgsSetMembershipForUserReqRole, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptOrgsUpdateReq returns new OptOrgsUpdateReq with value set to v.
+func NewOptOrgsUpdateReq(v OrgsUpdateReq) OptOrgsUpdateReq {
+	return OptOrgsUpdateReq{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptOrgsUpdateReq is optional OrgsUpdateReq.
+type OptOrgsUpdateReq struct {
+	Value OrgsUpdateReq
+	Set   bool
+}
+
+// IsSet returns true if OptOrgsUpdateReq was set.
+func (o OptOrgsUpdateReq) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptOrgsUpdateReq) Reset() {
+	var v OrgsUpdateReq
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptOrgsUpdateReq) SetTo(v OrgsUpdateReq) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptOrgsUpdateReq) Get() (v OrgsUpdateReq, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -14551,6 +15311,82 @@ func (o *OptOrgsUpdateReqMembersAllowedRepositoryCreationType) SetTo(v OrgsUpdat
 
 // Get returns value and boolean that denotes whether value was set.
 func (o OptOrgsUpdateReqMembersAllowedRepositoryCreationType) Get() (v OrgsUpdateReqMembersAllowedRepositoryCreationType, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptOrgsUpdateWebhookConfigForOrgReq returns new OptOrgsUpdateWebhookConfigForOrgReq with value set to v.
+func NewOptOrgsUpdateWebhookConfigForOrgReq(v OrgsUpdateWebhookConfigForOrgReq) OptOrgsUpdateWebhookConfigForOrgReq {
+	return OptOrgsUpdateWebhookConfigForOrgReq{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptOrgsUpdateWebhookConfigForOrgReq is optional OrgsUpdateWebhookConfigForOrgReq.
+type OptOrgsUpdateWebhookConfigForOrgReq struct {
+	Value OrgsUpdateWebhookConfigForOrgReq
+	Set   bool
+}
+
+// IsSet returns true if OptOrgsUpdateWebhookConfigForOrgReq was set.
+func (o OptOrgsUpdateWebhookConfigForOrgReq) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptOrgsUpdateWebhookConfigForOrgReq) Reset() {
+	var v OrgsUpdateWebhookConfigForOrgReq
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptOrgsUpdateWebhookConfigForOrgReq) SetTo(v OrgsUpdateWebhookConfigForOrgReq) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptOrgsUpdateWebhookConfigForOrgReq) Get() (v OrgsUpdateWebhookConfigForOrgReq, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptOrgsUpdateWebhookReq returns new OptOrgsUpdateWebhookReq with value set to v.
+func NewOptOrgsUpdateWebhookReq(v OrgsUpdateWebhookReq) OptOrgsUpdateWebhookReq {
+	return OptOrgsUpdateWebhookReq{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptOrgsUpdateWebhookReq is optional OrgsUpdateWebhookReq.
+type OptOrgsUpdateWebhookReq struct {
+	Value OrgsUpdateWebhookReq
+	Set   bool
+}
+
+// IsSet returns true if OptOrgsUpdateWebhookReq was set.
+func (o OptOrgsUpdateWebhookReq) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptOrgsUpdateWebhookReq) Reset() {
+	var v OrgsUpdateWebhookReq
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptOrgsUpdateWebhookReq) SetTo(v OrgsUpdateWebhookReq) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptOrgsUpdateWebhookReq) Get() (v OrgsUpdateWebhookReq, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -15091,6 +15927,44 @@ func (o OptProjectOrganizationPermission) Get() (v ProjectOrganizationPermission
 	return o.Value, true
 }
 
+// NewOptProjectsAddCollaboratorReq returns new OptProjectsAddCollaboratorReq with value set to v.
+func NewOptProjectsAddCollaboratorReq(v ProjectsAddCollaboratorReq) OptProjectsAddCollaboratorReq {
+	return OptProjectsAddCollaboratorReq{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptProjectsAddCollaboratorReq is optional ProjectsAddCollaboratorReq.
+type OptProjectsAddCollaboratorReq struct {
+	Value ProjectsAddCollaboratorReq
+	Set   bool
+}
+
+// IsSet returns true if OptProjectsAddCollaboratorReq was set.
+func (o OptProjectsAddCollaboratorReq) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptProjectsAddCollaboratorReq) Reset() {
+	var v ProjectsAddCollaboratorReq
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptProjectsAddCollaboratorReq) SetTo(v ProjectsAddCollaboratorReq) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptProjectsAddCollaboratorReq) Get() (v ProjectsAddCollaboratorReq, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
 // NewOptProjectsAddCollaboratorReqPermission returns new OptProjectsAddCollaboratorReqPermission with value set to v.
 func NewOptProjectsAddCollaboratorReqPermission(v ProjectsAddCollaboratorReqPermission) OptProjectsAddCollaboratorReqPermission {
 	return OptProjectsAddCollaboratorReqPermission{
@@ -15237,6 +16111,82 @@ func (o *OptProjectsListForRepoState) SetTo(v ProjectsListForRepoState) {
 
 // Get returns value and boolean that denotes whether value was set.
 func (o OptProjectsListForRepoState) Get() (v ProjectsListForRepoState, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptProjectsUpdateCardReq returns new OptProjectsUpdateCardReq with value set to v.
+func NewOptProjectsUpdateCardReq(v ProjectsUpdateCardReq) OptProjectsUpdateCardReq {
+	return OptProjectsUpdateCardReq{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptProjectsUpdateCardReq is optional ProjectsUpdateCardReq.
+type OptProjectsUpdateCardReq struct {
+	Value ProjectsUpdateCardReq
+	Set   bool
+}
+
+// IsSet returns true if OptProjectsUpdateCardReq was set.
+func (o OptProjectsUpdateCardReq) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptProjectsUpdateCardReq) Reset() {
+	var v ProjectsUpdateCardReq
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptProjectsUpdateCardReq) SetTo(v ProjectsUpdateCardReq) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptProjectsUpdateCardReq) Get() (v ProjectsUpdateCardReq, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptProjectsUpdateReq returns new OptProjectsUpdateReq with value set to v.
+func NewOptProjectsUpdateReq(v ProjectsUpdateReq) OptProjectsUpdateReq {
+	return OptProjectsUpdateReq{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptProjectsUpdateReq is optional ProjectsUpdateReq.
+type OptProjectsUpdateReq struct {
+	Value ProjectsUpdateReq
+	Set   bool
+}
+
+// IsSet returns true if OptProjectsUpdateReq was set.
+func (o OptProjectsUpdateReq) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptProjectsUpdateReq) Reset() {
+	var v ProjectsUpdateReq
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptProjectsUpdateReq) SetTo(v ProjectsUpdateReq) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptProjectsUpdateReq) Get() (v ProjectsUpdateReq, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -15965,6 +16915,44 @@ func (o OptPullsCreateReviewCommentReqStartSide) Get() (v PullsCreateReviewComme
 	return o.Value, true
 }
 
+// NewOptPullsCreateReviewReq returns new OptPullsCreateReviewReq with value set to v.
+func NewOptPullsCreateReviewReq(v PullsCreateReviewReq) OptPullsCreateReviewReq {
+	return OptPullsCreateReviewReq{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptPullsCreateReviewReq is optional PullsCreateReviewReq.
+type OptPullsCreateReviewReq struct {
+	Value PullsCreateReviewReq
+	Set   bool
+}
+
+// IsSet returns true if OptPullsCreateReviewReq was set.
+func (o OptPullsCreateReviewReq) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptPullsCreateReviewReq) Reset() {
+	var v PullsCreateReviewReq
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptPullsCreateReviewReq) SetTo(v PullsCreateReviewReq) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptPullsCreateReviewReq) Get() (v PullsCreateReviewReq, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
 // NewOptPullsCreateReviewReqEvent returns new OptPullsCreateReviewReqEvent with value set to v.
 func NewOptPullsCreateReviewReqEvent(v PullsCreateReviewReqEvent) OptPullsCreateReviewReqEvent {
 	return OptPullsCreateReviewReqEvent{
@@ -16155,6 +17143,44 @@ func (o OptPullsListReviewCommentsSort) Get() (v PullsListReviewCommentsSort, ok
 	return o.Value, true
 }
 
+// NewOptPullsMergeReq returns new OptPullsMergeReq with value set to v.
+func NewOptPullsMergeReq(v PullsMergeReq) OptPullsMergeReq {
+	return OptPullsMergeReq{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptPullsMergeReq is optional PullsMergeReq.
+type OptPullsMergeReq struct {
+	Value PullsMergeReq
+	Set   bool
+}
+
+// IsSet returns true if OptPullsMergeReq was set.
+func (o OptPullsMergeReq) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptPullsMergeReq) Reset() {
+	var v PullsMergeReq
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptPullsMergeReq) SetTo(v PullsMergeReq) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptPullsMergeReq) Get() (v PullsMergeReq, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
 // NewOptPullsMergeReqMergeMethod returns new OptPullsMergeReqMergeMethod with value set to v.
 func NewOptPullsMergeReqMergeMethod(v PullsMergeReqMergeMethod) OptPullsMergeReqMergeMethod {
 	return OptPullsMergeReqMergeMethod{
@@ -16187,6 +17213,82 @@ func (o *OptPullsMergeReqMergeMethod) SetTo(v PullsMergeReqMergeMethod) {
 
 // Get returns value and boolean that denotes whether value was set.
 func (o OptPullsMergeReqMergeMethod) Get() (v PullsMergeReqMergeMethod, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptPullsUpdateBranchReq returns new OptPullsUpdateBranchReq with value set to v.
+func NewOptPullsUpdateBranchReq(v PullsUpdateBranchReq) OptPullsUpdateBranchReq {
+	return OptPullsUpdateBranchReq{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptPullsUpdateBranchReq is optional PullsUpdateBranchReq.
+type OptPullsUpdateBranchReq struct {
+	Value PullsUpdateBranchReq
+	Set   bool
+}
+
+// IsSet returns true if OptPullsUpdateBranchReq was set.
+func (o OptPullsUpdateBranchReq) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptPullsUpdateBranchReq) Reset() {
+	var v PullsUpdateBranchReq
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptPullsUpdateBranchReq) SetTo(v PullsUpdateBranchReq) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptPullsUpdateBranchReq) Get() (v PullsUpdateBranchReq, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptPullsUpdateReq returns new OptPullsUpdateReq with value set to v.
+func NewOptPullsUpdateReq(v PullsUpdateReq) OptPullsUpdateReq {
+	return OptPullsUpdateReq{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptPullsUpdateReq is optional PullsUpdateReq.
+type OptPullsUpdateReq struct {
+	Value PullsUpdateReq
+	Set   bool
+}
+
+// IsSet returns true if OptPullsUpdateReq was set.
+func (o OptPullsUpdateReq) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptPullsUpdateReq) Reset() {
+	var v PullsUpdateReq
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptPullsUpdateReq) SetTo(v PullsUpdateReq) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptPullsUpdateReq) Get() (v PullsUpdateReq, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -16649,6 +17751,44 @@ func (o OptRepoSearchResultItemPermissions) Get() (v RepoSearchResultItemPermiss
 	return o.Value, true
 }
 
+// NewOptReposAddCollaboratorReq returns new OptReposAddCollaboratorReq with value set to v.
+func NewOptReposAddCollaboratorReq(v ReposAddCollaboratorReq) OptReposAddCollaboratorReq {
+	return OptReposAddCollaboratorReq{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptReposAddCollaboratorReq is optional ReposAddCollaboratorReq.
+type OptReposAddCollaboratorReq struct {
+	Value ReposAddCollaboratorReq
+	Set   bool
+}
+
+// IsSet returns true if OptReposAddCollaboratorReq was set.
+func (o OptReposAddCollaboratorReq) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptReposAddCollaboratorReq) Reset() {
+	var v ReposAddCollaboratorReq
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptReposAddCollaboratorReq) SetTo(v ReposAddCollaboratorReq) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptReposAddCollaboratorReq) Get() (v ReposAddCollaboratorReq, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
 // NewOptReposAddCollaboratorReqPermission returns new OptReposAddCollaboratorReqPermission with value set to v.
 func NewOptReposAddCollaboratorReqPermission(v ReposAddCollaboratorReqPermission) OptReposAddCollaboratorReqPermission {
 	return OptReposAddCollaboratorReqPermission{
@@ -16725,6 +17865,44 @@ func (o OptReposCreateDeploymentStatusReqEnvironment) Get() (v ReposCreateDeploy
 	return o.Value, true
 }
 
+// NewOptReposCreateForkReq returns new OptReposCreateForkReq with value set to v.
+func NewOptReposCreateForkReq(v ReposCreateForkReq) OptReposCreateForkReq {
+	return OptReposCreateForkReq{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptReposCreateForkReq is optional ReposCreateForkReq.
+type OptReposCreateForkReq struct {
+	Value ReposCreateForkReq
+	Set   bool
+}
+
+// IsSet returns true if OptReposCreateForkReq was set.
+func (o OptReposCreateForkReq) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptReposCreateForkReq) Reset() {
+	var v ReposCreateForkReq
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptReposCreateForkReq) SetTo(v ReposCreateForkReq) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptReposCreateForkReq) Get() (v ReposCreateForkReq, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
 // NewOptReposCreateInOrgReqVisibility returns new OptReposCreateInOrgReqVisibility with value set to v.
 func NewOptReposCreateInOrgReqVisibility(v ReposCreateInOrgReqVisibility) OptReposCreateInOrgReqVisibility {
 	return OptReposCreateInOrgReqVisibility{
@@ -16757,6 +17935,44 @@ func (o *OptReposCreateInOrgReqVisibility) SetTo(v ReposCreateInOrgReqVisibility
 
 // Get returns value and boolean that denotes whether value was set.
 func (o OptReposCreateInOrgReqVisibility) Get() (v ReposCreateInOrgReqVisibility, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptReposCreateOrUpdateEnvironmentReq returns new OptReposCreateOrUpdateEnvironmentReq with value set to v.
+func NewOptReposCreateOrUpdateEnvironmentReq(v ReposCreateOrUpdateEnvironmentReq) OptReposCreateOrUpdateEnvironmentReq {
+	return OptReposCreateOrUpdateEnvironmentReq{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptReposCreateOrUpdateEnvironmentReq is optional ReposCreateOrUpdateEnvironmentReq.
+type OptReposCreateOrUpdateEnvironmentReq struct {
+	Value ReposCreateOrUpdateEnvironmentReq
+	Set   bool
+}
+
+// IsSet returns true if OptReposCreateOrUpdateEnvironmentReq was set.
+func (o OptReposCreateOrUpdateEnvironmentReq) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptReposCreateOrUpdateEnvironmentReq) Reset() {
+	var v ReposCreateOrUpdateEnvironmentReq
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptReposCreateOrUpdateEnvironmentReq) SetTo(v ReposCreateOrUpdateEnvironmentReq) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptReposCreateOrUpdateEnvironmentReq) Get() (v ReposCreateOrUpdateEnvironmentReq, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -16871,6 +18087,44 @@ func (o *OptReposCreatePagesSiteReqSourcePath) SetTo(v ReposCreatePagesSiteReqSo
 
 // Get returns value and boolean that denotes whether value was set.
 func (o OptReposCreatePagesSiteReqSourcePath) Get() (v ReposCreatePagesSiteReqSourcePath, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptReposCreateWebhookReq returns new OptReposCreateWebhookReq with value set to v.
+func NewOptReposCreateWebhookReq(v ReposCreateWebhookReq) OptReposCreateWebhookReq {
+	return OptReposCreateWebhookReq{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptReposCreateWebhookReq is optional ReposCreateWebhookReq.
+type OptReposCreateWebhookReq struct {
+	Value ReposCreateWebhookReq
+	Set   bool
+}
+
+// IsSet returns true if OptReposCreateWebhookReq was set.
+func (o OptReposCreateWebhookReq) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptReposCreateWebhookReq) Reset() {
+	var v ReposCreateWebhookReq
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptReposCreateWebhookReq) SetTo(v ReposCreateWebhookReq) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptReposCreateWebhookReq) Get() (v ReposCreateWebhookReq, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -17371,6 +18625,44 @@ func (o OptReposListForksSort) Get() (v ReposListForksSort, ok bool) {
 	return o.Value, true
 }
 
+// NewOptReposRenameBranchReq returns new OptReposRenameBranchReq with value set to v.
+func NewOptReposRenameBranchReq(v ReposRenameBranchReq) OptReposRenameBranchReq {
+	return OptReposRenameBranchReq{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptReposRenameBranchReq is optional ReposRenameBranchReq.
+type OptReposRenameBranchReq struct {
+	Value ReposRenameBranchReq
+	Set   bool
+}
+
+// IsSet returns true if OptReposRenameBranchReq was set.
+func (o OptReposRenameBranchReq) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptReposRenameBranchReq) Reset() {
+	var v ReposRenameBranchReq
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptReposRenameBranchReq) SetTo(v ReposRenameBranchReq) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptReposRenameBranchReq) Get() (v ReposRenameBranchReq, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
 // NewOptReposUpdateBranchProtectionReqRequiredPullRequestReviewsDismissalRestrictions returns new OptReposUpdateBranchProtectionReqRequiredPullRequestReviewsDismissalRestrictions with value set to v.
 func NewOptReposUpdateBranchProtectionReqRequiredPullRequestReviewsDismissalRestrictions(v ReposUpdateBranchProtectionReqRequiredPullRequestReviewsDismissalRestrictions) OptReposUpdateBranchProtectionReqRequiredPullRequestReviewsDismissalRestrictions {
 	return OptReposUpdateBranchProtectionReqRequiredPullRequestReviewsDismissalRestrictions{
@@ -17405,6 +18697,44 @@ func (o *OptReposUpdateBranchProtectionReqRequiredPullRequestReviewsDismissalRes
 
 // Get returns value and boolean that denotes whether value was set.
 func (o OptReposUpdateBranchProtectionReqRequiredPullRequestReviewsDismissalRestrictions) Get() (v ReposUpdateBranchProtectionReqRequiredPullRequestReviewsDismissalRestrictions, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptReposUpdateInvitationReq returns new OptReposUpdateInvitationReq with value set to v.
+func NewOptReposUpdateInvitationReq(v ReposUpdateInvitationReq) OptReposUpdateInvitationReq {
+	return OptReposUpdateInvitationReq{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptReposUpdateInvitationReq is optional ReposUpdateInvitationReq.
+type OptReposUpdateInvitationReq struct {
+	Value ReposUpdateInvitationReq
+	Set   bool
+}
+
+// IsSet returns true if OptReposUpdateInvitationReq was set.
+func (o OptReposUpdateInvitationReq) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptReposUpdateInvitationReq) Reset() {
+	var v ReposUpdateInvitationReq
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptReposUpdateInvitationReq) SetTo(v ReposUpdateInvitationReq) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptReposUpdateInvitationReq) Get() (v ReposUpdateInvitationReq, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -17449,6 +18779,44 @@ func (o OptReposUpdateInvitationReqPermissions) Get() (v ReposUpdateInvitationRe
 	return o.Value, true
 }
 
+// NewOptReposUpdatePullRequestReviewProtectionReq returns new OptReposUpdatePullRequestReviewProtectionReq with value set to v.
+func NewOptReposUpdatePullRequestReviewProtectionReq(v ReposUpdatePullRequestReviewProtectionReq) OptReposUpdatePullRequestReviewProtectionReq {
+	return OptReposUpdatePullRequestReviewProtectionReq{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptReposUpdatePullRequestReviewProtectionReq is optional ReposUpdatePullRequestReviewProtectionReq.
+type OptReposUpdatePullRequestReviewProtectionReq struct {
+	Value ReposUpdatePullRequestReviewProtectionReq
+	Set   bool
+}
+
+// IsSet returns true if OptReposUpdatePullRequestReviewProtectionReq was set.
+func (o OptReposUpdatePullRequestReviewProtectionReq) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptReposUpdatePullRequestReviewProtectionReq) Reset() {
+	var v ReposUpdatePullRequestReviewProtectionReq
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptReposUpdatePullRequestReviewProtectionReq) SetTo(v ReposUpdatePullRequestReviewProtectionReq) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptReposUpdatePullRequestReviewProtectionReq) Get() (v ReposUpdatePullRequestReviewProtectionReq, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
 // NewOptReposUpdatePullRequestReviewProtectionReqDismissalRestrictions returns new OptReposUpdatePullRequestReviewProtectionReqDismissalRestrictions with value set to v.
 func NewOptReposUpdatePullRequestReviewProtectionReqDismissalRestrictions(v ReposUpdatePullRequestReviewProtectionReqDismissalRestrictions) OptReposUpdatePullRequestReviewProtectionReqDismissalRestrictions {
 	return OptReposUpdatePullRequestReviewProtectionReqDismissalRestrictions{
@@ -17481,6 +18849,120 @@ func (o *OptReposUpdatePullRequestReviewProtectionReqDismissalRestrictions) SetT
 
 // Get returns value and boolean that denotes whether value was set.
 func (o OptReposUpdatePullRequestReviewProtectionReqDismissalRestrictions) Get() (v ReposUpdatePullRequestReviewProtectionReqDismissalRestrictions, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptReposUpdateReleaseAssetReq returns new OptReposUpdateReleaseAssetReq with value set to v.
+func NewOptReposUpdateReleaseAssetReq(v ReposUpdateReleaseAssetReq) OptReposUpdateReleaseAssetReq {
+	return OptReposUpdateReleaseAssetReq{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptReposUpdateReleaseAssetReq is optional ReposUpdateReleaseAssetReq.
+type OptReposUpdateReleaseAssetReq struct {
+	Value ReposUpdateReleaseAssetReq
+	Set   bool
+}
+
+// IsSet returns true if OptReposUpdateReleaseAssetReq was set.
+func (o OptReposUpdateReleaseAssetReq) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptReposUpdateReleaseAssetReq) Reset() {
+	var v ReposUpdateReleaseAssetReq
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptReposUpdateReleaseAssetReq) SetTo(v ReposUpdateReleaseAssetReq) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptReposUpdateReleaseAssetReq) Get() (v ReposUpdateReleaseAssetReq, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptReposUpdateReleaseReq returns new OptReposUpdateReleaseReq with value set to v.
+func NewOptReposUpdateReleaseReq(v ReposUpdateReleaseReq) OptReposUpdateReleaseReq {
+	return OptReposUpdateReleaseReq{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptReposUpdateReleaseReq is optional ReposUpdateReleaseReq.
+type OptReposUpdateReleaseReq struct {
+	Value ReposUpdateReleaseReq
+	Set   bool
+}
+
+// IsSet returns true if OptReposUpdateReleaseReq was set.
+func (o OptReposUpdateReleaseReq) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptReposUpdateReleaseReq) Reset() {
+	var v ReposUpdateReleaseReq
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptReposUpdateReleaseReq) SetTo(v ReposUpdateReleaseReq) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptReposUpdateReleaseReq) Get() (v ReposUpdateReleaseReq, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptReposUpdateReq returns new OptReposUpdateReq with value set to v.
+func NewOptReposUpdateReq(v ReposUpdateReq) OptReposUpdateReq {
+	return OptReposUpdateReq{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptReposUpdateReq is optional ReposUpdateReq.
+type OptReposUpdateReq struct {
+	Value ReposUpdateReq
+	Set   bool
+}
+
+// IsSet returns true if OptReposUpdateReq was set.
+func (o OptReposUpdateReq) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptReposUpdateReq) Reset() {
+	var v ReposUpdateReq
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptReposUpdateReq) SetTo(v ReposUpdateReq) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptReposUpdateReq) Get() (v ReposUpdateReq, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -17595,6 +19077,120 @@ func (o *OptReposUpdateReqVisibility) SetTo(v ReposUpdateReqVisibility) {
 
 // Get returns value and boolean that denotes whether value was set.
 func (o OptReposUpdateReqVisibility) Get() (v ReposUpdateReqVisibility, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptReposUpdateStatusCheckProtectionReq returns new OptReposUpdateStatusCheckProtectionReq with value set to v.
+func NewOptReposUpdateStatusCheckProtectionReq(v ReposUpdateStatusCheckProtectionReq) OptReposUpdateStatusCheckProtectionReq {
+	return OptReposUpdateStatusCheckProtectionReq{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptReposUpdateStatusCheckProtectionReq is optional ReposUpdateStatusCheckProtectionReq.
+type OptReposUpdateStatusCheckProtectionReq struct {
+	Value ReposUpdateStatusCheckProtectionReq
+	Set   bool
+}
+
+// IsSet returns true if OptReposUpdateStatusCheckProtectionReq was set.
+func (o OptReposUpdateStatusCheckProtectionReq) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptReposUpdateStatusCheckProtectionReq) Reset() {
+	var v ReposUpdateStatusCheckProtectionReq
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptReposUpdateStatusCheckProtectionReq) SetTo(v ReposUpdateStatusCheckProtectionReq) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptReposUpdateStatusCheckProtectionReq) Get() (v ReposUpdateStatusCheckProtectionReq, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptReposUpdateWebhookConfigForRepoReq returns new OptReposUpdateWebhookConfigForRepoReq with value set to v.
+func NewOptReposUpdateWebhookConfigForRepoReq(v ReposUpdateWebhookConfigForRepoReq) OptReposUpdateWebhookConfigForRepoReq {
+	return OptReposUpdateWebhookConfigForRepoReq{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptReposUpdateWebhookConfigForRepoReq is optional ReposUpdateWebhookConfigForRepoReq.
+type OptReposUpdateWebhookConfigForRepoReq struct {
+	Value ReposUpdateWebhookConfigForRepoReq
+	Set   bool
+}
+
+// IsSet returns true if OptReposUpdateWebhookConfigForRepoReq was set.
+func (o OptReposUpdateWebhookConfigForRepoReq) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptReposUpdateWebhookConfigForRepoReq) Reset() {
+	var v ReposUpdateWebhookConfigForRepoReq
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptReposUpdateWebhookConfigForRepoReq) SetTo(v ReposUpdateWebhookConfigForRepoReq) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptReposUpdateWebhookConfigForRepoReq) Get() (v ReposUpdateWebhookConfigForRepoReq, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptReposUpdateWebhookReq returns new OptReposUpdateWebhookReq with value set to v.
+func NewOptReposUpdateWebhookReq(v ReposUpdateWebhookReq) OptReposUpdateWebhookReq {
+	return OptReposUpdateWebhookReq{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptReposUpdateWebhookReq is optional ReposUpdateWebhookReq.
+type OptReposUpdateWebhookReq struct {
+	Value ReposUpdateWebhookReq
+	Set   bool
+}
+
+// IsSet returns true if OptReposUpdateWebhookReq was set.
+func (o OptReposUpdateWebhookReq) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptReposUpdateWebhookReq) Reset() {
+	var v ReposUpdateWebhookReq
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptReposUpdateWebhookReq) SetTo(v ReposUpdateWebhookReq) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptReposUpdateWebhookReq) Get() (v ReposUpdateWebhookReq, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -18285,6 +19881,44 @@ func (o OptSecretScanningListAlertsForRepoState) Get() (v SecretScanningListAler
 	return o.Value, true
 }
 
+// NewOptSelectedActions returns new OptSelectedActions with value set to v.
+func NewOptSelectedActions(v SelectedActions) OptSelectedActions {
+	return OptSelectedActions{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptSelectedActions is optional SelectedActions.
+type OptSelectedActions struct {
+	Value SelectedActions
+	Set   bool
+}
+
+// IsSet returns true if OptSelectedActions was set.
+func (o OptSelectedActions) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptSelectedActions) Reset() {
+	var v SelectedActions
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptSelectedActions) SetTo(v SelectedActions) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptSelectedActions) Get() (v SelectedActions, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
 // NewOptSelectedActionsURL returns new OptSelectedActionsURL with value set to v.
 func NewOptSelectedActionsURL(v SelectedActionsURL) OptSelectedActionsURL {
 	return OptSelectedActionsURL{
@@ -18589,6 +20223,44 @@ func (o OptTeamRepositoryPermissions) Get() (v TeamRepositoryPermissions, ok boo
 	return o.Value, true
 }
 
+// NewOptTeamsAddOrUpdateMembershipForUserInOrgReq returns new OptTeamsAddOrUpdateMembershipForUserInOrgReq with value set to v.
+func NewOptTeamsAddOrUpdateMembershipForUserInOrgReq(v TeamsAddOrUpdateMembershipForUserInOrgReq) OptTeamsAddOrUpdateMembershipForUserInOrgReq {
+	return OptTeamsAddOrUpdateMembershipForUserInOrgReq{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptTeamsAddOrUpdateMembershipForUserInOrgReq is optional TeamsAddOrUpdateMembershipForUserInOrgReq.
+type OptTeamsAddOrUpdateMembershipForUserInOrgReq struct {
+	Value TeamsAddOrUpdateMembershipForUserInOrgReq
+	Set   bool
+}
+
+// IsSet returns true if OptTeamsAddOrUpdateMembershipForUserInOrgReq was set.
+func (o OptTeamsAddOrUpdateMembershipForUserInOrgReq) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptTeamsAddOrUpdateMembershipForUserInOrgReq) Reset() {
+	var v TeamsAddOrUpdateMembershipForUserInOrgReq
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptTeamsAddOrUpdateMembershipForUserInOrgReq) SetTo(v TeamsAddOrUpdateMembershipForUserInOrgReq) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptTeamsAddOrUpdateMembershipForUserInOrgReq) Get() (v TeamsAddOrUpdateMembershipForUserInOrgReq, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
 // NewOptTeamsAddOrUpdateMembershipForUserInOrgReqRole returns new OptTeamsAddOrUpdateMembershipForUserInOrgReqRole with value set to v.
 func NewOptTeamsAddOrUpdateMembershipForUserInOrgReqRole(v TeamsAddOrUpdateMembershipForUserInOrgReqRole) OptTeamsAddOrUpdateMembershipForUserInOrgReqRole {
 	return OptTeamsAddOrUpdateMembershipForUserInOrgReqRole{
@@ -18621,6 +20293,44 @@ func (o *OptTeamsAddOrUpdateMembershipForUserInOrgReqRole) SetTo(v TeamsAddOrUpd
 
 // Get returns value and boolean that denotes whether value was set.
 func (o OptTeamsAddOrUpdateMembershipForUserInOrgReqRole) Get() (v TeamsAddOrUpdateMembershipForUserInOrgReqRole, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptTeamsAddOrUpdateMembershipForUserLegacyReq returns new OptTeamsAddOrUpdateMembershipForUserLegacyReq with value set to v.
+func NewOptTeamsAddOrUpdateMembershipForUserLegacyReq(v TeamsAddOrUpdateMembershipForUserLegacyReq) OptTeamsAddOrUpdateMembershipForUserLegacyReq {
+	return OptTeamsAddOrUpdateMembershipForUserLegacyReq{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptTeamsAddOrUpdateMembershipForUserLegacyReq is optional TeamsAddOrUpdateMembershipForUserLegacyReq.
+type OptTeamsAddOrUpdateMembershipForUserLegacyReq struct {
+	Value TeamsAddOrUpdateMembershipForUserLegacyReq
+	Set   bool
+}
+
+// IsSet returns true if OptTeamsAddOrUpdateMembershipForUserLegacyReq was set.
+func (o OptTeamsAddOrUpdateMembershipForUserLegacyReq) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptTeamsAddOrUpdateMembershipForUserLegacyReq) Reset() {
+	var v TeamsAddOrUpdateMembershipForUserLegacyReq
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptTeamsAddOrUpdateMembershipForUserLegacyReq) SetTo(v TeamsAddOrUpdateMembershipForUserLegacyReq) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptTeamsAddOrUpdateMembershipForUserLegacyReq) Get() (v TeamsAddOrUpdateMembershipForUserLegacyReq, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -18665,6 +20375,44 @@ func (o OptTeamsAddOrUpdateMembershipForUserLegacyReqRole) Get() (v TeamsAddOrUp
 	return o.Value, true
 }
 
+// NewOptTeamsAddOrUpdateProjectPermissionsInOrgReq returns new OptTeamsAddOrUpdateProjectPermissionsInOrgReq with value set to v.
+func NewOptTeamsAddOrUpdateProjectPermissionsInOrgReq(v TeamsAddOrUpdateProjectPermissionsInOrgReq) OptTeamsAddOrUpdateProjectPermissionsInOrgReq {
+	return OptTeamsAddOrUpdateProjectPermissionsInOrgReq{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptTeamsAddOrUpdateProjectPermissionsInOrgReq is optional TeamsAddOrUpdateProjectPermissionsInOrgReq.
+type OptTeamsAddOrUpdateProjectPermissionsInOrgReq struct {
+	Value TeamsAddOrUpdateProjectPermissionsInOrgReq
+	Set   bool
+}
+
+// IsSet returns true if OptTeamsAddOrUpdateProjectPermissionsInOrgReq was set.
+func (o OptTeamsAddOrUpdateProjectPermissionsInOrgReq) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptTeamsAddOrUpdateProjectPermissionsInOrgReq) Reset() {
+	var v TeamsAddOrUpdateProjectPermissionsInOrgReq
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptTeamsAddOrUpdateProjectPermissionsInOrgReq) SetTo(v TeamsAddOrUpdateProjectPermissionsInOrgReq) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptTeamsAddOrUpdateProjectPermissionsInOrgReq) Get() (v TeamsAddOrUpdateProjectPermissionsInOrgReq, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
 // NewOptTeamsAddOrUpdateProjectPermissionsInOrgReqPermission returns new OptTeamsAddOrUpdateProjectPermissionsInOrgReqPermission with value set to v.
 func NewOptTeamsAddOrUpdateProjectPermissionsInOrgReqPermission(v TeamsAddOrUpdateProjectPermissionsInOrgReqPermission) OptTeamsAddOrUpdateProjectPermissionsInOrgReqPermission {
 	return OptTeamsAddOrUpdateProjectPermissionsInOrgReqPermission{
@@ -18697,6 +20445,44 @@ func (o *OptTeamsAddOrUpdateProjectPermissionsInOrgReqPermission) SetTo(v TeamsA
 
 // Get returns value and boolean that denotes whether value was set.
 func (o OptTeamsAddOrUpdateProjectPermissionsInOrgReqPermission) Get() (v TeamsAddOrUpdateProjectPermissionsInOrgReqPermission, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptTeamsAddOrUpdateProjectPermissionsLegacyReq returns new OptTeamsAddOrUpdateProjectPermissionsLegacyReq with value set to v.
+func NewOptTeamsAddOrUpdateProjectPermissionsLegacyReq(v TeamsAddOrUpdateProjectPermissionsLegacyReq) OptTeamsAddOrUpdateProjectPermissionsLegacyReq {
+	return OptTeamsAddOrUpdateProjectPermissionsLegacyReq{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptTeamsAddOrUpdateProjectPermissionsLegacyReq is optional TeamsAddOrUpdateProjectPermissionsLegacyReq.
+type OptTeamsAddOrUpdateProjectPermissionsLegacyReq struct {
+	Value TeamsAddOrUpdateProjectPermissionsLegacyReq
+	Set   bool
+}
+
+// IsSet returns true if OptTeamsAddOrUpdateProjectPermissionsLegacyReq was set.
+func (o OptTeamsAddOrUpdateProjectPermissionsLegacyReq) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptTeamsAddOrUpdateProjectPermissionsLegacyReq) Reset() {
+	var v TeamsAddOrUpdateProjectPermissionsLegacyReq
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptTeamsAddOrUpdateProjectPermissionsLegacyReq) SetTo(v TeamsAddOrUpdateProjectPermissionsLegacyReq) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptTeamsAddOrUpdateProjectPermissionsLegacyReq) Get() (v TeamsAddOrUpdateProjectPermissionsLegacyReq, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -18741,6 +20527,44 @@ func (o OptTeamsAddOrUpdateProjectPermissionsLegacyReqPermission) Get() (v Teams
 	return o.Value, true
 }
 
+// NewOptTeamsAddOrUpdateRepoPermissionsInOrgReq returns new OptTeamsAddOrUpdateRepoPermissionsInOrgReq with value set to v.
+func NewOptTeamsAddOrUpdateRepoPermissionsInOrgReq(v TeamsAddOrUpdateRepoPermissionsInOrgReq) OptTeamsAddOrUpdateRepoPermissionsInOrgReq {
+	return OptTeamsAddOrUpdateRepoPermissionsInOrgReq{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptTeamsAddOrUpdateRepoPermissionsInOrgReq is optional TeamsAddOrUpdateRepoPermissionsInOrgReq.
+type OptTeamsAddOrUpdateRepoPermissionsInOrgReq struct {
+	Value TeamsAddOrUpdateRepoPermissionsInOrgReq
+	Set   bool
+}
+
+// IsSet returns true if OptTeamsAddOrUpdateRepoPermissionsInOrgReq was set.
+func (o OptTeamsAddOrUpdateRepoPermissionsInOrgReq) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptTeamsAddOrUpdateRepoPermissionsInOrgReq) Reset() {
+	var v TeamsAddOrUpdateRepoPermissionsInOrgReq
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptTeamsAddOrUpdateRepoPermissionsInOrgReq) SetTo(v TeamsAddOrUpdateRepoPermissionsInOrgReq) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptTeamsAddOrUpdateRepoPermissionsInOrgReq) Get() (v TeamsAddOrUpdateRepoPermissionsInOrgReq, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
 // NewOptTeamsAddOrUpdateRepoPermissionsInOrgReqPermission returns new OptTeamsAddOrUpdateRepoPermissionsInOrgReqPermission with value set to v.
 func NewOptTeamsAddOrUpdateRepoPermissionsInOrgReqPermission(v TeamsAddOrUpdateRepoPermissionsInOrgReqPermission) OptTeamsAddOrUpdateRepoPermissionsInOrgReqPermission {
 	return OptTeamsAddOrUpdateRepoPermissionsInOrgReqPermission{
@@ -18773,6 +20597,44 @@ func (o *OptTeamsAddOrUpdateRepoPermissionsInOrgReqPermission) SetTo(v TeamsAddO
 
 // Get returns value and boolean that denotes whether value was set.
 func (o OptTeamsAddOrUpdateRepoPermissionsInOrgReqPermission) Get() (v TeamsAddOrUpdateRepoPermissionsInOrgReqPermission, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptTeamsAddOrUpdateRepoPermissionsLegacyReq returns new OptTeamsAddOrUpdateRepoPermissionsLegacyReq with value set to v.
+func NewOptTeamsAddOrUpdateRepoPermissionsLegacyReq(v TeamsAddOrUpdateRepoPermissionsLegacyReq) OptTeamsAddOrUpdateRepoPermissionsLegacyReq {
+	return OptTeamsAddOrUpdateRepoPermissionsLegacyReq{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptTeamsAddOrUpdateRepoPermissionsLegacyReq is optional TeamsAddOrUpdateRepoPermissionsLegacyReq.
+type OptTeamsAddOrUpdateRepoPermissionsLegacyReq struct {
+	Value TeamsAddOrUpdateRepoPermissionsLegacyReq
+	Set   bool
+}
+
+// IsSet returns true if OptTeamsAddOrUpdateRepoPermissionsLegacyReq was set.
+func (o OptTeamsAddOrUpdateRepoPermissionsLegacyReq) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptTeamsAddOrUpdateRepoPermissionsLegacyReq) Reset() {
+	var v TeamsAddOrUpdateRepoPermissionsLegacyReq
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptTeamsAddOrUpdateRepoPermissionsLegacyReq) SetTo(v TeamsAddOrUpdateRepoPermissionsLegacyReq) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptTeamsAddOrUpdateRepoPermissionsLegacyReq) Get() (v TeamsAddOrUpdateRepoPermissionsLegacyReq, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -19121,6 +20983,120 @@ func (o OptTeamsListMembersLegacyRole) Get() (v TeamsListMembersLegacyRole, ok b
 	return o.Value, true
 }
 
+// NewOptTeamsUpdateDiscussionInOrgReq returns new OptTeamsUpdateDiscussionInOrgReq with value set to v.
+func NewOptTeamsUpdateDiscussionInOrgReq(v TeamsUpdateDiscussionInOrgReq) OptTeamsUpdateDiscussionInOrgReq {
+	return OptTeamsUpdateDiscussionInOrgReq{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptTeamsUpdateDiscussionInOrgReq is optional TeamsUpdateDiscussionInOrgReq.
+type OptTeamsUpdateDiscussionInOrgReq struct {
+	Value TeamsUpdateDiscussionInOrgReq
+	Set   bool
+}
+
+// IsSet returns true if OptTeamsUpdateDiscussionInOrgReq was set.
+func (o OptTeamsUpdateDiscussionInOrgReq) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptTeamsUpdateDiscussionInOrgReq) Reset() {
+	var v TeamsUpdateDiscussionInOrgReq
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptTeamsUpdateDiscussionInOrgReq) SetTo(v TeamsUpdateDiscussionInOrgReq) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptTeamsUpdateDiscussionInOrgReq) Get() (v TeamsUpdateDiscussionInOrgReq, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptTeamsUpdateDiscussionLegacyReq returns new OptTeamsUpdateDiscussionLegacyReq with value set to v.
+func NewOptTeamsUpdateDiscussionLegacyReq(v TeamsUpdateDiscussionLegacyReq) OptTeamsUpdateDiscussionLegacyReq {
+	return OptTeamsUpdateDiscussionLegacyReq{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptTeamsUpdateDiscussionLegacyReq is optional TeamsUpdateDiscussionLegacyReq.
+type OptTeamsUpdateDiscussionLegacyReq struct {
+	Value TeamsUpdateDiscussionLegacyReq
+	Set   bool
+}
+
+// IsSet returns true if OptTeamsUpdateDiscussionLegacyReq was set.
+func (o OptTeamsUpdateDiscussionLegacyReq) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptTeamsUpdateDiscussionLegacyReq) Reset() {
+	var v TeamsUpdateDiscussionLegacyReq
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptTeamsUpdateDiscussionLegacyReq) SetTo(v TeamsUpdateDiscussionLegacyReq) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptTeamsUpdateDiscussionLegacyReq) Get() (v TeamsUpdateDiscussionLegacyReq, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptTeamsUpdateInOrgReq returns new OptTeamsUpdateInOrgReq with value set to v.
+func NewOptTeamsUpdateInOrgReq(v TeamsUpdateInOrgReq) OptTeamsUpdateInOrgReq {
+	return OptTeamsUpdateInOrgReq{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptTeamsUpdateInOrgReq is optional TeamsUpdateInOrgReq.
+type OptTeamsUpdateInOrgReq struct {
+	Value TeamsUpdateInOrgReq
+	Set   bool
+}
+
+// IsSet returns true if OptTeamsUpdateInOrgReq was set.
+func (o OptTeamsUpdateInOrgReq) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptTeamsUpdateInOrgReq) Reset() {
+	var v TeamsUpdateInOrgReq
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptTeamsUpdateInOrgReq) SetTo(v TeamsUpdateInOrgReq) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptTeamsUpdateInOrgReq) Get() (v TeamsUpdateInOrgReq, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
 // NewOptTeamsUpdateInOrgReqPermission returns new OptTeamsUpdateInOrgReqPermission with value set to v.
 func NewOptTeamsUpdateInOrgReqPermission(v TeamsUpdateInOrgReqPermission) OptTeamsUpdateInOrgReqPermission {
 	return OptTeamsUpdateInOrgReqPermission{
@@ -19419,6 +21395,44 @@ func (o *OptURL) SetTo(v url.URL) {
 
 // Get returns value and boolean that denotes whether value was set.
 func (o OptURL) Get() (v url.URL, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptUsersUpdateAuthenticatedReq returns new OptUsersUpdateAuthenticatedReq with value set to v.
+func NewOptUsersUpdateAuthenticatedReq(v UsersUpdateAuthenticatedReq) OptUsersUpdateAuthenticatedReq {
+	return OptUsersUpdateAuthenticatedReq{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptUsersUpdateAuthenticatedReq is optional UsersUpdateAuthenticatedReq.
+type OptUsersUpdateAuthenticatedReq struct {
+	Value UsersUpdateAuthenticatedReq
+	Set   bool
+}
+
+// IsSet returns true if OptUsersUpdateAuthenticatedReq was set.
+func (o OptUsersUpdateAuthenticatedReq) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptUsersUpdateAuthenticatedReq) Reset() {
+	var v UsersUpdateAuthenticatedReq
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptUsersUpdateAuthenticatedReq) SetTo(v UsersUpdateAuthenticatedReq) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptUsersUpdateAuthenticatedReq) Get() (v UsersUpdateAuthenticatedReq, ok bool) {
 	if !o.Set {
 		return v, false
 	}

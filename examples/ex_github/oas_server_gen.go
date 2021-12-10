@@ -335,11 +335,11 @@ type Handler interface {
 	// ActionsSetAllowedActionsOrganization implements actions/set-allowed-actions-organization operation.
 	//
 	// PUT /orgs/{org}/actions/permissions/selected-actions
-	ActionsSetAllowedActionsOrganization(ctx context.Context, req SelectedActions, params ActionsSetAllowedActionsOrganizationParams) (ActionsSetAllowedActionsOrganizationNoContent, error)
+	ActionsSetAllowedActionsOrganization(ctx context.Context, req OptSelectedActions, params ActionsSetAllowedActionsOrganizationParams) (ActionsSetAllowedActionsOrganizationNoContent, error)
 	// ActionsSetAllowedActionsRepository implements actions/set-allowed-actions-repository operation.
 	//
 	// PUT /repos/{owner}/{repo}/actions/permissions/selected-actions
-	ActionsSetAllowedActionsRepository(ctx context.Context, req SelectedActions, params ActionsSetAllowedActionsRepositoryParams) (ActionsSetAllowedActionsRepositoryNoContent, error)
+	ActionsSetAllowedActionsRepository(ctx context.Context, req OptSelectedActions, params ActionsSetAllowedActionsRepositoryParams) (ActionsSetAllowedActionsRepositoryNoContent, error)
 	// ActionsSetGithubActionsPermissionsOrganization implements actions/set-github-actions-permissions-organization operation.
 	//
 	// PUT /orgs/{org}/actions/permissions
@@ -455,11 +455,11 @@ type Handler interface {
 	// ActivityMarkNotificationsAsRead implements activity/mark-notifications-as-read operation.
 	//
 	// PUT /notifications
-	ActivityMarkNotificationsAsRead(ctx context.Context, req ActivityMarkNotificationsAsReadReq) (ActivityMarkNotificationsAsReadRes, error)
+	ActivityMarkNotificationsAsRead(ctx context.Context, req OptActivityMarkNotificationsAsReadReq) (ActivityMarkNotificationsAsReadRes, error)
 	// ActivityMarkRepoNotificationsAsRead implements activity/mark-repo-notifications-as-read operation.
 	//
 	// PUT /repos/{owner}/{repo}/notifications
-	ActivityMarkRepoNotificationsAsRead(ctx context.Context, req ActivityMarkRepoNotificationsAsReadReq, params ActivityMarkRepoNotificationsAsReadParams) (ActivityMarkRepoNotificationsAsReadRes, error)
+	ActivityMarkRepoNotificationsAsRead(ctx context.Context, req OptActivityMarkRepoNotificationsAsReadReq, params ActivityMarkRepoNotificationsAsReadParams) (ActivityMarkRepoNotificationsAsReadRes, error)
 	// ActivityMarkThreadAsRead implements activity/mark-thread-as-read operation.
 	//
 	// PATCH /notifications/threads/{thread_id}
@@ -467,11 +467,11 @@ type Handler interface {
 	// ActivitySetRepoSubscription implements activity/set-repo-subscription operation.
 	//
 	// PUT /repos/{owner}/{repo}/subscription
-	ActivitySetRepoSubscription(ctx context.Context, req ActivitySetRepoSubscriptionReq, params ActivitySetRepoSubscriptionParams) (RepositorySubscription, error)
+	ActivitySetRepoSubscription(ctx context.Context, req OptActivitySetRepoSubscriptionReq, params ActivitySetRepoSubscriptionParams) (RepositorySubscription, error)
 	// ActivitySetThreadSubscription implements activity/set-thread-subscription operation.
 	//
 	// PUT /notifications/threads/{thread_id}/subscription
-	ActivitySetThreadSubscription(ctx context.Context, req ActivitySetThreadSubscriptionReq, params ActivitySetThreadSubscriptionParams) (ActivitySetThreadSubscriptionRes, error)
+	ActivitySetThreadSubscription(ctx context.Context, req OptActivitySetThreadSubscriptionReq, params ActivitySetThreadSubscriptionParams) (ActivitySetThreadSubscriptionRes, error)
 	// ActivityStarRepoForAuthenticatedUser implements activity/star-repo-for-authenticated-user operation.
 	//
 	// PUT /user/starred/{owner}/{repo}
@@ -555,7 +555,7 @@ type Handler interface {
 	// AppsUpdateWebhookConfigForApp implements apps/update-webhook-config-for-app operation.
 	//
 	// PATCH /app/hook/config
-	AppsUpdateWebhookConfigForApp(ctx context.Context, req AppsUpdateWebhookConfigForAppReq) (WebhookConfig, error)
+	AppsUpdateWebhookConfigForApp(ctx context.Context, req OptAppsUpdateWebhookConfigForAppReq) (WebhookConfig, error)
 	// BillingGetGithubActionsBillingGhe implements billing/get-github-actions-billing-ghe operation.
 	//
 	// GET /enterprises/{enterprise}/settings/billing/actions
@@ -831,7 +831,7 @@ type Handler interface {
 	// EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise implements enterprise-admin/update-self-hosted-runner-group-for-enterprise operation.
 	//
 	// PATCH /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}
-	EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise(ctx context.Context, req EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq, params EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams) (RunnerGroupsEnterprise, error)
+	EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise(ctx context.Context, req OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq, params EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams) (RunnerGroupsEnterprise, error)
 	// GistsCheckIsStarred implements gists/check-is-starred operation.
 	//
 	// GET /gists/{gist_id}/star
@@ -931,7 +931,7 @@ type Handler interface {
 	// IssuesAddAssignees implements issues/add-assignees operation.
 	//
 	// POST /repos/{owner}/{repo}/issues/{issue_number}/assignees
-	IssuesAddAssignees(ctx context.Context, req IssuesAddAssigneesReq, params IssuesAddAssigneesParams) (IssueSimple, error)
+	IssuesAddAssignees(ctx context.Context, req OptIssuesAddAssigneesReq, params IssuesAddAssigneesParams) (IssueSimple, error)
 	// IssuesCheckUserCanBeAssigned implements issues/check-user-can-be-assigned operation.
 	//
 	// GET /repos/{owner}/{repo}/assignees/{assignee}
@@ -995,7 +995,7 @@ type Handler interface {
 	// IssuesRemoveAssignees implements issues/remove-assignees operation.
 	//
 	// DELETE /repos/{owner}/{repo}/issues/{issue_number}/assignees
-	IssuesRemoveAssignees(ctx context.Context, req IssuesRemoveAssigneesReq, params IssuesRemoveAssigneesParams) (IssueSimple, error)
+	IssuesRemoveAssignees(ctx context.Context, req OptIssuesRemoveAssigneesReq, params IssuesRemoveAssigneesParams) (IssueSimple, error)
 	// IssuesRemoveLabel implements issues/remove-label operation.
 	//
 	// DELETE /repos/{owner}/{repo}/issues/{issue_number}/labels/{name}
@@ -1007,11 +1007,11 @@ type Handler interface {
 	// IssuesUpdateLabel implements issues/update-label operation.
 	//
 	// PATCH /repos/{owner}/{repo}/labels/{name}
-	IssuesUpdateLabel(ctx context.Context, req IssuesUpdateLabelReq, params IssuesUpdateLabelParams) (Label, error)
+	IssuesUpdateLabel(ctx context.Context, req OptIssuesUpdateLabelReq, params IssuesUpdateLabelParams) (Label, error)
 	// IssuesUpdateMilestone implements issues/update-milestone operation.
 	//
 	// PATCH /repos/{owner}/{repo}/milestones/{milestone_number}
-	IssuesUpdateMilestone(ctx context.Context, req IssuesUpdateMilestoneReq, params IssuesUpdateMilestoneParams) (Milestone, error)
+	IssuesUpdateMilestone(ctx context.Context, req OptIssuesUpdateMilestoneReq, params IssuesUpdateMilestoneParams) (Milestone, error)
 	// LicensesGet implements licenses/get operation.
 	//
 	// GET /licenses/{license}
@@ -1099,7 +1099,7 @@ type Handler interface {
 	// MigrationsUpdateImport implements migrations/update-import operation.
 	//
 	// PATCH /repos/{owner}/{repo}/import
-	MigrationsUpdateImport(ctx context.Context, req MigrationsUpdateImportReq, params MigrationsUpdateImportParams) (Import, error)
+	MigrationsUpdateImport(ctx context.Context, req OptMigrationsUpdateImportReq, params MigrationsUpdateImportParams) (Import, error)
 	// OAuthAuthorizationsDeleteAuthorization implements oauth-authorizations/delete-authorization operation.
 	//
 	// DELETE /authorizations/{authorization_id}
@@ -1247,7 +1247,7 @@ type Handler interface {
 	// OrgsUpdateWebhookConfigForOrg implements orgs/update-webhook-config-for-org operation.
 	//
 	// PATCH /orgs/{org}/hooks/{hook_id}/config
-	OrgsUpdateWebhookConfigForOrg(ctx context.Context, req OrgsUpdateWebhookConfigForOrgReq, params OrgsUpdateWebhookConfigForOrgParams) (WebhookConfig, error)
+	OrgsUpdateWebhookConfigForOrg(ctx context.Context, req OptOrgsUpdateWebhookConfigForOrgReq, params OrgsUpdateWebhookConfigForOrgParams) (WebhookConfig, error)
 	// PackagesDeletePackageForAuthenticatedUser implements packages/delete-package-for-authenticated-user operation.
 	//
 	// DELETE /user/packages/{package_type}/{package_name}
@@ -1407,11 +1407,11 @@ type Handler interface {
 	// ProjectsUpdate implements projects/update operation.
 	//
 	// PATCH /projects/{project_id}
-	ProjectsUpdate(ctx context.Context, req ProjectsUpdateReq, params ProjectsUpdateParams) (ProjectsUpdateRes, error)
+	ProjectsUpdate(ctx context.Context, req OptProjectsUpdateReq, params ProjectsUpdateParams) (ProjectsUpdateRes, error)
 	// ProjectsUpdateCard implements projects/update-card operation.
 	//
 	// PATCH /projects/columns/cards/{card_id}
-	ProjectsUpdateCard(ctx context.Context, req ProjectsUpdateCardReq, params ProjectsUpdateCardParams) (ProjectsUpdateCardRes, error)
+	ProjectsUpdateCard(ctx context.Context, req OptProjectsUpdateCardReq, params ProjectsUpdateCardParams) (ProjectsUpdateCardRes, error)
 	// ProjectsUpdateColumn implements projects/update-column operation.
 	//
 	// PATCH /projects/columns/{column_id}
@@ -1427,7 +1427,7 @@ type Handler interface {
 	// PullsCreateReview implements pulls/create-review operation.
 	//
 	// POST /repos/{owner}/{repo}/pulls/{pull_number}/reviews
-	PullsCreateReview(ctx context.Context, req PullsCreateReviewReq, params PullsCreateReviewParams) (PullsCreateReviewRes, error)
+	PullsCreateReview(ctx context.Context, req OptPullsCreateReviewReq, params PullsCreateReviewParams) (PullsCreateReviewRes, error)
 	// PullsDeletePendingReview implements pulls/delete-pending-review operation.
 	//
 	// DELETE /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}
@@ -1987,19 +1987,19 @@ type Handler interface {
 	// ReposUpdateInvitation implements repos/update-invitation operation.
 	//
 	// PATCH /repos/{owner}/{repo}/invitations/{invitation_id}
-	ReposUpdateInvitation(ctx context.Context, req ReposUpdateInvitationReq, params ReposUpdateInvitationParams) (RepositoryInvitation, error)
+	ReposUpdateInvitation(ctx context.Context, req OptReposUpdateInvitationReq, params ReposUpdateInvitationParams) (RepositoryInvitation, error)
 	// ReposUpdateRelease implements repos/update-release operation.
 	//
 	// PATCH /repos/{owner}/{repo}/releases/{release_id}
-	ReposUpdateRelease(ctx context.Context, req ReposUpdateReleaseReq, params ReposUpdateReleaseParams) (ReposUpdateReleaseRes, error)
+	ReposUpdateRelease(ctx context.Context, req OptReposUpdateReleaseReq, params ReposUpdateReleaseParams) (ReposUpdateReleaseRes, error)
 	// ReposUpdateReleaseAsset implements repos/update-release-asset operation.
 	//
 	// PATCH /repos/{owner}/{repo}/releases/assets/{asset_id}
-	ReposUpdateReleaseAsset(ctx context.Context, req ReposUpdateReleaseAssetReq, params ReposUpdateReleaseAssetParams) (ReleaseAsset, error)
+	ReposUpdateReleaseAsset(ctx context.Context, req OptReposUpdateReleaseAssetReq, params ReposUpdateReleaseAssetParams) (ReleaseAsset, error)
 	// ReposUpdateWebhookConfigForRepo implements repos/update-webhook-config-for-repo operation.
 	//
 	// PATCH /repos/{owner}/{repo}/hooks/{hook_id}/config
-	ReposUpdateWebhookConfigForRepo(ctx context.Context, req ReposUpdateWebhookConfigForRepoReq, params ReposUpdateWebhookConfigForRepoParams) (WebhookConfig, error)
+	ReposUpdateWebhookConfigForRepo(ctx context.Context, req OptReposUpdateWebhookConfigForRepoReq, params ReposUpdateWebhookConfigForRepoParams) (WebhookConfig, error)
 	// ScimDeleteUserFromOrg implements scim/delete-user-from-org operation.
 	//
 	// DELETE /scim/v2/organizations/{org}/Users/{scim_user_id}
@@ -2035,19 +2035,19 @@ type Handler interface {
 	// TeamsAddOrUpdateMembershipForUserInOrg implements teams/add-or-update-membership-for-user-in-org operation.
 	//
 	// PUT /orgs/{org}/teams/{team_slug}/memberships/{username}
-	TeamsAddOrUpdateMembershipForUserInOrg(ctx context.Context, req TeamsAddOrUpdateMembershipForUserInOrgReq, params TeamsAddOrUpdateMembershipForUserInOrgParams) (TeamsAddOrUpdateMembershipForUserInOrgRes, error)
+	TeamsAddOrUpdateMembershipForUserInOrg(ctx context.Context, req OptTeamsAddOrUpdateMembershipForUserInOrgReq, params TeamsAddOrUpdateMembershipForUserInOrgParams) (TeamsAddOrUpdateMembershipForUserInOrgRes, error)
 	// TeamsAddOrUpdateMembershipForUserLegacy implements teams/add-or-update-membership-for-user-legacy operation.
 	//
 	// PUT /teams/{team_id}/memberships/{username}
-	TeamsAddOrUpdateMembershipForUserLegacy(ctx context.Context, req TeamsAddOrUpdateMembershipForUserLegacyReq, params TeamsAddOrUpdateMembershipForUserLegacyParams) (TeamsAddOrUpdateMembershipForUserLegacyRes, error)
+	TeamsAddOrUpdateMembershipForUserLegacy(ctx context.Context, req OptTeamsAddOrUpdateMembershipForUserLegacyReq, params TeamsAddOrUpdateMembershipForUserLegacyParams) (TeamsAddOrUpdateMembershipForUserLegacyRes, error)
 	// TeamsAddOrUpdateProjectPermissionsInOrg implements teams/add-or-update-project-permissions-in-org operation.
 	//
 	// PUT /orgs/{org}/teams/{team_slug}/projects/{project_id}
-	TeamsAddOrUpdateProjectPermissionsInOrg(ctx context.Context, req TeamsAddOrUpdateProjectPermissionsInOrgReq, params TeamsAddOrUpdateProjectPermissionsInOrgParams) (TeamsAddOrUpdateProjectPermissionsInOrgRes, error)
+	TeamsAddOrUpdateProjectPermissionsInOrg(ctx context.Context, req OptTeamsAddOrUpdateProjectPermissionsInOrgReq, params TeamsAddOrUpdateProjectPermissionsInOrgParams) (TeamsAddOrUpdateProjectPermissionsInOrgRes, error)
 	// TeamsAddOrUpdateRepoPermissionsInOrg implements teams/add-or-update-repo-permissions-in-org operation.
 	//
 	// PUT /orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}
-	TeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, req TeamsAddOrUpdateRepoPermissionsInOrgReq, params TeamsAddOrUpdateRepoPermissionsInOrgParams) (TeamsAddOrUpdateRepoPermissionsInOrgNoContent, error)
+	TeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, req OptTeamsAddOrUpdateRepoPermissionsInOrgReq, params TeamsAddOrUpdateRepoPermissionsInOrgParams) (TeamsAddOrUpdateRepoPermissionsInOrgNoContent, error)
 	// TeamsCheckPermissionsForProjectInOrg implements teams/check-permissions-for-project-in-org operation.
 	//
 	// GET /orgs/{org}/teams/{team_slug}/projects/{project_id}
@@ -2247,15 +2247,15 @@ type Handler interface {
 	// TeamsUpdateDiscussionInOrg implements teams/update-discussion-in-org operation.
 	//
 	// PATCH /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}
-	TeamsUpdateDiscussionInOrg(ctx context.Context, req TeamsUpdateDiscussionInOrgReq, params TeamsUpdateDiscussionInOrgParams) (TeamDiscussion, error)
+	TeamsUpdateDiscussionInOrg(ctx context.Context, req OptTeamsUpdateDiscussionInOrgReq, params TeamsUpdateDiscussionInOrgParams) (TeamDiscussion, error)
 	// TeamsUpdateDiscussionLegacy implements teams/update-discussion-legacy operation.
 	//
 	// PATCH /teams/{team_id}/discussions/{discussion_number}
-	TeamsUpdateDiscussionLegacy(ctx context.Context, req TeamsUpdateDiscussionLegacyReq, params TeamsUpdateDiscussionLegacyParams) (TeamDiscussion, error)
+	TeamsUpdateDiscussionLegacy(ctx context.Context, req OptTeamsUpdateDiscussionLegacyReq, params TeamsUpdateDiscussionLegacyParams) (TeamDiscussion, error)
 	// TeamsUpdateInOrg implements teams/update-in-org operation.
 	//
 	// PATCH /orgs/{org}/teams/{team_slug}
-	TeamsUpdateInOrg(ctx context.Context, req TeamsUpdateInOrgReq, params TeamsUpdateInOrgParams) (TeamFull, error)
+	TeamsUpdateInOrg(ctx context.Context, req OptTeamsUpdateInOrgReq, params TeamsUpdateInOrgParams) (TeamFull, error)
 	// UsersCheckBlocked implements users/check-blocked operation.
 	//
 	// GET /user/blocks/{username}

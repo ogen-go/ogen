@@ -566,7 +566,7 @@ func (c *Client) MmdsGet(ctx context.Context) (res MmdsGetRes, err error) {
 // MmdsPatch invokes  operation.
 //
 // PATCH /mmds
-func (c *Client) MmdsPatch(ctx context.Context, request MmdsPatchReq) (res MmdsPatchRes, err error) {
+func (c *Client) MmdsPatch(ctx context.Context, request OptMmdsPatchReq) (res MmdsPatchRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `MmdsPatch`,
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -619,7 +619,7 @@ func (c *Client) MmdsPatch(ctx context.Context, request MmdsPatchReq) (res MmdsP
 // MmdsPut invokes  operation.
 //
 // PUT /mmds
-func (c *Client) MmdsPut(ctx context.Context, request MmdsPutReq) (res MmdsPutRes, err error) {
+func (c *Client) MmdsPut(ctx context.Context, request OptMmdsPutReq) (res MmdsPutRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `MmdsPut`,
 		trace.WithSpanKind(trace.SpanKindClient),
@@ -932,11 +932,19 @@ func (c *Client) PatchGuestNetworkInterfaceByID(ctx context.Context, request Par
 // PatchMachineConfiguration invokes patchMachineConfiguration operation.
 //
 // PATCH /machine-config
-func (c *Client) PatchMachineConfiguration(ctx context.Context, request MachineConfiguration) (res PatchMachineConfigurationRes, err error) {
+func (c *Client) PatchMachineConfiguration(ctx context.Context, request OptMachineConfiguration) (res PatchMachineConfigurationRes, err error) {
 	if err := func() error {
-		if err := request.Validate(); err != nil {
-			return err
+		if request.Set {
+			if err := func() error {
+				if err := request.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
 		}
+		return nil
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
@@ -1440,11 +1448,19 @@ func (c *Client) PutLogger(ctx context.Context, request Logger) (res PutLoggerRe
 // PutMachineConfiguration invokes putMachineConfiguration operation.
 //
 // PUT /machine-config
-func (c *Client) PutMachineConfiguration(ctx context.Context, request MachineConfiguration) (res PutMachineConfigurationRes, err error) {
+func (c *Client) PutMachineConfiguration(ctx context.Context, request OptMachineConfiguration) (res PutMachineConfigurationRes, err error) {
 	if err := func() error {
-		if err := request.Validate(); err != nil {
-			return err
+		if request.Set {
+			if err := func() error {
+				if err := request.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
 		}
+		return nil
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")

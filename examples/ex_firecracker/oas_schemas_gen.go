@@ -739,6 +739,82 @@ func (o OptMmdsConfig) Get() (v MmdsConfig, ok bool) {
 	return o.Value, true
 }
 
+// NewOptMmdsPatchReq returns new OptMmdsPatchReq with value set to v.
+func NewOptMmdsPatchReq(v MmdsPatchReq) OptMmdsPatchReq {
+	return OptMmdsPatchReq{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptMmdsPatchReq is optional MmdsPatchReq.
+type OptMmdsPatchReq struct {
+	Value MmdsPatchReq
+	Set   bool
+}
+
+// IsSet returns true if OptMmdsPatchReq was set.
+func (o OptMmdsPatchReq) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptMmdsPatchReq) Reset() {
+	var v MmdsPatchReq
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptMmdsPatchReq) SetTo(v MmdsPatchReq) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptMmdsPatchReq) Get() (v MmdsPatchReq, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptMmdsPutReq returns new OptMmdsPutReq with value set to v.
+func NewOptMmdsPutReq(v MmdsPutReq) OptMmdsPutReq {
+	return OptMmdsPutReq{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptMmdsPutReq is optional MmdsPutReq.
+type OptMmdsPutReq struct {
+	Value MmdsPutReq
+	Set   bool
+}
+
+// IsSet returns true if OptMmdsPutReq was set.
+func (o OptMmdsPutReq) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptMmdsPutReq) Reset() {
+	var v MmdsPutReq
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptMmdsPutReq) SetTo(v MmdsPutReq) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptMmdsPutReq) Get() (v MmdsPutReq, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
 // NewOptRateLimiter returns new OptRateLimiter with value set to v.
 func NewOptRateLimiter(v RateLimiter) OptRateLimiter {
 	return OptRateLimiter{

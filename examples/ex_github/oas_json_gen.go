@@ -39113,6 +39113,94 @@ func (o *OptActivityListReposStarredByAuthenticatedUserSort) Decode(d *jx.Decode
 	}
 }
 
+// Encode encodes ActivityMarkNotificationsAsReadReq as json.
+func (o OptActivityMarkNotificationsAsReadReq) Encode(e *jx.Encoder) {
+	o.Value.Encode(e)
+}
+
+// Decode decodes ActivityMarkNotificationsAsReadReq from json.
+func (o *OptActivityMarkNotificationsAsReadReq) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptActivityMarkNotificationsAsReadReq to nil`)
+	}
+	switch d.Next() {
+	case jx.Object:
+		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptActivityMarkNotificationsAsReadReq`, d.Next())
+	}
+}
+
+// Encode encodes ActivityMarkRepoNotificationsAsReadReq as json.
+func (o OptActivityMarkRepoNotificationsAsReadReq) Encode(e *jx.Encoder) {
+	o.Value.Encode(e)
+}
+
+// Decode decodes ActivityMarkRepoNotificationsAsReadReq from json.
+func (o *OptActivityMarkRepoNotificationsAsReadReq) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptActivityMarkRepoNotificationsAsReadReq to nil`)
+	}
+	switch d.Next() {
+	case jx.Object:
+		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptActivityMarkRepoNotificationsAsReadReq`, d.Next())
+	}
+}
+
+// Encode encodes ActivitySetRepoSubscriptionReq as json.
+func (o OptActivitySetRepoSubscriptionReq) Encode(e *jx.Encoder) {
+	o.Value.Encode(e)
+}
+
+// Decode decodes ActivitySetRepoSubscriptionReq from json.
+func (o *OptActivitySetRepoSubscriptionReq) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptActivitySetRepoSubscriptionReq to nil`)
+	}
+	switch d.Next() {
+	case jx.Object:
+		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptActivitySetRepoSubscriptionReq`, d.Next())
+	}
+}
+
+// Encode encodes ActivitySetThreadSubscriptionReq as json.
+func (o OptActivitySetThreadSubscriptionReq) Encode(e *jx.Encoder) {
+	o.Value.Encode(e)
+}
+
+// Decode decodes ActivitySetThreadSubscriptionReq from json.
+func (o *OptActivitySetThreadSubscriptionReq) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptActivitySetThreadSubscriptionReq to nil`)
+	}
+	switch d.Next() {
+	case jx.Object:
+		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptActivitySetThreadSubscriptionReq`, d.Next())
+	}
+}
+
 // Encode encodes Actor as json.
 func (o OptActor) Encode(e *jx.Encoder) {
 	o.Value.Encode(e)
@@ -39997,6 +40085,50 @@ func (o *OptAppPermissionsWorkflows) Decode(d *jx.Decoder) error {
 	}
 }
 
+// Encode encodes AppsCreateFromManifestReq as json.
+func (o OptAppsCreateFromManifestReq) Encode(e *jx.Encoder) {
+	o.Value.Encode(e)
+}
+
+// Decode decodes AppsCreateFromManifestReq from json.
+func (o *OptAppsCreateFromManifestReq) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptAppsCreateFromManifestReq to nil`)
+	}
+	switch d.Next() {
+	case jx.Object:
+		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptAppsCreateFromManifestReq`, d.Next())
+	}
+}
+
+// Encode encodes AppsCreateInstallationAccessTokenReq as json.
+func (o OptAppsCreateInstallationAccessTokenReq) Encode(e *jx.Encoder) {
+	o.Value.Encode(e)
+}
+
+// Decode decodes AppsCreateInstallationAccessTokenReq from json.
+func (o *OptAppsCreateInstallationAccessTokenReq) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptAppsCreateInstallationAccessTokenReq to nil`)
+	}
+	switch d.Next() {
+	case jx.Object:
+		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptAppsCreateInstallationAccessTokenReq`, d.Next())
+	}
+}
+
 // Encode encodes AppsListAccountsForPlanStubbedDirection as json.
 func (o OptAppsListAccountsForPlanStubbedDirection) Encode(e *jx.Encoder) {
 	e.Str(string(o.Value))
@@ -40042,6 +40174,28 @@ func (o *OptAppsListAccountsForPlanStubbedSort) Decode(d *jx.Decoder) error {
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptAppsListAccountsForPlanStubbedSort`, d.Next())
+	}
+}
+
+// Encode encodes AppsUpdateWebhookConfigForAppReq as json.
+func (o OptAppsUpdateWebhookConfigForAppReq) Encode(e *jx.Encoder) {
+	o.Value.Encode(e)
+}
+
+// Decode decodes AppsUpdateWebhookConfigForAppReq from json.
+func (o *OptAppsUpdateWebhookConfigForAppReq) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptAppsUpdateWebhookConfigForAppReq to nil`)
+	}
+	switch d.Next() {
+	case jx.Object:
+		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptAppsUpdateWebhookConfigForAppReq`, d.Next())
 	}
 }
 
@@ -40861,6 +41015,28 @@ func (o *OptEnterpriseAdminGetAuditLogOrder) Decode(d *jx.Decoder) error {
 	}
 }
 
+// Encode encodes EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq as json.
+func (o OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq) Encode(e *jx.Encoder) {
+	o.Value.Encode(e)
+}
+
+// Decode decodes EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq from json.
+func (o *OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq to nil`)
+	}
+	switch d.Next() {
+	case jx.Object:
+		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq`, d.Next())
+	}
+}
+
 // Encode encodes EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibility as json.
 func (o OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibility) Encode(e *jx.Encoder) {
 	e.Str(string(o.Value))
@@ -41585,6 +41761,28 @@ func (o *OptIssueSimplePullRequest) Decode(d *jx.Decoder) error {
 	}
 }
 
+// Encode encodes IssuesAddAssigneesReq as json.
+func (o OptIssuesAddAssigneesReq) Encode(e *jx.Encoder) {
+	o.Value.Encode(e)
+}
+
+// Decode decodes IssuesAddAssigneesReq from json.
+func (o *OptIssuesAddAssigneesReq) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptIssuesAddAssigneesReq to nil`)
+	}
+	switch d.Next() {
+	case jx.Object:
+		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptIssuesAddAssigneesReq`, d.Next())
+	}
+}
+
 // Encode encodes IssuesCreateMilestoneReqState as json.
 func (o OptIssuesCreateMilestoneReqState) Encode(e *jx.Encoder) {
 	e.Str(string(o.Value))
@@ -41681,6 +41879,28 @@ func (o *OptIssuesListMilestonesState) Decode(d *jx.Decoder) error {
 	}
 }
 
+// Encode encodes IssuesLockReq as json.
+func (o OptIssuesLockReq) Encode(e *jx.Encoder) {
+	o.Value.Encode(e)
+}
+
+// Decode decodes IssuesLockReq from json.
+func (o *OptIssuesLockReq) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptIssuesLockReq to nil`)
+	}
+	switch d.Next() {
+	case jx.Object:
+		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptIssuesLockReq`, d.Next())
+	}
+}
+
 // Encode encodes IssuesLockReqLockReason as json.
 func (o OptIssuesLockReqLockReason) Encode(e *jx.Encoder) {
 	e.Str(string(o.Value))
@@ -41702,6 +41922,72 @@ func (o *OptIssuesLockReqLockReason) Decode(d *jx.Decoder) error {
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptIssuesLockReqLockReason`, d.Next())
+	}
+}
+
+// Encode encodes IssuesRemoveAssigneesReq as json.
+func (o OptIssuesRemoveAssigneesReq) Encode(e *jx.Encoder) {
+	o.Value.Encode(e)
+}
+
+// Decode decodes IssuesRemoveAssigneesReq from json.
+func (o *OptIssuesRemoveAssigneesReq) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptIssuesRemoveAssigneesReq to nil`)
+	}
+	switch d.Next() {
+	case jx.Object:
+		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptIssuesRemoveAssigneesReq`, d.Next())
+	}
+}
+
+// Encode encodes IssuesUpdateLabelReq as json.
+func (o OptIssuesUpdateLabelReq) Encode(e *jx.Encoder) {
+	o.Value.Encode(e)
+}
+
+// Decode decodes IssuesUpdateLabelReq from json.
+func (o *OptIssuesUpdateLabelReq) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptIssuesUpdateLabelReq to nil`)
+	}
+	switch d.Next() {
+	case jx.Object:
+		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptIssuesUpdateLabelReq`, d.Next())
+	}
+}
+
+// Encode encodes IssuesUpdateMilestoneReq as json.
+func (o OptIssuesUpdateMilestoneReq) Encode(e *jx.Encoder) {
+	o.Value.Encode(e)
+}
+
+// Decode decodes IssuesUpdateMilestoneReq from json.
+func (o *OptIssuesUpdateMilestoneReq) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptIssuesUpdateMilestoneReq to nil`)
+	}
+	switch d.Next() {
+	case jx.Object:
+		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptIssuesUpdateMilestoneReq`, d.Next())
 	}
 }
 
@@ -41821,6 +42107,28 @@ func (o *OptMergedUpstreamMergeType) Decode(d *jx.Decoder) error {
 	}
 }
 
+// Encode encodes MigrationsMapCommitAuthorReq as json.
+func (o OptMigrationsMapCommitAuthorReq) Encode(e *jx.Encoder) {
+	o.Value.Encode(e)
+}
+
+// Decode decodes MigrationsMapCommitAuthorReq from json.
+func (o *OptMigrationsMapCommitAuthorReq) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptMigrationsMapCommitAuthorReq to nil`)
+	}
+	switch d.Next() {
+	case jx.Object:
+		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptMigrationsMapCommitAuthorReq`, d.Next())
+	}
+}
+
 // Encode encodes MigrationsStartImportReqVcs as json.
 func (o OptMigrationsStartImportReqVcs) Encode(e *jx.Encoder) {
 	e.Str(string(o.Value))
@@ -41842,6 +42150,28 @@ func (o *OptMigrationsStartImportReqVcs) Decode(d *jx.Decoder) error {
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptMigrationsStartImportReqVcs`, d.Next())
+	}
+}
+
+// Encode encodes MigrationsUpdateImportReq as json.
+func (o OptMigrationsUpdateImportReq) Encode(e *jx.Encoder) {
+	o.Value.Encode(e)
+}
+
+// Decode decodes MigrationsUpdateImportReq from json.
+func (o *OptMigrationsUpdateImportReq) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptMigrationsUpdateImportReq to nil`)
+	}
+	switch d.Next() {
+	case jx.Object:
+		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptMigrationsUpdateImportReq`, d.Next())
 	}
 }
 
@@ -43399,6 +43729,50 @@ func (o *OptNullableRepositoryTemplateRepositoryPermissions) Decode(d *jx.Decode
 	}
 }
 
+// Encode encodes OAuthAuthorizationsCreateAuthorizationReq as json.
+func (o OptOAuthAuthorizationsCreateAuthorizationReq) Encode(e *jx.Encoder) {
+	o.Value.Encode(e)
+}
+
+// Decode decodes OAuthAuthorizationsCreateAuthorizationReq from json.
+func (o *OptOAuthAuthorizationsCreateAuthorizationReq) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptOAuthAuthorizationsCreateAuthorizationReq to nil`)
+	}
+	switch d.Next() {
+	case jx.Object:
+		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptOAuthAuthorizationsCreateAuthorizationReq`, d.Next())
+	}
+}
+
+// Encode encodes OAuthAuthorizationsUpdateAuthorizationReq as json.
+func (o OptOAuthAuthorizationsUpdateAuthorizationReq) Encode(e *jx.Encoder) {
+	o.Value.Encode(e)
+}
+
+// Decode decodes OAuthAuthorizationsUpdateAuthorizationReq from json.
+func (o *OptOAuthAuthorizationsUpdateAuthorizationReq) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptOAuthAuthorizationsUpdateAuthorizationReq to nil`)
+	}
+	switch d.Next() {
+	case jx.Object:
+		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptOAuthAuthorizationsUpdateAuthorizationReq`, d.Next())
+	}
+}
+
 // Encode encodes OrgMembershipPermissions as json.
 func (o OptOrgMembershipPermissions) Encode(e *jx.Encoder) {
 	o.Value.Encode(e)
@@ -43440,6 +43814,28 @@ func (o *OptOrganizationFullPlan) Decode(d *jx.Decoder) error {
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptOrganizationFullPlan`, d.Next())
+	}
+}
+
+// Encode encodes OrgsCreateInvitationReq as json.
+func (o OptOrgsCreateInvitationReq) Encode(e *jx.Encoder) {
+	o.Value.Encode(e)
+}
+
+// Decode decodes OrgsCreateInvitationReq from json.
+func (o *OptOrgsCreateInvitationReq) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptOrgsCreateInvitationReq to nil`)
+	}
+	switch d.Next() {
+	case jx.Object:
+		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptOrgsCreateInvitationReq`, d.Next())
 	}
 }
 
@@ -43539,6 +43935,28 @@ func (o *OptOrgsListOutsideCollaboratorsFilter) Decode(d *jx.Decoder) error {
 	}
 }
 
+// Encode encodes OrgsSetMembershipForUserReq as json.
+func (o OptOrgsSetMembershipForUserReq) Encode(e *jx.Encoder) {
+	o.Value.Encode(e)
+}
+
+// Decode decodes OrgsSetMembershipForUserReq from json.
+func (o *OptOrgsSetMembershipForUserReq) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptOrgsSetMembershipForUserReq to nil`)
+	}
+	switch d.Next() {
+	case jx.Object:
+		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptOrgsSetMembershipForUserReq`, d.Next())
+	}
+}
+
 // Encode encodes OrgsSetMembershipForUserReqRole as json.
 func (o OptOrgsSetMembershipForUserReqRole) Encode(e *jx.Encoder) {
 	e.Str(string(o.Value))
@@ -43560,6 +43978,28 @@ func (o *OptOrgsSetMembershipForUserReqRole) Decode(d *jx.Decoder) error {
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptOrgsSetMembershipForUserReqRole`, d.Next())
+	}
+}
+
+// Encode encodes OrgsUpdateReq as json.
+func (o OptOrgsUpdateReq) Encode(e *jx.Encoder) {
+	o.Value.Encode(e)
+}
+
+// Decode decodes OrgsUpdateReq from json.
+func (o *OptOrgsUpdateReq) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptOrgsUpdateReq to nil`)
+	}
+	switch d.Next() {
+	case jx.Object:
+		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptOrgsUpdateReq`, d.Next())
 	}
 }
 
@@ -43608,6 +44048,50 @@ func (o *OptOrgsUpdateReqMembersAllowedRepositoryCreationType) Decode(d *jx.Deco
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptOrgsUpdateReqMembersAllowedRepositoryCreationType`, d.Next())
+	}
+}
+
+// Encode encodes OrgsUpdateWebhookConfigForOrgReq as json.
+func (o OptOrgsUpdateWebhookConfigForOrgReq) Encode(e *jx.Encoder) {
+	o.Value.Encode(e)
+}
+
+// Decode decodes OrgsUpdateWebhookConfigForOrgReq from json.
+func (o *OptOrgsUpdateWebhookConfigForOrgReq) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptOrgsUpdateWebhookConfigForOrgReq to nil`)
+	}
+	switch d.Next() {
+	case jx.Object:
+		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptOrgsUpdateWebhookConfigForOrgReq`, d.Next())
+	}
+}
+
+// Encode encodes OrgsUpdateWebhookReq as json.
+func (o OptOrgsUpdateWebhookReq) Encode(e *jx.Encoder) {
+	o.Value.Encode(e)
+}
+
+// Decode decodes OrgsUpdateWebhookReq from json.
+func (o *OptOrgsUpdateWebhookReq) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptOrgsUpdateWebhookReq to nil`)
+	}
+	switch d.Next() {
+	case jx.Object:
+		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptOrgsUpdateWebhookReq`, d.Next())
 	}
 }
 
@@ -43931,6 +44415,28 @@ func (o *OptProjectOrganizationPermission) Decode(d *jx.Decoder) error {
 	}
 }
 
+// Encode encodes ProjectsAddCollaboratorReq as json.
+func (o OptProjectsAddCollaboratorReq) Encode(e *jx.Encoder) {
+	o.Value.Encode(e)
+}
+
+// Decode decodes ProjectsAddCollaboratorReq from json.
+func (o *OptProjectsAddCollaboratorReq) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptProjectsAddCollaboratorReq to nil`)
+	}
+	switch d.Next() {
+	case jx.Object:
+		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptProjectsAddCollaboratorReq`, d.Next())
+	}
+}
+
 // Encode encodes ProjectsAddCollaboratorReqPermission as json.
 func (o OptProjectsAddCollaboratorReqPermission) Encode(e *jx.Encoder) {
 	e.Str(string(o.Value))
@@ -44024,6 +44530,50 @@ func (o *OptProjectsListForRepoState) Decode(d *jx.Decoder) error {
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptProjectsListForRepoState`, d.Next())
+	}
+}
+
+// Encode encodes ProjectsUpdateCardReq as json.
+func (o OptProjectsUpdateCardReq) Encode(e *jx.Encoder) {
+	o.Value.Encode(e)
+}
+
+// Decode decodes ProjectsUpdateCardReq from json.
+func (o *OptProjectsUpdateCardReq) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptProjectsUpdateCardReq to nil`)
+	}
+	switch d.Next() {
+	case jx.Object:
+		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptProjectsUpdateCardReq`, d.Next())
+	}
+}
+
+// Encode encodes ProjectsUpdateReq as json.
+func (o OptProjectsUpdateReq) Encode(e *jx.Encoder) {
+	o.Value.Encode(e)
+}
+
+// Decode decodes ProjectsUpdateReq from json.
+func (o *OptProjectsUpdateReq) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptProjectsUpdateReq to nil`)
+	}
+	switch d.Next() {
+	case jx.Object:
+		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptProjectsUpdateReq`, d.Next())
 	}
 }
 
@@ -44453,6 +45003,28 @@ func (o *OptPullsCreateReviewCommentReqStartSide) Decode(d *jx.Decoder) error {
 	}
 }
 
+// Encode encodes PullsCreateReviewReq as json.
+func (o OptPullsCreateReviewReq) Encode(e *jx.Encoder) {
+	o.Value.Encode(e)
+}
+
+// Decode decodes PullsCreateReviewReq from json.
+func (o *OptPullsCreateReviewReq) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptPullsCreateReviewReq to nil`)
+	}
+	switch d.Next() {
+	case jx.Object:
+		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptPullsCreateReviewReq`, d.Next())
+	}
+}
+
 // Encode encodes PullsCreateReviewReqEvent as json.
 func (o OptPullsCreateReviewReqEvent) Encode(e *jx.Encoder) {
 	e.Str(string(o.Value))
@@ -44573,6 +45145,28 @@ func (o *OptPullsListReviewCommentsSort) Decode(d *jx.Decoder) error {
 	}
 }
 
+// Encode encodes PullsMergeReq as json.
+func (o OptPullsMergeReq) Encode(e *jx.Encoder) {
+	o.Value.Encode(e)
+}
+
+// Decode decodes PullsMergeReq from json.
+func (o *OptPullsMergeReq) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptPullsMergeReq to nil`)
+	}
+	switch d.Next() {
+	case jx.Object:
+		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptPullsMergeReq`, d.Next())
+	}
+}
+
 // Encode encodes PullsMergeReqMergeMethod as json.
 func (o OptPullsMergeReqMergeMethod) Encode(e *jx.Encoder) {
 	e.Str(string(o.Value))
@@ -44594,6 +45188,50 @@ func (o *OptPullsMergeReqMergeMethod) Decode(d *jx.Decoder) error {
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptPullsMergeReqMergeMethod`, d.Next())
+	}
+}
+
+// Encode encodes PullsUpdateBranchReq as json.
+func (o OptPullsUpdateBranchReq) Encode(e *jx.Encoder) {
+	o.Value.Encode(e)
+}
+
+// Decode decodes PullsUpdateBranchReq from json.
+func (o *OptPullsUpdateBranchReq) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptPullsUpdateBranchReq to nil`)
+	}
+	switch d.Next() {
+	case jx.Object:
+		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptPullsUpdateBranchReq`, d.Next())
+	}
+}
+
+// Encode encodes PullsUpdateReq as json.
+func (o OptPullsUpdateReq) Encode(e *jx.Encoder) {
+	o.Value.Encode(e)
+}
+
+// Decode decodes PullsUpdateReq from json.
+func (o *OptPullsUpdateReq) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptPullsUpdateReq to nil`)
+	}
+	switch d.Next() {
+	case jx.Object:
+		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptPullsUpdateReq`, d.Next())
 	}
 }
 
@@ -44879,6 +45517,28 @@ func (o *OptRepoSearchResultItemPermissions) Decode(d *jx.Decoder) error {
 	}
 }
 
+// Encode encodes ReposAddCollaboratorReq as json.
+func (o OptReposAddCollaboratorReq) Encode(e *jx.Encoder) {
+	o.Value.Encode(e)
+}
+
+// Decode decodes ReposAddCollaboratorReq from json.
+func (o *OptReposAddCollaboratorReq) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptReposAddCollaboratorReq to nil`)
+	}
+	switch d.Next() {
+	case jx.Object:
+		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptReposAddCollaboratorReq`, d.Next())
+	}
+}
+
 // Encode encodes ReposAddCollaboratorReqPermission as json.
 func (o OptReposAddCollaboratorReqPermission) Encode(e *jx.Encoder) {
 	e.Str(string(o.Value))
@@ -44927,6 +45587,28 @@ func (o *OptReposCreateDeploymentStatusReqEnvironment) Decode(d *jx.Decoder) err
 	}
 }
 
+// Encode encodes ReposCreateForkReq as json.
+func (o OptReposCreateForkReq) Encode(e *jx.Encoder) {
+	o.Value.Encode(e)
+}
+
+// Decode decodes ReposCreateForkReq from json.
+func (o *OptReposCreateForkReq) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptReposCreateForkReq to nil`)
+	}
+	switch d.Next() {
+	case jx.Object:
+		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptReposCreateForkReq`, d.Next())
+	}
+}
+
 // Encode encodes ReposCreateInOrgReqVisibility as json.
 func (o OptReposCreateInOrgReqVisibility) Encode(e *jx.Encoder) {
 	e.Str(string(o.Value))
@@ -44948,6 +45630,28 @@ func (o *OptReposCreateInOrgReqVisibility) Decode(d *jx.Decoder) error {
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptReposCreateInOrgReqVisibility`, d.Next())
+	}
+}
+
+// Encode encodes ReposCreateOrUpdateEnvironmentReq as json.
+func (o OptReposCreateOrUpdateEnvironmentReq) Encode(e *jx.Encoder) {
+	o.Value.Encode(e)
+}
+
+// Decode decodes ReposCreateOrUpdateEnvironmentReq from json.
+func (o *OptReposCreateOrUpdateEnvironmentReq) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptReposCreateOrUpdateEnvironmentReq to nil`)
+	}
+	switch d.Next() {
+	case jx.Object:
+		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptReposCreateOrUpdateEnvironmentReq`, d.Next())
 	}
 }
 
@@ -45016,6 +45720,28 @@ func (o *OptReposCreatePagesSiteReqSourcePath) Decode(d *jx.Decoder) error {
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptReposCreatePagesSiteReqSourcePath`, d.Next())
+	}
+}
+
+// Encode encodes ReposCreateWebhookReq as json.
+func (o OptReposCreateWebhookReq) Encode(e *jx.Encoder) {
+	o.Value.Encode(e)
+}
+
+// Decode decodes ReposCreateWebhookReq from json.
+func (o *OptReposCreateWebhookReq) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptReposCreateWebhookReq to nil`)
+	}
+	switch d.Next() {
+	case jx.Object:
+		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptReposCreateWebhookReq`, d.Next())
 	}
 }
 
@@ -45325,6 +46051,28 @@ func (o *OptReposListForksSort) Decode(d *jx.Decoder) error {
 	}
 }
 
+// Encode encodes ReposRenameBranchReq as json.
+func (o OptReposRenameBranchReq) Encode(e *jx.Encoder) {
+	o.Value.Encode(e)
+}
+
+// Decode decodes ReposRenameBranchReq from json.
+func (o *OptReposRenameBranchReq) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptReposRenameBranchReq to nil`)
+	}
+	switch d.Next() {
+	case jx.Object:
+		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptReposRenameBranchReq`, d.Next())
+	}
+}
+
 // Encode encodes ReposUpdateBranchProtectionReqRequiredPullRequestReviewsDismissalRestrictions as json.
 func (o OptReposUpdateBranchProtectionReqRequiredPullRequestReviewsDismissalRestrictions) Encode(e *jx.Encoder) {
 	o.Value.Encode(e)
@@ -45344,6 +46092,28 @@ func (o *OptReposUpdateBranchProtectionReqRequiredPullRequestReviewsDismissalRes
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptReposUpdateBranchProtectionReqRequiredPullRequestReviewsDismissalRestrictions`, d.Next())
+	}
+}
+
+// Encode encodes ReposUpdateInvitationReq as json.
+func (o OptReposUpdateInvitationReq) Encode(e *jx.Encoder) {
+	o.Value.Encode(e)
+}
+
+// Decode decodes ReposUpdateInvitationReq from json.
+func (o *OptReposUpdateInvitationReq) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptReposUpdateInvitationReq to nil`)
+	}
+	switch d.Next() {
+	case jx.Object:
+		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptReposUpdateInvitationReq`, d.Next())
 	}
 }
 
@@ -45371,6 +46141,28 @@ func (o *OptReposUpdateInvitationReqPermissions) Decode(d *jx.Decoder) error {
 	}
 }
 
+// Encode encodes ReposUpdatePullRequestReviewProtectionReq as json.
+func (o OptReposUpdatePullRequestReviewProtectionReq) Encode(e *jx.Encoder) {
+	o.Value.Encode(e)
+}
+
+// Decode decodes ReposUpdatePullRequestReviewProtectionReq from json.
+func (o *OptReposUpdatePullRequestReviewProtectionReq) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptReposUpdatePullRequestReviewProtectionReq to nil`)
+	}
+	switch d.Next() {
+	case jx.Object:
+		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptReposUpdatePullRequestReviewProtectionReq`, d.Next())
+	}
+}
+
 // Encode encodes ReposUpdatePullRequestReviewProtectionReqDismissalRestrictions as json.
 func (o OptReposUpdatePullRequestReviewProtectionReqDismissalRestrictions) Encode(e *jx.Encoder) {
 	o.Value.Encode(e)
@@ -45390,6 +46182,72 @@ func (o *OptReposUpdatePullRequestReviewProtectionReqDismissalRestrictions) Deco
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptReposUpdatePullRequestReviewProtectionReqDismissalRestrictions`, d.Next())
+	}
+}
+
+// Encode encodes ReposUpdateReleaseAssetReq as json.
+func (o OptReposUpdateReleaseAssetReq) Encode(e *jx.Encoder) {
+	o.Value.Encode(e)
+}
+
+// Decode decodes ReposUpdateReleaseAssetReq from json.
+func (o *OptReposUpdateReleaseAssetReq) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptReposUpdateReleaseAssetReq to nil`)
+	}
+	switch d.Next() {
+	case jx.Object:
+		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptReposUpdateReleaseAssetReq`, d.Next())
+	}
+}
+
+// Encode encodes ReposUpdateReleaseReq as json.
+func (o OptReposUpdateReleaseReq) Encode(e *jx.Encoder) {
+	o.Value.Encode(e)
+}
+
+// Decode decodes ReposUpdateReleaseReq from json.
+func (o *OptReposUpdateReleaseReq) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptReposUpdateReleaseReq to nil`)
+	}
+	switch d.Next() {
+	case jx.Object:
+		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptReposUpdateReleaseReq`, d.Next())
+	}
+}
+
+// Encode encodes ReposUpdateReq as json.
+func (o OptReposUpdateReq) Encode(e *jx.Encoder) {
+	o.Value.Encode(e)
+}
+
+// Decode decodes ReposUpdateReq from json.
+func (o *OptReposUpdateReq) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptReposUpdateReq to nil`)
+	}
+	switch d.Next() {
+	case jx.Object:
+		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptReposUpdateReq`, d.Next())
 	}
 }
 
@@ -45458,6 +46316,72 @@ func (o *OptReposUpdateReqVisibility) Decode(d *jx.Decoder) error {
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptReposUpdateReqVisibility`, d.Next())
+	}
+}
+
+// Encode encodes ReposUpdateStatusCheckProtectionReq as json.
+func (o OptReposUpdateStatusCheckProtectionReq) Encode(e *jx.Encoder) {
+	o.Value.Encode(e)
+}
+
+// Decode decodes ReposUpdateStatusCheckProtectionReq from json.
+func (o *OptReposUpdateStatusCheckProtectionReq) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptReposUpdateStatusCheckProtectionReq to nil`)
+	}
+	switch d.Next() {
+	case jx.Object:
+		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptReposUpdateStatusCheckProtectionReq`, d.Next())
+	}
+}
+
+// Encode encodes ReposUpdateWebhookConfigForRepoReq as json.
+func (o OptReposUpdateWebhookConfigForRepoReq) Encode(e *jx.Encoder) {
+	o.Value.Encode(e)
+}
+
+// Decode decodes ReposUpdateWebhookConfigForRepoReq from json.
+func (o *OptReposUpdateWebhookConfigForRepoReq) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptReposUpdateWebhookConfigForRepoReq to nil`)
+	}
+	switch d.Next() {
+	case jx.Object:
+		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptReposUpdateWebhookConfigForRepoReq`, d.Next())
+	}
+}
+
+// Encode encodes ReposUpdateWebhookReq as json.
+func (o OptReposUpdateWebhookReq) Encode(e *jx.Encoder) {
+	o.Value.Encode(e)
+}
+
+// Decode decodes ReposUpdateWebhookReq from json.
+func (o *OptReposUpdateWebhookReq) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptReposUpdateWebhookReq to nil`)
+	}
+	switch d.Next() {
+	case jx.Object:
+		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptReposUpdateWebhookReq`, d.Next())
 	}
 }
 
@@ -45871,6 +46795,28 @@ func (o *OptSecretScanningListAlertsForRepoState) Decode(d *jx.Decoder) error {
 	}
 }
 
+// Encode encodes SelectedActions as json.
+func (o OptSelectedActions) Encode(e *jx.Encoder) {
+	o.Value.Encode(e)
+}
+
+// Decode decodes SelectedActions from json.
+func (o *OptSelectedActions) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptSelectedActions to nil`)
+	}
+	switch d.Next() {
+	case jx.Object:
+		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptSelectedActions`, d.Next())
+	}
+}
+
 // Encode encodes SelectedActionsURL as json.
 func (o OptSelectedActionsURL) Encode(e *jx.Encoder) {
 }
@@ -46047,6 +46993,28 @@ func (o *OptTeamRepositoryPermissions) Decode(d *jx.Decoder) error {
 	}
 }
 
+// Encode encodes TeamsAddOrUpdateMembershipForUserInOrgReq as json.
+func (o OptTeamsAddOrUpdateMembershipForUserInOrgReq) Encode(e *jx.Encoder) {
+	o.Value.Encode(e)
+}
+
+// Decode decodes TeamsAddOrUpdateMembershipForUserInOrgReq from json.
+func (o *OptTeamsAddOrUpdateMembershipForUserInOrgReq) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptTeamsAddOrUpdateMembershipForUserInOrgReq to nil`)
+	}
+	switch d.Next() {
+	case jx.Object:
+		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptTeamsAddOrUpdateMembershipForUserInOrgReq`, d.Next())
+	}
+}
+
 // Encode encodes TeamsAddOrUpdateMembershipForUserInOrgReqRole as json.
 func (o OptTeamsAddOrUpdateMembershipForUserInOrgReqRole) Encode(e *jx.Encoder) {
 	e.Str(string(o.Value))
@@ -46068,6 +47036,28 @@ func (o *OptTeamsAddOrUpdateMembershipForUserInOrgReqRole) Decode(d *jx.Decoder)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptTeamsAddOrUpdateMembershipForUserInOrgReqRole`, d.Next())
+	}
+}
+
+// Encode encodes TeamsAddOrUpdateMembershipForUserLegacyReq as json.
+func (o OptTeamsAddOrUpdateMembershipForUserLegacyReq) Encode(e *jx.Encoder) {
+	o.Value.Encode(e)
+}
+
+// Decode decodes TeamsAddOrUpdateMembershipForUserLegacyReq from json.
+func (o *OptTeamsAddOrUpdateMembershipForUserLegacyReq) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptTeamsAddOrUpdateMembershipForUserLegacyReq to nil`)
+	}
+	switch d.Next() {
+	case jx.Object:
+		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptTeamsAddOrUpdateMembershipForUserLegacyReq`, d.Next())
 	}
 }
 
@@ -46095,6 +47085,28 @@ func (o *OptTeamsAddOrUpdateMembershipForUserLegacyReqRole) Decode(d *jx.Decoder
 	}
 }
 
+// Encode encodes TeamsAddOrUpdateProjectPermissionsInOrgReq as json.
+func (o OptTeamsAddOrUpdateProjectPermissionsInOrgReq) Encode(e *jx.Encoder) {
+	o.Value.Encode(e)
+}
+
+// Decode decodes TeamsAddOrUpdateProjectPermissionsInOrgReq from json.
+func (o *OptTeamsAddOrUpdateProjectPermissionsInOrgReq) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptTeamsAddOrUpdateProjectPermissionsInOrgReq to nil`)
+	}
+	switch d.Next() {
+	case jx.Object:
+		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptTeamsAddOrUpdateProjectPermissionsInOrgReq`, d.Next())
+	}
+}
+
 // Encode encodes TeamsAddOrUpdateProjectPermissionsInOrgReqPermission as json.
 func (o OptTeamsAddOrUpdateProjectPermissionsInOrgReqPermission) Encode(e *jx.Encoder) {
 	e.Str(string(o.Value))
@@ -46116,6 +47128,28 @@ func (o *OptTeamsAddOrUpdateProjectPermissionsInOrgReqPermission) Decode(d *jx.D
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptTeamsAddOrUpdateProjectPermissionsInOrgReqPermission`, d.Next())
+	}
+}
+
+// Encode encodes TeamsAddOrUpdateProjectPermissionsLegacyReq as json.
+func (o OptTeamsAddOrUpdateProjectPermissionsLegacyReq) Encode(e *jx.Encoder) {
+	o.Value.Encode(e)
+}
+
+// Decode decodes TeamsAddOrUpdateProjectPermissionsLegacyReq from json.
+func (o *OptTeamsAddOrUpdateProjectPermissionsLegacyReq) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptTeamsAddOrUpdateProjectPermissionsLegacyReq to nil`)
+	}
+	switch d.Next() {
+	case jx.Object:
+		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptTeamsAddOrUpdateProjectPermissionsLegacyReq`, d.Next())
 	}
 }
 
@@ -46143,6 +47177,28 @@ func (o *OptTeamsAddOrUpdateProjectPermissionsLegacyReqPermission) Decode(d *jx.
 	}
 }
 
+// Encode encodes TeamsAddOrUpdateRepoPermissionsInOrgReq as json.
+func (o OptTeamsAddOrUpdateRepoPermissionsInOrgReq) Encode(e *jx.Encoder) {
+	o.Value.Encode(e)
+}
+
+// Decode decodes TeamsAddOrUpdateRepoPermissionsInOrgReq from json.
+func (o *OptTeamsAddOrUpdateRepoPermissionsInOrgReq) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptTeamsAddOrUpdateRepoPermissionsInOrgReq to nil`)
+	}
+	switch d.Next() {
+	case jx.Object:
+		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptTeamsAddOrUpdateRepoPermissionsInOrgReq`, d.Next())
+	}
+}
+
 // Encode encodes TeamsAddOrUpdateRepoPermissionsInOrgReqPermission as json.
 func (o OptTeamsAddOrUpdateRepoPermissionsInOrgReqPermission) Encode(e *jx.Encoder) {
 	e.Str(string(o.Value))
@@ -46164,6 +47220,28 @@ func (o *OptTeamsAddOrUpdateRepoPermissionsInOrgReqPermission) Decode(d *jx.Deco
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptTeamsAddOrUpdateRepoPermissionsInOrgReqPermission`, d.Next())
+	}
+}
+
+// Encode encodes TeamsAddOrUpdateRepoPermissionsLegacyReq as json.
+func (o OptTeamsAddOrUpdateRepoPermissionsLegacyReq) Encode(e *jx.Encoder) {
+	o.Value.Encode(e)
+}
+
+// Decode decodes TeamsAddOrUpdateRepoPermissionsLegacyReq from json.
+func (o *OptTeamsAddOrUpdateRepoPermissionsLegacyReq) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptTeamsAddOrUpdateRepoPermissionsLegacyReq to nil`)
+	}
+	switch d.Next() {
+	case jx.Object:
+		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptTeamsAddOrUpdateRepoPermissionsLegacyReq`, d.Next())
 	}
 }
 
@@ -46383,6 +47461,72 @@ func (o *OptTeamsListMembersLegacyRole) Decode(d *jx.Decoder) error {
 	}
 }
 
+// Encode encodes TeamsUpdateDiscussionInOrgReq as json.
+func (o OptTeamsUpdateDiscussionInOrgReq) Encode(e *jx.Encoder) {
+	o.Value.Encode(e)
+}
+
+// Decode decodes TeamsUpdateDiscussionInOrgReq from json.
+func (o *OptTeamsUpdateDiscussionInOrgReq) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptTeamsUpdateDiscussionInOrgReq to nil`)
+	}
+	switch d.Next() {
+	case jx.Object:
+		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptTeamsUpdateDiscussionInOrgReq`, d.Next())
+	}
+}
+
+// Encode encodes TeamsUpdateDiscussionLegacyReq as json.
+func (o OptTeamsUpdateDiscussionLegacyReq) Encode(e *jx.Encoder) {
+	o.Value.Encode(e)
+}
+
+// Decode decodes TeamsUpdateDiscussionLegacyReq from json.
+func (o *OptTeamsUpdateDiscussionLegacyReq) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptTeamsUpdateDiscussionLegacyReq to nil`)
+	}
+	switch d.Next() {
+	case jx.Object:
+		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptTeamsUpdateDiscussionLegacyReq`, d.Next())
+	}
+}
+
+// Encode encodes TeamsUpdateInOrgReq as json.
+func (o OptTeamsUpdateInOrgReq) Encode(e *jx.Encoder) {
+	o.Value.Encode(e)
+}
+
+// Decode decodes TeamsUpdateInOrgReq from json.
+func (o *OptTeamsUpdateInOrgReq) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptTeamsUpdateInOrgReq to nil`)
+	}
+	switch d.Next() {
+	case jx.Object:
+		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptTeamsUpdateInOrgReq`, d.Next())
+	}
+}
+
 // Encode encodes TeamsUpdateInOrgReqPermission as json.
 func (o OptTeamsUpdateInOrgReqPermission) Encode(e *jx.Encoder) {
 	e.Str(string(o.Value))
@@ -46568,6 +47712,28 @@ func (o *OptURL) Decode(d *jx.Decoder) error {
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptURL`, d.Next())
+	}
+}
+
+// Encode encodes UsersUpdateAuthenticatedReq as json.
+func (o OptUsersUpdateAuthenticatedReq) Encode(e *jx.Encoder) {
+	o.Value.Encode(e)
+}
+
+// Decode decodes UsersUpdateAuthenticatedReq from json.
+func (o *OptUsersUpdateAuthenticatedReq) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptUsersUpdateAuthenticatedReq to nil`)
+	}
+	switch d.Next() {
+	case jx.Object:
+		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptUsersUpdateAuthenticatedReq`, d.Next())
 	}
 }
 

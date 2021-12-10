@@ -107,11 +107,11 @@ type Handler interface {
 	// MmdsPatch implements  operation.
 	//
 	// PATCH /mmds
-	MmdsPatch(ctx context.Context, req MmdsPatchReq) (MmdsPatchRes, error)
+	MmdsPatch(ctx context.Context, req OptMmdsPatchReq) (MmdsPatchRes, error)
 	// MmdsPut implements  operation.
 	//
 	// PUT /mmds
-	MmdsPut(ctx context.Context, req MmdsPutReq) (MmdsPutRes, error)
+	MmdsPut(ctx context.Context, req OptMmdsPutReq) (MmdsPutRes, error)
 	// PatchBalloon implements patchBalloon operation.
 	//
 	// PATCH /balloon
@@ -131,7 +131,7 @@ type Handler interface {
 	// PatchMachineConfiguration implements patchMachineConfiguration operation.
 	//
 	// PATCH /machine-config
-	PatchMachineConfiguration(ctx context.Context, req MachineConfiguration) (PatchMachineConfigurationRes, error)
+	PatchMachineConfiguration(ctx context.Context, req OptMachineConfiguration) (PatchMachineConfigurationRes, error)
 	// PatchVm implements patchVm operation.
 	//
 	// PATCH /vm
@@ -163,7 +163,7 @@ type Handler interface {
 	// PutMachineConfiguration implements putMachineConfiguration operation.
 	//
 	// PUT /machine-config
-	PutMachineConfiguration(ctx context.Context, req MachineConfiguration) (PutMachineConfigurationRes, error)
+	PutMachineConfiguration(ctx context.Context, req OptMachineConfiguration) (PutMachineConfigurationRes, error)
 	// PutMetrics implements putMetrics operation.
 	//
 	// PUT /metrics

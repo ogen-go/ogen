@@ -68,8 +68,12 @@ func decodeAddStickerToSetRequest(r *http.Request, span trace.Span) (req AddStic
 		var request AddStickerToSet
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
@@ -102,8 +106,12 @@ func decodeAnswerCallbackQueryRequest(r *http.Request, span trace.Span) (req Ans
 		var request AnswerCallbackQuery
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
@@ -136,8 +144,12 @@ func decodeAnswerInlineQueryRequest(r *http.Request, span trace.Span) (req Answe
 		var request AnswerInlineQuery
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
@@ -170,8 +182,12 @@ func decodeAnswerPreCheckoutQueryRequest(r *http.Request, span trace.Span) (req 
 		var request AnswerPreCheckoutQuery
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
@@ -196,8 +212,12 @@ func decodeAnswerShippingQueryRequest(r *http.Request, span trace.Span) (req Ans
 		var request AnswerShippingQuery
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
@@ -230,8 +250,12 @@ func decodeApproveChatJoinRequestRequest(r *http.Request, span trace.Span) (req 
 		var request ApproveChatJoinRequest
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
@@ -256,8 +280,12 @@ func decodeBanChatMemberRequest(r *http.Request, span trace.Span) (req BanChatMe
 		var request BanChatMember
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
@@ -282,8 +310,12 @@ func decodeCopyMessageRequest(r *http.Request, span trace.Span) (req CopyMessage
 		var request CopyMessage
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
@@ -316,8 +348,12 @@ func decodeCreateChatInviteLinkRequest(r *http.Request, span trace.Span) (req Cr
 		var request CreateChatInviteLink
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
@@ -350,8 +386,12 @@ func decodeCreateNewStickerSetRequest(r *http.Request, span trace.Span) (req Cre
 		var request CreateNewStickerSet
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
@@ -384,8 +424,12 @@ func decodeDeclineChatJoinRequestRequest(r *http.Request, span trace.Span) (req 
 		var request DeclineChatJoinRequest
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
@@ -410,8 +454,12 @@ func decodeDeleteChatPhotoRequest(r *http.Request, span trace.Span) (req DeleteC
 		var request DeleteChatPhoto
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
@@ -436,8 +484,12 @@ func decodeDeleteChatStickerSetRequest(r *http.Request, span trace.Span) (req De
 		var request DeleteChatStickerSet
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
@@ -462,8 +514,12 @@ func decodeDeleteMessageRequest(r *http.Request, span trace.Span) (req DeleteMes
 		var request DeleteMessage
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
@@ -488,8 +544,12 @@ func decodeDeleteMyCommandsRequest(r *http.Request, span trace.Span) (req Delete
 		var request DeleteMyCommands
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
@@ -514,8 +574,12 @@ func decodeDeleteStickerFromSetRequest(r *http.Request, span trace.Span) (req De
 		var request DeleteStickerFromSet
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
@@ -540,8 +604,12 @@ func decodeDeleteWebhookRequest(r *http.Request, span trace.Span) (req DeleteWeb
 		var request DeleteWebhook
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
@@ -566,8 +634,12 @@ func decodeEditChatInviteLinkRequest(r *http.Request, span trace.Span) (req Edit
 		var request EditChatInviteLink
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
@@ -600,8 +672,12 @@ func decodeEditMessageCaptionRequest(r *http.Request, span trace.Span) (req Edit
 		var request EditMessageCaption
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
@@ -634,8 +710,12 @@ func decodeEditMessageLiveLocationRequest(r *http.Request, span trace.Span) (req
 		var request EditMessageLiveLocation
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
@@ -668,8 +748,12 @@ func decodeEditMessageMediaRequest(r *http.Request, span trace.Span) (req EditMe
 		var request EditMessageMedia
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
@@ -702,8 +786,12 @@ func decodeEditMessageReplyMarkupRequest(r *http.Request, span trace.Span) (req 
 		var request EditMessageReplyMarkup
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
@@ -736,8 +824,12 @@ func decodeEditMessageTextRequest(r *http.Request, span trace.Span) (req EditMes
 		var request EditMessageText
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
@@ -770,8 +862,12 @@ func decodeExportChatInviteLinkRequest(r *http.Request, span trace.Span) (req Ex
 		var request ExportChatInviteLink
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
@@ -796,8 +892,12 @@ func decodeForwardMessageRequest(r *http.Request, span trace.Span) (req ForwardM
 		var request ForwardMessage
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
@@ -822,8 +922,12 @@ func decodeGetChatRequest(r *http.Request, span trace.Span) (req GetChat, err er
 		var request GetChat
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
@@ -848,8 +952,12 @@ func decodeGetChatAdministratorsRequest(r *http.Request, span trace.Span) (req G
 		var request GetChatAdministrators
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
@@ -874,8 +982,12 @@ func decodeGetChatMemberRequest(r *http.Request, span trace.Span) (req GetChatMe
 		var request GetChatMember
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
@@ -900,8 +1012,12 @@ func decodeGetChatMemberCountRequest(r *http.Request, span trace.Span) (req GetC
 		var request GetChatMemberCount
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
@@ -926,8 +1042,12 @@ func decodeGetFileRequest(r *http.Request, span trace.Span) (req GetFile, err er
 		var request GetFile
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
@@ -952,8 +1072,12 @@ func decodeGetGameHighScoresRequest(r *http.Request, span trace.Span) (req GetGa
 		var request GetGameHighScores
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
@@ -978,8 +1102,12 @@ func decodeGetMyCommandsRequest(r *http.Request, span trace.Span) (req GetMyComm
 		var request GetMyCommands
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
@@ -1004,8 +1132,12 @@ func decodeGetStickerSetRequest(r *http.Request, span trace.Span) (req GetSticke
 		var request GetStickerSet
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
@@ -1030,8 +1162,12 @@ func decodeGetUpdatesRequest(r *http.Request, span trace.Span) (req GetUpdates, 
 		var request GetUpdates
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
@@ -1064,8 +1200,12 @@ func decodeGetUserProfilePhotosRequest(r *http.Request, span trace.Span) (req Ge
 		var request GetUserProfilePhotos
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
@@ -1098,8 +1238,12 @@ func decodeLeaveChatRequest(r *http.Request, span trace.Span) (req LeaveChat, er
 		var request LeaveChat
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
@@ -1124,8 +1268,12 @@ func decodePinChatMessageRequest(r *http.Request, span trace.Span) (req PinChatM
 		var request PinChatMessage
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
@@ -1150,8 +1298,12 @@ func decodePromoteChatMemberRequest(r *http.Request, span trace.Span) (req Promo
 		var request PromoteChatMember
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
@@ -1176,8 +1328,12 @@ func decodeRestrictChatMemberRequest(r *http.Request, span trace.Span) (req Rest
 		var request RestrictChatMember
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
@@ -1202,8 +1358,12 @@ func decodeRevokeChatInviteLinkRequest(r *http.Request, span trace.Span) (req Re
 		var request RevokeChatInviteLink
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
@@ -1228,8 +1388,12 @@ func decodeSendAnimationRequest(r *http.Request, span trace.Span) (req SendAnima
 		var request SendAnimation
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
@@ -1262,8 +1426,12 @@ func decodeSendAudioRequest(r *http.Request, span trace.Span) (req SendAudio, er
 		var request SendAudio
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
@@ -1296,8 +1464,12 @@ func decodeSendChatActionRequest(r *http.Request, span trace.Span) (req SendChat
 		var request SendChatAction
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
@@ -1322,8 +1494,12 @@ func decodeSendContactRequest(r *http.Request, span trace.Span) (req SendContact
 		var request SendContact
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
@@ -1356,8 +1532,12 @@ func decodeSendDiceRequest(r *http.Request, span trace.Span) (req SendDice, err 
 		var request SendDice
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
@@ -1390,8 +1570,12 @@ func decodeSendDocumentRequest(r *http.Request, span trace.Span) (req SendDocume
 		var request SendDocument
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
@@ -1424,8 +1608,12 @@ func decodeSendGameRequest(r *http.Request, span trace.Span) (req SendGame, err 
 		var request SendGame
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
@@ -1458,8 +1646,12 @@ func decodeSendInvoiceRequest(r *http.Request, span trace.Span) (req SendInvoice
 		var request SendInvoice
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
@@ -1492,8 +1684,12 @@ func decodeSendLocationRequest(r *http.Request, span trace.Span) (req SendLocati
 		var request SendLocation
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
@@ -1526,8 +1722,12 @@ func decodeSendMediaGroupRequest(r *http.Request, span trace.Span) (req SendMedi
 		var request SendMediaGroup
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
@@ -1560,8 +1760,12 @@ func decodeSendMessageRequest(r *http.Request, span trace.Span) (req SendMessage
 		var request SendMessage
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
@@ -1594,8 +1798,12 @@ func decodeSendPhotoRequest(r *http.Request, span trace.Span) (req SendPhoto, er
 		var request SendPhoto
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
@@ -1628,8 +1836,12 @@ func decodeSendPollRequest(r *http.Request, span trace.Span) (req SendPoll, err 
 		var request SendPoll
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
@@ -1662,8 +1874,12 @@ func decodeSendStickerRequest(r *http.Request, span trace.Span) (req SendSticker
 		var request SendSticker
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
@@ -1696,8 +1912,12 @@ func decodeSendVenueRequest(r *http.Request, span trace.Span) (req SendVenue, er
 		var request SendVenue
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
@@ -1730,8 +1950,12 @@ func decodeSendVideoRequest(r *http.Request, span trace.Span) (req SendVideo, er
 		var request SendVideo
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
@@ -1764,8 +1988,12 @@ func decodeSendVideoNoteRequest(r *http.Request, span trace.Span) (req SendVideo
 		var request SendVideoNote
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
@@ -1798,8 +2026,12 @@ func decodeSendVoiceRequest(r *http.Request, span trace.Span) (req SendVoice, er
 		var request SendVoice
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
@@ -1832,8 +2064,12 @@ func decodeSetChatAdministratorCustomTitleRequest(r *http.Request, span trace.Sp
 		var request SetChatAdministratorCustomTitle
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
@@ -1866,8 +2102,12 @@ func decodeSetChatDescriptionRequest(r *http.Request, span trace.Span) (req SetC
 		var request SetChatDescription
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
@@ -1900,8 +2140,12 @@ func decodeSetChatPermissionsRequest(r *http.Request, span trace.Span) (req SetC
 		var request SetChatPermissions
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
@@ -1926,8 +2170,12 @@ func decodeSetChatPhotoRequest(r *http.Request, span trace.Span) (req SetChatPho
 		var request SetChatPhoto
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
@@ -1952,8 +2200,12 @@ func decodeSetChatStickerSetRequest(r *http.Request, span trace.Span) (req SetCh
 		var request SetChatStickerSet
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
@@ -1978,8 +2230,12 @@ func decodeSetChatTitleRequest(r *http.Request, span trace.Span) (req SetChatTit
 		var request SetChatTitle
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
@@ -2012,8 +2268,12 @@ func decodeSetGameScoreRequest(r *http.Request, span trace.Span) (req SetGameSco
 		var request SetGameScore
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
@@ -2038,8 +2298,12 @@ func decodeSetMyCommandsRequest(r *http.Request, span trace.Span) (req SetMyComm
 		var request SetMyCommands
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
@@ -2072,8 +2336,12 @@ func decodeSetPassportDataErrorsRequest(r *http.Request, span trace.Span) (req S
 		var request SetPassportDataErrors
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
@@ -2106,8 +2374,12 @@ func decodeSetStickerPositionInSetRequest(r *http.Request, span trace.Span) (req
 		var request SetStickerPositionInSet
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
@@ -2132,8 +2404,12 @@ func decodeSetStickerSetThumbRequest(r *http.Request, span trace.Span) (req SetS
 		var request SetStickerSetThumb
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
@@ -2158,8 +2434,12 @@ func decodeSetWebhookRequest(r *http.Request, span trace.Span) (req SetWebhook, 
 		var request SetWebhook
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
@@ -2184,8 +2464,12 @@ func decodeStopMessageLiveLocationRequest(r *http.Request, span trace.Span) (req
 		var request StopMessageLiveLocation
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
@@ -2218,8 +2502,12 @@ func decodeStopPollRequest(r *http.Request, span trace.Span) (req StopPoll, err 
 		var request StopPoll
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
@@ -2252,8 +2540,12 @@ func decodeUnbanChatMemberRequest(r *http.Request, span trace.Span) (req UnbanCh
 		var request UnbanChatMember
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
@@ -2278,8 +2570,12 @@ func decodeUnpinAllChatMessagesRequest(r *http.Request, span trace.Span) (req Un
 		var request UnpinAllChatMessages
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
@@ -2304,8 +2600,12 @@ func decodeUnpinChatMessageRequest(r *http.Request, span trace.Span) (req UnpinC
 		var request UnpinChatMessage
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
@@ -2330,8 +2630,12 @@ func decodeUploadStickerFileRequest(r *http.Request, span trace.Span) (req Uploa
 		var request UploadStickerFile
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)

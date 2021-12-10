@@ -5781,7 +5781,7 @@ func (c *Client) ActionsRetryWorkflow(ctx context.Context, params ActionsRetryWo
 // ActionsSetAllowedActionsOrganization invokes actions/set-allowed-actions-organization operation.
 //
 // PUT /orgs/{org}/actions/permissions/selected-actions
-func (c *Client) ActionsSetAllowedActionsOrganization(ctx context.Context, request SelectedActions, params ActionsSetAllowedActionsOrganizationParams) (res ActionsSetAllowedActionsOrganizationNoContent, err error) {
+func (c *Client) ActionsSetAllowedActionsOrganization(ctx context.Context, request OptSelectedActions, params ActionsSetAllowedActionsOrganizationParams) (res ActionsSetAllowedActionsOrganizationNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsSetAllowedActionsOrganization`,
 		trace.WithAttributes(otelogen.OperationID(`actions/set-allowed-actions-organization`)),
@@ -5850,7 +5850,7 @@ func (c *Client) ActionsSetAllowedActionsOrganization(ctx context.Context, reque
 // ActionsSetAllowedActionsRepository invokes actions/set-allowed-actions-repository operation.
 //
 // PUT /repos/{owner}/{repo}/actions/permissions/selected-actions
-func (c *Client) ActionsSetAllowedActionsRepository(ctx context.Context, request SelectedActions, params ActionsSetAllowedActionsRepositoryParams) (res ActionsSetAllowedActionsRepositoryNoContent, err error) {
+func (c *Client) ActionsSetAllowedActionsRepository(ctx context.Context, request OptSelectedActions, params ActionsSetAllowedActionsRepositoryParams) (res ActionsSetAllowedActionsRepositoryNoContent, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsSetAllowedActionsRepository`,
 		trace.WithAttributes(otelogen.OperationID(`actions/set-allowed-actions-repository`)),
@@ -8345,7 +8345,7 @@ func (c *Client) ActivityListWatchersForRepo(ctx context.Context, params Activit
 // ActivityMarkNotificationsAsRead invokes activity/mark-notifications-as-read operation.
 //
 // PUT /notifications
-func (c *Client) ActivityMarkNotificationsAsRead(ctx context.Context, request ActivityMarkNotificationsAsReadReq) (res ActivityMarkNotificationsAsReadRes, err error) {
+func (c *Client) ActivityMarkNotificationsAsRead(ctx context.Context, request OptActivityMarkNotificationsAsReadReq) (res ActivityMarkNotificationsAsReadRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActivityMarkNotificationsAsRead`,
 		trace.WithAttributes(otelogen.OperationID(`activity/mark-notifications-as-read`)),
@@ -8399,7 +8399,7 @@ func (c *Client) ActivityMarkNotificationsAsRead(ctx context.Context, request Ac
 // ActivityMarkRepoNotificationsAsRead invokes activity/mark-repo-notifications-as-read operation.
 //
 // PUT /repos/{owner}/{repo}/notifications
-func (c *Client) ActivityMarkRepoNotificationsAsRead(ctx context.Context, request ActivityMarkRepoNotificationsAsReadReq, params ActivityMarkRepoNotificationsAsReadParams) (res ActivityMarkRepoNotificationsAsReadRes, err error) {
+func (c *Client) ActivityMarkRepoNotificationsAsRead(ctx context.Context, request OptActivityMarkRepoNotificationsAsReadReq, params ActivityMarkRepoNotificationsAsReadParams) (res ActivityMarkRepoNotificationsAsReadRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActivityMarkRepoNotificationsAsRead`,
 		trace.WithAttributes(otelogen.OperationID(`activity/mark-repo-notifications-as-read`)),
@@ -8537,7 +8537,7 @@ func (c *Client) ActivityMarkThreadAsRead(ctx context.Context, params ActivityMa
 // ActivitySetRepoSubscription invokes activity/set-repo-subscription operation.
 //
 // PUT /repos/{owner}/{repo}/subscription
-func (c *Client) ActivitySetRepoSubscription(ctx context.Context, request ActivitySetRepoSubscriptionReq, params ActivitySetRepoSubscriptionParams) (res RepositorySubscription, err error) {
+func (c *Client) ActivitySetRepoSubscription(ctx context.Context, request OptActivitySetRepoSubscriptionReq, params ActivitySetRepoSubscriptionParams) (res RepositorySubscription, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActivitySetRepoSubscription`,
 		trace.WithAttributes(otelogen.OperationID(`activity/set-repo-subscription`)),
@@ -8621,7 +8621,7 @@ func (c *Client) ActivitySetRepoSubscription(ctx context.Context, request Activi
 // ActivitySetThreadSubscription invokes activity/set-thread-subscription operation.
 //
 // PUT /notifications/threads/{thread_id}/subscription
-func (c *Client) ActivitySetThreadSubscription(ctx context.Context, request ActivitySetThreadSubscriptionReq, params ActivitySetThreadSubscriptionParams) (res ActivitySetThreadSubscriptionRes, err error) {
+func (c *Client) ActivitySetThreadSubscription(ctx context.Context, request OptActivitySetThreadSubscriptionReq, params ActivitySetThreadSubscriptionParams) (res ActivitySetThreadSubscriptionRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ActivitySetThreadSubscription`,
 		trace.WithAttributes(otelogen.OperationID(`activity/set-thread-subscription`)),
@@ -9999,11 +9999,19 @@ func (c *Client) AppsUnsuspendInstallation(ctx context.Context, params AppsUnsus
 // AppsUpdateWebhookConfigForApp invokes apps/update-webhook-config-for-app operation.
 //
 // PATCH /app/hook/config
-func (c *Client) AppsUpdateWebhookConfigForApp(ctx context.Context, request AppsUpdateWebhookConfigForAppReq) (res WebhookConfig, err error) {
+func (c *Client) AppsUpdateWebhookConfigForApp(ctx context.Context, request OptAppsUpdateWebhookConfigForAppReq) (res WebhookConfig, err error) {
 	if err := func() error {
-		if err := request.Validate(); err != nil {
-			return err
+		if request.Set {
+			if err := func() error {
+				if err := request.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
 		}
+		return nil
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
@@ -15904,11 +15912,19 @@ func (c *Client) EnterpriseAdminUpdateAttributeForEnterpriseUser(ctx context.Con
 // EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise invokes enterprise-admin/update-self-hosted-runner-group-for-enterprise operation.
 //
 // PATCH /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}
-func (c *Client) EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise(ctx context.Context, request EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq, params EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams) (res RunnerGroupsEnterprise, err error) {
+func (c *Client) EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise(ctx context.Context, request OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq, params EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams) (res RunnerGroupsEnterprise, err error) {
 	if err := func() error {
-		if err := request.Validate(); err != nil {
-			return err
+		if request.Set {
+			if err := func() error {
+				if err := request.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
 		}
+		return nil
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
@@ -17748,7 +17764,7 @@ func (c *Client) InteractionsSetRestrictionsForRepo(ctx context.Context, request
 // IssuesAddAssignees invokes issues/add-assignees operation.
 //
 // POST /repos/{owner}/{repo}/issues/{issue_number}/assignees
-func (c *Client) IssuesAddAssignees(ctx context.Context, request IssuesAddAssigneesReq, params IssuesAddAssigneesParams) (res IssueSimple, err error) {
+func (c *Client) IssuesAddAssignees(ctx context.Context, request OptIssuesAddAssigneesReq, params IssuesAddAssigneesParams) (res IssueSimple, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `IssuesAddAssignees`,
 		trace.WithAttributes(otelogen.OperationID(`issues/add-assignees`)),
@@ -19343,7 +19359,7 @@ func (c *Client) IssuesRemoveAllLabels(ctx context.Context, params IssuesRemoveA
 // IssuesRemoveAssignees invokes issues/remove-assignees operation.
 //
 // DELETE /repos/{owner}/{repo}/issues/{issue_number}/assignees
-func (c *Client) IssuesRemoveAssignees(ctx context.Context, request IssuesRemoveAssigneesReq, params IssuesRemoveAssigneesParams) (res IssueSimple, err error) {
+func (c *Client) IssuesRemoveAssignees(ctx context.Context, request OptIssuesRemoveAssigneesReq, params IssuesRemoveAssigneesParams) (res IssueSimple, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `IssuesRemoveAssignees`,
 		trace.WithAttributes(otelogen.OperationID(`issues/remove-assignees`)),
@@ -19626,7 +19642,7 @@ func (c *Client) IssuesUnlock(ctx context.Context, params IssuesUnlockParams) (r
 // IssuesUpdateLabel invokes issues/update-label operation.
 //
 // PATCH /repos/{owner}/{repo}/labels/{name}
-func (c *Client) IssuesUpdateLabel(ctx context.Context, request IssuesUpdateLabelReq, params IssuesUpdateLabelParams) (res Label, err error) {
+func (c *Client) IssuesUpdateLabel(ctx context.Context, request OptIssuesUpdateLabelReq, params IssuesUpdateLabelParams) (res Label, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `IssuesUpdateLabel`,
 		trace.WithAttributes(otelogen.OperationID(`issues/update-label`)),
@@ -19724,11 +19740,19 @@ func (c *Client) IssuesUpdateLabel(ctx context.Context, request IssuesUpdateLabe
 // IssuesUpdateMilestone invokes issues/update-milestone operation.
 //
 // PATCH /repos/{owner}/{repo}/milestones/{milestone_number}
-func (c *Client) IssuesUpdateMilestone(ctx context.Context, request IssuesUpdateMilestoneReq, params IssuesUpdateMilestoneParams) (res Milestone, err error) {
+func (c *Client) IssuesUpdateMilestone(ctx context.Context, request OptIssuesUpdateMilestoneReq, params IssuesUpdateMilestoneParams) (res Milestone, err error) {
 	if err := func() error {
-		if err := request.Validate(); err != nil {
-			return err
+		if request.Set {
+			if err := func() error {
+				if err := request.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
 		}
+		return nil
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
@@ -21384,7 +21408,7 @@ func (c *Client) MigrationsUnlockRepoForOrg(ctx context.Context, params Migratio
 // MigrationsUpdateImport invokes migrations/update-import operation.
 //
 // PATCH /repos/{owner}/{repo}/import
-func (c *Client) MigrationsUpdateImport(ctx context.Context, request MigrationsUpdateImportReq, params MigrationsUpdateImportParams) (res Import, err error) {
+func (c *Client) MigrationsUpdateImport(ctx context.Context, request OptMigrationsUpdateImportReq, params MigrationsUpdateImportParams) (res Import, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `MigrationsUpdateImport`,
 		trace.WithAttributes(otelogen.OperationID(`migrations/update-import`)),
@@ -24171,11 +24195,19 @@ func (c *Client) OrgsUnblockUser(ctx context.Context, params OrgsUnblockUserPara
 // OrgsUpdateWebhookConfigForOrg invokes orgs/update-webhook-config-for-org operation.
 //
 // PATCH /orgs/{org}/hooks/{hook_id}/config
-func (c *Client) OrgsUpdateWebhookConfigForOrg(ctx context.Context, request OrgsUpdateWebhookConfigForOrgReq, params OrgsUpdateWebhookConfigForOrgParams) (res WebhookConfig, err error) {
+func (c *Client) OrgsUpdateWebhookConfigForOrg(ctx context.Context, request OptOrgsUpdateWebhookConfigForOrgReq, params OrgsUpdateWebhookConfigForOrgParams) (res WebhookConfig, err error) {
 	if err := func() error {
-		if err := request.Validate(); err != nil {
-			return err
+		if request.Set {
+			if err := func() error {
+				if err := request.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
 		}
+		return nil
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
@@ -27571,11 +27603,19 @@ func (c *Client) ProjectsMoveColumn(ctx context.Context, request ProjectsMoveCol
 // ProjectsUpdate invokes projects/update operation.
 //
 // PATCH /projects/{project_id}
-func (c *Client) ProjectsUpdate(ctx context.Context, request ProjectsUpdateReq, params ProjectsUpdateParams) (res ProjectsUpdateRes, err error) {
+func (c *Client) ProjectsUpdate(ctx context.Context, request OptProjectsUpdateReq, params ProjectsUpdateParams) (res ProjectsUpdateRes, err error) {
 	if err := func() error {
-		if err := request.Validate(); err != nil {
-			return err
+		if request.Set {
+			if err := func() error {
+				if err := request.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
 		}
+		return nil
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
@@ -27647,7 +27687,7 @@ func (c *Client) ProjectsUpdate(ctx context.Context, request ProjectsUpdateReq, 
 // ProjectsUpdateCard invokes projects/update-card operation.
 //
 // PATCH /projects/columns/cards/{card_id}
-func (c *Client) ProjectsUpdateCard(ctx context.Context, request ProjectsUpdateCardReq, params ProjectsUpdateCardParams) (res ProjectsUpdateCardRes, err error) {
+func (c *Client) ProjectsUpdateCard(ctx context.Context, request OptProjectsUpdateCardReq, params ProjectsUpdateCardParams) (res ProjectsUpdateCardRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ProjectsUpdateCard`,
 		trace.WithAttributes(otelogen.OperationID(`projects/update-card`)),
@@ -27982,11 +28022,19 @@ func (c *Client) PullsCreateReplyForReviewComment(ctx context.Context, request P
 // PullsCreateReview invokes pulls/create-review operation.
 //
 // POST /repos/{owner}/{repo}/pulls/{pull_number}/reviews
-func (c *Client) PullsCreateReview(ctx context.Context, request PullsCreateReviewReq, params PullsCreateReviewParams) (res PullsCreateReviewRes, err error) {
+func (c *Client) PullsCreateReview(ctx context.Context, request OptPullsCreateReviewReq, params PullsCreateReviewParams) (res PullsCreateReviewRes, err error) {
 	if err := func() error {
-		if err := request.Validate(); err != nil {
-			return err
+		if request.Set {
+			if err := func() error {
+				if err := request.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
 		}
+		return nil
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
@@ -41280,11 +41328,19 @@ func (c *Client) ReposUpdateCommitComment(ctx context.Context, request ReposUpda
 // ReposUpdateInvitation invokes repos/update-invitation operation.
 //
 // PATCH /repos/{owner}/{repo}/invitations/{invitation_id}
-func (c *Client) ReposUpdateInvitation(ctx context.Context, request ReposUpdateInvitationReq, params ReposUpdateInvitationParams) (res RepositoryInvitation, err error) {
+func (c *Client) ReposUpdateInvitation(ctx context.Context, request OptReposUpdateInvitationReq, params ReposUpdateInvitationParams) (res RepositoryInvitation, err error) {
 	if err := func() error {
-		if err := request.Validate(); err != nil {
-			return err
+		if request.Set {
+			if err := func() error {
+				if err := request.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
 		}
+		return nil
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
@@ -41386,7 +41442,7 @@ func (c *Client) ReposUpdateInvitation(ctx context.Context, request ReposUpdateI
 // ReposUpdateRelease invokes repos/update-release operation.
 //
 // PATCH /repos/{owner}/{repo}/releases/{release_id}
-func (c *Client) ReposUpdateRelease(ctx context.Context, request ReposUpdateReleaseReq, params ReposUpdateReleaseParams) (res ReposUpdateReleaseRes, err error) {
+func (c *Client) ReposUpdateRelease(ctx context.Context, request OptReposUpdateReleaseReq, params ReposUpdateReleaseParams) (res ReposUpdateReleaseRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposUpdateRelease`,
 		trace.WithAttributes(otelogen.OperationID(`repos/update-release`)),
@@ -41484,7 +41540,7 @@ func (c *Client) ReposUpdateRelease(ctx context.Context, request ReposUpdateRele
 // ReposUpdateReleaseAsset invokes repos/update-release-asset operation.
 //
 // PATCH /repos/{owner}/{repo}/releases/assets/{asset_id}
-func (c *Client) ReposUpdateReleaseAsset(ctx context.Context, request ReposUpdateReleaseAssetReq, params ReposUpdateReleaseAssetParams) (res ReleaseAsset, err error) {
+func (c *Client) ReposUpdateReleaseAsset(ctx context.Context, request OptReposUpdateReleaseAssetReq, params ReposUpdateReleaseAssetParams) (res ReleaseAsset, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposUpdateReleaseAsset`,
 		trace.WithAttributes(otelogen.OperationID(`repos/update-release-asset`)),
@@ -41582,11 +41638,19 @@ func (c *Client) ReposUpdateReleaseAsset(ctx context.Context, request ReposUpdat
 // ReposUpdateWebhookConfigForRepo invokes repos/update-webhook-config-for-repo operation.
 //
 // PATCH /repos/{owner}/{repo}/hooks/{hook_id}/config
-func (c *Client) ReposUpdateWebhookConfigForRepo(ctx context.Context, request ReposUpdateWebhookConfigForRepoReq, params ReposUpdateWebhookConfigForRepoParams) (res WebhookConfig, err error) {
+func (c *Client) ReposUpdateWebhookConfigForRepo(ctx context.Context, request OptReposUpdateWebhookConfigForRepoReq, params ReposUpdateWebhookConfigForRepoParams) (res WebhookConfig, err error) {
 	if err := func() error {
-		if err := request.Validate(); err != nil {
-			return err
+		if request.Set {
+			if err := func() error {
+				if err := request.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
 		}
+		return nil
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
@@ -42490,11 +42554,19 @@ func (c *Client) TeamsAddMemberLegacy(ctx context.Context, params TeamsAddMember
 // TeamsAddOrUpdateMembershipForUserInOrg invokes teams/add-or-update-membership-for-user-in-org operation.
 //
 // PUT /orgs/{org}/teams/{team_slug}/memberships/{username}
-func (c *Client) TeamsAddOrUpdateMembershipForUserInOrg(ctx context.Context, request TeamsAddOrUpdateMembershipForUserInOrgReq, params TeamsAddOrUpdateMembershipForUserInOrgParams) (res TeamsAddOrUpdateMembershipForUserInOrgRes, err error) {
+func (c *Client) TeamsAddOrUpdateMembershipForUserInOrg(ctx context.Context, request OptTeamsAddOrUpdateMembershipForUserInOrgReq, params TeamsAddOrUpdateMembershipForUserInOrgParams) (res TeamsAddOrUpdateMembershipForUserInOrgRes, err error) {
 	if err := func() error {
-		if err := request.Validate(); err != nil {
-			return err
+		if request.Set {
+			if err := func() error {
+				if err := request.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
 		}
+		return nil
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
@@ -42596,11 +42668,19 @@ func (c *Client) TeamsAddOrUpdateMembershipForUserInOrg(ctx context.Context, req
 // TeamsAddOrUpdateMembershipForUserLegacy invokes teams/add-or-update-membership-for-user-legacy operation.
 //
 // PUT /teams/{team_id}/memberships/{username}
-func (c *Client) TeamsAddOrUpdateMembershipForUserLegacy(ctx context.Context, request TeamsAddOrUpdateMembershipForUserLegacyReq, params TeamsAddOrUpdateMembershipForUserLegacyParams) (res TeamsAddOrUpdateMembershipForUserLegacyRes, err error) {
+func (c *Client) TeamsAddOrUpdateMembershipForUserLegacy(ctx context.Context, request OptTeamsAddOrUpdateMembershipForUserLegacyReq, params TeamsAddOrUpdateMembershipForUserLegacyParams) (res TeamsAddOrUpdateMembershipForUserLegacyRes, err error) {
 	if err := func() error {
-		if err := request.Validate(); err != nil {
-			return err
+		if request.Set {
+			if err := func() error {
+				if err := request.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
 		}
+		return nil
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
@@ -42687,11 +42767,19 @@ func (c *Client) TeamsAddOrUpdateMembershipForUserLegacy(ctx context.Context, re
 // TeamsAddOrUpdateProjectPermissionsInOrg invokes teams/add-or-update-project-permissions-in-org operation.
 //
 // PUT /orgs/{org}/teams/{team_slug}/projects/{project_id}
-func (c *Client) TeamsAddOrUpdateProjectPermissionsInOrg(ctx context.Context, request TeamsAddOrUpdateProjectPermissionsInOrgReq, params TeamsAddOrUpdateProjectPermissionsInOrgParams) (res TeamsAddOrUpdateProjectPermissionsInOrgRes, err error) {
+func (c *Client) TeamsAddOrUpdateProjectPermissionsInOrg(ctx context.Context, request OptTeamsAddOrUpdateProjectPermissionsInOrgReq, params TeamsAddOrUpdateProjectPermissionsInOrgParams) (res TeamsAddOrUpdateProjectPermissionsInOrgRes, err error) {
 	if err := func() error {
-		if err := request.Validate(); err != nil {
-			return err
+		if request.Set {
+			if err := func() error {
+				if err := request.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
 		}
+		return nil
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
@@ -42793,11 +42881,19 @@ func (c *Client) TeamsAddOrUpdateProjectPermissionsInOrg(ctx context.Context, re
 // TeamsAddOrUpdateRepoPermissionsInOrg invokes teams/add-or-update-repo-permissions-in-org operation.
 //
 // PUT /orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}
-func (c *Client) TeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, request TeamsAddOrUpdateRepoPermissionsInOrgReq, params TeamsAddOrUpdateRepoPermissionsInOrgParams) (res TeamsAddOrUpdateRepoPermissionsInOrgNoContent, err error) {
+func (c *Client) TeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, request OptTeamsAddOrUpdateRepoPermissionsInOrgReq, params TeamsAddOrUpdateRepoPermissionsInOrgParams) (res TeamsAddOrUpdateRepoPermissionsInOrgNoContent, err error) {
 	if err := func() error {
-		if err := request.Validate(); err != nil {
-			return err
+		if request.Set {
+			if err := func() error {
+				if err := request.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
 		}
+		return nil
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
@@ -47253,7 +47349,7 @@ func (c *Client) TeamsUpdateDiscussionCommentLegacy(ctx context.Context, request
 // TeamsUpdateDiscussionInOrg invokes teams/update-discussion-in-org operation.
 //
 // PATCH /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}
-func (c *Client) TeamsUpdateDiscussionInOrg(ctx context.Context, request TeamsUpdateDiscussionInOrgReq, params TeamsUpdateDiscussionInOrgParams) (res TeamDiscussion, err error) {
+func (c *Client) TeamsUpdateDiscussionInOrg(ctx context.Context, request OptTeamsUpdateDiscussionInOrgReq, params TeamsUpdateDiscussionInOrgParams) (res TeamDiscussion, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsUpdateDiscussionInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/update-discussion-in-org`)),
@@ -47351,7 +47447,7 @@ func (c *Client) TeamsUpdateDiscussionInOrg(ctx context.Context, request TeamsUp
 // TeamsUpdateDiscussionLegacy invokes teams/update-discussion-legacy operation.
 //
 // PATCH /teams/{team_id}/discussions/{discussion_number}
-func (c *Client) TeamsUpdateDiscussionLegacy(ctx context.Context, request TeamsUpdateDiscussionLegacyReq, params TeamsUpdateDiscussionLegacyParams) (res TeamDiscussion, err error) {
+func (c *Client) TeamsUpdateDiscussionLegacy(ctx context.Context, request OptTeamsUpdateDiscussionLegacyReq, params TeamsUpdateDiscussionLegacyParams) (res TeamDiscussion, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsUpdateDiscussionLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/update-discussion-legacy`)),
@@ -47434,11 +47530,19 @@ func (c *Client) TeamsUpdateDiscussionLegacy(ctx context.Context, request TeamsU
 // TeamsUpdateInOrg invokes teams/update-in-org operation.
 //
 // PATCH /orgs/{org}/teams/{team_slug}
-func (c *Client) TeamsUpdateInOrg(ctx context.Context, request TeamsUpdateInOrgReq, params TeamsUpdateInOrgParams) (res TeamFull, err error) {
+func (c *Client) TeamsUpdateInOrg(ctx context.Context, request OptTeamsUpdateInOrgReq, params TeamsUpdateInOrgParams) (res TeamFull, err error) {
 	if err := func() error {
-		if err := request.Validate(); err != nil {
-			return err
+		if request.Set {
+			if err := func() error {
+				if err := request.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
 		}
+		return nil
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
