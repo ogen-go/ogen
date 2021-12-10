@@ -15,11 +15,20 @@ func decode{{ $op.Name }}Request(r *http.Request, span trace.Span) (req {{ $op.R
 		return {{ $op.Request.Type.Go }}{Data: r.Body}, nil
 		{{- /* Decode json */ -}}
 		{{- else if $contentType.JSON }}
+		{{- if $t.GenericVariant.Optional }}
+        if r.ContentLength == 0 {
+			return req, nil
+		}
+        {{- end }}
 		var request {{ $t.Go }}
 		buf := getBuf()
 		defer putBuf(buf)
-		if _, err := io.Copy(buf, r.Body); err != nil {
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
 			return req, err
+		}
+		if written == 0 {
+			return req, nil
 		}
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)

@@ -38,7 +38,6 @@ type Parameter struct {
 type Request struct {
 	Type     *Type
 	Contents map[ContentType]*Type
-	Required bool
 	Spec     *oas.RequestBody
 }
 
