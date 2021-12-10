@@ -26,7 +26,7 @@ type schemaGen struct {
 //
 // If ogen.Schema contains references to schema components,
 // these referenced schemas will be saved in g.localRefs.
-func (g *schemaGen) Generate(schema ogen.Schema) (*oas.Schema, error) {
+func (g *schemaGen) Generate(schema *ogen.Schema) (*oas.Schema, error) {
 	s, err := g.generate(schema, "")
 	if err != nil {
 		return nil, errors.Wrap(err, "gen")
@@ -35,7 +35,7 @@ func (g *schemaGen) Generate(schema ogen.Schema) (*oas.Schema, error) {
 	return s, nil
 }
 
-func (g *schemaGen) generate(schema ogen.Schema, ref string) (*oas.Schema, error) {
+func (g *schemaGen) generate(schema *ogen.Schema, ref string) (*oas.Schema, error) {
 	if ref := schema.Ref; ref != "" {
 		s, err := g.ref(ref)
 		if err != nil {
@@ -164,7 +164,7 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*oas.Schema, error
 			return nil, errors.New("array cannot contain properties")
 		}
 
-		item, err := g.generate(*schema.Items, "")
+		item, err := g.generate(schema.Items, "")
 		if err != nil {
 			return nil, errors.Wrap(err, "item")
 		}

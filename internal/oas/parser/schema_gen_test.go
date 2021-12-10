@@ -14,16 +14,16 @@ func TestSchemaSimple(t *testing.T) {
 		localRefs: make(map[string]*oas.Schema),
 	}
 
-	out, err := gen.Generate(ogen.Schema{
+	out, err := gen.Generate(&ogen.Schema{
 		Type: "object",
 		Properties: []ogen.Property{
 			{
 				Name:   "id",
-				Schema: ogen.Schema{Type: "integer"},
+				Schema: &ogen.Schema{Type: "integer"},
 			},
 			{
 				Name:   "name",
-				Schema: ogen.Schema{Type: "string"},
+				Schema: &ogen.Schema{Type: "string"},
 			},
 		},
 		Required: []string{"id", "name"},
@@ -52,21 +52,21 @@ func TestSchemaSimple(t *testing.T) {
 func TestSchemaRecursive(t *testing.T) {
 	spec := &ogen.Spec{
 		Components: &ogen.Components{
-			Schemas: map[string]ogen.Schema{
+			Schemas: map[string]*ogen.Schema{
 				"Pet": {
 					Type: "object",
 					Properties: []ogen.Property{
 						{
 							Name:   "id",
-							Schema: ogen.Schema{Type: "integer"},
+							Schema: &ogen.Schema{Type: "integer"},
 						},
 						{
 							Name:   "name",
-							Schema: ogen.Schema{Type: "string"},
+							Schema: &ogen.Schema{Type: "string"},
 						},
 						{
 							Name: "friends",
-							Schema: ogen.Schema{
+							Schema: &ogen.Schema{
 								Type: "array",
 								Items: &ogen.Schema{
 									Ref: "#/components/schemas/Pet",
@@ -137,7 +137,7 @@ func TestSchemaRecursive(t *testing.T) {
 		localRefs: make(map[string]*oas.Schema),
 	}
 
-	out, err := gen.Generate(ogen.Schema{
+	out, err := gen.Generate(&ogen.Schema{
 		Ref: "#/components/schemas/Pet",
 	})
 	require.NoError(t, err)
@@ -189,29 +189,29 @@ func TestSchemaSideEffects(t *testing.T) {
 		localRefs: make(map[string]*oas.Schema),
 	}
 
-	out, err := gen.Generate(ogen.Schema{
+	out, err := gen.Generate(&ogen.Schema{
 		Type: "object",
 		Properties: []ogen.Property{
 			{
 				Name:   "name",
-				Schema: ogen.Schema{Type: "string"},
+				Schema: &ogen.Schema{Type: "string"},
 			},
 			{
 				Name: "owner",
-				Schema: ogen.Schema{
+				Schema: &ogen.Schema{
 					Type: "object",
 					Properties: []ogen.Property{
 						{
 							Name:   "name",
-							Schema: ogen.Schema{Type: "string"},
+							Schema: &ogen.Schema{Type: "string"},
 						},
 						{
 							Name:   "age",
-							Schema: ogen.Schema{Type: "integer"},
+							Schema: &ogen.Schema{Type: "integer"},
 						},
 						{
 							Name:   "id",
-							Schema: ogen.Schema{Type: "integer"},
+							Schema: &ogen.Schema{Type: "integer"},
 						},
 					},
 					Required: []string{"name", "id", "age"},
@@ -228,7 +228,7 @@ func TestSchemaSideEffects(t *testing.T) {
 func TestSchemaReferencedArray(t *testing.T) {
 	spec := &ogen.Spec{
 		Components: &ogen.Components{
-			Schemas: map[string]ogen.Schema{
+			Schemas: map[string]*ogen.Schema{
 				"Pets": {
 					Type: "array",
 					Items: &ogen.Schema{
@@ -265,12 +265,12 @@ func TestSchemaReferencedArray(t *testing.T) {
 		localRefs: make(map[string]*oas.Schema),
 	}
 
-	out, err := gen.Generate(ogen.Schema{
+	out, err := gen.Generate(&ogen.Schema{
 		Type: "object",
 		Properties: []ogen.Property{
 			{
 				Name: "pets",
-				Schema: ogen.Schema{
+				Schema: &ogen.Schema{
 					Ref: "#/components/schemas/Pets",
 				},
 			},

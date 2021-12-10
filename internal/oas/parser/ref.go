@@ -24,7 +24,7 @@ func (p *parser) resolveRequestBody(ref string) (*oas.RequestBody, error) {
 		return nil, errors.Errorf("component by reference %q not found", ref)
 	}
 
-	r, err := p.parseRequestBody(&component)
+	r, err := p.parseRequestBody(component)
 	if err != nil {
 		return nil, err
 	}
