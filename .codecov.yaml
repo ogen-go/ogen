@@ -11,7 +11,5 @@ ignore:
 
 coverage:
   status:
-    patch: off
-    project:
-      default:
-        threshold: 0.5%
+    project: false
+    patch: false
