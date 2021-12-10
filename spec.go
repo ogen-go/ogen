@@ -126,6 +126,7 @@ type Operation struct {
 	// A list of tags for API documentation control.
 	// Tags can be used for logical grouping of operations by resources or any other qualifier.
 	Tags        []string     `json:"tags,omitempty"`
+	Summary     string       `json:"summary,omitempty"`
 	Description string       `json:"description,omitempty"`
 	OperationID string       `json:"operationId,omitempty"`
 	Parameters  []Parameter  `json:"parameters,omitempty"`
