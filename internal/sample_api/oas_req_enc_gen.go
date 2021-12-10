@@ -62,12 +62,13 @@ var (
 	_ = sync.Pool{}
 )
 
-func encodeFoobarPostRequestJSON(req Pet, span trace.Span) (data *bytes.Buffer, err error) {
+func encodeFoobarPostRequestJSON(req OptPet, span trace.Span) (data *bytes.Buffer, err error) {
 	buf := getBuf()
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
-
-	req.Encode(e)
+	if req.Set {
+		req.Encode(e)
+	}
 	if _, err := e.WriteTo(buf); err != nil {
 		putBuf(buf)
 		return nil, err
@@ -76,12 +77,13 @@ func encodeFoobarPostRequestJSON(req Pet, span trace.Span) (data *bytes.Buffer, 
 	return buf, nil
 }
 
-func encodePetCreateRequestJSON(req Pet, span trace.Span) (data *bytes.Buffer, err error) {
+func encodePetCreateRequestJSON(req OptPet, span trace.Span) (data *bytes.Buffer, err error) {
 	buf := getBuf()
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
-
-	req.Encode(e)
+	if req.Set {
+		req.Encode(e)
+	}
 	if _, err := e.WriteTo(buf); err != nil {
 		putBuf(buf)
 		return nil, err
@@ -90,12 +92,13 @@ func encodePetCreateRequestJSON(req Pet, span trace.Span) (data *bytes.Buffer, e
 	return buf, nil
 }
 
-func encodePetUpdateNameAliasPostRequestJSON(req PetName, span trace.Span) (data *bytes.Buffer, err error) {
+func encodePetUpdateNameAliasPostRequestJSON(req OptPetName, span trace.Span) (data *bytes.Buffer, err error) {
 	buf := getBuf()
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
-
-	req.Encode(e)
+	if req.Set {
+		req.Encode(e)
+	}
 	if _, err := e.WriteTo(buf); err != nil {
 		putBuf(buf)
 		return nil, err
@@ -104,12 +107,13 @@ func encodePetUpdateNameAliasPostRequestJSON(req PetName, span trace.Span) (data
 	return buf, nil
 }
 
-func encodePetUpdateNamePostRequestJSON(req string, span trace.Span) (data *bytes.Buffer, err error) {
+func encodePetUpdateNamePostRequestJSON(req OptString, span trace.Span) (data *bytes.Buffer, err error) {
 	buf := getBuf()
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
-
-	e.Str(req)
+	if req.Set {
+		req.Encode(e)
+	}
 	if _, err := e.WriteTo(buf); err != nil {
 		putBuf(buf)
 		return nil, err

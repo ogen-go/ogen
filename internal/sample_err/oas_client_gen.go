@@ -96,7 +96,7 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 // DataCreate invokes dataCreate operation.
 //
 // POST /data
-func (c *Client) DataCreate(ctx context.Context, request Data) (res Data, err error) {
+func (c *Client) DataCreate(ctx context.Context, request OptData) (res Data, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `DataCreate`,
 		trace.WithAttributes(otelogen.OperationID(`dataCreate`)),

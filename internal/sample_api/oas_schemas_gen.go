@@ -483,6 +483,82 @@ func (o OptNilString) Get() (v string, ok bool) {
 	return o.Value, true
 }
 
+// NewOptPet returns new OptPet with value set to v.
+func NewOptPet(v Pet) OptPet {
+	return OptPet{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptPet is optional Pet.
+type OptPet struct {
+	Value Pet
+	Set   bool
+}
+
+// IsSet returns true if OptPet was set.
+func (o OptPet) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptPet) Reset() {
+	var v Pet
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptPet) SetTo(v Pet) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptPet) Get() (v Pet, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptPetName returns new OptPetName with value set to v.
+func NewOptPetName(v PetName) OptPetName {
+	return OptPetName{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptPetName is optional PetName.
+type OptPetName struct {
+	Value PetName
+	Set   bool
+}
+
+// IsSet returns true if OptPetName was set.
+func (o OptPetName) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptPetName) Reset() {
+	var v PetName
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptPetName) SetTo(v PetName) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptPetName) Get() (v PetName, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
 // NewOptPetType returns new OptPetType with value set to v.
 func NewOptPetType(v PetType) OptPetType {
 	return OptPetType{
@@ -515,6 +591,44 @@ func (o *OptPetType) SetTo(v PetType) {
 
 // Get returns value and boolean that denotes whether value was set.
 func (o OptPetType) Get() (v PetType, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptString returns new OptString with value set to v.
+func NewOptString(v string) OptString {
+	return OptString{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptString is optional string.
+type OptString struct {
+	Value string
+	Set   bool
+}
+
+// IsSet returns true if OptString was set.
+func (o OptString) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptString) Reset() {
+	var v string
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptString) SetTo(v string) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptString) Get() (v string, ok bool) {
 	if !o.Set {
 		return v, false
 	}

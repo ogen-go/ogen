@@ -205,11 +205,19 @@ func (c *Client) FoobarGet(ctx context.Context, params FoobarGetParams) (res Foo
 // FoobarPost invokes foobarPost operation.
 //
 // POST /foobar
-func (c *Client) FoobarPost(ctx context.Context, request Pet) (res FoobarPostRes, err error) {
+func (c *Client) FoobarPost(ctx context.Context, request OptPet) (res FoobarPostRes, err error) {
 	if err := func() error {
-		if err := request.Validate(); err != nil {
-			return err
+		if request.Set {
+			if err := func() error {
+				if err := request.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
 		}
+		return nil
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
@@ -360,11 +368,19 @@ func (c *Client) GetHeader(ctx context.Context, params GetHeaderParams) (res Has
 // PetCreate invokes petCreate operation.
 //
 // POST /pet
-func (c *Client) PetCreate(ctx context.Context, request Pet) (res Pet, err error) {
+func (c *Client) PetCreate(ctx context.Context, request OptPet) (res Pet, err error) {
 	if err := func() error {
-		if err := request.Validate(); err != nil {
-			return err
+		if request.Set {
+			if err := func() error {
+				if err := request.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
 		}
+		return nil
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
@@ -754,11 +770,19 @@ func (c *Client) PetNameByID(ctx context.Context, params PetNameByIDParams) (res
 // PetUpdateNameAliasPost invokes  operation.
 //
 // POST /pet/updateNameAlias
-func (c *Client) PetUpdateNameAliasPost(ctx context.Context, request PetName) (res PetUpdateNameAliasPostDefStatusCode, err error) {
+func (c *Client) PetUpdateNameAliasPost(ctx context.Context, request OptPetName) (res PetUpdateNameAliasPostDefStatusCode, err error) {
 	if err := func() error {
-		if err := request.Validate(); err != nil {
-			return err
+		if request.Set {
+			if err := func() error {
+				if err := request.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
 		}
+		return nil
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
@@ -815,19 +839,27 @@ func (c *Client) PetUpdateNameAliasPost(ctx context.Context, request PetName) (r
 // PetUpdateNamePost invokes  operation.
 //
 // POST /pet/updateName
-func (c *Client) PetUpdateNamePost(ctx context.Context, request string) (res PetUpdateNamePostDefStatusCode, err error) {
+func (c *Client) PetUpdateNamePost(ctx context.Context, request OptString) (res PetUpdateNamePostDefStatusCode, err error) {
 	if err := func() error {
-		if err := (validate.String{
-			MinLength:    6,
-			MinLengthSet: true,
-			MaxLength:    0,
-			MaxLengthSet: false,
-			Email:        false,
-			Hostname:     false,
-			Regex:        nil,
-		}).Validate(string(request)); err != nil {
-			return errors.Wrap(err, "string")
+		if request.Set {
+			if err := func() error {
+				if err := (validate.String{
+					MinLength:    6,
+					MinLengthSet: true,
+					MaxLength:    0,
+					MaxLengthSet: false,
+					Email:        false,
+					Hostname:     false,
+					Regex:        nil,
+				}).Validate(string(request.Value)); err != nil {
+					return errors.Wrap(err, "string")
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
 		}
+		return nil
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")

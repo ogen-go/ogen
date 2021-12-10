@@ -75,7 +75,7 @@ type Handler interface {
 	// FoobarPost implements foobarPost operation.
 	//
 	// POST /foobar
-	FoobarPost(ctx context.Context, req Pet) (FoobarPostRes, error)
+	FoobarPost(ctx context.Context, req OptPet) (FoobarPostRes, error)
 	// FoobarPut implements  operation.
 	//
 	// PUT /foobar
@@ -87,7 +87,7 @@ type Handler interface {
 	// PetCreate implements petCreate operation.
 	//
 	// POST /pet
-	PetCreate(ctx context.Context, req Pet) (Pet, error)
+	PetCreate(ctx context.Context, req OptPet) (Pet, error)
 	// PetFriendsNamesByID implements petFriendsNamesByID operation.
 	//
 	// GET /pet/friendNames/{id}
@@ -111,11 +111,11 @@ type Handler interface {
 	// PetUpdateNameAliasPost implements  operation.
 	//
 	// POST /pet/updateNameAlias
-	PetUpdateNameAliasPost(ctx context.Context, req PetName) (PetUpdateNameAliasPostDefStatusCode, error)
+	PetUpdateNameAliasPost(ctx context.Context, req OptPetName) (PetUpdateNameAliasPostDefStatusCode, error)
 	// PetUpdateNamePost implements  operation.
 	//
 	// POST /pet/updateName
-	PetUpdateNamePost(ctx context.Context, req string) (PetUpdateNamePostDefStatusCode, error)
+	PetUpdateNamePost(ctx context.Context, req OptString) (PetUpdateNamePostDefStatusCode, error)
 	// PetUploadAvatarByID implements petUploadAvatarByID operation.
 	//
 	// POST /pet/avatar
