@@ -122,8 +122,6 @@ func (r *Router) Graph() error {
 
 				continue
 			}
-
-			fmt.Printf("%25s <- %s\n", route.Operation.Name, route.Path)
 		Path:
 			for _, elem := range route.Path {
 				edges := m.Edges
