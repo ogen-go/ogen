@@ -200,12 +200,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							// DELETE /repos/{owner}/{repo}/subscription
 							s.handleActivityDeleteRepoSubscriptionRequest(args, w, r)
 							return
-						case "code-scanning": // -> 59
-							// Edge: 59, path: "code-scanning".
+						case "code-scanning": // -> 63
+							// Edge: 63, path: "code-scanning".
 							elem, p = nextElem(p)
 							switch string(elem) {
-							case "analyses": // -> 60
-								// Edge: 60, path: "analyses".
+							case "analyses": // -> 64
+								// Edge: 64, path: "analyses".
 								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
@@ -221,16 +221,37 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.notFound(w, r)
 								return
 							}
-						case "interaction-limits": // -> 91
+						case "git": // -> 93
+							// Edge: 93, path: "git".
+							elem, p = nextElem(p)
+							switch string(elem) {
+							case "refs": // -> 94
+								// Edge: 94, path: "refs".
+								elem, p = nextElem(p)
+								switch string(elem) {
+								default:
+									if args == nil {
+										args = make(map[string]string)
+									}
+									args["ref"] = string(elem)
+									// DELETE /repos/{owner}/{repo}/git/refs/{ref}
+									s.handleGitDeleteRefRequest(args, w, r)
+									return
+								}
+							default:
+								s.notFound(w, r)
+								return
+							}
+						case "interaction-limits": // -> 98
 							// DELETE /repos/{owner}/{repo}/interaction-limits
 							s.handleInteractionsRemoveRestrictionsForRepoRequest(args, w, r)
 							return
-						case "issues": // -> 92
-							// Edge: 92, path: "issues".
+						case "issues": // -> 99
+							// Edge: 99, path: "issues".
 							elem, p = nextElem(p)
 							switch string(elem) {
-							case "comments": // -> 93
-								// Edge: 93, path: "comments".
+							case "comments": // -> 100
+								// Edge: 100, path: "comments".
 								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
@@ -238,11 +259,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										args = make(map[string]string)
 									}
 									args["comment_id"] = string(elem)
-									// Edge: 94, path: "".
+									// Edge: 101, path: "".
 									elem, p = nextElem(p)
 									switch string(elem) {
-									case "reactions": // -> 174
-										// Edge: 174, path: "reactions".
+									case "reactions": // -> 185
+										// Edge: 185, path: "reactions".
 										elem, p = nextElem(p)
 										switch string(elem) {
 										default:
@@ -265,11 +286,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["issue_number"] = string(elem)
-								// Edge: 99, path: "".
+								// Edge: 106, path: "".
 								elem, p = nextElem(p)
 								switch string(elem) {
-								case "labels": // -> 100
-									// Edge: 100, path: "labels".
+								case "labels": // -> 107
+									// Edge: 107, path: "labels".
 									elem, p = nextElem(p)
 									switch string(elem) {
 									default:
@@ -281,16 +302,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										s.handleIssuesRemoveLabelRequest(args, w, r)
 										return
 									}
-								case "assignees": // -> 101
+								case "assignees": // -> 108
 									// DELETE /repos/{owner}/{repo}/issues/{issue_number}/assignees
 									s.handleIssuesRemoveAssigneesRequest(args, w, r)
 									return
-								case "lock": // -> 103
+								case "lock": // -> 110
 									// DELETE /repos/{owner}/{repo}/issues/{issue_number}/lock
 									s.handleIssuesUnlockRequest(args, w, r)
 									return
-								case "reactions": // -> 172
-									// Edge: 172, path: "reactions".
+								case "reactions": // -> 183
+									// Edge: 183, path: "reactions".
 									elem, p = nextElem(p)
 									switch string(elem) {
 									default:
@@ -307,8 +328,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									return
 								}
 							}
-						case "labels": // -> 95
-							// Edge: 95, path: "labels".
+						case "labels": // -> 102
+							// Edge: 102, path: "labels".
 							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
@@ -320,8 +341,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.handleIssuesDeleteLabelRequest(args, w, r)
 								return
 							}
-						case "milestones": // -> 97
-							// Edge: 97, path: "milestones".
+						case "milestones": // -> 104
+							// Edge: 104, path: "milestones".
 							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
@@ -333,16 +354,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.handleIssuesDeleteMilestoneRequest(args, w, r)
 								return
 							}
-						case "import": // -> 104
+						case "import": // -> 111
 							// DELETE /repos/{owner}/{repo}/import
 							s.handleMigrationsCancelImportRequest(args, w, r)
 							return
-						case "pulls": // -> 162
-							// Edge: 162, path: "pulls".
+						case "pulls": // -> 172
+							// Edge: 172, path: "pulls".
 							elem, p = nextElem(p)
 							switch string(elem) {
-							case "comments": // -> 166
-								// Edge: 166, path: "comments".
+							case "comments": // -> 176
+								// Edge: 176, path: "comments".
 								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
@@ -350,11 +371,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										args = make(map[string]string)
 									}
 									args["comment_id"] = string(elem)
-									// Edge: 167, path: "".
+									// Edge: 177, path: "".
 									elem, p = nextElem(p)
 									switch string(elem) {
-									case "reactions": // -> 176
-										// Edge: 176, path: "reactions".
+									case "reactions": // -> 187
+										// Edge: 187, path: "reactions".
 										elem, p = nextElem(p)
 										switch string(elem) {
 										default:
@@ -377,11 +398,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["pull_number"] = string(elem)
-								// Edge: 163, path: "".
+								// Edge: 173, path: "".
 								elem, p = nextElem(p)
 								switch string(elem) {
-								case "reviews": // -> 164
-									// Edge: 164, path: "reviews".
+								case "reviews": // -> 174
+									// Edge: 174, path: "reviews".
 									elem, p = nextElem(p)
 									switch string(elem) {
 									default:
@@ -393,13 +414,17 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										s.handlePullsDeletePendingReviewRequest(args, w, r)
 										return
 									}
+								case "requested_reviewers": // -> 178
+									// DELETE /repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers
+									s.handlePullsRemoveRequestedReviewersRequest(args, w, r)
+									return
 								default:
 									s.notFound(w, r)
 									return
 								}
 							}
-						case "comments": // -> 168
-							// Edge: 168, path: "comments".
+						case "comments": // -> 179
+							// Edge: 179, path: "comments".
 							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
@@ -407,11 +432,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["comment_id"] = string(elem)
-								// Edge: 169, path: "".
+								// Edge: 180, path: "".
 								elem, p = nextElem(p)
 								switch string(elem) {
-								case "reactions": // -> 170
-									// Edge: 170, path: "reactions".
+								case "reactions": // -> 181
+									// Edge: 181, path: "reactions".
 									elem, p = nextElem(p)
 									switch string(elem) {
 									default:
@@ -429,8 +454,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									return
 								}
 							}
-						case "branches": // -> 192
-							// Edge: 192, path: "branches".
+						case "branches": // -> 203
+							// Edge: 203, path: "branches".
 							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
@@ -438,33 +463,59 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["branch"] = string(elem)
-								// Edge: 193, path: "".
+								// Edge: 204, path: "".
 								elem, p = nextElem(p)
 								switch string(elem) {
-								case "protection": // -> 194
-									// Edge: 194, path: "protection".
+								case "protection": // -> 205
+									// Edge: 205, path: "protection".
 									elem, p = nextElem(p)
 									switch string(elem) {
-									case "restrictions": // -> 195
-										// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions
-										s.handleReposDeleteAccessRestrictionsRequest(args, w, r)
-										return
-									case "enforce_admins": // -> 196
+									case "restrictions": // -> 206
+										// Edge: 206, path: "restrictions".
+										elem, p = nextElem(p)
+										switch string(elem) {
+										case "apps": // -> 232
+											// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps
+											s.handleReposRemoveAppAccessRestrictionsRequest(args, w, r)
+											return
+										case "teams": // -> 237
+											// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams
+											s.handleReposRemoveTeamAccessRestrictionsRequest(args, w, r)
+											return
+										case "users": // -> 238
+											// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users
+											s.handleReposRemoveUserAccessRestrictionsRequest(args, w, r)
+											return
+										default:
+											// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions.
+											s.handleReposDeleteAccessRestrictionsRequest(args, w, r)
+											return
+										}
+									case "enforce_admins": // -> 207
 										// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins
 										s.handleReposDeleteAdminBranchProtectionRequest(args, w, r)
 										return
-									case "required_signatures": // -> 201
+									case "required_signatures": // -> 212
 										// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_signatures
 										s.handleReposDeleteCommitSignatureProtectionRequest(args, w, r)
 										return
-									case "required_pull_request_reviews": // -> 208
+									case "required_pull_request_reviews": // -> 222
 										// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews
 										s.handleReposDeletePullRequestReviewProtectionRequest(args, w, r)
 										return
-									case "required_status_checks": // -> 220
-										// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks
-										s.handleReposRemoveStatusCheckProtectionRequest(args, w, r)
-										return
+									case "required_status_checks": // -> 235
+										// Edge: 235, path: "required_status_checks".
+										elem, p = nextElem(p)
+										switch string(elem) {
+										case "contexts": // -> 236
+											// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts
+											s.handleReposRemoveStatusCheckContextsRequest(args, w, r)
+											return
+										default:
+											// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks.
+											s.handleReposRemoveStatusCheckProtectionRequest(args, w, r)
+											return
+										}
 									default:
 										// DELETE /repos/{owner}/{repo}/branches/{branch}/protection.
 										s.handleReposDeleteBranchProtectionRequest(args, w, r)
@@ -475,8 +526,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									return
 								}
 							}
-						case "environments": // -> 197
-							// Edge: 197, path: "environments".
+						case "environments": // -> 208
+							// Edge: 208, path: "environments".
 							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
@@ -488,8 +539,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.handleReposDeleteAnEnvironmentRequest(args, w, r)
 								return
 							}
-						case "autolinks": // -> 199
-							// Edge: 199, path: "autolinks".
+						case "autolinks": // -> 210
+							// Edge: 210, path: "autolinks".
 							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
@@ -501,8 +552,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.handleReposDeleteAutolinkRequest(args, w, r)
 								return
 							}
-						case "keys": // -> 202
-							// Edge: 202, path: "keys".
+						case "keys": // -> 213
+							// Edge: 213, path: "keys".
 							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
@@ -514,8 +565,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.handleReposDeleteDeployKeyRequest(args, w, r)
 								return
 							}
-						case "deployments": // -> 204
-							// Edge: 204, path: "deployments".
+						case "deployments": // -> 215
+							// Edge: 215, path: "deployments".
 							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
@@ -527,8 +578,21 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.handleReposDeleteDeploymentRequest(args, w, r)
 								return
 							}
-						case "invitations": // -> 206
-							// Edge: 206, path: "invitations".
+						case "contents": // -> 217
+							// Edge: 217, path: "contents".
+							elem, p = nextElem(p)
+							switch string(elem) {
+							default:
+								if args == nil {
+									args = make(map[string]string)
+								}
+								args["path"] = string(elem)
+								// DELETE /repos/{owner}/{repo}/contents/{path}
+								s.handleReposDeleteFileRequest(args, w, r)
+								return
+							}
+						case "invitations": // -> 219
+							// Edge: 219, path: "invitations".
 							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
@@ -540,12 +604,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.handleReposDeleteInvitationRequest(args, w, r)
 								return
 							}
-						case "releases": // -> 209
-							// Edge: 209, path: "releases".
+						case "pages": // -> 221
+							// DELETE /repos/{owner}/{repo}/pages
+							s.handleReposDeletePagesSiteRequest(args, w, r)
+							return
+						case "releases": // -> 223
+							// Edge: 223, path: "releases".
 							elem, p = nextElem(p)
 							switch string(elem) {
-							case "assets": // -> 211
-								// Edge: 211, path: "assets".
+							case "assets": // -> 225
+								// Edge: 225, path: "assets".
 								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
@@ -566,8 +634,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.handleReposDeleteReleaseRequest(args, w, r)
 								return
 							}
-						case "hooks": // -> 213
-							// Edge: 213, path: "hooks".
+						case "hooks": // -> 227
+							// Edge: 227, path: "hooks".
 							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
@@ -579,20 +647,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.handleReposDeleteWebhookRequest(args, w, r)
 								return
 							}
-						case "automated-security-fixes": // -> 215
+						case "automated-security-fixes": // -> 229
 							// DELETE /repos/{owner}/{repo}/automated-security-fixes
 							s.handleReposDisableAutomatedSecurityFixesRequest(args, w, r)
 							return
-						case "lfs": // -> 216
+						case "lfs": // -> 230
 							// DELETE /repos/{owner}/{repo}/lfs
 							s.handleReposDisableLfsForRepoRequest(args, w, r)
 							return
-						case "vulnerability-alerts": // -> 217
+						case "vulnerability-alerts": // -> 231
 							// DELETE /repos/{owner}/{repo}/vulnerability-alerts
 							s.handleReposDisableVulnerabilityAlertsRequest(args, w, r)
 							return
-						case "collaborators": // -> 218
-							// Edge: 218, path: "collaborators".
+						case "collaborators": // -> 233
+							// Edge: 233, path: "collaborators".
 							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
@@ -791,12 +859,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						s.notFound(w, r)
 						return
 					}
-				case "interaction-limits": // -> 90
+				case "interaction-limits": // -> 97
 					// DELETE /orgs/{org}/interaction-limits
 					s.handleInteractionsRemoveRestrictionsForOrgRequest(args, w, r)
 					return
-				case "migrations": // -> 108
-					// Edge: 108, path: "migrations".
+				case "migrations": // -> 115
+					// Edge: 115, path: "migrations".
 					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
@@ -804,15 +872,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args = make(map[string]string)
 						}
 						args["migration_id"] = string(elem)
-						// Edge: 109, path: "".
+						// Edge: 116, path: "".
 						elem, p = nextElem(p)
 						switch string(elem) {
-						case "archive": // -> 110
+						case "archive": // -> 117
 							// DELETE /orgs/{org}/migrations/{migration_id}/archive
 							s.handleMigrationsDeleteArchiveForOrgRequest(args, w, r)
 							return
-						case "repos": // -> 114
-							// Edge: 114, path: "repos".
+						case "repos": // -> 121
+							// Edge: 121, path: "repos".
 							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
@@ -820,10 +888,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["repo_name"] = string(elem)
-								// Edge: 115, path: "".
+								// Edge: 122, path: "".
 								elem, p = nextElem(p)
 								switch string(elem) {
-								case "lock": // -> 116
+								case "lock": // -> 123
 									// DELETE /orgs/{org}/migrations/{migration_id}/repos/{repo_name}/lock
 									s.handleMigrationsUnlockRepoForOrgRequest(args, w, r)
 									return
@@ -837,8 +905,21 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							return
 						}
 					}
-				case "hooks": // -> 122
-					// Edge: 122, path: "hooks".
+				case "invitations": // -> 128
+					// Edge: 128, path: "invitations".
+					elem, p = nextElem(p)
+					switch string(elem) {
+					default:
+						if args == nil {
+							args = make(map[string]string)
+						}
+						args["invitation_id"] = string(elem)
+						// DELETE /orgs/{org}/invitations/{invitation_id}
+						s.handleOrgsCancelInvitationRequest(args, w, r)
+						return
+					}
+				case "hooks": // -> 130
+					// Edge: 130, path: "hooks".
 					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
@@ -850,8 +931,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						s.handleOrgsDeleteWebhookRequest(args, w, r)
 						return
 					}
-				case "members": // -> 124
-					// Edge: 124, path: "members".
+				case "members": // -> 132
+					// Edge: 132, path: "members".
 					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
@@ -863,8 +944,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						s.handleOrgsRemoveMemberRequest(args, w, r)
 						return
 					}
-				case "memberships": // -> 126
-					// Edge: 126, path: "memberships".
+				case "memberships": // -> 134
+					// Edge: 134, path: "memberships".
 					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
@@ -876,8 +957,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						s.handleOrgsRemoveMembershipForUserRequest(args, w, r)
 						return
 					}
-				case "outside_collaborators": // -> 128
-					// Edge: 128, path: "outside_collaborators".
+				case "outside_collaborators": // -> 136
+					// Edge: 136, path: "outside_collaborators".
 					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
@@ -889,8 +970,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						s.handleOrgsRemoveOutsideCollaboratorRequest(args, w, r)
 						return
 					}
-				case "public_members": // -> 130
-					// Edge: 130, path: "public_members".
+				case "public_members": // -> 138
+					// Edge: 138, path: "public_members".
 					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
@@ -902,8 +983,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						s.handleOrgsRemovePublicMembershipForAuthenticatedUserRequest(args, w, r)
 						return
 					}
-				case "credential-authorizations": // -> 132
-					// Edge: 132, path: "credential-authorizations".
+				case "credential-authorizations": // -> 140
+					// Edge: 140, path: "credential-authorizations".
 					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
@@ -915,8 +996,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						s.handleOrgsRemoveSamlSSOAuthorizationRequest(args, w, r)
 						return
 					}
-				case "blocks": // -> 134
-					// Edge: 134, path: "blocks".
+				case "blocks": // -> 142
+					// Edge: 142, path: "blocks".
 					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
@@ -928,8 +1009,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						s.handleOrgsUnblockUserRequest(args, w, r)
 						return
 					}
-				case "packages": // -> 140
-					// Edge: 140, path: "packages".
+				case "packages": // -> 148
+					// Edge: 148, path: "packages".
 					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
@@ -937,11 +1018,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args = make(map[string]string)
 						}
 						args["package_type"] = string(elem)
-						// Edge: 141, path: "".
+						// Edge: 149, path: "".
 						elem, p = nextElem(p)
 						switch string(elem) {
-						case "": // -> 142
-							// Edge: 142, path: "".
+						case "": // -> 150
+							// Edge: 150, path: "".
 							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
@@ -949,11 +1030,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["package_name"] = string(elem)
-								// Edge: 143, path: "".
+								// Edge: 151, path: "".
 								elem, p = nextElem(p)
 								switch string(elem) {
-								case "versions": // -> 152
-									// Edge: 152, path: "versions".
+								case "versions": // -> 160
+									// Edge: 160, path: "versions".
 									elem, p = nextElem(p)
 									switch string(elem) {
 									default:
@@ -976,8 +1057,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							return
 						}
 					}
-				case "teams": // -> 178
-					// Edge: 178, path: "teams".
+				case "teams": // -> 189
+					// Edge: 189, path: "teams".
 					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
@@ -985,11 +1066,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args = make(map[string]string)
 						}
 						args["team_slug"] = string(elem)
-						// Edge: 179, path: "".
+						// Edge: 190, path: "".
 						elem, p = nextElem(p)
 						switch string(elem) {
-						case "discussions": // -> 180
-							// Edge: 180, path: "discussions".
+						case "discussions": // -> 191
+							// Edge: 191, path: "discussions".
 							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
@@ -997,11 +1078,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["discussion_number"] = string(elem)
-								// Edge: 181, path: "".
+								// Edge: 192, path: "".
 								elem, p = nextElem(p)
 								switch string(elem) {
-								case "reactions": // -> 182
-									// Edge: 182, path: "reactions".
+								case "reactions": // -> 193
+									// Edge: 193, path: "reactions".
 									elem, p = nextElem(p)
 									switch string(elem) {
 									default:
@@ -1013,8 +1094,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										s.handleReactionsDeleteForTeamDiscussionRequest(args, w, r)
 										return
 									}
-								case "comments": // -> 184
-									// Edge: 184, path: "comments".
+								case "comments": // -> 195
+									// Edge: 195, path: "comments".
 									elem, p = nextElem(p)
 									switch string(elem) {
 									default:
@@ -1022,11 +1103,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											args = make(map[string]string)
 										}
 										args["comment_number"] = string(elem)
-										// Edge: 185, path: "".
+										// Edge: 196, path: "".
 										elem, p = nextElem(p)
 										switch string(elem) {
-										case "reactions": // -> 186
-											// Edge: 186, path: "reactions".
+										case "reactions": // -> 197
+											// Edge: 197, path: "reactions".
 											elem, p = nextElem(p)
 											switch string(elem) {
 											default:
@@ -1050,8 +1131,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									return
 								}
 							}
-						case "memberships": // -> 233
-							// Edge: 233, path: "memberships".
+						case "memberships": // -> 251
+							// Edge: 251, path: "memberships".
 							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
@@ -1063,8 +1144,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.handleTeamsRemoveMembershipForUserInOrgRequest(args, w, r)
 								return
 							}
-						case "projects": // -> 237
-							// Edge: 237, path: "projects".
+						case "projects": // -> 255
+							// Edge: 255, path: "projects".
 							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
@@ -1076,8 +1157,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.handleTeamsRemoveProjectInOrgRequest(args, w, r)
 								return
 							}
-						case "repos": // -> 239
-							// Edge: 239, path: "repos".
+						case "repos": // -> 259
+							// Edge: 259, path: "repos".
 							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
@@ -1085,11 +1166,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["owner"] = string(elem)
-								// Edge: 240, path: "".
+								// Edge: 260, path: "".
 								elem, p = nextElem(p)
 								switch string(elem) {
-								case "": // -> 241
-									// Edge: 241, path: "".
+								case "": // -> 261
+									// Edge: 261, path: "".
 									elem, p = nextElem(p)
 									switch string(elem) {
 									default:
@@ -1180,8 +1261,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						return
 					}
 				}
-			case "installations": // -> 52
-				// Edge: 52, path: "installations".
+			case "installations": // -> 56
+				// Edge: 56, path: "installations".
 				elem, p = nextElem(p)
 				switch string(elem) {
 				default:
@@ -1189,11 +1270,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						args = make(map[string]string)
 					}
 					args["installation_id"] = string(elem)
-					// Edge: 53, path: "".
+					// Edge: 57, path: "".
 					elem, p = nextElem(p)
 					switch string(elem) {
-					case "repositories": // -> 54
-						// Edge: 54, path: "repositories".
+					case "repositories": // -> 58
+						// Edge: 58, path: "repositories".
 						elem, p = nextElem(p)
 						switch string(elem) {
 						default:
@@ -1210,12 +1291,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						return
 					}
 				}
-			case "interaction-limits": // -> 89
+			case "interaction-limits": // -> 96
 				// DELETE /user/interaction-limits
 				s.handleInteractionsRemoveRestrictionsForAuthenticatedUserRequest(args, w, r)
 				return
-			case "migrations": // -> 105
-				// Edge: 105, path: "migrations".
+			case "migrations": // -> 112
+				// Edge: 112, path: "migrations".
 				elem, p = nextElem(p)
 				switch string(elem) {
 				default:
@@ -1223,15 +1304,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						args = make(map[string]string)
 					}
 					args["migration_id"] = string(elem)
-					// Edge: 106, path: "".
+					// Edge: 113, path: "".
 					elem, p = nextElem(p)
 					switch string(elem) {
-					case "archive": // -> 107
+					case "archive": // -> 114
 						// DELETE /user/migrations/{migration_id}/archive
 						s.handleMigrationsDeleteArchiveForAuthenticatedUserRequest(args, w, r)
 						return
-					case "repos": // -> 111
-						// Edge: 111, path: "repos".
+					case "repos": // -> 118
+						// Edge: 118, path: "repos".
 						elem, p = nextElem(p)
 						switch string(elem) {
 						default:
@@ -1239,10 +1320,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								args = make(map[string]string)
 							}
 							args["repo_name"] = string(elem)
-							// Edge: 112, path: "".
+							// Edge: 119, path: "".
 							elem, p = nextElem(p)
 							switch string(elem) {
-							case "lock": // -> 113
+							case "lock": // -> 120
 								// DELETE /user/migrations/{migration_id}/repos/{repo_name}/lock
 								s.handleMigrationsUnlockRepoForAuthenticatedUserRequest(args, w, r)
 								return
@@ -1256,8 +1337,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						return
 					}
 				}
-			case "packages": // -> 136
-				// Edge: 136, path: "packages".
+			case "packages": // -> 144
+				// Edge: 144, path: "packages".
 				elem, p = nextElem(p)
 				switch string(elem) {
 				default:
@@ -1265,11 +1346,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						args = make(map[string]string)
 					}
 					args["package_type"] = string(elem)
-					// Edge: 137, path: "".
+					// Edge: 145, path: "".
 					elem, p = nextElem(p)
 					switch string(elem) {
-					case "": // -> 138
-						// Edge: 138, path: "".
+					case "": // -> 146
+						// Edge: 146, path: "".
 						elem, p = nextElem(p)
 						switch string(elem) {
 						default:
@@ -1277,11 +1358,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								args = make(map[string]string)
 							}
 							args["package_name"] = string(elem)
-							// Edge: 139, path: "".
+							// Edge: 147, path: "".
 							elem, p = nextElem(p)
 							switch string(elem) {
-							case "versions": // -> 150
-								// Edge: 150, path: "versions".
+							case "versions": // -> 158
+								// Edge: 158, path: "versions".
 								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
@@ -1304,8 +1385,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						return
 					}
 				}
-			case "repository_invitations": // -> 190
-				// Edge: 190, path: "repository_invitations".
+			case "repository_invitations": // -> 201
+				// Edge: 201, path: "repository_invitations".
 				elem, p = nextElem(p)
 				switch string(elem) {
 				default:
@@ -1317,8 +1398,25 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					s.handleReposDeclineInvitationRequest(args, w, r)
 					return
 				}
-			case "keys": // -> 247
-				// Edge: 247, path: "keys".
+			case "emails": // -> 267
+				// DELETE /user/emails
+				s.handleUsersDeleteEmailForAuthenticatedRequest(args, w, r)
+				return
+			case "gpg_keys": // -> 268
+				// Edge: 268, path: "gpg_keys".
+				elem, p = nextElem(p)
+				switch string(elem) {
+				default:
+					if args == nil {
+						args = make(map[string]string)
+					}
+					args["gpg_key_id"] = string(elem)
+					// DELETE /user/gpg_keys/{gpg_key_id}
+					s.handleUsersDeleteGpgKeyForAuthenticatedRequest(args, w, r)
+					return
+				}
+			case "keys": // -> 270
+				// Edge: 270, path: "keys".
 				elem, p = nextElem(p)
 				switch string(elem) {
 				default:
@@ -1330,8 +1428,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					s.handleUsersDeletePublicSSHKeyForAuthenticatedRequest(args, w, r)
 					return
 				}
-			case "blocks": // -> 249
-				// Edge: 249, path: "blocks".
+			case "blocks": // -> 272
+				// Edge: 272, path: "blocks".
 				elem, p = nextElem(p)
 				switch string(elem) {
 				default:
@@ -1343,8 +1441,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					s.handleUsersUnblockRequest(args, w, r)
 					return
 				}
-			case "following": // -> 251
-				// Edge: 251, path: "following".
+			case "following": // -> 274
+				// Edge: 274, path: "following".
 				elem, p = nextElem(p)
 				switch string(elem) {
 				default:
@@ -1360,12 +1458,50 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				s.notFound(w, r)
 				return
 			}
-		case "app": // -> 49
-			// Edge: 49, path: "app".
+		case "applications": // -> 49
+			// Edge: 49, path: "applications".
 			elem, p = nextElem(p)
 			switch string(elem) {
-			case "installations": // -> 50
-				// Edge: 50, path: "installations".
+			case "grants": // -> 126
+				// Edge: 126, path: "grants".
+				elem, p = nextElem(p)
+				switch string(elem) {
+				default:
+					if args == nil {
+						args = make(map[string]string)
+					}
+					args["grant_id"] = string(elem)
+					// DELETE /applications/grants/{grant_id}
+					s.handleOAuthAuthorizationsDeleteGrantRequest(args, w, r)
+					return
+				}
+			default:
+				if args == nil {
+					args = make(map[string]string)
+				}
+				args["client_id"] = string(elem)
+				// Edge: 50, path: "".
+				elem, p = nextElem(p)
+				switch string(elem) {
+				case "grant": // -> 51
+					// DELETE /applications/{client_id}/grant
+					s.handleAppsDeleteAuthorizationRequest(args, w, r)
+					return
+				case "token": // -> 55
+					// DELETE /applications/{client_id}/token
+					s.handleAppsDeleteTokenRequest(args, w, r)
+					return
+				default:
+					s.notFound(w, r)
+					return
+				}
+			}
+		case "app": // -> 52
+			// Edge: 52, path: "app".
+			elem, p = nextElem(p)
+			switch string(elem) {
+			case "installations": // -> 53
+				// Edge: 53, path: "installations".
 				elem, p = nextElem(p)
 				switch string(elem) {
 				default:
@@ -1373,10 +1509,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						args = make(map[string]string)
 					}
 					args["installation_id"] = string(elem)
-					// Edge: 51, path: "".
+					// Edge: 54, path: "".
 					elem, p = nextElem(p)
 					switch string(elem) {
-					case "suspended": // -> 58
+					case "suspended": // -> 62
 						// DELETE /app/installations/{installation_id}/suspended
 						s.handleAppsUnsuspendInstallationRequest(args, w, r)
 						return
@@ -1390,11 +1526,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				s.notFound(w, r)
 				return
 			}
-		case "installation": // -> 56
-			// Edge: 56, path: "installation".
+		case "installation": // -> 60
+			// Edge: 60, path: "installation".
 			elem, p = nextElem(p)
 			switch string(elem) {
-			case "token": // -> 57
+			case "token": // -> 61
 				// DELETE /installation/token
 				s.handleAppsRevokeInstallationAccessTokenRequest(args, w, r)
 				return
@@ -1402,16 +1538,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				s.notFound(w, r)
 				return
 			}
-		case "scim": // -> 62
-			// Edge: 62, path: "scim".
+		case "scim": // -> 66
+			// Edge: 66, path: "scim".
 			elem, p = nextElem(p)
 			switch string(elem) {
-			case "v2": // -> 63
-				// Edge: 63, path: "v2".
+			case "v2": // -> 67
+				// Edge: 67, path: "v2".
 				elem, p = nextElem(p)
 				switch string(elem) {
-				case "enterprises": // -> 64
-					// Edge: 64, path: "enterprises".
+				case "enterprises": // -> 68
+					// Edge: 68, path: "enterprises".
 					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
@@ -1419,11 +1555,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args = make(map[string]string)
 						}
 						args["enterprise"] = string(elem)
-						// Edge: 65, path: "".
+						// Edge: 69, path: "".
 						elem, p = nextElem(p)
 						switch string(elem) {
-						case "Groups": // -> 66
-							// Edge: 66, path: "Groups".
+						case "Groups": // -> 70
+							// Edge: 70, path: "Groups".
 							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
@@ -1435,8 +1571,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.handleEnterpriseAdminDeleteScimGroupFromEnterpriseRequest(args, w, r)
 								return
 							}
-						case "Users": // -> 75
-							// Edge: 75, path: "Users".
+						case "Users": // -> 79
+							// Edge: 79, path: "Users".
 							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
@@ -1453,8 +1589,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							return
 						}
 					}
-				case "organizations": // -> 221
-					// Edge: 221, path: "organizations".
+				case "organizations": // -> 239
+					// Edge: 239, path: "organizations".
 					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
@@ -1462,11 +1598,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args = make(map[string]string)
 						}
 						args["org"] = string(elem)
-						// Edge: 222, path: "".
+						// Edge: 240, path: "".
 						elem, p = nextElem(p)
 						switch string(elem) {
-						case "Users": // -> 223
-							// Edge: 223, path: "Users".
+						case "Users": // -> 241
+							// Edge: 241, path: "Users".
 							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
@@ -1491,8 +1627,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				s.notFound(w, r)
 				return
 			}
-		case "enterprises": // -> 68
-			// Edge: 68, path: "enterprises".
+		case "enterprises": // -> 72
+			// Edge: 72, path: "enterprises".
 			elem, p = nextElem(p)
 			switch string(elem) {
 			default:
@@ -1500,15 +1636,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					args = make(map[string]string)
 				}
 				args["enterprise"] = string(elem)
-				// Edge: 69, path: "".
+				// Edge: 73, path: "".
 				elem, p = nextElem(p)
 				switch string(elem) {
-				case "actions": // -> 70
-					// Edge: 70, path: "actions".
+				case "actions": // -> 74
+					// Edge: 74, path: "actions".
 					elem, p = nextElem(p)
 					switch string(elem) {
-					case "runners": // -> 71
-						// Edge: 71, path: "runners".
+					case "runners": // -> 75
+						// Edge: 75, path: "runners".
 						elem, p = nextElem(p)
 						switch string(elem) {
 						default:
@@ -1520,8 +1656,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							s.handleEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseRequest(args, w, r)
 							return
 						}
-					case "runner-groups": // -> 73
-						// Edge: 73, path: "runner-groups".
+					case "runner-groups": // -> 77
+						// Edge: 77, path: "runner-groups".
 						elem, p = nextElem(p)
 						switch string(elem) {
 						default:
@@ -1529,11 +1665,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								args = make(map[string]string)
 							}
 							args["runner_group_id"] = string(elem)
-							// Edge: 74, path: "".
+							// Edge: 78, path: "".
 							elem, p = nextElem(p)
 							switch string(elem) {
-							case "organizations": // -> 80
-								// Edge: 80, path: "organizations".
+							case "organizations": // -> 84
+								// Edge: 84, path: "organizations".
 								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
@@ -1545,8 +1681,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									s.handleEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(args, w, r)
 									return
 								}
-							case "runners": // -> 82
-								// Edge: 82, path: "runners".
+							case "runners": // -> 86
+								// Edge: 86, path: "runners".
 								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
@@ -1564,12 +1700,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								return
 							}
 						}
-					case "permissions": // -> 77
-						// Edge: 77, path: "permissions".
+					case "permissions": // -> 81
+						// Edge: 81, path: "permissions".
 						elem, p = nextElem(p)
 						switch string(elem) {
-						case "organizations": // -> 78
-							// Edge: 78, path: "organizations".
+						case "organizations": // -> 82
+							// Edge: 82, path: "organizations".
 							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
@@ -1594,8 +1730,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					return
 				}
 			}
-		case "gists": // -> 84
-			// Edge: 84, path: "gists".
+		case "gists": // -> 88
+			// Edge: 88, path: "gists".
 			elem, p = nextElem(p)
 			switch string(elem) {
 			default:
@@ -1603,11 +1739,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					args = make(map[string]string)
 				}
 				args["gist_id"] = string(elem)
-				// Edge: 85, path: "".
+				// Edge: 89, path: "".
 				elem, p = nextElem(p)
 				switch string(elem) {
-				case "comments": // -> 86
-					// Edge: 86, path: "comments".
+				case "comments": // -> 90
+					// Edge: 90, path: "comments".
 					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
@@ -1619,7 +1755,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						s.handleGistsDeleteCommentRequest(args, w, r)
 						return
 					}
-				case "star": // -> 88
+				case "star": // -> 92
 					// DELETE /gists/{gist_id}/star
 					s.handleGistsUnstarRequest(args, w, r)
 					return
@@ -1629,8 +1765,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					return
 				}
 			}
-		case "authorizations": // -> 117
-			// Edge: 117, path: "authorizations".
+		case "authorizations": // -> 124
+			// Edge: 124, path: "authorizations".
 			elem, p = nextElem(p)
 			switch string(elem) {
 			default:
@@ -1642,29 +1778,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				s.handleOAuthAuthorizationsDeleteAuthorizationRequest(args, w, r)
 				return
 			}
-		case "applications": // -> 119
-			// Edge: 119, path: "applications".
-			elem, p = nextElem(p)
-			switch string(elem) {
-			case "grants": // -> 120
-				// Edge: 120, path: "grants".
-				elem, p = nextElem(p)
-				switch string(elem) {
-				default:
-					if args == nil {
-						args = make(map[string]string)
-					}
-					args["grant_id"] = string(elem)
-					// DELETE /applications/grants/{grant_id}
-					s.handleOAuthAuthorizationsDeleteGrantRequest(args, w, r)
-					return
-				}
-			default:
-				s.notFound(w, r)
-				return
-			}
-		case "users": // -> 144
-			// Edge: 144, path: "users".
+		case "users": // -> 152
+			// Edge: 152, path: "users".
 			elem, p = nextElem(p)
 			switch string(elem) {
 			default:
@@ -1672,11 +1787,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					args = make(map[string]string)
 				}
 				args["username"] = string(elem)
-				// Edge: 145, path: "".
+				// Edge: 153, path: "".
 				elem, p = nextElem(p)
 				switch string(elem) {
-				case "packages": // -> 146
-					// Edge: 146, path: "packages".
+				case "packages": // -> 154
+					// Edge: 154, path: "packages".
 					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
@@ -1684,11 +1799,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args = make(map[string]string)
 						}
 						args["package_type"] = string(elem)
-						// Edge: 147, path: "".
+						// Edge: 155, path: "".
 						elem, p = nextElem(p)
 						switch string(elem) {
-						case "": // -> 148
-							// Edge: 148, path: "".
+						case "": // -> 156
+							// Edge: 156, path: "".
 							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
@@ -1696,11 +1811,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["package_name"] = string(elem)
-								// Edge: 149, path: "".
+								// Edge: 157, path: "".
 								elem, p = nextElem(p)
 								switch string(elem) {
-								case "versions": // -> 154
-									// Edge: 154, path: "versions".
+								case "versions": // -> 162
+									// Edge: 162, path: "versions".
 									elem, p = nextElem(p)
 									switch string(elem) {
 									default:
@@ -1728,16 +1843,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					return
 				}
 			}
-		case "projects": // -> 156
-			// Edge: 156, path: "projects".
+		case "projects": // -> 164
+			// Edge: 164, path: "projects".
 			elem, p = nextElem(p)
 			switch string(elem) {
-			case "columns": // -> 158
-				// Edge: 158, path: "columns".
+			case "columns": // -> 166
+				// Edge: 166, path: "columns".
 				elem, p = nextElem(p)
 				switch string(elem) {
-				case "cards": // -> 159
-					// Edge: 159, path: "cards".
+				case "cards": // -> 167
+					// Edge: 167, path: "cards".
 					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
@@ -1763,12 +1878,30 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					args = make(map[string]string)
 				}
 				args["project_id"] = string(elem)
-				// DELETE /projects/{project_id}
-				s.handleProjectsDeleteRequest(args, w, r)
-				return
+				// Edge: 165, path: "".
+				elem, p = nextElem(p)
+				switch string(elem) {
+				case "collaborators": // -> 170
+					// Edge: 170, path: "collaborators".
+					elem, p = nextElem(p)
+					switch string(elem) {
+					default:
+						if args == nil {
+							args = make(map[string]string)
+						}
+						args["username"] = string(elem)
+						// DELETE /projects/{project_id}/collaborators/{username}
+						s.handleProjectsRemoveCollaboratorRequest(args, w, r)
+						return
+					}
+				default:
+					// DELETE /projects/{project_id}.
+					s.handleProjectsDeleteRequest(args, w, r)
+					return
+				}
 			}
-		case "reactions": // -> 188
-			// Edge: 188, path: "reactions".
+		case "reactions": // -> 199
+			// Edge: 199, path: "reactions".
 			elem, p = nextElem(p)
 			switch string(elem) {
 			default:
@@ -1780,8 +1913,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				s.handleReactionsDeleteLegacyRequest(args, w, r)
 				return
 			}
-		case "teams": // -> 225
-			// Edge: 225, path: "teams".
+		case "teams": // -> 243
+			// Edge: 243, path: "teams".
 			elem, p = nextElem(p)
 			switch string(elem) {
 			default:
@@ -1789,11 +1922,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					args = make(map[string]string)
 				}
 				args["team_id"] = string(elem)
-				// Edge: 226, path: "".
+				// Edge: 244, path: "".
 				elem, p = nextElem(p)
 				switch string(elem) {
-				case "discussions": // -> 227
-					// Edge: 227, path: "discussions".
+				case "discussions": // -> 245
+					// Edge: 245, path: "discussions".
 					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
@@ -1801,11 +1934,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args = make(map[string]string)
 						}
 						args["discussion_number"] = string(elem)
-						// Edge: 228, path: "".
+						// Edge: 246, path: "".
 						elem, p = nextElem(p)
 						switch string(elem) {
-						case "comments": // -> 229
-							// Edge: 229, path: "comments".
+						case "comments": // -> 247
+							// Edge: 247, path: "comments".
 							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
@@ -1823,8 +1956,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							return
 						}
 					}
-				case "members": // -> 231
-					// Edge: 231, path: "members".
+				case "members": // -> 249
+					// Edge: 249, path: "members".
 					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
@@ -1836,8 +1969,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						s.handleTeamsRemoveMemberLegacyRequest(args, w, r)
 						return
 					}
-				case "memberships": // -> 235
-					// Edge: 235, path: "memberships".
+				case "memberships": // -> 253
+					// Edge: 253, path: "memberships".
 					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
@@ -1849,8 +1982,21 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						s.handleTeamsRemoveMembershipForUserLegacyRequest(args, w, r)
 						return
 					}
-				case "repos": // -> 243
-					// Edge: 243, path: "repos".
+				case "projects": // -> 257
+					// Edge: 257, path: "projects".
+					elem, p = nextElem(p)
+					switch string(elem) {
+					default:
+						if args == nil {
+							args = make(map[string]string)
+						}
+						args["project_id"] = string(elem)
+						// DELETE /teams/{team_id}/projects/{project_id}
+						s.handleTeamsRemoveProjectLegacyRequest(args, w, r)
+						return
+					}
+				case "repos": // -> 263
+					// Edge: 263, path: "repos".
 					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
@@ -1858,11 +2004,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args = make(map[string]string)
 						}
 						args["owner"] = string(elem)
-						// Edge: 244, path: "".
+						// Edge: 264, path: "".
 						elem, p = nextElem(p)
 						switch string(elem) {
-						case "": // -> 245
-							// Edge: 245, path: "".
+						case "": // -> 265
+							// Edge: 265, path: "".
 							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
@@ -1880,7 +2026,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 					}
 				default:
-					s.notFound(w, r)
+					// DELETE /teams/{team_id}.
+					s.handleTeamsDeleteLegacyRequest(args, w, r)
 					return
 				}
 			}
@@ -2082,8 +2229,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							// GET /repos/{owner}/{repo}/subscribers
 							s.handleActivityListWatchersForRepoRequest(args, w, r)
 							return
-						case "check-runs": // -> 123
-							// Edge: 123, path: "check-runs".
+						case "check-runs": // -> 127
+							// Edge: 127, path: "check-runs".
 							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
@@ -2091,10 +2238,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["check_run_id"] = string(elem)
-								// Edge: 124, path: "".
+								// Edge: 128, path: "".
 								elem, p = nextElem(p)
 								switch string(elem) {
-								case "annotations": // -> 127
+								case "annotations": // -> 131
 									// GET /repos/{owner}/{repo}/check-runs/{check_run_id}/annotations
 									s.handleChecksListAnnotationsRequest(args, w, r)
 									return
@@ -2104,8 +2251,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									return
 								}
 							}
-						case "check-suites": // -> 125
-							// Edge: 125, path: "check-suites".
+						case "check-suites": // -> 129
+							// Edge: 129, path: "check-suites".
 							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
@@ -2113,10 +2260,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["check_suite_id"] = string(elem)
-								// Edge: 126, path: "".
+								// Edge: 130, path: "".
 								elem, p = nextElem(p)
 								switch string(elem) {
-								case "check-runs": // -> 131
+								case "check-runs": // -> 135
 									// GET /repos/{owner}/{repo}/check-suites/{check_suite_id}/check-runs
 									s.handleChecksListForSuiteRequest(args, w, r)
 									return
@@ -2126,8 +2273,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									return
 								}
 							}
-						case "commits": // -> 128
-							// Edge: 128, path: "commits".
+						case "commits": // -> 132
+							// Edge: 132, path: "commits".
 							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
@@ -2135,44 +2282,49 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["ref"] = string(elem)
-								// Edge: 129, path: "".
+								// Edge: 133, path: "".
 								elem, p = nextElem(p)
 								switch string(elem) {
-								case "check-runs": // -> 130
+								case "check-runs": // -> 134
 									// GET /repos/{owner}/{repo}/commits/{ref}/check-runs
 									s.handleChecksListForRefRequest(args, w, r)
 									return
-								case "check-suites": // -> 132
+								case "check-suites": // -> 136
 									// GET /repos/{owner}/{repo}/commits/{ref}/check-suites
 									s.handleChecksListSuitesForRefRequest(args, w, r)
 									return
-								case "status": // -> 331
+								case "status": // -> 353
 									// GET /repos/{owner}/{repo}/commits/{ref}/status
 									s.handleReposGetCombinedStatusForRefRequest(args, w, r)
 									return
-								case "comments": // -> 367
+								case "branches-where-head": // -> 393
+									// GET /repos/{owner}/{repo}/commits/{commit_sha}/branches-where-head
+									s.handleReposListBranchesForHeadCommitRequest(args, w, r)
+									return
+								case "comments": // -> 394
 									// GET /repos/{owner}/{repo}/commits/{commit_sha}/comments
 									s.handleReposListCommentsForCommitRequest(args, w, r)
 									return
-								case "statuses": // -> 368
+								case "statuses": // -> 395
 									// GET /repos/{owner}/{repo}/commits/{ref}/statuses
 									s.handleReposListCommitStatusesForRefRequest(args, w, r)
 									return
-								case "pulls": // -> 376
+								case "pulls": // -> 404
 									// GET /repos/{owner}/{repo}/commits/{commit_sha}/pulls
 									s.handleReposListPullRequestsAssociatedWithCommitRequest(args, w, r)
 									return
 								default:
-									s.notFound(w, r)
+									// GET /repos/{owner}/{repo}/commits/{ref}.
+									s.handleReposGetCommitRequest(args, w, r)
 									return
 								}
 							}
-						case "code-scanning": // -> 133
-							// Edge: 133, path: "code-scanning".
+						case "code-scanning": // -> 137
+							// Edge: 137, path: "code-scanning".
 							elem, p = nextElem(p)
 							switch string(elem) {
-							case "alerts": // -> 134
-								// Edge: 134, path: "alerts".
+							case "alerts": // -> 138
+								// Edge: 138, path: "alerts".
 								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
@@ -2180,10 +2332,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										args = make(map[string]string)
 									}
 									args["alert_number"] = string(elem)
-									// Edge: 135, path: "".
+									// Edge: 139, path: "".
 									elem, p = nextElem(p)
 									switch string(elem) {
-									case "instances": // -> 140
+									case "instances": // -> 144
 										// GET /repos/{owner}/{repo}/code-scanning/alerts/{alert_number}/instances
 										s.handleCodeScanningListAlertInstancesRequest(args, w, r)
 										return
@@ -2193,8 +2345,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										return
 									}
 								}
-							case "analyses": // -> 136
-								// Edge: 136, path: "analyses".
+							case "analyses": // -> 140
+								// Edge: 140, path: "analyses".
 								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
@@ -2206,8 +2358,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									s.handleCodeScanningGetAnalysisRequest(args, w, r)
 									return
 								}
-							case "sarifs": // -> 138
-								// Edge: 138, path: "sarifs".
+							case "sarifs": // -> 142
+								// Edge: 142, path: "sarifs".
 								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
@@ -2223,12 +2375,25 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.notFound(w, r)
 								return
 							}
-						case "git": // -> 172
-							// Edge: 172, path: "git".
+						case "git": // -> 180
+							// Edge: 180, path: "git".
 							elem, p = nextElem(p)
 							switch string(elem) {
-							case "commits": // -> 173
-								// Edge: 173, path: "commits".
+							case "blobs": // -> 181
+								// Edge: 181, path: "blobs".
+								elem, p = nextElem(p)
+								switch string(elem) {
+								default:
+									if args == nil {
+										args = make(map[string]string)
+									}
+									args["file_sha"] = string(elem)
+									// GET /repos/{owner}/{repo}/git/blobs/{file_sha}
+									s.handleGitGetBlobRequest(args, w, r)
+									return
+								}
+							case "commits": // -> 183
+								// Edge: 183, path: "commits".
 								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
@@ -2240,8 +2405,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									s.handleGitGetCommitRequest(args, w, r)
 									return
 								}
-							case "ref": // -> 175
-								// Edge: 175, path: "ref".
+							case "ref": // -> 185
+								// Edge: 185, path: "ref".
 								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
@@ -2253,8 +2418,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									s.handleGitGetRefRequest(args, w, r)
 									return
 								}
-							case "tags": // -> 177
-								// Edge: 177, path: "tags".
+							case "tags": // -> 187
+								// Edge: 187, path: "tags".
 								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
@@ -2266,8 +2431,21 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									s.handleGitGetTagRequest(args, w, r)
 									return
 								}
-							case "matching-refs": // -> 179
-								// Edge: 179, path: "matching-refs".
+							case "trees": // -> 189
+								// Edge: 189, path: "trees".
+								elem, p = nextElem(p)
+								switch string(elem) {
+								default:
+									if args == nil {
+										args = make(map[string]string)
+									}
+									args["tree_sha"] = string(elem)
+									// GET /repos/{owner}/{repo}/git/trees/{tree_sha}
+									s.handleGitGetTreeRequest(args, w, r)
+									return
+								}
+							case "matching-refs": // -> 191
+								// Edge: 191, path: "matching-refs".
 								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
@@ -2283,8 +2461,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.notFound(w, r)
 								return
 							}
-						case "assignees": // -> 184
-							// Edge: 184, path: "assignees".
+						case "assignees": // -> 196
+							// Edge: 196, path: "assignees".
 							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
@@ -2296,12 +2474,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.handleIssuesCheckUserCanBeAssignedRequest(args, w, r)
 								return
 							}
-						case "issues": // -> 186
-							// Edge: 186, path: "issues".
+						case "issues": // -> 198
+							// Edge: 198, path: "issues".
 							elem, p = nextElem(p)
 							switch string(elem) {
-							case "comments": // -> 187
-								// Edge: 187, path: "comments".
+							case "comments": // -> 200
+								// Edge: 200, path: "comments".
 								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
@@ -2309,10 +2487,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										args = make(map[string]string)
 									}
 									args["comment_id"] = string(elem)
-									// Edge: 188, path: "".
+									// Edge: 201, path: "".
 									elem, p = nextElem(p)
 									switch string(elem) {
-									case "reactions": // -> 288
+									case "reactions": // -> 310
 										// GET /repos/{owner}/{repo}/issues/comments/{comment_id}/reactions
 										s.handleReactionsListForIssueCommentRequest(args, w, r)
 										return
@@ -2322,8 +2500,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										return
 									}
 								}
-							case "events": // -> 189
-								// Edge: 189, path: "events".
+							case "events": // -> 202
+								// Edge: 202, path: "events".
 								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
@@ -2340,28 +2518,29 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["issue_number"] = string(elem)
-								// Edge: 195, path: "".
+								// Edge: 199, path: "".
 								elem, p = nextElem(p)
 								switch string(elem) {
-								case "comments": // -> 196
+								case "comments": // -> 209
 									// GET /repos/{owner}/{repo}/issues/{issue_number}/comments
 									s.handleIssuesListCommentsRequest(args, w, r)
 									return
-								case "labels": // -> 198
+								case "labels": // -> 213
 									// GET /repos/{owner}/{repo}/issues/{issue_number}/labels
 									s.handleIssuesListLabelsOnIssueRequest(args, w, r)
 									return
-								case "reactions": // -> 287
+								case "reactions": // -> 309
 									// GET /repos/{owner}/{repo}/issues/{issue_number}/reactions
 									s.handleReactionsListForIssueRequest(args, w, r)
 									return
 								default:
-									s.notFound(w, r)
+									// GET /repos/{owner}/{repo}/issues/{issue_number}.
+									s.handleIssuesGetRequest(args, w, r)
 									return
 								}
 							}
-						case "labels": // -> 191
-							// Edge: 191, path: "labels".
+						case "labels": // -> 204
+							// Edge: 204, path: "labels".
 							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
@@ -2373,8 +2552,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.handleIssuesGetLabelRequest(args, w, r)
 								return
 							}
-						case "milestones": // -> 193
-							// Edge: 193, path: "milestones".
+						case "milestones": // -> 206
+							// Edge: 206, path: "milestones".
 							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
@@ -2382,10 +2561,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["milestone_number"] = string(elem)
-								// Edge: 194, path: "".
+								// Edge: 207, path: "".
 								elem, p = nextElem(p)
 								switch string(elem) {
-								case "labels": // -> 197
+								case "labels": // -> 212
 									// GET /repos/{owner}/{repo}/milestones/{milestone_number}/labels
 									s.handleIssuesListLabelsForMilestoneRequest(args, w, r)
 									return
@@ -2395,19 +2574,19 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									return
 								}
 							}
-						case "license": // -> 201
+						case "license": // -> 216
 							// GET /repos/{owner}/{repo}/license
 							s.handleLicensesGetForRepoRequest(args, w, r)
 							return
-						case "import": // -> 210
-							// Edge: 210, path: "import".
+						case "import": // -> 225
+							// Edge: 225, path: "import".
 							elem, p = nextElem(p)
 							switch string(elem) {
-							case "authors": // -> 211
+							case "authors": // -> 226
 								// GET /repos/{owner}/{repo}/import/authors
 								s.handleMigrationsGetCommitAuthorsRequest(args, w, r)
 								return
-							case "large_files": // -> 212
+							case "large_files": // -> 227
 								// GET /repos/{owner}/{repo}/import/large_files
 								s.handleMigrationsGetLargeFilesRequest(args, w, r)
 								return
@@ -2416,16 +2595,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.handleMigrationsGetImportStatusRequest(args, w, r)
 								return
 							}
-						case "projects": // -> 271
+						case "projects": // -> 291
 							// GET /repos/{owner}/{repo}/projects
 							s.handleProjectsListForRepoRequest(args, w, r)
 							return
-						case "pulls": // -> 272
-							// Edge: 272, path: "pulls".
+						case "pulls": // -> 293
+							// Edge: 293, path: "pulls".
 							elem, p = nextElem(p)
 							switch string(elem) {
-							case "comments": // -> 277
-								// Edge: 277, path: "comments".
+							case "comments": // -> 298
+								// Edge: 298, path: "comments".
 								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
@@ -2433,10 +2612,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										args = make(map[string]string)
 									}
 									args["comment_id"] = string(elem)
-									// Edge: 278, path: "".
+									// Edge: 299, path: "".
 									elem, p = nextElem(p)
 									switch string(elem) {
-									case "reactions": // -> 289
+									case "reactions": // -> 311
 										// GET /repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions
 										s.handleReactionsListForPullRequestReviewCommentRequest(args, w, r)
 										return
@@ -2451,15 +2630,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["pull_number"] = string(elem)
-								// Edge: 273, path: "".
+								// Edge: 294, path: "".
 								elem, p = nextElem(p)
 								switch string(elem) {
-								case "merge": // -> 274
+								case "merge": // -> 295
 									// GET /repos/{owner}/{repo}/pulls/{pull_number}/merge
 									s.handlePullsCheckIfMergedRequest(args, w, r)
 									return
-								case "reviews": // -> 275
-									// Edge: 275, path: "reviews".
+								case "reviews": // -> 296
+									// Edge: 296, path: "reviews".
 									elem, p = nextElem(p)
 									switch string(elem) {
 									default:
@@ -2467,10 +2646,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											args = make(map[string]string)
 										}
 										args["review_id"] = string(elem)
-										// Edge: 276, path: "".
+										// Edge: 297, path: "".
 										elem, p = nextElem(p)
 										switch string(elem) {
-										case "comments": // -> 279
+										case "comments": // -> 300
 											// GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/comments
 											s.handlePullsListCommentsForReviewRequest(args, w, r)
 											return
@@ -2480,15 +2659,19 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											return
 										}
 									}
-								case "commits": // -> 280
+								case "commits": // -> 301
 									// GET /repos/{owner}/{repo}/pulls/{pull_number}/commits
 									s.handlePullsListCommitsRequest(args, w, r)
 									return
-								case "requested_reviewers": // -> 281
+								case "files": // -> 302
+									// GET /repos/{owner}/{repo}/pulls/{pull_number}/files
+									s.handlePullsListFilesRequest(args, w, r)
+									return
+								case "requested_reviewers": // -> 303
 									// GET /repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers
 									s.handlePullsListRequestedReviewersRequest(args, w, r)
 									return
-								case "comments": // -> 282
+								case "comments": // -> 304
 									// GET /repos/{owner}/{repo}/pulls/{pull_number}/comments
 									s.handlePullsListReviewCommentsRequest(args, w, r)
 									return
@@ -2498,8 +2681,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									return
 								}
 							}
-						case "comments": // -> 284
-							// Edge: 284, path: "comments".
+						case "comments": // -> 306
+							// Edge: 306, path: "comments".
 							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
@@ -2507,10 +2690,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["comment_id"] = string(elem)
-								// Edge: 285, path: "".
+								// Edge: 307, path: "".
 								elem, p = nextElem(p)
 								switch string(elem) {
-								case "reactions": // -> 286
+								case "reactions": // -> 308
 									// GET /repos/{owner}/{repo}/comments/{comment_id}/reactions
 									s.handleReactionsListForCommitCommentRequest(args, w, r)
 									return
@@ -2520,8 +2703,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									return
 								}
 							}
-						case "collaborators": // -> 306
-							// Edge: 306, path: "collaborators".
+						case "collaborators": // -> 328
+							// Edge: 328, path: "collaborators".
 							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
@@ -2529,10 +2712,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["username"] = string(elem)
-								// Edge: 307, path: "".
+								// Edge: 329, path: "".
 								elem, p = nextElem(p)
 								switch string(elem) {
-								case "permission": // -> 330
+								case "permission": // -> 352
 									// GET /repos/{owner}/{repo}/collaborators/{username}/permission
 									s.handleReposGetCollaboratorPermissionLevelRequest(args, w, r)
 									return
@@ -2542,12 +2725,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									return
 								}
 							}
-						case "vulnerability-alerts": // -> 308
+						case "vulnerability-alerts": // -> 330
 							// GET /repos/{owner}/{repo}/vulnerability-alerts
 							s.handleReposCheckVulnerabilityAlertsRequest(args, w, r)
 							return
-						case "compare": // -> 309
-							// Edge: 309, path: "compare".
+						case "compare": // -> 331
+							// Edge: 331, path: "compare".
 							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
@@ -2559,8 +2742,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.handleReposCompareCommitsRequest(args, w, r)
 								return
 							}
-						case "tarball": // -> 311
-							// Edge: 311, path: "tarball".
+						case "tarball": // -> 333
+							// Edge: 333, path: "tarball".
 							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
@@ -2572,8 +2755,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.handleReposDownloadTarballArchiveRequest(args, w, r)
 								return
 							}
-						case "zipball": // -> 313
-							// Edge: 313, path: "zipball".
+						case "zipball": // -> 335
+							// Edge: 335, path: "zipball".
 							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
@@ -2585,8 +2768,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.handleReposDownloadZipballArchiveRequest(args, w, r)
 								return
 							}
-						case "branches": // -> 315
-							// Edge: 315, path: "branches".
+						case "branches": // -> 337
+							// Edge: 337, path: "branches".
 							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
@@ -2594,26 +2777,26 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["branch"] = string(elem)
-								// Edge: 316, path: "".
+								// Edge: 338, path: "".
 								elem, p = nextElem(p)
 								switch string(elem) {
-								case "protection": // -> 317
-									// Edge: 317, path: "protection".
+								case "protection": // -> 339
+									// Edge: 339, path: "protection".
 									elem, p = nextElem(p)
 									switch string(elem) {
-									case "restrictions": // -> 318
-										// Edge: 318, path: "restrictions".
+									case "restrictions": // -> 340
+										// Edge: 340, path: "restrictions".
 										elem, p = nextElem(p)
 										switch string(elem) {
-										case "apps": // -> 323
+										case "apps": // -> 345
 											// GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps
 											s.handleReposGetAppsWithAccessToProtectedBranchRequest(args, w, r)
 											return
-										case "teams": // -> 358
+										case "teams": // -> 382
 											// GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams
 											s.handleReposGetTeamsWithAccessToProtectedBranchRequest(args, w, r)
 											return
-										case "users": // -> 362
+										case "users": // -> 386
 											// GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users
 											s.handleReposGetUsersWithAccessToProtectedBranchRequest(args, w, r)
 											return
@@ -2622,15 +2805,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											s.handleReposGetAccessRestrictionsRequest(args, w, r)
 											return
 										}
-									case "enforce_admins": // -> 319
+									case "enforce_admins": // -> 341
 										// GET /repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins
 										s.handleReposGetAdminBranchProtectionRequest(args, w, r)
 										return
-									case "required_status_checks": // -> 320
-										// Edge: 320, path: "required_status_checks".
+									case "required_status_checks": // -> 342
+										// Edge: 342, path: "required_status_checks".
 										elem, p = nextElem(p)
 										switch string(elem) {
-										case "contexts": // -> 321
+										case "contexts": // -> 343
 											// GET /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts
 											s.handleReposGetAllStatusCheckContextsRequest(args, w, r)
 											return
@@ -2639,11 +2822,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											s.handleReposGetStatusChecksProtectionRequest(args, w, r)
 											return
 										}
-									case "required_signatures": // -> 333
+									case "required_signatures": // -> 355
 										// GET /repos/{owner}/{repo}/branches/{branch}/protection/required_signatures
 										s.handleReposGetCommitSignatureProtectionRequest(args, w, r)
 										return
-									case "required_pull_request_reviews": // -> 351
+									case "required_pull_request_reviews": // -> 373
 										// GET /repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews
 										s.handleReposGetPullRequestReviewProtectionRequest(args, w, r)
 										return
@@ -2658,12 +2841,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									return
 								}
 							}
-						case "topics": // -> 322
+						case "topics": // -> 344
 							// GET /repos/{owner}/{repo}/topics
 							s.handleReposGetAllTopicsRequest(args, w, r)
 							return
-						case "autolinks": // -> 324
-							// Edge: 324, path: "autolinks".
+						case "autolinks": // -> 346
+							// Edge: 346, path: "autolinks".
 							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
@@ -2675,23 +2858,23 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.handleReposGetAutolinkRequest(args, w, r)
 								return
 							}
-						case "traffic": // -> 326
-							// Edge: 326, path: "traffic".
+						case "traffic": // -> 348
+							// Edge: 348, path: "traffic".
 							elem, p = nextElem(p)
 							switch string(elem) {
-							case "clones": // -> 327
+							case "clones": // -> 349
 								// GET /repos/{owner}/{repo}/traffic/clones
 								s.handleReposGetClonesRequest(args, w, r)
 								return
-							case "popular": // -> 359
-								// Edge: 359, path: "popular".
+							case "popular": // -> 383
+								// Edge: 383, path: "popular".
 								elem, p = nextElem(p)
 								switch string(elem) {
-								case "paths": // -> 360
+								case "paths": // -> 384
 									// GET /repos/{owner}/{repo}/traffic/popular/paths
 									s.handleReposGetTopPathsRequest(args, w, r)
 									return
-								case "referrers": // -> 361
+								case "referrers": // -> 385
 									// GET /repos/{owner}/{repo}/traffic/popular/referrers
 									s.handleReposGetTopReferrersRequest(args, w, r)
 									return
@@ -2699,7 +2882,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									s.notFound(w, r)
 									return
 								}
-							case "views": // -> 363
+							case "views": // -> 387
 								// GET /repos/{owner}/{repo}/traffic/views
 								s.handleReposGetViewsRequest(args, w, r)
 								return
@@ -2707,27 +2890,27 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.notFound(w, r)
 								return
 							}
-						case "stats": // -> 328
-							// Edge: 328, path: "stats".
+						case "stats": // -> 350
+							// Edge: 350, path: "stats".
 							elem, p = nextElem(p)
 							switch string(elem) {
-							case "code_frequency": // -> 329
+							case "code_frequency": // -> 351
 								// GET /repos/{owner}/{repo}/stats/code_frequency
 								s.handleReposGetCodeFrequencyStatsRequest(args, w, r)
 								return
-							case "commit_activity": // -> 332
+							case "commit_activity": // -> 354
 								// GET /repos/{owner}/{repo}/stats/commit_activity
 								s.handleReposGetCommitActivityStatsRequest(args, w, r)
 								return
-							case "contributors": // -> 336
+							case "contributors": // -> 358
 								// GET /repos/{owner}/{repo}/stats/contributors
 								s.handleReposGetContributorsStatsRequest(args, w, r)
 								return
-							case "participation": // -> 350
+							case "participation": // -> 372
 								// GET /repos/{owner}/{repo}/stats/participation
 								s.handleReposGetParticipationStatsRequest(args, w, r)
 								return
-							case "punch_card": // -> 352
+							case "punch_card": // -> 374
 								// GET /repos/{owner}/{repo}/stats/punch_card
 								s.handleReposGetPunchCardStatsRequest(args, w, r)
 								return
@@ -2735,11 +2918,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.notFound(w, r)
 								return
 							}
-						case "community": // -> 334
-							// Edge: 334, path: "community".
+						case "community": // -> 356
+							// Edge: 356, path: "community".
 							elem, p = nextElem(p)
 							switch string(elem) {
-							case "profile": // -> 335
+							case "profile": // -> 357
 								// GET /repos/{owner}/{repo}/community/profile
 								s.handleReposGetCommunityProfileMetricsRequest(args, w, r)
 								return
@@ -2747,8 +2930,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.notFound(w, r)
 								return
 							}
-						case "keys": // -> 337
-							// Edge: 337, path: "keys".
+						case "keys": // -> 359
+							// Edge: 359, path: "keys".
 							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
@@ -2760,8 +2943,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.handleReposGetDeployKeyRequest(args, w, r)
 								return
 							}
-						case "deployments": // -> 339
-							// Edge: 339, path: "deployments".
+						case "deployments": // -> 361
+							// Edge: 361, path: "deployments".
 							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
@@ -2769,11 +2952,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["deployment_id"] = string(elem)
-								// Edge: 340, path: "".
+								// Edge: 362, path: "".
 								elem, p = nextElem(p)
 								switch string(elem) {
-								case "statuses": // -> 341
-									// Edge: 341, path: "statuses".
+								case "statuses": // -> 363
+									// Edge: 363, path: "statuses".
 									elem, p = nextElem(p)
 									switch string(elem) {
 									default:
@@ -2786,19 +2969,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										return
 									}
 								default:
-									s.notFound(w, r)
+									// GET /repos/{owner}/{repo}/deployments/{deployment_id}.
+									s.handleReposGetDeploymentRequest(args, w, r)
 									return
 								}
 							}
-						case "pages": // -> 343
-							// Edge: 343, path: "pages".
+						case "pages": // -> 365
+							// Edge: 365, path: "pages".
 							elem, p = nextElem(p)
 							switch string(elem) {
-							case "builds": // -> 344
-								// Edge: 344, path: "builds".
+							case "builds": // -> 366
+								// Edge: 366, path: "builds".
 								elem, p = nextElem(p)
 								switch string(elem) {
-								case "latest": // -> 345
+								case "latest": // -> 367
 									// GET /repos/{owner}/{repo}/pages/builds/latest
 									s.handleReposGetLatestPagesBuildRequest(args, w, r)
 									return
@@ -2811,7 +2995,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									s.handleReposGetPagesBuildRequest(args, w, r)
 									return
 								}
-							case "health": // -> 349
+							case "health": // -> 371
 								// GET /repos/{owner}/{repo}/pages/health
 								s.handleReposGetPagesHealthCheckRequest(args, w, r)
 								return
@@ -2820,16 +3004,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.handleReposGetPagesRequest(args, w, r)
 								return
 							}
-						case "releases": // -> 346
-							// Edge: 346, path: "releases".
+						case "releases": // -> 368
+							// Edge: 368, path: "releases".
 							elem, p = nextElem(p)
 							switch string(elem) {
-							case "latest": // -> 347
+							case "latest": // -> 369
 								// GET /repos/{owner}/{repo}/releases/latest
 								s.handleReposGetLatestReleaseRequest(args, w, r)
 								return
-							case "assets": // -> 354
-								// Edge: 354, path: "assets".
+							case "assets": // -> 378
+								// Edge: 378, path: "assets".
 								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
@@ -2841,8 +3025,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									s.handleReposGetReleaseAssetRequest(args, w, r)
 									return
 								}
-							case "tags": // -> 356
-								// Edge: 356, path: "tags".
+							case "tags": // -> 380
+								// Edge: 380, path: "tags".
 								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
@@ -2859,10 +3043,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["release_id"] = string(elem)
-								// Edge: 353, path: "".
+								// Edge: 377, path: "".
 								elem, p = nextElem(p)
 								switch string(elem) {
-								case "assets": // -> 377
+								case "assets": // -> 405
 									// GET /repos/{owner}/{repo}/releases/{release_id}/assets
 									s.handleReposListReleaseAssetsRequest(args, w, r)
 									return
@@ -2872,8 +3056,21 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									return
 								}
 							}
-						case "hooks": // -> 364
-							// Edge: 364, path: "hooks".
+						case "readme": // -> 375
+							// Edge: 375, path: "readme".
+							elem, p = nextElem(p)
+							switch string(elem) {
+							default:
+								if args == nil {
+									args = make(map[string]string)
+								}
+								args["dir"] = string(elem)
+								// GET /repos/{owner}/{repo}/readme/{dir}
+								s.handleReposGetReadmeInDirectoryRequest(args, w, r)
+								return
+							}
+						case "hooks": // -> 388
+							// Edge: 388, path: "hooks".
 							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
@@ -2881,49 +3078,62 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["hook_id"] = string(elem)
-								// Edge: 365, path: "".
+								// Edge: 389, path: "".
 								elem, p = nextElem(p)
 								switch string(elem) {
-								case "config": // -> 366
+								case "config": // -> 390
 									// GET /repos/{owner}/{repo}/hooks/{hook_id}/config
 									s.handleReposGetWebhookConfigForRepoRequest(args, w, r)
 									return
+								case "deliveries": // -> 391
+									// Edge: 391, path: "deliveries".
+									elem, p = nextElem(p)
+									switch string(elem) {
+									default:
+										if args == nil {
+											args = make(map[string]string)
+										}
+										args["delivery_id"] = string(elem)
+										// GET /repos/{owner}/{repo}/hooks/{hook_id}/deliveries/{delivery_id}
+										s.handleReposGetWebhookDeliveryRequest(args, w, r)
+										return
+									}
 								default:
 									// GET /repos/{owner}/{repo}/hooks/{hook_id}.
 									s.handleReposGetWebhookRequest(args, w, r)
 									return
 								}
 							}
-						case "contributors": // -> 369
+						case "contributors": // -> 396
 							// GET /repos/{owner}/{repo}/contributors
 							s.handleReposListContributorsRequest(args, w, r)
 							return
-						case "forks": // -> 372
+						case "forks": // -> 400
 							// GET /repos/{owner}/{repo}/forks
 							s.handleReposListForksRequest(args, w, r)
 							return
-						case "invitations": // -> 373
+						case "invitations": // -> 401
 							// GET /repos/{owner}/{repo}/invitations
 							s.handleReposListInvitationsRequest(args, w, r)
 							return
-						case "languages": // -> 375
+						case "languages": // -> 403
 							// GET /repos/{owner}/{repo}/languages
 							s.handleReposListLanguagesRequest(args, w, r)
 							return
-						case "tags": // -> 378
+						case "tags": // -> 406
 							// GET /repos/{owner}/{repo}/tags
 							s.handleReposListTagsRequest(args, w, r)
 							return
-						case "teams": // -> 379
+						case "teams": // -> 407
 							// GET /repos/{owner}/{repo}/teams
 							s.handleReposListTeamsRequest(args, w, r)
 							return
-						case "secret-scanning": // -> 383
-							// Edge: 383, path: "secret-scanning".
+						case "secret-scanning": // -> 416
+							// Edge: 416, path: "secret-scanning".
 							elem, p = nextElem(p)
 							switch string(elem) {
-							case "alerts": // -> 384
-								// Edge: 384, path: "alerts".
+							case "alerts": // -> 417
+								// Edge: 417, path: "alerts".
 								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
@@ -3060,23 +3270,23 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					// GET /orgs/{org}/events
 					s.handleActivityListPublicOrgEventsRequest(args, w, r)
 					return
-				case "settings": // -> 111
-					// Edge: 111, path: "settings".
+				case "settings": // -> 115
+					// Edge: 115, path: "settings".
 					elem, p = nextElem(p)
 					switch string(elem) {
-					case "billing": // -> 112
-						// Edge: 112, path: "billing".
+					case "billing": // -> 116
+						// Edge: 116, path: "billing".
 						elem, p = nextElem(p)
 						switch string(elem) {
-						case "actions": // -> 113
+						case "actions": // -> 117
 							// GET /orgs/{org}/settings/billing/actions
 							s.handleBillingGetGithubActionsBillingOrgRequest(args, w, r)
 							return
-						case "packages": // -> 118
+						case "packages": // -> 122
 							// GET /orgs/{org}/settings/billing/packages
 							s.handleBillingGetGithubPackagesBillingOrgRequest(args, w, r)
 							return
-						case "shared-storage": // -> 121
+						case "shared-storage": // -> 125
 							// GET /orgs/{org}/settings/billing/shared-storage
 							s.handleBillingGetSharedStorageBillingOrgRequest(args, w, r)
 							return
@@ -3088,8 +3298,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						s.notFound(w, r)
 						return
 					}
-				case "migrations": // -> 204
-					// Edge: 204, path: "migrations".
+				case "issues": // -> 211
+					// GET /orgs/{org}/issues
+					s.handleIssuesListForOrgRequest(args, w, r)
+					return
+				case "migrations": // -> 219
+					// Edge: 219, path: "migrations".
 					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
@@ -3097,14 +3311,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args = make(map[string]string)
 						}
 						args["migration_id"] = string(elem)
-						// Edge: 205, path: "".
+						// Edge: 220, path: "".
 						elem, p = nextElem(p)
 						switch string(elem) {
-						case "archive": // -> 206
+						case "archive": // -> 221
 							// GET /orgs/{org}/migrations/{migration_id}/archive
 							s.handleMigrationsDownloadArchiveForOrgRequest(args, w, r)
 							return
-						case "repositories": // -> 213
+						case "repositories": // -> 228
 							// GET /orgs/{org}/migrations/{migration_id}/repositories
 							s.handleMigrationsListReposForOrgRequest(args, w, r)
 							return
@@ -3114,8 +3328,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							return
 						}
 					}
-				case "blocks": // -> 220
-					// Edge: 220, path: "blocks".
+				case "blocks": // -> 235
+					// Edge: 235, path: "blocks".
 					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
@@ -3127,8 +3341,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						s.handleOrgsCheckBlockedUserRequest(args, w, r)
 						return
 					}
-				case "members": // -> 222
-					// Edge: 222, path: "members".
+				case "members": // -> 237
+					// Edge: 237, path: "members".
 					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
@@ -3140,8 +3354,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						s.handleOrgsCheckMembershipForUserRequest(args, w, r)
 						return
 					}
-				case "public_members": // -> 224
-					// Edge: 224, path: "public_members".
+				case "public_members": // -> 239
+					// Edge: 239, path: "public_members".
 					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
@@ -3153,12 +3367,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						s.handleOrgsCheckPublicMembershipForUserRequest(args, w, r)
 						return
 					}
-				case "audit-log": // -> 226
+				case "audit-log": // -> 241
 					// GET /orgs/{org}/audit-log
 					s.handleOrgsGetAuditLogRequest(args, w, r)
 					return
-				case "memberships": // -> 230
-					// Edge: 230, path: "memberships".
+				case "memberships": // -> 245
+					// Edge: 245, path: "memberships".
 					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
@@ -3170,8 +3384,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						s.handleOrgsGetMembershipForUserRequest(args, w, r)
 						return
 					}
-				case "hooks": // -> 232
-					// Edge: 232, path: "hooks".
+				case "hooks": // -> 247
+					// Edge: 247, path: "hooks".
 					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
@@ -3179,25 +3393,38 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args = make(map[string]string)
 						}
 						args["hook_id"] = string(elem)
-						// Edge: 233, path: "".
+						// Edge: 248, path: "".
 						elem, p = nextElem(p)
 						switch string(elem) {
-						case "config": // -> 234
+						case "config": // -> 249
 							// GET /orgs/{org}/hooks/{hook_id}/config
 							s.handleOrgsGetWebhookConfigForOrgRequest(args, w, r)
 							return
+						case "deliveries": // -> 250
+							// Edge: 250, path: "deliveries".
+							elem, p = nextElem(p)
+							switch string(elem) {
+							default:
+								if args == nil {
+									args = make(map[string]string)
+								}
+								args["delivery_id"] = string(elem)
+								// GET /orgs/{org}/hooks/{hook_id}/deliveries/{delivery_id}
+								s.handleOrgsGetWebhookDeliveryRequest(args, w, r)
+								return
+							}
 						default:
 							// GET /orgs/{org}/hooks/{hook_id}.
 							s.handleOrgsGetWebhookRequest(args, w, r)
 							return
 						}
 					}
-				case "failed_invitations": // -> 236
+				case "failed_invitations": // -> 253
 					// GET /orgs/{org}/failed_invitations
 					s.handleOrgsListFailedInvitationsRequest(args, w, r)
 					return
-				case "invitations": // -> 239
-					// Edge: 239, path: "invitations".
+				case "invitations": // -> 256
+					// Edge: 256, path: "invitations".
 					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
@@ -3205,10 +3432,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args = make(map[string]string)
 						}
 						args["invitation_id"] = string(elem)
-						// Edge: 240, path: "".
+						// Edge: 257, path: "".
 						elem, p = nextElem(p)
 						switch string(elem) {
-						case "teams": // -> 241
+						case "teams": // -> 258
 							// GET /orgs/{org}/invitations/{invitation_id}/teams
 							s.handleOrgsListInvitationTeamsRequest(args, w, r)
 							return
@@ -3217,16 +3444,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							return
 						}
 					}
-				case "outside_collaborators": // -> 242
+				case "outside_collaborators": // -> 259
 					// GET /orgs/{org}/outside_collaborators
 					s.handleOrgsListOutsideCollaboratorsRequest(args, w, r)
 					return
-				case "credential-authorizations": // -> 243
+				case "credential-authorizations": // -> 260
 					// GET /orgs/{org}/credential-authorizations
 					s.handleOrgsListSamlSSOAuthorizationsRequest(args, w, r)
 					return
-				case "packages": // -> 249
-					// Edge: 249, path: "packages".
+				case "packages": // -> 266
+					// Edge: 266, path: "packages".
 					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
@@ -3234,11 +3461,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args = make(map[string]string)
 						}
 						args["package_type"] = string(elem)
-						// Edge: 250, path: "".
+						// Edge: 267, path: "".
 						elem, p = nextElem(p)
 						switch string(elem) {
-						case "": // -> 251
-							// Edge: 251, path: "".
+						case "": // -> 268
+							// Edge: 268, path: "".
 							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
@@ -3246,11 +3473,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["package_name"] = string(elem)
-								// Edge: 252, path: "".
+								// Edge: 269, path: "".
 								elem, p = nextElem(p)
 								switch string(elem) {
-								case "versions": // -> 253
-									// Edge: 253, path: "versions".
+								case "versions": // -> 270
+									// Edge: 270, path: "versions".
 									elem, p = nextElem(p)
 									switch string(elem) {
 									default:
@@ -3273,12 +3500,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							return
 						}
 					}
-				case "projects": // -> 270
+				case "projects": // -> 290
 					// GET /orgs/{org}/projects
 					s.handleProjectsListForOrgRequest(args, w, r)
 					return
-				case "teams": // -> 290
-					// Edge: 290, path: "teams".
+				case "teams": // -> 312
+					// Edge: 312, path: "teams".
 					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
@@ -3286,11 +3513,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args = make(map[string]string)
 						}
 						args["team_slug"] = string(elem)
-						// Edge: 291, path: "".
+						// Edge: 313, path: "".
 						elem, p = nextElem(p)
 						switch string(elem) {
-						case "discussions": // -> 292
-							// Edge: 292, path: "discussions".
+						case "discussions": // -> 314
+							// Edge: 314, path: "discussions".
 							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
@@ -3298,11 +3525,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["discussion_number"] = string(elem)
-								// Edge: 293, path: "".
+								// Edge: 315, path: "".
 								elem, p = nextElem(p)
 								switch string(elem) {
-								case "comments": // -> 294
-									// Edge: 294, path: "comments".
+								case "comments": // -> 316
+									// Edge: 316, path: "comments".
 									elem, p = nextElem(p)
 									switch string(elem) {
 									default:
@@ -3310,10 +3537,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											args = make(map[string]string)
 										}
 										args["comment_number"] = string(elem)
-										// Edge: 295, path: "".
+										// Edge: 317, path: "".
 										elem, p = nextElem(p)
 										switch string(elem) {
-										case "reactions": // -> 296
+										case "reactions": // -> 318
 											// GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions
 											s.handleReactionsListForTeamDiscussionCommentInOrgRequest(args, w, r)
 											return
@@ -3323,7 +3550,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											return
 										}
 									}
-								case "reactions": // -> 304
+								case "reactions": // -> 326
 									// GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions
 									s.handleReactionsListForTeamDiscussionInOrgRequest(args, w, r)
 									return
@@ -3333,8 +3560,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									return
 								}
 							}
-						case "projects": // -> 388
-							// Edge: 388, path: "projects".
+						case "projects": // -> 421
+							// Edge: 421, path: "projects".
 							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
@@ -3346,8 +3573,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.handleTeamsCheckPermissionsForProjectInOrgRequest(args, w, r)
 								return
 							}
-						case "repos": // -> 392
-							// Edge: 392, path: "repos".
+						case "repos": // -> 425
+							// Edge: 425, path: "repos".
 							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
@@ -3355,11 +3582,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["owner"] = string(elem)
-								// Edge: 393, path: "".
+								// Edge: 426, path: "".
 								elem, p = nextElem(p)
 								switch string(elem) {
-								case "": // -> 394
-									// Edge: 394, path: "".
+								case "": // -> 427
+									// Edge: 427, path: "".
 									elem, p = nextElem(p)
 									switch string(elem) {
 									default:
@@ -3376,8 +3603,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									return
 								}
 							}
-						case "memberships": // -> 402
-							// Edge: 402, path: "memberships".
+						case "memberships": // -> 435
+							// Edge: 435, path: "memberships".
 							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
@@ -3389,15 +3616,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.handleTeamsGetMembershipForUserInOrgRequest(args, w, r)
 								return
 							}
-						case "teams": // -> 406
+						case "teams": // -> 439
 							// GET /orgs/{org}/teams/{team_slug}/teams
 							s.handleTeamsListChildInOrgRequest(args, w, r)
 							return
-						case "team-sync": // -> 412
-							// Edge: 412, path: "team-sync".
+						case "team-sync": // -> 446
+							// Edge: 446, path: "team-sync".
 							elem, p = nextElem(p)
 							switch string(elem) {
-							case "group-mappings": // -> 413
+							case "group-mappings": // -> 447
 								// GET /orgs/{org}/teams/{team_slug}/team-sync/group-mappings
 								s.handleTeamsListIdpGroupsInOrgRequest(args, w, r)
 								return
@@ -3405,11 +3632,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.notFound(w, r)
 								return
 							}
-						case "members": // -> 414
+						case "members": // -> 448
 							// GET /orgs/{org}/teams/{team_slug}/members
 							s.handleTeamsListMembersInOrgRequest(args, w, r)
 							return
-						case "invitations": // -> 415
+						case "invitations": // -> 449
 							// GET /orgs/{org}/teams/{team_slug}/invitations
 							s.handleTeamsListPendingInvitationsInOrgRequest(args, w, r)
 							return
@@ -3419,15 +3646,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							return
 						}
 					}
-				case "repos": // -> 370
+				case "repos": // -> 398
 					// GET /orgs/{org}/repos
 					s.handleReposListForOrgRequest(args, w, r)
 					return
-				case "secret-scanning": // -> 386
-					// Edge: 386, path: "secret-scanning".
+				case "secret-scanning": // -> 419
+					// Edge: 419, path: "secret-scanning".
 					elem, p = nextElem(p)
 					switch string(elem) {
-					case "alerts": // -> 387
+					case "alerts": // -> 420
 						// GET /orgs/{org}/secret-scanning/alerts
 						s.handleSecretScanningListAlertsForOrgRequest(args, w, r)
 						return
@@ -3435,11 +3662,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						s.notFound(w, r)
 						return
 					}
-				case "team-sync": // -> 410
-					// Edge: 410, path: "team-sync".
+				case "team-sync": // -> 444
+					// Edge: 444, path: "team-sync".
 					elem, p = nextElem(p)
 					switch string(elem) {
-					case "groups": // -> 411
+					case "groups": // -> 445
 						// GET /orgs/{org}/team-sync/groups
 						s.handleTeamsListIdpGroupsForOrgRequest(args, w, r)
 						return
@@ -3542,8 +3769,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				// GET /user/subscriptions
 				s.handleActivityListWatchedReposForAuthenticatedUserRequest(args, w, r)
 				return
-			case "installations": // -> 98
-				// Edge: 98, path: "installations".
+			case "installations": // -> 103
+				// Edge: 103, path: "installations".
 				elem, p = nextElem(p)
 				switch string(elem) {
 				default:
@@ -3551,10 +3778,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						args = make(map[string]string)
 					}
 					args["installation_id"] = string(elem)
-					// Edge: 99, path: "".
+					// Edge: 104, path: "".
 					elem, p = nextElem(p)
 					switch string(elem) {
-					case "repositories": // -> 100
+					case "repositories": // -> 105
 						// GET /user/installations/{installation_id}/repositories
 						s.handleAppsListInstallationReposForAuthenticatedUserRequest(args, w, r)
 						return
@@ -3563,11 +3790,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						return
 					}
 				}
-			case "marketplace_purchases": // -> 104
-				// Edge: 104, path: "marketplace_purchases".
+			case "marketplace_purchases": // -> 108
+				// Edge: 108, path: "marketplace_purchases".
 				elem, p = nextElem(p)
 				switch string(elem) {
-				case "stubbed": // -> 105
+				case "stubbed": // -> 109
 					// GET /user/marketplace_purchases/stubbed
 					s.handleAppsListSubscriptionsForAuthenticatedUserStubbedRequest(args, w, r)
 					return
@@ -3576,8 +3803,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					s.handleAppsListSubscriptionsForAuthenticatedUserRequest(args, w, r)
 					return
 				}
-			case "migrations": // -> 207
-				// Edge: 207, path: "migrations".
+			case "issues": // -> 210
+				// GET /user/issues
+				s.handleIssuesListForAuthenticatedUserRequest(args, w, r)
+				return
+			case "migrations": // -> 222
+				// Edge: 222, path: "migrations".
 				elem, p = nextElem(p)
 				switch string(elem) {
 				default:
@@ -3585,14 +3816,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						args = make(map[string]string)
 					}
 					args["migration_id"] = string(elem)
-					// Edge: 208, path: "".
+					// Edge: 223, path: "".
 					elem, p = nextElem(p)
 					switch string(elem) {
-					case "archive": // -> 209
+					case "archive": // -> 224
 						// GET /user/migrations/{migration_id}/archive
 						s.handleMigrationsGetArchiveForAuthenticatedUserRequest(args, w, r)
 						return
-					case "repositories": // -> 214
+					case "repositories": // -> 229
 						// GET /user/migrations/{migration_id}/repositories
 						s.handleMigrationsListReposForUserRequest(args, w, r)
 						return
@@ -3602,12 +3833,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						return
 					}
 				}
-			case "memberships": // -> 227
-				// Edge: 227, path: "memberships".
+			case "memberships": // -> 242
+				// Edge: 242, path: "memberships".
 				elem, p = nextElem(p)
 				switch string(elem) {
-				case "orgs": // -> 228
-					// Edge: 228, path: "orgs".
+				case "orgs": // -> 243
+					// Edge: 243, path: "orgs".
 					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
@@ -3623,12 +3854,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					s.notFound(w, r)
 					return
 				}
-			case "orgs": // -> 237
+			case "orgs": // -> 254
 				// GET /user/orgs
 				s.handleOrgsListForAuthenticatedUserRequest(args, w, r)
 				return
-			case "packages": // -> 244
-				// Edge: 244, path: "packages".
+			case "packages": // -> 261
+				// Edge: 261, path: "packages".
 				elem, p = nextElem(p)
 				switch string(elem) {
 				default:
@@ -3636,11 +3867,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						args = make(map[string]string)
 					}
 					args["package_type"] = string(elem)
-					// Edge: 245, path: "".
+					// Edge: 262, path: "".
 					elem, p = nextElem(p)
 					switch string(elem) {
-					case "": // -> 246
-						// Edge: 246, path: "".
+					case "": // -> 263
+						// Edge: 263, path: "".
 						elem, p = nextElem(p)
 						switch string(elem) {
 						default:
@@ -3648,11 +3879,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								args = make(map[string]string)
 							}
 							args["package_name"] = string(elem)
-							// Edge: 247, path: "".
+							// Edge: 264, path: "".
 							elem, p = nextElem(p)
 							switch string(elem) {
-							case "versions": // -> 248
-								// Edge: 248, path: "versions".
+							case "versions": // -> 265
+								// Edge: 265, path: "versions".
 								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
@@ -3675,16 +3906,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						return
 					}
 				}
-			case "repository_invitations": // -> 374
+			case "repos": // -> 397
+				// GET /user/repos
+				s.handleReposListForAuthenticatedUserRequest(args, w, r)
+				return
+			case "repository_invitations": // -> 402
 				// GET /user/repository_invitations
 				s.handleReposListInvitationsForAuthenticatedUserRequest(args, w, r)
 				return
-			case "teams": // -> 407
+			case "teams": // -> 441
 				// GET /user/teams
 				s.handleTeamsListForAuthenticatedUserRequest(args, w, r)
 				return
-			case "blocks": // -> 417
-				// Edge: 417, path: "blocks".
+			case "blocks": // -> 451
+				// Edge: 451, path: "blocks".
 				elem, p = nextElem(p)
 				switch string(elem) {
 				default:
@@ -3696,8 +3931,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					s.handleUsersCheckBlockedRequest(args, w, r)
 					return
 				}
-			case "following": // -> 421
-				// Edge: 421, path: "following".
+			case "following": // -> 455
+				// Edge: 455, path: "following".
 				elem, p = nextElem(p)
 				switch string(elem) {
 				default:
@@ -3709,8 +3944,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					s.handleUsersCheckPersonIsFollowedByAuthenticatedRequest(args, w, r)
 					return
 				}
-			case "gpg_keys": // -> 423
-				// Edge: 423, path: "gpg_keys".
+			case "gpg_keys": // -> 458
+				// Edge: 458, path: "gpg_keys".
 				elem, p = nextElem(p)
 				switch string(elem) {
 				default:
@@ -3722,8 +3957,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					s.handleUsersGetGpgKeyForAuthenticatedRequest(args, w, r)
 					return
 				}
-			case "keys": // -> 425
-				// Edge: 425, path: "keys".
+			case "keys": // -> 460
+				// Edge: 460, path: "keys".
 				elem, p = nextElem(p)
 				switch string(elem) {
 				default:
@@ -3735,15 +3970,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					s.handleUsersGetPublicSSHKeyForAuthenticatedRequest(args, w, r)
 					return
 				}
-			case "emails": // -> 427
+			case "emails": // -> 462
 				// GET /user/emails
 				s.handleUsersListEmailsForAuthenticatedRequest(args, w, r)
 				return
-			case "followers": // -> 428
+			case "followers": // -> 463
 				// GET /user/followers
 				s.handleUsersListFollowersForAuthenticatedUserRequest(args, w, r)
 				return
-			case "public_emails": // -> 431
+			case "public_emails": // -> 466
 				// GET /user/public_emails
 				s.handleUsersListPublicEmailsForAuthenticatedRequest(args, w, r)
 				return
@@ -3783,7 +4018,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 				}
 			default:
-				s.notFound(w, r)
+				// GET /notifications.
+				s.handleActivityListNotificationsForAuthenticatedUserRequest(args, w, r)
 				return
 			}
 		case "users": // -> 64
@@ -3841,23 +4077,23 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					// GET /users/{username}/subscriptions
 					s.handleActivityListReposWatchedByUserRequest(args, w, r)
 					return
-				case "settings": // -> 114
-					// Edge: 114, path: "settings".
+				case "settings": // -> 118
+					// Edge: 118, path: "settings".
 					elem, p = nextElem(p)
 					switch string(elem) {
-					case "billing": // -> 115
-						// Edge: 115, path: "billing".
+					case "billing": // -> 119
+						// Edge: 119, path: "billing".
 						elem, p = nextElem(p)
 						switch string(elem) {
-						case "actions": // -> 116
+						case "actions": // -> 120
 							// GET /users/{username}/settings/billing/actions
 							s.handleBillingGetGithubActionsBillingUserRequest(args, w, r)
 							return
-						case "packages": // -> 119
+						case "packages": // -> 123
 							// GET /users/{username}/settings/billing/packages
 							s.handleBillingGetGithubPackagesBillingUserRequest(args, w, r)
 							return
-						case "shared-storage": // -> 122
+						case "shared-storage": // -> 126
 							// GET /users/{username}/settings/billing/shared-storage
 							s.handleBillingGetSharedStorageBillingUserRequest(args, w, r)
 							return
@@ -3869,12 +4105,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						s.notFound(w, r)
 						return
 					}
-				case "orgs": // -> 238
+				case "gists": // -> 176
+					// GET /users/{username}/gists
+					s.handleGistsListForUserRequest(args, w, r)
+					return
+				case "orgs": // -> 255
 					// GET /users/{username}/orgs
 					s.handleOrgsListForUserRequest(args, w, r)
 					return
-				case "packages": // -> 254
-					// Edge: 254, path: "packages".
+				case "packages": // -> 271
+					// Edge: 271, path: "packages".
 					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
@@ -3882,11 +4122,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args = make(map[string]string)
 						}
 						args["package_type"] = string(elem)
-						// Edge: 255, path: "".
+						// Edge: 272, path: "".
 						elem, p = nextElem(p)
 						switch string(elem) {
-						case "": // -> 256
-							// Edge: 256, path: "".
+						case "": // -> 273
+							// Edge: 273, path: "".
 							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
@@ -3894,11 +4134,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["package_name"] = string(elem)
-								// Edge: 257, path: "".
+								// Edge: 274, path: "".
 								elem, p = nextElem(p)
 								switch string(elem) {
-								case "versions": // -> 258
-									// Edge: 258, path: "versions".
+								case "versions": // -> 275
+									// Edge: 275, path: "versions".
 									elem, p = nextElem(p)
 									switch string(elem) {
 									default:
@@ -3921,12 +4161,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							return
 						}
 					}
-				case "repos": // -> 371
+				case "projects": // -> 292
+					// GET /users/{username}/projects
+					s.handleProjectsListForUserRequest(args, w, r)
+					return
+				case "repos": // -> 399
 					// GET /users/{username}/repos
 					s.handleReposListForUserRequest(args, w, r)
 					return
-				case "following": // -> 419
-					// Edge: 419, path: "following".
+				case "following": // -> 453
+					// Edge: 453, path: "following".
 					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
@@ -3938,15 +4182,19 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						s.handleUsersCheckFollowingForUserRequest(args, w, r)
 						return
 					}
-				case "followers": // -> 429
+				case "hovercard": // -> 457
+					// GET /users/{username}/hovercard
+					s.handleUsersGetContextForUserRequest(args, w, r)
+					return
+				case "followers": // -> 464
 					// GET /users/{username}/followers
 					s.handleUsersListFollowersForUserRequest(args, w, r)
 					return
-				case "gpg_keys": // -> 430
+				case "gpg_keys": // -> 465
 					// GET /users/{username}/gpg_keys
 					s.handleUsersListGpgKeysForUserRequest(args, w, r)
 					return
-				case "keys": // -> 432
+				case "keys": // -> 467
 					// GET /users/{username}/keys
 					s.handleUsersListPublicKeysForUserRequest(args, w, r)
 					return
@@ -4010,6 +4258,19 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					// GET /app/hook/config
 					s.handleAppsGetWebhookConfigForAppRequest(args, w, r)
 					return
+				case "deliveries": // -> 95
+					// Edge: 95, path: "deliveries".
+					elem, p = nextElem(p)
+					switch string(elem) {
+					default:
+						if args == nil {
+							args = make(map[string]string)
+						}
+						args["delivery_id"] = string(elem)
+						// GET /app/hook/deliveries/{delivery_id}
+						s.handleAppsGetWebhookDeliveryRequest(args, w, r)
+						return
+					}
 				default:
 					s.notFound(w, r)
 					return
@@ -4066,8 +4327,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						s.handleAppsGetSubscriptionPlanForAccountStubbedRequest(args, w, r)
 						return
 					}
-				case "plans": // -> 95
-					// Edge: 95, path: "plans".
+				case "plans": // -> 100
+					// Edge: 100, path: "plans".
 					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
@@ -4075,10 +4336,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args = make(map[string]string)
 						}
 						args["plan_id"] = string(elem)
-						// Edge: 96, path: "".
+						// Edge: 101, path: "".
 						elem, p = nextElem(p)
 						switch string(elem) {
-						case "accounts": // -> 97
+						case "accounts": // -> 102
 							// GET /marketplace_listing/stubbed/plans/{plan_id}/accounts
 							s.handleAppsListAccountsForPlanStubbedRequest(args, w, r)
 							return
@@ -4091,19 +4352,36 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					s.notFound(w, r)
 					return
 				}
-			case "plans": // -> 101
-				// GET /marketplace_listing/plans
-				s.handleAppsListPlansRequest(args, w, r)
-				return
+			case "plans": // -> 97
+				// Edge: 97, path: "plans".
+				elem, p = nextElem(p)
+				switch string(elem) {
+				default:
+					if args == nil {
+						args = make(map[string]string)
+					}
+					args["plan_id"] = string(elem)
+					// Edge: 98, path: "".
+					elem, p = nextElem(p)
+					switch string(elem) {
+					case "accounts": // -> 99
+						// GET /marketplace_listing/plans/{plan_id}/accounts
+						s.handleAppsListAccountsForPlanRequest(args, w, r)
+						return
+					default:
+						s.notFound(w, r)
+						return
+					}
+				}
 			default:
 				s.notFound(w, r)
 				return
 			}
-		case "installation": // -> 102
-			// Edge: 102, path: "installation".
+		case "installation": // -> 106
+			// Edge: 106, path: "installation".
 			elem, p = nextElem(p)
 			switch string(elem) {
-			case "repositories": // -> 103
+			case "repositories": // -> 107
 				// GET /installation/repositories
 				s.handleAppsListReposAccessibleToInstallationRequest(args, w, r)
 				return
@@ -4111,8 +4389,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				s.notFound(w, r)
 				return
 			}
-		case "enterprises": // -> 106
-			// Edge: 106, path: "enterprises".
+		case "enterprises": // -> 110
+			// Edge: 110, path: "enterprises".
 			elem, p = nextElem(p)
 			switch string(elem) {
 			default:
@@ -4120,26 +4398,26 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					args = make(map[string]string)
 				}
 				args["enterprise"] = string(elem)
-				// Edge: 107, path: "".
+				// Edge: 111, path: "".
 				elem, p = nextElem(p)
 				switch string(elem) {
-				case "settings": // -> 108
-					// Edge: 108, path: "settings".
+				case "settings": // -> 112
+					// Edge: 112, path: "settings".
 					elem, p = nextElem(p)
 					switch string(elem) {
-					case "billing": // -> 109
-						// Edge: 109, path: "billing".
+					case "billing": // -> 113
+						// Edge: 113, path: "billing".
 						elem, p = nextElem(p)
 						switch string(elem) {
-						case "actions": // -> 110
+						case "actions": // -> 114
 							// GET /enterprises/{enterprise}/settings/billing/actions
 							s.handleBillingGetGithubActionsBillingGheRequest(args, w, r)
 							return
-						case "packages": // -> 117
+						case "packages": // -> 121
 							// GET /enterprises/{enterprise}/settings/billing/packages
 							s.handleBillingGetGithubPackagesBillingGheRequest(args, w, r)
 							return
-						case "shared-storage": // -> 120
+						case "shared-storage": // -> 124
 							// GET /enterprises/{enterprise}/settings/billing/shared-storage
 							s.handleBillingGetSharedStorageBillingGheRequest(args, w, r)
 							return
@@ -4151,19 +4429,19 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						s.notFound(w, r)
 						return
 					}
-				case "actions": // -> 144
-					// Edge: 144, path: "actions".
+				case "actions": // -> 148
+					// Edge: 148, path: "actions".
 					elem, p = nextElem(p)
 					switch string(elem) {
-					case "permissions": // -> 145
-						// Edge: 145, path: "permissions".
+					case "permissions": // -> 149
+						// Edge: 149, path: "permissions".
 						elem, p = nextElem(p)
 						switch string(elem) {
-						case "selected-actions": // -> 146
+						case "selected-actions": // -> 150
 							// GET /enterprises/{enterprise}/actions/permissions/selected-actions
 							s.handleEnterpriseAdminGetAllowedActionsEnterpriseRequest(args, w, r)
 							return
-						case "organizations": // -> 162
+						case "organizations": // -> 166
 							// GET /enterprises/{enterprise}/actions/permissions/organizations
 							s.handleEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseRequest(args, w, r)
 							return
@@ -4172,11 +4450,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							s.handleEnterpriseAdminGetGithubActionsPermissionsEnterpriseRequest(args, w, r)
 							return
 						}
-					case "runners": // -> 156
-						// Edge: 156, path: "runners".
+					case "runners": // -> 160
+						// Edge: 160, path: "runners".
 						elem, p = nextElem(p)
 						switch string(elem) {
-						case "downloads": // -> 161
+						case "downloads": // -> 165
 							// GET /enterprises/{enterprise}/actions/runners/downloads
 							s.handleEnterpriseAdminListRunnerApplicationsForEnterpriseRequest(args, w, r)
 							return
@@ -4189,8 +4467,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							s.handleEnterpriseAdminGetSelfHostedRunnerForEnterpriseRequest(args, w, r)
 							return
 						}
-					case "runner-groups": // -> 158
-						// Edge: 158, path: "runner-groups".
+					case "runner-groups": // -> 162
+						// Edge: 162, path: "runner-groups".
 						elem, p = nextElem(p)
 						switch string(elem) {
 						default:
@@ -4198,14 +4476,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								args = make(map[string]string)
 							}
 							args["runner_group_id"] = string(elem)
-							// Edge: 159, path: "".
+							// Edge: 163, path: "".
 							elem, p = nextElem(p)
 							switch string(elem) {
-							case "organizations": // -> 160
+							case "organizations": // -> 164
 								// GET /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations
 								s.handleEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(args, w, r)
 								return
-							case "runners": // -> 163
+							case "runners": // -> 167
 								// GET /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners
 								s.handleEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseRequest(args, w, r)
 								return
@@ -4219,7 +4497,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						s.notFound(w, r)
 						return
 					}
-				case "audit-log": // -> 147
+				case "audit-log": // -> 151
 					// GET /enterprises/{enterprise}/audit-log
 					s.handleEnterpriseAdminGetAuditLogRequest(args, w, r)
 					return
@@ -4228,8 +4506,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					return
 				}
 			}
-		case "codes_of_conduct": // -> 141
-			// Edge: 141, path: "codes_of_conduct".
+		case "codes_of_conduct": // -> 145
+			// Edge: 145, path: "codes_of_conduct".
 			elem, p = nextElem(p)
 			switch string(elem) {
 			default:
@@ -4241,20 +4519,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				s.handleCodesOfConductGetConductCodeRequest(args, w, r)
 				return
 			}
-		case "emojis": // -> 143
+		case "emojis": // -> 147
 			// GET /emojis
 			s.handleEmojisGetRequest(args, w, r)
 			return
-		case "scim": // -> 148
-			// Edge: 148, path: "scim".
+		case "scim": // -> 152
+			// Edge: 152, path: "scim".
 			elem, p = nextElem(p)
 			switch string(elem) {
-			case "v2": // -> 149
-				// Edge: 149, path: "v2".
+			case "v2": // -> 153
+				// Edge: 153, path: "v2".
 				elem, p = nextElem(p)
 				switch string(elem) {
-				case "enterprises": // -> 150
-					// Edge: 150, path: "enterprises".
+				case "enterprises": // -> 154
+					// Edge: 154, path: "enterprises".
 					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
@@ -4262,11 +4540,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args = make(map[string]string)
 						}
 						args["enterprise"] = string(elem)
-						// Edge: 151, path: "".
+						// Edge: 155, path: "".
 						elem, p = nextElem(p)
 						switch string(elem) {
-						case "Groups": // -> 152
-							// Edge: 152, path: "Groups".
+						case "Groups": // -> 156
+							// Edge: 156, path: "Groups".
 							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
@@ -4278,8 +4556,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.handleEnterpriseAdminGetProvisioningInformationForEnterpriseGroupRequest(args, w, r)
 								return
 							}
-						case "Users": // -> 154
-							// Edge: 154, path: "Users".
+						case "Users": // -> 158
+							// Edge: 158, path: "Users".
 							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
@@ -4304,11 +4582,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				s.notFound(w, r)
 				return
 			}
-		case "gists": // -> 164
-			// Edge: 164, path: "gists".
+		case "gists": // -> 168
+			// Edge: 168, path: "gists".
 			elem, p = nextElem(p)
 			switch string(elem) {
-			case "starred": // -> 171
+			case "public": // -> 178
+				// GET /gists/public
+				s.handleGistsListPublicRequest(args, w, r)
+				return
+			case "starred": // -> 179
 				// GET /gists/starred
 				s.handleGistsListStarredRequest(args, w, r)
 				return
@@ -4317,15 +4599,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					args = make(map[string]string)
 				}
 				args["gist_id"] = string(elem)
-				// Edge: 165, path: "".
+				// Edge: 169, path: "".
 				elem, p = nextElem(p)
 				switch string(elem) {
-				case "star": // -> 166
+				case "star": // -> 170
 					// GET /gists/{gist_id}/star
 					s.handleGistsCheckIsStarredRequest(args, w, r)
 					return
-				case "comments": // -> 167
-					// Edge: 167, path: "comments".
+				case "comments": // -> 171
+					// Edge: 171, path: "comments".
 					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
@@ -4337,11 +4619,24 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						s.handleGistsGetCommentRequest(args, w, r)
 						return
 					}
-				case "commits": // -> 169
+				case "": // -> 173
+					// Edge: 173, path: "".
+					elem, p = nextElem(p)
+					switch string(elem) {
+					default:
+						if args == nil {
+							args = make(map[string]string)
+						}
+						args["sha"] = string(elem)
+						// GET /gists/{gist_id}/{sha}
+						s.handleGistsGetRevisionRequest(args, w, r)
+						return
+					}
+				case "commits": // -> 175
 					// GET /gists/{gist_id}/commits
 					s.handleGistsListCommitsRequest(args, w, r)
 					return
-				case "forks": // -> 170
+				case "forks": // -> 177
 					// GET /gists/{gist_id}/forks
 					s.handleGistsListForksRequest(args, w, r)
 					return
@@ -4351,12 +4646,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					return
 				}
 			}
-		case "gitignore": // -> 181
-			// Edge: 181, path: "gitignore".
+		case "gitignore": // -> 193
+			// Edge: 193, path: "gitignore".
 			elem, p = nextElem(p)
 			switch string(elem) {
-			case "templates": // -> 182
-				// Edge: 182, path: "templates".
+			case "templates": // -> 194
+				// Edge: 194, path: "templates".
 				elem, p = nextElem(p)
 				switch string(elem) {
 				default:
@@ -4372,8 +4667,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				s.notFound(w, r)
 				return
 			}
-		case "licenses": // -> 199
-			// Edge: 199, path: "licenses".
+		case "issues": // -> 208
+			// GET /issues
+			s.handleIssuesListRequest(args, w, r)
+			return
+		case "licenses": // -> 214
+			// Edge: 214, path: "licenses".
 			elem, p = nextElem(p)
 			switch string(elem) {
 			default:
@@ -4385,16 +4684,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				s.handleLicensesGetRequest(args, w, r)
 				return
 			}
-		case "meta": // -> 202
+		case "meta": // -> 217
 			// GET /meta
 			s.handleMetaGetRequest(args, w, r)
 			return
-		case "": // -> 203
+		case "": // -> 218
 			// GET /
 			s.handleMetaRootRequest(args, w, r)
 			return
-		case "authorizations": // -> 215
-			// Edge: 215, path: "authorizations".
+		case "authorizations": // -> 230
+			// Edge: 230, path: "authorizations".
 			elem, p = nextElem(p)
 			switch string(elem) {
 			default:
@@ -4406,12 +4705,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				s.handleOAuthAuthorizationsGetAuthorizationRequest(args, w, r)
 				return
 			}
-		case "applications": // -> 217
-			// Edge: 217, path: "applications".
+		case "applications": // -> 232
+			// Edge: 232, path: "applications".
 			elem, p = nextElem(p)
 			switch string(elem) {
-			case "grants": // -> 218
-				// Edge: 218, path: "grants".
+			case "grants": // -> 233
+				// Edge: 233, path: "grants".
 				elem, p = nextElem(p)
 				switch string(elem) {
 				default:
@@ -4427,20 +4726,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				s.notFound(w, r)
 				return
 			}
-		case "organizations": // -> 235
+		case "organizations": // -> 252
 			// GET /organizations
 			s.handleOrgsListRequest(args, w, r)
 			return
-		case "projects": // -> 262
-			// Edge: 262, path: "projects".
+		case "projects": // -> 279
+			// Edge: 279, path: "projects".
 			elem, p = nextElem(p)
 			switch string(elem) {
-			case "columns": // -> 264
-				// Edge: 264, path: "columns".
+			case "columns": // -> 281
+				// Edge: 281, path: "columns".
 				elem, p = nextElem(p)
 				switch string(elem) {
-				case "cards": // -> 265
-					// Edge: 265, path: "cards".
+				case "cards": // -> 282
+					// Edge: 282, path: "cards".
 					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
@@ -4457,10 +4756,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						args = make(map[string]string)
 					}
 					args["column_id"] = string(elem)
-					// Edge: 267, path: "".
+					// Edge: 284, path: "".
 					elem, p = nextElem(p)
 					switch string(elem) {
-					case "cards": // -> 268
+					case "cards": // -> 288
 						// GET /projects/columns/{column_id}/cards
 						s.handleProjectsListCardsRequest(args, w, r)
 						return
@@ -4475,10 +4774,31 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					args = make(map[string]string)
 				}
 				args["project_id"] = string(elem)
-				// Edge: 263, path: "".
+				// Edge: 280, path: "".
 				elem, p = nextElem(p)
 				switch string(elem) {
-				case "columns": // -> 269
+				case "collaborators": // -> 285
+					// Edge: 285, path: "collaborators".
+					elem, p = nextElem(p)
+					switch string(elem) {
+					default:
+						if args == nil {
+							args = make(map[string]string)
+						}
+						args["username"] = string(elem)
+						// Edge: 286, path: "".
+						elem, p = nextElem(p)
+						switch string(elem) {
+						case "permission": // -> 287
+							// GET /projects/{project_id}/collaborators/{username}/permission
+							s.handleProjectsGetPermissionForUserRequest(args, w, r)
+							return
+						default:
+							s.notFound(w, r)
+							return
+						}
+					}
+				case "columns": // -> 289
 					// GET /projects/{project_id}/columns
 					s.handleProjectsListColumnsRequest(args, w, r)
 					return
@@ -4488,12 +4808,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					return
 				}
 			}
-		case "rate_limit": // -> 283
+		case "rate_limit": // -> 305
 			// GET /rate_limit
 			s.handleRateLimitGetRequest(args, w, r)
 			return
-		case "teams": // -> 297
-			// Edge: 297, path: "teams".
+		case "teams": // -> 319
+			// Edge: 319, path: "teams".
 			elem, p = nextElem(p)
 			switch string(elem) {
 			default:
@@ -4501,11 +4821,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					args = make(map[string]string)
 				}
 				args["team_id"] = string(elem)
-				// Edge: 298, path: "".
+				// Edge: 320, path: "".
 				elem, p = nextElem(p)
 				switch string(elem) {
-				case "discussions": // -> 299
-					// Edge: 299, path: "discussions".
+				case "discussions": // -> 321
+					// Edge: 321, path: "discussions".
 					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
@@ -4513,11 +4833,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args = make(map[string]string)
 						}
 						args["discussion_number"] = string(elem)
-						// Edge: 300, path: "".
+						// Edge: 322, path: "".
 						elem, p = nextElem(p)
 						switch string(elem) {
-						case "comments": // -> 301
-							// Edge: 301, path: "comments".
+						case "comments": // -> 323
+							// Edge: 323, path: "comments".
 							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
@@ -4525,10 +4845,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["comment_number"] = string(elem)
-								// Edge: 302, path: "".
+								// Edge: 324, path: "".
 								elem, p = nextElem(p)
 								switch string(elem) {
-								case "reactions": // -> 303
+								case "reactions": // -> 325
 									// GET /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions
 									s.handleReactionsListForTeamDiscussionCommentLegacyRequest(args, w, r)
 									return
@@ -4538,7 +4858,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									return
 								}
 							}
-						case "reactions": // -> 305
+						case "reactions": // -> 327
 							// GET /teams/{team_id}/discussions/{discussion_number}/reactions
 							s.handleReactionsListForTeamDiscussionLegacyRequest(args, w, r)
 							return
@@ -4548,8 +4868,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							return
 						}
 					}
-				case "projects": // -> 390
-					// Edge: 390, path: "projects".
+				case "projects": // -> 423
+					// Edge: 423, path: "projects".
 					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
@@ -4561,8 +4881,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						s.handleTeamsCheckPermissionsForProjectLegacyRequest(args, w, r)
 						return
 					}
-				case "repos": // -> 396
-					// Edge: 396, path: "repos".
+				case "repos": // -> 429
+					// Edge: 429, path: "repos".
 					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
@@ -4570,11 +4890,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args = make(map[string]string)
 						}
 						args["owner"] = string(elem)
-						// Edge: 397, path: "".
+						// Edge: 430, path: "".
 						elem, p = nextElem(p)
 						switch string(elem) {
-						case "": // -> 398
-							// Edge: 398, path: "".
+						case "": // -> 431
+							// Edge: 431, path: "".
 							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
@@ -4591,8 +4911,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							return
 						}
 					}
-				case "members": // -> 400
-					// Edge: 400, path: "members".
+				case "members": // -> 433
+					// Edge: 433, path: "members".
 					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
@@ -4604,8 +4924,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						s.handleTeamsGetMemberLegacyRequest(args, w, r)
 						return
 					}
-				case "memberships": // -> 404
-					// Edge: 404, path: "memberships".
+				case "memberships": // -> 437
+					// Edge: 437, path: "memberships".
 					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
@@ -4617,11 +4937,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						s.handleTeamsGetMembershipForUserLegacyRequest(args, w, r)
 						return
 					}
-				case "team-sync": // -> 408
-					// Edge: 408, path: "team-sync".
+				case "teams": // -> 440
+					// GET /teams/{team_id}/teams
+					s.handleTeamsListChildLegacyRequest(args, w, r)
+					return
+				case "team-sync": // -> 442
+					// Edge: 442, path: "team-sync".
 					elem, p = nextElem(p)
 					switch string(elem) {
-					case "group-mappings": // -> 409
+					case "group-mappings": // -> 443
 						// GET /teams/{team_id}/team-sync/group-mappings
 						s.handleTeamsListIdpGroupsForLegacyRequest(args, w, r)
 						return
@@ -4629,7 +4953,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						s.notFound(w, r)
 						return
 					}
-				case "invitations": // -> 416
+				case "invitations": // -> 450
 					// GET /teams/{team_id}/invitations
 					s.handleTeamsListPendingInvitationsLegacyRequest(args, w, r)
 					return
@@ -4639,17 +4963,37 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					return
 				}
 			}
-		case "search": // -> 380
-			// Edge: 380, path: "search".
+		case "search": // -> 408
+			// Edge: 408, path: "search".
 			elem, p = nextElem(p)
 			switch string(elem) {
-			case "commits": // -> 381
+			case "code": // -> 409
+				// GET /search/code
+				s.handleSearchCodeRequest(args, w, r)
+				return
+			case "commits": // -> 410
 				// GET /search/commits
 				s.handleSearchCommitsRequest(args, w, r)
 				return
-			case "topics": // -> 382
+			case "issues": // -> 411
+				// GET /search/issues
+				s.handleSearchIssuesAndPullRequestsRequest(args, w, r)
+				return
+			case "labels": // -> 412
+				// GET /search/labels
+				s.handleSearchLabelsRequest(args, w, r)
+				return
+			case "repositories": // -> 413
+				// GET /search/repositories
+				s.handleSearchReposRequest(args, w, r)
+				return
+			case "topics": // -> 414
 				// GET /search/topics
 				s.handleSearchTopicsRequest(args, w, r)
+				return
+			case "users": // -> 415
+				// GET /search/users
+				s.handleSearchUsersRequest(args, w, r)
 				return
 			default:
 				s.notFound(w, r)
@@ -4696,8 +5040,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						s.notFound(w, r)
 						return
 					}
-				case "hooks": // -> 41
-					// Edge: 41, path: "hooks".
+				case "hooks": // -> 62
+					// Edge: 62, path: "hooks".
 					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
@@ -4705,20 +5049,21 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args = make(map[string]string)
 						}
 						args["hook_id"] = string(elem)
-						// Edge: 42, path: "".
+						// Edge: 63, path: "".
 						elem, p = nextElem(p)
 						switch string(elem) {
-						case "config": // -> 43
+						case "config": // -> 64
 							// PATCH /orgs/{org}/hooks/{hook_id}/config
 							s.handleOrgsUpdateWebhookConfigForOrgRequest(args, w, r)
 							return
 						default:
-							s.notFound(w, r)
+							// PATCH /orgs/{org}/hooks/{hook_id}.
+							s.handleOrgsUpdateWebhookRequest(args, w, r)
 							return
 						}
 					}
-				case "teams": // -> 70
-					// Edge: 70, path: "teams".
+				case "teams": // -> 96
+					// Edge: 96, path: "teams".
 					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
@@ -4726,14 +5071,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args = make(map[string]string)
 						}
 						args["team_slug"] = string(elem)
-						// Edge: 71, path: "".
+						// Edge: 97, path: "".
 						elem, p = nextElem(p)
 						switch string(elem) {
-						case "team-sync": // -> 72
-							// Edge: 72, path: "team-sync".
+						case "team-sync": // -> 98
+							// Edge: 98, path: "team-sync".
 							elem, p = nextElem(p)
 							switch string(elem) {
-							case "group-mappings": // -> 73
+							case "group-mappings": // -> 99
 								// PATCH /orgs/{org}/teams/{team_slug}/team-sync/group-mappings
 								s.handleTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(args, w, r)
 								return
@@ -4741,8 +5086,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.notFound(w, r)
 								return
 							}
-						case "discussions": // -> 74
-							// Edge: 74, path: "discussions".
+						case "discussions": // -> 104
+							// Edge: 104, path: "discussions".
 							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
@@ -4750,11 +5095,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["discussion_number"] = string(elem)
-								// Edge: 75, path: "".
+								// Edge: 105, path: "".
 								elem, p = nextElem(p)
 								switch string(elem) {
-								case "comments": // -> 76
-									// Edge: 76, path: "comments".
+								case "comments": // -> 106
+									// Edge: 106, path: "comments".
 									elem, p = nextElem(p)
 									switch string(elem) {
 									default:
@@ -4804,15 +5149,36 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				s.notFound(w, r)
 				return
 			}
-		case "app": // -> 9
-			// Edge: 9, path: "app".
+		case "applications": // -> 9
+			// Edge: 9, path: "applications".
 			elem, p = nextElem(p)
 			switch string(elem) {
-			case "hook": // -> 10
-				// Edge: 10, path: "hook".
+			default:
+				if args == nil {
+					args = make(map[string]string)
+				}
+				args["client_id"] = string(elem)
+				// Edge: 10, path: "".
 				elem, p = nextElem(p)
 				switch string(elem) {
-				case "config": // -> 11
+				case "token": // -> 11
+					// PATCH /applications/{client_id}/token
+					s.handleAppsResetTokenRequest(args, w, r)
+					return
+				default:
+					s.notFound(w, r)
+					return
+				}
+			}
+		case "app": // -> 12
+			// Edge: 12, path: "app".
+			elem, p = nextElem(p)
+			switch string(elem) {
+			case "hook": // -> 13
+				// Edge: 13, path: "hook".
+				elem, p = nextElem(p)
+				switch string(elem) {
+				case "config": // -> 14
 					// PATCH /app/hook/config
 					s.handleAppsUpdateWebhookConfigForAppRequest(args, w, r)
 					return
@@ -4824,8 +5190,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				s.notFound(w, r)
 				return
 			}
-		case "repos": // -> 12
-			// Edge: 12, path: "repos".
+		case "repos": // -> 15
+			// Edge: 15, path: "repos".
 			elem, p = nextElem(p)
 			switch string(elem) {
 			default:
@@ -4833,11 +5199,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					args = make(map[string]string)
 				}
 				args["owner"] = string(elem)
-				// Edge: 13, path: "".
+				// Edge: 16, path: "".
 				elem, p = nextElem(p)
 				switch string(elem) {
-				case "": // -> 14
-					// Edge: 14, path: "".
+				case "": // -> 17
+					// Edge: 17, path: "".
 					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
@@ -4845,14 +5211,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args = make(map[string]string)
 						}
 						args["repo"] = string(elem)
-						// Edge: 15, path: "".
+						// Edge: 18, path: "".
 						elem, p = nextElem(p)
 						switch string(elem) {
-						case "check-suites": // -> 16
-							// Edge: 16, path: "check-suites".
+						case "check-suites": // -> 19
+							// Edge: 19, path: "check-suites".
 							elem, p = nextElem(p)
 							switch string(elem) {
-							case "preferences": // -> 17
+							case "preferences": // -> 20
 								// PATCH /repos/{owner}/{repo}/check-suites/preferences
 								s.handleChecksSetSuitesPreferencesRequest(args, w, r)
 								return
@@ -4860,12 +5226,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.notFound(w, r)
 								return
 							}
-						case "code-scanning": // -> 18
-							// Edge: 18, path: "code-scanning".
+						case "code-scanning": // -> 21
+							// Edge: 21, path: "code-scanning".
 							elem, p = nextElem(p)
 							switch string(elem) {
-							case "alerts": // -> 19
-								// Edge: 19, path: "alerts".
+							case "alerts": // -> 22
+								// Edge: 22, path: "alerts".
 								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
@@ -4881,8 +5247,55 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.notFound(w, r)
 								return
 							}
-						case "labels": // -> 36
-							// Edge: 36, path: "labels".
+						case "git": // -> 41
+							// Edge: 41, path: "git".
+							elem, p = nextElem(p)
+							switch string(elem) {
+							case "refs": // -> 42
+								// Edge: 42, path: "refs".
+								elem, p = nextElem(p)
+								switch string(elem) {
+								default:
+									if args == nil {
+										args = make(map[string]string)
+									}
+									args["ref"] = string(elem)
+									// PATCH /repos/{owner}/{repo}/git/refs/{ref}
+									s.handleGitUpdateRefRequest(args, w, r)
+									return
+								}
+							default:
+								s.notFound(w, r)
+								return
+							}
+						case "issues": // -> 44
+							// Edge: 44, path: "issues".
+							elem, p = nextElem(p)
+							switch string(elem) {
+							case "comments": // -> 46
+								// Edge: 46, path: "comments".
+								elem, p = nextElem(p)
+								switch string(elem) {
+								default:
+									if args == nil {
+										args = make(map[string]string)
+									}
+									args["comment_id"] = string(elem)
+									// PATCH /repos/{owner}/{repo}/issues/comments/{comment_id}
+									s.handleIssuesUpdateCommentRequest(args, w, r)
+									return
+								}
+							default:
+								if args == nil {
+									args = make(map[string]string)
+								}
+								args["issue_number"] = string(elem)
+								// PATCH /repos/{owner}/{repo}/issues/{issue_number}
+								s.handleIssuesUpdateRequest(args, w, r)
+								return
+							}
+						case "labels": // -> 48
+							// Edge: 48, path: "labels".
 							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
@@ -4894,8 +5307,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.handleIssuesUpdateLabelRequest(args, w, r)
 								return
 							}
-						case "milestones": // -> 38
-							// Edge: 38, path: "milestones".
+						case "milestones": // -> 50
+							// Edge: 50, path: "milestones".
 							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
@@ -4907,16 +5320,38 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.handleIssuesUpdateMilestoneRequest(args, w, r)
 								return
 							}
-						case "import": // -> 40
-							// PATCH /repos/{owner}/{repo}/import
-							s.handleMigrationsUpdateImportRequest(args, w, r)
-							return
-						case "pulls": // -> 50
-							// Edge: 50, path: "pulls".
+						case "import": // -> 52
+							// Edge: 52, path: "import".
 							elem, p = nextElem(p)
 							switch string(elem) {
-							case "comments": // -> 51
-								// Edge: 51, path: "comments".
+							case "authors": // -> 53
+								// Edge: 53, path: "authors".
+								elem, p = nextElem(p)
+								switch string(elem) {
+								default:
+									if args == nil {
+										args = make(map[string]string)
+									}
+									args["author_id"] = string(elem)
+									// PATCH /repos/{owner}/{repo}/import/authors/{author_id}
+									s.handleMigrationsMapCommitAuthorRequest(args, w, r)
+									return
+								}
+							case "lfs": // -> 55
+								// PATCH /repos/{owner}/{repo}/import/lfs
+								s.handleMigrationsSetLfsPreferenceRequest(args, w, r)
+								return
+							default:
+								// PATCH /repos/{owner}/{repo}/import.
+								s.handleMigrationsUpdateImportRequest(args, w, r)
+								return
+							}
+						case "pulls": // -> 71
+							// Edge: 71, path: "pulls".
+							elem, p = nextElem(p)
+							switch string(elem) {
+							case "comments": // -> 73
+								// Edge: 73, path: "comments".
 								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
@@ -4929,11 +5364,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									return
 								}
 							default:
-								s.notFound(w, r)
+								if args == nil {
+									args = make(map[string]string)
+								}
+								args["pull_number"] = string(elem)
+								// PATCH /repos/{owner}/{repo}/pulls/{pull_number}
+								s.handlePullsUpdateRequest(args, w, r)
 								return
 							}
-						case "comments": // -> 56
-							// Edge: 56, path: "comments".
+						case "comments": // -> 77
+							// Edge: 77, path: "comments".
 							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
@@ -4945,8 +5385,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.handleReposUpdateCommitCommentRequest(args, w, r)
 								return
 							}
-						case "invitations": // -> 58
-							// Edge: 58, path: "invitations".
+						case "invitations": // -> 79
+							// Edge: 79, path: "invitations".
 							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
@@ -4958,12 +5398,45 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.handleReposUpdateInvitationRequest(args, w, r)
 								return
 							}
-						case "releases": // -> 60
-							// Edge: 60, path: "releases".
+						case "branches": // -> 81
+							// Edge: 81, path: "branches".
 							elem, p = nextElem(p)
 							switch string(elem) {
-							case "assets": // -> 62
-								// Edge: 62, path: "assets".
+							default:
+								if args == nil {
+									args = make(map[string]string)
+								}
+								args["branch"] = string(elem)
+								// Edge: 82, path: "".
+								elem, p = nextElem(p)
+								switch string(elem) {
+								case "protection": // -> 83
+									// Edge: 83, path: "protection".
+									elem, p = nextElem(p)
+									switch string(elem) {
+									case "required_pull_request_reviews": // -> 84
+										// PATCH /repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews
+										s.handleReposUpdatePullRequestReviewProtectionRequest(args, w, r)
+										return
+									case "required_status_checks": // -> 89
+										// PATCH /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks
+										s.handleReposUpdateStatusCheckProtectionRequest(args, w, r)
+										return
+									default:
+										s.notFound(w, r)
+										return
+									}
+								default:
+									s.notFound(w, r)
+									return
+								}
+							}
+						case "releases": // -> 85
+							// Edge: 85, path: "releases".
+							elem, p = nextElem(p)
+							switch string(elem) {
+							case "assets": // -> 87
+								// Edge: 87, path: "assets".
 								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
@@ -4984,8 +5457,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.handleReposUpdateReleaseRequest(args, w, r)
 								return
 							}
-						case "hooks": // -> 64
-							// Edge: 64, path: "hooks".
+						case "hooks": // -> 90
+							// Edge: 90, path: "hooks".
 							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
@@ -4993,24 +5466,25 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["hook_id"] = string(elem)
-								// Edge: 65, path: "".
+								// Edge: 91, path: "".
 								elem, p = nextElem(p)
 								switch string(elem) {
-								case "config": // -> 66
+								case "config": // -> 92
 									// PATCH /repos/{owner}/{repo}/hooks/{hook_id}/config
 									s.handleReposUpdateWebhookConfigForRepoRequest(args, w, r)
 									return
 								default:
-									s.notFound(w, r)
+									// PATCH /repos/{owner}/{repo}/hooks/{hook_id}.
+									s.handleReposUpdateWebhookRequest(args, w, r)
 									return
 								}
 							}
-						case "secret-scanning": // -> 67
-							// Edge: 67, path: "secret-scanning".
+						case "secret-scanning": // -> 93
+							// Edge: 93, path: "secret-scanning".
 							elem, p = nextElem(p)
 							switch string(elem) {
-							case "alerts": // -> 68
-								// Edge: 68, path: "alerts".
+							case "alerts": // -> 94
+								// Edge: 94, path: "alerts".
 								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
@@ -5027,7 +5501,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								return
 							}
 						default:
-							s.notFound(w, r)
+							// PATCH /repos/{owner}/{repo}.
+							s.handleReposUpdateRequest(args, w, r)
 							return
 						}
 					}
@@ -5036,16 +5511,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					return
 				}
 			}
-		case "scim": // -> 21
-			// Edge: 21, path: "scim".
+		case "scim": // -> 24
+			// Edge: 24, path: "scim".
 			elem, p = nextElem(p)
 			switch string(elem) {
-			case "v2": // -> 22
-				// Edge: 22, path: "v2".
+			case "v2": // -> 25
+				// Edge: 25, path: "v2".
 				elem, p = nextElem(p)
 				switch string(elem) {
-				case "enterprises": // -> 23
-					// Edge: 23, path: "enterprises".
+				case "enterprises": // -> 26
+					// Edge: 26, path: "enterprises".
 					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
@@ -5053,11 +5528,24 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args = make(map[string]string)
 						}
 						args["enterprise"] = string(elem)
-						// Edge: 24, path: "".
+						// Edge: 27, path: "".
 						elem, p = nextElem(p)
 						switch string(elem) {
-						case "Users": // -> 25
-							// Edge: 25, path: "Users".
+						case "Groups": // -> 28
+							// Edge: 28, path: "Groups".
+							elem, p = nextElem(p)
+							switch string(elem) {
+							default:
+								if args == nil {
+									args = make(map[string]string)
+								}
+								args["scim_group_id"] = string(elem)
+								// PATCH /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
+								s.handleEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(args, w, r)
+								return
+							}
+						case "Users": // -> 30
+							// Edge: 30, path: "Users".
 							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
@@ -5082,8 +5570,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				s.notFound(w, r)
 				return
 			}
-		case "enterprises": // -> 27
-			// Edge: 27, path: "enterprises".
+		case "enterprises": // -> 32
+			// Edge: 32, path: "enterprises".
 			elem, p = nextElem(p)
 			switch string(elem) {
 			default:
@@ -5091,15 +5579,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					args = make(map[string]string)
 				}
 				args["enterprise"] = string(elem)
-				// Edge: 28, path: "".
+				// Edge: 33, path: "".
 				elem, p = nextElem(p)
 				switch string(elem) {
-				case "actions": // -> 29
-					// Edge: 29, path: "actions".
+				case "actions": // -> 34
+					// Edge: 34, path: "actions".
 					elem, p = nextElem(p)
 					switch string(elem) {
-					case "runner-groups": // -> 30
-						// Edge: 30, path: "runner-groups".
+					case "runner-groups": // -> 35
+						// Edge: 35, path: "runner-groups".
 						elem, p = nextElem(p)
 						switch string(elem) {
 						default:
@@ -5120,8 +5608,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					return
 				}
 			}
-		case "gists": // -> 32
-			// Edge: 32, path: "gists".
+		case "gists": // -> 37
+			// Edge: 37, path: "gists".
 			elem, p = nextElem(p)
 			switch string(elem) {
 			default:
@@ -5129,11 +5617,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					args = make(map[string]string)
 				}
 				args["gist_id"] = string(elem)
-				// Edge: 33, path: "".
+				// Edge: 38, path: "".
 				elem, p = nextElem(p)
 				switch string(elem) {
-				case "comments": // -> 34
-					// Edge: 34, path: "comments".
+				case "comments": // -> 39
+					// Edge: 39, path: "comments".
 					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
@@ -5150,16 +5638,84 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					return
 				}
 			}
-		case "projects": // -> 44
-			// Edge: 44, path: "projects".
+		case "authorizations": // -> 56
+			// Edge: 56, path: "authorizations".
 			elem, p = nextElem(p)
 			switch string(elem) {
-			case "columns": // -> 46
-				// Edge: 46, path: "columns".
+			default:
+				if args == nil {
+					args = make(map[string]string)
+				}
+				args["authorization_id"] = string(elem)
+				// PATCH /authorizations/{authorization_id}
+				s.handleOAuthAuthorizationsUpdateAuthorizationRequest(args, w, r)
+				return
+			}
+		case "user": // -> 58
+			// Edge: 58, path: "user".
+			elem, p = nextElem(p)
+			switch string(elem) {
+			case "memberships": // -> 59
+				// Edge: 59, path: "memberships".
 				elem, p = nextElem(p)
 				switch string(elem) {
-				case "cards": // -> 47
-					// Edge: 47, path: "cards".
+				case "orgs": // -> 60
+					// Edge: 60, path: "orgs".
+					elem, p = nextElem(p)
+					switch string(elem) {
+					default:
+						if args == nil {
+							args = make(map[string]string)
+						}
+						args["org"] = string(elem)
+						// PATCH /user/memberships/orgs/{org}
+						s.handleOrgsUpdateMembershipForAuthenticatedUserRequest(args, w, r)
+						return
+					}
+				default:
+					s.notFound(w, r)
+					return
+				}
+			case "repository_invitations": // -> 75
+				// Edge: 75, path: "repository_invitations".
+				elem, p = nextElem(p)
+				switch string(elem) {
+				default:
+					if args == nil {
+						args = make(map[string]string)
+					}
+					args["invitation_id"] = string(elem)
+					// PATCH /user/repository_invitations/{invitation_id}
+					s.handleReposAcceptInvitationRequest(args, w, r)
+					return
+				}
+			case "email": // -> 112
+				// Edge: 112, path: "email".
+				elem, p = nextElem(p)
+				switch string(elem) {
+				case "visibility": // -> 113
+					// PATCH /user/email/visibility
+					s.handleUsersSetPrimaryEmailVisibilityForAuthenticatedRequest(args, w, r)
+					return
+				default:
+					s.notFound(w, r)
+					return
+				}
+			default:
+				// PATCH /user.
+				s.handleUsersUpdateAuthenticatedRequest(args, w, r)
+				return
+			}
+		case "projects": // -> 65
+			// Edge: 65, path: "projects".
+			elem, p = nextElem(p)
+			switch string(elem) {
+			case "columns": // -> 67
+				// Edge: 67, path: "columns".
+				elem, p = nextElem(p)
+				switch string(elem) {
+				case "cards": // -> 68
+					// Edge: 68, path: "cards".
 					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
@@ -5189,29 +5745,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				s.handleProjectsUpdateRequest(args, w, r)
 				return
 			}
-		case "user": // -> 53
-			// Edge: 53, path: "user".
-			elem, p = nextElem(p)
-			switch string(elem) {
-			case "repository_invitations": // -> 54
-				// Edge: 54, path: "repository_invitations".
-				elem, p = nextElem(p)
-				switch string(elem) {
-				default:
-					if args == nil {
-						args = make(map[string]string)
-					}
-					args["invitation_id"] = string(elem)
-					// PATCH /user/repository_invitations/{invitation_id}
-					s.handleReposAcceptInvitationRequest(args, w, r)
-					return
-				}
-			default:
-				s.notFound(w, r)
-				return
-			}
-		case "teams": // -> 78
-			// Edge: 78, path: "teams".
+		case "teams": // -> 100
+			// Edge: 100, path: "teams".
 			elem, p = nextElem(p)
 			switch string(elem) {
 			default:
@@ -5219,11 +5754,23 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					args = make(map[string]string)
 				}
 				args["team_id"] = string(elem)
-				// Edge: 79, path: "".
+				// Edge: 101, path: "".
 				elem, p = nextElem(p)
 				switch string(elem) {
-				case "discussions": // -> 80
-					// Edge: 80, path: "discussions".
+				case "team-sync": // -> 102
+					// Edge: 102, path: "team-sync".
+					elem, p = nextElem(p)
+					switch string(elem) {
+					case "group-mappings": // -> 103
+						// PATCH /teams/{team_id}/team-sync/group-mappings
+						s.handleTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest(args, w, r)
+						return
+					default:
+						s.notFound(w, r)
+						return
+					}
+				case "discussions": // -> 108
+					// Edge: 108, path: "discussions".
 					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
@@ -5231,11 +5778,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args = make(map[string]string)
 						}
 						args["discussion_number"] = string(elem)
-						// Edge: 81, path: "".
+						// Edge: 109, path: "".
 						elem, p = nextElem(p)
 						switch string(elem) {
-						case "comments": // -> 82
-							// Edge: 82, path: "comments".
+						case "comments": // -> 110
+							// Edge: 110, path: "comments".
 							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
@@ -5254,7 +5801,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 					}
 				default:
-					s.notFound(w, r)
+					// PATCH /teams/{team_id}.
+					s.handleTeamsUpdateLegacyRequest(args, w, r)
 					return
 				}
 			}
@@ -5322,6 +5870,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										// POST /repos/{owner}/{repo}/actions/runs/{run_id}/retry
 										s.handleActionsRetryWorkflowRequest(args, w, r)
 										return
+									case "pending_deployments": // -> 22
+										// POST /repos/{owner}/{repo}/actions/runs/{run_id}/pending_deployments
+										s.handleActionsReviewPendingDeploymentsForRunRequest(args, w, r)
+										return
 									default:
 										s.notFound(w, r)
 										return
@@ -5347,8 +5899,29 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.notFound(w, r)
 								return
 							}
-						case "check-suites": // -> 22
-							// Edge: 22, path: "check-suites".
+						case "content_references": // -> 26
+							// Edge: 26, path: "content_references".
+							elem, p = nextElem(p)
+							switch string(elem) {
+							default:
+								if args == nil {
+									args = make(map[string]string)
+								}
+								args["content_reference_id"] = string(elem)
+								// Edge: 27, path: "".
+								elem, p = nextElem(p)
+								switch string(elem) {
+								case "attachments": // -> 28
+									// POST /repos/{owner}/{repo}/content_references/{content_reference_id}/attachments
+									s.handleAppsCreateContentAttachmentRequest(args, w, r)
+									return
+								default:
+									s.notFound(w, r)
+									return
+								}
+							}
+						case "check-suites": // -> 38
+							// Edge: 38, path: "check-suites".
 							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
@@ -5356,10 +5929,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["check_suite_id"] = string(elem)
-								// Edge: 23, path: "".
+								// Edge: 39, path: "".
 								elem, p = nextElem(p)
 								switch string(elem) {
-								case "rerequest": // -> 24
+								case "rerequest": // -> 40
 									// POST /repos/{owner}/{repo}/check-suites/{check_suite_id}/rerequest
 									s.handleChecksRerequestSuiteRequest(args, w, r)
 									return
@@ -5368,11 +5941,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									return
 								}
 							}
-						case "code-scanning": // -> 25
-							// Edge: 25, path: "code-scanning".
+						case "code-scanning": // -> 41
+							// Edge: 41, path: "code-scanning".
 							elem, p = nextElem(p)
 							switch string(elem) {
-							case "sarifs": // -> 26
+							case "sarifs": // -> 42
 								// POST /repos/{owner}/{repo}/code-scanning/sarifs
 								s.handleCodeScanningUploadSarifRequest(args, w, r)
 								return
@@ -5380,45 +5953,131 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.notFound(w, r)
 								return
 							}
-						case "issues": // -> 43
-							// Edge: 43, path: "issues".
+						case "git": // -> 60
+							// Edge: 60, path: "git".
 							elem, p = nextElem(p)
 							switch string(elem) {
+							case "blobs": // -> 61
+								// POST /repos/{owner}/{repo}/git/blobs
+								s.handleGitCreateBlobRequest(args, w, r)
+								return
+							case "commits": // -> 62
+								// POST /repos/{owner}/{repo}/git/commits
+								s.handleGitCreateCommitRequest(args, w, r)
+								return
+							case "refs": // -> 63
+								// POST /repos/{owner}/{repo}/git/refs
+								s.handleGitCreateRefRequest(args, w, r)
+								return
+							case "tags": // -> 64
+								// POST /repos/{owner}/{repo}/git/tags
+								s.handleGitCreateTagRequest(args, w, r)
+								return
+							case "trees": // -> 65
+								// POST /repos/{owner}/{repo}/git/trees
+								s.handleGitCreateTreeRequest(args, w, r)
+								return
+							default:
+								s.notFound(w, r)
+								return
+							}
+						case "issues": // -> 66
+							// Edge: 66, path: "issues".
+							elem, p = nextElem(p)
+							switch string(elem) {
+							case "comments": // -> 133
+								// Edge: 133, path: "comments".
+								elem, p = nextElem(p)
+								switch string(elem) {
+								default:
+									if args == nil {
+										args = make(map[string]string)
+									}
+									args["comment_id"] = string(elem)
+									// Edge: 134, path: "".
+									elem, p = nextElem(p)
+									switch string(elem) {
+									case "reactions": // -> 135
+										// POST /repos/{owner}/{repo}/issues/comments/{comment_id}/reactions
+										s.handleReactionsCreateForIssueCommentRequest(args, w, r)
+										return
+									default:
+										s.notFound(w, r)
+										return
+									}
+								}
 							default:
 								if args == nil {
 									args = make(map[string]string)
 								}
 								args["issue_number"] = string(elem)
-								// Edge: 44, path: "".
+								// Edge: 67, path: "".
 								elem, p = nextElem(p)
 								switch string(elem) {
-								case "assignees": // -> 45
+								case "assignees": // -> 68
 									// POST /repos/{owner}/{repo}/issues/{issue_number}/assignees
 									s.handleIssuesAddAssigneesRequest(args, w, r)
+									return
+								case "comments": // -> 69
+									// POST /repos/{owner}/{repo}/issues/{issue_number}/comments
+									s.handleIssuesCreateCommentRequest(args, w, r)
+									return
+								case "reactions": // -> 132
+									// POST /repos/{owner}/{repo}/issues/{issue_number}/reactions
+									s.handleReactionsCreateForIssueRequest(args, w, r)
 									return
 								default:
 									s.notFound(w, r)
 									return
 								}
 							}
-						case "projects": // -> 81
+						case "labels": // -> 70
+							// POST /repos/{owner}/{repo}/labels
+							s.handleIssuesCreateLabelRequest(args, w, r)
+							return
+						case "milestones": // -> 71
+							// POST /repos/{owner}/{repo}/milestones
+							s.handleIssuesCreateMilestoneRequest(args, w, r)
+							return
+						case "projects": // -> 114
 							// POST /repos/{owner}/{repo}/projects
 							s.handleProjectsCreateForRepoRequest(args, w, r)
 							return
-						case "pulls": // -> 85
-							// Edge: 85, path: "pulls".
+						case "pulls": // -> 121
+							// Edge: 121, path: "pulls".
 							elem, p = nextElem(p)
 							switch string(elem) {
+							case "comments": // -> 136
+								// Edge: 136, path: "comments".
+								elem, p = nextElem(p)
+								switch string(elem) {
+								default:
+									if args == nil {
+										args = make(map[string]string)
+									}
+									args["comment_id"] = string(elem)
+									// Edge: 137, path: "".
+									elem, p = nextElem(p)
+									switch string(elem) {
+									case "reactions": // -> 138
+										// POST /repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions
+										s.handleReactionsCreateForPullRequestReviewCommentRequest(args, w, r)
+										return
+									default:
+										s.notFound(w, r)
+										return
+									}
+								}
 							default:
 								if args == nil {
 									args = make(map[string]string)
 								}
 								args["pull_number"] = string(elem)
-								// Edge: 86, path: "".
+								// Edge: 122, path: "".
 								elem, p = nextElem(p)
 								switch string(elem) {
-								case "comments": // -> 87
-									// Edge: 87, path: "comments".
+								case "comments": // -> 123
+									// Edge: 123, path: "comments".
 									elem, p = nextElem(p)
 									switch string(elem) {
 									default:
@@ -5426,10 +6085,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											args = make(map[string]string)
 										}
 										args["comment_id"] = string(elem)
-										// Edge: 88, path: "".
+										// Edge: 124, path: "".
 										elem, p = nextElem(p)
 										switch string(elem) {
-										case "replies": // -> 89
+										case "replies": // -> 125
 											// POST /repos/{owner}/{repo}/pulls/{pull_number}/comments/{comment_id}/replies
 											s.handlePullsCreateReplyForReviewCommentRequest(args, w, r)
 											return
@@ -5438,8 +6097,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											return
 										}
 									}
-								case "reviews": // -> 90
-									// Edge: 90, path: "reviews".
+								case "reviews": // -> 126
+									// Edge: 126, path: "reviews".
 									elem, p = nextElem(p)
 									switch string(elem) {
 									default:
@@ -5447,10 +6106,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											args = make(map[string]string)
 										}
 										args["review_id"] = string(elem)
-										// Edge: 91, path: "".
+										// Edge: 127, path: "".
 										elem, p = nextElem(p)
 										switch string(elem) {
-										case "events": // -> 92
+										case "events": // -> 128
 											// POST /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/events
 											s.handlePullsSubmitReviewRequest(args, w, r)
 											return
@@ -5464,8 +6123,50 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									return
 								}
 							}
-						case "branches": // -> 109
-							// Edge: 109, path: "branches".
+						case "comments": // -> 129
+							// Edge: 129, path: "comments".
+							elem, p = nextElem(p)
+							switch string(elem) {
+							default:
+								if args == nil {
+									args = make(map[string]string)
+								}
+								args["comment_id"] = string(elem)
+								// Edge: 130, path: "".
+								elem, p = nextElem(p)
+								switch string(elem) {
+								case "reactions": // -> 131
+									// POST /repos/{owner}/{repo}/comments/{comment_id}/reactions
+									s.handleReactionsCreateForCommitCommentRequest(args, w, r)
+									return
+								default:
+									s.notFound(w, r)
+									return
+								}
+							}
+						case "releases": // -> 139
+							// Edge: 139, path: "releases".
+							elem, p = nextElem(p)
+							switch string(elem) {
+							default:
+								if args == nil {
+									args = make(map[string]string)
+								}
+								args["release_id"] = string(elem)
+								// Edge: 140, path: "".
+								elem, p = nextElem(p)
+								switch string(elem) {
+								case "reactions": // -> 141
+									// POST /repos/{owner}/{repo}/releases/{release_id}/reactions
+									s.handleReactionsCreateForReleaseRequest(args, w, r)
+									return
+								default:
+									s.notFound(w, r)
+									return
+								}
+							}
+						case "branches": // -> 158
+							// Edge: 158, path: "branches".
 							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
@@ -5473,18 +6174,50 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["branch"] = string(elem)
-								// Edge: 110, path: "".
+								// Edge: 159, path: "".
 								elem, p = nextElem(p)
 								switch string(elem) {
-								case "protection": // -> 111
-									// Edge: 111, path: "protection".
+								case "protection": // -> 160
+									// Edge: 160, path: "protection".
 									elem, p = nextElem(p)
 									switch string(elem) {
-									case "required_signatures": // -> 112
+									case "restrictions": // -> 161
+										// Edge: 161, path: "restrictions".
+										elem, p = nextElem(p)
+										switch string(elem) {
+										case "apps": // -> 162
+											// POST /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps
+											s.handleReposAddAppAccessRestrictionsRequest(args, w, r)
+											return
+										case "teams": // -> 165
+											// POST /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams
+											s.handleReposAddTeamAccessRestrictionsRequest(args, w, r)
+											return
+										case "users": // -> 166
+											// POST /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users
+											s.handleReposAddUserAccessRestrictionsRequest(args, w, r)
+											return
+										default:
+											s.notFound(w, r)
+											return
+										}
+									case "required_status_checks": // -> 163
+										// Edge: 163, path: "required_status_checks".
+										elem, p = nextElem(p)
+										switch string(elem) {
+										case "contexts": // -> 164
+											// POST /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts
+											s.handleReposAddStatusCheckContextsRequest(args, w, r)
+											return
+										default:
+											s.notFound(w, r)
+											return
+										}
+									case "required_signatures": // -> 171
 										// POST /repos/{owner}/{repo}/branches/{branch}/protection/required_signatures
 										s.handleReposCreateCommitSignatureProtectionRequest(args, w, r)
 										return
-									case "enforce_admins": // -> 122
+									case "enforce_admins": // -> 194
 										// POST /repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins
 										s.handleReposSetAdminBranchProtectionRequest(args, w, r)
 										return
@@ -5492,13 +6225,42 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										s.notFound(w, r)
 										return
 									}
+								case "rename": // -> 192
+									// POST /repos/{owner}/{repo}/branches/{branch}/rename
+									s.handleReposRenameBranchRequest(args, w, r)
+									return
 								default:
 									s.notFound(w, r)
 									return
 								}
 							}
-						case "statuses": // -> 113
-							// Edge: 113, path: "statuses".
+						case "autolinks": // -> 167
+							// POST /repos/{owner}/{repo}/autolinks
+							s.handleReposCreateAutolinkRequest(args, w, r)
+							return
+						case "commits": // -> 168
+							// Edge: 168, path: "commits".
+							elem, p = nextElem(p)
+							switch string(elem) {
+							default:
+								if args == nil {
+									args = make(map[string]string)
+								}
+								args["commit_sha"] = string(elem)
+								// Edge: 169, path: "".
+								elem, p = nextElem(p)
+								switch string(elem) {
+								case "comments": // -> 170
+									// POST /repos/{owner}/{repo}/commits/{commit_sha}/comments
+									s.handleReposCreateCommitCommentRequest(args, w, r)
+									return
+								default:
+									s.notFound(w, r)
+									return
+								}
+							}
+						case "statuses": // -> 172
+							// Edge: 172, path: "statuses".
 							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
@@ -5510,16 +6272,58 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.handleReposCreateCommitStatusRequest(args, w, r)
 								return
 							}
-						case "generate": // -> 115
+						case "keys": // -> 174
+							// POST /repos/{owner}/{repo}/keys
+							s.handleReposCreateDeployKeyRequest(args, w, r)
+							return
+						case "deployments": // -> 175
+							// Edge: 175, path: "deployments".
+							elem, p = nextElem(p)
+							switch string(elem) {
+							default:
+								if args == nil {
+									args = make(map[string]string)
+								}
+								args["deployment_id"] = string(elem)
+								// Edge: 176, path: "".
+								elem, p = nextElem(p)
+								switch string(elem) {
+								case "statuses": // -> 177
+									// POST /repos/{owner}/{repo}/deployments/{deployment_id}/statuses
+									s.handleReposCreateDeploymentStatusRequest(args, w, r)
+									return
+								default:
+									s.notFound(w, r)
+									return
+								}
+							}
+						case "dispatches": // -> 178
+							// POST /repos/{owner}/{repo}/dispatches
+							s.handleReposCreateDispatchEventRequest(args, w, r)
+							return
+						case "forks": // -> 180
+							// POST /repos/{owner}/{repo}/forks
+							s.handleReposCreateForkRequest(args, w, r)
+							return
+						case "pages": // -> 182
+							// Edge: 182, path: "pages".
+							elem, p = nextElem(p)
+							switch string(elem) {
+							case "builds": // -> 193
+								// POST /repos/{owner}/{repo}/pages/builds
+								s.handleReposRequestPagesBuildRequest(args, w, r)
+								return
+							default:
+								// POST /repos/{owner}/{repo}/pages.
+								s.handleReposCreatePagesSiteRequest(args, w, r)
+								return
+							}
+						case "generate": // -> 183
 							// POST /repos/{template_owner}/{template_repo}/generate
 							s.handleReposCreateUsingTemplateRequest(args, w, r)
 							return
-						case "merge-upstream": // -> 116
-							// POST /repos/{owner}/{repo}/merge-upstream
-							s.handleReposMergeUpstreamRequest(args, w, r)
-							return
-						case "hooks": // -> 117
-							// Edge: 117, path: "hooks".
+						case "hooks": // -> 184
+							// Edge: 184, path: "hooks".
 							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
@@ -5527,14 +6331,35 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["hook_id"] = string(elem)
-								// Edge: 118, path: "".
+								// Edge: 187, path: "".
 								elem, p = nextElem(p)
 								switch string(elem) {
-								case "pings": // -> 119
+								case "pings": // -> 188
 									// POST /repos/{owner}/{repo}/hooks/{hook_id}/pings
 									s.handleReposPingWebhookRequest(args, w, r)
 									return
-								case "tests": // -> 123
+								case "deliveries": // -> 189
+									// Edge: 189, path: "deliveries".
+									elem, p = nextElem(p)
+									switch string(elem) {
+									default:
+										if args == nil {
+											args = make(map[string]string)
+										}
+										args["delivery_id"] = string(elem)
+										// Edge: 190, path: "".
+										elem, p = nextElem(p)
+										switch string(elem) {
+										case "attempts": // -> 191
+											// POST /repos/{owner}/{repo}/hooks/{hook_id}/deliveries/{delivery_id}/attempts
+											s.handleReposRedeliverWebhookDeliveryRequest(args, w, r)
+											return
+										default:
+											s.notFound(w, r)
+											return
+										}
+									}
+								case "tests": // -> 195
 									// POST /repos/{owner}/{repo}/hooks/{hook_id}/tests
 									s.handleReposTestPushWebhookRequest(args, w, r)
 									return
@@ -5543,19 +6368,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									return
 								}
 							}
-						case "pages": // -> 120
-							// Edge: 120, path: "pages".
-							elem, p = nextElem(p)
-							switch string(elem) {
-							case "builds": // -> 121
-								// POST /repos/{owner}/{repo}/pages/builds
-								s.handleReposRequestPagesBuildRequest(args, w, r)
-								return
-							default:
-								s.notFound(w, r)
-								return
-							}
-						case "transfer": // -> 124
+						case "merges": // -> 185
+							// POST /repos/{owner}/{repo}/merges
+							s.handleReposMergeRequest(args, w, r)
+							return
+						case "merge-upstream": // -> 186
+							// POST /repos/{owner}/{repo}/merge-upstream
+							s.handleReposMergeUpstreamRequest(args, w, r)
+							return
+						case "transfer": // -> 196
 							// POST /repos/{owner}/{repo}/transfer
 							s.handleReposTransferRequest(args, w, r)
 							return
@@ -5609,8 +6430,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						s.notFound(w, r)
 						return
 					}
-				case "hooks": // -> 46
-					// Edge: 46, path: "hooks".
+				case "migrations": // -> 74
+					// POST /orgs/{org}/migrations
+					s.handleMigrationsStartForOrgRequest(args, w, r)
+					return
+				case "invitations": // -> 76
+					// POST /orgs/{org}/invitations
+					s.handleOrgsCreateInvitationRequest(args, w, r)
+					return
+				case "hooks": // -> 77
+					// Edge: 77, path: "hooks".
 					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
@@ -5618,20 +6447,41 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args = make(map[string]string)
 						}
 						args["hook_id"] = string(elem)
-						// Edge: 47, path: "".
+						// Edge: 78, path: "".
 						elem, p = nextElem(p)
 						switch string(elem) {
-						case "pings": // -> 48
+						case "pings": // -> 79
 							// POST /orgs/{org}/hooks/{hook_id}/pings
 							s.handleOrgsPingWebhookRequest(args, w, r)
 							return
+						case "deliveries": // -> 80
+							// Edge: 80, path: "deliveries".
+							elem, p = nextElem(p)
+							switch string(elem) {
+							default:
+								if args == nil {
+									args = make(map[string]string)
+								}
+								args["delivery_id"] = string(elem)
+								// Edge: 81, path: "".
+								elem, p = nextElem(p)
+								switch string(elem) {
+								case "attempts": // -> 82
+									// POST /orgs/{org}/hooks/{hook_id}/deliveries/{delivery_id}/attempts
+									s.handleOrgsRedeliverWebhookDeliveryRequest(args, w, r)
+									return
+								default:
+									s.notFound(w, r)
+									return
+								}
+							}
 						default:
 							s.notFound(w, r)
 							return
 						}
 					}
-				case "packages": // -> 55
-					// Edge: 55, path: "packages".
+				case "packages": // -> 88
+					// Edge: 88, path: "packages".
 					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
@@ -5639,11 +6489,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args = make(map[string]string)
 						}
 						args["package_type"] = string(elem)
-						// Edge: 56, path: "".
+						// Edge: 89, path: "".
 						elem, p = nextElem(p)
 						switch string(elem) {
-						case "": // -> 57
-							// Edge: 57, path: "".
+						case "": // -> 90
+							// Edge: 90, path: "".
 							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
@@ -5651,15 +6501,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["package_name"] = string(elem)
-								// Edge: 58, path: "".
+								// Edge: 91, path: "".
 								elem, p = nextElem(p)
 								switch string(elem) {
-								case "restore": // -> 59
+								case "restore": // -> 92
 									// POST /orgs/{org}/packages/{package_type}/{package_name}/restore
 									s.handlePackagesRestorePackageForOrgRequest(args, w, r)
 									return
-								case "versions": // -> 70
-									// Edge: 70, path: "versions".
+								case "versions": // -> 103
+									// Edge: 103, path: "versions".
 									elem, p = nextElem(p)
 									switch string(elem) {
 									default:
@@ -5667,10 +6517,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											args = make(map[string]string)
 										}
 										args["package_version_id"] = string(elem)
-										// Edge: 71, path: "".
+										// Edge: 104, path: "".
 										elem, p = nextElem(p)
 										switch string(elem) {
-										case "restore": // -> 72
+										case "restore": // -> 105
 											// POST /orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore
 											s.handlePackagesRestorePackageVersionForOrgRequest(args, w, r)
 											return
@@ -5689,12 +6539,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							return
 						}
 					}
-				case "projects": // -> 80
+				case "projects": // -> 113
 					// POST /orgs/{org}/projects
 					s.handleProjectsCreateForOrgRequest(args, w, r)
 					return
-				case "teams": // -> 93
-					// Edge: 93, path: "teams".
+				case "teams": // -> 142
+					// Edge: 142, path: "teams".
 					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
@@ -5702,11 +6552,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args = make(map[string]string)
 						}
 						args["team_slug"] = string(elem)
-						// Edge: 94, path: "".
+						// Edge: 143, path: "".
 						elem, p = nextElem(p)
 						switch string(elem) {
-						case "discussions": // -> 95
-							// Edge: 95, path: "discussions".
+						case "discussions": // -> 144
+							// Edge: 144, path: "discussions".
 							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
@@ -5714,11 +6564,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["discussion_number"] = string(elem)
-								// Edge: 96, path: "".
+								// Edge: 145, path: "".
 								elem, p = nextElem(p)
 								switch string(elem) {
-								case "comments": // -> 97
-									// Edge: 97, path: "comments".
+								case "comments": // -> 146
+									// Edge: 146, path: "comments".
 									elem, p = nextElem(p)
 									switch string(elem) {
 									default:
@@ -5726,10 +6576,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											args = make(map[string]string)
 										}
 										args["comment_number"] = string(elem)
-										// Edge: 98, path: "".
+										// Edge: 147, path: "".
 										elem, p = nextElem(p)
 										switch string(elem) {
-										case "reactions": // -> 99
+										case "reactions": // -> 148
 											// POST /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions
 											s.handleReactionsCreateForTeamDiscussionCommentInOrgRequest(args, w, r)
 											return
@@ -5738,7 +6588,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											return
 										}
 									}
-								case "reactions": // -> 107
+								case "reactions": // -> 156
 									// POST /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions
 									s.handleReactionsCreateForTeamDiscussionInOrgRequest(args, w, r)
 									return
@@ -5752,13 +6602,105 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							return
 						}
 					}
+				case "repos": // -> 181
+					// POST /orgs/{org}/repos
+					s.handleReposCreateInOrgRequest(args, w, r)
+					return
 				default:
 					s.notFound(w, r)
 					return
 				}
 			}
-		case "enterprises": // -> 27
-			// Edge: 27, path: "enterprises".
+		case "applications": // -> 23
+			// Edge: 23, path: "applications".
+			elem, p = nextElem(p)
+			switch string(elem) {
+			default:
+				if args == nil {
+					args = make(map[string]string)
+				}
+				args["client_id"] = string(elem)
+				// Edge: 24, path: "".
+				elem, p = nextElem(p)
+				switch string(elem) {
+				case "token": // -> 25
+					// Edge: 25, path: "token".
+					elem, p = nextElem(p)
+					switch string(elem) {
+					case "scoped": // -> 37
+						// POST /applications/{client_id}/token/scoped
+						s.handleAppsScopeTokenRequest(args, w, r)
+						return
+					default:
+						// POST /applications/{client_id}/token.
+						s.handleAppsCheckTokenRequest(args, w, r)
+						return
+					}
+				default:
+					s.notFound(w, r)
+					return
+				}
+			}
+		case "app": // -> 29
+			// Edge: 29, path: "app".
+			elem, p = nextElem(p)
+			switch string(elem) {
+			case "installations": // -> 30
+				// Edge: 30, path: "installations".
+				elem, p = nextElem(p)
+				switch string(elem) {
+				default:
+					if args == nil {
+						args = make(map[string]string)
+					}
+					args["installation_id"] = string(elem)
+					// Edge: 31, path: "".
+					elem, p = nextElem(p)
+					switch string(elem) {
+					case "access_tokens": // -> 32
+						// POST /app/installations/{installation_id}/access_tokens
+						s.handleAppsCreateInstallationAccessTokenRequest(args, w, r)
+						return
+					default:
+						s.notFound(w, r)
+						return
+					}
+				}
+			case "hook": // -> 33
+				// Edge: 33, path: "hook".
+				elem, p = nextElem(p)
+				switch string(elem) {
+				case "deliveries": // -> 34
+					// Edge: 34, path: "deliveries".
+					elem, p = nextElem(p)
+					switch string(elem) {
+					default:
+						if args == nil {
+							args = make(map[string]string)
+						}
+						args["delivery_id"] = string(elem)
+						// Edge: 35, path: "".
+						elem, p = nextElem(p)
+						switch string(elem) {
+						case "attempts": // -> 36
+							// POST /app/hook/deliveries/{delivery_id}/attempts
+							s.handleAppsRedeliverWebhookDeliveryRequest(args, w, r)
+							return
+						default:
+							s.notFound(w, r)
+							return
+						}
+					}
+				default:
+					s.notFound(w, r)
+					return
+				}
+			default:
+				s.notFound(w, r)
+				return
+			}
+		case "enterprises": // -> 43
+			// Edge: 43, path: "enterprises".
 			elem, p = nextElem(p)
 			switch string(elem) {
 			default:
@@ -5766,22 +6708,22 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					args = make(map[string]string)
 				}
 				args["enterprise"] = string(elem)
-				// Edge: 28, path: "".
+				// Edge: 44, path: "".
 				elem, p = nextElem(p)
 				switch string(elem) {
-				case "actions": // -> 29
-					// Edge: 29, path: "actions".
+				case "actions": // -> 45
+					// Edge: 45, path: "actions".
 					elem, p = nextElem(p)
 					switch string(elem) {
-					case "runners": // -> 30
-						// Edge: 30, path: "runners".
+					case "runners": // -> 46
+						// Edge: 46, path: "runners".
 						elem, p = nextElem(p)
 						switch string(elem) {
-						case "registration-token": // -> 31
+						case "registration-token": // -> 47
 							// POST /enterprises/{enterprise}/actions/runners/registration-token
 							s.handleEnterpriseAdminCreateRegistrationTokenForEnterpriseRequest(args, w, r)
 							return
-						case "remove-token": // -> 32
+						case "remove-token": // -> 48
 							// POST /enterprises/{enterprise}/actions/runners/remove-token
 							s.handleEnterpriseAdminCreateRemoveTokenForEnterpriseRequest(args, w, r)
 							return
@@ -5789,7 +6731,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							s.notFound(w, r)
 							return
 						}
-					case "runner-groups": // -> 33
+					case "runner-groups": // -> 49
 						// POST /enterprises/{enterprise}/actions/runner-groups
 						s.handleEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequest(args, w, r)
 						return
@@ -5802,16 +6744,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					return
 				}
 			}
-		case "scim": // -> 34
-			// Edge: 34, path: "scim".
+		case "scim": // -> 50
+			// Edge: 50, path: "scim".
 			elem, p = nextElem(p)
 			switch string(elem) {
-			case "v2": // -> 35
-				// Edge: 35, path: "v2".
+			case "v2": // -> 51
+				// Edge: 51, path: "v2".
 				elem, p = nextElem(p)
 				switch string(elem) {
-				case "enterprises": // -> 36
-					// Edge: 36, path: "enterprises".
+				case "enterprises": // -> 52
+					// Edge: 52, path: "enterprises".
 					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
@@ -5819,14 +6761,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args = make(map[string]string)
 						}
 						args["enterprise"] = string(elem)
-						// Edge: 37, path: "".
+						// Edge: 53, path: "".
 						elem, p = nextElem(p)
 						switch string(elem) {
-						case "Groups": // -> 38
+						case "Groups": // -> 54
 							// POST /scim/v2/enterprises/{enterprise}/Groups
 							s.handleEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(args, w, r)
 							return
-						case "Users": // -> 39
+						case "Users": // -> 55
 							// POST /scim/v2/enterprises/{enterprise}/Users
 							s.handleEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(args, w, r)
 							return
@@ -5843,8 +6785,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				s.notFound(w, r)
 				return
 			}
-		case "gists": // -> 40
-			// Edge: 40, path: "gists".
+		case "gists": // -> 56
+			// Edge: 56, path: "gists".
 			elem, p = nextElem(p)
 			switch string(elem) {
 			default:
@@ -5852,24 +6794,32 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					args = make(map[string]string)
 				}
 				args["gist_id"] = string(elem)
-				// Edge: 41, path: "".
+				// Edge: 57, path: "".
 				elem, p = nextElem(p)
 				switch string(elem) {
-				case "comments": // -> 42
+				case "comments": // -> 58
 					// POST /gists/{gist_id}/comments
 					s.handleGistsCreateCommentRequest(args, w, r)
+					return
+				case "forks": // -> 59
+					// POST /gists/{gist_id}/forks
+					s.handleGistsForkRequest(args, w, r)
 					return
 				default:
 					s.notFound(w, r)
 					return
 				}
 			}
-		case "user": // -> 49
-			// Edge: 49, path: "user".
+		case "user": // -> 72
+			// Edge: 72, path: "user".
 			elem, p = nextElem(p)
 			switch string(elem) {
-			case "packages": // -> 50
-				// Edge: 50, path: "packages".
+			case "migrations": // -> 73
+				// POST /user/migrations
+				s.handleMigrationsStartForAuthenticatedUserRequest(args, w, r)
+				return
+			case "packages": // -> 83
+				// Edge: 83, path: "packages".
 				elem, p = nextElem(p)
 				switch string(elem) {
 				default:
@@ -5877,11 +6827,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						args = make(map[string]string)
 					}
 					args["package_type"] = string(elem)
-					// Edge: 51, path: "".
+					// Edge: 84, path: "".
 					elem, p = nextElem(p)
 					switch string(elem) {
-					case "": // -> 52
-						// Edge: 52, path: "".
+					case "": // -> 85
+						// Edge: 85, path: "".
 						elem, p = nextElem(p)
 						switch string(elem) {
 						default:
@@ -5889,15 +6839,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								args = make(map[string]string)
 							}
 							args["package_name"] = string(elem)
-							// Edge: 53, path: "".
+							// Edge: 86, path: "".
 							elem, p = nextElem(p)
 							switch string(elem) {
-							case "restore": // -> 54
+							case "restore": // -> 87
 								// POST /user/packages/{package_type}/{package_name}/restore
 								s.handlePackagesRestorePackageForAuthenticatedUserRequest(args, w, r)
 								return
-							case "versions": // -> 67
-								// Edge: 67, path: "versions".
+							case "versions": // -> 100
+								// Edge: 100, path: "versions".
 								elem, p = nextElem(p)
 								switch string(elem) {
 								default:
@@ -5905,10 +6855,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										args = make(map[string]string)
 									}
 									args["package_version_id"] = string(elem)
-									// Edge: 68, path: "".
+									// Edge: 101, path: "".
 									elem, p = nextElem(p)
 									switch string(elem) {
-									case "restore": // -> 69
+									case "restore": // -> 102
 										// POST /user/packages/{package_type}/{package_name}/versions/{package_version_id}/restore
 										s.handlePackagesRestorePackageVersionForAuthenticatedUserRequest(args, w, r)
 										return
@@ -5927,16 +6877,36 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						return
 					}
 				}
-			case "projects": // -> 79
+			case "projects": // -> 112
 				// POST /user/projects
 				s.handleProjectsCreateForAuthenticatedUserRequest(args, w, r)
+				return
+			case "repos": // -> 179
+				// POST /user/repos
+				s.handleReposCreateForAuthenticatedUserRequest(args, w, r)
+				return
+			case "emails": // -> 197
+				// POST /user/emails
+				s.handleUsersAddEmailForAuthenticatedRequest(args, w, r)
+				return
+			case "gpg_keys": // -> 198
+				// POST /user/gpg_keys
+				s.handleUsersCreateGpgKeyForAuthenticatedRequest(args, w, r)
+				return
+			case "keys": // -> 199
+				// POST /user/keys
+				s.handleUsersCreatePublicSSHKeyForAuthenticatedRequest(args, w, r)
 				return
 			default:
 				s.notFound(w, r)
 				return
 			}
-		case "users": // -> 60
-			// Edge: 60, path: "users".
+		case "authorizations": // -> 75
+			// POST /authorizations
+			s.handleOAuthAuthorizationsCreateAuthorizationRequest(args, w, r)
+			return
+		case "users": // -> 93
+			// Edge: 93, path: "users".
 			elem, p = nextElem(p)
 			switch string(elem) {
 			default:
@@ -5944,11 +6914,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					args = make(map[string]string)
 				}
 				args["username"] = string(elem)
-				// Edge: 61, path: "".
+				// Edge: 94, path: "".
 				elem, p = nextElem(p)
 				switch string(elem) {
-				case "packages": // -> 62
-					// Edge: 62, path: "packages".
+				case "packages": // -> 95
+					// Edge: 95, path: "packages".
 					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
@@ -5956,11 +6926,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args = make(map[string]string)
 						}
 						args["package_type"] = string(elem)
-						// Edge: 63, path: "".
+						// Edge: 96, path: "".
 						elem, p = nextElem(p)
 						switch string(elem) {
-						case "": // -> 64
-							// Edge: 64, path: "".
+						case "": // -> 97
+							// Edge: 97, path: "".
 							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
@@ -5968,15 +6938,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["package_name"] = string(elem)
-								// Edge: 65, path: "".
+								// Edge: 98, path: "".
 								elem, p = nextElem(p)
 								switch string(elem) {
-								case "restore": // -> 66
+								case "restore": // -> 99
 									// POST /users/{username}/packages/{package_type}/{package_name}/restore
 									s.handlePackagesRestorePackageForUserRequest(args, w, r)
 									return
-								case "versions": // -> 73
-									// Edge: 73, path: "versions".
+								case "versions": // -> 106
+									// Edge: 106, path: "versions".
 									elem, p = nextElem(p)
 									switch string(elem) {
 									default:
@@ -5984,10 +6954,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											args = make(map[string]string)
 										}
 										args["package_version_id"] = string(elem)
-										// Edge: 74, path: "".
+										// Edge: 107, path: "".
 										elem, p = nextElem(p)
 										switch string(elem) {
-										case "restore": // -> 75
+										case "restore": // -> 108
 											// POST /users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore
 											s.handlePackagesRestorePackageVersionForUserRequest(args, w, r)
 											return
@@ -6011,23 +6981,44 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					return
 				}
 			}
-		case "projects": // -> 76
-			// Edge: 76, path: "projects".
+		case "projects": // -> 109
+			// Edge: 109, path: "projects".
 			elem, p = nextElem(p)
 			switch string(elem) {
-			case "columns": // -> 82
-				// Edge: 82, path: "columns".
+			case "columns": // -> 115
+				// Edge: 115, path: "columns".
 				elem, p = nextElem(p)
 				switch string(elem) {
+				case "cards": // -> 116
+					// Edge: 116, path: "cards".
+					elem, p = nextElem(p)
+					switch string(elem) {
+					default:
+						if args == nil {
+							args = make(map[string]string)
+						}
+						args["card_id"] = string(elem)
+						// Edge: 117, path: "".
+						elem, p = nextElem(p)
+						switch string(elem) {
+						case "moves": // -> 118
+							// POST /projects/columns/cards/{card_id}/moves
+							s.handleProjectsMoveCardRequest(args, w, r)
+							return
+						default:
+							s.notFound(w, r)
+							return
+						}
+					}
 				default:
 					if args == nil {
 						args = make(map[string]string)
 					}
 					args["column_id"] = string(elem)
-					// Edge: 83, path: "".
+					// Edge: 119, path: "".
 					elem, p = nextElem(p)
 					switch string(elem) {
-					case "moves": // -> 84
+					case "moves": // -> 120
 						// POST /projects/columns/{column_id}/moves
 						s.handleProjectsMoveColumnRequest(args, w, r)
 						return
@@ -6041,10 +7032,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					args = make(map[string]string)
 				}
 				args["project_id"] = string(elem)
-				// Edge: 77, path: "".
+				// Edge: 110, path: "".
 				elem, p = nextElem(p)
 				switch string(elem) {
-				case "columns": // -> 78
+				case "columns": // -> 111
 					// POST /projects/{project_id}/columns
 					s.handleProjectsCreateColumnRequest(args, w, r)
 					return
@@ -6053,8 +7044,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					return
 				}
 			}
-		case "teams": // -> 100
-			// Edge: 100, path: "teams".
+		case "teams": // -> 149
+			// Edge: 149, path: "teams".
 			elem, p = nextElem(p)
 			switch string(elem) {
 			default:
@@ -6062,11 +7053,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					args = make(map[string]string)
 				}
 				args["team_id"] = string(elem)
-				// Edge: 101, path: "".
+				// Edge: 150, path: "".
 				elem, p = nextElem(p)
 				switch string(elem) {
-				case "discussions": // -> 102
-					// Edge: 102, path: "discussions".
+				case "discussions": // -> 151
+					// Edge: 151, path: "discussions".
 					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
@@ -6074,11 +7065,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args = make(map[string]string)
 						}
 						args["discussion_number"] = string(elem)
-						// Edge: 103, path: "".
+						// Edge: 152, path: "".
 						elem, p = nextElem(p)
 						switch string(elem) {
-						case "comments": // -> 104
-							// Edge: 104, path: "comments".
+						case "comments": // -> 153
+							// Edge: 153, path: "comments".
 							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
@@ -6086,10 +7077,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["comment_number"] = string(elem)
-								// Edge: 105, path: "".
+								// Edge: 154, path: "".
 								elem, p = nextElem(p)
 								switch string(elem) {
-								case "reactions": // -> 106
+								case "reactions": // -> 155
 									// POST /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions
 									s.handleReactionsCreateForTeamDiscussionCommentLegacyRequest(args, w, r)
 									return
@@ -6098,7 +7089,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									return
 								}
 							}
-						case "reactions": // -> 108
+						case "reactions": // -> 157
 							// POST /teams/{team_id}/discussions/{discussion_number}/reactions
 							s.handleReactionsCreateForTeamDiscussionLegacyRequest(args, w, r)
 							return
@@ -6240,8 +7231,25 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						s.notFound(w, r)
 						return
 					}
-				case "outside_collaborators": // -> 77
-					// Edge: 77, path: "outside_collaborators".
+				case "interaction-limits": // -> 77
+					// PUT /orgs/{org}/interaction-limits
+					s.handleInteractionsSetRestrictionsForOrgRequest(args, w, r)
+					return
+				case "blocks": // -> 88
+					// Edge: 88, path: "blocks".
+					elem, p = nextElem(p)
+					switch string(elem) {
+					default:
+						if args == nil {
+							args = make(map[string]string)
+						}
+						args["username"] = string(elem)
+						// PUT /orgs/{org}/blocks/{username}
+						s.handleOrgsBlockUserRequest(args, w, r)
+						return
+					}
+				case "outside_collaborators": // -> 90
+					// Edge: 90, path: "outside_collaborators".
 					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
@@ -6253,8 +7261,21 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						s.handleOrgsConvertMemberToOutsideCollaboratorRequest(args, w, r)
 						return
 					}
-				case "public_members": // -> 79
-					// Edge: 79, path: "public_members".
+				case "memberships": // -> 92
+					// Edge: 92, path: "memberships".
+					elem, p = nextElem(p)
+					switch string(elem) {
+					default:
+						if args == nil {
+							args = make(map[string]string)
+						}
+						args["username"] = string(elem)
+						// PUT /orgs/{org}/memberships/{username}
+						s.handleOrgsSetMembershipForUserRequest(args, w, r)
+						return
+					}
+				case "public_members": // -> 94
+					// Edge: 94, path: "public_members".
 					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
@@ -6266,8 +7287,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						s.handleOrgsSetPublicMembershipForAuthenticatedUserRequest(args, w, r)
 						return
 					}
-				case "teams": // -> 97
-					// Edge: 97, path: "teams".
+				case "teams": // -> 128
+					// Edge: 128, path: "teams".
 					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
@@ -6275,11 +7296,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args = make(map[string]string)
 						}
 						args["team_slug"] = string(elem)
-						// Edge: 98, path: "".
+						// Edge: 129, path: "".
 						elem, p = nextElem(p)
 						switch string(elem) {
-						case "memberships": // -> 99
-							// Edge: 99, path: "memberships".
+						case "memberships": // -> 130
+							// Edge: 130, path: "memberships".
 							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
@@ -6291,8 +7312,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.handleTeamsAddOrUpdateMembershipForUserInOrgRequest(args, w, r)
 								return
 							}
-						case "projects": // -> 103
-							// Edge: 103, path: "projects".
+						case "projects": // -> 134
+							// Edge: 134, path: "projects".
 							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
@@ -6304,8 +7325,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.handleTeamsAddOrUpdateProjectPermissionsInOrgRequest(args, w, r)
 								return
 							}
-						case "repos": // -> 105
-							// Edge: 105, path: "repos".
+						case "repos": // -> 138
+							// Edge: 138, path: "repos".
 							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
@@ -6313,11 +7334,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["owner"] = string(elem)
-								// Edge: 106, path: "".
+								// Edge: 139, path: "".
 								elem, p = nextElem(p)
 								switch string(elem) {
-								case "": // -> 107
-									// Edge: 107, path: "".
+								case "": // -> 140
+									// Edge: 140, path: "".
 									elem, p = nextElem(p)
 									switch string(elem) {
 									default:
@@ -6457,12 +7478,37 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							// PUT /repos/{owner}/{repo}/subscription
 							s.handleActivitySetRepoSubscriptionRequest(args, w, r)
 							return
-						case "interaction-limits": // -> 76
+						case "interaction-limits": // -> 78
 							// PUT /repos/{owner}/{repo}/interaction-limits
 							s.handleInteractionsSetRestrictionsForRepoRequest(args, w, r)
 							return
-						case "pulls": // -> 81
-							// Edge: 81, path: "pulls".
+						case "issues": // -> 79
+							// Edge: 79, path: "issues".
+							elem, p = nextElem(p)
+							switch string(elem) {
+							default:
+								if args == nil {
+									args = make(map[string]string)
+								}
+								args["issue_number"] = string(elem)
+								// Edge: 80, path: "".
+								elem, p = nextElem(p)
+								switch string(elem) {
+								case "lock": // -> 81
+									// PUT /repos/{owner}/{repo}/issues/{issue_number}/lock
+									s.handleIssuesLockRequest(args, w, r)
+									return
+								default:
+									s.notFound(w, r)
+									return
+								}
+							}
+						case "import": // -> 82
+							// PUT /repos/{owner}/{repo}/import
+							s.handleMigrationsStartImportRequest(args, w, r)
+							return
+						case "pulls": // -> 100
+							// Edge: 100, path: "pulls".
 							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
@@ -6470,11 +7516,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["pull_number"] = string(elem)
-								// Edge: 82, path: "".
+								// Edge: 101, path: "".
 								elem, p = nextElem(p)
 								switch string(elem) {
-								case "reviews": // -> 83
-									// Edge: 83, path: "reviews".
+								case "reviews": // -> 102
+									// Edge: 102, path: "reviews".
 									elem, p = nextElem(p)
 									switch string(elem) {
 									default:
@@ -6482,10 +7528,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											args = make(map[string]string)
 										}
 										args["review_id"] = string(elem)
-										// Edge: 84, path: "".
+										// Edge: 103, path: "".
 										elem, p = nextElem(p)
 										switch string(elem) {
-										case "dismissals": // -> 85
+										case "dismissals": // -> 104
 											// PUT /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/dismissals
 											s.handlePullsDismissReviewRequest(args, w, r)
 											return
@@ -6495,29 +7541,63 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											return
 										}
 									}
+								case "merge": // -> 105
+									// PUT /repos/{owner}/{repo}/pulls/{pull_number}/merge
+									s.handlePullsMergeRequest(args, w, r)
+									return
+								case "update-branch": // -> 106
+									// PUT /repos/{owner}/{repo}/pulls/{pull_number}/update-branch
+									s.handlePullsUpdateBranchRequest(args, w, r)
+									return
 								default:
 									s.notFound(w, r)
 									return
 								}
 							}
-						case "automated-security-fixes": // -> 86
+						case "collaborators": // -> 107
+							// Edge: 107, path: "collaborators".
+							elem, p = nextElem(p)
+							switch string(elem) {
+							default:
+								if args == nil {
+									args = make(map[string]string)
+								}
+								args["username"] = string(elem)
+								// PUT /repos/{owner}/{repo}/collaborators/{username}
+								s.handleReposAddCollaboratorRequest(args, w, r)
+								return
+							}
+						case "contents": // -> 109
+							// Edge: 109, path: "contents".
+							elem, p = nextElem(p)
+							switch string(elem) {
+							default:
+								if args == nil {
+									args = make(map[string]string)
+								}
+								args["path"] = string(elem)
+								// PUT /repos/{owner}/{repo}/contents/{path}
+								s.handleReposCreateOrUpdateFileContentsRequest(args, w, r)
+								return
+							}
+						case "automated-security-fixes": // -> 111
 							// PUT /repos/{owner}/{repo}/automated-security-fixes
 							s.handleReposEnableAutomatedSecurityFixesRequest(args, w, r)
 							return
-						case "lfs": // -> 87
+						case "lfs": // -> 112
 							// PUT /repos/{owner}/{repo}/lfs
 							s.handleReposEnableLfsForRepoRequest(args, w, r)
 							return
-						case "vulnerability-alerts": // -> 88
+						case "vulnerability-alerts": // -> 113
 							// PUT /repos/{owner}/{repo}/vulnerability-alerts
 							s.handleReposEnableVulnerabilityAlertsRequest(args, w, r)
 							return
-						case "topics": // -> 89
+						case "topics": // -> 114
 							// PUT /repos/{owner}/{repo}/topics
 							s.handleReposReplaceAllTopicsRequest(args, w, r)
 							return
-						case "branches": // -> 90
-							// Edge: 90, path: "branches".
+						case "branches": // -> 115
+							// Edge: 115, path: "branches".
 							elem, p = nextElem(p)
 							switch string(elem) {
 							default:
@@ -6525,13 +7605,50 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args = make(map[string]string)
 								}
 								args["branch"] = string(elem)
-								// Edge: 91, path: "".
+								// Edge: 116, path: "".
 								elem, p = nextElem(p)
 								switch string(elem) {
-								case "protection": // -> 92
-									// PUT /repos/{owner}/{repo}/branches/{branch}/protection
-									s.handleReposUpdateBranchProtectionRequest(args, w, r)
-									return
+								case "protection": // -> 117
+									// Edge: 117, path: "protection".
+									elem, p = nextElem(p)
+									switch string(elem) {
+									case "restrictions": // -> 118
+										// Edge: 118, path: "restrictions".
+										elem, p = nextElem(p)
+										switch string(elem) {
+										case "apps": // -> 119
+											// PUT /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps
+											s.handleReposSetAppAccessRestrictionsRequest(args, w, r)
+											return
+										case "teams": // -> 122
+											// PUT /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams
+											s.handleReposSetTeamAccessRestrictionsRequest(args, w, r)
+											return
+										case "users": // -> 123
+											// PUT /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users
+											s.handleReposSetUserAccessRestrictionsRequest(args, w, r)
+											return
+										default:
+											s.notFound(w, r)
+											return
+										}
+									case "required_status_checks": // -> 120
+										// Edge: 120, path: "required_status_checks".
+										elem, p = nextElem(p)
+										switch string(elem) {
+										case "contexts": // -> 121
+											// PUT /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts
+											s.handleReposSetStatusCheckContextsRequest(args, w, r)
+											return
+										default:
+											s.notFound(w, r)
+											return
+										}
+									default:
+										// PUT /repos/{owner}/{repo}/branches/{branch}/protection.
+										s.handleReposUpdateBranchProtectionRequest(args, w, r)
+										return
+									}
 								default:
 									s.notFound(w, r)
 									return
@@ -6641,8 +7758,25 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						return
 					}
 				}
-			case "following": // -> 109
-				// Edge: 109, path: "following".
+			case "interaction-limits": // -> 76
+				// PUT /user/interaction-limits
+				s.handleInteractionsSetRestrictionsForAuthenticatedUserRequest(args, w, r)
+				return
+			case "blocks": // -> 146
+				// Edge: 146, path: "blocks".
+				elem, p = nextElem(p)
+				switch string(elem) {
+				default:
+					if args == nil {
+						args = make(map[string]string)
+					}
+					args["username"] = string(elem)
+					// PUT /user/blocks/{username}
+					s.handleUsersBlockRequest(args, w, r)
+					return
+				}
+			case "following": // -> 148
+				// Edge: 148, path: "following".
 				elem, p = nextElem(p)
 				switch string(elem) {
 				default:
@@ -6861,8 +7995,77 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					return
 				}
 			}
-		case "teams": // -> 93
-			// Edge: 93, path: "teams".
+		case "authorizations": // -> 83
+			// Edge: 83, path: "authorizations".
+			elem, p = nextElem(p)
+			switch string(elem) {
+			case "clients": // -> 84
+				// Edge: 84, path: "clients".
+				elem, p = nextElem(p)
+				switch string(elem) {
+				default:
+					if args == nil {
+						args = make(map[string]string)
+					}
+					args["client_id"] = string(elem)
+					// Edge: 85, path: "".
+					elem, p = nextElem(p)
+					switch string(elem) {
+					case "": // -> 86
+						// Edge: 86, path: "".
+						elem, p = nextElem(p)
+						switch string(elem) {
+						default:
+							if args == nil {
+								args = make(map[string]string)
+							}
+							args["fingerprint"] = string(elem)
+							// PUT /authorizations/clients/{client_id}/{fingerprint}
+							s.handleOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRequest(args, w, r)
+							return
+						}
+					default:
+						// PUT /authorizations/clients/{client_id}.
+						s.handleOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest(args, w, r)
+						return
+					}
+				}
+			default:
+				s.notFound(w, r)
+				return
+			}
+		case "projects": // -> 96
+			// Edge: 96, path: "projects".
+			elem, p = nextElem(p)
+			switch string(elem) {
+			default:
+				if args == nil {
+					args = make(map[string]string)
+				}
+				args["project_id"] = string(elem)
+				// Edge: 97, path: "".
+				elem, p = nextElem(p)
+				switch string(elem) {
+				case "collaborators": // -> 98
+					// Edge: 98, path: "collaborators".
+					elem, p = nextElem(p)
+					switch string(elem) {
+					default:
+						if args == nil {
+							args = make(map[string]string)
+						}
+						args["username"] = string(elem)
+						// PUT /projects/{project_id}/collaborators/{username}
+						s.handleProjectsAddCollaboratorRequest(args, w, r)
+						return
+					}
+				default:
+					s.notFound(w, r)
+					return
+				}
+			}
+		case "teams": // -> 124
+			// Edge: 124, path: "teams".
 			elem, p = nextElem(p)
 			switch string(elem) {
 			default:
@@ -6870,11 +8073,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					args = make(map[string]string)
 				}
 				args["team_id"] = string(elem)
-				// Edge: 94, path: "".
+				// Edge: 125, path: "".
 				elem, p = nextElem(p)
 				switch string(elem) {
-				case "members": // -> 95
-					// Edge: 95, path: "members".
+				case "members": // -> 126
+					// Edge: 126, path: "members".
 					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
@@ -6886,8 +8089,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						s.handleTeamsAddMemberLegacyRequest(args, w, r)
 						return
 					}
-				case "memberships": // -> 101
-					// Edge: 101, path: "memberships".
+				case "memberships": // -> 132
+					// Edge: 132, path: "memberships".
 					elem, p = nextElem(p)
 					switch string(elem) {
 					default:
@@ -6898,6 +8101,49 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						// PUT /teams/{team_id}/memberships/{username}
 						s.handleTeamsAddOrUpdateMembershipForUserLegacyRequest(args, w, r)
 						return
+					}
+				case "projects": // -> 136
+					// Edge: 136, path: "projects".
+					elem, p = nextElem(p)
+					switch string(elem) {
+					default:
+						if args == nil {
+							args = make(map[string]string)
+						}
+						args["project_id"] = string(elem)
+						// PUT /teams/{team_id}/projects/{project_id}
+						s.handleTeamsAddOrUpdateProjectPermissionsLegacyRequest(args, w, r)
+						return
+					}
+				case "repos": // -> 142
+					// Edge: 142, path: "repos".
+					elem, p = nextElem(p)
+					switch string(elem) {
+					default:
+						if args == nil {
+							args = make(map[string]string)
+						}
+						args["owner"] = string(elem)
+						// Edge: 143, path: "".
+						elem, p = nextElem(p)
+						switch string(elem) {
+						case "": // -> 144
+							// Edge: 144, path: "".
+							elem, p = nextElem(p)
+							switch string(elem) {
+							default:
+								if args == nil {
+									args = make(map[string]string)
+								}
+								args["repo"] = string(elem)
+								// PUT /teams/{team_id}/repos/{owner}/{repo}
+								s.handleTeamsAddOrUpdateRepoPermissionsLegacyRequest(args, w, r)
+								return
+							}
+						default:
+							s.notFound(w, r)
+							return
+						}
 					}
 				default:
 					s.notFound(w, r)

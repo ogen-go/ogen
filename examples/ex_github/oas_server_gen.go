@@ -332,6 +332,10 @@ type Handler interface {
 	//
 	// POST /repos/{owner}/{repo}/actions/runs/{run_id}/retry
 	ActionsRetryWorkflow(ctx context.Context, params ActionsRetryWorkflowParams) (ActionsRetryWorkflowCreated, error)
+	// ActionsReviewPendingDeploymentsForRun implements actions/review-pending-deployments-for-run operation.
+	//
+	// POST /repos/{owner}/{repo}/actions/runs/{run_id}/pending_deployments
+	ActionsReviewPendingDeploymentsForRun(ctx context.Context, req ActionsReviewPendingDeploymentsForRunReq, params ActionsReviewPendingDeploymentsForRunParams) ([]Deployment, error)
 	// ActionsSetAllowedActionsOrganization implements actions/set-allowed-actions-organization operation.
 	//
 	// PUT /orgs/{org}/actions/permissions/selected-actions
@@ -400,6 +404,10 @@ type Handler interface {
 	//
 	// GET /users/{username}/events
 	ActivityListEventsForAuthenticatedUser(ctx context.Context, params ActivityListEventsForAuthenticatedUserParams) ([]Event, error)
+	// ActivityListNotificationsForAuthenticatedUser implements activity/list-notifications-for-authenticated-user operation.
+	//
+	// GET /notifications
+	ActivityListNotificationsForAuthenticatedUser(ctx context.Context, params ActivityListNotificationsForAuthenticatedUserParams) (ActivityListNotificationsForAuthenticatedUserRes, error)
 	// ActivityListOrgEventsForAuthenticatedUser implements activity/list-org-events-for-authenticated-user operation.
 	//
 	// GET /users/{username}/events/orgs/{org}
@@ -484,10 +492,30 @@ type Handler interface {
 	//
 	// PUT /user/installations/{installation_id}/repositories/{repository_id}
 	AppsAddRepoToInstallation(ctx context.Context, params AppsAddRepoToInstallationParams) (AppsAddRepoToInstallationRes, error)
+	// AppsCheckToken implements apps/check-token operation.
+	//
+	// POST /applications/{client_id}/token
+	AppsCheckToken(ctx context.Context, req AppsCheckTokenReq, params AppsCheckTokenParams) (AppsCheckTokenRes, error)
+	// AppsCreateContentAttachment implements apps/create-content-attachment operation.
+	//
+	// POST /repos/{owner}/{repo}/content_references/{content_reference_id}/attachments
+	AppsCreateContentAttachment(ctx context.Context, req AppsCreateContentAttachmentReq, params AppsCreateContentAttachmentParams) (AppsCreateContentAttachmentRes, error)
+	// AppsCreateInstallationAccessToken implements apps/create-installation-access-token operation.
+	//
+	// POST /app/installations/{installation_id}/access_tokens
+	AppsCreateInstallationAccessToken(ctx context.Context, req OptAppsCreateInstallationAccessTokenReq, params AppsCreateInstallationAccessTokenParams) (AppsCreateInstallationAccessTokenRes, error)
+	// AppsDeleteAuthorization implements apps/delete-authorization operation.
+	//
+	// DELETE /applications/{client_id}/grant
+	AppsDeleteAuthorization(ctx context.Context, req AppsDeleteAuthorizationReq, params AppsDeleteAuthorizationParams) (AppsDeleteAuthorizationRes, error)
 	// AppsDeleteInstallation implements apps/delete-installation operation.
 	//
 	// DELETE /app/installations/{installation_id}
 	AppsDeleteInstallation(ctx context.Context, params AppsDeleteInstallationParams) (AppsDeleteInstallationRes, error)
+	// AppsDeleteToken implements apps/delete-token operation.
+	//
+	// DELETE /applications/{client_id}/token
+	AppsDeleteToken(ctx context.Context, req AppsDeleteTokenReq, params AppsDeleteTokenParams) (AppsDeleteTokenRes, error)
 	// AppsGetAuthenticated implements apps/get-authenticated operation.
 	//
 	// GET /app
@@ -508,6 +536,14 @@ type Handler interface {
 	//
 	// GET /app/hook/config
 	AppsGetWebhookConfigForApp(ctx context.Context) (WebhookConfig, error)
+	// AppsGetWebhookDelivery implements apps/get-webhook-delivery operation.
+	//
+	// GET /app/hook/deliveries/{delivery_id}
+	AppsGetWebhookDelivery(ctx context.Context, params AppsGetWebhookDeliveryParams) (AppsGetWebhookDeliveryRes, error)
+	// AppsListAccountsForPlan implements apps/list-accounts-for-plan operation.
+	//
+	// GET /marketplace_listing/plans/{plan_id}/accounts
+	AppsListAccountsForPlan(ctx context.Context, params AppsListAccountsForPlanParams) (AppsListAccountsForPlanRes, error)
 	// AppsListAccountsForPlanStubbed implements apps/list-accounts-for-plan-stubbed operation.
 	//
 	// GET /marketplace_listing/stubbed/plans/{plan_id}/accounts
@@ -536,14 +572,30 @@ type Handler interface {
 	//
 	// GET /user/marketplace_purchases/stubbed
 	AppsListSubscriptionsForAuthenticatedUserStubbed(ctx context.Context, params AppsListSubscriptionsForAuthenticatedUserStubbedParams) (AppsListSubscriptionsForAuthenticatedUserStubbedRes, error)
+	// AppsListWebhookDeliveries implements apps/list-webhook-deliveries operation.
+	//
+	// GET /app/hook/deliveries
+	AppsListWebhookDeliveries(ctx context.Context, params AppsListWebhookDeliveriesParams) (AppsListWebhookDeliveriesRes, error)
+	// AppsRedeliverWebhookDelivery implements apps/redeliver-webhook-delivery operation.
+	//
+	// POST /app/hook/deliveries/{delivery_id}/attempts
+	AppsRedeliverWebhookDelivery(ctx context.Context, params AppsRedeliverWebhookDeliveryParams) (AppsRedeliverWebhookDeliveryRes, error)
 	// AppsRemoveRepoFromInstallation implements apps/remove-repo-from-installation operation.
 	//
 	// DELETE /user/installations/{installation_id}/repositories/{repository_id}
 	AppsRemoveRepoFromInstallation(ctx context.Context, params AppsRemoveRepoFromInstallationParams) (AppsRemoveRepoFromInstallationRes, error)
+	// AppsResetToken implements apps/reset-token operation.
+	//
+	// PATCH /applications/{client_id}/token
+	AppsResetToken(ctx context.Context, req AppsResetTokenReq, params AppsResetTokenParams) (AppsResetTokenRes, error)
 	// AppsRevokeInstallationAccessToken implements apps/revoke-installation-access-token operation.
 	//
 	// DELETE /installation/token
 	AppsRevokeInstallationAccessToken(ctx context.Context) (AppsRevokeInstallationAccessTokenNoContent, error)
+	// AppsScopeToken implements apps/scope-token operation.
+	//
+	// POST /applications/{client_id}/token/scoped
+	AppsScopeToken(ctx context.Context, req AppsScopeTokenReq, params AppsScopeTokenParams) (AppsScopeTokenRes, error)
 	// AppsSuspendInstallation implements apps/suspend-installation operation.
 	//
 	// PUT /app/installations/{installation_id}/suspended
@@ -824,6 +876,10 @@ type Handler interface {
 	//
 	// PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners
 	EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx context.Context, req EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq, params EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams) (EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseNoContent, error)
+	// EnterpriseAdminUpdateAttributeForEnterpriseGroup implements enterprise-admin/update-attribute-for-enterprise-group operation.
+	//
+	// PATCH /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
+	EnterpriseAdminUpdateAttributeForEnterpriseGroup(ctx context.Context, req EnterpriseAdminUpdateAttributeForEnterpriseGroupReq, params EnterpriseAdminUpdateAttributeForEnterpriseGroupParams) (ScimEnterpriseGroup, error)
 	// EnterpriseAdminUpdateAttributeForEnterpriseUser implements enterprise-admin/update-attribute-for-enterprise-user operation.
 	//
 	// PATCH /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
@@ -836,6 +892,10 @@ type Handler interface {
 	//
 	// GET /gists/{gist_id}/star
 	GistsCheckIsStarred(ctx context.Context, params GistsCheckIsStarredParams) (GistsCheckIsStarredRes, error)
+	// GistsCreate implements gists/create operation.
+	//
+	// POST /gists
+	GistsCreate(ctx context.Context, req GistsCreateReq) (GistsCreateRes, error)
 	// GistsCreateComment implements gists/create-comment operation.
 	//
 	// POST /gists/{gist_id}/comments
@@ -848,6 +908,10 @@ type Handler interface {
 	//
 	// DELETE /gists/{gist_id}/comments/{comment_id}
 	GistsDeleteComment(ctx context.Context, params GistsDeleteCommentParams) (GistsDeleteCommentRes, error)
+	// GistsFork implements gists/fork operation.
+	//
+	// POST /gists/{gist_id}/forks
+	GistsFork(ctx context.Context, params GistsForkParams) (GistsForkRes, error)
 	// GistsGet implements gists/get operation.
 	//
 	// GET /gists/{gist_id}
@@ -856,6 +920,10 @@ type Handler interface {
 	//
 	// GET /gists/{gist_id}/comments/{comment_id}
 	GistsGetComment(ctx context.Context, params GistsGetCommentParams) (GistsGetCommentRes, error)
+	// GistsGetRevision implements gists/get-revision operation.
+	//
+	// GET /gists/{gist_id}/{sha}
+	GistsGetRevision(ctx context.Context, params GistsGetRevisionParams) (GistsGetRevisionRes, error)
 	// GistsList implements gists/list operation.
 	//
 	// GET /gists
@@ -868,10 +936,18 @@ type Handler interface {
 	//
 	// GET /gists/{gist_id}/commits
 	GistsListCommits(ctx context.Context, params GistsListCommitsParams) (GistsListCommitsRes, error)
+	// GistsListForUser implements gists/list-for-user operation.
+	//
+	// GET /users/{username}/gists
+	GistsListForUser(ctx context.Context, params GistsListForUserParams) (GistsListForUserRes, error)
 	// GistsListForks implements gists/list-forks operation.
 	//
 	// GET /gists/{gist_id}/forks
 	GistsListForks(ctx context.Context, params GistsListForksParams) (GistsListForksRes, error)
+	// GistsListPublic implements gists/list-public operation.
+	//
+	// GET /gists/public
+	GistsListPublic(ctx context.Context, params GistsListPublicParams) (GistsListPublicRes, error)
 	// GistsListStarred implements gists/list-starred operation.
 	//
 	// GET /gists/starred
@@ -888,6 +964,34 @@ type Handler interface {
 	//
 	// PATCH /gists/{gist_id}/comments/{comment_id}
 	GistsUpdateComment(ctx context.Context, req GistsUpdateCommentReq, params GistsUpdateCommentParams) (GistsUpdateCommentRes, error)
+	// GitCreateBlob implements git/create-blob operation.
+	//
+	// POST /repos/{owner}/{repo}/git/blobs
+	GitCreateBlob(ctx context.Context, req GitCreateBlobReq, params GitCreateBlobParams) (GitCreateBlobRes, error)
+	// GitCreateCommit implements git/create-commit operation.
+	//
+	// POST /repos/{owner}/{repo}/git/commits
+	GitCreateCommit(ctx context.Context, req GitCreateCommitReq, params GitCreateCommitParams) (GitCreateCommitRes, error)
+	// GitCreateRef implements git/create-ref operation.
+	//
+	// POST /repos/{owner}/{repo}/git/refs
+	GitCreateRef(ctx context.Context, req GitCreateRefReq, params GitCreateRefParams) (GitCreateRefRes, error)
+	// GitCreateTag implements git/create-tag operation.
+	//
+	// POST /repos/{owner}/{repo}/git/tags
+	GitCreateTag(ctx context.Context, req GitCreateTagReq, params GitCreateTagParams) (GitCreateTagRes, error)
+	// GitCreateTree implements git/create-tree operation.
+	//
+	// POST /repos/{owner}/{repo}/git/trees
+	GitCreateTree(ctx context.Context, req GitCreateTreeReq, params GitCreateTreeParams) (GitCreateTreeRes, error)
+	// GitDeleteRef implements git/delete-ref operation.
+	//
+	// DELETE /repos/{owner}/{repo}/git/refs/{ref}
+	GitDeleteRef(ctx context.Context, params GitDeleteRefParams) (GitDeleteRefRes, error)
+	// GitGetBlob implements git/get-blob operation.
+	//
+	// GET /repos/{owner}/{repo}/git/blobs/{file_sha}
+	GitGetBlob(ctx context.Context, params GitGetBlobParams) (GitGetBlobRes, error)
 	// GitGetCommit implements git/get-commit operation.
 	//
 	// GET /repos/{owner}/{repo}/git/commits/{commit_sha}
@@ -900,10 +1004,18 @@ type Handler interface {
 	//
 	// GET /repos/{owner}/{repo}/git/tags/{tag_sha}
 	GitGetTag(ctx context.Context, params GitGetTagParams) (GitGetTagRes, error)
+	// GitGetTree implements git/get-tree operation.
+	//
+	// GET /repos/{owner}/{repo}/git/trees/{tree_sha}
+	GitGetTree(ctx context.Context, params GitGetTreeParams) (GitGetTreeRes, error)
 	// GitListMatchingRefs implements git/list-matching-refs operation.
 	//
 	// GET /repos/{owner}/{repo}/git/matching-refs/{ref}
 	GitListMatchingRefs(ctx context.Context, params GitListMatchingRefsParams) ([]GitRef, error)
+	// GitUpdateRef implements git/update-ref operation.
+	//
+	// PATCH /repos/{owner}/{repo}/git/refs/{ref}
+	GitUpdateRef(ctx context.Context, req GitUpdateRefReq, params GitUpdateRefParams) (GitUpdateRefRes, error)
 	// GitignoreGetAllTemplates implements gitignore/get-all-templates operation.
 	//
 	// GET /gitignore/templates
@@ -924,6 +1036,14 @@ type Handler interface {
 	//
 	// DELETE /repos/{owner}/{repo}/interaction-limits
 	InteractionsRemoveRestrictionsForRepo(ctx context.Context, params InteractionsRemoveRestrictionsForRepoParams) (InteractionsRemoveRestrictionsForRepoRes, error)
+	// InteractionsSetRestrictionsForAuthenticatedUser implements interactions/set-restrictions-for-authenticated-user operation.
+	//
+	// PUT /user/interaction-limits
+	InteractionsSetRestrictionsForAuthenticatedUser(ctx context.Context, req InteractionLimit) (InteractionsSetRestrictionsForAuthenticatedUserRes, error)
+	// InteractionsSetRestrictionsForOrg implements interactions/set-restrictions-for-org operation.
+	//
+	// PUT /orgs/{org}/interaction-limits
+	InteractionsSetRestrictionsForOrg(ctx context.Context, req InteractionLimit, params InteractionsSetRestrictionsForOrgParams) (InteractionsSetRestrictionsForOrgRes, error)
 	// InteractionsSetRestrictionsForRepo implements interactions/set-restrictions-for-repo operation.
 	//
 	// PUT /repos/{owner}/{repo}/interaction-limits
@@ -936,6 +1056,22 @@ type Handler interface {
 	//
 	// GET /repos/{owner}/{repo}/assignees/{assignee}
 	IssuesCheckUserCanBeAssigned(ctx context.Context, params IssuesCheckUserCanBeAssignedParams) (IssuesCheckUserCanBeAssignedRes, error)
+	// IssuesCreate implements issues/create operation.
+	//
+	// POST /repos/{owner}/{repo}/issues
+	IssuesCreate(ctx context.Context, req IssuesCreateReq, params IssuesCreateParams) (IssuesCreateRes, error)
+	// IssuesCreateComment implements issues/create-comment operation.
+	//
+	// POST /repos/{owner}/{repo}/issues/{issue_number}/comments
+	IssuesCreateComment(ctx context.Context, req IssuesCreateCommentReq, params IssuesCreateCommentParams) (IssuesCreateCommentRes, error)
+	// IssuesCreateLabel implements issues/create-label operation.
+	//
+	// POST /repos/{owner}/{repo}/labels
+	IssuesCreateLabel(ctx context.Context, req IssuesCreateLabelReq, params IssuesCreateLabelParams) (IssuesCreateLabelRes, error)
+	// IssuesCreateMilestone implements issues/create-milestone operation.
+	//
+	// POST /repos/{owner}/{repo}/milestones
+	IssuesCreateMilestone(ctx context.Context, req IssuesCreateMilestoneReq, params IssuesCreateMilestoneParams) (IssuesCreateMilestoneRes, error)
 	// IssuesDeleteComment implements issues/delete-comment operation.
 	//
 	// DELETE /repos/{owner}/{repo}/issues/comments/{comment_id}
@@ -948,6 +1084,10 @@ type Handler interface {
 	//
 	// DELETE /repos/{owner}/{repo}/milestones/{milestone_number}
 	IssuesDeleteMilestone(ctx context.Context, params IssuesDeleteMilestoneParams) (IssuesDeleteMilestoneRes, error)
+	// IssuesGet implements issues/get operation.
+	//
+	// GET /repos/{owner}/{repo}/issues/{issue_number}
+	IssuesGet(ctx context.Context, params IssuesGetParams) (IssuesGetRes, error)
 	// IssuesGetComment implements issues/get-comment operation.
 	//
 	// GET /repos/{owner}/{repo}/issues/comments/{comment_id}
@@ -964,6 +1104,10 @@ type Handler interface {
 	//
 	// GET /repos/{owner}/{repo}/milestones/{milestone_number}
 	IssuesGetMilestone(ctx context.Context, params IssuesGetMilestoneParams) (IssuesGetMilestoneRes, error)
+	// IssuesList implements issues/list operation.
+	//
+	// GET /issues
+	IssuesList(ctx context.Context, params IssuesListParams) (IssuesListRes, error)
 	// IssuesListAssignees implements issues/list-assignees operation.
 	//
 	// GET /repos/{owner}/{repo}/assignees
@@ -972,6 +1116,26 @@ type Handler interface {
 	//
 	// GET /repos/{owner}/{repo}/issues/{issue_number}/comments
 	IssuesListComments(ctx context.Context, params IssuesListCommentsParams) (IssuesListCommentsRes, error)
+	// IssuesListCommentsForRepo implements issues/list-comments-for-repo operation.
+	//
+	// GET /repos/{owner}/{repo}/issues/comments
+	IssuesListCommentsForRepo(ctx context.Context, params IssuesListCommentsForRepoParams) (IssuesListCommentsForRepoRes, error)
+	// IssuesListEventsForRepo implements issues/list-events-for-repo operation.
+	//
+	// GET /repos/{owner}/{repo}/issues/events
+	IssuesListEventsForRepo(ctx context.Context, params IssuesListEventsForRepoParams) (IssuesListEventsForRepoRes, error)
+	// IssuesListForAuthenticatedUser implements issues/list-for-authenticated-user operation.
+	//
+	// GET /user/issues
+	IssuesListForAuthenticatedUser(ctx context.Context, params IssuesListForAuthenticatedUserParams) (IssuesListForAuthenticatedUserRes, error)
+	// IssuesListForOrg implements issues/list-for-org operation.
+	//
+	// GET /orgs/{org}/issues
+	IssuesListForOrg(ctx context.Context, params IssuesListForOrgParams) (IssuesListForOrgRes, error)
+	// IssuesListForRepo implements issues/list-for-repo operation.
+	//
+	// GET /repos/{owner}/{repo}/issues
+	IssuesListForRepo(ctx context.Context, params IssuesListForRepoParams) (IssuesListForRepoRes, error)
 	// IssuesListLabelsForMilestone implements issues/list-labels-for-milestone operation.
 	//
 	// GET /repos/{owner}/{repo}/milestones/{milestone_number}/labels
@@ -988,6 +1152,10 @@ type Handler interface {
 	//
 	// GET /repos/{owner}/{repo}/milestones
 	IssuesListMilestones(ctx context.Context, params IssuesListMilestonesParams) (IssuesListMilestonesRes, error)
+	// IssuesLock implements issues/lock operation.
+	//
+	// PUT /repos/{owner}/{repo}/issues/{issue_number}/lock
+	IssuesLock(ctx context.Context, req OptIssuesLockReq, params IssuesLockParams) (IssuesLockRes, error)
 	// IssuesRemoveAllLabels implements issues/remove-all-labels operation.
 	//
 	// DELETE /repos/{owner}/{repo}/issues/{issue_number}/labels
@@ -1004,6 +1172,14 @@ type Handler interface {
 	//
 	// DELETE /repos/{owner}/{repo}/issues/{issue_number}/lock
 	IssuesUnlock(ctx context.Context, params IssuesUnlockParams) (IssuesUnlockRes, error)
+	// IssuesUpdate implements issues/update operation.
+	//
+	// PATCH /repos/{owner}/{repo}/issues/{issue_number}
+	IssuesUpdate(ctx context.Context, req OptIssuesUpdateReq, params IssuesUpdateParams) (IssuesUpdateRes, error)
+	// IssuesUpdateComment implements issues/update-comment operation.
+	//
+	// PATCH /repos/{owner}/{repo}/issues/comments/{comment_id}
+	IssuesUpdateComment(ctx context.Context, req IssuesUpdateCommentReq, params IssuesUpdateCommentParams) (IssuesUpdateCommentRes, error)
 	// IssuesUpdateLabel implements issues/update-label operation.
 	//
 	// PATCH /repos/{owner}/{repo}/labels/{name}
@@ -1088,6 +1264,26 @@ type Handler interface {
 	//
 	// GET /user/migrations/{migration_id}/repositories
 	MigrationsListReposForUser(ctx context.Context, params MigrationsListReposForUserParams) (MigrationsListReposForUserRes, error)
+	// MigrationsMapCommitAuthor implements migrations/map-commit-author operation.
+	//
+	// PATCH /repos/{owner}/{repo}/import/authors/{author_id}
+	MigrationsMapCommitAuthor(ctx context.Context, req OptMigrationsMapCommitAuthorReq, params MigrationsMapCommitAuthorParams) (MigrationsMapCommitAuthorRes, error)
+	// MigrationsSetLfsPreference implements migrations/set-lfs-preference operation.
+	//
+	// PATCH /repos/{owner}/{repo}/import/lfs
+	MigrationsSetLfsPreference(ctx context.Context, req MigrationsSetLfsPreferenceReq, params MigrationsSetLfsPreferenceParams) (MigrationsSetLfsPreferenceRes, error)
+	// MigrationsStartForAuthenticatedUser implements migrations/start-for-authenticated-user operation.
+	//
+	// POST /user/migrations
+	MigrationsStartForAuthenticatedUser(ctx context.Context, req MigrationsStartForAuthenticatedUserReq) (MigrationsStartForAuthenticatedUserRes, error)
+	// MigrationsStartForOrg implements migrations/start-for-org operation.
+	//
+	// POST /orgs/{org}/migrations
+	MigrationsStartForOrg(ctx context.Context, req MigrationsStartForOrgReq, params MigrationsStartForOrgParams) (MigrationsStartForOrgRes, error)
+	// MigrationsStartImport implements migrations/start-import operation.
+	//
+	// PUT /repos/{owner}/{repo}/import
+	MigrationsStartImport(ctx context.Context, req MigrationsStartImportReq, params MigrationsStartImportParams) (MigrationsStartImportRes, error)
 	// MigrationsUnlockRepoForAuthenticatedUser implements migrations/unlock-repo-for-authenticated-user operation.
 	//
 	// DELETE /user/migrations/{migration_id}/repos/{repo_name}/lock
@@ -1100,6 +1296,10 @@ type Handler interface {
 	//
 	// PATCH /repos/{owner}/{repo}/import
 	MigrationsUpdateImport(ctx context.Context, req OptMigrationsUpdateImportReq, params MigrationsUpdateImportParams) (Import, error)
+	// OAuthAuthorizationsCreateAuthorization implements oauth-authorizations/create-authorization operation.
+	//
+	// POST /authorizations
+	OAuthAuthorizationsCreateAuthorization(ctx context.Context, req OptOAuthAuthorizationsCreateAuthorizationReq) (OAuthAuthorizationsCreateAuthorizationRes, error)
 	// OAuthAuthorizationsDeleteAuthorization implements oauth-authorizations/delete-authorization operation.
 	//
 	// DELETE /authorizations/{authorization_id}
@@ -1116,6 +1316,14 @@ type Handler interface {
 	//
 	// GET /applications/grants/{grant_id}
 	OAuthAuthorizationsGetGrant(ctx context.Context, params OAuthAuthorizationsGetGrantParams) (OAuthAuthorizationsGetGrantRes, error)
+	// OAuthAuthorizationsGetOrCreateAuthorizationForApp implements oauth-authorizations/get-or-create-authorization-for-app operation.
+	//
+	// PUT /authorizations/clients/{client_id}
+	OAuthAuthorizationsGetOrCreateAuthorizationForApp(ctx context.Context, req OAuthAuthorizationsGetOrCreateAuthorizationForAppReq, params OAuthAuthorizationsGetOrCreateAuthorizationForAppParams) (OAuthAuthorizationsGetOrCreateAuthorizationForAppRes, error)
+	// OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint implements oauth-authorizations/get-or-create-authorization-for-app-and-fingerprint operation.
+	//
+	// PUT /authorizations/clients/{client_id}/{fingerprint}
+	OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint(ctx context.Context, req OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq, params OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintParams) (OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRes, error)
 	// OAuthAuthorizationsListAuthorizations implements oauth-authorizations/list-authorizations operation.
 	//
 	// GET /authorizations
@@ -1124,6 +1332,18 @@ type Handler interface {
 	//
 	// GET /applications/grants
 	OAuthAuthorizationsListGrants(ctx context.Context, params OAuthAuthorizationsListGrantsParams) (OAuthAuthorizationsListGrantsRes, error)
+	// OAuthAuthorizationsUpdateAuthorization implements oauth-authorizations/update-authorization operation.
+	//
+	// PATCH /authorizations/{authorization_id}
+	OAuthAuthorizationsUpdateAuthorization(ctx context.Context, req OptOAuthAuthorizationsUpdateAuthorizationReq, params OAuthAuthorizationsUpdateAuthorizationParams) (OAuthAuthorizationsUpdateAuthorizationRes, error)
+	// OrgsBlockUser implements orgs/block-user operation.
+	//
+	// PUT /orgs/{org}/blocks/{username}
+	OrgsBlockUser(ctx context.Context, params OrgsBlockUserParams) (OrgsBlockUserRes, error)
+	// OrgsCancelInvitation implements orgs/cancel-invitation operation.
+	//
+	// DELETE /orgs/{org}/invitations/{invitation_id}
+	OrgsCancelInvitation(ctx context.Context, params OrgsCancelInvitationParams) (OrgsCancelInvitationRes, error)
 	// OrgsCheckBlockedUser implements orgs/check-blocked-user operation.
 	//
 	// GET /orgs/{org}/blocks/{username}
@@ -1140,6 +1360,14 @@ type Handler interface {
 	//
 	// PUT /orgs/{org}/outside_collaborators/{username}
 	OrgsConvertMemberToOutsideCollaborator(ctx context.Context, params OrgsConvertMemberToOutsideCollaboratorParams) (OrgsConvertMemberToOutsideCollaboratorRes, error)
+	// OrgsCreateInvitation implements orgs/create-invitation operation.
+	//
+	// POST /orgs/{org}/invitations
+	OrgsCreateInvitation(ctx context.Context, req OptOrgsCreateInvitationReq, params OrgsCreateInvitationParams) (OrgsCreateInvitationRes, error)
+	// OrgsCreateWebhook implements orgs/create-webhook operation.
+	//
+	// POST /orgs/{org}/hooks
+	OrgsCreateWebhook(ctx context.Context, req OrgsCreateWebhookReq, params OrgsCreateWebhookParams) (OrgsCreateWebhookRes, error)
 	// OrgsDeleteWebhook implements orgs/delete-webhook operation.
 	//
 	// DELETE /orgs/{org}/hooks/{hook_id}
@@ -1168,6 +1396,10 @@ type Handler interface {
 	//
 	// GET /orgs/{org}/hooks/{hook_id}/config
 	OrgsGetWebhookConfigForOrg(ctx context.Context, params OrgsGetWebhookConfigForOrgParams) (WebhookConfig, error)
+	// OrgsGetWebhookDelivery implements orgs/get-webhook-delivery operation.
+	//
+	// GET /orgs/{org}/hooks/{hook_id}/deliveries/{delivery_id}
+	OrgsGetWebhookDelivery(ctx context.Context, params OrgsGetWebhookDeliveryParams) (OrgsGetWebhookDeliveryRes, error)
 	// OrgsList implements orgs/list operation.
 	//
 	// GET /organizations
@@ -1192,6 +1424,14 @@ type Handler interface {
 	//
 	// GET /orgs/{org}/invitations/{invitation_id}/teams
 	OrgsListInvitationTeams(ctx context.Context, params OrgsListInvitationTeamsParams) (OrgsListInvitationTeamsRes, error)
+	// OrgsListMembers implements orgs/list-members operation.
+	//
+	// GET /orgs/{org}/members
+	OrgsListMembers(ctx context.Context, params OrgsListMembersParams) (OrgsListMembersRes, error)
+	// OrgsListMembershipsForAuthenticatedUser implements orgs/list-memberships-for-authenticated-user operation.
+	//
+	// GET /user/memberships/orgs
+	OrgsListMembershipsForAuthenticatedUser(ctx context.Context, params OrgsListMembershipsForAuthenticatedUserParams) (OrgsListMembershipsForAuthenticatedUserRes, error)
 	// OrgsListOutsideCollaborators implements orgs/list-outside-collaborators operation.
 	//
 	// GET /orgs/{org}/outside_collaborators
@@ -1208,6 +1448,10 @@ type Handler interface {
 	//
 	// GET /orgs/{org}/credential-authorizations
 	OrgsListSamlSSOAuthorizations(ctx context.Context, params OrgsListSamlSSOAuthorizationsParams) ([]CredentialAuthorization, error)
+	// OrgsListWebhookDeliveries implements orgs/list-webhook-deliveries operation.
+	//
+	// GET /orgs/{org}/hooks/{hook_id}/deliveries
+	OrgsListWebhookDeliveries(ctx context.Context, params OrgsListWebhookDeliveriesParams) (OrgsListWebhookDeliveriesRes, error)
 	// OrgsListWebhooks implements orgs/list-webhooks operation.
 	//
 	// GET /orgs/{org}/hooks
@@ -1216,6 +1460,10 @@ type Handler interface {
 	//
 	// POST /orgs/{org}/hooks/{hook_id}/pings
 	OrgsPingWebhook(ctx context.Context, params OrgsPingWebhookParams) (OrgsPingWebhookRes, error)
+	// OrgsRedeliverWebhookDelivery implements orgs/redeliver-webhook-delivery operation.
+	//
+	// POST /orgs/{org}/hooks/{hook_id}/deliveries/{delivery_id}/attempts
+	OrgsRedeliverWebhookDelivery(ctx context.Context, params OrgsRedeliverWebhookDeliveryParams) (OrgsRedeliverWebhookDeliveryRes, error)
 	// OrgsRemoveMember implements orgs/remove-member operation.
 	//
 	// DELETE /orgs/{org}/members/{username}
@@ -1236,6 +1484,10 @@ type Handler interface {
 	//
 	// DELETE /orgs/{org}/credential-authorizations/{credential_id}
 	OrgsRemoveSamlSSOAuthorization(ctx context.Context, params OrgsRemoveSamlSSOAuthorizationParams) (OrgsRemoveSamlSSOAuthorizationRes, error)
+	// OrgsSetMembershipForUser implements orgs/set-membership-for-user operation.
+	//
+	// PUT /orgs/{org}/memberships/{username}
+	OrgsSetMembershipForUser(ctx context.Context, req OptOrgsSetMembershipForUserReq, params OrgsSetMembershipForUserParams) (OrgsSetMembershipForUserRes, error)
 	// OrgsSetPublicMembershipForAuthenticatedUser implements orgs/set-public-membership-for-authenticated-user operation.
 	//
 	// PUT /orgs/{org}/public_members/{username}
@@ -1244,6 +1496,14 @@ type Handler interface {
 	//
 	// DELETE /orgs/{org}/blocks/{username}
 	OrgsUnblockUser(ctx context.Context, params OrgsUnblockUserParams) (OrgsUnblockUserNoContent, error)
+	// OrgsUpdateMembershipForAuthenticatedUser implements orgs/update-membership-for-authenticated-user operation.
+	//
+	// PATCH /user/memberships/orgs/{org}
+	OrgsUpdateMembershipForAuthenticatedUser(ctx context.Context, req OrgsUpdateMembershipForAuthenticatedUserReq, params OrgsUpdateMembershipForAuthenticatedUserParams) (OrgsUpdateMembershipForAuthenticatedUserRes, error)
+	// OrgsUpdateWebhook implements orgs/update-webhook operation.
+	//
+	// PATCH /orgs/{org}/hooks/{hook_id}
+	OrgsUpdateWebhook(ctx context.Context, req OptOrgsUpdateWebhookReq, params OrgsUpdateWebhookParams) (OrgsUpdateWebhookRes, error)
 	// OrgsUpdateWebhookConfigForOrg implements orgs/update-webhook-config-for-org operation.
 	//
 	// PATCH /orgs/{org}/hooks/{hook_id}/config
@@ -1344,6 +1604,10 @@ type Handler interface {
 	//
 	// POST /users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore
 	PackagesRestorePackageVersionForUser(ctx context.Context, params PackagesRestorePackageVersionForUserParams) (PackagesRestorePackageVersionForUserRes, error)
+	// ProjectsAddCollaborator implements projects/add-collaborator operation.
+	//
+	// PUT /projects/{project_id}/collaborators/{username}
+	ProjectsAddCollaborator(ctx context.Context, req OptProjectsAddCollaboratorReq, params ProjectsAddCollaboratorParams) (ProjectsAddCollaboratorRes, error)
 	// ProjectsCreateColumn implements projects/create-column operation.
 	//
 	// POST /projects/{project_id}/columns
@@ -1384,10 +1648,18 @@ type Handler interface {
 	//
 	// GET /projects/columns/{column_id}
 	ProjectsGetColumn(ctx context.Context, params ProjectsGetColumnParams) (ProjectsGetColumnRes, error)
+	// ProjectsGetPermissionForUser implements projects/get-permission-for-user operation.
+	//
+	// GET /projects/{project_id}/collaborators/{username}/permission
+	ProjectsGetPermissionForUser(ctx context.Context, params ProjectsGetPermissionForUserParams) (ProjectsGetPermissionForUserRes, error)
 	// ProjectsListCards implements projects/list-cards operation.
 	//
 	// GET /projects/columns/{column_id}/cards
 	ProjectsListCards(ctx context.Context, params ProjectsListCardsParams) (ProjectsListCardsRes, error)
+	// ProjectsListCollaborators implements projects/list-collaborators operation.
+	//
+	// GET /projects/{project_id}/collaborators
+	ProjectsListCollaborators(ctx context.Context, params ProjectsListCollaboratorsParams) (ProjectsListCollaboratorsRes, error)
 	// ProjectsListColumns implements projects/list-columns operation.
 	//
 	// GET /projects/{project_id}/columns
@@ -1400,10 +1672,22 @@ type Handler interface {
 	//
 	// GET /repos/{owner}/{repo}/projects
 	ProjectsListForRepo(ctx context.Context, params ProjectsListForRepoParams) (ProjectsListForRepoRes, error)
+	// ProjectsListForUser implements projects/list-for-user operation.
+	//
+	// GET /users/{username}/projects
+	ProjectsListForUser(ctx context.Context, params ProjectsListForUserParams) (ProjectsListForUserRes, error)
+	// ProjectsMoveCard implements projects/move-card operation.
+	//
+	// POST /projects/columns/cards/{card_id}/moves
+	ProjectsMoveCard(ctx context.Context, req ProjectsMoveCardReq, params ProjectsMoveCardParams) (ProjectsMoveCardRes, error)
 	// ProjectsMoveColumn implements projects/move-column operation.
 	//
 	// POST /projects/columns/{column_id}/moves
 	ProjectsMoveColumn(ctx context.Context, req ProjectsMoveColumnReq, params ProjectsMoveColumnParams) (ProjectsMoveColumnRes, error)
+	// ProjectsRemoveCollaborator implements projects/remove-collaborator operation.
+	//
+	// DELETE /projects/{project_id}/collaborators/{username}
+	ProjectsRemoveCollaborator(ctx context.Context, params ProjectsRemoveCollaboratorParams) (ProjectsRemoveCollaboratorRes, error)
 	// ProjectsUpdate implements projects/update operation.
 	//
 	// PATCH /projects/{project_id}
@@ -1420,6 +1704,10 @@ type Handler interface {
 	//
 	// GET /repos/{owner}/{repo}/pulls/{pull_number}/merge
 	PullsCheckIfMerged(ctx context.Context, params PullsCheckIfMergedParams) (PullsCheckIfMergedRes, error)
+	// PullsCreate implements pulls/create operation.
+	//
+	// POST /repos/{owner}/{repo}/pulls
+	PullsCreate(ctx context.Context, req PullsCreateReq, params PullsCreateParams) (PullsCreateRes, error)
 	// PullsCreateReplyForReviewComment implements pulls/create-reply-for-review-comment operation.
 	//
 	// POST /repos/{owner}/{repo}/pulls/{pull_number}/comments/{comment_id}/replies
@@ -1428,6 +1716,10 @@ type Handler interface {
 	//
 	// POST /repos/{owner}/{repo}/pulls/{pull_number}/reviews
 	PullsCreateReview(ctx context.Context, req OptPullsCreateReviewReq, params PullsCreateReviewParams) (PullsCreateReviewRes, error)
+	// PullsCreateReviewComment implements pulls/create-review-comment operation.
+	//
+	// POST /repos/{owner}/{repo}/pulls/{pull_number}/comments
+	PullsCreateReviewComment(ctx context.Context, req PullsCreateReviewCommentReq, params PullsCreateReviewCommentParams) (PullsCreateReviewCommentRes, error)
 	// PullsDeletePendingReview implements pulls/delete-pending-review operation.
 	//
 	// DELETE /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}
@@ -1452,6 +1744,10 @@ type Handler interface {
 	//
 	// GET /repos/{owner}/{repo}/pulls/comments/{comment_id}
 	PullsGetReviewComment(ctx context.Context, params PullsGetReviewCommentParams) (PullsGetReviewCommentRes, error)
+	// PullsList implements pulls/list operation.
+	//
+	// GET /repos/{owner}/{repo}/pulls
+	PullsList(ctx context.Context, params PullsListParams) (PullsListRes, error)
 	// PullsListCommentsForReview implements pulls/list-comments-for-review operation.
 	//
 	// GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/comments
@@ -1460,6 +1756,10 @@ type Handler interface {
 	//
 	// GET /repos/{owner}/{repo}/pulls/{pull_number}/commits
 	PullsListCommits(ctx context.Context, params PullsListCommitsParams) ([]Commit, error)
+	// PullsListFiles implements pulls/list-files operation.
+	//
+	// GET /repos/{owner}/{repo}/pulls/{pull_number}/files
+	PullsListFiles(ctx context.Context, params PullsListFilesParams) (PullsListFilesRes, error)
 	// PullsListRequestedReviewers implements pulls/list-requested-reviewers operation.
 	//
 	// GET /repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers
@@ -1476,10 +1776,26 @@ type Handler interface {
 	//
 	// GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews
 	PullsListReviews(ctx context.Context, params PullsListReviewsParams) ([]PullRequestReview, error)
+	// PullsMerge implements pulls/merge operation.
+	//
+	// PUT /repos/{owner}/{repo}/pulls/{pull_number}/merge
+	PullsMerge(ctx context.Context, req OptPullsMergeReq, params PullsMergeParams) (PullsMergeRes, error)
+	// PullsRemoveRequestedReviewers implements pulls/remove-requested-reviewers operation.
+	//
+	// DELETE /repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers
+	PullsRemoveRequestedReviewers(ctx context.Context, req PullsRemoveRequestedReviewersReq, params PullsRemoveRequestedReviewersParams) (PullsRemoveRequestedReviewersRes, error)
 	// PullsSubmitReview implements pulls/submit-review operation.
 	//
 	// POST /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/events
 	PullsSubmitReview(ctx context.Context, req PullsSubmitReviewReq, params PullsSubmitReviewParams) (PullsSubmitReviewRes, error)
+	// PullsUpdate implements pulls/update operation.
+	//
+	// PATCH /repos/{owner}/{repo}/pulls/{pull_number}
+	PullsUpdate(ctx context.Context, req OptPullsUpdateReq, params PullsUpdateParams) (PullsUpdateRes, error)
+	// PullsUpdateBranch implements pulls/update-branch operation.
+	//
+	// PUT /repos/{owner}/{repo}/pulls/{pull_number}/update-branch
+	PullsUpdateBranch(ctx context.Context, req OptPullsUpdateBranchReq, params PullsUpdateBranchParams) (PullsUpdateBranchRes, error)
 	// PullsUpdateReview implements pulls/update-review operation.
 	//
 	// PUT /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}
@@ -1492,6 +1808,26 @@ type Handler interface {
 	//
 	// GET /rate_limit
 	RateLimitGet(ctx context.Context) (RateLimitGetRes, error)
+	// ReactionsCreateForCommitComment implements reactions/create-for-commit-comment operation.
+	//
+	// POST /repos/{owner}/{repo}/comments/{comment_id}/reactions
+	ReactionsCreateForCommitComment(ctx context.Context, req ReactionsCreateForCommitCommentReq, params ReactionsCreateForCommitCommentParams) (ReactionsCreateForCommitCommentRes, error)
+	// ReactionsCreateForIssue implements reactions/create-for-issue operation.
+	//
+	// POST /repos/{owner}/{repo}/issues/{issue_number}/reactions
+	ReactionsCreateForIssue(ctx context.Context, req ReactionsCreateForIssueReq, params ReactionsCreateForIssueParams) (ReactionsCreateForIssueRes, error)
+	// ReactionsCreateForIssueComment implements reactions/create-for-issue-comment operation.
+	//
+	// POST /repos/{owner}/{repo}/issues/comments/{comment_id}/reactions
+	ReactionsCreateForIssueComment(ctx context.Context, req ReactionsCreateForIssueCommentReq, params ReactionsCreateForIssueCommentParams) (ReactionsCreateForIssueCommentRes, error)
+	// ReactionsCreateForPullRequestReviewComment implements reactions/create-for-pull-request-review-comment operation.
+	//
+	// POST /repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions
+	ReactionsCreateForPullRequestReviewComment(ctx context.Context, req ReactionsCreateForPullRequestReviewCommentReq, params ReactionsCreateForPullRequestReviewCommentParams) (ReactionsCreateForPullRequestReviewCommentRes, error)
+	// ReactionsCreateForRelease implements reactions/create-for-release operation.
+	//
+	// POST /repos/{owner}/{repo}/releases/{release_id}/reactions
+	ReactionsCreateForRelease(ctx context.Context, req ReactionsCreateForReleaseReq, params ReactionsCreateForReleaseParams) (ReactionsCreateForReleaseRes, error)
 	// ReactionsCreateForTeamDiscussionCommentInOrg implements reactions/create-for-team-discussion-comment-in-org operation.
 	//
 	// POST /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions
@@ -1572,6 +1908,26 @@ type Handler interface {
 	//
 	// PATCH /user/repository_invitations/{invitation_id}
 	ReposAcceptInvitation(ctx context.Context, params ReposAcceptInvitationParams) (ReposAcceptInvitationRes, error)
+	// ReposAddAppAccessRestrictions implements repos/add-app-access-restrictions operation.
+	//
+	// POST /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps
+	ReposAddAppAccessRestrictions(ctx context.Context, req OptReposAddAppAccessRestrictionsReq, params ReposAddAppAccessRestrictionsParams) (ReposAddAppAccessRestrictionsRes, error)
+	// ReposAddCollaborator implements repos/add-collaborator operation.
+	//
+	// PUT /repos/{owner}/{repo}/collaborators/{username}
+	ReposAddCollaborator(ctx context.Context, req OptReposAddCollaboratorReq, params ReposAddCollaboratorParams) (ReposAddCollaboratorRes, error)
+	// ReposAddStatusCheckContexts implements repos/add-status-check-contexts operation.
+	//
+	// POST /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts
+	ReposAddStatusCheckContexts(ctx context.Context, req OptReposAddStatusCheckContextsReq, params ReposAddStatusCheckContextsParams) (ReposAddStatusCheckContextsRes, error)
+	// ReposAddTeamAccessRestrictions implements repos/add-team-access-restrictions operation.
+	//
+	// POST /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams
+	ReposAddTeamAccessRestrictions(ctx context.Context, req OptReposAddTeamAccessRestrictionsReq, params ReposAddTeamAccessRestrictionsParams) (ReposAddTeamAccessRestrictionsRes, error)
+	// ReposAddUserAccessRestrictions implements repos/add-user-access-restrictions operation.
+	//
+	// POST /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users
+	ReposAddUserAccessRestrictions(ctx context.Context, req OptReposAddUserAccessRestrictionsReq, params ReposAddUserAccessRestrictionsParams) (ReposAddUserAccessRestrictionsRes, error)
 	// ReposCheckCollaborator implements repos/check-collaborator operation.
 	//
 	// GET /repos/{owner}/{repo}/collaborators/{username}
@@ -1584,6 +1940,14 @@ type Handler interface {
 	//
 	// GET /repos/{owner}/{repo}/compare/{basehead}
 	ReposCompareCommits(ctx context.Context, params ReposCompareCommitsParams) (ReposCompareCommitsRes, error)
+	// ReposCreateAutolink implements repos/create-autolink operation.
+	//
+	// POST /repos/{owner}/{repo}/autolinks
+	ReposCreateAutolink(ctx context.Context, req ReposCreateAutolinkReq, params ReposCreateAutolinkParams) (ReposCreateAutolinkRes, error)
+	// ReposCreateCommitComment implements repos/create-commit-comment operation.
+	//
+	// POST /repos/{owner}/{repo}/commits/{commit_sha}/comments
+	ReposCreateCommitComment(ctx context.Context, req ReposCreateCommitCommentReq, params ReposCreateCommitCommentParams) (ReposCreateCommitCommentRes, error)
 	// ReposCreateCommitSignatureProtection implements repos/create-commit-signature-protection operation.
 	//
 	// POST /repos/{owner}/{repo}/branches/{branch}/protection/required_signatures
@@ -1592,10 +1956,54 @@ type Handler interface {
 	//
 	// POST /repos/{owner}/{repo}/statuses/{sha}
 	ReposCreateCommitStatus(ctx context.Context, req ReposCreateCommitStatusReq, params ReposCreateCommitStatusParams) (Status, error)
+	// ReposCreateDeployKey implements repos/create-deploy-key operation.
+	//
+	// POST /repos/{owner}/{repo}/keys
+	ReposCreateDeployKey(ctx context.Context, req ReposCreateDeployKeyReq, params ReposCreateDeployKeyParams) (ReposCreateDeployKeyRes, error)
+	// ReposCreateDeployment implements repos/create-deployment operation.
+	//
+	// POST /repos/{owner}/{repo}/deployments
+	ReposCreateDeployment(ctx context.Context, req ReposCreateDeploymentReq, params ReposCreateDeploymentParams) (ReposCreateDeploymentRes, error)
+	// ReposCreateDeploymentStatus implements repos/create-deployment-status operation.
+	//
+	// POST /repos/{owner}/{repo}/deployments/{deployment_id}/statuses
+	ReposCreateDeploymentStatus(ctx context.Context, req ReposCreateDeploymentStatusReq, params ReposCreateDeploymentStatusParams) (ReposCreateDeploymentStatusRes, error)
+	// ReposCreateDispatchEvent implements repos/create-dispatch-event operation.
+	//
+	// POST /repos/{owner}/{repo}/dispatches
+	ReposCreateDispatchEvent(ctx context.Context, req ReposCreateDispatchEventReq, params ReposCreateDispatchEventParams) (ReposCreateDispatchEventRes, error)
+	// ReposCreateForAuthenticatedUser implements repos/create-for-authenticated-user operation.
+	//
+	// POST /user/repos
+	ReposCreateForAuthenticatedUser(ctx context.Context, req ReposCreateForAuthenticatedUserReq) (ReposCreateForAuthenticatedUserRes, error)
+	// ReposCreateFork implements repos/create-fork operation.
+	//
+	// POST /repos/{owner}/{repo}/forks
+	ReposCreateFork(ctx context.Context, req OptReposCreateForkReq, params ReposCreateForkParams) (ReposCreateForkRes, error)
+	// ReposCreateInOrg implements repos/create-in-org operation.
+	//
+	// POST /orgs/{org}/repos
+	ReposCreateInOrg(ctx context.Context, req ReposCreateInOrgReq, params ReposCreateInOrgParams) (ReposCreateInOrgRes, error)
+	// ReposCreateOrUpdateFileContents implements repos/create-or-update-file-contents operation.
+	//
+	// PUT /repos/{owner}/{repo}/contents/{path}
+	ReposCreateOrUpdateFileContents(ctx context.Context, req ReposCreateOrUpdateFileContentsReq, params ReposCreateOrUpdateFileContentsParams) (ReposCreateOrUpdateFileContentsRes, error)
+	// ReposCreatePagesSite implements repos/create-pages-site operation.
+	//
+	// POST /repos/{owner}/{repo}/pages
+	ReposCreatePagesSite(ctx context.Context, req ReposCreatePagesSiteReq, params ReposCreatePagesSiteParams) (ReposCreatePagesSiteRes, error)
+	// ReposCreateRelease implements repos/create-release operation.
+	//
+	// POST /repos/{owner}/{repo}/releases
+	ReposCreateRelease(ctx context.Context, req ReposCreateReleaseReq, params ReposCreateReleaseParams) (ReposCreateReleaseRes, error)
 	// ReposCreateUsingTemplate implements repos/create-using-template operation.
 	//
 	// POST /repos/{template_owner}/{template_repo}/generate
 	ReposCreateUsingTemplate(ctx context.Context, req ReposCreateUsingTemplateReq, params ReposCreateUsingTemplateParams) (Repository, error)
+	// ReposCreateWebhook implements repos/create-webhook operation.
+	//
+	// POST /repos/{owner}/{repo}/hooks
+	ReposCreateWebhook(ctx context.Context, req OptReposCreateWebhookReq, params ReposCreateWebhookParams) (ReposCreateWebhookRes, error)
 	// ReposDeclineInvitation implements repos/decline-invitation operation.
 	//
 	// DELETE /user/repository_invitations/{invitation_id}
@@ -1640,10 +2048,18 @@ type Handler interface {
 	//
 	// DELETE /repos/{owner}/{repo}/deployments/{deployment_id}
 	ReposDeleteDeployment(ctx context.Context, params ReposDeleteDeploymentParams) (ReposDeleteDeploymentRes, error)
+	// ReposDeleteFile implements repos/delete-file operation.
+	//
+	// DELETE /repos/{owner}/{repo}/contents/{path}
+	ReposDeleteFile(ctx context.Context, req ReposDeleteFileReq, params ReposDeleteFileParams) (ReposDeleteFileRes, error)
 	// ReposDeleteInvitation implements repos/delete-invitation operation.
 	//
 	// DELETE /repos/{owner}/{repo}/invitations/{invitation_id}
 	ReposDeleteInvitation(ctx context.Context, params ReposDeleteInvitationParams) (ReposDeleteInvitationNoContent, error)
+	// ReposDeletePagesSite implements repos/delete-pages-site operation.
+	//
+	// DELETE /repos/{owner}/{repo}/pages
+	ReposDeletePagesSite(ctx context.Context, params ReposDeletePagesSiteParams) (ReposDeletePagesSiteRes, error)
 	// ReposDeletePullRequestReviewProtection implements repos/delete-pull-request-review-protection operation.
 	//
 	// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews
@@ -1744,6 +2160,10 @@ type Handler interface {
 	//
 	// GET /repos/{owner}/{repo}/commits/{ref}/status
 	ReposGetCombinedStatusForRef(ctx context.Context, params ReposGetCombinedStatusForRefParams) (ReposGetCombinedStatusForRefRes, error)
+	// ReposGetCommit implements repos/get-commit operation.
+	//
+	// GET /repos/{owner}/{repo}/commits/{ref}
+	ReposGetCommit(ctx context.Context, params ReposGetCommitParams) (ReposGetCommitRes, error)
 	// ReposGetCommitActivityStats implements repos/get-commit-activity-stats operation.
 	//
 	// GET /repos/{owner}/{repo}/stats/commit_activity
@@ -1768,6 +2188,10 @@ type Handler interface {
 	//
 	// GET /repos/{owner}/{repo}/keys/{key_id}
 	ReposGetDeployKey(ctx context.Context, params ReposGetDeployKeyParams) (ReposGetDeployKeyRes, error)
+	// ReposGetDeployment implements repos/get-deployment operation.
+	//
+	// GET /repos/{owner}/{repo}/deployments/{deployment_id}
+	ReposGetDeployment(ctx context.Context, params ReposGetDeploymentParams) (ReposGetDeploymentRes, error)
 	// ReposGetDeploymentStatus implements repos/get-deployment-status operation.
 	//
 	// GET /repos/{owner}/{repo}/deployments/{deployment_id}/statuses/{status_id}
@@ -1804,6 +2228,14 @@ type Handler interface {
 	//
 	// GET /repos/{owner}/{repo}/stats/punch_card
 	ReposGetPunchCardStats(ctx context.Context, params ReposGetPunchCardStatsParams) (ReposGetPunchCardStatsRes, error)
+	// ReposGetReadme implements repos/get-readme operation.
+	//
+	// GET /repos/{owner}/{repo}/readme
+	ReposGetReadme(ctx context.Context, params ReposGetReadmeParams) (ReposGetReadmeRes, error)
+	// ReposGetReadmeInDirectory implements repos/get-readme-in-directory operation.
+	//
+	// GET /repos/{owner}/{repo}/readme/{dir}
+	ReposGetReadmeInDirectory(ctx context.Context, params ReposGetReadmeInDirectoryParams) (ReposGetReadmeInDirectoryRes, error)
 	// ReposGetRelease implements repos/get-release operation.
 	//
 	// GET /repos/{owner}/{repo}/releases/{release_id}
@@ -1848,6 +2280,10 @@ type Handler interface {
 	//
 	// GET /repos/{owner}/{repo}/hooks/{hook_id}/config
 	ReposGetWebhookConfigForRepo(ctx context.Context, params ReposGetWebhookConfigForRepoParams) (WebhookConfig, error)
+	// ReposGetWebhookDelivery implements repos/get-webhook-delivery operation.
+	//
+	// GET /repos/{owner}/{repo}/hooks/{hook_id}/deliveries/{delivery_id}
+	ReposGetWebhookDelivery(ctx context.Context, params ReposGetWebhookDeliveryParams) (ReposGetWebhookDeliveryRes, error)
 	// ReposListAutolinks implements repos/list-autolinks operation.
 	//
 	// GET /repos/{owner}/{repo}/autolinks
@@ -1856,6 +2292,10 @@ type Handler interface {
 	//
 	// GET /repos/{owner}/{repo}/branches
 	ReposListBranches(ctx context.Context, params ReposListBranchesParams) (ReposListBranchesRes, error)
+	// ReposListBranchesForHeadCommit implements repos/list-branches-for-head-commit operation.
+	//
+	// GET /repos/{owner}/{repo}/commits/{commit_sha}/branches-where-head
+	ReposListBranchesForHeadCommit(ctx context.Context, params ReposListBranchesForHeadCommitParams) (ReposListBranchesForHeadCommitRes, error)
 	// ReposListCollaborators implements repos/list-collaborators operation.
 	//
 	// GET /repos/{owner}/{repo}/collaborators
@@ -1888,6 +2328,14 @@ type Handler interface {
 	//
 	// GET /repos/{owner}/{repo}/deployments/{deployment_id}/statuses
 	ReposListDeploymentStatuses(ctx context.Context, params ReposListDeploymentStatusesParams) (ReposListDeploymentStatusesRes, error)
+	// ReposListDeployments implements repos/list-deployments operation.
+	//
+	// GET /repos/{owner}/{repo}/deployments
+	ReposListDeployments(ctx context.Context, params ReposListDeploymentsParams) ([]Deployment, error)
+	// ReposListForAuthenticatedUser implements repos/list-for-authenticated-user operation.
+	//
+	// GET /user/repos
+	ReposListForAuthenticatedUser(ctx context.Context, params ReposListForAuthenticatedUserParams) (ReposListForAuthenticatedUserRes, error)
 	// ReposListForOrg implements repos/list-for-org operation.
 	//
 	// GET /orgs/{org}/repos
@@ -1916,6 +2364,10 @@ type Handler interface {
 	//
 	// GET /repos/{owner}/{repo}/pages/builds
 	ReposListPagesBuilds(ctx context.Context, params ReposListPagesBuildsParams) ([]PageBuild, error)
+	// ReposListPublic implements repos/list-public operation.
+	//
+	// GET /repositories
+	ReposListPublic(ctx context.Context, params ReposListPublicParams) (ReposListPublicRes, error)
 	// ReposListPullRequestsAssociatedWithCommit implements repos/list-pull-requests-associated-with-commit operation.
 	//
 	// GET /repos/{owner}/{repo}/commits/{commit_sha}/pulls
@@ -1936,10 +2388,18 @@ type Handler interface {
 	//
 	// GET /repos/{owner}/{repo}/teams
 	ReposListTeams(ctx context.Context, params ReposListTeamsParams) ([]Team, error)
+	// ReposListWebhookDeliveries implements repos/list-webhook-deliveries operation.
+	//
+	// GET /repos/{owner}/{repo}/hooks/{hook_id}/deliveries
+	ReposListWebhookDeliveries(ctx context.Context, params ReposListWebhookDeliveriesParams) (ReposListWebhookDeliveriesRes, error)
 	// ReposListWebhooks implements repos/list-webhooks operation.
 	//
 	// GET /repos/{owner}/{repo}/hooks
 	ReposListWebhooks(ctx context.Context, params ReposListWebhooksParams) (ReposListWebhooksRes, error)
+	// ReposMerge implements repos/merge operation.
+	//
+	// POST /repos/{owner}/{repo}/merges
+	ReposMerge(ctx context.Context, req ReposMergeReq, params ReposMergeParams) (ReposMergeRes, error)
 	// ReposMergeUpstream implements repos/merge-upstream operation.
 	//
 	// POST /repos/{owner}/{repo}/merge-upstream
@@ -1948,14 +2408,38 @@ type Handler interface {
 	//
 	// POST /repos/{owner}/{repo}/hooks/{hook_id}/pings
 	ReposPingWebhook(ctx context.Context, params ReposPingWebhookParams) (ReposPingWebhookRes, error)
+	// ReposRedeliverWebhookDelivery implements repos/redeliver-webhook-delivery operation.
+	//
+	// POST /repos/{owner}/{repo}/hooks/{hook_id}/deliveries/{delivery_id}/attempts
+	ReposRedeliverWebhookDelivery(ctx context.Context, params ReposRedeliverWebhookDeliveryParams) (ReposRedeliverWebhookDeliveryRes, error)
+	// ReposRemoveAppAccessRestrictions implements repos/remove-app-access-restrictions operation.
+	//
+	// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps
+	ReposRemoveAppAccessRestrictions(ctx context.Context, req OptReposRemoveAppAccessRestrictionsReq, params ReposRemoveAppAccessRestrictionsParams) (ReposRemoveAppAccessRestrictionsRes, error)
 	// ReposRemoveCollaborator implements repos/remove-collaborator operation.
 	//
 	// DELETE /repos/{owner}/{repo}/collaborators/{username}
 	ReposRemoveCollaborator(ctx context.Context, params ReposRemoveCollaboratorParams) (ReposRemoveCollaboratorNoContent, error)
+	// ReposRemoveStatusCheckContexts implements repos/remove-status-check-contexts operation.
+	//
+	// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts
+	ReposRemoveStatusCheckContexts(ctx context.Context, req OptReposRemoveStatusCheckContextsReq, params ReposRemoveStatusCheckContextsParams) (ReposRemoveStatusCheckContextsRes, error)
 	// ReposRemoveStatusCheckProtection implements repos/remove-status-check-protection operation.
 	//
 	// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks
 	ReposRemoveStatusCheckProtection(ctx context.Context, params ReposRemoveStatusCheckProtectionParams) (ReposRemoveStatusCheckProtectionNoContent, error)
+	// ReposRemoveTeamAccessRestrictions implements repos/remove-team-access-restrictions operation.
+	//
+	// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams
+	ReposRemoveTeamAccessRestrictions(ctx context.Context, req OptReposRemoveTeamAccessRestrictionsReq, params ReposRemoveTeamAccessRestrictionsParams) (ReposRemoveTeamAccessRestrictionsRes, error)
+	// ReposRemoveUserAccessRestrictions implements repos/remove-user-access-restrictions operation.
+	//
+	// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users
+	ReposRemoveUserAccessRestrictions(ctx context.Context, req OptReposRemoveUserAccessRestrictionsReq, params ReposRemoveUserAccessRestrictionsParams) (ReposRemoveUserAccessRestrictionsRes, error)
+	// ReposRenameBranch implements repos/rename-branch operation.
+	//
+	// POST /repos/{owner}/{repo}/branches/{branch}/rename
+	ReposRenameBranch(ctx context.Context, req OptReposRenameBranchReq, params ReposRenameBranchParams) (ReposRenameBranchRes, error)
 	// ReposReplaceAllTopics implements repos/replace-all-topics operation.
 	//
 	// PUT /repos/{owner}/{repo}/topics
@@ -1968,6 +2452,22 @@ type Handler interface {
 	//
 	// POST /repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins
 	ReposSetAdminBranchProtection(ctx context.Context, params ReposSetAdminBranchProtectionParams) (ProtectedBranchAdminEnforced, error)
+	// ReposSetAppAccessRestrictions implements repos/set-app-access-restrictions operation.
+	//
+	// PUT /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps
+	ReposSetAppAccessRestrictions(ctx context.Context, req OptReposSetAppAccessRestrictionsReq, params ReposSetAppAccessRestrictionsParams) (ReposSetAppAccessRestrictionsRes, error)
+	// ReposSetStatusCheckContexts implements repos/set-status-check-contexts operation.
+	//
+	// PUT /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts
+	ReposSetStatusCheckContexts(ctx context.Context, req OptReposSetStatusCheckContextsReq, params ReposSetStatusCheckContextsParams) (ReposSetStatusCheckContextsRes, error)
+	// ReposSetTeamAccessRestrictions implements repos/set-team-access-restrictions operation.
+	//
+	// PUT /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams
+	ReposSetTeamAccessRestrictions(ctx context.Context, req OptReposSetTeamAccessRestrictionsReq, params ReposSetTeamAccessRestrictionsParams) (ReposSetTeamAccessRestrictionsRes, error)
+	// ReposSetUserAccessRestrictions implements repos/set-user-access-restrictions operation.
+	//
+	// PUT /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users
+	ReposSetUserAccessRestrictions(ctx context.Context, req OptReposSetUserAccessRestrictionsReq, params ReposSetUserAccessRestrictionsParams) (ReposSetUserAccessRestrictionsRes, error)
 	// ReposTestPushWebhook implements repos/test-push-webhook operation.
 	//
 	// POST /repos/{owner}/{repo}/hooks/{hook_id}/tests
@@ -1976,6 +2476,10 @@ type Handler interface {
 	//
 	// POST /repos/{owner}/{repo}/transfer
 	ReposTransfer(ctx context.Context, req ReposTransferReq, params ReposTransferParams) (MinimalRepository, error)
+	// ReposUpdate implements repos/update operation.
+	//
+	// PATCH /repos/{owner}/{repo}
+	ReposUpdate(ctx context.Context, req OptReposUpdateReq, params ReposUpdateParams) (ReposUpdateRes, error)
 	// ReposUpdateBranchProtection implements repos/update-branch-protection operation.
 	//
 	// PUT /repos/{owner}/{repo}/branches/{branch}/protection
@@ -1988,6 +2492,10 @@ type Handler interface {
 	//
 	// PATCH /repos/{owner}/{repo}/invitations/{invitation_id}
 	ReposUpdateInvitation(ctx context.Context, req OptReposUpdateInvitationReq, params ReposUpdateInvitationParams) (RepositoryInvitation, error)
+	// ReposUpdatePullRequestReviewProtection implements repos/update-pull-request-review-protection operation.
+	//
+	// PATCH /repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews
+	ReposUpdatePullRequestReviewProtection(ctx context.Context, req OptReposUpdatePullRequestReviewProtectionReq, params ReposUpdatePullRequestReviewProtectionParams) (ReposUpdatePullRequestReviewProtectionRes, error)
 	// ReposUpdateRelease implements repos/update-release operation.
 	//
 	// PATCH /repos/{owner}/{repo}/releases/{release_id}
@@ -1996,6 +2504,14 @@ type Handler interface {
 	//
 	// PATCH /repos/{owner}/{repo}/releases/assets/{asset_id}
 	ReposUpdateReleaseAsset(ctx context.Context, req OptReposUpdateReleaseAssetReq, params ReposUpdateReleaseAssetParams) (ReleaseAsset, error)
+	// ReposUpdateStatusCheckProtection implements repos/update-status-check-protection operation.
+	//
+	// PATCH /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks
+	ReposUpdateStatusCheckProtection(ctx context.Context, req OptReposUpdateStatusCheckProtectionReq, params ReposUpdateStatusCheckProtectionParams) (ReposUpdateStatusCheckProtectionRes, error)
+	// ReposUpdateWebhook implements repos/update-webhook operation.
+	//
+	// PATCH /repos/{owner}/{repo}/hooks/{hook_id}
+	ReposUpdateWebhook(ctx context.Context, req OptReposUpdateWebhookReq, params ReposUpdateWebhookParams) (ReposUpdateWebhookRes, error)
 	// ReposUpdateWebhookConfigForRepo implements repos/update-webhook-config-for-repo operation.
 	//
 	// PATCH /repos/{owner}/{repo}/hooks/{hook_id}/config
@@ -2004,14 +2520,34 @@ type Handler interface {
 	//
 	// DELETE /scim/v2/organizations/{org}/Users/{scim_user_id}
 	ScimDeleteUserFromOrg(ctx context.Context, params ScimDeleteUserFromOrgParams) (ScimDeleteUserFromOrgRes, error)
+	// SearchCode implements search/code operation.
+	//
+	// GET /search/code
+	SearchCode(ctx context.Context, params SearchCodeParams) (SearchCodeRes, error)
 	// SearchCommits implements search/commits operation.
 	//
 	// GET /search/commits
 	SearchCommits(ctx context.Context, params SearchCommitsParams) (SearchCommitsRes, error)
+	// SearchIssuesAndPullRequests implements search/issues-and-pull-requests operation.
+	//
+	// GET /search/issues
+	SearchIssuesAndPullRequests(ctx context.Context, params SearchIssuesAndPullRequestsParams) (SearchIssuesAndPullRequestsRes, error)
+	// SearchLabels implements search/labels operation.
+	//
+	// GET /search/labels
+	SearchLabels(ctx context.Context, params SearchLabelsParams) (SearchLabelsRes, error)
+	// SearchRepos implements search/repos operation.
+	//
+	// GET /search/repositories
+	SearchRepos(ctx context.Context, params SearchReposParams) (SearchReposRes, error)
 	// SearchTopics implements search/topics operation.
 	//
 	// GET /search/topics
 	SearchTopics(ctx context.Context, params SearchTopicsParams) (SearchTopicsRes, error)
+	// SearchUsers implements search/users operation.
+	//
+	// GET /search/users
+	SearchUsers(ctx context.Context, params SearchUsersParams) (SearchUsersRes, error)
 	// SecretScanningGetAlert implements secret-scanning/get-alert operation.
 	//
 	// GET /repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}
@@ -2044,10 +2580,18 @@ type Handler interface {
 	//
 	// PUT /orgs/{org}/teams/{team_slug}/projects/{project_id}
 	TeamsAddOrUpdateProjectPermissionsInOrg(ctx context.Context, req OptTeamsAddOrUpdateProjectPermissionsInOrgReq, params TeamsAddOrUpdateProjectPermissionsInOrgParams) (TeamsAddOrUpdateProjectPermissionsInOrgRes, error)
+	// TeamsAddOrUpdateProjectPermissionsLegacy implements teams/add-or-update-project-permissions-legacy operation.
+	//
+	// PUT /teams/{team_id}/projects/{project_id}
+	TeamsAddOrUpdateProjectPermissionsLegacy(ctx context.Context, req OptTeamsAddOrUpdateProjectPermissionsLegacyReq, params TeamsAddOrUpdateProjectPermissionsLegacyParams) (TeamsAddOrUpdateProjectPermissionsLegacyRes, error)
 	// TeamsAddOrUpdateRepoPermissionsInOrg implements teams/add-or-update-repo-permissions-in-org operation.
 	//
 	// PUT /orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}
 	TeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, req OptTeamsAddOrUpdateRepoPermissionsInOrgReq, params TeamsAddOrUpdateRepoPermissionsInOrgParams) (TeamsAddOrUpdateRepoPermissionsInOrgNoContent, error)
+	// TeamsAddOrUpdateRepoPermissionsLegacy implements teams/add-or-update-repo-permissions-legacy operation.
+	//
+	// PUT /teams/{team_id}/repos/{owner}/{repo}
+	TeamsAddOrUpdateRepoPermissionsLegacy(ctx context.Context, req OptTeamsAddOrUpdateRepoPermissionsLegacyReq, params TeamsAddOrUpdateRepoPermissionsLegacyParams) (TeamsAddOrUpdateRepoPermissionsLegacyRes, error)
 	// TeamsCheckPermissionsForProjectInOrg implements teams/check-permissions-for-project-in-org operation.
 	//
 	// GET /orgs/{org}/teams/{team_slug}/projects/{project_id}
@@ -2064,6 +2608,10 @@ type Handler interface {
 	//
 	// GET /teams/{team_id}/repos/{owner}/{repo}
 	TeamsCheckPermissionsForRepoLegacy(ctx context.Context, params TeamsCheckPermissionsForRepoLegacyParams) (TeamsCheckPermissionsForRepoLegacyRes, error)
+	// TeamsCreate implements teams/create operation.
+	//
+	// POST /orgs/{org}/teams
+	TeamsCreate(ctx context.Context, req TeamsCreateReq, params TeamsCreateParams) (TeamsCreateRes, error)
 	// TeamsCreateDiscussionCommentInOrg implements teams/create-discussion-comment-in-org operation.
 	//
 	// POST /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments
@@ -2084,6 +2632,10 @@ type Handler interface {
 	//
 	// PATCH /orgs/{org}/teams/{team_slug}/team-sync/group-mappings
 	TeamsCreateOrUpdateIdpGroupConnectionsInOrg(ctx context.Context, req TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq, params TeamsCreateOrUpdateIdpGroupConnectionsInOrgParams) (GroupMapping, error)
+	// TeamsCreateOrUpdateIdpGroupConnectionsLegacy implements teams/create-or-update-idp-group-connections-legacy operation.
+	//
+	// PATCH /teams/{team_id}/team-sync/group-mappings
+	TeamsCreateOrUpdateIdpGroupConnectionsLegacy(ctx context.Context, req TeamsCreateOrUpdateIdpGroupConnectionsLegacyReq, params TeamsCreateOrUpdateIdpGroupConnectionsLegacyParams) (TeamsCreateOrUpdateIdpGroupConnectionsLegacyRes, error)
 	// TeamsDeleteDiscussionCommentInOrg implements teams/delete-discussion-comment-in-org operation.
 	//
 	// DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}
@@ -2104,6 +2656,10 @@ type Handler interface {
 	//
 	// DELETE /orgs/{org}/teams/{team_slug}
 	TeamsDeleteInOrg(ctx context.Context, params TeamsDeleteInOrgParams) (TeamsDeleteInOrgNoContent, error)
+	// TeamsDeleteLegacy implements teams/delete-legacy operation.
+	//
+	// DELETE /teams/{team_id}
+	TeamsDeleteLegacy(ctx context.Context, params TeamsDeleteLegacyParams) (TeamsDeleteLegacyRes, error)
 	// TeamsGetByName implements teams/get-by-name operation.
 	//
 	// GET /orgs/{org}/teams/{team_slug}
@@ -2148,6 +2704,10 @@ type Handler interface {
 	//
 	// GET /orgs/{org}/teams/{team_slug}/teams
 	TeamsListChildInOrg(ctx context.Context, params TeamsListChildInOrgParams) ([]Team, error)
+	// TeamsListChildLegacy implements teams/list-child-legacy operation.
+	//
+	// GET /teams/{team_id}/teams
+	TeamsListChildLegacy(ctx context.Context, params TeamsListChildLegacyParams) (TeamsListChildLegacyRes, error)
 	// TeamsListDiscussionCommentsInOrg implements teams/list-discussion-comments-in-org operation.
 	//
 	// GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments
@@ -2228,6 +2788,10 @@ type Handler interface {
 	//
 	// DELETE /orgs/{org}/teams/{team_slug}/projects/{project_id}
 	TeamsRemoveProjectInOrg(ctx context.Context, params TeamsRemoveProjectInOrgParams) (TeamsRemoveProjectInOrgNoContent, error)
+	// TeamsRemoveProjectLegacy implements teams/remove-project-legacy operation.
+	//
+	// DELETE /teams/{team_id}/projects/{project_id}
+	TeamsRemoveProjectLegacy(ctx context.Context, params TeamsRemoveProjectLegacyParams) (TeamsRemoveProjectLegacyRes, error)
 	// TeamsRemoveRepoInOrg implements teams/remove-repo-in-org operation.
 	//
 	// DELETE /orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}
@@ -2256,6 +2820,18 @@ type Handler interface {
 	//
 	// PATCH /orgs/{org}/teams/{team_slug}
 	TeamsUpdateInOrg(ctx context.Context, req OptTeamsUpdateInOrgReq, params TeamsUpdateInOrgParams) (TeamFull, error)
+	// TeamsUpdateLegacy implements teams/update-legacy operation.
+	//
+	// PATCH /teams/{team_id}
+	TeamsUpdateLegacy(ctx context.Context, req TeamsUpdateLegacyReq, params TeamsUpdateLegacyParams) (TeamsUpdateLegacyRes, error)
+	// UsersAddEmailForAuthenticated implements users/add-email-for-authenticated operation.
+	//
+	// POST /user/emails
+	UsersAddEmailForAuthenticated(ctx context.Context, req OptUsersAddEmailForAuthenticatedReq) (UsersAddEmailForAuthenticatedRes, error)
+	// UsersBlock implements users/block operation.
+	//
+	// PUT /user/blocks/{username}
+	UsersBlock(ctx context.Context, params UsersBlockParams) (UsersBlockRes, error)
 	// UsersCheckBlocked implements users/check-blocked operation.
 	//
 	// GET /user/blocks/{username}
@@ -2268,6 +2844,22 @@ type Handler interface {
 	//
 	// GET /user/following/{username}
 	UsersCheckPersonIsFollowedByAuthenticated(ctx context.Context, params UsersCheckPersonIsFollowedByAuthenticatedParams) (UsersCheckPersonIsFollowedByAuthenticatedRes, error)
+	// UsersCreateGpgKeyForAuthenticated implements users/create-gpg-key-for-authenticated operation.
+	//
+	// POST /user/gpg_keys
+	UsersCreateGpgKeyForAuthenticated(ctx context.Context, req UsersCreateGpgKeyForAuthenticatedReq) (UsersCreateGpgKeyForAuthenticatedRes, error)
+	// UsersCreatePublicSSHKeyForAuthenticated implements users/create-public-ssh-key-for-authenticated operation.
+	//
+	// POST /user/keys
+	UsersCreatePublicSSHKeyForAuthenticated(ctx context.Context, req UsersCreatePublicSSHKeyForAuthenticatedReq) (UsersCreatePublicSSHKeyForAuthenticatedRes, error)
+	// UsersDeleteEmailForAuthenticated implements users/delete-email-for-authenticated operation.
+	//
+	// DELETE /user/emails
+	UsersDeleteEmailForAuthenticated(ctx context.Context, req OptUsersDeleteEmailForAuthenticatedReq) (UsersDeleteEmailForAuthenticatedRes, error)
+	// UsersDeleteGpgKeyForAuthenticated implements users/delete-gpg-key-for-authenticated operation.
+	//
+	// DELETE /user/gpg_keys/{gpg_key_id}
+	UsersDeleteGpgKeyForAuthenticated(ctx context.Context, params UsersDeleteGpgKeyForAuthenticatedParams) (UsersDeleteGpgKeyForAuthenticatedRes, error)
 	// UsersDeletePublicSSHKeyForAuthenticated implements users/delete-public-ssh-key-for-authenticated operation.
 	//
 	// DELETE /user/keys/{key_id}
@@ -2284,6 +2876,10 @@ type Handler interface {
 	//
 	// GET /users/{username}
 	UsersGetByUsername(ctx context.Context, params UsersGetByUsernameParams) (UsersGetByUsernameRes, error)
+	// UsersGetContextForUser implements users/get-context-for-user operation.
+	//
+	// GET /users/{username}/hovercard
+	UsersGetContextForUser(ctx context.Context, params UsersGetContextForUserParams) (UsersGetContextForUserRes, error)
 	// UsersGetGpgKeyForAuthenticated implements users/get-gpg-key-for-authenticated operation.
 	//
 	// GET /user/gpg_keys/{gpg_key_id}
@@ -2340,6 +2936,10 @@ type Handler interface {
 	//
 	// GET /user/keys
 	UsersListPublicSSHKeysForAuthenticated(ctx context.Context, params UsersListPublicSSHKeysForAuthenticatedParams) (UsersListPublicSSHKeysForAuthenticatedRes, error)
+	// UsersSetPrimaryEmailVisibilityForAuthenticated implements users/set-primary-email-visibility-for-authenticated operation.
+	//
+	// PATCH /user/email/visibility
+	UsersSetPrimaryEmailVisibilityForAuthenticated(ctx context.Context, req UsersSetPrimaryEmailVisibilityForAuthenticatedReq) (UsersSetPrimaryEmailVisibilityForAuthenticatedRes, error)
 	// UsersUnblock implements users/unblock operation.
 	//
 	// DELETE /user/blocks/{username}
@@ -2348,6 +2948,10 @@ type Handler interface {
 	//
 	// DELETE /user/following/{username}
 	UsersUnfollow(ctx context.Context, params UsersUnfollowParams) (UsersUnfollowRes, error)
+	// UsersUpdateAuthenticated implements users/update-authenticated operation.
+	//
+	// PATCH /user
+	UsersUpdateAuthenticated(ctx context.Context, req OptUsersUpdateAuthenticatedReq) (UsersUpdateAuthenticatedRes, error)
 }
 
 // Server implements http server based on OpenAPI v3 specification and

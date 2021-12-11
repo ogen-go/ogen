@@ -1004,6 +1004,12 @@ func (s ActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility) Validate() error 
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
+func (s ActivityListNotificationsForAuthenticatedUserOKApplicationJSON) Validate() error {
+	if s == nil {
+		return errors.New("nil is invalid value")
+	}
+	return nil
+}
 func (s ActivityListPublicEventsForRepoNetworkOKApplicationJSON) Validate() error {
 	if s == nil {
 		return errors.New("nil is invalid value")
@@ -2117,6 +2123,29 @@ func (s AppsListAccountsForPlanDirection) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
+func (s AppsListAccountsForPlanOKApplicationJSON) Validate() error {
+	if s == nil {
+		return errors.New("nil is invalid value")
+	}
+	var failures []validate.FieldError
+	for i, elem := range s {
+		if err := func() error {
+			if err := elem.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			failures = append(failures, validate.FieldError{
+				Name:  fmt.Sprintf("[%d]", i),
+				Error: err,
+			})
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
 func (s AppsListAccountsForPlanSort) Validate() error {
 	switch s {
 	case "created":
@@ -2276,6 +2305,29 @@ func (s AppsListSubscriptionsForAuthenticatedUserOKApplicationJSON) Validate() e
 	return nil
 }
 func (s AppsListSubscriptionsForAuthenticatedUserStubbedOKApplicationJSON) Validate() error {
+	if s == nil {
+		return errors.New("nil is invalid value")
+	}
+	var failures []validate.FieldError
+	for i, elem := range s {
+		if err := func() error {
+			if err := elem.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			failures = append(failures, validate.FieldError{
+				Name:  fmt.Sprintf("[%d]", i),
+				Error: err,
+			})
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s AppsListWebhookDeliveriesOKApplicationJSON) Validate() error {
 	if s == nil {
 		return errors.New("nil is invalid value")
 	}
@@ -3830,6 +3882,32 @@ func (s ContributorActivity) Validate() error {
 	}
 	return nil
 }
+func (s Deployment) Validate() error {
+	var failures []validate.FieldError
+	if err := func() error {
+		if s.PerformedViaGithubApp.Set {
+			if err := func() error {
+				if err := s.PerformedViaGithubApp.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "performed_via_github_app",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
 func (s DeploymentReviewerType) Validate() error {
 	switch s {
 	case "User":
@@ -4474,6 +4552,131 @@ func (s EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq) Validate() e
 	}
 	return nil
 }
+func (s EnterpriseAdminUpdateAttributeForEnterpriseGroupReq) Validate() error {
+	var failures []validate.FieldError
+	if err := func() error {
+		if s.Schemas == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "schemas",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.Operations == nil {
+			return errors.New("nil is invalid value")
+		}
+		if err := (validate.Array{
+			MinLength:    1,
+			MinLengthSet: true,
+			MaxLength:    0,
+			MaxLengthSet: false,
+		}).ValidateLength(len(s.Operations)); err != nil {
+			return errors.Wrap(err, "array")
+		}
+		var failures []validate.FieldError
+		for i, elem := range s.Operations {
+			if err := func() error {
+				if err := elem.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "Operations",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItem) Validate() error {
+	var failures []validate.FieldError
+	if err := func() error {
+		if err := s.Op.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "op",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.Value == nil {
+			return nil // optional
+		}
+		if err := func() error {
+			if err := s.Value.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return errors.Wrap(err, "pointer")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "value",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp) Validate() error {
+	switch s {
+	case "add":
+		return nil
+	case "Add":
+		return nil
+	case "remove":
+		return nil
+	case "Remove":
+		return nil
+	case "replace":
+		return nil
+	case "Replace":
+		return nil
+	default:
+		return errors.Errorf("invalid value: %v", s)
+	}
+}
+func (s EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue) Validate() error {
+	switch s.Type {
+	case StringEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue:
+		return nil // no validation needed
+	case EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue:
+		return nil // no validation needed
+	case ArraystringEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue:
+		if s.Arraystring == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	default:
+		return errors.Errorf("invalid type %q", s.Type)
+	}
+}
+
 func (s EnterpriseAdminUpdateAttributeForEnterpriseUserReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -4935,6 +5138,56 @@ func (s GistsCreateCommentReq) Validate() error {
 	}
 	return nil
 }
+func (s GistsCreateReq) Validate() error {
+	var failures []validate.FieldError
+	if err := func() error {
+		if s.Public == nil {
+			return nil // optional
+		}
+		if err := func() error {
+			if err := s.Public.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return errors.Wrap(err, "pointer")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "public",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s GistsCreateReqPublic) Validate() error {
+	switch s.Type {
+	case BoolGistsCreateReqPublic:
+		return nil // no validation needed
+	case GistsCreateReqPublic1GistsCreateReqPublic:
+		if err := s.GistsCreateReqPublic1.Validate(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf("invalid type %q", s.Type)
+	}
+}
+
+func (s GistsCreateReqPublic1) Validate() error {
+	switch s {
+	case "true":
+		return nil
+	case "false":
+		return nil
+	default:
+		return errors.Errorf("invalid value: %v", s)
+	}
+}
 func (s GistsListCommentsOKApplicationJSON) Validate() error {
 	if s == nil {
 		return errors.New("nil is invalid value")
@@ -4964,6 +5217,12 @@ func (s GistsListCommitsOKApplicationJSON) Validate() error {
 	}
 	return nil
 }
+func (s GistsListForUserOKApplicationJSON) Validate() error {
+	if s == nil {
+		return errors.New("nil is invalid value")
+	}
+	return nil
+}
 func (s GistsListForksOKApplicationJSON) Validate() error {
 	if s == nil {
 		return errors.New("nil is invalid value")
@@ -4988,6 +5247,12 @@ func (s GistsListForksOKApplicationJSON) Validate() error {
 	return nil
 }
 func (s GistsListOKApplicationJSON) Validate() error {
+	if s == nil {
+		return errors.New("nil is invalid value")
+	}
+	return nil
+}
+func (s GistsListPublicOKApplicationJSON) Validate() error {
 	if s == nil {
 		return errors.New("nil is invalid value")
 	}
@@ -5599,6 +5864,85 @@ func (s InteractionLimitResponse) Validate() error {
 	}
 	return nil
 }
+func (s Issue) Validate() error {
+	var failures []validate.FieldError
+	if err := func() error {
+		if s.Labels == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "labels",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.Assignees.Set {
+			if err := func() error {
+				if s.Assignees.Value == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "assignees",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if err := s.Milestone.Value.Validate(); err != nil {
+			return err
+		}
+		return nil
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "milestone",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.PerformedViaGithubApp.Set {
+			if err := func() error {
+				if err := s.PerformedViaGithubApp.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "performed_via_github_app",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if err := s.AuthorAssociation.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "author_association",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
 func (s IssueComment) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -5940,6 +6284,29 @@ func (s IssuesListCommentsForRepoDirection) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
+func (s IssuesListCommentsForRepoOKApplicationJSON) Validate() error {
+	if s == nil {
+		return errors.New("nil is invalid value")
+	}
+	var failures []validate.FieldError
+	for i, elem := range s {
+		if err := func() error {
+			if err := elem.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			failures = append(failures, validate.FieldError{
+				Name:  fmt.Sprintf("[%d]", i),
+				Error: err,
+			})
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
 func (s IssuesListCommentsForRepoSort) Validate() error {
 	switch s {
 	case "created":
@@ -5982,6 +6349,29 @@ func (s IssuesListDirection) Validate() error {
 	default:
 		return errors.Errorf("invalid value: %v", s)
 	}
+}
+func (s IssuesListEventsForRepoOKApplicationJSON) Validate() error {
+	if s == nil {
+		return errors.New("nil is invalid value")
+	}
+	var failures []validate.FieldError
+	for i, elem := range s {
+		if err := func() error {
+			if err := elem.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			failures = append(failures, validate.FieldError{
+				Name:  fmt.Sprintf("[%d]", i),
+				Error: err,
+			})
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
 }
 func (s IssuesListFilter) Validate() error {
 	switch s {
@@ -6028,6 +6418,29 @@ func (s IssuesListForAuthenticatedUserFilter) Validate() error {
 	default:
 		return errors.Errorf("invalid value: %v", s)
 	}
+}
+func (s IssuesListForAuthenticatedUserOKApplicationJSON) Validate() error {
+	if s == nil {
+		return errors.New("nil is invalid value")
+	}
+	var failures []validate.FieldError
+	for i, elem := range s {
+		if err := func() error {
+			if err := elem.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			failures = append(failures, validate.FieldError{
+				Name:  fmt.Sprintf("[%d]", i),
+				Error: err,
+			})
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
 }
 func (s IssuesListForAuthenticatedUserSort) Validate() error {
 	switch s {
@@ -6081,6 +6494,29 @@ func (s IssuesListForOrgFilter) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
+func (s IssuesListForOrgOKApplicationJSON) Validate() error {
+	if s == nil {
+		return errors.New("nil is invalid value")
+	}
+	var failures []validate.FieldError
+	for i, elem := range s {
+		if err := func() error {
+			if err := elem.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			failures = append(failures, validate.FieldError{
+				Name:  fmt.Sprintf("[%d]", i),
+				Error: err,
+			})
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
 func (s IssuesListForOrgSort) Validate() error {
 	switch s {
 	case "created":
@@ -6114,6 +6550,29 @@ func (s IssuesListForRepoDirection) Validate() error {
 	default:
 		return errors.Errorf("invalid value: %v", s)
 	}
+}
+func (s IssuesListForRepoOKApplicationJSON) Validate() error {
+	if s == nil {
+		return errors.New("nil is invalid value")
+	}
+	var failures []validate.FieldError
+	for i, elem := range s {
+		if err := func() error {
+			if err := elem.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			failures = append(failures, validate.FieldError{
+				Name:  fmt.Sprintf("[%d]", i),
+				Error: err,
+			})
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
 }
 func (s IssuesListForRepoSort) Validate() error {
 	switch s {
@@ -6205,6 +6664,29 @@ func (s IssuesListMilestonesState) Validate() error {
 	default:
 		return errors.Errorf("invalid value: %v", s)
 	}
+}
+func (s IssuesListOKApplicationJSON) Validate() error {
+	if s == nil {
+		return errors.New("nil is invalid value")
+	}
+	var failures []validate.FieldError
+	for i, elem := range s {
+		if err := func() error {
+			if err := elem.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			failures = append(failures, validate.FieldError{
+				Name:  fmt.Sprintf("[%d]", i),
+				Error: err,
+			})
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
 }
 func (s IssuesListSort) Validate() error {
 	switch s {
@@ -6303,6 +6785,42 @@ func (s IssuesUpdateMilestoneReq) Validate() error {
 	return nil
 }
 func (s IssuesUpdateMilestoneReqState) Validate() error {
+	switch s {
+	case "open":
+		return nil
+	case "closed":
+		return nil
+	default:
+		return errors.Errorf("invalid value: %v", s)
+	}
+}
+func (s IssuesUpdateReq) Validate() error {
+	var failures []validate.FieldError
+	if err := func() error {
+		if s.State.Set {
+			if err := func() error {
+				if err := s.State.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "state",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s IssuesUpdateReqState) Validate() error {
 	switch s {
 	case "open":
 		return nil
@@ -7161,6 +7679,18 @@ func (s OAuthAuthorizationsCreateAuthorizationReq) Validate() error {
 	}
 	return nil
 }
+func (s OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintApplicationJSONCreated) Validate() error {
+	if err := s.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+func (s OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintApplicationJSONOK) Validate() error {
+	if err := s.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
 func (s OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -7203,6 +7733,18 @@ func (s OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq) Vali
 	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONCreated) Validate() error {
+	if err := s.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+func (s OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONOK) Validate() error {
+	if err := s.Validate(); err != nil {
+		return err
 	}
 	return nil
 }
@@ -7667,6 +8209,12 @@ func (s OrgsListMembersFilter) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
+func (s OrgsListMembersOKApplicationJSON) Validate() error {
+	if s == nil {
+		return errors.New("nil is invalid value")
+	}
+	return nil
+}
 func (s OrgsListMembersRole) Validate() error {
 	switch s {
 	case "all":
@@ -7678,6 +8226,29 @@ func (s OrgsListMembersRole) Validate() error {
 	default:
 		return errors.Errorf("invalid value: %v", s)
 	}
+}
+func (s OrgsListMembershipsForAuthenticatedUserOKApplicationJSON) Validate() error {
+	if s == nil {
+		return errors.New("nil is invalid value")
+	}
+	var failures []validate.FieldError
+	for i, elem := range s {
+		if err := func() error {
+			if err := elem.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			failures = append(failures, validate.FieldError{
+				Name:  fmt.Sprintf("[%d]", i),
+				Error: err,
+			})
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
 }
 func (s OrgsListMembershipsForAuthenticatedUserState) Validate() error {
 	switch s {
@@ -7708,6 +8279,29 @@ func (s OrgsListOutsideCollaboratorsFilter) Validate() error {
 func (s OrgsListPendingInvitationsOKApplicationJSON) Validate() error {
 	if s == nil {
 		return errors.New("nil is invalid value")
+	}
+	return nil
+}
+func (s OrgsListWebhookDeliveriesOKApplicationJSON) Validate() error {
+	if s == nil {
+		return errors.New("nil is invalid value")
+	}
+	var failures []validate.FieldError
+	for i, elem := range s {
+		if err := func() error {
+			if err := elem.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			failures = append(failures, validate.FieldError{
+				Name:  fmt.Sprintf("[%d]", i),
+				Error: err,
+			})
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
 	}
 	return nil
 }
@@ -9008,6 +9602,12 @@ func (s ProjectsListCollaboratorsAffiliation) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
+func (s ProjectsListCollaboratorsOKApplicationJSON) Validate() error {
+	if s == nil {
+		return errors.New("nil is invalid value")
+	}
+	return nil
+}
 func (s ProjectsListColumnsOKApplicationJSON) Validate() error {
 	if s == nil {
 		return errors.New("nil is invalid value")
@@ -9083,6 +9683,29 @@ func (s ProjectsListForRepoState) Validate() error {
 	default:
 		return errors.Errorf("invalid value: %v", s)
 	}
+}
+func (s ProjectsListForUserOKApplicationJSON) Validate() error {
+	if s == nil {
+		return errors.New("nil is invalid value")
+	}
+	var failures []validate.FieldError
+	for i, elem := range s {
+		if err := func() error {
+			if err := elem.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			failures = append(failures, validate.FieldError{
+				Name:  fmt.Sprintf("[%d]", i),
+				Error: err,
+			})
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
 }
 func (s ProjectsListForUserState) Validate() error {
 	switch s {
@@ -9869,6 +10492,52 @@ func (s PullsListDirection) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
+func (s PullsListFilesOKApplicationJSON) Validate() error {
+	if s == nil {
+		return errors.New("nil is invalid value")
+	}
+	var failures []validate.FieldError
+	for i, elem := range s {
+		if err := func() error {
+			if err := elem.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			failures = append(failures, validate.FieldError{
+				Name:  fmt.Sprintf("[%d]", i),
+				Error: err,
+			})
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s PullsListOKApplicationJSON) Validate() error {
+	if s == nil {
+		return errors.New("nil is invalid value")
+	}
+	var failures []validate.FieldError
+	for i, elem := range s {
+		if err := func() error {
+			if err := elem.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			failures = append(failures, validate.FieldError{
+				Name:  fmt.Sprintf("[%d]", i),
+				Error: err,
+			})
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
 func (s PullsListReviewCommentsDirection) Validate() error {
 	switch s {
 	case "asc":
@@ -10099,6 +10768,18 @@ func (s ReactionContent) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
+func (s ReactionsCreateForCommitCommentApplicationJSONCreated) Validate() error {
+	if err := s.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+func (s ReactionsCreateForCommitCommentApplicationJSONOK) Validate() error {
+	if err := s.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
 func (s ReactionsCreateForCommitCommentReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -10138,6 +10819,30 @@ func (s ReactionsCreateForCommitCommentReqContent) Validate() error {
 	default:
 		return errors.Errorf("invalid value: %v", s)
 	}
+}
+func (s ReactionsCreateForIssueApplicationJSONCreated) Validate() error {
+	if err := s.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+func (s ReactionsCreateForIssueApplicationJSONOK) Validate() error {
+	if err := s.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+func (s ReactionsCreateForIssueCommentApplicationJSONCreated) Validate() error {
+	if err := s.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+func (s ReactionsCreateForIssueCommentApplicationJSONOK) Validate() error {
+	if err := s.Validate(); err != nil {
+		return err
+	}
+	return nil
 }
 func (s ReactionsCreateForIssueCommentReq) Validate() error {
 	var failures []validate.FieldError
@@ -10219,6 +10924,18 @@ func (s ReactionsCreateForIssueReqContent) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
+func (s ReactionsCreateForPullRequestReviewCommentApplicationJSONCreated) Validate() error {
+	if err := s.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+func (s ReactionsCreateForPullRequestReviewCommentApplicationJSONOK) Validate() error {
+	if err := s.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
 func (s ReactionsCreateForPullRequestReviewCommentReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -10258,6 +10975,18 @@ func (s ReactionsCreateForPullRequestReviewCommentReqContent) Validate() error {
 	default:
 		return errors.Errorf("invalid value: %v", s)
 	}
+}
+func (s ReactionsCreateForReleaseApplicationJSONCreated) Validate() error {
+	if err := s.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+func (s ReactionsCreateForReleaseApplicationJSONOK) Validate() error {
+	if err := s.Validate(); err != nil {
+		return err
+	}
+	return nil
 }
 func (s ReactionsCreateForReleaseReq) Validate() error {
 	var failures []validate.FieldError
@@ -10847,6 +11576,64 @@ func (s RepoSearchResultItem) Validate() error {
 	}
 	return nil
 }
+func (s ReposAddAppAccessRestrictionsOKApplicationJSON) Validate() error {
+	if s == nil {
+		return errors.New("nil is invalid value")
+	}
+	var failures []validate.FieldError
+	for i, elem := range s {
+		if err := func() error {
+			if err := elem.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			failures = append(failures, validate.FieldError{
+				Name:  fmt.Sprintf("[%d]", i),
+				Error: err,
+			})
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s ReposAddAppAccessRestrictionsReq) Validate() error {
+	switch s.Type {
+	case ReposAddAppAccessRestrictionsReq0ReposAddAppAccessRestrictionsReq:
+		if err := s.ReposAddAppAccessRestrictionsReq0.Validate(); err != nil {
+			return err
+		}
+		return nil
+	case ArraystringReposAddAppAccessRestrictionsReq:
+		if s.Arraystring == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	default:
+		return errors.Errorf("invalid type %q", s.Type)
+	}
+}
+
+func (s ReposAddAppAccessRestrictionsReq0) Validate() error {
+	var failures []validate.FieldError
+	if err := func() error {
+		if s.Apps == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "apps",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
 func (s ReposAddCollaboratorReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -10888,6 +11675,129 @@ func (s ReposAddCollaboratorReqPermission) Validate() error {
 	default:
 		return errors.Errorf("invalid value: %v", s)
 	}
+}
+func (s ReposAddStatusCheckContextsOKApplicationJSON) Validate() error {
+	if s == nil {
+		return errors.New("nil is invalid value")
+	}
+	return nil
+}
+func (s ReposAddStatusCheckContextsReq) Validate() error {
+	switch s.Type {
+	case ReposAddStatusCheckContextsReq0ReposAddStatusCheckContextsReq:
+		if err := s.ReposAddStatusCheckContextsReq0.Validate(); err != nil {
+			return err
+		}
+		return nil
+	case ArraystringReposAddStatusCheckContextsReq:
+		if s.Arraystring == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	default:
+		return errors.Errorf("invalid type %q", s.Type)
+	}
+}
+
+func (s ReposAddStatusCheckContextsReq0) Validate() error {
+	var failures []validate.FieldError
+	if err := func() error {
+		if s.Contexts == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "contexts",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s ReposAddTeamAccessRestrictionsOKApplicationJSON) Validate() error {
+	if s == nil {
+		return errors.New("nil is invalid value")
+	}
+	return nil
+}
+func (s ReposAddTeamAccessRestrictionsReq) Validate() error {
+	switch s.Type {
+	case ReposAddTeamAccessRestrictionsReq0ReposAddTeamAccessRestrictionsReq:
+		if err := s.ReposAddTeamAccessRestrictionsReq0.Validate(); err != nil {
+			return err
+		}
+		return nil
+	case ArraystringReposAddTeamAccessRestrictionsReq:
+		if s.Arraystring == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	default:
+		return errors.Errorf("invalid type %q", s.Type)
+	}
+}
+
+func (s ReposAddTeamAccessRestrictionsReq0) Validate() error {
+	var failures []validate.FieldError
+	if err := func() error {
+		if s.Teams == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "teams",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s ReposAddUserAccessRestrictionsOKApplicationJSON) Validate() error {
+	if s == nil {
+		return errors.New("nil is invalid value")
+	}
+	return nil
+}
+func (s ReposAddUserAccessRestrictionsReq) Validate() error {
+	switch s.Type {
+	case ReposAddUserAccessRestrictionsReq0ReposAddUserAccessRestrictionsReq:
+		if err := s.ReposAddUserAccessRestrictionsReq0.Validate(); err != nil {
+			return err
+		}
+		return nil
+	case ArraystringReposAddUserAccessRestrictionsReq:
+		if s.Arraystring == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	default:
+		return errors.Errorf("invalid type %q", s.Type)
+	}
+}
+
+func (s ReposAddUserAccessRestrictionsReq0) Validate() error {
+	var failures []validate.FieldError
+	if err := func() error {
+		if s.Users == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "users",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
 }
 func (s ReposCreateCommitStatusReq) Validate() error {
 	var failures []validate.FieldError
@@ -11400,6 +12310,12 @@ func (s ReposGetViewsPer) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
+func (s ReposListBranchesForHeadCommitOKApplicationJSON) Validate() error {
+	if s == nil {
+		return errors.New("nil is invalid value")
+	}
+	return nil
+}
 func (s ReposListBranchesOKApplicationJSON) Validate() error {
 	if s == nil {
 		return errors.New("nil is invalid value")
@@ -11508,6 +12424,12 @@ func (s ReposListForAuthenticatedUserDirection) Validate() error {
 	default:
 		return errors.Errorf("invalid value: %v", s)
 	}
+}
+func (s ReposListForAuthenticatedUserOKApplicationJSON) Validate() error {
+	if s == nil {
+		return errors.New("nil is invalid value")
+	}
+	return nil
 }
 func (s ReposListForAuthenticatedUserSort) Validate() error {
 	switch s {
@@ -11674,7 +12596,36 @@ func (s ReposListInvitationsForAuthenticatedUserOKApplicationJSON) Validate() er
 	}
 	return nil
 }
+func (s ReposListPublicOKApplicationJSON) Validate() error {
+	if s == nil {
+		return errors.New("nil is invalid value")
+	}
+	return nil
+}
 func (s ReposListReleasesOKApplicationJSON) Validate() error {
+	if s == nil {
+		return errors.New("nil is invalid value")
+	}
+	var failures []validate.FieldError
+	for i, elem := range s {
+		if err := func() error {
+			if err := elem.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			failures = append(failures, validate.FieldError{
+				Name:  fmt.Sprintf("[%d]", i),
+				Error: err,
+			})
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s ReposListWebhookDeliveriesOKApplicationJSON) Validate() error {
 	if s == nil {
 		return errors.New("nil is invalid value")
 	}
@@ -11720,6 +12671,187 @@ func (s ReposListWebhooksOKApplicationJSON) Validate() error {
 	}
 	return nil
 }
+func (s ReposRemoveAppAccessRestrictionsOKApplicationJSON) Validate() error {
+	if s == nil {
+		return errors.New("nil is invalid value")
+	}
+	var failures []validate.FieldError
+	for i, elem := range s {
+		if err := func() error {
+			if err := elem.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			failures = append(failures, validate.FieldError{
+				Name:  fmt.Sprintf("[%d]", i),
+				Error: err,
+			})
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s ReposRemoveAppAccessRestrictionsReq) Validate() error {
+	switch s.Type {
+	case ReposRemoveAppAccessRestrictionsReq0ReposRemoveAppAccessRestrictionsReq:
+		if err := s.ReposRemoveAppAccessRestrictionsReq0.Validate(); err != nil {
+			return err
+		}
+		return nil
+	case ArraystringReposRemoveAppAccessRestrictionsReq:
+		if s.Arraystring == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	default:
+		return errors.Errorf("invalid type %q", s.Type)
+	}
+}
+
+func (s ReposRemoveAppAccessRestrictionsReq0) Validate() error {
+	var failures []validate.FieldError
+	if err := func() error {
+		if s.Apps == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "apps",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s ReposRemoveStatusCheckContextsOKApplicationJSON) Validate() error {
+	if s == nil {
+		return errors.New("nil is invalid value")
+	}
+	return nil
+}
+func (s ReposRemoveStatusCheckContextsReq) Validate() error {
+	switch s.Type {
+	case ReposRemoveStatusCheckContextsReq0ReposRemoveStatusCheckContextsReq:
+		if err := s.ReposRemoveStatusCheckContextsReq0.Validate(); err != nil {
+			return err
+		}
+		return nil
+	case ArraystringReposRemoveStatusCheckContextsReq:
+		if s.Arraystring == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	default:
+		return errors.Errorf("invalid type %q", s.Type)
+	}
+}
+
+func (s ReposRemoveStatusCheckContextsReq0) Validate() error {
+	var failures []validate.FieldError
+	if err := func() error {
+		if s.Contexts == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "contexts",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s ReposRemoveTeamAccessRestrictionsOKApplicationJSON) Validate() error {
+	if s == nil {
+		return errors.New("nil is invalid value")
+	}
+	return nil
+}
+func (s ReposRemoveTeamAccessRestrictionsReq) Validate() error {
+	switch s.Type {
+	case ReposRemoveTeamAccessRestrictionsReq0ReposRemoveTeamAccessRestrictionsReq:
+		if err := s.ReposRemoveTeamAccessRestrictionsReq0.Validate(); err != nil {
+			return err
+		}
+		return nil
+	case ArraystringReposRemoveTeamAccessRestrictionsReq:
+		if s.Arraystring == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	default:
+		return errors.Errorf("invalid type %q", s.Type)
+	}
+}
+
+func (s ReposRemoveTeamAccessRestrictionsReq0) Validate() error {
+	var failures []validate.FieldError
+	if err := func() error {
+		if s.Teams == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "teams",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s ReposRemoveUserAccessRestrictionsOKApplicationJSON) Validate() error {
+	if s == nil {
+		return errors.New("nil is invalid value")
+	}
+	return nil
+}
+func (s ReposRemoveUserAccessRestrictionsReq) Validate() error {
+	switch s.Type {
+	case ReposRemoveUserAccessRestrictionsReq0ReposRemoveUserAccessRestrictionsReq:
+		if err := s.ReposRemoveUserAccessRestrictionsReq0.Validate(); err != nil {
+			return err
+		}
+		return nil
+	case ArraystringReposRemoveUserAccessRestrictionsReq:
+		if s.Arraystring == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	default:
+		return errors.Errorf("invalid type %q", s.Type)
+	}
+}
+
+func (s ReposRemoveUserAccessRestrictionsReq0) Validate() error {
+	var failures []validate.FieldError
+	if err := func() error {
+		if s.Users == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "users",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
 func (s ReposReplaceAllTopicsReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -11730,6 +12862,187 @@ func (s ReposReplaceAllTopicsReq) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "names",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s ReposSetAppAccessRestrictionsOKApplicationJSON) Validate() error {
+	if s == nil {
+		return errors.New("nil is invalid value")
+	}
+	var failures []validate.FieldError
+	for i, elem := range s {
+		if err := func() error {
+			if err := elem.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			failures = append(failures, validate.FieldError{
+				Name:  fmt.Sprintf("[%d]", i),
+				Error: err,
+			})
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s ReposSetAppAccessRestrictionsReq) Validate() error {
+	switch s.Type {
+	case ReposSetAppAccessRestrictionsReq0ReposSetAppAccessRestrictionsReq:
+		if err := s.ReposSetAppAccessRestrictionsReq0.Validate(); err != nil {
+			return err
+		}
+		return nil
+	case ArraystringReposSetAppAccessRestrictionsReq:
+		if s.Arraystring == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	default:
+		return errors.Errorf("invalid type %q", s.Type)
+	}
+}
+
+func (s ReposSetAppAccessRestrictionsReq0) Validate() error {
+	var failures []validate.FieldError
+	if err := func() error {
+		if s.Apps == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "apps",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s ReposSetStatusCheckContextsOKApplicationJSON) Validate() error {
+	if s == nil {
+		return errors.New("nil is invalid value")
+	}
+	return nil
+}
+func (s ReposSetStatusCheckContextsReq) Validate() error {
+	switch s.Type {
+	case ReposSetStatusCheckContextsReq0ReposSetStatusCheckContextsReq:
+		if err := s.ReposSetStatusCheckContextsReq0.Validate(); err != nil {
+			return err
+		}
+		return nil
+	case ArraystringReposSetStatusCheckContextsReq:
+		if s.Arraystring == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	default:
+		return errors.Errorf("invalid type %q", s.Type)
+	}
+}
+
+func (s ReposSetStatusCheckContextsReq0) Validate() error {
+	var failures []validate.FieldError
+	if err := func() error {
+		if s.Contexts == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "contexts",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s ReposSetTeamAccessRestrictionsOKApplicationJSON) Validate() error {
+	if s == nil {
+		return errors.New("nil is invalid value")
+	}
+	return nil
+}
+func (s ReposSetTeamAccessRestrictionsReq) Validate() error {
+	switch s.Type {
+	case ReposSetTeamAccessRestrictionsReq0ReposSetTeamAccessRestrictionsReq:
+		if err := s.ReposSetTeamAccessRestrictionsReq0.Validate(); err != nil {
+			return err
+		}
+		return nil
+	case ArraystringReposSetTeamAccessRestrictionsReq:
+		if s.Arraystring == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	default:
+		return errors.Errorf("invalid type %q", s.Type)
+	}
+}
+
+func (s ReposSetTeamAccessRestrictionsReq0) Validate() error {
+	var failures []validate.FieldError
+	if err := func() error {
+		if s.Teams == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "teams",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s ReposSetUserAccessRestrictionsOKApplicationJSON) Validate() error {
+	if s == nil {
+		return errors.New("nil is invalid value")
+	}
+	return nil
+}
+func (s ReposSetUserAccessRestrictionsReq) Validate() error {
+	switch s.Type {
+	case ReposSetUserAccessRestrictionsReq0ReposSetUserAccessRestrictionsReq:
+		if err := s.ReposSetUserAccessRestrictionsReq0.Validate(); err != nil {
+			return err
+		}
+		return nil
+	case ArraystringReposSetUserAccessRestrictionsReq:
+		if s.Arraystring == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	default:
+		return errors.Errorf("invalid type %q", s.Type)
+	}
+}
+
+func (s ReposSetUserAccessRestrictionsReq0) Validate() error {
+	var failures []validate.FieldError
+	if err := func() error {
+		if s.Users == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "users",
 			Error: err,
 		})
 	}
@@ -12378,6 +13691,114 @@ func (s ScimSetInformationForProvisionedUserReq) Validate() error {
 	}
 	return nil
 }
+func (s ScimUpdateAttributeForUserReq) Validate() error {
+	var failures []validate.FieldError
+	if err := func() error {
+		if s.Operations == nil {
+			return errors.New("nil is invalid value")
+		}
+		if err := (validate.Array{
+			MinLength:    1,
+			MinLengthSet: true,
+			MaxLength:    0,
+			MaxLengthSet: false,
+		}).ValidateLength(len(s.Operations)); err != nil {
+			return errors.Wrap(err, "array")
+		}
+		var failures []validate.FieldError
+		for i, elem := range s.Operations {
+			if err := func() error {
+				if err := elem.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "Operations",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s ScimUpdateAttributeForUserReqOperationsItem) Validate() error {
+	var failures []validate.FieldError
+	if err := func() error {
+		if err := s.Op.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "op",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.Value == nil {
+			return nil // optional
+		}
+		if err := func() error {
+			if err := s.Value.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return errors.Wrap(err, "pointer")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "value",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s ScimUpdateAttributeForUserReqOperationsItemOp) Validate() error {
+	switch s {
+	case "add":
+		return nil
+	case "remove":
+		return nil
+	case "replace":
+		return nil
+	default:
+		return errors.Errorf("invalid value: %v", s)
+	}
+}
+func (s ScimUpdateAttributeForUserReqOperationsItemValue) Validate() error {
+	switch s.Type {
+	case ScimUpdateAttributeForUserReqOperationsItemValue0ScimUpdateAttributeForUserReqOperationsItemValue:
+		return nil // no validation needed
+	case ArrayScimUpdateAttributeForUserReqOperationsItemValue1ItemScimUpdateAttributeForUserReqOperationsItemValue:
+		if s.ArrayScimUpdateAttributeForUserReqOperationsItemValue1Item == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	case StringScimUpdateAttributeForUserReqOperationsItemValue:
+		return nil // no validation needed
+	default:
+		return errors.Errorf("invalid type %q", s.Type)
+	}
+}
+
 func (s ScimUserListEnterprise) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -13493,6 +14914,12 @@ func (s TeamsCreateReqPrivacy) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
+func (s TeamsListChildLegacyOKApplicationJSON) Validate() error {
+	if s == nil {
+		return errors.New("nil is invalid value")
+	}
+	return nil
+}
 func (s TeamsListDiscussionCommentsInOrgDirection) Validate() error {
 	switch s {
 	case "asc":
@@ -13670,6 +15097,18 @@ func (s TeamsUpdateInOrgReqPrivacy) Validate() error {
 	default:
 		return errors.Errorf("invalid value: %v", s)
 	}
+}
+func (s TeamsUpdateLegacyApplicationJSONCreated) Validate() error {
+	if err := s.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+func (s TeamsUpdateLegacyApplicationJSONOK) Validate() error {
+	if err := s.Validate(); err != nil {
+		return err
+	}
+	return nil
 }
 func (s TeamsUpdateLegacyReq) Validate() error {
 	var failures []validate.FieldError
@@ -13924,6 +15363,66 @@ func (s UserSearchResultItem) Validate() error {
 	}
 	return nil
 }
+func (s UsersAddEmailForAuthenticatedCreatedApplicationJSON) Validate() error {
+	if s == nil {
+		return errors.New("nil is invalid value")
+	}
+	var failures []validate.FieldError
+	for i, elem := range s {
+		if err := func() error {
+			if err := elem.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			failures = append(failures, validate.FieldError{
+				Name:  fmt.Sprintf("[%d]", i),
+				Error: err,
+			})
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s UsersAddEmailForAuthenticatedReq) Validate() error {
+	switch s.Type {
+	case UsersAddEmailForAuthenticatedReq0UsersAddEmailForAuthenticatedReq:
+		if err := s.UsersAddEmailForAuthenticatedReq0.Validate(); err != nil {
+			return err
+		}
+		return nil
+	case ArraystringUsersAddEmailForAuthenticatedReq:
+		if s.Arraystring == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	case StringUsersAddEmailForAuthenticatedReq:
+		return nil // no validation needed
+	default:
+		return errors.Errorf("invalid type %q", s.Type)
+	}
+}
+
+func (s UsersAddEmailForAuthenticatedReq0) Validate() error {
+	var failures []validate.FieldError
+	if err := func() error {
+		if s.Emails == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "emails",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
 func (s UsersCreatePublicSSHKeyForAuthenticatedReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -13942,6 +15441,43 @@ func (s UsersCreatePublicSSHKeyForAuthenticatedReq) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "key",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s UsersDeleteEmailForAuthenticatedReq) Validate() error {
+	switch s.Type {
+	case UsersDeleteEmailForAuthenticatedReq0UsersDeleteEmailForAuthenticatedReq:
+		if err := s.UsersDeleteEmailForAuthenticatedReq0.Validate(); err != nil {
+			return err
+		}
+		return nil
+	case ArraystringUsersDeleteEmailForAuthenticatedReq:
+		if s.Arraystring == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	case StringUsersDeleteEmailForAuthenticatedReq:
+		return nil // no validation needed
+	default:
+		return errors.Errorf("invalid type %q", s.Type)
+	}
+}
+
+func (s UsersDeleteEmailForAuthenticatedReq0) Validate() error {
+	var failures []validate.FieldError
+	if err := func() error {
+		if s.Emails == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "emails",
 			Error: err,
 		})
 	}
@@ -14097,6 +15633,29 @@ func (s UsersListPublicSSHKeysForAuthenticatedOKApplicationJSON) Validate() erro
 	}
 	return nil
 }
+func (s UsersSetPrimaryEmailVisibilityForAuthenticatedOKApplicationJSON) Validate() error {
+	if s == nil {
+		return errors.New("nil is invalid value")
+	}
+	var failures []validate.FieldError
+	for i, elem := range s {
+		if err := func() error {
+			if err := elem.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			failures = append(failures, validate.FieldError{
+				Name:  fmt.Sprintf("[%d]", i),
+				Error: err,
+			})
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
 func (s UsersSetPrimaryEmailVisibilityForAuthenticatedReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -14125,6 +15684,80 @@ func (s UsersSetPrimaryEmailVisibilityForAuthenticatedReqVisibility) Validate() 
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
+func (s ValidationError) Validate() error {
+	var failures []validate.FieldError
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range s.Errors {
+			if err := func() error {
+				if err := elem.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "errors",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s ValidationErrorErrorsItem) Validate() error {
+	var failures []validate.FieldError
+	if err := func() error {
+		if s.Value == nil {
+			return nil // optional
+		}
+		if err := func() error {
+			if err := s.Value.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return errors.Wrap(err, "pointer")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "value",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s ValidationErrorErrorsItemValue) Validate() error {
+	switch s.Type {
+	case StringValidationErrorErrorsItemValue:
+		return nil // no validation needed
+	case IntValidationErrorErrorsItemValue:
+		return nil // no validation needed
+	case ArraystringValidationErrorErrorsItemValue:
+		if s.Arraystring == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	default:
+		return errors.Errorf("invalid type %q", s.Type)
+	}
+}
+
 func (s ViewTraffic) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {

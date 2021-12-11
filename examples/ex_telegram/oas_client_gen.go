@@ -93,12 +93,21 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 	return c, nil
 }
 
-// AnswerCallbackQueryPost invokes  operation.
+// AddStickerToSet invokes addStickerToSet operation.
 //
-// POST /answerCallbackQuery
-func (c *Client) AnswerCallbackQueryPost(ctx context.Context, request AnswerCallbackQueryPostReqApplicationJSON) (res AnswerCallbackQueryPostRes, err error) {
+// POST /addStickerToSet
+func (c *Client) AddStickerToSet(ctx context.Context, request AddStickerToSet) (res Result, err error) {
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
 	startTime := time.Now()
-	ctx, span := c.cfg.Tracer.Start(ctx, `AnswerCallbackQueryPost`,
+	ctx, span := c.cfg.Tracer.Start(ctx, `AddStickerToSet`,
+		trace.WithAttributes(otelogen.OperationID(`addStickerToSet`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
@@ -117,7 +126,69 @@ func (c *Client) AnswerCallbackQueryPost(ctx context.Context, request AnswerCall
 		reqBody     io.Reader
 	)
 	contentType = "application/json"
-	buf, err := encodeAnswerCallbackQueryPostRequestJSON(request, span)
+	buf, err := encodeAddStickerToSetRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/addStickerToSet"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeAddStickerToSetResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// AnswerCallbackQuery invokes answerCallbackQuery operation.
+//
+// POST /answerCallbackQuery
+func (c *Client) AnswerCallbackQuery(ctx context.Context, request AnswerCallbackQuery) (res Result, err error) {
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `AnswerCallbackQuery`,
+		trace.WithAttributes(otelogen.OperationID(`answerCallbackQuery`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeAnswerCallbackQueryRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -138,7 +209,7 @@ func (c *Client) AnswerCallbackQueryPost(ctx context.Context, request AnswerCall
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeAnswerCallbackQueryPostResponse(resp, span)
+	result, err := decodeAnswerCallbackQueryResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -146,12 +217,21 @@ func (c *Client) AnswerCallbackQueryPost(ctx context.Context, request AnswerCall
 	return result, nil
 }
 
-// AnswerPreCheckoutQueryPost invokes  operation.
+// AnswerInlineQuery invokes answerInlineQuery operation.
 //
-// POST /answerPreCheckoutQuery
-func (c *Client) AnswerPreCheckoutQueryPost(ctx context.Context, request AnswerPreCheckoutQueryPostReqApplicationJSON) (res AnswerPreCheckoutQueryPostRes, err error) {
+// POST /answerInlineQuery
+func (c *Client) AnswerInlineQuery(ctx context.Context, request AnswerInlineQuery) (res Result, err error) {
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
 	startTime := time.Now()
-	ctx, span := c.cfg.Tracer.Start(ctx, `AnswerPreCheckoutQueryPost`,
+	ctx, span := c.cfg.Tracer.Start(ctx, `AnswerInlineQuery`,
+		trace.WithAttributes(otelogen.OperationID(`answerInlineQuery`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
@@ -170,7 +250,61 @@ func (c *Client) AnswerPreCheckoutQueryPost(ctx context.Context, request AnswerP
 		reqBody     io.Reader
 	)
 	contentType = "application/json"
-	buf, err := encodeAnswerPreCheckoutQueryPostRequestJSON(request, span)
+	buf, err := encodeAnswerInlineQueryRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/answerInlineQuery"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeAnswerInlineQueryResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// AnswerPreCheckoutQuery invokes answerPreCheckoutQuery operation.
+//
+// POST /answerPreCheckoutQuery
+func (c *Client) AnswerPreCheckoutQuery(ctx context.Context, request AnswerPreCheckoutQuery) (res Result, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `AnswerPreCheckoutQuery`,
+		trace.WithAttributes(otelogen.OperationID(`answerPreCheckoutQuery`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeAnswerPreCheckoutQueryRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -191,7 +325,7 @@ func (c *Client) AnswerPreCheckoutQueryPost(ctx context.Context, request AnswerP
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeAnswerPreCheckoutQueryPostResponse(resp, span)
+	result, err := decodeAnswerPreCheckoutQueryResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -199,10 +333,10 @@ func (c *Client) AnswerPreCheckoutQueryPost(ctx context.Context, request AnswerP
 	return result, nil
 }
 
-// AnswerShippingQueryPost invokes  operation.
+// AnswerShippingQuery invokes answerShippingQuery operation.
 //
 // POST /answerShippingQuery
-func (c *Client) AnswerShippingQueryPost(ctx context.Context, request AnswerShippingQueryPostReqApplicationJSON) (res AnswerShippingQueryPostRes, err error) {
+func (c *Client) AnswerShippingQuery(ctx context.Context, request AnswerShippingQuery) (res Result, err error) {
 	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
@@ -212,7 +346,8 @@ func (c *Client) AnswerShippingQueryPost(ctx context.Context, request AnswerShip
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
-	ctx, span := c.cfg.Tracer.Start(ctx, `AnswerShippingQueryPost`,
+	ctx, span := c.cfg.Tracer.Start(ctx, `AnswerShippingQuery`,
+		trace.WithAttributes(otelogen.OperationID(`answerShippingQuery`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
@@ -231,7 +366,7 @@ func (c *Client) AnswerShippingQueryPost(ctx context.Context, request AnswerShip
 		reqBody     io.Reader
 	)
 	contentType = "application/json"
-	buf, err := encodeAnswerShippingQueryPostRequestJSON(request, span)
+	buf, err := encodeAnswerShippingQueryRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -252,7 +387,7 @@ func (c *Client) AnswerShippingQueryPost(ctx context.Context, request AnswerShip
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeAnswerShippingQueryPostResponse(resp, span)
+	result, err := decodeAnswerShippingQueryResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -260,12 +395,175 @@ func (c *Client) AnswerShippingQueryPost(ctx context.Context, request AnswerShip
 	return result, nil
 }
 
-// ClosePost invokes  operation.
+// ApproveChatJoinRequest invokes approveChatJoinRequest operation.
+//
+// POST /approveChatJoinRequest
+func (c *Client) ApproveChatJoinRequest(ctx context.Context, request ApproveChatJoinRequest) (res Result, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `ApproveChatJoinRequest`,
+		trace.WithAttributes(otelogen.OperationID(`approveChatJoinRequest`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeApproveChatJoinRequestRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/approveChatJoinRequest"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeApproveChatJoinRequestResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// BanChatMember invokes banChatMember operation.
+//
+// POST /banChatMember
+func (c *Client) BanChatMember(ctx context.Context, request BanChatMember) (res Result, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `BanChatMember`,
+		trace.WithAttributes(otelogen.OperationID(`banChatMember`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeBanChatMemberRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/banChatMember"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeBanChatMemberResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// BanChatSenderChat invokes banChatSenderChat operation.
+//
+// POST /banChatSenderChat
+func (c *Client) BanChatSenderChat(ctx context.Context, request BanChatSenderChat) (res Result, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `BanChatSenderChat`,
+		trace.WithAttributes(otelogen.OperationID(`banChatSenderChat`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeBanChatSenderChatRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/banChatSenderChat"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeBanChatSenderChatResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// Close invokes close operation.
 //
 // POST /close
-func (c *Client) ClosePost(ctx context.Context) (res ClosePostRes, err error) {
+func (c *Client) Close(ctx context.Context) (res Result, err error) {
 	startTime := time.Now()
-	ctx, span := c.cfg.Tracer.Start(ctx, `ClosePost`,
+	ctx, span := c.cfg.Tracer.Start(ctx, `Close`,
+		trace.WithAttributes(otelogen.OperationID(`close`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
@@ -291,7 +589,7 @@ func (c *Client) ClosePost(ctx context.Context) (res ClosePostRes, err error) {
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeClosePostResponse(resp, span)
+	result, err := decodeCloseResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -299,12 +597,21 @@ func (c *Client) ClosePost(ctx context.Context) (res ClosePostRes, err error) {
 	return result, nil
 }
 
-// DeleteStickerFromSetPost invokes  operation.
+// CopyMessage invokes copyMessage operation.
 //
-// POST /deleteStickerFromSet
-func (c *Client) DeleteStickerFromSetPost(ctx context.Context, request DeleteStickerFromSetPostReqApplicationJSON) (res DeleteStickerFromSetPostRes, err error) {
+// POST /copyMessage
+func (c *Client) CopyMessage(ctx context.Context, request CopyMessage) (res ResultMessageId, err error) {
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
 	startTime := time.Now()
-	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteStickerFromSetPost`,
+	ctx, span := c.cfg.Tracer.Start(ctx, `CopyMessage`,
+		trace.WithAttributes(otelogen.OperationID(`copyMessage`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
@@ -323,7 +630,455 @@ func (c *Client) DeleteStickerFromSetPost(ctx context.Context, request DeleteSti
 		reqBody     io.Reader
 	)
 	contentType = "application/json"
-	buf, err := encodeDeleteStickerFromSetPostRequestJSON(request, span)
+	buf, err := encodeCopyMessageRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/copyMessage"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeCopyMessageResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// CreateChatInviteLink invokes createChatInviteLink operation.
+//
+// POST /createChatInviteLink
+func (c *Client) CreateChatInviteLink(ctx context.Context, request CreateChatInviteLink) (res ResultChatInviteLink, err error) {
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `CreateChatInviteLink`,
+		trace.WithAttributes(otelogen.OperationID(`createChatInviteLink`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeCreateChatInviteLinkRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/createChatInviteLink"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeCreateChatInviteLinkResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// CreateNewStickerSet invokes createNewStickerSet operation.
+//
+// POST /createNewStickerSet
+func (c *Client) CreateNewStickerSet(ctx context.Context, request CreateNewStickerSet) (res Result, err error) {
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `CreateNewStickerSet`,
+		trace.WithAttributes(otelogen.OperationID(`createNewStickerSet`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeCreateNewStickerSetRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/createNewStickerSet"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeCreateNewStickerSetResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// DeclineChatJoinRequest invokes declineChatJoinRequest operation.
+//
+// POST /declineChatJoinRequest
+func (c *Client) DeclineChatJoinRequest(ctx context.Context, request DeclineChatJoinRequest) (res Result, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `DeclineChatJoinRequest`,
+		trace.WithAttributes(otelogen.OperationID(`declineChatJoinRequest`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeDeclineChatJoinRequestRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/declineChatJoinRequest"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeDeclineChatJoinRequestResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// DeleteChatPhoto invokes deleteChatPhoto operation.
+//
+// POST /deleteChatPhoto
+func (c *Client) DeleteChatPhoto(ctx context.Context, request DeleteChatPhoto) (res Result, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteChatPhoto`,
+		trace.WithAttributes(otelogen.OperationID(`deleteChatPhoto`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeDeleteChatPhotoRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/deleteChatPhoto"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeDeleteChatPhotoResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// DeleteChatStickerSet invokes deleteChatStickerSet operation.
+//
+// POST /deleteChatStickerSet
+func (c *Client) DeleteChatStickerSet(ctx context.Context, request DeleteChatStickerSet) (res Result, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteChatStickerSet`,
+		trace.WithAttributes(otelogen.OperationID(`deleteChatStickerSet`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeDeleteChatStickerSetRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/deleteChatStickerSet"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeDeleteChatStickerSetResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// DeleteMessage invokes deleteMessage operation.
+//
+// POST /deleteMessage
+func (c *Client) DeleteMessage(ctx context.Context, request DeleteMessage) (res Result, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteMessage`,
+		trace.WithAttributes(otelogen.OperationID(`deleteMessage`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeDeleteMessageRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/deleteMessage"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeDeleteMessageResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// DeleteMyCommands invokes deleteMyCommands operation.
+//
+// POST /deleteMyCommands
+func (c *Client) DeleteMyCommands(ctx context.Context, request OptDeleteMyCommands) (res Result, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteMyCommands`,
+		trace.WithAttributes(otelogen.OperationID(`deleteMyCommands`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeDeleteMyCommandsRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/deleteMyCommands"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeDeleteMyCommandsResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// DeleteStickerFromSet invokes deleteStickerFromSet operation.
+//
+// POST /deleteStickerFromSet
+func (c *Client) DeleteStickerFromSet(ctx context.Context, request DeleteStickerFromSet) (res Result, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteStickerFromSet`,
+		trace.WithAttributes(otelogen.OperationID(`deleteStickerFromSet`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeDeleteStickerFromSetRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -344,7 +1099,7 @@ func (c *Client) DeleteStickerFromSetPost(ctx context.Context, request DeleteSti
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeDeleteStickerFromSetPostResponse(resp, span)
+	result, err := decodeDeleteStickerFromSetResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -352,12 +1107,13 @@ func (c *Client) DeleteStickerFromSetPost(ctx context.Context, request DeleteSti
 	return result, nil
 }
 
-// DeleteWebhookPost invokes  operation.
+// DeleteWebhook invokes deleteWebhook operation.
 //
 // POST /deleteWebhook
-func (c *Client) DeleteWebhookPost(ctx context.Context, request DeleteWebhookPostReqApplicationJSON) (res DeleteWebhookPostRes, err error) {
+func (c *Client) DeleteWebhook(ctx context.Context, request OptDeleteWebhook) (res Result, err error) {
 	startTime := time.Now()
-	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteWebhookPost`,
+	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteWebhook`,
+		trace.WithAttributes(otelogen.OperationID(`deleteWebhook`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
@@ -376,7 +1132,7 @@ func (c *Client) DeleteWebhookPost(ctx context.Context, request DeleteWebhookPos
 		reqBody     io.Reader
 	)
 	contentType = "application/json"
-	buf, err := encodeDeleteWebhookPostRequestJSON(request, span)
+	buf, err := encodeDeleteWebhookRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -397,7 +1153,7 @@ func (c *Client) DeleteWebhookPost(ctx context.Context, request DeleteWebhookPos
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeDeleteWebhookPostResponse(resp, span)
+	result, err := decodeDeleteWebhookResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -405,12 +1161,21 @@ func (c *Client) DeleteWebhookPost(ctx context.Context, request DeleteWebhookPos
 	return result, nil
 }
 
-// GetFilePost invokes  operation.
+// EditChatInviteLink invokes editChatInviteLink operation.
 //
-// POST /getFile
-func (c *Client) GetFilePost(ctx context.Context, request GetFilePostReqApplicationJSON) (res GetFilePostRes, err error) {
+// POST /editChatInviteLink
+func (c *Client) EditChatInviteLink(ctx context.Context, request EditChatInviteLink) (res ResultChatInviteLink, err error) {
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
 	startTime := time.Now()
-	ctx, span := c.cfg.Tracer.Start(ctx, `GetFilePost`,
+	ctx, span := c.cfg.Tracer.Start(ctx, `EditChatInviteLink`,
+		trace.WithAttributes(otelogen.OperationID(`editChatInviteLink`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
@@ -429,7 +1194,695 @@ func (c *Client) GetFilePost(ctx context.Context, request GetFilePostReqApplicat
 		reqBody     io.Reader
 	)
 	contentType = "application/json"
-	buf, err := encodeGetFilePostRequestJSON(request, span)
+	buf, err := encodeEditChatInviteLinkRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/editChatInviteLink"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeEditChatInviteLinkResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// EditMessageCaption invokes editMessageCaption operation.
+//
+// POST /editMessageCaption
+func (c *Client) EditMessageCaption(ctx context.Context, request EditMessageCaption) (res Result, err error) {
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `EditMessageCaption`,
+		trace.WithAttributes(otelogen.OperationID(`editMessageCaption`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeEditMessageCaptionRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/editMessageCaption"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeEditMessageCaptionResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// EditMessageLiveLocation invokes editMessageLiveLocation operation.
+//
+// POST /editMessageLiveLocation
+func (c *Client) EditMessageLiveLocation(ctx context.Context, request EditMessageLiveLocation) (res Result, err error) {
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `EditMessageLiveLocation`,
+		trace.WithAttributes(otelogen.OperationID(`editMessageLiveLocation`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeEditMessageLiveLocationRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/editMessageLiveLocation"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeEditMessageLiveLocationResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// EditMessageMedia invokes editMessageMedia operation.
+//
+// POST /editMessageMedia
+func (c *Client) EditMessageMedia(ctx context.Context, request EditMessageMedia) (res Result, err error) {
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `EditMessageMedia`,
+		trace.WithAttributes(otelogen.OperationID(`editMessageMedia`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeEditMessageMediaRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/editMessageMedia"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeEditMessageMediaResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// EditMessageReplyMarkup invokes editMessageReplyMarkup operation.
+//
+// POST /editMessageReplyMarkup
+func (c *Client) EditMessageReplyMarkup(ctx context.Context, request EditMessageReplyMarkup) (res Result, err error) {
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `EditMessageReplyMarkup`,
+		trace.WithAttributes(otelogen.OperationID(`editMessageReplyMarkup`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeEditMessageReplyMarkupRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/editMessageReplyMarkup"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeEditMessageReplyMarkupResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// EditMessageText invokes editMessageText operation.
+//
+// POST /editMessageText
+func (c *Client) EditMessageText(ctx context.Context, request EditMessageText) (res Result, err error) {
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `EditMessageText`,
+		trace.WithAttributes(otelogen.OperationID(`editMessageText`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeEditMessageTextRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/editMessageText"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeEditMessageTextResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// ExportChatInviteLink invokes exportChatInviteLink operation.
+//
+// POST /exportChatInviteLink
+func (c *Client) ExportChatInviteLink(ctx context.Context, request ExportChatInviteLink) (res ResultString, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `ExportChatInviteLink`,
+		trace.WithAttributes(otelogen.OperationID(`exportChatInviteLink`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeExportChatInviteLinkRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/exportChatInviteLink"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeExportChatInviteLinkResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// ForwardMessage invokes forwardMessage operation.
+//
+// POST /forwardMessage
+func (c *Client) ForwardMessage(ctx context.Context, request ForwardMessage) (res ResultMessage, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `ForwardMessage`,
+		trace.WithAttributes(otelogen.OperationID(`forwardMessage`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeForwardMessageRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/forwardMessage"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeForwardMessageResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// GetChat invokes getChat operation.
+//
+// POST /getChat
+func (c *Client) GetChat(ctx context.Context, request GetChat) (res ResultChat, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `GetChat`,
+		trace.WithAttributes(otelogen.OperationID(`getChat`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeGetChatRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/getChat"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeGetChatResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// GetChatAdministrators invokes getChatAdministrators operation.
+//
+// POST /getChatAdministrators
+func (c *Client) GetChatAdministrators(ctx context.Context, request GetChatAdministrators) (res ResultArrayOfChatMember, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `GetChatAdministrators`,
+		trace.WithAttributes(otelogen.OperationID(`getChatAdministrators`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeGetChatAdministratorsRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/getChatAdministrators"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeGetChatAdministratorsResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// GetChatMember invokes getChatMember operation.
+//
+// POST /getChatMember
+func (c *Client) GetChatMember(ctx context.Context, request GetChatMember) (res ResultChatMember, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `GetChatMember`,
+		trace.WithAttributes(otelogen.OperationID(`getChatMember`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeGetChatMemberRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/getChatMember"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeGetChatMemberResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// GetChatMemberCount invokes getChatMemberCount operation.
+//
+// POST /getChatMemberCount
+func (c *Client) GetChatMemberCount(ctx context.Context, request GetChatMemberCount) (res ResultInt, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `GetChatMemberCount`,
+		trace.WithAttributes(otelogen.OperationID(`getChatMemberCount`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeGetChatMemberCountRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/getChatMemberCount"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeGetChatMemberCountResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// GetFile invokes getFile operation.
+//
+// POST /getFile
+func (c *Client) GetFile(ctx context.Context, request GetFile) (res Result, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `GetFile`,
+		trace.WithAttributes(otelogen.OperationID(`getFile`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeGetFileRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -450,7 +1903,7 @@ func (c *Client) GetFilePost(ctx context.Context, request GetFilePostReqApplicat
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetFilePostResponse(resp, span)
+	result, err := decodeGetFileResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -458,12 +1911,13 @@ func (c *Client) GetFilePost(ctx context.Context, request GetFilePostReqApplicat
 	return result, nil
 }
 
-// GetGameHighScoresPost invokes  operation.
+// GetGameHighScores invokes getGameHighScores operation.
 //
 // POST /getGameHighScores
-func (c *Client) GetGameHighScoresPost(ctx context.Context, request GetGameHighScoresPostReqApplicationJSON) (res GetGameHighScoresPostRes, err error) {
+func (c *Client) GetGameHighScores(ctx context.Context, request GetGameHighScores) (res ResultArrayOfGameHighScore, err error) {
 	startTime := time.Now()
-	ctx, span := c.cfg.Tracer.Start(ctx, `GetGameHighScoresPost`,
+	ctx, span := c.cfg.Tracer.Start(ctx, `GetGameHighScores`,
+		trace.WithAttributes(otelogen.OperationID(`getGameHighScores`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
@@ -482,7 +1936,7 @@ func (c *Client) GetGameHighScoresPost(ctx context.Context, request GetGameHighS
 		reqBody     io.Reader
 	)
 	contentType = "application/json"
-	buf, err := encodeGetGameHighScoresPostRequestJSON(request, span)
+	buf, err := encodeGetGameHighScoresRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -503,7 +1957,7 @@ func (c *Client) GetGameHighScoresPost(ctx context.Context, request GetGameHighS
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetGameHighScoresPostResponse(resp, span)
+	result, err := decodeGetGameHighScoresResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -511,12 +1965,13 @@ func (c *Client) GetGameHighScoresPost(ctx context.Context, request GetGameHighS
 	return result, nil
 }
 
-// GetMePost invokes  operation.
+// GetMe invokes getMe operation.
 //
 // POST /getMe
-func (c *Client) GetMePost(ctx context.Context) (res GetMePostRes, err error) {
+func (c *Client) GetMe(ctx context.Context) (res ResultUser, err error) {
 	startTime := time.Now()
-	ctx, span := c.cfg.Tracer.Start(ctx, `GetMePost`,
+	ctx, span := c.cfg.Tracer.Start(ctx, `GetMe`,
+		trace.WithAttributes(otelogen.OperationID(`getMe`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
@@ -542,7 +1997,7 @@ func (c *Client) GetMePost(ctx context.Context) (res GetMePostRes, err error) {
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetMePostResponse(resp, span)
+	result, err := decodeGetMeResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -550,51 +2005,13 @@ func (c *Client) GetMePost(ctx context.Context) (res GetMePostRes, err error) {
 	return result, nil
 }
 
-// GetMyCommandsPost invokes  operation.
+// GetMyCommands invokes getMyCommands operation.
 //
 // POST /getMyCommands
-func (c *Client) GetMyCommandsPost(ctx context.Context) (res GetMyCommandsPostRes, err error) {
+func (c *Client) GetMyCommands(ctx context.Context, request OptGetMyCommands) (res ResultArrayOfBotCommand, err error) {
 	startTime := time.Now()
-	ctx, span := c.cfg.Tracer.Start(ctx, `GetMyCommandsPost`,
-		trace.WithSpanKind(trace.SpanKindClient),
-	)
-	defer func() {
-		if err != nil {
-			span.RecordError(err)
-			c.errors.Add(ctx, 1)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
-		}
-		span.End()
-	}()
-	c.requests.Add(ctx, 1)
-	u := uri.Clone(c.serverURL)
-	u.Path += "/getMyCommands"
-
-	r := ht.NewRequest(ctx, "POST", u, nil)
-	defer ht.PutRequest(r)
-
-	resp, err := c.cfg.Client.Do(r)
-	if err != nil {
-		return res, errors.Wrap(err, "do request")
-	}
-	defer resp.Body.Close()
-
-	result, err := decodeGetMyCommandsPostResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
-	}
-
-	return result, nil
-}
-
-// GetStickerSetPost invokes  operation.
-//
-// POST /getStickerSet
-func (c *Client) GetStickerSetPost(ctx context.Context, request GetStickerSetPostReqApplicationJSON) (res GetStickerSetPostRes, err error) {
-	startTime := time.Now()
-	ctx, span := c.cfg.Tracer.Start(ctx, `GetStickerSetPost`,
+	ctx, span := c.cfg.Tracer.Start(ctx, `GetMyCommands`,
+		trace.WithAttributes(otelogen.OperationID(`getMyCommands`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
@@ -613,7 +2030,61 @@ func (c *Client) GetStickerSetPost(ctx context.Context, request GetStickerSetPos
 		reqBody     io.Reader
 	)
 	contentType = "application/json"
-	buf, err := encodeGetStickerSetPostRequestJSON(request, span)
+	buf, err := encodeGetMyCommandsRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/getMyCommands"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeGetMyCommandsResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// GetStickerSet invokes getStickerSet operation.
+//
+// POST /getStickerSet
+func (c *Client) GetStickerSet(ctx context.Context, request GetStickerSet) (res Result, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `GetStickerSet`,
+		trace.WithAttributes(otelogen.OperationID(`getStickerSet`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeGetStickerSetRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -634,7 +2105,7 @@ func (c *Client) GetStickerSetPost(ctx context.Context, request GetStickerSetPos
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetStickerSetPostResponse(resp, span)
+	result, err := decodeGetStickerSetResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -642,20 +2113,29 @@ func (c *Client) GetStickerSetPost(ctx context.Context, request GetStickerSetPos
 	return result, nil
 }
 
-// GetUpdatesPost invokes  operation.
+// GetUpdates invokes getUpdates operation.
 //
 // POST /getUpdates
-func (c *Client) GetUpdatesPost(ctx context.Context, request GetUpdatesPostReqApplicationJSON) (res GetUpdatesPostRes, err error) {
+func (c *Client) GetUpdates(ctx context.Context, request OptGetUpdates) (res ResultArrayOfUpdate, err error) {
 	if err := func() error {
-		if err := request.Validate(); err != nil {
-			return err
+		if request.Set {
+			if err := func() error {
+				if err := request.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
 		}
+		return nil
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
-	ctx, span := c.cfg.Tracer.Start(ctx, `GetUpdatesPost`,
+	ctx, span := c.cfg.Tracer.Start(ctx, `GetUpdates`,
+		trace.WithAttributes(otelogen.OperationID(`getUpdates`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
@@ -674,7 +2154,7 @@ func (c *Client) GetUpdatesPost(ctx context.Context, request GetUpdatesPostReqAp
 		reqBody     io.Reader
 	)
 	contentType = "application/json"
-	buf, err := encodeGetUpdatesPostRequestJSON(request, span)
+	buf, err := encodeGetUpdatesRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -695,7 +2175,7 @@ func (c *Client) GetUpdatesPost(ctx context.Context, request GetUpdatesPostReqAp
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetUpdatesPostResponse(resp, span)
+	result, err := decodeGetUpdatesResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -703,10 +2183,10 @@ func (c *Client) GetUpdatesPost(ctx context.Context, request GetUpdatesPostReqAp
 	return result, nil
 }
 
-// GetUserProfilePhotosPost invokes  operation.
+// GetUserProfilePhotos invokes getUserProfilePhotos operation.
 //
 // POST /getUserProfilePhotos
-func (c *Client) GetUserProfilePhotosPost(ctx context.Context, request GetUserProfilePhotosPostReqApplicationJSON) (res GetUserProfilePhotosPostRes, err error) {
+func (c *Client) GetUserProfilePhotos(ctx context.Context, request GetUserProfilePhotos) (res ResultUserProfilePhotos, err error) {
 	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
@@ -716,7 +2196,8 @@ func (c *Client) GetUserProfilePhotosPost(ctx context.Context, request GetUserPr
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
-	ctx, span := c.cfg.Tracer.Start(ctx, `GetUserProfilePhotosPost`,
+	ctx, span := c.cfg.Tracer.Start(ctx, `GetUserProfilePhotos`,
+		trace.WithAttributes(otelogen.OperationID(`getUserProfilePhotos`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
@@ -735,7 +2216,7 @@ func (c *Client) GetUserProfilePhotosPost(ctx context.Context, request GetUserPr
 		reqBody     io.Reader
 	)
 	contentType = "application/json"
-	buf, err := encodeGetUserProfilePhotosPostRequestJSON(request, span)
+	buf, err := encodeGetUserProfilePhotosRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -756,7 +2237,7 @@ func (c *Client) GetUserProfilePhotosPost(ctx context.Context, request GetUserPr
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetUserProfilePhotosPostResponse(resp, span)
+	result, err := decodeGetUserProfilePhotosResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -764,12 +2245,13 @@ func (c *Client) GetUserProfilePhotosPost(ctx context.Context, request GetUserPr
 	return result, nil
 }
 
-// GetWebhookInfoPost invokes  operation.
+// GetWebhookInfo invokes getWebhookInfo operation.
 //
 // POST /getWebhookInfo
-func (c *Client) GetWebhookInfoPost(ctx context.Context) (res GetWebhookInfoPostRes, err error) {
+func (c *Client) GetWebhookInfo(ctx context.Context) (res ResultWebhookInfo, err error) {
 	startTime := time.Now()
-	ctx, span := c.cfg.Tracer.Start(ctx, `GetWebhookInfoPost`,
+	ctx, span := c.cfg.Tracer.Start(ctx, `GetWebhookInfo`,
+		trace.WithAttributes(otelogen.OperationID(`getWebhookInfo`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
@@ -795,7 +2277,7 @@ func (c *Client) GetWebhookInfoPost(ctx context.Context) (res GetWebhookInfoPost
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetWebhookInfoPostResponse(resp, span)
+	result, err := decodeGetWebhookInfoResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -803,12 +2285,67 @@ func (c *Client) GetWebhookInfoPost(ctx context.Context) (res GetWebhookInfoPost
 	return result, nil
 }
 
-// LogOutPost invokes  operation.
+// LeaveChat invokes leaveChat operation.
+//
+// POST /leaveChat
+func (c *Client) LeaveChat(ctx context.Context, request LeaveChat) (res Result, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `LeaveChat`,
+		trace.WithAttributes(otelogen.OperationID(`leaveChat`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeLeaveChatRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/leaveChat"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeLeaveChatResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// LogOut invokes logOut operation.
 //
 // POST /logOut
-func (c *Client) LogOutPost(ctx context.Context) (res LogOutPostRes, err error) {
+func (c *Client) LogOut(ctx context.Context) (res Result, err error) {
 	startTime := time.Now()
-	ctx, span := c.cfg.Tracer.Start(ctx, `LogOutPost`,
+	ctx, span := c.cfg.Tracer.Start(ctx, `LogOut`,
+		trace.WithAttributes(otelogen.OperationID(`logOut`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
@@ -834,7 +2371,7 @@ func (c *Client) LogOutPost(ctx context.Context) (res LogOutPostRes, err error) 
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeLogOutPostResponse(resp, span)
+	result, err := decodeLogOutResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -842,20 +2379,13 @@ func (c *Client) LogOutPost(ctx context.Context) (res LogOutPostRes, err error) 
 	return result, nil
 }
 
-// SendGamePost invokes  operation.
+// PinChatMessage invokes pinChatMessage operation.
 //
-// POST /sendGame
-func (c *Client) SendGamePost(ctx context.Context, request SendGamePostReqApplicationJSON) (res SendGamePostRes, err error) {
-	if err := func() error {
-		if err := request.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
+// POST /pinChatMessage
+func (c *Client) PinChatMessage(ctx context.Context, request PinChatMessage) (res Result, err error) {
 	startTime := time.Now()
-	ctx, span := c.cfg.Tracer.Start(ctx, `SendGamePost`,
+	ctx, span := c.cfg.Tracer.Start(ctx, `PinChatMessage`,
+		trace.WithAttributes(otelogen.OperationID(`pinChatMessage`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
@@ -874,7 +2404,595 @@ func (c *Client) SendGamePost(ctx context.Context, request SendGamePostReqApplic
 		reqBody     io.Reader
 	)
 	contentType = "application/json"
-	buf, err := encodeSendGamePostRequestJSON(request, span)
+	buf, err := encodePinChatMessageRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/pinChatMessage"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodePinChatMessageResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// PromoteChatMember invokes promoteChatMember operation.
+//
+// POST /promoteChatMember
+func (c *Client) PromoteChatMember(ctx context.Context, request PromoteChatMember) (res Result, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `PromoteChatMember`,
+		trace.WithAttributes(otelogen.OperationID(`promoteChatMember`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodePromoteChatMemberRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/promoteChatMember"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodePromoteChatMemberResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// RestrictChatMember invokes restrictChatMember operation.
+//
+// POST /restrictChatMember
+func (c *Client) RestrictChatMember(ctx context.Context, request RestrictChatMember) (res Result, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `RestrictChatMember`,
+		trace.WithAttributes(otelogen.OperationID(`restrictChatMember`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeRestrictChatMemberRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/restrictChatMember"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeRestrictChatMemberResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// RevokeChatInviteLink invokes revokeChatInviteLink operation.
+//
+// POST /revokeChatInviteLink
+func (c *Client) RevokeChatInviteLink(ctx context.Context, request RevokeChatInviteLink) (res ResultChatInviteLink, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `RevokeChatInviteLink`,
+		trace.WithAttributes(otelogen.OperationID(`revokeChatInviteLink`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeRevokeChatInviteLinkRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/revokeChatInviteLink"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeRevokeChatInviteLinkResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// SendAnimation invokes sendAnimation operation.
+//
+// POST /sendAnimation
+func (c *Client) SendAnimation(ctx context.Context, request SendAnimation) (res ResultMessage, err error) {
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `SendAnimation`,
+		trace.WithAttributes(otelogen.OperationID(`sendAnimation`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeSendAnimationRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/sendAnimation"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeSendAnimationResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// SendAudio invokes sendAudio operation.
+//
+// POST /sendAudio
+func (c *Client) SendAudio(ctx context.Context, request SendAudio) (res ResultMessage, err error) {
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `SendAudio`,
+		trace.WithAttributes(otelogen.OperationID(`sendAudio`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeSendAudioRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/sendAudio"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeSendAudioResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// SendChatAction invokes sendChatAction operation.
+//
+// POST /sendChatAction
+func (c *Client) SendChatAction(ctx context.Context, request SendChatAction) (res Result, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `SendChatAction`,
+		trace.WithAttributes(otelogen.OperationID(`sendChatAction`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeSendChatActionRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/sendChatAction"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeSendChatActionResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// SendContact invokes sendContact operation.
+//
+// POST /sendContact
+func (c *Client) SendContact(ctx context.Context, request SendContact) (res ResultMessage, err error) {
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `SendContact`,
+		trace.WithAttributes(otelogen.OperationID(`sendContact`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeSendContactRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/sendContact"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeSendContactResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// SendDice invokes sendDice operation.
+//
+// POST /sendDice
+func (c *Client) SendDice(ctx context.Context, request SendDice) (res ResultMessage, err error) {
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `SendDice`,
+		trace.WithAttributes(otelogen.OperationID(`sendDice`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeSendDiceRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/sendDice"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeSendDiceResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// SendDocument invokes sendDocument operation.
+//
+// POST /sendDocument
+func (c *Client) SendDocument(ctx context.Context, request SendDocument) (res ResultMessage, err error) {
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `SendDocument`,
+		trace.WithAttributes(otelogen.OperationID(`sendDocument`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeSendDocumentRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/sendDocument"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeSendDocumentResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// SendGame invokes sendGame operation.
+//
+// POST /sendGame
+func (c *Client) SendGame(ctx context.Context, request SendGame) (res ResultMessage, err error) {
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `SendGame`,
+		trace.WithAttributes(otelogen.OperationID(`sendGame`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeSendGameRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -895,7 +3013,7 @@ func (c *Client) SendGamePost(ctx context.Context, request SendGamePostReqApplic
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeSendGamePostResponse(resp, span)
+	result, err := decodeSendGameResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -903,10 +3021,10 @@ func (c *Client) SendGamePost(ctx context.Context, request SendGamePostReqApplic
 	return result, nil
 }
 
-// SendInvoicePost invokes  operation.
+// SendInvoice invokes sendInvoice operation.
 //
 // POST /sendInvoice
-func (c *Client) SendInvoicePost(ctx context.Context, request SendInvoicePostReqApplicationJSON) (res SendInvoicePostRes, err error) {
+func (c *Client) SendInvoice(ctx context.Context, request SendInvoice) (res ResultMessage, err error) {
 	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
@@ -916,7 +3034,8 @@ func (c *Client) SendInvoicePost(ctx context.Context, request SendInvoicePostReq
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
-	ctx, span := c.cfg.Tracer.Start(ctx, `SendInvoicePost`,
+	ctx, span := c.cfg.Tracer.Start(ctx, `SendInvoice`,
+		trace.WithAttributes(otelogen.OperationID(`sendInvoice`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
@@ -935,7 +3054,7 @@ func (c *Client) SendInvoicePost(ctx context.Context, request SendInvoicePostReq
 		reqBody     io.Reader
 	)
 	contentType = "application/json"
-	buf, err := encodeSendInvoicePostRequestJSON(request, span)
+	buf, err := encodeSendInvoiceRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -956,7 +3075,7 @@ func (c *Client) SendInvoicePost(ctx context.Context, request SendInvoicePostReq
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeSendInvoicePostResponse(resp, span)
+	result, err := decodeSendInvoiceResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -964,10 +3083,10 @@ func (c *Client) SendInvoicePost(ctx context.Context, request SendInvoicePostReq
 	return result, nil
 }
 
-// SetMyCommandsPost invokes  operation.
+// SendLocation invokes sendLocation operation.
 //
-// POST /setMyCommands
-func (c *Client) SetMyCommandsPost(ctx context.Context, request SetMyCommandsPostReqApplicationJSON) (res SetMyCommandsPostRes, err error) {
+// POST /sendLocation
+func (c *Client) SendLocation(ctx context.Context, request SendLocation) (res ResultMessage, err error) {
 	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
@@ -977,7 +3096,8 @@ func (c *Client) SetMyCommandsPost(ctx context.Context, request SetMyCommandsPos
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
-	ctx, span := c.cfg.Tracer.Start(ctx, `SetMyCommandsPost`,
+	ctx, span := c.cfg.Tracer.Start(ctx, `SendLocation`,
+		trace.WithAttributes(otelogen.OperationID(`sendLocation`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
@@ -996,7 +3116,1029 @@ func (c *Client) SetMyCommandsPost(ctx context.Context, request SetMyCommandsPos
 		reqBody     io.Reader
 	)
 	contentType = "application/json"
-	buf, err := encodeSetMyCommandsPostRequestJSON(request, span)
+	buf, err := encodeSendLocationRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/sendLocation"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeSendLocationResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// SendMediaGroup invokes sendMediaGroup operation.
+//
+// POST /sendMediaGroup
+func (c *Client) SendMediaGroup(ctx context.Context, request SendMediaGroup) (res ResultArrayOfMessage, err error) {
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `SendMediaGroup`,
+		trace.WithAttributes(otelogen.OperationID(`sendMediaGroup`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeSendMediaGroupRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/sendMediaGroup"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeSendMediaGroupResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// SendMessage invokes sendMessage operation.
+//
+// POST /sendMessage
+func (c *Client) SendMessage(ctx context.Context, request SendMessage) (res ResultMessage, err error) {
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `SendMessage`,
+		trace.WithAttributes(otelogen.OperationID(`sendMessage`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeSendMessageRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/sendMessage"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeSendMessageResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// SendPhoto invokes sendPhoto operation.
+//
+// POST /sendPhoto
+func (c *Client) SendPhoto(ctx context.Context, request SendPhoto) (res ResultMessage, err error) {
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `SendPhoto`,
+		trace.WithAttributes(otelogen.OperationID(`sendPhoto`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeSendPhotoRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/sendPhoto"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeSendPhotoResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// SendPoll invokes sendPoll operation.
+//
+// POST /sendPoll
+func (c *Client) SendPoll(ctx context.Context, request SendPoll) (res ResultMessage, err error) {
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `SendPoll`,
+		trace.WithAttributes(otelogen.OperationID(`sendPoll`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeSendPollRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/sendPoll"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeSendPollResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// SendSticker invokes sendSticker operation.
+//
+// POST /sendSticker
+func (c *Client) SendSticker(ctx context.Context, request SendSticker) (res ResultMessage, err error) {
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `SendSticker`,
+		trace.WithAttributes(otelogen.OperationID(`sendSticker`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeSendStickerRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/sendSticker"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeSendStickerResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// SendVenue invokes sendVenue operation.
+//
+// POST /sendVenue
+func (c *Client) SendVenue(ctx context.Context, request SendVenue) (res ResultMessage, err error) {
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `SendVenue`,
+		trace.WithAttributes(otelogen.OperationID(`sendVenue`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeSendVenueRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/sendVenue"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeSendVenueResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// SendVideo invokes sendVideo operation.
+//
+// POST /sendVideo
+func (c *Client) SendVideo(ctx context.Context, request SendVideo) (res ResultMessage, err error) {
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `SendVideo`,
+		trace.WithAttributes(otelogen.OperationID(`sendVideo`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeSendVideoRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/sendVideo"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeSendVideoResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// SendVideoNote invokes sendVideoNote operation.
+//
+// POST /sendVideoNote
+func (c *Client) SendVideoNote(ctx context.Context, request SendVideoNote) (res ResultMessage, err error) {
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `SendVideoNote`,
+		trace.WithAttributes(otelogen.OperationID(`sendVideoNote`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeSendVideoNoteRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/sendVideoNote"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeSendVideoNoteResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// SendVoice invokes sendVoice operation.
+//
+// POST /sendVoice
+func (c *Client) SendVoice(ctx context.Context, request SendVoice) (res ResultMessage, err error) {
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `SendVoice`,
+		trace.WithAttributes(otelogen.OperationID(`sendVoice`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeSendVoiceRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/sendVoice"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeSendVoiceResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// SetChatAdministratorCustomTitle invokes setChatAdministratorCustomTitle operation.
+//
+// POST /setChatAdministratorCustomTitle
+func (c *Client) SetChatAdministratorCustomTitle(ctx context.Context, request SetChatAdministratorCustomTitle) (res Result, err error) {
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `SetChatAdministratorCustomTitle`,
+		trace.WithAttributes(otelogen.OperationID(`setChatAdministratorCustomTitle`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeSetChatAdministratorCustomTitleRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/setChatAdministratorCustomTitle"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeSetChatAdministratorCustomTitleResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// SetChatDescription invokes setChatDescription operation.
+//
+// POST /setChatDescription
+func (c *Client) SetChatDescription(ctx context.Context, request SetChatDescription) (res Result, err error) {
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `SetChatDescription`,
+		trace.WithAttributes(otelogen.OperationID(`setChatDescription`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeSetChatDescriptionRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/setChatDescription"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeSetChatDescriptionResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// SetChatPermissions invokes setChatPermissions operation.
+//
+// POST /setChatPermissions
+func (c *Client) SetChatPermissions(ctx context.Context, request SetChatPermissions) (res Result, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `SetChatPermissions`,
+		trace.WithAttributes(otelogen.OperationID(`setChatPermissions`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeSetChatPermissionsRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/setChatPermissions"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeSetChatPermissionsResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// SetChatPhoto invokes setChatPhoto operation.
+//
+// POST /setChatPhoto
+func (c *Client) SetChatPhoto(ctx context.Context, request SetChatPhoto) (res Result, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `SetChatPhoto`,
+		trace.WithAttributes(otelogen.OperationID(`setChatPhoto`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeSetChatPhotoRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/setChatPhoto"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeSetChatPhotoResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// SetChatStickerSet invokes setChatStickerSet operation.
+//
+// POST /setChatStickerSet
+func (c *Client) SetChatStickerSet(ctx context.Context, request SetChatStickerSet) (res Result, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `SetChatStickerSet`,
+		trace.WithAttributes(otelogen.OperationID(`setChatStickerSet`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeSetChatStickerSetRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/setChatStickerSet"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeSetChatStickerSetResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// SetChatTitle invokes setChatTitle operation.
+//
+// POST /setChatTitle
+func (c *Client) SetChatTitle(ctx context.Context, request SetChatTitle) (res Result, err error) {
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `SetChatTitle`,
+		trace.WithAttributes(otelogen.OperationID(`setChatTitle`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeSetChatTitleRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/setChatTitle"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeSetChatTitleResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// SetGameScore invokes setGameScore operation.
+//
+// POST /setGameScore
+func (c *Client) SetGameScore(ctx context.Context, request SetGameScore) (res Result, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `SetGameScore`,
+		trace.WithAttributes(otelogen.OperationID(`setGameScore`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeSetGameScoreRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/setGameScore"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeSetGameScoreResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// SetMyCommands invokes setMyCommands operation.
+//
+// POST /setMyCommands
+func (c *Client) SetMyCommands(ctx context.Context, request SetMyCommands) (res Result, err error) {
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `SetMyCommands`,
+		trace.WithAttributes(otelogen.OperationID(`setMyCommands`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeSetMyCommandsRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -1017,7 +4159,7 @@ func (c *Client) SetMyCommandsPost(ctx context.Context, request SetMyCommandsPos
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeSetMyCommandsPostResponse(resp, span)
+	result, err := decodeSetMyCommandsResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -1025,12 +4167,21 @@ func (c *Client) SetMyCommandsPost(ctx context.Context, request SetMyCommandsPos
 	return result, nil
 }
 
-// SetStickerPositionInSetPost invokes  operation.
+// SetPassportDataErrors invokes setPassportDataErrors operation.
 //
-// POST /setStickerPositionInSet
-func (c *Client) SetStickerPositionInSetPost(ctx context.Context, request SetStickerPositionInSetPostReqApplicationJSON) (res SetStickerPositionInSetPostRes, err error) {
+// POST /setPassportDataErrors
+func (c *Client) SetPassportDataErrors(ctx context.Context, request SetPassportDataErrors) (res Result, err error) {
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
 	startTime := time.Now()
-	ctx, span := c.cfg.Tracer.Start(ctx, `SetStickerPositionInSetPost`,
+	ctx, span := c.cfg.Tracer.Start(ctx, `SetPassportDataErrors`,
+		trace.WithAttributes(otelogen.OperationID(`setPassportDataErrors`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
@@ -1049,7 +4200,61 @@ func (c *Client) SetStickerPositionInSetPost(ctx context.Context, request SetSti
 		reqBody     io.Reader
 	)
 	contentType = "application/json"
-	buf, err := encodeSetStickerPositionInSetPostRequestJSON(request, span)
+	buf, err := encodeSetPassportDataErrorsRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/setPassportDataErrors"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeSetPassportDataErrorsResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// SetStickerPositionInSet invokes setStickerPositionInSet operation.
+//
+// POST /setStickerPositionInSet
+func (c *Client) SetStickerPositionInSet(ctx context.Context, request SetStickerPositionInSet) (res Result, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `SetStickerPositionInSet`,
+		trace.WithAttributes(otelogen.OperationID(`setStickerPositionInSet`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeSetStickerPositionInSetRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
@@ -1070,7 +4275,509 @@ func (c *Client) SetStickerPositionInSetPost(ctx context.Context, request SetSti
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeSetStickerPositionInSetPostResponse(resp, span)
+	result, err := decodeSetStickerPositionInSetResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// SetStickerSetThumb invokes setStickerSetThumb operation.
+//
+// POST /setStickerSetThumb
+func (c *Client) SetStickerSetThumb(ctx context.Context, request SetStickerSetThumb) (res Result, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `SetStickerSetThumb`,
+		trace.WithAttributes(otelogen.OperationID(`setStickerSetThumb`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeSetStickerSetThumbRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/setStickerSetThumb"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeSetStickerSetThumbResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// SetWebhook invokes setWebhook operation.
+//
+// POST /setWebhook
+func (c *Client) SetWebhook(ctx context.Context, request SetWebhook) (res Result, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `SetWebhook`,
+		trace.WithAttributes(otelogen.OperationID(`setWebhook`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeSetWebhookRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/setWebhook"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeSetWebhookResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// StopMessageLiveLocation invokes stopMessageLiveLocation operation.
+//
+// POST /stopMessageLiveLocation
+func (c *Client) StopMessageLiveLocation(ctx context.Context, request StopMessageLiveLocation) (res Result, err error) {
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `StopMessageLiveLocation`,
+		trace.WithAttributes(otelogen.OperationID(`stopMessageLiveLocation`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeStopMessageLiveLocationRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/stopMessageLiveLocation"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeStopMessageLiveLocationResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// StopPoll invokes stopPoll operation.
+//
+// POST /stopPoll
+func (c *Client) StopPoll(ctx context.Context, request StopPoll) (res ResultPoll, err error) {
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `StopPoll`,
+		trace.WithAttributes(otelogen.OperationID(`stopPoll`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeStopPollRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/stopPoll"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeStopPollResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// UnbanChatMember invokes unbanChatMember operation.
+//
+// POST /unbanChatMember
+func (c *Client) UnbanChatMember(ctx context.Context, request UnbanChatMember) (res Result, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `UnbanChatMember`,
+		trace.WithAttributes(otelogen.OperationID(`unbanChatMember`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeUnbanChatMemberRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/unbanChatMember"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeUnbanChatMemberResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// UnbanChatSenderChat invokes unbanChatSenderChat operation.
+//
+// POST /unbanChatSenderChat
+func (c *Client) UnbanChatSenderChat(ctx context.Context, request UnbanChatSenderChat) (res Result, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `UnbanChatSenderChat`,
+		trace.WithAttributes(otelogen.OperationID(`unbanChatSenderChat`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeUnbanChatSenderChatRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/unbanChatSenderChat"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeUnbanChatSenderChatResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// UnpinAllChatMessages invokes unpinAllChatMessages operation.
+//
+// POST /unpinAllChatMessages
+func (c *Client) UnpinAllChatMessages(ctx context.Context, request UnpinAllChatMessages) (res Result, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `UnpinAllChatMessages`,
+		trace.WithAttributes(otelogen.OperationID(`unpinAllChatMessages`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeUnpinAllChatMessagesRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/unpinAllChatMessages"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeUnpinAllChatMessagesResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// UnpinChatMessage invokes unpinChatMessage operation.
+//
+// POST /unpinChatMessage
+func (c *Client) UnpinChatMessage(ctx context.Context, request UnpinChatMessage) (res Result, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `UnpinChatMessage`,
+		trace.WithAttributes(otelogen.OperationID(`unpinChatMessage`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeUnpinChatMessageRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/unpinChatMessage"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeUnpinChatMessageResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// UploadStickerFile invokes uploadStickerFile operation.
+//
+// POST /uploadStickerFile
+func (c *Client) UploadStickerFile(ctx context.Context, request UploadStickerFile) (res ResultFile, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `UploadStickerFile`,
+		trace.WithAttributes(otelogen.OperationID(`uploadStickerFile`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeUploadStickerFileRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/uploadStickerFile"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeUploadStickerFileResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}

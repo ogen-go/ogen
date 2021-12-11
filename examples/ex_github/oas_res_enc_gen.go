@@ -901,6 +901,24 @@ func encodeActionsRetryWorkflowResponse(response ActionsRetryWorkflowCreated, w 
 	return nil
 }
 
+func encodeActionsReviewPendingDeploymentsForRunResponse(response []Deployment, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	e.ArrStart()
+	for _, elem := range response {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
 func encodeActionsSetAllowedActionsOrganizationResponse(response ActionsSetAllowedActionsOrganizationNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
@@ -1202,6 +1220,64 @@ func encodeActivityListEventsForAuthenticatedUserResponse(response []Event, w ht
 	}
 
 	return nil
+}
+
+func encodeActivityListNotificationsForAuthenticatedUserResponse(response ActivityListNotificationsForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *ActivityListNotificationsForAuthenticatedUserOKApplicationJSON:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *NotModified:
+		w.WriteHeader(304)
+		return nil
+	case *ActivityListNotificationsForAuthenticatedUserApplicationJSONUnauthorized:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(401)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ActivityListNotificationsForAuthenticatedUserApplicationJSONForbidden:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(403)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/notifications: unexpected response type: %T`, response)
+	}
 }
 
 func encodeActivityListOrgEventsForAuthenticatedUserResponse(response []Event, w http.ResponseWriter, span trace.Span) error {
@@ -1853,6 +1929,232 @@ func encodeAppsAddRepoToInstallationResponse(response AppsAddRepoToInstallationR
 	}
 }
 
+func encodeAppsCheckTokenResponse(response AppsCheckTokenRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *Authorization:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *BasicError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(404)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/applications/{client_id}/token: unexpected response type: %T`, response)
+	}
+}
+
+func encodeAppsCreateContentAttachmentResponse(response AppsCreateContentAttachmentRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *ContentReferenceAttachment:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *NotModified:
+		w.WriteHeader(304)
+		return nil
+	case *AppsCreateContentAttachmentApplicationJSONForbidden:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(403)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *AppsCreateContentAttachmentApplicationJSONNotFound:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(404)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *AppsCreateContentAttachmentApplicationJSONGone:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(410)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *PreviewHeaderMissing:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(415)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repos/{owner}/{repo}/content_references/{content_reference_id}/attachments: unexpected response type: %T`, response)
+	}
+}
+
+func encodeAppsCreateInstallationAccessTokenResponse(response AppsCreateInstallationAccessTokenRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *InstallationToken:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(201)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *AppsCreateInstallationAccessTokenApplicationJSONUnauthorized:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(401)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *AppsCreateInstallationAccessTokenApplicationJSONForbidden:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(403)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *AppsCreateInstallationAccessTokenApplicationJSONNotFound:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(404)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *PreviewHeaderMissing:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(415)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/app/installations/{installation_id}/access_tokens: unexpected response type: %T`, response)
+	}
+}
+
+func encodeAppsDeleteAuthorizationResponse(response AppsDeleteAuthorizationRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *AppsDeleteAuthorizationNoContent:
+		w.WriteHeader(204)
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/applications/{client_id}/grant: unexpected response type: %T`, response)
+	}
+}
+
 func encodeAppsDeleteInstallationResponse(response AppsDeleteInstallationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *AppsDeleteInstallationNoContent:
@@ -1872,6 +2174,28 @@ func encodeAppsDeleteInstallationResponse(response AppsDeleteInstallationRes, w 
 		return nil
 	default:
 		return errors.Errorf(`/app/installations/{installation_id}: unexpected response type: %T`, response)
+	}
+}
+
+func encodeAppsDeleteTokenResponse(response AppsDeleteTokenRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *AppsDeleteTokenNoContent:
+		w.WriteHeader(204)
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/applications/{client_id}/token: unexpected response type: %T`, response)
 	}
 }
 
@@ -2033,6 +2357,104 @@ func encodeAppsGetWebhookConfigForAppResponse(response WebhookConfig, w http.Res
 	}
 
 	return nil
+}
+
+func encodeAppsGetWebhookDeliveryResponse(response AppsGetWebhookDeliveryRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *HookDelivery:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *BasicError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(400)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/app/hook/deliveries/{delivery_id}: unexpected response type: %T`, response)
+	}
+}
+
+func encodeAppsListAccountsForPlanResponse(response AppsListAccountsForPlanRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *AppsListAccountsForPlanOKApplicationJSON:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *AppsListAccountsForPlanApplicationJSONUnauthorized:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(401)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *AppsListAccountsForPlanApplicationJSONNotFound:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(404)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/marketplace_listing/plans/{plan_id}/accounts: unexpected response type: %T`, response)
+	}
 }
 
 func encodeAppsListAccountsForPlanStubbedResponse(response AppsListAccountsForPlanStubbedRes, w http.ResponseWriter, span trace.Span) error {
@@ -2312,6 +2734,92 @@ func encodeAppsListSubscriptionsForAuthenticatedUserStubbedResponse(response App
 	}
 }
 
+func encodeAppsListWebhookDeliveriesResponse(response AppsListWebhookDeliveriesRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *AppsListWebhookDeliveriesOKApplicationJSON:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *BasicError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(400)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/app/hook/deliveries: unexpected response type: %T`, response)
+	}
+}
+
+func encodeAppsRedeliverWebhookDeliveryResponse(response AppsRedeliverWebhookDeliveryRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *Accepted:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(202)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *BasicError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(400)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/app/hook/deliveries/{delivery_id}/attempts: unexpected response type: %T`, response)
+	}
+}
+
 func encodeAppsRemoveRepoFromInstallationResponse(response AppsRemoveRepoFromInstallationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *AppsRemoveRepoFromInstallationNoContent:
@@ -2349,9 +2857,107 @@ func encodeAppsRemoveRepoFromInstallationResponse(response AppsRemoveRepoFromIns
 	}
 }
 
+func encodeAppsResetTokenResponse(response AppsResetTokenRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *Authorization:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/applications/{client_id}/token: unexpected response type: %T`, response)
+	}
+}
+
 func encodeAppsRevokeInstallationAccessTokenResponse(response AppsRevokeInstallationAccessTokenNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
+}
+
+func encodeAppsScopeTokenResponse(response AppsScopeTokenRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *Authorization:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *AppsScopeTokenApplicationJSONUnauthorized:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(401)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *AppsScopeTokenApplicationJSONForbidden:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(403)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *AppsScopeTokenApplicationJSONNotFound:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(404)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/applications/{client_id}/token/scoped: unexpected response type: %T`, response)
+	}
 }
 
 func encodeAppsSuspendInstallationResponse(response AppsSuspendInstallationRes, w http.ResponseWriter, span trace.Span) error {
@@ -3658,6 +4264,20 @@ func encodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseResponse(respo
 	return nil
 }
 
+func encodeEnterpriseAdminUpdateAttributeForEnterpriseGroupResponse(response ScimEnterpriseGroup, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
 func encodeEnterpriseAdminUpdateAttributeForEnterpriseUserResponse(response ScimEnterpriseUser, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -3720,6 +4340,64 @@ func encodeGistsCheckIsStarredResponse(response GistsCheckIsStarredRes, w http.R
 		return nil
 	default:
 		return errors.Errorf(`/gists/{gist_id}/star: unexpected response type: %T`, response)
+	}
+}
+
+func encodeGistsCreateResponse(response GistsCreateRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *GistSimple:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(201)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *NotModified:
+		w.WriteHeader(304)
+		return nil
+	case *GistsCreateApplicationJSONForbidden:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(403)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *GistsCreateApplicationJSONNotFound:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(404)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/gists: unexpected response type: %T`, response)
 	}
 }
 
@@ -3843,6 +4521,64 @@ func encodeGistsDeleteCommentResponse(response GistsDeleteCommentRes, w http.Res
 	}
 }
 
+func encodeGistsForkResponse(response GistsForkRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *BaseGist:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(201)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *NotModified:
+		w.WriteHeader(304)
+		return nil
+	case *GistsForkApplicationJSONForbidden:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(403)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *GistsForkApplicationJSONNotFound:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(404)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/gists/{gist_id}/forks: unexpected response type: %T`, response)
+	}
+}
+
 func encodeGistsGetResponse(response GistsGetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GistSimple:
@@ -3932,6 +4668,61 @@ func encodeGistsGetCommentResponse(response GistsGetCommentRes, w http.ResponseW
 		return nil
 	default:
 		return errors.Errorf(`/gists/{gist_id}/comments/{comment_id}: unexpected response type: %T`, response)
+	}
+}
+
+func encodeGistsGetRevisionResponse(response GistsGetRevisionRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *GistSimple:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *GistsGetRevisionApplicationJSONForbidden:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(403)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *GistsGetRevisionApplicationJSONNotFound:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(404)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/gists/{gist_id}/{sha}: unexpected response type: %T`, response)
 	}
 }
 
@@ -4061,6 +4852,37 @@ func encodeGistsListCommitsResponse(response GistsListCommitsRes, w http.Respons
 	}
 }
 
+func encodeGistsListForUserResponse(response GistsListForUserRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *GistsListForUserOKApplicationJSON:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/users/{username}/gists: unexpected response type: %T`, response)
+	}
+}
+
 func encodeGistsListForksResponse(response GistsListForksRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GistsListForksOKApplicationJSON:
@@ -4104,6 +4926,52 @@ func encodeGistsListForksResponse(response GistsListForksRes, w http.ResponseWri
 		return nil
 	default:
 		return errors.Errorf(`/gists/{gist_id}/forks: unexpected response type: %T`, response)
+	}
+}
+
+func encodeGistsListPublicResponse(response GistsListPublicRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *GistsListPublicOKApplicationJSON:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *NotModified:
+		w.WriteHeader(304)
+		return nil
+	case *BasicError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(403)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/gists/public: unexpected response type: %T`, response)
 	}
 }
 
@@ -4258,6 +5126,310 @@ func encodeGistsUpdateCommentResponse(response GistsUpdateCommentRes, w http.Res
 	}
 }
 
+func encodeGitCreateBlobResponse(response GitCreateBlobRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *ShortBlob:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(201)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *GitCreateBlobApplicationJSONForbidden:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(403)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *GitCreateBlobApplicationJSONNotFound:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(404)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *GitCreateBlobApplicationJSONConflict:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(409)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repos/{owner}/{repo}/git/blobs: unexpected response type: %T`, response)
+	}
+}
+
+func encodeGitCreateCommitResponse(response GitCreateCommitRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *GitCommit:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(201)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *BasicError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(404)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repos/{owner}/{repo}/git/commits: unexpected response type: %T`, response)
+	}
+}
+
+func encodeGitCreateRefResponse(response GitCreateRefRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *GitRef:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(201)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repos/{owner}/{repo}/git/refs: unexpected response type: %T`, response)
+	}
+}
+
+func encodeGitCreateTagResponse(response GitCreateTagRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *GitTag:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(201)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repos/{owner}/{repo}/git/tags: unexpected response type: %T`, response)
+	}
+}
+
+func encodeGitCreateTreeResponse(response GitCreateTreeRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *GitTree:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(201)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *GitCreateTreeApplicationJSONForbidden:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(403)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *GitCreateTreeApplicationJSONNotFound:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(404)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repos/{owner}/{repo}/git/trees: unexpected response type: %T`, response)
+	}
+}
+
+func encodeGitDeleteRefResponse(response GitDeleteRefRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *GitDeleteRefNoContent:
+		w.WriteHeader(204)
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repos/{owner}/{repo}/git/refs/{ref}: unexpected response type: %T`, response)
+	}
+}
+
+func encodeGitGetBlobResponse(response GitGetBlobRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *Blob:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *GitGetBlobApplicationJSONForbidden:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(403)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *GitGetBlobApplicationJSONNotFound:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(404)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repos/{owner}/{repo}/git/blobs/{file_sha}: unexpected response type: %T`, response)
+	}
+}
+
 func encodeGitGetCommitResponse(response GitGetCommitRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GitCommit:
@@ -4351,6 +5523,49 @@ func encodeGitGetTagResponse(response GitGetTagRes, w http.ResponseWriter, span 
 	}
 }
 
+func encodeGitGetTreeResponse(response GitGetTreeRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *GitTree:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *BasicError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(404)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repos/{owner}/{repo}/git/trees/{tree_sha}: unexpected response type: %T`, response)
+	}
+}
+
 func encodeGitListMatchingRefsResponse(response []GitRef, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -4367,6 +5582,37 @@ func encodeGitListMatchingRefsResponse(response []GitRef, w http.ResponseWriter,
 	}
 
 	return nil
+}
+
+func encodeGitUpdateRefResponse(response GitUpdateRefRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *GitRef:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repos/{owner}/{repo}/git/refs/{ref}: unexpected response type: %T`, response)
+	}
 }
 
 func encodeGitignoreGetAllTemplatesResponse(response GitignoreGetAllTemplatesRes, w http.ResponseWriter, span trace.Span) error {
@@ -4436,6 +5682,68 @@ func encodeInteractionsRemoveRestrictionsForRepoResponse(response InteractionsRe
 	}
 }
 
+func encodeInteractionsSetRestrictionsForAuthenticatedUserResponse(response InteractionsSetRestrictionsForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *InteractionLimitResponse:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/user/interaction-limits: unexpected response type: %T`, response)
+	}
+}
+
+func encodeInteractionsSetRestrictionsForOrgResponse(response InteractionsSetRestrictionsForOrgRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *InteractionLimitResponse:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/orgs/{org}/interaction-limits: unexpected response type: %T`, response)
+	}
+}
+
 func encodeInteractionsSetRestrictionsForRepoResponse(response InteractionsSetRestrictionsForRepoRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *InteractionLimitResponse:
@@ -4494,6 +5802,238 @@ func encodeIssuesCheckUserCanBeAssignedResponse(response IssuesCheckUserCanBeAss
 	}
 }
 
+func encodeIssuesCreateResponse(response IssuesCreateRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *Issue:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(201)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *IssuesCreateApplicationJSONForbidden:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(403)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *IssuesCreateApplicationJSONNotFound:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(404)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *IssuesCreateApplicationJSONGone:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(410)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ServiceUnavailable:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(503)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repos/{owner}/{repo}/issues: unexpected response type: %T`, response)
+	}
+}
+
+func encodeIssuesCreateCommentResponse(response IssuesCreateCommentRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *IssueComment:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(201)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *IssuesCreateCommentApplicationJSONForbidden:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(403)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *IssuesCreateCommentApplicationJSONNotFound:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(404)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *IssuesCreateCommentApplicationJSONGone:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(410)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repos/{owner}/{repo}/issues/{issue_number}/comments: unexpected response type: %T`, response)
+	}
+}
+
+func encodeIssuesCreateLabelResponse(response IssuesCreateLabelRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *Label:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(201)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *BasicError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(404)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repos/{owner}/{repo}/labels: unexpected response type: %T`, response)
+	}
+}
+
+func encodeIssuesCreateMilestoneResponse(response IssuesCreateMilestoneRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *Milestone:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(201)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *BasicError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(404)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repos/{owner}/{repo}/milestones: unexpected response type: %T`, response)
+	}
+}
+
 func encodeIssuesDeleteCommentResponse(response IssuesDeleteCommentNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
@@ -4523,6 +6063,64 @@ func encodeIssuesDeleteMilestoneResponse(response IssuesDeleteMilestoneRes, w ht
 		return nil
 	default:
 		return errors.Errorf(`/repos/{owner}/{repo}/milestones/{milestone_number}: unexpected response type: %T`, response)
+	}
+}
+
+func encodeIssuesGetResponse(response IssuesGetRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *Issue:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *IssuesGetApplicationJSONMovedPermanently:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(301)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *NotModified:
+		w.WriteHeader(304)
+		return nil
+	case *IssuesGetApplicationJSONNotFound:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(404)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *IssuesGetApplicationJSONGone:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(410)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repos/{owner}/{repo}/issues/{issue_number}: unexpected response type: %T`, response)
 	}
 }
 
@@ -4674,6 +6272,52 @@ func encodeIssuesGetMilestoneResponse(response IssuesGetMilestoneRes, w http.Res
 	}
 }
 
+func encodeIssuesListResponse(response IssuesListRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *IssuesListOKApplicationJSON:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *NotModified:
+		w.WriteHeader(304)
+		return nil
+	case *BasicError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(404)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/issues: unexpected response type: %T`, response)
+	}
+}
+
 func encodeIssuesListAssigneesResponse(response IssuesListAssigneesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IssuesListAssigneesOKApplicationJSON:
@@ -4745,6 +6389,200 @@ func encodeIssuesListCommentsResponse(response IssuesListCommentsRes, w http.Res
 		return nil
 	default:
 		return errors.Errorf(`/repos/{owner}/{repo}/issues/{issue_number}/comments: unexpected response type: %T`, response)
+	}
+}
+
+func encodeIssuesListCommentsForRepoResponse(response IssuesListCommentsForRepoRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *IssuesListCommentsForRepoOKApplicationJSON:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *BasicError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(404)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repos/{owner}/{repo}/issues/comments: unexpected response type: %T`, response)
+	}
+}
+
+func encodeIssuesListEventsForRepoResponse(response IssuesListEventsForRepoRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *IssuesListEventsForRepoOKApplicationJSON:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repos/{owner}/{repo}/issues/events: unexpected response type: %T`, response)
+	}
+}
+
+func encodeIssuesListForAuthenticatedUserResponse(response IssuesListForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *IssuesListForAuthenticatedUserOKApplicationJSON:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *NotModified:
+		w.WriteHeader(304)
+		return nil
+	case *BasicError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(404)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/user/issues: unexpected response type: %T`, response)
+	}
+}
+
+func encodeIssuesListForOrgResponse(response IssuesListForOrgRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *IssuesListForOrgOKApplicationJSON:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *BasicError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(404)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/orgs/{org}/issues: unexpected response type: %T`, response)
+	}
+}
+
+func encodeIssuesListForRepoResponse(response IssuesListForRepoRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *IssuesListForRepoOKApplicationJSON:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *IssuesListForRepoApplicationJSONMovedPermanently:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(301)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *IssuesListForRepoApplicationJSONNotFound:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(404)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repos/{owner}/{repo}/issues: unexpected response type: %T`, response)
 	}
 }
 
@@ -4859,6 +6697,64 @@ func encodeIssuesListMilestonesResponse(response IssuesListMilestonesRes, w http
 	}
 }
 
+func encodeIssuesLockResponse(response IssuesLockRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *IssuesLockNoContent:
+		w.WriteHeader(204)
+		return nil
+	case *IssuesLockApplicationJSONForbidden:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(403)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *IssuesLockApplicationJSONNotFound:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(404)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *IssuesLockApplicationJSONGone:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(410)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repos/{owner}/{repo}/issues/{issue_number}/lock: unexpected response type: %T`, response)
+	}
+}
+
 func encodeIssuesRemoveAllLabelsResponse(response IssuesRemoveAllLabelsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IssuesRemoveAllLabelsNoContent:
@@ -4969,6 +6865,128 @@ func encodeIssuesUnlockResponse(response IssuesUnlockRes, w http.ResponseWriter,
 		return nil
 	default:
 		return errors.Errorf(`/repos/{owner}/{repo}/issues/{issue_number}/lock: unexpected response type: %T`, response)
+	}
+}
+
+func encodeIssuesUpdateResponse(response IssuesUpdateRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *Issue:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *IssuesUpdateApplicationJSONMovedPermanently:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(301)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *IssuesUpdateApplicationJSONForbidden:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(403)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *IssuesUpdateApplicationJSONNotFound:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(404)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *IssuesUpdateApplicationJSONGone:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(410)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ServiceUnavailable:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(503)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repos/{owner}/{repo}/issues/{issue_number}: unexpected response type: %T`, response)
+	}
+}
+
+func encodeIssuesUpdateCommentResponse(response IssuesUpdateCommentRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *IssueComment:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repos/{owner}/{repo}/issues/comments/{comment_id}: unexpected response type: %T`, response)
 	}
 }
 
@@ -5548,6 +7566,224 @@ func encodeMigrationsListReposForUserResponse(response MigrationsListReposForUse
 	}
 }
 
+func encodeMigrationsMapCommitAuthorResponse(response MigrationsMapCommitAuthorRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *PorterAuthor:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *BasicError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(404)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repos/{owner}/{repo}/import/authors/{author_id}: unexpected response type: %T`, response)
+	}
+}
+
+func encodeMigrationsSetLfsPreferenceResponse(response MigrationsSetLfsPreferenceRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *Import:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repos/{owner}/{repo}/import/lfs: unexpected response type: %T`, response)
+	}
+}
+
+func encodeMigrationsStartForAuthenticatedUserResponse(response MigrationsStartForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *Migration:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(201)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *NotModified:
+		w.WriteHeader(304)
+		return nil
+	case *MigrationsStartForAuthenticatedUserApplicationJSONUnauthorized:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(401)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *MigrationsStartForAuthenticatedUserApplicationJSONForbidden:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(403)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/user/migrations: unexpected response type: %T`, response)
+	}
+}
+
+func encodeMigrationsStartForOrgResponse(response MigrationsStartForOrgRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *Migration:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(201)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *BasicError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(404)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/orgs/{org}/migrations: unexpected response type: %T`, response)
+	}
+}
+
+func encodeMigrationsStartImportResponse(response MigrationsStartImportRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *Import:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(201)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *BasicError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(404)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repos/{owner}/{repo}/import: unexpected response type: %T`, response)
+	}
+}
+
 func encodeMigrationsUnlockRepoForAuthenticatedUserResponse(response MigrationsUnlockRepoForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *MigrationsUnlockRepoForAuthenticatedUserNoContent:
@@ -5631,6 +7867,76 @@ func encodeMigrationsUpdateImportResponse(response Import, w http.ResponseWriter
 	}
 
 	return nil
+}
+
+func encodeOAuthAuthorizationsCreateAuthorizationResponse(response OAuthAuthorizationsCreateAuthorizationRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *Authorization:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(201)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *NotModified:
+		w.WriteHeader(304)
+		return nil
+	case *OAuthAuthorizationsCreateAuthorizationApplicationJSONUnauthorized:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(401)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *OAuthAuthorizationsCreateAuthorizationApplicationJSONForbidden:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(403)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *OAuthAuthorizationsCreateAuthorizationApplicationJSONGone:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(410)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/authorizations: unexpected response type: %T`, response)
+	}
 }
 
 func encodeOAuthAuthorizationsDeleteAuthorizationResponse(response OAuthAuthorizationsDeleteAuthorizationRes, w http.ResponseWriter, span trace.Span) error {
@@ -5799,6 +8105,119 @@ func encodeOAuthAuthorizationsGetGrantResponse(response OAuthAuthorizationsGetGr
 	}
 }
 
+func encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppResponse(response OAuthAuthorizationsGetOrCreateAuthorizationForAppRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONOK:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONCreated:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(201)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *NotModified:
+		w.WriteHeader(304)
+		return nil
+	case *OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONUnauthorized:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(401)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONForbidden:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(403)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/authorizations/clients/{client_id}: unexpected response type: %T`, response)
+	}
+}
+
+func encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintResponse(response OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintApplicationJSONOK:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintApplicationJSONCreated:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(201)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/authorizations/clients/{client_id}/{fingerprint}: unexpected response type: %T`, response)
+	}
+}
+
 func encodeOAuthAuthorizationsListAuthorizationsResponse(response OAuthAuthorizationsListAuthorizationsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OAuthAuthorizationsListAuthorizationsOKApplicationJSON:
@@ -5915,6 +8334,93 @@ func encodeOAuthAuthorizationsListGrantsResponse(response OAuthAuthorizationsLis
 	}
 }
 
+func encodeOAuthAuthorizationsUpdateAuthorizationResponse(response OAuthAuthorizationsUpdateAuthorizationRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *Authorization:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/authorizations/{authorization_id}: unexpected response type: %T`, response)
+	}
+}
+
+func encodeOrgsBlockUserResponse(response OrgsBlockUserRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *OrgsBlockUserNoContent:
+		w.WriteHeader(204)
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/orgs/{org}/blocks/{username}: unexpected response type: %T`, response)
+	}
+}
+
+func encodeOrgsCancelInvitationResponse(response OrgsCancelInvitationRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *OrgsCancelInvitationNoContent:
+		w.WriteHeader(204)
+		return nil
+	case *BasicError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(404)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/orgs/{org}/invitations/{invitation_id}: unexpected response type: %T`, response)
+	}
+}
+
 func encodeOrgsCheckBlockedUserResponse(response OrgsCheckBlockedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrgsCheckBlockedUserNoContent:
@@ -6000,6 +8506,92 @@ func encodeOrgsConvertMemberToOutsideCollaboratorResponse(response OrgsConvertMe
 		return nil
 	default:
 		return errors.Errorf(`/orgs/{org}/outside_collaborators/{username}: unexpected response type: %T`, response)
+	}
+}
+
+func encodeOrgsCreateInvitationResponse(response OrgsCreateInvitationRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *OrganizationInvitation:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(201)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *BasicError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(404)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/orgs/{org}/invitations: unexpected response type: %T`, response)
+	}
+}
+
+func encodeOrgsCreateWebhookResponse(response OrgsCreateWebhookRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *OrgHook:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(201)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *BasicError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(404)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/orgs/{org}/hooks: unexpected response type: %T`, response)
 	}
 }
 
@@ -6205,6 +8797,49 @@ func encodeOrgsGetWebhookConfigForOrgResponse(response WebhookConfig, w http.Res
 	return nil
 }
 
+func encodeOrgsGetWebhookDeliveryResponse(response OrgsGetWebhookDeliveryRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *HookDelivery:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *BasicError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(400)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/orgs/{org}/hooks/{hook_id}/deliveries/{delivery_id}: unexpected response type: %T`, response)
+	}
+}
+
 func encodeOrgsListResponse(response OrgsListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrgsListOKApplicationJSON:
@@ -6384,6 +9019,98 @@ func encodeOrgsListInvitationTeamsResponse(response OrgsListInvitationTeamsRes, 
 	}
 }
 
+func encodeOrgsListMembersResponse(response OrgsListMembersRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *OrgsListMembersOKApplicationJSON:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *OrgsListMembersFound:
+		w.WriteHeader(302)
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/orgs/{org}/members: unexpected response type: %T`, response)
+	}
+}
+
+func encodeOrgsListMembershipsForAuthenticatedUserResponse(response OrgsListMembershipsForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *OrgsListMembershipsForAuthenticatedUserOKApplicationJSON:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *NotModified:
+		w.WriteHeader(304)
+		return nil
+	case *OrgsListMembershipsForAuthenticatedUserApplicationJSONUnauthorized:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(401)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *OrgsListMembershipsForAuthenticatedUserApplicationJSONForbidden:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(403)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/user/memberships/orgs: unexpected response type: %T`, response)
+	}
+}
+
 func encodeOrgsListOutsideCollaboratorsResponse(response []SimpleUser, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -6469,6 +9196,49 @@ func encodeOrgsListSamlSSOAuthorizationsResponse(response []CredentialAuthorizat
 	return nil
 }
 
+func encodeOrgsListWebhookDeliveriesResponse(response OrgsListWebhookDeliveriesRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *OrgsListWebhookDeliveriesOKApplicationJSON:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *BasicError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(400)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/orgs/{org}/hooks/{hook_id}/deliveries: unexpected response type: %T`, response)
+	}
+}
+
 func encodeOrgsListWebhooksResponse(response OrgsListWebhooksRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrgsListWebhooksOKApplicationJSON:
@@ -6519,6 +9289,49 @@ func encodeOrgsPingWebhookResponse(response OrgsPingWebhookRes, w http.ResponseW
 		return nil
 	default:
 		return errors.Errorf(`/orgs/{org}/hooks/{hook_id}/pings: unexpected response type: %T`, response)
+	}
+}
+
+func encodeOrgsRedeliverWebhookDeliveryResponse(response OrgsRedeliverWebhookDeliveryRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *Accepted:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(202)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *BasicError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(400)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/orgs/{org}/hooks/{hook_id}/deliveries/{delivery_id}/attempts: unexpected response type: %T`, response)
 	}
 }
 
@@ -6627,6 +9440,49 @@ func encodeOrgsRemoveSamlSSOAuthorizationResponse(response OrgsRemoveSamlSSOAuth
 	}
 }
 
+func encodeOrgsSetMembershipForUserResponse(response OrgsSetMembershipForUserRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *OrgMembership:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *BasicError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(403)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/orgs/{org}/memberships/{username}: unexpected response type: %T`, response)
+	}
+}
+
 func encodeOrgsSetPublicMembershipForAuthenticatedUserResponse(response OrgsSetPublicMembershipForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrgsSetPublicMembershipForAuthenticatedUserNoContent:
@@ -6652,6 +9508,104 @@ func encodeOrgsSetPublicMembershipForAuthenticatedUserResponse(response OrgsSetP
 func encodeOrgsUnblockUserResponse(response OrgsUnblockUserNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
+}
+
+func encodeOrgsUpdateMembershipForAuthenticatedUserResponse(response OrgsUpdateMembershipForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *OrgMembership:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *OrgsUpdateMembershipForAuthenticatedUserApplicationJSONForbidden:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(403)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *OrgsUpdateMembershipForAuthenticatedUserApplicationJSONNotFound:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(404)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/user/memberships/orgs/{org}: unexpected response type: %T`, response)
+	}
+}
+
+func encodeOrgsUpdateWebhookResponse(response OrgsUpdateWebhookRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *OrgHook:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *BasicError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(404)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/orgs/{org}/hooks/{hook_id}: unexpected response type: %T`, response)
+	}
 }
 
 func encodeOrgsUpdateWebhookConfigForOrgResponse(response WebhookConfig, w http.ResponseWriter, span trace.Span) error {
@@ -7573,6 +10527,67 @@ func encodePackagesRestorePackageVersionForUserResponse(response PackagesRestore
 	}
 }
 
+func encodeProjectsAddCollaboratorResponse(response ProjectsAddCollaboratorRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *ProjectsAddCollaboratorNoContent:
+		w.WriteHeader(204)
+		return nil
+	case *NotModified:
+		w.WriteHeader(304)
+		return nil
+	case *ProjectsAddCollaboratorApplicationJSONUnauthorized:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(401)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ProjectsAddCollaboratorApplicationJSONForbidden:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(403)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ProjectsAddCollaboratorApplicationJSONNotFound:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(404)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/projects/{project_id}/collaborators/{username}: unexpected response type: %T`, response)
+	}
+}
+
 func encodeProjectsCreateColumnResponse(response ProjectsCreateColumnRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ProjectColumn:
@@ -8168,6 +11183,76 @@ func encodeProjectsGetColumnResponse(response ProjectsGetColumnRes, w http.Respo
 	}
 }
 
+func encodeProjectsGetPermissionForUserResponse(response ProjectsGetPermissionForUserRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *RepositoryCollaboratorPermission:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *NotModified:
+		w.WriteHeader(304)
+		return nil
+	case *ProjectsGetPermissionForUserApplicationJSONUnauthorized:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(401)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ProjectsGetPermissionForUserApplicationJSONForbidden:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(403)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ProjectsGetPermissionForUserApplicationJSONNotFound:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(404)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/projects/{project_id}/collaborators/{username}/permission: unexpected response type: %T`, response)
+	}
+}
+
 func encodeProjectsListCardsResponse(response ProjectsListCardsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ProjectsListCardsOKApplicationJSON:
@@ -8211,6 +11296,76 @@ func encodeProjectsListCardsResponse(response ProjectsListCardsRes, w http.Respo
 		return nil
 	default:
 		return errors.Errorf(`/projects/columns/{column_id}/cards: unexpected response type: %T`, response)
+	}
+}
+
+func encodeProjectsListCollaboratorsResponse(response ProjectsListCollaboratorsRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *ProjectsListCollaboratorsOKApplicationJSON:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *NotModified:
+		w.WriteHeader(304)
+		return nil
+	case *ProjectsListCollaboratorsApplicationJSONUnauthorized:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(401)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ProjectsListCollaboratorsApplicationJSONForbidden:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(403)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ProjectsListCollaboratorsApplicationJSONNotFound:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(404)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/projects/{project_id}/collaborators: unexpected response type: %T`, response)
 	}
 }
 
@@ -8370,6 +11525,107 @@ func encodeProjectsListForRepoResponse(response ProjectsListForRepoRes, w http.R
 	}
 }
 
+func encodeProjectsListForUserResponse(response ProjectsListForUserRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *ProjectsListForUserOKApplicationJSON:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/users/{username}/projects: unexpected response type: %T`, response)
+	}
+}
+
+func encodeProjectsMoveCardResponse(response ProjectsMoveCardRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *ProjectsMoveCardCreated:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(201)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *NotModified:
+		w.WriteHeader(304)
+		return nil
+	case *BasicError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(401)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ProjectsMoveCardForbidden:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(403)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ProjectsMoveCardServiceUnavailable:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(503)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/projects/columns/cards/{card_id}/moves: unexpected response type: %T`, response)
+	}
+}
+
 func encodeProjectsMoveColumnResponse(response ProjectsMoveColumnRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ProjectsMoveColumnCreated:
@@ -8425,6 +11681,67 @@ func encodeProjectsMoveColumnResponse(response ProjectsMoveColumnRes, w http.Res
 		return nil
 	default:
 		return errors.Errorf(`/projects/columns/{column_id}/moves: unexpected response type: %T`, response)
+	}
+}
+
+func encodeProjectsRemoveCollaboratorResponse(response ProjectsRemoveCollaboratorRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *ProjectsRemoveCollaboratorNoContent:
+		w.WriteHeader(204)
+		return nil
+	case *NotModified:
+		w.WriteHeader(304)
+		return nil
+	case *ProjectsRemoveCollaboratorApplicationJSONUnauthorized:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(401)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ProjectsRemoveCollaboratorApplicationJSONForbidden:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(403)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ProjectsRemoveCollaboratorApplicationJSONNotFound:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(404)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/projects/{project_id}/collaborators/{username}: unexpected response type: %T`, response)
 	}
 }
 
@@ -8630,6 +11947,49 @@ func encodePullsCheckIfMergedResponse(response PullsCheckIfMergedRes, w http.Res
 	}
 }
 
+func encodePullsCreateResponse(response PullsCreateRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *PullRequest:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(201)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *BasicError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(403)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repos/{owner}/{repo}/pulls: unexpected response type: %T`, response)
+	}
+}
+
 func encodePullsCreateReplyForReviewCommentResponse(response PullsCreateReplyForReviewCommentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PullRequestReviewComment:
@@ -8701,6 +12061,49 @@ func encodePullsCreateReviewResponse(response PullsCreateReviewRes, w http.Respo
 		return nil
 	default:
 		return errors.Errorf(`/repos/{owner}/{repo}/pulls/{pull_number}/reviews: unexpected response type: %T`, response)
+	}
+}
+
+func encodePullsCreateReviewCommentResponse(response PullsCreateReviewCommentRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *PullRequestReviewComment:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(201)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *BasicError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(403)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repos/{owner}/{repo}/pulls/{pull_number}/comments: unexpected response type: %T`, response)
 	}
 }
 
@@ -8920,6 +12323,40 @@ func encodePullsGetReviewCommentResponse(response PullsGetReviewCommentRes, w ht
 	}
 }
 
+func encodePullsListResponse(response PullsListRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *PullsListOKApplicationJSON:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *NotModified:
+		w.WriteHeader(304)
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repos/{owner}/{repo}/pulls: unexpected response type: %T`, response)
+	}
+}
+
 func encodePullsListCommentsForReviewResponse(response PullsListCommentsForReviewRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PullsListCommentsForReviewOKApplicationJSON:
@@ -8967,6 +12404,49 @@ func encodePullsListCommitsResponse(response []Commit, w http.ResponseWriter, sp
 	}
 
 	return nil
+}
+
+func encodePullsListFilesResponse(response PullsListFilesRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *PullsListFilesOKApplicationJSON:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *BasicError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(500)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repos/{owner}/{repo}/pulls/{pull_number}/files: unexpected response type: %T`, response)
+	}
 }
 
 func encodePullsListRequestedReviewersResponse(response PullRequestReviewRequest, w http.ResponseWriter, span trace.Span) error {
@@ -9037,6 +12517,116 @@ func encodePullsListReviewsResponse(response []PullRequestReview, w http.Respons
 	return nil
 }
 
+func encodePullsMergeResponse(response PullsMergeRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *PullRequestMergeResult:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *PullsMergeApplicationJSONForbidden:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(403)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *PullsMergeApplicationJSONNotFound:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(404)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *PullsMergeMethodNotAllowed:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(405)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *PullsMergeConflict:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(409)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repos/{owner}/{repo}/pulls/{pull_number}/merge: unexpected response type: %T`, response)
+	}
+}
+
+func encodePullsRemoveRequestedReviewersResponse(response PullsRemoveRequestedReviewersRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *PullRequestSimple:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers: unexpected response type: %T`, response)
+	}
+}
+
 func encodePullsSubmitReviewResponse(response PullsSubmitReviewRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PullRequestReview:
@@ -9089,6 +12679,92 @@ func encodePullsSubmitReviewResponse(response PullsSubmitReviewRes, w http.Respo
 		return nil
 	default:
 		return errors.Errorf(`/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/events: unexpected response type: %T`, response)
+	}
+}
+
+func encodePullsUpdateResponse(response PullsUpdateRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *PullRequest:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *BasicError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(403)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repos/{owner}/{repo}/pulls/{pull_number}: unexpected response type: %T`, response)
+	}
+}
+
+func encodePullsUpdateBranchResponse(response PullsUpdateBranchRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *PullsUpdateBranchAccepted:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(202)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *BasicError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(403)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repos/{owner}/{repo}/pulls/{pull_number}/update-branch: unexpected response type: %T`, response)
 	}
 }
 
@@ -9168,6 +12844,281 @@ func encodeRateLimitGetResponse(response RateLimitGetRes, w http.ResponseWriter,
 		return nil
 	default:
 		return errors.Errorf(`/rate_limit: unexpected response type: %T`, response)
+	}
+}
+
+func encodeReactionsCreateForCommitCommentResponse(response ReactionsCreateForCommitCommentRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *ReactionsCreateForCommitCommentApplicationJSONOK:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ReactionsCreateForCommitCommentApplicationJSONCreated:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(201)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *PreviewHeaderMissing:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(415)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repos/{owner}/{repo}/comments/{comment_id}/reactions: unexpected response type: %T`, response)
+	}
+}
+
+func encodeReactionsCreateForIssueResponse(response ReactionsCreateForIssueRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *ReactionsCreateForIssueApplicationJSONOK:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ReactionsCreateForIssueApplicationJSONCreated:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(201)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *PreviewHeaderMissing:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(415)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repos/{owner}/{repo}/issues/{issue_number}/reactions: unexpected response type: %T`, response)
+	}
+}
+
+func encodeReactionsCreateForIssueCommentResponse(response ReactionsCreateForIssueCommentRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *ReactionsCreateForIssueCommentApplicationJSONOK:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ReactionsCreateForIssueCommentApplicationJSONCreated:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(201)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *PreviewHeaderMissing:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(415)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repos/{owner}/{repo}/issues/comments/{comment_id}/reactions: unexpected response type: %T`, response)
+	}
+}
+
+func encodeReactionsCreateForPullRequestReviewCommentResponse(response ReactionsCreateForPullRequestReviewCommentRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *ReactionsCreateForPullRequestReviewCommentApplicationJSONOK:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ReactionsCreateForPullRequestReviewCommentApplicationJSONCreated:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(201)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *PreviewHeaderMissing:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(415)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions: unexpected response type: %T`, response)
+	}
+}
+
+func encodeReactionsCreateForReleaseResponse(response ReactionsCreateForReleaseRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *ReactionsCreateForReleaseApplicationJSONOK:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ReactionsCreateForReleaseApplicationJSONCreated:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(201)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *PreviewHeaderMissing:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(415)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repos/{owner}/{repo}/releases/{release_id}/reactions: unexpected response type: %T`, response)
 	}
 }
 
@@ -9657,6 +13608,200 @@ func encodeReposAcceptInvitationResponse(response ReposAcceptInvitationRes, w ht
 	}
 }
 
+func encodeReposAddAppAccessRestrictionsResponse(response ReposAddAppAccessRestrictionsRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *ReposAddAppAccessRestrictionsOKApplicationJSON:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps: unexpected response type: %T`, response)
+	}
+}
+
+func encodeReposAddCollaboratorResponse(response ReposAddCollaboratorRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *RepositoryInvitation:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(201)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ReposAddCollaboratorNoContent:
+		w.WriteHeader(204)
+		return nil
+	case *BasicError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(403)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repos/{owner}/{repo}/collaborators/{username}: unexpected response type: %T`, response)
+	}
+}
+
+func encodeReposAddStatusCheckContextsResponse(response ReposAddStatusCheckContextsRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *ReposAddStatusCheckContextsOKApplicationJSON:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ReposAddStatusCheckContextsApplicationJSONForbidden:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(403)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ReposAddStatusCheckContextsApplicationJSONNotFound:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(404)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts: unexpected response type: %T`, response)
+	}
+}
+
+func encodeReposAddTeamAccessRestrictionsResponse(response ReposAddTeamAccessRestrictionsRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *ReposAddTeamAccessRestrictionsOKApplicationJSON:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams: unexpected response type: %T`, response)
+	}
+}
+
+func encodeReposAddUserAccessRestrictionsResponse(response ReposAddUserAccessRestrictionsRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *ReposAddUserAccessRestrictionsOKApplicationJSON:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users: unexpected response type: %T`, response)
+	}
+}
+
 func encodeReposCheckCollaboratorResponse(response ReposCheckCollaboratorRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposCheckCollaboratorNoContent:
@@ -9726,6 +13871,80 @@ func encodeReposCompareCommitsResponse(response ReposCompareCommitsRes, w http.R
 	}
 }
 
+func encodeReposCreateAutolinkResponse(response ReposCreateAutolinkRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *Autolink:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(201)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repos/{owner}/{repo}/autolinks: unexpected response type: %T`, response)
+	}
+}
+
+func encodeReposCreateCommitCommentResponse(response ReposCreateCommitCommentRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *CommitComment:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(201)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *BasicError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(403)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repos/{owner}/{repo}/commits/{commit_sha}/comments: unexpected response type: %T`, response)
+	}
+}
+
 func encodeReposCreateCommitSignatureProtectionResponse(response ReposCreateCommitSignatureProtectionRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ProtectedBranchAdminEnforced:
@@ -9771,6 +13990,493 @@ func encodeReposCreateCommitStatusResponse(response Status, w http.ResponseWrite
 	return nil
 }
 
+func encodeReposCreateDeployKeyResponse(response ReposCreateDeployKeyRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *DeployKey:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(201)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repos/{owner}/{repo}/keys: unexpected response type: %T`, response)
+	}
+}
+
+func encodeReposCreateDeploymentResponse(response ReposCreateDeploymentRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *Deployment:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(201)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ReposCreateDeploymentAccepted:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(202)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ReposCreateDeploymentConflict:
+		w.WriteHeader(409)
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repos/{owner}/{repo}/deployments: unexpected response type: %T`, response)
+	}
+}
+
+func encodeReposCreateDeploymentStatusResponse(response ReposCreateDeploymentStatusRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *DeploymentStatus:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(201)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repos/{owner}/{repo}/deployments/{deployment_id}/statuses: unexpected response type: %T`, response)
+	}
+}
+
+func encodeReposCreateDispatchEventResponse(response ReposCreateDispatchEventRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *ReposCreateDispatchEventNoContent:
+		w.WriteHeader(204)
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repos/{owner}/{repo}/dispatches: unexpected response type: %T`, response)
+	}
+}
+
+func encodeReposCreateForAuthenticatedUserResponse(response ReposCreateForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *Repository:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(201)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *NotModified:
+		w.WriteHeader(304)
+		return nil
+	case *ReposCreateForAuthenticatedUserApplicationJSONBadRequest:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(400)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ReposCreateForAuthenticatedUserApplicationJSONUnauthorized:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(401)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ReposCreateForAuthenticatedUserApplicationJSONForbidden:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(403)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ReposCreateForAuthenticatedUserApplicationJSONNotFound:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(404)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/user/repos: unexpected response type: %T`, response)
+	}
+}
+
+func encodeReposCreateForkResponse(response ReposCreateForkRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *FullRepository:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(202)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ReposCreateForkApplicationJSONBadRequest:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(400)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ReposCreateForkApplicationJSONForbidden:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(403)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ReposCreateForkApplicationJSONNotFound:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(404)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repos/{owner}/{repo}/forks: unexpected response type: %T`, response)
+	}
+}
+
+func encodeReposCreateInOrgResponse(response ReposCreateInOrgRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *Repository:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(201)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *BasicError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(403)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/orgs/{org}/repos: unexpected response type: %T`, response)
+	}
+}
+
+func encodeReposCreateOrUpdateFileContentsResponse(response ReposCreateOrUpdateFileContentsRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *ReposCreateOrUpdateFileContentsApplicationJSONOK:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ReposCreateOrUpdateFileContentsApplicationJSONCreated:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(201)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ReposCreateOrUpdateFileContentsApplicationJSONNotFound:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(404)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ReposCreateOrUpdateFileContentsApplicationJSONConflict:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(409)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repos/{owner}/{repo}/contents/{path}: unexpected response type: %T`, response)
+	}
+}
+
+func encodeReposCreatePagesSiteResponse(response ReposCreatePagesSiteRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *Page:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(201)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *BasicError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(409)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *PreviewHeaderMissing:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(415)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repos/{owner}/{repo}/pages: unexpected response type: %T`, response)
+	}
+}
+
+func encodeReposCreateReleaseResponse(response ReposCreateReleaseRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *Release:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(201)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *BasicError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(404)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repos/{owner}/{repo}/releases: unexpected response type: %T`, response)
+	}
+}
+
 func encodeReposCreateUsingTemplateResponse(response Repository, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
@@ -9783,6 +14489,61 @@ func encodeReposCreateUsingTemplateResponse(response Repository, w http.Response
 	}
 
 	return nil
+}
+
+func encodeReposCreateWebhookResponse(response ReposCreateWebhookRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *Hook:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(201)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ReposCreateWebhookApplicationJSONForbidden:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(403)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ReposCreateWebhookApplicationJSONNotFound:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(404)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repos/{owner}/{repo}/hooks: unexpected response type: %T`, response)
+	}
 }
 
 func encodeReposDeclineInvitationResponse(response ReposDeclineInvitationRes, w http.ResponseWriter, span trace.Span) error {
@@ -10039,9 +14800,122 @@ func encodeReposDeleteDeploymentResponse(response ReposDeleteDeploymentRes, w ht
 	}
 }
 
+func encodeReposDeleteFileResponse(response ReposDeleteFileRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *FileCommit:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ReposDeleteFileApplicationJSONNotFound:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(404)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ReposDeleteFileApplicationJSONConflict:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(409)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ServiceUnavailable:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(503)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repos/{owner}/{repo}/contents/{path}: unexpected response type: %T`, response)
+	}
+}
+
 func encodeReposDeleteInvitationResponse(response ReposDeleteInvitationNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
+}
+
+func encodeReposDeletePagesSiteResponse(response ReposDeletePagesSiteRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *ReposDeletePagesSiteNoContent:
+		w.WriteHeader(204)
+		return nil
+	case *BasicError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(404)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *PreviewHeaderMissing:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(415)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repos/{owner}/{repo}/pages: unexpected response type: %T`, response)
+	}
 }
 
 func encodeReposDeletePullRequestReviewProtectionResponse(response ReposDeletePullRequestReviewProtectionRes, w http.ResponseWriter, span trace.Span) error {
@@ -10604,6 +15478,61 @@ func encodeReposGetCombinedStatusForRefResponse(response ReposGetCombinedStatusF
 	}
 }
 
+func encodeReposGetCommitResponse(response ReposGetCommitRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *Commit:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ReposGetCommitApplicationJSONNotFound:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(404)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ReposGetCommitApplicationJSONInternalServerError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(500)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repos/{owner}/{repo}/commits/{ref}: unexpected response type: %T`, response)
+	}
+}
+
 func encodeReposGetCommitActivityStatsResponse(response ReposGetCommitActivityStatsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposGetCommitActivityStatsOKApplicationJSON:
@@ -10776,6 +15705,37 @@ func encodeReposGetDeployKeyResponse(response ReposGetDeployKeyRes, w http.Respo
 		return nil
 	default:
 		return errors.Errorf(`/repos/{owner}/{repo}/keys/{key_id}: unexpected response type: %T`, response)
+	}
+}
+
+func encodeReposGetDeploymentResponse(response ReposGetDeploymentRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *Deployment:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *BasicError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(404)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repos/{owner}/{repo}/deployments/{deployment_id}: unexpected response type: %T`, response)
 	}
 }
 
@@ -11008,6 +15968,92 @@ func encodeReposGetPunchCardStatsResponse(response ReposGetPunchCardStatsRes, w 
 		return nil
 	default:
 		return errors.Errorf(`/repos/{owner}/{repo}/stats/punch_card: unexpected response type: %T`, response)
+	}
+}
+
+func encodeReposGetReadmeResponse(response ReposGetReadmeRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *ContentFile:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *BasicError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(404)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repos/{owner}/{repo}/readme: unexpected response type: %T`, response)
+	}
+}
+
+func encodeReposGetReadmeInDirectoryResponse(response ReposGetReadmeInDirectoryRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *ContentFile:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *BasicError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(404)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repos/{owner}/{repo}/readme/{dir}: unexpected response type: %T`, response)
 	}
 }
 
@@ -11350,6 +16396,49 @@ func encodeReposGetWebhookConfigForRepoResponse(response WebhookConfig, w http.R
 	return nil
 }
 
+func encodeReposGetWebhookDeliveryResponse(response ReposGetWebhookDeliveryRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *HookDelivery:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *BasicError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(400)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repos/{owner}/{repo}/hooks/{hook_id}/deliveries/{delivery_id}: unexpected response type: %T`, response)
+	}
+}
+
 func encodeReposListAutolinksResponse(response []Autolink, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -11396,6 +16485,37 @@ func encodeReposListBranchesResponse(response ReposListBranchesRes, w http.Respo
 		return nil
 	default:
 		return errors.Errorf(`/repos/{owner}/{repo}/branches: unexpected response type: %T`, response)
+	}
+}
+
+func encodeReposListBranchesForHeadCommitResponse(response ReposListBranchesForHeadCommitRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *ReposListBranchesForHeadCommitOKApplicationJSON:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repos/{owner}/{repo}/commits/{commit_sha}/branches-where-head: unexpected response type: %T`, response)
 	}
 }
 
@@ -11659,6 +16779,82 @@ func encodeReposListDeploymentStatusesResponse(response ReposListDeploymentStatu
 	}
 }
 
+func encodeReposListDeploymentsResponse(response []Deployment, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	e.ArrStart()
+	for _, elem := range response {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeReposListForAuthenticatedUserResponse(response ReposListForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *ReposListForAuthenticatedUserOKApplicationJSON:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *NotModified:
+		w.WriteHeader(304)
+		return nil
+	case *ReposListForAuthenticatedUserApplicationJSONUnauthorized:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(401)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ReposListForAuthenticatedUserApplicationJSONForbidden:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(403)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/user/repos: unexpected response type: %T`, response)
+	}
+}
+
 func encodeReposListForOrgResponse(response []MinimalRepository, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -11834,6 +17030,40 @@ func encodeReposListPagesBuildsResponse(response []PageBuild, w http.ResponseWri
 	return nil
 }
 
+func encodeReposListPublicResponse(response ReposListPublicRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *ReposListPublicOKApplicationJSON:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *NotModified:
+		w.WriteHeader(304)
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repositories: unexpected response type: %T`, response)
+	}
+}
+
 func encodeReposListPullRequestsAssociatedWithCommitResponse(response []PullRequestSimple, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -11937,6 +17167,49 @@ func encodeReposListTeamsResponse(response []Team, w http.ResponseWriter, span t
 	return nil
 }
 
+func encodeReposListWebhookDeliveriesResponse(response ReposListWebhookDeliveriesRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *ReposListWebhookDeliveriesOKApplicationJSON:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *BasicError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(400)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repos/{owner}/{repo}/hooks/{hook_id}/deliveries: unexpected response type: %T`, response)
+	}
+}
+
 func encodeReposListWebhooksResponse(response ReposListWebhooksRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposListWebhooksOKApplicationJSON:
@@ -11965,6 +17238,58 @@ func encodeReposListWebhooksResponse(response ReposListWebhooksRes, w http.Respo
 		return nil
 	default:
 		return errors.Errorf(`/repos/{owner}/{repo}/hooks: unexpected response type: %T`, response)
+	}
+}
+
+func encodeReposMergeResponse(response ReposMergeRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *Commit:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(201)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ReposMergeNoContent:
+		w.WriteHeader(204)
+		return nil
+	case *BasicError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(403)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ReposMergeNotFound:
+		w.WriteHeader(404)
+		return nil
+	case *ReposMergeConflict:
+		w.WriteHeader(409)
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repos/{owner}/{repo}/merges: unexpected response type: %T`, response)
 	}
 }
 
@@ -12015,14 +17340,248 @@ func encodeReposPingWebhookResponse(response ReposPingWebhookRes, w http.Respons
 	}
 }
 
+func encodeReposRedeliverWebhookDeliveryResponse(response ReposRedeliverWebhookDeliveryRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *Accepted:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(202)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *BasicError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(400)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repos/{owner}/{repo}/hooks/{hook_id}/deliveries/{delivery_id}/attempts: unexpected response type: %T`, response)
+	}
+}
+
+func encodeReposRemoveAppAccessRestrictionsResponse(response ReposRemoveAppAccessRestrictionsRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *ReposRemoveAppAccessRestrictionsOKApplicationJSON:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps: unexpected response type: %T`, response)
+	}
+}
+
 func encodeReposRemoveCollaboratorResponse(response ReposRemoveCollaboratorNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
 }
 
+func encodeReposRemoveStatusCheckContextsResponse(response ReposRemoveStatusCheckContextsRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *ReposRemoveStatusCheckContextsOKApplicationJSON:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *BasicError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(404)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts: unexpected response type: %T`, response)
+	}
+}
+
 func encodeReposRemoveStatusCheckProtectionResponse(response ReposRemoveStatusCheckProtectionNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
+}
+
+func encodeReposRemoveTeamAccessRestrictionsResponse(response ReposRemoveTeamAccessRestrictionsRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *ReposRemoveTeamAccessRestrictionsOKApplicationJSON:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams: unexpected response type: %T`, response)
+	}
+}
+
+func encodeReposRemoveUserAccessRestrictionsResponse(response ReposRemoveUserAccessRestrictionsRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *ReposRemoveUserAccessRestrictionsOKApplicationJSON:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users: unexpected response type: %T`, response)
+	}
+}
+
+func encodeReposRenameBranchResponse(response ReposRenameBranchRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *BranchWithProtection:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(201)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ReposRenameBranchApplicationJSONForbidden:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(403)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ReposRenameBranchApplicationJSONNotFound:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(404)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repos/{owner}/{repo}/branches/{branch}/rename: unexpected response type: %T`, response)
+	}
 }
 
 func encodeReposReplaceAllTopicsResponse(response ReposReplaceAllTopicsRes, w http.ResponseWriter, span trace.Span) error {
@@ -12108,6 +17667,142 @@ func encodeReposSetAdminBranchProtectionResponse(response ProtectedBranchAdminEn
 	return nil
 }
 
+func encodeReposSetAppAccessRestrictionsResponse(response ReposSetAppAccessRestrictionsRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *ReposSetAppAccessRestrictionsOKApplicationJSON:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps: unexpected response type: %T`, response)
+	}
+}
+
+func encodeReposSetStatusCheckContextsResponse(response ReposSetStatusCheckContextsRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *ReposSetStatusCheckContextsOKApplicationJSON:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *BasicError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(404)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts: unexpected response type: %T`, response)
+	}
+}
+
+func encodeReposSetTeamAccessRestrictionsResponse(response ReposSetTeamAccessRestrictionsRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *ReposSetTeamAccessRestrictionsOKApplicationJSON:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams: unexpected response type: %T`, response)
+	}
+}
+
+func encodeReposSetUserAccessRestrictionsResponse(response ReposSetUserAccessRestrictionsRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *ReposSetUserAccessRestrictionsOKApplicationJSON:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users: unexpected response type: %T`, response)
+	}
+}
+
 func encodeReposTestPushWebhookResponse(response ReposTestPushWebhookRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposTestPushWebhookNoContent:
@@ -12142,6 +17837,73 @@ func encodeReposTransferResponse(response MinimalRepository, w http.ResponseWrit
 	}
 
 	return nil
+}
+
+func encodeReposUpdateResponse(response ReposUpdateRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *FullRepository:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ReposUpdateApplicationJSONTemporaryRedirect:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(307)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ReposUpdateApplicationJSONForbidden:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(403)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ReposUpdateApplicationJSONNotFound:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(404)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repos/{owner}/{repo}: unexpected response type: %T`, response)
+	}
 }
 
 func encodeReposUpdateBranchProtectionResponse(response ReposUpdateBranchProtectionRes, w http.ResponseWriter, span trace.Span) error {
@@ -12244,6 +18006,37 @@ func encodeReposUpdateInvitationResponse(response RepositoryInvitation, w http.R
 	return nil
 }
 
+func encodeReposUpdatePullRequestReviewProtectionResponse(response ReposUpdatePullRequestReviewProtectionRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *ProtectedBranchPullRequestReview:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews: unexpected response type: %T`, response)
+	}
+}
+
 func encodeReposUpdateReleaseResponse(response ReposUpdateReleaseRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Release:
@@ -12287,6 +18080,92 @@ func encodeReposUpdateReleaseAssetResponse(response ReleaseAsset, w http.Respons
 	}
 
 	return nil
+}
+
+func encodeReposUpdateStatusCheckProtectionResponse(response ReposUpdateStatusCheckProtectionRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *StatusCheckPolicy:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *BasicError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(404)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks: unexpected response type: %T`, response)
+	}
+}
+
+func encodeReposUpdateWebhookResponse(response ReposUpdateWebhookRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *Hook:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *BasicError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(404)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/repos/{owner}/{repo}/hooks/{hook_id}: unexpected response type: %T`, response)
+	}
 }
 
 func encodeReposUpdateWebhookConfigForRepoResponse(response WebhookConfig, w http.ResponseWriter, span trace.Span) error {
@@ -12340,6 +18219,64 @@ func encodeScimDeleteUserFromOrgResponse(response ScimDeleteUserFromOrgRes, w ht
 	}
 }
 
+func encodeSearchCodeResponse(response SearchCodeRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *SearchCodeOK:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *NotModified:
+		w.WriteHeader(304)
+		return nil
+	case *BasicError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(403)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ServiceUnavailable:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(503)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/search/code: unexpected response type: %T`, response)
+	}
+}
+
 func encodeSearchCommitsResponse(response SearchCommitsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *SearchCommitsOK:
@@ -12374,6 +18311,168 @@ func encodeSearchCommitsResponse(response SearchCommitsRes, w http.ResponseWrite
 	}
 }
 
+func encodeSearchIssuesAndPullRequestsResponse(response SearchIssuesAndPullRequestsRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *SearchIssuesAndPullRequestsOK:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *NotModified:
+		w.WriteHeader(304)
+		return nil
+	case *BasicError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(403)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ServiceUnavailable:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(503)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/search/issues: unexpected response type: %T`, response)
+	}
+}
+
+func encodeSearchLabelsResponse(response SearchLabelsRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *SearchLabelsOK:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *NotModified:
+		w.WriteHeader(304)
+		return nil
+	case *SearchLabelsApplicationJSONForbidden:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(403)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *SearchLabelsApplicationJSONNotFound:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(404)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/search/labels: unexpected response type: %T`, response)
+	}
+}
+
+func encodeSearchReposResponse(response SearchReposRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *SearchReposOK:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *NotModified:
+		w.WriteHeader(304)
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ServiceUnavailable:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(503)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/search/repositories: unexpected response type: %T`, response)
+	}
+}
+
 func encodeSearchTopicsResponse(response SearchTopicsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *SearchTopicsOK:
@@ -12405,6 +18504,52 @@ func encodeSearchTopicsResponse(response SearchTopicsRes, w http.ResponseWriter,
 		return nil
 	default:
 		return errors.Errorf(`/search/topics: unexpected response type: %T`, response)
+	}
+}
+
+func encodeSearchUsersResponse(response SearchUsersRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *SearchUsersOK:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *NotModified:
+		w.WriteHeader(304)
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ServiceUnavailable:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(503)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/search/users: unexpected response type: %T`, response)
 	}
 }
 
@@ -12668,9 +18813,89 @@ func encodeTeamsAddOrUpdateProjectPermissionsInOrgResponse(response TeamsAddOrUp
 	}
 }
 
+func encodeTeamsAddOrUpdateProjectPermissionsLegacyResponse(response TeamsAddOrUpdateProjectPermissionsLegacyRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *TeamsAddOrUpdateProjectPermissionsLegacyNoContent:
+		w.WriteHeader(204)
+		return nil
+	case *TeamsAddOrUpdateProjectPermissionsLegacyForbidden:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(403)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *BasicError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(404)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/teams/{team_id}/projects/{project_id}: unexpected response type: %T`, response)
+	}
+}
+
 func encodeTeamsAddOrUpdateRepoPermissionsInOrgResponse(response TeamsAddOrUpdateRepoPermissionsInOrgNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
+}
+
+func encodeTeamsAddOrUpdateRepoPermissionsLegacyResponse(response TeamsAddOrUpdateRepoPermissionsLegacyRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *TeamsAddOrUpdateRepoPermissionsLegacyNoContent:
+		w.WriteHeader(204)
+		return nil
+	case *BasicError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(403)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/teams/{team_id}/repos/{owner}/{repo}: unexpected response type: %T`, response)
+	}
 }
 
 func encodeTeamsCheckPermissionsForProjectInOrgResponse(response TeamsCheckPermissionsForProjectInOrgRes, w http.ResponseWriter, span trace.Span) error {
@@ -12767,6 +18992,49 @@ func encodeTeamsCheckPermissionsForRepoLegacyResponse(response TeamsCheckPermiss
 	}
 }
 
+func encodeTeamsCreateResponse(response TeamsCreateRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *TeamFull:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(201)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *BasicError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(403)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/orgs/{org}/teams: unexpected response type: %T`, response)
+	}
+}
+
 func encodeTeamsCreateDiscussionCommentInOrgResponse(response TeamDiscussionComment, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
@@ -12837,6 +19105,49 @@ func encodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgResponse(response GroupMap
 	return nil
 }
 
+func encodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyResponse(response TeamsCreateOrUpdateIdpGroupConnectionsLegacyRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *GroupMapping:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *BasicError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(403)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/teams/{team_id}/team-sync/group-mappings: unexpected response type: %T`, response)
+	}
+}
+
 func encodeTeamsDeleteDiscussionCommentInOrgResponse(response TeamsDeleteDiscussionCommentInOrgNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
@@ -12860,6 +19171,40 @@ func encodeTeamsDeleteDiscussionLegacyResponse(response TeamsDeleteDiscussionLeg
 func encodeTeamsDeleteInOrgResponse(response TeamsDeleteInOrgNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
+}
+
+func encodeTeamsDeleteLegacyResponse(response TeamsDeleteLegacyRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *TeamsDeleteLegacyNoContent:
+		w.WriteHeader(204)
+		return nil
+	case *BasicError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(404)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/teams/{team_id}: unexpected response type: %T`, response)
+	}
 }
 
 func encodeTeamsGetByNameResponse(response TeamsGetByNameRes, w http.ResponseWriter, span trace.Span) error {
@@ -13093,6 +19438,61 @@ func encodeTeamsListChildInOrgResponse(response []Team, w http.ResponseWriter, s
 	}
 
 	return nil
+}
+
+func encodeTeamsListChildLegacyResponse(response TeamsListChildLegacyRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *TeamsListChildLegacyOKApplicationJSON:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *TeamsListChildLegacyApplicationJSONForbidden:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(403)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *TeamsListChildLegacyApplicationJSONNotFound:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(404)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/teams/{team_id}/teams: unexpected response type: %T`, response)
+	}
 }
 
 func encodeTeamsListDiscussionCommentsInOrgResponse(response []TeamDiscussionComment, w http.ResponseWriter, span trace.Span) error {
@@ -13511,6 +19911,52 @@ func encodeTeamsRemoveProjectInOrgResponse(response TeamsRemoveProjectInOrgNoCon
 	return nil
 }
 
+func encodeTeamsRemoveProjectLegacyResponse(response TeamsRemoveProjectLegacyRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *TeamsRemoveProjectLegacyNoContent:
+		w.WriteHeader(204)
+		return nil
+	case *BasicError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(404)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *PreviewHeaderMissing:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(415)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/teams/{team_id}/projects/{project_id}: unexpected response type: %T`, response)
+	}
+}
+
 func encodeTeamsRemoveRepoInOrgResponse(response TeamsRemoveRepoInOrgNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	return nil
@@ -13589,6 +20035,204 @@ func encodeTeamsUpdateInOrgResponse(response TeamFull, w http.ResponseWriter, sp
 	}
 
 	return nil
+}
+
+func encodeTeamsUpdateLegacyResponse(response TeamsUpdateLegacyRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *TeamsUpdateLegacyApplicationJSONOK:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *TeamsUpdateLegacyApplicationJSONCreated:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(201)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *TeamsUpdateLegacyApplicationJSONForbidden:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(403)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *TeamsUpdateLegacyApplicationJSONNotFound:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(404)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/teams/{team_id}: unexpected response type: %T`, response)
+	}
+}
+
+func encodeUsersAddEmailForAuthenticatedResponse(response UsersAddEmailForAuthenticatedRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *UsersAddEmailForAuthenticatedCreatedApplicationJSON:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(201)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *NotModified:
+		w.WriteHeader(304)
+		return nil
+	case *UsersAddEmailForAuthenticatedApplicationJSONUnauthorized:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(401)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *UsersAddEmailForAuthenticatedApplicationJSONForbidden:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(403)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *UsersAddEmailForAuthenticatedApplicationJSONNotFound:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(404)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/user/emails: unexpected response type: %T`, response)
+	}
+}
+
+func encodeUsersBlockResponse(response UsersBlockRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *UsersBlockNoContent:
+		w.WriteHeader(204)
+		return nil
+	case *NotModified:
+		w.WriteHeader(304)
+		return nil
+	case *UsersBlockApplicationJSONUnauthorized:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(401)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *UsersBlockApplicationJSONForbidden:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(403)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *UsersBlockApplicationJSONNotFound:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(404)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/user/blocks/{username}: unexpected response type: %T`, response)
+	}
 }
 
 func encodeUsersCheckBlockedResponse(response UsersCheckBlockedRes, w http.ResponseWriter, span trace.Span) error {
@@ -13699,6 +20343,268 @@ func encodeUsersCheckPersonIsFollowedByAuthenticatedResponse(response UsersCheck
 		return nil
 	default:
 		return errors.Errorf(`/user/following/{username}: unexpected response type: %T`, response)
+	}
+}
+
+func encodeUsersCreateGpgKeyForAuthenticatedResponse(response UsersCreateGpgKeyForAuthenticatedRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *GpgKey:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(201)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *NotModified:
+		w.WriteHeader(304)
+		return nil
+	case *UsersCreateGpgKeyForAuthenticatedApplicationJSONUnauthorized:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(401)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *UsersCreateGpgKeyForAuthenticatedApplicationJSONForbidden:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(403)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *UsersCreateGpgKeyForAuthenticatedApplicationJSONNotFound:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(404)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/user/gpg_keys: unexpected response type: %T`, response)
+	}
+}
+
+func encodeUsersCreatePublicSSHKeyForAuthenticatedResponse(response UsersCreatePublicSSHKeyForAuthenticatedRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *Key:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(201)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *NotModified:
+		w.WriteHeader(304)
+		return nil
+	case *UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(401)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONForbidden:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(403)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONNotFound:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(404)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/user/keys: unexpected response type: %T`, response)
+	}
+}
+
+func encodeUsersDeleteEmailForAuthenticatedResponse(response UsersDeleteEmailForAuthenticatedRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *UsersDeleteEmailForAuthenticatedNoContent:
+		w.WriteHeader(204)
+		return nil
+	case *NotModified:
+		w.WriteHeader(304)
+		return nil
+	case *UsersDeleteEmailForAuthenticatedApplicationJSONUnauthorized:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(401)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *UsersDeleteEmailForAuthenticatedApplicationJSONForbidden:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(403)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *UsersDeleteEmailForAuthenticatedApplicationJSONNotFound:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(404)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/user/emails: unexpected response type: %T`, response)
+	}
+}
+
+func encodeUsersDeleteGpgKeyForAuthenticatedResponse(response UsersDeleteGpgKeyForAuthenticatedRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *UsersDeleteGpgKeyForAuthenticatedNoContent:
+		w.WriteHeader(204)
+		return nil
+	case *NotModified:
+		w.WriteHeader(304)
+		return nil
+	case *UsersDeleteGpgKeyForAuthenticatedApplicationJSONUnauthorized:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(401)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *UsersDeleteGpgKeyForAuthenticatedApplicationJSONForbidden:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(403)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *UsersDeleteGpgKeyForAuthenticatedApplicationJSONNotFound:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(404)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/user/gpg_keys/{gpg_key_id}: unexpected response type: %T`, response)
 	}
 }
 
@@ -13886,6 +20792,49 @@ func encodeUsersGetByUsernameResponse(response UsersGetByUsernameRes, w http.Res
 		return nil
 	default:
 		return errors.Errorf(`/users/{username}: unexpected response type: %T`, response)
+	}
+}
+
+func encodeUsersGetContextForUserResponse(response UsersGetContextForUserRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *Hovercard:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *BasicError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(404)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/users/{username}/hovercard: unexpected response type: %T`, response)
 	}
 }
 
@@ -14493,6 +21442,76 @@ func encodeUsersListPublicSSHKeysForAuthenticatedResponse(response UsersListPubl
 	}
 }
 
+func encodeUsersSetPrimaryEmailVisibilityForAuthenticatedResponse(response UsersSetPrimaryEmailVisibilityForAuthenticatedRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *UsersSetPrimaryEmailVisibilityForAuthenticatedOKApplicationJSON:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *NotModified:
+		w.WriteHeader(304)
+		return nil
+	case *UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONUnauthorized:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(401)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONForbidden:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(403)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONNotFound:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(404)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/user/email/visibility: unexpected response type: %T`, response)
+	}
+}
+
 func encodeUsersUnblockResponse(response UsersUnblockRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *UsersUnblockNoContent:
@@ -14588,5 +21607,75 @@ func encodeUsersUnfollowResponse(response UsersUnfollowRes, w http.ResponseWrite
 		return nil
 	default:
 		return errors.Errorf(`/user/following/{username}: unexpected response type: %T`, response)
+	}
+}
+
+func encodeUsersUpdateAuthenticatedResponse(response UsersUpdateAuthenticatedRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *PrivateUser:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *NotModified:
+		w.WriteHeader(304)
+		return nil
+	case *UsersUpdateAuthenticatedApplicationJSONUnauthorized:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(401)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *UsersUpdateAuthenticatedApplicationJSONForbidden:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(403)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *UsersUpdateAuthenticatedApplicationJSONNotFound:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(404)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *ValidationError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf(`/user: unexpected response type: %T`, response)
 	}
 }

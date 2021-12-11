@@ -2029,6 +2029,41 @@ func (s *Server) handleActionsRetryWorkflowRequest(args map[string]string, w htt
 	}
 }
 
+// HandleActionsReviewPendingDeploymentsForRunRequest handles actions/review-pending-deployments-for-run operation.
+//
+// POST /repos/{owner}/{repo}/actions/runs/{run_id}/pending_deployments
+func (s *Server) handleActionsReviewPendingDeploymentsForRunRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsReviewPendingDeploymentsForRun`,
+		trace.WithAttributes(otelogen.OperationID(`actions/review-pending-deployments-for-run`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeActionsReviewPendingDeploymentsForRunParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeActionsReviewPendingDeploymentsForRunRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.ActionsReviewPendingDeploymentsForRun(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeActionsReviewPendingDeploymentsForRunResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
 // HandleActionsSetAllowedActionsOrganizationRequest handles actions/set-allowed-actions-organization operation.
 //
 // PUT /orgs/{org}/actions/permissions/selected-actions
@@ -2565,6 +2600,35 @@ func (s *Server) handleActivityListEventsForAuthenticatedUserRequest(args map[st
 	}
 
 	if err := encodeActivityListEventsForAuthenticatedUserResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleActivityListNotificationsForAuthenticatedUserRequest handles activity/list-notifications-for-authenticated-user operation.
+//
+// GET /notifications
+func (s *Server) handleActivityListNotificationsForAuthenticatedUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityListNotificationsForAuthenticatedUser`,
+		trace.WithAttributes(otelogen.OperationID(`activity/list-notifications-for-authenticated-user`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeActivityListNotificationsForAuthenticatedUserParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.ActivityListNotificationsForAuthenticatedUser(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeActivityListNotificationsForAuthenticatedUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		return
 	}
@@ -3197,6 +3261,146 @@ func (s *Server) handleAppsAddRepoToInstallationRequest(args map[string]string, 
 	}
 }
 
+// HandleAppsCheckTokenRequest handles apps/check-token operation.
+//
+// POST /applications/{client_id}/token
+func (s *Server) handleAppsCheckTokenRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsCheckToken`,
+		trace.WithAttributes(otelogen.OperationID(`apps/check-token`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeAppsCheckTokenParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeAppsCheckTokenRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.AppsCheckToken(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeAppsCheckTokenResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleAppsCreateContentAttachmentRequest handles apps/create-content-attachment operation.
+//
+// POST /repos/{owner}/{repo}/content_references/{content_reference_id}/attachments
+func (s *Server) handleAppsCreateContentAttachmentRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsCreateContentAttachment`,
+		trace.WithAttributes(otelogen.OperationID(`apps/create-content-attachment`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeAppsCreateContentAttachmentParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeAppsCreateContentAttachmentRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.AppsCreateContentAttachment(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeAppsCreateContentAttachmentResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleAppsCreateInstallationAccessTokenRequest handles apps/create-installation-access-token operation.
+//
+// POST /app/installations/{installation_id}/access_tokens
+func (s *Server) handleAppsCreateInstallationAccessTokenRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsCreateInstallationAccessToken`,
+		trace.WithAttributes(otelogen.OperationID(`apps/create-installation-access-token`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeAppsCreateInstallationAccessTokenParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeAppsCreateInstallationAccessTokenRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.AppsCreateInstallationAccessToken(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeAppsCreateInstallationAccessTokenResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleAppsDeleteAuthorizationRequest handles apps/delete-authorization operation.
+//
+// DELETE /applications/{client_id}/grant
+func (s *Server) handleAppsDeleteAuthorizationRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsDeleteAuthorization`,
+		trace.WithAttributes(otelogen.OperationID(`apps/delete-authorization`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeAppsDeleteAuthorizationParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeAppsDeleteAuthorizationRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.AppsDeleteAuthorization(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeAppsDeleteAuthorizationResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
 // HandleAppsDeleteInstallationRequest handles apps/delete-installation operation.
 //
 // DELETE /app/installations/{installation_id}
@@ -3221,6 +3425,41 @@ func (s *Server) handleAppsDeleteInstallationRequest(args map[string]string, w h
 	}
 
 	if err := encodeAppsDeleteInstallationResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleAppsDeleteTokenRequest handles apps/delete-token operation.
+//
+// DELETE /applications/{client_id}/token
+func (s *Server) handleAppsDeleteTokenRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsDeleteToken`,
+		trace.WithAttributes(otelogen.OperationID(`apps/delete-token`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeAppsDeleteTokenParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeAppsDeleteTokenRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.AppsDeleteToken(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeAppsDeleteTokenResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		return
 	}
@@ -3354,6 +3593,64 @@ func (s *Server) handleAppsGetWebhookConfigForAppRequest(args map[string]string,
 	}
 
 	if err := encodeAppsGetWebhookConfigForAppResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleAppsGetWebhookDeliveryRequest handles apps/get-webhook-delivery operation.
+//
+// GET /app/hook/deliveries/{delivery_id}
+func (s *Server) handleAppsGetWebhookDeliveryRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsGetWebhookDelivery`,
+		trace.WithAttributes(otelogen.OperationID(`apps/get-webhook-delivery`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeAppsGetWebhookDeliveryParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.AppsGetWebhookDelivery(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeAppsGetWebhookDeliveryResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleAppsListAccountsForPlanRequest handles apps/list-accounts-for-plan operation.
+//
+// GET /marketplace_listing/plans/{plan_id}/accounts
+func (s *Server) handleAppsListAccountsForPlanRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsListAccountsForPlan`,
+		trace.WithAttributes(otelogen.OperationID(`apps/list-accounts-for-plan`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeAppsListAccountsForPlanParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.AppsListAccountsForPlan(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeAppsListAccountsForPlanResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		return
 	}
@@ -3562,6 +3859,64 @@ func (s *Server) handleAppsListSubscriptionsForAuthenticatedUserStubbedRequest(a
 	}
 }
 
+// HandleAppsListWebhookDeliveriesRequest handles apps/list-webhook-deliveries operation.
+//
+// GET /app/hook/deliveries
+func (s *Server) handleAppsListWebhookDeliveriesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsListWebhookDeliveries`,
+		trace.WithAttributes(otelogen.OperationID(`apps/list-webhook-deliveries`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeAppsListWebhookDeliveriesParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.AppsListWebhookDeliveries(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeAppsListWebhookDeliveriesResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleAppsRedeliverWebhookDeliveryRequest handles apps/redeliver-webhook-delivery operation.
+//
+// POST /app/hook/deliveries/{delivery_id}/attempts
+func (s *Server) handleAppsRedeliverWebhookDeliveryRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsRedeliverWebhookDelivery`,
+		trace.WithAttributes(otelogen.OperationID(`apps/redeliver-webhook-delivery`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeAppsRedeliverWebhookDeliveryParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.AppsRedeliverWebhookDelivery(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeAppsRedeliverWebhookDeliveryResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
 // HandleAppsRemoveRepoFromInstallationRequest handles apps/remove-repo-from-installation operation.
 //
 // DELETE /user/installations/{installation_id}/repositories/{repository_id}
@@ -3591,6 +3946,41 @@ func (s *Server) handleAppsRemoveRepoFromInstallationRequest(args map[string]str
 	}
 }
 
+// HandleAppsResetTokenRequest handles apps/reset-token operation.
+//
+// PATCH /applications/{client_id}/token
+func (s *Server) handleAppsResetTokenRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsResetToken`,
+		trace.WithAttributes(otelogen.OperationID(`apps/reset-token`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeAppsResetTokenParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeAppsResetTokenRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.AppsResetToken(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeAppsResetTokenResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
 // HandleAppsRevokeInstallationAccessTokenRequest handles apps/revoke-installation-access-token operation.
 //
 // DELETE /installation/token
@@ -3609,6 +3999,41 @@ func (s *Server) handleAppsRevokeInstallationAccessTokenRequest(args map[string]
 	}
 
 	if err := encodeAppsRevokeInstallationAccessTokenResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleAppsScopeTokenRequest handles apps/scope-token operation.
+//
+// POST /applications/{client_id}/token/scoped
+func (s *Server) handleAppsScopeTokenRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsScopeToken`,
+		trace.WithAttributes(otelogen.OperationID(`apps/scope-token`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeAppsScopeTokenParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeAppsScopeTokenRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.AppsScopeToken(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeAppsScopeTokenResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		return
 	}
@@ -5716,6 +6141,41 @@ func (s *Server) handleEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRe
 	}
 }
 
+// HandleEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest handles enterprise-admin/update-attribute-for-enterprise-group operation.
+//
+// PATCH /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
+func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminUpdateAttributeForEnterpriseGroup`,
+		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/update-attribute-for-enterprise-group`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeEnterpriseAdminUpdateAttributeForEnterpriseGroupParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.EnterpriseAdminUpdateAttributeForEnterpriseGroup(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeEnterpriseAdminUpdateAttributeForEnterpriseGroupResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
 // HandleEnterpriseAdminUpdateAttributeForEnterpriseUserRequest handles enterprise-admin/update-attribute-for-enterprise-user operation.
 //
 // PATCH /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
@@ -5815,6 +6275,35 @@ func (s *Server) handleGistsCheckIsStarredRequest(args map[string]string, w http
 	}
 }
 
+// HandleGistsCreateRequest handles gists/create operation.
+//
+// POST /gists
+func (s *Server) handleGistsCreateRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `GistsCreate`,
+		trace.WithAttributes(otelogen.OperationID(`gists/create`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeGistsCreateRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.GistsCreate(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeGistsCreateResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
 // HandleGistsCreateCommentRequest handles gists/create-comment operation.
 //
 // POST /gists/{gist_id}/comments
@@ -5908,6 +6397,35 @@ func (s *Server) handleGistsDeleteCommentRequest(args map[string]string, w http.
 	}
 }
 
+// HandleGistsForkRequest handles gists/fork operation.
+//
+// POST /gists/{gist_id}/forks
+func (s *Server) handleGistsForkRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `GistsFork`,
+		trace.WithAttributes(otelogen.OperationID(`gists/fork`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeGistsForkParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.GistsFork(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeGistsForkResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
 // HandleGistsGetRequest handles gists/get operation.
 //
 // GET /gists/{gist_id}
@@ -5961,6 +6479,35 @@ func (s *Server) handleGistsGetCommentRequest(args map[string]string, w http.Res
 	}
 
 	if err := encodeGistsGetCommentResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleGistsGetRevisionRequest handles gists/get-revision operation.
+//
+// GET /gists/{gist_id}/{sha}
+func (s *Server) handleGistsGetRevisionRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `GistsGetRevision`,
+		trace.WithAttributes(otelogen.OperationID(`gists/get-revision`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeGistsGetRevisionParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.GistsGetRevision(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeGistsGetRevisionResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		return
 	}
@@ -6053,6 +6600,35 @@ func (s *Server) handleGistsListCommitsRequest(args map[string]string, w http.Re
 	}
 }
 
+// HandleGistsListForUserRequest handles gists/list-for-user operation.
+//
+// GET /users/{username}/gists
+func (s *Server) handleGistsListForUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `GistsListForUser`,
+		trace.WithAttributes(otelogen.OperationID(`gists/list-for-user`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeGistsListForUserParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.GistsListForUser(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeGistsListForUserResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
 // HandleGistsListForksRequest handles gists/list-forks operation.
 //
 // GET /gists/{gist_id}/forks
@@ -6077,6 +6653,35 @@ func (s *Server) handleGistsListForksRequest(args map[string]string, w http.Resp
 	}
 
 	if err := encodeGistsListForksResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleGistsListPublicRequest handles gists/list-public operation.
+//
+// GET /gists/public
+func (s *Server) handleGistsListPublicRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `GistsListPublic`,
+		trace.WithAttributes(otelogen.OperationID(`gists/list-public`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeGistsListPublicParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.GistsListPublic(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeGistsListPublicResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		return
 	}
@@ -6204,6 +6809,239 @@ func (s *Server) handleGistsUpdateCommentRequest(args map[string]string, w http.
 	}
 }
 
+// HandleGitCreateBlobRequest handles git/create-blob operation.
+//
+// POST /repos/{owner}/{repo}/git/blobs
+func (s *Server) handleGitCreateBlobRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `GitCreateBlob`,
+		trace.WithAttributes(otelogen.OperationID(`git/create-blob`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeGitCreateBlobParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeGitCreateBlobRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.GitCreateBlob(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeGitCreateBlobResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleGitCreateCommitRequest handles git/create-commit operation.
+//
+// POST /repos/{owner}/{repo}/git/commits
+func (s *Server) handleGitCreateCommitRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `GitCreateCommit`,
+		trace.WithAttributes(otelogen.OperationID(`git/create-commit`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeGitCreateCommitParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeGitCreateCommitRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.GitCreateCommit(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeGitCreateCommitResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleGitCreateRefRequest handles git/create-ref operation.
+//
+// POST /repos/{owner}/{repo}/git/refs
+func (s *Server) handleGitCreateRefRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `GitCreateRef`,
+		trace.WithAttributes(otelogen.OperationID(`git/create-ref`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeGitCreateRefParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeGitCreateRefRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.GitCreateRef(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeGitCreateRefResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleGitCreateTagRequest handles git/create-tag operation.
+//
+// POST /repos/{owner}/{repo}/git/tags
+func (s *Server) handleGitCreateTagRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `GitCreateTag`,
+		trace.WithAttributes(otelogen.OperationID(`git/create-tag`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeGitCreateTagParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeGitCreateTagRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.GitCreateTag(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeGitCreateTagResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleGitCreateTreeRequest handles git/create-tree operation.
+//
+// POST /repos/{owner}/{repo}/git/trees
+func (s *Server) handleGitCreateTreeRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `GitCreateTree`,
+		trace.WithAttributes(otelogen.OperationID(`git/create-tree`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeGitCreateTreeParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeGitCreateTreeRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.GitCreateTree(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeGitCreateTreeResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleGitDeleteRefRequest handles git/delete-ref operation.
+//
+// DELETE /repos/{owner}/{repo}/git/refs/{ref}
+func (s *Server) handleGitDeleteRefRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `GitDeleteRef`,
+		trace.WithAttributes(otelogen.OperationID(`git/delete-ref`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeGitDeleteRefParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.GitDeleteRef(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeGitDeleteRefResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleGitGetBlobRequest handles git/get-blob operation.
+//
+// GET /repos/{owner}/{repo}/git/blobs/{file_sha}
+func (s *Server) handleGitGetBlobRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `GitGetBlob`,
+		trace.WithAttributes(otelogen.OperationID(`git/get-blob`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeGitGetBlobParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.GitGetBlob(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeGitGetBlobResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
 // HandleGitGetCommitRequest handles git/get-commit operation.
 //
 // GET /repos/{owner}/{repo}/git/commits/{commit_sha}
@@ -6291,6 +7129,35 @@ func (s *Server) handleGitGetTagRequest(args map[string]string, w http.ResponseW
 	}
 }
 
+// HandleGitGetTreeRequest handles git/get-tree operation.
+//
+// GET /repos/{owner}/{repo}/git/trees/{tree_sha}
+func (s *Server) handleGitGetTreeRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `GitGetTree`,
+		trace.WithAttributes(otelogen.OperationID(`git/get-tree`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeGitGetTreeParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.GitGetTree(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeGitGetTreeResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
 // HandleGitListMatchingRefsRequest handles git/list-matching-refs operation.
 //
 // GET /repos/{owner}/{repo}/git/matching-refs/{ref}
@@ -6315,6 +7182,41 @@ func (s *Server) handleGitListMatchingRefsRequest(args map[string]string, w http
 	}
 
 	if err := encodeGitListMatchingRefsResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleGitUpdateRefRequest handles git/update-ref operation.
+//
+// PATCH /repos/{owner}/{repo}/git/refs/{ref}
+func (s *Server) handleGitUpdateRefRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `GitUpdateRef`,
+		trace.WithAttributes(otelogen.OperationID(`git/update-ref`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeGitUpdateRefParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeGitUpdateRefRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.GitUpdateRef(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeGitUpdateRefResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		return
 	}
@@ -6453,6 +7355,70 @@ func (s *Server) handleInteractionsRemoveRestrictionsForRepoRequest(args map[str
 	}
 }
 
+// HandleInteractionsSetRestrictionsForAuthenticatedUserRequest handles interactions/set-restrictions-for-authenticated-user operation.
+//
+// PUT /user/interaction-limits
+func (s *Server) handleInteractionsSetRestrictionsForAuthenticatedUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `InteractionsSetRestrictionsForAuthenticatedUser`,
+		trace.WithAttributes(otelogen.OperationID(`interactions/set-restrictions-for-authenticated-user`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeInteractionsSetRestrictionsForAuthenticatedUserRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.InteractionsSetRestrictionsForAuthenticatedUser(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeInteractionsSetRestrictionsForAuthenticatedUserResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleInteractionsSetRestrictionsForOrgRequest handles interactions/set-restrictions-for-org operation.
+//
+// PUT /orgs/{org}/interaction-limits
+func (s *Server) handleInteractionsSetRestrictionsForOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `InteractionsSetRestrictionsForOrg`,
+		trace.WithAttributes(otelogen.OperationID(`interactions/set-restrictions-for-org`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeInteractionsSetRestrictionsForOrgParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeInteractionsSetRestrictionsForOrgRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.InteractionsSetRestrictionsForOrg(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeInteractionsSetRestrictionsForOrgResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
 // HandleInteractionsSetRestrictionsForRepoRequest handles interactions/set-restrictions-for-repo operation.
 //
 // PUT /repos/{owner}/{repo}/interaction-limits
@@ -6552,6 +7518,146 @@ func (s *Server) handleIssuesCheckUserCanBeAssignedRequest(args map[string]strin
 	}
 }
 
+// HandleIssuesCreateRequest handles issues/create operation.
+//
+// POST /repos/{owner}/{repo}/issues
+func (s *Server) handleIssuesCreateRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesCreate`,
+		trace.WithAttributes(otelogen.OperationID(`issues/create`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeIssuesCreateParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeIssuesCreateRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.IssuesCreate(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeIssuesCreateResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleIssuesCreateCommentRequest handles issues/create-comment operation.
+//
+// POST /repos/{owner}/{repo}/issues/{issue_number}/comments
+func (s *Server) handleIssuesCreateCommentRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesCreateComment`,
+		trace.WithAttributes(otelogen.OperationID(`issues/create-comment`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeIssuesCreateCommentParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeIssuesCreateCommentRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.IssuesCreateComment(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeIssuesCreateCommentResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleIssuesCreateLabelRequest handles issues/create-label operation.
+//
+// POST /repos/{owner}/{repo}/labels
+func (s *Server) handleIssuesCreateLabelRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesCreateLabel`,
+		trace.WithAttributes(otelogen.OperationID(`issues/create-label`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeIssuesCreateLabelParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeIssuesCreateLabelRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.IssuesCreateLabel(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeIssuesCreateLabelResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleIssuesCreateMilestoneRequest handles issues/create-milestone operation.
+//
+// POST /repos/{owner}/{repo}/milestones
+func (s *Server) handleIssuesCreateMilestoneRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesCreateMilestone`,
+		trace.WithAttributes(otelogen.OperationID(`issues/create-milestone`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeIssuesCreateMilestoneParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeIssuesCreateMilestoneRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.IssuesCreateMilestone(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeIssuesCreateMilestoneResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
 // HandleIssuesDeleteCommentRequest handles issues/delete-comment operation.
 //
 // DELETE /repos/{owner}/{repo}/issues/comments/{comment_id}
@@ -6634,6 +7740,35 @@ func (s *Server) handleIssuesDeleteMilestoneRequest(args map[string]string, w ht
 	}
 
 	if err := encodeIssuesDeleteMilestoneResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleIssuesGetRequest handles issues/get operation.
+//
+// GET /repos/{owner}/{repo}/issues/{issue_number}
+func (s *Server) handleIssuesGetRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesGet`,
+		trace.WithAttributes(otelogen.OperationID(`issues/get`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeIssuesGetParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.IssuesGet(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeIssuesGetResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		return
 	}
@@ -6755,6 +7890,35 @@ func (s *Server) handleIssuesGetMilestoneRequest(args map[string]string, w http.
 	}
 }
 
+// HandleIssuesListRequest handles issues/list operation.
+//
+// GET /issues
+func (s *Server) handleIssuesListRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesList`,
+		trace.WithAttributes(otelogen.OperationID(`issues/list`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeIssuesListParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.IssuesList(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeIssuesListResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
 // HandleIssuesListAssigneesRequest handles issues/list-assignees operation.
 //
 // GET /repos/{owner}/{repo}/assignees
@@ -6808,6 +7972,151 @@ func (s *Server) handleIssuesListCommentsRequest(args map[string]string, w http.
 	}
 
 	if err := encodeIssuesListCommentsResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleIssuesListCommentsForRepoRequest handles issues/list-comments-for-repo operation.
+//
+// GET /repos/{owner}/{repo}/issues/comments
+func (s *Server) handleIssuesListCommentsForRepoRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesListCommentsForRepo`,
+		trace.WithAttributes(otelogen.OperationID(`issues/list-comments-for-repo`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeIssuesListCommentsForRepoParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.IssuesListCommentsForRepo(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeIssuesListCommentsForRepoResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleIssuesListEventsForRepoRequest handles issues/list-events-for-repo operation.
+//
+// GET /repos/{owner}/{repo}/issues/events
+func (s *Server) handleIssuesListEventsForRepoRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesListEventsForRepo`,
+		trace.WithAttributes(otelogen.OperationID(`issues/list-events-for-repo`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeIssuesListEventsForRepoParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.IssuesListEventsForRepo(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeIssuesListEventsForRepoResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleIssuesListForAuthenticatedUserRequest handles issues/list-for-authenticated-user operation.
+//
+// GET /user/issues
+func (s *Server) handleIssuesListForAuthenticatedUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesListForAuthenticatedUser`,
+		trace.WithAttributes(otelogen.OperationID(`issues/list-for-authenticated-user`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeIssuesListForAuthenticatedUserParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.IssuesListForAuthenticatedUser(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeIssuesListForAuthenticatedUserResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleIssuesListForOrgRequest handles issues/list-for-org operation.
+//
+// GET /orgs/{org}/issues
+func (s *Server) handleIssuesListForOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesListForOrg`,
+		trace.WithAttributes(otelogen.OperationID(`issues/list-for-org`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeIssuesListForOrgParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.IssuesListForOrg(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeIssuesListForOrgResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleIssuesListForRepoRequest handles issues/list-for-repo operation.
+//
+// GET /repos/{owner}/{repo}/issues
+func (s *Server) handleIssuesListForRepoRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesListForRepo`,
+		trace.WithAttributes(otelogen.OperationID(`issues/list-for-repo`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeIssuesListForRepoParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.IssuesListForRepo(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeIssuesListForRepoResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		return
 	}
@@ -6924,6 +8233,41 @@ func (s *Server) handleIssuesListMilestonesRequest(args map[string]string, w htt
 	}
 
 	if err := encodeIssuesListMilestonesResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleIssuesLockRequest handles issues/lock operation.
+//
+// PUT /repos/{owner}/{repo}/issues/{issue_number}/lock
+func (s *Server) handleIssuesLockRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesLock`,
+		trace.WithAttributes(otelogen.OperationID(`issues/lock`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeIssuesLockParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeIssuesLockRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.IssuesLock(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeIssuesLockResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		return
 	}
@@ -7046,6 +8390,76 @@ func (s *Server) handleIssuesUnlockRequest(args map[string]string, w http.Respon
 	}
 
 	if err := encodeIssuesUnlockResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleIssuesUpdateRequest handles issues/update operation.
+//
+// PATCH /repos/{owner}/{repo}/issues/{issue_number}
+func (s *Server) handleIssuesUpdateRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesUpdate`,
+		trace.WithAttributes(otelogen.OperationID(`issues/update`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeIssuesUpdateParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeIssuesUpdateRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.IssuesUpdate(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeIssuesUpdateResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleIssuesUpdateCommentRequest handles issues/update-comment operation.
+//
+// PATCH /repos/{owner}/{repo}/issues/comments/{comment_id}
+func (s *Server) handleIssuesUpdateCommentRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesUpdateComment`,
+		trace.WithAttributes(otelogen.OperationID(`issues/update-comment`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeIssuesUpdateCommentParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeIssuesUpdateCommentRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.IssuesUpdateComment(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeIssuesUpdateCommentResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		return
 	}
@@ -7660,6 +9074,175 @@ func (s *Server) handleMigrationsListReposForUserRequest(args map[string]string,
 	}
 }
 
+// HandleMigrationsMapCommitAuthorRequest handles migrations/map-commit-author operation.
+//
+// PATCH /repos/{owner}/{repo}/import/authors/{author_id}
+func (s *Server) handleMigrationsMapCommitAuthorRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `MigrationsMapCommitAuthor`,
+		trace.WithAttributes(otelogen.OperationID(`migrations/map-commit-author`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeMigrationsMapCommitAuthorParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeMigrationsMapCommitAuthorRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.MigrationsMapCommitAuthor(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeMigrationsMapCommitAuthorResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleMigrationsSetLfsPreferenceRequest handles migrations/set-lfs-preference operation.
+//
+// PATCH /repos/{owner}/{repo}/import/lfs
+func (s *Server) handleMigrationsSetLfsPreferenceRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `MigrationsSetLfsPreference`,
+		trace.WithAttributes(otelogen.OperationID(`migrations/set-lfs-preference`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeMigrationsSetLfsPreferenceParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeMigrationsSetLfsPreferenceRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.MigrationsSetLfsPreference(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeMigrationsSetLfsPreferenceResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleMigrationsStartForAuthenticatedUserRequest handles migrations/start-for-authenticated-user operation.
+//
+// POST /user/migrations
+func (s *Server) handleMigrationsStartForAuthenticatedUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `MigrationsStartForAuthenticatedUser`,
+		trace.WithAttributes(otelogen.OperationID(`migrations/start-for-authenticated-user`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeMigrationsStartForAuthenticatedUserRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.MigrationsStartForAuthenticatedUser(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeMigrationsStartForAuthenticatedUserResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleMigrationsStartForOrgRequest handles migrations/start-for-org operation.
+//
+// POST /orgs/{org}/migrations
+func (s *Server) handleMigrationsStartForOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `MigrationsStartForOrg`,
+		trace.WithAttributes(otelogen.OperationID(`migrations/start-for-org`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeMigrationsStartForOrgParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeMigrationsStartForOrgRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.MigrationsStartForOrg(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeMigrationsStartForOrgResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleMigrationsStartImportRequest handles migrations/start-import operation.
+//
+// PUT /repos/{owner}/{repo}/import
+func (s *Server) handleMigrationsStartImportRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `MigrationsStartImport`,
+		trace.WithAttributes(otelogen.OperationID(`migrations/start-import`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeMigrationsStartImportParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeMigrationsStartImportRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.MigrationsStartImport(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeMigrationsStartImportResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
 // HandleMigrationsUnlockRepoForAuthenticatedUserRequest handles migrations/unlock-repo-for-authenticated-user operation.
 //
 // DELETE /user/migrations/{migration_id}/repos/{repo_name}/lock
@@ -7748,6 +9331,35 @@ func (s *Server) handleMigrationsUpdateImportRequest(args map[string]string, w h
 	}
 
 	if err := encodeMigrationsUpdateImportResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleOAuthAuthorizationsCreateAuthorizationRequest handles oauth-authorizations/create-authorization operation.
+//
+// POST /authorizations
+func (s *Server) handleOAuthAuthorizationsCreateAuthorizationRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `OAuthAuthorizationsCreateAuthorization`,
+		trace.WithAttributes(otelogen.OperationID(`oauth-authorizations/create-authorization`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeOAuthAuthorizationsCreateAuthorizationRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.OAuthAuthorizationsCreateAuthorization(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeOAuthAuthorizationsCreateAuthorizationResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		return
 	}
@@ -7869,6 +9481,76 @@ func (s *Server) handleOAuthAuthorizationsGetGrantRequest(args map[string]string
 	}
 }
 
+// HandleOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest handles oauth-authorizations/get-or-create-authorization-for-app operation.
+//
+// PUT /authorizations/clients/{client_id}
+func (s *Server) handleOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `OAuthAuthorizationsGetOrCreateAuthorizationForApp`,
+		trace.WithAttributes(otelogen.OperationID(`oauth-authorizations/get-or-create-authorization-for-app`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.OAuthAuthorizationsGetOrCreateAuthorizationForApp(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRequest handles oauth-authorizations/get-or-create-authorization-for-app-and-fingerprint operation.
+//
+// PUT /authorizations/clients/{client_id}/{fingerprint}
+func (s *Server) handleOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint`,
+		trace.WithAttributes(otelogen.OperationID(`oauth-authorizations/get-or-create-authorization-for-app-and-fingerprint`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
 // HandleOAuthAuthorizationsListAuthorizationsRequest handles oauth-authorizations/list-authorizations operation.
 //
 // GET /authorizations
@@ -7922,6 +9604,99 @@ func (s *Server) handleOAuthAuthorizationsListGrantsRequest(args map[string]stri
 	}
 
 	if err := encodeOAuthAuthorizationsListGrantsResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleOAuthAuthorizationsUpdateAuthorizationRequest handles oauth-authorizations/update-authorization operation.
+//
+// PATCH /authorizations/{authorization_id}
+func (s *Server) handleOAuthAuthorizationsUpdateAuthorizationRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `OAuthAuthorizationsUpdateAuthorization`,
+		trace.WithAttributes(otelogen.OperationID(`oauth-authorizations/update-authorization`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeOAuthAuthorizationsUpdateAuthorizationParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeOAuthAuthorizationsUpdateAuthorizationRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.OAuthAuthorizationsUpdateAuthorization(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeOAuthAuthorizationsUpdateAuthorizationResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleOrgsBlockUserRequest handles orgs/block-user operation.
+//
+// PUT /orgs/{org}/blocks/{username}
+func (s *Server) handleOrgsBlockUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsBlockUser`,
+		trace.WithAttributes(otelogen.OperationID(`orgs/block-user`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeOrgsBlockUserParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.OrgsBlockUser(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeOrgsBlockUserResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleOrgsCancelInvitationRequest handles orgs/cancel-invitation operation.
+//
+// DELETE /orgs/{org}/invitations/{invitation_id}
+func (s *Server) handleOrgsCancelInvitationRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsCancelInvitation`,
+		trace.WithAttributes(otelogen.OperationID(`orgs/cancel-invitation`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeOrgsCancelInvitationParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.OrgsCancelInvitation(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeOrgsCancelInvitationResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		return
 	}
@@ -8038,6 +9813,76 @@ func (s *Server) handleOrgsConvertMemberToOutsideCollaboratorRequest(args map[st
 	}
 
 	if err := encodeOrgsConvertMemberToOutsideCollaboratorResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleOrgsCreateInvitationRequest handles orgs/create-invitation operation.
+//
+// POST /orgs/{org}/invitations
+func (s *Server) handleOrgsCreateInvitationRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsCreateInvitation`,
+		trace.WithAttributes(otelogen.OperationID(`orgs/create-invitation`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeOrgsCreateInvitationParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeOrgsCreateInvitationRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.OrgsCreateInvitation(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeOrgsCreateInvitationResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleOrgsCreateWebhookRequest handles orgs/create-webhook operation.
+//
+// POST /orgs/{org}/hooks
+func (s *Server) handleOrgsCreateWebhookRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsCreateWebhook`,
+		trace.WithAttributes(otelogen.OperationID(`orgs/create-webhook`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeOrgsCreateWebhookParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeOrgsCreateWebhookRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.OrgsCreateWebhook(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeOrgsCreateWebhookResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		return
 	}
@@ -8246,6 +10091,35 @@ func (s *Server) handleOrgsGetWebhookConfigForOrgRequest(args map[string]string,
 	}
 }
 
+// HandleOrgsGetWebhookDeliveryRequest handles orgs/get-webhook-delivery operation.
+//
+// GET /orgs/{org}/hooks/{hook_id}/deliveries/{delivery_id}
+func (s *Server) handleOrgsGetWebhookDeliveryRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsGetWebhookDelivery`,
+		trace.WithAttributes(otelogen.OperationID(`orgs/get-webhook-delivery`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeOrgsGetWebhookDeliveryParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.OrgsGetWebhookDelivery(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeOrgsGetWebhookDeliveryResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
 // HandleOrgsListRequest handles orgs/list operation.
 //
 // GET /organizations
@@ -8420,6 +10294,64 @@ func (s *Server) handleOrgsListInvitationTeamsRequest(args map[string]string, w 
 	}
 }
 
+// HandleOrgsListMembersRequest handles orgs/list-members operation.
+//
+// GET /orgs/{org}/members
+func (s *Server) handleOrgsListMembersRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsListMembers`,
+		trace.WithAttributes(otelogen.OperationID(`orgs/list-members`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeOrgsListMembersParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.OrgsListMembers(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeOrgsListMembersResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleOrgsListMembershipsForAuthenticatedUserRequest handles orgs/list-memberships-for-authenticated-user operation.
+//
+// GET /user/memberships/orgs
+func (s *Server) handleOrgsListMembershipsForAuthenticatedUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsListMembershipsForAuthenticatedUser`,
+		trace.WithAttributes(otelogen.OperationID(`orgs/list-memberships-for-authenticated-user`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeOrgsListMembershipsForAuthenticatedUserParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.OrgsListMembershipsForAuthenticatedUser(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeOrgsListMembershipsForAuthenticatedUserResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
 // HandleOrgsListOutsideCollaboratorsRequest handles orgs/list-outside-collaborators operation.
 //
 // GET /orgs/{org}/outside_collaborators
@@ -8536,6 +10468,35 @@ func (s *Server) handleOrgsListSamlSSOAuthorizationsRequest(args map[string]stri
 	}
 }
 
+// HandleOrgsListWebhookDeliveriesRequest handles orgs/list-webhook-deliveries operation.
+//
+// GET /orgs/{org}/hooks/{hook_id}/deliveries
+func (s *Server) handleOrgsListWebhookDeliveriesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsListWebhookDeliveries`,
+		trace.WithAttributes(otelogen.OperationID(`orgs/list-webhook-deliveries`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeOrgsListWebhookDeliveriesParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.OrgsListWebhookDeliveries(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeOrgsListWebhookDeliveriesResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
 // HandleOrgsListWebhooksRequest handles orgs/list-webhooks operation.
 //
 // GET /orgs/{org}/hooks
@@ -8589,6 +10550,35 @@ func (s *Server) handleOrgsPingWebhookRequest(args map[string]string, w http.Res
 	}
 
 	if err := encodeOrgsPingWebhookResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleOrgsRedeliverWebhookDeliveryRequest handles orgs/redeliver-webhook-delivery operation.
+//
+// POST /orgs/{org}/hooks/{hook_id}/deliveries/{delivery_id}/attempts
+func (s *Server) handleOrgsRedeliverWebhookDeliveryRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsRedeliverWebhookDelivery`,
+		trace.WithAttributes(otelogen.OperationID(`orgs/redeliver-webhook-delivery`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeOrgsRedeliverWebhookDeliveryParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.OrgsRedeliverWebhookDelivery(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeOrgsRedeliverWebhookDeliveryResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		return
 	}
@@ -8739,6 +10729,41 @@ func (s *Server) handleOrgsRemoveSamlSSOAuthorizationRequest(args map[string]str
 	}
 }
 
+// HandleOrgsSetMembershipForUserRequest handles orgs/set-membership-for-user operation.
+//
+// PUT /orgs/{org}/memberships/{username}
+func (s *Server) handleOrgsSetMembershipForUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsSetMembershipForUser`,
+		trace.WithAttributes(otelogen.OperationID(`orgs/set-membership-for-user`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeOrgsSetMembershipForUserParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeOrgsSetMembershipForUserRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.OrgsSetMembershipForUser(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeOrgsSetMembershipForUserResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
 // HandleOrgsSetPublicMembershipForAuthenticatedUserRequest handles orgs/set-public-membership-for-authenticated-user operation.
 //
 // PUT /orgs/{org}/public_members/{username}
@@ -8792,6 +10817,76 @@ func (s *Server) handleOrgsUnblockUserRequest(args map[string]string, w http.Res
 	}
 
 	if err := encodeOrgsUnblockUserResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleOrgsUpdateMembershipForAuthenticatedUserRequest handles orgs/update-membership-for-authenticated-user operation.
+//
+// PATCH /user/memberships/orgs/{org}
+func (s *Server) handleOrgsUpdateMembershipForAuthenticatedUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsUpdateMembershipForAuthenticatedUser`,
+		trace.WithAttributes(otelogen.OperationID(`orgs/update-membership-for-authenticated-user`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeOrgsUpdateMembershipForAuthenticatedUserParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeOrgsUpdateMembershipForAuthenticatedUserRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.OrgsUpdateMembershipForAuthenticatedUser(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeOrgsUpdateMembershipForAuthenticatedUserResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleOrgsUpdateWebhookRequest handles orgs/update-webhook operation.
+//
+// PATCH /orgs/{org}/hooks/{hook_id}
+func (s *Server) handleOrgsUpdateWebhookRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsUpdateWebhook`,
+		trace.WithAttributes(otelogen.OperationID(`orgs/update-webhook`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeOrgsUpdateWebhookParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeOrgsUpdateWebhookRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.OrgsUpdateWebhook(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeOrgsUpdateWebhookResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		return
 	}
@@ -9528,6 +11623,41 @@ func (s *Server) handlePackagesRestorePackageVersionForUserRequest(args map[stri
 	}
 }
 
+// HandleProjectsAddCollaboratorRequest handles projects/add-collaborator operation.
+//
+// PUT /projects/{project_id}/collaborators/{username}
+func (s *Server) handleProjectsAddCollaboratorRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `ProjectsAddCollaborator`,
+		trace.WithAttributes(otelogen.OperationID(`projects/add-collaborator`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeProjectsAddCollaboratorParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeProjectsAddCollaboratorRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.ProjectsAddCollaborator(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeProjectsAddCollaboratorResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
 // HandleProjectsCreateColumnRequest handles projects/create-column operation.
 //
 // POST /projects/{project_id}/columns
@@ -9836,6 +11966,35 @@ func (s *Server) handleProjectsGetColumnRequest(args map[string]string, w http.R
 	}
 }
 
+// HandleProjectsGetPermissionForUserRequest handles projects/get-permission-for-user operation.
+//
+// GET /projects/{project_id}/collaborators/{username}/permission
+func (s *Server) handleProjectsGetPermissionForUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `ProjectsGetPermissionForUser`,
+		trace.WithAttributes(otelogen.OperationID(`projects/get-permission-for-user`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeProjectsGetPermissionForUserParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.ProjectsGetPermissionForUser(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeProjectsGetPermissionForUserResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
 // HandleProjectsListCardsRequest handles projects/list-cards operation.
 //
 // GET /projects/columns/{column_id}/cards
@@ -9860,6 +12019,35 @@ func (s *Server) handleProjectsListCardsRequest(args map[string]string, w http.R
 	}
 
 	if err := encodeProjectsListCardsResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleProjectsListCollaboratorsRequest handles projects/list-collaborators operation.
+//
+// GET /projects/{project_id}/collaborators
+func (s *Server) handleProjectsListCollaboratorsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `ProjectsListCollaborators`,
+		trace.WithAttributes(otelogen.OperationID(`projects/list-collaborators`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeProjectsListCollaboratorsParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.ProjectsListCollaborators(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeProjectsListCollaboratorsResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		return
 	}
@@ -9952,6 +12140,70 @@ func (s *Server) handleProjectsListForRepoRequest(args map[string]string, w http
 	}
 }
 
+// HandleProjectsListForUserRequest handles projects/list-for-user operation.
+//
+// GET /users/{username}/projects
+func (s *Server) handleProjectsListForUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `ProjectsListForUser`,
+		trace.WithAttributes(otelogen.OperationID(`projects/list-for-user`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeProjectsListForUserParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.ProjectsListForUser(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeProjectsListForUserResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleProjectsMoveCardRequest handles projects/move-card operation.
+//
+// POST /projects/columns/cards/{card_id}/moves
+func (s *Server) handleProjectsMoveCardRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `ProjectsMoveCard`,
+		trace.WithAttributes(otelogen.OperationID(`projects/move-card`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeProjectsMoveCardParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeProjectsMoveCardRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.ProjectsMoveCard(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeProjectsMoveCardResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
 // HandleProjectsMoveColumnRequest handles projects/move-column operation.
 //
 // POST /projects/columns/{column_id}/moves
@@ -9982,6 +12234,35 @@ func (s *Server) handleProjectsMoveColumnRequest(args map[string]string, w http.
 	}
 
 	if err := encodeProjectsMoveColumnResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleProjectsRemoveCollaboratorRequest handles projects/remove-collaborator operation.
+//
+// DELETE /projects/{project_id}/collaborators/{username}
+func (s *Server) handleProjectsRemoveCollaboratorRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `ProjectsRemoveCollaborator`,
+		trace.WithAttributes(otelogen.OperationID(`projects/remove-collaborator`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeProjectsRemoveCollaboratorParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.ProjectsRemoveCollaborator(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeProjectsRemoveCollaboratorResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		return
 	}
@@ -10121,6 +12402,41 @@ func (s *Server) handlePullsCheckIfMergedRequest(args map[string]string, w http.
 	}
 }
 
+// HandlePullsCreateRequest handles pulls/create operation.
+//
+// POST /repos/{owner}/{repo}/pulls
+func (s *Server) handlePullsCreateRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `PullsCreate`,
+		trace.WithAttributes(otelogen.OperationID(`pulls/create`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodePullsCreateParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodePullsCreateRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.PullsCreate(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodePullsCreateResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
 // HandlePullsCreateReplyForReviewCommentRequest handles pulls/create-reply-for-review-comment operation.
 //
 // POST /repos/{owner}/{repo}/pulls/{pull_number}/comments/{comment_id}/replies
@@ -10186,6 +12502,41 @@ func (s *Server) handlePullsCreateReviewRequest(args map[string]string, w http.R
 	}
 
 	if err := encodePullsCreateReviewResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandlePullsCreateReviewCommentRequest handles pulls/create-review-comment operation.
+//
+// POST /repos/{owner}/{repo}/pulls/{pull_number}/comments
+func (s *Server) handlePullsCreateReviewCommentRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `PullsCreateReviewComment`,
+		trace.WithAttributes(otelogen.OperationID(`pulls/create-review-comment`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodePullsCreateReviewCommentParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodePullsCreateReviewCommentRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.PullsCreateReviewComment(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodePullsCreateReviewCommentResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		return
 	}
@@ -10371,6 +12722,35 @@ func (s *Server) handlePullsGetReviewCommentRequest(args map[string]string, w ht
 	}
 }
 
+// HandlePullsListRequest handles pulls/list operation.
+//
+// GET /repos/{owner}/{repo}/pulls
+func (s *Server) handlePullsListRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `PullsList`,
+		trace.WithAttributes(otelogen.OperationID(`pulls/list`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodePullsListParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.PullsList(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodePullsListResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
 // HandlePullsListCommentsForReviewRequest handles pulls/list-comments-for-review operation.
 //
 // GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/comments
@@ -10424,6 +12804,35 @@ func (s *Server) handlePullsListCommitsRequest(args map[string]string, w http.Re
 	}
 
 	if err := encodePullsListCommitsResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandlePullsListFilesRequest handles pulls/list-files operation.
+//
+// GET /repos/{owner}/{repo}/pulls/{pull_number}/files
+func (s *Server) handlePullsListFilesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `PullsListFiles`,
+		trace.WithAttributes(otelogen.OperationID(`pulls/list-files`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodePullsListFilesParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.PullsListFiles(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodePullsListFilesResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		return
 	}
@@ -10545,6 +12954,76 @@ func (s *Server) handlePullsListReviewsRequest(args map[string]string, w http.Re
 	}
 }
 
+// HandlePullsMergeRequest handles pulls/merge operation.
+//
+// PUT /repos/{owner}/{repo}/pulls/{pull_number}/merge
+func (s *Server) handlePullsMergeRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `PullsMerge`,
+		trace.WithAttributes(otelogen.OperationID(`pulls/merge`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodePullsMergeParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodePullsMergeRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.PullsMerge(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodePullsMergeResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandlePullsRemoveRequestedReviewersRequest handles pulls/remove-requested-reviewers operation.
+//
+// DELETE /repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers
+func (s *Server) handlePullsRemoveRequestedReviewersRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `PullsRemoveRequestedReviewers`,
+		trace.WithAttributes(otelogen.OperationID(`pulls/remove-requested-reviewers`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodePullsRemoveRequestedReviewersParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodePullsRemoveRequestedReviewersRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.PullsRemoveRequestedReviewers(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodePullsRemoveRequestedReviewersResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
 // HandlePullsSubmitReviewRequest handles pulls/submit-review operation.
 //
 // POST /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/events
@@ -10575,6 +13054,76 @@ func (s *Server) handlePullsSubmitReviewRequest(args map[string]string, w http.R
 	}
 
 	if err := encodePullsSubmitReviewResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandlePullsUpdateRequest handles pulls/update operation.
+//
+// PATCH /repos/{owner}/{repo}/pulls/{pull_number}
+func (s *Server) handlePullsUpdateRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `PullsUpdate`,
+		trace.WithAttributes(otelogen.OperationID(`pulls/update`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodePullsUpdateParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodePullsUpdateRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.PullsUpdate(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodePullsUpdateResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandlePullsUpdateBranchRequest handles pulls/update-branch operation.
+//
+// PUT /repos/{owner}/{repo}/pulls/{pull_number}/update-branch
+func (s *Server) handlePullsUpdateBranchRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `PullsUpdateBranch`,
+		trace.WithAttributes(otelogen.OperationID(`pulls/update-branch`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodePullsUpdateBranchParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodePullsUpdateBranchRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.PullsUpdateBranch(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodePullsUpdateBranchResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		return
 	}
@@ -10668,6 +13217,181 @@ func (s *Server) handleRateLimitGetRequest(args map[string]string, w http.Respon
 	}
 
 	if err := encodeRateLimitGetResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleReactionsCreateForCommitCommentRequest handles reactions/create-for-commit-comment operation.
+//
+// POST /repos/{owner}/{repo}/comments/{comment_id}/reactions
+func (s *Server) handleReactionsCreateForCommitCommentRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReactionsCreateForCommitComment`,
+		trace.WithAttributes(otelogen.OperationID(`reactions/create-for-commit-comment`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeReactionsCreateForCommitCommentParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeReactionsCreateForCommitCommentRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.ReactionsCreateForCommitComment(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeReactionsCreateForCommitCommentResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleReactionsCreateForIssueRequest handles reactions/create-for-issue operation.
+//
+// POST /repos/{owner}/{repo}/issues/{issue_number}/reactions
+func (s *Server) handleReactionsCreateForIssueRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReactionsCreateForIssue`,
+		trace.WithAttributes(otelogen.OperationID(`reactions/create-for-issue`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeReactionsCreateForIssueParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeReactionsCreateForIssueRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.ReactionsCreateForIssue(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeReactionsCreateForIssueResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleReactionsCreateForIssueCommentRequest handles reactions/create-for-issue-comment operation.
+//
+// POST /repos/{owner}/{repo}/issues/comments/{comment_id}/reactions
+func (s *Server) handleReactionsCreateForIssueCommentRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReactionsCreateForIssueComment`,
+		trace.WithAttributes(otelogen.OperationID(`reactions/create-for-issue-comment`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeReactionsCreateForIssueCommentParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeReactionsCreateForIssueCommentRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.ReactionsCreateForIssueComment(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeReactionsCreateForIssueCommentResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleReactionsCreateForPullRequestReviewCommentRequest handles reactions/create-for-pull-request-review-comment operation.
+//
+// POST /repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions
+func (s *Server) handleReactionsCreateForPullRequestReviewCommentRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReactionsCreateForPullRequestReviewComment`,
+		trace.WithAttributes(otelogen.OperationID(`reactions/create-for-pull-request-review-comment`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeReactionsCreateForPullRequestReviewCommentParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeReactionsCreateForPullRequestReviewCommentRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.ReactionsCreateForPullRequestReviewComment(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeReactionsCreateForPullRequestReviewCommentResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleReactionsCreateForReleaseRequest handles reactions/create-for-release operation.
+//
+// POST /repos/{owner}/{repo}/releases/{release_id}/reactions
+func (s *Server) handleReactionsCreateForReleaseRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReactionsCreateForRelease`,
+		trace.WithAttributes(otelogen.OperationID(`reactions/create-for-release`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeReactionsCreateForReleaseParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeReactionsCreateForReleaseRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.ReactionsCreateForRelease(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeReactionsCreateForReleaseResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		return
 	}
@@ -11277,6 +14001,181 @@ func (s *Server) handleReposAcceptInvitationRequest(args map[string]string, w ht
 	}
 }
 
+// HandleReposAddAppAccessRestrictionsRequest handles repos/add-app-access-restrictions operation.
+//
+// POST /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps
+func (s *Server) handleReposAddAppAccessRestrictionsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposAddAppAccessRestrictions`,
+		trace.WithAttributes(otelogen.OperationID(`repos/add-app-access-restrictions`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeReposAddAppAccessRestrictionsParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeReposAddAppAccessRestrictionsRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.ReposAddAppAccessRestrictions(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeReposAddAppAccessRestrictionsResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleReposAddCollaboratorRequest handles repos/add-collaborator operation.
+//
+// PUT /repos/{owner}/{repo}/collaborators/{username}
+func (s *Server) handleReposAddCollaboratorRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposAddCollaborator`,
+		trace.WithAttributes(otelogen.OperationID(`repos/add-collaborator`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeReposAddCollaboratorParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeReposAddCollaboratorRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.ReposAddCollaborator(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeReposAddCollaboratorResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleReposAddStatusCheckContextsRequest handles repos/add-status-check-contexts operation.
+//
+// POST /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts
+func (s *Server) handleReposAddStatusCheckContextsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposAddStatusCheckContexts`,
+		trace.WithAttributes(otelogen.OperationID(`repos/add-status-check-contexts`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeReposAddStatusCheckContextsParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeReposAddStatusCheckContextsRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.ReposAddStatusCheckContexts(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeReposAddStatusCheckContextsResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleReposAddTeamAccessRestrictionsRequest handles repos/add-team-access-restrictions operation.
+//
+// POST /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams
+func (s *Server) handleReposAddTeamAccessRestrictionsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposAddTeamAccessRestrictions`,
+		trace.WithAttributes(otelogen.OperationID(`repos/add-team-access-restrictions`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeReposAddTeamAccessRestrictionsParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeReposAddTeamAccessRestrictionsRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.ReposAddTeamAccessRestrictions(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeReposAddTeamAccessRestrictionsResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleReposAddUserAccessRestrictionsRequest handles repos/add-user-access-restrictions operation.
+//
+// POST /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users
+func (s *Server) handleReposAddUserAccessRestrictionsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposAddUserAccessRestrictions`,
+		trace.WithAttributes(otelogen.OperationID(`repos/add-user-access-restrictions`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeReposAddUserAccessRestrictionsParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeReposAddUserAccessRestrictionsRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.ReposAddUserAccessRestrictions(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeReposAddUserAccessRestrictionsResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
 // HandleReposCheckCollaboratorRequest handles repos/check-collaborator operation.
 //
 // GET /repos/{owner}/{repo}/collaborators/{username}
@@ -11364,6 +14263,76 @@ func (s *Server) handleReposCompareCommitsRequest(args map[string]string, w http
 	}
 }
 
+// HandleReposCreateAutolinkRequest handles repos/create-autolink operation.
+//
+// POST /repos/{owner}/{repo}/autolinks
+func (s *Server) handleReposCreateAutolinkRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposCreateAutolink`,
+		trace.WithAttributes(otelogen.OperationID(`repos/create-autolink`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeReposCreateAutolinkParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeReposCreateAutolinkRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.ReposCreateAutolink(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeReposCreateAutolinkResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleReposCreateCommitCommentRequest handles repos/create-commit-comment operation.
+//
+// POST /repos/{owner}/{repo}/commits/{commit_sha}/comments
+func (s *Server) handleReposCreateCommitCommentRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposCreateCommitComment`,
+		trace.WithAttributes(otelogen.OperationID(`repos/create-commit-comment`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeReposCreateCommitCommentParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeReposCreateCommitCommentRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.ReposCreateCommitComment(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeReposCreateCommitCommentResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
 // HandleReposCreateCommitSignatureProtectionRequest handles repos/create-commit-signature-protection operation.
 //
 // POST /repos/{owner}/{repo}/branches/{branch}/protection/required_signatures
@@ -11428,6 +14397,350 @@ func (s *Server) handleReposCreateCommitStatusRequest(args map[string]string, w 
 	}
 }
 
+// HandleReposCreateDeployKeyRequest handles repos/create-deploy-key operation.
+//
+// POST /repos/{owner}/{repo}/keys
+func (s *Server) handleReposCreateDeployKeyRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposCreateDeployKey`,
+		trace.WithAttributes(otelogen.OperationID(`repos/create-deploy-key`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeReposCreateDeployKeyParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeReposCreateDeployKeyRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.ReposCreateDeployKey(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeReposCreateDeployKeyResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleReposCreateDeploymentRequest handles repos/create-deployment operation.
+//
+// POST /repos/{owner}/{repo}/deployments
+func (s *Server) handleReposCreateDeploymentRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposCreateDeployment`,
+		trace.WithAttributes(otelogen.OperationID(`repos/create-deployment`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeReposCreateDeploymentParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeReposCreateDeploymentRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.ReposCreateDeployment(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeReposCreateDeploymentResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleReposCreateDeploymentStatusRequest handles repos/create-deployment-status operation.
+//
+// POST /repos/{owner}/{repo}/deployments/{deployment_id}/statuses
+func (s *Server) handleReposCreateDeploymentStatusRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposCreateDeploymentStatus`,
+		trace.WithAttributes(otelogen.OperationID(`repos/create-deployment-status`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeReposCreateDeploymentStatusParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeReposCreateDeploymentStatusRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.ReposCreateDeploymentStatus(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeReposCreateDeploymentStatusResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleReposCreateDispatchEventRequest handles repos/create-dispatch-event operation.
+//
+// POST /repos/{owner}/{repo}/dispatches
+func (s *Server) handleReposCreateDispatchEventRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposCreateDispatchEvent`,
+		trace.WithAttributes(otelogen.OperationID(`repos/create-dispatch-event`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeReposCreateDispatchEventParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeReposCreateDispatchEventRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.ReposCreateDispatchEvent(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeReposCreateDispatchEventResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleReposCreateForAuthenticatedUserRequest handles repos/create-for-authenticated-user operation.
+//
+// POST /user/repos
+func (s *Server) handleReposCreateForAuthenticatedUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposCreateForAuthenticatedUser`,
+		trace.WithAttributes(otelogen.OperationID(`repos/create-for-authenticated-user`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeReposCreateForAuthenticatedUserRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.ReposCreateForAuthenticatedUser(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeReposCreateForAuthenticatedUserResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleReposCreateForkRequest handles repos/create-fork operation.
+//
+// POST /repos/{owner}/{repo}/forks
+func (s *Server) handleReposCreateForkRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposCreateFork`,
+		trace.WithAttributes(otelogen.OperationID(`repos/create-fork`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeReposCreateForkParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeReposCreateForkRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.ReposCreateFork(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeReposCreateForkResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleReposCreateInOrgRequest handles repos/create-in-org operation.
+//
+// POST /orgs/{org}/repos
+func (s *Server) handleReposCreateInOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposCreateInOrg`,
+		trace.WithAttributes(otelogen.OperationID(`repos/create-in-org`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeReposCreateInOrgParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeReposCreateInOrgRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.ReposCreateInOrg(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeReposCreateInOrgResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleReposCreateOrUpdateFileContentsRequest handles repos/create-or-update-file-contents operation.
+//
+// PUT /repos/{owner}/{repo}/contents/{path}
+func (s *Server) handleReposCreateOrUpdateFileContentsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposCreateOrUpdateFileContents`,
+		trace.WithAttributes(otelogen.OperationID(`repos/create-or-update-file-contents`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeReposCreateOrUpdateFileContentsParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeReposCreateOrUpdateFileContentsRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.ReposCreateOrUpdateFileContents(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeReposCreateOrUpdateFileContentsResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleReposCreatePagesSiteRequest handles repos/create-pages-site operation.
+//
+// POST /repos/{owner}/{repo}/pages
+func (s *Server) handleReposCreatePagesSiteRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposCreatePagesSite`,
+		trace.WithAttributes(otelogen.OperationID(`repos/create-pages-site`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeReposCreatePagesSiteParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeReposCreatePagesSiteRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.ReposCreatePagesSite(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeReposCreatePagesSiteResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleReposCreateReleaseRequest handles repos/create-release operation.
+//
+// POST /repos/{owner}/{repo}/releases
+func (s *Server) handleReposCreateReleaseRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposCreateRelease`,
+		trace.WithAttributes(otelogen.OperationID(`repos/create-release`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeReposCreateReleaseParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeReposCreateReleaseRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.ReposCreateRelease(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeReposCreateReleaseResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
 // HandleReposCreateUsingTemplateRequest handles repos/create-using-template operation.
 //
 // POST /repos/{template_owner}/{template_repo}/generate
@@ -11458,6 +14771,41 @@ func (s *Server) handleReposCreateUsingTemplateRequest(args map[string]string, w
 	}
 
 	if err := encodeReposCreateUsingTemplateResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleReposCreateWebhookRequest handles repos/create-webhook operation.
+//
+// POST /repos/{owner}/{repo}/hooks
+func (s *Server) handleReposCreateWebhookRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposCreateWebhook`,
+		trace.WithAttributes(otelogen.OperationID(`repos/create-webhook`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeReposCreateWebhookParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeReposCreateWebhookRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.ReposCreateWebhook(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeReposCreateWebhookResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		return
 	}
@@ -11782,6 +15130,41 @@ func (s *Server) handleReposDeleteDeploymentRequest(args map[string]string, w ht
 	}
 }
 
+// HandleReposDeleteFileRequest handles repos/delete-file operation.
+//
+// DELETE /repos/{owner}/{repo}/contents/{path}
+func (s *Server) handleReposDeleteFileRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposDeleteFile`,
+		trace.WithAttributes(otelogen.OperationID(`repos/delete-file`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeReposDeleteFileParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeReposDeleteFileRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.ReposDeleteFile(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeReposDeleteFileResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
 // HandleReposDeleteInvitationRequest handles repos/delete-invitation operation.
 //
 // DELETE /repos/{owner}/{repo}/invitations/{invitation_id}
@@ -11806,6 +15189,35 @@ func (s *Server) handleReposDeleteInvitationRequest(args map[string]string, w ht
 	}
 
 	if err := encodeReposDeleteInvitationResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleReposDeletePagesSiteRequest handles repos/delete-pages-site operation.
+//
+// DELETE /repos/{owner}/{repo}/pages
+func (s *Server) handleReposDeletePagesSiteRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposDeletePagesSite`,
+		trace.WithAttributes(otelogen.OperationID(`repos/delete-pages-site`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeReposDeletePagesSiteParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.ReposDeletePagesSite(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeReposDeletePagesSiteResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		return
 	}
@@ -12536,6 +15948,35 @@ func (s *Server) handleReposGetCombinedStatusForRefRequest(args map[string]strin
 	}
 }
 
+// HandleReposGetCommitRequest handles repos/get-commit operation.
+//
+// GET /repos/{owner}/{repo}/commits/{ref}
+func (s *Server) handleReposGetCommitRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetCommit`,
+		trace.WithAttributes(otelogen.OperationID(`repos/get-commit`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeReposGetCommitParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.ReposGetCommit(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeReposGetCommitResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
 // HandleReposGetCommitActivityStatsRequest handles repos/get-commit-activity-stats operation.
 //
 // GET /repos/{owner}/{repo}/stats/commit_activity
@@ -12705,6 +16146,35 @@ func (s *Server) handleReposGetDeployKeyRequest(args map[string]string, w http.R
 	}
 
 	if err := encodeReposGetDeployKeyResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleReposGetDeploymentRequest handles repos/get-deployment operation.
+//
+// GET /repos/{owner}/{repo}/deployments/{deployment_id}
+func (s *Server) handleReposGetDeploymentRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetDeployment`,
+		trace.WithAttributes(otelogen.OperationID(`repos/get-deployment`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeReposGetDeploymentParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.ReposGetDeployment(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeReposGetDeploymentResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		return
 	}
@@ -12966,6 +16436,64 @@ func (s *Server) handleReposGetPunchCardStatsRequest(args map[string]string, w h
 	}
 
 	if err := encodeReposGetPunchCardStatsResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleReposGetReadmeRequest handles repos/get-readme operation.
+//
+// GET /repos/{owner}/{repo}/readme
+func (s *Server) handleReposGetReadmeRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetReadme`,
+		trace.WithAttributes(otelogen.OperationID(`repos/get-readme`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeReposGetReadmeParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.ReposGetReadme(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeReposGetReadmeResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleReposGetReadmeInDirectoryRequest handles repos/get-readme-in-directory operation.
+//
+// GET /repos/{owner}/{repo}/readme/{dir}
+func (s *Server) handleReposGetReadmeInDirectoryRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetReadmeInDirectory`,
+		trace.WithAttributes(otelogen.OperationID(`repos/get-readme-in-directory`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeReposGetReadmeInDirectoryParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.ReposGetReadmeInDirectory(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeReposGetReadmeInDirectoryResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		return
 	}
@@ -13290,6 +16818,35 @@ func (s *Server) handleReposGetWebhookConfigForRepoRequest(args map[string]strin
 	}
 }
 
+// HandleReposGetWebhookDeliveryRequest handles repos/get-webhook-delivery operation.
+//
+// GET /repos/{owner}/{repo}/hooks/{hook_id}/deliveries/{delivery_id}
+func (s *Server) handleReposGetWebhookDeliveryRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetWebhookDelivery`,
+		trace.WithAttributes(otelogen.OperationID(`repos/get-webhook-delivery`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeReposGetWebhookDeliveryParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.ReposGetWebhookDelivery(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeReposGetWebhookDeliveryResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
 // HandleReposListAutolinksRequest handles repos/list-autolinks operation.
 //
 // GET /repos/{owner}/{repo}/autolinks
@@ -13343,6 +16900,35 @@ func (s *Server) handleReposListBranchesRequest(args map[string]string, w http.R
 	}
 
 	if err := encodeReposListBranchesResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleReposListBranchesForHeadCommitRequest handles repos/list-branches-for-head-commit operation.
+//
+// GET /repos/{owner}/{repo}/commits/{commit_sha}/branches-where-head
+func (s *Server) handleReposListBranchesForHeadCommitRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListBranchesForHeadCommit`,
+		trace.WithAttributes(otelogen.OperationID(`repos/list-branches-for-head-commit`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeReposListBranchesForHeadCommitParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.ReposListBranchesForHeadCommit(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeReposListBranchesForHeadCommitResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		return
 	}
@@ -13580,6 +17166,64 @@ func (s *Server) handleReposListDeploymentStatusesRequest(args map[string]string
 	}
 }
 
+// HandleReposListDeploymentsRequest handles repos/list-deployments operation.
+//
+// GET /repos/{owner}/{repo}/deployments
+func (s *Server) handleReposListDeploymentsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListDeployments`,
+		trace.WithAttributes(otelogen.OperationID(`repos/list-deployments`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeReposListDeploymentsParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.ReposListDeployments(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeReposListDeploymentsResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleReposListForAuthenticatedUserRequest handles repos/list-for-authenticated-user operation.
+//
+// GET /user/repos
+func (s *Server) handleReposListForAuthenticatedUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListForAuthenticatedUser`,
+		trace.WithAttributes(otelogen.OperationID(`repos/list-for-authenticated-user`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeReposListForAuthenticatedUserParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.ReposListForAuthenticatedUser(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeReposListForAuthenticatedUserResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
 // HandleReposListForOrgRequest handles repos/list-for-org operation.
 //
 // GET /orgs/{org}/repos
@@ -13783,6 +17427,35 @@ func (s *Server) handleReposListPagesBuildsRequest(args map[string]string, w htt
 	}
 }
 
+// HandleReposListPublicRequest handles repos/list-public operation.
+//
+// GET /repositories
+func (s *Server) handleReposListPublicRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListPublic`,
+		trace.WithAttributes(otelogen.OperationID(`repos/list-public`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeReposListPublicParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.ReposListPublic(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeReposListPublicResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
 // HandleReposListPullRequestsAssociatedWithCommitRequest handles repos/list-pull-requests-associated-with-commit operation.
 //
 // GET /repos/{owner}/{repo}/commits/{commit_sha}/pulls
@@ -13928,6 +17601,35 @@ func (s *Server) handleReposListTeamsRequest(args map[string]string, w http.Resp
 	}
 }
 
+// HandleReposListWebhookDeliveriesRequest handles repos/list-webhook-deliveries operation.
+//
+// GET /repos/{owner}/{repo}/hooks/{hook_id}/deliveries
+func (s *Server) handleReposListWebhookDeliveriesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListWebhookDeliveries`,
+		trace.WithAttributes(otelogen.OperationID(`repos/list-webhook-deliveries`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeReposListWebhookDeliveriesParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.ReposListWebhookDeliveries(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeReposListWebhookDeliveriesResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
 // HandleReposListWebhooksRequest handles repos/list-webhooks operation.
 //
 // GET /repos/{owner}/{repo}/hooks
@@ -13952,6 +17654,41 @@ func (s *Server) handleReposListWebhooksRequest(args map[string]string, w http.R
 	}
 
 	if err := encodeReposListWebhooksResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleReposMergeRequest handles repos/merge operation.
+//
+// POST /repos/{owner}/{repo}/merges
+func (s *Server) handleReposMergeRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposMerge`,
+		trace.WithAttributes(otelogen.OperationID(`repos/merge`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeReposMergeParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeReposMergeRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.ReposMerge(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeReposMergeResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		return
 	}
@@ -14021,6 +17758,70 @@ func (s *Server) handleReposPingWebhookRequest(args map[string]string, w http.Re
 	}
 }
 
+// HandleReposRedeliverWebhookDeliveryRequest handles repos/redeliver-webhook-delivery operation.
+//
+// POST /repos/{owner}/{repo}/hooks/{hook_id}/deliveries/{delivery_id}/attempts
+func (s *Server) handleReposRedeliverWebhookDeliveryRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposRedeliverWebhookDelivery`,
+		trace.WithAttributes(otelogen.OperationID(`repos/redeliver-webhook-delivery`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeReposRedeliverWebhookDeliveryParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.ReposRedeliverWebhookDelivery(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeReposRedeliverWebhookDeliveryResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleReposRemoveAppAccessRestrictionsRequest handles repos/remove-app-access-restrictions operation.
+//
+// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps
+func (s *Server) handleReposRemoveAppAccessRestrictionsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposRemoveAppAccessRestrictions`,
+		trace.WithAttributes(otelogen.OperationID(`repos/remove-app-access-restrictions`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeReposRemoveAppAccessRestrictionsParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeReposRemoveAppAccessRestrictionsRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.ReposRemoveAppAccessRestrictions(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeReposRemoveAppAccessRestrictionsResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
 // HandleReposRemoveCollaboratorRequest handles repos/remove-collaborator operation.
 //
 // DELETE /repos/{owner}/{repo}/collaborators/{username}
@@ -14050,6 +17851,41 @@ func (s *Server) handleReposRemoveCollaboratorRequest(args map[string]string, w 
 	}
 }
 
+// HandleReposRemoveStatusCheckContextsRequest handles repos/remove-status-check-contexts operation.
+//
+// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts
+func (s *Server) handleReposRemoveStatusCheckContextsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposRemoveStatusCheckContexts`,
+		trace.WithAttributes(otelogen.OperationID(`repos/remove-status-check-contexts`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeReposRemoveStatusCheckContextsParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeReposRemoveStatusCheckContextsRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.ReposRemoveStatusCheckContexts(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeReposRemoveStatusCheckContextsResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
 // HandleReposRemoveStatusCheckProtectionRequest handles repos/remove-status-check-protection operation.
 //
 // DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks
@@ -14074,6 +17910,111 @@ func (s *Server) handleReposRemoveStatusCheckProtectionRequest(args map[string]s
 	}
 
 	if err := encodeReposRemoveStatusCheckProtectionResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleReposRemoveTeamAccessRestrictionsRequest handles repos/remove-team-access-restrictions operation.
+//
+// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams
+func (s *Server) handleReposRemoveTeamAccessRestrictionsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposRemoveTeamAccessRestrictions`,
+		trace.WithAttributes(otelogen.OperationID(`repos/remove-team-access-restrictions`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeReposRemoveTeamAccessRestrictionsParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeReposRemoveTeamAccessRestrictionsRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.ReposRemoveTeamAccessRestrictions(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeReposRemoveTeamAccessRestrictionsResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleReposRemoveUserAccessRestrictionsRequest handles repos/remove-user-access-restrictions operation.
+//
+// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users
+func (s *Server) handleReposRemoveUserAccessRestrictionsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposRemoveUserAccessRestrictions`,
+		trace.WithAttributes(otelogen.OperationID(`repos/remove-user-access-restrictions`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeReposRemoveUserAccessRestrictionsParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeReposRemoveUserAccessRestrictionsRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.ReposRemoveUserAccessRestrictions(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeReposRemoveUserAccessRestrictionsResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleReposRenameBranchRequest handles repos/rename-branch operation.
+//
+// POST /repos/{owner}/{repo}/branches/{branch}/rename
+func (s *Server) handleReposRenameBranchRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposRenameBranch`,
+		trace.WithAttributes(otelogen.OperationID(`repos/rename-branch`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeReposRenameBranchParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeReposRenameBranchRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.ReposRenameBranch(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeReposRenameBranchResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		return
 	}
@@ -14172,6 +18113,146 @@ func (s *Server) handleReposSetAdminBranchProtectionRequest(args map[string]stri
 	}
 }
 
+// HandleReposSetAppAccessRestrictionsRequest handles repos/set-app-access-restrictions operation.
+//
+// PUT /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps
+func (s *Server) handleReposSetAppAccessRestrictionsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposSetAppAccessRestrictions`,
+		trace.WithAttributes(otelogen.OperationID(`repos/set-app-access-restrictions`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeReposSetAppAccessRestrictionsParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeReposSetAppAccessRestrictionsRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.ReposSetAppAccessRestrictions(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeReposSetAppAccessRestrictionsResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleReposSetStatusCheckContextsRequest handles repos/set-status-check-contexts operation.
+//
+// PUT /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts
+func (s *Server) handleReposSetStatusCheckContextsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposSetStatusCheckContexts`,
+		trace.WithAttributes(otelogen.OperationID(`repos/set-status-check-contexts`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeReposSetStatusCheckContextsParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeReposSetStatusCheckContextsRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.ReposSetStatusCheckContexts(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeReposSetStatusCheckContextsResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleReposSetTeamAccessRestrictionsRequest handles repos/set-team-access-restrictions operation.
+//
+// PUT /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams
+func (s *Server) handleReposSetTeamAccessRestrictionsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposSetTeamAccessRestrictions`,
+		trace.WithAttributes(otelogen.OperationID(`repos/set-team-access-restrictions`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeReposSetTeamAccessRestrictionsParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeReposSetTeamAccessRestrictionsRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.ReposSetTeamAccessRestrictions(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeReposSetTeamAccessRestrictionsResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleReposSetUserAccessRestrictionsRequest handles repos/set-user-access-restrictions operation.
+//
+// PUT /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users
+func (s *Server) handleReposSetUserAccessRestrictionsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposSetUserAccessRestrictions`,
+		trace.WithAttributes(otelogen.OperationID(`repos/set-user-access-restrictions`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeReposSetUserAccessRestrictionsParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeReposSetUserAccessRestrictionsRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.ReposSetUserAccessRestrictions(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeReposSetUserAccessRestrictionsResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
 // HandleReposTestPushWebhookRequest handles repos/test-push-webhook operation.
 //
 // POST /repos/{owner}/{repo}/hooks/{hook_id}/tests
@@ -14231,6 +18312,41 @@ func (s *Server) handleReposTransferRequest(args map[string]string, w http.Respo
 	}
 
 	if err := encodeReposTransferResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleReposUpdateRequest handles repos/update operation.
+//
+// PATCH /repos/{owner}/{repo}
+func (s *Server) handleReposUpdateRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposUpdate`,
+		trace.WithAttributes(otelogen.OperationID(`repos/update`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeReposUpdateParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeReposUpdateRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.ReposUpdate(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeReposUpdateResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		return
 	}
@@ -14341,6 +18457,41 @@ func (s *Server) handleReposUpdateInvitationRequest(args map[string]string, w ht
 	}
 }
 
+// HandleReposUpdatePullRequestReviewProtectionRequest handles repos/update-pull-request-review-protection operation.
+//
+// PATCH /repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews
+func (s *Server) handleReposUpdatePullRequestReviewProtectionRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposUpdatePullRequestReviewProtection`,
+		trace.WithAttributes(otelogen.OperationID(`repos/update-pull-request-review-protection`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeReposUpdatePullRequestReviewProtectionParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeReposUpdatePullRequestReviewProtectionRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.ReposUpdatePullRequestReviewProtection(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeReposUpdatePullRequestReviewProtectionResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
 // HandleReposUpdateReleaseRequest handles repos/update-release operation.
 //
 // PATCH /repos/{owner}/{repo}/releases/{release_id}
@@ -14411,6 +18562,76 @@ func (s *Server) handleReposUpdateReleaseAssetRequest(args map[string]string, w 
 	}
 }
 
+// HandleReposUpdateStatusCheckProtectionRequest handles repos/update-status-check-protection operation.
+//
+// PATCH /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks
+func (s *Server) handleReposUpdateStatusCheckProtectionRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposUpdateStatusCheckProtection`,
+		trace.WithAttributes(otelogen.OperationID(`repos/update-status-check-protection`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeReposUpdateStatusCheckProtectionParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeReposUpdateStatusCheckProtectionRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.ReposUpdateStatusCheckProtection(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeReposUpdateStatusCheckProtectionResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleReposUpdateWebhookRequest handles repos/update-webhook operation.
+//
+// PATCH /repos/{owner}/{repo}/hooks/{hook_id}
+func (s *Server) handleReposUpdateWebhookRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposUpdateWebhook`,
+		trace.WithAttributes(otelogen.OperationID(`repos/update-webhook`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeReposUpdateWebhookParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeReposUpdateWebhookRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.ReposUpdateWebhook(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeReposUpdateWebhookResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
 // HandleReposUpdateWebhookConfigForRepoRequest handles repos/update-webhook-config-for-repo operation.
 //
 // PATCH /repos/{owner}/{repo}/hooks/{hook_id}/config
@@ -14475,6 +18696,35 @@ func (s *Server) handleScimDeleteUserFromOrgRequest(args map[string]string, w ht
 	}
 }
 
+// HandleSearchCodeRequest handles search/code operation.
+//
+// GET /search/code
+func (s *Server) handleSearchCodeRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `SearchCode`,
+		trace.WithAttributes(otelogen.OperationID(`search/code`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeSearchCodeParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.SearchCode(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeSearchCodeResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
 // HandleSearchCommitsRequest handles search/commits operation.
 //
 // GET /search/commits
@@ -14504,6 +18754,93 @@ func (s *Server) handleSearchCommitsRequest(args map[string]string, w http.Respo
 	}
 }
 
+// HandleSearchIssuesAndPullRequestsRequest handles search/issues-and-pull-requests operation.
+//
+// GET /search/issues
+func (s *Server) handleSearchIssuesAndPullRequestsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `SearchIssuesAndPullRequests`,
+		trace.WithAttributes(otelogen.OperationID(`search/issues-and-pull-requests`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeSearchIssuesAndPullRequestsParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.SearchIssuesAndPullRequests(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeSearchIssuesAndPullRequestsResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleSearchLabelsRequest handles search/labels operation.
+//
+// GET /search/labels
+func (s *Server) handleSearchLabelsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `SearchLabels`,
+		trace.WithAttributes(otelogen.OperationID(`search/labels`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeSearchLabelsParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.SearchLabels(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeSearchLabelsResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleSearchReposRequest handles search/repos operation.
+//
+// GET /search/repositories
+func (s *Server) handleSearchReposRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `SearchRepos`,
+		trace.WithAttributes(otelogen.OperationID(`search/repos`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeSearchReposParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.SearchRepos(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeSearchReposResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
 // HandleSearchTopicsRequest handles search/topics operation.
 //
 // GET /search/topics
@@ -14528,6 +18865,35 @@ func (s *Server) handleSearchTopicsRequest(args map[string]string, w http.Respon
 	}
 
 	if err := encodeSearchTopicsResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleSearchUsersRequest handles search/users operation.
+//
+// GET /search/users
+func (s *Server) handleSearchUsersRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `SearchUsers`,
+		trace.WithAttributes(otelogen.OperationID(`search/users`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeSearchUsersParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.SearchUsers(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeSearchUsersResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		return
 	}
@@ -14789,6 +19155,41 @@ func (s *Server) handleTeamsAddOrUpdateProjectPermissionsInOrgRequest(args map[s
 	}
 }
 
+// HandleTeamsAddOrUpdateProjectPermissionsLegacyRequest handles teams/add-or-update-project-permissions-legacy operation.
+//
+// PUT /teams/{team_id}/projects/{project_id}
+func (s *Server) handleTeamsAddOrUpdateProjectPermissionsLegacyRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsAddOrUpdateProjectPermissionsLegacy`,
+		trace.WithAttributes(otelogen.OperationID(`teams/add-or-update-project-permissions-legacy`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeTeamsAddOrUpdateProjectPermissionsLegacyParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeTeamsAddOrUpdateProjectPermissionsLegacyRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TeamsAddOrUpdateProjectPermissionsLegacy(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTeamsAddOrUpdateProjectPermissionsLegacyResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
 // HandleTeamsAddOrUpdateRepoPermissionsInOrgRequest handles teams/add-or-update-repo-permissions-in-org operation.
 //
 // PUT /orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}
@@ -14819,6 +19220,41 @@ func (s *Server) handleTeamsAddOrUpdateRepoPermissionsInOrgRequest(args map[stri
 	}
 
 	if err := encodeTeamsAddOrUpdateRepoPermissionsInOrgResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleTeamsAddOrUpdateRepoPermissionsLegacyRequest handles teams/add-or-update-repo-permissions-legacy operation.
+//
+// PUT /teams/{team_id}/repos/{owner}/{repo}
+func (s *Server) handleTeamsAddOrUpdateRepoPermissionsLegacyRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsAddOrUpdateRepoPermissionsLegacy`,
+		trace.WithAttributes(otelogen.OperationID(`teams/add-or-update-repo-permissions-legacy`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeTeamsAddOrUpdateRepoPermissionsLegacyParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeTeamsAddOrUpdateRepoPermissionsLegacyRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TeamsAddOrUpdateRepoPermissionsLegacy(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTeamsAddOrUpdateRepoPermissionsLegacyResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		return
 	}
@@ -14935,6 +19371,41 @@ func (s *Server) handleTeamsCheckPermissionsForRepoLegacyRequest(args map[string
 	}
 
 	if err := encodeTeamsCheckPermissionsForRepoLegacyResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleTeamsCreateRequest handles teams/create operation.
+//
+// POST /orgs/{org}/teams
+func (s *Server) handleTeamsCreateRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsCreate`,
+		trace.WithAttributes(otelogen.OperationID(`teams/create`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeTeamsCreateParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeTeamsCreateRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TeamsCreate(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTeamsCreateResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		return
 	}
@@ -15115,6 +19586,41 @@ func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(args m
 	}
 }
 
+// HandleTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest handles teams/create-or-update-idp-group-connections-legacy operation.
+//
+// PATCH /teams/{team_id}/team-sync/group-mappings
+func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsCreateOrUpdateIdpGroupConnectionsLegacy`,
+		trace.WithAttributes(otelogen.OperationID(`teams/create-or-update-idp-group-connections-legacy`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TeamsCreateOrUpdateIdpGroupConnectionsLegacy(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
 // HandleTeamsDeleteDiscussionCommentInOrgRequest handles teams/delete-discussion-comment-in-org operation.
 //
 // DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}
@@ -15255,6 +19761,35 @@ func (s *Server) handleTeamsDeleteInOrgRequest(args map[string]string, w http.Re
 	}
 
 	if err := encodeTeamsDeleteInOrgResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleTeamsDeleteLegacyRequest handles teams/delete-legacy operation.
+//
+// DELETE /teams/{team_id}
+func (s *Server) handleTeamsDeleteLegacyRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsDeleteLegacy`,
+		trace.WithAttributes(otelogen.OperationID(`teams/delete-legacy`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeTeamsDeleteLegacyParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TeamsDeleteLegacy(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTeamsDeleteLegacyResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		return
 	}
@@ -15574,6 +20109,35 @@ func (s *Server) handleTeamsListChildInOrgRequest(args map[string]string, w http
 	}
 
 	if err := encodeTeamsListChildInOrgResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleTeamsListChildLegacyRequest handles teams/list-child-legacy operation.
+//
+// GET /teams/{team_id}/teams
+func (s *Server) handleTeamsListChildLegacyRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsListChildLegacy`,
+		trace.WithAttributes(otelogen.OperationID(`teams/list-child-legacy`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeTeamsListChildLegacyParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TeamsListChildLegacy(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTeamsListChildLegacyResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		return
 	}
@@ -16159,6 +20723,35 @@ func (s *Server) handleTeamsRemoveProjectInOrgRequest(args map[string]string, w 
 	}
 }
 
+// HandleTeamsRemoveProjectLegacyRequest handles teams/remove-project-legacy operation.
+//
+// DELETE /teams/{team_id}/projects/{project_id}
+func (s *Server) handleTeamsRemoveProjectLegacyRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsRemoveProjectLegacy`,
+		trace.WithAttributes(otelogen.OperationID(`teams/remove-project-legacy`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeTeamsRemoveProjectLegacyParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TeamsRemoveProjectLegacy(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTeamsRemoveProjectLegacyResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
 // HandleTeamsRemoveRepoInOrgRequest handles teams/remove-repo-in-org operation.
 //
 // DELETE /orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}
@@ -16392,6 +20985,99 @@ func (s *Server) handleTeamsUpdateInOrgRequest(args map[string]string, w http.Re
 	}
 }
 
+// HandleTeamsUpdateLegacyRequest handles teams/update-legacy operation.
+//
+// PATCH /teams/{team_id}
+func (s *Server) handleTeamsUpdateLegacyRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsUpdateLegacy`,
+		trace.WithAttributes(otelogen.OperationID(`teams/update-legacy`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeTeamsUpdateLegacyParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeTeamsUpdateLegacyRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TeamsUpdateLegacy(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTeamsUpdateLegacyResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleUsersAddEmailForAuthenticatedRequest handles users/add-email-for-authenticated operation.
+//
+// POST /user/emails
+func (s *Server) handleUsersAddEmailForAuthenticatedRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersAddEmailForAuthenticated`,
+		trace.WithAttributes(otelogen.OperationID(`users/add-email-for-authenticated`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeUsersAddEmailForAuthenticatedRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.UsersAddEmailForAuthenticated(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeUsersAddEmailForAuthenticatedResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleUsersBlockRequest handles users/block operation.
+//
+// PUT /user/blocks/{username}
+func (s *Server) handleUsersBlockRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersBlock`,
+		trace.WithAttributes(otelogen.OperationID(`users/block`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeUsersBlockParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.UsersBlock(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeUsersBlockResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
 // HandleUsersCheckBlockedRequest handles users/check-blocked operation.
 //
 // GET /user/blocks/{username}
@@ -16474,6 +21160,122 @@ func (s *Server) handleUsersCheckPersonIsFollowedByAuthenticatedRequest(args map
 	}
 
 	if err := encodeUsersCheckPersonIsFollowedByAuthenticatedResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleUsersCreateGpgKeyForAuthenticatedRequest handles users/create-gpg-key-for-authenticated operation.
+//
+// POST /user/gpg_keys
+func (s *Server) handleUsersCreateGpgKeyForAuthenticatedRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersCreateGpgKeyForAuthenticated`,
+		trace.WithAttributes(otelogen.OperationID(`users/create-gpg-key-for-authenticated`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeUsersCreateGpgKeyForAuthenticatedRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.UsersCreateGpgKeyForAuthenticated(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeUsersCreateGpgKeyForAuthenticatedResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleUsersCreatePublicSSHKeyForAuthenticatedRequest handles users/create-public-ssh-key-for-authenticated operation.
+//
+// POST /user/keys
+func (s *Server) handleUsersCreatePublicSSHKeyForAuthenticatedRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersCreatePublicSSHKeyForAuthenticated`,
+		trace.WithAttributes(otelogen.OperationID(`users/create-public-ssh-key-for-authenticated`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeUsersCreatePublicSSHKeyForAuthenticatedRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.UsersCreatePublicSSHKeyForAuthenticated(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeUsersCreatePublicSSHKeyForAuthenticatedResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleUsersDeleteEmailForAuthenticatedRequest handles users/delete-email-for-authenticated operation.
+//
+// DELETE /user/emails
+func (s *Server) handleUsersDeleteEmailForAuthenticatedRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersDeleteEmailForAuthenticated`,
+		trace.WithAttributes(otelogen.OperationID(`users/delete-email-for-authenticated`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeUsersDeleteEmailForAuthenticatedRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.UsersDeleteEmailForAuthenticated(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeUsersDeleteEmailForAuthenticatedResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleUsersDeleteGpgKeyForAuthenticatedRequest handles users/delete-gpg-key-for-authenticated operation.
+//
+// DELETE /user/gpg_keys/{gpg_key_id}
+func (s *Server) handleUsersDeleteGpgKeyForAuthenticatedRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersDeleteGpgKeyForAuthenticated`,
+		trace.WithAttributes(otelogen.OperationID(`users/delete-gpg-key-for-authenticated`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeUsersDeleteGpgKeyForAuthenticatedParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.UsersDeleteGpgKeyForAuthenticated(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeUsersDeleteGpgKeyForAuthenticatedResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		return
 	}
@@ -16584,6 +21386,35 @@ func (s *Server) handleUsersGetByUsernameRequest(args map[string]string, w http.
 	}
 
 	if err := encodeUsersGetByUsernameResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleUsersGetContextForUserRequest handles users/get-context-for-user operation.
+//
+// GET /users/{username}/hovercard
+func (s *Server) handleUsersGetContextForUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersGetContextForUser`,
+		trace.WithAttributes(otelogen.OperationID(`users/get-context-for-user`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeUsersGetContextForUserParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.UsersGetContextForUser(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeUsersGetContextForUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		return
 	}
@@ -16989,6 +21820,35 @@ func (s *Server) handleUsersListPublicSSHKeysForAuthenticatedRequest(args map[st
 	}
 }
 
+// HandleUsersSetPrimaryEmailVisibilityForAuthenticatedRequest handles users/set-primary-email-visibility-for-authenticated operation.
+//
+// PATCH /user/email/visibility
+func (s *Server) handleUsersSetPrimaryEmailVisibilityForAuthenticatedRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersSetPrimaryEmailVisibilityForAuthenticated`,
+		trace.WithAttributes(otelogen.OperationID(`users/set-primary-email-visibility-for-authenticated`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeUsersSetPrimaryEmailVisibilityForAuthenticatedRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.UsersSetPrimaryEmailVisibilityForAuthenticated(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeUsersSetPrimaryEmailVisibilityForAuthenticatedResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
 // HandleUsersUnblockRequest handles users/unblock operation.
 //
 // DELETE /user/blocks/{username}
@@ -17042,6 +21902,35 @@ func (s *Server) handleUsersUnfollowRequest(args map[string]string, w http.Respo
 	}
 
 	if err := encodeUsersUnfollowResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleUsersUpdateAuthenticatedRequest handles users/update-authenticated operation.
+//
+// PATCH /user
+func (s *Server) handleUsersUpdateAuthenticatedRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersUpdateAuthenticated`,
+		trace.WithAttributes(otelogen.OperationID(`users/update-authenticated`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeUsersUpdateAuthenticatedRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.UsersUpdateAuthenticated(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeUsersUpdateAuthenticatedResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		return
 	}

@@ -45,6 +45,10 @@ type ActivityGetThreadSubscriptionForAuthenticatedUserRes interface {
 	activityGetThreadSubscriptionForAuthenticatedUserRes()
 }
 
+type ActivityListNotificationsForAuthenticatedUserRes interface {
+	activityListNotificationsForAuthenticatedUserRes()
+}
+
 type ActivityListPublicEventsForRepoNetworkRes interface {
 	activityListPublicEventsForRepoNetworkRes()
 }
@@ -89,8 +93,28 @@ type AppsAddRepoToInstallationRes interface {
 	appsAddRepoToInstallationRes()
 }
 
+type AppsCheckTokenRes interface {
+	appsCheckTokenRes()
+}
+
+type AppsCreateContentAttachmentRes interface {
+	appsCreateContentAttachmentRes()
+}
+
+type AppsCreateInstallationAccessTokenRes interface {
+	appsCreateInstallationAccessTokenRes()
+}
+
+type AppsDeleteAuthorizationRes interface {
+	appsDeleteAuthorizationRes()
+}
+
 type AppsDeleteInstallationRes interface {
 	appsDeleteInstallationRes()
+}
+
+type AppsDeleteTokenRes interface {
+	appsDeleteTokenRes()
 }
 
 type AppsGetBySlugRes interface {
@@ -103,6 +127,14 @@ type AppsGetSubscriptionPlanForAccountRes interface {
 
 type AppsGetSubscriptionPlanForAccountStubbedRes interface {
 	appsGetSubscriptionPlanForAccountStubbedRes()
+}
+
+type AppsGetWebhookDeliveryRes interface {
+	appsGetWebhookDeliveryRes()
+}
+
+type AppsListAccountsForPlanRes interface {
+	appsListAccountsForPlanRes()
 }
 
 type AppsListAccountsForPlanStubbedRes interface {
@@ -133,8 +165,24 @@ type AppsListSubscriptionsForAuthenticatedUserStubbedRes interface {
 	appsListSubscriptionsForAuthenticatedUserStubbedRes()
 }
 
+type AppsListWebhookDeliveriesRes interface {
+	appsListWebhookDeliveriesRes()
+}
+
+type AppsRedeliverWebhookDeliveryRes interface {
+	appsRedeliverWebhookDeliveryRes()
+}
+
 type AppsRemoveRepoFromInstallationRes interface {
 	appsRemoveRepoFromInstallationRes()
+}
+
+type AppsResetTokenRes interface {
+	appsResetTokenRes()
+}
+
+type AppsScopeTokenRes interface {
+	appsScopeTokenRes()
 }
 
 type AppsSuspendInstallationRes interface {
@@ -205,12 +253,20 @@ type GistsCreateCommentRes interface {
 	gistsCreateCommentRes()
 }
 
+type GistsCreateRes interface {
+	gistsCreateRes()
+}
+
 type GistsDeleteCommentRes interface {
 	gistsDeleteCommentRes()
 }
 
 type GistsDeleteRes interface {
 	gistsDeleteRes()
+}
+
+type GistsForkRes interface {
+	gistsForkRes()
 }
 
 type GistsGetCommentRes interface {
@@ -221,6 +277,10 @@ type GistsGetRes interface {
 	gistsGetRes()
 }
 
+type GistsGetRevisionRes interface {
+	gistsGetRevisionRes()
+}
+
 type GistsListCommentsRes interface {
 	gistsListCommentsRes()
 }
@@ -229,8 +289,16 @@ type GistsListCommitsRes interface {
 	gistsListCommitsRes()
 }
 
+type GistsListForUserRes interface {
+	gistsListForUserRes()
+}
+
 type GistsListForksRes interface {
 	gistsListForksRes()
+}
+
+type GistsListPublicRes interface {
+	gistsListPublicRes()
 }
 
 type GistsListRes interface {
@@ -253,6 +321,34 @@ type GistsUpdateCommentRes interface {
 	gistsUpdateCommentRes()
 }
 
+type GitCreateBlobRes interface {
+	gitCreateBlobRes()
+}
+
+type GitCreateCommitRes interface {
+	gitCreateCommitRes()
+}
+
+type GitCreateRefRes interface {
+	gitCreateRefRes()
+}
+
+type GitCreateTagRes interface {
+	gitCreateTagRes()
+}
+
+type GitCreateTreeRes interface {
+	gitCreateTreeRes()
+}
+
+type GitDeleteRefRes interface {
+	gitDeleteRefRes()
+}
+
+type GitGetBlobRes interface {
+	gitGetBlobRes()
+}
+
 type GitGetCommitRes interface {
 	gitGetCommitRes()
 }
@@ -263,6 +359,14 @@ type GitGetRefRes interface {
 
 type GitGetTagRes interface {
 	gitGetTagRes()
+}
+
+type GitGetTreeRes interface {
+	gitGetTreeRes()
+}
+
+type GitUpdateRefRes interface {
+	gitUpdateRefRes()
 }
 
 type GitignoreGetAllTemplatesRes interface {
@@ -277,12 +381,36 @@ type InteractionsRemoveRestrictionsForRepoRes interface {
 	interactionsRemoveRestrictionsForRepoRes()
 }
 
+type InteractionsSetRestrictionsForAuthenticatedUserRes interface {
+	interactionsSetRestrictionsForAuthenticatedUserRes()
+}
+
+type InteractionsSetRestrictionsForOrgRes interface {
+	interactionsSetRestrictionsForOrgRes()
+}
+
 type InteractionsSetRestrictionsForRepoRes interface {
 	interactionsSetRestrictionsForRepoRes()
 }
 
 type IssuesCheckUserCanBeAssignedRes interface {
 	issuesCheckUserCanBeAssignedRes()
+}
+
+type IssuesCreateCommentRes interface {
+	issuesCreateCommentRes()
+}
+
+type IssuesCreateLabelRes interface {
+	issuesCreateLabelRes()
+}
+
+type IssuesCreateMilestoneRes interface {
+	issuesCreateMilestoneRes()
+}
+
+type IssuesCreateRes interface {
+	issuesCreateRes()
 }
 
 type IssuesDeleteMilestoneRes interface {
@@ -305,12 +433,36 @@ type IssuesGetMilestoneRes interface {
 	issuesGetMilestoneRes()
 }
 
+type IssuesGetRes interface {
+	issuesGetRes()
+}
+
 type IssuesListAssigneesRes interface {
 	issuesListAssigneesRes()
 }
 
+type IssuesListCommentsForRepoRes interface {
+	issuesListCommentsForRepoRes()
+}
+
 type IssuesListCommentsRes interface {
 	issuesListCommentsRes()
+}
+
+type IssuesListEventsForRepoRes interface {
+	issuesListEventsForRepoRes()
+}
+
+type IssuesListForAuthenticatedUserRes interface {
+	issuesListForAuthenticatedUserRes()
+}
+
+type IssuesListForOrgRes interface {
+	issuesListForOrgRes()
+}
+
+type IssuesListForRepoRes interface {
+	issuesListForRepoRes()
 }
 
 type IssuesListLabelsForRepoRes interface {
@@ -325,6 +477,14 @@ type IssuesListMilestonesRes interface {
 	issuesListMilestonesRes()
 }
 
+type IssuesListRes interface {
+	issuesListRes()
+}
+
+type IssuesLockRes interface {
+	issuesLockRes()
+}
+
 type IssuesRemoveAllLabelsRes interface {
 	issuesRemoveAllLabelsRes()
 }
@@ -335,6 +495,14 @@ type IssuesRemoveLabelRes interface {
 
 type IssuesUnlockRes interface {
 	issuesUnlockRes()
+}
+
+type IssuesUpdateCommentRes interface {
+	issuesUpdateCommentRes()
+}
+
+type IssuesUpdateRes interface {
+	issuesUpdateRes()
 }
 
 type LicensesGetAllCommonlyUsedRes interface {
@@ -393,12 +561,36 @@ type MigrationsListReposForUserRes interface {
 	migrationsListReposForUserRes()
 }
 
+type MigrationsMapCommitAuthorRes interface {
+	migrationsMapCommitAuthorRes()
+}
+
+type MigrationsSetLfsPreferenceRes interface {
+	migrationsSetLfsPreferenceRes()
+}
+
+type MigrationsStartForAuthenticatedUserRes interface {
+	migrationsStartForAuthenticatedUserRes()
+}
+
+type MigrationsStartForOrgRes interface {
+	migrationsStartForOrgRes()
+}
+
+type MigrationsStartImportRes interface {
+	migrationsStartImportRes()
+}
+
 type MigrationsUnlockRepoForAuthenticatedUserRes interface {
 	migrationsUnlockRepoForAuthenticatedUserRes()
 }
 
 type MigrationsUnlockRepoForOrgRes interface {
 	migrationsUnlockRepoForOrgRes()
+}
+
+type OAuthAuthorizationsCreateAuthorizationRes interface {
+	oAuthAuthorizationsCreateAuthorizationRes()
 }
 
 type OAuthAuthorizationsDeleteAuthorizationRes interface {
@@ -417,12 +609,32 @@ type OAuthAuthorizationsGetGrantRes interface {
 	oAuthAuthorizationsGetGrantRes()
 }
 
+type OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRes interface {
+	oAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRes()
+}
+
+type OAuthAuthorizationsGetOrCreateAuthorizationForAppRes interface {
+	oAuthAuthorizationsGetOrCreateAuthorizationForAppRes()
+}
+
 type OAuthAuthorizationsListAuthorizationsRes interface {
 	oAuthAuthorizationsListAuthorizationsRes()
 }
 
 type OAuthAuthorizationsListGrantsRes interface {
 	oAuthAuthorizationsListGrantsRes()
+}
+
+type OAuthAuthorizationsUpdateAuthorizationRes interface {
+	oAuthAuthorizationsUpdateAuthorizationRes()
+}
+
+type OrgsBlockUserRes interface {
+	orgsBlockUserRes()
+}
+
+type OrgsCancelInvitationRes interface {
+	orgsCancelInvitationRes()
 }
 
 type OrgsCheckBlockedUserRes interface {
@@ -441,6 +653,14 @@ type OrgsConvertMemberToOutsideCollaboratorRes interface {
 	orgsConvertMemberToOutsideCollaboratorRes()
 }
 
+type OrgsCreateInvitationRes interface {
+	orgsCreateInvitationRes()
+}
+
+type OrgsCreateWebhookRes interface {
+	orgsCreateWebhookRes()
+}
+
 type OrgsDeleteWebhookRes interface {
 	orgsDeleteWebhookRes()
 }
@@ -455,6 +675,10 @@ type OrgsGetMembershipForUserRes interface {
 
 type OrgsGetRes interface {
 	orgsGetRes()
+}
+
+type OrgsGetWebhookDeliveryRes interface {
+	orgsGetWebhookDeliveryRes()
 }
 
 type OrgsGetWebhookRes interface {
@@ -477,6 +701,14 @@ type OrgsListInvitationTeamsRes interface {
 	orgsListInvitationTeamsRes()
 }
 
+type OrgsListMembersRes interface {
+	orgsListMembersRes()
+}
+
+type OrgsListMembershipsForAuthenticatedUserRes interface {
+	orgsListMembershipsForAuthenticatedUserRes()
+}
+
 type OrgsListPendingInvitationsRes interface {
 	orgsListPendingInvitationsRes()
 }
@@ -485,12 +717,20 @@ type OrgsListRes interface {
 	orgsListRes()
 }
 
+type OrgsListWebhookDeliveriesRes interface {
+	orgsListWebhookDeliveriesRes()
+}
+
 type OrgsListWebhooksRes interface {
 	orgsListWebhooksRes()
 }
 
 type OrgsPingWebhookRes interface {
 	orgsPingWebhookRes()
+}
+
+type OrgsRedeliverWebhookDeliveryRes interface {
+	orgsRedeliverWebhookDeliveryRes()
 }
 
 type OrgsRemoveMemberRes interface {
@@ -509,8 +749,20 @@ type OrgsRemoveSamlSSOAuthorizationRes interface {
 	orgsRemoveSamlSSOAuthorizationRes()
 }
 
+type OrgsSetMembershipForUserRes interface {
+	orgsSetMembershipForUserRes()
+}
+
 type OrgsSetPublicMembershipForAuthenticatedUserRes interface {
 	orgsSetPublicMembershipForAuthenticatedUserRes()
+}
+
+type OrgsUpdateMembershipForAuthenticatedUserRes interface {
+	orgsUpdateMembershipForAuthenticatedUserRes()
+}
+
+type OrgsUpdateWebhookRes interface {
+	orgsUpdateWebhookRes()
 }
 
 type PackagesDeletePackageForAuthenticatedUserRes interface {
@@ -581,6 +833,10 @@ type PackagesRestorePackageVersionForUserRes interface {
 	packagesRestorePackageVersionForUserRes()
 }
 
+type ProjectsAddCollaboratorRes interface {
+	projectsAddCollaboratorRes()
+}
+
 type ProjectsCreateColumnRes interface {
 	projectsCreateColumnRes()
 }
@@ -617,12 +873,20 @@ type ProjectsGetColumnRes interface {
 	projectsGetColumnRes()
 }
 
+type ProjectsGetPermissionForUserRes interface {
+	projectsGetPermissionForUserRes()
+}
+
 type ProjectsGetRes interface {
 	projectsGetRes()
 }
 
 type ProjectsListCardsRes interface {
 	projectsListCardsRes()
+}
+
+type ProjectsListCollaboratorsRes interface {
+	projectsListCollaboratorsRes()
 }
 
 type ProjectsListColumnsRes interface {
@@ -637,8 +901,20 @@ type ProjectsListForRepoRes interface {
 	projectsListForRepoRes()
 }
 
+type ProjectsListForUserRes interface {
+	projectsListForUserRes()
+}
+
+type ProjectsMoveCardRes interface {
+	projectsMoveCardRes()
+}
+
 type ProjectsMoveColumnRes interface {
 	projectsMoveColumnRes()
+}
+
+type ProjectsRemoveCollaboratorRes interface {
+	projectsRemoveCollaboratorRes()
 }
 
 type ProjectsUpdateCardRes interface {
@@ -659,6 +935,14 @@ type PullsCheckIfMergedRes interface {
 
 type PullsCreateReplyForReviewCommentRes interface {
 	pullsCreateReplyForReviewCommentRes()
+}
+
+type PullsCreateRes interface {
+	pullsCreateRes()
+}
+
+type PullsCreateReviewCommentRes interface {
+	pullsCreateReviewCommentRes()
 }
 
 type PullsCreateReviewRes interface {
@@ -693,8 +977,32 @@ type PullsListCommentsForReviewRes interface {
 	pullsListCommentsForReviewRes()
 }
 
+type PullsListFilesRes interface {
+	pullsListFilesRes()
+}
+
+type PullsListRes interface {
+	pullsListRes()
+}
+
+type PullsMergeRes interface {
+	pullsMergeRes()
+}
+
+type PullsRemoveRequestedReviewersRes interface {
+	pullsRemoveRequestedReviewersRes()
+}
+
 type PullsSubmitReviewRes interface {
 	pullsSubmitReviewRes()
+}
+
+type PullsUpdateBranchRes interface {
+	pullsUpdateBranchRes()
+}
+
+type PullsUpdateRes interface {
+	pullsUpdateRes()
 }
 
 type PullsUpdateReviewRes interface {
@@ -703,6 +1011,26 @@ type PullsUpdateReviewRes interface {
 
 type RateLimitGetRes interface {
 	rateLimitGetRes()
+}
+
+type ReactionsCreateForCommitCommentRes interface {
+	reactionsCreateForCommitCommentRes()
+}
+
+type ReactionsCreateForIssueCommentRes interface {
+	reactionsCreateForIssueCommentRes()
+}
+
+type ReactionsCreateForIssueRes interface {
+	reactionsCreateForIssueRes()
+}
+
+type ReactionsCreateForPullRequestReviewCommentRes interface {
+	reactionsCreateForPullRequestReviewCommentRes()
+}
+
+type ReactionsCreateForReleaseRes interface {
+	reactionsCreateForReleaseRes()
 }
 
 type ReactionsCreateForTeamDiscussionCommentInOrgRes interface {
@@ -737,6 +1065,26 @@ type ReposAcceptInvitationRes interface {
 	reposAcceptInvitationRes()
 }
 
+type ReposAddAppAccessRestrictionsRes interface {
+	reposAddAppAccessRestrictionsRes()
+}
+
+type ReposAddCollaboratorRes interface {
+	reposAddCollaboratorRes()
+}
+
+type ReposAddStatusCheckContextsRes interface {
+	reposAddStatusCheckContextsRes()
+}
+
+type ReposAddTeamAccessRestrictionsRes interface {
+	reposAddTeamAccessRestrictionsRes()
+}
+
+type ReposAddUserAccessRestrictionsRes interface {
+	reposAddUserAccessRestrictionsRes()
+}
+
 type ReposCheckCollaboratorRes interface {
 	reposCheckCollaboratorRes()
 }
@@ -749,8 +1097,60 @@ type ReposCompareCommitsRes interface {
 	reposCompareCommitsRes()
 }
 
+type ReposCreateAutolinkRes interface {
+	reposCreateAutolinkRes()
+}
+
+type ReposCreateCommitCommentRes interface {
+	reposCreateCommitCommentRes()
+}
+
 type ReposCreateCommitSignatureProtectionRes interface {
 	reposCreateCommitSignatureProtectionRes()
+}
+
+type ReposCreateDeployKeyRes interface {
+	reposCreateDeployKeyRes()
+}
+
+type ReposCreateDeploymentRes interface {
+	reposCreateDeploymentRes()
+}
+
+type ReposCreateDeploymentStatusRes interface {
+	reposCreateDeploymentStatusRes()
+}
+
+type ReposCreateDispatchEventRes interface {
+	reposCreateDispatchEventRes()
+}
+
+type ReposCreateForAuthenticatedUserRes interface {
+	reposCreateForAuthenticatedUserRes()
+}
+
+type ReposCreateForkRes interface {
+	reposCreateForkRes()
+}
+
+type ReposCreateInOrgRes interface {
+	reposCreateInOrgRes()
+}
+
+type ReposCreateOrUpdateFileContentsRes interface {
+	reposCreateOrUpdateFileContentsRes()
+}
+
+type ReposCreatePagesSiteRes interface {
+	reposCreatePagesSiteRes()
+}
+
+type ReposCreateReleaseRes interface {
+	reposCreateReleaseRes()
+}
+
+type ReposCreateWebhookRes interface {
+	reposCreateWebhookRes()
 }
 
 type ReposDeclineInvitationRes interface {
@@ -779,6 +1179,14 @@ type ReposDeleteCommitSignatureProtectionRes interface {
 
 type ReposDeleteDeploymentRes interface {
 	reposDeleteDeploymentRes()
+}
+
+type ReposDeleteFileRes interface {
+	reposDeleteFileRes()
+}
+
+type ReposDeletePagesSiteRes interface {
+	reposDeletePagesSiteRes()
 }
 
 type ReposDeletePullRequestReviewProtectionRes interface {
@@ -849,6 +1257,10 @@ type ReposGetCommitCommentRes interface {
 	reposGetCommitCommentRes()
 }
 
+type ReposGetCommitRes interface {
+	reposGetCommitRes()
+}
+
 type ReposGetCommitSignatureProtectionRes interface {
 	reposGetCommitSignatureProtectionRes()
 }
@@ -859,6 +1271,10 @@ type ReposGetContributorsStatsRes interface {
 
 type ReposGetDeployKeyRes interface {
 	reposGetDeployKeyRes()
+}
+
+type ReposGetDeploymentRes interface {
+	reposGetDeploymentRes()
 }
 
 type ReposGetDeploymentStatusRes interface {
@@ -879,6 +1295,14 @@ type ReposGetParticipationStatsRes interface {
 
 type ReposGetPunchCardStatsRes interface {
 	reposGetPunchCardStatsRes()
+}
+
+type ReposGetReadmeInDirectoryRes interface {
+	reposGetReadmeInDirectoryRes()
+}
+
+type ReposGetReadmeRes interface {
+	reposGetReadmeRes()
 }
 
 type ReposGetReleaseAssetRes interface {
@@ -921,8 +1345,16 @@ type ReposGetViewsRes interface {
 	reposGetViewsRes()
 }
 
+type ReposGetWebhookDeliveryRes interface {
+	reposGetWebhookDeliveryRes()
+}
+
 type ReposGetWebhookRes interface {
 	reposGetWebhookRes()
+}
+
+type ReposListBranchesForHeadCommitRes interface {
+	reposListBranchesForHeadCommitRes()
 }
 
 type ReposListBranchesRes interface {
@@ -949,6 +1381,10 @@ type ReposListDeploymentStatusesRes interface {
 	reposListDeploymentStatusesRes()
 }
 
+type ReposListForAuthenticatedUserRes interface {
+	reposListForAuthenticatedUserRes()
+}
+
 type ReposListForksRes interface {
 	reposListForksRes()
 }
@@ -957,12 +1393,24 @@ type ReposListInvitationsForAuthenticatedUserRes interface {
 	reposListInvitationsForAuthenticatedUserRes()
 }
 
+type ReposListPublicRes interface {
+	reposListPublicRes()
+}
+
 type ReposListReleasesRes interface {
 	reposListReleasesRes()
 }
 
+type ReposListWebhookDeliveriesRes interface {
+	reposListWebhookDeliveriesRes()
+}
+
 type ReposListWebhooksRes interface {
 	reposListWebhooksRes()
+}
+
+type ReposMergeRes interface {
+	reposMergeRes()
 }
 
 type ReposMergeUpstreamRes interface {
@@ -973,8 +1421,48 @@ type ReposPingWebhookRes interface {
 	reposPingWebhookRes()
 }
 
+type ReposRedeliverWebhookDeliveryRes interface {
+	reposRedeliverWebhookDeliveryRes()
+}
+
+type ReposRemoveAppAccessRestrictionsRes interface {
+	reposRemoveAppAccessRestrictionsRes()
+}
+
+type ReposRemoveStatusCheckContextsRes interface {
+	reposRemoveStatusCheckContextsRes()
+}
+
+type ReposRemoveTeamAccessRestrictionsRes interface {
+	reposRemoveTeamAccessRestrictionsRes()
+}
+
+type ReposRemoveUserAccessRestrictionsRes interface {
+	reposRemoveUserAccessRestrictionsRes()
+}
+
+type ReposRenameBranchRes interface {
+	reposRenameBranchRes()
+}
+
 type ReposReplaceAllTopicsRes interface {
 	reposReplaceAllTopicsRes()
+}
+
+type ReposSetAppAccessRestrictionsRes interface {
+	reposSetAppAccessRestrictionsRes()
+}
+
+type ReposSetStatusCheckContextsRes interface {
+	reposSetStatusCheckContextsRes()
+}
+
+type ReposSetTeamAccessRestrictionsRes interface {
+	reposSetTeamAccessRestrictionsRes()
+}
+
+type ReposSetUserAccessRestrictionsRes interface {
+	reposSetUserAccessRestrictionsRes()
 }
 
 type ReposTestPushWebhookRes interface {
@@ -989,20 +1477,56 @@ type ReposUpdateCommitCommentRes interface {
 	reposUpdateCommitCommentRes()
 }
 
+type ReposUpdatePullRequestReviewProtectionRes interface {
+	reposUpdatePullRequestReviewProtectionRes()
+}
+
 type ReposUpdateReleaseRes interface {
 	reposUpdateReleaseRes()
+}
+
+type ReposUpdateRes interface {
+	reposUpdateRes()
+}
+
+type ReposUpdateStatusCheckProtectionRes interface {
+	reposUpdateStatusCheckProtectionRes()
+}
+
+type ReposUpdateWebhookRes interface {
+	reposUpdateWebhookRes()
 }
 
 type ScimDeleteUserFromOrgRes interface {
 	scimDeleteUserFromOrgRes()
 }
 
+type SearchCodeRes interface {
+	searchCodeRes()
+}
+
 type SearchCommitsRes interface {
 	searchCommitsRes()
 }
 
+type SearchIssuesAndPullRequestsRes interface {
+	searchIssuesAndPullRequestsRes()
+}
+
+type SearchLabelsRes interface {
+	searchLabelsRes()
+}
+
+type SearchReposRes interface {
+	searchReposRes()
+}
+
 type SearchTopicsRes interface {
 	searchTopicsRes()
+}
+
+type SearchUsersRes interface {
+	searchUsersRes()
 }
 
 type SecretScanningGetAlertRes interface {
@@ -1037,6 +1561,14 @@ type TeamsAddOrUpdateProjectPermissionsInOrgRes interface {
 	teamsAddOrUpdateProjectPermissionsInOrgRes()
 }
 
+type TeamsAddOrUpdateProjectPermissionsLegacyRes interface {
+	teamsAddOrUpdateProjectPermissionsLegacyRes()
+}
+
+type TeamsAddOrUpdateRepoPermissionsLegacyRes interface {
+	teamsAddOrUpdateRepoPermissionsLegacyRes()
+}
+
 type TeamsCheckPermissionsForProjectInOrgRes interface {
 	teamsCheckPermissionsForProjectInOrgRes()
 }
@@ -1051,6 +1583,18 @@ type TeamsCheckPermissionsForRepoInOrgRes interface {
 
 type TeamsCheckPermissionsForRepoLegacyRes interface {
 	teamsCheckPermissionsForRepoLegacyRes()
+}
+
+type TeamsCreateOrUpdateIdpGroupConnectionsLegacyRes interface {
+	teamsCreateOrUpdateIdpGroupConnectionsLegacyRes()
+}
+
+type TeamsCreateRes interface {
+	teamsCreateRes()
+}
+
+type TeamsDeleteLegacyRes interface {
+	teamsDeleteLegacyRes()
 }
 
 type TeamsGetByNameRes interface {
@@ -1071,6 +1615,10 @@ type TeamsGetMembershipForUserInOrgRes interface {
 
 type TeamsGetMembershipForUserLegacyRes interface {
 	teamsGetMembershipForUserLegacyRes()
+}
+
+type TeamsListChildLegacyRes interface {
+	teamsListChildLegacyRes()
 }
 
 type TeamsListForAuthenticatedUserRes interface {
@@ -1109,6 +1657,22 @@ type TeamsRemoveMembershipForUserLegacyRes interface {
 	teamsRemoveMembershipForUserLegacyRes()
 }
 
+type TeamsRemoveProjectLegacyRes interface {
+	teamsRemoveProjectLegacyRes()
+}
+
+type TeamsUpdateLegacyRes interface {
+	teamsUpdateLegacyRes()
+}
+
+type UsersAddEmailForAuthenticatedRes interface {
+	usersAddEmailForAuthenticatedRes()
+}
+
+type UsersBlockRes interface {
+	usersBlockRes()
+}
+
 type UsersCheckBlockedRes interface {
 	usersCheckBlockedRes()
 }
@@ -1119,6 +1683,22 @@ type UsersCheckFollowingForUserRes interface {
 
 type UsersCheckPersonIsFollowedByAuthenticatedRes interface {
 	usersCheckPersonIsFollowedByAuthenticatedRes()
+}
+
+type UsersCreateGpgKeyForAuthenticatedRes interface {
+	usersCreateGpgKeyForAuthenticatedRes()
+}
+
+type UsersCreatePublicSSHKeyForAuthenticatedRes interface {
+	usersCreatePublicSSHKeyForAuthenticatedRes()
+}
+
+type UsersDeleteEmailForAuthenticatedRes interface {
+	usersDeleteEmailForAuthenticatedRes()
+}
+
+type UsersDeleteGpgKeyForAuthenticatedRes interface {
+	usersDeleteGpgKeyForAuthenticatedRes()
 }
 
 type UsersDeletePublicSSHKeyForAuthenticatedRes interface {
@@ -1135,6 +1715,10 @@ type UsersGetAuthenticatedRes interface {
 
 type UsersGetByUsernameRes interface {
 	usersGetByUsernameRes()
+}
+
+type UsersGetContextForUserRes interface {
+	usersGetContextForUserRes()
 }
 
 type UsersGetGpgKeyForAuthenticatedRes interface {
@@ -1177,10 +1761,18 @@ type UsersListRes interface {
 	usersListRes()
 }
 
+type UsersSetPrimaryEmailVisibilityForAuthenticatedRes interface {
+	usersSetPrimaryEmailVisibilityForAuthenticatedRes()
+}
+
 type UsersUnblockRes interface {
 	usersUnblockRes()
 }
 
 type UsersUnfollowRes interface {
 	usersUnfollowRes()
+}
+
+type UsersUpdateAuthenticatedRes interface {
+	usersUpdateAuthenticatedRes()
 }

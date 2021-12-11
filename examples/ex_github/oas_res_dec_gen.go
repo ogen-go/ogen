@@ -1936,6 +1936,48 @@ func decodeActionsRetryWorkflowResponse(resp *http.Response, span trace.Span) (r
 	}
 }
 
+func decodeActionsReviewPendingDeploymentsForRunResponse(resp *http.Response, span trace.Span) (res []Deployment, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response []Deployment
+			if err := func() error {
+				response = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem Deployment
+					if err := elem.Decode(d); err != nil {
+						return err
+					}
+					response = append(response, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
 func decodeActionsSetAllowedActionsOrganizationResponse(resp *http.Response, span trace.Span) (res ActionsSetAllowedActionsOrganizationNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
@@ -2555,6 +2597,143 @@ func decodeActivityListEventsForAuthenticatedUserResponse(resp *http.Response, s
 			}
 
 			return response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeActivityListNotificationsForAuthenticatedUserResponse(resp *http.Response, span trace.Span) (res ActivityListNotificationsForAuthenticatedUserRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ActivityListNotificationsForAuthenticatedUserOKApplicationJSON
+			if err := func() error {
+				{
+					var unwrapped []Thread
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem Thread
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = ActivityListNotificationsForAuthenticatedUserOKApplicationJSON(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 304:
+		return &NotModified{}, nil
+	case 401:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ActivityListNotificationsForAuthenticatedUserApplicationJSONUnauthorized
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ActivityListNotificationsForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 403:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ActivityListNotificationsForAuthenticatedUserApplicationJSONForbidden
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ActivityListNotificationsForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -3991,6 +4170,494 @@ func decodeAppsAddRepoToInstallationResponse(resp *http.Response, span trace.Spa
 	}
 }
 
+func decodeAppsCheckTokenResponse(resp *http.Response, span trace.Span) (res AppsCheckTokenRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Authorization
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 404:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response BasicError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeAppsCreateContentAttachmentResponse(resp *http.Response, span trace.Span) (res AppsCreateContentAttachmentRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ContentReferenceAttachment
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 304:
+		return &NotModified{}, nil
+	case 403:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response AppsCreateContentAttachmentApplicationJSONForbidden
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = AppsCreateContentAttachmentApplicationJSONForbidden(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 404:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response AppsCreateContentAttachmentApplicationJSONNotFound
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = AppsCreateContentAttachmentApplicationJSONNotFound(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 410:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response AppsCreateContentAttachmentApplicationJSONGone
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = AppsCreateContentAttachmentApplicationJSONGone(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 415:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response PreviewHeaderMissing
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeAppsCreateInstallationAccessTokenResponse(resp *http.Response, span trace.Span) (res AppsCreateInstallationAccessTokenRes, err error) {
+	switch resp.StatusCode {
+	case 201:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response InstallationToken
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 401:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response AppsCreateInstallationAccessTokenApplicationJSONUnauthorized
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = AppsCreateInstallationAccessTokenApplicationJSONUnauthorized(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 403:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response AppsCreateInstallationAccessTokenApplicationJSONForbidden
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = AppsCreateInstallationAccessTokenApplicationJSONForbidden(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 404:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response AppsCreateInstallationAccessTokenApplicationJSONNotFound
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = AppsCreateInstallationAccessTokenApplicationJSONNotFound(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 415:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response PreviewHeaderMissing
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeAppsDeleteAuthorizationResponse(resp *http.Response, span trace.Span) (res AppsDeleteAuthorizationRes, err error) {
+	switch resp.StatusCode {
+	case 204:
+		return &AppsDeleteAuthorizationNoContent{}, nil
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
 func decodeAppsDeleteInstallationResponse(resp *http.Response, span trace.Span) (res AppsDeleteInstallationRes, err error) {
 	switch resp.StatusCode {
 	case 204:
@@ -4009,6 +4676,42 @@ func decodeAppsDeleteInstallationResponse(resp *http.Response, span trace.Span) 
 			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeAppsDeleteTokenResponse(resp *http.Response, span trace.Span) (res AppsDeleteTokenRes, err error) {
+	switch resp.StatusCode {
+	case 204:
+		return &AppsDeleteTokenNoContent{}, nil
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -4369,6 +5072,229 @@ func decodeAppsGetWebhookConfigForAppResponse(resp *http.Response, span trace.Sp
 			}
 
 			return response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeAppsGetWebhookDeliveryResponse(resp *http.Response, span trace.Span) (res AppsGetWebhookDeliveryRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response HookDelivery
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 400:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response BasicError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeAppsListAccountsForPlanResponse(resp *http.Response, span trace.Span) (res AppsListAccountsForPlanRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response AppsListAccountsForPlanOKApplicationJSON
+			if err := func() error {
+				{
+					var unwrapped []MarketplacePurchase
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem MarketplacePurchase
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = AppsListAccountsForPlanOKApplicationJSON(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 401:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response AppsListAccountsForPlanApplicationJSONUnauthorized
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = AppsListAccountsForPlanApplicationJSONUnauthorized(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 404:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response AppsListAccountsForPlanApplicationJSONNotFound
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = AppsListAccountsForPlanApplicationJSONNotFound(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -5012,6 +5938,194 @@ func decodeAppsListSubscriptionsForAuthenticatedUserStubbedResponse(resp *http.R
 	}
 }
 
+func decodeAppsListWebhookDeliveriesResponse(resp *http.Response, span trace.Span) (res AppsListWebhookDeliveriesRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response AppsListWebhookDeliveriesOKApplicationJSON
+			if err := func() error {
+				{
+					var unwrapped []HookDeliveryItem
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem HookDeliveryItem
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = AppsListWebhookDeliveriesOKApplicationJSON(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 400:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response BasicError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeAppsRedeliverWebhookDeliveryResponse(resp *http.Response, span trace.Span) (res AppsRedeliverWebhookDeliveryRes, err error) {
+	switch resp.StatusCode {
+	case 202:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Accepted
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 400:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response BasicError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
 func decodeAppsRemoveRepoFromInstallationResponse(resp *http.Response, span trace.Span) (res AppsRemoveRepoFromInstallationRes, err error) {
 	switch resp.StatusCode {
 	case 204:
@@ -5085,10 +6199,225 @@ func decodeAppsRemoveRepoFromInstallationResponse(resp *http.Response, span trac
 	}
 }
 
+func decodeAppsResetTokenResponse(resp *http.Response, span trace.Span) (res AppsResetTokenRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Authorization
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
 func decodeAppsRevokeInstallationAccessTokenResponse(resp *http.Response, span trace.Span) (res AppsRevokeInstallationAccessTokenNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return AppsRevokeInstallationAccessTokenNoContent{}, nil
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeAppsScopeTokenResponse(resp *http.Response, span trace.Span) (res AppsScopeTokenRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Authorization
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 401:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response AppsScopeTokenApplicationJSONUnauthorized
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = AppsScopeTokenApplicationJSONUnauthorized(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 403:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response AppsScopeTokenApplicationJSONForbidden
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = AppsScopeTokenApplicationJSONForbidden(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 404:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response AppsScopeTokenApplicationJSONNotFound
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = AppsScopeTokenApplicationJSONNotFound(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
 	default:
 		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -8046,6 +9375,40 @@ func decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseResponse(resp 
 	}
 }
 
+func decodeEnterpriseAdminUpdateAttributeForEnterpriseGroupResponse(resp *http.Response, span trace.Span) (res ScimEnterpriseGroup, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ScimEnterpriseGroup
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
 func decodeEnterpriseAdminUpdateAttributeForEnterpriseUserResponse(resp *http.Response, span trace.Span) (res ScimEnterpriseUser, err error) {
 	switch resp.StatusCode {
 	case 200:
@@ -8161,6 +9524,131 @@ func decodeGistsCheckIsStarredResponse(resp *http.Response, span trace.Span) (re
 			d.ResetBytes(buf.Bytes())
 
 			var response GistsCheckIsStarredNotFound
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeGistsCreateResponse(resp *http.Response, span trace.Span) (res GistsCreateRes, err error) {
+	switch resp.StatusCode {
+	case 201:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response GistSimple
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 304:
+		return &NotModified{}, nil
+	case 403:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response GistsCreateApplicationJSONForbidden
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = GistsCreateApplicationJSONForbidden(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 404:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response GistsCreateApplicationJSONNotFound
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = GistsCreateApplicationJSONNotFound(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -8423,6 +9911,131 @@ func decodeGistsDeleteCommentResponse(resp *http.Response, span trace.Span) (res
 	}
 }
 
+func decodeGistsForkResponse(resp *http.Response, span trace.Span) (res GistsForkRes, err error) {
+	switch resp.StatusCode {
+	case 201:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response BaseGist
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 304:
+		return &NotModified{}, nil
+	case 403:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response GistsForkApplicationJSONForbidden
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = GistsForkApplicationJSONForbidden(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 404:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response GistsForkApplicationJSONNotFound
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = GistsForkApplicationJSONNotFound(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
 func decodeGistsGetResponse(resp *http.Response, span trace.Span) (res GistsGetRes, err error) {
 	switch resp.StatusCode {
 	case 200:
@@ -8585,6 +10198,129 @@ func decodeGistsGetCommentResponse(resp *http.Response, span trace.Span) (res Gi
 			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeGistsGetRevisionResponse(resp *http.Response, span trace.Span) (res GistsGetRevisionRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response GistSimple
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 403:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response GistsGetRevisionApplicationJSONForbidden
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = GistsGetRevisionApplicationJSONForbidden(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 404:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response GistsGetRevisionApplicationJSONNotFound
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = GistsGetRevisionApplicationJSONNotFound(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -8898,6 +10634,79 @@ func decodeGistsListCommitsResponse(resp *http.Response, span trace.Span) (res G
 	}
 }
 
+func decodeGistsListForUserResponse(resp *http.Response, span trace.Span) (res GistsListForUserRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response GistsListForUserOKApplicationJSON
+			if err := func() error {
+				{
+					var unwrapped []BaseGist
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem BaseGist
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = GistsListForUserOKApplicationJSON(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
 func decodeGistsListForksResponse(resp *http.Response, span trace.Span) (res GistsListForksRes, err error) {
 	switch resp.StatusCode {
 	case 200:
@@ -8993,6 +10802,108 @@ func decodeGistsListForksResponse(resp *http.Response, span trace.Span) (res Gis
 						return err
 					}
 					response = GistsListForksApplicationJSONNotFound(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeGistsListPublicResponse(resp *http.Response, span trace.Span) (res GistsListPublicRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response GistsListPublicOKApplicationJSON
+			if err := func() error {
+				{
+					var unwrapped []BaseGist
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem BaseGist
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = GistsListPublicOKApplicationJSON(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 304:
+		return &NotModified{}, nil
+	case 403:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response BasicError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -9325,6 +11236,652 @@ func decodeGistsUpdateCommentResponse(resp *http.Response, span trace.Span) (res
 	}
 }
 
+func decodeGitCreateBlobResponse(resp *http.Response, span trace.Span) (res GitCreateBlobRes, err error) {
+	switch resp.StatusCode {
+	case 201:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ShortBlob
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 403:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response GitCreateBlobApplicationJSONForbidden
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = GitCreateBlobApplicationJSONForbidden(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 404:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response GitCreateBlobApplicationJSONNotFound
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = GitCreateBlobApplicationJSONNotFound(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 409:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response GitCreateBlobApplicationJSONConflict
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = GitCreateBlobApplicationJSONConflict(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeGitCreateCommitResponse(resp *http.Response, span trace.Span) (res GitCreateCommitRes, err error) {
+	switch resp.StatusCode {
+	case 201:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response GitCommit
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 404:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response BasicError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeGitCreateRefResponse(resp *http.Response, span trace.Span) (res GitCreateRefRes, err error) {
+	switch resp.StatusCode {
+	case 201:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response GitRef
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeGitCreateTagResponse(resp *http.Response, span trace.Span) (res GitCreateTagRes, err error) {
+	switch resp.StatusCode {
+	case 201:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response GitTag
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeGitCreateTreeResponse(resp *http.Response, span trace.Span) (res GitCreateTreeRes, err error) {
+	switch resp.StatusCode {
+	case 201:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response GitTree
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 403:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response GitCreateTreeApplicationJSONForbidden
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = GitCreateTreeApplicationJSONForbidden(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 404:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response GitCreateTreeApplicationJSONNotFound
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = GitCreateTreeApplicationJSONNotFound(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeGitDeleteRefResponse(resp *http.Response, span trace.Span) (res GitDeleteRefRes, err error) {
+	switch resp.StatusCode {
+	case 204:
+		return &GitDeleteRefNoContent{}, nil
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeGitGetBlobResponse(resp *http.Response, span trace.Span) (res GitGetBlobRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Blob
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 403:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response GitGetBlobApplicationJSONForbidden
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = GitGetBlobApplicationJSONForbidden(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 404:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response GitGetBlobApplicationJSONNotFound
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = GitGetBlobApplicationJSONNotFound(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
 func decodeGitGetCommitResponse(resp *http.Response, span trace.Span) (res GitGetCommitRes, err error) {
 	switch resp.StatusCode {
 	case 200:
@@ -9508,6 +12065,94 @@ func decodeGitGetTagResponse(resp *http.Response, span trace.Span) (res GitGetTa
 	}
 }
 
+func decodeGitGetTreeResponse(resp *http.Response, span trace.Span) (res GitGetTreeRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response GitTree
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 404:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response BasicError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
 func decodeGitListMatchingRefsResponse(resp *http.Response, span trace.Span) (res []GitRef, err error) {
 	switch resp.StatusCode {
 	case 200:
@@ -9542,6 +12187,67 @@ func decodeGitListMatchingRefsResponse(resp *http.Response, span trace.Span) (re
 			}
 
 			return response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeGitUpdateRefResponse(resp *http.Response, span trace.Span) (res GitUpdateRefRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response GitRef
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -9665,6 +12371,128 @@ func decodeInteractionsRemoveRestrictionsForRepoResponse(resp *http.Response, sp
 	}
 }
 
+func decodeInteractionsSetRestrictionsForAuthenticatedUserResponse(resp *http.Response, span trace.Span) (res InteractionsSetRestrictionsForAuthenticatedUserRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response InteractionLimitResponse
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeInteractionsSetRestrictionsForOrgResponse(resp *http.Response, span trace.Span) (res InteractionsSetRestrictionsForOrgRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response InteractionLimitResponse
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
 func decodeInteractionsSetRestrictionsForRepoResponse(resp *http.Response, span trace.Span) (res InteractionsSetRestrictionsForRepoRes, err error) {
 	switch resp.StatusCode {
 	case 200:
@@ -9771,6 +12599,517 @@ func decodeIssuesCheckUserCanBeAssignedResponse(resp *http.Response, span trace.
 	}
 }
 
+func decodeIssuesCreateResponse(resp *http.Response, span trace.Span) (res IssuesCreateRes, err error) {
+	switch resp.StatusCode {
+	case 201:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Issue
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 403:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response IssuesCreateApplicationJSONForbidden
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = IssuesCreateApplicationJSONForbidden(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 404:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response IssuesCreateApplicationJSONNotFound
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = IssuesCreateApplicationJSONNotFound(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 410:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response IssuesCreateApplicationJSONGone
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = IssuesCreateApplicationJSONGone(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 503:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ServiceUnavailable
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeIssuesCreateCommentResponse(resp *http.Response, span trace.Span) (res IssuesCreateCommentRes, err error) {
+	switch resp.StatusCode {
+	case 201:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response IssueComment
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 403:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response IssuesCreateCommentApplicationJSONForbidden
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = IssuesCreateCommentApplicationJSONForbidden(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 404:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response IssuesCreateCommentApplicationJSONNotFound
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = IssuesCreateCommentApplicationJSONNotFound(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 410:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response IssuesCreateCommentApplicationJSONGone
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = IssuesCreateCommentApplicationJSONGone(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeIssuesCreateLabelResponse(resp *http.Response, span trace.Span) (res IssuesCreateLabelRes, err error) {
+	switch resp.StatusCode {
+	case 201:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Label
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 404:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response BasicError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeIssuesCreateMilestoneResponse(resp *http.Response, span trace.Span) (res IssuesCreateMilestoneRes, err error) {
+	switch resp.StatusCode {
+	case 201:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Milestone
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 404:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response BasicError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
 func decodeIssuesDeleteCommentResponse(resp *http.Response, span trace.Span) (res IssuesDeleteCommentNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
@@ -9810,6 +13149,135 @@ func decodeIssuesDeleteMilestoneResponse(resp *http.Response, span trace.Span) (
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeIssuesGetResponse(resp *http.Response, span trace.Span) (res IssuesGetRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Issue
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 301:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response IssuesGetApplicationJSONMovedPermanently
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = IssuesGetApplicationJSONMovedPermanently(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 304:
+		return &NotModified{}, nil
+	case 404:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response IssuesGetApplicationJSONNotFound
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = IssuesGetApplicationJSONNotFound(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 410:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response IssuesGetApplicationJSONGone
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = IssuesGetApplicationJSONGone(unwrapped)
 				}
 				return nil
 			}(); err != nil {
@@ -10135,6 +13603,108 @@ func decodeIssuesGetMilestoneResponse(resp *http.Response, span trace.Span) (res
 	}
 }
 
+func decodeIssuesListResponse(resp *http.Response, span trace.Span) (res IssuesListRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response IssuesListOKApplicationJSON
+			if err := func() error {
+				{
+					var unwrapped []Issue
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem Issue
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = IssuesListOKApplicationJSON(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 304:
+		return &NotModified{}, nil
+	case 404:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response BasicError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
 func decodeIssuesListAssigneesResponse(resp *http.Response, span trace.Span) (res IssuesListAssigneesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
@@ -10301,6 +13871,462 @@ func decodeIssuesListCommentsResponse(resp *http.Response, span trace.Span) (res
 						return err
 					}
 					response = IssuesListCommentsApplicationJSONGone(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeIssuesListCommentsForRepoResponse(resp *http.Response, span trace.Span) (res IssuesListCommentsForRepoRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response IssuesListCommentsForRepoOKApplicationJSON
+			if err := func() error {
+				{
+					var unwrapped []IssueComment
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem IssueComment
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = IssuesListCommentsForRepoOKApplicationJSON(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 404:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response BasicError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeIssuesListEventsForRepoResponse(resp *http.Response, span trace.Span) (res IssuesListEventsForRepoRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response IssuesListEventsForRepoOKApplicationJSON
+			if err := func() error {
+				{
+					var unwrapped []IssueEvent
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem IssueEvent
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = IssuesListEventsForRepoOKApplicationJSON(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeIssuesListForAuthenticatedUserResponse(resp *http.Response, span trace.Span) (res IssuesListForAuthenticatedUserRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response IssuesListForAuthenticatedUserOKApplicationJSON
+			if err := func() error {
+				{
+					var unwrapped []Issue
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem Issue
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = IssuesListForAuthenticatedUserOKApplicationJSON(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 304:
+		return &NotModified{}, nil
+	case 404:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response BasicError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeIssuesListForOrgResponse(resp *http.Response, span trace.Span) (res IssuesListForOrgRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response IssuesListForOrgOKApplicationJSON
+			if err := func() error {
+				{
+					var unwrapped []Issue
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem Issue
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = IssuesListForOrgOKApplicationJSON(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 404:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response BasicError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeIssuesListForRepoResponse(resp *http.Response, span trace.Span) (res IssuesListForRepoRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response IssuesListForRepoOKApplicationJSON
+			if err := func() error {
+				{
+					var unwrapped []IssueSimple
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem IssueSimple
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = IssuesListForRepoOKApplicationJSON(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 301:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response IssuesListForRepoApplicationJSONMovedPermanently
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = IssuesListForRepoApplicationJSONMovedPermanently(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 404:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response IssuesListForRepoApplicationJSONNotFound
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = IssuesListForRepoApplicationJSONNotFound(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -10577,6 +14603,135 @@ func decodeIssuesListMilestonesResponse(resp *http.Response, span trace.Span) (r
 	}
 }
 
+func decodeIssuesLockResponse(resp *http.Response, span trace.Span) (res IssuesLockRes, err error) {
+	switch resp.StatusCode {
+	case 204:
+		return &IssuesLockNoContent{}, nil
+	case 403:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response IssuesLockApplicationJSONForbidden
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = IssuesLockApplicationJSONForbidden(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 404:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response IssuesLockApplicationJSONNotFound
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = IssuesLockApplicationJSONNotFound(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 410:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response IssuesLockApplicationJSONGone
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = IssuesLockApplicationJSONGone(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
 func decodeIssuesRemoveAllLabelsResponse(resp *http.Response, span trace.Span) (res IssuesRemoveAllLabelsRes, err error) {
 	switch resp.StatusCode {
 	case 204:
@@ -10811,6 +14966,279 @@ func decodeIssuesUnlockResponse(resp *http.Response, span trace.Span) (res Issue
 						return err
 					}
 					response = IssuesUnlockApplicationJSONNotFound(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeIssuesUpdateResponse(resp *http.Response, span trace.Span) (res IssuesUpdateRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Issue
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 301:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response IssuesUpdateApplicationJSONMovedPermanently
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = IssuesUpdateApplicationJSONMovedPermanently(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 403:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response IssuesUpdateApplicationJSONForbidden
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = IssuesUpdateApplicationJSONForbidden(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 404:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response IssuesUpdateApplicationJSONNotFound
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = IssuesUpdateApplicationJSONNotFound(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 410:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response IssuesUpdateApplicationJSONGone
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = IssuesUpdateApplicationJSONGone(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 503:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ServiceUnavailable
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeIssuesUpdateCommentResponse(resp *http.Response, span trace.Span) (res IssuesUpdateCommentRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response IssueComment
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -12066,6 +16494,456 @@ func decodeMigrationsListReposForUserResponse(resp *http.Response, span trace.Sp
 	}
 }
 
+func decodeMigrationsMapCommitAuthorResponse(resp *http.Response, span trace.Span) (res MigrationsMapCommitAuthorRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response PorterAuthor
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 404:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response BasicError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeMigrationsSetLfsPreferenceResponse(resp *http.Response, span trace.Span) (res MigrationsSetLfsPreferenceRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Import
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeMigrationsStartForAuthenticatedUserResponse(resp *http.Response, span trace.Span) (res MigrationsStartForAuthenticatedUserRes, err error) {
+	switch resp.StatusCode {
+	case 201:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Migration
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 304:
+		return &NotModified{}, nil
+	case 401:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response MigrationsStartForAuthenticatedUserApplicationJSONUnauthorized
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = MigrationsStartForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 403:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response MigrationsStartForAuthenticatedUserApplicationJSONForbidden
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = MigrationsStartForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeMigrationsStartForOrgResponse(resp *http.Response, span trace.Span) (res MigrationsStartForOrgRes, err error) {
+	switch resp.StatusCode {
+	case 201:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Migration
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 404:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response BasicError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeMigrationsStartImportResponse(resp *http.Response, span trace.Span) (res MigrationsStartImportRes, err error) {
+	switch resp.StatusCode {
+	case 201:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Import
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 404:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response BasicError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
 func decodeMigrationsUnlockRepoForAuthenticatedUserResponse(resp *http.Response, span trace.Span) (res MigrationsUnlockRepoForAuthenticatedUserRes, err error) {
 	switch resp.StatusCode {
 	case 204:
@@ -12232,6 +17110,162 @@ func decodeMigrationsUpdateImportResponse(resp *http.Response, span trace.Span) 
 			}
 
 			return response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeOAuthAuthorizationsCreateAuthorizationResponse(resp *http.Response, span trace.Span) (res OAuthAuthorizationsCreateAuthorizationRes, err error) {
+	switch resp.StatusCode {
+	case 201:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Authorization
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 304:
+		return &NotModified{}, nil
+	case 401:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response OAuthAuthorizationsCreateAuthorizationApplicationJSONUnauthorized
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = OAuthAuthorizationsCreateAuthorizationApplicationJSONUnauthorized(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 403:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response OAuthAuthorizationsCreateAuthorizationApplicationJSONForbidden
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = OAuthAuthorizationsCreateAuthorizationApplicationJSONForbidden(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 410:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response OAuthAuthorizationsCreateAuthorizationApplicationJSONGone
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = OAuthAuthorizationsCreateAuthorizationApplicationJSONGone(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -12582,6 +17616,262 @@ func decodeOAuthAuthorizationsGetGrantResponse(resp *http.Response, span trace.S
 	}
 }
 
+func decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppResponse(resp *http.Response, span trace.Span) (res OAuthAuthorizationsGetOrCreateAuthorizationForAppRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONOK
+			if err := func() error {
+				{
+					var unwrapped Authorization
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONOK(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 201:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONCreated
+			if err := func() error {
+				{
+					var unwrapped Authorization
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONCreated(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 304:
+		return &NotModified{}, nil
+	case 401:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONUnauthorized
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONUnauthorized(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 403:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONForbidden
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONForbidden(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintResponse(resp *http.Response, span trace.Span) (res OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintApplicationJSONOK
+			if err := func() error {
+				{
+					var unwrapped Authorization
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintApplicationJSONOK(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 201:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintApplicationJSONCreated
+			if err := func() error {
+				{
+					var unwrapped Authorization
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintApplicationJSONCreated(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
 func decodeOAuthAuthorizationsListAuthorizationsResponse(resp *http.Response, span trace.Span) (res OAuthAuthorizationsListAuthorizationsRes, err error) {
 	switch resp.StatusCode {
 	case 200:
@@ -12864,6 +18154,166 @@ func decodeOAuthAuthorizationsListGrantsResponse(resp *http.Response, span trace
 	}
 }
 
+func decodeOAuthAuthorizationsUpdateAuthorizationResponse(resp *http.Response, span trace.Span) (res OAuthAuthorizationsUpdateAuthorizationRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Authorization
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeOrgsBlockUserResponse(resp *http.Response, span trace.Span) (res OrgsBlockUserRes, err error) {
+	switch resp.StatusCode {
+	case 204:
+		return &OrgsBlockUserNoContent{}, nil
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeOrgsCancelInvitationResponse(resp *http.Response, span trace.Span) (res OrgsCancelInvitationRes, err error) {
+	switch resp.StatusCode {
+	case 204:
+		return &OrgsCancelInvitationNoContent{}, nil
+	case 404:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response BasicError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
 func decodeOrgsCheckBlockedUserResponse(resp *http.Response, span trace.Span) (res OrgsCheckBlockedUserRes, err error) {
 	switch resp.StatusCode {
 	case 204:
@@ -12971,6 +18421,182 @@ func decodeOrgsConvertMemberToOutsideCollaboratorResponse(resp *http.Response, s
 			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeOrgsCreateInvitationResponse(resp *http.Response, span trace.Span) (res OrgsCreateInvitationRes, err error) {
+	switch resp.StatusCode {
+	case 201:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response OrganizationInvitation
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 404:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response BasicError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeOrgsCreateWebhookResponse(resp *http.Response, span trace.Span) (res OrgsCreateWebhookRes, err error) {
+	switch resp.StatusCode {
+	case 201:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response OrgHook
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 404:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response BasicError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -13415,6 +19041,94 @@ func decodeOrgsGetWebhookConfigForOrgResponse(resp *http.Response, span trace.Sp
 	}
 }
 
+func decodeOrgsGetWebhookDeliveryResponse(resp *http.Response, span trace.Span) (res OrgsGetWebhookDeliveryRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response HookDelivery
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 400:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response BasicError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
 func decodeOrgsListResponse(resp *http.Response, span trace.Span) (res OrgsListRes, err error) {
 	switch resp.StatusCode {
 	case 200:
@@ -13834,6 +19548,218 @@ func decodeOrgsListInvitationTeamsResponse(resp *http.Response, span trace.Span)
 	}
 }
 
+func decodeOrgsListMembersResponse(resp *http.Response, span trace.Span) (res OrgsListMembersRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response OrgsListMembersOKApplicationJSON
+			if err := func() error {
+				{
+					var unwrapped []SimpleUser
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem SimpleUser
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = OrgsListMembersOKApplicationJSON(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 302:
+		return &OrgsListMembersFound{}, nil
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeOrgsListMembershipsForAuthenticatedUserResponse(resp *http.Response, span trace.Span) (res OrgsListMembershipsForAuthenticatedUserRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response OrgsListMembershipsForAuthenticatedUserOKApplicationJSON
+			if err := func() error {
+				{
+					var unwrapped []OrgMembership
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem OrgMembership
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = OrgsListMembershipsForAuthenticatedUserOKApplicationJSON(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 304:
+		return &NotModified{}, nil
+	case 401:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response OrgsListMembershipsForAuthenticatedUserApplicationJSONUnauthorized
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = OrgsListMembershipsForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 403:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response OrgsListMembershipsForAuthenticatedUserApplicationJSONForbidden
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = OrgsListMembershipsForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
 func decodeOrgsListOutsideCollaboratorsResponse(resp *http.Response, span trace.Span) (res []SimpleUser, err error) {
 	switch resp.StatusCode {
 	case 200:
@@ -14033,6 +19959,106 @@ func decodeOrgsListSamlSSOAuthorizationsResponse(resp *http.Response, span trace
 	}
 }
 
+func decodeOrgsListWebhookDeliveriesResponse(resp *http.Response, span trace.Span) (res OrgsListWebhookDeliveriesRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response OrgsListWebhookDeliveriesOKApplicationJSON
+			if err := func() error {
+				{
+					var unwrapped []HookDeliveryItem
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem HookDeliveryItem
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = OrgsListWebhookDeliveriesOKApplicationJSON(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 400:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response BasicError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
 func decodeOrgsListWebhooksResponse(resp *http.Response, span trace.Span) (res OrgsListWebhooksRes, err error) {
 	switch resp.StatusCode {
 	case 200:
@@ -14124,6 +20150,94 @@ func decodeOrgsPingWebhookResponse(resp *http.Response, span trace.Span) (res Or
 			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeOrgsRedeliverWebhookDeliveryResponse(resp *http.Response, span trace.Span) (res OrgsRedeliverWebhookDeliveryRes, err error) {
+	switch resp.StatusCode {
+	case 202:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Accepted
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 400:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response BasicError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -14330,6 +20444,94 @@ func decodeOrgsRemoveSamlSSOAuthorizationResponse(resp *http.Response, span trac
 	}
 }
 
+func decodeOrgsSetMembershipForUserResponse(resp *http.Response, span trace.Span) (res OrgsSetMembershipForUserRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response OrgMembership
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 403:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response BasicError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
 func decodeOrgsSetPublicMembershipForAuthenticatedUserResponse(resp *http.Response, span trace.Span) (res OrgsSetPublicMembershipForAuthenticatedUserRes, err error) {
 	switch resp.StatusCode {
 	case 204:
@@ -14370,6 +20572,217 @@ func decodeOrgsUnblockUserResponse(resp *http.Response, span trace.Span) (res Or
 	switch resp.StatusCode {
 	case 204:
 		return OrgsUnblockUserNoContent{}, nil
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeOrgsUpdateMembershipForAuthenticatedUserResponse(resp *http.Response, span trace.Span) (res OrgsUpdateMembershipForAuthenticatedUserRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response OrgMembership
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 403:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response OrgsUpdateMembershipForAuthenticatedUserApplicationJSONForbidden
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = OrgsUpdateMembershipForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 404:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response OrgsUpdateMembershipForAuthenticatedUserApplicationJSONNotFound
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = OrgsUpdateMembershipForAuthenticatedUserApplicationJSONNotFound(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeOrgsUpdateWebhookResponse(resp *http.Response, span trace.Span) (res OrgsUpdateWebhookRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response OrgHook
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 404:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response BasicError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
 	default:
 		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -16512,6 +22925,137 @@ func decodePackagesRestorePackageVersionForUserResponse(resp *http.Response, spa
 	}
 }
 
+func decodeProjectsAddCollaboratorResponse(resp *http.Response, span trace.Span) (res ProjectsAddCollaboratorRes, err error) {
+	switch resp.StatusCode {
+	case 204:
+		return &ProjectsAddCollaboratorNoContent{}, nil
+	case 304:
+		return &NotModified{}, nil
+	case 401:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ProjectsAddCollaboratorApplicationJSONUnauthorized
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ProjectsAddCollaboratorApplicationJSONUnauthorized(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 403:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ProjectsAddCollaboratorApplicationJSONForbidden
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ProjectsAddCollaboratorApplicationJSONForbidden(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 404:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ProjectsAddCollaboratorApplicationJSONNotFound
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ProjectsAddCollaboratorApplicationJSONNotFound(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
 func decodeProjectsCreateColumnResponse(resp *http.Response, span trace.Span) (res ProjectsCreateColumnRes, err error) {
 	switch resp.StatusCode {
 	case 201:
@@ -17819,6 +24363,162 @@ func decodeProjectsGetColumnResponse(resp *http.Response, span trace.Span) (res 
 	}
 }
 
+func decodeProjectsGetPermissionForUserResponse(resp *http.Response, span trace.Span) (res ProjectsGetPermissionForUserRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response RepositoryCollaboratorPermission
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 304:
+		return &NotModified{}, nil
+	case 401:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ProjectsGetPermissionForUserApplicationJSONUnauthorized
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ProjectsGetPermissionForUserApplicationJSONUnauthorized(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 403:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ProjectsGetPermissionForUserApplicationJSONForbidden
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ProjectsGetPermissionForUserApplicationJSONForbidden(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 404:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ProjectsGetPermissionForUserApplicationJSONNotFound
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ProjectsGetPermissionForUserApplicationJSONNotFound(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
 func decodeProjectsListCardsResponse(resp *http.Response, span trace.Span) (res ProjectsListCardsRes, err error) {
 	switch resp.StatusCode {
 	case 200:
@@ -17914,6 +24614,174 @@ func decodeProjectsListCardsResponse(resp *http.Response, span trace.Span) (res 
 						return err
 					}
 					response = ProjectsListCardsApplicationJSONForbidden(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeProjectsListCollaboratorsResponse(resp *http.Response, span trace.Span) (res ProjectsListCollaboratorsRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ProjectsListCollaboratorsOKApplicationJSON
+			if err := func() error {
+				{
+					var unwrapped []SimpleUser
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem SimpleUser
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = ProjectsListCollaboratorsOKApplicationJSON(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 304:
+		return &NotModified{}, nil
+	case 401:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ProjectsListCollaboratorsApplicationJSONUnauthorized
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ProjectsListCollaboratorsApplicationJSONUnauthorized(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 403:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ProjectsListCollaboratorsApplicationJSONForbidden
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ProjectsListCollaboratorsApplicationJSONForbidden(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 404:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ProjectsListCollaboratorsApplicationJSONNotFound
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ProjectsListCollaboratorsApplicationJSONNotFound(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -18309,6 +25177,223 @@ func decodeProjectsListForRepoResponse(resp *http.Response, span trace.Span) (re
 	}
 }
 
+func decodeProjectsListForUserResponse(resp *http.Response, span trace.Span) (res ProjectsListForUserRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ProjectsListForUserOKApplicationJSON
+			if err := func() error {
+				{
+					var unwrapped []Project
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem Project
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = ProjectsListForUserOKApplicationJSON(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeProjectsMoveCardResponse(resp *http.Response, span trace.Span) (res ProjectsMoveCardRes, err error) {
+	switch resp.StatusCode {
+	case 201:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ProjectsMoveCardCreated
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 304:
+		return &NotModified{}, nil
+	case 401:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response BasicError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 403:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ProjectsMoveCardForbidden
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 503:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ProjectsMoveCardServiceUnavailable
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
 func decodeProjectsMoveColumnResponse(resp *http.Response, span trace.Span) (res ProjectsMoveColumnRes, err error) {
 	switch resp.StatusCode {
 	case 201:
@@ -18416,6 +25501,137 @@ func decodeProjectsMoveColumnResponse(resp *http.Response, span trace.Span) (res
 			d.ResetBytes(buf.Bytes())
 
 			var response ValidationErrorSimple
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeProjectsRemoveCollaboratorResponse(resp *http.Response, span trace.Span) (res ProjectsRemoveCollaboratorRes, err error) {
+	switch resp.StatusCode {
+	case 204:
+		return &ProjectsRemoveCollaboratorNoContent{}, nil
+	case 304:
+		return &NotModified{}, nil
+	case 401:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ProjectsRemoveCollaboratorApplicationJSONUnauthorized
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ProjectsRemoveCollaboratorApplicationJSONUnauthorized(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 403:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ProjectsRemoveCollaboratorApplicationJSONForbidden
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ProjectsRemoveCollaboratorApplicationJSONForbidden(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 404:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ProjectsRemoveCollaboratorApplicationJSONNotFound
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ProjectsRemoveCollaboratorApplicationJSONNotFound(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -18853,6 +26069,94 @@ func decodePullsCheckIfMergedResponse(resp *http.Response, span trace.Span) (res
 	}
 }
 
+func decodePullsCreateResponse(resp *http.Response, span trace.Span) (res PullsCreateRes, err error) {
+	switch resp.StatusCode {
+	case 201:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response PullRequest
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 403:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response BasicError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
 func decodePullsCreateReplyForReviewCommentResponse(resp *http.Response, span trace.Span) (res PullsCreateReplyForReviewCommentRes, err error) {
 	switch resp.StatusCode {
 	case 201:
@@ -18984,6 +26288,94 @@ func decodePullsCreateReviewResponse(resp *http.Response, span trace.Span) (res 
 			d.ResetBytes(buf.Bytes())
 
 			var response ValidationErrorSimple
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodePullsCreateReviewCommentResponse(resp *http.Response, span trace.Span) (res PullsCreateReviewCommentRes, err error) {
+	switch resp.StatusCode {
+	case 201:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response PullRequestReviewComment
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 403:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response BasicError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -19434,6 +26826,81 @@ func decodePullsGetReviewCommentResponse(resp *http.Response, span trace.Span) (
 	}
 }
 
+func decodePullsListResponse(resp *http.Response, span trace.Span) (res PullsListRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response PullsListOKApplicationJSON
+			if err := func() error {
+				{
+					var unwrapped []PullRequestSimple
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem PullRequestSimple
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = PullsListOKApplicationJSON(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 304:
+		return &NotModified{}, nil
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
 func decodePullsListCommentsForReviewResponse(resp *http.Response, span trace.Span) (res PullsListCommentsForReviewRes, err error) {
 	switch resp.StatusCode {
 	case 200:
@@ -19541,6 +27008,106 @@ func decodePullsListCommitsResponse(resp *http.Response, span trace.Span) (res [
 			}
 
 			return response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodePullsListFilesResponse(resp *http.Response, span trace.Span) (res PullsListFilesRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response PullsListFilesOKApplicationJSON
+			if err := func() error {
+				{
+					var unwrapped []DiffEntry
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem DiffEntry
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = PullsListFilesOKApplicationJSON(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 500:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response BasicError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -19709,6 +27276,244 @@ func decodePullsListReviewsResponse(resp *http.Response, span trace.Span) (res [
 	}
 }
 
+func decodePullsMergeResponse(resp *http.Response, span trace.Span) (res PullsMergeRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response PullRequestMergeResult
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 403:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response PullsMergeApplicationJSONForbidden
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = PullsMergeApplicationJSONForbidden(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 404:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response PullsMergeApplicationJSONNotFound
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = PullsMergeApplicationJSONNotFound(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 405:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response PullsMergeMethodNotAllowed
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 409:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response PullsMergeConflict
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodePullsRemoveRequestedReviewersResponse(resp *http.Response, span trace.Span) (res PullsRemoveRequestedReviewersRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response PullRequestSimple
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
 func decodePullsSubmitReviewResponse(resp *http.Response, span trace.Span) (res PullsSubmitReviewRes, err error) {
 	switch resp.StatusCode {
 	case 200:
@@ -19814,6 +27619,182 @@ func decodePullsSubmitReviewResponse(resp *http.Response, span trace.Span) (res 
 			d.ResetBytes(buf.Bytes())
 
 			var response ValidationErrorSimple
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodePullsUpdateResponse(resp *http.Response, span trace.Span) (res PullsUpdateRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response PullRequest
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 403:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response BasicError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodePullsUpdateBranchResponse(resp *http.Response, span trace.Span) (res PullsUpdateBranchRes, err error) {
+	switch resp.StatusCode {
+	case 202:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response PullsUpdateBranchAccepted
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 403:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response BasicError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -19972,6 +27953,621 @@ func decodeRateLimitGetResponse(resp *http.Response, span trace.Span) (res RateL
 			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeReactionsCreateForCommitCommentResponse(resp *http.Response, span trace.Span) (res ReactionsCreateForCommitCommentRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ReactionsCreateForCommitCommentApplicationJSONOK
+			if err := func() error {
+				{
+					var unwrapped Reaction
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ReactionsCreateForCommitCommentApplicationJSONOK(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 201:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ReactionsCreateForCommitCommentApplicationJSONCreated
+			if err := func() error {
+				{
+					var unwrapped Reaction
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ReactionsCreateForCommitCommentApplicationJSONCreated(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 415:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response PreviewHeaderMissing
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeReactionsCreateForIssueResponse(resp *http.Response, span trace.Span) (res ReactionsCreateForIssueRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ReactionsCreateForIssueApplicationJSONOK
+			if err := func() error {
+				{
+					var unwrapped Reaction
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ReactionsCreateForIssueApplicationJSONOK(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 201:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ReactionsCreateForIssueApplicationJSONCreated
+			if err := func() error {
+				{
+					var unwrapped Reaction
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ReactionsCreateForIssueApplicationJSONCreated(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 415:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response PreviewHeaderMissing
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeReactionsCreateForIssueCommentResponse(resp *http.Response, span trace.Span) (res ReactionsCreateForIssueCommentRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ReactionsCreateForIssueCommentApplicationJSONOK
+			if err := func() error {
+				{
+					var unwrapped Reaction
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ReactionsCreateForIssueCommentApplicationJSONOK(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 201:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ReactionsCreateForIssueCommentApplicationJSONCreated
+			if err := func() error {
+				{
+					var unwrapped Reaction
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ReactionsCreateForIssueCommentApplicationJSONCreated(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 415:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response PreviewHeaderMissing
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeReactionsCreateForPullRequestReviewCommentResponse(resp *http.Response, span trace.Span) (res ReactionsCreateForPullRequestReviewCommentRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ReactionsCreateForPullRequestReviewCommentApplicationJSONOK
+			if err := func() error {
+				{
+					var unwrapped Reaction
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ReactionsCreateForPullRequestReviewCommentApplicationJSONOK(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 201:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ReactionsCreateForPullRequestReviewCommentApplicationJSONCreated
+			if err := func() error {
+				{
+					var unwrapped Reaction
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ReactionsCreateForPullRequestReviewCommentApplicationJSONCreated(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 415:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response PreviewHeaderMissing
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeReactionsCreateForReleaseResponse(resp *http.Response, span trace.Span) (res ReactionsCreateForReleaseRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ReactionsCreateForReleaseApplicationJSONOK
+			if err := func() error {
+				{
+					var unwrapped Reaction
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ReactionsCreateForReleaseApplicationJSONOK(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 201:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ReactionsCreateForReleaseApplicationJSONCreated
+			if err := func() error {
+				{
+					var unwrapped Reaction
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ReactionsCreateForReleaseApplicationJSONCreated(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 415:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response PreviewHeaderMissing
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -21088,6 +29684,452 @@ func decodeReposAcceptInvitationResponse(resp *http.Response, span trace.Span) (
 	}
 }
 
+func decodeReposAddAppAccessRestrictionsResponse(resp *http.Response, span trace.Span) (res ReposAddAppAccessRestrictionsRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ReposAddAppAccessRestrictionsOKApplicationJSON
+			if err := func() error {
+				{
+					var unwrapped []Integration
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem Integration
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = ReposAddAppAccessRestrictionsOKApplicationJSON(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeReposAddCollaboratorResponse(resp *http.Response, span trace.Span) (res ReposAddCollaboratorRes, err error) {
+	switch resp.StatusCode {
+	case 201:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response RepositoryInvitation
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 204:
+		return &ReposAddCollaboratorNoContent{}, nil
+	case 403:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response BasicError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeReposAddStatusCheckContextsResponse(resp *http.Response, span trace.Span) (res ReposAddStatusCheckContextsRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ReposAddStatusCheckContextsOKApplicationJSON
+			if err := func() error {
+				{
+					var unwrapped []string
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem string
+						v, err := d.Str()
+						elem = string(v)
+						if err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = ReposAddStatusCheckContextsOKApplicationJSON(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 403:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ReposAddStatusCheckContextsApplicationJSONForbidden
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ReposAddStatusCheckContextsApplicationJSONForbidden(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 404:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ReposAddStatusCheckContextsApplicationJSONNotFound
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ReposAddStatusCheckContextsApplicationJSONNotFound(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeReposAddTeamAccessRestrictionsResponse(resp *http.Response, span trace.Span) (res ReposAddTeamAccessRestrictionsRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ReposAddTeamAccessRestrictionsOKApplicationJSON
+			if err := func() error {
+				{
+					var unwrapped []Team
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem Team
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = ReposAddTeamAccessRestrictionsOKApplicationJSON(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeReposAddUserAccessRestrictionsResponse(resp *http.Response, span trace.Span) (res ReposAddUserAccessRestrictionsRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ReposAddUserAccessRestrictionsOKApplicationJSON
+			if err := func() error {
+				{
+					var unwrapped []SimpleUser
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem SimpleUser
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = ReposAddUserAccessRestrictionsOKApplicationJSON(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
 func decodeReposCheckCollaboratorResponse(resp *http.Response, span trace.Span) (res ReposCheckCollaboratorRes, err error) {
 	switch resp.StatusCode {
 	case 204:
@@ -21206,6 +30248,155 @@ func decodeReposCompareCommitsResponse(resp *http.Response, span trace.Span) (re
 	}
 }
 
+func decodeReposCreateAutolinkResponse(resp *http.Response, span trace.Span) (res ReposCreateAutolinkRes, err error) {
+	switch resp.StatusCode {
+	case 201:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Autolink
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeReposCreateCommitCommentResponse(resp *http.Response, span trace.Span) (res ReposCreateCommitCommentRes, err error) {
+	switch resp.StatusCode {
+	case 201:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response CommitComment
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 403:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response BasicError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
 func decodeReposCreateCommitSignatureProtectionResponse(resp *http.Response, span trace.Span) (res ReposCreateCommitSignatureProtectionRes, err error) {
 	switch resp.StatusCode {
 	case 200:
@@ -21301,6 +30492,1044 @@ func decodeReposCreateCommitStatusResponse(resp *http.Response, span trace.Span)
 	}
 }
 
+func decodeReposCreateDeployKeyResponse(resp *http.Response, span trace.Span) (res ReposCreateDeployKeyRes, err error) {
+	switch resp.StatusCode {
+	case 201:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response DeployKey
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeReposCreateDeploymentResponse(resp *http.Response, span trace.Span) (res ReposCreateDeploymentRes, err error) {
+	switch resp.StatusCode {
+	case 201:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Deployment
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 202:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ReposCreateDeploymentAccepted
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 409:
+		return &ReposCreateDeploymentConflict{}, nil
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeReposCreateDeploymentStatusResponse(resp *http.Response, span trace.Span) (res ReposCreateDeploymentStatusRes, err error) {
+	switch resp.StatusCode {
+	case 201:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response DeploymentStatus
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeReposCreateDispatchEventResponse(resp *http.Response, span trace.Span) (res ReposCreateDispatchEventRes, err error) {
+	switch resp.StatusCode {
+	case 204:
+		return &ReposCreateDispatchEventNoContent{}, nil
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeReposCreateForAuthenticatedUserResponse(resp *http.Response, span trace.Span) (res ReposCreateForAuthenticatedUserRes, err error) {
+	switch resp.StatusCode {
+	case 201:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Repository
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 304:
+		return &NotModified{}, nil
+	case 400:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ReposCreateForAuthenticatedUserApplicationJSONBadRequest
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ReposCreateForAuthenticatedUserApplicationJSONBadRequest(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 401:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ReposCreateForAuthenticatedUserApplicationJSONUnauthorized
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ReposCreateForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 403:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ReposCreateForAuthenticatedUserApplicationJSONForbidden
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ReposCreateForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 404:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ReposCreateForAuthenticatedUserApplicationJSONNotFound
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ReposCreateForAuthenticatedUserApplicationJSONNotFound(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeReposCreateForkResponse(resp *http.Response, span trace.Span) (res ReposCreateForkRes, err error) {
+	switch resp.StatusCode {
+	case 202:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response FullRepository
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 400:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ReposCreateForkApplicationJSONBadRequest
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ReposCreateForkApplicationJSONBadRequest(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 403:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ReposCreateForkApplicationJSONForbidden
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ReposCreateForkApplicationJSONForbidden(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 404:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ReposCreateForkApplicationJSONNotFound
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ReposCreateForkApplicationJSONNotFound(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeReposCreateInOrgResponse(resp *http.Response, span trace.Span) (res ReposCreateInOrgRes, err error) {
+	switch resp.StatusCode {
+	case 201:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Repository
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 403:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response BasicError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeReposCreateOrUpdateFileContentsResponse(resp *http.Response, span trace.Span) (res ReposCreateOrUpdateFileContentsRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ReposCreateOrUpdateFileContentsApplicationJSONOK
+			if err := func() error {
+				{
+					var unwrapped FileCommit
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ReposCreateOrUpdateFileContentsApplicationJSONOK(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 201:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ReposCreateOrUpdateFileContentsApplicationJSONCreated
+			if err := func() error {
+				{
+					var unwrapped FileCommit
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ReposCreateOrUpdateFileContentsApplicationJSONCreated(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 404:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ReposCreateOrUpdateFileContentsApplicationJSONNotFound
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ReposCreateOrUpdateFileContentsApplicationJSONNotFound(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 409:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ReposCreateOrUpdateFileContentsApplicationJSONConflict
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ReposCreateOrUpdateFileContentsApplicationJSONConflict(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeReposCreatePagesSiteResponse(resp *http.Response, span trace.Span) (res ReposCreatePagesSiteRes, err error) {
+	switch resp.StatusCode {
+	case 201:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Page
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 409:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response BasicError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 415:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response PreviewHeaderMissing
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeReposCreateReleaseResponse(resp *http.Response, span trace.Span) (res ReposCreateReleaseRes, err error) {
+	switch resp.StatusCode {
+	case 201:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Release
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 404:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response BasicError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
 func decodeReposCreateUsingTemplateResponse(resp *http.Response, span trace.Span) (res Repository, err error) {
 	switch resp.StatusCode {
 	case 201:
@@ -21327,6 +31556,129 @@ func decodeReposCreateUsingTemplateResponse(resp *http.Response, span trace.Span
 			}
 
 			return response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeReposCreateWebhookResponse(resp *http.Response, span trace.Span) (res ReposCreateWebhookRes, err error) {
+	switch resp.StatusCode {
+	case 201:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Hook
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 403:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ReposCreateWebhookApplicationJSONForbidden
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ReposCreateWebhookApplicationJSONForbidden(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 404:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ReposCreateWebhookApplicationJSONNotFound
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ReposCreateWebhookApplicationJSONNotFound(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -21807,10 +32159,250 @@ func decodeReposDeleteDeploymentResponse(resp *http.Response, span trace.Span) (
 	}
 }
 
+func decodeReposDeleteFileResponse(resp *http.Response, span trace.Span) (res ReposDeleteFileRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response FileCommit
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 404:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ReposDeleteFileApplicationJSONNotFound
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ReposDeleteFileApplicationJSONNotFound(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 409:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ReposDeleteFileApplicationJSONConflict
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ReposDeleteFileApplicationJSONConflict(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 503:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ServiceUnavailable
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
 func decodeReposDeleteInvitationResponse(resp *http.Response, span trace.Span) (res ReposDeleteInvitationNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return ReposDeleteInvitationNoContent{}, nil
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeReposDeletePagesSiteResponse(resp *http.Response, span trace.Span) (res ReposDeletePagesSiteRes, err error) {
+	switch resp.StatusCode {
+	case 204:
+		return &ReposDeletePagesSiteNoContent{}, nil
+	case 404:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response BasicError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 415:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response PreviewHeaderMissing
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
 	default:
 		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -22980,6 +33572,129 @@ func decodeReposGetCombinedStatusForRefResponse(resp *http.Response, span trace.
 	}
 }
 
+func decodeReposGetCommitResponse(resp *http.Response, span trace.Span) (res ReposGetCommitRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Commit
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 404:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ReposGetCommitApplicationJSONNotFound
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ReposGetCommitApplicationJSONNotFound(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 500:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ReposGetCommitApplicationJSONInternalServerError
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ReposGetCommitApplicationJSONInternalServerError(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
 func decodeReposGetCommitActivityStatsResponse(resp *http.Response, span trace.Span) (res ReposGetCommitActivityStatsRes, err error) {
 	switch resp.StatusCode {
 	case 200:
@@ -23302,6 +34017,67 @@ func decodeReposGetDeployKeyResponse(resp *http.Response, span trace.Span) (res 
 			d.ResetBytes(buf.Bytes())
 
 			var response DeployKey
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 404:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response BasicError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeReposGetDeploymentResponse(resp *http.Response, span trace.Span) (res ReposGetDeploymentRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Deployment
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -23842,6 +34618,182 @@ func decodeReposGetPunchCardStatsResponse(resp *http.Response, span trace.Span) 
 		}
 	case 204:
 		return &NoContent{}, nil
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeReposGetReadmeResponse(resp *http.Response, span trace.Span) (res ReposGetReadmeRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ContentFile
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 404:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response BasicError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeReposGetReadmeInDirectoryResponse(resp *http.Response, span trace.Span) (res ReposGetReadmeInDirectoryRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ContentFile
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 404:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response BasicError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
 	default:
 		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -24568,6 +35520,94 @@ func decodeReposGetWebhookConfigForRepoResponse(resp *http.Response, span trace.
 	}
 }
 
+func decodeReposGetWebhookDeliveryResponse(resp *http.Response, span trace.Span) (res ReposGetWebhookDeliveryRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response HookDelivery
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 400:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response BasicError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
 func decodeReposListAutolinksResponse(resp *http.Response, span trace.Span) (res []Autolink, err error) {
 	switch resp.StatusCode {
 	case 200:
@@ -24665,6 +35705,79 @@ func decodeReposListBranchesResponse(resp *http.Response, span trace.Span) (res 
 			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeReposListBranchesForHeadCommitResponse(resp *http.Response, span trace.Span) (res ReposListBranchesForHeadCommitRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ReposListBranchesForHeadCommitOKApplicationJSON
+			if err := func() error {
+				{
+					var unwrapped []BranchShort
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem BranchShort
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = ReposListBranchesForHeadCommitOKApplicationJSON(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -25308,6 +36421,185 @@ func decodeReposListDeploymentStatusesResponse(resp *http.Response, span trace.S
 	}
 }
 
+func decodeReposListDeploymentsResponse(resp *http.Response, span trace.Span) (res []Deployment, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response []Deployment
+			if err := func() error {
+				response = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem Deployment
+					if err := elem.Decode(d); err != nil {
+						return err
+					}
+					response = append(response, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeReposListForAuthenticatedUserResponse(resp *http.Response, span trace.Span) (res ReposListForAuthenticatedUserRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ReposListForAuthenticatedUserOKApplicationJSON
+			if err := func() error {
+				{
+					var unwrapped []Repository
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem Repository
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = ReposListForAuthenticatedUserOKApplicationJSON(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 304:
+		return &NotModified{}, nil
+	case 401:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ReposListForAuthenticatedUserApplicationJSONUnauthorized
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ReposListForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 403:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ReposListForAuthenticatedUserApplicationJSONForbidden
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ReposListForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
 func decodeReposListForOrgResponse(resp *http.Response, span trace.Span) (res []MinimalRepository, err error) {
 	switch resp.StatusCode {
 	case 200:
@@ -25724,6 +37016,81 @@ func decodeReposListPagesBuildsResponse(resp *http.Response, span trace.Span) (r
 	}
 }
 
+func decodeReposListPublicResponse(resp *http.Response, span trace.Span) (res ReposListPublicRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ReposListPublicOKApplicationJSON
+			if err := func() error {
+				{
+					var unwrapped []MinimalRepository
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem MinimalRepository
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = ReposListPublicOKApplicationJSON(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 304:
+		return &NotModified{}, nil
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
 func decodeReposListPullRequestsAssociatedWithCommitResponse(resp *http.Response, span trace.Span) (res []PullRequestSimple, err error) {
 	switch resp.StatusCode {
 	case 200:
@@ -25965,6 +37332,106 @@ func decodeReposListTeamsResponse(resp *http.Response, span trace.Span) (res []T
 	}
 }
 
+func decodeReposListWebhookDeliveriesResponse(resp *http.Response, span trace.Span) (res ReposListWebhookDeliveriesRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ReposListWebhookDeliveriesOKApplicationJSON
+			if err := func() error {
+				{
+					var unwrapped []HookDeliveryItem
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem HookDeliveryItem
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = ReposListWebhookDeliveriesOKApplicationJSON(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 400:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response BasicError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
 func decodeReposListWebhooksResponse(resp *http.Response, span trace.Span) (res ReposListWebhooksRes, err error) {
 	switch resp.StatusCode {
 	case 200:
@@ -26020,6 +37487,100 @@ func decodeReposListWebhooksResponse(resp *http.Response, span trace.Span) (res 
 			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeReposMergeResponse(resp *http.Response, span trace.Span) (res ReposMergeRes, err error) {
+	switch resp.StatusCode {
+	case 201:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Commit
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 204:
+		return &ReposMergeNoContent{}, nil
+	case 403:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response BasicError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 404:
+		return &ReposMergeNotFound{}, nil
+	case 409:
+		return &ReposMergeConflict{}, nil
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -26112,6 +37673,167 @@ func decodeReposPingWebhookResponse(resp *http.Response, span trace.Span) (res R
 	}
 }
 
+func decodeReposRedeliverWebhookDeliveryResponse(resp *http.Response, span trace.Span) (res ReposRedeliverWebhookDeliveryRes, err error) {
+	switch resp.StatusCode {
+	case 202:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Accepted
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 400:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response BasicError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeReposRemoveAppAccessRestrictionsResponse(resp *http.Response, span trace.Span) (res ReposRemoveAppAccessRestrictionsRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ReposRemoveAppAccessRestrictionsOKApplicationJSON
+			if err := func() error {
+				{
+					var unwrapped []Integration
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem Integration
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = ReposRemoveAppAccessRestrictionsOKApplicationJSON(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
 func decodeReposRemoveCollaboratorResponse(resp *http.Response, span trace.Span) (res ReposRemoveCollaboratorNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
@@ -26121,10 +37843,381 @@ func decodeReposRemoveCollaboratorResponse(resp *http.Response, span trace.Span)
 	}
 }
 
+func decodeReposRemoveStatusCheckContextsResponse(resp *http.Response, span trace.Span) (res ReposRemoveStatusCheckContextsRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ReposRemoveStatusCheckContextsOKApplicationJSON
+			if err := func() error {
+				{
+					var unwrapped []string
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem string
+						v, err := d.Str()
+						elem = string(v)
+						if err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = ReposRemoveStatusCheckContextsOKApplicationJSON(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 404:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response BasicError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
 func decodeReposRemoveStatusCheckProtectionResponse(resp *http.Response, span trace.Span) (res ReposRemoveStatusCheckProtectionNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return ReposRemoveStatusCheckProtectionNoContent{}, nil
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeReposRemoveTeamAccessRestrictionsResponse(resp *http.Response, span trace.Span) (res ReposRemoveTeamAccessRestrictionsRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ReposRemoveTeamAccessRestrictionsOKApplicationJSON
+			if err := func() error {
+				{
+					var unwrapped []Team
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem Team
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = ReposRemoveTeamAccessRestrictionsOKApplicationJSON(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeReposRemoveUserAccessRestrictionsResponse(resp *http.Response, span trace.Span) (res ReposRemoveUserAccessRestrictionsRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ReposRemoveUserAccessRestrictionsOKApplicationJSON
+			if err := func() error {
+				{
+					var unwrapped []SimpleUser
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem SimpleUser
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = ReposRemoveUserAccessRestrictionsOKApplicationJSON(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeReposRenameBranchResponse(resp *http.Response, span trace.Span) (res ReposRenameBranchRes, err error) {
+	switch resp.StatusCode {
+	case 201:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response BranchWithProtection
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 403:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ReposRenameBranchApplicationJSONForbidden
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ReposRenameBranchApplicationJSONForbidden(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 404:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ReposRenameBranchApplicationJSONNotFound
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ReposRenameBranchApplicationJSONNotFound(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
 	default:
 		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -26313,6 +38406,327 @@ func decodeReposSetAdminBranchProtectionResponse(resp *http.Response, span trace
 	}
 }
 
+func decodeReposSetAppAccessRestrictionsResponse(resp *http.Response, span trace.Span) (res ReposSetAppAccessRestrictionsRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ReposSetAppAccessRestrictionsOKApplicationJSON
+			if err := func() error {
+				{
+					var unwrapped []Integration
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem Integration
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = ReposSetAppAccessRestrictionsOKApplicationJSON(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeReposSetStatusCheckContextsResponse(resp *http.Response, span trace.Span) (res ReposSetStatusCheckContextsRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ReposSetStatusCheckContextsOKApplicationJSON
+			if err := func() error {
+				{
+					var unwrapped []string
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem string
+						v, err := d.Str()
+						elem = string(v)
+						if err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = ReposSetStatusCheckContextsOKApplicationJSON(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 404:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response BasicError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeReposSetTeamAccessRestrictionsResponse(resp *http.Response, span trace.Span) (res ReposSetTeamAccessRestrictionsRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ReposSetTeamAccessRestrictionsOKApplicationJSON
+			if err := func() error {
+				{
+					var unwrapped []Team
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem Team
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = ReposSetTeamAccessRestrictionsOKApplicationJSON(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeReposSetUserAccessRestrictionsResponse(resp *http.Response, span trace.Span) (res ReposSetUserAccessRestrictionsRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ReposSetUserAccessRestrictionsOKApplicationJSON
+			if err := func() error {
+				{
+					var unwrapped []SimpleUser
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem SimpleUser
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = ReposSetUserAccessRestrictionsOKApplicationJSON(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
 func decodeReposTestPushWebhookResponse(resp *http.Response, span trace.Span) (res ReposTestPushWebhookRes, err error) {
 	switch resp.StatusCode {
 	case 204:
@@ -26375,6 +38789,160 @@ func decodeReposTransferResponse(resp *http.Response, span trace.Span) (res Mini
 			}
 
 			return response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeReposUpdateResponse(resp *http.Response, span trace.Span) (res ReposUpdateRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response FullRepository
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 307:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ReposUpdateApplicationJSONTemporaryRedirect
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ReposUpdateApplicationJSONTemporaryRedirect(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 403:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ReposUpdateApplicationJSONForbidden
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ReposUpdateApplicationJSONForbidden(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 404:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ReposUpdateApplicationJSONNotFound
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = ReposUpdateApplicationJSONNotFound(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -26601,6 +39169,67 @@ func decodeReposUpdateInvitationResponse(resp *http.Response, span trace.Span) (
 	}
 }
 
+func decodeReposUpdatePullRequestReviewProtectionResponse(resp *http.Response, span trace.Span) (res ReposUpdatePullRequestReviewProtectionRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ProtectedBranchPullRequestReview
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
 func decodeReposUpdateReleaseResponse(resp *http.Response, span trace.Span) (res ReposUpdateReleaseRes, err error) {
 	switch resp.StatusCode {
 	case 200:
@@ -26688,6 +39317,182 @@ func decodeReposUpdateReleaseAssetResponse(resp *http.Response, span trace.Span)
 			}
 
 			return response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeReposUpdateStatusCheckProtectionResponse(resp *http.Response, span trace.Span) (res ReposUpdateStatusCheckProtectionRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response StatusCheckPolicy
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 404:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response BasicError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeReposUpdateWebhookResponse(resp *http.Response, span trace.Span) (res ReposUpdateWebhookRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Hook
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 404:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response BasicError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -26803,6 +39608,123 @@ func decodeScimDeleteUserFromOrgResponse(resp *http.Response, span trace.Span) (
 	}
 }
 
+func decodeSearchCodeResponse(resp *http.Response, span trace.Span) (res SearchCodeRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response SearchCodeOK
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 304:
+		return &NotModified{}, nil
+	case 403:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response BasicError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 503:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ServiceUnavailable
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
 func decodeSearchCommitsResponse(resp *http.Response, span trace.Span) (res SearchCommitsRes, err error) {
 	switch resp.StatusCode {
 	case 200:
@@ -26866,6 +39788,338 @@ func decodeSearchCommitsResponse(resp *http.Response, span trace.Span) (res Sear
 	}
 }
 
+func decodeSearchIssuesAndPullRequestsResponse(resp *http.Response, span trace.Span) (res SearchIssuesAndPullRequestsRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response SearchIssuesAndPullRequestsOK
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 304:
+		return &NotModified{}, nil
+	case 403:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response BasicError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 503:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ServiceUnavailable
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeSearchLabelsResponse(resp *http.Response, span trace.Span) (res SearchLabelsRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response SearchLabelsOK
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 304:
+		return &NotModified{}, nil
+	case 403:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response SearchLabelsApplicationJSONForbidden
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = SearchLabelsApplicationJSONForbidden(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 404:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response SearchLabelsApplicationJSONNotFound
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = SearchLabelsApplicationJSONNotFound(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeSearchReposResponse(resp *http.Response, span trace.Span) (res SearchReposRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response SearchReposOK
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 304:
+		return &NotModified{}, nil
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 503:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ServiceUnavailable
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
 func decodeSearchTopicsResponse(resp *http.Response, span trace.Span) (res SearchTopicsRes, err error) {
 	switch resp.StatusCode {
 	case 200:
@@ -26911,6 +40165,96 @@ func decodeSearchTopicsResponse(resp *http.Response, span trace.Span) (res Searc
 			d.ResetBytes(buf.Bytes())
 
 			var response PreviewHeaderMissing
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeSearchUsersResponse(resp *http.Response, span trace.Span) (res SearchUsersRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response SearchUsersOK
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 304:
+		return &NotModified{}, nil
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 503:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ServiceUnavailable
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -27411,10 +40755,163 @@ func decodeTeamsAddOrUpdateProjectPermissionsInOrgResponse(resp *http.Response, 
 	}
 }
 
+func decodeTeamsAddOrUpdateProjectPermissionsLegacyResponse(resp *http.Response, span trace.Span) (res TeamsAddOrUpdateProjectPermissionsLegacyRes, err error) {
+	switch resp.StatusCode {
+	case 204:
+		return &TeamsAddOrUpdateProjectPermissionsLegacyNoContent{}, nil
+	case 403:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response TeamsAddOrUpdateProjectPermissionsLegacyForbidden
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 404:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response BasicError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
 func decodeTeamsAddOrUpdateRepoPermissionsInOrgResponse(resp *http.Response, span trace.Span) (res TeamsAddOrUpdateRepoPermissionsInOrgNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return TeamsAddOrUpdateRepoPermissionsInOrgNoContent{}, nil
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeTeamsAddOrUpdateRepoPermissionsLegacyResponse(resp *http.Response, span trace.Span) (res TeamsAddOrUpdateRepoPermissionsLegacyRes, err error) {
+	switch resp.StatusCode {
+	case 204:
+		return &TeamsAddOrUpdateRepoPermissionsLegacyNoContent{}, nil
+	case 403:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response BasicError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
 	default:
 		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -27563,6 +41060,94 @@ func decodeTeamsCheckPermissionsForRepoLegacyResponse(resp *http.Response, span 
 		return &TeamsCheckPermissionsForRepoLegacyNoContent{}, nil
 	case 404:
 		return &TeamsCheckPermissionsForRepoLegacyNotFound{}, nil
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeTeamsCreateResponse(resp *http.Response, span trace.Span) (res TeamsCreateRes, err error) {
+	switch resp.StatusCode {
+	case 201:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response TeamFull
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 403:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response BasicError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
 	default:
 		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -27738,6 +41323,94 @@ func decodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgResponse(resp *http.Respon
 	}
 }
 
+func decodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyResponse(resp *http.Response, span trace.Span) (res TeamsCreateOrUpdateIdpGroupConnectionsLegacyRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response GroupMapping
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 403:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response BasicError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
 func decodeTeamsDeleteDiscussionCommentInOrgResponse(resp *http.Response, span trace.Span) (res TeamsDeleteDiscussionCommentInOrgNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
@@ -27778,6 +41451,69 @@ func decodeTeamsDeleteInOrgResponse(resp *http.Response, span trace.Span) (res T
 	switch resp.StatusCode {
 	case 204:
 		return TeamsDeleteInOrgNoContent{}, nil
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeTeamsDeleteLegacyResponse(resp *http.Response, span trace.Span) (res TeamsDeleteLegacyRes, err error) {
+	switch resp.StatusCode {
+	case 204:
+		return &TeamsDeleteLegacyNoContent{}, nil
+	case 404:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response BasicError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
 	default:
 		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -28256,6 +41992,141 @@ func decodeTeamsListChildInOrgResponse(resp *http.Response, span trace.Span) (re
 			}
 
 			return response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeTeamsListChildLegacyResponse(resp *http.Response, span trace.Span) (res TeamsListChildLegacyRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response TeamsListChildLegacyOKApplicationJSON
+			if err := func() error {
+				{
+					var unwrapped []Team
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem Team
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = TeamsListChildLegacyOKApplicationJSON(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 403:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response TeamsListChildLegacyApplicationJSONForbidden
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = TeamsListChildLegacyApplicationJSONForbidden(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 404:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response TeamsListChildLegacyApplicationJSONNotFound
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = TeamsListChildLegacyApplicationJSONNotFound(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -29177,6 +43048,96 @@ func decodeTeamsRemoveProjectInOrgResponse(resp *http.Response, span trace.Span)
 	}
 }
 
+func decodeTeamsRemoveProjectLegacyResponse(resp *http.Response, span trace.Span) (res TeamsRemoveProjectLegacyRes, err error) {
+	switch resp.StatusCode {
+	case 204:
+		return &TeamsRemoveProjectLegacyNoContent{}, nil
+	case 404:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response BasicError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 415:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response PreviewHeaderMissing
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
 func decodeTeamsRemoveRepoInOrgResponse(resp *http.Response, span trace.Span) (res TeamsRemoveRepoInOrgNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
@@ -29357,6 +43318,463 @@ func decodeTeamsUpdateInOrgResponse(resp *http.Response, span trace.Span) (res T
 			}
 
 			return response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeTeamsUpdateLegacyResponse(resp *http.Response, span trace.Span) (res TeamsUpdateLegacyRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response TeamsUpdateLegacyApplicationJSONOK
+			if err := func() error {
+				{
+					var unwrapped TeamFull
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = TeamsUpdateLegacyApplicationJSONOK(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 201:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response TeamsUpdateLegacyApplicationJSONCreated
+			if err := func() error {
+				{
+					var unwrapped TeamFull
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = TeamsUpdateLegacyApplicationJSONCreated(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 403:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response TeamsUpdateLegacyApplicationJSONForbidden
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = TeamsUpdateLegacyApplicationJSONForbidden(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 404:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response TeamsUpdateLegacyApplicationJSONNotFound
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = TeamsUpdateLegacyApplicationJSONNotFound(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeUsersAddEmailForAuthenticatedResponse(resp *http.Response, span trace.Span) (res UsersAddEmailForAuthenticatedRes, err error) {
+	switch resp.StatusCode {
+	case 201:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response UsersAddEmailForAuthenticatedCreatedApplicationJSON
+			if err := func() error {
+				{
+					var unwrapped []Email
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem Email
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = UsersAddEmailForAuthenticatedCreatedApplicationJSON(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 304:
+		return &NotModified{}, nil
+	case 401:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response UsersAddEmailForAuthenticatedApplicationJSONUnauthorized
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = UsersAddEmailForAuthenticatedApplicationJSONUnauthorized(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 403:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response UsersAddEmailForAuthenticatedApplicationJSONForbidden
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = UsersAddEmailForAuthenticatedApplicationJSONForbidden(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 404:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response UsersAddEmailForAuthenticatedApplicationJSONNotFound
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = UsersAddEmailForAuthenticatedApplicationJSONNotFound(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeUsersBlockResponse(resp *http.Response, span trace.Span) (res UsersBlockRes, err error) {
+	switch resp.StatusCode {
+	case 204:
+		return &UsersBlockNoContent{}, nil
+	case 304:
+		return &NotModified{}, nil
+	case 401:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response UsersBlockApplicationJSONUnauthorized
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = UsersBlockApplicationJSONUnauthorized(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 403:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response UsersBlockApplicationJSONForbidden
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = UsersBlockApplicationJSONForbidden(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 404:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response UsersBlockApplicationJSONNotFound
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = UsersBlockApplicationJSONNotFound(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
 		default:
 			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -29569,6 +43987,580 @@ func decodeUsersCheckPersonIsFollowedByAuthenticatedResponse(resp *http.Response
 						return err
 					}
 					response = UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONNotFound(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeUsersCreateGpgKeyForAuthenticatedResponse(resp *http.Response, span trace.Span) (res UsersCreateGpgKeyForAuthenticatedRes, err error) {
+	switch resp.StatusCode {
+	case 201:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response GpgKey
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 304:
+		return &NotModified{}, nil
+	case 401:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response UsersCreateGpgKeyForAuthenticatedApplicationJSONUnauthorized
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = UsersCreateGpgKeyForAuthenticatedApplicationJSONUnauthorized(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 403:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response UsersCreateGpgKeyForAuthenticatedApplicationJSONForbidden
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = UsersCreateGpgKeyForAuthenticatedApplicationJSONForbidden(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 404:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response UsersCreateGpgKeyForAuthenticatedApplicationJSONNotFound
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = UsersCreateGpgKeyForAuthenticatedApplicationJSONNotFound(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeUsersCreatePublicSSHKeyForAuthenticatedResponse(resp *http.Response, span trace.Span) (res UsersCreatePublicSSHKeyForAuthenticatedRes, err error) {
+	switch resp.StatusCode {
+	case 201:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Key
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 304:
+		return &NotModified{}, nil
+	case 401:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 403:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONForbidden
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONForbidden(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 404:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONNotFound
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONNotFound(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeUsersDeleteEmailForAuthenticatedResponse(resp *http.Response, span trace.Span) (res UsersDeleteEmailForAuthenticatedRes, err error) {
+	switch resp.StatusCode {
+	case 204:
+		return &UsersDeleteEmailForAuthenticatedNoContent{}, nil
+	case 304:
+		return &NotModified{}, nil
+	case 401:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response UsersDeleteEmailForAuthenticatedApplicationJSONUnauthorized
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = UsersDeleteEmailForAuthenticatedApplicationJSONUnauthorized(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 403:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response UsersDeleteEmailForAuthenticatedApplicationJSONForbidden
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = UsersDeleteEmailForAuthenticatedApplicationJSONForbidden(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 404:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response UsersDeleteEmailForAuthenticatedApplicationJSONNotFound
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = UsersDeleteEmailForAuthenticatedApplicationJSONNotFound(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeUsersDeleteGpgKeyForAuthenticatedResponse(resp *http.Response, span trace.Span) (res UsersDeleteGpgKeyForAuthenticatedRes, err error) {
+	switch resp.StatusCode {
+	case 204:
+		return &UsersDeleteGpgKeyForAuthenticatedNoContent{}, nil
+	case 304:
+		return &NotModified{}, nil
+	case 401:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response UsersDeleteGpgKeyForAuthenticatedApplicationJSONUnauthorized
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = UsersDeleteGpgKeyForAuthenticatedApplicationJSONUnauthorized(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 403:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response UsersDeleteGpgKeyForAuthenticatedApplicationJSONForbidden
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = UsersDeleteGpgKeyForAuthenticatedApplicationJSONForbidden(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 404:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response UsersDeleteGpgKeyForAuthenticatedApplicationJSONNotFound
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = UsersDeleteGpgKeyForAuthenticatedApplicationJSONNotFound(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -29960,6 +44952,94 @@ func decodeUsersGetByUsernameResponse(resp *http.Response, span trace.Span) (res
 			d.ResetBytes(buf.Bytes())
 
 			var response BasicError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeUsersGetContextForUserResponse(resp *http.Response, span trace.Span) (res UsersGetContextForUserRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Hovercard
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 404:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response BasicError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -31404,6 +46484,174 @@ func decodeUsersListPublicSSHKeysForAuthenticatedResponse(resp *http.Response, s
 	}
 }
 
+func decodeUsersSetPrimaryEmailVisibilityForAuthenticatedResponse(resp *http.Response, span trace.Span) (res UsersSetPrimaryEmailVisibilityForAuthenticatedRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response UsersSetPrimaryEmailVisibilityForAuthenticatedOKApplicationJSON
+			if err := func() error {
+				{
+					var unwrapped []Email
+					unwrapped = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elem Email
+						if err := elem.Decode(d); err != nil {
+							return err
+						}
+						unwrapped = append(unwrapped, elem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = UsersSetPrimaryEmailVisibilityForAuthenticatedOKApplicationJSON(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 304:
+		return &NotModified{}, nil
+	case 401:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONUnauthorized
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONUnauthorized(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 403:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONForbidden
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONForbidden(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 404:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONNotFound
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONNotFound(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
 func decodeUsersUnblockResponse(resp *http.Response, span trace.Span) (res UsersUnblockRes, err error) {
 	switch resp.StatusCode {
 	case 204:
@@ -31597,6 +46845,162 @@ func decodeUsersUnfollowResponse(resp *http.Response, span trace.Span) (res User
 						return err
 					}
 					response = UsersUnfollowApplicationJSONNotFound(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeUsersUpdateAuthenticatedResponse(resp *http.Response, span trace.Span) (res UsersUpdateAuthenticatedRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response PrivateUser
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 304:
+		return &NotModified{}, nil
+	case 401:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response UsersUpdateAuthenticatedApplicationJSONUnauthorized
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = UsersUpdateAuthenticatedApplicationJSONUnauthorized(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 403:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response UsersUpdateAuthenticatedApplicationJSONForbidden
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = UsersUpdateAuthenticatedApplicationJSONForbidden(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 404:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response UsersUpdateAuthenticatedApplicationJSONNotFound
+			if err := func() error {
+				{
+					var unwrapped BasicError
+					if err := unwrapped.Decode(d); err != nil {
+						return err
+					}
+					response = UsersUpdateAuthenticatedApplicationJSONNotFound(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 422:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response ValidationError
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
