@@ -3637,12 +3637,12 @@ type EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItem struct {
 type EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp string
 
 const (
-	EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOpAdd     EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp = "add"
-	EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOpAdd     EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp = "Add"
-	EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOpRemove  EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp = "remove"
-	EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOpRemove  EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp = "Remove"
-	EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOpReplace EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp = "replace"
-	EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOpReplace EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp = "Replace"
+	EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp_add     EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp = "add"
+	EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp_Add     EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp = "Add"
+	EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp_remove  EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp = "remove"
+	EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp_Remove  EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp = "Remove"
+	EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp_replace EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp = "replace"
+	EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp_Replace EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp = "Replace"
 )
 
 // EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue represents sum type.
@@ -3650,7 +3650,7 @@ type EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue stru
 	Type                                                                    EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValueType // switch on this field
 	String                                                                  string
 	EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1 EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1
-	Arraystring                                                             []string
+	ArrayString                                                             []string
 }
 
 // EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValueType is oneOf type of EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue.
@@ -3660,7 +3660,7 @@ type EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValueType 
 const (
 	StringEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue                                                                  EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValueType = "string"
 	EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValueType = "EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1"
-	ArraystringEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue                                                             EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValueType = "[]string"
+	ArrayStringEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue                                                             EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValueType = "[]string"
 )
 
 // IsString reports whether EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue is string.
@@ -3673,9 +3673,9 @@ func (s EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue) 
 	return s.Type == EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue
 }
 
-// IsArraystring reports whether EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue is []string.
-func (s EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue) IsArraystring() bool {
-	return s.Type == ArraystringEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue
+// IsArrayString reports whether EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue is []string.
+func (s EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue) IsArrayString() bool {
+	return s.Type == ArrayStringEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue
 }
 
 // SetString sets EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue to string.
@@ -3720,24 +3720,24 @@ func NewEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1E
 	return s
 }
 
-// SetArraystring sets EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue to []string.
-func (s *EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue) SetArraystring(v []string) {
-	s.Type = ArraystringEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue
-	s.Arraystring = v
+// SetArrayString sets EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue to []string.
+func (s *EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue) SetArrayString(v []string) {
+	s.Type = ArrayStringEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue
+	s.ArrayString = v
 }
 
-// GetArraystring returns []string and true boolean if EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue is []string.
-func (s EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue) GetArraystring() (v []string, ok bool) {
-	if !s.IsArraystring() {
+// GetArrayString returns []string and true boolean if EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue is []string.
+func (s EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue) GetArrayString() (v []string, ok bool) {
+	if !s.IsArrayString() {
 		return v, false
 	}
-	return s.Arraystring, true
+	return s.ArrayString, true
 }
 
-// NewArraystringEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue returns new EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue from []string.
-func NewArraystringEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue(v []string) EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue {
+// NewArrayStringEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue returns new EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue from []string.
+func NewArrayStringEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue(v []string) EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue {
 	var s EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue
-	s.SetArraystring(v)
+	s.SetArrayString(v)
 	return s
 }
 
@@ -29123,7 +29123,7 @@ func (*ReposAddAppAccessRestrictionsOKApplicationJSON) reposAddAppAccessRestrict
 type ReposAddAppAccessRestrictionsReq struct {
 	Type                              ReposAddAppAccessRestrictionsReqType // switch on this field
 	ReposAddAppAccessRestrictionsReq0 ReposAddAppAccessRestrictionsReq0
-	Arraystring                       []string
+	ArrayString                       []string
 }
 
 // ReposAddAppAccessRestrictionsReqType is oneOf type of ReposAddAppAccessRestrictionsReq.
@@ -29132,7 +29132,7 @@ type ReposAddAppAccessRestrictionsReqType string
 // Possible values for ReposAddAppAccessRestrictionsReqType.
 const (
 	ReposAddAppAccessRestrictionsReq0ReposAddAppAccessRestrictionsReq ReposAddAppAccessRestrictionsReqType = "ReposAddAppAccessRestrictionsReq0"
-	ArraystringReposAddAppAccessRestrictionsReq                       ReposAddAppAccessRestrictionsReqType = "[]string"
+	ArrayStringReposAddAppAccessRestrictionsReq                       ReposAddAppAccessRestrictionsReqType = "[]string"
 )
 
 // IsReposAddAppAccessRestrictionsReq0 reports whether ReposAddAppAccessRestrictionsReq is ReposAddAppAccessRestrictionsReq0.
@@ -29140,9 +29140,9 @@ func (s ReposAddAppAccessRestrictionsReq) IsReposAddAppAccessRestrictionsReq0() 
 	return s.Type == ReposAddAppAccessRestrictionsReq0ReposAddAppAccessRestrictionsReq
 }
 
-// IsArraystring reports whether ReposAddAppAccessRestrictionsReq is []string.
-func (s ReposAddAppAccessRestrictionsReq) IsArraystring() bool {
-	return s.Type == ArraystringReposAddAppAccessRestrictionsReq
+// IsArrayString reports whether ReposAddAppAccessRestrictionsReq is []string.
+func (s ReposAddAppAccessRestrictionsReq) IsArrayString() bool {
+	return s.Type == ArrayStringReposAddAppAccessRestrictionsReq
 }
 
 // SetReposAddAppAccessRestrictionsReq0 sets ReposAddAppAccessRestrictionsReq to ReposAddAppAccessRestrictionsReq0.
@@ -29166,24 +29166,24 @@ func NewReposAddAppAccessRestrictionsReq0ReposAddAppAccessRestrictionsReq(v Repo
 	return s
 }
 
-// SetArraystring sets ReposAddAppAccessRestrictionsReq to []string.
-func (s *ReposAddAppAccessRestrictionsReq) SetArraystring(v []string) {
-	s.Type = ArraystringReposAddAppAccessRestrictionsReq
-	s.Arraystring = v
+// SetArrayString sets ReposAddAppAccessRestrictionsReq to []string.
+func (s *ReposAddAppAccessRestrictionsReq) SetArrayString(v []string) {
+	s.Type = ArrayStringReposAddAppAccessRestrictionsReq
+	s.ArrayString = v
 }
 
-// GetArraystring returns []string and true boolean if ReposAddAppAccessRestrictionsReq is []string.
-func (s ReposAddAppAccessRestrictionsReq) GetArraystring() (v []string, ok bool) {
-	if !s.IsArraystring() {
+// GetArrayString returns []string and true boolean if ReposAddAppAccessRestrictionsReq is []string.
+func (s ReposAddAppAccessRestrictionsReq) GetArrayString() (v []string, ok bool) {
+	if !s.IsArrayString() {
 		return v, false
 	}
-	return s.Arraystring, true
+	return s.ArrayString, true
 }
 
-// NewArraystringReposAddAppAccessRestrictionsReq returns new ReposAddAppAccessRestrictionsReq from []string.
-func NewArraystringReposAddAppAccessRestrictionsReq(v []string) ReposAddAppAccessRestrictionsReq {
+// NewArrayStringReposAddAppAccessRestrictionsReq returns new ReposAddAppAccessRestrictionsReq from []string.
+func NewArrayStringReposAddAppAccessRestrictionsReq(v []string) ReposAddAppAccessRestrictionsReq {
 	var s ReposAddAppAccessRestrictionsReq
-	s.SetArraystring(v)
+	s.SetArrayString(v)
 	return s
 }
 
@@ -29227,7 +29227,7 @@ func (*ReposAddStatusCheckContextsOKApplicationJSON) reposAddStatusCheckContexts
 type ReposAddStatusCheckContextsReq struct {
 	Type                            ReposAddStatusCheckContextsReqType // switch on this field
 	ReposAddStatusCheckContextsReq0 ReposAddStatusCheckContextsReq0
-	Arraystring                     []string
+	ArrayString                     []string
 }
 
 // ReposAddStatusCheckContextsReqType is oneOf type of ReposAddStatusCheckContextsReq.
@@ -29236,7 +29236,7 @@ type ReposAddStatusCheckContextsReqType string
 // Possible values for ReposAddStatusCheckContextsReqType.
 const (
 	ReposAddStatusCheckContextsReq0ReposAddStatusCheckContextsReq ReposAddStatusCheckContextsReqType = "ReposAddStatusCheckContextsReq0"
-	ArraystringReposAddStatusCheckContextsReq                     ReposAddStatusCheckContextsReqType = "[]string"
+	ArrayStringReposAddStatusCheckContextsReq                     ReposAddStatusCheckContextsReqType = "[]string"
 )
 
 // IsReposAddStatusCheckContextsReq0 reports whether ReposAddStatusCheckContextsReq is ReposAddStatusCheckContextsReq0.
@@ -29244,9 +29244,9 @@ func (s ReposAddStatusCheckContextsReq) IsReposAddStatusCheckContextsReq0() bool
 	return s.Type == ReposAddStatusCheckContextsReq0ReposAddStatusCheckContextsReq
 }
 
-// IsArraystring reports whether ReposAddStatusCheckContextsReq is []string.
-func (s ReposAddStatusCheckContextsReq) IsArraystring() bool {
-	return s.Type == ArraystringReposAddStatusCheckContextsReq
+// IsArrayString reports whether ReposAddStatusCheckContextsReq is []string.
+func (s ReposAddStatusCheckContextsReq) IsArrayString() bool {
+	return s.Type == ArrayStringReposAddStatusCheckContextsReq
 }
 
 // SetReposAddStatusCheckContextsReq0 sets ReposAddStatusCheckContextsReq to ReposAddStatusCheckContextsReq0.
@@ -29270,24 +29270,24 @@ func NewReposAddStatusCheckContextsReq0ReposAddStatusCheckContextsReq(v ReposAdd
 	return s
 }
 
-// SetArraystring sets ReposAddStatusCheckContextsReq to []string.
-func (s *ReposAddStatusCheckContextsReq) SetArraystring(v []string) {
-	s.Type = ArraystringReposAddStatusCheckContextsReq
-	s.Arraystring = v
+// SetArrayString sets ReposAddStatusCheckContextsReq to []string.
+func (s *ReposAddStatusCheckContextsReq) SetArrayString(v []string) {
+	s.Type = ArrayStringReposAddStatusCheckContextsReq
+	s.ArrayString = v
 }
 
-// GetArraystring returns []string and true boolean if ReposAddStatusCheckContextsReq is []string.
-func (s ReposAddStatusCheckContextsReq) GetArraystring() (v []string, ok bool) {
-	if !s.IsArraystring() {
+// GetArrayString returns []string and true boolean if ReposAddStatusCheckContextsReq is []string.
+func (s ReposAddStatusCheckContextsReq) GetArrayString() (v []string, ok bool) {
+	if !s.IsArrayString() {
 		return v, false
 	}
-	return s.Arraystring, true
+	return s.ArrayString, true
 }
 
-// NewArraystringReposAddStatusCheckContextsReq returns new ReposAddStatusCheckContextsReq from []string.
-func NewArraystringReposAddStatusCheckContextsReq(v []string) ReposAddStatusCheckContextsReq {
+// NewArrayStringReposAddStatusCheckContextsReq returns new ReposAddStatusCheckContextsReq from []string.
+func NewArrayStringReposAddStatusCheckContextsReq(v []string) ReposAddStatusCheckContextsReq {
 	var s ReposAddStatusCheckContextsReq
-	s.SetArraystring(v)
+	s.SetArrayString(v)
 	return s
 }
 
@@ -29303,7 +29303,7 @@ func (*ReposAddTeamAccessRestrictionsOKApplicationJSON) reposAddTeamAccessRestri
 type ReposAddTeamAccessRestrictionsReq struct {
 	Type                               ReposAddTeamAccessRestrictionsReqType // switch on this field
 	ReposAddTeamAccessRestrictionsReq0 ReposAddTeamAccessRestrictionsReq0
-	Arraystring                        []string
+	ArrayString                        []string
 }
 
 // ReposAddTeamAccessRestrictionsReqType is oneOf type of ReposAddTeamAccessRestrictionsReq.
@@ -29312,7 +29312,7 @@ type ReposAddTeamAccessRestrictionsReqType string
 // Possible values for ReposAddTeamAccessRestrictionsReqType.
 const (
 	ReposAddTeamAccessRestrictionsReq0ReposAddTeamAccessRestrictionsReq ReposAddTeamAccessRestrictionsReqType = "ReposAddTeamAccessRestrictionsReq0"
-	ArraystringReposAddTeamAccessRestrictionsReq                        ReposAddTeamAccessRestrictionsReqType = "[]string"
+	ArrayStringReposAddTeamAccessRestrictionsReq                        ReposAddTeamAccessRestrictionsReqType = "[]string"
 )
 
 // IsReposAddTeamAccessRestrictionsReq0 reports whether ReposAddTeamAccessRestrictionsReq is ReposAddTeamAccessRestrictionsReq0.
@@ -29320,9 +29320,9 @@ func (s ReposAddTeamAccessRestrictionsReq) IsReposAddTeamAccessRestrictionsReq0(
 	return s.Type == ReposAddTeamAccessRestrictionsReq0ReposAddTeamAccessRestrictionsReq
 }
 
-// IsArraystring reports whether ReposAddTeamAccessRestrictionsReq is []string.
-func (s ReposAddTeamAccessRestrictionsReq) IsArraystring() bool {
-	return s.Type == ArraystringReposAddTeamAccessRestrictionsReq
+// IsArrayString reports whether ReposAddTeamAccessRestrictionsReq is []string.
+func (s ReposAddTeamAccessRestrictionsReq) IsArrayString() bool {
+	return s.Type == ArrayStringReposAddTeamAccessRestrictionsReq
 }
 
 // SetReposAddTeamAccessRestrictionsReq0 sets ReposAddTeamAccessRestrictionsReq to ReposAddTeamAccessRestrictionsReq0.
@@ -29346,24 +29346,24 @@ func NewReposAddTeamAccessRestrictionsReq0ReposAddTeamAccessRestrictionsReq(v Re
 	return s
 }
 
-// SetArraystring sets ReposAddTeamAccessRestrictionsReq to []string.
-func (s *ReposAddTeamAccessRestrictionsReq) SetArraystring(v []string) {
-	s.Type = ArraystringReposAddTeamAccessRestrictionsReq
-	s.Arraystring = v
+// SetArrayString sets ReposAddTeamAccessRestrictionsReq to []string.
+func (s *ReposAddTeamAccessRestrictionsReq) SetArrayString(v []string) {
+	s.Type = ArrayStringReposAddTeamAccessRestrictionsReq
+	s.ArrayString = v
 }
 
-// GetArraystring returns []string and true boolean if ReposAddTeamAccessRestrictionsReq is []string.
-func (s ReposAddTeamAccessRestrictionsReq) GetArraystring() (v []string, ok bool) {
-	if !s.IsArraystring() {
+// GetArrayString returns []string and true boolean if ReposAddTeamAccessRestrictionsReq is []string.
+func (s ReposAddTeamAccessRestrictionsReq) GetArrayString() (v []string, ok bool) {
+	if !s.IsArrayString() {
 		return v, false
 	}
-	return s.Arraystring, true
+	return s.ArrayString, true
 }
 
-// NewArraystringReposAddTeamAccessRestrictionsReq returns new ReposAddTeamAccessRestrictionsReq from []string.
-func NewArraystringReposAddTeamAccessRestrictionsReq(v []string) ReposAddTeamAccessRestrictionsReq {
+// NewArrayStringReposAddTeamAccessRestrictionsReq returns new ReposAddTeamAccessRestrictionsReq from []string.
+func NewArrayStringReposAddTeamAccessRestrictionsReq(v []string) ReposAddTeamAccessRestrictionsReq {
 	var s ReposAddTeamAccessRestrictionsReq
-	s.SetArraystring(v)
+	s.SetArrayString(v)
 	return s
 }
 
@@ -29379,7 +29379,7 @@ func (*ReposAddUserAccessRestrictionsOKApplicationJSON) reposAddUserAccessRestri
 type ReposAddUserAccessRestrictionsReq struct {
 	Type                               ReposAddUserAccessRestrictionsReqType // switch on this field
 	ReposAddUserAccessRestrictionsReq0 ReposAddUserAccessRestrictionsReq0
-	Arraystring                        []string
+	ArrayString                        []string
 }
 
 // ReposAddUserAccessRestrictionsReqType is oneOf type of ReposAddUserAccessRestrictionsReq.
@@ -29388,7 +29388,7 @@ type ReposAddUserAccessRestrictionsReqType string
 // Possible values for ReposAddUserAccessRestrictionsReqType.
 const (
 	ReposAddUserAccessRestrictionsReq0ReposAddUserAccessRestrictionsReq ReposAddUserAccessRestrictionsReqType = "ReposAddUserAccessRestrictionsReq0"
-	ArraystringReposAddUserAccessRestrictionsReq                        ReposAddUserAccessRestrictionsReqType = "[]string"
+	ArrayStringReposAddUserAccessRestrictionsReq                        ReposAddUserAccessRestrictionsReqType = "[]string"
 )
 
 // IsReposAddUserAccessRestrictionsReq0 reports whether ReposAddUserAccessRestrictionsReq is ReposAddUserAccessRestrictionsReq0.
@@ -29396,9 +29396,9 @@ func (s ReposAddUserAccessRestrictionsReq) IsReposAddUserAccessRestrictionsReq0(
 	return s.Type == ReposAddUserAccessRestrictionsReq0ReposAddUserAccessRestrictionsReq
 }
 
-// IsArraystring reports whether ReposAddUserAccessRestrictionsReq is []string.
-func (s ReposAddUserAccessRestrictionsReq) IsArraystring() bool {
-	return s.Type == ArraystringReposAddUserAccessRestrictionsReq
+// IsArrayString reports whether ReposAddUserAccessRestrictionsReq is []string.
+func (s ReposAddUserAccessRestrictionsReq) IsArrayString() bool {
+	return s.Type == ArrayStringReposAddUserAccessRestrictionsReq
 }
 
 // SetReposAddUserAccessRestrictionsReq0 sets ReposAddUserAccessRestrictionsReq to ReposAddUserAccessRestrictionsReq0.
@@ -29422,24 +29422,24 @@ func NewReposAddUserAccessRestrictionsReq0ReposAddUserAccessRestrictionsReq(v Re
 	return s
 }
 
-// SetArraystring sets ReposAddUserAccessRestrictionsReq to []string.
-func (s *ReposAddUserAccessRestrictionsReq) SetArraystring(v []string) {
-	s.Type = ArraystringReposAddUserAccessRestrictionsReq
-	s.Arraystring = v
+// SetArrayString sets ReposAddUserAccessRestrictionsReq to []string.
+func (s *ReposAddUserAccessRestrictionsReq) SetArrayString(v []string) {
+	s.Type = ArrayStringReposAddUserAccessRestrictionsReq
+	s.ArrayString = v
 }
 
-// GetArraystring returns []string and true boolean if ReposAddUserAccessRestrictionsReq is []string.
-func (s ReposAddUserAccessRestrictionsReq) GetArraystring() (v []string, ok bool) {
-	if !s.IsArraystring() {
+// GetArrayString returns []string and true boolean if ReposAddUserAccessRestrictionsReq is []string.
+func (s ReposAddUserAccessRestrictionsReq) GetArrayString() (v []string, ok bool) {
+	if !s.IsArrayString() {
 		return v, false
 	}
-	return s.Arraystring, true
+	return s.ArrayString, true
 }
 
-// NewArraystringReposAddUserAccessRestrictionsReq returns new ReposAddUserAccessRestrictionsReq from []string.
-func NewArraystringReposAddUserAccessRestrictionsReq(v []string) ReposAddUserAccessRestrictionsReq {
+// NewArrayStringReposAddUserAccessRestrictionsReq returns new ReposAddUserAccessRestrictionsReq from []string.
+func NewArrayStringReposAddUserAccessRestrictionsReq(v []string) ReposAddUserAccessRestrictionsReq {
 	var s ReposAddUserAccessRestrictionsReq
-	s.SetArraystring(v)
+	s.SetArrayString(v)
 	return s
 }
 
@@ -30345,7 +30345,7 @@ func (*ReposRemoveAppAccessRestrictionsOKApplicationJSON) reposRemoveAppAccessRe
 type ReposRemoveAppAccessRestrictionsReq struct {
 	Type                                 ReposRemoveAppAccessRestrictionsReqType // switch on this field
 	ReposRemoveAppAccessRestrictionsReq0 ReposRemoveAppAccessRestrictionsReq0
-	Arraystring                          []string
+	ArrayString                          []string
 }
 
 // ReposRemoveAppAccessRestrictionsReqType is oneOf type of ReposRemoveAppAccessRestrictionsReq.
@@ -30354,7 +30354,7 @@ type ReposRemoveAppAccessRestrictionsReqType string
 // Possible values for ReposRemoveAppAccessRestrictionsReqType.
 const (
 	ReposRemoveAppAccessRestrictionsReq0ReposRemoveAppAccessRestrictionsReq ReposRemoveAppAccessRestrictionsReqType = "ReposRemoveAppAccessRestrictionsReq0"
-	ArraystringReposRemoveAppAccessRestrictionsReq                          ReposRemoveAppAccessRestrictionsReqType = "[]string"
+	ArrayStringReposRemoveAppAccessRestrictionsReq                          ReposRemoveAppAccessRestrictionsReqType = "[]string"
 )
 
 // IsReposRemoveAppAccessRestrictionsReq0 reports whether ReposRemoveAppAccessRestrictionsReq is ReposRemoveAppAccessRestrictionsReq0.
@@ -30362,9 +30362,9 @@ func (s ReposRemoveAppAccessRestrictionsReq) IsReposRemoveAppAccessRestrictionsR
 	return s.Type == ReposRemoveAppAccessRestrictionsReq0ReposRemoveAppAccessRestrictionsReq
 }
 
-// IsArraystring reports whether ReposRemoveAppAccessRestrictionsReq is []string.
-func (s ReposRemoveAppAccessRestrictionsReq) IsArraystring() bool {
-	return s.Type == ArraystringReposRemoveAppAccessRestrictionsReq
+// IsArrayString reports whether ReposRemoveAppAccessRestrictionsReq is []string.
+func (s ReposRemoveAppAccessRestrictionsReq) IsArrayString() bool {
+	return s.Type == ArrayStringReposRemoveAppAccessRestrictionsReq
 }
 
 // SetReposRemoveAppAccessRestrictionsReq0 sets ReposRemoveAppAccessRestrictionsReq to ReposRemoveAppAccessRestrictionsReq0.
@@ -30388,24 +30388,24 @@ func NewReposRemoveAppAccessRestrictionsReq0ReposRemoveAppAccessRestrictionsReq(
 	return s
 }
 
-// SetArraystring sets ReposRemoveAppAccessRestrictionsReq to []string.
-func (s *ReposRemoveAppAccessRestrictionsReq) SetArraystring(v []string) {
-	s.Type = ArraystringReposRemoveAppAccessRestrictionsReq
-	s.Arraystring = v
+// SetArrayString sets ReposRemoveAppAccessRestrictionsReq to []string.
+func (s *ReposRemoveAppAccessRestrictionsReq) SetArrayString(v []string) {
+	s.Type = ArrayStringReposRemoveAppAccessRestrictionsReq
+	s.ArrayString = v
 }
 
-// GetArraystring returns []string and true boolean if ReposRemoveAppAccessRestrictionsReq is []string.
-func (s ReposRemoveAppAccessRestrictionsReq) GetArraystring() (v []string, ok bool) {
-	if !s.IsArraystring() {
+// GetArrayString returns []string and true boolean if ReposRemoveAppAccessRestrictionsReq is []string.
+func (s ReposRemoveAppAccessRestrictionsReq) GetArrayString() (v []string, ok bool) {
+	if !s.IsArrayString() {
 		return v, false
 	}
-	return s.Arraystring, true
+	return s.ArrayString, true
 }
 
-// NewArraystringReposRemoveAppAccessRestrictionsReq returns new ReposRemoveAppAccessRestrictionsReq from []string.
-func NewArraystringReposRemoveAppAccessRestrictionsReq(v []string) ReposRemoveAppAccessRestrictionsReq {
+// NewArrayStringReposRemoveAppAccessRestrictionsReq returns new ReposRemoveAppAccessRestrictionsReq from []string.
+func NewArrayStringReposRemoveAppAccessRestrictionsReq(v []string) ReposRemoveAppAccessRestrictionsReq {
 	var s ReposRemoveAppAccessRestrictionsReq
-	s.SetArraystring(v)
+	s.SetArrayString(v)
 	return s
 }
 
@@ -30424,7 +30424,7 @@ func (*ReposRemoveStatusCheckContextsOKApplicationJSON) reposRemoveStatusCheckCo
 type ReposRemoveStatusCheckContextsReq struct {
 	Type                               ReposRemoveStatusCheckContextsReqType // switch on this field
 	ReposRemoveStatusCheckContextsReq0 ReposRemoveStatusCheckContextsReq0
-	Arraystring                        []string
+	ArrayString                        []string
 }
 
 // ReposRemoveStatusCheckContextsReqType is oneOf type of ReposRemoveStatusCheckContextsReq.
@@ -30433,7 +30433,7 @@ type ReposRemoveStatusCheckContextsReqType string
 // Possible values for ReposRemoveStatusCheckContextsReqType.
 const (
 	ReposRemoveStatusCheckContextsReq0ReposRemoveStatusCheckContextsReq ReposRemoveStatusCheckContextsReqType = "ReposRemoveStatusCheckContextsReq0"
-	ArraystringReposRemoveStatusCheckContextsReq                        ReposRemoveStatusCheckContextsReqType = "[]string"
+	ArrayStringReposRemoveStatusCheckContextsReq                        ReposRemoveStatusCheckContextsReqType = "[]string"
 )
 
 // IsReposRemoveStatusCheckContextsReq0 reports whether ReposRemoveStatusCheckContextsReq is ReposRemoveStatusCheckContextsReq0.
@@ -30441,9 +30441,9 @@ func (s ReposRemoveStatusCheckContextsReq) IsReposRemoveStatusCheckContextsReq0(
 	return s.Type == ReposRemoveStatusCheckContextsReq0ReposRemoveStatusCheckContextsReq
 }
 
-// IsArraystring reports whether ReposRemoveStatusCheckContextsReq is []string.
-func (s ReposRemoveStatusCheckContextsReq) IsArraystring() bool {
-	return s.Type == ArraystringReposRemoveStatusCheckContextsReq
+// IsArrayString reports whether ReposRemoveStatusCheckContextsReq is []string.
+func (s ReposRemoveStatusCheckContextsReq) IsArrayString() bool {
+	return s.Type == ArrayStringReposRemoveStatusCheckContextsReq
 }
 
 // SetReposRemoveStatusCheckContextsReq0 sets ReposRemoveStatusCheckContextsReq to ReposRemoveStatusCheckContextsReq0.
@@ -30467,24 +30467,24 @@ func NewReposRemoveStatusCheckContextsReq0ReposRemoveStatusCheckContextsReq(v Re
 	return s
 }
 
-// SetArraystring sets ReposRemoveStatusCheckContextsReq to []string.
-func (s *ReposRemoveStatusCheckContextsReq) SetArraystring(v []string) {
-	s.Type = ArraystringReposRemoveStatusCheckContextsReq
-	s.Arraystring = v
+// SetArrayString sets ReposRemoveStatusCheckContextsReq to []string.
+func (s *ReposRemoveStatusCheckContextsReq) SetArrayString(v []string) {
+	s.Type = ArrayStringReposRemoveStatusCheckContextsReq
+	s.ArrayString = v
 }
 
-// GetArraystring returns []string and true boolean if ReposRemoveStatusCheckContextsReq is []string.
-func (s ReposRemoveStatusCheckContextsReq) GetArraystring() (v []string, ok bool) {
-	if !s.IsArraystring() {
+// GetArrayString returns []string and true boolean if ReposRemoveStatusCheckContextsReq is []string.
+func (s ReposRemoveStatusCheckContextsReq) GetArrayString() (v []string, ok bool) {
+	if !s.IsArrayString() {
 		return v, false
 	}
-	return s.Arraystring, true
+	return s.ArrayString, true
 }
 
-// NewArraystringReposRemoveStatusCheckContextsReq returns new ReposRemoveStatusCheckContextsReq from []string.
-func NewArraystringReposRemoveStatusCheckContextsReq(v []string) ReposRemoveStatusCheckContextsReq {
+// NewArrayStringReposRemoveStatusCheckContextsReq returns new ReposRemoveStatusCheckContextsReq from []string.
+func NewArrayStringReposRemoveStatusCheckContextsReq(v []string) ReposRemoveStatusCheckContextsReq {
 	var s ReposRemoveStatusCheckContextsReq
-	s.SetArraystring(v)
+	s.SetArrayString(v)
 	return s
 }
 
@@ -30503,7 +30503,7 @@ func (*ReposRemoveTeamAccessRestrictionsOKApplicationJSON) reposRemoveTeamAccess
 type ReposRemoveTeamAccessRestrictionsReq struct {
 	Type                                  ReposRemoveTeamAccessRestrictionsReqType // switch on this field
 	ReposRemoveTeamAccessRestrictionsReq0 ReposRemoveTeamAccessRestrictionsReq0
-	Arraystring                           []string
+	ArrayString                           []string
 }
 
 // ReposRemoveTeamAccessRestrictionsReqType is oneOf type of ReposRemoveTeamAccessRestrictionsReq.
@@ -30512,7 +30512,7 @@ type ReposRemoveTeamAccessRestrictionsReqType string
 // Possible values for ReposRemoveTeamAccessRestrictionsReqType.
 const (
 	ReposRemoveTeamAccessRestrictionsReq0ReposRemoveTeamAccessRestrictionsReq ReposRemoveTeamAccessRestrictionsReqType = "ReposRemoveTeamAccessRestrictionsReq0"
-	ArraystringReposRemoveTeamAccessRestrictionsReq                           ReposRemoveTeamAccessRestrictionsReqType = "[]string"
+	ArrayStringReposRemoveTeamAccessRestrictionsReq                           ReposRemoveTeamAccessRestrictionsReqType = "[]string"
 )
 
 // IsReposRemoveTeamAccessRestrictionsReq0 reports whether ReposRemoveTeamAccessRestrictionsReq is ReposRemoveTeamAccessRestrictionsReq0.
@@ -30520,9 +30520,9 @@ func (s ReposRemoveTeamAccessRestrictionsReq) IsReposRemoveTeamAccessRestriction
 	return s.Type == ReposRemoveTeamAccessRestrictionsReq0ReposRemoveTeamAccessRestrictionsReq
 }
 
-// IsArraystring reports whether ReposRemoveTeamAccessRestrictionsReq is []string.
-func (s ReposRemoveTeamAccessRestrictionsReq) IsArraystring() bool {
-	return s.Type == ArraystringReposRemoveTeamAccessRestrictionsReq
+// IsArrayString reports whether ReposRemoveTeamAccessRestrictionsReq is []string.
+func (s ReposRemoveTeamAccessRestrictionsReq) IsArrayString() bool {
+	return s.Type == ArrayStringReposRemoveTeamAccessRestrictionsReq
 }
 
 // SetReposRemoveTeamAccessRestrictionsReq0 sets ReposRemoveTeamAccessRestrictionsReq to ReposRemoveTeamAccessRestrictionsReq0.
@@ -30546,24 +30546,24 @@ func NewReposRemoveTeamAccessRestrictionsReq0ReposRemoveTeamAccessRestrictionsRe
 	return s
 }
 
-// SetArraystring sets ReposRemoveTeamAccessRestrictionsReq to []string.
-func (s *ReposRemoveTeamAccessRestrictionsReq) SetArraystring(v []string) {
-	s.Type = ArraystringReposRemoveTeamAccessRestrictionsReq
-	s.Arraystring = v
+// SetArrayString sets ReposRemoveTeamAccessRestrictionsReq to []string.
+func (s *ReposRemoveTeamAccessRestrictionsReq) SetArrayString(v []string) {
+	s.Type = ArrayStringReposRemoveTeamAccessRestrictionsReq
+	s.ArrayString = v
 }
 
-// GetArraystring returns []string and true boolean if ReposRemoveTeamAccessRestrictionsReq is []string.
-func (s ReposRemoveTeamAccessRestrictionsReq) GetArraystring() (v []string, ok bool) {
-	if !s.IsArraystring() {
+// GetArrayString returns []string and true boolean if ReposRemoveTeamAccessRestrictionsReq is []string.
+func (s ReposRemoveTeamAccessRestrictionsReq) GetArrayString() (v []string, ok bool) {
+	if !s.IsArrayString() {
 		return v, false
 	}
-	return s.Arraystring, true
+	return s.ArrayString, true
 }
 
-// NewArraystringReposRemoveTeamAccessRestrictionsReq returns new ReposRemoveTeamAccessRestrictionsReq from []string.
-func NewArraystringReposRemoveTeamAccessRestrictionsReq(v []string) ReposRemoveTeamAccessRestrictionsReq {
+// NewArrayStringReposRemoveTeamAccessRestrictionsReq returns new ReposRemoveTeamAccessRestrictionsReq from []string.
+func NewArrayStringReposRemoveTeamAccessRestrictionsReq(v []string) ReposRemoveTeamAccessRestrictionsReq {
 	var s ReposRemoveTeamAccessRestrictionsReq
-	s.SetArraystring(v)
+	s.SetArrayString(v)
 	return s
 }
 
@@ -30579,7 +30579,7 @@ func (*ReposRemoveUserAccessRestrictionsOKApplicationJSON) reposRemoveUserAccess
 type ReposRemoveUserAccessRestrictionsReq struct {
 	Type                                  ReposRemoveUserAccessRestrictionsReqType // switch on this field
 	ReposRemoveUserAccessRestrictionsReq0 ReposRemoveUserAccessRestrictionsReq0
-	Arraystring                           []string
+	ArrayString                           []string
 }
 
 // ReposRemoveUserAccessRestrictionsReqType is oneOf type of ReposRemoveUserAccessRestrictionsReq.
@@ -30588,7 +30588,7 @@ type ReposRemoveUserAccessRestrictionsReqType string
 // Possible values for ReposRemoveUserAccessRestrictionsReqType.
 const (
 	ReposRemoveUserAccessRestrictionsReq0ReposRemoveUserAccessRestrictionsReq ReposRemoveUserAccessRestrictionsReqType = "ReposRemoveUserAccessRestrictionsReq0"
-	ArraystringReposRemoveUserAccessRestrictionsReq                           ReposRemoveUserAccessRestrictionsReqType = "[]string"
+	ArrayStringReposRemoveUserAccessRestrictionsReq                           ReposRemoveUserAccessRestrictionsReqType = "[]string"
 )
 
 // IsReposRemoveUserAccessRestrictionsReq0 reports whether ReposRemoveUserAccessRestrictionsReq is ReposRemoveUserAccessRestrictionsReq0.
@@ -30596,9 +30596,9 @@ func (s ReposRemoveUserAccessRestrictionsReq) IsReposRemoveUserAccessRestriction
 	return s.Type == ReposRemoveUserAccessRestrictionsReq0ReposRemoveUserAccessRestrictionsReq
 }
 
-// IsArraystring reports whether ReposRemoveUserAccessRestrictionsReq is []string.
-func (s ReposRemoveUserAccessRestrictionsReq) IsArraystring() bool {
-	return s.Type == ArraystringReposRemoveUserAccessRestrictionsReq
+// IsArrayString reports whether ReposRemoveUserAccessRestrictionsReq is []string.
+func (s ReposRemoveUserAccessRestrictionsReq) IsArrayString() bool {
+	return s.Type == ArrayStringReposRemoveUserAccessRestrictionsReq
 }
 
 // SetReposRemoveUserAccessRestrictionsReq0 sets ReposRemoveUserAccessRestrictionsReq to ReposRemoveUserAccessRestrictionsReq0.
@@ -30622,24 +30622,24 @@ func NewReposRemoveUserAccessRestrictionsReq0ReposRemoveUserAccessRestrictionsRe
 	return s
 }
 
-// SetArraystring sets ReposRemoveUserAccessRestrictionsReq to []string.
-func (s *ReposRemoveUserAccessRestrictionsReq) SetArraystring(v []string) {
-	s.Type = ArraystringReposRemoveUserAccessRestrictionsReq
-	s.Arraystring = v
+// SetArrayString sets ReposRemoveUserAccessRestrictionsReq to []string.
+func (s *ReposRemoveUserAccessRestrictionsReq) SetArrayString(v []string) {
+	s.Type = ArrayStringReposRemoveUserAccessRestrictionsReq
+	s.ArrayString = v
 }
 
-// GetArraystring returns []string and true boolean if ReposRemoveUserAccessRestrictionsReq is []string.
-func (s ReposRemoveUserAccessRestrictionsReq) GetArraystring() (v []string, ok bool) {
-	if !s.IsArraystring() {
+// GetArrayString returns []string and true boolean if ReposRemoveUserAccessRestrictionsReq is []string.
+func (s ReposRemoveUserAccessRestrictionsReq) GetArrayString() (v []string, ok bool) {
+	if !s.IsArrayString() {
 		return v, false
 	}
-	return s.Arraystring, true
+	return s.ArrayString, true
 }
 
-// NewArraystringReposRemoveUserAccessRestrictionsReq returns new ReposRemoveUserAccessRestrictionsReq from []string.
-func NewArraystringReposRemoveUserAccessRestrictionsReq(v []string) ReposRemoveUserAccessRestrictionsReq {
+// NewArrayStringReposRemoveUserAccessRestrictionsReq returns new ReposRemoveUserAccessRestrictionsReq from []string.
+func NewArrayStringReposRemoveUserAccessRestrictionsReq(v []string) ReposRemoveUserAccessRestrictionsReq {
 	var s ReposRemoveUserAccessRestrictionsReq
-	s.SetArraystring(v)
+	s.SetArrayString(v)
 	return s
 }
 
@@ -30671,7 +30671,7 @@ func (*ReposSetAppAccessRestrictionsOKApplicationJSON) reposSetAppAccessRestrict
 type ReposSetAppAccessRestrictionsReq struct {
 	Type                              ReposSetAppAccessRestrictionsReqType // switch on this field
 	ReposSetAppAccessRestrictionsReq0 ReposSetAppAccessRestrictionsReq0
-	Arraystring                       []string
+	ArrayString                       []string
 }
 
 // ReposSetAppAccessRestrictionsReqType is oneOf type of ReposSetAppAccessRestrictionsReq.
@@ -30680,7 +30680,7 @@ type ReposSetAppAccessRestrictionsReqType string
 // Possible values for ReposSetAppAccessRestrictionsReqType.
 const (
 	ReposSetAppAccessRestrictionsReq0ReposSetAppAccessRestrictionsReq ReposSetAppAccessRestrictionsReqType = "ReposSetAppAccessRestrictionsReq0"
-	ArraystringReposSetAppAccessRestrictionsReq                       ReposSetAppAccessRestrictionsReqType = "[]string"
+	ArrayStringReposSetAppAccessRestrictionsReq                       ReposSetAppAccessRestrictionsReqType = "[]string"
 )
 
 // IsReposSetAppAccessRestrictionsReq0 reports whether ReposSetAppAccessRestrictionsReq is ReposSetAppAccessRestrictionsReq0.
@@ -30688,9 +30688,9 @@ func (s ReposSetAppAccessRestrictionsReq) IsReposSetAppAccessRestrictionsReq0() 
 	return s.Type == ReposSetAppAccessRestrictionsReq0ReposSetAppAccessRestrictionsReq
 }
 
-// IsArraystring reports whether ReposSetAppAccessRestrictionsReq is []string.
-func (s ReposSetAppAccessRestrictionsReq) IsArraystring() bool {
-	return s.Type == ArraystringReposSetAppAccessRestrictionsReq
+// IsArrayString reports whether ReposSetAppAccessRestrictionsReq is []string.
+func (s ReposSetAppAccessRestrictionsReq) IsArrayString() bool {
+	return s.Type == ArrayStringReposSetAppAccessRestrictionsReq
 }
 
 // SetReposSetAppAccessRestrictionsReq0 sets ReposSetAppAccessRestrictionsReq to ReposSetAppAccessRestrictionsReq0.
@@ -30714,24 +30714,24 @@ func NewReposSetAppAccessRestrictionsReq0ReposSetAppAccessRestrictionsReq(v Repo
 	return s
 }
 
-// SetArraystring sets ReposSetAppAccessRestrictionsReq to []string.
-func (s *ReposSetAppAccessRestrictionsReq) SetArraystring(v []string) {
-	s.Type = ArraystringReposSetAppAccessRestrictionsReq
-	s.Arraystring = v
+// SetArrayString sets ReposSetAppAccessRestrictionsReq to []string.
+func (s *ReposSetAppAccessRestrictionsReq) SetArrayString(v []string) {
+	s.Type = ArrayStringReposSetAppAccessRestrictionsReq
+	s.ArrayString = v
 }
 
-// GetArraystring returns []string and true boolean if ReposSetAppAccessRestrictionsReq is []string.
-func (s ReposSetAppAccessRestrictionsReq) GetArraystring() (v []string, ok bool) {
-	if !s.IsArraystring() {
+// GetArrayString returns []string and true boolean if ReposSetAppAccessRestrictionsReq is []string.
+func (s ReposSetAppAccessRestrictionsReq) GetArrayString() (v []string, ok bool) {
+	if !s.IsArrayString() {
 		return v, false
 	}
-	return s.Arraystring, true
+	return s.ArrayString, true
 }
 
-// NewArraystringReposSetAppAccessRestrictionsReq returns new ReposSetAppAccessRestrictionsReq from []string.
-func NewArraystringReposSetAppAccessRestrictionsReq(v []string) ReposSetAppAccessRestrictionsReq {
+// NewArrayStringReposSetAppAccessRestrictionsReq returns new ReposSetAppAccessRestrictionsReq from []string.
+func NewArrayStringReposSetAppAccessRestrictionsReq(v []string) ReposSetAppAccessRestrictionsReq {
 	var s ReposSetAppAccessRestrictionsReq
-	s.SetArraystring(v)
+	s.SetArrayString(v)
 	return s
 }
 
@@ -30747,7 +30747,7 @@ func (*ReposSetStatusCheckContextsOKApplicationJSON) reposSetStatusCheckContexts
 type ReposSetStatusCheckContextsReq struct {
 	Type                            ReposSetStatusCheckContextsReqType // switch on this field
 	ReposSetStatusCheckContextsReq0 ReposSetStatusCheckContextsReq0
-	Arraystring                     []string
+	ArrayString                     []string
 }
 
 // ReposSetStatusCheckContextsReqType is oneOf type of ReposSetStatusCheckContextsReq.
@@ -30756,7 +30756,7 @@ type ReposSetStatusCheckContextsReqType string
 // Possible values for ReposSetStatusCheckContextsReqType.
 const (
 	ReposSetStatusCheckContextsReq0ReposSetStatusCheckContextsReq ReposSetStatusCheckContextsReqType = "ReposSetStatusCheckContextsReq0"
-	ArraystringReposSetStatusCheckContextsReq                     ReposSetStatusCheckContextsReqType = "[]string"
+	ArrayStringReposSetStatusCheckContextsReq                     ReposSetStatusCheckContextsReqType = "[]string"
 )
 
 // IsReposSetStatusCheckContextsReq0 reports whether ReposSetStatusCheckContextsReq is ReposSetStatusCheckContextsReq0.
@@ -30764,9 +30764,9 @@ func (s ReposSetStatusCheckContextsReq) IsReposSetStatusCheckContextsReq0() bool
 	return s.Type == ReposSetStatusCheckContextsReq0ReposSetStatusCheckContextsReq
 }
 
-// IsArraystring reports whether ReposSetStatusCheckContextsReq is []string.
-func (s ReposSetStatusCheckContextsReq) IsArraystring() bool {
-	return s.Type == ArraystringReposSetStatusCheckContextsReq
+// IsArrayString reports whether ReposSetStatusCheckContextsReq is []string.
+func (s ReposSetStatusCheckContextsReq) IsArrayString() bool {
+	return s.Type == ArrayStringReposSetStatusCheckContextsReq
 }
 
 // SetReposSetStatusCheckContextsReq0 sets ReposSetStatusCheckContextsReq to ReposSetStatusCheckContextsReq0.
@@ -30790,24 +30790,24 @@ func NewReposSetStatusCheckContextsReq0ReposSetStatusCheckContextsReq(v ReposSet
 	return s
 }
 
-// SetArraystring sets ReposSetStatusCheckContextsReq to []string.
-func (s *ReposSetStatusCheckContextsReq) SetArraystring(v []string) {
-	s.Type = ArraystringReposSetStatusCheckContextsReq
-	s.Arraystring = v
+// SetArrayString sets ReposSetStatusCheckContextsReq to []string.
+func (s *ReposSetStatusCheckContextsReq) SetArrayString(v []string) {
+	s.Type = ArrayStringReposSetStatusCheckContextsReq
+	s.ArrayString = v
 }
 
-// GetArraystring returns []string and true boolean if ReposSetStatusCheckContextsReq is []string.
-func (s ReposSetStatusCheckContextsReq) GetArraystring() (v []string, ok bool) {
-	if !s.IsArraystring() {
+// GetArrayString returns []string and true boolean if ReposSetStatusCheckContextsReq is []string.
+func (s ReposSetStatusCheckContextsReq) GetArrayString() (v []string, ok bool) {
+	if !s.IsArrayString() {
 		return v, false
 	}
-	return s.Arraystring, true
+	return s.ArrayString, true
 }
 
-// NewArraystringReposSetStatusCheckContextsReq returns new ReposSetStatusCheckContextsReq from []string.
-func NewArraystringReposSetStatusCheckContextsReq(v []string) ReposSetStatusCheckContextsReq {
+// NewArrayStringReposSetStatusCheckContextsReq returns new ReposSetStatusCheckContextsReq from []string.
+func NewArrayStringReposSetStatusCheckContextsReq(v []string) ReposSetStatusCheckContextsReq {
 	var s ReposSetStatusCheckContextsReq
-	s.SetArraystring(v)
+	s.SetArrayString(v)
 	return s
 }
 
@@ -30823,7 +30823,7 @@ func (*ReposSetTeamAccessRestrictionsOKApplicationJSON) reposSetTeamAccessRestri
 type ReposSetTeamAccessRestrictionsReq struct {
 	Type                               ReposSetTeamAccessRestrictionsReqType // switch on this field
 	ReposSetTeamAccessRestrictionsReq0 ReposSetTeamAccessRestrictionsReq0
-	Arraystring                        []string
+	ArrayString                        []string
 }
 
 // ReposSetTeamAccessRestrictionsReqType is oneOf type of ReposSetTeamAccessRestrictionsReq.
@@ -30832,7 +30832,7 @@ type ReposSetTeamAccessRestrictionsReqType string
 // Possible values for ReposSetTeamAccessRestrictionsReqType.
 const (
 	ReposSetTeamAccessRestrictionsReq0ReposSetTeamAccessRestrictionsReq ReposSetTeamAccessRestrictionsReqType = "ReposSetTeamAccessRestrictionsReq0"
-	ArraystringReposSetTeamAccessRestrictionsReq                        ReposSetTeamAccessRestrictionsReqType = "[]string"
+	ArrayStringReposSetTeamAccessRestrictionsReq                        ReposSetTeamAccessRestrictionsReqType = "[]string"
 )
 
 // IsReposSetTeamAccessRestrictionsReq0 reports whether ReposSetTeamAccessRestrictionsReq is ReposSetTeamAccessRestrictionsReq0.
@@ -30840,9 +30840,9 @@ func (s ReposSetTeamAccessRestrictionsReq) IsReposSetTeamAccessRestrictionsReq0(
 	return s.Type == ReposSetTeamAccessRestrictionsReq0ReposSetTeamAccessRestrictionsReq
 }
 
-// IsArraystring reports whether ReposSetTeamAccessRestrictionsReq is []string.
-func (s ReposSetTeamAccessRestrictionsReq) IsArraystring() bool {
-	return s.Type == ArraystringReposSetTeamAccessRestrictionsReq
+// IsArrayString reports whether ReposSetTeamAccessRestrictionsReq is []string.
+func (s ReposSetTeamAccessRestrictionsReq) IsArrayString() bool {
+	return s.Type == ArrayStringReposSetTeamAccessRestrictionsReq
 }
 
 // SetReposSetTeamAccessRestrictionsReq0 sets ReposSetTeamAccessRestrictionsReq to ReposSetTeamAccessRestrictionsReq0.
@@ -30866,24 +30866,24 @@ func NewReposSetTeamAccessRestrictionsReq0ReposSetTeamAccessRestrictionsReq(v Re
 	return s
 }
 
-// SetArraystring sets ReposSetTeamAccessRestrictionsReq to []string.
-func (s *ReposSetTeamAccessRestrictionsReq) SetArraystring(v []string) {
-	s.Type = ArraystringReposSetTeamAccessRestrictionsReq
-	s.Arraystring = v
+// SetArrayString sets ReposSetTeamAccessRestrictionsReq to []string.
+func (s *ReposSetTeamAccessRestrictionsReq) SetArrayString(v []string) {
+	s.Type = ArrayStringReposSetTeamAccessRestrictionsReq
+	s.ArrayString = v
 }
 
-// GetArraystring returns []string and true boolean if ReposSetTeamAccessRestrictionsReq is []string.
-func (s ReposSetTeamAccessRestrictionsReq) GetArraystring() (v []string, ok bool) {
-	if !s.IsArraystring() {
+// GetArrayString returns []string and true boolean if ReposSetTeamAccessRestrictionsReq is []string.
+func (s ReposSetTeamAccessRestrictionsReq) GetArrayString() (v []string, ok bool) {
+	if !s.IsArrayString() {
 		return v, false
 	}
-	return s.Arraystring, true
+	return s.ArrayString, true
 }
 
-// NewArraystringReposSetTeamAccessRestrictionsReq returns new ReposSetTeamAccessRestrictionsReq from []string.
-func NewArraystringReposSetTeamAccessRestrictionsReq(v []string) ReposSetTeamAccessRestrictionsReq {
+// NewArrayStringReposSetTeamAccessRestrictionsReq returns new ReposSetTeamAccessRestrictionsReq from []string.
+func NewArrayStringReposSetTeamAccessRestrictionsReq(v []string) ReposSetTeamAccessRestrictionsReq {
 	var s ReposSetTeamAccessRestrictionsReq
-	s.SetArraystring(v)
+	s.SetArrayString(v)
 	return s
 }
 
@@ -30899,7 +30899,7 @@ func (*ReposSetUserAccessRestrictionsOKApplicationJSON) reposSetUserAccessRestri
 type ReposSetUserAccessRestrictionsReq struct {
 	Type                               ReposSetUserAccessRestrictionsReqType // switch on this field
 	ReposSetUserAccessRestrictionsReq0 ReposSetUserAccessRestrictionsReq0
-	Arraystring                        []string
+	ArrayString                        []string
 }
 
 // ReposSetUserAccessRestrictionsReqType is oneOf type of ReposSetUserAccessRestrictionsReq.
@@ -30908,7 +30908,7 @@ type ReposSetUserAccessRestrictionsReqType string
 // Possible values for ReposSetUserAccessRestrictionsReqType.
 const (
 	ReposSetUserAccessRestrictionsReq0ReposSetUserAccessRestrictionsReq ReposSetUserAccessRestrictionsReqType = "ReposSetUserAccessRestrictionsReq0"
-	ArraystringReposSetUserAccessRestrictionsReq                        ReposSetUserAccessRestrictionsReqType = "[]string"
+	ArrayStringReposSetUserAccessRestrictionsReq                        ReposSetUserAccessRestrictionsReqType = "[]string"
 )
 
 // IsReposSetUserAccessRestrictionsReq0 reports whether ReposSetUserAccessRestrictionsReq is ReposSetUserAccessRestrictionsReq0.
@@ -30916,9 +30916,9 @@ func (s ReposSetUserAccessRestrictionsReq) IsReposSetUserAccessRestrictionsReq0(
 	return s.Type == ReposSetUserAccessRestrictionsReq0ReposSetUserAccessRestrictionsReq
 }
 
-// IsArraystring reports whether ReposSetUserAccessRestrictionsReq is []string.
-func (s ReposSetUserAccessRestrictionsReq) IsArraystring() bool {
-	return s.Type == ArraystringReposSetUserAccessRestrictionsReq
+// IsArrayString reports whether ReposSetUserAccessRestrictionsReq is []string.
+func (s ReposSetUserAccessRestrictionsReq) IsArrayString() bool {
+	return s.Type == ArrayStringReposSetUserAccessRestrictionsReq
 }
 
 // SetReposSetUserAccessRestrictionsReq0 sets ReposSetUserAccessRestrictionsReq to ReposSetUserAccessRestrictionsReq0.
@@ -30942,24 +30942,24 @@ func NewReposSetUserAccessRestrictionsReq0ReposSetUserAccessRestrictionsReq(v Re
 	return s
 }
 
-// SetArraystring sets ReposSetUserAccessRestrictionsReq to []string.
-func (s *ReposSetUserAccessRestrictionsReq) SetArraystring(v []string) {
-	s.Type = ArraystringReposSetUserAccessRestrictionsReq
-	s.Arraystring = v
+// SetArrayString sets ReposSetUserAccessRestrictionsReq to []string.
+func (s *ReposSetUserAccessRestrictionsReq) SetArrayString(v []string) {
+	s.Type = ArrayStringReposSetUserAccessRestrictionsReq
+	s.ArrayString = v
 }
 
-// GetArraystring returns []string and true boolean if ReposSetUserAccessRestrictionsReq is []string.
-func (s ReposSetUserAccessRestrictionsReq) GetArraystring() (v []string, ok bool) {
-	if !s.IsArraystring() {
+// GetArrayString returns []string and true boolean if ReposSetUserAccessRestrictionsReq is []string.
+func (s ReposSetUserAccessRestrictionsReq) GetArrayString() (v []string, ok bool) {
+	if !s.IsArrayString() {
 		return v, false
 	}
-	return s.Arraystring, true
+	return s.ArrayString, true
 }
 
-// NewArraystringReposSetUserAccessRestrictionsReq returns new ReposSetUserAccessRestrictionsReq from []string.
-func NewArraystringReposSetUserAccessRestrictionsReq(v []string) ReposSetUserAccessRestrictionsReq {
+// NewArrayStringReposSetUserAccessRestrictionsReq returns new ReposSetUserAccessRestrictionsReq from []string.
+func NewArrayStringReposSetUserAccessRestrictionsReq(v []string) ReposSetUserAccessRestrictionsReq {
 	var s ReposSetUserAccessRestrictionsReq
-	s.SetArraystring(v)
+	s.SetArrayString(v)
 	return s
 }
 
@@ -33198,7 +33198,7 @@ func (*UsersAddEmailForAuthenticatedCreatedApplicationJSON) usersAddEmailForAuth
 type UsersAddEmailForAuthenticatedReq struct {
 	Type                              UsersAddEmailForAuthenticatedReqType // switch on this field
 	UsersAddEmailForAuthenticatedReq0 UsersAddEmailForAuthenticatedReq0
-	Arraystring                       []string
+	ArrayString                       []string
 	String                            string
 }
 
@@ -33208,7 +33208,7 @@ type UsersAddEmailForAuthenticatedReqType string
 // Possible values for UsersAddEmailForAuthenticatedReqType.
 const (
 	UsersAddEmailForAuthenticatedReq0UsersAddEmailForAuthenticatedReq UsersAddEmailForAuthenticatedReqType = "UsersAddEmailForAuthenticatedReq0"
-	ArraystringUsersAddEmailForAuthenticatedReq                       UsersAddEmailForAuthenticatedReqType = "[]string"
+	ArrayStringUsersAddEmailForAuthenticatedReq                       UsersAddEmailForAuthenticatedReqType = "[]string"
 	StringUsersAddEmailForAuthenticatedReq                            UsersAddEmailForAuthenticatedReqType = "string"
 )
 
@@ -33217,9 +33217,9 @@ func (s UsersAddEmailForAuthenticatedReq) IsUsersAddEmailForAuthenticatedReq0() 
 	return s.Type == UsersAddEmailForAuthenticatedReq0UsersAddEmailForAuthenticatedReq
 }
 
-// IsArraystring reports whether UsersAddEmailForAuthenticatedReq is []string.
-func (s UsersAddEmailForAuthenticatedReq) IsArraystring() bool {
-	return s.Type == ArraystringUsersAddEmailForAuthenticatedReq
+// IsArrayString reports whether UsersAddEmailForAuthenticatedReq is []string.
+func (s UsersAddEmailForAuthenticatedReq) IsArrayString() bool {
+	return s.Type == ArrayStringUsersAddEmailForAuthenticatedReq
 }
 
 // IsString reports whether UsersAddEmailForAuthenticatedReq is string.
@@ -33248,24 +33248,24 @@ func NewUsersAddEmailForAuthenticatedReq0UsersAddEmailForAuthenticatedReq(v User
 	return s
 }
 
-// SetArraystring sets UsersAddEmailForAuthenticatedReq to []string.
-func (s *UsersAddEmailForAuthenticatedReq) SetArraystring(v []string) {
-	s.Type = ArraystringUsersAddEmailForAuthenticatedReq
-	s.Arraystring = v
+// SetArrayString sets UsersAddEmailForAuthenticatedReq to []string.
+func (s *UsersAddEmailForAuthenticatedReq) SetArrayString(v []string) {
+	s.Type = ArrayStringUsersAddEmailForAuthenticatedReq
+	s.ArrayString = v
 }
 
-// GetArraystring returns []string and true boolean if UsersAddEmailForAuthenticatedReq is []string.
-func (s UsersAddEmailForAuthenticatedReq) GetArraystring() (v []string, ok bool) {
-	if !s.IsArraystring() {
+// GetArrayString returns []string and true boolean if UsersAddEmailForAuthenticatedReq is []string.
+func (s UsersAddEmailForAuthenticatedReq) GetArrayString() (v []string, ok bool) {
+	if !s.IsArrayString() {
 		return v, false
 	}
-	return s.Arraystring, true
+	return s.ArrayString, true
 }
 
-// NewArraystringUsersAddEmailForAuthenticatedReq returns new UsersAddEmailForAuthenticatedReq from []string.
-func NewArraystringUsersAddEmailForAuthenticatedReq(v []string) UsersAddEmailForAuthenticatedReq {
+// NewArrayStringUsersAddEmailForAuthenticatedReq returns new UsersAddEmailForAuthenticatedReq from []string.
+func NewArrayStringUsersAddEmailForAuthenticatedReq(v []string) UsersAddEmailForAuthenticatedReq {
 	var s UsersAddEmailForAuthenticatedReq
-	s.SetArraystring(v)
+	s.SetArrayString(v)
 	return s
 }
 
@@ -33422,7 +33422,7 @@ func (*UsersDeleteEmailForAuthenticatedNoContent) usersDeleteEmailForAuthenticat
 type UsersDeleteEmailForAuthenticatedReq struct {
 	Type                                 UsersDeleteEmailForAuthenticatedReqType // switch on this field
 	UsersDeleteEmailForAuthenticatedReq0 UsersDeleteEmailForAuthenticatedReq0
-	Arraystring                          []string
+	ArrayString                          []string
 	String                               string
 }
 
@@ -33432,7 +33432,7 @@ type UsersDeleteEmailForAuthenticatedReqType string
 // Possible values for UsersDeleteEmailForAuthenticatedReqType.
 const (
 	UsersDeleteEmailForAuthenticatedReq0UsersDeleteEmailForAuthenticatedReq UsersDeleteEmailForAuthenticatedReqType = "UsersDeleteEmailForAuthenticatedReq0"
-	ArraystringUsersDeleteEmailForAuthenticatedReq                          UsersDeleteEmailForAuthenticatedReqType = "[]string"
+	ArrayStringUsersDeleteEmailForAuthenticatedReq                          UsersDeleteEmailForAuthenticatedReqType = "[]string"
 	StringUsersDeleteEmailForAuthenticatedReq                               UsersDeleteEmailForAuthenticatedReqType = "string"
 )
 
@@ -33441,9 +33441,9 @@ func (s UsersDeleteEmailForAuthenticatedReq) IsUsersDeleteEmailForAuthenticatedR
 	return s.Type == UsersDeleteEmailForAuthenticatedReq0UsersDeleteEmailForAuthenticatedReq
 }
 
-// IsArraystring reports whether UsersDeleteEmailForAuthenticatedReq is []string.
-func (s UsersDeleteEmailForAuthenticatedReq) IsArraystring() bool {
-	return s.Type == ArraystringUsersDeleteEmailForAuthenticatedReq
+// IsArrayString reports whether UsersDeleteEmailForAuthenticatedReq is []string.
+func (s UsersDeleteEmailForAuthenticatedReq) IsArrayString() bool {
+	return s.Type == ArrayStringUsersDeleteEmailForAuthenticatedReq
 }
 
 // IsString reports whether UsersDeleteEmailForAuthenticatedReq is string.
@@ -33472,24 +33472,24 @@ func NewUsersDeleteEmailForAuthenticatedReq0UsersDeleteEmailForAuthenticatedReq(
 	return s
 }
 
-// SetArraystring sets UsersDeleteEmailForAuthenticatedReq to []string.
-func (s *UsersDeleteEmailForAuthenticatedReq) SetArraystring(v []string) {
-	s.Type = ArraystringUsersDeleteEmailForAuthenticatedReq
-	s.Arraystring = v
+// SetArrayString sets UsersDeleteEmailForAuthenticatedReq to []string.
+func (s *UsersDeleteEmailForAuthenticatedReq) SetArrayString(v []string) {
+	s.Type = ArrayStringUsersDeleteEmailForAuthenticatedReq
+	s.ArrayString = v
 }
 
-// GetArraystring returns []string and true boolean if UsersDeleteEmailForAuthenticatedReq is []string.
-func (s UsersDeleteEmailForAuthenticatedReq) GetArraystring() (v []string, ok bool) {
-	if !s.IsArraystring() {
+// GetArrayString returns []string and true boolean if UsersDeleteEmailForAuthenticatedReq is []string.
+func (s UsersDeleteEmailForAuthenticatedReq) GetArrayString() (v []string, ok bool) {
+	if !s.IsArrayString() {
 		return v, false
 	}
-	return s.Arraystring, true
+	return s.ArrayString, true
 }
 
-// NewArraystringUsersDeleteEmailForAuthenticatedReq returns new UsersDeleteEmailForAuthenticatedReq from []string.
-func NewArraystringUsersDeleteEmailForAuthenticatedReq(v []string) UsersDeleteEmailForAuthenticatedReq {
+// NewArrayStringUsersDeleteEmailForAuthenticatedReq returns new UsersDeleteEmailForAuthenticatedReq from []string.
+func NewArrayStringUsersDeleteEmailForAuthenticatedReq(v []string) UsersDeleteEmailForAuthenticatedReq {
 	var s UsersDeleteEmailForAuthenticatedReq
-	s.SetArraystring(v)
+	s.SetArrayString(v)
 	return s
 }
 
@@ -34139,7 +34139,7 @@ type ValidationErrorErrorsItemValue struct {
 	Type        ValidationErrorErrorsItemValueType // switch on this field
 	String      string
 	Int         int
-	Arraystring []string
+	ArrayString []string
 }
 
 // ValidationErrorErrorsItemValueType is oneOf type of ValidationErrorErrorsItemValue.
@@ -34149,7 +34149,7 @@ type ValidationErrorErrorsItemValueType string
 const (
 	StringValidationErrorErrorsItemValue      ValidationErrorErrorsItemValueType = "string"
 	IntValidationErrorErrorsItemValue         ValidationErrorErrorsItemValueType = "int"
-	ArraystringValidationErrorErrorsItemValue ValidationErrorErrorsItemValueType = "[]string"
+	ArrayStringValidationErrorErrorsItemValue ValidationErrorErrorsItemValueType = "[]string"
 )
 
 // IsString reports whether ValidationErrorErrorsItemValue is string.
@@ -34162,9 +34162,9 @@ func (s ValidationErrorErrorsItemValue) IsInt() bool {
 	return s.Type == IntValidationErrorErrorsItemValue
 }
 
-// IsArraystring reports whether ValidationErrorErrorsItemValue is []string.
-func (s ValidationErrorErrorsItemValue) IsArraystring() bool {
-	return s.Type == ArraystringValidationErrorErrorsItemValue
+// IsArrayString reports whether ValidationErrorErrorsItemValue is []string.
+func (s ValidationErrorErrorsItemValue) IsArrayString() bool {
+	return s.Type == ArrayStringValidationErrorErrorsItemValue
 }
 
 // SetString sets ValidationErrorErrorsItemValue to string.
@@ -34209,24 +34209,24 @@ func NewIntValidationErrorErrorsItemValue(v int) ValidationErrorErrorsItemValue 
 	return s
 }
 
-// SetArraystring sets ValidationErrorErrorsItemValue to []string.
-func (s *ValidationErrorErrorsItemValue) SetArraystring(v []string) {
-	s.Type = ArraystringValidationErrorErrorsItemValue
-	s.Arraystring = v
+// SetArrayString sets ValidationErrorErrorsItemValue to []string.
+func (s *ValidationErrorErrorsItemValue) SetArrayString(v []string) {
+	s.Type = ArrayStringValidationErrorErrorsItemValue
+	s.ArrayString = v
 }
 
-// GetArraystring returns []string and true boolean if ValidationErrorErrorsItemValue is []string.
-func (s ValidationErrorErrorsItemValue) GetArraystring() (v []string, ok bool) {
-	if !s.IsArraystring() {
+// GetArrayString returns []string and true boolean if ValidationErrorErrorsItemValue is []string.
+func (s ValidationErrorErrorsItemValue) GetArrayString() (v []string, ok bool) {
+	if !s.IsArrayString() {
 		return v, false
 	}
-	return s.Arraystring, true
+	return s.ArrayString, true
 }
 
-// NewArraystringValidationErrorErrorsItemValue returns new ValidationErrorErrorsItemValue from []string.
-func NewArraystringValidationErrorErrorsItemValue(v []string) ValidationErrorErrorsItemValue {
+// NewArrayStringValidationErrorErrorsItemValue returns new ValidationErrorErrorsItemValue from []string.
+func NewArrayStringValidationErrorErrorsItemValue(v []string) ValidationErrorErrorsItemValue {
 	var s ValidationErrorErrorsItemValue
-	s.SetArraystring(v)
+	s.SetArrayString(v)
 	return s
 }
 

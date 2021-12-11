@@ -18910,9 +18910,9 @@ func (s EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue) 
 		e.Str(s.String)
 	case EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue:
 		s.EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1.Encode(e)
-	case ArraystringEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue:
+	case ArrayStringEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue:
 		e.ArrStart()
-		for _, elem := range s.Arraystring {
+		for _, elem := range s.ArrayString {
 			e.Str(elem)
 		}
 		e.ArrEnd()
@@ -18939,7 +18939,7 @@ func (s *EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue)
 		}
 		s.Type = EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue
 	case jx.Array:
-		s.Arraystring = nil
+		s.ArrayString = nil
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem string
 			v, err := d.Str()
@@ -18947,12 +18947,12 @@ func (s *EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue)
 			if err != nil {
 				return err
 			}
-			s.Arraystring = append(s.Arraystring, elem)
+			s.ArrayString = append(s.ArrayString, elem)
 			return nil
 		}); err != nil {
 			return err
 		}
-		s.Type = ArraystringEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue
+		s.Type = ArrayStringEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue
 	default:
 		return errors.Errorf("unexpected json type %q", t)
 	}
@@ -73450,9 +73450,9 @@ func (s ReposAddAppAccessRestrictionsReq) Encode(e *jx.Encoder) {
 	switch s.Type {
 	case ReposAddAppAccessRestrictionsReq0ReposAddAppAccessRestrictionsReq:
 		s.ReposAddAppAccessRestrictionsReq0.Encode(e)
-	case ArraystringReposAddAppAccessRestrictionsReq:
+	case ArrayStringReposAddAppAccessRestrictionsReq:
 		e.ArrStart()
-		for _, elem := range s.Arraystring {
+		for _, elem := range s.ArrayString {
 			e.Str(elem)
 		}
 		e.ArrEnd()
@@ -73472,7 +73472,7 @@ func (s *ReposAddAppAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 		}
 		s.Type = ReposAddAppAccessRestrictionsReq0ReposAddAppAccessRestrictionsReq
 	case jx.Array:
-		s.Arraystring = nil
+		s.ArrayString = nil
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem string
 			v, err := d.Str()
@@ -73480,12 +73480,12 @@ func (s *ReposAddAppAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 			if err != nil {
 				return err
 			}
-			s.Arraystring = append(s.Arraystring, elem)
+			s.ArrayString = append(s.ArrayString, elem)
 			return nil
 		}); err != nil {
 			return err
 		}
-		s.Type = ArraystringReposAddAppAccessRestrictionsReq
+		s.Type = ArrayStringReposAddAppAccessRestrictionsReq
 	default:
 		return errors.Errorf("unexpected json type %q", t)
 	}
@@ -73700,9 +73700,9 @@ func (s ReposAddStatusCheckContextsReq) Encode(e *jx.Encoder) {
 	switch s.Type {
 	case ReposAddStatusCheckContextsReq0ReposAddStatusCheckContextsReq:
 		s.ReposAddStatusCheckContextsReq0.Encode(e)
-	case ArraystringReposAddStatusCheckContextsReq:
+	case ArrayStringReposAddStatusCheckContextsReq:
 		e.ArrStart()
-		for _, elem := range s.Arraystring {
+		for _, elem := range s.ArrayString {
 			e.Str(elem)
 		}
 		e.ArrEnd()
@@ -73722,7 +73722,7 @@ func (s *ReposAddStatusCheckContextsReq) Decode(d *jx.Decoder) error {
 		}
 		s.Type = ReposAddStatusCheckContextsReq0ReposAddStatusCheckContextsReq
 	case jx.Array:
-		s.Arraystring = nil
+		s.ArrayString = nil
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem string
 			v, err := d.Str()
@@ -73730,12 +73730,12 @@ func (s *ReposAddStatusCheckContextsReq) Decode(d *jx.Decoder) error {
 			if err != nil {
 				return err
 			}
-			s.Arraystring = append(s.Arraystring, elem)
+			s.ArrayString = append(s.ArrayString, elem)
 			return nil
 		}); err != nil {
 			return err
 		}
-		s.Type = ArraystringReposAddStatusCheckContextsReq
+		s.Type = ArrayStringReposAddStatusCheckContextsReq
 	default:
 		return errors.Errorf("unexpected json type %q", t)
 	}
@@ -73824,9 +73824,9 @@ func (s ReposAddTeamAccessRestrictionsReq) Encode(e *jx.Encoder) {
 	switch s.Type {
 	case ReposAddTeamAccessRestrictionsReq0ReposAddTeamAccessRestrictionsReq:
 		s.ReposAddTeamAccessRestrictionsReq0.Encode(e)
-	case ArraystringReposAddTeamAccessRestrictionsReq:
+	case ArrayStringReposAddTeamAccessRestrictionsReq:
 		e.ArrStart()
-		for _, elem := range s.Arraystring {
+		for _, elem := range s.ArrayString {
 			e.Str(elem)
 		}
 		e.ArrEnd()
@@ -73846,7 +73846,7 @@ func (s *ReposAddTeamAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 		}
 		s.Type = ReposAddTeamAccessRestrictionsReq0ReposAddTeamAccessRestrictionsReq
 	case jx.Array:
-		s.Arraystring = nil
+		s.ArrayString = nil
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem string
 			v, err := d.Str()
@@ -73854,12 +73854,12 @@ func (s *ReposAddTeamAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 			if err != nil {
 				return err
 			}
-			s.Arraystring = append(s.Arraystring, elem)
+			s.ArrayString = append(s.ArrayString, elem)
 			return nil
 		}); err != nil {
 			return err
 		}
-		s.Type = ArraystringReposAddTeamAccessRestrictionsReq
+		s.Type = ArrayStringReposAddTeamAccessRestrictionsReq
 	default:
 		return errors.Errorf("unexpected json type %q", t)
 	}
@@ -73948,9 +73948,9 @@ func (s ReposAddUserAccessRestrictionsReq) Encode(e *jx.Encoder) {
 	switch s.Type {
 	case ReposAddUserAccessRestrictionsReq0ReposAddUserAccessRestrictionsReq:
 		s.ReposAddUserAccessRestrictionsReq0.Encode(e)
-	case ArraystringReposAddUserAccessRestrictionsReq:
+	case ArrayStringReposAddUserAccessRestrictionsReq:
 		e.ArrStart()
-		for _, elem := range s.Arraystring {
+		for _, elem := range s.ArrayString {
 			e.Str(elem)
 		}
 		e.ArrEnd()
@@ -73970,7 +73970,7 @@ func (s *ReposAddUserAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 		}
 		s.Type = ReposAddUserAccessRestrictionsReq0ReposAddUserAccessRestrictionsReq
 	case jx.Array:
-		s.Arraystring = nil
+		s.ArrayString = nil
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem string
 			v, err := d.Str()
@@ -73978,12 +73978,12 @@ func (s *ReposAddUserAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 			if err != nil {
 				return err
 			}
-			s.Arraystring = append(s.Arraystring, elem)
+			s.ArrayString = append(s.ArrayString, elem)
 			return nil
 		}); err != nil {
 			return err
 		}
-		s.Type = ArraystringReposAddUserAccessRestrictionsReq
+		s.Type = ArrayStringReposAddUserAccessRestrictionsReq
 	default:
 		return errors.Errorf("unexpected json type %q", t)
 	}
@@ -78863,9 +78863,9 @@ func (s ReposRemoveAppAccessRestrictionsReq) Encode(e *jx.Encoder) {
 	switch s.Type {
 	case ReposRemoveAppAccessRestrictionsReq0ReposRemoveAppAccessRestrictionsReq:
 		s.ReposRemoveAppAccessRestrictionsReq0.Encode(e)
-	case ArraystringReposRemoveAppAccessRestrictionsReq:
+	case ArrayStringReposRemoveAppAccessRestrictionsReq:
 		e.ArrStart()
-		for _, elem := range s.Arraystring {
+		for _, elem := range s.ArrayString {
 			e.Str(elem)
 		}
 		e.ArrEnd()
@@ -78885,7 +78885,7 @@ func (s *ReposRemoveAppAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 		}
 		s.Type = ReposRemoveAppAccessRestrictionsReq0ReposRemoveAppAccessRestrictionsReq
 	case jx.Array:
-		s.Arraystring = nil
+		s.ArrayString = nil
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem string
 			v, err := d.Str()
@@ -78893,12 +78893,12 @@ func (s *ReposRemoveAppAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 			if err != nil {
 				return err
 			}
-			s.Arraystring = append(s.Arraystring, elem)
+			s.ArrayString = append(s.ArrayString, elem)
 			return nil
 		}); err != nil {
 			return err
 		}
-		s.Type = ArraystringReposRemoveAppAccessRestrictionsReq
+		s.Type = ArrayStringReposRemoveAppAccessRestrictionsReq
 	default:
 		return errors.Errorf("unexpected json type %q", t)
 	}
@@ -79009,9 +79009,9 @@ func (s ReposRemoveStatusCheckContextsReq) Encode(e *jx.Encoder) {
 	switch s.Type {
 	case ReposRemoveStatusCheckContextsReq0ReposRemoveStatusCheckContextsReq:
 		s.ReposRemoveStatusCheckContextsReq0.Encode(e)
-	case ArraystringReposRemoveStatusCheckContextsReq:
+	case ArrayStringReposRemoveStatusCheckContextsReq:
 		e.ArrStart()
-		for _, elem := range s.Arraystring {
+		for _, elem := range s.ArrayString {
 			e.Str(elem)
 		}
 		e.ArrEnd()
@@ -79031,7 +79031,7 @@ func (s *ReposRemoveStatusCheckContextsReq) Decode(d *jx.Decoder) error {
 		}
 		s.Type = ReposRemoveStatusCheckContextsReq0ReposRemoveStatusCheckContextsReq
 	case jx.Array:
-		s.Arraystring = nil
+		s.ArrayString = nil
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem string
 			v, err := d.Str()
@@ -79039,12 +79039,12 @@ func (s *ReposRemoveStatusCheckContextsReq) Decode(d *jx.Decoder) error {
 			if err != nil {
 				return err
 			}
-			s.Arraystring = append(s.Arraystring, elem)
+			s.ArrayString = append(s.ArrayString, elem)
 			return nil
 		}); err != nil {
 			return err
 		}
-		s.Type = ArraystringReposRemoveStatusCheckContextsReq
+		s.Type = ArrayStringReposRemoveStatusCheckContextsReq
 	default:
 		return errors.Errorf("unexpected json type %q", t)
 	}
@@ -79153,9 +79153,9 @@ func (s ReposRemoveTeamAccessRestrictionsReq) Encode(e *jx.Encoder) {
 	switch s.Type {
 	case ReposRemoveTeamAccessRestrictionsReq0ReposRemoveTeamAccessRestrictionsReq:
 		s.ReposRemoveTeamAccessRestrictionsReq0.Encode(e)
-	case ArraystringReposRemoveTeamAccessRestrictionsReq:
+	case ArrayStringReposRemoveTeamAccessRestrictionsReq:
 		e.ArrStart()
-		for _, elem := range s.Arraystring {
+		for _, elem := range s.ArrayString {
 			e.Str(elem)
 		}
 		e.ArrEnd()
@@ -79175,7 +79175,7 @@ func (s *ReposRemoveTeamAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 		}
 		s.Type = ReposRemoveTeamAccessRestrictionsReq0ReposRemoveTeamAccessRestrictionsReq
 	case jx.Array:
-		s.Arraystring = nil
+		s.ArrayString = nil
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem string
 			v, err := d.Str()
@@ -79183,12 +79183,12 @@ func (s *ReposRemoveTeamAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 			if err != nil {
 				return err
 			}
-			s.Arraystring = append(s.Arraystring, elem)
+			s.ArrayString = append(s.ArrayString, elem)
 			return nil
 		}); err != nil {
 			return err
 		}
-		s.Type = ArraystringReposRemoveTeamAccessRestrictionsReq
+		s.Type = ArrayStringReposRemoveTeamAccessRestrictionsReq
 	default:
 		return errors.Errorf("unexpected json type %q", t)
 	}
@@ -79277,9 +79277,9 @@ func (s ReposRemoveUserAccessRestrictionsReq) Encode(e *jx.Encoder) {
 	switch s.Type {
 	case ReposRemoveUserAccessRestrictionsReq0ReposRemoveUserAccessRestrictionsReq:
 		s.ReposRemoveUserAccessRestrictionsReq0.Encode(e)
-	case ArraystringReposRemoveUserAccessRestrictionsReq:
+	case ArrayStringReposRemoveUserAccessRestrictionsReq:
 		e.ArrStart()
-		for _, elem := range s.Arraystring {
+		for _, elem := range s.ArrayString {
 			e.Str(elem)
 		}
 		e.ArrEnd()
@@ -79299,7 +79299,7 @@ func (s *ReposRemoveUserAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 		}
 		s.Type = ReposRemoveUserAccessRestrictionsReq0ReposRemoveUserAccessRestrictionsReq
 	case jx.Array:
-		s.Arraystring = nil
+		s.ArrayString = nil
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem string
 			v, err := d.Str()
@@ -79307,12 +79307,12 @@ func (s *ReposRemoveUserAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 			if err != nil {
 				return err
 			}
-			s.Arraystring = append(s.Arraystring, elem)
+			s.ArrayString = append(s.ArrayString, elem)
 			return nil
 		}); err != nil {
 			return err
 		}
-		s.Type = ArraystringReposRemoveUserAccessRestrictionsReq
+		s.Type = ArrayStringReposRemoveUserAccessRestrictionsReq
 	default:
 		return errors.Errorf("unexpected json type %q", t)
 	}
@@ -79519,9 +79519,9 @@ func (s ReposSetAppAccessRestrictionsReq) Encode(e *jx.Encoder) {
 	switch s.Type {
 	case ReposSetAppAccessRestrictionsReq0ReposSetAppAccessRestrictionsReq:
 		s.ReposSetAppAccessRestrictionsReq0.Encode(e)
-	case ArraystringReposSetAppAccessRestrictionsReq:
+	case ArrayStringReposSetAppAccessRestrictionsReq:
 		e.ArrStart()
-		for _, elem := range s.Arraystring {
+		for _, elem := range s.ArrayString {
 			e.Str(elem)
 		}
 		e.ArrEnd()
@@ -79541,7 +79541,7 @@ func (s *ReposSetAppAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 		}
 		s.Type = ReposSetAppAccessRestrictionsReq0ReposSetAppAccessRestrictionsReq
 	case jx.Array:
-		s.Arraystring = nil
+		s.ArrayString = nil
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem string
 			v, err := d.Str()
@@ -79549,12 +79549,12 @@ func (s *ReposSetAppAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 			if err != nil {
 				return err
 			}
-			s.Arraystring = append(s.Arraystring, elem)
+			s.ArrayString = append(s.ArrayString, elem)
 			return nil
 		}); err != nil {
 			return err
 		}
-		s.Type = ArraystringReposSetAppAccessRestrictionsReq
+		s.Type = ArrayStringReposSetAppAccessRestrictionsReq
 	default:
 		return errors.Errorf("unexpected json type %q", t)
 	}
@@ -79645,9 +79645,9 @@ func (s ReposSetStatusCheckContextsReq) Encode(e *jx.Encoder) {
 	switch s.Type {
 	case ReposSetStatusCheckContextsReq0ReposSetStatusCheckContextsReq:
 		s.ReposSetStatusCheckContextsReq0.Encode(e)
-	case ArraystringReposSetStatusCheckContextsReq:
+	case ArrayStringReposSetStatusCheckContextsReq:
 		e.ArrStart()
-		for _, elem := range s.Arraystring {
+		for _, elem := range s.ArrayString {
 			e.Str(elem)
 		}
 		e.ArrEnd()
@@ -79667,7 +79667,7 @@ func (s *ReposSetStatusCheckContextsReq) Decode(d *jx.Decoder) error {
 		}
 		s.Type = ReposSetStatusCheckContextsReq0ReposSetStatusCheckContextsReq
 	case jx.Array:
-		s.Arraystring = nil
+		s.ArrayString = nil
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem string
 			v, err := d.Str()
@@ -79675,12 +79675,12 @@ func (s *ReposSetStatusCheckContextsReq) Decode(d *jx.Decoder) error {
 			if err != nil {
 				return err
 			}
-			s.Arraystring = append(s.Arraystring, elem)
+			s.ArrayString = append(s.ArrayString, elem)
 			return nil
 		}); err != nil {
 			return err
 		}
-		s.Type = ArraystringReposSetStatusCheckContextsReq
+		s.Type = ArrayStringReposSetStatusCheckContextsReq
 	default:
 		return errors.Errorf("unexpected json type %q", t)
 	}
@@ -79769,9 +79769,9 @@ func (s ReposSetTeamAccessRestrictionsReq) Encode(e *jx.Encoder) {
 	switch s.Type {
 	case ReposSetTeamAccessRestrictionsReq0ReposSetTeamAccessRestrictionsReq:
 		s.ReposSetTeamAccessRestrictionsReq0.Encode(e)
-	case ArraystringReposSetTeamAccessRestrictionsReq:
+	case ArrayStringReposSetTeamAccessRestrictionsReq:
 		e.ArrStart()
-		for _, elem := range s.Arraystring {
+		for _, elem := range s.ArrayString {
 			e.Str(elem)
 		}
 		e.ArrEnd()
@@ -79791,7 +79791,7 @@ func (s *ReposSetTeamAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 		}
 		s.Type = ReposSetTeamAccessRestrictionsReq0ReposSetTeamAccessRestrictionsReq
 	case jx.Array:
-		s.Arraystring = nil
+		s.ArrayString = nil
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem string
 			v, err := d.Str()
@@ -79799,12 +79799,12 @@ func (s *ReposSetTeamAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 			if err != nil {
 				return err
 			}
-			s.Arraystring = append(s.Arraystring, elem)
+			s.ArrayString = append(s.ArrayString, elem)
 			return nil
 		}); err != nil {
 			return err
 		}
-		s.Type = ArraystringReposSetTeamAccessRestrictionsReq
+		s.Type = ArrayStringReposSetTeamAccessRestrictionsReq
 	default:
 		return errors.Errorf("unexpected json type %q", t)
 	}
@@ -79893,9 +79893,9 @@ func (s ReposSetUserAccessRestrictionsReq) Encode(e *jx.Encoder) {
 	switch s.Type {
 	case ReposSetUserAccessRestrictionsReq0ReposSetUserAccessRestrictionsReq:
 		s.ReposSetUserAccessRestrictionsReq0.Encode(e)
-	case ArraystringReposSetUserAccessRestrictionsReq:
+	case ArrayStringReposSetUserAccessRestrictionsReq:
 		e.ArrStart()
-		for _, elem := range s.Arraystring {
+		for _, elem := range s.ArrayString {
 			e.Str(elem)
 		}
 		e.ArrEnd()
@@ -79915,7 +79915,7 @@ func (s *ReposSetUserAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 		}
 		s.Type = ReposSetUserAccessRestrictionsReq0ReposSetUserAccessRestrictionsReq
 	case jx.Array:
-		s.Arraystring = nil
+		s.ArrayString = nil
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem string
 			v, err := d.Str()
@@ -79923,12 +79923,12 @@ func (s *ReposSetUserAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 			if err != nil {
 				return err
 			}
-			s.Arraystring = append(s.Arraystring, elem)
+			s.ArrayString = append(s.ArrayString, elem)
 			return nil
 		}); err != nil {
 			return err
 		}
-		s.Type = ArraystringReposSetUserAccessRestrictionsReq
+		s.Type = ArrayStringReposSetUserAccessRestrictionsReq
 	default:
 		return errors.Errorf("unexpected json type %q", t)
 	}
@@ -94242,9 +94242,9 @@ func (s UsersAddEmailForAuthenticatedReq) Encode(e *jx.Encoder) {
 	switch s.Type {
 	case UsersAddEmailForAuthenticatedReq0UsersAddEmailForAuthenticatedReq:
 		s.UsersAddEmailForAuthenticatedReq0.Encode(e)
-	case ArraystringUsersAddEmailForAuthenticatedReq:
+	case ArrayStringUsersAddEmailForAuthenticatedReq:
 		e.ArrStart()
-		for _, elem := range s.Arraystring {
+		for _, elem := range s.ArrayString {
 			e.Str(elem)
 		}
 		e.ArrEnd()
@@ -94266,7 +94266,7 @@ func (s *UsersAddEmailForAuthenticatedReq) Decode(d *jx.Decoder) error {
 		}
 		s.Type = UsersAddEmailForAuthenticatedReq0UsersAddEmailForAuthenticatedReq
 	case jx.Array:
-		s.Arraystring = nil
+		s.ArrayString = nil
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem string
 			v, err := d.Str()
@@ -94274,12 +94274,12 @@ func (s *UsersAddEmailForAuthenticatedReq) Decode(d *jx.Decoder) error {
 			if err != nil {
 				return err
 			}
-			s.Arraystring = append(s.Arraystring, elem)
+			s.ArrayString = append(s.ArrayString, elem)
 			return nil
 		}); err != nil {
 			return err
 		}
-		s.Type = ArraystringUsersAddEmailForAuthenticatedReq
+		s.Type = ArrayStringUsersAddEmailForAuthenticatedReq
 	case jx.String:
 		v, err := d.Str()
 		s.String = string(v)
@@ -94958,9 +94958,9 @@ func (s UsersDeleteEmailForAuthenticatedReq) Encode(e *jx.Encoder) {
 	switch s.Type {
 	case UsersDeleteEmailForAuthenticatedReq0UsersDeleteEmailForAuthenticatedReq:
 		s.UsersDeleteEmailForAuthenticatedReq0.Encode(e)
-	case ArraystringUsersDeleteEmailForAuthenticatedReq:
+	case ArrayStringUsersDeleteEmailForAuthenticatedReq:
 		e.ArrStart()
-		for _, elem := range s.Arraystring {
+		for _, elem := range s.ArrayString {
 			e.Str(elem)
 		}
 		e.ArrEnd()
@@ -94982,7 +94982,7 @@ func (s *UsersDeleteEmailForAuthenticatedReq) Decode(d *jx.Decoder) error {
 		}
 		s.Type = UsersDeleteEmailForAuthenticatedReq0UsersDeleteEmailForAuthenticatedReq
 	case jx.Array:
-		s.Arraystring = nil
+		s.ArrayString = nil
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem string
 			v, err := d.Str()
@@ -94990,12 +94990,12 @@ func (s *UsersDeleteEmailForAuthenticatedReq) Decode(d *jx.Decoder) error {
 			if err != nil {
 				return err
 			}
-			s.Arraystring = append(s.Arraystring, elem)
+			s.ArrayString = append(s.ArrayString, elem)
 			return nil
 		}); err != nil {
 			return err
 		}
-		s.Type = ArraystringUsersDeleteEmailForAuthenticatedReq
+		s.Type = ArrayStringUsersDeleteEmailForAuthenticatedReq
 	case jx.String:
 		v, err := d.Str()
 		s.String = string(v)
@@ -97274,9 +97274,9 @@ func (s ValidationErrorErrorsItemValue) Encode(e *jx.Encoder) {
 		e.Str(s.String)
 	case IntValidationErrorErrorsItemValue:
 		e.Int(s.Int)
-	case ArraystringValidationErrorErrorsItemValue:
+	case ArrayStringValidationErrorErrorsItemValue:
 		e.ArrStart()
-		for _, elem := range s.Arraystring {
+		for _, elem := range s.ArrayString {
 			e.Str(elem)
 		}
 		e.ArrEnd()
@@ -97305,7 +97305,7 @@ func (s *ValidationErrorErrorsItemValue) Decode(d *jx.Decoder) error {
 		}
 		s.Type = IntValidationErrorErrorsItemValue
 	case jx.Array:
-		s.Arraystring = nil
+		s.ArrayString = nil
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem string
 			v, err := d.Str()
@@ -97313,12 +97313,12 @@ func (s *ValidationErrorErrorsItemValue) Decode(d *jx.Decoder) error {
 			if err != nil {
 				return err
 			}
-			s.Arraystring = append(s.Arraystring, elem)
+			s.ArrayString = append(s.ArrayString, elem)
 			return nil
 		}); err != nil {
 			return err
 		}
-		s.Type = ArraystringValidationErrorErrorsItemValue
+		s.Type = ArrayStringValidationErrorErrorsItemValue
 	default:
 		return errors.Errorf("unexpected json type %q", t)
 	}
