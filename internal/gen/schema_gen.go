@@ -30,9 +30,9 @@ func variantFieldName(t *ir.Type) string {
 	var result string
 	switch t.Kind {
 	case ir.KindArray:
-		return "Array" + t.Item.Go()
+		result = "Array" + variantFieldName(t.Item)
 	case ir.KindPointer:
-		return t.PointerTo.Go()
+		result = variantFieldName(t.PointerTo)
 	default:
 		result = t.Go()
 	}
