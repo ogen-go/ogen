@@ -7,6 +7,7 @@ import (
 	"sort"
 	"strings"
 	"unicode"
+	"unicode/utf8"
 
 	"github.com/go-faster/errors"
 
@@ -18,6 +19,24 @@ type schemaGen struct {
 	side       []*ir.Type
 	localRefs  map[string]*ir.Type
 	globalRefs map[string]*ir.Type
+}
+
+func variantFieldName(t *ir.Type) string {
+	capitalize := func(s string) string {
+		r, size := utf8.DecodeRuneInString(s)
+		return string(unicode.ToUpper(r)) + s[size:]
+	}
+
+	var result string
+	switch t.Kind {
+	case ir.KindArray:
+		return "Array" + t.Item.Go()
+	case ir.KindPointer:
+		return t.PointerTo.Go()
+	default:
+		result = t.Go()
+	}
+	return capitalize(result)
 }
 
 func (g *schemaGen) generate(name string, schema *oas.Schema) (*ir.Type, error) {
@@ -164,14 +183,7 @@ func (g *schemaGen) generate(name string, schema *oas.Schema) (*ir.Type, error) 
 			if err != nil {
 				return nil, errors.Wrapf(err, "oneOf[%d]", i)
 			}
-			var result []rune
-			for i, c := range t.Go() {
-				if i == 0 {
-					c = unicode.ToUpper(c)
-				}
-				result = append(result, c)
-			}
-			t.Name = string(result)
+			t.Name = variantFieldName(t)
 			if _, ok := names[t.Name]; ok {
 				return nil, errors.Wrap(&ErrNotImplemented{
 					Name: "sum types with same names",
@@ -180,6 +192,8 @@ func (g *schemaGen) generate(name string, schema *oas.Schema) (*ir.Type, error) 
 			names[t.Name] = struct{}{}
 			sum.SumOf = append(sum.SumOf, t)
 		}
+
+		// 1st case: explicit discriminator.
 		if d := schema.Discriminator; d != nil {
 			sum.SumSpec.Discriminator = schema.Discriminator.PropertyName
 			for k, v := range schema.Discriminator.Mapping {
@@ -215,9 +229,36 @@ func (g *schemaGen) generate(name string, schema *oas.Schema) (*ir.Type, error) 
 			return side(sum), nil
 		}
 
-		// Determine unique fields for each SumOf variant.
-		uniq := map[string]map[string]struct{}{}
-		var isComplex bool
+		// 2nd case: distinguish by serialization type.
+		var (
+			// Collect map of variant kinds.
+			typeMap = map[ir.TypeDiscriminator]struct{}{}
+			// If all variants have different kinds, so
+			// we can distinguish them by JSON type.
+			canUseTypeDiscriminator = true
+		)
+		for _, s := range sum.SumOf {
+			var kind ir.TypeDiscriminator
+			kind.Set(s)
+			if _, ok := typeMap[kind]; ok {
+				// Type kind is not unique, so we can distinguish variants by type.
+				canUseTypeDiscriminator = false
+				break
+			}
+			typeMap[kind] = struct{}{}
+		}
+		if canUseTypeDiscriminator {
+			sum.SumSpec.TypeDiscriminator = true
+			return side(sum), nil
+		}
+
+		// 3rd case: distinguish by unique fields.
+		var (
+			// Determine unique fields for each SumOf variant.
+			uniq = map[string]map[string]struct{}{}
+			// Whether sum has complex types.
+			isComplex bool
+		)
 		for _, s := range sum.SumOf {
 			uniq[s.Name] = map[string]struct{}{}
 			if !s.Is(ir.KindPrimitive) {

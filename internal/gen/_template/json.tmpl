@@ -144,7 +144,7 @@ func (s *{{ $t.Name }}) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode {{ $t.Name }} to nil`)
 	}
 	// Sum type {{ $d }}.
-	{{- if $d.Primitive }}
+	{{- if or ($d.Primitive) ($d.TypeDiscriminator) }}
 	switch t := d.Next(); t {
 	{{- range $s := $t.SumOf }}
 	case jx.{{ $s.JSON.Type }}:
