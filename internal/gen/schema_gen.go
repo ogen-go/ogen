@@ -354,6 +354,24 @@ func (g *schemaGen) primitive(name string, schema *oas.Schema) (*ir.Type, error)
 			return nil, errors.Errorf("unsupported enum type: %q", schema.Type)
 		}
 
+		hasDuplicateNames := func() bool {
+			names := map[string]struct{}{}
+			for _, v := range schema.Enum {
+				vstr := fmt.Sprintf("%v", v)
+				if vstr == "" {
+					vstr = "Empty"
+				}
+
+				k := pascalSpecial(name, vstr)
+				if _, ok := names[k]; ok {
+					return true
+				}
+				names[k] = struct{}{}
+			}
+
+			return false
+		}()
+
 		var variants []*ir.EnumVariant
 		for _, v := range schema.Enum {
 			vstr := fmt.Sprintf("%v", v)
@@ -361,8 +379,15 @@ func (g *schemaGen) primitive(name string, schema *oas.Schema) (*ir.Type, error)
 				vstr = "Empty"
 			}
 
+			var variantName string
+			if hasDuplicateNames {
+				variantName = name + "_" + vstr
+			} else {
+				variantName = pascalSpecial(name, vstr)
+			}
+
 			variants = append(variants, &ir.EnumVariant{
-				Name:  pascalSpecial(name, vstr),
+				Name:  variantName,
 				Value: v,
 			})
 		}
