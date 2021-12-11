@@ -6494,6 +6494,104 @@ func decodeActionsRetryWorkflowParams(args map[string]string, r *http.Request) (
 	return params, nil
 }
 
+func decodeActionsReviewPendingDeploymentsForRunParams(args map[string]string, r *http.Request) (ActionsReviewPendingDeploymentsForRunParams, error) {
+	var params ActionsReviewPendingDeploymentsForRunParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	// Decode path: run_id.
+	{
+		param := args["run_id"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "run_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.RunID = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: run_id: not specified`)
+		}
+	}
+	return params, nil
+}
+
 func decodeActionsSetAllowedActionsOrganizationParams(args map[string]string, r *http.Request) (ActionsSetAllowedActionsOrganizationParams, error) {
 	var params ActionsSetAllowedActionsOrganizationParams
 	// Decode path: org.
@@ -7344,6 +7442,221 @@ func decodeActivityListEventsForAuthenticatedUserParams(args map[string]string, 
 			}
 		} else {
 			return params, errors.New(`path: username: not specified`)
+		}
+	}
+	// Decode query: per_page.
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsPerPageVal int
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					paramsPerPageVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(paramsPerPageVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: per_page: parse`)
+			}
+		}
+	}
+	// Decode query: page.
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsPageVal int
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					paramsPageVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(paramsPageVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: page: parse`)
+			}
+		}
+	}
+	return params, nil
+}
+
+func decodeActivityListNotificationsForAuthenticatedUserParams(args map[string]string, r *http.Request) (ActivityListNotificationsForAuthenticatedUserParams, error) {
+	var params ActivityListNotificationsForAuthenticatedUserParams
+	// Decode query: all.
+	{
+		values, ok := r.URL.Query()["all"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsAllVal bool
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToBool(s)
+					if err != nil {
+						return err
+					}
+
+					paramsAllVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.All.SetTo(paramsAllVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: all: parse`)
+			}
+		}
+	}
+	// Decode query: participating.
+	{
+		values, ok := r.URL.Query()["participating"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsParticipatingVal bool
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToBool(s)
+					if err != nil {
+						return err
+					}
+
+					paramsParticipatingVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Participating.SetTo(paramsParticipatingVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: participating: parse`)
+			}
+		}
+	}
+	// Decode query: since.
+	{
+		values, ok := r.URL.Query()["since"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsSinceVal time.Time
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToTime(s)
+					if err != nil {
+						return err
+					}
+
+					paramsSinceVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Since.SetTo(paramsSinceVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: since: parse`)
+			}
+		}
+	}
+	// Decode query: before.
+	{
+		values, ok := r.URL.Query()["before"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsBeforeVal time.Time
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToTime(s)
+					if err != nil {
+						return err
+					}
+
+					paramsBeforeVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Before.SetTo(paramsBeforeVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: before: parse`)
+			}
 		}
 	}
 	// Decode query: per_page.
@@ -9508,6 +9821,212 @@ func decodeAppsAddRepoToInstallationParams(args map[string]string, r *http.Reque
 	return params, nil
 }
 
+func decodeAppsCheckTokenParams(args map[string]string, r *http.Request) (AppsCheckTokenParams, error) {
+	var params AppsCheckTokenParams
+	// Decode path: client_id.
+	{
+		param := args["client_id"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "client_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.ClientID = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: client_id: not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodeAppsCreateContentAttachmentParams(args map[string]string, r *http.Request) (AppsCreateContentAttachmentParams, error) {
+	var params AppsCreateContentAttachmentParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	// Decode path: content_reference_id.
+	{
+		param := args["content_reference_id"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "content_reference_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.ContentReferenceID = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: content_reference_id: not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodeAppsCreateInstallationAccessTokenParams(args map[string]string, r *http.Request) (AppsCreateInstallationAccessTokenParams, error) {
+	var params AppsCreateInstallationAccessTokenParams
+	// Decode path: installation_id.
+	{
+		param := args["installation_id"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "installation_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.InstallationID = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: installation_id: not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodeAppsDeleteAuthorizationParams(args map[string]string, r *http.Request) (AppsDeleteAuthorizationParams, error) {
+	var params AppsDeleteAuthorizationParams
+	// Decode path: client_id.
+	{
+		param := args["client_id"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "client_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.ClientID = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: client_id: not specified`)
+		}
+	}
+	return params, nil
+}
+
 func decodeAppsDeleteInstallationParams(args map[string]string, r *http.Request) (AppsDeleteInstallationParams, error) {
 	var params AppsDeleteInstallationParams
 	// Decode path: installation_id.
@@ -9539,6 +10058,42 @@ func decodeAppsDeleteInstallationParams(args map[string]string, r *http.Request)
 			}
 		} else {
 			return params, errors.New(`path: installation_id: not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodeAppsDeleteTokenParams(args map[string]string, r *http.Request) (AppsDeleteTokenParams, error) {
+	var params AppsDeleteTokenParams
+	// Decode path: client_id.
+	{
+		param := args["client_id"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "client_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.ClientID = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: client_id: not specified`)
 		}
 	}
 	return params, nil
@@ -9647,6 +10202,250 @@ func decodeAppsGetSubscriptionPlanForAccountStubbedParams(args map[string]string
 			}
 		} else {
 			return params, errors.New(`path: account_id: not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodeAppsGetWebhookDeliveryParams(args map[string]string, r *http.Request) (AppsGetWebhookDeliveryParams, error) {
+	var params AppsGetWebhookDeliveryParams
+	// Decode path: delivery_id.
+	{
+		param := args["delivery_id"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "delivery_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.DeliveryID = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: delivery_id: not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodeAppsListAccountsForPlanParams(args map[string]string, r *http.Request) (AppsListAccountsForPlanParams, error) {
+	var params AppsListAccountsForPlanParams
+	// Decode path: plan_id.
+	{
+		param := args["plan_id"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "plan_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.PlanID = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: plan_id: not specified`)
+		}
+	}
+	// Decode query: sort.
+	{
+		values, ok := r.URL.Query()["sort"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsSortVal AppsListAccountsForPlanSort
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					paramsSortVal = AppsListAccountsForPlanSort(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Sort.SetTo(paramsSortVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: sort: parse`)
+			}
+			if err := func() error {
+				if params.Sort.Set {
+					if err := func() error {
+						if err := params.Sort.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: sort: invalid`)
+			}
+		}
+	}
+	// Decode query: direction.
+	{
+		values, ok := r.URL.Query()["direction"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsDirectionVal AppsListAccountsForPlanDirection
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					paramsDirectionVal = AppsListAccountsForPlanDirection(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Direction.SetTo(paramsDirectionVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: direction: parse`)
+			}
+			if err := func() error {
+				if params.Direction.Set {
+					if err := func() error {
+						if err := params.Direction.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: direction: invalid`)
+			}
+		}
+	}
+	// Decode query: per_page.
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsPerPageVal int
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					paramsPerPageVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(paramsPerPageVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: per_page: parse`)
+			}
+		}
+	}
+	// Decode query: page.
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsPageVal int
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					paramsPageVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(paramsPageVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: page: parse`)
+			}
 		}
 	}
 	return params, nil
@@ -10341,6 +11140,117 @@ func decodeAppsListSubscriptionsForAuthenticatedUserStubbedParams(args map[strin
 	return params, nil
 }
 
+func decodeAppsListWebhookDeliveriesParams(args map[string]string, r *http.Request) (AppsListWebhookDeliveriesParams, error) {
+	var params AppsListWebhookDeliveriesParams
+	// Decode query: per_page.
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsPerPageVal int
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					paramsPerPageVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(paramsPerPageVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: per_page: parse`)
+			}
+		}
+	}
+	// Decode query: cursor.
+	{
+		values, ok := r.URL.Query()["cursor"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsCursorVal string
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					paramsCursorVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Cursor.SetTo(paramsCursorVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: cursor: parse`)
+			}
+		}
+	}
+	return params, nil
+}
+
+func decodeAppsRedeliverWebhookDeliveryParams(args map[string]string, r *http.Request) (AppsRedeliverWebhookDeliveryParams, error) {
+	var params AppsRedeliverWebhookDeliveryParams
+	// Decode path: delivery_id.
+	{
+		param := args["delivery_id"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "delivery_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.DeliveryID = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: delivery_id: not specified`)
+		}
+	}
+	return params, nil
+}
+
 func decodeAppsRemoveRepoFromInstallationParams(args map[string]string, r *http.Request) (AppsRemoveRepoFromInstallationParams, error) {
 	var params AppsRemoveRepoFromInstallationParams
 	// Decode path: installation_id.
@@ -10403,6 +11313,78 @@ func decodeAppsRemoveRepoFromInstallationParams(args map[string]string, r *http.
 			}
 		} else {
 			return params, errors.New(`path: repository_id: not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodeAppsResetTokenParams(args map[string]string, r *http.Request) (AppsResetTokenParams, error) {
+	var params AppsResetTokenParams
+	// Decode path: client_id.
+	{
+		param := args["client_id"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "client_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.ClientID = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: client_id: not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodeAppsScopeTokenParams(args map[string]string, r *http.Request) (AppsScopeTokenParams, error) {
+	var params AppsScopeTokenParams
+	// Decode path: client_id.
+	{
+		param := args["client_id"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "client_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.ClientID = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: client_id: not specified`)
 		}
 	}
 	return params, nil
@@ -16744,6 +17726,73 @@ func decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams(args ma
 	return params, nil
 }
 
+func decodeEnterpriseAdminUpdateAttributeForEnterpriseGroupParams(args map[string]string, r *http.Request) (EnterpriseAdminUpdateAttributeForEnterpriseGroupParams, error) {
+	var params EnterpriseAdminUpdateAttributeForEnterpriseGroupParams
+	// Decode path: enterprise.
+	{
+		param := args["enterprise"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "enterprise",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Enterprise = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: enterprise: not specified`)
+		}
+	}
+	// Decode path: scim_group_id.
+	{
+		param := args["scim_group_id"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "scim_group_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.ScimGroupID = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: scim_group_id: not specified`)
+		}
+	}
+	return params, nil
+}
+
 func decodeEnterpriseAdminUpdateAttributeForEnterpriseUserParams(args map[string]string, r *http.Request) (EnterpriseAdminUpdateAttributeForEnterpriseUserParams, error) {
 	var params EnterpriseAdminUpdateAttributeForEnterpriseUserParams
 	// Decode path: enterprise.
@@ -17053,6 +18102,42 @@ func decodeGistsDeleteCommentParams(args map[string]string, r *http.Request) (Gi
 	return params, nil
 }
 
+func decodeGistsForkParams(args map[string]string, r *http.Request) (GistsForkParams, error) {
+	var params GistsForkParams
+	// Decode path: gist_id.
+	{
+		param := args["gist_id"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "gist_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.GistID = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: gist_id: not specified`)
+		}
+	}
+	return params, nil
+}
+
 func decodeGistsGetParams(args map[string]string, r *http.Request) (GistsGetParams, error) {
 	var params GistsGetParams
 	// Decode path: gist_id.
@@ -17151,6 +18236,73 @@ func decodeGistsGetCommentParams(args map[string]string, r *http.Request) (Gists
 			}
 		} else {
 			return params, errors.New(`path: comment_id: not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodeGistsGetRevisionParams(args map[string]string, r *http.Request) (GistsGetRevisionParams, error) {
+	var params GistsGetRevisionParams
+	// Decode path: gist_id.
+	{
+		param := args["gist_id"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "gist_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.GistID = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: gist_id: not specified`)
+		}
+	}
+	// Decode path: sha.
+	{
+		param := args["sha"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "sha",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Sha = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: sha: not specified`)
 		}
 	}
 	return params, nil
@@ -17478,6 +18630,147 @@ func decodeGistsListCommitsParams(args map[string]string, r *http.Request) (Gist
 	return params, nil
 }
 
+func decodeGistsListForUserParams(args map[string]string, r *http.Request) (GistsListForUserParams, error) {
+	var params GistsListForUserParams
+	// Decode path: username.
+	{
+		param := args["username"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "username",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Username = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: username: not specified`)
+		}
+	}
+	// Decode query: since.
+	{
+		values, ok := r.URL.Query()["since"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsSinceVal time.Time
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToTime(s)
+					if err != nil {
+						return err
+					}
+
+					paramsSinceVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Since.SetTo(paramsSinceVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: since: parse`)
+			}
+		}
+	}
+	// Decode query: per_page.
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsPerPageVal int
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					paramsPerPageVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(paramsPerPageVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: per_page: parse`)
+			}
+		}
+	}
+	// Decode query: page.
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsPageVal int
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					paramsPageVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(paramsPageVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: page: parse`)
+			}
+		}
+	}
+	return params, nil
+}
+
 func decodeGistsListForksParams(args map[string]string, r *http.Request) (GistsListForksParams, error) {
 	var params GistsListForksParams
 	// Decode path: gist_id.
@@ -17509,6 +18802,116 @@ func decodeGistsListForksParams(args map[string]string, r *http.Request) (GistsL
 			}
 		} else {
 			return params, errors.New(`path: gist_id: not specified`)
+		}
+	}
+	// Decode query: per_page.
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsPerPageVal int
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					paramsPerPageVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(paramsPerPageVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: per_page: parse`)
+			}
+		}
+	}
+	// Decode query: page.
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsPageVal int
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					paramsPageVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(paramsPageVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: page: parse`)
+			}
+		}
+	}
+	return params, nil
+}
+
+func decodeGistsListPublicParams(args map[string]string, r *http.Request) (GistsListPublicParams, error) {
+	var params GistsListPublicParams
+	// Decode query: since.
+	{
+		values, ok := r.URL.Query()["since"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsSinceVal time.Time
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToTime(s)
+					if err != nil {
+						return err
+					}
+
+					paramsSinceVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Since.SetTo(paramsSinceVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: since: parse`)
+			}
 		}
 	}
 	// Decode query: per_page.
@@ -17833,6 +19236,537 @@ func decodeGistsUpdateCommentParams(args map[string]string, r *http.Request) (Gi
 	return params, nil
 }
 
+func decodeGitCreateBlobParams(args map[string]string, r *http.Request) (GitCreateBlobParams, error) {
+	var params GitCreateBlobParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodeGitCreateCommitParams(args map[string]string, r *http.Request) (GitCreateCommitParams, error) {
+	var params GitCreateCommitParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodeGitCreateRefParams(args map[string]string, r *http.Request) (GitCreateRefParams, error) {
+	var params GitCreateRefParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodeGitCreateTagParams(args map[string]string, r *http.Request) (GitCreateTagParams, error) {
+	var params GitCreateTagParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodeGitCreateTreeParams(args map[string]string, r *http.Request) (GitCreateTreeParams, error) {
+	var params GitCreateTreeParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodeGitDeleteRefParams(args map[string]string, r *http.Request) (GitDeleteRefParams, error) {
+	var params GitDeleteRefParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	// Decode path: ref.
+	{
+		param := args["ref"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "ref",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Ref = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: ref: not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodeGitGetBlobParams(args map[string]string, r *http.Request) (GitGetBlobParams, error) {
+	var params GitGetBlobParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	// Decode path: file_sha.
+	{
+		param := args["file_sha"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "file_sha",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.FileSha = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: file_sha: not specified`)
+		}
+	}
+	return params, nil
+}
+
 func decodeGitGetCommitParams(args map[string]string, r *http.Request) (GitGetCommitParams, error) {
 	var params GitGetCommitParams
 	// Decode path: owner.
@@ -18127,6 +20061,139 @@ func decodeGitGetTagParams(args map[string]string, r *http.Request) (GitGetTagPa
 	return params, nil
 }
 
+func decodeGitGetTreeParams(args map[string]string, r *http.Request) (GitGetTreeParams, error) {
+	var params GitGetTreeParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	// Decode path: tree_sha.
+	{
+		param := args["tree_sha"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "tree_sha",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.TreeSha = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: tree_sha: not specified`)
+		}
+	}
+	// Decode query: recursive.
+	{
+		values, ok := r.URL.Query()["recursive"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsRecursiveVal string
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					paramsRecursiveVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Recursive.SetTo(paramsRecursiveVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: recursive: parse`)
+			}
+		}
+	}
+	return params, nil
+}
+
 func decodeGitListMatchingRefsParams(args map[string]string, r *http.Request) (GitListMatchingRefsParams, error) {
 	var params GitListMatchingRefsParams
 	// Decode path: owner.
@@ -18295,6 +20362,104 @@ func decodeGitListMatchingRefsParams(args map[string]string, r *http.Request) (G
 	return params, nil
 }
 
+func decodeGitUpdateRefParams(args map[string]string, r *http.Request) (GitUpdateRefParams, error) {
+	var params GitUpdateRefParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	// Decode path: ref.
+	{
+		param := args["ref"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "ref",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Ref = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: ref: not specified`)
+		}
+	}
+	return params, nil
+}
+
 func decodeGitignoreGetTemplateParams(args map[string]string, r *http.Request) (GitignoreGetTemplateParams, error) {
 	var params GitignoreGetTemplateParams
 	// Decode path: name.
@@ -18429,6 +20594,42 @@ func decodeInteractionsRemoveRestrictionsForRepoParams(args map[string]string, r
 			}
 		} else {
 			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodeInteractionsSetRestrictionsForOrgParams(args map[string]string, r *http.Request) (InteractionsSetRestrictionsForOrgParams, error) {
+	var params InteractionsSetRestrictionsForOrgParams
+	// Decode path: org.
+	{
+		param := args["org"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "org",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Org = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
 	return params, nil
@@ -18692,6 +20893,305 @@ func decodeIssuesCheckUserCanBeAssignedParams(args map[string]string, r *http.Re
 			}
 		} else {
 			return params, errors.New(`path: assignee: not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodeIssuesCreateParams(args map[string]string, r *http.Request) (IssuesCreateParams, error) {
+	var params IssuesCreateParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodeIssuesCreateCommentParams(args map[string]string, r *http.Request) (IssuesCreateCommentParams, error) {
+	var params IssuesCreateCommentParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	// Decode path: issue_number.
+	{
+		param := args["issue_number"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "issue_number",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.IssueNumber = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: issue_number: not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodeIssuesCreateLabelParams(args map[string]string, r *http.Request) (IssuesCreateLabelParams, error) {
+	var params IssuesCreateLabelParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodeIssuesCreateMilestoneParams(args map[string]string, r *http.Request) (IssuesCreateMilestoneParams, error) {
+	var params IssuesCreateMilestoneParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
 	return params, nil
@@ -18986,6 +21486,104 @@ func decodeIssuesDeleteMilestoneParams(args map[string]string, r *http.Request) 
 			}
 		} else {
 			return params, errors.New(`path: milestone_number: not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodeIssuesGetParams(args map[string]string, r *http.Request) (IssuesGetParams, error) {
+	var params IssuesGetParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	// Decode path: issue_number.
+	{
+		param := args["issue_number"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "issue_number",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.IssueNumber = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: issue_number: not specified`)
 		}
 	}
 	return params, nil
@@ -19383,6 +21981,495 @@ func decodeIssuesGetMilestoneParams(args map[string]string, r *http.Request) (Is
 	return params, nil
 }
 
+func decodeIssuesListParams(args map[string]string, r *http.Request) (IssuesListParams, error) {
+	var params IssuesListParams
+	// Decode query: filter.
+	{
+		values, ok := r.URL.Query()["filter"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsFilterVal IssuesListFilter
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					paramsFilterVal = IssuesListFilter(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Filter.SetTo(paramsFilterVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: filter: parse`)
+			}
+			if err := func() error {
+				if params.Filter.Set {
+					if err := func() error {
+						if err := params.Filter.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: filter: invalid`)
+			}
+		}
+	}
+	// Decode query: state.
+	{
+		values, ok := r.URL.Query()["state"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsStateVal IssuesListState
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					paramsStateVal = IssuesListState(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.State.SetTo(paramsStateVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: state: parse`)
+			}
+			if err := func() error {
+				if params.State.Set {
+					if err := func() error {
+						if err := params.State.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: state: invalid`)
+			}
+		}
+	}
+	// Decode query: labels.
+	{
+		values, ok := r.URL.Query()["labels"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsLabelsVal string
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					paramsLabelsVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Labels.SetTo(paramsLabelsVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: labels: parse`)
+			}
+		}
+	}
+	// Decode query: sort.
+	{
+		values, ok := r.URL.Query()["sort"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsSortVal IssuesListSort
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					paramsSortVal = IssuesListSort(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Sort.SetTo(paramsSortVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: sort: parse`)
+			}
+			if err := func() error {
+				if params.Sort.Set {
+					if err := func() error {
+						if err := params.Sort.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: sort: invalid`)
+			}
+		}
+	}
+	// Decode query: direction.
+	{
+		values, ok := r.URL.Query()["direction"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsDirectionVal IssuesListDirection
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					paramsDirectionVal = IssuesListDirection(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Direction.SetTo(paramsDirectionVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: direction: parse`)
+			}
+			if err := func() error {
+				if params.Direction.Set {
+					if err := func() error {
+						if err := params.Direction.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: direction: invalid`)
+			}
+		}
+	}
+	// Decode query: since.
+	{
+		values, ok := r.URL.Query()["since"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsSinceVal time.Time
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToTime(s)
+					if err != nil {
+						return err
+					}
+
+					paramsSinceVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Since.SetTo(paramsSinceVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: since: parse`)
+			}
+		}
+	}
+	// Decode query: collab.
+	{
+		values, ok := r.URL.Query()["collab"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsCollabVal bool
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToBool(s)
+					if err != nil {
+						return err
+					}
+
+					paramsCollabVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Collab.SetTo(paramsCollabVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: collab: parse`)
+			}
+		}
+	}
+	// Decode query: orgs.
+	{
+		values, ok := r.URL.Query()["orgs"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsOrgsVal bool
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToBool(s)
+					if err != nil {
+						return err
+					}
+
+					paramsOrgsVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Orgs.SetTo(paramsOrgsVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: orgs: parse`)
+			}
+		}
+	}
+	// Decode query: owned.
+	{
+		values, ok := r.URL.Query()["owned"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsOwnedVal bool
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToBool(s)
+					if err != nil {
+						return err
+					}
+
+					paramsOwnedVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Owned.SetTo(paramsOwnedVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: owned: parse`)
+			}
+		}
+	}
+	// Decode query: pulls.
+	{
+		values, ok := r.URL.Query()["pulls"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsPullsVal bool
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToBool(s)
+					if err != nil {
+						return err
+					}
+
+					paramsPullsVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Pulls.SetTo(paramsPullsVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: pulls: parse`)
+			}
+		}
+	}
+	// Decode query: per_page.
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsPerPageVal int
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					paramsPerPageVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(paramsPerPageVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: per_page: parse`)
+			}
+		}
+	}
+	// Decode query: page.
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsPageVal int
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					paramsPageVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(paramsPageVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: page: parse`)
+			}
+		}
+	}
+	return params, nil
+}
+
 func decodeIssuesListAssigneesParams(args map[string]string, r *http.Request) (IssuesListAssigneesParams, error) {
 	var params IssuesListAssigneesParams
 	// Decode path: owner.
@@ -19613,6 +22700,1646 @@ func decodeIssuesListCommentsParams(args map[string]string, r *http.Request) (Is
 			}
 		} else {
 			return params, errors.New(`path: issue_number: not specified`)
+		}
+	}
+	// Decode query: since.
+	{
+		values, ok := r.URL.Query()["since"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsSinceVal time.Time
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToTime(s)
+					if err != nil {
+						return err
+					}
+
+					paramsSinceVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Since.SetTo(paramsSinceVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: since: parse`)
+			}
+		}
+	}
+	// Decode query: per_page.
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsPerPageVal int
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					paramsPerPageVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(paramsPerPageVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: per_page: parse`)
+			}
+		}
+	}
+	// Decode query: page.
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsPageVal int
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					paramsPageVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(paramsPageVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: page: parse`)
+			}
+		}
+	}
+	return params, nil
+}
+
+func decodeIssuesListCommentsForRepoParams(args map[string]string, r *http.Request) (IssuesListCommentsForRepoParams, error) {
+	var params IssuesListCommentsForRepoParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	// Decode query: sort.
+	{
+		values, ok := r.URL.Query()["sort"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsSortVal IssuesListCommentsForRepoSort
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					paramsSortVal = IssuesListCommentsForRepoSort(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Sort.SetTo(paramsSortVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: sort: parse`)
+			}
+			if err := func() error {
+				if params.Sort.Set {
+					if err := func() error {
+						if err := params.Sort.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: sort: invalid`)
+			}
+		}
+	}
+	// Decode query: direction.
+	{
+		values, ok := r.URL.Query()["direction"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsDirectionVal IssuesListCommentsForRepoDirection
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					paramsDirectionVal = IssuesListCommentsForRepoDirection(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Direction.SetTo(paramsDirectionVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: direction: parse`)
+			}
+			if err := func() error {
+				if params.Direction.Set {
+					if err := func() error {
+						if err := params.Direction.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: direction: invalid`)
+			}
+		}
+	}
+	// Decode query: since.
+	{
+		values, ok := r.URL.Query()["since"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsSinceVal time.Time
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToTime(s)
+					if err != nil {
+						return err
+					}
+
+					paramsSinceVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Since.SetTo(paramsSinceVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: since: parse`)
+			}
+		}
+	}
+	// Decode query: per_page.
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsPerPageVal int
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					paramsPerPageVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(paramsPerPageVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: per_page: parse`)
+			}
+		}
+	}
+	// Decode query: page.
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsPageVal int
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					paramsPageVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(paramsPageVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: page: parse`)
+			}
+		}
+	}
+	return params, nil
+}
+
+func decodeIssuesListEventsForRepoParams(args map[string]string, r *http.Request) (IssuesListEventsForRepoParams, error) {
+	var params IssuesListEventsForRepoParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	// Decode query: per_page.
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsPerPageVal int
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					paramsPerPageVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(paramsPerPageVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: per_page: parse`)
+			}
+		}
+	}
+	// Decode query: page.
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsPageVal int
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					paramsPageVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(paramsPageVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: page: parse`)
+			}
+		}
+	}
+	return params, nil
+}
+
+func decodeIssuesListForAuthenticatedUserParams(args map[string]string, r *http.Request) (IssuesListForAuthenticatedUserParams, error) {
+	var params IssuesListForAuthenticatedUserParams
+	// Decode query: filter.
+	{
+		values, ok := r.URL.Query()["filter"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsFilterVal IssuesListForAuthenticatedUserFilter
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					paramsFilterVal = IssuesListForAuthenticatedUserFilter(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Filter.SetTo(paramsFilterVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: filter: parse`)
+			}
+			if err := func() error {
+				if params.Filter.Set {
+					if err := func() error {
+						if err := params.Filter.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: filter: invalid`)
+			}
+		}
+	}
+	// Decode query: state.
+	{
+		values, ok := r.URL.Query()["state"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsStateVal IssuesListForAuthenticatedUserState
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					paramsStateVal = IssuesListForAuthenticatedUserState(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.State.SetTo(paramsStateVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: state: parse`)
+			}
+			if err := func() error {
+				if params.State.Set {
+					if err := func() error {
+						if err := params.State.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: state: invalid`)
+			}
+		}
+	}
+	// Decode query: labels.
+	{
+		values, ok := r.URL.Query()["labels"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsLabelsVal string
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					paramsLabelsVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Labels.SetTo(paramsLabelsVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: labels: parse`)
+			}
+		}
+	}
+	// Decode query: sort.
+	{
+		values, ok := r.URL.Query()["sort"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsSortVal IssuesListForAuthenticatedUserSort
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					paramsSortVal = IssuesListForAuthenticatedUserSort(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Sort.SetTo(paramsSortVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: sort: parse`)
+			}
+			if err := func() error {
+				if params.Sort.Set {
+					if err := func() error {
+						if err := params.Sort.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: sort: invalid`)
+			}
+		}
+	}
+	// Decode query: direction.
+	{
+		values, ok := r.URL.Query()["direction"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsDirectionVal IssuesListForAuthenticatedUserDirection
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					paramsDirectionVal = IssuesListForAuthenticatedUserDirection(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Direction.SetTo(paramsDirectionVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: direction: parse`)
+			}
+			if err := func() error {
+				if params.Direction.Set {
+					if err := func() error {
+						if err := params.Direction.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: direction: invalid`)
+			}
+		}
+	}
+	// Decode query: since.
+	{
+		values, ok := r.URL.Query()["since"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsSinceVal time.Time
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToTime(s)
+					if err != nil {
+						return err
+					}
+
+					paramsSinceVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Since.SetTo(paramsSinceVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: since: parse`)
+			}
+		}
+	}
+	// Decode query: per_page.
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsPerPageVal int
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					paramsPerPageVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(paramsPerPageVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: per_page: parse`)
+			}
+		}
+	}
+	// Decode query: page.
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsPageVal int
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					paramsPageVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(paramsPageVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: page: parse`)
+			}
+		}
+	}
+	return params, nil
+}
+
+func decodeIssuesListForOrgParams(args map[string]string, r *http.Request) (IssuesListForOrgParams, error) {
+	var params IssuesListForOrgParams
+	// Decode path: org.
+	{
+		param := args["org"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "org",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Org = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: org: not specified`)
+		}
+	}
+	// Decode query: filter.
+	{
+		values, ok := r.URL.Query()["filter"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsFilterVal IssuesListForOrgFilter
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					paramsFilterVal = IssuesListForOrgFilter(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Filter.SetTo(paramsFilterVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: filter: parse`)
+			}
+			if err := func() error {
+				if params.Filter.Set {
+					if err := func() error {
+						if err := params.Filter.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: filter: invalid`)
+			}
+		}
+	}
+	// Decode query: state.
+	{
+		values, ok := r.URL.Query()["state"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsStateVal IssuesListForOrgState
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					paramsStateVal = IssuesListForOrgState(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.State.SetTo(paramsStateVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: state: parse`)
+			}
+			if err := func() error {
+				if params.State.Set {
+					if err := func() error {
+						if err := params.State.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: state: invalid`)
+			}
+		}
+	}
+	// Decode query: labels.
+	{
+		values, ok := r.URL.Query()["labels"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsLabelsVal string
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					paramsLabelsVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Labels.SetTo(paramsLabelsVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: labels: parse`)
+			}
+		}
+	}
+	// Decode query: sort.
+	{
+		values, ok := r.URL.Query()["sort"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsSortVal IssuesListForOrgSort
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					paramsSortVal = IssuesListForOrgSort(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Sort.SetTo(paramsSortVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: sort: parse`)
+			}
+			if err := func() error {
+				if params.Sort.Set {
+					if err := func() error {
+						if err := params.Sort.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: sort: invalid`)
+			}
+		}
+	}
+	// Decode query: direction.
+	{
+		values, ok := r.URL.Query()["direction"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsDirectionVal IssuesListForOrgDirection
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					paramsDirectionVal = IssuesListForOrgDirection(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Direction.SetTo(paramsDirectionVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: direction: parse`)
+			}
+			if err := func() error {
+				if params.Direction.Set {
+					if err := func() error {
+						if err := params.Direction.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: direction: invalid`)
+			}
+		}
+	}
+	// Decode query: since.
+	{
+		values, ok := r.URL.Query()["since"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsSinceVal time.Time
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToTime(s)
+					if err != nil {
+						return err
+					}
+
+					paramsSinceVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Since.SetTo(paramsSinceVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: since: parse`)
+			}
+		}
+	}
+	// Decode query: per_page.
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsPerPageVal int
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					paramsPerPageVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(paramsPerPageVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: per_page: parse`)
+			}
+		}
+	}
+	// Decode query: page.
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsPageVal int
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					paramsPageVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(paramsPageVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: page: parse`)
+			}
+		}
+	}
+	return params, nil
+}
+
+func decodeIssuesListForRepoParams(args map[string]string, r *http.Request) (IssuesListForRepoParams, error) {
+	var params IssuesListForRepoParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	// Decode query: milestone.
+	{
+		values, ok := r.URL.Query()["milestone"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsMilestoneVal string
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					paramsMilestoneVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Milestone.SetTo(paramsMilestoneVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: milestone: parse`)
+			}
+		}
+	}
+	// Decode query: state.
+	{
+		values, ok := r.URL.Query()["state"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsStateVal IssuesListForRepoState
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					paramsStateVal = IssuesListForRepoState(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.State.SetTo(paramsStateVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: state: parse`)
+			}
+			if err := func() error {
+				if params.State.Set {
+					if err := func() error {
+						if err := params.State.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: state: invalid`)
+			}
+		}
+	}
+	// Decode query: assignee.
+	{
+		values, ok := r.URL.Query()["assignee"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsAssigneeVal string
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					paramsAssigneeVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Assignee.SetTo(paramsAssigneeVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: assignee: parse`)
+			}
+		}
+	}
+	// Decode query: creator.
+	{
+		values, ok := r.URL.Query()["creator"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsCreatorVal string
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					paramsCreatorVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Creator.SetTo(paramsCreatorVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: creator: parse`)
+			}
+		}
+	}
+	// Decode query: mentioned.
+	{
+		values, ok := r.URL.Query()["mentioned"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsMentionedVal string
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					paramsMentionedVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Mentioned.SetTo(paramsMentionedVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: mentioned: parse`)
+			}
+		}
+	}
+	// Decode query: labels.
+	{
+		values, ok := r.URL.Query()["labels"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsLabelsVal string
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					paramsLabelsVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Labels.SetTo(paramsLabelsVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: labels: parse`)
+			}
+		}
+	}
+	// Decode query: sort.
+	{
+		values, ok := r.URL.Query()["sort"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsSortVal IssuesListForRepoSort
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					paramsSortVal = IssuesListForRepoSort(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Sort.SetTo(paramsSortVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: sort: parse`)
+			}
+			if err := func() error {
+				if params.Sort.Set {
+					if err := func() error {
+						if err := params.Sort.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: sort: invalid`)
+			}
+		}
+	}
+	// Decode query: direction.
+	{
+		values, ok := r.URL.Query()["direction"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsDirectionVal IssuesListForRepoDirection
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					paramsDirectionVal = IssuesListForRepoDirection(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Direction.SetTo(paramsDirectionVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: direction: parse`)
+			}
+			if err := func() error {
+				if params.Direction.Set {
+					if err := func() error {
+						if err := params.Direction.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: direction: invalid`)
+			}
 		}
 	}
 	// Decode query: since.
@@ -20486,6 +25213,104 @@ func decodeIssuesListMilestonesParams(args map[string]string, r *http.Request) (
 	return params, nil
 }
 
+func decodeIssuesLockParams(args map[string]string, r *http.Request) (IssuesLockParams, error) {
+	var params IssuesLockParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	// Decode path: issue_number.
+	{
+		param := args["issue_number"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "issue_number",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.IssueNumber = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: issue_number: not specified`)
+		}
+	}
+	return params, nil
+}
+
 func decodeIssuesRemoveAllLabelsParams(args map[string]string, r *http.Request) (IssuesRemoveAllLabelsParams, error) {
 	var params IssuesRemoveAllLabelsParams
 	// Decode path: owner.
@@ -20904,6 +25729,202 @@ func decodeIssuesUnlockParams(args map[string]string, r *http.Request) (IssuesUn
 			}
 		} else {
 			return params, errors.New(`path: issue_number: not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodeIssuesUpdateParams(args map[string]string, r *http.Request) (IssuesUpdateParams, error) {
+	var params IssuesUpdateParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	// Decode path: issue_number.
+	{
+		param := args["issue_number"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "issue_number",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.IssueNumber = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: issue_number: not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodeIssuesUpdateCommentParams(args map[string]string, r *http.Request) (IssuesUpdateCommentParams, error) {
+	var params IssuesUpdateCommentParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	// Decode path: comment_id.
+	{
+		param := args["comment_id"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "comment_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.CommentID = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: comment_id: not specified`)
 		}
 	}
 	return params, nil
@@ -22509,6 +27530,274 @@ func decodeMigrationsListReposForUserParams(args map[string]string, r *http.Requ
 	return params, nil
 }
 
+func decodeMigrationsMapCommitAuthorParams(args map[string]string, r *http.Request) (MigrationsMapCommitAuthorParams, error) {
+	var params MigrationsMapCommitAuthorParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	// Decode path: author_id.
+	{
+		param := args["author_id"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "author_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.AuthorID = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: author_id: not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodeMigrationsSetLfsPreferenceParams(args map[string]string, r *http.Request) (MigrationsSetLfsPreferenceParams, error) {
+	var params MigrationsSetLfsPreferenceParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodeMigrationsStartForOrgParams(args map[string]string, r *http.Request) (MigrationsStartForOrgParams, error) {
+	var params MigrationsStartForOrgParams
+	// Decode path: org.
+	{
+		param := args["org"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "org",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Org = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: org: not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodeMigrationsStartImportParams(args map[string]string, r *http.Request) (MigrationsStartImportParams, error) {
+	var params MigrationsStartImportParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	return params, nil
+}
+
 func decodeMigrationsUnlockRepoForAuthenticatedUserParams(args map[string]string, r *http.Request) (MigrationsUnlockRepoForAuthenticatedUserParams, error) {
 	var params MigrationsUnlockRepoForAuthenticatedUserParams
 	// Decode path: migration_id.
@@ -22885,6 +28174,109 @@ func decodeOAuthAuthorizationsGetGrantParams(args map[string]string, r *http.Req
 	return params, nil
 }
 
+func decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppParams(args map[string]string, r *http.Request) (OAuthAuthorizationsGetOrCreateAuthorizationForAppParams, error) {
+	var params OAuthAuthorizationsGetOrCreateAuthorizationForAppParams
+	// Decode path: client_id.
+	{
+		param := args["client_id"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "client_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.ClientID = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: client_id: not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintParams(args map[string]string, r *http.Request) (OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintParams, error) {
+	var params OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintParams
+	// Decode path: client_id.
+	{
+		param := args["client_id"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "client_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.ClientID = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: client_id: not specified`)
+		}
+	}
+	// Decode path: fingerprint.
+	{
+		param := args["fingerprint"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "fingerprint",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Fingerprint = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: fingerprint: not specified`)
+		}
+	}
+	return params, nil
+}
+
 func decodeOAuthAuthorizationsListAuthorizationsParams(args map[string]string, r *http.Request) (OAuthAuthorizationsListAuthorizationsParams, error) {
 	var params OAuthAuthorizationsListAuthorizationsParams
 	// Decode query: per_page.
@@ -23100,6 +28492,176 @@ func decodeOAuthAuthorizationsListGrantsParams(args map[string]string, r *http.R
 			}(); err != nil {
 				return params, errors.Wrap(err, `query: client_id: parse`)
 			}
+		}
+	}
+	return params, nil
+}
+
+func decodeOAuthAuthorizationsUpdateAuthorizationParams(args map[string]string, r *http.Request) (OAuthAuthorizationsUpdateAuthorizationParams, error) {
+	var params OAuthAuthorizationsUpdateAuthorizationParams
+	// Decode path: authorization_id.
+	{
+		param := args["authorization_id"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "authorization_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.AuthorizationID = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: authorization_id: not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodeOrgsBlockUserParams(args map[string]string, r *http.Request) (OrgsBlockUserParams, error) {
+	var params OrgsBlockUserParams
+	// Decode path: org.
+	{
+		param := args["org"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "org",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Org = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: org: not specified`)
+		}
+	}
+	// Decode path: username.
+	{
+		param := args["username"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "username",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Username = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: username: not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodeOrgsCancelInvitationParams(args map[string]string, r *http.Request) (OrgsCancelInvitationParams, error) {
+	var params OrgsCancelInvitationParams
+	// Decode path: org.
+	{
+		param := args["org"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "org",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Org = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: org: not specified`)
+		}
+	}
+	// Decode path: invitation_id.
+	{
+		param := args["invitation_id"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "invitation_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.InvitationID = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: invitation_id: not specified`)
 		}
 	}
 	return params, nil
@@ -23368,6 +28930,78 @@ func decodeOrgsConvertMemberToOutsideCollaboratorParams(args map[string]string, 
 			}
 		} else {
 			return params, errors.New(`path: username: not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodeOrgsCreateInvitationParams(args map[string]string, r *http.Request) (OrgsCreateInvitationParams, error) {
+	var params OrgsCreateInvitationParams
+	// Decode path: org.
+	{
+		param := args["org"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "org",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Org = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: org: not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodeOrgsCreateWebhookParams(args map[string]string, r *http.Request) (OrgsCreateWebhookParams, error) {
+	var params OrgsCreateWebhookParams
+	// Decode path: org.
+	{
+		param := args["org"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "org",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Org = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: org: not specified`)
 		}
 	}
 	return params, nil
@@ -24026,6 +29660,104 @@ func decodeOrgsGetWebhookConfigForOrgParams(args map[string]string, r *http.Requ
 	return params, nil
 }
 
+func decodeOrgsGetWebhookDeliveryParams(args map[string]string, r *http.Request) (OrgsGetWebhookDeliveryParams, error) {
+	var params OrgsGetWebhookDeliveryParams
+	// Decode path: org.
+	{
+		param := args["org"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "org",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Org = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: org: not specified`)
+		}
+	}
+	// Decode path: hook_id.
+	{
+		param := args["hook_id"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "hook_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.HookID = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: hook_id: not specified`)
+		}
+	}
+	// Decode path: delivery_id.
+	{
+		param := args["delivery_id"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "delivery_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.DeliveryID = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: delivery_id: not specified`)
+		}
+	}
+	return params, nil
+}
+
 func decodeOrgsListParams(args map[string]string, r *http.Request) (OrgsListParams, error) {
 	var params OrgsListParams
 	// Decode query: since.
@@ -24561,6 +30293,340 @@ func decodeOrgsListInvitationTeamsParams(args map[string]string, r *http.Request
 	return params, nil
 }
 
+func decodeOrgsListMembersParams(args map[string]string, r *http.Request) (OrgsListMembersParams, error) {
+	var params OrgsListMembersParams
+	// Decode path: org.
+	{
+		param := args["org"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "org",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Org = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: org: not specified`)
+		}
+	}
+	// Decode query: filter.
+	{
+		values, ok := r.URL.Query()["filter"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsFilterVal OrgsListMembersFilter
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					paramsFilterVal = OrgsListMembersFilter(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Filter.SetTo(paramsFilterVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: filter: parse`)
+			}
+			if err := func() error {
+				if params.Filter.Set {
+					if err := func() error {
+						if err := params.Filter.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: filter: invalid`)
+			}
+		}
+	}
+	// Decode query: role.
+	{
+		values, ok := r.URL.Query()["role"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsRoleVal OrgsListMembersRole
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					paramsRoleVal = OrgsListMembersRole(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Role.SetTo(paramsRoleVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: role: parse`)
+			}
+			if err := func() error {
+				if params.Role.Set {
+					if err := func() error {
+						if err := params.Role.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: role: invalid`)
+			}
+		}
+	}
+	// Decode query: per_page.
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsPerPageVal int
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					paramsPerPageVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(paramsPerPageVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: per_page: parse`)
+			}
+		}
+	}
+	// Decode query: page.
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsPageVal int
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					paramsPageVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(paramsPageVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: page: parse`)
+			}
+		}
+	}
+	return params, nil
+}
+
+func decodeOrgsListMembershipsForAuthenticatedUserParams(args map[string]string, r *http.Request) (OrgsListMembershipsForAuthenticatedUserParams, error) {
+	var params OrgsListMembershipsForAuthenticatedUserParams
+	// Decode query: state.
+	{
+		values, ok := r.URL.Query()["state"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsStateVal OrgsListMembershipsForAuthenticatedUserState
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					paramsStateVal = OrgsListMembershipsForAuthenticatedUserState(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.State.SetTo(paramsStateVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: state: parse`)
+			}
+			if err := func() error {
+				if params.State.Set {
+					if err := func() error {
+						if err := params.State.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: state: invalid`)
+			}
+		}
+	}
+	// Decode query: per_page.
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsPerPageVal int
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					paramsPerPageVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(paramsPerPageVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: per_page: parse`)
+			}
+		}
+	}
+	// Decode query: page.
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsPageVal int
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					paramsPageVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(paramsPageVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: page: parse`)
+			}
+		}
+	}
+	return params, nil
+}
+
 func decodeOrgsListOutsideCollaboratorsParams(args map[string]string, r *http.Request) (OrgsListOutsideCollaboratorsParams, error) {
 	var params OrgsListOutsideCollaboratorsParams
 	// Decode path: org.
@@ -24966,6 +31032,143 @@ func decodeOrgsListSamlSSOAuthorizationsParams(args map[string]string, r *http.R
 	return params, nil
 }
 
+func decodeOrgsListWebhookDeliveriesParams(args map[string]string, r *http.Request) (OrgsListWebhookDeliveriesParams, error) {
+	var params OrgsListWebhookDeliveriesParams
+	// Decode path: org.
+	{
+		param := args["org"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "org",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Org = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: org: not specified`)
+		}
+	}
+	// Decode path: hook_id.
+	{
+		param := args["hook_id"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "hook_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.HookID = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: hook_id: not specified`)
+		}
+	}
+	// Decode query: per_page.
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsPerPageVal int
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					paramsPerPageVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(paramsPerPageVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: per_page: parse`)
+			}
+		}
+	}
+	// Decode query: cursor.
+	{
+		values, ok := r.URL.Query()["cursor"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsCursorVal string
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					paramsCursorVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Cursor.SetTo(paramsCursorVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: cursor: parse`)
+			}
+		}
+	}
+	return params, nil
+}
+
 func decodeOrgsListWebhooksParams(args map[string]string, r *http.Request) (OrgsListWebhooksParams, error) {
 	var params OrgsListWebhooksParams
 	// Decode path: org.
@@ -25134,6 +31337,104 @@ func decodeOrgsPingWebhookParams(args map[string]string, r *http.Request) (OrgsP
 			}
 		} else {
 			return params, errors.New(`path: hook_id: not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodeOrgsRedeliverWebhookDeliveryParams(args map[string]string, r *http.Request) (OrgsRedeliverWebhookDeliveryParams, error) {
+	var params OrgsRedeliverWebhookDeliveryParams
+	// Decode path: org.
+	{
+		param := args["org"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "org",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Org = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: org: not specified`)
+		}
+	}
+	// Decode path: hook_id.
+	{
+		param := args["hook_id"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "hook_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.HookID = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: hook_id: not specified`)
+		}
+	}
+	// Decode path: delivery_id.
+	{
+		param := args["delivery_id"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "delivery_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.DeliveryID = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: delivery_id: not specified`)
 		}
 	}
 	return params, nil
@@ -25474,6 +31775,73 @@ func decodeOrgsRemoveSamlSSOAuthorizationParams(args map[string]string, r *http.
 	return params, nil
 }
 
+func decodeOrgsSetMembershipForUserParams(args map[string]string, r *http.Request) (OrgsSetMembershipForUserParams, error) {
+	var params OrgsSetMembershipForUserParams
+	// Decode path: org.
+	{
+		param := args["org"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "org",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Org = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: org: not specified`)
+		}
+	}
+	// Decode path: username.
+	{
+		param := args["username"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "username",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Username = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: username: not specified`)
+		}
+	}
+	return params, nil
+}
+
 func decodeOrgsSetPublicMembershipForAuthenticatedUserParams(args map[string]string, r *http.Request) (OrgsSetPublicMembershipForAuthenticatedUserParams, error) {
 	var params OrgsSetPublicMembershipForAuthenticatedUserParams
 	// Decode path: org.
@@ -25603,6 +31971,109 @@ func decodeOrgsUnblockUserParams(args map[string]string, r *http.Request) (OrgsU
 			}
 		} else {
 			return params, errors.New(`path: username: not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodeOrgsUpdateMembershipForAuthenticatedUserParams(args map[string]string, r *http.Request) (OrgsUpdateMembershipForAuthenticatedUserParams, error) {
+	var params OrgsUpdateMembershipForAuthenticatedUserParams
+	// Decode path: org.
+	{
+		param := args["org"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "org",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Org = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: org: not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodeOrgsUpdateWebhookParams(args map[string]string, r *http.Request) (OrgsUpdateWebhookParams, error) {
+	var params OrgsUpdateWebhookParams
+	// Decode path: org.
+	{
+		param := args["org"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "org",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Org = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: org: not specified`)
+		}
+	}
+	// Decode path: hook_id.
+	{
+		param := args["hook_id"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "hook_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.HookID = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: hook_id: not specified`)
 		}
 	}
 	return params, nil
@@ -28486,6 +34957,73 @@ func decodePackagesRestorePackageVersionForUserParams(args map[string]string, r 
 	return params, nil
 }
 
+func decodeProjectsAddCollaboratorParams(args map[string]string, r *http.Request) (ProjectsAddCollaboratorParams, error) {
+	var params ProjectsAddCollaboratorParams
+	// Decode path: project_id.
+	{
+		param := args["project_id"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "project_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.ProjectID = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: project_id: not specified`)
+		}
+	}
+	// Decode path: username.
+	{
+		param := args["username"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "username",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Username = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: username: not specified`)
+		}
+	}
+	return params, nil
+}
+
 func decodeProjectsCreateColumnParams(args map[string]string, r *http.Request) (ProjectsCreateColumnParams, error) {
 	var params ProjectsCreateColumnParams
 	// Decode path: project_id.
@@ -28841,6 +35379,73 @@ func decodeProjectsGetColumnParams(args map[string]string, r *http.Request) (Pro
 	return params, nil
 }
 
+func decodeProjectsGetPermissionForUserParams(args map[string]string, r *http.Request) (ProjectsGetPermissionForUserParams, error) {
+	var params ProjectsGetPermissionForUserParams
+	// Decode path: project_id.
+	{
+		param := args["project_id"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "project_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.ProjectID = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: project_id: not specified`)
+		}
+	}
+	// Decode path: username.
+	{
+		param := args["username"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "username",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Username = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: username: not specified`)
+		}
+	}
+	return params, nil
+}
+
 func decodeProjectsListCardsParams(args map[string]string, r *http.Request) (ProjectsListCardsParams, error) {
 	var params ProjectsListCardsParams
 	// Decode path: column_id.
@@ -28922,6 +35527,163 @@ func decodeProjectsListCardsParams(args map[string]string, r *http.Request) (Pro
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, `query: archived_state: invalid`)
+			}
+		}
+	}
+	// Decode query: per_page.
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsPerPageVal int
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					paramsPerPageVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(paramsPerPageVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: per_page: parse`)
+			}
+		}
+	}
+	// Decode query: page.
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsPageVal int
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					paramsPageVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(paramsPageVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: page: parse`)
+			}
+		}
+	}
+	return params, nil
+}
+
+func decodeProjectsListCollaboratorsParams(args map[string]string, r *http.Request) (ProjectsListCollaboratorsParams, error) {
+	var params ProjectsListCollaboratorsParams
+	// Decode path: project_id.
+	{
+		param := args["project_id"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "project_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.ProjectID = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: project_id: not specified`)
+		}
+	}
+	// Decode query: affiliation.
+	{
+		values, ok := r.URL.Query()["affiliation"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsAffiliationVal ProjectsListCollaboratorsAffiliation
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					paramsAffiliationVal = ProjectsListCollaboratorsAffiliation(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Affiliation.SetTo(paramsAffiliationVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: affiliation: parse`)
+			}
+			if err := func() error {
+				if params.Affiliation.Set {
+					if err := func() error {
+						if err := params.Affiliation.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: affiliation: invalid`)
 			}
 		}
 	}
@@ -29449,6 +36211,199 @@ func decodeProjectsListForRepoParams(args map[string]string, r *http.Request) (P
 	return params, nil
 }
 
+func decodeProjectsListForUserParams(args map[string]string, r *http.Request) (ProjectsListForUserParams, error) {
+	var params ProjectsListForUserParams
+	// Decode path: username.
+	{
+		param := args["username"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "username",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Username = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: username: not specified`)
+		}
+	}
+	// Decode query: state.
+	{
+		values, ok := r.URL.Query()["state"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsStateVal ProjectsListForUserState
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					paramsStateVal = ProjectsListForUserState(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.State.SetTo(paramsStateVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: state: parse`)
+			}
+			if err := func() error {
+				if params.State.Set {
+					if err := func() error {
+						if err := params.State.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: state: invalid`)
+			}
+		}
+	}
+	// Decode query: per_page.
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsPerPageVal int
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					paramsPerPageVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(paramsPerPageVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: per_page: parse`)
+			}
+		}
+	}
+	// Decode query: page.
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsPageVal int
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					paramsPageVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(paramsPageVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: page: parse`)
+			}
+		}
+	}
+	return params, nil
+}
+
+func decodeProjectsMoveCardParams(args map[string]string, r *http.Request) (ProjectsMoveCardParams, error) {
+	var params ProjectsMoveCardParams
+	// Decode path: card_id.
+	{
+		param := args["card_id"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "card_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.CardID = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: card_id: not specified`)
+		}
+	}
+	return params, nil
+}
+
 func decodeProjectsMoveColumnParams(args map[string]string, r *http.Request) (ProjectsMoveColumnParams, error) {
 	var params ProjectsMoveColumnParams
 	// Decode path: column_id.
@@ -29480,6 +36435,73 @@ func decodeProjectsMoveColumnParams(args map[string]string, r *http.Request) (Pr
 			}
 		} else {
 			return params, errors.New(`path: column_id: not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodeProjectsRemoveCollaboratorParams(args map[string]string, r *http.Request) (ProjectsRemoveCollaboratorParams, error) {
+	var params ProjectsRemoveCollaboratorParams
+	// Decode path: project_id.
+	{
+		param := args["project_id"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "project_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.ProjectID = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: project_id: not specified`)
+		}
+	}
+	// Decode path: username.
+	{
+		param := args["username"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "username",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Username = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: username: not specified`)
 		}
 	}
 	return params, nil
@@ -29691,6 +36713,73 @@ func decodePullsCheckIfMergedParams(args map[string]string, r *http.Request) (Pu
 	return params, nil
 }
 
+func decodePullsCreateParams(args map[string]string, r *http.Request) (PullsCreateParams, error) {
+	var params PullsCreateParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	return params, nil
+}
+
 func decodePullsCreateReplyForReviewCommentParams(args map[string]string, r *http.Request) (PullsCreateReplyForReviewCommentParams, error) {
 	var params PullsCreateReplyForReviewCommentParams
 	// Decode path: owner.
@@ -29822,6 +36911,104 @@ func decodePullsCreateReplyForReviewCommentParams(args map[string]string, r *htt
 
 func decodePullsCreateReviewParams(args map[string]string, r *http.Request) (PullsCreateReviewParams, error) {
 	var params PullsCreateReviewParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	// Decode path: pull_number.
+	{
+		param := args["pull_number"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "pull_number",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.PullNumber = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: pull_number: not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodePullsCreateReviewCommentParams(args map[string]string, r *http.Request) (PullsCreateReviewCommentParams, error) {
+	var params PullsCreateReviewCommentParams
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -30599,6 +37786,366 @@ func decodePullsGetReviewCommentParams(args map[string]string, r *http.Request) 
 	return params, nil
 }
 
+func decodePullsListParams(args map[string]string, r *http.Request) (PullsListParams, error) {
+	var params PullsListParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	// Decode query: state.
+	{
+		values, ok := r.URL.Query()["state"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsStateVal PullsListState
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					paramsStateVal = PullsListState(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.State.SetTo(paramsStateVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: state: parse`)
+			}
+			if err := func() error {
+				if params.State.Set {
+					if err := func() error {
+						if err := params.State.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: state: invalid`)
+			}
+		}
+	}
+	// Decode query: head.
+	{
+		values, ok := r.URL.Query()["head"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsHeadVal string
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					paramsHeadVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Head.SetTo(paramsHeadVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: head: parse`)
+			}
+		}
+	}
+	// Decode query: base.
+	{
+		values, ok := r.URL.Query()["base"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsBaseVal string
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					paramsBaseVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Base.SetTo(paramsBaseVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: base: parse`)
+			}
+		}
+	}
+	// Decode query: sort.
+	{
+		values, ok := r.URL.Query()["sort"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsSortVal PullsListSort
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					paramsSortVal = PullsListSort(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Sort.SetTo(paramsSortVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: sort: parse`)
+			}
+			if err := func() error {
+				if params.Sort.Set {
+					if err := func() error {
+						if err := params.Sort.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: sort: invalid`)
+			}
+		}
+	}
+	// Decode query: direction.
+	{
+		values, ok := r.URL.Query()["direction"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsDirectionVal PullsListDirection
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					paramsDirectionVal = PullsListDirection(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Direction.SetTo(paramsDirectionVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: direction: parse`)
+			}
+			if err := func() error {
+				if params.Direction.Set {
+					if err := func() error {
+						if err := params.Direction.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: direction: invalid`)
+			}
+		}
+	}
+	// Decode query: per_page.
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsPerPageVal int
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					paramsPerPageVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(paramsPerPageVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: per_page: parse`)
+			}
+		}
+	}
+	// Decode query: page.
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsPageVal int
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					paramsPageVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(paramsPageVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: page: parse`)
+			}
+		}
+	}
+	return params, nil
+}
+
 func decodePullsListCommentsForReviewParams(args map[string]string, r *http.Request) (PullsListCommentsForReviewParams, error) {
 	var params PullsListCommentsForReviewParams
 	// Decode path: owner.
@@ -30800,6 +38347,174 @@ func decodePullsListCommentsForReviewParams(args map[string]string, r *http.Requ
 
 func decodePullsListCommitsParams(args map[string]string, r *http.Request) (PullsListCommitsParams, error) {
 	var params PullsListCommitsParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	// Decode path: pull_number.
+	{
+		param := args["pull_number"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "pull_number",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.PullNumber = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: pull_number: not specified`)
+		}
+	}
+	// Decode query: per_page.
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsPerPageVal int
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					paramsPerPageVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(paramsPerPageVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: per_page: parse`)
+			}
+		}
+	}
+	// Decode query: page.
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsPageVal int
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					paramsPageVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(paramsPageVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: page: parse`)
+			}
+		}
+	}
+	return params, nil
+}
+
+func decodePullsListFilesParams(args map[string]string, r *http.Request) (PullsListFilesParams, error) {
+	var params PullsListFilesParams
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -31881,6 +39596,202 @@ func decodePullsListReviewsParams(args map[string]string, r *http.Request) (Pull
 	return params, nil
 }
 
+func decodePullsMergeParams(args map[string]string, r *http.Request) (PullsMergeParams, error) {
+	var params PullsMergeParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	// Decode path: pull_number.
+	{
+		param := args["pull_number"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "pull_number",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.PullNumber = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: pull_number: not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodePullsRemoveRequestedReviewersParams(args map[string]string, r *http.Request) (PullsRemoveRequestedReviewersParams, error) {
+	var params PullsRemoveRequestedReviewersParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	// Decode path: pull_number.
+	{
+		param := args["pull_number"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "pull_number",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.PullNumber = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: pull_number: not specified`)
+		}
+	}
+	return params, nil
+}
+
 func decodePullsSubmitReviewParams(args map[string]string, r *http.Request) (PullsSubmitReviewParams, error) {
 	var params PullsSubmitReviewParams
 	// Decode path: owner.
@@ -32005,6 +39916,202 @@ func decodePullsSubmitReviewParams(args map[string]string, r *http.Request) (Pul
 			}
 		} else {
 			return params, errors.New(`path: review_id: not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodePullsUpdateParams(args map[string]string, r *http.Request) (PullsUpdateParams, error) {
+	var params PullsUpdateParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	// Decode path: pull_number.
+	{
+		param := args["pull_number"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "pull_number",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.PullNumber = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: pull_number: not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodePullsUpdateBranchParams(args map[string]string, r *http.Request) (PullsUpdateBranchParams, error) {
+	var params PullsUpdateBranchParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	// Decode path: pull_number.
+	{
+		param := args["pull_number"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "pull_number",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.PullNumber = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: pull_number: not specified`)
 		}
 	}
 	return params, nil
@@ -32232,6 +40339,496 @@ func decodePullsUpdateReviewCommentParams(args map[string]string, r *http.Reques
 			}
 		} else {
 			return params, errors.New(`path: comment_id: not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodeReactionsCreateForCommitCommentParams(args map[string]string, r *http.Request) (ReactionsCreateForCommitCommentParams, error) {
+	var params ReactionsCreateForCommitCommentParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	// Decode path: comment_id.
+	{
+		param := args["comment_id"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "comment_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.CommentID = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: comment_id: not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodeReactionsCreateForIssueParams(args map[string]string, r *http.Request) (ReactionsCreateForIssueParams, error) {
+	var params ReactionsCreateForIssueParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	// Decode path: issue_number.
+	{
+		param := args["issue_number"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "issue_number",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.IssueNumber = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: issue_number: not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodeReactionsCreateForIssueCommentParams(args map[string]string, r *http.Request) (ReactionsCreateForIssueCommentParams, error) {
+	var params ReactionsCreateForIssueCommentParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	// Decode path: comment_id.
+	{
+		param := args["comment_id"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "comment_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.CommentID = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: comment_id: not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodeReactionsCreateForPullRequestReviewCommentParams(args map[string]string, r *http.Request) (ReactionsCreateForPullRequestReviewCommentParams, error) {
+	var params ReactionsCreateForPullRequestReviewCommentParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	// Decode path: comment_id.
+	{
+		param := args["comment_id"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "comment_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.CommentID = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: comment_id: not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodeReactionsCreateForReleaseParams(args map[string]string, r *http.Request) (ReactionsCreateForReleaseParams, error) {
+	var params ReactionsCreateForReleaseParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	// Decode path: release_id.
+	{
+		param := args["release_id"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "release_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.ReleaseID = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: release_id: not specified`)
 		}
 	}
 	return params, nil
@@ -35258,6 +43855,496 @@ func decodeReposAcceptInvitationParams(args map[string]string, r *http.Request) 
 	return params, nil
 }
 
+func decodeReposAddAppAccessRestrictionsParams(args map[string]string, r *http.Request) (ReposAddAppAccessRestrictionsParams, error) {
+	var params ReposAddAppAccessRestrictionsParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	// Decode path: branch.
+	{
+		param := args["branch"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "branch",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Branch = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: branch: not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodeReposAddCollaboratorParams(args map[string]string, r *http.Request) (ReposAddCollaboratorParams, error) {
+	var params ReposAddCollaboratorParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	// Decode path: username.
+	{
+		param := args["username"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "username",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Username = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: username: not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodeReposAddStatusCheckContextsParams(args map[string]string, r *http.Request) (ReposAddStatusCheckContextsParams, error) {
+	var params ReposAddStatusCheckContextsParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	// Decode path: branch.
+	{
+		param := args["branch"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "branch",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Branch = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: branch: not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodeReposAddTeamAccessRestrictionsParams(args map[string]string, r *http.Request) (ReposAddTeamAccessRestrictionsParams, error) {
+	var params ReposAddTeamAccessRestrictionsParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	// Decode path: branch.
+	{
+		param := args["branch"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "branch",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Branch = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: branch: not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodeReposAddUserAccessRestrictionsParams(args map[string]string, r *http.Request) (ReposAddUserAccessRestrictionsParams, error) {
+	var params ReposAddUserAccessRestrictionsParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	// Decode path: branch.
+	{
+		param := args["branch"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "branch",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Branch = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: branch: not specified`)
+		}
+	}
+	return params, nil
+}
+
 func decodeReposCheckCollaboratorParams(args map[string]string, r *http.Request) (ReposCheckCollaboratorParams, error) {
 	var params ReposCheckCollaboratorParams
 	// Decode path: owner.
@@ -35591,6 +44678,171 @@ func decodeReposCompareCommitsParams(args map[string]string, r *http.Request) (R
 	return params, nil
 }
 
+func decodeReposCreateAutolinkParams(args map[string]string, r *http.Request) (ReposCreateAutolinkParams, error) {
+	var params ReposCreateAutolinkParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodeReposCreateCommitCommentParams(args map[string]string, r *http.Request) (ReposCreateCommitCommentParams, error) {
+	var params ReposCreateCommitCommentParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	// Decode path: commit_sha.
+	{
+		param := args["commit_sha"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "commit_sha",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.CommitSha = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: commit_sha: not specified`)
+		}
+	}
+	return params, nil
+}
+
 func decodeReposCreateCommitSignatureProtectionParams(args map[string]string, r *http.Request) (ReposCreateCommitSignatureProtectionParams, error) {
 	var params ReposCreateCommitSignatureProtectionParams
 	// Decode path: owner.
@@ -35787,6 +45039,640 @@ func decodeReposCreateCommitStatusParams(args map[string]string, r *http.Request
 	return params, nil
 }
 
+func decodeReposCreateDeployKeyParams(args map[string]string, r *http.Request) (ReposCreateDeployKeyParams, error) {
+	var params ReposCreateDeployKeyParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodeReposCreateDeploymentParams(args map[string]string, r *http.Request) (ReposCreateDeploymentParams, error) {
+	var params ReposCreateDeploymentParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodeReposCreateDeploymentStatusParams(args map[string]string, r *http.Request) (ReposCreateDeploymentStatusParams, error) {
+	var params ReposCreateDeploymentStatusParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	// Decode path: deployment_id.
+	{
+		param := args["deployment_id"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "deployment_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.DeploymentID = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: deployment_id: not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodeReposCreateDispatchEventParams(args map[string]string, r *http.Request) (ReposCreateDispatchEventParams, error) {
+	var params ReposCreateDispatchEventParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodeReposCreateForkParams(args map[string]string, r *http.Request) (ReposCreateForkParams, error) {
+	var params ReposCreateForkParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodeReposCreateInOrgParams(args map[string]string, r *http.Request) (ReposCreateInOrgParams, error) {
+	var params ReposCreateInOrgParams
+	// Decode path: org.
+	{
+		param := args["org"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "org",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Org = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: org: not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodeReposCreateOrUpdateFileContentsParams(args map[string]string, r *http.Request) (ReposCreateOrUpdateFileContentsParams, error) {
+	var params ReposCreateOrUpdateFileContentsParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	// Decode path: path.
+	{
+		param := args["path"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "path",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Path = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: path: not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodeReposCreatePagesSiteParams(args map[string]string, r *http.Request) (ReposCreatePagesSiteParams, error) {
+	var params ReposCreatePagesSiteParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodeReposCreateReleaseParams(args map[string]string, r *http.Request) (ReposCreateReleaseParams, error) {
+	var params ReposCreateReleaseParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	return params, nil
+}
+
 func decodeReposCreateUsingTemplateParams(args map[string]string, r *http.Request) (ReposCreateUsingTemplateParams, error) {
 	var params ReposCreateUsingTemplateParams
 	// Decode path: template_owner.
@@ -35849,6 +45735,73 @@ func decodeReposCreateUsingTemplateParams(args map[string]string, r *http.Reques
 			}
 		} else {
 			return params, errors.New(`path: template_repo: not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodeReposCreateWebhookParams(args map[string]string, r *http.Request) (ReposCreateWebhookParams, error) {
+	var params ReposCreateWebhookParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
 	return params, nil
@@ -36839,6 +46792,104 @@ func decodeReposDeleteDeploymentParams(args map[string]string, r *http.Request) 
 	return params, nil
 }
 
+func decodeReposDeleteFileParams(args map[string]string, r *http.Request) (ReposDeleteFileParams, error) {
+	var params ReposDeleteFileParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	// Decode path: path.
+	{
+		param := args["path"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "path",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Path = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: path: not specified`)
+		}
+	}
+	return params, nil
+}
+
 func decodeReposDeleteInvitationParams(args map[string]string, r *http.Request) (ReposDeleteInvitationParams, error) {
 	var params ReposDeleteInvitationParams
 	// Decode path: owner.
@@ -36932,6 +46983,73 @@ func decodeReposDeleteInvitationParams(args map[string]string, r *http.Request) 
 			}
 		} else {
 			return params, errors.New(`path: invitation_id: not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodeReposDeletePagesSiteParams(args map[string]string, r *http.Request) (ReposDeletePagesSiteParams, error) {
+	var params ReposDeletePagesSiteParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
 	return params, nil
@@ -39268,6 +49386,174 @@ func decodeReposGetCombinedStatusForRefParams(args map[string]string, r *http.Re
 	return params, nil
 }
 
+func decodeReposGetCommitParams(args map[string]string, r *http.Request) (ReposGetCommitParams, error) {
+	var params ReposGetCommitParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	// Decode query: page.
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsPageVal int
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					paramsPageVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(paramsPageVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: page: parse`)
+			}
+		}
+	}
+	// Decode query: per_page.
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsPerPageVal int
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					paramsPerPageVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(paramsPerPageVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: per_page: parse`)
+			}
+		}
+	}
+	// Decode path: ref.
+	{
+		param := args["ref"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "ref",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Ref = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: ref: not specified`)
+		}
+	}
+	return params, nil
+}
+
 func decodeReposGetCommitActivityStatsParams(args map[string]string, r *http.Request) (ReposGetCommitActivityStatsParams, error) {
 	var params ReposGetCommitActivityStatsParams
 	// Decode path: owner.
@@ -39758,6 +50044,104 @@ func decodeReposGetDeployKeyParams(args map[string]string, r *http.Request) (Rep
 			}
 		} else {
 			return params, errors.New(`path: key_id: not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodeReposGetDeploymentParams(args map[string]string, r *http.Request) (ReposGetDeploymentParams, error) {
+	var params ReposGetDeploymentParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	// Decode path: deployment_id.
+	{
+		param := args["deployment_id"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "deployment_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.DeploymentID = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: deployment_id: not specified`)
 		}
 	}
 	return params, nil
@@ -40485,6 +50869,241 @@ func decodeReposGetPunchCardStatsParams(args map[string]string, r *http.Request)
 			}
 		} else {
 			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodeReposGetReadmeParams(args map[string]string, r *http.Request) (ReposGetReadmeParams, error) {
+	var params ReposGetReadmeParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	// Decode query: ref.
+	{
+		values, ok := r.URL.Query()["ref"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsRefVal string
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					paramsRefVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Ref.SetTo(paramsRefVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: ref: parse`)
+			}
+		}
+	}
+	return params, nil
+}
+
+func decodeReposGetReadmeInDirectoryParams(args map[string]string, r *http.Request) (ReposGetReadmeInDirectoryParams, error) {
+	var params ReposGetReadmeInDirectoryParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	// Decode path: dir.
+	{
+		param := args["dir"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "dir",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Dir = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: dir: not specified`)
+		}
+	}
+	// Decode query: ref.
+	{
+		values, ok := r.URL.Query()["ref"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsRefVal string
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					paramsRefVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Ref.SetTo(paramsRefVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: ref: parse`)
+			}
 		}
 	}
 	return params, nil
@@ -41526,6 +52145,135 @@ func decodeReposGetWebhookConfigForRepoParams(args map[string]string, r *http.Re
 	return params, nil
 }
 
+func decodeReposGetWebhookDeliveryParams(args map[string]string, r *http.Request) (ReposGetWebhookDeliveryParams, error) {
+	var params ReposGetWebhookDeliveryParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	// Decode path: hook_id.
+	{
+		param := args["hook_id"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "hook_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.HookID = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: hook_id: not specified`)
+		}
+	}
+	// Decode path: delivery_id.
+	{
+		param := args["delivery_id"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "delivery_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.DeliveryID = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: delivery_id: not specified`)
+		}
+	}
+	return params, nil
+}
+
 func decodeReposListAutolinksParams(args map[string]string, r *http.Request) (ReposListAutolinksParams, error) {
 	var params ReposListAutolinksParams
 	// Decode path: owner.
@@ -41795,6 +52543,104 @@ func decodeReposListBranchesParams(args map[string]string, r *http.Request) (Rep
 			}(); err != nil {
 				return params, errors.Wrap(err, `query: page: parse`)
 			}
+		}
+	}
+	return params, nil
+}
+
+func decodeReposListBranchesForHeadCommitParams(args map[string]string, r *http.Request) (ReposListBranchesForHeadCommitParams, error) {
+	var params ReposListBranchesForHeadCommitParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	// Decode path: commit_sha.
+	{
+		param := args["commit_sha"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "commit_sha",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.CommitSha = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: commit_sha: not specified`)
 		}
 	}
 	return params, nil
@@ -43250,6 +54096,667 @@ func decodeReposListDeploymentStatusesParams(args map[string]string, r *http.Req
 	return params, nil
 }
 
+func decodeReposListDeploymentsParams(args map[string]string, r *http.Request) (ReposListDeploymentsParams, error) {
+	var params ReposListDeploymentsParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	// Decode query: sha.
+	{
+		values, ok := r.URL.Query()["sha"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsShaVal string
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					paramsShaVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Sha.SetTo(paramsShaVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: sha: parse`)
+			}
+		}
+	}
+	// Decode query: ref.
+	{
+		values, ok := r.URL.Query()["ref"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsRefVal string
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					paramsRefVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Ref.SetTo(paramsRefVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: ref: parse`)
+			}
+		}
+	}
+	// Decode query: task.
+	{
+		values, ok := r.URL.Query()["task"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsTaskVal string
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					paramsTaskVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Task.SetTo(paramsTaskVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: task: parse`)
+			}
+		}
+	}
+	// Decode query: environment.
+	{
+		values, ok := r.URL.Query()["environment"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsEnvironmentVal string
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					paramsEnvironmentVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Environment.SetTo(paramsEnvironmentVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: environment: parse`)
+			}
+		}
+	}
+	// Decode query: per_page.
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsPerPageVal int
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					paramsPerPageVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(paramsPerPageVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: per_page: parse`)
+			}
+		}
+	}
+	// Decode query: page.
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsPageVal int
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					paramsPageVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(paramsPageVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: page: parse`)
+			}
+		}
+	}
+	return params, nil
+}
+
+func decodeReposListForAuthenticatedUserParams(args map[string]string, r *http.Request) (ReposListForAuthenticatedUserParams, error) {
+	var params ReposListForAuthenticatedUserParams
+	// Decode query: visibility.
+	{
+		values, ok := r.URL.Query()["visibility"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsVisibilityVal ReposListForAuthenticatedUserVisibility
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					paramsVisibilityVal = ReposListForAuthenticatedUserVisibility(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Visibility.SetTo(paramsVisibilityVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: visibility: parse`)
+			}
+			if err := func() error {
+				if params.Visibility.Set {
+					if err := func() error {
+						if err := params.Visibility.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: visibility: invalid`)
+			}
+		}
+	}
+	// Decode query: affiliation.
+	{
+		values, ok := r.URL.Query()["affiliation"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsAffiliationVal string
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					paramsAffiliationVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Affiliation.SetTo(paramsAffiliationVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: affiliation: parse`)
+			}
+		}
+	}
+	// Decode query: type.
+	{
+		values, ok := r.URL.Query()["type"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsTypeVal ReposListForAuthenticatedUserType
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					paramsTypeVal = ReposListForAuthenticatedUserType(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Type.SetTo(paramsTypeVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: type: parse`)
+			}
+			if err := func() error {
+				if params.Type.Set {
+					if err := func() error {
+						if err := params.Type.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: type: invalid`)
+			}
+		}
+	}
+	// Decode query: sort.
+	{
+		values, ok := r.URL.Query()["sort"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsSortVal ReposListForAuthenticatedUserSort
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					paramsSortVal = ReposListForAuthenticatedUserSort(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Sort.SetTo(paramsSortVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: sort: parse`)
+			}
+			if err := func() error {
+				if params.Sort.Set {
+					if err := func() error {
+						if err := params.Sort.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: sort: invalid`)
+			}
+		}
+	}
+	// Decode query: direction.
+	{
+		values, ok := r.URL.Query()["direction"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsDirectionVal ReposListForAuthenticatedUserDirection
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					paramsDirectionVal = ReposListForAuthenticatedUserDirection(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Direction.SetTo(paramsDirectionVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: direction: parse`)
+			}
+			if err := func() error {
+				if params.Direction.Set {
+					if err := func() error {
+						if err := params.Direction.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: direction: invalid`)
+			}
+		}
+	}
+	// Decode query: per_page.
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsPerPageVal int
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					paramsPerPageVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(paramsPerPageVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: per_page: parse`)
+			}
+		}
+	}
+	// Decode query: page.
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsPageVal int
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					paramsPageVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(paramsPageVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: page: parse`)
+			}
+		}
+	}
+	// Decode query: since.
+	{
+		values, ok := r.URL.Query()["since"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsSinceVal time.Time
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToTime(s)
+					if err != nil {
+						return err
+					}
+
+					paramsSinceVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Since.SetTo(paramsSinceVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: since: parse`)
+			}
+		}
+	}
+	// Decode query: before.
+	{
+		values, ok := r.URL.Query()["before"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsBeforeVal time.Time
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToTime(s)
+					if err != nil {
+						return err
+					}
+
+					paramsBeforeVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Before.SetTo(paramsBeforeVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: before: parse`)
+			}
+		}
+	}
+	return params, nil
+}
+
 func decodeReposListForOrgParams(args map[string]string, r *http.Request) (ReposListForOrgParams, error) {
 	var params ReposListForOrgParams
 	// Decode path: org.
@@ -44372,6 +55879,46 @@ func decodeReposListPagesBuildsParams(args map[string]string, r *http.Request) (
 	return params, nil
 }
 
+func decodeReposListPublicParams(args map[string]string, r *http.Request) (ReposListPublicParams, error) {
+	var params ReposListPublicParams
+	// Decode query: since.
+	{
+		values, ok := r.URL.Query()["since"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsSinceVal int
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					paramsSinceVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Since.SetTo(paramsSinceVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: since: parse`)
+			}
+		}
+	}
+	return params, nil
+}
+
 func decodeReposListPullRequestsAssociatedWithCommitParams(args map[string]string, r *http.Request) (ReposListPullRequestsAssociatedWithCommitParams, error) {
 	var params ReposListPullRequestsAssociatedWithCommitParams
 	// Decode path: owner.
@@ -45119,6 +56666,174 @@ func decodeReposListTeamsParams(args map[string]string, r *http.Request) (ReposL
 	return params, nil
 }
 
+func decodeReposListWebhookDeliveriesParams(args map[string]string, r *http.Request) (ReposListWebhookDeliveriesParams, error) {
+	var params ReposListWebhookDeliveriesParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	// Decode path: hook_id.
+	{
+		param := args["hook_id"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "hook_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.HookID = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: hook_id: not specified`)
+		}
+	}
+	// Decode query: per_page.
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsPerPageVal int
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					paramsPerPageVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(paramsPerPageVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: per_page: parse`)
+			}
+		}
+	}
+	// Decode query: cursor.
+	{
+		values, ok := r.URL.Query()["cursor"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsCursorVal string
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					paramsCursorVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Cursor.SetTo(paramsCursorVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: cursor: parse`)
+			}
+		}
+	}
+	return params, nil
+}
+
 func decodeReposListWebhooksParams(args map[string]string, r *http.Request) (ReposListWebhooksParams, error) {
 	var params ReposListWebhooksParams
 	// Decode path: owner.
@@ -45251,6 +56966,73 @@ func decodeReposListWebhooksParams(args map[string]string, r *http.Request) (Rep
 			}(); err != nil {
 				return params, errors.Wrap(err, `query: page: parse`)
 			}
+		}
+	}
+	return params, nil
+}
+
+func decodeReposMergeParams(args map[string]string, r *http.Request) (ReposMergeParams, error) {
+	var params ReposMergeParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
 		}
 	}
 	return params, nil
@@ -45421,6 +57203,233 @@ func decodeReposPingWebhookParams(args map[string]string, r *http.Request) (Repo
 	return params, nil
 }
 
+func decodeReposRedeliverWebhookDeliveryParams(args map[string]string, r *http.Request) (ReposRedeliverWebhookDeliveryParams, error) {
+	var params ReposRedeliverWebhookDeliveryParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	// Decode path: hook_id.
+	{
+		param := args["hook_id"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "hook_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.HookID = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: hook_id: not specified`)
+		}
+	}
+	// Decode path: delivery_id.
+	{
+		param := args["delivery_id"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "delivery_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.DeliveryID = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: delivery_id: not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodeReposRemoveAppAccessRestrictionsParams(args map[string]string, r *http.Request) (ReposRemoveAppAccessRestrictionsParams, error) {
+	var params ReposRemoveAppAccessRestrictionsParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	// Decode path: branch.
+	{
+		param := args["branch"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "branch",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Branch = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: branch: not specified`)
+		}
+	}
+	return params, nil
+}
+
 func decodeReposRemoveCollaboratorParams(args map[string]string, r *http.Request) (ReposRemoveCollaboratorParams, error) {
 	var params ReposRemoveCollaboratorParams
 	// Decode path: owner.
@@ -45519,8 +57528,400 @@ func decodeReposRemoveCollaboratorParams(args map[string]string, r *http.Request
 	return params, nil
 }
 
+func decodeReposRemoveStatusCheckContextsParams(args map[string]string, r *http.Request) (ReposRemoveStatusCheckContextsParams, error) {
+	var params ReposRemoveStatusCheckContextsParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	// Decode path: branch.
+	{
+		param := args["branch"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "branch",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Branch = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: branch: not specified`)
+		}
+	}
+	return params, nil
+}
+
 func decodeReposRemoveStatusCheckProtectionParams(args map[string]string, r *http.Request) (ReposRemoveStatusCheckProtectionParams, error) {
 	var params ReposRemoveStatusCheckProtectionParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	// Decode path: branch.
+	{
+		param := args["branch"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "branch",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Branch = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: branch: not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodeReposRemoveTeamAccessRestrictionsParams(args map[string]string, r *http.Request) (ReposRemoveTeamAccessRestrictionsParams, error) {
+	var params ReposRemoveTeamAccessRestrictionsParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	// Decode path: branch.
+	{
+		param := args["branch"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "branch",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Branch = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: branch: not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodeReposRemoveUserAccessRestrictionsParams(args map[string]string, r *http.Request) (ReposRemoveUserAccessRestrictionsParams, error) {
+	var params ReposRemoveUserAccessRestrictionsParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	// Decode path: branch.
+	{
+		param := args["branch"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "branch",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Branch = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: branch: not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodeReposRenameBranchParams(args map[string]string, r *http.Request) (ReposRenameBranchParams, error) {
+	var params ReposRenameBranchParams
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -45849,6 +58250,398 @@ func decodeReposSetAdminBranchProtectionParams(args map[string]string, r *http.R
 	return params, nil
 }
 
+func decodeReposSetAppAccessRestrictionsParams(args map[string]string, r *http.Request) (ReposSetAppAccessRestrictionsParams, error) {
+	var params ReposSetAppAccessRestrictionsParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	// Decode path: branch.
+	{
+		param := args["branch"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "branch",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Branch = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: branch: not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodeReposSetStatusCheckContextsParams(args map[string]string, r *http.Request) (ReposSetStatusCheckContextsParams, error) {
+	var params ReposSetStatusCheckContextsParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	// Decode path: branch.
+	{
+		param := args["branch"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "branch",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Branch = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: branch: not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodeReposSetTeamAccessRestrictionsParams(args map[string]string, r *http.Request) (ReposSetTeamAccessRestrictionsParams, error) {
+	var params ReposSetTeamAccessRestrictionsParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	// Decode path: branch.
+	{
+		param := args["branch"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "branch",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Branch = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: branch: not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodeReposSetUserAccessRestrictionsParams(args map[string]string, r *http.Request) (ReposSetUserAccessRestrictionsParams, error) {
+	var params ReposSetUserAccessRestrictionsParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	// Decode path: branch.
+	{
+		param := args["branch"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "branch",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Branch = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: branch: not specified`)
+		}
+	}
+	return params, nil
+}
+
 func decodeReposTestPushWebhookParams(args map[string]string, r *http.Request) (ReposTestPushWebhookParams, error) {
 	var params ReposTestPushWebhookParams
 	// Decode path: owner.
@@ -45949,6 +58742,73 @@ func decodeReposTestPushWebhookParams(args map[string]string, r *http.Request) (
 
 func decodeReposTransferParams(args map[string]string, r *http.Request) (ReposTransferParams, error) {
 	var params ReposTransferParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodeReposUpdateParams(args map[string]string, r *http.Request) (ReposUpdateParams, error) {
+	var params ReposUpdateParams
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -46308,6 +59168,104 @@ func decodeReposUpdateInvitationParams(args map[string]string, r *http.Request) 
 	return params, nil
 }
 
+func decodeReposUpdatePullRequestReviewProtectionParams(args map[string]string, r *http.Request) (ReposUpdatePullRequestReviewProtectionParams, error) {
+	var params ReposUpdatePullRequestReviewProtectionParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	// Decode path: branch.
+	{
+		param := args["branch"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "branch",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Branch = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: branch: not specified`)
+		}
+	}
+	return params, nil
+}
+
 func decodeReposUpdateReleaseParams(args map[string]string, r *http.Request) (ReposUpdateReleaseParams, error) {
 	var params ReposUpdateReleaseParams
 	// Decode path: owner.
@@ -46504,6 +59462,202 @@ func decodeReposUpdateReleaseAssetParams(args map[string]string, r *http.Request
 	return params, nil
 }
 
+func decodeReposUpdateStatusCheckProtectionParams(args map[string]string, r *http.Request) (ReposUpdateStatusCheckProtectionParams, error) {
+	var params ReposUpdateStatusCheckProtectionParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	// Decode path: branch.
+	{
+		param := args["branch"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "branch",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Branch = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: branch: not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodeReposUpdateWebhookParams(args map[string]string, r *http.Request) (ReposUpdateWebhookParams, error) {
+	var params ReposUpdateWebhookParams
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	// Decode path: hook_id.
+	{
+		param := args["hook_id"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "hook_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.HookID = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: hook_id: not specified`)
+		}
+	}
+	return params, nil
+}
+
 func decodeReposUpdateWebhookConfigForRepoParams(args map[string]string, r *http.Request) (ReposUpdateWebhookConfigForRepoParams, error) {
 	var params ReposUpdateWebhookConfigForRepoParams
 	// Decode path: owner.
@@ -46664,6 +59818,213 @@ func decodeScimDeleteUserFromOrgParams(args map[string]string, r *http.Request) 
 			}
 		} else {
 			return params, errors.New(`path: scim_user_id: not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodeSearchCodeParams(args map[string]string, r *http.Request) (SearchCodeParams, error) {
+	var params SearchCodeParams
+	// Decode query: q.
+	{
+		values, ok := r.URL.Query()["q"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Q = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: q: parse`)
+			}
+		} else {
+			return params, errors.New(`query: q: not specified`)
+		}
+	}
+	// Decode query: sort.
+	{
+		values, ok := r.URL.Query()["sort"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsSortVal SearchCodeSort
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					paramsSortVal = SearchCodeSort(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Sort.SetTo(paramsSortVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: sort: parse`)
+			}
+			if err := func() error {
+				if params.Sort.Set {
+					if err := func() error {
+						if err := params.Sort.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: sort: invalid`)
+			}
+		}
+	}
+	// Decode query: order.
+	{
+		values, ok := r.URL.Query()["order"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsOrderVal SearchCodeOrder
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					paramsOrderVal = SearchCodeOrder(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Order.SetTo(paramsOrderVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: order: parse`)
+			}
+			if err := func() error {
+				if params.Order.Set {
+					if err := func() error {
+						if err := params.Order.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: order: invalid`)
+			}
+		}
+	}
+	// Decode query: per_page.
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsPerPageVal int
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					paramsPerPageVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(paramsPerPageVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: per_page: parse`)
+			}
+		}
+	}
+	// Decode query: page.
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsPageVal int
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					paramsPageVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(paramsPageVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: page: parse`)
+			}
 		}
 	}
 	return params, nil
@@ -46876,6 +60237,657 @@ func decodeSearchCommitsParams(args map[string]string, r *http.Request) (SearchC
 	return params, nil
 }
 
+func decodeSearchIssuesAndPullRequestsParams(args map[string]string, r *http.Request) (SearchIssuesAndPullRequestsParams, error) {
+	var params SearchIssuesAndPullRequestsParams
+	// Decode query: q.
+	{
+		values, ok := r.URL.Query()["q"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Q = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: q: parse`)
+			}
+		} else {
+			return params, errors.New(`query: q: not specified`)
+		}
+	}
+	// Decode query: sort.
+	{
+		values, ok := r.URL.Query()["sort"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsSortVal SearchIssuesAndPullRequestsSort
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					paramsSortVal = SearchIssuesAndPullRequestsSort(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Sort.SetTo(paramsSortVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: sort: parse`)
+			}
+			if err := func() error {
+				if params.Sort.Set {
+					if err := func() error {
+						if err := params.Sort.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: sort: invalid`)
+			}
+		}
+	}
+	// Decode query: order.
+	{
+		values, ok := r.URL.Query()["order"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsOrderVal SearchIssuesAndPullRequestsOrder
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					paramsOrderVal = SearchIssuesAndPullRequestsOrder(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Order.SetTo(paramsOrderVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: order: parse`)
+			}
+			if err := func() error {
+				if params.Order.Set {
+					if err := func() error {
+						if err := params.Order.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: order: invalid`)
+			}
+		}
+	}
+	// Decode query: per_page.
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsPerPageVal int
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					paramsPerPageVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(paramsPerPageVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: per_page: parse`)
+			}
+		}
+	}
+	// Decode query: page.
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsPageVal int
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					paramsPageVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(paramsPageVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: page: parse`)
+			}
+		}
+	}
+	return params, nil
+}
+
+func decodeSearchLabelsParams(args map[string]string, r *http.Request) (SearchLabelsParams, error) {
+	var params SearchLabelsParams
+	// Decode query: repository_id.
+	{
+		values, ok := r.URL.Query()["repository_id"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.RepositoryID = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: repository_id: parse`)
+			}
+		} else {
+			return params, errors.New(`query: repository_id: not specified`)
+		}
+	}
+	// Decode query: q.
+	{
+		values, ok := r.URL.Query()["q"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Q = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: q: parse`)
+			}
+		} else {
+			return params, errors.New(`query: q: not specified`)
+		}
+	}
+	// Decode query: sort.
+	{
+		values, ok := r.URL.Query()["sort"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsSortVal SearchLabelsSort
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					paramsSortVal = SearchLabelsSort(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Sort.SetTo(paramsSortVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: sort: parse`)
+			}
+			if err := func() error {
+				if params.Sort.Set {
+					if err := func() error {
+						if err := params.Sort.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: sort: invalid`)
+			}
+		}
+	}
+	// Decode query: order.
+	{
+		values, ok := r.URL.Query()["order"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsOrderVal SearchLabelsOrder
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					paramsOrderVal = SearchLabelsOrder(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Order.SetTo(paramsOrderVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: order: parse`)
+			}
+			if err := func() error {
+				if params.Order.Set {
+					if err := func() error {
+						if err := params.Order.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: order: invalid`)
+			}
+		}
+	}
+	// Decode query: per_page.
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsPerPageVal int
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					paramsPerPageVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(paramsPerPageVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: per_page: parse`)
+			}
+		}
+	}
+	// Decode query: page.
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsPageVal int
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					paramsPageVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(paramsPageVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: page: parse`)
+			}
+		}
+	}
+	return params, nil
+}
+
+func decodeSearchReposParams(args map[string]string, r *http.Request) (SearchReposParams, error) {
+	var params SearchReposParams
+	// Decode query: q.
+	{
+		values, ok := r.URL.Query()["q"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Q = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: q: parse`)
+			}
+		} else {
+			return params, errors.New(`query: q: not specified`)
+		}
+	}
+	// Decode query: sort.
+	{
+		values, ok := r.URL.Query()["sort"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsSortVal SearchReposSort
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					paramsSortVal = SearchReposSort(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Sort.SetTo(paramsSortVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: sort: parse`)
+			}
+			if err := func() error {
+				if params.Sort.Set {
+					if err := func() error {
+						if err := params.Sort.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: sort: invalid`)
+			}
+		}
+	}
+	// Decode query: order.
+	{
+		values, ok := r.URL.Query()["order"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsOrderVal SearchReposOrder
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					paramsOrderVal = SearchReposOrder(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Order.SetTo(paramsOrderVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: order: parse`)
+			}
+			if err := func() error {
+				if params.Order.Set {
+					if err := func() error {
+						if err := params.Order.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: order: invalid`)
+			}
+		}
+	}
+	// Decode query: per_page.
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsPerPageVal int
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					paramsPerPageVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(paramsPerPageVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: per_page: parse`)
+			}
+		}
+	}
+	// Decode query: page.
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsPageVal int
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					paramsPageVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(paramsPageVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: page: parse`)
+			}
+		}
+	}
+	return params, nil
+}
+
 func decodeSearchTopicsParams(args map[string]string, r *http.Request) (SearchTopicsParams, error) {
 	var params SearchTopicsParams
 	// Decode query: q.
@@ -46906,6 +60918,213 @@ func decodeSearchTopicsParams(args map[string]string, r *http.Request) (SearchTo
 			}
 		} else {
 			return params, errors.New(`query: q: not specified`)
+		}
+	}
+	// Decode query: per_page.
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsPerPageVal int
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					paramsPerPageVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(paramsPerPageVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: per_page: parse`)
+			}
+		}
+	}
+	// Decode query: page.
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsPageVal int
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					paramsPageVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(paramsPageVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: page: parse`)
+			}
+		}
+	}
+	return params, nil
+}
+
+func decodeSearchUsersParams(args map[string]string, r *http.Request) (SearchUsersParams, error) {
+	var params SearchUsersParams
+	// Decode query: q.
+	{
+		values, ok := r.URL.Query()["q"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Q = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: q: parse`)
+			}
+		} else {
+			return params, errors.New(`query: q: not specified`)
+		}
+	}
+	// Decode query: sort.
+	{
+		values, ok := r.URL.Query()["sort"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsSortVal SearchUsersSort
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					paramsSortVal = SearchUsersSort(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Sort.SetTo(paramsSortVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: sort: parse`)
+			}
+			if err := func() error {
+				if params.Sort.Set {
+					if err := func() error {
+						if err := params.Sort.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: sort: invalid`)
+			}
+		}
+	}
+	// Decode query: order.
+	{
+		values, ok := r.URL.Query()["order"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsOrderVal SearchUsersOrder
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					paramsOrderVal = SearchUsersOrder(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Order.SetTo(paramsOrderVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: order: parse`)
+			}
+			if err := func() error {
+				if params.Order.Set {
+					if err := func() error {
+						if err := params.Order.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: order: invalid`)
+			}
 		}
 	}
 	// Decode query: per_page.
@@ -47936,6 +62155,73 @@ func decodeTeamsAddOrUpdateProjectPermissionsInOrgParams(args map[string]string,
 	return params, nil
 }
 
+func decodeTeamsAddOrUpdateProjectPermissionsLegacyParams(args map[string]string, r *http.Request) (TeamsAddOrUpdateProjectPermissionsLegacyParams, error) {
+	var params TeamsAddOrUpdateProjectPermissionsLegacyParams
+	// Decode path: team_id.
+	{
+		param := args["team_id"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "team_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.TeamID = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: team_id: not specified`)
+		}
+	}
+	// Decode path: project_id.
+	{
+		param := args["project_id"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "project_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.ProjectID = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: project_id: not specified`)
+		}
+	}
+	return params, nil
+}
+
 func decodeTeamsAddOrUpdateRepoPermissionsInOrgParams(args map[string]string, r *http.Request) (TeamsAddOrUpdateRepoPermissionsInOrgParams, error) {
 	var params TeamsAddOrUpdateRepoPermissionsInOrgParams
 	// Decode path: org.
@@ -47998,6 +62284,104 @@ func decodeTeamsAddOrUpdateRepoPermissionsInOrgParams(args map[string]string, r 
 			}
 		} else {
 			return params, errors.New(`path: team_slug: not specified`)
+		}
+	}
+	// Decode path: owner.
+	{
+		param := args["owner"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: owner: not specified`)
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args["repo"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: repo: not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodeTeamsAddOrUpdateRepoPermissionsLegacyParams(args map[string]string, r *http.Request) (TeamsAddOrUpdateRepoPermissionsLegacyParams, error) {
+	var params TeamsAddOrUpdateRepoPermissionsLegacyParams
+	// Decode path: team_id.
+	{
+		param := args["team_id"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "team_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.TeamID = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: team_id: not specified`)
 		}
 	}
 	// Decode path: owner.
@@ -48457,6 +62841,42 @@ func decodeTeamsCheckPermissionsForRepoLegacyParams(args map[string]string, r *h
 	return params, nil
 }
 
+func decodeTeamsCreateParams(args map[string]string, r *http.Request) (TeamsCreateParams, error) {
+	var params TeamsCreateParams
+	// Decode path: org.
+	{
+		param := args["org"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "org",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Org = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: org: not specified`)
+		}
+	}
+	return params, nil
+}
+
 func decodeTeamsCreateDiscussionCommentInOrgParams(args map[string]string, r *http.Request) (TeamsCreateDiscussionCommentInOrgParams, error) {
 	var params TeamsCreateDiscussionCommentInOrgParams
 	// Decode path: org.
@@ -48787,6 +63207,42 @@ func decodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgParams(args map[string]str
 			}
 		} else {
 			return params, errors.New(`path: team_slug: not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyParams(args map[string]string, r *http.Request) (TeamsCreateOrUpdateIdpGroupConnectionsLegacyParams, error) {
+	var params TeamsCreateOrUpdateIdpGroupConnectionsLegacyParams
+	// Decode path: team_id.
+	{
+		param := args["team_id"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "team_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.TeamID = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: team_id: not specified`)
 		}
 	}
 	return params, nil
@@ -49246,6 +63702,42 @@ func decodeTeamsDeleteInOrgParams(args map[string]string, r *http.Request) (Team
 			}
 		} else {
 			return params, errors.New(`path: team_slug: not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodeTeamsDeleteLegacyParams(args map[string]string, r *http.Request) (TeamsDeleteLegacyParams, error) {
+	var params TeamsDeleteLegacyParams
+	// Decode path: team_id.
+	{
+		param := args["team_id"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "team_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.TeamID = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: team_id: not specified`)
 		}
 	}
 	return params, nil
@@ -50146,6 +64638,112 @@ func decodeTeamsListChildInOrgParams(args map[string]string, r *http.Request) (T
 			}
 		} else {
 			return params, errors.New(`path: team_slug: not specified`)
+		}
+	}
+	// Decode query: per_page.
+	{
+		values, ok := r.URL.Query()["per_page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsPerPageVal int
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					paramsPerPageVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(paramsPerPageVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: per_page: parse`)
+			}
+		}
+	}
+	// Decode query: page.
+	{
+		values, ok := r.URL.Query()["page"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsPageVal int
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					paramsPageVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(paramsPageVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: page: parse`)
+			}
+		}
+	}
+	return params, nil
+}
+
+func decodeTeamsListChildLegacyParams(args map[string]string, r *http.Request) (TeamsListChildLegacyParams, error) {
+	var params TeamsListChildLegacyParams
+	// Decode path: team_id.
+	{
+		param := args["team_id"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "team_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.TeamID = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: team_id: not specified`)
 		}
 	}
 	// Decode query: per_page.
@@ -52696,6 +67294,73 @@ func decodeTeamsRemoveProjectInOrgParams(args map[string]string, r *http.Request
 	return params, nil
 }
 
+func decodeTeamsRemoveProjectLegacyParams(args map[string]string, r *http.Request) (TeamsRemoveProjectLegacyParams, error) {
+	var params TeamsRemoveProjectLegacyParams
+	// Decode path: team_id.
+	{
+		param := args["team_id"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "team_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.TeamID = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: team_id: not specified`)
+		}
+	}
+	// Decode path: project_id.
+	{
+		param := args["project_id"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "project_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.ProjectID = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: project_id: not specified`)
+		}
+	}
+	return params, nil
+}
+
 func decodeTeamsRemoveRepoInOrgParams(args map[string]string, r *http.Request) (TeamsRemoveRepoInOrgParams, error) {
 	var params TeamsRemoveRepoInOrgParams
 	// Decode path: org.
@@ -53382,6 +68047,78 @@ func decodeTeamsUpdateInOrgParams(args map[string]string, r *http.Request) (Team
 	return params, nil
 }
 
+func decodeTeamsUpdateLegacyParams(args map[string]string, r *http.Request) (TeamsUpdateLegacyParams, error) {
+	var params TeamsUpdateLegacyParams
+	// Decode path: team_id.
+	{
+		param := args["team_id"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "team_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.TeamID = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: team_id: not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodeUsersBlockParams(args map[string]string, r *http.Request) (UsersBlockParams, error) {
+	var params UsersBlockParams
+	// Decode path: username.
+	{
+		param := args["username"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "username",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Username = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: username: not specified`)
+		}
+	}
+	return params, nil
+}
+
 func decodeUsersCheckBlockedParams(args map[string]string, r *http.Request) (UsersCheckBlockedParams, error) {
 	var params UsersCheckBlockedParams
 	// Decode path: username.
@@ -53521,6 +68258,42 @@ func decodeUsersCheckPersonIsFollowedByAuthenticatedParams(args map[string]strin
 	return params, nil
 }
 
+func decodeUsersDeleteGpgKeyForAuthenticatedParams(args map[string]string, r *http.Request) (UsersDeleteGpgKeyForAuthenticatedParams, error) {
+	var params UsersDeleteGpgKeyForAuthenticatedParams
+	// Decode path: gpg_key_id.
+	{
+		param := args["gpg_key_id"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "gpg_key_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.GpgKeyID = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: gpg_key_id: not specified`)
+		}
+	}
+	return params, nil
+}
+
 func decodeUsersDeletePublicSSHKeyForAuthenticatedParams(args map[string]string, r *http.Request) (UsersDeletePublicSSHKeyForAuthenticatedParams, error) {
 	var params UsersDeletePublicSSHKeyForAuthenticatedParams
 	// Decode path: key_id.
@@ -53624,6 +68397,128 @@ func decodeUsersGetByUsernameParams(args map[string]string, r *http.Request) (Us
 			}
 		} else {
 			return params, errors.New(`path: username: not specified`)
+		}
+	}
+	return params, nil
+}
+
+func decodeUsersGetContextForUserParams(args map[string]string, r *http.Request) (UsersGetContextForUserParams, error) {
+	var params UsersGetContextForUserParams
+	// Decode path: username.
+	{
+		param := args["username"]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "username",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Username = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New(`path: username: not specified`)
+		}
+	}
+	// Decode query: subject_type.
+	{
+		values, ok := r.URL.Query()["subject_type"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsSubjectTypeVal UsersGetContextForUserSubjectType
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					paramsSubjectTypeVal = UsersGetContextForUserSubjectType(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.SubjectType.SetTo(paramsSubjectTypeVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: subject_type: parse`)
+			}
+			if err := func() error {
+				if params.SubjectType.Set {
+					if err := func() error {
+						if err := params.SubjectType.Value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: subject_type: invalid`)
+			}
+		}
+	}
+	// Decode query: subject_id.
+	{
+		values, ok := r.URL.Query()["subject_id"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsSubjectIDVal string
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(s)
+					if err != nil {
+						return err
+					}
+
+					paramsSubjectIDVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.SubjectID.SetTo(paramsSubjectIDVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: subject_id: parse`)
+			}
 		}
 	}
 	return params, nil

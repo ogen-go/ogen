@@ -62,6 +62,20 @@ var (
 	_ = sync.Pool{}
 )
 
+func (s *ErrorStatusCode) Error() string {
+	return fmt.Sprintf("code %d: %+v", s.StatusCode, s.Response)
+}
+
+// Ref: #/components/schemas/addStickerToSet
+type AddStickerToSet struct {
+	UserID       int64           `json:"user_id"`
+	Name         string          `json:"name"`
+	PNGSticker   OptString       `json:"png_sticker"`
+	TgsSticker   OptString       `json:"tgs_sticker"`
+	Emojis       string          `json:"emojis"`
+	MaskPosition OptMaskPosition `json:"mask_position"`
+}
+
 // Ref: #/components/schemas/Animation
 type Animation struct {
 	FileID       string       `json:"file_id"`
@@ -75,46 +89,45 @@ type Animation struct {
 	FileSize     OptInt       `json:"file_size"`
 }
 
-type AnswerCallbackQueryPostOK struct {
-	Ok     bool `json:"ok"`
-	Result bool `json:"result"`
-}
-
-func (*AnswerCallbackQueryPostOK) answerCallbackQueryPostRes() {}
-
-type AnswerCallbackQueryPostReqApplicationJSON struct {
+// Ref: #/components/schemas/answerCallbackQuery
+type AnswerCallbackQuery struct {
 	CallbackQueryID string    `json:"callback_query_id"`
 	Text            OptString `json:"text"`
 	ShowAlert       OptBool   `json:"show_alert"`
-	URL             OptString `json:"url"`
+	URL             OptURL    `json:"url"`
 	CacheTime       OptInt    `json:"cache_time"`
 }
 
-type AnswerPreCheckoutQueryPostOK struct {
-	Ok     bool `json:"ok"`
-	Result bool `json:"result"`
+// Ref: #/components/schemas/answerInlineQuery
+type AnswerInlineQuery struct {
+	InlineQueryID     string              `json:"inline_query_id"`
+	Results           []InlineQueryResult `json:"results"`
+	CacheTime         OptInt              `json:"cache_time"`
+	IsPersonal        OptBool             `json:"is_personal"`
+	NextOffset        OptString           `json:"next_offset"`
+	SwitchPmText      OptString           `json:"switch_pm_text"`
+	SwitchPmParameter OptString           `json:"switch_pm_parameter"`
 }
 
-func (*AnswerPreCheckoutQueryPostOK) answerPreCheckoutQueryPostRes() {}
-
-type AnswerPreCheckoutQueryPostReqApplicationJSON struct {
+// Ref: #/components/schemas/answerPreCheckoutQuery
+type AnswerPreCheckoutQuery struct {
 	PreCheckoutQueryID string    `json:"pre_checkout_query_id"`
 	Ok                 bool      `json:"ok"`
 	ErrorMessage       OptString `json:"error_message"`
 }
 
-type AnswerShippingQueryPostOK struct {
-	Ok     bool `json:"ok"`
-	Result bool `json:"result"`
-}
-
-func (*AnswerShippingQueryPostOK) answerShippingQueryPostRes() {}
-
-type AnswerShippingQueryPostReqApplicationJSON struct {
+// Ref: #/components/schemas/answerShippingQuery
+type AnswerShippingQuery struct {
 	ShippingQueryID string           `json:"shipping_query_id"`
 	Ok              bool             `json:"ok"`
 	ShippingOptions []ShippingOption `json:"shipping_options"`
 	ErrorMessage    OptString        `json:"error_message"`
+}
+
+// Ref: #/components/schemas/approveChatJoinRequest
+type ApproveChatJoinRequest struct {
+	ChatID ID    `json:"chat_id"`
+	UserID int64 `json:"user_id"`
 }
 
 // Ref: #/components/schemas/Audio
@@ -130,13 +143,276 @@ type Audio struct {
 	Thumb        OptPhotoSize `json:"thumb"`
 }
 
+// Ref: #/components/schemas/banChatMember
+type BanChatMember struct {
+	ChatID         ID      `json:"chat_id"`
+	UserID         int64   `json:"user_id"`
+	UntilDate      OptInt  `json:"until_date"`
+	RevokeMessages OptBool `json:"revoke_messages"`
+}
+
+// Ref: #/components/schemas/banChatSenderChat
+type BanChatSenderChat struct {
+	ChatID       ID    `json:"chat_id"`
+	SenderChatID int64 `json:"sender_chat_id"`
+}
+
 // Ref: #/components/schemas/BotCommand
 type BotCommand struct {
 	Command     string `json:"command"`
 	Description string `json:"description"`
 }
 
-type CallbackGame string
+// Ref: #/components/schemas/BotCommandScope
+// BotCommandScope represents sum type.
+type BotCommandScope struct {
+	Type                                 BotCommandScopeType // switch on this field
+	BotCommandScopeDefault               BotCommandScopeDefault
+	BotCommandScopeAllPrivateChats       BotCommandScopeAllPrivateChats
+	BotCommandScopeAllGroupChats         BotCommandScopeAllGroupChats
+	BotCommandScopeAllChatAdministrators BotCommandScopeAllChatAdministrators
+	BotCommandScopeChat                  BotCommandScopeChat
+	BotCommandScopeChatAdministrators    BotCommandScopeChatAdministrators
+	BotCommandScopeChatMember            BotCommandScopeChatMember
+}
+
+// BotCommandScopeType is oneOf type of BotCommandScope.
+type BotCommandScopeType string
+
+// Possible values for BotCommandScopeType.
+const (
+	BotCommandScopeDefaultBotCommandScope               BotCommandScopeType = "BotCommandScopeDefault"
+	BotCommandScopeAllPrivateChatsBotCommandScope       BotCommandScopeType = "BotCommandScopeAllPrivateChats"
+	BotCommandScopeAllGroupChatsBotCommandScope         BotCommandScopeType = "BotCommandScopeAllGroupChats"
+	BotCommandScopeAllChatAdministratorsBotCommandScope BotCommandScopeType = "BotCommandScopeAllChatAdministrators"
+	BotCommandScopeChatBotCommandScope                  BotCommandScopeType = "BotCommandScopeChat"
+	BotCommandScopeChatAdministratorsBotCommandScope    BotCommandScopeType = "BotCommandScopeChatAdministrators"
+	BotCommandScopeChatMemberBotCommandScope            BotCommandScopeType = "BotCommandScopeChatMember"
+)
+
+// IsBotCommandScopeDefault reports whether BotCommandScope is BotCommandScopeDefault.
+func (s BotCommandScope) IsBotCommandScopeDefault() bool {
+	return s.Type == BotCommandScopeDefaultBotCommandScope
+}
+
+// IsBotCommandScopeAllPrivateChats reports whether BotCommandScope is BotCommandScopeAllPrivateChats.
+func (s BotCommandScope) IsBotCommandScopeAllPrivateChats() bool {
+	return s.Type == BotCommandScopeAllPrivateChatsBotCommandScope
+}
+
+// IsBotCommandScopeAllGroupChats reports whether BotCommandScope is BotCommandScopeAllGroupChats.
+func (s BotCommandScope) IsBotCommandScopeAllGroupChats() bool {
+	return s.Type == BotCommandScopeAllGroupChatsBotCommandScope
+}
+
+// IsBotCommandScopeAllChatAdministrators reports whether BotCommandScope is BotCommandScopeAllChatAdministrators.
+func (s BotCommandScope) IsBotCommandScopeAllChatAdministrators() bool {
+	return s.Type == BotCommandScopeAllChatAdministratorsBotCommandScope
+}
+
+// IsBotCommandScopeChat reports whether BotCommandScope is BotCommandScopeChat.
+func (s BotCommandScope) IsBotCommandScopeChat() bool {
+	return s.Type == BotCommandScopeChatBotCommandScope
+}
+
+// IsBotCommandScopeChatAdministrators reports whether BotCommandScope is BotCommandScopeChatAdministrators.
+func (s BotCommandScope) IsBotCommandScopeChatAdministrators() bool {
+	return s.Type == BotCommandScopeChatAdministratorsBotCommandScope
+}
+
+// IsBotCommandScopeChatMember reports whether BotCommandScope is BotCommandScopeChatMember.
+func (s BotCommandScope) IsBotCommandScopeChatMember() bool {
+	return s.Type == BotCommandScopeChatMemberBotCommandScope
+}
+
+// SetBotCommandScopeDefault sets BotCommandScope to BotCommandScopeDefault.
+func (s *BotCommandScope) SetBotCommandScopeDefault(v BotCommandScopeDefault) {
+	s.Type = BotCommandScopeDefaultBotCommandScope
+	s.BotCommandScopeDefault = v
+}
+
+// GetBotCommandScopeDefault returns BotCommandScopeDefault and true boolean if BotCommandScope is BotCommandScopeDefault.
+func (s BotCommandScope) GetBotCommandScopeDefault() (v BotCommandScopeDefault, ok bool) {
+	if !s.IsBotCommandScopeDefault() {
+		return v, false
+	}
+	return s.BotCommandScopeDefault, true
+}
+
+// NewBotCommandScopeDefaultBotCommandScope returns new BotCommandScope from BotCommandScopeDefault.
+func NewBotCommandScopeDefaultBotCommandScope(v BotCommandScopeDefault) BotCommandScope {
+	var s BotCommandScope
+	s.SetBotCommandScopeDefault(v)
+	return s
+}
+
+// SetBotCommandScopeAllPrivateChats sets BotCommandScope to BotCommandScopeAllPrivateChats.
+func (s *BotCommandScope) SetBotCommandScopeAllPrivateChats(v BotCommandScopeAllPrivateChats) {
+	s.Type = BotCommandScopeAllPrivateChatsBotCommandScope
+	s.BotCommandScopeAllPrivateChats = v
+}
+
+// GetBotCommandScopeAllPrivateChats returns BotCommandScopeAllPrivateChats and true boolean if BotCommandScope is BotCommandScopeAllPrivateChats.
+func (s BotCommandScope) GetBotCommandScopeAllPrivateChats() (v BotCommandScopeAllPrivateChats, ok bool) {
+	if !s.IsBotCommandScopeAllPrivateChats() {
+		return v, false
+	}
+	return s.BotCommandScopeAllPrivateChats, true
+}
+
+// NewBotCommandScopeAllPrivateChatsBotCommandScope returns new BotCommandScope from BotCommandScopeAllPrivateChats.
+func NewBotCommandScopeAllPrivateChatsBotCommandScope(v BotCommandScopeAllPrivateChats) BotCommandScope {
+	var s BotCommandScope
+	s.SetBotCommandScopeAllPrivateChats(v)
+	return s
+}
+
+// SetBotCommandScopeAllGroupChats sets BotCommandScope to BotCommandScopeAllGroupChats.
+func (s *BotCommandScope) SetBotCommandScopeAllGroupChats(v BotCommandScopeAllGroupChats) {
+	s.Type = BotCommandScopeAllGroupChatsBotCommandScope
+	s.BotCommandScopeAllGroupChats = v
+}
+
+// GetBotCommandScopeAllGroupChats returns BotCommandScopeAllGroupChats and true boolean if BotCommandScope is BotCommandScopeAllGroupChats.
+func (s BotCommandScope) GetBotCommandScopeAllGroupChats() (v BotCommandScopeAllGroupChats, ok bool) {
+	if !s.IsBotCommandScopeAllGroupChats() {
+		return v, false
+	}
+	return s.BotCommandScopeAllGroupChats, true
+}
+
+// NewBotCommandScopeAllGroupChatsBotCommandScope returns new BotCommandScope from BotCommandScopeAllGroupChats.
+func NewBotCommandScopeAllGroupChatsBotCommandScope(v BotCommandScopeAllGroupChats) BotCommandScope {
+	var s BotCommandScope
+	s.SetBotCommandScopeAllGroupChats(v)
+	return s
+}
+
+// SetBotCommandScopeAllChatAdministrators sets BotCommandScope to BotCommandScopeAllChatAdministrators.
+func (s *BotCommandScope) SetBotCommandScopeAllChatAdministrators(v BotCommandScopeAllChatAdministrators) {
+	s.Type = BotCommandScopeAllChatAdministratorsBotCommandScope
+	s.BotCommandScopeAllChatAdministrators = v
+}
+
+// GetBotCommandScopeAllChatAdministrators returns BotCommandScopeAllChatAdministrators and true boolean if BotCommandScope is BotCommandScopeAllChatAdministrators.
+func (s BotCommandScope) GetBotCommandScopeAllChatAdministrators() (v BotCommandScopeAllChatAdministrators, ok bool) {
+	if !s.IsBotCommandScopeAllChatAdministrators() {
+		return v, false
+	}
+	return s.BotCommandScopeAllChatAdministrators, true
+}
+
+// NewBotCommandScopeAllChatAdministratorsBotCommandScope returns new BotCommandScope from BotCommandScopeAllChatAdministrators.
+func NewBotCommandScopeAllChatAdministratorsBotCommandScope(v BotCommandScopeAllChatAdministrators) BotCommandScope {
+	var s BotCommandScope
+	s.SetBotCommandScopeAllChatAdministrators(v)
+	return s
+}
+
+// SetBotCommandScopeChat sets BotCommandScope to BotCommandScopeChat.
+func (s *BotCommandScope) SetBotCommandScopeChat(v BotCommandScopeChat) {
+	s.Type = BotCommandScopeChatBotCommandScope
+	s.BotCommandScopeChat = v
+}
+
+// GetBotCommandScopeChat returns BotCommandScopeChat and true boolean if BotCommandScope is BotCommandScopeChat.
+func (s BotCommandScope) GetBotCommandScopeChat() (v BotCommandScopeChat, ok bool) {
+	if !s.IsBotCommandScopeChat() {
+		return v, false
+	}
+	return s.BotCommandScopeChat, true
+}
+
+// NewBotCommandScopeChatBotCommandScope returns new BotCommandScope from BotCommandScopeChat.
+func NewBotCommandScopeChatBotCommandScope(v BotCommandScopeChat) BotCommandScope {
+	var s BotCommandScope
+	s.SetBotCommandScopeChat(v)
+	return s
+}
+
+// SetBotCommandScopeChatAdministrators sets BotCommandScope to BotCommandScopeChatAdministrators.
+func (s *BotCommandScope) SetBotCommandScopeChatAdministrators(v BotCommandScopeChatAdministrators) {
+	s.Type = BotCommandScopeChatAdministratorsBotCommandScope
+	s.BotCommandScopeChatAdministrators = v
+}
+
+// GetBotCommandScopeChatAdministrators returns BotCommandScopeChatAdministrators and true boolean if BotCommandScope is BotCommandScopeChatAdministrators.
+func (s BotCommandScope) GetBotCommandScopeChatAdministrators() (v BotCommandScopeChatAdministrators, ok bool) {
+	if !s.IsBotCommandScopeChatAdministrators() {
+		return v, false
+	}
+	return s.BotCommandScopeChatAdministrators, true
+}
+
+// NewBotCommandScopeChatAdministratorsBotCommandScope returns new BotCommandScope from BotCommandScopeChatAdministrators.
+func NewBotCommandScopeChatAdministratorsBotCommandScope(v BotCommandScopeChatAdministrators) BotCommandScope {
+	var s BotCommandScope
+	s.SetBotCommandScopeChatAdministrators(v)
+	return s
+}
+
+// SetBotCommandScopeChatMember sets BotCommandScope to BotCommandScopeChatMember.
+func (s *BotCommandScope) SetBotCommandScopeChatMember(v BotCommandScopeChatMember) {
+	s.Type = BotCommandScopeChatMemberBotCommandScope
+	s.BotCommandScopeChatMember = v
+}
+
+// GetBotCommandScopeChatMember returns BotCommandScopeChatMember and true boolean if BotCommandScope is BotCommandScopeChatMember.
+func (s BotCommandScope) GetBotCommandScopeChatMember() (v BotCommandScopeChatMember, ok bool) {
+	if !s.IsBotCommandScopeChatMember() {
+		return v, false
+	}
+	return s.BotCommandScopeChatMember, true
+}
+
+// NewBotCommandScopeChatMemberBotCommandScope returns new BotCommandScope from BotCommandScopeChatMember.
+func NewBotCommandScopeChatMemberBotCommandScope(v BotCommandScopeChatMember) BotCommandScope {
+	var s BotCommandScope
+	s.SetBotCommandScopeChatMember(v)
+	return s
+}
+
+// Ref: #/components/schemas/BotCommandScopeAllChatAdministrators
+type BotCommandScopeAllChatAdministrators struct {
+	Type string `json:"type"`
+}
+
+// Ref: #/components/schemas/BotCommandScopeAllGroupChats
+type BotCommandScopeAllGroupChats struct {
+	Type string `json:"type"`
+}
+
+// Ref: #/components/schemas/BotCommandScopeAllPrivateChats
+type BotCommandScopeAllPrivateChats struct {
+	Type string `json:"type"`
+}
+
+// Ref: #/components/schemas/BotCommandScopeChat
+type BotCommandScopeChat struct {
+	Type   string `json:"type"`
+	ChatID ID     `json:"chat_id"`
+}
+
+// Ref: #/components/schemas/BotCommandScopeChatAdministrators
+type BotCommandScopeChatAdministrators struct {
+	Type   string `json:"type"`
+	ChatID ID     `json:"chat_id"`
+}
+
+// Ref: #/components/schemas/BotCommandScopeChatMember
+type BotCommandScopeChatMember struct {
+	Type   string `json:"type"`
+	ChatID ID     `json:"chat_id"`
+	UserID int64  `json:"user_id"`
+}
+
+// Ref: #/components/schemas/BotCommandScopeDefault
+type BotCommandScopeDefault struct {
+	Type string `json:"type"`
+}
+
+// Ref: #/components/schemas/CallbackGame
+type CallbackGame struct{}
 
 // Ref: #/components/schemas/CallbackQuery
 type CallbackQuery struct {
@@ -151,29 +427,297 @@ type CallbackQuery struct {
 
 // Ref: #/components/schemas/Chat
 type Chat struct {
-	ID               int                `json:"id"`
-	Type             ChatType           `json:"type"`
-	Title            OptString          `json:"title"`
-	Username         OptString          `json:"username"`
-	FirstName        OptString          `json:"first_name"`
-	LastName         OptString          `json:"last_name"`
-	Photo            OptChatPhoto       `json:"photo"`
-	Bio              OptString          `json:"bio"`
-	Description      OptString          `json:"description"`
-	InviteLink       OptString          `json:"invite_link"`
-	PinnedMessage    *Message           `json:"pinned_message"`
-	Permissions      OptChatPermissions `json:"permissions"`
-	SlowModeDelay    OptInt             `json:"slow_mode_delay"`
-	StickerSetName   OptString          `json:"sticker_set_name"`
-	CanSetStickerSet OptBool            `json:"can_set_sticker_set"`
-	LinkedChatID     OptInt             `json:"linked_chat_id"`
-	Location         OptChatLocation    `json:"location"`
+	ID                    int64              `json:"id"`
+	Type                  ChatType           `json:"type"`
+	Title                 OptString          `json:"title"`
+	Username              OptString          `json:"username"`
+	FirstName             OptString          `json:"first_name"`
+	LastName              OptString          `json:"last_name"`
+	Photo                 OptChatPhoto       `json:"photo"`
+	Bio                   OptString          `json:"bio"`
+	HasPrivateForwards    OptBool            `json:"has_private_forwards"`
+	Description           OptString          `json:"description"`
+	InviteLink            OptString          `json:"invite_link"`
+	PinnedMessage         *Message           `json:"pinned_message"`
+	Permissions           OptChatPermissions `json:"permissions"`
+	SlowModeDelay         OptInt             `json:"slow_mode_delay"`
+	MessageAutoDeleteTime OptInt             `json:"message_auto_delete_time"`
+	HasProtectedContent   OptBool            `json:"has_protected_content"`
+	StickerSetName        OptString          `json:"sticker_set_name"`
+	CanSetStickerSet      OptBool            `json:"can_set_sticker_set"`
+	LinkedChatID          OptInt64           `json:"linked_chat_id"`
+	Location              OptChatLocation    `json:"location"`
+}
+
+// Ref: #/components/schemas/ChatInviteLink
+type ChatInviteLink struct {
+	InviteLink              string    `json:"invite_link"`
+	Creator                 User      `json:"creator"`
+	CreatesJoinRequest      bool      `json:"creates_join_request"`
+	IsPrimary               bool      `json:"is_primary"`
+	IsRevoked               bool      `json:"is_revoked"`
+	Name                    OptString `json:"name"`
+	ExpireDate              OptInt    `json:"expire_date"`
+	MemberLimit             OptInt    `json:"member_limit"`
+	PendingJoinRequestCount OptInt    `json:"pending_join_request_count"`
+}
+
+// Ref: #/components/schemas/ChatJoinRequest
+type ChatJoinRequest struct {
+	Chat       Chat              `json:"chat"`
+	From       User              `json:"from"`
+	Date       int               `json:"date"`
+	Bio        OptString         `json:"bio"`
+	InviteLink OptChatInviteLink `json:"invite_link"`
 }
 
 // Ref: #/components/schemas/ChatLocation
 type ChatLocation struct {
 	Location Location `json:"location"`
 	Address  string   `json:"address"`
+}
+
+// Ref: #/components/schemas/ChatMember
+// ChatMember represents sum type.
+type ChatMember struct {
+	Type                    ChatMemberType // switch on this field
+	ChatMemberOwner         ChatMemberOwner
+	ChatMemberAdministrator ChatMemberAdministrator
+	ChatMemberMember        ChatMemberMember
+	ChatMemberRestricted    ChatMemberRestricted
+	ChatMemberLeft          ChatMemberLeft
+	ChatMemberBanned        ChatMemberBanned
+}
+
+// ChatMemberType is oneOf type of ChatMember.
+type ChatMemberType string
+
+// Possible values for ChatMemberType.
+const (
+	ChatMemberOwnerChatMember         ChatMemberType = "ChatMemberOwner"
+	ChatMemberAdministratorChatMember ChatMemberType = "ChatMemberAdministrator"
+	ChatMemberMemberChatMember        ChatMemberType = "ChatMemberMember"
+	ChatMemberRestrictedChatMember    ChatMemberType = "ChatMemberRestricted"
+	ChatMemberLeftChatMember          ChatMemberType = "ChatMemberLeft"
+	ChatMemberBannedChatMember        ChatMemberType = "ChatMemberBanned"
+)
+
+// IsChatMemberOwner reports whether ChatMember is ChatMemberOwner.
+func (s ChatMember) IsChatMemberOwner() bool { return s.Type == ChatMemberOwnerChatMember }
+
+// IsChatMemberAdministrator reports whether ChatMember is ChatMemberAdministrator.
+func (s ChatMember) IsChatMemberAdministrator() bool {
+	return s.Type == ChatMemberAdministratorChatMember
+}
+
+// IsChatMemberMember reports whether ChatMember is ChatMemberMember.
+func (s ChatMember) IsChatMemberMember() bool { return s.Type == ChatMemberMemberChatMember }
+
+// IsChatMemberRestricted reports whether ChatMember is ChatMemberRestricted.
+func (s ChatMember) IsChatMemberRestricted() bool { return s.Type == ChatMemberRestrictedChatMember }
+
+// IsChatMemberLeft reports whether ChatMember is ChatMemberLeft.
+func (s ChatMember) IsChatMemberLeft() bool { return s.Type == ChatMemberLeftChatMember }
+
+// IsChatMemberBanned reports whether ChatMember is ChatMemberBanned.
+func (s ChatMember) IsChatMemberBanned() bool { return s.Type == ChatMemberBannedChatMember }
+
+// SetChatMemberOwner sets ChatMember to ChatMemberOwner.
+func (s *ChatMember) SetChatMemberOwner(v ChatMemberOwner) {
+	s.Type = ChatMemberOwnerChatMember
+	s.ChatMemberOwner = v
+}
+
+// GetChatMemberOwner returns ChatMemberOwner and true boolean if ChatMember is ChatMemberOwner.
+func (s ChatMember) GetChatMemberOwner() (v ChatMemberOwner, ok bool) {
+	if !s.IsChatMemberOwner() {
+		return v, false
+	}
+	return s.ChatMemberOwner, true
+}
+
+// NewChatMemberOwnerChatMember returns new ChatMember from ChatMemberOwner.
+func NewChatMemberOwnerChatMember(v ChatMemberOwner) ChatMember {
+	var s ChatMember
+	s.SetChatMemberOwner(v)
+	return s
+}
+
+// SetChatMemberAdministrator sets ChatMember to ChatMemberAdministrator.
+func (s *ChatMember) SetChatMemberAdministrator(v ChatMemberAdministrator) {
+	s.Type = ChatMemberAdministratorChatMember
+	s.ChatMemberAdministrator = v
+}
+
+// GetChatMemberAdministrator returns ChatMemberAdministrator and true boolean if ChatMember is ChatMemberAdministrator.
+func (s ChatMember) GetChatMemberAdministrator() (v ChatMemberAdministrator, ok bool) {
+	if !s.IsChatMemberAdministrator() {
+		return v, false
+	}
+	return s.ChatMemberAdministrator, true
+}
+
+// NewChatMemberAdministratorChatMember returns new ChatMember from ChatMemberAdministrator.
+func NewChatMemberAdministratorChatMember(v ChatMemberAdministrator) ChatMember {
+	var s ChatMember
+	s.SetChatMemberAdministrator(v)
+	return s
+}
+
+// SetChatMemberMember sets ChatMember to ChatMemberMember.
+func (s *ChatMember) SetChatMemberMember(v ChatMemberMember) {
+	s.Type = ChatMemberMemberChatMember
+	s.ChatMemberMember = v
+}
+
+// GetChatMemberMember returns ChatMemberMember and true boolean if ChatMember is ChatMemberMember.
+func (s ChatMember) GetChatMemberMember() (v ChatMemberMember, ok bool) {
+	if !s.IsChatMemberMember() {
+		return v, false
+	}
+	return s.ChatMemberMember, true
+}
+
+// NewChatMemberMemberChatMember returns new ChatMember from ChatMemberMember.
+func NewChatMemberMemberChatMember(v ChatMemberMember) ChatMember {
+	var s ChatMember
+	s.SetChatMemberMember(v)
+	return s
+}
+
+// SetChatMemberRestricted sets ChatMember to ChatMemberRestricted.
+func (s *ChatMember) SetChatMemberRestricted(v ChatMemberRestricted) {
+	s.Type = ChatMemberRestrictedChatMember
+	s.ChatMemberRestricted = v
+}
+
+// GetChatMemberRestricted returns ChatMemberRestricted and true boolean if ChatMember is ChatMemberRestricted.
+func (s ChatMember) GetChatMemberRestricted() (v ChatMemberRestricted, ok bool) {
+	if !s.IsChatMemberRestricted() {
+		return v, false
+	}
+	return s.ChatMemberRestricted, true
+}
+
+// NewChatMemberRestrictedChatMember returns new ChatMember from ChatMemberRestricted.
+func NewChatMemberRestrictedChatMember(v ChatMemberRestricted) ChatMember {
+	var s ChatMember
+	s.SetChatMemberRestricted(v)
+	return s
+}
+
+// SetChatMemberLeft sets ChatMember to ChatMemberLeft.
+func (s *ChatMember) SetChatMemberLeft(v ChatMemberLeft) {
+	s.Type = ChatMemberLeftChatMember
+	s.ChatMemberLeft = v
+}
+
+// GetChatMemberLeft returns ChatMemberLeft and true boolean if ChatMember is ChatMemberLeft.
+func (s ChatMember) GetChatMemberLeft() (v ChatMemberLeft, ok bool) {
+	if !s.IsChatMemberLeft() {
+		return v, false
+	}
+	return s.ChatMemberLeft, true
+}
+
+// NewChatMemberLeftChatMember returns new ChatMember from ChatMemberLeft.
+func NewChatMemberLeftChatMember(v ChatMemberLeft) ChatMember {
+	var s ChatMember
+	s.SetChatMemberLeft(v)
+	return s
+}
+
+// SetChatMemberBanned sets ChatMember to ChatMemberBanned.
+func (s *ChatMember) SetChatMemberBanned(v ChatMemberBanned) {
+	s.Type = ChatMemberBannedChatMember
+	s.ChatMemberBanned = v
+}
+
+// GetChatMemberBanned returns ChatMemberBanned and true boolean if ChatMember is ChatMemberBanned.
+func (s ChatMember) GetChatMemberBanned() (v ChatMemberBanned, ok bool) {
+	if !s.IsChatMemberBanned() {
+		return v, false
+	}
+	return s.ChatMemberBanned, true
+}
+
+// NewChatMemberBannedChatMember returns new ChatMember from ChatMemberBanned.
+func NewChatMemberBannedChatMember(v ChatMemberBanned) ChatMember {
+	var s ChatMember
+	s.SetChatMemberBanned(v)
+	return s
+}
+
+// Ref: #/components/schemas/ChatMemberAdministrator
+type ChatMemberAdministrator struct {
+	Status              string    `json:"status"`
+	User                User      `json:"user"`
+	CanBeEdited         bool      `json:"can_be_edited"`
+	IsAnonymous         bool      `json:"is_anonymous"`
+	CanManageChat       bool      `json:"can_manage_chat"`
+	CanDeleteMessages   bool      `json:"can_delete_messages"`
+	CanManageVoiceChats bool      `json:"can_manage_voice_chats"`
+	CanRestrictMembers  bool      `json:"can_restrict_members"`
+	CanPromoteMembers   bool      `json:"can_promote_members"`
+	CanChangeInfo       bool      `json:"can_change_info"`
+	CanInviteUsers      bool      `json:"can_invite_users"`
+	CanPostMessages     OptBool   `json:"can_post_messages"`
+	CanEditMessages     OptBool   `json:"can_edit_messages"`
+	CanPinMessages      OptBool   `json:"can_pin_messages"`
+	CustomTitle         OptString `json:"custom_title"`
+}
+
+// Ref: #/components/schemas/ChatMemberBanned
+type ChatMemberBanned struct {
+	Status    string `json:"status"`
+	User      User   `json:"user"`
+	UntilDate int    `json:"until_date"`
+}
+
+// Ref: #/components/schemas/ChatMemberLeft
+type ChatMemberLeft struct {
+	Status string `json:"status"`
+	User   User   `json:"user"`
+}
+
+// Ref: #/components/schemas/ChatMemberMember
+type ChatMemberMember struct {
+	Status string `json:"status"`
+	User   User   `json:"user"`
+}
+
+// Ref: #/components/schemas/ChatMemberOwner
+type ChatMemberOwner struct {
+	Status      string    `json:"status"`
+	User        User      `json:"user"`
+	IsAnonymous bool      `json:"is_anonymous"`
+	CustomTitle OptString `json:"custom_title"`
+}
+
+// Ref: #/components/schemas/ChatMemberRestricted
+type ChatMemberRestricted struct {
+	Status                string `json:"status"`
+	User                  User   `json:"user"`
+	IsMember              bool   `json:"is_member"`
+	CanChangeInfo         bool   `json:"can_change_info"`
+	CanInviteUsers        bool   `json:"can_invite_users"`
+	CanPinMessages        bool   `json:"can_pin_messages"`
+	CanSendMessages       bool   `json:"can_send_messages"`
+	CanSendMediaMessages  bool   `json:"can_send_media_messages"`
+	CanSendPolls          bool   `json:"can_send_polls"`
+	CanSendOtherMessages  bool   `json:"can_send_other_messages"`
+	CanAddWebPagePreviews bool   `json:"can_add_web_page_previews"`
+	UntilDate             int    `json:"until_date"`
+}
+
+// Ref: #/components/schemas/ChatMemberUpdated
+type ChatMemberUpdated struct {
+	Chat          Chat              `json:"chat"`
+	From          User              `json:"from"`
+	Date          int               `json:"date"`
+	OldChatMember ChatMember        `json:"old_chat_member"`
+	NewChatMember ChatMember        `json:"new_chat_member"`
+	InviteLink    OptChatInviteLink `json:"invite_link"`
 }
 
 // Ref: #/components/schemas/ChatPermissions
@@ -214,41 +758,209 @@ type ChosenInlineResult struct {
 	Query           string      `json:"query"`
 }
 
-type ClosePostOK struct {
-	Ok     bool `json:"ok"`
-	Result bool `json:"result"`
-}
-
-func (*ClosePostOK) closePostRes() {}
-
 // Ref: #/components/schemas/Contact
 type Contact struct {
 	PhoneNumber string    `json:"phone_number"`
 	FirstName   string    `json:"first_name"`
 	LastName    OptString `json:"last_name"`
-	UserID      OptInt    `json:"user_id"`
+	UserID      OptInt64  `json:"user_id"`
 	Vcard       OptString `json:"vcard"`
 }
 
-type DeleteStickerFromSetPostOK struct {
-	Ok     bool `json:"ok"`
-	Result bool `json:"result"`
+// Ref: #/components/schemas/copyMessage
+type CopyMessage struct {
+	ChatID                   ID                      `json:"chat_id"`
+	FromChatID               ID                      `json:"from_chat_id"`
+	MessageID                int                     `json:"message_id"`
+	Caption                  OptString               `json:"caption"`
+	ParseMode                OptString               `json:"parse_mode"`
+	CaptionEntities          []MessageEntity         `json:"caption_entities"`
+	DisableNotification      OptBool                 `json:"disable_notification"`
+	ReplyToMessageID         OptInt                  `json:"reply_to_message_id"`
+	AllowSendingWithoutReply OptBool                 `json:"allow_sending_without_reply"`
+	ReplyMarkup              *CopyMessageReplyMarkup `json:"reply_markup"`
 }
 
-func (*DeleteStickerFromSetPostOK) deleteStickerFromSetPostRes() {}
+// CopyMessageReplyMarkup represents sum type.
+type CopyMessageReplyMarkup struct {
+	Type                 CopyMessageReplyMarkupType // switch on this field
+	InlineKeyboardMarkup InlineKeyboardMarkup
+	ReplyKeyboardMarkup  ReplyKeyboardMarkup
+	ReplyKeyboardRemove  ReplyKeyboardRemove
+	ForceReply           ForceReply
+}
 
-type DeleteStickerFromSetPostReqApplicationJSON struct {
+// CopyMessageReplyMarkupType is oneOf type of CopyMessageReplyMarkup.
+type CopyMessageReplyMarkupType string
+
+// Possible values for CopyMessageReplyMarkupType.
+const (
+	InlineKeyboardMarkupCopyMessageReplyMarkup CopyMessageReplyMarkupType = "InlineKeyboardMarkup"
+	ReplyKeyboardMarkupCopyMessageReplyMarkup  CopyMessageReplyMarkupType = "ReplyKeyboardMarkup"
+	ReplyKeyboardRemoveCopyMessageReplyMarkup  CopyMessageReplyMarkupType = "ReplyKeyboardRemove"
+	ForceReplyCopyMessageReplyMarkup           CopyMessageReplyMarkupType = "ForceReply"
+)
+
+// IsInlineKeyboardMarkup reports whether CopyMessageReplyMarkup is InlineKeyboardMarkup.
+func (s CopyMessageReplyMarkup) IsInlineKeyboardMarkup() bool {
+	return s.Type == InlineKeyboardMarkupCopyMessageReplyMarkup
+}
+
+// IsReplyKeyboardMarkup reports whether CopyMessageReplyMarkup is ReplyKeyboardMarkup.
+func (s CopyMessageReplyMarkup) IsReplyKeyboardMarkup() bool {
+	return s.Type == ReplyKeyboardMarkupCopyMessageReplyMarkup
+}
+
+// IsReplyKeyboardRemove reports whether CopyMessageReplyMarkup is ReplyKeyboardRemove.
+func (s CopyMessageReplyMarkup) IsReplyKeyboardRemove() bool {
+	return s.Type == ReplyKeyboardRemoveCopyMessageReplyMarkup
+}
+
+// IsForceReply reports whether CopyMessageReplyMarkup is ForceReply.
+func (s CopyMessageReplyMarkup) IsForceReply() bool {
+	return s.Type == ForceReplyCopyMessageReplyMarkup
+}
+
+// SetInlineKeyboardMarkup sets CopyMessageReplyMarkup to InlineKeyboardMarkup.
+func (s *CopyMessageReplyMarkup) SetInlineKeyboardMarkup(v InlineKeyboardMarkup) {
+	s.Type = InlineKeyboardMarkupCopyMessageReplyMarkup
+	s.InlineKeyboardMarkup = v
+}
+
+// GetInlineKeyboardMarkup returns InlineKeyboardMarkup and true boolean if CopyMessageReplyMarkup is InlineKeyboardMarkup.
+func (s CopyMessageReplyMarkup) GetInlineKeyboardMarkup() (v InlineKeyboardMarkup, ok bool) {
+	if !s.IsInlineKeyboardMarkup() {
+		return v, false
+	}
+	return s.InlineKeyboardMarkup, true
+}
+
+// NewInlineKeyboardMarkupCopyMessageReplyMarkup returns new CopyMessageReplyMarkup from InlineKeyboardMarkup.
+func NewInlineKeyboardMarkupCopyMessageReplyMarkup(v InlineKeyboardMarkup) CopyMessageReplyMarkup {
+	var s CopyMessageReplyMarkup
+	s.SetInlineKeyboardMarkup(v)
+	return s
+}
+
+// SetReplyKeyboardMarkup sets CopyMessageReplyMarkup to ReplyKeyboardMarkup.
+func (s *CopyMessageReplyMarkup) SetReplyKeyboardMarkup(v ReplyKeyboardMarkup) {
+	s.Type = ReplyKeyboardMarkupCopyMessageReplyMarkup
+	s.ReplyKeyboardMarkup = v
+}
+
+// GetReplyKeyboardMarkup returns ReplyKeyboardMarkup and true boolean if CopyMessageReplyMarkup is ReplyKeyboardMarkup.
+func (s CopyMessageReplyMarkup) GetReplyKeyboardMarkup() (v ReplyKeyboardMarkup, ok bool) {
+	if !s.IsReplyKeyboardMarkup() {
+		return v, false
+	}
+	return s.ReplyKeyboardMarkup, true
+}
+
+// NewReplyKeyboardMarkupCopyMessageReplyMarkup returns new CopyMessageReplyMarkup from ReplyKeyboardMarkup.
+func NewReplyKeyboardMarkupCopyMessageReplyMarkup(v ReplyKeyboardMarkup) CopyMessageReplyMarkup {
+	var s CopyMessageReplyMarkup
+	s.SetReplyKeyboardMarkup(v)
+	return s
+}
+
+// SetReplyKeyboardRemove sets CopyMessageReplyMarkup to ReplyKeyboardRemove.
+func (s *CopyMessageReplyMarkup) SetReplyKeyboardRemove(v ReplyKeyboardRemove) {
+	s.Type = ReplyKeyboardRemoveCopyMessageReplyMarkup
+	s.ReplyKeyboardRemove = v
+}
+
+// GetReplyKeyboardRemove returns ReplyKeyboardRemove and true boolean if CopyMessageReplyMarkup is ReplyKeyboardRemove.
+func (s CopyMessageReplyMarkup) GetReplyKeyboardRemove() (v ReplyKeyboardRemove, ok bool) {
+	if !s.IsReplyKeyboardRemove() {
+		return v, false
+	}
+	return s.ReplyKeyboardRemove, true
+}
+
+// NewReplyKeyboardRemoveCopyMessageReplyMarkup returns new CopyMessageReplyMarkup from ReplyKeyboardRemove.
+func NewReplyKeyboardRemoveCopyMessageReplyMarkup(v ReplyKeyboardRemove) CopyMessageReplyMarkup {
+	var s CopyMessageReplyMarkup
+	s.SetReplyKeyboardRemove(v)
+	return s
+}
+
+// SetForceReply sets CopyMessageReplyMarkup to ForceReply.
+func (s *CopyMessageReplyMarkup) SetForceReply(v ForceReply) {
+	s.Type = ForceReplyCopyMessageReplyMarkup
+	s.ForceReply = v
+}
+
+// GetForceReply returns ForceReply and true boolean if CopyMessageReplyMarkup is ForceReply.
+func (s CopyMessageReplyMarkup) GetForceReply() (v ForceReply, ok bool) {
+	if !s.IsForceReply() {
+		return v, false
+	}
+	return s.ForceReply, true
+}
+
+// NewForceReplyCopyMessageReplyMarkup returns new CopyMessageReplyMarkup from ForceReply.
+func NewForceReplyCopyMessageReplyMarkup(v ForceReply) CopyMessageReplyMarkup {
+	var s CopyMessageReplyMarkup
+	s.SetForceReply(v)
+	return s
+}
+
+// Ref: #/components/schemas/createChatInviteLink
+type CreateChatInviteLink struct {
+	ChatID             ID        `json:"chat_id"`
+	Name               OptString `json:"name"`
+	ExpireDate         OptInt    `json:"expire_date"`
+	MemberLimit        OptInt    `json:"member_limit"`
+	CreatesJoinRequest OptBool   `json:"creates_join_request"`
+}
+
+// Ref: #/components/schemas/createNewStickerSet
+type CreateNewStickerSet struct {
+	UserID        int64           `json:"user_id"`
+	Name          string          `json:"name"`
+	Title         string          `json:"title"`
+	PNGSticker    OptString       `json:"png_sticker"`
+	TgsSticker    OptString       `json:"tgs_sticker"`
+	Emojis        string          `json:"emojis"`
+	ContainsMasks OptBool         `json:"contains_masks"`
+	MaskPosition  OptMaskPosition `json:"mask_position"`
+}
+
+// Ref: #/components/schemas/declineChatJoinRequest
+type DeclineChatJoinRequest struct {
+	ChatID ID    `json:"chat_id"`
+	UserID int64 `json:"user_id"`
+}
+
+// Ref: #/components/schemas/deleteChatPhoto
+type DeleteChatPhoto struct {
+	ChatID ID `json:"chat_id"`
+}
+
+// Ref: #/components/schemas/deleteChatStickerSet
+type DeleteChatStickerSet struct {
+	ChatID ID `json:"chat_id"`
+}
+
+// Ref: #/components/schemas/deleteMessage
+type DeleteMessage struct {
+	ChatID    ID  `json:"chat_id"`
+	MessageID int `json:"message_id"`
+}
+
+// Ref: #/components/schemas/deleteMyCommands
+type DeleteMyCommands struct {
+	Scope        *BotCommandScope `json:"scope"`
+	LanguageCode OptString        `json:"language_code"`
+}
+
+// Ref: #/components/schemas/deleteStickerFromSet
+type DeleteStickerFromSet struct {
 	Sticker string `json:"sticker"`
 }
 
-type DeleteWebhookPostOK struct {
-	Ok     bool `json:"ok"`
-	Result bool `json:"result"`
-}
-
-func (*DeleteWebhookPostOK) deleteWebhookPostRes() {}
-
-type DeleteWebhookPostReqApplicationJSON struct {
+// Ref: #/components/schemas/deleteWebhook
+type DeleteWebhook struct {
 	DropPendingUpdates OptBool `json:"drop_pending_updates"`
 }
 
@@ -266,6 +978,69 @@ type Document struct {
 	FileName     OptString    `json:"file_name"`
 	MimeType     OptString    `json:"mime_type"`
 	FileSize     OptInt       `json:"file_size"`
+}
+
+// Ref: #/components/schemas/editChatInviteLink
+type EditChatInviteLink struct {
+	ChatID             ID        `json:"chat_id"`
+	InviteLink         string    `json:"invite_link"`
+	Name               OptString `json:"name"`
+	ExpireDate         OptInt    `json:"expire_date"`
+	MemberLimit        OptInt    `json:"member_limit"`
+	CreatesJoinRequest OptBool   `json:"creates_join_request"`
+}
+
+// Ref: #/components/schemas/editMessageCaption
+type EditMessageCaption struct {
+	ChatID          *ID                     `json:"chat_id"`
+	MessageID       OptInt                  `json:"message_id"`
+	InlineMessageID OptString               `json:"inline_message_id"`
+	Caption         OptString               `json:"caption"`
+	ParseMode       OptString               `json:"parse_mode"`
+	CaptionEntities []MessageEntity         `json:"caption_entities"`
+	ReplyMarkup     OptInlineKeyboardMarkup `json:"reply_markup"`
+}
+
+// Ref: #/components/schemas/editMessageLiveLocation
+type EditMessageLiveLocation struct {
+	ChatID               *ID                     `json:"chat_id"`
+	MessageID            OptInt                  `json:"message_id"`
+	InlineMessageID      OptString               `json:"inline_message_id"`
+	Latitude             float64                 `json:"latitude"`
+	Longitude            float64                 `json:"longitude"`
+	HorizontalAccuracy   OptFloat64              `json:"horizontal_accuracy"`
+	Heading              OptInt                  `json:"heading"`
+	ProximityAlertRadius OptInt                  `json:"proximity_alert_radius"`
+	ReplyMarkup          OptInlineKeyboardMarkup `json:"reply_markup"`
+}
+
+// Ref: #/components/schemas/editMessageMedia
+type EditMessageMedia struct {
+	ChatID          *ID                     `json:"chat_id"`
+	MessageID       OptInt                  `json:"message_id"`
+	InlineMessageID OptString               `json:"inline_message_id"`
+	Media           InputMedia              `json:"media"`
+	ReplyMarkup     OptInlineKeyboardMarkup `json:"reply_markup"`
+}
+
+// Ref: #/components/schemas/editMessageReplyMarkup
+type EditMessageReplyMarkup struct {
+	ChatID          *ID                     `json:"chat_id"`
+	MessageID       OptInt                  `json:"message_id"`
+	InlineMessageID OptString               `json:"inline_message_id"`
+	ReplyMarkup     OptInlineKeyboardMarkup `json:"reply_markup"`
+}
+
+// Ref: #/components/schemas/editMessageText
+type EditMessageText struct {
+	ChatID                *ID                     `json:"chat_id"`
+	MessageID             OptInt                  `json:"message_id"`
+	InlineMessageID       OptString               `json:"inline_message_id"`
+	Text                  string                  `json:"text"`
+	ParseMode             OptString               `json:"parse_mode"`
+	Entities              []MessageEntity         `json:"entities"`
+	DisableWebPagePreview OptBool                 `json:"disable_web_page_preview"`
+	ReplyMarkup           OptInlineKeyboardMarkup `json:"reply_markup"`
 }
 
 // Ref: #/components/schemas/EncryptedCredentials
@@ -309,10 +1084,10 @@ const (
 
 // Ref: #/components/schemas/Error
 type Error struct {
-	Ok          bool                  `json:"ok"`
-	ErrorCode   int                   `json:"error_code"`
-	Description string                `json:"description"`
-	Parameters  OptResponseParameters `json:"parameters"`
+	Ok          bool        `json:"ok"`
+	ErrorCode   int         `json:"error_code"`
+	Description string      `json:"description"`
+	Parameters  OptResponse `json:"parameters"`
 }
 
 // ErrorStatusCode wraps Error with StatusCode.
@@ -321,25 +1096,10 @@ type ErrorStatusCode struct {
 	Response   Error
 }
 
-func (*ErrorStatusCode) answerCallbackQueryPostRes()     {}
-func (*ErrorStatusCode) answerPreCheckoutQueryPostRes()  {}
-func (*ErrorStatusCode) answerShippingQueryPostRes()     {}
-func (*ErrorStatusCode) closePostRes()                   {}
-func (*ErrorStatusCode) deleteStickerFromSetPostRes()    {}
-func (*ErrorStatusCode) deleteWebhookPostRes()           {}
-func (*ErrorStatusCode) getFilePostRes()                 {}
-func (*ErrorStatusCode) getGameHighScoresPostRes()       {}
-func (*ErrorStatusCode) getMePostRes()                   {}
-func (*ErrorStatusCode) getMyCommandsPostRes()           {}
-func (*ErrorStatusCode) getStickerSetPostRes()           {}
-func (*ErrorStatusCode) getUpdatesPostRes()              {}
-func (*ErrorStatusCode) getUserProfilePhotosPostRes()    {}
-func (*ErrorStatusCode) getWebhookInfoPostRes()          {}
-func (*ErrorStatusCode) logOutPostRes()                  {}
-func (*ErrorStatusCode) sendGamePostRes()                {}
-func (*ErrorStatusCode) sendInvoicePostRes()             {}
-func (*ErrorStatusCode) setMyCommandsPostRes()           {}
-func (*ErrorStatusCode) setStickerPositionInSetPostRes() {}
+// Ref: #/components/schemas/exportChatInviteLink
+type ExportChatInviteLink struct {
+	ChatID ID `json:"chat_id"`
+}
 
 // Ref: #/components/schemas/File
 type File struct {
@@ -347,6 +1107,21 @@ type File struct {
 	FileUniqueID string    `json:"file_unique_id"`
 	FileSize     OptInt    `json:"file_size"`
 	FilePath     OptString `json:"file_path"`
+}
+
+// Ref: #/components/schemas/ForceReply
+type ForceReply struct {
+	ForceReply            bool      `json:"force_reply"`
+	InputFieldPlaceholder OptString `json:"input_field_placeholder"`
+	Selective             OptBool   `json:"selective"`
+}
+
+// Ref: #/components/schemas/forwardMessage
+type ForwardMessage struct {
+	ChatID              ID      `json:"chat_id"`
+	FromChatID          ID      `json:"from_chat_id"`
+	DisableNotification OptBool `json:"disable_notification"`
+	MessageID           int     `json:"message_id"`
 }
 
 // Ref: #/components/schemas/Game
@@ -366,100 +1141,141 @@ type GameHighScore struct {
 	Score    int  `json:"score"`
 }
 
-type GetFilePostOK struct {
-	Ok     bool `json:"ok"`
-	Result File `json:"result"`
+// Ref: #/components/schemas/getChat
+type GetChat struct {
+	ChatID ID `json:"chat_id"`
 }
 
-func (*GetFilePostOK) getFilePostRes() {}
+// Ref: #/components/schemas/getChatAdministrators
+type GetChatAdministrators struct {
+	ChatID ID `json:"chat_id"`
+}
 
-type GetFilePostReqApplicationJSON struct {
+// Ref: #/components/schemas/getChatMember
+type GetChatMember struct {
+	ChatID ID    `json:"chat_id"`
+	UserID int64 `json:"user_id"`
+}
+
+// Ref: #/components/schemas/getChatMemberCount
+type GetChatMemberCount struct {
+	ChatID ID `json:"chat_id"`
+}
+
+// Ref: #/components/schemas/getFile
+type GetFile struct {
 	FileID string `json:"file_id"`
 }
 
-type GetGameHighScoresPostOK struct {
-	Ok     bool            `json:"ok"`
-	Result []GameHighScore `json:"result"`
-}
-
-func (*GetGameHighScoresPostOK) getGameHighScoresPostRes() {}
-
-type GetGameHighScoresPostReqApplicationJSON struct {
-	UserID          int       `json:"user_id"`
-	ChatID          OptInt    `json:"chat_id"`
+// Ref: #/components/schemas/getGameHighScores
+type GetGameHighScores struct {
+	UserID          int64     `json:"user_id"`
+	ChatID          OptInt64  `json:"chat_id"`
 	MessageID       OptInt    `json:"message_id"`
 	InlineMessageID OptString `json:"inline_message_id"`
 }
 
-type GetMePostOK struct {
-	Ok     bool `json:"ok"`
-	Result User `json:"result"`
+// Ref: #/components/schemas/getMyCommands
+type GetMyCommands struct {
+	Scope        *BotCommandScope `json:"scope"`
+	LanguageCode OptString        `json:"language_code"`
 }
 
-func (*GetMePostOK) getMePostRes() {}
-
-type GetMyCommandsPostOK struct {
-	Ok     bool         `json:"ok"`
-	Result []BotCommand `json:"result"`
-}
-
-func (*GetMyCommandsPostOK) getMyCommandsPostRes() {}
-
-type GetStickerSetPostOK struct {
-	Ok     bool       `json:"ok"`
-	Result StickerSet `json:"result"`
-}
-
-func (*GetStickerSetPostOK) getStickerSetPostRes() {}
-
-type GetStickerSetPostReqApplicationJSON struct {
+// Ref: #/components/schemas/getStickerSet
+type GetStickerSet struct {
 	Name string `json:"name"`
 }
 
-type GetUpdatesPostOK struct {
-	Ok     bool     `json:"ok"`
-	Result []Update `json:"result"`
-}
-
-func (*GetUpdatesPostOK) getUpdatesPostRes() {}
-
-type GetUpdatesPostReqApplicationJSON struct {
+// Ref: #/components/schemas/getUpdates
+type GetUpdates struct {
 	Offset         OptInt   `json:"offset"`
 	Limit          OptInt   `json:"limit"`
 	Timeout        OptInt   `json:"timeout"`
 	AllowedUpdates []string `json:"allowed_updates"`
 }
 
-type GetUserProfilePhotosPostOK struct {
-	Ok     bool              `json:"ok"`
-	Result UserProfilePhotos `json:"result"`
-}
-
-func (*GetUserProfilePhotosPostOK) getUserProfilePhotosPostRes() {}
-
-type GetUserProfilePhotosPostReqApplicationJSON struct {
-	UserID int    `json:"user_id"`
+// Ref: #/components/schemas/getUserProfilePhotos
+type GetUserProfilePhotos struct {
+	UserID int64  `json:"user_id"`
 	Offset OptInt `json:"offset"`
 	Limit  OptInt `json:"limit"`
 }
 
-type GetWebhookInfoPostOK struct {
-	Ok     bool        `json:"ok"`
-	Result WebhookInfo `json:"result"`
+// Ref: #/components/schemas/ID
+// ID represents sum type.
+type ID struct {
+	Type   IDType // switch on this field
+	String string
+	Int64  int64
 }
 
-func (*GetWebhookInfoPostOK) getWebhookInfoPostRes() {}
+// IDType is oneOf type of ID.
+type IDType string
+
+// Possible values for IDType.
+const (
+	StringID IDType = "string"
+	Int64ID  IDType = "int64"
+)
+
+// IsString reports whether ID is string.
+func (s ID) IsString() bool { return s.Type == StringID }
+
+// IsInt64 reports whether ID is int64.
+func (s ID) IsInt64() bool { return s.Type == Int64ID }
+
+// SetString sets ID to string.
+func (s *ID) SetString(v string) {
+	s.Type = StringID
+	s.String = v
+}
+
+// GetString returns string and true boolean if ID is string.
+func (s ID) GetString() (v string, ok bool) {
+	if !s.IsString() {
+		return v, false
+	}
+	return s.String, true
+}
+
+// NewStringID returns new ID from string.
+func NewStringID(v string) ID {
+	var s ID
+	s.SetString(v)
+	return s
+}
+
+// SetInt64 sets ID to int64.
+func (s *ID) SetInt64(v int64) {
+	s.Type = Int64ID
+	s.Int64 = v
+}
+
+// GetInt64 returns int64 and true boolean if ID is int64.
+func (s ID) GetInt64() (v int64, ok bool) {
+	if !s.IsInt64() {
+		return v, false
+	}
+	return s.Int64, true
+}
+
+// NewInt64ID returns new ID from int64.
+func NewInt64ID(v int64) ID {
+	var s ID
+	s.SetInt64(v)
+	return s
+}
 
 // Ref: #/components/schemas/InlineKeyboardButton
 type InlineKeyboardButton struct {
-	Text                         string          `json:"text"`
-	URL                          OptString       `json:"url"`
-	LoginURL                     OptLoginUrl     `json:"login_url"`
-	CallbackData                 OptString       `json:"callback_data"`
-	SwitchInlineQuery            OptString       `json:"switch_inline_query"`
-	SwitchInlineQueryCurrentChat OptString       `json:"switch_inline_query_current_chat"`
-	CallbackGame                 OptCallbackGame `json:"callback_game"`
-	Pay                          OptBool         `json:"pay"`
+	Text                         string        `json:"text"`
+	URL                          OptURL        `json:"url"`
+	LoginURL                     OptLoginUrl   `json:"login_url"`
+	CallbackData                 OptString     `json:"callback_data"`
+	SwitchInlineQuery            OptString     `json:"switch_inline_query"`
+	SwitchInlineQueryCurrentChat OptString     `json:"switch_inline_query_current_chat"`
+	CallbackGame                 *CallbackGame `json:"callback_game"`
+	Pay                          OptBool       `json:"pay"`
 }
 
 // Ref: #/components/schemas/InlineKeyboardMarkup
@@ -469,11 +1285,1309 @@ type InlineKeyboardMarkup struct {
 
 // Ref: #/components/schemas/InlineQuery
 type InlineQuery struct {
-	ID       string      `json:"id"`
-	From     User        `json:"from"`
-	Location OptLocation `json:"location"`
-	Query    string      `json:"query"`
-	Offset   string      `json:"offset"`
+	ID       string                 `json:"id"`
+	From     User                   `json:"from"`
+	Query    string                 `json:"query"`
+	Offset   string                 `json:"offset"`
+	ChatType OptInlineQueryChatType `json:"chat_type"`
+	Location OptLocation            `json:"location"`
+}
+
+type InlineQueryChatType string
+
+const (
+	InlineQueryChatTypeSender     InlineQueryChatType = "sender"
+	InlineQueryChatTypePrivate    InlineQueryChatType = "private"
+	InlineQueryChatTypeGroup      InlineQueryChatType = "group"
+	InlineQueryChatTypeSupergroup InlineQueryChatType = "supergroup"
+	InlineQueryChatTypeChannel    InlineQueryChatType = "channel"
+)
+
+// Ref: #/components/schemas/InlineQueryResult
+// InlineQueryResult represents sum type.
+type InlineQueryResult struct {
+	Type                            InlineQueryResultType // switch on this field
+	InlineQueryResultCachedAudio    InlineQueryResultCachedAudio
+	InlineQueryResultCachedDocument InlineQueryResultCachedDocument
+	InlineQueryResultCachedGif      InlineQueryResultCachedGif
+	InlineQueryResultCachedMpeg4Gif InlineQueryResultCachedMpeg4Gif
+	InlineQueryResultCachedPhoto    InlineQueryResultCachedPhoto
+	InlineQueryResultCachedSticker  InlineQueryResultCachedSticker
+	InlineQueryResultCachedVideo    InlineQueryResultCachedVideo
+	InlineQueryResultCachedVoice    InlineQueryResultCachedVoice
+	InlineQueryResultArticle        InlineQueryResultArticle
+	InlineQueryResultAudio          InlineQueryResultAudio
+	InlineQueryResultContact        InlineQueryResultContact
+	InlineQueryResultGame           InlineQueryResultGame
+	InlineQueryResultDocument       InlineQueryResultDocument
+	InlineQueryResultGif            InlineQueryResultGif
+	InlineQueryResultLocation       InlineQueryResultLocation
+	InlineQueryResultMpeg4Gif       InlineQueryResultMpeg4Gif
+	InlineQueryResultPhoto          InlineQueryResultPhoto
+	InlineQueryResultVenue          InlineQueryResultVenue
+	InlineQueryResultVideo          InlineQueryResultVideo
+	InlineQueryResultVoice          InlineQueryResultVoice
+}
+
+// InlineQueryResultType is oneOf type of InlineQueryResult.
+type InlineQueryResultType string
+
+// Possible values for InlineQueryResultType.
+const (
+	InlineQueryResultCachedAudioInlineQueryResult    InlineQueryResultType = "InlineQueryResultCachedAudio"
+	InlineQueryResultCachedDocumentInlineQueryResult InlineQueryResultType = "InlineQueryResultCachedDocument"
+	InlineQueryResultCachedGifInlineQueryResult      InlineQueryResultType = "InlineQueryResultCachedGif"
+	InlineQueryResultCachedMpeg4GifInlineQueryResult InlineQueryResultType = "InlineQueryResultCachedMpeg4Gif"
+	InlineQueryResultCachedPhotoInlineQueryResult    InlineQueryResultType = "InlineQueryResultCachedPhoto"
+	InlineQueryResultCachedStickerInlineQueryResult  InlineQueryResultType = "InlineQueryResultCachedSticker"
+	InlineQueryResultCachedVideoInlineQueryResult    InlineQueryResultType = "InlineQueryResultCachedVideo"
+	InlineQueryResultCachedVoiceInlineQueryResult    InlineQueryResultType = "InlineQueryResultCachedVoice"
+	InlineQueryResultArticleInlineQueryResult        InlineQueryResultType = "InlineQueryResultArticle"
+	InlineQueryResultAudioInlineQueryResult          InlineQueryResultType = "InlineQueryResultAudio"
+	InlineQueryResultContactInlineQueryResult        InlineQueryResultType = "InlineQueryResultContact"
+	InlineQueryResultGameInlineQueryResult           InlineQueryResultType = "InlineQueryResultGame"
+	InlineQueryResultDocumentInlineQueryResult       InlineQueryResultType = "InlineQueryResultDocument"
+	InlineQueryResultGifInlineQueryResult            InlineQueryResultType = "InlineQueryResultGif"
+	InlineQueryResultLocationInlineQueryResult       InlineQueryResultType = "InlineQueryResultLocation"
+	InlineQueryResultMpeg4GifInlineQueryResult       InlineQueryResultType = "InlineQueryResultMpeg4Gif"
+	InlineQueryResultPhotoInlineQueryResult          InlineQueryResultType = "InlineQueryResultPhoto"
+	InlineQueryResultVenueInlineQueryResult          InlineQueryResultType = "InlineQueryResultVenue"
+	InlineQueryResultVideoInlineQueryResult          InlineQueryResultType = "InlineQueryResultVideo"
+	InlineQueryResultVoiceInlineQueryResult          InlineQueryResultType = "InlineQueryResultVoice"
+)
+
+// IsInlineQueryResultCachedAudio reports whether InlineQueryResult is InlineQueryResultCachedAudio.
+func (s InlineQueryResult) IsInlineQueryResultCachedAudio() bool {
+	return s.Type == InlineQueryResultCachedAudioInlineQueryResult
+}
+
+// IsInlineQueryResultCachedDocument reports whether InlineQueryResult is InlineQueryResultCachedDocument.
+func (s InlineQueryResult) IsInlineQueryResultCachedDocument() bool {
+	return s.Type == InlineQueryResultCachedDocumentInlineQueryResult
+}
+
+// IsInlineQueryResultCachedGif reports whether InlineQueryResult is InlineQueryResultCachedGif.
+func (s InlineQueryResult) IsInlineQueryResultCachedGif() bool {
+	return s.Type == InlineQueryResultCachedGifInlineQueryResult
+}
+
+// IsInlineQueryResultCachedMpeg4Gif reports whether InlineQueryResult is InlineQueryResultCachedMpeg4Gif.
+func (s InlineQueryResult) IsInlineQueryResultCachedMpeg4Gif() bool {
+	return s.Type == InlineQueryResultCachedMpeg4GifInlineQueryResult
+}
+
+// IsInlineQueryResultCachedPhoto reports whether InlineQueryResult is InlineQueryResultCachedPhoto.
+func (s InlineQueryResult) IsInlineQueryResultCachedPhoto() bool {
+	return s.Type == InlineQueryResultCachedPhotoInlineQueryResult
+}
+
+// IsInlineQueryResultCachedSticker reports whether InlineQueryResult is InlineQueryResultCachedSticker.
+func (s InlineQueryResult) IsInlineQueryResultCachedSticker() bool {
+	return s.Type == InlineQueryResultCachedStickerInlineQueryResult
+}
+
+// IsInlineQueryResultCachedVideo reports whether InlineQueryResult is InlineQueryResultCachedVideo.
+func (s InlineQueryResult) IsInlineQueryResultCachedVideo() bool {
+	return s.Type == InlineQueryResultCachedVideoInlineQueryResult
+}
+
+// IsInlineQueryResultCachedVoice reports whether InlineQueryResult is InlineQueryResultCachedVoice.
+func (s InlineQueryResult) IsInlineQueryResultCachedVoice() bool {
+	return s.Type == InlineQueryResultCachedVoiceInlineQueryResult
+}
+
+// IsInlineQueryResultArticle reports whether InlineQueryResult is InlineQueryResultArticle.
+func (s InlineQueryResult) IsInlineQueryResultArticle() bool {
+	return s.Type == InlineQueryResultArticleInlineQueryResult
+}
+
+// IsInlineQueryResultAudio reports whether InlineQueryResult is InlineQueryResultAudio.
+func (s InlineQueryResult) IsInlineQueryResultAudio() bool {
+	return s.Type == InlineQueryResultAudioInlineQueryResult
+}
+
+// IsInlineQueryResultContact reports whether InlineQueryResult is InlineQueryResultContact.
+func (s InlineQueryResult) IsInlineQueryResultContact() bool {
+	return s.Type == InlineQueryResultContactInlineQueryResult
+}
+
+// IsInlineQueryResultGame reports whether InlineQueryResult is InlineQueryResultGame.
+func (s InlineQueryResult) IsInlineQueryResultGame() bool {
+	return s.Type == InlineQueryResultGameInlineQueryResult
+}
+
+// IsInlineQueryResultDocument reports whether InlineQueryResult is InlineQueryResultDocument.
+func (s InlineQueryResult) IsInlineQueryResultDocument() bool {
+	return s.Type == InlineQueryResultDocumentInlineQueryResult
+}
+
+// IsInlineQueryResultGif reports whether InlineQueryResult is InlineQueryResultGif.
+func (s InlineQueryResult) IsInlineQueryResultGif() bool {
+	return s.Type == InlineQueryResultGifInlineQueryResult
+}
+
+// IsInlineQueryResultLocation reports whether InlineQueryResult is InlineQueryResultLocation.
+func (s InlineQueryResult) IsInlineQueryResultLocation() bool {
+	return s.Type == InlineQueryResultLocationInlineQueryResult
+}
+
+// IsInlineQueryResultMpeg4Gif reports whether InlineQueryResult is InlineQueryResultMpeg4Gif.
+func (s InlineQueryResult) IsInlineQueryResultMpeg4Gif() bool {
+	return s.Type == InlineQueryResultMpeg4GifInlineQueryResult
+}
+
+// IsInlineQueryResultPhoto reports whether InlineQueryResult is InlineQueryResultPhoto.
+func (s InlineQueryResult) IsInlineQueryResultPhoto() bool {
+	return s.Type == InlineQueryResultPhotoInlineQueryResult
+}
+
+// IsInlineQueryResultVenue reports whether InlineQueryResult is InlineQueryResultVenue.
+func (s InlineQueryResult) IsInlineQueryResultVenue() bool {
+	return s.Type == InlineQueryResultVenueInlineQueryResult
+}
+
+// IsInlineQueryResultVideo reports whether InlineQueryResult is InlineQueryResultVideo.
+func (s InlineQueryResult) IsInlineQueryResultVideo() bool {
+	return s.Type == InlineQueryResultVideoInlineQueryResult
+}
+
+// IsInlineQueryResultVoice reports whether InlineQueryResult is InlineQueryResultVoice.
+func (s InlineQueryResult) IsInlineQueryResultVoice() bool {
+	return s.Type == InlineQueryResultVoiceInlineQueryResult
+}
+
+// SetInlineQueryResultCachedAudio sets InlineQueryResult to InlineQueryResultCachedAudio.
+func (s *InlineQueryResult) SetInlineQueryResultCachedAudio(v InlineQueryResultCachedAudio) {
+	s.Type = InlineQueryResultCachedAudioInlineQueryResult
+	s.InlineQueryResultCachedAudio = v
+}
+
+// GetInlineQueryResultCachedAudio returns InlineQueryResultCachedAudio and true boolean if InlineQueryResult is InlineQueryResultCachedAudio.
+func (s InlineQueryResult) GetInlineQueryResultCachedAudio() (v InlineQueryResultCachedAudio, ok bool) {
+	if !s.IsInlineQueryResultCachedAudio() {
+		return v, false
+	}
+	return s.InlineQueryResultCachedAudio, true
+}
+
+// NewInlineQueryResultCachedAudioInlineQueryResult returns new InlineQueryResult from InlineQueryResultCachedAudio.
+func NewInlineQueryResultCachedAudioInlineQueryResult(v InlineQueryResultCachedAudio) InlineQueryResult {
+	var s InlineQueryResult
+	s.SetInlineQueryResultCachedAudio(v)
+	return s
+}
+
+// SetInlineQueryResultCachedDocument sets InlineQueryResult to InlineQueryResultCachedDocument.
+func (s *InlineQueryResult) SetInlineQueryResultCachedDocument(v InlineQueryResultCachedDocument) {
+	s.Type = InlineQueryResultCachedDocumentInlineQueryResult
+	s.InlineQueryResultCachedDocument = v
+}
+
+// GetInlineQueryResultCachedDocument returns InlineQueryResultCachedDocument and true boolean if InlineQueryResult is InlineQueryResultCachedDocument.
+func (s InlineQueryResult) GetInlineQueryResultCachedDocument() (v InlineQueryResultCachedDocument, ok bool) {
+	if !s.IsInlineQueryResultCachedDocument() {
+		return v, false
+	}
+	return s.InlineQueryResultCachedDocument, true
+}
+
+// NewInlineQueryResultCachedDocumentInlineQueryResult returns new InlineQueryResult from InlineQueryResultCachedDocument.
+func NewInlineQueryResultCachedDocumentInlineQueryResult(v InlineQueryResultCachedDocument) InlineQueryResult {
+	var s InlineQueryResult
+	s.SetInlineQueryResultCachedDocument(v)
+	return s
+}
+
+// SetInlineQueryResultCachedGif sets InlineQueryResult to InlineQueryResultCachedGif.
+func (s *InlineQueryResult) SetInlineQueryResultCachedGif(v InlineQueryResultCachedGif) {
+	s.Type = InlineQueryResultCachedGifInlineQueryResult
+	s.InlineQueryResultCachedGif = v
+}
+
+// GetInlineQueryResultCachedGif returns InlineQueryResultCachedGif and true boolean if InlineQueryResult is InlineQueryResultCachedGif.
+func (s InlineQueryResult) GetInlineQueryResultCachedGif() (v InlineQueryResultCachedGif, ok bool) {
+	if !s.IsInlineQueryResultCachedGif() {
+		return v, false
+	}
+	return s.InlineQueryResultCachedGif, true
+}
+
+// NewInlineQueryResultCachedGifInlineQueryResult returns new InlineQueryResult from InlineQueryResultCachedGif.
+func NewInlineQueryResultCachedGifInlineQueryResult(v InlineQueryResultCachedGif) InlineQueryResult {
+	var s InlineQueryResult
+	s.SetInlineQueryResultCachedGif(v)
+	return s
+}
+
+// SetInlineQueryResultCachedMpeg4Gif sets InlineQueryResult to InlineQueryResultCachedMpeg4Gif.
+func (s *InlineQueryResult) SetInlineQueryResultCachedMpeg4Gif(v InlineQueryResultCachedMpeg4Gif) {
+	s.Type = InlineQueryResultCachedMpeg4GifInlineQueryResult
+	s.InlineQueryResultCachedMpeg4Gif = v
+}
+
+// GetInlineQueryResultCachedMpeg4Gif returns InlineQueryResultCachedMpeg4Gif and true boolean if InlineQueryResult is InlineQueryResultCachedMpeg4Gif.
+func (s InlineQueryResult) GetInlineQueryResultCachedMpeg4Gif() (v InlineQueryResultCachedMpeg4Gif, ok bool) {
+	if !s.IsInlineQueryResultCachedMpeg4Gif() {
+		return v, false
+	}
+	return s.InlineQueryResultCachedMpeg4Gif, true
+}
+
+// NewInlineQueryResultCachedMpeg4GifInlineQueryResult returns new InlineQueryResult from InlineQueryResultCachedMpeg4Gif.
+func NewInlineQueryResultCachedMpeg4GifInlineQueryResult(v InlineQueryResultCachedMpeg4Gif) InlineQueryResult {
+	var s InlineQueryResult
+	s.SetInlineQueryResultCachedMpeg4Gif(v)
+	return s
+}
+
+// SetInlineQueryResultCachedPhoto sets InlineQueryResult to InlineQueryResultCachedPhoto.
+func (s *InlineQueryResult) SetInlineQueryResultCachedPhoto(v InlineQueryResultCachedPhoto) {
+	s.Type = InlineQueryResultCachedPhotoInlineQueryResult
+	s.InlineQueryResultCachedPhoto = v
+}
+
+// GetInlineQueryResultCachedPhoto returns InlineQueryResultCachedPhoto and true boolean if InlineQueryResult is InlineQueryResultCachedPhoto.
+func (s InlineQueryResult) GetInlineQueryResultCachedPhoto() (v InlineQueryResultCachedPhoto, ok bool) {
+	if !s.IsInlineQueryResultCachedPhoto() {
+		return v, false
+	}
+	return s.InlineQueryResultCachedPhoto, true
+}
+
+// NewInlineQueryResultCachedPhotoInlineQueryResult returns new InlineQueryResult from InlineQueryResultCachedPhoto.
+func NewInlineQueryResultCachedPhotoInlineQueryResult(v InlineQueryResultCachedPhoto) InlineQueryResult {
+	var s InlineQueryResult
+	s.SetInlineQueryResultCachedPhoto(v)
+	return s
+}
+
+// SetInlineQueryResultCachedSticker sets InlineQueryResult to InlineQueryResultCachedSticker.
+func (s *InlineQueryResult) SetInlineQueryResultCachedSticker(v InlineQueryResultCachedSticker) {
+	s.Type = InlineQueryResultCachedStickerInlineQueryResult
+	s.InlineQueryResultCachedSticker = v
+}
+
+// GetInlineQueryResultCachedSticker returns InlineQueryResultCachedSticker and true boolean if InlineQueryResult is InlineQueryResultCachedSticker.
+func (s InlineQueryResult) GetInlineQueryResultCachedSticker() (v InlineQueryResultCachedSticker, ok bool) {
+	if !s.IsInlineQueryResultCachedSticker() {
+		return v, false
+	}
+	return s.InlineQueryResultCachedSticker, true
+}
+
+// NewInlineQueryResultCachedStickerInlineQueryResult returns new InlineQueryResult from InlineQueryResultCachedSticker.
+func NewInlineQueryResultCachedStickerInlineQueryResult(v InlineQueryResultCachedSticker) InlineQueryResult {
+	var s InlineQueryResult
+	s.SetInlineQueryResultCachedSticker(v)
+	return s
+}
+
+// SetInlineQueryResultCachedVideo sets InlineQueryResult to InlineQueryResultCachedVideo.
+func (s *InlineQueryResult) SetInlineQueryResultCachedVideo(v InlineQueryResultCachedVideo) {
+	s.Type = InlineQueryResultCachedVideoInlineQueryResult
+	s.InlineQueryResultCachedVideo = v
+}
+
+// GetInlineQueryResultCachedVideo returns InlineQueryResultCachedVideo and true boolean if InlineQueryResult is InlineQueryResultCachedVideo.
+func (s InlineQueryResult) GetInlineQueryResultCachedVideo() (v InlineQueryResultCachedVideo, ok bool) {
+	if !s.IsInlineQueryResultCachedVideo() {
+		return v, false
+	}
+	return s.InlineQueryResultCachedVideo, true
+}
+
+// NewInlineQueryResultCachedVideoInlineQueryResult returns new InlineQueryResult from InlineQueryResultCachedVideo.
+func NewInlineQueryResultCachedVideoInlineQueryResult(v InlineQueryResultCachedVideo) InlineQueryResult {
+	var s InlineQueryResult
+	s.SetInlineQueryResultCachedVideo(v)
+	return s
+}
+
+// SetInlineQueryResultCachedVoice sets InlineQueryResult to InlineQueryResultCachedVoice.
+func (s *InlineQueryResult) SetInlineQueryResultCachedVoice(v InlineQueryResultCachedVoice) {
+	s.Type = InlineQueryResultCachedVoiceInlineQueryResult
+	s.InlineQueryResultCachedVoice = v
+}
+
+// GetInlineQueryResultCachedVoice returns InlineQueryResultCachedVoice and true boolean if InlineQueryResult is InlineQueryResultCachedVoice.
+func (s InlineQueryResult) GetInlineQueryResultCachedVoice() (v InlineQueryResultCachedVoice, ok bool) {
+	if !s.IsInlineQueryResultCachedVoice() {
+		return v, false
+	}
+	return s.InlineQueryResultCachedVoice, true
+}
+
+// NewInlineQueryResultCachedVoiceInlineQueryResult returns new InlineQueryResult from InlineQueryResultCachedVoice.
+func NewInlineQueryResultCachedVoiceInlineQueryResult(v InlineQueryResultCachedVoice) InlineQueryResult {
+	var s InlineQueryResult
+	s.SetInlineQueryResultCachedVoice(v)
+	return s
+}
+
+// SetInlineQueryResultArticle sets InlineQueryResult to InlineQueryResultArticle.
+func (s *InlineQueryResult) SetInlineQueryResultArticle(v InlineQueryResultArticle) {
+	s.Type = InlineQueryResultArticleInlineQueryResult
+	s.InlineQueryResultArticle = v
+}
+
+// GetInlineQueryResultArticle returns InlineQueryResultArticle and true boolean if InlineQueryResult is InlineQueryResultArticle.
+func (s InlineQueryResult) GetInlineQueryResultArticle() (v InlineQueryResultArticle, ok bool) {
+	if !s.IsInlineQueryResultArticle() {
+		return v, false
+	}
+	return s.InlineQueryResultArticle, true
+}
+
+// NewInlineQueryResultArticleInlineQueryResult returns new InlineQueryResult from InlineQueryResultArticle.
+func NewInlineQueryResultArticleInlineQueryResult(v InlineQueryResultArticle) InlineQueryResult {
+	var s InlineQueryResult
+	s.SetInlineQueryResultArticle(v)
+	return s
+}
+
+// SetInlineQueryResultAudio sets InlineQueryResult to InlineQueryResultAudio.
+func (s *InlineQueryResult) SetInlineQueryResultAudio(v InlineQueryResultAudio) {
+	s.Type = InlineQueryResultAudioInlineQueryResult
+	s.InlineQueryResultAudio = v
+}
+
+// GetInlineQueryResultAudio returns InlineQueryResultAudio and true boolean if InlineQueryResult is InlineQueryResultAudio.
+func (s InlineQueryResult) GetInlineQueryResultAudio() (v InlineQueryResultAudio, ok bool) {
+	if !s.IsInlineQueryResultAudio() {
+		return v, false
+	}
+	return s.InlineQueryResultAudio, true
+}
+
+// NewInlineQueryResultAudioInlineQueryResult returns new InlineQueryResult from InlineQueryResultAudio.
+func NewInlineQueryResultAudioInlineQueryResult(v InlineQueryResultAudio) InlineQueryResult {
+	var s InlineQueryResult
+	s.SetInlineQueryResultAudio(v)
+	return s
+}
+
+// SetInlineQueryResultContact sets InlineQueryResult to InlineQueryResultContact.
+func (s *InlineQueryResult) SetInlineQueryResultContact(v InlineQueryResultContact) {
+	s.Type = InlineQueryResultContactInlineQueryResult
+	s.InlineQueryResultContact = v
+}
+
+// GetInlineQueryResultContact returns InlineQueryResultContact and true boolean if InlineQueryResult is InlineQueryResultContact.
+func (s InlineQueryResult) GetInlineQueryResultContact() (v InlineQueryResultContact, ok bool) {
+	if !s.IsInlineQueryResultContact() {
+		return v, false
+	}
+	return s.InlineQueryResultContact, true
+}
+
+// NewInlineQueryResultContactInlineQueryResult returns new InlineQueryResult from InlineQueryResultContact.
+func NewInlineQueryResultContactInlineQueryResult(v InlineQueryResultContact) InlineQueryResult {
+	var s InlineQueryResult
+	s.SetInlineQueryResultContact(v)
+	return s
+}
+
+// SetInlineQueryResultGame sets InlineQueryResult to InlineQueryResultGame.
+func (s *InlineQueryResult) SetInlineQueryResultGame(v InlineQueryResultGame) {
+	s.Type = InlineQueryResultGameInlineQueryResult
+	s.InlineQueryResultGame = v
+}
+
+// GetInlineQueryResultGame returns InlineQueryResultGame and true boolean if InlineQueryResult is InlineQueryResultGame.
+func (s InlineQueryResult) GetInlineQueryResultGame() (v InlineQueryResultGame, ok bool) {
+	if !s.IsInlineQueryResultGame() {
+		return v, false
+	}
+	return s.InlineQueryResultGame, true
+}
+
+// NewInlineQueryResultGameInlineQueryResult returns new InlineQueryResult from InlineQueryResultGame.
+func NewInlineQueryResultGameInlineQueryResult(v InlineQueryResultGame) InlineQueryResult {
+	var s InlineQueryResult
+	s.SetInlineQueryResultGame(v)
+	return s
+}
+
+// SetInlineQueryResultDocument sets InlineQueryResult to InlineQueryResultDocument.
+func (s *InlineQueryResult) SetInlineQueryResultDocument(v InlineQueryResultDocument) {
+	s.Type = InlineQueryResultDocumentInlineQueryResult
+	s.InlineQueryResultDocument = v
+}
+
+// GetInlineQueryResultDocument returns InlineQueryResultDocument and true boolean if InlineQueryResult is InlineQueryResultDocument.
+func (s InlineQueryResult) GetInlineQueryResultDocument() (v InlineQueryResultDocument, ok bool) {
+	if !s.IsInlineQueryResultDocument() {
+		return v, false
+	}
+	return s.InlineQueryResultDocument, true
+}
+
+// NewInlineQueryResultDocumentInlineQueryResult returns new InlineQueryResult from InlineQueryResultDocument.
+func NewInlineQueryResultDocumentInlineQueryResult(v InlineQueryResultDocument) InlineQueryResult {
+	var s InlineQueryResult
+	s.SetInlineQueryResultDocument(v)
+	return s
+}
+
+// SetInlineQueryResultGif sets InlineQueryResult to InlineQueryResultGif.
+func (s *InlineQueryResult) SetInlineQueryResultGif(v InlineQueryResultGif) {
+	s.Type = InlineQueryResultGifInlineQueryResult
+	s.InlineQueryResultGif = v
+}
+
+// GetInlineQueryResultGif returns InlineQueryResultGif and true boolean if InlineQueryResult is InlineQueryResultGif.
+func (s InlineQueryResult) GetInlineQueryResultGif() (v InlineQueryResultGif, ok bool) {
+	if !s.IsInlineQueryResultGif() {
+		return v, false
+	}
+	return s.InlineQueryResultGif, true
+}
+
+// NewInlineQueryResultGifInlineQueryResult returns new InlineQueryResult from InlineQueryResultGif.
+func NewInlineQueryResultGifInlineQueryResult(v InlineQueryResultGif) InlineQueryResult {
+	var s InlineQueryResult
+	s.SetInlineQueryResultGif(v)
+	return s
+}
+
+// SetInlineQueryResultLocation sets InlineQueryResult to InlineQueryResultLocation.
+func (s *InlineQueryResult) SetInlineQueryResultLocation(v InlineQueryResultLocation) {
+	s.Type = InlineQueryResultLocationInlineQueryResult
+	s.InlineQueryResultLocation = v
+}
+
+// GetInlineQueryResultLocation returns InlineQueryResultLocation and true boolean if InlineQueryResult is InlineQueryResultLocation.
+func (s InlineQueryResult) GetInlineQueryResultLocation() (v InlineQueryResultLocation, ok bool) {
+	if !s.IsInlineQueryResultLocation() {
+		return v, false
+	}
+	return s.InlineQueryResultLocation, true
+}
+
+// NewInlineQueryResultLocationInlineQueryResult returns new InlineQueryResult from InlineQueryResultLocation.
+func NewInlineQueryResultLocationInlineQueryResult(v InlineQueryResultLocation) InlineQueryResult {
+	var s InlineQueryResult
+	s.SetInlineQueryResultLocation(v)
+	return s
+}
+
+// SetInlineQueryResultMpeg4Gif sets InlineQueryResult to InlineQueryResultMpeg4Gif.
+func (s *InlineQueryResult) SetInlineQueryResultMpeg4Gif(v InlineQueryResultMpeg4Gif) {
+	s.Type = InlineQueryResultMpeg4GifInlineQueryResult
+	s.InlineQueryResultMpeg4Gif = v
+}
+
+// GetInlineQueryResultMpeg4Gif returns InlineQueryResultMpeg4Gif and true boolean if InlineQueryResult is InlineQueryResultMpeg4Gif.
+func (s InlineQueryResult) GetInlineQueryResultMpeg4Gif() (v InlineQueryResultMpeg4Gif, ok bool) {
+	if !s.IsInlineQueryResultMpeg4Gif() {
+		return v, false
+	}
+	return s.InlineQueryResultMpeg4Gif, true
+}
+
+// NewInlineQueryResultMpeg4GifInlineQueryResult returns new InlineQueryResult from InlineQueryResultMpeg4Gif.
+func NewInlineQueryResultMpeg4GifInlineQueryResult(v InlineQueryResultMpeg4Gif) InlineQueryResult {
+	var s InlineQueryResult
+	s.SetInlineQueryResultMpeg4Gif(v)
+	return s
+}
+
+// SetInlineQueryResultPhoto sets InlineQueryResult to InlineQueryResultPhoto.
+func (s *InlineQueryResult) SetInlineQueryResultPhoto(v InlineQueryResultPhoto) {
+	s.Type = InlineQueryResultPhotoInlineQueryResult
+	s.InlineQueryResultPhoto = v
+}
+
+// GetInlineQueryResultPhoto returns InlineQueryResultPhoto and true boolean if InlineQueryResult is InlineQueryResultPhoto.
+func (s InlineQueryResult) GetInlineQueryResultPhoto() (v InlineQueryResultPhoto, ok bool) {
+	if !s.IsInlineQueryResultPhoto() {
+		return v, false
+	}
+	return s.InlineQueryResultPhoto, true
+}
+
+// NewInlineQueryResultPhotoInlineQueryResult returns new InlineQueryResult from InlineQueryResultPhoto.
+func NewInlineQueryResultPhotoInlineQueryResult(v InlineQueryResultPhoto) InlineQueryResult {
+	var s InlineQueryResult
+	s.SetInlineQueryResultPhoto(v)
+	return s
+}
+
+// SetInlineQueryResultVenue sets InlineQueryResult to InlineQueryResultVenue.
+func (s *InlineQueryResult) SetInlineQueryResultVenue(v InlineQueryResultVenue) {
+	s.Type = InlineQueryResultVenueInlineQueryResult
+	s.InlineQueryResultVenue = v
+}
+
+// GetInlineQueryResultVenue returns InlineQueryResultVenue and true boolean if InlineQueryResult is InlineQueryResultVenue.
+func (s InlineQueryResult) GetInlineQueryResultVenue() (v InlineQueryResultVenue, ok bool) {
+	if !s.IsInlineQueryResultVenue() {
+		return v, false
+	}
+	return s.InlineQueryResultVenue, true
+}
+
+// NewInlineQueryResultVenueInlineQueryResult returns new InlineQueryResult from InlineQueryResultVenue.
+func NewInlineQueryResultVenueInlineQueryResult(v InlineQueryResultVenue) InlineQueryResult {
+	var s InlineQueryResult
+	s.SetInlineQueryResultVenue(v)
+	return s
+}
+
+// SetInlineQueryResultVideo sets InlineQueryResult to InlineQueryResultVideo.
+func (s *InlineQueryResult) SetInlineQueryResultVideo(v InlineQueryResultVideo) {
+	s.Type = InlineQueryResultVideoInlineQueryResult
+	s.InlineQueryResultVideo = v
+}
+
+// GetInlineQueryResultVideo returns InlineQueryResultVideo and true boolean if InlineQueryResult is InlineQueryResultVideo.
+func (s InlineQueryResult) GetInlineQueryResultVideo() (v InlineQueryResultVideo, ok bool) {
+	if !s.IsInlineQueryResultVideo() {
+		return v, false
+	}
+	return s.InlineQueryResultVideo, true
+}
+
+// NewInlineQueryResultVideoInlineQueryResult returns new InlineQueryResult from InlineQueryResultVideo.
+func NewInlineQueryResultVideoInlineQueryResult(v InlineQueryResultVideo) InlineQueryResult {
+	var s InlineQueryResult
+	s.SetInlineQueryResultVideo(v)
+	return s
+}
+
+// SetInlineQueryResultVoice sets InlineQueryResult to InlineQueryResultVoice.
+func (s *InlineQueryResult) SetInlineQueryResultVoice(v InlineQueryResultVoice) {
+	s.Type = InlineQueryResultVoiceInlineQueryResult
+	s.InlineQueryResultVoice = v
+}
+
+// GetInlineQueryResultVoice returns InlineQueryResultVoice and true boolean if InlineQueryResult is InlineQueryResultVoice.
+func (s InlineQueryResult) GetInlineQueryResultVoice() (v InlineQueryResultVoice, ok bool) {
+	if !s.IsInlineQueryResultVoice() {
+		return v, false
+	}
+	return s.InlineQueryResultVoice, true
+}
+
+// NewInlineQueryResultVoiceInlineQueryResult returns new InlineQueryResult from InlineQueryResultVoice.
+func NewInlineQueryResultVoiceInlineQueryResult(v InlineQueryResultVoice) InlineQueryResult {
+	var s InlineQueryResult
+	s.SetInlineQueryResultVoice(v)
+	return s
+}
+
+// Ref: #/components/schemas/InlineQueryResultArticle
+type InlineQueryResultArticle struct {
+	Type                string                  `json:"type"`
+	ID                  string                  `json:"id"`
+	Title               string                  `json:"title"`
+	InputMessageContent InputMessageContent     `json:"input_message_content"`
+	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
+	URL                 OptURL                  `json:"url"`
+	HideURL             OptBool                 `json:"hide_url"`
+	Description         OptString               `json:"description"`
+	ThumbURL            OptURL                  `json:"thumb_url"`
+	ThumbWidth          OptInt                  `json:"thumb_width"`
+	ThumbHeight         OptInt                  `json:"thumb_height"`
+}
+
+// Ref: #/components/schemas/InlineQueryResultAudio
+type InlineQueryResultAudio struct {
+	Type                string                  `json:"type"`
+	ID                  string                  `json:"id"`
+	AudioURL            url.URL                 `json:"audio_url"`
+	Title               string                  `json:"title"`
+	Caption             OptString               `json:"caption"`
+	ParseMode           OptString               `json:"parse_mode"`
+	CaptionEntities     []MessageEntity         `json:"caption_entities"`
+	Performer           OptString               `json:"performer"`
+	AudioDuration       OptInt                  `json:"audio_duration"`
+	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
+	InputMessageContent *InputMessageContent    `json:"input_message_content"`
+}
+
+// Ref: #/components/schemas/InlineQueryResultCachedAudio
+type InlineQueryResultCachedAudio struct {
+	Type                string                  `json:"type"`
+	ID                  string                  `json:"id"`
+	AudioFileID         string                  `json:"audio_file_id"`
+	Caption             OptString               `json:"caption"`
+	ParseMode           OptString               `json:"parse_mode"`
+	CaptionEntities     []MessageEntity         `json:"caption_entities"`
+	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
+	InputMessageContent *InputMessageContent    `json:"input_message_content"`
+}
+
+// Ref: #/components/schemas/InlineQueryResultCachedDocument
+type InlineQueryResultCachedDocument struct {
+	Type                string                  `json:"type"`
+	ID                  string                  `json:"id"`
+	Title               string                  `json:"title"`
+	DocumentFileID      string                  `json:"document_file_id"`
+	Description         OptString               `json:"description"`
+	Caption             OptString               `json:"caption"`
+	ParseMode           OptString               `json:"parse_mode"`
+	CaptionEntities     []MessageEntity         `json:"caption_entities"`
+	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
+	InputMessageContent *InputMessageContent    `json:"input_message_content"`
+}
+
+// Ref: #/components/schemas/InlineQueryResultCachedGif
+type InlineQueryResultCachedGif struct {
+	Type                string                  `json:"type"`
+	ID                  string                  `json:"id"`
+	GIFFileID           string                  `json:"gif_file_id"`
+	Title               OptString               `json:"title"`
+	Caption             OptString               `json:"caption"`
+	ParseMode           OptString               `json:"parse_mode"`
+	CaptionEntities     []MessageEntity         `json:"caption_entities"`
+	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
+	InputMessageContent *InputMessageContent    `json:"input_message_content"`
+}
+
+// Ref: #/components/schemas/InlineQueryResultCachedMpeg4Gif
+type InlineQueryResultCachedMpeg4Gif struct {
+	Type                string                  `json:"type"`
+	ID                  string                  `json:"id"`
+	Mpeg4FileID         string                  `json:"mpeg4_file_id"`
+	Title               OptString               `json:"title"`
+	Caption             OptString               `json:"caption"`
+	ParseMode           OptString               `json:"parse_mode"`
+	CaptionEntities     []MessageEntity         `json:"caption_entities"`
+	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
+	InputMessageContent *InputMessageContent    `json:"input_message_content"`
+}
+
+// Ref: #/components/schemas/InlineQueryResultCachedPhoto
+type InlineQueryResultCachedPhoto struct {
+	Type                string                  `json:"type"`
+	ID                  string                  `json:"id"`
+	PhotoFileID         string                  `json:"photo_file_id"`
+	Title               OptString               `json:"title"`
+	Description         OptString               `json:"description"`
+	Caption             OptString               `json:"caption"`
+	ParseMode           OptString               `json:"parse_mode"`
+	CaptionEntities     []MessageEntity         `json:"caption_entities"`
+	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
+	InputMessageContent *InputMessageContent    `json:"input_message_content"`
+}
+
+// Ref: #/components/schemas/InlineQueryResultCachedSticker
+type InlineQueryResultCachedSticker struct {
+	Type                string                  `json:"type"`
+	ID                  string                  `json:"id"`
+	StickerFileID       string                  `json:"sticker_file_id"`
+	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
+	InputMessageContent *InputMessageContent    `json:"input_message_content"`
+}
+
+// Ref: #/components/schemas/InlineQueryResultCachedVideo
+type InlineQueryResultCachedVideo struct {
+	Type                string                  `json:"type"`
+	ID                  string                  `json:"id"`
+	VideoFileID         string                  `json:"video_file_id"`
+	Title               string                  `json:"title"`
+	Description         OptString               `json:"description"`
+	Caption             OptString               `json:"caption"`
+	ParseMode           OptString               `json:"parse_mode"`
+	CaptionEntities     []MessageEntity         `json:"caption_entities"`
+	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
+	InputMessageContent *InputMessageContent    `json:"input_message_content"`
+}
+
+// Ref: #/components/schemas/InlineQueryResultCachedVoice
+type InlineQueryResultCachedVoice struct {
+	Type                string                  `json:"type"`
+	ID                  string                  `json:"id"`
+	VoiceFileID         string                  `json:"voice_file_id"`
+	Title               string                  `json:"title"`
+	Caption             OptString               `json:"caption"`
+	ParseMode           OptString               `json:"parse_mode"`
+	CaptionEntities     []MessageEntity         `json:"caption_entities"`
+	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
+	InputMessageContent *InputMessageContent    `json:"input_message_content"`
+}
+
+// Ref: #/components/schemas/InlineQueryResultContact
+type InlineQueryResultContact struct {
+	Type                string                  `json:"type"`
+	ID                  string                  `json:"id"`
+	PhoneNumber         string                  `json:"phone_number"`
+	FirstName           string                  `json:"first_name"`
+	LastName            OptString               `json:"last_name"`
+	Vcard               OptString               `json:"vcard"`
+	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
+	InputMessageContent *InputMessageContent    `json:"input_message_content"`
+	ThumbURL            OptURL                  `json:"thumb_url"`
+	ThumbWidth          OptInt                  `json:"thumb_width"`
+	ThumbHeight         OptInt                  `json:"thumb_height"`
+}
+
+// Ref: #/components/schemas/InlineQueryResultDocument
+type InlineQueryResultDocument struct {
+	Type                string                  `json:"type"`
+	ID                  string                  `json:"id"`
+	Title               string                  `json:"title"`
+	Caption             OptString               `json:"caption"`
+	ParseMode           OptString               `json:"parse_mode"`
+	CaptionEntities     []MessageEntity         `json:"caption_entities"`
+	DocumentURL         url.URL                 `json:"document_url"`
+	MimeType            string                  `json:"mime_type"`
+	Description         OptString               `json:"description"`
+	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
+	InputMessageContent *InputMessageContent    `json:"input_message_content"`
+	ThumbURL            OptURL                  `json:"thumb_url"`
+	ThumbWidth          OptInt                  `json:"thumb_width"`
+	ThumbHeight         OptInt                  `json:"thumb_height"`
+}
+
+// Ref: #/components/schemas/InlineQueryResultGame
+type InlineQueryResultGame struct {
+	Type          string                  `json:"type"`
+	ID            string                  `json:"id"`
+	GameShortName string                  `json:"game_short_name"`
+	ReplyMarkup   OptInlineKeyboardMarkup `json:"reply_markup"`
+}
+
+// Ref: #/components/schemas/InlineQueryResultGif
+type InlineQueryResultGif struct {
+	Type                string                  `json:"type"`
+	ID                  string                  `json:"id"`
+	GIFURL              url.URL                 `json:"gif_url"`
+	GIFWidth            OptInt                  `json:"gif_width"`
+	GIFHeight           OptInt                  `json:"gif_height"`
+	GIFDuration         OptInt                  `json:"gif_duration"`
+	ThumbURL            url.URL                 `json:"thumb_url"`
+	ThumbMimeType       OptString               `json:"thumb_mime_type"`
+	Title               OptString               `json:"title"`
+	Caption             OptString               `json:"caption"`
+	ParseMode           OptString               `json:"parse_mode"`
+	CaptionEntities     []MessageEntity         `json:"caption_entities"`
+	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
+	InputMessageContent *InputMessageContent    `json:"input_message_content"`
+}
+
+// Ref: #/components/schemas/InlineQueryResultLocation
+type InlineQueryResultLocation struct {
+	Type                 string                  `json:"type"`
+	ID                   string                  `json:"id"`
+	Latitude             float64                 `json:"latitude"`
+	Longitude            float64                 `json:"longitude"`
+	Title                string                  `json:"title"`
+	HorizontalAccuracy   OptFloat64              `json:"horizontal_accuracy"`
+	LivePeriod           OptInt                  `json:"live_period"`
+	Heading              OptInt                  `json:"heading"`
+	ProximityAlertRadius OptInt                  `json:"proximity_alert_radius"`
+	ReplyMarkup          OptInlineKeyboardMarkup `json:"reply_markup"`
+	InputMessageContent  *InputMessageContent    `json:"input_message_content"`
+	ThumbURL             OptURL                  `json:"thumb_url"`
+	ThumbWidth           OptInt                  `json:"thumb_width"`
+	ThumbHeight          OptInt                  `json:"thumb_height"`
+}
+
+// Ref: #/components/schemas/InlineQueryResultMpeg4Gif
+type InlineQueryResultMpeg4Gif struct {
+	Type                string                  `json:"type"`
+	ID                  string                  `json:"id"`
+	Mpeg4URL            url.URL                 `json:"mpeg4_url"`
+	Mpeg4Width          OptInt                  `json:"mpeg4_width"`
+	Mpeg4Height         OptInt                  `json:"mpeg4_height"`
+	Mpeg4Duration       OptInt                  `json:"mpeg4_duration"`
+	ThumbURL            url.URL                 `json:"thumb_url"`
+	ThumbMimeType       OptString               `json:"thumb_mime_type"`
+	Title               OptString               `json:"title"`
+	Caption             OptString               `json:"caption"`
+	ParseMode           OptString               `json:"parse_mode"`
+	CaptionEntities     []MessageEntity         `json:"caption_entities"`
+	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
+	InputMessageContent *InputMessageContent    `json:"input_message_content"`
+}
+
+// Ref: #/components/schemas/InlineQueryResultPhoto
+type InlineQueryResultPhoto struct {
+	Type                string                  `json:"type"`
+	ID                  string                  `json:"id"`
+	PhotoURL            url.URL                 `json:"photo_url"`
+	ThumbURL            url.URL                 `json:"thumb_url"`
+	PhotoWidth          OptInt                  `json:"photo_width"`
+	PhotoHeight         OptInt                  `json:"photo_height"`
+	Title               OptString               `json:"title"`
+	Description         OptString               `json:"description"`
+	Caption             OptString               `json:"caption"`
+	ParseMode           OptString               `json:"parse_mode"`
+	CaptionEntities     []MessageEntity         `json:"caption_entities"`
+	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
+	InputMessageContent *InputMessageContent    `json:"input_message_content"`
+}
+
+// Ref: #/components/schemas/InlineQueryResultVenue
+type InlineQueryResultVenue struct {
+	Type                string                  `json:"type"`
+	ID                  string                  `json:"id"`
+	Latitude            float64                 `json:"latitude"`
+	Longitude           float64                 `json:"longitude"`
+	Title               string                  `json:"title"`
+	Address             string                  `json:"address"`
+	FoursquareID        OptString               `json:"foursquare_id"`
+	FoursquareType      OptString               `json:"foursquare_type"`
+	GooglePlaceID       OptString               `json:"google_place_id"`
+	GooglePlaceType     OptString               `json:"google_place_type"`
+	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
+	InputMessageContent *InputMessageContent    `json:"input_message_content"`
+	ThumbURL            OptURL                  `json:"thumb_url"`
+	ThumbWidth          OptInt                  `json:"thumb_width"`
+	ThumbHeight         OptInt                  `json:"thumb_height"`
+}
+
+// Ref: #/components/schemas/InlineQueryResultVideo
+type InlineQueryResultVideo struct {
+	Type                string                  `json:"type"`
+	ID                  string                  `json:"id"`
+	VideoURL            url.URL                 `json:"video_url"`
+	MimeType            string                  `json:"mime_type"`
+	ThumbURL            url.URL                 `json:"thumb_url"`
+	Title               string                  `json:"title"`
+	Caption             OptString               `json:"caption"`
+	ParseMode           OptString               `json:"parse_mode"`
+	CaptionEntities     []MessageEntity         `json:"caption_entities"`
+	VideoWidth          OptInt                  `json:"video_width"`
+	VideoHeight         OptInt                  `json:"video_height"`
+	VideoDuration       OptInt                  `json:"video_duration"`
+	Description         OptString               `json:"description"`
+	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
+	InputMessageContent *InputMessageContent    `json:"input_message_content"`
+}
+
+// Ref: #/components/schemas/InlineQueryResultVoice
+type InlineQueryResultVoice struct {
+	Type                string                  `json:"type"`
+	ID                  string                  `json:"id"`
+	VoiceURL            url.URL                 `json:"voice_url"`
+	Title               string                  `json:"title"`
+	Caption             OptString               `json:"caption"`
+	ParseMode           OptString               `json:"parse_mode"`
+	CaptionEntities     []MessageEntity         `json:"caption_entities"`
+	VoiceDuration       OptInt                  `json:"voice_duration"`
+	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
+	InputMessageContent *InputMessageContent    `json:"input_message_content"`
+}
+
+// Ref: #/components/schemas/InputContactMessageContent
+type InputContactMessageContent struct {
+	PhoneNumber string    `json:"phone_number"`
+	FirstName   string    `json:"first_name"`
+	LastName    OptString `json:"last_name"`
+	Vcard       OptString `json:"vcard"`
+}
+
+// Ref: #/components/schemas/InputInvoiceMessageContent
+type InputInvoiceMessageContent struct {
+	Title                     string         `json:"title"`
+	Description               string         `json:"description"`
+	Payload                   string         `json:"payload"`
+	ProviderToken             string         `json:"provider_token"`
+	Currency                  string         `json:"currency"`
+	Prices                    []LabeledPrice `json:"prices"`
+	MaxTipAmount              OptInt         `json:"max_tip_amount"`
+	SuggestedTipAmounts       []int          `json:"suggested_tip_amounts"`
+	ProviderData              OptString      `json:"provider_data"`
+	PhotoURL                  OptURL         `json:"photo_url"`
+	PhotoSize                 OptInt         `json:"photo_size"`
+	PhotoWidth                OptInt         `json:"photo_width"`
+	PhotoHeight               OptInt         `json:"photo_height"`
+	NeedName                  OptBool        `json:"need_name"`
+	NeedPhoneNumber           OptBool        `json:"need_phone_number"`
+	NeedEmail                 OptBool        `json:"need_email"`
+	NeedShippingAddress       OptBool        `json:"need_shipping_address"`
+	SendPhoneNumberToProvider OptBool        `json:"send_phone_number_to_provider"`
+	SendEmailToProvider       OptBool        `json:"send_email_to_provider"`
+	IsFlexible                OptBool        `json:"is_flexible"`
+}
+
+// Ref: #/components/schemas/InputLocationMessageContent
+type InputLocationMessageContent struct {
+	Latitude             float64    `json:"latitude"`
+	Longitude            float64    `json:"longitude"`
+	HorizontalAccuracy   OptFloat64 `json:"horizontal_accuracy"`
+	LivePeriod           OptInt     `json:"live_period"`
+	Heading              OptInt     `json:"heading"`
+	ProximityAlertRadius OptInt     `json:"proximity_alert_radius"`
+}
+
+// Ref: #/components/schemas/InputMedia
+// InputMedia represents sum type.
+type InputMedia struct {
+	Type                InputMediaType // switch on this field
+	InputMediaAnimation InputMediaAnimation
+	InputMediaDocument  InputMediaDocument
+	InputMediaAudio     InputMediaAudio
+	InputMediaPhoto     InputMediaPhoto
+	InputMediaVideo     InputMediaVideo
+}
+
+// InputMediaType is oneOf type of InputMedia.
+type InputMediaType string
+
+// Possible values for InputMediaType.
+const (
+	InputMediaAnimationInputMedia InputMediaType = "InputMediaAnimation"
+	InputMediaDocumentInputMedia  InputMediaType = "InputMediaDocument"
+	InputMediaAudioInputMedia     InputMediaType = "InputMediaAudio"
+	InputMediaPhotoInputMedia     InputMediaType = "InputMediaPhoto"
+	InputMediaVideoInputMedia     InputMediaType = "InputMediaVideo"
+)
+
+// IsInputMediaAnimation reports whether InputMedia is InputMediaAnimation.
+func (s InputMedia) IsInputMediaAnimation() bool { return s.Type == InputMediaAnimationInputMedia }
+
+// IsInputMediaDocument reports whether InputMedia is InputMediaDocument.
+func (s InputMedia) IsInputMediaDocument() bool { return s.Type == InputMediaDocumentInputMedia }
+
+// IsInputMediaAudio reports whether InputMedia is InputMediaAudio.
+func (s InputMedia) IsInputMediaAudio() bool { return s.Type == InputMediaAudioInputMedia }
+
+// IsInputMediaPhoto reports whether InputMedia is InputMediaPhoto.
+func (s InputMedia) IsInputMediaPhoto() bool { return s.Type == InputMediaPhotoInputMedia }
+
+// IsInputMediaVideo reports whether InputMedia is InputMediaVideo.
+func (s InputMedia) IsInputMediaVideo() bool { return s.Type == InputMediaVideoInputMedia }
+
+// SetInputMediaAnimation sets InputMedia to InputMediaAnimation.
+func (s *InputMedia) SetInputMediaAnimation(v InputMediaAnimation) {
+	s.Type = InputMediaAnimationInputMedia
+	s.InputMediaAnimation = v
+}
+
+// GetInputMediaAnimation returns InputMediaAnimation and true boolean if InputMedia is InputMediaAnimation.
+func (s InputMedia) GetInputMediaAnimation() (v InputMediaAnimation, ok bool) {
+	if !s.IsInputMediaAnimation() {
+		return v, false
+	}
+	return s.InputMediaAnimation, true
+}
+
+// NewInputMediaAnimationInputMedia returns new InputMedia from InputMediaAnimation.
+func NewInputMediaAnimationInputMedia(v InputMediaAnimation) InputMedia {
+	var s InputMedia
+	s.SetInputMediaAnimation(v)
+	return s
+}
+
+// SetInputMediaDocument sets InputMedia to InputMediaDocument.
+func (s *InputMedia) SetInputMediaDocument(v InputMediaDocument) {
+	s.Type = InputMediaDocumentInputMedia
+	s.InputMediaDocument = v
+}
+
+// GetInputMediaDocument returns InputMediaDocument and true boolean if InputMedia is InputMediaDocument.
+func (s InputMedia) GetInputMediaDocument() (v InputMediaDocument, ok bool) {
+	if !s.IsInputMediaDocument() {
+		return v, false
+	}
+	return s.InputMediaDocument, true
+}
+
+// NewInputMediaDocumentInputMedia returns new InputMedia from InputMediaDocument.
+func NewInputMediaDocumentInputMedia(v InputMediaDocument) InputMedia {
+	var s InputMedia
+	s.SetInputMediaDocument(v)
+	return s
+}
+
+// SetInputMediaAudio sets InputMedia to InputMediaAudio.
+func (s *InputMedia) SetInputMediaAudio(v InputMediaAudio) {
+	s.Type = InputMediaAudioInputMedia
+	s.InputMediaAudio = v
+}
+
+// GetInputMediaAudio returns InputMediaAudio and true boolean if InputMedia is InputMediaAudio.
+func (s InputMedia) GetInputMediaAudio() (v InputMediaAudio, ok bool) {
+	if !s.IsInputMediaAudio() {
+		return v, false
+	}
+	return s.InputMediaAudio, true
+}
+
+// NewInputMediaAudioInputMedia returns new InputMedia from InputMediaAudio.
+func NewInputMediaAudioInputMedia(v InputMediaAudio) InputMedia {
+	var s InputMedia
+	s.SetInputMediaAudio(v)
+	return s
+}
+
+// SetInputMediaPhoto sets InputMedia to InputMediaPhoto.
+func (s *InputMedia) SetInputMediaPhoto(v InputMediaPhoto) {
+	s.Type = InputMediaPhotoInputMedia
+	s.InputMediaPhoto = v
+}
+
+// GetInputMediaPhoto returns InputMediaPhoto and true boolean if InputMedia is InputMediaPhoto.
+func (s InputMedia) GetInputMediaPhoto() (v InputMediaPhoto, ok bool) {
+	if !s.IsInputMediaPhoto() {
+		return v, false
+	}
+	return s.InputMediaPhoto, true
+}
+
+// NewInputMediaPhotoInputMedia returns new InputMedia from InputMediaPhoto.
+func NewInputMediaPhotoInputMedia(v InputMediaPhoto) InputMedia {
+	var s InputMedia
+	s.SetInputMediaPhoto(v)
+	return s
+}
+
+// SetInputMediaVideo sets InputMedia to InputMediaVideo.
+func (s *InputMedia) SetInputMediaVideo(v InputMediaVideo) {
+	s.Type = InputMediaVideoInputMedia
+	s.InputMediaVideo = v
+}
+
+// GetInputMediaVideo returns InputMediaVideo and true boolean if InputMedia is InputMediaVideo.
+func (s InputMedia) GetInputMediaVideo() (v InputMediaVideo, ok bool) {
+	if !s.IsInputMediaVideo() {
+		return v, false
+	}
+	return s.InputMediaVideo, true
+}
+
+// NewInputMediaVideoInputMedia returns new InputMedia from InputMediaVideo.
+func NewInputMediaVideoInputMedia(v InputMediaVideo) InputMedia {
+	var s InputMedia
+	s.SetInputMediaVideo(v)
+	return s
+}
+
+// Ref: #/components/schemas/InputMediaAnimation
+type InputMediaAnimation struct {
+	Type            string          `json:"type"`
+	Media           string          `json:"media"`
+	Thumb           OptString       `json:"thumb"`
+	Caption         OptString       `json:"caption"`
+	ParseMode       OptString       `json:"parse_mode"`
+	CaptionEntities []MessageEntity `json:"caption_entities"`
+	Width           OptInt          `json:"width"`
+	Height          OptInt          `json:"height"`
+	Duration        OptInt          `json:"duration"`
+}
+
+// Ref: #/components/schemas/InputMediaAudio
+type InputMediaAudio struct {
+	Type            string          `json:"type"`
+	Media           string          `json:"media"`
+	Thumb           OptString       `json:"thumb"`
+	Caption         OptString       `json:"caption"`
+	ParseMode       OptString       `json:"parse_mode"`
+	CaptionEntities []MessageEntity `json:"caption_entities"`
+	Duration        OptInt          `json:"duration"`
+	Performer       OptString       `json:"performer"`
+	Title           OptString       `json:"title"`
+}
+
+// Ref: #/components/schemas/InputMediaDocument
+type InputMediaDocument struct {
+	Type                        string          `json:"type"`
+	Media                       string          `json:"media"`
+	Thumb                       OptString       `json:"thumb"`
+	Caption                     OptString       `json:"caption"`
+	ParseMode                   OptString       `json:"parse_mode"`
+	CaptionEntities             []MessageEntity `json:"caption_entities"`
+	DisableContentTypeDetection OptBool         `json:"disable_content_type_detection"`
+}
+
+// Ref: #/components/schemas/InputMediaPhoto
+type InputMediaPhoto struct {
+	Type            string          `json:"type"`
+	Media           string          `json:"media"`
+	Caption         OptString       `json:"caption"`
+	ParseMode       OptString       `json:"parse_mode"`
+	CaptionEntities []MessageEntity `json:"caption_entities"`
+}
+
+// Ref: #/components/schemas/InputMediaVideo
+type InputMediaVideo struct {
+	Type              string          `json:"type"`
+	Media             string          `json:"media"`
+	Thumb             OptString       `json:"thumb"`
+	Caption           OptString       `json:"caption"`
+	ParseMode         OptString       `json:"parse_mode"`
+	CaptionEntities   []MessageEntity `json:"caption_entities"`
+	Width             OptInt          `json:"width"`
+	Height            OptInt          `json:"height"`
+	Duration          OptInt          `json:"duration"`
+	SupportsStreaming OptBool         `json:"supports_streaming"`
+}
+
+// Ref: #/components/schemas/InputMessageContent
+// InputMessageContent represents sum type.
+type InputMessageContent struct {
+	Type                        InputMessageContentType // switch on this field
+	InputTextMessageContent     InputTextMessageContent
+	InputLocationMessageContent InputLocationMessageContent
+	InputVenueMessageContent    InputVenueMessageContent
+	InputContactMessageContent  InputContactMessageContent
+	InputInvoiceMessageContent  InputInvoiceMessageContent
+}
+
+// InputMessageContentType is oneOf type of InputMessageContent.
+type InputMessageContentType string
+
+// Possible values for InputMessageContentType.
+const (
+	InputTextMessageContentInputMessageContent     InputMessageContentType = "InputTextMessageContent"
+	InputLocationMessageContentInputMessageContent InputMessageContentType = "InputLocationMessageContent"
+	InputVenueMessageContentInputMessageContent    InputMessageContentType = "InputVenueMessageContent"
+	InputContactMessageContentInputMessageContent  InputMessageContentType = "InputContactMessageContent"
+	InputInvoiceMessageContentInputMessageContent  InputMessageContentType = "InputInvoiceMessageContent"
+)
+
+// IsInputTextMessageContent reports whether InputMessageContent is InputTextMessageContent.
+func (s InputMessageContent) IsInputTextMessageContent() bool {
+	return s.Type == InputTextMessageContentInputMessageContent
+}
+
+// IsInputLocationMessageContent reports whether InputMessageContent is InputLocationMessageContent.
+func (s InputMessageContent) IsInputLocationMessageContent() bool {
+	return s.Type == InputLocationMessageContentInputMessageContent
+}
+
+// IsInputVenueMessageContent reports whether InputMessageContent is InputVenueMessageContent.
+func (s InputMessageContent) IsInputVenueMessageContent() bool {
+	return s.Type == InputVenueMessageContentInputMessageContent
+}
+
+// IsInputContactMessageContent reports whether InputMessageContent is InputContactMessageContent.
+func (s InputMessageContent) IsInputContactMessageContent() bool {
+	return s.Type == InputContactMessageContentInputMessageContent
+}
+
+// IsInputInvoiceMessageContent reports whether InputMessageContent is InputInvoiceMessageContent.
+func (s InputMessageContent) IsInputInvoiceMessageContent() bool {
+	return s.Type == InputInvoiceMessageContentInputMessageContent
+}
+
+// SetInputTextMessageContent sets InputMessageContent to InputTextMessageContent.
+func (s *InputMessageContent) SetInputTextMessageContent(v InputTextMessageContent) {
+	s.Type = InputTextMessageContentInputMessageContent
+	s.InputTextMessageContent = v
+}
+
+// GetInputTextMessageContent returns InputTextMessageContent and true boolean if InputMessageContent is InputTextMessageContent.
+func (s InputMessageContent) GetInputTextMessageContent() (v InputTextMessageContent, ok bool) {
+	if !s.IsInputTextMessageContent() {
+		return v, false
+	}
+	return s.InputTextMessageContent, true
+}
+
+// NewInputTextMessageContentInputMessageContent returns new InputMessageContent from InputTextMessageContent.
+func NewInputTextMessageContentInputMessageContent(v InputTextMessageContent) InputMessageContent {
+	var s InputMessageContent
+	s.SetInputTextMessageContent(v)
+	return s
+}
+
+// SetInputLocationMessageContent sets InputMessageContent to InputLocationMessageContent.
+func (s *InputMessageContent) SetInputLocationMessageContent(v InputLocationMessageContent) {
+	s.Type = InputLocationMessageContentInputMessageContent
+	s.InputLocationMessageContent = v
+}
+
+// GetInputLocationMessageContent returns InputLocationMessageContent and true boolean if InputMessageContent is InputLocationMessageContent.
+func (s InputMessageContent) GetInputLocationMessageContent() (v InputLocationMessageContent, ok bool) {
+	if !s.IsInputLocationMessageContent() {
+		return v, false
+	}
+	return s.InputLocationMessageContent, true
+}
+
+// NewInputLocationMessageContentInputMessageContent returns new InputMessageContent from InputLocationMessageContent.
+func NewInputLocationMessageContentInputMessageContent(v InputLocationMessageContent) InputMessageContent {
+	var s InputMessageContent
+	s.SetInputLocationMessageContent(v)
+	return s
+}
+
+// SetInputVenueMessageContent sets InputMessageContent to InputVenueMessageContent.
+func (s *InputMessageContent) SetInputVenueMessageContent(v InputVenueMessageContent) {
+	s.Type = InputVenueMessageContentInputMessageContent
+	s.InputVenueMessageContent = v
+}
+
+// GetInputVenueMessageContent returns InputVenueMessageContent and true boolean if InputMessageContent is InputVenueMessageContent.
+func (s InputMessageContent) GetInputVenueMessageContent() (v InputVenueMessageContent, ok bool) {
+	if !s.IsInputVenueMessageContent() {
+		return v, false
+	}
+	return s.InputVenueMessageContent, true
+}
+
+// NewInputVenueMessageContentInputMessageContent returns new InputMessageContent from InputVenueMessageContent.
+func NewInputVenueMessageContentInputMessageContent(v InputVenueMessageContent) InputMessageContent {
+	var s InputMessageContent
+	s.SetInputVenueMessageContent(v)
+	return s
+}
+
+// SetInputContactMessageContent sets InputMessageContent to InputContactMessageContent.
+func (s *InputMessageContent) SetInputContactMessageContent(v InputContactMessageContent) {
+	s.Type = InputContactMessageContentInputMessageContent
+	s.InputContactMessageContent = v
+}
+
+// GetInputContactMessageContent returns InputContactMessageContent and true boolean if InputMessageContent is InputContactMessageContent.
+func (s InputMessageContent) GetInputContactMessageContent() (v InputContactMessageContent, ok bool) {
+	if !s.IsInputContactMessageContent() {
+		return v, false
+	}
+	return s.InputContactMessageContent, true
+}
+
+// NewInputContactMessageContentInputMessageContent returns new InputMessageContent from InputContactMessageContent.
+func NewInputContactMessageContentInputMessageContent(v InputContactMessageContent) InputMessageContent {
+	var s InputMessageContent
+	s.SetInputContactMessageContent(v)
+	return s
+}
+
+// SetInputInvoiceMessageContent sets InputMessageContent to InputInvoiceMessageContent.
+func (s *InputMessageContent) SetInputInvoiceMessageContent(v InputInvoiceMessageContent) {
+	s.Type = InputInvoiceMessageContentInputMessageContent
+	s.InputInvoiceMessageContent = v
+}
+
+// GetInputInvoiceMessageContent returns InputInvoiceMessageContent and true boolean if InputMessageContent is InputInvoiceMessageContent.
+func (s InputMessageContent) GetInputInvoiceMessageContent() (v InputInvoiceMessageContent, ok bool) {
+	if !s.IsInputInvoiceMessageContent() {
+		return v, false
+	}
+	return s.InputInvoiceMessageContent, true
+}
+
+// NewInputInvoiceMessageContentInputMessageContent returns new InputMessageContent from InputInvoiceMessageContent.
+func NewInputInvoiceMessageContentInputMessageContent(v InputInvoiceMessageContent) InputMessageContent {
+	var s InputMessageContent
+	s.SetInputInvoiceMessageContent(v)
+	return s
+}
+
+// Ref: #/components/schemas/InputTextMessageContent
+type InputTextMessageContent struct {
+	MessageText           string          `json:"message_text"`
+	ParseMode             OptString       `json:"parse_mode"`
+	Entities              []MessageEntity `json:"entities"`
+	DisableWebPagePreview OptBool         `json:"disable_web_page_preview"`
+}
+
+// Ref: #/components/schemas/InputVenueMessageContent
+type InputVenueMessageContent struct {
+	Latitude        float64   `json:"latitude"`
+	Longitude       float64   `json:"longitude"`
+	Title           string    `json:"title"`
+	Address         string    `json:"address"`
+	FoursquareID    OptString `json:"foursquare_id"`
+	FoursquareType  OptString `json:"foursquare_type"`
+	GooglePlaceID   OptString `json:"google_place_id"`
+	GooglePlaceType OptString `json:"google_place_type"`
 }
 
 // Ref: #/components/schemas/Invoice
@@ -485,10 +2599,95 @@ type Invoice struct {
 	TotalAmount    int    `json:"total_amount"`
 }
 
+// Ref: #/components/schemas/KeyboardButton
+// KeyboardButton represents sum type.
+type KeyboardButton struct {
+	Type                 KeyboardButtonType // switch on this field
+	String               string
+	KeyboardButtonObject KeyboardButtonObject
+}
+
+// KeyboardButtonType is oneOf type of KeyboardButton.
+type KeyboardButtonType string
+
+// Possible values for KeyboardButtonType.
+const (
+	StringKeyboardButton               KeyboardButtonType = "string"
+	KeyboardButtonObjectKeyboardButton KeyboardButtonType = "KeyboardButtonObject"
+)
+
+// IsString reports whether KeyboardButton is string.
+func (s KeyboardButton) IsString() bool { return s.Type == StringKeyboardButton }
+
+// IsKeyboardButtonObject reports whether KeyboardButton is KeyboardButtonObject.
+func (s KeyboardButton) IsKeyboardButtonObject() bool {
+	return s.Type == KeyboardButtonObjectKeyboardButton
+}
+
+// SetString sets KeyboardButton to string.
+func (s *KeyboardButton) SetString(v string) {
+	s.Type = StringKeyboardButton
+	s.String = v
+}
+
+// GetString returns string and true boolean if KeyboardButton is string.
+func (s KeyboardButton) GetString() (v string, ok bool) {
+	if !s.IsString() {
+		return v, false
+	}
+	return s.String, true
+}
+
+// NewStringKeyboardButton returns new KeyboardButton from string.
+func NewStringKeyboardButton(v string) KeyboardButton {
+	var s KeyboardButton
+	s.SetString(v)
+	return s
+}
+
+// SetKeyboardButtonObject sets KeyboardButton to KeyboardButtonObject.
+func (s *KeyboardButton) SetKeyboardButtonObject(v KeyboardButtonObject) {
+	s.Type = KeyboardButtonObjectKeyboardButton
+	s.KeyboardButtonObject = v
+}
+
+// GetKeyboardButtonObject returns KeyboardButtonObject and true boolean if KeyboardButton is KeyboardButtonObject.
+func (s KeyboardButton) GetKeyboardButtonObject() (v KeyboardButtonObject, ok bool) {
+	if !s.IsKeyboardButtonObject() {
+		return v, false
+	}
+	return s.KeyboardButtonObject, true
+}
+
+// NewKeyboardButtonObjectKeyboardButton returns new KeyboardButton from KeyboardButtonObject.
+func NewKeyboardButtonObjectKeyboardButton(v KeyboardButtonObject) KeyboardButton {
+	var s KeyboardButton
+	s.SetKeyboardButtonObject(v)
+	return s
+}
+
+// Ref: #/components/schemas/KeyboardButtonObject
+type KeyboardButtonObject struct {
+	Text            string                    `json:"text"`
+	RequestContact  OptBool                   `json:"request_contact"`
+	RequestLocation OptBool                   `json:"request_location"`
+	RequestPoll     OptKeyboardButtonPollType `json:"request_poll"`
+}
+
+// Ref: #/components/schemas/KeyboardButtonPollType
+type KeyboardButtonPollType struct {
+	Type OptString `json:"type"`
+}
+
 // Ref: #/components/schemas/LabeledPrice
 type LabeledPrice struct {
 	Label  string `json:"label"`
 	Amount int    `json:"amount"`
+}
+
+// Ref: #/components/schemas/leaveChat
+type LeaveChat struct {
+	ChatID ID `json:"chat_id"`
 }
 
 // Ref: #/components/schemas/Location
@@ -501,16 +2700,9 @@ type Location struct {
 	ProximityAlertRadius OptInt     `json:"proximity_alert_radius"`
 }
 
-type LogOutPostOK struct {
-	Ok     bool `json:"ok"`
-	Result bool `json:"result"`
-}
-
-func (*LogOutPostOK) logOutPostRes() {}
-
 // Ref: #/components/schemas/LoginUrl
 type LoginUrl struct {
-	URL                string    `json:"url"`
+	URL                url.URL   `json:"url"`
 	ForwardText        OptString `json:"forward_text"`
 	BotUsername        OptString `json:"bot_username"`
 	RequestWriteAccess OptBool   `json:"request_write_access"`
@@ -518,74 +2710,77 @@ type LoginUrl struct {
 
 // Ref: #/components/schemas/MaskPosition
 type MaskPosition struct {
-	Point  MaskPositionPoint `json:"point"`
-	XShift float64           `json:"x_shift"`
-	YShift float64           `json:"y_shift"`
-	Scale  float64           `json:"scale"`
+	Point  string  `json:"point"`
+	XShift float64 `json:"x_shift"`
+	YShift float64 `json:"y_shift"`
+	Scale  float64 `json:"scale"`
 }
-
-type MaskPositionPoint string
-
-const (
-	MaskPositionPointForehead MaskPositionPoint = "forehead"
-	MaskPositionPointEyes     MaskPositionPoint = "eyes"
-	MaskPositionPointMouth    MaskPositionPoint = "mouth"
-	MaskPositionPointChin     MaskPositionPoint = "chin"
-)
 
 // Ref: #/components/schemas/Message
 type Message struct {
-	MessageID               int                        `json:"message_id"`
-	From                    OptUser                    `json:"from"`
-	SenderChat              OptChat                    `json:"sender_chat"`
-	Date                    int                        `json:"date"`
-	Chat                    Chat                       `json:"chat"`
-	ForwardFrom             OptUser                    `json:"forward_from"`
-	ForwardFromChat         OptChat                    `json:"forward_from_chat"`
-	ForwardFromMessageID    OptInt                     `json:"forward_from_message_id"`
-	ForwardSignature        OptString                  `json:"forward_signature"`
-	ForwardSenderName       OptString                  `json:"forward_sender_name"`
-	ForwardDate             OptInt                     `json:"forward_date"`
-	ReplyToMessage          *Message                   `json:"reply_to_message"`
-	ViaBot                  OptUser                    `json:"via_bot"`
-	EditDate                OptInt                     `json:"edit_date"`
-	MediaGroupID            OptString                  `json:"media_group_id"`
-	AuthorSignature         OptString                  `json:"author_signature"`
-	Text                    OptString                  `json:"text"`
-	Entities                []MessageEntity            `json:"entities"`
-	Animation               OptAnimation               `json:"animation"`
-	Audio                   OptAudio                   `json:"audio"`
-	Document                OptDocument                `json:"document"`
-	Photo                   []PhotoSize                `json:"photo"`
-	Sticker                 OptSticker                 `json:"sticker"`
-	Video                   OptVideo                   `json:"video"`
-	VideoNote               OptVideoNote               `json:"video_note"`
-	Voice                   OptVoice                   `json:"voice"`
-	Caption                 OptString                  `json:"caption"`
-	CaptionEntities         []MessageEntity            `json:"caption_entities"`
-	Contact                 OptContact                 `json:"contact"`
-	Dice                    OptDice                    `json:"dice"`
-	Game                    OptGame                    `json:"game"`
-	Poll                    OptPoll                    `json:"poll"`
-	Venue                   OptVenue                   `json:"venue"`
-	Location                OptLocation                `json:"location"`
-	NewChatMembers          []User                     `json:"new_chat_members"`
-	LeftChatMember          OptUser                    `json:"left_chat_member"`
-	NewChatTitle            OptString                  `json:"new_chat_title"`
-	NewChatPhoto            []PhotoSize                `json:"new_chat_photo"`
-	DeleteChatPhoto         OptBool                    `json:"delete_chat_photo"`
-	GroupChatCreated        OptBool                    `json:"group_chat_created"`
-	SupergroupChatCreated   OptBool                    `json:"supergroup_chat_created"`
-	ChannelChatCreated      OptBool                    `json:"channel_chat_created"`
-	MigrateToChatID         OptInt                     `json:"migrate_to_chat_id"`
-	MigrateFromChatID       OptInt                     `json:"migrate_from_chat_id"`
-	PinnedMessage           *Message                   `json:"pinned_message"`
-	Invoice                 OptInvoice                 `json:"invoice"`
-	SuccessfulPayment       OptSuccessfulPayment       `json:"successful_payment"`
-	ConnectedWebsite        OptString                  `json:"connected_website"`
-	PassportData            OptPassportData            `json:"passport_data"`
-	ProximityAlertTriggered OptProximityAlertTriggered `json:"proximity_alert_triggered"`
-	ReplyMarkup             OptInlineKeyboardMarkup    `json:"reply_markup"`
+	MessageID                     int                              `json:"message_id"`
+	From                          OptUser                          `json:"from"`
+	SenderChat                    OptChat                          `json:"sender_chat"`
+	Date                          int                              `json:"date"`
+	Chat                          Chat                             `json:"chat"`
+	ForwardFrom                   OptUser                          `json:"forward_from"`
+	ForwardFromChat               OptChat                          `json:"forward_from_chat"`
+	ForwardFromMessageID          OptInt                           `json:"forward_from_message_id"`
+	ForwardSignature              OptString                        `json:"forward_signature"`
+	ForwardSenderName             OptString                        `json:"forward_sender_name"`
+	ForwardDate                   OptInt                           `json:"forward_date"`
+	IsAutomaticForward            OptBool                          `json:"is_automatic_forward"`
+	ReplyToMessage                *Message                         `json:"reply_to_message"`
+	ViaBot                        OptUser                          `json:"via_bot"`
+	EditDate                      OptInt                           `json:"edit_date"`
+	HasProtectedContent           OptBool                          `json:"has_protected_content"`
+	MediaGroupID                  OptString                        `json:"media_group_id"`
+	AuthorSignature               OptString                        `json:"author_signature"`
+	Text                          OptString                        `json:"text"`
+	Entities                      []MessageEntity                  `json:"entities"`
+	Animation                     OptAnimation                     `json:"animation"`
+	Audio                         OptAudio                         `json:"audio"`
+	Document                      OptDocument                      `json:"document"`
+	Photo                         []PhotoSize                      `json:"photo"`
+	Sticker                       OptSticker                       `json:"sticker"`
+	Video                         OptVideo                         `json:"video"`
+	VideoNote                     OptVideoNote                     `json:"video_note"`
+	Voice                         OptVoice                         `json:"voice"`
+	Caption                       OptString                        `json:"caption"`
+	CaptionEntities               []MessageEntity                  `json:"caption_entities"`
+	Contact                       OptContact                       `json:"contact"`
+	Dice                          OptDice                          `json:"dice"`
+	Game                          OptGame                          `json:"game"`
+	Poll                          OptPoll                          `json:"poll"`
+	Venue                         OptVenue                         `json:"venue"`
+	Location                      OptLocation                      `json:"location"`
+	NewChatMembers                []User                           `json:"new_chat_members"`
+	LeftChatMember                OptUser                          `json:"left_chat_member"`
+	NewChatTitle                  OptString                        `json:"new_chat_title"`
+	NewChatPhoto                  []PhotoSize                      `json:"new_chat_photo"`
+	DeleteChatPhoto               OptBool                          `json:"delete_chat_photo"`
+	GroupChatCreated              OptBool                          `json:"group_chat_created"`
+	SupergroupChatCreated         OptBool                          `json:"supergroup_chat_created"`
+	ChannelChatCreated            OptBool                          `json:"channel_chat_created"`
+	MessageAutoDeleteTimerChanged OptMessageAutoDeleteTimerChanged `json:"message_auto_delete_timer_changed"`
+	MigrateToChatID               OptInt64                         `json:"migrate_to_chat_id"`
+	MigrateFromChatID             OptInt64                         `json:"migrate_from_chat_id"`
+	PinnedMessage                 *Message                         `json:"pinned_message"`
+	Invoice                       OptInvoice                       `json:"invoice"`
+	SuccessfulPayment             OptSuccessfulPayment             `json:"successful_payment"`
+	ConnectedWebsite              OptString                        `json:"connected_website"`
+	PassportData                  OptPassportData                  `json:"passport_data"`
+	ProximityAlertTriggered       OptProximityAlertTriggered       `json:"proximity_alert_triggered"`
+	VoiceChatScheduled            OptVoiceChatScheduled            `json:"voice_chat_scheduled"`
+	VoiceChatStarted              *VoiceChatStarted                `json:"voice_chat_started"`
+	VoiceChatEnded                OptVoiceChatEnded                `json:"voice_chat_ended"`
+	VoiceChatParticipantsInvited  OptVoiceChatParticipantsInvited  `json:"voice_chat_participants_invited"`
+	ReplyMarkup                   OptInlineKeyboardMarkup          `json:"reply_markup"`
+}
+
+// Ref: #/components/schemas/MessageAutoDeleteTimerChanged
+type MessageAutoDeleteTimerChanged struct {
+	MessageAutoDeleteTime int `json:"message_auto_delete_time"`
 }
 
 // Ref: #/components/schemas/MessageEntity
@@ -593,7 +2788,7 @@ type MessageEntity struct {
 	Type     MessageEntityType `json:"type"`
 	Offset   int               `json:"offset"`
 	Length   int               `json:"length"`
-	URL      OptString         `json:"url"`
+	URL      OptURL            `json:"url"`
 	User     OptUser           `json:"user"`
 	Language OptString         `json:"language"`
 }
@@ -617,6 +2812,11 @@ const (
 	MessageEntityTypeTextLink      MessageEntityType = "text_link"
 	MessageEntityTypeTextMention   MessageEntityType = "text_mention"
 )
+
+// Ref: #/components/schemas/MessageId
+type MessageId struct {
+	MessageID int `json:"message_id"`
+}
 
 // NewOptAnimation returns new OptAnimation with value set to v.
 func NewOptAnimation(v Animation) OptAnimation {
@@ -732,44 +2932,6 @@ func (o OptBool) Get() (v bool, ok bool) {
 	return o.Value, true
 }
 
-// NewOptCallbackGame returns new OptCallbackGame with value set to v.
-func NewOptCallbackGame(v CallbackGame) OptCallbackGame {
-	return OptCallbackGame{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptCallbackGame is optional CallbackGame.
-type OptCallbackGame struct {
-	Value CallbackGame
-	Set   bool
-}
-
-// IsSet returns true if OptCallbackGame was set.
-func (o OptCallbackGame) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptCallbackGame) Reset() {
-	var v CallbackGame
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptCallbackGame) SetTo(v CallbackGame) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptCallbackGame) Get() (v CallbackGame, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
 // NewOptCallbackQuery returns new OptCallbackQuery with value set to v.
 func NewOptCallbackQuery(v CallbackQuery) OptCallbackQuery {
 	return OptCallbackQuery{
@@ -846,6 +3008,82 @@ func (o OptChat) Get() (v Chat, ok bool) {
 	return o.Value, true
 }
 
+// NewOptChatInviteLink returns new OptChatInviteLink with value set to v.
+func NewOptChatInviteLink(v ChatInviteLink) OptChatInviteLink {
+	return OptChatInviteLink{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptChatInviteLink is optional ChatInviteLink.
+type OptChatInviteLink struct {
+	Value ChatInviteLink
+	Set   bool
+}
+
+// IsSet returns true if OptChatInviteLink was set.
+func (o OptChatInviteLink) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptChatInviteLink) Reset() {
+	var v ChatInviteLink
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptChatInviteLink) SetTo(v ChatInviteLink) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptChatInviteLink) Get() (v ChatInviteLink, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptChatJoinRequest returns new OptChatJoinRequest with value set to v.
+func NewOptChatJoinRequest(v ChatJoinRequest) OptChatJoinRequest {
+	return OptChatJoinRequest{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptChatJoinRequest is optional ChatJoinRequest.
+type OptChatJoinRequest struct {
+	Value ChatJoinRequest
+	Set   bool
+}
+
+// IsSet returns true if OptChatJoinRequest was set.
+func (o OptChatJoinRequest) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptChatJoinRequest) Reset() {
+	var v ChatJoinRequest
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptChatJoinRequest) SetTo(v ChatJoinRequest) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptChatJoinRequest) Get() (v ChatJoinRequest, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
 // NewOptChatLocation returns new OptChatLocation with value set to v.
 func NewOptChatLocation(v ChatLocation) OptChatLocation {
 	return OptChatLocation{
@@ -878,6 +3116,44 @@ func (o *OptChatLocation) SetTo(v ChatLocation) {
 
 // Get returns value and boolean that denotes whether value was set.
 func (o OptChatLocation) Get() (v ChatLocation, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptChatMemberUpdated returns new OptChatMemberUpdated with value set to v.
+func NewOptChatMemberUpdated(v ChatMemberUpdated) OptChatMemberUpdated {
+	return OptChatMemberUpdated{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptChatMemberUpdated is optional ChatMemberUpdated.
+type OptChatMemberUpdated struct {
+	Value ChatMemberUpdated
+	Set   bool
+}
+
+// IsSet returns true if OptChatMemberUpdated was set.
+func (o OptChatMemberUpdated) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptChatMemberUpdated) Reset() {
+	var v ChatMemberUpdated
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptChatMemberUpdated) SetTo(v ChatMemberUpdated) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptChatMemberUpdated) Get() (v ChatMemberUpdated, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -1036,6 +3312,82 @@ func (o OptContact) Get() (v Contact, ok bool) {
 	return o.Value, true
 }
 
+// NewOptDeleteMyCommands returns new OptDeleteMyCommands with value set to v.
+func NewOptDeleteMyCommands(v DeleteMyCommands) OptDeleteMyCommands {
+	return OptDeleteMyCommands{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptDeleteMyCommands is optional DeleteMyCommands.
+type OptDeleteMyCommands struct {
+	Value DeleteMyCommands
+	Set   bool
+}
+
+// IsSet returns true if OptDeleteMyCommands was set.
+func (o OptDeleteMyCommands) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptDeleteMyCommands) Reset() {
+	var v DeleteMyCommands
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptDeleteMyCommands) SetTo(v DeleteMyCommands) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptDeleteMyCommands) Get() (v DeleteMyCommands, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptDeleteWebhook returns new OptDeleteWebhook with value set to v.
+func NewOptDeleteWebhook(v DeleteWebhook) OptDeleteWebhook {
+	return OptDeleteWebhook{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptDeleteWebhook is optional DeleteWebhook.
+type OptDeleteWebhook struct {
+	Value DeleteWebhook
+	Set   bool
+}
+
+// IsSet returns true if OptDeleteWebhook was set.
+func (o OptDeleteWebhook) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptDeleteWebhook) Reset() {
+	var v DeleteWebhook
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptDeleteWebhook) SetTo(v DeleteWebhook) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptDeleteWebhook) Get() (v DeleteWebhook, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
 // NewOptDice returns new OptDice with value set to v.
 func NewOptDice(v Dice) OptDice {
 	return OptDice{
@@ -1106,6 +3458,44 @@ func (o *OptDocument) SetTo(v Document) {
 
 // Get returns value and boolean that denotes whether value was set.
 func (o OptDocument) Get() (v Document, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptFile returns new OptFile with value set to v.
+func NewOptFile(v File) OptFile {
+	return OptFile{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptFile is optional File.
+type OptFile struct {
+	Value File
+	Set   bool
+}
+
+// IsSet returns true if OptFile was set.
+func (o OptFile) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptFile) Reset() {
+	var v File
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptFile) SetTo(v File) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptFile) Get() (v File, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -1188,6 +3578,82 @@ func (o OptGame) Get() (v Game, ok bool) {
 	return o.Value, true
 }
 
+// NewOptGetMyCommands returns new OptGetMyCommands with value set to v.
+func NewOptGetMyCommands(v GetMyCommands) OptGetMyCommands {
+	return OptGetMyCommands{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptGetMyCommands is optional GetMyCommands.
+type OptGetMyCommands struct {
+	Value GetMyCommands
+	Set   bool
+}
+
+// IsSet returns true if OptGetMyCommands was set.
+func (o OptGetMyCommands) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptGetMyCommands) Reset() {
+	var v GetMyCommands
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptGetMyCommands) SetTo(v GetMyCommands) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptGetMyCommands) Get() (v GetMyCommands, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptGetUpdates returns new OptGetUpdates with value set to v.
+func NewOptGetUpdates(v GetUpdates) OptGetUpdates {
+	return OptGetUpdates{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptGetUpdates is optional GetUpdates.
+type OptGetUpdates struct {
+	Value GetUpdates
+	Set   bool
+}
+
+// IsSet returns true if OptGetUpdates was set.
+func (o OptGetUpdates) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptGetUpdates) Reset() {
+	var v GetUpdates
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptGetUpdates) SetTo(v GetUpdates) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptGetUpdates) Get() (v GetUpdates, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
 // NewOptInlineKeyboardMarkup returns new OptInlineKeyboardMarkup with value set to v.
 func NewOptInlineKeyboardMarkup(v InlineKeyboardMarkup) OptInlineKeyboardMarkup {
 	return OptInlineKeyboardMarkup{
@@ -1264,6 +3730,44 @@ func (o OptInlineQuery) Get() (v InlineQuery, ok bool) {
 	return o.Value, true
 }
 
+// NewOptInlineQueryChatType returns new OptInlineQueryChatType with value set to v.
+func NewOptInlineQueryChatType(v InlineQueryChatType) OptInlineQueryChatType {
+	return OptInlineQueryChatType{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptInlineQueryChatType is optional InlineQueryChatType.
+type OptInlineQueryChatType struct {
+	Value InlineQueryChatType
+	Set   bool
+}
+
+// IsSet returns true if OptInlineQueryChatType was set.
+func (o OptInlineQueryChatType) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptInlineQueryChatType) Reset() {
+	var v InlineQueryChatType
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptInlineQueryChatType) SetTo(v InlineQueryChatType) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptInlineQueryChatType) Get() (v InlineQueryChatType, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
 // NewOptInt returns new OptInt with value set to v.
 func NewOptInt(v int) OptInt {
 	return OptInt{
@@ -1302,6 +3806,44 @@ func (o OptInt) Get() (v int, ok bool) {
 	return o.Value, true
 }
 
+// NewOptInt64 returns new OptInt64 with value set to v.
+func NewOptInt64(v int64) OptInt64 {
+	return OptInt64{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptInt64 is optional int64.
+type OptInt64 struct {
+	Value int64
+	Set   bool
+}
+
+// IsSet returns true if OptInt64 was set.
+func (o OptInt64) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptInt64) Reset() {
+	var v int64
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptInt64) SetTo(v int64) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptInt64) Get() (v int64, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
 // NewOptInvoice returns new OptInvoice with value set to v.
 func NewOptInvoice(v Invoice) OptInvoice {
 	return OptInvoice{
@@ -1334,6 +3876,44 @@ func (o *OptInvoice) SetTo(v Invoice) {
 
 // Get returns value and boolean that denotes whether value was set.
 func (o OptInvoice) Get() (v Invoice, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptKeyboardButtonPollType returns new OptKeyboardButtonPollType with value set to v.
+func NewOptKeyboardButtonPollType(v KeyboardButtonPollType) OptKeyboardButtonPollType {
+	return OptKeyboardButtonPollType{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptKeyboardButtonPollType is optional KeyboardButtonPollType.
+type OptKeyboardButtonPollType struct {
+	Value KeyboardButtonPollType
+	Set   bool
+}
+
+// IsSet returns true if OptKeyboardButtonPollType was set.
+func (o OptKeyboardButtonPollType) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptKeyboardButtonPollType) Reset() {
+	var v KeyboardButtonPollType
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptKeyboardButtonPollType) SetTo(v KeyboardButtonPollType) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptKeyboardButtonPollType) Get() (v KeyboardButtonPollType, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -1486,6 +4066,82 @@ func (o *OptMessage) SetTo(v Message) {
 
 // Get returns value and boolean that denotes whether value was set.
 func (o OptMessage) Get() (v Message, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptMessageAutoDeleteTimerChanged returns new OptMessageAutoDeleteTimerChanged with value set to v.
+func NewOptMessageAutoDeleteTimerChanged(v MessageAutoDeleteTimerChanged) OptMessageAutoDeleteTimerChanged {
+	return OptMessageAutoDeleteTimerChanged{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptMessageAutoDeleteTimerChanged is optional MessageAutoDeleteTimerChanged.
+type OptMessageAutoDeleteTimerChanged struct {
+	Value MessageAutoDeleteTimerChanged
+	Set   bool
+}
+
+// IsSet returns true if OptMessageAutoDeleteTimerChanged was set.
+func (o OptMessageAutoDeleteTimerChanged) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptMessageAutoDeleteTimerChanged) Reset() {
+	var v MessageAutoDeleteTimerChanged
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptMessageAutoDeleteTimerChanged) SetTo(v MessageAutoDeleteTimerChanged) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptMessageAutoDeleteTimerChanged) Get() (v MessageAutoDeleteTimerChanged, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptMessageId returns new OptMessageId with value set to v.
+func NewOptMessageId(v MessageId) OptMessageId {
+	return OptMessageId{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptMessageId is optional MessageId.
+type OptMessageId struct {
+	Value MessageId
+	Set   bool
+}
+
+// IsSet returns true if OptMessageId was set.
+func (o OptMessageId) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptMessageId) Reset() {
+	var v MessageId
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptMessageId) SetTo(v MessageId) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptMessageId) Get() (v MessageId, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -1796,38 +4452,38 @@ func (o OptProximityAlertTriggered) Get() (v ProximityAlertTriggered, ok bool) {
 	return o.Value, true
 }
 
-// NewOptResponseParameters returns new OptResponseParameters with value set to v.
-func NewOptResponseParameters(v ResponseParameters) OptResponseParameters {
-	return OptResponseParameters{
+// NewOptResponse returns new OptResponse with value set to v.
+func NewOptResponse(v Response) OptResponse {
+	return OptResponse{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptResponseParameters is optional ResponseParameters.
-type OptResponseParameters struct {
-	Value ResponseParameters
+// OptResponse is optional Response.
+type OptResponse struct {
+	Value Response
 	Set   bool
 }
 
-// IsSet returns true if OptResponseParameters was set.
-func (o OptResponseParameters) IsSet() bool { return o.Set }
+// IsSet returns true if OptResponse was set.
+func (o OptResponse) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptResponseParameters) Reset() {
-	var v ResponseParameters
+func (o *OptResponse) Reset() {
+	var v Response
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptResponseParameters) SetTo(v ResponseParameters) {
+func (o *OptResponse) SetTo(v Response) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptResponseParameters) Get() (v ResponseParameters, ok bool) {
+func (o OptResponse) Get() (v Response, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -2024,6 +4680,44 @@ func (o OptSuccessfulPayment) Get() (v SuccessfulPayment, ok bool) {
 	return o.Value, true
 }
 
+// NewOptURL returns new OptURL with value set to v.
+func NewOptURL(v url.URL) OptURL {
+	return OptURL{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptURL is optional url.URL.
+type OptURL struct {
+	Value url.URL
+	Set   bool
+}
+
+// IsSet returns true if OptURL was set.
+func (o OptURL) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptURL) Reset() {
+	var v url.URL
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptURL) SetTo(v url.URL) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptURL) Get() (v url.URL, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
 // NewOptUser returns new OptUser with value set to v.
 func NewOptUser(v User) OptUser {
 	return OptUser{
@@ -2056,6 +4750,44 @@ func (o *OptUser) SetTo(v User) {
 
 // Get returns value and boolean that denotes whether value was set.
 func (o OptUser) Get() (v User, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptUserProfilePhotos returns new OptUserProfilePhotos with value set to v.
+func NewOptUserProfilePhotos(v UserProfilePhotos) OptUserProfilePhotos {
+	return OptUserProfilePhotos{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptUserProfilePhotos is optional UserProfilePhotos.
+type OptUserProfilePhotos struct {
+	Value UserProfilePhotos
+	Set   bool
+}
+
+// IsSet returns true if OptUserProfilePhotos was set.
+func (o OptUserProfilePhotos) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptUserProfilePhotos) Reset() {
+	var v UserProfilePhotos
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptUserProfilePhotos) SetTo(v UserProfilePhotos) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptUserProfilePhotos) Get() (v UserProfilePhotos, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -2214,6 +4946,158 @@ func (o OptVoice) Get() (v Voice, ok bool) {
 	return o.Value, true
 }
 
+// NewOptVoiceChatEnded returns new OptVoiceChatEnded with value set to v.
+func NewOptVoiceChatEnded(v VoiceChatEnded) OptVoiceChatEnded {
+	return OptVoiceChatEnded{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptVoiceChatEnded is optional VoiceChatEnded.
+type OptVoiceChatEnded struct {
+	Value VoiceChatEnded
+	Set   bool
+}
+
+// IsSet returns true if OptVoiceChatEnded was set.
+func (o OptVoiceChatEnded) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptVoiceChatEnded) Reset() {
+	var v VoiceChatEnded
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptVoiceChatEnded) SetTo(v VoiceChatEnded) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptVoiceChatEnded) Get() (v VoiceChatEnded, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptVoiceChatParticipantsInvited returns new OptVoiceChatParticipantsInvited with value set to v.
+func NewOptVoiceChatParticipantsInvited(v VoiceChatParticipantsInvited) OptVoiceChatParticipantsInvited {
+	return OptVoiceChatParticipantsInvited{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptVoiceChatParticipantsInvited is optional VoiceChatParticipantsInvited.
+type OptVoiceChatParticipantsInvited struct {
+	Value VoiceChatParticipantsInvited
+	Set   bool
+}
+
+// IsSet returns true if OptVoiceChatParticipantsInvited was set.
+func (o OptVoiceChatParticipantsInvited) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptVoiceChatParticipantsInvited) Reset() {
+	var v VoiceChatParticipantsInvited
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptVoiceChatParticipantsInvited) SetTo(v VoiceChatParticipantsInvited) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptVoiceChatParticipantsInvited) Get() (v VoiceChatParticipantsInvited, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptVoiceChatScheduled returns new OptVoiceChatScheduled with value set to v.
+func NewOptVoiceChatScheduled(v VoiceChatScheduled) OptVoiceChatScheduled {
+	return OptVoiceChatScheduled{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptVoiceChatScheduled is optional VoiceChatScheduled.
+type OptVoiceChatScheduled struct {
+	Value VoiceChatScheduled
+	Set   bool
+}
+
+// IsSet returns true if OptVoiceChatScheduled was set.
+func (o OptVoiceChatScheduled) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptVoiceChatScheduled) Reset() {
+	var v VoiceChatScheduled
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptVoiceChatScheduled) SetTo(v VoiceChatScheduled) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptVoiceChatScheduled) Get() (v VoiceChatScheduled, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptWebhookInfo returns new OptWebhookInfo with value set to v.
+func NewOptWebhookInfo(v WebhookInfo) OptWebhookInfo {
+	return OptWebhookInfo{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptWebhookInfo is optional WebhookInfo.
+type OptWebhookInfo struct {
+	Value WebhookInfo
+	Set   bool
+}
+
+// IsSet returns true if OptWebhookInfo was set.
+func (o OptWebhookInfo) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptWebhookInfo) Reset() {
+	var v WebhookInfo
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptWebhookInfo) SetTo(v WebhookInfo) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptWebhookInfo) Get() (v WebhookInfo, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
 // Ref: #/components/schemas/OrderInfo
 type OrderInfo struct {
 	Name            OptString          `json:"name"`
@@ -2226,6 +5110,428 @@ type OrderInfo struct {
 type PassportData struct {
 	Data        []EncryptedPassportElement `json:"data"`
 	Credentials EncryptedCredentials       `json:"credentials"`
+}
+
+// Ref: #/components/schemas/PassportElementError
+// PassportElementError represents sum type.
+type PassportElementError struct {
+	Type                                 PassportElementErrorType // switch on this field
+	PassportElementErrorDataField        PassportElementErrorDataField
+	PassportElementErrorFrontSide        PassportElementErrorFrontSide
+	PassportElementErrorReverseSide      PassportElementErrorReverseSide
+	PassportElementErrorSelfie           PassportElementErrorSelfie
+	PassportElementErrorFile             PassportElementErrorFile
+	PassportElementErrorFiles            PassportElementErrorFiles
+	PassportElementErrorTranslationFile  PassportElementErrorTranslationFile
+	PassportElementErrorTranslationFiles PassportElementErrorTranslationFiles
+	PassportElementErrorUnspecified      PassportElementErrorUnspecified
+}
+
+// PassportElementErrorType is oneOf type of PassportElementError.
+type PassportElementErrorType string
+
+// Possible values for PassportElementErrorType.
+const (
+	PassportElementErrorDataFieldPassportElementError        PassportElementErrorType = "PassportElementErrorDataField"
+	PassportElementErrorFrontSidePassportElementError        PassportElementErrorType = "PassportElementErrorFrontSide"
+	PassportElementErrorReverseSidePassportElementError      PassportElementErrorType = "PassportElementErrorReverseSide"
+	PassportElementErrorSelfiePassportElementError           PassportElementErrorType = "PassportElementErrorSelfie"
+	PassportElementErrorFilePassportElementError             PassportElementErrorType = "PassportElementErrorFile"
+	PassportElementErrorFilesPassportElementError            PassportElementErrorType = "PassportElementErrorFiles"
+	PassportElementErrorTranslationFilePassportElementError  PassportElementErrorType = "PassportElementErrorTranslationFile"
+	PassportElementErrorTranslationFilesPassportElementError PassportElementErrorType = "PassportElementErrorTranslationFiles"
+	PassportElementErrorUnspecifiedPassportElementError      PassportElementErrorType = "PassportElementErrorUnspecified"
+)
+
+// IsPassportElementErrorDataField reports whether PassportElementError is PassportElementErrorDataField.
+func (s PassportElementError) IsPassportElementErrorDataField() bool {
+	return s.Type == PassportElementErrorDataFieldPassportElementError
+}
+
+// IsPassportElementErrorFrontSide reports whether PassportElementError is PassportElementErrorFrontSide.
+func (s PassportElementError) IsPassportElementErrorFrontSide() bool {
+	return s.Type == PassportElementErrorFrontSidePassportElementError
+}
+
+// IsPassportElementErrorReverseSide reports whether PassportElementError is PassportElementErrorReverseSide.
+func (s PassportElementError) IsPassportElementErrorReverseSide() bool {
+	return s.Type == PassportElementErrorReverseSidePassportElementError
+}
+
+// IsPassportElementErrorSelfie reports whether PassportElementError is PassportElementErrorSelfie.
+func (s PassportElementError) IsPassportElementErrorSelfie() bool {
+	return s.Type == PassportElementErrorSelfiePassportElementError
+}
+
+// IsPassportElementErrorFile reports whether PassportElementError is PassportElementErrorFile.
+func (s PassportElementError) IsPassportElementErrorFile() bool {
+	return s.Type == PassportElementErrorFilePassportElementError
+}
+
+// IsPassportElementErrorFiles reports whether PassportElementError is PassportElementErrorFiles.
+func (s PassportElementError) IsPassportElementErrorFiles() bool {
+	return s.Type == PassportElementErrorFilesPassportElementError
+}
+
+// IsPassportElementErrorTranslationFile reports whether PassportElementError is PassportElementErrorTranslationFile.
+func (s PassportElementError) IsPassportElementErrorTranslationFile() bool {
+	return s.Type == PassportElementErrorTranslationFilePassportElementError
+}
+
+// IsPassportElementErrorTranslationFiles reports whether PassportElementError is PassportElementErrorTranslationFiles.
+func (s PassportElementError) IsPassportElementErrorTranslationFiles() bool {
+	return s.Type == PassportElementErrorTranslationFilesPassportElementError
+}
+
+// IsPassportElementErrorUnspecified reports whether PassportElementError is PassportElementErrorUnspecified.
+func (s PassportElementError) IsPassportElementErrorUnspecified() bool {
+	return s.Type == PassportElementErrorUnspecifiedPassportElementError
+}
+
+// SetPassportElementErrorDataField sets PassportElementError to PassportElementErrorDataField.
+func (s *PassportElementError) SetPassportElementErrorDataField(v PassportElementErrorDataField) {
+	s.Type = PassportElementErrorDataFieldPassportElementError
+	s.PassportElementErrorDataField = v
+}
+
+// GetPassportElementErrorDataField returns PassportElementErrorDataField and true boolean if PassportElementError is PassportElementErrorDataField.
+func (s PassportElementError) GetPassportElementErrorDataField() (v PassportElementErrorDataField, ok bool) {
+	if !s.IsPassportElementErrorDataField() {
+		return v, false
+	}
+	return s.PassportElementErrorDataField, true
+}
+
+// NewPassportElementErrorDataFieldPassportElementError returns new PassportElementError from PassportElementErrorDataField.
+func NewPassportElementErrorDataFieldPassportElementError(v PassportElementErrorDataField) PassportElementError {
+	var s PassportElementError
+	s.SetPassportElementErrorDataField(v)
+	return s
+}
+
+// SetPassportElementErrorFrontSide sets PassportElementError to PassportElementErrorFrontSide.
+func (s *PassportElementError) SetPassportElementErrorFrontSide(v PassportElementErrorFrontSide) {
+	s.Type = PassportElementErrorFrontSidePassportElementError
+	s.PassportElementErrorFrontSide = v
+}
+
+// GetPassportElementErrorFrontSide returns PassportElementErrorFrontSide and true boolean if PassportElementError is PassportElementErrorFrontSide.
+func (s PassportElementError) GetPassportElementErrorFrontSide() (v PassportElementErrorFrontSide, ok bool) {
+	if !s.IsPassportElementErrorFrontSide() {
+		return v, false
+	}
+	return s.PassportElementErrorFrontSide, true
+}
+
+// NewPassportElementErrorFrontSidePassportElementError returns new PassportElementError from PassportElementErrorFrontSide.
+func NewPassportElementErrorFrontSidePassportElementError(v PassportElementErrorFrontSide) PassportElementError {
+	var s PassportElementError
+	s.SetPassportElementErrorFrontSide(v)
+	return s
+}
+
+// SetPassportElementErrorReverseSide sets PassportElementError to PassportElementErrorReverseSide.
+func (s *PassportElementError) SetPassportElementErrorReverseSide(v PassportElementErrorReverseSide) {
+	s.Type = PassportElementErrorReverseSidePassportElementError
+	s.PassportElementErrorReverseSide = v
+}
+
+// GetPassportElementErrorReverseSide returns PassportElementErrorReverseSide and true boolean if PassportElementError is PassportElementErrorReverseSide.
+func (s PassportElementError) GetPassportElementErrorReverseSide() (v PassportElementErrorReverseSide, ok bool) {
+	if !s.IsPassportElementErrorReverseSide() {
+		return v, false
+	}
+	return s.PassportElementErrorReverseSide, true
+}
+
+// NewPassportElementErrorReverseSidePassportElementError returns new PassportElementError from PassportElementErrorReverseSide.
+func NewPassportElementErrorReverseSidePassportElementError(v PassportElementErrorReverseSide) PassportElementError {
+	var s PassportElementError
+	s.SetPassportElementErrorReverseSide(v)
+	return s
+}
+
+// SetPassportElementErrorSelfie sets PassportElementError to PassportElementErrorSelfie.
+func (s *PassportElementError) SetPassportElementErrorSelfie(v PassportElementErrorSelfie) {
+	s.Type = PassportElementErrorSelfiePassportElementError
+	s.PassportElementErrorSelfie = v
+}
+
+// GetPassportElementErrorSelfie returns PassportElementErrorSelfie and true boolean if PassportElementError is PassportElementErrorSelfie.
+func (s PassportElementError) GetPassportElementErrorSelfie() (v PassportElementErrorSelfie, ok bool) {
+	if !s.IsPassportElementErrorSelfie() {
+		return v, false
+	}
+	return s.PassportElementErrorSelfie, true
+}
+
+// NewPassportElementErrorSelfiePassportElementError returns new PassportElementError from PassportElementErrorSelfie.
+func NewPassportElementErrorSelfiePassportElementError(v PassportElementErrorSelfie) PassportElementError {
+	var s PassportElementError
+	s.SetPassportElementErrorSelfie(v)
+	return s
+}
+
+// SetPassportElementErrorFile sets PassportElementError to PassportElementErrorFile.
+func (s *PassportElementError) SetPassportElementErrorFile(v PassportElementErrorFile) {
+	s.Type = PassportElementErrorFilePassportElementError
+	s.PassportElementErrorFile = v
+}
+
+// GetPassportElementErrorFile returns PassportElementErrorFile and true boolean if PassportElementError is PassportElementErrorFile.
+func (s PassportElementError) GetPassportElementErrorFile() (v PassportElementErrorFile, ok bool) {
+	if !s.IsPassportElementErrorFile() {
+		return v, false
+	}
+	return s.PassportElementErrorFile, true
+}
+
+// NewPassportElementErrorFilePassportElementError returns new PassportElementError from PassportElementErrorFile.
+func NewPassportElementErrorFilePassportElementError(v PassportElementErrorFile) PassportElementError {
+	var s PassportElementError
+	s.SetPassportElementErrorFile(v)
+	return s
+}
+
+// SetPassportElementErrorFiles sets PassportElementError to PassportElementErrorFiles.
+func (s *PassportElementError) SetPassportElementErrorFiles(v PassportElementErrorFiles) {
+	s.Type = PassportElementErrorFilesPassportElementError
+	s.PassportElementErrorFiles = v
+}
+
+// GetPassportElementErrorFiles returns PassportElementErrorFiles and true boolean if PassportElementError is PassportElementErrorFiles.
+func (s PassportElementError) GetPassportElementErrorFiles() (v PassportElementErrorFiles, ok bool) {
+	if !s.IsPassportElementErrorFiles() {
+		return v, false
+	}
+	return s.PassportElementErrorFiles, true
+}
+
+// NewPassportElementErrorFilesPassportElementError returns new PassportElementError from PassportElementErrorFiles.
+func NewPassportElementErrorFilesPassportElementError(v PassportElementErrorFiles) PassportElementError {
+	var s PassportElementError
+	s.SetPassportElementErrorFiles(v)
+	return s
+}
+
+// SetPassportElementErrorTranslationFile sets PassportElementError to PassportElementErrorTranslationFile.
+func (s *PassportElementError) SetPassportElementErrorTranslationFile(v PassportElementErrorTranslationFile) {
+	s.Type = PassportElementErrorTranslationFilePassportElementError
+	s.PassportElementErrorTranslationFile = v
+}
+
+// GetPassportElementErrorTranslationFile returns PassportElementErrorTranslationFile and true boolean if PassportElementError is PassportElementErrorTranslationFile.
+func (s PassportElementError) GetPassportElementErrorTranslationFile() (v PassportElementErrorTranslationFile, ok bool) {
+	if !s.IsPassportElementErrorTranslationFile() {
+		return v, false
+	}
+	return s.PassportElementErrorTranslationFile, true
+}
+
+// NewPassportElementErrorTranslationFilePassportElementError returns new PassportElementError from PassportElementErrorTranslationFile.
+func NewPassportElementErrorTranslationFilePassportElementError(v PassportElementErrorTranslationFile) PassportElementError {
+	var s PassportElementError
+	s.SetPassportElementErrorTranslationFile(v)
+	return s
+}
+
+// SetPassportElementErrorTranslationFiles sets PassportElementError to PassportElementErrorTranslationFiles.
+func (s *PassportElementError) SetPassportElementErrorTranslationFiles(v PassportElementErrorTranslationFiles) {
+	s.Type = PassportElementErrorTranslationFilesPassportElementError
+	s.PassportElementErrorTranslationFiles = v
+}
+
+// GetPassportElementErrorTranslationFiles returns PassportElementErrorTranslationFiles and true boolean if PassportElementError is PassportElementErrorTranslationFiles.
+func (s PassportElementError) GetPassportElementErrorTranslationFiles() (v PassportElementErrorTranslationFiles, ok bool) {
+	if !s.IsPassportElementErrorTranslationFiles() {
+		return v, false
+	}
+	return s.PassportElementErrorTranslationFiles, true
+}
+
+// NewPassportElementErrorTranslationFilesPassportElementError returns new PassportElementError from PassportElementErrorTranslationFiles.
+func NewPassportElementErrorTranslationFilesPassportElementError(v PassportElementErrorTranslationFiles) PassportElementError {
+	var s PassportElementError
+	s.SetPassportElementErrorTranslationFiles(v)
+	return s
+}
+
+// SetPassportElementErrorUnspecified sets PassportElementError to PassportElementErrorUnspecified.
+func (s *PassportElementError) SetPassportElementErrorUnspecified(v PassportElementErrorUnspecified) {
+	s.Type = PassportElementErrorUnspecifiedPassportElementError
+	s.PassportElementErrorUnspecified = v
+}
+
+// GetPassportElementErrorUnspecified returns PassportElementErrorUnspecified and true boolean if PassportElementError is PassportElementErrorUnspecified.
+func (s PassportElementError) GetPassportElementErrorUnspecified() (v PassportElementErrorUnspecified, ok bool) {
+	if !s.IsPassportElementErrorUnspecified() {
+		return v, false
+	}
+	return s.PassportElementErrorUnspecified, true
+}
+
+// NewPassportElementErrorUnspecifiedPassportElementError returns new PassportElementError from PassportElementErrorUnspecified.
+func NewPassportElementErrorUnspecifiedPassportElementError(v PassportElementErrorUnspecified) PassportElementError {
+	var s PassportElementError
+	s.SetPassportElementErrorUnspecified(v)
+	return s
+}
+
+// Ref: #/components/schemas/PassportElementErrorDataField
+type PassportElementErrorDataField struct {
+	Source    string                            `json:"source"`
+	Type      PassportElementErrorDataFieldType `json:"type"`
+	FieldName string                            `json:"field_name"`
+	DataHash  string                            `json:"data_hash"`
+	Message   string                            `json:"message"`
+}
+
+type PassportElementErrorDataFieldType string
+
+const (
+	PassportElementErrorDataFieldTypePersonalDetails  PassportElementErrorDataFieldType = "personal_details"
+	PassportElementErrorDataFieldTypePassport         PassportElementErrorDataFieldType = "passport"
+	PassportElementErrorDataFieldTypeDriverLicense    PassportElementErrorDataFieldType = "driver_license"
+	PassportElementErrorDataFieldTypeIdentityCard     PassportElementErrorDataFieldType = "identity_card"
+	PassportElementErrorDataFieldTypeInternalPassport PassportElementErrorDataFieldType = "internal_passport"
+	PassportElementErrorDataFieldTypeAddress          PassportElementErrorDataFieldType = "address"
+)
+
+// Ref: #/components/schemas/PassportElementErrorFile
+type PassportElementErrorFile struct {
+	Source   string                       `json:"source"`
+	Type     PassportElementErrorFileType `json:"type"`
+	FileHash string                       `json:"file_hash"`
+	Message  string                       `json:"message"`
+}
+
+type PassportElementErrorFileType string
+
+const (
+	PassportElementErrorFileTypeUtilityBill           PassportElementErrorFileType = "utility_bill"
+	PassportElementErrorFileTypeBankStatement         PassportElementErrorFileType = "bank_statement"
+	PassportElementErrorFileTypeRentalAgreement       PassportElementErrorFileType = "rental_agreement"
+	PassportElementErrorFileTypePassportRegistration  PassportElementErrorFileType = "passport_registration"
+	PassportElementErrorFileTypeTemporaryRegistration PassportElementErrorFileType = "temporary_registration"
+)
+
+// Ref: #/components/schemas/PassportElementErrorFiles
+type PassportElementErrorFiles struct {
+	Source     string                        `json:"source"`
+	Type       PassportElementErrorFilesType `json:"type"`
+	FileHashes []string                      `json:"file_hashes"`
+	Message    string                        `json:"message"`
+}
+
+type PassportElementErrorFilesType string
+
+const (
+	PassportElementErrorFilesTypeUtilityBill           PassportElementErrorFilesType = "utility_bill"
+	PassportElementErrorFilesTypeBankStatement         PassportElementErrorFilesType = "bank_statement"
+	PassportElementErrorFilesTypeRentalAgreement       PassportElementErrorFilesType = "rental_agreement"
+	PassportElementErrorFilesTypePassportRegistration  PassportElementErrorFilesType = "passport_registration"
+	PassportElementErrorFilesTypeTemporaryRegistration PassportElementErrorFilesType = "temporary_registration"
+)
+
+// Ref: #/components/schemas/PassportElementErrorFrontSide
+type PassportElementErrorFrontSide struct {
+	Source   string                            `json:"source"`
+	Type     PassportElementErrorFrontSideType `json:"type"`
+	FileHash string                            `json:"file_hash"`
+	Message  string                            `json:"message"`
+}
+
+type PassportElementErrorFrontSideType string
+
+const (
+	PassportElementErrorFrontSideTypePassport         PassportElementErrorFrontSideType = "passport"
+	PassportElementErrorFrontSideTypeDriverLicense    PassportElementErrorFrontSideType = "driver_license"
+	PassportElementErrorFrontSideTypeIdentityCard     PassportElementErrorFrontSideType = "identity_card"
+	PassportElementErrorFrontSideTypeInternalPassport PassportElementErrorFrontSideType = "internal_passport"
+)
+
+// Ref: #/components/schemas/PassportElementErrorReverseSide
+type PassportElementErrorReverseSide struct {
+	Source   string                              `json:"source"`
+	Type     PassportElementErrorReverseSideType `json:"type"`
+	FileHash string                              `json:"file_hash"`
+	Message  string                              `json:"message"`
+}
+
+type PassportElementErrorReverseSideType string
+
+const (
+	PassportElementErrorReverseSideTypeDriverLicense PassportElementErrorReverseSideType = "driver_license"
+	PassportElementErrorReverseSideTypeIdentityCard  PassportElementErrorReverseSideType = "identity_card"
+)
+
+// Ref: #/components/schemas/PassportElementErrorSelfie
+type PassportElementErrorSelfie struct {
+	Source   string                         `json:"source"`
+	Type     PassportElementErrorSelfieType `json:"type"`
+	FileHash string                         `json:"file_hash"`
+	Message  string                         `json:"message"`
+}
+
+type PassportElementErrorSelfieType string
+
+const (
+	PassportElementErrorSelfieTypePassport         PassportElementErrorSelfieType = "passport"
+	PassportElementErrorSelfieTypeDriverLicense    PassportElementErrorSelfieType = "driver_license"
+	PassportElementErrorSelfieTypeIdentityCard     PassportElementErrorSelfieType = "identity_card"
+	PassportElementErrorSelfieTypeInternalPassport PassportElementErrorSelfieType = "internal_passport"
+)
+
+// Ref: #/components/schemas/PassportElementErrorTranslationFile
+type PassportElementErrorTranslationFile struct {
+	Source   string                                  `json:"source"`
+	Type     PassportElementErrorTranslationFileType `json:"type"`
+	FileHash string                                  `json:"file_hash"`
+	Message  string                                  `json:"message"`
+}
+
+type PassportElementErrorTranslationFileType string
+
+const (
+	PassportElementErrorTranslationFileTypePassport              PassportElementErrorTranslationFileType = "passport"
+	PassportElementErrorTranslationFileTypeDriverLicense         PassportElementErrorTranslationFileType = "driver_license"
+	PassportElementErrorTranslationFileTypeIdentityCard          PassportElementErrorTranslationFileType = "identity_card"
+	PassportElementErrorTranslationFileTypeInternalPassport      PassportElementErrorTranslationFileType = "internal_passport"
+	PassportElementErrorTranslationFileTypeUtilityBill           PassportElementErrorTranslationFileType = "utility_bill"
+	PassportElementErrorTranslationFileTypeBankStatement         PassportElementErrorTranslationFileType = "bank_statement"
+	PassportElementErrorTranslationFileTypeRentalAgreement       PassportElementErrorTranslationFileType = "rental_agreement"
+	PassportElementErrorTranslationFileTypePassportRegistration  PassportElementErrorTranslationFileType = "passport_registration"
+	PassportElementErrorTranslationFileTypeTemporaryRegistration PassportElementErrorTranslationFileType = "temporary_registration"
+)
+
+// Ref: #/components/schemas/PassportElementErrorTranslationFiles
+type PassportElementErrorTranslationFiles struct {
+	Source     string                                   `json:"source"`
+	Type       PassportElementErrorTranslationFilesType `json:"type"`
+	FileHashes []string                                 `json:"file_hashes"`
+	Message    string                                   `json:"message"`
+}
+
+type PassportElementErrorTranslationFilesType string
+
+const (
+	PassportElementErrorTranslationFilesTypePassport              PassportElementErrorTranslationFilesType = "passport"
+	PassportElementErrorTranslationFilesTypeDriverLicense         PassportElementErrorTranslationFilesType = "driver_license"
+	PassportElementErrorTranslationFilesTypeIdentityCard          PassportElementErrorTranslationFilesType = "identity_card"
+	PassportElementErrorTranslationFilesTypeInternalPassport      PassportElementErrorTranslationFilesType = "internal_passport"
+	PassportElementErrorTranslationFilesTypeUtilityBill           PassportElementErrorTranslationFilesType = "utility_bill"
+	PassportElementErrorTranslationFilesTypeBankStatement         PassportElementErrorTranslationFilesType = "bank_statement"
+	PassportElementErrorTranslationFilesTypeRentalAgreement       PassportElementErrorTranslationFilesType = "rental_agreement"
+	PassportElementErrorTranslationFilesTypePassportRegistration  PassportElementErrorTranslationFilesType = "passport_registration"
+	PassportElementErrorTranslationFilesTypeTemporaryRegistration PassportElementErrorTranslationFilesType = "temporary_registration"
+)
+
+// Ref: #/components/schemas/PassportElementErrorUnspecified
+type PassportElementErrorUnspecified struct {
+	Source      string `json:"source"`
+	Type        string `json:"type"`
+	ElementHash string `json:"element_hash"`
+	Message     string `json:"message"`
 }
 
 // Ref: #/components/schemas/PassportFile
@@ -2245,6 +5551,13 @@ type PhotoSize struct {
 	FileSize     OptInt `json:"file_size"`
 }
 
+// Ref: #/components/schemas/pinChatMessage
+type PinChatMessage struct {
+	ChatID              ID      `json:"chat_id"`
+	MessageID           int     `json:"message_id"`
+	DisableNotification OptBool `json:"disable_notification"`
+}
+
 // Ref: #/components/schemas/Poll
 type Poll struct {
 	ID                    string          `json:"id"`
@@ -2253,7 +5566,7 @@ type Poll struct {
 	TotalVoterCount       int             `json:"total_voter_count"`
 	IsClosed              bool            `json:"is_closed"`
 	IsAnonymous           bool            `json:"is_anonymous"`
-	Type                  string          `json:"type"`
+	Type                  PollType        `json:"type"`
 	AllowsMultipleAnswers bool            `json:"allows_multiple_answers"`
 	CorrectOptionID       OptInt          `json:"correct_option_id"`
 	Explanation           OptString       `json:"explanation"`
@@ -2275,6 +5588,13 @@ type PollOption struct {
 	VoterCount int    `json:"voter_count"`
 }
 
+type PollType string
+
+const (
+	PollTypeRegular PollType = "regular"
+	PollTypeQuiz    PollType = "quiz"
+)
+
 // Ref: #/components/schemas/PreCheckoutQuery
 type PreCheckoutQuery struct {
 	ID               string       `json:"id"`
@@ -2286,6 +5606,23 @@ type PreCheckoutQuery struct {
 	OrderInfo        OptOrderInfo `json:"order_info"`
 }
 
+// Ref: #/components/schemas/promoteChatMember
+type PromoteChatMember struct {
+	ChatID              ID      `json:"chat_id"`
+	UserID              int64   `json:"user_id"`
+	IsAnonymous         OptBool `json:"is_anonymous"`
+	CanManageChat       OptBool `json:"can_manage_chat"`
+	CanPostMessages     OptBool `json:"can_post_messages"`
+	CanEditMessages     OptBool `json:"can_edit_messages"`
+	CanDeleteMessages   OptBool `json:"can_delete_messages"`
+	CanManageVoiceChats OptBool `json:"can_manage_voice_chats"`
+	CanRestrictMembers  OptBool `json:"can_restrict_members"`
+	CanPromoteMembers   OptBool `json:"can_promote_members"`
+	CanChangeInfo       OptBool `json:"can_change_info"`
+	CanInviteUsers      OptBool `json:"can_invite_users"`
+	CanPinMessages      OptBool `json:"can_pin_messages"`
+}
+
 // Ref: #/components/schemas/ProximityAlertTriggered
 type ProximityAlertTriggered struct {
 	Traveler User `json:"traveler"`
@@ -2293,21 +5630,846 @@ type ProximityAlertTriggered struct {
 	Distance int  `json:"distance"`
 }
 
-// Ref: #/components/schemas/ResponseParameters
-type ResponseParameters struct {
-	MigrateToChatID OptInt `json:"migrate_to_chat_id"`
-	RetryAfter      OptInt `json:"retry_after"`
+// Ref: #/components/schemas/ReplyKeyboardMarkup
+type ReplyKeyboardMarkup struct {
+	Keyboard              [][]KeyboardButton `json:"keyboard"`
+	ResizeKeyboard        OptBool            `json:"resize_keyboard"`
+	OneTimeKeyboard       OptBool            `json:"one_time_keyboard"`
+	InputFieldPlaceholder OptString          `json:"input_field_placeholder"`
+	Selective             OptBool            `json:"selective"`
 }
 
-type SendGamePostOK struct {
+// Ref: #/components/schemas/ReplyKeyboardRemove
+type ReplyKeyboardRemove struct {
+	RemoveKeyboard bool    `json:"remove_keyboard"`
+	Selective      OptBool `json:"selective"`
+}
+
+// Ref: #/components/schemas/Response
+type Response struct {
+	MigrateToChatID OptInt64 `json:"migrate_to_chat_id"`
+	RetryAfter      OptInt   `json:"retry_after"`
+}
+
+// Ref: #/components/schemas/restrictChatMember
+type RestrictChatMember struct {
+	ChatID      ID              `json:"chat_id"`
+	UserID      int64           `json:"user_id"`
+	Permissions ChatPermissions `json:"permissions"`
+	UntilDate   OptInt          `json:"until_date"`
+}
+
+// Ref: #/components/schemas/Result
+type Result struct {
+	Result OptBool `json:"result"`
 	Ok     bool    `json:"ok"`
-	Result Message `json:"result"`
 }
 
-func (*SendGamePostOK) sendGamePostRes() {}
+// Ref: #/components/schemas/ResultArrayOfBotCommand
+type ResultArrayOfBotCommand struct {
+	Result []BotCommand `json:"result"`
+	Ok     bool         `json:"ok"`
+}
 
-type SendGamePostReqApplicationJSON struct {
-	ChatID                   int                     `json:"chat_id"`
+// Ref: #/components/schemas/ResultArrayOfChatMember
+type ResultArrayOfChatMember struct {
+	Result []ChatMember `json:"result"`
+	Ok     bool         `json:"ok"`
+}
+
+// Ref: #/components/schemas/ResultArrayOfGameHighScore
+type ResultArrayOfGameHighScore struct {
+	Result []GameHighScore `json:"result"`
+	Ok     bool            `json:"ok"`
+}
+
+// Ref: #/components/schemas/ResultArrayOfMessage
+type ResultArrayOfMessage struct {
+	Result []Message `json:"result"`
+	Ok     bool      `json:"ok"`
+}
+
+// Ref: #/components/schemas/ResultArrayOfUpdate
+type ResultArrayOfUpdate struct {
+	Result []Update `json:"result"`
+	Ok     bool     `json:"ok"`
+}
+
+// Ref: #/components/schemas/ResultChat
+type ResultChat struct {
+	Result OptChat `json:"result"`
+	Ok     bool    `json:"ok"`
+}
+
+// Ref: #/components/schemas/ResultChatInviteLink
+type ResultChatInviteLink struct {
+	Result OptChatInviteLink `json:"result"`
+	Ok     bool              `json:"ok"`
+}
+
+// Ref: #/components/schemas/ResultChatMember
+type ResultChatMember struct {
+	Result *ChatMember `json:"result"`
+	Ok     bool        `json:"ok"`
+}
+
+// Ref: #/components/schemas/ResultFile
+type ResultFile struct {
+	Result OptFile `json:"result"`
+	Ok     bool    `json:"ok"`
+}
+
+// Ref: #/components/schemas/ResultInt
+type ResultInt struct {
+	Result OptInt `json:"result"`
+	Ok     bool   `json:"ok"`
+}
+
+// Ref: #/components/schemas/ResultMessage
+type ResultMessage struct {
+	Result OptMessage `json:"result"`
+	Ok     bool       `json:"ok"`
+}
+
+// Ref: #/components/schemas/ResultMessageId
+type ResultMessageId struct {
+	Result OptMessageId `json:"result"`
+	Ok     bool         `json:"ok"`
+}
+
+// Ref: #/components/schemas/ResultPoll
+type ResultPoll struct {
+	Result OptPoll `json:"result"`
+	Ok     bool    `json:"ok"`
+}
+
+// Ref: #/components/schemas/ResultString
+type ResultString struct {
+	Result OptString `json:"result"`
+	Ok     bool      `json:"ok"`
+}
+
+// Ref: #/components/schemas/ResultUser
+type ResultUser struct {
+	Result OptUser `json:"result"`
+	Ok     bool    `json:"ok"`
+}
+
+// Ref: #/components/schemas/ResultUserProfilePhotos
+type ResultUserProfilePhotos struct {
+	Result OptUserProfilePhotos `json:"result"`
+	Ok     bool                 `json:"ok"`
+}
+
+// Ref: #/components/schemas/ResultWebhookInfo
+type ResultWebhookInfo struct {
+	Result OptWebhookInfo `json:"result"`
+	Ok     bool           `json:"ok"`
+}
+
+// Ref: #/components/schemas/revokeChatInviteLink
+type RevokeChatInviteLink struct {
+	ChatID     ID     `json:"chat_id"`
+	InviteLink string `json:"invite_link"`
+}
+
+// Ref: #/components/schemas/sendAnimation
+type SendAnimation struct {
+	ChatID                   ID                        `json:"chat_id"`
+	Animation                string                    `json:"animation"`
+	Duration                 OptInt                    `json:"duration"`
+	Width                    OptInt                    `json:"width"`
+	Height                   OptInt                    `json:"height"`
+	Thumb                    OptString                 `json:"thumb"`
+	Caption                  OptString                 `json:"caption"`
+	ParseMode                OptString                 `json:"parse_mode"`
+	CaptionEntities          []MessageEntity           `json:"caption_entities"`
+	DisableNotification      OptBool                   `json:"disable_notification"`
+	ReplyToMessageID         OptInt                    `json:"reply_to_message_id"`
+	AllowSendingWithoutReply OptBool                   `json:"allow_sending_without_reply"`
+	ReplyMarkup              *SendAnimationReplyMarkup `json:"reply_markup"`
+}
+
+// SendAnimationReplyMarkup represents sum type.
+type SendAnimationReplyMarkup struct {
+	Type                 SendAnimationReplyMarkupType // switch on this field
+	InlineKeyboardMarkup InlineKeyboardMarkup
+	ReplyKeyboardMarkup  ReplyKeyboardMarkup
+	ReplyKeyboardRemove  ReplyKeyboardRemove
+	ForceReply           ForceReply
+}
+
+// SendAnimationReplyMarkupType is oneOf type of SendAnimationReplyMarkup.
+type SendAnimationReplyMarkupType string
+
+// Possible values for SendAnimationReplyMarkupType.
+const (
+	InlineKeyboardMarkupSendAnimationReplyMarkup SendAnimationReplyMarkupType = "InlineKeyboardMarkup"
+	ReplyKeyboardMarkupSendAnimationReplyMarkup  SendAnimationReplyMarkupType = "ReplyKeyboardMarkup"
+	ReplyKeyboardRemoveSendAnimationReplyMarkup  SendAnimationReplyMarkupType = "ReplyKeyboardRemove"
+	ForceReplySendAnimationReplyMarkup           SendAnimationReplyMarkupType = "ForceReply"
+)
+
+// IsInlineKeyboardMarkup reports whether SendAnimationReplyMarkup is InlineKeyboardMarkup.
+func (s SendAnimationReplyMarkup) IsInlineKeyboardMarkup() bool {
+	return s.Type == InlineKeyboardMarkupSendAnimationReplyMarkup
+}
+
+// IsReplyKeyboardMarkup reports whether SendAnimationReplyMarkup is ReplyKeyboardMarkup.
+func (s SendAnimationReplyMarkup) IsReplyKeyboardMarkup() bool {
+	return s.Type == ReplyKeyboardMarkupSendAnimationReplyMarkup
+}
+
+// IsReplyKeyboardRemove reports whether SendAnimationReplyMarkup is ReplyKeyboardRemove.
+func (s SendAnimationReplyMarkup) IsReplyKeyboardRemove() bool {
+	return s.Type == ReplyKeyboardRemoveSendAnimationReplyMarkup
+}
+
+// IsForceReply reports whether SendAnimationReplyMarkup is ForceReply.
+func (s SendAnimationReplyMarkup) IsForceReply() bool {
+	return s.Type == ForceReplySendAnimationReplyMarkup
+}
+
+// SetInlineKeyboardMarkup sets SendAnimationReplyMarkup to InlineKeyboardMarkup.
+func (s *SendAnimationReplyMarkup) SetInlineKeyboardMarkup(v InlineKeyboardMarkup) {
+	s.Type = InlineKeyboardMarkupSendAnimationReplyMarkup
+	s.InlineKeyboardMarkup = v
+}
+
+// GetInlineKeyboardMarkup returns InlineKeyboardMarkup and true boolean if SendAnimationReplyMarkup is InlineKeyboardMarkup.
+func (s SendAnimationReplyMarkup) GetInlineKeyboardMarkup() (v InlineKeyboardMarkup, ok bool) {
+	if !s.IsInlineKeyboardMarkup() {
+		return v, false
+	}
+	return s.InlineKeyboardMarkup, true
+}
+
+// NewInlineKeyboardMarkupSendAnimationReplyMarkup returns new SendAnimationReplyMarkup from InlineKeyboardMarkup.
+func NewInlineKeyboardMarkupSendAnimationReplyMarkup(v InlineKeyboardMarkup) SendAnimationReplyMarkup {
+	var s SendAnimationReplyMarkup
+	s.SetInlineKeyboardMarkup(v)
+	return s
+}
+
+// SetReplyKeyboardMarkup sets SendAnimationReplyMarkup to ReplyKeyboardMarkup.
+func (s *SendAnimationReplyMarkup) SetReplyKeyboardMarkup(v ReplyKeyboardMarkup) {
+	s.Type = ReplyKeyboardMarkupSendAnimationReplyMarkup
+	s.ReplyKeyboardMarkup = v
+}
+
+// GetReplyKeyboardMarkup returns ReplyKeyboardMarkup and true boolean if SendAnimationReplyMarkup is ReplyKeyboardMarkup.
+func (s SendAnimationReplyMarkup) GetReplyKeyboardMarkup() (v ReplyKeyboardMarkup, ok bool) {
+	if !s.IsReplyKeyboardMarkup() {
+		return v, false
+	}
+	return s.ReplyKeyboardMarkup, true
+}
+
+// NewReplyKeyboardMarkupSendAnimationReplyMarkup returns new SendAnimationReplyMarkup from ReplyKeyboardMarkup.
+func NewReplyKeyboardMarkupSendAnimationReplyMarkup(v ReplyKeyboardMarkup) SendAnimationReplyMarkup {
+	var s SendAnimationReplyMarkup
+	s.SetReplyKeyboardMarkup(v)
+	return s
+}
+
+// SetReplyKeyboardRemove sets SendAnimationReplyMarkup to ReplyKeyboardRemove.
+func (s *SendAnimationReplyMarkup) SetReplyKeyboardRemove(v ReplyKeyboardRemove) {
+	s.Type = ReplyKeyboardRemoveSendAnimationReplyMarkup
+	s.ReplyKeyboardRemove = v
+}
+
+// GetReplyKeyboardRemove returns ReplyKeyboardRemove and true boolean if SendAnimationReplyMarkup is ReplyKeyboardRemove.
+func (s SendAnimationReplyMarkup) GetReplyKeyboardRemove() (v ReplyKeyboardRemove, ok bool) {
+	if !s.IsReplyKeyboardRemove() {
+		return v, false
+	}
+	return s.ReplyKeyboardRemove, true
+}
+
+// NewReplyKeyboardRemoveSendAnimationReplyMarkup returns new SendAnimationReplyMarkup from ReplyKeyboardRemove.
+func NewReplyKeyboardRemoveSendAnimationReplyMarkup(v ReplyKeyboardRemove) SendAnimationReplyMarkup {
+	var s SendAnimationReplyMarkup
+	s.SetReplyKeyboardRemove(v)
+	return s
+}
+
+// SetForceReply sets SendAnimationReplyMarkup to ForceReply.
+func (s *SendAnimationReplyMarkup) SetForceReply(v ForceReply) {
+	s.Type = ForceReplySendAnimationReplyMarkup
+	s.ForceReply = v
+}
+
+// GetForceReply returns ForceReply and true boolean if SendAnimationReplyMarkup is ForceReply.
+func (s SendAnimationReplyMarkup) GetForceReply() (v ForceReply, ok bool) {
+	if !s.IsForceReply() {
+		return v, false
+	}
+	return s.ForceReply, true
+}
+
+// NewForceReplySendAnimationReplyMarkup returns new SendAnimationReplyMarkup from ForceReply.
+func NewForceReplySendAnimationReplyMarkup(v ForceReply) SendAnimationReplyMarkup {
+	var s SendAnimationReplyMarkup
+	s.SetForceReply(v)
+	return s
+}
+
+// Ref: #/components/schemas/sendAudio
+type SendAudio struct {
+	ChatID                   ID                    `json:"chat_id"`
+	Audio                    string                `json:"audio"`
+	Caption                  OptString             `json:"caption"`
+	ParseMode                OptString             `json:"parse_mode"`
+	CaptionEntities          []MessageEntity       `json:"caption_entities"`
+	Duration                 OptInt                `json:"duration"`
+	Performer                OptString             `json:"performer"`
+	Title                    OptString             `json:"title"`
+	Thumb                    OptString             `json:"thumb"`
+	DisableNotification      OptBool               `json:"disable_notification"`
+	ReplyToMessageID         OptInt                `json:"reply_to_message_id"`
+	AllowSendingWithoutReply OptBool               `json:"allow_sending_without_reply"`
+	ReplyMarkup              *SendAudioReplyMarkup `json:"reply_markup"`
+}
+
+// SendAudioReplyMarkup represents sum type.
+type SendAudioReplyMarkup struct {
+	Type                 SendAudioReplyMarkupType // switch on this field
+	InlineKeyboardMarkup InlineKeyboardMarkup
+	ReplyKeyboardMarkup  ReplyKeyboardMarkup
+	ReplyKeyboardRemove  ReplyKeyboardRemove
+	ForceReply           ForceReply
+}
+
+// SendAudioReplyMarkupType is oneOf type of SendAudioReplyMarkup.
+type SendAudioReplyMarkupType string
+
+// Possible values for SendAudioReplyMarkupType.
+const (
+	InlineKeyboardMarkupSendAudioReplyMarkup SendAudioReplyMarkupType = "InlineKeyboardMarkup"
+	ReplyKeyboardMarkupSendAudioReplyMarkup  SendAudioReplyMarkupType = "ReplyKeyboardMarkup"
+	ReplyKeyboardRemoveSendAudioReplyMarkup  SendAudioReplyMarkupType = "ReplyKeyboardRemove"
+	ForceReplySendAudioReplyMarkup           SendAudioReplyMarkupType = "ForceReply"
+)
+
+// IsInlineKeyboardMarkup reports whether SendAudioReplyMarkup is InlineKeyboardMarkup.
+func (s SendAudioReplyMarkup) IsInlineKeyboardMarkup() bool {
+	return s.Type == InlineKeyboardMarkupSendAudioReplyMarkup
+}
+
+// IsReplyKeyboardMarkup reports whether SendAudioReplyMarkup is ReplyKeyboardMarkup.
+func (s SendAudioReplyMarkup) IsReplyKeyboardMarkup() bool {
+	return s.Type == ReplyKeyboardMarkupSendAudioReplyMarkup
+}
+
+// IsReplyKeyboardRemove reports whether SendAudioReplyMarkup is ReplyKeyboardRemove.
+func (s SendAudioReplyMarkup) IsReplyKeyboardRemove() bool {
+	return s.Type == ReplyKeyboardRemoveSendAudioReplyMarkup
+}
+
+// IsForceReply reports whether SendAudioReplyMarkup is ForceReply.
+func (s SendAudioReplyMarkup) IsForceReply() bool { return s.Type == ForceReplySendAudioReplyMarkup }
+
+// SetInlineKeyboardMarkup sets SendAudioReplyMarkup to InlineKeyboardMarkup.
+func (s *SendAudioReplyMarkup) SetInlineKeyboardMarkup(v InlineKeyboardMarkup) {
+	s.Type = InlineKeyboardMarkupSendAudioReplyMarkup
+	s.InlineKeyboardMarkup = v
+}
+
+// GetInlineKeyboardMarkup returns InlineKeyboardMarkup and true boolean if SendAudioReplyMarkup is InlineKeyboardMarkup.
+func (s SendAudioReplyMarkup) GetInlineKeyboardMarkup() (v InlineKeyboardMarkup, ok bool) {
+	if !s.IsInlineKeyboardMarkup() {
+		return v, false
+	}
+	return s.InlineKeyboardMarkup, true
+}
+
+// NewInlineKeyboardMarkupSendAudioReplyMarkup returns new SendAudioReplyMarkup from InlineKeyboardMarkup.
+func NewInlineKeyboardMarkupSendAudioReplyMarkup(v InlineKeyboardMarkup) SendAudioReplyMarkup {
+	var s SendAudioReplyMarkup
+	s.SetInlineKeyboardMarkup(v)
+	return s
+}
+
+// SetReplyKeyboardMarkup sets SendAudioReplyMarkup to ReplyKeyboardMarkup.
+func (s *SendAudioReplyMarkup) SetReplyKeyboardMarkup(v ReplyKeyboardMarkup) {
+	s.Type = ReplyKeyboardMarkupSendAudioReplyMarkup
+	s.ReplyKeyboardMarkup = v
+}
+
+// GetReplyKeyboardMarkup returns ReplyKeyboardMarkup and true boolean if SendAudioReplyMarkup is ReplyKeyboardMarkup.
+func (s SendAudioReplyMarkup) GetReplyKeyboardMarkup() (v ReplyKeyboardMarkup, ok bool) {
+	if !s.IsReplyKeyboardMarkup() {
+		return v, false
+	}
+	return s.ReplyKeyboardMarkup, true
+}
+
+// NewReplyKeyboardMarkupSendAudioReplyMarkup returns new SendAudioReplyMarkup from ReplyKeyboardMarkup.
+func NewReplyKeyboardMarkupSendAudioReplyMarkup(v ReplyKeyboardMarkup) SendAudioReplyMarkup {
+	var s SendAudioReplyMarkup
+	s.SetReplyKeyboardMarkup(v)
+	return s
+}
+
+// SetReplyKeyboardRemove sets SendAudioReplyMarkup to ReplyKeyboardRemove.
+func (s *SendAudioReplyMarkup) SetReplyKeyboardRemove(v ReplyKeyboardRemove) {
+	s.Type = ReplyKeyboardRemoveSendAudioReplyMarkup
+	s.ReplyKeyboardRemove = v
+}
+
+// GetReplyKeyboardRemove returns ReplyKeyboardRemove and true boolean if SendAudioReplyMarkup is ReplyKeyboardRemove.
+func (s SendAudioReplyMarkup) GetReplyKeyboardRemove() (v ReplyKeyboardRemove, ok bool) {
+	if !s.IsReplyKeyboardRemove() {
+		return v, false
+	}
+	return s.ReplyKeyboardRemove, true
+}
+
+// NewReplyKeyboardRemoveSendAudioReplyMarkup returns new SendAudioReplyMarkup from ReplyKeyboardRemove.
+func NewReplyKeyboardRemoveSendAudioReplyMarkup(v ReplyKeyboardRemove) SendAudioReplyMarkup {
+	var s SendAudioReplyMarkup
+	s.SetReplyKeyboardRemove(v)
+	return s
+}
+
+// SetForceReply sets SendAudioReplyMarkup to ForceReply.
+func (s *SendAudioReplyMarkup) SetForceReply(v ForceReply) {
+	s.Type = ForceReplySendAudioReplyMarkup
+	s.ForceReply = v
+}
+
+// GetForceReply returns ForceReply and true boolean if SendAudioReplyMarkup is ForceReply.
+func (s SendAudioReplyMarkup) GetForceReply() (v ForceReply, ok bool) {
+	if !s.IsForceReply() {
+		return v, false
+	}
+	return s.ForceReply, true
+}
+
+// NewForceReplySendAudioReplyMarkup returns new SendAudioReplyMarkup from ForceReply.
+func NewForceReplySendAudioReplyMarkup(v ForceReply) SendAudioReplyMarkup {
+	var s SendAudioReplyMarkup
+	s.SetForceReply(v)
+	return s
+}
+
+// Ref: #/components/schemas/sendChatAction
+type SendChatAction struct {
+	ChatID ID     `json:"chat_id"`
+	Action string `json:"action"`
+}
+
+// Ref: #/components/schemas/sendContact
+type SendContact struct {
+	ChatID                   ID                      `json:"chat_id"`
+	PhoneNumber              string                  `json:"phone_number"`
+	FirstName                string                  `json:"first_name"`
+	LastName                 OptString               `json:"last_name"`
+	Vcard                    OptString               `json:"vcard"`
+	DisableNotification      OptBool                 `json:"disable_notification"`
+	ReplyToMessageID         OptInt                  `json:"reply_to_message_id"`
+	AllowSendingWithoutReply OptBool                 `json:"allow_sending_without_reply"`
+	ReplyMarkup              *SendContactReplyMarkup `json:"reply_markup"`
+}
+
+// SendContactReplyMarkup represents sum type.
+type SendContactReplyMarkup struct {
+	Type                 SendContactReplyMarkupType // switch on this field
+	InlineKeyboardMarkup InlineKeyboardMarkup
+	ReplyKeyboardMarkup  ReplyKeyboardMarkup
+	ReplyKeyboardRemove  ReplyKeyboardRemove
+	ForceReply           ForceReply
+}
+
+// SendContactReplyMarkupType is oneOf type of SendContactReplyMarkup.
+type SendContactReplyMarkupType string
+
+// Possible values for SendContactReplyMarkupType.
+const (
+	InlineKeyboardMarkupSendContactReplyMarkup SendContactReplyMarkupType = "InlineKeyboardMarkup"
+	ReplyKeyboardMarkupSendContactReplyMarkup  SendContactReplyMarkupType = "ReplyKeyboardMarkup"
+	ReplyKeyboardRemoveSendContactReplyMarkup  SendContactReplyMarkupType = "ReplyKeyboardRemove"
+	ForceReplySendContactReplyMarkup           SendContactReplyMarkupType = "ForceReply"
+)
+
+// IsInlineKeyboardMarkup reports whether SendContactReplyMarkup is InlineKeyboardMarkup.
+func (s SendContactReplyMarkup) IsInlineKeyboardMarkup() bool {
+	return s.Type == InlineKeyboardMarkupSendContactReplyMarkup
+}
+
+// IsReplyKeyboardMarkup reports whether SendContactReplyMarkup is ReplyKeyboardMarkup.
+func (s SendContactReplyMarkup) IsReplyKeyboardMarkup() bool {
+	return s.Type == ReplyKeyboardMarkupSendContactReplyMarkup
+}
+
+// IsReplyKeyboardRemove reports whether SendContactReplyMarkup is ReplyKeyboardRemove.
+func (s SendContactReplyMarkup) IsReplyKeyboardRemove() bool {
+	return s.Type == ReplyKeyboardRemoveSendContactReplyMarkup
+}
+
+// IsForceReply reports whether SendContactReplyMarkup is ForceReply.
+func (s SendContactReplyMarkup) IsForceReply() bool {
+	return s.Type == ForceReplySendContactReplyMarkup
+}
+
+// SetInlineKeyboardMarkup sets SendContactReplyMarkup to InlineKeyboardMarkup.
+func (s *SendContactReplyMarkup) SetInlineKeyboardMarkup(v InlineKeyboardMarkup) {
+	s.Type = InlineKeyboardMarkupSendContactReplyMarkup
+	s.InlineKeyboardMarkup = v
+}
+
+// GetInlineKeyboardMarkup returns InlineKeyboardMarkup and true boolean if SendContactReplyMarkup is InlineKeyboardMarkup.
+func (s SendContactReplyMarkup) GetInlineKeyboardMarkup() (v InlineKeyboardMarkup, ok bool) {
+	if !s.IsInlineKeyboardMarkup() {
+		return v, false
+	}
+	return s.InlineKeyboardMarkup, true
+}
+
+// NewInlineKeyboardMarkupSendContactReplyMarkup returns new SendContactReplyMarkup from InlineKeyboardMarkup.
+func NewInlineKeyboardMarkupSendContactReplyMarkup(v InlineKeyboardMarkup) SendContactReplyMarkup {
+	var s SendContactReplyMarkup
+	s.SetInlineKeyboardMarkup(v)
+	return s
+}
+
+// SetReplyKeyboardMarkup sets SendContactReplyMarkup to ReplyKeyboardMarkup.
+func (s *SendContactReplyMarkup) SetReplyKeyboardMarkup(v ReplyKeyboardMarkup) {
+	s.Type = ReplyKeyboardMarkupSendContactReplyMarkup
+	s.ReplyKeyboardMarkup = v
+}
+
+// GetReplyKeyboardMarkup returns ReplyKeyboardMarkup and true boolean if SendContactReplyMarkup is ReplyKeyboardMarkup.
+func (s SendContactReplyMarkup) GetReplyKeyboardMarkup() (v ReplyKeyboardMarkup, ok bool) {
+	if !s.IsReplyKeyboardMarkup() {
+		return v, false
+	}
+	return s.ReplyKeyboardMarkup, true
+}
+
+// NewReplyKeyboardMarkupSendContactReplyMarkup returns new SendContactReplyMarkup from ReplyKeyboardMarkup.
+func NewReplyKeyboardMarkupSendContactReplyMarkup(v ReplyKeyboardMarkup) SendContactReplyMarkup {
+	var s SendContactReplyMarkup
+	s.SetReplyKeyboardMarkup(v)
+	return s
+}
+
+// SetReplyKeyboardRemove sets SendContactReplyMarkup to ReplyKeyboardRemove.
+func (s *SendContactReplyMarkup) SetReplyKeyboardRemove(v ReplyKeyboardRemove) {
+	s.Type = ReplyKeyboardRemoveSendContactReplyMarkup
+	s.ReplyKeyboardRemove = v
+}
+
+// GetReplyKeyboardRemove returns ReplyKeyboardRemove and true boolean if SendContactReplyMarkup is ReplyKeyboardRemove.
+func (s SendContactReplyMarkup) GetReplyKeyboardRemove() (v ReplyKeyboardRemove, ok bool) {
+	if !s.IsReplyKeyboardRemove() {
+		return v, false
+	}
+	return s.ReplyKeyboardRemove, true
+}
+
+// NewReplyKeyboardRemoveSendContactReplyMarkup returns new SendContactReplyMarkup from ReplyKeyboardRemove.
+func NewReplyKeyboardRemoveSendContactReplyMarkup(v ReplyKeyboardRemove) SendContactReplyMarkup {
+	var s SendContactReplyMarkup
+	s.SetReplyKeyboardRemove(v)
+	return s
+}
+
+// SetForceReply sets SendContactReplyMarkup to ForceReply.
+func (s *SendContactReplyMarkup) SetForceReply(v ForceReply) {
+	s.Type = ForceReplySendContactReplyMarkup
+	s.ForceReply = v
+}
+
+// GetForceReply returns ForceReply and true boolean if SendContactReplyMarkup is ForceReply.
+func (s SendContactReplyMarkup) GetForceReply() (v ForceReply, ok bool) {
+	if !s.IsForceReply() {
+		return v, false
+	}
+	return s.ForceReply, true
+}
+
+// NewForceReplySendContactReplyMarkup returns new SendContactReplyMarkup from ForceReply.
+func NewForceReplySendContactReplyMarkup(v ForceReply) SendContactReplyMarkup {
+	var s SendContactReplyMarkup
+	s.SetForceReply(v)
+	return s
+}
+
+// Ref: #/components/schemas/sendDice
+type SendDice struct {
+	ChatID                   ID                   `json:"chat_id"`
+	Emoji                    OptString            `json:"emoji"`
+	DisableNotification      OptBool              `json:"disable_notification"`
+	ReplyToMessageID         OptInt               `json:"reply_to_message_id"`
+	AllowSendingWithoutReply OptBool              `json:"allow_sending_without_reply"`
+	ReplyMarkup              *SendDiceReplyMarkup `json:"reply_markup"`
+}
+
+// SendDiceReplyMarkup represents sum type.
+type SendDiceReplyMarkup struct {
+	Type                 SendDiceReplyMarkupType // switch on this field
+	InlineKeyboardMarkup InlineKeyboardMarkup
+	ReplyKeyboardMarkup  ReplyKeyboardMarkup
+	ReplyKeyboardRemove  ReplyKeyboardRemove
+	ForceReply           ForceReply
+}
+
+// SendDiceReplyMarkupType is oneOf type of SendDiceReplyMarkup.
+type SendDiceReplyMarkupType string
+
+// Possible values for SendDiceReplyMarkupType.
+const (
+	InlineKeyboardMarkupSendDiceReplyMarkup SendDiceReplyMarkupType = "InlineKeyboardMarkup"
+	ReplyKeyboardMarkupSendDiceReplyMarkup  SendDiceReplyMarkupType = "ReplyKeyboardMarkup"
+	ReplyKeyboardRemoveSendDiceReplyMarkup  SendDiceReplyMarkupType = "ReplyKeyboardRemove"
+	ForceReplySendDiceReplyMarkup           SendDiceReplyMarkupType = "ForceReply"
+)
+
+// IsInlineKeyboardMarkup reports whether SendDiceReplyMarkup is InlineKeyboardMarkup.
+func (s SendDiceReplyMarkup) IsInlineKeyboardMarkup() bool {
+	return s.Type == InlineKeyboardMarkupSendDiceReplyMarkup
+}
+
+// IsReplyKeyboardMarkup reports whether SendDiceReplyMarkup is ReplyKeyboardMarkup.
+func (s SendDiceReplyMarkup) IsReplyKeyboardMarkup() bool {
+	return s.Type == ReplyKeyboardMarkupSendDiceReplyMarkup
+}
+
+// IsReplyKeyboardRemove reports whether SendDiceReplyMarkup is ReplyKeyboardRemove.
+func (s SendDiceReplyMarkup) IsReplyKeyboardRemove() bool {
+	return s.Type == ReplyKeyboardRemoveSendDiceReplyMarkup
+}
+
+// IsForceReply reports whether SendDiceReplyMarkup is ForceReply.
+func (s SendDiceReplyMarkup) IsForceReply() bool { return s.Type == ForceReplySendDiceReplyMarkup }
+
+// SetInlineKeyboardMarkup sets SendDiceReplyMarkup to InlineKeyboardMarkup.
+func (s *SendDiceReplyMarkup) SetInlineKeyboardMarkup(v InlineKeyboardMarkup) {
+	s.Type = InlineKeyboardMarkupSendDiceReplyMarkup
+	s.InlineKeyboardMarkup = v
+}
+
+// GetInlineKeyboardMarkup returns InlineKeyboardMarkup and true boolean if SendDiceReplyMarkup is InlineKeyboardMarkup.
+func (s SendDiceReplyMarkup) GetInlineKeyboardMarkup() (v InlineKeyboardMarkup, ok bool) {
+	if !s.IsInlineKeyboardMarkup() {
+		return v, false
+	}
+	return s.InlineKeyboardMarkup, true
+}
+
+// NewInlineKeyboardMarkupSendDiceReplyMarkup returns new SendDiceReplyMarkup from InlineKeyboardMarkup.
+func NewInlineKeyboardMarkupSendDiceReplyMarkup(v InlineKeyboardMarkup) SendDiceReplyMarkup {
+	var s SendDiceReplyMarkup
+	s.SetInlineKeyboardMarkup(v)
+	return s
+}
+
+// SetReplyKeyboardMarkup sets SendDiceReplyMarkup to ReplyKeyboardMarkup.
+func (s *SendDiceReplyMarkup) SetReplyKeyboardMarkup(v ReplyKeyboardMarkup) {
+	s.Type = ReplyKeyboardMarkupSendDiceReplyMarkup
+	s.ReplyKeyboardMarkup = v
+}
+
+// GetReplyKeyboardMarkup returns ReplyKeyboardMarkup and true boolean if SendDiceReplyMarkup is ReplyKeyboardMarkup.
+func (s SendDiceReplyMarkup) GetReplyKeyboardMarkup() (v ReplyKeyboardMarkup, ok bool) {
+	if !s.IsReplyKeyboardMarkup() {
+		return v, false
+	}
+	return s.ReplyKeyboardMarkup, true
+}
+
+// NewReplyKeyboardMarkupSendDiceReplyMarkup returns new SendDiceReplyMarkup from ReplyKeyboardMarkup.
+func NewReplyKeyboardMarkupSendDiceReplyMarkup(v ReplyKeyboardMarkup) SendDiceReplyMarkup {
+	var s SendDiceReplyMarkup
+	s.SetReplyKeyboardMarkup(v)
+	return s
+}
+
+// SetReplyKeyboardRemove sets SendDiceReplyMarkup to ReplyKeyboardRemove.
+func (s *SendDiceReplyMarkup) SetReplyKeyboardRemove(v ReplyKeyboardRemove) {
+	s.Type = ReplyKeyboardRemoveSendDiceReplyMarkup
+	s.ReplyKeyboardRemove = v
+}
+
+// GetReplyKeyboardRemove returns ReplyKeyboardRemove and true boolean if SendDiceReplyMarkup is ReplyKeyboardRemove.
+func (s SendDiceReplyMarkup) GetReplyKeyboardRemove() (v ReplyKeyboardRemove, ok bool) {
+	if !s.IsReplyKeyboardRemove() {
+		return v, false
+	}
+	return s.ReplyKeyboardRemove, true
+}
+
+// NewReplyKeyboardRemoveSendDiceReplyMarkup returns new SendDiceReplyMarkup from ReplyKeyboardRemove.
+func NewReplyKeyboardRemoveSendDiceReplyMarkup(v ReplyKeyboardRemove) SendDiceReplyMarkup {
+	var s SendDiceReplyMarkup
+	s.SetReplyKeyboardRemove(v)
+	return s
+}
+
+// SetForceReply sets SendDiceReplyMarkup to ForceReply.
+func (s *SendDiceReplyMarkup) SetForceReply(v ForceReply) {
+	s.Type = ForceReplySendDiceReplyMarkup
+	s.ForceReply = v
+}
+
+// GetForceReply returns ForceReply and true boolean if SendDiceReplyMarkup is ForceReply.
+func (s SendDiceReplyMarkup) GetForceReply() (v ForceReply, ok bool) {
+	if !s.IsForceReply() {
+		return v, false
+	}
+	return s.ForceReply, true
+}
+
+// NewForceReplySendDiceReplyMarkup returns new SendDiceReplyMarkup from ForceReply.
+func NewForceReplySendDiceReplyMarkup(v ForceReply) SendDiceReplyMarkup {
+	var s SendDiceReplyMarkup
+	s.SetForceReply(v)
+	return s
+}
+
+// Ref: #/components/schemas/sendDocument
+type SendDocument struct {
+	ChatID                      ID                       `json:"chat_id"`
+	Document                    string                   `json:"document"`
+	Thumb                       OptString                `json:"thumb"`
+	Caption                     OptString                `json:"caption"`
+	ParseMode                   OptString                `json:"parse_mode"`
+	CaptionEntities             []MessageEntity          `json:"caption_entities"`
+	DisableContentTypeDetection OptBool                  `json:"disable_content_type_detection"`
+	DisableNotification         OptBool                  `json:"disable_notification"`
+	ReplyToMessageID            OptInt                   `json:"reply_to_message_id"`
+	AllowSendingWithoutReply    OptBool                  `json:"allow_sending_without_reply"`
+	ReplyMarkup                 *SendDocumentReplyMarkup `json:"reply_markup"`
+}
+
+// SendDocumentReplyMarkup represents sum type.
+type SendDocumentReplyMarkup struct {
+	Type                 SendDocumentReplyMarkupType // switch on this field
+	InlineKeyboardMarkup InlineKeyboardMarkup
+	ReplyKeyboardMarkup  ReplyKeyboardMarkup
+	ReplyKeyboardRemove  ReplyKeyboardRemove
+	ForceReply           ForceReply
+}
+
+// SendDocumentReplyMarkupType is oneOf type of SendDocumentReplyMarkup.
+type SendDocumentReplyMarkupType string
+
+// Possible values for SendDocumentReplyMarkupType.
+const (
+	InlineKeyboardMarkupSendDocumentReplyMarkup SendDocumentReplyMarkupType = "InlineKeyboardMarkup"
+	ReplyKeyboardMarkupSendDocumentReplyMarkup  SendDocumentReplyMarkupType = "ReplyKeyboardMarkup"
+	ReplyKeyboardRemoveSendDocumentReplyMarkup  SendDocumentReplyMarkupType = "ReplyKeyboardRemove"
+	ForceReplySendDocumentReplyMarkup           SendDocumentReplyMarkupType = "ForceReply"
+)
+
+// IsInlineKeyboardMarkup reports whether SendDocumentReplyMarkup is InlineKeyboardMarkup.
+func (s SendDocumentReplyMarkup) IsInlineKeyboardMarkup() bool {
+	return s.Type == InlineKeyboardMarkupSendDocumentReplyMarkup
+}
+
+// IsReplyKeyboardMarkup reports whether SendDocumentReplyMarkup is ReplyKeyboardMarkup.
+func (s SendDocumentReplyMarkup) IsReplyKeyboardMarkup() bool {
+	return s.Type == ReplyKeyboardMarkupSendDocumentReplyMarkup
+}
+
+// IsReplyKeyboardRemove reports whether SendDocumentReplyMarkup is ReplyKeyboardRemove.
+func (s SendDocumentReplyMarkup) IsReplyKeyboardRemove() bool {
+	return s.Type == ReplyKeyboardRemoveSendDocumentReplyMarkup
+}
+
+// IsForceReply reports whether SendDocumentReplyMarkup is ForceReply.
+func (s SendDocumentReplyMarkup) IsForceReply() bool {
+	return s.Type == ForceReplySendDocumentReplyMarkup
+}
+
+// SetInlineKeyboardMarkup sets SendDocumentReplyMarkup to InlineKeyboardMarkup.
+func (s *SendDocumentReplyMarkup) SetInlineKeyboardMarkup(v InlineKeyboardMarkup) {
+	s.Type = InlineKeyboardMarkupSendDocumentReplyMarkup
+	s.InlineKeyboardMarkup = v
+}
+
+// GetInlineKeyboardMarkup returns InlineKeyboardMarkup and true boolean if SendDocumentReplyMarkup is InlineKeyboardMarkup.
+func (s SendDocumentReplyMarkup) GetInlineKeyboardMarkup() (v InlineKeyboardMarkup, ok bool) {
+	if !s.IsInlineKeyboardMarkup() {
+		return v, false
+	}
+	return s.InlineKeyboardMarkup, true
+}
+
+// NewInlineKeyboardMarkupSendDocumentReplyMarkup returns new SendDocumentReplyMarkup from InlineKeyboardMarkup.
+func NewInlineKeyboardMarkupSendDocumentReplyMarkup(v InlineKeyboardMarkup) SendDocumentReplyMarkup {
+	var s SendDocumentReplyMarkup
+	s.SetInlineKeyboardMarkup(v)
+	return s
+}
+
+// SetReplyKeyboardMarkup sets SendDocumentReplyMarkup to ReplyKeyboardMarkup.
+func (s *SendDocumentReplyMarkup) SetReplyKeyboardMarkup(v ReplyKeyboardMarkup) {
+	s.Type = ReplyKeyboardMarkupSendDocumentReplyMarkup
+	s.ReplyKeyboardMarkup = v
+}
+
+// GetReplyKeyboardMarkup returns ReplyKeyboardMarkup and true boolean if SendDocumentReplyMarkup is ReplyKeyboardMarkup.
+func (s SendDocumentReplyMarkup) GetReplyKeyboardMarkup() (v ReplyKeyboardMarkup, ok bool) {
+	if !s.IsReplyKeyboardMarkup() {
+		return v, false
+	}
+	return s.ReplyKeyboardMarkup, true
+}
+
+// NewReplyKeyboardMarkupSendDocumentReplyMarkup returns new SendDocumentReplyMarkup from ReplyKeyboardMarkup.
+func NewReplyKeyboardMarkupSendDocumentReplyMarkup(v ReplyKeyboardMarkup) SendDocumentReplyMarkup {
+	var s SendDocumentReplyMarkup
+	s.SetReplyKeyboardMarkup(v)
+	return s
+}
+
+// SetReplyKeyboardRemove sets SendDocumentReplyMarkup to ReplyKeyboardRemove.
+func (s *SendDocumentReplyMarkup) SetReplyKeyboardRemove(v ReplyKeyboardRemove) {
+	s.Type = ReplyKeyboardRemoveSendDocumentReplyMarkup
+	s.ReplyKeyboardRemove = v
+}
+
+// GetReplyKeyboardRemove returns ReplyKeyboardRemove and true boolean if SendDocumentReplyMarkup is ReplyKeyboardRemove.
+func (s SendDocumentReplyMarkup) GetReplyKeyboardRemove() (v ReplyKeyboardRemove, ok bool) {
+	if !s.IsReplyKeyboardRemove() {
+		return v, false
+	}
+	return s.ReplyKeyboardRemove, true
+}
+
+// NewReplyKeyboardRemoveSendDocumentReplyMarkup returns new SendDocumentReplyMarkup from ReplyKeyboardRemove.
+func NewReplyKeyboardRemoveSendDocumentReplyMarkup(v ReplyKeyboardRemove) SendDocumentReplyMarkup {
+	var s SendDocumentReplyMarkup
+	s.SetReplyKeyboardRemove(v)
+	return s
+}
+
+// SetForceReply sets SendDocumentReplyMarkup to ForceReply.
+func (s *SendDocumentReplyMarkup) SetForceReply(v ForceReply) {
+	s.Type = ForceReplySendDocumentReplyMarkup
+	s.ForceReply = v
+}
+
+// GetForceReply returns ForceReply and true boolean if SendDocumentReplyMarkup is ForceReply.
+func (s SendDocumentReplyMarkup) GetForceReply() (v ForceReply, ok bool) {
+	if !s.IsForceReply() {
+		return v, false
+	}
+	return s.ForceReply, true
+}
+
+// NewForceReplySendDocumentReplyMarkup returns new SendDocumentReplyMarkup from ForceReply.
+func NewForceReplySendDocumentReplyMarkup(v ForceReply) SendDocumentReplyMarkup {
+	var s SendDocumentReplyMarkup
+	s.SetForceReply(v)
+	return s
+}
+
+// Ref: #/components/schemas/sendGame
+type SendGame struct {
+	ChatID                   int64                   `json:"chat_id"`
 	GameShortName            string                  `json:"game_short_name"`
 	DisableNotification      OptBool                 `json:"disable_notification"`
 	ReplyToMessageID         OptInt                  `json:"reply_to_message_id"`
@@ -2315,24 +6477,20 @@ type SendGamePostReqApplicationJSON struct {
 	ReplyMarkup              OptInlineKeyboardMarkup `json:"reply_markup"`
 }
 
-type SendInvoicePostOK struct {
-	Ok     bool    `json:"ok"`
-	Result Message `json:"result"`
-}
-
-func (*SendInvoicePostOK) sendInvoicePostRes() {}
-
-type SendInvoicePostReqApplicationJSON struct {
-	ChatID                    int                     `json:"chat_id"`
+// Ref: #/components/schemas/sendInvoice
+type SendInvoice struct {
+	ChatID                    ID                      `json:"chat_id"`
 	Title                     string                  `json:"title"`
 	Description               string                  `json:"description"`
 	Payload                   string                  `json:"payload"`
 	ProviderToken             string                  `json:"provider_token"`
-	StartParameter            string                  `json:"start_parameter"`
 	Currency                  string                  `json:"currency"`
 	Prices                    []LabeledPrice          `json:"prices"`
+	MaxTipAmount              OptInt                  `json:"max_tip_amount"`
+	SuggestedTipAmounts       []int                   `json:"suggested_tip_amounts"`
+	StartParameter            OptString               `json:"start_parameter"`
 	ProviderData              OptString               `json:"provider_data"`
-	PhotoURL                  OptString               `json:"photo_url"`
+	PhotoURL                  OptURL                  `json:"photo_url"`
 	PhotoSize                 OptInt                  `json:"photo_size"`
 	PhotoWidth                OptInt                  `json:"photo_width"`
 	PhotoHeight               OptInt                  `json:"photo_height"`
@@ -2349,37 +6507,1461 @@ type SendInvoicePostReqApplicationJSON struct {
 	ReplyMarkup               OptInlineKeyboardMarkup `json:"reply_markup"`
 }
 
-type SetGameScorePostReqApplicationJSON struct {
-	UserID             int       `json:"user_id"`
+// Ref: #/components/schemas/sendLocation
+type SendLocation struct {
+	ChatID                   ID                       `json:"chat_id"`
+	Latitude                 float64                  `json:"latitude"`
+	Longitude                float64                  `json:"longitude"`
+	HorizontalAccuracy       OptFloat64               `json:"horizontal_accuracy"`
+	LivePeriod               OptInt                   `json:"live_period"`
+	Heading                  OptInt                   `json:"heading"`
+	ProximityAlertRadius     OptInt                   `json:"proximity_alert_radius"`
+	DisableNotification      OptBool                  `json:"disable_notification"`
+	ReplyToMessageID         OptInt                   `json:"reply_to_message_id"`
+	AllowSendingWithoutReply OptBool                  `json:"allow_sending_without_reply"`
+	ReplyMarkup              *SendLocationReplyMarkup `json:"reply_markup"`
+}
+
+// SendLocationReplyMarkup represents sum type.
+type SendLocationReplyMarkup struct {
+	Type                 SendLocationReplyMarkupType // switch on this field
+	InlineKeyboardMarkup InlineKeyboardMarkup
+	ReplyKeyboardMarkup  ReplyKeyboardMarkup
+	ReplyKeyboardRemove  ReplyKeyboardRemove
+	ForceReply           ForceReply
+}
+
+// SendLocationReplyMarkupType is oneOf type of SendLocationReplyMarkup.
+type SendLocationReplyMarkupType string
+
+// Possible values for SendLocationReplyMarkupType.
+const (
+	InlineKeyboardMarkupSendLocationReplyMarkup SendLocationReplyMarkupType = "InlineKeyboardMarkup"
+	ReplyKeyboardMarkupSendLocationReplyMarkup  SendLocationReplyMarkupType = "ReplyKeyboardMarkup"
+	ReplyKeyboardRemoveSendLocationReplyMarkup  SendLocationReplyMarkupType = "ReplyKeyboardRemove"
+	ForceReplySendLocationReplyMarkup           SendLocationReplyMarkupType = "ForceReply"
+)
+
+// IsInlineKeyboardMarkup reports whether SendLocationReplyMarkup is InlineKeyboardMarkup.
+func (s SendLocationReplyMarkup) IsInlineKeyboardMarkup() bool {
+	return s.Type == InlineKeyboardMarkupSendLocationReplyMarkup
+}
+
+// IsReplyKeyboardMarkup reports whether SendLocationReplyMarkup is ReplyKeyboardMarkup.
+func (s SendLocationReplyMarkup) IsReplyKeyboardMarkup() bool {
+	return s.Type == ReplyKeyboardMarkupSendLocationReplyMarkup
+}
+
+// IsReplyKeyboardRemove reports whether SendLocationReplyMarkup is ReplyKeyboardRemove.
+func (s SendLocationReplyMarkup) IsReplyKeyboardRemove() bool {
+	return s.Type == ReplyKeyboardRemoveSendLocationReplyMarkup
+}
+
+// IsForceReply reports whether SendLocationReplyMarkup is ForceReply.
+func (s SendLocationReplyMarkup) IsForceReply() bool {
+	return s.Type == ForceReplySendLocationReplyMarkup
+}
+
+// SetInlineKeyboardMarkup sets SendLocationReplyMarkup to InlineKeyboardMarkup.
+func (s *SendLocationReplyMarkup) SetInlineKeyboardMarkup(v InlineKeyboardMarkup) {
+	s.Type = InlineKeyboardMarkupSendLocationReplyMarkup
+	s.InlineKeyboardMarkup = v
+}
+
+// GetInlineKeyboardMarkup returns InlineKeyboardMarkup and true boolean if SendLocationReplyMarkup is InlineKeyboardMarkup.
+func (s SendLocationReplyMarkup) GetInlineKeyboardMarkup() (v InlineKeyboardMarkup, ok bool) {
+	if !s.IsInlineKeyboardMarkup() {
+		return v, false
+	}
+	return s.InlineKeyboardMarkup, true
+}
+
+// NewInlineKeyboardMarkupSendLocationReplyMarkup returns new SendLocationReplyMarkup from InlineKeyboardMarkup.
+func NewInlineKeyboardMarkupSendLocationReplyMarkup(v InlineKeyboardMarkup) SendLocationReplyMarkup {
+	var s SendLocationReplyMarkup
+	s.SetInlineKeyboardMarkup(v)
+	return s
+}
+
+// SetReplyKeyboardMarkup sets SendLocationReplyMarkup to ReplyKeyboardMarkup.
+func (s *SendLocationReplyMarkup) SetReplyKeyboardMarkup(v ReplyKeyboardMarkup) {
+	s.Type = ReplyKeyboardMarkupSendLocationReplyMarkup
+	s.ReplyKeyboardMarkup = v
+}
+
+// GetReplyKeyboardMarkup returns ReplyKeyboardMarkup and true boolean if SendLocationReplyMarkup is ReplyKeyboardMarkup.
+func (s SendLocationReplyMarkup) GetReplyKeyboardMarkup() (v ReplyKeyboardMarkup, ok bool) {
+	if !s.IsReplyKeyboardMarkup() {
+		return v, false
+	}
+	return s.ReplyKeyboardMarkup, true
+}
+
+// NewReplyKeyboardMarkupSendLocationReplyMarkup returns new SendLocationReplyMarkup from ReplyKeyboardMarkup.
+func NewReplyKeyboardMarkupSendLocationReplyMarkup(v ReplyKeyboardMarkup) SendLocationReplyMarkup {
+	var s SendLocationReplyMarkup
+	s.SetReplyKeyboardMarkup(v)
+	return s
+}
+
+// SetReplyKeyboardRemove sets SendLocationReplyMarkup to ReplyKeyboardRemove.
+func (s *SendLocationReplyMarkup) SetReplyKeyboardRemove(v ReplyKeyboardRemove) {
+	s.Type = ReplyKeyboardRemoveSendLocationReplyMarkup
+	s.ReplyKeyboardRemove = v
+}
+
+// GetReplyKeyboardRemove returns ReplyKeyboardRemove and true boolean if SendLocationReplyMarkup is ReplyKeyboardRemove.
+func (s SendLocationReplyMarkup) GetReplyKeyboardRemove() (v ReplyKeyboardRemove, ok bool) {
+	if !s.IsReplyKeyboardRemove() {
+		return v, false
+	}
+	return s.ReplyKeyboardRemove, true
+}
+
+// NewReplyKeyboardRemoveSendLocationReplyMarkup returns new SendLocationReplyMarkup from ReplyKeyboardRemove.
+func NewReplyKeyboardRemoveSendLocationReplyMarkup(v ReplyKeyboardRemove) SendLocationReplyMarkup {
+	var s SendLocationReplyMarkup
+	s.SetReplyKeyboardRemove(v)
+	return s
+}
+
+// SetForceReply sets SendLocationReplyMarkup to ForceReply.
+func (s *SendLocationReplyMarkup) SetForceReply(v ForceReply) {
+	s.Type = ForceReplySendLocationReplyMarkup
+	s.ForceReply = v
+}
+
+// GetForceReply returns ForceReply and true boolean if SendLocationReplyMarkup is ForceReply.
+func (s SendLocationReplyMarkup) GetForceReply() (v ForceReply, ok bool) {
+	if !s.IsForceReply() {
+		return v, false
+	}
+	return s.ForceReply, true
+}
+
+// NewForceReplySendLocationReplyMarkup returns new SendLocationReplyMarkup from ForceReply.
+func NewForceReplySendLocationReplyMarkup(v ForceReply) SendLocationReplyMarkup {
+	var s SendLocationReplyMarkup
+	s.SetForceReply(v)
+	return s
+}
+
+// Ref: #/components/schemas/sendMediaGroup
+type SendMediaGroup struct {
+	ChatID                   ID                        `json:"chat_id"`
+	Media                    []SendMediaGroupMediaItem `json:"media"`
+	DisableNotification      OptBool                   `json:"disable_notification"`
+	ReplyToMessageID         OptInt                    `json:"reply_to_message_id"`
+	AllowSendingWithoutReply OptBool                   `json:"allow_sending_without_reply"`
+}
+
+// SendMediaGroupMediaItem represents sum type.
+type SendMediaGroupMediaItem struct {
+	Type               SendMediaGroupMediaItemType // switch on this field
+	InputMediaAudio    InputMediaAudio
+	InputMediaDocument InputMediaDocument
+	InputMediaPhoto    InputMediaPhoto
+	InputMediaVideo    InputMediaVideo
+}
+
+// SendMediaGroupMediaItemType is oneOf type of SendMediaGroupMediaItem.
+type SendMediaGroupMediaItemType string
+
+// Possible values for SendMediaGroupMediaItemType.
+const (
+	InputMediaAudioSendMediaGroupMediaItem    SendMediaGroupMediaItemType = "InputMediaAudio"
+	InputMediaDocumentSendMediaGroupMediaItem SendMediaGroupMediaItemType = "InputMediaDocument"
+	InputMediaPhotoSendMediaGroupMediaItem    SendMediaGroupMediaItemType = "InputMediaPhoto"
+	InputMediaVideoSendMediaGroupMediaItem    SendMediaGroupMediaItemType = "InputMediaVideo"
+)
+
+// IsInputMediaAudio reports whether SendMediaGroupMediaItem is InputMediaAudio.
+func (s SendMediaGroupMediaItem) IsInputMediaAudio() bool {
+	return s.Type == InputMediaAudioSendMediaGroupMediaItem
+}
+
+// IsInputMediaDocument reports whether SendMediaGroupMediaItem is InputMediaDocument.
+func (s SendMediaGroupMediaItem) IsInputMediaDocument() bool {
+	return s.Type == InputMediaDocumentSendMediaGroupMediaItem
+}
+
+// IsInputMediaPhoto reports whether SendMediaGroupMediaItem is InputMediaPhoto.
+func (s SendMediaGroupMediaItem) IsInputMediaPhoto() bool {
+	return s.Type == InputMediaPhotoSendMediaGroupMediaItem
+}
+
+// IsInputMediaVideo reports whether SendMediaGroupMediaItem is InputMediaVideo.
+func (s SendMediaGroupMediaItem) IsInputMediaVideo() bool {
+	return s.Type == InputMediaVideoSendMediaGroupMediaItem
+}
+
+// SetInputMediaAudio sets SendMediaGroupMediaItem to InputMediaAudio.
+func (s *SendMediaGroupMediaItem) SetInputMediaAudio(v InputMediaAudio) {
+	s.Type = InputMediaAudioSendMediaGroupMediaItem
+	s.InputMediaAudio = v
+}
+
+// GetInputMediaAudio returns InputMediaAudio and true boolean if SendMediaGroupMediaItem is InputMediaAudio.
+func (s SendMediaGroupMediaItem) GetInputMediaAudio() (v InputMediaAudio, ok bool) {
+	if !s.IsInputMediaAudio() {
+		return v, false
+	}
+	return s.InputMediaAudio, true
+}
+
+// NewInputMediaAudioSendMediaGroupMediaItem returns new SendMediaGroupMediaItem from InputMediaAudio.
+func NewInputMediaAudioSendMediaGroupMediaItem(v InputMediaAudio) SendMediaGroupMediaItem {
+	var s SendMediaGroupMediaItem
+	s.SetInputMediaAudio(v)
+	return s
+}
+
+// SetInputMediaDocument sets SendMediaGroupMediaItem to InputMediaDocument.
+func (s *SendMediaGroupMediaItem) SetInputMediaDocument(v InputMediaDocument) {
+	s.Type = InputMediaDocumentSendMediaGroupMediaItem
+	s.InputMediaDocument = v
+}
+
+// GetInputMediaDocument returns InputMediaDocument and true boolean if SendMediaGroupMediaItem is InputMediaDocument.
+func (s SendMediaGroupMediaItem) GetInputMediaDocument() (v InputMediaDocument, ok bool) {
+	if !s.IsInputMediaDocument() {
+		return v, false
+	}
+	return s.InputMediaDocument, true
+}
+
+// NewInputMediaDocumentSendMediaGroupMediaItem returns new SendMediaGroupMediaItem from InputMediaDocument.
+func NewInputMediaDocumentSendMediaGroupMediaItem(v InputMediaDocument) SendMediaGroupMediaItem {
+	var s SendMediaGroupMediaItem
+	s.SetInputMediaDocument(v)
+	return s
+}
+
+// SetInputMediaPhoto sets SendMediaGroupMediaItem to InputMediaPhoto.
+func (s *SendMediaGroupMediaItem) SetInputMediaPhoto(v InputMediaPhoto) {
+	s.Type = InputMediaPhotoSendMediaGroupMediaItem
+	s.InputMediaPhoto = v
+}
+
+// GetInputMediaPhoto returns InputMediaPhoto and true boolean if SendMediaGroupMediaItem is InputMediaPhoto.
+func (s SendMediaGroupMediaItem) GetInputMediaPhoto() (v InputMediaPhoto, ok bool) {
+	if !s.IsInputMediaPhoto() {
+		return v, false
+	}
+	return s.InputMediaPhoto, true
+}
+
+// NewInputMediaPhotoSendMediaGroupMediaItem returns new SendMediaGroupMediaItem from InputMediaPhoto.
+func NewInputMediaPhotoSendMediaGroupMediaItem(v InputMediaPhoto) SendMediaGroupMediaItem {
+	var s SendMediaGroupMediaItem
+	s.SetInputMediaPhoto(v)
+	return s
+}
+
+// SetInputMediaVideo sets SendMediaGroupMediaItem to InputMediaVideo.
+func (s *SendMediaGroupMediaItem) SetInputMediaVideo(v InputMediaVideo) {
+	s.Type = InputMediaVideoSendMediaGroupMediaItem
+	s.InputMediaVideo = v
+}
+
+// GetInputMediaVideo returns InputMediaVideo and true boolean if SendMediaGroupMediaItem is InputMediaVideo.
+func (s SendMediaGroupMediaItem) GetInputMediaVideo() (v InputMediaVideo, ok bool) {
+	if !s.IsInputMediaVideo() {
+		return v, false
+	}
+	return s.InputMediaVideo, true
+}
+
+// NewInputMediaVideoSendMediaGroupMediaItem returns new SendMediaGroupMediaItem from InputMediaVideo.
+func NewInputMediaVideoSendMediaGroupMediaItem(v InputMediaVideo) SendMediaGroupMediaItem {
+	var s SendMediaGroupMediaItem
+	s.SetInputMediaVideo(v)
+	return s
+}
+
+// Ref: #/components/schemas/sendMessage
+type SendMessage struct {
+	ChatID                   ID                      `json:"chat_id"`
+	Text                     string                  `json:"text"`
+	ParseMode                OptString               `json:"parse_mode"`
+	Entities                 []MessageEntity         `json:"entities"`
+	DisableWebPagePreview    OptBool                 `json:"disable_web_page_preview"`
+	DisableNotification      OptBool                 `json:"disable_notification"`
+	ReplyToMessageID         OptInt                  `json:"reply_to_message_id"`
+	AllowSendingWithoutReply OptBool                 `json:"allow_sending_without_reply"`
+	ReplyMarkup              *SendMessageReplyMarkup `json:"reply_markup"`
+}
+
+// SendMessageReplyMarkup represents sum type.
+type SendMessageReplyMarkup struct {
+	Type                 SendMessageReplyMarkupType // switch on this field
+	InlineKeyboardMarkup InlineKeyboardMarkup
+	ReplyKeyboardMarkup  ReplyKeyboardMarkup
+	ReplyKeyboardRemove  ReplyKeyboardRemove
+	ForceReply           ForceReply
+}
+
+// SendMessageReplyMarkupType is oneOf type of SendMessageReplyMarkup.
+type SendMessageReplyMarkupType string
+
+// Possible values for SendMessageReplyMarkupType.
+const (
+	InlineKeyboardMarkupSendMessageReplyMarkup SendMessageReplyMarkupType = "InlineKeyboardMarkup"
+	ReplyKeyboardMarkupSendMessageReplyMarkup  SendMessageReplyMarkupType = "ReplyKeyboardMarkup"
+	ReplyKeyboardRemoveSendMessageReplyMarkup  SendMessageReplyMarkupType = "ReplyKeyboardRemove"
+	ForceReplySendMessageReplyMarkup           SendMessageReplyMarkupType = "ForceReply"
+)
+
+// IsInlineKeyboardMarkup reports whether SendMessageReplyMarkup is InlineKeyboardMarkup.
+func (s SendMessageReplyMarkup) IsInlineKeyboardMarkup() bool {
+	return s.Type == InlineKeyboardMarkupSendMessageReplyMarkup
+}
+
+// IsReplyKeyboardMarkup reports whether SendMessageReplyMarkup is ReplyKeyboardMarkup.
+func (s SendMessageReplyMarkup) IsReplyKeyboardMarkup() bool {
+	return s.Type == ReplyKeyboardMarkupSendMessageReplyMarkup
+}
+
+// IsReplyKeyboardRemove reports whether SendMessageReplyMarkup is ReplyKeyboardRemove.
+func (s SendMessageReplyMarkup) IsReplyKeyboardRemove() bool {
+	return s.Type == ReplyKeyboardRemoveSendMessageReplyMarkup
+}
+
+// IsForceReply reports whether SendMessageReplyMarkup is ForceReply.
+func (s SendMessageReplyMarkup) IsForceReply() bool {
+	return s.Type == ForceReplySendMessageReplyMarkup
+}
+
+// SetInlineKeyboardMarkup sets SendMessageReplyMarkup to InlineKeyboardMarkup.
+func (s *SendMessageReplyMarkup) SetInlineKeyboardMarkup(v InlineKeyboardMarkup) {
+	s.Type = InlineKeyboardMarkupSendMessageReplyMarkup
+	s.InlineKeyboardMarkup = v
+}
+
+// GetInlineKeyboardMarkup returns InlineKeyboardMarkup and true boolean if SendMessageReplyMarkup is InlineKeyboardMarkup.
+func (s SendMessageReplyMarkup) GetInlineKeyboardMarkup() (v InlineKeyboardMarkup, ok bool) {
+	if !s.IsInlineKeyboardMarkup() {
+		return v, false
+	}
+	return s.InlineKeyboardMarkup, true
+}
+
+// NewInlineKeyboardMarkupSendMessageReplyMarkup returns new SendMessageReplyMarkup from InlineKeyboardMarkup.
+func NewInlineKeyboardMarkupSendMessageReplyMarkup(v InlineKeyboardMarkup) SendMessageReplyMarkup {
+	var s SendMessageReplyMarkup
+	s.SetInlineKeyboardMarkup(v)
+	return s
+}
+
+// SetReplyKeyboardMarkup sets SendMessageReplyMarkup to ReplyKeyboardMarkup.
+func (s *SendMessageReplyMarkup) SetReplyKeyboardMarkup(v ReplyKeyboardMarkup) {
+	s.Type = ReplyKeyboardMarkupSendMessageReplyMarkup
+	s.ReplyKeyboardMarkup = v
+}
+
+// GetReplyKeyboardMarkup returns ReplyKeyboardMarkup and true boolean if SendMessageReplyMarkup is ReplyKeyboardMarkup.
+func (s SendMessageReplyMarkup) GetReplyKeyboardMarkup() (v ReplyKeyboardMarkup, ok bool) {
+	if !s.IsReplyKeyboardMarkup() {
+		return v, false
+	}
+	return s.ReplyKeyboardMarkup, true
+}
+
+// NewReplyKeyboardMarkupSendMessageReplyMarkup returns new SendMessageReplyMarkup from ReplyKeyboardMarkup.
+func NewReplyKeyboardMarkupSendMessageReplyMarkup(v ReplyKeyboardMarkup) SendMessageReplyMarkup {
+	var s SendMessageReplyMarkup
+	s.SetReplyKeyboardMarkup(v)
+	return s
+}
+
+// SetReplyKeyboardRemove sets SendMessageReplyMarkup to ReplyKeyboardRemove.
+func (s *SendMessageReplyMarkup) SetReplyKeyboardRemove(v ReplyKeyboardRemove) {
+	s.Type = ReplyKeyboardRemoveSendMessageReplyMarkup
+	s.ReplyKeyboardRemove = v
+}
+
+// GetReplyKeyboardRemove returns ReplyKeyboardRemove and true boolean if SendMessageReplyMarkup is ReplyKeyboardRemove.
+func (s SendMessageReplyMarkup) GetReplyKeyboardRemove() (v ReplyKeyboardRemove, ok bool) {
+	if !s.IsReplyKeyboardRemove() {
+		return v, false
+	}
+	return s.ReplyKeyboardRemove, true
+}
+
+// NewReplyKeyboardRemoveSendMessageReplyMarkup returns new SendMessageReplyMarkup from ReplyKeyboardRemove.
+func NewReplyKeyboardRemoveSendMessageReplyMarkup(v ReplyKeyboardRemove) SendMessageReplyMarkup {
+	var s SendMessageReplyMarkup
+	s.SetReplyKeyboardRemove(v)
+	return s
+}
+
+// SetForceReply sets SendMessageReplyMarkup to ForceReply.
+func (s *SendMessageReplyMarkup) SetForceReply(v ForceReply) {
+	s.Type = ForceReplySendMessageReplyMarkup
+	s.ForceReply = v
+}
+
+// GetForceReply returns ForceReply and true boolean if SendMessageReplyMarkup is ForceReply.
+func (s SendMessageReplyMarkup) GetForceReply() (v ForceReply, ok bool) {
+	if !s.IsForceReply() {
+		return v, false
+	}
+	return s.ForceReply, true
+}
+
+// NewForceReplySendMessageReplyMarkup returns new SendMessageReplyMarkup from ForceReply.
+func NewForceReplySendMessageReplyMarkup(v ForceReply) SendMessageReplyMarkup {
+	var s SendMessageReplyMarkup
+	s.SetForceReply(v)
+	return s
+}
+
+// Ref: #/components/schemas/sendPhoto
+type SendPhoto struct {
+	ChatID                   ID                    `json:"chat_id"`
+	Photo                    string                `json:"photo"`
+	Caption                  OptString             `json:"caption"`
+	ParseMode                OptString             `json:"parse_mode"`
+	CaptionEntities          []MessageEntity       `json:"caption_entities"`
+	DisableNotification      OptBool               `json:"disable_notification"`
+	ReplyToMessageID         OptInt                `json:"reply_to_message_id"`
+	AllowSendingWithoutReply OptBool               `json:"allow_sending_without_reply"`
+	ReplyMarkup              *SendPhotoReplyMarkup `json:"reply_markup"`
+}
+
+// SendPhotoReplyMarkup represents sum type.
+type SendPhotoReplyMarkup struct {
+	Type                 SendPhotoReplyMarkupType // switch on this field
+	InlineKeyboardMarkup InlineKeyboardMarkup
+	ReplyKeyboardMarkup  ReplyKeyboardMarkup
+	ReplyKeyboardRemove  ReplyKeyboardRemove
+	ForceReply           ForceReply
+}
+
+// SendPhotoReplyMarkupType is oneOf type of SendPhotoReplyMarkup.
+type SendPhotoReplyMarkupType string
+
+// Possible values for SendPhotoReplyMarkupType.
+const (
+	InlineKeyboardMarkupSendPhotoReplyMarkup SendPhotoReplyMarkupType = "InlineKeyboardMarkup"
+	ReplyKeyboardMarkupSendPhotoReplyMarkup  SendPhotoReplyMarkupType = "ReplyKeyboardMarkup"
+	ReplyKeyboardRemoveSendPhotoReplyMarkup  SendPhotoReplyMarkupType = "ReplyKeyboardRemove"
+	ForceReplySendPhotoReplyMarkup           SendPhotoReplyMarkupType = "ForceReply"
+)
+
+// IsInlineKeyboardMarkup reports whether SendPhotoReplyMarkup is InlineKeyboardMarkup.
+func (s SendPhotoReplyMarkup) IsInlineKeyboardMarkup() bool {
+	return s.Type == InlineKeyboardMarkupSendPhotoReplyMarkup
+}
+
+// IsReplyKeyboardMarkup reports whether SendPhotoReplyMarkup is ReplyKeyboardMarkup.
+func (s SendPhotoReplyMarkup) IsReplyKeyboardMarkup() bool {
+	return s.Type == ReplyKeyboardMarkupSendPhotoReplyMarkup
+}
+
+// IsReplyKeyboardRemove reports whether SendPhotoReplyMarkup is ReplyKeyboardRemove.
+func (s SendPhotoReplyMarkup) IsReplyKeyboardRemove() bool {
+	return s.Type == ReplyKeyboardRemoveSendPhotoReplyMarkup
+}
+
+// IsForceReply reports whether SendPhotoReplyMarkup is ForceReply.
+func (s SendPhotoReplyMarkup) IsForceReply() bool { return s.Type == ForceReplySendPhotoReplyMarkup }
+
+// SetInlineKeyboardMarkup sets SendPhotoReplyMarkup to InlineKeyboardMarkup.
+func (s *SendPhotoReplyMarkup) SetInlineKeyboardMarkup(v InlineKeyboardMarkup) {
+	s.Type = InlineKeyboardMarkupSendPhotoReplyMarkup
+	s.InlineKeyboardMarkup = v
+}
+
+// GetInlineKeyboardMarkup returns InlineKeyboardMarkup and true boolean if SendPhotoReplyMarkup is InlineKeyboardMarkup.
+func (s SendPhotoReplyMarkup) GetInlineKeyboardMarkup() (v InlineKeyboardMarkup, ok bool) {
+	if !s.IsInlineKeyboardMarkup() {
+		return v, false
+	}
+	return s.InlineKeyboardMarkup, true
+}
+
+// NewInlineKeyboardMarkupSendPhotoReplyMarkup returns new SendPhotoReplyMarkup from InlineKeyboardMarkup.
+func NewInlineKeyboardMarkupSendPhotoReplyMarkup(v InlineKeyboardMarkup) SendPhotoReplyMarkup {
+	var s SendPhotoReplyMarkup
+	s.SetInlineKeyboardMarkup(v)
+	return s
+}
+
+// SetReplyKeyboardMarkup sets SendPhotoReplyMarkup to ReplyKeyboardMarkup.
+func (s *SendPhotoReplyMarkup) SetReplyKeyboardMarkup(v ReplyKeyboardMarkup) {
+	s.Type = ReplyKeyboardMarkupSendPhotoReplyMarkup
+	s.ReplyKeyboardMarkup = v
+}
+
+// GetReplyKeyboardMarkup returns ReplyKeyboardMarkup and true boolean if SendPhotoReplyMarkup is ReplyKeyboardMarkup.
+func (s SendPhotoReplyMarkup) GetReplyKeyboardMarkup() (v ReplyKeyboardMarkup, ok bool) {
+	if !s.IsReplyKeyboardMarkup() {
+		return v, false
+	}
+	return s.ReplyKeyboardMarkup, true
+}
+
+// NewReplyKeyboardMarkupSendPhotoReplyMarkup returns new SendPhotoReplyMarkup from ReplyKeyboardMarkup.
+func NewReplyKeyboardMarkupSendPhotoReplyMarkup(v ReplyKeyboardMarkup) SendPhotoReplyMarkup {
+	var s SendPhotoReplyMarkup
+	s.SetReplyKeyboardMarkup(v)
+	return s
+}
+
+// SetReplyKeyboardRemove sets SendPhotoReplyMarkup to ReplyKeyboardRemove.
+func (s *SendPhotoReplyMarkup) SetReplyKeyboardRemove(v ReplyKeyboardRemove) {
+	s.Type = ReplyKeyboardRemoveSendPhotoReplyMarkup
+	s.ReplyKeyboardRemove = v
+}
+
+// GetReplyKeyboardRemove returns ReplyKeyboardRemove and true boolean if SendPhotoReplyMarkup is ReplyKeyboardRemove.
+func (s SendPhotoReplyMarkup) GetReplyKeyboardRemove() (v ReplyKeyboardRemove, ok bool) {
+	if !s.IsReplyKeyboardRemove() {
+		return v, false
+	}
+	return s.ReplyKeyboardRemove, true
+}
+
+// NewReplyKeyboardRemoveSendPhotoReplyMarkup returns new SendPhotoReplyMarkup from ReplyKeyboardRemove.
+func NewReplyKeyboardRemoveSendPhotoReplyMarkup(v ReplyKeyboardRemove) SendPhotoReplyMarkup {
+	var s SendPhotoReplyMarkup
+	s.SetReplyKeyboardRemove(v)
+	return s
+}
+
+// SetForceReply sets SendPhotoReplyMarkup to ForceReply.
+func (s *SendPhotoReplyMarkup) SetForceReply(v ForceReply) {
+	s.Type = ForceReplySendPhotoReplyMarkup
+	s.ForceReply = v
+}
+
+// GetForceReply returns ForceReply and true boolean if SendPhotoReplyMarkup is ForceReply.
+func (s SendPhotoReplyMarkup) GetForceReply() (v ForceReply, ok bool) {
+	if !s.IsForceReply() {
+		return v, false
+	}
+	return s.ForceReply, true
+}
+
+// NewForceReplySendPhotoReplyMarkup returns new SendPhotoReplyMarkup from ForceReply.
+func NewForceReplySendPhotoReplyMarkup(v ForceReply) SendPhotoReplyMarkup {
+	var s SendPhotoReplyMarkup
+	s.SetForceReply(v)
+	return s
+}
+
+// Ref: #/components/schemas/sendPoll
+type SendPoll struct {
+	ChatID                   ID                   `json:"chat_id"`
+	Question                 string               `json:"question"`
+	Options                  []string             `json:"options"`
+	IsAnonymous              OptBool              `json:"is_anonymous"`
+	Type                     OptString            `json:"type"`
+	AllowsMultipleAnswers    OptBool              `json:"allows_multiple_answers"`
+	CorrectOptionID          OptInt               `json:"correct_option_id"`
+	Explanation              OptString            `json:"explanation"`
+	ExplanationParseMode     OptString            `json:"explanation_parse_mode"`
+	ExplanationEntities      []MessageEntity      `json:"explanation_entities"`
+	OpenPeriod               OptInt               `json:"open_period"`
+	CloseDate                OptInt               `json:"close_date"`
+	IsClosed                 OptBool              `json:"is_closed"`
+	DisableNotification      OptBool              `json:"disable_notification"`
+	ReplyToMessageID         OptInt               `json:"reply_to_message_id"`
+	AllowSendingWithoutReply OptBool              `json:"allow_sending_without_reply"`
+	ReplyMarkup              *SendPollReplyMarkup `json:"reply_markup"`
+}
+
+// SendPollReplyMarkup represents sum type.
+type SendPollReplyMarkup struct {
+	Type                 SendPollReplyMarkupType // switch on this field
+	InlineKeyboardMarkup InlineKeyboardMarkup
+	ReplyKeyboardMarkup  ReplyKeyboardMarkup
+	ReplyKeyboardRemove  ReplyKeyboardRemove
+	ForceReply           ForceReply
+}
+
+// SendPollReplyMarkupType is oneOf type of SendPollReplyMarkup.
+type SendPollReplyMarkupType string
+
+// Possible values for SendPollReplyMarkupType.
+const (
+	InlineKeyboardMarkupSendPollReplyMarkup SendPollReplyMarkupType = "InlineKeyboardMarkup"
+	ReplyKeyboardMarkupSendPollReplyMarkup  SendPollReplyMarkupType = "ReplyKeyboardMarkup"
+	ReplyKeyboardRemoveSendPollReplyMarkup  SendPollReplyMarkupType = "ReplyKeyboardRemove"
+	ForceReplySendPollReplyMarkup           SendPollReplyMarkupType = "ForceReply"
+)
+
+// IsInlineKeyboardMarkup reports whether SendPollReplyMarkup is InlineKeyboardMarkup.
+func (s SendPollReplyMarkup) IsInlineKeyboardMarkup() bool {
+	return s.Type == InlineKeyboardMarkupSendPollReplyMarkup
+}
+
+// IsReplyKeyboardMarkup reports whether SendPollReplyMarkup is ReplyKeyboardMarkup.
+func (s SendPollReplyMarkup) IsReplyKeyboardMarkup() bool {
+	return s.Type == ReplyKeyboardMarkupSendPollReplyMarkup
+}
+
+// IsReplyKeyboardRemove reports whether SendPollReplyMarkup is ReplyKeyboardRemove.
+func (s SendPollReplyMarkup) IsReplyKeyboardRemove() bool {
+	return s.Type == ReplyKeyboardRemoveSendPollReplyMarkup
+}
+
+// IsForceReply reports whether SendPollReplyMarkup is ForceReply.
+func (s SendPollReplyMarkup) IsForceReply() bool { return s.Type == ForceReplySendPollReplyMarkup }
+
+// SetInlineKeyboardMarkup sets SendPollReplyMarkup to InlineKeyboardMarkup.
+func (s *SendPollReplyMarkup) SetInlineKeyboardMarkup(v InlineKeyboardMarkup) {
+	s.Type = InlineKeyboardMarkupSendPollReplyMarkup
+	s.InlineKeyboardMarkup = v
+}
+
+// GetInlineKeyboardMarkup returns InlineKeyboardMarkup and true boolean if SendPollReplyMarkup is InlineKeyboardMarkup.
+func (s SendPollReplyMarkup) GetInlineKeyboardMarkup() (v InlineKeyboardMarkup, ok bool) {
+	if !s.IsInlineKeyboardMarkup() {
+		return v, false
+	}
+	return s.InlineKeyboardMarkup, true
+}
+
+// NewInlineKeyboardMarkupSendPollReplyMarkup returns new SendPollReplyMarkup from InlineKeyboardMarkup.
+func NewInlineKeyboardMarkupSendPollReplyMarkup(v InlineKeyboardMarkup) SendPollReplyMarkup {
+	var s SendPollReplyMarkup
+	s.SetInlineKeyboardMarkup(v)
+	return s
+}
+
+// SetReplyKeyboardMarkup sets SendPollReplyMarkup to ReplyKeyboardMarkup.
+func (s *SendPollReplyMarkup) SetReplyKeyboardMarkup(v ReplyKeyboardMarkup) {
+	s.Type = ReplyKeyboardMarkupSendPollReplyMarkup
+	s.ReplyKeyboardMarkup = v
+}
+
+// GetReplyKeyboardMarkup returns ReplyKeyboardMarkup and true boolean if SendPollReplyMarkup is ReplyKeyboardMarkup.
+func (s SendPollReplyMarkup) GetReplyKeyboardMarkup() (v ReplyKeyboardMarkup, ok bool) {
+	if !s.IsReplyKeyboardMarkup() {
+		return v, false
+	}
+	return s.ReplyKeyboardMarkup, true
+}
+
+// NewReplyKeyboardMarkupSendPollReplyMarkup returns new SendPollReplyMarkup from ReplyKeyboardMarkup.
+func NewReplyKeyboardMarkupSendPollReplyMarkup(v ReplyKeyboardMarkup) SendPollReplyMarkup {
+	var s SendPollReplyMarkup
+	s.SetReplyKeyboardMarkup(v)
+	return s
+}
+
+// SetReplyKeyboardRemove sets SendPollReplyMarkup to ReplyKeyboardRemove.
+func (s *SendPollReplyMarkup) SetReplyKeyboardRemove(v ReplyKeyboardRemove) {
+	s.Type = ReplyKeyboardRemoveSendPollReplyMarkup
+	s.ReplyKeyboardRemove = v
+}
+
+// GetReplyKeyboardRemove returns ReplyKeyboardRemove and true boolean if SendPollReplyMarkup is ReplyKeyboardRemove.
+func (s SendPollReplyMarkup) GetReplyKeyboardRemove() (v ReplyKeyboardRemove, ok bool) {
+	if !s.IsReplyKeyboardRemove() {
+		return v, false
+	}
+	return s.ReplyKeyboardRemove, true
+}
+
+// NewReplyKeyboardRemoveSendPollReplyMarkup returns new SendPollReplyMarkup from ReplyKeyboardRemove.
+func NewReplyKeyboardRemoveSendPollReplyMarkup(v ReplyKeyboardRemove) SendPollReplyMarkup {
+	var s SendPollReplyMarkup
+	s.SetReplyKeyboardRemove(v)
+	return s
+}
+
+// SetForceReply sets SendPollReplyMarkup to ForceReply.
+func (s *SendPollReplyMarkup) SetForceReply(v ForceReply) {
+	s.Type = ForceReplySendPollReplyMarkup
+	s.ForceReply = v
+}
+
+// GetForceReply returns ForceReply and true boolean if SendPollReplyMarkup is ForceReply.
+func (s SendPollReplyMarkup) GetForceReply() (v ForceReply, ok bool) {
+	if !s.IsForceReply() {
+		return v, false
+	}
+	return s.ForceReply, true
+}
+
+// NewForceReplySendPollReplyMarkup returns new SendPollReplyMarkup from ForceReply.
+func NewForceReplySendPollReplyMarkup(v ForceReply) SendPollReplyMarkup {
+	var s SendPollReplyMarkup
+	s.SetForceReply(v)
+	return s
+}
+
+// Ref: #/components/schemas/sendSticker
+type SendSticker struct {
+	ChatID                   ID                      `json:"chat_id"`
+	Sticker                  string                  `json:"sticker"`
+	DisableNotification      OptBool                 `json:"disable_notification"`
+	ReplyToMessageID         OptInt                  `json:"reply_to_message_id"`
+	AllowSendingWithoutReply OptBool                 `json:"allow_sending_without_reply"`
+	ReplyMarkup              *SendStickerReplyMarkup `json:"reply_markup"`
+}
+
+// SendStickerReplyMarkup represents sum type.
+type SendStickerReplyMarkup struct {
+	Type                 SendStickerReplyMarkupType // switch on this field
+	InlineKeyboardMarkup InlineKeyboardMarkup
+	ReplyKeyboardMarkup  ReplyKeyboardMarkup
+	ReplyKeyboardRemove  ReplyKeyboardRemove
+	ForceReply           ForceReply
+}
+
+// SendStickerReplyMarkupType is oneOf type of SendStickerReplyMarkup.
+type SendStickerReplyMarkupType string
+
+// Possible values for SendStickerReplyMarkupType.
+const (
+	InlineKeyboardMarkupSendStickerReplyMarkup SendStickerReplyMarkupType = "InlineKeyboardMarkup"
+	ReplyKeyboardMarkupSendStickerReplyMarkup  SendStickerReplyMarkupType = "ReplyKeyboardMarkup"
+	ReplyKeyboardRemoveSendStickerReplyMarkup  SendStickerReplyMarkupType = "ReplyKeyboardRemove"
+	ForceReplySendStickerReplyMarkup           SendStickerReplyMarkupType = "ForceReply"
+)
+
+// IsInlineKeyboardMarkup reports whether SendStickerReplyMarkup is InlineKeyboardMarkup.
+func (s SendStickerReplyMarkup) IsInlineKeyboardMarkup() bool {
+	return s.Type == InlineKeyboardMarkupSendStickerReplyMarkup
+}
+
+// IsReplyKeyboardMarkup reports whether SendStickerReplyMarkup is ReplyKeyboardMarkup.
+func (s SendStickerReplyMarkup) IsReplyKeyboardMarkup() bool {
+	return s.Type == ReplyKeyboardMarkupSendStickerReplyMarkup
+}
+
+// IsReplyKeyboardRemove reports whether SendStickerReplyMarkup is ReplyKeyboardRemove.
+func (s SendStickerReplyMarkup) IsReplyKeyboardRemove() bool {
+	return s.Type == ReplyKeyboardRemoveSendStickerReplyMarkup
+}
+
+// IsForceReply reports whether SendStickerReplyMarkup is ForceReply.
+func (s SendStickerReplyMarkup) IsForceReply() bool {
+	return s.Type == ForceReplySendStickerReplyMarkup
+}
+
+// SetInlineKeyboardMarkup sets SendStickerReplyMarkup to InlineKeyboardMarkup.
+func (s *SendStickerReplyMarkup) SetInlineKeyboardMarkup(v InlineKeyboardMarkup) {
+	s.Type = InlineKeyboardMarkupSendStickerReplyMarkup
+	s.InlineKeyboardMarkup = v
+}
+
+// GetInlineKeyboardMarkup returns InlineKeyboardMarkup and true boolean if SendStickerReplyMarkup is InlineKeyboardMarkup.
+func (s SendStickerReplyMarkup) GetInlineKeyboardMarkup() (v InlineKeyboardMarkup, ok bool) {
+	if !s.IsInlineKeyboardMarkup() {
+		return v, false
+	}
+	return s.InlineKeyboardMarkup, true
+}
+
+// NewInlineKeyboardMarkupSendStickerReplyMarkup returns new SendStickerReplyMarkup from InlineKeyboardMarkup.
+func NewInlineKeyboardMarkupSendStickerReplyMarkup(v InlineKeyboardMarkup) SendStickerReplyMarkup {
+	var s SendStickerReplyMarkup
+	s.SetInlineKeyboardMarkup(v)
+	return s
+}
+
+// SetReplyKeyboardMarkup sets SendStickerReplyMarkup to ReplyKeyboardMarkup.
+func (s *SendStickerReplyMarkup) SetReplyKeyboardMarkup(v ReplyKeyboardMarkup) {
+	s.Type = ReplyKeyboardMarkupSendStickerReplyMarkup
+	s.ReplyKeyboardMarkup = v
+}
+
+// GetReplyKeyboardMarkup returns ReplyKeyboardMarkup and true boolean if SendStickerReplyMarkup is ReplyKeyboardMarkup.
+func (s SendStickerReplyMarkup) GetReplyKeyboardMarkup() (v ReplyKeyboardMarkup, ok bool) {
+	if !s.IsReplyKeyboardMarkup() {
+		return v, false
+	}
+	return s.ReplyKeyboardMarkup, true
+}
+
+// NewReplyKeyboardMarkupSendStickerReplyMarkup returns new SendStickerReplyMarkup from ReplyKeyboardMarkup.
+func NewReplyKeyboardMarkupSendStickerReplyMarkup(v ReplyKeyboardMarkup) SendStickerReplyMarkup {
+	var s SendStickerReplyMarkup
+	s.SetReplyKeyboardMarkup(v)
+	return s
+}
+
+// SetReplyKeyboardRemove sets SendStickerReplyMarkup to ReplyKeyboardRemove.
+func (s *SendStickerReplyMarkup) SetReplyKeyboardRemove(v ReplyKeyboardRemove) {
+	s.Type = ReplyKeyboardRemoveSendStickerReplyMarkup
+	s.ReplyKeyboardRemove = v
+}
+
+// GetReplyKeyboardRemove returns ReplyKeyboardRemove and true boolean if SendStickerReplyMarkup is ReplyKeyboardRemove.
+func (s SendStickerReplyMarkup) GetReplyKeyboardRemove() (v ReplyKeyboardRemove, ok bool) {
+	if !s.IsReplyKeyboardRemove() {
+		return v, false
+	}
+	return s.ReplyKeyboardRemove, true
+}
+
+// NewReplyKeyboardRemoveSendStickerReplyMarkup returns new SendStickerReplyMarkup from ReplyKeyboardRemove.
+func NewReplyKeyboardRemoveSendStickerReplyMarkup(v ReplyKeyboardRemove) SendStickerReplyMarkup {
+	var s SendStickerReplyMarkup
+	s.SetReplyKeyboardRemove(v)
+	return s
+}
+
+// SetForceReply sets SendStickerReplyMarkup to ForceReply.
+func (s *SendStickerReplyMarkup) SetForceReply(v ForceReply) {
+	s.Type = ForceReplySendStickerReplyMarkup
+	s.ForceReply = v
+}
+
+// GetForceReply returns ForceReply and true boolean if SendStickerReplyMarkup is ForceReply.
+func (s SendStickerReplyMarkup) GetForceReply() (v ForceReply, ok bool) {
+	if !s.IsForceReply() {
+		return v, false
+	}
+	return s.ForceReply, true
+}
+
+// NewForceReplySendStickerReplyMarkup returns new SendStickerReplyMarkup from ForceReply.
+func NewForceReplySendStickerReplyMarkup(v ForceReply) SendStickerReplyMarkup {
+	var s SendStickerReplyMarkup
+	s.SetForceReply(v)
+	return s
+}
+
+// Ref: #/components/schemas/sendVenue
+type SendVenue struct {
+	ChatID                   ID                    `json:"chat_id"`
+	Latitude                 float64               `json:"latitude"`
+	Longitude                float64               `json:"longitude"`
+	Title                    string                `json:"title"`
+	Address                  string                `json:"address"`
+	FoursquareID             OptString             `json:"foursquare_id"`
+	FoursquareType           OptString             `json:"foursquare_type"`
+	GooglePlaceID            OptString             `json:"google_place_id"`
+	GooglePlaceType          OptString             `json:"google_place_type"`
+	DisableNotification      OptBool               `json:"disable_notification"`
+	ReplyToMessageID         OptInt                `json:"reply_to_message_id"`
+	AllowSendingWithoutReply OptBool               `json:"allow_sending_without_reply"`
+	ReplyMarkup              *SendVenueReplyMarkup `json:"reply_markup"`
+}
+
+// SendVenueReplyMarkup represents sum type.
+type SendVenueReplyMarkup struct {
+	Type                 SendVenueReplyMarkupType // switch on this field
+	InlineKeyboardMarkup InlineKeyboardMarkup
+	ReplyKeyboardMarkup  ReplyKeyboardMarkup
+	ReplyKeyboardRemove  ReplyKeyboardRemove
+	ForceReply           ForceReply
+}
+
+// SendVenueReplyMarkupType is oneOf type of SendVenueReplyMarkup.
+type SendVenueReplyMarkupType string
+
+// Possible values for SendVenueReplyMarkupType.
+const (
+	InlineKeyboardMarkupSendVenueReplyMarkup SendVenueReplyMarkupType = "InlineKeyboardMarkup"
+	ReplyKeyboardMarkupSendVenueReplyMarkup  SendVenueReplyMarkupType = "ReplyKeyboardMarkup"
+	ReplyKeyboardRemoveSendVenueReplyMarkup  SendVenueReplyMarkupType = "ReplyKeyboardRemove"
+	ForceReplySendVenueReplyMarkup           SendVenueReplyMarkupType = "ForceReply"
+)
+
+// IsInlineKeyboardMarkup reports whether SendVenueReplyMarkup is InlineKeyboardMarkup.
+func (s SendVenueReplyMarkup) IsInlineKeyboardMarkup() bool {
+	return s.Type == InlineKeyboardMarkupSendVenueReplyMarkup
+}
+
+// IsReplyKeyboardMarkup reports whether SendVenueReplyMarkup is ReplyKeyboardMarkup.
+func (s SendVenueReplyMarkup) IsReplyKeyboardMarkup() bool {
+	return s.Type == ReplyKeyboardMarkupSendVenueReplyMarkup
+}
+
+// IsReplyKeyboardRemove reports whether SendVenueReplyMarkup is ReplyKeyboardRemove.
+func (s SendVenueReplyMarkup) IsReplyKeyboardRemove() bool {
+	return s.Type == ReplyKeyboardRemoveSendVenueReplyMarkup
+}
+
+// IsForceReply reports whether SendVenueReplyMarkup is ForceReply.
+func (s SendVenueReplyMarkup) IsForceReply() bool { return s.Type == ForceReplySendVenueReplyMarkup }
+
+// SetInlineKeyboardMarkup sets SendVenueReplyMarkup to InlineKeyboardMarkup.
+func (s *SendVenueReplyMarkup) SetInlineKeyboardMarkup(v InlineKeyboardMarkup) {
+	s.Type = InlineKeyboardMarkupSendVenueReplyMarkup
+	s.InlineKeyboardMarkup = v
+}
+
+// GetInlineKeyboardMarkup returns InlineKeyboardMarkup and true boolean if SendVenueReplyMarkup is InlineKeyboardMarkup.
+func (s SendVenueReplyMarkup) GetInlineKeyboardMarkup() (v InlineKeyboardMarkup, ok bool) {
+	if !s.IsInlineKeyboardMarkup() {
+		return v, false
+	}
+	return s.InlineKeyboardMarkup, true
+}
+
+// NewInlineKeyboardMarkupSendVenueReplyMarkup returns new SendVenueReplyMarkup from InlineKeyboardMarkup.
+func NewInlineKeyboardMarkupSendVenueReplyMarkup(v InlineKeyboardMarkup) SendVenueReplyMarkup {
+	var s SendVenueReplyMarkup
+	s.SetInlineKeyboardMarkup(v)
+	return s
+}
+
+// SetReplyKeyboardMarkup sets SendVenueReplyMarkup to ReplyKeyboardMarkup.
+func (s *SendVenueReplyMarkup) SetReplyKeyboardMarkup(v ReplyKeyboardMarkup) {
+	s.Type = ReplyKeyboardMarkupSendVenueReplyMarkup
+	s.ReplyKeyboardMarkup = v
+}
+
+// GetReplyKeyboardMarkup returns ReplyKeyboardMarkup and true boolean if SendVenueReplyMarkup is ReplyKeyboardMarkup.
+func (s SendVenueReplyMarkup) GetReplyKeyboardMarkup() (v ReplyKeyboardMarkup, ok bool) {
+	if !s.IsReplyKeyboardMarkup() {
+		return v, false
+	}
+	return s.ReplyKeyboardMarkup, true
+}
+
+// NewReplyKeyboardMarkupSendVenueReplyMarkup returns new SendVenueReplyMarkup from ReplyKeyboardMarkup.
+func NewReplyKeyboardMarkupSendVenueReplyMarkup(v ReplyKeyboardMarkup) SendVenueReplyMarkup {
+	var s SendVenueReplyMarkup
+	s.SetReplyKeyboardMarkup(v)
+	return s
+}
+
+// SetReplyKeyboardRemove sets SendVenueReplyMarkup to ReplyKeyboardRemove.
+func (s *SendVenueReplyMarkup) SetReplyKeyboardRemove(v ReplyKeyboardRemove) {
+	s.Type = ReplyKeyboardRemoveSendVenueReplyMarkup
+	s.ReplyKeyboardRemove = v
+}
+
+// GetReplyKeyboardRemove returns ReplyKeyboardRemove and true boolean if SendVenueReplyMarkup is ReplyKeyboardRemove.
+func (s SendVenueReplyMarkup) GetReplyKeyboardRemove() (v ReplyKeyboardRemove, ok bool) {
+	if !s.IsReplyKeyboardRemove() {
+		return v, false
+	}
+	return s.ReplyKeyboardRemove, true
+}
+
+// NewReplyKeyboardRemoveSendVenueReplyMarkup returns new SendVenueReplyMarkup from ReplyKeyboardRemove.
+func NewReplyKeyboardRemoveSendVenueReplyMarkup(v ReplyKeyboardRemove) SendVenueReplyMarkup {
+	var s SendVenueReplyMarkup
+	s.SetReplyKeyboardRemove(v)
+	return s
+}
+
+// SetForceReply sets SendVenueReplyMarkup to ForceReply.
+func (s *SendVenueReplyMarkup) SetForceReply(v ForceReply) {
+	s.Type = ForceReplySendVenueReplyMarkup
+	s.ForceReply = v
+}
+
+// GetForceReply returns ForceReply and true boolean if SendVenueReplyMarkup is ForceReply.
+func (s SendVenueReplyMarkup) GetForceReply() (v ForceReply, ok bool) {
+	if !s.IsForceReply() {
+		return v, false
+	}
+	return s.ForceReply, true
+}
+
+// NewForceReplySendVenueReplyMarkup returns new SendVenueReplyMarkup from ForceReply.
+func NewForceReplySendVenueReplyMarkup(v ForceReply) SendVenueReplyMarkup {
+	var s SendVenueReplyMarkup
+	s.SetForceReply(v)
+	return s
+}
+
+// Ref: #/components/schemas/sendVideo
+type SendVideo struct {
+	ChatID                   ID                    `json:"chat_id"`
+	Video                    string                `json:"video"`
+	Duration                 OptInt                `json:"duration"`
+	Width                    OptInt                `json:"width"`
+	Height                   OptInt                `json:"height"`
+	Thumb                    OptString             `json:"thumb"`
+	Caption                  OptString             `json:"caption"`
+	ParseMode                OptString             `json:"parse_mode"`
+	CaptionEntities          []MessageEntity       `json:"caption_entities"`
+	SupportsStreaming        OptBool               `json:"supports_streaming"`
+	DisableNotification      OptBool               `json:"disable_notification"`
+	ReplyToMessageID         OptInt                `json:"reply_to_message_id"`
+	AllowSendingWithoutReply OptBool               `json:"allow_sending_without_reply"`
+	ReplyMarkup              *SendVideoReplyMarkup `json:"reply_markup"`
+}
+
+// Ref: #/components/schemas/sendVideoNote
+type SendVideoNote struct {
+	ChatID                   ID                        `json:"chat_id"`
+	VideoNote                string                    `json:"video_note"`
+	Duration                 OptInt                    `json:"duration"`
+	Length                   OptInt                    `json:"length"`
+	Thumb                    OptString                 `json:"thumb"`
+	DisableNotification      OptBool                   `json:"disable_notification"`
+	ReplyToMessageID         OptInt                    `json:"reply_to_message_id"`
+	AllowSendingWithoutReply OptBool                   `json:"allow_sending_without_reply"`
+	ReplyMarkup              *SendVideoNoteReplyMarkup `json:"reply_markup"`
+}
+
+// SendVideoNoteReplyMarkup represents sum type.
+type SendVideoNoteReplyMarkup struct {
+	Type                 SendVideoNoteReplyMarkupType // switch on this field
+	InlineKeyboardMarkup InlineKeyboardMarkup
+	ReplyKeyboardMarkup  ReplyKeyboardMarkup
+	ReplyKeyboardRemove  ReplyKeyboardRemove
+	ForceReply           ForceReply
+}
+
+// SendVideoNoteReplyMarkupType is oneOf type of SendVideoNoteReplyMarkup.
+type SendVideoNoteReplyMarkupType string
+
+// Possible values for SendVideoNoteReplyMarkupType.
+const (
+	InlineKeyboardMarkupSendVideoNoteReplyMarkup SendVideoNoteReplyMarkupType = "InlineKeyboardMarkup"
+	ReplyKeyboardMarkupSendVideoNoteReplyMarkup  SendVideoNoteReplyMarkupType = "ReplyKeyboardMarkup"
+	ReplyKeyboardRemoveSendVideoNoteReplyMarkup  SendVideoNoteReplyMarkupType = "ReplyKeyboardRemove"
+	ForceReplySendVideoNoteReplyMarkup           SendVideoNoteReplyMarkupType = "ForceReply"
+)
+
+// IsInlineKeyboardMarkup reports whether SendVideoNoteReplyMarkup is InlineKeyboardMarkup.
+func (s SendVideoNoteReplyMarkup) IsInlineKeyboardMarkup() bool {
+	return s.Type == InlineKeyboardMarkupSendVideoNoteReplyMarkup
+}
+
+// IsReplyKeyboardMarkup reports whether SendVideoNoteReplyMarkup is ReplyKeyboardMarkup.
+func (s SendVideoNoteReplyMarkup) IsReplyKeyboardMarkup() bool {
+	return s.Type == ReplyKeyboardMarkupSendVideoNoteReplyMarkup
+}
+
+// IsReplyKeyboardRemove reports whether SendVideoNoteReplyMarkup is ReplyKeyboardRemove.
+func (s SendVideoNoteReplyMarkup) IsReplyKeyboardRemove() bool {
+	return s.Type == ReplyKeyboardRemoveSendVideoNoteReplyMarkup
+}
+
+// IsForceReply reports whether SendVideoNoteReplyMarkup is ForceReply.
+func (s SendVideoNoteReplyMarkup) IsForceReply() bool {
+	return s.Type == ForceReplySendVideoNoteReplyMarkup
+}
+
+// SetInlineKeyboardMarkup sets SendVideoNoteReplyMarkup to InlineKeyboardMarkup.
+func (s *SendVideoNoteReplyMarkup) SetInlineKeyboardMarkup(v InlineKeyboardMarkup) {
+	s.Type = InlineKeyboardMarkupSendVideoNoteReplyMarkup
+	s.InlineKeyboardMarkup = v
+}
+
+// GetInlineKeyboardMarkup returns InlineKeyboardMarkup and true boolean if SendVideoNoteReplyMarkup is InlineKeyboardMarkup.
+func (s SendVideoNoteReplyMarkup) GetInlineKeyboardMarkup() (v InlineKeyboardMarkup, ok bool) {
+	if !s.IsInlineKeyboardMarkup() {
+		return v, false
+	}
+	return s.InlineKeyboardMarkup, true
+}
+
+// NewInlineKeyboardMarkupSendVideoNoteReplyMarkup returns new SendVideoNoteReplyMarkup from InlineKeyboardMarkup.
+func NewInlineKeyboardMarkupSendVideoNoteReplyMarkup(v InlineKeyboardMarkup) SendVideoNoteReplyMarkup {
+	var s SendVideoNoteReplyMarkup
+	s.SetInlineKeyboardMarkup(v)
+	return s
+}
+
+// SetReplyKeyboardMarkup sets SendVideoNoteReplyMarkup to ReplyKeyboardMarkup.
+func (s *SendVideoNoteReplyMarkup) SetReplyKeyboardMarkup(v ReplyKeyboardMarkup) {
+	s.Type = ReplyKeyboardMarkupSendVideoNoteReplyMarkup
+	s.ReplyKeyboardMarkup = v
+}
+
+// GetReplyKeyboardMarkup returns ReplyKeyboardMarkup and true boolean if SendVideoNoteReplyMarkup is ReplyKeyboardMarkup.
+func (s SendVideoNoteReplyMarkup) GetReplyKeyboardMarkup() (v ReplyKeyboardMarkup, ok bool) {
+	if !s.IsReplyKeyboardMarkup() {
+		return v, false
+	}
+	return s.ReplyKeyboardMarkup, true
+}
+
+// NewReplyKeyboardMarkupSendVideoNoteReplyMarkup returns new SendVideoNoteReplyMarkup from ReplyKeyboardMarkup.
+func NewReplyKeyboardMarkupSendVideoNoteReplyMarkup(v ReplyKeyboardMarkup) SendVideoNoteReplyMarkup {
+	var s SendVideoNoteReplyMarkup
+	s.SetReplyKeyboardMarkup(v)
+	return s
+}
+
+// SetReplyKeyboardRemove sets SendVideoNoteReplyMarkup to ReplyKeyboardRemove.
+func (s *SendVideoNoteReplyMarkup) SetReplyKeyboardRemove(v ReplyKeyboardRemove) {
+	s.Type = ReplyKeyboardRemoveSendVideoNoteReplyMarkup
+	s.ReplyKeyboardRemove = v
+}
+
+// GetReplyKeyboardRemove returns ReplyKeyboardRemove and true boolean if SendVideoNoteReplyMarkup is ReplyKeyboardRemove.
+func (s SendVideoNoteReplyMarkup) GetReplyKeyboardRemove() (v ReplyKeyboardRemove, ok bool) {
+	if !s.IsReplyKeyboardRemove() {
+		return v, false
+	}
+	return s.ReplyKeyboardRemove, true
+}
+
+// NewReplyKeyboardRemoveSendVideoNoteReplyMarkup returns new SendVideoNoteReplyMarkup from ReplyKeyboardRemove.
+func NewReplyKeyboardRemoveSendVideoNoteReplyMarkup(v ReplyKeyboardRemove) SendVideoNoteReplyMarkup {
+	var s SendVideoNoteReplyMarkup
+	s.SetReplyKeyboardRemove(v)
+	return s
+}
+
+// SetForceReply sets SendVideoNoteReplyMarkup to ForceReply.
+func (s *SendVideoNoteReplyMarkup) SetForceReply(v ForceReply) {
+	s.Type = ForceReplySendVideoNoteReplyMarkup
+	s.ForceReply = v
+}
+
+// GetForceReply returns ForceReply and true boolean if SendVideoNoteReplyMarkup is ForceReply.
+func (s SendVideoNoteReplyMarkup) GetForceReply() (v ForceReply, ok bool) {
+	if !s.IsForceReply() {
+		return v, false
+	}
+	return s.ForceReply, true
+}
+
+// NewForceReplySendVideoNoteReplyMarkup returns new SendVideoNoteReplyMarkup from ForceReply.
+func NewForceReplySendVideoNoteReplyMarkup(v ForceReply) SendVideoNoteReplyMarkup {
+	var s SendVideoNoteReplyMarkup
+	s.SetForceReply(v)
+	return s
+}
+
+// SendVideoReplyMarkup represents sum type.
+type SendVideoReplyMarkup struct {
+	Type                 SendVideoReplyMarkupType // switch on this field
+	InlineKeyboardMarkup InlineKeyboardMarkup
+	ReplyKeyboardMarkup  ReplyKeyboardMarkup
+	ReplyKeyboardRemove  ReplyKeyboardRemove
+	ForceReply           ForceReply
+}
+
+// SendVideoReplyMarkupType is oneOf type of SendVideoReplyMarkup.
+type SendVideoReplyMarkupType string
+
+// Possible values for SendVideoReplyMarkupType.
+const (
+	InlineKeyboardMarkupSendVideoReplyMarkup SendVideoReplyMarkupType = "InlineKeyboardMarkup"
+	ReplyKeyboardMarkupSendVideoReplyMarkup  SendVideoReplyMarkupType = "ReplyKeyboardMarkup"
+	ReplyKeyboardRemoveSendVideoReplyMarkup  SendVideoReplyMarkupType = "ReplyKeyboardRemove"
+	ForceReplySendVideoReplyMarkup           SendVideoReplyMarkupType = "ForceReply"
+)
+
+// IsInlineKeyboardMarkup reports whether SendVideoReplyMarkup is InlineKeyboardMarkup.
+func (s SendVideoReplyMarkup) IsInlineKeyboardMarkup() bool {
+	return s.Type == InlineKeyboardMarkupSendVideoReplyMarkup
+}
+
+// IsReplyKeyboardMarkup reports whether SendVideoReplyMarkup is ReplyKeyboardMarkup.
+func (s SendVideoReplyMarkup) IsReplyKeyboardMarkup() bool {
+	return s.Type == ReplyKeyboardMarkupSendVideoReplyMarkup
+}
+
+// IsReplyKeyboardRemove reports whether SendVideoReplyMarkup is ReplyKeyboardRemove.
+func (s SendVideoReplyMarkup) IsReplyKeyboardRemove() bool {
+	return s.Type == ReplyKeyboardRemoveSendVideoReplyMarkup
+}
+
+// IsForceReply reports whether SendVideoReplyMarkup is ForceReply.
+func (s SendVideoReplyMarkup) IsForceReply() bool { return s.Type == ForceReplySendVideoReplyMarkup }
+
+// SetInlineKeyboardMarkup sets SendVideoReplyMarkup to InlineKeyboardMarkup.
+func (s *SendVideoReplyMarkup) SetInlineKeyboardMarkup(v InlineKeyboardMarkup) {
+	s.Type = InlineKeyboardMarkupSendVideoReplyMarkup
+	s.InlineKeyboardMarkup = v
+}
+
+// GetInlineKeyboardMarkup returns InlineKeyboardMarkup and true boolean if SendVideoReplyMarkup is InlineKeyboardMarkup.
+func (s SendVideoReplyMarkup) GetInlineKeyboardMarkup() (v InlineKeyboardMarkup, ok bool) {
+	if !s.IsInlineKeyboardMarkup() {
+		return v, false
+	}
+	return s.InlineKeyboardMarkup, true
+}
+
+// NewInlineKeyboardMarkupSendVideoReplyMarkup returns new SendVideoReplyMarkup from InlineKeyboardMarkup.
+func NewInlineKeyboardMarkupSendVideoReplyMarkup(v InlineKeyboardMarkup) SendVideoReplyMarkup {
+	var s SendVideoReplyMarkup
+	s.SetInlineKeyboardMarkup(v)
+	return s
+}
+
+// SetReplyKeyboardMarkup sets SendVideoReplyMarkup to ReplyKeyboardMarkup.
+func (s *SendVideoReplyMarkup) SetReplyKeyboardMarkup(v ReplyKeyboardMarkup) {
+	s.Type = ReplyKeyboardMarkupSendVideoReplyMarkup
+	s.ReplyKeyboardMarkup = v
+}
+
+// GetReplyKeyboardMarkup returns ReplyKeyboardMarkup and true boolean if SendVideoReplyMarkup is ReplyKeyboardMarkup.
+func (s SendVideoReplyMarkup) GetReplyKeyboardMarkup() (v ReplyKeyboardMarkup, ok bool) {
+	if !s.IsReplyKeyboardMarkup() {
+		return v, false
+	}
+	return s.ReplyKeyboardMarkup, true
+}
+
+// NewReplyKeyboardMarkupSendVideoReplyMarkup returns new SendVideoReplyMarkup from ReplyKeyboardMarkup.
+func NewReplyKeyboardMarkupSendVideoReplyMarkup(v ReplyKeyboardMarkup) SendVideoReplyMarkup {
+	var s SendVideoReplyMarkup
+	s.SetReplyKeyboardMarkup(v)
+	return s
+}
+
+// SetReplyKeyboardRemove sets SendVideoReplyMarkup to ReplyKeyboardRemove.
+func (s *SendVideoReplyMarkup) SetReplyKeyboardRemove(v ReplyKeyboardRemove) {
+	s.Type = ReplyKeyboardRemoveSendVideoReplyMarkup
+	s.ReplyKeyboardRemove = v
+}
+
+// GetReplyKeyboardRemove returns ReplyKeyboardRemove and true boolean if SendVideoReplyMarkup is ReplyKeyboardRemove.
+func (s SendVideoReplyMarkup) GetReplyKeyboardRemove() (v ReplyKeyboardRemove, ok bool) {
+	if !s.IsReplyKeyboardRemove() {
+		return v, false
+	}
+	return s.ReplyKeyboardRemove, true
+}
+
+// NewReplyKeyboardRemoveSendVideoReplyMarkup returns new SendVideoReplyMarkup from ReplyKeyboardRemove.
+func NewReplyKeyboardRemoveSendVideoReplyMarkup(v ReplyKeyboardRemove) SendVideoReplyMarkup {
+	var s SendVideoReplyMarkup
+	s.SetReplyKeyboardRemove(v)
+	return s
+}
+
+// SetForceReply sets SendVideoReplyMarkup to ForceReply.
+func (s *SendVideoReplyMarkup) SetForceReply(v ForceReply) {
+	s.Type = ForceReplySendVideoReplyMarkup
+	s.ForceReply = v
+}
+
+// GetForceReply returns ForceReply and true boolean if SendVideoReplyMarkup is ForceReply.
+func (s SendVideoReplyMarkup) GetForceReply() (v ForceReply, ok bool) {
+	if !s.IsForceReply() {
+		return v, false
+	}
+	return s.ForceReply, true
+}
+
+// NewForceReplySendVideoReplyMarkup returns new SendVideoReplyMarkup from ForceReply.
+func NewForceReplySendVideoReplyMarkup(v ForceReply) SendVideoReplyMarkup {
+	var s SendVideoReplyMarkup
+	s.SetForceReply(v)
+	return s
+}
+
+// Ref: #/components/schemas/sendVoice
+type SendVoice struct {
+	ChatID                   ID                    `json:"chat_id"`
+	Voice                    string                `json:"voice"`
+	Caption                  OptString             `json:"caption"`
+	ParseMode                OptString             `json:"parse_mode"`
+	CaptionEntities          []MessageEntity       `json:"caption_entities"`
+	Duration                 OptInt                `json:"duration"`
+	DisableNotification      OptBool               `json:"disable_notification"`
+	ReplyToMessageID         OptInt                `json:"reply_to_message_id"`
+	AllowSendingWithoutReply OptBool               `json:"allow_sending_without_reply"`
+	ReplyMarkup              *SendVoiceReplyMarkup `json:"reply_markup"`
+}
+
+// SendVoiceReplyMarkup represents sum type.
+type SendVoiceReplyMarkup struct {
+	Type                 SendVoiceReplyMarkupType // switch on this field
+	InlineKeyboardMarkup InlineKeyboardMarkup
+	ReplyKeyboardMarkup  ReplyKeyboardMarkup
+	ReplyKeyboardRemove  ReplyKeyboardRemove
+	ForceReply           ForceReply
+}
+
+// SendVoiceReplyMarkupType is oneOf type of SendVoiceReplyMarkup.
+type SendVoiceReplyMarkupType string
+
+// Possible values for SendVoiceReplyMarkupType.
+const (
+	InlineKeyboardMarkupSendVoiceReplyMarkup SendVoiceReplyMarkupType = "InlineKeyboardMarkup"
+	ReplyKeyboardMarkupSendVoiceReplyMarkup  SendVoiceReplyMarkupType = "ReplyKeyboardMarkup"
+	ReplyKeyboardRemoveSendVoiceReplyMarkup  SendVoiceReplyMarkupType = "ReplyKeyboardRemove"
+	ForceReplySendVoiceReplyMarkup           SendVoiceReplyMarkupType = "ForceReply"
+)
+
+// IsInlineKeyboardMarkup reports whether SendVoiceReplyMarkup is InlineKeyboardMarkup.
+func (s SendVoiceReplyMarkup) IsInlineKeyboardMarkup() bool {
+	return s.Type == InlineKeyboardMarkupSendVoiceReplyMarkup
+}
+
+// IsReplyKeyboardMarkup reports whether SendVoiceReplyMarkup is ReplyKeyboardMarkup.
+func (s SendVoiceReplyMarkup) IsReplyKeyboardMarkup() bool {
+	return s.Type == ReplyKeyboardMarkupSendVoiceReplyMarkup
+}
+
+// IsReplyKeyboardRemove reports whether SendVoiceReplyMarkup is ReplyKeyboardRemove.
+func (s SendVoiceReplyMarkup) IsReplyKeyboardRemove() bool {
+	return s.Type == ReplyKeyboardRemoveSendVoiceReplyMarkup
+}
+
+// IsForceReply reports whether SendVoiceReplyMarkup is ForceReply.
+func (s SendVoiceReplyMarkup) IsForceReply() bool { return s.Type == ForceReplySendVoiceReplyMarkup }
+
+// SetInlineKeyboardMarkup sets SendVoiceReplyMarkup to InlineKeyboardMarkup.
+func (s *SendVoiceReplyMarkup) SetInlineKeyboardMarkup(v InlineKeyboardMarkup) {
+	s.Type = InlineKeyboardMarkupSendVoiceReplyMarkup
+	s.InlineKeyboardMarkup = v
+}
+
+// GetInlineKeyboardMarkup returns InlineKeyboardMarkup and true boolean if SendVoiceReplyMarkup is InlineKeyboardMarkup.
+func (s SendVoiceReplyMarkup) GetInlineKeyboardMarkup() (v InlineKeyboardMarkup, ok bool) {
+	if !s.IsInlineKeyboardMarkup() {
+		return v, false
+	}
+	return s.InlineKeyboardMarkup, true
+}
+
+// NewInlineKeyboardMarkupSendVoiceReplyMarkup returns new SendVoiceReplyMarkup from InlineKeyboardMarkup.
+func NewInlineKeyboardMarkupSendVoiceReplyMarkup(v InlineKeyboardMarkup) SendVoiceReplyMarkup {
+	var s SendVoiceReplyMarkup
+	s.SetInlineKeyboardMarkup(v)
+	return s
+}
+
+// SetReplyKeyboardMarkup sets SendVoiceReplyMarkup to ReplyKeyboardMarkup.
+func (s *SendVoiceReplyMarkup) SetReplyKeyboardMarkup(v ReplyKeyboardMarkup) {
+	s.Type = ReplyKeyboardMarkupSendVoiceReplyMarkup
+	s.ReplyKeyboardMarkup = v
+}
+
+// GetReplyKeyboardMarkup returns ReplyKeyboardMarkup and true boolean if SendVoiceReplyMarkup is ReplyKeyboardMarkup.
+func (s SendVoiceReplyMarkup) GetReplyKeyboardMarkup() (v ReplyKeyboardMarkup, ok bool) {
+	if !s.IsReplyKeyboardMarkup() {
+		return v, false
+	}
+	return s.ReplyKeyboardMarkup, true
+}
+
+// NewReplyKeyboardMarkupSendVoiceReplyMarkup returns new SendVoiceReplyMarkup from ReplyKeyboardMarkup.
+func NewReplyKeyboardMarkupSendVoiceReplyMarkup(v ReplyKeyboardMarkup) SendVoiceReplyMarkup {
+	var s SendVoiceReplyMarkup
+	s.SetReplyKeyboardMarkup(v)
+	return s
+}
+
+// SetReplyKeyboardRemove sets SendVoiceReplyMarkup to ReplyKeyboardRemove.
+func (s *SendVoiceReplyMarkup) SetReplyKeyboardRemove(v ReplyKeyboardRemove) {
+	s.Type = ReplyKeyboardRemoveSendVoiceReplyMarkup
+	s.ReplyKeyboardRemove = v
+}
+
+// GetReplyKeyboardRemove returns ReplyKeyboardRemove and true boolean if SendVoiceReplyMarkup is ReplyKeyboardRemove.
+func (s SendVoiceReplyMarkup) GetReplyKeyboardRemove() (v ReplyKeyboardRemove, ok bool) {
+	if !s.IsReplyKeyboardRemove() {
+		return v, false
+	}
+	return s.ReplyKeyboardRemove, true
+}
+
+// NewReplyKeyboardRemoveSendVoiceReplyMarkup returns new SendVoiceReplyMarkup from ReplyKeyboardRemove.
+func NewReplyKeyboardRemoveSendVoiceReplyMarkup(v ReplyKeyboardRemove) SendVoiceReplyMarkup {
+	var s SendVoiceReplyMarkup
+	s.SetReplyKeyboardRemove(v)
+	return s
+}
+
+// SetForceReply sets SendVoiceReplyMarkup to ForceReply.
+func (s *SendVoiceReplyMarkup) SetForceReply(v ForceReply) {
+	s.Type = ForceReplySendVoiceReplyMarkup
+	s.ForceReply = v
+}
+
+// GetForceReply returns ForceReply and true boolean if SendVoiceReplyMarkup is ForceReply.
+func (s SendVoiceReplyMarkup) GetForceReply() (v ForceReply, ok bool) {
+	if !s.IsForceReply() {
+		return v, false
+	}
+	return s.ForceReply, true
+}
+
+// NewForceReplySendVoiceReplyMarkup returns new SendVoiceReplyMarkup from ForceReply.
+func NewForceReplySendVoiceReplyMarkup(v ForceReply) SendVoiceReplyMarkup {
+	var s SendVoiceReplyMarkup
+	s.SetForceReply(v)
+	return s
+}
+
+// Ref: #/components/schemas/setChatAdministratorCustomTitle
+type SetChatAdministratorCustomTitle struct {
+	ChatID      ID     `json:"chat_id"`
+	UserID      int64  `json:"user_id"`
+	CustomTitle string `json:"custom_title"`
+}
+
+// Ref: #/components/schemas/setChatDescription
+type SetChatDescription struct {
+	ChatID      ID        `json:"chat_id"`
+	Description OptString `json:"description"`
+}
+
+// Ref: #/components/schemas/setChatPermissions
+type SetChatPermissions struct {
+	ChatID      ID              `json:"chat_id"`
+	Permissions ChatPermissions `json:"permissions"`
+}
+
+// Ref: #/components/schemas/setChatPhoto
+type SetChatPhoto struct {
+	ChatID ID     `json:"chat_id"`
+	Photo  string `json:"photo"`
+}
+
+// Ref: #/components/schemas/setChatStickerSet
+type SetChatStickerSet struct {
+	ChatID         ID     `json:"chat_id"`
+	StickerSetName string `json:"sticker_set_name"`
+}
+
+// Ref: #/components/schemas/setChatTitle
+type SetChatTitle struct {
+	ChatID ID     `json:"chat_id"`
+	Title  string `json:"title"`
+}
+
+// Ref: #/components/schemas/setGameScore
+type SetGameScore struct {
+	UserID             int64     `json:"user_id"`
 	Score              int       `json:"score"`
 	Force              OptBool   `json:"force"`
 	DisableEditMessage OptBool   `json:"disable_edit_message"`
-	ChatID             OptInt    `json:"chat_id"`
+	ChatID             OptInt64  `json:"chat_id"`
 	MessageID          OptInt    `json:"message_id"`
 	InlineMessageID    OptString `json:"inline_message_id"`
 }
 
-type SetMyCommandsPostOK struct {
-	Ok     bool `json:"ok"`
-	Result bool `json:"result"`
+// Ref: #/components/schemas/setMyCommands
+type SetMyCommands struct {
+	Commands     []BotCommand     `json:"commands"`
+	Scope        *BotCommandScope `json:"scope"`
+	LanguageCode OptString        `json:"language_code"`
 }
 
-func (*SetMyCommandsPostOK) setMyCommandsPostRes() {}
-
-type SetMyCommandsPostReqApplicationJSON struct {
-	Commands []BotCommand `json:"commands"`
+// Ref: #/components/schemas/setPassportDataErrors
+type SetPassportDataErrors struct {
+	UserID int64                  `json:"user_id"`
+	Errors []PassportElementError `json:"errors"`
 }
 
-type SetStickerPositionInSetPostOK struct {
-	Ok     bool `json:"ok"`
-	Result bool `json:"result"`
-}
-
-func (*SetStickerPositionInSetPostOK) setStickerPositionInSetPostRes() {}
-
-type SetStickerPositionInSetPostReqApplicationJSON struct {
+// Ref: #/components/schemas/setStickerPositionInSet
+type SetStickerPositionInSet struct {
 	Sticker  string `json:"sticker"`
 	Position int    `json:"position"`
+}
+
+// Ref: #/components/schemas/setStickerSetThumb
+type SetStickerSetThumb struct {
+	Name   string    `json:"name"`
+	UserID int64     `json:"user_id"`
+	Thumb  OptString `json:"thumb"`
+}
+
+// Ref: #/components/schemas/setWebhook
+type SetWebhook struct {
+	URL                url.URL   `json:"url"`
+	Certificate        OptString `json:"certificate"`
+	IPAddress          OptString `json:"ip_address"`
+	MaxConnections     OptInt    `json:"max_connections"`
+	AllowedUpdates     []string  `json:"allowed_updates"`
+	DropPendingUpdates OptBool   `json:"drop_pending_updates"`
 }
 
 // Ref: #/components/schemas/ShippingAddress
@@ -2421,14 +8003,19 @@ type Sticker struct {
 	FileSize     OptInt          `json:"file_size"`
 }
 
-// Ref: #/components/schemas/StickerSet
-type StickerSet struct {
-	Name          string       `json:"name"`
-	Title         string       `json:"title"`
-	IsAnimated    bool         `json:"is_animated"`
-	ContainsMasks bool         `json:"contains_masks"`
-	Stickers      []Sticker    `json:"stickers"`
-	Thumb         OptPhotoSize `json:"thumb"`
+// Ref: #/components/schemas/stopMessageLiveLocation
+type StopMessageLiveLocation struct {
+	ChatID          *ID                     `json:"chat_id"`
+	MessageID       OptInt                  `json:"message_id"`
+	InlineMessageID OptString               `json:"inline_message_id"`
+	ReplyMarkup     OptInlineKeyboardMarkup `json:"reply_markup"`
+}
+
+// Ref: #/components/schemas/stopPoll
+type StopPoll struct {
+	ChatID      ID                      `json:"chat_id"`
+	MessageID   int                     `json:"message_id"`
+	ReplyMarkup OptInlineKeyboardMarkup `json:"reply_markup"`
 }
 
 // Ref: #/components/schemas/SuccessfulPayment
@@ -2440,6 +8027,30 @@ type SuccessfulPayment struct {
 	OrderInfo               OptOrderInfo `json:"order_info"`
 	TelegramPaymentChargeID string       `json:"telegram_payment_charge_id"`
 	ProviderPaymentChargeID string       `json:"provider_payment_charge_id"`
+}
+
+// Ref: #/components/schemas/unbanChatMember
+type UnbanChatMember struct {
+	ChatID       ID      `json:"chat_id"`
+	UserID       int64   `json:"user_id"`
+	OnlyIfBanned OptBool `json:"only_if_banned"`
+}
+
+// Ref: #/components/schemas/unbanChatSenderChat
+type UnbanChatSenderChat struct {
+	ChatID       ID    `json:"chat_id"`
+	SenderChatID int64 `json:"sender_chat_id"`
+}
+
+// Ref: #/components/schemas/unpinAllChatMessages
+type UnpinAllChatMessages struct {
+	ChatID ID `json:"chat_id"`
+}
+
+// Ref: #/components/schemas/unpinChatMessage
+type UnpinChatMessage struct {
+	ChatID    ID     `json:"chat_id"`
+	MessageID OptInt `json:"message_id"`
 }
 
 // Ref: #/components/schemas/Update
@@ -2456,11 +8067,20 @@ type Update struct {
 	PreCheckoutQuery   OptPreCheckoutQuery   `json:"pre_checkout_query"`
 	Poll               OptPoll               `json:"poll"`
 	PollAnswer         OptPollAnswer         `json:"poll_answer"`
+	MyChatMember       OptChatMemberUpdated  `json:"my_chat_member"`
+	ChatMember         OptChatMemberUpdated  `json:"chat_member"`
+	ChatJoinRequest    OptChatJoinRequest    `json:"chat_join_request"`
+}
+
+// Ref: #/components/schemas/uploadStickerFile
+type UploadStickerFile struct {
+	UserID     int64  `json:"user_id"`
+	PNGSticker string `json:"png_sticker"`
 }
 
 // Ref: #/components/schemas/User
 type User struct {
-	ID                      int       `json:"id"`
+	ID                      int64     `json:"id"`
 	IsBot                   bool      `json:"is_bot"`
 	FirstName               string    `json:"first_name"`
 	LastName                OptString `json:"last_name"`
@@ -2520,9 +8140,27 @@ type Voice struct {
 	FileSize     OptInt    `json:"file_size"`
 }
 
+// Ref: #/components/schemas/VoiceChatEnded
+type VoiceChatEnded struct {
+	Duration int `json:"duration"`
+}
+
+// Ref: #/components/schemas/VoiceChatParticipantsInvited
+type VoiceChatParticipantsInvited struct {
+	Users []User `json:"users"`
+}
+
+// Ref: #/components/schemas/VoiceChatScheduled
+type VoiceChatScheduled struct {
+	StartDate int `json:"start_date"`
+}
+
+// Ref: #/components/schemas/VoiceChatStarted
+type VoiceChatStarted struct{}
+
 // Ref: #/components/schemas/WebhookInfo
 type WebhookInfo struct {
-	URL                  string    `json:"url"`
+	URL                  url.URL   `json:"url"`
 	HasCustomCertificate bool      `json:"has_custom_certificate"`
 	PendingUpdateCount   int       `json:"pending_update_count"`
 	IPAddress            OptString `json:"ip_address"`

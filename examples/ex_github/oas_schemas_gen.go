@@ -88,11 +88,14 @@ type APIOverviewSSHKeyFingerprints struct {
 
 type Accepted struct{}
 
-func (*Accepted) reposEnableLfsForRepoRes()       {}
-func (*Accepted) reposGetCodeFrequencyStatsRes()  {}
-func (*Accepted) reposGetCommitActivityStatsRes() {}
-func (*Accepted) reposGetContributorsStatsRes()   {}
-func (*Accepted) usersGetByUsernameRes()          {}
+func (*Accepted) appsRedeliverWebhookDeliveryRes()  {}
+func (*Accepted) orgsRedeliverWebhookDeliveryRes()  {}
+func (*Accepted) reposEnableLfsForRepoRes()         {}
+func (*Accepted) reposGetCodeFrequencyStatsRes()    {}
+func (*Accepted) reposGetCommitActivityStatsRes()   {}
+func (*Accepted) reposGetContributorsStatsRes()     {}
+func (*Accepted) reposRedeliverWebhookDeliveryRes() {}
+func (*Accepted) usersGetByUsernameRes()            {}
 
 // ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgNoContent is response for ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg operation.
 type ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgNoContent struct{}
@@ -941,6 +944,21 @@ type ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONUnauthorize
 func (*ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONUnauthorized) activityGetThreadSubscriptionForAuthenticatedUserRes() {
 }
 
+type ActivityListNotificationsForAuthenticatedUserApplicationJSONForbidden BasicError
+
+func (*ActivityListNotificationsForAuthenticatedUserApplicationJSONForbidden) activityListNotificationsForAuthenticatedUserRes() {
+}
+
+type ActivityListNotificationsForAuthenticatedUserApplicationJSONUnauthorized BasicError
+
+func (*ActivityListNotificationsForAuthenticatedUserApplicationJSONUnauthorized) activityListNotificationsForAuthenticatedUserRes() {
+}
+
+type ActivityListNotificationsForAuthenticatedUserOKApplicationJSON []Thread
+
+func (*ActivityListNotificationsForAuthenticatedUserOKApplicationJSON) activityListNotificationsForAuthenticatedUserRes() {
+}
+
 type ActivityListPublicEventsForRepoNetworkApplicationJSONForbidden BasicError
 
 func (*ActivityListPublicEventsForRepoNetworkApplicationJSONForbidden) activityListPublicEventsForRepoNetworkRes() {
@@ -1443,12 +1461,39 @@ type AppsCheckTokenReq struct {
 	AccessToken string `json:"access_token"`
 }
 
+type AppsCreateContentAttachmentApplicationJSONForbidden BasicError
+
+func (*AppsCreateContentAttachmentApplicationJSONForbidden) appsCreateContentAttachmentRes() {}
+
+type AppsCreateContentAttachmentApplicationJSONGone BasicError
+
+func (*AppsCreateContentAttachmentApplicationJSONGone) appsCreateContentAttachmentRes() {}
+
+type AppsCreateContentAttachmentApplicationJSONNotFound BasicError
+
+func (*AppsCreateContentAttachmentApplicationJSONNotFound) appsCreateContentAttachmentRes() {}
+
 type AppsCreateContentAttachmentReq struct {
 	Title string `json:"title"`
 	Body  string `json:"body"`
 }
 
 type AppsCreateFromManifestReq struct{}
+
+type AppsCreateInstallationAccessTokenApplicationJSONForbidden BasicError
+
+func (*AppsCreateInstallationAccessTokenApplicationJSONForbidden) appsCreateInstallationAccessTokenRes() {
+}
+
+type AppsCreateInstallationAccessTokenApplicationJSONNotFound BasicError
+
+func (*AppsCreateInstallationAccessTokenApplicationJSONNotFound) appsCreateInstallationAccessTokenRes() {
+}
+
+type AppsCreateInstallationAccessTokenApplicationJSONUnauthorized BasicError
+
+func (*AppsCreateInstallationAccessTokenApplicationJSONUnauthorized) appsCreateInstallationAccessTokenRes() {
+}
 
 type AppsCreateInstallationAccessTokenReq struct {
 	Repositories  []string          `json:"repositories"`
@@ -1458,6 +1503,8 @@ type AppsCreateInstallationAccessTokenReq struct {
 
 // AppsDeleteAuthorizationNoContent is response for AppsDeleteAuthorization operation.
 type AppsDeleteAuthorizationNoContent struct{}
+
+func (*AppsDeleteAuthorizationNoContent) appsDeleteAuthorizationRes() {}
 
 type AppsDeleteAuthorizationReq struct {
 	AccessToken string `json:"access_token"`
@@ -1470,6 +1517,8 @@ func (*AppsDeleteInstallationNoContent) appsDeleteInstallationRes() {}
 
 // AppsDeleteTokenNoContent is response for AppsDeleteToken operation.
 type AppsDeleteTokenNoContent struct{}
+
+func (*AppsDeleteTokenNoContent) appsDeleteTokenRes() {}
 
 type AppsDeleteTokenReq struct {
 	AccessToken string `json:"access_token"`
@@ -1499,12 +1548,24 @@ type AppsGetSubscriptionPlanForAccountStubbedNotFound struct{}
 func (*AppsGetSubscriptionPlanForAccountStubbedNotFound) appsGetSubscriptionPlanForAccountStubbedRes() {
 }
 
+type AppsListAccountsForPlanApplicationJSONNotFound BasicError
+
+func (*AppsListAccountsForPlanApplicationJSONNotFound) appsListAccountsForPlanRes() {}
+
+type AppsListAccountsForPlanApplicationJSONUnauthorized BasicError
+
+func (*AppsListAccountsForPlanApplicationJSONUnauthorized) appsListAccountsForPlanRes() {}
+
 type AppsListAccountsForPlanDirection string
 
 const (
 	AppsListAccountsForPlanDirectionAsc  AppsListAccountsForPlanDirection = "asc"
 	AppsListAccountsForPlanDirectionDesc AppsListAccountsForPlanDirection = "desc"
 )
+
+type AppsListAccountsForPlanOKApplicationJSON []MarketplacePurchase
+
+func (*AppsListAccountsForPlanOKApplicationJSON) appsListAccountsForPlanRes() {}
 
 type AppsListAccountsForPlanSort string
 
@@ -1604,6 +1665,10 @@ type AppsListSubscriptionsForAuthenticatedUserStubbedOKApplicationJSON []UserMar
 func (*AppsListSubscriptionsForAuthenticatedUserStubbedOKApplicationJSON) appsListSubscriptionsForAuthenticatedUserStubbedRes() {
 }
 
+type AppsListWebhookDeliveriesOKApplicationJSON []HookDeliveryItem
+
+func (*AppsListWebhookDeliveriesOKApplicationJSON) appsListWebhookDeliveriesRes() {}
+
 type AppsRemoveRepoFromInstallationApplicationJSONForbidden BasicError
 
 func (*AppsRemoveRepoFromInstallationApplicationJSONForbidden) appsRemoveRepoFromInstallationRes() {}
@@ -1623,6 +1688,18 @@ type AppsResetTokenReq struct {
 
 // AppsRevokeInstallationAccessTokenNoContent is response for AppsRevokeInstallationAccessToken operation.
 type AppsRevokeInstallationAccessTokenNoContent struct{}
+
+type AppsScopeTokenApplicationJSONForbidden BasicError
+
+func (*AppsScopeTokenApplicationJSONForbidden) appsScopeTokenRes() {}
+
+type AppsScopeTokenApplicationJSONNotFound BasicError
+
+func (*AppsScopeTokenApplicationJSONNotFound) appsScopeTokenRes() {}
+
+type AppsScopeTokenApplicationJSONUnauthorized BasicError
+
+func (*AppsScopeTokenApplicationJSONUnauthorized) appsScopeTokenRes() {}
 
 type AppsScopeTokenReq struct {
 	AccessToken   string            `json:"access_token"`
@@ -1766,7 +1843,12 @@ type Authorization struct {
 	ExpiresAt      NilTime                          `json:"expires_at"`
 }
 
-func (*Authorization) oAuthAuthorizationsGetAuthorizationRes() {}
+func (*Authorization) appsCheckTokenRes()                         {}
+func (*Authorization) appsResetTokenRes()                         {}
+func (*Authorization) appsScopeTokenRes()                         {}
+func (*Authorization) oAuthAuthorizationsCreateAuthorizationRes() {}
+func (*Authorization) oAuthAuthorizationsGetAuthorizationRes()    {}
+func (*Authorization) oAuthAuthorizationsUpdateAuthorizationRes() {}
 
 type AuthorizationApp struct {
 	ClientID string  `json:"client_id"`
@@ -1797,7 +1879,8 @@ type Autolink struct {
 	URLTemplate string `json:"url_template"`
 }
 
-func (*Autolink) reposGetAutolinkRes() {}
+func (*Autolink) reposCreateAutolinkRes() {}
+func (*Autolink) reposGetAutolinkRes()    {}
 
 // Ref: #/components/schemas/base-gist
 type BaseGist struct {
@@ -1823,6 +1906,8 @@ type BaseGist struct {
 	History     []string              `json:"history"`
 }
 
+func (*BaseGist) gistsForkRes() {}
+
 type BaseGistFiles struct{}
 
 // Ref: #/components/schemas/basic-error
@@ -1836,11 +1921,15 @@ type BasicError struct {
 func (*BasicError) activityGetRepoSubscriptionRes()                      {}
 func (*BasicError) activityListPublicEventsRes()                         {}
 func (*BasicError) activityMarkThreadAsReadRes()                         {}
+func (*BasicError) appsCheckTokenRes()                                   {}
 func (*BasicError) appsDeleteInstallationRes()                           {}
 func (*BasicError) appsGetSubscriptionPlanForAccountStubbedRes()         {}
+func (*BasicError) appsGetWebhookDeliveryRes()                           {}
 func (*BasicError) appsListAccountsForPlanStubbedRes()                   {}
 func (*BasicError) appsListPlansStubbedRes()                             {}
 func (*BasicError) appsListSubscriptionsForAuthenticatedUserStubbedRes() {}
+func (*BasicError) appsListWebhookDeliveriesRes()                        {}
+func (*BasicError) appsRedeliverWebhookDeliveryRes()                     {}
 func (*BasicError) appsSuspendInstallationRes()                          {}
 func (*BasicError) appsUnsuspendInstallationRes()                        {}
 func (*BasicError) codeScanningGetSarifRes()                             {}
@@ -1848,20 +1937,29 @@ func (*BasicError) codesOfConductGetConductCodeRes()                     {}
 func (*BasicError) gistsCheckIsStarredRes()                              {}
 func (*BasicError) gistsGetCommentRes()                                  {}
 func (*BasicError) gistsGetRes()                                         {}
+func (*BasicError) gistsListPublicRes()                                  {}
 func (*BasicError) gistsListRes()                                        {}
 func (*BasicError) gistsUpdateCommentRes()                               {}
+func (*BasicError) gitCreateCommitRes()                                  {}
 func (*BasicError) gitGetCommitRes()                                     {}
 func (*BasicError) gitGetRefRes()                                        {}
 func (*BasicError) gitGetTagRes()                                        {}
+func (*BasicError) gitGetTreeRes()                                       {}
 func (*BasicError) issuesCheckUserCanBeAssignedRes()                     {}
+func (*BasicError) issuesCreateLabelRes()                                {}
+func (*BasicError) issuesCreateMilestoneRes()                            {}
 func (*BasicError) issuesDeleteMilestoneRes()                            {}
 func (*BasicError) issuesGetCommentRes()                                 {}
 func (*BasicError) issuesGetLabelRes()                                   {}
 func (*BasicError) issuesGetMilestoneRes()                               {}
 func (*BasicError) issuesListAssigneesRes()                              {}
+func (*BasicError) issuesListCommentsForRepoRes()                        {}
+func (*BasicError) issuesListForAuthenticatedUserRes()                   {}
+func (*BasicError) issuesListForOrgRes()                                 {}
 func (*BasicError) issuesListLabelsForRepoRes()                          {}
 func (*BasicError) issuesListLabelsOnIssueRes()                          {}
 func (*BasicError) issuesListMilestonesRes()                             {}
+func (*BasicError) issuesListRes()                                       {}
 func (*BasicError) issuesRemoveAllLabelsRes()                            {}
 func (*BasicError) migrationsDeleteArchiveForOrgRes()                    {}
 func (*BasicError) migrationsDownloadArchiveForOrgRes()                  {}
@@ -1870,21 +1968,35 @@ func (*BasicError) migrationsGetImportStatusRes()                        {}
 func (*BasicError) migrationsGetStatusForOrgRes()                        {}
 func (*BasicError) migrationsListReposForOrgRes()                        {}
 func (*BasicError) migrationsListReposForUserRes()                       {}
+func (*BasicError) migrationsMapCommitAuthorRes()                        {}
+func (*BasicError) migrationsStartForOrgRes()                            {}
+func (*BasicError) migrationsStartImportRes()                            {}
 func (*BasicError) migrationsUnlockRepoForOrgRes()                       {}
+func (*BasicError) orgsCancelInvitationRes()                             {}
 func (*BasicError) orgsCheckBlockedUserRes()                             {}
 func (*BasicError) orgsConvertMemberToOutsideCollaboratorRes()           {}
+func (*BasicError) orgsCreateInvitationRes()                             {}
+func (*BasicError) orgsCreateWebhookRes()                                {}
 func (*BasicError) orgsDeleteWebhookRes()                                {}
 func (*BasicError) orgsGetRes()                                          {}
+func (*BasicError) orgsGetWebhookDeliveryRes()                           {}
 func (*BasicError) orgsGetWebhookRes()                                   {}
 func (*BasicError) orgsListFailedInvitationsRes()                        {}
 func (*BasicError) orgsListInvitationTeamsRes()                          {}
 func (*BasicError) orgsListPendingInvitationsRes()                       {}
+func (*BasicError) orgsListWebhookDeliveriesRes()                        {}
 func (*BasicError) orgsListWebhooksRes()                                 {}
 func (*BasicError) orgsPingWebhookRes()                                  {}
+func (*BasicError) orgsRedeliverWebhookDeliveryRes()                     {}
 func (*BasicError) orgsRemoveMemberRes()                                 {}
 func (*BasicError) orgsRemoveSamlSSOAuthorizationRes()                   {}
+func (*BasicError) orgsSetMembershipForUserRes()                         {}
 func (*BasicError) orgsSetPublicMembershipForAuthenticatedUserRes()      {}
+func (*BasicError) orgsUpdateWebhookRes()                                {}
+func (*BasicError) projectsMoveCardRes()                                 {}
 func (*BasicError) pullsCreateReplyForReviewCommentRes()                 {}
+func (*BasicError) pullsCreateRes()                                      {}
+func (*BasicError) pullsCreateReviewCommentRes()                         {}
 func (*BasicError) pullsCreateReviewRes()                                {}
 func (*BasicError) pullsDeletePendingReviewRes()                         {}
 func (*BasicError) pullsDeleteReviewCommentRes()                         {}
@@ -1892,17 +2004,26 @@ func (*BasicError) pullsDismissReviewRes()                               {}
 func (*BasicError) pullsGetReviewCommentRes()                            {}
 func (*BasicError) pullsGetReviewRes()                                   {}
 func (*BasicError) pullsListCommentsForReviewRes()                       {}
+func (*BasicError) pullsListFilesRes()                                   {}
+func (*BasicError) pullsUpdateBranchRes()                                {}
+func (*BasicError) pullsUpdateRes()                                      {}
 func (*BasicError) rateLimitGetRes()                                     {}
 func (*BasicError) reactionsListForCommitCommentRes()                    {}
 func (*BasicError) reactionsListForIssueCommentRes()                     {}
 func (*BasicError) reactionsListForPullRequestReviewCommentRes()         {}
+func (*BasicError) reposAddCollaboratorRes()                             {}
+func (*BasicError) reposCreateCommitCommentRes()                         {}
 func (*BasicError) reposCreateCommitSignatureProtectionRes()             {}
+func (*BasicError) reposCreateInOrgRes()                                 {}
+func (*BasicError) reposCreatePagesSiteRes()                             {}
+func (*BasicError) reposCreateReleaseRes()                               {}
 func (*BasicError) reposDeleteAdminBranchProtectionRes()                 {}
 func (*BasicError) reposDeleteAutolinkRes()                              {}
 func (*BasicError) reposDeleteBranchProtectionRes()                      {}
 func (*BasicError) reposDeleteCommitCommentRes()                         {}
 func (*BasicError) reposDeleteCommitSignatureProtectionRes()             {}
 func (*BasicError) reposDeleteDeploymentRes()                            {}
+func (*BasicError) reposDeletePagesSiteRes()                             {}
 func (*BasicError) reposDeletePullRequestReviewProtectionRes()           {}
 func (*BasicError) reposDeleteWebhookRes()                               {}
 func (*BasicError) reposGetAccessRestrictionsRes()                       {}
@@ -1917,10 +2038,13 @@ func (*BasicError) reposGetCombinedStatusForRefRes()                     {}
 func (*BasicError) reposGetCommitCommentRes()                            {}
 func (*BasicError) reposGetCommitSignatureProtectionRes()                {}
 func (*BasicError) reposGetDeployKeyRes()                                {}
+func (*BasicError) reposGetDeploymentRes()                               {}
 func (*BasicError) reposGetDeploymentStatusRes()                         {}
 func (*BasicError) reposGetPagesHealthCheckRes()                         {}
 func (*BasicError) reposGetPagesRes()                                    {}
 func (*BasicError) reposGetParticipationStatsRes()                       {}
+func (*BasicError) reposGetReadmeInDirectoryRes()                        {}
+func (*BasicError) reposGetReadmeRes()                                   {}
 func (*BasicError) reposGetReleaseAssetRes()                             {}
 func (*BasicError) reposGetReleaseByTagRes()                             {}
 func (*BasicError) reposGetReleaseRes()                                  {}
@@ -1930,6 +2054,7 @@ func (*BasicError) reposGetTopPathsRes()                                 {}
 func (*BasicError) reposGetTopReferrersRes()                             {}
 func (*BasicError) reposGetUsersWithAccessToProtectedBranchRes()         {}
 func (*BasicError) reposGetViewsRes()                                    {}
+func (*BasicError) reposGetWebhookDeliveryRes()                          {}
 func (*BasicError) reposGetWebhookRes()                                  {}
 func (*BasicError) reposListBranchesRes()                                {}
 func (*BasicError) reposListCollaboratorsRes()                           {}
@@ -1937,15 +2062,29 @@ func (*BasicError) reposListCommitStatusesForRefRes()                    {}
 func (*BasicError) reposListDeploymentStatusesRes()                      {}
 func (*BasicError) reposListForksRes()                                   {}
 func (*BasicError) reposListReleasesRes()                                {}
+func (*BasicError) reposListWebhookDeliveriesRes()                       {}
 func (*BasicError) reposListWebhooksRes()                                {}
+func (*BasicError) reposMergeRes()                                       {}
 func (*BasicError) reposPingWebhookRes()                                 {}
+func (*BasicError) reposRedeliverWebhookDeliveryRes()                    {}
+func (*BasicError) reposRemoveStatusCheckContextsRes()                   {}
 func (*BasicError) reposReplaceAllTopicsRes()                            {}
+func (*BasicError) reposSetStatusCheckContextsRes()                      {}
 func (*BasicError) reposTestPushWebhookRes()                             {}
 func (*BasicError) reposUpdateCommitCommentRes()                         {}
 func (*BasicError) reposUpdateReleaseRes()                               {}
+func (*BasicError) reposUpdateStatusCheckProtectionRes()                 {}
+func (*BasicError) reposUpdateWebhookRes()                               {}
+func (*BasicError) searchCodeRes()                                       {}
+func (*BasicError) searchIssuesAndPullRequestsRes()                      {}
 func (*BasicError) secretScanningListAlertsForOrgRes()                   {}
 func (*BasicError) teamsAddMemberLegacyRes()                             {}
 func (*BasicError) teamsAddOrUpdateMembershipForUserLegacyRes()          {}
+func (*BasicError) teamsAddOrUpdateProjectPermissionsLegacyRes()         {}
+func (*BasicError) teamsAddOrUpdateRepoPermissionsLegacyRes()            {}
+func (*BasicError) teamsCreateOrUpdateIdpGroupConnectionsLegacyRes()     {}
+func (*BasicError) teamsCreateRes()                                      {}
+func (*BasicError) teamsDeleteLegacyRes()                                {}
 func (*BasicError) teamsGetByNameRes()                                   {}
 func (*BasicError) teamsGetLegacyRes()                                   {}
 func (*BasicError) teamsGetMembershipForUserLegacyRes()                  {}
@@ -1953,7 +2092,9 @@ func (*BasicError) teamsListMembersLegacyRes()                           {}
 func (*BasicError) teamsListProjectsLegacyRes()                          {}
 func (*BasicError) teamsListReposLegacyRes()                             {}
 func (*BasicError) teamsListRes()                                        {}
+func (*BasicError) teamsRemoveProjectLegacyRes()                         {}
 func (*BasicError) usersGetByUsernameRes()                               {}
+func (*BasicError) usersGetContextForUserRes()                           {}
 
 // Ref: #/components/schemas/blob
 type Blob struct {
@@ -1965,6 +2106,8 @@ type Blob struct {
 	NodeID             string    `json:"node_id"`
 	HighlightedContent OptString `json:"highlighted_content"`
 }
+
+func (*Blob) gitGetBlobRes() {}
 
 // Ref: #/components/schemas/branch-protection
 type BranchProtection struct {
@@ -2135,7 +2278,8 @@ type BranchWithProtection struct {
 	RequiredApprovingReviewCount OptInt                    `json:"required_approving_review_count"`
 }
 
-func (*BranchWithProtection) reposGetBranchRes() {}
+func (*BranchWithProtection) reposGetBranchRes()    {}
+func (*BranchWithProtection) reposRenameBranchRes() {}
 
 type BranchWithProtectionLinks struct {
 	HTML string  `json:"html"`
@@ -2796,6 +2940,9 @@ type Commit struct {
 	Files       []CommitFilesItem     `json:"files"`
 }
 
+func (*Commit) reposGetCommitRes() {}
+func (*Commit) reposMergeRes()     {}
+
 // Ref: #/components/schemas/commit-activity
 type CommitActivity struct {
 	Days  []int `json:"days"`
@@ -2821,6 +2968,7 @@ type CommitComment struct {
 	Reactions         OptReactionRollup     `json:"reactions"`
 }
 
+func (*CommitComment) reposCreateCommitCommentRes() {}
 func (*CommitComment) reposGetCommitCommentRes()    {}
 func (*CommitComment) reposUpdateCommitCommentRes() {}
 
@@ -2974,6 +3122,9 @@ type ContentFile struct {
 	SubmoduleGitURL OptString        `json:"submodule_git_url"`
 }
 
+func (*ContentFile) reposGetReadmeInDirectoryRes() {}
+func (*ContentFile) reposGetReadmeRes()            {}
+
 type ContentFileLinks struct {
 	Git  NilURL  `json:"git"`
 	HTML NilURL  `json:"html"`
@@ -2987,6 +3138,8 @@ type ContentReferenceAttachment struct {
 	Body   string    `json:"body"`
 	NodeID OptString `json:"node_id"`
 }
+
+func (*ContentReferenceAttachment) appsCreateContentAttachmentRes() {}
 
 // Ref: #/components/schemas/content-traffic
 type ContentTraffic struct {
@@ -3061,13 +3214,107 @@ type DeployKey struct {
 	ReadOnly  bool   `json:"read_only"`
 }
 
-func (*DeployKey) reposGetDeployKeyRes() {}
+func (*DeployKey) reposCreateDeployKeyRes() {}
+func (*DeployKey) reposGetDeployKeyRes()    {}
+
+// Ref: #/components/schemas/deployment
+type Deployment struct {
+	URL                   url.URL                   `json:"url"`
+	ID                    int                       `json:"id"`
+	NodeID                string                    `json:"node_id"`
+	Sha                   string                    `json:"sha"`
+	Ref                   string                    `json:"ref"`
+	Task                  string                    `json:"task"`
+	Payload               DeploymentPayload         `json:"payload"`
+	OriginalEnvironment   OptString                 `json:"original_environment"`
+	Environment           string                    `json:"environment"`
+	Description           NilString                 `json:"description"`
+	Creator               NilNullableSimpleUser     `json:"creator"`
+	CreatedAt             time.Time                 `json:"created_at"`
+	UpdatedAt             time.Time                 `json:"updated_at"`
+	StatusesURL           url.URL                   `json:"statuses_url"`
+	RepositoryURL         url.URL                   `json:"repository_url"`
+	TransientEnvironment  OptBool                   `json:"transient_environment"`
+	ProductionEnvironment OptBool                   `json:"production_environment"`
+	PerformedViaGithubApp OptNilNullableIntegration `json:"performed_via_github_app"`
+}
+
+func (*Deployment) reposCreateDeploymentRes() {}
+func (*Deployment) reposGetDeploymentRes()    {}
 
 // Ref: #/components/schemas/deployment_branch_policy
 type DeploymentBranchPolicy struct {
 	ProtectedBranches    bool `json:"protected_branches"`
 	CustomBranchPolicies bool `json:"custom_branch_policies"`
 }
+
+// DeploymentPayload represents sum type.
+type DeploymentPayload struct {
+	Type               DeploymentPayloadType // switch on this field
+	DeploymentPayload0 DeploymentPayload0
+	String             string
+}
+
+// DeploymentPayloadType is oneOf type of DeploymentPayload.
+type DeploymentPayloadType string
+
+// Possible values for DeploymentPayloadType.
+const (
+	DeploymentPayload0DeploymentPayload DeploymentPayloadType = "DeploymentPayload0"
+	StringDeploymentPayload             DeploymentPayloadType = "string"
+)
+
+// IsDeploymentPayload0 reports whether DeploymentPayload is DeploymentPayload0.
+func (s DeploymentPayload) IsDeploymentPayload0() bool {
+	return s.Type == DeploymentPayload0DeploymentPayload
+}
+
+// IsString reports whether DeploymentPayload is string.
+func (s DeploymentPayload) IsString() bool { return s.Type == StringDeploymentPayload }
+
+// SetDeploymentPayload0 sets DeploymentPayload to DeploymentPayload0.
+func (s *DeploymentPayload) SetDeploymentPayload0(v DeploymentPayload0) {
+	s.Type = DeploymentPayload0DeploymentPayload
+	s.DeploymentPayload0 = v
+}
+
+// GetDeploymentPayload0 returns DeploymentPayload0 and true boolean if DeploymentPayload is DeploymentPayload0.
+func (s DeploymentPayload) GetDeploymentPayload0() (v DeploymentPayload0, ok bool) {
+	if !s.IsDeploymentPayload0() {
+		return v, false
+	}
+	return s.DeploymentPayload0, true
+}
+
+// NewDeploymentPayload0DeploymentPayload returns new DeploymentPayload from DeploymentPayload0.
+func NewDeploymentPayload0DeploymentPayload(v DeploymentPayload0) DeploymentPayload {
+	var s DeploymentPayload
+	s.SetDeploymentPayload0(v)
+	return s
+}
+
+// SetString sets DeploymentPayload to string.
+func (s *DeploymentPayload) SetString(v string) {
+	s.Type = StringDeploymentPayload
+	s.String = v
+}
+
+// GetString returns string and true boolean if DeploymentPayload is string.
+func (s DeploymentPayload) GetString() (v string, ok bool) {
+	if !s.IsString() {
+		return v, false
+	}
+	return s.String, true
+}
+
+// NewStringDeploymentPayload returns new DeploymentPayload from string.
+func NewStringDeploymentPayload(v string) DeploymentPayload {
+	var s DeploymentPayload
+	s.SetString(v)
+	return s
+}
+
+type DeploymentPayload0 struct{}
 
 // Ref: #/components/schemas/deployment-reviewer-type
 type DeploymentReviewerType string
@@ -3114,7 +3361,8 @@ type DeploymentStatus struct {
 	PerformedViaGithubApp OptNilNullableIntegration `json:"performed_via_github_app"`
 }
 
-func (*DeploymentStatus) reposGetDeploymentStatusRes() {}
+func (*DeploymentStatus) reposCreateDeploymentStatusRes() {}
+func (*DeploymentStatus) reposGetDeploymentStatusRes()    {}
 
 type DeploymentStatusState string
 
@@ -3375,6 +3623,126 @@ type EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq struct {
 	Runners []int `json:"runners"`
 }
 
+type EnterpriseAdminUpdateAttributeForEnterpriseGroupReq struct {
+	Schemas    []string                                                            `json:"schemas"`
+	Operations []EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItem `json:"Operations"`
+}
+
+type EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItem struct {
+	Op    EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp     `json:"op"`
+	Path  OptString                                                               `json:"path"`
+	Value *EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue `json:"value"`
+}
+
+type EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp string
+
+const (
+	EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp_add     EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp = "add"
+	EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp_Add     EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp = "Add"
+	EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp_remove  EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp = "remove"
+	EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp_Remove  EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp = "Remove"
+	EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp_replace EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp = "replace"
+	EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp_Replace EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp = "Replace"
+)
+
+// EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue represents sum type.
+type EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue struct {
+	Type                                                                    EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValueType // switch on this field
+	String                                                                  string
+	EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1 EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1
+	ArrayString                                                             []string
+}
+
+// EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValueType is oneOf type of EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue.
+type EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValueType string
+
+// Possible values for EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValueType.
+const (
+	StringEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue                                                                  EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValueType = "string"
+	EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValueType = "EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1"
+	ArrayStringEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue                                                             EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValueType = "[]string"
+)
+
+// IsString reports whether EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue is string.
+func (s EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue) IsString() bool {
+	return s.Type == StringEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue
+}
+
+// IsEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1 reports whether EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue is EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1.
+func (s EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue) IsEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1() bool {
+	return s.Type == EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue
+}
+
+// IsArrayString reports whether EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue is []string.
+func (s EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue) IsArrayString() bool {
+	return s.Type == ArrayStringEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue
+}
+
+// SetString sets EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue to string.
+func (s *EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue) SetString(v string) {
+	s.Type = StringEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue
+	s.String = v
+}
+
+// GetString returns string and true boolean if EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue is string.
+func (s EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue) GetString() (v string, ok bool) {
+	if !s.IsString() {
+		return v, false
+	}
+	return s.String, true
+}
+
+// NewStringEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue returns new EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue from string.
+func NewStringEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue(v string) EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue {
+	var s EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue
+	s.SetString(v)
+	return s
+}
+
+// SetEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1 sets EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue to EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1.
+func (s *EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue) SetEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1(v EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1) {
+	s.Type = EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue
+	s.EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1 = v
+}
+
+// GetEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1 returns EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1 and true boolean if EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue is EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1.
+func (s EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue) GetEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1() (v EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1, ok bool) {
+	if !s.IsEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1() {
+		return v, false
+	}
+	return s.EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1, true
+}
+
+// NewEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue returns new EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue from EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1.
+func NewEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue(v EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1) EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue {
+	var s EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue
+	s.SetEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1(v)
+	return s
+}
+
+// SetArrayString sets EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue to []string.
+func (s *EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue) SetArrayString(v []string) {
+	s.Type = ArrayStringEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue
+	s.ArrayString = v
+}
+
+// GetArrayString returns []string and true boolean if EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue is []string.
+func (s EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue) GetArrayString() (v []string, ok bool) {
+	if !s.IsArrayString() {
+		return v, false
+	}
+	return s.ArrayString, true
+}
+
+// NewArrayStringEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue returns new EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue from []string.
+func NewArrayStringEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue(v []string) EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue {
+	var s EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue
+	s.SetArrayString(v)
+	return s
+}
+
+type EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1 struct{}
+
 type EnterpriseAdminUpdateAttributeForEnterpriseUserReq struct {
 	Schemas    []string                                                           `json:"schemas"`
 	Operations []EnterpriseAdminUpdateAttributeForEnterpriseUserReqOperationsItem `json:"Operations"`
@@ -3482,6 +3850,8 @@ type FileCommit struct {
 	Content NilFileCommitContent `json:"content"`
 	Commit  FileCommitCommit     `json:"commit"`
 }
+
+func (*FileCommit) reposDeleteFileRes() {}
 
 type FileCommitCommit struct {
 	Sha          OptString                       `json:"sha"`
@@ -3663,7 +4033,9 @@ type FullRepository struct {
 	SecurityAndAnalysis    OptNilFullRepositorySecurityAndAnalysis `json:"security_and_analysis"`
 }
 
-func (*FullRepository) reposGetRes() {}
+func (*FullRepository) reposCreateForkRes() {}
+func (*FullRepository) reposGetRes()        {}
+func (*FullRepository) reposUpdateRes()     {}
 
 type FullRepositoryPermissions struct {
 	Admin    bool    `json:"admin"`
@@ -3771,7 +4143,9 @@ type GistSimple struct {
 	Truncated   OptBool                        `json:"truncated"`
 }
 
-func (*GistSimple) gistsGetRes() {}
+func (*GistSimple) gistsCreateRes()      {}
+func (*GistSimple) gistsGetRes()         {}
+func (*GistSimple) gistsGetRevisionRes() {}
 
 type GistSimpleFiles struct{}
 
@@ -3817,6 +4191,14 @@ type GistsCheckIsStarredNotFound struct{}
 
 func (*GistsCheckIsStarredNotFound) gistsCheckIsStarredRes() {}
 
+type GistsCreateApplicationJSONForbidden BasicError
+
+func (*GistsCreateApplicationJSONForbidden) gistsCreateRes() {}
+
+type GistsCreateApplicationJSONNotFound BasicError
+
+func (*GistsCreateApplicationJSONNotFound) gistsCreateRes() {}
+
 type GistsCreateCommentApplicationJSONForbidden BasicError
 
 func (*GistsCreateCommentApplicationJSONForbidden) gistsCreateCommentRes() {}
@@ -3828,6 +4210,87 @@ func (*GistsCreateCommentApplicationJSONNotFound) gistsCreateCommentRes() {}
 type GistsCreateCommentReq struct {
 	Body string `json:"body"`
 }
+
+type GistsCreateReq struct {
+	Description OptString             `json:"description"`
+	Files       GistsCreateReqFiles   `json:"files"`
+	Public      *GistsCreateReqPublic `json:"public"`
+}
+
+type GistsCreateReqFiles struct{}
+
+// GistsCreateReqPublic represents sum type.
+type GistsCreateReqPublic struct {
+	Type                  GistsCreateReqPublicType // switch on this field
+	Bool                  bool
+	GistsCreateReqPublic1 GistsCreateReqPublic1
+}
+
+// GistsCreateReqPublicType is oneOf type of GistsCreateReqPublic.
+type GistsCreateReqPublicType string
+
+// Possible values for GistsCreateReqPublicType.
+const (
+	BoolGistsCreateReqPublic                  GistsCreateReqPublicType = "bool"
+	GistsCreateReqPublic1GistsCreateReqPublic GistsCreateReqPublicType = "GistsCreateReqPublic1"
+)
+
+// IsBool reports whether GistsCreateReqPublic is bool.
+func (s GistsCreateReqPublic) IsBool() bool { return s.Type == BoolGistsCreateReqPublic }
+
+// IsGistsCreateReqPublic1 reports whether GistsCreateReqPublic is GistsCreateReqPublic1.
+func (s GistsCreateReqPublic) IsGistsCreateReqPublic1() bool {
+	return s.Type == GistsCreateReqPublic1GistsCreateReqPublic
+}
+
+// SetBool sets GistsCreateReqPublic to bool.
+func (s *GistsCreateReqPublic) SetBool(v bool) {
+	s.Type = BoolGistsCreateReqPublic
+	s.Bool = v
+}
+
+// GetBool returns bool and true boolean if GistsCreateReqPublic is bool.
+func (s GistsCreateReqPublic) GetBool() (v bool, ok bool) {
+	if !s.IsBool() {
+		return v, false
+	}
+	return s.Bool, true
+}
+
+// NewBoolGistsCreateReqPublic returns new GistsCreateReqPublic from bool.
+func NewBoolGistsCreateReqPublic(v bool) GistsCreateReqPublic {
+	var s GistsCreateReqPublic
+	s.SetBool(v)
+	return s
+}
+
+// SetGistsCreateReqPublic1 sets GistsCreateReqPublic to GistsCreateReqPublic1.
+func (s *GistsCreateReqPublic) SetGistsCreateReqPublic1(v GistsCreateReqPublic1) {
+	s.Type = GistsCreateReqPublic1GistsCreateReqPublic
+	s.GistsCreateReqPublic1 = v
+}
+
+// GetGistsCreateReqPublic1 returns GistsCreateReqPublic1 and true boolean if GistsCreateReqPublic is GistsCreateReqPublic1.
+func (s GistsCreateReqPublic) GetGistsCreateReqPublic1() (v GistsCreateReqPublic1, ok bool) {
+	if !s.IsGistsCreateReqPublic1() {
+		return v, false
+	}
+	return s.GistsCreateReqPublic1, true
+}
+
+// NewGistsCreateReqPublic1GistsCreateReqPublic returns new GistsCreateReqPublic from GistsCreateReqPublic1.
+func NewGistsCreateReqPublic1GistsCreateReqPublic(v GistsCreateReqPublic1) GistsCreateReqPublic {
+	var s GistsCreateReqPublic
+	s.SetGistsCreateReqPublic1(v)
+	return s
+}
+
+type GistsCreateReqPublic1 string
+
+const (
+	GistsCreateReqPublic1True  GistsCreateReqPublic1 = "true"
+	GistsCreateReqPublic1False GistsCreateReqPublic1 = "false"
+)
 
 type GistsDeleteApplicationJSONForbidden BasicError
 
@@ -3855,6 +4318,22 @@ type GistsDeleteNoContent struct{}
 
 func (*GistsDeleteNoContent) gistsDeleteRes() {}
 
+type GistsForkApplicationJSONForbidden BasicError
+
+func (*GistsForkApplicationJSONForbidden) gistsForkRes() {}
+
+type GistsForkApplicationJSONNotFound BasicError
+
+func (*GistsForkApplicationJSONNotFound) gistsForkRes() {}
+
+type GistsGetRevisionApplicationJSONForbidden BasicError
+
+func (*GistsGetRevisionApplicationJSONForbidden) gistsGetRevisionRes() {}
+
+type GistsGetRevisionApplicationJSONNotFound BasicError
+
+func (*GistsGetRevisionApplicationJSONNotFound) gistsGetRevisionRes() {}
+
 type GistsListCommentsApplicationJSONForbidden BasicError
 
 func (*GistsListCommentsApplicationJSONForbidden) gistsListCommentsRes() {}
@@ -3879,6 +4358,10 @@ type GistsListCommitsOKApplicationJSON []GistCommit
 
 func (*GistsListCommitsOKApplicationJSON) gistsListCommitsRes() {}
 
+type GistsListForUserOKApplicationJSON []BaseGist
+
+func (*GistsListForUserOKApplicationJSON) gistsListForUserRes() {}
+
 type GistsListForksApplicationJSONForbidden BasicError
 
 func (*GistsListForksApplicationJSONForbidden) gistsListForksRes() {}
@@ -3894,6 +4377,10 @@ func (*GistsListForksOKApplicationJSON) gistsListForksRes() {}
 type GistsListOKApplicationJSON []BaseGist
 
 func (*GistsListOKApplicationJSON) gistsListRes() {}
+
+type GistsListPublicOKApplicationJSON []BaseGist
+
+func (*GistsListPublicOKApplicationJSON) gistsListPublicRes() {}
 
 type GistsListStarredApplicationJSONForbidden BasicError
 
@@ -3951,7 +4438,8 @@ type GitCommit struct {
 	HTMLURL      url.URL                `json:"html_url"`
 }
 
-func (*GitCommit) gitGetCommitRes() {}
+func (*GitCommit) gitCreateCommitRes() {}
+func (*GitCommit) gitGetCommitRes()    {}
 
 type GitCommitAuthor struct {
 	Date  time.Time `json:"date"`
@@ -3982,6 +4470,18 @@ type GitCommitVerification struct {
 	Signature NilString `json:"signature"`
 	Payload   NilString `json:"payload"`
 }
+
+type GitCreateBlobApplicationJSONConflict BasicError
+
+func (*GitCreateBlobApplicationJSONConflict) gitCreateBlobRes() {}
+
+type GitCreateBlobApplicationJSONForbidden BasicError
+
+func (*GitCreateBlobApplicationJSONForbidden) gitCreateBlobRes() {}
+
+type GitCreateBlobApplicationJSONNotFound BasicError
+
+func (*GitCreateBlobApplicationJSONNotFound) gitCreateBlobRes() {}
 
 type GitCreateBlobReq struct {
 	Content  string    `json:"content"`
@@ -4037,6 +4537,14 @@ const (
 	GitCreateTagReqTypeBlob   GitCreateTagReqType = "blob"
 )
 
+type GitCreateTreeApplicationJSONForbidden BasicError
+
+func (*GitCreateTreeApplicationJSONForbidden) gitCreateTreeRes() {}
+
+type GitCreateTreeApplicationJSONNotFound BasicError
+
+func (*GitCreateTreeApplicationJSONNotFound) gitCreateTreeRes() {}
+
 type GitCreateTreeReq struct {
 	Tree     []GitCreateTreeReqTreeItem `json:"tree"`
 	BaseTree OptString                  `json:"base_tree"`
@@ -4071,6 +4579,16 @@ const (
 // GitDeleteRefNoContent is response for GitDeleteRef operation.
 type GitDeleteRefNoContent struct{}
 
+func (*GitDeleteRefNoContent) gitDeleteRefRes() {}
+
+type GitGetBlobApplicationJSONForbidden BasicError
+
+func (*GitGetBlobApplicationJSONForbidden) gitGetBlobRes() {}
+
+type GitGetBlobApplicationJSONNotFound BasicError
+
+func (*GitGetBlobApplicationJSONNotFound) gitGetBlobRes() {}
+
 // Ref: #/components/schemas/git-ref
 type GitRef struct {
 	Ref    string       `json:"ref"`
@@ -4079,7 +4597,9 @@ type GitRef struct {
 	Object GitRefObject `json:"object"`
 }
 
-func (*GitRef) gitGetRefRes() {}
+func (*GitRef) gitCreateRefRes() {}
+func (*GitRef) gitGetRefRes()    {}
+func (*GitRef) gitUpdateRefRes() {}
 
 type GitRefObject struct {
 	Type string  `json:"type"`
@@ -4099,7 +4619,8 @@ type GitTag struct {
 	Verification OptVerification `json:"verification"`
 }
 
-func (*GitTag) gitGetTagRes() {}
+func (*GitTag) gitCreateTagRes() {}
+func (*GitTag) gitGetTagRes()    {}
 
 type GitTagObject struct {
 	Sha  string  `json:"sha"`
@@ -4120,6 +4641,9 @@ type GitTree struct {
 	Truncated bool              `json:"truncated"`
 	Tree      []GitTreeTreeItem `json:"tree"`
 }
+
+func (*GitTree) gitCreateTreeRes() {}
+func (*GitTree) gitGetTreeRes()    {}
 
 type GitTreeTreeItem struct {
 	Path OptString `json:"path"`
@@ -4164,7 +4688,8 @@ type GpgKey struct {
 	RawKey            NilString           `json:"raw_key"`
 }
 
-func (*GpgKey) usersGetGpgKeyForAuthenticatedRes() {}
+func (*GpgKey) usersCreateGpgKeyForAuthenticatedRes() {}
+func (*GpgKey) usersGetGpgKeyForAuthenticatedRes()    {}
 
 type GpgKeyEmailsItem struct {
 	Email    OptString `json:"email"`
@@ -4192,7 +4717,8 @@ type GroupMapping struct {
 	Groups []GroupMappingGroupsItem `json:"groups"`
 }
 
-func (*GroupMapping) teamsListIdpGroupsForLegacyRes() {}
+func (*GroupMapping) teamsCreateOrUpdateIdpGroupConnectionsLegacyRes() {}
+func (*GroupMapping) teamsListIdpGroupsForLegacyRes()                  {}
 
 type GroupMappingGroupsItem struct {
 	GroupID          string       `json:"group_id"`
@@ -4219,7 +4745,9 @@ type Hook struct {
 	LastResponse  HookResponse `json:"last_response"`
 }
 
-func (*Hook) reposGetWebhookRes() {}
+func (*Hook) reposCreateWebhookRes() {}
+func (*Hook) reposGetWebhookRes()    {}
+func (*Hook) reposUpdateWebhookRes() {}
 
 type HookConfig struct {
 	Email       OptString                   `json:"email"`
@@ -4251,6 +4779,10 @@ type HookDelivery struct {
 	Request        HookDeliveryRequest  `json:"request"`
 	Response       HookDeliveryResponse `json:"response"`
 }
+
+func (*HookDelivery) appsGetWebhookDeliveryRes()  {}
+func (*HookDelivery) orgsGetWebhookDeliveryRes()  {}
+func (*HookDelivery) reposGetWebhookDeliveryRes() {}
 
 // Ref: #/components/schemas/hook-delivery-item
 type HookDeliveryItem struct {
@@ -4295,6 +4827,8 @@ type Hovercard struct {
 	Contexts []HovercardContextsItem `json:"contexts"`
 }
 
+func (*Hovercard) usersGetContextForUserRes() {}
+
 type HovercardContextsItem struct {
 	Message string `json:"message"`
 	Octicon string `json:"octicon"`
@@ -4327,7 +4861,9 @@ type Import struct {
 	SvnRoot         OptString                  `json:"svn_root"`
 }
 
-func (*Import) migrationsGetImportStatusRes() {}
+func (*Import) migrationsGetImportStatusRes()  {}
+func (*Import) migrationsSetLfsPreferenceRes() {}
+func (*Import) migrationsStartImportRes()      {}
 
 type ImportProjectChoicesItem struct {
 	Vcs         OptString `json:"vcs"`
@@ -4367,6 +4903,8 @@ type InstallationToken struct {
 	HasMultipleSingleFiles OptBool                                 `json:"has_multiple_single_files"`
 	SingleFilePaths        []string                                `json:"single_file_paths"`
 }
+
+func (*InstallationToken) appsCreateInstallationAccessTokenRes() {}
 
 type InstallationTokenRepositorySelection string
 
@@ -4439,7 +4977,9 @@ type InteractionLimitResponse struct {
 	ExpiresAt time.Time        `json:"expires_at"`
 }
 
-func (*InteractionLimitResponse) interactionsSetRestrictionsForRepoRes() {}
+func (*InteractionLimitResponse) interactionsSetRestrictionsForAuthenticatedUserRes() {}
+func (*InteractionLimitResponse) interactionsSetRestrictionsForOrgRes()               {}
+func (*InteractionLimitResponse) interactionsSetRestrictionsForRepoRes()              {}
 
 // InteractionsRemoveRestrictionsForAuthenticatedUserNoContent is response for InteractionsRemoveRestrictionsForAuthenticatedUser operation.
 type InteractionsRemoveRestrictionsForAuthenticatedUserNoContent struct{}
@@ -4462,6 +5002,46 @@ type InteractionsSetRestrictionsForRepoConflict struct{}
 
 func (*InteractionsSetRestrictionsForRepoConflict) interactionsSetRestrictionsForRepoRes() {}
 
+// Ref: #/components/schemas/issue
+type Issue struct {
+	ID                    int                       `json:"id"`
+	NodeID                string                    `json:"node_id"`
+	URL                   url.URL                   `json:"url"`
+	RepositoryURL         url.URL                   `json:"repository_url"`
+	LabelsURL             string                    `json:"labels_url"`
+	CommentsURL           url.URL                   `json:"comments_url"`
+	EventsURL             url.URL                   `json:"events_url"`
+	HTMLURL               url.URL                   `json:"html_url"`
+	Number                int                       `json:"number"`
+	State                 string                    `json:"state"`
+	Title                 string                    `json:"title"`
+	Body                  OptNilString              `json:"body"`
+	User                  NilNullableSimpleUser     `json:"user"`
+	Labels                []IssueLabelsItem         `json:"labels"`
+	Assignee              NilNullableSimpleUser     `json:"assignee"`
+	Assignees             OptNilSimpleUserArray     `json:"assignees"`
+	Milestone             NilNullableMilestone      `json:"milestone"`
+	Locked                bool                      `json:"locked"`
+	ActiveLockReason      OptNilString              `json:"active_lock_reason"`
+	Comments              int                       `json:"comments"`
+	PullRequest           OptIssuePullRequest       `json:"pull_request"`
+	ClosedAt              NilTime                   `json:"closed_at"`
+	CreatedAt             time.Time                 `json:"created_at"`
+	UpdatedAt             time.Time                 `json:"updated_at"`
+	ClosedBy              OptNilNullableSimpleUser  `json:"closed_by"`
+	BodyHTML              OptString                 `json:"body_html"`
+	BodyText              OptString                 `json:"body_text"`
+	TimelineURL           OptURL                    `json:"timeline_url"`
+	Repository            OptRepository             `json:"repository"`
+	PerformedViaGithubApp OptNilNullableIntegration `json:"performed_via_github_app"`
+	AuthorAssociation     AuthorAssociation         `json:"author_association"`
+	Reactions             OptReactionRollup         `json:"reactions"`
+}
+
+func (*Issue) issuesCreateRes() {}
+func (*Issue) issuesGetRes()    {}
+func (*Issue) issuesUpdateRes() {}
+
 // Ref: #/components/schemas/issue-comment
 type IssueComment struct {
 	ID                    int                       `json:"id"`
@@ -4480,7 +5060,9 @@ type IssueComment struct {
 	Reactions             OptReactionRollup         `json:"reactions"`
 }
 
-func (*IssueComment) issuesGetCommentRes() {}
+func (*IssueComment) issuesCreateCommentRes() {}
+func (*IssueComment) issuesGetCommentRes()    {}
+func (*IssueComment) issuesUpdateCommentRes() {}
 
 // Ref: #/components/schemas/issue-event
 type IssueEvent struct {
@@ -4543,6 +5125,88 @@ type IssueEventProjectCard struct {
 type IssueEventRename struct {
 	From string `json:"from"`
 	To   string `json:"to"`
+}
+
+// IssueLabelsItem represents sum type.
+type IssueLabelsItem struct {
+	Type             IssueLabelsItemType // switch on this field
+	String           string
+	IssueLabelsItem1 IssueLabelsItem1
+}
+
+// IssueLabelsItemType is oneOf type of IssueLabelsItem.
+type IssueLabelsItemType string
+
+// Possible values for IssueLabelsItemType.
+const (
+	StringIssueLabelsItem           IssueLabelsItemType = "string"
+	IssueLabelsItem1IssueLabelsItem IssueLabelsItemType = "IssueLabelsItem1"
+)
+
+// IsString reports whether IssueLabelsItem is string.
+func (s IssueLabelsItem) IsString() bool { return s.Type == StringIssueLabelsItem }
+
+// IsIssueLabelsItem1 reports whether IssueLabelsItem is IssueLabelsItem1.
+func (s IssueLabelsItem) IsIssueLabelsItem1() bool { return s.Type == IssueLabelsItem1IssueLabelsItem }
+
+// SetString sets IssueLabelsItem to string.
+func (s *IssueLabelsItem) SetString(v string) {
+	s.Type = StringIssueLabelsItem
+	s.String = v
+}
+
+// GetString returns string and true boolean if IssueLabelsItem is string.
+func (s IssueLabelsItem) GetString() (v string, ok bool) {
+	if !s.IsString() {
+		return v, false
+	}
+	return s.String, true
+}
+
+// NewStringIssueLabelsItem returns new IssueLabelsItem from string.
+func NewStringIssueLabelsItem(v string) IssueLabelsItem {
+	var s IssueLabelsItem
+	s.SetString(v)
+	return s
+}
+
+// SetIssueLabelsItem1 sets IssueLabelsItem to IssueLabelsItem1.
+func (s *IssueLabelsItem) SetIssueLabelsItem1(v IssueLabelsItem1) {
+	s.Type = IssueLabelsItem1IssueLabelsItem
+	s.IssueLabelsItem1 = v
+}
+
+// GetIssueLabelsItem1 returns IssueLabelsItem1 and true boolean if IssueLabelsItem is IssueLabelsItem1.
+func (s IssueLabelsItem) GetIssueLabelsItem1() (v IssueLabelsItem1, ok bool) {
+	if !s.IsIssueLabelsItem1() {
+		return v, false
+	}
+	return s.IssueLabelsItem1, true
+}
+
+// NewIssueLabelsItem1IssueLabelsItem returns new IssueLabelsItem from IssueLabelsItem1.
+func NewIssueLabelsItem1IssueLabelsItem(v IssueLabelsItem1) IssueLabelsItem {
+	var s IssueLabelsItem
+	s.SetIssueLabelsItem1(v)
+	return s
+}
+
+type IssueLabelsItem1 struct {
+	ID          OptInt64     `json:"id"`
+	NodeID      OptString    `json:"node_id"`
+	URL         OptURL       `json:"url"`
+	Name        OptString    `json:"name"`
+	Description OptNilString `json:"description"`
+	Color       OptNilString `json:"color"`
+	Default     OptBool      `json:"default"`
+}
+
+type IssuePullRequest struct {
+	MergedAt OptNilTime `json:"merged_at"`
+	DiffURL  NilURL     `json:"diff_url"`
+	HTMLURL  NilURL     `json:"html_url"`
+	PatchURL NilURL     `json:"patch_url"`
+	URL      NilURL     `json:"url"`
 }
 
 // Ref: #/components/schemas/issue-search-result-item
@@ -4651,6 +5315,30 @@ type IssuesCheckUserCanBeAssignedNoContent struct{}
 
 func (*IssuesCheckUserCanBeAssignedNoContent) issuesCheckUserCanBeAssignedRes() {}
 
+type IssuesCreateApplicationJSONForbidden BasicError
+
+func (*IssuesCreateApplicationJSONForbidden) issuesCreateRes() {}
+
+type IssuesCreateApplicationJSONGone BasicError
+
+func (*IssuesCreateApplicationJSONGone) issuesCreateRes() {}
+
+type IssuesCreateApplicationJSONNotFound BasicError
+
+func (*IssuesCreateApplicationJSONNotFound) issuesCreateRes() {}
+
+type IssuesCreateCommentApplicationJSONForbidden BasicError
+
+func (*IssuesCreateCommentApplicationJSONForbidden) issuesCreateCommentRes() {}
+
+type IssuesCreateCommentApplicationJSONGone BasicError
+
+func (*IssuesCreateCommentApplicationJSONGone) issuesCreateCommentRes() {}
+
+type IssuesCreateCommentApplicationJSONNotFound BasicError
+
+func (*IssuesCreateCommentApplicationJSONNotFound) issuesCreateCommentRes() {}
+
 type IssuesCreateCommentReq struct {
 	Body string `json:"body"`
 }
@@ -4675,6 +5363,216 @@ const (
 	IssuesCreateMilestoneReqStateClosed IssuesCreateMilestoneReqState = "closed"
 )
 
+type IssuesCreateReq struct {
+	Title     IssuesCreateReqTitle        `json:"title"`
+	Body      OptString                   `json:"body"`
+	Assignee  OptNilString                `json:"assignee"`
+	Milestone OptIssuesCreateReqMilestone `json:"milestone"`
+	Labels    []IssuesCreateReqLabelsItem `json:"labels"`
+	Assignees []string                    `json:"assignees"`
+}
+
+// IssuesCreateReqLabelsItem represents sum type.
+type IssuesCreateReqLabelsItem struct {
+	Type                       IssuesCreateReqLabelsItemType // switch on this field
+	String                     string
+	IssuesCreateReqLabelsItem1 IssuesCreateReqLabelsItem1
+}
+
+// IssuesCreateReqLabelsItemType is oneOf type of IssuesCreateReqLabelsItem.
+type IssuesCreateReqLabelsItemType string
+
+// Possible values for IssuesCreateReqLabelsItemType.
+const (
+	StringIssuesCreateReqLabelsItem                     IssuesCreateReqLabelsItemType = "string"
+	IssuesCreateReqLabelsItem1IssuesCreateReqLabelsItem IssuesCreateReqLabelsItemType = "IssuesCreateReqLabelsItem1"
+)
+
+// IsString reports whether IssuesCreateReqLabelsItem is string.
+func (s IssuesCreateReqLabelsItem) IsString() bool { return s.Type == StringIssuesCreateReqLabelsItem }
+
+// IsIssuesCreateReqLabelsItem1 reports whether IssuesCreateReqLabelsItem is IssuesCreateReqLabelsItem1.
+func (s IssuesCreateReqLabelsItem) IsIssuesCreateReqLabelsItem1() bool {
+	return s.Type == IssuesCreateReqLabelsItem1IssuesCreateReqLabelsItem
+}
+
+// SetString sets IssuesCreateReqLabelsItem to string.
+func (s *IssuesCreateReqLabelsItem) SetString(v string) {
+	s.Type = StringIssuesCreateReqLabelsItem
+	s.String = v
+}
+
+// GetString returns string and true boolean if IssuesCreateReqLabelsItem is string.
+func (s IssuesCreateReqLabelsItem) GetString() (v string, ok bool) {
+	if !s.IsString() {
+		return v, false
+	}
+	return s.String, true
+}
+
+// NewStringIssuesCreateReqLabelsItem returns new IssuesCreateReqLabelsItem from string.
+func NewStringIssuesCreateReqLabelsItem(v string) IssuesCreateReqLabelsItem {
+	var s IssuesCreateReqLabelsItem
+	s.SetString(v)
+	return s
+}
+
+// SetIssuesCreateReqLabelsItem1 sets IssuesCreateReqLabelsItem to IssuesCreateReqLabelsItem1.
+func (s *IssuesCreateReqLabelsItem) SetIssuesCreateReqLabelsItem1(v IssuesCreateReqLabelsItem1) {
+	s.Type = IssuesCreateReqLabelsItem1IssuesCreateReqLabelsItem
+	s.IssuesCreateReqLabelsItem1 = v
+}
+
+// GetIssuesCreateReqLabelsItem1 returns IssuesCreateReqLabelsItem1 and true boolean if IssuesCreateReqLabelsItem is IssuesCreateReqLabelsItem1.
+func (s IssuesCreateReqLabelsItem) GetIssuesCreateReqLabelsItem1() (v IssuesCreateReqLabelsItem1, ok bool) {
+	if !s.IsIssuesCreateReqLabelsItem1() {
+		return v, false
+	}
+	return s.IssuesCreateReqLabelsItem1, true
+}
+
+// NewIssuesCreateReqLabelsItem1IssuesCreateReqLabelsItem returns new IssuesCreateReqLabelsItem from IssuesCreateReqLabelsItem1.
+func NewIssuesCreateReqLabelsItem1IssuesCreateReqLabelsItem(v IssuesCreateReqLabelsItem1) IssuesCreateReqLabelsItem {
+	var s IssuesCreateReqLabelsItem
+	s.SetIssuesCreateReqLabelsItem1(v)
+	return s
+}
+
+type IssuesCreateReqLabelsItem1 struct {
+	ID          OptInt       `json:"id"`
+	Name        OptString    `json:"name"`
+	Description OptNilString `json:"description"`
+	Color       OptNilString `json:"color"`
+}
+
+// IssuesCreateReqMilestone represents sum type.
+type IssuesCreateReqMilestone struct {
+	Type   IssuesCreateReqMilestoneType // switch on this field
+	String string
+	Int    int
+}
+
+// IssuesCreateReqMilestoneType is oneOf type of IssuesCreateReqMilestone.
+type IssuesCreateReqMilestoneType string
+
+// Possible values for IssuesCreateReqMilestoneType.
+const (
+	StringIssuesCreateReqMilestone IssuesCreateReqMilestoneType = "string"
+	IntIssuesCreateReqMilestone    IssuesCreateReqMilestoneType = "int"
+)
+
+// IsString reports whether IssuesCreateReqMilestone is string.
+func (s IssuesCreateReqMilestone) IsString() bool { return s.Type == StringIssuesCreateReqMilestone }
+
+// IsInt reports whether IssuesCreateReqMilestone is int.
+func (s IssuesCreateReqMilestone) IsInt() bool { return s.Type == IntIssuesCreateReqMilestone }
+
+// SetString sets IssuesCreateReqMilestone to string.
+func (s *IssuesCreateReqMilestone) SetString(v string) {
+	s.Type = StringIssuesCreateReqMilestone
+	s.String = v
+}
+
+// GetString returns string and true boolean if IssuesCreateReqMilestone is string.
+func (s IssuesCreateReqMilestone) GetString() (v string, ok bool) {
+	if !s.IsString() {
+		return v, false
+	}
+	return s.String, true
+}
+
+// NewStringIssuesCreateReqMilestone returns new IssuesCreateReqMilestone from string.
+func NewStringIssuesCreateReqMilestone(v string) IssuesCreateReqMilestone {
+	var s IssuesCreateReqMilestone
+	s.SetString(v)
+	return s
+}
+
+// SetInt sets IssuesCreateReqMilestone to int.
+func (s *IssuesCreateReqMilestone) SetInt(v int) {
+	s.Type = IntIssuesCreateReqMilestone
+	s.Int = v
+}
+
+// GetInt returns int and true boolean if IssuesCreateReqMilestone is int.
+func (s IssuesCreateReqMilestone) GetInt() (v int, ok bool) {
+	if !s.IsInt() {
+		return v, false
+	}
+	return s.Int, true
+}
+
+// NewIntIssuesCreateReqMilestone returns new IssuesCreateReqMilestone from int.
+func NewIntIssuesCreateReqMilestone(v int) IssuesCreateReqMilestone {
+	var s IssuesCreateReqMilestone
+	s.SetInt(v)
+	return s
+}
+
+// IssuesCreateReqTitle represents sum type.
+type IssuesCreateReqTitle struct {
+	Type   IssuesCreateReqTitleType // switch on this field
+	String string
+	Int    int
+}
+
+// IssuesCreateReqTitleType is oneOf type of IssuesCreateReqTitle.
+type IssuesCreateReqTitleType string
+
+// Possible values for IssuesCreateReqTitleType.
+const (
+	StringIssuesCreateReqTitle IssuesCreateReqTitleType = "string"
+	IntIssuesCreateReqTitle    IssuesCreateReqTitleType = "int"
+)
+
+// IsString reports whether IssuesCreateReqTitle is string.
+func (s IssuesCreateReqTitle) IsString() bool { return s.Type == StringIssuesCreateReqTitle }
+
+// IsInt reports whether IssuesCreateReqTitle is int.
+func (s IssuesCreateReqTitle) IsInt() bool { return s.Type == IntIssuesCreateReqTitle }
+
+// SetString sets IssuesCreateReqTitle to string.
+func (s *IssuesCreateReqTitle) SetString(v string) {
+	s.Type = StringIssuesCreateReqTitle
+	s.String = v
+}
+
+// GetString returns string and true boolean if IssuesCreateReqTitle is string.
+func (s IssuesCreateReqTitle) GetString() (v string, ok bool) {
+	if !s.IsString() {
+		return v, false
+	}
+	return s.String, true
+}
+
+// NewStringIssuesCreateReqTitle returns new IssuesCreateReqTitle from string.
+func NewStringIssuesCreateReqTitle(v string) IssuesCreateReqTitle {
+	var s IssuesCreateReqTitle
+	s.SetString(v)
+	return s
+}
+
+// SetInt sets IssuesCreateReqTitle to int.
+func (s *IssuesCreateReqTitle) SetInt(v int) {
+	s.Type = IntIssuesCreateReqTitle
+	s.Int = v
+}
+
+// GetInt returns int and true boolean if IssuesCreateReqTitle is int.
+func (s IssuesCreateReqTitle) GetInt() (v int, ok bool) {
+	if !s.IsInt() {
+		return v, false
+	}
+	return s.Int, true
+}
+
+// NewIntIssuesCreateReqTitle returns new IssuesCreateReqTitle from int.
+func NewIntIssuesCreateReqTitle(v int) IssuesCreateReqTitle {
+	var s IssuesCreateReqTitle
+	s.SetInt(v)
+	return s
+}
+
 // IssuesDeleteCommentNoContent is response for IssuesDeleteComment operation.
 type IssuesDeleteCommentNoContent struct{}
 
@@ -4685,6 +5583,18 @@ type IssuesDeleteLabelNoContent struct{}
 type IssuesDeleteMilestoneNoContent struct{}
 
 func (*IssuesDeleteMilestoneNoContent) issuesDeleteMilestoneRes() {}
+
+type IssuesGetApplicationJSONGone BasicError
+
+func (*IssuesGetApplicationJSONGone) issuesGetRes() {}
+
+type IssuesGetApplicationJSONMovedPermanently BasicError
+
+func (*IssuesGetApplicationJSONMovedPermanently) issuesGetRes() {}
+
+type IssuesGetApplicationJSONNotFound BasicError
+
+func (*IssuesGetApplicationJSONNotFound) issuesGetRes() {}
 
 type IssuesGetEventApplicationJSONForbidden BasicError
 
@@ -4717,6 +5627,10 @@ const (
 	IssuesListCommentsForRepoDirectionDesc IssuesListCommentsForRepoDirection = "desc"
 )
 
+type IssuesListCommentsForRepoOKApplicationJSON []IssueComment
+
+func (*IssuesListCommentsForRepoOKApplicationJSON) issuesListCommentsForRepoRes() {}
+
 type IssuesListCommentsForRepoSort string
 
 const (
@@ -4734,6 +5648,10 @@ const (
 	IssuesListDirectionAsc  IssuesListDirection = "asc"
 	IssuesListDirectionDesc IssuesListDirection = "desc"
 )
+
+type IssuesListEventsForRepoOKApplicationJSON []IssueEvent
+
+func (*IssuesListEventsForRepoOKApplicationJSON) issuesListEventsForRepoRes() {}
 
 type IssuesListFilter string
 
@@ -4763,6 +5681,10 @@ const (
 	IssuesListForAuthenticatedUserFilterRepos      IssuesListForAuthenticatedUserFilter = "repos"
 	IssuesListForAuthenticatedUserFilterAll        IssuesListForAuthenticatedUserFilter = "all"
 )
+
+type IssuesListForAuthenticatedUserOKApplicationJSON []Issue
+
+func (*IssuesListForAuthenticatedUserOKApplicationJSON) issuesListForAuthenticatedUserRes() {}
 
 type IssuesListForAuthenticatedUserSort string
 
@@ -4798,6 +5720,10 @@ const (
 	IssuesListForOrgFilterAll        IssuesListForOrgFilter = "all"
 )
 
+type IssuesListForOrgOKApplicationJSON []Issue
+
+func (*IssuesListForOrgOKApplicationJSON) issuesListForOrgRes() {}
+
 type IssuesListForOrgSort string
 
 const (
@@ -4814,12 +5740,24 @@ const (
 	IssuesListForOrgStateAll    IssuesListForOrgState = "all"
 )
 
+type IssuesListForRepoApplicationJSONMovedPermanently BasicError
+
+func (*IssuesListForRepoApplicationJSONMovedPermanently) issuesListForRepoRes() {}
+
+type IssuesListForRepoApplicationJSONNotFound BasicError
+
+func (*IssuesListForRepoApplicationJSONNotFound) issuesListForRepoRes() {}
+
 type IssuesListForRepoDirection string
 
 const (
 	IssuesListForRepoDirectionAsc  IssuesListForRepoDirection = "asc"
 	IssuesListForRepoDirectionDesc IssuesListForRepoDirection = "desc"
 )
+
+type IssuesListForRepoOKApplicationJSON []IssueSimple
+
+func (*IssuesListForRepoOKApplicationJSON) issuesListForRepoRes() {}
 
 type IssuesListForRepoSort string
 
@@ -4871,6 +5809,10 @@ const (
 	IssuesListMilestonesStateAll    IssuesListMilestonesState = "all"
 )
 
+type IssuesListOKApplicationJSON []Issue
+
+func (*IssuesListOKApplicationJSON) issuesListRes() {}
+
 type IssuesListSort string
 
 const (
@@ -4887,8 +5829,22 @@ const (
 	IssuesListStateAll    IssuesListState = "all"
 )
 
+type IssuesLockApplicationJSONForbidden BasicError
+
+func (*IssuesLockApplicationJSONForbidden) issuesLockRes() {}
+
+type IssuesLockApplicationJSONGone BasicError
+
+func (*IssuesLockApplicationJSONGone) issuesLockRes() {}
+
+type IssuesLockApplicationJSONNotFound BasicError
+
+func (*IssuesLockApplicationJSONNotFound) issuesLockRes() {}
+
 // IssuesLockNoContent is response for IssuesLock operation.
 type IssuesLockNoContent struct{}
+
+func (*IssuesLockNoContent) issuesLockRes() {}
 
 type IssuesLockReq struct {
 	LockReason OptIssuesLockReqLockReason `json:"lock_reason"`
@@ -4937,6 +5893,22 @@ type IssuesUnlockNoContent struct{}
 
 func (*IssuesUnlockNoContent) issuesUnlockRes() {}
 
+type IssuesUpdateApplicationJSONForbidden BasicError
+
+func (*IssuesUpdateApplicationJSONForbidden) issuesUpdateRes() {}
+
+type IssuesUpdateApplicationJSONGone BasicError
+
+func (*IssuesUpdateApplicationJSONGone) issuesUpdateRes() {}
+
+type IssuesUpdateApplicationJSONMovedPermanently BasicError
+
+func (*IssuesUpdateApplicationJSONMovedPermanently) issuesUpdateRes() {}
+
+type IssuesUpdateApplicationJSONNotFound BasicError
+
+func (*IssuesUpdateApplicationJSONNotFound) issuesUpdateRes() {}
+
 type IssuesUpdateCommentReq struct {
 	Body string `json:"body"`
 }
@@ -4960,6 +5932,224 @@ const (
 	IssuesUpdateMilestoneReqStateOpen   IssuesUpdateMilestoneReqState = "open"
 	IssuesUpdateMilestoneReqStateClosed IssuesUpdateMilestoneReqState = "closed"
 )
+
+type IssuesUpdateReq struct {
+	Title     OptIssuesUpdateReqTitle     `json:"title"`
+	Body      OptNilString                `json:"body"`
+	Assignee  OptNilString                `json:"assignee"`
+	State     OptIssuesUpdateReqState     `json:"state"`
+	Milestone OptIssuesUpdateReqMilestone `json:"milestone"`
+	Labels    []IssuesUpdateReqLabelsItem `json:"labels"`
+	Assignees []string                    `json:"assignees"`
+}
+
+// IssuesUpdateReqLabelsItem represents sum type.
+type IssuesUpdateReqLabelsItem struct {
+	Type                       IssuesUpdateReqLabelsItemType // switch on this field
+	String                     string
+	IssuesUpdateReqLabelsItem1 IssuesUpdateReqLabelsItem1
+}
+
+// IssuesUpdateReqLabelsItemType is oneOf type of IssuesUpdateReqLabelsItem.
+type IssuesUpdateReqLabelsItemType string
+
+// Possible values for IssuesUpdateReqLabelsItemType.
+const (
+	StringIssuesUpdateReqLabelsItem                     IssuesUpdateReqLabelsItemType = "string"
+	IssuesUpdateReqLabelsItem1IssuesUpdateReqLabelsItem IssuesUpdateReqLabelsItemType = "IssuesUpdateReqLabelsItem1"
+)
+
+// IsString reports whether IssuesUpdateReqLabelsItem is string.
+func (s IssuesUpdateReqLabelsItem) IsString() bool { return s.Type == StringIssuesUpdateReqLabelsItem }
+
+// IsIssuesUpdateReqLabelsItem1 reports whether IssuesUpdateReqLabelsItem is IssuesUpdateReqLabelsItem1.
+func (s IssuesUpdateReqLabelsItem) IsIssuesUpdateReqLabelsItem1() bool {
+	return s.Type == IssuesUpdateReqLabelsItem1IssuesUpdateReqLabelsItem
+}
+
+// SetString sets IssuesUpdateReqLabelsItem to string.
+func (s *IssuesUpdateReqLabelsItem) SetString(v string) {
+	s.Type = StringIssuesUpdateReqLabelsItem
+	s.String = v
+}
+
+// GetString returns string and true boolean if IssuesUpdateReqLabelsItem is string.
+func (s IssuesUpdateReqLabelsItem) GetString() (v string, ok bool) {
+	if !s.IsString() {
+		return v, false
+	}
+	return s.String, true
+}
+
+// NewStringIssuesUpdateReqLabelsItem returns new IssuesUpdateReqLabelsItem from string.
+func NewStringIssuesUpdateReqLabelsItem(v string) IssuesUpdateReqLabelsItem {
+	var s IssuesUpdateReqLabelsItem
+	s.SetString(v)
+	return s
+}
+
+// SetIssuesUpdateReqLabelsItem1 sets IssuesUpdateReqLabelsItem to IssuesUpdateReqLabelsItem1.
+func (s *IssuesUpdateReqLabelsItem) SetIssuesUpdateReqLabelsItem1(v IssuesUpdateReqLabelsItem1) {
+	s.Type = IssuesUpdateReqLabelsItem1IssuesUpdateReqLabelsItem
+	s.IssuesUpdateReqLabelsItem1 = v
+}
+
+// GetIssuesUpdateReqLabelsItem1 returns IssuesUpdateReqLabelsItem1 and true boolean if IssuesUpdateReqLabelsItem is IssuesUpdateReqLabelsItem1.
+func (s IssuesUpdateReqLabelsItem) GetIssuesUpdateReqLabelsItem1() (v IssuesUpdateReqLabelsItem1, ok bool) {
+	if !s.IsIssuesUpdateReqLabelsItem1() {
+		return v, false
+	}
+	return s.IssuesUpdateReqLabelsItem1, true
+}
+
+// NewIssuesUpdateReqLabelsItem1IssuesUpdateReqLabelsItem returns new IssuesUpdateReqLabelsItem from IssuesUpdateReqLabelsItem1.
+func NewIssuesUpdateReqLabelsItem1IssuesUpdateReqLabelsItem(v IssuesUpdateReqLabelsItem1) IssuesUpdateReqLabelsItem {
+	var s IssuesUpdateReqLabelsItem
+	s.SetIssuesUpdateReqLabelsItem1(v)
+	return s
+}
+
+type IssuesUpdateReqLabelsItem1 struct {
+	ID          OptInt       `json:"id"`
+	Name        OptString    `json:"name"`
+	Description OptNilString `json:"description"`
+	Color       OptNilString `json:"color"`
+}
+
+// IssuesUpdateReqMilestone represents sum type.
+type IssuesUpdateReqMilestone struct {
+	Type   IssuesUpdateReqMilestoneType // switch on this field
+	String string
+	Int    int
+}
+
+// IssuesUpdateReqMilestoneType is oneOf type of IssuesUpdateReqMilestone.
+type IssuesUpdateReqMilestoneType string
+
+// Possible values for IssuesUpdateReqMilestoneType.
+const (
+	StringIssuesUpdateReqMilestone IssuesUpdateReqMilestoneType = "string"
+	IntIssuesUpdateReqMilestone    IssuesUpdateReqMilestoneType = "int"
+)
+
+// IsString reports whether IssuesUpdateReqMilestone is string.
+func (s IssuesUpdateReqMilestone) IsString() bool { return s.Type == StringIssuesUpdateReqMilestone }
+
+// IsInt reports whether IssuesUpdateReqMilestone is int.
+func (s IssuesUpdateReqMilestone) IsInt() bool { return s.Type == IntIssuesUpdateReqMilestone }
+
+// SetString sets IssuesUpdateReqMilestone to string.
+func (s *IssuesUpdateReqMilestone) SetString(v string) {
+	s.Type = StringIssuesUpdateReqMilestone
+	s.String = v
+}
+
+// GetString returns string and true boolean if IssuesUpdateReqMilestone is string.
+func (s IssuesUpdateReqMilestone) GetString() (v string, ok bool) {
+	if !s.IsString() {
+		return v, false
+	}
+	return s.String, true
+}
+
+// NewStringIssuesUpdateReqMilestone returns new IssuesUpdateReqMilestone from string.
+func NewStringIssuesUpdateReqMilestone(v string) IssuesUpdateReqMilestone {
+	var s IssuesUpdateReqMilestone
+	s.SetString(v)
+	return s
+}
+
+// SetInt sets IssuesUpdateReqMilestone to int.
+func (s *IssuesUpdateReqMilestone) SetInt(v int) {
+	s.Type = IntIssuesUpdateReqMilestone
+	s.Int = v
+}
+
+// GetInt returns int and true boolean if IssuesUpdateReqMilestone is int.
+func (s IssuesUpdateReqMilestone) GetInt() (v int, ok bool) {
+	if !s.IsInt() {
+		return v, false
+	}
+	return s.Int, true
+}
+
+// NewIntIssuesUpdateReqMilestone returns new IssuesUpdateReqMilestone from int.
+func NewIntIssuesUpdateReqMilestone(v int) IssuesUpdateReqMilestone {
+	var s IssuesUpdateReqMilestone
+	s.SetInt(v)
+	return s
+}
+
+type IssuesUpdateReqState string
+
+const (
+	IssuesUpdateReqStateOpen   IssuesUpdateReqState = "open"
+	IssuesUpdateReqStateClosed IssuesUpdateReqState = "closed"
+)
+
+// IssuesUpdateReqTitle represents sum type.
+type IssuesUpdateReqTitle struct {
+	Type   IssuesUpdateReqTitleType // switch on this field
+	String string
+	Int    int
+}
+
+// IssuesUpdateReqTitleType is oneOf type of IssuesUpdateReqTitle.
+type IssuesUpdateReqTitleType string
+
+// Possible values for IssuesUpdateReqTitleType.
+const (
+	StringIssuesUpdateReqTitle IssuesUpdateReqTitleType = "string"
+	IntIssuesUpdateReqTitle    IssuesUpdateReqTitleType = "int"
+)
+
+// IsString reports whether IssuesUpdateReqTitle is string.
+func (s IssuesUpdateReqTitle) IsString() bool { return s.Type == StringIssuesUpdateReqTitle }
+
+// IsInt reports whether IssuesUpdateReqTitle is int.
+func (s IssuesUpdateReqTitle) IsInt() bool { return s.Type == IntIssuesUpdateReqTitle }
+
+// SetString sets IssuesUpdateReqTitle to string.
+func (s *IssuesUpdateReqTitle) SetString(v string) {
+	s.Type = StringIssuesUpdateReqTitle
+	s.String = v
+}
+
+// GetString returns string and true boolean if IssuesUpdateReqTitle is string.
+func (s IssuesUpdateReqTitle) GetString() (v string, ok bool) {
+	if !s.IsString() {
+		return v, false
+	}
+	return s.String, true
+}
+
+// NewStringIssuesUpdateReqTitle returns new IssuesUpdateReqTitle from string.
+func NewStringIssuesUpdateReqTitle(v string) IssuesUpdateReqTitle {
+	var s IssuesUpdateReqTitle
+	s.SetString(v)
+	return s
+}
+
+// SetInt sets IssuesUpdateReqTitle to int.
+func (s *IssuesUpdateReqTitle) SetInt(v int) {
+	s.Type = IntIssuesUpdateReqTitle
+	s.Int = v
+}
+
+// GetInt returns int and true boolean if IssuesUpdateReqTitle is int.
+func (s IssuesUpdateReqTitle) GetInt() (v int, ok bool) {
+	if !s.IsInt() {
+		return v, false
+	}
+	return s.Int, true
+}
+
+// NewIntIssuesUpdateReqTitle returns new IssuesUpdateReqTitle from int.
+func NewIntIssuesUpdateReqTitle(v int) IssuesUpdateReqTitle {
+	var s IssuesUpdateReqTitle
+	s.SetInt(v)
+	return s
+}
 
 // Ref: #/components/schemas/job
 type Job struct {
@@ -5015,7 +6205,8 @@ type Key struct {
 	ReadOnly  bool      `json:"read_only"`
 }
 
-func (*Key) usersGetPublicSSHKeyForAuthenticatedRes() {}
+func (*Key) usersCreatePublicSSHKeyForAuthenticatedRes() {}
+func (*Key) usersGetPublicSSHKeyForAuthenticatedRes()    {}
 
 // Ref: #/components/schemas/key-simple
 type KeySimple struct {
@@ -5034,7 +6225,8 @@ type Label struct {
 	Default     bool      `json:"default"`
 }
 
-func (*Label) issuesGetLabelRes() {}
+func (*Label) issuesCreateLabelRes() {}
+func (*Label) issuesGetLabelRes()    {}
 
 // Ref: #/components/schemas/label-search-result-item
 type LabelSearchResultItem struct {
@@ -5278,6 +6470,8 @@ type Migration struct {
 
 func (*Migration) migrationsGetStatusForAuthenticatedUserRes() {}
 func (*Migration) migrationsGetStatusForOrgRes()               {}
+func (*Migration) migrationsStartForAuthenticatedUserRes()     {}
+func (*Migration) migrationsStartForOrgRes()                   {}
 
 // MigrationsCancelImportNoContent is response for MigrationsCancelImport operation.
 type MigrationsCancelImportNoContent struct{}
@@ -5397,6 +6591,16 @@ const (
 	MigrationsSetLfsPreferenceReqUseLfsOptOut MigrationsSetLfsPreferenceReqUseLfs = "opt_out"
 )
 
+type MigrationsStartForAuthenticatedUserApplicationJSONForbidden BasicError
+
+func (*MigrationsStartForAuthenticatedUserApplicationJSONForbidden) migrationsStartForAuthenticatedUserRes() {
+}
+
+type MigrationsStartForAuthenticatedUserApplicationJSONUnauthorized BasicError
+
+func (*MigrationsStartForAuthenticatedUserApplicationJSONUnauthorized) migrationsStartForAuthenticatedUserRes() {
+}
+
 type MigrationsStartForAuthenticatedUserReq struct {
 	LockRepositories     OptBool                                             `json:"lock_repositories"`
 	ExcludeAttachments   OptBool                                             `json:"exclude_attachments"`
@@ -5497,7 +6701,8 @@ type Milestone struct {
 	DueOn        NilTime               `json:"due_on"`
 }
 
-func (*Milestone) issuesGetMilestoneRes() {}
+func (*Milestone) issuesCreateMilestoneRes() {}
+func (*Milestone) issuesGetMilestoneRes()    {}
 
 type MilestoneState string
 
@@ -6585,6 +7790,7 @@ func (*NotModified) activityCheckRepoIsStarredByAuthenticatedUserRes()     {}
 func (*NotModified) activityDeleteThreadSubscriptionRes()                  {}
 func (*NotModified) activityGetThreadRes()                                 {}
 func (*NotModified) activityGetThreadSubscriptionForAuthenticatedUserRes() {}
+func (*NotModified) activityListNotificationsForAuthenticatedUserRes()     {}
 func (*NotModified) activityListPublicEventsForRepoNetworkRes()            {}
 func (*NotModified) activityListPublicEventsRes()                          {}
 func (*NotModified) activityListReposStarredByAuthenticatedUserRes()       {}
@@ -6595,6 +7801,7 @@ func (*NotModified) activitySetThreadSubscriptionRes()                     {}
 func (*NotModified) activityStarRepoForAuthenticatedUserRes()              {}
 func (*NotModified) activityUnstarRepoForAuthenticatedUserRes()            {}
 func (*NotModified) appsAddRepoToInstallationRes()                         {}
+func (*NotModified) appsCreateContentAttachmentRes()                       {}
 func (*NotModified) appsListInstallationReposForAuthenticatedUserRes()     {}
 func (*NotModified) appsListReposAccessibleToInstallationRes()             {}
 func (*NotModified) appsListSubscriptionsForAuthenticatedUserRes()         {}
@@ -6605,19 +7812,25 @@ func (*NotModified) codesOfConductGetConductCodeRes()                      {}
 func (*NotModified) emojisGetRes()                                         {}
 func (*NotModified) gistsCheckIsStarredRes()                               {}
 func (*NotModified) gistsCreateCommentRes()                                {}
+func (*NotModified) gistsCreateRes()                                       {}
 func (*NotModified) gistsDeleteCommentRes()                                {}
 func (*NotModified) gistsDeleteRes()                                       {}
+func (*NotModified) gistsForkRes()                                         {}
 func (*NotModified) gistsGetCommentRes()                                   {}
 func (*NotModified) gistsGetRes()                                          {}
 func (*NotModified) gistsListCommentsRes()                                 {}
 func (*NotModified) gistsListCommitsRes()                                  {}
 func (*NotModified) gistsListForksRes()                                    {}
+func (*NotModified) gistsListPublicRes()                                   {}
 func (*NotModified) gistsListRes()                                         {}
 func (*NotModified) gistsListStarredRes()                                  {}
 func (*NotModified) gistsStarRes()                                         {}
 func (*NotModified) gistsUnstarRes()                                       {}
 func (*NotModified) gitignoreGetAllTemplatesRes()                          {}
 func (*NotModified) gitignoreGetTemplateRes()                              {}
+func (*NotModified) issuesGetRes()                                         {}
+func (*NotModified) issuesListForAuthenticatedUserRes()                    {}
+func (*NotModified) issuesListRes()                                        {}
 func (*NotModified) licensesGetAllCommonlyUsedRes()                        {}
 func (*NotModified) licensesGetRes()                                       {}
 func (*NotModified) metaGetRes()                                           {}
@@ -6625,15 +7838,20 @@ func (*NotModified) migrationsDeleteArchiveForAuthenticatedUserRes()       {}
 func (*NotModified) migrationsGetArchiveForAuthenticatedUserRes()          {}
 func (*NotModified) migrationsGetStatusForAuthenticatedUserRes()           {}
 func (*NotModified) migrationsListForAuthenticatedUserRes()                {}
+func (*NotModified) migrationsStartForAuthenticatedUserRes()               {}
 func (*NotModified) migrationsUnlockRepoForAuthenticatedUserRes()          {}
+func (*NotModified) oAuthAuthorizationsCreateAuthorizationRes()            {}
 func (*NotModified) oAuthAuthorizationsDeleteAuthorizationRes()            {}
 func (*NotModified) oAuthAuthorizationsDeleteGrantRes()                    {}
 func (*NotModified) oAuthAuthorizationsGetAuthorizationRes()               {}
 func (*NotModified) oAuthAuthorizationsGetGrantRes()                       {}
+func (*NotModified) oAuthAuthorizationsGetOrCreateAuthorizationForAppRes() {}
 func (*NotModified) oAuthAuthorizationsListAuthorizationsRes()             {}
 func (*NotModified) oAuthAuthorizationsListGrantsRes()                     {}
 func (*NotModified) orgsListForAuthenticatedUserRes()                      {}
+func (*NotModified) orgsListMembershipsForAuthenticatedUserRes()           {}
 func (*NotModified) orgsListRes()                                          {}
+func (*NotModified) projectsAddCollaboratorRes()                           {}
 func (*NotModified) projectsCreateColumnRes()                              {}
 func (*NotModified) projectsCreateForAuthenticatedUserRes()                {}
 func (*NotModified) projectsDeleteCardRes()                                {}
@@ -6641,25 +7859,44 @@ func (*NotModified) projectsDeleteColumnRes()                              {}
 func (*NotModified) projectsDeleteRes()                                    {}
 func (*NotModified) projectsGetCardRes()                                   {}
 func (*NotModified) projectsGetColumnRes()                                 {}
+func (*NotModified) projectsGetPermissionForUserRes()                      {}
 func (*NotModified) projectsGetRes()                                       {}
 func (*NotModified) projectsListCardsRes()                                 {}
+func (*NotModified) projectsListCollaboratorsRes()                         {}
 func (*NotModified) projectsListColumnsRes()                               {}
+func (*NotModified) projectsMoveCardRes()                                  {}
 func (*NotModified) projectsMoveColumnRes()                                {}
+func (*NotModified) projectsRemoveCollaboratorRes()                        {}
 func (*NotModified) projectsUpdateCardRes()                                {}
 func (*NotModified) projectsUpdateColumnRes()                              {}
 func (*NotModified) projectsUpdateRes()                                    {}
 func (*NotModified) pullsGetRes()                                          {}
+func (*NotModified) pullsListRes()                                         {}
 func (*NotModified) rateLimitGetRes()                                      {}
 func (*NotModified) reactionsDeleteLegacyRes()                             {}
 func (*NotModified) reposAcceptInvitationRes()                             {}
+func (*NotModified) reposCreateForAuthenticatedUserRes()                   {}
 func (*NotModified) reposDeclineInvitationRes()                            {}
+func (*NotModified) reposListForAuthenticatedUserRes()                     {}
 func (*NotModified) reposListInvitationsForAuthenticatedUserRes()          {}
+func (*NotModified) reposListPublicRes()                                   {}
 func (*NotModified) scimDeleteUserFromOrgRes()                             {}
+func (*NotModified) searchCodeRes()                                        {}
 func (*NotModified) searchCommitsRes()                                     {}
+func (*NotModified) searchIssuesAndPullRequestsRes()                       {}
+func (*NotModified) searchLabelsRes()                                      {}
+func (*NotModified) searchReposRes()                                       {}
 func (*NotModified) searchTopicsRes()                                      {}
+func (*NotModified) searchUsersRes()                                       {}
 func (*NotModified) teamsListForAuthenticatedUserRes()                     {}
+func (*NotModified) usersAddEmailForAuthenticatedRes()                     {}
+func (*NotModified) usersBlockRes()                                        {}
 func (*NotModified) usersCheckBlockedRes()                                 {}
 func (*NotModified) usersCheckPersonIsFollowedByAuthenticatedRes()         {}
+func (*NotModified) usersCreateGpgKeyForAuthenticatedRes()                 {}
+func (*NotModified) usersCreatePublicSSHKeyForAuthenticatedRes()           {}
+func (*NotModified) usersDeleteEmailForAuthenticatedRes()                  {}
+func (*NotModified) usersDeleteGpgKeyForAuthenticatedRes()                 {}
 func (*NotModified) usersDeletePublicSSHKeyForAuthenticatedRes()           {}
 func (*NotModified) usersFollowRes()                                       {}
 func (*NotModified) usersGetAuthenticatedRes()                             {}
@@ -6673,8 +7910,10 @@ func (*NotModified) usersListGpgKeysForAuthenticatedRes()                  {}
 func (*NotModified) usersListPublicEmailsForAuthenticatedRes()             {}
 func (*NotModified) usersListPublicSSHKeysForAuthenticatedRes()            {}
 func (*NotModified) usersListRes()                                         {}
+func (*NotModified) usersSetPrimaryEmailVisibilityForAuthenticatedRes()    {}
 func (*NotModified) usersUnblockRes()                                      {}
 func (*NotModified) usersUnfollowRes()                                     {}
+func (*NotModified) usersUpdateAuthenticatedRes()                          {}
 
 // Ref: #/components/schemas/nullable-code-of-conduct-simple
 type NullableCodeOfConductSimple struct {
@@ -7161,6 +8400,21 @@ type NullableTeamSimple struct {
 	LdapDn          OptString `json:"ldap_dn"`
 }
 
+type OAuthAuthorizationsCreateAuthorizationApplicationJSONForbidden BasicError
+
+func (*OAuthAuthorizationsCreateAuthorizationApplicationJSONForbidden) oAuthAuthorizationsCreateAuthorizationRes() {
+}
+
+type OAuthAuthorizationsCreateAuthorizationApplicationJSONGone BasicError
+
+func (*OAuthAuthorizationsCreateAuthorizationApplicationJSONGone) oAuthAuthorizationsCreateAuthorizationRes() {
+}
+
+type OAuthAuthorizationsCreateAuthorizationApplicationJSONUnauthorized BasicError
+
+func (*OAuthAuthorizationsCreateAuthorizationApplicationJSONUnauthorized) oAuthAuthorizationsCreateAuthorizationRes() {
+}
+
 type OAuthAuthorizationsCreateAuthorizationReq struct {
 	Scopes       OptNilStringArray `json:"scopes"`
 	Note         OptString         `json:"note"`
@@ -7217,11 +8471,41 @@ type OAuthAuthorizationsGetGrantApplicationJSONUnauthorized BasicError
 
 func (*OAuthAuthorizationsGetGrantApplicationJSONUnauthorized) oAuthAuthorizationsGetGrantRes() {}
 
+type OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintApplicationJSONCreated Authorization
+
+func (*OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintApplicationJSONCreated) oAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRes() {
+}
+
+type OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintApplicationJSONOK Authorization
+
+func (*OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintApplicationJSONOK) oAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRes() {
+}
+
 type OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq struct {
 	ClientSecret string            `json:"client_secret"`
 	Scopes       OptNilStringArray `json:"scopes"`
 	Note         OptString         `json:"note"`
 	NoteURL      OptString         `json:"note_url"`
+}
+
+type OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONCreated Authorization
+
+func (*OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONCreated) oAuthAuthorizationsGetOrCreateAuthorizationForAppRes() {
+}
+
+type OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONForbidden BasicError
+
+func (*OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONForbidden) oAuthAuthorizationsGetOrCreateAuthorizationForAppRes() {
+}
+
+type OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONOK Authorization
+
+func (*OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONOK) oAuthAuthorizationsGetOrCreateAuthorizationForAppRes() {
+}
+
+type OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONUnauthorized BasicError
+
+func (*OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONUnauthorized) oAuthAuthorizationsGetOrCreateAuthorizationForAppRes() {
 }
 
 type OAuthAuthorizationsGetOrCreateAuthorizationForAppReq struct {
@@ -9209,6 +10493,82 @@ func (o *OptAppsCreateInstallationAccessTokenReq) SetTo(v AppsCreateInstallation
 
 // Get returns value and boolean that denotes whether value was set.
 func (o OptAppsCreateInstallationAccessTokenReq) Get() (v AppsCreateInstallationAccessTokenReq, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptAppsListAccountsForPlanDirection returns new OptAppsListAccountsForPlanDirection with value set to v.
+func NewOptAppsListAccountsForPlanDirection(v AppsListAccountsForPlanDirection) OptAppsListAccountsForPlanDirection {
+	return OptAppsListAccountsForPlanDirection{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptAppsListAccountsForPlanDirection is optional AppsListAccountsForPlanDirection.
+type OptAppsListAccountsForPlanDirection struct {
+	Value AppsListAccountsForPlanDirection
+	Set   bool
+}
+
+// IsSet returns true if OptAppsListAccountsForPlanDirection was set.
+func (o OptAppsListAccountsForPlanDirection) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptAppsListAccountsForPlanDirection) Reset() {
+	var v AppsListAccountsForPlanDirection
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptAppsListAccountsForPlanDirection) SetTo(v AppsListAccountsForPlanDirection) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptAppsListAccountsForPlanDirection) Get() (v AppsListAccountsForPlanDirection, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptAppsListAccountsForPlanSort returns new OptAppsListAccountsForPlanSort with value set to v.
+func NewOptAppsListAccountsForPlanSort(v AppsListAccountsForPlanSort) OptAppsListAccountsForPlanSort {
+	return OptAppsListAccountsForPlanSort{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptAppsListAccountsForPlanSort is optional AppsListAccountsForPlanSort.
+type OptAppsListAccountsForPlanSort struct {
+	Value AppsListAccountsForPlanSort
+	Set   bool
+}
+
+// IsSet returns true if OptAppsListAccountsForPlanSort was set.
+func (o OptAppsListAccountsForPlanSort) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptAppsListAccountsForPlanSort) Reset() {
+	var v AppsListAccountsForPlanSort
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptAppsListAccountsForPlanSort) SetTo(v AppsListAccountsForPlanSort) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptAppsListAccountsForPlanSort) Get() (v AppsListAccountsForPlanSort, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -11879,6 +13239,44 @@ func (o OptIssueEventRename) Get() (v IssueEventRename, ok bool) {
 	return o.Value, true
 }
 
+// NewOptIssuePullRequest returns new OptIssuePullRequest with value set to v.
+func NewOptIssuePullRequest(v IssuePullRequest) OptIssuePullRequest {
+	return OptIssuePullRequest{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIssuePullRequest is optional IssuePullRequest.
+type OptIssuePullRequest struct {
+	Value IssuePullRequest
+	Set   bool
+}
+
+// IsSet returns true if OptIssuePullRequest was set.
+func (o OptIssuePullRequest) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIssuePullRequest) Reset() {
+	var v IssuePullRequest
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIssuePullRequest) SetTo(v IssuePullRequest) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIssuePullRequest) Get() (v IssuePullRequest, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
 // NewOptIssueSearchResultItemPullRequest returns new OptIssueSearchResultItemPullRequest with value set to v.
 func NewOptIssueSearchResultItemPullRequest(v IssueSearchResultItemPullRequest) OptIssueSearchResultItemPullRequest {
 	return OptIssueSearchResultItemPullRequest{
@@ -12069,6 +13467,614 @@ func (o OptIssuesCreateMilestoneReqState) Get() (v IssuesCreateMilestoneReqState
 	return o.Value, true
 }
 
+// NewOptIssuesCreateReqMilestone returns new OptIssuesCreateReqMilestone with value set to v.
+func NewOptIssuesCreateReqMilestone(v *IssuesCreateReqMilestone) OptIssuesCreateReqMilestone {
+	return OptIssuesCreateReqMilestone{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIssuesCreateReqMilestone is optional *IssuesCreateReqMilestone.
+type OptIssuesCreateReqMilestone struct {
+	Value *IssuesCreateReqMilestone
+	Set   bool
+}
+
+// IsSet returns true if OptIssuesCreateReqMilestone was set.
+func (o OptIssuesCreateReqMilestone) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIssuesCreateReqMilestone) Reset() {
+	var v *IssuesCreateReqMilestone
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIssuesCreateReqMilestone) SetTo(v *IssuesCreateReqMilestone) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIssuesCreateReqMilestone) Get() (v *IssuesCreateReqMilestone, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptIssuesListCommentsForRepoDirection returns new OptIssuesListCommentsForRepoDirection with value set to v.
+func NewOptIssuesListCommentsForRepoDirection(v IssuesListCommentsForRepoDirection) OptIssuesListCommentsForRepoDirection {
+	return OptIssuesListCommentsForRepoDirection{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIssuesListCommentsForRepoDirection is optional IssuesListCommentsForRepoDirection.
+type OptIssuesListCommentsForRepoDirection struct {
+	Value IssuesListCommentsForRepoDirection
+	Set   bool
+}
+
+// IsSet returns true if OptIssuesListCommentsForRepoDirection was set.
+func (o OptIssuesListCommentsForRepoDirection) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIssuesListCommentsForRepoDirection) Reset() {
+	var v IssuesListCommentsForRepoDirection
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIssuesListCommentsForRepoDirection) SetTo(v IssuesListCommentsForRepoDirection) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIssuesListCommentsForRepoDirection) Get() (v IssuesListCommentsForRepoDirection, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptIssuesListCommentsForRepoSort returns new OptIssuesListCommentsForRepoSort with value set to v.
+func NewOptIssuesListCommentsForRepoSort(v IssuesListCommentsForRepoSort) OptIssuesListCommentsForRepoSort {
+	return OptIssuesListCommentsForRepoSort{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIssuesListCommentsForRepoSort is optional IssuesListCommentsForRepoSort.
+type OptIssuesListCommentsForRepoSort struct {
+	Value IssuesListCommentsForRepoSort
+	Set   bool
+}
+
+// IsSet returns true if OptIssuesListCommentsForRepoSort was set.
+func (o OptIssuesListCommentsForRepoSort) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIssuesListCommentsForRepoSort) Reset() {
+	var v IssuesListCommentsForRepoSort
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIssuesListCommentsForRepoSort) SetTo(v IssuesListCommentsForRepoSort) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIssuesListCommentsForRepoSort) Get() (v IssuesListCommentsForRepoSort, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptIssuesListDirection returns new OptIssuesListDirection with value set to v.
+func NewOptIssuesListDirection(v IssuesListDirection) OptIssuesListDirection {
+	return OptIssuesListDirection{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIssuesListDirection is optional IssuesListDirection.
+type OptIssuesListDirection struct {
+	Value IssuesListDirection
+	Set   bool
+}
+
+// IsSet returns true if OptIssuesListDirection was set.
+func (o OptIssuesListDirection) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIssuesListDirection) Reset() {
+	var v IssuesListDirection
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIssuesListDirection) SetTo(v IssuesListDirection) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIssuesListDirection) Get() (v IssuesListDirection, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptIssuesListFilter returns new OptIssuesListFilter with value set to v.
+func NewOptIssuesListFilter(v IssuesListFilter) OptIssuesListFilter {
+	return OptIssuesListFilter{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIssuesListFilter is optional IssuesListFilter.
+type OptIssuesListFilter struct {
+	Value IssuesListFilter
+	Set   bool
+}
+
+// IsSet returns true if OptIssuesListFilter was set.
+func (o OptIssuesListFilter) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIssuesListFilter) Reset() {
+	var v IssuesListFilter
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIssuesListFilter) SetTo(v IssuesListFilter) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIssuesListFilter) Get() (v IssuesListFilter, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptIssuesListForAuthenticatedUserDirection returns new OptIssuesListForAuthenticatedUserDirection with value set to v.
+func NewOptIssuesListForAuthenticatedUserDirection(v IssuesListForAuthenticatedUserDirection) OptIssuesListForAuthenticatedUserDirection {
+	return OptIssuesListForAuthenticatedUserDirection{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIssuesListForAuthenticatedUserDirection is optional IssuesListForAuthenticatedUserDirection.
+type OptIssuesListForAuthenticatedUserDirection struct {
+	Value IssuesListForAuthenticatedUserDirection
+	Set   bool
+}
+
+// IsSet returns true if OptIssuesListForAuthenticatedUserDirection was set.
+func (o OptIssuesListForAuthenticatedUserDirection) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIssuesListForAuthenticatedUserDirection) Reset() {
+	var v IssuesListForAuthenticatedUserDirection
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIssuesListForAuthenticatedUserDirection) SetTo(v IssuesListForAuthenticatedUserDirection) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIssuesListForAuthenticatedUserDirection) Get() (v IssuesListForAuthenticatedUserDirection, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptIssuesListForAuthenticatedUserFilter returns new OptIssuesListForAuthenticatedUserFilter with value set to v.
+func NewOptIssuesListForAuthenticatedUserFilter(v IssuesListForAuthenticatedUserFilter) OptIssuesListForAuthenticatedUserFilter {
+	return OptIssuesListForAuthenticatedUserFilter{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIssuesListForAuthenticatedUserFilter is optional IssuesListForAuthenticatedUserFilter.
+type OptIssuesListForAuthenticatedUserFilter struct {
+	Value IssuesListForAuthenticatedUserFilter
+	Set   bool
+}
+
+// IsSet returns true if OptIssuesListForAuthenticatedUserFilter was set.
+func (o OptIssuesListForAuthenticatedUserFilter) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIssuesListForAuthenticatedUserFilter) Reset() {
+	var v IssuesListForAuthenticatedUserFilter
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIssuesListForAuthenticatedUserFilter) SetTo(v IssuesListForAuthenticatedUserFilter) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIssuesListForAuthenticatedUserFilter) Get() (v IssuesListForAuthenticatedUserFilter, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptIssuesListForAuthenticatedUserSort returns new OptIssuesListForAuthenticatedUserSort with value set to v.
+func NewOptIssuesListForAuthenticatedUserSort(v IssuesListForAuthenticatedUserSort) OptIssuesListForAuthenticatedUserSort {
+	return OptIssuesListForAuthenticatedUserSort{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIssuesListForAuthenticatedUserSort is optional IssuesListForAuthenticatedUserSort.
+type OptIssuesListForAuthenticatedUserSort struct {
+	Value IssuesListForAuthenticatedUserSort
+	Set   bool
+}
+
+// IsSet returns true if OptIssuesListForAuthenticatedUserSort was set.
+func (o OptIssuesListForAuthenticatedUserSort) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIssuesListForAuthenticatedUserSort) Reset() {
+	var v IssuesListForAuthenticatedUserSort
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIssuesListForAuthenticatedUserSort) SetTo(v IssuesListForAuthenticatedUserSort) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIssuesListForAuthenticatedUserSort) Get() (v IssuesListForAuthenticatedUserSort, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptIssuesListForAuthenticatedUserState returns new OptIssuesListForAuthenticatedUserState with value set to v.
+func NewOptIssuesListForAuthenticatedUserState(v IssuesListForAuthenticatedUserState) OptIssuesListForAuthenticatedUserState {
+	return OptIssuesListForAuthenticatedUserState{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIssuesListForAuthenticatedUserState is optional IssuesListForAuthenticatedUserState.
+type OptIssuesListForAuthenticatedUserState struct {
+	Value IssuesListForAuthenticatedUserState
+	Set   bool
+}
+
+// IsSet returns true if OptIssuesListForAuthenticatedUserState was set.
+func (o OptIssuesListForAuthenticatedUserState) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIssuesListForAuthenticatedUserState) Reset() {
+	var v IssuesListForAuthenticatedUserState
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIssuesListForAuthenticatedUserState) SetTo(v IssuesListForAuthenticatedUserState) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIssuesListForAuthenticatedUserState) Get() (v IssuesListForAuthenticatedUserState, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptIssuesListForOrgDirection returns new OptIssuesListForOrgDirection with value set to v.
+func NewOptIssuesListForOrgDirection(v IssuesListForOrgDirection) OptIssuesListForOrgDirection {
+	return OptIssuesListForOrgDirection{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIssuesListForOrgDirection is optional IssuesListForOrgDirection.
+type OptIssuesListForOrgDirection struct {
+	Value IssuesListForOrgDirection
+	Set   bool
+}
+
+// IsSet returns true if OptIssuesListForOrgDirection was set.
+func (o OptIssuesListForOrgDirection) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIssuesListForOrgDirection) Reset() {
+	var v IssuesListForOrgDirection
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIssuesListForOrgDirection) SetTo(v IssuesListForOrgDirection) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIssuesListForOrgDirection) Get() (v IssuesListForOrgDirection, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptIssuesListForOrgFilter returns new OptIssuesListForOrgFilter with value set to v.
+func NewOptIssuesListForOrgFilter(v IssuesListForOrgFilter) OptIssuesListForOrgFilter {
+	return OptIssuesListForOrgFilter{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIssuesListForOrgFilter is optional IssuesListForOrgFilter.
+type OptIssuesListForOrgFilter struct {
+	Value IssuesListForOrgFilter
+	Set   bool
+}
+
+// IsSet returns true if OptIssuesListForOrgFilter was set.
+func (o OptIssuesListForOrgFilter) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIssuesListForOrgFilter) Reset() {
+	var v IssuesListForOrgFilter
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIssuesListForOrgFilter) SetTo(v IssuesListForOrgFilter) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIssuesListForOrgFilter) Get() (v IssuesListForOrgFilter, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptIssuesListForOrgSort returns new OptIssuesListForOrgSort with value set to v.
+func NewOptIssuesListForOrgSort(v IssuesListForOrgSort) OptIssuesListForOrgSort {
+	return OptIssuesListForOrgSort{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIssuesListForOrgSort is optional IssuesListForOrgSort.
+type OptIssuesListForOrgSort struct {
+	Value IssuesListForOrgSort
+	Set   bool
+}
+
+// IsSet returns true if OptIssuesListForOrgSort was set.
+func (o OptIssuesListForOrgSort) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIssuesListForOrgSort) Reset() {
+	var v IssuesListForOrgSort
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIssuesListForOrgSort) SetTo(v IssuesListForOrgSort) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIssuesListForOrgSort) Get() (v IssuesListForOrgSort, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptIssuesListForOrgState returns new OptIssuesListForOrgState with value set to v.
+func NewOptIssuesListForOrgState(v IssuesListForOrgState) OptIssuesListForOrgState {
+	return OptIssuesListForOrgState{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIssuesListForOrgState is optional IssuesListForOrgState.
+type OptIssuesListForOrgState struct {
+	Value IssuesListForOrgState
+	Set   bool
+}
+
+// IsSet returns true if OptIssuesListForOrgState was set.
+func (o OptIssuesListForOrgState) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIssuesListForOrgState) Reset() {
+	var v IssuesListForOrgState
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIssuesListForOrgState) SetTo(v IssuesListForOrgState) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIssuesListForOrgState) Get() (v IssuesListForOrgState, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptIssuesListForRepoDirection returns new OptIssuesListForRepoDirection with value set to v.
+func NewOptIssuesListForRepoDirection(v IssuesListForRepoDirection) OptIssuesListForRepoDirection {
+	return OptIssuesListForRepoDirection{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIssuesListForRepoDirection is optional IssuesListForRepoDirection.
+type OptIssuesListForRepoDirection struct {
+	Value IssuesListForRepoDirection
+	Set   bool
+}
+
+// IsSet returns true if OptIssuesListForRepoDirection was set.
+func (o OptIssuesListForRepoDirection) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIssuesListForRepoDirection) Reset() {
+	var v IssuesListForRepoDirection
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIssuesListForRepoDirection) SetTo(v IssuesListForRepoDirection) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIssuesListForRepoDirection) Get() (v IssuesListForRepoDirection, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptIssuesListForRepoSort returns new OptIssuesListForRepoSort with value set to v.
+func NewOptIssuesListForRepoSort(v IssuesListForRepoSort) OptIssuesListForRepoSort {
+	return OptIssuesListForRepoSort{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIssuesListForRepoSort is optional IssuesListForRepoSort.
+type OptIssuesListForRepoSort struct {
+	Value IssuesListForRepoSort
+	Set   bool
+}
+
+// IsSet returns true if OptIssuesListForRepoSort was set.
+func (o OptIssuesListForRepoSort) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIssuesListForRepoSort) Reset() {
+	var v IssuesListForRepoSort
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIssuesListForRepoSort) SetTo(v IssuesListForRepoSort) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIssuesListForRepoSort) Get() (v IssuesListForRepoSort, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptIssuesListForRepoState returns new OptIssuesListForRepoState with value set to v.
+func NewOptIssuesListForRepoState(v IssuesListForRepoState) OptIssuesListForRepoState {
+	return OptIssuesListForRepoState{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIssuesListForRepoState is optional IssuesListForRepoState.
+type OptIssuesListForRepoState struct {
+	Value IssuesListForRepoState
+	Set   bool
+}
+
+// IsSet returns true if OptIssuesListForRepoState was set.
+func (o OptIssuesListForRepoState) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIssuesListForRepoState) Reset() {
+	var v IssuesListForRepoState
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIssuesListForRepoState) SetTo(v IssuesListForRepoState) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIssuesListForRepoState) Get() (v IssuesListForRepoState, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
 // NewOptIssuesListMilestonesDirection returns new OptIssuesListMilestonesDirection with value set to v.
 func NewOptIssuesListMilestonesDirection(v IssuesListMilestonesDirection) OptIssuesListMilestonesDirection {
 	return OptIssuesListMilestonesDirection{
@@ -12177,6 +14183,82 @@ func (o *OptIssuesListMilestonesState) SetTo(v IssuesListMilestonesState) {
 
 // Get returns value and boolean that denotes whether value was set.
 func (o OptIssuesListMilestonesState) Get() (v IssuesListMilestonesState, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptIssuesListSort returns new OptIssuesListSort with value set to v.
+func NewOptIssuesListSort(v IssuesListSort) OptIssuesListSort {
+	return OptIssuesListSort{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIssuesListSort is optional IssuesListSort.
+type OptIssuesListSort struct {
+	Value IssuesListSort
+	Set   bool
+}
+
+// IsSet returns true if OptIssuesListSort was set.
+func (o OptIssuesListSort) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIssuesListSort) Reset() {
+	var v IssuesListSort
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIssuesListSort) SetTo(v IssuesListSort) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIssuesListSort) Get() (v IssuesListSort, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptIssuesListState returns new OptIssuesListState with value set to v.
+func NewOptIssuesListState(v IssuesListState) OptIssuesListState {
+	return OptIssuesListState{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIssuesListState is optional IssuesListState.
+type OptIssuesListState struct {
+	Value IssuesListState
+	Set   bool
+}
+
+// IsSet returns true if OptIssuesListState was set.
+func (o OptIssuesListState) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIssuesListState) Reset() {
+	var v IssuesListState
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIssuesListState) SetTo(v IssuesListState) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIssuesListState) Get() (v IssuesListState, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -12405,6 +14487,158 @@ func (o *OptIssuesUpdateMilestoneReqState) SetTo(v IssuesUpdateMilestoneReqState
 
 // Get returns value and boolean that denotes whether value was set.
 func (o OptIssuesUpdateMilestoneReqState) Get() (v IssuesUpdateMilestoneReqState, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptIssuesUpdateReq returns new OptIssuesUpdateReq with value set to v.
+func NewOptIssuesUpdateReq(v IssuesUpdateReq) OptIssuesUpdateReq {
+	return OptIssuesUpdateReq{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIssuesUpdateReq is optional IssuesUpdateReq.
+type OptIssuesUpdateReq struct {
+	Value IssuesUpdateReq
+	Set   bool
+}
+
+// IsSet returns true if OptIssuesUpdateReq was set.
+func (o OptIssuesUpdateReq) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIssuesUpdateReq) Reset() {
+	var v IssuesUpdateReq
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIssuesUpdateReq) SetTo(v IssuesUpdateReq) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIssuesUpdateReq) Get() (v IssuesUpdateReq, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptIssuesUpdateReqMilestone returns new OptIssuesUpdateReqMilestone with value set to v.
+func NewOptIssuesUpdateReqMilestone(v *IssuesUpdateReqMilestone) OptIssuesUpdateReqMilestone {
+	return OptIssuesUpdateReqMilestone{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIssuesUpdateReqMilestone is optional *IssuesUpdateReqMilestone.
+type OptIssuesUpdateReqMilestone struct {
+	Value *IssuesUpdateReqMilestone
+	Set   bool
+}
+
+// IsSet returns true if OptIssuesUpdateReqMilestone was set.
+func (o OptIssuesUpdateReqMilestone) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIssuesUpdateReqMilestone) Reset() {
+	var v *IssuesUpdateReqMilestone
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIssuesUpdateReqMilestone) SetTo(v *IssuesUpdateReqMilestone) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIssuesUpdateReqMilestone) Get() (v *IssuesUpdateReqMilestone, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptIssuesUpdateReqState returns new OptIssuesUpdateReqState with value set to v.
+func NewOptIssuesUpdateReqState(v IssuesUpdateReqState) OptIssuesUpdateReqState {
+	return OptIssuesUpdateReqState{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIssuesUpdateReqState is optional IssuesUpdateReqState.
+type OptIssuesUpdateReqState struct {
+	Value IssuesUpdateReqState
+	Set   bool
+}
+
+// IsSet returns true if OptIssuesUpdateReqState was set.
+func (o OptIssuesUpdateReqState) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIssuesUpdateReqState) Reset() {
+	var v IssuesUpdateReqState
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIssuesUpdateReqState) SetTo(v IssuesUpdateReqState) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIssuesUpdateReqState) Get() (v IssuesUpdateReqState, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptIssuesUpdateReqTitle returns new OptIssuesUpdateReqTitle with value set to v.
+func NewOptIssuesUpdateReqTitle(v *IssuesUpdateReqTitle) OptIssuesUpdateReqTitle {
+	return OptIssuesUpdateReqTitle{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIssuesUpdateReqTitle is optional *IssuesUpdateReqTitle.
+type OptIssuesUpdateReqTitle struct {
+	Value *IssuesUpdateReqTitle
+	Set   bool
+}
+
+// IsSet returns true if OptIssuesUpdateReqTitle was set.
+func (o OptIssuesUpdateReqTitle) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIssuesUpdateReqTitle) Reset() {
+	var v *IssuesUpdateReqTitle
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIssuesUpdateReqTitle) SetTo(v *IssuesUpdateReqTitle) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIssuesUpdateReqTitle) Get() (v *IssuesUpdateReqTitle, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -15089,6 +17323,120 @@ func (o OptOrgsGetAuditLogOrder) Get() (v OrgsGetAuditLogOrder, ok bool) {
 	return o.Value, true
 }
 
+// NewOptOrgsListMembersFilter returns new OptOrgsListMembersFilter with value set to v.
+func NewOptOrgsListMembersFilter(v OrgsListMembersFilter) OptOrgsListMembersFilter {
+	return OptOrgsListMembersFilter{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptOrgsListMembersFilter is optional OrgsListMembersFilter.
+type OptOrgsListMembersFilter struct {
+	Value OrgsListMembersFilter
+	Set   bool
+}
+
+// IsSet returns true if OptOrgsListMembersFilter was set.
+func (o OptOrgsListMembersFilter) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptOrgsListMembersFilter) Reset() {
+	var v OrgsListMembersFilter
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptOrgsListMembersFilter) SetTo(v OrgsListMembersFilter) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptOrgsListMembersFilter) Get() (v OrgsListMembersFilter, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptOrgsListMembersRole returns new OptOrgsListMembersRole with value set to v.
+func NewOptOrgsListMembersRole(v OrgsListMembersRole) OptOrgsListMembersRole {
+	return OptOrgsListMembersRole{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptOrgsListMembersRole is optional OrgsListMembersRole.
+type OptOrgsListMembersRole struct {
+	Value OrgsListMembersRole
+	Set   bool
+}
+
+// IsSet returns true if OptOrgsListMembersRole was set.
+func (o OptOrgsListMembersRole) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptOrgsListMembersRole) Reset() {
+	var v OrgsListMembersRole
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptOrgsListMembersRole) SetTo(v OrgsListMembersRole) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptOrgsListMembersRole) Get() (v OrgsListMembersRole, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptOrgsListMembershipsForAuthenticatedUserState returns new OptOrgsListMembershipsForAuthenticatedUserState with value set to v.
+func NewOptOrgsListMembershipsForAuthenticatedUserState(v OrgsListMembershipsForAuthenticatedUserState) OptOrgsListMembershipsForAuthenticatedUserState {
+	return OptOrgsListMembershipsForAuthenticatedUserState{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptOrgsListMembershipsForAuthenticatedUserState is optional OrgsListMembershipsForAuthenticatedUserState.
+type OptOrgsListMembershipsForAuthenticatedUserState struct {
+	Value OrgsListMembershipsForAuthenticatedUserState
+	Set   bool
+}
+
+// IsSet returns true if OptOrgsListMembershipsForAuthenticatedUserState was set.
+func (o OptOrgsListMembershipsForAuthenticatedUserState) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptOrgsListMembershipsForAuthenticatedUserState) Reset() {
+	var v OrgsListMembershipsForAuthenticatedUserState
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptOrgsListMembershipsForAuthenticatedUserState) SetTo(v OrgsListMembershipsForAuthenticatedUserState) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptOrgsListMembershipsForAuthenticatedUserState) Get() (v OrgsListMembershipsForAuthenticatedUserState, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
 // NewOptOrgsListOutsideCollaboratorsFilter returns new OptOrgsListOutsideCollaboratorsFilter with value set to v.
 func NewOptOrgsListOutsideCollaboratorsFilter(v OrgsListOutsideCollaboratorsFilter) OptOrgsListOutsideCollaboratorsFilter {
 	return OptOrgsListOutsideCollaboratorsFilter{
@@ -16041,6 +18389,44 @@ func (o OptProjectsListCardsArchivedState) Get() (v ProjectsListCardsArchivedSta
 	return o.Value, true
 }
 
+// NewOptProjectsListCollaboratorsAffiliation returns new OptProjectsListCollaboratorsAffiliation with value set to v.
+func NewOptProjectsListCollaboratorsAffiliation(v ProjectsListCollaboratorsAffiliation) OptProjectsListCollaboratorsAffiliation {
+	return OptProjectsListCollaboratorsAffiliation{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptProjectsListCollaboratorsAffiliation is optional ProjectsListCollaboratorsAffiliation.
+type OptProjectsListCollaboratorsAffiliation struct {
+	Value ProjectsListCollaboratorsAffiliation
+	Set   bool
+}
+
+// IsSet returns true if OptProjectsListCollaboratorsAffiliation was set.
+func (o OptProjectsListCollaboratorsAffiliation) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptProjectsListCollaboratorsAffiliation) Reset() {
+	var v ProjectsListCollaboratorsAffiliation
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptProjectsListCollaboratorsAffiliation) SetTo(v ProjectsListCollaboratorsAffiliation) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptProjectsListCollaboratorsAffiliation) Get() (v ProjectsListCollaboratorsAffiliation, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
 // NewOptProjectsListForOrgState returns new OptProjectsListForOrgState with value set to v.
 func NewOptProjectsListForOrgState(v ProjectsListForOrgState) OptProjectsListForOrgState {
 	return OptProjectsListForOrgState{
@@ -16111,6 +18497,44 @@ func (o *OptProjectsListForRepoState) SetTo(v ProjectsListForRepoState) {
 
 // Get returns value and boolean that denotes whether value was set.
 func (o OptProjectsListForRepoState) Get() (v ProjectsListForRepoState, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptProjectsListForUserState returns new OptProjectsListForUserState with value set to v.
+func NewOptProjectsListForUserState(v ProjectsListForUserState) OptProjectsListForUserState {
+	return OptProjectsListForUserState{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptProjectsListForUserState is optional ProjectsListForUserState.
+type OptProjectsListForUserState struct {
+	Value ProjectsListForUserState
+	Set   bool
+}
+
+// IsSet returns true if OptProjectsListForUserState was set.
+func (o OptProjectsListForUserState) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptProjectsListForUserState) Reset() {
+	var v ProjectsListForUserState
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptProjectsListForUserState) SetTo(v ProjectsListForUserState) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptProjectsListForUserState) Get() (v ProjectsListForUserState, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -16991,6 +19415,44 @@ func (o OptPullsCreateReviewReqEvent) Get() (v PullsCreateReviewReqEvent, ok boo
 	return o.Value, true
 }
 
+// NewOptPullsListDirection returns new OptPullsListDirection with value set to v.
+func NewOptPullsListDirection(v PullsListDirection) OptPullsListDirection {
+	return OptPullsListDirection{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptPullsListDirection is optional PullsListDirection.
+type OptPullsListDirection struct {
+	Value PullsListDirection
+	Set   bool
+}
+
+// IsSet returns true if OptPullsListDirection was set.
+func (o OptPullsListDirection) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptPullsListDirection) Reset() {
+	var v PullsListDirection
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptPullsListDirection) SetTo(v PullsListDirection) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptPullsListDirection) Get() (v PullsListDirection, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
 // NewOptPullsListReviewCommentsDirection returns new OptPullsListReviewCommentsDirection with value set to v.
 func NewOptPullsListReviewCommentsDirection(v PullsListReviewCommentsDirection) OptPullsListReviewCommentsDirection {
 	return OptPullsListReviewCommentsDirection{
@@ -17137,6 +19599,82 @@ func (o *OptPullsListReviewCommentsSort) SetTo(v PullsListReviewCommentsSort) {
 
 // Get returns value and boolean that denotes whether value was set.
 func (o OptPullsListReviewCommentsSort) Get() (v PullsListReviewCommentsSort, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptPullsListSort returns new OptPullsListSort with value set to v.
+func NewOptPullsListSort(v PullsListSort) OptPullsListSort {
+	return OptPullsListSort{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptPullsListSort is optional PullsListSort.
+type OptPullsListSort struct {
+	Value PullsListSort
+	Set   bool
+}
+
+// IsSet returns true if OptPullsListSort was set.
+func (o OptPullsListSort) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptPullsListSort) Reset() {
+	var v PullsListSort
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptPullsListSort) SetTo(v PullsListSort) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptPullsListSort) Get() (v PullsListSort, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptPullsListState returns new OptPullsListState with value set to v.
+func NewOptPullsListState(v PullsListState) OptPullsListState {
+	return OptPullsListState{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptPullsListState is optional PullsListState.
+type OptPullsListState struct {
+	Value PullsListState
+	Set   bool
+}
+
+// IsSet returns true if OptPullsListState was set.
+func (o OptPullsListState) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptPullsListState) Reset() {
+	var v PullsListState
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptPullsListState) SetTo(v PullsListState) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptPullsListState) Get() (v PullsListState, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -17751,6 +20289,44 @@ func (o OptRepoSearchResultItemPermissions) Get() (v RepoSearchResultItemPermiss
 	return o.Value, true
 }
 
+// NewOptReposAddAppAccessRestrictionsReq returns new OptReposAddAppAccessRestrictionsReq with value set to v.
+func NewOptReposAddAppAccessRestrictionsReq(v ReposAddAppAccessRestrictionsReq) OptReposAddAppAccessRestrictionsReq {
+	return OptReposAddAppAccessRestrictionsReq{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptReposAddAppAccessRestrictionsReq is optional ReposAddAppAccessRestrictionsReq.
+type OptReposAddAppAccessRestrictionsReq struct {
+	Value ReposAddAppAccessRestrictionsReq
+	Set   bool
+}
+
+// IsSet returns true if OptReposAddAppAccessRestrictionsReq was set.
+func (o OptReposAddAppAccessRestrictionsReq) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptReposAddAppAccessRestrictionsReq) Reset() {
+	var v ReposAddAppAccessRestrictionsReq
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptReposAddAppAccessRestrictionsReq) SetTo(v ReposAddAppAccessRestrictionsReq) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptReposAddAppAccessRestrictionsReq) Get() (v ReposAddAppAccessRestrictionsReq, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
 // NewOptReposAddCollaboratorReq returns new OptReposAddCollaboratorReq with value set to v.
 func NewOptReposAddCollaboratorReq(v ReposAddCollaboratorReq) OptReposAddCollaboratorReq {
 	return OptReposAddCollaboratorReq{
@@ -17821,6 +20397,120 @@ func (o *OptReposAddCollaboratorReqPermission) SetTo(v ReposAddCollaboratorReqPe
 
 // Get returns value and boolean that denotes whether value was set.
 func (o OptReposAddCollaboratorReqPermission) Get() (v ReposAddCollaboratorReqPermission, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptReposAddStatusCheckContextsReq returns new OptReposAddStatusCheckContextsReq with value set to v.
+func NewOptReposAddStatusCheckContextsReq(v ReposAddStatusCheckContextsReq) OptReposAddStatusCheckContextsReq {
+	return OptReposAddStatusCheckContextsReq{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptReposAddStatusCheckContextsReq is optional ReposAddStatusCheckContextsReq.
+type OptReposAddStatusCheckContextsReq struct {
+	Value ReposAddStatusCheckContextsReq
+	Set   bool
+}
+
+// IsSet returns true if OptReposAddStatusCheckContextsReq was set.
+func (o OptReposAddStatusCheckContextsReq) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptReposAddStatusCheckContextsReq) Reset() {
+	var v ReposAddStatusCheckContextsReq
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptReposAddStatusCheckContextsReq) SetTo(v ReposAddStatusCheckContextsReq) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptReposAddStatusCheckContextsReq) Get() (v ReposAddStatusCheckContextsReq, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptReposAddTeamAccessRestrictionsReq returns new OptReposAddTeamAccessRestrictionsReq with value set to v.
+func NewOptReposAddTeamAccessRestrictionsReq(v ReposAddTeamAccessRestrictionsReq) OptReposAddTeamAccessRestrictionsReq {
+	return OptReposAddTeamAccessRestrictionsReq{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptReposAddTeamAccessRestrictionsReq is optional ReposAddTeamAccessRestrictionsReq.
+type OptReposAddTeamAccessRestrictionsReq struct {
+	Value ReposAddTeamAccessRestrictionsReq
+	Set   bool
+}
+
+// IsSet returns true if OptReposAddTeamAccessRestrictionsReq was set.
+func (o OptReposAddTeamAccessRestrictionsReq) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptReposAddTeamAccessRestrictionsReq) Reset() {
+	var v ReposAddTeamAccessRestrictionsReq
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptReposAddTeamAccessRestrictionsReq) SetTo(v ReposAddTeamAccessRestrictionsReq) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptReposAddTeamAccessRestrictionsReq) Get() (v ReposAddTeamAccessRestrictionsReq, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptReposAddUserAccessRestrictionsReq returns new OptReposAddUserAccessRestrictionsReq with value set to v.
+func NewOptReposAddUserAccessRestrictionsReq(v ReposAddUserAccessRestrictionsReq) OptReposAddUserAccessRestrictionsReq {
+	return OptReposAddUserAccessRestrictionsReq{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptReposAddUserAccessRestrictionsReq is optional ReposAddUserAccessRestrictionsReq.
+type OptReposAddUserAccessRestrictionsReq struct {
+	Value ReposAddUserAccessRestrictionsReq
+	Set   bool
+}
+
+// IsSet returns true if OptReposAddUserAccessRestrictionsReq was set.
+func (o OptReposAddUserAccessRestrictionsReq) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptReposAddUserAccessRestrictionsReq) Reset() {
+	var v ReposAddUserAccessRestrictionsReq
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptReposAddUserAccessRestrictionsReq) SetTo(v ReposAddUserAccessRestrictionsReq) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptReposAddUserAccessRestrictionsReq) Get() (v ReposAddUserAccessRestrictionsReq, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -18359,6 +21049,158 @@ func (o OptReposListCollaboratorsAffiliation) Get() (v ReposListCollaboratorsAff
 	return o.Value, true
 }
 
+// NewOptReposListForAuthenticatedUserDirection returns new OptReposListForAuthenticatedUserDirection with value set to v.
+func NewOptReposListForAuthenticatedUserDirection(v ReposListForAuthenticatedUserDirection) OptReposListForAuthenticatedUserDirection {
+	return OptReposListForAuthenticatedUserDirection{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptReposListForAuthenticatedUserDirection is optional ReposListForAuthenticatedUserDirection.
+type OptReposListForAuthenticatedUserDirection struct {
+	Value ReposListForAuthenticatedUserDirection
+	Set   bool
+}
+
+// IsSet returns true if OptReposListForAuthenticatedUserDirection was set.
+func (o OptReposListForAuthenticatedUserDirection) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptReposListForAuthenticatedUserDirection) Reset() {
+	var v ReposListForAuthenticatedUserDirection
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptReposListForAuthenticatedUserDirection) SetTo(v ReposListForAuthenticatedUserDirection) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptReposListForAuthenticatedUserDirection) Get() (v ReposListForAuthenticatedUserDirection, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptReposListForAuthenticatedUserSort returns new OptReposListForAuthenticatedUserSort with value set to v.
+func NewOptReposListForAuthenticatedUserSort(v ReposListForAuthenticatedUserSort) OptReposListForAuthenticatedUserSort {
+	return OptReposListForAuthenticatedUserSort{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptReposListForAuthenticatedUserSort is optional ReposListForAuthenticatedUserSort.
+type OptReposListForAuthenticatedUserSort struct {
+	Value ReposListForAuthenticatedUserSort
+	Set   bool
+}
+
+// IsSet returns true if OptReposListForAuthenticatedUserSort was set.
+func (o OptReposListForAuthenticatedUserSort) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptReposListForAuthenticatedUserSort) Reset() {
+	var v ReposListForAuthenticatedUserSort
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptReposListForAuthenticatedUserSort) SetTo(v ReposListForAuthenticatedUserSort) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptReposListForAuthenticatedUserSort) Get() (v ReposListForAuthenticatedUserSort, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptReposListForAuthenticatedUserType returns new OptReposListForAuthenticatedUserType with value set to v.
+func NewOptReposListForAuthenticatedUserType(v ReposListForAuthenticatedUserType) OptReposListForAuthenticatedUserType {
+	return OptReposListForAuthenticatedUserType{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptReposListForAuthenticatedUserType is optional ReposListForAuthenticatedUserType.
+type OptReposListForAuthenticatedUserType struct {
+	Value ReposListForAuthenticatedUserType
+	Set   bool
+}
+
+// IsSet returns true if OptReposListForAuthenticatedUserType was set.
+func (o OptReposListForAuthenticatedUserType) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptReposListForAuthenticatedUserType) Reset() {
+	var v ReposListForAuthenticatedUserType
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptReposListForAuthenticatedUserType) SetTo(v ReposListForAuthenticatedUserType) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptReposListForAuthenticatedUserType) Get() (v ReposListForAuthenticatedUserType, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptReposListForAuthenticatedUserVisibility returns new OptReposListForAuthenticatedUserVisibility with value set to v.
+func NewOptReposListForAuthenticatedUserVisibility(v ReposListForAuthenticatedUserVisibility) OptReposListForAuthenticatedUserVisibility {
+	return OptReposListForAuthenticatedUserVisibility{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptReposListForAuthenticatedUserVisibility is optional ReposListForAuthenticatedUserVisibility.
+type OptReposListForAuthenticatedUserVisibility struct {
+	Value ReposListForAuthenticatedUserVisibility
+	Set   bool
+}
+
+// IsSet returns true if OptReposListForAuthenticatedUserVisibility was set.
+func (o OptReposListForAuthenticatedUserVisibility) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptReposListForAuthenticatedUserVisibility) Reset() {
+	var v ReposListForAuthenticatedUserVisibility
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptReposListForAuthenticatedUserVisibility) SetTo(v ReposListForAuthenticatedUserVisibility) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptReposListForAuthenticatedUserVisibility) Get() (v ReposListForAuthenticatedUserVisibility, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
 // NewOptReposListForOrgDirection returns new OptReposListForOrgDirection with value set to v.
 func NewOptReposListForOrgDirection(v ReposListForOrgDirection) OptReposListForOrgDirection {
 	return OptReposListForOrgDirection{
@@ -18625,6 +21467,158 @@ func (o OptReposListForksSort) Get() (v ReposListForksSort, ok bool) {
 	return o.Value, true
 }
 
+// NewOptReposRemoveAppAccessRestrictionsReq returns new OptReposRemoveAppAccessRestrictionsReq with value set to v.
+func NewOptReposRemoveAppAccessRestrictionsReq(v ReposRemoveAppAccessRestrictionsReq) OptReposRemoveAppAccessRestrictionsReq {
+	return OptReposRemoveAppAccessRestrictionsReq{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptReposRemoveAppAccessRestrictionsReq is optional ReposRemoveAppAccessRestrictionsReq.
+type OptReposRemoveAppAccessRestrictionsReq struct {
+	Value ReposRemoveAppAccessRestrictionsReq
+	Set   bool
+}
+
+// IsSet returns true if OptReposRemoveAppAccessRestrictionsReq was set.
+func (o OptReposRemoveAppAccessRestrictionsReq) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptReposRemoveAppAccessRestrictionsReq) Reset() {
+	var v ReposRemoveAppAccessRestrictionsReq
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptReposRemoveAppAccessRestrictionsReq) SetTo(v ReposRemoveAppAccessRestrictionsReq) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptReposRemoveAppAccessRestrictionsReq) Get() (v ReposRemoveAppAccessRestrictionsReq, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptReposRemoveStatusCheckContextsReq returns new OptReposRemoveStatusCheckContextsReq with value set to v.
+func NewOptReposRemoveStatusCheckContextsReq(v ReposRemoveStatusCheckContextsReq) OptReposRemoveStatusCheckContextsReq {
+	return OptReposRemoveStatusCheckContextsReq{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptReposRemoveStatusCheckContextsReq is optional ReposRemoveStatusCheckContextsReq.
+type OptReposRemoveStatusCheckContextsReq struct {
+	Value ReposRemoveStatusCheckContextsReq
+	Set   bool
+}
+
+// IsSet returns true if OptReposRemoveStatusCheckContextsReq was set.
+func (o OptReposRemoveStatusCheckContextsReq) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptReposRemoveStatusCheckContextsReq) Reset() {
+	var v ReposRemoveStatusCheckContextsReq
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptReposRemoveStatusCheckContextsReq) SetTo(v ReposRemoveStatusCheckContextsReq) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptReposRemoveStatusCheckContextsReq) Get() (v ReposRemoveStatusCheckContextsReq, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptReposRemoveTeamAccessRestrictionsReq returns new OptReposRemoveTeamAccessRestrictionsReq with value set to v.
+func NewOptReposRemoveTeamAccessRestrictionsReq(v ReposRemoveTeamAccessRestrictionsReq) OptReposRemoveTeamAccessRestrictionsReq {
+	return OptReposRemoveTeamAccessRestrictionsReq{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptReposRemoveTeamAccessRestrictionsReq is optional ReposRemoveTeamAccessRestrictionsReq.
+type OptReposRemoveTeamAccessRestrictionsReq struct {
+	Value ReposRemoveTeamAccessRestrictionsReq
+	Set   bool
+}
+
+// IsSet returns true if OptReposRemoveTeamAccessRestrictionsReq was set.
+func (o OptReposRemoveTeamAccessRestrictionsReq) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptReposRemoveTeamAccessRestrictionsReq) Reset() {
+	var v ReposRemoveTeamAccessRestrictionsReq
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptReposRemoveTeamAccessRestrictionsReq) SetTo(v ReposRemoveTeamAccessRestrictionsReq) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptReposRemoveTeamAccessRestrictionsReq) Get() (v ReposRemoveTeamAccessRestrictionsReq, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptReposRemoveUserAccessRestrictionsReq returns new OptReposRemoveUserAccessRestrictionsReq with value set to v.
+func NewOptReposRemoveUserAccessRestrictionsReq(v ReposRemoveUserAccessRestrictionsReq) OptReposRemoveUserAccessRestrictionsReq {
+	return OptReposRemoveUserAccessRestrictionsReq{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptReposRemoveUserAccessRestrictionsReq is optional ReposRemoveUserAccessRestrictionsReq.
+type OptReposRemoveUserAccessRestrictionsReq struct {
+	Value ReposRemoveUserAccessRestrictionsReq
+	Set   bool
+}
+
+// IsSet returns true if OptReposRemoveUserAccessRestrictionsReq was set.
+func (o OptReposRemoveUserAccessRestrictionsReq) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptReposRemoveUserAccessRestrictionsReq) Reset() {
+	var v ReposRemoveUserAccessRestrictionsReq
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptReposRemoveUserAccessRestrictionsReq) SetTo(v ReposRemoveUserAccessRestrictionsReq) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptReposRemoveUserAccessRestrictionsReq) Get() (v ReposRemoveUserAccessRestrictionsReq, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
 // NewOptReposRenameBranchReq returns new OptReposRenameBranchReq with value set to v.
 func NewOptReposRenameBranchReq(v ReposRenameBranchReq) OptReposRenameBranchReq {
 	return OptReposRenameBranchReq{
@@ -18657,6 +21651,158 @@ func (o *OptReposRenameBranchReq) SetTo(v ReposRenameBranchReq) {
 
 // Get returns value and boolean that denotes whether value was set.
 func (o OptReposRenameBranchReq) Get() (v ReposRenameBranchReq, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptReposSetAppAccessRestrictionsReq returns new OptReposSetAppAccessRestrictionsReq with value set to v.
+func NewOptReposSetAppAccessRestrictionsReq(v ReposSetAppAccessRestrictionsReq) OptReposSetAppAccessRestrictionsReq {
+	return OptReposSetAppAccessRestrictionsReq{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptReposSetAppAccessRestrictionsReq is optional ReposSetAppAccessRestrictionsReq.
+type OptReposSetAppAccessRestrictionsReq struct {
+	Value ReposSetAppAccessRestrictionsReq
+	Set   bool
+}
+
+// IsSet returns true if OptReposSetAppAccessRestrictionsReq was set.
+func (o OptReposSetAppAccessRestrictionsReq) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptReposSetAppAccessRestrictionsReq) Reset() {
+	var v ReposSetAppAccessRestrictionsReq
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptReposSetAppAccessRestrictionsReq) SetTo(v ReposSetAppAccessRestrictionsReq) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptReposSetAppAccessRestrictionsReq) Get() (v ReposSetAppAccessRestrictionsReq, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptReposSetStatusCheckContextsReq returns new OptReposSetStatusCheckContextsReq with value set to v.
+func NewOptReposSetStatusCheckContextsReq(v ReposSetStatusCheckContextsReq) OptReposSetStatusCheckContextsReq {
+	return OptReposSetStatusCheckContextsReq{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptReposSetStatusCheckContextsReq is optional ReposSetStatusCheckContextsReq.
+type OptReposSetStatusCheckContextsReq struct {
+	Value ReposSetStatusCheckContextsReq
+	Set   bool
+}
+
+// IsSet returns true if OptReposSetStatusCheckContextsReq was set.
+func (o OptReposSetStatusCheckContextsReq) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptReposSetStatusCheckContextsReq) Reset() {
+	var v ReposSetStatusCheckContextsReq
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptReposSetStatusCheckContextsReq) SetTo(v ReposSetStatusCheckContextsReq) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptReposSetStatusCheckContextsReq) Get() (v ReposSetStatusCheckContextsReq, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptReposSetTeamAccessRestrictionsReq returns new OptReposSetTeamAccessRestrictionsReq with value set to v.
+func NewOptReposSetTeamAccessRestrictionsReq(v ReposSetTeamAccessRestrictionsReq) OptReposSetTeamAccessRestrictionsReq {
+	return OptReposSetTeamAccessRestrictionsReq{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptReposSetTeamAccessRestrictionsReq is optional ReposSetTeamAccessRestrictionsReq.
+type OptReposSetTeamAccessRestrictionsReq struct {
+	Value ReposSetTeamAccessRestrictionsReq
+	Set   bool
+}
+
+// IsSet returns true if OptReposSetTeamAccessRestrictionsReq was set.
+func (o OptReposSetTeamAccessRestrictionsReq) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptReposSetTeamAccessRestrictionsReq) Reset() {
+	var v ReposSetTeamAccessRestrictionsReq
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptReposSetTeamAccessRestrictionsReq) SetTo(v ReposSetTeamAccessRestrictionsReq) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptReposSetTeamAccessRestrictionsReq) Get() (v ReposSetTeamAccessRestrictionsReq, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptReposSetUserAccessRestrictionsReq returns new OptReposSetUserAccessRestrictionsReq with value set to v.
+func NewOptReposSetUserAccessRestrictionsReq(v ReposSetUserAccessRestrictionsReq) OptReposSetUserAccessRestrictionsReq {
+	return OptReposSetUserAccessRestrictionsReq{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptReposSetUserAccessRestrictionsReq is optional ReposSetUserAccessRestrictionsReq.
+type OptReposSetUserAccessRestrictionsReq struct {
+	Value ReposSetUserAccessRestrictionsReq
+	Set   bool
+}
+
+// IsSet returns true if OptReposSetUserAccessRestrictionsReq was set.
+func (o OptReposSetUserAccessRestrictionsReq) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptReposSetUserAccessRestrictionsReq) Reset() {
+	var v ReposSetUserAccessRestrictionsReq
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptReposSetUserAccessRestrictionsReq) SetTo(v ReposSetUserAccessRestrictionsReq) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptReposSetUserAccessRestrictionsReq) Get() (v ReposSetUserAccessRestrictionsReq, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -19691,6 +22837,82 @@ func (o OptScimUserListEnterpriseResourcesItemName) Get() (v ScimUserListEnterpr
 	return o.Value, true
 }
 
+// NewOptSearchCodeOrder returns new OptSearchCodeOrder with value set to v.
+func NewOptSearchCodeOrder(v SearchCodeOrder) OptSearchCodeOrder {
+	return OptSearchCodeOrder{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptSearchCodeOrder is optional SearchCodeOrder.
+type OptSearchCodeOrder struct {
+	Value SearchCodeOrder
+	Set   bool
+}
+
+// IsSet returns true if OptSearchCodeOrder was set.
+func (o OptSearchCodeOrder) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptSearchCodeOrder) Reset() {
+	var v SearchCodeOrder
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptSearchCodeOrder) SetTo(v SearchCodeOrder) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptSearchCodeOrder) Get() (v SearchCodeOrder, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptSearchCodeSort returns new OptSearchCodeSort with value set to v.
+func NewOptSearchCodeSort(v SearchCodeSort) OptSearchCodeSort {
+	return OptSearchCodeSort{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptSearchCodeSort is optional SearchCodeSort.
+type OptSearchCodeSort struct {
+	Value SearchCodeSort
+	Set   bool
+}
+
+// IsSet returns true if OptSearchCodeSort was set.
+func (o OptSearchCodeSort) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptSearchCodeSort) Reset() {
+	var v SearchCodeSort
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptSearchCodeSort) SetTo(v SearchCodeSort) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptSearchCodeSort) Get() (v SearchCodeSort, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
 // NewOptSearchCommitsOrder returns new OptSearchCommitsOrder with value set to v.
 func NewOptSearchCommitsOrder(v SearchCommitsOrder) OptSearchCommitsOrder {
 	return OptSearchCommitsOrder{
@@ -19761,6 +22983,310 @@ func (o *OptSearchCommitsSort) SetTo(v SearchCommitsSort) {
 
 // Get returns value and boolean that denotes whether value was set.
 func (o OptSearchCommitsSort) Get() (v SearchCommitsSort, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptSearchIssuesAndPullRequestsOrder returns new OptSearchIssuesAndPullRequestsOrder with value set to v.
+func NewOptSearchIssuesAndPullRequestsOrder(v SearchIssuesAndPullRequestsOrder) OptSearchIssuesAndPullRequestsOrder {
+	return OptSearchIssuesAndPullRequestsOrder{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptSearchIssuesAndPullRequestsOrder is optional SearchIssuesAndPullRequestsOrder.
+type OptSearchIssuesAndPullRequestsOrder struct {
+	Value SearchIssuesAndPullRequestsOrder
+	Set   bool
+}
+
+// IsSet returns true if OptSearchIssuesAndPullRequestsOrder was set.
+func (o OptSearchIssuesAndPullRequestsOrder) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptSearchIssuesAndPullRequestsOrder) Reset() {
+	var v SearchIssuesAndPullRequestsOrder
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptSearchIssuesAndPullRequestsOrder) SetTo(v SearchIssuesAndPullRequestsOrder) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptSearchIssuesAndPullRequestsOrder) Get() (v SearchIssuesAndPullRequestsOrder, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptSearchIssuesAndPullRequestsSort returns new OptSearchIssuesAndPullRequestsSort with value set to v.
+func NewOptSearchIssuesAndPullRequestsSort(v SearchIssuesAndPullRequestsSort) OptSearchIssuesAndPullRequestsSort {
+	return OptSearchIssuesAndPullRequestsSort{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptSearchIssuesAndPullRequestsSort is optional SearchIssuesAndPullRequestsSort.
+type OptSearchIssuesAndPullRequestsSort struct {
+	Value SearchIssuesAndPullRequestsSort
+	Set   bool
+}
+
+// IsSet returns true if OptSearchIssuesAndPullRequestsSort was set.
+func (o OptSearchIssuesAndPullRequestsSort) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptSearchIssuesAndPullRequestsSort) Reset() {
+	var v SearchIssuesAndPullRequestsSort
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptSearchIssuesAndPullRequestsSort) SetTo(v SearchIssuesAndPullRequestsSort) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptSearchIssuesAndPullRequestsSort) Get() (v SearchIssuesAndPullRequestsSort, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptSearchLabelsOrder returns new OptSearchLabelsOrder with value set to v.
+func NewOptSearchLabelsOrder(v SearchLabelsOrder) OptSearchLabelsOrder {
+	return OptSearchLabelsOrder{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptSearchLabelsOrder is optional SearchLabelsOrder.
+type OptSearchLabelsOrder struct {
+	Value SearchLabelsOrder
+	Set   bool
+}
+
+// IsSet returns true if OptSearchLabelsOrder was set.
+func (o OptSearchLabelsOrder) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptSearchLabelsOrder) Reset() {
+	var v SearchLabelsOrder
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptSearchLabelsOrder) SetTo(v SearchLabelsOrder) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptSearchLabelsOrder) Get() (v SearchLabelsOrder, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptSearchLabelsSort returns new OptSearchLabelsSort with value set to v.
+func NewOptSearchLabelsSort(v SearchLabelsSort) OptSearchLabelsSort {
+	return OptSearchLabelsSort{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptSearchLabelsSort is optional SearchLabelsSort.
+type OptSearchLabelsSort struct {
+	Value SearchLabelsSort
+	Set   bool
+}
+
+// IsSet returns true if OptSearchLabelsSort was set.
+func (o OptSearchLabelsSort) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptSearchLabelsSort) Reset() {
+	var v SearchLabelsSort
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptSearchLabelsSort) SetTo(v SearchLabelsSort) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptSearchLabelsSort) Get() (v SearchLabelsSort, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptSearchReposOrder returns new OptSearchReposOrder with value set to v.
+func NewOptSearchReposOrder(v SearchReposOrder) OptSearchReposOrder {
+	return OptSearchReposOrder{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptSearchReposOrder is optional SearchReposOrder.
+type OptSearchReposOrder struct {
+	Value SearchReposOrder
+	Set   bool
+}
+
+// IsSet returns true if OptSearchReposOrder was set.
+func (o OptSearchReposOrder) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptSearchReposOrder) Reset() {
+	var v SearchReposOrder
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptSearchReposOrder) SetTo(v SearchReposOrder) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptSearchReposOrder) Get() (v SearchReposOrder, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptSearchReposSort returns new OptSearchReposSort with value set to v.
+func NewOptSearchReposSort(v SearchReposSort) OptSearchReposSort {
+	return OptSearchReposSort{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptSearchReposSort is optional SearchReposSort.
+type OptSearchReposSort struct {
+	Value SearchReposSort
+	Set   bool
+}
+
+// IsSet returns true if OptSearchReposSort was set.
+func (o OptSearchReposSort) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptSearchReposSort) Reset() {
+	var v SearchReposSort
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptSearchReposSort) SetTo(v SearchReposSort) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptSearchReposSort) Get() (v SearchReposSort, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptSearchUsersOrder returns new OptSearchUsersOrder with value set to v.
+func NewOptSearchUsersOrder(v SearchUsersOrder) OptSearchUsersOrder {
+	return OptSearchUsersOrder{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptSearchUsersOrder is optional SearchUsersOrder.
+type OptSearchUsersOrder struct {
+	Value SearchUsersOrder
+	Set   bool
+}
+
+// IsSet returns true if OptSearchUsersOrder was set.
+func (o OptSearchUsersOrder) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptSearchUsersOrder) Reset() {
+	var v SearchUsersOrder
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptSearchUsersOrder) SetTo(v SearchUsersOrder) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptSearchUsersOrder) Get() (v SearchUsersOrder, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptSearchUsersSort returns new OptSearchUsersSort with value set to v.
+func NewOptSearchUsersSort(v SearchUsersSort) OptSearchUsersSort {
+	return OptSearchUsersSort{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptSearchUsersSort is optional SearchUsersSort.
+type OptSearchUsersSort struct {
+	Value SearchUsersSort
+	Set   bool
+}
+
+// IsSet returns true if OptSearchUsersSort was set.
+func (o OptSearchUsersSort) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptSearchUsersSort) Reset() {
+	var v SearchUsersSort
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptSearchUsersSort) SetTo(v SearchUsersSort) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptSearchUsersSort) Get() (v SearchUsersSort, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -21401,6 +24927,120 @@ func (o OptURL) Get() (v url.URL, ok bool) {
 	return o.Value, true
 }
 
+// NewOptUsersAddEmailForAuthenticatedReq returns new OptUsersAddEmailForAuthenticatedReq with value set to v.
+func NewOptUsersAddEmailForAuthenticatedReq(v UsersAddEmailForAuthenticatedReq) OptUsersAddEmailForAuthenticatedReq {
+	return OptUsersAddEmailForAuthenticatedReq{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptUsersAddEmailForAuthenticatedReq is optional UsersAddEmailForAuthenticatedReq.
+type OptUsersAddEmailForAuthenticatedReq struct {
+	Value UsersAddEmailForAuthenticatedReq
+	Set   bool
+}
+
+// IsSet returns true if OptUsersAddEmailForAuthenticatedReq was set.
+func (o OptUsersAddEmailForAuthenticatedReq) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptUsersAddEmailForAuthenticatedReq) Reset() {
+	var v UsersAddEmailForAuthenticatedReq
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptUsersAddEmailForAuthenticatedReq) SetTo(v UsersAddEmailForAuthenticatedReq) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptUsersAddEmailForAuthenticatedReq) Get() (v UsersAddEmailForAuthenticatedReq, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptUsersDeleteEmailForAuthenticatedReq returns new OptUsersDeleteEmailForAuthenticatedReq with value set to v.
+func NewOptUsersDeleteEmailForAuthenticatedReq(v UsersDeleteEmailForAuthenticatedReq) OptUsersDeleteEmailForAuthenticatedReq {
+	return OptUsersDeleteEmailForAuthenticatedReq{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptUsersDeleteEmailForAuthenticatedReq is optional UsersDeleteEmailForAuthenticatedReq.
+type OptUsersDeleteEmailForAuthenticatedReq struct {
+	Value UsersDeleteEmailForAuthenticatedReq
+	Set   bool
+}
+
+// IsSet returns true if OptUsersDeleteEmailForAuthenticatedReq was set.
+func (o OptUsersDeleteEmailForAuthenticatedReq) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptUsersDeleteEmailForAuthenticatedReq) Reset() {
+	var v UsersDeleteEmailForAuthenticatedReq
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptUsersDeleteEmailForAuthenticatedReq) SetTo(v UsersDeleteEmailForAuthenticatedReq) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptUsersDeleteEmailForAuthenticatedReq) Get() (v UsersDeleteEmailForAuthenticatedReq, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptUsersGetContextForUserSubjectType returns new OptUsersGetContextForUserSubjectType with value set to v.
+func NewOptUsersGetContextForUserSubjectType(v UsersGetContextForUserSubjectType) OptUsersGetContextForUserSubjectType {
+	return OptUsersGetContextForUserSubjectType{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptUsersGetContextForUserSubjectType is optional UsersGetContextForUserSubjectType.
+type OptUsersGetContextForUserSubjectType struct {
+	Value UsersGetContextForUserSubjectType
+	Set   bool
+}
+
+// IsSet returns true if OptUsersGetContextForUserSubjectType was set.
+func (o OptUsersGetContextForUserSubjectType) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptUsersGetContextForUserSubjectType) Reset() {
+	var v UsersGetContextForUserSubjectType
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptUsersGetContextForUserSubjectType) SetTo(v UsersGetContextForUserSubjectType) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptUsersGetContextForUserSubjectType) Get() (v UsersGetContextForUserSubjectType, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
 // NewOptUsersUpdateAuthenticatedReq returns new OptUsersUpdateAuthenticatedReq with value set to v.
 func NewOptUsersUpdateAuthenticatedReq(v UsersUpdateAuthenticatedReq) OptUsersUpdateAuthenticatedReq {
 	return OptUsersUpdateAuthenticatedReq{
@@ -21758,7 +25398,9 @@ type OrgHook struct {
 	Type          string        `json:"type"`
 }
 
-func (*OrgHook) orgsGetWebhookRes() {}
+func (*OrgHook) orgsCreateWebhookRes() {}
+func (*OrgHook) orgsGetWebhookRes()    {}
+func (*OrgHook) orgsUpdateWebhookRes() {}
 
 type OrgHookConfig struct {
 	URL         OptString `json:"url"`
@@ -21778,8 +25420,10 @@ type OrgMembership struct {
 	Permissions     OptOrgMembershipPermissions `json:"permissions"`
 }
 
-func (*OrgMembership) orgsGetMembershipForAuthenticatedUserRes() {}
-func (*OrgMembership) orgsGetMembershipForUserRes()              {}
+func (*OrgMembership) orgsGetMembershipForAuthenticatedUserRes()    {}
+func (*OrgMembership) orgsGetMembershipForUserRes()                 {}
+func (*OrgMembership) orgsSetMembershipForUserRes()                 {}
+func (*OrgMembership) orgsUpdateMembershipForAuthenticatedUserRes() {}
 
 type OrgMembershipPermissions struct {
 	CanCreateRepository bool `json:"can_create_repository"`
@@ -21892,6 +25536,8 @@ type OrganizationInvitation struct {
 	InvitationTeamsURL string       `json:"invitation_teams_url"`
 }
 
+func (*OrganizationInvitation) orgsCreateInvitationRes() {}
+
 // Ref: #/components/schemas/organization-secret-scanning-alert
 type OrganizationSecretScanningAlert struct {
 	Number       OptAlertNumber                      `json:"number"`
@@ -21927,8 +25573,12 @@ type OrganizationSimple struct {
 // OrgsBlockUserNoContent is response for OrgsBlockUser operation.
 type OrgsBlockUserNoContent struct{}
 
+func (*OrgsBlockUserNoContent) orgsBlockUserRes() {}
+
 // OrgsCancelInvitationNoContent is response for OrgsCancelInvitation operation.
 type OrgsCancelInvitationNoContent struct{}
+
+func (*OrgsCancelInvitationNoContent) orgsCancelInvitationRes() {}
 
 // OrgsCheckBlockedUserNoContent is response for OrgsCheckBlockedUser operation.
 type OrgsCheckBlockedUserNoContent struct{}
@@ -22077,6 +25727,12 @@ const (
 // OrgsListMembersFound is response for OrgsListMembers operation.
 type OrgsListMembersFound struct{}
 
+func (*OrgsListMembersFound) orgsListMembersRes() {}
+
+type OrgsListMembersOKApplicationJSON []SimpleUser
+
+func (*OrgsListMembersOKApplicationJSON) orgsListMembersRes() {}
+
 type OrgsListMembersRole string
 
 const (
@@ -22084,6 +25740,21 @@ const (
 	OrgsListMembersRoleAdmin  OrgsListMembersRole = "admin"
 	OrgsListMembersRoleMember OrgsListMembersRole = "member"
 )
+
+type OrgsListMembershipsForAuthenticatedUserApplicationJSONForbidden BasicError
+
+func (*OrgsListMembershipsForAuthenticatedUserApplicationJSONForbidden) orgsListMembershipsForAuthenticatedUserRes() {
+}
+
+type OrgsListMembershipsForAuthenticatedUserApplicationJSONUnauthorized BasicError
+
+func (*OrgsListMembershipsForAuthenticatedUserApplicationJSONUnauthorized) orgsListMembershipsForAuthenticatedUserRes() {
+}
+
+type OrgsListMembershipsForAuthenticatedUserOKApplicationJSON []OrgMembership
+
+func (*OrgsListMembershipsForAuthenticatedUserOKApplicationJSON) orgsListMembershipsForAuthenticatedUserRes() {
+}
 
 type OrgsListMembershipsForAuthenticatedUserState string
 
@@ -22106,6 +25777,10 @@ const (
 type OrgsListPendingInvitationsOKApplicationJSON []OrganizationInvitation
 
 func (*OrgsListPendingInvitationsOKApplicationJSON) orgsListPendingInvitationsRes() {}
+
+type OrgsListWebhookDeliveriesOKApplicationJSON []HookDeliveryItem
+
+func (*OrgsListWebhookDeliveriesOKApplicationJSON) orgsListWebhookDeliveriesRes() {}
 
 type OrgsListWebhooksOKApplicationJSON []OrgHook
 
@@ -22173,6 +25848,16 @@ func (*OrgsSetPublicMembershipForAuthenticatedUserNoContent) orgsSetPublicMember
 
 // OrgsUnblockUserNoContent is response for OrgsUnblockUser operation.
 type OrgsUnblockUserNoContent struct{}
+
+type OrgsUpdateMembershipForAuthenticatedUserApplicationJSONForbidden BasicError
+
+func (*OrgsUpdateMembershipForAuthenticatedUserApplicationJSONForbidden) orgsUpdateMembershipForAuthenticatedUserRes() {
+}
+
+type OrgsUpdateMembershipForAuthenticatedUserApplicationJSONNotFound BasicError
+
+func (*OrgsUpdateMembershipForAuthenticatedUserApplicationJSONNotFound) orgsUpdateMembershipForAuthenticatedUserRes() {
+}
 
 type OrgsUpdateMembershipForAuthenticatedUserReq struct {
 	State OrgsUpdateMembershipForAuthenticatedUserReqState `json:"state"`
@@ -22960,7 +26645,8 @@ type Page struct {
 	HTTPSEnforced             OptBool                        `json:"https_enforced"`
 }
 
-func (*Page) reposGetPagesRes() {}
+func (*Page) reposCreatePagesSiteRes() {}
+func (*Page) reposGetPagesRes()        {}
 
 // Ref: #/components/schemas/page-build
 type PageBuild struct {
@@ -23120,6 +26806,8 @@ type PorterAuthor struct {
 	ImportURL  url.URL `json:"import_url"`
 }
 
+func (*PorterAuthor) migrationsMapCommitAuthorRes() {}
+
 // Ref: #/components/schemas/porter-large-file
 type PorterLargeFile struct {
 	RefName string `json:"ref_name"`
@@ -23133,22 +26821,32 @@ type PreviewHeaderMissing struct {
 	DocumentationURL string `json:"documentation_url"`
 }
 
-func (*PreviewHeaderMissing) appsGetBySlugRes()                            {}
-func (*PreviewHeaderMissing) orgsListBlockedUsersRes()                     {}
-func (*PreviewHeaderMissing) projectsCreateForAuthenticatedUserRes()       {}
-func (*PreviewHeaderMissing) reactionsDeleteLegacyRes()                    {}
-func (*PreviewHeaderMissing) reactionsListForCommitCommentRes()            {}
-func (*PreviewHeaderMissing) reactionsListForIssueCommentRes()             {}
-func (*PreviewHeaderMissing) reactionsListForIssueRes()                    {}
-func (*PreviewHeaderMissing) reactionsListForPullRequestReviewCommentRes() {}
-func (*PreviewHeaderMissing) reposGetAllTopicsRes()                        {}
-func (*PreviewHeaderMissing) reposGetBranchRes()                           {}
-func (*PreviewHeaderMissing) reposGetDeploymentStatusRes()                 {}
-func (*PreviewHeaderMissing) reposGetReleaseAssetRes()                     {}
-func (*PreviewHeaderMissing) reposReplaceAllTopicsRes()                    {}
-func (*PreviewHeaderMissing) searchCommitsRes()                            {}
-func (*PreviewHeaderMissing) searchTopicsRes()                             {}
-func (*PreviewHeaderMissing) usersListBlockedByAuthenticatedRes()          {}
+func (*PreviewHeaderMissing) appsCreateContentAttachmentRes()                {}
+func (*PreviewHeaderMissing) appsCreateInstallationAccessTokenRes()          {}
+func (*PreviewHeaderMissing) appsGetBySlugRes()                              {}
+func (*PreviewHeaderMissing) orgsListBlockedUsersRes()                       {}
+func (*PreviewHeaderMissing) projectsCreateForAuthenticatedUserRes()         {}
+func (*PreviewHeaderMissing) reactionsCreateForCommitCommentRes()            {}
+func (*PreviewHeaderMissing) reactionsCreateForIssueCommentRes()             {}
+func (*PreviewHeaderMissing) reactionsCreateForIssueRes()                    {}
+func (*PreviewHeaderMissing) reactionsCreateForPullRequestReviewCommentRes() {}
+func (*PreviewHeaderMissing) reactionsCreateForReleaseRes()                  {}
+func (*PreviewHeaderMissing) reactionsDeleteLegacyRes()                      {}
+func (*PreviewHeaderMissing) reactionsListForCommitCommentRes()              {}
+func (*PreviewHeaderMissing) reactionsListForIssueCommentRes()               {}
+func (*PreviewHeaderMissing) reactionsListForIssueRes()                      {}
+func (*PreviewHeaderMissing) reactionsListForPullRequestReviewCommentRes()   {}
+func (*PreviewHeaderMissing) reposCreatePagesSiteRes()                       {}
+func (*PreviewHeaderMissing) reposDeletePagesSiteRes()                       {}
+func (*PreviewHeaderMissing) reposGetAllTopicsRes()                          {}
+func (*PreviewHeaderMissing) reposGetBranchRes()                             {}
+func (*PreviewHeaderMissing) reposGetDeploymentStatusRes()                   {}
+func (*PreviewHeaderMissing) reposGetReleaseAssetRes()                       {}
+func (*PreviewHeaderMissing) reposReplaceAllTopicsRes()                      {}
+func (*PreviewHeaderMissing) searchCommitsRes()                              {}
+func (*PreviewHeaderMissing) searchTopicsRes()                               {}
+func (*PreviewHeaderMissing) teamsRemoveProjectLegacyRes()                   {}
+func (*PreviewHeaderMissing) usersListBlockedByAuthenticatedRes()            {}
 
 // Ref: #/components/schemas/private-user
 type PrivateUser struct {
@@ -23195,6 +26893,8 @@ type PrivateUser struct {
 	BusinessPlus            OptBool            `json:"business_plus"`
 	LdapDn                  OptString          `json:"ldap_dn"`
 }
+
+func (*PrivateUser) usersUpdateAuthenticatedRes() {}
 
 type PrivateUserPlan struct {
 	Collaborators int    `json:"collaborators"`
@@ -23273,8 +26973,22 @@ const (
 	ProjectOrganizationPermissionNone  ProjectOrganizationPermission = "none"
 )
 
+type ProjectsAddCollaboratorApplicationJSONForbidden BasicError
+
+func (*ProjectsAddCollaboratorApplicationJSONForbidden) projectsAddCollaboratorRes() {}
+
+type ProjectsAddCollaboratorApplicationJSONNotFound BasicError
+
+func (*ProjectsAddCollaboratorApplicationJSONNotFound) projectsAddCollaboratorRes() {}
+
+type ProjectsAddCollaboratorApplicationJSONUnauthorized BasicError
+
+func (*ProjectsAddCollaboratorApplicationJSONUnauthorized) projectsAddCollaboratorRes() {}
+
 // ProjectsAddCollaboratorNoContent is response for ProjectsAddCollaborator operation.
 type ProjectsAddCollaboratorNoContent struct{}
+
+func (*ProjectsAddCollaboratorNoContent) projectsAddCollaboratorRes() {}
 
 type ProjectsAddCollaboratorReq struct {
 	Permission OptProjectsAddCollaboratorReqPermission `json:"permission"`
@@ -23525,6 +27239,18 @@ type ProjectsGetColumnApplicationJSONUnauthorized BasicError
 
 func (*ProjectsGetColumnApplicationJSONUnauthorized) projectsGetColumnRes() {}
 
+type ProjectsGetPermissionForUserApplicationJSONForbidden BasicError
+
+func (*ProjectsGetPermissionForUserApplicationJSONForbidden) projectsGetPermissionForUserRes() {}
+
+type ProjectsGetPermissionForUserApplicationJSONNotFound BasicError
+
+func (*ProjectsGetPermissionForUserApplicationJSONNotFound) projectsGetPermissionForUserRes() {}
+
+type ProjectsGetPermissionForUserApplicationJSONUnauthorized BasicError
+
+func (*ProjectsGetPermissionForUserApplicationJSONUnauthorized) projectsGetPermissionForUserRes() {}
+
 type ProjectsListCardsApplicationJSONForbidden BasicError
 
 func (*ProjectsListCardsApplicationJSONForbidden) projectsListCardsRes() {}
@@ -23552,6 +27278,22 @@ const (
 	ProjectsListCollaboratorsAffiliationDirect  ProjectsListCollaboratorsAffiliation = "direct"
 	ProjectsListCollaboratorsAffiliationAll     ProjectsListCollaboratorsAffiliation = "all"
 )
+
+type ProjectsListCollaboratorsApplicationJSONForbidden BasicError
+
+func (*ProjectsListCollaboratorsApplicationJSONForbidden) projectsListCollaboratorsRes() {}
+
+type ProjectsListCollaboratorsApplicationJSONNotFound BasicError
+
+func (*ProjectsListCollaboratorsApplicationJSONNotFound) projectsListCollaboratorsRes() {}
+
+type ProjectsListCollaboratorsApplicationJSONUnauthorized BasicError
+
+func (*ProjectsListCollaboratorsApplicationJSONUnauthorized) projectsListCollaboratorsRes() {}
+
+type ProjectsListCollaboratorsOKApplicationJSON []SimpleUser
+
+func (*ProjectsListCollaboratorsOKApplicationJSON) projectsListCollaboratorsRes() {}
 
 type ProjectsListColumnsApplicationJSONForbidden BasicError
 
@@ -23605,6 +27347,10 @@ const (
 	ProjectsListForRepoStateAll    ProjectsListForRepoState = "all"
 )
 
+type ProjectsListForUserOKApplicationJSON []Project
+
+func (*ProjectsListForUserOKApplicationJSON) projectsListForUserRes() {}
+
 type ProjectsListForUserState string
 
 const (
@@ -23615,11 +27361,15 @@ const (
 
 type ProjectsMoveCardCreated struct{}
 
+func (*ProjectsMoveCardCreated) projectsMoveCardRes() {}
+
 type ProjectsMoveCardForbidden struct {
 	Message          OptString                             `json:"message"`
 	DocumentationURL OptString                             `json:"documentation_url"`
 	Errors           []ProjectsMoveCardForbiddenErrorsItem `json:"errors"`
 }
+
+func (*ProjectsMoveCardForbidden) projectsMoveCardRes() {}
 
 type ProjectsMoveCardForbiddenErrorsItem struct {
 	Code     OptString `json:"code"`
@@ -23631,6 +27381,20 @@ type ProjectsMoveCardForbiddenErrorsItem struct {
 type ProjectsMoveCardReq struct {
 	Position string `json:"position"`
 	ColumnID OptInt `json:"column_id"`
+}
+
+type ProjectsMoveCardServiceUnavailable struct {
+	Code             OptString                                      `json:"code"`
+	Message          OptString                                      `json:"message"`
+	DocumentationURL OptString                                      `json:"documentation_url"`
+	Errors           []ProjectsMoveCardServiceUnavailableErrorsItem `json:"errors"`
+}
+
+func (*ProjectsMoveCardServiceUnavailable) projectsMoveCardRes() {}
+
+type ProjectsMoveCardServiceUnavailableErrorsItem struct {
+	Code    OptString `json:"code"`
+	Message OptString `json:"message"`
 }
 
 type ProjectsMoveColumnApplicationJSONForbidden BasicError
@@ -23649,8 +27413,22 @@ type ProjectsMoveColumnReq struct {
 	Position string `json:"position"`
 }
 
+type ProjectsRemoveCollaboratorApplicationJSONForbidden BasicError
+
+func (*ProjectsRemoveCollaboratorApplicationJSONForbidden) projectsRemoveCollaboratorRes() {}
+
+type ProjectsRemoveCollaboratorApplicationJSONNotFound BasicError
+
+func (*ProjectsRemoveCollaboratorApplicationJSONNotFound) projectsRemoveCollaboratorRes() {}
+
+type ProjectsRemoveCollaboratorApplicationJSONUnauthorized BasicError
+
+func (*ProjectsRemoveCollaboratorApplicationJSONUnauthorized) projectsRemoveCollaboratorRes() {}
+
 // ProjectsRemoveCollaboratorNoContent is response for ProjectsRemoveCollaborator operation.
 type ProjectsRemoveCollaboratorNoContent struct{}
+
+func (*ProjectsRemoveCollaboratorNoContent) projectsRemoveCollaboratorRes() {}
 
 type ProjectsUpdateApplicationJSONGone BasicError
 
@@ -23765,6 +27543,8 @@ type ProtectedBranchPullRequestReview struct {
 	RequireCodeOwnerReviews      bool                                                     `json:"require_code_owner_reviews"`
 	RequiredApprovingReviewCount OptInt                                                   `json:"required_approving_review_count"`
 }
+
+func (*ProtectedBranchPullRequestReview) reposUpdatePullRequestReviewProtectionRes() {}
 
 type ProtectedBranchPullRequestReviewDismissalRestrictions struct {
 	Users    []SimpleUser `json:"users"`
@@ -23905,7 +27685,9 @@ type PullRequest struct {
 	ChangedFiles        int                     `json:"changed_files"`
 }
 
-func (*PullRequest) pullsGetRes() {}
+func (*PullRequest) pullsCreateRes() {}
+func (*PullRequest) pullsGetRes()    {}
+func (*PullRequest) pullsUpdateRes() {}
 
 type PullRequestBase struct {
 	Label string              `json:"label"`
@@ -24227,6 +28009,8 @@ type PullRequestMergeResult struct {
 	Message string `json:"message"`
 }
 
+func (*PullRequestMergeResult) pullsMergeRes() {}
+
 // Ref: #/components/schemas/pull-request-minimal
 type PullRequestMinimal struct {
 	ID     int                    `json:"id"`
@@ -24317,6 +28101,7 @@ type PullRequestReviewComment struct {
 }
 
 func (*PullRequestReviewComment) pullsCreateReplyForReviewCommentRes() {}
+func (*PullRequestReviewComment) pullsCreateReviewCommentRes()         {}
 func (*PullRequestReviewComment) pullsGetReviewCommentRes()            {}
 
 type PullRequestReviewCommentLinks struct {
@@ -24409,6 +28194,8 @@ type PullRequestSimple struct {
 	AutoMerge          NilAutoMerge                  `json:"auto_merge"`
 	Draft              OptBool                       `json:"draft"`
 }
+
+func (*PullRequestSimple) pullsRemoveRequestedReviewersRes() {}
 
 type PullRequestSimpleBase struct {
 	Label string                `json:"label"`
@@ -24559,6 +28346,14 @@ const (
 	PullsListDirectionDesc PullsListDirection = "desc"
 )
 
+type PullsListFilesOKApplicationJSON []DiffEntry
+
+func (*PullsListFilesOKApplicationJSON) pullsListFilesRes() {}
+
+type PullsListOKApplicationJSON []PullRequestSimple
+
+func (*PullsListOKApplicationJSON) pullsListRes() {}
+
 type PullsListReviewCommentsDirection string
 
 const (
@@ -24605,15 +28400,27 @@ const (
 	PullsListStateAll    PullsListState = "all"
 )
 
+type PullsMergeApplicationJSONForbidden BasicError
+
+func (*PullsMergeApplicationJSONForbidden) pullsMergeRes() {}
+
+type PullsMergeApplicationJSONNotFound BasicError
+
+func (*PullsMergeApplicationJSONNotFound) pullsMergeRes() {}
+
 type PullsMergeConflict struct {
 	Message          OptString `json:"message"`
 	DocumentationURL OptString `json:"documentation_url"`
 }
 
+func (*PullsMergeConflict) pullsMergeRes() {}
+
 type PullsMergeMethodNotAllowed struct {
 	Message          OptString `json:"message"`
 	DocumentationURL OptString `json:"documentation_url"`
 }
+
+func (*PullsMergeMethodNotAllowed) pullsMergeRes() {}
 
 type PullsMergeReq struct {
 	CommitTitle   OptString                   `json:"commit_title"`
@@ -24660,6 +28467,8 @@ type PullsUpdateBranchAccepted struct {
 	Message OptString `json:"message"`
 	URL     OptString `json:"url"`
 }
+
+func (*PullsUpdateBranchAccepted) pullsUpdateBranchRes() {}
 
 type PullsUpdateBranchReq struct {
 	ExpectedHeadSha OptString `json:"expected_head_sha"`
@@ -24750,6 +28559,14 @@ type ReactionRollup struct {
 	Rocket     int     `json:"rocket"`
 }
 
+type ReactionsCreateForCommitCommentApplicationJSONCreated Reaction
+
+func (*ReactionsCreateForCommitCommentApplicationJSONCreated) reactionsCreateForCommitCommentRes() {}
+
+type ReactionsCreateForCommitCommentApplicationJSONOK Reaction
+
+func (*ReactionsCreateForCommitCommentApplicationJSONOK) reactionsCreateForCommitCommentRes() {}
+
 type ReactionsCreateForCommitCommentReq struct {
 	Content ReactionsCreateForCommitCommentReqContent `json:"content"`
 }
@@ -24766,6 +28583,22 @@ const (
 	ReactionsCreateForCommitCommentReqContentRocket   ReactionsCreateForCommitCommentReqContent = "rocket"
 	ReactionsCreateForCommitCommentReqContentEyes     ReactionsCreateForCommitCommentReqContent = "eyes"
 )
+
+type ReactionsCreateForIssueApplicationJSONCreated Reaction
+
+func (*ReactionsCreateForIssueApplicationJSONCreated) reactionsCreateForIssueRes() {}
+
+type ReactionsCreateForIssueApplicationJSONOK Reaction
+
+func (*ReactionsCreateForIssueApplicationJSONOK) reactionsCreateForIssueRes() {}
+
+type ReactionsCreateForIssueCommentApplicationJSONCreated Reaction
+
+func (*ReactionsCreateForIssueCommentApplicationJSONCreated) reactionsCreateForIssueCommentRes() {}
+
+type ReactionsCreateForIssueCommentApplicationJSONOK Reaction
+
+func (*ReactionsCreateForIssueCommentApplicationJSONOK) reactionsCreateForIssueCommentRes() {}
 
 type ReactionsCreateForIssueCommentReq struct {
 	Content ReactionsCreateForIssueCommentReqContent `json:"content"`
@@ -24801,6 +28634,16 @@ const (
 	ReactionsCreateForIssueReqContentEyes     ReactionsCreateForIssueReqContent = "eyes"
 )
 
+type ReactionsCreateForPullRequestReviewCommentApplicationJSONCreated Reaction
+
+func (*ReactionsCreateForPullRequestReviewCommentApplicationJSONCreated) reactionsCreateForPullRequestReviewCommentRes() {
+}
+
+type ReactionsCreateForPullRequestReviewCommentApplicationJSONOK Reaction
+
+func (*ReactionsCreateForPullRequestReviewCommentApplicationJSONOK) reactionsCreateForPullRequestReviewCommentRes() {
+}
+
 type ReactionsCreateForPullRequestReviewCommentReq struct {
 	Content ReactionsCreateForPullRequestReviewCommentReqContent `json:"content"`
 }
@@ -24817,6 +28660,14 @@ const (
 	ReactionsCreateForPullRequestReviewCommentReqContentRocket   ReactionsCreateForPullRequestReviewCommentReqContent = "rocket"
 	ReactionsCreateForPullRequestReviewCommentReqContentEyes     ReactionsCreateForPullRequestReviewCommentReqContent = "eyes"
 )
+
+type ReactionsCreateForReleaseApplicationJSONCreated Reaction
+
+func (*ReactionsCreateForReleaseApplicationJSONCreated) reactionsCreateForReleaseRes() {}
+
+type ReactionsCreateForReleaseApplicationJSONOK Reaction
+
+func (*ReactionsCreateForReleaseApplicationJSONOK) reactionsCreateForReleaseRes() {}
 
 type ReactionsCreateForReleaseReq struct {
 	Content ReactionsCreateForReleaseReqContent `json:"content"`
@@ -25119,6 +28970,7 @@ type Release struct {
 	Reactions       OptReactionRollup `json:"reactions"`
 }
 
+func (*Release) reposCreateReleaseRes()   {}
 func (*Release) reposGetReleaseByTagRes() {}
 func (*Release) reposGetReleaseRes()      {}
 func (*Release) reposUpdateReleaseRes()   {}
@@ -25263,8 +29115,86 @@ type ReposAcceptInvitationNoContent struct{}
 
 func (*ReposAcceptInvitationNoContent) reposAcceptInvitationRes() {}
 
+type ReposAddAppAccessRestrictionsOKApplicationJSON []Integration
+
+func (*ReposAddAppAccessRestrictionsOKApplicationJSON) reposAddAppAccessRestrictionsRes() {}
+
+// ReposAddAppAccessRestrictionsReq represents sum type.
+type ReposAddAppAccessRestrictionsReq struct {
+	Type                              ReposAddAppAccessRestrictionsReqType // switch on this field
+	ReposAddAppAccessRestrictionsReq0 ReposAddAppAccessRestrictionsReq0
+	ArrayString                       []string
+}
+
+// ReposAddAppAccessRestrictionsReqType is oneOf type of ReposAddAppAccessRestrictionsReq.
+type ReposAddAppAccessRestrictionsReqType string
+
+// Possible values for ReposAddAppAccessRestrictionsReqType.
+const (
+	ReposAddAppAccessRestrictionsReq0ReposAddAppAccessRestrictionsReq ReposAddAppAccessRestrictionsReqType = "ReposAddAppAccessRestrictionsReq0"
+	ArrayStringReposAddAppAccessRestrictionsReq                       ReposAddAppAccessRestrictionsReqType = "[]string"
+)
+
+// IsReposAddAppAccessRestrictionsReq0 reports whether ReposAddAppAccessRestrictionsReq is ReposAddAppAccessRestrictionsReq0.
+func (s ReposAddAppAccessRestrictionsReq) IsReposAddAppAccessRestrictionsReq0() bool {
+	return s.Type == ReposAddAppAccessRestrictionsReq0ReposAddAppAccessRestrictionsReq
+}
+
+// IsArrayString reports whether ReposAddAppAccessRestrictionsReq is []string.
+func (s ReposAddAppAccessRestrictionsReq) IsArrayString() bool {
+	return s.Type == ArrayStringReposAddAppAccessRestrictionsReq
+}
+
+// SetReposAddAppAccessRestrictionsReq0 sets ReposAddAppAccessRestrictionsReq to ReposAddAppAccessRestrictionsReq0.
+func (s *ReposAddAppAccessRestrictionsReq) SetReposAddAppAccessRestrictionsReq0(v ReposAddAppAccessRestrictionsReq0) {
+	s.Type = ReposAddAppAccessRestrictionsReq0ReposAddAppAccessRestrictionsReq
+	s.ReposAddAppAccessRestrictionsReq0 = v
+}
+
+// GetReposAddAppAccessRestrictionsReq0 returns ReposAddAppAccessRestrictionsReq0 and true boolean if ReposAddAppAccessRestrictionsReq is ReposAddAppAccessRestrictionsReq0.
+func (s ReposAddAppAccessRestrictionsReq) GetReposAddAppAccessRestrictionsReq0() (v ReposAddAppAccessRestrictionsReq0, ok bool) {
+	if !s.IsReposAddAppAccessRestrictionsReq0() {
+		return v, false
+	}
+	return s.ReposAddAppAccessRestrictionsReq0, true
+}
+
+// NewReposAddAppAccessRestrictionsReq0ReposAddAppAccessRestrictionsReq returns new ReposAddAppAccessRestrictionsReq from ReposAddAppAccessRestrictionsReq0.
+func NewReposAddAppAccessRestrictionsReq0ReposAddAppAccessRestrictionsReq(v ReposAddAppAccessRestrictionsReq0) ReposAddAppAccessRestrictionsReq {
+	var s ReposAddAppAccessRestrictionsReq
+	s.SetReposAddAppAccessRestrictionsReq0(v)
+	return s
+}
+
+// SetArrayString sets ReposAddAppAccessRestrictionsReq to []string.
+func (s *ReposAddAppAccessRestrictionsReq) SetArrayString(v []string) {
+	s.Type = ArrayStringReposAddAppAccessRestrictionsReq
+	s.ArrayString = v
+}
+
+// GetArrayString returns []string and true boolean if ReposAddAppAccessRestrictionsReq is []string.
+func (s ReposAddAppAccessRestrictionsReq) GetArrayString() (v []string, ok bool) {
+	if !s.IsArrayString() {
+		return v, false
+	}
+	return s.ArrayString, true
+}
+
+// NewArrayStringReposAddAppAccessRestrictionsReq returns new ReposAddAppAccessRestrictionsReq from []string.
+func NewArrayStringReposAddAppAccessRestrictionsReq(v []string) ReposAddAppAccessRestrictionsReq {
+	var s ReposAddAppAccessRestrictionsReq
+	s.SetArrayString(v)
+	return s
+}
+
+type ReposAddAppAccessRestrictionsReq0 struct {
+	Apps []string `json:"apps"`
+}
+
 // ReposAddCollaboratorNoContent is response for ReposAddCollaborator operation.
 type ReposAddCollaboratorNoContent struct{}
+
+func (*ReposAddCollaboratorNoContent) reposAddCollaboratorRes() {}
 
 type ReposAddCollaboratorReq struct {
 	Permission  OptReposAddCollaboratorReqPermission `json:"permission"`
@@ -25280,6 +29210,242 @@ const (
 	ReposAddCollaboratorReqPermissionMaintain ReposAddCollaboratorReqPermission = "maintain"
 	ReposAddCollaboratorReqPermissionTriage   ReposAddCollaboratorReqPermission = "triage"
 )
+
+type ReposAddStatusCheckContextsApplicationJSONForbidden BasicError
+
+func (*ReposAddStatusCheckContextsApplicationJSONForbidden) reposAddStatusCheckContextsRes() {}
+
+type ReposAddStatusCheckContextsApplicationJSONNotFound BasicError
+
+func (*ReposAddStatusCheckContextsApplicationJSONNotFound) reposAddStatusCheckContextsRes() {}
+
+type ReposAddStatusCheckContextsOKApplicationJSON []string
+
+func (*ReposAddStatusCheckContextsOKApplicationJSON) reposAddStatusCheckContextsRes() {}
+
+// ReposAddStatusCheckContextsReq represents sum type.
+type ReposAddStatusCheckContextsReq struct {
+	Type                            ReposAddStatusCheckContextsReqType // switch on this field
+	ReposAddStatusCheckContextsReq0 ReposAddStatusCheckContextsReq0
+	ArrayString                     []string
+}
+
+// ReposAddStatusCheckContextsReqType is oneOf type of ReposAddStatusCheckContextsReq.
+type ReposAddStatusCheckContextsReqType string
+
+// Possible values for ReposAddStatusCheckContextsReqType.
+const (
+	ReposAddStatusCheckContextsReq0ReposAddStatusCheckContextsReq ReposAddStatusCheckContextsReqType = "ReposAddStatusCheckContextsReq0"
+	ArrayStringReposAddStatusCheckContextsReq                     ReposAddStatusCheckContextsReqType = "[]string"
+)
+
+// IsReposAddStatusCheckContextsReq0 reports whether ReposAddStatusCheckContextsReq is ReposAddStatusCheckContextsReq0.
+func (s ReposAddStatusCheckContextsReq) IsReposAddStatusCheckContextsReq0() bool {
+	return s.Type == ReposAddStatusCheckContextsReq0ReposAddStatusCheckContextsReq
+}
+
+// IsArrayString reports whether ReposAddStatusCheckContextsReq is []string.
+func (s ReposAddStatusCheckContextsReq) IsArrayString() bool {
+	return s.Type == ArrayStringReposAddStatusCheckContextsReq
+}
+
+// SetReposAddStatusCheckContextsReq0 sets ReposAddStatusCheckContextsReq to ReposAddStatusCheckContextsReq0.
+func (s *ReposAddStatusCheckContextsReq) SetReposAddStatusCheckContextsReq0(v ReposAddStatusCheckContextsReq0) {
+	s.Type = ReposAddStatusCheckContextsReq0ReposAddStatusCheckContextsReq
+	s.ReposAddStatusCheckContextsReq0 = v
+}
+
+// GetReposAddStatusCheckContextsReq0 returns ReposAddStatusCheckContextsReq0 and true boolean if ReposAddStatusCheckContextsReq is ReposAddStatusCheckContextsReq0.
+func (s ReposAddStatusCheckContextsReq) GetReposAddStatusCheckContextsReq0() (v ReposAddStatusCheckContextsReq0, ok bool) {
+	if !s.IsReposAddStatusCheckContextsReq0() {
+		return v, false
+	}
+	return s.ReposAddStatusCheckContextsReq0, true
+}
+
+// NewReposAddStatusCheckContextsReq0ReposAddStatusCheckContextsReq returns new ReposAddStatusCheckContextsReq from ReposAddStatusCheckContextsReq0.
+func NewReposAddStatusCheckContextsReq0ReposAddStatusCheckContextsReq(v ReposAddStatusCheckContextsReq0) ReposAddStatusCheckContextsReq {
+	var s ReposAddStatusCheckContextsReq
+	s.SetReposAddStatusCheckContextsReq0(v)
+	return s
+}
+
+// SetArrayString sets ReposAddStatusCheckContextsReq to []string.
+func (s *ReposAddStatusCheckContextsReq) SetArrayString(v []string) {
+	s.Type = ArrayStringReposAddStatusCheckContextsReq
+	s.ArrayString = v
+}
+
+// GetArrayString returns []string and true boolean if ReposAddStatusCheckContextsReq is []string.
+func (s ReposAddStatusCheckContextsReq) GetArrayString() (v []string, ok bool) {
+	if !s.IsArrayString() {
+		return v, false
+	}
+	return s.ArrayString, true
+}
+
+// NewArrayStringReposAddStatusCheckContextsReq returns new ReposAddStatusCheckContextsReq from []string.
+func NewArrayStringReposAddStatusCheckContextsReq(v []string) ReposAddStatusCheckContextsReq {
+	var s ReposAddStatusCheckContextsReq
+	s.SetArrayString(v)
+	return s
+}
+
+type ReposAddStatusCheckContextsReq0 struct {
+	Contexts []string `json:"contexts"`
+}
+
+type ReposAddTeamAccessRestrictionsOKApplicationJSON []Team
+
+func (*ReposAddTeamAccessRestrictionsOKApplicationJSON) reposAddTeamAccessRestrictionsRes() {}
+
+// ReposAddTeamAccessRestrictionsReq represents sum type.
+type ReposAddTeamAccessRestrictionsReq struct {
+	Type                               ReposAddTeamAccessRestrictionsReqType // switch on this field
+	ReposAddTeamAccessRestrictionsReq0 ReposAddTeamAccessRestrictionsReq0
+	ArrayString                        []string
+}
+
+// ReposAddTeamAccessRestrictionsReqType is oneOf type of ReposAddTeamAccessRestrictionsReq.
+type ReposAddTeamAccessRestrictionsReqType string
+
+// Possible values for ReposAddTeamAccessRestrictionsReqType.
+const (
+	ReposAddTeamAccessRestrictionsReq0ReposAddTeamAccessRestrictionsReq ReposAddTeamAccessRestrictionsReqType = "ReposAddTeamAccessRestrictionsReq0"
+	ArrayStringReposAddTeamAccessRestrictionsReq                        ReposAddTeamAccessRestrictionsReqType = "[]string"
+)
+
+// IsReposAddTeamAccessRestrictionsReq0 reports whether ReposAddTeamAccessRestrictionsReq is ReposAddTeamAccessRestrictionsReq0.
+func (s ReposAddTeamAccessRestrictionsReq) IsReposAddTeamAccessRestrictionsReq0() bool {
+	return s.Type == ReposAddTeamAccessRestrictionsReq0ReposAddTeamAccessRestrictionsReq
+}
+
+// IsArrayString reports whether ReposAddTeamAccessRestrictionsReq is []string.
+func (s ReposAddTeamAccessRestrictionsReq) IsArrayString() bool {
+	return s.Type == ArrayStringReposAddTeamAccessRestrictionsReq
+}
+
+// SetReposAddTeamAccessRestrictionsReq0 sets ReposAddTeamAccessRestrictionsReq to ReposAddTeamAccessRestrictionsReq0.
+func (s *ReposAddTeamAccessRestrictionsReq) SetReposAddTeamAccessRestrictionsReq0(v ReposAddTeamAccessRestrictionsReq0) {
+	s.Type = ReposAddTeamAccessRestrictionsReq0ReposAddTeamAccessRestrictionsReq
+	s.ReposAddTeamAccessRestrictionsReq0 = v
+}
+
+// GetReposAddTeamAccessRestrictionsReq0 returns ReposAddTeamAccessRestrictionsReq0 and true boolean if ReposAddTeamAccessRestrictionsReq is ReposAddTeamAccessRestrictionsReq0.
+func (s ReposAddTeamAccessRestrictionsReq) GetReposAddTeamAccessRestrictionsReq0() (v ReposAddTeamAccessRestrictionsReq0, ok bool) {
+	if !s.IsReposAddTeamAccessRestrictionsReq0() {
+		return v, false
+	}
+	return s.ReposAddTeamAccessRestrictionsReq0, true
+}
+
+// NewReposAddTeamAccessRestrictionsReq0ReposAddTeamAccessRestrictionsReq returns new ReposAddTeamAccessRestrictionsReq from ReposAddTeamAccessRestrictionsReq0.
+func NewReposAddTeamAccessRestrictionsReq0ReposAddTeamAccessRestrictionsReq(v ReposAddTeamAccessRestrictionsReq0) ReposAddTeamAccessRestrictionsReq {
+	var s ReposAddTeamAccessRestrictionsReq
+	s.SetReposAddTeamAccessRestrictionsReq0(v)
+	return s
+}
+
+// SetArrayString sets ReposAddTeamAccessRestrictionsReq to []string.
+func (s *ReposAddTeamAccessRestrictionsReq) SetArrayString(v []string) {
+	s.Type = ArrayStringReposAddTeamAccessRestrictionsReq
+	s.ArrayString = v
+}
+
+// GetArrayString returns []string and true boolean if ReposAddTeamAccessRestrictionsReq is []string.
+func (s ReposAddTeamAccessRestrictionsReq) GetArrayString() (v []string, ok bool) {
+	if !s.IsArrayString() {
+		return v, false
+	}
+	return s.ArrayString, true
+}
+
+// NewArrayStringReposAddTeamAccessRestrictionsReq returns new ReposAddTeamAccessRestrictionsReq from []string.
+func NewArrayStringReposAddTeamAccessRestrictionsReq(v []string) ReposAddTeamAccessRestrictionsReq {
+	var s ReposAddTeamAccessRestrictionsReq
+	s.SetArrayString(v)
+	return s
+}
+
+type ReposAddTeamAccessRestrictionsReq0 struct {
+	Teams []string `json:"teams"`
+}
+
+type ReposAddUserAccessRestrictionsOKApplicationJSON []SimpleUser
+
+func (*ReposAddUserAccessRestrictionsOKApplicationJSON) reposAddUserAccessRestrictionsRes() {}
+
+// ReposAddUserAccessRestrictionsReq represents sum type.
+type ReposAddUserAccessRestrictionsReq struct {
+	Type                               ReposAddUserAccessRestrictionsReqType // switch on this field
+	ReposAddUserAccessRestrictionsReq0 ReposAddUserAccessRestrictionsReq0
+	ArrayString                        []string
+}
+
+// ReposAddUserAccessRestrictionsReqType is oneOf type of ReposAddUserAccessRestrictionsReq.
+type ReposAddUserAccessRestrictionsReqType string
+
+// Possible values for ReposAddUserAccessRestrictionsReqType.
+const (
+	ReposAddUserAccessRestrictionsReq0ReposAddUserAccessRestrictionsReq ReposAddUserAccessRestrictionsReqType = "ReposAddUserAccessRestrictionsReq0"
+	ArrayStringReposAddUserAccessRestrictionsReq                        ReposAddUserAccessRestrictionsReqType = "[]string"
+)
+
+// IsReposAddUserAccessRestrictionsReq0 reports whether ReposAddUserAccessRestrictionsReq is ReposAddUserAccessRestrictionsReq0.
+func (s ReposAddUserAccessRestrictionsReq) IsReposAddUserAccessRestrictionsReq0() bool {
+	return s.Type == ReposAddUserAccessRestrictionsReq0ReposAddUserAccessRestrictionsReq
+}
+
+// IsArrayString reports whether ReposAddUserAccessRestrictionsReq is []string.
+func (s ReposAddUserAccessRestrictionsReq) IsArrayString() bool {
+	return s.Type == ArrayStringReposAddUserAccessRestrictionsReq
+}
+
+// SetReposAddUserAccessRestrictionsReq0 sets ReposAddUserAccessRestrictionsReq to ReposAddUserAccessRestrictionsReq0.
+func (s *ReposAddUserAccessRestrictionsReq) SetReposAddUserAccessRestrictionsReq0(v ReposAddUserAccessRestrictionsReq0) {
+	s.Type = ReposAddUserAccessRestrictionsReq0ReposAddUserAccessRestrictionsReq
+	s.ReposAddUserAccessRestrictionsReq0 = v
+}
+
+// GetReposAddUserAccessRestrictionsReq0 returns ReposAddUserAccessRestrictionsReq0 and true boolean if ReposAddUserAccessRestrictionsReq is ReposAddUserAccessRestrictionsReq0.
+func (s ReposAddUserAccessRestrictionsReq) GetReposAddUserAccessRestrictionsReq0() (v ReposAddUserAccessRestrictionsReq0, ok bool) {
+	if !s.IsReposAddUserAccessRestrictionsReq0() {
+		return v, false
+	}
+	return s.ReposAddUserAccessRestrictionsReq0, true
+}
+
+// NewReposAddUserAccessRestrictionsReq0ReposAddUserAccessRestrictionsReq returns new ReposAddUserAccessRestrictionsReq from ReposAddUserAccessRestrictionsReq0.
+func NewReposAddUserAccessRestrictionsReq0ReposAddUserAccessRestrictionsReq(v ReposAddUserAccessRestrictionsReq0) ReposAddUserAccessRestrictionsReq {
+	var s ReposAddUserAccessRestrictionsReq
+	s.SetReposAddUserAccessRestrictionsReq0(v)
+	return s
+}
+
+// SetArrayString sets ReposAddUserAccessRestrictionsReq to []string.
+func (s *ReposAddUserAccessRestrictionsReq) SetArrayString(v []string) {
+	s.Type = ArrayStringReposAddUserAccessRestrictionsReq
+	s.ArrayString = v
+}
+
+// GetArrayString returns []string and true boolean if ReposAddUserAccessRestrictionsReq is []string.
+func (s ReposAddUserAccessRestrictionsReq) GetArrayString() (v []string, ok bool) {
+	if !s.IsArrayString() {
+		return v, false
+	}
+	return s.ArrayString, true
+}
+
+// NewArrayStringReposAddUserAccessRestrictionsReq returns new ReposAddUserAccessRestrictionsReq from []string.
+func NewArrayStringReposAddUserAccessRestrictionsReq(v []string) ReposAddUserAccessRestrictionsReq {
+	var s ReposAddUserAccessRestrictionsReq
+	s.SetArrayString(v)
+	return s
+}
+
+type ReposAddUserAccessRestrictionsReq0 struct {
+	Users []string `json:"users"`
+}
 
 // ReposCheckCollaboratorNoContent is response for ReposCheckCollaborator operation.
 type ReposCheckCollaboratorNoContent struct{}
@@ -25343,6 +29509,99 @@ type ReposCreateDeployKeyReq struct {
 	ReadOnly OptBool   `json:"read_only"`
 }
 
+type ReposCreateDeploymentAccepted struct {
+	Message OptString `json:"message"`
+}
+
+func (*ReposCreateDeploymentAccepted) reposCreateDeploymentRes() {}
+
+// ReposCreateDeploymentConflict is response for ReposCreateDeployment operation.
+type ReposCreateDeploymentConflict struct{}
+
+func (*ReposCreateDeploymentConflict) reposCreateDeploymentRes() {}
+
+type ReposCreateDeploymentReq struct {
+	Ref                   string                           `json:"ref"`
+	Task                  OptString                        `json:"task"`
+	AutoMerge             OptBool                          `json:"auto_merge"`
+	RequiredContexts      []string                         `json:"required_contexts"`
+	Payload               *ReposCreateDeploymentReqPayload `json:"payload"`
+	Environment           OptString                        `json:"environment"`
+	Description           OptNilString                     `json:"description"`
+	TransientEnvironment  OptBool                          `json:"transient_environment"`
+	ProductionEnvironment OptBool                          `json:"production_environment"`
+}
+
+// ReposCreateDeploymentReqPayload represents sum type.
+type ReposCreateDeploymentReqPayload struct {
+	Type                             ReposCreateDeploymentReqPayloadType // switch on this field
+	ReposCreateDeploymentReqPayload0 ReposCreateDeploymentReqPayload0
+	String                           string
+}
+
+// ReposCreateDeploymentReqPayloadType is oneOf type of ReposCreateDeploymentReqPayload.
+type ReposCreateDeploymentReqPayloadType string
+
+// Possible values for ReposCreateDeploymentReqPayloadType.
+const (
+	ReposCreateDeploymentReqPayload0ReposCreateDeploymentReqPayload ReposCreateDeploymentReqPayloadType = "ReposCreateDeploymentReqPayload0"
+	StringReposCreateDeploymentReqPayload                           ReposCreateDeploymentReqPayloadType = "string"
+)
+
+// IsReposCreateDeploymentReqPayload0 reports whether ReposCreateDeploymentReqPayload is ReposCreateDeploymentReqPayload0.
+func (s ReposCreateDeploymentReqPayload) IsReposCreateDeploymentReqPayload0() bool {
+	return s.Type == ReposCreateDeploymentReqPayload0ReposCreateDeploymentReqPayload
+}
+
+// IsString reports whether ReposCreateDeploymentReqPayload is string.
+func (s ReposCreateDeploymentReqPayload) IsString() bool {
+	return s.Type == StringReposCreateDeploymentReqPayload
+}
+
+// SetReposCreateDeploymentReqPayload0 sets ReposCreateDeploymentReqPayload to ReposCreateDeploymentReqPayload0.
+func (s *ReposCreateDeploymentReqPayload) SetReposCreateDeploymentReqPayload0(v ReposCreateDeploymentReqPayload0) {
+	s.Type = ReposCreateDeploymentReqPayload0ReposCreateDeploymentReqPayload
+	s.ReposCreateDeploymentReqPayload0 = v
+}
+
+// GetReposCreateDeploymentReqPayload0 returns ReposCreateDeploymentReqPayload0 and true boolean if ReposCreateDeploymentReqPayload is ReposCreateDeploymentReqPayload0.
+func (s ReposCreateDeploymentReqPayload) GetReposCreateDeploymentReqPayload0() (v ReposCreateDeploymentReqPayload0, ok bool) {
+	if !s.IsReposCreateDeploymentReqPayload0() {
+		return v, false
+	}
+	return s.ReposCreateDeploymentReqPayload0, true
+}
+
+// NewReposCreateDeploymentReqPayload0ReposCreateDeploymentReqPayload returns new ReposCreateDeploymentReqPayload from ReposCreateDeploymentReqPayload0.
+func NewReposCreateDeploymentReqPayload0ReposCreateDeploymentReqPayload(v ReposCreateDeploymentReqPayload0) ReposCreateDeploymentReqPayload {
+	var s ReposCreateDeploymentReqPayload
+	s.SetReposCreateDeploymentReqPayload0(v)
+	return s
+}
+
+// SetString sets ReposCreateDeploymentReqPayload to string.
+func (s *ReposCreateDeploymentReqPayload) SetString(v string) {
+	s.Type = StringReposCreateDeploymentReqPayload
+	s.String = v
+}
+
+// GetString returns string and true boolean if ReposCreateDeploymentReqPayload is string.
+func (s ReposCreateDeploymentReqPayload) GetString() (v string, ok bool) {
+	if !s.IsString() {
+		return v, false
+	}
+	return s.String, true
+}
+
+// NewStringReposCreateDeploymentReqPayload returns new ReposCreateDeploymentReqPayload from string.
+func NewStringReposCreateDeploymentReqPayload(v string) ReposCreateDeploymentReqPayload {
+	var s ReposCreateDeploymentReqPayload
+	s.SetString(v)
+	return s
+}
+
+type ReposCreateDeploymentReqPayload0 struct{}
+
 type ReposCreateDeploymentStatusReq struct {
 	State          ReposCreateDeploymentStatusReqState          `json:"state"`
 	TargetURL      OptString                                    `json:"target_url"`
@@ -25376,12 +29635,33 @@ const (
 // ReposCreateDispatchEventNoContent is response for ReposCreateDispatchEvent operation.
 type ReposCreateDispatchEventNoContent struct{}
 
+func (*ReposCreateDispatchEventNoContent) reposCreateDispatchEventRes() {}
+
 type ReposCreateDispatchEventReq struct {
 	EventType     string                                    `json:"event_type"`
 	ClientPayload *ReposCreateDispatchEventReqClientPayload `json:"client_payload"`
 }
 
 type ReposCreateDispatchEventReqClientPayload struct{}
+
+type ReposCreateForAuthenticatedUserApplicationJSONBadRequest BasicError
+
+func (*ReposCreateForAuthenticatedUserApplicationJSONBadRequest) reposCreateForAuthenticatedUserRes() {
+}
+
+type ReposCreateForAuthenticatedUserApplicationJSONForbidden BasicError
+
+func (*ReposCreateForAuthenticatedUserApplicationJSONForbidden) reposCreateForAuthenticatedUserRes() {
+}
+
+type ReposCreateForAuthenticatedUserApplicationJSONNotFound BasicError
+
+func (*ReposCreateForAuthenticatedUserApplicationJSONNotFound) reposCreateForAuthenticatedUserRes() {}
+
+type ReposCreateForAuthenticatedUserApplicationJSONUnauthorized BasicError
+
+func (*ReposCreateForAuthenticatedUserApplicationJSONUnauthorized) reposCreateForAuthenticatedUserRes() {
+}
 
 type ReposCreateForAuthenticatedUserReq struct {
 	Name                string    `json:"name"`
@@ -25403,6 +29683,18 @@ type ReposCreateForAuthenticatedUserReq struct {
 	HasDownloads        OptBool   `json:"has_downloads"`
 	IsTemplate          OptBool   `json:"is_template"`
 }
+
+type ReposCreateForkApplicationJSONBadRequest BasicError
+
+func (*ReposCreateForkApplicationJSONBadRequest) reposCreateForkRes() {}
+
+type ReposCreateForkApplicationJSONForbidden BasicError
+
+func (*ReposCreateForkApplicationJSONForbidden) reposCreateForkRes() {}
+
+type ReposCreateForkApplicationJSONNotFound BasicError
+
+func (*ReposCreateForkApplicationJSONNotFound) reposCreateForkRes() {}
 
 type ReposCreateForkReq struct {
 	Organization OptString `json:"organization"`
@@ -25448,6 +29740,22 @@ type ReposCreateOrUpdateEnvironmentReqReviewersItem struct {
 	Type OptDeploymentReviewerType `json:"type"`
 	ID   OptInt                    `json:"id"`
 }
+
+type ReposCreateOrUpdateFileContentsApplicationJSONConflict BasicError
+
+func (*ReposCreateOrUpdateFileContentsApplicationJSONConflict) reposCreateOrUpdateFileContentsRes() {}
+
+type ReposCreateOrUpdateFileContentsApplicationJSONCreated FileCommit
+
+func (*ReposCreateOrUpdateFileContentsApplicationJSONCreated) reposCreateOrUpdateFileContentsRes() {}
+
+type ReposCreateOrUpdateFileContentsApplicationJSONNotFound BasicError
+
+func (*ReposCreateOrUpdateFileContentsApplicationJSONNotFound) reposCreateOrUpdateFileContentsRes() {}
+
+type ReposCreateOrUpdateFileContentsApplicationJSONOK FileCommit
+
+func (*ReposCreateOrUpdateFileContentsApplicationJSONOK) reposCreateOrUpdateFileContentsRes() {}
 
 type ReposCreateOrUpdateFileContentsReq struct {
 	Message   string                                         `json:"message"`
@@ -25503,6 +29811,14 @@ type ReposCreateUsingTemplateReq struct {
 	IncludeAllBranches OptBool   `json:"include_all_branches"`
 	Private            OptBool   `json:"private"`
 }
+
+type ReposCreateWebhookApplicationJSONForbidden BasicError
+
+func (*ReposCreateWebhookApplicationJSONForbidden) reposCreateWebhookRes() {}
+
+type ReposCreateWebhookApplicationJSONNotFound BasicError
+
+func (*ReposCreateWebhookApplicationJSONNotFound) reposCreateWebhookRes() {}
 
 type ReposCreateWebhookReq struct {
 	Name   OptString                      `json:"name"`
@@ -25584,6 +29900,14 @@ type ReposDeleteDeploymentNoContent struct{}
 
 func (*ReposDeleteDeploymentNoContent) reposDeleteDeploymentRes() {}
 
+type ReposDeleteFileApplicationJSONConflict BasicError
+
+func (*ReposDeleteFileApplicationJSONConflict) reposDeleteFileRes() {}
+
+type ReposDeleteFileApplicationJSONNotFound BasicError
+
+func (*ReposDeleteFileApplicationJSONNotFound) reposDeleteFileRes() {}
+
 type ReposDeleteFileReq struct {
 	Message   string                         `json:"message"`
 	Sha       string                         `json:"sha"`
@@ -25619,6 +29943,8 @@ func (*ReposDeleteNoContent) reposDeleteRes() {}
 
 // ReposDeletePagesSiteNoContent is response for ReposDeletePagesSite operation.
 type ReposDeletePagesSiteNoContent struct{}
+
+func (*ReposDeletePagesSiteNoContent) reposDeletePagesSiteRes() {}
 
 // ReposDeletePullRequestReviewProtectionNoContent is response for ReposDeletePullRequestReviewProtection operation.
 type ReposDeletePullRequestReviewProtectionNoContent struct{}
@@ -25707,6 +30033,14 @@ type ReposGetCommitActivityStatsOKApplicationJSON []CommitActivity
 
 func (*ReposGetCommitActivityStatsOKApplicationJSON) reposGetCommitActivityStatsRes() {}
 
+type ReposGetCommitApplicationJSONInternalServerError BasicError
+
+func (*ReposGetCommitApplicationJSONInternalServerError) reposGetCommitRes() {}
+
+type ReposGetCommitApplicationJSONNotFound BasicError
+
+func (*ReposGetCommitApplicationJSONNotFound) reposGetCommitRes() {}
+
 type ReposGetContributorsStatsOKApplicationJSON []ContributorActivity
 
 func (*ReposGetContributorsStatsOKApplicationJSON) reposGetContributorsStatsRes() {}
@@ -25750,6 +30084,10 @@ const (
 	ReposGetViewsPerDay   ReposGetViewsPer = "day"
 	ReposGetViewsPerWeek  ReposGetViewsPer = "week"
 )
+
+type ReposListBranchesForHeadCommitOKApplicationJSON []BranchShort
+
+func (*ReposListBranchesForHeadCommitOKApplicationJSON) reposListBranchesForHeadCommitRes() {}
 
 type ReposListBranchesOKApplicationJSON []ShortBranch
 
@@ -25812,12 +30150,24 @@ type ReposListDeploymentStatusesOKApplicationJSON []DeploymentStatus
 
 func (*ReposListDeploymentStatusesOKApplicationJSON) reposListDeploymentStatusesRes() {}
 
+type ReposListForAuthenticatedUserApplicationJSONForbidden BasicError
+
+func (*ReposListForAuthenticatedUserApplicationJSONForbidden) reposListForAuthenticatedUserRes() {}
+
+type ReposListForAuthenticatedUserApplicationJSONUnauthorized BasicError
+
+func (*ReposListForAuthenticatedUserApplicationJSONUnauthorized) reposListForAuthenticatedUserRes() {}
+
 type ReposListForAuthenticatedUserDirection string
 
 const (
 	ReposListForAuthenticatedUserDirectionAsc  ReposListForAuthenticatedUserDirection = "asc"
 	ReposListForAuthenticatedUserDirectionDesc ReposListForAuthenticatedUserDirection = "desc"
 )
+
+type ReposListForAuthenticatedUserOKApplicationJSON []Repository
+
+func (*ReposListForAuthenticatedUserOKApplicationJSON) reposListForAuthenticatedUserRes() {}
 
 type ReposListForAuthenticatedUserSort string
 
@@ -25931,9 +30281,17 @@ type ReposListInvitationsForAuthenticatedUserOKApplicationJSON []RepositoryInvit
 func (*ReposListInvitationsForAuthenticatedUserOKApplicationJSON) reposListInvitationsForAuthenticatedUserRes() {
 }
 
+type ReposListPublicOKApplicationJSON []MinimalRepository
+
+func (*ReposListPublicOKApplicationJSON) reposListPublicRes() {}
+
 type ReposListReleasesOKApplicationJSON []Release
 
 func (*ReposListReleasesOKApplicationJSON) reposListReleasesRes() {}
+
+type ReposListWebhookDeliveriesOKApplicationJSON []HookDeliveryItem
+
+func (*ReposListWebhookDeliveriesOKApplicationJSON) reposListWebhookDeliveriesRes() {}
 
 type ReposListWebhooksOKApplicationJSON []Hook
 
@@ -25942,11 +30300,17 @@ func (*ReposListWebhooksOKApplicationJSON) reposListWebhooksRes() {}
 // ReposMergeConflict is response for ReposMerge operation.
 type ReposMergeConflict struct{}
 
+func (*ReposMergeConflict) reposMergeRes() {}
+
 // ReposMergeNoContent is response for ReposMerge operation.
 type ReposMergeNoContent struct{}
 
+func (*ReposMergeNoContent) reposMergeRes() {}
+
 // ReposMergeNotFound is response for ReposMerge operation.
 type ReposMergeNotFound struct{}
+
+func (*ReposMergeNotFound) reposMergeRes() {}
 
 type ReposMergeReq struct {
 	Base          string    `json:"base"`
@@ -25973,11 +30337,323 @@ type ReposPingWebhookNoContent struct{}
 
 func (*ReposPingWebhookNoContent) reposPingWebhookRes() {}
 
+type ReposRemoveAppAccessRestrictionsOKApplicationJSON []Integration
+
+func (*ReposRemoveAppAccessRestrictionsOKApplicationJSON) reposRemoveAppAccessRestrictionsRes() {}
+
+// ReposRemoveAppAccessRestrictionsReq represents sum type.
+type ReposRemoveAppAccessRestrictionsReq struct {
+	Type                                 ReposRemoveAppAccessRestrictionsReqType // switch on this field
+	ReposRemoveAppAccessRestrictionsReq0 ReposRemoveAppAccessRestrictionsReq0
+	ArrayString                          []string
+}
+
+// ReposRemoveAppAccessRestrictionsReqType is oneOf type of ReposRemoveAppAccessRestrictionsReq.
+type ReposRemoveAppAccessRestrictionsReqType string
+
+// Possible values for ReposRemoveAppAccessRestrictionsReqType.
+const (
+	ReposRemoveAppAccessRestrictionsReq0ReposRemoveAppAccessRestrictionsReq ReposRemoveAppAccessRestrictionsReqType = "ReposRemoveAppAccessRestrictionsReq0"
+	ArrayStringReposRemoveAppAccessRestrictionsReq                          ReposRemoveAppAccessRestrictionsReqType = "[]string"
+)
+
+// IsReposRemoveAppAccessRestrictionsReq0 reports whether ReposRemoveAppAccessRestrictionsReq is ReposRemoveAppAccessRestrictionsReq0.
+func (s ReposRemoveAppAccessRestrictionsReq) IsReposRemoveAppAccessRestrictionsReq0() bool {
+	return s.Type == ReposRemoveAppAccessRestrictionsReq0ReposRemoveAppAccessRestrictionsReq
+}
+
+// IsArrayString reports whether ReposRemoveAppAccessRestrictionsReq is []string.
+func (s ReposRemoveAppAccessRestrictionsReq) IsArrayString() bool {
+	return s.Type == ArrayStringReposRemoveAppAccessRestrictionsReq
+}
+
+// SetReposRemoveAppAccessRestrictionsReq0 sets ReposRemoveAppAccessRestrictionsReq to ReposRemoveAppAccessRestrictionsReq0.
+func (s *ReposRemoveAppAccessRestrictionsReq) SetReposRemoveAppAccessRestrictionsReq0(v ReposRemoveAppAccessRestrictionsReq0) {
+	s.Type = ReposRemoveAppAccessRestrictionsReq0ReposRemoveAppAccessRestrictionsReq
+	s.ReposRemoveAppAccessRestrictionsReq0 = v
+}
+
+// GetReposRemoveAppAccessRestrictionsReq0 returns ReposRemoveAppAccessRestrictionsReq0 and true boolean if ReposRemoveAppAccessRestrictionsReq is ReposRemoveAppAccessRestrictionsReq0.
+func (s ReposRemoveAppAccessRestrictionsReq) GetReposRemoveAppAccessRestrictionsReq0() (v ReposRemoveAppAccessRestrictionsReq0, ok bool) {
+	if !s.IsReposRemoveAppAccessRestrictionsReq0() {
+		return v, false
+	}
+	return s.ReposRemoveAppAccessRestrictionsReq0, true
+}
+
+// NewReposRemoveAppAccessRestrictionsReq0ReposRemoveAppAccessRestrictionsReq returns new ReposRemoveAppAccessRestrictionsReq from ReposRemoveAppAccessRestrictionsReq0.
+func NewReposRemoveAppAccessRestrictionsReq0ReposRemoveAppAccessRestrictionsReq(v ReposRemoveAppAccessRestrictionsReq0) ReposRemoveAppAccessRestrictionsReq {
+	var s ReposRemoveAppAccessRestrictionsReq
+	s.SetReposRemoveAppAccessRestrictionsReq0(v)
+	return s
+}
+
+// SetArrayString sets ReposRemoveAppAccessRestrictionsReq to []string.
+func (s *ReposRemoveAppAccessRestrictionsReq) SetArrayString(v []string) {
+	s.Type = ArrayStringReposRemoveAppAccessRestrictionsReq
+	s.ArrayString = v
+}
+
+// GetArrayString returns []string and true boolean if ReposRemoveAppAccessRestrictionsReq is []string.
+func (s ReposRemoveAppAccessRestrictionsReq) GetArrayString() (v []string, ok bool) {
+	if !s.IsArrayString() {
+		return v, false
+	}
+	return s.ArrayString, true
+}
+
+// NewArrayStringReposRemoveAppAccessRestrictionsReq returns new ReposRemoveAppAccessRestrictionsReq from []string.
+func NewArrayStringReposRemoveAppAccessRestrictionsReq(v []string) ReposRemoveAppAccessRestrictionsReq {
+	var s ReposRemoveAppAccessRestrictionsReq
+	s.SetArrayString(v)
+	return s
+}
+
+type ReposRemoveAppAccessRestrictionsReq0 struct {
+	Apps []string `json:"apps"`
+}
+
 // ReposRemoveCollaboratorNoContent is response for ReposRemoveCollaborator operation.
 type ReposRemoveCollaboratorNoContent struct{}
 
+type ReposRemoveStatusCheckContextsOKApplicationJSON []string
+
+func (*ReposRemoveStatusCheckContextsOKApplicationJSON) reposRemoveStatusCheckContextsRes() {}
+
+// ReposRemoveStatusCheckContextsReq represents sum type.
+type ReposRemoveStatusCheckContextsReq struct {
+	Type                               ReposRemoveStatusCheckContextsReqType // switch on this field
+	ReposRemoveStatusCheckContextsReq0 ReposRemoveStatusCheckContextsReq0
+	ArrayString                        []string
+}
+
+// ReposRemoveStatusCheckContextsReqType is oneOf type of ReposRemoveStatusCheckContextsReq.
+type ReposRemoveStatusCheckContextsReqType string
+
+// Possible values for ReposRemoveStatusCheckContextsReqType.
+const (
+	ReposRemoveStatusCheckContextsReq0ReposRemoveStatusCheckContextsReq ReposRemoveStatusCheckContextsReqType = "ReposRemoveStatusCheckContextsReq0"
+	ArrayStringReposRemoveStatusCheckContextsReq                        ReposRemoveStatusCheckContextsReqType = "[]string"
+)
+
+// IsReposRemoveStatusCheckContextsReq0 reports whether ReposRemoveStatusCheckContextsReq is ReposRemoveStatusCheckContextsReq0.
+func (s ReposRemoveStatusCheckContextsReq) IsReposRemoveStatusCheckContextsReq0() bool {
+	return s.Type == ReposRemoveStatusCheckContextsReq0ReposRemoveStatusCheckContextsReq
+}
+
+// IsArrayString reports whether ReposRemoveStatusCheckContextsReq is []string.
+func (s ReposRemoveStatusCheckContextsReq) IsArrayString() bool {
+	return s.Type == ArrayStringReposRemoveStatusCheckContextsReq
+}
+
+// SetReposRemoveStatusCheckContextsReq0 sets ReposRemoveStatusCheckContextsReq to ReposRemoveStatusCheckContextsReq0.
+func (s *ReposRemoveStatusCheckContextsReq) SetReposRemoveStatusCheckContextsReq0(v ReposRemoveStatusCheckContextsReq0) {
+	s.Type = ReposRemoveStatusCheckContextsReq0ReposRemoveStatusCheckContextsReq
+	s.ReposRemoveStatusCheckContextsReq0 = v
+}
+
+// GetReposRemoveStatusCheckContextsReq0 returns ReposRemoveStatusCheckContextsReq0 and true boolean if ReposRemoveStatusCheckContextsReq is ReposRemoveStatusCheckContextsReq0.
+func (s ReposRemoveStatusCheckContextsReq) GetReposRemoveStatusCheckContextsReq0() (v ReposRemoveStatusCheckContextsReq0, ok bool) {
+	if !s.IsReposRemoveStatusCheckContextsReq0() {
+		return v, false
+	}
+	return s.ReposRemoveStatusCheckContextsReq0, true
+}
+
+// NewReposRemoveStatusCheckContextsReq0ReposRemoveStatusCheckContextsReq returns new ReposRemoveStatusCheckContextsReq from ReposRemoveStatusCheckContextsReq0.
+func NewReposRemoveStatusCheckContextsReq0ReposRemoveStatusCheckContextsReq(v ReposRemoveStatusCheckContextsReq0) ReposRemoveStatusCheckContextsReq {
+	var s ReposRemoveStatusCheckContextsReq
+	s.SetReposRemoveStatusCheckContextsReq0(v)
+	return s
+}
+
+// SetArrayString sets ReposRemoveStatusCheckContextsReq to []string.
+func (s *ReposRemoveStatusCheckContextsReq) SetArrayString(v []string) {
+	s.Type = ArrayStringReposRemoveStatusCheckContextsReq
+	s.ArrayString = v
+}
+
+// GetArrayString returns []string and true boolean if ReposRemoveStatusCheckContextsReq is []string.
+func (s ReposRemoveStatusCheckContextsReq) GetArrayString() (v []string, ok bool) {
+	if !s.IsArrayString() {
+		return v, false
+	}
+	return s.ArrayString, true
+}
+
+// NewArrayStringReposRemoveStatusCheckContextsReq returns new ReposRemoveStatusCheckContextsReq from []string.
+func NewArrayStringReposRemoveStatusCheckContextsReq(v []string) ReposRemoveStatusCheckContextsReq {
+	var s ReposRemoveStatusCheckContextsReq
+	s.SetArrayString(v)
+	return s
+}
+
+type ReposRemoveStatusCheckContextsReq0 struct {
+	Contexts []string `json:"contexts"`
+}
+
 // ReposRemoveStatusCheckProtectionNoContent is response for ReposRemoveStatusCheckProtection operation.
 type ReposRemoveStatusCheckProtectionNoContent struct{}
+
+type ReposRemoveTeamAccessRestrictionsOKApplicationJSON []Team
+
+func (*ReposRemoveTeamAccessRestrictionsOKApplicationJSON) reposRemoveTeamAccessRestrictionsRes() {}
+
+// ReposRemoveTeamAccessRestrictionsReq represents sum type.
+type ReposRemoveTeamAccessRestrictionsReq struct {
+	Type                                  ReposRemoveTeamAccessRestrictionsReqType // switch on this field
+	ReposRemoveTeamAccessRestrictionsReq0 ReposRemoveTeamAccessRestrictionsReq0
+	ArrayString                           []string
+}
+
+// ReposRemoveTeamAccessRestrictionsReqType is oneOf type of ReposRemoveTeamAccessRestrictionsReq.
+type ReposRemoveTeamAccessRestrictionsReqType string
+
+// Possible values for ReposRemoveTeamAccessRestrictionsReqType.
+const (
+	ReposRemoveTeamAccessRestrictionsReq0ReposRemoveTeamAccessRestrictionsReq ReposRemoveTeamAccessRestrictionsReqType = "ReposRemoveTeamAccessRestrictionsReq0"
+	ArrayStringReposRemoveTeamAccessRestrictionsReq                           ReposRemoveTeamAccessRestrictionsReqType = "[]string"
+)
+
+// IsReposRemoveTeamAccessRestrictionsReq0 reports whether ReposRemoveTeamAccessRestrictionsReq is ReposRemoveTeamAccessRestrictionsReq0.
+func (s ReposRemoveTeamAccessRestrictionsReq) IsReposRemoveTeamAccessRestrictionsReq0() bool {
+	return s.Type == ReposRemoveTeamAccessRestrictionsReq0ReposRemoveTeamAccessRestrictionsReq
+}
+
+// IsArrayString reports whether ReposRemoveTeamAccessRestrictionsReq is []string.
+func (s ReposRemoveTeamAccessRestrictionsReq) IsArrayString() bool {
+	return s.Type == ArrayStringReposRemoveTeamAccessRestrictionsReq
+}
+
+// SetReposRemoveTeamAccessRestrictionsReq0 sets ReposRemoveTeamAccessRestrictionsReq to ReposRemoveTeamAccessRestrictionsReq0.
+func (s *ReposRemoveTeamAccessRestrictionsReq) SetReposRemoveTeamAccessRestrictionsReq0(v ReposRemoveTeamAccessRestrictionsReq0) {
+	s.Type = ReposRemoveTeamAccessRestrictionsReq0ReposRemoveTeamAccessRestrictionsReq
+	s.ReposRemoveTeamAccessRestrictionsReq0 = v
+}
+
+// GetReposRemoveTeamAccessRestrictionsReq0 returns ReposRemoveTeamAccessRestrictionsReq0 and true boolean if ReposRemoveTeamAccessRestrictionsReq is ReposRemoveTeamAccessRestrictionsReq0.
+func (s ReposRemoveTeamAccessRestrictionsReq) GetReposRemoveTeamAccessRestrictionsReq0() (v ReposRemoveTeamAccessRestrictionsReq0, ok bool) {
+	if !s.IsReposRemoveTeamAccessRestrictionsReq0() {
+		return v, false
+	}
+	return s.ReposRemoveTeamAccessRestrictionsReq0, true
+}
+
+// NewReposRemoveTeamAccessRestrictionsReq0ReposRemoveTeamAccessRestrictionsReq returns new ReposRemoveTeamAccessRestrictionsReq from ReposRemoveTeamAccessRestrictionsReq0.
+func NewReposRemoveTeamAccessRestrictionsReq0ReposRemoveTeamAccessRestrictionsReq(v ReposRemoveTeamAccessRestrictionsReq0) ReposRemoveTeamAccessRestrictionsReq {
+	var s ReposRemoveTeamAccessRestrictionsReq
+	s.SetReposRemoveTeamAccessRestrictionsReq0(v)
+	return s
+}
+
+// SetArrayString sets ReposRemoveTeamAccessRestrictionsReq to []string.
+func (s *ReposRemoveTeamAccessRestrictionsReq) SetArrayString(v []string) {
+	s.Type = ArrayStringReposRemoveTeamAccessRestrictionsReq
+	s.ArrayString = v
+}
+
+// GetArrayString returns []string and true boolean if ReposRemoveTeamAccessRestrictionsReq is []string.
+func (s ReposRemoveTeamAccessRestrictionsReq) GetArrayString() (v []string, ok bool) {
+	if !s.IsArrayString() {
+		return v, false
+	}
+	return s.ArrayString, true
+}
+
+// NewArrayStringReposRemoveTeamAccessRestrictionsReq returns new ReposRemoveTeamAccessRestrictionsReq from []string.
+func NewArrayStringReposRemoveTeamAccessRestrictionsReq(v []string) ReposRemoveTeamAccessRestrictionsReq {
+	var s ReposRemoveTeamAccessRestrictionsReq
+	s.SetArrayString(v)
+	return s
+}
+
+type ReposRemoveTeamAccessRestrictionsReq0 struct {
+	Teams []string `json:"teams"`
+}
+
+type ReposRemoveUserAccessRestrictionsOKApplicationJSON []SimpleUser
+
+func (*ReposRemoveUserAccessRestrictionsOKApplicationJSON) reposRemoveUserAccessRestrictionsRes() {}
+
+// ReposRemoveUserAccessRestrictionsReq represents sum type.
+type ReposRemoveUserAccessRestrictionsReq struct {
+	Type                                  ReposRemoveUserAccessRestrictionsReqType // switch on this field
+	ReposRemoveUserAccessRestrictionsReq0 ReposRemoveUserAccessRestrictionsReq0
+	ArrayString                           []string
+}
+
+// ReposRemoveUserAccessRestrictionsReqType is oneOf type of ReposRemoveUserAccessRestrictionsReq.
+type ReposRemoveUserAccessRestrictionsReqType string
+
+// Possible values for ReposRemoveUserAccessRestrictionsReqType.
+const (
+	ReposRemoveUserAccessRestrictionsReq0ReposRemoveUserAccessRestrictionsReq ReposRemoveUserAccessRestrictionsReqType = "ReposRemoveUserAccessRestrictionsReq0"
+	ArrayStringReposRemoveUserAccessRestrictionsReq                           ReposRemoveUserAccessRestrictionsReqType = "[]string"
+)
+
+// IsReposRemoveUserAccessRestrictionsReq0 reports whether ReposRemoveUserAccessRestrictionsReq is ReposRemoveUserAccessRestrictionsReq0.
+func (s ReposRemoveUserAccessRestrictionsReq) IsReposRemoveUserAccessRestrictionsReq0() bool {
+	return s.Type == ReposRemoveUserAccessRestrictionsReq0ReposRemoveUserAccessRestrictionsReq
+}
+
+// IsArrayString reports whether ReposRemoveUserAccessRestrictionsReq is []string.
+func (s ReposRemoveUserAccessRestrictionsReq) IsArrayString() bool {
+	return s.Type == ArrayStringReposRemoveUserAccessRestrictionsReq
+}
+
+// SetReposRemoveUserAccessRestrictionsReq0 sets ReposRemoveUserAccessRestrictionsReq to ReposRemoveUserAccessRestrictionsReq0.
+func (s *ReposRemoveUserAccessRestrictionsReq) SetReposRemoveUserAccessRestrictionsReq0(v ReposRemoveUserAccessRestrictionsReq0) {
+	s.Type = ReposRemoveUserAccessRestrictionsReq0ReposRemoveUserAccessRestrictionsReq
+	s.ReposRemoveUserAccessRestrictionsReq0 = v
+}
+
+// GetReposRemoveUserAccessRestrictionsReq0 returns ReposRemoveUserAccessRestrictionsReq0 and true boolean if ReposRemoveUserAccessRestrictionsReq is ReposRemoveUserAccessRestrictionsReq0.
+func (s ReposRemoveUserAccessRestrictionsReq) GetReposRemoveUserAccessRestrictionsReq0() (v ReposRemoveUserAccessRestrictionsReq0, ok bool) {
+	if !s.IsReposRemoveUserAccessRestrictionsReq0() {
+		return v, false
+	}
+	return s.ReposRemoveUserAccessRestrictionsReq0, true
+}
+
+// NewReposRemoveUserAccessRestrictionsReq0ReposRemoveUserAccessRestrictionsReq returns new ReposRemoveUserAccessRestrictionsReq from ReposRemoveUserAccessRestrictionsReq0.
+func NewReposRemoveUserAccessRestrictionsReq0ReposRemoveUserAccessRestrictionsReq(v ReposRemoveUserAccessRestrictionsReq0) ReposRemoveUserAccessRestrictionsReq {
+	var s ReposRemoveUserAccessRestrictionsReq
+	s.SetReposRemoveUserAccessRestrictionsReq0(v)
+	return s
+}
+
+// SetArrayString sets ReposRemoveUserAccessRestrictionsReq to []string.
+func (s *ReposRemoveUserAccessRestrictionsReq) SetArrayString(v []string) {
+	s.Type = ArrayStringReposRemoveUserAccessRestrictionsReq
+	s.ArrayString = v
+}
+
+// GetArrayString returns []string and true boolean if ReposRemoveUserAccessRestrictionsReq is []string.
+func (s ReposRemoveUserAccessRestrictionsReq) GetArrayString() (v []string, ok bool) {
+	if !s.IsArrayString() {
+		return v, false
+	}
+	return s.ArrayString, true
+}
+
+// NewArrayStringReposRemoveUserAccessRestrictionsReq returns new ReposRemoveUserAccessRestrictionsReq from []string.
+func NewArrayStringReposRemoveUserAccessRestrictionsReq(v []string) ReposRemoveUserAccessRestrictionsReq {
+	var s ReposRemoveUserAccessRestrictionsReq
+	s.SetArrayString(v)
+	return s
+}
+
+type ReposRemoveUserAccessRestrictionsReq0 struct {
+	Users []string `json:"users"`
+}
+
+type ReposRenameBranchApplicationJSONForbidden BasicError
+
+func (*ReposRenameBranchApplicationJSONForbidden) reposRenameBranchRes() {}
+
+type ReposRenameBranchApplicationJSONNotFound BasicError
+
+func (*ReposRenameBranchApplicationJSONNotFound) reposRenameBranchRes() {}
 
 type ReposRenameBranchReq struct {
 	NewName string `json:"new_name"`
@@ -25985,6 +30661,310 @@ type ReposRenameBranchReq struct {
 
 type ReposReplaceAllTopicsReq struct {
 	Names []string `json:"names"`
+}
+
+type ReposSetAppAccessRestrictionsOKApplicationJSON []Integration
+
+func (*ReposSetAppAccessRestrictionsOKApplicationJSON) reposSetAppAccessRestrictionsRes() {}
+
+// ReposSetAppAccessRestrictionsReq represents sum type.
+type ReposSetAppAccessRestrictionsReq struct {
+	Type                              ReposSetAppAccessRestrictionsReqType // switch on this field
+	ReposSetAppAccessRestrictionsReq0 ReposSetAppAccessRestrictionsReq0
+	ArrayString                       []string
+}
+
+// ReposSetAppAccessRestrictionsReqType is oneOf type of ReposSetAppAccessRestrictionsReq.
+type ReposSetAppAccessRestrictionsReqType string
+
+// Possible values for ReposSetAppAccessRestrictionsReqType.
+const (
+	ReposSetAppAccessRestrictionsReq0ReposSetAppAccessRestrictionsReq ReposSetAppAccessRestrictionsReqType = "ReposSetAppAccessRestrictionsReq0"
+	ArrayStringReposSetAppAccessRestrictionsReq                       ReposSetAppAccessRestrictionsReqType = "[]string"
+)
+
+// IsReposSetAppAccessRestrictionsReq0 reports whether ReposSetAppAccessRestrictionsReq is ReposSetAppAccessRestrictionsReq0.
+func (s ReposSetAppAccessRestrictionsReq) IsReposSetAppAccessRestrictionsReq0() bool {
+	return s.Type == ReposSetAppAccessRestrictionsReq0ReposSetAppAccessRestrictionsReq
+}
+
+// IsArrayString reports whether ReposSetAppAccessRestrictionsReq is []string.
+func (s ReposSetAppAccessRestrictionsReq) IsArrayString() bool {
+	return s.Type == ArrayStringReposSetAppAccessRestrictionsReq
+}
+
+// SetReposSetAppAccessRestrictionsReq0 sets ReposSetAppAccessRestrictionsReq to ReposSetAppAccessRestrictionsReq0.
+func (s *ReposSetAppAccessRestrictionsReq) SetReposSetAppAccessRestrictionsReq0(v ReposSetAppAccessRestrictionsReq0) {
+	s.Type = ReposSetAppAccessRestrictionsReq0ReposSetAppAccessRestrictionsReq
+	s.ReposSetAppAccessRestrictionsReq0 = v
+}
+
+// GetReposSetAppAccessRestrictionsReq0 returns ReposSetAppAccessRestrictionsReq0 and true boolean if ReposSetAppAccessRestrictionsReq is ReposSetAppAccessRestrictionsReq0.
+func (s ReposSetAppAccessRestrictionsReq) GetReposSetAppAccessRestrictionsReq0() (v ReposSetAppAccessRestrictionsReq0, ok bool) {
+	if !s.IsReposSetAppAccessRestrictionsReq0() {
+		return v, false
+	}
+	return s.ReposSetAppAccessRestrictionsReq0, true
+}
+
+// NewReposSetAppAccessRestrictionsReq0ReposSetAppAccessRestrictionsReq returns new ReposSetAppAccessRestrictionsReq from ReposSetAppAccessRestrictionsReq0.
+func NewReposSetAppAccessRestrictionsReq0ReposSetAppAccessRestrictionsReq(v ReposSetAppAccessRestrictionsReq0) ReposSetAppAccessRestrictionsReq {
+	var s ReposSetAppAccessRestrictionsReq
+	s.SetReposSetAppAccessRestrictionsReq0(v)
+	return s
+}
+
+// SetArrayString sets ReposSetAppAccessRestrictionsReq to []string.
+func (s *ReposSetAppAccessRestrictionsReq) SetArrayString(v []string) {
+	s.Type = ArrayStringReposSetAppAccessRestrictionsReq
+	s.ArrayString = v
+}
+
+// GetArrayString returns []string and true boolean if ReposSetAppAccessRestrictionsReq is []string.
+func (s ReposSetAppAccessRestrictionsReq) GetArrayString() (v []string, ok bool) {
+	if !s.IsArrayString() {
+		return v, false
+	}
+	return s.ArrayString, true
+}
+
+// NewArrayStringReposSetAppAccessRestrictionsReq returns new ReposSetAppAccessRestrictionsReq from []string.
+func NewArrayStringReposSetAppAccessRestrictionsReq(v []string) ReposSetAppAccessRestrictionsReq {
+	var s ReposSetAppAccessRestrictionsReq
+	s.SetArrayString(v)
+	return s
+}
+
+type ReposSetAppAccessRestrictionsReq0 struct {
+	Apps []string `json:"apps"`
+}
+
+type ReposSetStatusCheckContextsOKApplicationJSON []string
+
+func (*ReposSetStatusCheckContextsOKApplicationJSON) reposSetStatusCheckContextsRes() {}
+
+// ReposSetStatusCheckContextsReq represents sum type.
+type ReposSetStatusCheckContextsReq struct {
+	Type                            ReposSetStatusCheckContextsReqType // switch on this field
+	ReposSetStatusCheckContextsReq0 ReposSetStatusCheckContextsReq0
+	ArrayString                     []string
+}
+
+// ReposSetStatusCheckContextsReqType is oneOf type of ReposSetStatusCheckContextsReq.
+type ReposSetStatusCheckContextsReqType string
+
+// Possible values for ReposSetStatusCheckContextsReqType.
+const (
+	ReposSetStatusCheckContextsReq0ReposSetStatusCheckContextsReq ReposSetStatusCheckContextsReqType = "ReposSetStatusCheckContextsReq0"
+	ArrayStringReposSetStatusCheckContextsReq                     ReposSetStatusCheckContextsReqType = "[]string"
+)
+
+// IsReposSetStatusCheckContextsReq0 reports whether ReposSetStatusCheckContextsReq is ReposSetStatusCheckContextsReq0.
+func (s ReposSetStatusCheckContextsReq) IsReposSetStatusCheckContextsReq0() bool {
+	return s.Type == ReposSetStatusCheckContextsReq0ReposSetStatusCheckContextsReq
+}
+
+// IsArrayString reports whether ReposSetStatusCheckContextsReq is []string.
+func (s ReposSetStatusCheckContextsReq) IsArrayString() bool {
+	return s.Type == ArrayStringReposSetStatusCheckContextsReq
+}
+
+// SetReposSetStatusCheckContextsReq0 sets ReposSetStatusCheckContextsReq to ReposSetStatusCheckContextsReq0.
+func (s *ReposSetStatusCheckContextsReq) SetReposSetStatusCheckContextsReq0(v ReposSetStatusCheckContextsReq0) {
+	s.Type = ReposSetStatusCheckContextsReq0ReposSetStatusCheckContextsReq
+	s.ReposSetStatusCheckContextsReq0 = v
+}
+
+// GetReposSetStatusCheckContextsReq0 returns ReposSetStatusCheckContextsReq0 and true boolean if ReposSetStatusCheckContextsReq is ReposSetStatusCheckContextsReq0.
+func (s ReposSetStatusCheckContextsReq) GetReposSetStatusCheckContextsReq0() (v ReposSetStatusCheckContextsReq0, ok bool) {
+	if !s.IsReposSetStatusCheckContextsReq0() {
+		return v, false
+	}
+	return s.ReposSetStatusCheckContextsReq0, true
+}
+
+// NewReposSetStatusCheckContextsReq0ReposSetStatusCheckContextsReq returns new ReposSetStatusCheckContextsReq from ReposSetStatusCheckContextsReq0.
+func NewReposSetStatusCheckContextsReq0ReposSetStatusCheckContextsReq(v ReposSetStatusCheckContextsReq0) ReposSetStatusCheckContextsReq {
+	var s ReposSetStatusCheckContextsReq
+	s.SetReposSetStatusCheckContextsReq0(v)
+	return s
+}
+
+// SetArrayString sets ReposSetStatusCheckContextsReq to []string.
+func (s *ReposSetStatusCheckContextsReq) SetArrayString(v []string) {
+	s.Type = ArrayStringReposSetStatusCheckContextsReq
+	s.ArrayString = v
+}
+
+// GetArrayString returns []string and true boolean if ReposSetStatusCheckContextsReq is []string.
+func (s ReposSetStatusCheckContextsReq) GetArrayString() (v []string, ok bool) {
+	if !s.IsArrayString() {
+		return v, false
+	}
+	return s.ArrayString, true
+}
+
+// NewArrayStringReposSetStatusCheckContextsReq returns new ReposSetStatusCheckContextsReq from []string.
+func NewArrayStringReposSetStatusCheckContextsReq(v []string) ReposSetStatusCheckContextsReq {
+	var s ReposSetStatusCheckContextsReq
+	s.SetArrayString(v)
+	return s
+}
+
+type ReposSetStatusCheckContextsReq0 struct {
+	Contexts []string `json:"contexts"`
+}
+
+type ReposSetTeamAccessRestrictionsOKApplicationJSON []Team
+
+func (*ReposSetTeamAccessRestrictionsOKApplicationJSON) reposSetTeamAccessRestrictionsRes() {}
+
+// ReposSetTeamAccessRestrictionsReq represents sum type.
+type ReposSetTeamAccessRestrictionsReq struct {
+	Type                               ReposSetTeamAccessRestrictionsReqType // switch on this field
+	ReposSetTeamAccessRestrictionsReq0 ReposSetTeamAccessRestrictionsReq0
+	ArrayString                        []string
+}
+
+// ReposSetTeamAccessRestrictionsReqType is oneOf type of ReposSetTeamAccessRestrictionsReq.
+type ReposSetTeamAccessRestrictionsReqType string
+
+// Possible values for ReposSetTeamAccessRestrictionsReqType.
+const (
+	ReposSetTeamAccessRestrictionsReq0ReposSetTeamAccessRestrictionsReq ReposSetTeamAccessRestrictionsReqType = "ReposSetTeamAccessRestrictionsReq0"
+	ArrayStringReposSetTeamAccessRestrictionsReq                        ReposSetTeamAccessRestrictionsReqType = "[]string"
+)
+
+// IsReposSetTeamAccessRestrictionsReq0 reports whether ReposSetTeamAccessRestrictionsReq is ReposSetTeamAccessRestrictionsReq0.
+func (s ReposSetTeamAccessRestrictionsReq) IsReposSetTeamAccessRestrictionsReq0() bool {
+	return s.Type == ReposSetTeamAccessRestrictionsReq0ReposSetTeamAccessRestrictionsReq
+}
+
+// IsArrayString reports whether ReposSetTeamAccessRestrictionsReq is []string.
+func (s ReposSetTeamAccessRestrictionsReq) IsArrayString() bool {
+	return s.Type == ArrayStringReposSetTeamAccessRestrictionsReq
+}
+
+// SetReposSetTeamAccessRestrictionsReq0 sets ReposSetTeamAccessRestrictionsReq to ReposSetTeamAccessRestrictionsReq0.
+func (s *ReposSetTeamAccessRestrictionsReq) SetReposSetTeamAccessRestrictionsReq0(v ReposSetTeamAccessRestrictionsReq0) {
+	s.Type = ReposSetTeamAccessRestrictionsReq0ReposSetTeamAccessRestrictionsReq
+	s.ReposSetTeamAccessRestrictionsReq0 = v
+}
+
+// GetReposSetTeamAccessRestrictionsReq0 returns ReposSetTeamAccessRestrictionsReq0 and true boolean if ReposSetTeamAccessRestrictionsReq is ReposSetTeamAccessRestrictionsReq0.
+func (s ReposSetTeamAccessRestrictionsReq) GetReposSetTeamAccessRestrictionsReq0() (v ReposSetTeamAccessRestrictionsReq0, ok bool) {
+	if !s.IsReposSetTeamAccessRestrictionsReq0() {
+		return v, false
+	}
+	return s.ReposSetTeamAccessRestrictionsReq0, true
+}
+
+// NewReposSetTeamAccessRestrictionsReq0ReposSetTeamAccessRestrictionsReq returns new ReposSetTeamAccessRestrictionsReq from ReposSetTeamAccessRestrictionsReq0.
+func NewReposSetTeamAccessRestrictionsReq0ReposSetTeamAccessRestrictionsReq(v ReposSetTeamAccessRestrictionsReq0) ReposSetTeamAccessRestrictionsReq {
+	var s ReposSetTeamAccessRestrictionsReq
+	s.SetReposSetTeamAccessRestrictionsReq0(v)
+	return s
+}
+
+// SetArrayString sets ReposSetTeamAccessRestrictionsReq to []string.
+func (s *ReposSetTeamAccessRestrictionsReq) SetArrayString(v []string) {
+	s.Type = ArrayStringReposSetTeamAccessRestrictionsReq
+	s.ArrayString = v
+}
+
+// GetArrayString returns []string and true boolean if ReposSetTeamAccessRestrictionsReq is []string.
+func (s ReposSetTeamAccessRestrictionsReq) GetArrayString() (v []string, ok bool) {
+	if !s.IsArrayString() {
+		return v, false
+	}
+	return s.ArrayString, true
+}
+
+// NewArrayStringReposSetTeamAccessRestrictionsReq returns new ReposSetTeamAccessRestrictionsReq from []string.
+func NewArrayStringReposSetTeamAccessRestrictionsReq(v []string) ReposSetTeamAccessRestrictionsReq {
+	var s ReposSetTeamAccessRestrictionsReq
+	s.SetArrayString(v)
+	return s
+}
+
+type ReposSetTeamAccessRestrictionsReq0 struct {
+	Teams []string `json:"teams"`
+}
+
+type ReposSetUserAccessRestrictionsOKApplicationJSON []SimpleUser
+
+func (*ReposSetUserAccessRestrictionsOKApplicationJSON) reposSetUserAccessRestrictionsRes() {}
+
+// ReposSetUserAccessRestrictionsReq represents sum type.
+type ReposSetUserAccessRestrictionsReq struct {
+	Type                               ReposSetUserAccessRestrictionsReqType // switch on this field
+	ReposSetUserAccessRestrictionsReq0 ReposSetUserAccessRestrictionsReq0
+	ArrayString                        []string
+}
+
+// ReposSetUserAccessRestrictionsReqType is oneOf type of ReposSetUserAccessRestrictionsReq.
+type ReposSetUserAccessRestrictionsReqType string
+
+// Possible values for ReposSetUserAccessRestrictionsReqType.
+const (
+	ReposSetUserAccessRestrictionsReq0ReposSetUserAccessRestrictionsReq ReposSetUserAccessRestrictionsReqType = "ReposSetUserAccessRestrictionsReq0"
+	ArrayStringReposSetUserAccessRestrictionsReq                        ReposSetUserAccessRestrictionsReqType = "[]string"
+)
+
+// IsReposSetUserAccessRestrictionsReq0 reports whether ReposSetUserAccessRestrictionsReq is ReposSetUserAccessRestrictionsReq0.
+func (s ReposSetUserAccessRestrictionsReq) IsReposSetUserAccessRestrictionsReq0() bool {
+	return s.Type == ReposSetUserAccessRestrictionsReq0ReposSetUserAccessRestrictionsReq
+}
+
+// IsArrayString reports whether ReposSetUserAccessRestrictionsReq is []string.
+func (s ReposSetUserAccessRestrictionsReq) IsArrayString() bool {
+	return s.Type == ArrayStringReposSetUserAccessRestrictionsReq
+}
+
+// SetReposSetUserAccessRestrictionsReq0 sets ReposSetUserAccessRestrictionsReq to ReposSetUserAccessRestrictionsReq0.
+func (s *ReposSetUserAccessRestrictionsReq) SetReposSetUserAccessRestrictionsReq0(v ReposSetUserAccessRestrictionsReq0) {
+	s.Type = ReposSetUserAccessRestrictionsReq0ReposSetUserAccessRestrictionsReq
+	s.ReposSetUserAccessRestrictionsReq0 = v
+}
+
+// GetReposSetUserAccessRestrictionsReq0 returns ReposSetUserAccessRestrictionsReq0 and true boolean if ReposSetUserAccessRestrictionsReq is ReposSetUserAccessRestrictionsReq0.
+func (s ReposSetUserAccessRestrictionsReq) GetReposSetUserAccessRestrictionsReq0() (v ReposSetUserAccessRestrictionsReq0, ok bool) {
+	if !s.IsReposSetUserAccessRestrictionsReq0() {
+		return v, false
+	}
+	return s.ReposSetUserAccessRestrictionsReq0, true
+}
+
+// NewReposSetUserAccessRestrictionsReq0ReposSetUserAccessRestrictionsReq returns new ReposSetUserAccessRestrictionsReq from ReposSetUserAccessRestrictionsReq0.
+func NewReposSetUserAccessRestrictionsReq0ReposSetUserAccessRestrictionsReq(v ReposSetUserAccessRestrictionsReq0) ReposSetUserAccessRestrictionsReq {
+	var s ReposSetUserAccessRestrictionsReq
+	s.SetReposSetUserAccessRestrictionsReq0(v)
+	return s
+}
+
+// SetArrayString sets ReposSetUserAccessRestrictionsReq to []string.
+func (s *ReposSetUserAccessRestrictionsReq) SetArrayString(v []string) {
+	s.Type = ArrayStringReposSetUserAccessRestrictionsReq
+	s.ArrayString = v
+}
+
+// GetArrayString returns []string and true boolean if ReposSetUserAccessRestrictionsReq is []string.
+func (s ReposSetUserAccessRestrictionsReq) GetArrayString() (v []string, ok bool) {
+	if !s.IsArrayString() {
+		return v, false
+	}
+	return s.ArrayString, true
+}
+
+// NewArrayStringReposSetUserAccessRestrictionsReq returns new ReposSetUserAccessRestrictionsReq from []string.
+func NewArrayStringReposSetUserAccessRestrictionsReq(v []string) ReposSetUserAccessRestrictionsReq {
+	var s ReposSetUserAccessRestrictionsReq
+	s.SetArrayString(v)
+	return s
+}
+
+type ReposSetUserAccessRestrictionsReq0 struct {
+	Users []string `json:"users"`
 }
 
 // ReposTestPushWebhookNoContent is response for ReposTestPushWebhook operation.
@@ -25996,6 +30976,18 @@ type ReposTransferReq struct {
 	NewOwner string `json:"new_owner"`
 	TeamIds  []int  `json:"team_ids"`
 }
+
+type ReposUpdateApplicationJSONForbidden BasicError
+
+func (*ReposUpdateApplicationJSONForbidden) reposUpdateRes() {}
+
+type ReposUpdateApplicationJSONNotFound BasicError
+
+func (*ReposUpdateApplicationJSONNotFound) reposUpdateRes() {}
+
+type ReposUpdateApplicationJSONTemporaryRedirect BasicError
+
+func (*ReposUpdateApplicationJSONTemporaryRedirect) reposUpdateRes() {}
 
 type ReposUpdateBranchProtectionApplicationJSONForbidden BasicError
 
@@ -26251,12 +31243,16 @@ type Repository struct {
 	StarredAt           OptString                          `json:"starred_at"`
 }
 
+func (*Repository) reposCreateForAuthenticatedUserRes() {}
+func (*Repository) reposCreateInOrgRes()                {}
+
 // Ref: #/components/schemas/repository-collaborator-permission
 type RepositoryCollaboratorPermission struct {
 	Permission string                `json:"permission"`
 	User       NilNullableSimpleUser `json:"user"`
 }
 
+func (*RepositoryCollaboratorPermission) projectsGetPermissionForUserRes()        {}
 func (*RepositoryCollaboratorPermission) reposGetCollaboratorPermissionLevelRes() {}
 
 // Ref: #/components/schemas/repository-invitation
@@ -26272,6 +31268,8 @@ type RepositoryInvitation struct {
 	HTMLURL     string                          `json:"html_url"`
 	NodeID      string                          `json:"node_id"`
 }
+
+func (*RepositoryInvitation) reposAddCollaboratorRes() {}
 
 type RepositoryInvitationPermissions string
 
@@ -26683,6 +31681,134 @@ type ScimSetInformationForProvisionedUserReqName struct {
 	Formatted  OptString `json:"formatted"`
 }
 
+type ScimUpdateAttributeForUserReq struct {
+	Schemas    []string                                      `json:"schemas"`
+	Operations []ScimUpdateAttributeForUserReqOperationsItem `json:"Operations"`
+}
+
+type ScimUpdateAttributeForUserReqOperationsItem struct {
+	Op    ScimUpdateAttributeForUserReqOperationsItemOp     `json:"op"`
+	Path  OptString                                         `json:"path"`
+	Value *ScimUpdateAttributeForUserReqOperationsItemValue `json:"value"`
+}
+
+type ScimUpdateAttributeForUserReqOperationsItemOp string
+
+const (
+	ScimUpdateAttributeForUserReqOperationsItemOpAdd     ScimUpdateAttributeForUserReqOperationsItemOp = "add"
+	ScimUpdateAttributeForUserReqOperationsItemOpRemove  ScimUpdateAttributeForUserReqOperationsItemOp = "remove"
+	ScimUpdateAttributeForUserReqOperationsItemOpReplace ScimUpdateAttributeForUserReqOperationsItemOp = "replace"
+)
+
+// ScimUpdateAttributeForUserReqOperationsItemValue represents sum type.
+type ScimUpdateAttributeForUserReqOperationsItemValue struct {
+	Type                                                       ScimUpdateAttributeForUserReqOperationsItemValueType // switch on this field
+	ScimUpdateAttributeForUserReqOperationsItemValue0          ScimUpdateAttributeForUserReqOperationsItemValue0
+	ArrayScimUpdateAttributeForUserReqOperationsItemValue1Item []ScimUpdateAttributeForUserReqOperationsItemValue1Item
+	String                                                     string
+}
+
+// ScimUpdateAttributeForUserReqOperationsItemValueType is oneOf type of ScimUpdateAttributeForUserReqOperationsItemValue.
+type ScimUpdateAttributeForUserReqOperationsItemValueType string
+
+// Possible values for ScimUpdateAttributeForUserReqOperationsItemValueType.
+const (
+	ScimUpdateAttributeForUserReqOperationsItemValue0ScimUpdateAttributeForUserReqOperationsItemValue          ScimUpdateAttributeForUserReqOperationsItemValueType = "ScimUpdateAttributeForUserReqOperationsItemValue0"
+	ArrayScimUpdateAttributeForUserReqOperationsItemValue1ItemScimUpdateAttributeForUserReqOperationsItemValue ScimUpdateAttributeForUserReqOperationsItemValueType = "[]ScimUpdateAttributeForUserReqOperationsItemValue1Item"
+	StringScimUpdateAttributeForUserReqOperationsItemValue                                                     ScimUpdateAttributeForUserReqOperationsItemValueType = "string"
+)
+
+// IsScimUpdateAttributeForUserReqOperationsItemValue0 reports whether ScimUpdateAttributeForUserReqOperationsItemValue is ScimUpdateAttributeForUserReqOperationsItemValue0.
+func (s ScimUpdateAttributeForUserReqOperationsItemValue) IsScimUpdateAttributeForUserReqOperationsItemValue0() bool {
+	return s.Type == ScimUpdateAttributeForUserReqOperationsItemValue0ScimUpdateAttributeForUserReqOperationsItemValue
+}
+
+// IsArrayScimUpdateAttributeForUserReqOperationsItemValue1Item reports whether ScimUpdateAttributeForUserReqOperationsItemValue is []ScimUpdateAttributeForUserReqOperationsItemValue1Item.
+func (s ScimUpdateAttributeForUserReqOperationsItemValue) IsArrayScimUpdateAttributeForUserReqOperationsItemValue1Item() bool {
+	return s.Type == ArrayScimUpdateAttributeForUserReqOperationsItemValue1ItemScimUpdateAttributeForUserReqOperationsItemValue
+}
+
+// IsString reports whether ScimUpdateAttributeForUserReqOperationsItemValue is string.
+func (s ScimUpdateAttributeForUserReqOperationsItemValue) IsString() bool {
+	return s.Type == StringScimUpdateAttributeForUserReqOperationsItemValue
+}
+
+// SetScimUpdateAttributeForUserReqOperationsItemValue0 sets ScimUpdateAttributeForUserReqOperationsItemValue to ScimUpdateAttributeForUserReqOperationsItemValue0.
+func (s *ScimUpdateAttributeForUserReqOperationsItemValue) SetScimUpdateAttributeForUserReqOperationsItemValue0(v ScimUpdateAttributeForUserReqOperationsItemValue0) {
+	s.Type = ScimUpdateAttributeForUserReqOperationsItemValue0ScimUpdateAttributeForUserReqOperationsItemValue
+	s.ScimUpdateAttributeForUserReqOperationsItemValue0 = v
+}
+
+// GetScimUpdateAttributeForUserReqOperationsItemValue0 returns ScimUpdateAttributeForUserReqOperationsItemValue0 and true boolean if ScimUpdateAttributeForUserReqOperationsItemValue is ScimUpdateAttributeForUserReqOperationsItemValue0.
+func (s ScimUpdateAttributeForUserReqOperationsItemValue) GetScimUpdateAttributeForUserReqOperationsItemValue0() (v ScimUpdateAttributeForUserReqOperationsItemValue0, ok bool) {
+	if !s.IsScimUpdateAttributeForUserReqOperationsItemValue0() {
+		return v, false
+	}
+	return s.ScimUpdateAttributeForUserReqOperationsItemValue0, true
+}
+
+// NewScimUpdateAttributeForUserReqOperationsItemValue0ScimUpdateAttributeForUserReqOperationsItemValue returns new ScimUpdateAttributeForUserReqOperationsItemValue from ScimUpdateAttributeForUserReqOperationsItemValue0.
+func NewScimUpdateAttributeForUserReqOperationsItemValue0ScimUpdateAttributeForUserReqOperationsItemValue(v ScimUpdateAttributeForUserReqOperationsItemValue0) ScimUpdateAttributeForUserReqOperationsItemValue {
+	var s ScimUpdateAttributeForUserReqOperationsItemValue
+	s.SetScimUpdateAttributeForUserReqOperationsItemValue0(v)
+	return s
+}
+
+// SetArrayScimUpdateAttributeForUserReqOperationsItemValue1Item sets ScimUpdateAttributeForUserReqOperationsItemValue to []ScimUpdateAttributeForUserReqOperationsItemValue1Item.
+func (s *ScimUpdateAttributeForUserReqOperationsItemValue) SetArrayScimUpdateAttributeForUserReqOperationsItemValue1Item(v []ScimUpdateAttributeForUserReqOperationsItemValue1Item) {
+	s.Type = ArrayScimUpdateAttributeForUserReqOperationsItemValue1ItemScimUpdateAttributeForUserReqOperationsItemValue
+	s.ArrayScimUpdateAttributeForUserReqOperationsItemValue1Item = v
+}
+
+// GetArrayScimUpdateAttributeForUserReqOperationsItemValue1Item returns []ScimUpdateAttributeForUserReqOperationsItemValue1Item and true boolean if ScimUpdateAttributeForUserReqOperationsItemValue is []ScimUpdateAttributeForUserReqOperationsItemValue1Item.
+func (s ScimUpdateAttributeForUserReqOperationsItemValue) GetArrayScimUpdateAttributeForUserReqOperationsItemValue1Item() (v []ScimUpdateAttributeForUserReqOperationsItemValue1Item, ok bool) {
+	if !s.IsArrayScimUpdateAttributeForUserReqOperationsItemValue1Item() {
+		return v, false
+	}
+	return s.ArrayScimUpdateAttributeForUserReqOperationsItemValue1Item, true
+}
+
+// NewArrayScimUpdateAttributeForUserReqOperationsItemValue1ItemScimUpdateAttributeForUserReqOperationsItemValue returns new ScimUpdateAttributeForUserReqOperationsItemValue from []ScimUpdateAttributeForUserReqOperationsItemValue1Item.
+func NewArrayScimUpdateAttributeForUserReqOperationsItemValue1ItemScimUpdateAttributeForUserReqOperationsItemValue(v []ScimUpdateAttributeForUserReqOperationsItemValue1Item) ScimUpdateAttributeForUserReqOperationsItemValue {
+	var s ScimUpdateAttributeForUserReqOperationsItemValue
+	s.SetArrayScimUpdateAttributeForUserReqOperationsItemValue1Item(v)
+	return s
+}
+
+// SetString sets ScimUpdateAttributeForUserReqOperationsItemValue to string.
+func (s *ScimUpdateAttributeForUserReqOperationsItemValue) SetString(v string) {
+	s.Type = StringScimUpdateAttributeForUserReqOperationsItemValue
+	s.String = v
+}
+
+// GetString returns string and true boolean if ScimUpdateAttributeForUserReqOperationsItemValue is string.
+func (s ScimUpdateAttributeForUserReqOperationsItemValue) GetString() (v string, ok bool) {
+	if !s.IsString() {
+		return v, false
+	}
+	return s.String, true
+}
+
+// NewStringScimUpdateAttributeForUserReqOperationsItemValue returns new ScimUpdateAttributeForUserReqOperationsItemValue from string.
+func NewStringScimUpdateAttributeForUserReqOperationsItemValue(v string) ScimUpdateAttributeForUserReqOperationsItemValue {
+	var s ScimUpdateAttributeForUserReqOperationsItemValue
+	s.SetString(v)
+	return s
+}
+
+type ScimUpdateAttributeForUserReqOperationsItemValue0 struct {
+	Active     OptNilBool   `json:"active"`
+	UserName   OptNilString `json:"userName"`
+	ExternalId OptNilString `json:"externalId"`
+	GivenName  OptNilString `json:"givenName"`
+	FamilyName OptNilString `json:"familyName"`
+}
+
+type ScimUpdateAttributeForUserReqOperationsItemValue1Item struct {
+	Value   OptString `json:"value"`
+	Primary OptBool   `json:"primary"`
+}
+
 // Ref: #/components/schemas/scim-user-list-enterprise
 type ScimUserListEnterprise struct {
 	Schemas      []string                              `json:"schemas"`
@@ -26732,6 +31858,8 @@ type SearchCodeOK struct {
 	Items             []CodeSearchResultItem `json:"items"`
 }
 
+func (*SearchCodeOK) searchCodeRes() {}
+
 type SearchCodeOrder string
 
 const (
@@ -26773,6 +31901,8 @@ type SearchIssuesAndPullRequestsOK struct {
 	Items             []IssueSearchResultItem `json:"items"`
 }
 
+func (*SearchIssuesAndPullRequestsOK) searchIssuesAndPullRequestsRes() {}
+
 type SearchIssuesAndPullRequestsOrder string
 
 const (
@@ -26796,11 +31926,21 @@ const (
 	SearchIssuesAndPullRequestsSortUpdated                    SearchIssuesAndPullRequestsSort = "updated"
 )
 
+type SearchLabelsApplicationJSONForbidden BasicError
+
+func (*SearchLabelsApplicationJSONForbidden) searchLabelsRes() {}
+
+type SearchLabelsApplicationJSONNotFound BasicError
+
+func (*SearchLabelsApplicationJSONNotFound) searchLabelsRes() {}
+
 type SearchLabelsOK struct {
 	TotalCount        int                     `json:"total_count"`
 	IncompleteResults bool                    `json:"incomplete_results"`
 	Items             []LabelSearchResultItem `json:"items"`
 }
+
+func (*SearchLabelsOK) searchLabelsRes() {}
 
 type SearchLabelsOrder string
 
@@ -26821,6 +31961,8 @@ type SearchReposOK struct {
 	IncompleteResults bool                   `json:"incomplete_results"`
 	Items             []RepoSearchResultItem `json:"items"`
 }
+
+func (*SearchReposOK) searchReposRes() {}
 
 type SearchReposOrder string
 
@@ -26866,6 +32008,8 @@ type SearchUsersOK struct {
 	IncompleteResults bool                   `json:"incomplete_results"`
 	Items             []UserSearchResultItem `json:"items"`
 }
+
+func (*SearchUsersOK) searchUsersRes() {}
 
 type SearchUsersOrder string
 
@@ -26990,6 +32134,13 @@ func (*ServiceUnavailable) codeScanningListAlertsForRepoRes()   {}
 func (*ServiceUnavailable) codeScanningListRecentAnalysesRes()  {}
 func (*ServiceUnavailable) codeScanningUpdateAlertRes()         {}
 func (*ServiceUnavailable) codeScanningUploadSarifRes()         {}
+func (*ServiceUnavailable) issuesCreateRes()                    {}
+func (*ServiceUnavailable) issuesUpdateRes()                    {}
+func (*ServiceUnavailable) reposDeleteFileRes()                 {}
+func (*ServiceUnavailable) searchCodeRes()                      {}
+func (*ServiceUnavailable) searchIssuesAndPullRequestsRes()     {}
+func (*ServiceUnavailable) searchReposRes()                     {}
+func (*ServiceUnavailable) searchUsersRes()                     {}
 func (*ServiceUnavailable) secretScanningGetAlertRes()          {}
 func (*ServiceUnavailable) secretScanningListAlertsForOrgRes()  {}
 func (*ServiceUnavailable) secretScanningListAlertsForRepoRes() {}
@@ -27000,6 +32151,8 @@ type ShortBlob struct {
 	URL string `json:"url"`
 	Sha string `json:"sha"`
 }
+
+func (*ShortBlob) gitCreateBlobRes() {}
 
 // Ref: #/components/schemas/short-branch
 type ShortBranch struct {
@@ -27098,7 +32251,8 @@ type StatusCheckPolicy struct {
 	ContextsURL url.URL  `json:"contexts_url"`
 }
 
-func (*StatusCheckPolicy) reposGetStatusChecksProtectionRes() {}
+func (*StatusCheckPolicy) reposGetStatusChecksProtectionRes()   {}
+func (*StatusCheckPolicy) reposUpdateStatusCheckProtectionRes() {}
 
 // Ref: #/components/schemas/tag
 type Tag struct {
@@ -27192,6 +32346,7 @@ type TeamFull struct {
 	LdapDn          OptString                `json:"ldap_dn"`
 }
 
+func (*TeamFull) teamsCreateRes()    {}
 func (*TeamFull) teamsGetByNameRes() {}
 func (*TeamFull) teamsGetLegacyRes() {}
 
@@ -27475,8 +32630,14 @@ type TeamsAddOrUpdateProjectPermissionsLegacyForbidden struct {
 	DocumentationURL OptString `json:"documentation_url"`
 }
 
+func (*TeamsAddOrUpdateProjectPermissionsLegacyForbidden) teamsAddOrUpdateProjectPermissionsLegacyRes() {
+}
+
 // TeamsAddOrUpdateProjectPermissionsLegacyNoContent is response for TeamsAddOrUpdateProjectPermissionsLegacy operation.
 type TeamsAddOrUpdateProjectPermissionsLegacyNoContent struct{}
+
+func (*TeamsAddOrUpdateProjectPermissionsLegacyNoContent) teamsAddOrUpdateProjectPermissionsLegacyRes() {
+}
 
 type TeamsAddOrUpdateProjectPermissionsLegacyReq struct {
 	Permission OptTeamsAddOrUpdateProjectPermissionsLegacyReqPermission `json:"permission"`
@@ -27509,6 +32670,8 @@ const (
 
 // TeamsAddOrUpdateRepoPermissionsLegacyNoContent is response for TeamsAddOrUpdateRepoPermissionsLegacy operation.
 type TeamsAddOrUpdateRepoPermissionsLegacyNoContent struct{}
+
+func (*TeamsAddOrUpdateRepoPermissionsLegacyNoContent) teamsAddOrUpdateRepoPermissionsLegacyRes() {}
 
 type TeamsAddOrUpdateRepoPermissionsLegacyReq struct {
 	Permission OptTeamsAddOrUpdateRepoPermissionsLegacyReqPermission `json:"permission"`
@@ -27639,6 +32802,8 @@ type TeamsDeleteInOrgNoContent struct{}
 // TeamsDeleteLegacyNoContent is response for TeamsDeleteLegacy operation.
 type TeamsDeleteLegacyNoContent struct{}
 
+func (*TeamsDeleteLegacyNoContent) teamsDeleteLegacyRes() {}
+
 // TeamsGetMemberLegacyNoContent is response for TeamsGetMemberLegacy operation.
 type TeamsGetMemberLegacyNoContent struct{}
 
@@ -27653,6 +32818,18 @@ func (*TeamsGetMemberLegacyNotFound) teamsGetMemberLegacyRes() {}
 type TeamsGetMembershipForUserInOrgNotFound struct{}
 
 func (*TeamsGetMembershipForUserInOrgNotFound) teamsGetMembershipForUserInOrgRes() {}
+
+type TeamsListChildLegacyApplicationJSONForbidden BasicError
+
+func (*TeamsListChildLegacyApplicationJSONForbidden) teamsListChildLegacyRes() {}
+
+type TeamsListChildLegacyApplicationJSONNotFound BasicError
+
+func (*TeamsListChildLegacyApplicationJSONNotFound) teamsListChildLegacyRes() {}
+
+type TeamsListChildLegacyOKApplicationJSON []Team
+
+func (*TeamsListChildLegacyOKApplicationJSON) teamsListChildLegacyRes() {}
 
 type TeamsListDiscussionCommentsInOrgDirection string
 
@@ -27770,6 +32947,8 @@ type TeamsRemoveProjectInOrgNoContent struct{}
 // TeamsRemoveProjectLegacyNoContent is response for TeamsRemoveProjectLegacy operation.
 type TeamsRemoveProjectLegacyNoContent struct{}
 
+func (*TeamsRemoveProjectLegacyNoContent) teamsRemoveProjectLegacyRes() {}
+
 // TeamsRemoveRepoInOrgNoContent is response for TeamsRemoveRepoInOrg operation.
 type TeamsRemoveRepoInOrgNoContent struct{}
 
@@ -27816,6 +32995,22 @@ const (
 	TeamsUpdateInOrgReqPrivacySecret TeamsUpdateInOrgReqPrivacy = "secret"
 	TeamsUpdateInOrgReqPrivacyClosed TeamsUpdateInOrgReqPrivacy = "closed"
 )
+
+type TeamsUpdateLegacyApplicationJSONCreated TeamFull
+
+func (*TeamsUpdateLegacyApplicationJSONCreated) teamsUpdateLegacyRes() {}
+
+type TeamsUpdateLegacyApplicationJSONForbidden BasicError
+
+func (*TeamsUpdateLegacyApplicationJSONForbidden) teamsUpdateLegacyRes() {}
+
+type TeamsUpdateLegacyApplicationJSONNotFound BasicError
+
+func (*TeamsUpdateLegacyApplicationJSONNotFound) teamsUpdateLegacyRes() {}
+
+type TeamsUpdateLegacyApplicationJSONOK TeamFull
+
+func (*TeamsUpdateLegacyApplicationJSONOK) teamsUpdateLegacyRes() {}
 
 type TeamsUpdateLegacyReq struct {
 	Name         string                            `json:"name"`
@@ -27983,8 +33178,138 @@ type UserSearchResultItem struct {
 	SuspendedAt       OptNilTime               `json:"suspended_at"`
 }
 
+type UsersAddEmailForAuthenticatedApplicationJSONForbidden BasicError
+
+func (*UsersAddEmailForAuthenticatedApplicationJSONForbidden) usersAddEmailForAuthenticatedRes() {}
+
+type UsersAddEmailForAuthenticatedApplicationJSONNotFound BasicError
+
+func (*UsersAddEmailForAuthenticatedApplicationJSONNotFound) usersAddEmailForAuthenticatedRes() {}
+
+type UsersAddEmailForAuthenticatedApplicationJSONUnauthorized BasicError
+
+func (*UsersAddEmailForAuthenticatedApplicationJSONUnauthorized) usersAddEmailForAuthenticatedRes() {}
+
+type UsersAddEmailForAuthenticatedCreatedApplicationJSON []Email
+
+func (*UsersAddEmailForAuthenticatedCreatedApplicationJSON) usersAddEmailForAuthenticatedRes() {}
+
+// UsersAddEmailForAuthenticatedReq represents sum type.
+type UsersAddEmailForAuthenticatedReq struct {
+	Type                              UsersAddEmailForAuthenticatedReqType // switch on this field
+	UsersAddEmailForAuthenticatedReq0 UsersAddEmailForAuthenticatedReq0
+	ArrayString                       []string
+	String                            string
+}
+
+// UsersAddEmailForAuthenticatedReqType is oneOf type of UsersAddEmailForAuthenticatedReq.
+type UsersAddEmailForAuthenticatedReqType string
+
+// Possible values for UsersAddEmailForAuthenticatedReqType.
+const (
+	UsersAddEmailForAuthenticatedReq0UsersAddEmailForAuthenticatedReq UsersAddEmailForAuthenticatedReqType = "UsersAddEmailForAuthenticatedReq0"
+	ArrayStringUsersAddEmailForAuthenticatedReq                       UsersAddEmailForAuthenticatedReqType = "[]string"
+	StringUsersAddEmailForAuthenticatedReq                            UsersAddEmailForAuthenticatedReqType = "string"
+)
+
+// IsUsersAddEmailForAuthenticatedReq0 reports whether UsersAddEmailForAuthenticatedReq is UsersAddEmailForAuthenticatedReq0.
+func (s UsersAddEmailForAuthenticatedReq) IsUsersAddEmailForAuthenticatedReq0() bool {
+	return s.Type == UsersAddEmailForAuthenticatedReq0UsersAddEmailForAuthenticatedReq
+}
+
+// IsArrayString reports whether UsersAddEmailForAuthenticatedReq is []string.
+func (s UsersAddEmailForAuthenticatedReq) IsArrayString() bool {
+	return s.Type == ArrayStringUsersAddEmailForAuthenticatedReq
+}
+
+// IsString reports whether UsersAddEmailForAuthenticatedReq is string.
+func (s UsersAddEmailForAuthenticatedReq) IsString() bool {
+	return s.Type == StringUsersAddEmailForAuthenticatedReq
+}
+
+// SetUsersAddEmailForAuthenticatedReq0 sets UsersAddEmailForAuthenticatedReq to UsersAddEmailForAuthenticatedReq0.
+func (s *UsersAddEmailForAuthenticatedReq) SetUsersAddEmailForAuthenticatedReq0(v UsersAddEmailForAuthenticatedReq0) {
+	s.Type = UsersAddEmailForAuthenticatedReq0UsersAddEmailForAuthenticatedReq
+	s.UsersAddEmailForAuthenticatedReq0 = v
+}
+
+// GetUsersAddEmailForAuthenticatedReq0 returns UsersAddEmailForAuthenticatedReq0 and true boolean if UsersAddEmailForAuthenticatedReq is UsersAddEmailForAuthenticatedReq0.
+func (s UsersAddEmailForAuthenticatedReq) GetUsersAddEmailForAuthenticatedReq0() (v UsersAddEmailForAuthenticatedReq0, ok bool) {
+	if !s.IsUsersAddEmailForAuthenticatedReq0() {
+		return v, false
+	}
+	return s.UsersAddEmailForAuthenticatedReq0, true
+}
+
+// NewUsersAddEmailForAuthenticatedReq0UsersAddEmailForAuthenticatedReq returns new UsersAddEmailForAuthenticatedReq from UsersAddEmailForAuthenticatedReq0.
+func NewUsersAddEmailForAuthenticatedReq0UsersAddEmailForAuthenticatedReq(v UsersAddEmailForAuthenticatedReq0) UsersAddEmailForAuthenticatedReq {
+	var s UsersAddEmailForAuthenticatedReq
+	s.SetUsersAddEmailForAuthenticatedReq0(v)
+	return s
+}
+
+// SetArrayString sets UsersAddEmailForAuthenticatedReq to []string.
+func (s *UsersAddEmailForAuthenticatedReq) SetArrayString(v []string) {
+	s.Type = ArrayStringUsersAddEmailForAuthenticatedReq
+	s.ArrayString = v
+}
+
+// GetArrayString returns []string and true boolean if UsersAddEmailForAuthenticatedReq is []string.
+func (s UsersAddEmailForAuthenticatedReq) GetArrayString() (v []string, ok bool) {
+	if !s.IsArrayString() {
+		return v, false
+	}
+	return s.ArrayString, true
+}
+
+// NewArrayStringUsersAddEmailForAuthenticatedReq returns new UsersAddEmailForAuthenticatedReq from []string.
+func NewArrayStringUsersAddEmailForAuthenticatedReq(v []string) UsersAddEmailForAuthenticatedReq {
+	var s UsersAddEmailForAuthenticatedReq
+	s.SetArrayString(v)
+	return s
+}
+
+// SetString sets UsersAddEmailForAuthenticatedReq to string.
+func (s *UsersAddEmailForAuthenticatedReq) SetString(v string) {
+	s.Type = StringUsersAddEmailForAuthenticatedReq
+	s.String = v
+}
+
+// GetString returns string and true boolean if UsersAddEmailForAuthenticatedReq is string.
+func (s UsersAddEmailForAuthenticatedReq) GetString() (v string, ok bool) {
+	if !s.IsString() {
+		return v, false
+	}
+	return s.String, true
+}
+
+// NewStringUsersAddEmailForAuthenticatedReq returns new UsersAddEmailForAuthenticatedReq from string.
+func NewStringUsersAddEmailForAuthenticatedReq(v string) UsersAddEmailForAuthenticatedReq {
+	var s UsersAddEmailForAuthenticatedReq
+	s.SetString(v)
+	return s
+}
+
+type UsersAddEmailForAuthenticatedReq0 struct {
+	Emails []string `json:"emails"`
+}
+
+type UsersBlockApplicationJSONForbidden BasicError
+
+func (*UsersBlockApplicationJSONForbidden) usersBlockRes() {}
+
+type UsersBlockApplicationJSONNotFound BasicError
+
+func (*UsersBlockApplicationJSONNotFound) usersBlockRes() {}
+
+type UsersBlockApplicationJSONUnauthorized BasicError
+
+func (*UsersBlockApplicationJSONUnauthorized) usersBlockRes() {}
+
 // UsersBlockNoContent is response for UsersBlock operation.
 type UsersBlockNoContent struct{}
+
+func (*UsersBlockNoContent) usersBlockRes() {}
 
 type UsersCheckBlockedApplicationJSONForbidden BasicError
 
@@ -28034,8 +33359,38 @@ type UsersCheckPersonIsFollowedByAuthenticatedNoContent struct{}
 func (*UsersCheckPersonIsFollowedByAuthenticatedNoContent) usersCheckPersonIsFollowedByAuthenticatedRes() {
 }
 
+type UsersCreateGpgKeyForAuthenticatedApplicationJSONForbidden BasicError
+
+func (*UsersCreateGpgKeyForAuthenticatedApplicationJSONForbidden) usersCreateGpgKeyForAuthenticatedRes() {
+}
+
+type UsersCreateGpgKeyForAuthenticatedApplicationJSONNotFound BasicError
+
+func (*UsersCreateGpgKeyForAuthenticatedApplicationJSONNotFound) usersCreateGpgKeyForAuthenticatedRes() {
+}
+
+type UsersCreateGpgKeyForAuthenticatedApplicationJSONUnauthorized BasicError
+
+func (*UsersCreateGpgKeyForAuthenticatedApplicationJSONUnauthorized) usersCreateGpgKeyForAuthenticatedRes() {
+}
+
 type UsersCreateGpgKeyForAuthenticatedReq struct {
 	ArmoredPublicKey string `json:"armored_public_key"`
+}
+
+type UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONForbidden BasicError
+
+func (*UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONForbidden) usersCreatePublicSSHKeyForAuthenticatedRes() {
+}
+
+type UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONNotFound BasicError
+
+func (*UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONNotFound) usersCreatePublicSSHKeyForAuthenticatedRes() {
+}
+
+type UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized BasicError
+
+func (*UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized) usersCreatePublicSSHKeyForAuthenticatedRes() {
 }
 
 type UsersCreatePublicSSHKeyForAuthenticatedReq struct {
@@ -28043,8 +33398,145 @@ type UsersCreatePublicSSHKeyForAuthenticatedReq struct {
 	Key   string    `json:"key"`
 }
 
+type UsersDeleteEmailForAuthenticatedApplicationJSONForbidden BasicError
+
+func (*UsersDeleteEmailForAuthenticatedApplicationJSONForbidden) usersDeleteEmailForAuthenticatedRes() {
+}
+
+type UsersDeleteEmailForAuthenticatedApplicationJSONNotFound BasicError
+
+func (*UsersDeleteEmailForAuthenticatedApplicationJSONNotFound) usersDeleteEmailForAuthenticatedRes() {
+}
+
+type UsersDeleteEmailForAuthenticatedApplicationJSONUnauthorized BasicError
+
+func (*UsersDeleteEmailForAuthenticatedApplicationJSONUnauthorized) usersDeleteEmailForAuthenticatedRes() {
+}
+
+// UsersDeleteEmailForAuthenticatedNoContent is response for UsersDeleteEmailForAuthenticated operation.
+type UsersDeleteEmailForAuthenticatedNoContent struct{}
+
+func (*UsersDeleteEmailForAuthenticatedNoContent) usersDeleteEmailForAuthenticatedRes() {}
+
+// UsersDeleteEmailForAuthenticatedReq represents sum type.
+type UsersDeleteEmailForAuthenticatedReq struct {
+	Type                                 UsersDeleteEmailForAuthenticatedReqType // switch on this field
+	UsersDeleteEmailForAuthenticatedReq0 UsersDeleteEmailForAuthenticatedReq0
+	ArrayString                          []string
+	String                               string
+}
+
+// UsersDeleteEmailForAuthenticatedReqType is oneOf type of UsersDeleteEmailForAuthenticatedReq.
+type UsersDeleteEmailForAuthenticatedReqType string
+
+// Possible values for UsersDeleteEmailForAuthenticatedReqType.
+const (
+	UsersDeleteEmailForAuthenticatedReq0UsersDeleteEmailForAuthenticatedReq UsersDeleteEmailForAuthenticatedReqType = "UsersDeleteEmailForAuthenticatedReq0"
+	ArrayStringUsersDeleteEmailForAuthenticatedReq                          UsersDeleteEmailForAuthenticatedReqType = "[]string"
+	StringUsersDeleteEmailForAuthenticatedReq                               UsersDeleteEmailForAuthenticatedReqType = "string"
+)
+
+// IsUsersDeleteEmailForAuthenticatedReq0 reports whether UsersDeleteEmailForAuthenticatedReq is UsersDeleteEmailForAuthenticatedReq0.
+func (s UsersDeleteEmailForAuthenticatedReq) IsUsersDeleteEmailForAuthenticatedReq0() bool {
+	return s.Type == UsersDeleteEmailForAuthenticatedReq0UsersDeleteEmailForAuthenticatedReq
+}
+
+// IsArrayString reports whether UsersDeleteEmailForAuthenticatedReq is []string.
+func (s UsersDeleteEmailForAuthenticatedReq) IsArrayString() bool {
+	return s.Type == ArrayStringUsersDeleteEmailForAuthenticatedReq
+}
+
+// IsString reports whether UsersDeleteEmailForAuthenticatedReq is string.
+func (s UsersDeleteEmailForAuthenticatedReq) IsString() bool {
+	return s.Type == StringUsersDeleteEmailForAuthenticatedReq
+}
+
+// SetUsersDeleteEmailForAuthenticatedReq0 sets UsersDeleteEmailForAuthenticatedReq to UsersDeleteEmailForAuthenticatedReq0.
+func (s *UsersDeleteEmailForAuthenticatedReq) SetUsersDeleteEmailForAuthenticatedReq0(v UsersDeleteEmailForAuthenticatedReq0) {
+	s.Type = UsersDeleteEmailForAuthenticatedReq0UsersDeleteEmailForAuthenticatedReq
+	s.UsersDeleteEmailForAuthenticatedReq0 = v
+}
+
+// GetUsersDeleteEmailForAuthenticatedReq0 returns UsersDeleteEmailForAuthenticatedReq0 and true boolean if UsersDeleteEmailForAuthenticatedReq is UsersDeleteEmailForAuthenticatedReq0.
+func (s UsersDeleteEmailForAuthenticatedReq) GetUsersDeleteEmailForAuthenticatedReq0() (v UsersDeleteEmailForAuthenticatedReq0, ok bool) {
+	if !s.IsUsersDeleteEmailForAuthenticatedReq0() {
+		return v, false
+	}
+	return s.UsersDeleteEmailForAuthenticatedReq0, true
+}
+
+// NewUsersDeleteEmailForAuthenticatedReq0UsersDeleteEmailForAuthenticatedReq returns new UsersDeleteEmailForAuthenticatedReq from UsersDeleteEmailForAuthenticatedReq0.
+func NewUsersDeleteEmailForAuthenticatedReq0UsersDeleteEmailForAuthenticatedReq(v UsersDeleteEmailForAuthenticatedReq0) UsersDeleteEmailForAuthenticatedReq {
+	var s UsersDeleteEmailForAuthenticatedReq
+	s.SetUsersDeleteEmailForAuthenticatedReq0(v)
+	return s
+}
+
+// SetArrayString sets UsersDeleteEmailForAuthenticatedReq to []string.
+func (s *UsersDeleteEmailForAuthenticatedReq) SetArrayString(v []string) {
+	s.Type = ArrayStringUsersDeleteEmailForAuthenticatedReq
+	s.ArrayString = v
+}
+
+// GetArrayString returns []string and true boolean if UsersDeleteEmailForAuthenticatedReq is []string.
+func (s UsersDeleteEmailForAuthenticatedReq) GetArrayString() (v []string, ok bool) {
+	if !s.IsArrayString() {
+		return v, false
+	}
+	return s.ArrayString, true
+}
+
+// NewArrayStringUsersDeleteEmailForAuthenticatedReq returns new UsersDeleteEmailForAuthenticatedReq from []string.
+func NewArrayStringUsersDeleteEmailForAuthenticatedReq(v []string) UsersDeleteEmailForAuthenticatedReq {
+	var s UsersDeleteEmailForAuthenticatedReq
+	s.SetArrayString(v)
+	return s
+}
+
+// SetString sets UsersDeleteEmailForAuthenticatedReq to string.
+func (s *UsersDeleteEmailForAuthenticatedReq) SetString(v string) {
+	s.Type = StringUsersDeleteEmailForAuthenticatedReq
+	s.String = v
+}
+
+// GetString returns string and true boolean if UsersDeleteEmailForAuthenticatedReq is string.
+func (s UsersDeleteEmailForAuthenticatedReq) GetString() (v string, ok bool) {
+	if !s.IsString() {
+		return v, false
+	}
+	return s.String, true
+}
+
+// NewStringUsersDeleteEmailForAuthenticatedReq returns new UsersDeleteEmailForAuthenticatedReq from string.
+func NewStringUsersDeleteEmailForAuthenticatedReq(v string) UsersDeleteEmailForAuthenticatedReq {
+	var s UsersDeleteEmailForAuthenticatedReq
+	s.SetString(v)
+	return s
+}
+
+type UsersDeleteEmailForAuthenticatedReq0 struct {
+	Emails []string `json:"emails"`
+}
+
+type UsersDeleteGpgKeyForAuthenticatedApplicationJSONForbidden BasicError
+
+func (*UsersDeleteGpgKeyForAuthenticatedApplicationJSONForbidden) usersDeleteGpgKeyForAuthenticatedRes() {
+}
+
+type UsersDeleteGpgKeyForAuthenticatedApplicationJSONNotFound BasicError
+
+func (*UsersDeleteGpgKeyForAuthenticatedApplicationJSONNotFound) usersDeleteGpgKeyForAuthenticatedRes() {
+}
+
+type UsersDeleteGpgKeyForAuthenticatedApplicationJSONUnauthorized BasicError
+
+func (*UsersDeleteGpgKeyForAuthenticatedApplicationJSONUnauthorized) usersDeleteGpgKeyForAuthenticatedRes() {
+}
+
 // UsersDeleteGpgKeyForAuthenticatedNoContent is response for UsersDeleteGpgKeyForAuthenticated operation.
 type UsersDeleteGpgKeyForAuthenticatedNoContent struct{}
+
+func (*UsersDeleteGpgKeyForAuthenticatedNoContent) usersDeleteGpgKeyForAuthenticatedRes() {}
 
 type UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONForbidden BasicError
 
@@ -28393,6 +33885,26 @@ type UsersListPublicSSHKeysForAuthenticatedOKApplicationJSON []Key
 func (*UsersListPublicSSHKeysForAuthenticatedOKApplicationJSON) usersListPublicSSHKeysForAuthenticatedRes() {
 }
 
+type UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONForbidden BasicError
+
+func (*UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONForbidden) usersSetPrimaryEmailVisibilityForAuthenticatedRes() {
+}
+
+type UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONNotFound BasicError
+
+func (*UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONNotFound) usersSetPrimaryEmailVisibilityForAuthenticatedRes() {
+}
+
+type UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONUnauthorized BasicError
+
+func (*UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONUnauthorized) usersSetPrimaryEmailVisibilityForAuthenticatedRes() {
+}
+
+type UsersSetPrimaryEmailVisibilityForAuthenticatedOKApplicationJSON []Email
+
+func (*UsersSetPrimaryEmailVisibilityForAuthenticatedOKApplicationJSON) usersSetPrimaryEmailVisibilityForAuthenticatedRes() {
+}
+
 type UsersSetPrimaryEmailVisibilityForAuthenticatedReq struct {
 	Visibility UsersSetPrimaryEmailVisibilityForAuthenticatedReqVisibility `json:"visibility"`
 }
@@ -28438,6 +33950,18 @@ type UsersUnfollowNoContent struct{}
 
 func (*UsersUnfollowNoContent) usersUnfollowRes() {}
 
+type UsersUpdateAuthenticatedApplicationJSONForbidden BasicError
+
+func (*UsersUpdateAuthenticatedApplicationJSONForbidden) usersUpdateAuthenticatedRes() {}
+
+type UsersUpdateAuthenticatedApplicationJSONNotFound BasicError
+
+func (*UsersUpdateAuthenticatedApplicationJSONNotFound) usersUpdateAuthenticatedRes() {}
+
+type UsersUpdateAuthenticatedApplicationJSONUnauthorized BasicError
+
+func (*UsersUpdateAuthenticatedApplicationJSONUnauthorized) usersUpdateAuthenticatedRes() {}
+
 type UsersUpdateAuthenticatedReq struct {
 	Name            OptString    `json:"name"`
 	Email           OptString    `json:"email"`
@@ -28447,6 +33971,263 @@ type UsersUpdateAuthenticatedReq struct {
 	Location        OptString    `json:"location"`
 	Hireable        OptBool      `json:"hireable"`
 	Bio             OptString    `json:"bio"`
+}
+
+// Ref: #/components/schemas/validation-error
+type ValidationError struct {
+	Message          string                      `json:"message"`
+	DocumentationURL string                      `json:"documentation_url"`
+	Errors           []ValidationErrorErrorsItem `json:"errors"`
+}
+
+func (*ValidationError) activityListNotificationsForAuthenticatedUserRes()                   {}
+func (*ValidationError) appsCheckTokenRes()                                                  {}
+func (*ValidationError) appsCreateContentAttachmentRes()                                     {}
+func (*ValidationError) appsCreateInstallationAccessTokenRes()                               {}
+func (*ValidationError) appsDeleteAuthorizationRes()                                         {}
+func (*ValidationError) appsDeleteTokenRes()                                                 {}
+func (*ValidationError) appsGetWebhookDeliveryRes()                                          {}
+func (*ValidationError) appsListAccountsForPlanRes()                                         {}
+func (*ValidationError) appsListWebhookDeliveriesRes()                                       {}
+func (*ValidationError) appsRedeliverWebhookDeliveryRes()                                    {}
+func (*ValidationError) appsResetTokenRes()                                                  {}
+func (*ValidationError) appsScopeTokenRes()                                                  {}
+func (*ValidationError) gistsCreateRes()                                                     {}
+func (*ValidationError) gistsForkRes()                                                       {}
+func (*ValidationError) gistsGetRevisionRes()                                                {}
+func (*ValidationError) gistsListForUserRes()                                                {}
+func (*ValidationError) gistsListPublicRes()                                                 {}
+func (*ValidationError) gitCreateBlobRes()                                                   {}
+func (*ValidationError) gitCreateCommitRes()                                                 {}
+func (*ValidationError) gitCreateRefRes()                                                    {}
+func (*ValidationError) gitCreateTagRes()                                                    {}
+func (*ValidationError) gitCreateTreeRes()                                                   {}
+func (*ValidationError) gitDeleteRefRes()                                                    {}
+func (*ValidationError) gitGetBlobRes()                                                      {}
+func (*ValidationError) gitGetTreeRes()                                                      {}
+func (*ValidationError) gitUpdateRefRes()                                                    {}
+func (*ValidationError) interactionsSetRestrictionsForAuthenticatedUserRes()                 {}
+func (*ValidationError) interactionsSetRestrictionsForOrgRes()                               {}
+func (*ValidationError) issuesCreateCommentRes()                                             {}
+func (*ValidationError) issuesCreateLabelRes()                                               {}
+func (*ValidationError) issuesCreateMilestoneRes()                                           {}
+func (*ValidationError) issuesCreateRes()                                                    {}
+func (*ValidationError) issuesListCommentsForRepoRes()                                       {}
+func (*ValidationError) issuesListEventsForRepoRes()                                         {}
+func (*ValidationError) issuesListForRepoRes()                                               {}
+func (*ValidationError) issuesListRes()                                                      {}
+func (*ValidationError) issuesLockRes()                                                      {}
+func (*ValidationError) issuesUpdateCommentRes()                                             {}
+func (*ValidationError) issuesUpdateRes()                                                    {}
+func (*ValidationError) migrationsMapCommitAuthorRes()                                       {}
+func (*ValidationError) migrationsSetLfsPreferenceRes()                                      {}
+func (*ValidationError) migrationsStartForAuthenticatedUserRes()                             {}
+func (*ValidationError) migrationsStartForOrgRes()                                           {}
+func (*ValidationError) migrationsStartImportRes()                                           {}
+func (*ValidationError) oAuthAuthorizationsCreateAuthorizationRes()                          {}
+func (*ValidationError) oAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRes() {}
+func (*ValidationError) oAuthAuthorizationsGetOrCreateAuthorizationForAppRes()               {}
+func (*ValidationError) oAuthAuthorizationsUpdateAuthorizationRes()                          {}
+func (*ValidationError) orgsBlockUserRes()                                                   {}
+func (*ValidationError) orgsCancelInvitationRes()                                            {}
+func (*ValidationError) orgsCreateInvitationRes()                                            {}
+func (*ValidationError) orgsCreateWebhookRes()                                               {}
+func (*ValidationError) orgsGetWebhookDeliveryRes()                                          {}
+func (*ValidationError) orgsListMembersRes()                                                 {}
+func (*ValidationError) orgsListMembershipsForAuthenticatedUserRes()                         {}
+func (*ValidationError) orgsListWebhookDeliveriesRes()                                       {}
+func (*ValidationError) orgsRedeliverWebhookDeliveryRes()                                    {}
+func (*ValidationError) orgsSetMembershipForUserRes()                                        {}
+func (*ValidationError) orgsUpdateMembershipForAuthenticatedUserRes()                        {}
+func (*ValidationError) orgsUpdateWebhookRes()                                               {}
+func (*ValidationError) projectsAddCollaboratorRes()                                         {}
+func (*ValidationError) projectsGetPermissionForUserRes()                                    {}
+func (*ValidationError) projectsListCollaboratorsRes()                                       {}
+func (*ValidationError) projectsListForUserRes()                                             {}
+func (*ValidationError) projectsMoveCardRes()                                                {}
+func (*ValidationError) projectsRemoveCollaboratorRes()                                      {}
+func (*ValidationError) pullsCreateRes()                                                     {}
+func (*ValidationError) pullsCreateReviewCommentRes()                                        {}
+func (*ValidationError) pullsListFilesRes()                                                  {}
+func (*ValidationError) pullsListRes()                                                       {}
+func (*ValidationError) pullsMergeRes()                                                      {}
+func (*ValidationError) pullsRemoveRequestedReviewersRes()                                   {}
+func (*ValidationError) pullsUpdateBranchRes()                                               {}
+func (*ValidationError) pullsUpdateRes()                                                     {}
+func (*ValidationError) reactionsCreateForCommitCommentRes()                                 {}
+func (*ValidationError) reactionsCreateForIssueCommentRes()                                  {}
+func (*ValidationError) reactionsCreateForIssueRes()                                         {}
+func (*ValidationError) reactionsCreateForPullRequestReviewCommentRes()                      {}
+func (*ValidationError) reactionsCreateForReleaseRes()                                       {}
+func (*ValidationError) reposAddAppAccessRestrictionsRes()                                   {}
+func (*ValidationError) reposAddCollaboratorRes()                                            {}
+func (*ValidationError) reposAddStatusCheckContextsRes()                                     {}
+func (*ValidationError) reposAddTeamAccessRestrictionsRes()                                  {}
+func (*ValidationError) reposAddUserAccessRestrictionsRes()                                  {}
+func (*ValidationError) reposCreateAutolinkRes()                                             {}
+func (*ValidationError) reposCreateCommitCommentRes()                                        {}
+func (*ValidationError) reposCreateDeployKeyRes()                                            {}
+func (*ValidationError) reposCreateDeploymentRes()                                           {}
+func (*ValidationError) reposCreateDeploymentStatusRes()                                     {}
+func (*ValidationError) reposCreateDispatchEventRes()                                        {}
+func (*ValidationError) reposCreateForAuthenticatedUserRes()                                 {}
+func (*ValidationError) reposCreateForkRes()                                                 {}
+func (*ValidationError) reposCreateInOrgRes()                                                {}
+func (*ValidationError) reposCreateOrUpdateFileContentsRes()                                 {}
+func (*ValidationError) reposCreatePagesSiteRes()                                            {}
+func (*ValidationError) reposCreateReleaseRes()                                              {}
+func (*ValidationError) reposCreateWebhookRes()                                              {}
+func (*ValidationError) reposDeleteFileRes()                                                 {}
+func (*ValidationError) reposDeletePagesSiteRes()                                            {}
+func (*ValidationError) reposGetCommitRes()                                                  {}
+func (*ValidationError) reposGetReadmeInDirectoryRes()                                       {}
+func (*ValidationError) reposGetReadmeRes()                                                  {}
+func (*ValidationError) reposGetWebhookDeliveryRes()                                         {}
+func (*ValidationError) reposListBranchesForHeadCommitRes()                                  {}
+func (*ValidationError) reposListForAuthenticatedUserRes()                                   {}
+func (*ValidationError) reposListPublicRes()                                                 {}
+func (*ValidationError) reposListWebhookDeliveriesRes()                                      {}
+func (*ValidationError) reposMergeRes()                                                      {}
+func (*ValidationError) reposRedeliverWebhookDeliveryRes()                                   {}
+func (*ValidationError) reposRemoveAppAccessRestrictionsRes()                                {}
+func (*ValidationError) reposRemoveStatusCheckContextsRes()                                  {}
+func (*ValidationError) reposRemoveTeamAccessRestrictionsRes()                               {}
+func (*ValidationError) reposRemoveUserAccessRestrictionsRes()                               {}
+func (*ValidationError) reposRenameBranchRes()                                               {}
+func (*ValidationError) reposSetAppAccessRestrictionsRes()                                   {}
+func (*ValidationError) reposSetStatusCheckContextsRes()                                     {}
+func (*ValidationError) reposSetTeamAccessRestrictionsRes()                                  {}
+func (*ValidationError) reposSetUserAccessRestrictionsRes()                                  {}
+func (*ValidationError) reposUpdatePullRequestReviewProtectionRes()                          {}
+func (*ValidationError) reposUpdateRes()                                                     {}
+func (*ValidationError) reposUpdateStatusCheckProtectionRes()                                {}
+func (*ValidationError) reposUpdateWebhookRes()                                              {}
+func (*ValidationError) searchCodeRes()                                                      {}
+func (*ValidationError) searchIssuesAndPullRequestsRes()                                     {}
+func (*ValidationError) searchLabelsRes()                                                    {}
+func (*ValidationError) searchReposRes()                                                     {}
+func (*ValidationError) searchUsersRes()                                                     {}
+func (*ValidationError) teamsAddOrUpdateProjectPermissionsLegacyRes()                        {}
+func (*ValidationError) teamsAddOrUpdateRepoPermissionsLegacyRes()                           {}
+func (*ValidationError) teamsCreateOrUpdateIdpGroupConnectionsLegacyRes()                    {}
+func (*ValidationError) teamsCreateRes()                                                     {}
+func (*ValidationError) teamsDeleteLegacyRes()                                               {}
+func (*ValidationError) teamsListChildLegacyRes()                                            {}
+func (*ValidationError) teamsRemoveProjectLegacyRes()                                        {}
+func (*ValidationError) teamsUpdateLegacyRes()                                               {}
+func (*ValidationError) usersAddEmailForAuthenticatedRes()                                   {}
+func (*ValidationError) usersBlockRes()                                                      {}
+func (*ValidationError) usersCreateGpgKeyForAuthenticatedRes()                               {}
+func (*ValidationError) usersCreatePublicSSHKeyForAuthenticatedRes()                         {}
+func (*ValidationError) usersDeleteEmailForAuthenticatedRes()                                {}
+func (*ValidationError) usersDeleteGpgKeyForAuthenticatedRes()                               {}
+func (*ValidationError) usersGetContextForUserRes()                                          {}
+func (*ValidationError) usersSetPrimaryEmailVisibilityForAuthenticatedRes()                  {}
+func (*ValidationError) usersUpdateAuthenticatedRes()                                        {}
+
+type ValidationErrorErrorsItem struct {
+	Resource OptString                       `json:"resource"`
+	Field    OptString                       `json:"field"`
+	Message  OptString                       `json:"message"`
+	Code     string                          `json:"code"`
+	Index    OptInt                          `json:"index"`
+	Value    *ValidationErrorErrorsItemValue `json:"value"`
+}
+
+// ValidationErrorErrorsItemValue represents sum type.
+type ValidationErrorErrorsItemValue struct {
+	Type        ValidationErrorErrorsItemValueType // switch on this field
+	String      string
+	Int         int
+	ArrayString []string
+}
+
+// ValidationErrorErrorsItemValueType is oneOf type of ValidationErrorErrorsItemValue.
+type ValidationErrorErrorsItemValueType string
+
+// Possible values for ValidationErrorErrorsItemValueType.
+const (
+	StringValidationErrorErrorsItemValue      ValidationErrorErrorsItemValueType = "string"
+	IntValidationErrorErrorsItemValue         ValidationErrorErrorsItemValueType = "int"
+	ArrayStringValidationErrorErrorsItemValue ValidationErrorErrorsItemValueType = "[]string"
+)
+
+// IsString reports whether ValidationErrorErrorsItemValue is string.
+func (s ValidationErrorErrorsItemValue) IsString() bool {
+	return s.Type == StringValidationErrorErrorsItemValue
+}
+
+// IsInt reports whether ValidationErrorErrorsItemValue is int.
+func (s ValidationErrorErrorsItemValue) IsInt() bool {
+	return s.Type == IntValidationErrorErrorsItemValue
+}
+
+// IsArrayString reports whether ValidationErrorErrorsItemValue is []string.
+func (s ValidationErrorErrorsItemValue) IsArrayString() bool {
+	return s.Type == ArrayStringValidationErrorErrorsItemValue
+}
+
+// SetString sets ValidationErrorErrorsItemValue to string.
+func (s *ValidationErrorErrorsItemValue) SetString(v string) {
+	s.Type = StringValidationErrorErrorsItemValue
+	s.String = v
+}
+
+// GetString returns string and true boolean if ValidationErrorErrorsItemValue is string.
+func (s ValidationErrorErrorsItemValue) GetString() (v string, ok bool) {
+	if !s.IsString() {
+		return v, false
+	}
+	return s.String, true
+}
+
+// NewStringValidationErrorErrorsItemValue returns new ValidationErrorErrorsItemValue from string.
+func NewStringValidationErrorErrorsItemValue(v string) ValidationErrorErrorsItemValue {
+	var s ValidationErrorErrorsItemValue
+	s.SetString(v)
+	return s
+}
+
+// SetInt sets ValidationErrorErrorsItemValue to int.
+func (s *ValidationErrorErrorsItemValue) SetInt(v int) {
+	s.Type = IntValidationErrorErrorsItemValue
+	s.Int = v
+}
+
+// GetInt returns int and true boolean if ValidationErrorErrorsItemValue is int.
+func (s ValidationErrorErrorsItemValue) GetInt() (v int, ok bool) {
+	if !s.IsInt() {
+		return v, false
+	}
+	return s.Int, true
+}
+
+// NewIntValidationErrorErrorsItemValue returns new ValidationErrorErrorsItemValue from int.
+func NewIntValidationErrorErrorsItemValue(v int) ValidationErrorErrorsItemValue {
+	var s ValidationErrorErrorsItemValue
+	s.SetInt(v)
+	return s
+}
+
+// SetArrayString sets ValidationErrorErrorsItemValue to []string.
+func (s *ValidationErrorErrorsItemValue) SetArrayString(v []string) {
+	s.Type = ArrayStringValidationErrorErrorsItemValue
+	s.ArrayString = v
+}
+
+// GetArrayString returns []string and true boolean if ValidationErrorErrorsItemValue is []string.
+func (s ValidationErrorErrorsItemValue) GetArrayString() (v []string, ok bool) {
+	if !s.IsArrayString() {
+		return v, false
+	}
+	return s.ArrayString, true
+}
+
+// NewArrayStringValidationErrorErrorsItemValue returns new ValidationErrorErrorsItemValue from []string.
+func NewArrayStringValidationErrorErrorsItemValue(v []string) ValidationErrorErrorsItemValue {
+	var s ValidationErrorErrorsItemValue
+	s.SetArrayString(v)
+	return s
 }
 
 // Ref: #/components/schemas/validation-error-simple

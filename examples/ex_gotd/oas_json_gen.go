@@ -3614,7 +3614,7 @@ func (s *ID) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode ID to nil`)
 	}
-	// Sum type primitive.
+	// Sum type type_discriminator.
 	switch t := d.Next(); t {
 	case jx.String:
 		v, err := d.Str()

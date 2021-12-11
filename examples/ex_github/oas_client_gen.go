@@ -5778,6 +5778,113 @@ func (c *Client) ActionsRetryWorkflow(ctx context.Context, params ActionsRetryWo
 	return result, nil
 }
 
+// ActionsReviewPendingDeploymentsForRun invokes actions/review-pending-deployments-for-run operation.
+//
+// POST /repos/{owner}/{repo}/actions/runs/{run_id}/pending_deployments
+func (c *Client) ActionsReviewPendingDeploymentsForRun(ctx context.Context, request ActionsReviewPendingDeploymentsForRunReq, params ActionsReviewPendingDeploymentsForRunParams) (res []Deployment, err error) {
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `ActionsReviewPendingDeploymentsForRun`,
+		trace.WithAttributes(otelogen.OperationID(`actions/review-pending-deployments-for-run`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeActionsReviewPendingDeploymentsForRunRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/actions/runs/"
+	{
+		// Encode "run_id" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "run_id",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.IntToString(params.RunID))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/pending_deployments"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeActionsReviewPendingDeploymentsForRunResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // ActionsSetAllowedActionsOrganization invokes actions/set-allowed-actions-organization operation.
 //
 // PUT /orgs/{org}/actions/permissions/selected-actions
@@ -7040,6 +7147,145 @@ func (c *Client) ActivityListEventsForAuthenticatedUser(ctx context.Context, par
 	defer resp.Body.Close()
 
 	result, err := decodeActivityListEventsForAuthenticatedUserResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// ActivityListNotificationsForAuthenticatedUser invokes activity/list-notifications-for-authenticated-user operation.
+//
+// GET /notifications
+func (c *Client) ActivityListNotificationsForAuthenticatedUser(ctx context.Context, params ActivityListNotificationsForAuthenticatedUserParams) (res ActivityListNotificationsForAuthenticatedUserRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `ActivityListNotificationsForAuthenticatedUser`,
+		trace.WithAttributes(otelogen.OperationID(`activity/list-notifications-for-authenticated-user`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/notifications"
+
+	q := u.Query()
+	{
+		// Encode "all" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.All.Get(); ok {
+				return e.EncodeValue(conv.BoolToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["all"] = e.Result()
+	}
+	{
+		// Encode "participating" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Participating.Get(); ok {
+				return e.EncodeValue(conv.BoolToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["participating"] = e.Result()
+	}
+	{
+		// Encode "since" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Since.Get(); ok {
+				return e.EncodeValue(conv.TimeToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["since"] = e.Result()
+	}
+	{
+		// Encode "before" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Before.Get(); ok {
+				return e.EncodeValue(conv.TimeToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["before"] = e.Result()
+	}
+	{
+		// Encode "per_page" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.PerPage.Get(); ok {
+				return e.EncodeValue(conv.IntToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["per_page"] = e.Result()
+	}
+	{
+		// Encode "page" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Page.Get(); ok {
+				return e.EncodeValue(conv.IntToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["page"] = e.Result()
+	}
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeActivityListNotificationsForAuthenticatedUserResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -8894,6 +9140,336 @@ func (c *Client) AppsAddRepoToInstallation(ctx context.Context, params AppsAddRe
 	return result, nil
 }
 
+// AppsCheckToken invokes apps/check-token operation.
+//
+// POST /applications/{client_id}/token
+func (c *Client) AppsCheckToken(ctx context.Context, request AppsCheckTokenReq, params AppsCheckTokenParams) (res AppsCheckTokenRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `AppsCheckToken`,
+		trace.WithAttributes(otelogen.OperationID(`apps/check-token`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeAppsCheckTokenRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/applications/"
+	{
+		// Encode "client_id" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "client_id",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.ClientID))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/token"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeAppsCheckTokenResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// AppsCreateContentAttachment invokes apps/create-content-attachment operation.
+//
+// POST /repos/{owner}/{repo}/content_references/{content_reference_id}/attachments
+func (c *Client) AppsCreateContentAttachment(ctx context.Context, request AppsCreateContentAttachmentReq, params AppsCreateContentAttachmentParams) (res AppsCreateContentAttachmentRes, err error) {
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `AppsCreateContentAttachment`,
+		trace.WithAttributes(otelogen.OperationID(`apps/create-content-attachment`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeAppsCreateContentAttachmentRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/content_references/"
+	{
+		// Encode "content_reference_id" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "content_reference_id",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.IntToString(params.ContentReferenceID))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/attachments"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeAppsCreateContentAttachmentResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// AppsCreateInstallationAccessToken invokes apps/create-installation-access-token operation.
+//
+// POST /app/installations/{installation_id}/access_tokens
+func (c *Client) AppsCreateInstallationAccessToken(ctx context.Context, request OptAppsCreateInstallationAccessTokenReq, params AppsCreateInstallationAccessTokenParams) (res AppsCreateInstallationAccessTokenRes, err error) {
+	if err := func() error {
+		if request.Set {
+			if err := func() error {
+				if err := request.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `AppsCreateInstallationAccessToken`,
+		trace.WithAttributes(otelogen.OperationID(`apps/create-installation-access-token`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeAppsCreateInstallationAccessTokenRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/app/installations/"
+	{
+		// Encode "installation_id" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "installation_id",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.IntToString(params.InstallationID))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/access_tokens"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeAppsCreateInstallationAccessTokenResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// AppsDeleteAuthorization invokes apps/delete-authorization operation.
+//
+// DELETE /applications/{client_id}/grant
+func (c *Client) AppsDeleteAuthorization(ctx context.Context, request AppsDeleteAuthorizationReq, params AppsDeleteAuthorizationParams) (res AppsDeleteAuthorizationRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `AppsDeleteAuthorization`,
+		trace.WithAttributes(otelogen.OperationID(`apps/delete-authorization`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeAppsDeleteAuthorizationRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/applications/"
+	{
+		// Encode "client_id" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "client_id",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.ClientID))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/grant"
+
+	r := ht.NewRequest(ctx, "DELETE", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeAppsDeleteAuthorizationResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // AppsDeleteInstallation invokes apps/delete-installation operation.
 //
 // DELETE /app/installations/{installation_id}
@@ -8941,6 +9517,75 @@ func (c *Client) AppsDeleteInstallation(ctx context.Context, params AppsDeleteIn
 	defer resp.Body.Close()
 
 	result, err := decodeAppsDeleteInstallationResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// AppsDeleteToken invokes apps/delete-token operation.
+//
+// DELETE /applications/{client_id}/token
+func (c *Client) AppsDeleteToken(ctx context.Context, request AppsDeleteTokenReq, params AppsDeleteTokenParams) (res AppsDeleteTokenRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `AppsDeleteToken`,
+		trace.WithAttributes(otelogen.OperationID(`apps/delete-token`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeAppsDeleteTokenRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/applications/"
+	{
+		// Encode "client_id" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "client_id",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.ClientID))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/token"
+
+	r := ht.NewRequest(ctx, "DELETE", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeAppsDeleteTokenResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -9183,6 +9828,182 @@ func (c *Client) AppsGetWebhookConfigForApp(ctx context.Context) (res WebhookCon
 	defer resp.Body.Close()
 
 	result, err := decodeAppsGetWebhookConfigForAppResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// AppsGetWebhookDelivery invokes apps/get-webhook-delivery operation.
+//
+// GET /app/hook/deliveries/{delivery_id}
+func (c *Client) AppsGetWebhookDelivery(ctx context.Context, params AppsGetWebhookDeliveryParams) (res AppsGetWebhookDeliveryRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `AppsGetWebhookDelivery`,
+		trace.WithAttributes(otelogen.OperationID(`apps/get-webhook-delivery`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/app/hook/deliveries/"
+	{
+		// Encode "delivery_id" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "delivery_id",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.IntToString(params.DeliveryID))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeAppsGetWebhookDeliveryResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// AppsListAccountsForPlan invokes apps/list-accounts-for-plan operation.
+//
+// GET /marketplace_listing/plans/{plan_id}/accounts
+func (c *Client) AppsListAccountsForPlan(ctx context.Context, params AppsListAccountsForPlanParams) (res AppsListAccountsForPlanRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `AppsListAccountsForPlan`,
+		trace.WithAttributes(otelogen.OperationID(`apps/list-accounts-for-plan`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/marketplace_listing/plans/"
+	{
+		// Encode "plan_id" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "plan_id",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.IntToString(params.PlanID))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/accounts"
+
+	q := u.Query()
+	{
+		// Encode "sort" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Sort.Get(); ok {
+				return e.EncodeValue(conv.StringToString(string(val)))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["sort"] = e.Result()
+	}
+	{
+		// Encode "direction" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Direction.Get(); ok {
+				return e.EncodeValue(conv.StringToString(string(val)))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["direction"] = e.Result()
+	}
+	{
+		// Encode "per_page" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.PerPage.Get(); ok {
+				return e.EncodeValue(conv.IntToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["per_page"] = e.Result()
+	}
+	{
+		// Encode "page" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Page.Get(); ok {
+				return e.EncodeValue(conv.IntToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["page"] = e.Result()
+	}
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeAppsListAccountsForPlanResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -9777,6 +10598,136 @@ func (c *Client) AppsListSubscriptionsForAuthenticatedUserStubbed(ctx context.Co
 	return result, nil
 }
 
+// AppsListWebhookDeliveries invokes apps/list-webhook-deliveries operation.
+//
+// GET /app/hook/deliveries
+func (c *Client) AppsListWebhookDeliveries(ctx context.Context, params AppsListWebhookDeliveriesParams) (res AppsListWebhookDeliveriesRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `AppsListWebhookDeliveries`,
+		trace.WithAttributes(otelogen.OperationID(`apps/list-webhook-deliveries`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/app/hook/deliveries"
+
+	q := u.Query()
+	{
+		// Encode "per_page" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.PerPage.Get(); ok {
+				return e.EncodeValue(conv.IntToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["per_page"] = e.Result()
+	}
+	{
+		// Encode "cursor" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Cursor.Get(); ok {
+				return e.EncodeValue(conv.StringToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["cursor"] = e.Result()
+	}
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeAppsListWebhookDeliveriesResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// AppsRedeliverWebhookDelivery invokes apps/redeliver-webhook-delivery operation.
+//
+// POST /app/hook/deliveries/{delivery_id}/attempts
+func (c *Client) AppsRedeliverWebhookDelivery(ctx context.Context, params AppsRedeliverWebhookDeliveryParams) (res AppsRedeliverWebhookDeliveryRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `AppsRedeliverWebhookDelivery`,
+		trace.WithAttributes(otelogen.OperationID(`apps/redeliver-webhook-delivery`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/app/hook/deliveries/"
+	{
+		// Encode "delivery_id" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "delivery_id",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.IntToString(params.DeliveryID))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/attempts"
+
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeAppsRedeliverWebhookDeliveryResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // AppsRemoveRepoFromInstallation invokes apps/remove-repo-from-installation operation.
 //
 // DELETE /user/installations/{installation_id}/repositories/{repository_id}
@@ -9846,6 +10797,75 @@ func (c *Client) AppsRemoveRepoFromInstallation(ctx context.Context, params Apps
 	return result, nil
 }
 
+// AppsResetToken invokes apps/reset-token operation.
+//
+// PATCH /applications/{client_id}/token
+func (c *Client) AppsResetToken(ctx context.Context, request AppsResetTokenReq, params AppsResetTokenParams) (res AppsResetTokenRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `AppsResetToken`,
+		trace.WithAttributes(otelogen.OperationID(`apps/reset-token`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeAppsResetTokenRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/applications/"
+	{
+		// Encode "client_id" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "client_id",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.ClientID))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/token"
+
+	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeAppsResetTokenResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // AppsRevokeInstallationAccessToken invokes apps/revoke-installation-access-token operation.
 //
 // DELETE /installation/token
@@ -9879,6 +10899,83 @@ func (c *Client) AppsRevokeInstallationAccessToken(ctx context.Context) (res App
 	defer resp.Body.Close()
 
 	result, err := decodeAppsRevokeInstallationAccessTokenResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// AppsScopeToken invokes apps/scope-token operation.
+//
+// POST /applications/{client_id}/token/scoped
+func (c *Client) AppsScopeToken(ctx context.Context, request AppsScopeTokenReq, params AppsScopeTokenParams) (res AppsScopeTokenRes, err error) {
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `AppsScopeToken`,
+		trace.WithAttributes(otelogen.OperationID(`apps/scope-token`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeAppsScopeTokenRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/applications/"
+	{
+		// Encode "client_id" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "client_id",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.ClientID))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/token/scoped"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeAppsScopeTokenResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -15818,6 +16915,97 @@ func (c *Client) EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx con
 	return result, nil
 }
 
+// EnterpriseAdminUpdateAttributeForEnterpriseGroup invokes enterprise-admin/update-attribute-for-enterprise-group operation.
+//
+// PATCH /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
+func (c *Client) EnterpriseAdminUpdateAttributeForEnterpriseGroup(ctx context.Context, request EnterpriseAdminUpdateAttributeForEnterpriseGroupReq, params EnterpriseAdminUpdateAttributeForEnterpriseGroupParams) (res ScimEnterpriseGroup, err error) {
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `EnterpriseAdminUpdateAttributeForEnterpriseGroup`,
+		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/update-attribute-for-enterprise-group`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeEnterpriseAdminUpdateAttributeForEnterpriseGroupRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/scim/v2/enterprises/"
+	{
+		// Encode "enterprise" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "enterprise",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Enterprise))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/Groups/"
+	{
+		// Encode "scim_group_id" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "scim_group_id",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.ScimGroupID))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+
+	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeEnterpriseAdminUpdateAttributeForEnterpriseGroupResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // EnterpriseAdminUpdateAttributeForEnterpriseUser invokes enterprise-admin/update-attribute-for-enterprise-user operation.
 //
 // PATCH /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
@@ -16063,6 +17251,68 @@ func (c *Client) GistsCheckIsStarred(ctx context.Context, params GistsCheckIsSta
 	return result, nil
 }
 
+// GistsCreate invokes gists/create operation.
+//
+// POST /gists
+func (c *Client) GistsCreate(ctx context.Context, request GistsCreateReq) (res GistsCreateRes, err error) {
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `GistsCreate`,
+		trace.WithAttributes(otelogen.OperationID(`gists/create`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeGistsCreateRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/gists"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeGistsCreateResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // GistsCreateComment invokes gists/create-comment operation.
 //
 // POST /gists/{gist_id}/comments
@@ -16263,6 +17513,61 @@ func (c *Client) GistsDeleteComment(ctx context.Context, params GistsDeleteComme
 	return result, nil
 }
 
+// GistsFork invokes gists/fork operation.
+//
+// POST /gists/{gist_id}/forks
+func (c *Client) GistsFork(ctx context.Context, params GistsForkParams) (res GistsForkRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `GistsFork`,
+		trace.WithAttributes(otelogen.OperationID(`gists/fork`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/gists/"
+	{
+		// Encode "gist_id" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "gist_id",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.GistID))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/forks"
+
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeGistsForkResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // GistsGet invokes gists/get operation.
 //
 // GET /gists/{gist_id}
@@ -16379,6 +17684,75 @@ func (c *Client) GistsGetComment(ctx context.Context, params GistsGetCommentPara
 	defer resp.Body.Close()
 
 	result, err := decodeGistsGetCommentResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// GistsGetRevision invokes gists/get-revision operation.
+//
+// GET /gists/{gist_id}/{sha}
+func (c *Client) GistsGetRevision(ctx context.Context, params GistsGetRevisionParams) (res GistsGetRevisionRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `GistsGetRevision`,
+		trace.WithAttributes(otelogen.OperationID(`gists/get-revision`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/gists/"
+	{
+		// Encode "gist_id" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "gist_id",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.GistID))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "sha" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "sha",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Sha))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeGistsGetRevisionResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -16657,6 +18031,112 @@ func (c *Client) GistsListCommits(ctx context.Context, params GistsListCommitsPa
 	return result, nil
 }
 
+// GistsListForUser invokes gists/list-for-user operation.
+//
+// GET /users/{username}/gists
+func (c *Client) GistsListForUser(ctx context.Context, params GistsListForUserParams) (res GistsListForUserRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `GistsListForUser`,
+		trace.WithAttributes(otelogen.OperationID(`gists/list-for-user`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/users/"
+	{
+		// Encode "username" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "username",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Username))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/gists"
+
+	q := u.Query()
+	{
+		// Encode "since" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Since.Get(); ok {
+				return e.EncodeValue(conv.TimeToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["since"] = e.Result()
+	}
+	{
+		// Encode "per_page" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.PerPage.Get(); ok {
+				return e.EncodeValue(conv.IntToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["per_page"] = e.Result()
+	}
+	{
+		// Encode "page" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Page.Get(); ok {
+				return e.EncodeValue(conv.IntToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["page"] = e.Result()
+	}
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeGistsListForUserResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // GistsListForks invokes gists/list-forks operation.
 //
 // GET /gists/{gist_id}/forks
@@ -16740,6 +18220,97 @@ func (c *Client) GistsListForks(ctx context.Context, params GistsListForksParams
 	defer resp.Body.Close()
 
 	result, err := decodeGistsListForksResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// GistsListPublic invokes gists/list-public operation.
+//
+// GET /gists/public
+func (c *Client) GistsListPublic(ctx context.Context, params GistsListPublicParams) (res GistsListPublicRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `GistsListPublic`,
+		trace.WithAttributes(otelogen.OperationID(`gists/list-public`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/gists/public"
+
+	q := u.Query()
+	{
+		// Encode "since" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Since.Get(); ok {
+				return e.EncodeValue(conv.TimeToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["since"] = e.Result()
+	}
+	{
+		// Encode "per_page" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.PerPage.Get(); ok {
+				return e.EncodeValue(conv.IntToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["per_page"] = e.Result()
+	}
+	{
+		// Encode "page" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Page.Get(); ok {
+				return e.EncodeValue(conv.IntToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["page"] = e.Result()
+	}
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeGistsListPublicResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -17039,6 +18610,610 @@ func (c *Client) GistsUpdateComment(ctx context.Context, request GistsUpdateComm
 	return result, nil
 }
 
+// GitCreateBlob invokes git/create-blob operation.
+//
+// POST /repos/{owner}/{repo}/git/blobs
+func (c *Client) GitCreateBlob(ctx context.Context, request GitCreateBlobReq, params GitCreateBlobParams) (res GitCreateBlobRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `GitCreateBlob`,
+		trace.WithAttributes(otelogen.OperationID(`git/create-blob`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeGitCreateBlobRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/git/blobs"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeGitCreateBlobResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// GitCreateCommit invokes git/create-commit operation.
+//
+// POST /repos/{owner}/{repo}/git/commits
+func (c *Client) GitCreateCommit(ctx context.Context, request GitCreateCommitReq, params GitCreateCommitParams) (res GitCreateCommitRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `GitCreateCommit`,
+		trace.WithAttributes(otelogen.OperationID(`git/create-commit`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeGitCreateCommitRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/git/commits"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeGitCreateCommitResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// GitCreateRef invokes git/create-ref operation.
+//
+// POST /repos/{owner}/{repo}/git/refs
+func (c *Client) GitCreateRef(ctx context.Context, request GitCreateRefReq, params GitCreateRefParams) (res GitCreateRefRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `GitCreateRef`,
+		trace.WithAttributes(otelogen.OperationID(`git/create-ref`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeGitCreateRefRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/git/refs"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeGitCreateRefResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// GitCreateTag invokes git/create-tag operation.
+//
+// POST /repos/{owner}/{repo}/git/tags
+func (c *Client) GitCreateTag(ctx context.Context, request GitCreateTagReq, params GitCreateTagParams) (res GitCreateTagRes, err error) {
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `GitCreateTag`,
+		trace.WithAttributes(otelogen.OperationID(`git/create-tag`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeGitCreateTagRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/git/tags"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeGitCreateTagResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// GitCreateTree invokes git/create-tree operation.
+//
+// POST /repos/{owner}/{repo}/git/trees
+func (c *Client) GitCreateTree(ctx context.Context, request GitCreateTreeReq, params GitCreateTreeParams) (res GitCreateTreeRes, err error) {
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `GitCreateTree`,
+		trace.WithAttributes(otelogen.OperationID(`git/create-tree`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeGitCreateTreeRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/git/trees"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeGitCreateTreeResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// GitDeleteRef invokes git/delete-ref operation.
+//
+// DELETE /repos/{owner}/{repo}/git/refs/{ref}
+func (c *Client) GitDeleteRef(ctx context.Context, params GitDeleteRefParams) (res GitDeleteRefRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `GitDeleteRef`,
+		trace.WithAttributes(otelogen.OperationID(`git/delete-ref`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/git/refs/"
+	{
+		// Encode "ref" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "ref",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Ref))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+
+	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeGitDeleteRefResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// GitGetBlob invokes git/get-blob operation.
+//
+// GET /repos/{owner}/{repo}/git/blobs/{file_sha}
+func (c *Client) GitGetBlob(ctx context.Context, params GitGetBlobParams) (res GitGetBlobRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `GitGetBlob`,
+		trace.WithAttributes(otelogen.OperationID(`git/get-blob`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/git/blobs/"
+	{
+		// Encode "file_sha" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "file_sha",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.FileSha))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeGitGetBlobResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // GitGetCommit invokes git/get-commit operation.
 //
 // GET /repos/{owner}/{repo}/git/commits/{commit_sha}
@@ -17291,6 +19466,109 @@ func (c *Client) GitGetTag(ctx context.Context, params GitGetTagParams) (res Git
 	return result, nil
 }
 
+// GitGetTree invokes git/get-tree operation.
+//
+// GET /repos/{owner}/{repo}/git/trees/{tree_sha}
+func (c *Client) GitGetTree(ctx context.Context, params GitGetTreeParams) (res GitGetTreeRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `GitGetTree`,
+		trace.WithAttributes(otelogen.OperationID(`git/get-tree`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/git/trees/"
+	{
+		// Encode "tree_sha" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "tree_sha",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.TreeSha))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+
+	q := u.Query()
+	{
+		// Encode "recursive" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Recursive.Get(); ok {
+				return e.EncodeValue(conv.StringToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["recursive"] = e.Result()
+	}
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeGitGetTreeResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // GitListMatchingRefs invokes git/list-matching-refs operation.
 //
 // GET /repos/{owner}/{repo}/git/matching-refs/{ref}
@@ -17403,6 +19681,104 @@ func (c *Client) GitListMatchingRefs(ctx context.Context, params GitListMatching
 	defer resp.Body.Close()
 
 	result, err := decodeGitListMatchingRefsResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// GitUpdateRef invokes git/update-ref operation.
+//
+// PATCH /repos/{owner}/{repo}/git/refs/{ref}
+func (c *Client) GitUpdateRef(ctx context.Context, request GitUpdateRefReq, params GitUpdateRefParams) (res GitUpdateRefRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `GitUpdateRef`,
+		trace.WithAttributes(otelogen.OperationID(`git/update-ref`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeGitUpdateRefRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/git/refs/"
+	{
+		// Encode "ref" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "ref",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Ref))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+
+	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeGitUpdateRefResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -17662,6 +20038,145 @@ func (c *Client) InteractionsRemoveRestrictionsForRepo(ctx context.Context, para
 	defer resp.Body.Close()
 
 	result, err := decodeInteractionsRemoveRestrictionsForRepoResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// InteractionsSetRestrictionsForAuthenticatedUser invokes interactions/set-restrictions-for-authenticated-user operation.
+//
+// PUT /user/interaction-limits
+func (c *Client) InteractionsSetRestrictionsForAuthenticatedUser(ctx context.Context, request InteractionLimit) (res InteractionsSetRestrictionsForAuthenticatedUserRes, err error) {
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `InteractionsSetRestrictionsForAuthenticatedUser`,
+		trace.WithAttributes(otelogen.OperationID(`interactions/set-restrictions-for-authenticated-user`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeInteractionsSetRestrictionsForAuthenticatedUserRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/user/interaction-limits"
+
+	r := ht.NewRequest(ctx, "PUT", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeInteractionsSetRestrictionsForAuthenticatedUserResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// InteractionsSetRestrictionsForOrg invokes interactions/set-restrictions-for-org operation.
+//
+// PUT /orgs/{org}/interaction-limits
+func (c *Client) InteractionsSetRestrictionsForOrg(ctx context.Context, request InteractionLimit, params InteractionsSetRestrictionsForOrgParams) (res InteractionsSetRestrictionsForOrgRes, err error) {
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `InteractionsSetRestrictionsForOrg`,
+		trace.WithAttributes(otelogen.OperationID(`interactions/set-restrictions-for-org`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeInteractionsSetRestrictionsForOrgRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/orgs/"
+	{
+		// Encode "org" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "org",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Org))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/interaction-limits"
+
+	r := ht.NewRequest(ctx, "PUT", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeInteractionsSetRestrictionsForOrgResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -17944,6 +20459,365 @@ func (c *Client) IssuesCheckUserCanBeAssigned(ctx context.Context, params Issues
 	return result, nil
 }
 
+// IssuesCreate invokes issues/create operation.
+//
+// POST /repos/{owner}/{repo}/issues
+func (c *Client) IssuesCreate(ctx context.Context, request IssuesCreateReq, params IssuesCreateParams) (res IssuesCreateRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `IssuesCreate`,
+		trace.WithAttributes(otelogen.OperationID(`issues/create`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeIssuesCreateRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/issues"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeIssuesCreateResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// IssuesCreateComment invokes issues/create-comment operation.
+//
+// POST /repos/{owner}/{repo}/issues/{issue_number}/comments
+func (c *Client) IssuesCreateComment(ctx context.Context, request IssuesCreateCommentReq, params IssuesCreateCommentParams) (res IssuesCreateCommentRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `IssuesCreateComment`,
+		trace.WithAttributes(otelogen.OperationID(`issues/create-comment`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeIssuesCreateCommentRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/issues/"
+	{
+		// Encode "issue_number" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "issue_number",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.IntToString(params.IssueNumber))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/comments"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeIssuesCreateCommentResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// IssuesCreateLabel invokes issues/create-label operation.
+//
+// POST /repos/{owner}/{repo}/labels
+func (c *Client) IssuesCreateLabel(ctx context.Context, request IssuesCreateLabelReq, params IssuesCreateLabelParams) (res IssuesCreateLabelRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `IssuesCreateLabel`,
+		trace.WithAttributes(otelogen.OperationID(`issues/create-label`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeIssuesCreateLabelRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/labels"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeIssuesCreateLabelResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// IssuesCreateMilestone invokes issues/create-milestone operation.
+//
+// POST /repos/{owner}/{repo}/milestones
+func (c *Client) IssuesCreateMilestone(ctx context.Context, request IssuesCreateMilestoneReq, params IssuesCreateMilestoneParams) (res IssuesCreateMilestoneRes, err error) {
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `IssuesCreateMilestone`,
+		trace.WithAttributes(otelogen.OperationID(`issues/create-milestone`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeIssuesCreateMilestoneRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/milestones"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeIssuesCreateMilestoneResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // IssuesDeleteComment invokes issues/delete-comment operation.
 //
 // DELETE /repos/{owner}/{repo}/issues/comments/{comment_id}
@@ -18189,6 +21063,90 @@ func (c *Client) IssuesDeleteMilestone(ctx context.Context, params IssuesDeleteM
 	defer resp.Body.Close()
 
 	result, err := decodeIssuesDeleteMilestoneResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// IssuesGet invokes issues/get operation.
+//
+// GET /repos/{owner}/{repo}/issues/{issue_number}
+func (c *Client) IssuesGet(ctx context.Context, params IssuesGetParams) (res IssuesGetRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `IssuesGet`,
+		trace.WithAttributes(otelogen.OperationID(`issues/get`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/issues/"
+	{
+		// Encode "issue_number" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "issue_number",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.IntToString(params.IssueNumber))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeIssuesGetResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -18532,6 +21490,241 @@ func (c *Client) IssuesGetMilestone(ctx context.Context, params IssuesGetMilesto
 	return result, nil
 }
 
+// IssuesList invokes issues/list operation.
+//
+// GET /issues
+func (c *Client) IssuesList(ctx context.Context, params IssuesListParams) (res IssuesListRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `IssuesList`,
+		trace.WithAttributes(otelogen.OperationID(`issues/list`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/issues"
+
+	q := u.Query()
+	{
+		// Encode "filter" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Filter.Get(); ok {
+				return e.EncodeValue(conv.StringToString(string(val)))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["filter"] = e.Result()
+	}
+	{
+		// Encode "state" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.State.Get(); ok {
+				return e.EncodeValue(conv.StringToString(string(val)))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["state"] = e.Result()
+	}
+	{
+		// Encode "labels" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Labels.Get(); ok {
+				return e.EncodeValue(conv.StringToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["labels"] = e.Result()
+	}
+	{
+		// Encode "sort" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Sort.Get(); ok {
+				return e.EncodeValue(conv.StringToString(string(val)))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["sort"] = e.Result()
+	}
+	{
+		// Encode "direction" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Direction.Get(); ok {
+				return e.EncodeValue(conv.StringToString(string(val)))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["direction"] = e.Result()
+	}
+	{
+		// Encode "since" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Since.Get(); ok {
+				return e.EncodeValue(conv.TimeToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["since"] = e.Result()
+	}
+	{
+		// Encode "collab" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Collab.Get(); ok {
+				return e.EncodeValue(conv.BoolToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["collab"] = e.Result()
+	}
+	{
+		// Encode "orgs" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Orgs.Get(); ok {
+				return e.EncodeValue(conv.BoolToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["orgs"] = e.Result()
+	}
+	{
+		// Encode "owned" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Owned.Get(); ok {
+				return e.EncodeValue(conv.BoolToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["owned"] = e.Result()
+	}
+	{
+		// Encode "pulls" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Pulls.Get(); ok {
+				return e.EncodeValue(conv.BoolToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["pulls"] = e.Result()
+	}
+	{
+		// Encode "per_page" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.PerPage.Get(); ok {
+				return e.EncodeValue(conv.IntToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["per_page"] = e.Result()
+	}
+	{
+		// Encode "page" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Page.Get(); ok {
+				return e.EncodeValue(conv.IntToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["page"] = e.Result()
+	}
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeIssuesListResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // IssuesListAssignees invokes issues/list-assignees operation.
 //
 // GET /repos/{owner}/{repo}/assignees
@@ -18766,6 +21959,870 @@ func (c *Client) IssuesListComments(ctx context.Context, params IssuesListCommen
 	defer resp.Body.Close()
 
 	result, err := decodeIssuesListCommentsResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// IssuesListCommentsForRepo invokes issues/list-comments-for-repo operation.
+//
+// GET /repos/{owner}/{repo}/issues/comments
+func (c *Client) IssuesListCommentsForRepo(ctx context.Context, params IssuesListCommentsForRepoParams) (res IssuesListCommentsForRepoRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `IssuesListCommentsForRepo`,
+		trace.WithAttributes(otelogen.OperationID(`issues/list-comments-for-repo`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/issues/comments"
+
+	q := u.Query()
+	{
+		// Encode "sort" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Sort.Get(); ok {
+				return e.EncodeValue(conv.StringToString(string(val)))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["sort"] = e.Result()
+	}
+	{
+		// Encode "direction" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Direction.Get(); ok {
+				return e.EncodeValue(conv.StringToString(string(val)))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["direction"] = e.Result()
+	}
+	{
+		// Encode "since" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Since.Get(); ok {
+				return e.EncodeValue(conv.TimeToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["since"] = e.Result()
+	}
+	{
+		// Encode "per_page" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.PerPage.Get(); ok {
+				return e.EncodeValue(conv.IntToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["per_page"] = e.Result()
+	}
+	{
+		// Encode "page" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Page.Get(); ok {
+				return e.EncodeValue(conv.IntToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["page"] = e.Result()
+	}
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeIssuesListCommentsForRepoResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// IssuesListEventsForRepo invokes issues/list-events-for-repo operation.
+//
+// GET /repos/{owner}/{repo}/issues/events
+func (c *Client) IssuesListEventsForRepo(ctx context.Context, params IssuesListEventsForRepoParams) (res IssuesListEventsForRepoRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `IssuesListEventsForRepo`,
+		trace.WithAttributes(otelogen.OperationID(`issues/list-events-for-repo`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/issues/events"
+
+	q := u.Query()
+	{
+		// Encode "per_page" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.PerPage.Get(); ok {
+				return e.EncodeValue(conv.IntToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["per_page"] = e.Result()
+	}
+	{
+		// Encode "page" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Page.Get(); ok {
+				return e.EncodeValue(conv.IntToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["page"] = e.Result()
+	}
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeIssuesListEventsForRepoResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// IssuesListForAuthenticatedUser invokes issues/list-for-authenticated-user operation.
+//
+// GET /user/issues
+func (c *Client) IssuesListForAuthenticatedUser(ctx context.Context, params IssuesListForAuthenticatedUserParams) (res IssuesListForAuthenticatedUserRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `IssuesListForAuthenticatedUser`,
+		trace.WithAttributes(otelogen.OperationID(`issues/list-for-authenticated-user`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/user/issues"
+
+	q := u.Query()
+	{
+		// Encode "filter" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Filter.Get(); ok {
+				return e.EncodeValue(conv.StringToString(string(val)))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["filter"] = e.Result()
+	}
+	{
+		// Encode "state" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.State.Get(); ok {
+				return e.EncodeValue(conv.StringToString(string(val)))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["state"] = e.Result()
+	}
+	{
+		// Encode "labels" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Labels.Get(); ok {
+				return e.EncodeValue(conv.StringToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["labels"] = e.Result()
+	}
+	{
+		// Encode "sort" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Sort.Get(); ok {
+				return e.EncodeValue(conv.StringToString(string(val)))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["sort"] = e.Result()
+	}
+	{
+		// Encode "direction" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Direction.Get(); ok {
+				return e.EncodeValue(conv.StringToString(string(val)))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["direction"] = e.Result()
+	}
+	{
+		// Encode "since" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Since.Get(); ok {
+				return e.EncodeValue(conv.TimeToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["since"] = e.Result()
+	}
+	{
+		// Encode "per_page" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.PerPage.Get(); ok {
+				return e.EncodeValue(conv.IntToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["per_page"] = e.Result()
+	}
+	{
+		// Encode "page" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Page.Get(); ok {
+				return e.EncodeValue(conv.IntToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["page"] = e.Result()
+	}
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeIssuesListForAuthenticatedUserResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// IssuesListForOrg invokes issues/list-for-org operation.
+//
+// GET /orgs/{org}/issues
+func (c *Client) IssuesListForOrg(ctx context.Context, params IssuesListForOrgParams) (res IssuesListForOrgRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `IssuesListForOrg`,
+		trace.WithAttributes(otelogen.OperationID(`issues/list-for-org`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/orgs/"
+	{
+		// Encode "org" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "org",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Org))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/issues"
+
+	q := u.Query()
+	{
+		// Encode "filter" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Filter.Get(); ok {
+				return e.EncodeValue(conv.StringToString(string(val)))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["filter"] = e.Result()
+	}
+	{
+		// Encode "state" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.State.Get(); ok {
+				return e.EncodeValue(conv.StringToString(string(val)))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["state"] = e.Result()
+	}
+	{
+		// Encode "labels" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Labels.Get(); ok {
+				return e.EncodeValue(conv.StringToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["labels"] = e.Result()
+	}
+	{
+		// Encode "sort" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Sort.Get(); ok {
+				return e.EncodeValue(conv.StringToString(string(val)))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["sort"] = e.Result()
+	}
+	{
+		// Encode "direction" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Direction.Get(); ok {
+				return e.EncodeValue(conv.StringToString(string(val)))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["direction"] = e.Result()
+	}
+	{
+		// Encode "since" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Since.Get(); ok {
+				return e.EncodeValue(conv.TimeToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["since"] = e.Result()
+	}
+	{
+		// Encode "per_page" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.PerPage.Get(); ok {
+				return e.EncodeValue(conv.IntToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["per_page"] = e.Result()
+	}
+	{
+		// Encode "page" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Page.Get(); ok {
+				return e.EncodeValue(conv.IntToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["page"] = e.Result()
+	}
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeIssuesListForOrgResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// IssuesListForRepo invokes issues/list-for-repo operation.
+//
+// GET /repos/{owner}/{repo}/issues
+func (c *Client) IssuesListForRepo(ctx context.Context, params IssuesListForRepoParams) (res IssuesListForRepoRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `IssuesListForRepo`,
+		trace.WithAttributes(otelogen.OperationID(`issues/list-for-repo`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/issues"
+
+	q := u.Query()
+	{
+		// Encode "milestone" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Milestone.Get(); ok {
+				return e.EncodeValue(conv.StringToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["milestone"] = e.Result()
+	}
+	{
+		// Encode "state" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.State.Get(); ok {
+				return e.EncodeValue(conv.StringToString(string(val)))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["state"] = e.Result()
+	}
+	{
+		// Encode "assignee" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Assignee.Get(); ok {
+				return e.EncodeValue(conv.StringToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["assignee"] = e.Result()
+	}
+	{
+		// Encode "creator" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Creator.Get(); ok {
+				return e.EncodeValue(conv.StringToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["creator"] = e.Result()
+	}
+	{
+		// Encode "mentioned" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Mentioned.Get(); ok {
+				return e.EncodeValue(conv.StringToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["mentioned"] = e.Result()
+	}
+	{
+		// Encode "labels" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Labels.Get(); ok {
+				return e.EncodeValue(conv.StringToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["labels"] = e.Result()
+	}
+	{
+		// Encode "sort" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Sort.Get(); ok {
+				return e.EncodeValue(conv.StringToString(string(val)))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["sort"] = e.Result()
+	}
+	{
+		// Encode "direction" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Direction.Get(); ok {
+				return e.EncodeValue(conv.StringToString(string(val)))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["direction"] = e.Result()
+	}
+	{
+		// Encode "since" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Since.Get(); ok {
+				return e.EncodeValue(conv.TimeToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["since"] = e.Result()
+	}
+	{
+		// Encode "per_page" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.PerPage.Get(); ok {
+				return e.EncodeValue(conv.IntToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["per_page"] = e.Result()
+	}
+	{
+		// Encode "page" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Page.Get(); ok {
+				return e.EncodeValue(conv.IntToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["page"] = e.Result()
+	}
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeIssuesListForRepoResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -19271,6 +23328,121 @@ func (c *Client) IssuesListMilestones(ctx context.Context, params IssuesListMile
 	return result, nil
 }
 
+// IssuesLock invokes issues/lock operation.
+//
+// PUT /repos/{owner}/{repo}/issues/{issue_number}/lock
+func (c *Client) IssuesLock(ctx context.Context, request OptIssuesLockReq, params IssuesLockParams) (res IssuesLockRes, err error) {
+	if err := func() error {
+		if request.Set {
+			if err := func() error {
+				if err := request.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `IssuesLock`,
+		trace.WithAttributes(otelogen.OperationID(`issues/lock`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeIssuesLockRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/issues/"
+	{
+		// Encode "issue_number" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "issue_number",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.IntToString(params.IssueNumber))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/lock"
+
+	r := ht.NewRequest(ctx, "PUT", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeIssuesLockResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // IssuesRemoveAllLabels invokes issues/remove-all-labels operation.
 //
 // DELETE /repos/{owner}/{repo}/issues/{issue_number}/labels
@@ -19632,6 +23804,218 @@ func (c *Client) IssuesUnlock(ctx context.Context, params IssuesUnlockParams) (r
 	defer resp.Body.Close()
 
 	result, err := decodeIssuesUnlockResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// IssuesUpdate invokes issues/update operation.
+//
+// PATCH /repos/{owner}/{repo}/issues/{issue_number}
+func (c *Client) IssuesUpdate(ctx context.Context, request OptIssuesUpdateReq, params IssuesUpdateParams) (res IssuesUpdateRes, err error) {
+	if err := func() error {
+		if request.Set {
+			if err := func() error {
+				if err := request.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `IssuesUpdate`,
+		trace.WithAttributes(otelogen.OperationID(`issues/update`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeIssuesUpdateRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/issues/"
+	{
+		// Encode "issue_number" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "issue_number",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.IntToString(params.IssueNumber))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+
+	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeIssuesUpdateResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// IssuesUpdateComment invokes issues/update-comment operation.
+//
+// PATCH /repos/{owner}/{repo}/issues/comments/{comment_id}
+func (c *Client) IssuesUpdateComment(ctx context.Context, request IssuesUpdateCommentReq, params IssuesUpdateCommentParams) (res IssuesUpdateCommentRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `IssuesUpdateComment`,
+		trace.WithAttributes(otelogen.OperationID(`issues/update-comment`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeIssuesUpdateCommentRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/issues/comments/"
+	{
+		// Encode "comment_id" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "comment_id",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.IntToString(params.CommentID))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+
+	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeIssuesUpdateCommentResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -21250,6 +25634,427 @@ func (c *Client) MigrationsListReposForUser(ctx context.Context, params Migratio
 	return result, nil
 }
 
+// MigrationsMapCommitAuthor invokes migrations/map-commit-author operation.
+//
+// PATCH /repos/{owner}/{repo}/import/authors/{author_id}
+func (c *Client) MigrationsMapCommitAuthor(ctx context.Context, request OptMigrationsMapCommitAuthorReq, params MigrationsMapCommitAuthorParams) (res MigrationsMapCommitAuthorRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `MigrationsMapCommitAuthor`,
+		trace.WithAttributes(otelogen.OperationID(`migrations/map-commit-author`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeMigrationsMapCommitAuthorRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/import/authors/"
+	{
+		// Encode "author_id" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "author_id",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.IntToString(params.AuthorID))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+
+	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeMigrationsMapCommitAuthorResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// MigrationsSetLfsPreference invokes migrations/set-lfs-preference operation.
+//
+// PATCH /repos/{owner}/{repo}/import/lfs
+func (c *Client) MigrationsSetLfsPreference(ctx context.Context, request MigrationsSetLfsPreferenceReq, params MigrationsSetLfsPreferenceParams) (res MigrationsSetLfsPreferenceRes, err error) {
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `MigrationsSetLfsPreference`,
+		trace.WithAttributes(otelogen.OperationID(`migrations/set-lfs-preference`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeMigrationsSetLfsPreferenceRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/import/lfs"
+
+	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeMigrationsSetLfsPreferenceResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// MigrationsStartForAuthenticatedUser invokes migrations/start-for-authenticated-user operation.
+//
+// POST /user/migrations
+func (c *Client) MigrationsStartForAuthenticatedUser(ctx context.Context, request MigrationsStartForAuthenticatedUserReq) (res MigrationsStartForAuthenticatedUserRes, err error) {
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `MigrationsStartForAuthenticatedUser`,
+		trace.WithAttributes(otelogen.OperationID(`migrations/start-for-authenticated-user`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeMigrationsStartForAuthenticatedUserRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/user/migrations"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeMigrationsStartForAuthenticatedUserResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// MigrationsStartForOrg invokes migrations/start-for-org operation.
+//
+// POST /orgs/{org}/migrations
+func (c *Client) MigrationsStartForOrg(ctx context.Context, request MigrationsStartForOrgReq, params MigrationsStartForOrgParams) (res MigrationsStartForOrgRes, err error) {
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `MigrationsStartForOrg`,
+		trace.WithAttributes(otelogen.OperationID(`migrations/start-for-org`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeMigrationsStartForOrgRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/orgs/"
+	{
+		// Encode "org" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "org",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Org))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/migrations"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeMigrationsStartForOrgResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// MigrationsStartImport invokes migrations/start-import operation.
+//
+// PUT /repos/{owner}/{repo}/import
+func (c *Client) MigrationsStartImport(ctx context.Context, request MigrationsStartImportReq, params MigrationsStartImportParams) (res MigrationsStartImportRes, err error) {
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `MigrationsStartImport`,
+		trace.WithAttributes(otelogen.OperationID(`migrations/start-import`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeMigrationsStartImportRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/import"
+
+	r := ht.NewRequest(ctx, "PUT", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeMigrationsStartImportResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // MigrationsUnlockRepoForAuthenticatedUser invokes migrations/unlock-repo-for-authenticated-user operation.
 //
 // DELETE /user/migrations/{migration_id}/repos/{repo_name}/lock
@@ -21489,6 +26294,76 @@ func (c *Client) MigrationsUpdateImport(ctx context.Context, request OptMigratio
 	return result, nil
 }
 
+// OAuthAuthorizationsCreateAuthorization invokes oauth-authorizations/create-authorization operation.
+//
+// POST /authorizations
+func (c *Client) OAuthAuthorizationsCreateAuthorization(ctx context.Context, request OptOAuthAuthorizationsCreateAuthorizationReq) (res OAuthAuthorizationsCreateAuthorizationRes, err error) {
+	if err := func() error {
+		if request.Set {
+			if err := func() error {
+				if err := request.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `OAuthAuthorizationsCreateAuthorization`,
+		trace.WithAttributes(otelogen.OperationID(`oauth-authorizations/create-authorization`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeOAuthAuthorizationsCreateAuthorizationRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/authorizations"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeOAuthAuthorizationsCreateAuthorizationResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // OAuthAuthorizationsDeleteAuthorization invokes oauth-authorizations/delete-authorization operation.
 //
 // DELETE /authorizations/{authorization_id}
@@ -21705,6 +26580,173 @@ func (c *Client) OAuthAuthorizationsGetGrant(ctx context.Context, params OAuthAu
 	return result, nil
 }
 
+// OAuthAuthorizationsGetOrCreateAuthorizationForApp invokes oauth-authorizations/get-or-create-authorization-for-app operation.
+//
+// PUT /authorizations/clients/{client_id}
+func (c *Client) OAuthAuthorizationsGetOrCreateAuthorizationForApp(ctx context.Context, request OAuthAuthorizationsGetOrCreateAuthorizationForAppReq, params OAuthAuthorizationsGetOrCreateAuthorizationForAppParams) (res OAuthAuthorizationsGetOrCreateAuthorizationForAppRes, err error) {
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `OAuthAuthorizationsGetOrCreateAuthorizationForApp`,
+		trace.WithAttributes(otelogen.OperationID(`oauth-authorizations/get-or-create-authorization-for-app`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/authorizations/clients/"
+	{
+		// Encode "client_id" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "client_id",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.ClientID))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+
+	r := ht.NewRequest(ctx, "PUT", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint invokes oauth-authorizations/get-or-create-authorization-for-app-and-fingerprint operation.
+//
+// PUT /authorizations/clients/{client_id}/{fingerprint}
+func (c *Client) OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint(ctx context.Context, request OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq, params OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintParams) (res OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRes, err error) {
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint`,
+		trace.WithAttributes(otelogen.OperationID(`oauth-authorizations/get-or-create-authorization-for-app-and-fingerprint`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/authorizations/clients/"
+	{
+		// Encode "client_id" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "client_id",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.ClientID))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "fingerprint" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "fingerprint",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Fingerprint))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+
+	r := ht.NewRequest(ctx, "PUT", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // OAuthAuthorizationsListAuthorizations invokes oauth-authorizations/list-authorizations operation.
 //
 // GET /authorizations
@@ -21880,6 +26922,228 @@ func (c *Client) OAuthAuthorizationsListGrants(ctx context.Context, params OAuth
 	defer resp.Body.Close()
 
 	result, err := decodeOAuthAuthorizationsListGrantsResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// OAuthAuthorizationsUpdateAuthorization invokes oauth-authorizations/update-authorization operation.
+//
+// PATCH /authorizations/{authorization_id}
+func (c *Client) OAuthAuthorizationsUpdateAuthorization(ctx context.Context, request OptOAuthAuthorizationsUpdateAuthorizationReq, params OAuthAuthorizationsUpdateAuthorizationParams) (res OAuthAuthorizationsUpdateAuthorizationRes, err error) {
+	if err := func() error {
+		if request.Set {
+			if err := func() error {
+				if err := request.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `OAuthAuthorizationsUpdateAuthorization`,
+		trace.WithAttributes(otelogen.OperationID(`oauth-authorizations/update-authorization`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeOAuthAuthorizationsUpdateAuthorizationRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/authorizations/"
+	{
+		// Encode "authorization_id" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "authorization_id",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.IntToString(params.AuthorizationID))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+
+	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeOAuthAuthorizationsUpdateAuthorizationResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// OrgsBlockUser invokes orgs/block-user operation.
+//
+// PUT /orgs/{org}/blocks/{username}
+func (c *Client) OrgsBlockUser(ctx context.Context, params OrgsBlockUserParams) (res OrgsBlockUserRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `OrgsBlockUser`,
+		trace.WithAttributes(otelogen.OperationID(`orgs/block-user`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/orgs/"
+	{
+		// Encode "org" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "org",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Org))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/blocks/"
+	{
+		// Encode "username" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "username",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Username))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+
+	r := ht.NewRequest(ctx, "PUT", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeOrgsBlockUserResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// OrgsCancelInvitation invokes orgs/cancel-invitation operation.
+//
+// DELETE /orgs/{org}/invitations/{invitation_id}
+func (c *Client) OrgsCancelInvitation(ctx context.Context, params OrgsCancelInvitationParams) (res OrgsCancelInvitationRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `OrgsCancelInvitation`,
+		trace.WithAttributes(otelogen.OperationID(`orgs/cancel-invitation`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/orgs/"
+	{
+		// Encode "org" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "org",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Org))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/invitations/"
+	{
+		// Encode "invitation_id" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "invitation_id",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.IntToString(params.InvitationID))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+
+	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeOrgsCancelInvitationResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -22156,6 +27420,168 @@ func (c *Client) OrgsConvertMemberToOutsideCollaborator(ctx context.Context, par
 	defer resp.Body.Close()
 
 	result, err := decodeOrgsConvertMemberToOutsideCollaboratorResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// OrgsCreateInvitation invokes orgs/create-invitation operation.
+//
+// POST /orgs/{org}/invitations
+func (c *Client) OrgsCreateInvitation(ctx context.Context, request OptOrgsCreateInvitationReq, params OrgsCreateInvitationParams) (res OrgsCreateInvitationRes, err error) {
+	if err := func() error {
+		if request.Set {
+			if err := func() error {
+				if err := request.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `OrgsCreateInvitation`,
+		trace.WithAttributes(otelogen.OperationID(`orgs/create-invitation`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeOrgsCreateInvitationRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/orgs/"
+	{
+		// Encode "org" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "org",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Org))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/invitations"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeOrgsCreateInvitationResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// OrgsCreateWebhook invokes orgs/create-webhook operation.
+//
+// POST /orgs/{org}/hooks
+func (c *Client) OrgsCreateWebhook(ctx context.Context, request OrgsCreateWebhookReq, params OrgsCreateWebhookParams) (res OrgsCreateWebhookRes, err error) {
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `OrgsCreateWebhook`,
+		trace.WithAttributes(otelogen.OperationID(`orgs/create-webhook`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeOrgsCreateWebhookRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/orgs/"
+	{
+		// Encode "org" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "org",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Org))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/hooks"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeOrgsCreateWebhookResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -22718,6 +28144,90 @@ func (c *Client) OrgsGetWebhookConfigForOrg(ctx context.Context, params OrgsGetW
 	return result, nil
 }
 
+// OrgsGetWebhookDelivery invokes orgs/get-webhook-delivery operation.
+//
+// GET /orgs/{org}/hooks/{hook_id}/deliveries/{delivery_id}
+func (c *Client) OrgsGetWebhookDelivery(ctx context.Context, params OrgsGetWebhookDeliveryParams) (res OrgsGetWebhookDeliveryRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `OrgsGetWebhookDelivery`,
+		trace.WithAttributes(otelogen.OperationID(`orgs/get-webhook-delivery`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/orgs/"
+	{
+		// Encode "org" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "org",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Org))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/hooks/"
+	{
+		// Encode "hook_id" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "hook_id",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.IntToString(params.HookID))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/deliveries/"
+	{
+		// Encode "delivery_id" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "delivery_id",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.IntToString(params.DeliveryID))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeOrgsGetWebhookDeliveryResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // OrgsList invokes orgs/list operation.
 //
 // GET /organizations
@@ -23208,6 +28718,219 @@ func (c *Client) OrgsListInvitationTeams(ctx context.Context, params OrgsListInv
 	return result, nil
 }
 
+// OrgsListMembers invokes orgs/list-members operation.
+//
+// GET /orgs/{org}/members
+func (c *Client) OrgsListMembers(ctx context.Context, params OrgsListMembersParams) (res OrgsListMembersRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `OrgsListMembers`,
+		trace.WithAttributes(otelogen.OperationID(`orgs/list-members`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/orgs/"
+	{
+		// Encode "org" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "org",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Org))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/members"
+
+	q := u.Query()
+	{
+		// Encode "filter" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Filter.Get(); ok {
+				return e.EncodeValue(conv.StringToString(string(val)))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["filter"] = e.Result()
+	}
+	{
+		// Encode "role" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Role.Get(); ok {
+				return e.EncodeValue(conv.StringToString(string(val)))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["role"] = e.Result()
+	}
+	{
+		// Encode "per_page" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.PerPage.Get(); ok {
+				return e.EncodeValue(conv.IntToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["per_page"] = e.Result()
+	}
+	{
+		// Encode "page" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Page.Get(); ok {
+				return e.EncodeValue(conv.IntToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["page"] = e.Result()
+	}
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeOrgsListMembersResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// OrgsListMembershipsForAuthenticatedUser invokes orgs/list-memberships-for-authenticated-user operation.
+//
+// GET /user/memberships/orgs
+func (c *Client) OrgsListMembershipsForAuthenticatedUser(ctx context.Context, params OrgsListMembershipsForAuthenticatedUserParams) (res OrgsListMembershipsForAuthenticatedUserRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `OrgsListMembershipsForAuthenticatedUser`,
+		trace.WithAttributes(otelogen.OperationID(`orgs/list-memberships-for-authenticated-user`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/user/memberships/orgs"
+
+	q := u.Query()
+	{
+		// Encode "state" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.State.Get(); ok {
+				return e.EncodeValue(conv.StringToString(string(val)))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["state"] = e.Result()
+	}
+	{
+		// Encode "per_page" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.PerPage.Get(); ok {
+				return e.EncodeValue(conv.IntToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["per_page"] = e.Result()
+	}
+	{
+		// Encode "page" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Page.Get(); ok {
+				return e.EncodeValue(conv.IntToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["page"] = e.Result()
+	}
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeOrgsListMembershipsForAuthenticatedUserResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // OrgsListOutsideCollaborators invokes orgs/list-outside-collaborators operation.
 //
 // GET /orgs/{org}/outside_collaborators
@@ -23549,6 +29272,111 @@ func (c *Client) OrgsListSamlSSOAuthorizations(ctx context.Context, params OrgsL
 	return result, nil
 }
 
+// OrgsListWebhookDeliveries invokes orgs/list-webhook-deliveries operation.
+//
+// GET /orgs/{org}/hooks/{hook_id}/deliveries
+func (c *Client) OrgsListWebhookDeliveries(ctx context.Context, params OrgsListWebhookDeliveriesParams) (res OrgsListWebhookDeliveriesRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `OrgsListWebhookDeliveries`,
+		trace.WithAttributes(otelogen.OperationID(`orgs/list-webhook-deliveries`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/orgs/"
+	{
+		// Encode "org" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "org",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Org))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/hooks/"
+	{
+		// Encode "hook_id" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "hook_id",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.IntToString(params.HookID))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/deliveries"
+
+	q := u.Query()
+	{
+		// Encode "per_page" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.PerPage.Get(); ok {
+				return e.EncodeValue(conv.IntToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["per_page"] = e.Result()
+	}
+	{
+		// Encode "cursor" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Cursor.Get(); ok {
+				return e.EncodeValue(conv.StringToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["cursor"] = e.Result()
+	}
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeOrgsListWebhookDeliveriesResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // OrgsListWebhooks invokes orgs/list-webhooks operation.
 //
 // GET /orgs/{org}/hooks
@@ -23702,6 +29530,91 @@ func (c *Client) OrgsPingWebhook(ctx context.Context, params OrgsPingWebhookPara
 	defer resp.Body.Close()
 
 	result, err := decodeOrgsPingWebhookResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// OrgsRedeliverWebhookDelivery invokes orgs/redeliver-webhook-delivery operation.
+//
+// POST /orgs/{org}/hooks/{hook_id}/deliveries/{delivery_id}/attempts
+func (c *Client) OrgsRedeliverWebhookDelivery(ctx context.Context, params OrgsRedeliverWebhookDeliveryParams) (res OrgsRedeliverWebhookDeliveryRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `OrgsRedeliverWebhookDelivery`,
+		trace.WithAttributes(otelogen.OperationID(`orgs/redeliver-webhook-delivery`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/orgs/"
+	{
+		// Encode "org" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "org",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Org))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/hooks/"
+	{
+		// Encode "hook_id" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "hook_id",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.IntToString(params.HookID))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/deliveries/"
+	{
+		// Encode "delivery_id" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "delivery_id",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.IntToString(params.DeliveryID))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/attempts"
+
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeOrgsRedeliverWebhookDeliveryResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -24054,6 +29967,105 @@ func (c *Client) OrgsRemoveSamlSSOAuthorization(ctx context.Context, params Orgs
 	return result, nil
 }
 
+// OrgsSetMembershipForUser invokes orgs/set-membership-for-user operation.
+//
+// PUT /orgs/{org}/memberships/{username}
+func (c *Client) OrgsSetMembershipForUser(ctx context.Context, request OptOrgsSetMembershipForUserReq, params OrgsSetMembershipForUserParams) (res OrgsSetMembershipForUserRes, err error) {
+	if err := func() error {
+		if request.Set {
+			if err := func() error {
+				if err := request.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `OrgsSetMembershipForUser`,
+		trace.WithAttributes(otelogen.OperationID(`orgs/set-membership-for-user`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeOrgsSetMembershipForUserRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/orgs/"
+	{
+		// Encode "org" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "org",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Org))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/memberships/"
+	{
+		// Encode "username" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "username",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Username))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+
+	r := ht.NewRequest(ctx, "PUT", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeOrgsSetMembershipForUserResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // OrgsSetPublicMembershipForAuthenticatedUser invokes orgs/set-public-membership-for-authenticated-user operation.
 //
 // PUT /orgs/{org}/public_members/{username}
@@ -24185,6 +30197,181 @@ func (c *Client) OrgsUnblockUser(ctx context.Context, params OrgsUnblockUserPara
 	defer resp.Body.Close()
 
 	result, err := decodeOrgsUnblockUserResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// OrgsUpdateMembershipForAuthenticatedUser invokes orgs/update-membership-for-authenticated-user operation.
+//
+// PATCH /user/memberships/orgs/{org}
+func (c *Client) OrgsUpdateMembershipForAuthenticatedUser(ctx context.Context, request OrgsUpdateMembershipForAuthenticatedUserReq, params OrgsUpdateMembershipForAuthenticatedUserParams) (res OrgsUpdateMembershipForAuthenticatedUserRes, err error) {
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `OrgsUpdateMembershipForAuthenticatedUser`,
+		trace.WithAttributes(otelogen.OperationID(`orgs/update-membership-for-authenticated-user`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeOrgsUpdateMembershipForAuthenticatedUserRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/user/memberships/orgs/"
+	{
+		// Encode "org" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "org",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Org))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+
+	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeOrgsUpdateMembershipForAuthenticatedUserResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// OrgsUpdateWebhook invokes orgs/update-webhook operation.
+//
+// PATCH /orgs/{org}/hooks/{hook_id}
+func (c *Client) OrgsUpdateWebhook(ctx context.Context, request OptOrgsUpdateWebhookReq, params OrgsUpdateWebhookParams) (res OrgsUpdateWebhookRes, err error) {
+	if err := func() error {
+		if request.Set {
+			if err := func() error {
+				if err := request.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `OrgsUpdateWebhook`,
+		trace.WithAttributes(otelogen.OperationID(`orgs/update-webhook`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeOrgsUpdateWebhookRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/orgs/"
+	{
+		// Encode "org" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "org",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Org))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/hooks/"
+	{
+		// Encode "hook_id" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "hook_id",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.IntToString(params.HookID))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+
+	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeOrgsUpdateWebhookResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -26500,6 +32687,105 @@ func (c *Client) PackagesRestorePackageVersionForUser(ctx context.Context, param
 	return result, nil
 }
 
+// ProjectsAddCollaborator invokes projects/add-collaborator operation.
+//
+// PUT /projects/{project_id}/collaborators/{username}
+func (c *Client) ProjectsAddCollaborator(ctx context.Context, request OptProjectsAddCollaboratorReq, params ProjectsAddCollaboratorParams) (res ProjectsAddCollaboratorRes, err error) {
+	if err := func() error {
+		if request.Set {
+			if err := func() error {
+				if err := request.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `ProjectsAddCollaborator`,
+		trace.WithAttributes(otelogen.OperationID(`projects/add-collaborator`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeProjectsAddCollaboratorRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/projects/"
+	{
+		// Encode "project_id" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "project_id",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.IntToString(params.ProjectID))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/collaborators/"
+	{
+		// Encode "username" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "username",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Username))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+
+	r := ht.NewRequest(ctx, "PUT", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeProjectsAddCollaboratorResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // ProjectsCreateColumn invokes projects/create-column operation.
 //
 // POST /projects/{project_id}/columns
@@ -27100,6 +33386,76 @@ func (c *Client) ProjectsGetColumn(ctx context.Context, params ProjectsGetColumn
 	return result, nil
 }
 
+// ProjectsGetPermissionForUser invokes projects/get-permission-for-user operation.
+//
+// GET /projects/{project_id}/collaborators/{username}/permission
+func (c *Client) ProjectsGetPermissionForUser(ctx context.Context, params ProjectsGetPermissionForUserParams) (res ProjectsGetPermissionForUserRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `ProjectsGetPermissionForUser`,
+		trace.WithAttributes(otelogen.OperationID(`projects/get-permission-for-user`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/projects/"
+	{
+		// Encode "project_id" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "project_id",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.IntToString(params.ProjectID))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/collaborators/"
+	{
+		// Encode "username" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "username",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Username))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/permission"
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeProjectsGetPermissionForUserResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // ProjectsListCards invokes projects/list-cards operation.
 //
 // GET /projects/columns/{column_id}/cards
@@ -27199,6 +33555,112 @@ func (c *Client) ProjectsListCards(ctx context.Context, params ProjectsListCards
 	defer resp.Body.Close()
 
 	result, err := decodeProjectsListCardsResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// ProjectsListCollaborators invokes projects/list-collaborators operation.
+//
+// GET /projects/{project_id}/collaborators
+func (c *Client) ProjectsListCollaborators(ctx context.Context, params ProjectsListCollaboratorsParams) (res ProjectsListCollaboratorsRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `ProjectsListCollaborators`,
+		trace.WithAttributes(otelogen.OperationID(`projects/list-collaborators`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/projects/"
+	{
+		// Encode "project_id" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "project_id",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.IntToString(params.ProjectID))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/collaborators"
+
+	q := u.Query()
+	{
+		// Encode "affiliation" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Affiliation.Get(); ok {
+				return e.EncodeValue(conv.StringToString(string(val)))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["affiliation"] = e.Result()
+	}
+	{
+		// Encode "per_page" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.PerPage.Get(); ok {
+				return e.EncodeValue(conv.IntToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["per_page"] = e.Result()
+	}
+	{
+		// Encode "page" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Page.Get(); ok {
+				return e.EncodeValue(conv.IntToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["page"] = e.Result()
+	}
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeProjectsListCollaboratorsResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -27523,6 +33985,189 @@ func (c *Client) ProjectsListForRepo(ctx context.Context, params ProjectsListFor
 	return result, nil
 }
 
+// ProjectsListForUser invokes projects/list-for-user operation.
+//
+// GET /users/{username}/projects
+func (c *Client) ProjectsListForUser(ctx context.Context, params ProjectsListForUserParams) (res ProjectsListForUserRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `ProjectsListForUser`,
+		trace.WithAttributes(otelogen.OperationID(`projects/list-for-user`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/users/"
+	{
+		// Encode "username" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "username",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Username))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/projects"
+
+	q := u.Query()
+	{
+		// Encode "state" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.State.Get(); ok {
+				return e.EncodeValue(conv.StringToString(string(val)))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["state"] = e.Result()
+	}
+	{
+		// Encode "per_page" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.PerPage.Get(); ok {
+				return e.EncodeValue(conv.IntToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["per_page"] = e.Result()
+	}
+	{
+		// Encode "page" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Page.Get(); ok {
+				return e.EncodeValue(conv.IntToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["page"] = e.Result()
+	}
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeProjectsListForUserResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// ProjectsMoveCard invokes projects/move-card operation.
+//
+// POST /projects/columns/cards/{card_id}/moves
+func (c *Client) ProjectsMoveCard(ctx context.Context, request ProjectsMoveCardReq, params ProjectsMoveCardParams) (res ProjectsMoveCardRes, err error) {
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `ProjectsMoveCard`,
+		trace.WithAttributes(otelogen.OperationID(`projects/move-card`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeProjectsMoveCardRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/projects/columns/cards/"
+	{
+		// Encode "card_id" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "card_id",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.IntToString(params.CardID))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/moves"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeProjectsMoveCardResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // ProjectsMoveColumn invokes projects/move-column operation.
 //
 // POST /projects/columns/{column_id}/moves
@@ -27593,6 +34238,75 @@ func (c *Client) ProjectsMoveColumn(ctx context.Context, request ProjectsMoveCol
 	defer resp.Body.Close()
 
 	result, err := decodeProjectsMoveColumnResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// ProjectsRemoveCollaborator invokes projects/remove-collaborator operation.
+//
+// DELETE /projects/{project_id}/collaborators/{username}
+func (c *Client) ProjectsRemoveCollaborator(ctx context.Context, params ProjectsRemoveCollaboratorParams) (res ProjectsRemoveCollaboratorRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `ProjectsRemoveCollaborator`,
+		trace.WithAttributes(otelogen.OperationID(`projects/remove-collaborator`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/projects/"
+	{
+		// Encode "project_id" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "project_id",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.IntToString(params.ProjectID))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/collaborators/"
+	{
+		// Encode "username" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "username",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Username))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+
+	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeProjectsRemoveCollaboratorResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -27905,6 +34619,90 @@ func (c *Client) PullsCheckIfMerged(ctx context.Context, params PullsCheckIfMerg
 	return result, nil
 }
 
+// PullsCreate invokes pulls/create operation.
+//
+// POST /repos/{owner}/{repo}/pulls
+func (c *Client) PullsCreate(ctx context.Context, request PullsCreateReq, params PullsCreateParams) (res PullsCreateRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `PullsCreate`,
+		trace.WithAttributes(otelogen.OperationID(`pulls/create`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodePullsCreateRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/pulls"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodePullsCreateResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // PullsCreateReplyForReviewComment invokes pulls/create-reply-for-review-comment operation.
 //
 // POST /repos/{owner}/{repo}/pulls/{pull_number}/comments/{comment_id}/replies
@@ -28127,6 +34925,113 @@ func (c *Client) PullsCreateReview(ctx context.Context, request OptPullsCreateRe
 	defer resp.Body.Close()
 
 	result, err := decodePullsCreateReviewResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// PullsCreateReviewComment invokes pulls/create-review-comment operation.
+//
+// POST /repos/{owner}/{repo}/pulls/{pull_number}/comments
+func (c *Client) PullsCreateReviewComment(ctx context.Context, request PullsCreateReviewCommentReq, params PullsCreateReviewCommentParams) (res PullsCreateReviewCommentRes, err error) {
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `PullsCreateReviewComment`,
+		trace.WithAttributes(otelogen.OperationID(`pulls/create-review-comment`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodePullsCreateReviewCommentRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/pulls/"
+	{
+		// Encode "pull_number" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "pull_number",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.IntToString(params.PullNumber))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/comments"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodePullsCreateReviewCommentResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -28698,6 +35603,191 @@ func (c *Client) PullsGetReviewComment(ctx context.Context, params PullsGetRevie
 	return result, nil
 }
 
+// PullsList invokes pulls/list operation.
+//
+// GET /repos/{owner}/{repo}/pulls
+func (c *Client) PullsList(ctx context.Context, params PullsListParams) (res PullsListRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `PullsList`,
+		trace.WithAttributes(otelogen.OperationID(`pulls/list`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/pulls"
+
+	q := u.Query()
+	{
+		// Encode "state" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.State.Get(); ok {
+				return e.EncodeValue(conv.StringToString(string(val)))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["state"] = e.Result()
+	}
+	{
+		// Encode "head" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Head.Get(); ok {
+				return e.EncodeValue(conv.StringToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["head"] = e.Result()
+	}
+	{
+		// Encode "base" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Base.Get(); ok {
+				return e.EncodeValue(conv.StringToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["base"] = e.Result()
+	}
+	{
+		// Encode "sort" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Sort.Get(); ok {
+				return e.EncodeValue(conv.StringToString(string(val)))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["sort"] = e.Result()
+	}
+	{
+		// Encode "direction" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Direction.Get(); ok {
+				return e.EncodeValue(conv.StringToString(string(val)))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["direction"] = e.Result()
+	}
+	{
+		// Encode "per_page" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.PerPage.Get(); ok {
+				return e.EncodeValue(conv.IntToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["per_page"] = e.Result()
+	}
+	{
+		// Encode "page" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Page.Get(); ok {
+				return e.EncodeValue(conv.IntToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["page"] = e.Result()
+	}
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodePullsListResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // PullsListCommentsForReview invokes pulls/list-comments-for-review operation.
 //
 // GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/comments
@@ -28946,6 +36036,126 @@ func (c *Client) PullsListCommits(ctx context.Context, params PullsListCommitsPa
 	defer resp.Body.Close()
 
 	result, err := decodePullsListCommitsResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// PullsListFiles invokes pulls/list-files operation.
+//
+// GET /repos/{owner}/{repo}/pulls/{pull_number}/files
+func (c *Client) PullsListFiles(ctx context.Context, params PullsListFilesParams) (res PullsListFilesRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `PullsListFiles`,
+		trace.WithAttributes(otelogen.OperationID(`pulls/list-files`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/pulls/"
+	{
+		// Encode "pull_number" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "pull_number",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.IntToString(params.PullNumber))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/files"
+
+	q := u.Query()
+	{
+		// Encode "per_page" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.PerPage.Get(); ok {
+				return e.EncodeValue(conv.IntToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["per_page"] = e.Result()
+	}
+	{
+		// Encode "page" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Page.Get(); ok {
+				return e.EncodeValue(conv.IntToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["page"] = e.Result()
+	}
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodePullsListFilesResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -29514,6 +36724,228 @@ func (c *Client) PullsListReviews(ctx context.Context, params PullsListReviewsPa
 	return result, nil
 }
 
+// PullsMerge invokes pulls/merge operation.
+//
+// PUT /repos/{owner}/{repo}/pulls/{pull_number}/merge
+func (c *Client) PullsMerge(ctx context.Context, request OptPullsMergeReq, params PullsMergeParams) (res PullsMergeRes, err error) {
+	if err := func() error {
+		if request.Set {
+			if err := func() error {
+				if err := request.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `PullsMerge`,
+		trace.WithAttributes(otelogen.OperationID(`pulls/merge`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodePullsMergeRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/pulls/"
+	{
+		// Encode "pull_number" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "pull_number",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.IntToString(params.PullNumber))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/merge"
+
+	r := ht.NewRequest(ctx, "PUT", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodePullsMergeResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// PullsRemoveRequestedReviewers invokes pulls/remove-requested-reviewers operation.
+//
+// DELETE /repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers
+func (c *Client) PullsRemoveRequestedReviewers(ctx context.Context, request PullsRemoveRequestedReviewersReq, params PullsRemoveRequestedReviewersParams) (res PullsRemoveRequestedReviewersRes, err error) {
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `PullsRemoveRequestedReviewers`,
+		trace.WithAttributes(otelogen.OperationID(`pulls/remove-requested-reviewers`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodePullsRemoveRequestedReviewersRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/pulls/"
+	{
+		// Encode "pull_number" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "pull_number",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.IntToString(params.PullNumber))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/requested_reviewers"
+
+	r := ht.NewRequest(ctx, "DELETE", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodePullsRemoveRequestedReviewersResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // PullsSubmitReview invokes pulls/submit-review operation.
 //
 // POST /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/events
@@ -29629,6 +37061,219 @@ func (c *Client) PullsSubmitReview(ctx context.Context, request PullsSubmitRevie
 	defer resp.Body.Close()
 
 	result, err := decodePullsSubmitReviewResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// PullsUpdate invokes pulls/update operation.
+//
+// PATCH /repos/{owner}/{repo}/pulls/{pull_number}
+func (c *Client) PullsUpdate(ctx context.Context, request OptPullsUpdateReq, params PullsUpdateParams) (res PullsUpdateRes, err error) {
+	if err := func() error {
+		if request.Set {
+			if err := func() error {
+				if err := request.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `PullsUpdate`,
+		trace.WithAttributes(otelogen.OperationID(`pulls/update`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodePullsUpdateRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/pulls/"
+	{
+		// Encode "pull_number" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "pull_number",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.IntToString(params.PullNumber))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+
+	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodePullsUpdateResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// PullsUpdateBranch invokes pulls/update-branch operation.
+//
+// PUT /repos/{owner}/{repo}/pulls/{pull_number}/update-branch
+func (c *Client) PullsUpdateBranch(ctx context.Context, request OptPullsUpdateBranchReq, params PullsUpdateBranchParams) (res PullsUpdateBranchRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `PullsUpdateBranch`,
+		trace.WithAttributes(otelogen.OperationID(`pulls/update-branch`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodePullsUpdateBranchRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/pulls/"
+	{
+		// Encode "pull_number" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "pull_number",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.IntToString(params.PullNumber))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/update-branch"
+
+	r := ht.NewRequest(ctx, "PUT", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodePullsUpdateBranchResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -29880,6 +37525,541 @@ func (c *Client) RateLimitGet(ctx context.Context) (res RateLimitGetRes, err err
 	defer resp.Body.Close()
 
 	result, err := decodeRateLimitGetResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// ReactionsCreateForCommitComment invokes reactions/create-for-commit-comment operation.
+//
+// POST /repos/{owner}/{repo}/comments/{comment_id}/reactions
+func (c *Client) ReactionsCreateForCommitComment(ctx context.Context, request ReactionsCreateForCommitCommentReq, params ReactionsCreateForCommitCommentParams) (res ReactionsCreateForCommitCommentRes, err error) {
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `ReactionsCreateForCommitComment`,
+		trace.WithAttributes(otelogen.OperationID(`reactions/create-for-commit-comment`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeReactionsCreateForCommitCommentRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/comments/"
+	{
+		// Encode "comment_id" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "comment_id",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.IntToString(params.CommentID))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/reactions"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeReactionsCreateForCommitCommentResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// ReactionsCreateForIssue invokes reactions/create-for-issue operation.
+//
+// POST /repos/{owner}/{repo}/issues/{issue_number}/reactions
+func (c *Client) ReactionsCreateForIssue(ctx context.Context, request ReactionsCreateForIssueReq, params ReactionsCreateForIssueParams) (res ReactionsCreateForIssueRes, err error) {
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `ReactionsCreateForIssue`,
+		trace.WithAttributes(otelogen.OperationID(`reactions/create-for-issue`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeReactionsCreateForIssueRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/issues/"
+	{
+		// Encode "issue_number" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "issue_number",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.IntToString(params.IssueNumber))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/reactions"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeReactionsCreateForIssueResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// ReactionsCreateForIssueComment invokes reactions/create-for-issue-comment operation.
+//
+// POST /repos/{owner}/{repo}/issues/comments/{comment_id}/reactions
+func (c *Client) ReactionsCreateForIssueComment(ctx context.Context, request ReactionsCreateForIssueCommentReq, params ReactionsCreateForIssueCommentParams) (res ReactionsCreateForIssueCommentRes, err error) {
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `ReactionsCreateForIssueComment`,
+		trace.WithAttributes(otelogen.OperationID(`reactions/create-for-issue-comment`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeReactionsCreateForIssueCommentRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/issues/comments/"
+	{
+		// Encode "comment_id" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "comment_id",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.IntToString(params.CommentID))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/reactions"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeReactionsCreateForIssueCommentResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// ReactionsCreateForPullRequestReviewComment invokes reactions/create-for-pull-request-review-comment operation.
+//
+// POST /repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions
+func (c *Client) ReactionsCreateForPullRequestReviewComment(ctx context.Context, request ReactionsCreateForPullRequestReviewCommentReq, params ReactionsCreateForPullRequestReviewCommentParams) (res ReactionsCreateForPullRequestReviewCommentRes, err error) {
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `ReactionsCreateForPullRequestReviewComment`,
+		trace.WithAttributes(otelogen.OperationID(`reactions/create-for-pull-request-review-comment`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeReactionsCreateForPullRequestReviewCommentRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/pulls/comments/"
+	{
+		// Encode "comment_id" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "comment_id",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.IntToString(params.CommentID))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/reactions"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeReactionsCreateForPullRequestReviewCommentResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// ReactionsCreateForRelease invokes reactions/create-for-release operation.
+//
+// POST /repos/{owner}/{repo}/releases/{release_id}/reactions
+func (c *Client) ReactionsCreateForRelease(ctx context.Context, request ReactionsCreateForReleaseReq, params ReactionsCreateForReleaseParams) (res ReactionsCreateForReleaseRes, err error) {
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `ReactionsCreateForRelease`,
+		trace.WithAttributes(otelogen.OperationID(`reactions/create-for-release`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeReactionsCreateForReleaseRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/releases/"
+	{
+		// Encode "release_id" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "release_id",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.IntToString(params.ReleaseID))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/reactions"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeReactionsCreateForReleaseResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -32120,6 +40300,580 @@ func (c *Client) ReposAcceptInvitation(ctx context.Context, params ReposAcceptIn
 	return result, nil
 }
 
+// ReposAddAppAccessRestrictions invokes repos/add-app-access-restrictions operation.
+//
+// POST /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps
+func (c *Client) ReposAddAppAccessRestrictions(ctx context.Context, request OptReposAddAppAccessRestrictionsReq, params ReposAddAppAccessRestrictionsParams) (res ReposAddAppAccessRestrictionsRes, err error) {
+	if err := func() error {
+		if request.Set {
+			if err := func() error {
+				if err := request.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `ReposAddAppAccessRestrictions`,
+		trace.WithAttributes(otelogen.OperationID(`repos/add-app-access-restrictions`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeReposAddAppAccessRestrictionsRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/branches/"
+	{
+		// Encode "branch" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "branch",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Branch))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/protection/restrictions/apps"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeReposAddAppAccessRestrictionsResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// ReposAddCollaborator invokes repos/add-collaborator operation.
+//
+// PUT /repos/{owner}/{repo}/collaborators/{username}
+func (c *Client) ReposAddCollaborator(ctx context.Context, request OptReposAddCollaboratorReq, params ReposAddCollaboratorParams) (res ReposAddCollaboratorRes, err error) {
+	if err := func() error {
+		if request.Set {
+			if err := func() error {
+				if err := request.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `ReposAddCollaborator`,
+		trace.WithAttributes(otelogen.OperationID(`repos/add-collaborator`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeReposAddCollaboratorRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/collaborators/"
+	{
+		// Encode "username" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "username",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Username))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+
+	r := ht.NewRequest(ctx, "PUT", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeReposAddCollaboratorResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// ReposAddStatusCheckContexts invokes repos/add-status-check-contexts operation.
+//
+// POST /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts
+func (c *Client) ReposAddStatusCheckContexts(ctx context.Context, request OptReposAddStatusCheckContextsReq, params ReposAddStatusCheckContextsParams) (res ReposAddStatusCheckContextsRes, err error) {
+	if err := func() error {
+		if request.Set {
+			if err := func() error {
+				if err := request.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `ReposAddStatusCheckContexts`,
+		trace.WithAttributes(otelogen.OperationID(`repos/add-status-check-contexts`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeReposAddStatusCheckContextsRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/branches/"
+	{
+		// Encode "branch" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "branch",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Branch))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/protection/required_status_checks/contexts"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeReposAddStatusCheckContextsResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// ReposAddTeamAccessRestrictions invokes repos/add-team-access-restrictions operation.
+//
+// POST /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams
+func (c *Client) ReposAddTeamAccessRestrictions(ctx context.Context, request OptReposAddTeamAccessRestrictionsReq, params ReposAddTeamAccessRestrictionsParams) (res ReposAddTeamAccessRestrictionsRes, err error) {
+	if err := func() error {
+		if request.Set {
+			if err := func() error {
+				if err := request.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `ReposAddTeamAccessRestrictions`,
+		trace.WithAttributes(otelogen.OperationID(`repos/add-team-access-restrictions`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeReposAddTeamAccessRestrictionsRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/branches/"
+	{
+		// Encode "branch" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "branch",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Branch))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/protection/restrictions/teams"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeReposAddTeamAccessRestrictionsResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// ReposAddUserAccessRestrictions invokes repos/add-user-access-restrictions operation.
+//
+// POST /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users
+func (c *Client) ReposAddUserAccessRestrictions(ctx context.Context, request OptReposAddUserAccessRestrictionsReq, params ReposAddUserAccessRestrictionsParams) (res ReposAddUserAccessRestrictionsRes, err error) {
+	if err := func() error {
+		if request.Set {
+			if err := func() error {
+				if err := request.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `ReposAddUserAccessRestrictions`,
+		trace.WithAttributes(otelogen.OperationID(`repos/add-user-access-restrictions`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeReposAddUserAccessRestrictionsRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/branches/"
+	{
+		// Encode "branch" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "branch",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Branch))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/protection/restrictions/users"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeReposAddUserAccessRestrictionsResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // ReposCheckCollaborator invokes repos/check-collaborator operation.
 //
 // GET /repos/{owner}/{repo}/collaborators/{username}
@@ -32393,6 +41147,189 @@ func (c *Client) ReposCompareCommits(ctx context.Context, params ReposCompareCom
 	return result, nil
 }
 
+// ReposCreateAutolink invokes repos/create-autolink operation.
+//
+// POST /repos/{owner}/{repo}/autolinks
+func (c *Client) ReposCreateAutolink(ctx context.Context, request ReposCreateAutolinkReq, params ReposCreateAutolinkParams) (res ReposCreateAutolinkRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `ReposCreateAutolink`,
+		trace.WithAttributes(otelogen.OperationID(`repos/create-autolink`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeReposCreateAutolinkRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/autolinks"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeReposCreateAutolinkResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// ReposCreateCommitComment invokes repos/create-commit-comment operation.
+//
+// POST /repos/{owner}/{repo}/commits/{commit_sha}/comments
+func (c *Client) ReposCreateCommitComment(ctx context.Context, request ReposCreateCommitCommentReq, params ReposCreateCommitCommentParams) (res ReposCreateCommitCommentRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `ReposCreateCommitComment`,
+		trace.WithAttributes(otelogen.OperationID(`repos/create-commit-comment`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeReposCreateCommitCommentRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/commits/"
+	{
+		// Encode "commit_sha" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "commit_sha",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.CommitSha))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/comments"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeReposCreateCommitCommentResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // ReposCreateCommitSignatureProtection invokes repos/create-commit-signature-protection operation.
 //
 // POST /repos/{owner}/{repo}/branches/{branch}/protection/required_signatures
@@ -32584,6 +41521,862 @@ func (c *Client) ReposCreateCommitStatus(ctx context.Context, request ReposCreat
 	return result, nil
 }
 
+// ReposCreateDeployKey invokes repos/create-deploy-key operation.
+//
+// POST /repos/{owner}/{repo}/keys
+func (c *Client) ReposCreateDeployKey(ctx context.Context, request ReposCreateDeployKeyReq, params ReposCreateDeployKeyParams) (res ReposCreateDeployKeyRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `ReposCreateDeployKey`,
+		trace.WithAttributes(otelogen.OperationID(`repos/create-deploy-key`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeReposCreateDeployKeyRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/keys"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeReposCreateDeployKeyResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// ReposCreateDeployment invokes repos/create-deployment operation.
+//
+// POST /repos/{owner}/{repo}/deployments
+func (c *Client) ReposCreateDeployment(ctx context.Context, request ReposCreateDeploymentReq, params ReposCreateDeploymentParams) (res ReposCreateDeploymentRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `ReposCreateDeployment`,
+		trace.WithAttributes(otelogen.OperationID(`repos/create-deployment`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeReposCreateDeploymentRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/deployments"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeReposCreateDeploymentResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// ReposCreateDeploymentStatus invokes repos/create-deployment-status operation.
+//
+// POST /repos/{owner}/{repo}/deployments/{deployment_id}/statuses
+func (c *Client) ReposCreateDeploymentStatus(ctx context.Context, request ReposCreateDeploymentStatusReq, params ReposCreateDeploymentStatusParams) (res ReposCreateDeploymentStatusRes, err error) {
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `ReposCreateDeploymentStatus`,
+		trace.WithAttributes(otelogen.OperationID(`repos/create-deployment-status`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeReposCreateDeploymentStatusRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/deployments/"
+	{
+		// Encode "deployment_id" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "deployment_id",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.IntToString(params.DeploymentID))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/statuses"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeReposCreateDeploymentStatusResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// ReposCreateDispatchEvent invokes repos/create-dispatch-event operation.
+//
+// POST /repos/{owner}/{repo}/dispatches
+func (c *Client) ReposCreateDispatchEvent(ctx context.Context, request ReposCreateDispatchEventReq, params ReposCreateDispatchEventParams) (res ReposCreateDispatchEventRes, err error) {
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `ReposCreateDispatchEvent`,
+		trace.WithAttributes(otelogen.OperationID(`repos/create-dispatch-event`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeReposCreateDispatchEventRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/dispatches"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeReposCreateDispatchEventResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// ReposCreateForAuthenticatedUser invokes repos/create-for-authenticated-user operation.
+//
+// POST /user/repos
+func (c *Client) ReposCreateForAuthenticatedUser(ctx context.Context, request ReposCreateForAuthenticatedUserReq) (res ReposCreateForAuthenticatedUserRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `ReposCreateForAuthenticatedUser`,
+		trace.WithAttributes(otelogen.OperationID(`repos/create-for-authenticated-user`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeReposCreateForAuthenticatedUserRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/user/repos"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeReposCreateForAuthenticatedUserResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// ReposCreateFork invokes repos/create-fork operation.
+//
+// POST /repos/{owner}/{repo}/forks
+func (c *Client) ReposCreateFork(ctx context.Context, request OptReposCreateForkReq, params ReposCreateForkParams) (res ReposCreateForkRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `ReposCreateFork`,
+		trace.WithAttributes(otelogen.OperationID(`repos/create-fork`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeReposCreateForkRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/forks"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeReposCreateForkResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// ReposCreateInOrg invokes repos/create-in-org operation.
+//
+// POST /orgs/{org}/repos
+func (c *Client) ReposCreateInOrg(ctx context.Context, request ReposCreateInOrgReq, params ReposCreateInOrgParams) (res ReposCreateInOrgRes, err error) {
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `ReposCreateInOrg`,
+		trace.WithAttributes(otelogen.OperationID(`repos/create-in-org`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeReposCreateInOrgRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/orgs/"
+	{
+		// Encode "org" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "org",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Org))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/repos"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeReposCreateInOrgResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// ReposCreateOrUpdateFileContents invokes repos/create-or-update-file-contents operation.
+//
+// PUT /repos/{owner}/{repo}/contents/{path}
+func (c *Client) ReposCreateOrUpdateFileContents(ctx context.Context, request ReposCreateOrUpdateFileContentsReq, params ReposCreateOrUpdateFileContentsParams) (res ReposCreateOrUpdateFileContentsRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `ReposCreateOrUpdateFileContents`,
+		trace.WithAttributes(otelogen.OperationID(`repos/create-or-update-file-contents`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeReposCreateOrUpdateFileContentsRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/contents/"
+	{
+		// Encode "path" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "path",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Path))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+
+	r := ht.NewRequest(ctx, "PUT", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeReposCreateOrUpdateFileContentsResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// ReposCreatePagesSite invokes repos/create-pages-site operation.
+//
+// POST /repos/{owner}/{repo}/pages
+func (c *Client) ReposCreatePagesSite(ctx context.Context, request ReposCreatePagesSiteReq, params ReposCreatePagesSiteParams) (res ReposCreatePagesSiteRes, err error) {
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `ReposCreatePagesSite`,
+		trace.WithAttributes(otelogen.OperationID(`repos/create-pages-site`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeReposCreatePagesSiteRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/pages"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeReposCreatePagesSiteResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// ReposCreateRelease invokes repos/create-release operation.
+//
+// POST /repos/{owner}/{repo}/releases
+func (c *Client) ReposCreateRelease(ctx context.Context, request ReposCreateReleaseReq, params ReposCreateReleaseParams) (res ReposCreateReleaseRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `ReposCreateRelease`,
+		trace.WithAttributes(otelogen.OperationID(`repos/create-release`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeReposCreateReleaseRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/releases"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeReposCreateReleaseResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // ReposCreateUsingTemplate invokes repos/create-using-template operation.
 //
 // POST /repos/{template_owner}/{template_repo}/generate
@@ -32661,6 +42454,106 @@ func (c *Client) ReposCreateUsingTemplate(ctx context.Context, request ReposCrea
 	defer resp.Body.Close()
 
 	result, err := decodeReposCreateUsingTemplateResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// ReposCreateWebhook invokes repos/create-webhook operation.
+//
+// POST /repos/{owner}/{repo}/hooks
+func (c *Client) ReposCreateWebhook(ctx context.Context, request OptReposCreateWebhookReq, params ReposCreateWebhookParams) (res ReposCreateWebhookRes, err error) {
+	if err := func() error {
+		if request.Set {
+			if err := func() error {
+				if err := request.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `ReposCreateWebhook`,
+		trace.WithAttributes(otelogen.OperationID(`repos/create-webhook`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeReposCreateWebhookRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/hooks"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeReposCreateWebhookResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -33551,6 +43444,104 @@ func (c *Client) ReposDeleteDeployment(ctx context.Context, params ReposDeleteDe
 	return result, nil
 }
 
+// ReposDeleteFile invokes repos/delete-file operation.
+//
+// DELETE /repos/{owner}/{repo}/contents/{path}
+func (c *Client) ReposDeleteFile(ctx context.Context, request ReposDeleteFileReq, params ReposDeleteFileParams) (res ReposDeleteFileRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `ReposDeleteFile`,
+		trace.WithAttributes(otelogen.OperationID(`repos/delete-file`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeReposDeleteFileRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/contents/"
+	{
+		// Encode "path" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "path",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Path))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+
+	r := ht.NewRequest(ctx, "DELETE", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeReposDeleteFileResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // ReposDeleteInvitation invokes repos/delete-invitation operation.
 //
 // DELETE /repos/{owner}/{repo}/invitations/{invitation_id}
@@ -33628,6 +43619,76 @@ func (c *Client) ReposDeleteInvitation(ctx context.Context, params ReposDeleteIn
 	defer resp.Body.Close()
 
 	result, err := decodeReposDeleteInvitationResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// ReposDeletePagesSite invokes repos/delete-pages-site operation.
+//
+// DELETE /repos/{owner}/{repo}/pages
+func (c *Client) ReposDeletePagesSite(ctx context.Context, params ReposDeletePagesSiteParams) (res ReposDeletePagesSiteRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `ReposDeletePagesSite`,
+		trace.WithAttributes(otelogen.OperationID(`repos/delete-pages-site`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/pages"
+
+	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeReposDeletePagesSiteResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -35691,6 +45752,125 @@ func (c *Client) ReposGetCombinedStatusForRef(ctx context.Context, params ReposG
 	return result, nil
 }
 
+// ReposGetCommit invokes repos/get-commit operation.
+//
+// GET /repos/{owner}/{repo}/commits/{ref}
+func (c *Client) ReposGetCommit(ctx context.Context, params ReposGetCommitParams) (res ReposGetCommitRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `ReposGetCommit`,
+		trace.WithAttributes(otelogen.OperationID(`repos/get-commit`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/commits/"
+	{
+		// Encode "ref" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "ref",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Ref))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+
+	q := u.Query()
+	{
+		// Encode "page" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Page.Get(); ok {
+				return e.EncodeValue(conv.IntToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["page"] = e.Result()
+	}
+	{
+		// Encode "per_page" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.PerPage.Get(); ok {
+				return e.EncodeValue(conv.IntToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["per_page"] = e.Result()
+	}
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeReposGetCommitResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // ReposGetCommitActivityStats invokes repos/get-commit-activity-stats operation.
 //
 // GET /repos/{owner}/{repo}/stats/commit_activity
@@ -36147,6 +46327,90 @@ func (c *Client) ReposGetDeployKey(ctx context.Context, params ReposGetDeployKey
 	defer resp.Body.Close()
 
 	result, err := decodeReposGetDeployKeyResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// ReposGetDeployment invokes repos/get-deployment operation.
+//
+// GET /repos/{owner}/{repo}/deployments/{deployment_id}
+func (c *Client) ReposGetDeployment(ctx context.Context, params ReposGetDeploymentParams) (res ReposGetDeploymentRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `ReposGetDeployment`,
+		trace.WithAttributes(otelogen.OperationID(`repos/get-deployment`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/deployments/"
+	{
+		// Encode "deployment_id" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "deployment_id",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.IntToString(params.DeploymentID))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeReposGetDeploymentResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -36835,6 +47099,198 @@ func (c *Client) ReposGetPunchCardStats(ctx context.Context, params ReposGetPunc
 	defer resp.Body.Close()
 
 	result, err := decodeReposGetPunchCardStatsResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// ReposGetReadme invokes repos/get-readme operation.
+//
+// GET /repos/{owner}/{repo}/readme
+func (c *Client) ReposGetReadme(ctx context.Context, params ReposGetReadmeParams) (res ReposGetReadmeRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `ReposGetReadme`,
+		trace.WithAttributes(otelogen.OperationID(`repos/get-readme`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/readme"
+
+	q := u.Query()
+	{
+		// Encode "ref" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Ref.Get(); ok {
+				return e.EncodeValue(conv.StringToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["ref"] = e.Result()
+	}
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeReposGetReadmeResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// ReposGetReadmeInDirectory invokes repos/get-readme-in-directory operation.
+//
+// GET /repos/{owner}/{repo}/readme/{dir}
+func (c *Client) ReposGetReadmeInDirectory(ctx context.Context, params ReposGetReadmeInDirectoryParams) (res ReposGetReadmeInDirectoryRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `ReposGetReadmeInDirectory`,
+		trace.WithAttributes(otelogen.OperationID(`repos/get-readme-in-directory`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/readme/"
+	{
+		// Encode "dir" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "dir",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Dir))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+
+	q := u.Query()
+	{
+		// Encode "ref" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Ref.Get(); ok {
+				return e.EncodeValue(conv.StringToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["ref"] = e.Result()
+	}
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeReposGetReadmeInDirectoryResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -37747,6 +48203,105 @@ func (c *Client) ReposGetWebhookConfigForRepo(ctx context.Context, params ReposG
 	return result, nil
 }
 
+// ReposGetWebhookDelivery invokes repos/get-webhook-delivery operation.
+//
+// GET /repos/{owner}/{repo}/hooks/{hook_id}/deliveries/{delivery_id}
+func (c *Client) ReposGetWebhookDelivery(ctx context.Context, params ReposGetWebhookDeliveryParams) (res ReposGetWebhookDeliveryRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `ReposGetWebhookDelivery`,
+		trace.WithAttributes(otelogen.OperationID(`repos/get-webhook-delivery`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/hooks/"
+	{
+		// Encode "hook_id" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "hook_id",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.IntToString(params.HookID))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/deliveries/"
+	{
+		// Encode "delivery_id" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "delivery_id",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.IntToString(params.DeliveryID))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeReposGetWebhookDeliveryResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // ReposListAutolinks invokes repos/list-autolinks operation.
 //
 // GET /repos/{owner}/{repo}/autolinks
@@ -37950,6 +48505,91 @@ func (c *Client) ReposListBranches(ctx context.Context, params ReposListBranches
 	defer resp.Body.Close()
 
 	result, err := decodeReposListBranchesResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// ReposListBranchesForHeadCommit invokes repos/list-branches-for-head-commit operation.
+//
+// GET /repos/{owner}/{repo}/commits/{commit_sha}/branches-where-head
+func (c *Client) ReposListBranchesForHeadCommit(ctx context.Context, params ReposListBranchesForHeadCommitParams) (res ReposListBranchesForHeadCommitRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `ReposListBranchesForHeadCommit`,
+		trace.WithAttributes(otelogen.OperationID(`repos/list-branches-for-head-commit`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/commits/"
+	{
+		// Encode "commit_sha" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "commit_sha",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.CommitSha))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/branches-where-head"
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeReposListBranchesForHeadCommitResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -38954,6 +49594,362 @@ func (c *Client) ReposListDeploymentStatuses(ctx context.Context, params ReposLi
 	return result, nil
 }
 
+// ReposListDeployments invokes repos/list-deployments operation.
+//
+// GET /repos/{owner}/{repo}/deployments
+func (c *Client) ReposListDeployments(ctx context.Context, params ReposListDeploymentsParams) (res []Deployment, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `ReposListDeployments`,
+		trace.WithAttributes(otelogen.OperationID(`repos/list-deployments`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/deployments"
+
+	q := u.Query()
+	{
+		// Encode "sha" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Sha.Get(); ok {
+				return e.EncodeValue(conv.StringToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["sha"] = e.Result()
+	}
+	{
+		// Encode "ref" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Ref.Get(); ok {
+				return e.EncodeValue(conv.StringToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["ref"] = e.Result()
+	}
+	{
+		// Encode "task" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Task.Get(); ok {
+				return e.EncodeValue(conv.StringToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["task"] = e.Result()
+	}
+	{
+		// Encode "environment" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Environment.Get(); ok {
+				return e.EncodeValue(conv.StringToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["environment"] = e.Result()
+	}
+	{
+		// Encode "per_page" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.PerPage.Get(); ok {
+				return e.EncodeValue(conv.IntToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["per_page"] = e.Result()
+	}
+	{
+		// Encode "page" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Page.Get(); ok {
+				return e.EncodeValue(conv.IntToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["page"] = e.Result()
+	}
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeReposListDeploymentsResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// ReposListForAuthenticatedUser invokes repos/list-for-authenticated-user operation.
+//
+// GET /user/repos
+func (c *Client) ReposListForAuthenticatedUser(ctx context.Context, params ReposListForAuthenticatedUserParams) (res ReposListForAuthenticatedUserRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `ReposListForAuthenticatedUser`,
+		trace.WithAttributes(otelogen.OperationID(`repos/list-for-authenticated-user`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/user/repos"
+
+	q := u.Query()
+	{
+		// Encode "visibility" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Visibility.Get(); ok {
+				return e.EncodeValue(conv.StringToString(string(val)))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["visibility"] = e.Result()
+	}
+	{
+		// Encode "affiliation" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Affiliation.Get(); ok {
+				return e.EncodeValue(conv.StringToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["affiliation"] = e.Result()
+	}
+	{
+		// Encode "type" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Type.Get(); ok {
+				return e.EncodeValue(conv.StringToString(string(val)))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["type"] = e.Result()
+	}
+	{
+		// Encode "sort" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Sort.Get(); ok {
+				return e.EncodeValue(conv.StringToString(string(val)))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["sort"] = e.Result()
+	}
+	{
+		// Encode "direction" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Direction.Get(); ok {
+				return e.EncodeValue(conv.StringToString(string(val)))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["direction"] = e.Result()
+	}
+	{
+		// Encode "per_page" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.PerPage.Get(); ok {
+				return e.EncodeValue(conv.IntToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["per_page"] = e.Result()
+	}
+	{
+		// Encode "page" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Page.Get(); ok {
+				return e.EncodeValue(conv.IntToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["page"] = e.Result()
+	}
+	{
+		// Encode "since" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Since.Get(); ok {
+				return e.EncodeValue(conv.TimeToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["since"] = e.Result()
+	}
+	{
+		// Encode "before" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Before.Get(); ok {
+				return e.EncodeValue(conv.TimeToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["before"] = e.Result()
+	}
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeReposListForAuthenticatedUserResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // ReposListForOrg invokes repos/list-for-org operation.
 //
 // GET /orgs/{org}/repos
@@ -39706,6 +50702,65 @@ func (c *Client) ReposListPagesBuilds(ctx context.Context, params ReposListPages
 	return result, nil
 }
 
+// ReposListPublic invokes repos/list-public operation.
+//
+// GET /repositories
+func (c *Client) ReposListPublic(ctx context.Context, params ReposListPublicParams) (res ReposListPublicRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `ReposListPublic`,
+		trace.WithAttributes(otelogen.OperationID(`repos/list-public`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repositories"
+
+	q := u.Query()
+	{
+		// Encode "since" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Since.Get(); ok {
+				return e.EncodeValue(conv.IntToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["since"] = e.Result()
+	}
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeReposListPublicResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // ReposListPullRequestsAssociatedWithCommit invokes repos/list-pull-requests-associated-with-commit operation.
 //
 // GET /repos/{owner}/{repo}/commits/{commit_sha}/pulls
@@ -40261,6 +51316,126 @@ func (c *Client) ReposListTeams(ctx context.Context, params ReposListTeamsParams
 	return result, nil
 }
 
+// ReposListWebhookDeliveries invokes repos/list-webhook-deliveries operation.
+//
+// GET /repos/{owner}/{repo}/hooks/{hook_id}/deliveries
+func (c *Client) ReposListWebhookDeliveries(ctx context.Context, params ReposListWebhookDeliveriesParams) (res ReposListWebhookDeliveriesRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `ReposListWebhookDeliveries`,
+		trace.WithAttributes(otelogen.OperationID(`repos/list-webhook-deliveries`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/hooks/"
+	{
+		// Encode "hook_id" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "hook_id",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.IntToString(params.HookID))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/deliveries"
+
+	q := u.Query()
+	{
+		// Encode "per_page" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.PerPage.Get(); ok {
+				return e.EncodeValue(conv.IntToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["per_page"] = e.Result()
+	}
+	{
+		// Encode "cursor" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Cursor.Get(); ok {
+				return e.EncodeValue(conv.StringToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["cursor"] = e.Result()
+	}
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeReposListWebhookDeliveriesResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // ReposListWebhooks invokes repos/list-webhooks operation.
 //
 // GET /repos/{owner}/{repo}/hooks
@@ -40359,6 +51534,90 @@ func (c *Client) ReposListWebhooks(ctx context.Context, params ReposListWebhooks
 	defer resp.Body.Close()
 
 	result, err := decodeReposListWebhooksResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// ReposMerge invokes repos/merge operation.
+//
+// POST /repos/{owner}/{repo}/merges
+func (c *Client) ReposMerge(ctx context.Context, request ReposMergeReq, params ReposMergeParams) (res ReposMergeRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `ReposMerge`,
+		trace.WithAttributes(otelogen.OperationID(`repos/merge`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeReposMergeRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/merges"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeReposMergeResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -40535,6 +51794,221 @@ func (c *Client) ReposPingWebhook(ctx context.Context, params ReposPingWebhookPa
 	return result, nil
 }
 
+// ReposRedeliverWebhookDelivery invokes repos/redeliver-webhook-delivery operation.
+//
+// POST /repos/{owner}/{repo}/hooks/{hook_id}/deliveries/{delivery_id}/attempts
+func (c *Client) ReposRedeliverWebhookDelivery(ctx context.Context, params ReposRedeliverWebhookDeliveryParams) (res ReposRedeliverWebhookDeliveryRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `ReposRedeliverWebhookDelivery`,
+		trace.WithAttributes(otelogen.OperationID(`repos/redeliver-webhook-delivery`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/hooks/"
+	{
+		// Encode "hook_id" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "hook_id",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.IntToString(params.HookID))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/deliveries/"
+	{
+		// Encode "delivery_id" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "delivery_id",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.IntToString(params.DeliveryID))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/attempts"
+
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeReposRedeliverWebhookDeliveryResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// ReposRemoveAppAccessRestrictions invokes repos/remove-app-access-restrictions operation.
+//
+// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps
+func (c *Client) ReposRemoveAppAccessRestrictions(ctx context.Context, request OptReposRemoveAppAccessRestrictionsReq, params ReposRemoveAppAccessRestrictionsParams) (res ReposRemoveAppAccessRestrictionsRes, err error) {
+	if err := func() error {
+		if request.Set {
+			if err := func() error {
+				if err := request.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `ReposRemoveAppAccessRestrictions`,
+		trace.WithAttributes(otelogen.OperationID(`repos/remove-app-access-restrictions`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeReposRemoveAppAccessRestrictionsRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/branches/"
+	{
+		// Encode "branch" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "branch",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Branch))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/protection/restrictions/apps"
+
+	r := ht.NewRequest(ctx, "DELETE", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeReposRemoveAppAccessRestrictionsResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // ReposRemoveCollaborator invokes repos/remove-collaborator operation.
 //
 // DELETE /repos/{owner}/{repo}/collaborators/{username}
@@ -40612,6 +52086,121 @@ func (c *Client) ReposRemoveCollaborator(ctx context.Context, params ReposRemove
 	defer resp.Body.Close()
 
 	result, err := decodeReposRemoveCollaboratorResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// ReposRemoveStatusCheckContexts invokes repos/remove-status-check-contexts operation.
+//
+// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts
+func (c *Client) ReposRemoveStatusCheckContexts(ctx context.Context, request OptReposRemoveStatusCheckContextsReq, params ReposRemoveStatusCheckContextsParams) (res ReposRemoveStatusCheckContextsRes, err error) {
+	if err := func() error {
+		if request.Set {
+			if err := func() error {
+				if err := request.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `ReposRemoveStatusCheckContexts`,
+		trace.WithAttributes(otelogen.OperationID(`repos/remove-status-check-contexts`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeReposRemoveStatusCheckContextsRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/branches/"
+	{
+		// Encode "branch" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "branch",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Branch))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/protection/required_status_checks/contexts"
+
+	r := ht.NewRequest(ctx, "DELETE", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeReposRemoveStatusCheckContextsResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -40697,6 +52286,335 @@ func (c *Client) ReposRemoveStatusCheckProtection(ctx context.Context, params Re
 	defer resp.Body.Close()
 
 	result, err := decodeReposRemoveStatusCheckProtectionResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// ReposRemoveTeamAccessRestrictions invokes repos/remove-team-access-restrictions operation.
+//
+// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams
+func (c *Client) ReposRemoveTeamAccessRestrictions(ctx context.Context, request OptReposRemoveTeamAccessRestrictionsReq, params ReposRemoveTeamAccessRestrictionsParams) (res ReposRemoveTeamAccessRestrictionsRes, err error) {
+	if err := func() error {
+		if request.Set {
+			if err := func() error {
+				if err := request.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `ReposRemoveTeamAccessRestrictions`,
+		trace.WithAttributes(otelogen.OperationID(`repos/remove-team-access-restrictions`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeReposRemoveTeamAccessRestrictionsRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/branches/"
+	{
+		// Encode "branch" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "branch",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Branch))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/protection/restrictions/teams"
+
+	r := ht.NewRequest(ctx, "DELETE", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeReposRemoveTeamAccessRestrictionsResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// ReposRemoveUserAccessRestrictions invokes repos/remove-user-access-restrictions operation.
+//
+// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users
+func (c *Client) ReposRemoveUserAccessRestrictions(ctx context.Context, request OptReposRemoveUserAccessRestrictionsReq, params ReposRemoveUserAccessRestrictionsParams) (res ReposRemoveUserAccessRestrictionsRes, err error) {
+	if err := func() error {
+		if request.Set {
+			if err := func() error {
+				if err := request.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `ReposRemoveUserAccessRestrictions`,
+		trace.WithAttributes(otelogen.OperationID(`repos/remove-user-access-restrictions`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeReposRemoveUserAccessRestrictionsRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/branches/"
+	{
+		// Encode "branch" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "branch",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Branch))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/protection/restrictions/users"
+
+	r := ht.NewRequest(ctx, "DELETE", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeReposRemoveUserAccessRestrictionsResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// ReposRenameBranch invokes repos/rename-branch operation.
+//
+// POST /repos/{owner}/{repo}/branches/{branch}/rename
+func (c *Client) ReposRenameBranch(ctx context.Context, request OptReposRenameBranchReq, params ReposRenameBranchParams) (res ReposRenameBranchRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `ReposRenameBranch`,
+		trace.WithAttributes(otelogen.OperationID(`repos/rename-branch`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeReposRenameBranchRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/branches/"
+	{
+		// Encode "branch" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "branch",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Branch))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/rename"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeReposRenameBranchResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -40951,6 +52869,466 @@ func (c *Client) ReposSetAdminBranchProtection(ctx context.Context, params Repos
 	return result, nil
 }
 
+// ReposSetAppAccessRestrictions invokes repos/set-app-access-restrictions operation.
+//
+// PUT /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps
+func (c *Client) ReposSetAppAccessRestrictions(ctx context.Context, request OptReposSetAppAccessRestrictionsReq, params ReposSetAppAccessRestrictionsParams) (res ReposSetAppAccessRestrictionsRes, err error) {
+	if err := func() error {
+		if request.Set {
+			if err := func() error {
+				if err := request.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `ReposSetAppAccessRestrictions`,
+		trace.WithAttributes(otelogen.OperationID(`repos/set-app-access-restrictions`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeReposSetAppAccessRestrictionsRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/branches/"
+	{
+		// Encode "branch" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "branch",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Branch))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/protection/restrictions/apps"
+
+	r := ht.NewRequest(ctx, "PUT", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeReposSetAppAccessRestrictionsResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// ReposSetStatusCheckContexts invokes repos/set-status-check-contexts operation.
+//
+// PUT /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts
+func (c *Client) ReposSetStatusCheckContexts(ctx context.Context, request OptReposSetStatusCheckContextsReq, params ReposSetStatusCheckContextsParams) (res ReposSetStatusCheckContextsRes, err error) {
+	if err := func() error {
+		if request.Set {
+			if err := func() error {
+				if err := request.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `ReposSetStatusCheckContexts`,
+		trace.WithAttributes(otelogen.OperationID(`repos/set-status-check-contexts`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeReposSetStatusCheckContextsRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/branches/"
+	{
+		// Encode "branch" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "branch",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Branch))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/protection/required_status_checks/contexts"
+
+	r := ht.NewRequest(ctx, "PUT", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeReposSetStatusCheckContextsResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// ReposSetTeamAccessRestrictions invokes repos/set-team-access-restrictions operation.
+//
+// PUT /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams
+func (c *Client) ReposSetTeamAccessRestrictions(ctx context.Context, request OptReposSetTeamAccessRestrictionsReq, params ReposSetTeamAccessRestrictionsParams) (res ReposSetTeamAccessRestrictionsRes, err error) {
+	if err := func() error {
+		if request.Set {
+			if err := func() error {
+				if err := request.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `ReposSetTeamAccessRestrictions`,
+		trace.WithAttributes(otelogen.OperationID(`repos/set-team-access-restrictions`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeReposSetTeamAccessRestrictionsRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/branches/"
+	{
+		// Encode "branch" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "branch",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Branch))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/protection/restrictions/teams"
+
+	r := ht.NewRequest(ctx, "PUT", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeReposSetTeamAccessRestrictionsResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// ReposSetUserAccessRestrictions invokes repos/set-user-access-restrictions operation.
+//
+// PUT /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users
+func (c *Client) ReposSetUserAccessRestrictions(ctx context.Context, request OptReposSetUserAccessRestrictionsReq, params ReposSetUserAccessRestrictionsParams) (res ReposSetUserAccessRestrictionsRes, err error) {
+	if err := func() error {
+		if request.Set {
+			if err := func() error {
+				if err := request.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `ReposSetUserAccessRestrictions`,
+		trace.WithAttributes(otelogen.OperationID(`repos/set-user-access-restrictions`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeReposSetUserAccessRestrictionsRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/branches/"
+	{
+		// Encode "branch" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "branch",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Branch))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/protection/restrictions/users"
+
+	r := ht.NewRequest(ctx, "PUT", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeReposSetUserAccessRestrictionsResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // ReposTestPushWebhook invokes repos/test-push-webhook operation.
 //
 // POST /repos/{owner}/{repo}/hooks/{hook_id}/tests
@@ -41113,6 +53491,105 @@ func (c *Client) ReposTransfer(ctx context.Context, request ReposTransferReq, pa
 	defer resp.Body.Close()
 
 	result, err := decodeReposTransferResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// ReposUpdate invokes repos/update operation.
+//
+// PATCH /repos/{owner}/{repo}
+func (c *Client) ReposUpdate(ctx context.Context, request OptReposUpdateReq, params ReposUpdateParams) (res ReposUpdateRes, err error) {
+	if err := func() error {
+		if request.Set {
+			if err := func() error {
+				if err := request.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `ReposUpdate`,
+		trace.WithAttributes(otelogen.OperationID(`repos/update`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeReposUpdateRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+
+	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeReposUpdateResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -41439,6 +53916,105 @@ func (c *Client) ReposUpdateInvitation(ctx context.Context, request OptReposUpda
 	return result, nil
 }
 
+// ReposUpdatePullRequestReviewProtection invokes repos/update-pull-request-review-protection operation.
+//
+// PATCH /repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews
+func (c *Client) ReposUpdatePullRequestReviewProtection(ctx context.Context, request OptReposUpdatePullRequestReviewProtectionReq, params ReposUpdatePullRequestReviewProtectionParams) (res ReposUpdatePullRequestReviewProtectionRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `ReposUpdatePullRequestReviewProtection`,
+		trace.WithAttributes(otelogen.OperationID(`repos/update-pull-request-review-protection`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeReposUpdatePullRequestReviewProtectionRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/branches/"
+	{
+		// Encode "branch" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "branch",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Branch))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/protection/required_pull_request_reviews"
+
+	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeReposUpdatePullRequestReviewProtectionResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // ReposUpdateRelease invokes repos/update-release operation.
 //
 // PATCH /repos/{owner}/{repo}/releases/{release_id}
@@ -41635,6 +54211,219 @@ func (c *Client) ReposUpdateReleaseAsset(ctx context.Context, request OptReposUp
 	return result, nil
 }
 
+// ReposUpdateStatusCheckProtection invokes repos/update-status-check-protection operation.
+//
+// PATCH /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks
+func (c *Client) ReposUpdateStatusCheckProtection(ctx context.Context, request OptReposUpdateStatusCheckProtectionReq, params ReposUpdateStatusCheckProtectionParams) (res ReposUpdateStatusCheckProtectionRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `ReposUpdateStatusCheckProtection`,
+		trace.WithAttributes(otelogen.OperationID(`repos/update-status-check-protection`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeReposUpdateStatusCheckProtectionRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/branches/"
+	{
+		// Encode "branch" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "branch",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Branch))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/protection/required_status_checks"
+
+	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeReposUpdateStatusCheckProtectionResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// ReposUpdateWebhook invokes repos/update-webhook operation.
+//
+// PATCH /repos/{owner}/{repo}/hooks/{hook_id}
+func (c *Client) ReposUpdateWebhook(ctx context.Context, request OptReposUpdateWebhookReq, params ReposUpdateWebhookParams) (res ReposUpdateWebhookRes, err error) {
+	if err := func() error {
+		if request.Set {
+			if err := func() error {
+				if err := request.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `ReposUpdateWebhook`,
+		trace.WithAttributes(otelogen.OperationID(`repos/update-webhook`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeReposUpdateWebhookRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/hooks/"
+	{
+		// Encode "hook_id" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "hook_id",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.IntToString(params.HookID))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+
+	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeReposUpdateWebhookResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // ReposUpdateWebhookConfigForRepo invokes repos/update-webhook-config-for-repo operation.
 //
 // PATCH /repos/{owner}/{repo}/hooks/{hook_id}/config
@@ -41819,6 +54608,126 @@ func (c *Client) ScimDeleteUserFromOrg(ctx context.Context, params ScimDeleteUse
 	return result, nil
 }
 
+// SearchCode invokes search/code operation.
+//
+// GET /search/code
+func (c *Client) SearchCode(ctx context.Context, params SearchCodeParams) (res SearchCodeRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `SearchCode`,
+		trace.WithAttributes(otelogen.OperationID(`search/code`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/search/code"
+
+	q := u.Query()
+	{
+		// Encode "q" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Q))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["q"] = e.Result()
+	}
+	{
+		// Encode "sort" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Sort.Get(); ok {
+				return e.EncodeValue(conv.StringToString(string(val)))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["sort"] = e.Result()
+	}
+	{
+		// Encode "order" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Order.Get(); ok {
+				return e.EncodeValue(conv.StringToString(string(val)))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["order"] = e.Result()
+	}
+	{
+		// Encode "per_page" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.PerPage.Get(); ok {
+				return e.EncodeValue(conv.IntToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["per_page"] = e.Result()
+	}
+	{
+		// Encode "page" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Page.Get(); ok {
+				return e.EncodeValue(conv.IntToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["page"] = e.Result()
+	}
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeSearchCodeResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // SearchCommits invokes search/commits operation.
 //
 // GET /search/commits
@@ -41939,6 +54848,379 @@ func (c *Client) SearchCommits(ctx context.Context, params SearchCommitsParams) 
 	return result, nil
 }
 
+// SearchIssuesAndPullRequests invokes search/issues-and-pull-requests operation.
+//
+// GET /search/issues
+func (c *Client) SearchIssuesAndPullRequests(ctx context.Context, params SearchIssuesAndPullRequestsParams) (res SearchIssuesAndPullRequestsRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `SearchIssuesAndPullRequests`,
+		trace.WithAttributes(otelogen.OperationID(`search/issues-and-pull-requests`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/search/issues"
+
+	q := u.Query()
+	{
+		// Encode "q" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Q))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["q"] = e.Result()
+	}
+	{
+		// Encode "sort" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Sort.Get(); ok {
+				return e.EncodeValue(conv.StringToString(string(val)))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["sort"] = e.Result()
+	}
+	{
+		// Encode "order" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Order.Get(); ok {
+				return e.EncodeValue(conv.StringToString(string(val)))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["order"] = e.Result()
+	}
+	{
+		// Encode "per_page" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.PerPage.Get(); ok {
+				return e.EncodeValue(conv.IntToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["per_page"] = e.Result()
+	}
+	{
+		// Encode "page" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Page.Get(); ok {
+				return e.EncodeValue(conv.IntToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["page"] = e.Result()
+	}
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeSearchIssuesAndPullRequestsResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// SearchLabels invokes search/labels operation.
+//
+// GET /search/labels
+func (c *Client) SearchLabels(ctx context.Context, params SearchLabelsParams) (res SearchLabelsRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `SearchLabels`,
+		trace.WithAttributes(otelogen.OperationID(`search/labels`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/search/labels"
+
+	q := u.Query()
+	{
+		// Encode "repository_id" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.IntToString(params.RepositoryID))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["repository_id"] = e.Result()
+	}
+	{
+		// Encode "q" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Q))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["q"] = e.Result()
+	}
+	{
+		// Encode "sort" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Sort.Get(); ok {
+				return e.EncodeValue(conv.StringToString(string(val)))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["sort"] = e.Result()
+	}
+	{
+		// Encode "order" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Order.Get(); ok {
+				return e.EncodeValue(conv.StringToString(string(val)))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["order"] = e.Result()
+	}
+	{
+		// Encode "per_page" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.PerPage.Get(); ok {
+				return e.EncodeValue(conv.IntToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["per_page"] = e.Result()
+	}
+	{
+		// Encode "page" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Page.Get(); ok {
+				return e.EncodeValue(conv.IntToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["page"] = e.Result()
+	}
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeSearchLabelsResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// SearchRepos invokes search/repos operation.
+//
+// GET /search/repositories
+func (c *Client) SearchRepos(ctx context.Context, params SearchReposParams) (res SearchReposRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `SearchRepos`,
+		trace.WithAttributes(otelogen.OperationID(`search/repos`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/search/repositories"
+
+	q := u.Query()
+	{
+		// Encode "q" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Q))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["q"] = e.Result()
+	}
+	{
+		// Encode "sort" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Sort.Get(); ok {
+				return e.EncodeValue(conv.StringToString(string(val)))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["sort"] = e.Result()
+	}
+	{
+		// Encode "order" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Order.Get(); ok {
+				return e.EncodeValue(conv.StringToString(string(val)))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["order"] = e.Result()
+	}
+	{
+		// Encode "per_page" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.PerPage.Get(); ok {
+				return e.EncodeValue(conv.IntToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["per_page"] = e.Result()
+	}
+	{
+		// Encode "page" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Page.Get(); ok {
+				return e.EncodeValue(conv.IntToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["page"] = e.Result()
+	}
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeSearchReposResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // SearchTopics invokes search/topics operation.
 //
 // GET /search/topics
@@ -42020,6 +55302,126 @@ func (c *Client) SearchTopics(ctx context.Context, params SearchTopicsParams) (r
 	defer resp.Body.Close()
 
 	result, err := decodeSearchTopicsResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// SearchUsers invokes search/users operation.
+//
+// GET /search/users
+func (c *Client) SearchUsers(ctx context.Context, params SearchUsersParams) (res SearchUsersRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `SearchUsers`,
+		trace.WithAttributes(otelogen.OperationID(`search/users`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/search/users"
+
+	q := u.Query()
+	{
+		// Encode "q" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Q))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["q"] = e.Result()
+	}
+	{
+		// Encode "sort" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Sort.Get(); ok {
+				return e.EncodeValue(conv.StringToString(string(val)))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["sort"] = e.Result()
+	}
+	{
+		// Encode "order" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Order.Get(); ok {
+				return e.EncodeValue(conv.StringToString(string(val)))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["order"] = e.Result()
+	}
+	{
+		// Encode "per_page" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.PerPage.Get(); ok {
+				return e.EncodeValue(conv.IntToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["per_page"] = e.Result()
+	}
+	{
+		// Encode "page" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Page.Get(); ok {
+				return e.EncodeValue(conv.IntToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["page"] = e.Result()
+	}
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeSearchUsersResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -42878,6 +56280,105 @@ func (c *Client) TeamsAddOrUpdateProjectPermissionsInOrg(ctx context.Context, re
 	return result, nil
 }
 
+// TeamsAddOrUpdateProjectPermissionsLegacy invokes teams/add-or-update-project-permissions-legacy operation.
+//
+// PUT /teams/{team_id}/projects/{project_id}
+func (c *Client) TeamsAddOrUpdateProjectPermissionsLegacy(ctx context.Context, request OptTeamsAddOrUpdateProjectPermissionsLegacyReq, params TeamsAddOrUpdateProjectPermissionsLegacyParams) (res TeamsAddOrUpdateProjectPermissionsLegacyRes, err error) {
+	if err := func() error {
+		if request.Set {
+			if err := func() error {
+				if err := request.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsAddOrUpdateProjectPermissionsLegacy`,
+		trace.WithAttributes(otelogen.OperationID(`teams/add-or-update-project-permissions-legacy`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTeamsAddOrUpdateProjectPermissionsLegacyRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/teams/"
+	{
+		// Encode "team_id" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "team_id",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.IntToString(params.TeamID))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/projects/"
+	{
+		// Encode "project_id" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "project_id",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.IntToString(params.ProjectID))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+
+	r := ht.NewRequest(ctx, "PUT", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTeamsAddOrUpdateProjectPermissionsLegacyResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // TeamsAddOrUpdateRepoPermissionsInOrg invokes teams/add-or-update-repo-permissions-in-org operation.
 //
 // PUT /orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}
@@ -43000,6 +56501,120 @@ func (c *Client) TeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, reque
 	defer resp.Body.Close()
 
 	result, err := decodeTeamsAddOrUpdateRepoPermissionsInOrgResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TeamsAddOrUpdateRepoPermissionsLegacy invokes teams/add-or-update-repo-permissions-legacy operation.
+//
+// PUT /teams/{team_id}/repos/{owner}/{repo}
+func (c *Client) TeamsAddOrUpdateRepoPermissionsLegacy(ctx context.Context, request OptTeamsAddOrUpdateRepoPermissionsLegacyReq, params TeamsAddOrUpdateRepoPermissionsLegacyParams) (res TeamsAddOrUpdateRepoPermissionsLegacyRes, err error) {
+	if err := func() error {
+		if request.Set {
+			if err := func() error {
+				if err := request.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsAddOrUpdateRepoPermissionsLegacy`,
+		trace.WithAttributes(otelogen.OperationID(`teams/add-or-update-repo-permissions-legacy`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTeamsAddOrUpdateRepoPermissionsLegacyRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/teams/"
+	{
+		// Encode "team_id" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "team_id",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.IntToString(params.TeamID))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+
+	r := ht.NewRequest(ctx, "PUT", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTeamsAddOrUpdateRepoPermissionsLegacyResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -43336,6 +56951,83 @@ func (c *Client) TeamsCheckPermissionsForRepoLegacy(ctx context.Context, params 
 	defer resp.Body.Close()
 
 	result, err := decodeTeamsCheckPermissionsForRepoLegacyResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TeamsCreate invokes teams/create operation.
+//
+// POST /orgs/{org}/teams
+func (c *Client) TeamsCreate(ctx context.Context, request TeamsCreateReq, params TeamsCreateParams) (res TeamsCreateRes, err error) {
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsCreate`,
+		trace.WithAttributes(otelogen.OperationID(`teams/create`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTeamsCreateRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/orgs/"
+	{
+		// Encode "org" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "org",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Org))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/teams"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTeamsCreateResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -43763,6 +57455,83 @@ func (c *Client) TeamsCreateOrUpdateIdpGroupConnectionsInOrg(ctx context.Context
 	return result, nil
 }
 
+// TeamsCreateOrUpdateIdpGroupConnectionsLegacy invokes teams/create-or-update-idp-group-connections-legacy operation.
+//
+// PATCH /teams/{team_id}/team-sync/group-mappings
+func (c *Client) TeamsCreateOrUpdateIdpGroupConnectionsLegacy(ctx context.Context, request TeamsCreateOrUpdateIdpGroupConnectionsLegacyReq, params TeamsCreateOrUpdateIdpGroupConnectionsLegacyParams) (res TeamsCreateOrUpdateIdpGroupConnectionsLegacyRes, err error) {
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsCreateOrUpdateIdpGroupConnectionsLegacy`,
+		trace.WithAttributes(otelogen.OperationID(`teams/create-or-update-idp-group-connections-legacy`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/teams/"
+	{
+		// Encode "team_id" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "team_id",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.IntToString(params.TeamID))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/team-sync/group-mappings"
+
+	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // TeamsDeleteDiscussionCommentInOrg invokes teams/delete-discussion-comment-in-org operation.
 //
 // DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}
@@ -44161,6 +57930,60 @@ func (c *Client) TeamsDeleteInOrg(ctx context.Context, params TeamsDeleteInOrgPa
 	defer resp.Body.Close()
 
 	result, err := decodeTeamsDeleteInOrgResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TeamsDeleteLegacy invokes teams/delete-legacy operation.
+//
+// DELETE /teams/{team_id}
+func (c *Client) TeamsDeleteLegacy(ctx context.Context, params TeamsDeleteLegacyParams) (res TeamsDeleteLegacyRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsDeleteLegacy`,
+		trace.WithAttributes(otelogen.OperationID(`teams/delete-legacy`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/teams/"
+	{
+		// Encode "team_id" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "team_id",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.IntToString(params.TeamID))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+
+	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTeamsDeleteLegacyResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -45037,6 +58860,96 @@ func (c *Client) TeamsListChildInOrg(ctx context.Context, params TeamsListChildI
 	defer resp.Body.Close()
 
 	result, err := decodeTeamsListChildInOrgResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TeamsListChildLegacy invokes teams/list-child-legacy operation.
+//
+// GET /teams/{team_id}/teams
+func (c *Client) TeamsListChildLegacy(ctx context.Context, params TeamsListChildLegacyParams) (res TeamsListChildLegacyRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsListChildLegacy`,
+		trace.WithAttributes(otelogen.OperationID(`teams/list-child-legacy`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/teams/"
+	{
+		// Encode "team_id" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "team_id",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.IntToString(params.TeamID))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/teams"
+
+	q := u.Query()
+	{
+		// Encode "per_page" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.PerPage.Get(); ok {
+				return e.EncodeValue(conv.IntToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["per_page"] = e.Result()
+	}
+	{
+		// Encode "page" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Page.Get(); ok {
+				return e.EncodeValue(conv.IntToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["page"] = e.Result()
+	}
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTeamsListChildLegacyResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -46952,6 +60865,75 @@ func (c *Client) TeamsRemoveProjectInOrg(ctx context.Context, params TeamsRemove
 	return result, nil
 }
 
+// TeamsRemoveProjectLegacy invokes teams/remove-project-legacy operation.
+//
+// DELETE /teams/{team_id}/projects/{project_id}
+func (c *Client) TeamsRemoveProjectLegacy(ctx context.Context, params TeamsRemoveProjectLegacyParams) (res TeamsRemoveProjectLegacyRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsRemoveProjectLegacy`,
+		trace.WithAttributes(otelogen.OperationID(`teams/remove-project-legacy`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/teams/"
+	{
+		// Encode "team_id" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "team_id",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.IntToString(params.TeamID))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/projects/"
+	{
+		// Encode "project_id" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "project_id",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.IntToString(params.ProjectID))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+
+	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTeamsRemoveProjectLegacyResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // TeamsRemoveRepoInOrg invokes teams/remove-repo-in-org operation.
 //
 // DELETE /orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}
@@ -47626,6 +61608,206 @@ func (c *Client) TeamsUpdateInOrg(ctx context.Context, request OptTeamsUpdateInO
 	return result, nil
 }
 
+// TeamsUpdateLegacy invokes teams/update-legacy operation.
+//
+// PATCH /teams/{team_id}
+func (c *Client) TeamsUpdateLegacy(ctx context.Context, request TeamsUpdateLegacyReq, params TeamsUpdateLegacyParams) (res TeamsUpdateLegacyRes, err error) {
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `TeamsUpdateLegacy`,
+		trace.WithAttributes(otelogen.OperationID(`teams/update-legacy`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTeamsUpdateLegacyRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/teams/"
+	{
+		// Encode "team_id" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "team_id",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.IntToString(params.TeamID))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+
+	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTeamsUpdateLegacyResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// UsersAddEmailForAuthenticated invokes users/add-email-for-authenticated operation.
+//
+// POST /user/emails
+func (c *Client) UsersAddEmailForAuthenticated(ctx context.Context, request OptUsersAddEmailForAuthenticatedReq) (res UsersAddEmailForAuthenticatedRes, err error) {
+	if err := func() error {
+		if request.Set {
+			if err := func() error {
+				if err := request.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `UsersAddEmailForAuthenticated`,
+		trace.WithAttributes(otelogen.OperationID(`users/add-email-for-authenticated`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeUsersAddEmailForAuthenticatedRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/user/emails"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeUsersAddEmailForAuthenticatedResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// UsersBlock invokes users/block operation.
+//
+// PUT /user/blocks/{username}
+func (c *Client) UsersBlock(ctx context.Context, params UsersBlockParams) (res UsersBlockRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `UsersBlock`,
+		trace.WithAttributes(otelogen.OperationID(`users/block`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/user/blocks/"
+	{
+		// Encode "username" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "username",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Username))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+
+	r := ht.NewRequest(ctx, "PUT", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeUsersBlockResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // UsersCheckBlocked invokes users/check-blocked operation.
 //
 // GET /user/blocks/{username}
@@ -47796,6 +61978,246 @@ func (c *Client) UsersCheckPersonIsFollowedByAuthenticated(ctx context.Context, 
 	defer resp.Body.Close()
 
 	result, err := decodeUsersCheckPersonIsFollowedByAuthenticatedResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// UsersCreateGpgKeyForAuthenticated invokes users/create-gpg-key-for-authenticated operation.
+//
+// POST /user/gpg_keys
+func (c *Client) UsersCreateGpgKeyForAuthenticated(ctx context.Context, request UsersCreateGpgKeyForAuthenticatedReq) (res UsersCreateGpgKeyForAuthenticatedRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `UsersCreateGpgKeyForAuthenticated`,
+		trace.WithAttributes(otelogen.OperationID(`users/create-gpg-key-for-authenticated`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeUsersCreateGpgKeyForAuthenticatedRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/user/gpg_keys"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeUsersCreateGpgKeyForAuthenticatedResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// UsersCreatePublicSSHKeyForAuthenticated invokes users/create-public-ssh-key-for-authenticated operation.
+//
+// POST /user/keys
+func (c *Client) UsersCreatePublicSSHKeyForAuthenticated(ctx context.Context, request UsersCreatePublicSSHKeyForAuthenticatedReq) (res UsersCreatePublicSSHKeyForAuthenticatedRes, err error) {
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `UsersCreatePublicSSHKeyForAuthenticated`,
+		trace.WithAttributes(otelogen.OperationID(`users/create-public-ssh-key-for-authenticated`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeUsersCreatePublicSSHKeyForAuthenticatedRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/user/keys"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeUsersCreatePublicSSHKeyForAuthenticatedResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// UsersDeleteEmailForAuthenticated invokes users/delete-email-for-authenticated operation.
+//
+// DELETE /user/emails
+func (c *Client) UsersDeleteEmailForAuthenticated(ctx context.Context, request OptUsersDeleteEmailForAuthenticatedReq) (res UsersDeleteEmailForAuthenticatedRes, err error) {
+	if err := func() error {
+		if request.Set {
+			if err := func() error {
+				if err := request.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `UsersDeleteEmailForAuthenticated`,
+		trace.WithAttributes(otelogen.OperationID(`users/delete-email-for-authenticated`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeUsersDeleteEmailForAuthenticatedRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/user/emails"
+
+	r := ht.NewRequest(ctx, "DELETE", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeUsersDeleteEmailForAuthenticatedResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// UsersDeleteGpgKeyForAuthenticated invokes users/delete-gpg-key-for-authenticated operation.
+//
+// DELETE /user/gpg_keys/{gpg_key_id}
+func (c *Client) UsersDeleteGpgKeyForAuthenticated(ctx context.Context, params UsersDeleteGpgKeyForAuthenticatedParams) (res UsersDeleteGpgKeyForAuthenticatedRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `UsersDeleteGpgKeyForAuthenticated`,
+		trace.WithAttributes(otelogen.OperationID(`users/delete-gpg-key-for-authenticated`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/user/gpg_keys/"
+	{
+		// Encode "gpg_key_id" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "gpg_key_id",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.IntToString(params.GpgKeyID))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+
+	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeUsersDeleteGpgKeyForAuthenticatedResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -47998,6 +62420,96 @@ func (c *Client) UsersGetByUsername(ctx context.Context, params UsersGetByUserna
 	defer resp.Body.Close()
 
 	result, err := decodeUsersGetByUsernameResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// UsersGetContextForUser invokes users/get-context-for-user operation.
+//
+// GET /users/{username}/hovercard
+func (c *Client) UsersGetContextForUser(ctx context.Context, params UsersGetContextForUserParams) (res UsersGetContextForUserRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `UsersGetContextForUser`,
+		trace.WithAttributes(otelogen.OperationID(`users/get-context-for-user`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/users/"
+	{
+		// Encode "username" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "username",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Username))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/hovercard"
+
+	q := u.Query()
+	{
+		// Encode "subject_type" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.SubjectType.Get(); ok {
+				return e.EncodeValue(conv.StringToString(string(val)))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["subject_type"] = e.Result()
+	}
+	{
+		// Encode "subject_id" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.SubjectID.Get(); ok {
+				return e.EncodeValue(conv.StringToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["subject_id"] = e.Result()
+	}
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeUsersGetContextForUserResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -49038,6 +63550,68 @@ func (c *Client) UsersListPublicSSHKeysForAuthenticated(ctx context.Context, par
 	return result, nil
 }
 
+// UsersSetPrimaryEmailVisibilityForAuthenticated invokes users/set-primary-email-visibility-for-authenticated operation.
+//
+// PATCH /user/email/visibility
+func (c *Client) UsersSetPrimaryEmailVisibilityForAuthenticated(ctx context.Context, request UsersSetPrimaryEmailVisibilityForAuthenticatedReq) (res UsersSetPrimaryEmailVisibilityForAuthenticatedRes, err error) {
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `UsersSetPrimaryEmailVisibilityForAuthenticated`,
+		trace.WithAttributes(otelogen.OperationID(`users/set-primary-email-visibility-for-authenticated`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeUsersSetPrimaryEmailVisibilityForAuthenticatedRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/user/email/visibility"
+
+	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeUsersSetPrimaryEmailVisibilityForAuthenticatedResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // UsersUnblock invokes users/unblock operation.
 //
 // DELETE /user/blocks/{username}
@@ -49139,6 +63713,60 @@ func (c *Client) UsersUnfollow(ctx context.Context, params UsersUnfollowParams) 
 	defer resp.Body.Close()
 
 	result, err := decodeUsersUnfollowResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// UsersUpdateAuthenticated invokes users/update-authenticated operation.
+//
+// PATCH /user
+func (c *Client) UsersUpdateAuthenticated(ctx context.Context, request OptUsersUpdateAuthenticatedReq) (res UsersUpdateAuthenticatedRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `UsersUpdateAuthenticated`,
+		trace.WithAttributes(otelogen.OperationID(`users/update-authenticated`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeUsersUpdateAuthenticatedRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer putBuf(buf)
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/user"
+
+	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeUsersUpdateAuthenticatedResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}

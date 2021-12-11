@@ -28,11 +28,45 @@ type SumSpecMap struct {
 	Type string
 }
 
+type TypeDiscriminator struct {
+	Kind      Kind
+	Primitive PrimitiveType
+}
+
+func (t TypeDiscriminator) Less(other TypeDiscriminator) bool {
+	return t.Kind < other.Kind && t.Primitive < other.Primitive
+}
+
+func (t *TypeDiscriminator) Set(s *Type) {
+	switch s.Kind {
+	case KindPrimitive, KindEnum:
+		// Treat enum as primitive.
+		t.Kind = KindPrimitive
+		t.Primitive = s.Primitive
+	case KindArray:
+		t.Kind = KindArray
+	case KindAlias:
+		t.Set(s.AliasTo)
+	case KindPointer:
+		t.Set(s.PointerTo)
+	case KindGeneric:
+		t.Set(s.GenericOf)
+	default:
+		// Treat all other types as struct.
+		t.Kind = KindStruct
+	}
+}
+
 // SumSpec for KindSum.
 type SumSpec struct {
-	Unique        []*Field
+	Unique []*Field
+	// Discriminator is field name of sum type discriminator.
 	Discriminator string
-	Mapping       []SumSpecMap
+	// Mapping is discriminator value -> variant mapping.
+	Mapping []SumSpecMap
+
+	// TypeDiscriminator denotes to distinguish variants by type.
+	TypeDiscriminator bool
 }
 
 type Type struct {
