@@ -1,0 +1,2276 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "description": "tinkoff.ru/invest OpenAPI.",
+    "version": "1.0.0",
+    "title": "OpenAPI",
+    "termsOfService": "https://www.tinkoff.ru/invest/disclaimers/basic-information/",
+    "contact": {
+      "email": "al.a.volkov@tinkoff.ru"
+    }
+  },
+  "tags": [
+    {
+      "name": "sandbox",
+      "description": "Операция в sandbox"
+    },
+    {
+      "name": "orders",
+      "description": "Операции заявок"
+    },
+    {
+      "name": "portfolio",
+      "description": "Операции с портфелем пользователя"
+    },
+    {
+      "name": "market",
+      "description": "Получении информации по бумагам"
+    },
+    {
+      "name": "operations",
+      "description": "Получении информации по операциям"
+    },
+    {
+      "name": "user",
+      "description": "Получении информации по брокерским счетам"
+    }
+  ],
+  "paths": {
+    "/sandbox/register": {
+      "post": {
+        "tags": [
+          "sandbox"
+        ],
+        "summary": "Регистрация клиента в sandbox",
+        "description": "Создание счета и валютных позиций для клиента",
+        "security": [
+          {
+            "sso_auth": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SandboxRegisterRequest"
+              }
+            }
+          },
+          "description": "Запрос на создание счета и выставление баланса по валютным позициям",
+          "required": false
+        },
+        "responses": {
+          "200": {
+            "description": "Успешный ответ",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SandboxRegisterResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Ошибка запроса",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sandbox/currencies/balance": {
+      "post": {
+        "tags": [
+          "sandbox"
+        ],
+        "summary": "Выставление баланса по валютным позициям",
+        "security": [
+          {
+            "sso_auth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "brokerAccountId",
+            "in": "query",
+            "required": false,
+            "description": "Номер счета (по умолчанию - Тинькофф)",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SandboxSetCurrencyBalanceRequest"
+              }
+            }
+          },
+          "description": "Запрос на выставление баланса по валютным позициям",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Успешный ответ",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Empty"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Ошибка запроса",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sandbox/positions/balance": {
+      "post": {
+        "tags": [
+          "sandbox"
+        ],
+        "summary": "Выставление баланса по инструментным позициям",
+        "security": [
+          {
+            "sso_auth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "brokerAccountId",
+            "in": "query",
+            "required": false,
+            "description": "Номер счета (по умолчанию - Тинькофф)",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SandboxSetPositionBalanceRequest"
+              }
+            }
+          },
+          "description": "Запрос на выставление баланса по инструментным позициям",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Успешный ответ",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Empty"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Ошибка запроса",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sandbox/remove": {
+      "post": {
+        "tags": [
+          "sandbox"
+        ],
+        "summary": "Удаление счета",
+        "description": "Удаление счета клиента",
+        "security": [
+          {
+            "sso_auth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "brokerAccountId",
+            "in": "query",
+            "required": false,
+            "description": "Номер счета (по умолчанию - Тинькофф)",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Успешный ответ",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Empty"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Ошибка запроса",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sandbox/clear": {
+      "post": {
+        "tags": [
+          "sandbox"
+        ],
+        "summary": "Удаление всех позиций",
+        "description": "Удаление всех позиций клиента",
+        "security": [
+          {
+            "sso_auth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "brokerAccountId",
+            "in": "query",
+            "required": false,
+            "description": "Номер счета (по умолчанию - Тинькофф)",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Успешный ответ",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Empty"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Ошибка запроса",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/orders": {
+      "get": {
+        "tags": [
+          "orders"
+        ],
+        "summary": "Получение списка активных заявок",
+        "security": [
+          {
+            "sso_auth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "brokerAccountId",
+            "in": "query",
+            "required": false,
+            "description": "Номер счета (по умолчанию - Тинькофф)",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Список заявок",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrdersResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Инструмент не найден",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/orders/limit-order": {
+      "post": {
+        "tags": [
+          "orders"
+        ],
+        "summary": "Создание лимитной заявки",
+        "security": [
+          {
+            "sso_auth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "figi",
+            "in": "query",
+            "required": true,
+            "description": "FIGI инструмента",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "brokerAccountId",
+            "in": "query",
+            "required": false,
+            "description": "Номер счета (по умолчанию - Тинькофф)",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LimitOrderRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Созданная заявка",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LimitOrderResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Ошибка запроса",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/orders/market-order": {
+      "post": {
+        "tags": [
+          "orders"
+        ],
+        "summary": "Создание рыночной заявки",
+        "security": [
+          {
+            "sso_auth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "figi",
+            "in": "query",
+            "required": true,
+            "description": "FIGI инструмента",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "brokerAccountId",
+            "in": "query",
+            "required": false,
+            "description": "Уникальный идентификатор счета (по умолчанию - Тинькофф)",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MarketOrderRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Созданная заявка",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MarketOrderResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Ошибка запроса",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/orders/cancel": {
+      "post": {
+        "tags": [
+          "orders"
+        ],
+        "summary": "Отмена заявки",
+        "security": [
+          {
+            "sso_auth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "query",
+            "required": true,
+            "description": "ID заявки",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "brokerAccountId",
+            "in": "query",
+            "required": false,
+            "description": "Номер счета (по умолчанию - Тинькофф)",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Успешный ответ",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Empty"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Ошибка запроса",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/operations": {
+      "get": {
+        "tags": [
+          "operations"
+        ],
+        "summary": "Получение списка операций",
+        "security": [
+          {
+            "sso_auth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "from",
+            "in": "query",
+            "required": true,
+            "description": "Начало временного промежутка",
+            "schema": {
+              "type": "string",
+              "format": "date-time",
+              "description": "ISO8601",
+              "example": "2019-08-19T18:38:33+03:00"
+            }
+          },
+          {
+            "name": "to",
+            "in": "query",
+            "required": true,
+            "description": "Конец временного промежутка",
+            "schema": {
+              "type": "string",
+              "format": "date-time",
+              "description": "ISO8601",
+              "example": "2019-08-19T18:38:33+03:00"
+            }
+          },
+          {
+            "name": "figi",
+            "in": "query",
+            "required": false,
+            "description": "Figi инструмента для фильтрации",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "brokerAccountId",
+            "in": "query",
+            "required": false,
+            "description": "Номер счета (по умолчанию - Тинькофф)",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Список операций",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationsResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Брокерский счет не найден",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/portfolio": {
+      "get": {
+        "tags": [
+          "portfolio"
+        ],
+        "summary": "Получение портфеля клиента",
+        "security": [
+          {
+            "sso_auth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "brokerAccountId",
+            "in": "query",
+            "required": false,
+            "description": "Номер счета (по умолчанию - Тинькофф)",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Успешный ответ",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PortfolioResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Брокерский счет не найден",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/portfolio/currencies": {
+      "get": {
+        "tags": [
+          "portfolio"
+        ],
+        "summary": "Получение валютных активов клиента",
+        "security": [
+          {
+            "sso_auth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "brokerAccountId",
+            "in": "query",
+            "required": false,
+            "description": "Номер счета (по умолчанию - Тинькофф)",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Успешный ответ",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PortfolioCurrenciesResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Брокерский счет не найден",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/accounts": {
+      "get": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Получение брокерских счетов клиента",
+        "security": [
+          {
+            "sso_auth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Успешный ответ",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserAccountsResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Брокерский счет не найден",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/market/stocks": {
+      "get": {
+        "tags": [
+          "market"
+        ],
+        "summary": "Получение списка акций",
+        "security": [
+          {
+            "sso_auth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Успешный ответ",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MarketInstrumentListResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Инструмент не найден",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/market/bonds": {
+      "get": {
+        "tags": [
+          "market"
+        ],
+        "summary": "Получение списка облигаций",
+        "security": [
+          {
+            "sso_auth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Успешный ответ",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MarketInstrumentListResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Инструмент не найден",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/market/etfs": {
+      "get": {
+        "tags": [
+          "market"
+        ],
+        "summary": "Получение списка ETF",
+        "security": [
+          {
+            "sso_auth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Успешный ответ",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MarketInstrumentListResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Инструмент не найден",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/market/currencies": {
+      "get": {
+        "tags": [
+          "market"
+        ],
+        "summary": "Получение списка валютных пар",
+        "security": [
+          {
+            "sso_auth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Успешный ответ",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MarketInstrumentListResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Инструмент не найден",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/market/orderbook": {
+      "get": {
+        "tags": [
+          "market"
+        ],
+        "summary": "Получение стакана по FIGI",
+        "security": [
+          {
+            "sso_auth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "figi",
+            "in": "query",
+            "required": true,
+            "description": "FIGI",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "depth",
+            "in": "query",
+            "required": true,
+            "description": "Глубина стакана [1..20]",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Успешный ответ",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrderbookResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Инструмент не найден",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/market/candles": {
+      "get": {
+        "tags": [
+          "market"
+        ],
+        "summary": "Получение исторических свечей по FIGI",
+        "security": [
+          {
+            "sso_auth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "figi",
+            "in": "query",
+            "required": true,
+            "description": "FIGI",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "from",
+            "in": "query",
+            "required": true,
+            "description": "Начало временного промежутка",
+            "schema": {
+              "type": "string",
+              "format": "date-time",
+              "description": "ISO8601",
+              "example": "2019-08-19T18:38:33+03:00"
+            }
+          },
+          {
+            "name": "to",
+            "in": "query",
+            "required": true,
+            "description": "Конец временного промежутка",
+            "schema": {
+              "type": "string",
+              "format": "date-time",
+              "description": "ISO8601",
+              "example": "2019-08-19T18:38:33+03:00"
+            }
+          },
+          {
+            "name": "interval",
+            "in": "query",
+            "required": true,
+            "description": "Интервал свечи",
+            "schema": {
+              "$ref": "#/components/schemas/CandleResolution"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Успешный ответ",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CandlesResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Инструмент не найден",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/market/search/by-figi": {
+      "get": {
+        "tags": [
+          "market"
+        ],
+        "summary": "Получение инструмента по FIGI",
+        "security": [
+          {
+            "sso_auth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "figi",
+            "in": "query",
+            "required": true,
+            "description": "FIGI",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Успешный ответ",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SearchMarketInstrumentResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Инструмент не найден",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/market/search/by-ticker": {
+      "get": {
+        "tags": [
+          "market"
+        ],
+        "summary": "Получение инструмента по тикеру",
+        "security": [
+          {
+            "sso_auth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "ticker",
+            "in": "query",
+            "required": true,
+            "description": "Тикер инструмента",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Успешный ответ",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MarketInstrumentListResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Инструмент не найден",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api-invest.tinkoff.ru/openapi/",
+      "description": "Работа с биржей"
+    },
+    {
+      "url": "https://api-invest.tinkoff.ru/openapi/sandbox/",
+      "description": "Работа в sandbox"
+    }
+  ],
+  "externalDocs": {
+    "description": "Документация OpenAPI",
+    "url": "https://api-invest.tinkoff.ru/openapi/docs/"
+  },
+  "components": {
+    "securitySchemes": {
+      "sso_auth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    },
+    "schemas": {
+      "Empty": {
+        "type": "object",
+        "required": [
+          "trackingId",
+          "payload",
+          "status"
+        ],
+        "properties": {
+          "trackingId": {
+            "type": "string"
+          },
+          "payload": {
+            "type": "object"
+          },
+          "status": {
+            "type": "string",
+            "default": "Ok"
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "required": [
+          "trackingId",
+          "payload",
+          "status"
+        ],
+        "properties": {
+          "trackingId": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "default": "Error"
+          },
+          "payload": {
+            "type": "object",
+            "properties": {
+              "message": {
+                "type": "string"
+              },
+              "code": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "PortfolioResponse": {
+        "type": "object",
+        "required": [
+          "trackingId",
+          "payload",
+          "status"
+        ],
+        "properties": {
+          "trackingId": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "default": "Ok"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/Portfolio"
+          }
+        }
+      },
+      "Portfolio": {
+        "type": "object",
+        "required": [
+          "positions"
+        ],
+        "properties": {
+          "positions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PortfolioPosition"
+            }
+          }
+        }
+      },
+      "UserAccountsResponse": {
+        "type": "object",
+        "required": [
+          "trackingId",
+          "payload",
+          "status"
+        ],
+        "properties": {
+          "trackingId": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "default": "Ok"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/UserAccounts"
+          }
+        }
+      },
+      "UserAccounts": {
+        "type": "object",
+        "required": [
+          "accounts"
+        ],
+        "properties": {
+          "accounts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UserAccount"
+            }
+          }
+        }
+      },
+      "UserAccount": {
+        "type": "object",
+        "required": [
+          "brokerAccountType",
+          "brokerAccountId"
+        ],
+        "properties": {
+          "brokerAccountType": {
+            "$ref": "#/components/schemas/BrokerAccountType"
+          },
+          "brokerAccountId": {
+            "type": "string"
+          }
+        }
+      },
+      "PortfolioCurrenciesResponse": {
+        "type": "object",
+        "required": [
+          "trackingId",
+          "payload",
+          "status"
+        ],
+        "properties": {
+          "trackingId": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "default": "Ok"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/Currencies"
+          }
+        }
+      },
+      "Currencies": {
+        "type": "object",
+        "required": [
+          "currencies"
+        ],
+        "properties": {
+          "currencies": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CurrencyPosition"
+            }
+          }
+        }
+      },
+      "CurrencyPosition": {
+        "type": "object",
+        "required": [
+          "currency",
+          "balance"
+        ],
+        "properties": {
+          "currency": {
+            "$ref": "#/components/schemas/Currency"
+          },
+          "balance": {
+            "type": "number",
+            "format": "double"
+          },
+          "blocked": {
+            "type": "number",
+            "format": "double"
+          }
+        }
+      },
+      "PortfolioPosition": {
+        "type": "object",
+        "required": [
+          "figi",
+          "balance",
+          "instrumentType",
+          "lots",
+          "name"
+        ],
+        "properties": {
+          "figi": {
+            "type": "string"
+          },
+          "ticker": {
+            "type": "string"
+          },
+          "isin": {
+            "type": "string"
+          },
+          "instrumentType": {
+            "$ref": "#/components/schemas/InstrumentType"
+          },
+          "balance": {
+            "type": "number",
+            "format": "double"
+          },
+          "blocked": {
+            "type": "number",
+            "format": "double"
+          },
+          "expectedYield": {
+            "$ref": "#/components/schemas/MoneyAmount"
+          },
+          "lots": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "averagePositionPrice": {
+            "$ref": "#/components/schemas/MoneyAmount"
+          },
+          "averagePositionPriceNoNkd": {
+            "$ref": "#/components/schemas/MoneyAmount"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "MoneyAmount": {
+        "type": "object",
+        "required": [
+          "currency",
+          "value"
+        ],
+        "properties": {
+          "currency": {
+            "$ref": "#/components/schemas/Currency"
+          },
+          "value": {
+            "type": "number",
+            "format": "double"
+          }
+        }
+      },
+      "OrderbookResponse": {
+        "type": "object",
+        "required": [
+          "trackingId",
+          "status",
+          "payload"
+        ],
+        "properties": {
+          "trackingId": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "default": "Ok"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/Orderbook"
+          }
+        }
+      },
+      "Orderbook": {
+        "type": "object",
+        "required": [
+          "figi",
+          "depth",
+          "bids",
+          "asks",
+          "tradeStatus",
+          "minPriceIncrement"
+        ],
+        "properties": {
+          "figi": {
+            "type": "string"
+          },
+          "depth": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "bids": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OrderResponse"
+            }
+          },
+          "asks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OrderResponse"
+            }
+          },
+          "tradeStatus": {
+            "$ref": "#/components/schemas/TradeStatus"
+          },
+          "minPriceIncrement": {
+            "type": "number",
+            "format": "double",
+            "description": "Шаг цены"
+          },
+          "faceValue": {
+            "type": "number",
+            "format": "double",
+            "description": "Номинал для облигаций"
+          },
+          "lastPrice": {
+            "type": "number",
+            "format": "double"
+          },
+          "closePrice": {
+            "type": "number",
+            "format": "double"
+          },
+          "limitUp": {
+            "type": "number",
+            "format": "double",
+            "description": "Верхняя граница цены"
+          },
+          "limitDown": {
+            "type": "number",
+            "format": "double",
+            "description": "Нижняя граница цены"
+          }
+        }
+      },
+      "OrderResponse": {
+        "type": "object",
+        "required": [
+          "price",
+          "quantity"
+        ],
+        "properties": {
+          "price": {
+            "type": "number",
+            "format": "double"
+          },
+          "quantity": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "CandlesResponse": {
+        "type": "object",
+        "required": [
+          "trackingId",
+          "status",
+          "payload"
+        ],
+        "properties": {
+          "trackingId": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "default": "Ok"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/Candles"
+          }
+        }
+      },
+      "Candles": {
+        "type": "object",
+        "required": [
+          "candles",
+          "figi",
+          "interval"
+        ],
+        "properties": {
+          "figi": {
+            "type": "string"
+          },
+          "interval": {
+            "$ref": "#/components/schemas/CandleResolution"
+          },
+          "candles": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Candle"
+            }
+          }
+        }
+      },
+      "Candle": {
+        "type": "object",
+        "required": [
+          "figi",
+          "interval",
+          "time",
+          "o",
+          "c",
+          "h",
+          "l",
+          "v"
+        ],
+        "properties": {
+          "figi": {
+            "type": "string"
+          },
+          "interval": {
+            "$ref": "#/components/schemas/CandleResolution"
+          },
+          "o": {
+            "type": "number",
+            "format": "double"
+          },
+          "c": {
+            "type": "number",
+            "format": "double"
+          },
+          "h": {
+            "type": "number",
+            "format": "double"
+          },
+          "l": {
+            "type": "number",
+            "format": "double"
+          },
+          "v": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "time": {
+            "type": "string",
+            "format": "date-time",
+            "description": "ISO8601",
+            "example": "2019-08-19T18:38:33+03:00"
+          }
+        }
+      },
+      "OperationsResponse": {
+        "type": "object",
+        "required": [
+          "trackingId",
+          "status",
+          "payload"
+        ],
+        "properties": {
+          "trackingId": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "default": "Ok"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/Operations"
+          }
+        }
+      },
+      "Operations": {
+        "type": "object",
+        "required": [
+          "operations"
+        ],
+        "properties": {
+          "operations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Operation"
+            }
+          }
+        }
+      },
+      "OperationTrade": {
+        "type": "object",
+        "required": [
+          "tradeId",
+          "date",
+          "quantity",
+          "price"
+        ],
+        "properties": {
+          "tradeId": {
+            "type": "string"
+          },
+          "date": {
+            "type": "string",
+            "format": "date-time",
+            "description": "ISO8601",
+            "example": "2019-08-19T18:38:33+03:00"
+          },
+          "price": {
+            "type": "number",
+            "format": "double"
+          },
+          "quantity": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "Operation": {
+        "type": "object",
+        "required": [
+          "id",
+          "status",
+          "currency",
+          "payment",
+          "isMarginCall",
+          "date"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "status": {
+            "$ref": "#/components/schemas/OperationStatus"
+          },
+          "trades": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OperationTrade"
+            }
+          },
+          "commission": {
+            "$ref": "#/components/schemas/MoneyAmount"
+          },
+          "currency": {
+            "$ref": "#/components/schemas/Currency"
+          },
+          "payment": {
+            "type": "number",
+            "format": "double"
+          },
+          "price": {
+            "type": "number",
+            "format": "double"
+          },
+          "quantity": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Число инструментов в выставленной заявке"
+          },
+          "quantityExecuted": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Число инструментов, исполненных в заявке"
+          },
+          "figi": {
+            "type": "string"
+          },
+          "instrumentType": {
+            "$ref": "#/components/schemas/InstrumentType"
+          },
+          "isMarginCall": {
+            "type": "boolean"
+          },
+          "date": {
+            "type": "string",
+            "format": "date-time",
+            "description": "ISO8601",
+            "example": "2019-08-19T18:38:33+03:00"
+          },
+          "operationType": {
+            "$ref": "#/components/schemas/OperationTypeWithCommission"
+          }
+        }
+      },
+      "OrdersResponse": {
+        "type": "object",
+        "required": [
+          "trackingId",
+          "status",
+          "payload"
+        ],
+        "properties": {
+          "trackingId": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "default": "Ok"
+          },
+          "payload": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Order"
+            }
+          }
+        }
+      },
+      "Order": {
+        "type": "object",
+        "required": [
+          "orderId",
+          "figi",
+          "operation",
+          "status",
+          "requestedLots",
+          "executedLots",
+          "type",
+          "price"
+        ],
+        "properties": {
+          "orderId": {
+            "type": "string"
+          },
+          "figi": {
+            "type": "string"
+          },
+          "operation": {
+            "$ref": "#/components/schemas/OperationType"
+          },
+          "status": {
+            "$ref": "#/components/schemas/OrderStatus"
+          },
+          "requestedLots": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "executedLots": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "type": {
+            "$ref": "#/components/schemas/OrderType"
+          },
+          "price": {
+            "type": "number",
+            "format": "double"
+          }
+        }
+      },
+      "LimitOrderRequest": {
+        "type": "object",
+        "required": [
+          "operation",
+          "lots",
+          "price"
+        ],
+        "properties": {
+          "lots": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "operation": {
+            "$ref": "#/components/schemas/OperationType"
+          },
+          "price": {
+            "type": "number",
+            "format": "double"
+          }
+        }
+      },
+      "LimitOrderResponse": {
+        "type": "object",
+        "required": [
+          "trackingId",
+          "status",
+          "payload"
+        ],
+        "properties": {
+          "trackingId": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "default": "Ok"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/PlacedLimitOrder"
+          }
+        }
+      },
+      "PlacedLimitOrder": {
+        "type": "object",
+        "required": [
+          "orderId",
+          "operation",
+          "status",
+          "requestedLots",
+          "executedLots"
+        ],
+        "properties": {
+          "orderId": {
+            "type": "string"
+          },
+          "operation": {
+            "$ref": "#/components/schemas/OperationType"
+          },
+          "status": {
+            "$ref": "#/components/schemas/OrderStatus"
+          },
+          "rejectReason": {
+            "type": "string"
+          },
+          "message": {
+            "description": "Сообщение об ошибке",
+            "type": "string"
+          },
+          "requestedLots": {
+            "type": "integer"
+          },
+          "executedLots": {
+            "type": "integer"
+          },
+          "commission": {
+            "$ref": "#/components/schemas/MoneyAmount"
+          }
+        }
+      },
+      "MarketOrderRequest": {
+        "type": "object",
+        "required": [
+          "operation",
+          "lots"
+        ],
+        "properties": {
+          "lots": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "operation": {
+            "$ref": "#/components/schemas/OperationType"
+          }
+        }
+      },
+      "MarketOrderResponse": {
+        "type": "object",
+        "required": [
+          "trackingId",
+          "status",
+          "payload"
+        ],
+        "properties": {
+          "trackingId": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "default": "Ok"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/PlacedMarketOrder"
+          }
+        }
+      },
+      "PlacedMarketOrder": {
+        "type": "object",
+        "required": [
+          "orderId",
+          "operation",
+          "status",
+          "requestedLots",
+          "executedLots"
+        ],
+        "properties": {
+          "orderId": {
+            "type": "string"
+          },
+          "operation": {
+            "$ref": "#/components/schemas/OperationType"
+          },
+          "status": {
+            "$ref": "#/components/schemas/OrderStatus"
+          },
+          "rejectReason": {
+            "type": "string"
+          },
+          "message": {
+            "description": "Сообщение об ошибке",
+            "type": "string"
+          },
+          "requestedLots": {
+            "type": "integer"
+          },
+          "executedLots": {
+            "type": "integer"
+          },
+          "commission": {
+            "$ref": "#/components/schemas/MoneyAmount"
+          }
+        }
+      },
+      "TradeStatus": {
+        "type": "string",
+        "enum": [
+          "NormalTrading",
+          "NotAvailableForTrading"
+        ]
+      },
+      "OperationType": {
+        "type": "string",
+        "enum": [
+          "Buy",
+          "Sell"
+        ]
+      },
+      "OperationTypeWithCommission": {
+        "type": "string",
+        "enum": [
+          "Buy",
+          "BuyCard",
+          "Sell",
+          "BrokerCommission",
+          "ExchangeCommission",
+          "ServiceCommission",
+          "MarginCommission",
+          "OtherCommission",
+          "PayIn",
+          "PayOut",
+          "Tax",
+          "TaxLucre",
+          "TaxDividend",
+          "TaxCoupon",
+          "TaxBack",
+          "Repayment",
+          "PartRepayment",
+          "Coupon",
+          "Dividend",
+          "SecurityIn",
+          "SecurityOut"
+        ]
+      },
+      "OperationStatus": {
+        "description": "Статус заявки",
+        "type": "string",
+        "enum": [
+          "Done",
+          "Decline",
+          "Progress"
+        ]
+      },
+      "CandleResolution": {
+        "description": "Интервал свечи и допустимый промежуток запроса:\n- 1min [1 minute, 1 day]\n- 2min [2 minutes, 1 day]\n- 3min [3 minutes, 1 day]\n- 5min [5 minutes, 1 day]\n- 10min [10 minutes, 1 day]\n- 15min [15 minutes, 1 day]\n- 30min [30 minutes, 1 day]\n- hour [1 hour, 7 days]\n- day [1 day, 1 year]\n- week [7 days, 2 years]\n- month [1 month, 10 years]\n",
+        "type": "string",
+        "enum": [
+          "1min",
+          "2min",
+          "3min",
+          "5min",
+          "10min",
+          "15min",
+          "30min",
+          "hour",
+          "day",
+          "week",
+          "month"
+        ]
+      },
+      "OrderStatus": {
+        "description": "Статус заявки",
+        "type": "string",
+        "enum": [
+          "New",
+          "PartiallyFill",
+          "Fill",
+          "Cancelled",
+          "Replaced",
+          "PendingCancel",
+          "Rejected",
+          "PendingReplace",
+          "PendingNew"
+        ]
+      },
+      "OrderType": {
+        "description": "Тип заявки",
+        "type": "string",
+        "enum": [
+          "Limit",
+          "Market"
+        ]
+      },
+      "SandboxRegisterRequest": {
+        "type": "object",
+        "properties": {
+          "brokerAccountType": {
+            "$ref": "#/components/schemas/BrokerAccountType"
+          }
+        }
+      },
+      "SandboxRegisterResponse": {
+        "type": "object",
+        "required": [
+          "trackingId",
+          "payload",
+          "status"
+        ],
+        "properties": {
+          "trackingId": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "default": "Ok"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/SandboxAccount"
+          }
+        }
+      },
+      "SandboxAccount": {
+        "type": "object",
+        "required": [
+          "brokerAccountType",
+          "brokerAccountId"
+        ],
+        "properties": {
+          "brokerAccountType": {
+            "$ref": "#/components/schemas/BrokerAccountType"
+          },
+          "brokerAccountId": {
+            "type": "string"
+          }
+        }
+      },
+      "SandboxSetCurrencyBalanceRequest": {
+        "type": "object",
+        "required": [
+          "currency",
+          "balance"
+        ],
+        "properties": {
+          "currency": {
+            "$ref": "#/components/schemas/SandboxCurrency"
+          },
+          "balance": {
+            "type": "number",
+            "format": "double"
+          }
+        }
+      },
+      "SandboxSetPositionBalanceRequest": {
+        "type": "object",
+        "required": [
+          "currency",
+          "balance"
+        ],
+        "properties": {
+          "figi": {
+            "type": "string"
+          },
+          "balance": {
+            "type": "number",
+            "format": "double"
+          }
+        }
+      },
+      "MarketInstrumentListResponse": {
+        "type": "object",
+        "required": [
+          "trackingId",
+          "payload",
+          "status"
+        ],
+        "properties": {
+          "trackingId": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "default": "Ok"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/MarketInstrumentList"
+          }
+        }
+      },
+      "MarketInstrumentList": {
+        "type": "object",
+        "required": [
+          "total",
+          "instruments"
+        ],
+        "properties": {
+          "total": {
+            "type": "number",
+            "format": "int32"
+          },
+          "instruments": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MarketInstrument"
+            }
+          }
+        }
+      },
+      "SearchMarketInstrumentResponse": {
+        "type": "object",
+        "required": [
+          "trackingId",
+          "payload",
+          "status"
+        ],
+        "properties": {
+          "trackingId": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "default": "Ok"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/SearchMarketInstrument"
+          }
+        }
+      },
+      "MarketInstrumentResponse": {
+        "type": "object",
+        "required": [
+          "trackingId",
+          "payload",
+          "status"
+        ],
+        "properties": {
+          "trackingId": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "default": "Ok"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/MarketInstrument"
+          }
+        }
+      },
+      "SearchMarketInstrument": {
+        "type": "object",
+        "required": [
+          "figi",
+          "ticker",
+          "lot",
+          "name",
+          "type"
+        ],
+        "properties": {
+          "figi": {
+            "type": "string"
+          },
+          "ticker": {
+            "type": "string"
+          },
+          "isin": {
+            "type": "string"
+          },
+          "minPriceIncrement": {
+            "type": "number",
+            "format": "double",
+            "description": "Шаг цены"
+          },
+          "lot": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "currency": {
+            "$ref": "#/components/schemas/Currency"
+          },
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "$ref": "#/components/schemas/InstrumentType"
+          }
+        }
+      },
+      "MarketInstrument": {
+        "type": "object",
+        "required": [
+          "figi",
+          "ticker",
+          "lot",
+          "name",
+          "type"
+        ],
+        "properties": {
+          "figi": {
+            "type": "string"
+          },
+          "ticker": {
+            "type": "string"
+          },
+          "isin": {
+            "type": "string"
+          },
+          "minPriceIncrement": {
+            "type": "number",
+            "format": "double",
+            "description": "Шаг цены"
+          },
+          "lot": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "minQuantity": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Минимальное число инструментов для покупки должно быть не меньше, чем размер лота х количество лотов"
+          },
+          "currency": {
+            "$ref": "#/components/schemas/Currency"
+          },
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "$ref": "#/components/schemas/InstrumentType"
+          }
+        }
+      },
+      "SandboxCurrency": {
+        "type": "string",
+        "enum": [
+          "RUB",
+          "USD",
+          "EUR",
+          "GBP",
+          "HKD",
+          "CHF",
+          "JPY",
+          "CNY",
+          "TRY"
+        ]
+      },
+      "Currency": {
+        "type": "string",
+        "enum": [
+          "RUB",
+          "USD",
+          "EUR",
+          "GBP",
+          "HKD",
+          "CHF",
+          "JPY",
+          "CNY",
+          "TRY"
+        ]
+      },
+      "InstrumentType": {
+        "type": "string",
+        "enum": [
+          "Stock",
+          "Currency",
+          "Bond",
+          "Etf"
+        ]
+      },
+      "BrokerAccountType": {
+        "type": "string",
+        "enum": [
+          "Tinkoff",
+          "TinkoffIis"
+        ]
+      }
+    }
+  }
+}

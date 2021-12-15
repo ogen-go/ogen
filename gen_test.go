@@ -85,4 +85,5 @@ func TestGenerate(t *testing.T) {
 		"sum type parameter",
 		"unsupported content types",
 	))
+	t.Run("Tinkoff", g("tinkoff.json"))
 }
