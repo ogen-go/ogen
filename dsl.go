@@ -1058,7 +1058,7 @@ func (s *Schema) AsArray() *Schema {
 // AsEnum returns a new "enum" Schema wrapping the receiver.
 func (s *Schema) AsEnum(def json.RawMessage, values ...json.RawMessage) *Schema {
 	return &Schema{
-		Type:    "enum", // TODO(ernado): add enum to oas.Array etc.
+		Type:    s.Type,
 		Default: def,
 		Enum:    values,
 	}
