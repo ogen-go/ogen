@@ -122,6 +122,15 @@ func (s *Spec) AddNamedParameters(ps ...*NamedParameter) *Spec {
 	return s
 }
 
+// Copy returns a copy of the Spec.
+func (s *Spec) Copy() *Spec {
+	c := new(Spec)
+	if s != nil {
+		*c = *s
+	}
+	return c
+}
+
 // RefSchema returns a new Schema referencing the given name.
 func (s *Spec) RefSchema(n string) *NamedSchema {
 	if s.Components != nil && s.Components.Schemas != nil {
@@ -141,8 +150,6 @@ func (s *Spec) RefResponse(n string) *NamedResponse {
 	}
 	return nil
 }
-
-// TODO: AddRequestBodies
 
 // initComponents ensures the Components property is non-nil.
 func (s *Spec) initComponents() {
@@ -173,6 +180,65 @@ func (s *Spec) initResponses() {
 	if s.Components.Responses == nil {
 		s.Components.Responses = make(map[string]*Response)
 	}
+}
+
+// NewRequestBody returns a new RequestBody.
+func NewRequestBody() *RequestBody {
+	return new(RequestBody)
+}
+
+// SetRef sets the Ref of the RequestBody.
+func (r *RequestBody) SetRef(ref string) *RequestBody {
+	r.Ref = ref
+	return r
+}
+
+// SetDescription sets the Description of the RequestBody.
+func (r *RequestBody) SetDescription(d string) *RequestBody {
+	r.Description = d
+	return r
+}
+
+// SetContent sets the Content of the RequestBody.
+func (r *RequestBody) SetContent(c map[string]Media) *RequestBody {
+	r.Content = c
+	return r
+}
+
+// AddContent adds the given Schema under the MediaType to the Content of the Response.
+func (r *RequestBody) AddContent(mt string, s *Schema) *RequestBody {
+	if s != nil {
+		r.initContent()
+		r.Content[mt] = Media{*s}
+	}
+	return r
+}
+
+// SetJSONContent sets the given Schema under the JSON MediaType to the Content of the Response.
+func (r *RequestBody) SetJSONContent(s *Schema) *RequestBody {
+	return r.AddContent(string(ir.ContentTypeJSON), s)
+}
+
+// initContent ensures the Content map is allocated.
+func (r *RequestBody) initContent() {
+	if r.Content == nil {
+		r.Content = make(map[string]Media)
+	}
+}
+
+// SetRequired sets the Required of the RequestBody.
+func (r *RequestBody) SetRequired(req bool) *RequestBody {
+	r.Required = req
+	return r
+}
+
+// Copy returns a copy of the RequestBody.
+func (r *RequestBody) Copy() *RequestBody {
+	c := new(RequestBody)
+	if r != nil {
+		*c = *r
+	}
+	return c
 }
 
 // NewInfo returns a new Info.
@@ -216,6 +282,15 @@ func (i *Info) SetVersion(v string) *Info {
 	return i
 }
 
+// Copy returns a copy of the Info.
+func (i *Info) Copy() *Info {
+	c := new(Info)
+	if i != nil {
+		*c = *i
+	}
+	return c
+}
+
 // NewContact returns a new Contact.
 func NewContact() *Contact {
 	return new(Contact)
@@ -239,6 +314,15 @@ func (c *Contact) SetEmail(e string) *Contact {
 	return c
 }
 
+// Copy returns a copy of the Contact.
+func (c *Contact) Copy() *Contact {
+	c1 := new(Contact)
+	if c != nil {
+		*c1 = *c
+	}
+	return c1
+}
+
 // NewLicense returns a new License.
 func NewLicense() *License {
 	return new(License)
@@ -256,6 +340,15 @@ func (l *License) SetURL(url string) *License {
 	return l
 }
 
+// Copy returns a copy of the License.
+func (l *License) Copy() *License {
+	c := new(License)
+	if l != nil {
+		*c = *l
+	}
+	return c
+}
+
 // NewServer returns a new Server.
 func NewServer() *Server {
 	return new(Server)
@@ -271,6 +364,15 @@ func (s *Server) SetDescription(d string) *Server {
 func (s *Server) SetURL(url string) *Server {
 	s.URL = url
 	return s
+}
+
+// Copy returns a copy of the Server.
+func (s *Server) Copy() *Server {
+	c := new(Server)
+	if s != nil {
+		*c = *s
+	}
+	return c
 }
 
 // NewPathItem returns a new PathItem.
@@ -368,6 +470,15 @@ func (p *PathItem) AddParameters(ps ...*Parameter) *PathItem {
 	return p
 }
 
+// Copy returns a copy of the PathItem.
+func (p *PathItem) Copy() *PathItem {
+	c := new(PathItem)
+	if p != nil {
+		*c = *p
+	}
+	return c
+}
+
 // ToNamed returns a NamedPathItem wrapping the receiver.
 func (p *PathItem) ToNamed(n string) *NamedPathItem {
 	return NewNamedPathItem(n, p)
@@ -438,6 +549,12 @@ func (o *Operation) AddParameters(ps ...*Parameter) *Operation {
 	return o
 }
 
+// SetRequestBody sets the RequestBody of the Operation.
+func (o *Operation) SetRequestBody(r *RequestBody) *Operation {
+	o.RequestBody = r
+	return o
+}
+
 // SetResponses sets the Responses of the Operation.
 func (o *Operation) SetResponses(r Responses) *Operation {
 	o.Responses = r
@@ -464,6 +581,15 @@ func (o *Operation) initResponses() {
 	if o.Responses == nil {
 		o.Responses = make(Responses)
 	}
+}
+
+// Copy returns a copy of the Operation.
+func (o *Operation) Copy() *Operation {
+	c := new(Operation)
+	if o != nil {
+		*c = *o
+	}
+	return c
 }
 
 // NewParameter returns a new Parameter.
@@ -541,6 +667,8 @@ func (p *Parameter) SetContent(c map[string]Media) *Parameter {
 	return p
 }
 
+// TODO(masseelch): Add Content helpers for Parameter
+
 // SetStyle sets the Style of the Parameter.
 func (p *Parameter) SetStyle(s string) *Parameter {
 	p.Style = s
@@ -551,6 +679,15 @@ func (p *Parameter) SetStyle(s string) *Parameter {
 func (p *Parameter) SetExplode(e bool) *Parameter {
 	p.Explode = &e
 	return p
+}
+
+// Copy returns a copy of the Parameter.
+func (p *Parameter) Copy() *Parameter {
+	c := new(Parameter)
+	if p != nil {
+		*c = *p
+	}
+	return c
 }
 
 // ToNamed returns a NamedParameter wrapping the receiver.
@@ -619,7 +756,7 @@ func (r *Response) SetJSONContent(s *Schema) *Response {
 	return r.AddContent(string(ir.ContentTypeJSON), s)
 }
 
-// initContent ensures the Paths map is allocated.
+// initContent ensures the Content map is allocated.
 func (r *Response) initContent() {
 	if r.Content == nil {
 		r.Content = make(map[string]Media)
@@ -630,6 +767,15 @@ func (r *Response) initContent() {
 func (r *Response) SetLinks(l map[string]interface{}) *Response {
 	r.Links = l
 	return r
+}
+
+// Copy returns a copy of the Response.
+func (r *Response) Copy() *Response {
+	c := new(Response)
+	if r != nil {
+		*c = *r
+	}
+	return c
 }
 
 // ToNamed returns a NamedResponse wrapping the receiver.
@@ -846,6 +992,15 @@ func (s *Schema) SetDefault(d json.RawMessage) *Schema {
 	return s
 }
 
+// Copy returns a copy of the Spec.
+func (s *Schema) Copy() *Schema {
+	c := new(Schema)
+	if s != nil {
+		*c = *s
+	}
+	return c
+}
+
 // ToNamed returns a NamedSchema wrapping the receiver.
 func (s *Schema) ToNamed(n string) *NamedSchema {
 	return NewNamedSchema(n, s)
@@ -945,6 +1100,15 @@ func (p *Property) SetName(n string) *Property {
 func (p *Property) SetSchema(s *Schema) *Property {
 	p.Schema = s
 	return p
+}
+
+// Copy returns a copy of the Property.
+func (p *Property) Copy() *Property {
+	c := new(Property)
+	if p != nil {
+		*c = *p
+	}
+	return c
 }
 
 func escapeRef(ref string) string {
