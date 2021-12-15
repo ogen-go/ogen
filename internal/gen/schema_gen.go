@@ -424,6 +424,10 @@ func parseSimple(schema *oas.Schema) (*ir.Type, error) {
 			return ir.Primitive(ir.Float32, schema), nil
 		case oas.FormatDouble, oas.FormatNone:
 			return ir.Primitive(ir.Float64, schema), nil
+		case oas.FormatInt32:
+			return ir.Primitive(ir.Int32, schema), nil
+		case oas.FormatInt64:
+			return ir.Primitive(ir.Int64, schema), nil
 		default:
 			return nil, errors.Errorf("unexpected number format: %q", format)
 		}

@@ -269,7 +269,7 @@ func validateTypeFormat(typ, format string) error {
 		}
 	case "number":
 		switch format {
-		case "float", "double", "":
+		case "float", "double", "int32", "int64", "":
 			return nil
 		default:
 			return errors.Errorf("unexpected number format: %q", format)
