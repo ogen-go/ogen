@@ -135,7 +135,7 @@ func (s *Spec) Copy() *Spec {
 func (s *Spec) RefSchema(n string) *NamedSchema {
 	if s.Components != nil && s.Components.Schemas != nil {
 		if r, ok := s.Components.Schemas[n]; ok {
-			return NewNamedSchema(n, r)
+			return NewNamedSchema(n, r).AsLocalRef().ToNamed(n)
 		}
 	}
 	return nil
@@ -145,7 +145,7 @@ func (s *Spec) RefSchema(n string) *NamedSchema {
 func (s *Spec) RefResponse(n string) *NamedResponse {
 	if s.Components != nil && s.Components.Responses != nil {
 		if r, ok := s.Components.Responses[n]; ok {
-			return NewNamedResponse(n, r)
+			return NewNamedResponse(n, r).AsLocalRef().ToNamed(n)
 		}
 	}
 	return nil
