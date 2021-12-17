@@ -1,15 +1,18 @@
 package ogen_test
 
 import (
+	"encoding/json"
 	"testing"
 
 	"github.com/ogen-go/ogen"
+	"github.com/ogen-go/ogen/internal/ir"
 	"github.com/stretchr/testify/assert"
 )
 
 const (
 	pathWithID    = "/path/with/{id}"
 	refPathWithID = "/ref/path/with/id"
+	pathWithBody  = "/path/with/body"
 )
 
 var (
@@ -50,6 +53,11 @@ var (
 				ogen.Date().ToProperty("required_Date"),
 				ogen.DateTime().ToProperty("required_DateTime"),
 				ogen.Password().ToProperty("required_Password"),
+				ogen.Int32().AsArray().ToProperty("required_array_Int32"),
+				ogen.Int32().AsEnum(json.RawMessage("0"), json.RawMessage("0"), json.RawMessage("1")).
+					ToProperty("required_enum_Int32"),
+				ogen.Int32().AsEnum(json.RawMessage(`"off"`), json.RawMessage(`"0"`), json.RawMessage(`"1"`)).
+					ToProperty("required_enum_String"),
 			).
 			AddOptionalProperties(
 				ogen.Int32().ToProperty("optional_Int32"),
@@ -104,7 +112,7 @@ func TestBuilder(t *testing.T) {
 					Parameters: []*ogen.Parameter{
 						{
 							Name:        "id",
-							In:          "PathItem",
+							In:          "path",
 							Description: "ID Parameter in path",
 							Required:    true,
 							// TODO: Schema
@@ -118,12 +126,39 @@ func TestBuilder(t *testing.T) {
 						{Ref: "#/components/parameters/authInHeader"},
 						{Ref: "#/components/parameters/csrf"},
 					},
-					RequestBody: nil, // TODO
-					Responses:   nil, // TODO
+					Responses: ogen.Responses{
+						"error": {Ref: "#/components/responses/error"},
+						"ok": {
+							Description: "Success",
+							Content: map[string]ogen.Media{
+								string(ir.ContentTypeJSON): {Schema: ogen.Schema{
+									Description: "Success",
+									Properties: []ogen.Property{
+										{Name: "prop1", Schema: &ogen.Schema{Type: "integer", Format: "int32"}},
+										{Name: "prop2", Schema: &ogen.Schema{Type: "string"}},
+									},
+								}},
+							},
+						},
+					},
 				},
 			},
 			refPathWithID: {
 				Ref: "#/paths/~1path~1with~1{id}",
+			},
+			pathWithBody: {
+				Post: &ogen.Operation{
+					Tags:        []string{"post"},
+					Description: "Description for my path with body",
+					OperationID: "path-with-body",
+					Parameters: []*ogen.Parameter{
+						{Ref: "#/components/parameters/authInQuery"},
+						{Ref: "#/components/parameters/authInHeader"},
+						{Ref: "#/components/parameters/csrf"},
+					},
+					Responses:   ogen.Responses{"error": {Ref: "#/components/responses/error"}},
+					RequestBody: &ogen.RequestBody{Ref: "#/components/requestBodies/~1path~1with~1body"},
+				},
 			},
 		},
 		Components: &ogen.Components{
@@ -131,7 +166,20 @@ func TestBuilder(t *testing.T) {
 				_petSchema.Name: _petSchema.Schema,
 				_toySchema.Name: _toySchema.Schema,
 			},
-			Responses: nil, // TODO
+			Responses: ogen.Responses{
+				"error": {
+					Description: "An Error Response",
+					Content: map[string]ogen.Media{
+						string(ir.ContentTypeJSON): {Schema: ogen.Schema{
+							Description: "Error Response Schema",
+							Properties: []ogen.Property{
+								{Name: "code", Schema: &ogen.Schema{Type: "integer", Format: "int32"}},
+								{Name: "status", Schema: &ogen.Schema{Type: "string"}},
+							},
+						}},
+					},
+				},
+			},
 			Parameters: map[string]*ogen.Parameter{
 				"authInQuery": {
 					Name:        "auth",
@@ -149,7 +197,15 @@ func TestBuilder(t *testing.T) {
 					Description: "CSRF token",
 				},
 			},
-			RequestBodies: nil, // TODO
+			RequestBodies: map[string]*ogen.RequestBody{
+				pathWithBody: {
+					Description: "Referenced RequestBody",
+					Content: map[string]ogen.Media{
+						string(ir.ContentTypeJSON): {Schema: *_toySchema.Schema},
+					},
+					Required: true,
+				},
+			},
 		},
 	}
 	// referenced path
@@ -168,6 +224,19 @@ func TestBuilder(t *testing.T) {
 				_queryParam.AsLocalRef(),
 				_headerParam.AsLocalRef(),
 				_cookieParam.AsLocalRef(),
+			).
+			AddNamedResponses(
+				ex.RefResponse("error"),
+				ogen.NewResponse().
+					SetDescription(ex.Paths[pathWithID].Get.Responses["ok"].Description).
+					SetJSONContent(ogen.NewSchema().
+						SetDescription(ex.Paths[pathWithID].Get.Responses["ok"].Content[string(ir.ContentTypeJSON)].Schema.Description).
+						AddOptionalProperties(
+							ogen.Int32().ToProperty("prop1"),
+							ogen.String().ToProperty("prop2"),
+						),
+					).
+					ToNamed("ok"),
 			),
 		).
 		ToNamed(pathWithID)
@@ -195,9 +264,41 @@ func TestBuilder(t *testing.T) {
 				SetDescription(ex.Servers[1].Description).
 				SetURL(ex.Servers[1].URL),
 		).
-		AddNamedPathItems(path).
+		AddNamedPathItems(
+			path,
+			ogen.NewPathItem().
+				SetDescription(ex.Paths[pathWithBody].Description).
+				SetPost(ogen.NewOperation().
+					AddTags(ex.Paths[pathWithBody].Post.Tags...).
+					SetDescription(ex.Paths[pathWithBody].Post.Description).
+					SetOperationID(ex.Paths[pathWithBody].Post.OperationID).
+					AddParameters(_queryParam.AsLocalRef(), _headerParam.AsLocalRef(), _cookieParam.AsLocalRef()).
+					AddNamedResponses(ex.RefResponse("error")).
+					SetRequestBody(ex.RefRequestBody(pathWithBody).RequestBody),
+				).
+				ToNamed(pathWithBody),
+		).
 		AddPathItem(refPathWithID, path.AsLocalRef()).
 		AddNamedParameters(_queryParam, _headerParam, _cookieParam).
-		AddNamedSchemas(_petSchema, _toySchema)
+		AddNamedSchemas(_petSchema, _toySchema).
+		AddNamedResponses(
+			ogen.NewResponse().
+				SetDescription(ex.Components.Responses["error"].Description).
+				SetJSONContent(ogen.NewSchema().
+					SetDescription(ex.Components.Responses["error"].Content[string(ir.ContentTypeJSON)].Schema.Description).
+					AddOptionalProperties(
+						ogen.Int32().ToProperty("code"),
+						ogen.String().ToProperty("status"),
+					),
+				).
+				ToNamed("error"),
+		).
+		AddNamedRequestBodies(
+			ogen.NewRequestBody().
+				SetDescription(ex.Components.RequestBodies[pathWithBody].Description).
+				SetJSONContent(_toySchema.Schema).
+				SetRequired(true).
+				ToNamed(pathWithBody),
+		)
 	assert.Equal(t, ex, ac)
 }

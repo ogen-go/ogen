@@ -122,6 +122,21 @@ func (s *Spec) AddNamedParameters(ps ...*NamedParameter) *Spec {
 	return s
 }
 
+// AddRequestBody adds the given RequestBody under the given Name to the Components of the Spec.
+func (s *Spec) AddRequestBody(n string, sc *RequestBody) *Spec {
+	s.initRequestBodies()
+	s.Components.RequestBodies[n] = sc
+	return s
+}
+
+// AddNamedRequestBodies adds the given namedRequestBodies to the Components of the Spec.
+func (s *Spec) AddNamedRequestBodies(scs ...*NamedRequestBody) *Spec {
+	for _, sc := range scs {
+		s.AddRequestBody(sc.Name, sc.RequestBody)
+	}
+	return s
+}
+
 // Copy returns a copy of the Spec.
 func (s *Spec) Copy() *Spec {
 	c := new(Spec)
@@ -146,6 +161,16 @@ func (s *Spec) RefResponse(n string) *NamedResponse {
 	if s.Components != nil && s.Components.Responses != nil {
 		if r, ok := s.Components.Responses[n]; ok {
 			return NewNamedResponse(n, r).AsLocalRef().ToNamed(n)
+		}
+	}
+	return nil
+}
+
+// RefRequestBody returns a new RequestBody referencing the given name.
+func (s *Spec) RefRequestBody(n string) *NamedRequestBody {
+	if s.Components != nil && s.Components.RequestBodies != nil {
+		if r, ok := s.Components.RequestBodies[n]; ok {
+			return NewNamedRequestBody(n, r).AsLocalRef().ToNamed(n)
 		}
 	}
 	return nil
@@ -179,6 +204,14 @@ func (s *Spec) initResponses() {
 	s.initComponents()
 	if s.Components.Responses == nil {
 		s.Components.Responses = make(map[string]*Response)
+	}
+}
+
+// initRequestBodies ensures the RequestBodies map is allocated.
+func (s *Spec) initRequestBodies() {
+	s.initComponents()
+	if s.Components.RequestBodies == nil {
+		s.Components.RequestBodies = make(map[string]*RequestBody)
 	}
 }
 
@@ -232,6 +265,11 @@ func (r *RequestBody) SetRequired(req bool) *RequestBody {
 	return r
 }
 
+// ToNamed returns a NamedRequestBody wrapping the receiver.
+func (r *RequestBody) ToNamed(n string) *NamedRequestBody {
+	return NewNamedRequestBody(n, r)
+}
+
 // Copy returns a copy of the RequestBody.
 func (r *RequestBody) Copy() *RequestBody {
 	c := new(RequestBody)
@@ -239,6 +277,22 @@ func (r *RequestBody) Copy() *RequestBody {
 		*c = *r
 	}
 	return c
+}
+
+// NamedRequestBody can be used to construct a reference to the wrapped RequestBody.
+type NamedRequestBody struct {
+	RequestBody *RequestBody
+	Name        string
+}
+
+// NewNamedRequestBody returns a new NamedRequestBody.
+func NewNamedRequestBody(n string, p *RequestBody) *NamedRequestBody {
+	return &NamedRequestBody{p, n}
+}
+
+// AsLocalRef returns a new RequestBody referencing the wrapped RequestBody in the local document.
+func (p *NamedRequestBody) AsLocalRef() *RequestBody {
+	return NewRequestBody().SetRef("#/components/requestBodies/" + escapeRef(p.Name))
 }
 
 // NewInfo returns a new Info.
