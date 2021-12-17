@@ -105,6 +105,11 @@ func TestBuilder(t *testing.T) {
 		Paths: map[string]*ogen.PathItem{
 			pathWithID: {
 				Description: "This is my first path",
+				Parameters: []*ogen.Parameter{
+					{Ref: "#/components/parameters/authInQuery"},
+					{Ref: "#/components/parameters/authInHeader"},
+					{Ref: "#/components/parameters/csrf"},
+				},
 				Get: &ogen.Operation{
 					Tags:        []string{"default"},
 					Description: "Description for my path",
@@ -115,16 +120,8 @@ func TestBuilder(t *testing.T) {
 							In:          "path",
 							Description: "ID Parameter in path",
 							Required:    true,
-							// TODO: Schema
-							// TODO: Required
-							// TODO: Deprecated
-							// TODO: Content
-							// TODO: Style
-							// TODO: Explode
+							Schema:      ogen.Schema{Type: "integer", Format: "int32"},
 						},
-						{Ref: "#/components/parameters/authInQuery"},
-						{Ref: "#/components/parameters/authInHeader"},
-						{Ref: "#/components/parameters/csrf"},
 					},
 					Responses: ogen.Responses{
 						"error": {Ref: "#/components/responses/error"},
@@ -213,6 +210,7 @@ func TestBuilder(t *testing.T) {
 	// referenced path
 	path := ogen.NewPathItem().
 		SetDescription(ex.Paths[pathWithID].Description).
+		AddParameters(_queryParam.AsLocalRef(), _headerParam.AsLocalRef(), _cookieParam.AsLocalRef()).
 		SetGet(ogen.NewOperation().
 			AddTags(ex.Paths[pathWithID].Get.Tags...).
 			SetDescription(ex.Paths[pathWithID].Get.Description).
@@ -222,10 +220,8 @@ func TestBuilder(t *testing.T) {
 					InPath().
 					SetName(ex.Paths[pathWithID].Get.Parameters[0].Name).
 					SetDescription(ex.Paths[pathWithID].Get.Parameters[0].Description).
-					SetRequired(true),
-				_queryParam.AsLocalRef(),
-				_headerParam.AsLocalRef(),
-				_cookieParam.AsLocalRef(),
+					SetRequired(true).
+					SetSchema(ogen.Int32()),
 			).
 			AddNamedResponses(
 				ex.RefResponse("error"),
@@ -303,4 +299,101 @@ func TestBuilder(t *testing.T) {
 				ToNamed(pathWithBody),
 		)
 	assert.Equal(t, ex, ac)
+
+	ex.SetServers(nil)
+	assert.Nil(t, ex.Servers)
+
+	ex.SetPaths(nil)
+	assert.Nil(t, ex.Paths)
+
+	ex.SetComponents(nil)
+	assert.Nil(t, ex.Components)
+	assert.Nil(t, ex.RefSchema(""))
+	assert.Nil(t, ex.RefResponse(""))
+	assert.Nil(t, ex.RefRequestBody(""))
+
+	req := ogen.NewRequestBody().SetContent(map[string]ogen.Media{"key": {}})
+	assert.Equal(t, req, &ogen.RequestBody{Content: map[string]ogen.Media{"key": {}}})
+
+	pi := ogen.NewPathItem().
+		SetPut(ogen.NewOperation().SetOperationID("put").SetTags([]string{"tag1", "tag2"})).
+		SetDelete(ogen.NewOperation().SetOperationID("delete").SetSummary("summary")).
+		SetOptions(ogen.NewOperation().SetOperationID("options").SetParameters([]*ogen.Parameter{_cookieParam.Parameter})).
+		SetHead(ogen.NewOperation().SetOperationID("head").SetResponses(ogen.Responses{"resp": ogen.NewResponse()})).
+		SetPatch(ogen.NewOperation().SetOperationID("patch").AddParameters(ogen.NewParameter().InHeader().SetDeprecated(true))).
+		SetTrace(ogen.NewOperation().SetOperationID("trace")).
+		SetServers([]ogen.Server{{"desc1", "url1"}}).
+		AddServers(ogen.NewServer().SetDescription("desc2").SetURL("url2")).
+		SetParameters([]*ogen.Parameter{_queryParam.Parameter})
+	assert.Equal(t, &ogen.PathItem{
+		Put:        &ogen.Operation{OperationID: "put", Tags: []string{"tag1", "tag2"}},
+		Delete:     &ogen.Operation{OperationID: "delete", Summary: "summary"},
+		Options:    &ogen.Operation{OperationID: "options", Parameters: []*ogen.Parameter{_cookieParam.Parameter}},
+		Head:       &ogen.Operation{OperationID: "head", Responses: ogen.Responses{"resp": &ogen.Response{}}},
+		Patch:      &ogen.Operation{OperationID: "patch", Parameters: []*ogen.Parameter{{In: "header", Deprecated: true}}},
+		Trace:      &ogen.Operation{OperationID: "trace"},
+		Servers:    []ogen.Server{{"desc1", "url1"}, {"desc2", "url2"}},
+		Parameters: []*ogen.Parameter{_queryParam.Parameter},
+	}, pi)
+
+	mlt := 1
+	max := int64(2)
+	umax := uint64(max)
+	assert.Equal(t, &ogen.Schema{
+		Ref:              "ref",
+		Description:      "desc",
+		Type:             "string",
+		Format:           "",
+		Properties:       []ogen.Property{{Name: "prop"}},
+		Required:         []string{"prop"},
+		Items:            ogen.String(),
+		Nullable:         true,
+		AllOf:            []*ogen.Schema{ogen.NewSchema()},
+		OneOf:            []*ogen.Schema{ogen.NewSchema()},
+		AnyOf:            []*ogen.Schema{ogen.NewSchema()},
+		Discriminator:    &ogen.Discriminator{PropertyName: "prop"},
+		Enum:             []json.RawMessage{json.RawMessage("0"), json.RawMessage("1")},
+		MultipleOf:       &mlt,
+		Maximum:          &max,
+		ExclusiveMaximum: true,
+		Minimum:          &max,
+		ExclusiveMinimum: true,
+		MaxLength:        &umax,
+		MinLength:        &max,
+		Pattern:          "",
+		MaxItems:         &umax,
+		MinItems:         &umax,
+		UniqueItems:      true,
+		MaxProperties:    &umax,
+		MinProperties:    &umax,
+		Default:          json.RawMessage("0"),
+	}, ogen.NewSchema().
+		SetRef("ref").
+		SetDescription("desc").
+		SetType("string").
+		SetFormat("").
+		SetProperties(&ogen.Properties{{Name: "prop"}}).
+		SetRequired([]string{"prop"}).
+		SetItems(ogen.String()).
+		SetNullable(true).
+		SetAllOf([]*ogen.Schema{ogen.NewSchema()}).
+		SetOneOf([]*ogen.Schema{ogen.NewSchema()}).
+		SetAnyOf([]*ogen.Schema{ogen.NewSchema()}).
+		SetDiscriminator(&ogen.Discriminator{PropertyName: "prop"}).
+		SetEnum([]json.RawMessage{json.RawMessage("0"), json.RawMessage("1")}).
+		SetMultipleOf(&mlt).
+		SetMaximum(&max).
+		SetExclusiveMaximum(true).
+		SetMinimum(&max).
+		SetExclusiveMinimum(true).
+		SetMaxLength(&umax).
+		SetMinLength(&max).
+		SetPattern("").
+		SetMaxItems(&umax).
+		SetMinItems(&umax).
+		SetUniqueItems(true).
+		SetMaxProperties(&umax).
+		SetMinProperties(&umax).
+		SetDefault(json.RawMessage("0")),
+	)
 }

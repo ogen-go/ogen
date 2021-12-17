@@ -989,10 +989,7 @@ func Password() *Schema { return schema("string", "password") }
 
 // schema returns a Schema for a primitive type.
 func schema(t, f string) *Schema {
-	return &Schema{
-		Type:   t,
-		Format: f,
-	}
+	return NewSchema().SetType(t).SetFormat(f)
 }
 
 // AsArray returns a new "array" Schema wrapping the receiver.
