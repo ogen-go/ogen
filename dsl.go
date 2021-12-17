@@ -137,15 +137,6 @@ func (s *Spec) AddNamedRequestBodies(scs ...*NamedRequestBody) *Spec {
 	return s
 }
 
-// Copy returns a copy of the Spec.
-func (s *Spec) Copy() *Spec {
-	c := new(Spec)
-	if s != nil {
-		*c = *s
-	}
-	return c
-}
-
 // RefSchema returns a new Schema referencing the given name.
 func (s *Spec) RefSchema(n string) *NamedSchema {
 	if s.Components != nil && s.Components.Schemas != nil {
@@ -270,15 +261,6 @@ func (r *RequestBody) ToNamed(n string) *NamedRequestBody {
 	return NewNamedRequestBody(n, r)
 }
 
-// Copy returns a copy of the RequestBody.
-func (r *RequestBody) Copy() *RequestBody {
-	c := new(RequestBody)
-	if r != nil {
-		*c = *r
-	}
-	return c
-}
-
 // NamedRequestBody can be used to construct a reference to the wrapped RequestBody.
 type NamedRequestBody struct {
 	RequestBody *RequestBody
@@ -336,15 +318,6 @@ func (i *Info) SetVersion(v string) *Info {
 	return i
 }
 
-// Copy returns a copy of the Info.
-func (i *Info) Copy() *Info {
-	c := new(Info)
-	if i != nil {
-		*c = *i
-	}
-	return c
-}
-
 // NewContact returns a new Contact.
 func NewContact() *Contact {
 	return new(Contact)
@@ -368,15 +341,6 @@ func (c *Contact) SetEmail(e string) *Contact {
 	return c
 }
 
-// Copy returns a copy of the Contact.
-func (c *Contact) Copy() *Contact {
-	c1 := new(Contact)
-	if c != nil {
-		*c1 = *c
-	}
-	return c1
-}
-
 // NewLicense returns a new License.
 func NewLicense() *License {
 	return new(License)
@@ -394,15 +358,6 @@ func (l *License) SetURL(url string) *License {
 	return l
 }
 
-// Copy returns a copy of the License.
-func (l *License) Copy() *License {
-	c := new(License)
-	if l != nil {
-		*c = *l
-	}
-	return c
-}
-
 // NewServer returns a new Server.
 func NewServer() *Server {
 	return new(Server)
@@ -418,15 +373,6 @@ func (s *Server) SetDescription(d string) *Server {
 func (s *Server) SetURL(url string) *Server {
 	s.URL = url
 	return s
-}
-
-// Copy returns a copy of the Server.
-func (s *Server) Copy() *Server {
-	c := new(Server)
-	if s != nil {
-		*c = *s
-	}
-	return c
 }
 
 // NewPathItem returns a new PathItem.
@@ -520,15 +466,6 @@ func (p *PathItem) SetParameters(ps []*Parameter) *PathItem {
 func (p *PathItem) AddParameters(ps ...*Parameter) *PathItem {
 	p.Parameters = append(p.Parameters, ps...)
 	return p
-}
-
-// Copy returns a copy of the PathItem.
-func (p *PathItem) Copy() *PathItem {
-	c := new(PathItem)
-	if p != nil {
-		*c = *p
-	}
-	return c
 }
 
 // ToNamed returns a NamedPathItem wrapping the receiver.
@@ -633,15 +570,6 @@ func (o *Operation) initResponses() {
 	}
 }
 
-// Copy returns a copy of the Operation.
-func (o *Operation) Copy() *Operation {
-	c := new(Operation)
-	if o != nil {
-		*c = *o
-	}
-	return c
-}
-
 // NewParameter returns a new Parameter.
 func NewParameter() *Parameter {
 	return new(Parameter)
@@ -731,15 +659,6 @@ func (p *Parameter) SetExplode(e bool) *Parameter {
 	return p
 }
 
-// Copy returns a copy of the Parameter.
-func (p *Parameter) Copy() *Parameter {
-	c := new(Parameter)
-	if p != nil {
-		*c = *p
-	}
-	return c
-}
-
 // ToNamed returns a NamedParameter wrapping the receiver.
 func (p *Parameter) ToNamed(n string) *NamedParameter {
 	return NewNamedParameter(n, p)
@@ -815,15 +734,6 @@ func (r *Response) initContent() {
 func (r *Response) SetLinks(l map[string]interface{}) *Response {
 	r.Links = l
 	return r
-}
-
-// Copy returns a copy of the Response.
-func (r *Response) Copy() *Response {
-	c := new(Response)
-	if r != nil {
-		*c = *r
-	}
-	return c
 }
 
 // ToNamed returns a NamedResponse wrapping the receiver.
@@ -1039,15 +949,6 @@ func (s *Schema) SetDefault(d json.RawMessage) *Schema {
 	return s
 }
 
-// Copy returns a copy of the Spec.
-func (s *Schema) Copy() *Schema {
-	c := new(Schema)
-	if s != nil {
-		*c = *s
-	}
-	return c
-}
-
 // ToNamed returns a NamedSchema wrapping the receiver.
 func (s *Schema) ToNamed(n string) *NamedSchema {
 	return NewNamedSchema(n, s)
@@ -1147,15 +1048,6 @@ func (p *Property) SetName(n string) *Property {
 func (p *Property) SetSchema(s *Schema) *Property {
 	p.Schema = s
 	return p
-}
-
-// Copy returns a copy of the Property.
-func (p *Property) Copy() *Property {
-	c := new(Property)
-	if p != nil {
-		*c = *p
-	}
-	return c
 }
 
 func escapeRef(ref string) string {

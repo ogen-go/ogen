@@ -201,7 +201,9 @@ func TestBuilder(t *testing.T) {
 				pathWithBody: {
 					Description: "Referenced RequestBody",
 					Content: map[string]ogen.Media{
-						string(ir.ContentTypeJSON): {Schema: *_toySchema.Schema},
+						string(ir.ContentTypeJSON): {
+							Schema: ogen.Schema{Ref: "#/components/schemas/" + _toySchema.Name},
+						},
 					},
 					Required: true,
 				},
@@ -296,7 +298,7 @@ func TestBuilder(t *testing.T) {
 		AddNamedRequestBodies(
 			ogen.NewRequestBody().
 				SetDescription(ex.Components.RequestBodies[pathWithBody].Description).
-				SetJSONContent(_toySchema.Schema).
+				SetJSONContent(ex.RefSchema(_toySchema.Name).Schema).
 				SetRequired(true).
 				ToNamed(pathWithBody),
 		)
