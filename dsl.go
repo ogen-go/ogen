@@ -518,9 +518,7 @@ func (p *PathItem) SetParameters(ps []*Parameter) *PathItem {
 
 // AddParameters adds Parameters to the Parameters of the PathItem.
 func (p *PathItem) AddParameters(ps ...*Parameter) *PathItem {
-	for _, i := range ps {
-		p.Parameters = append(p.Parameters, i)
-	}
+	p.Parameters = append(p.Parameters, ps...)
 	return p
 }
 
@@ -597,9 +595,7 @@ func (o *Operation) SetParameters(ps []*Parameter) *Operation {
 
 // AddParameters adds Parameters to the Parameters of the Operation.
 func (o *Operation) AddParameters(ps ...*Parameter) *Operation {
-	for _, p := range ps {
-		o.Parameters = append(o.Parameters, p)
-	}
+	o.Parameters = append(o.Parameters, ps...)
 	return o
 }
 
@@ -765,8 +761,6 @@ func (p *NamedParameter) AsLocalRef() *Parameter {
 	return NewParameter().SetRef("#/components/parameters/" + escapeRef(p.Name))
 }
 
-// TODO: RequestBody
-
 // NewResponse returns a new Response.
 func NewResponse() *Response {
 	return new(Response)
@@ -853,8 +847,7 @@ func (p *NamedResponse) AsLocalRef() *Response {
 	return NewResponse().SetRef("#/components/responses/" + escapeRef(p.Name))
 }
 
-// TODO: Media
-// TODO: Discriminator
+// TODO(masseelch): Discriminator
 
 // NewSchema returns a new Schema.
 func NewSchema() *Schema {
