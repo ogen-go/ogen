@@ -20,7 +20,7 @@ if err := func() error {
 {{ end }}
 
 {{ define "res_dec" }}
-{{- /*gotype: github.com/ogen-go/ogen/internal/gen.TemplateConfig*/ -}}
+{{- /*gotype: github.com/ogen-go/ogen/gen.TemplateConfig*/ -}}
 {{ $pkg := $.Package }}
 {{ template "header" $ }}
 
@@ -53,7 +53,7 @@ func decode{{ $op.Name }}Response(resp *http.Response, span trace.Span) (res {{ 
 {{ end }}
 
 {{- define "dec_res" }}
-{{- /*gotype: github.com/ogen-go/ogen/internal/gen.ResponseElem*/ -}}
+{{- /*gotype: github.com/ogen-go/ogen/gen.ResponseElem*/ -}}
 {{- $response := $.Response }}
 {{- $ptr := $.Ptr }}
 {{- if $response.NoContent }}{{/* Decode NoContent response */}}

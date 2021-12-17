@@ -1,4 +1,4 @@
-{{- /*gotype: github.com/ogen-go/ogen/internal/gen.TemplateConfig*/ -}}
+{{- /*gotype: github.com/ogen-go/ogen/gen.TemplateConfig*/ -}}
 {{ define "router" }}
 {{ template "header" $ }}
 
@@ -52,7 +52,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 {{ end }}
 
 {{ define "route_edge" }}
-	{{- /*gotype: github.com/ogen-go/ogen/internal/gen.RouteEge*/ -}}
+	{{- /*gotype: github.com/ogen-go/ogen/gen.RouteEge*/ -}}
 	{{- if $.Param }}
 		if args == nil {
 			args = make(map[string]string)

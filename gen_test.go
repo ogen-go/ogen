@@ -9,7 +9,7 @@ import (
 	"github.com/stretchr/testify/require"
 
 	"github.com/ogen-go/ogen"
-	"github.com/ogen-go/ogen/internal/gen"
+	"github.com/ogen-go/ogen/gen"
 )
 
 //go:embed _testdata

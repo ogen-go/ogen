@@ -9,7 +9,7 @@ if _, err := e.WriteTo(buf); err != nil {
 }
 {{ end }}
 
-{{- /*gotype: github.com/ogen-go/ogen/internal/gen.TemplateConfig*/ -}}
+{{- /*gotype: github.com/ogen-go/ogen/gen.TemplateConfig*/ -}}
 {{ define "req_enc" }}
 {{ $pkg := $.Package }}
 {{ template "header" $ }}
