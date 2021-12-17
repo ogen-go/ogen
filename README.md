@@ -168,6 +168,7 @@ func (s *Error) ReadJSON(r *json.Reader) error {
 
 * Security (e.g. Bearer token)
 * Cookie params
+* Default value
 * Tests for `ip` package
 * Support complex parameters in router
   * `/{name}.{format}` or `foo.{bar}`, now only `/{foo}/{bar}/` is supported

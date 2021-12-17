@@ -16,6 +16,13 @@ type Spec struct {
 	Servers    []Server    `json:"servers,omitempty"`
 	Paths      Paths       `json:"paths,omitempty"`
 	Components *Components `json:"components,omitempty"`
+
+	// A list of tags used by the specification with additional metadata.
+	// The order of the tags can be used to reflect on their order by the parsing
+	// tools. Not all tags that are used by the Operation Object must be declared.
+	// The tags that are not declared MAY be organized randomly or based on the tools' logic.
+	// Each tag name in the list MUST be unique.
+	Tags []Tag `json:"tags,omitempty"`
 }
 
 // Init components of schema.
@@ -37,6 +44,28 @@ func (s *Spec) Init() {
 	if c.RequestBodies == nil {
 		c.RequestBodies = make(map[string]*RequestBody)
 	}
+	if c.Examples == nil {
+		c.Examples = make(map[string]*Example)
+	}
+}
+
+// Example object.
+//
+// https://swagger.io/specification/#example-object
+type Example struct {
+	Ref           string          `json:"$ref,omitempty"` // ref object
+	Summary       string          `json:"summary,omitempty"`
+	Description   string          `json:"description,omitempty"`
+	Value         json.RawMessage `json:"value,omitempty"`
+	ExternalValue string          `json:"externalValue,omitempty"`
+}
+
+// Tag object.
+//
+// https://swagger.io/specification/#tag-object
+type Tag struct {
+	Name        string `json:"name"`
+	Description string `json:"description,omitempty"`
 }
 
 // Info provides metadata about the API.
@@ -82,11 +111,12 @@ type Server struct {
 // All objects defined within the components object will have no effect on the API
 // unless they are explicitly referenced from properties outside the components object.
 type Components struct {
-	Schemas    map[string]*Schema    `json:"schemas,omitempty"`
-	Responses  map[string]*Response  `json:"responses,omitempty"`
-	Parameters map[string]*Parameter `json:"parameters,omitempty"`
-	// Examples        map[string]Example         `json:"example"`
+	Schemas       map[string]*Schema      `json:"schemas,omitempty"`
+	Responses     map[string]*Response    `json:"responses,omitempty"`
+	Parameters    map[string]*Parameter   `json:"parameters,omitempty"`
+	Examples      map[string]*Example     `json:"examples,omitempty"`
 	RequestBodies map[string]*RequestBody `json:"requestBodies,omitempty"`
+
 	// Headers         map[string]Header          `json:"headers"`
 	// SecuritySchemes map[string]SecuritySchema  `json:"securitySchemes"`
 	// Links           map[string]Link            `json:"links"`
@@ -132,6 +162,7 @@ type Operation struct {
 	Parameters  []*Parameter `json:"parameters,omitempty"`
 	RequestBody *RequestBody `json:"requestBody,omitempty"`
 	Responses   Responses    `json:"responses,omitempty"`
+	Deprecated  bool         `json:"deprecated,omitempty"`
 }
 
 // Parameter describes a single operation parameter.
@@ -174,6 +205,9 @@ type Parameter struct {
 	// or key-value pair of the map.
 	// For other types of parameters this property has no effect.
 	Explode *bool `json:"explode,omitempty"`
+
+	Example  json.RawMessage     `json:"example,omitempty"`
+	Examples map[string]*Example `json:"examples,omitempty"`
 }
 
 // RequestBody describes a single request body.
@@ -208,7 +242,9 @@ type Response struct {
 // Media provides schema and examples for the media type identified by its key.
 type Media struct {
 	// The schema defining the content of the request, response, or parameter.
-	Schema Schema `json:"schema"`
+	Schema   Schema              `json:"schema"`
+	Example  json.RawMessage     `json:"example,omitempty"`
+	Examples map[string]*Example `json:"examples,omitempty"`
 }
 
 // Discriminator discriminates types for OneOf, AllOf, AnyOf.
@@ -220,7 +256,7 @@ type Discriminator struct {
 // The Schema Object allows the definition of input and output data types.
 // These types can be objects, but also primitives and arrays.
 type Schema struct {
-	Ref         string `json:"$ref,omitempty"`
+	Ref         string `json:"$ref,omitempty"` // ref object
 	Description string `json:"description,omitempty"`
 
 	// Value MUST be a string. Multiple types via an array are not supported.
@@ -241,7 +277,7 @@ type Schema struct {
 	Required []string `json:"required,omitempty"`
 
 	// Value MUST be an object and not an array.
-	// Inline or referenced schema MUST be of a Schema Object and not a standard JSON Schema. 
+	// Inline or referenced schema MUST be of a Schema Object and not a standard JSON Schema.
 	// MUST be present if the Type is "array".
 	Items *Schema `json:"items,omitempty"`
 
@@ -397,6 +433,15 @@ type Schema struct {
 
 	// Default value.
 	Default json.RawMessage `json:"default,omitempty"` // TODO: support
+
+	// A free-form property to include an example of an instance for this schema.
+	// To represent examples that cannot be naturally represented in JSON or YAML,
+	// a string value can be used to contain the example with escaping where necessary.
+	Example json.RawMessage `json:"example,omitempty"`
+
+	// Specifies that a schema is deprecated and SHOULD be transitioned out
+	// of usage.
+	Deprecated bool `json:"deprecated,omitempty"`
 }
 
 type Property struct {
