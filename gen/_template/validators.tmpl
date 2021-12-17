@@ -1,5 +1,5 @@
 {{- define "validate" }}
-	{{- /*gotype: github.com/ogen-go/ogen/internal/gen.Elem*/ -}}
+	{{- /*gotype: github.com/ogen-go/ogen/gen.Elem*/ -}}
 	{{- $t := $.Type }}
 	{{- $va := $t.Validators }}
 	{{- $validated := false }}
@@ -118,7 +118,7 @@
 {{- end }}
 
 {{ define "validators" }}
-{{- /*gotype: github.com/ogen-go/ogen/internal/gen.TemplateConfig*/ -}}
+{{- /*gotype: github.com/ogen-go/ogen/gen.TemplateConfig*/ -}}
 
 {{ $pkg := $.Package }}
 {{ template "header" $ }}

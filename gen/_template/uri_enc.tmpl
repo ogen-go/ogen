@@ -1,4 +1,4 @@
-{{- /*gotype: github.com/ogen-go/ogen/internal/gen.TemplateConfig*/ -}}
+{{- /*gotype: github.com/ogen-go/ogen/gen.TemplateConfig*/ -}}
 {{- define "uri_enc" }}
 {{- template "header" $ }}
 
@@ -22,7 +22,7 @@ func (v {{ $t.Go }}) encodeURI(e uri.Encoder) error {
 {{- end }}
 
 {{- define "enc_uri" }}
-{{- /*gotype: github.com/ogen-go/ogen/internal/gen.Elem*/ -}}
+{{- /*gotype: github.com/ogen-go/ogen/gen.Elem*/ -}}
 {{- $t := $.Type }}
 {{- $var := $.Var }}
 {{- if $t.IsPrimitive }}

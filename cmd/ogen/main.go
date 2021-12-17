@@ -10,7 +10,7 @@ import (
 	"strings"
 
 	"github.com/ogen-go/ogen"
-	"github.com/ogen-go/ogen/internal/gen"
+	"github.com/ogen-go/ogen/gen"
 )
 
 type formattedSource struct {
