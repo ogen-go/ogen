@@ -790,6 +790,7 @@ func (s *Schema) SetFormat(f string) *Schema {
 
 // SetProperties sets the Properties of the Schema.
 func (s *Schema) SetProperties(p *Properties) *Schema {
+	s.SetType("object")
 	if p != nil {
 		s.Properties = *p
 	}
@@ -798,6 +799,7 @@ func (s *Schema) SetProperties(p *Properties) *Schema {
 
 // AddOptionalProperties adds the Properties to the Properties of the Schema.
 func (s *Schema) AddOptionalProperties(ps ...*Property) *Schema {
+	s.SetType("object")
 	for _, p := range ps {
 		if p != nil {
 			s.Properties = append(s.Properties, *p)
