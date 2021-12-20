@@ -129,6 +129,7 @@ func TestBuilder(t *testing.T) {
 							Description: "Success",
 							Content: map[string]ogen.Media{
 								string(ir.ContentTypeJSON): {Schema: ogen.Schema{
+									Type:        "object",
 									Description: "Success",
 									Properties: []ogen.Property{
 										{Name: "prop1", Schema: &ogen.Schema{Type: "integer", Format: "int32"}},
@@ -168,6 +169,7 @@ func TestBuilder(t *testing.T) {
 					Description: "An Error Response",
 					Content: map[string]ogen.Media{
 						string(ir.ContentTypeJSON): {Schema: ogen.Schema{
+							Type:        "object",
 							Description: "Error Response Schema",
 							Properties: []ogen.Property{
 								{Name: "code", Schema: &ogen.Schema{Type: "integer", Format: "int32"}},
@@ -342,7 +344,7 @@ func TestBuilder(t *testing.T) {
 	assert.Equal(t, &ogen.Schema{
 		Ref:              "ref",
 		Description:      "desc",
-		Type:             "string",
+		Type:             "object",
 		Format:           "",
 		Properties:       []ogen.Property{{Name: "prop"}},
 		Required:         []string{"prop"},
