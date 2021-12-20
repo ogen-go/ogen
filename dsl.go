@@ -956,6 +956,9 @@ func (s *Schema) ToNamed(n string) *NamedSchema {
 	return NewNamedSchema(n, s)
 }
 
+// Int returns an integer OAS data type (Schema).
+func Int() *Schema { return schema("integer", "") }
+
 // Int32 returns an 32-bit integer OAS data type (Schema).
 func Int32() *Schema { return schema("integer", "int32") }
 
@@ -970,6 +973,9 @@ func Double() *Schema { return schema("number", "double") }
 
 // String returns a string OAS data type (Schema).
 func String() *Schema { return schema("string", "") }
+
+// UUID returns a UUID OAS data type (Schema).
+func UUID() *Schema { return schema("string", "uuid") }
 
 // Bytes returns a base64 encoded OAS data type (Schema).
 func Bytes() *Schema { return schema("string", "byte") }

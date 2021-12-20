@@ -42,6 +42,7 @@ var (
 		ogen.NewSchema().
 			SetDescription("A Pet").
 			AddRequiredProperties(
+				ogen.Int().ToProperty("required_Int"),
 				ogen.Int32().ToProperty("required_Int32"),
 				ogen.Int64().ToProperty("required_Int64"),
 				ogen.Float().ToProperty("required_Float"),
@@ -60,6 +61,7 @@ var (
 					ToProperty("required_enum_String"),
 			).
 			AddOptionalProperties(
+				ogen.UUID().ToProperty("optional_UUID"),
 				ogen.Int32().ToProperty("optional_Int32"),
 				ogen.Int64().ToProperty("optional_Int64"),
 				ogen.Float().ToProperty("optional_Float"),
