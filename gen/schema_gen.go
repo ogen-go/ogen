@@ -50,6 +50,9 @@ func (g *schemaGen) generate(name string, schema *oas.Schema) (*ir.Type, error) 
 
 		name = pascal(strings.TrimPrefix(ref, "#/components/schemas/"))
 	}
+	if name[0] >= '0' && name[0] <= '9' {
+		name = "R" + name
+	}
 
 	switch {
 	case len(schema.AnyOf) > 0:
