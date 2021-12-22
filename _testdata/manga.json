@@ -29,9 +29,9 @@
         "operationId": "search",
         "parameters": [
           {
+            "description": "Search query.\n* You can search for multiple terms at the same time, and this will return only galleries that contain both terms. For example, rust cox finds all galleries that contain both rust and cox.\n* You can exclude terms by prefixing them with -. For example, rust cox -tokio matches all galleries matching rust and cox but not tokio.\n* Exact searches can be performed by wrapping terms in double quotes. For example, \"big dogs\" only matches galleries with \"big dogs\" somewhere in the title or in tags.\n* These can be combined with tag namespaces for finer control over the query: parodies:railgun -tag:\"big dogs\". ",
             "name": "query",
             "in": "query",
-            "description": "Search query.\n* You can search for multiple terms at the same time, and this will return only galleries that contain both terms. For example, anal tanlines finds all galleries that contain both anal and tanlines.\n* You can exclude terms by prefixing them with -. For example, anal tanlines -yaoi matches all galleries matching anal and tanlines but not yaoi.\n* Exact searches can be performed by wrapping terms in double quotes. For example, \"big dogs\" only matches galleries with \"big breasts\" somewhere in the title or in tags.\n* These can be combined with tag namespaces for finer control over the query: parodies:railgun -tag:\"big dogs\". ",
             "required": true,
             "schema": {
               "type": "string"

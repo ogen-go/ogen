@@ -103,12 +103,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		// Root edge.
 		elem, p = nextElem(p)
 		switch string(elem) {
-		case "pets": // -> 1
-			// Edge: 1, path: "pets".
+		case "name": // -> 1
+			// Edge: 1, path: "name".
 			elem, p = nextElem(p)
 			if len(elem) == 0 {
-				// GET /pets.
-				s.handleListPetsRequest(args, w, r)
+				// GET /name.
+				s.handleDataGetAnyRequest(args, w, r)
 				return
 			}
 			switch string(elem) {
@@ -116,23 +116,34 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				if args == nil {
 					args = make(map[string]string)
 				}
-				args["petId"] = string(elem)
-				// GET /pets/{petId}
-				s.handleShowPetByIdRequest(args, w, r)
-				return
+				args["id"] = string(elem)
+				// Edge: 2, path: "".
+				elem, p = nextElem(p)
+				if len(elem) == 0 {
+					// GET /name/{id}.
+					s.handleDataGetIDRequest(args, w, r)
+					return
+				}
+				switch string(elem) {
+				case "": // -> 3
+					// Edge: 3, path: "".
+					elem, p = nextElem(p)
+					switch string(elem) {
+					default:
+						if args == nil {
+							args = make(map[string]string)
+						}
+						args["key"] = string(elem)
+						// GET /name/{id}/{key}
+						s.handleDataGetRequest(args, w, r)
+						return
+					}
+				default:
+					// GET /name/{id}.
+					s.handleDataGetIDRequest(args, w, r)
+					return
+				}
 			}
-		default:
-			s.notFound(w, r)
-			return
-		}
-	case "POST":
-		// Root edge.
-		elem, p = nextElem(p)
-		switch string(elem) {
-		case "pets": // -> 1
-			// POST /pets
-			s.handleCreatePetsRequest(args, w, r)
-			return
 		default:
 			s.notFound(w, r)
 			return

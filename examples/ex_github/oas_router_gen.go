@@ -126,6 +126,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						args["repo"] = string(elem)
 						// Edge: 4, path: "".
 						elem, p = nextElem(p)
+						if len(elem) == 0 {
+							// DELETE /repos/{owner}/{repo}.
+							s.handleReposDeleteRequest(args, w, r)
+							return
+						}
 						switch string(elem) {
 						case "actions": // -> 5
 							// Edge: 5, path: "actions".
@@ -181,6 +186,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args["run_id"] = string(elem)
 									// Edge: 28, path: "".
 									elem, p = nextElem(p)
+									if len(elem) == 0 {
+										// DELETE /repos/{owner}/{repo}/actions/runs/{run_id}.
+										s.handleActionsDeleteWorkflowRunRequest(args, w, r)
+										return
+									}
 									switch string(elem) {
 									case "logs": // -> 29
 										// DELETE /repos/{owner}/{repo}/actions/runs/{run_id}/logs
@@ -261,6 +271,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args["comment_id"] = string(elem)
 									// Edge: 101, path: "".
 									elem, p = nextElem(p)
+									if len(elem) == 0 {
+										// DELETE /repos/{owner}/{repo}/issues/comments/{comment_id}.
+										s.handleIssuesDeleteCommentRequest(args, w, r)
+										return
+									}
 									switch string(elem) {
 									case "reactions": // -> 185
 										// Edge: 185, path: "reactions".
@@ -292,6 +307,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "labels": // -> 107
 									// Edge: 107, path: "labels".
 									elem, p = nextElem(p)
+									if len(elem) == 0 {
+										// DELETE /repos/{owner}/{repo}/issues/{issue_number}/labels.
+										s.handleIssuesRemoveAllLabelsRequest(args, w, r)
+										return
+									}
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -373,6 +393,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args["comment_id"] = string(elem)
 									// Edge: 177, path: "".
 									elem, p = nextElem(p)
+									if len(elem) == 0 {
+										// DELETE /repos/{owner}/{repo}/pulls/comments/{comment_id}.
+										s.handlePullsDeleteReviewCommentRequest(args, w, r)
+										return
+									}
 									switch string(elem) {
 									case "reactions": // -> 187
 										// Edge: 187, path: "reactions".
@@ -434,6 +459,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								args["comment_id"] = string(elem)
 								// Edge: 180, path: "".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// DELETE /repos/{owner}/{repo}/comments/{comment_id}.
+									s.handleReposDeleteCommitCommentRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								case "reactions": // -> 181
 									// Edge: 181, path: "reactions".
@@ -469,10 +499,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "protection": // -> 205
 									// Edge: 205, path: "protection".
 									elem, p = nextElem(p)
+									if len(elem) == 0 {
+										// DELETE /repos/{owner}/{repo}/branches/{branch}/protection.
+										s.handleReposDeleteBranchProtectionRequest(args, w, r)
+										return
+									}
 									switch string(elem) {
 									case "restrictions": // -> 206
 										// Edge: 206, path: "restrictions".
 										elem, p = nextElem(p)
+										if len(elem) == 0 {
+											// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions.
+											s.handleReposDeleteAccessRestrictionsRequest(args, w, r)
+											return
+										}
 										switch string(elem) {
 										case "apps": // -> 232
 											// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps
@@ -506,6 +546,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									case "required_status_checks": // -> 235
 										// Edge: 235, path: "required_status_checks".
 										elem, p = nextElem(p)
+										if len(elem) == 0 {
+											// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks.
+											s.handleReposRemoveStatusCheckProtectionRequest(args, w, r)
+											return
+										}
 										switch string(elem) {
 										case "contexts": // -> 236
 											// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts
@@ -757,6 +802,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args["secret_name"] = string(elem)
 							// Edge: 18, path: "".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// DELETE /orgs/{org}/actions/secrets/{secret_name}.
+								s.handleActionsDeleteOrgSecretRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							case "repositories": // -> 35
 								// Edge: 35, path: "repositories".
@@ -801,6 +851,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args["runner_group_id"] = string(elem)
 							// Edge: 26, path: "".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// DELETE /orgs/{org}/actions/runner-groups/{runner_group_id}.
+								s.handleActionsDeleteSelfHostedRunnerGroupFromOrgRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							case "repositories": // -> 33
 								// Edge: 33, path: "repositories".
@@ -1032,6 +1087,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								args["package_name"] = string(elem)
 								// Edge: 151, path: "".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// DELETE /orgs/{org}/packages/{package_type}/{package_name}.
+									s.handlePackagesDeletePackageForOrgRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								case "versions": // -> 160
 									// Edge: 160, path: "versions".
@@ -1068,6 +1128,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						args["team_slug"] = string(elem)
 						// Edge: 190, path: "".
 						elem, p = nextElem(p)
+						if len(elem) == 0 {
+							// DELETE /orgs/{org}/teams/{team_slug}.
+							s.handleTeamsDeleteInOrgRequest(args, w, r)
+							return
+						}
 						switch string(elem) {
 						case "discussions": // -> 191
 							// Edge: 191, path: "discussions".
@@ -1080,6 +1145,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								args["discussion_number"] = string(elem)
 								// Edge: 192, path: "".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}.
+									s.handleTeamsDeleteDiscussionInOrgRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								case "reactions": // -> 193
 									// Edge: 193, path: "reactions".
@@ -1105,6 +1175,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										args["comment_number"] = string(elem)
 										// Edge: 196, path: "".
 										elem, p = nextElem(p)
+										if len(elem) == 0 {
+											// DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}.
+											s.handleTeamsDeleteDiscussionCommentInOrgRequest(args, w, r)
+											return
+										}
 										switch string(elem) {
 										case "reactions": // -> 197
 											// Edge: 197, path: "reactions".
@@ -1360,6 +1435,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args["package_name"] = string(elem)
 							// Edge: 147, path: "".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// DELETE /user/packages/{package_type}/{package_name}.
+								s.handlePackagesDeletePackageForAuthenticatedUserRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							case "versions": // -> 158
 								// Edge: 158, path: "versions".
@@ -1511,6 +1591,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					args["installation_id"] = string(elem)
 					// Edge: 54, path: "".
 					elem, p = nextElem(p)
+					if len(elem) == 0 {
+						// DELETE /app/installations/{installation_id}.
+						s.handleAppsDeleteInstallationRequest(args, w, r)
+						return
+					}
 					switch string(elem) {
 					case "suspended": // -> 62
 						// DELETE /app/installations/{installation_id}/suspended
@@ -1667,6 +1752,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args["runner_group_id"] = string(elem)
 							// Edge: 78, path: "".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// DELETE /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}.
+								s.handleEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							case "organizations": // -> 84
 								// Edge: 84, path: "organizations".
@@ -1741,6 +1831,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				args["gist_id"] = string(elem)
 				// Edge: 89, path: "".
 				elem, p = nextElem(p)
+				if len(elem) == 0 {
+					// DELETE /gists/{gist_id}.
+					s.handleGistsDeleteRequest(args, w, r)
+					return
+				}
 				switch string(elem) {
 				case "comments": // -> 90
 					// Edge: 90, path: "comments".
@@ -1813,6 +1908,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								args["package_name"] = string(elem)
 								// Edge: 157, path: "".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// DELETE /users/{username}/packages/{package_type}/{package_name}.
+									s.handlePackagesDeletePackageForUserRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								case "versions": // -> 162
 									// Edge: 162, path: "versions".
@@ -1880,6 +1980,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				args["project_id"] = string(elem)
 				// Edge: 165, path: "".
 				elem, p = nextElem(p)
+				if len(elem) == 0 {
+					// DELETE /projects/{project_id}.
+					s.handleProjectsDeleteRequest(args, w, r)
+					return
+				}
 				switch string(elem) {
 				case "collaborators": // -> 170
 					// Edge: 170, path: "collaborators".
@@ -1924,6 +2029,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				args["team_id"] = string(elem)
 				// Edge: 244, path: "".
 				elem, p = nextElem(p)
+				if len(elem) == 0 {
+					// DELETE /teams/{team_id}.
+					s.handleTeamsDeleteLegacyRequest(args, w, r)
+					return
+				}
 				switch string(elem) {
 				case "discussions": // -> 245
 					// Edge: 245, path: "discussions".
@@ -1936,6 +2046,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						args["discussion_number"] = string(elem)
 						// Edge: 246, path: "".
 						elem, p = nextElem(p)
+						if len(elem) == 0 {
+							// DELETE /teams/{team_id}/discussions/{discussion_number}.
+							s.handleTeamsDeleteDiscussionLegacyRequest(args, w, r)
+							return
+						}
 						switch string(elem) {
 						case "comments": // -> 247
 							// Edge: 247, path: "comments".
@@ -2062,6 +2177,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						args["repo"] = string(elem)
 						// Edge: 4, path: "".
 						elem, p = nextElem(p)
+						if len(elem) == 0 {
+							// GET /repos/{owner}/{repo}.
+							s.handleReposGetRequest(args, w, r)
+							return
+						}
 						switch string(elem) {
 						case "actions": // -> 5
 							// Edge: 5, path: "actions".
@@ -2070,6 +2190,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "artifacts": // -> 6
 								// Edge: 6, path: "artifacts".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// GET /repos/{owner}/{repo}/actions/artifacts.
+									s.handleActionsListArtifactsForRepoRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -2078,6 +2203,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args["artifact_id"] = string(elem)
 									// Edge: 7, path: "".
 									elem, p = nextElem(p)
+									if len(elem) == 0 {
+										// GET /repos/{owner}/{repo}/actions/artifacts/{artifact_id}.
+										s.handleActionsGetArtifactRequest(args, w, r)
+										return
+									}
 									switch string(elem) {
 									case "": // -> 8
 										// Edge: 8, path: "".
@@ -2109,6 +2239,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args["job_id"] = string(elem)
 									// Edge: 11, path: "".
 									elem, p = nextElem(p)
+									if len(elem) == 0 {
+										// GET /repos/{owner}/{repo}/actions/jobs/{job_id}.
+										s.handleActionsGetJobForWorkflowRunRequest(args, w, r)
+										return
+									}
 									switch string(elem) {
 									case "logs": // -> 12
 										// GET /repos/{owner}/{repo}/actions/jobs/{job_id}/logs
@@ -2123,6 +2258,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "runs": // -> 13
 								// Edge: 13, path: "runs".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// GET /repos/{owner}/{repo}/actions/runs.
+									s.handleActionsListWorkflowRunsForRepoRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -2131,6 +2271,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args["run_id"] = string(elem)
 									// Edge: 14, path: "".
 									elem, p = nextElem(p)
+									if len(elem) == 0 {
+										// GET /repos/{owner}/{repo}/actions/runs/{run_id}.
+										s.handleActionsGetWorkflowRunRequest(args, w, r)
+										return
+									}
 									switch string(elem) {
 									case "logs": // -> 15
 										// GET /repos/{owner}/{repo}/actions/runs/{run_id}/logs
@@ -2161,6 +2306,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "permissions": // -> 21
 								// Edge: 21, path: "permissions".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// GET /repos/{owner}/{repo}/actions/permissions.
+									s.handleActionsGetGithubActionsPermissionsRepositoryRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								case "selected-actions": // -> 22
 									// GET /repos/{owner}/{repo}/actions/permissions/selected-actions
@@ -2174,6 +2324,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "secrets": // -> 33
 								// Edge: 33, path: "secrets".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// GET /repos/{owner}/{repo}/actions/secrets.
+									s.handleActionsListRepoSecretsRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								case "public-key": // -> 34
 									// GET /repos/{owner}/{repo}/actions/secrets/public-key
@@ -2191,6 +2346,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "runners": // -> 39
 								// Edge: 39, path: "runners".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// GET /repos/{owner}/{repo}/actions/runners.
+									s.handleActionsListSelfHostedRunnersForRepoRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								case "downloads": // -> 48
 									// GET /repos/{owner}/{repo}/actions/runners/downloads
@@ -2240,6 +2400,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								args["check_run_id"] = string(elem)
 								// Edge: 128, path: "".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// GET /repos/{owner}/{repo}/check-runs/{check_run_id}.
+									s.handleChecksGetRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								case "annotations": // -> 131
 									// GET /repos/{owner}/{repo}/check-runs/{check_run_id}/annotations
@@ -2262,6 +2427,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								args["check_suite_id"] = string(elem)
 								// Edge: 130, path: "".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// GET /repos/{owner}/{repo}/check-suites/{check_suite_id}.
+									s.handleChecksGetSuiteRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								case "check-runs": // -> 135
 									// GET /repos/{owner}/{repo}/check-suites/{check_suite_id}/check-runs
@@ -2276,6 +2446,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "commits": // -> 132
 							// Edge: 132, path: "commits".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// GET /repos/{owner}/{repo}/commits.
+								s.handleReposListCommitsRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -2284,6 +2459,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								args["ref"] = string(elem)
 								// Edge: 133, path: "".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// GET /repos/{owner}/{repo}/commits/{ref}.
+									s.handleReposGetCommitRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								case "check-runs": // -> 134
 									// GET /repos/{owner}/{repo}/commits/{ref}/check-runs
@@ -2326,6 +2506,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "alerts": // -> 138
 								// Edge: 138, path: "alerts".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// GET /repos/{owner}/{repo}/code-scanning/alerts.
+									s.handleCodeScanningListAlertsForRepoRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -2334,6 +2519,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args["alert_number"] = string(elem)
 									// Edge: 139, path: "".
 									elem, p = nextElem(p)
+									if len(elem) == 0 {
+										// GET /repos/{owner}/{repo}/code-scanning/alerts/{alert_number}.
+										s.handleCodeScanningGetAlertRequest(args, w, r)
+										return
+									}
 									switch string(elem) {
 									case "instances": // -> 144
 										// GET /repos/{owner}/{repo}/code-scanning/alerts/{alert_number}/instances
@@ -2348,6 +2538,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "analyses": // -> 140
 								// Edge: 140, path: "analyses".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// GET /repos/{owner}/{repo}/code-scanning/analyses.
+									s.handleCodeScanningListRecentAnalysesRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -2464,6 +2659,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "assignees": // -> 196
 							// Edge: 196, path: "assignees".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// GET /repos/{owner}/{repo}/assignees.
+								s.handleIssuesListAssigneesRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -2477,10 +2677,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "issues": // -> 198
 							// Edge: 198, path: "issues".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// GET /repos/{owner}/{repo}/issues.
+								s.handleIssuesListForRepoRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							case "comments": // -> 200
 								// Edge: 200, path: "comments".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// GET /repos/{owner}/{repo}/issues/comments.
+									s.handleIssuesListCommentsForRepoRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -2489,6 +2699,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args["comment_id"] = string(elem)
 									// Edge: 201, path: "".
 									elem, p = nextElem(p)
+									if len(elem) == 0 {
+										// GET /repos/{owner}/{repo}/issues/comments/{comment_id}.
+										s.handleIssuesGetCommentRequest(args, w, r)
+										return
+									}
 									switch string(elem) {
 									case "reactions": // -> 310
 										// GET /repos/{owner}/{repo}/issues/comments/{comment_id}/reactions
@@ -2503,6 +2718,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "events": // -> 202
 								// Edge: 202, path: "events".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// GET /repos/{owner}/{repo}/issues/events.
+									s.handleIssuesListEventsForRepoRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -2520,6 +2740,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								args["issue_number"] = string(elem)
 								// Edge: 199, path: "".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// GET /repos/{owner}/{repo}/issues/{issue_number}.
+									s.handleIssuesGetRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								case "comments": // -> 209
 									// GET /repos/{owner}/{repo}/issues/{issue_number}/comments
@@ -2542,6 +2767,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "labels": // -> 204
 							// Edge: 204, path: "labels".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// GET /repos/{owner}/{repo}/labels.
+								s.handleIssuesListLabelsForRepoRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -2555,6 +2785,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "milestones": // -> 206
 							// Edge: 206, path: "milestones".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// GET /repos/{owner}/{repo}/milestones.
+								s.handleIssuesListMilestonesRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -2563,6 +2798,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								args["milestone_number"] = string(elem)
 								// Edge: 207, path: "".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// GET /repos/{owner}/{repo}/milestones/{milestone_number}.
+									s.handleIssuesGetMilestoneRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								case "labels": // -> 212
 									// GET /repos/{owner}/{repo}/milestones/{milestone_number}/labels
@@ -2581,6 +2821,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "import": // -> 225
 							// Edge: 225, path: "import".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// GET /repos/{owner}/{repo}/import.
+								s.handleMigrationsGetImportStatusRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							case "authors": // -> 226
 								// GET /repos/{owner}/{repo}/import/authors
@@ -2602,10 +2847,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "pulls": // -> 293
 							// Edge: 293, path: "pulls".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// GET /repos/{owner}/{repo}/pulls.
+								s.handlePullsListRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							case "comments": // -> 298
 								// Edge: 298, path: "comments".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// GET /repos/{owner}/{repo}/pulls/comments.
+									s.handlePullsListReviewCommentsForRepoRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -2614,6 +2869,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args["comment_id"] = string(elem)
 									// Edge: 299, path: "".
 									elem, p = nextElem(p)
+									if len(elem) == 0 {
+										// GET /repos/{owner}/{repo}/pulls/comments/{comment_id}.
+										s.handlePullsGetReviewCommentRequest(args, w, r)
+										return
+									}
 									switch string(elem) {
 									case "reactions": // -> 311
 										// GET /repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions
@@ -2632,6 +2892,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								args["pull_number"] = string(elem)
 								// Edge: 294, path: "".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// GET /repos/{owner}/{repo}/pulls/{pull_number}.
+									s.handlePullsGetRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								case "merge": // -> 295
 									// GET /repos/{owner}/{repo}/pulls/{pull_number}/merge
@@ -2640,6 +2905,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "reviews": // -> 296
 									// Edge: 296, path: "reviews".
 									elem, p = nextElem(p)
+									if len(elem) == 0 {
+										// GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews.
+										s.handlePullsListReviewsRequest(args, w, r)
+										return
+									}
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -2648,6 +2918,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										args["review_id"] = string(elem)
 										// Edge: 297, path: "".
 										elem, p = nextElem(p)
+										if len(elem) == 0 {
+											// GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}.
+											s.handlePullsGetReviewRequest(args, w, r)
+											return
+										}
 										switch string(elem) {
 										case "comments": // -> 300
 											// GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/comments
@@ -2684,6 +2959,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "comments": // -> 306
 							// Edge: 306, path: "comments".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// GET /repos/{owner}/{repo}/comments.
+								s.handleReposListCommitCommentsForRepoRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -2692,6 +2972,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								args["comment_id"] = string(elem)
 								// Edge: 307, path: "".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// GET /repos/{owner}/{repo}/comments/{comment_id}.
+									s.handleReposGetCommitCommentRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								case "reactions": // -> 308
 									// GET /repos/{owner}/{repo}/comments/{comment_id}/reactions
@@ -2706,6 +2991,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "collaborators": // -> 328
 							// Edge: 328, path: "collaborators".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// GET /repos/{owner}/{repo}/collaborators.
+								s.handleReposListCollaboratorsRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -2714,6 +3004,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								args["username"] = string(elem)
 								// Edge: 329, path: "".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// GET /repos/{owner}/{repo}/collaborators/{username}.
+									s.handleReposCheckCollaboratorRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								case "permission": // -> 352
 									// GET /repos/{owner}/{repo}/collaborators/{username}/permission
@@ -2771,6 +3066,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "branches": // -> 337
 							// Edge: 337, path: "branches".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// GET /repos/{owner}/{repo}/branches.
+								s.handleReposListBranchesRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -2779,14 +3079,29 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								args["branch"] = string(elem)
 								// Edge: 338, path: "".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// GET /repos/{owner}/{repo}/branches/{branch}.
+									s.handleReposGetBranchRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								case "protection": // -> 339
 									// Edge: 339, path: "protection".
 									elem, p = nextElem(p)
+									if len(elem) == 0 {
+										// GET /repos/{owner}/{repo}/branches/{branch}/protection.
+										s.handleReposGetBranchProtectionRequest(args, w, r)
+										return
+									}
 									switch string(elem) {
 									case "restrictions": // -> 340
 										// Edge: 340, path: "restrictions".
 										elem, p = nextElem(p)
+										if len(elem) == 0 {
+											// GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions.
+											s.handleReposGetAccessRestrictionsRequest(args, w, r)
+											return
+										}
 										switch string(elem) {
 										case "apps": // -> 345
 											// GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps
@@ -2812,6 +3127,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									case "required_status_checks": // -> 342
 										// Edge: 342, path: "required_status_checks".
 										elem, p = nextElem(p)
+										if len(elem) == 0 {
+											// GET /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks.
+											s.handleReposGetStatusChecksProtectionRequest(args, w, r)
+											return
+										}
 										switch string(elem) {
 										case "contexts": // -> 343
 											// GET /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts
@@ -2848,6 +3168,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "autolinks": // -> 346
 							// Edge: 346, path: "autolinks".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// GET /repos/{owner}/{repo}/autolinks.
+								s.handleReposListAutolinksRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -2933,6 +3258,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "keys": // -> 359
 							// Edge: 359, path: "keys".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// GET /repos/{owner}/{repo}/keys.
+								s.handleReposListDeployKeysRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -2946,6 +3276,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "deployments": // -> 361
 							// Edge: 361, path: "deployments".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// GET /repos/{owner}/{repo}/deployments.
+								s.handleReposListDeploymentsRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -2954,10 +3289,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								args["deployment_id"] = string(elem)
 								// Edge: 362, path: "".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// GET /repos/{owner}/{repo}/deployments/{deployment_id}.
+									s.handleReposGetDeploymentRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								case "statuses": // -> 363
 									// Edge: 363, path: "statuses".
 									elem, p = nextElem(p)
+									if len(elem) == 0 {
+										// GET /repos/{owner}/{repo}/deployments/{deployment_id}/statuses.
+										s.handleReposListDeploymentStatusesRequest(args, w, r)
+										return
+									}
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -2977,10 +3322,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "pages": // -> 365
 							// Edge: 365, path: "pages".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// GET /repos/{owner}/{repo}/pages.
+								s.handleReposGetPagesRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							case "builds": // -> 366
 								// Edge: 366, path: "builds".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// GET /repos/{owner}/{repo}/pages/builds.
+									s.handleReposListPagesBuildsRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								case "latest": // -> 367
 									// GET /repos/{owner}/{repo}/pages/builds/latest
@@ -3007,6 +3362,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "releases": // -> 368
 							// Edge: 368, path: "releases".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// GET /repos/{owner}/{repo}/releases.
+								s.handleReposListReleasesRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							case "latest": // -> 369
 								// GET /repos/{owner}/{repo}/releases/latest
@@ -3045,6 +3405,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								args["release_id"] = string(elem)
 								// Edge: 377, path: "".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// GET /repos/{owner}/{repo}/releases/{release_id}.
+									s.handleReposGetReleaseRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								case "assets": // -> 405
 									// GET /repos/{owner}/{repo}/releases/{release_id}/assets
@@ -3059,6 +3424,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "readme": // -> 375
 							// Edge: 375, path: "readme".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// GET /repos/{owner}/{repo}/readme.
+								s.handleReposGetReadmeRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -3072,6 +3442,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "hooks": // -> 388
 							// Edge: 388, path: "hooks".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// GET /repos/{owner}/{repo}/hooks.
+								s.handleReposListWebhooksRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -3080,6 +3455,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								args["hook_id"] = string(elem)
 								// Edge: 389, path: "".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// GET /repos/{owner}/{repo}/hooks/{hook_id}.
+									s.handleReposGetWebhookRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								case "config": // -> 390
 									// GET /repos/{owner}/{repo}/hooks/{hook_id}/config
@@ -3088,6 +3468,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "deliveries": // -> 391
 									// Edge: 391, path: "deliveries".
 									elem, p = nextElem(p)
+									if len(elem) == 0 {
+										// GET /repos/{owner}/{repo}/hooks/{hook_id}/deliveries.
+										s.handleReposListWebhookDeliveriesRequest(args, w, r)
+										return
+									}
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -3135,6 +3520,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "alerts": // -> 417
 								// Edge: 417, path: "alerts".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// GET /repos/{owner}/{repo}/secret-scanning/alerts.
+									s.handleSecretScanningListAlertsForRepoRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -3171,6 +3561,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				args["org"] = string(elem)
 				// Edge: 17, path: "".
 				elem, p = nextElem(p)
+				if len(elem) == 0 {
+					// GET /orgs/{org}.
+					s.handleOrgsGetRequest(args, w, r)
+					return
+				}
 				switch string(elem) {
 				case "actions": // -> 18
 					// Edge: 18, path: "actions".
@@ -3179,6 +3574,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					case "permissions": // -> 19
 						// Edge: 19, path: "permissions".
 						elem, p = nextElem(p)
+						if len(elem) == 0 {
+							// GET /orgs/{org}/actions/permissions.
+							s.handleActionsGetGithubActionsPermissionsOrganizationRequest(args, w, r)
+							return
+						}
 						switch string(elem) {
 						case "selected-actions": // -> 20
 							// GET /orgs/{org}/actions/permissions/selected-actions
@@ -3196,6 +3596,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					case "secrets": // -> 30
 						// Edge: 30, path: "secrets".
 						elem, p = nextElem(p)
+						if len(elem) == 0 {
+							// GET /orgs/{org}/actions/secrets.
+							s.handleActionsListOrgSecretsRequest(args, w, r)
+							return
+						}
 						switch string(elem) {
 						case "public-key": // -> 31
 							// GET /orgs/{org}/actions/secrets/public-key
@@ -3208,6 +3613,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args["secret_name"] = string(elem)
 							// Edge: 32, path: "".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// GET /orgs/{org}/actions/secrets/{secret_name}.
+								s.handleActionsGetOrgSecretRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							case "repositories": // -> 49
 								// GET /orgs/{org}/actions/secrets/{secret_name}/repositories
@@ -3222,6 +3632,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					case "runners": // -> 37
 						// Edge: 37, path: "runners".
 						elem, p = nextElem(p)
+						if len(elem) == 0 {
+							// GET /orgs/{org}/actions/runners.
+							s.handleActionsListSelfHostedRunnersForOrgRequest(args, w, r)
+							return
+						}
 						switch string(elem) {
 						case "downloads": // -> 47
 							// GET /orgs/{org}/actions/runners/downloads
@@ -3239,6 +3654,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					case "runner-groups": // -> 41
 						// Edge: 41, path: "runner-groups".
 						elem, p = nextElem(p)
+						if len(elem) == 0 {
+							// GET /orgs/{org}/actions/runner-groups.
+							s.handleActionsListSelfHostedRunnerGroupsForOrgRequest(args, w, r)
+							return
+						}
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -3247,6 +3667,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args["runner_group_id"] = string(elem)
 							// Edge: 42, path: "".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// GET /orgs/{org}/actions/runner-groups/{runner_group_id}.
+								s.handleActionsGetSelfHostedRunnerGroupForOrgRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							case "repositories": // -> 45
 								// GET /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories
@@ -3305,6 +3730,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				case "migrations": // -> 219
 					// Edge: 219, path: "migrations".
 					elem, p = nextElem(p)
+					if len(elem) == 0 {
+						// GET /orgs/{org}/migrations.
+						s.handleMigrationsListForOrgRequest(args, w, r)
+						return
+					}
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -3313,6 +3743,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						args["migration_id"] = string(elem)
 						// Edge: 220, path: "".
 						elem, p = nextElem(p)
+						if len(elem) == 0 {
+							// GET /orgs/{org}/migrations/{migration_id}.
+							s.handleMigrationsGetStatusForOrgRequest(args, w, r)
+							return
+						}
 						switch string(elem) {
 						case "archive": // -> 221
 							// GET /orgs/{org}/migrations/{migration_id}/archive
@@ -3331,6 +3766,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				case "blocks": // -> 235
 					// Edge: 235, path: "blocks".
 					elem, p = nextElem(p)
+					if len(elem) == 0 {
+						// GET /orgs/{org}/blocks.
+						s.handleOrgsListBlockedUsersRequest(args, w, r)
+						return
+					}
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -3344,6 +3784,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				case "members": // -> 237
 					// Edge: 237, path: "members".
 					elem, p = nextElem(p)
+					if len(elem) == 0 {
+						// GET /orgs/{org}/members.
+						s.handleOrgsListMembersRequest(args, w, r)
+						return
+					}
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -3357,6 +3802,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				case "public_members": // -> 239
 					// Edge: 239, path: "public_members".
 					elem, p = nextElem(p)
+					if len(elem) == 0 {
+						// GET /orgs/{org}/public_members.
+						s.handleOrgsListPublicMembersRequest(args, w, r)
+						return
+					}
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -3387,6 +3837,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				case "hooks": // -> 247
 					// Edge: 247, path: "hooks".
 					elem, p = nextElem(p)
+					if len(elem) == 0 {
+						// GET /orgs/{org}/hooks.
+						s.handleOrgsListWebhooksRequest(args, w, r)
+						return
+					}
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -3395,6 +3850,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						args["hook_id"] = string(elem)
 						// Edge: 248, path: "".
 						elem, p = nextElem(p)
+						if len(elem) == 0 {
+							// GET /orgs/{org}/hooks/{hook_id}.
+							s.handleOrgsGetWebhookRequest(args, w, r)
+							return
+						}
 						switch string(elem) {
 						case "config": // -> 249
 							// GET /orgs/{org}/hooks/{hook_id}/config
@@ -3403,6 +3863,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "deliveries": // -> 250
 							// Edge: 250, path: "deliveries".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// GET /orgs/{org}/hooks/{hook_id}/deliveries.
+								s.handleOrgsListWebhookDeliveriesRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -3426,6 +3891,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				case "invitations": // -> 256
 					// Edge: 256, path: "invitations".
 					elem, p = nextElem(p)
+					if len(elem) == 0 {
+						// GET /orgs/{org}/invitations.
+						s.handleOrgsListPendingInvitationsRequest(args, w, r)
+						return
+					}
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -3455,6 +3925,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				case "packages": // -> 266
 					// Edge: 266, path: "packages".
 					elem, p = nextElem(p)
+					if len(elem) == 0 {
+						// GET /orgs/{org}/packages.
+						s.handlePackagesListPackagesForOrganizationRequest(args, w, r)
+						return
+					}
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -3475,10 +3950,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								args["package_name"] = string(elem)
 								// Edge: 269, path: "".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// GET /orgs/{org}/packages/{package_type}/{package_name}.
+									s.handlePackagesGetPackageForOrganizationRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								case "versions": // -> 270
 									// Edge: 270, path: "versions".
 									elem, p = nextElem(p)
+									if len(elem) == 0 {
+										// GET /orgs/{org}/packages/{package_type}/{package_name}/versions.
+										s.handlePackagesGetAllPackageVersionsForPackageOwnedByOrgRequest(args, w, r)
+										return
+									}
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -3507,6 +3992,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				case "teams": // -> 312
 					// Edge: 312, path: "teams".
 					elem, p = nextElem(p)
+					if len(elem) == 0 {
+						// GET /orgs/{org}/teams.
+						s.handleTeamsListRequest(args, w, r)
+						return
+					}
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -3515,10 +4005,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						args["team_slug"] = string(elem)
 						// Edge: 313, path: "".
 						elem, p = nextElem(p)
+						if len(elem) == 0 {
+							// GET /orgs/{org}/teams/{team_slug}.
+							s.handleTeamsGetByNameRequest(args, w, r)
+							return
+						}
 						switch string(elem) {
 						case "discussions": // -> 314
 							// Edge: 314, path: "discussions".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// GET /orgs/{org}/teams/{team_slug}/discussions.
+								s.handleTeamsListDiscussionsInOrgRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -3527,10 +4027,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								args["discussion_number"] = string(elem)
 								// Edge: 315, path: "".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}.
+									s.handleTeamsGetDiscussionInOrgRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								case "comments": // -> 316
 									// Edge: 316, path: "comments".
 									elem, p = nextElem(p)
+									if len(elem) == 0 {
+										// GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments.
+										s.handleTeamsListDiscussionCommentsInOrgRequest(args, w, r)
+										return
+									}
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -3539,6 +4049,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										args["comment_number"] = string(elem)
 										// Edge: 317, path: "".
 										elem, p = nextElem(p)
+										if len(elem) == 0 {
+											// GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}.
+											s.handleTeamsGetDiscussionCommentInOrgRequest(args, w, r)
+											return
+										}
 										switch string(elem) {
 										case "reactions": // -> 318
 											// GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions
@@ -3563,6 +4078,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "projects": // -> 421
 							// Edge: 421, path: "projects".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// GET /orgs/{org}/teams/{team_slug}/projects.
+								s.handleTeamsListProjectsInOrgRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -3576,6 +4096,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "repos": // -> 425
 							// Edge: 425, path: "repos".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// GET /orgs/{org}/teams/{team_slug}/repos.
+								s.handleTeamsListReposInOrgRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -3683,6 +4208,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		case "repositories": // -> 23
 			// Edge: 23, path: "repositories".
 			elem, p = nextElem(p)
+			if len(elem) == 0 {
+				// GET /repositories.
+				s.handleReposListPublicRequest(args, w, r)
+				return
+			}
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -3707,6 +4237,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "secrets": // -> 27
 							// Edge: 27, path: "secrets".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// GET /repositories/{repository_id}/environments/{environment_name}/secrets.
+								s.handleActionsListEnvironmentSecretsRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							case "public-key": // -> 28
 								// GET /repositories/{repository_id}/environments/{environment_name}/secrets/public-key
@@ -3734,10 +4269,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		case "user": // -> 53
 			// Edge: 53, path: "user".
 			elem, p = nextElem(p)
+			if len(elem) == 0 {
+				// GET /user.
+				s.handleUsersGetAuthenticatedRequest(args, w, r)
+				return
+			}
 			switch string(elem) {
 			case "starred": // -> 54
 				// Edge: 54, path: "starred".
 				elem, p = nextElem(p)
+				if len(elem) == 0 {
+					// GET /user/starred.
+					s.handleActivityListReposStarredByAuthenticatedUserRequest(args, w, r)
+					return
+				}
 				switch string(elem) {
 				default:
 					if args == nil {
@@ -3793,6 +4338,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			case "marketplace_purchases": // -> 108
 				// Edge: 108, path: "marketplace_purchases".
 				elem, p = nextElem(p)
+				if len(elem) == 0 {
+					// GET /user/marketplace_purchases.
+					s.handleAppsListSubscriptionsForAuthenticatedUserRequest(args, w, r)
+					return
+				}
 				switch string(elem) {
 				case "stubbed": // -> 109
 					// GET /user/marketplace_purchases/stubbed
@@ -3810,6 +4360,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			case "migrations": // -> 222
 				// Edge: 222, path: "migrations".
 				elem, p = nextElem(p)
+				if len(elem) == 0 {
+					// GET /user/migrations.
+					s.handleMigrationsListForAuthenticatedUserRequest(args, w, r)
+					return
+				}
 				switch string(elem) {
 				default:
 					if args == nil {
@@ -3818,6 +4373,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					args["migration_id"] = string(elem)
 					// Edge: 223, path: "".
 					elem, p = nextElem(p)
+					if len(elem) == 0 {
+						// GET /user/migrations/{migration_id}.
+						s.handleMigrationsGetStatusForAuthenticatedUserRequest(args, w, r)
+						return
+					}
 					switch string(elem) {
 					case "archive": // -> 224
 						// GET /user/migrations/{migration_id}/archive
@@ -3840,6 +4400,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				case "orgs": // -> 243
 					// Edge: 243, path: "orgs".
 					elem, p = nextElem(p)
+					if len(elem) == 0 {
+						// GET /user/memberships/orgs.
+						s.handleOrgsListMembershipsForAuthenticatedUserRequest(args, w, r)
+						return
+					}
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -3861,6 +4426,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			case "packages": // -> 261
 				// Edge: 261, path: "packages".
 				elem, p = nextElem(p)
+				if len(elem) == 0 {
+					// GET /user/packages.
+					s.handlePackagesListPackagesForAuthenticatedUserRequest(args, w, r)
+					return
+				}
 				switch string(elem) {
 				default:
 					if args == nil {
@@ -3881,10 +4451,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args["package_name"] = string(elem)
 							// Edge: 264, path: "".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// GET /user/packages/{package_type}/{package_name}.
+								s.handlePackagesGetPackageForAuthenticatedUserRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							case "versions": // -> 265
 								// Edge: 265, path: "versions".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// GET /user/packages/{package_type}/{package_name}/versions.
+									s.handlePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -3921,6 +4501,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			case "blocks": // -> 451
 				// Edge: 451, path: "blocks".
 				elem, p = nextElem(p)
+				if len(elem) == 0 {
+					// GET /user/blocks.
+					s.handleUsersListBlockedByAuthenticatedRequest(args, w, r)
+					return
+				}
 				switch string(elem) {
 				default:
 					if args == nil {
@@ -3934,6 +4519,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			case "following": // -> 455
 				// Edge: 455, path: "following".
 				elem, p = nextElem(p)
+				if len(elem) == 0 {
+					// GET /user/following.
+					s.handleUsersListFollowedByAuthenticatedRequest(args, w, r)
+					return
+				}
 				switch string(elem) {
 				default:
 					if args == nil {
@@ -3947,6 +4537,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			case "gpg_keys": // -> 458
 				// Edge: 458, path: "gpg_keys".
 				elem, p = nextElem(p)
+				if len(elem) == 0 {
+					// GET /user/gpg_keys.
+					s.handleUsersListGpgKeysForAuthenticatedRequest(args, w, r)
+					return
+				}
 				switch string(elem) {
 				default:
 					if args == nil {
@@ -3960,6 +4555,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			case "keys": // -> 460
 				// Edge: 460, path: "keys".
 				elem, p = nextElem(p)
+				if len(elem) == 0 {
+					// GET /user/keys.
+					s.handleUsersListPublicSSHKeysForAuthenticatedRequest(args, w, r)
+					return
+				}
 				switch string(elem) {
 				default:
 					if args == nil {
@@ -3994,6 +4594,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		case "notifications": // -> 60
 			// Edge: 60, path: "notifications".
 			elem, p = nextElem(p)
+			if len(elem) == 0 {
+				// GET /notifications.
+				s.handleActivityListNotificationsForAuthenticatedUserRequest(args, w, r)
+				return
+			}
 			switch string(elem) {
 			case "threads": // -> 61
 				// Edge: 61, path: "threads".
@@ -4006,6 +4611,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					args["thread_id"] = string(elem)
 					// Edge: 62, path: "".
 					elem, p = nextElem(p)
+					if len(elem) == 0 {
+						// GET /notifications/threads/{thread_id}.
+						s.handleActivityGetThreadRequest(args, w, r)
+						return
+					}
 					switch string(elem) {
 					case "subscription": // -> 63
 						// GET /notifications/threads/{thread_id}/subscription
@@ -4025,6 +4635,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		case "users": // -> 64
 			// Edge: 64, path: "users".
 			elem, p = nextElem(p)
+			if len(elem) == 0 {
+				// GET /users.
+				s.handleUsersListRequest(args, w, r)
+				return
+			}
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -4033,10 +4648,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				args["username"] = string(elem)
 				// Edge: 65, path: "".
 				elem, p = nextElem(p)
+				if len(elem) == 0 {
+					// GET /users/{username}.
+					s.handleUsersGetByUsernameRequest(args, w, r)
+					return
+				}
 				switch string(elem) {
 				case "events": // -> 66
 					// Edge: 66, path: "events".
 					elem, p = nextElem(p)
+					if len(elem) == 0 {
+						// GET /users/{username}/events.
+						s.handleActivityListEventsForAuthenticatedUserRequest(args, w, r)
+						return
+					}
 					switch string(elem) {
 					case "orgs": // -> 67
 						// Edge: 67, path: "orgs".
@@ -4063,6 +4688,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				case "received_events": // -> 77
 					// Edge: 77, path: "received_events".
 					elem, p = nextElem(p)
+					if len(elem) == 0 {
+						// GET /users/{username}/received_events.
+						s.handleActivityListReceivedEventsForUserRequest(args, w, r)
+						return
+					}
 					switch string(elem) {
 					case "public": // -> 78
 						// GET /users/{username}/received_events/public
@@ -4116,6 +4746,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				case "packages": // -> 271
 					// Edge: 271, path: "packages".
 					elem, p = nextElem(p)
+					if len(elem) == 0 {
+						// GET /users/{username}/packages.
+						s.handlePackagesListPackagesForUserRequest(args, w, r)
+						return
+					}
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -4136,10 +4771,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								args["package_name"] = string(elem)
 								// Edge: 274, path: "".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// GET /users/{username}/packages/{package_type}/{package_name}.
+									s.handlePackagesGetPackageForUserRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								case "versions": // -> 275
 									// Edge: 275, path: "versions".
 									elem, p = nextElem(p)
+									if len(elem) == 0 {
+										// GET /users/{username}/packages/{package_type}/{package_name}/versions.
+										s.handlePackagesGetAllPackageVersionsForPackageOwnedByUserRequest(args, w, r)
+										return
+									}
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -4172,6 +4817,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				case "following": // -> 453
 					// Edge: 453, path: "following".
 					elem, p = nextElem(p)
+					if len(elem) == 0 {
+						// GET /users/{username}/following.
+						s.handleUsersListFollowingForUserRequest(args, w, r)
+						return
+					}
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -4249,6 +4899,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		case "app": // -> 84
 			// Edge: 84, path: "app".
 			elem, p = nextElem(p)
+			if len(elem) == 0 {
+				// GET /app.
+				s.handleAppsGetAuthenticatedRequest(args, w, r)
+				return
+			}
 			switch string(elem) {
 			case "hook": // -> 93
 				// Edge: 93, path: "hook".
@@ -4261,6 +4916,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				case "deliveries": // -> 95
 					// Edge: 95, path: "deliveries".
 					elem, p = nextElem(p)
+					if len(elem) == 0 {
+						// GET /app/hook/deliveries.
+						s.handleAppsListWebhookDeliveriesRequest(args, w, r)
+						return
+					}
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -4330,6 +4990,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				case "plans": // -> 100
 					// Edge: 100, path: "plans".
 					elem, p = nextElem(p)
+					if len(elem) == 0 {
+						// GET /marketplace_listing/stubbed/plans.
+						s.handleAppsListPlansStubbedRequest(args, w, r)
+						return
+					}
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -4355,6 +5020,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			case "plans": // -> 97
 				// Edge: 97, path: "plans".
 				elem, p = nextElem(p)
+				if len(elem) == 0 {
+					// GET /marketplace_listing/plans.
+					s.handleAppsListPlansRequest(args, w, r)
+					return
+				}
 				switch string(elem) {
 				default:
 					if args == nil {
@@ -4436,6 +5106,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					case "permissions": // -> 149
 						// Edge: 149, path: "permissions".
 						elem, p = nextElem(p)
+						if len(elem) == 0 {
+							// GET /enterprises/{enterprise}/actions/permissions.
+							s.handleEnterpriseAdminGetGithubActionsPermissionsEnterpriseRequest(args, w, r)
+							return
+						}
 						switch string(elem) {
 						case "selected-actions": // -> 150
 							// GET /enterprises/{enterprise}/actions/permissions/selected-actions
@@ -4453,6 +5128,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					case "runners": // -> 160
 						// Edge: 160, path: "runners".
 						elem, p = nextElem(p)
+						if len(elem) == 0 {
+							// GET /enterprises/{enterprise}/actions/runners.
+							s.handleEnterpriseAdminListSelfHostedRunnersForEnterpriseRequest(args, w, r)
+							return
+						}
 						switch string(elem) {
 						case "downloads": // -> 165
 							// GET /enterprises/{enterprise}/actions/runners/downloads
@@ -4470,6 +5150,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					case "runner-groups": // -> 162
 						// Edge: 162, path: "runner-groups".
 						elem, p = nextElem(p)
+						if len(elem) == 0 {
+							// GET /enterprises/{enterprise}/actions/runner-groups.
+							s.handleEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseRequest(args, w, r)
+							return
+						}
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -4478,6 +5163,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args["runner_group_id"] = string(elem)
 							// Edge: 163, path: "".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// GET /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}.
+								s.handleEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							case "organizations": // -> 164
 								// GET /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations
@@ -4509,6 +5199,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		case "codes_of_conduct": // -> 145
 			// Edge: 145, path: "codes_of_conduct".
 			elem, p = nextElem(p)
+			if len(elem) == 0 {
+				// GET /codes_of_conduct.
+				s.handleCodesOfConductGetAllCodesOfConductRequest(args, w, r)
+				return
+			}
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -4546,6 +5241,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "Groups": // -> 156
 							// Edge: 156, path: "Groups".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// GET /scim/v2/enterprises/{enterprise}/Groups.
+								s.handleEnterpriseAdminListProvisionedGroupsEnterpriseRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -4559,6 +5259,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "Users": // -> 158
 							// Edge: 158, path: "Users".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// GET /scim/v2/enterprises/{enterprise}/Users.
+								s.handleEnterpriseAdminListProvisionedIdentitiesEnterpriseRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -4585,6 +5290,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		case "gists": // -> 168
 			// Edge: 168, path: "gists".
 			elem, p = nextElem(p)
+			if len(elem) == 0 {
+				// GET /gists.
+				s.handleGistsListRequest(args, w, r)
+				return
+			}
 			switch string(elem) {
 			case "public": // -> 178
 				// GET /gists/public
@@ -4601,6 +5311,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				args["gist_id"] = string(elem)
 				// Edge: 169, path: "".
 				elem, p = nextElem(p)
+				if len(elem) == 0 {
+					// GET /gists/{gist_id}.
+					s.handleGistsGetRequest(args, w, r)
+					return
+				}
 				switch string(elem) {
 				case "star": // -> 170
 					// GET /gists/{gist_id}/star
@@ -4609,6 +5324,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				case "comments": // -> 171
 					// Edge: 171, path: "comments".
 					elem, p = nextElem(p)
+					if len(elem) == 0 {
+						// GET /gists/{gist_id}/comments.
+						s.handleGistsListCommentsRequest(args, w, r)
+						return
+					}
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -4653,6 +5373,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			case "templates": // -> 194
 				// Edge: 194, path: "templates".
 				elem, p = nextElem(p)
+				if len(elem) == 0 {
+					// GET /gitignore/templates.
+					s.handleGitignoreGetAllTemplatesRequest(args, w, r)
+					return
+				}
 				switch string(elem) {
 				default:
 					if args == nil {
@@ -4674,6 +5399,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		case "licenses": // -> 214
 			// Edge: 214, path: "licenses".
 			elem, p = nextElem(p)
+			if len(elem) == 0 {
+				// GET /licenses.
+				s.handleLicensesGetAllCommonlyUsedRequest(args, w, r)
+				return
+			}
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -4695,6 +5425,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		case "authorizations": // -> 230
 			// Edge: 230, path: "authorizations".
 			elem, p = nextElem(p)
+			if len(elem) == 0 {
+				// GET /authorizations.
+				s.handleOAuthAuthorizationsListAuthorizationsRequest(args, w, r)
+				return
+			}
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -4712,6 +5447,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			case "grants": // -> 233
 				// Edge: 233, path: "grants".
 				elem, p = nextElem(p)
+				if len(elem) == 0 {
+					// GET /applications/grants.
+					s.handleOAuthAuthorizationsListGrantsRequest(args, w, r)
+					return
+				}
 				switch string(elem) {
 				default:
 					if args == nil {
@@ -4758,6 +5498,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					args["column_id"] = string(elem)
 					// Edge: 284, path: "".
 					elem, p = nextElem(p)
+					if len(elem) == 0 {
+						// GET /projects/columns/{column_id}.
+						s.handleProjectsGetColumnRequest(args, w, r)
+						return
+					}
 					switch string(elem) {
 					case "cards": // -> 288
 						// GET /projects/columns/{column_id}/cards
@@ -4776,10 +5521,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				args["project_id"] = string(elem)
 				// Edge: 280, path: "".
 				elem, p = nextElem(p)
+				if len(elem) == 0 {
+					// GET /projects/{project_id}.
+					s.handleProjectsGetRequest(args, w, r)
+					return
+				}
 				switch string(elem) {
 				case "collaborators": // -> 285
 					// Edge: 285, path: "collaborators".
 					elem, p = nextElem(p)
+					if len(elem) == 0 {
+						// GET /projects/{project_id}/collaborators.
+						s.handleProjectsListCollaboratorsRequest(args, w, r)
+						return
+					}
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -4823,10 +5578,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				args["team_id"] = string(elem)
 				// Edge: 320, path: "".
 				elem, p = nextElem(p)
+				if len(elem) == 0 {
+					// GET /teams/{team_id}.
+					s.handleTeamsGetLegacyRequest(args, w, r)
+					return
+				}
 				switch string(elem) {
 				case "discussions": // -> 321
 					// Edge: 321, path: "discussions".
 					elem, p = nextElem(p)
+					if len(elem) == 0 {
+						// GET /teams/{team_id}/discussions.
+						s.handleTeamsListDiscussionsLegacyRequest(args, w, r)
+						return
+					}
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -4835,10 +5600,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						args["discussion_number"] = string(elem)
 						// Edge: 322, path: "".
 						elem, p = nextElem(p)
+						if len(elem) == 0 {
+							// GET /teams/{team_id}/discussions/{discussion_number}.
+							s.handleTeamsGetDiscussionLegacyRequest(args, w, r)
+							return
+						}
 						switch string(elem) {
 						case "comments": // -> 323
 							// Edge: 323, path: "comments".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// GET /teams/{team_id}/discussions/{discussion_number}/comments.
+								s.handleTeamsListDiscussionCommentsLegacyRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -4847,6 +5622,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								args["comment_number"] = string(elem)
 								// Edge: 324, path: "".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// GET /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}.
+									s.handleTeamsGetDiscussionCommentLegacyRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								case "reactions": // -> 325
 									// GET /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions
@@ -4871,6 +5651,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				case "projects": // -> 423
 					// Edge: 423, path: "projects".
 					elem, p = nextElem(p)
+					if len(elem) == 0 {
+						// GET /teams/{team_id}/projects.
+						s.handleTeamsListProjectsLegacyRequest(args, w, r)
+						return
+					}
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -4884,6 +5669,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				case "repos": // -> 429
 					// Edge: 429, path: "repos".
 					elem, p = nextElem(p)
+					if len(elem) == 0 {
+						// GET /teams/{team_id}/repos.
+						s.handleTeamsListReposLegacyRequest(args, w, r)
+						return
+					}
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -4914,6 +5704,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				case "members": // -> 433
 					// Edge: 433, path: "members".
 					elem, p = nextElem(p)
+					if len(elem) == 0 {
+						// GET /teams/{team_id}/members.
+						s.handleTeamsListMembersLegacyRequest(args, w, r)
+						return
+					}
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -5051,6 +5846,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						args["hook_id"] = string(elem)
 						// Edge: 63, path: "".
 						elem, p = nextElem(p)
+						if len(elem) == 0 {
+							// PATCH /orgs/{org}/hooks/{hook_id}.
+							s.handleOrgsUpdateWebhookRequest(args, w, r)
+							return
+						}
 						switch string(elem) {
 						case "config": // -> 64
 							// PATCH /orgs/{org}/hooks/{hook_id}/config
@@ -5073,6 +5873,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						args["team_slug"] = string(elem)
 						// Edge: 97, path: "".
 						elem, p = nextElem(p)
+						if len(elem) == 0 {
+							// PATCH /orgs/{org}/teams/{team_slug}.
+							s.handleTeamsUpdateInOrgRequest(args, w, r)
+							return
+						}
 						switch string(elem) {
 						case "team-sync": // -> 98
 							// Edge: 98, path: "team-sync".
@@ -5097,6 +5902,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								args["discussion_number"] = string(elem)
 								// Edge: 105, path: "".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// PATCH /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}.
+									s.handleTeamsUpdateDiscussionInOrgRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								case "comments": // -> 106
 									// Edge: 106, path: "comments".
@@ -5213,6 +6023,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						args["repo"] = string(elem)
 						// Edge: 18, path: "".
 						elem, p = nextElem(p)
+						if len(elem) == 0 {
+							// PATCH /repos/{owner}/{repo}.
+							s.handleReposUpdateRequest(args, w, r)
+							return
+						}
 						switch string(elem) {
 						case "check-suites": // -> 19
 							// Edge: 19, path: "check-suites".
@@ -5323,6 +6138,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "import": // -> 52
 							// Edge: 52, path: "import".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// PATCH /repos/{owner}/{repo}/import.
+								s.handleMigrationsUpdateImportRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							case "authors": // -> 53
 								// Edge: 53, path: "authors".
@@ -5468,6 +6288,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								args["hook_id"] = string(elem)
 								// Edge: 91, path: "".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// PATCH /repos/{owner}/{repo}/hooks/{hook_id}.
+									s.handleReposUpdateWebhookRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								case "config": // -> 92
 									// PATCH /repos/{owner}/{repo}/hooks/{hook_id}/config
@@ -5654,6 +6479,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		case "user": // -> 58
 			// Edge: 58, path: "user".
 			elem, p = nextElem(p)
+			if len(elem) == 0 {
+				// PATCH /user.
+				s.handleUsersUpdateAuthenticatedRequest(args, w, r)
+				return
+			}
 			switch string(elem) {
 			case "memberships": // -> 59
 				// Edge: 59, path: "memberships".
@@ -5756,6 +6586,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				args["team_id"] = string(elem)
 				// Edge: 101, path: "".
 				elem, p = nextElem(p)
+				if len(elem) == 0 {
+					// PATCH /teams/{team_id}.
+					s.handleTeamsUpdateLegacyRequest(args, w, r)
+					return
+				}
 				switch string(elem) {
 				case "team-sync": // -> 102
 					// Edge: 102, path: "team-sync".
@@ -5780,6 +6615,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						args["discussion_number"] = string(elem)
 						// Edge: 109, path: "".
 						elem, p = nextElem(p)
+						if len(elem) == 0 {
+							// PATCH /teams/{team_id}/discussions/{discussion_number}.
+							s.handleTeamsUpdateDiscussionLegacyRequest(args, w, r)
+							return
+						}
 						switch string(elem) {
 						case "comments": // -> 110
 							// Edge: 110, path: "comments".
@@ -5923,6 +6763,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "check-suites": // -> 38
 							// Edge: 38, path: "check-suites".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// POST /repos/{owner}/{repo}/check-suites.
+								s.handleChecksCreateSuiteRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -5984,6 +6829,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "issues": // -> 66
 							// Edge: 66, path: "issues".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// POST /repos/{owner}/{repo}/issues.
+								s.handleIssuesCreateRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							case "comments": // -> 133
 								// Edge: 133, path: "comments".
@@ -6046,6 +6896,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "pulls": // -> 121
 							// Edge: 121, path: "pulls".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// POST /repos/{owner}/{repo}/pulls.
+								s.handlePullsCreateRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							case "comments": // -> 136
 								// Edge: 136, path: "comments".
@@ -6079,6 +6934,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "comments": // -> 123
 									// Edge: 123, path: "comments".
 									elem, p = nextElem(p)
+									if len(elem) == 0 {
+										// POST /repos/{owner}/{repo}/pulls/{pull_number}/comments.
+										s.handlePullsCreateReviewCommentRequest(args, w, r)
+										return
+									}
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -6100,6 +6960,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "reviews": // -> 126
 									// Edge: 126, path: "reviews".
 									elem, p = nextElem(p)
+									if len(elem) == 0 {
+										// POST /repos/{owner}/{repo}/pulls/{pull_number}/reviews.
+										s.handlePullsCreateReviewRequest(args, w, r)
+										return
+									}
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -6147,6 +7012,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "releases": // -> 139
 							// Edge: 139, path: "releases".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// POST /repos/{owner}/{repo}/releases.
+								s.handleReposCreateReleaseRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -6279,6 +7149,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "deployments": // -> 175
 							// Edge: 175, path: "deployments".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// POST /repos/{owner}/{repo}/deployments.
+								s.handleReposCreateDeploymentRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -6308,6 +7183,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "pages": // -> 182
 							// Edge: 182, path: "pages".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// POST /repos/{owner}/{repo}/pages.
+								s.handleReposCreatePagesSiteRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							case "builds": // -> 193
 								// POST /repos/{owner}/{repo}/pages/builds
@@ -6325,6 +7205,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "hooks": // -> 184
 							// Edge: 184, path: "hooks".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// POST /repos/{owner}/{repo}/hooks.
+								s.handleReposCreateWebhookRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -6441,6 +7326,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				case "hooks": // -> 77
 					// Edge: 77, path: "hooks".
 					elem, p = nextElem(p)
+					if len(elem) == 0 {
+						// POST /orgs/{org}/hooks.
+						s.handleOrgsCreateWebhookRequest(args, w, r)
+						return
+					}
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -6546,6 +7436,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				case "teams": // -> 142
 					// Edge: 142, path: "teams".
 					elem, p = nextElem(p)
+					if len(elem) == 0 {
+						// POST /orgs/{org}/teams.
+						s.handleTeamsCreateRequest(args, w, r)
+						return
+					}
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -6558,6 +7453,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "discussions": // -> 144
 							// Edge: 144, path: "discussions".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// POST /orgs/{org}/teams/{team_slug}/discussions.
+								s.handleTeamsCreateDiscussionInOrgRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -6570,6 +7470,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "comments": // -> 146
 									// Edge: 146, path: "comments".
 									elem, p = nextElem(p)
+									if len(elem) == 0 {
+										// POST /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments.
+										s.handleTeamsCreateDiscussionCommentInOrgRequest(args, w, r)
+										return
+									}
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -6626,6 +7531,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				case "token": // -> 25
 					// Edge: 25, path: "token".
 					elem, p = nextElem(p)
+					if len(elem) == 0 {
+						// POST /applications/{client_id}/token.
+						s.handleAppsCheckTokenRequest(args, w, r)
+						return
+					}
 					switch string(elem) {
 					case "scoped": // -> 37
 						// POST /applications/{client_id}/token/scoped
@@ -6788,6 +7698,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		case "gists": // -> 56
 			// Edge: 56, path: "gists".
 			elem, p = nextElem(p)
+			if len(elem) == 0 {
+				// POST /gists.
+				s.handleGistsCreateRequest(args, w, r)
+				return
+			}
 			switch string(elem) {
 			default:
 				if args == nil {
@@ -7059,6 +7974,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				case "discussions": // -> 151
 					// Edge: 151, path: "discussions".
 					elem, p = nextElem(p)
+					if len(elem) == 0 {
+						// POST /teams/{team_id}/discussions.
+						s.handleTeamsCreateDiscussionLegacyRequest(args, w, r)
+						return
+					}
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -7071,6 +7991,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "comments": // -> 153
 							// Edge: 153, path: "comments".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// POST /teams/{team_id}/discussions/{discussion_number}/comments.
+								s.handleTeamsCreateDiscussionCommentLegacyRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -7142,6 +8067,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "repositories": // -> 6
 								// Edge: 6, path: "repositories".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories.
+									s.handleActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -7155,6 +8085,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "runners": // -> 12
 								// Edge: 12, path: "runners".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/runners.
+									s.handleActionsSetSelfHostedRunnersInGroupForOrgRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -7181,10 +8116,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args["secret_name"] = string(elem)
 							// Edge: 9, path: "".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// PUT /orgs/{org}/actions/secrets/{secret_name}.
+								s.handleActionsCreateOrUpdateOrgSecretRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							case "repositories": // -> 10
 								// Edge: 10, path: "repositories".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// PUT /orgs/{org}/actions/secrets/{secret_name}/repositories.
+									s.handleActionsSetSelectedReposForOrgSecretRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -7204,10 +8149,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					case "permissions": // -> 27
 						// Edge: 27, path: "permissions".
 						elem, p = nextElem(p)
+						if len(elem) == 0 {
+							// PUT /orgs/{org}/actions/permissions.
+							s.handleActionsSetGithubActionsPermissionsOrganizationRequest(args, w, r)
+							return
+						}
 						switch string(elem) {
 						case "repositories": // -> 28
 							// Edge: 28, path: "repositories".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// PUT /orgs/{org}/actions/permissions/repositories.
+								s.handleActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -7456,6 +8411,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "permissions": // -> 31
 								// Edge: 31, path: "permissions".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// PUT /repos/{owner}/{repo}/actions/permissions.
+									s.handleActionsSetGithubActionsPermissionsRepositoryRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								case "selected-actions": // -> 32
 									// PUT /repos/{owner}/{repo}/actions/permissions/selected-actions
@@ -7530,6 +8490,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										args["review_id"] = string(elem)
 										// Edge: 103, path: "".
 										elem, p = nextElem(p)
+										if len(elem) == 0 {
+											// PUT /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}.
+											s.handlePullsUpdateReviewRequest(args, w, r)
+											return
+										}
 										switch string(elem) {
 										case "dismissals": // -> 104
 											// PUT /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/dismissals
@@ -7611,6 +8576,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "protection": // -> 117
 									// Edge: 117, path: "protection".
 									elem, p = nextElem(p)
+									if len(elem) == 0 {
+										// PUT /repos/{owner}/{repo}/branches/{branch}/protection.
+										s.handleReposUpdateBranchProtectionRequest(args, w, r)
+										return
+									}
 									switch string(elem) {
 									case "restrictions": // -> 118
 										// Edge: 118, path: "restrictions".
@@ -7667,6 +8637,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		case "notifications": // -> 33
 			// Edge: 33, path: "notifications".
 			elem, p = nextElem(p)
+			if len(elem) == 0 {
+				// PUT /notifications.
+				s.handleActivityMarkNotificationsAsReadRequest(args, w, r)
+				return
+			}
 			switch string(elem) {
 			case "threads": // -> 36
 				// Edge: 36, path: "threads".
@@ -7852,6 +8827,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "organizations": // -> 57
 								// Edge: 57, path: "organizations".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations.
+									s.handleEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -7865,6 +8845,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "runners": // -> 59
 								// Edge: 59, path: "runners".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners.
+									s.handleEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -7883,10 +8868,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					case "permissions": // -> 61
 						// Edge: 61, path: "permissions".
 						elem, p = nextElem(p)
+						if len(elem) == 0 {
+							// PUT /enterprises/{enterprise}/actions/permissions.
+							s.handleEnterpriseAdminSetGithubActionsPermissionsEnterpriseRequest(args, w, r)
+							return
+						}
 						switch string(elem) {
 						case "organizations": // -> 62
 							// Edge: 62, path: "organizations".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// PUT /enterprises/{enterprise}/actions/permissions/organizations.
+								s.handleEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -8010,6 +9005,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					args["client_id"] = string(elem)
 					// Edge: 85, path: "".
 					elem, p = nextElem(p)
+					if len(elem) == 0 {
+						// PUT /authorizations/clients/{client_id}.
+						s.handleOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest(args, w, r)
+						return
+					}
 					switch string(elem) {
 					case "": // -> 86
 						// Edge: 86, path: "".

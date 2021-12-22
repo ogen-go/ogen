@@ -99,76 +99,104 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 	// Static code generated router with unwrapped path search.
 	switch r.Method {
-	case "GET":
+	case "DELETE":
 		// Root edge.
 		elem, p = nextElem(p)
 		switch string(elem) {
-		case "error": // -> 1
-			// GET /error
-			s.handleErrorGetRequest(args, w, r)
-			return
-		case "foobar": // -> 2
-			// GET /foobar
-			s.handleFoobarGetRequest(args, w, r)
-			return
-		case "test": // -> 3
-			// Edge: 3, path: "test".
+		case "pets": // -> 1
+			// Edge: 1, path: "pets".
 			elem, p = nextElem(p)
 			switch string(elem) {
-			case "header": // -> 4
-				// GET /test/header
-				s.handleGetHeaderRequest(args, w, r)
-				return
-			default:
-				s.notFound(w, r)
-				return
-			}
-		case "pet": // -> 5
-			// Edge: 5, path: "pet".
-			elem, p = nextElem(p)
-			if len(elem) == 0 {
-				// GET /pet.
-				s.handlePetGetRequest(args, w, r)
-				return
-			}
-			switch string(elem) {
-			case "friendNames": // -> 6
-				// Edge: 6, path: "friendNames".
-				elem, p = nextElem(p)
-				switch string(elem) {
-				default:
-					if args == nil {
-						args = make(map[string]string)
-					}
-					args["id"] = string(elem)
-					// GET /pet/friendNames/{id}
-					s.handlePetFriendsNamesByIDRequest(args, w, r)
-					return
-				}
-			case "avatar": // -> 8
-				// GET /pet/avatar
-				s.handlePetGetAvatarByIDRequest(args, w, r)
-				return
-			case "name": // -> 10
-				// Edge: 10, path: "name".
-				elem, p = nextElem(p)
-				switch string(elem) {
-				default:
-					if args == nil {
-						args = make(map[string]string)
-					}
-					args["id"] = string(elem)
-					// GET /pet/name/{id}
-					s.handlePetNameByIDRequest(args, w, r)
-					return
-				}
 			default:
 				if args == nil {
 					args = make(map[string]string)
 				}
-				args["name"] = string(elem)
-				// GET /pet/{name}
-				s.handlePetGetByNameRequest(args, w, r)
+				args["id"] = string(elem)
+				// Edge: 2, path: "".
+				elem, p = nextElem(p)
+				if len(elem) == 0 {
+					// DELETE /pets/{id}.
+					s.handleDeletePetRequest(args, w, r)
+					return
+				}
+				switch string(elem) {
+				case "owner": // -> 3
+					// DELETE /pets/{id}/owner
+					s.handleDeletePetOwnerRequest(args, w, r)
+					return
+				default:
+					// DELETE /pets/{id}.
+					s.handleDeletePetRequest(args, w, r)
+					return
+				}
+			}
+		default:
+			s.notFound(w, r)
+			return
+		}
+	case "GET":
+		// Root edge.
+		elem, p = nextElem(p)
+		switch string(elem) {
+		case "pets": // -> 1
+			// Edge: 1, path: "pets".
+			elem, p = nextElem(p)
+			if len(elem) == 0 {
+				// GET /pets.
+				s.handleListPetRequest(args, w, r)
+				return
+			}
+			switch string(elem) {
+			default:
+				if args == nil {
+					args = make(map[string]string)
+				}
+				args["id"] = string(elem)
+				// Edge: 2, path: "".
+				elem, p = nextElem(p)
+				if len(elem) == 0 {
+					// GET /pets/{id}.
+					s.handleReadPetRequest(args, w, r)
+					return
+				}
+				switch string(elem) {
+				case "categories": // -> 3
+					// GET /pets/{id}/categories
+					s.handleListPetCategoriesRequest(args, w, r)
+					return
+				case "friends": // -> 4
+					// GET /pets/{id}/friends
+					s.handleListPetFriendsRequest(args, w, r)
+					return
+				case "owner": // -> 5
+					// GET /pets/{id}/owner
+					s.handleReadPetOwnerRequest(args, w, r)
+					return
+				default:
+					// GET /pets/{id}.
+					s.handleReadPetRequest(args, w, r)
+					return
+				}
+			}
+		default:
+			s.notFound(w, r)
+			return
+		}
+	case "PATCH":
+		// Root edge.
+		elem, p = nextElem(p)
+		switch string(elem) {
+		case "pets": // -> 1
+			// Edge: 1, path: "pets".
+			elem, p = nextElem(p)
+			switch string(elem) {
+			default:
+				if args == nil {
+					args = make(map[string]string)
+				}
+				args["id"] = string(elem)
+				// PATCH /pets/{id}
+				s.handleUpdatePetRequest(args, w, r)
 				return
 			}
 		default:
@@ -179,48 +207,40 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		// Root edge.
 		elem, p = nextElem(p)
 		switch string(elem) {
-		case "foobar": // -> 1
-			// POST /foobar
-			s.handleFoobarPostRequest(args, w, r)
-			return
-		case "pet": // -> 2
-			// Edge: 2, path: "pet".
+		case "pets": // -> 1
+			// Edge: 1, path: "pets".
 			elem, p = nextElem(p)
 			if len(elem) == 0 {
-				// POST /pet.
-				s.handlePetCreateRequest(args, w, r)
+				// POST /pets.
+				s.handleCreatePetRequest(args, w, r)
 				return
 			}
 			switch string(elem) {
-			case "updateNameAlias": // -> 3
-				// POST /pet/updateNameAlias
-				s.handlePetUpdateNameAliasPostRequest(args, w, r)
-				return
-			case "updateName": // -> 4
-				// POST /pet/updateName
-				s.handlePetUpdateNamePostRequest(args, w, r)
-				return
-			case "avatar": // -> 5
-				// POST /pet/avatar
-				s.handlePetUploadAvatarByIDRequest(args, w, r)
-				return
 			default:
-				// POST /pet.
-				s.handlePetCreateRequest(args, w, r)
-				return
+				if args == nil {
+					args = make(map[string]string)
+				}
+				args["id"] = string(elem)
+				// Edge: 2, path: "".
+				elem, p = nextElem(p)
+				switch string(elem) {
+				case "categories": // -> 3
+					// POST /pets/{id}/categories
+					s.handleCreatePetCategoriesRequest(args, w, r)
+					return
+				case "friends": // -> 4
+					// POST /pets/{id}/friends
+					s.handleCreatePetFriendsRequest(args, w, r)
+					return
+				case "owner": // -> 5
+					// POST /pets/{id}/owner
+					s.handleCreatePetOwnerRequest(args, w, r)
+					return
+				default:
+					s.notFound(w, r)
+					return
+				}
 			}
-		default:
-			s.notFound(w, r)
-			return
-		}
-	case "PUT":
-		// Root edge.
-		elem, p = nextElem(p)
-		switch string(elem) {
-		case "foobar": // -> 1
-			// PUT /foobar
-			s.handleFoobarPutRequest(args, w, r)
-			return
 		default:
 			s.notFound(w, r)
 			return

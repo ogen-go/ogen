@@ -106,18 +106,38 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		case "apis": // -> 1
 			// Edge: 1, path: "apis".
 			elem, p = nextElem(p)
+			if len(elem) == 0 {
+				// GET /apis/.
+				s.handleGetAPIVersionsRequest(args, w, r)
+				return
+			}
 			switch string(elem) {
 			case "admissionregistration.k8s.io": // -> 2
 				// Edge: 2, path: "admissionregistration.k8s.io".
 				elem, p = nextElem(p)
+				if len(elem) == 0 {
+					// GET /apis/admissionregistration.k8s.io/.
+					s.handleGetAdmissionregistrationAPIGroupRequest(args, w, r)
+					return
+				}
 				switch string(elem) {
 				case "v1": // -> 3
 					// Edge: 3, path: "v1".
 					elem, p = nextElem(p)
+					if len(elem) == 0 {
+						// GET /apis/admissionregistration.k8s.io/v1/.
+						s.handleGetAdmissionregistrationV1APIResourcesRequest(args, w, r)
+						return
+					}
 					switch string(elem) {
 					case "mutatingwebhookconfigurations": // -> 58
 						// Edge: 58, path: "mutatingwebhookconfigurations".
 						elem, p = nextElem(p)
+						if len(elem) == 0 {
+							// GET /apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations.
+							s.handleListAdmissionregistrationV1MutatingWebhookConfigurationRequest(args, w, r)
+							return
+						}
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -131,6 +151,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					case "validatingwebhookconfigurations": // -> 59
 						// Edge: 59, path: "validatingwebhookconfigurations".
 						elem, p = nextElem(p)
+						if len(elem) == 0 {
+							// GET /apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations.
+							s.handleListAdmissionregistrationV1ValidatingWebhookConfigurationRequest(args, w, r)
+							return
+						}
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -148,6 +173,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "mutatingwebhookconfigurations": // -> 292
 							// Edge: 292, path: "mutatingwebhookconfigurations".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// GET /apis/admissionregistration.k8s.io/v1/watch/mutatingwebhookconfigurations.
+								s.handleWatchAdmissionregistrationV1MutatingWebhookConfigurationListRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -161,6 +191,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "validatingwebhookconfigurations": // -> 294
 							// Edge: 294, path: "validatingwebhookconfigurations".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// GET /apis/admissionregistration.k8s.io/v1/watch/validatingwebhookconfigurations.
+								s.handleWatchAdmissionregistrationV1ValidatingWebhookConfigurationListRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -188,14 +223,29 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			case "apiextensions.k8s.io": // -> 4
 				// Edge: 4, path: "apiextensions.k8s.io".
 				elem, p = nextElem(p)
+				if len(elem) == 0 {
+					// GET /apis/apiextensions.k8s.io/.
+					s.handleGetApiextensionsAPIGroupRequest(args, w, r)
+					return
+				}
 				switch string(elem) {
 				case "v1": // -> 5
 					// Edge: 5, path: "v1".
 					elem, p = nextElem(p)
+					if len(elem) == 0 {
+						// GET /apis/apiextensions.k8s.io/v1/.
+						s.handleGetApiextensionsV1APIResourcesRequest(args, w, r)
+						return
+					}
 					switch string(elem) {
 					case "customresourcedefinitions": // -> 60
 						// Edge: 60, path: "customresourcedefinitions".
 						elem, p = nextElem(p)
+						if len(elem) == 0 {
+							// GET /apis/apiextensions.k8s.io/v1/customresourcedefinitions.
+							s.handleListApiextensionsV1CustomResourceDefinitionRequest(args, w, r)
+							return
+						}
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -204,6 +254,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args["name"] = string(elem)
 							// Edge: 195, path: "".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// GET /apis/apiextensions.k8s.io/v1/customresourcedefinitions/{name}.
+								s.handleReadApiextensionsV1CustomResourceDefinitionRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							case "status": // -> 196
 								// GET /apis/apiextensions.k8s.io/v1/customresourcedefinitions/{name}/status
@@ -222,6 +277,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "customresourcedefinitions": // -> 297
 							// Edge: 297, path: "customresourcedefinitions".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// GET /apis/apiextensions.k8s.io/v1/watch/customresourcedefinitions.
+								s.handleWatchApiextensionsV1CustomResourceDefinitionListRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -249,14 +309,29 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			case "apiregistration.k8s.io": // -> 6
 				// Edge: 6, path: "apiregistration.k8s.io".
 				elem, p = nextElem(p)
+				if len(elem) == 0 {
+					// GET /apis/apiregistration.k8s.io/.
+					s.handleGetApiregistrationAPIGroupRequest(args, w, r)
+					return
+				}
 				switch string(elem) {
 				case "v1": // -> 7
 					// Edge: 7, path: "v1".
 					elem, p = nextElem(p)
+					if len(elem) == 0 {
+						// GET /apis/apiregistration.k8s.io/v1/.
+						s.handleGetApiregistrationV1APIResourcesRequest(args, w, r)
+						return
+					}
 					switch string(elem) {
 					case "apiservices": // -> 61
 						// Edge: 61, path: "apiservices".
 						elem, p = nextElem(p)
+						if len(elem) == 0 {
+							// GET /apis/apiregistration.k8s.io/v1/apiservices.
+							s.handleListApiregistrationV1APIServiceRequest(args, w, r)
+							return
+						}
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -265,6 +340,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args["name"] = string(elem)
 							// Edge: 197, path: "".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// GET /apis/apiregistration.k8s.io/v1/apiservices/{name}.
+								s.handleReadApiregistrationV1APIServiceRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							case "status": // -> 198
 								// GET /apis/apiregistration.k8s.io/v1/apiservices/{name}/status
@@ -283,6 +363,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "apiservices": // -> 300
 							// Edge: 300, path: "apiservices".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// GET /apis/apiregistration.k8s.io/v1/watch/apiservices.
+								s.handleWatchApiregistrationV1APIServiceListRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -310,10 +395,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			case "apps": // -> 8
 				// Edge: 8, path: "apps".
 				elem, p = nextElem(p)
+				if len(elem) == 0 {
+					// GET /apis/apps/.
+					s.handleGetAppsAPIGroupRequest(args, w, r)
+					return
+				}
 				switch string(elem) {
 				case "v1": // -> 9
 					// Edge: 9, path: "v1".
 					elem, p = nextElem(p)
+					if len(elem) == 0 {
+						// GET /apis/apps/v1/.
+						s.handleGetAppsV1APIResourcesRequest(args, w, r)
+						return
+					}
 					switch string(elem) {
 					case "controllerrevisions": // -> 62
 						// GET /apis/apps/v1/controllerrevisions
@@ -342,6 +437,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "controllerrevisions": // -> 67
 								// Edge: 67, path: "controllerrevisions".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// GET /apis/apps/v1/namespaces/{namespace}/controllerrevisions.
+									s.handleListAppsV1NamespacedControllerRevisionRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -355,6 +455,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "daemonsets": // -> 68
 								// Edge: 68, path: "daemonsets".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// GET /apis/apps/v1/namespaces/{namespace}/daemonsets.
+									s.handleListAppsV1NamespacedDaemonSetRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -363,6 +468,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args["name"] = string(elem)
 									// Edge: 200, path: "".
 									elem, p = nextElem(p)
+									if len(elem) == 0 {
+										// GET /apis/apps/v1/namespaces/{namespace}/daemonsets/{name}.
+										s.handleReadAppsV1NamespacedDaemonSetRequest(args, w, r)
+										return
+									}
 									switch string(elem) {
 									case "status": // -> 201
 										// GET /apis/apps/v1/namespaces/{namespace}/daemonsets/{name}/status
@@ -377,6 +487,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "deployments": // -> 69
 								// Edge: 69, path: "deployments".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// GET /apis/apps/v1/namespaces/{namespace}/deployments.
+									s.handleListAppsV1NamespacedDeploymentRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -385,6 +500,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args["name"] = string(elem)
 									// Edge: 202, path: "".
 									elem, p = nextElem(p)
+									if len(elem) == 0 {
+										// GET /apis/apps/v1/namespaces/{namespace}/deployments/{name}.
+										s.handleReadAppsV1NamespacedDeploymentRequest(args, w, r)
+										return
+									}
 									switch string(elem) {
 									case "scale": // -> 203
 										// GET /apis/apps/v1/namespaces/{namespace}/deployments/{name}/scale
@@ -403,6 +523,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "replicasets": // -> 70
 								// Edge: 70, path: "replicasets".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// GET /apis/apps/v1/namespaces/{namespace}/replicasets.
+									s.handleListAppsV1NamespacedReplicaSetRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -411,6 +536,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args["name"] = string(elem)
 									// Edge: 205, path: "".
 									elem, p = nextElem(p)
+									if len(elem) == 0 {
+										// GET /apis/apps/v1/namespaces/{namespace}/replicasets/{name}.
+										s.handleReadAppsV1NamespacedReplicaSetRequest(args, w, r)
+										return
+									}
 									switch string(elem) {
 									case "scale": // -> 206
 										// GET /apis/apps/v1/namespaces/{namespace}/replicasets/{name}/scale
@@ -429,6 +559,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "statefulsets": // -> 71
 								// Edge: 71, path: "statefulsets".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// GET /apis/apps/v1/namespaces/{namespace}/statefulsets.
+									s.handleListAppsV1NamespacedStatefulSetRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -437,6 +572,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args["name"] = string(elem)
 									// Edge: 208, path: "".
 									elem, p = nextElem(p)
+									if len(elem) == 0 {
+										// GET /apis/apps/v1/namespaces/{namespace}/statefulsets/{name}.
+										s.handleReadAppsV1NamespacedStatefulSetRequest(args, w, r)
+										return
+									}
 									switch string(elem) {
 									case "scale": // -> 209
 										// GET /apis/apps/v1/namespaces/{namespace}/statefulsets/{name}/scale
@@ -496,6 +636,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "controllerrevisions": // -> 308
 									// Edge: 308, path: "controllerrevisions".
 									elem, p = nextElem(p)
+									if len(elem) == 0 {
+										// GET /apis/apps/v1/watch/namespaces/{namespace}/controllerrevisions.
+										s.handleWatchAppsV1NamespacedControllerRevisionListRequest(args, w, r)
+										return
+									}
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -509,6 +654,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "daemonsets": // -> 310
 									// Edge: 310, path: "daemonsets".
 									elem, p = nextElem(p)
+									if len(elem) == 0 {
+										// GET /apis/apps/v1/watch/namespaces/{namespace}/daemonsets.
+										s.handleWatchAppsV1NamespacedDaemonSetListRequest(args, w, r)
+										return
+									}
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -522,6 +672,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "deployments": // -> 312
 									// Edge: 312, path: "deployments".
 									elem, p = nextElem(p)
+									if len(elem) == 0 {
+										// GET /apis/apps/v1/watch/namespaces/{namespace}/deployments.
+										s.handleWatchAppsV1NamespacedDeploymentListRequest(args, w, r)
+										return
+									}
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -535,6 +690,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "replicasets": // -> 314
 									// Edge: 314, path: "replicasets".
 									elem, p = nextElem(p)
+									if len(elem) == 0 {
+										// GET /apis/apps/v1/watch/namespaces/{namespace}/replicasets.
+										s.handleWatchAppsV1NamespacedReplicaSetListRequest(args, w, r)
+										return
+									}
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -548,6 +708,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "statefulsets": // -> 316
 									// Edge: 316, path: "statefulsets".
 									elem, p = nextElem(p)
+									if len(elem) == 0 {
+										// GET /apis/apps/v1/watch/namespaces/{namespace}/statefulsets.
+										s.handleWatchAppsV1NamespacedStatefulSetListRequest(args, w, r)
+										return
+									}
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -588,6 +753,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			case "authentication.k8s.io": // -> 10
 				// Edge: 10, path: "authentication.k8s.io".
 				elem, p = nextElem(p)
+				if len(elem) == 0 {
+					// GET /apis/authentication.k8s.io/.
+					s.handleGetAuthenticationAPIGroupRequest(args, w, r)
+					return
+				}
 				switch string(elem) {
 				case "v1": // -> 11
 					// GET /apis/authentication.k8s.io/v1/
@@ -601,6 +771,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			case "authorization.k8s.io": // -> 12
 				// Edge: 12, path: "authorization.k8s.io".
 				elem, p = nextElem(p)
+				if len(elem) == 0 {
+					// GET /apis/authorization.k8s.io/.
+					s.handleGetAuthorizationAPIGroupRequest(args, w, r)
+					return
+				}
 				switch string(elem) {
 				case "v1": // -> 13
 					// GET /apis/authorization.k8s.io/v1/
@@ -614,10 +789,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			case "autoscaling": // -> 14
 				// Edge: 14, path: "autoscaling".
 				elem, p = nextElem(p)
+				if len(elem) == 0 {
+					// GET /apis/autoscaling/.
+					s.handleGetAutoscalingAPIGroupRequest(args, w, r)
+					return
+				}
 				switch string(elem) {
 				case "v1": // -> 15
 					// Edge: 15, path: "v1".
 					elem, p = nextElem(p)
+					if len(elem) == 0 {
+						// GET /apis/autoscaling/v1/.
+						s.handleGetAutoscalingV1APIResourcesRequest(args, w, r)
+						return
+					}
 					switch string(elem) {
 					case "horizontalpodautoscalers": // -> 74
 						// GET /apis/autoscaling/v1/horizontalpodautoscalers
@@ -638,6 +823,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "horizontalpodautoscalers": // -> 77
 								// Edge: 77, path: "horizontalpodautoscalers".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// GET /apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers.
+									s.handleListAutoscalingV1NamespacedHorizontalPodAutoscalerRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -646,6 +836,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args["name"] = string(elem)
 									// Edge: 211, path: "".
 									elem, p = nextElem(p)
+									if len(elem) == 0 {
+										// GET /apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}.
+										s.handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerRequest(args, w, r)
+										return
+									}
 									switch string(elem) {
 									case "status": // -> 212
 										// GET /apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status
@@ -685,6 +880,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "horizontalpodautoscalers": // -> 324
 									// Edge: 324, path: "horizontalpodautoscalers".
 									elem, p = nextElem(p)
+									if len(elem) == 0 {
+										// GET /apis/autoscaling/v1/watch/namespaces/{namespace}/horizontalpodautoscalers.
+										s.handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRequest(args, w, r)
+										return
+									}
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -712,6 +912,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				case "v2beta1": // -> 16
 					// Edge: 16, path: "v2beta1".
 					elem, p = nextElem(p)
+					if len(elem) == 0 {
+						// GET /apis/autoscaling/v2beta1/.
+						s.handleGetAutoscalingV2beta1APIResourcesRequest(args, w, r)
+						return
+					}
 					switch string(elem) {
 					case "horizontalpodautoscalers": // -> 78
 						// GET /apis/autoscaling/v2beta1/horizontalpodautoscalers
@@ -732,6 +937,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "horizontalpodautoscalers": // -> 81
 								// Edge: 81, path: "horizontalpodautoscalers".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// GET /apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers.
+									s.handleListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -740,6 +950,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args["name"] = string(elem)
 									// Edge: 213, path: "".
 									elem, p = nextElem(p)
+									if len(elem) == 0 {
+										// GET /apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}.
+										s.handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRequest(args, w, r)
+										return
+									}
 									switch string(elem) {
 									case "status": // -> 214
 										// GET /apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status
@@ -779,6 +994,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "horizontalpodautoscalers": // -> 330
 									// Edge: 330, path: "horizontalpodautoscalers".
 									elem, p = nextElem(p)
+									if len(elem) == 0 {
+										// GET /apis/autoscaling/v2beta1/watch/namespaces/{namespace}/horizontalpodautoscalers.
+										s.handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListRequest(args, w, r)
+										return
+									}
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -806,6 +1026,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				case "v2beta2": // -> 17
 					// Edge: 17, path: "v2beta2".
 					elem, p = nextElem(p)
+					if len(elem) == 0 {
+						// GET /apis/autoscaling/v2beta2/.
+						s.handleGetAutoscalingV2beta2APIResourcesRequest(args, w, r)
+						return
+					}
 					switch string(elem) {
 					case "horizontalpodautoscalers": // -> 82
 						// GET /apis/autoscaling/v2beta2/horizontalpodautoscalers
@@ -826,6 +1051,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "horizontalpodautoscalers": // -> 85
 								// Edge: 85, path: "horizontalpodautoscalers".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// GET /apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers.
+									s.handleListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -834,6 +1064,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args["name"] = string(elem)
 									// Edge: 215, path: "".
 									elem, p = nextElem(p)
+									if len(elem) == 0 {
+										// GET /apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers/{name}.
+										s.handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRequest(args, w, r)
+										return
+									}
 									switch string(elem) {
 									case "status": // -> 216
 										// GET /apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers/{name}/status
@@ -873,6 +1108,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "horizontalpodautoscalers": // -> 336
 									// Edge: 336, path: "horizontalpodautoscalers".
 									elem, p = nextElem(p)
+									if len(elem) == 0 {
+										// GET /apis/autoscaling/v2beta2/watch/namespaces/{namespace}/horizontalpodautoscalers.
+										s.handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListRequest(args, w, r)
+										return
+									}
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -905,10 +1145,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			case "batch": // -> 18
 				// Edge: 18, path: "batch".
 				elem, p = nextElem(p)
+				if len(elem) == 0 {
+					// GET /apis/batch/.
+					s.handleGetBatchAPIGroupRequest(args, w, r)
+					return
+				}
 				switch string(elem) {
 				case "v1": // -> 19
 					// Edge: 19, path: "v1".
 					elem, p = nextElem(p)
+					if len(elem) == 0 {
+						// GET /apis/batch/v1/.
+						s.handleGetBatchV1APIResourcesRequest(args, w, r)
+						return
+					}
 					switch string(elem) {
 					case "cronjobs": // -> 86
 						// GET /apis/batch/v1/cronjobs
@@ -933,6 +1183,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "cronjobs": // -> 90
 								// Edge: 90, path: "cronjobs".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// GET /apis/batch/v1/namespaces/{namespace}/cronjobs.
+									s.handleListBatchV1NamespacedCronJobRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -941,6 +1196,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args["name"] = string(elem)
 									// Edge: 217, path: "".
 									elem, p = nextElem(p)
+									if len(elem) == 0 {
+										// GET /apis/batch/v1/namespaces/{namespace}/cronjobs/{name}.
+										s.handleReadBatchV1NamespacedCronJobRequest(args, w, r)
+										return
+									}
 									switch string(elem) {
 									case "status": // -> 218
 										// GET /apis/batch/v1/namespaces/{namespace}/cronjobs/{name}/status
@@ -955,6 +1215,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "jobs": // -> 91
 								// Edge: 91, path: "jobs".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// GET /apis/batch/v1/namespaces/{namespace}/jobs.
+									s.handleListBatchV1NamespacedJobRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -963,6 +1228,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args["name"] = string(elem)
 									// Edge: 219, path: "".
 									elem, p = nextElem(p)
+									if len(elem) == 0 {
+										// GET /apis/batch/v1/namespaces/{namespace}/jobs/{name}.
+										s.handleReadBatchV1NamespacedJobRequest(args, w, r)
+										return
+									}
 									switch string(elem) {
 									case "status": // -> 220
 										// GET /apis/batch/v1/namespaces/{namespace}/jobs/{name}/status
@@ -1006,6 +1276,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "cronjobs": // -> 343
 									// Edge: 343, path: "cronjobs".
 									elem, p = nextElem(p)
+									if len(elem) == 0 {
+										// GET /apis/batch/v1/watch/namespaces/{namespace}/cronjobs.
+										s.handleWatchBatchV1NamespacedCronJobListRequest(args, w, r)
+										return
+									}
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -1019,6 +1294,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "jobs": // -> 345
 									// Edge: 345, path: "jobs".
 									elem, p = nextElem(p)
+									if len(elem) == 0 {
+										// GET /apis/batch/v1/watch/namespaces/{namespace}/jobs.
+										s.handleWatchBatchV1NamespacedJobListRequest(args, w, r)
+										return
+									}
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -1046,6 +1326,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				case "v1beta1": // -> 20
 					// Edge: 20, path: "v1beta1".
 					elem, p = nextElem(p)
+					if len(elem) == 0 {
+						// GET /apis/batch/v1beta1/.
+						s.handleGetBatchV1beta1APIResourcesRequest(args, w, r)
+						return
+					}
 					switch string(elem) {
 					case "cronjobs": // -> 92
 						// GET /apis/batch/v1beta1/cronjobs
@@ -1066,6 +1351,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "cronjobs": // -> 95
 								// Edge: 95, path: "cronjobs".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// GET /apis/batch/v1beta1/namespaces/{namespace}/cronjobs.
+									s.handleListBatchV1beta1NamespacedCronJobRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -1074,6 +1364,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args["name"] = string(elem)
 									// Edge: 221, path: "".
 									elem, p = nextElem(p)
+									if len(elem) == 0 {
+										// GET /apis/batch/v1beta1/namespaces/{namespace}/cronjobs/{name}.
+										s.handleReadBatchV1beta1NamespacedCronJobRequest(args, w, r)
+										return
+									}
 									switch string(elem) {
 									case "status": // -> 222
 										// GET /apis/batch/v1beta1/namespaces/{namespace}/cronjobs/{name}/status
@@ -1113,6 +1408,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "cronjobs": // -> 351
 									// Edge: 351, path: "cronjobs".
 									elem, p = nextElem(p)
+									if len(elem) == 0 {
+										// GET /apis/batch/v1beta1/watch/namespaces/{namespace}/cronjobs.
+										s.handleWatchBatchV1beta1NamespacedCronJobListRequest(args, w, r)
+										return
+									}
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -1145,14 +1445,29 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			case "certificates.k8s.io": // -> 21
 				// Edge: 21, path: "certificates.k8s.io".
 				elem, p = nextElem(p)
+				if len(elem) == 0 {
+					// GET /apis/certificates.k8s.io/.
+					s.handleGetCertificatesAPIGroupRequest(args, w, r)
+					return
+				}
 				switch string(elem) {
 				case "v1": // -> 22
 					// Edge: 22, path: "v1".
 					elem, p = nextElem(p)
+					if len(elem) == 0 {
+						// GET /apis/certificates.k8s.io/v1/.
+						s.handleGetCertificatesV1APIResourcesRequest(args, w, r)
+						return
+					}
 					switch string(elem) {
 					case "certificatesigningrequests": // -> 96
 						// Edge: 96, path: "certificatesigningrequests".
 						elem, p = nextElem(p)
+						if len(elem) == 0 {
+							// GET /apis/certificates.k8s.io/v1/certificatesigningrequests.
+							s.handleListCertificatesV1CertificateSigningRequestRequest(args, w, r)
+							return
+						}
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -1161,6 +1476,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args["name"] = string(elem)
 							// Edge: 223, path: "".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// GET /apis/certificates.k8s.io/v1/certificatesigningrequests/{name}.
+								s.handleReadCertificatesV1CertificateSigningRequestRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							case "approval": // -> 224
 								// GET /apis/certificates.k8s.io/v1/certificatesigningrequests/{name}/approval
@@ -1183,6 +1503,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "certificatesigningrequests": // -> 354
 							// Edge: 354, path: "certificatesigningrequests".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// GET /apis/certificates.k8s.io/v1/watch/certificatesigningrequests.
+								s.handleWatchCertificatesV1CertificateSigningRequestListRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -1210,10 +1535,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			case "coordination.k8s.io": // -> 24
 				// Edge: 24, path: "coordination.k8s.io".
 				elem, p = nextElem(p)
+				if len(elem) == 0 {
+					// GET /apis/coordination.k8s.io/.
+					s.handleGetCoordinationAPIGroupRequest(args, w, r)
+					return
+				}
 				switch string(elem) {
 				case "v1": // -> 25
 					// Edge: 25, path: "v1".
 					elem, p = nextElem(p)
+					if len(elem) == 0 {
+						// GET /apis/coordination.k8s.io/v1/.
+						s.handleGetCoordinationV1APIResourcesRequest(args, w, r)
+						return
+					}
 					switch string(elem) {
 					case "leases": // -> 97
 						// GET /apis/coordination.k8s.io/v1/leases
@@ -1234,6 +1569,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "leases": // -> 100
 								// Edge: 100, path: "leases".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// GET /apis/coordination.k8s.io/v1/namespaces/{namespace}/leases.
+									s.handleListCoordinationV1NamespacedLeaseRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -1272,6 +1612,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "leases": // -> 360
 									// Edge: 360, path: "leases".
 									elem, p = nextElem(p)
+									if len(elem) == 0 {
+										// GET /apis/coordination.k8s.io/v1/watch/namespaces/{namespace}/leases.
+										s.handleWatchCoordinationV1NamespacedLeaseListRequest(args, w, r)
+										return
+									}
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -1304,10 +1649,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			case "discovery.k8s.io": // -> 28
 				// Edge: 28, path: "discovery.k8s.io".
 				elem, p = nextElem(p)
+				if len(elem) == 0 {
+					// GET /apis/discovery.k8s.io/.
+					s.handleGetDiscoveryAPIGroupRequest(args, w, r)
+					return
+				}
 				switch string(elem) {
 				case "v1": // -> 29
 					// Edge: 29, path: "v1".
 					elem, p = nextElem(p)
+					if len(elem) == 0 {
+						// GET /apis/discovery.k8s.io/v1/.
+						s.handleGetDiscoveryV1APIResourcesRequest(args, w, r)
+						return
+					}
 					switch string(elem) {
 					case "endpointslices": // -> 130
 						// GET /apis/discovery.k8s.io/v1/endpointslices
@@ -1328,6 +1683,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "endpointslices": // -> 133
 								// Edge: 133, path: "endpointslices".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// GET /apis/discovery.k8s.io/v1/namespaces/{namespace}/endpointslices.
+									s.handleListDiscoveryV1NamespacedEndpointSliceRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -1366,6 +1726,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "endpointslices": // -> 409
 									// Edge: 409, path: "endpointslices".
 									elem, p = nextElem(p)
+									if len(elem) == 0 {
+										// GET /apis/discovery.k8s.io/v1/watch/namespaces/{namespace}/endpointslices.
+										s.handleWatchDiscoveryV1NamespacedEndpointSliceListRequest(args, w, r)
+										return
+									}
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -1393,6 +1758,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				case "v1beta1": // -> 30
 					// Edge: 30, path: "v1beta1".
 					elem, p = nextElem(p)
+					if len(elem) == 0 {
+						// GET /apis/discovery.k8s.io/v1beta1/.
+						s.handleGetDiscoveryV1beta1APIResourcesRequest(args, w, r)
+						return
+					}
 					switch string(elem) {
 					case "endpointslices": // -> 134
 						// GET /apis/discovery.k8s.io/v1beta1/endpointslices
@@ -1413,6 +1783,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "endpointslices": // -> 137
 								// Edge: 137, path: "endpointslices".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// GET /apis/discovery.k8s.io/v1beta1/namespaces/{namespace}/endpointslices.
+									s.handleListDiscoveryV1beta1NamespacedEndpointSliceRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -1451,6 +1826,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "endpointslices": // -> 415
 									// Edge: 415, path: "endpointslices".
 									elem, p = nextElem(p)
+									if len(elem) == 0 {
+										// GET /apis/discovery.k8s.io/v1beta1/watch/namespaces/{namespace}/endpointslices.
+										s.handleWatchDiscoveryV1beta1NamespacedEndpointSliceListRequest(args, w, r)
+										return
+									}
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -1483,10 +1863,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			case "events.k8s.io": // -> 31
 				// Edge: 31, path: "events.k8s.io".
 				elem, p = nextElem(p)
+				if len(elem) == 0 {
+					// GET /apis/events.k8s.io/.
+					s.handleGetEventsAPIGroupRequest(args, w, r)
+					return
+				}
 				switch string(elem) {
 				case "v1": // -> 32
 					// Edge: 32, path: "v1".
 					elem, p = nextElem(p)
+					if len(elem) == 0 {
+						// GET /apis/events.k8s.io/v1/.
+						s.handleGetEventsV1APIResourcesRequest(args, w, r)
+						return
+					}
 					switch string(elem) {
 					case "events": // -> 138
 						// GET /apis/events.k8s.io/v1/events
@@ -1507,6 +1897,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "events": // -> 141
 								// Edge: 141, path: "events".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// GET /apis/events.k8s.io/v1/namespaces/{namespace}/events.
+									s.handleListEventsV1NamespacedEventRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -1545,6 +1940,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "events": // -> 421
 									// Edge: 421, path: "events".
 									elem, p = nextElem(p)
+									if len(elem) == 0 {
+										// GET /apis/events.k8s.io/v1/watch/namespaces/{namespace}/events.
+										s.handleWatchEventsV1NamespacedEventListRequest(args, w, r)
+										return
+									}
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -1572,6 +1972,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				case "v1beta1": // -> 33
 					// Edge: 33, path: "v1beta1".
 					elem, p = nextElem(p)
+					if len(elem) == 0 {
+						// GET /apis/events.k8s.io/v1beta1/.
+						s.handleGetEventsV1beta1APIResourcesRequest(args, w, r)
+						return
+					}
 					switch string(elem) {
 					case "events": // -> 142
 						// GET /apis/events.k8s.io/v1beta1/events
@@ -1592,6 +1997,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "events": // -> 145
 								// Edge: 145, path: "events".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// GET /apis/events.k8s.io/v1beta1/namespaces/{namespace}/events.
+									s.handleListEventsV1beta1NamespacedEventRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -1630,6 +2040,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "events": // -> 427
 									// Edge: 427, path: "events".
 									elem, p = nextElem(p)
+									if len(elem) == 0 {
+										// GET /apis/events.k8s.io/v1beta1/watch/namespaces/{namespace}/events.
+										s.handleWatchEventsV1beta1NamespacedEventListRequest(args, w, r)
+										return
+									}
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -1662,14 +2077,29 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			case "flowcontrol.apiserver.k8s.io": // -> 34
 				// Edge: 34, path: "flowcontrol.apiserver.k8s.io".
 				elem, p = nextElem(p)
+				if len(elem) == 0 {
+					// GET /apis/flowcontrol.apiserver.k8s.io/.
+					s.handleGetFlowcontrolApiserverAPIGroupRequest(args, w, r)
+					return
+				}
 				switch string(elem) {
 				case "v1beta1": // -> 35
 					// Edge: 35, path: "v1beta1".
 					elem, p = nextElem(p)
+					if len(elem) == 0 {
+						// GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/.
+						s.handleGetFlowcontrolApiserverV1beta1APIResourcesRequest(args, w, r)
+						return
+					}
 					switch string(elem) {
 					case "flowschemas": // -> 146
 						// Edge: 146, path: "flowschemas".
 						elem, p = nextElem(p)
+						if len(elem) == 0 {
+							// GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas.
+							s.handleListFlowcontrolApiserverV1beta1FlowSchemaRequest(args, w, r)
+							return
+						}
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -1678,6 +2108,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args["name"] = string(elem)
 							// Edge: 257, path: "".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas/{name}.
+								s.handleReadFlowcontrolApiserverV1beta1FlowSchemaRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							case "status": // -> 258
 								// GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas/{name}/status
@@ -1692,6 +2127,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					case "prioritylevelconfigurations": // -> 147
 						// Edge: 147, path: "prioritylevelconfigurations".
 						elem, p = nextElem(p)
+						if len(elem) == 0 {
+							// GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations.
+							s.handleListFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest(args, w, r)
+							return
+						}
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -1700,6 +2140,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args["name"] = string(elem)
 							// Edge: 259, path: "".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations/{name}.
+								s.handleReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							case "status": // -> 260
 								// GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations/{name}/status
@@ -1718,6 +2163,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "flowschemas": // -> 430
 							// Edge: 430, path: "flowschemas".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/flowschemas.
+								s.handleWatchFlowcontrolApiserverV1beta1FlowSchemaListRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -1731,6 +2181,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "prioritylevelconfigurations": // -> 432
 							// Edge: 432, path: "prioritylevelconfigurations".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/prioritylevelconfigurations.
+								s.handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -1753,10 +2208,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				case "v1beta2": // -> 36
 					// Edge: 36, path: "v1beta2".
 					elem, p = nextElem(p)
+					if len(elem) == 0 {
+						// GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/.
+						s.handleGetFlowcontrolApiserverV1beta2APIResourcesRequest(args, w, r)
+						return
+					}
 					switch string(elem) {
 					case "flowschemas": // -> 148
 						// Edge: 148, path: "flowschemas".
 						elem, p = nextElem(p)
+						if len(elem) == 0 {
+							// GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas.
+							s.handleListFlowcontrolApiserverV1beta2FlowSchemaRequest(args, w, r)
+							return
+						}
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -1765,6 +2230,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args["name"] = string(elem)
 							// Edge: 261, path: "".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas/{name}.
+								s.handleReadFlowcontrolApiserverV1beta2FlowSchemaRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							case "status": // -> 262
 								// GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas/{name}/status
@@ -1779,6 +2249,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					case "prioritylevelconfigurations": // -> 149
 						// Edge: 149, path: "prioritylevelconfigurations".
 						elem, p = nextElem(p)
+						if len(elem) == 0 {
+							// GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations.
+							s.handleListFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest(args, w, r)
+							return
+						}
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -1787,6 +2262,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args["name"] = string(elem)
 							// Edge: 263, path: "".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations/{name}.
+								s.handleReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							case "status": // -> 264
 								// GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations/{name}/status
@@ -1805,6 +2285,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "flowschemas": // -> 435
 							// Edge: 435, path: "flowschemas".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/flowschemas.
+								s.handleWatchFlowcontrolApiserverV1beta2FlowSchemaListRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -1818,6 +2303,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "prioritylevelconfigurations": // -> 437
 							// Edge: 437, path: "prioritylevelconfigurations".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/prioritylevelconfigurations.
+								s.handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -1845,14 +2335,29 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			case "internal.apiserver.k8s.io": // -> 37
 				// Edge: 37, path: "internal.apiserver.k8s.io".
 				elem, p = nextElem(p)
+				if len(elem) == 0 {
+					// GET /apis/internal.apiserver.k8s.io/.
+					s.handleGetInternalApiserverAPIGroupRequest(args, w, r)
+					return
+				}
 				switch string(elem) {
 				case "v1alpha1": // -> 38
 					// Edge: 38, path: "v1alpha1".
 					elem, p = nextElem(p)
+					if len(elem) == 0 {
+						// GET /apis/internal.apiserver.k8s.io/v1alpha1/.
+						s.handleGetInternalApiserverV1alpha1APIResourcesRequest(args, w, r)
+						return
+					}
 					switch string(elem) {
 					case "storageversions": // -> 150
 						// Edge: 150, path: "storageversions".
 						elem, p = nextElem(p)
+						if len(elem) == 0 {
+							// GET /apis/internal.apiserver.k8s.io/v1alpha1/storageversions.
+							s.handleListInternalApiserverV1alpha1StorageVersionRequest(args, w, r)
+							return
+						}
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -1861,6 +2366,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args["name"] = string(elem)
 							// Edge: 265, path: "".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// GET /apis/internal.apiserver.k8s.io/v1alpha1/storageversions/{name}.
+								s.handleReadInternalApiserverV1alpha1StorageVersionRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							case "status": // -> 266
 								// GET /apis/internal.apiserver.k8s.io/v1alpha1/storageversions/{name}/status
@@ -1879,6 +2389,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "storageversions": // -> 440
 							// Edge: 440, path: "storageversions".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// GET /apis/internal.apiserver.k8s.io/v1alpha1/watch/storageversions.
+								s.handleWatchInternalApiserverV1alpha1StorageVersionListRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -1906,14 +2421,29 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			case "networking.k8s.io": // -> 39
 				// Edge: 39, path: "networking.k8s.io".
 				elem, p = nextElem(p)
+				if len(elem) == 0 {
+					// GET /apis/networking.k8s.io/.
+					s.handleGetNetworkingAPIGroupRequest(args, w, r)
+					return
+				}
 				switch string(elem) {
 				case "v1": // -> 40
 					// Edge: 40, path: "v1".
 					elem, p = nextElem(p)
+					if len(elem) == 0 {
+						// GET /apis/networking.k8s.io/v1/.
+						s.handleGetNetworkingV1APIResourcesRequest(args, w, r)
+						return
+					}
 					switch string(elem) {
 					case "ingressclasses": // -> 151
 						// Edge: 151, path: "ingressclasses".
 						elem, p = nextElem(p)
+						if len(elem) == 0 {
+							// GET /apis/networking.k8s.io/v1/ingressclasses.
+							s.handleListNetworkingV1IngressClassRequest(args, w, r)
+							return
+						}
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -1943,6 +2473,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "ingresses": // -> 155
 								// Edge: 155, path: "ingresses".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// GET /apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses.
+									s.handleListNetworkingV1NamespacedIngressRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -1951,6 +2486,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args["name"] = string(elem)
 									// Edge: 268, path: "".
 									elem, p = nextElem(p)
+									if len(elem) == 0 {
+										// GET /apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/{name}.
+										s.handleReadNetworkingV1NamespacedIngressRequest(args, w, r)
+										return
+									}
 									switch string(elem) {
 									case "status": // -> 269
 										// GET /apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/{name}/status
@@ -1965,6 +2505,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "networkpolicies": // -> 156
 								// Edge: 156, path: "networkpolicies".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// GET /apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies.
+									s.handleListNetworkingV1NamespacedNetworkPolicyRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -1991,6 +2536,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "ingressclasses": // -> 443
 							// Edge: 443, path: "ingressclasses".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// GET /apis/networking.k8s.io/v1/watch/ingressclasses.
+								s.handleWatchNetworkingV1IngressClassListRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -2020,6 +2570,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "ingresses": // -> 448
 									// Edge: 448, path: "ingresses".
 									elem, p = nextElem(p)
+									if len(elem) == 0 {
+										// GET /apis/networking.k8s.io/v1/watch/namespaces/{namespace}/ingresses.
+										s.handleWatchNetworkingV1NamespacedIngressListRequest(args, w, r)
+										return
+									}
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -2033,6 +2588,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "networkpolicies": // -> 450
 									// Edge: 450, path: "networkpolicies".
 									elem, p = nextElem(p)
+									if len(elem) == 0 {
+										// GET /apis/networking.k8s.io/v1/watch/namespaces/{namespace}/networkpolicies.
+										s.handleWatchNetworkingV1NamespacedNetworkPolicyListRequest(args, w, r)
+										return
+									}
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -2069,14 +2629,29 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			case "node.k8s.io": // -> 41
 				// Edge: 41, path: "node.k8s.io".
 				elem, p = nextElem(p)
+				if len(elem) == 0 {
+					// GET /apis/node.k8s.io/.
+					s.handleGetNodeAPIGroupRequest(args, w, r)
+					return
+				}
 				switch string(elem) {
 				case "v1": // -> 42
 					// Edge: 42, path: "v1".
 					elem, p = nextElem(p)
+					if len(elem) == 0 {
+						// GET /apis/node.k8s.io/v1/.
+						s.handleGetNodeV1APIResourcesRequest(args, w, r)
+						return
+					}
 					switch string(elem) {
 					case "runtimeclasses": // -> 158
 						// Edge: 158, path: "runtimeclasses".
 						elem, p = nextElem(p)
+						if len(elem) == 0 {
+							// GET /apis/node.k8s.io/v1/runtimeclasses.
+							s.handleListNodeV1RuntimeClassRequest(args, w, r)
+							return
+						}
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -2094,6 +2669,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "runtimeclasses": // -> 454
 							// Edge: 454, path: "runtimeclasses".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// GET /apis/node.k8s.io/v1/watch/runtimeclasses.
+								s.handleWatchNodeV1RuntimeClassListRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -2116,10 +2696,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				case "v1alpha1": // -> 43
 					// Edge: 43, path: "v1alpha1".
 					elem, p = nextElem(p)
+					if len(elem) == 0 {
+						// GET /apis/node.k8s.io/v1alpha1/.
+						s.handleGetNodeV1alpha1APIResourcesRequest(args, w, r)
+						return
+					}
 					switch string(elem) {
 					case "runtimeclasses": // -> 159
 						// Edge: 159, path: "runtimeclasses".
 						elem, p = nextElem(p)
+						if len(elem) == 0 {
+							// GET /apis/node.k8s.io/v1alpha1/runtimeclasses.
+							s.handleListNodeV1alpha1RuntimeClassRequest(args, w, r)
+							return
+						}
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -2137,6 +2727,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "runtimeclasses": // -> 457
 							// Edge: 457, path: "runtimeclasses".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// GET /apis/node.k8s.io/v1alpha1/watch/runtimeclasses.
+								s.handleWatchNodeV1alpha1RuntimeClassListRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -2159,10 +2754,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				case "v1beta1": // -> 44
 					// Edge: 44, path: "v1beta1".
 					elem, p = nextElem(p)
+					if len(elem) == 0 {
+						// GET /apis/node.k8s.io/v1beta1/.
+						s.handleGetNodeV1beta1APIResourcesRequest(args, w, r)
+						return
+					}
 					switch string(elem) {
 					case "runtimeclasses": // -> 160
 						// Edge: 160, path: "runtimeclasses".
 						elem, p = nextElem(p)
+						if len(elem) == 0 {
+							// GET /apis/node.k8s.io/v1beta1/runtimeclasses.
+							s.handleListNodeV1beta1RuntimeClassRequest(args, w, r)
+							return
+						}
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -2180,6 +2785,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "runtimeclasses": // -> 460
 							// Edge: 460, path: "runtimeclasses".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// GET /apis/node.k8s.io/v1beta1/watch/runtimeclasses.
+								s.handleWatchNodeV1beta1RuntimeClassListRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -2207,10 +2817,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			case "policy": // -> 45
 				// Edge: 45, path: "policy".
 				elem, p = nextElem(p)
+				if len(elem) == 0 {
+					// GET /apis/policy/.
+					s.handleGetPolicyAPIGroupRequest(args, w, r)
+					return
+				}
 				switch string(elem) {
 				case "v1": // -> 46
 					// Edge: 46, path: "v1".
 					elem, p = nextElem(p)
+					if len(elem) == 0 {
+						// GET /apis/policy/v1/.
+						s.handleGetPolicyV1APIResourcesRequest(args, w, r)
+						return
+					}
 					switch string(elem) {
 					case "namespaces": // -> 161
 						// Edge: 161, path: "namespaces".
@@ -2227,6 +2847,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "poddisruptionbudgets": // -> 163
 								// Edge: 163, path: "poddisruptionbudgets".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// GET /apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets.
+									s.handleListPolicyV1NamespacedPodDisruptionBudgetRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -2235,6 +2860,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args["name"] = string(elem)
 									// Edge: 274, path: "".
 									elem, p = nextElem(p)
+									if len(elem) == 0 {
+										// GET /apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets/{name}.
+										s.handleReadPolicyV1NamespacedPodDisruptionBudgetRequest(args, w, r)
+										return
+									}
 									switch string(elem) {
 									case "status": // -> 275
 										// GET /apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets/{name}/status
@@ -2274,6 +2904,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "poddisruptionbudgets": // -> 465
 									// Edge: 465, path: "poddisruptionbudgets".
 									elem, p = nextElem(p)
+									if len(elem) == 0 {
+										// GET /apis/policy/v1/watch/namespaces/{namespace}/poddisruptionbudgets.
+										s.handleWatchPolicyV1NamespacedPodDisruptionBudgetListRequest(args, w, r)
+										return
+									}
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -2305,6 +2940,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				case "v1beta1": // -> 47
 					// Edge: 47, path: "v1beta1".
 					elem, p = nextElem(p)
+					if len(elem) == 0 {
+						// GET /apis/policy/v1beta1/.
+						s.handleGetPolicyV1beta1APIResourcesRequest(args, w, r)
+						return
+					}
 					switch string(elem) {
 					case "namespaces": // -> 165
 						// Edge: 165, path: "namespaces".
@@ -2321,6 +2961,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "poddisruptionbudgets": // -> 167
 								// Edge: 167, path: "poddisruptionbudgets".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// GET /apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets.
+									s.handleListPolicyV1beta1NamespacedPodDisruptionBudgetRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -2329,6 +2974,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									args["name"] = string(elem)
 									// Edge: 276, path: "".
 									elem, p = nextElem(p)
+									if len(elem) == 0 {
+										// GET /apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets/{name}.
+										s.handleReadPolicyV1beta1NamespacedPodDisruptionBudgetRequest(args, w, r)
+										return
+									}
 									switch string(elem) {
 									case "status": // -> 277
 										// GET /apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets/{name}/status
@@ -2352,6 +3002,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					case "podsecuritypolicies": // -> 169
 						// Edge: 169, path: "podsecuritypolicies".
 						elem, p = nextElem(p)
+						if len(elem) == 0 {
+							// GET /apis/policy/v1beta1/podsecuritypolicies.
+							s.handleListPolicyV1beta1PodSecurityPolicyRequest(args, w, r)
+							return
+						}
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -2381,6 +3036,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "poddisruptionbudgets": // -> 471
 									// Edge: 471, path: "poddisruptionbudgets".
 									elem, p = nextElem(p)
+									if len(elem) == 0 {
+										// GET /apis/policy/v1beta1/watch/namespaces/{namespace}/poddisruptionbudgets.
+										s.handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetListRequest(args, w, r)
+										return
+									}
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -2403,6 +3063,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "podsecuritypolicies": // -> 474
 							// Edge: 474, path: "podsecuritypolicies".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// GET /apis/policy/v1beta1/watch/podsecuritypolicies.
+								s.handleWatchPolicyV1beta1PodSecurityPolicyListRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -2430,14 +3095,29 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			case "rbac.authorization.k8s.io": // -> 48
 				// Edge: 48, path: "rbac.authorization.k8s.io".
 				elem, p = nextElem(p)
+				if len(elem) == 0 {
+					// GET /apis/rbac.authorization.k8s.io/.
+					s.handleGetRbacAuthorizationAPIGroupRequest(args, w, r)
+					return
+				}
 				switch string(elem) {
 				case "v1": // -> 49
 					// Edge: 49, path: "v1".
 					elem, p = nextElem(p)
+					if len(elem) == 0 {
+						// GET /apis/rbac.authorization.k8s.io/v1/.
+						s.handleGetRbacAuthorizationV1APIResourcesRequest(args, w, r)
+						return
+					}
 					switch string(elem) {
 					case "clusterroles": // -> 170
 						// Edge: 170, path: "clusterroles".
 						elem, p = nextElem(p)
+						if len(elem) == 0 {
+							// GET /apis/rbac.authorization.k8s.io/v1/clusterroles.
+							s.handleListRbacAuthorizationV1ClusterRoleRequest(args, w, r)
+							return
+						}
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -2451,6 +3131,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					case "clusterrolebindings": // -> 171
 						// Edge: 171, path: "clusterrolebindings".
 						elem, p = nextElem(p)
+						if len(elem) == 0 {
+							// GET /apis/rbac.authorization.k8s.io/v1/clusterrolebindings.
+							s.handleListRbacAuthorizationV1ClusterRoleBindingRequest(args, w, r)
+							return
+						}
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -2476,6 +3161,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "roles": // -> 174
 								// Edge: 174, path: "roles".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// GET /apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles.
+									s.handleListRbacAuthorizationV1NamespacedRoleRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -2489,6 +3179,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "rolebindings": // -> 175
 								// Edge: 175, path: "rolebindings".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// GET /apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings.
+									s.handleListRbacAuthorizationV1NamespacedRoleBindingRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -2519,6 +3214,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "clusterroles": // -> 477
 							// Edge: 477, path: "clusterroles".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// GET /apis/rbac.authorization.k8s.io/v1/watch/clusterroles.
+								s.handleWatchRbacAuthorizationV1ClusterRoleListRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -2532,6 +3232,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "clusterrolebindings": // -> 479
 							// Edge: 479, path: "clusterrolebindings".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// GET /apis/rbac.authorization.k8s.io/v1/watch/clusterrolebindings.
+								s.handleWatchRbacAuthorizationV1ClusterRoleBindingListRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -2557,6 +3262,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "roles": // -> 483
 									// Edge: 483, path: "roles".
 									elem, p = nextElem(p)
+									if len(elem) == 0 {
+										// GET /apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/roles.
+										s.handleWatchRbacAuthorizationV1NamespacedRoleListRequest(args, w, r)
+										return
+									}
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -2570,6 +3280,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "rolebindings": // -> 485
 									// Edge: 485, path: "rolebindings".
 									elem, p = nextElem(p)
+									if len(elem) == 0 {
+										// GET /apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/rolebindings.
+										s.handleWatchRbacAuthorizationV1NamespacedRoleBindingListRequest(args, w, r)
+										return
+									}
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -2610,14 +3325,29 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			case "scheduling.k8s.io": // -> 50
 				// Edge: 50, path: "scheduling.k8s.io".
 				elem, p = nextElem(p)
+				if len(elem) == 0 {
+					// GET /apis/scheduling.k8s.io/.
+					s.handleGetSchedulingAPIGroupRequest(args, w, r)
+					return
+				}
 				switch string(elem) {
 				case "v1": // -> 51
 					// Edge: 51, path: "v1".
 					elem, p = nextElem(p)
+					if len(elem) == 0 {
+						// GET /apis/scheduling.k8s.io/v1/.
+						s.handleGetSchedulingV1APIResourcesRequest(args, w, r)
+						return
+					}
 					switch string(elem) {
 					case "priorityclasses": // -> 178
 						// Edge: 178, path: "priorityclasses".
 						elem, p = nextElem(p)
+						if len(elem) == 0 {
+							// GET /apis/scheduling.k8s.io/v1/priorityclasses.
+							s.handleListSchedulingV1PriorityClassRequest(args, w, r)
+							return
+						}
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -2635,6 +3365,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "priorityclasses": // -> 490
 							// Edge: 490, path: "priorityclasses".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// GET /apis/scheduling.k8s.io/v1/watch/priorityclasses.
+								s.handleWatchSchedulingV1PriorityClassListRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -2662,14 +3397,29 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			case "storage.k8s.io": // -> 54
 				// Edge: 54, path: "storage.k8s.io".
 				elem, p = nextElem(p)
+				if len(elem) == 0 {
+					// GET /apis/storage.k8s.io/.
+					s.handleGetStorageAPIGroupRequest(args, w, r)
+					return
+				}
 				switch string(elem) {
 				case "v1": // -> 55
 					// Edge: 55, path: "v1".
 					elem, p = nextElem(p)
+					if len(elem) == 0 {
+						// GET /apis/storage.k8s.io/v1/.
+						s.handleGetStorageV1APIResourcesRequest(args, w, r)
+						return
+					}
 					switch string(elem) {
 					case "csidrivers": // -> 179
 						// Edge: 179, path: "csidrivers".
 						elem, p = nextElem(p)
+						if len(elem) == 0 {
+							// GET /apis/storage.k8s.io/v1/csidrivers.
+							s.handleListStorageV1CSIDriverRequest(args, w, r)
+							return
+						}
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -2683,6 +3433,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					case "csinodes": // -> 180
 						// Edge: 180, path: "csinodes".
 						elem, p = nextElem(p)
+						if len(elem) == 0 {
+							// GET /apis/storage.k8s.io/v1/csinodes.
+							s.handleListStorageV1CSINodeRequest(args, w, r)
+							return
+						}
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -2696,6 +3451,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					case "storageclasses": // -> 181
 						// Edge: 181, path: "storageclasses".
 						elem, p = nextElem(p)
+						if len(elem) == 0 {
+							// GET /apis/storage.k8s.io/v1/storageclasses.
+							s.handleListStorageV1StorageClassRequest(args, w, r)
+							return
+						}
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -2709,6 +3469,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					case "volumeattachments": // -> 182
 						// Edge: 182, path: "volumeattachments".
 						elem, p = nextElem(p)
+						if len(elem) == 0 {
+							// GET /apis/storage.k8s.io/v1/volumeattachments.
+							s.handleListStorageV1VolumeAttachmentRequest(args, w, r)
+							return
+						}
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -2717,6 +3482,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args["name"] = string(elem)
 							// Edge: 287, path: "".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// GET /apis/storage.k8s.io/v1/volumeattachments/{name}.
+								s.handleReadStorageV1VolumeAttachmentRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							case "status": // -> 288
 								// GET /apis/storage.k8s.io/v1/volumeattachments/{name}/status
@@ -2735,6 +3505,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "csidrivers": // -> 493
 							// Edge: 493, path: "csidrivers".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// GET /apis/storage.k8s.io/v1/watch/csidrivers.
+								s.handleWatchStorageV1CSIDriverListRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -2748,6 +3523,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "csinodes": // -> 495
 							// Edge: 495, path: "csinodes".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// GET /apis/storage.k8s.io/v1/watch/csinodes.
+								s.handleWatchStorageV1CSINodeListRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -2761,6 +3541,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "storageclasses": // -> 497
 							// Edge: 497, path: "storageclasses".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// GET /apis/storage.k8s.io/v1/watch/storageclasses.
+								s.handleWatchStorageV1StorageClassListRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -2774,6 +3559,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "volumeattachments": // -> 499
 							// Edge: 499, path: "volumeattachments".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// GET /apis/storage.k8s.io/v1/watch/volumeattachments.
+								s.handleWatchStorageV1VolumeAttachmentListRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -2796,6 +3586,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				case "v1alpha1": // -> 56
 					// Edge: 56, path: "v1alpha1".
 					elem, p = nextElem(p)
+					if len(elem) == 0 {
+						// GET /apis/storage.k8s.io/v1alpha1/.
+						s.handleGetStorageV1alpha1APIResourcesRequest(args, w, r)
+						return
+					}
 					switch string(elem) {
 					case "csistoragecapacities": // -> 183
 						// GET /apis/storage.k8s.io/v1alpha1/csistoragecapacities
@@ -2816,6 +3611,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "csistoragecapacities": // -> 186
 								// Edge: 186, path: "csistoragecapacities".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// GET /apis/storage.k8s.io/v1alpha1/namespaces/{namespace}/csistoragecapacities.
+									s.handleListStorageV1alpha1NamespacedCSIStorageCapacityRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -2854,6 +3654,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "csistoragecapacities": // -> 505
 									// Edge: 505, path: "csistoragecapacities".
 									elem, p = nextElem(p)
+									if len(elem) == 0 {
+										// GET /apis/storage.k8s.io/v1alpha1/watch/namespaces/{namespace}/csistoragecapacities.
+										s.handleWatchStorageV1alpha1NamespacedCSIStorageCapacityListRequest(args, w, r)
+										return
+									}
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -2881,6 +3686,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				case "v1beta1": // -> 57
 					// Edge: 57, path: "v1beta1".
 					elem, p = nextElem(p)
+					if len(elem) == 0 {
+						// GET /apis/storage.k8s.io/v1beta1/.
+						s.handleGetStorageV1beta1APIResourcesRequest(args, w, r)
+						return
+					}
 					switch string(elem) {
 					case "csistoragecapacities": // -> 187
 						// GET /apis/storage.k8s.io/v1beta1/csistoragecapacities
@@ -2901,6 +3711,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "csistoragecapacities": // -> 190
 								// Edge: 190, path: "csistoragecapacities".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// GET /apis/storage.k8s.io/v1beta1/namespaces/{namespace}/csistoragecapacities.
+									s.handleListStorageV1beta1NamespacedCSIStorageCapacityRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -2939,6 +3754,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "csistoragecapacities": // -> 511
 									// Edge: 511, path: "csistoragecapacities".
 									elem, p = nextElem(p)
+									if len(elem) == 0 {
+										// GET /apis/storage.k8s.io/v1beta1/watch/namespaces/{namespace}/csistoragecapacities.
+										s.handleWatchStorageV1beta1NamespacedCSIStorageCapacityListRequest(args, w, r)
+										return
+									}
 									switch string(elem) {
 									default:
 										if args == nil {
@@ -2980,14 +3800,29 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		case "api": // -> 26
 			// Edge: 26, path: "api".
 			elem, p = nextElem(p)
+			if len(elem) == 0 {
+				// GET /api/.
+				s.handleGetCoreAPIVersionsRequest(args, w, r)
+				return
+			}
 			switch string(elem) {
 			case "v1": // -> 27
 				// Edge: 27, path: "v1".
 				elem, p = nextElem(p)
+				if len(elem) == 0 {
+					// GET /api/v1/.
+					s.handleGetCoreV1APIResourcesRequest(args, w, r)
+					return
+				}
 				switch string(elem) {
 				case "componentstatuses": // -> 101
 					// Edge: 101, path: "componentstatuses".
 					elem, p = nextElem(p)
+					if len(elem) == 0 {
+						// GET /api/v1/componentstatuses.
+						s.handleListCoreV1ComponentStatusRequest(args, w, r)
+						return
+					}
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -3017,6 +3852,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				case "namespaces": // -> 106
 					// Edge: 106, path: "namespaces".
 					elem, p = nextElem(p)
+					if len(elem) == 0 {
+						// GET /api/v1/namespaces.
+						s.handleListCoreV1NamespaceRequest(args, w, r)
+						return
+					}
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -3025,10 +3865,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						args["namespace"] = string(elem)
 						// Edge: 107, path: "".
 						elem, p = nextElem(p)
+						if len(elem) == 0 {
+							// GET /api/v1/namespaces/{name}.
+							s.handleReadCoreV1NamespaceRequest(args, w, r)
+							return
+						}
 						switch string(elem) {
 						case "configmaps": // -> 108
 							// Edge: 108, path: "configmaps".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// GET /api/v1/namespaces/{namespace}/configmaps.
+								s.handleListCoreV1NamespacedConfigMapRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -3042,6 +3892,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "endpoints": // -> 109
 							// Edge: 109, path: "endpoints".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// GET /api/v1/namespaces/{namespace}/endpoints.
+								s.handleListCoreV1NamespacedEndpointsRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -3055,6 +3910,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "events": // -> 110
 							// Edge: 110, path: "events".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// GET /api/v1/namespaces/{namespace}/events.
+								s.handleListCoreV1NamespacedEventRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -3068,6 +3928,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "limitranges": // -> 111
 							// Edge: 111, path: "limitranges".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// GET /api/v1/namespaces/{namespace}/limitranges.
+								s.handleListCoreV1NamespacedLimitRangeRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -3081,6 +3946,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "persistentvolumeclaims": // -> 112
 							// Edge: 112, path: "persistentvolumeclaims".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// GET /api/v1/namespaces/{namespace}/persistentvolumeclaims.
+								s.handleListCoreV1NamespacedPersistentVolumeClaimRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -3089,6 +3959,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								args["name"] = string(elem)
 								// Edge: 233, path: "".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// GET /api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}.
+									s.handleReadCoreV1NamespacedPersistentVolumeClaimRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								case "status": // -> 234
 									// GET /api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}/status
@@ -3103,6 +3978,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "pods": // -> 113
 							// Edge: 113, path: "pods".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// GET /api/v1/namespaces/{namespace}/pods.
+								s.handleListCoreV1NamespacedPodRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -3111,6 +3991,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								args["name"] = string(elem)
 								// Edge: 235, path: "".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// GET /api/v1/namespaces/{namespace}/pods/{name}.
+									s.handleReadCoreV1NamespacedPodRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								case "ephemeralcontainers": // -> 236
 									// GET /api/v1/namespaces/{namespace}/pods/{name}/ephemeralcontainers
@@ -3133,6 +4018,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "podtemplates": // -> 114
 							// Edge: 114, path: "podtemplates".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// GET /api/v1/namespaces/{namespace}/podtemplates.
+								s.handleListCoreV1NamespacedPodTemplateRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -3146,6 +4036,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "replicationcontrollers": // -> 115
 							// Edge: 115, path: "replicationcontrollers".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// GET /api/v1/namespaces/{namespace}/replicationcontrollers.
+								s.handleListCoreV1NamespacedReplicationControllerRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -3154,6 +4049,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								args["name"] = string(elem)
 								// Edge: 240, path: "".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// GET /api/v1/namespaces/{namespace}/replicationcontrollers/{name}.
+									s.handleReadCoreV1NamespacedReplicationControllerRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								case "scale": // -> 241
 									// GET /api/v1/namespaces/{namespace}/replicationcontrollers/{name}/scale
@@ -3172,6 +4072,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "resourcequotas": // -> 116
 							// Edge: 116, path: "resourcequotas".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// GET /api/v1/namespaces/{namespace}/resourcequotas.
+								s.handleListCoreV1NamespacedResourceQuotaRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -3180,6 +4085,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								args["name"] = string(elem)
 								// Edge: 243, path: "".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// GET /api/v1/namespaces/{namespace}/resourcequotas/{name}.
+									s.handleReadCoreV1NamespacedResourceQuotaRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								case "status": // -> 244
 									// GET /api/v1/namespaces/{namespace}/resourcequotas/{name}/status
@@ -3194,6 +4104,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "secrets": // -> 117
 							// Edge: 117, path: "secrets".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// GET /api/v1/namespaces/{namespace}/secrets.
+								s.handleListCoreV1NamespacedSecretRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -3207,6 +4122,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "services": // -> 118
 							// Edge: 118, path: "services".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// GET /api/v1/namespaces/{namespace}/services.
+								s.handleListCoreV1NamespacedServiceRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -3215,6 +4135,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								args["name"] = string(elem)
 								// Edge: 246, path: "".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// GET /api/v1/namespaces/{namespace}/services/{name}.
+									s.handleReadCoreV1NamespacedServiceRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								case "status": // -> 248
 									// GET /api/v1/namespaces/{namespace}/services/{name}/status
@@ -3229,6 +4154,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "serviceaccounts": // -> 119
 							// Edge: 119, path: "serviceaccounts".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// GET /api/v1/namespaces/{namespace}/serviceaccounts.
+								s.handleListCoreV1NamespacedServiceAccountRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							default:
 								if args == nil {
@@ -3252,6 +4182,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				case "nodes": // -> 120
 					// Edge: 120, path: "nodes".
 					elem, p = nextElem(p)
+					if len(elem) == 0 {
+						// GET /api/v1/nodes.
+						s.handleListCoreV1NodeRequest(args, w, r)
+						return
+					}
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -3260,6 +4195,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						args["name"] = string(elem)
 						// Edge: 249, path: "".
 						elem, p = nextElem(p)
+						if len(elem) == 0 {
+							// GET /api/v1/nodes/{name}.
+							s.handleReadCoreV1NodeRequest(args, w, r)
+							return
+						}
 						switch string(elem) {
 						case "status": // -> 250
 							// GET /api/v1/nodes/{name}/status
@@ -3274,6 +4214,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				case "persistentvolumes": // -> 121
 					// Edge: 121, path: "persistentvolumes".
 					elem, p = nextElem(p)
+					if len(elem) == 0 {
+						// GET /api/v1/persistentvolumes.
+						s.handleListCoreV1PersistentVolumeRequest(args, w, r)
+						return
+					}
 					switch string(elem) {
 					default:
 						if args == nil {
@@ -3282,6 +4227,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						args["name"] = string(elem)
 						// Edge: 251, path: "".
 						elem, p = nextElem(p)
+						if len(elem) == 0 {
+							// GET /api/v1/persistentvolumes/{name}.
+							s.handleReadCoreV1PersistentVolumeRequest(args, w, r)
+							return
+						}
 						switch string(elem) {
 						case "status": // -> 252
 							// GET /api/v1/persistentvolumes/{name}/status
@@ -3348,6 +4298,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					case "namespaces": // -> 367
 						// Edge: 367, path: "namespaces".
 						elem, p = nextElem(p)
+						if len(elem) == 0 {
+							// GET /api/v1/watch/namespaces.
+							s.handleWatchCoreV1NamespaceListRequest(args, w, r)
+							return
+						}
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -3356,10 +4311,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args["name"] = string(elem)
 							// Edge: 368, path: "".
 							elem, p = nextElem(p)
+							if len(elem) == 0 {
+								// GET /api/v1/watch/namespaces/{name}.
+								s.handleWatchCoreV1NamespaceRequest(args, w, r)
+								return
+							}
 							switch string(elem) {
 							case "configmaps": // -> 369
 								// Edge: 369, path: "configmaps".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// GET /api/v1/watch/namespaces/{namespace}/configmaps.
+									s.handleWatchCoreV1NamespacedConfigMapListRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -3373,6 +4338,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "endpoints": // -> 371
 								// Edge: 371, path: "endpoints".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// GET /api/v1/watch/namespaces/{namespace}/endpoints.
+									s.handleWatchCoreV1NamespacedEndpointsListRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -3386,6 +4356,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "events": // -> 373
 								// Edge: 373, path: "events".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// GET /api/v1/watch/namespaces/{namespace}/events.
+									s.handleWatchCoreV1NamespacedEventListRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -3399,6 +4374,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "limitranges": // -> 375
 								// Edge: 375, path: "limitranges".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// GET /api/v1/watch/namespaces/{namespace}/limitranges.
+									s.handleWatchCoreV1NamespacedLimitRangeListRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -3412,6 +4392,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "persistentvolumeclaims": // -> 377
 								// Edge: 377, path: "persistentvolumeclaims".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// GET /api/v1/watch/namespaces/{namespace}/persistentvolumeclaims.
+									s.handleWatchCoreV1NamespacedPersistentVolumeClaimListRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -3425,6 +4410,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "pods": // -> 379
 								// Edge: 379, path: "pods".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// GET /api/v1/watch/namespaces/{namespace}/pods.
+									s.handleWatchCoreV1NamespacedPodListRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -3438,6 +4428,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "podtemplates": // -> 381
 								// Edge: 381, path: "podtemplates".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// GET /api/v1/watch/namespaces/{namespace}/podtemplates.
+									s.handleWatchCoreV1NamespacedPodTemplateListRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -3451,6 +4446,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "replicationcontrollers": // -> 383
 								// Edge: 383, path: "replicationcontrollers".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// GET /api/v1/watch/namespaces/{namespace}/replicationcontrollers.
+									s.handleWatchCoreV1NamespacedReplicationControllerListRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -3464,6 +4464,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "resourcequotas": // -> 385
 								// Edge: 385, path: "resourcequotas".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// GET /api/v1/watch/namespaces/{namespace}/resourcequotas.
+									s.handleWatchCoreV1NamespacedResourceQuotaListRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -3477,6 +4482,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "secrets": // -> 387
 								// Edge: 387, path: "secrets".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// GET /api/v1/watch/namespaces/{namespace}/secrets.
+									s.handleWatchCoreV1NamespacedSecretListRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -3490,6 +4500,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "services": // -> 389
 								// Edge: 389, path: "services".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// GET /api/v1/watch/namespaces/{namespace}/services.
+									s.handleWatchCoreV1NamespacedServiceListRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -3503,6 +4518,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "serviceaccounts": // -> 391
 								// Edge: 391, path: "serviceaccounts".
 								elem, p = nextElem(p)
+								if len(elem) == 0 {
+									// GET /api/v1/watch/namespaces/{namespace}/serviceaccounts.
+									s.handleWatchCoreV1NamespacedServiceAccountListRequest(args, w, r)
+									return
+								}
 								switch string(elem) {
 								default:
 									if args == nil {
@@ -3522,6 +4542,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					case "nodes": // -> 393
 						// Edge: 393, path: "nodes".
 						elem, p = nextElem(p)
+						if len(elem) == 0 {
+							// GET /api/v1/watch/nodes.
+							s.handleWatchCoreV1NodeListRequest(args, w, r)
+							return
+						}
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -3535,6 +4560,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					case "persistentvolumes": // -> 395
 						// Edge: 395, path: "persistentvolumes".
 						elem, p = nextElem(p)
+						if len(elem) == 0 {
+							// GET /api/v1/watch/persistentvolumes.
+							s.handleWatchCoreV1PersistentVolumeListRequest(args, w, r)
+							return
+						}
 						switch string(elem) {
 						default:
 							if args == nil {
@@ -3606,6 +4636,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		case "logs": // -> 191
 			// Edge: 191, path: "logs".
 			elem, p = nextElem(p)
+			if len(elem) == 0 {
+				// GET /logs/.
+				s.handleLogFileListHandlerRequest(args, w, r)
+				return
+			}
 			switch string(elem) {
 			default:
 				if args == nil {

@@ -162,6 +162,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		case "portfolio": // -> 13
 			// Edge: 13, path: "portfolio".
 			elem, p = nextElem(p)
+			if len(elem) == 0 {
+				// GET /portfolio.
+				s.handlePortfolioGetRequest(args, w, r)
+				return
+			}
 			switch string(elem) {
 			case "currencies": // -> 14
 				// GET /portfolio/currencies
