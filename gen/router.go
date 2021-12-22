@@ -64,6 +64,14 @@ type RouteCase struct {
 	Variable *RouteEge
 }
 
+func (e RouteEge) NextFirst() *RouteEge {
+	return e.Next[0]
+}
+
+func (e RouteEge) NextMultiple() bool {
+	return len(e.Next) > 1
+}
+
 func (e RouteEge) Case() RouteCase {
 	var c RouteCase
 	for _, edge := range e.Next {

@@ -71,6 +71,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		{{- end }}
 		elem, p = nextElem(p)
 		{{- if $.HasNext }}
+			{{- if $.Operation }}
+			if len(elem) == 0 {
+				// {{ $.Operation.Spec.HTTPMethod }} {{ $.Operation.Spec.Path }}.
+				s.handle{{ $.Operation.Name }}Request(args, w, r)
+				return
+			}
+			{{- end }}
 			switch string(elem) {
 			{{- range $next := $.Case.Static }}
 				case "{{ $next.Path }}": // -> {{ $next.ID }}
