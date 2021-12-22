@@ -12,6 +12,8 @@ import (
 //go:generate go run github.com/ogen-go/ogen/cmd/ogen --schema ../_testdata/firecracker.json --target ex_firecracker --clean
 //go:generate go run github.com/ogen-go/ogen/cmd/ogen --schema ../_testdata/gotd_bot_api.json --target ex_gotd --clean
 //go:generate go run github.com/ogen-go/ogen/cmd/ogen --schema ../_testdata/tinkoff.json --target ex_tinkoff --clean
+//go:generate go run github.com/ogen-go/ogen/cmd/ogen --schema ../_testdata/ent.json --target ex_ent --clean
+//go:generate go run github.com/ogen-go/ogen/cmd/ogen --schema ../_testdata/ex_route_params.json --target ex_route_params --clean
 
 // Partially supported:
 

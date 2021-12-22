@@ -1,0 +1,98 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Route params",
+    "license": {
+      "name": "Apache 2.0",
+      "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "version": "0.1.1"
+  },
+  "paths": {
+    "/name": {
+      "get": {
+        "description": "Retrieve any data",
+        "operationId": "dataGetAny",
+        "responses": {
+          "200": {
+            "description": "Data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/name/{id}": {
+      "get": {
+        "description": "Retrieve data",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "minimum": 1,
+              "type": "integer"
+            }
+          }
+        ],
+        "operationId": "dataGetID",
+        "responses": {
+          "200": {
+            "description": "Data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/name/{id}/{key}": {
+      "get": {
+        "description": "Retrieve data",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "name": "key",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "minimum": 1,
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "dataGet",
+        "responses": {
+          "200": {
+            "description": "Data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

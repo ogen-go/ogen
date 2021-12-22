@@ -1,0 +1,1382 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Ent Schema API",
+    "description": "This is an auto generated API description made out of an Ent schema definition",
+    "version": "0.1.0"
+  },
+  "paths": {
+    "/pets": {
+      "get": {
+        "tags": [
+          "Pet"
+        ],
+        "summary": "List Pets",
+        "description": "List Pets.",
+        "operationId": "listPet",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "what page to render",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "itemsPerPage",
+            "in": "query",
+            "description": "item count to render per page",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "result Pet list",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PetList"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Pet"
+        ],
+        "summary": "Create a new Pet",
+        "description": "Creates a new Pet and persists it to storage.",
+        "operationId": "createPet",
+        "requestBody": {
+          "description": "Pet to create",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "weight": {
+                    "type": "integer"
+                  },
+                  "birthday": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "categories": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    }
+                  },
+                  "owner": {
+                    "type": "integer"
+                  },
+                  "friends": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "required": [
+                  "name",
+                  "owner"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Pet created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PetCreate"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "409": {
+            "$ref": "#/components/responses/409"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/pets/{id}": {
+      "get": {
+        "tags": [
+          "Pet"
+        ],
+        "summary": "Find a Pet by ID",
+        "description": "Finds the Pet with the requested ID and returns it.",
+        "operationId": "readPet",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the Pet",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Pet with requested ID was found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PetRead"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Pet"
+        ],
+        "summary": "Deletes a Pet by ID",
+        "description": "Deletes the Pet with the requested ID.",
+        "operationId": "deletePet",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the Pet",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Pet with requested ID was deleted"
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Pet"
+        ],
+        "summary": "Updates a Pet",
+        "description": "Updates a Pet and persists changes to storage.",
+        "operationId": "updatePet",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the Pet",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "description": "Pet properties to update",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "weight": {
+                    "type": "integer"
+                  },
+                  "birthday": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "categories": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    }
+                  },
+                  "owner": {
+                    "type": "integer"
+                  },
+                  "friends": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "required": [
+                  "name",
+                  "owner"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Pet updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PetUpdate"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/pets/{id}/categories": {
+      "get": {
+        "tags": [
+          "Pet"
+        ],
+        "summary": "List attached Categories",
+        "description": "List attached Categories.",
+        "operationId": "listPetCategories",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the Pet",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "what page to render",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "itemsPerPage",
+            "in": "query",
+            "description": "item count to render per page",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "result Pets list",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Pet_CategoriesList"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Pet"
+        ],
+        "summary": "Create a new Category and attach it to the Pet",
+        "description": "Creates a new Category and attaches it to the Pet",
+        "operationId": "createPetCategories",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the Pet",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "description": "Category to create",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "pets": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "required": [
+                  "name"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Category created and attached to the Pet",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Pet_CategoriesCreate"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "409": {
+            "$ref": "#/components/responses/409"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/pets/{id}/friends": {
+      "get": {
+        "tags": [
+          "Pet"
+        ],
+        "summary": "List attached Friends",
+        "description": "List attached Friends.",
+        "operationId": "listPetFriends",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the Pet",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "what page to render",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "itemsPerPage",
+            "in": "query",
+            "description": "item count to render per page",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "result Pets list",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Pet_FriendsList"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Pet"
+        ],
+        "summary": "Create a new Pet and attach it to the Pet",
+        "description": "Creates a new Pet and attaches it to the Pet",
+        "operationId": "createPetFriends",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the Pet",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "description": "Pet to create",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "weight": {
+                    "type": "integer"
+                  },
+                  "birthday": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "categories": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    }
+                  },
+                  "owner": {
+                    "type": "integer"
+                  },
+                  "friends": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "required": [
+                  "name",
+                  "owner"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Pet created and attached to the Pet",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Pet_FriendsCreate"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "409": {
+            "$ref": "#/components/responses/409"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/pets/{id}/owner": {
+      "get": {
+        "tags": [
+          "Pet"
+        ],
+        "summary": "Find the attached User",
+        "description": "Find the attached User of the Pet with the given ID",
+        "operationId": "readPetOwner",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the Pet",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User attached to Pet with requested ID was found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Pet_OwnerRead"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Pet"
+        ],
+        "summary": "Create a new User and attach it to the Pet",
+        "description": "Creates a new User and attaches it to the Pet",
+        "operationId": "createPetOwner",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the Pet",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "description": "User to create",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "age": {
+                    "type": "integer"
+                  },
+                  "pets": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "required": [
+                  "name",
+                  "age"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "User created and attached to the Pet",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Pet_OwnerCreate"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "409": {
+            "$ref": "#/components/responses/409"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Pet"
+        ],
+        "summary": "Delete the attached Owner",
+        "description": "Delete the attached Owner of the Pet with the given ID",
+        "operationId": "deletePetOwner",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the Pet",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Owner with requested ID was deleted"
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Category": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "pets": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Pet"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "name"
+        ]
+      },
+      "CategoryCreate": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name"
+        ]
+      },
+      "CategoryList": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name"
+        ]
+      },
+      "CategoryRead": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name"
+        ]
+      },
+      "CategoryUpdate": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name"
+        ]
+      },
+      "Category_PetsCreate": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "weight": {
+            "type": "integer"
+          },
+          "birthday": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "id",
+          "name"
+        ]
+      },
+      "Category_PetsList": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "weight": {
+            "type": "integer"
+          },
+          "birthday": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "id",
+          "name"
+        ]
+      },
+      "Pet": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "weight": {
+            "type": "integer"
+          },
+          "birthday": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Category"
+            }
+          },
+          "owner": {
+            "$ref": "#/components/schemas/User"
+          },
+          "friends": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Pet"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "owner"
+        ]
+      },
+      "PetCreate": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "weight": {
+            "type": "integer"
+          },
+          "birthday": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PetCreate_Categories"
+            }
+          },
+          "owner": {
+            "$ref": "#/components/schemas/PetCreate_Owner"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "owner"
+        ]
+      },
+      "PetCreate_Categories": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name"
+        ]
+      },
+      "PetCreate_Owner": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "age": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "age"
+        ]
+      },
+      "PetList": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "weight": {
+            "type": "integer"
+          },
+          "birthday": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "id",
+          "name"
+        ]
+      },
+      "PetRead": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "weight": {
+            "type": "integer"
+          },
+          "birthday": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "id",
+          "name"
+        ]
+      },
+      "PetUpdate": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "weight": {
+            "type": "integer"
+          },
+          "birthday": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "id",
+          "name"
+        ]
+      },
+      "Pet_CategoriesCreate": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name"
+        ]
+      },
+      "Pet_CategoriesList": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name"
+        ]
+      },
+      "Pet_FriendsCreate": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "weight": {
+            "type": "integer"
+          },
+          "birthday": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "id",
+          "name"
+        ]
+      },
+      "Pet_FriendsList": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "weight": {
+            "type": "integer"
+          },
+          "birthday": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "id",
+          "name"
+        ]
+      },
+      "Pet_OwnerCreate": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "age": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "age"
+        ]
+      },
+      "Pet_OwnerRead": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "age": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "age"
+        ]
+      },
+      "User": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "age": {
+            "type": "integer"
+          },
+          "pets": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Pet"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "age"
+        ]
+      },
+      "UserCreate": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "age": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "age"
+        ]
+      },
+      "UserList": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "age": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "age"
+        ]
+      },
+      "UserRead": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "age": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "age"
+        ]
+      },
+      "UserUpdate": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "age": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "age"
+        ]
+      },
+      "User_PetsCreate": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "weight": {
+            "type": "integer"
+          },
+          "birthday": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "id",
+          "name"
+        ]
+      },
+      "User_PetsList": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "weight": {
+            "type": "integer"
+          },
+          "birthday": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "id",
+          "name"
+        ]
+      }
+    },
+    "responses": {
+      "400": {
+        "description": "invalid input, data invalid",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer"
+                },
+                "status": {
+                  "type": "string"
+                },
+                "errors": {}
+              },
+              "required": [
+                "code",
+                "status"
+              ]
+            }
+          }
+        }
+      },
+      "403": {
+        "description": "insufficient permissions",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer"
+                },
+                "status": {
+                  "type": "string"
+                },
+                "errors": {}
+              },
+              "required": [
+                "code",
+                "status"
+              ]
+            }
+          }
+        }
+      },
+      "404": {
+        "description": "resource not found",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer"
+                },
+                "status": {
+                  "type": "string"
+                },
+                "errors": {}
+              },
+              "required": [
+                "code",
+                "status"
+              ]
+            }
+          }
+        }
+      },
+      "409": {
+        "description": "conflicting resources",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer"
+                },
+                "status": {
+                  "type": "string"
+                },
+                "errors": {}
+              },
+              "required": [
+                "code",
+                "status"
+              ]
+            }
+          }
+        }
+      },
+      "500": {
+        "description": "unexpected error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer"
+                },
+                "status": {
+                  "type": "string"
+                },
+                "errors": {}
+              },
+              "required": [
+                "code",
+                "status"
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}

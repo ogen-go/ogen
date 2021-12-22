@@ -106,6 +106,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		case "balloon": // -> 1
 			// Edge: 1, path: "balloon".
 			elem, p = nextElem(p)
+			if len(elem) == 0 {
+				// GET /balloon.
+				s.handleDescribeBalloonConfigRequest(args, w, r)
+				return
+			}
 			switch string(elem) {
 			case "statistics": // -> 2
 				// GET /balloon/statistics
@@ -155,6 +160,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		case "balloon": // -> 2
 			// Edge: 2, path: "balloon".
 			elem, p = nextElem(p)
+			if len(elem) == 0 {
+				// PATCH /balloon.
+				s.handlePatchBalloonRequest(args, w, r)
+				return
+			}
 			switch string(elem) {
 			case "statistics": // -> 3
 				// PATCH /balloon/statistics
@@ -230,6 +240,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		case "mmds": // -> 5
 			// Edge: 5, path: "mmds".
 			elem, p = nextElem(p)
+			if len(elem) == 0 {
+				// PUT /mmds.
+				s.handleMmdsPutRequest(args, w, r)
+				return
+			}
 			switch string(elem) {
 			case "config": // -> 6
 				// PUT /mmds/config
