@@ -66,7 +66,7 @@ func (s *Server) notFound(w http.ResponseWriter, r *http.Request) {
 	http.NotFound(w, r)
 }
 
-func skipSlash(p []byte) []byte {
+func skipSlash(p string) string {
 	if len(p) > 0 && p[0] == '/' {
 		return p[1:]
 	}
@@ -74,9 +74,9 @@ func skipSlash(p []byte) []byte {
 }
 
 // nextElem return next path element from p and forwarded p.
-func nextElem(p []byte) (elem, next []byte) {
+func nextElem(p string) (elem, next string) {
 	p = skipSlash(p)
-	idx := bytes.IndexByte(p, '/')
+	idx := strings.IndexByte(p, '/')
 	if idx < 0 {
 		idx = len(p)
 	}
@@ -86,14 +86,14 @@ func nextElem(p []byte) (elem, next []byte) {
 // ServeHTTP serves http request as defined by OpenAPI v3 specification,
 // calling handler that matches the path or returning not found error.
 func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	p := []byte(r.URL.Path)
+	p := r.URL.Path
 	if len(p) == 0 {
 		s.notFound(w, r)
 		return
 	}
 
 	var (
-		elem []byte            // current element, without slashes
+		elem string            // current element, without slashes
 		args map[string]string // lazily initialized
 	)
 
@@ -102,7 +102,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	case "GET":
 		// Root edge.
 		elem, p = nextElem(p)
-		switch string(elem) {
+		switch elem {
 		case "error": // -> 1
 			// GET /error
 			s.handleErrorGetRequest(args, w, r)
@@ -114,7 +114,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		case "test": // -> 3
 			// Edge: 3, path: "test".
 			elem, p = nextElem(p)
-			switch string(elem) {
+			switch elem {
 			case "header": // -> 4
 				// GET /test/header
 				s.handleGetHeaderRequest(args, w, r)
@@ -131,16 +131,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				s.handlePetGetRequest(args, w, r)
 				return
 			}
-			switch string(elem) {
+			switch elem {
 			case "friendNames": // -> 6
 				// Edge: 6, path: "friendNames".
 				elem, p = nextElem(p)
-				switch string(elem) {
+				switch elem {
 				default:
 					if args == nil {
 						args = make(map[string]string)
 					}
-					args["id"] = string(elem)
+					args["id"] = elem
 					// GET /pet/friendNames/{id}
 					s.handlePetFriendsNamesByIDRequest(args, w, r)
 					return
@@ -152,12 +152,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			case "name": // -> 10
 				// Edge: 10, path: "name".
 				elem, p = nextElem(p)
-				switch string(elem) {
+				switch elem {
 				default:
 					if args == nil {
 						args = make(map[string]string)
 					}
-					args["id"] = string(elem)
+					args["id"] = elem
 					// GET /pet/name/{id}
 					s.handlePetNameByIDRequest(args, w, r)
 					return
@@ -166,7 +166,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				if args == nil {
 					args = make(map[string]string)
 				}
-				args["name"] = string(elem)
+				args["name"] = elem
 				// GET /pet/{name}
 				s.handlePetGetByNameRequest(args, w, r)
 				return
@@ -178,7 +178,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	case "POST":
 		// Root edge.
 		elem, p = nextElem(p)
-		switch string(elem) {
+		switch elem {
 		case "foobar": // -> 1
 			// POST /foobar
 			s.handleFoobarPostRequest(args, w, r)
@@ -191,7 +191,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				s.handlePetCreateRequest(args, w, r)
 				return
 			}
-			switch string(elem) {
+			switch elem {
 			case "updateNameAlias": // -> 3
 				// POST /pet/updateNameAlias
 				s.handlePetUpdateNameAliasPostRequest(args, w, r)
@@ -216,7 +216,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	case "PUT":
 		// Root edge.
 		elem, p = nextElem(p)
-		switch string(elem) {
+		switch elem {
 		case "foobar": // -> 1
 			// PUT /foobar
 			s.handleFoobarPutRequest(args, w, r)

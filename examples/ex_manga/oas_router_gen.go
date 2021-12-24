@@ -66,7 +66,7 @@ func (s *Server) notFound(w http.ResponseWriter, r *http.Request) {
 	http.NotFound(w, r)
 }
 
-func skipSlash(p []byte) []byte {
+func skipSlash(p string) string {
 	if len(p) > 0 && p[0] == '/' {
 		return p[1:]
 	}
@@ -74,9 +74,9 @@ func skipSlash(p []byte) []byte {
 }
 
 // nextElem return next path element from p and forwarded p.
-func nextElem(p []byte) (elem, next []byte) {
+func nextElem(p string) (elem, next string) {
 	p = skipSlash(p)
-	idx := bytes.IndexByte(p, '/')
+	idx := strings.IndexByte(p, '/')
 	if idx < 0 {
 		idx = len(p)
 	}
@@ -86,14 +86,14 @@ func nextElem(p []byte) (elem, next []byte) {
 // ServeHTTP serves http request as defined by OpenAPI v3 specification,
 // calling handler that matches the path or returning not found error.
 func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	p := []byte(r.URL.Path)
+	p := r.URL.Path
 	if len(p) == 0 {
 		s.notFound(w, r)
 		return
 	}
 
 	var (
-		elem []byte            // current element, without slashes
+		elem string            // current element, without slashes
 		args map[string]string // lazily initialized
 	)
 
@@ -102,20 +102,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	case "GET":
 		// Root edge.
 		elem, p = nextElem(p)
-		switch string(elem) {
+		switch elem {
 		case "api": // -> 1
 			// Edge: 1, path: "api".
 			elem, p = nextElem(p)
-			switch string(elem) {
+			switch elem {
 			case "gallery": // -> 2
 				// Edge: 2, path: "gallery".
 				elem, p = nextElem(p)
-				switch string(elem) {
+				switch elem {
 				default:
 					if args == nil {
 						args = make(map[string]string)
 					}
-					args["book_id"] = string(elem)
+					args["book_id"] = elem
 					// GET /api/gallery/{book_id}
 					s.handleGetBookRequest(args, w, r)
 					return
@@ -123,7 +123,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			case "galleries": // -> 14
 				// Edge: 14, path: "galleries".
 				elem, p = nextElem(p)
-				switch string(elem) {
+				switch elem {
 				case "search": // -> 15
 					// GET /api/galleries/search
 					s.handleSearchRequest(args, w, r)
@@ -143,24 +143,24 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		case "galleries": // -> 4
 			// Edge: 4, path: "galleries".
 			elem, p = nextElem(p)
-			switch string(elem) {
+			switch elem {
 			default:
 				if args == nil {
 					args = make(map[string]string)
 				}
-				args["media_id"] = string(elem)
+				args["media_id"] = elem
 				// Edge: 5, path: "".
 				elem, p = nextElem(p)
-				switch string(elem) {
+				switch elem {
 				case "cover.": // -> 6
 					// Edge: 6, path: "cover.".
 					elem, p = nextElem(p)
-					switch string(elem) {
+					switch elem {
 					default:
 						if args == nil {
 							args = make(map[string]string)
 						}
-						args["format"] = string(elem)
+						args["format"] = elem
 						// GET /galleries/{media_id}/cover.{format}
 						s.handleGetPageCoverImageRequest(args, w, r)
 						return
@@ -168,24 +168,24 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				case "": // -> 8
 					// Edge: 8, path: "".
 					elem, p = nextElem(p)
-					switch string(elem) {
+					switch elem {
 					default:
 						if args == nil {
 							args = make(map[string]string)
 						}
-						args["page"] = string(elem)
+						args["page"] = elem
 						// Edge: 9, path: "".
 						elem, p = nextElem(p)
-						switch string(elem) {
+						switch elem {
 						case ".": // -> 10
 							// Edge: 10, path: ".".
 							elem, p = nextElem(p)
-							switch string(elem) {
+							switch elem {
 							default:
 								if args == nil {
 									args = make(map[string]string)
 								}
-								args["format"] = string(elem)
+								args["format"] = elem
 								// GET /galleries/{media_id}/{page}.{format}
 								s.handleGetPageImageRequest(args, w, r)
 								return
@@ -193,12 +193,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "t.": // -> 12
 							// Edge: 12, path: "t.".
 							elem, p = nextElem(p)
-							switch string(elem) {
+							switch elem {
 							default:
 								if args == nil {
 									args = make(map[string]string)
 								}
-								args["format"] = string(elem)
+								args["format"] = elem
 								// GET /galleries/{media_id}/{page}t.{format}
 								s.handleGetPageThumbnailImageRequest(args, w, r)
 								return
