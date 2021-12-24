@@ -190,6 +190,15 @@ func (o {{ $.Name }}) Get() (v {{ $g.Go }}, ok bool) {
 {{- end }}
 	return o.Value, true
 }
+
+// Or returns value if set, or given parameter if does not.
+func (o {{ $.Name }}) Or(d {{ $g.Go }}) {{ $g.Go }} {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 {{/* end define generic */}}
 {{- else }}
 {{ errorf "unexpected kind %s of %s" $.Kind $.Name }}
