@@ -392,6 +392,14 @@ func (o OptBrokerAccountType) Get() (v BrokerAccountType, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptBrokerAccountType) Or(d BrokerAccountType) BrokerAccountType {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptCurrency returns new OptCurrency with value set to v.
 func NewOptCurrency(v Currency) OptCurrency {
 	return OptCurrency{
@@ -428,6 +436,14 @@ func (o OptCurrency) Get() (v Currency, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptCurrency) Or(d Currency) Currency {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptFloat64 returns new OptFloat64 with value set to v.
@@ -468,6 +484,14 @@ func (o OptFloat64) Get() (v float64, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptFloat64) Or(d float64) float64 {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptInstrumentType returns new OptInstrumentType with value set to v.
 func NewOptInstrumentType(v InstrumentType) OptInstrumentType {
 	return OptInstrumentType{
@@ -504,6 +528,14 @@ func (o OptInstrumentType) Get() (v InstrumentType, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptInstrumentType) Or(d InstrumentType) InstrumentType {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptInt32 returns new OptInt32 with value set to v.
@@ -544,6 +576,14 @@ func (o OptInt32) Get() (v int32, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptInt32) Or(d int32) int32 {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptMoneyAmount returns new OptMoneyAmount with value set to v.
 func NewOptMoneyAmount(v MoneyAmount) OptMoneyAmount {
 	return OptMoneyAmount{
@@ -580,6 +620,14 @@ func (o OptMoneyAmount) Get() (v MoneyAmount, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptMoneyAmount) Or(d MoneyAmount) MoneyAmount {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptOperationTypeWithCommission returns new OptOperationTypeWithCommission with value set to v.
@@ -620,6 +668,14 @@ func (o OptOperationTypeWithCommission) Get() (v OperationTypeWithCommission, ok
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptOperationTypeWithCommission) Or(d OperationTypeWithCommission) OperationTypeWithCommission {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptSandboxRegisterRequest returns new OptSandboxRegisterRequest with value set to v.
 func NewOptSandboxRegisterRequest(v SandboxRegisterRequest) OptSandboxRegisterRequest {
 	return OptSandboxRegisterRequest{
@@ -658,6 +714,14 @@ func (o OptSandboxRegisterRequest) Get() (v SandboxRegisterRequest, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptSandboxRegisterRequest) Or(d SandboxRegisterRequest) SandboxRegisterRequest {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptString returns new OptString with value set to v.
 func NewOptString(v string) OptString {
 	return OptString{
@@ -694,6 +758,14 @@ func (o OptString) Get() (v string, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptString) Or(d string) string {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // Ref: #/components/schemas/Order

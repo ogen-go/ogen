@@ -121,6 +121,14 @@ func (o OptInt32) Get() (v int32, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptInt32) Or(d int32) int32 {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptString returns new OptString with value set to v.
 func NewOptString(v string) OptString {
 	return OptString{
@@ -157,6 +165,14 @@ func (o OptString) Get() (v string, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptString) Or(d string) string {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // Ref: #/components/schemas/Pet

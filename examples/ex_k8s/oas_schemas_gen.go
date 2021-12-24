@@ -5859,6 +5859,14 @@ func (o OptBool) Get() (v bool, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptBool) Or(d bool) bool {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptFloat64 returns new OptFloat64 with value set to v.
 func NewOptFloat64(v float64) OptFloat64 {
 	return OptFloat64{
@@ -5895,6 +5903,14 @@ func (o OptFloat64) Get() (v float64, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptFloat64) Or(d float64) float64 {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptInt returns new OptInt with value set to v.
@@ -5935,6 +5951,14 @@ func (o OptInt) Get() (v int, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptInt) Or(d int) int {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptInt32 returns new OptInt32 with value set to v.
 func NewOptInt32(v int32) OptInt32 {
 	return OptInt32{
@@ -5971,6 +5995,14 @@ func (o OptInt32) Get() (v int32, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptInt32) Or(d int32) int32 {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptInt64 returns new OptInt64 with value set to v.
@@ -6011,6 +6043,14 @@ func (o OptInt64) Get() (v int64, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptInt64) Or(d int64) int64 {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPIAdmissionregistrationV1ServiceReference returns new OptIoK8sAPIAdmissionregistrationV1ServiceReference with value set to v.
 func NewOptIoK8sAPIAdmissionregistrationV1ServiceReference(v IoK8sAPIAdmissionregistrationV1ServiceReference) OptIoK8sAPIAdmissionregistrationV1ServiceReference {
 	return OptIoK8sAPIAdmissionregistrationV1ServiceReference{
@@ -6047,6 +6087,14 @@ func (o OptIoK8sAPIAdmissionregistrationV1ServiceReference) Get() (v IoK8sAPIAdm
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIAdmissionregistrationV1ServiceReference) Or(d IoK8sAPIAdmissionregistrationV1ServiceReference) IoK8sAPIAdmissionregistrationV1ServiceReference {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPIAppsV1DaemonSetSpec returns new OptIoK8sAPIAppsV1DaemonSetSpec with value set to v.
@@ -6087,6 +6135,14 @@ func (o OptIoK8sAPIAppsV1DaemonSetSpec) Get() (v IoK8sAPIAppsV1DaemonSetSpec, ok
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIAppsV1DaemonSetSpec) Or(d IoK8sAPIAppsV1DaemonSetSpec) IoK8sAPIAppsV1DaemonSetSpec {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPIAppsV1DaemonSetStatus returns new OptIoK8sAPIAppsV1DaemonSetStatus with value set to v.
 func NewOptIoK8sAPIAppsV1DaemonSetStatus(v IoK8sAPIAppsV1DaemonSetStatus) OptIoK8sAPIAppsV1DaemonSetStatus {
 	return OptIoK8sAPIAppsV1DaemonSetStatus{
@@ -6123,6 +6179,14 @@ func (o OptIoK8sAPIAppsV1DaemonSetStatus) Get() (v IoK8sAPIAppsV1DaemonSetStatus
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIAppsV1DaemonSetStatus) Or(d IoK8sAPIAppsV1DaemonSetStatus) IoK8sAPIAppsV1DaemonSetStatus {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPIAppsV1DaemonSetUpdateStrategy returns new OptIoK8sAPIAppsV1DaemonSetUpdateStrategy with value set to v.
@@ -6163,6 +6227,14 @@ func (o OptIoK8sAPIAppsV1DaemonSetUpdateStrategy) Get() (v IoK8sAPIAppsV1DaemonS
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIAppsV1DaemonSetUpdateStrategy) Or(d IoK8sAPIAppsV1DaemonSetUpdateStrategy) IoK8sAPIAppsV1DaemonSetUpdateStrategy {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPIAppsV1DeploymentSpec returns new OptIoK8sAPIAppsV1DeploymentSpec with value set to v.
 func NewOptIoK8sAPIAppsV1DeploymentSpec(v IoK8sAPIAppsV1DeploymentSpec) OptIoK8sAPIAppsV1DeploymentSpec {
 	return OptIoK8sAPIAppsV1DeploymentSpec{
@@ -6199,6 +6271,14 @@ func (o OptIoK8sAPIAppsV1DeploymentSpec) Get() (v IoK8sAPIAppsV1DeploymentSpec, 
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIAppsV1DeploymentSpec) Or(d IoK8sAPIAppsV1DeploymentSpec) IoK8sAPIAppsV1DeploymentSpec {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPIAppsV1DeploymentStatus returns new OptIoK8sAPIAppsV1DeploymentStatus with value set to v.
@@ -6239,6 +6319,14 @@ func (o OptIoK8sAPIAppsV1DeploymentStatus) Get() (v IoK8sAPIAppsV1DeploymentStat
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIAppsV1DeploymentStatus) Or(d IoK8sAPIAppsV1DeploymentStatus) IoK8sAPIAppsV1DeploymentStatus {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPIAppsV1DeploymentStrategy returns new OptIoK8sAPIAppsV1DeploymentStrategy with value set to v.
 func NewOptIoK8sAPIAppsV1DeploymentStrategy(v IoK8sAPIAppsV1DeploymentStrategy) OptIoK8sAPIAppsV1DeploymentStrategy {
 	return OptIoK8sAPIAppsV1DeploymentStrategy{
@@ -6275,6 +6363,14 @@ func (o OptIoK8sAPIAppsV1DeploymentStrategy) Get() (v IoK8sAPIAppsV1DeploymentSt
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIAppsV1DeploymentStrategy) Or(d IoK8sAPIAppsV1DeploymentStrategy) IoK8sAPIAppsV1DeploymentStrategy {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPIAppsV1ReplicaSetSpec returns new OptIoK8sAPIAppsV1ReplicaSetSpec with value set to v.
@@ -6315,6 +6411,14 @@ func (o OptIoK8sAPIAppsV1ReplicaSetSpec) Get() (v IoK8sAPIAppsV1ReplicaSetSpec, 
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIAppsV1ReplicaSetSpec) Or(d IoK8sAPIAppsV1ReplicaSetSpec) IoK8sAPIAppsV1ReplicaSetSpec {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPIAppsV1ReplicaSetStatus returns new OptIoK8sAPIAppsV1ReplicaSetStatus with value set to v.
 func NewOptIoK8sAPIAppsV1ReplicaSetStatus(v IoK8sAPIAppsV1ReplicaSetStatus) OptIoK8sAPIAppsV1ReplicaSetStatus {
 	return OptIoK8sAPIAppsV1ReplicaSetStatus{
@@ -6351,6 +6455,14 @@ func (o OptIoK8sAPIAppsV1ReplicaSetStatus) Get() (v IoK8sAPIAppsV1ReplicaSetStat
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIAppsV1ReplicaSetStatus) Or(d IoK8sAPIAppsV1ReplicaSetStatus) IoK8sAPIAppsV1ReplicaSetStatus {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPIAppsV1RollingUpdateDaemonSet returns new OptIoK8sAPIAppsV1RollingUpdateDaemonSet with value set to v.
@@ -6391,6 +6503,14 @@ func (o OptIoK8sAPIAppsV1RollingUpdateDaemonSet) Get() (v IoK8sAPIAppsV1RollingU
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIAppsV1RollingUpdateDaemonSet) Or(d IoK8sAPIAppsV1RollingUpdateDaemonSet) IoK8sAPIAppsV1RollingUpdateDaemonSet {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPIAppsV1RollingUpdateDeployment returns new OptIoK8sAPIAppsV1RollingUpdateDeployment with value set to v.
 func NewOptIoK8sAPIAppsV1RollingUpdateDeployment(v IoK8sAPIAppsV1RollingUpdateDeployment) OptIoK8sAPIAppsV1RollingUpdateDeployment {
 	return OptIoK8sAPIAppsV1RollingUpdateDeployment{
@@ -6427,6 +6547,14 @@ func (o OptIoK8sAPIAppsV1RollingUpdateDeployment) Get() (v IoK8sAPIAppsV1Rolling
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIAppsV1RollingUpdateDeployment) Or(d IoK8sAPIAppsV1RollingUpdateDeployment) IoK8sAPIAppsV1RollingUpdateDeployment {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPIAppsV1RollingUpdateStatefulSetStrategy returns new OptIoK8sAPIAppsV1RollingUpdateStatefulSetStrategy with value set to v.
@@ -6467,6 +6595,14 @@ func (o OptIoK8sAPIAppsV1RollingUpdateStatefulSetStrategy) Get() (v IoK8sAPIApps
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIAppsV1RollingUpdateStatefulSetStrategy) Or(d IoK8sAPIAppsV1RollingUpdateStatefulSetStrategy) IoK8sAPIAppsV1RollingUpdateStatefulSetStrategy {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPIAppsV1StatefulSetSpec returns new OptIoK8sAPIAppsV1StatefulSetSpec with value set to v.
 func NewOptIoK8sAPIAppsV1StatefulSetSpec(v IoK8sAPIAppsV1StatefulSetSpec) OptIoK8sAPIAppsV1StatefulSetSpec {
 	return OptIoK8sAPIAppsV1StatefulSetSpec{
@@ -6503,6 +6639,14 @@ func (o OptIoK8sAPIAppsV1StatefulSetSpec) Get() (v IoK8sAPIAppsV1StatefulSetSpec
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIAppsV1StatefulSetSpec) Or(d IoK8sAPIAppsV1StatefulSetSpec) IoK8sAPIAppsV1StatefulSetSpec {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPIAppsV1StatefulSetStatus returns new OptIoK8sAPIAppsV1StatefulSetStatus with value set to v.
@@ -6543,6 +6687,14 @@ func (o OptIoK8sAPIAppsV1StatefulSetStatus) Get() (v IoK8sAPIAppsV1StatefulSetSt
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIAppsV1StatefulSetStatus) Or(d IoK8sAPIAppsV1StatefulSetStatus) IoK8sAPIAppsV1StatefulSetStatus {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPIAppsV1StatefulSetUpdateStrategy returns new OptIoK8sAPIAppsV1StatefulSetUpdateStrategy with value set to v.
 func NewOptIoK8sAPIAppsV1StatefulSetUpdateStrategy(v IoK8sAPIAppsV1StatefulSetUpdateStrategy) OptIoK8sAPIAppsV1StatefulSetUpdateStrategy {
 	return OptIoK8sAPIAppsV1StatefulSetUpdateStrategy{
@@ -6579,6 +6731,14 @@ func (o OptIoK8sAPIAppsV1StatefulSetUpdateStrategy) Get() (v IoK8sAPIAppsV1State
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIAppsV1StatefulSetUpdateStrategy) Or(d IoK8sAPIAppsV1StatefulSetUpdateStrategy) IoK8sAPIAppsV1StatefulSetUpdateStrategy {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec returns new OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec with value set to v.
@@ -6619,6 +6779,14 @@ func (o OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) Get() (v IoK8sAPIAu
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) Or(d IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus returns new OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus with value set to v.
 func NewOptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus(v IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus {
 	return OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus{
@@ -6655,6 +6823,14 @@ func (o OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) Get() (v IoK8sAPI
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) Or(d IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPIAutoscalingV1ScaleSpec returns new OptIoK8sAPIAutoscalingV1ScaleSpec with value set to v.
@@ -6695,6 +6871,14 @@ func (o OptIoK8sAPIAutoscalingV1ScaleSpec) Get() (v IoK8sAPIAutoscalingV1ScaleSp
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIAutoscalingV1ScaleSpec) Or(d IoK8sAPIAutoscalingV1ScaleSpec) IoK8sAPIAutoscalingV1ScaleSpec {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPIAutoscalingV1ScaleStatus returns new OptIoK8sAPIAutoscalingV1ScaleStatus with value set to v.
 func NewOptIoK8sAPIAutoscalingV1ScaleStatus(v IoK8sAPIAutoscalingV1ScaleStatus) OptIoK8sAPIAutoscalingV1ScaleStatus {
 	return OptIoK8sAPIAutoscalingV1ScaleStatus{
@@ -6731,6 +6915,14 @@ func (o OptIoK8sAPIAutoscalingV1ScaleStatus) Get() (v IoK8sAPIAutoscalingV1Scale
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIAutoscalingV1ScaleStatus) Or(d IoK8sAPIAutoscalingV1ScaleStatus) IoK8sAPIAutoscalingV1ScaleStatus {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource returns new OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource with value set to v.
@@ -6771,6 +6963,14 @@ func (o OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) Get() (v IoK
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) Or(d IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus returns new OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus with value set to v.
 func NewOptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus(v IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus {
 	return OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus{
@@ -6807,6 +7007,14 @@ func (o OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) Get() (v IoK
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) Or(d IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPIAutoscalingV2beta1ExternalMetricSource returns new OptIoK8sAPIAutoscalingV2beta1ExternalMetricSource with value set to v.
@@ -6847,6 +7055,14 @@ func (o OptIoK8sAPIAutoscalingV2beta1ExternalMetricSource) Get() (v IoK8sAPIAuto
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIAutoscalingV2beta1ExternalMetricSource) Or(d IoK8sAPIAutoscalingV2beta1ExternalMetricSource) IoK8sAPIAutoscalingV2beta1ExternalMetricSource {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPIAutoscalingV2beta1ExternalMetricStatus returns new OptIoK8sAPIAutoscalingV2beta1ExternalMetricStatus with value set to v.
 func NewOptIoK8sAPIAutoscalingV2beta1ExternalMetricStatus(v IoK8sAPIAutoscalingV2beta1ExternalMetricStatus) OptIoK8sAPIAutoscalingV2beta1ExternalMetricStatus {
 	return OptIoK8sAPIAutoscalingV2beta1ExternalMetricStatus{
@@ -6883,6 +7099,14 @@ func (o OptIoK8sAPIAutoscalingV2beta1ExternalMetricStatus) Get() (v IoK8sAPIAuto
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIAutoscalingV2beta1ExternalMetricStatus) Or(d IoK8sAPIAutoscalingV2beta1ExternalMetricStatus) IoK8sAPIAutoscalingV2beta1ExternalMetricStatus {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec returns new OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec with value set to v.
@@ -6923,6 +7147,14 @@ func (o OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) Get() (v IoK8s
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) Or(d IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus returns new OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus with value set to v.
 func NewOptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus(v IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus {
 	return OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus{
@@ -6959,6 +7191,14 @@ func (o OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) Get() (v IoK
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) Or(d IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPIAutoscalingV2beta1ObjectMetricSource returns new OptIoK8sAPIAutoscalingV2beta1ObjectMetricSource with value set to v.
@@ -6999,6 +7239,14 @@ func (o OptIoK8sAPIAutoscalingV2beta1ObjectMetricSource) Get() (v IoK8sAPIAutosc
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIAutoscalingV2beta1ObjectMetricSource) Or(d IoK8sAPIAutoscalingV2beta1ObjectMetricSource) IoK8sAPIAutoscalingV2beta1ObjectMetricSource {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPIAutoscalingV2beta1ObjectMetricStatus returns new OptIoK8sAPIAutoscalingV2beta1ObjectMetricStatus with value set to v.
 func NewOptIoK8sAPIAutoscalingV2beta1ObjectMetricStatus(v IoK8sAPIAutoscalingV2beta1ObjectMetricStatus) OptIoK8sAPIAutoscalingV2beta1ObjectMetricStatus {
 	return OptIoK8sAPIAutoscalingV2beta1ObjectMetricStatus{
@@ -7035,6 +7283,14 @@ func (o OptIoK8sAPIAutoscalingV2beta1ObjectMetricStatus) Get() (v IoK8sAPIAutosc
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIAutoscalingV2beta1ObjectMetricStatus) Or(d IoK8sAPIAutoscalingV2beta1ObjectMetricStatus) IoK8sAPIAutoscalingV2beta1ObjectMetricStatus {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPIAutoscalingV2beta1PodsMetricSource returns new OptIoK8sAPIAutoscalingV2beta1PodsMetricSource with value set to v.
@@ -7075,6 +7331,14 @@ func (o OptIoK8sAPIAutoscalingV2beta1PodsMetricSource) Get() (v IoK8sAPIAutoscal
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIAutoscalingV2beta1PodsMetricSource) Or(d IoK8sAPIAutoscalingV2beta1PodsMetricSource) IoK8sAPIAutoscalingV2beta1PodsMetricSource {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPIAutoscalingV2beta1PodsMetricStatus returns new OptIoK8sAPIAutoscalingV2beta1PodsMetricStatus with value set to v.
 func NewOptIoK8sAPIAutoscalingV2beta1PodsMetricStatus(v IoK8sAPIAutoscalingV2beta1PodsMetricStatus) OptIoK8sAPIAutoscalingV2beta1PodsMetricStatus {
 	return OptIoK8sAPIAutoscalingV2beta1PodsMetricStatus{
@@ -7111,6 +7375,14 @@ func (o OptIoK8sAPIAutoscalingV2beta1PodsMetricStatus) Get() (v IoK8sAPIAutoscal
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIAutoscalingV2beta1PodsMetricStatus) Or(d IoK8sAPIAutoscalingV2beta1PodsMetricStatus) IoK8sAPIAutoscalingV2beta1PodsMetricStatus {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPIAutoscalingV2beta1ResourceMetricSource returns new OptIoK8sAPIAutoscalingV2beta1ResourceMetricSource with value set to v.
@@ -7151,6 +7423,14 @@ func (o OptIoK8sAPIAutoscalingV2beta1ResourceMetricSource) Get() (v IoK8sAPIAuto
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIAutoscalingV2beta1ResourceMetricSource) Or(d IoK8sAPIAutoscalingV2beta1ResourceMetricSource) IoK8sAPIAutoscalingV2beta1ResourceMetricSource {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPIAutoscalingV2beta1ResourceMetricStatus returns new OptIoK8sAPIAutoscalingV2beta1ResourceMetricStatus with value set to v.
 func NewOptIoK8sAPIAutoscalingV2beta1ResourceMetricStatus(v IoK8sAPIAutoscalingV2beta1ResourceMetricStatus) OptIoK8sAPIAutoscalingV2beta1ResourceMetricStatus {
 	return OptIoK8sAPIAutoscalingV2beta1ResourceMetricStatus{
@@ -7187,6 +7467,14 @@ func (o OptIoK8sAPIAutoscalingV2beta1ResourceMetricStatus) Get() (v IoK8sAPIAuto
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIAutoscalingV2beta1ResourceMetricStatus) Or(d IoK8sAPIAutoscalingV2beta1ResourceMetricStatus) IoK8sAPIAutoscalingV2beta1ResourceMetricStatus {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource returns new OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource with value set to v.
@@ -7227,6 +7515,14 @@ func (o OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) Get() (v IoK
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) Or(d IoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) IoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus returns new OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus with value set to v.
 func NewOptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus(v IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus {
 	return OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus{
@@ -7263,6 +7559,14 @@ func (o OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) Get() (v IoK
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) Or(d IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPIAutoscalingV2beta2ExternalMetricSource returns new OptIoK8sAPIAutoscalingV2beta2ExternalMetricSource with value set to v.
@@ -7303,6 +7607,14 @@ func (o OptIoK8sAPIAutoscalingV2beta2ExternalMetricSource) Get() (v IoK8sAPIAuto
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIAutoscalingV2beta2ExternalMetricSource) Or(d IoK8sAPIAutoscalingV2beta2ExternalMetricSource) IoK8sAPIAutoscalingV2beta2ExternalMetricSource {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPIAutoscalingV2beta2ExternalMetricStatus returns new OptIoK8sAPIAutoscalingV2beta2ExternalMetricStatus with value set to v.
 func NewOptIoK8sAPIAutoscalingV2beta2ExternalMetricStatus(v IoK8sAPIAutoscalingV2beta2ExternalMetricStatus) OptIoK8sAPIAutoscalingV2beta2ExternalMetricStatus {
 	return OptIoK8sAPIAutoscalingV2beta2ExternalMetricStatus{
@@ -7339,6 +7651,14 @@ func (o OptIoK8sAPIAutoscalingV2beta2ExternalMetricStatus) Get() (v IoK8sAPIAuto
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIAutoscalingV2beta2ExternalMetricStatus) Or(d IoK8sAPIAutoscalingV2beta2ExternalMetricStatus) IoK8sAPIAutoscalingV2beta2ExternalMetricStatus {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPIAutoscalingV2beta2HPAScalingRules returns new OptIoK8sAPIAutoscalingV2beta2HPAScalingRules with value set to v.
@@ -7379,6 +7699,14 @@ func (o OptIoK8sAPIAutoscalingV2beta2HPAScalingRules) Get() (v IoK8sAPIAutoscali
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIAutoscalingV2beta2HPAScalingRules) Or(d IoK8sAPIAutoscalingV2beta2HPAScalingRules) IoK8sAPIAutoscalingV2beta2HPAScalingRules {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior returns new OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior with value set to v.
 func NewOptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior(v IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior) OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior {
 	return OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior{
@@ -7415,6 +7743,14 @@ func (o OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior) Get() (v I
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior) Or(d IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior) IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec returns new OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec with value set to v.
@@ -7455,6 +7791,14 @@ func (o OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) Get() (v IoK8s
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) Or(d IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus returns new OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus with value set to v.
 func NewOptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus(v IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus {
 	return OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus{
@@ -7491,6 +7835,14 @@ func (o OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) Get() (v IoK
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) Or(d IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPIAutoscalingV2beta2ObjectMetricSource returns new OptIoK8sAPIAutoscalingV2beta2ObjectMetricSource with value set to v.
@@ -7531,6 +7883,14 @@ func (o OptIoK8sAPIAutoscalingV2beta2ObjectMetricSource) Get() (v IoK8sAPIAutosc
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIAutoscalingV2beta2ObjectMetricSource) Or(d IoK8sAPIAutoscalingV2beta2ObjectMetricSource) IoK8sAPIAutoscalingV2beta2ObjectMetricSource {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPIAutoscalingV2beta2ObjectMetricStatus returns new OptIoK8sAPIAutoscalingV2beta2ObjectMetricStatus with value set to v.
 func NewOptIoK8sAPIAutoscalingV2beta2ObjectMetricStatus(v IoK8sAPIAutoscalingV2beta2ObjectMetricStatus) OptIoK8sAPIAutoscalingV2beta2ObjectMetricStatus {
 	return OptIoK8sAPIAutoscalingV2beta2ObjectMetricStatus{
@@ -7567,6 +7927,14 @@ func (o OptIoK8sAPIAutoscalingV2beta2ObjectMetricStatus) Get() (v IoK8sAPIAutosc
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIAutoscalingV2beta2ObjectMetricStatus) Or(d IoK8sAPIAutoscalingV2beta2ObjectMetricStatus) IoK8sAPIAutoscalingV2beta2ObjectMetricStatus {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPIAutoscalingV2beta2PodsMetricSource returns new OptIoK8sAPIAutoscalingV2beta2PodsMetricSource with value set to v.
@@ -7607,6 +7975,14 @@ func (o OptIoK8sAPIAutoscalingV2beta2PodsMetricSource) Get() (v IoK8sAPIAutoscal
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIAutoscalingV2beta2PodsMetricSource) Or(d IoK8sAPIAutoscalingV2beta2PodsMetricSource) IoK8sAPIAutoscalingV2beta2PodsMetricSource {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPIAutoscalingV2beta2PodsMetricStatus returns new OptIoK8sAPIAutoscalingV2beta2PodsMetricStatus with value set to v.
 func NewOptIoK8sAPIAutoscalingV2beta2PodsMetricStatus(v IoK8sAPIAutoscalingV2beta2PodsMetricStatus) OptIoK8sAPIAutoscalingV2beta2PodsMetricStatus {
 	return OptIoK8sAPIAutoscalingV2beta2PodsMetricStatus{
@@ -7643,6 +8019,14 @@ func (o OptIoK8sAPIAutoscalingV2beta2PodsMetricStatus) Get() (v IoK8sAPIAutoscal
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIAutoscalingV2beta2PodsMetricStatus) Or(d IoK8sAPIAutoscalingV2beta2PodsMetricStatus) IoK8sAPIAutoscalingV2beta2PodsMetricStatus {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPIAutoscalingV2beta2ResourceMetricSource returns new OptIoK8sAPIAutoscalingV2beta2ResourceMetricSource with value set to v.
@@ -7683,6 +8067,14 @@ func (o OptIoK8sAPIAutoscalingV2beta2ResourceMetricSource) Get() (v IoK8sAPIAuto
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIAutoscalingV2beta2ResourceMetricSource) Or(d IoK8sAPIAutoscalingV2beta2ResourceMetricSource) IoK8sAPIAutoscalingV2beta2ResourceMetricSource {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPIAutoscalingV2beta2ResourceMetricStatus returns new OptIoK8sAPIAutoscalingV2beta2ResourceMetricStatus with value set to v.
 func NewOptIoK8sAPIAutoscalingV2beta2ResourceMetricStatus(v IoK8sAPIAutoscalingV2beta2ResourceMetricStatus) OptIoK8sAPIAutoscalingV2beta2ResourceMetricStatus {
 	return OptIoK8sAPIAutoscalingV2beta2ResourceMetricStatus{
@@ -7719,6 +8111,14 @@ func (o OptIoK8sAPIAutoscalingV2beta2ResourceMetricStatus) Get() (v IoK8sAPIAuto
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIAutoscalingV2beta2ResourceMetricStatus) Or(d IoK8sAPIAutoscalingV2beta2ResourceMetricStatus) IoK8sAPIAutoscalingV2beta2ResourceMetricStatus {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPIBatchV1CronJobSpec returns new OptIoK8sAPIBatchV1CronJobSpec with value set to v.
@@ -7759,6 +8159,14 @@ func (o OptIoK8sAPIBatchV1CronJobSpec) Get() (v IoK8sAPIBatchV1CronJobSpec, ok b
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIBatchV1CronJobSpec) Or(d IoK8sAPIBatchV1CronJobSpec) IoK8sAPIBatchV1CronJobSpec {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPIBatchV1CronJobStatus returns new OptIoK8sAPIBatchV1CronJobStatus with value set to v.
 func NewOptIoK8sAPIBatchV1CronJobStatus(v IoK8sAPIBatchV1CronJobStatus) OptIoK8sAPIBatchV1CronJobStatus {
 	return OptIoK8sAPIBatchV1CronJobStatus{
@@ -7795,6 +8203,14 @@ func (o OptIoK8sAPIBatchV1CronJobStatus) Get() (v IoK8sAPIBatchV1CronJobStatus, 
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIBatchV1CronJobStatus) Or(d IoK8sAPIBatchV1CronJobStatus) IoK8sAPIBatchV1CronJobStatus {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPIBatchV1JobSpec returns new OptIoK8sAPIBatchV1JobSpec with value set to v.
@@ -7835,6 +8251,14 @@ func (o OptIoK8sAPIBatchV1JobSpec) Get() (v IoK8sAPIBatchV1JobSpec, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIBatchV1JobSpec) Or(d IoK8sAPIBatchV1JobSpec) IoK8sAPIBatchV1JobSpec {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPIBatchV1JobStatus returns new OptIoK8sAPIBatchV1JobStatus with value set to v.
 func NewOptIoK8sAPIBatchV1JobStatus(v IoK8sAPIBatchV1JobStatus) OptIoK8sAPIBatchV1JobStatus {
 	return OptIoK8sAPIBatchV1JobStatus{
@@ -7871,6 +8295,14 @@ func (o OptIoK8sAPIBatchV1JobStatus) Get() (v IoK8sAPIBatchV1JobStatus, ok bool)
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIBatchV1JobStatus) Or(d IoK8sAPIBatchV1JobStatus) IoK8sAPIBatchV1JobStatus {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPIBatchV1UncountedTerminatedPods returns new OptIoK8sAPIBatchV1UncountedTerminatedPods with value set to v.
@@ -7911,6 +8343,14 @@ func (o OptIoK8sAPIBatchV1UncountedTerminatedPods) Get() (v IoK8sAPIBatchV1Uncou
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIBatchV1UncountedTerminatedPods) Or(d IoK8sAPIBatchV1UncountedTerminatedPods) IoK8sAPIBatchV1UncountedTerminatedPods {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPIBatchV1beta1CronJobSpec returns new OptIoK8sAPIBatchV1beta1CronJobSpec with value set to v.
 func NewOptIoK8sAPIBatchV1beta1CronJobSpec(v IoK8sAPIBatchV1beta1CronJobSpec) OptIoK8sAPIBatchV1beta1CronJobSpec {
 	return OptIoK8sAPIBatchV1beta1CronJobSpec{
@@ -7947,6 +8387,14 @@ func (o OptIoK8sAPIBatchV1beta1CronJobSpec) Get() (v IoK8sAPIBatchV1beta1CronJob
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIBatchV1beta1CronJobSpec) Or(d IoK8sAPIBatchV1beta1CronJobSpec) IoK8sAPIBatchV1beta1CronJobSpec {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPIBatchV1beta1CronJobStatus returns new OptIoK8sAPIBatchV1beta1CronJobStatus with value set to v.
@@ -7987,6 +8435,14 @@ func (o OptIoK8sAPIBatchV1beta1CronJobStatus) Get() (v IoK8sAPIBatchV1beta1CronJ
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIBatchV1beta1CronJobStatus) Or(d IoK8sAPIBatchV1beta1CronJobStatus) IoK8sAPIBatchV1beta1CronJobStatus {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPICertificatesV1CertificateSigningRequestStatus returns new OptIoK8sAPICertificatesV1CertificateSigningRequestStatus with value set to v.
 func NewOptIoK8sAPICertificatesV1CertificateSigningRequestStatus(v IoK8sAPICertificatesV1CertificateSigningRequestStatus) OptIoK8sAPICertificatesV1CertificateSigningRequestStatus {
 	return OptIoK8sAPICertificatesV1CertificateSigningRequestStatus{
@@ -8023,6 +8479,14 @@ func (o OptIoK8sAPICertificatesV1CertificateSigningRequestStatus) Get() (v IoK8s
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICertificatesV1CertificateSigningRequestStatus) Or(d IoK8sAPICertificatesV1CertificateSigningRequestStatus) IoK8sAPICertificatesV1CertificateSigningRequestStatus {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPICoordinationV1LeaseSpec returns new OptIoK8sAPICoordinationV1LeaseSpec with value set to v.
@@ -8063,6 +8527,14 @@ func (o OptIoK8sAPICoordinationV1LeaseSpec) Get() (v IoK8sAPICoordinationV1Lease
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoordinationV1LeaseSpec) Or(d IoK8sAPICoordinationV1LeaseSpec) IoK8sAPICoordinationV1LeaseSpec {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPICoreV1AWSElasticBlockStoreVolumeSource returns new OptIoK8sAPICoreV1AWSElasticBlockStoreVolumeSource with value set to v.
 func NewOptIoK8sAPICoreV1AWSElasticBlockStoreVolumeSource(v IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) OptIoK8sAPICoreV1AWSElasticBlockStoreVolumeSource {
 	return OptIoK8sAPICoreV1AWSElasticBlockStoreVolumeSource{
@@ -8099,6 +8571,14 @@ func (o OptIoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) Get() (v IoK8sAPICore
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) Or(d IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPICoreV1Affinity returns new OptIoK8sAPICoreV1Affinity with value set to v.
@@ -8139,6 +8619,14 @@ func (o OptIoK8sAPICoreV1Affinity) Get() (v IoK8sAPICoreV1Affinity, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1Affinity) Or(d IoK8sAPICoreV1Affinity) IoK8sAPICoreV1Affinity {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPICoreV1AzureDiskVolumeSource returns new OptIoK8sAPICoreV1AzureDiskVolumeSource with value set to v.
 func NewOptIoK8sAPICoreV1AzureDiskVolumeSource(v IoK8sAPICoreV1AzureDiskVolumeSource) OptIoK8sAPICoreV1AzureDiskVolumeSource {
 	return OptIoK8sAPICoreV1AzureDiskVolumeSource{
@@ -8175,6 +8663,14 @@ func (o OptIoK8sAPICoreV1AzureDiskVolumeSource) Get() (v IoK8sAPICoreV1AzureDisk
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1AzureDiskVolumeSource) Or(d IoK8sAPICoreV1AzureDiskVolumeSource) IoK8sAPICoreV1AzureDiskVolumeSource {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPICoreV1AzureFilePersistentVolumeSource returns new OptIoK8sAPICoreV1AzureFilePersistentVolumeSource with value set to v.
@@ -8215,6 +8711,14 @@ func (o OptIoK8sAPICoreV1AzureFilePersistentVolumeSource) Get() (v IoK8sAPICoreV
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1AzureFilePersistentVolumeSource) Or(d IoK8sAPICoreV1AzureFilePersistentVolumeSource) IoK8sAPICoreV1AzureFilePersistentVolumeSource {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPICoreV1AzureFileVolumeSource returns new OptIoK8sAPICoreV1AzureFileVolumeSource with value set to v.
 func NewOptIoK8sAPICoreV1AzureFileVolumeSource(v IoK8sAPICoreV1AzureFileVolumeSource) OptIoK8sAPICoreV1AzureFileVolumeSource {
 	return OptIoK8sAPICoreV1AzureFileVolumeSource{
@@ -8251,6 +8755,14 @@ func (o OptIoK8sAPICoreV1AzureFileVolumeSource) Get() (v IoK8sAPICoreV1AzureFile
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1AzureFileVolumeSource) Or(d IoK8sAPICoreV1AzureFileVolumeSource) IoK8sAPICoreV1AzureFileVolumeSource {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPICoreV1CSIPersistentVolumeSource returns new OptIoK8sAPICoreV1CSIPersistentVolumeSource with value set to v.
@@ -8291,6 +8803,14 @@ func (o OptIoK8sAPICoreV1CSIPersistentVolumeSource) Get() (v IoK8sAPICoreV1CSIPe
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1CSIPersistentVolumeSource) Or(d IoK8sAPICoreV1CSIPersistentVolumeSource) IoK8sAPICoreV1CSIPersistentVolumeSource {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPICoreV1CSIVolumeSource returns new OptIoK8sAPICoreV1CSIVolumeSource with value set to v.
 func NewOptIoK8sAPICoreV1CSIVolumeSource(v IoK8sAPICoreV1CSIVolumeSource) OptIoK8sAPICoreV1CSIVolumeSource {
 	return OptIoK8sAPICoreV1CSIVolumeSource{
@@ -8327,6 +8847,14 @@ func (o OptIoK8sAPICoreV1CSIVolumeSource) Get() (v IoK8sAPICoreV1CSIVolumeSource
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1CSIVolumeSource) Or(d IoK8sAPICoreV1CSIVolumeSource) IoK8sAPICoreV1CSIVolumeSource {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPICoreV1Capabilities returns new OptIoK8sAPICoreV1Capabilities with value set to v.
@@ -8367,6 +8895,14 @@ func (o OptIoK8sAPICoreV1Capabilities) Get() (v IoK8sAPICoreV1Capabilities, ok b
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1Capabilities) Or(d IoK8sAPICoreV1Capabilities) IoK8sAPICoreV1Capabilities {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPICoreV1CephFSPersistentVolumeSource returns new OptIoK8sAPICoreV1CephFSPersistentVolumeSource with value set to v.
 func NewOptIoK8sAPICoreV1CephFSPersistentVolumeSource(v IoK8sAPICoreV1CephFSPersistentVolumeSource) OptIoK8sAPICoreV1CephFSPersistentVolumeSource {
 	return OptIoK8sAPICoreV1CephFSPersistentVolumeSource{
@@ -8403,6 +8939,14 @@ func (o OptIoK8sAPICoreV1CephFSPersistentVolumeSource) Get() (v IoK8sAPICoreV1Ce
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1CephFSPersistentVolumeSource) Or(d IoK8sAPICoreV1CephFSPersistentVolumeSource) IoK8sAPICoreV1CephFSPersistentVolumeSource {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPICoreV1CephFSVolumeSource returns new OptIoK8sAPICoreV1CephFSVolumeSource with value set to v.
@@ -8443,6 +8987,14 @@ func (o OptIoK8sAPICoreV1CephFSVolumeSource) Get() (v IoK8sAPICoreV1CephFSVolume
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1CephFSVolumeSource) Or(d IoK8sAPICoreV1CephFSVolumeSource) IoK8sAPICoreV1CephFSVolumeSource {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPICoreV1CinderPersistentVolumeSource returns new OptIoK8sAPICoreV1CinderPersistentVolumeSource with value set to v.
 func NewOptIoK8sAPICoreV1CinderPersistentVolumeSource(v IoK8sAPICoreV1CinderPersistentVolumeSource) OptIoK8sAPICoreV1CinderPersistentVolumeSource {
 	return OptIoK8sAPICoreV1CinderPersistentVolumeSource{
@@ -8479,6 +9031,14 @@ func (o OptIoK8sAPICoreV1CinderPersistentVolumeSource) Get() (v IoK8sAPICoreV1Ci
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1CinderPersistentVolumeSource) Or(d IoK8sAPICoreV1CinderPersistentVolumeSource) IoK8sAPICoreV1CinderPersistentVolumeSource {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPICoreV1CinderVolumeSource returns new OptIoK8sAPICoreV1CinderVolumeSource with value set to v.
@@ -8519,6 +9079,14 @@ func (o OptIoK8sAPICoreV1CinderVolumeSource) Get() (v IoK8sAPICoreV1CinderVolume
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1CinderVolumeSource) Or(d IoK8sAPICoreV1CinderVolumeSource) IoK8sAPICoreV1CinderVolumeSource {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPICoreV1ClientIPConfig returns new OptIoK8sAPICoreV1ClientIPConfig with value set to v.
 func NewOptIoK8sAPICoreV1ClientIPConfig(v IoK8sAPICoreV1ClientIPConfig) OptIoK8sAPICoreV1ClientIPConfig {
 	return OptIoK8sAPICoreV1ClientIPConfig{
@@ -8555,6 +9123,14 @@ func (o OptIoK8sAPICoreV1ClientIPConfig) Get() (v IoK8sAPICoreV1ClientIPConfig, 
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1ClientIPConfig) Or(d IoK8sAPICoreV1ClientIPConfig) IoK8sAPICoreV1ClientIPConfig {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPICoreV1ConfigMapEnvSource returns new OptIoK8sAPICoreV1ConfigMapEnvSource with value set to v.
@@ -8595,6 +9171,14 @@ func (o OptIoK8sAPICoreV1ConfigMapEnvSource) Get() (v IoK8sAPICoreV1ConfigMapEnv
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1ConfigMapEnvSource) Or(d IoK8sAPICoreV1ConfigMapEnvSource) IoK8sAPICoreV1ConfigMapEnvSource {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPICoreV1ConfigMapKeySelector returns new OptIoK8sAPICoreV1ConfigMapKeySelector with value set to v.
 func NewOptIoK8sAPICoreV1ConfigMapKeySelector(v IoK8sAPICoreV1ConfigMapKeySelector) OptIoK8sAPICoreV1ConfigMapKeySelector {
 	return OptIoK8sAPICoreV1ConfigMapKeySelector{
@@ -8631,6 +9215,14 @@ func (o OptIoK8sAPICoreV1ConfigMapKeySelector) Get() (v IoK8sAPICoreV1ConfigMapK
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1ConfigMapKeySelector) Or(d IoK8sAPICoreV1ConfigMapKeySelector) IoK8sAPICoreV1ConfigMapKeySelector {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPICoreV1ConfigMapNodeConfigSource returns new OptIoK8sAPICoreV1ConfigMapNodeConfigSource with value set to v.
@@ -8671,6 +9263,14 @@ func (o OptIoK8sAPICoreV1ConfigMapNodeConfigSource) Get() (v IoK8sAPICoreV1Confi
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1ConfigMapNodeConfigSource) Or(d IoK8sAPICoreV1ConfigMapNodeConfigSource) IoK8sAPICoreV1ConfigMapNodeConfigSource {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPICoreV1ConfigMapProjection returns new OptIoK8sAPICoreV1ConfigMapProjection with value set to v.
 func NewOptIoK8sAPICoreV1ConfigMapProjection(v IoK8sAPICoreV1ConfigMapProjection) OptIoK8sAPICoreV1ConfigMapProjection {
 	return OptIoK8sAPICoreV1ConfigMapProjection{
@@ -8707,6 +9307,14 @@ func (o OptIoK8sAPICoreV1ConfigMapProjection) Get() (v IoK8sAPICoreV1ConfigMapPr
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1ConfigMapProjection) Or(d IoK8sAPICoreV1ConfigMapProjection) IoK8sAPICoreV1ConfigMapProjection {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPICoreV1ConfigMapVolumeSource returns new OptIoK8sAPICoreV1ConfigMapVolumeSource with value set to v.
@@ -8747,6 +9355,14 @@ func (o OptIoK8sAPICoreV1ConfigMapVolumeSource) Get() (v IoK8sAPICoreV1ConfigMap
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1ConfigMapVolumeSource) Or(d IoK8sAPICoreV1ConfigMapVolumeSource) IoK8sAPICoreV1ConfigMapVolumeSource {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPICoreV1ContainerState returns new OptIoK8sAPICoreV1ContainerState with value set to v.
 func NewOptIoK8sAPICoreV1ContainerState(v IoK8sAPICoreV1ContainerState) OptIoK8sAPICoreV1ContainerState {
 	return OptIoK8sAPICoreV1ContainerState{
@@ -8783,6 +9399,14 @@ func (o OptIoK8sAPICoreV1ContainerState) Get() (v IoK8sAPICoreV1ContainerState, 
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1ContainerState) Or(d IoK8sAPICoreV1ContainerState) IoK8sAPICoreV1ContainerState {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPICoreV1ContainerStateRunning returns new OptIoK8sAPICoreV1ContainerStateRunning with value set to v.
@@ -8823,6 +9447,14 @@ func (o OptIoK8sAPICoreV1ContainerStateRunning) Get() (v IoK8sAPICoreV1Container
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1ContainerStateRunning) Or(d IoK8sAPICoreV1ContainerStateRunning) IoK8sAPICoreV1ContainerStateRunning {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPICoreV1ContainerStateTerminated returns new OptIoK8sAPICoreV1ContainerStateTerminated with value set to v.
 func NewOptIoK8sAPICoreV1ContainerStateTerminated(v IoK8sAPICoreV1ContainerStateTerminated) OptIoK8sAPICoreV1ContainerStateTerminated {
 	return OptIoK8sAPICoreV1ContainerStateTerminated{
@@ -8859,6 +9491,14 @@ func (o OptIoK8sAPICoreV1ContainerStateTerminated) Get() (v IoK8sAPICoreV1Contai
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1ContainerStateTerminated) Or(d IoK8sAPICoreV1ContainerStateTerminated) IoK8sAPICoreV1ContainerStateTerminated {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPICoreV1ContainerStateWaiting returns new OptIoK8sAPICoreV1ContainerStateWaiting with value set to v.
@@ -8899,6 +9539,14 @@ func (o OptIoK8sAPICoreV1ContainerStateWaiting) Get() (v IoK8sAPICoreV1Container
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1ContainerStateWaiting) Or(d IoK8sAPICoreV1ContainerStateWaiting) IoK8sAPICoreV1ContainerStateWaiting {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPICoreV1DaemonEndpoint returns new OptIoK8sAPICoreV1DaemonEndpoint with value set to v.
 func NewOptIoK8sAPICoreV1DaemonEndpoint(v IoK8sAPICoreV1DaemonEndpoint) OptIoK8sAPICoreV1DaemonEndpoint {
 	return OptIoK8sAPICoreV1DaemonEndpoint{
@@ -8935,6 +9583,14 @@ func (o OptIoK8sAPICoreV1DaemonEndpoint) Get() (v IoK8sAPICoreV1DaemonEndpoint, 
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1DaemonEndpoint) Or(d IoK8sAPICoreV1DaemonEndpoint) IoK8sAPICoreV1DaemonEndpoint {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPICoreV1DownwardAPIProjection returns new OptIoK8sAPICoreV1DownwardAPIProjection with value set to v.
@@ -8975,6 +9631,14 @@ func (o OptIoK8sAPICoreV1DownwardAPIProjection) Get() (v IoK8sAPICoreV1DownwardA
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1DownwardAPIProjection) Or(d IoK8sAPICoreV1DownwardAPIProjection) IoK8sAPICoreV1DownwardAPIProjection {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPICoreV1DownwardAPIVolumeSource returns new OptIoK8sAPICoreV1DownwardAPIVolumeSource with value set to v.
 func NewOptIoK8sAPICoreV1DownwardAPIVolumeSource(v IoK8sAPICoreV1DownwardAPIVolumeSource) OptIoK8sAPICoreV1DownwardAPIVolumeSource {
 	return OptIoK8sAPICoreV1DownwardAPIVolumeSource{
@@ -9011,6 +9675,14 @@ func (o OptIoK8sAPICoreV1DownwardAPIVolumeSource) Get() (v IoK8sAPICoreV1Downwar
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1DownwardAPIVolumeSource) Or(d IoK8sAPICoreV1DownwardAPIVolumeSource) IoK8sAPICoreV1DownwardAPIVolumeSource {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPICoreV1EmptyDirVolumeSource returns new OptIoK8sAPICoreV1EmptyDirVolumeSource with value set to v.
@@ -9051,6 +9723,14 @@ func (o OptIoK8sAPICoreV1EmptyDirVolumeSource) Get() (v IoK8sAPICoreV1EmptyDirVo
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1EmptyDirVolumeSource) Or(d IoK8sAPICoreV1EmptyDirVolumeSource) IoK8sAPICoreV1EmptyDirVolumeSource {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPICoreV1EnvVarSource returns new OptIoK8sAPICoreV1EnvVarSource with value set to v.
 func NewOptIoK8sAPICoreV1EnvVarSource(v IoK8sAPICoreV1EnvVarSource) OptIoK8sAPICoreV1EnvVarSource {
 	return OptIoK8sAPICoreV1EnvVarSource{
@@ -9087,6 +9767,14 @@ func (o OptIoK8sAPICoreV1EnvVarSource) Get() (v IoK8sAPICoreV1EnvVarSource, ok b
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1EnvVarSource) Or(d IoK8sAPICoreV1EnvVarSource) IoK8sAPICoreV1EnvVarSource {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPICoreV1EphemeralVolumeSource returns new OptIoK8sAPICoreV1EphemeralVolumeSource with value set to v.
@@ -9127,6 +9815,14 @@ func (o OptIoK8sAPICoreV1EphemeralVolumeSource) Get() (v IoK8sAPICoreV1Ephemeral
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1EphemeralVolumeSource) Or(d IoK8sAPICoreV1EphemeralVolumeSource) IoK8sAPICoreV1EphemeralVolumeSource {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPICoreV1EventSeries returns new OptIoK8sAPICoreV1EventSeries with value set to v.
 func NewOptIoK8sAPICoreV1EventSeries(v IoK8sAPICoreV1EventSeries) OptIoK8sAPICoreV1EventSeries {
 	return OptIoK8sAPICoreV1EventSeries{
@@ -9163,6 +9859,14 @@ func (o OptIoK8sAPICoreV1EventSeries) Get() (v IoK8sAPICoreV1EventSeries, ok boo
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1EventSeries) Or(d IoK8sAPICoreV1EventSeries) IoK8sAPICoreV1EventSeries {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPICoreV1EventSource returns new OptIoK8sAPICoreV1EventSource with value set to v.
@@ -9203,6 +9907,14 @@ func (o OptIoK8sAPICoreV1EventSource) Get() (v IoK8sAPICoreV1EventSource, ok boo
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1EventSource) Or(d IoK8sAPICoreV1EventSource) IoK8sAPICoreV1EventSource {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPICoreV1ExecAction returns new OptIoK8sAPICoreV1ExecAction with value set to v.
 func NewOptIoK8sAPICoreV1ExecAction(v IoK8sAPICoreV1ExecAction) OptIoK8sAPICoreV1ExecAction {
 	return OptIoK8sAPICoreV1ExecAction{
@@ -9239,6 +9951,14 @@ func (o OptIoK8sAPICoreV1ExecAction) Get() (v IoK8sAPICoreV1ExecAction, ok bool)
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1ExecAction) Or(d IoK8sAPICoreV1ExecAction) IoK8sAPICoreV1ExecAction {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPICoreV1FCVolumeSource returns new OptIoK8sAPICoreV1FCVolumeSource with value set to v.
@@ -9279,6 +9999,14 @@ func (o OptIoK8sAPICoreV1FCVolumeSource) Get() (v IoK8sAPICoreV1FCVolumeSource, 
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1FCVolumeSource) Or(d IoK8sAPICoreV1FCVolumeSource) IoK8sAPICoreV1FCVolumeSource {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPICoreV1FlexPersistentVolumeSource returns new OptIoK8sAPICoreV1FlexPersistentVolumeSource with value set to v.
 func NewOptIoK8sAPICoreV1FlexPersistentVolumeSource(v IoK8sAPICoreV1FlexPersistentVolumeSource) OptIoK8sAPICoreV1FlexPersistentVolumeSource {
 	return OptIoK8sAPICoreV1FlexPersistentVolumeSource{
@@ -9315,6 +10043,14 @@ func (o OptIoK8sAPICoreV1FlexPersistentVolumeSource) Get() (v IoK8sAPICoreV1Flex
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1FlexPersistentVolumeSource) Or(d IoK8sAPICoreV1FlexPersistentVolumeSource) IoK8sAPICoreV1FlexPersistentVolumeSource {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPICoreV1FlexVolumeSource returns new OptIoK8sAPICoreV1FlexVolumeSource with value set to v.
@@ -9355,6 +10091,14 @@ func (o OptIoK8sAPICoreV1FlexVolumeSource) Get() (v IoK8sAPICoreV1FlexVolumeSour
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1FlexVolumeSource) Or(d IoK8sAPICoreV1FlexVolumeSource) IoK8sAPICoreV1FlexVolumeSource {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPICoreV1FlockerVolumeSource returns new OptIoK8sAPICoreV1FlockerVolumeSource with value set to v.
 func NewOptIoK8sAPICoreV1FlockerVolumeSource(v IoK8sAPICoreV1FlockerVolumeSource) OptIoK8sAPICoreV1FlockerVolumeSource {
 	return OptIoK8sAPICoreV1FlockerVolumeSource{
@@ -9391,6 +10135,14 @@ func (o OptIoK8sAPICoreV1FlockerVolumeSource) Get() (v IoK8sAPICoreV1FlockerVolu
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1FlockerVolumeSource) Or(d IoK8sAPICoreV1FlockerVolumeSource) IoK8sAPICoreV1FlockerVolumeSource {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPICoreV1GCEPersistentDiskVolumeSource returns new OptIoK8sAPICoreV1GCEPersistentDiskVolumeSource with value set to v.
@@ -9431,6 +10183,14 @@ func (o OptIoK8sAPICoreV1GCEPersistentDiskVolumeSource) Get() (v IoK8sAPICoreV1G
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1GCEPersistentDiskVolumeSource) Or(d IoK8sAPICoreV1GCEPersistentDiskVolumeSource) IoK8sAPICoreV1GCEPersistentDiskVolumeSource {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPICoreV1GitRepoVolumeSource returns new OptIoK8sAPICoreV1GitRepoVolumeSource with value set to v.
 func NewOptIoK8sAPICoreV1GitRepoVolumeSource(v IoK8sAPICoreV1GitRepoVolumeSource) OptIoK8sAPICoreV1GitRepoVolumeSource {
 	return OptIoK8sAPICoreV1GitRepoVolumeSource{
@@ -9467,6 +10227,14 @@ func (o OptIoK8sAPICoreV1GitRepoVolumeSource) Get() (v IoK8sAPICoreV1GitRepoVolu
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1GitRepoVolumeSource) Or(d IoK8sAPICoreV1GitRepoVolumeSource) IoK8sAPICoreV1GitRepoVolumeSource {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPICoreV1GlusterfsPersistentVolumeSource returns new OptIoK8sAPICoreV1GlusterfsPersistentVolumeSource with value set to v.
@@ -9507,6 +10275,14 @@ func (o OptIoK8sAPICoreV1GlusterfsPersistentVolumeSource) Get() (v IoK8sAPICoreV
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1GlusterfsPersistentVolumeSource) Or(d IoK8sAPICoreV1GlusterfsPersistentVolumeSource) IoK8sAPICoreV1GlusterfsPersistentVolumeSource {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPICoreV1GlusterfsVolumeSource returns new OptIoK8sAPICoreV1GlusterfsVolumeSource with value set to v.
 func NewOptIoK8sAPICoreV1GlusterfsVolumeSource(v IoK8sAPICoreV1GlusterfsVolumeSource) OptIoK8sAPICoreV1GlusterfsVolumeSource {
 	return OptIoK8sAPICoreV1GlusterfsVolumeSource{
@@ -9543,6 +10319,14 @@ func (o OptIoK8sAPICoreV1GlusterfsVolumeSource) Get() (v IoK8sAPICoreV1Glusterfs
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1GlusterfsVolumeSource) Or(d IoK8sAPICoreV1GlusterfsVolumeSource) IoK8sAPICoreV1GlusterfsVolumeSource {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPICoreV1HTTPGetAction returns new OptIoK8sAPICoreV1HTTPGetAction with value set to v.
@@ -9583,6 +10367,14 @@ func (o OptIoK8sAPICoreV1HTTPGetAction) Get() (v IoK8sAPICoreV1HTTPGetAction, ok
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1HTTPGetAction) Or(d IoK8sAPICoreV1HTTPGetAction) IoK8sAPICoreV1HTTPGetAction {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPICoreV1Handler returns new OptIoK8sAPICoreV1Handler with value set to v.
 func NewOptIoK8sAPICoreV1Handler(v IoK8sAPICoreV1Handler) OptIoK8sAPICoreV1Handler {
 	return OptIoK8sAPICoreV1Handler{
@@ -9619,6 +10411,14 @@ func (o OptIoK8sAPICoreV1Handler) Get() (v IoK8sAPICoreV1Handler, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1Handler) Or(d IoK8sAPICoreV1Handler) IoK8sAPICoreV1Handler {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPICoreV1HostPathVolumeSource returns new OptIoK8sAPICoreV1HostPathVolumeSource with value set to v.
@@ -9659,6 +10459,14 @@ func (o OptIoK8sAPICoreV1HostPathVolumeSource) Get() (v IoK8sAPICoreV1HostPathVo
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1HostPathVolumeSource) Or(d IoK8sAPICoreV1HostPathVolumeSource) IoK8sAPICoreV1HostPathVolumeSource {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPICoreV1ISCSIPersistentVolumeSource returns new OptIoK8sAPICoreV1ISCSIPersistentVolumeSource with value set to v.
 func NewOptIoK8sAPICoreV1ISCSIPersistentVolumeSource(v IoK8sAPICoreV1ISCSIPersistentVolumeSource) OptIoK8sAPICoreV1ISCSIPersistentVolumeSource {
 	return OptIoK8sAPICoreV1ISCSIPersistentVolumeSource{
@@ -9695,6 +10503,14 @@ func (o OptIoK8sAPICoreV1ISCSIPersistentVolumeSource) Get() (v IoK8sAPICoreV1ISC
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1ISCSIPersistentVolumeSource) Or(d IoK8sAPICoreV1ISCSIPersistentVolumeSource) IoK8sAPICoreV1ISCSIPersistentVolumeSource {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPICoreV1ISCSIVolumeSource returns new OptIoK8sAPICoreV1ISCSIVolumeSource with value set to v.
@@ -9735,6 +10551,14 @@ func (o OptIoK8sAPICoreV1ISCSIVolumeSource) Get() (v IoK8sAPICoreV1ISCSIVolumeSo
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1ISCSIVolumeSource) Or(d IoK8sAPICoreV1ISCSIVolumeSource) IoK8sAPICoreV1ISCSIVolumeSource {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPICoreV1Lifecycle returns new OptIoK8sAPICoreV1Lifecycle with value set to v.
 func NewOptIoK8sAPICoreV1Lifecycle(v IoK8sAPICoreV1Lifecycle) OptIoK8sAPICoreV1Lifecycle {
 	return OptIoK8sAPICoreV1Lifecycle{
@@ -9771,6 +10595,14 @@ func (o OptIoK8sAPICoreV1Lifecycle) Get() (v IoK8sAPICoreV1Lifecycle, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1Lifecycle) Or(d IoK8sAPICoreV1Lifecycle) IoK8sAPICoreV1Lifecycle {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPICoreV1LimitRangeSpec returns new OptIoK8sAPICoreV1LimitRangeSpec with value set to v.
@@ -9811,6 +10643,14 @@ func (o OptIoK8sAPICoreV1LimitRangeSpec) Get() (v IoK8sAPICoreV1LimitRangeSpec, 
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1LimitRangeSpec) Or(d IoK8sAPICoreV1LimitRangeSpec) IoK8sAPICoreV1LimitRangeSpec {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPICoreV1LoadBalancerStatus returns new OptIoK8sAPICoreV1LoadBalancerStatus with value set to v.
 func NewOptIoK8sAPICoreV1LoadBalancerStatus(v IoK8sAPICoreV1LoadBalancerStatus) OptIoK8sAPICoreV1LoadBalancerStatus {
 	return OptIoK8sAPICoreV1LoadBalancerStatus{
@@ -9847,6 +10687,14 @@ func (o OptIoK8sAPICoreV1LoadBalancerStatus) Get() (v IoK8sAPICoreV1LoadBalancer
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1LoadBalancerStatus) Or(d IoK8sAPICoreV1LoadBalancerStatus) IoK8sAPICoreV1LoadBalancerStatus {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPICoreV1LocalObjectReference returns new OptIoK8sAPICoreV1LocalObjectReference with value set to v.
@@ -9887,6 +10735,14 @@ func (o OptIoK8sAPICoreV1LocalObjectReference) Get() (v IoK8sAPICoreV1LocalObjec
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1LocalObjectReference) Or(d IoK8sAPICoreV1LocalObjectReference) IoK8sAPICoreV1LocalObjectReference {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPICoreV1LocalVolumeSource returns new OptIoK8sAPICoreV1LocalVolumeSource with value set to v.
 func NewOptIoK8sAPICoreV1LocalVolumeSource(v IoK8sAPICoreV1LocalVolumeSource) OptIoK8sAPICoreV1LocalVolumeSource {
 	return OptIoK8sAPICoreV1LocalVolumeSource{
@@ -9923,6 +10779,14 @@ func (o OptIoK8sAPICoreV1LocalVolumeSource) Get() (v IoK8sAPICoreV1LocalVolumeSo
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1LocalVolumeSource) Or(d IoK8sAPICoreV1LocalVolumeSource) IoK8sAPICoreV1LocalVolumeSource {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPICoreV1NFSVolumeSource returns new OptIoK8sAPICoreV1NFSVolumeSource with value set to v.
@@ -9963,6 +10827,14 @@ func (o OptIoK8sAPICoreV1NFSVolumeSource) Get() (v IoK8sAPICoreV1NFSVolumeSource
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1NFSVolumeSource) Or(d IoK8sAPICoreV1NFSVolumeSource) IoK8sAPICoreV1NFSVolumeSource {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPICoreV1NamespaceSpec returns new OptIoK8sAPICoreV1NamespaceSpec with value set to v.
 func NewOptIoK8sAPICoreV1NamespaceSpec(v IoK8sAPICoreV1NamespaceSpec) OptIoK8sAPICoreV1NamespaceSpec {
 	return OptIoK8sAPICoreV1NamespaceSpec{
@@ -9999,6 +10871,14 @@ func (o OptIoK8sAPICoreV1NamespaceSpec) Get() (v IoK8sAPICoreV1NamespaceSpec, ok
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1NamespaceSpec) Or(d IoK8sAPICoreV1NamespaceSpec) IoK8sAPICoreV1NamespaceSpec {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPICoreV1NamespaceStatus returns new OptIoK8sAPICoreV1NamespaceStatus with value set to v.
@@ -10039,6 +10919,14 @@ func (o OptIoK8sAPICoreV1NamespaceStatus) Get() (v IoK8sAPICoreV1NamespaceStatus
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1NamespaceStatus) Or(d IoK8sAPICoreV1NamespaceStatus) IoK8sAPICoreV1NamespaceStatus {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPICoreV1NodeAffinity returns new OptIoK8sAPICoreV1NodeAffinity with value set to v.
 func NewOptIoK8sAPICoreV1NodeAffinity(v IoK8sAPICoreV1NodeAffinity) OptIoK8sAPICoreV1NodeAffinity {
 	return OptIoK8sAPICoreV1NodeAffinity{
@@ -10075,6 +10963,14 @@ func (o OptIoK8sAPICoreV1NodeAffinity) Get() (v IoK8sAPICoreV1NodeAffinity, ok b
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1NodeAffinity) Or(d IoK8sAPICoreV1NodeAffinity) IoK8sAPICoreV1NodeAffinity {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPICoreV1NodeConfigSource returns new OptIoK8sAPICoreV1NodeConfigSource with value set to v.
@@ -10115,6 +11011,14 @@ func (o OptIoK8sAPICoreV1NodeConfigSource) Get() (v IoK8sAPICoreV1NodeConfigSour
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1NodeConfigSource) Or(d IoK8sAPICoreV1NodeConfigSource) IoK8sAPICoreV1NodeConfigSource {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPICoreV1NodeConfigStatus returns new OptIoK8sAPICoreV1NodeConfigStatus with value set to v.
 func NewOptIoK8sAPICoreV1NodeConfigStatus(v IoK8sAPICoreV1NodeConfigStatus) OptIoK8sAPICoreV1NodeConfigStatus {
 	return OptIoK8sAPICoreV1NodeConfigStatus{
@@ -10151,6 +11055,14 @@ func (o OptIoK8sAPICoreV1NodeConfigStatus) Get() (v IoK8sAPICoreV1NodeConfigStat
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1NodeConfigStatus) Or(d IoK8sAPICoreV1NodeConfigStatus) IoK8sAPICoreV1NodeConfigStatus {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPICoreV1NodeDaemonEndpoints returns new OptIoK8sAPICoreV1NodeDaemonEndpoints with value set to v.
@@ -10191,6 +11103,14 @@ func (o OptIoK8sAPICoreV1NodeDaemonEndpoints) Get() (v IoK8sAPICoreV1NodeDaemonE
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1NodeDaemonEndpoints) Or(d IoK8sAPICoreV1NodeDaemonEndpoints) IoK8sAPICoreV1NodeDaemonEndpoints {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPICoreV1NodeSelector returns new OptIoK8sAPICoreV1NodeSelector with value set to v.
 func NewOptIoK8sAPICoreV1NodeSelector(v IoK8sAPICoreV1NodeSelector) OptIoK8sAPICoreV1NodeSelector {
 	return OptIoK8sAPICoreV1NodeSelector{
@@ -10227,6 +11147,14 @@ func (o OptIoK8sAPICoreV1NodeSelector) Get() (v IoK8sAPICoreV1NodeSelector, ok b
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1NodeSelector) Or(d IoK8sAPICoreV1NodeSelector) IoK8sAPICoreV1NodeSelector {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPICoreV1NodeSpec returns new OptIoK8sAPICoreV1NodeSpec with value set to v.
@@ -10267,6 +11195,14 @@ func (o OptIoK8sAPICoreV1NodeSpec) Get() (v IoK8sAPICoreV1NodeSpec, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1NodeSpec) Or(d IoK8sAPICoreV1NodeSpec) IoK8sAPICoreV1NodeSpec {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPICoreV1NodeStatus returns new OptIoK8sAPICoreV1NodeStatus with value set to v.
 func NewOptIoK8sAPICoreV1NodeStatus(v IoK8sAPICoreV1NodeStatus) OptIoK8sAPICoreV1NodeStatus {
 	return OptIoK8sAPICoreV1NodeStatus{
@@ -10303,6 +11239,14 @@ func (o OptIoK8sAPICoreV1NodeStatus) Get() (v IoK8sAPICoreV1NodeStatus, ok bool)
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1NodeStatus) Or(d IoK8sAPICoreV1NodeStatus) IoK8sAPICoreV1NodeStatus {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPICoreV1NodeSystemInfo returns new OptIoK8sAPICoreV1NodeSystemInfo with value set to v.
@@ -10343,6 +11287,14 @@ func (o OptIoK8sAPICoreV1NodeSystemInfo) Get() (v IoK8sAPICoreV1NodeSystemInfo, 
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1NodeSystemInfo) Or(d IoK8sAPICoreV1NodeSystemInfo) IoK8sAPICoreV1NodeSystemInfo {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPICoreV1ObjectFieldSelector returns new OptIoK8sAPICoreV1ObjectFieldSelector with value set to v.
 func NewOptIoK8sAPICoreV1ObjectFieldSelector(v IoK8sAPICoreV1ObjectFieldSelector) OptIoK8sAPICoreV1ObjectFieldSelector {
 	return OptIoK8sAPICoreV1ObjectFieldSelector{
@@ -10379,6 +11331,14 @@ func (o OptIoK8sAPICoreV1ObjectFieldSelector) Get() (v IoK8sAPICoreV1ObjectField
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1ObjectFieldSelector) Or(d IoK8sAPICoreV1ObjectFieldSelector) IoK8sAPICoreV1ObjectFieldSelector {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPICoreV1ObjectReference returns new OptIoK8sAPICoreV1ObjectReference with value set to v.
@@ -10419,6 +11379,14 @@ func (o OptIoK8sAPICoreV1ObjectReference) Get() (v IoK8sAPICoreV1ObjectReference
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1ObjectReference) Or(d IoK8sAPICoreV1ObjectReference) IoK8sAPICoreV1ObjectReference {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPICoreV1PersistentVolumeClaimSpec returns new OptIoK8sAPICoreV1PersistentVolumeClaimSpec with value set to v.
 func NewOptIoK8sAPICoreV1PersistentVolumeClaimSpec(v IoK8sAPICoreV1PersistentVolumeClaimSpec) OptIoK8sAPICoreV1PersistentVolumeClaimSpec {
 	return OptIoK8sAPICoreV1PersistentVolumeClaimSpec{
@@ -10455,6 +11423,14 @@ func (o OptIoK8sAPICoreV1PersistentVolumeClaimSpec) Get() (v IoK8sAPICoreV1Persi
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1PersistentVolumeClaimSpec) Or(d IoK8sAPICoreV1PersistentVolumeClaimSpec) IoK8sAPICoreV1PersistentVolumeClaimSpec {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPICoreV1PersistentVolumeClaimStatus returns new OptIoK8sAPICoreV1PersistentVolumeClaimStatus with value set to v.
@@ -10495,6 +11471,14 @@ func (o OptIoK8sAPICoreV1PersistentVolumeClaimStatus) Get() (v IoK8sAPICoreV1Per
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1PersistentVolumeClaimStatus) Or(d IoK8sAPICoreV1PersistentVolumeClaimStatus) IoK8sAPICoreV1PersistentVolumeClaimStatus {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPICoreV1PersistentVolumeClaimTemplate returns new OptIoK8sAPICoreV1PersistentVolumeClaimTemplate with value set to v.
 func NewOptIoK8sAPICoreV1PersistentVolumeClaimTemplate(v IoK8sAPICoreV1PersistentVolumeClaimTemplate) OptIoK8sAPICoreV1PersistentVolumeClaimTemplate {
 	return OptIoK8sAPICoreV1PersistentVolumeClaimTemplate{
@@ -10531,6 +11515,14 @@ func (o OptIoK8sAPICoreV1PersistentVolumeClaimTemplate) Get() (v IoK8sAPICoreV1P
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1PersistentVolumeClaimTemplate) Or(d IoK8sAPICoreV1PersistentVolumeClaimTemplate) IoK8sAPICoreV1PersistentVolumeClaimTemplate {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPICoreV1PersistentVolumeClaimVolumeSource returns new OptIoK8sAPICoreV1PersistentVolumeClaimVolumeSource with value set to v.
@@ -10571,6 +11563,14 @@ func (o OptIoK8sAPICoreV1PersistentVolumeClaimVolumeSource) Get() (v IoK8sAPICor
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1PersistentVolumeClaimVolumeSource) Or(d IoK8sAPICoreV1PersistentVolumeClaimVolumeSource) IoK8sAPICoreV1PersistentVolumeClaimVolumeSource {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPICoreV1PersistentVolumeSpec returns new OptIoK8sAPICoreV1PersistentVolumeSpec with value set to v.
 func NewOptIoK8sAPICoreV1PersistentVolumeSpec(v IoK8sAPICoreV1PersistentVolumeSpec) OptIoK8sAPICoreV1PersistentVolumeSpec {
 	return OptIoK8sAPICoreV1PersistentVolumeSpec{
@@ -10607,6 +11607,14 @@ func (o OptIoK8sAPICoreV1PersistentVolumeSpec) Get() (v IoK8sAPICoreV1Persistent
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1PersistentVolumeSpec) Or(d IoK8sAPICoreV1PersistentVolumeSpec) IoK8sAPICoreV1PersistentVolumeSpec {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPICoreV1PersistentVolumeStatus returns new OptIoK8sAPICoreV1PersistentVolumeStatus with value set to v.
@@ -10647,6 +11655,14 @@ func (o OptIoK8sAPICoreV1PersistentVolumeStatus) Get() (v IoK8sAPICoreV1Persiste
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1PersistentVolumeStatus) Or(d IoK8sAPICoreV1PersistentVolumeStatus) IoK8sAPICoreV1PersistentVolumeStatus {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPICoreV1PhotonPersistentDiskVolumeSource returns new OptIoK8sAPICoreV1PhotonPersistentDiskVolumeSource with value set to v.
 func NewOptIoK8sAPICoreV1PhotonPersistentDiskVolumeSource(v IoK8sAPICoreV1PhotonPersistentDiskVolumeSource) OptIoK8sAPICoreV1PhotonPersistentDiskVolumeSource {
 	return OptIoK8sAPICoreV1PhotonPersistentDiskVolumeSource{
@@ -10683,6 +11699,14 @@ func (o OptIoK8sAPICoreV1PhotonPersistentDiskVolumeSource) Get() (v IoK8sAPICore
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1PhotonPersistentDiskVolumeSource) Or(d IoK8sAPICoreV1PhotonPersistentDiskVolumeSource) IoK8sAPICoreV1PhotonPersistentDiskVolumeSource {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPICoreV1PodAffinity returns new OptIoK8sAPICoreV1PodAffinity with value set to v.
@@ -10723,6 +11747,14 @@ func (o OptIoK8sAPICoreV1PodAffinity) Get() (v IoK8sAPICoreV1PodAffinity, ok boo
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1PodAffinity) Or(d IoK8sAPICoreV1PodAffinity) IoK8sAPICoreV1PodAffinity {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPICoreV1PodAntiAffinity returns new OptIoK8sAPICoreV1PodAntiAffinity with value set to v.
 func NewOptIoK8sAPICoreV1PodAntiAffinity(v IoK8sAPICoreV1PodAntiAffinity) OptIoK8sAPICoreV1PodAntiAffinity {
 	return OptIoK8sAPICoreV1PodAntiAffinity{
@@ -10759,6 +11791,14 @@ func (o OptIoK8sAPICoreV1PodAntiAffinity) Get() (v IoK8sAPICoreV1PodAntiAffinity
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1PodAntiAffinity) Or(d IoK8sAPICoreV1PodAntiAffinity) IoK8sAPICoreV1PodAntiAffinity {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPICoreV1PodDNSConfig returns new OptIoK8sAPICoreV1PodDNSConfig with value set to v.
@@ -10799,6 +11839,14 @@ func (o OptIoK8sAPICoreV1PodDNSConfig) Get() (v IoK8sAPICoreV1PodDNSConfig, ok b
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1PodDNSConfig) Or(d IoK8sAPICoreV1PodDNSConfig) IoK8sAPICoreV1PodDNSConfig {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPICoreV1PodSecurityContext returns new OptIoK8sAPICoreV1PodSecurityContext with value set to v.
 func NewOptIoK8sAPICoreV1PodSecurityContext(v IoK8sAPICoreV1PodSecurityContext) OptIoK8sAPICoreV1PodSecurityContext {
 	return OptIoK8sAPICoreV1PodSecurityContext{
@@ -10835,6 +11883,14 @@ func (o OptIoK8sAPICoreV1PodSecurityContext) Get() (v IoK8sAPICoreV1PodSecurityC
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1PodSecurityContext) Or(d IoK8sAPICoreV1PodSecurityContext) IoK8sAPICoreV1PodSecurityContext {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPICoreV1PodSpec returns new OptIoK8sAPICoreV1PodSpec with value set to v.
@@ -10875,6 +11931,14 @@ func (o OptIoK8sAPICoreV1PodSpec) Get() (v IoK8sAPICoreV1PodSpec, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1PodSpec) Or(d IoK8sAPICoreV1PodSpec) IoK8sAPICoreV1PodSpec {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPICoreV1PodStatus returns new OptIoK8sAPICoreV1PodStatus with value set to v.
 func NewOptIoK8sAPICoreV1PodStatus(v IoK8sAPICoreV1PodStatus) OptIoK8sAPICoreV1PodStatus {
 	return OptIoK8sAPICoreV1PodStatus{
@@ -10911,6 +11975,14 @@ func (o OptIoK8sAPICoreV1PodStatus) Get() (v IoK8sAPICoreV1PodStatus, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1PodStatus) Or(d IoK8sAPICoreV1PodStatus) IoK8sAPICoreV1PodStatus {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPICoreV1PodTemplateSpec returns new OptIoK8sAPICoreV1PodTemplateSpec with value set to v.
@@ -10951,6 +12023,14 @@ func (o OptIoK8sAPICoreV1PodTemplateSpec) Get() (v IoK8sAPICoreV1PodTemplateSpec
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1PodTemplateSpec) Or(d IoK8sAPICoreV1PodTemplateSpec) IoK8sAPICoreV1PodTemplateSpec {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPICoreV1PortworxVolumeSource returns new OptIoK8sAPICoreV1PortworxVolumeSource with value set to v.
 func NewOptIoK8sAPICoreV1PortworxVolumeSource(v IoK8sAPICoreV1PortworxVolumeSource) OptIoK8sAPICoreV1PortworxVolumeSource {
 	return OptIoK8sAPICoreV1PortworxVolumeSource{
@@ -10987,6 +12067,14 @@ func (o OptIoK8sAPICoreV1PortworxVolumeSource) Get() (v IoK8sAPICoreV1PortworxVo
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1PortworxVolumeSource) Or(d IoK8sAPICoreV1PortworxVolumeSource) IoK8sAPICoreV1PortworxVolumeSource {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPICoreV1Probe returns new OptIoK8sAPICoreV1Probe with value set to v.
@@ -11027,6 +12115,14 @@ func (o OptIoK8sAPICoreV1Probe) Get() (v IoK8sAPICoreV1Probe, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1Probe) Or(d IoK8sAPICoreV1Probe) IoK8sAPICoreV1Probe {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPICoreV1ProjectedVolumeSource returns new OptIoK8sAPICoreV1ProjectedVolumeSource with value set to v.
 func NewOptIoK8sAPICoreV1ProjectedVolumeSource(v IoK8sAPICoreV1ProjectedVolumeSource) OptIoK8sAPICoreV1ProjectedVolumeSource {
 	return OptIoK8sAPICoreV1ProjectedVolumeSource{
@@ -11063,6 +12159,14 @@ func (o OptIoK8sAPICoreV1ProjectedVolumeSource) Get() (v IoK8sAPICoreV1Projected
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1ProjectedVolumeSource) Or(d IoK8sAPICoreV1ProjectedVolumeSource) IoK8sAPICoreV1ProjectedVolumeSource {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPICoreV1QuobyteVolumeSource returns new OptIoK8sAPICoreV1QuobyteVolumeSource with value set to v.
@@ -11103,6 +12207,14 @@ func (o OptIoK8sAPICoreV1QuobyteVolumeSource) Get() (v IoK8sAPICoreV1QuobyteVolu
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1QuobyteVolumeSource) Or(d IoK8sAPICoreV1QuobyteVolumeSource) IoK8sAPICoreV1QuobyteVolumeSource {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPICoreV1RBDPersistentVolumeSource returns new OptIoK8sAPICoreV1RBDPersistentVolumeSource with value set to v.
 func NewOptIoK8sAPICoreV1RBDPersistentVolumeSource(v IoK8sAPICoreV1RBDPersistentVolumeSource) OptIoK8sAPICoreV1RBDPersistentVolumeSource {
 	return OptIoK8sAPICoreV1RBDPersistentVolumeSource{
@@ -11139,6 +12251,14 @@ func (o OptIoK8sAPICoreV1RBDPersistentVolumeSource) Get() (v IoK8sAPICoreV1RBDPe
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1RBDPersistentVolumeSource) Or(d IoK8sAPICoreV1RBDPersistentVolumeSource) IoK8sAPICoreV1RBDPersistentVolumeSource {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPICoreV1RBDVolumeSource returns new OptIoK8sAPICoreV1RBDVolumeSource with value set to v.
@@ -11179,6 +12299,14 @@ func (o OptIoK8sAPICoreV1RBDVolumeSource) Get() (v IoK8sAPICoreV1RBDVolumeSource
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1RBDVolumeSource) Or(d IoK8sAPICoreV1RBDVolumeSource) IoK8sAPICoreV1RBDVolumeSource {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPICoreV1ReplicationControllerSpec returns new OptIoK8sAPICoreV1ReplicationControllerSpec with value set to v.
 func NewOptIoK8sAPICoreV1ReplicationControllerSpec(v IoK8sAPICoreV1ReplicationControllerSpec) OptIoK8sAPICoreV1ReplicationControllerSpec {
 	return OptIoK8sAPICoreV1ReplicationControllerSpec{
@@ -11215,6 +12343,14 @@ func (o OptIoK8sAPICoreV1ReplicationControllerSpec) Get() (v IoK8sAPICoreV1Repli
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1ReplicationControllerSpec) Or(d IoK8sAPICoreV1ReplicationControllerSpec) IoK8sAPICoreV1ReplicationControllerSpec {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPICoreV1ReplicationControllerStatus returns new OptIoK8sAPICoreV1ReplicationControllerStatus with value set to v.
@@ -11255,6 +12391,14 @@ func (o OptIoK8sAPICoreV1ReplicationControllerStatus) Get() (v IoK8sAPICoreV1Rep
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1ReplicationControllerStatus) Or(d IoK8sAPICoreV1ReplicationControllerStatus) IoK8sAPICoreV1ReplicationControllerStatus {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPICoreV1ResourceFieldSelector returns new OptIoK8sAPICoreV1ResourceFieldSelector with value set to v.
 func NewOptIoK8sAPICoreV1ResourceFieldSelector(v IoK8sAPICoreV1ResourceFieldSelector) OptIoK8sAPICoreV1ResourceFieldSelector {
 	return OptIoK8sAPICoreV1ResourceFieldSelector{
@@ -11291,6 +12435,14 @@ func (o OptIoK8sAPICoreV1ResourceFieldSelector) Get() (v IoK8sAPICoreV1ResourceF
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1ResourceFieldSelector) Or(d IoK8sAPICoreV1ResourceFieldSelector) IoK8sAPICoreV1ResourceFieldSelector {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPICoreV1ResourceQuotaSpec returns new OptIoK8sAPICoreV1ResourceQuotaSpec with value set to v.
@@ -11331,6 +12483,14 @@ func (o OptIoK8sAPICoreV1ResourceQuotaSpec) Get() (v IoK8sAPICoreV1ResourceQuota
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1ResourceQuotaSpec) Or(d IoK8sAPICoreV1ResourceQuotaSpec) IoK8sAPICoreV1ResourceQuotaSpec {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPICoreV1ResourceQuotaStatus returns new OptIoK8sAPICoreV1ResourceQuotaStatus with value set to v.
 func NewOptIoK8sAPICoreV1ResourceQuotaStatus(v IoK8sAPICoreV1ResourceQuotaStatus) OptIoK8sAPICoreV1ResourceQuotaStatus {
 	return OptIoK8sAPICoreV1ResourceQuotaStatus{
@@ -11367,6 +12527,14 @@ func (o OptIoK8sAPICoreV1ResourceQuotaStatus) Get() (v IoK8sAPICoreV1ResourceQuo
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1ResourceQuotaStatus) Or(d IoK8sAPICoreV1ResourceQuotaStatus) IoK8sAPICoreV1ResourceQuotaStatus {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPICoreV1ResourceRequirements returns new OptIoK8sAPICoreV1ResourceRequirements with value set to v.
@@ -11407,6 +12575,14 @@ func (o OptIoK8sAPICoreV1ResourceRequirements) Get() (v IoK8sAPICoreV1ResourceRe
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1ResourceRequirements) Or(d IoK8sAPICoreV1ResourceRequirements) IoK8sAPICoreV1ResourceRequirements {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPICoreV1SELinuxOptions returns new OptIoK8sAPICoreV1SELinuxOptions with value set to v.
 func NewOptIoK8sAPICoreV1SELinuxOptions(v IoK8sAPICoreV1SELinuxOptions) OptIoK8sAPICoreV1SELinuxOptions {
 	return OptIoK8sAPICoreV1SELinuxOptions{
@@ -11443,6 +12619,14 @@ func (o OptIoK8sAPICoreV1SELinuxOptions) Get() (v IoK8sAPICoreV1SELinuxOptions, 
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1SELinuxOptions) Or(d IoK8sAPICoreV1SELinuxOptions) IoK8sAPICoreV1SELinuxOptions {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPICoreV1ScaleIOPersistentVolumeSource returns new OptIoK8sAPICoreV1ScaleIOPersistentVolumeSource with value set to v.
@@ -11483,6 +12667,14 @@ func (o OptIoK8sAPICoreV1ScaleIOPersistentVolumeSource) Get() (v IoK8sAPICoreV1S
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1ScaleIOPersistentVolumeSource) Or(d IoK8sAPICoreV1ScaleIOPersistentVolumeSource) IoK8sAPICoreV1ScaleIOPersistentVolumeSource {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPICoreV1ScaleIOVolumeSource returns new OptIoK8sAPICoreV1ScaleIOVolumeSource with value set to v.
 func NewOptIoK8sAPICoreV1ScaleIOVolumeSource(v IoK8sAPICoreV1ScaleIOVolumeSource) OptIoK8sAPICoreV1ScaleIOVolumeSource {
 	return OptIoK8sAPICoreV1ScaleIOVolumeSource{
@@ -11519,6 +12711,14 @@ func (o OptIoK8sAPICoreV1ScaleIOVolumeSource) Get() (v IoK8sAPICoreV1ScaleIOVolu
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1ScaleIOVolumeSource) Or(d IoK8sAPICoreV1ScaleIOVolumeSource) IoK8sAPICoreV1ScaleIOVolumeSource {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPICoreV1ScopeSelector returns new OptIoK8sAPICoreV1ScopeSelector with value set to v.
@@ -11559,6 +12759,14 @@ func (o OptIoK8sAPICoreV1ScopeSelector) Get() (v IoK8sAPICoreV1ScopeSelector, ok
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1ScopeSelector) Or(d IoK8sAPICoreV1ScopeSelector) IoK8sAPICoreV1ScopeSelector {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPICoreV1SeccompProfile returns new OptIoK8sAPICoreV1SeccompProfile with value set to v.
 func NewOptIoK8sAPICoreV1SeccompProfile(v IoK8sAPICoreV1SeccompProfile) OptIoK8sAPICoreV1SeccompProfile {
 	return OptIoK8sAPICoreV1SeccompProfile{
@@ -11595,6 +12803,14 @@ func (o OptIoK8sAPICoreV1SeccompProfile) Get() (v IoK8sAPICoreV1SeccompProfile, 
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1SeccompProfile) Or(d IoK8sAPICoreV1SeccompProfile) IoK8sAPICoreV1SeccompProfile {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPICoreV1SecretEnvSource returns new OptIoK8sAPICoreV1SecretEnvSource with value set to v.
@@ -11635,6 +12851,14 @@ func (o OptIoK8sAPICoreV1SecretEnvSource) Get() (v IoK8sAPICoreV1SecretEnvSource
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1SecretEnvSource) Or(d IoK8sAPICoreV1SecretEnvSource) IoK8sAPICoreV1SecretEnvSource {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPICoreV1SecretKeySelector returns new OptIoK8sAPICoreV1SecretKeySelector with value set to v.
 func NewOptIoK8sAPICoreV1SecretKeySelector(v IoK8sAPICoreV1SecretKeySelector) OptIoK8sAPICoreV1SecretKeySelector {
 	return OptIoK8sAPICoreV1SecretKeySelector{
@@ -11671,6 +12895,14 @@ func (o OptIoK8sAPICoreV1SecretKeySelector) Get() (v IoK8sAPICoreV1SecretKeySele
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1SecretKeySelector) Or(d IoK8sAPICoreV1SecretKeySelector) IoK8sAPICoreV1SecretKeySelector {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPICoreV1SecretProjection returns new OptIoK8sAPICoreV1SecretProjection with value set to v.
@@ -11711,6 +12943,14 @@ func (o OptIoK8sAPICoreV1SecretProjection) Get() (v IoK8sAPICoreV1SecretProjecti
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1SecretProjection) Or(d IoK8sAPICoreV1SecretProjection) IoK8sAPICoreV1SecretProjection {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPICoreV1SecretReference returns new OptIoK8sAPICoreV1SecretReference with value set to v.
 func NewOptIoK8sAPICoreV1SecretReference(v IoK8sAPICoreV1SecretReference) OptIoK8sAPICoreV1SecretReference {
 	return OptIoK8sAPICoreV1SecretReference{
@@ -11747,6 +12987,14 @@ func (o OptIoK8sAPICoreV1SecretReference) Get() (v IoK8sAPICoreV1SecretReference
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1SecretReference) Or(d IoK8sAPICoreV1SecretReference) IoK8sAPICoreV1SecretReference {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPICoreV1SecretVolumeSource returns new OptIoK8sAPICoreV1SecretVolumeSource with value set to v.
@@ -11787,6 +13035,14 @@ func (o OptIoK8sAPICoreV1SecretVolumeSource) Get() (v IoK8sAPICoreV1SecretVolume
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1SecretVolumeSource) Or(d IoK8sAPICoreV1SecretVolumeSource) IoK8sAPICoreV1SecretVolumeSource {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPICoreV1SecurityContext returns new OptIoK8sAPICoreV1SecurityContext with value set to v.
 func NewOptIoK8sAPICoreV1SecurityContext(v IoK8sAPICoreV1SecurityContext) OptIoK8sAPICoreV1SecurityContext {
 	return OptIoK8sAPICoreV1SecurityContext{
@@ -11823,6 +13079,14 @@ func (o OptIoK8sAPICoreV1SecurityContext) Get() (v IoK8sAPICoreV1SecurityContext
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1SecurityContext) Or(d IoK8sAPICoreV1SecurityContext) IoK8sAPICoreV1SecurityContext {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPICoreV1ServiceAccountTokenProjection returns new OptIoK8sAPICoreV1ServiceAccountTokenProjection with value set to v.
@@ -11863,6 +13127,14 @@ func (o OptIoK8sAPICoreV1ServiceAccountTokenProjection) Get() (v IoK8sAPICoreV1S
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1ServiceAccountTokenProjection) Or(d IoK8sAPICoreV1ServiceAccountTokenProjection) IoK8sAPICoreV1ServiceAccountTokenProjection {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPICoreV1ServiceSpec returns new OptIoK8sAPICoreV1ServiceSpec with value set to v.
 func NewOptIoK8sAPICoreV1ServiceSpec(v IoK8sAPICoreV1ServiceSpec) OptIoK8sAPICoreV1ServiceSpec {
 	return OptIoK8sAPICoreV1ServiceSpec{
@@ -11899,6 +13171,14 @@ func (o OptIoK8sAPICoreV1ServiceSpec) Get() (v IoK8sAPICoreV1ServiceSpec, ok boo
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1ServiceSpec) Or(d IoK8sAPICoreV1ServiceSpec) IoK8sAPICoreV1ServiceSpec {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPICoreV1ServiceStatus returns new OptIoK8sAPICoreV1ServiceStatus with value set to v.
@@ -11939,6 +13219,14 @@ func (o OptIoK8sAPICoreV1ServiceStatus) Get() (v IoK8sAPICoreV1ServiceStatus, ok
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1ServiceStatus) Or(d IoK8sAPICoreV1ServiceStatus) IoK8sAPICoreV1ServiceStatus {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPICoreV1SessionAffinityConfig returns new OptIoK8sAPICoreV1SessionAffinityConfig with value set to v.
 func NewOptIoK8sAPICoreV1SessionAffinityConfig(v IoK8sAPICoreV1SessionAffinityConfig) OptIoK8sAPICoreV1SessionAffinityConfig {
 	return OptIoK8sAPICoreV1SessionAffinityConfig{
@@ -11975,6 +13263,14 @@ func (o OptIoK8sAPICoreV1SessionAffinityConfig) Get() (v IoK8sAPICoreV1SessionAf
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1SessionAffinityConfig) Or(d IoK8sAPICoreV1SessionAffinityConfig) IoK8sAPICoreV1SessionAffinityConfig {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPICoreV1StorageOSPersistentVolumeSource returns new OptIoK8sAPICoreV1StorageOSPersistentVolumeSource with value set to v.
@@ -12015,6 +13311,14 @@ func (o OptIoK8sAPICoreV1StorageOSPersistentVolumeSource) Get() (v IoK8sAPICoreV
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1StorageOSPersistentVolumeSource) Or(d IoK8sAPICoreV1StorageOSPersistentVolumeSource) IoK8sAPICoreV1StorageOSPersistentVolumeSource {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPICoreV1StorageOSVolumeSource returns new OptIoK8sAPICoreV1StorageOSVolumeSource with value set to v.
 func NewOptIoK8sAPICoreV1StorageOSVolumeSource(v IoK8sAPICoreV1StorageOSVolumeSource) OptIoK8sAPICoreV1StorageOSVolumeSource {
 	return OptIoK8sAPICoreV1StorageOSVolumeSource{
@@ -12051,6 +13355,14 @@ func (o OptIoK8sAPICoreV1StorageOSVolumeSource) Get() (v IoK8sAPICoreV1StorageOS
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1StorageOSVolumeSource) Or(d IoK8sAPICoreV1StorageOSVolumeSource) IoK8sAPICoreV1StorageOSVolumeSource {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPICoreV1TCPSocketAction returns new OptIoK8sAPICoreV1TCPSocketAction with value set to v.
@@ -12091,6 +13403,14 @@ func (o OptIoK8sAPICoreV1TCPSocketAction) Get() (v IoK8sAPICoreV1TCPSocketAction
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1TCPSocketAction) Or(d IoK8sAPICoreV1TCPSocketAction) IoK8sAPICoreV1TCPSocketAction {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPICoreV1TypedLocalObjectReference returns new OptIoK8sAPICoreV1TypedLocalObjectReference with value set to v.
 func NewOptIoK8sAPICoreV1TypedLocalObjectReference(v IoK8sAPICoreV1TypedLocalObjectReference) OptIoK8sAPICoreV1TypedLocalObjectReference {
 	return OptIoK8sAPICoreV1TypedLocalObjectReference{
@@ -12127,6 +13447,14 @@ func (o OptIoK8sAPICoreV1TypedLocalObjectReference) Get() (v IoK8sAPICoreV1Typed
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1TypedLocalObjectReference) Or(d IoK8sAPICoreV1TypedLocalObjectReference) IoK8sAPICoreV1TypedLocalObjectReference {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPICoreV1VolumeNodeAffinity returns new OptIoK8sAPICoreV1VolumeNodeAffinity with value set to v.
@@ -12167,6 +13495,14 @@ func (o OptIoK8sAPICoreV1VolumeNodeAffinity) Get() (v IoK8sAPICoreV1VolumeNodeAf
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1VolumeNodeAffinity) Or(d IoK8sAPICoreV1VolumeNodeAffinity) IoK8sAPICoreV1VolumeNodeAffinity {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPICoreV1VsphereVirtualDiskVolumeSource returns new OptIoK8sAPICoreV1VsphereVirtualDiskVolumeSource with value set to v.
 func NewOptIoK8sAPICoreV1VsphereVirtualDiskVolumeSource(v IoK8sAPICoreV1VsphereVirtualDiskVolumeSource) OptIoK8sAPICoreV1VsphereVirtualDiskVolumeSource {
 	return OptIoK8sAPICoreV1VsphereVirtualDiskVolumeSource{
@@ -12203,6 +13539,14 @@ func (o OptIoK8sAPICoreV1VsphereVirtualDiskVolumeSource) Get() (v IoK8sAPICoreV1
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1VsphereVirtualDiskVolumeSource) Or(d IoK8sAPICoreV1VsphereVirtualDiskVolumeSource) IoK8sAPICoreV1VsphereVirtualDiskVolumeSource {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPICoreV1WindowsSecurityContextOptions returns new OptIoK8sAPICoreV1WindowsSecurityContextOptions with value set to v.
@@ -12243,6 +13587,14 @@ func (o OptIoK8sAPICoreV1WindowsSecurityContextOptions) Get() (v IoK8sAPICoreV1W
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1WindowsSecurityContextOptions) Or(d IoK8sAPICoreV1WindowsSecurityContextOptions) IoK8sAPICoreV1WindowsSecurityContextOptions {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPIDiscoveryV1EndpointConditions returns new OptIoK8sAPIDiscoveryV1EndpointConditions with value set to v.
 func NewOptIoK8sAPIDiscoveryV1EndpointConditions(v IoK8sAPIDiscoveryV1EndpointConditions) OptIoK8sAPIDiscoveryV1EndpointConditions {
 	return OptIoK8sAPIDiscoveryV1EndpointConditions{
@@ -12279,6 +13631,14 @@ func (o OptIoK8sAPIDiscoveryV1EndpointConditions) Get() (v IoK8sAPIDiscoveryV1En
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIDiscoveryV1EndpointConditions) Or(d IoK8sAPIDiscoveryV1EndpointConditions) IoK8sAPIDiscoveryV1EndpointConditions {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPIDiscoveryV1EndpointHints returns new OptIoK8sAPIDiscoveryV1EndpointHints with value set to v.
@@ -12319,6 +13679,14 @@ func (o OptIoK8sAPIDiscoveryV1EndpointHints) Get() (v IoK8sAPIDiscoveryV1Endpoin
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIDiscoveryV1EndpointHints) Or(d IoK8sAPIDiscoveryV1EndpointHints) IoK8sAPIDiscoveryV1EndpointHints {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPIDiscoveryV1beta1EndpointConditions returns new OptIoK8sAPIDiscoveryV1beta1EndpointConditions with value set to v.
 func NewOptIoK8sAPIDiscoveryV1beta1EndpointConditions(v IoK8sAPIDiscoveryV1beta1EndpointConditions) OptIoK8sAPIDiscoveryV1beta1EndpointConditions {
 	return OptIoK8sAPIDiscoveryV1beta1EndpointConditions{
@@ -12355,6 +13723,14 @@ func (o OptIoK8sAPIDiscoveryV1beta1EndpointConditions) Get() (v IoK8sAPIDiscover
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIDiscoveryV1beta1EndpointConditions) Or(d IoK8sAPIDiscoveryV1beta1EndpointConditions) IoK8sAPIDiscoveryV1beta1EndpointConditions {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPIDiscoveryV1beta1EndpointHints returns new OptIoK8sAPIDiscoveryV1beta1EndpointHints with value set to v.
@@ -12395,6 +13771,14 @@ func (o OptIoK8sAPIDiscoveryV1beta1EndpointHints) Get() (v IoK8sAPIDiscoveryV1be
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIDiscoveryV1beta1EndpointHints) Or(d IoK8sAPIDiscoveryV1beta1EndpointHints) IoK8sAPIDiscoveryV1beta1EndpointHints {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPIEventsV1EventSeries returns new OptIoK8sAPIEventsV1EventSeries with value set to v.
 func NewOptIoK8sAPIEventsV1EventSeries(v IoK8sAPIEventsV1EventSeries) OptIoK8sAPIEventsV1EventSeries {
 	return OptIoK8sAPIEventsV1EventSeries{
@@ -12431,6 +13815,14 @@ func (o OptIoK8sAPIEventsV1EventSeries) Get() (v IoK8sAPIEventsV1EventSeries, ok
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIEventsV1EventSeries) Or(d IoK8sAPIEventsV1EventSeries) IoK8sAPIEventsV1EventSeries {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPIEventsV1beta1EventSeries returns new OptIoK8sAPIEventsV1beta1EventSeries with value set to v.
@@ -12471,6 +13863,14 @@ func (o OptIoK8sAPIEventsV1beta1EventSeries) Get() (v IoK8sAPIEventsV1beta1Event
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIEventsV1beta1EventSeries) Or(d IoK8sAPIEventsV1beta1EventSeries) IoK8sAPIEventsV1beta1EventSeries {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod returns new OptIoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod with value set to v.
 func NewOptIoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod(v IoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod) OptIoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod {
 	return OptIoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod{
@@ -12507,6 +13907,14 @@ func (o OptIoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod) Get() (v IoK8sAPIF
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod) Or(d IoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod) IoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPIFlowcontrolV1beta1FlowSchemaSpec returns new OptIoK8sAPIFlowcontrolV1beta1FlowSchemaSpec with value set to v.
@@ -12547,6 +13955,14 @@ func (o OptIoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) Get() (v IoK8sAPIFlowcontro
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) Or(d IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPIFlowcontrolV1beta1FlowSchemaStatus returns new OptIoK8sAPIFlowcontrolV1beta1FlowSchemaStatus with value set to v.
 func NewOptIoK8sAPIFlowcontrolV1beta1FlowSchemaStatus(v IoK8sAPIFlowcontrolV1beta1FlowSchemaStatus) OptIoK8sAPIFlowcontrolV1beta1FlowSchemaStatus {
 	return OptIoK8sAPIFlowcontrolV1beta1FlowSchemaStatus{
@@ -12583,6 +13999,14 @@ func (o OptIoK8sAPIFlowcontrolV1beta1FlowSchemaStatus) Get() (v IoK8sAPIFlowcont
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIFlowcontrolV1beta1FlowSchemaStatus) Or(d IoK8sAPIFlowcontrolV1beta1FlowSchemaStatus) IoK8sAPIFlowcontrolV1beta1FlowSchemaStatus {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPIFlowcontrolV1beta1GroupSubject returns new OptIoK8sAPIFlowcontrolV1beta1GroupSubject with value set to v.
@@ -12623,6 +14047,14 @@ func (o OptIoK8sAPIFlowcontrolV1beta1GroupSubject) Get() (v IoK8sAPIFlowcontrolV
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIFlowcontrolV1beta1GroupSubject) Or(d IoK8sAPIFlowcontrolV1beta1GroupSubject) IoK8sAPIFlowcontrolV1beta1GroupSubject {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPIFlowcontrolV1beta1LimitResponse returns new OptIoK8sAPIFlowcontrolV1beta1LimitResponse with value set to v.
 func NewOptIoK8sAPIFlowcontrolV1beta1LimitResponse(v IoK8sAPIFlowcontrolV1beta1LimitResponse) OptIoK8sAPIFlowcontrolV1beta1LimitResponse {
 	return OptIoK8sAPIFlowcontrolV1beta1LimitResponse{
@@ -12659,6 +14091,14 @@ func (o OptIoK8sAPIFlowcontrolV1beta1LimitResponse) Get() (v IoK8sAPIFlowcontrol
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIFlowcontrolV1beta1LimitResponse) Or(d IoK8sAPIFlowcontrolV1beta1LimitResponse) IoK8sAPIFlowcontrolV1beta1LimitResponse {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration returns new OptIoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration with value set to v.
@@ -12699,6 +14139,14 @@ func (o OptIoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration) Get() (v
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration) Or(d IoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration) IoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec returns new OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec with value set to v.
 func NewOptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec(v IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec {
 	return OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec{
@@ -12735,6 +14183,14 @@ func (o OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) Get() (v Io
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) Or(d IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus returns new OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus with value set to v.
@@ -12775,6 +14231,14 @@ func (o OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus) Get() (v 
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus) Or(d IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus) IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPIFlowcontrolV1beta1QueuingConfiguration returns new OptIoK8sAPIFlowcontrolV1beta1QueuingConfiguration with value set to v.
 func NewOptIoK8sAPIFlowcontrolV1beta1QueuingConfiguration(v IoK8sAPIFlowcontrolV1beta1QueuingConfiguration) OptIoK8sAPIFlowcontrolV1beta1QueuingConfiguration {
 	return OptIoK8sAPIFlowcontrolV1beta1QueuingConfiguration{
@@ -12811,6 +14275,14 @@ func (o OptIoK8sAPIFlowcontrolV1beta1QueuingConfiguration) Get() (v IoK8sAPIFlow
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIFlowcontrolV1beta1QueuingConfiguration) Or(d IoK8sAPIFlowcontrolV1beta1QueuingConfiguration) IoK8sAPIFlowcontrolV1beta1QueuingConfiguration {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPIFlowcontrolV1beta1ServiceAccountSubject returns new OptIoK8sAPIFlowcontrolV1beta1ServiceAccountSubject with value set to v.
@@ -12851,6 +14323,14 @@ func (o OptIoK8sAPIFlowcontrolV1beta1ServiceAccountSubject) Get() (v IoK8sAPIFlo
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIFlowcontrolV1beta1ServiceAccountSubject) Or(d IoK8sAPIFlowcontrolV1beta1ServiceAccountSubject) IoK8sAPIFlowcontrolV1beta1ServiceAccountSubject {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPIFlowcontrolV1beta1UserSubject returns new OptIoK8sAPIFlowcontrolV1beta1UserSubject with value set to v.
 func NewOptIoK8sAPIFlowcontrolV1beta1UserSubject(v IoK8sAPIFlowcontrolV1beta1UserSubject) OptIoK8sAPIFlowcontrolV1beta1UserSubject {
 	return OptIoK8sAPIFlowcontrolV1beta1UserSubject{
@@ -12887,6 +14367,14 @@ func (o OptIoK8sAPIFlowcontrolV1beta1UserSubject) Get() (v IoK8sAPIFlowcontrolV1
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIFlowcontrolV1beta1UserSubject) Or(d IoK8sAPIFlowcontrolV1beta1UserSubject) IoK8sAPIFlowcontrolV1beta1UserSubject {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod returns new OptIoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod with value set to v.
@@ -12927,6 +14415,14 @@ func (o OptIoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod) Get() (v IoK8sAPIF
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod) Or(d IoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod) IoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPIFlowcontrolV1beta2FlowSchemaSpec returns new OptIoK8sAPIFlowcontrolV1beta2FlowSchemaSpec with value set to v.
 func NewOptIoK8sAPIFlowcontrolV1beta2FlowSchemaSpec(v IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) OptIoK8sAPIFlowcontrolV1beta2FlowSchemaSpec {
 	return OptIoK8sAPIFlowcontrolV1beta2FlowSchemaSpec{
@@ -12963,6 +14459,14 @@ func (o OptIoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) Get() (v IoK8sAPIFlowcontro
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) Or(d IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPIFlowcontrolV1beta2FlowSchemaStatus returns new OptIoK8sAPIFlowcontrolV1beta2FlowSchemaStatus with value set to v.
@@ -13003,6 +14507,14 @@ func (o OptIoK8sAPIFlowcontrolV1beta2FlowSchemaStatus) Get() (v IoK8sAPIFlowcont
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIFlowcontrolV1beta2FlowSchemaStatus) Or(d IoK8sAPIFlowcontrolV1beta2FlowSchemaStatus) IoK8sAPIFlowcontrolV1beta2FlowSchemaStatus {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPIFlowcontrolV1beta2GroupSubject returns new OptIoK8sAPIFlowcontrolV1beta2GroupSubject with value set to v.
 func NewOptIoK8sAPIFlowcontrolV1beta2GroupSubject(v IoK8sAPIFlowcontrolV1beta2GroupSubject) OptIoK8sAPIFlowcontrolV1beta2GroupSubject {
 	return OptIoK8sAPIFlowcontrolV1beta2GroupSubject{
@@ -13039,6 +14551,14 @@ func (o OptIoK8sAPIFlowcontrolV1beta2GroupSubject) Get() (v IoK8sAPIFlowcontrolV
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIFlowcontrolV1beta2GroupSubject) Or(d IoK8sAPIFlowcontrolV1beta2GroupSubject) IoK8sAPIFlowcontrolV1beta2GroupSubject {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPIFlowcontrolV1beta2LimitResponse returns new OptIoK8sAPIFlowcontrolV1beta2LimitResponse with value set to v.
@@ -13079,6 +14599,14 @@ func (o OptIoK8sAPIFlowcontrolV1beta2LimitResponse) Get() (v IoK8sAPIFlowcontrol
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIFlowcontrolV1beta2LimitResponse) Or(d IoK8sAPIFlowcontrolV1beta2LimitResponse) IoK8sAPIFlowcontrolV1beta2LimitResponse {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration returns new OptIoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration with value set to v.
 func NewOptIoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration(v IoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration) OptIoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration {
 	return OptIoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration{
@@ -13115,6 +14643,14 @@ func (o OptIoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration) Get() (v
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration) Or(d IoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration) IoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec returns new OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec with value set to v.
@@ -13155,6 +14691,14 @@ func (o OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec) Get() (v Io
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec) Or(d IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec) IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus returns new OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus with value set to v.
 func NewOptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus(v IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus) OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus {
 	return OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus{
@@ -13191,6 +14735,14 @@ func (o OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus) Get() (v 
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus) Or(d IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus) IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPIFlowcontrolV1beta2QueuingConfiguration returns new OptIoK8sAPIFlowcontrolV1beta2QueuingConfiguration with value set to v.
@@ -13231,6 +14783,14 @@ func (o OptIoK8sAPIFlowcontrolV1beta2QueuingConfiguration) Get() (v IoK8sAPIFlow
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIFlowcontrolV1beta2QueuingConfiguration) Or(d IoK8sAPIFlowcontrolV1beta2QueuingConfiguration) IoK8sAPIFlowcontrolV1beta2QueuingConfiguration {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPIFlowcontrolV1beta2ServiceAccountSubject returns new OptIoK8sAPIFlowcontrolV1beta2ServiceAccountSubject with value set to v.
 func NewOptIoK8sAPIFlowcontrolV1beta2ServiceAccountSubject(v IoK8sAPIFlowcontrolV1beta2ServiceAccountSubject) OptIoK8sAPIFlowcontrolV1beta2ServiceAccountSubject {
 	return OptIoK8sAPIFlowcontrolV1beta2ServiceAccountSubject{
@@ -13267,6 +14827,14 @@ func (o OptIoK8sAPIFlowcontrolV1beta2ServiceAccountSubject) Get() (v IoK8sAPIFlo
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIFlowcontrolV1beta2ServiceAccountSubject) Or(d IoK8sAPIFlowcontrolV1beta2ServiceAccountSubject) IoK8sAPIFlowcontrolV1beta2ServiceAccountSubject {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPIFlowcontrolV1beta2UserSubject returns new OptIoK8sAPIFlowcontrolV1beta2UserSubject with value set to v.
@@ -13307,6 +14875,14 @@ func (o OptIoK8sAPIFlowcontrolV1beta2UserSubject) Get() (v IoK8sAPIFlowcontrolV1
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIFlowcontrolV1beta2UserSubject) Or(d IoK8sAPIFlowcontrolV1beta2UserSubject) IoK8sAPIFlowcontrolV1beta2UserSubject {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPINetworkingV1HTTPIngressRuleValue returns new OptIoK8sAPINetworkingV1HTTPIngressRuleValue with value set to v.
 func NewOptIoK8sAPINetworkingV1HTTPIngressRuleValue(v IoK8sAPINetworkingV1HTTPIngressRuleValue) OptIoK8sAPINetworkingV1HTTPIngressRuleValue {
 	return OptIoK8sAPINetworkingV1HTTPIngressRuleValue{
@@ -13343,6 +14919,14 @@ func (o OptIoK8sAPINetworkingV1HTTPIngressRuleValue) Get() (v IoK8sAPINetworking
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPINetworkingV1HTTPIngressRuleValue) Or(d IoK8sAPINetworkingV1HTTPIngressRuleValue) IoK8sAPINetworkingV1HTTPIngressRuleValue {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPINetworkingV1IPBlock returns new OptIoK8sAPINetworkingV1IPBlock with value set to v.
@@ -13383,6 +14967,14 @@ func (o OptIoK8sAPINetworkingV1IPBlock) Get() (v IoK8sAPINetworkingV1IPBlock, ok
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPINetworkingV1IPBlock) Or(d IoK8sAPINetworkingV1IPBlock) IoK8sAPINetworkingV1IPBlock {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPINetworkingV1IngressBackend returns new OptIoK8sAPINetworkingV1IngressBackend with value set to v.
 func NewOptIoK8sAPINetworkingV1IngressBackend(v IoK8sAPINetworkingV1IngressBackend) OptIoK8sAPINetworkingV1IngressBackend {
 	return OptIoK8sAPINetworkingV1IngressBackend{
@@ -13419,6 +15011,14 @@ func (o OptIoK8sAPINetworkingV1IngressBackend) Get() (v IoK8sAPINetworkingV1Ingr
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPINetworkingV1IngressBackend) Or(d IoK8sAPINetworkingV1IngressBackend) IoK8sAPINetworkingV1IngressBackend {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPINetworkingV1IngressClassParametersReference returns new OptIoK8sAPINetworkingV1IngressClassParametersReference with value set to v.
@@ -13459,6 +15059,14 @@ func (o OptIoK8sAPINetworkingV1IngressClassParametersReference) Get() (v IoK8sAP
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPINetworkingV1IngressClassParametersReference) Or(d IoK8sAPINetworkingV1IngressClassParametersReference) IoK8sAPINetworkingV1IngressClassParametersReference {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPINetworkingV1IngressClassSpec returns new OptIoK8sAPINetworkingV1IngressClassSpec with value set to v.
 func NewOptIoK8sAPINetworkingV1IngressClassSpec(v IoK8sAPINetworkingV1IngressClassSpec) OptIoK8sAPINetworkingV1IngressClassSpec {
 	return OptIoK8sAPINetworkingV1IngressClassSpec{
@@ -13495,6 +15103,14 @@ func (o OptIoK8sAPINetworkingV1IngressClassSpec) Get() (v IoK8sAPINetworkingV1In
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPINetworkingV1IngressClassSpec) Or(d IoK8sAPINetworkingV1IngressClassSpec) IoK8sAPINetworkingV1IngressClassSpec {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPINetworkingV1IngressServiceBackend returns new OptIoK8sAPINetworkingV1IngressServiceBackend with value set to v.
@@ -13535,6 +15151,14 @@ func (o OptIoK8sAPINetworkingV1IngressServiceBackend) Get() (v IoK8sAPINetworkin
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPINetworkingV1IngressServiceBackend) Or(d IoK8sAPINetworkingV1IngressServiceBackend) IoK8sAPINetworkingV1IngressServiceBackend {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPINetworkingV1IngressSpec returns new OptIoK8sAPINetworkingV1IngressSpec with value set to v.
 func NewOptIoK8sAPINetworkingV1IngressSpec(v IoK8sAPINetworkingV1IngressSpec) OptIoK8sAPINetworkingV1IngressSpec {
 	return OptIoK8sAPINetworkingV1IngressSpec{
@@ -13571,6 +15195,14 @@ func (o OptIoK8sAPINetworkingV1IngressSpec) Get() (v IoK8sAPINetworkingV1Ingress
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPINetworkingV1IngressSpec) Or(d IoK8sAPINetworkingV1IngressSpec) IoK8sAPINetworkingV1IngressSpec {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPINetworkingV1IngressStatus returns new OptIoK8sAPINetworkingV1IngressStatus with value set to v.
@@ -13611,6 +15243,14 @@ func (o OptIoK8sAPINetworkingV1IngressStatus) Get() (v IoK8sAPINetworkingV1Ingre
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPINetworkingV1IngressStatus) Or(d IoK8sAPINetworkingV1IngressStatus) IoK8sAPINetworkingV1IngressStatus {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPINetworkingV1NetworkPolicySpec returns new OptIoK8sAPINetworkingV1NetworkPolicySpec with value set to v.
 func NewOptIoK8sAPINetworkingV1NetworkPolicySpec(v IoK8sAPINetworkingV1NetworkPolicySpec) OptIoK8sAPINetworkingV1NetworkPolicySpec {
 	return OptIoK8sAPINetworkingV1NetworkPolicySpec{
@@ -13647,6 +15287,14 @@ func (o OptIoK8sAPINetworkingV1NetworkPolicySpec) Get() (v IoK8sAPINetworkingV1N
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPINetworkingV1NetworkPolicySpec) Or(d IoK8sAPINetworkingV1NetworkPolicySpec) IoK8sAPINetworkingV1NetworkPolicySpec {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPINetworkingV1ServiceBackendPort returns new OptIoK8sAPINetworkingV1ServiceBackendPort with value set to v.
@@ -13687,6 +15335,14 @@ func (o OptIoK8sAPINetworkingV1ServiceBackendPort) Get() (v IoK8sAPINetworkingV1
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPINetworkingV1ServiceBackendPort) Or(d IoK8sAPINetworkingV1ServiceBackendPort) IoK8sAPINetworkingV1ServiceBackendPort {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPINodeV1Overhead returns new OptIoK8sAPINodeV1Overhead with value set to v.
 func NewOptIoK8sAPINodeV1Overhead(v IoK8sAPINodeV1Overhead) OptIoK8sAPINodeV1Overhead {
 	return OptIoK8sAPINodeV1Overhead{
@@ -13723,6 +15379,14 @@ func (o OptIoK8sAPINodeV1Overhead) Get() (v IoK8sAPINodeV1Overhead, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPINodeV1Overhead) Or(d IoK8sAPINodeV1Overhead) IoK8sAPINodeV1Overhead {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPINodeV1Scheduling returns new OptIoK8sAPINodeV1Scheduling with value set to v.
@@ -13763,6 +15427,14 @@ func (o OptIoK8sAPINodeV1Scheduling) Get() (v IoK8sAPINodeV1Scheduling, ok bool)
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPINodeV1Scheduling) Or(d IoK8sAPINodeV1Scheduling) IoK8sAPINodeV1Scheduling {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPINodeV1alpha1Overhead returns new OptIoK8sAPINodeV1alpha1Overhead with value set to v.
 func NewOptIoK8sAPINodeV1alpha1Overhead(v IoK8sAPINodeV1alpha1Overhead) OptIoK8sAPINodeV1alpha1Overhead {
 	return OptIoK8sAPINodeV1alpha1Overhead{
@@ -13799,6 +15471,14 @@ func (o OptIoK8sAPINodeV1alpha1Overhead) Get() (v IoK8sAPINodeV1alpha1Overhead, 
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPINodeV1alpha1Overhead) Or(d IoK8sAPINodeV1alpha1Overhead) IoK8sAPINodeV1alpha1Overhead {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPINodeV1alpha1Scheduling returns new OptIoK8sAPINodeV1alpha1Scheduling with value set to v.
@@ -13839,6 +15519,14 @@ func (o OptIoK8sAPINodeV1alpha1Scheduling) Get() (v IoK8sAPINodeV1alpha1Scheduli
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPINodeV1alpha1Scheduling) Or(d IoK8sAPINodeV1alpha1Scheduling) IoK8sAPINodeV1alpha1Scheduling {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPINodeV1beta1Overhead returns new OptIoK8sAPINodeV1beta1Overhead with value set to v.
 func NewOptIoK8sAPINodeV1beta1Overhead(v IoK8sAPINodeV1beta1Overhead) OptIoK8sAPINodeV1beta1Overhead {
 	return OptIoK8sAPINodeV1beta1Overhead{
@@ -13875,6 +15563,14 @@ func (o OptIoK8sAPINodeV1beta1Overhead) Get() (v IoK8sAPINodeV1beta1Overhead, ok
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPINodeV1beta1Overhead) Or(d IoK8sAPINodeV1beta1Overhead) IoK8sAPINodeV1beta1Overhead {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPINodeV1beta1Scheduling returns new OptIoK8sAPINodeV1beta1Scheduling with value set to v.
@@ -13915,6 +15611,14 @@ func (o OptIoK8sAPINodeV1beta1Scheduling) Get() (v IoK8sAPINodeV1beta1Scheduling
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPINodeV1beta1Scheduling) Or(d IoK8sAPINodeV1beta1Scheduling) IoK8sAPINodeV1beta1Scheduling {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPIPolicyV1PodDisruptionBudgetSpec returns new OptIoK8sAPIPolicyV1PodDisruptionBudgetSpec with value set to v.
 func NewOptIoK8sAPIPolicyV1PodDisruptionBudgetSpec(v IoK8sAPIPolicyV1PodDisruptionBudgetSpec) OptIoK8sAPIPolicyV1PodDisruptionBudgetSpec {
 	return OptIoK8sAPIPolicyV1PodDisruptionBudgetSpec{
@@ -13951,6 +15655,14 @@ func (o OptIoK8sAPIPolicyV1PodDisruptionBudgetSpec) Get() (v IoK8sAPIPolicyV1Pod
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIPolicyV1PodDisruptionBudgetSpec) Or(d IoK8sAPIPolicyV1PodDisruptionBudgetSpec) IoK8sAPIPolicyV1PodDisruptionBudgetSpec {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPIPolicyV1PodDisruptionBudgetStatus returns new OptIoK8sAPIPolicyV1PodDisruptionBudgetStatus with value set to v.
@@ -13991,6 +15703,14 @@ func (o OptIoK8sAPIPolicyV1PodDisruptionBudgetStatus) Get() (v IoK8sAPIPolicyV1P
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIPolicyV1PodDisruptionBudgetStatus) Or(d IoK8sAPIPolicyV1PodDisruptionBudgetStatus) IoK8sAPIPolicyV1PodDisruptionBudgetStatus {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec returns new OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec with value set to v.
 func NewOptIoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec(v IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec {
 	return OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec{
@@ -14027,6 +15747,14 @@ func (o OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) Get() (v IoK8sAPIPolicy
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) Or(d IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus returns new OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus with value set to v.
@@ -14067,6 +15795,14 @@ func (o OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) Get() (v IoK8sAPIPoli
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) Or(d IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPIPolicyV1beta1PodSecurityPolicySpec returns new OptIoK8sAPIPolicyV1beta1PodSecurityPolicySpec with value set to v.
 func NewOptIoK8sAPIPolicyV1beta1PodSecurityPolicySpec(v IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) OptIoK8sAPIPolicyV1beta1PodSecurityPolicySpec {
 	return OptIoK8sAPIPolicyV1beta1PodSecurityPolicySpec{
@@ -14103,6 +15839,14 @@ func (o OptIoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Get() (v IoK8sAPIPolicyV1
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Or(d IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) IoK8sAPIPolicyV1beta1PodSecurityPolicySpec {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions returns new OptIoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions with value set to v.
@@ -14143,6 +15887,14 @@ func (o OptIoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) Get() (v IoK8sAPIPoli
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) Or(d IoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) IoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions returns new OptIoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions with value set to v.
 func NewOptIoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions(v IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) OptIoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions {
 	return OptIoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions{
@@ -14179,6 +15931,14 @@ func (o OptIoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) Get() (v IoK8sAPIPo
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) Or(d IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPIRbacV1AggregationRule returns new OptIoK8sAPIRbacV1AggregationRule with value set to v.
@@ -14219,6 +15979,14 @@ func (o OptIoK8sAPIRbacV1AggregationRule) Get() (v IoK8sAPIRbacV1AggregationRule
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIRbacV1AggregationRule) Or(d IoK8sAPIRbacV1AggregationRule) IoK8sAPIRbacV1AggregationRule {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPIStorageV1VolumeAttachmentStatus returns new OptIoK8sAPIStorageV1VolumeAttachmentStatus with value set to v.
 func NewOptIoK8sAPIStorageV1VolumeAttachmentStatus(v IoK8sAPIStorageV1VolumeAttachmentStatus) OptIoK8sAPIStorageV1VolumeAttachmentStatus {
 	return OptIoK8sAPIStorageV1VolumeAttachmentStatus{
@@ -14255,6 +16023,14 @@ func (o OptIoK8sAPIStorageV1VolumeAttachmentStatus) Get() (v IoK8sAPIStorageV1Vo
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIStorageV1VolumeAttachmentStatus) Or(d IoK8sAPIStorageV1VolumeAttachmentStatus) IoK8sAPIStorageV1VolumeAttachmentStatus {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sAPIStorageV1VolumeError returns new OptIoK8sAPIStorageV1VolumeError with value set to v.
@@ -14295,6 +16071,14 @@ func (o OptIoK8sAPIStorageV1VolumeError) Get() (v IoK8sAPIStorageV1VolumeError, 
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIStorageV1VolumeError) Or(d IoK8sAPIStorageV1VolumeError) IoK8sAPIStorageV1VolumeError {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPIStorageV1VolumeNodeResources returns new OptIoK8sAPIStorageV1VolumeNodeResources with value set to v.
 func NewOptIoK8sAPIStorageV1VolumeNodeResources(v IoK8sAPIStorageV1VolumeNodeResources) OptIoK8sAPIStorageV1VolumeNodeResources {
 	return OptIoK8sAPIStorageV1VolumeNodeResources{
@@ -14331,6 +16115,14 @@ func (o OptIoK8sAPIStorageV1VolumeNodeResources) Get() (v IoK8sAPIStorageV1Volum
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIStorageV1VolumeNodeResources) Or(d IoK8sAPIStorageV1VolumeNodeResources) IoK8sAPIStorageV1VolumeNodeResources {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion returns new OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion with value set to v.
@@ -14373,6 +16165,14 @@ func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConver
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion) Or(d IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion) IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames returns new OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames with value set to v.
 func NewOptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames(v IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames) OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames {
 	return OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames{
@@ -14411,6 +16211,14 @@ func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefini
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames) Or(d IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames) IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus returns new OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus with value set to v.
@@ -14453,6 +16261,14 @@ func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefini
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus) Or(d IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus) IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale returns new OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale with value set to v.
 func NewOptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale(v IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale) OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale {
 	return OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale{
@@ -14491,6 +16307,14 @@ func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubres
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale) Or(d IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale) IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources returns new OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources with value set to v.
@@ -14533,6 +16357,14 @@ func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubres
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources) Or(d IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources) IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation returns new OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation with value set to v.
 func NewOptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation(v IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation) OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation {
 	return OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation{
@@ -14571,6 +16403,14 @@ func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValida
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation) Or(d IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation) IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation returns new OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation with value set to v.
@@ -14613,6 +16453,14 @@ func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentatio
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation) Or(d IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation) IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps returns new OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps with value set to v.
 func NewOptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps(v IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps {
 	return OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps{
@@ -14651,6 +16499,14 @@ func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Get
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Or(d IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference returns new OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference with value set to v.
@@ -14693,6 +16549,14 @@ func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) Ge
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) Or(d IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig returns new OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig with value set to v.
 func NewOptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig(v IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig {
 	return OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig{
@@ -14731,6 +16595,14 @@ func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig)
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) Or(d IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion returns new OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion with value set to v.
@@ -14773,6 +16645,14 @@ func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) G
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) Or(d IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sApimachineryPkgAPIResourceQuantity returns new OptIoK8sApimachineryPkgAPIResourceQuantity with value set to v.
 func NewOptIoK8sApimachineryPkgAPIResourceQuantity(v IoK8sApimachineryPkgAPIResourceQuantity) OptIoK8sApimachineryPkgAPIResourceQuantity {
 	return OptIoK8sApimachineryPkgAPIResourceQuantity{
@@ -14809,6 +16689,14 @@ func (o OptIoK8sApimachineryPkgAPIResourceQuantity) Get() (v IoK8sApimachineryPk
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sApimachineryPkgAPIResourceQuantity) Or(d IoK8sApimachineryPkgAPIResourceQuantity) IoK8sApimachineryPkgAPIResourceQuantity {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery returns new OptIoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery with value set to v.
@@ -14849,6 +16737,14 @@ func (o OptIoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) Get() (v IoK8
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) Or(d IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sApimachineryPkgApisMetaV1LabelSelector returns new OptIoK8sApimachineryPkgApisMetaV1LabelSelector with value set to v.
 func NewOptIoK8sApimachineryPkgApisMetaV1LabelSelector(v IoK8sApimachineryPkgApisMetaV1LabelSelector) OptIoK8sApimachineryPkgApisMetaV1LabelSelector {
 	return OptIoK8sApimachineryPkgApisMetaV1LabelSelector{
@@ -14885,6 +16781,14 @@ func (o OptIoK8sApimachineryPkgApisMetaV1LabelSelector) Get() (v IoK8sApimachine
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sApimachineryPkgApisMetaV1LabelSelector) Or(d IoK8sApimachineryPkgApisMetaV1LabelSelector) IoK8sApimachineryPkgApisMetaV1LabelSelector {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sApimachineryPkgApisMetaV1ListMeta returns new OptIoK8sApimachineryPkgApisMetaV1ListMeta with value set to v.
@@ -14925,6 +16829,14 @@ func (o OptIoK8sApimachineryPkgApisMetaV1ListMeta) Get() (v IoK8sApimachineryPkg
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sApimachineryPkgApisMetaV1ListMeta) Or(d IoK8sApimachineryPkgApisMetaV1ListMeta) IoK8sApimachineryPkgApisMetaV1ListMeta {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sApimachineryPkgApisMetaV1MicroTime returns new OptIoK8sApimachineryPkgApisMetaV1MicroTime with value set to v.
 func NewOptIoK8sApimachineryPkgApisMetaV1MicroTime(v IoK8sApimachineryPkgApisMetaV1MicroTime) OptIoK8sApimachineryPkgApisMetaV1MicroTime {
 	return OptIoK8sApimachineryPkgApisMetaV1MicroTime{
@@ -14961,6 +16873,14 @@ func (o OptIoK8sApimachineryPkgApisMetaV1MicroTime) Get() (v IoK8sApimachineryPk
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sApimachineryPkgApisMetaV1MicroTime) Or(d IoK8sApimachineryPkgApisMetaV1MicroTime) IoK8sApimachineryPkgApisMetaV1MicroTime {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sApimachineryPkgApisMetaV1ObjectMeta returns new OptIoK8sApimachineryPkgApisMetaV1ObjectMeta with value set to v.
@@ -15001,6 +16921,14 @@ func (o OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) Get() (v IoK8sApimachineryP
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) Or(d IoK8sApimachineryPkgApisMetaV1ObjectMeta) IoK8sApimachineryPkgApisMetaV1ObjectMeta {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sApimachineryPkgApisMetaV1Time returns new OptIoK8sApimachineryPkgApisMetaV1Time with value set to v.
 func NewOptIoK8sApimachineryPkgApisMetaV1Time(v IoK8sApimachineryPkgApisMetaV1Time) OptIoK8sApimachineryPkgApisMetaV1Time {
 	return OptIoK8sApimachineryPkgApisMetaV1Time{
@@ -15037,6 +16965,14 @@ func (o OptIoK8sApimachineryPkgApisMetaV1Time) Get() (v IoK8sApimachineryPkgApis
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sApimachineryPkgApisMetaV1Time) Or(d IoK8sApimachineryPkgApisMetaV1Time) IoK8sApimachineryPkgApisMetaV1Time {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sApimachineryPkgUtilIntstrIntOrString returns new OptIoK8sApimachineryPkgUtilIntstrIntOrString with value set to v.
@@ -15077,6 +17013,14 @@ func (o OptIoK8sApimachineryPkgUtilIntstrIntOrString) Get() (v IoK8sApimachinery
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sApimachineryPkgUtilIntstrIntOrString) Or(d IoK8sApimachineryPkgUtilIntstrIntOrString) IoK8sApimachineryPkgUtilIntstrIntOrString {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec returns new OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec with value set to v.
 func NewOptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec(v IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec {
 	return OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec{
@@ -15113,6 +17057,14 @@ func (o OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) Get() (v I
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) Or(d IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus returns new OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus with value set to v.
@@ -15153,6 +17105,14 @@ func (o OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus) Get() (v
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus) Or(d IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus) IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference returns new OptIoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference with value set to v.
 func NewOptIoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference(v IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) OptIoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference {
 	return OptIoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference{
@@ -15191,6 +17151,14 @@ func (o OptIoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) Get() (v
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) Or(d IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptString returns new OptString with value set to v.
 func NewOptString(v string) OptString {
 	return OptString{
@@ -15227,6 +17195,14 @@ func (o OptString) Get() (v string, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptString) Or(d string) string {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // ReadAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized is response for ReadAdmissionregistrationV1MutatingWebhookConfiguration operation.

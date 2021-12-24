@@ -1325,6 +1325,14 @@ func (o OptAnimation) Get() (v Animation, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptAnimation) Or(d Animation) Animation {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptAudio returns new OptAudio with value set to v.
 func NewOptAudio(v Audio) OptAudio {
 	return OptAudio{
@@ -1361,6 +1369,14 @@ func (o OptAudio) Get() (v Audio, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptAudio) Or(d Audio) Audio {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptBool returns new OptBool with value set to v.
@@ -1401,6 +1417,14 @@ func (o OptBool) Get() (v bool, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptBool) Or(d bool) bool {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptChat returns new OptChat with value set to v.
 func NewOptChat(v Chat) OptChat {
 	return OptChat{
@@ -1437,6 +1461,14 @@ func (o OptChat) Get() (v Chat, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptChat) Or(d Chat) Chat {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptChatLocation returns new OptChatLocation with value set to v.
@@ -1477,6 +1509,14 @@ func (o OptChatLocation) Get() (v ChatLocation, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptChatLocation) Or(d ChatLocation) ChatLocation {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptChatPermissions returns new OptChatPermissions with value set to v.
 func NewOptChatPermissions(v ChatPermissions) OptChatPermissions {
 	return OptChatPermissions{
@@ -1513,6 +1553,14 @@ func (o OptChatPermissions) Get() (v ChatPermissions, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptChatPermissions) Or(d ChatPermissions) ChatPermissions {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptChatPhoto returns new OptChatPhoto with value set to v.
@@ -1553,6 +1601,14 @@ func (o OptChatPhoto) Get() (v ChatPhoto, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptChatPhoto) Or(d ChatPhoto) ChatPhoto {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptContact returns new OptContact with value set to v.
 func NewOptContact(v Contact) OptContact {
 	return OptContact{
@@ -1589,6 +1645,14 @@ func (o OptContact) Get() (v Contact, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptContact) Or(d Contact) Contact {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptDice returns new OptDice with value set to v.
@@ -1629,6 +1693,14 @@ func (o OptDice) Get() (v Dice, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptDice) Or(d Dice) Dice {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptDocument returns new OptDocument with value set to v.
 func NewOptDocument(v Document) OptDocument {
 	return OptDocument{
@@ -1665,6 +1737,14 @@ func (o OptDocument) Get() (v Document, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptDocument) Or(d Document) Document {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptFloat64 returns new OptFloat64 with value set to v.
@@ -1705,6 +1785,14 @@ func (o OptFloat64) Get() (v float64, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptFloat64) Or(d float64) float64 {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptGame returns new OptGame with value set to v.
 func NewOptGame(v Game) OptGame {
 	return OptGame{
@@ -1741,6 +1829,14 @@ func (o OptGame) Get() (v Game, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptGame) Or(d Game) Game {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptInlineKeyboardMarkup returns new OptInlineKeyboardMarkup with value set to v.
@@ -1781,6 +1877,14 @@ func (o OptInlineKeyboardMarkup) Get() (v InlineKeyboardMarkup, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptInlineKeyboardMarkup) Or(d InlineKeyboardMarkup) InlineKeyboardMarkup {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptInt returns new OptInt with value set to v.
 func NewOptInt(v int) OptInt {
 	return OptInt{
@@ -1817,6 +1921,14 @@ func (o OptInt) Get() (v int, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptInt) Or(d int) int {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptInt64 returns new OptInt64 with value set to v.
@@ -1857,6 +1969,14 @@ func (o OptInt64) Get() (v int64, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptInt64) Or(d int64) int64 {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptInvoice returns new OptInvoice with value set to v.
 func NewOptInvoice(v Invoice) OptInvoice {
 	return OptInvoice{
@@ -1893,6 +2013,14 @@ func (o OptInvoice) Get() (v Invoice, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptInvoice) Or(d Invoice) Invoice {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptKeyboardButtonPollType returns new OptKeyboardButtonPollType with value set to v.
@@ -1933,6 +2061,14 @@ func (o OptKeyboardButtonPollType) Get() (v KeyboardButtonPollType, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptKeyboardButtonPollType) Or(d KeyboardButtonPollType) KeyboardButtonPollType {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptLocation returns new OptLocation with value set to v.
 func NewOptLocation(v Location) OptLocation {
 	return OptLocation{
@@ -1969,6 +2105,14 @@ func (o OptLocation) Get() (v Location, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptLocation) Or(d Location) Location {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptLoginUrl returns new OptLoginUrl with value set to v.
@@ -2009,6 +2153,14 @@ func (o OptLoginUrl) Get() (v LoginUrl, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptLoginUrl) Or(d LoginUrl) LoginUrl {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptMaskPosition returns new OptMaskPosition with value set to v.
 func NewOptMaskPosition(v MaskPosition) OptMaskPosition {
 	return OptMaskPosition{
@@ -2045,6 +2197,14 @@ func (o OptMaskPosition) Get() (v MaskPosition, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptMaskPosition) Or(d MaskPosition) MaskPosition {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptMessage returns new OptMessage with value set to v.
@@ -2085,6 +2245,14 @@ func (o OptMessage) Get() (v Message, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptMessage) Or(d Message) Message {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptMessageAutoDeleteTimerChanged returns new OptMessageAutoDeleteTimerChanged with value set to v.
 func NewOptMessageAutoDeleteTimerChanged(v MessageAutoDeleteTimerChanged) OptMessageAutoDeleteTimerChanged {
 	return OptMessageAutoDeleteTimerChanged{
@@ -2121,6 +2289,14 @@ func (o OptMessageAutoDeleteTimerChanged) Get() (v MessageAutoDeleteTimerChanged
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptMessageAutoDeleteTimerChanged) Or(d MessageAutoDeleteTimerChanged) MessageAutoDeleteTimerChanged {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptOrderInfo returns new OptOrderInfo with value set to v.
@@ -2161,6 +2337,14 @@ func (o OptOrderInfo) Get() (v OrderInfo, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptOrderInfo) Or(d OrderInfo) OrderInfo {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptPassportData returns new OptPassportData with value set to v.
 func NewOptPassportData(v PassportData) OptPassportData {
 	return OptPassportData{
@@ -2197,6 +2381,14 @@ func (o OptPassportData) Get() (v PassportData, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptPassportData) Or(d PassportData) PassportData {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptPassportFile returns new OptPassportFile with value set to v.
@@ -2237,6 +2429,14 @@ func (o OptPassportFile) Get() (v PassportFile, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptPassportFile) Or(d PassportFile) PassportFile {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptPhotoSize returns new OptPhotoSize with value set to v.
 func NewOptPhotoSize(v PhotoSize) OptPhotoSize {
 	return OptPhotoSize{
@@ -2273,6 +2473,14 @@ func (o OptPhotoSize) Get() (v PhotoSize, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptPhotoSize) Or(d PhotoSize) PhotoSize {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptPoll returns new OptPoll with value set to v.
@@ -2313,6 +2521,14 @@ func (o OptPoll) Get() (v Poll, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptPoll) Or(d Poll) Poll {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptProximityAlertTriggered returns new OptProximityAlertTriggered with value set to v.
 func NewOptProximityAlertTriggered(v ProximityAlertTriggered) OptProximityAlertTriggered {
 	return OptProximityAlertTriggered{
@@ -2349,6 +2565,14 @@ func (o OptProximityAlertTriggered) Get() (v ProximityAlertTriggered, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptProximityAlertTriggered) Or(d ProximityAlertTriggered) ProximityAlertTriggered {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptResponse returns new OptResponse with value set to v.
@@ -2389,6 +2613,14 @@ func (o OptResponse) Get() (v Response, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptResponse) Or(d Response) Response {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptShippingAddress returns new OptShippingAddress with value set to v.
 func NewOptShippingAddress(v ShippingAddress) OptShippingAddress {
 	return OptShippingAddress{
@@ -2425,6 +2657,14 @@ func (o OptShippingAddress) Get() (v ShippingAddress, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptShippingAddress) Or(d ShippingAddress) ShippingAddress {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptSticker returns new OptSticker with value set to v.
@@ -2465,6 +2705,14 @@ func (o OptSticker) Get() (v Sticker, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptSticker) Or(d Sticker) Sticker {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptString returns new OptString with value set to v.
 func NewOptString(v string) OptString {
 	return OptString{
@@ -2501,6 +2749,14 @@ func (o OptString) Get() (v string, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptString) Or(d string) string {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptSuccessfulPayment returns new OptSuccessfulPayment with value set to v.
@@ -2541,6 +2797,14 @@ func (o OptSuccessfulPayment) Get() (v SuccessfulPayment, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptSuccessfulPayment) Or(d SuccessfulPayment) SuccessfulPayment {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptURL returns new OptURL with value set to v.
 func NewOptURL(v url.URL) OptURL {
 	return OptURL{
@@ -2577,6 +2841,14 @@ func (o OptURL) Get() (v url.URL, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptURL) Or(d url.URL) url.URL {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptUser returns new OptUser with value set to v.
@@ -2617,6 +2889,14 @@ func (o OptUser) Get() (v User, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptUser) Or(d User) User {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptVenue returns new OptVenue with value set to v.
 func NewOptVenue(v Venue) OptVenue {
 	return OptVenue{
@@ -2653,6 +2933,14 @@ func (o OptVenue) Get() (v Venue, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptVenue) Or(d Venue) Venue {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptVideo returns new OptVideo with value set to v.
@@ -2693,6 +2981,14 @@ func (o OptVideo) Get() (v Video, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptVideo) Or(d Video) Video {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptVideoNote returns new OptVideoNote with value set to v.
 func NewOptVideoNote(v VideoNote) OptVideoNote {
 	return OptVideoNote{
@@ -2729,6 +3025,14 @@ func (o OptVideoNote) Get() (v VideoNote, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptVideoNote) Or(d VideoNote) VideoNote {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptVoice returns new OptVoice with value set to v.
@@ -2769,6 +3073,14 @@ func (o OptVoice) Get() (v Voice, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptVoice) Or(d Voice) Voice {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptVoiceChatEnded returns new OptVoiceChatEnded with value set to v.
 func NewOptVoiceChatEnded(v VoiceChatEnded) OptVoiceChatEnded {
 	return OptVoiceChatEnded{
@@ -2805,6 +3117,14 @@ func (o OptVoiceChatEnded) Get() (v VoiceChatEnded, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptVoiceChatEnded) Or(d VoiceChatEnded) VoiceChatEnded {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptVoiceChatParticipantsInvited returns new OptVoiceChatParticipantsInvited with value set to v.
@@ -2845,6 +3165,14 @@ func (o OptVoiceChatParticipantsInvited) Get() (v VoiceChatParticipantsInvited, 
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptVoiceChatParticipantsInvited) Or(d VoiceChatParticipantsInvited) VoiceChatParticipantsInvited {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptVoiceChatScheduled returns new OptVoiceChatScheduled with value set to v.
 func NewOptVoiceChatScheduled(v VoiceChatScheduled) OptVoiceChatScheduled {
 	return OptVoiceChatScheduled{
@@ -2881,6 +3209,14 @@ func (o OptVoiceChatScheduled) Get() (v VoiceChatScheduled, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptVoiceChatScheduled) Or(d VoiceChatScheduled) VoiceChatScheduled {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // Ref: #/components/schemas/OrderInfo

@@ -179,6 +179,14 @@ func (o OptImage) Get() (v Image, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptImage) Or(d Image) Image {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptImages returns new OptImages with value set to v.
 func NewOptImages(v Images) OptImages {
 	return OptImages{
@@ -215,6 +223,14 @@ func (o OptImages) Get() (v Images, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptImages) Or(d Images) Images {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptInt returns new OptInt with value set to v.
@@ -255,6 +271,14 @@ func (o OptInt) Get() (v int, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptInt) Or(d int) int {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptString returns new OptString with value set to v.
 func NewOptString(v string) OptString {
 	return OptString{
@@ -291,6 +315,14 @@ func (o OptString) Get() (v string, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptString) Or(d string) string {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptTagType returns new OptTagType with value set to v.
@@ -331,6 +363,14 @@ func (o OptTagType) Get() (v TagType, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptTagType) Or(d TagType) TagType {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptTitle returns new OptTitle with value set to v.
 func NewOptTitle(v Title) OptTitle {
 	return OptTitle{
@@ -367,6 +407,14 @@ func (o OptTitle) Get() (v Title, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptTitle) Or(d Title) Title {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // SearchByTagIDForbidden is response for SearchByTagID operation.

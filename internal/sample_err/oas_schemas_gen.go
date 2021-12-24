@@ -120,3 +120,11 @@ func (o OptData) Get() (v Data, ok bool) {
 	}
 	return o.Value, true
 }
+
+// Or returns value if set, or given parameter if does not.
+func (o OptData) Or(d Data) Data {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}

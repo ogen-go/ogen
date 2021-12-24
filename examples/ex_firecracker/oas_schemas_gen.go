@@ -359,6 +359,14 @@ func (o OptBalloon) Get() (v Balloon, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptBalloon) Or(d Balloon) Balloon {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptBool returns new OptBool with value set to v.
 func NewOptBool(v bool) OptBool {
 	return OptBool{
@@ -395,6 +403,14 @@ func (o OptBool) Get() (v bool, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptBool) Or(d bool) bool {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptBootSource returns new OptBootSource with value set to v.
@@ -435,6 +451,14 @@ func (o OptBootSource) Get() (v BootSource, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptBootSource) Or(d BootSource) BootSource {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptCpuTemplate returns new OptCpuTemplate with value set to v.
 func NewOptCpuTemplate(v CpuTemplate) OptCpuTemplate {
 	return OptCpuTemplate{
@@ -471,6 +495,14 @@ func (o OptCpuTemplate) Get() (v CpuTemplate, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptCpuTemplate) Or(d CpuTemplate) CpuTemplate {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptInt returns new OptInt with value set to v.
@@ -511,6 +543,14 @@ func (o OptInt) Get() (v int, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptInt) Or(d int) int {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptInt64 returns new OptInt64 with value set to v.
 func NewOptInt64(v int64) OptInt64 {
 	return OptInt64{
@@ -547,6 +587,14 @@ func (o OptInt64) Get() (v int64, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptInt64) Or(d int64) int64 {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptLogger returns new OptLogger with value set to v.
@@ -587,6 +635,14 @@ func (o OptLogger) Get() (v Logger, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptLogger) Or(d Logger) Logger {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptLoggerLevel returns new OptLoggerLevel with value set to v.
 func NewOptLoggerLevel(v LoggerLevel) OptLoggerLevel {
 	return OptLoggerLevel{
@@ -623,6 +679,14 @@ func (o OptLoggerLevel) Get() (v LoggerLevel, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptLoggerLevel) Or(d LoggerLevel) LoggerLevel {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptMachineConfiguration returns new OptMachineConfiguration with value set to v.
@@ -663,6 +727,14 @@ func (o OptMachineConfiguration) Get() (v MachineConfiguration, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptMachineConfiguration) Or(d MachineConfiguration) MachineConfiguration {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptMetrics returns new OptMetrics with value set to v.
 func NewOptMetrics(v Metrics) OptMetrics {
 	return OptMetrics{
@@ -699,6 +771,14 @@ func (o OptMetrics) Get() (v Metrics, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptMetrics) Or(d Metrics) Metrics {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptMmdsConfig returns new OptMmdsConfig with value set to v.
@@ -739,6 +819,14 @@ func (o OptMmdsConfig) Get() (v MmdsConfig, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptMmdsConfig) Or(d MmdsConfig) MmdsConfig {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptMmdsPatchReq returns new OptMmdsPatchReq with value set to v.
 func NewOptMmdsPatchReq(v MmdsPatchReq) OptMmdsPatchReq {
 	return OptMmdsPatchReq{
@@ -775,6 +863,14 @@ func (o OptMmdsPatchReq) Get() (v MmdsPatchReq, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptMmdsPatchReq) Or(d MmdsPatchReq) MmdsPatchReq {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptMmdsPutReq returns new OptMmdsPutReq with value set to v.
@@ -815,6 +911,14 @@ func (o OptMmdsPutReq) Get() (v MmdsPutReq, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptMmdsPutReq) Or(d MmdsPutReq) MmdsPutReq {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptRateLimiter returns new OptRateLimiter with value set to v.
 func NewOptRateLimiter(v RateLimiter) OptRateLimiter {
 	return OptRateLimiter{
@@ -851,6 +955,14 @@ func (o OptRateLimiter) Get() (v RateLimiter, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptRateLimiter) Or(d RateLimiter) RateLimiter {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptSnapshotCreateParamsSnapshotType returns new OptSnapshotCreateParamsSnapshotType with value set to v.
@@ -891,6 +1003,14 @@ func (o OptSnapshotCreateParamsSnapshotType) Get() (v SnapshotCreateParamsSnapsh
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptSnapshotCreateParamsSnapshotType) Or(d SnapshotCreateParamsSnapshotType) SnapshotCreateParamsSnapshotType {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptString returns new OptString with value set to v.
 func NewOptString(v string) OptString {
 	return OptString{
@@ -927,6 +1047,14 @@ func (o OptString) Get() (v string, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptString) Or(d string) string {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptTokenBucket returns new OptTokenBucket with value set to v.
@@ -967,6 +1095,14 @@ func (o OptTokenBucket) Get() (v TokenBucket, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptTokenBucket) Or(d TokenBucket) TokenBucket {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptVsock returns new OptVsock with value set to v.
 func NewOptVsock(v Vsock) OptVsock {
 	return OptVsock{
@@ -1003,6 +1139,14 @@ func (o OptVsock) Get() (v Vsock, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptVsock) Or(d Vsock) Vsock {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // Ref: #/components/schemas/PartialDrive
