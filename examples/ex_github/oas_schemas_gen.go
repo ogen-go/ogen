@@ -6845,6 +6845,14 @@ func (o NilAutoMerge) Get() (v AutoMerge, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o NilAutoMerge) Or(d AutoMerge) AutoMerge {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewNilBool returns new NilBool with value set to v.
 func NewNilBool(v bool) NilBool {
 	return NilBool{
@@ -6873,6 +6881,14 @@ func (o NilBool) Get() (v bool, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o NilBool) Or(d bool) bool {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewNilCheckRunCheckSuite returns new NilCheckRunCheckSuite with value set to v.
@@ -6905,6 +6921,14 @@ func (o NilCheckRunCheckSuite) Get() (v CheckRunCheckSuite, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o NilCheckRunCheckSuite) Or(d CheckRunCheckSuite) CheckRunCheckSuite {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewNilCheckRunConclusion returns new NilCheckRunConclusion with value set to v.
 func NewNilCheckRunConclusion(v CheckRunConclusion) NilCheckRunConclusion {
 	return NilCheckRunConclusion{
@@ -6933,6 +6957,14 @@ func (o NilCheckRunConclusion) Get() (v CheckRunConclusion, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o NilCheckRunConclusion) Or(d CheckRunConclusion) CheckRunConclusion {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewNilCheckSuiteConclusion returns new NilCheckSuiteConclusion with value set to v.
@@ -6965,6 +6997,14 @@ func (o NilCheckSuiteConclusion) Get() (v CheckSuiteConclusion, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o NilCheckSuiteConclusion) Or(d CheckSuiteConclusion) CheckSuiteConclusion {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewNilCheckSuiteStatus returns new NilCheckSuiteStatus with value set to v.
 func NewNilCheckSuiteStatus(v CheckSuiteStatus) NilCheckSuiteStatus {
 	return NilCheckSuiteStatus{
@@ -6993,6 +7033,14 @@ func (o NilCheckSuiteStatus) Get() (v CheckSuiteStatus, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o NilCheckSuiteStatus) Or(d CheckSuiteStatus) CheckSuiteStatus {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewNilCodeScanningAlertDismissedAt returns new NilCodeScanningAlertDismissedAt with value set to v.
@@ -7025,6 +7073,14 @@ func (o NilCodeScanningAlertDismissedAt) Get() (v CodeScanningAlertDismissedAt, 
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o NilCodeScanningAlertDismissedAt) Or(d CodeScanningAlertDismissedAt) CodeScanningAlertDismissedAt {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewNilCodeScanningAlertDismissedReason returns new NilCodeScanningAlertDismissedReason with value set to v.
 func NewNilCodeScanningAlertDismissedReason(v CodeScanningAlertDismissedReason) NilCodeScanningAlertDismissedReason {
 	return NilCodeScanningAlertDismissedReason{
@@ -7053,6 +7109,14 @@ func (o NilCodeScanningAlertDismissedReason) Get() (v CodeScanningAlertDismissed
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o NilCodeScanningAlertDismissedReason) Or(d CodeScanningAlertDismissedReason) CodeScanningAlertDismissedReason {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewNilFileCommitContent returns new NilFileCommitContent with value set to v.
@@ -7085,6 +7149,14 @@ func (o NilFileCommitContent) Get() (v FileCommitContent, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o NilFileCommitContent) Or(d FileCommitContent) FileCommitContent {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewNilInt returns new NilInt with value set to v.
 func NewNilInt(v int) NilInt {
 	return NilInt{
@@ -7113,6 +7185,14 @@ func (o NilInt) Get() (v int, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o NilInt) Or(d int) int {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewNilNullableCodeOfConductSimple returns new NilNullableCodeOfConductSimple with value set to v.
@@ -7145,6 +7225,14 @@ func (o NilNullableCodeOfConductSimple) Get() (v NullableCodeOfConductSimple, ok
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o NilNullableCodeOfConductSimple) Or(d NullableCodeOfConductSimple) NullableCodeOfConductSimple {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewNilNullableCommunityHealthFile returns new NilNullableCommunityHealthFile with value set to v.
 func NewNilNullableCommunityHealthFile(v NullableCommunityHealthFile) NilNullableCommunityHealthFile {
 	return NilNullableCommunityHealthFile{
@@ -7173,6 +7261,14 @@ func (o NilNullableCommunityHealthFile) Get() (v NullableCommunityHealthFile, ok
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o NilNullableCommunityHealthFile) Or(d NullableCommunityHealthFile) NullableCommunityHealthFile {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewNilNullableGitUser returns new NilNullableGitUser with value set to v.
@@ -7205,6 +7301,14 @@ func (o NilNullableGitUser) Get() (v NullableGitUser, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o NilNullableGitUser) Or(d NullableGitUser) NullableGitUser {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewNilNullableIntegration returns new NilNullableIntegration with value set to v.
 func NewNilNullableIntegration(v NullableIntegration) NilNullableIntegration {
 	return NilNullableIntegration{
@@ -7233,6 +7337,14 @@ func (o NilNullableIntegration) Get() (v NullableIntegration, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o NilNullableIntegration) Or(d NullableIntegration) NullableIntegration {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewNilNullableLicenseSimple returns new NilNullableLicenseSimple with value set to v.
@@ -7265,6 +7377,14 @@ func (o NilNullableLicenseSimple) Get() (v NullableLicenseSimple, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o NilNullableLicenseSimple) Or(d NullableLicenseSimple) NullableLicenseSimple {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewNilNullableMilestone returns new NilNullableMilestone with value set to v.
 func NewNilNullableMilestone(v NullableMilestone) NilNullableMilestone {
 	return NilNullableMilestone{
@@ -7293,6 +7413,14 @@ func (o NilNullableMilestone) Get() (v NullableMilestone, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o NilNullableMilestone) Or(d NullableMilestone) NullableMilestone {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewNilNullableSimpleCommit returns new NilNullableSimpleCommit with value set to v.
@@ -7325,6 +7453,14 @@ func (o NilNullableSimpleCommit) Get() (v NullableSimpleCommit, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o NilNullableSimpleCommit) Or(d NullableSimpleCommit) NullableSimpleCommit {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewNilNullableSimpleCommitAuthor returns new NilNullableSimpleCommitAuthor with value set to v.
 func NewNilNullableSimpleCommitAuthor(v NullableSimpleCommitAuthor) NilNullableSimpleCommitAuthor {
 	return NilNullableSimpleCommitAuthor{
@@ -7353,6 +7489,14 @@ func (o NilNullableSimpleCommitAuthor) Get() (v NullableSimpleCommitAuthor, ok b
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o NilNullableSimpleCommitAuthor) Or(d NullableSimpleCommitAuthor) NullableSimpleCommitAuthor {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewNilNullableSimpleCommitCommitter returns new NilNullableSimpleCommitCommitter with value set to v.
@@ -7385,6 +7529,14 @@ func (o NilNullableSimpleCommitCommitter) Get() (v NullableSimpleCommitCommitter
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o NilNullableSimpleCommitCommitter) Or(d NullableSimpleCommitCommitter) NullableSimpleCommitCommitter {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewNilNullableSimpleUser returns new NilNullableSimpleUser with value set to v.
 func NewNilNullableSimpleUser(v NullableSimpleUser) NilNullableSimpleUser {
 	return NilNullableSimpleUser{
@@ -7413,6 +7565,14 @@ func (o NilNullableSimpleUser) Get() (v NullableSimpleUser, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o NilNullableSimpleUser) Or(d NullableSimpleUser) NullableSimpleUser {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewNilNullableTeamSimple returns new NilNullableTeamSimple with value set to v.
@@ -7445,6 +7605,14 @@ func (o NilNullableTeamSimple) Get() (v NullableTeamSimple, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o NilNullableTeamSimple) Or(d NullableTeamSimple) NullableTeamSimple {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewNilPageStatus returns new NilPageStatus with value set to v.
 func NewNilPageStatus(v PageStatus) NilPageStatus {
 	return NilPageStatus{
@@ -7473,6 +7641,14 @@ func (o NilPageStatus) Get() (v PageStatus, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o NilPageStatus) Or(d PageStatus) PageStatus {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewNilPullRequestHeadRepo returns new NilPullRequestHeadRepo with value set to v.
@@ -7505,6 +7681,14 @@ func (o NilPullRequestHeadRepo) Get() (v PullRequestHeadRepo, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o NilPullRequestHeadRepo) Or(d PullRequestHeadRepo) PullRequestHeadRepo {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewNilPullRequestHeadRepoLicense returns new NilPullRequestHeadRepoLicense with value set to v.
 func NewNilPullRequestHeadRepoLicense(v PullRequestHeadRepoLicense) NilPullRequestHeadRepoLicense {
 	return NilPullRequestHeadRepoLicense{
@@ -7533,6 +7717,14 @@ func (o NilPullRequestHeadRepoLicense) Get() (v PullRequestHeadRepoLicense, ok b
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o NilPullRequestHeadRepoLicense) Or(d PullRequestHeadRepoLicense) PullRequestHeadRepoLicense {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewNilReposUpdateBranchProtectionReqRequiredPullRequestReviews returns new NilReposUpdateBranchProtectionReqRequiredPullRequestReviews with value set to v.
@@ -7565,6 +7757,14 @@ func (o NilReposUpdateBranchProtectionReqRequiredPullRequestReviews) Get() (v Re
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o NilReposUpdateBranchProtectionReqRequiredPullRequestReviews) Or(d ReposUpdateBranchProtectionReqRequiredPullRequestReviews) ReposUpdateBranchProtectionReqRequiredPullRequestReviews {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewNilReposUpdateBranchProtectionReqRequiredStatusChecks returns new NilReposUpdateBranchProtectionReqRequiredStatusChecks with value set to v.
 func NewNilReposUpdateBranchProtectionReqRequiredStatusChecks(v ReposUpdateBranchProtectionReqRequiredStatusChecks) NilReposUpdateBranchProtectionReqRequiredStatusChecks {
 	return NilReposUpdateBranchProtectionReqRequiredStatusChecks{
@@ -7593,6 +7793,14 @@ func (o NilReposUpdateBranchProtectionReqRequiredStatusChecks) Get() (v ReposUpd
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o NilReposUpdateBranchProtectionReqRequiredStatusChecks) Or(d ReposUpdateBranchProtectionReqRequiredStatusChecks) ReposUpdateBranchProtectionReqRequiredStatusChecks {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewNilReposUpdateBranchProtectionReqRestrictions returns new NilReposUpdateBranchProtectionReqRestrictions with value set to v.
@@ -7625,6 +7833,14 @@ func (o NilReposUpdateBranchProtectionReqRestrictions) Get() (v ReposUpdateBranc
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o NilReposUpdateBranchProtectionReqRestrictions) Or(d ReposUpdateBranchProtectionReqRestrictions) ReposUpdateBranchProtectionReqRestrictions {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewNilSimpleCommitAuthor returns new NilSimpleCommitAuthor with value set to v.
 func NewNilSimpleCommitAuthor(v SimpleCommitAuthor) NilSimpleCommitAuthor {
 	return NilSimpleCommitAuthor{
@@ -7653,6 +7869,14 @@ func (o NilSimpleCommitAuthor) Get() (v SimpleCommitAuthor, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o NilSimpleCommitAuthor) Or(d SimpleCommitAuthor) SimpleCommitAuthor {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewNilSimpleCommitCommitter returns new NilSimpleCommitCommitter with value set to v.
@@ -7685,6 +7909,14 @@ func (o NilSimpleCommitCommitter) Get() (v SimpleCommitCommitter, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o NilSimpleCommitCommitter) Or(d SimpleCommitCommitter) SimpleCommitCommitter {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewNilString returns new NilString with value set to v.
 func NewNilString(v string) NilString {
 	return NilString{
@@ -7713,6 +7945,14 @@ func (o NilString) Get() (v string, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o NilString) Or(d string) string {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewNilTime returns new NilTime with value set to v.
@@ -7745,6 +7985,14 @@ func (o NilTime) Get() (v time.Time, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o NilTime) Or(d time.Time) time.Time {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewNilURL returns new NilURL with value set to v.
 func NewNilURL(v url.URL) NilURL {
 	return NilURL{
@@ -7773,6 +8021,14 @@ func (o NilURL) Get() (v url.URL, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o NilURL) Or(d url.URL) url.URL {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // Ref: #/components/responses/no_content
@@ -8599,6 +8855,14 @@ func (o OptAPIOverviewSSHKeyFingerprints) Get() (v APIOverviewSSHKeyFingerprints
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptAPIOverviewSSHKeyFingerprints) Or(d APIOverviewSSHKeyFingerprints) APIOverviewSSHKeyFingerprints {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptActionsCreateSelfHostedRunnerGroupForOrgReqVisibility returns new OptActionsCreateSelfHostedRunnerGroupForOrgReqVisibility with value set to v.
 func NewOptActionsCreateSelfHostedRunnerGroupForOrgReqVisibility(v ActionsCreateSelfHostedRunnerGroupForOrgReqVisibility) OptActionsCreateSelfHostedRunnerGroupForOrgReqVisibility {
 	return OptActionsCreateSelfHostedRunnerGroupForOrgReqVisibility{
@@ -8635,6 +8899,14 @@ func (o OptActionsCreateSelfHostedRunnerGroupForOrgReqVisibility) Get() (v Actio
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptActionsCreateSelfHostedRunnerGroupForOrgReqVisibility) Or(d ActionsCreateSelfHostedRunnerGroupForOrgReqVisibility) ActionsCreateSelfHostedRunnerGroupForOrgReqVisibility {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptActionsListJobsForWorkflowRunFilter returns new OptActionsListJobsForWorkflowRunFilter with value set to v.
@@ -8675,6 +8947,14 @@ func (o OptActionsListJobsForWorkflowRunFilter) Get() (v ActionsListJobsForWorkf
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptActionsListJobsForWorkflowRunFilter) Or(d ActionsListJobsForWorkflowRunFilter) ActionsListJobsForWorkflowRunFilter {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptActionsListWorkflowRunsForRepoStatus returns new OptActionsListWorkflowRunsForRepoStatus with value set to v.
 func NewOptActionsListWorkflowRunsForRepoStatus(v ActionsListWorkflowRunsForRepoStatus) OptActionsListWorkflowRunsForRepoStatus {
 	return OptActionsListWorkflowRunsForRepoStatus{
@@ -8711,6 +8991,14 @@ func (o OptActionsListWorkflowRunsForRepoStatus) Get() (v ActionsListWorkflowRun
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptActionsListWorkflowRunsForRepoStatus) Or(d ActionsListWorkflowRunsForRepoStatus) ActionsListWorkflowRunsForRepoStatus {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility returns new OptActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility with value set to v.
@@ -8751,6 +9039,14 @@ func (o OptActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility) Get() (v Actio
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility) Or(d ActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility) ActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptActivityListReposStarredByAuthenticatedUserDirection returns new OptActivityListReposStarredByAuthenticatedUserDirection with value set to v.
 func NewOptActivityListReposStarredByAuthenticatedUserDirection(v ActivityListReposStarredByAuthenticatedUserDirection) OptActivityListReposStarredByAuthenticatedUserDirection {
 	return OptActivityListReposStarredByAuthenticatedUserDirection{
@@ -8787,6 +9083,14 @@ func (o OptActivityListReposStarredByAuthenticatedUserDirection) Get() (v Activi
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptActivityListReposStarredByAuthenticatedUserDirection) Or(d ActivityListReposStarredByAuthenticatedUserDirection) ActivityListReposStarredByAuthenticatedUserDirection {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptActivityListReposStarredByAuthenticatedUserSort returns new OptActivityListReposStarredByAuthenticatedUserSort with value set to v.
@@ -8827,6 +9131,14 @@ func (o OptActivityListReposStarredByAuthenticatedUserSort) Get() (v ActivityLis
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptActivityListReposStarredByAuthenticatedUserSort) Or(d ActivityListReposStarredByAuthenticatedUserSort) ActivityListReposStarredByAuthenticatedUserSort {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptActivityMarkNotificationsAsReadReq returns new OptActivityMarkNotificationsAsReadReq with value set to v.
 func NewOptActivityMarkNotificationsAsReadReq(v ActivityMarkNotificationsAsReadReq) OptActivityMarkNotificationsAsReadReq {
 	return OptActivityMarkNotificationsAsReadReq{
@@ -8863,6 +9175,14 @@ func (o OptActivityMarkNotificationsAsReadReq) Get() (v ActivityMarkNotification
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptActivityMarkNotificationsAsReadReq) Or(d ActivityMarkNotificationsAsReadReq) ActivityMarkNotificationsAsReadReq {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptActivityMarkRepoNotificationsAsReadReq returns new OptActivityMarkRepoNotificationsAsReadReq with value set to v.
@@ -8903,6 +9223,14 @@ func (o OptActivityMarkRepoNotificationsAsReadReq) Get() (v ActivityMarkRepoNoti
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptActivityMarkRepoNotificationsAsReadReq) Or(d ActivityMarkRepoNotificationsAsReadReq) ActivityMarkRepoNotificationsAsReadReq {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptActivitySetRepoSubscriptionReq returns new OptActivitySetRepoSubscriptionReq with value set to v.
 func NewOptActivitySetRepoSubscriptionReq(v ActivitySetRepoSubscriptionReq) OptActivitySetRepoSubscriptionReq {
 	return OptActivitySetRepoSubscriptionReq{
@@ -8939,6 +9267,14 @@ func (o OptActivitySetRepoSubscriptionReq) Get() (v ActivitySetRepoSubscriptionR
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptActivitySetRepoSubscriptionReq) Or(d ActivitySetRepoSubscriptionReq) ActivitySetRepoSubscriptionReq {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptActivitySetThreadSubscriptionReq returns new OptActivitySetThreadSubscriptionReq with value set to v.
@@ -8979,6 +9315,14 @@ func (o OptActivitySetThreadSubscriptionReq) Get() (v ActivitySetThreadSubscript
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptActivitySetThreadSubscriptionReq) Or(d ActivitySetThreadSubscriptionReq) ActivitySetThreadSubscriptionReq {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptActor returns new OptActor with value set to v.
 func NewOptActor(v Actor) OptActor {
 	return OptActor{
@@ -9015,6 +9359,14 @@ func (o OptActor) Get() (v Actor, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptActor) Or(d Actor) Actor {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptAlertCreatedAt returns new OptAlertCreatedAt with value set to v.
@@ -9055,6 +9407,14 @@ func (o OptAlertCreatedAt) Get() (v AlertCreatedAt, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptAlertCreatedAt) Or(d AlertCreatedAt) AlertCreatedAt {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptAlertHTMLURL returns new OptAlertHTMLURL with value set to v.
 func NewOptAlertHTMLURL(v AlertHTMLURL) OptAlertHTMLURL {
 	return OptAlertHTMLURL{
@@ -9091,6 +9451,14 @@ func (o OptAlertHTMLURL) Get() (v AlertHTMLURL, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptAlertHTMLURL) Or(d AlertHTMLURL) AlertHTMLURL {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptAlertNumber returns new OptAlertNumber with value set to v.
@@ -9131,6 +9499,14 @@ func (o OptAlertNumber) Get() (v AlertNumber, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptAlertNumber) Or(d AlertNumber) AlertNumber {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptAlertURL returns new OptAlertURL with value set to v.
 func NewOptAlertURL(v AlertURL) OptAlertURL {
 	return OptAlertURL{
@@ -9167,6 +9543,14 @@ func (o OptAlertURL) Get() (v AlertURL, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptAlertURL) Or(d AlertURL) AlertURL {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptAllowedActions returns new OptAllowedActions with value set to v.
@@ -9207,6 +9591,14 @@ func (o OptAllowedActions) Get() (v AllowedActions, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptAllowedActions) Or(d AllowedActions) AllowedActions {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptAppPermissions returns new OptAppPermissions with value set to v.
 func NewOptAppPermissions(v AppPermissions) OptAppPermissions {
 	return OptAppPermissions{
@@ -9243,6 +9635,14 @@ func (o OptAppPermissions) Get() (v AppPermissions, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptAppPermissions) Or(d AppPermissions) AppPermissions {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptAppPermissionsActions returns new OptAppPermissionsActions with value set to v.
@@ -9283,6 +9683,14 @@ func (o OptAppPermissionsActions) Get() (v AppPermissionsActions, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptAppPermissionsActions) Or(d AppPermissionsActions) AppPermissionsActions {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptAppPermissionsAdministration returns new OptAppPermissionsAdministration with value set to v.
 func NewOptAppPermissionsAdministration(v AppPermissionsAdministration) OptAppPermissionsAdministration {
 	return OptAppPermissionsAdministration{
@@ -9319,6 +9727,14 @@ func (o OptAppPermissionsAdministration) Get() (v AppPermissionsAdministration, 
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptAppPermissionsAdministration) Or(d AppPermissionsAdministration) AppPermissionsAdministration {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptAppPermissionsChecks returns new OptAppPermissionsChecks with value set to v.
@@ -9359,6 +9775,14 @@ func (o OptAppPermissionsChecks) Get() (v AppPermissionsChecks, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptAppPermissionsChecks) Or(d AppPermissionsChecks) AppPermissionsChecks {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptAppPermissionsContentReferences returns new OptAppPermissionsContentReferences with value set to v.
 func NewOptAppPermissionsContentReferences(v AppPermissionsContentReferences) OptAppPermissionsContentReferences {
 	return OptAppPermissionsContentReferences{
@@ -9395,6 +9819,14 @@ func (o OptAppPermissionsContentReferences) Get() (v AppPermissionsContentRefere
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptAppPermissionsContentReferences) Or(d AppPermissionsContentReferences) AppPermissionsContentReferences {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptAppPermissionsContents returns new OptAppPermissionsContents with value set to v.
@@ -9435,6 +9867,14 @@ func (o OptAppPermissionsContents) Get() (v AppPermissionsContents, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptAppPermissionsContents) Or(d AppPermissionsContents) AppPermissionsContents {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptAppPermissionsDeployments returns new OptAppPermissionsDeployments with value set to v.
 func NewOptAppPermissionsDeployments(v AppPermissionsDeployments) OptAppPermissionsDeployments {
 	return OptAppPermissionsDeployments{
@@ -9471,6 +9911,14 @@ func (o OptAppPermissionsDeployments) Get() (v AppPermissionsDeployments, ok boo
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptAppPermissionsDeployments) Or(d AppPermissionsDeployments) AppPermissionsDeployments {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptAppPermissionsEnvironments returns new OptAppPermissionsEnvironments with value set to v.
@@ -9511,6 +9959,14 @@ func (o OptAppPermissionsEnvironments) Get() (v AppPermissionsEnvironments, ok b
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptAppPermissionsEnvironments) Or(d AppPermissionsEnvironments) AppPermissionsEnvironments {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptAppPermissionsIssues returns new OptAppPermissionsIssues with value set to v.
 func NewOptAppPermissionsIssues(v AppPermissionsIssues) OptAppPermissionsIssues {
 	return OptAppPermissionsIssues{
@@ -9547,6 +10003,14 @@ func (o OptAppPermissionsIssues) Get() (v AppPermissionsIssues, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptAppPermissionsIssues) Or(d AppPermissionsIssues) AppPermissionsIssues {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptAppPermissionsMembers returns new OptAppPermissionsMembers with value set to v.
@@ -9587,6 +10051,14 @@ func (o OptAppPermissionsMembers) Get() (v AppPermissionsMembers, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptAppPermissionsMembers) Or(d AppPermissionsMembers) AppPermissionsMembers {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptAppPermissionsMetadata returns new OptAppPermissionsMetadata with value set to v.
 func NewOptAppPermissionsMetadata(v AppPermissionsMetadata) OptAppPermissionsMetadata {
 	return OptAppPermissionsMetadata{
@@ -9623,6 +10095,14 @@ func (o OptAppPermissionsMetadata) Get() (v AppPermissionsMetadata, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptAppPermissionsMetadata) Or(d AppPermissionsMetadata) AppPermissionsMetadata {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptAppPermissionsOrganizationAdministration returns new OptAppPermissionsOrganizationAdministration with value set to v.
@@ -9663,6 +10143,14 @@ func (o OptAppPermissionsOrganizationAdministration) Get() (v AppPermissionsOrga
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptAppPermissionsOrganizationAdministration) Or(d AppPermissionsOrganizationAdministration) AppPermissionsOrganizationAdministration {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptAppPermissionsOrganizationHooks returns new OptAppPermissionsOrganizationHooks with value set to v.
 func NewOptAppPermissionsOrganizationHooks(v AppPermissionsOrganizationHooks) OptAppPermissionsOrganizationHooks {
 	return OptAppPermissionsOrganizationHooks{
@@ -9699,6 +10187,14 @@ func (o OptAppPermissionsOrganizationHooks) Get() (v AppPermissionsOrganizationH
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptAppPermissionsOrganizationHooks) Or(d AppPermissionsOrganizationHooks) AppPermissionsOrganizationHooks {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptAppPermissionsOrganizationPackages returns new OptAppPermissionsOrganizationPackages with value set to v.
@@ -9739,6 +10235,14 @@ func (o OptAppPermissionsOrganizationPackages) Get() (v AppPermissionsOrganizati
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptAppPermissionsOrganizationPackages) Or(d AppPermissionsOrganizationPackages) AppPermissionsOrganizationPackages {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptAppPermissionsOrganizationPlan returns new OptAppPermissionsOrganizationPlan with value set to v.
 func NewOptAppPermissionsOrganizationPlan(v AppPermissionsOrganizationPlan) OptAppPermissionsOrganizationPlan {
 	return OptAppPermissionsOrganizationPlan{
@@ -9775,6 +10279,14 @@ func (o OptAppPermissionsOrganizationPlan) Get() (v AppPermissionsOrganizationPl
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptAppPermissionsOrganizationPlan) Or(d AppPermissionsOrganizationPlan) AppPermissionsOrganizationPlan {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptAppPermissionsOrganizationProjects returns new OptAppPermissionsOrganizationProjects with value set to v.
@@ -9815,6 +10327,14 @@ func (o OptAppPermissionsOrganizationProjects) Get() (v AppPermissionsOrganizati
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptAppPermissionsOrganizationProjects) Or(d AppPermissionsOrganizationProjects) AppPermissionsOrganizationProjects {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptAppPermissionsOrganizationSecrets returns new OptAppPermissionsOrganizationSecrets with value set to v.
 func NewOptAppPermissionsOrganizationSecrets(v AppPermissionsOrganizationSecrets) OptAppPermissionsOrganizationSecrets {
 	return OptAppPermissionsOrganizationSecrets{
@@ -9851,6 +10371,14 @@ func (o OptAppPermissionsOrganizationSecrets) Get() (v AppPermissionsOrganizatio
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptAppPermissionsOrganizationSecrets) Or(d AppPermissionsOrganizationSecrets) AppPermissionsOrganizationSecrets {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptAppPermissionsOrganizationSelfHostedRunners returns new OptAppPermissionsOrganizationSelfHostedRunners with value set to v.
@@ -9891,6 +10419,14 @@ func (o OptAppPermissionsOrganizationSelfHostedRunners) Get() (v AppPermissionsO
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptAppPermissionsOrganizationSelfHostedRunners) Or(d AppPermissionsOrganizationSelfHostedRunners) AppPermissionsOrganizationSelfHostedRunners {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptAppPermissionsOrganizationUserBlocking returns new OptAppPermissionsOrganizationUserBlocking with value set to v.
 func NewOptAppPermissionsOrganizationUserBlocking(v AppPermissionsOrganizationUserBlocking) OptAppPermissionsOrganizationUserBlocking {
 	return OptAppPermissionsOrganizationUserBlocking{
@@ -9927,6 +10463,14 @@ func (o OptAppPermissionsOrganizationUserBlocking) Get() (v AppPermissionsOrgani
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptAppPermissionsOrganizationUserBlocking) Or(d AppPermissionsOrganizationUserBlocking) AppPermissionsOrganizationUserBlocking {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptAppPermissionsPackages returns new OptAppPermissionsPackages with value set to v.
@@ -9967,6 +10511,14 @@ func (o OptAppPermissionsPackages) Get() (v AppPermissionsPackages, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptAppPermissionsPackages) Or(d AppPermissionsPackages) AppPermissionsPackages {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptAppPermissionsPages returns new OptAppPermissionsPages with value set to v.
 func NewOptAppPermissionsPages(v AppPermissionsPages) OptAppPermissionsPages {
 	return OptAppPermissionsPages{
@@ -10003,6 +10555,14 @@ func (o OptAppPermissionsPages) Get() (v AppPermissionsPages, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptAppPermissionsPages) Or(d AppPermissionsPages) AppPermissionsPages {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptAppPermissionsPullRequests returns new OptAppPermissionsPullRequests with value set to v.
@@ -10043,6 +10603,14 @@ func (o OptAppPermissionsPullRequests) Get() (v AppPermissionsPullRequests, ok b
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptAppPermissionsPullRequests) Or(d AppPermissionsPullRequests) AppPermissionsPullRequests {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptAppPermissionsRepositoryHooks returns new OptAppPermissionsRepositoryHooks with value set to v.
 func NewOptAppPermissionsRepositoryHooks(v AppPermissionsRepositoryHooks) OptAppPermissionsRepositoryHooks {
 	return OptAppPermissionsRepositoryHooks{
@@ -10079,6 +10647,14 @@ func (o OptAppPermissionsRepositoryHooks) Get() (v AppPermissionsRepositoryHooks
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptAppPermissionsRepositoryHooks) Or(d AppPermissionsRepositoryHooks) AppPermissionsRepositoryHooks {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptAppPermissionsRepositoryProjects returns new OptAppPermissionsRepositoryProjects with value set to v.
@@ -10119,6 +10695,14 @@ func (o OptAppPermissionsRepositoryProjects) Get() (v AppPermissionsRepositoryPr
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptAppPermissionsRepositoryProjects) Or(d AppPermissionsRepositoryProjects) AppPermissionsRepositoryProjects {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptAppPermissionsSecretScanningAlerts returns new OptAppPermissionsSecretScanningAlerts with value set to v.
 func NewOptAppPermissionsSecretScanningAlerts(v AppPermissionsSecretScanningAlerts) OptAppPermissionsSecretScanningAlerts {
 	return OptAppPermissionsSecretScanningAlerts{
@@ -10155,6 +10739,14 @@ func (o OptAppPermissionsSecretScanningAlerts) Get() (v AppPermissionsSecretScan
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptAppPermissionsSecretScanningAlerts) Or(d AppPermissionsSecretScanningAlerts) AppPermissionsSecretScanningAlerts {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptAppPermissionsSecrets returns new OptAppPermissionsSecrets with value set to v.
@@ -10195,6 +10787,14 @@ func (o OptAppPermissionsSecrets) Get() (v AppPermissionsSecrets, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptAppPermissionsSecrets) Or(d AppPermissionsSecrets) AppPermissionsSecrets {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptAppPermissionsSecurityEvents returns new OptAppPermissionsSecurityEvents with value set to v.
 func NewOptAppPermissionsSecurityEvents(v AppPermissionsSecurityEvents) OptAppPermissionsSecurityEvents {
 	return OptAppPermissionsSecurityEvents{
@@ -10231,6 +10831,14 @@ func (o OptAppPermissionsSecurityEvents) Get() (v AppPermissionsSecurityEvents, 
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptAppPermissionsSecurityEvents) Or(d AppPermissionsSecurityEvents) AppPermissionsSecurityEvents {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptAppPermissionsSingleFile returns new OptAppPermissionsSingleFile with value set to v.
@@ -10271,6 +10879,14 @@ func (o OptAppPermissionsSingleFile) Get() (v AppPermissionsSingleFile, ok bool)
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptAppPermissionsSingleFile) Or(d AppPermissionsSingleFile) AppPermissionsSingleFile {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptAppPermissionsStatuses returns new OptAppPermissionsStatuses with value set to v.
 func NewOptAppPermissionsStatuses(v AppPermissionsStatuses) OptAppPermissionsStatuses {
 	return OptAppPermissionsStatuses{
@@ -10307,6 +10923,14 @@ func (o OptAppPermissionsStatuses) Get() (v AppPermissionsStatuses, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptAppPermissionsStatuses) Or(d AppPermissionsStatuses) AppPermissionsStatuses {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptAppPermissionsTeamDiscussions returns new OptAppPermissionsTeamDiscussions with value set to v.
@@ -10347,6 +10971,14 @@ func (o OptAppPermissionsTeamDiscussions) Get() (v AppPermissionsTeamDiscussions
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptAppPermissionsTeamDiscussions) Or(d AppPermissionsTeamDiscussions) AppPermissionsTeamDiscussions {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptAppPermissionsVulnerabilityAlerts returns new OptAppPermissionsVulnerabilityAlerts with value set to v.
 func NewOptAppPermissionsVulnerabilityAlerts(v AppPermissionsVulnerabilityAlerts) OptAppPermissionsVulnerabilityAlerts {
 	return OptAppPermissionsVulnerabilityAlerts{
@@ -10383,6 +11015,14 @@ func (o OptAppPermissionsVulnerabilityAlerts) Get() (v AppPermissionsVulnerabili
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptAppPermissionsVulnerabilityAlerts) Or(d AppPermissionsVulnerabilityAlerts) AppPermissionsVulnerabilityAlerts {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptAppPermissionsWorkflows returns new OptAppPermissionsWorkflows with value set to v.
@@ -10423,6 +11063,14 @@ func (o OptAppPermissionsWorkflows) Get() (v AppPermissionsWorkflows, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptAppPermissionsWorkflows) Or(d AppPermissionsWorkflows) AppPermissionsWorkflows {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptAppsCreateFromManifestReq returns new OptAppsCreateFromManifestReq with value set to v.
 func NewOptAppsCreateFromManifestReq(v AppsCreateFromManifestReq) OptAppsCreateFromManifestReq {
 	return OptAppsCreateFromManifestReq{
@@ -10459,6 +11107,14 @@ func (o OptAppsCreateFromManifestReq) Get() (v AppsCreateFromManifestReq, ok boo
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptAppsCreateFromManifestReq) Or(d AppsCreateFromManifestReq) AppsCreateFromManifestReq {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptAppsCreateInstallationAccessTokenReq returns new OptAppsCreateInstallationAccessTokenReq with value set to v.
@@ -10499,6 +11155,14 @@ func (o OptAppsCreateInstallationAccessTokenReq) Get() (v AppsCreateInstallation
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptAppsCreateInstallationAccessTokenReq) Or(d AppsCreateInstallationAccessTokenReq) AppsCreateInstallationAccessTokenReq {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptAppsListAccountsForPlanDirection returns new OptAppsListAccountsForPlanDirection with value set to v.
 func NewOptAppsListAccountsForPlanDirection(v AppsListAccountsForPlanDirection) OptAppsListAccountsForPlanDirection {
 	return OptAppsListAccountsForPlanDirection{
@@ -10535,6 +11199,14 @@ func (o OptAppsListAccountsForPlanDirection) Get() (v AppsListAccountsForPlanDir
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptAppsListAccountsForPlanDirection) Or(d AppsListAccountsForPlanDirection) AppsListAccountsForPlanDirection {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptAppsListAccountsForPlanSort returns new OptAppsListAccountsForPlanSort with value set to v.
@@ -10575,6 +11247,14 @@ func (o OptAppsListAccountsForPlanSort) Get() (v AppsListAccountsForPlanSort, ok
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptAppsListAccountsForPlanSort) Or(d AppsListAccountsForPlanSort) AppsListAccountsForPlanSort {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptAppsListAccountsForPlanStubbedDirection returns new OptAppsListAccountsForPlanStubbedDirection with value set to v.
 func NewOptAppsListAccountsForPlanStubbedDirection(v AppsListAccountsForPlanStubbedDirection) OptAppsListAccountsForPlanStubbedDirection {
 	return OptAppsListAccountsForPlanStubbedDirection{
@@ -10611,6 +11291,14 @@ func (o OptAppsListAccountsForPlanStubbedDirection) Get() (v AppsListAccountsFor
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptAppsListAccountsForPlanStubbedDirection) Or(d AppsListAccountsForPlanStubbedDirection) AppsListAccountsForPlanStubbedDirection {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptAppsListAccountsForPlanStubbedSort returns new OptAppsListAccountsForPlanStubbedSort with value set to v.
@@ -10651,6 +11339,14 @@ func (o OptAppsListAccountsForPlanStubbedSort) Get() (v AppsListAccountsForPlanS
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptAppsListAccountsForPlanStubbedSort) Or(d AppsListAccountsForPlanStubbedSort) AppsListAccountsForPlanStubbedSort {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptAppsUpdateWebhookConfigForAppReq returns new OptAppsUpdateWebhookConfigForAppReq with value set to v.
 func NewOptAppsUpdateWebhookConfigForAppReq(v AppsUpdateWebhookConfigForAppReq) OptAppsUpdateWebhookConfigForAppReq {
 	return OptAppsUpdateWebhookConfigForAppReq{
@@ -10687,6 +11383,14 @@ func (o OptAppsUpdateWebhookConfigForAppReq) Get() (v AppsUpdateWebhookConfigFor
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptAppsUpdateWebhookConfigForAppReq) Or(d AppsUpdateWebhookConfigForAppReq) AppsUpdateWebhookConfigForAppReq {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptAuditLogEventActorLocation returns new OptAuditLogEventActorLocation with value set to v.
@@ -10727,6 +11431,14 @@ func (o OptAuditLogEventActorLocation) Get() (v AuditLogEventActorLocation, ok b
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptAuditLogEventActorLocation) Or(d AuditLogEventActorLocation) AuditLogEventActorLocation {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptAuthenticationTokenRepositorySelection returns new OptAuthenticationTokenRepositorySelection with value set to v.
 func NewOptAuthenticationTokenRepositorySelection(v AuthenticationTokenRepositorySelection) OptAuthenticationTokenRepositorySelection {
 	return OptAuthenticationTokenRepositorySelection{
@@ -10763,6 +11475,14 @@ func (o OptAuthenticationTokenRepositorySelection) Get() (v AuthenticationTokenR
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptAuthenticationTokenRepositorySelection) Or(d AuthenticationTokenRepositorySelection) AuthenticationTokenRepositorySelection {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptAuthorAssociation returns new OptAuthorAssociation with value set to v.
@@ -10803,6 +11523,14 @@ func (o OptAuthorAssociation) Get() (v AuthorAssociation, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptAuthorAssociation) Or(d AuthorAssociation) AuthorAssociation {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptBool returns new OptBool with value set to v.
 func NewOptBool(v bool) OptBool {
 	return OptBool{
@@ -10839,6 +11567,14 @@ func (o OptBool) Get() (v bool, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptBool) Or(d bool) bool {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptBranchProtection returns new OptBranchProtection with value set to v.
@@ -10879,6 +11615,14 @@ func (o OptBranchProtection) Get() (v BranchProtection, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptBranchProtection) Or(d BranchProtection) BranchProtection {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptBranchProtectionAllowDeletions returns new OptBranchProtectionAllowDeletions with value set to v.
 func NewOptBranchProtectionAllowDeletions(v BranchProtectionAllowDeletions) OptBranchProtectionAllowDeletions {
 	return OptBranchProtectionAllowDeletions{
@@ -10915,6 +11659,14 @@ func (o OptBranchProtectionAllowDeletions) Get() (v BranchProtectionAllowDeletio
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptBranchProtectionAllowDeletions) Or(d BranchProtectionAllowDeletions) BranchProtectionAllowDeletions {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptBranchProtectionAllowForcePushes returns new OptBranchProtectionAllowForcePushes with value set to v.
@@ -10955,6 +11707,14 @@ func (o OptBranchProtectionAllowForcePushes) Get() (v BranchProtectionAllowForce
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptBranchProtectionAllowForcePushes) Or(d BranchProtectionAllowForcePushes) BranchProtectionAllowForcePushes {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptBranchProtectionRequiredConversationResolution returns new OptBranchProtectionRequiredConversationResolution with value set to v.
 func NewOptBranchProtectionRequiredConversationResolution(v BranchProtectionRequiredConversationResolution) OptBranchProtectionRequiredConversationResolution {
 	return OptBranchProtectionRequiredConversationResolution{
@@ -10991,6 +11751,14 @@ func (o OptBranchProtectionRequiredConversationResolution) Get() (v BranchProtec
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptBranchProtectionRequiredConversationResolution) Or(d BranchProtectionRequiredConversationResolution) BranchProtectionRequiredConversationResolution {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptBranchProtectionRequiredLinearHistory returns new OptBranchProtectionRequiredLinearHistory with value set to v.
@@ -11031,6 +11799,14 @@ func (o OptBranchProtectionRequiredLinearHistory) Get() (v BranchProtectionRequi
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptBranchProtectionRequiredLinearHistory) Or(d BranchProtectionRequiredLinearHistory) BranchProtectionRequiredLinearHistory {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptBranchProtectionRequiredSignatures returns new OptBranchProtectionRequiredSignatures with value set to v.
 func NewOptBranchProtectionRequiredSignatures(v BranchProtectionRequiredSignatures) OptBranchProtectionRequiredSignatures {
 	return OptBranchProtectionRequiredSignatures{
@@ -11067,6 +11843,14 @@ func (o OptBranchProtectionRequiredSignatures) Get() (v BranchProtectionRequired
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptBranchProtectionRequiredSignatures) Or(d BranchProtectionRequiredSignatures) BranchProtectionRequiredSignatures {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptBranchProtectionRequiredStatusChecks returns new OptBranchProtectionRequiredStatusChecks with value set to v.
@@ -11107,6 +11891,14 @@ func (o OptBranchProtectionRequiredStatusChecks) Get() (v BranchProtectionRequir
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptBranchProtectionRequiredStatusChecks) Or(d BranchProtectionRequiredStatusChecks) BranchProtectionRequiredStatusChecks {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptBranchRestrictionPolicy returns new OptBranchRestrictionPolicy with value set to v.
 func NewOptBranchRestrictionPolicy(v BranchRestrictionPolicy) OptBranchRestrictionPolicy {
 	return OptBranchRestrictionPolicy{
@@ -11143,6 +11935,14 @@ func (o OptBranchRestrictionPolicy) Get() (v BranchRestrictionPolicy, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptBranchRestrictionPolicy) Or(d BranchRestrictionPolicy) BranchRestrictionPolicy {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptBranchRestrictionPolicyAppsItemOwner returns new OptBranchRestrictionPolicyAppsItemOwner with value set to v.
@@ -11183,6 +11983,14 @@ func (o OptBranchRestrictionPolicyAppsItemOwner) Get() (v BranchRestrictionPolic
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptBranchRestrictionPolicyAppsItemOwner) Or(d BranchRestrictionPolicyAppsItemOwner) BranchRestrictionPolicyAppsItemOwner {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptBranchRestrictionPolicyAppsItemPermissions returns new OptBranchRestrictionPolicyAppsItemPermissions with value set to v.
 func NewOptBranchRestrictionPolicyAppsItemPermissions(v BranchRestrictionPolicyAppsItemPermissions) OptBranchRestrictionPolicyAppsItemPermissions {
 	return OptBranchRestrictionPolicyAppsItemPermissions{
@@ -11219,6 +12027,14 @@ func (o OptBranchRestrictionPolicyAppsItemPermissions) Get() (v BranchRestrictio
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptBranchRestrictionPolicyAppsItemPermissions) Or(d BranchRestrictionPolicyAppsItemPermissions) BranchRestrictionPolicyAppsItemPermissions {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptChecksListForRefFilter returns new OptChecksListForRefFilter with value set to v.
@@ -11259,6 +12075,14 @@ func (o OptChecksListForRefFilter) Get() (v ChecksListForRefFilter, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptChecksListForRefFilter) Or(d ChecksListForRefFilter) ChecksListForRefFilter {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptChecksListForRefStatus returns new OptChecksListForRefStatus with value set to v.
 func NewOptChecksListForRefStatus(v ChecksListForRefStatus) OptChecksListForRefStatus {
 	return OptChecksListForRefStatus{
@@ -11295,6 +12119,14 @@ func (o OptChecksListForRefStatus) Get() (v ChecksListForRefStatus, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptChecksListForRefStatus) Or(d ChecksListForRefStatus) ChecksListForRefStatus {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptChecksListForSuiteFilter returns new OptChecksListForSuiteFilter with value set to v.
@@ -11335,6 +12167,14 @@ func (o OptChecksListForSuiteFilter) Get() (v ChecksListForSuiteFilter, ok bool)
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptChecksListForSuiteFilter) Or(d ChecksListForSuiteFilter) ChecksListForSuiteFilter {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptChecksListForSuiteStatus returns new OptChecksListForSuiteStatus with value set to v.
 func NewOptChecksListForSuiteStatus(v ChecksListForSuiteStatus) OptChecksListForSuiteStatus {
 	return OptChecksListForSuiteStatus{
@@ -11371,6 +12211,14 @@ func (o OptChecksListForSuiteStatus) Get() (v ChecksListForSuiteStatus, ok bool)
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptChecksListForSuiteStatus) Or(d ChecksListForSuiteStatus) ChecksListForSuiteStatus {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptCodeOfConduct returns new OptCodeOfConduct with value set to v.
@@ -11411,6 +12259,14 @@ func (o OptCodeOfConduct) Get() (v CodeOfConduct, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptCodeOfConduct) Or(d CodeOfConduct) CodeOfConduct {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptCodeOfConductSimple returns new OptCodeOfConductSimple with value set to v.
 func NewOptCodeOfConductSimple(v CodeOfConductSimple) OptCodeOfConductSimple {
 	return OptCodeOfConductSimple{
@@ -11447,6 +12303,14 @@ func (o OptCodeOfConductSimple) Get() (v CodeOfConductSimple, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptCodeOfConductSimple) Or(d CodeOfConductSimple) CodeOfConductSimple {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptCodeScanningAlertEnvironment returns new OptCodeScanningAlertEnvironment with value set to v.
@@ -11487,6 +12351,14 @@ func (o OptCodeScanningAlertEnvironment) Get() (v CodeScanningAlertEnvironment, 
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptCodeScanningAlertEnvironment) Or(d CodeScanningAlertEnvironment) CodeScanningAlertEnvironment {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptCodeScanningAlertInstanceMessage returns new OptCodeScanningAlertInstanceMessage with value set to v.
 func NewOptCodeScanningAlertInstanceMessage(v CodeScanningAlertInstanceMessage) OptCodeScanningAlertInstanceMessage {
 	return OptCodeScanningAlertInstanceMessage{
@@ -11523,6 +12395,14 @@ func (o OptCodeScanningAlertInstanceMessage) Get() (v CodeScanningAlertInstanceM
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptCodeScanningAlertInstanceMessage) Or(d CodeScanningAlertInstanceMessage) CodeScanningAlertInstanceMessage {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptCodeScanningAlertLocation returns new OptCodeScanningAlertLocation with value set to v.
@@ -11563,6 +12443,14 @@ func (o OptCodeScanningAlertLocation) Get() (v CodeScanningAlertLocation, ok boo
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptCodeScanningAlertLocation) Or(d CodeScanningAlertLocation) CodeScanningAlertLocation {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptCodeScanningAlertState returns new OptCodeScanningAlertState with value set to v.
 func NewOptCodeScanningAlertState(v CodeScanningAlertState) OptCodeScanningAlertState {
 	return OptCodeScanningAlertState{
@@ -11599,6 +12487,14 @@ func (o OptCodeScanningAlertState) Get() (v CodeScanningAlertState, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptCodeScanningAlertState) Or(d CodeScanningAlertState) CodeScanningAlertState {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptCodeScanningAnalysisAnalysisKey returns new OptCodeScanningAnalysisAnalysisKey with value set to v.
@@ -11639,6 +12535,14 @@ func (o OptCodeScanningAnalysisAnalysisKey) Get() (v CodeScanningAnalysisAnalysi
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptCodeScanningAnalysisAnalysisKey) Or(d CodeScanningAnalysisAnalysisKey) CodeScanningAnalysisAnalysisKey {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptCodeScanningAnalysisCategory returns new OptCodeScanningAnalysisCategory with value set to v.
 func NewOptCodeScanningAnalysisCategory(v CodeScanningAnalysisCategory) OptCodeScanningAnalysisCategory {
 	return OptCodeScanningAnalysisCategory{
@@ -11675,6 +12579,14 @@ func (o OptCodeScanningAnalysisCategory) Get() (v CodeScanningAnalysisCategory, 
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptCodeScanningAnalysisCategory) Or(d CodeScanningAnalysisCategory) CodeScanningAnalysisCategory {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptCodeScanningAnalysisSarifID returns new OptCodeScanningAnalysisSarifID with value set to v.
@@ -11715,6 +12627,14 @@ func (o OptCodeScanningAnalysisSarifID) Get() (v CodeScanningAnalysisSarifID, ok
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptCodeScanningAnalysisSarifID) Or(d CodeScanningAnalysisSarifID) CodeScanningAnalysisSarifID {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptCodeScanningAnalysisToolName returns new OptCodeScanningAnalysisToolName with value set to v.
 func NewOptCodeScanningAnalysisToolName(v CodeScanningAnalysisToolName) OptCodeScanningAnalysisToolName {
 	return OptCodeScanningAnalysisToolName{
@@ -11751,6 +12671,14 @@ func (o OptCodeScanningAnalysisToolName) Get() (v CodeScanningAnalysisToolName, 
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptCodeScanningAnalysisToolName) Or(d CodeScanningAnalysisToolName) CodeScanningAnalysisToolName {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptCodeScanningRef returns new OptCodeScanningRef with value set to v.
@@ -11791,6 +12719,14 @@ func (o OptCodeScanningRef) Get() (v CodeScanningRef, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptCodeScanningRef) Or(d CodeScanningRef) CodeScanningRef {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptCodeScanningSarifsStatusProcessingStatus returns new OptCodeScanningSarifsStatusProcessingStatus with value set to v.
 func NewOptCodeScanningSarifsStatusProcessingStatus(v CodeScanningSarifsStatusProcessingStatus) OptCodeScanningSarifsStatusProcessingStatus {
 	return OptCodeScanningSarifsStatusProcessingStatus{
@@ -11827,6 +12763,14 @@ func (o OptCodeScanningSarifsStatusProcessingStatus) Get() (v CodeScanningSarifs
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptCodeScanningSarifsStatusProcessingStatus) Or(d CodeScanningSarifsStatusProcessingStatus) CodeScanningSarifsStatusProcessingStatus {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptCollaboratorPermissions returns new OptCollaboratorPermissions with value set to v.
@@ -11867,6 +12811,14 @@ func (o OptCollaboratorPermissions) Get() (v CollaboratorPermissions, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptCollaboratorPermissions) Or(d CollaboratorPermissions) CollaboratorPermissions {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptCommitStats returns new OptCommitStats with value set to v.
 func NewOptCommitStats(v CommitStats) OptCommitStats {
 	return OptCommitStats{
@@ -11903,6 +12855,14 @@ func (o OptCommitStats) Get() (v CommitStats, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptCommitStats) Or(d CommitStats) CommitStats {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptDeploymentReviewerType returns new OptDeploymentReviewerType with value set to v.
@@ -11943,6 +12903,14 @@ func (o OptDeploymentReviewerType) Get() (v DeploymentReviewerType, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptDeploymentReviewerType) Or(d DeploymentReviewerType) DeploymentReviewerType {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptDeploymentSimple returns new OptDeploymentSimple with value set to v.
 func NewOptDeploymentSimple(v DeploymentSimple) OptDeploymentSimple {
 	return OptDeploymentSimple{
@@ -11979,6 +12947,14 @@ func (o OptDeploymentSimple) Get() (v DeploymentSimple, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptDeploymentSimple) Or(d DeploymentSimple) DeploymentSimple {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility returns new OptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility with value set to v.
@@ -12021,6 +12997,14 @@ func (o OptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility)
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility) Or(d EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility) EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptEnterpriseAdminGetAuditLogInclude returns new OptEnterpriseAdminGetAuditLogInclude with value set to v.
 func NewOptEnterpriseAdminGetAuditLogInclude(v EnterpriseAdminGetAuditLogInclude) OptEnterpriseAdminGetAuditLogInclude {
 	return OptEnterpriseAdminGetAuditLogInclude{
@@ -12057,6 +13041,14 @@ func (o OptEnterpriseAdminGetAuditLogInclude) Get() (v EnterpriseAdminGetAuditLo
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptEnterpriseAdminGetAuditLogInclude) Or(d EnterpriseAdminGetAuditLogInclude) EnterpriseAdminGetAuditLogInclude {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptEnterpriseAdminGetAuditLogOrder returns new OptEnterpriseAdminGetAuditLogOrder with value set to v.
@@ -12097,6 +13089,14 @@ func (o OptEnterpriseAdminGetAuditLogOrder) Get() (v EnterpriseAdminGetAuditLogO
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptEnterpriseAdminGetAuditLogOrder) Or(d EnterpriseAdminGetAuditLogOrder) EnterpriseAdminGetAuditLogOrder {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq returns new OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq with value set to v.
 func NewOptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq(v EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq) OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq {
 	return OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq{
@@ -12133,6 +13133,14 @@ func (o OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq) Get() (v 
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq) Or(d EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq) EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibility returns new OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibility with value set to v.
@@ -12175,6 +13183,14 @@ func (o OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibility)
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibility) Or(d EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibility) EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibility {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptFileCommitCommitAuthor returns new OptFileCommitCommitAuthor with value set to v.
 func NewOptFileCommitCommitAuthor(v FileCommitCommitAuthor) OptFileCommitCommitAuthor {
 	return OptFileCommitCommitAuthor{
@@ -12211,6 +13227,14 @@ func (o OptFileCommitCommitAuthor) Get() (v FileCommitCommitAuthor, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptFileCommitCommitAuthor) Or(d FileCommitCommitAuthor) FileCommitCommitAuthor {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptFileCommitCommitCommitter returns new OptFileCommitCommitCommitter with value set to v.
@@ -12251,6 +13275,14 @@ func (o OptFileCommitCommitCommitter) Get() (v FileCommitCommitCommitter, ok boo
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptFileCommitCommitCommitter) Or(d FileCommitCommitCommitter) FileCommitCommitCommitter {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptFileCommitCommitTree returns new OptFileCommitCommitTree with value set to v.
 func NewOptFileCommitCommitTree(v FileCommitCommitTree) OptFileCommitCommitTree {
 	return OptFileCommitCommitTree{
@@ -12287,6 +13319,14 @@ func (o OptFileCommitCommitTree) Get() (v FileCommitCommitTree, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptFileCommitCommitTree) Or(d FileCommitCommitTree) FileCommitCommitTree {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptFileCommitCommitVerification returns new OptFileCommitCommitVerification with value set to v.
@@ -12327,6 +13367,14 @@ func (o OptFileCommitCommitVerification) Get() (v FileCommitCommitVerification, 
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptFileCommitCommitVerification) Or(d FileCommitCommitVerification) FileCommitCommitVerification {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptFileCommitContentLinks returns new OptFileCommitContentLinks with value set to v.
 func NewOptFileCommitContentLinks(v FileCommitContentLinks) OptFileCommitContentLinks {
 	return OptFileCommitContentLinks{
@@ -12363,6 +13411,14 @@ func (o OptFileCommitContentLinks) Get() (v FileCommitContentLinks, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptFileCommitContentLinks) Or(d FileCommitContentLinks) FileCommitContentLinks {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptFloat64 returns new OptFloat64 with value set to v.
@@ -12403,6 +13459,14 @@ func (o OptFloat64) Get() (v float64, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptFloat64) Or(d float64) float64 {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptForbiddenGistBlock returns new OptForbiddenGistBlock with value set to v.
 func NewOptForbiddenGistBlock(v ForbiddenGistBlock) OptForbiddenGistBlock {
 	return OptForbiddenGistBlock{
@@ -12439,6 +13503,14 @@ func (o OptForbiddenGistBlock) Get() (v ForbiddenGistBlock, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptForbiddenGistBlock) Or(d ForbiddenGistBlock) ForbiddenGistBlock {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptFullRepositoryPermissions returns new OptFullRepositoryPermissions with value set to v.
@@ -12479,6 +13551,14 @@ func (o OptFullRepositoryPermissions) Get() (v FullRepositoryPermissions, ok boo
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptFullRepositoryPermissions) Or(d FullRepositoryPermissions) FullRepositoryPermissions {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptFullRepositorySecurityAndAnalysisAdvancedSecurity returns new OptFullRepositorySecurityAndAnalysisAdvancedSecurity with value set to v.
 func NewOptFullRepositorySecurityAndAnalysisAdvancedSecurity(v FullRepositorySecurityAndAnalysisAdvancedSecurity) OptFullRepositorySecurityAndAnalysisAdvancedSecurity {
 	return OptFullRepositorySecurityAndAnalysisAdvancedSecurity{
@@ -12515,6 +13595,14 @@ func (o OptFullRepositorySecurityAndAnalysisAdvancedSecurity) Get() (v FullRepos
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptFullRepositorySecurityAndAnalysisAdvancedSecurity) Or(d FullRepositorySecurityAndAnalysisAdvancedSecurity) FullRepositorySecurityAndAnalysisAdvancedSecurity {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptFullRepositorySecurityAndAnalysisAdvancedSecurityStatus returns new OptFullRepositorySecurityAndAnalysisAdvancedSecurityStatus with value set to v.
@@ -12555,6 +13643,14 @@ func (o OptFullRepositorySecurityAndAnalysisAdvancedSecurityStatus) Get() (v Ful
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptFullRepositorySecurityAndAnalysisAdvancedSecurityStatus) Or(d FullRepositorySecurityAndAnalysisAdvancedSecurityStatus) FullRepositorySecurityAndAnalysisAdvancedSecurityStatus {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptFullRepositorySecurityAndAnalysisSecretScanning returns new OptFullRepositorySecurityAndAnalysisSecretScanning with value set to v.
 func NewOptFullRepositorySecurityAndAnalysisSecretScanning(v FullRepositorySecurityAndAnalysisSecretScanning) OptFullRepositorySecurityAndAnalysisSecretScanning {
 	return OptFullRepositorySecurityAndAnalysisSecretScanning{
@@ -12591,6 +13687,14 @@ func (o OptFullRepositorySecurityAndAnalysisSecretScanning) Get() (v FullReposit
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptFullRepositorySecurityAndAnalysisSecretScanning) Or(d FullRepositorySecurityAndAnalysisSecretScanning) FullRepositorySecurityAndAnalysisSecretScanning {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptFullRepositorySecurityAndAnalysisSecretScanningStatus returns new OptFullRepositorySecurityAndAnalysisSecretScanningStatus with value set to v.
@@ -12631,6 +13735,14 @@ func (o OptFullRepositorySecurityAndAnalysisSecretScanningStatus) Get() (v FullR
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptFullRepositorySecurityAndAnalysisSecretScanningStatus) Or(d FullRepositorySecurityAndAnalysisSecretScanningStatus) FullRepositorySecurityAndAnalysisSecretScanningStatus {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptGistHistoryChangeStatus returns new OptGistHistoryChangeStatus with value set to v.
 func NewOptGistHistoryChangeStatus(v GistHistoryChangeStatus) OptGistHistoryChangeStatus {
 	return OptGistHistoryChangeStatus{
@@ -12667,6 +13779,14 @@ func (o OptGistHistoryChangeStatus) Get() (v GistHistoryChangeStatus, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptGistHistoryChangeStatus) Or(d GistHistoryChangeStatus) GistHistoryChangeStatus {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptGitCreateCommitReqAuthor returns new OptGitCreateCommitReqAuthor with value set to v.
@@ -12707,6 +13827,14 @@ func (o OptGitCreateCommitReqAuthor) Get() (v GitCreateCommitReqAuthor, ok bool)
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptGitCreateCommitReqAuthor) Or(d GitCreateCommitReqAuthor) GitCreateCommitReqAuthor {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptGitCreateCommitReqCommitter returns new OptGitCreateCommitReqCommitter with value set to v.
 func NewOptGitCreateCommitReqCommitter(v GitCreateCommitReqCommitter) OptGitCreateCommitReqCommitter {
 	return OptGitCreateCommitReqCommitter{
@@ -12743,6 +13871,14 @@ func (o OptGitCreateCommitReqCommitter) Get() (v GitCreateCommitReqCommitter, ok
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptGitCreateCommitReqCommitter) Or(d GitCreateCommitReqCommitter) GitCreateCommitReqCommitter {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptGitCreateTagReqTagger returns new OptGitCreateTagReqTagger with value set to v.
@@ -12783,6 +13919,14 @@ func (o OptGitCreateTagReqTagger) Get() (v GitCreateTagReqTagger, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptGitCreateTagReqTagger) Or(d GitCreateTagReqTagger) GitCreateTagReqTagger {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptGitCreateTreeReqTreeItemMode returns new OptGitCreateTreeReqTreeItemMode with value set to v.
 func NewOptGitCreateTreeReqTreeItemMode(v GitCreateTreeReqTreeItemMode) OptGitCreateTreeReqTreeItemMode {
 	return OptGitCreateTreeReqTreeItemMode{
@@ -12819,6 +13963,14 @@ func (o OptGitCreateTreeReqTreeItemMode) Get() (v GitCreateTreeReqTreeItemMode, 
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptGitCreateTreeReqTreeItemMode) Or(d GitCreateTreeReqTreeItemMode) GitCreateTreeReqTreeItemMode {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptGitCreateTreeReqTreeItemType returns new OptGitCreateTreeReqTreeItemType with value set to v.
@@ -12859,6 +14011,14 @@ func (o OptGitCreateTreeReqTreeItemType) Get() (v GitCreateTreeReqTreeItemType, 
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptGitCreateTreeReqTreeItemType) Or(d GitCreateTreeReqTreeItemType) GitCreateTreeReqTreeItemType {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptInstallationTokenRepositorySelection returns new OptInstallationTokenRepositorySelection with value set to v.
 func NewOptInstallationTokenRepositorySelection(v InstallationTokenRepositorySelection) OptInstallationTokenRepositorySelection {
 	return OptInstallationTokenRepositorySelection{
@@ -12895,6 +14055,14 @@ func (o OptInstallationTokenRepositorySelection) Get() (v InstallationTokenRepos
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptInstallationTokenRepositorySelection) Or(d InstallationTokenRepositorySelection) InstallationTokenRepositorySelection {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptInt returns new OptInt with value set to v.
@@ -12935,6 +14103,14 @@ func (o OptInt) Get() (v int, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptInt) Or(d int) int {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptInt64 returns new OptInt64 with value set to v.
 func NewOptInt64(v int64) OptInt64 {
 	return OptInt64{
@@ -12971,6 +14147,14 @@ func (o OptInt64) Get() (v int64, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptInt64) Or(d int64) int64 {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptInteractionExpiry returns new OptInteractionExpiry with value set to v.
@@ -13011,6 +14195,14 @@ func (o OptInteractionExpiry) Get() (v InteractionExpiry, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptInteractionExpiry) Or(d InteractionExpiry) InteractionExpiry {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIssueComment returns new OptIssueComment with value set to v.
 func NewOptIssueComment(v IssueComment) OptIssueComment {
 	return OptIssueComment{
@@ -13047,6 +14239,14 @@ func (o OptIssueComment) Get() (v IssueComment, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIssueComment) Or(d IssueComment) IssueComment {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIssueEventDismissedReview returns new OptIssueEventDismissedReview with value set to v.
@@ -13087,6 +14287,14 @@ func (o OptIssueEventDismissedReview) Get() (v IssueEventDismissedReview, ok boo
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIssueEventDismissedReview) Or(d IssueEventDismissedReview) IssueEventDismissedReview {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIssueEventLabel returns new OptIssueEventLabel with value set to v.
 func NewOptIssueEventLabel(v IssueEventLabel) OptIssueEventLabel {
 	return OptIssueEventLabel{
@@ -13123,6 +14331,14 @@ func (o OptIssueEventLabel) Get() (v IssueEventLabel, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIssueEventLabel) Or(d IssueEventLabel) IssueEventLabel {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIssueEventMilestone returns new OptIssueEventMilestone with value set to v.
@@ -13163,6 +14379,14 @@ func (o OptIssueEventMilestone) Get() (v IssueEventMilestone, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIssueEventMilestone) Or(d IssueEventMilestone) IssueEventMilestone {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIssueEventProjectCard returns new OptIssueEventProjectCard with value set to v.
 func NewOptIssueEventProjectCard(v IssueEventProjectCard) OptIssueEventProjectCard {
 	return OptIssueEventProjectCard{
@@ -13199,6 +14423,14 @@ func (o OptIssueEventProjectCard) Get() (v IssueEventProjectCard, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIssueEventProjectCard) Or(d IssueEventProjectCard) IssueEventProjectCard {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIssueEventRename returns new OptIssueEventRename with value set to v.
@@ -13239,6 +14471,14 @@ func (o OptIssueEventRename) Get() (v IssueEventRename, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIssueEventRename) Or(d IssueEventRename) IssueEventRename {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIssuePullRequest returns new OptIssuePullRequest with value set to v.
 func NewOptIssuePullRequest(v IssuePullRequest) OptIssuePullRequest {
 	return OptIssuePullRequest{
@@ -13275,6 +14515,14 @@ func (o OptIssuePullRequest) Get() (v IssuePullRequest, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIssuePullRequest) Or(d IssuePullRequest) IssuePullRequest {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIssueSearchResultItemPullRequest returns new OptIssueSearchResultItemPullRequest with value set to v.
@@ -13315,6 +14563,14 @@ func (o OptIssueSearchResultItemPullRequest) Get() (v IssueSearchResultItemPullR
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIssueSearchResultItemPullRequest) Or(d IssueSearchResultItemPullRequest) IssueSearchResultItemPullRequest {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIssueSimple returns new OptIssueSimple with value set to v.
 func NewOptIssueSimple(v IssueSimple) OptIssueSimple {
 	return OptIssueSimple{
@@ -13351,6 +14607,14 @@ func (o OptIssueSimple) Get() (v IssueSimple, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIssueSimple) Or(d IssueSimple) IssueSimple {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIssueSimplePullRequest returns new OptIssueSimplePullRequest with value set to v.
@@ -13391,6 +14655,14 @@ func (o OptIssueSimplePullRequest) Get() (v IssueSimplePullRequest, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIssueSimplePullRequest) Or(d IssueSimplePullRequest) IssueSimplePullRequest {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIssuesAddAssigneesReq returns new OptIssuesAddAssigneesReq with value set to v.
 func NewOptIssuesAddAssigneesReq(v IssuesAddAssigneesReq) OptIssuesAddAssigneesReq {
 	return OptIssuesAddAssigneesReq{
@@ -13427,6 +14699,14 @@ func (o OptIssuesAddAssigneesReq) Get() (v IssuesAddAssigneesReq, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIssuesAddAssigneesReq) Or(d IssuesAddAssigneesReq) IssuesAddAssigneesReq {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIssuesCreateMilestoneReqState returns new OptIssuesCreateMilestoneReqState with value set to v.
@@ -13467,6 +14747,14 @@ func (o OptIssuesCreateMilestoneReqState) Get() (v IssuesCreateMilestoneReqState
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIssuesCreateMilestoneReqState) Or(d IssuesCreateMilestoneReqState) IssuesCreateMilestoneReqState {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIssuesCreateReqMilestone returns new OptIssuesCreateReqMilestone with value set to v.
 func NewOptIssuesCreateReqMilestone(v *IssuesCreateReqMilestone) OptIssuesCreateReqMilestone {
 	return OptIssuesCreateReqMilestone{
@@ -13503,6 +14791,14 @@ func (o OptIssuesCreateReqMilestone) Get() (v *IssuesCreateReqMilestone, ok bool
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIssuesCreateReqMilestone) Or(d *IssuesCreateReqMilestone) *IssuesCreateReqMilestone {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIssuesListCommentsForRepoDirection returns new OptIssuesListCommentsForRepoDirection with value set to v.
@@ -13543,6 +14839,14 @@ func (o OptIssuesListCommentsForRepoDirection) Get() (v IssuesListCommentsForRep
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIssuesListCommentsForRepoDirection) Or(d IssuesListCommentsForRepoDirection) IssuesListCommentsForRepoDirection {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIssuesListCommentsForRepoSort returns new OptIssuesListCommentsForRepoSort with value set to v.
 func NewOptIssuesListCommentsForRepoSort(v IssuesListCommentsForRepoSort) OptIssuesListCommentsForRepoSort {
 	return OptIssuesListCommentsForRepoSort{
@@ -13579,6 +14883,14 @@ func (o OptIssuesListCommentsForRepoSort) Get() (v IssuesListCommentsForRepoSort
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIssuesListCommentsForRepoSort) Or(d IssuesListCommentsForRepoSort) IssuesListCommentsForRepoSort {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIssuesListDirection returns new OptIssuesListDirection with value set to v.
@@ -13619,6 +14931,14 @@ func (o OptIssuesListDirection) Get() (v IssuesListDirection, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIssuesListDirection) Or(d IssuesListDirection) IssuesListDirection {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIssuesListFilter returns new OptIssuesListFilter with value set to v.
 func NewOptIssuesListFilter(v IssuesListFilter) OptIssuesListFilter {
 	return OptIssuesListFilter{
@@ -13655,6 +14975,14 @@ func (o OptIssuesListFilter) Get() (v IssuesListFilter, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIssuesListFilter) Or(d IssuesListFilter) IssuesListFilter {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIssuesListForAuthenticatedUserDirection returns new OptIssuesListForAuthenticatedUserDirection with value set to v.
@@ -13695,6 +15023,14 @@ func (o OptIssuesListForAuthenticatedUserDirection) Get() (v IssuesListForAuthen
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIssuesListForAuthenticatedUserDirection) Or(d IssuesListForAuthenticatedUserDirection) IssuesListForAuthenticatedUserDirection {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIssuesListForAuthenticatedUserFilter returns new OptIssuesListForAuthenticatedUserFilter with value set to v.
 func NewOptIssuesListForAuthenticatedUserFilter(v IssuesListForAuthenticatedUserFilter) OptIssuesListForAuthenticatedUserFilter {
 	return OptIssuesListForAuthenticatedUserFilter{
@@ -13731,6 +15067,14 @@ func (o OptIssuesListForAuthenticatedUserFilter) Get() (v IssuesListForAuthentic
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIssuesListForAuthenticatedUserFilter) Or(d IssuesListForAuthenticatedUserFilter) IssuesListForAuthenticatedUserFilter {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIssuesListForAuthenticatedUserSort returns new OptIssuesListForAuthenticatedUserSort with value set to v.
@@ -13771,6 +15115,14 @@ func (o OptIssuesListForAuthenticatedUserSort) Get() (v IssuesListForAuthenticat
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIssuesListForAuthenticatedUserSort) Or(d IssuesListForAuthenticatedUserSort) IssuesListForAuthenticatedUserSort {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIssuesListForAuthenticatedUserState returns new OptIssuesListForAuthenticatedUserState with value set to v.
 func NewOptIssuesListForAuthenticatedUserState(v IssuesListForAuthenticatedUserState) OptIssuesListForAuthenticatedUserState {
 	return OptIssuesListForAuthenticatedUserState{
@@ -13807,6 +15159,14 @@ func (o OptIssuesListForAuthenticatedUserState) Get() (v IssuesListForAuthentica
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIssuesListForAuthenticatedUserState) Or(d IssuesListForAuthenticatedUserState) IssuesListForAuthenticatedUserState {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIssuesListForOrgDirection returns new OptIssuesListForOrgDirection with value set to v.
@@ -13847,6 +15207,14 @@ func (o OptIssuesListForOrgDirection) Get() (v IssuesListForOrgDirection, ok boo
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIssuesListForOrgDirection) Or(d IssuesListForOrgDirection) IssuesListForOrgDirection {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIssuesListForOrgFilter returns new OptIssuesListForOrgFilter with value set to v.
 func NewOptIssuesListForOrgFilter(v IssuesListForOrgFilter) OptIssuesListForOrgFilter {
 	return OptIssuesListForOrgFilter{
@@ -13883,6 +15251,14 @@ func (o OptIssuesListForOrgFilter) Get() (v IssuesListForOrgFilter, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIssuesListForOrgFilter) Or(d IssuesListForOrgFilter) IssuesListForOrgFilter {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIssuesListForOrgSort returns new OptIssuesListForOrgSort with value set to v.
@@ -13923,6 +15299,14 @@ func (o OptIssuesListForOrgSort) Get() (v IssuesListForOrgSort, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIssuesListForOrgSort) Or(d IssuesListForOrgSort) IssuesListForOrgSort {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIssuesListForOrgState returns new OptIssuesListForOrgState with value set to v.
 func NewOptIssuesListForOrgState(v IssuesListForOrgState) OptIssuesListForOrgState {
 	return OptIssuesListForOrgState{
@@ -13959,6 +15343,14 @@ func (o OptIssuesListForOrgState) Get() (v IssuesListForOrgState, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIssuesListForOrgState) Or(d IssuesListForOrgState) IssuesListForOrgState {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIssuesListForRepoDirection returns new OptIssuesListForRepoDirection with value set to v.
@@ -13999,6 +15391,14 @@ func (o OptIssuesListForRepoDirection) Get() (v IssuesListForRepoDirection, ok b
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIssuesListForRepoDirection) Or(d IssuesListForRepoDirection) IssuesListForRepoDirection {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIssuesListForRepoSort returns new OptIssuesListForRepoSort with value set to v.
 func NewOptIssuesListForRepoSort(v IssuesListForRepoSort) OptIssuesListForRepoSort {
 	return OptIssuesListForRepoSort{
@@ -14035,6 +15435,14 @@ func (o OptIssuesListForRepoSort) Get() (v IssuesListForRepoSort, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIssuesListForRepoSort) Or(d IssuesListForRepoSort) IssuesListForRepoSort {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIssuesListForRepoState returns new OptIssuesListForRepoState with value set to v.
@@ -14075,6 +15483,14 @@ func (o OptIssuesListForRepoState) Get() (v IssuesListForRepoState, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIssuesListForRepoState) Or(d IssuesListForRepoState) IssuesListForRepoState {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIssuesListMilestonesDirection returns new OptIssuesListMilestonesDirection with value set to v.
 func NewOptIssuesListMilestonesDirection(v IssuesListMilestonesDirection) OptIssuesListMilestonesDirection {
 	return OptIssuesListMilestonesDirection{
@@ -14111,6 +15527,14 @@ func (o OptIssuesListMilestonesDirection) Get() (v IssuesListMilestonesDirection
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIssuesListMilestonesDirection) Or(d IssuesListMilestonesDirection) IssuesListMilestonesDirection {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIssuesListMilestonesSort returns new OptIssuesListMilestonesSort with value set to v.
@@ -14151,6 +15575,14 @@ func (o OptIssuesListMilestonesSort) Get() (v IssuesListMilestonesSort, ok bool)
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIssuesListMilestonesSort) Or(d IssuesListMilestonesSort) IssuesListMilestonesSort {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIssuesListMilestonesState returns new OptIssuesListMilestonesState with value set to v.
 func NewOptIssuesListMilestonesState(v IssuesListMilestonesState) OptIssuesListMilestonesState {
 	return OptIssuesListMilestonesState{
@@ -14187,6 +15619,14 @@ func (o OptIssuesListMilestonesState) Get() (v IssuesListMilestonesState, ok boo
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIssuesListMilestonesState) Or(d IssuesListMilestonesState) IssuesListMilestonesState {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIssuesListSort returns new OptIssuesListSort with value set to v.
@@ -14227,6 +15667,14 @@ func (o OptIssuesListSort) Get() (v IssuesListSort, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIssuesListSort) Or(d IssuesListSort) IssuesListSort {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIssuesListState returns new OptIssuesListState with value set to v.
 func NewOptIssuesListState(v IssuesListState) OptIssuesListState {
 	return OptIssuesListState{
@@ -14263,6 +15711,14 @@ func (o OptIssuesListState) Get() (v IssuesListState, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIssuesListState) Or(d IssuesListState) IssuesListState {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIssuesLockReq returns new OptIssuesLockReq with value set to v.
@@ -14303,6 +15759,14 @@ func (o OptIssuesLockReq) Get() (v IssuesLockReq, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIssuesLockReq) Or(d IssuesLockReq) IssuesLockReq {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIssuesLockReqLockReason returns new OptIssuesLockReqLockReason with value set to v.
 func NewOptIssuesLockReqLockReason(v IssuesLockReqLockReason) OptIssuesLockReqLockReason {
 	return OptIssuesLockReqLockReason{
@@ -14339,6 +15803,14 @@ func (o OptIssuesLockReqLockReason) Get() (v IssuesLockReqLockReason, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIssuesLockReqLockReason) Or(d IssuesLockReqLockReason) IssuesLockReqLockReason {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIssuesRemoveAssigneesReq returns new OptIssuesRemoveAssigneesReq with value set to v.
@@ -14379,6 +15851,14 @@ func (o OptIssuesRemoveAssigneesReq) Get() (v IssuesRemoveAssigneesReq, ok bool)
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIssuesRemoveAssigneesReq) Or(d IssuesRemoveAssigneesReq) IssuesRemoveAssigneesReq {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIssuesUpdateLabelReq returns new OptIssuesUpdateLabelReq with value set to v.
 func NewOptIssuesUpdateLabelReq(v IssuesUpdateLabelReq) OptIssuesUpdateLabelReq {
 	return OptIssuesUpdateLabelReq{
@@ -14415,6 +15895,14 @@ func (o OptIssuesUpdateLabelReq) Get() (v IssuesUpdateLabelReq, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIssuesUpdateLabelReq) Or(d IssuesUpdateLabelReq) IssuesUpdateLabelReq {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIssuesUpdateMilestoneReq returns new OptIssuesUpdateMilestoneReq with value set to v.
@@ -14455,6 +15943,14 @@ func (o OptIssuesUpdateMilestoneReq) Get() (v IssuesUpdateMilestoneReq, ok bool)
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIssuesUpdateMilestoneReq) Or(d IssuesUpdateMilestoneReq) IssuesUpdateMilestoneReq {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIssuesUpdateMilestoneReqState returns new OptIssuesUpdateMilestoneReqState with value set to v.
 func NewOptIssuesUpdateMilestoneReqState(v IssuesUpdateMilestoneReqState) OptIssuesUpdateMilestoneReqState {
 	return OptIssuesUpdateMilestoneReqState{
@@ -14491,6 +15987,14 @@ func (o OptIssuesUpdateMilestoneReqState) Get() (v IssuesUpdateMilestoneReqState
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIssuesUpdateMilestoneReqState) Or(d IssuesUpdateMilestoneReqState) IssuesUpdateMilestoneReqState {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIssuesUpdateReq returns new OptIssuesUpdateReq with value set to v.
@@ -14531,6 +16035,14 @@ func (o OptIssuesUpdateReq) Get() (v IssuesUpdateReq, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIssuesUpdateReq) Or(d IssuesUpdateReq) IssuesUpdateReq {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIssuesUpdateReqMilestone returns new OptIssuesUpdateReqMilestone with value set to v.
 func NewOptIssuesUpdateReqMilestone(v *IssuesUpdateReqMilestone) OptIssuesUpdateReqMilestone {
 	return OptIssuesUpdateReqMilestone{
@@ -14567,6 +16079,14 @@ func (o OptIssuesUpdateReqMilestone) Get() (v *IssuesUpdateReqMilestone, ok bool
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIssuesUpdateReqMilestone) Or(d *IssuesUpdateReqMilestone) *IssuesUpdateReqMilestone {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptIssuesUpdateReqState returns new OptIssuesUpdateReqState with value set to v.
@@ -14607,6 +16127,14 @@ func (o OptIssuesUpdateReqState) Get() (v IssuesUpdateReqState, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptIssuesUpdateReqState) Or(d IssuesUpdateReqState) IssuesUpdateReqState {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIssuesUpdateReqTitle returns new OptIssuesUpdateReqTitle with value set to v.
 func NewOptIssuesUpdateReqTitle(v *IssuesUpdateReqTitle) OptIssuesUpdateReqTitle {
 	return OptIssuesUpdateReqTitle{
@@ -14643,6 +16171,14 @@ func (o OptIssuesUpdateReqTitle) Get() (v *IssuesUpdateReqTitle, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIssuesUpdateReqTitle) Or(d *IssuesUpdateReqTitle) *IssuesUpdateReqTitle {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptLinkWithType returns new OptLinkWithType with value set to v.
@@ -14683,6 +16219,14 @@ func (o OptLinkWithType) Get() (v LinkWithType, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptLinkWithType) Or(d LinkWithType) LinkWithType {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptMarkdownRenderReqMode returns new OptMarkdownRenderReqMode with value set to v.
 func NewOptMarkdownRenderReqMode(v MarkdownRenderReqMode) OptMarkdownRenderReqMode {
 	return OptMarkdownRenderReqMode{
@@ -14719,6 +16263,14 @@ func (o OptMarkdownRenderReqMode) Get() (v MarkdownRenderReqMode, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptMarkdownRenderReqMode) Or(d MarkdownRenderReqMode) MarkdownRenderReqMode {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptMarketplaceListingPlan returns new OptMarketplaceListingPlan with value set to v.
@@ -14759,6 +16311,14 @@ func (o OptMarketplaceListingPlan) Get() (v MarketplaceListingPlan, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptMarketplaceListingPlan) Or(d MarketplaceListingPlan) MarketplaceListingPlan {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptMergedUpstreamMergeType returns new OptMergedUpstreamMergeType with value set to v.
 func NewOptMergedUpstreamMergeType(v MergedUpstreamMergeType) OptMergedUpstreamMergeType {
 	return OptMergedUpstreamMergeType{
@@ -14795,6 +16355,14 @@ func (o OptMergedUpstreamMergeType) Get() (v MergedUpstreamMergeType, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptMergedUpstreamMergeType) Or(d MergedUpstreamMergeType) MergedUpstreamMergeType {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptMigrationsMapCommitAuthorReq returns new OptMigrationsMapCommitAuthorReq with value set to v.
@@ -14835,6 +16403,14 @@ func (o OptMigrationsMapCommitAuthorReq) Get() (v MigrationsMapCommitAuthorReq, 
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptMigrationsMapCommitAuthorReq) Or(d MigrationsMapCommitAuthorReq) MigrationsMapCommitAuthorReq {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptMigrationsStartImportReqVcs returns new OptMigrationsStartImportReqVcs with value set to v.
 func NewOptMigrationsStartImportReqVcs(v MigrationsStartImportReqVcs) OptMigrationsStartImportReqVcs {
 	return OptMigrationsStartImportReqVcs{
@@ -14871,6 +16447,14 @@ func (o OptMigrationsStartImportReqVcs) Get() (v MigrationsStartImportReqVcs, ok
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptMigrationsStartImportReqVcs) Or(d MigrationsStartImportReqVcs) MigrationsStartImportReqVcs {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptMigrationsUpdateImportReq returns new OptMigrationsUpdateImportReq with value set to v.
@@ -14911,6 +16495,14 @@ func (o OptMigrationsUpdateImportReq) Get() (v MigrationsUpdateImportReq, ok boo
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptMigrationsUpdateImportReq) Or(d MigrationsUpdateImportReq) MigrationsUpdateImportReq {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptMinimalRepository returns new OptMinimalRepository with value set to v.
 func NewOptMinimalRepository(v MinimalRepository) OptMinimalRepository {
 	return OptMinimalRepository{
@@ -14949,6 +16541,14 @@ func (o OptMinimalRepository) Get() (v MinimalRepository, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptMinimalRepository) Or(d MinimalRepository) MinimalRepository {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptMinimalRepositoryPermissions returns new OptMinimalRepositoryPermissions with value set to v.
 func NewOptMinimalRepositoryPermissions(v MinimalRepositoryPermissions) OptMinimalRepositoryPermissions {
 	return OptMinimalRepositoryPermissions{
@@ -14985,6 +16585,14 @@ func (o OptMinimalRepositoryPermissions) Get() (v MinimalRepositoryPermissions, 
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptMinimalRepositoryPermissions) Or(d MinimalRepositoryPermissions) MinimalRepositoryPermissions {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptNilBool returns new OptNilBool with value set to v.
@@ -15034,6 +16642,14 @@ func (o OptNilBool) Get() (v bool, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptNilBool) Or(d bool) bool {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptNilCodeScanningAlertDismissedReason returns new OptNilCodeScanningAlertDismissedReason with value set to v.
 func NewOptNilCodeScanningAlertDismissedReason(v CodeScanningAlertDismissedReason) OptNilCodeScanningAlertDismissedReason {
 	return OptNilCodeScanningAlertDismissedReason{
@@ -15079,6 +16695,14 @@ func (o OptNilCodeScanningAlertDismissedReason) Get() (v CodeScanningAlertDismis
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptNilCodeScanningAlertDismissedReason) Or(d CodeScanningAlertDismissedReason) CodeScanningAlertDismissedReason {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptNilCodeScanningAlertRuleSecuritySeverityLevel returns new OptNilCodeScanningAlertRuleSecuritySeverityLevel with value set to v.
@@ -15128,6 +16752,14 @@ func (o OptNilCodeScanningAlertRuleSecuritySeverityLevel) Get() (v CodeScanningA
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptNilCodeScanningAlertRuleSecuritySeverityLevel) Or(d CodeScanningAlertRuleSecuritySeverityLevel) CodeScanningAlertRuleSecuritySeverityLevel {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptNilCodeScanningAlertRuleSeverity returns new OptNilCodeScanningAlertRuleSeverity with value set to v.
 func NewOptNilCodeScanningAlertRuleSeverity(v CodeScanningAlertRuleSeverity) OptNilCodeScanningAlertRuleSeverity {
 	return OptNilCodeScanningAlertRuleSeverity{
@@ -15173,6 +16805,14 @@ func (o OptNilCodeScanningAlertRuleSeverity) Get() (v CodeScanningAlertRuleSever
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptNilCodeScanningAlertRuleSeverity) Or(d CodeScanningAlertRuleSeverity) CodeScanningAlertRuleSeverity {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptNilCodeScanningAlertRuleSummarySeverity returns new OptNilCodeScanningAlertRuleSummarySeverity with value set to v.
@@ -15222,6 +16862,14 @@ func (o OptNilCodeScanningAlertRuleSummarySeverity) Get() (v CodeScanningAlertRu
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptNilCodeScanningAlertRuleSummarySeverity) Or(d CodeScanningAlertRuleSummarySeverity) CodeScanningAlertRuleSummarySeverity {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptNilCodeScanningAnalysisToolGUID returns new OptNilCodeScanningAnalysisToolGUID with value set to v.
 func NewOptNilCodeScanningAnalysisToolGUID(v CodeScanningAnalysisToolGUID) OptNilCodeScanningAnalysisToolGUID {
 	return OptNilCodeScanningAnalysisToolGUID{
@@ -15267,6 +16915,14 @@ func (o OptNilCodeScanningAnalysisToolGUID) Get() (v CodeScanningAnalysisToolGUI
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptNilCodeScanningAnalysisToolGUID) Or(d CodeScanningAnalysisToolGUID) CodeScanningAnalysisToolGUID {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptNilCodeScanningAnalysisToolVersion returns new OptNilCodeScanningAnalysisToolVersion with value set to v.
@@ -15316,6 +16972,14 @@ func (o OptNilCodeScanningAnalysisToolVersion) Get() (v CodeScanningAnalysisTool
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptNilCodeScanningAnalysisToolVersion) Or(d CodeScanningAnalysisToolVersion) CodeScanningAnalysisToolVersion {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptNilDeploymentBranchPolicy returns new OptNilDeploymentBranchPolicy with value set to v.
 func NewOptNilDeploymentBranchPolicy(v DeploymentBranchPolicy) OptNilDeploymentBranchPolicy {
 	return OptNilDeploymentBranchPolicy{
@@ -15361,6 +17025,14 @@ func (o OptNilDeploymentBranchPolicy) Get() (v DeploymentBranchPolicy, ok bool) 
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptNilDeploymentBranchPolicy) Or(d DeploymentBranchPolicy) DeploymentBranchPolicy {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptNilFullRepositorySecurityAndAnalysis returns new OptNilFullRepositorySecurityAndAnalysis with value set to v.
@@ -15410,6 +17082,14 @@ func (o OptNilFullRepositorySecurityAndAnalysis) Get() (v FullRepositorySecurity
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptNilFullRepositorySecurityAndAnalysis) Or(d FullRepositorySecurityAndAnalysis) FullRepositorySecurityAndAnalysis {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptNilGistHistoryArray returns new OptNilGistHistoryArray with value set to v.
 func NewOptNilGistHistoryArray(v []GistHistory) OptNilGistHistoryArray {
 	return OptNilGistHistoryArray{
@@ -15455,6 +17135,14 @@ func (o OptNilGistHistoryArray) Get() (v []GistHistory, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptNilGistHistoryArray) Or(d []GistHistory) []GistHistory {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptNilGistSimpleForkOf returns new OptNilGistSimpleForkOf with value set to v.
@@ -15504,6 +17192,14 @@ func (o OptNilGistSimpleForkOf) Get() (v GistSimpleForkOf, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptNilGistSimpleForkOf) Or(d GistSimpleForkOf) GistSimpleForkOf {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptNilGistSimpleForksItemArray returns new OptNilGistSimpleForksItemArray with value set to v.
 func NewOptNilGistSimpleForksItemArray(v []GistSimpleForksItem) OptNilGistSimpleForksItemArray {
 	return OptNilGistSimpleForksItemArray{
@@ -15549,6 +17245,14 @@ func (o OptNilGistSimpleForksItemArray) Get() (v []GistSimpleForksItem, ok bool)
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptNilGistSimpleForksItemArray) Or(d []GistSimpleForksItem) []GistSimpleForksItem {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptNilInt returns new OptNilInt with value set to v.
@@ -15598,6 +17302,14 @@ func (o OptNilInt) Get() (v int, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptNilInt) Or(d int) int {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptNilMarketplacePurchaseMarketplacePendingChange returns new OptNilMarketplacePurchaseMarketplacePendingChange with value set to v.
 func NewOptNilMarketplacePurchaseMarketplacePendingChange(v MarketplacePurchaseMarketplacePendingChange) OptNilMarketplacePurchaseMarketplacePendingChange {
 	return OptNilMarketplacePurchaseMarketplacePendingChange{
@@ -15643,6 +17355,14 @@ func (o OptNilMarketplacePurchaseMarketplacePendingChange) Get() (v MarketplaceP
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptNilMarketplacePurchaseMarketplacePendingChange) Or(d MarketplacePurchaseMarketplacePendingChange) MarketplacePurchaseMarketplacePendingChange {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptNilMinimalRepositoryLicense returns new OptNilMinimalRepositoryLicense with value set to v.
@@ -15692,6 +17412,14 @@ func (o OptNilMinimalRepositoryLicense) Get() (v MinimalRepositoryLicense, ok bo
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptNilMinimalRepositoryLicense) Or(d MinimalRepositoryLicense) MinimalRepositoryLicense {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptNilNullableIntegration returns new OptNilNullableIntegration with value set to v.
 func NewOptNilNullableIntegration(v NullableIntegration) OptNilNullableIntegration {
 	return OptNilNullableIntegration{
@@ -15737,6 +17465,14 @@ func (o OptNilNullableIntegration) Get() (v NullableIntegration, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptNilNullableIntegration) Or(d NullableIntegration) NullableIntegration {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptNilNullableMinimalRepository returns new OptNilNullableMinimalRepository with value set to v.
@@ -15786,6 +17522,14 @@ func (o OptNilNullableMinimalRepository) Get() (v NullableMinimalRepository, ok 
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptNilNullableMinimalRepository) Or(d NullableMinimalRepository) NullableMinimalRepository {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptNilNullableMinimalRepositoryLicense returns new OptNilNullableMinimalRepositoryLicense with value set to v.
 func NewOptNilNullableMinimalRepositoryLicense(v NullableMinimalRepositoryLicense) OptNilNullableMinimalRepositoryLicense {
 	return OptNilNullableMinimalRepositoryLicense{
@@ -15831,6 +17575,14 @@ func (o OptNilNullableMinimalRepositoryLicense) Get() (v NullableMinimalReposito
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptNilNullableMinimalRepositoryLicense) Or(d NullableMinimalRepositoryLicense) NullableMinimalRepositoryLicense {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptNilNullableRepository returns new OptNilNullableRepository with value set to v.
@@ -15880,6 +17632,14 @@ func (o OptNilNullableRepository) Get() (v NullableRepository, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptNilNullableRepository) Or(d NullableRepository) NullableRepository {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptNilNullableRepositoryTemplateRepository returns new OptNilNullableRepositoryTemplateRepository with value set to v.
 func NewOptNilNullableRepositoryTemplateRepository(v NullableRepositoryTemplateRepository) OptNilNullableRepositoryTemplateRepository {
 	return OptNilNullableRepositoryTemplateRepository{
@@ -15925,6 +17685,14 @@ func (o OptNilNullableRepositoryTemplateRepository) Get() (v NullableRepositoryT
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptNilNullableRepositoryTemplateRepository) Or(d NullableRepositoryTemplateRepository) NullableRepositoryTemplateRepository {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptNilNullableScopedInstallation returns new OptNilNullableScopedInstallation with value set to v.
@@ -15974,6 +17742,14 @@ func (o OptNilNullableScopedInstallation) Get() (v NullableScopedInstallation, o
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptNilNullableScopedInstallation) Or(d NullableScopedInstallation) NullableScopedInstallation {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptNilNullableSimpleUser returns new OptNilNullableSimpleUser with value set to v.
 func NewOptNilNullableSimpleUser(v NullableSimpleUser) OptNilNullableSimpleUser {
 	return OptNilNullableSimpleUser{
@@ -16019,6 +17795,14 @@ func (o OptNilNullableSimpleUser) Get() (v NullableSimpleUser, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptNilNullableSimpleUser) Or(d NullableSimpleUser) NullableSimpleUser {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptNilNullableTeamSimple returns new OptNilNullableTeamSimple with value set to v.
@@ -16068,6 +17852,14 @@ func (o OptNilNullableTeamSimple) Get() (v NullableTeamSimple, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptNilNullableTeamSimple) Or(d NullableTeamSimple) NullableTeamSimple {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptNilPageProtectedDomainState returns new OptNilPageProtectedDomainState with value set to v.
 func NewOptNilPageProtectedDomainState(v PageProtectedDomainState) OptNilPageProtectedDomainState {
 	return OptNilPageProtectedDomainState{
@@ -16113,6 +17905,14 @@ func (o OptNilPageProtectedDomainState) Get() (v PageProtectedDomainState, ok bo
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptNilPageProtectedDomainState) Or(d PageProtectedDomainState) PageProtectedDomainState {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptNilPagesHealthCheckAltDomain returns new OptNilPagesHealthCheckAltDomain with value set to v.
@@ -16162,6 +17962,14 @@ func (o OptNilPagesHealthCheckAltDomain) Get() (v PagesHealthCheckAltDomain, ok 
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptNilPagesHealthCheckAltDomain) Or(d PagesHealthCheckAltDomain) PagesHealthCheckAltDomain {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptNilPullRequestReviewCommentStartSide returns new OptNilPullRequestReviewCommentStartSide with value set to v.
 func NewOptNilPullRequestReviewCommentStartSide(v PullRequestReviewCommentStartSide) OptNilPullRequestReviewCommentStartSide {
 	return OptNilPullRequestReviewCommentStartSide{
@@ -16207,6 +18015,14 @@ func (o OptNilPullRequestReviewCommentStartSide) Get() (v PullRequestReviewComme
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptNilPullRequestReviewCommentStartSide) Or(d PullRequestReviewCommentStartSide) PullRequestReviewCommentStartSide {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptNilReposCreateOrUpdateEnvironmentReqReviewersItemArray returns new OptNilReposCreateOrUpdateEnvironmentReqReviewersItemArray with value set to v.
@@ -16256,6 +18072,14 @@ func (o OptNilReposCreateOrUpdateEnvironmentReqReviewersItemArray) Get() (v []Re
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptNilReposCreateOrUpdateEnvironmentReqReviewersItemArray) Or(d []ReposCreateOrUpdateEnvironmentReqReviewersItem) []ReposCreateOrUpdateEnvironmentReqReviewersItem {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptNilReposUpdateReqSecurityAndAnalysis returns new OptNilReposUpdateReqSecurityAndAnalysis with value set to v.
 func NewOptNilReposUpdateReqSecurityAndAnalysis(v ReposUpdateReqSecurityAndAnalysis) OptNilReposUpdateReqSecurityAndAnalysis {
 	return OptNilReposUpdateReqSecurityAndAnalysis{
@@ -16301,6 +18125,14 @@ func (o OptNilReposUpdateReqSecurityAndAnalysis) Get() (v ReposUpdateReqSecurity
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptNilReposUpdateReqSecurityAndAnalysis) Or(d ReposUpdateReqSecurityAndAnalysis) ReposUpdateReqSecurityAndAnalysis {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptNilRepositoryTemplateRepository returns new OptNilRepositoryTemplateRepository with value set to v.
@@ -16350,6 +18182,14 @@ func (o OptNilRepositoryTemplateRepository) Get() (v RepositoryTemplateRepositor
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptNilRepositoryTemplateRepository) Or(d RepositoryTemplateRepository) RepositoryTemplateRepository {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptNilReviewCommentStartSide returns new OptNilReviewCommentStartSide with value set to v.
 func NewOptNilReviewCommentStartSide(v ReviewCommentStartSide) OptNilReviewCommentStartSide {
 	return OptNilReviewCommentStartSide{
@@ -16395,6 +18235,14 @@ func (o OptNilReviewCommentStartSide) Get() (v ReviewCommentStartSide, ok bool) 
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptNilReviewCommentStartSide) Or(d ReviewCommentStartSide) ReviewCommentStartSide {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptNilSecretScanningAlertResolution returns new OptNilSecretScanningAlertResolution with value set to v.
@@ -16444,6 +18292,14 @@ func (o OptNilSecretScanningAlertResolution) Get() (v SecretScanningAlertResolut
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptNilSecretScanningAlertResolution) Or(d SecretScanningAlertResolution) SecretScanningAlertResolution {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptNilSimpleUserArray returns new OptNilSimpleUserArray with value set to v.
 func NewOptNilSimpleUserArray(v []SimpleUser) OptNilSimpleUserArray {
 	return OptNilSimpleUserArray{
@@ -16489,6 +18345,14 @@ func (o OptNilSimpleUserArray) Get() (v []SimpleUser, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptNilSimpleUserArray) Or(d []SimpleUser) []SimpleUser {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptNilString returns new OptNilString with value set to v.
@@ -16538,6 +18402,14 @@ func (o OptNilString) Get() (v string, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptNilString) Or(d string) string {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptNilStringArray returns new OptNilStringArray with value set to v.
 func NewOptNilStringArray(v []string) OptNilStringArray {
 	return OptNilStringArray{
@@ -16583,6 +18455,14 @@ func (o OptNilStringArray) Get() (v []string, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptNilStringArray) Or(d []string) []string {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptNilTeamArray returns new OptNilTeamArray with value set to v.
@@ -16632,6 +18512,14 @@ func (o OptNilTeamArray) Get() (v []Team, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptNilTeamArray) Or(d []Team) []Team {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptNilTeamSimpleArray returns new OptNilTeamSimpleArray with value set to v.
 func NewOptNilTeamSimpleArray(v []TeamSimple) OptNilTeamSimpleArray {
 	return OptNilTeamSimpleArray{
@@ -16677,6 +18565,14 @@ func (o OptNilTeamSimpleArray) Get() (v []TeamSimple, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptNilTeamSimpleArray) Or(d []TeamSimple) []TeamSimple {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptNilTime returns new OptNilTime with value set to v.
@@ -16726,6 +18622,14 @@ func (o OptNilTime) Get() (v time.Time, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptNilTime) Or(d time.Time) time.Time {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptNilTopicSearchResultItemAliasesItemArray returns new OptNilTopicSearchResultItemAliasesItemArray with value set to v.
 func NewOptNilTopicSearchResultItemAliasesItemArray(v []TopicSearchResultItemAliasesItem) OptNilTopicSearchResultItemAliasesItemArray {
 	return OptNilTopicSearchResultItemAliasesItemArray{
@@ -16771,6 +18675,14 @@ func (o OptNilTopicSearchResultItemAliasesItemArray) Get() (v []TopicSearchResul
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptNilTopicSearchResultItemAliasesItemArray) Or(d []TopicSearchResultItemAliasesItem) []TopicSearchResultItemAliasesItem {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptNilTopicSearchResultItemRelatedItemArray returns new OptNilTopicSearchResultItemRelatedItemArray with value set to v.
@@ -16820,6 +18732,14 @@ func (o OptNilTopicSearchResultItemRelatedItemArray) Get() (v []TopicSearchResul
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptNilTopicSearchResultItemRelatedItemArray) Or(d []TopicSearchResultItemRelatedItem) []TopicSearchResultItemRelatedItem {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptNilURL returns new OptNilURL with value set to v.
 func NewOptNilURL(v url.URL) OptNilURL {
 	return OptNilURL{
@@ -16867,6 +18787,14 @@ func (o OptNilURL) Get() (v url.URL, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptNilURL) Or(d url.URL) url.URL {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptNullableMinimalRepositoryPermissions returns new OptNullableMinimalRepositoryPermissions with value set to v.
 func NewOptNullableMinimalRepositoryPermissions(v NullableMinimalRepositoryPermissions) OptNullableMinimalRepositoryPermissions {
 	return OptNullableMinimalRepositoryPermissions{
@@ -16903,6 +18831,14 @@ func (o OptNullableMinimalRepositoryPermissions) Get() (v NullableMinimalReposit
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptNullableMinimalRepositoryPermissions) Or(d NullableMinimalRepositoryPermissions) NullableMinimalRepositoryPermissions {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptNullableRepositoryPermissions returns new OptNullableRepositoryPermissions with value set to v.
@@ -16943,6 +18879,14 @@ func (o OptNullableRepositoryPermissions) Get() (v NullableRepositoryPermissions
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptNullableRepositoryPermissions) Or(d NullableRepositoryPermissions) NullableRepositoryPermissions {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptNullableRepositoryTemplateRepositoryOwner returns new OptNullableRepositoryTemplateRepositoryOwner with value set to v.
 func NewOptNullableRepositoryTemplateRepositoryOwner(v NullableRepositoryTemplateRepositoryOwner) OptNullableRepositoryTemplateRepositoryOwner {
 	return OptNullableRepositoryTemplateRepositoryOwner{
@@ -16979,6 +18923,14 @@ func (o OptNullableRepositoryTemplateRepositoryOwner) Get() (v NullableRepositor
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptNullableRepositoryTemplateRepositoryOwner) Or(d NullableRepositoryTemplateRepositoryOwner) NullableRepositoryTemplateRepositoryOwner {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptNullableRepositoryTemplateRepositoryPermissions returns new OptNullableRepositoryTemplateRepositoryPermissions with value set to v.
@@ -17019,6 +18971,14 @@ func (o OptNullableRepositoryTemplateRepositoryPermissions) Get() (v NullableRep
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptNullableRepositoryTemplateRepositoryPermissions) Or(d NullableRepositoryTemplateRepositoryPermissions) NullableRepositoryTemplateRepositoryPermissions {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptOAuthAuthorizationsCreateAuthorizationReq returns new OptOAuthAuthorizationsCreateAuthorizationReq with value set to v.
 func NewOptOAuthAuthorizationsCreateAuthorizationReq(v OAuthAuthorizationsCreateAuthorizationReq) OptOAuthAuthorizationsCreateAuthorizationReq {
 	return OptOAuthAuthorizationsCreateAuthorizationReq{
@@ -17055,6 +19015,14 @@ func (o OptOAuthAuthorizationsCreateAuthorizationReq) Get() (v OAuthAuthorizatio
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptOAuthAuthorizationsCreateAuthorizationReq) Or(d OAuthAuthorizationsCreateAuthorizationReq) OAuthAuthorizationsCreateAuthorizationReq {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptOAuthAuthorizationsUpdateAuthorizationReq returns new OptOAuthAuthorizationsUpdateAuthorizationReq with value set to v.
@@ -17095,6 +19063,14 @@ func (o OptOAuthAuthorizationsUpdateAuthorizationReq) Get() (v OAuthAuthorizatio
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptOAuthAuthorizationsUpdateAuthorizationReq) Or(d OAuthAuthorizationsUpdateAuthorizationReq) OAuthAuthorizationsUpdateAuthorizationReq {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptOrgMembershipPermissions returns new OptOrgMembershipPermissions with value set to v.
 func NewOptOrgMembershipPermissions(v OrgMembershipPermissions) OptOrgMembershipPermissions {
 	return OptOrgMembershipPermissions{
@@ -17131,6 +19107,14 @@ func (o OptOrgMembershipPermissions) Get() (v OrgMembershipPermissions, ok bool)
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptOrgMembershipPermissions) Or(d OrgMembershipPermissions) OrgMembershipPermissions {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptOrganizationFullPlan returns new OptOrganizationFullPlan with value set to v.
@@ -17171,6 +19155,14 @@ func (o OptOrganizationFullPlan) Get() (v OrganizationFullPlan, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptOrganizationFullPlan) Or(d OrganizationFullPlan) OrganizationFullPlan {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptOrgsCreateInvitationReq returns new OptOrgsCreateInvitationReq with value set to v.
 func NewOptOrgsCreateInvitationReq(v OrgsCreateInvitationReq) OptOrgsCreateInvitationReq {
 	return OptOrgsCreateInvitationReq{
@@ -17207,6 +19199,14 @@ func (o OptOrgsCreateInvitationReq) Get() (v OrgsCreateInvitationReq, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptOrgsCreateInvitationReq) Or(d OrgsCreateInvitationReq) OrgsCreateInvitationReq {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptOrgsCreateInvitationReqRole returns new OptOrgsCreateInvitationReqRole with value set to v.
@@ -17247,6 +19247,14 @@ func (o OptOrgsCreateInvitationReqRole) Get() (v OrgsCreateInvitationReqRole, ok
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptOrgsCreateInvitationReqRole) Or(d OrgsCreateInvitationReqRole) OrgsCreateInvitationReqRole {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptOrgsGetAuditLogInclude returns new OptOrgsGetAuditLogInclude with value set to v.
 func NewOptOrgsGetAuditLogInclude(v OrgsGetAuditLogInclude) OptOrgsGetAuditLogInclude {
 	return OptOrgsGetAuditLogInclude{
@@ -17283,6 +19291,14 @@ func (o OptOrgsGetAuditLogInclude) Get() (v OrgsGetAuditLogInclude, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptOrgsGetAuditLogInclude) Or(d OrgsGetAuditLogInclude) OrgsGetAuditLogInclude {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptOrgsGetAuditLogOrder returns new OptOrgsGetAuditLogOrder with value set to v.
@@ -17323,6 +19339,14 @@ func (o OptOrgsGetAuditLogOrder) Get() (v OrgsGetAuditLogOrder, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptOrgsGetAuditLogOrder) Or(d OrgsGetAuditLogOrder) OrgsGetAuditLogOrder {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptOrgsListMembersFilter returns new OptOrgsListMembersFilter with value set to v.
 func NewOptOrgsListMembersFilter(v OrgsListMembersFilter) OptOrgsListMembersFilter {
 	return OptOrgsListMembersFilter{
@@ -17359,6 +19383,14 @@ func (o OptOrgsListMembersFilter) Get() (v OrgsListMembersFilter, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptOrgsListMembersFilter) Or(d OrgsListMembersFilter) OrgsListMembersFilter {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptOrgsListMembersRole returns new OptOrgsListMembersRole with value set to v.
@@ -17399,6 +19431,14 @@ func (o OptOrgsListMembersRole) Get() (v OrgsListMembersRole, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptOrgsListMembersRole) Or(d OrgsListMembersRole) OrgsListMembersRole {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptOrgsListMembershipsForAuthenticatedUserState returns new OptOrgsListMembershipsForAuthenticatedUserState with value set to v.
 func NewOptOrgsListMembershipsForAuthenticatedUserState(v OrgsListMembershipsForAuthenticatedUserState) OptOrgsListMembershipsForAuthenticatedUserState {
 	return OptOrgsListMembershipsForAuthenticatedUserState{
@@ -17435,6 +19475,14 @@ func (o OptOrgsListMembershipsForAuthenticatedUserState) Get() (v OrgsListMember
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptOrgsListMembershipsForAuthenticatedUserState) Or(d OrgsListMembershipsForAuthenticatedUserState) OrgsListMembershipsForAuthenticatedUserState {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptOrgsListOutsideCollaboratorsFilter returns new OptOrgsListOutsideCollaboratorsFilter with value set to v.
@@ -17475,6 +19523,14 @@ func (o OptOrgsListOutsideCollaboratorsFilter) Get() (v OrgsListOutsideCollabora
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptOrgsListOutsideCollaboratorsFilter) Or(d OrgsListOutsideCollaboratorsFilter) OrgsListOutsideCollaboratorsFilter {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptOrgsSetMembershipForUserReq returns new OptOrgsSetMembershipForUserReq with value set to v.
 func NewOptOrgsSetMembershipForUserReq(v OrgsSetMembershipForUserReq) OptOrgsSetMembershipForUserReq {
 	return OptOrgsSetMembershipForUserReq{
@@ -17511,6 +19567,14 @@ func (o OptOrgsSetMembershipForUserReq) Get() (v OrgsSetMembershipForUserReq, ok
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptOrgsSetMembershipForUserReq) Or(d OrgsSetMembershipForUserReq) OrgsSetMembershipForUserReq {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptOrgsSetMembershipForUserReqRole returns new OptOrgsSetMembershipForUserReqRole with value set to v.
@@ -17551,6 +19615,14 @@ func (o OptOrgsSetMembershipForUserReqRole) Get() (v OrgsSetMembershipForUserReq
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptOrgsSetMembershipForUserReqRole) Or(d OrgsSetMembershipForUserReqRole) OrgsSetMembershipForUserReqRole {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptOrgsUpdateReq returns new OptOrgsUpdateReq with value set to v.
 func NewOptOrgsUpdateReq(v OrgsUpdateReq) OptOrgsUpdateReq {
 	return OptOrgsUpdateReq{
@@ -17587,6 +19659,14 @@ func (o OptOrgsUpdateReq) Get() (v OrgsUpdateReq, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptOrgsUpdateReq) Or(d OrgsUpdateReq) OrgsUpdateReq {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptOrgsUpdateReqDefaultRepositoryPermission returns new OptOrgsUpdateReqDefaultRepositoryPermission with value set to v.
@@ -17627,6 +19707,14 @@ func (o OptOrgsUpdateReqDefaultRepositoryPermission) Get() (v OrgsUpdateReqDefau
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptOrgsUpdateReqDefaultRepositoryPermission) Or(d OrgsUpdateReqDefaultRepositoryPermission) OrgsUpdateReqDefaultRepositoryPermission {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptOrgsUpdateReqMembersAllowedRepositoryCreationType returns new OptOrgsUpdateReqMembersAllowedRepositoryCreationType with value set to v.
 func NewOptOrgsUpdateReqMembersAllowedRepositoryCreationType(v OrgsUpdateReqMembersAllowedRepositoryCreationType) OptOrgsUpdateReqMembersAllowedRepositoryCreationType {
 	return OptOrgsUpdateReqMembersAllowedRepositoryCreationType{
@@ -17663,6 +19751,14 @@ func (o OptOrgsUpdateReqMembersAllowedRepositoryCreationType) Get() (v OrgsUpdat
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptOrgsUpdateReqMembersAllowedRepositoryCreationType) Or(d OrgsUpdateReqMembersAllowedRepositoryCreationType) OrgsUpdateReqMembersAllowedRepositoryCreationType {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptOrgsUpdateWebhookConfigForOrgReq returns new OptOrgsUpdateWebhookConfigForOrgReq with value set to v.
@@ -17703,6 +19799,14 @@ func (o OptOrgsUpdateWebhookConfigForOrgReq) Get() (v OrgsUpdateWebhookConfigFor
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptOrgsUpdateWebhookConfigForOrgReq) Or(d OrgsUpdateWebhookConfigForOrgReq) OrgsUpdateWebhookConfigForOrgReq {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptOrgsUpdateWebhookReq returns new OptOrgsUpdateWebhookReq with value set to v.
 func NewOptOrgsUpdateWebhookReq(v OrgsUpdateWebhookReq) OptOrgsUpdateWebhookReq {
 	return OptOrgsUpdateWebhookReq{
@@ -17739,6 +19843,14 @@ func (o OptOrgsUpdateWebhookReq) Get() (v OrgsUpdateWebhookReq, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptOrgsUpdateWebhookReq) Or(d OrgsUpdateWebhookReq) OrgsUpdateWebhookReq {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptOrgsUpdateWebhookReqConfig returns new OptOrgsUpdateWebhookReqConfig with value set to v.
@@ -17779,6 +19891,14 @@ func (o OptOrgsUpdateWebhookReqConfig) Get() (v OrgsUpdateWebhookReqConfig, ok b
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptOrgsUpdateWebhookReqConfig) Or(d OrgsUpdateWebhookReqConfig) OrgsUpdateWebhookReqConfig {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptPackageVersionMetadata returns new OptPackageVersionMetadata with value set to v.
 func NewOptPackageVersionMetadata(v PackageVersionMetadata) OptPackageVersionMetadata {
 	return OptPackageVersionMetadata{
@@ -17815,6 +19935,14 @@ func (o OptPackageVersionMetadata) Get() (v PackageVersionMetadata, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptPackageVersionMetadata) Or(d PackageVersionMetadata) PackageVersionMetadata {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptPackageVersionMetadataContainer returns new OptPackageVersionMetadataContainer with value set to v.
@@ -17855,6 +19983,14 @@ func (o OptPackageVersionMetadataContainer) Get() (v PackageVersionMetadataConta
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptPackageVersionMetadataContainer) Or(d PackageVersionMetadataContainer) PackageVersionMetadataContainer {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptPackageVersionMetadataDocker returns new OptPackageVersionMetadataDocker with value set to v.
 func NewOptPackageVersionMetadataDocker(v PackageVersionMetadataDocker) OptPackageVersionMetadataDocker {
 	return OptPackageVersionMetadataDocker{
@@ -17891,6 +20027,14 @@ func (o OptPackageVersionMetadataDocker) Get() (v PackageVersionMetadataDocker, 
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptPackageVersionMetadataDocker) Or(d PackageVersionMetadataDocker) PackageVersionMetadataDocker {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptPackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState returns new OptPackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState with value set to v.
@@ -17933,6 +20077,14 @@ func (o OptPackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState)
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptPackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState) Or(d PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState) PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptPackagesGetAllPackageVersionsForPackageOwnedByOrgState returns new OptPackagesGetAllPackageVersionsForPackageOwnedByOrgState with value set to v.
 func NewOptPackagesGetAllPackageVersionsForPackageOwnedByOrgState(v PackagesGetAllPackageVersionsForPackageOwnedByOrgState) OptPackagesGetAllPackageVersionsForPackageOwnedByOrgState {
 	return OptPackagesGetAllPackageVersionsForPackageOwnedByOrgState{
@@ -17969,6 +20121,14 @@ func (o OptPackagesGetAllPackageVersionsForPackageOwnedByOrgState) Get() (v Pack
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptPackagesGetAllPackageVersionsForPackageOwnedByOrgState) Or(d PackagesGetAllPackageVersionsForPackageOwnedByOrgState) PackagesGetAllPackageVersionsForPackageOwnedByOrgState {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptPackagesListPackagesForAuthenticatedUserVisibility returns new OptPackagesListPackagesForAuthenticatedUserVisibility with value set to v.
@@ -18009,6 +20169,14 @@ func (o OptPackagesListPackagesForAuthenticatedUserVisibility) Get() (v Packages
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptPackagesListPackagesForAuthenticatedUserVisibility) Or(d PackagesListPackagesForAuthenticatedUserVisibility) PackagesListPackagesForAuthenticatedUserVisibility {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptPackagesListPackagesForOrganizationVisibility returns new OptPackagesListPackagesForOrganizationVisibility with value set to v.
 func NewOptPackagesListPackagesForOrganizationVisibility(v PackagesListPackagesForOrganizationVisibility) OptPackagesListPackagesForOrganizationVisibility {
 	return OptPackagesListPackagesForOrganizationVisibility{
@@ -18045,6 +20213,14 @@ func (o OptPackagesListPackagesForOrganizationVisibility) Get() (v PackagesListP
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptPackagesListPackagesForOrganizationVisibility) Or(d PackagesListPackagesForOrganizationVisibility) PackagesListPackagesForOrganizationVisibility {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptPackagesListPackagesForUserVisibility returns new OptPackagesListPackagesForUserVisibility with value set to v.
@@ -18085,6 +20261,14 @@ func (o OptPackagesListPackagesForUserVisibility) Get() (v PackagesListPackagesF
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptPackagesListPackagesForUserVisibility) Or(d PackagesListPackagesForUserVisibility) PackagesListPackagesForUserVisibility {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptPagesHTTPSCertificate returns new OptPagesHTTPSCertificate with value set to v.
 func NewOptPagesHTTPSCertificate(v PagesHTTPSCertificate) OptPagesHTTPSCertificate {
 	return OptPagesHTTPSCertificate{
@@ -18121,6 +20305,14 @@ func (o OptPagesHTTPSCertificate) Get() (v PagesHTTPSCertificate, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptPagesHTTPSCertificate) Or(d PagesHTTPSCertificate) PagesHTTPSCertificate {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptPagesHealthCheckDomain returns new OptPagesHealthCheckDomain with value set to v.
@@ -18161,6 +20353,14 @@ func (o OptPagesHealthCheckDomain) Get() (v PagesHealthCheckDomain, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptPagesHealthCheckDomain) Or(d PagesHealthCheckDomain) PagesHealthCheckDomain {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptPagesSourceHash returns new OptPagesSourceHash with value set to v.
 func NewOptPagesSourceHash(v PagesSourceHash) OptPagesSourceHash {
 	return OptPagesSourceHash{
@@ -18197,6 +20397,14 @@ func (o OptPagesSourceHash) Get() (v PagesSourceHash, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptPagesSourceHash) Or(d PagesSourceHash) PagesSourceHash {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptPrivateUserPlan returns new OptPrivateUserPlan with value set to v.
@@ -18237,6 +20445,14 @@ func (o OptPrivateUserPlan) Get() (v PrivateUserPlan, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptPrivateUserPlan) Or(d PrivateUserPlan) PrivateUserPlan {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptProjectOrganizationPermission returns new OptProjectOrganizationPermission with value set to v.
 func NewOptProjectOrganizationPermission(v ProjectOrganizationPermission) OptProjectOrganizationPermission {
 	return OptProjectOrganizationPermission{
@@ -18273,6 +20489,14 @@ func (o OptProjectOrganizationPermission) Get() (v ProjectOrganizationPermission
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptProjectOrganizationPermission) Or(d ProjectOrganizationPermission) ProjectOrganizationPermission {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptProjectsAddCollaboratorReq returns new OptProjectsAddCollaboratorReq with value set to v.
@@ -18313,6 +20537,14 @@ func (o OptProjectsAddCollaboratorReq) Get() (v ProjectsAddCollaboratorReq, ok b
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptProjectsAddCollaboratorReq) Or(d ProjectsAddCollaboratorReq) ProjectsAddCollaboratorReq {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptProjectsAddCollaboratorReqPermission returns new OptProjectsAddCollaboratorReqPermission with value set to v.
 func NewOptProjectsAddCollaboratorReqPermission(v ProjectsAddCollaboratorReqPermission) OptProjectsAddCollaboratorReqPermission {
 	return OptProjectsAddCollaboratorReqPermission{
@@ -18349,6 +20581,14 @@ func (o OptProjectsAddCollaboratorReqPermission) Get() (v ProjectsAddCollaborato
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptProjectsAddCollaboratorReqPermission) Or(d ProjectsAddCollaboratorReqPermission) ProjectsAddCollaboratorReqPermission {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptProjectsListCardsArchivedState returns new OptProjectsListCardsArchivedState with value set to v.
@@ -18389,6 +20629,14 @@ func (o OptProjectsListCardsArchivedState) Get() (v ProjectsListCardsArchivedSta
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptProjectsListCardsArchivedState) Or(d ProjectsListCardsArchivedState) ProjectsListCardsArchivedState {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptProjectsListCollaboratorsAffiliation returns new OptProjectsListCollaboratorsAffiliation with value set to v.
 func NewOptProjectsListCollaboratorsAffiliation(v ProjectsListCollaboratorsAffiliation) OptProjectsListCollaboratorsAffiliation {
 	return OptProjectsListCollaboratorsAffiliation{
@@ -18425,6 +20673,14 @@ func (o OptProjectsListCollaboratorsAffiliation) Get() (v ProjectsListCollaborat
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptProjectsListCollaboratorsAffiliation) Or(d ProjectsListCollaboratorsAffiliation) ProjectsListCollaboratorsAffiliation {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptProjectsListForOrgState returns new OptProjectsListForOrgState with value set to v.
@@ -18465,6 +20721,14 @@ func (o OptProjectsListForOrgState) Get() (v ProjectsListForOrgState, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptProjectsListForOrgState) Or(d ProjectsListForOrgState) ProjectsListForOrgState {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptProjectsListForRepoState returns new OptProjectsListForRepoState with value set to v.
 func NewOptProjectsListForRepoState(v ProjectsListForRepoState) OptProjectsListForRepoState {
 	return OptProjectsListForRepoState{
@@ -18501,6 +20765,14 @@ func (o OptProjectsListForRepoState) Get() (v ProjectsListForRepoState, ok bool)
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptProjectsListForRepoState) Or(d ProjectsListForRepoState) ProjectsListForRepoState {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptProjectsListForUserState returns new OptProjectsListForUserState with value set to v.
@@ -18541,6 +20813,14 @@ func (o OptProjectsListForUserState) Get() (v ProjectsListForUserState, ok bool)
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptProjectsListForUserState) Or(d ProjectsListForUserState) ProjectsListForUserState {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptProjectsUpdateCardReq returns new OptProjectsUpdateCardReq with value set to v.
 func NewOptProjectsUpdateCardReq(v ProjectsUpdateCardReq) OptProjectsUpdateCardReq {
 	return OptProjectsUpdateCardReq{
@@ -18577,6 +20857,14 @@ func (o OptProjectsUpdateCardReq) Get() (v ProjectsUpdateCardReq, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptProjectsUpdateCardReq) Or(d ProjectsUpdateCardReq) ProjectsUpdateCardReq {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptProjectsUpdateReq returns new OptProjectsUpdateReq with value set to v.
@@ -18617,6 +20905,14 @@ func (o OptProjectsUpdateReq) Get() (v ProjectsUpdateReq, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptProjectsUpdateReq) Or(d ProjectsUpdateReq) ProjectsUpdateReq {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptProjectsUpdateReqOrganizationPermission returns new OptProjectsUpdateReqOrganizationPermission with value set to v.
 func NewOptProjectsUpdateReqOrganizationPermission(v ProjectsUpdateReqOrganizationPermission) OptProjectsUpdateReqOrganizationPermission {
 	return OptProjectsUpdateReqOrganizationPermission{
@@ -18653,6 +20949,14 @@ func (o OptProjectsUpdateReqOrganizationPermission) Get() (v ProjectsUpdateReqOr
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptProjectsUpdateReqOrganizationPermission) Or(d ProjectsUpdateReqOrganizationPermission) ProjectsUpdateReqOrganizationPermission {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptProtectedBranchAdminEnforced returns new OptProtectedBranchAdminEnforced with value set to v.
@@ -18693,6 +20997,14 @@ func (o OptProtectedBranchAdminEnforced) Get() (v ProtectedBranchAdminEnforced, 
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptProtectedBranchAdminEnforced) Or(d ProtectedBranchAdminEnforced) ProtectedBranchAdminEnforced {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptProtectedBranchAllowDeletions returns new OptProtectedBranchAllowDeletions with value set to v.
 func NewOptProtectedBranchAllowDeletions(v ProtectedBranchAllowDeletions) OptProtectedBranchAllowDeletions {
 	return OptProtectedBranchAllowDeletions{
@@ -18729,6 +21041,14 @@ func (o OptProtectedBranchAllowDeletions) Get() (v ProtectedBranchAllowDeletions
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptProtectedBranchAllowDeletions) Or(d ProtectedBranchAllowDeletions) ProtectedBranchAllowDeletions {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptProtectedBranchAllowForcePushes returns new OptProtectedBranchAllowForcePushes with value set to v.
@@ -18769,6 +21089,14 @@ func (o OptProtectedBranchAllowForcePushes) Get() (v ProtectedBranchAllowForcePu
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptProtectedBranchAllowForcePushes) Or(d ProtectedBranchAllowForcePushes) ProtectedBranchAllowForcePushes {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptProtectedBranchEnforceAdmins returns new OptProtectedBranchEnforceAdmins with value set to v.
 func NewOptProtectedBranchEnforceAdmins(v ProtectedBranchEnforceAdmins) OptProtectedBranchEnforceAdmins {
 	return OptProtectedBranchEnforceAdmins{
@@ -18805,6 +21133,14 @@ func (o OptProtectedBranchEnforceAdmins) Get() (v ProtectedBranchEnforceAdmins, 
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptProtectedBranchEnforceAdmins) Or(d ProtectedBranchEnforceAdmins) ProtectedBranchEnforceAdmins {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptProtectedBranchPullRequestReview returns new OptProtectedBranchPullRequestReview with value set to v.
@@ -18845,6 +21181,14 @@ func (o OptProtectedBranchPullRequestReview) Get() (v ProtectedBranchPullRequest
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptProtectedBranchPullRequestReview) Or(d ProtectedBranchPullRequestReview) ProtectedBranchPullRequestReview {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptProtectedBranchPullRequestReviewDismissalRestrictions returns new OptProtectedBranchPullRequestReviewDismissalRestrictions with value set to v.
 func NewOptProtectedBranchPullRequestReviewDismissalRestrictions(v ProtectedBranchPullRequestReviewDismissalRestrictions) OptProtectedBranchPullRequestReviewDismissalRestrictions {
 	return OptProtectedBranchPullRequestReviewDismissalRestrictions{
@@ -18881,6 +21225,14 @@ func (o OptProtectedBranchPullRequestReviewDismissalRestrictions) Get() (v Prote
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptProtectedBranchPullRequestReviewDismissalRestrictions) Or(d ProtectedBranchPullRequestReviewDismissalRestrictions) ProtectedBranchPullRequestReviewDismissalRestrictions {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptProtectedBranchRequiredConversationResolution returns new OptProtectedBranchRequiredConversationResolution with value set to v.
@@ -18921,6 +21273,14 @@ func (o OptProtectedBranchRequiredConversationResolution) Get() (v ProtectedBran
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptProtectedBranchRequiredConversationResolution) Or(d ProtectedBranchRequiredConversationResolution) ProtectedBranchRequiredConversationResolution {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptProtectedBranchRequiredLinearHistory returns new OptProtectedBranchRequiredLinearHistory with value set to v.
 func NewOptProtectedBranchRequiredLinearHistory(v ProtectedBranchRequiredLinearHistory) OptProtectedBranchRequiredLinearHistory {
 	return OptProtectedBranchRequiredLinearHistory{
@@ -18957,6 +21317,14 @@ func (o OptProtectedBranchRequiredLinearHistory) Get() (v ProtectedBranchRequire
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptProtectedBranchRequiredLinearHistory) Or(d ProtectedBranchRequiredLinearHistory) ProtectedBranchRequiredLinearHistory {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptProtectedBranchRequiredPullRequestReviews returns new OptProtectedBranchRequiredPullRequestReviews with value set to v.
@@ -18997,6 +21365,14 @@ func (o OptProtectedBranchRequiredPullRequestReviews) Get() (v ProtectedBranchRe
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptProtectedBranchRequiredPullRequestReviews) Or(d ProtectedBranchRequiredPullRequestReviews) ProtectedBranchRequiredPullRequestReviews {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptProtectedBranchRequiredPullRequestReviewsDismissalRestrictions returns new OptProtectedBranchRequiredPullRequestReviewsDismissalRestrictions with value set to v.
 func NewOptProtectedBranchRequiredPullRequestReviewsDismissalRestrictions(v ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions) OptProtectedBranchRequiredPullRequestReviewsDismissalRestrictions {
 	return OptProtectedBranchRequiredPullRequestReviewsDismissalRestrictions{
@@ -19033,6 +21409,14 @@ func (o OptProtectedBranchRequiredPullRequestReviewsDismissalRestrictions) Get()
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptProtectedBranchRequiredPullRequestReviewsDismissalRestrictions) Or(d ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions) ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptProtectedBranchRequiredSignatures returns new OptProtectedBranchRequiredSignatures with value set to v.
@@ -19073,6 +21457,14 @@ func (o OptProtectedBranchRequiredSignatures) Get() (v ProtectedBranchRequiredSi
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptProtectedBranchRequiredSignatures) Or(d ProtectedBranchRequiredSignatures) ProtectedBranchRequiredSignatures {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptPublicUser returns new OptPublicUser with value set to v.
 func NewOptPublicUser(v PublicUser) OptPublicUser {
 	return OptPublicUser{
@@ -19109,6 +21501,14 @@ func (o OptPublicUser) Get() (v PublicUser, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptPublicUser) Or(d PublicUser) PublicUser {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptPublicUserPlan returns new OptPublicUserPlan with value set to v.
@@ -19149,6 +21549,14 @@ func (o OptPublicUserPlan) Get() (v PublicUserPlan, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptPublicUserPlan) Or(d PublicUserPlan) PublicUserPlan {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptPullRequestBaseRepoPermissions returns new OptPullRequestBaseRepoPermissions with value set to v.
 func NewOptPullRequestBaseRepoPermissions(v PullRequestBaseRepoPermissions) OptPullRequestBaseRepoPermissions {
 	return OptPullRequestBaseRepoPermissions{
@@ -19185,6 +21593,14 @@ func (o OptPullRequestBaseRepoPermissions) Get() (v PullRequestBaseRepoPermissio
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptPullRequestBaseRepoPermissions) Or(d PullRequestBaseRepoPermissions) PullRequestBaseRepoPermissions {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptPullRequestHeadRepoPermissions returns new OptPullRequestHeadRepoPermissions with value set to v.
@@ -19225,6 +21641,14 @@ func (o OptPullRequestHeadRepoPermissions) Get() (v PullRequestHeadRepoPermissio
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptPullRequestHeadRepoPermissions) Or(d PullRequestHeadRepoPermissions) PullRequestHeadRepoPermissions {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptPullRequestReviewCommentSide returns new OptPullRequestReviewCommentSide with value set to v.
 func NewOptPullRequestReviewCommentSide(v PullRequestReviewCommentSide) OptPullRequestReviewCommentSide {
 	return OptPullRequestReviewCommentSide{
@@ -19261,6 +21685,14 @@ func (o OptPullRequestReviewCommentSide) Get() (v PullRequestReviewCommentSide, 
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptPullRequestReviewCommentSide) Or(d PullRequestReviewCommentSide) PullRequestReviewCommentSide {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptPullsCreateReviewCommentReqSide returns new OptPullsCreateReviewCommentReqSide with value set to v.
@@ -19301,6 +21733,14 @@ func (o OptPullsCreateReviewCommentReqSide) Get() (v PullsCreateReviewCommentReq
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptPullsCreateReviewCommentReqSide) Or(d PullsCreateReviewCommentReqSide) PullsCreateReviewCommentReqSide {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptPullsCreateReviewCommentReqStartSide returns new OptPullsCreateReviewCommentReqStartSide with value set to v.
 func NewOptPullsCreateReviewCommentReqStartSide(v PullsCreateReviewCommentReqStartSide) OptPullsCreateReviewCommentReqStartSide {
 	return OptPullsCreateReviewCommentReqStartSide{
@@ -19337,6 +21777,14 @@ func (o OptPullsCreateReviewCommentReqStartSide) Get() (v PullsCreateReviewComme
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptPullsCreateReviewCommentReqStartSide) Or(d PullsCreateReviewCommentReqStartSide) PullsCreateReviewCommentReqStartSide {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptPullsCreateReviewReq returns new OptPullsCreateReviewReq with value set to v.
@@ -19377,6 +21825,14 @@ func (o OptPullsCreateReviewReq) Get() (v PullsCreateReviewReq, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptPullsCreateReviewReq) Or(d PullsCreateReviewReq) PullsCreateReviewReq {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptPullsCreateReviewReqEvent returns new OptPullsCreateReviewReqEvent with value set to v.
 func NewOptPullsCreateReviewReqEvent(v PullsCreateReviewReqEvent) OptPullsCreateReviewReqEvent {
 	return OptPullsCreateReviewReqEvent{
@@ -19413,6 +21869,14 @@ func (o OptPullsCreateReviewReqEvent) Get() (v PullsCreateReviewReqEvent, ok boo
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptPullsCreateReviewReqEvent) Or(d PullsCreateReviewReqEvent) PullsCreateReviewReqEvent {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptPullsListDirection returns new OptPullsListDirection with value set to v.
@@ -19453,6 +21917,14 @@ func (o OptPullsListDirection) Get() (v PullsListDirection, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptPullsListDirection) Or(d PullsListDirection) PullsListDirection {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptPullsListReviewCommentsDirection returns new OptPullsListReviewCommentsDirection with value set to v.
 func NewOptPullsListReviewCommentsDirection(v PullsListReviewCommentsDirection) OptPullsListReviewCommentsDirection {
 	return OptPullsListReviewCommentsDirection{
@@ -19489,6 +21961,14 @@ func (o OptPullsListReviewCommentsDirection) Get() (v PullsListReviewCommentsDir
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptPullsListReviewCommentsDirection) Or(d PullsListReviewCommentsDirection) PullsListReviewCommentsDirection {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptPullsListReviewCommentsForRepoDirection returns new OptPullsListReviewCommentsForRepoDirection with value set to v.
@@ -19529,6 +22009,14 @@ func (o OptPullsListReviewCommentsForRepoDirection) Get() (v PullsListReviewComm
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptPullsListReviewCommentsForRepoDirection) Or(d PullsListReviewCommentsForRepoDirection) PullsListReviewCommentsForRepoDirection {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptPullsListReviewCommentsForRepoSort returns new OptPullsListReviewCommentsForRepoSort with value set to v.
 func NewOptPullsListReviewCommentsForRepoSort(v PullsListReviewCommentsForRepoSort) OptPullsListReviewCommentsForRepoSort {
 	return OptPullsListReviewCommentsForRepoSort{
@@ -19565,6 +22053,14 @@ func (o OptPullsListReviewCommentsForRepoSort) Get() (v PullsListReviewCommentsF
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptPullsListReviewCommentsForRepoSort) Or(d PullsListReviewCommentsForRepoSort) PullsListReviewCommentsForRepoSort {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptPullsListReviewCommentsSort returns new OptPullsListReviewCommentsSort with value set to v.
@@ -19605,6 +22101,14 @@ func (o OptPullsListReviewCommentsSort) Get() (v PullsListReviewCommentsSort, ok
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptPullsListReviewCommentsSort) Or(d PullsListReviewCommentsSort) PullsListReviewCommentsSort {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptPullsListSort returns new OptPullsListSort with value set to v.
 func NewOptPullsListSort(v PullsListSort) OptPullsListSort {
 	return OptPullsListSort{
@@ -19641,6 +22145,14 @@ func (o OptPullsListSort) Get() (v PullsListSort, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptPullsListSort) Or(d PullsListSort) PullsListSort {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptPullsListState returns new OptPullsListState with value set to v.
@@ -19681,6 +22193,14 @@ func (o OptPullsListState) Get() (v PullsListState, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptPullsListState) Or(d PullsListState) PullsListState {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptPullsMergeReq returns new OptPullsMergeReq with value set to v.
 func NewOptPullsMergeReq(v PullsMergeReq) OptPullsMergeReq {
 	return OptPullsMergeReq{
@@ -19717,6 +22237,14 @@ func (o OptPullsMergeReq) Get() (v PullsMergeReq, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptPullsMergeReq) Or(d PullsMergeReq) PullsMergeReq {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptPullsMergeReqMergeMethod returns new OptPullsMergeReqMergeMethod with value set to v.
@@ -19757,6 +22285,14 @@ func (o OptPullsMergeReqMergeMethod) Get() (v PullsMergeReqMergeMethod, ok bool)
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptPullsMergeReqMergeMethod) Or(d PullsMergeReqMergeMethod) PullsMergeReqMergeMethod {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptPullsUpdateBranchReq returns new OptPullsUpdateBranchReq with value set to v.
 func NewOptPullsUpdateBranchReq(v PullsUpdateBranchReq) OptPullsUpdateBranchReq {
 	return OptPullsUpdateBranchReq{
@@ -19793,6 +22329,14 @@ func (o OptPullsUpdateBranchReq) Get() (v PullsUpdateBranchReq, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptPullsUpdateBranchReq) Or(d PullsUpdateBranchReq) PullsUpdateBranchReq {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptPullsUpdateReq returns new OptPullsUpdateReq with value set to v.
@@ -19833,6 +22377,14 @@ func (o OptPullsUpdateReq) Get() (v PullsUpdateReq, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptPullsUpdateReq) Or(d PullsUpdateReq) PullsUpdateReq {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptPullsUpdateReqState returns new OptPullsUpdateReqState with value set to v.
 func NewOptPullsUpdateReqState(v PullsUpdateReqState) OptPullsUpdateReqState {
 	return OptPullsUpdateReqState{
@@ -19869,6 +22421,14 @@ func (o OptPullsUpdateReqState) Get() (v PullsUpdateReqState, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptPullsUpdateReqState) Or(d PullsUpdateReqState) PullsUpdateReqState {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptRateLimit returns new OptRateLimit with value set to v.
@@ -19909,6 +22469,14 @@ func (o OptRateLimit) Get() (v RateLimit, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptRateLimit) Or(d RateLimit) RateLimit {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptReactionRollup returns new OptReactionRollup with value set to v.
 func NewOptReactionRollup(v ReactionRollup) OptReactionRollup {
 	return OptReactionRollup{
@@ -19945,6 +22513,14 @@ func (o OptReactionRollup) Get() (v ReactionRollup, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptReactionRollup) Or(d ReactionRollup) ReactionRollup {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptReactionsListForCommitCommentContent returns new OptReactionsListForCommitCommentContent with value set to v.
@@ -19985,6 +22561,14 @@ func (o OptReactionsListForCommitCommentContent) Get() (v ReactionsListForCommit
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptReactionsListForCommitCommentContent) Or(d ReactionsListForCommitCommentContent) ReactionsListForCommitCommentContent {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptReactionsListForIssueCommentContent returns new OptReactionsListForIssueCommentContent with value set to v.
 func NewOptReactionsListForIssueCommentContent(v ReactionsListForIssueCommentContent) OptReactionsListForIssueCommentContent {
 	return OptReactionsListForIssueCommentContent{
@@ -20021,6 +22605,14 @@ func (o OptReactionsListForIssueCommentContent) Get() (v ReactionsListForIssueCo
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptReactionsListForIssueCommentContent) Or(d ReactionsListForIssueCommentContent) ReactionsListForIssueCommentContent {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptReactionsListForIssueContent returns new OptReactionsListForIssueContent with value set to v.
@@ -20061,6 +22653,14 @@ func (o OptReactionsListForIssueContent) Get() (v ReactionsListForIssueContent, 
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptReactionsListForIssueContent) Or(d ReactionsListForIssueContent) ReactionsListForIssueContent {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptReactionsListForPullRequestReviewCommentContent returns new OptReactionsListForPullRequestReviewCommentContent with value set to v.
 func NewOptReactionsListForPullRequestReviewCommentContent(v ReactionsListForPullRequestReviewCommentContent) OptReactionsListForPullRequestReviewCommentContent {
 	return OptReactionsListForPullRequestReviewCommentContent{
@@ -20097,6 +22697,14 @@ func (o OptReactionsListForPullRequestReviewCommentContent) Get() (v ReactionsLi
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptReactionsListForPullRequestReviewCommentContent) Or(d ReactionsListForPullRequestReviewCommentContent) ReactionsListForPullRequestReviewCommentContent {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptReactionsListForTeamDiscussionCommentInOrgContent returns new OptReactionsListForTeamDiscussionCommentInOrgContent with value set to v.
@@ -20137,6 +22745,14 @@ func (o OptReactionsListForTeamDiscussionCommentInOrgContent) Get() (v Reactions
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptReactionsListForTeamDiscussionCommentInOrgContent) Or(d ReactionsListForTeamDiscussionCommentInOrgContent) ReactionsListForTeamDiscussionCommentInOrgContent {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptReactionsListForTeamDiscussionCommentLegacyContent returns new OptReactionsListForTeamDiscussionCommentLegacyContent with value set to v.
 func NewOptReactionsListForTeamDiscussionCommentLegacyContent(v ReactionsListForTeamDiscussionCommentLegacyContent) OptReactionsListForTeamDiscussionCommentLegacyContent {
 	return OptReactionsListForTeamDiscussionCommentLegacyContent{
@@ -20173,6 +22789,14 @@ func (o OptReactionsListForTeamDiscussionCommentLegacyContent) Get() (v Reaction
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptReactionsListForTeamDiscussionCommentLegacyContent) Or(d ReactionsListForTeamDiscussionCommentLegacyContent) ReactionsListForTeamDiscussionCommentLegacyContent {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptReactionsListForTeamDiscussionInOrgContent returns new OptReactionsListForTeamDiscussionInOrgContent with value set to v.
@@ -20213,6 +22837,14 @@ func (o OptReactionsListForTeamDiscussionInOrgContent) Get() (v ReactionsListFor
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptReactionsListForTeamDiscussionInOrgContent) Or(d ReactionsListForTeamDiscussionInOrgContent) ReactionsListForTeamDiscussionInOrgContent {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptReactionsListForTeamDiscussionLegacyContent returns new OptReactionsListForTeamDiscussionLegacyContent with value set to v.
 func NewOptReactionsListForTeamDiscussionLegacyContent(v ReactionsListForTeamDiscussionLegacyContent) OptReactionsListForTeamDiscussionLegacyContent {
 	return OptReactionsListForTeamDiscussionLegacyContent{
@@ -20249,6 +22881,14 @@ func (o OptReactionsListForTeamDiscussionLegacyContent) Get() (v ReactionsListFo
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptReactionsListForTeamDiscussionLegacyContent) Or(d ReactionsListForTeamDiscussionLegacyContent) ReactionsListForTeamDiscussionLegacyContent {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptRepoSearchResultItemPermissions returns new OptRepoSearchResultItemPermissions with value set to v.
@@ -20289,6 +22929,14 @@ func (o OptRepoSearchResultItemPermissions) Get() (v RepoSearchResultItemPermiss
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptRepoSearchResultItemPermissions) Or(d RepoSearchResultItemPermissions) RepoSearchResultItemPermissions {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptReposAddAppAccessRestrictionsReq returns new OptReposAddAppAccessRestrictionsReq with value set to v.
 func NewOptReposAddAppAccessRestrictionsReq(v ReposAddAppAccessRestrictionsReq) OptReposAddAppAccessRestrictionsReq {
 	return OptReposAddAppAccessRestrictionsReq{
@@ -20325,6 +22973,14 @@ func (o OptReposAddAppAccessRestrictionsReq) Get() (v ReposAddAppAccessRestricti
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptReposAddAppAccessRestrictionsReq) Or(d ReposAddAppAccessRestrictionsReq) ReposAddAppAccessRestrictionsReq {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptReposAddCollaboratorReq returns new OptReposAddCollaboratorReq with value set to v.
@@ -20365,6 +23021,14 @@ func (o OptReposAddCollaboratorReq) Get() (v ReposAddCollaboratorReq, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptReposAddCollaboratorReq) Or(d ReposAddCollaboratorReq) ReposAddCollaboratorReq {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptReposAddCollaboratorReqPermission returns new OptReposAddCollaboratorReqPermission with value set to v.
 func NewOptReposAddCollaboratorReqPermission(v ReposAddCollaboratorReqPermission) OptReposAddCollaboratorReqPermission {
 	return OptReposAddCollaboratorReqPermission{
@@ -20401,6 +23065,14 @@ func (o OptReposAddCollaboratorReqPermission) Get() (v ReposAddCollaboratorReqPe
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptReposAddCollaboratorReqPermission) Or(d ReposAddCollaboratorReqPermission) ReposAddCollaboratorReqPermission {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptReposAddStatusCheckContextsReq returns new OptReposAddStatusCheckContextsReq with value set to v.
@@ -20441,6 +23113,14 @@ func (o OptReposAddStatusCheckContextsReq) Get() (v ReposAddStatusCheckContextsR
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptReposAddStatusCheckContextsReq) Or(d ReposAddStatusCheckContextsReq) ReposAddStatusCheckContextsReq {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptReposAddTeamAccessRestrictionsReq returns new OptReposAddTeamAccessRestrictionsReq with value set to v.
 func NewOptReposAddTeamAccessRestrictionsReq(v ReposAddTeamAccessRestrictionsReq) OptReposAddTeamAccessRestrictionsReq {
 	return OptReposAddTeamAccessRestrictionsReq{
@@ -20477,6 +23157,14 @@ func (o OptReposAddTeamAccessRestrictionsReq) Get() (v ReposAddTeamAccessRestric
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptReposAddTeamAccessRestrictionsReq) Or(d ReposAddTeamAccessRestrictionsReq) ReposAddTeamAccessRestrictionsReq {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptReposAddUserAccessRestrictionsReq returns new OptReposAddUserAccessRestrictionsReq with value set to v.
@@ -20517,6 +23205,14 @@ func (o OptReposAddUserAccessRestrictionsReq) Get() (v ReposAddUserAccessRestric
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptReposAddUserAccessRestrictionsReq) Or(d ReposAddUserAccessRestrictionsReq) ReposAddUserAccessRestrictionsReq {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptReposCreateDeploymentStatusReqEnvironment returns new OptReposCreateDeploymentStatusReqEnvironment with value set to v.
 func NewOptReposCreateDeploymentStatusReqEnvironment(v ReposCreateDeploymentStatusReqEnvironment) OptReposCreateDeploymentStatusReqEnvironment {
 	return OptReposCreateDeploymentStatusReqEnvironment{
@@ -20553,6 +23249,14 @@ func (o OptReposCreateDeploymentStatusReqEnvironment) Get() (v ReposCreateDeploy
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptReposCreateDeploymentStatusReqEnvironment) Or(d ReposCreateDeploymentStatusReqEnvironment) ReposCreateDeploymentStatusReqEnvironment {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptReposCreateForkReq returns new OptReposCreateForkReq with value set to v.
@@ -20593,6 +23297,14 @@ func (o OptReposCreateForkReq) Get() (v ReposCreateForkReq, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptReposCreateForkReq) Or(d ReposCreateForkReq) ReposCreateForkReq {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptReposCreateInOrgReqVisibility returns new OptReposCreateInOrgReqVisibility with value set to v.
 func NewOptReposCreateInOrgReqVisibility(v ReposCreateInOrgReqVisibility) OptReposCreateInOrgReqVisibility {
 	return OptReposCreateInOrgReqVisibility{
@@ -20629,6 +23341,14 @@ func (o OptReposCreateInOrgReqVisibility) Get() (v ReposCreateInOrgReqVisibility
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptReposCreateInOrgReqVisibility) Or(d ReposCreateInOrgReqVisibility) ReposCreateInOrgReqVisibility {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptReposCreateOrUpdateEnvironmentReq returns new OptReposCreateOrUpdateEnvironmentReq with value set to v.
@@ -20669,6 +23389,14 @@ func (o OptReposCreateOrUpdateEnvironmentReq) Get() (v ReposCreateOrUpdateEnviro
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptReposCreateOrUpdateEnvironmentReq) Or(d ReposCreateOrUpdateEnvironmentReq) ReposCreateOrUpdateEnvironmentReq {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptReposCreateOrUpdateFileContentsReqAuthor returns new OptReposCreateOrUpdateFileContentsReqAuthor with value set to v.
 func NewOptReposCreateOrUpdateFileContentsReqAuthor(v ReposCreateOrUpdateFileContentsReqAuthor) OptReposCreateOrUpdateFileContentsReqAuthor {
 	return OptReposCreateOrUpdateFileContentsReqAuthor{
@@ -20705,6 +23433,14 @@ func (o OptReposCreateOrUpdateFileContentsReqAuthor) Get() (v ReposCreateOrUpdat
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptReposCreateOrUpdateFileContentsReqAuthor) Or(d ReposCreateOrUpdateFileContentsReqAuthor) ReposCreateOrUpdateFileContentsReqAuthor {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptReposCreateOrUpdateFileContentsReqCommitter returns new OptReposCreateOrUpdateFileContentsReqCommitter with value set to v.
@@ -20745,6 +23481,14 @@ func (o OptReposCreateOrUpdateFileContentsReqCommitter) Get() (v ReposCreateOrUp
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptReposCreateOrUpdateFileContentsReqCommitter) Or(d ReposCreateOrUpdateFileContentsReqCommitter) ReposCreateOrUpdateFileContentsReqCommitter {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptReposCreatePagesSiteReqSourcePath returns new OptReposCreatePagesSiteReqSourcePath with value set to v.
 func NewOptReposCreatePagesSiteReqSourcePath(v ReposCreatePagesSiteReqSourcePath) OptReposCreatePagesSiteReqSourcePath {
 	return OptReposCreatePagesSiteReqSourcePath{
@@ -20781,6 +23525,14 @@ func (o OptReposCreatePagesSiteReqSourcePath) Get() (v ReposCreatePagesSiteReqSo
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptReposCreatePagesSiteReqSourcePath) Or(d ReposCreatePagesSiteReqSourcePath) ReposCreatePagesSiteReqSourcePath {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptReposCreateWebhookReq returns new OptReposCreateWebhookReq with value set to v.
@@ -20821,6 +23573,14 @@ func (o OptReposCreateWebhookReq) Get() (v ReposCreateWebhookReq, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptReposCreateWebhookReq) Or(d ReposCreateWebhookReq) ReposCreateWebhookReq {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptReposCreateWebhookReqConfig returns new OptReposCreateWebhookReqConfig with value set to v.
 func NewOptReposCreateWebhookReqConfig(v ReposCreateWebhookReqConfig) OptReposCreateWebhookReqConfig {
 	return OptReposCreateWebhookReqConfig{
@@ -20857,6 +23617,14 @@ func (o OptReposCreateWebhookReqConfig) Get() (v ReposCreateWebhookReqConfig, ok
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptReposCreateWebhookReqConfig) Or(d ReposCreateWebhookReqConfig) ReposCreateWebhookReqConfig {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptReposDeleteFileReqAuthor returns new OptReposDeleteFileReqAuthor with value set to v.
@@ -20897,6 +23665,14 @@ func (o OptReposDeleteFileReqAuthor) Get() (v ReposDeleteFileReqAuthor, ok bool)
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptReposDeleteFileReqAuthor) Or(d ReposDeleteFileReqAuthor) ReposDeleteFileReqAuthor {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptReposDeleteFileReqCommitter returns new OptReposDeleteFileReqCommitter with value set to v.
 func NewOptReposDeleteFileReqCommitter(v ReposDeleteFileReqCommitter) OptReposDeleteFileReqCommitter {
 	return OptReposDeleteFileReqCommitter{
@@ -20933,6 +23709,14 @@ func (o OptReposDeleteFileReqCommitter) Get() (v ReposDeleteFileReqCommitter, ok
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptReposDeleteFileReqCommitter) Or(d ReposDeleteFileReqCommitter) ReposDeleteFileReqCommitter {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptReposGetClonesPer returns new OptReposGetClonesPer with value set to v.
@@ -20973,6 +23757,14 @@ func (o OptReposGetClonesPer) Get() (v ReposGetClonesPer, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptReposGetClonesPer) Or(d ReposGetClonesPer) ReposGetClonesPer {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptReposGetViewsPer returns new OptReposGetViewsPer with value set to v.
 func NewOptReposGetViewsPer(v ReposGetViewsPer) OptReposGetViewsPer {
 	return OptReposGetViewsPer{
@@ -21009,6 +23801,14 @@ func (o OptReposGetViewsPer) Get() (v ReposGetViewsPer, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptReposGetViewsPer) Or(d ReposGetViewsPer) ReposGetViewsPer {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptReposListCollaboratorsAffiliation returns new OptReposListCollaboratorsAffiliation with value set to v.
@@ -21049,6 +23849,14 @@ func (o OptReposListCollaboratorsAffiliation) Get() (v ReposListCollaboratorsAff
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptReposListCollaboratorsAffiliation) Or(d ReposListCollaboratorsAffiliation) ReposListCollaboratorsAffiliation {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptReposListForAuthenticatedUserDirection returns new OptReposListForAuthenticatedUserDirection with value set to v.
 func NewOptReposListForAuthenticatedUserDirection(v ReposListForAuthenticatedUserDirection) OptReposListForAuthenticatedUserDirection {
 	return OptReposListForAuthenticatedUserDirection{
@@ -21085,6 +23893,14 @@ func (o OptReposListForAuthenticatedUserDirection) Get() (v ReposListForAuthenti
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptReposListForAuthenticatedUserDirection) Or(d ReposListForAuthenticatedUserDirection) ReposListForAuthenticatedUserDirection {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptReposListForAuthenticatedUserSort returns new OptReposListForAuthenticatedUserSort with value set to v.
@@ -21125,6 +23941,14 @@ func (o OptReposListForAuthenticatedUserSort) Get() (v ReposListForAuthenticated
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptReposListForAuthenticatedUserSort) Or(d ReposListForAuthenticatedUserSort) ReposListForAuthenticatedUserSort {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptReposListForAuthenticatedUserType returns new OptReposListForAuthenticatedUserType with value set to v.
 func NewOptReposListForAuthenticatedUserType(v ReposListForAuthenticatedUserType) OptReposListForAuthenticatedUserType {
 	return OptReposListForAuthenticatedUserType{
@@ -21161,6 +23985,14 @@ func (o OptReposListForAuthenticatedUserType) Get() (v ReposListForAuthenticated
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptReposListForAuthenticatedUserType) Or(d ReposListForAuthenticatedUserType) ReposListForAuthenticatedUserType {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptReposListForAuthenticatedUserVisibility returns new OptReposListForAuthenticatedUserVisibility with value set to v.
@@ -21201,6 +24033,14 @@ func (o OptReposListForAuthenticatedUserVisibility) Get() (v ReposListForAuthent
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptReposListForAuthenticatedUserVisibility) Or(d ReposListForAuthenticatedUserVisibility) ReposListForAuthenticatedUserVisibility {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptReposListForOrgDirection returns new OptReposListForOrgDirection with value set to v.
 func NewOptReposListForOrgDirection(v ReposListForOrgDirection) OptReposListForOrgDirection {
 	return OptReposListForOrgDirection{
@@ -21237,6 +24077,14 @@ func (o OptReposListForOrgDirection) Get() (v ReposListForOrgDirection, ok bool)
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptReposListForOrgDirection) Or(d ReposListForOrgDirection) ReposListForOrgDirection {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptReposListForOrgSort returns new OptReposListForOrgSort with value set to v.
@@ -21277,6 +24125,14 @@ func (o OptReposListForOrgSort) Get() (v ReposListForOrgSort, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptReposListForOrgSort) Or(d ReposListForOrgSort) ReposListForOrgSort {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptReposListForOrgType returns new OptReposListForOrgType with value set to v.
 func NewOptReposListForOrgType(v ReposListForOrgType) OptReposListForOrgType {
 	return OptReposListForOrgType{
@@ -21313,6 +24169,14 @@ func (o OptReposListForOrgType) Get() (v ReposListForOrgType, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptReposListForOrgType) Or(d ReposListForOrgType) ReposListForOrgType {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptReposListForUserDirection returns new OptReposListForUserDirection with value set to v.
@@ -21353,6 +24217,14 @@ func (o OptReposListForUserDirection) Get() (v ReposListForUserDirection, ok boo
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptReposListForUserDirection) Or(d ReposListForUserDirection) ReposListForUserDirection {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptReposListForUserSort returns new OptReposListForUserSort with value set to v.
 func NewOptReposListForUserSort(v ReposListForUserSort) OptReposListForUserSort {
 	return OptReposListForUserSort{
@@ -21389,6 +24261,14 @@ func (o OptReposListForUserSort) Get() (v ReposListForUserSort, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptReposListForUserSort) Or(d ReposListForUserSort) ReposListForUserSort {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptReposListForUserType returns new OptReposListForUserType with value set to v.
@@ -21429,6 +24309,14 @@ func (o OptReposListForUserType) Get() (v ReposListForUserType, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptReposListForUserType) Or(d ReposListForUserType) ReposListForUserType {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptReposListForksSort returns new OptReposListForksSort with value set to v.
 func NewOptReposListForksSort(v ReposListForksSort) OptReposListForksSort {
 	return OptReposListForksSort{
@@ -21465,6 +24353,14 @@ func (o OptReposListForksSort) Get() (v ReposListForksSort, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptReposListForksSort) Or(d ReposListForksSort) ReposListForksSort {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptReposRemoveAppAccessRestrictionsReq returns new OptReposRemoveAppAccessRestrictionsReq with value set to v.
@@ -21505,6 +24401,14 @@ func (o OptReposRemoveAppAccessRestrictionsReq) Get() (v ReposRemoveAppAccessRes
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptReposRemoveAppAccessRestrictionsReq) Or(d ReposRemoveAppAccessRestrictionsReq) ReposRemoveAppAccessRestrictionsReq {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptReposRemoveStatusCheckContextsReq returns new OptReposRemoveStatusCheckContextsReq with value set to v.
 func NewOptReposRemoveStatusCheckContextsReq(v ReposRemoveStatusCheckContextsReq) OptReposRemoveStatusCheckContextsReq {
 	return OptReposRemoveStatusCheckContextsReq{
@@ -21541,6 +24445,14 @@ func (o OptReposRemoveStatusCheckContextsReq) Get() (v ReposRemoveStatusCheckCon
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptReposRemoveStatusCheckContextsReq) Or(d ReposRemoveStatusCheckContextsReq) ReposRemoveStatusCheckContextsReq {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptReposRemoveTeamAccessRestrictionsReq returns new OptReposRemoveTeamAccessRestrictionsReq with value set to v.
@@ -21581,6 +24493,14 @@ func (o OptReposRemoveTeamAccessRestrictionsReq) Get() (v ReposRemoveTeamAccessR
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptReposRemoveTeamAccessRestrictionsReq) Or(d ReposRemoveTeamAccessRestrictionsReq) ReposRemoveTeamAccessRestrictionsReq {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptReposRemoveUserAccessRestrictionsReq returns new OptReposRemoveUserAccessRestrictionsReq with value set to v.
 func NewOptReposRemoveUserAccessRestrictionsReq(v ReposRemoveUserAccessRestrictionsReq) OptReposRemoveUserAccessRestrictionsReq {
 	return OptReposRemoveUserAccessRestrictionsReq{
@@ -21617,6 +24537,14 @@ func (o OptReposRemoveUserAccessRestrictionsReq) Get() (v ReposRemoveUserAccessR
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptReposRemoveUserAccessRestrictionsReq) Or(d ReposRemoveUserAccessRestrictionsReq) ReposRemoveUserAccessRestrictionsReq {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptReposRenameBranchReq returns new OptReposRenameBranchReq with value set to v.
@@ -21657,6 +24585,14 @@ func (o OptReposRenameBranchReq) Get() (v ReposRenameBranchReq, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptReposRenameBranchReq) Or(d ReposRenameBranchReq) ReposRenameBranchReq {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptReposSetAppAccessRestrictionsReq returns new OptReposSetAppAccessRestrictionsReq with value set to v.
 func NewOptReposSetAppAccessRestrictionsReq(v ReposSetAppAccessRestrictionsReq) OptReposSetAppAccessRestrictionsReq {
 	return OptReposSetAppAccessRestrictionsReq{
@@ -21693,6 +24629,14 @@ func (o OptReposSetAppAccessRestrictionsReq) Get() (v ReposSetAppAccessRestricti
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptReposSetAppAccessRestrictionsReq) Or(d ReposSetAppAccessRestrictionsReq) ReposSetAppAccessRestrictionsReq {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptReposSetStatusCheckContextsReq returns new OptReposSetStatusCheckContextsReq with value set to v.
@@ -21733,6 +24677,14 @@ func (o OptReposSetStatusCheckContextsReq) Get() (v ReposSetStatusCheckContextsR
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptReposSetStatusCheckContextsReq) Or(d ReposSetStatusCheckContextsReq) ReposSetStatusCheckContextsReq {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptReposSetTeamAccessRestrictionsReq returns new OptReposSetTeamAccessRestrictionsReq with value set to v.
 func NewOptReposSetTeamAccessRestrictionsReq(v ReposSetTeamAccessRestrictionsReq) OptReposSetTeamAccessRestrictionsReq {
 	return OptReposSetTeamAccessRestrictionsReq{
@@ -21771,6 +24723,14 @@ func (o OptReposSetTeamAccessRestrictionsReq) Get() (v ReposSetTeamAccessRestric
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptReposSetTeamAccessRestrictionsReq) Or(d ReposSetTeamAccessRestrictionsReq) ReposSetTeamAccessRestrictionsReq {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptReposSetUserAccessRestrictionsReq returns new OptReposSetUserAccessRestrictionsReq with value set to v.
 func NewOptReposSetUserAccessRestrictionsReq(v ReposSetUserAccessRestrictionsReq) OptReposSetUserAccessRestrictionsReq {
 	return OptReposSetUserAccessRestrictionsReq{
@@ -21807,6 +24767,14 @@ func (o OptReposSetUserAccessRestrictionsReq) Get() (v ReposSetUserAccessRestric
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptReposSetUserAccessRestrictionsReq) Or(d ReposSetUserAccessRestrictionsReq) ReposSetUserAccessRestrictionsReq {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptReposUpdateBranchProtectionReqRequiredPullRequestReviewsDismissalRestrictions returns new OptReposUpdateBranchProtectionReqRequiredPullRequestReviewsDismissalRestrictions with value set to v.
@@ -21849,6 +24817,14 @@ func (o OptReposUpdateBranchProtectionReqRequiredPullRequestReviewsDismissalRest
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptReposUpdateBranchProtectionReqRequiredPullRequestReviewsDismissalRestrictions) Or(d ReposUpdateBranchProtectionReqRequiredPullRequestReviewsDismissalRestrictions) ReposUpdateBranchProtectionReqRequiredPullRequestReviewsDismissalRestrictions {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptReposUpdateInvitationReq returns new OptReposUpdateInvitationReq with value set to v.
 func NewOptReposUpdateInvitationReq(v ReposUpdateInvitationReq) OptReposUpdateInvitationReq {
 	return OptReposUpdateInvitationReq{
@@ -21885,6 +24861,14 @@ func (o OptReposUpdateInvitationReq) Get() (v ReposUpdateInvitationReq, ok bool)
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptReposUpdateInvitationReq) Or(d ReposUpdateInvitationReq) ReposUpdateInvitationReq {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptReposUpdateInvitationReqPermissions returns new OptReposUpdateInvitationReqPermissions with value set to v.
@@ -21925,6 +24909,14 @@ func (o OptReposUpdateInvitationReqPermissions) Get() (v ReposUpdateInvitationRe
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptReposUpdateInvitationReqPermissions) Or(d ReposUpdateInvitationReqPermissions) ReposUpdateInvitationReqPermissions {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptReposUpdatePullRequestReviewProtectionReq returns new OptReposUpdatePullRequestReviewProtectionReq with value set to v.
 func NewOptReposUpdatePullRequestReviewProtectionReq(v ReposUpdatePullRequestReviewProtectionReq) OptReposUpdatePullRequestReviewProtectionReq {
 	return OptReposUpdatePullRequestReviewProtectionReq{
@@ -21961,6 +24953,14 @@ func (o OptReposUpdatePullRequestReviewProtectionReq) Get() (v ReposUpdatePullRe
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptReposUpdatePullRequestReviewProtectionReq) Or(d ReposUpdatePullRequestReviewProtectionReq) ReposUpdatePullRequestReviewProtectionReq {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptReposUpdatePullRequestReviewProtectionReqDismissalRestrictions returns new OptReposUpdatePullRequestReviewProtectionReqDismissalRestrictions with value set to v.
@@ -22001,6 +25001,14 @@ func (o OptReposUpdatePullRequestReviewProtectionReqDismissalRestrictions) Get()
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptReposUpdatePullRequestReviewProtectionReqDismissalRestrictions) Or(d ReposUpdatePullRequestReviewProtectionReqDismissalRestrictions) ReposUpdatePullRequestReviewProtectionReqDismissalRestrictions {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptReposUpdateReleaseAssetReq returns new OptReposUpdateReleaseAssetReq with value set to v.
 func NewOptReposUpdateReleaseAssetReq(v ReposUpdateReleaseAssetReq) OptReposUpdateReleaseAssetReq {
 	return OptReposUpdateReleaseAssetReq{
@@ -22037,6 +25045,14 @@ func (o OptReposUpdateReleaseAssetReq) Get() (v ReposUpdateReleaseAssetReq, ok b
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptReposUpdateReleaseAssetReq) Or(d ReposUpdateReleaseAssetReq) ReposUpdateReleaseAssetReq {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptReposUpdateReleaseReq returns new OptReposUpdateReleaseReq with value set to v.
@@ -22077,6 +25093,14 @@ func (o OptReposUpdateReleaseReq) Get() (v ReposUpdateReleaseReq, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptReposUpdateReleaseReq) Or(d ReposUpdateReleaseReq) ReposUpdateReleaseReq {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptReposUpdateReq returns new OptReposUpdateReq with value set to v.
 func NewOptReposUpdateReq(v ReposUpdateReq) OptReposUpdateReq {
 	return OptReposUpdateReq{
@@ -22113,6 +25137,14 @@ func (o OptReposUpdateReq) Get() (v ReposUpdateReq, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptReposUpdateReq) Or(d ReposUpdateReq) ReposUpdateReq {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptReposUpdateReqSecurityAndAnalysisAdvancedSecurity returns new OptReposUpdateReqSecurityAndAnalysisAdvancedSecurity with value set to v.
@@ -22153,6 +25185,14 @@ func (o OptReposUpdateReqSecurityAndAnalysisAdvancedSecurity) Get() (v ReposUpda
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptReposUpdateReqSecurityAndAnalysisAdvancedSecurity) Or(d ReposUpdateReqSecurityAndAnalysisAdvancedSecurity) ReposUpdateReqSecurityAndAnalysisAdvancedSecurity {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptReposUpdateReqSecurityAndAnalysisSecretScanning returns new OptReposUpdateReqSecurityAndAnalysisSecretScanning with value set to v.
 func NewOptReposUpdateReqSecurityAndAnalysisSecretScanning(v ReposUpdateReqSecurityAndAnalysisSecretScanning) OptReposUpdateReqSecurityAndAnalysisSecretScanning {
 	return OptReposUpdateReqSecurityAndAnalysisSecretScanning{
@@ -22189,6 +25229,14 @@ func (o OptReposUpdateReqSecurityAndAnalysisSecretScanning) Get() (v ReposUpdate
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptReposUpdateReqSecurityAndAnalysisSecretScanning) Or(d ReposUpdateReqSecurityAndAnalysisSecretScanning) ReposUpdateReqSecurityAndAnalysisSecretScanning {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptReposUpdateReqVisibility returns new OptReposUpdateReqVisibility with value set to v.
@@ -22229,6 +25277,14 @@ func (o OptReposUpdateReqVisibility) Get() (v ReposUpdateReqVisibility, ok bool)
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptReposUpdateReqVisibility) Or(d ReposUpdateReqVisibility) ReposUpdateReqVisibility {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptReposUpdateStatusCheckProtectionReq returns new OptReposUpdateStatusCheckProtectionReq with value set to v.
 func NewOptReposUpdateStatusCheckProtectionReq(v ReposUpdateStatusCheckProtectionReq) OptReposUpdateStatusCheckProtectionReq {
 	return OptReposUpdateStatusCheckProtectionReq{
@@ -22265,6 +25321,14 @@ func (o OptReposUpdateStatusCheckProtectionReq) Get() (v ReposUpdateStatusCheckP
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptReposUpdateStatusCheckProtectionReq) Or(d ReposUpdateStatusCheckProtectionReq) ReposUpdateStatusCheckProtectionReq {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptReposUpdateWebhookConfigForRepoReq returns new OptReposUpdateWebhookConfigForRepoReq with value set to v.
@@ -22305,6 +25369,14 @@ func (o OptReposUpdateWebhookConfigForRepoReq) Get() (v ReposUpdateWebhookConfig
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptReposUpdateWebhookConfigForRepoReq) Or(d ReposUpdateWebhookConfigForRepoReq) ReposUpdateWebhookConfigForRepoReq {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptReposUpdateWebhookReq returns new OptReposUpdateWebhookReq with value set to v.
 func NewOptReposUpdateWebhookReq(v ReposUpdateWebhookReq) OptReposUpdateWebhookReq {
 	return OptReposUpdateWebhookReq{
@@ -22341,6 +25413,14 @@ func (o OptReposUpdateWebhookReq) Get() (v ReposUpdateWebhookReq, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptReposUpdateWebhookReq) Or(d ReposUpdateWebhookReq) ReposUpdateWebhookReq {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptReposUpdateWebhookReqConfig returns new OptReposUpdateWebhookReqConfig with value set to v.
@@ -22381,6 +25461,14 @@ func (o OptReposUpdateWebhookReqConfig) Get() (v ReposUpdateWebhookReqConfig, ok
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptReposUpdateWebhookReqConfig) Or(d ReposUpdateWebhookReqConfig) ReposUpdateWebhookReqConfig {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptRepository returns new OptRepository with value set to v.
 func NewOptRepository(v Repository) OptRepository {
 	return OptRepository{
@@ -22417,6 +25505,14 @@ func (o OptRepository) Get() (v Repository, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptRepository) Or(d Repository) Repository {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptRepositoryPermissions returns new OptRepositoryPermissions with value set to v.
@@ -22457,6 +25553,14 @@ func (o OptRepositoryPermissions) Get() (v RepositoryPermissions, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptRepositoryPermissions) Or(d RepositoryPermissions) RepositoryPermissions {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptRepositoryTemplateRepositoryOwner returns new OptRepositoryTemplateRepositoryOwner with value set to v.
 func NewOptRepositoryTemplateRepositoryOwner(v RepositoryTemplateRepositoryOwner) OptRepositoryTemplateRepositoryOwner {
 	return OptRepositoryTemplateRepositoryOwner{
@@ -22493,6 +25597,14 @@ func (o OptRepositoryTemplateRepositoryOwner) Get() (v RepositoryTemplateReposit
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptRepositoryTemplateRepositoryOwner) Or(d RepositoryTemplateRepositoryOwner) RepositoryTemplateRepositoryOwner {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptRepositoryTemplateRepositoryPermissions returns new OptRepositoryTemplateRepositoryPermissions with value set to v.
@@ -22533,6 +25645,14 @@ func (o OptRepositoryTemplateRepositoryPermissions) Get() (v RepositoryTemplateR
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptRepositoryTemplateRepositoryPermissions) Or(d RepositoryTemplateRepositoryPermissions) RepositoryTemplateRepositoryPermissions {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptReviewCommentSide returns new OptReviewCommentSide with value set to v.
 func NewOptReviewCommentSide(v ReviewCommentSide) OptReviewCommentSide {
 	return OptReviewCommentSide{
@@ -22569,6 +25689,14 @@ func (o OptReviewCommentSide) Get() (v ReviewCommentSide, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptReviewCommentSide) Or(d ReviewCommentSide) ReviewCommentSide {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptRunnerLabelsItemType returns new OptRunnerLabelsItemType with value set to v.
@@ -22609,6 +25737,14 @@ func (o OptRunnerLabelsItemType) Get() (v RunnerLabelsItemType, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptRunnerLabelsItemType) Or(d RunnerLabelsItemType) RunnerLabelsItemType {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptScimEnterpriseGroupMeta returns new OptScimEnterpriseGroupMeta with value set to v.
 func NewOptScimEnterpriseGroupMeta(v ScimEnterpriseGroupMeta) OptScimEnterpriseGroupMeta {
 	return OptScimEnterpriseGroupMeta{
@@ -22645,6 +25781,14 @@ func (o OptScimEnterpriseGroupMeta) Get() (v ScimEnterpriseGroupMeta, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptScimEnterpriseGroupMeta) Or(d ScimEnterpriseGroupMeta) ScimEnterpriseGroupMeta {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptScimEnterpriseUserMeta returns new OptScimEnterpriseUserMeta with value set to v.
@@ -22685,6 +25829,14 @@ func (o OptScimEnterpriseUserMeta) Get() (v ScimEnterpriseUserMeta, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptScimEnterpriseUserMeta) Or(d ScimEnterpriseUserMeta) ScimEnterpriseUserMeta {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptScimEnterpriseUserName returns new OptScimEnterpriseUserName with value set to v.
 func NewOptScimEnterpriseUserName(v ScimEnterpriseUserName) OptScimEnterpriseUserName {
 	return OptScimEnterpriseUserName{
@@ -22721,6 +25873,14 @@ func (o OptScimEnterpriseUserName) Get() (v ScimEnterpriseUserName, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptScimEnterpriseUserName) Or(d ScimEnterpriseUserName) ScimEnterpriseUserName {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptScimGroupListEnterpriseResourcesItemMeta returns new OptScimGroupListEnterpriseResourcesItemMeta with value set to v.
@@ -22761,6 +25921,14 @@ func (o OptScimGroupListEnterpriseResourcesItemMeta) Get() (v ScimGroupListEnter
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptScimGroupListEnterpriseResourcesItemMeta) Or(d ScimGroupListEnterpriseResourcesItemMeta) ScimGroupListEnterpriseResourcesItemMeta {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptScimUserListEnterpriseResourcesItemMeta returns new OptScimUserListEnterpriseResourcesItemMeta with value set to v.
 func NewOptScimUserListEnterpriseResourcesItemMeta(v ScimUserListEnterpriseResourcesItemMeta) OptScimUserListEnterpriseResourcesItemMeta {
 	return OptScimUserListEnterpriseResourcesItemMeta{
@@ -22797,6 +25965,14 @@ func (o OptScimUserListEnterpriseResourcesItemMeta) Get() (v ScimUserListEnterpr
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptScimUserListEnterpriseResourcesItemMeta) Or(d ScimUserListEnterpriseResourcesItemMeta) ScimUserListEnterpriseResourcesItemMeta {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptScimUserListEnterpriseResourcesItemName returns new OptScimUserListEnterpriseResourcesItemName with value set to v.
@@ -22837,6 +26013,14 @@ func (o OptScimUserListEnterpriseResourcesItemName) Get() (v ScimUserListEnterpr
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptScimUserListEnterpriseResourcesItemName) Or(d ScimUserListEnterpriseResourcesItemName) ScimUserListEnterpriseResourcesItemName {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptSearchCodeOrder returns new OptSearchCodeOrder with value set to v.
 func NewOptSearchCodeOrder(v SearchCodeOrder) OptSearchCodeOrder {
 	return OptSearchCodeOrder{
@@ -22873,6 +26057,14 @@ func (o OptSearchCodeOrder) Get() (v SearchCodeOrder, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptSearchCodeOrder) Or(d SearchCodeOrder) SearchCodeOrder {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptSearchCodeSort returns new OptSearchCodeSort with value set to v.
@@ -22913,6 +26105,14 @@ func (o OptSearchCodeSort) Get() (v SearchCodeSort, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptSearchCodeSort) Or(d SearchCodeSort) SearchCodeSort {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptSearchCommitsOrder returns new OptSearchCommitsOrder with value set to v.
 func NewOptSearchCommitsOrder(v SearchCommitsOrder) OptSearchCommitsOrder {
 	return OptSearchCommitsOrder{
@@ -22949,6 +26149,14 @@ func (o OptSearchCommitsOrder) Get() (v SearchCommitsOrder, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptSearchCommitsOrder) Or(d SearchCommitsOrder) SearchCommitsOrder {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptSearchCommitsSort returns new OptSearchCommitsSort with value set to v.
@@ -22989,6 +26197,14 @@ func (o OptSearchCommitsSort) Get() (v SearchCommitsSort, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptSearchCommitsSort) Or(d SearchCommitsSort) SearchCommitsSort {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptSearchIssuesAndPullRequestsOrder returns new OptSearchIssuesAndPullRequestsOrder with value set to v.
 func NewOptSearchIssuesAndPullRequestsOrder(v SearchIssuesAndPullRequestsOrder) OptSearchIssuesAndPullRequestsOrder {
 	return OptSearchIssuesAndPullRequestsOrder{
@@ -23025,6 +26241,14 @@ func (o OptSearchIssuesAndPullRequestsOrder) Get() (v SearchIssuesAndPullRequest
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptSearchIssuesAndPullRequestsOrder) Or(d SearchIssuesAndPullRequestsOrder) SearchIssuesAndPullRequestsOrder {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptSearchIssuesAndPullRequestsSort returns new OptSearchIssuesAndPullRequestsSort with value set to v.
@@ -23065,6 +26289,14 @@ func (o OptSearchIssuesAndPullRequestsSort) Get() (v SearchIssuesAndPullRequests
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptSearchIssuesAndPullRequestsSort) Or(d SearchIssuesAndPullRequestsSort) SearchIssuesAndPullRequestsSort {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptSearchLabelsOrder returns new OptSearchLabelsOrder with value set to v.
 func NewOptSearchLabelsOrder(v SearchLabelsOrder) OptSearchLabelsOrder {
 	return OptSearchLabelsOrder{
@@ -23101,6 +26333,14 @@ func (o OptSearchLabelsOrder) Get() (v SearchLabelsOrder, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptSearchLabelsOrder) Or(d SearchLabelsOrder) SearchLabelsOrder {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptSearchLabelsSort returns new OptSearchLabelsSort with value set to v.
@@ -23141,6 +26381,14 @@ func (o OptSearchLabelsSort) Get() (v SearchLabelsSort, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptSearchLabelsSort) Or(d SearchLabelsSort) SearchLabelsSort {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptSearchReposOrder returns new OptSearchReposOrder with value set to v.
 func NewOptSearchReposOrder(v SearchReposOrder) OptSearchReposOrder {
 	return OptSearchReposOrder{
@@ -23177,6 +26425,14 @@ func (o OptSearchReposOrder) Get() (v SearchReposOrder, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptSearchReposOrder) Or(d SearchReposOrder) SearchReposOrder {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptSearchReposSort returns new OptSearchReposSort with value set to v.
@@ -23217,6 +26473,14 @@ func (o OptSearchReposSort) Get() (v SearchReposSort, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptSearchReposSort) Or(d SearchReposSort) SearchReposSort {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptSearchUsersOrder returns new OptSearchUsersOrder with value set to v.
 func NewOptSearchUsersOrder(v SearchUsersOrder) OptSearchUsersOrder {
 	return OptSearchUsersOrder{
@@ -23253,6 +26517,14 @@ func (o OptSearchUsersOrder) Get() (v SearchUsersOrder, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptSearchUsersOrder) Or(d SearchUsersOrder) SearchUsersOrder {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptSearchUsersSort returns new OptSearchUsersSort with value set to v.
@@ -23293,6 +26565,14 @@ func (o OptSearchUsersSort) Get() (v SearchUsersSort, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptSearchUsersSort) Or(d SearchUsersSort) SearchUsersSort {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptSecretScanningAlertState returns new OptSecretScanningAlertState with value set to v.
 func NewOptSecretScanningAlertState(v SecretScanningAlertState) OptSecretScanningAlertState {
 	return OptSecretScanningAlertState{
@@ -23329,6 +26609,14 @@ func (o OptSecretScanningAlertState) Get() (v SecretScanningAlertState, ok bool)
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptSecretScanningAlertState) Or(d SecretScanningAlertState) SecretScanningAlertState {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptSecretScanningListAlertsForOrgState returns new OptSecretScanningListAlertsForOrgState with value set to v.
@@ -23369,6 +26657,14 @@ func (o OptSecretScanningListAlertsForOrgState) Get() (v SecretScanningListAlert
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptSecretScanningListAlertsForOrgState) Or(d SecretScanningListAlertsForOrgState) SecretScanningListAlertsForOrgState {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptSecretScanningListAlertsForRepoState returns new OptSecretScanningListAlertsForRepoState with value set to v.
 func NewOptSecretScanningListAlertsForRepoState(v SecretScanningListAlertsForRepoState) OptSecretScanningListAlertsForRepoState {
 	return OptSecretScanningListAlertsForRepoState{
@@ -23405,6 +26701,14 @@ func (o OptSecretScanningListAlertsForRepoState) Get() (v SecretScanningListAler
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptSecretScanningListAlertsForRepoState) Or(d SecretScanningListAlertsForRepoState) SecretScanningListAlertsForRepoState {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptSelectedActions returns new OptSelectedActions with value set to v.
@@ -23445,6 +26749,14 @@ func (o OptSelectedActions) Get() (v SelectedActions, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptSelectedActions) Or(d SelectedActions) SelectedActions {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptSelectedActionsURL returns new OptSelectedActionsURL with value set to v.
 func NewOptSelectedActionsURL(v SelectedActionsURL) OptSelectedActionsURL {
 	return OptSelectedActionsURL{
@@ -23481,6 +26793,14 @@ func (o OptSelectedActionsURL) Get() (v SelectedActionsURL, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptSelectedActionsURL) Or(d SelectedActionsURL) SelectedActionsURL {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptSimpleUser returns new OptSimpleUser with value set to v.
@@ -23521,6 +26841,14 @@ func (o OptSimpleUser) Get() (v SimpleUser, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptSimpleUser) Or(d SimpleUser) SimpleUser {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptStatusCheckPolicy returns new OptStatusCheckPolicy with value set to v.
 func NewOptStatusCheckPolicy(v StatusCheckPolicy) OptStatusCheckPolicy {
 	return OptStatusCheckPolicy{
@@ -23557,6 +26885,14 @@ func (o OptStatusCheckPolicy) Get() (v StatusCheckPolicy, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptStatusCheckPolicy) Or(d StatusCheckPolicy) StatusCheckPolicy {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptString returns new OptString with value set to v.
@@ -23597,6 +26933,14 @@ func (o OptString) Get() (v string, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptString) Or(d string) string {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptTeam returns new OptTeam with value set to v.
 func NewOptTeam(v Team) OptTeam {
 	return OptTeam{
@@ -23633,6 +26977,14 @@ func (o OptTeam) Get() (v Team, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptTeam) Or(d Team) Team {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptTeamFullPrivacy returns new OptTeamFullPrivacy with value set to v.
@@ -23673,6 +27025,14 @@ func (o OptTeamFullPrivacy) Get() (v TeamFullPrivacy, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptTeamFullPrivacy) Or(d TeamFullPrivacy) TeamFullPrivacy {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptTeamPermissions returns new OptTeamPermissions with value set to v.
 func NewOptTeamPermissions(v TeamPermissions) OptTeamPermissions {
 	return OptTeamPermissions{
@@ -23709,6 +27069,14 @@ func (o OptTeamPermissions) Get() (v TeamPermissions, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptTeamPermissions) Or(d TeamPermissions) TeamPermissions {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptTeamRepositoryPermissions returns new OptTeamRepositoryPermissions with value set to v.
@@ -23749,6 +27117,14 @@ func (o OptTeamRepositoryPermissions) Get() (v TeamRepositoryPermissions, ok boo
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptTeamRepositoryPermissions) Or(d TeamRepositoryPermissions) TeamRepositoryPermissions {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptTeamsAddOrUpdateMembershipForUserInOrgReq returns new OptTeamsAddOrUpdateMembershipForUserInOrgReq with value set to v.
 func NewOptTeamsAddOrUpdateMembershipForUserInOrgReq(v TeamsAddOrUpdateMembershipForUserInOrgReq) OptTeamsAddOrUpdateMembershipForUserInOrgReq {
 	return OptTeamsAddOrUpdateMembershipForUserInOrgReq{
@@ -23785,6 +27161,14 @@ func (o OptTeamsAddOrUpdateMembershipForUserInOrgReq) Get() (v TeamsAddOrUpdateM
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptTeamsAddOrUpdateMembershipForUserInOrgReq) Or(d TeamsAddOrUpdateMembershipForUserInOrgReq) TeamsAddOrUpdateMembershipForUserInOrgReq {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptTeamsAddOrUpdateMembershipForUserInOrgReqRole returns new OptTeamsAddOrUpdateMembershipForUserInOrgReqRole with value set to v.
@@ -23825,6 +27209,14 @@ func (o OptTeamsAddOrUpdateMembershipForUserInOrgReqRole) Get() (v TeamsAddOrUpd
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptTeamsAddOrUpdateMembershipForUserInOrgReqRole) Or(d TeamsAddOrUpdateMembershipForUserInOrgReqRole) TeamsAddOrUpdateMembershipForUserInOrgReqRole {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptTeamsAddOrUpdateMembershipForUserLegacyReq returns new OptTeamsAddOrUpdateMembershipForUserLegacyReq with value set to v.
 func NewOptTeamsAddOrUpdateMembershipForUserLegacyReq(v TeamsAddOrUpdateMembershipForUserLegacyReq) OptTeamsAddOrUpdateMembershipForUserLegacyReq {
 	return OptTeamsAddOrUpdateMembershipForUserLegacyReq{
@@ -23861,6 +27253,14 @@ func (o OptTeamsAddOrUpdateMembershipForUserLegacyReq) Get() (v TeamsAddOrUpdate
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptTeamsAddOrUpdateMembershipForUserLegacyReq) Or(d TeamsAddOrUpdateMembershipForUserLegacyReq) TeamsAddOrUpdateMembershipForUserLegacyReq {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptTeamsAddOrUpdateMembershipForUserLegacyReqRole returns new OptTeamsAddOrUpdateMembershipForUserLegacyReqRole with value set to v.
@@ -23901,6 +27301,14 @@ func (o OptTeamsAddOrUpdateMembershipForUserLegacyReqRole) Get() (v TeamsAddOrUp
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptTeamsAddOrUpdateMembershipForUserLegacyReqRole) Or(d TeamsAddOrUpdateMembershipForUserLegacyReqRole) TeamsAddOrUpdateMembershipForUserLegacyReqRole {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptTeamsAddOrUpdateProjectPermissionsInOrgReq returns new OptTeamsAddOrUpdateProjectPermissionsInOrgReq with value set to v.
 func NewOptTeamsAddOrUpdateProjectPermissionsInOrgReq(v TeamsAddOrUpdateProjectPermissionsInOrgReq) OptTeamsAddOrUpdateProjectPermissionsInOrgReq {
 	return OptTeamsAddOrUpdateProjectPermissionsInOrgReq{
@@ -23937,6 +27345,14 @@ func (o OptTeamsAddOrUpdateProjectPermissionsInOrgReq) Get() (v TeamsAddOrUpdate
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptTeamsAddOrUpdateProjectPermissionsInOrgReq) Or(d TeamsAddOrUpdateProjectPermissionsInOrgReq) TeamsAddOrUpdateProjectPermissionsInOrgReq {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptTeamsAddOrUpdateProjectPermissionsInOrgReqPermission returns new OptTeamsAddOrUpdateProjectPermissionsInOrgReqPermission with value set to v.
@@ -23977,6 +27393,14 @@ func (o OptTeamsAddOrUpdateProjectPermissionsInOrgReqPermission) Get() (v TeamsA
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptTeamsAddOrUpdateProjectPermissionsInOrgReqPermission) Or(d TeamsAddOrUpdateProjectPermissionsInOrgReqPermission) TeamsAddOrUpdateProjectPermissionsInOrgReqPermission {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptTeamsAddOrUpdateProjectPermissionsLegacyReq returns new OptTeamsAddOrUpdateProjectPermissionsLegacyReq with value set to v.
 func NewOptTeamsAddOrUpdateProjectPermissionsLegacyReq(v TeamsAddOrUpdateProjectPermissionsLegacyReq) OptTeamsAddOrUpdateProjectPermissionsLegacyReq {
 	return OptTeamsAddOrUpdateProjectPermissionsLegacyReq{
@@ -24013,6 +27437,14 @@ func (o OptTeamsAddOrUpdateProjectPermissionsLegacyReq) Get() (v TeamsAddOrUpdat
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptTeamsAddOrUpdateProjectPermissionsLegacyReq) Or(d TeamsAddOrUpdateProjectPermissionsLegacyReq) TeamsAddOrUpdateProjectPermissionsLegacyReq {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptTeamsAddOrUpdateProjectPermissionsLegacyReqPermission returns new OptTeamsAddOrUpdateProjectPermissionsLegacyReqPermission with value set to v.
@@ -24053,6 +27485,14 @@ func (o OptTeamsAddOrUpdateProjectPermissionsLegacyReqPermission) Get() (v Teams
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptTeamsAddOrUpdateProjectPermissionsLegacyReqPermission) Or(d TeamsAddOrUpdateProjectPermissionsLegacyReqPermission) TeamsAddOrUpdateProjectPermissionsLegacyReqPermission {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptTeamsAddOrUpdateRepoPermissionsInOrgReq returns new OptTeamsAddOrUpdateRepoPermissionsInOrgReq with value set to v.
 func NewOptTeamsAddOrUpdateRepoPermissionsInOrgReq(v TeamsAddOrUpdateRepoPermissionsInOrgReq) OptTeamsAddOrUpdateRepoPermissionsInOrgReq {
 	return OptTeamsAddOrUpdateRepoPermissionsInOrgReq{
@@ -24089,6 +27529,14 @@ func (o OptTeamsAddOrUpdateRepoPermissionsInOrgReq) Get() (v TeamsAddOrUpdateRep
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptTeamsAddOrUpdateRepoPermissionsInOrgReq) Or(d TeamsAddOrUpdateRepoPermissionsInOrgReq) TeamsAddOrUpdateRepoPermissionsInOrgReq {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptTeamsAddOrUpdateRepoPermissionsInOrgReqPermission returns new OptTeamsAddOrUpdateRepoPermissionsInOrgReqPermission with value set to v.
@@ -24129,6 +27577,14 @@ func (o OptTeamsAddOrUpdateRepoPermissionsInOrgReqPermission) Get() (v TeamsAddO
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptTeamsAddOrUpdateRepoPermissionsInOrgReqPermission) Or(d TeamsAddOrUpdateRepoPermissionsInOrgReqPermission) TeamsAddOrUpdateRepoPermissionsInOrgReqPermission {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptTeamsAddOrUpdateRepoPermissionsLegacyReq returns new OptTeamsAddOrUpdateRepoPermissionsLegacyReq with value set to v.
 func NewOptTeamsAddOrUpdateRepoPermissionsLegacyReq(v TeamsAddOrUpdateRepoPermissionsLegacyReq) OptTeamsAddOrUpdateRepoPermissionsLegacyReq {
 	return OptTeamsAddOrUpdateRepoPermissionsLegacyReq{
@@ -24165,6 +27621,14 @@ func (o OptTeamsAddOrUpdateRepoPermissionsLegacyReq) Get() (v TeamsAddOrUpdateRe
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptTeamsAddOrUpdateRepoPermissionsLegacyReq) Or(d TeamsAddOrUpdateRepoPermissionsLegacyReq) TeamsAddOrUpdateRepoPermissionsLegacyReq {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptTeamsAddOrUpdateRepoPermissionsLegacyReqPermission returns new OptTeamsAddOrUpdateRepoPermissionsLegacyReqPermission with value set to v.
@@ -24205,6 +27669,14 @@ func (o OptTeamsAddOrUpdateRepoPermissionsLegacyReqPermission) Get() (v TeamsAdd
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptTeamsAddOrUpdateRepoPermissionsLegacyReqPermission) Or(d TeamsAddOrUpdateRepoPermissionsLegacyReqPermission) TeamsAddOrUpdateRepoPermissionsLegacyReqPermission {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptTeamsCreateReqPermission returns new OptTeamsCreateReqPermission with value set to v.
 func NewOptTeamsCreateReqPermission(v TeamsCreateReqPermission) OptTeamsCreateReqPermission {
 	return OptTeamsCreateReqPermission{
@@ -24241,6 +27713,14 @@ func (o OptTeamsCreateReqPermission) Get() (v TeamsCreateReqPermission, ok bool)
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptTeamsCreateReqPermission) Or(d TeamsCreateReqPermission) TeamsCreateReqPermission {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptTeamsCreateReqPrivacy returns new OptTeamsCreateReqPrivacy with value set to v.
@@ -24281,6 +27761,14 @@ func (o OptTeamsCreateReqPrivacy) Get() (v TeamsCreateReqPrivacy, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptTeamsCreateReqPrivacy) Or(d TeamsCreateReqPrivacy) TeamsCreateReqPrivacy {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptTeamsListDiscussionCommentsInOrgDirection returns new OptTeamsListDiscussionCommentsInOrgDirection with value set to v.
 func NewOptTeamsListDiscussionCommentsInOrgDirection(v TeamsListDiscussionCommentsInOrgDirection) OptTeamsListDiscussionCommentsInOrgDirection {
 	return OptTeamsListDiscussionCommentsInOrgDirection{
@@ -24317,6 +27805,14 @@ func (o OptTeamsListDiscussionCommentsInOrgDirection) Get() (v TeamsListDiscussi
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptTeamsListDiscussionCommentsInOrgDirection) Or(d TeamsListDiscussionCommentsInOrgDirection) TeamsListDiscussionCommentsInOrgDirection {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptTeamsListDiscussionCommentsLegacyDirection returns new OptTeamsListDiscussionCommentsLegacyDirection with value set to v.
@@ -24357,6 +27853,14 @@ func (o OptTeamsListDiscussionCommentsLegacyDirection) Get() (v TeamsListDiscuss
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptTeamsListDiscussionCommentsLegacyDirection) Or(d TeamsListDiscussionCommentsLegacyDirection) TeamsListDiscussionCommentsLegacyDirection {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptTeamsListDiscussionsInOrgDirection returns new OptTeamsListDiscussionsInOrgDirection with value set to v.
 func NewOptTeamsListDiscussionsInOrgDirection(v TeamsListDiscussionsInOrgDirection) OptTeamsListDiscussionsInOrgDirection {
 	return OptTeamsListDiscussionsInOrgDirection{
@@ -24393,6 +27897,14 @@ func (o OptTeamsListDiscussionsInOrgDirection) Get() (v TeamsListDiscussionsInOr
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptTeamsListDiscussionsInOrgDirection) Or(d TeamsListDiscussionsInOrgDirection) TeamsListDiscussionsInOrgDirection {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptTeamsListDiscussionsLegacyDirection returns new OptTeamsListDiscussionsLegacyDirection with value set to v.
@@ -24433,6 +27945,14 @@ func (o OptTeamsListDiscussionsLegacyDirection) Get() (v TeamsListDiscussionsLeg
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptTeamsListDiscussionsLegacyDirection) Or(d TeamsListDiscussionsLegacyDirection) TeamsListDiscussionsLegacyDirection {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptTeamsListMembersInOrgRole returns new OptTeamsListMembersInOrgRole with value set to v.
 func NewOptTeamsListMembersInOrgRole(v TeamsListMembersInOrgRole) OptTeamsListMembersInOrgRole {
 	return OptTeamsListMembersInOrgRole{
@@ -24469,6 +27989,14 @@ func (o OptTeamsListMembersInOrgRole) Get() (v TeamsListMembersInOrgRole, ok boo
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptTeamsListMembersInOrgRole) Or(d TeamsListMembersInOrgRole) TeamsListMembersInOrgRole {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptTeamsListMembersLegacyRole returns new OptTeamsListMembersLegacyRole with value set to v.
@@ -24509,6 +28037,14 @@ func (o OptTeamsListMembersLegacyRole) Get() (v TeamsListMembersLegacyRole, ok b
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptTeamsListMembersLegacyRole) Or(d TeamsListMembersLegacyRole) TeamsListMembersLegacyRole {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptTeamsUpdateDiscussionInOrgReq returns new OptTeamsUpdateDiscussionInOrgReq with value set to v.
 func NewOptTeamsUpdateDiscussionInOrgReq(v TeamsUpdateDiscussionInOrgReq) OptTeamsUpdateDiscussionInOrgReq {
 	return OptTeamsUpdateDiscussionInOrgReq{
@@ -24545,6 +28081,14 @@ func (o OptTeamsUpdateDiscussionInOrgReq) Get() (v TeamsUpdateDiscussionInOrgReq
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptTeamsUpdateDiscussionInOrgReq) Or(d TeamsUpdateDiscussionInOrgReq) TeamsUpdateDiscussionInOrgReq {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptTeamsUpdateDiscussionLegacyReq returns new OptTeamsUpdateDiscussionLegacyReq with value set to v.
@@ -24585,6 +28129,14 @@ func (o OptTeamsUpdateDiscussionLegacyReq) Get() (v TeamsUpdateDiscussionLegacyR
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptTeamsUpdateDiscussionLegacyReq) Or(d TeamsUpdateDiscussionLegacyReq) TeamsUpdateDiscussionLegacyReq {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptTeamsUpdateInOrgReq returns new OptTeamsUpdateInOrgReq with value set to v.
 func NewOptTeamsUpdateInOrgReq(v TeamsUpdateInOrgReq) OptTeamsUpdateInOrgReq {
 	return OptTeamsUpdateInOrgReq{
@@ -24621,6 +28173,14 @@ func (o OptTeamsUpdateInOrgReq) Get() (v TeamsUpdateInOrgReq, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptTeamsUpdateInOrgReq) Or(d TeamsUpdateInOrgReq) TeamsUpdateInOrgReq {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptTeamsUpdateInOrgReqPermission returns new OptTeamsUpdateInOrgReqPermission with value set to v.
@@ -24661,6 +28221,14 @@ func (o OptTeamsUpdateInOrgReqPermission) Get() (v TeamsUpdateInOrgReqPermission
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptTeamsUpdateInOrgReqPermission) Or(d TeamsUpdateInOrgReqPermission) TeamsUpdateInOrgReqPermission {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptTeamsUpdateInOrgReqPrivacy returns new OptTeamsUpdateInOrgReqPrivacy with value set to v.
 func NewOptTeamsUpdateInOrgReqPrivacy(v TeamsUpdateInOrgReqPrivacy) OptTeamsUpdateInOrgReqPrivacy {
 	return OptTeamsUpdateInOrgReqPrivacy{
@@ -24697,6 +28265,14 @@ func (o OptTeamsUpdateInOrgReqPrivacy) Get() (v TeamsUpdateInOrgReqPrivacy, ok b
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptTeamsUpdateInOrgReqPrivacy) Or(d TeamsUpdateInOrgReqPrivacy) TeamsUpdateInOrgReqPrivacy {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptTeamsUpdateLegacyReqPermission returns new OptTeamsUpdateLegacyReqPermission with value set to v.
@@ -24737,6 +28313,14 @@ func (o OptTeamsUpdateLegacyReqPermission) Get() (v TeamsUpdateLegacyReqPermissi
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptTeamsUpdateLegacyReqPermission) Or(d TeamsUpdateLegacyReqPermission) TeamsUpdateLegacyReqPermission {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptTeamsUpdateLegacyReqPrivacy returns new OptTeamsUpdateLegacyReqPrivacy with value set to v.
 func NewOptTeamsUpdateLegacyReqPrivacy(v TeamsUpdateLegacyReqPrivacy) OptTeamsUpdateLegacyReqPrivacy {
 	return OptTeamsUpdateLegacyReqPrivacy{
@@ -24773,6 +28357,14 @@ func (o OptTeamsUpdateLegacyReqPrivacy) Get() (v TeamsUpdateLegacyReqPrivacy, ok
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptTeamsUpdateLegacyReqPrivacy) Or(d TeamsUpdateLegacyReqPrivacy) TeamsUpdateLegacyReqPrivacy {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptTime returns new OptTime with value set to v.
@@ -24813,6 +28405,14 @@ func (o OptTime) Get() (v time.Time, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptTime) Or(d time.Time) time.Time {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptTopicSearchResultItemAliasesItemTopicRelation returns new OptTopicSearchResultItemAliasesItemTopicRelation with value set to v.
 func NewOptTopicSearchResultItemAliasesItemTopicRelation(v TopicSearchResultItemAliasesItemTopicRelation) OptTopicSearchResultItemAliasesItemTopicRelation {
 	return OptTopicSearchResultItemAliasesItemTopicRelation{
@@ -24849,6 +28449,14 @@ func (o OptTopicSearchResultItemAliasesItemTopicRelation) Get() (v TopicSearchRe
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptTopicSearchResultItemAliasesItemTopicRelation) Or(d TopicSearchResultItemAliasesItemTopicRelation) TopicSearchResultItemAliasesItemTopicRelation {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptTopicSearchResultItemRelatedItemTopicRelation returns new OptTopicSearchResultItemRelatedItemTopicRelation with value set to v.
@@ -24889,6 +28497,14 @@ func (o OptTopicSearchResultItemRelatedItemTopicRelation) Get() (v TopicSearchRe
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptTopicSearchResultItemRelatedItemTopicRelation) Or(d TopicSearchResultItemRelatedItemTopicRelation) TopicSearchResultItemRelatedItemTopicRelation {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptURL returns new OptURL with value set to v.
 func NewOptURL(v url.URL) OptURL {
 	return OptURL{
@@ -24925,6 +28541,14 @@ func (o OptURL) Get() (v url.URL, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptURL) Or(d url.URL) url.URL {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptUsersAddEmailForAuthenticatedReq returns new OptUsersAddEmailForAuthenticatedReq with value set to v.
@@ -24965,6 +28589,14 @@ func (o OptUsersAddEmailForAuthenticatedReq) Get() (v UsersAddEmailForAuthentica
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptUsersAddEmailForAuthenticatedReq) Or(d UsersAddEmailForAuthenticatedReq) UsersAddEmailForAuthenticatedReq {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptUsersDeleteEmailForAuthenticatedReq returns new OptUsersDeleteEmailForAuthenticatedReq with value set to v.
 func NewOptUsersDeleteEmailForAuthenticatedReq(v UsersDeleteEmailForAuthenticatedReq) OptUsersDeleteEmailForAuthenticatedReq {
 	return OptUsersDeleteEmailForAuthenticatedReq{
@@ -25001,6 +28633,14 @@ func (o OptUsersDeleteEmailForAuthenticatedReq) Get() (v UsersDeleteEmailForAuth
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptUsersDeleteEmailForAuthenticatedReq) Or(d UsersDeleteEmailForAuthenticatedReq) UsersDeleteEmailForAuthenticatedReq {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptUsersGetContextForUserSubjectType returns new OptUsersGetContextForUserSubjectType with value set to v.
@@ -25041,6 +28681,14 @@ func (o OptUsersGetContextForUserSubjectType) Get() (v UsersGetContextForUserSub
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptUsersGetContextForUserSubjectType) Or(d UsersGetContextForUserSubjectType) UsersGetContextForUserSubjectType {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptUsersUpdateAuthenticatedReq returns new OptUsersUpdateAuthenticatedReq with value set to v.
 func NewOptUsersUpdateAuthenticatedReq(v UsersUpdateAuthenticatedReq) OptUsersUpdateAuthenticatedReq {
 	return OptUsersUpdateAuthenticatedReq{
@@ -25077,6 +28725,14 @@ func (o OptUsersUpdateAuthenticatedReq) Get() (v UsersUpdateAuthenticatedReq, ok
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptUsersUpdateAuthenticatedReq) Or(d UsersUpdateAuthenticatedReq) UsersUpdateAuthenticatedReq {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptVerification returns new OptVerification with value set to v.
@@ -25117,6 +28773,14 @@ func (o OptVerification) Get() (v Verification, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptVerification) Or(d Verification) Verification {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptWaitTimer returns new OptWaitTimer with value set to v.
 func NewOptWaitTimer(v WaitTimer) OptWaitTimer {
 	return OptWaitTimer{
@@ -25153,6 +28817,14 @@ func (o OptWaitTimer) Get() (v WaitTimer, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptWaitTimer) Or(d WaitTimer) WaitTimer {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptWebhookConfigContentType returns new OptWebhookConfigContentType with value set to v.
@@ -25193,6 +28865,14 @@ func (o OptWebhookConfigContentType) Get() (v WebhookConfigContentType, ok bool)
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptWebhookConfigContentType) Or(d WebhookConfigContentType) WebhookConfigContentType {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptWebhookConfigSecret returns new OptWebhookConfigSecret with value set to v.
 func NewOptWebhookConfigSecret(v WebhookConfigSecret) OptWebhookConfigSecret {
 	return OptWebhookConfigSecret{
@@ -25229,6 +28909,14 @@ func (o OptWebhookConfigSecret) Get() (v WebhookConfigSecret, ok bool) {
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptWebhookConfigSecret) Or(d WebhookConfigSecret) WebhookConfigSecret {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptWebhookConfigURL returns new OptWebhookConfigURL with value set to v.
@@ -25269,6 +28957,14 @@ func (o OptWebhookConfigURL) Get() (v WebhookConfigURL, ok bool) {
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptWebhookConfigURL) Or(d WebhookConfigURL) WebhookConfigURL {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptWorkflowRunUsageBillableMACOS returns new OptWorkflowRunUsageBillableMACOS with value set to v.
 func NewOptWorkflowRunUsageBillableMACOS(v WorkflowRunUsageBillableMACOS) OptWorkflowRunUsageBillableMACOS {
 	return OptWorkflowRunUsageBillableMACOS{
@@ -25305,6 +29001,14 @@ func (o OptWorkflowRunUsageBillableMACOS) Get() (v WorkflowRunUsageBillableMACOS
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptWorkflowRunUsageBillableMACOS) Or(d WorkflowRunUsageBillableMACOS) WorkflowRunUsageBillableMACOS {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptWorkflowRunUsageBillableUBUNTU returns new OptWorkflowRunUsageBillableUBUNTU with value set to v.
@@ -25345,6 +29049,14 @@ func (o OptWorkflowRunUsageBillableUBUNTU) Get() (v WorkflowRunUsageBillableUBUN
 	return o.Value, true
 }
 
+// Or returns value if set, or given parameter if does not.
+func (o OptWorkflowRunUsageBillableUBUNTU) Or(d WorkflowRunUsageBillableUBUNTU) WorkflowRunUsageBillableUBUNTU {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptWorkflowRunUsageBillableWINDOWS returns new OptWorkflowRunUsageBillableWINDOWS with value set to v.
 func NewOptWorkflowRunUsageBillableWINDOWS(v WorkflowRunUsageBillableWINDOWS) OptWorkflowRunUsageBillableWINDOWS {
 	return OptWorkflowRunUsageBillableWINDOWS{
@@ -25381,6 +29093,14 @@ func (o OptWorkflowRunUsageBillableWINDOWS) Get() (v WorkflowRunUsageBillableWIN
 		return v, false
 	}
 	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptWorkflowRunUsageBillableWINDOWS) Or(d WorkflowRunUsageBillableWINDOWS) WorkflowRunUsageBillableWINDOWS {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // Ref: #/components/schemas/org-hook

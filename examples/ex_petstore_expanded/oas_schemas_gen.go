@@ -124,3 +124,11 @@ func (o OptString) Get() (v string, ok bool) {
 	}
 	return o.Value, true
 }
+
+// Or returns value if set, or given parameter if does not.
+func (o OptString) Or(d string) string {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
