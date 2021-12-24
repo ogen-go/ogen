@@ -66,7 +66,7 @@ func (s *Server) notFound(w http.ResponseWriter, r *http.Request) {
 	http.NotFound(w, r)
 }
 
-func skipSlash(p []byte) []byte {
+func skipSlash(p string) string {
 	if len(p) > 0 && p[0] == '/' {
 		return p[1:]
 	}
@@ -74,9 +74,9 @@ func skipSlash(p []byte) []byte {
 }
 
 // nextElem return next path element from p and forwarded p.
-func nextElem(p []byte) (elem, next []byte) {
+func nextElem(p string) (elem, next string) {
 	p = skipSlash(p)
-	idx := bytes.IndexByte(p, '/')
+	idx := strings.IndexByte(p, '/')
 	if idx < 0 {
 		idx = len(p)
 	}
@@ -86,14 +86,14 @@ func nextElem(p []byte) (elem, next []byte) {
 // ServeHTTP serves http request as defined by OpenAPI v3 specification,
 // calling handler that matches the path or returning not found error.
 func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	p := []byte(r.URL.Path)
+	p := r.URL.Path
 	if len(p) == 0 {
 		s.notFound(w, r)
 		return
 	}
 
 	var (
-		elem []byte            // current element, without slashes
+		elem string            // current element, without slashes
 		args map[string]string // lazily initialized
 	)
 
@@ -102,11 +102,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	case "GET":
 		// Root edge.
 		elem, p = nextElem(p)
-		switch string(elem) {
+		switch elem {
 		case "market": // -> 1
 			// Edge: 1, path: "market".
 			elem, p = nextElem(p)
-			switch string(elem) {
+			switch elem {
 			case "bonds": // -> 2
 				// GET /market/bonds
 				s.handleMarketBondsGetRequest(args, w, r)
@@ -130,7 +130,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			case "search": // -> 7
 				// Edge: 7, path: "search".
 				elem, p = nextElem(p)
-				switch string(elem) {
+				switch elem {
 				case "by-figi": // -> 8
 					// GET /market/search/by-figi
 					s.handleMarketSearchByFigiGetRequest(args, w, r)
@@ -167,7 +167,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				s.handlePortfolioGetRequest(args, w, r)
 				return
 			}
-			switch string(elem) {
+			switch elem {
 			case "currencies": // -> 14
 				// GET /portfolio/currencies
 				s.handlePortfolioCurrenciesGetRequest(args, w, r)
@@ -180,7 +180,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		case "user": // -> 15
 			// Edge: 15, path: "user".
 			elem, p = nextElem(p)
-			switch string(elem) {
+			switch elem {
 			case "accounts": // -> 16
 				// GET /user/accounts
 				s.handleUserAccountsGetRequest(args, w, r)
@@ -196,11 +196,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	case "POST":
 		// Root edge.
 		elem, p = nextElem(p)
-		switch string(elem) {
+		switch elem {
 		case "orders": // -> 1
 			// Edge: 1, path: "orders".
 			elem, p = nextElem(p)
-			switch string(elem) {
+			switch elem {
 			case "cancel": // -> 2
 				// POST /orders/cancel
 				s.handleOrdersCancelPostRequest(args, w, r)
@@ -220,7 +220,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		case "sandbox": // -> 5
 			// Edge: 5, path: "sandbox".
 			elem, p = nextElem(p)
-			switch string(elem) {
+			switch elem {
 			case "clear": // -> 6
 				// POST /sandbox/clear
 				s.handleSandboxClearPostRequest(args, w, r)
@@ -228,7 +228,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			case "currencies": // -> 7
 				// Edge: 7, path: "currencies".
 				elem, p = nextElem(p)
-				switch string(elem) {
+				switch elem {
 				case "balance": // -> 8
 					// POST /sandbox/currencies/balance
 					s.handleSandboxCurrenciesBalancePostRequest(args, w, r)
@@ -240,7 +240,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			case "positions": // -> 9
 				// Edge: 9, path: "positions".
 				elem, p = nextElem(p)
-				switch string(elem) {
+				switch elem {
 				case "balance": // -> 10
 					// POST /sandbox/positions/balance
 					s.handleSandboxPositionsBalancePostRequest(args, w, r)

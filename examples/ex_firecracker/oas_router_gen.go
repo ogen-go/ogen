@@ -66,7 +66,7 @@ func (s *Server) notFound(w http.ResponseWriter, r *http.Request) {
 	http.NotFound(w, r)
 }
 
-func skipSlash(p []byte) []byte {
+func skipSlash(p string) string {
 	if len(p) > 0 && p[0] == '/' {
 		return p[1:]
 	}
@@ -74,9 +74,9 @@ func skipSlash(p []byte) []byte {
 }
 
 // nextElem return next path element from p and forwarded p.
-func nextElem(p []byte) (elem, next []byte) {
+func nextElem(p string) (elem, next string) {
 	p = skipSlash(p)
-	idx := bytes.IndexByte(p, '/')
+	idx := strings.IndexByte(p, '/')
 	if idx < 0 {
 		idx = len(p)
 	}
@@ -86,14 +86,14 @@ func nextElem(p []byte) (elem, next []byte) {
 // ServeHTTP serves http request as defined by OpenAPI v3 specification,
 // calling handler that matches the path or returning not found error.
 func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	p := []byte(r.URL.Path)
+	p := r.URL.Path
 	if len(p) == 0 {
 		s.notFound(w, r)
 		return
 	}
 
 	var (
-		elem []byte            // current element, without slashes
+		elem string            // current element, without slashes
 		args map[string]string // lazily initialized
 	)
 
@@ -102,7 +102,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	case "GET":
 		// Root edge.
 		elem, p = nextElem(p)
-		switch string(elem) {
+		switch elem {
 		case "balloon": // -> 1
 			// Edge: 1, path: "balloon".
 			elem, p = nextElem(p)
@@ -111,7 +111,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				s.handleDescribeBalloonConfigRequest(args, w, r)
 				return
 			}
-			switch string(elem) {
+			switch elem {
 			case "statistics": // -> 2
 				// GET /balloon/statistics
 				s.handleDescribeBalloonStatsRequest(args, w, r)
@@ -128,7 +128,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		case "vm": // -> 4
 			// Edge: 4, path: "vm".
 			elem, p = nextElem(p)
-			switch string(elem) {
+			switch elem {
 			case "config": // -> 5
 				// GET /vm/config
 				s.handleGetExportVmConfigRequest(args, w, r)
@@ -152,7 +152,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	case "PATCH":
 		// Root edge.
 		elem, p = nextElem(p)
-		switch string(elem) {
+		switch elem {
 		case "mmds": // -> 1
 			// PATCH /mmds
 			s.handleMmdsPatchRequest(args, w, r)
@@ -165,7 +165,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				s.handlePatchBalloonRequest(args, w, r)
 				return
 			}
-			switch string(elem) {
+			switch elem {
 			case "statistics": // -> 3
 				// PATCH /balloon/statistics
 				s.handlePatchBalloonStatsIntervalRequest(args, w, r)
@@ -178,12 +178,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		case "drives": // -> 4
 			// Edge: 4, path: "drives".
 			elem, p = nextElem(p)
-			switch string(elem) {
+			switch elem {
 			default:
 				if args == nil {
 					args = make(map[string]string)
 				}
-				args["drive_id"] = string(elem)
+				args["drive_id"] = elem
 				// PATCH /drives/{drive_id}
 				s.handlePatchGuestDriveByIDRequest(args, w, r)
 				return
@@ -191,12 +191,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		case "network-interfaces": // -> 6
 			// Edge: 6, path: "network-interfaces".
 			elem, p = nextElem(p)
-			switch string(elem) {
+			switch elem {
 			default:
 				if args == nil {
 					args = make(map[string]string)
 				}
-				args["iface_id"] = string(elem)
+				args["iface_id"] = elem
 				// PATCH /network-interfaces/{iface_id}
 				s.handlePatchGuestNetworkInterfaceByIDRequest(args, w, r)
 				return
@@ -216,11 +216,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	case "PUT":
 		// Root edge.
 		elem, p = nextElem(p)
-		switch string(elem) {
+		switch elem {
 		case "snapshot": // -> 1
 			// Edge: 1, path: "snapshot".
 			elem, p = nextElem(p)
-			switch string(elem) {
+			switch elem {
 			case "create": // -> 2
 				// PUT /snapshot/create
 				s.handleCreateSnapshotRequest(args, w, r)
@@ -245,7 +245,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				s.handleMmdsPutRequest(args, w, r)
 				return
 			}
-			switch string(elem) {
+			switch elem {
 			case "config": // -> 6
 				// PUT /mmds/config
 				s.handleMmdsConfigPutRequest(args, w, r)
@@ -266,12 +266,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		case "drives": // -> 9
 			// Edge: 9, path: "drives".
 			elem, p = nextElem(p)
-			switch string(elem) {
+			switch elem {
 			default:
 				if args == nil {
 					args = make(map[string]string)
 				}
-				args["drive_id"] = string(elem)
+				args["drive_id"] = elem
 				// PUT /drives/{drive_id}
 				s.handlePutGuestDriveByIDRequest(args, w, r)
 				return
@@ -279,12 +279,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		case "network-interfaces": // -> 11
 			// Edge: 11, path: "network-interfaces".
 			elem, p = nextElem(p)
-			switch string(elem) {
+			switch elem {
 			default:
 				if args == nil {
 					args = make(map[string]string)
 				}
-				args["iface_id"] = string(elem)
+				args["iface_id"] = elem
 				// PUT /network-interfaces/{iface_id}
 				s.handlePutGuestNetworkInterfaceByIDRequest(args, w, r)
 				return

@@ -66,7 +66,7 @@ func (s *Server) notFound(w http.ResponseWriter, r *http.Request) {
 	http.NotFound(w, r)
 }
 
-func skipSlash(p []byte) []byte {
+func skipSlash(p string) string {
 	if len(p) > 0 && p[0] == '/' {
 		return p[1:]
 	}
@@ -74,9 +74,9 @@ func skipSlash(p []byte) []byte {
 }
 
 // nextElem return next path element from p and forwarded p.
-func nextElem(p []byte) (elem, next []byte) {
+func nextElem(p string) (elem, next string) {
 	p = skipSlash(p)
-	idx := bytes.IndexByte(p, '/')
+	idx := strings.IndexByte(p, '/')
 	if idx < 0 {
 		idx = len(p)
 	}
@@ -86,14 +86,14 @@ func nextElem(p []byte) (elem, next []byte) {
 // ServeHTTP serves http request as defined by OpenAPI v3 specification,
 // calling handler that matches the path or returning not found error.
 func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	p := []byte(r.URL.Path)
+	p := r.URL.Path
 	if len(p) == 0 {
 		s.notFound(w, r)
 		return
 	}
 
 	var (
-		elem []byte            // current element, without slashes
+		elem string            // current element, without slashes
 		args map[string]string // lazily initialized
 	)
 
@@ -102,7 +102,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	case "GET":
 		// Root edge.
 		elem, p = nextElem(p)
-		switch string(elem) {
+		switch elem {
 		case "apis": // -> 1
 			// Edge: 1, path: "apis".
 			elem, p = nextElem(p)
@@ -111,7 +111,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				s.handleGetAPIVersionsRequest(args, w, r)
 				return
 			}
-			switch string(elem) {
+			switch elem {
 			case "admissionregistration.k8s.io": // -> 2
 				// Edge: 2, path: "admissionregistration.k8s.io".
 				elem, p = nextElem(p)
@@ -120,7 +120,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					s.handleGetAdmissionregistrationAPIGroupRequest(args, w, r)
 					return
 				}
-				switch string(elem) {
+				switch elem {
 				case "v1": // -> 3
 					// Edge: 3, path: "v1".
 					elem, p = nextElem(p)
@@ -129,7 +129,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						s.handleGetAdmissionregistrationV1APIResourcesRequest(args, w, r)
 						return
 					}
-					switch string(elem) {
+					switch elem {
 					case "mutatingwebhookconfigurations": // -> 58
 						// Edge: 58, path: "mutatingwebhookconfigurations".
 						elem, p = nextElem(p)
@@ -138,12 +138,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							s.handleListAdmissionregistrationV1MutatingWebhookConfigurationRequest(args, w, r)
 							return
 						}
-						switch string(elem) {
+						switch elem {
 						default:
 							if args == nil {
 								args = make(map[string]string)
 							}
-							args["name"] = string(elem)
+							args["name"] = elem
 							// GET /apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations/{name}
 							s.handleReadAdmissionregistrationV1MutatingWebhookConfigurationRequest(args, w, r)
 							return
@@ -156,12 +156,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							s.handleListAdmissionregistrationV1ValidatingWebhookConfigurationRequest(args, w, r)
 							return
 						}
-						switch string(elem) {
+						switch elem {
 						default:
 							if args == nil {
 								args = make(map[string]string)
 							}
-							args["name"] = string(elem)
+							args["name"] = elem
 							// GET /apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations/{name}
 							s.handleReadAdmissionregistrationV1ValidatingWebhookConfigurationRequest(args, w, r)
 							return
@@ -169,7 +169,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					case "watch": // -> 291
 						// Edge: 291, path: "watch".
 						elem, p = nextElem(p)
-						switch string(elem) {
+						switch elem {
 						case "mutatingwebhookconfigurations": // -> 292
 							// Edge: 292, path: "mutatingwebhookconfigurations".
 							elem, p = nextElem(p)
@@ -178,12 +178,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.handleWatchAdmissionregistrationV1MutatingWebhookConfigurationListRequest(args, w, r)
 								return
 							}
-							switch string(elem) {
+							switch elem {
 							default:
 								if args == nil {
 									args = make(map[string]string)
 								}
-								args["name"] = string(elem)
+								args["name"] = elem
 								// GET /apis/admissionregistration.k8s.io/v1/watch/mutatingwebhookconfigurations/{name}
 								s.handleWatchAdmissionregistrationV1MutatingWebhookConfigurationRequest(args, w, r)
 								return
@@ -196,12 +196,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.handleWatchAdmissionregistrationV1ValidatingWebhookConfigurationListRequest(args, w, r)
 								return
 							}
-							switch string(elem) {
+							switch elem {
 							default:
 								if args == nil {
 									args = make(map[string]string)
 								}
-								args["name"] = string(elem)
+								args["name"] = elem
 								// GET /apis/admissionregistration.k8s.io/v1/watch/validatingwebhookconfigurations/{name}
 								s.handleWatchAdmissionregistrationV1ValidatingWebhookConfigurationRequest(args, w, r)
 								return
@@ -228,7 +228,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					s.handleGetApiextensionsAPIGroupRequest(args, w, r)
 					return
 				}
-				switch string(elem) {
+				switch elem {
 				case "v1": // -> 5
 					// Edge: 5, path: "v1".
 					elem, p = nextElem(p)
@@ -237,7 +237,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						s.handleGetApiextensionsV1APIResourcesRequest(args, w, r)
 						return
 					}
-					switch string(elem) {
+					switch elem {
 					case "customresourcedefinitions": // -> 60
 						// Edge: 60, path: "customresourcedefinitions".
 						elem, p = nextElem(p)
@@ -246,12 +246,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							s.handleListApiextensionsV1CustomResourceDefinitionRequest(args, w, r)
 							return
 						}
-						switch string(elem) {
+						switch elem {
 						default:
 							if args == nil {
 								args = make(map[string]string)
 							}
-							args["name"] = string(elem)
+							args["name"] = elem
 							// Edge: 195, path: "".
 							elem, p = nextElem(p)
 							if len(elem) == 0 {
@@ -259,7 +259,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.handleReadApiextensionsV1CustomResourceDefinitionRequest(args, w, r)
 								return
 							}
-							switch string(elem) {
+							switch elem {
 							case "status": // -> 196
 								// GET /apis/apiextensions.k8s.io/v1/customresourcedefinitions/{name}/status
 								s.handleReadApiextensionsV1CustomResourceDefinitionStatusRequest(args, w, r)
@@ -273,7 +273,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					case "watch": // -> 296
 						// Edge: 296, path: "watch".
 						elem, p = nextElem(p)
-						switch string(elem) {
+						switch elem {
 						case "customresourcedefinitions": // -> 297
 							// Edge: 297, path: "customresourcedefinitions".
 							elem, p = nextElem(p)
@@ -282,12 +282,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.handleWatchApiextensionsV1CustomResourceDefinitionListRequest(args, w, r)
 								return
 							}
-							switch string(elem) {
+							switch elem {
 							default:
 								if args == nil {
 									args = make(map[string]string)
 								}
-								args["name"] = string(elem)
+								args["name"] = elem
 								// GET /apis/apiextensions.k8s.io/v1/watch/customresourcedefinitions/{name}
 								s.handleWatchApiextensionsV1CustomResourceDefinitionRequest(args, w, r)
 								return
@@ -314,7 +314,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					s.handleGetApiregistrationAPIGroupRequest(args, w, r)
 					return
 				}
-				switch string(elem) {
+				switch elem {
 				case "v1": // -> 7
 					// Edge: 7, path: "v1".
 					elem, p = nextElem(p)
@@ -323,7 +323,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						s.handleGetApiregistrationV1APIResourcesRequest(args, w, r)
 						return
 					}
-					switch string(elem) {
+					switch elem {
 					case "apiservices": // -> 61
 						// Edge: 61, path: "apiservices".
 						elem, p = nextElem(p)
@@ -332,12 +332,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							s.handleListApiregistrationV1APIServiceRequest(args, w, r)
 							return
 						}
-						switch string(elem) {
+						switch elem {
 						default:
 							if args == nil {
 								args = make(map[string]string)
 							}
-							args["name"] = string(elem)
+							args["name"] = elem
 							// Edge: 197, path: "".
 							elem, p = nextElem(p)
 							if len(elem) == 0 {
@@ -345,7 +345,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.handleReadApiregistrationV1APIServiceRequest(args, w, r)
 								return
 							}
-							switch string(elem) {
+							switch elem {
 							case "status": // -> 198
 								// GET /apis/apiregistration.k8s.io/v1/apiservices/{name}/status
 								s.handleReadApiregistrationV1APIServiceStatusRequest(args, w, r)
@@ -359,7 +359,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					case "watch": // -> 299
 						// Edge: 299, path: "watch".
 						elem, p = nextElem(p)
-						switch string(elem) {
+						switch elem {
 						case "apiservices": // -> 300
 							// Edge: 300, path: "apiservices".
 							elem, p = nextElem(p)
@@ -368,12 +368,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.handleWatchApiregistrationV1APIServiceListRequest(args, w, r)
 								return
 							}
-							switch string(elem) {
+							switch elem {
 							default:
 								if args == nil {
 									args = make(map[string]string)
 								}
-								args["name"] = string(elem)
+								args["name"] = elem
 								// GET /apis/apiregistration.k8s.io/v1/watch/apiservices/{name}
 								s.handleWatchApiregistrationV1APIServiceRequest(args, w, r)
 								return
@@ -400,7 +400,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					s.handleGetAppsAPIGroupRequest(args, w, r)
 					return
 				}
-				switch string(elem) {
+				switch elem {
 				case "v1": // -> 9
 					// Edge: 9, path: "v1".
 					elem, p = nextElem(p)
@@ -409,7 +409,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						s.handleGetAppsV1APIResourcesRequest(args, w, r)
 						return
 					}
-					switch string(elem) {
+					switch elem {
 					case "controllerrevisions": // -> 62
 						// GET /apis/apps/v1/controllerrevisions
 						s.handleListAppsV1ControllerRevisionForAllNamespacesRequest(args, w, r)
@@ -425,15 +425,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					case "namespaces": // -> 65
 						// Edge: 65, path: "namespaces".
 						elem, p = nextElem(p)
-						switch string(elem) {
+						switch elem {
 						default:
 							if args == nil {
 								args = make(map[string]string)
 							}
-							args["namespace"] = string(elem)
+							args["namespace"] = elem
 							// Edge: 66, path: "".
 							elem, p = nextElem(p)
-							switch string(elem) {
+							switch elem {
 							case "controllerrevisions": // -> 67
 								// Edge: 67, path: "controllerrevisions".
 								elem, p = nextElem(p)
@@ -442,12 +442,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									s.handleListAppsV1NamespacedControllerRevisionRequest(args, w, r)
 									return
 								}
-								switch string(elem) {
+								switch elem {
 								default:
 									if args == nil {
 										args = make(map[string]string)
 									}
-									args["name"] = string(elem)
+									args["name"] = elem
 									// GET /apis/apps/v1/namespaces/{namespace}/controllerrevisions/{name}
 									s.handleReadAppsV1NamespacedControllerRevisionRequest(args, w, r)
 									return
@@ -460,12 +460,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									s.handleListAppsV1NamespacedDaemonSetRequest(args, w, r)
 									return
 								}
-								switch string(elem) {
+								switch elem {
 								default:
 									if args == nil {
 										args = make(map[string]string)
 									}
-									args["name"] = string(elem)
+									args["name"] = elem
 									// Edge: 200, path: "".
 									elem, p = nextElem(p)
 									if len(elem) == 0 {
@@ -473,7 +473,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										s.handleReadAppsV1NamespacedDaemonSetRequest(args, w, r)
 										return
 									}
-									switch string(elem) {
+									switch elem {
 									case "status": // -> 201
 										// GET /apis/apps/v1/namespaces/{namespace}/daemonsets/{name}/status
 										s.handleReadAppsV1NamespacedDaemonSetStatusRequest(args, w, r)
@@ -492,12 +492,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									s.handleListAppsV1NamespacedDeploymentRequest(args, w, r)
 									return
 								}
-								switch string(elem) {
+								switch elem {
 								default:
 									if args == nil {
 										args = make(map[string]string)
 									}
-									args["name"] = string(elem)
+									args["name"] = elem
 									// Edge: 202, path: "".
 									elem, p = nextElem(p)
 									if len(elem) == 0 {
@@ -505,7 +505,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										s.handleReadAppsV1NamespacedDeploymentRequest(args, w, r)
 										return
 									}
-									switch string(elem) {
+									switch elem {
 									case "scale": // -> 203
 										// GET /apis/apps/v1/namespaces/{namespace}/deployments/{name}/scale
 										s.handleReadAppsV1NamespacedDeploymentScaleRequest(args, w, r)
@@ -528,12 +528,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									s.handleListAppsV1NamespacedReplicaSetRequest(args, w, r)
 									return
 								}
-								switch string(elem) {
+								switch elem {
 								default:
 									if args == nil {
 										args = make(map[string]string)
 									}
-									args["name"] = string(elem)
+									args["name"] = elem
 									// Edge: 205, path: "".
 									elem, p = nextElem(p)
 									if len(elem) == 0 {
@@ -541,7 +541,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										s.handleReadAppsV1NamespacedReplicaSetRequest(args, w, r)
 										return
 									}
-									switch string(elem) {
+									switch elem {
 									case "scale": // -> 206
 										// GET /apis/apps/v1/namespaces/{namespace}/replicasets/{name}/scale
 										s.handleReadAppsV1NamespacedReplicaSetScaleRequest(args, w, r)
@@ -564,12 +564,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									s.handleListAppsV1NamespacedStatefulSetRequest(args, w, r)
 									return
 								}
-								switch string(elem) {
+								switch elem {
 								default:
 									if args == nil {
 										args = make(map[string]string)
 									}
-									args["name"] = string(elem)
+									args["name"] = elem
 									// Edge: 208, path: "".
 									elem, p = nextElem(p)
 									if len(elem) == 0 {
@@ -577,7 +577,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										s.handleReadAppsV1NamespacedStatefulSetRequest(args, w, r)
 										return
 									}
-									switch string(elem) {
+									switch elem {
 									case "scale": // -> 209
 										// GET /apis/apps/v1/namespaces/{namespace}/statefulsets/{name}/scale
 										s.handleReadAppsV1NamespacedStatefulSetScaleRequest(args, w, r)
@@ -608,7 +608,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					case "watch": // -> 302
 						// Edge: 302, path: "watch".
 						elem, p = nextElem(p)
-						switch string(elem) {
+						switch elem {
 						case "controllerrevisions": // -> 303
 							// GET /apis/apps/v1/watch/controllerrevisions
 							s.handleWatchAppsV1ControllerRevisionListForAllNamespacesRequest(args, w, r)
@@ -624,15 +624,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "namespaces": // -> 306
 							// Edge: 306, path: "namespaces".
 							elem, p = nextElem(p)
-							switch string(elem) {
+							switch elem {
 							default:
 								if args == nil {
 									args = make(map[string]string)
 								}
-								args["namespace"] = string(elem)
+								args["namespace"] = elem
 								// Edge: 307, path: "".
 								elem, p = nextElem(p)
-								switch string(elem) {
+								switch elem {
 								case "controllerrevisions": // -> 308
 									// Edge: 308, path: "controllerrevisions".
 									elem, p = nextElem(p)
@@ -641,12 +641,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										s.handleWatchAppsV1NamespacedControllerRevisionListRequest(args, w, r)
 										return
 									}
-									switch string(elem) {
+									switch elem {
 									default:
 										if args == nil {
 											args = make(map[string]string)
 										}
-										args["name"] = string(elem)
+										args["name"] = elem
 										// GET /apis/apps/v1/watch/namespaces/{namespace}/controllerrevisions/{name}
 										s.handleWatchAppsV1NamespacedControllerRevisionRequest(args, w, r)
 										return
@@ -659,12 +659,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										s.handleWatchAppsV1NamespacedDaemonSetListRequest(args, w, r)
 										return
 									}
-									switch string(elem) {
+									switch elem {
 									default:
 										if args == nil {
 											args = make(map[string]string)
 										}
-										args["name"] = string(elem)
+										args["name"] = elem
 										// GET /apis/apps/v1/watch/namespaces/{namespace}/daemonsets/{name}
 										s.handleWatchAppsV1NamespacedDaemonSetRequest(args, w, r)
 										return
@@ -677,12 +677,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										s.handleWatchAppsV1NamespacedDeploymentListRequest(args, w, r)
 										return
 									}
-									switch string(elem) {
+									switch elem {
 									default:
 										if args == nil {
 											args = make(map[string]string)
 										}
-										args["name"] = string(elem)
+										args["name"] = elem
 										// GET /apis/apps/v1/watch/namespaces/{namespace}/deployments/{name}
 										s.handleWatchAppsV1NamespacedDeploymentRequest(args, w, r)
 										return
@@ -695,12 +695,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										s.handleWatchAppsV1NamespacedReplicaSetListRequest(args, w, r)
 										return
 									}
-									switch string(elem) {
+									switch elem {
 									default:
 										if args == nil {
 											args = make(map[string]string)
 										}
-										args["name"] = string(elem)
+										args["name"] = elem
 										// GET /apis/apps/v1/watch/namespaces/{namespace}/replicasets/{name}
 										s.handleWatchAppsV1NamespacedReplicaSetRequest(args, w, r)
 										return
@@ -713,12 +713,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										s.handleWatchAppsV1NamespacedStatefulSetListRequest(args, w, r)
 										return
 									}
-									switch string(elem) {
+									switch elem {
 									default:
 										if args == nil {
 											args = make(map[string]string)
 										}
-										args["name"] = string(elem)
+										args["name"] = elem
 										// GET /apis/apps/v1/watch/namespaces/{namespace}/statefulsets/{name}
 										s.handleWatchAppsV1NamespacedStatefulSetRequest(args, w, r)
 										return
@@ -758,7 +758,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					s.handleGetAuthenticationAPIGroupRequest(args, w, r)
 					return
 				}
-				switch string(elem) {
+				switch elem {
 				case "v1": // -> 11
 					// GET /apis/authentication.k8s.io/v1/
 					s.handleGetAuthenticationV1APIResourcesRequest(args, w, r)
@@ -776,7 +776,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					s.handleGetAuthorizationAPIGroupRequest(args, w, r)
 					return
 				}
-				switch string(elem) {
+				switch elem {
 				case "v1": // -> 13
 					// GET /apis/authorization.k8s.io/v1/
 					s.handleGetAuthorizationV1APIResourcesRequest(args, w, r)
@@ -794,7 +794,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					s.handleGetAutoscalingAPIGroupRequest(args, w, r)
 					return
 				}
-				switch string(elem) {
+				switch elem {
 				case "v1": // -> 15
 					// Edge: 15, path: "v1".
 					elem, p = nextElem(p)
@@ -803,7 +803,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						s.handleGetAutoscalingV1APIResourcesRequest(args, w, r)
 						return
 					}
-					switch string(elem) {
+					switch elem {
 					case "horizontalpodautoscalers": // -> 74
 						// GET /apis/autoscaling/v1/horizontalpodautoscalers
 						s.handleListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesRequest(args, w, r)
@@ -811,15 +811,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					case "namespaces": // -> 75
 						// Edge: 75, path: "namespaces".
 						elem, p = nextElem(p)
-						switch string(elem) {
+						switch elem {
 						default:
 							if args == nil {
 								args = make(map[string]string)
 							}
-							args["namespace"] = string(elem)
+							args["namespace"] = elem
 							// Edge: 76, path: "".
 							elem, p = nextElem(p)
-							switch string(elem) {
+							switch elem {
 							case "horizontalpodautoscalers": // -> 77
 								// Edge: 77, path: "horizontalpodautoscalers".
 								elem, p = nextElem(p)
@@ -828,12 +828,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									s.handleListAutoscalingV1NamespacedHorizontalPodAutoscalerRequest(args, w, r)
 									return
 								}
-								switch string(elem) {
+								switch elem {
 								default:
 									if args == nil {
 										args = make(map[string]string)
 									}
-									args["name"] = string(elem)
+									args["name"] = elem
 									// Edge: 211, path: "".
 									elem, p = nextElem(p)
 									if len(elem) == 0 {
@@ -841,7 +841,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										s.handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerRequest(args, w, r)
 										return
 									}
-									switch string(elem) {
+									switch elem {
 									case "status": // -> 212
 										// GET /apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status
 										s.handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRequest(args, w, r)
@@ -860,7 +860,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					case "watch": // -> 320
 						// Edge: 320, path: "watch".
 						elem, p = nextElem(p)
-						switch string(elem) {
+						switch elem {
 						case "horizontalpodautoscalers": // -> 321
 							// GET /apis/autoscaling/v1/watch/horizontalpodautoscalers
 							s.handleWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesRequest(args, w, r)
@@ -868,15 +868,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "namespaces": // -> 322
 							// Edge: 322, path: "namespaces".
 							elem, p = nextElem(p)
-							switch string(elem) {
+							switch elem {
 							default:
 								if args == nil {
 									args = make(map[string]string)
 								}
-								args["namespace"] = string(elem)
+								args["namespace"] = elem
 								// Edge: 323, path: "".
 								elem, p = nextElem(p)
-								switch string(elem) {
+								switch elem {
 								case "horizontalpodautoscalers": // -> 324
 									// Edge: 324, path: "horizontalpodautoscalers".
 									elem, p = nextElem(p)
@@ -885,12 +885,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										s.handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRequest(args, w, r)
 										return
 									}
-									switch string(elem) {
+									switch elem {
 									default:
 										if args == nil {
 											args = make(map[string]string)
 										}
-										args["name"] = string(elem)
+										args["name"] = elem
 										// GET /apis/autoscaling/v1/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}
 										s.handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerRequest(args, w, r)
 										return
@@ -917,7 +917,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						s.handleGetAutoscalingV2beta1APIResourcesRequest(args, w, r)
 						return
 					}
-					switch string(elem) {
+					switch elem {
 					case "horizontalpodautoscalers": // -> 78
 						// GET /apis/autoscaling/v2beta1/horizontalpodautoscalers
 						s.handleListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesRequest(args, w, r)
@@ -925,15 +925,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					case "namespaces": // -> 79
 						// Edge: 79, path: "namespaces".
 						elem, p = nextElem(p)
-						switch string(elem) {
+						switch elem {
 						default:
 							if args == nil {
 								args = make(map[string]string)
 							}
-							args["namespace"] = string(elem)
+							args["namespace"] = elem
 							// Edge: 80, path: "".
 							elem, p = nextElem(p)
-							switch string(elem) {
+							switch elem {
 							case "horizontalpodautoscalers": // -> 81
 								// Edge: 81, path: "horizontalpodautoscalers".
 								elem, p = nextElem(p)
@@ -942,12 +942,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									s.handleListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRequest(args, w, r)
 									return
 								}
-								switch string(elem) {
+								switch elem {
 								default:
 									if args == nil {
 										args = make(map[string]string)
 									}
-									args["name"] = string(elem)
+									args["name"] = elem
 									// Edge: 213, path: "".
 									elem, p = nextElem(p)
 									if len(elem) == 0 {
@@ -955,7 +955,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										s.handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRequest(args, w, r)
 										return
 									}
-									switch string(elem) {
+									switch elem {
 									case "status": // -> 214
 										// GET /apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status
 										s.handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusRequest(args, w, r)
@@ -974,7 +974,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					case "watch": // -> 326
 						// Edge: 326, path: "watch".
 						elem, p = nextElem(p)
-						switch string(elem) {
+						switch elem {
 						case "horizontalpodautoscalers": // -> 327
 							// GET /apis/autoscaling/v2beta1/watch/horizontalpodautoscalers
 							s.handleWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRequest(args, w, r)
@@ -982,15 +982,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "namespaces": // -> 328
 							// Edge: 328, path: "namespaces".
 							elem, p = nextElem(p)
-							switch string(elem) {
+							switch elem {
 							default:
 								if args == nil {
 									args = make(map[string]string)
 								}
-								args["namespace"] = string(elem)
+								args["namespace"] = elem
 								// Edge: 329, path: "".
 								elem, p = nextElem(p)
-								switch string(elem) {
+								switch elem {
 								case "horizontalpodautoscalers": // -> 330
 									// Edge: 330, path: "horizontalpodautoscalers".
 									elem, p = nextElem(p)
@@ -999,12 +999,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										s.handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListRequest(args, w, r)
 										return
 									}
-									switch string(elem) {
+									switch elem {
 									default:
 										if args == nil {
 											args = make(map[string]string)
 										}
-										args["name"] = string(elem)
+										args["name"] = elem
 										// GET /apis/autoscaling/v2beta1/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}
 										s.handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRequest(args, w, r)
 										return
@@ -1031,7 +1031,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						s.handleGetAutoscalingV2beta2APIResourcesRequest(args, w, r)
 						return
 					}
-					switch string(elem) {
+					switch elem {
 					case "horizontalpodautoscalers": // -> 82
 						// GET /apis/autoscaling/v2beta2/horizontalpodautoscalers
 						s.handleListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesRequest(args, w, r)
@@ -1039,15 +1039,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					case "namespaces": // -> 83
 						// Edge: 83, path: "namespaces".
 						elem, p = nextElem(p)
-						switch string(elem) {
+						switch elem {
 						default:
 							if args == nil {
 								args = make(map[string]string)
 							}
-							args["namespace"] = string(elem)
+							args["namespace"] = elem
 							// Edge: 84, path: "".
 							elem, p = nextElem(p)
-							switch string(elem) {
+							switch elem {
 							case "horizontalpodautoscalers": // -> 85
 								// Edge: 85, path: "horizontalpodautoscalers".
 								elem, p = nextElem(p)
@@ -1056,12 +1056,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									s.handleListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRequest(args, w, r)
 									return
 								}
-								switch string(elem) {
+								switch elem {
 								default:
 									if args == nil {
 										args = make(map[string]string)
 									}
-									args["name"] = string(elem)
+									args["name"] = elem
 									// Edge: 215, path: "".
 									elem, p = nextElem(p)
 									if len(elem) == 0 {
@@ -1069,7 +1069,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										s.handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRequest(args, w, r)
 										return
 									}
-									switch string(elem) {
+									switch elem {
 									case "status": // -> 216
 										// GET /apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers/{name}/status
 										s.handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusRequest(args, w, r)
@@ -1088,7 +1088,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					case "watch": // -> 332
 						// Edge: 332, path: "watch".
 						elem, p = nextElem(p)
-						switch string(elem) {
+						switch elem {
 						case "horizontalpodautoscalers": // -> 333
 							// GET /apis/autoscaling/v2beta2/watch/horizontalpodautoscalers
 							s.handleWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRequest(args, w, r)
@@ -1096,15 +1096,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "namespaces": // -> 334
 							// Edge: 334, path: "namespaces".
 							elem, p = nextElem(p)
-							switch string(elem) {
+							switch elem {
 							default:
 								if args == nil {
 									args = make(map[string]string)
 								}
-								args["namespace"] = string(elem)
+								args["namespace"] = elem
 								// Edge: 335, path: "".
 								elem, p = nextElem(p)
-								switch string(elem) {
+								switch elem {
 								case "horizontalpodautoscalers": // -> 336
 									// Edge: 336, path: "horizontalpodautoscalers".
 									elem, p = nextElem(p)
@@ -1113,12 +1113,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										s.handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListRequest(args, w, r)
 										return
 									}
-									switch string(elem) {
+									switch elem {
 									default:
 										if args == nil {
 											args = make(map[string]string)
 										}
-										args["name"] = string(elem)
+										args["name"] = elem
 										// GET /apis/autoscaling/v2beta2/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}
 										s.handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRequest(args, w, r)
 										return
@@ -1150,7 +1150,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					s.handleGetBatchAPIGroupRequest(args, w, r)
 					return
 				}
-				switch string(elem) {
+				switch elem {
 				case "v1": // -> 19
 					// Edge: 19, path: "v1".
 					elem, p = nextElem(p)
@@ -1159,7 +1159,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						s.handleGetBatchV1APIResourcesRequest(args, w, r)
 						return
 					}
-					switch string(elem) {
+					switch elem {
 					case "cronjobs": // -> 86
 						// GET /apis/batch/v1/cronjobs
 						s.handleListBatchV1CronJobForAllNamespacesRequest(args, w, r)
@@ -1171,15 +1171,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					case "namespaces": // -> 88
 						// Edge: 88, path: "namespaces".
 						elem, p = nextElem(p)
-						switch string(elem) {
+						switch elem {
 						default:
 							if args == nil {
 								args = make(map[string]string)
 							}
-							args["namespace"] = string(elem)
+							args["namespace"] = elem
 							// Edge: 89, path: "".
 							elem, p = nextElem(p)
-							switch string(elem) {
+							switch elem {
 							case "cronjobs": // -> 90
 								// Edge: 90, path: "cronjobs".
 								elem, p = nextElem(p)
@@ -1188,12 +1188,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									s.handleListBatchV1NamespacedCronJobRequest(args, w, r)
 									return
 								}
-								switch string(elem) {
+								switch elem {
 								default:
 									if args == nil {
 										args = make(map[string]string)
 									}
-									args["name"] = string(elem)
+									args["name"] = elem
 									// Edge: 217, path: "".
 									elem, p = nextElem(p)
 									if len(elem) == 0 {
@@ -1201,7 +1201,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										s.handleReadBatchV1NamespacedCronJobRequest(args, w, r)
 										return
 									}
-									switch string(elem) {
+									switch elem {
 									case "status": // -> 218
 										// GET /apis/batch/v1/namespaces/{namespace}/cronjobs/{name}/status
 										s.handleReadBatchV1NamespacedCronJobStatusRequest(args, w, r)
@@ -1220,12 +1220,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									s.handleListBatchV1NamespacedJobRequest(args, w, r)
 									return
 								}
-								switch string(elem) {
+								switch elem {
 								default:
 									if args == nil {
 										args = make(map[string]string)
 									}
-									args["name"] = string(elem)
+									args["name"] = elem
 									// Edge: 219, path: "".
 									elem, p = nextElem(p)
 									if len(elem) == 0 {
@@ -1233,7 +1233,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										s.handleReadBatchV1NamespacedJobRequest(args, w, r)
 										return
 									}
-									switch string(elem) {
+									switch elem {
 									case "status": // -> 220
 										// GET /apis/batch/v1/namespaces/{namespace}/jobs/{name}/status
 										s.handleReadBatchV1NamespacedJobStatusRequest(args, w, r)
@@ -1252,7 +1252,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					case "watch": // -> 338
 						// Edge: 338, path: "watch".
 						elem, p = nextElem(p)
-						switch string(elem) {
+						switch elem {
 						case "cronjobs": // -> 339
 							// GET /apis/batch/v1/watch/cronjobs
 							s.handleWatchBatchV1CronJobListForAllNamespacesRequest(args, w, r)
@@ -1264,15 +1264,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "namespaces": // -> 341
 							// Edge: 341, path: "namespaces".
 							elem, p = nextElem(p)
-							switch string(elem) {
+							switch elem {
 							default:
 								if args == nil {
 									args = make(map[string]string)
 								}
-								args["namespace"] = string(elem)
+								args["namespace"] = elem
 								// Edge: 342, path: "".
 								elem, p = nextElem(p)
-								switch string(elem) {
+								switch elem {
 								case "cronjobs": // -> 343
 									// Edge: 343, path: "cronjobs".
 									elem, p = nextElem(p)
@@ -1281,12 +1281,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										s.handleWatchBatchV1NamespacedCronJobListRequest(args, w, r)
 										return
 									}
-									switch string(elem) {
+									switch elem {
 									default:
 										if args == nil {
 											args = make(map[string]string)
 										}
-										args["name"] = string(elem)
+										args["name"] = elem
 										// GET /apis/batch/v1/watch/namespaces/{namespace}/cronjobs/{name}
 										s.handleWatchBatchV1NamespacedCronJobRequest(args, w, r)
 										return
@@ -1299,12 +1299,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										s.handleWatchBatchV1NamespacedJobListRequest(args, w, r)
 										return
 									}
-									switch string(elem) {
+									switch elem {
 									default:
 										if args == nil {
 											args = make(map[string]string)
 										}
-										args["name"] = string(elem)
+										args["name"] = elem
 										// GET /apis/batch/v1/watch/namespaces/{namespace}/jobs/{name}
 										s.handleWatchBatchV1NamespacedJobRequest(args, w, r)
 										return
@@ -1331,7 +1331,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						s.handleGetBatchV1beta1APIResourcesRequest(args, w, r)
 						return
 					}
-					switch string(elem) {
+					switch elem {
 					case "cronjobs": // -> 92
 						// GET /apis/batch/v1beta1/cronjobs
 						s.handleListBatchV1beta1CronJobForAllNamespacesRequest(args, w, r)
@@ -1339,15 +1339,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					case "namespaces": // -> 93
 						// Edge: 93, path: "namespaces".
 						elem, p = nextElem(p)
-						switch string(elem) {
+						switch elem {
 						default:
 							if args == nil {
 								args = make(map[string]string)
 							}
-							args["namespace"] = string(elem)
+							args["namespace"] = elem
 							// Edge: 94, path: "".
 							elem, p = nextElem(p)
-							switch string(elem) {
+							switch elem {
 							case "cronjobs": // -> 95
 								// Edge: 95, path: "cronjobs".
 								elem, p = nextElem(p)
@@ -1356,12 +1356,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									s.handleListBatchV1beta1NamespacedCronJobRequest(args, w, r)
 									return
 								}
-								switch string(elem) {
+								switch elem {
 								default:
 									if args == nil {
 										args = make(map[string]string)
 									}
-									args["name"] = string(elem)
+									args["name"] = elem
 									// Edge: 221, path: "".
 									elem, p = nextElem(p)
 									if len(elem) == 0 {
@@ -1369,7 +1369,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										s.handleReadBatchV1beta1NamespacedCronJobRequest(args, w, r)
 										return
 									}
-									switch string(elem) {
+									switch elem {
 									case "status": // -> 222
 										// GET /apis/batch/v1beta1/namespaces/{namespace}/cronjobs/{name}/status
 										s.handleReadBatchV1beta1NamespacedCronJobStatusRequest(args, w, r)
@@ -1388,7 +1388,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					case "watch": // -> 347
 						// Edge: 347, path: "watch".
 						elem, p = nextElem(p)
-						switch string(elem) {
+						switch elem {
 						case "cronjobs": // -> 348
 							// GET /apis/batch/v1beta1/watch/cronjobs
 							s.handleWatchBatchV1beta1CronJobListForAllNamespacesRequest(args, w, r)
@@ -1396,15 +1396,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "namespaces": // -> 349
 							// Edge: 349, path: "namespaces".
 							elem, p = nextElem(p)
-							switch string(elem) {
+							switch elem {
 							default:
 								if args == nil {
 									args = make(map[string]string)
 								}
-								args["namespace"] = string(elem)
+								args["namespace"] = elem
 								// Edge: 350, path: "".
 								elem, p = nextElem(p)
-								switch string(elem) {
+								switch elem {
 								case "cronjobs": // -> 351
 									// Edge: 351, path: "cronjobs".
 									elem, p = nextElem(p)
@@ -1413,12 +1413,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										s.handleWatchBatchV1beta1NamespacedCronJobListRequest(args, w, r)
 										return
 									}
-									switch string(elem) {
+									switch elem {
 									default:
 										if args == nil {
 											args = make(map[string]string)
 										}
-										args["name"] = string(elem)
+										args["name"] = elem
 										// GET /apis/batch/v1beta1/watch/namespaces/{namespace}/cronjobs/{name}
 										s.handleWatchBatchV1beta1NamespacedCronJobRequest(args, w, r)
 										return
@@ -1450,7 +1450,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					s.handleGetCertificatesAPIGroupRequest(args, w, r)
 					return
 				}
-				switch string(elem) {
+				switch elem {
 				case "v1": // -> 22
 					// Edge: 22, path: "v1".
 					elem, p = nextElem(p)
@@ -1459,7 +1459,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						s.handleGetCertificatesV1APIResourcesRequest(args, w, r)
 						return
 					}
-					switch string(elem) {
+					switch elem {
 					case "certificatesigningrequests": // -> 96
 						// Edge: 96, path: "certificatesigningrequests".
 						elem, p = nextElem(p)
@@ -1468,12 +1468,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							s.handleListCertificatesV1CertificateSigningRequestRequest(args, w, r)
 							return
 						}
-						switch string(elem) {
+						switch elem {
 						default:
 							if args == nil {
 								args = make(map[string]string)
 							}
-							args["name"] = string(elem)
+							args["name"] = elem
 							// Edge: 223, path: "".
 							elem, p = nextElem(p)
 							if len(elem) == 0 {
@@ -1481,7 +1481,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.handleReadCertificatesV1CertificateSigningRequestRequest(args, w, r)
 								return
 							}
-							switch string(elem) {
+							switch elem {
 							case "approval": // -> 224
 								// GET /apis/certificates.k8s.io/v1/certificatesigningrequests/{name}/approval
 								s.handleReadCertificatesV1CertificateSigningRequestApprovalRequest(args, w, r)
@@ -1499,7 +1499,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					case "watch": // -> 353
 						// Edge: 353, path: "watch".
 						elem, p = nextElem(p)
-						switch string(elem) {
+						switch elem {
 						case "certificatesigningrequests": // -> 354
 							// Edge: 354, path: "certificatesigningrequests".
 							elem, p = nextElem(p)
@@ -1508,12 +1508,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.handleWatchCertificatesV1CertificateSigningRequestListRequest(args, w, r)
 								return
 							}
-							switch string(elem) {
+							switch elem {
 							default:
 								if args == nil {
 									args = make(map[string]string)
 								}
-								args["name"] = string(elem)
+								args["name"] = elem
 								// GET /apis/certificates.k8s.io/v1/watch/certificatesigningrequests/{name}
 								s.handleWatchCertificatesV1CertificateSigningRequestRequest(args, w, r)
 								return
@@ -1540,7 +1540,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					s.handleGetCoordinationAPIGroupRequest(args, w, r)
 					return
 				}
-				switch string(elem) {
+				switch elem {
 				case "v1": // -> 25
 					// Edge: 25, path: "v1".
 					elem, p = nextElem(p)
@@ -1549,7 +1549,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						s.handleGetCoordinationV1APIResourcesRequest(args, w, r)
 						return
 					}
-					switch string(elem) {
+					switch elem {
 					case "leases": // -> 97
 						// GET /apis/coordination.k8s.io/v1/leases
 						s.handleListCoordinationV1LeaseForAllNamespacesRequest(args, w, r)
@@ -1557,15 +1557,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					case "namespaces": // -> 98
 						// Edge: 98, path: "namespaces".
 						elem, p = nextElem(p)
-						switch string(elem) {
+						switch elem {
 						default:
 							if args == nil {
 								args = make(map[string]string)
 							}
-							args["namespace"] = string(elem)
+							args["namespace"] = elem
 							// Edge: 99, path: "".
 							elem, p = nextElem(p)
-							switch string(elem) {
+							switch elem {
 							case "leases": // -> 100
 								// Edge: 100, path: "leases".
 								elem, p = nextElem(p)
@@ -1574,12 +1574,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									s.handleListCoordinationV1NamespacedLeaseRequest(args, w, r)
 									return
 								}
-								switch string(elem) {
+								switch elem {
 								default:
 									if args == nil {
 										args = make(map[string]string)
 									}
-									args["name"] = string(elem)
+									args["name"] = elem
 									// GET /apis/coordination.k8s.io/v1/namespaces/{namespace}/leases/{name}
 									s.handleReadCoordinationV1NamespacedLeaseRequest(args, w, r)
 									return
@@ -1592,7 +1592,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					case "watch": // -> 356
 						// Edge: 356, path: "watch".
 						elem, p = nextElem(p)
-						switch string(elem) {
+						switch elem {
 						case "leases": // -> 357
 							// GET /apis/coordination.k8s.io/v1/watch/leases
 							s.handleWatchCoordinationV1LeaseListForAllNamespacesRequest(args, w, r)
@@ -1600,15 +1600,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "namespaces": // -> 358
 							// Edge: 358, path: "namespaces".
 							elem, p = nextElem(p)
-							switch string(elem) {
+							switch elem {
 							default:
 								if args == nil {
 									args = make(map[string]string)
 								}
-								args["namespace"] = string(elem)
+								args["namespace"] = elem
 								// Edge: 359, path: "".
 								elem, p = nextElem(p)
-								switch string(elem) {
+								switch elem {
 								case "leases": // -> 360
 									// Edge: 360, path: "leases".
 									elem, p = nextElem(p)
@@ -1617,12 +1617,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										s.handleWatchCoordinationV1NamespacedLeaseListRequest(args, w, r)
 										return
 									}
-									switch string(elem) {
+									switch elem {
 									default:
 										if args == nil {
 											args = make(map[string]string)
 										}
-										args["name"] = string(elem)
+										args["name"] = elem
 										// GET /apis/coordination.k8s.io/v1/watch/namespaces/{namespace}/leases/{name}
 										s.handleWatchCoordinationV1NamespacedLeaseRequest(args, w, r)
 										return
@@ -1654,7 +1654,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					s.handleGetDiscoveryAPIGroupRequest(args, w, r)
 					return
 				}
-				switch string(elem) {
+				switch elem {
 				case "v1": // -> 29
 					// Edge: 29, path: "v1".
 					elem, p = nextElem(p)
@@ -1663,7 +1663,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						s.handleGetDiscoveryV1APIResourcesRequest(args, w, r)
 						return
 					}
-					switch string(elem) {
+					switch elem {
 					case "endpointslices": // -> 130
 						// GET /apis/discovery.k8s.io/v1/endpointslices
 						s.handleListDiscoveryV1EndpointSliceForAllNamespacesRequest(args, w, r)
@@ -1671,15 +1671,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					case "namespaces": // -> 131
 						// Edge: 131, path: "namespaces".
 						elem, p = nextElem(p)
-						switch string(elem) {
+						switch elem {
 						default:
 							if args == nil {
 								args = make(map[string]string)
 							}
-							args["namespace"] = string(elem)
+							args["namespace"] = elem
 							// Edge: 132, path: "".
 							elem, p = nextElem(p)
-							switch string(elem) {
+							switch elem {
 							case "endpointslices": // -> 133
 								// Edge: 133, path: "endpointslices".
 								elem, p = nextElem(p)
@@ -1688,12 +1688,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									s.handleListDiscoveryV1NamespacedEndpointSliceRequest(args, w, r)
 									return
 								}
-								switch string(elem) {
+								switch elem {
 								default:
 									if args == nil {
 										args = make(map[string]string)
 									}
-									args["name"] = string(elem)
+									args["name"] = elem
 									// GET /apis/discovery.k8s.io/v1/namespaces/{namespace}/endpointslices/{name}
 									s.handleReadDiscoveryV1NamespacedEndpointSliceRequest(args, w, r)
 									return
@@ -1706,7 +1706,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					case "watch": // -> 405
 						// Edge: 405, path: "watch".
 						elem, p = nextElem(p)
-						switch string(elem) {
+						switch elem {
 						case "endpointslices": // -> 406
 							// GET /apis/discovery.k8s.io/v1/watch/endpointslices
 							s.handleWatchDiscoveryV1EndpointSliceListForAllNamespacesRequest(args, w, r)
@@ -1714,15 +1714,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "namespaces": // -> 407
 							// Edge: 407, path: "namespaces".
 							elem, p = nextElem(p)
-							switch string(elem) {
+							switch elem {
 							default:
 								if args == nil {
 									args = make(map[string]string)
 								}
-								args["namespace"] = string(elem)
+								args["namespace"] = elem
 								// Edge: 408, path: "".
 								elem, p = nextElem(p)
-								switch string(elem) {
+								switch elem {
 								case "endpointslices": // -> 409
 									// Edge: 409, path: "endpointslices".
 									elem, p = nextElem(p)
@@ -1731,12 +1731,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										s.handleWatchDiscoveryV1NamespacedEndpointSliceListRequest(args, w, r)
 										return
 									}
-									switch string(elem) {
+									switch elem {
 									default:
 										if args == nil {
 											args = make(map[string]string)
 										}
-										args["name"] = string(elem)
+										args["name"] = elem
 										// GET /apis/discovery.k8s.io/v1/watch/namespaces/{namespace}/endpointslices/{name}
 										s.handleWatchDiscoveryV1NamespacedEndpointSliceRequest(args, w, r)
 										return
@@ -1763,7 +1763,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						s.handleGetDiscoveryV1beta1APIResourcesRequest(args, w, r)
 						return
 					}
-					switch string(elem) {
+					switch elem {
 					case "endpointslices": // -> 134
 						// GET /apis/discovery.k8s.io/v1beta1/endpointslices
 						s.handleListDiscoveryV1beta1EndpointSliceForAllNamespacesRequest(args, w, r)
@@ -1771,15 +1771,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					case "namespaces": // -> 135
 						// Edge: 135, path: "namespaces".
 						elem, p = nextElem(p)
-						switch string(elem) {
+						switch elem {
 						default:
 							if args == nil {
 								args = make(map[string]string)
 							}
-							args["namespace"] = string(elem)
+							args["namespace"] = elem
 							// Edge: 136, path: "".
 							elem, p = nextElem(p)
-							switch string(elem) {
+							switch elem {
 							case "endpointslices": // -> 137
 								// Edge: 137, path: "endpointslices".
 								elem, p = nextElem(p)
@@ -1788,12 +1788,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									s.handleListDiscoveryV1beta1NamespacedEndpointSliceRequest(args, w, r)
 									return
 								}
-								switch string(elem) {
+								switch elem {
 								default:
 									if args == nil {
 										args = make(map[string]string)
 									}
-									args["name"] = string(elem)
+									args["name"] = elem
 									// GET /apis/discovery.k8s.io/v1beta1/namespaces/{namespace}/endpointslices/{name}
 									s.handleReadDiscoveryV1beta1NamespacedEndpointSliceRequest(args, w, r)
 									return
@@ -1806,7 +1806,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					case "watch": // -> 411
 						// Edge: 411, path: "watch".
 						elem, p = nextElem(p)
-						switch string(elem) {
+						switch elem {
 						case "endpointslices": // -> 412
 							// GET /apis/discovery.k8s.io/v1beta1/watch/endpointslices
 							s.handleWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesRequest(args, w, r)
@@ -1814,15 +1814,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "namespaces": // -> 413
 							// Edge: 413, path: "namespaces".
 							elem, p = nextElem(p)
-							switch string(elem) {
+							switch elem {
 							default:
 								if args == nil {
 									args = make(map[string]string)
 								}
-								args["namespace"] = string(elem)
+								args["namespace"] = elem
 								// Edge: 414, path: "".
 								elem, p = nextElem(p)
-								switch string(elem) {
+								switch elem {
 								case "endpointslices": // -> 415
 									// Edge: 415, path: "endpointslices".
 									elem, p = nextElem(p)
@@ -1831,12 +1831,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										s.handleWatchDiscoveryV1beta1NamespacedEndpointSliceListRequest(args, w, r)
 										return
 									}
-									switch string(elem) {
+									switch elem {
 									default:
 										if args == nil {
 											args = make(map[string]string)
 										}
-										args["name"] = string(elem)
+										args["name"] = elem
 										// GET /apis/discovery.k8s.io/v1beta1/watch/namespaces/{namespace}/endpointslices/{name}
 										s.handleWatchDiscoveryV1beta1NamespacedEndpointSliceRequest(args, w, r)
 										return
@@ -1868,7 +1868,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					s.handleGetEventsAPIGroupRequest(args, w, r)
 					return
 				}
-				switch string(elem) {
+				switch elem {
 				case "v1": // -> 32
 					// Edge: 32, path: "v1".
 					elem, p = nextElem(p)
@@ -1877,7 +1877,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						s.handleGetEventsV1APIResourcesRequest(args, w, r)
 						return
 					}
-					switch string(elem) {
+					switch elem {
 					case "events": // -> 138
 						// GET /apis/events.k8s.io/v1/events
 						s.handleListEventsV1EventForAllNamespacesRequest(args, w, r)
@@ -1885,15 +1885,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					case "namespaces": // -> 139
 						// Edge: 139, path: "namespaces".
 						elem, p = nextElem(p)
-						switch string(elem) {
+						switch elem {
 						default:
 							if args == nil {
 								args = make(map[string]string)
 							}
-							args["namespace"] = string(elem)
+							args["namespace"] = elem
 							// Edge: 140, path: "".
 							elem, p = nextElem(p)
-							switch string(elem) {
+							switch elem {
 							case "events": // -> 141
 								// Edge: 141, path: "events".
 								elem, p = nextElem(p)
@@ -1902,12 +1902,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									s.handleListEventsV1NamespacedEventRequest(args, w, r)
 									return
 								}
-								switch string(elem) {
+								switch elem {
 								default:
 									if args == nil {
 										args = make(map[string]string)
 									}
-									args["name"] = string(elem)
+									args["name"] = elem
 									// GET /apis/events.k8s.io/v1/namespaces/{namespace}/events/{name}
 									s.handleReadEventsV1NamespacedEventRequest(args, w, r)
 									return
@@ -1920,7 +1920,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					case "watch": // -> 417
 						// Edge: 417, path: "watch".
 						elem, p = nextElem(p)
-						switch string(elem) {
+						switch elem {
 						case "events": // -> 418
 							// GET /apis/events.k8s.io/v1/watch/events
 							s.handleWatchEventsV1EventListForAllNamespacesRequest(args, w, r)
@@ -1928,15 +1928,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "namespaces": // -> 419
 							// Edge: 419, path: "namespaces".
 							elem, p = nextElem(p)
-							switch string(elem) {
+							switch elem {
 							default:
 								if args == nil {
 									args = make(map[string]string)
 								}
-								args["namespace"] = string(elem)
+								args["namespace"] = elem
 								// Edge: 420, path: "".
 								elem, p = nextElem(p)
-								switch string(elem) {
+								switch elem {
 								case "events": // -> 421
 									// Edge: 421, path: "events".
 									elem, p = nextElem(p)
@@ -1945,12 +1945,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										s.handleWatchEventsV1NamespacedEventListRequest(args, w, r)
 										return
 									}
-									switch string(elem) {
+									switch elem {
 									default:
 										if args == nil {
 											args = make(map[string]string)
 										}
-										args["name"] = string(elem)
+										args["name"] = elem
 										// GET /apis/events.k8s.io/v1/watch/namespaces/{namespace}/events/{name}
 										s.handleWatchEventsV1NamespacedEventRequest(args, w, r)
 										return
@@ -1977,7 +1977,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						s.handleGetEventsV1beta1APIResourcesRequest(args, w, r)
 						return
 					}
-					switch string(elem) {
+					switch elem {
 					case "events": // -> 142
 						// GET /apis/events.k8s.io/v1beta1/events
 						s.handleListEventsV1beta1EventForAllNamespacesRequest(args, w, r)
@@ -1985,15 +1985,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					case "namespaces": // -> 143
 						// Edge: 143, path: "namespaces".
 						elem, p = nextElem(p)
-						switch string(elem) {
+						switch elem {
 						default:
 							if args == nil {
 								args = make(map[string]string)
 							}
-							args["namespace"] = string(elem)
+							args["namespace"] = elem
 							// Edge: 144, path: "".
 							elem, p = nextElem(p)
-							switch string(elem) {
+							switch elem {
 							case "events": // -> 145
 								// Edge: 145, path: "events".
 								elem, p = nextElem(p)
@@ -2002,12 +2002,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									s.handleListEventsV1beta1NamespacedEventRequest(args, w, r)
 									return
 								}
-								switch string(elem) {
+								switch elem {
 								default:
 									if args == nil {
 										args = make(map[string]string)
 									}
-									args["name"] = string(elem)
+									args["name"] = elem
 									// GET /apis/events.k8s.io/v1beta1/namespaces/{namespace}/events/{name}
 									s.handleReadEventsV1beta1NamespacedEventRequest(args, w, r)
 									return
@@ -2020,7 +2020,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					case "watch": // -> 423
 						// Edge: 423, path: "watch".
 						elem, p = nextElem(p)
-						switch string(elem) {
+						switch elem {
 						case "events": // -> 424
 							// GET /apis/events.k8s.io/v1beta1/watch/events
 							s.handleWatchEventsV1beta1EventListForAllNamespacesRequest(args, w, r)
@@ -2028,15 +2028,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "namespaces": // -> 425
 							// Edge: 425, path: "namespaces".
 							elem, p = nextElem(p)
-							switch string(elem) {
+							switch elem {
 							default:
 								if args == nil {
 									args = make(map[string]string)
 								}
-								args["namespace"] = string(elem)
+								args["namespace"] = elem
 								// Edge: 426, path: "".
 								elem, p = nextElem(p)
-								switch string(elem) {
+								switch elem {
 								case "events": // -> 427
 									// Edge: 427, path: "events".
 									elem, p = nextElem(p)
@@ -2045,12 +2045,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										s.handleWatchEventsV1beta1NamespacedEventListRequest(args, w, r)
 										return
 									}
-									switch string(elem) {
+									switch elem {
 									default:
 										if args == nil {
 											args = make(map[string]string)
 										}
-										args["name"] = string(elem)
+										args["name"] = elem
 										// GET /apis/events.k8s.io/v1beta1/watch/namespaces/{namespace}/events/{name}
 										s.handleWatchEventsV1beta1NamespacedEventRequest(args, w, r)
 										return
@@ -2082,7 +2082,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					s.handleGetFlowcontrolApiserverAPIGroupRequest(args, w, r)
 					return
 				}
-				switch string(elem) {
+				switch elem {
 				case "v1beta1": // -> 35
 					// Edge: 35, path: "v1beta1".
 					elem, p = nextElem(p)
@@ -2091,7 +2091,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						s.handleGetFlowcontrolApiserverV1beta1APIResourcesRequest(args, w, r)
 						return
 					}
-					switch string(elem) {
+					switch elem {
 					case "flowschemas": // -> 146
 						// Edge: 146, path: "flowschemas".
 						elem, p = nextElem(p)
@@ -2100,12 +2100,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							s.handleListFlowcontrolApiserverV1beta1FlowSchemaRequest(args, w, r)
 							return
 						}
-						switch string(elem) {
+						switch elem {
 						default:
 							if args == nil {
 								args = make(map[string]string)
 							}
-							args["name"] = string(elem)
+							args["name"] = elem
 							// Edge: 257, path: "".
 							elem, p = nextElem(p)
 							if len(elem) == 0 {
@@ -2113,7 +2113,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.handleReadFlowcontrolApiserverV1beta1FlowSchemaRequest(args, w, r)
 								return
 							}
-							switch string(elem) {
+							switch elem {
 							case "status": // -> 258
 								// GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas/{name}/status
 								s.handleReadFlowcontrolApiserverV1beta1FlowSchemaStatusRequest(args, w, r)
@@ -2132,12 +2132,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							s.handleListFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest(args, w, r)
 							return
 						}
-						switch string(elem) {
+						switch elem {
 						default:
 							if args == nil {
 								args = make(map[string]string)
 							}
-							args["name"] = string(elem)
+							args["name"] = elem
 							// Edge: 259, path: "".
 							elem, p = nextElem(p)
 							if len(elem) == 0 {
@@ -2145,7 +2145,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.handleReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest(args, w, r)
 								return
 							}
-							switch string(elem) {
+							switch elem {
 							case "status": // -> 260
 								// GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations/{name}/status
 								s.handleReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusRequest(args, w, r)
@@ -2159,7 +2159,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					case "watch": // -> 429
 						// Edge: 429, path: "watch".
 						elem, p = nextElem(p)
-						switch string(elem) {
+						switch elem {
 						case "flowschemas": // -> 430
 							// Edge: 430, path: "flowschemas".
 							elem, p = nextElem(p)
@@ -2168,12 +2168,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.handleWatchFlowcontrolApiserverV1beta1FlowSchemaListRequest(args, w, r)
 								return
 							}
-							switch string(elem) {
+							switch elem {
 							default:
 								if args == nil {
 									args = make(map[string]string)
 								}
-								args["name"] = string(elem)
+								args["name"] = elem
 								// GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/flowschemas/{name}
 								s.handleWatchFlowcontrolApiserverV1beta1FlowSchemaRequest(args, w, r)
 								return
@@ -2186,12 +2186,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListRequest(args, w, r)
 								return
 							}
-							switch string(elem) {
+							switch elem {
 							default:
 								if args == nil {
 									args = make(map[string]string)
 								}
-								args["name"] = string(elem)
+								args["name"] = elem
 								// GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/prioritylevelconfigurations/{name}
 								s.handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest(args, w, r)
 								return
@@ -2213,7 +2213,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						s.handleGetFlowcontrolApiserverV1beta2APIResourcesRequest(args, w, r)
 						return
 					}
-					switch string(elem) {
+					switch elem {
 					case "flowschemas": // -> 148
 						// Edge: 148, path: "flowschemas".
 						elem, p = nextElem(p)
@@ -2222,12 +2222,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							s.handleListFlowcontrolApiserverV1beta2FlowSchemaRequest(args, w, r)
 							return
 						}
-						switch string(elem) {
+						switch elem {
 						default:
 							if args == nil {
 								args = make(map[string]string)
 							}
-							args["name"] = string(elem)
+							args["name"] = elem
 							// Edge: 261, path: "".
 							elem, p = nextElem(p)
 							if len(elem) == 0 {
@@ -2235,7 +2235,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.handleReadFlowcontrolApiserverV1beta2FlowSchemaRequest(args, w, r)
 								return
 							}
-							switch string(elem) {
+							switch elem {
 							case "status": // -> 262
 								// GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas/{name}/status
 								s.handleReadFlowcontrolApiserverV1beta2FlowSchemaStatusRequest(args, w, r)
@@ -2254,12 +2254,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							s.handleListFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest(args, w, r)
 							return
 						}
-						switch string(elem) {
+						switch elem {
 						default:
 							if args == nil {
 								args = make(map[string]string)
 							}
-							args["name"] = string(elem)
+							args["name"] = elem
 							// Edge: 263, path: "".
 							elem, p = nextElem(p)
 							if len(elem) == 0 {
@@ -2267,7 +2267,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.handleReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest(args, w, r)
 								return
 							}
-							switch string(elem) {
+							switch elem {
 							case "status": // -> 264
 								// GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations/{name}/status
 								s.handleReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusRequest(args, w, r)
@@ -2281,7 +2281,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					case "watch": // -> 434
 						// Edge: 434, path: "watch".
 						elem, p = nextElem(p)
-						switch string(elem) {
+						switch elem {
 						case "flowschemas": // -> 435
 							// Edge: 435, path: "flowschemas".
 							elem, p = nextElem(p)
@@ -2290,12 +2290,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.handleWatchFlowcontrolApiserverV1beta2FlowSchemaListRequest(args, w, r)
 								return
 							}
-							switch string(elem) {
+							switch elem {
 							default:
 								if args == nil {
 									args = make(map[string]string)
 								}
-								args["name"] = string(elem)
+								args["name"] = elem
 								// GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/flowschemas/{name}
 								s.handleWatchFlowcontrolApiserverV1beta2FlowSchemaRequest(args, w, r)
 								return
@@ -2308,12 +2308,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRequest(args, w, r)
 								return
 							}
-							switch string(elem) {
+							switch elem {
 							default:
 								if args == nil {
 									args = make(map[string]string)
 								}
-								args["name"] = string(elem)
+								args["name"] = elem
 								// GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/prioritylevelconfigurations/{name}
 								s.handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest(args, w, r)
 								return
@@ -2340,7 +2340,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					s.handleGetInternalApiserverAPIGroupRequest(args, w, r)
 					return
 				}
-				switch string(elem) {
+				switch elem {
 				case "v1alpha1": // -> 38
 					// Edge: 38, path: "v1alpha1".
 					elem, p = nextElem(p)
@@ -2349,7 +2349,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						s.handleGetInternalApiserverV1alpha1APIResourcesRequest(args, w, r)
 						return
 					}
-					switch string(elem) {
+					switch elem {
 					case "storageversions": // -> 150
 						// Edge: 150, path: "storageversions".
 						elem, p = nextElem(p)
@@ -2358,12 +2358,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							s.handleListInternalApiserverV1alpha1StorageVersionRequest(args, w, r)
 							return
 						}
-						switch string(elem) {
+						switch elem {
 						default:
 							if args == nil {
 								args = make(map[string]string)
 							}
-							args["name"] = string(elem)
+							args["name"] = elem
 							// Edge: 265, path: "".
 							elem, p = nextElem(p)
 							if len(elem) == 0 {
@@ -2371,7 +2371,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.handleReadInternalApiserverV1alpha1StorageVersionRequest(args, w, r)
 								return
 							}
-							switch string(elem) {
+							switch elem {
 							case "status": // -> 266
 								// GET /apis/internal.apiserver.k8s.io/v1alpha1/storageversions/{name}/status
 								s.handleReadInternalApiserverV1alpha1StorageVersionStatusRequest(args, w, r)
@@ -2385,7 +2385,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					case "watch": // -> 439
 						// Edge: 439, path: "watch".
 						elem, p = nextElem(p)
-						switch string(elem) {
+						switch elem {
 						case "storageversions": // -> 440
 							// Edge: 440, path: "storageversions".
 							elem, p = nextElem(p)
@@ -2394,12 +2394,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.handleWatchInternalApiserverV1alpha1StorageVersionListRequest(args, w, r)
 								return
 							}
-							switch string(elem) {
+							switch elem {
 							default:
 								if args == nil {
 									args = make(map[string]string)
 								}
-								args["name"] = string(elem)
+								args["name"] = elem
 								// GET /apis/internal.apiserver.k8s.io/v1alpha1/watch/storageversions/{name}
 								s.handleWatchInternalApiserverV1alpha1StorageVersionRequest(args, w, r)
 								return
@@ -2426,7 +2426,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					s.handleGetNetworkingAPIGroupRequest(args, w, r)
 					return
 				}
-				switch string(elem) {
+				switch elem {
 				case "v1": // -> 40
 					// Edge: 40, path: "v1".
 					elem, p = nextElem(p)
@@ -2435,7 +2435,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						s.handleGetNetworkingV1APIResourcesRequest(args, w, r)
 						return
 					}
-					switch string(elem) {
+					switch elem {
 					case "ingressclasses": // -> 151
 						// Edge: 151, path: "ingressclasses".
 						elem, p = nextElem(p)
@@ -2444,12 +2444,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							s.handleListNetworkingV1IngressClassRequest(args, w, r)
 							return
 						}
-						switch string(elem) {
+						switch elem {
 						default:
 							if args == nil {
 								args = make(map[string]string)
 							}
-							args["name"] = string(elem)
+							args["name"] = elem
 							// GET /apis/networking.k8s.io/v1/ingressclasses/{name}
 							s.handleReadNetworkingV1IngressClassRequest(args, w, r)
 							return
@@ -2461,15 +2461,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					case "namespaces": // -> 153
 						// Edge: 153, path: "namespaces".
 						elem, p = nextElem(p)
-						switch string(elem) {
+						switch elem {
 						default:
 							if args == nil {
 								args = make(map[string]string)
 							}
-							args["namespace"] = string(elem)
+							args["namespace"] = elem
 							// Edge: 154, path: "".
 							elem, p = nextElem(p)
-							switch string(elem) {
+							switch elem {
 							case "ingresses": // -> 155
 								// Edge: 155, path: "ingresses".
 								elem, p = nextElem(p)
@@ -2478,12 +2478,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									s.handleListNetworkingV1NamespacedIngressRequest(args, w, r)
 									return
 								}
-								switch string(elem) {
+								switch elem {
 								default:
 									if args == nil {
 										args = make(map[string]string)
 									}
-									args["name"] = string(elem)
+									args["name"] = elem
 									// Edge: 268, path: "".
 									elem, p = nextElem(p)
 									if len(elem) == 0 {
@@ -2491,7 +2491,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										s.handleReadNetworkingV1NamespacedIngressRequest(args, w, r)
 										return
 									}
-									switch string(elem) {
+									switch elem {
 									case "status": // -> 269
 										// GET /apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/{name}/status
 										s.handleReadNetworkingV1NamespacedIngressStatusRequest(args, w, r)
@@ -2510,12 +2510,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									s.handleListNetworkingV1NamespacedNetworkPolicyRequest(args, w, r)
 									return
 								}
-								switch string(elem) {
+								switch elem {
 								default:
 									if args == nil {
 										args = make(map[string]string)
 									}
-									args["name"] = string(elem)
+									args["name"] = elem
 									// GET /apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies/{name}
 									s.handleReadNetworkingV1NamespacedNetworkPolicyRequest(args, w, r)
 									return
@@ -2532,7 +2532,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					case "watch": // -> 442
 						// Edge: 442, path: "watch".
 						elem, p = nextElem(p)
-						switch string(elem) {
+						switch elem {
 						case "ingressclasses": // -> 443
 							// Edge: 443, path: "ingressclasses".
 							elem, p = nextElem(p)
@@ -2541,12 +2541,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.handleWatchNetworkingV1IngressClassListRequest(args, w, r)
 								return
 							}
-							switch string(elem) {
+							switch elem {
 							default:
 								if args == nil {
 									args = make(map[string]string)
 								}
-								args["name"] = string(elem)
+								args["name"] = elem
 								// GET /apis/networking.k8s.io/v1/watch/ingressclasses/{name}
 								s.handleWatchNetworkingV1IngressClassRequest(args, w, r)
 								return
@@ -2558,15 +2558,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "namespaces": // -> 446
 							// Edge: 446, path: "namespaces".
 							elem, p = nextElem(p)
-							switch string(elem) {
+							switch elem {
 							default:
 								if args == nil {
 									args = make(map[string]string)
 								}
-								args["namespace"] = string(elem)
+								args["namespace"] = elem
 								// Edge: 447, path: "".
 								elem, p = nextElem(p)
-								switch string(elem) {
+								switch elem {
 								case "ingresses": // -> 448
 									// Edge: 448, path: "ingresses".
 									elem, p = nextElem(p)
@@ -2575,12 +2575,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										s.handleWatchNetworkingV1NamespacedIngressListRequest(args, w, r)
 										return
 									}
-									switch string(elem) {
+									switch elem {
 									default:
 										if args == nil {
 											args = make(map[string]string)
 										}
-										args["name"] = string(elem)
+										args["name"] = elem
 										// GET /apis/networking.k8s.io/v1/watch/namespaces/{namespace}/ingresses/{name}
 										s.handleWatchNetworkingV1NamespacedIngressRequest(args, w, r)
 										return
@@ -2593,12 +2593,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										s.handleWatchNetworkingV1NamespacedNetworkPolicyListRequest(args, w, r)
 										return
 									}
-									switch string(elem) {
+									switch elem {
 									default:
 										if args == nil {
 											args = make(map[string]string)
 										}
-										args["name"] = string(elem)
+										args["name"] = elem
 										// GET /apis/networking.k8s.io/v1/watch/namespaces/{namespace}/networkpolicies/{name}
 										s.handleWatchNetworkingV1NamespacedNetworkPolicyRequest(args, w, r)
 										return
@@ -2634,7 +2634,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					s.handleGetNodeAPIGroupRequest(args, w, r)
 					return
 				}
-				switch string(elem) {
+				switch elem {
 				case "v1": // -> 42
 					// Edge: 42, path: "v1".
 					elem, p = nextElem(p)
@@ -2643,7 +2643,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						s.handleGetNodeV1APIResourcesRequest(args, w, r)
 						return
 					}
-					switch string(elem) {
+					switch elem {
 					case "runtimeclasses": // -> 158
 						// Edge: 158, path: "runtimeclasses".
 						elem, p = nextElem(p)
@@ -2652,12 +2652,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							s.handleListNodeV1RuntimeClassRequest(args, w, r)
 							return
 						}
-						switch string(elem) {
+						switch elem {
 						default:
 							if args == nil {
 								args = make(map[string]string)
 							}
-							args["name"] = string(elem)
+							args["name"] = elem
 							// GET /apis/node.k8s.io/v1/runtimeclasses/{name}
 							s.handleReadNodeV1RuntimeClassRequest(args, w, r)
 							return
@@ -2665,7 +2665,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					case "watch": // -> 453
 						// Edge: 453, path: "watch".
 						elem, p = nextElem(p)
-						switch string(elem) {
+						switch elem {
 						case "runtimeclasses": // -> 454
 							// Edge: 454, path: "runtimeclasses".
 							elem, p = nextElem(p)
@@ -2674,12 +2674,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.handleWatchNodeV1RuntimeClassListRequest(args, w, r)
 								return
 							}
-							switch string(elem) {
+							switch elem {
 							default:
 								if args == nil {
 									args = make(map[string]string)
 								}
-								args["name"] = string(elem)
+								args["name"] = elem
 								// GET /apis/node.k8s.io/v1/watch/runtimeclasses/{name}
 								s.handleWatchNodeV1RuntimeClassRequest(args, w, r)
 								return
@@ -2701,7 +2701,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						s.handleGetNodeV1alpha1APIResourcesRequest(args, w, r)
 						return
 					}
-					switch string(elem) {
+					switch elem {
 					case "runtimeclasses": // -> 159
 						// Edge: 159, path: "runtimeclasses".
 						elem, p = nextElem(p)
@@ -2710,12 +2710,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							s.handleListNodeV1alpha1RuntimeClassRequest(args, w, r)
 							return
 						}
-						switch string(elem) {
+						switch elem {
 						default:
 							if args == nil {
 								args = make(map[string]string)
 							}
-							args["name"] = string(elem)
+							args["name"] = elem
 							// GET /apis/node.k8s.io/v1alpha1/runtimeclasses/{name}
 							s.handleReadNodeV1alpha1RuntimeClassRequest(args, w, r)
 							return
@@ -2723,7 +2723,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					case "watch": // -> 456
 						// Edge: 456, path: "watch".
 						elem, p = nextElem(p)
-						switch string(elem) {
+						switch elem {
 						case "runtimeclasses": // -> 457
 							// Edge: 457, path: "runtimeclasses".
 							elem, p = nextElem(p)
@@ -2732,12 +2732,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.handleWatchNodeV1alpha1RuntimeClassListRequest(args, w, r)
 								return
 							}
-							switch string(elem) {
+							switch elem {
 							default:
 								if args == nil {
 									args = make(map[string]string)
 								}
-								args["name"] = string(elem)
+								args["name"] = elem
 								// GET /apis/node.k8s.io/v1alpha1/watch/runtimeclasses/{name}
 								s.handleWatchNodeV1alpha1RuntimeClassRequest(args, w, r)
 								return
@@ -2759,7 +2759,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						s.handleGetNodeV1beta1APIResourcesRequest(args, w, r)
 						return
 					}
-					switch string(elem) {
+					switch elem {
 					case "runtimeclasses": // -> 160
 						// Edge: 160, path: "runtimeclasses".
 						elem, p = nextElem(p)
@@ -2768,12 +2768,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							s.handleListNodeV1beta1RuntimeClassRequest(args, w, r)
 							return
 						}
-						switch string(elem) {
+						switch elem {
 						default:
 							if args == nil {
 								args = make(map[string]string)
 							}
-							args["name"] = string(elem)
+							args["name"] = elem
 							// GET /apis/node.k8s.io/v1beta1/runtimeclasses/{name}
 							s.handleReadNodeV1beta1RuntimeClassRequest(args, w, r)
 							return
@@ -2781,7 +2781,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					case "watch": // -> 459
 						// Edge: 459, path: "watch".
 						elem, p = nextElem(p)
-						switch string(elem) {
+						switch elem {
 						case "runtimeclasses": // -> 460
 							// Edge: 460, path: "runtimeclasses".
 							elem, p = nextElem(p)
@@ -2790,12 +2790,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.handleWatchNodeV1beta1RuntimeClassListRequest(args, w, r)
 								return
 							}
-							switch string(elem) {
+							switch elem {
 							default:
 								if args == nil {
 									args = make(map[string]string)
 								}
-								args["name"] = string(elem)
+								args["name"] = elem
 								// GET /apis/node.k8s.io/v1beta1/watch/runtimeclasses/{name}
 								s.handleWatchNodeV1beta1RuntimeClassRequest(args, w, r)
 								return
@@ -2822,7 +2822,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					s.handleGetPolicyAPIGroupRequest(args, w, r)
 					return
 				}
-				switch string(elem) {
+				switch elem {
 				case "v1": // -> 46
 					// Edge: 46, path: "v1".
 					elem, p = nextElem(p)
@@ -2831,19 +2831,19 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						s.handleGetPolicyV1APIResourcesRequest(args, w, r)
 						return
 					}
-					switch string(elem) {
+					switch elem {
 					case "namespaces": // -> 161
 						// Edge: 161, path: "namespaces".
 						elem, p = nextElem(p)
-						switch string(elem) {
+						switch elem {
 						default:
 							if args == nil {
 								args = make(map[string]string)
 							}
-							args["namespace"] = string(elem)
+							args["namespace"] = elem
 							// Edge: 162, path: "".
 							elem, p = nextElem(p)
-							switch string(elem) {
+							switch elem {
 							case "poddisruptionbudgets": // -> 163
 								// Edge: 163, path: "poddisruptionbudgets".
 								elem, p = nextElem(p)
@@ -2852,12 +2852,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									s.handleListPolicyV1NamespacedPodDisruptionBudgetRequest(args, w, r)
 									return
 								}
-								switch string(elem) {
+								switch elem {
 								default:
 									if args == nil {
 										args = make(map[string]string)
 									}
-									args["name"] = string(elem)
+									args["name"] = elem
 									// Edge: 274, path: "".
 									elem, p = nextElem(p)
 									if len(elem) == 0 {
@@ -2865,7 +2865,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										s.handleReadPolicyV1NamespacedPodDisruptionBudgetRequest(args, w, r)
 										return
 									}
-									switch string(elem) {
+									switch elem {
 									case "status": // -> 275
 										// GET /apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets/{name}/status
 										s.handleReadPolicyV1NamespacedPodDisruptionBudgetStatusRequest(args, w, r)
@@ -2888,19 +2888,19 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					case "watch": // -> 462
 						// Edge: 462, path: "watch".
 						elem, p = nextElem(p)
-						switch string(elem) {
+						switch elem {
 						case "namespaces": // -> 463
 							// Edge: 463, path: "namespaces".
 							elem, p = nextElem(p)
-							switch string(elem) {
+							switch elem {
 							default:
 								if args == nil {
 									args = make(map[string]string)
 								}
-								args["namespace"] = string(elem)
+								args["namespace"] = elem
 								// Edge: 464, path: "".
 								elem, p = nextElem(p)
-								switch string(elem) {
+								switch elem {
 								case "poddisruptionbudgets": // -> 465
 									// Edge: 465, path: "poddisruptionbudgets".
 									elem, p = nextElem(p)
@@ -2909,12 +2909,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										s.handleWatchPolicyV1NamespacedPodDisruptionBudgetListRequest(args, w, r)
 										return
 									}
-									switch string(elem) {
+									switch elem {
 									default:
 										if args == nil {
 											args = make(map[string]string)
 										}
-										args["name"] = string(elem)
+										args["name"] = elem
 										// GET /apis/policy/v1/watch/namespaces/{namespace}/poddisruptionbudgets/{name}
 										s.handleWatchPolicyV1NamespacedPodDisruptionBudgetRequest(args, w, r)
 										return
@@ -2945,19 +2945,19 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						s.handleGetPolicyV1beta1APIResourcesRequest(args, w, r)
 						return
 					}
-					switch string(elem) {
+					switch elem {
 					case "namespaces": // -> 165
 						// Edge: 165, path: "namespaces".
 						elem, p = nextElem(p)
-						switch string(elem) {
+						switch elem {
 						default:
 							if args == nil {
 								args = make(map[string]string)
 							}
-							args["namespace"] = string(elem)
+							args["namespace"] = elem
 							// Edge: 166, path: "".
 							elem, p = nextElem(p)
-							switch string(elem) {
+							switch elem {
 							case "poddisruptionbudgets": // -> 167
 								// Edge: 167, path: "poddisruptionbudgets".
 								elem, p = nextElem(p)
@@ -2966,12 +2966,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									s.handleListPolicyV1beta1NamespacedPodDisruptionBudgetRequest(args, w, r)
 									return
 								}
-								switch string(elem) {
+								switch elem {
 								default:
 									if args == nil {
 										args = make(map[string]string)
 									}
-									args["name"] = string(elem)
+									args["name"] = elem
 									// Edge: 276, path: "".
 									elem, p = nextElem(p)
 									if len(elem) == 0 {
@@ -2979,7 +2979,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										s.handleReadPolicyV1beta1NamespacedPodDisruptionBudgetRequest(args, w, r)
 										return
 									}
-									switch string(elem) {
+									switch elem {
 									case "status": // -> 277
 										// GET /apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets/{name}/status
 										s.handleReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusRequest(args, w, r)
@@ -3007,12 +3007,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							s.handleListPolicyV1beta1PodSecurityPolicyRequest(args, w, r)
 							return
 						}
-						switch string(elem) {
+						switch elem {
 						default:
 							if args == nil {
 								args = make(map[string]string)
 							}
-							args["name"] = string(elem)
+							args["name"] = elem
 							// GET /apis/policy/v1beta1/podsecuritypolicies/{name}
 							s.handleReadPolicyV1beta1PodSecurityPolicyRequest(args, w, r)
 							return
@@ -3020,19 +3020,19 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					case "watch": // -> 468
 						// Edge: 468, path: "watch".
 						elem, p = nextElem(p)
-						switch string(elem) {
+						switch elem {
 						case "namespaces": // -> 469
 							// Edge: 469, path: "namespaces".
 							elem, p = nextElem(p)
-							switch string(elem) {
+							switch elem {
 							default:
 								if args == nil {
 									args = make(map[string]string)
 								}
-								args["namespace"] = string(elem)
+								args["namespace"] = elem
 								// Edge: 470, path: "".
 								elem, p = nextElem(p)
-								switch string(elem) {
+								switch elem {
 								case "poddisruptionbudgets": // -> 471
 									// Edge: 471, path: "poddisruptionbudgets".
 									elem, p = nextElem(p)
@@ -3041,12 +3041,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										s.handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetListRequest(args, w, r)
 										return
 									}
-									switch string(elem) {
+									switch elem {
 									default:
 										if args == nil {
 											args = make(map[string]string)
 										}
-										args["name"] = string(elem)
+										args["name"] = elem
 										// GET /apis/policy/v1beta1/watch/namespaces/{namespace}/poddisruptionbudgets/{name}
 										s.handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetRequest(args, w, r)
 										return
@@ -3068,12 +3068,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.handleWatchPolicyV1beta1PodSecurityPolicyListRequest(args, w, r)
 								return
 							}
-							switch string(elem) {
+							switch elem {
 							default:
 								if args == nil {
 									args = make(map[string]string)
 								}
-								args["name"] = string(elem)
+								args["name"] = elem
 								// GET /apis/policy/v1beta1/watch/podsecuritypolicies/{name}
 								s.handleWatchPolicyV1beta1PodSecurityPolicyRequest(args, w, r)
 								return
@@ -3100,7 +3100,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					s.handleGetRbacAuthorizationAPIGroupRequest(args, w, r)
 					return
 				}
-				switch string(elem) {
+				switch elem {
 				case "v1": // -> 49
 					// Edge: 49, path: "v1".
 					elem, p = nextElem(p)
@@ -3109,7 +3109,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						s.handleGetRbacAuthorizationV1APIResourcesRequest(args, w, r)
 						return
 					}
-					switch string(elem) {
+					switch elem {
 					case "clusterroles": // -> 170
 						// Edge: 170, path: "clusterroles".
 						elem, p = nextElem(p)
@@ -3118,12 +3118,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							s.handleListRbacAuthorizationV1ClusterRoleRequest(args, w, r)
 							return
 						}
-						switch string(elem) {
+						switch elem {
 						default:
 							if args == nil {
 								args = make(map[string]string)
 							}
-							args["name"] = string(elem)
+							args["name"] = elem
 							// GET /apis/rbac.authorization.k8s.io/v1/clusterroles/{name}
 							s.handleReadRbacAuthorizationV1ClusterRoleRequest(args, w, r)
 							return
@@ -3136,12 +3136,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							s.handleListRbacAuthorizationV1ClusterRoleBindingRequest(args, w, r)
 							return
 						}
-						switch string(elem) {
+						switch elem {
 						default:
 							if args == nil {
 								args = make(map[string]string)
 							}
-							args["name"] = string(elem)
+							args["name"] = elem
 							// GET /apis/rbac.authorization.k8s.io/v1/clusterrolebindings/{name}
 							s.handleReadRbacAuthorizationV1ClusterRoleBindingRequest(args, w, r)
 							return
@@ -3149,15 +3149,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					case "namespaces": // -> 172
 						// Edge: 172, path: "namespaces".
 						elem, p = nextElem(p)
-						switch string(elem) {
+						switch elem {
 						default:
 							if args == nil {
 								args = make(map[string]string)
 							}
-							args["namespace"] = string(elem)
+							args["namespace"] = elem
 							// Edge: 173, path: "".
 							elem, p = nextElem(p)
-							switch string(elem) {
+							switch elem {
 							case "roles": // -> 174
 								// Edge: 174, path: "roles".
 								elem, p = nextElem(p)
@@ -3166,12 +3166,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									s.handleListRbacAuthorizationV1NamespacedRoleRequest(args, w, r)
 									return
 								}
-								switch string(elem) {
+								switch elem {
 								default:
 									if args == nil {
 										args = make(map[string]string)
 									}
-									args["name"] = string(elem)
+									args["name"] = elem
 									// GET /apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles/{name}
 									s.handleReadRbacAuthorizationV1NamespacedRoleRequest(args, w, r)
 									return
@@ -3184,12 +3184,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									s.handleListRbacAuthorizationV1NamespacedRoleBindingRequest(args, w, r)
 									return
 								}
-								switch string(elem) {
+								switch elem {
 								default:
 									if args == nil {
 										args = make(map[string]string)
 									}
-									args["name"] = string(elem)
+									args["name"] = elem
 									// GET /apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings/{name}
 									s.handleReadRbacAuthorizationV1NamespacedRoleBindingRequest(args, w, r)
 									return
@@ -3210,7 +3210,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					case "watch": // -> 476
 						// Edge: 476, path: "watch".
 						elem, p = nextElem(p)
-						switch string(elem) {
+						switch elem {
 						case "clusterroles": // -> 477
 							// Edge: 477, path: "clusterroles".
 							elem, p = nextElem(p)
@@ -3219,12 +3219,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.handleWatchRbacAuthorizationV1ClusterRoleListRequest(args, w, r)
 								return
 							}
-							switch string(elem) {
+							switch elem {
 							default:
 								if args == nil {
 									args = make(map[string]string)
 								}
-								args["name"] = string(elem)
+								args["name"] = elem
 								// GET /apis/rbac.authorization.k8s.io/v1/watch/clusterroles/{name}
 								s.handleWatchRbacAuthorizationV1ClusterRoleRequest(args, w, r)
 								return
@@ -3237,12 +3237,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.handleWatchRbacAuthorizationV1ClusterRoleBindingListRequest(args, w, r)
 								return
 							}
-							switch string(elem) {
+							switch elem {
 							default:
 								if args == nil {
 									args = make(map[string]string)
 								}
-								args["name"] = string(elem)
+								args["name"] = elem
 								// GET /apis/rbac.authorization.k8s.io/v1/watch/clusterrolebindings/{name}
 								s.handleWatchRbacAuthorizationV1ClusterRoleBindingRequest(args, w, r)
 								return
@@ -3250,15 +3250,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "namespaces": // -> 481
 							// Edge: 481, path: "namespaces".
 							elem, p = nextElem(p)
-							switch string(elem) {
+							switch elem {
 							default:
 								if args == nil {
 									args = make(map[string]string)
 								}
-								args["namespace"] = string(elem)
+								args["namespace"] = elem
 								// Edge: 482, path: "".
 								elem, p = nextElem(p)
-								switch string(elem) {
+								switch elem {
 								case "roles": // -> 483
 									// Edge: 483, path: "roles".
 									elem, p = nextElem(p)
@@ -3267,12 +3267,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										s.handleWatchRbacAuthorizationV1NamespacedRoleListRequest(args, w, r)
 										return
 									}
-									switch string(elem) {
+									switch elem {
 									default:
 										if args == nil {
 											args = make(map[string]string)
 										}
-										args["name"] = string(elem)
+										args["name"] = elem
 										// GET /apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/roles/{name}
 										s.handleWatchRbacAuthorizationV1NamespacedRoleRequest(args, w, r)
 										return
@@ -3285,12 +3285,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										s.handleWatchRbacAuthorizationV1NamespacedRoleBindingListRequest(args, w, r)
 										return
 									}
-									switch string(elem) {
+									switch elem {
 									default:
 										if args == nil {
 											args = make(map[string]string)
 										}
-										args["name"] = string(elem)
+										args["name"] = elem
 										// GET /apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/rolebindings/{name}
 										s.handleWatchRbacAuthorizationV1NamespacedRoleBindingRequest(args, w, r)
 										return
@@ -3330,7 +3330,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					s.handleGetSchedulingAPIGroupRequest(args, w, r)
 					return
 				}
-				switch string(elem) {
+				switch elem {
 				case "v1": // -> 51
 					// Edge: 51, path: "v1".
 					elem, p = nextElem(p)
@@ -3339,7 +3339,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						s.handleGetSchedulingV1APIResourcesRequest(args, w, r)
 						return
 					}
-					switch string(elem) {
+					switch elem {
 					case "priorityclasses": // -> 178
 						// Edge: 178, path: "priorityclasses".
 						elem, p = nextElem(p)
@@ -3348,12 +3348,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							s.handleListSchedulingV1PriorityClassRequest(args, w, r)
 							return
 						}
-						switch string(elem) {
+						switch elem {
 						default:
 							if args == nil {
 								args = make(map[string]string)
 							}
-							args["name"] = string(elem)
+							args["name"] = elem
 							// GET /apis/scheduling.k8s.io/v1/priorityclasses/{name}
 							s.handleReadSchedulingV1PriorityClassRequest(args, w, r)
 							return
@@ -3361,7 +3361,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					case "watch": // -> 489
 						// Edge: 489, path: "watch".
 						elem, p = nextElem(p)
-						switch string(elem) {
+						switch elem {
 						case "priorityclasses": // -> 490
 							// Edge: 490, path: "priorityclasses".
 							elem, p = nextElem(p)
@@ -3370,12 +3370,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.handleWatchSchedulingV1PriorityClassListRequest(args, w, r)
 								return
 							}
-							switch string(elem) {
+							switch elem {
 							default:
 								if args == nil {
 									args = make(map[string]string)
 								}
-								args["name"] = string(elem)
+								args["name"] = elem
 								// GET /apis/scheduling.k8s.io/v1/watch/priorityclasses/{name}
 								s.handleWatchSchedulingV1PriorityClassRequest(args, w, r)
 								return
@@ -3402,7 +3402,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					s.handleGetStorageAPIGroupRequest(args, w, r)
 					return
 				}
-				switch string(elem) {
+				switch elem {
 				case "v1": // -> 55
 					// Edge: 55, path: "v1".
 					elem, p = nextElem(p)
@@ -3411,7 +3411,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						s.handleGetStorageV1APIResourcesRequest(args, w, r)
 						return
 					}
-					switch string(elem) {
+					switch elem {
 					case "csidrivers": // -> 179
 						// Edge: 179, path: "csidrivers".
 						elem, p = nextElem(p)
@@ -3420,12 +3420,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							s.handleListStorageV1CSIDriverRequest(args, w, r)
 							return
 						}
-						switch string(elem) {
+						switch elem {
 						default:
 							if args == nil {
 								args = make(map[string]string)
 							}
-							args["name"] = string(elem)
+							args["name"] = elem
 							// GET /apis/storage.k8s.io/v1/csidrivers/{name}
 							s.handleReadStorageV1CSIDriverRequest(args, w, r)
 							return
@@ -3438,12 +3438,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							s.handleListStorageV1CSINodeRequest(args, w, r)
 							return
 						}
-						switch string(elem) {
+						switch elem {
 						default:
 							if args == nil {
 								args = make(map[string]string)
 							}
-							args["name"] = string(elem)
+							args["name"] = elem
 							// GET /apis/storage.k8s.io/v1/csinodes/{name}
 							s.handleReadStorageV1CSINodeRequest(args, w, r)
 							return
@@ -3456,12 +3456,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							s.handleListStorageV1StorageClassRequest(args, w, r)
 							return
 						}
-						switch string(elem) {
+						switch elem {
 						default:
 							if args == nil {
 								args = make(map[string]string)
 							}
-							args["name"] = string(elem)
+							args["name"] = elem
 							// GET /apis/storage.k8s.io/v1/storageclasses/{name}
 							s.handleReadStorageV1StorageClassRequest(args, w, r)
 							return
@@ -3474,12 +3474,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							s.handleListStorageV1VolumeAttachmentRequest(args, w, r)
 							return
 						}
-						switch string(elem) {
+						switch elem {
 						default:
 							if args == nil {
 								args = make(map[string]string)
 							}
-							args["name"] = string(elem)
+							args["name"] = elem
 							// Edge: 287, path: "".
 							elem, p = nextElem(p)
 							if len(elem) == 0 {
@@ -3487,7 +3487,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.handleReadStorageV1VolumeAttachmentRequest(args, w, r)
 								return
 							}
-							switch string(elem) {
+							switch elem {
 							case "status": // -> 288
 								// GET /apis/storage.k8s.io/v1/volumeattachments/{name}/status
 								s.handleReadStorageV1VolumeAttachmentStatusRequest(args, w, r)
@@ -3501,7 +3501,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					case "watch": // -> 492
 						// Edge: 492, path: "watch".
 						elem, p = nextElem(p)
-						switch string(elem) {
+						switch elem {
 						case "csidrivers": // -> 493
 							// Edge: 493, path: "csidrivers".
 							elem, p = nextElem(p)
@@ -3510,12 +3510,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.handleWatchStorageV1CSIDriverListRequest(args, w, r)
 								return
 							}
-							switch string(elem) {
+							switch elem {
 							default:
 								if args == nil {
 									args = make(map[string]string)
 								}
-								args["name"] = string(elem)
+								args["name"] = elem
 								// GET /apis/storage.k8s.io/v1/watch/csidrivers/{name}
 								s.handleWatchStorageV1CSIDriverRequest(args, w, r)
 								return
@@ -3528,12 +3528,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.handleWatchStorageV1CSINodeListRequest(args, w, r)
 								return
 							}
-							switch string(elem) {
+							switch elem {
 							default:
 								if args == nil {
 									args = make(map[string]string)
 								}
-								args["name"] = string(elem)
+								args["name"] = elem
 								// GET /apis/storage.k8s.io/v1/watch/csinodes/{name}
 								s.handleWatchStorageV1CSINodeRequest(args, w, r)
 								return
@@ -3546,12 +3546,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.handleWatchStorageV1StorageClassListRequest(args, w, r)
 								return
 							}
-							switch string(elem) {
+							switch elem {
 							default:
 								if args == nil {
 									args = make(map[string]string)
 								}
-								args["name"] = string(elem)
+								args["name"] = elem
 								// GET /apis/storage.k8s.io/v1/watch/storageclasses/{name}
 								s.handleWatchStorageV1StorageClassRequest(args, w, r)
 								return
@@ -3564,12 +3564,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.handleWatchStorageV1VolumeAttachmentListRequest(args, w, r)
 								return
 							}
-							switch string(elem) {
+							switch elem {
 							default:
 								if args == nil {
 									args = make(map[string]string)
 								}
-								args["name"] = string(elem)
+								args["name"] = elem
 								// GET /apis/storage.k8s.io/v1/watch/volumeattachments/{name}
 								s.handleWatchStorageV1VolumeAttachmentRequest(args, w, r)
 								return
@@ -3591,7 +3591,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						s.handleGetStorageV1alpha1APIResourcesRequest(args, w, r)
 						return
 					}
-					switch string(elem) {
+					switch elem {
 					case "csistoragecapacities": // -> 183
 						// GET /apis/storage.k8s.io/v1alpha1/csistoragecapacities
 						s.handleListStorageV1alpha1CSIStorageCapacityForAllNamespacesRequest(args, w, r)
@@ -3599,15 +3599,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					case "namespaces": // -> 184
 						// Edge: 184, path: "namespaces".
 						elem, p = nextElem(p)
-						switch string(elem) {
+						switch elem {
 						default:
 							if args == nil {
 								args = make(map[string]string)
 							}
-							args["namespace"] = string(elem)
+							args["namespace"] = elem
 							// Edge: 185, path: "".
 							elem, p = nextElem(p)
-							switch string(elem) {
+							switch elem {
 							case "csistoragecapacities": // -> 186
 								// Edge: 186, path: "csistoragecapacities".
 								elem, p = nextElem(p)
@@ -3616,12 +3616,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									s.handleListStorageV1alpha1NamespacedCSIStorageCapacityRequest(args, w, r)
 									return
 								}
-								switch string(elem) {
+								switch elem {
 								default:
 									if args == nil {
 										args = make(map[string]string)
 									}
-									args["name"] = string(elem)
+									args["name"] = elem
 									// GET /apis/storage.k8s.io/v1alpha1/namespaces/{namespace}/csistoragecapacities/{name}
 									s.handleReadStorageV1alpha1NamespacedCSIStorageCapacityRequest(args, w, r)
 									return
@@ -3634,7 +3634,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					case "watch": // -> 501
 						// Edge: 501, path: "watch".
 						elem, p = nextElem(p)
-						switch string(elem) {
+						switch elem {
 						case "csistoragecapacities": // -> 502
 							// GET /apis/storage.k8s.io/v1alpha1/watch/csistoragecapacities
 							s.handleWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesRequest(args, w, r)
@@ -3642,15 +3642,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "namespaces": // -> 503
 							// Edge: 503, path: "namespaces".
 							elem, p = nextElem(p)
-							switch string(elem) {
+							switch elem {
 							default:
 								if args == nil {
 									args = make(map[string]string)
 								}
-								args["namespace"] = string(elem)
+								args["namespace"] = elem
 								// Edge: 504, path: "".
 								elem, p = nextElem(p)
-								switch string(elem) {
+								switch elem {
 								case "csistoragecapacities": // -> 505
 									// Edge: 505, path: "csistoragecapacities".
 									elem, p = nextElem(p)
@@ -3659,12 +3659,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										s.handleWatchStorageV1alpha1NamespacedCSIStorageCapacityListRequest(args, w, r)
 										return
 									}
-									switch string(elem) {
+									switch elem {
 									default:
 										if args == nil {
 											args = make(map[string]string)
 										}
-										args["name"] = string(elem)
+										args["name"] = elem
 										// GET /apis/storage.k8s.io/v1alpha1/watch/namespaces/{namespace}/csistoragecapacities/{name}
 										s.handleWatchStorageV1alpha1NamespacedCSIStorageCapacityRequest(args, w, r)
 										return
@@ -3691,7 +3691,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						s.handleGetStorageV1beta1APIResourcesRequest(args, w, r)
 						return
 					}
-					switch string(elem) {
+					switch elem {
 					case "csistoragecapacities": // -> 187
 						// GET /apis/storage.k8s.io/v1beta1/csistoragecapacities
 						s.handleListStorageV1beta1CSIStorageCapacityForAllNamespacesRequest(args, w, r)
@@ -3699,15 +3699,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					case "namespaces": // -> 188
 						// Edge: 188, path: "namespaces".
 						elem, p = nextElem(p)
-						switch string(elem) {
+						switch elem {
 						default:
 							if args == nil {
 								args = make(map[string]string)
 							}
-							args["namespace"] = string(elem)
+							args["namespace"] = elem
 							// Edge: 189, path: "".
 							elem, p = nextElem(p)
-							switch string(elem) {
+							switch elem {
 							case "csistoragecapacities": // -> 190
 								// Edge: 190, path: "csistoragecapacities".
 								elem, p = nextElem(p)
@@ -3716,12 +3716,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									s.handleListStorageV1beta1NamespacedCSIStorageCapacityRequest(args, w, r)
 									return
 								}
-								switch string(elem) {
+								switch elem {
 								default:
 									if args == nil {
 										args = make(map[string]string)
 									}
-									args["name"] = string(elem)
+									args["name"] = elem
 									// GET /apis/storage.k8s.io/v1beta1/namespaces/{namespace}/csistoragecapacities/{name}
 									s.handleReadStorageV1beta1NamespacedCSIStorageCapacityRequest(args, w, r)
 									return
@@ -3734,7 +3734,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					case "watch": // -> 507
 						// Edge: 507, path: "watch".
 						elem, p = nextElem(p)
-						switch string(elem) {
+						switch elem {
 						case "csistoragecapacities": // -> 508
 							// GET /apis/storage.k8s.io/v1beta1/watch/csistoragecapacities
 							s.handleWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesRequest(args, w, r)
@@ -3742,15 +3742,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "namespaces": // -> 509
 							// Edge: 509, path: "namespaces".
 							elem, p = nextElem(p)
-							switch string(elem) {
+							switch elem {
 							default:
 								if args == nil {
 									args = make(map[string]string)
 								}
-								args["namespace"] = string(elem)
+								args["namespace"] = elem
 								// Edge: 510, path: "".
 								elem, p = nextElem(p)
-								switch string(elem) {
+								switch elem {
 								case "csistoragecapacities": // -> 511
 									// Edge: 511, path: "csistoragecapacities".
 									elem, p = nextElem(p)
@@ -3759,12 +3759,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										s.handleWatchStorageV1beta1NamespacedCSIStorageCapacityListRequest(args, w, r)
 										return
 									}
-									switch string(elem) {
+									switch elem {
 									default:
 										if args == nil {
 											args = make(map[string]string)
 										}
-										args["name"] = string(elem)
+										args["name"] = elem
 										// GET /apis/storage.k8s.io/v1beta1/watch/namespaces/{namespace}/csistoragecapacities/{name}
 										s.handleWatchStorageV1beta1NamespacedCSIStorageCapacityRequest(args, w, r)
 										return
@@ -3805,7 +3805,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				s.handleGetCoreAPIVersionsRequest(args, w, r)
 				return
 			}
-			switch string(elem) {
+			switch elem {
 			case "v1": // -> 27
 				// Edge: 27, path: "v1".
 				elem, p = nextElem(p)
@@ -3814,7 +3814,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					s.handleGetCoreV1APIResourcesRequest(args, w, r)
 					return
 				}
-				switch string(elem) {
+				switch elem {
 				case "componentstatuses": // -> 101
 					// Edge: 101, path: "componentstatuses".
 					elem, p = nextElem(p)
@@ -3823,12 +3823,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						s.handleListCoreV1ComponentStatusRequest(args, w, r)
 						return
 					}
-					switch string(elem) {
+					switch elem {
 					default:
 						if args == nil {
 							args = make(map[string]string)
 						}
-						args["name"] = string(elem)
+						args["name"] = elem
 						// GET /api/v1/componentstatuses/{name}
 						s.handleReadCoreV1ComponentStatusRequest(args, w, r)
 						return
@@ -3857,12 +3857,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						s.handleListCoreV1NamespaceRequest(args, w, r)
 						return
 					}
-					switch string(elem) {
+					switch elem {
 					default:
 						if args == nil {
 							args = make(map[string]string)
 						}
-						args["namespace"] = string(elem)
+						args["namespace"] = elem
 						// Edge: 107, path: "".
 						elem, p = nextElem(p)
 						if len(elem) == 0 {
@@ -3870,7 +3870,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							s.handleReadCoreV1NamespaceRequest(args, w, r)
 							return
 						}
-						switch string(elem) {
+						switch elem {
 						case "configmaps": // -> 108
 							// Edge: 108, path: "configmaps".
 							elem, p = nextElem(p)
@@ -3879,12 +3879,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.handleListCoreV1NamespacedConfigMapRequest(args, w, r)
 								return
 							}
-							switch string(elem) {
+							switch elem {
 							default:
 								if args == nil {
 									args = make(map[string]string)
 								}
-								args["name"] = string(elem)
+								args["name"] = elem
 								// GET /api/v1/namespaces/{namespace}/configmaps/{name}
 								s.handleReadCoreV1NamespacedConfigMapRequest(args, w, r)
 								return
@@ -3897,12 +3897,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.handleListCoreV1NamespacedEndpointsRequest(args, w, r)
 								return
 							}
-							switch string(elem) {
+							switch elem {
 							default:
 								if args == nil {
 									args = make(map[string]string)
 								}
-								args["name"] = string(elem)
+								args["name"] = elem
 								// GET /api/v1/namespaces/{namespace}/endpoints/{name}
 								s.handleReadCoreV1NamespacedEndpointsRequest(args, w, r)
 								return
@@ -3915,12 +3915,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.handleListCoreV1NamespacedEventRequest(args, w, r)
 								return
 							}
-							switch string(elem) {
+							switch elem {
 							default:
 								if args == nil {
 									args = make(map[string]string)
 								}
-								args["name"] = string(elem)
+								args["name"] = elem
 								// GET /api/v1/namespaces/{namespace}/events/{name}
 								s.handleReadCoreV1NamespacedEventRequest(args, w, r)
 								return
@@ -3933,12 +3933,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.handleListCoreV1NamespacedLimitRangeRequest(args, w, r)
 								return
 							}
-							switch string(elem) {
+							switch elem {
 							default:
 								if args == nil {
 									args = make(map[string]string)
 								}
-								args["name"] = string(elem)
+								args["name"] = elem
 								// GET /api/v1/namespaces/{namespace}/limitranges/{name}
 								s.handleReadCoreV1NamespacedLimitRangeRequest(args, w, r)
 								return
@@ -3951,12 +3951,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.handleListCoreV1NamespacedPersistentVolumeClaimRequest(args, w, r)
 								return
 							}
-							switch string(elem) {
+							switch elem {
 							default:
 								if args == nil {
 									args = make(map[string]string)
 								}
-								args["name"] = string(elem)
+								args["name"] = elem
 								// Edge: 233, path: "".
 								elem, p = nextElem(p)
 								if len(elem) == 0 {
@@ -3964,7 +3964,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									s.handleReadCoreV1NamespacedPersistentVolumeClaimRequest(args, w, r)
 									return
 								}
-								switch string(elem) {
+								switch elem {
 								case "status": // -> 234
 									// GET /api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}/status
 									s.handleReadCoreV1NamespacedPersistentVolumeClaimStatusRequest(args, w, r)
@@ -3983,12 +3983,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.handleListCoreV1NamespacedPodRequest(args, w, r)
 								return
 							}
-							switch string(elem) {
+							switch elem {
 							default:
 								if args == nil {
 									args = make(map[string]string)
 								}
-								args["name"] = string(elem)
+								args["name"] = elem
 								// Edge: 235, path: "".
 								elem, p = nextElem(p)
 								if len(elem) == 0 {
@@ -3996,7 +3996,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									s.handleReadCoreV1NamespacedPodRequest(args, w, r)
 									return
 								}
-								switch string(elem) {
+								switch elem {
 								case "ephemeralcontainers": // -> 236
 									// GET /api/v1/namespaces/{namespace}/pods/{name}/ephemeralcontainers
 									s.handleReadCoreV1NamespacedPodEphemeralcontainersRequest(args, w, r)
@@ -4023,12 +4023,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.handleListCoreV1NamespacedPodTemplateRequest(args, w, r)
 								return
 							}
-							switch string(elem) {
+							switch elem {
 							default:
 								if args == nil {
 									args = make(map[string]string)
 								}
-								args["name"] = string(elem)
+								args["name"] = elem
 								// GET /api/v1/namespaces/{namespace}/podtemplates/{name}
 								s.handleReadCoreV1NamespacedPodTemplateRequest(args, w, r)
 								return
@@ -4041,12 +4041,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.handleListCoreV1NamespacedReplicationControllerRequest(args, w, r)
 								return
 							}
-							switch string(elem) {
+							switch elem {
 							default:
 								if args == nil {
 									args = make(map[string]string)
 								}
-								args["name"] = string(elem)
+								args["name"] = elem
 								// Edge: 240, path: "".
 								elem, p = nextElem(p)
 								if len(elem) == 0 {
@@ -4054,7 +4054,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									s.handleReadCoreV1NamespacedReplicationControllerRequest(args, w, r)
 									return
 								}
-								switch string(elem) {
+								switch elem {
 								case "scale": // -> 241
 									// GET /api/v1/namespaces/{namespace}/replicationcontrollers/{name}/scale
 									s.handleReadCoreV1NamespacedReplicationControllerScaleRequest(args, w, r)
@@ -4077,12 +4077,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.handleListCoreV1NamespacedResourceQuotaRequest(args, w, r)
 								return
 							}
-							switch string(elem) {
+							switch elem {
 							default:
 								if args == nil {
 									args = make(map[string]string)
 								}
-								args["name"] = string(elem)
+								args["name"] = elem
 								// Edge: 243, path: "".
 								elem, p = nextElem(p)
 								if len(elem) == 0 {
@@ -4090,7 +4090,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									s.handleReadCoreV1NamespacedResourceQuotaRequest(args, w, r)
 									return
 								}
-								switch string(elem) {
+								switch elem {
 								case "status": // -> 244
 									// GET /api/v1/namespaces/{namespace}/resourcequotas/{name}/status
 									s.handleReadCoreV1NamespacedResourceQuotaStatusRequest(args, w, r)
@@ -4109,12 +4109,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.handleListCoreV1NamespacedSecretRequest(args, w, r)
 								return
 							}
-							switch string(elem) {
+							switch elem {
 							default:
 								if args == nil {
 									args = make(map[string]string)
 								}
-								args["name"] = string(elem)
+								args["name"] = elem
 								// GET /api/v1/namespaces/{namespace}/secrets/{name}
 								s.handleReadCoreV1NamespacedSecretRequest(args, w, r)
 								return
@@ -4127,12 +4127,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.handleListCoreV1NamespacedServiceRequest(args, w, r)
 								return
 							}
-							switch string(elem) {
+							switch elem {
 							default:
 								if args == nil {
 									args = make(map[string]string)
 								}
-								args["name"] = string(elem)
+								args["name"] = elem
 								// Edge: 246, path: "".
 								elem, p = nextElem(p)
 								if len(elem) == 0 {
@@ -4140,7 +4140,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									s.handleReadCoreV1NamespacedServiceRequest(args, w, r)
 									return
 								}
-								switch string(elem) {
+								switch elem {
 								case "status": // -> 248
 									// GET /api/v1/namespaces/{namespace}/services/{name}/status
 									s.handleReadCoreV1NamespacedServiceStatusRequest(args, w, r)
@@ -4159,12 +4159,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.handleListCoreV1NamespacedServiceAccountRequest(args, w, r)
 								return
 							}
-							switch string(elem) {
+							switch elem {
 							default:
 								if args == nil {
 									args = make(map[string]string)
 								}
-								args["name"] = string(elem)
+								args["name"] = elem
 								// GET /api/v1/namespaces/{namespace}/serviceaccounts/{name}
 								s.handleReadCoreV1NamespacedServiceAccountRequest(args, w, r)
 								return
@@ -4187,12 +4187,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						s.handleListCoreV1NodeRequest(args, w, r)
 						return
 					}
-					switch string(elem) {
+					switch elem {
 					default:
 						if args == nil {
 							args = make(map[string]string)
 						}
-						args["name"] = string(elem)
+						args["name"] = elem
 						// Edge: 249, path: "".
 						elem, p = nextElem(p)
 						if len(elem) == 0 {
@@ -4200,7 +4200,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							s.handleReadCoreV1NodeRequest(args, w, r)
 							return
 						}
-						switch string(elem) {
+						switch elem {
 						case "status": // -> 250
 							// GET /api/v1/nodes/{name}/status
 							s.handleReadCoreV1NodeStatusRequest(args, w, r)
@@ -4219,12 +4219,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						s.handleListCoreV1PersistentVolumeRequest(args, w, r)
 						return
 					}
-					switch string(elem) {
+					switch elem {
 					default:
 						if args == nil {
 							args = make(map[string]string)
 						}
-						args["name"] = string(elem)
+						args["name"] = elem
 						// Edge: 251, path: "".
 						elem, p = nextElem(p)
 						if len(elem) == 0 {
@@ -4232,7 +4232,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							s.handleReadCoreV1PersistentVolumeRequest(args, w, r)
 							return
 						}
-						switch string(elem) {
+						switch elem {
 						case "status": // -> 252
 							// GET /api/v1/persistentvolumes/{name}/status
 							s.handleReadCoreV1PersistentVolumeStatusRequest(args, w, r)
@@ -4278,7 +4278,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				case "watch": // -> 362
 					// Edge: 362, path: "watch".
 					elem, p = nextElem(p)
-					switch string(elem) {
+					switch elem {
 					case "configmaps": // -> 363
 						// GET /api/v1/watch/configmaps
 						s.handleWatchCoreV1ConfigMapListForAllNamespacesRequest(args, w, r)
@@ -4303,12 +4303,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							s.handleWatchCoreV1NamespaceListRequest(args, w, r)
 							return
 						}
-						switch string(elem) {
+						switch elem {
 						default:
 							if args == nil {
 								args = make(map[string]string)
 							}
-							args["name"] = string(elem)
+							args["name"] = elem
 							// Edge: 368, path: "".
 							elem, p = nextElem(p)
 							if len(elem) == 0 {
@@ -4316,7 +4316,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.handleWatchCoreV1NamespaceRequest(args, w, r)
 								return
 							}
-							switch string(elem) {
+							switch elem {
 							case "configmaps": // -> 369
 								// Edge: 369, path: "configmaps".
 								elem, p = nextElem(p)
@@ -4325,12 +4325,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									s.handleWatchCoreV1NamespacedConfigMapListRequest(args, w, r)
 									return
 								}
-								switch string(elem) {
+								switch elem {
 								default:
 									if args == nil {
 										args = make(map[string]string)
 									}
-									args["name"] = string(elem)
+									args["name"] = elem
 									// GET /api/v1/watch/namespaces/{namespace}/configmaps/{name}
 									s.handleWatchCoreV1NamespacedConfigMapRequest(args, w, r)
 									return
@@ -4343,12 +4343,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									s.handleWatchCoreV1NamespacedEndpointsListRequest(args, w, r)
 									return
 								}
-								switch string(elem) {
+								switch elem {
 								default:
 									if args == nil {
 										args = make(map[string]string)
 									}
-									args["name"] = string(elem)
+									args["name"] = elem
 									// GET /api/v1/watch/namespaces/{namespace}/endpoints/{name}
 									s.handleWatchCoreV1NamespacedEndpointsRequest(args, w, r)
 									return
@@ -4361,12 +4361,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									s.handleWatchCoreV1NamespacedEventListRequest(args, w, r)
 									return
 								}
-								switch string(elem) {
+								switch elem {
 								default:
 									if args == nil {
 										args = make(map[string]string)
 									}
-									args["name"] = string(elem)
+									args["name"] = elem
 									// GET /api/v1/watch/namespaces/{namespace}/events/{name}
 									s.handleWatchCoreV1NamespacedEventRequest(args, w, r)
 									return
@@ -4379,12 +4379,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									s.handleWatchCoreV1NamespacedLimitRangeListRequest(args, w, r)
 									return
 								}
-								switch string(elem) {
+								switch elem {
 								default:
 									if args == nil {
 										args = make(map[string]string)
 									}
-									args["name"] = string(elem)
+									args["name"] = elem
 									// GET /api/v1/watch/namespaces/{namespace}/limitranges/{name}
 									s.handleWatchCoreV1NamespacedLimitRangeRequest(args, w, r)
 									return
@@ -4397,12 +4397,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									s.handleWatchCoreV1NamespacedPersistentVolumeClaimListRequest(args, w, r)
 									return
 								}
-								switch string(elem) {
+								switch elem {
 								default:
 									if args == nil {
 										args = make(map[string]string)
 									}
-									args["name"] = string(elem)
+									args["name"] = elem
 									// GET /api/v1/watch/namespaces/{namespace}/persistentvolumeclaims/{name}
 									s.handleWatchCoreV1NamespacedPersistentVolumeClaimRequest(args, w, r)
 									return
@@ -4415,12 +4415,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									s.handleWatchCoreV1NamespacedPodListRequest(args, w, r)
 									return
 								}
-								switch string(elem) {
+								switch elem {
 								default:
 									if args == nil {
 										args = make(map[string]string)
 									}
-									args["name"] = string(elem)
+									args["name"] = elem
 									// GET /api/v1/watch/namespaces/{namespace}/pods/{name}
 									s.handleWatchCoreV1NamespacedPodRequest(args, w, r)
 									return
@@ -4433,12 +4433,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									s.handleWatchCoreV1NamespacedPodTemplateListRequest(args, w, r)
 									return
 								}
-								switch string(elem) {
+								switch elem {
 								default:
 									if args == nil {
 										args = make(map[string]string)
 									}
-									args["name"] = string(elem)
+									args["name"] = elem
 									// GET /api/v1/watch/namespaces/{namespace}/podtemplates/{name}
 									s.handleWatchCoreV1NamespacedPodTemplateRequest(args, w, r)
 									return
@@ -4451,12 +4451,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									s.handleWatchCoreV1NamespacedReplicationControllerListRequest(args, w, r)
 									return
 								}
-								switch string(elem) {
+								switch elem {
 								default:
 									if args == nil {
 										args = make(map[string]string)
 									}
-									args["name"] = string(elem)
+									args["name"] = elem
 									// GET /api/v1/watch/namespaces/{namespace}/replicationcontrollers/{name}
 									s.handleWatchCoreV1NamespacedReplicationControllerRequest(args, w, r)
 									return
@@ -4469,12 +4469,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									s.handleWatchCoreV1NamespacedResourceQuotaListRequest(args, w, r)
 									return
 								}
-								switch string(elem) {
+								switch elem {
 								default:
 									if args == nil {
 										args = make(map[string]string)
 									}
-									args["name"] = string(elem)
+									args["name"] = elem
 									// GET /api/v1/watch/namespaces/{namespace}/resourcequotas/{name}
 									s.handleWatchCoreV1NamespacedResourceQuotaRequest(args, w, r)
 									return
@@ -4487,12 +4487,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									s.handleWatchCoreV1NamespacedSecretListRequest(args, w, r)
 									return
 								}
-								switch string(elem) {
+								switch elem {
 								default:
 									if args == nil {
 										args = make(map[string]string)
 									}
-									args["name"] = string(elem)
+									args["name"] = elem
 									// GET /api/v1/watch/namespaces/{namespace}/secrets/{name}
 									s.handleWatchCoreV1NamespacedSecretRequest(args, w, r)
 									return
@@ -4505,12 +4505,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									s.handleWatchCoreV1NamespacedServiceListRequest(args, w, r)
 									return
 								}
-								switch string(elem) {
+								switch elem {
 								default:
 									if args == nil {
 										args = make(map[string]string)
 									}
-									args["name"] = string(elem)
+									args["name"] = elem
 									// GET /api/v1/watch/namespaces/{namespace}/services/{name}
 									s.handleWatchCoreV1NamespacedServiceRequest(args, w, r)
 									return
@@ -4523,12 +4523,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									s.handleWatchCoreV1NamespacedServiceAccountListRequest(args, w, r)
 									return
 								}
-								switch string(elem) {
+								switch elem {
 								default:
 									if args == nil {
 										args = make(map[string]string)
 									}
-									args["name"] = string(elem)
+									args["name"] = elem
 									// GET /api/v1/watch/namespaces/{namespace}/serviceaccounts/{name}
 									s.handleWatchCoreV1NamespacedServiceAccountRequest(args, w, r)
 									return
@@ -4547,12 +4547,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							s.handleWatchCoreV1NodeListRequest(args, w, r)
 							return
 						}
-						switch string(elem) {
+						switch elem {
 						default:
 							if args == nil {
 								args = make(map[string]string)
 							}
-							args["name"] = string(elem)
+							args["name"] = elem
 							// GET /api/v1/watch/nodes/{name}
 							s.handleWatchCoreV1NodeRequest(args, w, r)
 							return
@@ -4565,12 +4565,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							s.handleWatchCoreV1PersistentVolumeListRequest(args, w, r)
 							return
 						}
-						switch string(elem) {
+						switch elem {
 						default:
 							if args == nil {
 								args = make(map[string]string)
 							}
-							args["name"] = string(elem)
+							args["name"] = elem
 							// GET /api/v1/watch/persistentvolumes/{name}
 							s.handleWatchCoreV1PersistentVolumeRequest(args, w, r)
 							return
@@ -4624,7 +4624,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		case ".well-known": // -> 52
 			// Edge: 52, path: ".well-known".
 			elem, p = nextElem(p)
-			switch string(elem) {
+			switch elem {
 			case "openid-configuration": // -> 53
 				// GET /.well-known/openid-configuration/
 				s.handleGetServiceAccountIssuerOpenIDConfigurationRequest(args, w, r)
@@ -4641,12 +4641,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				s.handleLogFileListHandlerRequest(args, w, r)
 				return
 			}
-			switch string(elem) {
+			switch elem {
 			default:
 				if args == nil {
 					args = make(map[string]string)
 				}
-				args["logpath"] = string(elem)
+				args["logpath"] = elem
 				// GET /logs/{logpath}
 				s.handleLogFileHandlerRequest(args, w, r)
 				return
