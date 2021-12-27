@@ -85,7 +85,7 @@ func (p *parser) parseOp(path, httpMethod string, spec ogen.Operation, itemParam
 	// Merge operation parameters with pathItem parameters.
 	op.Parameters = mergeParams(opParams, itemParams)
 
-	op.PathParts, err = parsePath(path, op.Parameters)
+	op.Path, err = parsePath(path, op.Parameters)
 	if err != nil {
 		return nil, errors.Wrap(err, "parse path")
 	}

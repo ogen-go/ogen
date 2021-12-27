@@ -11,7 +11,7 @@ import (
 
 func (g *Generator) generateOperation(spec *oas.Operation) (_ *ir.Operation, err error) {
 	op := &ir.Operation{
-		Name: pascal(spec.Path(), strings.ToLower(spec.HTTPMethod)),
+		Name: pascal(spec.Path.String(), strings.ToLower(spec.HTTPMethod)),
 		Spec: spec,
 	}
 	if spec.OperationID != "" {
@@ -25,7 +25,7 @@ func (g *Generator) generateOperation(spec *oas.Operation) (_ *ir.Operation, err
 	}
 
 	// Convert []oas.PathPart to []*ir.PathPart
-	op.PathParts = convertPathParts(op.Spec.PathParts, op.PathParams())
+	op.PathParts = convertPathParts(op.Spec.Path, op.PathParams())
 
 	if spec.RequestBody != nil {
 		op.Request, err = g.generateRequest(op.Name, spec.RequestBody)

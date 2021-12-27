@@ -4,10 +4,23 @@ package oas
 type Operation struct {
 	OperationID string // optional
 	HTTPMethod  string
-	PathParts   []PathPart
+	Path        Path
 	Parameters  []*Parameter
 	RequestBody *RequestBody // optional
 	Responses   *OperationResponse
+}
+
+type Path []PathPart
+
+func (p Path) String() (path string) {
+	for _, part := range p {
+		if part.Raw != "" {
+			path += part.Raw
+			continue
+		}
+		path += "{" + part.Param.Name + "}"
+	}
+	return
 }
 
 // PathPart is a part of an OpenAPI Operation Path.
@@ -32,16 +45,4 @@ type OperationResponse struct {
 type Response struct {
 	Ref      string
 	Contents map[string]*Schema
-}
-
-// Path returns Operation's raw path.
-func (op *Operation) Path() (path string) {
-	for _, part := range op.PathParts {
-		if part.Raw != "" {
-			path += part.Raw
-			continue
-		}
-		path += "{" + part.Param.Name + "}"
-	}
-	return
 }
