@@ -82,8 +82,8 @@
 			Email:          {{ $v.Email }},
 			Hostname:       {{ $v.Hostname }},
 			{{- if $v.Regex }}
-			Regex:          regexp.MustCompile(`{{ $v.Regex }}`),
-			{{- else }}
+			Regex:          regexMap[{{ printf "%q" $v.Regex }}],
+            {{- else }}
 			Regex:          nil,
 			{{- end }}
 		}).Validate(string({{ $.Var }})); err != nil {

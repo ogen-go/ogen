@@ -4,6 +4,14 @@
 {{ $pkg := $.Package }}
 {{ template "header" $ }}
 
+{{- with $regexStrings := $.RegexStrings }}
+var regexMap = map[string]*regexp.Regexp{
+	{{- range $regex := $regexStrings }}
+	{{ printf "%q" $regex }}: regexp.MustCompile({{ printf "%q" $regex }}),
+	{{- end }}
+}
+{{- end }}
+
 // bufPool is pool of bytes.Buffer for encoding and decoding.
 var bufPool = &sync.Pool{
 	New: func() interface{} {
