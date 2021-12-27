@@ -92,9 +92,7 @@ func newConfig(opts ...Option) config {
 	cfg := config{
 		TracerProvider: otel.GetTracerProvider(),
 		MeterProvider:  metric.NewNoopMeterProvider(),
-		Client: &http.Client{
-			Timeout: time.Second * 15,
-		},
+		Client:         http.DefaultClient,
 	}
 	for _, opt := range opts {
 		opt.apply(&cfg)
