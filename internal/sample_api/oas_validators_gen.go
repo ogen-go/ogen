@@ -110,7 +110,7 @@ func (s Data) Validate() error {
 			MaxLengthSet: false,
 			Email:        false,
 			Hostname:     false,
-			Regex:        regexp.MustCompile(`^\d-\d$`),
+			Regex:        regexMap["^\\d-\\d$"],
 		}).Validate(string(s.Format)); err != nil {
 			return errors.Wrap(err, "string")
 		}

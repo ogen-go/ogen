@@ -62,6 +62,10 @@ var (
 	_ = sync.Pool{}
 )
 
+var regexMap = map[string]*regexp.Regexp{
+	"^\\d-\\d$": regexp.MustCompile("^\\d-\\d$"),
+}
+
 // bufPool is pool of bytes.Buffer for encoding and decoding.
 var bufPool = &sync.Pool{
 	New: func() interface{} {

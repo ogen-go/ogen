@@ -72,7 +72,7 @@ func (s ActionsCreateOrUpdateEnvironmentSecretReq) Validate() error {
 			MaxLengthSet: false,
 			Email:        false,
 			Hostname:     false,
-			Regex:        regexp.MustCompile(`^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$`),
+			Regex:        regexMap["^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$"],
 		}).Validate(string(s.EncryptedValue)); err != nil {
 			return errors.Wrap(err, "string")
 		}
@@ -100,7 +100,7 @@ func (s ActionsCreateOrUpdateOrgSecretReq) Validate() error {
 					MaxLengthSet: false,
 					Email:        false,
 					Hostname:     false,
-					Regex:        regexp.MustCompile(`^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$`),
+					Regex:        regexMap["^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$"],
 				}).Validate(string(s.EncryptedValue.Value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
@@ -157,7 +157,7 @@ func (s ActionsCreateOrUpdateRepoSecretReq) Validate() error {
 					MaxLengthSet: false,
 					Email:        false,
 					Hostname:     false,
-					Regex:        regexp.MustCompile(`^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$`),
+					Regex:        regexMap["^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$"],
 				}).Validate(string(s.EncryptedValue.Value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
@@ -3383,7 +3383,7 @@ func (s CodeScanningAnalysisCommitSha) Validate() error {
 		MaxLengthSet: true,
 		Email:        false,
 		Hostname:     false,
-		Regex:        regexp.MustCompile(`^[0-9a-fA-F]+$`),
+		Regex:        regexMap["^[0-9a-fA-F]+$"],
 	}).Validate(string(s)); err != nil {
 		return errors.Wrap(err, "string")
 	}
@@ -9729,7 +9729,7 @@ func (s ProjectsMoveCardReq) Validate() error {
 			MaxLengthSet: false,
 			Email:        false,
 			Hostname:     false,
-			Regex:        regexp.MustCompile(`^(?:top|bottom|after:\d+)$`),
+			Regex:        regexMap["^(?:top|bottom|after:\\d+)$"],
 		}).Validate(string(s.Position)); err != nil {
 			return errors.Wrap(err, "string")
 		}
@@ -9755,7 +9755,7 @@ func (s ProjectsMoveColumnReq) Validate() error {
 			MaxLengthSet: false,
 			Email:        false,
 			Hostname:     false,
-			Regex:        regexp.MustCompile(`^(?:first|last|after:\d+)$`),
+			Regex:        regexMap["^(?:first|last|after:\\d+)$"],
 		}).Validate(string(s.Position)); err != nil {
 			return errors.Wrap(err, "string")
 		}
@@ -15433,7 +15433,7 @@ func (s UsersCreatePublicSSHKeyForAuthenticatedReq) Validate() error {
 			MaxLengthSet: false,
 			Email:        false,
 			Hostname:     false,
-			Regex:        regexp.MustCompile(`^ssh-(rsa|dss|ed25519) |^ecdsa-sha2-nistp(256|384|521) `),
+			Regex:        regexMap["^ssh-(rsa|dss|ed25519) |^ecdsa-sha2-nistp(256|384|521) "],
 		}).Validate(string(s.Key)); err != nil {
 			return errors.Wrap(err, "string")
 		}
