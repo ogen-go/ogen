@@ -408,60 +408,46 @@ func (g *schemaGen) primitive(name string, schema *oas.Schema) (*ir.Type, error)
 }
 
 func parseSimple(schema *oas.Schema) (*ir.Type, error) {
-	t, format := schema.Type, schema.Format
-	switch t {
-	case oas.Integer:
-		switch format {
-		case oas.FormatInt32:
-			return ir.Primitive(ir.Int32, schema), nil
-		case oas.FormatInt64:
-			return ir.Primitive(ir.Int64, schema), nil
-		case oas.FormatNone:
-			return ir.Primitive(ir.Int, schema), nil
-		default:
-			return nil, errors.Errorf("unexpected integer format: %q", format)
-		}
-	case oas.Number:
-		switch format {
-		case oas.FormatFloat:
-			return ir.Primitive(ir.Float32, schema), nil
-		case oas.FormatDouble, oas.FormatNone:
-			return ir.Primitive(ir.Float64, schema), nil
-		case oas.FormatInt32:
-			return ir.Primitive(ir.Int32, schema), nil
-		case oas.FormatInt64:
-			return ir.Primitive(ir.Int64, schema), nil
-		default:
-			return nil, errors.Errorf("unexpected number format: %q", format)
-		}
-	case oas.String:
-		switch format {
-		case oas.FormatByte:
-			return ir.Primitive(ir.ByteSlice, schema), nil
-		case oas.FormatDateTime, oas.FormatDate, oas.FormatTime:
-			return ir.Primitive(ir.Time, schema), nil
-		case oas.FormatDuration:
-			return ir.Primitive(ir.Duration, schema), nil
-		case oas.FormatUUID:
-			return ir.Primitive(ir.UUID, schema), nil
-		case oas.FormatIP, oas.FormatIPv4, oas.FormatIPv6:
-			return ir.Primitive(ir.IP, schema), nil
-		case oas.FormatURI:
-			return ir.Primitive(ir.URL, schema), nil
-		case oas.FormatPassword, oas.FormatNone:
-			return ir.Primitive(ir.String, schema), nil
-		default:
-			// return nil, errors.Errorf("unexpected string format: %q", format)
-			return ir.Primitive(ir.String, schema), nil
-		}
-	case oas.Boolean:
-		switch format {
-		case oas.FormatNone:
-			return ir.Primitive(ir.Bool, schema), nil
-		default:
-			return nil, errors.Errorf("unexpected bool format: %q", format)
-		}
-	default:
-		return nil, errors.Errorf("unexpected type: %q", t)
+	mapping := map[oas.SchemaType]map[oas.Format]ir.PrimitiveType{
+		oas.Integer: {
+			oas.FormatInt32: ir.Int32,
+			oas.FormatInt64: ir.Int64,
+			oas.FormatNone:  ir.Int,
+		},
+		oas.Number: {
+			oas.FormatFloat:  ir.Float32,
+			oas.FormatDouble: ir.Float64,
+			oas.FormatNone:   ir.Float64,
+			oas.FormatInt32:  ir.Int32,
+			oas.FormatInt64:  ir.Int64,
+		},
+		oas.String: {
+			oas.FormatByte:     ir.ByteSlice,
+			oas.FormatDateTime: ir.Time,
+			oas.FormatDate:     ir.Time,
+			oas.FormatTime:     ir.Time,
+			oas.FormatDuration: ir.Duration,
+			oas.FormatUUID:     ir.UUID,
+			oas.FormatIP:       ir.IP,
+			oas.FormatIPv4:     ir.IP,
+			oas.FormatIPv6:     ir.IP,
+			oas.FormatURI:      ir.URL,
+			oas.FormatPassword: ir.String,
+			oas.FormatNone:     ir.String,
+		},
+		oas.Boolean: {
+			oas.FormatNone: ir.Bool,
+		},
 	}
+
+	t, found := mapping[schema.Type][schema.Format]
+	if !found {
+		// Return string type for unknown string formats.
+		if schema.Type == oas.String {
+			return ir.Primitive(ir.String, schema), nil
+		}
+		return nil, errors.Errorf("unexpected %q format: %q", schema.Type, schema.Format)
+	}
+
+	return ir.Primitive(t, schema), nil
 }
