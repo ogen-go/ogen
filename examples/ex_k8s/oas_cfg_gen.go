@@ -62,6 +62,10 @@ var (
 	_ = sync.Pool{}
 )
 
+var regexMap = map[string]*regexp.Regexp{
+	"^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$": regexp.MustCompile("^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$"),
+}
+
 // bufPool is pool of bytes.Buffer for encoding and decoding.
 var bufPool = &sync.Pool{
 	New: func() interface{} {

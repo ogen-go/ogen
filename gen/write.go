@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"fmt"
 	"os"
+	"sort"
 	"text/template"
 
 	"github.com/go-faster/errors"
@@ -20,6 +21,52 @@ type TemplateConfig struct {
 	Error      *ir.StatusResponse
 	ErrorType  *ir.Type
 	Methods    []RouterMethod
+}
+
+// RegexStrings returns slice of all unique regex validators.
+func (t TemplateConfig) RegexStrings() (r []string) {
+	var (
+		addRegex func(typ *ir.Type)
+		m        = map[string]struct{}{}
+		seen     = map[*ir.Type]struct{}{}
+	)
+	addRegex = func(typ *ir.Type) {
+		_, skip := seen[typ]
+		if typ == nil || skip {
+			return
+		}
+		seen[typ] = struct{}{}
+
+		if r := typ.Validators.String.Regex; r != nil {
+			m[r.String()] = struct{}{}
+		}
+		for _, f := range typ.Fields {
+			addRegex(f.Type)
+		}
+	}
+
+	for _, typ := range t.Types {
+		addRegex(typ)
+	}
+	for typ := range t.URITypes {
+		addRegex(typ)
+	}
+	for _, typ := range t.Interfaces {
+		addRegex(typ)
+	}
+	if t.Error != nil {
+		addRegex(t.Error.NoContent)
+		for _, typ := range t.Error.Contents {
+			addRegex(typ)
+		}
+	}
+	addRegex(t.ErrorType)
+
+	for exp := range m {
+		r = append(r, exp)
+	}
+	sort.Strings(r)
+	return r
 }
 
 // FileSystem represents a directory of generated package.

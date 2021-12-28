@@ -264,7 +264,7 @@ func (s IoK8sAPIAdmissionregistrationV1WebhookClientConfig) Validate() error {
 			MaxLengthSet: false,
 			Email:        false,
 			Hostname:     false,
-			Regex:        regexp.MustCompile(`^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$`),
+			Regex:        regexMap["^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$"],
 		}).Validate(string(s.CaBundle)); err != nil {
 			return errors.Wrap(err, "string")
 		}
@@ -1187,7 +1187,7 @@ func (s IoK8sAPICertificatesV1CertificateSigningRequestSpec) Validate() error {
 			MaxLengthSet: false,
 			Email:        false,
 			Hostname:     false,
-			Regex:        regexp.MustCompile(`^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$`),
+			Regex:        regexMap["^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$"],
 		}).Validate(string(s.Request)); err != nil {
 			return errors.Wrap(err, "string")
 		}
@@ -1213,7 +1213,7 @@ func (s IoK8sAPICertificatesV1CertificateSigningRequestStatus) Validate() error 
 			MaxLengthSet: false,
 			Email:        false,
 			Hostname:     false,
-			Regex:        regexp.MustCompile(`^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$`),
+			Regex:        regexMap["^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$"],
 		}).Validate(string(s.Certificate)); err != nil {
 			return errors.Wrap(err, "string")
 		}
@@ -4133,7 +4133,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) Va
 			MaxLengthSet: false,
 			Email:        false,
 			Hostname:     false,
-			Regex:        regexp.MustCompile(`^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$`),
+			Regex:        regexMap["^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$"],
 		}).Validate(string(s.CaBundle)); err != nil {
 			return errors.Wrap(err, "string")
 		}
@@ -4392,7 +4392,7 @@ func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) Validate() er
 			MaxLengthSet: false,
 			Email:        false,
 			Hostname:     false,
-			Regex:        regexp.MustCompile(`^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$`),
+			Regex:        regexMap["^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$"],
 		}).Validate(string(s.CaBundle)); err != nil {
 			return errors.Wrap(err, "string")
 		}
