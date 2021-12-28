@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"net/http"
 	"sort"
+	"strconv"
 	"strings"
 
 	"github.com/go-faster/errors"
@@ -12,22 +13,32 @@ import (
 	"github.com/ogen-go/ogen/internal/oas"
 )
 
-func (g *Generator) generateResponses(opName string, responses *oas.OperationResponse) (*ir.Response, error) {
+func (g *Generator) generateResponses(opName string, responses map[string]*oas.Response) (*ir.Response, error) {
 	name := opName + "Res"
 	result := &ir.Response{
-		Spec:       responses,
-		StatusCode: map[int]*ir.StatusResponse{},
+		StatusCode: make(map[int]*ir.StatusResponse, len(responses)),
 	}
 
-	statusCodes := make([]int, 0, len(responses.StatusCode))
-	for code := range responses.StatusCode {
-		statusCodes = append(statusCodes, code)
+	// Sort responses by status code.
+	statusCodes := make([]int, 0, len(responses))
+	for status := range responses {
+		switch status {
+		case "default": // Ignore default response.
+		default:
+			// TODO: Support patterns like 5XX?
+			code, err := strconv.Atoi(status)
+			if err != nil {
+				return nil, errors.Wrap(err, "parse response status code")
+			}
+
+			statusCodes = append(statusCodes, code)
+		}
 	}
 	sort.Ints(statusCodes)
 
 	for _, code := range statusCodes {
 		var (
-			resp     = responses.StatusCode[code]
+			resp     = responses[strconv.Itoa(code)]
 			respName = pascal(opName, http.StatusText(code))
 			doc      = fmt.Sprintf("%s is response for %s operation.", respName, opName)
 		)
@@ -39,7 +50,7 @@ func (g *Generator) generateResponses(opName string, responses *oas.OperationRes
 		result.StatusCode[code] = r
 	}
 
-	if def := responses.Default; def != nil && g.errType == nil {
+	if def, ok := responses["default"]; ok && g.errType == nil {
 		var (
 			respName = opName + "Def"
 			doc      = fmt.Sprintf("%s is default response for %s operation.", respName, opName)
@@ -57,7 +68,7 @@ func (g *Generator) generateResponses(opName string, responses *oas.OperationRes
 		lastWalked *ir.Type
 	)
 
-	walkResponseTypes(result, func(name string, t *ir.Type) *ir.Type {
+	walkResponseTypes(result, func(_ string, t *ir.Type) *ir.Type {
 		countTypes += 1
 		lastWalked = t
 		return t

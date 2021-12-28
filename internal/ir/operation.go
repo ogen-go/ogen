@@ -86,7 +86,6 @@ type Response struct {
 	Type       *Type
 	StatusCode map[int]*StatusResponse
 	Default    *StatusResponse
-	Spec       *oas.OperationResponse
 }
 
 type StatusResponse struct {

@@ -1,6 +1,7 @@
 package parser
 
 import (
+	"net/http"
 	"reflect"
 	"strconv"
 
@@ -10,36 +11,23 @@ import (
 	"github.com/ogen-go/ogen/internal/oas"
 )
 
-func (p *parser) parseResponses(responses ogen.Responses) (*oas.OperationResponse, error) {
-	result := createAstOpResponse()
+func (p *parser) parseResponses(responses ogen.Responses) (map[string]*oas.Response, error) {
+	result := make(map[string]*oas.Response, len(responses))
 	if len(responses) == 0 {
 		return nil, errors.New("no responses")
 	}
 
-	// Iterate over method responses...
 	for status, response := range responses {
-		// Default response.
-		if status == "default" {
-			resp, err := p.parseResponse(response)
-			if err != nil {
-				return nil, errors.Wrap(err, "default")
-			}
-
-			result.Default = resp
-			continue
-		}
-
-		statusCode, err := strconv.Atoi(status)
-		if err != nil {
-			return nil, errors.Errorf("invalid status code: %q", status)
+		if err := validateStatusCode(status); err != nil {
+			return nil, errors.Wrap(err, status)
 		}
 
 		resp, err := p.parseResponse(response)
 		if err != nil {
-			return nil, errors.Wrapf(err, "%s", status)
+			return nil, errors.Wrap(err, status)
 		}
 
-		result.StatusCode[statusCode] = resp
+		result[status] = resp
 	}
 
 	return result, nil
@@ -55,7 +43,9 @@ func (p *parser) parseResponse(resp *ogen.Response) (*oas.Response, error) {
 		return resp, nil
 	}
 
-	response := createAstResponse()
+	response := &oas.Response{
+		Contents: make(map[string]*oas.Schema, len(resp.Content)),
+	}
 	for contentType, media := range resp.Content {
 		if reflect.DeepEqual(media.Schema, ogen.Schema{}) {
 			switch contentType {
@@ -75,4 +65,23 @@ func (p *parser) parseResponse(resp *ogen.Response) (*oas.Response, error) {
 	}
 
 	return response, nil
+}
+
+func validateStatusCode(v string) error {
+	switch v {
+	case "default", "1XX", "2XX", "3XX", "4XX", "5XX":
+		return nil
+
+	default:
+		code, err := strconv.Atoi(v)
+		if err != nil {
+			return errors.Wrap(err, "parse status code")
+		}
+
+		if http.StatusText(code) == "" {
+			return errors.Errorf("unknown status code: %d", code)
+		}
+
+		return nil
+	}
 }

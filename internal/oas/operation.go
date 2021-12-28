@@ -7,7 +7,15 @@ type Operation struct {
 	Path        Path
 	Parameters  []*Parameter
 	RequestBody *RequestBody // optional
-	Responses   *OperationResponse
+
+	// Operation responses.
+	// Map is always non-nil.
+	//
+	// Key can be:
+	//  * HTTP Status code
+	//  * default
+	//  * 1XX, 2XX, 3XX, 4XX, 5XX
+	Responses map[string]*Response
 }
 
 type Path []PathPart
@@ -33,12 +41,6 @@ type PathPart struct {
 type RequestBody struct {
 	Contents map[string]*Schema
 	Required bool
-}
-
-// OperationResponse of an OpenAPI Operation.
-type OperationResponse struct {
-	StatusCode map[int]*Response
-	Default    *Response
 }
 
 // Response is an OpenAPI Response definition.

@@ -19,14 +19,16 @@ func (p *parser) parseRequestBody(body *ogen.RequestBody) (*oas.RequestBody, err
 		return reqBody, nil
 	}
 
-	reqBody := createAstRBody()
-	reqBody.Required = body.Required
+	result := &oas.RequestBody{
+		Contents: make(map[string]*oas.Schema, len(body.Content)),
+		Required: body.Required,
+	}
 
 	for contentType, media := range body.Content {
 		if reflect.DeepEqual(media.Schema, ogen.Schema{}) {
 			switch contentType {
 			case "application/octet-stream":
-				reqBody.Contents[contentType] = nil
+				result.Contents[contentType] = nil
 				continue
 			default:
 			}
@@ -37,8 +39,8 @@ func (p *parser) parseRequestBody(body *ogen.RequestBody) (*oas.RequestBody, err
 			return nil, errors.Wrapf(err, "content: %s: parse schema", contentType)
 		}
 
-		reqBody.Contents[contentType] = schema
+		result.Contents[contentType] = schema
 	}
 
-	return reqBody, nil
+	return result, nil
 }

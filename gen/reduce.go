@@ -20,16 +20,16 @@ func (g *Generator) reduceDefault(ops []*oas.Operation) error {
 
 	// Compare first default response to others.
 	first := ops[0]
-	if first.Responses == nil || first.Responses.Default == nil {
+	if first.Responses == nil || first.Responses["default"] == nil {
 		return nil
 	}
-	d := first.Responses.Default
+	d := first.Responses["default"]
 	if d.Ref == "" {
 		// Not supported.
 		return nil
 	}
 	for _, spec := range ops[1:] {
-		if !reflect.DeepEqual(spec.Responses.Default, d) {
+		if !reflect.DeepEqual(spec.Responses["default"], d) {
 			return nil
 		}
 	}
@@ -196,7 +196,6 @@ func cloneResponse(r *ir.Response) *ir.Response {
 		Type:       r.Type,
 		StatusCode: map[int]*ir.StatusResponse{},
 		Default:    r.Default,
-		Spec:       r.Spec,
 	}
 	for code, statResp := range r.StatusCode {
 		newStatResp := &ir.StatusResponse{
