@@ -7331,7 +7331,7 @@ func (s AppsUpdateWebhookConfigForAppReq) Encode(e *jx.Encoder) {
 		e.FieldStart("secret")
 		s.Secret.Encode(e)
 	}
-	if s.InsecureSsl != nil {
+	if s.InsecureSsl.Set {
 		e.FieldStart("insecure_ssl")
 		s.InsecureSsl.Encode(e)
 	}
@@ -7361,12 +7361,10 @@ func (s *AppsUpdateWebhookConfigForAppReq) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "insecure_ssl":
-			s.InsecureSsl = nil
-			var elem WebhookConfigInsecureSsl
-			if err := elem.Decode(d); err != nil {
+			s.InsecureSsl.Reset()
+			if err := s.InsecureSsl.Decode(d); err != nil {
 				return err
 			}
-			s.InsecureSsl = &elem
 		default:
 			return d.Skip()
 		}
@@ -18848,7 +18846,7 @@ func (s EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItem) Encod
 		e.FieldStart("path")
 		s.Path.Encode(e)
 	}
-	if s.Value != nil {
+	if s.Value.Set {
 		e.FieldStart("value")
 		s.Value.Encode(e)
 	}
@@ -18872,12 +18870,10 @@ func (s *EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItem) Deco
 				return err
 			}
 		case "value":
-			s.Value = nil
-			var elem EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue
-			if err := elem.Decode(d); err != nil {
+			s.Value.Reset()
+			if err := s.Value.Decode(d); err != nil {
 				return err
 			}
-			s.Value = &elem
 		default:
 			return d.Skip()
 		}
@@ -22503,7 +22499,7 @@ func (s GistsCreateReq) Encode(e *jx.Encoder) {
 
 	e.FieldStart("files")
 	s.Files.Encode(e)
-	if s.Public != nil {
+	if s.Public.Set {
 		e.FieldStart("public")
 		s.Public.Encode(e)
 	}
@@ -22527,12 +22523,10 @@ func (s *GistsCreateReq) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "public":
-			s.Public = nil
-			var elem GistsCreateReqPublic
-			if err := elem.Decode(d); err != nil {
+			s.Public.Reset()
+			if err := s.Public.Decode(d); err != nil {
 				return err
 			}
-			s.Public = &elem
 		default:
 			return d.Skip()
 		}
@@ -25690,7 +25684,7 @@ func (s HookConfig) Encode(e *jx.Encoder) {
 		e.FieldStart("url")
 		s.URL.Encode(e)
 	}
-	if s.InsecureSsl != nil {
+	if s.InsecureSsl.Set {
 		e.FieldStart("insecure_ssl")
 		s.InsecureSsl.Encode(e)
 	}
@@ -25746,12 +25740,10 @@ func (s *HookConfig) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "insecure_ssl":
-			s.InsecureSsl = nil
-			var elem WebhookConfigInsecureSsl
-			if err := elem.Decode(d); err != nil {
+			s.InsecureSsl.Reset()
+			if err := s.InsecureSsl.Decode(d); err != nil {
 				return err
 			}
-			s.InsecureSsl = &elem
 		case "content_type":
 			s.ContentType.Reset()
 			if err := s.ContentType.Decode(d); err != nil {
@@ -44365,6 +44357,24 @@ func (o *OptEnterpriseAdminGetAuditLogOrder) Decode(d *jx.Decoder) error {
 	}
 }
 
+// Encode encodes EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue as json.
+func (o OptEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue) Encode(e *jx.Encoder) {
+}
+
+// Decode decodes EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue from json.
+func (o *OptEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue`, d.Next())
+	}
+}
+
 // Encode encodes EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq as json.
 func (o OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq) Encode(e *jx.Encoder) {
 	o.Value.Encode(e)
@@ -44700,6 +44710,24 @@ func (o *OptGistHistoryChangeStatus) Decode(d *jx.Decoder) error {
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptGistHistoryChangeStatus`, d.Next())
+	}
+}
+
+// Encode encodes GistsCreateReqPublic as json.
+func (o OptGistsCreateReqPublic) Encode(e *jx.Encoder) {
+}
+
+// Decode decodes GistsCreateReqPublic from json.
+func (o *OptGistsCreateReqPublic) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptGistsCreateReqPublic to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptGistsCreateReqPublic`, d.Next())
 	}
 }
 
@@ -45176,24 +45204,6 @@ func (o *OptIssuesCreateMilestoneReqState) Decode(d *jx.Decoder) error {
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptIssuesCreateMilestoneReqState`, d.Next())
-	}
-}
-
-// Encode encodes *IssuesCreateReqMilestone as json.
-func (o OptIssuesCreateReqMilestone) Encode(e *jx.Encoder) {
-}
-
-// Decode decodes *IssuesCreateReqMilestone from json.
-func (o *OptIssuesCreateReqMilestone) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New(`invalid: unable to decode OptIssuesCreateReqMilestone to nil`)
-	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		return nil
-	default:
-		return errors.Errorf(`unexpected type %q while reading OptIssuesCreateReqMilestone`, d.Next())
 	}
 }
 
@@ -45835,24 +45845,6 @@ func (o *OptIssuesUpdateReq) Decode(d *jx.Decoder) error {
 	}
 }
 
-// Encode encodes *IssuesUpdateReqMilestone as json.
-func (o OptIssuesUpdateReqMilestone) Encode(e *jx.Encoder) {
-}
-
-// Decode decodes *IssuesUpdateReqMilestone from json.
-func (o *OptIssuesUpdateReqMilestone) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New(`invalid: unable to decode OptIssuesUpdateReqMilestone to nil`)
-	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		return nil
-	default:
-		return errors.Errorf(`unexpected type %q while reading OptIssuesUpdateReqMilestone`, d.Next())
-	}
-}
-
 // Encode encodes IssuesUpdateReqState as json.
 func (o OptIssuesUpdateReqState) Encode(e *jx.Encoder) {
 	e.Str(string(o.Value))
@@ -45874,24 +45866,6 @@ func (o *OptIssuesUpdateReqState) Decode(d *jx.Decoder) error {
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptIssuesUpdateReqState`, d.Next())
-	}
-}
-
-// Encode encodes *IssuesUpdateReqTitle as json.
-func (o OptIssuesUpdateReqTitle) Encode(e *jx.Encoder) {
-}
-
-// Decode decodes *IssuesUpdateReqTitle from json.
-func (o *OptIssuesUpdateReqTitle) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New(`invalid: unable to decode OptIssuesUpdateReqTitle to nil`)
-	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		return nil
-	default:
-		return errors.Errorf(`unexpected type %q while reading OptIssuesUpdateReqTitle`, d.Next())
 	}
 }
 
@@ -46560,6 +46534,102 @@ func (o *OptNilInt) Decode(d *jx.Decoder) error {
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptNilInt`, d.Next())
+	}
+}
+
+// Encode encodes IssuesCreateReqMilestone as json.
+func (o OptNilIssuesCreateReqMilestone) Encode(e *jx.Encoder) {
+	if o.Null {
+		e.Null()
+		return
+	}
+}
+
+// Decode decodes IssuesCreateReqMilestone from json.
+func (o *OptNilIssuesCreateReqMilestone) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptNilIssuesCreateReqMilestone to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		o.Null = false
+		return nil
+	case jx.Null:
+		if err := d.Null(); err != nil {
+			return err
+		}
+		var v IssuesCreateReqMilestone
+		o.Value = v
+		o.Set = true
+		o.Null = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptNilIssuesCreateReqMilestone`, d.Next())
+	}
+}
+
+// Encode encodes IssuesUpdateReqMilestone as json.
+func (o OptNilIssuesUpdateReqMilestone) Encode(e *jx.Encoder) {
+	if o.Null {
+		e.Null()
+		return
+	}
+}
+
+// Decode decodes IssuesUpdateReqMilestone from json.
+func (o *OptNilIssuesUpdateReqMilestone) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptNilIssuesUpdateReqMilestone to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		o.Null = false
+		return nil
+	case jx.Null:
+		if err := d.Null(); err != nil {
+			return err
+		}
+		var v IssuesUpdateReqMilestone
+		o.Value = v
+		o.Set = true
+		o.Null = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptNilIssuesUpdateReqMilestone`, d.Next())
+	}
+}
+
+// Encode encodes IssuesUpdateReqTitle as json.
+func (o OptNilIssuesUpdateReqTitle) Encode(e *jx.Encoder) {
+	if o.Null {
+		e.Null()
+		return
+	}
+}
+
+// Decode decodes IssuesUpdateReqTitle from json.
+func (o *OptNilIssuesUpdateReqTitle) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptNilIssuesUpdateReqTitle to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		o.Null = false
+		return nil
+	case jx.Null:
+		if err := d.Null(); err != nil {
+			return err
+		}
+		var v IssuesUpdateReqTitle
+		o.Value = v
+		o.Set = true
+		o.Null = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptNilIssuesUpdateReqTitle`, d.Next())
 	}
 }
 
@@ -49707,6 +49777,24 @@ func (o *OptReposAddUserAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 	}
 }
 
+// Encode encodes ReposCreateDeploymentReqPayload as json.
+func (o OptReposCreateDeploymentReqPayload) Encode(e *jx.Encoder) {
+}
+
+// Decode decodes ReposCreateDeploymentReqPayload from json.
+func (o *OptReposCreateDeploymentReqPayload) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptReposCreateDeploymentReqPayload to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptReposCreateDeploymentReqPayload`, d.Next())
+	}
+}
+
 // Encode encodes ReposCreateDeploymentStatusReqEnvironment as json.
 func (o OptReposCreateDeploymentStatusReqEnvironment) Encode(e *jx.Encoder) {
 	e.Str(string(o.Value))
@@ -51012,6 +51100,24 @@ func (o *OptScimGroupListEnterpriseResourcesItemMeta) Decode(d *jx.Decoder) erro
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptScimGroupListEnterpriseResourcesItemMeta`, d.Next())
+	}
+}
+
+// Encode encodes ScimUpdateAttributeForUserReqOperationsItemValue as json.
+func (o OptScimUpdateAttributeForUserReqOperationsItemValue) Encode(e *jx.Encoder) {
+}
+
+// Decode decodes ScimUpdateAttributeForUserReqOperationsItemValue from json.
+func (o *OptScimUpdateAttributeForUserReqOperationsItemValue) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptScimUpdateAttributeForUserReqOperationsItemValue to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptScimUpdateAttributeForUserReqOperationsItemValue`, d.Next())
 	}
 }
 
@@ -52421,6 +52527,24 @@ func (o *OptUsersUpdateAuthenticatedReq) Decode(d *jx.Decoder) error {
 	}
 }
 
+// Encode encodes ValidationErrorErrorsItemValue as json.
+func (o OptValidationErrorErrorsItemValue) Encode(e *jx.Encoder) {
+}
+
+// Decode decodes ValidationErrorErrorsItemValue from json.
+func (o *OptValidationErrorErrorsItemValue) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptValidationErrorErrorsItemValue to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptValidationErrorErrorsItemValue`, d.Next())
+	}
+}
+
 // Encode encodes Verification as json.
 func (o OptVerification) Encode(e *jx.Encoder) {
 	o.Value.Encode(e)
@@ -52476,6 +52600,24 @@ func (o *OptWebhookConfigContentType) Decode(d *jx.Decoder) error {
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptWebhookConfigContentType`, d.Next())
+	}
+}
+
+// Encode encodes WebhookConfigInsecureSsl as json.
+func (o OptWebhookConfigInsecureSsl) Encode(e *jx.Encoder) {
+}
+
+// Decode decodes WebhookConfigInsecureSsl from json.
+func (o *OptWebhookConfigInsecureSsl) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptWebhookConfigInsecureSsl to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptWebhookConfigInsecureSsl`, d.Next())
 	}
 }
 
@@ -54239,7 +54381,7 @@ func (s OrgsCreateWebhookReqConfig) Encode(e *jx.Encoder) {
 		e.FieldStart("secret")
 		s.Secret.Encode(e)
 	}
-	if s.InsecureSsl != nil {
+	if s.InsecureSsl.Set {
 		e.FieldStart("insecure_ssl")
 		s.InsecureSsl.Encode(e)
 	}
@@ -54282,12 +54424,10 @@ func (s *OrgsCreateWebhookReqConfig) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "insecure_ssl":
-			s.InsecureSsl = nil
-			var elem WebhookConfigInsecureSsl
-			if err := elem.Decode(d); err != nil {
+			s.InsecureSsl.Reset()
+			if err := s.InsecureSsl.Decode(d); err != nil {
 				return err
 			}
-			s.InsecureSsl = &elem
 		case "username":
 			s.Username.Reset()
 			if err := s.Username.Decode(d); err != nil {
@@ -55633,7 +55773,7 @@ func (s OrgsUpdateWebhookConfigForOrgReq) Encode(e *jx.Encoder) {
 		e.FieldStart("secret")
 		s.Secret.Encode(e)
 	}
-	if s.InsecureSsl != nil {
+	if s.InsecureSsl.Set {
 		e.FieldStart("insecure_ssl")
 		s.InsecureSsl.Encode(e)
 	}
@@ -55663,12 +55803,10 @@ func (s *OrgsUpdateWebhookConfigForOrgReq) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "insecure_ssl":
-			s.InsecureSsl = nil
-			var elem WebhookConfigInsecureSsl
-			if err := elem.Decode(d); err != nil {
+			s.InsecureSsl.Reset()
+			if err := s.InsecureSsl.Decode(d); err != nil {
 				return err
 			}
-			s.InsecureSsl = &elem
 		default:
 			return d.Skip()
 		}
@@ -55759,7 +55897,7 @@ func (s OrgsUpdateWebhookReqConfig) Encode(e *jx.Encoder) {
 		e.FieldStart("secret")
 		s.Secret.Encode(e)
 	}
-	if s.InsecureSsl != nil {
+	if s.InsecureSsl.Set {
 		e.FieldStart("insecure_ssl")
 		s.InsecureSsl.Encode(e)
 	}
@@ -55794,12 +55932,10 @@ func (s *OrgsUpdateWebhookReqConfig) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "insecure_ssl":
-			s.InsecureSsl = nil
-			var elem WebhookConfigInsecureSsl
-			if err := elem.Decode(d); err != nil {
+			s.InsecureSsl.Reset()
+			if err := s.InsecureSsl.Decode(d); err != nil {
 				return err
 			}
-			s.InsecureSsl = &elem
 		default:
 			return d.Skip()
 		}
@@ -74443,7 +74579,7 @@ func (s ReposCreateDeploymentReq) Encode(e *jx.Encoder) {
 		}
 		e.ArrEnd()
 	}
-	if s.Payload != nil {
+	if s.Payload.Set {
 		e.FieldStart("payload")
 		s.Payload.Encode(e)
 	}
@@ -74504,12 +74640,10 @@ func (s *ReposCreateDeploymentReq) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "payload":
-			s.Payload = nil
-			var elem ReposCreateDeploymentReqPayload
-			if err := elem.Decode(d); err != nil {
+			s.Payload.Reset()
+			if err := s.Payload.Decode(d); err != nil {
 				return err
 			}
-			s.Payload = &elem
 		case "environment":
 			s.Environment.Reset()
 			if err := s.Environment.Decode(d); err != nil {
@@ -76080,7 +76214,7 @@ func (s ReposCreateWebhookReqConfig) Encode(e *jx.Encoder) {
 		e.FieldStart("secret")
 		s.Secret.Encode(e)
 	}
-	if s.InsecureSsl != nil {
+	if s.InsecureSsl.Set {
 		e.FieldStart("insecure_ssl")
 		s.InsecureSsl.Encode(e)
 	}
@@ -76118,12 +76252,10 @@ func (s *ReposCreateWebhookReqConfig) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "insecure_ssl":
-			s.InsecureSsl = nil
-			var elem WebhookConfigInsecureSsl
-			if err := elem.Decode(d); err != nil {
+			s.InsecureSsl.Reset()
+			if err := s.InsecureSsl.Decode(d); err != nil {
 				return err
 			}
-			s.InsecureSsl = &elem
 		case "token":
 			s.Token.Reset()
 			if err := s.Token.Decode(d); err != nil {
@@ -81193,7 +81325,7 @@ func (s ReposUpdateWebhookConfigForRepoReq) Encode(e *jx.Encoder) {
 		e.FieldStart("secret")
 		s.Secret.Encode(e)
 	}
-	if s.InsecureSsl != nil {
+	if s.InsecureSsl.Set {
 		e.FieldStart("insecure_ssl")
 		s.InsecureSsl.Encode(e)
 	}
@@ -81223,12 +81355,10 @@ func (s *ReposUpdateWebhookConfigForRepoReq) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "insecure_ssl":
-			s.InsecureSsl = nil
-			var elem WebhookConfigInsecureSsl
-			if err := elem.Decode(d); err != nil {
+			s.InsecureSsl.Reset()
+			if err := s.InsecureSsl.Decode(d); err != nil {
 				return err
 			}
-			s.InsecureSsl = &elem
 		default:
 			return d.Skip()
 		}
@@ -81354,7 +81484,7 @@ func (s ReposUpdateWebhookReqConfig) Encode(e *jx.Encoder) {
 		e.FieldStart("secret")
 		s.Secret.Encode(e)
 	}
-	if s.InsecureSsl != nil {
+	if s.InsecureSsl.Set {
 		e.FieldStart("insecure_ssl")
 		s.InsecureSsl.Encode(e)
 	}
@@ -81397,12 +81527,10 @@ func (s *ReposUpdateWebhookReqConfig) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "insecure_ssl":
-			s.InsecureSsl = nil
-			var elem WebhookConfigInsecureSsl
-			if err := elem.Decode(d); err != nil {
+			s.InsecureSsl.Reset()
+			if err := s.InsecureSsl.Decode(d); err != nil {
 				return err
 			}
-			s.InsecureSsl = &elem
 		case "address":
 			s.Address.Reset()
 			if err := s.Address.Decode(d); err != nil {
@@ -85751,7 +85879,7 @@ func (s ScimUpdateAttributeForUserReqOperationsItem) Encode(e *jx.Encoder) {
 		e.FieldStart("path")
 		s.Path.Encode(e)
 	}
-	if s.Value != nil {
+	if s.Value.Set {
 		e.FieldStart("value")
 		s.Value.Encode(e)
 	}
@@ -85775,12 +85903,10 @@ func (s *ScimUpdateAttributeForUserReqOperationsItem) Decode(d *jx.Decoder) erro
 				return err
 			}
 		case "value":
-			s.Value = nil
-			var elem ScimUpdateAttributeForUserReqOperationsItemValue
-			if err := elem.Decode(d); err != nil {
+			s.Value.Reset()
+			if err := s.Value.Decode(d); err != nil {
 				return err
 			}
-			s.Value = &elem
 		default:
 			return d.Skip()
 		}
@@ -97213,7 +97339,7 @@ func (s ValidationErrorErrorsItem) Encode(e *jx.Encoder) {
 		e.FieldStart("index")
 		s.Index.Encode(e)
 	}
-	if s.Value != nil {
+	if s.Value.Set {
 		e.FieldStart("value")
 		s.Value.Encode(e)
 	}
@@ -97254,12 +97380,10 @@ func (s *ValidationErrorErrorsItem) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "value":
-			s.Value = nil
-			var elem ValidationErrorErrorsItemValue
-			if err := elem.Decode(d); err != nil {
+			s.Value.Reset()
+			if err := s.Value.Decode(d); err != nil {
 				return err
 			}
-			s.Value = &elem
 		default:
 			return d.Skip()
 		}
@@ -97535,7 +97659,7 @@ func (s WebhookConfig) Encode(e *jx.Encoder) {
 		e.FieldStart("secret")
 		s.Secret.Encode(e)
 	}
-	if s.InsecureSsl != nil {
+	if s.InsecureSsl.Set {
 		e.FieldStart("insecure_ssl")
 		s.InsecureSsl.Encode(e)
 	}
@@ -97565,12 +97689,10 @@ func (s *WebhookConfig) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "insecure_ssl":
-			s.InsecureSsl = nil
-			var elem WebhookConfigInsecureSsl
-			if err := elem.Decode(d); err != nil {
+			s.InsecureSsl.Reset()
+			if err := s.InsecureSsl.Decode(d); err != nil {
 				return err
 			}
-			s.InsecureSsl = &elem
 		default:
 			return d.Skip()
 		}

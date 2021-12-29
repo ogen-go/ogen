@@ -1581,7 +1581,7 @@ func (s CopyMessage) Encode(e *jx.Encoder) {
 		e.FieldStart("allow_sending_without_reply")
 		s.AllowSendingWithoutReply.Encode(e)
 	}
-	if s.ReplyMarkup != nil {
+	if s.ReplyMarkup.Set {
 		e.FieldStart("reply_markup")
 		s.ReplyMarkup.Encode(e)
 	}
@@ -1647,12 +1647,10 @@ func (s *CopyMessage) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "reply_markup":
-			s.ReplyMarkup = nil
-			var elem CopyMessageReplyMarkup
-			if err := elem.Decode(d); err != nil {
+			s.ReplyMarkup.Reset()
+			if err := s.ReplyMarkup.Decode(d); err != nil {
 				return err
 			}
-			s.ReplyMarkup = &elem
 		default:
 			return d.Skip()
 		}
@@ -2030,7 +2028,7 @@ func (s *DeleteMessage) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s DeleteMyCommands) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	if s.Scope != nil {
+	if s.Scope.Set {
 		e.FieldStart("scope")
 		s.Scope.Encode(e)
 	}
@@ -2049,12 +2047,10 @@ func (s *DeleteMyCommands) Decode(d *jx.Decoder) error {
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "scope":
-			s.Scope = nil
-			var elem BotCommandScope
-			if err := elem.Decode(d); err != nil {
+			s.Scope.Reset()
+			if err := s.Scope.Decode(d); err != nil {
 				return err
 			}
-			s.Scope = &elem
 		case "language_code":
 			s.LanguageCode.Reset()
 			if err := s.LanguageCode.Decode(d); err != nil {
@@ -2312,7 +2308,7 @@ func (s *EditChatInviteLink) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s EditMessageCaption) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	if s.ChatID != nil {
+	if s.ChatID.Set {
 		e.FieldStart("chat_id")
 		s.ChatID.Encode(e)
 	}
@@ -2355,12 +2351,10 @@ func (s *EditMessageCaption) Decode(d *jx.Decoder) error {
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "chat_id":
-			s.ChatID = nil
-			var elem ID
-			if err := elem.Decode(d); err != nil {
+			s.ChatID.Reset()
+			if err := s.ChatID.Decode(d); err != nil {
 				return err
 			}
-			s.ChatID = &elem
 		case "message_id":
 			s.MessageID.Reset()
 			if err := s.MessageID.Decode(d); err != nil {
@@ -2408,7 +2402,7 @@ func (s *EditMessageCaption) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s EditMessageLiveLocation) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	if s.ChatID != nil {
+	if s.ChatID.Set {
 		e.FieldStart("chat_id")
 		s.ChatID.Encode(e)
 	}
@@ -2453,12 +2447,10 @@ func (s *EditMessageLiveLocation) Decode(d *jx.Decoder) error {
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "chat_id":
-			s.ChatID = nil
-			var elem ID
-			if err := elem.Decode(d); err != nil {
+			s.ChatID.Reset()
+			if err := s.ChatID.Decode(d); err != nil {
 				return err
 			}
-			s.ChatID = &elem
 		case "message_id":
 			s.MessageID.Reset()
 			if err := s.MessageID.Decode(d); err != nil {
@@ -2511,7 +2503,7 @@ func (s *EditMessageLiveLocation) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s EditMessageMedia) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	if s.ChatID != nil {
+	if s.ChatID.Set {
 		e.FieldStart("chat_id")
 		s.ChatID.Encode(e)
 	}
@@ -2541,12 +2533,10 @@ func (s *EditMessageMedia) Decode(d *jx.Decoder) error {
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "chat_id":
-			s.ChatID = nil
-			var elem ID
-			if err := elem.Decode(d); err != nil {
+			s.ChatID.Reset()
+			if err := s.ChatID.Decode(d); err != nil {
 				return err
 			}
-			s.ChatID = &elem
 		case "message_id":
 			s.MessageID.Reset()
 			if err := s.MessageID.Decode(d); err != nil {
@@ -2576,7 +2566,7 @@ func (s *EditMessageMedia) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s EditMessageReplyMarkup) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	if s.ChatID != nil {
+	if s.ChatID.Set {
 		e.FieldStart("chat_id")
 		s.ChatID.Encode(e)
 	}
@@ -2603,12 +2593,10 @@ func (s *EditMessageReplyMarkup) Decode(d *jx.Decoder) error {
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "chat_id":
-			s.ChatID = nil
-			var elem ID
-			if err := elem.Decode(d); err != nil {
+			s.ChatID.Reset()
+			if err := s.ChatID.Decode(d); err != nil {
 				return err
 			}
-			s.ChatID = &elem
 		case "message_id":
 			s.MessageID.Reset()
 			if err := s.MessageID.Decode(d); err != nil {
@@ -2634,7 +2622,7 @@ func (s *EditMessageReplyMarkup) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s EditMessageText) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	if s.ChatID != nil {
+	if s.ChatID.Set {
 		e.FieldStart("chat_id")
 		s.ChatID.Encode(e)
 	}
@@ -2680,12 +2668,10 @@ func (s *EditMessageText) Decode(d *jx.Decoder) error {
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "chat_id":
-			s.ChatID = nil
-			var elem ID
-			if err := elem.Decode(d); err != nil {
+			s.ChatID.Reset()
+			if err := s.ChatID.Decode(d); err != nil {
 				return err
 			}
-			s.ChatID = &elem
 		case "message_id":
 			s.MessageID.Reset()
 			if err := s.MessageID.Decode(d); err != nil {
@@ -3417,7 +3403,7 @@ func (s *GetGameHighScores) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GetMyCommands) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	if s.Scope != nil {
+	if s.Scope.Set {
 		e.FieldStart("scope")
 		s.Scope.Encode(e)
 	}
@@ -3436,12 +3422,10 @@ func (s *GetMyCommands) Decode(d *jx.Decoder) error {
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "scope":
-			s.Scope = nil
-			var elem BotCommandScope
-			if err := elem.Decode(d); err != nil {
+			s.Scope.Reset()
+			if err := s.Scope.Decode(d); err != nil {
 				return err
 			}
-			s.Scope = &elem
 		case "language_code":
 			s.LanguageCode.Reset()
 			if err := s.LanguageCode.Decode(d); err != nil {
@@ -5570,6 +5554,24 @@ func (o *OptBool) Decode(d *jx.Decoder) error {
 	}
 }
 
+// Encode encodes BotCommandScope as json.
+func (o OptBotCommandScope) Encode(e *jx.Encoder) {
+}
+
+// Decode decodes BotCommandScope from json.
+func (o *OptBotCommandScope) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptBotCommandScope to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptBotCommandScope`, d.Next())
+	}
+}
+
 // Encode encodes Chat as json.
 func (o OptChat) Encode(e *jx.Encoder) {
 	o.Value.Encode(e)
@@ -5680,6 +5682,24 @@ func (o *OptContact) Decode(d *jx.Decoder) error {
 	}
 }
 
+// Encode encodes CopyMessageReplyMarkup as json.
+func (o OptCopyMessageReplyMarkup) Encode(e *jx.Encoder) {
+}
+
+// Decode decodes CopyMessageReplyMarkup from json.
+func (o *OptCopyMessageReplyMarkup) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptCopyMessageReplyMarkup to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptCopyMessageReplyMarkup`, d.Next())
+	}
+}
+
 // Encode encodes Dice as json.
 func (o OptDice) Encode(e *jx.Encoder) {
 	o.Value.Encode(e)
@@ -5767,6 +5787,24 @@ func (o *OptGame) Decode(d *jx.Decoder) error {
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptGame`, d.Next())
+	}
+}
+
+// Encode encodes ID as json.
+func (o OptID) Encode(e *jx.Encoder) {
+}
+
+// Decode decodes ID from json.
+func (o *OptID) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptID to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptID`, d.Next())
 	}
 }
 
@@ -6145,6 +6183,258 @@ func (o *OptResponse) Decode(d *jx.Decoder) error {
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptResponse`, d.Next())
+	}
+}
+
+// Encode encodes SendAnimationReplyMarkup as json.
+func (o OptSendAnimationReplyMarkup) Encode(e *jx.Encoder) {
+}
+
+// Decode decodes SendAnimationReplyMarkup from json.
+func (o *OptSendAnimationReplyMarkup) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptSendAnimationReplyMarkup to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptSendAnimationReplyMarkup`, d.Next())
+	}
+}
+
+// Encode encodes SendAudioReplyMarkup as json.
+func (o OptSendAudioReplyMarkup) Encode(e *jx.Encoder) {
+}
+
+// Decode decodes SendAudioReplyMarkup from json.
+func (o *OptSendAudioReplyMarkup) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptSendAudioReplyMarkup to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptSendAudioReplyMarkup`, d.Next())
+	}
+}
+
+// Encode encodes SendContactReplyMarkup as json.
+func (o OptSendContactReplyMarkup) Encode(e *jx.Encoder) {
+}
+
+// Decode decodes SendContactReplyMarkup from json.
+func (o *OptSendContactReplyMarkup) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptSendContactReplyMarkup to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptSendContactReplyMarkup`, d.Next())
+	}
+}
+
+// Encode encodes SendDiceReplyMarkup as json.
+func (o OptSendDiceReplyMarkup) Encode(e *jx.Encoder) {
+}
+
+// Decode decodes SendDiceReplyMarkup from json.
+func (o *OptSendDiceReplyMarkup) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptSendDiceReplyMarkup to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptSendDiceReplyMarkup`, d.Next())
+	}
+}
+
+// Encode encodes SendDocumentReplyMarkup as json.
+func (o OptSendDocumentReplyMarkup) Encode(e *jx.Encoder) {
+}
+
+// Decode decodes SendDocumentReplyMarkup from json.
+func (o *OptSendDocumentReplyMarkup) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptSendDocumentReplyMarkup to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptSendDocumentReplyMarkup`, d.Next())
+	}
+}
+
+// Encode encodes SendLocationReplyMarkup as json.
+func (o OptSendLocationReplyMarkup) Encode(e *jx.Encoder) {
+}
+
+// Decode decodes SendLocationReplyMarkup from json.
+func (o *OptSendLocationReplyMarkup) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptSendLocationReplyMarkup to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptSendLocationReplyMarkup`, d.Next())
+	}
+}
+
+// Encode encodes SendMessageReplyMarkup as json.
+func (o OptSendMessageReplyMarkup) Encode(e *jx.Encoder) {
+}
+
+// Decode decodes SendMessageReplyMarkup from json.
+func (o *OptSendMessageReplyMarkup) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptSendMessageReplyMarkup to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptSendMessageReplyMarkup`, d.Next())
+	}
+}
+
+// Encode encodes SendPhotoReplyMarkup as json.
+func (o OptSendPhotoReplyMarkup) Encode(e *jx.Encoder) {
+}
+
+// Decode decodes SendPhotoReplyMarkup from json.
+func (o *OptSendPhotoReplyMarkup) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptSendPhotoReplyMarkup to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptSendPhotoReplyMarkup`, d.Next())
+	}
+}
+
+// Encode encodes SendPollReplyMarkup as json.
+func (o OptSendPollReplyMarkup) Encode(e *jx.Encoder) {
+}
+
+// Decode decodes SendPollReplyMarkup from json.
+func (o *OptSendPollReplyMarkup) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptSendPollReplyMarkup to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptSendPollReplyMarkup`, d.Next())
+	}
+}
+
+// Encode encodes SendStickerReplyMarkup as json.
+func (o OptSendStickerReplyMarkup) Encode(e *jx.Encoder) {
+}
+
+// Decode decodes SendStickerReplyMarkup from json.
+func (o *OptSendStickerReplyMarkup) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptSendStickerReplyMarkup to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptSendStickerReplyMarkup`, d.Next())
+	}
+}
+
+// Encode encodes SendVenueReplyMarkup as json.
+func (o OptSendVenueReplyMarkup) Encode(e *jx.Encoder) {
+}
+
+// Decode decodes SendVenueReplyMarkup from json.
+func (o *OptSendVenueReplyMarkup) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptSendVenueReplyMarkup to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptSendVenueReplyMarkup`, d.Next())
+	}
+}
+
+// Encode encodes SendVideoNoteReplyMarkup as json.
+func (o OptSendVideoNoteReplyMarkup) Encode(e *jx.Encoder) {
+}
+
+// Decode decodes SendVideoNoteReplyMarkup from json.
+func (o *OptSendVideoNoteReplyMarkup) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptSendVideoNoteReplyMarkup to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptSendVideoNoteReplyMarkup`, d.Next())
+	}
+}
+
+// Encode encodes SendVideoReplyMarkup as json.
+func (o OptSendVideoReplyMarkup) Encode(e *jx.Encoder) {
+}
+
+// Decode decodes SendVideoReplyMarkup from json.
+func (o *OptSendVideoReplyMarkup) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptSendVideoReplyMarkup to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptSendVideoReplyMarkup`, d.Next())
+	}
+}
+
+// Encode encodes SendVoiceReplyMarkup as json.
+func (o OptSendVoiceReplyMarkup) Encode(e *jx.Encoder) {
+}
+
+// Decode decodes SendVoiceReplyMarkup from json.
+func (o *OptSendVoiceReplyMarkup) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptSendVoiceReplyMarkup to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptSendVoiceReplyMarkup`, d.Next())
 	}
 }
 
@@ -8164,7 +8454,7 @@ func (s SendAnimation) Encode(e *jx.Encoder) {
 		e.FieldStart("allow_sending_without_reply")
 		s.AllowSendingWithoutReply.Encode(e)
 	}
-	if s.ReplyMarkup != nil {
+	if s.ReplyMarkup.Set {
 		e.FieldStart("reply_markup")
 		s.ReplyMarkup.Encode(e)
 	}
@@ -8246,12 +8536,10 @@ func (s *SendAnimation) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "reply_markup":
-			s.ReplyMarkup = nil
-			var elem SendAnimationReplyMarkup
-			if err := elem.Decode(d); err != nil {
+			s.ReplyMarkup.Reset()
+			if err := s.ReplyMarkup.Decode(d); err != nil {
 				return err
 			}
-			s.ReplyMarkup = &elem
 		default:
 			return d.Skip()
 		}
@@ -8398,7 +8686,7 @@ func (s SendAudio) Encode(e *jx.Encoder) {
 		e.FieldStart("allow_sending_without_reply")
 		s.AllowSendingWithoutReply.Encode(e)
 	}
-	if s.ReplyMarkup != nil {
+	if s.ReplyMarkup.Set {
 		e.FieldStart("reply_markup")
 		s.ReplyMarkup.Encode(e)
 	}
@@ -8480,12 +8768,10 @@ func (s *SendAudio) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "reply_markup":
-			s.ReplyMarkup = nil
-			var elem SendAudioReplyMarkup
-			if err := elem.Decode(d); err != nil {
+			s.ReplyMarkup.Reset()
+			if err := s.ReplyMarkup.Decode(d); err != nil {
 				return err
 			}
-			s.ReplyMarkup = &elem
 		default:
 			return d.Skip()
 		}
@@ -8647,7 +8933,7 @@ func (s SendContact) Encode(e *jx.Encoder) {
 		e.FieldStart("allow_sending_without_reply")
 		s.AllowSendingWithoutReply.Encode(e)
 	}
-	if s.ReplyMarkup != nil {
+	if s.ReplyMarkup.Set {
 		e.FieldStart("reply_markup")
 		s.ReplyMarkup.Encode(e)
 	}
@@ -8703,12 +8989,10 @@ func (s *SendContact) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "reply_markup":
-			s.ReplyMarkup = nil
-			var elem SendContactReplyMarkup
-			if err := elem.Decode(d); err != nil {
+			s.ReplyMarkup.Reset()
+			if err := s.ReplyMarkup.Decode(d); err != nil {
 				return err
 			}
-			s.ReplyMarkup = &elem
 		default:
 			return d.Skip()
 		}
@@ -8824,7 +9108,7 @@ func (s SendDice) Encode(e *jx.Encoder) {
 		e.FieldStart("allow_sending_without_reply")
 		s.AllowSendingWithoutReply.Encode(e)
 	}
-	if s.ReplyMarkup != nil {
+	if s.ReplyMarkup.Set {
 		e.FieldStart("reply_markup")
 		s.ReplyMarkup.Encode(e)
 	}
@@ -8863,12 +9147,10 @@ func (s *SendDice) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "reply_markup":
-			s.ReplyMarkup = nil
-			var elem SendDiceReplyMarkup
-			if err := elem.Decode(d); err != nil {
+			s.ReplyMarkup.Reset()
+			if err := s.ReplyMarkup.Decode(d); err != nil {
 				return err
 			}
-			s.ReplyMarkup = &elem
 		default:
 			return d.Skip()
 		}
@@ -9007,7 +9289,7 @@ func (s SendDocument) Encode(e *jx.Encoder) {
 		e.FieldStart("allow_sending_without_reply")
 		s.AllowSendingWithoutReply.Encode(e)
 	}
-	if s.ReplyMarkup != nil {
+	if s.ReplyMarkup.Set {
 		e.FieldStart("reply_markup")
 		s.ReplyMarkup.Encode(e)
 	}
@@ -9079,12 +9361,10 @@ func (s *SendDocument) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "reply_markup":
-			s.ReplyMarkup = nil
-			var elem SendDocumentReplyMarkup
-			if err := elem.Decode(d); err != nil {
+			s.ReplyMarkup.Reset()
+			if err := s.ReplyMarkup.Decode(d); err != nil {
 				return err
 			}
-			s.ReplyMarkup = &elem
 		default:
 			return d.Skip()
 		}
@@ -9567,7 +9847,7 @@ func (s SendLocation) Encode(e *jx.Encoder) {
 		e.FieldStart("allow_sending_without_reply")
 		s.AllowSendingWithoutReply.Encode(e)
 	}
-	if s.ReplyMarkup != nil {
+	if s.ReplyMarkup.Set {
 		e.FieldStart("reply_markup")
 		s.ReplyMarkup.Encode(e)
 	}
@@ -9633,12 +9913,10 @@ func (s *SendLocation) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "reply_markup":
-			s.ReplyMarkup = nil
-			var elem SendLocationReplyMarkup
-			if err := elem.Decode(d); err != nil {
+			s.ReplyMarkup.Reset()
+			if err := s.ReplyMarkup.Decode(d); err != nil {
 				return err
 			}
-			s.ReplyMarkup = &elem
 		default:
 			return d.Skip()
 		}
@@ -9926,7 +10204,7 @@ func (s SendMessage) Encode(e *jx.Encoder) {
 		e.FieldStart("allow_sending_without_reply")
 		s.AllowSendingWithoutReply.Encode(e)
 	}
-	if s.ReplyMarkup != nil {
+	if s.ReplyMarkup.Set {
 		e.FieldStart("reply_markup")
 		s.ReplyMarkup.Encode(e)
 	}
@@ -9988,12 +10266,10 @@ func (s *SendMessage) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "reply_markup":
-			s.ReplyMarkup = nil
-			var elem SendMessageReplyMarkup
-			if err := elem.Decode(d); err != nil {
+			s.ReplyMarkup.Reset()
+			if err := s.ReplyMarkup.Decode(d); err != nil {
 				return err
 			}
-			s.ReplyMarkup = &elem
 		default:
 			return d.Skip()
 		}
@@ -10124,7 +10400,7 @@ func (s SendPhoto) Encode(e *jx.Encoder) {
 		e.FieldStart("allow_sending_without_reply")
 		s.AllowSendingWithoutReply.Encode(e)
 	}
-	if s.ReplyMarkup != nil {
+	if s.ReplyMarkup.Set {
 		e.FieldStart("reply_markup")
 		s.ReplyMarkup.Encode(e)
 	}
@@ -10186,12 +10462,10 @@ func (s *SendPhoto) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "reply_markup":
-			s.ReplyMarkup = nil
-			var elem SendPhotoReplyMarkup
-			if err := elem.Decode(d); err != nil {
+			s.ReplyMarkup.Reset()
+			if err := s.ReplyMarkup.Decode(d); err != nil {
 				return err
 			}
-			s.ReplyMarkup = &elem
 		default:
 			return d.Skip()
 		}
@@ -10357,7 +10631,7 @@ func (s SendPoll) Encode(e *jx.Encoder) {
 		e.FieldStart("allow_sending_without_reply")
 		s.AllowSendingWithoutReply.Encode(e)
 	}
-	if s.ReplyMarkup != nil {
+	if s.ReplyMarkup.Set {
 		e.FieldStart("reply_markup")
 		s.ReplyMarkup.Encode(e)
 	}
@@ -10468,12 +10742,10 @@ func (s *SendPoll) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "reply_markup":
-			s.ReplyMarkup = nil
-			var elem SendPollReplyMarkup
-			if err := elem.Decode(d); err != nil {
+			s.ReplyMarkup.Reset()
+			if err := s.ReplyMarkup.Decode(d); err != nil {
 				return err
 			}
-			s.ReplyMarkup = &elem
 		default:
 			return d.Skip()
 		}
@@ -10588,7 +10860,7 @@ func (s SendSticker) Encode(e *jx.Encoder) {
 		e.FieldStart("allow_sending_without_reply")
 		s.AllowSendingWithoutReply.Encode(e)
 	}
-	if s.ReplyMarkup != nil {
+	if s.ReplyMarkup.Set {
 		e.FieldStart("reply_markup")
 		s.ReplyMarkup.Encode(e)
 	}
@@ -10628,12 +10900,10 @@ func (s *SendSticker) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "reply_markup":
-			s.ReplyMarkup = nil
-			var elem SendStickerReplyMarkup
-			if err := elem.Decode(d); err != nil {
+			s.ReplyMarkup.Reset()
+			if err := s.ReplyMarkup.Decode(d); err != nil {
 				return err
 			}
-			s.ReplyMarkup = &elem
 		default:
 			return d.Skip()
 		}
@@ -10773,7 +11043,7 @@ func (s SendVenue) Encode(e *jx.Encoder) {
 		e.FieldStart("allow_sending_without_reply")
 		s.AllowSendingWithoutReply.Encode(e)
 	}
-	if s.ReplyMarkup != nil {
+	if s.ReplyMarkup.Set {
 		e.FieldStart("reply_markup")
 		s.ReplyMarkup.Encode(e)
 	}
@@ -10851,12 +11121,10 @@ func (s *SendVenue) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "reply_markup":
-			s.ReplyMarkup = nil
-			var elem SendVenueReplyMarkup
-			if err := elem.Decode(d); err != nil {
+			s.ReplyMarkup.Reset()
+			if err := s.ReplyMarkup.Decode(d); err != nil {
 				return err
 			}
-			s.ReplyMarkup = &elem
 		default:
 			return d.Skip()
 		}
@@ -11007,7 +11275,7 @@ func (s SendVideo) Encode(e *jx.Encoder) {
 		e.FieldStart("allow_sending_without_reply")
 		s.AllowSendingWithoutReply.Encode(e)
 	}
-	if s.ReplyMarkup != nil {
+	if s.ReplyMarkup.Set {
 		e.FieldStart("reply_markup")
 		s.ReplyMarkup.Encode(e)
 	}
@@ -11094,12 +11362,10 @@ func (s *SendVideo) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "reply_markup":
-			s.ReplyMarkup = nil
-			var elem SendVideoReplyMarkup
-			if err := elem.Decode(d); err != nil {
+			s.ReplyMarkup.Reset()
+			if err := s.ReplyMarkup.Decode(d); err != nil {
 				return err
 			}
-			s.ReplyMarkup = &elem
 		default:
 			return d.Skip()
 		}
@@ -11140,7 +11406,7 @@ func (s SendVideoNote) Encode(e *jx.Encoder) {
 		e.FieldStart("allow_sending_without_reply")
 		s.AllowSendingWithoutReply.Encode(e)
 	}
-	if s.ReplyMarkup != nil {
+	if s.ReplyMarkup.Set {
 		e.FieldStart("reply_markup")
 		s.ReplyMarkup.Encode(e)
 	}
@@ -11195,12 +11461,10 @@ func (s *SendVideoNote) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "reply_markup":
-			s.ReplyMarkup = nil
-			var elem SendVideoNoteReplyMarkup
-			if err := elem.Decode(d); err != nil {
+			s.ReplyMarkup.Reset()
+			if err := s.ReplyMarkup.Decode(d); err != nil {
 				return err
 			}
-			s.ReplyMarkup = &elem
 		default:
 			return d.Skip()
 		}
@@ -11421,7 +11685,7 @@ func (s SendVoice) Encode(e *jx.Encoder) {
 		e.FieldStart("allow_sending_without_reply")
 		s.AllowSendingWithoutReply.Encode(e)
 	}
-	if s.ReplyMarkup != nil {
+	if s.ReplyMarkup.Set {
 		e.FieldStart("reply_markup")
 		s.ReplyMarkup.Encode(e)
 	}
@@ -11488,12 +11752,10 @@ func (s *SendVoice) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "reply_markup":
-			s.ReplyMarkup = nil
-			var elem SendVoiceReplyMarkup
-			if err := elem.Decode(d); err != nil {
+			s.ReplyMarkup.Reset()
+			if err := s.ReplyMarkup.Decode(d); err != nil {
 				return err
 			}
-			s.ReplyMarkup = &elem
 		default:
 			return d.Skip()
 		}
@@ -11903,7 +12165,7 @@ func (s SetMyCommands) Encode(e *jx.Encoder) {
 		elem.Encode(e)
 	}
 	e.ArrEnd()
-	if s.Scope != nil {
+	if s.Scope.Set {
 		e.FieldStart("scope")
 		s.Scope.Encode(e)
 	}
@@ -11934,12 +12196,10 @@ func (s *SetMyCommands) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "scope":
-			s.Scope = nil
-			var elem BotCommandScope
-			if err := elem.Decode(d); err != nil {
+			s.Scope.Reset()
+			if err := s.Scope.Decode(d); err != nil {
 				return err
 			}
-			s.Scope = &elem
 		case "language_code":
 			s.LanguageCode.Reset()
 			if err := s.LanguageCode.Decode(d); err != nil {
@@ -12416,7 +12676,7 @@ func (s *Sticker) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s StopMessageLiveLocation) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	if s.ChatID != nil {
+	if s.ChatID.Set {
 		e.FieldStart("chat_id")
 		s.ChatID.Encode(e)
 	}
@@ -12443,12 +12703,10 @@ func (s *StopMessageLiveLocation) Decode(d *jx.Decoder) error {
 	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "chat_id":
-			s.ChatID = nil
-			var elem ID
-			if err := elem.Decode(d); err != nil {
+			s.ChatID.Reset()
+			if err := s.ChatID.Decode(d); err != nil {
 				return err
 			}
-			s.ChatID = &elem
 		case "message_id":
 			s.MessageID.Reset()
 			if err := s.MessageID.Decode(d); err != nil {

@@ -769,16 +769,16 @@ type Contact struct {
 
 // Ref: #/components/schemas/copyMessage
 type CopyMessage struct {
-	ChatID                   ID                      `json:"chat_id"`
-	FromChatID               ID                      `json:"from_chat_id"`
-	MessageID                int                     `json:"message_id"`
-	Caption                  OptString               `json:"caption"`
-	ParseMode                OptString               `json:"parse_mode"`
-	CaptionEntities          []MessageEntity         `json:"caption_entities"`
-	DisableNotification      OptBool                 `json:"disable_notification"`
-	ReplyToMessageID         OptInt                  `json:"reply_to_message_id"`
-	AllowSendingWithoutReply OptBool                 `json:"allow_sending_without_reply"`
-	ReplyMarkup              *CopyMessageReplyMarkup `json:"reply_markup"`
+	ChatID                   ID                        `json:"chat_id"`
+	FromChatID               ID                        `json:"from_chat_id"`
+	MessageID                int                       `json:"message_id"`
+	Caption                  OptString                 `json:"caption"`
+	ParseMode                OptString                 `json:"parse_mode"`
+	CaptionEntities          []MessageEntity           `json:"caption_entities"`
+	DisableNotification      OptBool                   `json:"disable_notification"`
+	ReplyToMessageID         OptInt                    `json:"reply_to_message_id"`
+	AllowSendingWithoutReply OptBool                   `json:"allow_sending_without_reply"`
+	ReplyMarkup              OptCopyMessageReplyMarkup `json:"reply_markup"`
 }
 
 // CopyMessageReplyMarkup represents sum type.
@@ -950,8 +950,8 @@ type DeleteMessage struct {
 
 // Ref: #/components/schemas/deleteMyCommands
 type DeleteMyCommands struct {
-	Scope        *BotCommandScope `json:"scope"`
-	LanguageCode OptString        `json:"language_code"`
+	Scope        OptBotCommandScope `json:"scope"`
+	LanguageCode OptString          `json:"language_code"`
 }
 
 // Ref: #/components/schemas/deleteStickerFromSet
@@ -992,7 +992,7 @@ type EditChatInviteLink struct {
 
 // Ref: #/components/schemas/editMessageCaption
 type EditMessageCaption struct {
-	ChatID          *ID                     `json:"chat_id"`
+	ChatID          OptID                   `json:"chat_id"`
 	MessageID       OptInt                  `json:"message_id"`
 	InlineMessageID OptString               `json:"inline_message_id"`
 	Caption         OptString               `json:"caption"`
@@ -1003,7 +1003,7 @@ type EditMessageCaption struct {
 
 // Ref: #/components/schemas/editMessageLiveLocation
 type EditMessageLiveLocation struct {
-	ChatID               *ID                     `json:"chat_id"`
+	ChatID               OptID                   `json:"chat_id"`
 	MessageID            OptInt                  `json:"message_id"`
 	InlineMessageID      OptString               `json:"inline_message_id"`
 	Latitude             float64                 `json:"latitude"`
@@ -1016,7 +1016,7 @@ type EditMessageLiveLocation struct {
 
 // Ref: #/components/schemas/editMessageMedia
 type EditMessageMedia struct {
-	ChatID          *ID                     `json:"chat_id"`
+	ChatID          OptID                   `json:"chat_id"`
 	MessageID       OptInt                  `json:"message_id"`
 	InlineMessageID OptString               `json:"inline_message_id"`
 	Media           InputMedia              `json:"media"`
@@ -1025,7 +1025,7 @@ type EditMessageMedia struct {
 
 // Ref: #/components/schemas/editMessageReplyMarkup
 type EditMessageReplyMarkup struct {
-	ChatID          *ID                     `json:"chat_id"`
+	ChatID          OptID                   `json:"chat_id"`
 	MessageID       OptInt                  `json:"message_id"`
 	InlineMessageID OptString               `json:"inline_message_id"`
 	ReplyMarkup     OptInlineKeyboardMarkup `json:"reply_markup"`
@@ -1033,7 +1033,7 @@ type EditMessageReplyMarkup struct {
 
 // Ref: #/components/schemas/editMessageText
 type EditMessageText struct {
-	ChatID                *ID                     `json:"chat_id"`
+	ChatID                OptID                   `json:"chat_id"`
 	MessageID             OptInt                  `json:"message_id"`
 	InlineMessageID       OptString               `json:"inline_message_id"`
 	Text                  string                  `json:"text"`
@@ -1177,8 +1177,8 @@ type GetGameHighScores struct {
 
 // Ref: #/components/schemas/getMyCommands
 type GetMyCommands struct {
-	Scope        *BotCommandScope `json:"scope"`
-	LanguageCode OptString        `json:"language_code"`
+	Scope        OptBotCommandScope `json:"scope"`
+	LanguageCode OptString          `json:"language_code"`
 }
 
 // Ref: #/components/schemas/getStickerSet
@@ -1903,7 +1903,7 @@ type InlineQueryResultAudio struct {
 	Performer           OptString               `json:"performer"`
 	AudioDuration       OptInt                  `json:"audio_duration"`
 	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
-	InputMessageContent *InputMessageContent    `json:"input_message_content"`
+	InputMessageContent OptInputMessageContent  `json:"input_message_content"`
 }
 
 // Ref: #/components/schemas/InlineQueryResultCachedAudio
@@ -1915,7 +1915,7 @@ type InlineQueryResultCachedAudio struct {
 	ParseMode           OptString               `json:"parse_mode"`
 	CaptionEntities     []MessageEntity         `json:"caption_entities"`
 	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
-	InputMessageContent *InputMessageContent    `json:"input_message_content"`
+	InputMessageContent OptInputMessageContent  `json:"input_message_content"`
 }
 
 // Ref: #/components/schemas/InlineQueryResultCachedDocument
@@ -1929,7 +1929,7 @@ type InlineQueryResultCachedDocument struct {
 	ParseMode           OptString               `json:"parse_mode"`
 	CaptionEntities     []MessageEntity         `json:"caption_entities"`
 	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
-	InputMessageContent *InputMessageContent    `json:"input_message_content"`
+	InputMessageContent OptInputMessageContent  `json:"input_message_content"`
 }
 
 // Ref: #/components/schemas/InlineQueryResultCachedGif
@@ -1942,7 +1942,7 @@ type InlineQueryResultCachedGif struct {
 	ParseMode           OptString               `json:"parse_mode"`
 	CaptionEntities     []MessageEntity         `json:"caption_entities"`
 	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
-	InputMessageContent *InputMessageContent    `json:"input_message_content"`
+	InputMessageContent OptInputMessageContent  `json:"input_message_content"`
 }
 
 // Ref: #/components/schemas/InlineQueryResultCachedMpeg4Gif
@@ -1955,7 +1955,7 @@ type InlineQueryResultCachedMpeg4Gif struct {
 	ParseMode           OptString               `json:"parse_mode"`
 	CaptionEntities     []MessageEntity         `json:"caption_entities"`
 	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
-	InputMessageContent *InputMessageContent    `json:"input_message_content"`
+	InputMessageContent OptInputMessageContent  `json:"input_message_content"`
 }
 
 // Ref: #/components/schemas/InlineQueryResultCachedPhoto
@@ -1969,7 +1969,7 @@ type InlineQueryResultCachedPhoto struct {
 	ParseMode           OptString               `json:"parse_mode"`
 	CaptionEntities     []MessageEntity         `json:"caption_entities"`
 	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
-	InputMessageContent *InputMessageContent    `json:"input_message_content"`
+	InputMessageContent OptInputMessageContent  `json:"input_message_content"`
 }
 
 // Ref: #/components/schemas/InlineQueryResultCachedSticker
@@ -1978,7 +1978,7 @@ type InlineQueryResultCachedSticker struct {
 	ID                  string                  `json:"id"`
 	StickerFileID       string                  `json:"sticker_file_id"`
 	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
-	InputMessageContent *InputMessageContent    `json:"input_message_content"`
+	InputMessageContent OptInputMessageContent  `json:"input_message_content"`
 }
 
 // Ref: #/components/schemas/InlineQueryResultCachedVideo
@@ -1992,7 +1992,7 @@ type InlineQueryResultCachedVideo struct {
 	ParseMode           OptString               `json:"parse_mode"`
 	CaptionEntities     []MessageEntity         `json:"caption_entities"`
 	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
-	InputMessageContent *InputMessageContent    `json:"input_message_content"`
+	InputMessageContent OptInputMessageContent  `json:"input_message_content"`
 }
 
 // Ref: #/components/schemas/InlineQueryResultCachedVoice
@@ -2005,7 +2005,7 @@ type InlineQueryResultCachedVoice struct {
 	ParseMode           OptString               `json:"parse_mode"`
 	CaptionEntities     []MessageEntity         `json:"caption_entities"`
 	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
-	InputMessageContent *InputMessageContent    `json:"input_message_content"`
+	InputMessageContent OptInputMessageContent  `json:"input_message_content"`
 }
 
 // Ref: #/components/schemas/InlineQueryResultContact
@@ -2017,7 +2017,7 @@ type InlineQueryResultContact struct {
 	LastName            OptString               `json:"last_name"`
 	Vcard               OptString               `json:"vcard"`
 	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
-	InputMessageContent *InputMessageContent    `json:"input_message_content"`
+	InputMessageContent OptInputMessageContent  `json:"input_message_content"`
 	ThumbURL            OptURL                  `json:"thumb_url"`
 	ThumbWidth          OptInt                  `json:"thumb_width"`
 	ThumbHeight         OptInt                  `json:"thumb_height"`
@@ -2035,7 +2035,7 @@ type InlineQueryResultDocument struct {
 	MimeType            string                  `json:"mime_type"`
 	Description         OptString               `json:"description"`
 	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
-	InputMessageContent *InputMessageContent    `json:"input_message_content"`
+	InputMessageContent OptInputMessageContent  `json:"input_message_content"`
 	ThumbURL            OptURL                  `json:"thumb_url"`
 	ThumbWidth          OptInt                  `json:"thumb_width"`
 	ThumbHeight         OptInt                  `json:"thumb_height"`
@@ -2064,7 +2064,7 @@ type InlineQueryResultGif struct {
 	ParseMode           OptString               `json:"parse_mode"`
 	CaptionEntities     []MessageEntity         `json:"caption_entities"`
 	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
-	InputMessageContent *InputMessageContent    `json:"input_message_content"`
+	InputMessageContent OptInputMessageContent  `json:"input_message_content"`
 }
 
 // Ref: #/components/schemas/InlineQueryResultLocation
@@ -2079,7 +2079,7 @@ type InlineQueryResultLocation struct {
 	Heading              OptInt                  `json:"heading"`
 	ProximityAlertRadius OptInt                  `json:"proximity_alert_radius"`
 	ReplyMarkup          OptInlineKeyboardMarkup `json:"reply_markup"`
-	InputMessageContent  *InputMessageContent    `json:"input_message_content"`
+	InputMessageContent  OptInputMessageContent  `json:"input_message_content"`
 	ThumbURL             OptURL                  `json:"thumb_url"`
 	ThumbWidth           OptInt                  `json:"thumb_width"`
 	ThumbHeight          OptInt                  `json:"thumb_height"`
@@ -2100,7 +2100,7 @@ type InlineQueryResultMpeg4Gif struct {
 	ParseMode           OptString               `json:"parse_mode"`
 	CaptionEntities     []MessageEntity         `json:"caption_entities"`
 	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
-	InputMessageContent *InputMessageContent    `json:"input_message_content"`
+	InputMessageContent OptInputMessageContent  `json:"input_message_content"`
 }
 
 // Ref: #/components/schemas/InlineQueryResultPhoto
@@ -2117,7 +2117,7 @@ type InlineQueryResultPhoto struct {
 	ParseMode           OptString               `json:"parse_mode"`
 	CaptionEntities     []MessageEntity         `json:"caption_entities"`
 	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
-	InputMessageContent *InputMessageContent    `json:"input_message_content"`
+	InputMessageContent OptInputMessageContent  `json:"input_message_content"`
 }
 
 // Ref: #/components/schemas/InlineQueryResultVenue
@@ -2133,7 +2133,7 @@ type InlineQueryResultVenue struct {
 	GooglePlaceID       OptString               `json:"google_place_id"`
 	GooglePlaceType     OptString               `json:"google_place_type"`
 	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
-	InputMessageContent *InputMessageContent    `json:"input_message_content"`
+	InputMessageContent OptInputMessageContent  `json:"input_message_content"`
 	ThumbURL            OptURL                  `json:"thumb_url"`
 	ThumbWidth          OptInt                  `json:"thumb_width"`
 	ThumbHeight         OptInt                  `json:"thumb_height"`
@@ -2155,7 +2155,7 @@ type InlineQueryResultVideo struct {
 	VideoDuration       OptInt                  `json:"video_duration"`
 	Description         OptString               `json:"description"`
 	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
-	InputMessageContent *InputMessageContent    `json:"input_message_content"`
+	InputMessageContent OptInputMessageContent  `json:"input_message_content"`
 }
 
 // Ref: #/components/schemas/InlineQueryResultVoice
@@ -2169,7 +2169,7 @@ type InlineQueryResultVoice struct {
 	CaptionEntities     []MessageEntity         `json:"caption_entities"`
 	VoiceDuration       OptInt                  `json:"voice_duration"`
 	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
-	InputMessageContent *InputMessageContent    `json:"input_message_content"`
+	InputMessageContent OptInputMessageContent  `json:"input_message_content"`
 }
 
 // Ref: #/components/schemas/InputContactMessageContent
@@ -2956,6 +2956,52 @@ func (o OptBool) Or(d bool) bool {
 	return d
 }
 
+// NewOptBotCommandScope returns new OptBotCommandScope with value set to v.
+func NewOptBotCommandScope(v BotCommandScope) OptBotCommandScope {
+	return OptBotCommandScope{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptBotCommandScope is optional BotCommandScope.
+type OptBotCommandScope struct {
+	Value BotCommandScope
+	Set   bool
+}
+
+// IsSet returns true if OptBotCommandScope was set.
+func (o OptBotCommandScope) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptBotCommandScope) Reset() {
+	var v BotCommandScope
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptBotCommandScope) SetTo(v BotCommandScope) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptBotCommandScope) Get() (v BotCommandScope, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptBotCommandScope) Or(d BotCommandScope) BotCommandScope {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptCallbackQuery returns new OptCallbackQuery with value set to v.
 func NewOptCallbackQuery(v CallbackQuery) OptCallbackQuery {
 	return OptCallbackQuery{
@@ -3186,6 +3232,52 @@ func (o OptChatLocation) Or(d ChatLocation) ChatLocation {
 	return d
 }
 
+// NewOptChatMember returns new OptChatMember with value set to v.
+func NewOptChatMember(v ChatMember) OptChatMember {
+	return OptChatMember{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptChatMember is optional ChatMember.
+type OptChatMember struct {
+	Value ChatMember
+	Set   bool
+}
+
+// IsSet returns true if OptChatMember was set.
+func (o OptChatMember) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptChatMember) Reset() {
+	var v ChatMember
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptChatMember) SetTo(v ChatMember) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptChatMember) Get() (v ChatMember, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptChatMember) Or(d ChatMember) ChatMember {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptChatMemberUpdated returns new OptChatMemberUpdated with value set to v.
 func NewOptChatMemberUpdated(v ChatMemberUpdated) OptChatMemberUpdated {
 	return OptChatMemberUpdated{
@@ -3410,6 +3502,52 @@ func (o OptContact) Get() (v Contact, ok bool) {
 
 // Or returns value if set, or given parameter if does not.
 func (o OptContact) Or(d Contact) Contact {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptCopyMessageReplyMarkup returns new OptCopyMessageReplyMarkup with value set to v.
+func NewOptCopyMessageReplyMarkup(v CopyMessageReplyMarkup) OptCopyMessageReplyMarkup {
+	return OptCopyMessageReplyMarkup{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptCopyMessageReplyMarkup is optional CopyMessageReplyMarkup.
+type OptCopyMessageReplyMarkup struct {
+	Value CopyMessageReplyMarkup
+	Set   bool
+}
+
+// IsSet returns true if OptCopyMessageReplyMarkup was set.
+func (o OptCopyMessageReplyMarkup) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptCopyMessageReplyMarkup) Reset() {
+	var v CopyMessageReplyMarkup
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptCopyMessageReplyMarkup) SetTo(v CopyMessageReplyMarkup) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptCopyMessageReplyMarkup) Get() (v CopyMessageReplyMarkup, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptCopyMessageReplyMarkup) Or(d CopyMessageReplyMarkup) CopyMessageReplyMarkup {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -3830,6 +3968,52 @@ func (o OptGetUpdates) Or(d GetUpdates) GetUpdates {
 	return d
 }
 
+// NewOptID returns new OptID with value set to v.
+func NewOptID(v ID) OptID {
+	return OptID{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptID is optional ID.
+type OptID struct {
+	Value ID
+	Set   bool
+}
+
+// IsSet returns true if OptID was set.
+func (o OptID) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptID) Reset() {
+	var v ID
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptID) SetTo(v ID) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptID) Get() (v ID, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptID) Or(d ID) ID {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptInlineKeyboardMarkup returns new OptInlineKeyboardMarkup with value set to v.
 func NewOptInlineKeyboardMarkup(v InlineKeyboardMarkup) OptInlineKeyboardMarkup {
 	return OptInlineKeyboardMarkup{
@@ -3962,6 +4146,52 @@ func (o OptInlineQueryChatType) Get() (v InlineQueryChatType, ok bool) {
 
 // Or returns value if set, or given parameter if does not.
 func (o OptInlineQueryChatType) Or(d InlineQueryChatType) InlineQueryChatType {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptInputMessageContent returns new OptInputMessageContent with value set to v.
+func NewOptInputMessageContent(v InputMessageContent) OptInputMessageContent {
+	return OptInputMessageContent{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptInputMessageContent is optional InputMessageContent.
+type OptInputMessageContent struct {
+	Value InputMessageContent
+	Set   bool
+}
+
+// IsSet returns true if OptInputMessageContent was set.
+func (o OptInputMessageContent) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptInputMessageContent) Reset() {
+	var v InputMessageContent
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptInputMessageContent) SetTo(v InputMessageContent) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptInputMessageContent) Get() (v InputMessageContent, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptInputMessageContent) Or(d InputMessageContent) InputMessageContent {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -4836,6 +5066,650 @@ func (o OptResponse) Get() (v Response, ok bool) {
 
 // Or returns value if set, or given parameter if does not.
 func (o OptResponse) Or(d Response) Response {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptSendAnimationReplyMarkup returns new OptSendAnimationReplyMarkup with value set to v.
+func NewOptSendAnimationReplyMarkup(v SendAnimationReplyMarkup) OptSendAnimationReplyMarkup {
+	return OptSendAnimationReplyMarkup{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptSendAnimationReplyMarkup is optional SendAnimationReplyMarkup.
+type OptSendAnimationReplyMarkup struct {
+	Value SendAnimationReplyMarkup
+	Set   bool
+}
+
+// IsSet returns true if OptSendAnimationReplyMarkup was set.
+func (o OptSendAnimationReplyMarkup) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptSendAnimationReplyMarkup) Reset() {
+	var v SendAnimationReplyMarkup
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptSendAnimationReplyMarkup) SetTo(v SendAnimationReplyMarkup) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptSendAnimationReplyMarkup) Get() (v SendAnimationReplyMarkup, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptSendAnimationReplyMarkup) Or(d SendAnimationReplyMarkup) SendAnimationReplyMarkup {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptSendAudioReplyMarkup returns new OptSendAudioReplyMarkup with value set to v.
+func NewOptSendAudioReplyMarkup(v SendAudioReplyMarkup) OptSendAudioReplyMarkup {
+	return OptSendAudioReplyMarkup{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptSendAudioReplyMarkup is optional SendAudioReplyMarkup.
+type OptSendAudioReplyMarkup struct {
+	Value SendAudioReplyMarkup
+	Set   bool
+}
+
+// IsSet returns true if OptSendAudioReplyMarkup was set.
+func (o OptSendAudioReplyMarkup) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptSendAudioReplyMarkup) Reset() {
+	var v SendAudioReplyMarkup
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptSendAudioReplyMarkup) SetTo(v SendAudioReplyMarkup) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptSendAudioReplyMarkup) Get() (v SendAudioReplyMarkup, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptSendAudioReplyMarkup) Or(d SendAudioReplyMarkup) SendAudioReplyMarkup {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptSendContactReplyMarkup returns new OptSendContactReplyMarkup with value set to v.
+func NewOptSendContactReplyMarkup(v SendContactReplyMarkup) OptSendContactReplyMarkup {
+	return OptSendContactReplyMarkup{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptSendContactReplyMarkup is optional SendContactReplyMarkup.
+type OptSendContactReplyMarkup struct {
+	Value SendContactReplyMarkup
+	Set   bool
+}
+
+// IsSet returns true if OptSendContactReplyMarkup was set.
+func (o OptSendContactReplyMarkup) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptSendContactReplyMarkup) Reset() {
+	var v SendContactReplyMarkup
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptSendContactReplyMarkup) SetTo(v SendContactReplyMarkup) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptSendContactReplyMarkup) Get() (v SendContactReplyMarkup, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptSendContactReplyMarkup) Or(d SendContactReplyMarkup) SendContactReplyMarkup {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptSendDiceReplyMarkup returns new OptSendDiceReplyMarkup with value set to v.
+func NewOptSendDiceReplyMarkup(v SendDiceReplyMarkup) OptSendDiceReplyMarkup {
+	return OptSendDiceReplyMarkup{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptSendDiceReplyMarkup is optional SendDiceReplyMarkup.
+type OptSendDiceReplyMarkup struct {
+	Value SendDiceReplyMarkup
+	Set   bool
+}
+
+// IsSet returns true if OptSendDiceReplyMarkup was set.
+func (o OptSendDiceReplyMarkup) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptSendDiceReplyMarkup) Reset() {
+	var v SendDiceReplyMarkup
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptSendDiceReplyMarkup) SetTo(v SendDiceReplyMarkup) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptSendDiceReplyMarkup) Get() (v SendDiceReplyMarkup, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptSendDiceReplyMarkup) Or(d SendDiceReplyMarkup) SendDiceReplyMarkup {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptSendDocumentReplyMarkup returns new OptSendDocumentReplyMarkup with value set to v.
+func NewOptSendDocumentReplyMarkup(v SendDocumentReplyMarkup) OptSendDocumentReplyMarkup {
+	return OptSendDocumentReplyMarkup{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptSendDocumentReplyMarkup is optional SendDocumentReplyMarkup.
+type OptSendDocumentReplyMarkup struct {
+	Value SendDocumentReplyMarkup
+	Set   bool
+}
+
+// IsSet returns true if OptSendDocumentReplyMarkup was set.
+func (o OptSendDocumentReplyMarkup) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptSendDocumentReplyMarkup) Reset() {
+	var v SendDocumentReplyMarkup
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptSendDocumentReplyMarkup) SetTo(v SendDocumentReplyMarkup) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptSendDocumentReplyMarkup) Get() (v SendDocumentReplyMarkup, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptSendDocumentReplyMarkup) Or(d SendDocumentReplyMarkup) SendDocumentReplyMarkup {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptSendLocationReplyMarkup returns new OptSendLocationReplyMarkup with value set to v.
+func NewOptSendLocationReplyMarkup(v SendLocationReplyMarkup) OptSendLocationReplyMarkup {
+	return OptSendLocationReplyMarkup{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptSendLocationReplyMarkup is optional SendLocationReplyMarkup.
+type OptSendLocationReplyMarkup struct {
+	Value SendLocationReplyMarkup
+	Set   bool
+}
+
+// IsSet returns true if OptSendLocationReplyMarkup was set.
+func (o OptSendLocationReplyMarkup) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptSendLocationReplyMarkup) Reset() {
+	var v SendLocationReplyMarkup
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptSendLocationReplyMarkup) SetTo(v SendLocationReplyMarkup) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptSendLocationReplyMarkup) Get() (v SendLocationReplyMarkup, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptSendLocationReplyMarkup) Or(d SendLocationReplyMarkup) SendLocationReplyMarkup {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptSendMessageReplyMarkup returns new OptSendMessageReplyMarkup with value set to v.
+func NewOptSendMessageReplyMarkup(v SendMessageReplyMarkup) OptSendMessageReplyMarkup {
+	return OptSendMessageReplyMarkup{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptSendMessageReplyMarkup is optional SendMessageReplyMarkup.
+type OptSendMessageReplyMarkup struct {
+	Value SendMessageReplyMarkup
+	Set   bool
+}
+
+// IsSet returns true if OptSendMessageReplyMarkup was set.
+func (o OptSendMessageReplyMarkup) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptSendMessageReplyMarkup) Reset() {
+	var v SendMessageReplyMarkup
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptSendMessageReplyMarkup) SetTo(v SendMessageReplyMarkup) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptSendMessageReplyMarkup) Get() (v SendMessageReplyMarkup, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptSendMessageReplyMarkup) Or(d SendMessageReplyMarkup) SendMessageReplyMarkup {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptSendPhotoReplyMarkup returns new OptSendPhotoReplyMarkup with value set to v.
+func NewOptSendPhotoReplyMarkup(v SendPhotoReplyMarkup) OptSendPhotoReplyMarkup {
+	return OptSendPhotoReplyMarkup{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptSendPhotoReplyMarkup is optional SendPhotoReplyMarkup.
+type OptSendPhotoReplyMarkup struct {
+	Value SendPhotoReplyMarkup
+	Set   bool
+}
+
+// IsSet returns true if OptSendPhotoReplyMarkup was set.
+func (o OptSendPhotoReplyMarkup) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptSendPhotoReplyMarkup) Reset() {
+	var v SendPhotoReplyMarkup
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptSendPhotoReplyMarkup) SetTo(v SendPhotoReplyMarkup) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptSendPhotoReplyMarkup) Get() (v SendPhotoReplyMarkup, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptSendPhotoReplyMarkup) Or(d SendPhotoReplyMarkup) SendPhotoReplyMarkup {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptSendPollReplyMarkup returns new OptSendPollReplyMarkup with value set to v.
+func NewOptSendPollReplyMarkup(v SendPollReplyMarkup) OptSendPollReplyMarkup {
+	return OptSendPollReplyMarkup{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptSendPollReplyMarkup is optional SendPollReplyMarkup.
+type OptSendPollReplyMarkup struct {
+	Value SendPollReplyMarkup
+	Set   bool
+}
+
+// IsSet returns true if OptSendPollReplyMarkup was set.
+func (o OptSendPollReplyMarkup) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptSendPollReplyMarkup) Reset() {
+	var v SendPollReplyMarkup
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptSendPollReplyMarkup) SetTo(v SendPollReplyMarkup) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptSendPollReplyMarkup) Get() (v SendPollReplyMarkup, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptSendPollReplyMarkup) Or(d SendPollReplyMarkup) SendPollReplyMarkup {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptSendStickerReplyMarkup returns new OptSendStickerReplyMarkup with value set to v.
+func NewOptSendStickerReplyMarkup(v SendStickerReplyMarkup) OptSendStickerReplyMarkup {
+	return OptSendStickerReplyMarkup{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptSendStickerReplyMarkup is optional SendStickerReplyMarkup.
+type OptSendStickerReplyMarkup struct {
+	Value SendStickerReplyMarkup
+	Set   bool
+}
+
+// IsSet returns true if OptSendStickerReplyMarkup was set.
+func (o OptSendStickerReplyMarkup) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptSendStickerReplyMarkup) Reset() {
+	var v SendStickerReplyMarkup
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptSendStickerReplyMarkup) SetTo(v SendStickerReplyMarkup) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptSendStickerReplyMarkup) Get() (v SendStickerReplyMarkup, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptSendStickerReplyMarkup) Or(d SendStickerReplyMarkup) SendStickerReplyMarkup {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptSendVenueReplyMarkup returns new OptSendVenueReplyMarkup with value set to v.
+func NewOptSendVenueReplyMarkup(v SendVenueReplyMarkup) OptSendVenueReplyMarkup {
+	return OptSendVenueReplyMarkup{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptSendVenueReplyMarkup is optional SendVenueReplyMarkup.
+type OptSendVenueReplyMarkup struct {
+	Value SendVenueReplyMarkup
+	Set   bool
+}
+
+// IsSet returns true if OptSendVenueReplyMarkup was set.
+func (o OptSendVenueReplyMarkup) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptSendVenueReplyMarkup) Reset() {
+	var v SendVenueReplyMarkup
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptSendVenueReplyMarkup) SetTo(v SendVenueReplyMarkup) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptSendVenueReplyMarkup) Get() (v SendVenueReplyMarkup, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptSendVenueReplyMarkup) Or(d SendVenueReplyMarkup) SendVenueReplyMarkup {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptSendVideoNoteReplyMarkup returns new OptSendVideoNoteReplyMarkup with value set to v.
+func NewOptSendVideoNoteReplyMarkup(v SendVideoNoteReplyMarkup) OptSendVideoNoteReplyMarkup {
+	return OptSendVideoNoteReplyMarkup{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptSendVideoNoteReplyMarkup is optional SendVideoNoteReplyMarkup.
+type OptSendVideoNoteReplyMarkup struct {
+	Value SendVideoNoteReplyMarkup
+	Set   bool
+}
+
+// IsSet returns true if OptSendVideoNoteReplyMarkup was set.
+func (o OptSendVideoNoteReplyMarkup) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptSendVideoNoteReplyMarkup) Reset() {
+	var v SendVideoNoteReplyMarkup
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptSendVideoNoteReplyMarkup) SetTo(v SendVideoNoteReplyMarkup) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptSendVideoNoteReplyMarkup) Get() (v SendVideoNoteReplyMarkup, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptSendVideoNoteReplyMarkup) Or(d SendVideoNoteReplyMarkup) SendVideoNoteReplyMarkup {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptSendVideoReplyMarkup returns new OptSendVideoReplyMarkup with value set to v.
+func NewOptSendVideoReplyMarkup(v SendVideoReplyMarkup) OptSendVideoReplyMarkup {
+	return OptSendVideoReplyMarkup{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptSendVideoReplyMarkup is optional SendVideoReplyMarkup.
+type OptSendVideoReplyMarkup struct {
+	Value SendVideoReplyMarkup
+	Set   bool
+}
+
+// IsSet returns true if OptSendVideoReplyMarkup was set.
+func (o OptSendVideoReplyMarkup) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptSendVideoReplyMarkup) Reset() {
+	var v SendVideoReplyMarkup
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptSendVideoReplyMarkup) SetTo(v SendVideoReplyMarkup) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptSendVideoReplyMarkup) Get() (v SendVideoReplyMarkup, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptSendVideoReplyMarkup) Or(d SendVideoReplyMarkup) SendVideoReplyMarkup {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptSendVoiceReplyMarkup returns new OptSendVoiceReplyMarkup with value set to v.
+func NewOptSendVoiceReplyMarkup(v SendVoiceReplyMarkup) OptSendVoiceReplyMarkup {
+	return OptSendVoiceReplyMarkup{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptSendVoiceReplyMarkup is optional SendVoiceReplyMarkup.
+type OptSendVoiceReplyMarkup struct {
+	Value SendVoiceReplyMarkup
+	Set   bool
+}
+
+// IsSet returns true if OptSendVoiceReplyMarkup was set.
+func (o OptSendVoiceReplyMarkup) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptSendVoiceReplyMarkup) Reset() {
+	var v SendVoiceReplyMarkup
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptSendVoiceReplyMarkup) SetTo(v SendVoiceReplyMarkup) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptSendVoiceReplyMarkup) Get() (v SendVoiceReplyMarkup, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptSendVoiceReplyMarkup) Or(d SendVoiceReplyMarkup) SendVoiceReplyMarkup {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -6189,8 +7063,8 @@ type ResultChatInviteLink struct {
 
 // Ref: #/components/schemas/ResultChatMember
 type ResultChatMember struct {
-	Result *ChatMember `json:"result"`
-	Ok     bool        `json:"ok"`
+	Result OptChatMember `json:"result"`
+	Ok     bool          `json:"ok"`
 }
 
 // Ref: #/components/schemas/ResultFile
@@ -6255,19 +7129,19 @@ type RevokeChatInviteLink struct {
 
 // Ref: #/components/schemas/sendAnimation
 type SendAnimation struct {
-	ChatID                   ID                        `json:"chat_id"`
-	Animation                string                    `json:"animation"`
-	Duration                 OptInt                    `json:"duration"`
-	Width                    OptInt                    `json:"width"`
-	Height                   OptInt                    `json:"height"`
-	Thumb                    OptString                 `json:"thumb"`
-	Caption                  OptString                 `json:"caption"`
-	ParseMode                OptString                 `json:"parse_mode"`
-	CaptionEntities          []MessageEntity           `json:"caption_entities"`
-	DisableNotification      OptBool                   `json:"disable_notification"`
-	ReplyToMessageID         OptInt                    `json:"reply_to_message_id"`
-	AllowSendingWithoutReply OptBool                   `json:"allow_sending_without_reply"`
-	ReplyMarkup              *SendAnimationReplyMarkup `json:"reply_markup"`
+	ChatID                   ID                          `json:"chat_id"`
+	Animation                string                      `json:"animation"`
+	Duration                 OptInt                      `json:"duration"`
+	Width                    OptInt                      `json:"width"`
+	Height                   OptInt                      `json:"height"`
+	Thumb                    OptString                   `json:"thumb"`
+	Caption                  OptString                   `json:"caption"`
+	ParseMode                OptString                   `json:"parse_mode"`
+	CaptionEntities          []MessageEntity             `json:"caption_entities"`
+	DisableNotification      OptBool                     `json:"disable_notification"`
+	ReplyToMessageID         OptInt                      `json:"reply_to_message_id"`
+	AllowSendingWithoutReply OptBool                     `json:"allow_sending_without_reply"`
+	ReplyMarkup              OptSendAnimationReplyMarkup `json:"reply_markup"`
 }
 
 // SendAnimationReplyMarkup represents sum type.
@@ -6396,19 +7270,19 @@ func NewForceReplySendAnimationReplyMarkup(v ForceReply) SendAnimationReplyMarku
 
 // Ref: #/components/schemas/sendAudio
 type SendAudio struct {
-	ChatID                   ID                    `json:"chat_id"`
-	Audio                    string                `json:"audio"`
-	Caption                  OptString             `json:"caption"`
-	ParseMode                OptString             `json:"parse_mode"`
-	CaptionEntities          []MessageEntity       `json:"caption_entities"`
-	Duration                 OptInt                `json:"duration"`
-	Performer                OptString             `json:"performer"`
-	Title                    OptString             `json:"title"`
-	Thumb                    OptString             `json:"thumb"`
-	DisableNotification      OptBool               `json:"disable_notification"`
-	ReplyToMessageID         OptInt                `json:"reply_to_message_id"`
-	AllowSendingWithoutReply OptBool               `json:"allow_sending_without_reply"`
-	ReplyMarkup              *SendAudioReplyMarkup `json:"reply_markup"`
+	ChatID                   ID                      `json:"chat_id"`
+	Audio                    string                  `json:"audio"`
+	Caption                  OptString               `json:"caption"`
+	ParseMode                OptString               `json:"parse_mode"`
+	CaptionEntities          []MessageEntity         `json:"caption_entities"`
+	Duration                 OptInt                  `json:"duration"`
+	Performer                OptString               `json:"performer"`
+	Title                    OptString               `json:"title"`
+	Thumb                    OptString               `json:"thumb"`
+	DisableNotification      OptBool                 `json:"disable_notification"`
+	ReplyToMessageID         OptInt                  `json:"reply_to_message_id"`
+	AllowSendingWithoutReply OptBool                 `json:"allow_sending_without_reply"`
+	ReplyMarkup              OptSendAudioReplyMarkup `json:"reply_markup"`
 }
 
 // SendAudioReplyMarkup represents sum type.
@@ -6541,15 +7415,15 @@ type SendChatAction struct {
 
 // Ref: #/components/schemas/sendContact
 type SendContact struct {
-	ChatID                   ID                      `json:"chat_id"`
-	PhoneNumber              string                  `json:"phone_number"`
-	FirstName                string                  `json:"first_name"`
-	LastName                 OptString               `json:"last_name"`
-	Vcard                    OptString               `json:"vcard"`
-	DisableNotification      OptBool                 `json:"disable_notification"`
-	ReplyToMessageID         OptInt                  `json:"reply_to_message_id"`
-	AllowSendingWithoutReply OptBool                 `json:"allow_sending_without_reply"`
-	ReplyMarkup              *SendContactReplyMarkup `json:"reply_markup"`
+	ChatID                   ID                        `json:"chat_id"`
+	PhoneNumber              string                    `json:"phone_number"`
+	FirstName                string                    `json:"first_name"`
+	LastName                 OptString                 `json:"last_name"`
+	Vcard                    OptString                 `json:"vcard"`
+	DisableNotification      OptBool                   `json:"disable_notification"`
+	ReplyToMessageID         OptInt                    `json:"reply_to_message_id"`
+	AllowSendingWithoutReply OptBool                   `json:"allow_sending_without_reply"`
+	ReplyMarkup              OptSendContactReplyMarkup `json:"reply_markup"`
 }
 
 // SendContactReplyMarkup represents sum type.
@@ -6678,12 +7552,12 @@ func NewForceReplySendContactReplyMarkup(v ForceReply) SendContactReplyMarkup {
 
 // Ref: #/components/schemas/sendDice
 type SendDice struct {
-	ChatID                   ID                   `json:"chat_id"`
-	Emoji                    OptString            `json:"emoji"`
-	DisableNotification      OptBool              `json:"disable_notification"`
-	ReplyToMessageID         OptInt               `json:"reply_to_message_id"`
-	AllowSendingWithoutReply OptBool              `json:"allow_sending_without_reply"`
-	ReplyMarkup              *SendDiceReplyMarkup `json:"reply_markup"`
+	ChatID                   ID                     `json:"chat_id"`
+	Emoji                    OptString              `json:"emoji"`
+	DisableNotification      OptBool                `json:"disable_notification"`
+	ReplyToMessageID         OptInt                 `json:"reply_to_message_id"`
+	AllowSendingWithoutReply OptBool                `json:"allow_sending_without_reply"`
+	ReplyMarkup              OptSendDiceReplyMarkup `json:"reply_markup"`
 }
 
 // SendDiceReplyMarkup represents sum type.
@@ -6810,17 +7684,17 @@ func NewForceReplySendDiceReplyMarkup(v ForceReply) SendDiceReplyMarkup {
 
 // Ref: #/components/schemas/sendDocument
 type SendDocument struct {
-	ChatID                      ID                       `json:"chat_id"`
-	Document                    string                   `json:"document"`
-	Thumb                       OptString                `json:"thumb"`
-	Caption                     OptString                `json:"caption"`
-	ParseMode                   OptString                `json:"parse_mode"`
-	CaptionEntities             []MessageEntity          `json:"caption_entities"`
-	DisableContentTypeDetection OptBool                  `json:"disable_content_type_detection"`
-	DisableNotification         OptBool                  `json:"disable_notification"`
-	ReplyToMessageID            OptInt                   `json:"reply_to_message_id"`
-	AllowSendingWithoutReply    OptBool                  `json:"allow_sending_without_reply"`
-	ReplyMarkup                 *SendDocumentReplyMarkup `json:"reply_markup"`
+	ChatID                      ID                         `json:"chat_id"`
+	Document                    string                     `json:"document"`
+	Thumb                       OptString                  `json:"thumb"`
+	Caption                     OptString                  `json:"caption"`
+	ParseMode                   OptString                  `json:"parse_mode"`
+	CaptionEntities             []MessageEntity            `json:"caption_entities"`
+	DisableContentTypeDetection OptBool                    `json:"disable_content_type_detection"`
+	DisableNotification         OptBool                    `json:"disable_notification"`
+	ReplyToMessageID            OptInt                     `json:"reply_to_message_id"`
+	AllowSendingWithoutReply    OptBool                    `json:"allow_sending_without_reply"`
+	ReplyMarkup                 OptSendDocumentReplyMarkup `json:"reply_markup"`
 }
 
 // SendDocumentReplyMarkup represents sum type.
@@ -6989,17 +7863,17 @@ type SendInvoice struct {
 
 // Ref: #/components/schemas/sendLocation
 type SendLocation struct {
-	ChatID                   ID                       `json:"chat_id"`
-	Latitude                 float64                  `json:"latitude"`
-	Longitude                float64                  `json:"longitude"`
-	HorizontalAccuracy       OptFloat64               `json:"horizontal_accuracy"`
-	LivePeriod               OptInt                   `json:"live_period"`
-	Heading                  OptInt                   `json:"heading"`
-	ProximityAlertRadius     OptInt                   `json:"proximity_alert_radius"`
-	DisableNotification      OptBool                  `json:"disable_notification"`
-	ReplyToMessageID         OptInt                   `json:"reply_to_message_id"`
-	AllowSendingWithoutReply OptBool                  `json:"allow_sending_without_reply"`
-	ReplyMarkup              *SendLocationReplyMarkup `json:"reply_markup"`
+	ChatID                   ID                         `json:"chat_id"`
+	Latitude                 float64                    `json:"latitude"`
+	Longitude                float64                    `json:"longitude"`
+	HorizontalAccuracy       OptFloat64                 `json:"horizontal_accuracy"`
+	LivePeriod               OptInt                     `json:"live_period"`
+	Heading                  OptInt                     `json:"heading"`
+	ProximityAlertRadius     OptInt                     `json:"proximity_alert_radius"`
+	DisableNotification      OptBool                    `json:"disable_notification"`
+	ReplyToMessageID         OptInt                     `json:"reply_to_message_id"`
+	AllowSendingWithoutReply OptBool                    `json:"allow_sending_without_reply"`
+	ReplyMarkup              OptSendLocationReplyMarkup `json:"reply_markup"`
 }
 
 // SendLocationReplyMarkup represents sum type.
@@ -7261,15 +8135,15 @@ func NewInputMediaVideoSendMediaGroupMediaItem(v InputMediaVideo) SendMediaGroup
 
 // Ref: #/components/schemas/sendMessage
 type SendMessage struct {
-	ChatID                   ID                      `json:"chat_id"`
-	Text                     string                  `json:"text"`
-	ParseMode                OptString               `json:"parse_mode"`
-	Entities                 []MessageEntity         `json:"entities"`
-	DisableWebPagePreview    OptBool                 `json:"disable_web_page_preview"`
-	DisableNotification      OptBool                 `json:"disable_notification"`
-	ReplyToMessageID         OptInt                  `json:"reply_to_message_id"`
-	AllowSendingWithoutReply OptBool                 `json:"allow_sending_without_reply"`
-	ReplyMarkup              *SendMessageReplyMarkup `json:"reply_markup"`
+	ChatID                   ID                        `json:"chat_id"`
+	Text                     string                    `json:"text"`
+	ParseMode                OptString                 `json:"parse_mode"`
+	Entities                 []MessageEntity           `json:"entities"`
+	DisableWebPagePreview    OptBool                   `json:"disable_web_page_preview"`
+	DisableNotification      OptBool                   `json:"disable_notification"`
+	ReplyToMessageID         OptInt                    `json:"reply_to_message_id"`
+	AllowSendingWithoutReply OptBool                   `json:"allow_sending_without_reply"`
+	ReplyMarkup              OptSendMessageReplyMarkup `json:"reply_markup"`
 }
 
 // SendMessageReplyMarkup represents sum type.
@@ -7398,15 +8272,15 @@ func NewForceReplySendMessageReplyMarkup(v ForceReply) SendMessageReplyMarkup {
 
 // Ref: #/components/schemas/sendPhoto
 type SendPhoto struct {
-	ChatID                   ID                    `json:"chat_id"`
-	Photo                    string                `json:"photo"`
-	Caption                  OptString             `json:"caption"`
-	ParseMode                OptString             `json:"parse_mode"`
-	CaptionEntities          []MessageEntity       `json:"caption_entities"`
-	DisableNotification      OptBool               `json:"disable_notification"`
-	ReplyToMessageID         OptInt                `json:"reply_to_message_id"`
-	AllowSendingWithoutReply OptBool               `json:"allow_sending_without_reply"`
-	ReplyMarkup              *SendPhotoReplyMarkup `json:"reply_markup"`
+	ChatID                   ID                      `json:"chat_id"`
+	Photo                    string                  `json:"photo"`
+	Caption                  OptString               `json:"caption"`
+	ParseMode                OptString               `json:"parse_mode"`
+	CaptionEntities          []MessageEntity         `json:"caption_entities"`
+	DisableNotification      OptBool                 `json:"disable_notification"`
+	ReplyToMessageID         OptInt                  `json:"reply_to_message_id"`
+	AllowSendingWithoutReply OptBool                 `json:"allow_sending_without_reply"`
+	ReplyMarkup              OptSendPhotoReplyMarkup `json:"reply_markup"`
 }
 
 // SendPhotoReplyMarkup represents sum type.
@@ -7533,23 +8407,23 @@ func NewForceReplySendPhotoReplyMarkup(v ForceReply) SendPhotoReplyMarkup {
 
 // Ref: #/components/schemas/sendPoll
 type SendPoll struct {
-	ChatID                   ID                   `json:"chat_id"`
-	Question                 string               `json:"question"`
-	Options                  []string             `json:"options"`
-	IsAnonymous              OptBool              `json:"is_anonymous"`
-	Type                     OptString            `json:"type"`
-	AllowsMultipleAnswers    OptBool              `json:"allows_multiple_answers"`
-	CorrectOptionID          OptInt               `json:"correct_option_id"`
-	Explanation              OptString            `json:"explanation"`
-	ExplanationParseMode     OptString            `json:"explanation_parse_mode"`
-	ExplanationEntities      []MessageEntity      `json:"explanation_entities"`
-	OpenPeriod               OptInt               `json:"open_period"`
-	CloseDate                OptInt               `json:"close_date"`
-	IsClosed                 OptBool              `json:"is_closed"`
-	DisableNotification      OptBool              `json:"disable_notification"`
-	ReplyToMessageID         OptInt               `json:"reply_to_message_id"`
-	AllowSendingWithoutReply OptBool              `json:"allow_sending_without_reply"`
-	ReplyMarkup              *SendPollReplyMarkup `json:"reply_markup"`
+	ChatID                   ID                     `json:"chat_id"`
+	Question                 string                 `json:"question"`
+	Options                  []string               `json:"options"`
+	IsAnonymous              OptBool                `json:"is_anonymous"`
+	Type                     OptString              `json:"type"`
+	AllowsMultipleAnswers    OptBool                `json:"allows_multiple_answers"`
+	CorrectOptionID          OptInt                 `json:"correct_option_id"`
+	Explanation              OptString              `json:"explanation"`
+	ExplanationParseMode     OptString              `json:"explanation_parse_mode"`
+	ExplanationEntities      []MessageEntity        `json:"explanation_entities"`
+	OpenPeriod               OptInt                 `json:"open_period"`
+	CloseDate                OptInt                 `json:"close_date"`
+	IsClosed                 OptBool                `json:"is_closed"`
+	DisableNotification      OptBool                `json:"disable_notification"`
+	ReplyToMessageID         OptInt                 `json:"reply_to_message_id"`
+	AllowSendingWithoutReply OptBool                `json:"allow_sending_without_reply"`
+	ReplyMarkup              OptSendPollReplyMarkup `json:"reply_markup"`
 }
 
 // SendPollReplyMarkup represents sum type.
@@ -7676,12 +8550,12 @@ func NewForceReplySendPollReplyMarkup(v ForceReply) SendPollReplyMarkup {
 
 // Ref: #/components/schemas/sendSticker
 type SendSticker struct {
-	ChatID                   ID                      `json:"chat_id"`
-	Sticker                  string                  `json:"sticker"`
-	DisableNotification      OptBool                 `json:"disable_notification"`
-	ReplyToMessageID         OptInt                  `json:"reply_to_message_id"`
-	AllowSendingWithoutReply OptBool                 `json:"allow_sending_without_reply"`
-	ReplyMarkup              *SendStickerReplyMarkup `json:"reply_markup"`
+	ChatID                   ID                        `json:"chat_id"`
+	Sticker                  string                    `json:"sticker"`
+	DisableNotification      OptBool                   `json:"disable_notification"`
+	ReplyToMessageID         OptInt                    `json:"reply_to_message_id"`
+	AllowSendingWithoutReply OptBool                   `json:"allow_sending_without_reply"`
+	ReplyMarkup              OptSendStickerReplyMarkup `json:"reply_markup"`
 }
 
 // SendStickerReplyMarkup represents sum type.
@@ -7810,19 +8684,19 @@ func NewForceReplySendStickerReplyMarkup(v ForceReply) SendStickerReplyMarkup {
 
 // Ref: #/components/schemas/sendVenue
 type SendVenue struct {
-	ChatID                   ID                    `json:"chat_id"`
-	Latitude                 float64               `json:"latitude"`
-	Longitude                float64               `json:"longitude"`
-	Title                    string                `json:"title"`
-	Address                  string                `json:"address"`
-	FoursquareID             OptString             `json:"foursquare_id"`
-	FoursquareType           OptString             `json:"foursquare_type"`
-	GooglePlaceID            OptString             `json:"google_place_id"`
-	GooglePlaceType          OptString             `json:"google_place_type"`
-	DisableNotification      OptBool               `json:"disable_notification"`
-	ReplyToMessageID         OptInt                `json:"reply_to_message_id"`
-	AllowSendingWithoutReply OptBool               `json:"allow_sending_without_reply"`
-	ReplyMarkup              *SendVenueReplyMarkup `json:"reply_markup"`
+	ChatID                   ID                      `json:"chat_id"`
+	Latitude                 float64                 `json:"latitude"`
+	Longitude                float64                 `json:"longitude"`
+	Title                    string                  `json:"title"`
+	Address                  string                  `json:"address"`
+	FoursquareID             OptString               `json:"foursquare_id"`
+	FoursquareType           OptString               `json:"foursquare_type"`
+	GooglePlaceID            OptString               `json:"google_place_id"`
+	GooglePlaceType          OptString               `json:"google_place_type"`
+	DisableNotification      OptBool                 `json:"disable_notification"`
+	ReplyToMessageID         OptInt                  `json:"reply_to_message_id"`
+	AllowSendingWithoutReply OptBool                 `json:"allow_sending_without_reply"`
+	ReplyMarkup              OptSendVenueReplyMarkup `json:"reply_markup"`
 }
 
 // SendVenueReplyMarkup represents sum type.
@@ -7949,33 +8823,33 @@ func NewForceReplySendVenueReplyMarkup(v ForceReply) SendVenueReplyMarkup {
 
 // Ref: #/components/schemas/sendVideo
 type SendVideo struct {
-	ChatID                   ID                    `json:"chat_id"`
-	Video                    string                `json:"video"`
-	Duration                 OptInt                `json:"duration"`
-	Width                    OptInt                `json:"width"`
-	Height                   OptInt                `json:"height"`
-	Thumb                    OptString             `json:"thumb"`
-	Caption                  OptString             `json:"caption"`
-	ParseMode                OptString             `json:"parse_mode"`
-	CaptionEntities          []MessageEntity       `json:"caption_entities"`
-	SupportsStreaming        OptBool               `json:"supports_streaming"`
-	DisableNotification      OptBool               `json:"disable_notification"`
-	ReplyToMessageID         OptInt                `json:"reply_to_message_id"`
-	AllowSendingWithoutReply OptBool               `json:"allow_sending_without_reply"`
-	ReplyMarkup              *SendVideoReplyMarkup `json:"reply_markup"`
+	ChatID                   ID                      `json:"chat_id"`
+	Video                    string                  `json:"video"`
+	Duration                 OptInt                  `json:"duration"`
+	Width                    OptInt                  `json:"width"`
+	Height                   OptInt                  `json:"height"`
+	Thumb                    OptString               `json:"thumb"`
+	Caption                  OptString               `json:"caption"`
+	ParseMode                OptString               `json:"parse_mode"`
+	CaptionEntities          []MessageEntity         `json:"caption_entities"`
+	SupportsStreaming        OptBool                 `json:"supports_streaming"`
+	DisableNotification      OptBool                 `json:"disable_notification"`
+	ReplyToMessageID         OptInt                  `json:"reply_to_message_id"`
+	AllowSendingWithoutReply OptBool                 `json:"allow_sending_without_reply"`
+	ReplyMarkup              OptSendVideoReplyMarkup `json:"reply_markup"`
 }
 
 // Ref: #/components/schemas/sendVideoNote
 type SendVideoNote struct {
-	ChatID                   ID                        `json:"chat_id"`
-	VideoNote                string                    `json:"video_note"`
-	Duration                 OptInt                    `json:"duration"`
-	Length                   OptInt                    `json:"length"`
-	Thumb                    OptString                 `json:"thumb"`
-	DisableNotification      OptBool                   `json:"disable_notification"`
-	ReplyToMessageID         OptInt                    `json:"reply_to_message_id"`
-	AllowSendingWithoutReply OptBool                   `json:"allow_sending_without_reply"`
-	ReplyMarkup              *SendVideoNoteReplyMarkup `json:"reply_markup"`
+	ChatID                   ID                          `json:"chat_id"`
+	VideoNote                string                      `json:"video_note"`
+	Duration                 OptInt                      `json:"duration"`
+	Length                   OptInt                      `json:"length"`
+	Thumb                    OptString                   `json:"thumb"`
+	DisableNotification      OptBool                     `json:"disable_notification"`
+	ReplyToMessageID         OptInt                      `json:"reply_to_message_id"`
+	AllowSendingWithoutReply OptBool                     `json:"allow_sending_without_reply"`
+	ReplyMarkup              OptSendVideoNoteReplyMarkup `json:"reply_markup"`
 }
 
 // SendVideoNoteReplyMarkup represents sum type.
@@ -8226,16 +9100,16 @@ func NewForceReplySendVideoReplyMarkup(v ForceReply) SendVideoReplyMarkup {
 
 // Ref: #/components/schemas/sendVoice
 type SendVoice struct {
-	ChatID                   ID                    `json:"chat_id"`
-	Voice                    string                `json:"voice"`
-	Caption                  OptString             `json:"caption"`
-	ParseMode                OptString             `json:"parse_mode"`
-	CaptionEntities          []MessageEntity       `json:"caption_entities"`
-	Duration                 OptInt                `json:"duration"`
-	DisableNotification      OptBool               `json:"disable_notification"`
-	ReplyToMessageID         OptInt                `json:"reply_to_message_id"`
-	AllowSendingWithoutReply OptBool               `json:"allow_sending_without_reply"`
-	ReplyMarkup              *SendVoiceReplyMarkup `json:"reply_markup"`
+	ChatID                   ID                      `json:"chat_id"`
+	Voice                    string                  `json:"voice"`
+	Caption                  OptString               `json:"caption"`
+	ParseMode                OptString               `json:"parse_mode"`
+	CaptionEntities          []MessageEntity         `json:"caption_entities"`
+	Duration                 OptInt                  `json:"duration"`
+	DisableNotification      OptBool                 `json:"disable_notification"`
+	ReplyToMessageID         OptInt                  `json:"reply_to_message_id"`
+	AllowSendingWithoutReply OptBool                 `json:"allow_sending_without_reply"`
+	ReplyMarkup              OptSendVoiceReplyMarkup `json:"reply_markup"`
 }
 
 // SendVoiceReplyMarkup represents sum type.
@@ -8410,9 +9284,9 @@ type SetGameScore struct {
 
 // Ref: #/components/schemas/setMyCommands
 type SetMyCommands struct {
-	Commands     []BotCommand     `json:"commands"`
-	Scope        *BotCommandScope `json:"scope"`
-	LanguageCode OptString        `json:"language_code"`
+	Commands     []BotCommand       `json:"commands"`
+	Scope        OptBotCommandScope `json:"scope"`
+	LanguageCode OptString          `json:"language_code"`
 }
 
 // Ref: #/components/schemas/setPassportDataErrors
@@ -8485,7 +9359,7 @@ type Sticker struct {
 
 // Ref: #/components/schemas/stopMessageLiveLocation
 type StopMessageLiveLocation struct {
-	ChatID          *ID                     `json:"chat_id"`
+	ChatID          OptID                   `json:"chat_id"`
 	MessageID       OptInt                  `json:"message_id"`
 	InlineMessageID OptString               `json:"inline_message_id"`
 	ReplyMarkup     OptInlineKeyboardMarkup `json:"reply_markup"`

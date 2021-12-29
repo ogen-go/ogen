@@ -1724,7 +1724,7 @@ type AppsUpdateWebhookConfigForAppReq struct {
 	URL         OptWebhookConfigURL         `json:"url"`
 	ContentType OptWebhookConfigContentType `json:"content_type"`
 	Secret      OptWebhookConfigSecret      `json:"secret"`
-	InsecureSsl *WebhookConfigInsecureSsl   `json:"insecure_ssl"`
+	InsecureSsl OptWebhookConfigInsecureSsl `json:"insecure_ssl"`
 }
 
 // Ref: #/components/schemas/artifact
@@ -3629,9 +3629,9 @@ type EnterpriseAdminUpdateAttributeForEnterpriseGroupReq struct {
 }
 
 type EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItem struct {
-	Op    EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp     `json:"op"`
-	Path  OptString                                                               `json:"path"`
-	Value *EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue `json:"value"`
+	Op    EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp       `json:"op"`
+	Path  OptString                                                                 `json:"path"`
+	Value OptEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue `json:"value"`
 }
 
 type EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp string
@@ -4212,9 +4212,9 @@ type GistsCreateCommentReq struct {
 }
 
 type GistsCreateReq struct {
-	Description OptString             `json:"description"`
-	Files       GistsCreateReqFiles   `json:"files"`
-	Public      *GistsCreateReqPublic `json:"public"`
+	Description OptString               `json:"description"`
+	Files       GistsCreateReqFiles     `json:"files"`
+	Public      OptGistsCreateReqPublic `json:"public"`
 }
 
 type GistsCreateReqFiles struct{}
@@ -4755,7 +4755,7 @@ type HookConfig struct {
 	Room        OptString                   `json:"room"`
 	Subdomain   OptString                   `json:"subdomain"`
 	URL         OptWebhookConfigURL         `json:"url"`
-	InsecureSsl *WebhookConfigInsecureSsl   `json:"insecure_ssl"`
+	InsecureSsl OptWebhookConfigInsecureSsl `json:"insecure_ssl"`
 	ContentType OptWebhookConfigContentType `json:"content_type"`
 	Digest      OptString                   `json:"digest"`
 	Secret      OptWebhookConfigSecret      `json:"secret"`
@@ -5364,12 +5364,12 @@ const (
 )
 
 type IssuesCreateReq struct {
-	Title     IssuesCreateReqTitle        `json:"title"`
-	Body      OptString                   `json:"body"`
-	Assignee  OptNilString                `json:"assignee"`
-	Milestone OptIssuesCreateReqMilestone `json:"milestone"`
-	Labels    []IssuesCreateReqLabelsItem `json:"labels"`
-	Assignees []string                    `json:"assignees"`
+	Title     IssuesCreateReqTitle           `json:"title"`
+	Body      OptString                      `json:"body"`
+	Assignee  OptNilString                   `json:"assignee"`
+	Milestone OptNilIssuesCreateReqMilestone `json:"milestone"`
+	Labels    []IssuesCreateReqLabelsItem    `json:"labels"`
+	Assignees []string                       `json:"assignees"`
 }
 
 // IssuesCreateReqLabelsItem represents sum type.
@@ -5934,13 +5934,13 @@ const (
 )
 
 type IssuesUpdateReq struct {
-	Title     OptIssuesUpdateReqTitle     `json:"title"`
-	Body      OptNilString                `json:"body"`
-	Assignee  OptNilString                `json:"assignee"`
-	State     OptIssuesUpdateReqState     `json:"state"`
-	Milestone OptIssuesUpdateReqMilestone `json:"milestone"`
-	Labels    []IssuesUpdateReqLabelsItem `json:"labels"`
-	Assignees []string                    `json:"assignees"`
+	Title     OptNilIssuesUpdateReqTitle     `json:"title"`
+	Body      OptNilString                   `json:"body"`
+	Assignee  OptNilString                   `json:"assignee"`
+	State     OptIssuesUpdateReqState        `json:"state"`
+	Milestone OptNilIssuesUpdateReqMilestone `json:"milestone"`
+	Labels    []IssuesUpdateReqLabelsItem    `json:"labels"`
+	Assignees []string                       `json:"assignees"`
 }
 
 // IssuesUpdateReqLabelsItem represents sum type.
@@ -13097,6 +13097,54 @@ func (o OptEnterpriseAdminGetAuditLogOrder) Or(d EnterpriseAdminGetAuditLogOrder
 	return d
 }
 
+// NewOptEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue returns new OptEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue with value set to v.
+func NewOptEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue(v EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue) OptEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue {
+	return OptEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue is optional EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue.
+type OptEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue struct {
+	Value EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue
+	Set   bool
+}
+
+// IsSet returns true if OptEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue was set.
+func (o OptEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue) IsSet() bool {
+	return o.Set
+}
+
+// Reset unsets value.
+func (o *OptEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue) Reset() {
+	var v EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue) SetTo(v EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue) Get() (v EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue) Or(d EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue) EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq returns new OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq with value set to v.
 func NewOptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq(v EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq) OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq {
 	return OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq{
@@ -13783,6 +13831,52 @@ func (o OptGistHistoryChangeStatus) Get() (v GistHistoryChangeStatus, ok bool) {
 
 // Or returns value if set, or given parameter if does not.
 func (o OptGistHistoryChangeStatus) Or(d GistHistoryChangeStatus) GistHistoryChangeStatus {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptGistsCreateReqPublic returns new OptGistsCreateReqPublic with value set to v.
+func NewOptGistsCreateReqPublic(v GistsCreateReqPublic) OptGistsCreateReqPublic {
+	return OptGistsCreateReqPublic{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptGistsCreateReqPublic is optional GistsCreateReqPublic.
+type OptGistsCreateReqPublic struct {
+	Value GistsCreateReqPublic
+	Set   bool
+}
+
+// IsSet returns true if OptGistsCreateReqPublic was set.
+func (o OptGistsCreateReqPublic) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptGistsCreateReqPublic) Reset() {
+	var v GistsCreateReqPublic
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptGistsCreateReqPublic) SetTo(v GistsCreateReqPublic) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptGistsCreateReqPublic) Get() (v GistsCreateReqPublic, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptGistsCreateReqPublic) Or(d GistsCreateReqPublic) GistsCreateReqPublic {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -14749,52 +14843,6 @@ func (o OptIssuesCreateMilestoneReqState) Get() (v IssuesCreateMilestoneReqState
 
 // Or returns value if set, or given parameter if does not.
 func (o OptIssuesCreateMilestoneReqState) Or(d IssuesCreateMilestoneReqState) IssuesCreateMilestoneReqState {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
-// NewOptIssuesCreateReqMilestone returns new OptIssuesCreateReqMilestone with value set to v.
-func NewOptIssuesCreateReqMilestone(v *IssuesCreateReqMilestone) OptIssuesCreateReqMilestone {
-	return OptIssuesCreateReqMilestone{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptIssuesCreateReqMilestone is optional *IssuesCreateReqMilestone.
-type OptIssuesCreateReqMilestone struct {
-	Value *IssuesCreateReqMilestone
-	Set   bool
-}
-
-// IsSet returns true if OptIssuesCreateReqMilestone was set.
-func (o OptIssuesCreateReqMilestone) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptIssuesCreateReqMilestone) Reset() {
-	var v *IssuesCreateReqMilestone
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptIssuesCreateReqMilestone) SetTo(v *IssuesCreateReqMilestone) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptIssuesCreateReqMilestone) Get() (v *IssuesCreateReqMilestone, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptIssuesCreateReqMilestone) Or(d *IssuesCreateReqMilestone) *IssuesCreateReqMilestone {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -16043,52 +16091,6 @@ func (o OptIssuesUpdateReq) Or(d IssuesUpdateReq) IssuesUpdateReq {
 	return d
 }
 
-// NewOptIssuesUpdateReqMilestone returns new OptIssuesUpdateReqMilestone with value set to v.
-func NewOptIssuesUpdateReqMilestone(v *IssuesUpdateReqMilestone) OptIssuesUpdateReqMilestone {
-	return OptIssuesUpdateReqMilestone{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptIssuesUpdateReqMilestone is optional *IssuesUpdateReqMilestone.
-type OptIssuesUpdateReqMilestone struct {
-	Value *IssuesUpdateReqMilestone
-	Set   bool
-}
-
-// IsSet returns true if OptIssuesUpdateReqMilestone was set.
-func (o OptIssuesUpdateReqMilestone) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptIssuesUpdateReqMilestone) Reset() {
-	var v *IssuesUpdateReqMilestone
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptIssuesUpdateReqMilestone) SetTo(v *IssuesUpdateReqMilestone) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptIssuesUpdateReqMilestone) Get() (v *IssuesUpdateReqMilestone, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptIssuesUpdateReqMilestone) Or(d *IssuesUpdateReqMilestone) *IssuesUpdateReqMilestone {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
 // NewOptIssuesUpdateReqState returns new OptIssuesUpdateReqState with value set to v.
 func NewOptIssuesUpdateReqState(v IssuesUpdateReqState) OptIssuesUpdateReqState {
 	return OptIssuesUpdateReqState{
@@ -16129,52 +16131,6 @@ func (o OptIssuesUpdateReqState) Get() (v IssuesUpdateReqState, ok bool) {
 
 // Or returns value if set, or given parameter if does not.
 func (o OptIssuesUpdateReqState) Or(d IssuesUpdateReqState) IssuesUpdateReqState {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
-// NewOptIssuesUpdateReqTitle returns new OptIssuesUpdateReqTitle with value set to v.
-func NewOptIssuesUpdateReqTitle(v *IssuesUpdateReqTitle) OptIssuesUpdateReqTitle {
-	return OptIssuesUpdateReqTitle{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptIssuesUpdateReqTitle is optional *IssuesUpdateReqTitle.
-type OptIssuesUpdateReqTitle struct {
-	Value *IssuesUpdateReqTitle
-	Set   bool
-}
-
-// IsSet returns true if OptIssuesUpdateReqTitle was set.
-func (o OptIssuesUpdateReqTitle) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptIssuesUpdateReqTitle) Reset() {
-	var v *IssuesUpdateReqTitle
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptIssuesUpdateReqTitle) SetTo(v *IssuesUpdateReqTitle) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptIssuesUpdateReqTitle) Get() (v *IssuesUpdateReqTitle, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptIssuesUpdateReqTitle) Or(d *IssuesUpdateReqTitle) *IssuesUpdateReqTitle {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -17304,6 +17260,171 @@ func (o OptNilInt) Get() (v int, ok bool) {
 
 // Or returns value if set, or given parameter if does not.
 func (o OptNilInt) Or(d int) int {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptNilIssuesCreateReqMilestone returns new OptNilIssuesCreateReqMilestone with value set to v.
+func NewOptNilIssuesCreateReqMilestone(v IssuesCreateReqMilestone) OptNilIssuesCreateReqMilestone {
+	return OptNilIssuesCreateReqMilestone{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptNilIssuesCreateReqMilestone is optional nullable IssuesCreateReqMilestone.
+type OptNilIssuesCreateReqMilestone struct {
+	Value IssuesCreateReqMilestone
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptNilIssuesCreateReqMilestone was set.
+func (o OptNilIssuesCreateReqMilestone) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptNilIssuesCreateReqMilestone) Reset() {
+	var v IssuesCreateReqMilestone
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptNilIssuesCreateReqMilestone) SetTo(v IssuesCreateReqMilestone) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o OptNilIssuesCreateReqMilestone) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptNilIssuesCreateReqMilestone) Get() (v IssuesCreateReqMilestone, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptNilIssuesCreateReqMilestone) Or(d IssuesCreateReqMilestone) IssuesCreateReqMilestone {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptNilIssuesUpdateReqMilestone returns new OptNilIssuesUpdateReqMilestone with value set to v.
+func NewOptNilIssuesUpdateReqMilestone(v IssuesUpdateReqMilestone) OptNilIssuesUpdateReqMilestone {
+	return OptNilIssuesUpdateReqMilestone{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptNilIssuesUpdateReqMilestone is optional nullable IssuesUpdateReqMilestone.
+type OptNilIssuesUpdateReqMilestone struct {
+	Value IssuesUpdateReqMilestone
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptNilIssuesUpdateReqMilestone was set.
+func (o OptNilIssuesUpdateReqMilestone) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptNilIssuesUpdateReqMilestone) Reset() {
+	var v IssuesUpdateReqMilestone
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptNilIssuesUpdateReqMilestone) SetTo(v IssuesUpdateReqMilestone) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o OptNilIssuesUpdateReqMilestone) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptNilIssuesUpdateReqMilestone) Get() (v IssuesUpdateReqMilestone, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptNilIssuesUpdateReqMilestone) Or(d IssuesUpdateReqMilestone) IssuesUpdateReqMilestone {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptNilIssuesUpdateReqTitle returns new OptNilIssuesUpdateReqTitle with value set to v.
+func NewOptNilIssuesUpdateReqTitle(v IssuesUpdateReqTitle) OptNilIssuesUpdateReqTitle {
+	return OptNilIssuesUpdateReqTitle{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptNilIssuesUpdateReqTitle is optional nullable IssuesUpdateReqTitle.
+type OptNilIssuesUpdateReqTitle struct {
+	Value IssuesUpdateReqTitle
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptNilIssuesUpdateReqTitle was set.
+func (o OptNilIssuesUpdateReqTitle) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptNilIssuesUpdateReqTitle) Reset() {
+	var v IssuesUpdateReqTitle
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptNilIssuesUpdateReqTitle) SetTo(v IssuesUpdateReqTitle) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o OptNilIssuesUpdateReqTitle) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptNilIssuesUpdateReqTitle) Get() (v IssuesUpdateReqTitle, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptNilIssuesUpdateReqTitle) Or(d IssuesUpdateReqTitle) IssuesUpdateReqTitle {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -23213,6 +23334,52 @@ func (o OptReposAddUserAccessRestrictionsReq) Or(d ReposAddUserAccessRestriction
 	return d
 }
 
+// NewOptReposCreateDeploymentReqPayload returns new OptReposCreateDeploymentReqPayload with value set to v.
+func NewOptReposCreateDeploymentReqPayload(v ReposCreateDeploymentReqPayload) OptReposCreateDeploymentReqPayload {
+	return OptReposCreateDeploymentReqPayload{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptReposCreateDeploymentReqPayload is optional ReposCreateDeploymentReqPayload.
+type OptReposCreateDeploymentReqPayload struct {
+	Value ReposCreateDeploymentReqPayload
+	Set   bool
+}
+
+// IsSet returns true if OptReposCreateDeploymentReqPayload was set.
+func (o OptReposCreateDeploymentReqPayload) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptReposCreateDeploymentReqPayload) Reset() {
+	var v ReposCreateDeploymentReqPayload
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptReposCreateDeploymentReqPayload) SetTo(v ReposCreateDeploymentReqPayload) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptReposCreateDeploymentReqPayload) Get() (v ReposCreateDeploymentReqPayload, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptReposCreateDeploymentReqPayload) Or(d ReposCreateDeploymentReqPayload) ReposCreateDeploymentReqPayload {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptReposCreateDeploymentStatusReqEnvironment returns new OptReposCreateDeploymentStatusReqEnvironment with value set to v.
 func NewOptReposCreateDeploymentStatusReqEnvironment(v ReposCreateDeploymentStatusReqEnvironment) OptReposCreateDeploymentStatusReqEnvironment {
 	return OptReposCreateDeploymentStatusReqEnvironment{
@@ -25923,6 +26090,52 @@ func (o OptScimGroupListEnterpriseResourcesItemMeta) Get() (v ScimGroupListEnter
 
 // Or returns value if set, or given parameter if does not.
 func (o OptScimGroupListEnterpriseResourcesItemMeta) Or(d ScimGroupListEnterpriseResourcesItemMeta) ScimGroupListEnterpriseResourcesItemMeta {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptScimUpdateAttributeForUserReqOperationsItemValue returns new OptScimUpdateAttributeForUserReqOperationsItemValue with value set to v.
+func NewOptScimUpdateAttributeForUserReqOperationsItemValue(v ScimUpdateAttributeForUserReqOperationsItemValue) OptScimUpdateAttributeForUserReqOperationsItemValue {
+	return OptScimUpdateAttributeForUserReqOperationsItemValue{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptScimUpdateAttributeForUserReqOperationsItemValue is optional ScimUpdateAttributeForUserReqOperationsItemValue.
+type OptScimUpdateAttributeForUserReqOperationsItemValue struct {
+	Value ScimUpdateAttributeForUserReqOperationsItemValue
+	Set   bool
+}
+
+// IsSet returns true if OptScimUpdateAttributeForUserReqOperationsItemValue was set.
+func (o OptScimUpdateAttributeForUserReqOperationsItemValue) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptScimUpdateAttributeForUserReqOperationsItemValue) Reset() {
+	var v ScimUpdateAttributeForUserReqOperationsItemValue
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptScimUpdateAttributeForUserReqOperationsItemValue) SetTo(v ScimUpdateAttributeForUserReqOperationsItemValue) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptScimUpdateAttributeForUserReqOperationsItemValue) Get() (v ScimUpdateAttributeForUserReqOperationsItemValue, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptScimUpdateAttributeForUserReqOperationsItemValue) Or(d ScimUpdateAttributeForUserReqOperationsItemValue) ScimUpdateAttributeForUserReqOperationsItemValue {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -28735,6 +28948,52 @@ func (o OptUsersUpdateAuthenticatedReq) Or(d UsersUpdateAuthenticatedReq) UsersU
 	return d
 }
 
+// NewOptValidationErrorErrorsItemValue returns new OptValidationErrorErrorsItemValue with value set to v.
+func NewOptValidationErrorErrorsItemValue(v ValidationErrorErrorsItemValue) OptValidationErrorErrorsItemValue {
+	return OptValidationErrorErrorsItemValue{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptValidationErrorErrorsItemValue is optional ValidationErrorErrorsItemValue.
+type OptValidationErrorErrorsItemValue struct {
+	Value ValidationErrorErrorsItemValue
+	Set   bool
+}
+
+// IsSet returns true if OptValidationErrorErrorsItemValue was set.
+func (o OptValidationErrorErrorsItemValue) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptValidationErrorErrorsItemValue) Reset() {
+	var v ValidationErrorErrorsItemValue
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptValidationErrorErrorsItemValue) SetTo(v ValidationErrorErrorsItemValue) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptValidationErrorErrorsItemValue) Get() (v ValidationErrorErrorsItemValue, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptValidationErrorErrorsItemValue) Or(d ValidationErrorErrorsItemValue) ValidationErrorErrorsItemValue {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptVerification returns new OptVerification with value set to v.
 func NewOptVerification(v Verification) OptVerification {
 	return OptVerification{
@@ -28867,6 +29126,52 @@ func (o OptWebhookConfigContentType) Get() (v WebhookConfigContentType, ok bool)
 
 // Or returns value if set, or given parameter if does not.
 func (o OptWebhookConfigContentType) Or(d WebhookConfigContentType) WebhookConfigContentType {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptWebhookConfigInsecureSsl returns new OptWebhookConfigInsecureSsl with value set to v.
+func NewOptWebhookConfigInsecureSsl(v WebhookConfigInsecureSsl) OptWebhookConfigInsecureSsl {
+	return OptWebhookConfigInsecureSsl{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptWebhookConfigInsecureSsl is optional WebhookConfigInsecureSsl.
+type OptWebhookConfigInsecureSsl struct {
+	Value WebhookConfigInsecureSsl
+	Set   bool
+}
+
+// IsSet returns true if OptWebhookConfigInsecureSsl was set.
+func (o OptWebhookConfigInsecureSsl) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptWebhookConfigInsecureSsl) Reset() {
+	var v WebhookConfigInsecureSsl
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptWebhookConfigInsecureSsl) SetTo(v WebhookConfigInsecureSsl) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptWebhookConfigInsecureSsl) Get() (v WebhookConfigInsecureSsl, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptWebhookConfigInsecureSsl) Or(d WebhookConfigInsecureSsl) WebhookConfigInsecureSsl {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -29370,7 +29675,7 @@ type OrgsCreateWebhookReqConfig struct {
 	URL         WebhookConfigURL            `json:"url"`
 	ContentType OptWebhookConfigContentType `json:"content_type"`
 	Secret      OptWebhookConfigSecret      `json:"secret"`
-	InsecureSsl *WebhookConfigInsecureSsl   `json:"insecure_ssl"`
+	InsecureSsl OptWebhookConfigInsecureSsl `json:"insecure_ssl"`
 	Username    OptString                   `json:"username"`
 	Password    OptString                   `json:"password"`
 }
@@ -29632,7 +29937,7 @@ type OrgsUpdateWebhookConfigForOrgReq struct {
 	URL         OptWebhookConfigURL         `json:"url"`
 	ContentType OptWebhookConfigContentType `json:"content_type"`
 	Secret      OptWebhookConfigSecret      `json:"secret"`
-	InsecureSsl *WebhookConfigInsecureSsl   `json:"insecure_ssl"`
+	InsecureSsl OptWebhookConfigInsecureSsl `json:"insecure_ssl"`
 }
 
 type OrgsUpdateWebhookReq struct {
@@ -29646,7 +29951,7 @@ type OrgsUpdateWebhookReqConfig struct {
 	URL         WebhookConfigURL            `json:"url"`
 	ContentType OptWebhookConfigContentType `json:"content_type"`
 	Secret      OptWebhookConfigSecret      `json:"secret"`
-	InsecureSsl *WebhookConfigInsecureSsl   `json:"insecure_ssl"`
+	InsecureSsl OptWebhookConfigInsecureSsl `json:"insecure_ssl"`
 }
 
 // Ref: #/components/schemas/package
@@ -33241,15 +33546,15 @@ type ReposCreateDeploymentConflict struct{}
 func (*ReposCreateDeploymentConflict) reposCreateDeploymentRes() {}
 
 type ReposCreateDeploymentReq struct {
-	Ref                   string                           `json:"ref"`
-	Task                  OptString                        `json:"task"`
-	AutoMerge             OptBool                          `json:"auto_merge"`
-	RequiredContexts      []string                         `json:"required_contexts"`
-	Payload               *ReposCreateDeploymentReqPayload `json:"payload"`
-	Environment           OptString                        `json:"environment"`
-	Description           OptNilString                     `json:"description"`
-	TransientEnvironment  OptBool                          `json:"transient_environment"`
-	ProductionEnvironment OptBool                          `json:"production_environment"`
+	Ref                   string                             `json:"ref"`
+	Task                  OptString                          `json:"task"`
+	AutoMerge             OptBool                            `json:"auto_merge"`
+	RequiredContexts      []string                           `json:"required_contexts"`
+	Payload               OptReposCreateDeploymentReqPayload `json:"payload"`
+	Environment           OptString                          `json:"environment"`
+	Description           OptNilString                       `json:"description"`
+	TransientEnvironment  OptBool                            `json:"transient_environment"`
+	ProductionEnvironment OptBool                            `json:"production_environment"`
 }
 
 // ReposCreateDeploymentReqPayload represents sum type.
@@ -33551,7 +33856,7 @@ type ReposCreateWebhookReqConfig struct {
 	URL         OptWebhookConfigURL         `json:"url"`
 	ContentType OptWebhookConfigContentType `json:"content_type"`
 	Secret      OptWebhookConfigSecret      `json:"secret"`
-	InsecureSsl *WebhookConfigInsecureSsl   `json:"insecure_ssl"`
+	InsecureSsl OptWebhookConfigInsecureSsl `json:"insecure_ssl"`
 	Token       OptString                   `json:"token"`
 	Digest      OptString                   `json:"digest"`
 }
@@ -34849,7 +35154,7 @@ type ReposUpdateWebhookConfigForRepoReq struct {
 	URL         OptWebhookConfigURL         `json:"url"`
 	ContentType OptWebhookConfigContentType `json:"content_type"`
 	Secret      OptWebhookConfigSecret      `json:"secret"`
-	InsecureSsl *WebhookConfigInsecureSsl   `json:"insecure_ssl"`
+	InsecureSsl OptWebhookConfigInsecureSsl `json:"insecure_ssl"`
 }
 
 type ReposUpdateWebhookReq struct {
@@ -34864,7 +35169,7 @@ type ReposUpdateWebhookReqConfig struct {
 	URL         WebhookConfigURL            `json:"url"`
 	ContentType OptWebhookConfigContentType `json:"content_type"`
 	Secret      OptWebhookConfigSecret      `json:"secret"`
-	InsecureSsl *WebhookConfigInsecureSsl   `json:"insecure_ssl"`
+	InsecureSsl OptWebhookConfigInsecureSsl `json:"insecure_ssl"`
 	Address     OptString                   `json:"address"`
 	Room        OptString                   `json:"room"`
 }
@@ -35407,9 +35712,9 @@ type ScimUpdateAttributeForUserReq struct {
 }
 
 type ScimUpdateAttributeForUserReqOperationsItem struct {
-	Op    ScimUpdateAttributeForUserReqOperationsItemOp     `json:"op"`
-	Path  OptString                                         `json:"path"`
-	Value *ScimUpdateAttributeForUserReqOperationsItemValue `json:"value"`
+	Op    ScimUpdateAttributeForUserReqOperationsItemOp       `json:"op"`
+	Path  OptString                                           `json:"path"`
+	Value OptScimUpdateAttributeForUserReqOperationsItemValue `json:"value"`
 }
 
 type ScimUpdateAttributeForUserReqOperationsItemOp string
@@ -37846,12 +38151,12 @@ func (*ValidationError) usersSetPrimaryEmailVisibilityForAuthenticatedRes()     
 func (*ValidationError) usersUpdateAuthenticatedRes()                                        {}
 
 type ValidationErrorErrorsItem struct {
-	Resource OptString                       `json:"resource"`
-	Field    OptString                       `json:"field"`
-	Message  OptString                       `json:"message"`
-	Code     string                          `json:"code"`
-	Index    OptInt                          `json:"index"`
-	Value    *ValidationErrorErrorsItemValue `json:"value"`
+	Resource OptString                         `json:"resource"`
+	Field    OptString                         `json:"field"`
+	Message  OptString                         `json:"message"`
+	Code     string                            `json:"code"`
+	Index    OptInt                            `json:"index"`
+	Value    OptValidationErrorErrorsItemValue `json:"value"`
 }
 
 // ValidationErrorErrorsItemValue represents sum type.
@@ -37999,7 +38304,7 @@ type WebhookConfig struct {
 	URL         OptWebhookConfigURL         `json:"url"`
 	ContentType OptWebhookConfigContentType `json:"content_type"`
 	Secret      OptWebhookConfigSecret      `json:"secret"`
-	InsecureSsl *WebhookConfigInsecureSsl   `json:"insecure_ssl"`
+	InsecureSsl OptWebhookConfigInsecureSsl `json:"insecure_ssl"`
 }
 
 type WebhookConfigContentType string

@@ -2379,17 +2379,17 @@ func (s AppsScopeTokenReq) Validate() error {
 func (s AppsUpdateWebhookConfigForAppReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.InsecureSsl == nil {
-			return nil // optional
-		}
-		if err := func() error {
-			if err := s.InsecureSsl.Validate(); err != nil {
+		if s.InsecureSsl.Set {
+			if err := func() error {
+				if err := s.InsecureSsl.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
 				return err
 			}
-			return nil
-		}(); err != nil {
-			return errors.Wrap(err, "pointer")
 		}
+		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -4620,17 +4620,17 @@ func (s EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItem) Valid
 		})
 	}
 	if err := func() error {
-		if s.Value == nil {
-			return nil // optional
-		}
-		if err := func() error {
-			if err := s.Value.Validate(); err != nil {
+		if s.Value.Set {
+			if err := func() error {
+				if err := s.Value.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
 				return err
 			}
-			return nil
-		}(); err != nil {
-			return errors.Wrap(err, "pointer")
 		}
+		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -5141,17 +5141,17 @@ func (s GistsCreateCommentReq) Validate() error {
 func (s GistsCreateReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Public == nil {
-			return nil // optional
-		}
-		if err := func() error {
-			if err := s.Public.Validate(); err != nil {
+		if s.Public.Set {
+			if err := func() error {
+				if err := s.Public.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
 				return err
 			}
-			return nil
-		}(); err != nil {
-			return errors.Wrap(err, "pointer")
 		}
+		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -5575,17 +5575,17 @@ func (s Hook) Validate() error {
 func (s HookConfig) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.InsecureSsl == nil {
-			return nil // optional
-		}
-		if err := func() error {
-			if err := s.InsecureSsl.Validate(); err != nil {
+		if s.InsecureSsl.Set {
+			if err := func() error {
+				if err := s.InsecureSsl.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
 				return err
 			}
-			return nil
-		}(); err != nil {
-			return errors.Wrap(err, "pointer")
 		}
+		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -8130,17 +8130,17 @@ func (s OrgsCreateWebhookReq) Validate() error {
 func (s OrgsCreateWebhookReqConfig) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.InsecureSsl == nil {
-			return nil // optional
-		}
-		if err := func() error {
-			if err := s.InsecureSsl.Validate(); err != nil {
+		if s.InsecureSsl.Set {
+			if err := func() error {
+				if err := s.InsecureSsl.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
 				return err
 			}
-			return nil
-		}(); err != nil {
-			return errors.Wrap(err, "pointer")
 		}
+		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -8464,17 +8464,17 @@ func (s OrgsUpdateReqMembersAllowedRepositoryCreationType) Validate() error {
 func (s OrgsUpdateWebhookConfigForOrgReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.InsecureSsl == nil {
-			return nil // optional
-		}
-		if err := func() error {
-			if err := s.InsecureSsl.Validate(); err != nil {
+		if s.InsecureSsl.Set {
+			if err := func() error {
+				if err := s.InsecureSsl.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
 				return err
 			}
-			return nil
-		}(); err != nil {
-			return errors.Wrap(err, "pointer")
 		}
+		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -8516,17 +8516,17 @@ func (s OrgsUpdateWebhookReq) Validate() error {
 func (s OrgsUpdateWebhookReqConfig) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.InsecureSsl == nil {
-			return nil // optional
-		}
-		if err := func() error {
-			if err := s.InsecureSsl.Validate(); err != nil {
+		if s.InsecureSsl.Set {
+			if err := func() error {
+				if err := s.InsecureSsl.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
 				return err
 			}
-			return nil
-		}(); err != nil {
-			return errors.Wrap(err, "pointer")
 		}
+		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -12118,17 +12118,17 @@ func (s ReposCreateWebhookReq) Validate() error {
 func (s ReposCreateWebhookReqConfig) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.InsecureSsl == nil {
-			return nil // optional
-		}
-		if err := func() error {
-			if err := s.InsecureSsl.Validate(); err != nil {
+		if s.InsecureSsl.Set {
+			if err := func() error {
+				if err := s.InsecureSsl.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
 				return err
 			}
-			return nil
-		}(); err != nil {
-			return errors.Wrap(err, "pointer")
 		}
+		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -13214,17 +13214,17 @@ func (s ReposUpdateReqVisibility) Validate() error {
 func (s ReposUpdateWebhookConfigForRepoReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.InsecureSsl == nil {
-			return nil // optional
-		}
-		if err := func() error {
-			if err := s.InsecureSsl.Validate(); err != nil {
+		if s.InsecureSsl.Set {
+			if err := func() error {
+				if err := s.InsecureSsl.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
 				return err
 			}
-			return nil
-		}(); err != nil {
-			return errors.Wrap(err, "pointer")
 		}
+		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -13266,17 +13266,17 @@ func (s ReposUpdateWebhookReq) Validate() error {
 func (s ReposUpdateWebhookReqConfig) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.InsecureSsl == nil {
-			return nil // optional
-		}
-		if err := func() error {
-			if err := s.InsecureSsl.Validate(); err != nil {
+		if s.InsecureSsl.Set {
+			if err := func() error {
+				if err := s.InsecureSsl.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
 				return err
 			}
-			return nil
-		}(); err != nil {
-			return errors.Wrap(err, "pointer")
 		}
+		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -13748,17 +13748,17 @@ func (s ScimUpdateAttributeForUserReqOperationsItem) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.Value == nil {
-			return nil // optional
-		}
-		if err := func() error {
-			if err := s.Value.Validate(); err != nil {
+		if s.Value.Set {
+			if err := func() error {
+				if err := s.Value.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
 				return err
 			}
-			return nil
-		}(); err != nil {
-			return errors.Wrap(err, "pointer")
 		}
+		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -15719,17 +15719,17 @@ func (s ValidationError) Validate() error {
 func (s ValidationErrorErrorsItem) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Value == nil {
-			return nil // optional
-		}
-		if err := func() error {
-			if err := s.Value.Validate(); err != nil {
+		if s.Value.Set {
+			if err := func() error {
+				if err := s.Value.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
 				return err
 			}
-			return nil
-		}(); err != nil {
-			return errors.Wrap(err, "pointer")
 		}
+		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -15779,17 +15779,17 @@ func (s ViewTraffic) Validate() error {
 func (s WebhookConfig) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.InsecureSsl == nil {
-			return nil // optional
-		}
-		if err := func() error {
-			if err := s.InsecureSsl.Validate(); err != nil {
+		if s.InsecureSsl.Set {
+			if err := func() error {
+				if err := s.InsecureSsl.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
 				return err
 			}
-			return nil
-		}(); err != nil {
-			return errors.Wrap(err, "pointer")
 		}
+		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
