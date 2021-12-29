@@ -56,6 +56,10 @@ func (t Type) CanGeneric() bool {
 		}
 	case KindAlias:
 		return t.AliasTo.CanGeneric()
+	case KindSum:
+		if len(t.SumOf) == 0 {
+			return false
+		}
 	}
-	return t.Is(KindPrimitive, KindEnum, KindStruct)
+	return t.Is(KindPrimitive, KindEnum, KindStruct, KindSum)
 }
