@@ -5,6 +5,7 @@ import (
 
 	"github.com/go-faster/jx"
 	"github.com/google/uuid"
+	"github.com/stretchr/testify/require"
 )
 
 func BenchmarkDecodeUUID(b *testing.B) {
@@ -53,4 +54,15 @@ func BenchmarkEncodeUUID(b *testing.B) {
 		e.Reset()
 		EncodeUUID(e, u)
 	}
+}
+
+func Test_hexEncode(t *testing.T) {
+	a := require.New(t)
+
+	u, err := uuid.NewUUID()
+	a.NoError(err)
+
+	var dst [36]byte
+	hexEncode(&dst, u)
+	a.Equal(u.String(), string(dst[:]))
 }
